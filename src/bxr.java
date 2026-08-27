@@ -1,10 +1,8 @@
-public abstract class bxr extends bmm {
-   protected bxr(bly<? extends bxr> $$0, cto $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cfh $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bxr {
 }

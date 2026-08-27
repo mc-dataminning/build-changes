@@ -1,75 +1,73 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.minecraft.UserApiService;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fow extends foq {
-   final Supplier<gfl> f;
+public final class fow {
+   private static final int a = 1024;
+   private final fom b;
+   private final fot c;
+   private final foh d;
+   @Nullable
+   private fos e;
 
-   fow(UUID $$0, Instant $$1, UUID $$2, Supplier<gfl> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fow(fom $$0, fot $$1, foh $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public Supplier<gfl> a() {
-      return this.f;
+   public static fow a(fot $$0, UserApiService $$1) {
+      foh $$2 = new foh(1024);
+      fom $$3 = fom.a($$0, $$1);
+      return new fow($$3, $$0, $$2);
    }
 
-   public fow c() {
-      fow $$0 = new fow(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   public void a(evi $$0, fdb $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fos $$4 = this.e.b();
+         $$0.a(
+            new fbu(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               vf.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               vf.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               vf.c("gui.abuseReport.draft.edit"),
+               vf.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
+      }
    }
 
-   @Override
-   public fda a(fda $$0, fov $$1) {
-      return new fhf($$0, $$1, this);
+   public fom a() {
+      return this.b;
    }
 
-   public static class a extends foq.a<fow> {
-      public a(fow $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   public foh b() {
+      return this.d;
+   }
 
-      public a(UUID $$0, Supplier<gfl> $$1, AbuseReportLimits $$2) {
-         super(new fow(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public boolean a(fot $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
+   public void a(@Nullable fos $$0) {
+      this.e = $$0;
+   }
 
-      @Nullable
-      @Override
-      public foq.b c() {
-         if (this.a.e == null) {
-            return foq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? foq.b.d : null;
-         }
-      }
+   public boolean c() {
+      return this.e != null;
+   }
 
-      @Override
-      public Either<foq.c, foq.b> a(fov $$0) {
-         foq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gfl $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new foq.c(this.a.a, fou.b, $$6));
-         }
-      }
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

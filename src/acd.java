@@ -4,7 +4,7 @@ public class acd implements xf<za> {
    private final int a;
    private final int b;
 
-   public acd(blu $$0, @Nullable blu $$1) {
+   public acd(blv $$0, @Nullable blv $$1) {
       this.a = $$0.aj();
       this.b = $$1 != null ? $$1.aj() : 0;
    }

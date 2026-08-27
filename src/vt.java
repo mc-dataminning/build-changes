@@ -8,7 +8,7 @@ public class vt implements vf {
    private final vg c;
    private final List<vf> d;
    private wc e;
-   private atz f = atz.a;
+   private aua f = aua.a;
    @Nullable
    private si g;
 
@@ -77,7 +77,7 @@ public class vt implements vf {
    }
 
    @Override
-   public atz g() {
+   public aua g() {
       si $$0 = si.a();
       if (this.g != $$0) {
          this.f = $$0.a(this);

@@ -1,136 +1,99 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class evs {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private evs.c b;
    private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
 
-   public static void a(File $$0, eom $$1, Consumer<vf> $$2) {
-      a($$0, null, $$1, $$2);
+   public void a(evs.b $$0, List<aow> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new evs.c($$0, $$1.stream().map(aow::a).collect(ImmutableList.toImmutableList()));
    }
 
-   public static void a(File $$0, @Nullable String $$1, eom $$2, Consumer<vf> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new evs.c(evs.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new evs.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
       } else {
-         b($$0, $$1, $$2, $$3);
+         this.b.d = true;
       }
    }
 
-   private static void b(File $$0, @Nullable String $$1, eom $$2, Consumer<vf> $$3) {
-      epb $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
       }
 
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            vf $$3x = vf.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new vd(vd.a.b, $$6.getAbsolutePath())));
-            $$3.accept(vf.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(vf.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final evs.b a;
+      private final List<String> b;
+      @Nullable
+      evs.a c;
+      boolean d;
+
+      c(evs.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
          }
-      });
-   }
-
-   public static epb a(eom $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      epb $$3 = new epb($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
-
-         $$2++;
       }
-   }
-
-   public evs(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
-      }
-   }
-
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
    }
 }

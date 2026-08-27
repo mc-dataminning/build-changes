@@ -1,16 +1,8 @@
-public class ejd<T> {
-   private final ahg a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ejd(ahg $$0) {
-      this.a = $$0;
-   }
-
-   public ahg a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ejd {
 }

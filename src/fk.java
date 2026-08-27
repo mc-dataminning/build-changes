@@ -35,35 +35,35 @@ public class fk {
    private static final char m = ',';
    private static final char n = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> o = SuggestionsBuilder::buildFuture;
-   private final ij<cwp> p;
+   private final ij<cwq> p;
    private final StringReader q;
    private final boolean r;
    private final boolean s;
-   private final Map<dkj<?>, Comparable<?>> t = Maps.newHashMap();
+   private final Map<dkk<?>, Comparable<?>> t = Maps.newHashMap();
    private final Map<String, String> u = Maps.newHashMap();
    private ahg v = new ahg("");
    @Nullable
-   private djh<cwp, djg> w;
+   private dji<cwq, djh> w;
    @Nullable
-   private djg x;
+   private djh x;
    @Nullable
    private sn y;
    @Nullable
-   private il<cwp> z;
+   private il<cwq> z;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> A = o;
 
-   private fk(ij<cwp> $$0, StringReader $$1, boolean $$2, boolean $$3) {
+   private fk(ij<cwq> $$0, StringReader $$1, boolean $$2, boolean $$3) {
       this.p = $$0;
       this.q = $$1;
       this.r = $$2;
       this.s = $$3;
    }
 
-   public static fk.a a(ij<cwp> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static fk.a a(ij<cwq> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return a($$0, new StringReader($$1), $$2);
    }
 
-   public static fk.a a(ij<cwp> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static fk.a a(ij<cwq> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -76,11 +76,11 @@ public class fk {
       }
    }
 
-   public static Either<fk.a, fk.b> b(ij<cwp> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<fk.a, fk.b> b(ij<cwq> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return b($$0, new StringReader($$1), $$2);
    }
 
-   public static Either<fk.a, fk.b> b(ij<cwp> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<fk.a, fk.b> b(ij<cwq> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -93,7 +93,7 @@ public class fk {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(ij<cwp> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
+   public static CompletableFuture<Suggestions> a(ij<cwq> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
       StringReader $$4 = new StringReader($$1.getInput());
       $$4.setCursor($$1.getStart());
       fk $$5 = new fk($$0, $$4, $$2, $$3);
@@ -154,7 +154,7 @@ public class fk {
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
 
-      for (dkj<?> $$2 : this.x.B()) {
+      for (dkk<?> $$2 : this.x.B()) {
          if (!this.t.containsKey($$2) && $$2.f().startsWith($$1)) {
             $$0.suggest($$2.f() + "=");
          }
@@ -166,8 +166,8 @@ public class fk {
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
       if (this.z != null) {
-         for (ih<cwp> $$2 : this.z) {
-            for (dkj<?> $$3 : $$2.a().n().d()) {
+         for (ih<cwq> $$2 : this.z) {
+            for (dkk<?> $$3 : $$2.a().n().d()) {
                if (!this.u.containsKey($$3.f()) && $$3.f().startsWith($$1)) {
                   $$0.suggest($$3.f() + "=");
                }
@@ -191,7 +191,7 @@ public class fk {
          return this.x.t();
       } else {
          if (this.z != null) {
-            for (ih<cwp> $$0 : this.z) {
+            for (ih<cwq> $$0 : this.z) {
                if ($$0.a().o().t()) {
                   return true;
                }
@@ -222,7 +222,7 @@ public class fk {
       return $$0.buildFuture();
    }
 
-   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dkj<T> $$1) {
+   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dkk<T> $$1) {
       for (T $$2 : $$1.a()) {
          if ($$2 instanceof Integer $$3) {
             $$0.suggest($$3);
@@ -237,15 +237,15 @@ public class fk {
    private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
       boolean $$2 = false;
       if (this.z != null) {
-         for (ih<cwp> $$3 : this.z) {
-            cwp $$4 = $$3.a();
-            dkj<?> $$5 = $$4.n().a($$1);
+         for (ih<cwq> $$3 : this.z) {
+            cwq $$4 = $$3.a();
+            dkk<?> $$5 = $$4.n().a($$1);
             if ($$5 != null) {
                a($$0, $$5);
             }
 
             if (!$$2) {
-               for (dkj<?> $$6 : $$4.n().d()) {
+               for (dkk<?> $$6 : $$4.n().d()) {
                   if (!this.u.containsKey($$6.f())) {
                      $$2 = true;
                      break;
@@ -268,8 +268,8 @@ public class fk {
          boolean $$1 = false;
          boolean $$2 = false;
 
-         for (ih<cwp> $$3 : this.z) {
-            cwp $$4 = $$3.a();
+         for (ih<cwq> $$3 : this.z) {
+            cwq $$4 = $$3.a();
             $$1 |= !$$4.n().d().isEmpty();
             $$2 |= $$4.o().t();
             if ($$1 && $$2) {
@@ -304,7 +304,7 @@ public class fk {
    }
 
    private CompletableFuture<Suggestions> j(SuggestionsBuilder $$0) {
-      return dx.a(this.p.e().map(asv::b), $$0, String.valueOf('#'));
+      return dx.a(this.p.e().map(asw::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> k(SuggestionsBuilder $$0) {
@@ -320,7 +320,7 @@ public class fk {
    private void c() throws CommandSyntaxException {
       int $$0 = this.q.getCursor();
       this.v = ahg.a(this.q);
-      cwp $$1 = this.p.a(ahf.a(ke.f, this.v)).orElseThrow(() -> {
+      cwq $$1 = this.p.a(ahf.a(ke.f, this.v)).orElseThrow(() -> {
          this.q.setCursor($$0);
          return b.createWithContext(this.q, this.v.toString());
       }).a();
@@ -336,7 +336,7 @@ public class fk {
          this.q.expect('#');
          this.A = this::j;
          ahg $$1 = ahg.a(this.q);
-         this.z = this.p.a(asv.a(ke.f, $$1)).orElseThrow(() -> {
+         this.z = this.p.a(asw.a(ke.f, $$1)).orElseThrow(() -> {
             this.q.setCursor($$0);
             return h.createWithContext(this.q, $$1.toString());
          });
@@ -352,7 +352,7 @@ public class fk {
          this.q.skipWhitespace();
          int $$0 = this.q.getCursor();
          String $$1 = this.q.readString();
-         dkj<?> $$2 = this.w.a($$1);
+         dkk<?> $$2 = this.w.a($$1);
          if ($$2 == null) {
             this.q.setCursor($$0);
             throw c.createWithContext(this.q, this.v.toString(), $$1);
@@ -453,7 +453,7 @@ public class fk {
       this.y = new tl(this.q).f();
    }
 
-   private <T extends Comparable<T>> void a(dkj<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
+   private <T extends Comparable<T>> void a(dkk<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
       Optional<T> $$3 = $$0.b($$1);
       if ($$3.isPresent()) {
          this.x = this.x.a($$0, $$3.get());
@@ -464,14 +464,14 @@ public class fk {
       }
    }
 
-   public static String a(djg $$0) {
+   public static String a(djh $$0) {
       StringBuilder $$1 = new StringBuilder($$0.c().e().map($$0x -> $$0x.a().toString()).orElse("air"));
       if (!$$0.B().isEmpty()) {
          $$1.append('[');
          boolean $$2 = false;
 
          for (UnmodifiableIterator var3 = $$0.C().entrySet().iterator(); var3.hasNext(); $$2 = true) {
-            Entry<dkj<?>, Comparable<?>> $$3 = (Entry<dkj<?>, Comparable<?>>)var3.next();
+            Entry<dkk<?>, Comparable<?>> $$3 = (Entry<dkk<?>, Comparable<?>>)var3.next();
             if ($$2) {
                $$1.append(',');
             }
@@ -485,15 +485,15 @@ public class fk {
       return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> void a(StringBuilder $$0, dkj<T> $$1, Comparable<?> $$2) {
+   private static <T extends Comparable<T>> void a(StringBuilder $$0, dkk<T> $$1, Comparable<?> $$2) {
       $$0.append($$1.f());
       $$0.append('=');
       $$0.append($$1.a((T)$$2));
    }
 
-   public static record a(djg a, Map<dkj<?>, Comparable<?>> b, @Nullable sn c) {
+   public static record a(djh a, Map<dkk<?>, Comparable<?>> b, @Nullable sn c) {
    }
 
-   public static record b(il<cwp> a, Map<String, String> b, @Nullable sn c) {
+   public static record b(il<cwq> a, Map<String, String> b, @Nullable sn c) {
    }
 }

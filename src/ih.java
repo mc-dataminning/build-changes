@@ -17,9 +17,9 @@ public interface ih<T> {
 
    boolean a(Predicate<ahf<T>> var1);
 
-   boolean a(asv<T> var1);
+   boolean a(asw<T> var1);
 
-   Stream<asv<T>> c();
+   Stream<asw<T>> c();
 
    Either<ahf<T>, T> d();
 
@@ -50,7 +50,7 @@ public interface ih<T> {
       }
 
       @Override
-      public boolean a(asv<T> $$0) {
+      public boolean a(asw<T> $$0) {
          return false;
       }
 
@@ -85,7 +85,7 @@ public interface ih<T> {
       }
 
       @Override
-      public Stream<asv<T>> c() {
+      public Stream<asw<T>> c() {
          return Stream.of();
       }
    }
@@ -97,7 +97,7 @@ public interface ih<T> {
 
    public static class c<T> implements ih<T> {
       private final ik<T> a;
-      private Set<asv<T>> b = Set.of();
+      private Set<asw<T>> b = Set.of();
       private final ih.c.a c;
       @Nullable
       private ahf<T> d;
@@ -148,7 +148,7 @@ public interface ih<T> {
       }
 
       @Override
-      public boolean a(asv<T> $$0) {
+      public boolean a(asw<T> $$0) {
          return this.b.contains($$0);
       }
 
@@ -198,12 +198,12 @@ public interface ih<T> {
          }
       }
 
-      void a(Collection<asv<T>> $$0) {
+      void a(Collection<asw<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<asv<T>> c() {
+      public Stream<asw<T>> c() {
          return this.b.stream();
       }
 

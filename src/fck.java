@@ -1,103 +1,118 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class fck extends fct {
+   private static final vf c = vf.c("options.languageAccuracyWarning").a(n.h);
+   private fck.a k;
+   final gfu l;
 
-public class fck extends fda {
-   private static final long a = 2000L;
-   private final anq b;
-   private long c = -1L;
-   private boolean k;
-   private static final Object2IntMap<dlh> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dlh.c, 5526612);
-      $$0.put(dlh.d, 10066329);
-      $$0.put(dlh.e, 6250897);
-      $$0.put(dlh.f, 8434258);
-      $$0.put(dlh.g, 13750737);
-      $$0.put(dlh.h, 7497737);
-      $$0.put(dlh.i, 3159410);
-      $$0.put(dlh.j, 2213376);
-      $$0.put(dlh.k, 13421772);
-      $$0.put(dlh.l, 16769184);
-      $$0.put(dlh.m, 15884384);
-      $$0.put(dlh.n, 16777215);
-   });
-
-   public fck(anq $$0) {
-      super(euz.a);
-      this.b = $$0;
+   public fck(fdb $$0, evm $$1, gfu $$2) {
+      super($$0, $$1, vf.c("options.language.title"));
+      this.l = $$2;
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   protected void aN_() {
+      this.k = this.d(new fck.a(this.f));
+      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(exg.a(ve.d, $$0 -> this.n()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
    }
 
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void j() {
-      this.k = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fay $$0) {
-      if (this.k) {
-         $$0.a(fax.a, vf.c("narrator.loading.done"));
-      } else {
-         $$0.a(fax.a, this.n());
+   void n() {
+      fck.a.a $$0 = this.k.i();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ad = $$0.b;
+         this.f.k();
+         this.b.as();
       }
-   }
 
-   private vf n() {
-      return vf.a("loading.progress", aun.a(this.b.e(), 0, 100));
+      this.f.a(this.a);
    }
 
    @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fbe.a($$0)) {
+         fck.a.a $$3 = this.k.i();
+         if ($$3 != null) {
+            $$3.b();
+            this.n();
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.g / 2;
-      int $$6 = this.h / 2;
-      int $$7 = 30;
-      a($$0, this.b, $$5, $$6 + 30, 2, 0);
-      $$0.a(this.i, this.n(), $$5, $$6 - 9 / 2 - 30, 16777215);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
    }
 
-   public static void a(ewt $$0, anq $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.c();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.d();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   @Override
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends eyc<fck.a.a> {
+      public a(evi $$0) {
+         super($$0, fck.this.g, fck.this.h - 93, 32, 18);
+         String $$1 = fck.this.l.a();
+         fck.this.l.b().forEach(($$1x, $$2) -> {
+            fck.a.a $$3 = new fck.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.i() != null) {
+            this.e(this.i());
+         }
+      }
+
+      @Override
+      protected int c() {
+         return super.c() + 20;
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends eyc.a<fck.a.a> {
+         final String b;
+         private final vf c;
+         private long d;
+
+         public a(String $$1, gft $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
          }
 
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dlh $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
-            }
+         @Override
+         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fck.this.i, this.c, a.this.g / 2, $$2 + 1, 16777215);
          }
-      });
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.b() - this.d < 250L) {
+               fck.this.n();
+            }
+
+            this.d = ac.b();
+            return true;
+         }
+
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public vf a() {
+            return vf.a("narrator.select", this.c);
+         }
+      }
    }
 }

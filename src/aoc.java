@@ -10,7 +10,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.net.SocketAddress;
-import java.time.Instant;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
@@ -32,7 +30,7 @@ import org.slf4j.Logger;
 
 public class aoc extends anz implements adj, aof, uu {
    static final Logger g = LogUtils.getLogger();
-   public static final double d = aun.k(6.0);
+   public static final double d = auo.k(6.0);
    private static final int h = -1;
    private static final int i = 4096;
    private static final vf j = vf.c("multiplayer.disconnect.chat_validation_failed");
@@ -49,7 +47,7 @@ public class aoc extends anz implements adj, aof, uu {
    private double s;
    private double t;
    @Nullable
-   private blu u;
+   private blv u;
    private double v;
    private double w;
    private double x;
@@ -57,7 +55,7 @@ public class aoc extends anz implements adj, aof, uu {
    private double z;
    private double A;
    @Nullable
-   private els B;
+   private elt B;
    private int C;
    private int D;
    private boolean E;
@@ -66,14 +64,13 @@ public class aoc extends anz implements adj, aof, uu {
    private int H;
    private int I;
    private int J;
-   private final AtomicReference<Instant> K = new AtomicReference<>(Instant.EPOCH);
    @Nullable
-   private vw L;
-   private vz.b M;
-   private final vo N = new vo(20);
-   private final vs O = vs.a();
-   private final aub P;
-   private boolean Q;
+   private vw K;
+   private vz.b L;
+   private final vo M = new vo(20);
+   private final vs N = vs.a();
+   private final auc O;
+   private boolean P;
 
    public aoc(MinecraftServer $$0, ug $$1, ane $$2, ans $$3) {
       super($$0, $$1, $$3);
@@ -82,8 +79,8 @@ public class aoc extends anz implements adj, aof, uu {
       this.e = $$2;
       $$2.c = this;
       $$2.X().a();
-      this.M = $$0.ay() ? vz.b.a : vz.b.unsigned($$2.cw());
-      this.P = new aub($$0);
+      this.L = vz.b.unsigned($$2.cw(), $$0::ay);
+      this.O = new auc($$0);
    }
 
    @Override
@@ -161,12 +158,12 @@ public class aoc extends anz implements adj, aof, uu {
 
    @Override
    public boolean c() {
-      return this.c.k() && !this.Q;
+      return this.c.k() && !this.P;
    }
 
    @Override
    public boolean a(xf<?> $$0) {
-      return super.a($$0) ? true : this.Q && this.c.k() && $$0 instanceof adw;
+      return super.a($$0) ? true : this.P && this.c.k() && $$0 instanceof adw;
    }
 
    @Override
@@ -204,11 +201,11 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    private static double a(double $$0) {
-      return aun.a($$0, -3.0E7, 3.0E7);
+      return auo.a($$0, -3.0E7, 3.0E7);
    }
 
    private static double b(double $$0) {
-      return aun.a($$0, -2.0E7, 2.0E7);
+      return auo.a($$0, -2.0E7, 2.0E7);
    }
 
    @Override
@@ -217,7 +214,7 @@ public class aoc extends anz implements adj, aof, uu {
       if (b($$0.a(), $$0.d(), $$0.e(), $$0.f(), $$0.g())) {
          this.b(vf.c("multiplayer.disconnect.invalid_vehicle_movement"));
       } else {
-         blu $$1 = this.e.cW();
+         blv $$1 = this.e.cW();
          if ($$1 != this.e && $$1.cN() == this.e && $$1 == this.u) {
             and $$2 = this.e.z();
             double $$3 = $$1.dr();
@@ -226,8 +223,8 @@ public class aoc extends anz implements adj, aof, uu {
             double $$6 = a($$0.a());
             double $$7 = b($$0.d());
             double $$8 = a($$0.e());
-            float $$9 = aun.g($$0.f());
-            float $$10 = aun.g($$0.g());
+            float $$9 = auo.g($$0.f());
+            float $$10 = auo.g($$0.g());
             double $$11 = $$6 - this.v;
             double $$12 = $$7 - this.w;
             double $$13 = $$8 - this.x;
@@ -244,11 +241,11 @@ public class aoc extends anz implements adj, aof, uu {
             $$12 = $$7 - this.z - 1.0E-6;
             $$13 = $$8 - this.A;
             boolean $$17 = $$1.R;
-            if ($$1 instanceof bmk $$18 && $$18.e_()) {
+            if ($$1 instanceof bml $$18 && $$18.e_()) {
                $$18.n();
             }
 
-            $$1.a(bmq.b, new els($$11, $$12, $$13));
+            $$1.a(bmr.b, new elt($$11, $$12, $$13));
             $$11 = $$6 - $$1.dr();
             $$12 = $$7 - $$1.dt();
             if ($$12 > -0.5 || $$12 < 0.5) {
@@ -281,8 +278,8 @@ public class aoc extends anz implements adj, aof, uu {
       }
    }
 
-   private boolean a(blu $$0) {
-      return $$0.dM().a($$0.cH().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(djf.a::i);
+   private boolean a(blv $$0) {
+      return $$0.dM().a($$0.cH().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(djg.a::i);
    }
 
    @Override
@@ -350,27 +347,27 @@ public class aoc extends anz implements adj, aof, uu {
       } else if (!this.e.gp()) {
          this.e.a(vf.c("advMode.notAllowed"));
       } else {
-         csp $$1 = null;
-         dhe $$2 = null;
+         csq $$1 = null;
+         dhf $$2 = null;
          hx $$3 = $$0.a();
-         dgu $$4 = this.e.dM().c_($$3);
-         if ($$4 instanceof dhe) {
-            $$2 = (dhe)$$4;
+         dgv $$4 = this.e.dM().c_($$3);
+         if ($$4 instanceof dhf) {
+            $$2 = (dhf)$$4;
             $$1 = $$2.c();
          }
 
          String $$5 = $$0.d();
          boolean $$6 = $$0.e();
          if ($$1 != null) {
-            dhe.a $$7 = $$2.m();
-            djg $$8 = this.e.dM().a_($$3);
-            ic $$9 = $$8.c(cxy.b);
+            dhf.a $$7 = $$2.m();
+            djh $$8 = this.e.dM().a_($$3);
+            ic $$9 = $$8.c(cxz.b);
 
-            djg $$13 = (switch ($$0.h()) {
-               case a -> cwr.kH.o();
-               case b -> cwr.kG.o();
-               default -> cwr.fN.o();
-            }).a(cxy.b, $$9).a(cxy.c, Boolean.valueOf($$0.f()));
+            djh $$13 = (switch ($$0.h()) {
+               case a -> cws.kH.o();
+               case b -> cws.kG.o();
+               default -> cws.fN.o();
+            }).a(cxz.b, $$9).a(cxz.c, Boolean.valueOf($$0.f()));
             if ($$13 != $$8) {
                this.e.dM().a($$3, $$13, 2);
                $$4.b($$13);
@@ -389,7 +386,7 @@ public class aoc extends anz implements adj, aof, uu {
             }
 
             $$1.f();
-            if (!avk.b($$5)) {
+            if (!avl.b($$5)) {
                this.e.a(vf.a("advMode.setCommand.success", $$5));
             }
          }
@@ -404,7 +401,7 @@ public class aoc extends anz implements adj, aof, uu {
       } else if (!this.e.gp()) {
          this.e.a(vf.c("advMode.notAllowed"));
       } else {
-         csp $$1 = $$0.a(this.e.dM());
+         csq $$1 = $$0.a(this.e.dM());
          if ($$1 != null) {
             $$1.a($$0.a());
             $$1.a($$0.d());
@@ -430,7 +427,7 @@ public class aoc extends anz implements adj, aof, uu {
    @Override
    public void a(aer $$0) {
       xh.a($$0, this, this.e.z());
-      if (this.e.bS instanceof cic $$1) {
+      if (this.e.bS instanceof cid $$1) {
          if (!$$1.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$1);
             return;
@@ -443,7 +440,7 @@ public class aoc extends anz implements adj, aof, uu {
    @Override
    public void a(aeu $$0) {
       xh.a($$0, this, this.e.z());
-      if (this.e.bS instanceof cid $$1) {
+      if (this.e.bS instanceof cie $$1) {
          if (!this.e.bS.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bS);
             return;
@@ -458,8 +455,8 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       if (this.e.gp()) {
          hx $$1 = $$0.a();
-         djg $$2 = this.e.dM().a_($$1);
-         if (this.e.dM().c_($$1) instanceof dii $$4) {
+         djh $$2 = this.e.dM().a_($$1);
+         if (this.e.dM().c_($$1) instanceof dij $$4) {
             $$4.a($$0.e());
             $$4.a($$0.f());
             $$4.a($$0.g());
@@ -474,13 +471,13 @@ public class aoc extends anz implements adj, aof, uu {
             $$4.a($$0.p());
             if ($$4.f()) {
                String $$5 = $$4.d();
-               if ($$0.d() == dii.a.b) {
+               if ($$0.d() == dij.a.b) {
                   if ($$4.C()) {
                      this.e.a(vf.a("structure_block.save_success", $$5), false);
                   } else {
                      this.e.a(vf.a("structure_block.save_failure", $$5), false);
                   }
-               } else if ($$0.d() == dii.a.c) {
+               } else if ($$0.d() == dij.a.c) {
                   if (!$$4.E()) {
                      this.e.a(vf.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.e.z())) {
@@ -488,7 +485,7 @@ public class aoc extends anz implements adj, aof, uu {
                   } else {
                      this.e.a(vf.a("structure_block.load_prepare", $$5), false);
                   }
-               } else if ($$0.d() == dii.a.d) {
+               } else if ($$0.d() == dij.a.d) {
                   if ($$4.B()) {
                      this.e.a(vf.a("structure_block.size_success", $$5), false);
                   } else {
@@ -510,8 +507,8 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       if (this.e.gp()) {
          hx $$1 = $$0.a();
-         djg $$2 = this.e.dM().a_($$1);
-         if (this.e.dM().c_($$1) instanceof dhu $$4) {
+         djh $$2 = this.e.dM().a_($$1);
+         if (this.e.dM().c_($$1) instanceof dhv $$4) {
             $$4.a($$0.d());
             $$4.b($$0.e());
             $$4.a(ahf.a(ke.aG, $$0.f()));
@@ -530,7 +527,7 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       if (this.e.gp()) {
          hx $$1 = $$0.a();
-         if (this.e.dM().c_($$1) instanceof dhu $$3) {
+         if (this.e.dM().c_($$1) instanceof dhv $$3) {
             $$3.a(this.e.z(), $$0.d(), $$0.e());
          }
       }
@@ -540,7 +537,7 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(aet $$0) {
       xh.a($$0, this, this.e.z());
       int $$1 = $$0.a();
-      if (this.e.bS instanceof cjj $$2) {
+      if (this.e.bS instanceof cjk $$2) {
          if (!$$2.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$2);
             return;
@@ -554,7 +551,7 @@ public class aoc extends anz implements adj, aof, uu {
    @Override
    public void a(aeb $$0) {
       int $$1 = $$0.e();
-      if (cfg.d($$1) || $$1 == 40) {
+      if (cfh.d($$1) || $$1 == 40) {
          List<String> $$2 = Lists.newArrayList();
          Optional<String> $$3 = $$0.d();
          $$3.ifPresent($$2::add);
@@ -565,16 +562,16 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    private void a(List<anu> $$0, int $$1) {
-      cmx $$2 = this.e.fS().a($$1);
-      if ($$2.a(cna.tT)) {
+      cmy $$2 = this.e.fS().a($$1);
+      if ($$2.a(cnb.tT)) {
          this.a($$0, UnaryOperator.identity(), $$2);
       }
    }
 
    private void a(anu $$0, List<anu> $$1, int $$2) {
-      cmx $$3 = this.e.fS().a($$2);
-      if ($$3.a(cna.tT)) {
-         cmx $$4 = new cmx(cna.tU);
+      cmy $$3 = this.e.fS().a($$2);
+      if ($$3.a(cnb.tT)) {
+         cmy $$4 = new cmy(cnb.tU);
          sn $$5 = $$3.v();
          if ($$5 != null) {
             $$4.c($$5.h());
@@ -593,7 +590,7 @@ public class aoc extends anz implements adj, aof, uu {
       }
    }
 
-   private void a(List<anu> $$0, UnaryOperator<String> $$1, cmx $$2) {
+   private void a(List<anu> $$0, UnaryOperator<String> $$1, cmy $$2) {
       st $$3 = new st();
       if (this.e.Y()) {
          $$0.stream().map($$1x -> ti.a($$1.apply($$1x.b()))).forEach($$3::add);
@@ -622,7 +619,7 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(aec $$0) {
       xh.a($$0, this, this.e.z());
       if (this.e.l(2)) {
-         blu $$1 = this.e.dM().a($$0.d());
+         blv $$1 = this.e.dM().a($$0.d());
          if ($$1 != null) {
             sn $$2 = $$1.f(new sn());
             this.e.c.b(new acx($$0.a(), $$2));
@@ -634,7 +631,7 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(aea $$0) {
       xh.a($$0, this, this.e.z());
       if (!this.e.P_() && $$0.d() == this.e.bS.j) {
-         if (this.e.bS instanceof cio $$1 && $$1.m() instanceof dhi $$2) {
+         if (this.e.bS instanceof cip $$1 && $$1.m() instanceof dhj $$2) {
             $$2.a($$0.a(), $$0.e());
          }
       }
@@ -644,7 +641,7 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(adn $$0) {
       xh.a($$0, this, this.e.z());
       if (this.e.l(2)) {
-         dgu $$1 = this.e.dM().c_($$0.d());
+         dgv $$1 = this.e.dM().c_($$0.d());
          sn $$2 = $$1 != null ? $$1.q() : null;
          this.e.c.b(new acx($$0.a(), $$2));
       }
@@ -672,8 +669,8 @@ public class aoc extends anz implements adj, aof, uu {
                double $$2 = a($$0.a(this.e.dr()));
                double $$3 = b($$0.b(this.e.dt()));
                double $$4 = a($$0.c(this.e.dx()));
-               float $$5 = aun.g($$0.a(this.e.dC()));
-               float $$6 = aun.g($$0.b(this.e.dE()));
+               float $$5 = auo.g($$0.a(this.e.dC()));
+               float $$6 = auo.g($$0.b(this.e.dE()));
                if (this.e.bO()) {
                   this.e.a(this.e.dr(), this.e.dt(), this.e.dx(), $$5, $$6);
                   this.e.z().l().a(this.e);
@@ -699,7 +696,7 @@ public class aoc extends anz implements adj, aof, uu {
                            $$15 = 1;
                         }
 
-                        if (!this.e.O() && (!this.e.dM().Z().b(ctk.t) || !this.e.fw())) {
+                        if (!this.e.O() && (!this.e.dM().Z().b(ctl.t) || !this.e.fw())) {
                            float $$16 = this.e.fw() ? 300.0F : 100.0F;
                            if ($$14 - $$13 > (double)($$16 * (float)$$15) && !this.i()) {
                               g.warn("{} moved too quickly! {},{},{}", new Object[]{this.e.ad().getString(), $$10, $$11, $$12});
@@ -709,7 +706,7 @@ public class aoc extends anz implements adj, aof, uu {
                         }
                      }
 
-                     eln $$17 = this.e.cH();
+                     elo $$17 = this.e.cH();
                      $$10 = $$2 - this.r;
                      $$11 = $$3 - this.s;
                      $$12 = $$4 - this.t;
@@ -719,7 +716,7 @@ public class aoc extends anz implements adj, aof, uu {
                      }
 
                      boolean $$19 = this.e.R;
-                     this.e.a(bmq.b, new els($$10, $$11, $$12));
+                     this.e.a(bmr.b, new elt($$10, $$11, $$12));
                      $$10 = $$2 - this.e.dr();
                      $$11 = $$3 - this.e.dt();
                      if ($$11 > -0.5 || $$11 < 0.5) {
@@ -729,7 +726,7 @@ public class aoc extends anz implements adj, aof, uu {
                      $$12 = $$4 - this.e.dx();
                      $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                      boolean $$21 = false;
-                     if (!this.e.O() && $$14 > 0.0625 && !this.e.fD() && !this.e.e.e() && this.e.e.b() != ctl.d) {
+                     if (!this.e.O() && $$14 > 0.0625 && !this.e.fD() && !this.e.e.e() && this.e.e.b() != ctm.d) {
                         $$21 = true;
                         g.warn("{} moved wrongly!", this.e.ad().getString());
                      }
@@ -738,16 +735,16 @@ public class aoc extends anz implements adj, aof, uu {
                         this.e.a($$2, $$3, $$4, $$5, $$6);
                         this.E = $$11 >= -0.03125
                            && !$$19
-                           && this.e.e.b() != ctl.d
+                           && this.e.e.b() != ctm.d
                            && !this.b.ab()
                            && !this.e.fT().c
-                           && !this.e.a(blj.y)
+                           && !this.e.a(blk.y)
                            && !this.e.fw()
                            && !this.e.fj()
-                           && this.a((blu)this.e);
+                           && this.a((blv)this.e);
                         this.e.z().l().a(this.e);
                         this.e.a(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9, $$0.a());
-                        this.e.a($$0.a(), new els(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9));
+                        this.e.a($$0.a(), new elt(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9));
                         if ($$18) {
                            this.e.n();
                         }
@@ -767,13 +764,13 @@ public class aoc extends anz implements adj, aof, uu {
       }
    }
 
-   private boolean a(ctr $$0, eln $$1, double $$2, double $$3, double $$4) {
-      eln $$5 = this.e.cH().d($$2 - this.e.dr(), $$3 - this.e.dt(), $$4 - this.e.dx());
-      Iterable<eml> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
-      eml $$7 = emi.a($$1.h(1.0E-5F));
+   private boolean a(cts $$0, elo $$1, double $$2, double $$3, double $$4) {
+      elo $$5 = this.e.cH().d($$2 - this.e.dr(), $$3 - this.e.dt(), $$4 - this.e.dx());
+      Iterable<emm> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
+      emm $$7 = emj.a($$1.h(1.0E-5F));
 
-      for (eml $$8 : $$6) {
-         if (!emi.c($$8, $$7, elw.i)) {
+      for (emm $$8 : $$6) {
+         if (!emj.c($$8, $$7, elx.i)) {
             return true;
          }
       }
@@ -785,13 +782,13 @@ public class aoc extends anz implements adj, aof, uu {
       this.a($$0, $$1, $$2, $$3, $$4, Collections.emptySet());
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bmy> $$5) {
-      double $$6 = $$5.contains(bmy.a) ? this.e.dr() : 0.0;
-      double $$7 = $$5.contains(bmy.b) ? this.e.dt() : 0.0;
-      double $$8 = $$5.contains(bmy.c) ? this.e.dx() : 0.0;
-      float $$9 = $$5.contains(bmy.d) ? this.e.dC() : 0.0F;
-      float $$10 = $$5.contains(bmy.e) ? this.e.dE() : 0.0F;
-      this.B = new els($$0, $$1, $$2);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bmz> $$5) {
+      double $$6 = $$5.contains(bmz.a) ? this.e.dr() : 0.0;
+      double $$7 = $$5.contains(bmz.b) ? this.e.dt() : 0.0;
+      double $$8 = $$5.contains(bmz.c) ? this.e.dx() : 0.0;
+      float $$9 = $$5.contains(bmz.d) ? this.e.dC() : 0.0F;
+      float $$10 = $$5.contains(bmz.e) ? this.e.dE() : 0.0F;
+      this.B = new elt($$0, $$1, $$2);
       if (++this.C == Integer.MAX_VALUE) {
          this.C = 0;
       }
@@ -810,9 +807,9 @@ public class aoc extends anz implements adj, aof, uu {
       switch ($$2) {
          case g:
             if (!this.e.P_()) {
-               cmx $$3 = this.e.b(bjz.b);
-               this.e.a(bjz.b, this.e.b(bjz.a));
-               this.e.a(bjz.a, $$3);
+               cmy $$3 = this.e.b(bka.b);
+               this.e.a(bka.b, this.e.b(bka.a));
+               this.e.a(bka.a, $$3);
                this.e.ft();
             }
 
@@ -843,12 +840,12 @@ public class aoc extends anz implements adj, aof, uu {
       }
    }
 
-   private static boolean a(ane $$0, cmx $$1) {
+   private static boolean a(ane $$0, cmy $$1) {
       if ($$1.b()) {
          return false;
       } else {
-         cms $$2 = $$1.d();
-         return ($$2 instanceof ckq || $$2 instanceof cky) && !$$0.gn().a($$2);
+         cmt $$2 = $$1.d();
+         return ($$2 instanceof ckr || $$2 instanceof ckz) && !$$0.gn().a($$2);
       }
    }
 
@@ -857,15 +854,15 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       this.e.c.a($$0.e());
       and $$1 = this.e.z();
-      bjz $$2 = $$0.a();
-      cmx $$3 = this.e.b($$2);
+      bka $$2 = $$0.a();
+      cmy $$3 = this.e.b($$2);
       if ($$3.a($$1.I())) {
-         elo $$4 = $$0.d();
-         els $$5 = $$4.e();
+         elp $$4 = $$0.d();
+         elt $$5 = $$4.e();
          hx $$6 = $$4.a();
-         els $$7 = els.b($$6);
+         elt $$7 = elt.b($$6);
          if (!(this.e.br().g($$7) > d)) {
-            els $$8 = $$5.d($$7);
+            elt $$8 = $$5.d($$7);
             double $$9 = 1.0000001;
             if (Math.abs($$8.a()) < 1.0000001 && Math.abs($$8.b()) < 1.0000001 && Math.abs($$8.c()) < 1.0000001) {
                ic $$10 = $$4.b();
@@ -873,7 +870,7 @@ public class aoc extends anz implements adj, aof, uu {
                int $$11 = this.e.dM().al();
                if ($$6.v() < $$11) {
                   if (this.B == null && this.e.i((double)$$6.u() + 0.5, (double)$$6.v() + 0.5, (double)$$6.w() + 0.5) < 64.0 && $$1.a(this.e, $$6)) {
-                     bka $$12 = this.e.e.a(this.e, $$1, $$3, $$2, $$4);
+                     bkb $$12 = this.e.e.a(this.e, $$1, $$3, $$2, $$4);
                      if ($$10 == ic.b && !$$12.a() && $$6.v() >= $$11 - 1 && a(this.e, $$3)) {
                         vf $$13 = vf.a("build.tooHigh", $$11 - 1).a(n.m);
                         this.e.b($$13, true);
@@ -900,11 +897,11 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       this.a($$0.d());
       and $$1 = this.e.z();
-      bjz $$2 = $$0.a();
-      cmx $$3 = this.e.b($$2);
+      bka $$2 = $$0.a();
+      cmy $$3 = this.e.b($$2);
       this.e.G();
       if (!$$3.b() && $$3.a($$1.I())) {
-         bka $$4 = this.e.e.a(this.e, $$1, $$3, $$2);
+         bkb $$4 = this.e.e.a(this.e, $$1, $$3, $$2);
          if ($$4.b()) {
             this.e.a($$2, true);
          }
@@ -916,7 +913,7 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       if (this.e.P_()) {
          for (and $$1 : this.b.H()) {
-            blu $$2 = $$0.a($$1);
+            blv $$2 = $$0.a($$1);
             if ($$2 != null) {
                this.e.a($$1, $$2.dr(), $$2.dt(), $$2.dx(), $$2.dC(), $$2.dE());
                return;
@@ -928,7 +925,7 @@ public class aoc extends anz implements adj, aof, uu {
    @Override
    public void a(aei $$0) {
       xh.a($$0, this, this.e.z());
-      if (this.e.da() instanceof chb $$2) {
+      if (this.e.da() instanceof chc $$2) {
          $$2.a($$0.a(), $$0.d());
       }
    }
@@ -941,7 +938,7 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    private void q() {
-      this.P.close();
+      this.O.close();
       this.b.at();
       this.b.ae().a(vf.a("multiplayer.player.left", this.e.Q_()).a(n.o), false);
       this.e.u();
@@ -960,8 +957,8 @@ public class aoc extends anz implements adj, aof, uu {
    @Override
    public void a(aev $$0) {
       xh.a($$0, this, this.e.z());
-      if ($$0.a() >= 0 && $$0.a() < cfg.g()) {
-         if (this.e.fS().l != $$0.a() && this.e.fo() == bjz.a) {
+      if ($$0.a() >= 0 && $$0.a() < cfh.g()) {
+         if (this.e.fS().l != $$0.a() && this.e.fo() == bka.a) {
             this.e.ft();
          }
 
@@ -977,7 +974,7 @@ public class aoc extends anz implements adj, aof, uu {
       if (c($$0.a())) {
          this.b(vf.c("multiplayer.disconnect.illegal_characters"));
       } else {
-         Optional<vm> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
+         Optional<vm> $$1 = this.a($$0.g());
          if ($$1.isPresent()) {
             this.b.g(() -> {
                vv $$2;
@@ -988,9 +985,9 @@ public class aoc extends anz implements adj, aof, uu {
                   return;
                }
 
-               CompletableFuture<anu> $$5 = this.a($$2.b());
-               vf $$6 = this.b.bi().decorate(this.e, $$2.c());
-               this.P.append($$5, $$2x -> {
+               CompletableFuture<anu> $$5 = this.a($$2.c());
+               vf $$6 = this.b.bi().decorate(this.e, $$2.d());
+               this.O.append($$5, $$2x -> {
                   vv $$3 = $$2.a($$6).a($$2x.e());
                   this.b($$3);
                });
@@ -1004,7 +1001,7 @@ public class aoc extends anz implements adj, aof, uu {
       if (c($$0.a())) {
          this.b(vf.c("multiplayer.disconnect.illegal_characters"));
       } else {
-         Optional<vm> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
+         Optional<vm> $$1 = this.a($$0.g());
          if ($$1.isPresent()) {
             this.b.g(() -> {
                this.a($$0, $$1.get());
@@ -1026,11 +1023,12 @@ public class aoc extends anz implements adj, aof, uu {
       }
 
       dq $$6 = new dq.a($$3);
-      $$2 = dt.a($$2, $$1x -> $$1x.a($$6, this.P));
+      $$2 = dt.a($$2, $$1x -> $$1x.a($$6, this.O));
       this.b.aE().a($$2, $$0.a());
    }
 
    private void a(vz.a $$0) {
+      g.warn("Failed to update secure chat state for {}: '{}'", this.e.fR().getName(), $$0.b().getString());
       if ($$0.a()) {
          this.b($$0.b());
       } else {
@@ -1044,7 +1042,7 @@ public class aoc extends anz implements adj, aof, uu {
       for (vx.a<?> $$4 : $$1.a()) {
          vr $$5 = $$0.f().a($$4.a());
          vy $$6 = new vy($$4.c(), $$0.d(), $$0.e(), $$2);
-         $$3.put($$4.a(), this.M.unpack($$5, $$6));
+         $$3.put($$4.a(), this.L.unpack($$5, $$6));
       }
 
       return $$3;
@@ -1055,26 +1053,20 @@ public class aoc extends anz implements adj, aof, uu {
       return $$1.parse($$0, this.e.dd());
    }
 
-   private Optional<vm> a(String $$0, Instant $$1, vm.b $$2) {
-      if (!this.a($$1)) {
-         g.warn("{} sent out-of-order chat: '{}'", this.e.ad().getString(), $$0);
-         this.b(vf.c("multiplayer.disconnect.out_of_order_chat"));
+   private Optional<vm> a(vm.b $$0) {
+      Optional<vm> $$1 = this.b($$0);
+      if (this.e.D() == cfg.c) {
+         this.b(new acv(vf.c("chat.disabled.options").a(n.m), false));
          return Optional.empty();
       } else {
-         Optional<vm> $$3 = this.a($$2);
-         if (this.e.D() == cff.c) {
-            this.b(new acv(vf.c("chat.disabled.options").a(n.m), false));
-            return Optional.empty();
-         } else {
-            this.e.G();
-            return $$3;
-         }
+         this.e.G();
+         return $$1;
       }
    }
 
-   private Optional<vm> a(vm.b $$0) {
-      synchronized (this.N) {
-         Optional<vm> $$1 = this.N.a($$0);
+   private Optional<vm> b(vm.b $$0) {
+      synchronized (this.M) {
+         Optional<vm> $$1 = this.M.a($$0);
          if ($$1.isEmpty()) {
             g.warn("Failed to validate message acknowledgements from {}", this.e.ad().getString());
             this.b(j);
@@ -1082,18 +1074,6 @@ public class aoc extends anz implements adj, aof, uu {
 
          return $$1;
       }
-   }
-
-   private boolean a(Instant $$0) {
-      Instant $$1;
-      do {
-         $$1 = this.K.get();
-         if ($$0.isBefore($$1)) {
-            return false;
-         }
-      } while (!this.K.compareAndSet($$1, $$0));
-
-      return true;
    }
 
    private static boolean c(String $$0) {
@@ -1108,7 +1088,7 @@ public class aoc extends anz implements adj, aof, uu {
 
    private vv a(adr $$0, vm $$1) throws vz.a {
       vy $$2 = new vy($$0.a(), $$0.d(), $$0.e(), $$1);
-      return this.M.unpack($$0.f(), $$2);
+      return this.L.unpack($$0.f(), $$2);
    }
 
    private void b(vv $$0) {
@@ -1125,8 +1105,8 @@ public class aoc extends anz implements adj, aof, uu {
 
    @Override
    public void a(adp $$0) {
-      synchronized (this.N) {
-         if (!this.N.a($$0.a())) {
+      synchronized (this.M) {
+         if (!this.M.a($$0.a())) {
             g.warn("Failed to validate message acknowledgements from {}", this.e.ad().getString());
             this.b(j);
          }
@@ -1164,7 +1144,7 @@ public class aoc extends anz implements adj, aof, uu {
             }
             break;
          case f:
-            if (this.e.da() instanceof bmv $$1) {
+            if (this.e.da() instanceof bmw $$1) {
                int $$2 = $$0.e();
                if ($$1.a() && $$2 > 0) {
                   $$1.c($$2);
@@ -1172,12 +1152,12 @@ public class aoc extends anz implements adj, aof, uu {
             }
             break;
          case g:
-            if (this.e.da() instanceof bmv $$3) {
+            if (this.e.da() instanceof bmw $$3) {
                $$3.b();
             }
             break;
          case h:
-            if (this.e.cZ() instanceof bmd $$4) {
+            if (this.e.cZ() instanceof bme $$4) {
                $$4.b(this.e);
             }
             break;
@@ -1192,13 +1172,13 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    public void a(vv $$0) {
-      vr $$1 = $$0.k();
+      vr $$1 = $$0.l();
       if ($$1 != null) {
-         this.O.a($$0);
+         this.N.a($$0.m(), $$0.l());
          int $$2;
-         synchronized (this.N) {
-            this.N.a($$1);
-            $$2 = this.N.a();
+         synchronized (this.M) {
+            this.M.a($$1);
+            $$2 = this.M.a();
          }
 
          if ($$2 > 4096) {
@@ -1208,7 +1188,7 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    public void a(vv $$0, vb.a $$1) {
-      this.b(new aaz($$0.j().c(), $$0.j().b(), $$0.k(), $$0.l().a(this.O), $$0.m(), $$0.n(), $$1.a(this.e.dM().I_())));
+      this.b(new aaz($$0.k().c(), $$0.k().b(), $$0.l(), $$0.m().a(this.N), $$0.n(), $$0.o(), $$1.a(this.e.dM().I_())));
       this.a($$0);
    }
 
@@ -1221,7 +1201,7 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    public void o() {
-      this.Q = true;
+      this.P = true;
       this.q();
       this.b(new act());
    }
@@ -1235,7 +1215,7 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(aed $$0) {
       xh.a($$0, this, this.e.z());
       final and $$1 = this.e.z();
-      final blu $$2 = $$0.a($$1);
+      final blv $$2 = $$0.a($$1);
       this.e.G();
       this.e.f($$0.a());
       if ($$2 != null) {
@@ -1243,14 +1223,14 @@ public class aoc extends anz implements adj, aof, uu {
             return;
          }
 
-         eln $$3 = $$2.cH();
+         elo $$3 = $$2.cH();
          if ($$3.e(this.e.br()) < d) {
             $$0.a(new aed.c() {
-               private void a(bjz $$0, aoc.a $$1x) {
-                  cmx $$2 = aoc.this.e.b($$0);
+               private void a(bka $$0, aoc.a $$1x) {
+                  cmy $$2 = aoc.this.e.b($$0);
                   if ($$2.a($$1.I())) {
-                     cmx $$3 = $$2.p();
-                     bka $$4 = $$1.run(aoc.this.e, $$2, $$0);
+                     cmy $$3 = $$2.p();
+                     bkb $$4 = $$1.run(aoc.this.e, $$2, $$0);
                      if ($$4.a()) {
                         am.R.a(aoc.this.e, $$3, $$2);
                         if ($$4.b()) {
@@ -1261,19 +1241,19 @@ public class aoc extends anz implements adj, aof, uu {
                }
 
                @Override
-               public void a(bjz $$0) {
-                  this.a($$0, cfh::a);
+               public void a(bka $$0) {
+                  this.a($$0, cfi::a);
                }
 
                @Override
-               public void a(bjz $$0, els $$1x) {
+               public void a(bka $$0, elt $$1x) {
                   this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                }
 
                @Override
                public void a() {
-                  if (!($$2 instanceof cbt) && !($$2 instanceof bma) && !($$2 instanceof cfn) && $$2 != aoc.this.e) {
-                     cmx $$0 = aoc.this.e.b(bjz.a);
+                  if (!($$2 instanceof cbu) && !($$2 instanceof bmb) && !($$2 instanceof cfo) && $$2 != aoc.this.e) {
+                     cmy $$0 = aoc.this.e.b(bka.a);
                      if ($$0.a($$1.I())) {
                         aoc.this.e.d($$2);
                      }
@@ -1297,7 +1277,7 @@ public class aoc extends anz implements adj, aof, uu {
             if (this.e.f) {
                this.e.f = false;
                this.e = this.b.ae().a(this.e, true);
-               am.w.a(this.e, cto.j, cto.h);
+               am.w.a(this.e, ctp.j, ctp.h);
             } else {
                if (this.e.ev() > 0.0F) {
                   return;
@@ -1305,8 +1285,8 @@ public class aoc extends anz implements adj, aof, uu {
 
                this.e = this.b.ae().a(this.e, false);
                if (this.b.h()) {
-                  this.e.a(ctl.d);
-                  this.e.dM().Z().a(ctk.r).a(false, this.b);
+                  this.e.a(ctm.d);
+                  this.e.dM().Z().a(ctl.r).a(false, this.b);
                }
             }
             break;
@@ -1341,8 +1321,8 @@ public class aoc extends anz implements adj, aof, uu {
                ObjectIterator var4 = Int2ObjectMaps.fastIterable($$0.g()).iterator();
 
                while (var4.hasNext()) {
-                  Entry<cmx> $$3 = (Entry<cmx>)var4.next();
-                  this.e.bS.b($$3.getIntKey(), (cmx)$$3.getValue());
+                  Entry<cmy> $$3 = (Entry<cmy>)var4.next();
+                  this.e.bS.b($$3.getIntKey(), (cmy)$$3.getValue());
                }
 
                this.e.bS.a($$0.f());
@@ -1361,11 +1341,11 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(aek $$0) {
       xh.a($$0, this, this.e.z());
       this.e.G();
-      if (!this.e.P_() && this.e.bS.j == $$0.a() && this.e.bS instanceof cjn) {
+      if (!this.e.P_() && this.e.bS.j == $$0.a() && this.e.bS instanceof cjo) {
          if (!this.e.bS.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bS);
          } else {
-            this.b.aG().a($$0.d()).ifPresent($$1 -> ((cjn)this.e.bS).a($$0.e(), (cqd<?>)$$1, this.e));
+            this.b.aG().a($$0.d()).ifPresent($$1 -> ((cjo)this.e.bS).a($$0.e(), (cqe<?>)$$1, this.e));
          }
       }
    }
@@ -1391,16 +1371,16 @@ public class aoc extends anz implements adj, aof, uu {
       xh.a($$0, this, this.e.z());
       if (this.e.e.e()) {
          boolean $$1 = $$0.a() < 0;
-         cmx $$2 = $$0.d();
+         cmy $$2 = $$0.d();
          if (!$$2.a(this.e.dM().I())) {
             return;
          }
 
-         sn $$3 = ckq.a($$2);
+         sn $$3 = ckr.a($$2);
          if (!$$2.b() && $$3 != null && $$3.e("x") && $$3.e("y") && $$3.e("z")) {
-            hx $$4 = dgu.c($$3);
+            hx $$4 = dgv.c($$3);
             if (this.e.dM().p($$4)) {
-               dgu $$5 = this.e.dM().c_($$4);
+               dgv $$5 = this.e.dM().c_($$4);
                if ($$5 != null) {
                   $$5.e($$2);
                }
@@ -1430,7 +1410,7 @@ public class aoc extends anz implements adj, aof, uu {
       and $$2 = this.e.z();
       hx $$3 = $$0.a();
       if ($$2.B($$3)) {
-         if (!($$2.c_($$3) instanceof did $$5)) {
+         if (!($$2.c_($$3) instanceof die $$5)) {
             return;
          }
 
@@ -1470,21 +1450,21 @@ public class aoc extends anz implements adj, aof, uu {
    public void a(ads $$0) {
       xh.a($$0, this, this.e.z());
       vw.a $$1 = $$0.a();
-      cfk.a $$2 = this.L != null ? this.L.d().b() : null;
-      cfk.a $$3 = $$1.b();
+      cfl.a $$2 = this.K != null ? this.K.d().b() : null;
+      cfl.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
          if ($$2 != null && $$3.b().isBefore($$2.b())) {
-            this.b(cfk.a);
+            this.b(cfl.a);
          } else {
             try {
-               avb $$4 = this.b.ap();
+               avc $$4 = this.b.ap();
                if ($$4 == null) {
                   g.warn("Ignoring chat session from {} due to missing Services public key", this.e.fR().getName());
                   return;
                }
 
                this.a($$1.a(this.e.fR(), $$4));
-            } catch (cfk.b var6) {
+            } catch (cfl.b var6) {
                g.error("Failed to validate profile key: {}", var6.getMessage());
                this.b(var6.b());
             }
@@ -1494,7 +1474,7 @@ public class aoc extends anz implements adj, aof, uu {
 
    @Override
    public void a(adw $$0) {
-      if (!this.Q) {
+      if (!this.P) {
          throw new IllegalStateException("Client acknowledged config, but none was requested");
       } else {
          this.c.a(new aoa(this.b, this.c, this.a(this.e.B())));
@@ -1508,9 +1488,9 @@ public class aoc extends anz implements adj, aof, uu {
    }
 
    private void a(vw $$0) {
-      this.L = $$0;
-      this.M = $$0.a(this.e.cw());
-      this.P.append(() -> {
+      this.K = $$0;
+      this.L = $$0.a(this.e.cw());
+      this.O.append(() -> {
          this.e.a($$0);
          this.b.ae().a(new abe(EnumSet.of(abe.a.b), List.of(this.e)));
       });
@@ -1523,6 +1503,6 @@ public class aoc extends anz implements adj, aof, uu {
 
    @FunctionalInterface
    interface a {
-      bka run(ane var1, blu var2, bjz var3);
+      bkb run(ane var1, blv var2, bka var3);
    }
 }

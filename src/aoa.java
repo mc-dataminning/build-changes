@@ -40,9 +40,9 @@ public class aoa extends anz implements uu, yx {
    public void m() {
       this.b(new xj(new xy(this.b.getServerModName())));
       io<ahp> $$0 = this.b.ba();
-      this.b(new yw(cht.e.b(this.b.aY().M())));
+      this.b(new yw(chu.e.b(this.b.aY().M())));
       this.b(new yv(new iu.c(ix.a($$0)).d()));
-      this.b(new xp(asy.a($$0)));
+      this.b(new xp(asz.a($$0)));
       this.o();
       this.g.add(new aoj());
       this.p();
@@ -65,7 +65,7 @@ public class aoa extends anz implements uu, yx {
    @Override
    public void a(xv $$0) {
       super.a($$0);
-      if ($$0.d() != xv.a.d) {
+      if ($$0.d().a()) {
          this.a(aok.a);
       }
    }
@@ -77,9 +77,9 @@ public class aoa extends anz implements uu, yx {
       this.a(aoj.a);
 
       try {
-         aqu $$1 = this.b.ae();
+         aqv $$1 = this.b.ae();
          if ($$1.a(this.f.getId()) != null) {
-            this.b(aqu.g);
+            this.b(aqv.g);
             return;
          }
 

@@ -1,71 +1,75 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class dwl extends dwp {
-   public static final Codec<dwl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               dvy.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               atv.a(ic.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dwl::new)
-   );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final dvy e;
-   protected final int f;
-   protected final List<ic> g;
+public class dwl extends dwq {
+   public static final Codec<dwl> a = dvz.a.fieldOf("provider").xmap(dwl::new, $$0 -> $$0.b).codec();
+   private final dvz b;
 
-   public dwl(float $$0, int $$1, int $$2, dvy $$3, int $$4, List<ic> $$5) {
+   public dwl(dvz $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
    }
 
    @Override
-   public void a(dwp.a $$0) {
-      Set<hx> $$1 = new HashSet<>();
-      auu $$2 = $$0.b();
+   protected dwr<?> a() {
+      return dwr.e;
+   }
 
-      for (hx $$3 : ac.a($$0.d(), $$2)) {
-         ic $$4 = ac.a(this.g, $$2);
-         hx $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            hx $$6 = $$5.b(-this.c, -this.d, -this.c);
-            hx $$7 = $$5.b(this.c, this.d, this.c);
+   @Override
+   public void a(dwq.a $$0) {
+      List<hx> $$1 = Lists.newArrayList();
+      List<hx> $$2 = $$0.e();
+      List<hx> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
 
-            for (hx $$8 : hx.a($$6, $$7)) {
-               $$1.add($$8.i());
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
             }
+         });
+      }
+   }
 
-            $$0.a($$5, this.e.a($$2, $$5));
+   private void a(dwq.a $$0, hx $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
          }
       }
    }
 
-   private boolean a(dwp.a $$0, hx $$1, ic $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         hx $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
+   private void b(dwq.a $$0, hx $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         hx $$3 = $$1.b($$2);
+         if (dru.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
          }
       }
-
-      return true;
-   }
-
-   @Override
-   protected dwq<?> a() {
-      return dwq.f;
    }
 }

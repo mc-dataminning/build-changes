@@ -64,20 +64,20 @@ public class amu extends anf {
    }
 
    @Override
-   public bka a(ane $$0, cto $$1, cmx $$2, bjz $$3) {
+   public bkb a(ane $$0, ctp $$1, cmy $$2, bka $$3) {
       if (this.f) {
          this.f();
-         return bka.d;
+         return bkb.d;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bka a(ane $$0, cto $$1, cmx $$2, bjz $$3, elo $$4) {
+   public bkb a(ane $$0, ctp $$1, cmy $$2, bka $$3, elp $$4) {
       if (this.f) {
          this.f();
-         return bka.d;
+         return bkb.d;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

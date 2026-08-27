@@ -198,18 +198,18 @@ public class sd {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          and $$5 = $$0.e();
          hx $$6 = b($$0).d();
-         sb.a($$1.toLowerCase(), $$6, new jb($$2, $$3, $$4), ddb.a, $$5);
+         sb.a($$1.toLowerCase(), $$6, new jb($$2, $$3, $$4), ddc.a, $$5);
 
          for (int $$7 = 0; $$7 < $$2; $$7++) {
             for (int $$8 = 0; $$8 < $$4; $$8++) {
                hx $$9 = new hx($$6.u() + $$7, $$6.v() + 1, $$6.w() + $$8);
-               cwp $$10 = cwr.h;
+               cwq $$10 = cws.h;
                fh $$11 = new fh($$10.o(), Collections.emptySet(), null);
                $$11.a($$5, $$9, 2);
             }
          }
 
-         sb.a($$6, new hx(1, 0, -1), ddb.a, $$5);
+         sb.a($$6, new hx(1, 0, -1), ddc.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -217,7 +217,7 @@ public class sd {
    }
 
    private static int a(ds $$0, String $$1) throws CommandSyntaxException {
-      elo $$2 = (elo)$$0.h().a(10.0, 1.0F, false);
+      elp $$2 = (elp)$$0.h().a(10.0, 1.0F, false);
       hx $$3 = $$2.a();
       and $$4 = $$0.e();
       Optional<hx> $$5 = sb.a($$3, 15, $$4);
@@ -229,7 +229,7 @@ public class sd {
          $$0.b(vf.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dii $$6 = (dii)$$4.c_($$5.get());
+         dij $$6 = (dij)$$4.c_($$5.get());
          hx $$7 = $$3.b($$5.get());
          String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
          String $$9 = $$6.w();
@@ -269,7 +269,7 @@ public class sd {
          a($$2, "Couldn't find any structure block within 15 radius", n.m);
          return 0;
       } else {
-         dii $$4 = (dii)$$2.c_($$3);
+         dij $$4 = (dij)$$2.c_($$3);
          $$4.c($$2);
          String $$5 = $$4.w();
          se $$6 = rq.f($$5);
@@ -295,7 +295,7 @@ public class sd {
    }
 
    private static void a(and $$0, hx $$1, @Nullable rz $$2, boolean $$3) {
-      dii $$4 = (dii)$$0.c_($$1);
+      dij $$4 = (dij)$$0.c_($$1);
       String $$5 = $$4.w();
       Optional<se> $$6 = rq.e($$5);
       if ($$6.isEmpty()) {
@@ -311,7 +311,7 @@ public class sd {
 
          if (a($$0, $$8)) {
             a($$7, $$0);
-            dyx $$9 = sb.b($$4);
+            dyy $$9 = sb.b($$4);
             hx $$10 = new hx($$9.h(), $$9.i(), $$9.j());
             rr.a($$8, $$10, ru.a);
          }
@@ -345,8 +345,8 @@ public class sd {
    private static int a(ds $$0, int $$1) {
       and $$2 = $$0.e();
       rr.a($$2);
-      hx $$3 = hx.a($$0.d().c, (double)$$0.e().a(dop.a.b, hx.a($$0.d())).v(), $$0.d().e);
-      rr.a($$2, $$3, ru.a, aun.a($$1, 0, 1024));
+      hx $$3 = hx.a($$0.d().c, (double)$$0.e().a(doq.a.b, hx.a($$0.d())).v(), $$0.d().e);
+      rr.a($$2, $$3, ru.a, auo.a($$1, 0, 1024));
       return 1;
    }
 
@@ -355,7 +355,7 @@ public class sd {
       hx $$4 = b($$0);
       rr.a($$3);
       a($$1, $$3);
-      ddb $$5 = sb.a($$2);
+      ddc $$5 = sb.a($$2);
       ro $$6 = new ro($$1, $$5, $$3);
       if (!a($$3, $$6)) {
          return 0;
@@ -367,7 +367,7 @@ public class sd {
 
    private static hx b(ds $$0) {
       hx $$1 = hx.a($$0.d());
-      int $$2 = $$0.e().a(dop.a.b, $$1).v();
+      int $$2 = $$0.e().a(doq.a.b, $$1).v();
       return new hx($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -418,7 +418,7 @@ public class sd {
    private static void a(ds $$0, Collection<se> $$1, int $$2, int $$3) {
       hx $$4 = b($$0);
       and $$5 = $$0.e();
-      ddb $$6 = sb.a($$2);
+      ddc $$6 = sb.a($$2);
       Collection<ro> $$7 = rr.b($$1, $$4, $$6, $$5, ru.a, $$3);
       rz $$8 = new rz($$7);
       $$8.a(new sd.a($$5, $$8));
@@ -437,7 +437,7 @@ public class sd {
          a($$2, "Couldn't find any structure block within 15 radius", n.m);
          return 0;
       } else {
-         dii $$4 = (dii)$$2.c_($$3);
+         dij $$4 = (dij)$$2.c_($$3);
          return a($$0, $$4);
       }
    }
@@ -453,7 +453,7 @@ public class sd {
          boolean $$4 = true;
 
          for (hx $$5 : $$3) {
-            dii $$6 = (dii)$$2.c_($$5);
+            dij $$6 = (dij)$$2.c_($$5);
             if (a($$0, $$6) != 0) {
                $$4 = false;
             }
@@ -463,7 +463,7 @@ public class sd {
       }
    }
 
-   private static int a(ds $$0, dii $$1) {
+   private static int a(ds $$0, dij $$1) {
       String $$2 = $$1.d();
       if (!$$1.b(true)) {
          b($$0, "Failed to save structure " + $$2);
@@ -476,7 +476,7 @@ public class sd {
       Path $$2 = Paths.get(sb.b);
       ahg $$3 = new ahg($$1);
       Path $$4 = $$0.e().q().a($$3, ".nbt");
-      Path $$5 = nr.a(ki.a, $$4, $$1, $$2);
+      Path $$5 = nr.a(ki.a, $$4, $$3.a(), $$2);
       if ($$5 == null) {
          b($$0, "Failed to export " + $$4);
          return 1;

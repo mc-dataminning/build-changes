@@ -1,8 +1,8 @@
 public class zx implements xf<za> {
-   private final cms a;
+   private final cmt a;
    private final int b;
 
-   public zx(cms $$0, int $$1) {
+   public zx(cmt $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -22,7 +22,7 @@ public class zx implements xf<za> {
       $$0.a(this);
    }
 
-   public cms a() {
+   public cmt a() {
       return this.a;
    }
 

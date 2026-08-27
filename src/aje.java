@@ -6,7 +6,7 @@ public class aje {
       $$0.register((LiteralArgumentBuilder)dt.a("me").then(dt.a("action", ej.a()).executes($$0x -> {
          ej.a($$0x, "action", $$1 -> {
             ds $$2 = (ds)$$0x.getSource();
-            aqu $$3 = $$2.l().ae();
+            aqv $$3 = $$2.l().ae();
             $$3.a($$1, $$2, vb.a(vb.i, $$2));
          });
          return 1;

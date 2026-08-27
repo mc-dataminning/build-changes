@@ -1,42 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bqq {
-   private static final int a = 200;
-
-   public static <E extends bmm> boc<E> a(BiConsumer<E, bmk> $$0) {
-      return a($$0x -> false, $$0, true);
-   }
-
-   public static <E extends bmm> boc<E> a(Predicate<bmk> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bmm> boc<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bmm> boc<E> a(Predicate<bmk> $$0, BiConsumer<E, bmk> $$1, boolean $$2) {
-      return bro.a(
-         (Function<bro.b<E>, ? extends App<bro.c<E>, brr<E>>>)($$3 -> $$3.group($$3.b(bvm.o), $$3.a(bvm.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bmk $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bx() && $$9.dM() == $$7.dM() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+   public static bod<bml> a(Function<bml, Optional<bpq>> $$0, Predicate<bml> $$1, int $$2, int $$3, float $$4) {
+      return brp.a(
+         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$5 -> $$5.group($$5.a(bvn.n), $$5.a(bvn.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bpq> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bpq $$11 = $$10.get();
+                        if ($$8.dk().a((ir)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bpq $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bvq($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
-   }
-
-   private static boolean a(bmk $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dM().X() - $$1.get() > 200L;
    }
 }

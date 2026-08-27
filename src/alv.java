@@ -19,15 +19,15 @@ public class alv implements alt {
             return $$0.then(dt.a("entity").then($$1.apply(dt.a($$0, ef.a()))));
          }
       };
-   private final blu c;
+   private final blv c;
 
-   public alv(blu $$0) {
+   public alv(blv $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(sn $$0) throws CommandSyntaxException {
-      if (this.c instanceof cfh) {
+      if (this.c instanceof cfi) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cw();

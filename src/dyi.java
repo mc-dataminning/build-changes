@@ -1,37 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyi extends dyq {
+public class dyi extends dyr {
    public static final Codec<dyi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dyi::new)
    );
-   private final double c;
-   private final int d;
-   private final int e;
+   private final int c;
+   private final double d;
+   private final double e;
 
-   private dyi(double $$0, int $$1, int $$2) {
+   private dyi(int $$0, double $$1, double $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
    }
 
-   public static dyi a(double $$0, int $$1, int $$2) {
+   public static dyi a(int $$0, double $$1, double $$2) {
       return new dyi($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(auu $$0, hx $$1) {
-      double $$2 = cun.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   protected int a(auv $$0, hx $$1) {
+      double $$2 = cuo.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public dyn<?> b() {
-      return dyn.h;
+   public dyo<?> b() {
+      return dyo.g;
    }
 }

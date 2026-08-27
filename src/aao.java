@@ -11,7 +11,7 @@ public class aao {
    private final List<byte[]> e;
    private final List<byte[]> f;
 
-   public aao(csv $$0, eef $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public aao(csw $$0, eeg $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.a = new BitSet();
       this.b = new BitSet();
       this.c = new BitSet();
@@ -21,11 +21,11 @@ public class aao {
 
       for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
          if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, ctx.a, $$4, this.a, this.c, this.e);
+            this.a($$0, $$1, cty.a, $$4, this.a, this.c, this.e);
          }
 
          if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, ctx.b, $$4, this.b, this.d, this.f);
+            this.a($$0, $$1, cty.b, $$4, this.b, this.d, this.f);
          }
       }
    }
@@ -48,8 +48,8 @@ public class aao {
       $$0.a(this.f, ui::a);
    }
 
-   private void a(csv $$0, eef $$1, ctx $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dli $$7 = $$1.a($$2).a(iz.a($$0, $$1.d() + $$3));
+   private void a(csw $$0, eeg $$1, cty $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dlj $$7 = $$1.a($$2).a(iz.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {
             $$5.set($$3);

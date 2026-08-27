@@ -6,9 +6,9 @@ public class acu implements xf<za> {
    @Nullable
    private final ahg c;
    @Nullable
-   private final ars d;
+   private final art d;
 
-   public acu(@Nullable ahg $$0, @Nullable ars $$1) {
+   public acu(@Nullable ahg $$0, @Nullable art $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -16,7 +16,7 @@ public class acu implements xf<za> {
    public acu(ui $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.d = $$0.b(ars.class);
+         this.d = $$0.b(art.class);
       } else {
          this.d = null;
       }
@@ -53,7 +53,7 @@ public class acu implements xf<za> {
    }
 
    @Nullable
-   public ars d() {
+   public art d() {
       return this.d;
    }
 

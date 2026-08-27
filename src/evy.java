@@ -1,34 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import org.joml.Vector3f;
 
-public record evy(float a, boolean b, Map<String, List<evx>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<evx>> b = Maps.newHashMap();
-      private boolean c;
+public record evy(evy.c a, ewa... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, ewa[] var3, int var4, int var5, float var6);
+   }
 
-      public static evy.a a(float $$0) {
-         return new evy.a($$0);
-      }
+   public static class b {
+      public static final evy.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final evy.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            auo.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            auo.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            auo.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   public interface c {
+      void apply(fmx var1, Vector3f var2);
+   }
 
-      public evy.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public evy.a a(String $$0, evx $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      public evy b() {
-         return new evy(this.a, this.c, this.b);
-      }
+   public static class d {
+      public static final evy.c a = fmx::a;
+      public static final evy.c b = fmx::b;
+      public static final evy.c c = fmx::c;
    }
 }

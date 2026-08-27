@@ -1,183 +1,112 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class dxi {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<dxi> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  iv.a(ke.aF).optionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  dxf.a.listOf().fieldOf("layers").forGetter(dxi::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  cun.c.optionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  ahe.d(cuu.b),
-                  ahe.d(qv.g),
-                  ahe.d(qv.h)
-               )
-               .apply($$0, dxi::new)
-      )
-      .comapFlatMap(dxi::a, Function.identity())
-      .stable();
-   private final Optional<il<dzl>> c;
-   private final List<dxf> d = Lists.newArrayList();
-   private final ih<cun> e;
-   private final List<djg> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<ih<dyj>> j;
+   public static final ahf<dxh> a = a("classic_flat");
+   public static final ahf<dxh> b = a("tunnelers_dream");
+   public static final ahf<dxh> c = a("water_world");
+   public static final ahf<dxh> d = a("overworld");
+   public static final ahf<dxh> e = a("snowy_kingdom");
+   public static final ahf<dxh> f = a("bottomless_pit");
+   public static final ahf<dxh> g = a("desert");
+   public static final ahf<dxh> h = a("redstone_ready");
+   public static final ahf<dxh> i = a("the_void");
 
-   private static DataResult<dxi> a(dxi $$0) {
-      int $$1 = $$0.d.stream().mapToInt(dxf::a).sum();
-      return $$1 > dmp.c ? DataResult.error(() -> "Sum of layer heights is > " + dmp.c, $$0) : DataResult.success($$0);
+   public static void a(pe<dxh> $$0) {
+      new dxi.a($$0).a();
    }
 
-   private dxi(Optional<il<dzl>> $$0, List<dxf> $$1, boolean $$2, boolean $$3, Optional<ih<cun>> $$4, ih.c<cun> $$5, ih<dyj> $$6, ih<dyj> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
+   private static ahf<dxh> a(String $$0) {
+      return ahf.a(ke.az, new ahg($$0));
+   }
+
+   static class a {
+      private final pe<dxh> a;
+
+      a(pe<dxh> $$0) {
+         this.a = $$0;
       }
 
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
-   }
-
-   private static ih<cun> a(Optional<? extends ih<cun>> $$0, ih<cun> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (ih<cun>)$$0.get();
-      }
-   }
-
-   public dxi(Optional<il<dzl>> $$0, ih<cun> $$1, List<ih<dyj>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public dxi a(List<dxf> $$0, Optional<il<dzl>> $$1, ih<cun> $$2) {
-      dxi $$3 = new dxi($$1, $$2, this.j);
-
-      for (dxf $$4 : $$0) {
-         $$3.d.add(new dxf($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public cuo a(ih<cun> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         cuo $$1 = this.d().a().d();
-         cuo.b $$2 = new cuo.b();
-         if (this.i) {
-            for (ih<dyj> $$3 : this.j) {
-               $$2.a(dol.b.b, $$3);
-            }
-         }
-
-         boolean $$4 = (!this.g || $$0.a(cuu.a)) && this.h;
+      private void a(ahf<dxh> $$0, cto $$1, ahf<cuo> $$2, Set<ahf<dzm>> $$3, boolean $$4, boolean $$5, dxg... $$6) {
+         ii<dzm> $$7 = this.a.a(ke.aF);
+         ii<dyk> $$8 = this.a.a(ke.aC);
+         ii<cuo> $$9 = this.a.a(ke.at);
+         il.a<dzm> $$10 = il.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         dxj $$11 = new dxj(Optional.of($$10), $$9.b($$2), dxj.b($$8));
          if ($$4) {
-            List<il<dyj>> $$5 = $$1.b();
-
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != dol.b.d.ordinal() && $$6 != dol.b.e.ordinal() && (!this.i || $$6 != dol.b.b.ordinal())) {
-                  for (ih<dyj> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
+            $$11.a();
          }
 
-         List<djg> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            djg $$11 = $$9.get($$10);
-            if (!dop.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(dol.b.k, qy.a(drt.ab, new dub($$10, $$11)));
-            }
+         if ($$5) {
+            $$11.b();
          }
 
-         return $$2.a();
-      }
-   }
-
-   public Optional<il<dzl>> c() {
-      return this.c;
-   }
-
-   public ih<cun> d() {
-      return this.e;
-   }
-
-   public List<dxf> e() {
-      return this.d;
-   }
-
-   public List<djg> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (dxf $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
          }
+
+         this.a.a($$0, new dxh($$1.k().j(), $$11));
       }
 
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(cwr.a));
-   }
-
-   public static dxi a(ii<cun> $$0, ii<dzl> $$1, ii<dyj> $$2) {
-      il<dzl> $$3 = il.a($$1.b(dyy.r), $$1.b(dyy.a));
-      dxi $$4 = new dxi(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new dxf(1, cwr.F));
-      $$4.e().add(new dxf(2, cwr.j));
-      $$4.e().add(new dxf(1, cwr.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static ih<cun> a(ii<cun> $$0) {
-      return $$0.b(cuu.b);
-   }
-
-   public static List<ih<dyj>> b(ii<dyj> $$0) {
-      return List.of($$0.b(qv.g), $$0.b(qv.h));
+      public void a() {
+         this.a(dxi.a, cws.i, cuv.b, ImmutableSet.of(dyz.a), false, false, new dxg(1, cws.i), new dxg(2, cws.j), new dxg(1, cws.F));
+         this.a(dxi.b, cws.b, cuv.t, ImmutableSet.of(dyz.j, dyz.r), true, false, new dxg(1, cws.i), new dxg(5, cws.j), new dxg(230, cws.b), new dxg(1, cws.F));
+         this.a(
+            dxi.c,
+            cnb.qw,
+            cuv.T,
+            ImmutableSet.of(dyz.m, dyz.l, dyz.g),
+            false,
+            false,
+            new dxg(90, cws.G),
+            new dxg(5, cws.L),
+            new dxg(5, cws.j),
+            new dxg(5, cws.b),
+            new dxg(64, cws.sJ),
+            new dxg(1, cws.F)
+         );
+         this.a(
+            dxi.d,
+            cws.bt,
+            cuv.b,
+            ImmutableSet.of(dyz.a, dyz.j, dyz.f, dyz.k, dyz.r),
+            true,
+            true,
+            new dxg(1, cws.i),
+            new dxg(3, cws.j),
+            new dxg(59, cws.b),
+            new dxg(1, cws.F)
+         );
+         this.a(
+            dxi.e,
+            cws.dN,
+            cuv.d,
+            ImmutableSet.of(dyz.a, dyz.c),
+            false,
+            false,
+            new dxg(1, cws.dN),
+            new dxg(1, cws.i),
+            new dxg(3, cws.j),
+            new dxg(59, cws.b),
+            new dxg(1, cws.F)
+         );
+         this.a(dxi.f, cnb.pq, cuv.b, ImmutableSet.of(dyz.a), false, false, new dxg(1, cws.i), new dxg(3, cws.j), new dxg(2, cws.m));
+         this.a(
+            dxi.g,
+            cws.I,
+            cuv.f,
+            ImmutableSet.of(dyz.a, dyz.b, dyz.j, dyz.r),
+            true,
+            false,
+            new dxg(8, cws.I),
+            new dxg(52, cws.aV),
+            new dxg(3, cws.b),
+            new dxg(1, cws.F)
+         );
+         this.a(dxi.h, cnb.lG, cuv.f, ImmutableSet.of(), false, false, new dxg(116, cws.aV), new dxg(3, cws.b), new dxg(1, cws.F));
+         this.a(dxi.i, cws.hW, cuv.a, ImmutableSet.of(), true, false, new dxg(1, cws.a));
+      }
    }
 }

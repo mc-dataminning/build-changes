@@ -1,99 +1,51 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
 
-public class evr {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private evr.c b;
-   private int c;
+public enum evr {
+   a(new cmy(cnb.qP)),
+   b(new cmy(cws.cj)),
+   c(new cmy(cnb.lG)),
+   d(new cmy(cnb.pa), new cmy(cnb.oS)),
+   e(new cmy(cnb.qx), new cmy(cnb.oq)),
+   f(new cmy(cnb.qP)),
+   g(new cmy(cnb.pU)),
+   h(new cmy(cws.b)),
+   i(new cmy(cnb.qx), new cmy(cnb.ow)),
+   j(new cmy(cnb.qP)),
+   k(new cmy(cws.dI)),
+   l(new cmy(cnb.oY), new cmy(cnb.pN)),
+   m(new cmy(cnb.qP)),
+   n(new cmy(cnb.pU)),
+   o(new cmy(cnb.fE)),
+   p(new cmy(cnb.pQ)),
+   q(new cmy(cnb.pU)),
+   r(new cmy(cnb.hA));
 
-   public void a(evr.b $$0, List<aov> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
+   public static final List<evr> s = ImmutableList.of(m, n);
+   public static final List<evr> t = ImmutableList.of(j, k, l);
+   public static final List<evr> u = ImmutableList.of(f, g, h, i);
+   public static final List<evr> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<evr, List<evr>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cmy> x;
 
-      this.b = new evr.c($$0, $$1.stream().map(aov::a).collect(ImmutableList.toImmutableList()));
+   private evr(cmy... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new evr.c(evr.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new evr.a($$0);
+   public static List<evr> a(cjp $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
-   }
-
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
-
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final evr.b a;
-      private final List<String> b;
-      @Nullable
-      evr.a c;
-      boolean d;
-
-      c(evr.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
-      }
+   public List<cmy> a() {
+      return this.x;
    }
 }

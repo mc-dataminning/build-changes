@@ -1,23 +1,56 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class coo extends ckl {
-   public coo(cms.a $$0) {
-      super($$0);
+public enum coo implements col {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cpz.a(asp.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cpz.a(asp.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cpz.a(cnb.oB)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cpz.a(cnb.ov)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cpz.a(cnb.oF)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cpz.a(cnb.oG));
+
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final auj<cpz> l;
+
+   private coo(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cpz> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new auj<>($$5);
    }
 
    @Override
-   public cmx am_() {
-      return cox.a(super.am_(), coy.E);
+   public int a() {
+      return this.h;
    }
 
    @Override
-   public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      cox.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
+   public float b() {
+      return this.i;
    }
 
    @Override
-   public String j(cmx $$0) {
-      return cox.d($$0).b(this.a() + ".effect.");
+   public float c() {
+      return this.j;
+   }
+
+   @Override
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cpz f() {
+      return this.l.a();
    }
 }

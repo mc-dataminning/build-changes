@@ -15,14 +15,14 @@ public class la implements kk {
    public CompletableFuture<?> a(ki $$0) {
       JsonObject $$1 = new JsonObject();
 
-      for (cwp $$2 : kd.e) {
+      for (cwq $$2 : kd.e) {
          ahg $$3 = kd.e.b($$2);
          JsonObject $$4 = new JsonObject();
-         djh<cwp, djg> $$5 = $$2.n();
+         dji<cwq, djh> $$5 = $$2.n();
          if (!$$5.d().isEmpty()) {
             JsonObject $$6 = new JsonObject();
 
-            for (dkj<?> $$7 : $$5.d()) {
+            for (dkk<?> $$7 : $$5.d()) {
                JsonArray $$8 = new JsonArray();
 
                for (Comparable<?> $$9 : $$7.a()) {
@@ -39,11 +39,11 @@ public class la implements kk {
          UnmodifiableIterator var17 = $$5.a().iterator();
 
          while (var17.hasNext()) {
-            djg $$11 = (djg)var17.next();
+            djh $$11 = (djh)var17.next();
             JsonObject $$12 = new JsonObject();
             JsonObject $$13 = new JsonObject();
 
-            for (dkj<?> $$14 : $$5.d()) {
+            for (dkk<?> $$14 : $$5.d()) {
                $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
             }
 
@@ -51,7 +51,7 @@ public class la implements kk {
                $$12.add("properties", $$13);
             }
 
-            $$12.addProperty("id", cwp.i($$11));
+            $$12.addProperty("id", cwq.i($$11));
             if ($$11 == $$2.o()) {
                $$12.addProperty("default", true);
             }

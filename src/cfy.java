@@ -1,76 +1,49 @@
-public class cfy extends cfz {
-   public cfy(bly<? extends cfy> $$0, cto $$1) {
+public class cfy extends cfu {
+   private int e = 1;
+
+   public cfy(blz<? extends cfy> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
-   public cfy(cto $$0, bzz $$1) {
-      this(bly.al, $$0);
-      this.b($$1);
-      this.a_(
-         $$1.dr() - (double)($$1.dg() + 1.0F) * 0.5 * (double)aun.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.dv() - 0.1F,
-         $$1.dx() + (double)($$1.dg() + 1.0F) * 0.5 * (double)aun.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+   public cfy(ctp $$0, bml $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(blz.ah, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   public void l() {
-      super.l();
-      els $$0 = this.dp();
-      elq $$1 = cga.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dr() + $$0.c;
-      double $$3 = this.dt() + $$0.d;
-      double $$4 = this.dx() + $$0.e;
-      this.K();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dM().a(this.cH()).noneMatch(djf.a::i)) {
-         this.am();
-      } else if (this.bc()) {
-         this.am();
-      } else {
-         this.g($$0.a(0.99F));
-         if (!this.aV()) {
-            this.g(this.dp().b(0.0, -0.06F, 0.0));
-         }
-
-         this.a_($$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void a(elp $$0) {
-      super.a($$0);
-      if (this.w() instanceof bmk $$1) {
-         $$0.a().a(this.dN().a(this, $$1), 1.0F);
-      }
-   }
-
-   @Override
-   protected void a(elo $$0) {
+   protected void a(elr $$0) {
       super.a($$0);
       if (!this.dM().B) {
+         boolean $$1 = this.dM().Z().b(ctl.c);
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), (float)this.e, $$1, ctp.a.c);
          this.am();
       }
    }
 
    @Override
-   protected void c_() {
+   protected void a(elq $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blv $$1 = $$0.a();
+         blv $$2 = this.w();
+         $$1.a(this.dN().a((cfu)this, $$2), 6.0F);
+         if ($$2 instanceof bml) {
+            this.a((bml)$$2, $$1);
+         }
+      }
    }
 
    @Override
-   public void a(zb $$0) {
+   public void b(sn $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(sn $$0) {
       super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dM().a(jx.ae, this.dr(), this.dt(), this.dx(), $$1 * $$5, $$2, $$3 * $$5);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
       }
-
-      this.o($$1, $$2, $$3);
    }
 }

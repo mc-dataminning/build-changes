@@ -1,18 +1,15 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class edd {
-   private final List<edc> a;
-
-   public edd(List<edc> $$0) {
-      this.a = $$0;
+public abstract class edd {
+   @Nullable
+   public edg.c a(cts $$0, hx $$1, hx $$2, edg.c $$3, edg.c $$4, edc $$5) {
+      return $$4;
    }
 
-   public List<edc> a() {
-      return this.a;
-   }
+   protected abstract edf<?> a();
 
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public List<edg.c> a(cue $$0, hx $$1, hx $$2, List<edg.c> $$3, List<edg.c> $$4, edc $$5) {
+      return $$4;
    }
 }

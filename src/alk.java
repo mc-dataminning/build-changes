@@ -46,7 +46,7 @@ public class alk {
    }
 
    private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)avo.b);
+      return String.format("%.1f", (float)$$0 / (float)avp.b);
    }
 
    private static int a(ds $$0, float $$1) {
@@ -68,6 +68,8 @@ public class alk {
       } else {
          if ($$1.l()) {
             $$0.a(() -> vf.c("commands.tick.status.frozen"), false);
+         } else if ($$1.h() < $$0.l().aP()) {
+            $$0.a(() -> vf.c("commands.tick.status.lagging"), false);
          } else {
             $$0.a(() -> vf.c("commands.tick.status.running"), false);
          }

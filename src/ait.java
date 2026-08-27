@@ -16,7 +16,7 @@ public class ait {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vf.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vf.c("commands.clone.failed"));
-   public static final Predicate<djk> a = $$0 -> !$$0.a().i();
+   public static final Predicate<djl> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<ds> $$0, dn $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class ait {
       ait.b<CommandContext<ds>, ait.c> $$0,
       ait.b<CommandContext<ds>, ait.c> $$1,
       ait.b<CommandContext<ds>, ait.c> $$2,
-      ait.b<CommandContext<ds>, Predicate<djk>> $$3,
+      ait.b<CommandContext<ds>, Predicate<djl>> $$3,
       ArgumentBuilder<ds, ?> $$4
    ) {
       return $$4.then(dt.a("force").executes($$4x -> a((ds)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), ait.d.a)))
@@ -90,20 +90,20 @@ public class ait {
          .then(dt.a("normal").executes($$4x -> a((ds)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), ait.d.c)));
    }
 
-   private static int a(ds $$0, ait.c $$1, ait.c $$2, ait.c $$3, Predicate<djk> $$4, ait.d $$5) throws CommandSyntaxException {
+   private static int a(ds $$0, ait.c $$1, ait.c $$2, ait.c $$3, Predicate<djl> $$4, ait.d $$5) throws CommandSyntaxException {
       hx $$6 = $$1.b();
       hx $$7 = $$2.b();
-      dyx $$8 = dyx.a($$6, $$7);
+      dyy $$8 = dyy.a($$6, $$7);
       hx $$9 = $$3.b();
       hx $$10 = $$9.a($$8.c());
-      dyx $$11 = dyx.a($$9, $$10);
+      dyy $$11 = dyy.a($$9, $$10);
       and $$12 = $$1.a();
       and $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().Z().c(ctk.z);
+         int $$15 = $$0.e().Z().c(ctl.z);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class ait {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      hx $$24 = new hx($$23, $$22, $$21);
                      hx $$25 = $$24.a((jb)$$20);
-                     djk $$26 = new djk($$12, $$24, false);
-                     djg $$27 = $$26.a();
+                     djl $$26 = new djl($$12, $$24, false);
+                     djh $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dgu $$28 = $$12.c_($$24);
+                        dgv $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            sn $$29 = $$28.q();
                            $$17.add(new ait.a($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class ait {
 
             if ($$5 == ait.d.b) {
                for (hx $$30 : $$19) {
-                  dgu $$31 = $$12.c_($$30);
-                  bjr.a_($$31);
-                  $$12.a($$30, cwr.hW.o(), 2);
+                  dgv $$31 = $$12.c_($$30);
+                  bjs.a_($$31);
+                  $$12.a($$30, cws.hW.o(), 2);
                }
 
                for (hx $$32 : $$19) {
-                  $$12.a($$32, cwr.a.o(), 3);
+                  $$12.a($$32, cws.a.o(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class ait {
             List<ait.a> $$34 = Lists.reverse($$33);
 
             for (ait.a $$35 : $$34) {
-               dgu $$36 = $$13.c_($$35.a);
-               bjr.a_($$36);
-               $$13.a($$35.a, cwr.hW.o(), 2);
+               dgv $$36 = $$13.c_($$35.a);
+               bjs.a_($$36);
+               $$13.a($$35.a, cws.hW.o(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class ait {
             }
 
             for (ait.a $$39 : $$17) {
-               dgu $$40 = $$13.c_($$39.a);
+               dgv $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.a($$39.c);
                   $$40.e();
@@ -200,11 +200,11 @@ public class ait {
 
    static class a {
       public final hx a;
-      public final djg b;
+      public final djh b;
       @Nullable
       public final sn c;
 
-      public a(hx $$0, djg $$1, @Nullable sn $$2) {
+      public a(hx $$0, djh $$1, @Nullable sn $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

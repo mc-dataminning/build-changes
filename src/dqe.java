@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dqe implements dpw {
-   public static final Codec<dqe> a = RecordCodecBuilder.create($$0 -> $$0.group(dpw.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dqe::new));
-   private final dpw e;
+class dqe extends dqi {
+   private final il<eeq> e;
+   public static final Codec<dqe> a = RecordCodecBuilder.create($$0 -> a($$0).and(iv.a(ke.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dqe::new));
 
-   public dqe(dpw $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(cuj $$0, hx $$1) {
-      return !this.e.test($$0, $$1);
+   public dqe(jb $$0, il<eeq> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dpx<?> a() {
-      return dpx.k;
+   protected boolean a(djh $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public dpy<?> a() {
+      return dpy.c;
    }
 }

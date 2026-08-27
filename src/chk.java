@@ -1,70 +1,106 @@
-public class chk extends cgz {
-   private final csq c = new csq() {
-      @Override
-      public void a(cto $$0, hx $$1, int $$2) {
-         $$0.a(chk.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class chk extends chb implements dht {
+   private boolean i = true;
 
-   public chk(bly<? extends chk> $$0, cto $$1) {
+   public chk(blz<? extends chk> $$0, ctp $$1) {
       super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public chk(cto $$0, double $$1, double $$2, double $$3) {
-      super(bly.aR, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
-   }
-
-   @Override
-   protected cms ah_() {
-      return cna.nL;
-   }
-
-   private Runnable b(cto $$0) {
-      return $$0 instanceof and ? () -> this.c.a((and)$$0, this.dm()) : () -> this.c.a($$0, this.dm());
+   public chk(ctp $$0, double $$1, double $$2, double $$3) {
+      super(blz.Y, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public cgz.a w() {
-      return cgz.a.e;
+   public cha.a w() {
+      return cha.a.f;
    }
 
    @Override
-   public djg y() {
-      return cwr.ct.o();
+   public djh y() {
+      return cws.hc.o();
    }
 
    @Override
-   protected void a(sn $$0) {
-      super.a($$0);
-      this.c.a(this.dM(), this.dm(), $$0);
+   public int A() {
+      return 1;
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      this.c.a($$0);
+   public int b() {
+      return 5;
    }
 
    @Override
-   public void b(byte $$0) {
-      this.c.a(this.dM(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.H()) {
+         this.p($$4);
+      }
+   }
+
+   public boolean H() {
+      return this.i;
+   }
+
+   public void p(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public double I() {
+      return this.dr();
+   }
+
+   @Override
+   public double J() {
+      return this.dt() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return this.dx();
    }
 
    @Override
    public void l() {
       super.l();
-      this.d.run();
+      if (!this.dM().B && this.bx() && this.H() && this.M()) {
+         this.e();
+      }
    }
 
-   public csq C() {
-      return this.c;
+   public boolean M() {
+      if (dhu.a(this.dM(), this)) {
+         return true;
+      } else {
+         for (cbu $$1 : this.dM().a(cbu.class, this.cH().c(0.25, 0.0, 0.25), bly.a)) {
+            if (dhu.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public boolean cM() {
-      return true;
+   protected cmt ah_() {
+      return cnb.nP;
+   }
+
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.i);
+   }
+
+   @Override
+   protected void a(sn $$0) {
+      super.a($$0);
+      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cib a(int $$0, cfh $$1) {
+      return new cja($$0, $$1, this);
    }
 }

@@ -20,7 +20,7 @@ public class ajz {
    }
 
    private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      ara $$2 = $$0.l().ae().f();
+      arb $$2 = $$0.l().ae().f();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

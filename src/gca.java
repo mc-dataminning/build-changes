@@ -1,24 +1,16 @@
-public class gca extends gci<cca, fjq<cca>> {
-   private static final ahg a = new ahg("textures/entity/creeper/creeper_armor.png");
-   private final fjq<cca> b;
+public class gca extends gcy<byb, fji<byb>> {
+   private static final ahg a = new ahg("textures/entity/cat/cat_collar.png");
+   private final fji<byb> b;
 
-   public gca(gah<cca, fjq<cca>> $$0, fms $$1) {
+   public gca(gai<byb, fji<byb>> $$0, fmt $$1) {
       super($$0);
-      this.b = new fjq<>($$1.a(fmv.F));
+      this.b = new fji<>($$1.a(fmw.r));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ahg a() {
-      return a;
-   }
-
-   @Override
-   protected fjw<cca> b() {
-      return this.b;
+   public void a(eqb $$0, fth $$1, int $$2, byb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u()) {
+         float[] $$10 = $$3.go().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+      }
    }
 }

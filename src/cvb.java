@@ -1,89 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class cvb {
-   public static final Codec<cvb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvb.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ahe.c(ke.at)).apply($$0, cvb::new)
-   );
-   public static final Codec<ih<cvb>> b = ahc.a(ke.aL, a);
-   private final cvb.a c;
-   private final cuw.c<ih<cun>> d;
+public class cvb extends cus {
+   private static final MapCodec<ih<cuo>> d = cuo.c.fieldOf("biome");
+   public static final MapCodec<cux.c<ih<cuo>>> b = cux.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ih<cvc>> e = cvc.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<cvb> c = Codec.mapEither(b, e).xmap(cvb::new, $$0 -> $$0.f).codec();
+   private final Either<cux.c<ih<cuo>>, ih<cvc>> f;
 
-   public cvb(cvb.a $$0, ii<cun> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   private cvb(Either<cux.c<ih<cuo>>, ih<cvc>> $$0) {
+      this.f = $$0;
    }
 
-   public cuw.c<ih<cun>> a() {
-      return this.d;
+   public static cvb a(cux.c<ih<cuo>> $$0) {
+      return new cvb(Either.left($$0));
    }
 
-   public static Map<cvb.a, cuw.c<ahf<cun>>> b() {
-      return cvb.a.f.values().stream().collect(Collectors.toMap($$0 -> (cvb.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   public static cvb a(ih<cvc> $$0) {
+      return new cvb(Either.right($$0));
    }
 
-   public static record a(ahg d, cvb.a.a e) {
-      public static final cvb.a a = new cvb.a(
-         new ahg("nether"),
-         new cvb.a.a() {
-            @Override
-            public <T> cuw.c<T> apply(Function<ahf<cun>, T> $$0) {
-               return new cuw.c<>(
-                  List.of(
-                     Pair.of(cuw.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.ac)),
-                     Pair.of(cuw.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.af)),
-                     Pair.of(cuw.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.ae)),
-                     Pair.of(cuw.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cuu.ad)),
-                     Pair.of(cuw.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cuu.ag))
-                  )
-               );
-            }
-         }
+   private cux.c<ih<cuo>> d() {
+      return (cux.c<ih<cuo>>)this.f.map($$0 -> $$0, $$0 -> ((cvc)$$0.a()).a());
+   }
+
+   @Override
+   protected Stream<ih<cuo>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
+   }
+
+   @Override
+   protected Codec<? extends cus> a() {
+      return c;
+   }
+
+   public boolean a(ahf<cvc> $$0) {
+      Optional<ih<cvc>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public ih<cuo> getNoiseBiome(int $$0, int $$1, int $$2, cux.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @avt
+   public ih<cuo> a(cux.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, hx $$1, cux.f $$2) {
+      int $$3 = is.a($$1.u());
+      int $$4 = is.a($$1.v());
+      int $$5 = is.a($$1.w());
+      cux.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = cux.a($$6.d());
+      float $$8 = cux.a($$6.e());
+      float $$9 = cux.a($$6.b());
+      float $$10 = cux.a($$6.c());
+      float $$11 = cux.a($$6.g());
+      double $$12 = (double)dox.a($$11);
+      cve $$13 = new cve();
+      $$0.add(
+         "Biome builder PV: "
+            + cve.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
       );
-      public static final cvb.a b = new cvb.a(new ahg("overworld"), new cvb.a.a() {
-         @Override
-         public <T> cuw.c<T> apply(Function<ahf<cun>, T> $$0) {
-            return cvb.a.a($$0);
-         }
-      });
-      static final Map<ahg, cvb.a> f = Stream.of(a, b).collect(Collectors.toMap(cvb.a::b, $$0 -> (cvb.a)$$0));
-      public static final Codec<cvb.a> c = ahg.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> cuw.c<T> a(Function<ahf<cun>, T> $$0) {
-         Builder<Pair<cuw.d, T>> $$1 = ImmutableList.builder();
-         new cvd().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new cuw.c<>($$1.build());
-      }
-
-      public Stream<ahf<cun>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<ahf<cun>>map(Pair::getSecond).distinct();
-      }
-
-      public ahg b() {
-         return this.d;
-      }
-
-      public cvb.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> cuw.c<T> apply(Function<ahf<cun>, T> var1);
-      }
    }
 }

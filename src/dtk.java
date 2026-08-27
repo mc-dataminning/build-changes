@@ -1,43 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dtk extends drt<due> {
-   private static final hx a = new hx(8, 3, 8);
-   private static final csv b = new csv(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dtk(Codec<due> $$0) {
+public class dtk extends dru<duf> {
+   public dtk(Codec<duf> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(drv<due> $$0) {
-      cuj $$1 = $$0.b();
-      csv $$2 = new csv($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
+   public boolean a(drw<duf> $$0) {
+      cuk $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
       } else {
-         hx $$3 = a.h($$0.e().v() + a.v());
-         hx.a $$4 = new hx.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cwr.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cwr.b.o(), 2);
-                  }
-               }
+         for (ic $$3 : ic.values()) {
+            if ($$3 != ic.a && dfk.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, cws.ff.o().a(dfk.a($$3), Boolean.valueOf(true)), 2);
+               return true;
             }
          }
 
-         return true;
+         return false;
       }
    }
 }

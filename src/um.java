@@ -40,7 +40,7 @@ public class um extends MessageToByteEncoder<xf<?>> {
                   throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
                }
 
-               bgx.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
+               bgy.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
             } catch (Throwable var13) {
                a.error("Error receiving packet {}", $$5, var13);
                if ($$1.b()) {

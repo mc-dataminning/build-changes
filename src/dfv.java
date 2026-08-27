@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfv extends cwp implements dfs {
-   public static final MapCodec<dfv> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfs.a.e.fieldOf("weathering_state").forGetter(cxq::c), u()).apply($$0, dfv::new)
+public class dfv extends cyw implements dft {
+   public static final MapCodec<dfv> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(djw.a.fieldOf("block_set_type").forGetter(cyw::b), dft.a.e.fieldOf("weathering_state").forGetter(dfv::g), u()).apply($$0, dfv::new)
    );
-   private final dfs.a e;
+   private final dft.a m;
 
    @Override
    public MapCodec<dfv> a() {
-      return d;
+      return l;
    }
 
-   public dfv(dfs.a $$0, djf.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dfv(djw $$0, dft.a $$1, djg.d $$2) {
+      super($$0, $$2);
+      this.m = $$1;
    }
 
    @Override
-   public boolean e_(djg $$0) {
-      return dfs.c($$0.b()).isPresent();
+   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
+      if ($$0.c(cyw.f) == dkd.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
    }
 
-   public dfs.a g() {
-      return this.e;
+   @Override
+   public boolean e_(djh $$0) {
+      return dft.c($$0.b()).isPresent();
+   }
+
+   public dft.a g() {
+      return this.m;
    }
 }

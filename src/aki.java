@@ -40,7 +40,7 @@ public class aki {
       );
    }
 
-   private static int a(ds $$0, Collection<ane> $$1, Collection<cqd<?>> $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, Collection<ane> $$1, Collection<cqe<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (ane $$4 : $$1) {
@@ -60,7 +60,7 @@ public class aki {
       }
    }
 
-   private static int b(ds $$0, Collection<ane> $$1, Collection<cqd<?>> $$2) throws CommandSyntaxException {
+   private static int b(ds $$0, Collection<ane> $$1, Collection<cqe<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (ane $$4 : $$1) {

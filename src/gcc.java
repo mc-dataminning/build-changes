@@ -1,86 +1,17 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
+public class gcc<T extends bml, M extends fjx<T>> extends gcy<T, M> {
+   private final ftd a;
 
-public class gcc<T extends bmk, M extends fjw<T> & fke> extends gcx<T, M> {
-   private final float a;
-   private final float b;
-   private final float c;
-   private final Map<ddq.a, flt> d;
-   private final ftc e;
-
-   public gcc(gah<T, M> $$0, fms $$1, ftc $$2) {
-      this($$0, $$1, 1.0F, 1.0F, 1.0F, $$2);
-   }
-
-   public gcc(gah<T, M> $$0, fms $$1, float $$2, float $$3, float $$4, ftc $$5) {
+   public gcc(gai<T, M> $$0, ftd $$1) {
       super($$0);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = fvv.a($$1);
-      this.e = $$5;
+      this.a = $$1;
    }
 
-   public void a(eqa $$0, ftg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cmx $$10 = $$3.c(blz.f);
-      if (!$$10.b()) {
-         cms $$11 = $$10.d();
-         $$0.a();
-         $$0.b(this.a, this.b, this.c);
-         boolean $$12 = $$3 instanceof ceu || $$3 instanceof cdi;
-         if ($$3.o_() && !($$3 instanceof ceu)) {
-            float $$13 = 2.0F;
-            float $$14 = 1.4F;
-            $$0.a(0.0F, 0.03125F, 0.0F);
-            $$0.b(0.7F, 0.7F, 0.7F);
-            $$0.a(0.0F, 1.0F, 0.0F);
-         }
-
-         this.c().d().a($$0);
-         if ($$11 instanceof ckq && ((ckq)$$11).e() instanceof cvl) {
-            float $$15 = 1.1875F;
-            $$0.b(1.1875F, -1.1875F, -1.1875F);
-            if ($$12) {
-               $$0.a(0.0F, 0.0625F, 0.0F);
-            }
-
-            GameProfile $$16 = null;
-            if ($$10.u()) {
-               sn $$17 = $$10.v();
-               if ($$17.b("SkullOwner", 10)) {
-                  $$16 = tc.a($$17.p("SkullOwner"));
-               }
-            }
-
-            $$0.a(-0.5, 0.0, -0.5);
-            ddq.a $$18 = ((cvl)((ckq)$$11).e()).b();
-            flt $$19 = this.d.get($$18);
-            fto $$20 = fvv.a($$18, $$16);
-            bnj $$22;
-            if ($$3.cZ() instanceof bmk $$21) {
-               $$22 = $$21.aQ;
-            } else {
-               $$22 = $$3.aQ;
-            }
-
-            float $$24 = $$22.c($$6);
-            fvv.a(null, 180.0F, $$24, $$0, $$1, $$2, $$19, $$20);
-         } else if (!($$11 instanceof ckh $$25) || $$25.g() != blz.f) {
-            a($$0, $$12);
-            this.e.a($$3, $$10, cmu.f, false, $$0, $$1, $$2);
-         }
-
-         $$0.b();
-      }
-   }
-
-   public static void a(eqa $$0, boolean $$1) {
-      float $$2 = 0.625F;
-      $$0.a(0.0F, -0.25F, 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
-      if ($$1) {
-         $$0.a(0.0F, 0.1875F, 0.0F);
-      }
+   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cmy $$10 = $$3.c(bma.a);
+      this.a.a($$3, $$10, cmv.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

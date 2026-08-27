@@ -1,124 +1,95 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class day extends cwp implements ddp {
-   public static final MapCodec<day> b = b(day::new);
-   public static final int c = 7;
-   public static final dkg d = djw.aC;
-   public static final djx e = djw.v;
-   public static final djx f = djw.C;
-   private static final int a = 1;
-
-   @Override
-   public MapCodec<? extends day> a() {
-      return b;
-   }
-
-   public day(djf.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
-   }
+public class day extends cvj {
+   public static final MapCodec<day> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cuo.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jd.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
+            .apply($$0, day::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dkh g = djx.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final cuo.c j;
 
    @Override
-   public eml b_(djg $$0, csu $$1, hx $$2) {
-      return emi.a();
+   public MapCodec<day> a() {
+      return d;
    }
 
-   @Override
-   public boolean e_(djg $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   public day(cuo.c $$0, jd.a $$1, djg.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.k(this.E.b().a(g, Integer.valueOf(1)));
    }
 
    @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean h(djg $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
+   public boolean d(djh $$0) {
+      return $$0.c(g) == 3;
    }
 
    @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
+   protected boolean a(eeq $$0) {
+      return $$0 == ees.c && this.j == cuo.c.b;
    }
 
    @Override
-   public int g(djg $$0, csu $$1, hx $$2) {
-      return 1;
+   protected double b(djh $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, eer.c, eer.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static djg a(djg $$0, ctp $$1, hx $$2) {
-      int $$3 = 7;
-      hx.a $$4 = new hx.a();
-
-      for (ic $$5 : ic.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
+         $$3.aA();
+         if ($$3.a($$1, $$2)) {
+            this.e($$0, $$1, $$2);
          }
       }
-
-      return $$0.a(d, Integer.valueOf($$3));
    }
 
-   private static int o(djg $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(djg $$0) {
-      if ($$0.a(asg.t)) {
-         return OptionalInt.of(0);
+   private void e(djh $$0, ctp $$1, hx $$2) {
+      if (this.j == cuo.c.c) {
+         d(cws.fu.o().a(g, $$0.c(g)), $$1, $$2);
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(djh $$0, ctp $$1, hx $$2) {
+      int $$3 = $$0.c(g) - 1;
+      djh $$4 = $$3 == 0 ? cws.ft.o() : $$0.a(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(dnr.c, $$2, dnr.a.a($$4));
+   }
+
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, cuo.c $$3) {
+      if (cxl.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         djh $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(dnr.c, $$2, dnr.a.a($$4));
       }
    }
 
    @Override
-   public eeq c_(djg $$0) {
-      return $$0.c(f) ? eer.c.a(false) : super.c_($$0);
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            hx $$4 = $$2.d();
-            djg $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ic.b)) {
-               auq.a($$1, $$2, $$3, jx.m);
-            }
-         }
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(g);
+   }
+
+   @Override
+   protected void a(djh $$0, ctp $$1, hx $$2, eeq $$3) {
+      if (!this.d($$0)) {
+         djh $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(dnr.c, $$2, dnr.a.a($$4));
+         $$1.c(1047, $$2, 0);
       }
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      eeq $$1 = $$0.q().b_($$0.a());
-      djg $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == eer.c));
-      return a($$2, $$0.q(), $$0.a());
    }
 }

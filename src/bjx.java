@@ -1,49 +1,44 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public enum bjx implements avj {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final avj.a<bjx> e = avj.a(bjx::values);
-   private static final IntFunction<bjx> f = atf.a(bjx::a, values(), atf.a.b);
-   private final int g;
-   private final String h;
-
-   private bjx(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class bjx {
+   public static void a(ctp $$0, hx $$1, bju $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public int a() {
-      return this.g;
+   public static void a(ctp $$0, blv $$1, bju $$2) {
+      a($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2);
    }
 
-   public vf b() {
-      return vf.c("options.difficulty." + this.h);
+   private static void a(ctp $$0, double $$1, double $$2, double $$3, bju $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      }
    }
 
-   public vf d() {
-      return vf.c("options.difficulty." + this.h + ".info");
+   public static void a(ctp $$0, hx $$1, iq<cmy> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static bjx a(int $$0) {
-      return f.apply($$0);
+   public static void a(ctp $$0, double $$1, double $$2, double $$3, cmy $$4) {
+      double $$5 = (double)blz.ae.k();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.b()) {
+         cbu $$11 = new cbu($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 
-   @Nullable
-   public static bjx a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static void a(djh $$0, djh $$1, ctp $$2, hx $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bju $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

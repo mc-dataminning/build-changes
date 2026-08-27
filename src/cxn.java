@@ -1,55 +1,72 @@
 import com.mojang.serialization.MapCodec;
 
-public class cxn extends dad implements cws, cxl {
+public class cxn extends daf implements cwt, cxm {
    public static final MapCodec<cxn> c = b(cxn::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<cxn> a() {
       return c;
    }
 
-   public cxn(djf.d $$0) {
-      super($$0, ic.a, s_, false);
-      this.k(this.E.b().a(t_, Boolean.valueOf(false)));
+   public cxn(djg.d $$0) {
+      super($$0, ic.a, s_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dae c() {
-      return (dae)cwr.sv;
+   protected int a(auv $$0) {
+      return 1;
    }
 
    @Override
-   protected djg a(djg $$0, djg $$1) {
+   protected boolean g(djh $$0) {
+      return $$0.i();
+   }
+
+   @Override
+   protected cwq b() {
+      return cws.sw;
+   }
+
+   @Override
+   protected djh a(djh $$0, djh $$1) {
       return $$1.a(t_, $$0.c(t_));
    }
 
    @Override
-   public cmx a(ctr $$0, hx $$1, djg $$2) {
-      return new cmx(cna.wj);
+   protected djh a(djh $$0, auv $$1) {
+      return super.a($$0, $$1).a(t_, Boolean.valueOf($$1.i() < 0.11F));
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      return cxl.a($$3, $$0, $$1, $$2);
+   public cmy a(cts $$0, hx $$1, djh $$2) {
+      return new cmy(cnb.wj);
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      return cxm.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      super.a($$0);
       $$0.a(t_);
    }
 
    @Override
-   public boolean b(ctr $$0, hx $$1, djg $$2) {
+   public boolean b(cts $$0, hx $$1, djh $$2) {
       return !$$2.c(t_);
    }
 
    @Override
-   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
       return true;
    }
 
    @Override
-   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
       $$0.a($$2, $$3.a(t_, Boolean.valueOf(true)), 2);
    }
 }

@@ -1,124 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cat extends cap {
-   private static final bwy b = bwy.a().d();
+public class cat extends caq {
    @Nullable
-   private eff c;
-   @Nullable
-   private els d;
-   private boolean e;
+   private elt b;
+   private int c;
 
-   public cat(can $$0) {
+   public cat(cao $$0) {
       super($$0);
    }
 
    @Override
-   public cbd<cat> i() {
-      return cbd.a;
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.eg().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.eg().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.eg().i() - 0.5F) * 8.0F;
+         this.a.dM().a(jx.w, this.a.dr() + (double)$$0, this.a.dt() + 2.0 + (double)$$1, this.a.dx() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-         this.j();
+      this.c++;
+      if (this.b == null) {
+         hx $$0 = this.a.dM().a(doq.a.e, drt.a(this.a.u()));
+         this.b = elt.c($$0);
+      }
+
+      double $$1 = this.b.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.c(1.0F);
+      } else {
+         this.a.c(0.0F);
       }
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.d = null;
+      this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public els g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         hx $$0 = this.a.dM().a(dop.a.f, new hx(drs.a(this.a.u())));
-         int $$1 = this.a.gc() == null ? 0 : this.a.gc().e();
-         if (this.a.eg().a($$1 + 3) == 0) {
-            this.a.gb().a(cbd.c);
-            return;
-         }
-
-         cfh $$2 = this.a.dM().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dk()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.eg().a((int)($$3 + 2.0)) == 0 || this.a.eg().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.A();
-         int $$6 = $$5;
-         if (this.a.eg().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
-
-         if (this.a.gc() != null && this.a.gc().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
-            }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-   }
-
-   private void a(cfh $$0) {
-      this.a.gb().a(cbd.b);
-      this.a.gb().b(cbd.b).a($$0);
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         jb $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new els($$1, $$3, $$2);
-      }
+   public elt g() {
+      return this.b;
    }
 
    @Override
-   public void a(cam $$0, hx $$1, bks $$2, @Nullable cfh $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
-      }
+   public cbe<cat> i() {
+      return cbe.j;
    }
 }

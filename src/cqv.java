@@ -1,15 +1,15 @@
-public class cqv extends cqp {
-   public cqv(String $$0, cpy $$1, cmx $$2) {
-      super(cqg.f, cqf.t, $$0, $$1, $$2);
+public class cqv extends cpl {
+   public cqv(String $$0, cpr $$1, cpz $$2, cmy $$3, float $$4, int $$5) {
+      super(cqh.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(bjt $$0, cto $$1) {
-      return this.a.a($$0.a(0));
+   public cmy g() {
+      return new cmy(cws.nV);
    }
 
    @Override
-   public cmx g() {
-      return new cmx(cwr.oc);
+   public cqg<?> ar_() {
+      return cqg.r;
    }
 }

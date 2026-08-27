@@ -1,10 +1,10 @@
-import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class dym {
-   public static final Codec<dym> b = kd.U.q().dispatch(dym::b, dyn::codec);
+public abstract class dym extends dyn {
+   @Override
+   public final Stream<hx> a_(dyl $$0, auv $$1, hx $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+   }
 
-   public abstract Stream<hx> a_(dyk var1, auu var2, hx var3);
-
-   public abstract dyn<?> b();
+   protected abstract boolean a(dyl var1, auv var2, hx var3);
 }

@@ -1,60 +1,40 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class eie extends eih {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eie> a = RecordCodecBuilder.create($$0 -> a($$0).and(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eie::new));
-   private final ahg c;
+public class eie extends eii {
+   public static final Codec<eie> a = RecordCodecBuilder.create($$0 -> a($$0).and(egw.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eie::new));
+   private final egw.b b;
 
-   private eie(List<eju> $$0, ahg $$1) {
+   public eie(List<ejv> $$0, egw.b $$1) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public eij b() {
-      return eik.B;
+   public eik b() {
+      return eil.v;
    }
 
    @Override
-   public void a(ehe $$0) {
-      egx<eii> $$1 = new egx<>(eha.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.b("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
+   public Set<eje<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cmy a(cmy $$0, egw $$1) {
+      if ($$0.a(cnb.ug) && $$1.c(this.b.a()) instanceof cfi $$2) {
+         GameProfile $$3 = $$2.fR();
+         $$0.w().a("SkullOwner", tc.a(new sn(), $$3));
       }
+
+      return $$0;
    }
 
-   @Override
-   protected cmx a(cmx $$0, egv $$1) {
-      eii $$2 = $$1.a().getElement(eha.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         egv.c<?> $$3 = egv.a($$2);
-         if ($$1.b($$3)) {
-            cmx var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static eih.a<?> a(ahg $$0) {
+   public static eii.a<?> a(egw.b $$0) {
       return a($$1 -> new eie($$1, $$0));
    }
 }

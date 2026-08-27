@@ -39,13 +39,13 @@ public class ez implements ArgumentType<Integer> {
          $$0.put("horse." + $$6, 500 + $$6);
       }
 
-      $$0.put("weapon", blz.a.a(98));
-      $$0.put("weapon.mainhand", blz.a.a(98));
-      $$0.put("weapon.offhand", blz.b.a(98));
-      $$0.put("armor.head", blz.f.a(100));
-      $$0.put("armor.chest", blz.e.a(100));
-      $$0.put("armor.legs", blz.d.a(100));
-      $$0.put("armor.feet", blz.c.a(100));
+      $$0.put("weapon", bma.a.a(98));
+      $$0.put("weapon.mainhand", bma.a.a(98));
+      $$0.put("weapon.offhand", bma.b.a(98));
+      $$0.put("armor.head", bma.f.a(100));
+      $$0.put("armor.chest", bma.e.a(100));
+      $$0.put("armor.legs", bma.d.a(100));
+      $$0.put("armor.feet", bma.c.a(100));
       $$0.put("horse.saddle", 400);
       $$0.put("horse.armor", 401);
       $$0.put("horse.chest", 499);

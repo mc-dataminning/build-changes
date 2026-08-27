@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ata {
+   public static final asw<dyv> a = a("normal");
+   public static final asw<dyv> b = a("extended");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ata {
+   private ata() {
+   }
+
+   private static asw<dyv> a(String $$0) {
+      return asw.a(ke.aK, new ahg($$0));
+   }
 }

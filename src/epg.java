@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface epg {
+   void a(boolean var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ent
-@ens
-interface epg {
+   void a();
+
+   void b();
 }

@@ -62,14 +62,14 @@ public class eo implements ArgumentType<eo.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aun.a($$0x, $$1);
+            return auo.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aun.b($$0x, $$1);
+            return auo.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class eo implements ArgumentType<eo.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(emu var1, emu var2) throws CommandSyntaxException;
+      void apply(emv var1, emv var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class eo implements ArgumentType<eo.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(emu $$0, emu $$1) throws CommandSyntaxException {
+      default void apply(emv $$0, emv $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

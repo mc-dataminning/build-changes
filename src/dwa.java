@@ -1,50 +1,24 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dwa extends dwc {
-   public static final Codec<dwa> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               auf.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               edt.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               atv.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, dwa::new)
-   );
-   private final auf<Integer> i;
-   private final edt.a j;
-   private final float k;
-   private final edt l;
+public class dwa<P extends dvz> {
+   public static final dwa<dwi> a = a("simple_state_provider", dwi.b);
+   public static final dwa<dwj> b = a("weighted_state_provider", dwj.b);
+   public static final dwa<dwe> c = a("noise_threshold_provider", dwe.b);
+   public static final dwa<dwd> d = a("noise_provider", dwd.g);
+   public static final dwa<dwb> e = a("dual_noise_provider", dwb.b);
+   public static final dwa<dwg> f = a("rotated_block_provider", dwg.b);
+   public static final dwa<dwf> g = a("randomized_int_state_provider", dwf.b);
+   private final Codec<P> h;
 
-   public dwa(auf<Integer> $$0, edt.a $$1, float $$2, long $$3, edt.a $$4, float $$5, List<djg> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = edt.b(new dpo(new doq($$3)), $$1);
+   private static <P extends dvz> dwa<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.V, $$0, new dwa<>($$1));
    }
 
-   @Override
-   protected dvz<?> a() {
-      return dvz.e;
+   private dwa(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public djg a(auu $$0, hx $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)aun.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<djg> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(hx $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public Codec<P> a() {
+      return this.h;
    }
 }

@@ -1,16 +1,16 @@
 public class aep implements xf<adj> {
-   private final cjo a;
+   private final cjp a;
    private final boolean b;
    private final boolean c;
 
-   public aep(cjo $$0, boolean $$1, boolean $$2) {
+   public aep(cjp $$0, boolean $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
    public aep(ui $$0) {
-      this.a = $$0.b(cjo.class);
+      this.a = $$0.b(cjp.class);
       this.b = $$0.readBoolean();
       this.c = $$0.readBoolean();
    }
@@ -26,7 +26,7 @@ public class aep implements xf<adj> {
       $$0.a(this);
    }
 
-   public cjo a() {
+   public cjp a() {
       return this.a;
    }
 

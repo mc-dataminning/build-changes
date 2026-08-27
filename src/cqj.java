@@ -1,223 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
 
-public record cqj(int b, int c, iq<cpy> d, Optional<cqj.a> e) {
-   private static final int f = 3;
-   public static final MapCodec<cqj> a = cqj.a.a
-      .flatXmap(cqj::a, $$0 -> $$0.d().<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
+public class cqj implements cpt {
+   final cqk a;
+   final cmy b;
+   final String c;
+   final cps d;
+   final boolean e;
 
-   public static cqj a(Map<Character, cpy> $$0, String... $$1) {
-      return a($$0, List.of($$1));
+   public cqj(String $$0, cps $$1, cqk $$2, cmy $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
    }
 
-   public static cqj a(Map<Character, cpy> $$0, List<String> $$1) {
-      cqj.a $$2 = new cqj.a($$0, $$1);
-      return ac.a(a($$2), IllegalArgumentException::new);
+   public cqj(String $$0, cps $$1, cqk $$2, cmy $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
-   private static DataResult<cqj> a(cqj.a $$0) {
-      String[] $$1 = a($$0.c);
-      int $$2 = $$1[0].length();
-      int $$3 = $$1.length;
-      iq<cpy> $$4 = iq.a($$2 * $$3, cpy.a);
-      CharSet $$5 = new CharArraySet($$0.b.keySet());
-
-      for (int $$6 = 0; $$6 < $$1.length; $$6++) {
-         String $$7 = $$1[$$6];
-
-         for (int $$8 = 0; $$8 < $$7.length(); $$8++) {
-            char $$9 = $$7.charAt($$8);
-            cpy $$10 = $$9 == ' ' ? cpy.a : $$0.b.get($$9);
-            if ($$10 == null) {
-               return DataResult.error(() -> "Pattern references symbol '" + $$9 + "' but it's not defined in the key");
-            }
-
-            $$5.remove($$9);
-            $$4.set($$8 + $$2 * $$6, $$10);
-         }
-      }
-
-      return !$$5.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
-         : DataResult.success(new cqj($$2, $$3, $$4, Optional.of($$0)));
+   @Override
+   public cqg<?> ar_() {
+      return cqg.a;
    }
 
-   @VisibleForTesting
-   static String[] a(List<String> $$0) {
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         String $$6 = $$0.get($$5);
-         $$1 = Math.min($$1, a($$6));
-         int $$7 = b($$6);
-         $$2 = Math.max($$2, $$7);
-         if ($$7 < 0) {
-            if ($$3 == $$5) {
-               $$3++;
-            }
-
-            $$4++;
-         } else {
-            $$4 = 0;
-         }
-      }
-
-      if ($$0.size() == $$4) {
-         return new String[0];
-      } else {
-         String[] $$8 = new String[$$0.size() - $$4 - $$3];
-
-         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
-            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
-         }
-
-         return $$8;
-      }
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 0;
-
-      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private static int b(String $$0) {
-      int $$1 = $$0.length() - 1;
-
-      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
-         $$1--;
-      }
-
-      return $$1;
-   }
-
-   public boolean a(ciq $$0) {
-      for (int $$1 = 0; $$1 <= $$0.f() - this.b; $$1++) {
-         for (int $$2 = 0; $$2 <= $$0.g() - this.c; $$2++) {
-            if (this.a($$0, $$1, $$2, true)) {
-               return true;
-            }
-
-            if (this.a($$0, $$1, $$2, false)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private boolean a(ciq $$0, int $$1, int $$2, boolean $$3) {
-      for (int $$4 = 0; $$4 < $$0.f(); $$4++) {
-         for (int $$5 = 0; $$5 < $$0.g(); $$5++) {
-            int $$6 = $$4 - $$1;
-            int $$7 = $$5 - $$2;
-            cpy $$8 = cpy.a;
-            if ($$6 >= 0 && $$7 >= 0 && $$6 < this.b && $$7 < this.c) {
-               if ($$3) {
-                  $$8 = this.d.get(this.b - $$6 - 1 + $$7 * this.b);
-               } else {
-                  $$8 = this.d.get($$6 + $$7 * this.b);
-               }
-            }
-
-            if (!$$8.a($$0.a($$4 + $$5 * $$0.f()))) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   public void a(ui $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-
-      for (cpy $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   public static cqj b(ui $$0) {
-      int $$1 = $$0.n();
-      int $$2 = $$0.n();
-      iq<cpy> $$3 = iq.a($$1 * $$2, cpy.a);
-      $$3.replaceAll($$1x -> cpy.b($$0));
-      return new cqj($$1, $$2, $$3, Optional.empty());
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
+   @Override
+   public String c() {
       return this.c;
    }
 
-   public iq<cpy> c() {
+   @Override
+   public cps d() {
       return this.d;
    }
 
-   public Optional<cqj.a> d() {
+   @Override
+   public cmy a(iu $$0) {
+      return this.b;
+   }
+
+   @Override
+   public iq<cpz> a() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean h() {
       return this.e;
    }
 
-   public static record a(Map<Character, cpy> b, List<String> c) {
-      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
-         if ($$0.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int $$1 = ((String)$$0.get(0)).length();
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
+   }
 
-            for (String $$2 : $$0) {
-               if ($$2.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-               }
+   public boolean a(cir $$0, ctp $$1) {
+      return this.a.a($$0);
+   }
 
-               if ($$1 != $$2.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-               }
-            }
+   public cmy a(cir $$0, iu $$1) {
+      return this.a($$1).p();
+   }
 
-            return DataResult.success($$0);
-         }
-      }, Function.identity());
-      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
-         if ($$0.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<cqj.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(atv.d(e, cpy.c).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, cqj.a::new)
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean i() {
+      iq<cpz> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   }
+
+   public static class a implements cqg<cqj> {
+      public static final Codec<cqj> x = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atw.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
+                  cps.e.fieldOf("category").orElse(cps.d).forGetter($$0x -> $$0x.d),
+                  cqk.a.forGetter($$0x -> $$0x.a),
+                  cmy.c.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  atw.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, cqj::new)
       );
 
-      public Map<Character, cpy> a() {
-         return this.b;
+      @Override
+      public Codec<cqj> a() {
+         return x;
       }
 
-      public List<String> b() {
-         return this.c;
+      public cqj b(ui $$0) {
+         String $$1 = $$0.s();
+         cps $$2 = $$0.b(cps.class);
+         cqk $$3 = cqk.b($$0);
+         cmy $$4 = $$0.r();
+         boolean $$5 = $$0.readBoolean();
+         return new cqj($$1, $$2, $$3, $$4, $$5);
+      }
+
+      public void a(ui $$0, cqj $$1) {
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         $$1.a.a($$0);
+         $$0.a($$1.b);
+         $$0.a($$1.e);
       }
    }
 }

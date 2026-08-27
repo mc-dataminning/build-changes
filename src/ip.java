@@ -35,7 +35,7 @@ public class ip<T> implements jc<T> {
    private final Map<T, ih.c<T>> h = new IdentityHashMap<>();
    private final Map<T, Lifecycle> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<asv<T>, il.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<asw<T>, il.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, ih.c<T>> m;
@@ -64,7 +64,7 @@ public class ip<T> implements jc<T> {
       }
 
       @Override
-      public Optional<il.c<T>> a(asv<T> $$0) {
+      public Optional<il.c<T>> a(asw<T> $$0) {
          return ip.this.b($$0);
       }
 
@@ -270,16 +270,16 @@ public class ip<T> implements jc<T> {
    }
 
    @Override
-   public Stream<Pair<asv<T>, il.c<T>>> i() {
+   public Stream<Pair<asw<T>, il.c<T>>> i() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public il.c<T> a(asv<T> $$0) {
+   public il.c<T> a(asw<T> $$0) {
       il.c<T> $$1 = this.k.get($$0);
       if ($$1 == null) {
          $$1 = this.d($$0);
-         Map<asv<T>, il.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         Map<asw<T>, il.c<T>> $$2 = new IdentityHashMap<>(this.k);
          $$2.put($$0, $$1);
          this.k = $$2;
       }
@@ -287,12 +287,12 @@ public class ip<T> implements jc<T> {
       return $$1;
    }
 
-   private il.c<T> d(asv<T> $$0) {
+   private il.c<T> d(asw<T> $$0) {
       return new il.c<>(this.o(), $$0);
    }
 
    @Override
-   public Stream<asv<T>> j() {
+   public Stream<asw<T>> j() {
       return this.k.keySet().stream();
    }
 
@@ -302,7 +302,7 @@ public class ip<T> implements jc<T> {
    }
 
    @Override
-   public Optional<ih.c<T>> a(auu $$0) {
+   public Optional<ih.c<T>> a(auv $$0) {
       return ac.b(this.a(), $$0);
    }
 
@@ -351,13 +351,13 @@ public class ip<T> implements jc<T> {
    }
 
    @Override
-   public Optional<il.c<T>> b(asv<T> $$0) {
+   public Optional<il.c<T>> b(asw<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<asv<T>, List<ih<T>>> $$0) {
-      Map<ih.c<T>, List<asv<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<asw<T>, List<ih<T>>> $$0) {
+      Map<ih.c<T>, List<asw<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (ih<T> $$3x : $$2x) {
@@ -372,7 +372,7 @@ public class ip<T> implements jc<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<asv<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<asw<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -381,7 +381,7 @@ public class ip<T> implements jc<T> {
          );
       }
 
-      Map<asv<T>, il.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      Map<asw<T>, il.c<T>> $$3 = new IdentityHashMap<>(this.k);
       $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
       $$1.forEach(ih.c::a);
       this.k = $$3;
@@ -408,12 +408,12 @@ public class ip<T> implements jc<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asv<T> $$0) {
+         public Optional<il.c<T>> a(asw<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public il.c<T> b(asv<T> $$0) {
+         public il.c<T> b(asw<T> $$0) {
             return ip.this.a($$0);
          }
       };

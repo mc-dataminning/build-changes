@@ -9,15 +9,15 @@ public interface amr {
       }
 
       @Override
-      public void a(Consumer<csv> $$0) {
+      public void a(Consumer<csw> $$0) {
       }
    };
 
-   static amr a(csv $$0, int $$1) {
+   static amr a(csw $$0, int $$1) {
       return new amr.a($$0, $$1);
    }
 
-   static void a(amr $$0, amr $$1, Consumer<csv> $$2, Consumer<csv> $$3) {
+   static void a(amr $$0, amr $$1, Consumer<csw> $$2, Consumer<csw> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof amr.a $$4 && $$1 instanceof amr.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface amr {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new csv($$10, $$11));
+                        $$2.accept(new csw($$10, $$11));
                      } else {
-                        $$3.accept(new csv($$10, $$11));
+                        $$3.accept(new csw($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface amr {
       }
    }
 
-   default boolean a(csv $$0) {
+   default boolean a(csw $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface amr {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<csv> var1);
+   void a(Consumer<csw> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface amr {
       return $$10 < (long)$$11;
    }
 
-   public static record a(csv b, int c) implements amr {
+   public static record a(csw b, int c) implements amr {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface amr {
       }
 
       @Override
-      public void a(Consumer<csv> $$0) {
+      public void a(Consumer<csw> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new csv($$1, $$2));
+                  $$0.accept(new csw($$1, $$2));
                }
             }
          }
       }
 
-      public csv a() {
+      public csw a() {
          return this.b;
       }
 

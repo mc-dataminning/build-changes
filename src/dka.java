@@ -1,27 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public enum dka implements avk {
+   a("compare"),
+   b("subtract");
 
-public class dka extends dke<ic> {
-   protected dka(String $$0, Collection<ic> $$1) {
-      super($$0, ic.class, $$1);
+   private final String c;
+
+   private dka(String $$0) {
+      this.c = $$0;
    }
 
-   public static dka a(String $$0) {
-      return a($$0, $$0x -> true);
+   @Override
+   public String toString() {
+      return this.c;
    }
 
-   public static dka a(String $$0, Predicate<ic> $$1) {
-      return a($$0, Arrays.stream(ic.values()).filter($$1).collect(Collectors.toList()));
-   }
-
-   public static dka a(String $$0, ic... $$1) {
-      return a($$0, Lists.newArrayList($$1));
-   }
-
-   public static dka a(String $$0, Collection<ic> $$1) {
-      return new dka($$0, $$1);
+   @Override
+   public String c() {
+      return this.c;
    }
 }

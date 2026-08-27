@@ -1,17 +1,9 @@
-public class gbs extends fzd<cdi, fmp<cdi>> {
-   private static final ahg a = new ahg("textures/entity/zombie_villager/zombie_villager.png");
-
-   public gbs(fym.a $$0) {
-      super($$0, new fmp<>($$0.a(fmv.cg)), 0.5F);
-      this.a(new gcn<>(this, new fmp($$0.a(fmv.ch)), new fmp($$0.a(fmv.ci)), $$0.g()));
-      this.a(new gdi<>(this, $$0.e(), "zombie_villager"));
+public class gbs extends fxk<cdi, fmp<cdi>> {
+   public gbs(fyn.a $$0) {
+      this($$0, fmw.cb, fmw.ce, fmw.cf);
    }
 
-   public ahg a(cdi $$0) {
-      return a;
-   }
-
-   protected boolean b(cdi $$0) {
-      return super.a($$0) || $$0.go();
+   public gbs(fyn.a $$0, fmv $$1, fmv $$2, fmv $$3) {
+      super($$0, new fmp<>($$0.a($$1)), new fmp<>($$0.a($$2)), new fmp<>($$0.a($$3)));
    }
 }

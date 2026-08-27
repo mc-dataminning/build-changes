@@ -7,7 +7,7 @@ public class zd implements xf<za> {
    private final int f;
    private final int g;
 
-   public zd(blu $$0, int $$1) {
+   public zd(blv $$0, int $$1) {
       this.f = $$0.aj();
       this.g = $$1;
    }

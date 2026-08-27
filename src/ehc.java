@@ -1,146 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
 public class ehc {
-   public static final Codec<ehc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehm.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               atv.a(ejw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               atv.a(eik.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               ekq.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               ekq.a.fieldOf("bonus_rolls").orElse(ekn.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ehc::new)
-   );
-   private final List<eho> b;
-   private final List<eju> c;
-   private final Predicate<egv> d;
-   private final List<eii> e;
-   private final BiFunction<cmx, egv, cmx> f;
-   private final ekp g;
-   private final ekp h;
+   private final and a;
+   private final Map<eje<?>, Object> b;
+   private final Map<ahg, ehc.b> c;
+   private final float d;
 
-   ehc(List<eho> $$0, List<eju> $$1, List<eii> $$2, ekp $$3, ekp $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ejw.a($$1);
-      this.e = $$2;
-      this.f = eik.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public ehc(and $$0, Map<eje<?>, Object> $$1, Map<ahg, ehc.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private void b(Consumer<cmx> $$0, egv $$1) {
-      auu $$2 = $$1.b();
-      List<ehn> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public and a() {
+      return this.a;
+   }
 
-      for (eho $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public boolean a(eje<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(eje<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(eje<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(eje<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(ahg $$0, Consumer<cmy> $$1) {
+      ehc.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final and a;
+      private final Map<eje<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<ahg, ehc.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(and $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public and a() {
+         return this.a;
+      }
+
+      public <T> ehc.a a(eje<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> ehc.a b(eje<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
          } else {
-            int $$7 = $$2.a($$4.intValue());
+            this.b.put($$0, $$1);
+         }
 
-            for (ehn $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+         return this;
+      }
+
+      public <T> T a(eje<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
       }
-   }
 
-   public void a(Consumer<cmx> $$0, egv $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cmx> $$2 = eii.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + aun.d(this.h.b($$1) * $$1.c());
+      @Nullable
+      public <T> T b(eje<T> $$0) {
+         return (T)this.b.get($$0);
+      }
 
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
+      public ehc.a a(ahg $$0, ehc.b $$1) {
+         ehc.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
          }
       }
-   }
 
-   public void a(ehe $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ehc.a a() {
-      return new ehc.a();
-   }
-
-   public static class a implements eif<ehc.a>, ejn<ehc.a> {
-      private final Builder<eho> a = ImmutableList.builder();
-      private final Builder<eju> b = ImmutableList.builder();
-      private final Builder<eii> c = ImmutableList.builder();
-      private ekp d = ekn.a(1.0F);
-      private ekp e = ekn.a(0.0F);
-
-      public ehc.a a(ekp $$0) {
+      public ehc.a a(float $$0) {
          this.d = $$0;
          return this;
       }
 
-      public ehc.a a() {
-         return this;
+      public ehc a(ejf $$0) {
+         Set<eje<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<eje<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new ehc(this.a, this.b, this.c, this.d);
+            }
+         }
       }
+   }
 
-      public ehc.a b(ekp $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ehc.a a(eho.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ehc.a a(eju.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ehc.a a(eii.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ehc b() {
-         return new ehc(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cmy> var1);
    }
 }

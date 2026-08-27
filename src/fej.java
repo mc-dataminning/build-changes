@@ -1,82 +1,96 @@
-public class fej extends fdy {
-   private final dhe m;
-   private exm<dhe.a> n;
-   private exm<Boolean> o;
-   private exm<Boolean> p;
-   private dhe.a q = dhe.a.c;
-   private boolean r;
-   private boolean t;
+import javax.annotation.Nullable;
 
-   public fej(dhe $$0) {
-      this.m = $$0;
+public class fej extends fea<cih> {
+   private static final ahg x = new ahg("container/cartography_table/error");
+   private static final ahg y = new ahg("container/cartography_table/scaled_map");
+   private static final ahg z = new ahg("container/cartography_table/duplicated_map");
+   private static final ahg A = new ahg("container/cartography_table/map");
+   private static final ahg B = new ahg("container/cartography_table/locked");
+   private static final ahg C = new ahg("textures/gui/container/cartography_table.png");
+
+   public fej(cih $$0, cfh $$1, vf $$2) {
+      super($$0, $$1, $$2);
+      this.m -= 2;
    }
 
    @Override
-   csp n() {
-      return this.m.c();
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int D() {
-      return 135;
+   protected void a(ewu $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      cmy $$6 = this.p.b(1).g();
+      boolean $$7 = $$6.a(cnb.uc);
+      boolean $$8 = $$6.a(cnb.qL);
+      boolean $$9 = $$6.a(cnb.fS);
+      cmy $$10 = this.p.b(0).g();
+      boolean $$11 = false;
+      Integer $$12;
+      egb $$13;
+      if ($$10.a(cnb.rR)) {
+         $$12 = cnf.d($$10);
+         $$13 = cnf.a($$12, this.f.r);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$11 = true;
+               if ($$8 || $$9) {
+                  $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
+
+            if ($$8 && $$13.f >= 4) {
+               $$11 = true;
+               $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+            }
+         }
+      } else {
+         $$12 = null;
+         $$13 = null;
+      }
+
+      this.a($$0, $$12, $$13, $$7, $$8, $$9, $$11);
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.n = this.d(exm.<dhe.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> vf.c("advMode.mode.sequence");
-            case b -> vf.c("advMode.mode.auto");
-            case c -> vf.c("advMode.mode.redstone");
-         };
-      }).a(dhe.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, vf.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.d(
-         exm.a(vf.c("advMode.mode.conditional"), vf.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.r)
-            .a(this.g / 2 - 50, 165, 100, 20, vf.c("advMode.type"), ($$0, $$1) -> this.r = $$1)
-      );
-      this.p = this.d(
-         exm.a(vf.c("advMode.mode.autoexec.bat"), vf.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, vf.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
+   private void a(ewu $$0, @Nullable Integer $$1, @Nullable egb $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.t;
+      int $$8 = this.u;
+      if ($$4 && !$$6) {
+         $$0.a(y, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(z, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(z, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(B, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      }
    }
 
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.l.j = $$0;
-      this.n.j = $$0;
-      this.o.j = $$0;
-      this.p.j = $$0;
-   }
-
-   public void H() {
-      csp $$0 = this.m.c();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.m();
-      this.r = this.m.w();
-      this.t = this.m.f();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.r);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
-   }
-
-   @Override
-   public void a(evh $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(csp $$0) {
-      this.f.J().b(new aew(hx.a($$0.g()), this.a.a(), this.q, $$0.o(), this.r, this.t));
+   private void a(ewu $$0, @Nullable Integer $$1, @Nullable egb $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         this.f.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
+         $$0.e();
+         $$0.c().b();
+      }
    }
 }

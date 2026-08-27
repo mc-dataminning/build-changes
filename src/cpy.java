@@ -1,186 +1,115 @@
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntComparators;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public final class cpy implements Predicate<cmx> {
-   public static final cpy a = new cpy(Stream.empty());
-   private final cpy.c[] d;
-   @Nullable
-   private cmx[] e;
-   @Nullable
-   private IntList f;
-   public static final Codec<cpy> b = a(true);
-   public static final Codec<cpy> c = a(false);
+public class cpy extends cpu {
+   private static final cpz a = cpz.a(cnb.tS, cnb.pq, cnb.sf, cnb.ue, cnb.uf, cnb.ui, cnb.ug, cnb.uj, cnb.uh, cnb.uk);
+   private static final cpz b = cpz.a(cnb.ov);
+   private static final cpz c = cpz.a(cnb.qV);
+   private static final Map<cmt, cmc.a> d = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cnb.tS, cmc.a.b);
+      $$0.put(cnb.pq, cmc.a.e);
+      $$0.put(cnb.sf, cmc.a.c);
+      $$0.put(cnb.ue, cmc.a.d);
+      $$0.put(cnb.uf, cmc.a.d);
+      $$0.put(cnb.ui, cmc.a.d);
+      $$0.put(cnb.ug, cmc.a.d);
+      $$0.put(cnb.uj, cmc.a.d);
+      $$0.put(cnb.uh, cmc.a.d);
+      $$0.put(cnb.uk, cmc.a.d);
+   });
+   private static final cpz e = cpz.a(cnb.pr);
 
-   private cpy(Stream<? extends cpy.c> $$0) {
-      this.d = $$0.toArray(cpy.c[]::new);
+   public cpy(cps $$0) {
+      super($$0);
    }
 
-   private cpy(cpy.c[] $$0) {
-      this.d = $$0;
-   }
+   public boolean a(cir $$0, ctp $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   public cmx[] a() {
-      if (this.e == null) {
-         this.e = Arrays.stream(this.d).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cmx[]::new);
-      }
+      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
+         cmy $$8 = $$0.a($$7);
+         if (!$$8.b()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
 
-      return this.e;
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   public boolean a(@Nullable cmx $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if (this.c()) {
-         return $$0.b();
-      } else {
-         for (cmx $$1 : this.a()) {
-            if ($$1.a($$0.d())) {
-               return true;
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            } else if (e.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else {
+               if (!($$8.d() instanceof cln)) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
-
-         return false;
       }
+
+      return $$2 && $$3;
    }
 
-   public IntList b() {
-      if (this.f == null) {
-         cmx[] $$0 = this.a();
-         this.f = new IntArrayList($$0.length);
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = new cmy(cnb.uo);
+      sn $$3 = $$2.a("Explosion");
+      cmc.a $$4 = cmc.a.a;
+      List<Integer> $$5 = Lists.newArrayList();
 
-         for (cmx $$1 : $$0) {
-            this.f.add(cfl.c($$1));
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmy $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (a.a($$7)) {
+               $$4 = d.get($$7.d());
+            } else if (c.a($$7)) {
+               $$3.a("Flicker", true);
+            } else if (b.a($$7)) {
+               $$3.a("Trail", true);
+            } else if ($$7.d() instanceof cln) {
+               $$5.add(((cln)$$7.d()).d().f());
+            }
          }
-
-         this.f.sort(IntComparators.NATURAL_COMPARATOR);
       }
 
-      return this.f;
-   }
-
-   public void a(ui $$0) {
-      $$0.a(Arrays.asList(this.a()), ui::a);
-   }
-
-   public boolean c() {
-      return this.d.length == 0;
+      $$3.b("Colors", $$5);
+      $$3.a("Type", (byte)$$4.a());
+      return $$2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof cpy $$1 ? Arrays.equals((Object[])this.d, (Object[])$$1.d) : false;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   private static cpy b(Stream<? extends cpy.c> $$0) {
-      cpy $$1 = new cpy($$0);
-      return $$1.c() ? a : $$1;
+   @Override
+   public cmy a(iu $$0) {
+      return new cmy(cnb.uo);
    }
 
-   public static cpy d() {
-      return a;
-   }
-
-   public static cpy a(ctn... $$0) {
-      return a(Arrays.stream($$0).map(cmx::new));
-   }
-
-   public static cpy a(cmx... $$0) {
-      return a(Arrays.stream($$0));
-   }
-
-   public static cpy a(Stream<cmx> $$0) {
-      return b($$0.filter($$0x -> !$$0x.b()).map(cpy.a::new));
-   }
-
-   public static cpy a(asv<cms> $$0) {
-      return b(Stream.of(new cpy.b($$0)));
-   }
-
-   public static cpy b(ui $$0) {
-      return b($$0.<cmx>a(ui::r).stream().map(cpy.a::new));
-   }
-
-   private static Codec<cpy> a(boolean $$0) {
-      Codec<cpy.c[]> $$1 = Codec.list(cpy.c.a)
-         .comapFlatMap(
-            $$1x -> !$$0 && $$1x.size() < 1
-                  ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
-                  : DataResult.success($$1x.toArray(new cpy.c[0])),
-            List::of
-         );
-      return atv.c($$1, cpy.c.a)
-         .flatComapMap(
-            $$0x -> (cpy)$$0x.map(cpy::new, $$0xx -> new cpy(new cpy.c[]{$$0xx})),
-            $$1x -> {
-               if ($$1x.d.length == 1) {
-                  return DataResult.success(Either.right($$1x.d[0]));
-               } else {
-                  return $$1x.d.length == 0 && !$$0
-                     ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
-                     : DataResult.success(Either.left($$1x.d));
-               }
-            }
-         );
-   }
-
-   static record a(cmx b) implements cpy.c {
-      static final Codec<cpy.a> c = RecordCodecBuilder.create($$0 -> $$0.group(cmx.d.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, cpy.a::new));
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cpy.a $$1) ? false : $$1.b.d().equals(this.b.d()) && $$1.b.L() == this.b.L();
-      }
-
-      @Override
-      public Collection<cmx> a() {
-         return Collections.singleton(this.b);
-      }
-   }
-
-   static record b(asv<cms> b) implements cpy.c {
-      static final Codec<cpy.b> c = RecordCodecBuilder.create($$0 -> $$0.group(asv.a(ke.F).fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, cpy.b::new));
-
-      @Override
-      public boolean equals(Object $$0) {
-         return $$0 instanceof cpy.b $$1 ? $$1.b.b().equals(this.b.b()) : false;
-      }
-
-      @Override
-      public Collection<cmx> a() {
-         List<cmx> $$0 = Lists.newArrayList();
-
-         for (ih<cms> $$1 : kd.h.c(this.b)) {
-            $$0.add(new cmx($$1));
-         }
-
-         return $$0;
-      }
-   }
-
-   interface c {
-      Codec<cpy.c> a = atv.a(cpy.a.c, cpy.b.c).xmap($$0 -> (cpy.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
-         if ($$0 instanceof cpy.b $$1) {
-            return Either.right($$1);
-         } else if ($$0 instanceof cpy.a $$2) {
-            return Either.left($$2);
-         } else {
-            throw new UnsupportedOperationException("This is neither an item value nor a tag value.");
-         }
-      });
-
-      Collection<cmx> a();
+   @Override
+   public cqg<?> ar_() {
+      return cqg.h;
    }
 }

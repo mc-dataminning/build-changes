@@ -1,13 +1,29 @@
-public interface bic {
-   void a();
+public class bic implements bid {
+   public static final bid a = new bic();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bgr f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bgs f() {
+      return bgp.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

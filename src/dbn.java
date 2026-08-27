@@ -1,40 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dbn extends cwp {
+public class dbn extends cwq implements cwt {
    public static final MapCodec<dbn> a = b(dbn::new);
-   protected static final eml b = cwp.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<dbn> a() {
       return a;
    }
 
-   public dbn(djf.d $$0) {
+   public dbn(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public eml b(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return b;
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public eml b_(djg $$0, csu $$1, hx $$2) {
-      return emi.b();
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+      return true;
    }
 
    @Override
-   public eml c(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return emi.b();
-   }
-
-   @Override
-   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
-      return false;
-   }
-
-   @Override
-   public float d(djg $$0, csu $$1, hx $$2) {
-      return 0.2F;
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      $$0.I_().c(ke.aw).flatMap($$0x -> $$0x.b(qh.n)).ifPresent($$3x -> ((drh)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
    }
 }

@@ -5,7 +5,7 @@ public class aeh implements xf<adj> {
    private final float d;
    private final float e;
 
-   public aeh(blu $$0) {
+   public aeh(blv $$0) {
       this.a = $$0.dr();
       this.b = $$0.dt();
       this.c = $$0.dx();

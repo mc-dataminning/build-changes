@@ -11,25 +11,25 @@ public class ay extends cv<ay.a> {
       return ay.a.a;
    }
 
-   public void a(ane $$0, Collection<? extends blu> $$1) {
-      List<egv> $$2 = $$1.stream().map($$1x -> bp.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(ane $$0, Collection<? extends blv> $$1) {
+      List<egw> $$2 = $$1.stream().map($$1x -> bp.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
    public static record a(Optional<bb> b, List<bb> c) implements cv.a {
       public static final Codec<ay.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(ay.a::a), atv.a(bp.b.listOf(), "victims", List.of()).forGetter(ay.a::b)).apply($$0, ay.a::new)
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(ay.a::a), atw.a(bp.b.listOf(), "victims", List.of()).forGetter(ay.a::b)).apply($$0, ay.a::new)
       );
 
       public static an<ay.a> a(bp.a... $$0) {
          return am.F.a(new ay.a(Optional.empty(), bp.a($$0)));
       }
 
-      public boolean a(Collection<? extends egv> $$0) {
+      public boolean a(Collection<? extends egw> $$0) {
          for (bb $$1 : this.c) {
             boolean $$2 = false;
 
-            for (egv $$3 : $$0) {
+            for (egw $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

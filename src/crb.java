@@ -1,6 +1,6 @@
-public class crb extends cri {
-   public crb(cri.a $$0, blz... $$1) {
-      super($$0, crj.k, $$1);
+public class crb extends crj {
+   public crb(crj.a $$0, bma... $$1) {
+      super($$0, crk.k, $$1);
    }
 
    @Override
@@ -11,10 +11,5 @@ public class crb extends cri {
    @Override
    public int b(int $$0) {
       return 50;
-   }
-
-   @Override
-   public boolean a(cri $$0) {
-      return $$0 instanceof crs ? false : super.a($$0);
    }
 }

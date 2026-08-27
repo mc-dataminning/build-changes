@@ -1,389 +1,543 @@
 public class ewe {
-   public static final evy a = evy.a.a(3.0F)
-      .a(
-         "croaking_body",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.375F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.4167F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.4583F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a),
-            new evz(2.9583F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a),
-            new evz(3.0F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a)
-         )
-      )
-      .a(
-         "croaking_body",
-         new evx(
-            evx.d.c,
-            new evz(0.0F, ewa.a(0.0, 0.0, 0.0), evx.b.a),
-            new evz(0.375F, ewa.a(0.0, 0.0, 0.0), evx.b.a),
-            new evz(0.4167F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(0.4583F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(0.5417F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(0.625F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(0.7083F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(2.25F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(2.3333F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(2.4167F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(2.5F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(2.5833F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(2.6667F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(2.875F, ewa.a(1.3F, 2.1F, 1.6F), evx.b.a),
-            new evz(2.9583F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(3.0F, ewa.a(0.0, 0.0, 0.0), evx.b.a)
-         )
-      )
-      .b();
-   public static final evy b = evy.a.a(1.25F)
+   public static final evz a = evz.a.a(1.5F)
       .a()
       .a(
-         "left_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, -5.0F, 0.0F), evx.b.a),
-            new evz(0.2917F, ewa.b(7.5F, -2.67F, -7.5F), evx.b.a),
-            new evz(0.625F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.7917F, ewa.b(22.5F, 0.0F, 0.0F), evx.b.a),
-            new evz(1.125F, ewa.b(-45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(1.25F, ewa.b(0.0F, -5.0F, 0.0F), evx.b.a)
-         )
-      )
-      .a(
-         "left_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 0.1F, -2.0F), evx.b.a),
-            new evz(0.2917F, ewa.a(-0.5F, -0.25F, -0.13F), evx.b.a),
-            new evz(0.625F, ewa.a(-0.5F, 0.1F, 2.0F), evx.b.a),
-            new evz(0.9583F, ewa.a(0.5F, 1.0F, -0.11F), evx.b.a),
-            new evz(1.25F, ewa.a(0.0F, 0.1F, -2.0F), evx.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.125F, ewa.b(22.5F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.4583F, ewa.b(-45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.625F, ewa.b(0.0F, 5.0F, 0.0F), evx.b.a),
-            new evz(0.9583F, ewa.b(7.5F, 2.33F, 7.5F), evx.b.a),
-            new evz(1.25F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.5F, 0.1F, 2.0F), evx.b.a),
-            new evz(0.2917F, ewa.a(-0.5F, 1.0F, 0.12F), evx.b.a),
-            new evz(0.625F, ewa.a(0.0F, 0.1F, -2.0F), evx.b.a),
-            new evz(0.9583F, ewa.a(0.5F, -0.25F, -0.13F), evx.b.a),
-            new evz(1.25F, ewa.a(0.5F, 0.1F, 2.0F), evx.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.1667F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.2917F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.625F, ewa.b(-45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.7917F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(1.25F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 0.1F, 1.2F), evx.b.a),
-            new evz(0.1667F, ewa.a(0.0F, 0.1F, 2.0F), evx.b.a),
-            new evz(0.4583F, ewa.a(0.0F, 2.0F, 1.06F), evx.b.a),
-            new evz(0.7917F, ewa.a(0.0F, 0.1F, -1.0F), evx.b.a),
-            new evz(1.25F, ewa.a(0.0F, 0.1F, 1.2F), evx.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(-33.75F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.0417F, ewa.b(-45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.1667F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.7917F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.9583F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(1.25F, ewa.b(-33.75F, 0.0F, 0.0F), evx.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 1.14F, 0.11F), evx.b.a),
-            new evz(0.1667F, ewa.a(0.0F, 0.1F, -1.0F), evx.b.a),
-            new evz(0.7917F, ewa.a(0.0F, 0.1F, 2.0F), evx.b.a),
-            new evz(1.125F, ewa.a(0.0F, 2.0F, 0.95F), evx.b.a),
-            new evz(1.25F, ewa.a(0.0F, 1.14F, 0.11F), evx.b.a)
-         )
-      )
-      .a(
-         "body",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 5.0F, 0.0F), evx.b.a),
-            new evz(0.2917F, ewa.b(-7.5F, 0.33F, 7.5F), evx.b.a),
-            new evz(0.625F, ewa.b(0.0F, -5.0F, 0.0F), evx.b.a),
-            new evz(0.9583F, ewa.b(-7.5F, 0.33F, -7.5F), evx.b.a),
-            new evz(1.25F, ewa.b(0.0F, 5.0F, 0.0F), evx.b.a)
-         )
-      )
-      .b();
-   public static final evy c = evy.a.a(0.5F)
-      .a("body", new evx(evx.d.b, new evz(0.0F, ewa.b(-22.5F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.b(-22.5F, 0.0F, 0.0F), evx.b.a)))
-      .a("body", new evx(evx.d.a, new evz(0.0F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a)))
-      .a("left_arm", new evx(evx.d.b, new evz(0.0F, ewa.b(-56.14F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.b(-56.14F, 0.0F, 0.0F), evx.b.a)))
-      .a("left_arm", new evx(evx.d.a, new evz(0.0F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a)))
-      .a("right_arm", new evx(evx.d.b, new evz(0.0F, ewa.b(-56.14F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.b(-56.14F, 0.0F, 0.0F), evx.b.a)))
-      .a("right_arm", new evx(evx.d.a, new evz(0.0F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.a(0.0F, 1.0F, 0.0F), evx.b.a)))
-      .a("left_leg", new evx(evx.d.b, new evz(0.0F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a)))
-      .a("left_leg", new evx(evx.d.a, new evz(0.0F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a)))
-      .a("right_leg", new evx(evx.d.b, new evz(0.0F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.b(45.0F, 0.0F, 0.0F), evx.b.a)))
-      .a("right_leg", new evx(evx.d.a, new evz(0.0F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a), new evz(0.5F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.a)))
-      .b();
-   public static final evy d = evy.a.a(0.5F)
-      .a(
-         "head",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.0833F, ewa.b(-60.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.4167F, ewa.b(-60.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.5F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a)
+         "root",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 2.5F), evy.b.b),
+            new ewa(1.0F, ewb.b(0.0F, 0.0F, -2.5F), evy.b.b),
+            new ewa(1.5F, ewb.b(0.0F, 0.0F, 2.5F), evy.b.b)
          )
       )
       .a(
          "head",
-         new evx(
-            evx.d.c,
-            new evz(0.0F, ewa.b(1.0F, 1.0F, 1.0F), evx.b.a),
-            new evz(0.0833F, ewa.b(0.998F, 1.0F, 1.0F), evx.b.a),
-            new evz(0.4167F, ewa.b(0.998F, 1.0F, 1.0F), evx.b.a),
-            new evz(0.5F, ewa.b(1.0F, 1.0F, 1.0F), evx.b.a)
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(2.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(-2.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.b(2.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.125F, ewb.b(-2.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.b(2.5F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "tongue",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.0833F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.4167F, ewa.b(-18.0F, 0.0F, 0.0F), evx.b.a),
-            new evz(0.5F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.a)
+         "right_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.b(-22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "tongue",
-         new evx(
-            evx.d.c,
-            new evz(0.0833F, ewa.a(1.0, 1.0, 1.0), evx.b.a),
-            new evz(0.1667F, ewa.a(0.5, 1.0, 5.0), evx.b.a),
-            new evz(0.4167F, ewa.a(1.0, 1.0, 1.0), evx.b.a)
-         )
-      )
-      .b();
-   public static final evy e = evy.a.a(1.04167F)
-      .a()
-      .a(
-         "body",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.3333F, ewa.b(10.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.6667F, ewa.b(-10.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(1.0417F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.b)
+         "right_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.4583F, ewb.a(0.0F, 4.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "left_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(90.0F, 22.5F, 0.0F), evx.b.b),
-            new evz(0.4583F, ewa.b(45.0F, 22.5F, 0.0F), evx.b.b),
-            new evz(0.6667F, ewa.b(-22.5F, -22.5F, -22.5F), evx.b.b),
-            new evz(0.875F, ewa.b(-45.0F, -22.5F, 0.0F), evx.b.b),
-            new evz(0.9583F, ewa.b(22.5F, 0.0F, 22.5F), evx.b.b),
-            new evz(1.0417F, ewa.b(90.0F, 22.5F, 0.0F), evx.b.b)
+         "left_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.b(-22.5F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "left_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, -0.64F, 2.0F), evx.b.b),
-            new evz(0.4583F, ewa.a(0.0F, -0.64F, 0.0F), evx.b.b),
-            new evz(0.6667F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.875F, ewa.a(0.0F, -0.27F, -1.14F), evx.b.b),
-            new evz(0.9583F, ewa.a(0.0F, -1.45F, 0.43F), evx.b.b),
-            new evz(1.0417F, ewa.a(0.0F, -0.64F, 2.0F), evx.b.b)
+         "left_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.2083F, ewb.a(0.0F, 4.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "right_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(90.0F, -22.5F, 0.0F), evx.b.b),
-            new evz(0.4583F, ewa.b(45.0F, -22.5F, 0.0F), evx.b.b),
-            new evz(0.6667F, ewa.b(-22.5F, 22.5F, 22.5F), evx.b.b),
-            new evz(0.875F, ewa.b(-45.0F, 22.5F, 0.0F), evx.b.b),
-            new evz(0.9583F, ewa.b(22.5F, 0.0F, -22.5F), evx.b.b),
-            new evz(1.0417F, ewa.b(90.0F, -22.5F, 0.0F), evx.b.b)
+         "left_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-20.4F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.375F, ewb.b(-22.5F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-20.4F, 0.0F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "right_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, -0.64F, 2.0F), evx.b.b),
-            new evz(0.4583F, ewa.a(0.0F, -0.64F, 0.0F), evx.b.b),
-            new evz(0.6667F, ewa.a(0.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.875F, ewa.a(0.0F, -0.27F, -1.14F), evx.b.b),
-            new evz(0.9583F, ewa.a(0.0F, -1.45F, 0.43F), evx.b.b),
-            new evz(1.0417F, ewa.a(0.0F, -0.64F, 2.0F), evx.b.b)
+         "left_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, -0.21F, 0.0F), evy.b.b),
+            new ewa(0.75F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.0833F, ewb.a(0.0F, 4.0F, 0.0F), evy.b.b),
+            new ewa(1.375F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(0.0F, -0.21F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "left_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.25F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.4583F, ewa.b(67.5F, -45.0F, 0.0F), evx.b.b),
-            new evz(0.7917F, ewa.b(90.0F, 45.0F, 0.0F), evx.b.b),
-            new evz(0.9583F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(1.0417F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b)
+         "right_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.625F, ewb.b(-22.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.b(22.5F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "left_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(-2.5F, 0.0F, 1.0F), evx.b.b),
-            new evz(0.25F, ewa.a(-2.0F, 0.0F, 1.0F), evx.b.b),
-            new evz(0.4583F, ewa.a(1.0F, -2.0F, -1.0F), evx.b.b),
-            new evz(0.7917F, ewa.a(0.58F, 0.0F, -2.83F), evx.b.b),
-            new evz(0.9583F, ewa.a(-2.5F, 0.0F, 1.0F), evx.b.b),
-            new evz(1.0417F, ewa.a(-2.5F, 0.0F, 1.0F), evx.b.b)
+         "right_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.a(0.0F, 4.0F, 0.0F), evy.b.b),
+            new ewa(0.625F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.5F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "right_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.25F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(0.4583F, ewa.b(67.5F, 45.0F, 0.0F), evx.b.b),
-            new evz(0.7917F, ewa.b(90.0F, -45.0F, 0.0F), evx.b.b),
-            new evz(0.9583F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(1.0417F, ewa.b(90.0F, 0.0F, 0.0F), evx.b.b)
+         "left_ear",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(0.0F, 0.0F, -22.5F), evy.b.b),
+            new ewa(0.75F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.125F, ewb.b(0.0F, 0.0F, -22.5F), evy.b.b),
+            new ewa(1.5F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b)
          )
       )
       .a(
-         "right_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(2.5F, 0.0F, 1.0F), evx.b.b),
-            new evz(0.25F, ewa.a(2.0F, 0.0F, 1.0F), evx.b.b),
-            new evz(0.4583F, ewa.a(-1.0F, -2.0F, -1.0F), evx.b.b),
-            new evz(0.7917F, ewa.a(-0.58F, 0.0F, -2.83F), evx.b.b),
-            new evz(0.9583F, ewa.a(2.5F, 0.0F, 1.0F), evx.b.b),
-            new evz(1.0417F, ewa.a(2.5F, 0.0F, 1.0F), evx.b.b)
+         "right_ear",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(0.0F, 0.0F, 22.5F), evy.b.b),
+            new ewa(0.75F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.125F, ewb.b(0.0F, 0.0F, 22.5F), evy.b.b),
+            new ewa(1.5F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(15.94102F, -8.42106F, 20.94102F), evy.b.b),
+            new ewa(0.75F, ewb.b(15.94102F, 8.42106F, -20.94102F), evy.b.b),
+            new ewa(1.5F, ewb.b(15.94102F, -8.42106F, 20.94102F), evy.b.b)
          )
       )
       .b();
-   public static final evy f = evy.a.a(3.0F)
-      .a()
+   public static final evz b = evz.a.a(2.0F)
       .a(
          "body",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(1.625F, ewa.b(-10.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(3.0F, ewa.b(0.0F, 0.0F, 0.0F), evx.b.b)
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.3F, ewb.b(30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.8F, ewb.b(24.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "left_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, -22.5F), evx.b.b),
-            new evz(2.2083F, ewa.b(0.0F, 0.0F, -45.0F), evx.b.b),
-            new evz(3.0F, ewa.b(0.0F, 0.0F, -22.5F), evx.b.b)
+         "body",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.3F, ewb.a(0.0F, 0.0F, 1.0F), evy.b.a),
+            new ewa(1.8F, ewb.a(0.0F, -6.0F, 1.0F), evy.b.a),
+            new ewa(2.0F, ewb.a(0.0F, -19.9F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "left_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(-1.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(2.2083F, ewa.a(-1.0F, -0.5F, 0.0F), evx.b.b),
-            new evz(3.0F, ewa.a(-1.0F, 0.0F, 0.0F), evx.b.b)
+         "right_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.0F, ewb.b(-30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(-90.0F, 10.0F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "right_arm",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(0.0F, 0.0F, 22.5F), evx.b.b),
-            new evz(2.2083F, ewa.b(0.0F, 0.0F, 45.0F), evx.b.b),
-            new evz(3.0F, ewa.b(0.0F, 0.0F, 22.5F), evx.b.b)
+         "right_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.0F, ewb.a(0.0F, -2.0F, 11.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(0.0F, -2.0F, 11.0F), evy.b.a),
+            new ewa(1.7F, ewb.a(0.0F, -8.4F, 11.4F), evy.b.a),
+            new ewa(2.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a)
          )
       )
       .a(
-         "right_arm",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(1.0F, 0.0F, 0.0F), evx.b.b),
-            new evz(2.2083F, ewa.a(1.0F, -0.5F, 0.0F), evx.b.b),
-            new evz(3.0F, ewa.a(1.0F, 0.0F, 0.0F), evx.b.b)
+         "left_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.0F, ewb.b(-30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(-90.0F, -10.0F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "left_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(22.5F, -22.5F, 0.0F), evx.b.b),
-            new evz(1.0F, ewa.b(22.5F, -22.5F, -45.0F), evx.b.b),
-            new evz(3.0F, ewa.b(22.5F, -22.5F, 0.0F), evx.b.b)
+         "left_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.0F, ewb.a(0.0F, -2.0F, 11.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(0.0F, -2.0F, 11.0F), evy.b.a),
+            new ewa(1.7F, ewb.a(0.0F, -8.4F, 11.4F), evy.b.a),
+            new ewa(2.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a)
          )
       )
       .a(
-         "left_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 0.0F, 1.0F), evx.b.b),
-            new evz(1.0F, ewa.a(0.0F, -1.0F, 1.0F), evx.b.b),
-            new evz(3.0F, ewa.a(0.0F, 0.0F, 1.0F), evx.b.b)
+         "left_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-10.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.7F, ewb.b(-15.0F, -3.0F, 0.0F), evy.b.a),
+            new ewa(1.9F, ewb.b(-65.0F, -9.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(-90.0F, -15.0F, 0.0F), evy.b.a)
          )
       )
       .a(
-         "right_leg",
-         new evx(
-            evx.d.b,
-            new evz(0.0F, ewa.b(22.5F, 22.5F, 0.0F), evx.b.b),
-            new evz(1.0F, ewa.b(22.5F, 22.5F, 45.0F), evx.b.b),
-            new evz(3.0F, ewa.b(22.5F, 22.5F, 0.0F), evx.b.b)
+         "left_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(0.0F, 0.0F, 1.0F), evy.b.a),
+            new ewa(1.7F, ewb.a(1.0F, -0.62F, 0.25F), evy.b.a),
+            new ewa(1.9F, ewb.a(0.5F, -11.25F, 2.5F), evy.b.a),
+            new ewa(2.0F, ewb.a(1.0F, -20.5F, 5.0F), evy.b.a)
          )
       )
       .a(
-         "right_leg",
-         new evx(
-            evx.d.a,
-            new evz(0.0F, ewa.a(0.0F, 0.0F, 1.0F), evx.b.b),
-            new evz(1.0F, ewa.a(0.0F, -1.0F, 1.0F), evx.b.b),
-            new evz(3.0F, ewa.a(0.0F, 0.0F, 1.0F), evx.b.b)
+         "right_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-10.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.7F, ewb.b(-15.0F, 3.0F, 0.0F), evy.b.a),
+            new ewa(1.9F, ewb.b(-65.0F, 9.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(-90.0F, 15.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(0.0F, 0.0F, 1.0F), evy.b.a),
+            new ewa(1.7F, ewb.a(-1.0F, -0.62F, 0.25F), evy.b.a),
+            new ewa(1.9F, ewb.a(-0.5F, -11.25F, 2.5F), evy.b.a),
+            new ewa(2.0F, ewb.a(-1.0F, -20.5F, 5.0F), evy.b.a)
+         )
+      )
+      .a(
+         "head",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.7F, ewb.b(-27.5F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(-21.25F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.7F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.9F, ewb.b(80.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(50.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .b();
+   public static final evz c = evz.a.a(1.0F)
+      .a("body", new evy(evy.d.b, new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)))
+      .a("body", new evy(evy.d.a, new ewa(0.0F, ewb.a(0.0F, -19.9F, 0.0F), evy.b.a), new ewa(1.0F, ewb.a(0.0F, -19.9F, 0.0F), evy.b.a)))
+      .a("right_front_leg", new evy(evy.d.b, new ewa(0.0F, ewb.b(-90.0F, 10.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(-90.0F, 10.0F, 0.0F), evy.b.a)))
+      .a("right_front_leg", new evy(evy.d.a, new ewa(0.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a), new ewa(1.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a)))
+      .a("left_front_leg", new evy(evy.d.b, new ewa(0.0F, ewb.b(-90.0F, -10.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(-90.0F, -10.0F, 0.0F), evy.b.a)))
+      .a("left_front_leg", new evy(evy.d.a, new ewa(0.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a), new ewa(1.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a)))
+      .a("left_hind_leg", new evy(evy.d.b, new ewa(0.0F, ewb.b(-90.0F, -15.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(-90.0F, -15.0F, 0.0F), evy.b.a)))
+      .a("left_hind_leg", new evy(evy.d.a, new ewa(0.0F, ewb.a(1.0F, -20.5F, 5.0F), evy.b.a), new ewa(1.0F, ewb.a(1.0F, -20.5F, 5.0F), evy.b.a)))
+      .a("right_hind_leg", new evy(evy.d.b, new ewa(0.0F, ewb.b(-90.0F, 15.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(-90.0F, 15.0F, 0.0F), evy.b.a)))
+      .a("right_hind_leg", new evy(evy.d.a, new ewa(0.0F, ewb.a(-1.0F, -20.5F, 5.0F), evy.b.a), new ewa(1.0F, ewb.a(-1.0F, -20.5F, 5.0F), evy.b.a)))
+      .a("head", new evy(evy.d.b, new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)))
+      .a("tail", new evy(evy.d.b, new ewa(0.0F, ewb.b(50.0F, 0.0F, 0.0F), evy.b.a), new ewa(1.0F, ewb.b(50.0F, 0.0F, 0.0F), evy.b.a)))
+      .b();
+   public static final evz d = evz.a.a(2.6F)
+      .a(
+         "body",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.7F, ewb.b(-17.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.8F, ewb.b(-17.83F, 0.0F, 0.0F), evy.b.b),
+            new ewa(2.3F, ewb.b(-5.83F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "body",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, -19.9F, 0.0F), evy.b.a),
+            new ewa(0.7F, ewb.a(0.0F, -19.9F, -3.0F), evy.b.a),
+            new ewa(1.4F, ewb.a(0.0F, -12.76F, -4.0F), evy.b.b),
+            new ewa(1.8F, ewb.a(0.0F, -10.1F, -4.0F), evy.b.b),
+            new ewa(2.3F, ewb.a(0.0F, -2.9F, -2.0F), evy.b.a),
+            new ewa(2.6F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-90.0F, 10.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.b(-90.0F, 10.0F, 0.0F), evy.b.a),
+            new ewa(1.1F, ewb.b(-49.06F, 10.0F, 0.0F), evy.b.a),
+            new ewa(1.8F, ewb.b(-22.5F, 10.0F, 0.0F), evy.b.a),
+            new ewa(2.3F, ewb.b(-25.0F, 10.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a),
+            new ewa(0.5F, ewb.a(0.0F, -20.6F, 8.0F), evy.b.a),
+            new ewa(1.1F, ewb.a(0.0F, -7.14F, 4.42F), evy.b.a),
+            new ewa(1.8F, ewb.a(0.0F, -1.27F, -1.33F), evy.b.a),
+            new ewa(2.3F, ewb.a(0.0F, -1.27F, -0.33F), evy.b.a),
+            new ewa(2.6F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-90.0F, -10.0F, 0.0F), evy.b.a),
+            new ewa(0.5F, ewb.b(-90.0F, -10.0F, 0.0F), evy.b.a),
+            new ewa(1.1F, ewb.b(-49.06F, -10.0F, 0.0F), evy.b.a),
+            new ewa(1.8F, ewb.b(-22.5F, -10.0F, 0.0F), evy.b.a),
+            new ewa(2.3F, ewb.b(-25.0F, -10.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(0.0F, -20.6F, 12.0F), evy.b.a),
+            new ewa(0.5F, ewb.a(0.0F, -20.6F, 8.0F), evy.b.a),
+            new ewa(1.1F, ewb.a(0.0F, -7.14F, 4.42F), evy.b.a),
+            new ewa(1.8F, ewb.a(0.0F, -1.27F, -1.33F), evy.b.a),
+            new ewa(2.3F, ewb.a(0.0F, -1.27F, -0.33F), evy.b.a),
+            new ewa(2.6F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-90.0F, -15.0F, 0.0F), evy.b.a),
+            new ewa(0.3F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.6F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.1F, ewb.b(-60.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.9F, ewb.b(35.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.2F, ewb.b(30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(1.0F, -20.5F, 5.0F), evy.b.a),
+            new ewa(0.3F, ewb.a(-2.0F, -20.5F, 3.0F), evy.b.a),
+            new ewa(0.6F, ewb.a(-2.0F, -20.5F, 3.0F), evy.b.a),
+            new ewa(1.1F, ewb.a(-2.0F, -10.5F, 2.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(-2.0F, -0.4F, -3.9F), evy.b.a),
+            new ewa(1.9F, ewb.a(-2.0F, -4.3F, -9.8F), evy.b.a),
+            new ewa(2.2F, ewb.a(-1.0F, -2.5F, -5.0F), evy.b.a),
+            new ewa(2.6F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-90.0F, 15.0F, 0.0F), evy.b.a),
+            new ewa(0.3F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.6F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.1F, ewb.b(-60.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.9F, ewb.b(35.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.2F, ewb.b(30.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new evy(
+            evy.d.a,
+            new ewa(0.0F, ewb.a(-1.0F, -20.5F, 5.0F), evy.b.a),
+            new ewa(0.3F, ewb.a(2.0F, -20.5F, 3.0F), evy.b.a),
+            new ewa(0.6F, ewb.a(2.0F, -20.5F, 3.0F), evy.b.a),
+            new ewa(1.1F, ewb.a(2.0F, -10.5F, 2.0F), evy.b.a),
+            new ewa(1.5F, ewb.a(2.0F, -0.4F, -3.9F), evy.b.a),
+            new ewa(1.9F, ewb.a(2.0F, -4.3F, -9.8F), evy.b.a),
+            new ewa(2.2F, ewb.a(1.0F, -2.5F, -5.0F), evy.b.a),
+            new ewa(2.6F, ewb.a(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "head",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.3F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.8F, ewb.b(55.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.0F, ewb.b(65.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.4F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(50.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.4F, ewb.b(55.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(0.9F, ewb.b(55.0F, 0.0F, 0.0F), evy.b.a),
+            new ewa(1.5F, ewb.b(17.5F, 0.0F, 0.0F), evy.b.a),
+            new ewa(2.6F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.a)
+         )
+      )
+      .b();
+   public static final evz e = evz.a.a(0.5F)
+      .a()
+      .a("body", new evy(evy.d.b, new ewa(0.0F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.a), new ewa(0.5F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.a)))
+      .a(
+         "tail",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(67.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.125F, ewb.b(112.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.25F, ewb.b(67.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(112.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.5F, ewb.b(67.5F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "head",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(10.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.125F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.25F, ewb.b(10.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.5F, ewb.b(10.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(44.97272F, 1.76749F, -1.76833F), evy.b.b),
+            new ewa(0.125F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.25F, ewb.b(44.97272F, 1.76749F, -1.76833F), evy.b.b),
+            new ewa(0.375F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.5F, ewb.b(44.97272F, 1.76749F, -1.76833F), evy.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.125F, ewb.b(44.97272F, -1.76749F, 1.76833F), evy.b.b),
+            new ewa(0.25F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(44.97272F, -1.76749F, 1.76833F), evy.b.b),
+            new ewa(0.5F, ewb.b(-90.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.125F, ewb.b(-45.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.25F, ewb.b(90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(-45.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.5F, ewb.b(90.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(-45.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.125F, ewb.b(90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.25F, ewb.b(-45.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.375F, ewb.b(90.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(0.5F, ewb.b(-45.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a("left_ear", new evy(evy.d.b, new ewa(0.0F, ewb.b(0.0F, -67.5F, 0.0F), evy.b.a), new ewa(0.5F, ewb.b(0.0F, -67.5F, 0.0F), evy.b.a)))
+      .a("right_ear", new evy(evy.d.b, new ewa(0.0F, ewb.b(0.0F, 67.5F, 0.0F), evy.b.a), new ewa(0.5F, ewb.b(0.0F, 67.5F, 0.0F), evy.b.a)))
+      .b();
+   public static final evz f = evz.a.a(4.0F)
+      .a(
+         "tail",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(1.0F, ewb.b(4.98107F, 0.43523F, -4.98107F), evy.b.b),
+            new ewa(3.0F, ewb.b(4.9872F, -0.29424F, 3.36745F), evy.b.b),
+            new ewa(4.0F, ewb.b(5.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "head",
+         new evy(
+            evy.d.b,
+            new ewa(0.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b),
+            new ewa(2.0F, ewb.b(-2.5F, 0.0F, 0.0F), evy.b.b),
+            new ewa(4.0F, ewb.b(0.0F, 0.0F, 0.0F), evy.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new evy(
+            evy.d.b,
+            new ewa(2.5F, ewb.b(0.0F, 0.0F, -45.0F), evy.b.b),
+            new ewa(2.625F, ewb.b(0.0F, 0.0F, 22.5F), evy.b.b),
+            new ewa(2.75F, ewb.b(0.0F, 0.0F, -45.0F), evy.b.b),
+            new ewa(2.875F, ewb.b(0.0F, 0.0F, 22.5F), evy.b.b),
+            new ewa(3.0F, ewb.b(0.0F, 0.0F, -45.0F), evy.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new evy(
+            evy.d.b,
+            new ewa(2.5F, ewb.b(0.0F, 0.0F, 45.0F), evy.b.b),
+            new ewa(2.625F, ewb.b(0.0F, 0.0F, -22.5F), evy.b.b),
+            new ewa(2.75F, ewb.b(0.0F, 0.0F, 45.0F), evy.b.b),
+            new ewa(2.875F, ewb.b(0.0F, 0.0F, -22.5F), evy.b.b),
+            new ewa(3.0F, ewb.b(0.0F, 0.0F, 45.0F), evy.b.b)
          )
       )
       .b();

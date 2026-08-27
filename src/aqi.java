@@ -1,17 +1,52 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public interface aqi extends aqb {
-   @Override
-   default CompletableFuture<Void> a(aqb.a $$0, aqh $$1, bgr $$2, bgr $$3, Executor $$4, Executor $$5) {
-      return $$0.a(avr.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public interface aqi extends aql {
+   Set<String> a();
+
+   List<aqg> a(ahg var1);
+
+   Map<ahg, aqg> b(String var1, Predicate<ahg> var2);
+
+   Map<ahg, List<aqg>> c(String var1, Predicate<ahg> var2);
+
+   Stream<aow> b();
+
+   public static enum a implements aqi {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<aqg> getResource(ahg $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<aqg> a(ahg $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ahg, aqg> b(String $$0, Predicate<ahg> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ahg, List<aqg>> c(String $$0, Predicate<ahg> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aow> b() {
+         return Stream.of();
+      }
    }
-
-   void a(aqh var1);
 }

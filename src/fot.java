@@ -1,37 +1,67 @@
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
 import java.util.Locale;
+import javax.annotation.Nullable;
 
-public enum fot {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
-
-   private final String k;
-   private final vf l;
-   private final vf m;
-
-   private fot(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vf.c($$1);
-      this.m = vf.c($$1 + ".description");
+public record fot(String a, @Nullable fot.a b) {
+   public static fot a() {
+      return a(null);
    }
 
-   public String a() {
-      return this.k;
+   public static fot a(String $$0) {
+      return a(new fot.a.b($$0));
    }
 
-   public vf b() {
-      return this.l;
+   public static fot a(eri $$0) {
+      return a(new fot.a.a($$0));
    }
 
-   public vf c() {
-      return this.m;
+   public static fot a(@Nullable fot.a $$0) {
+      return new fot(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fot.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fot.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.20.3-pre3");
+      if (evi.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fot.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fot.a {
+         public a(eri $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
+
+      public static record b(String a) implements fot.a {
+      }
    }
 }

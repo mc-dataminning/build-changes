@@ -1,36 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record ejr(eju b) implements eju {
-   public static final Codec<ejr> a = RecordCodecBuilder.create($$0 -> $$0.group(ejw.a.fieldOf("term").forGetter(ejr::c)).apply($$0, ejr::new));
+public class ejr implements ejv {
+   private static final ejr b = new ejr();
+   public static final Codec<ejr> a = Codec.unit(b);
 
-   @Override
-   public ejv b() {
-      return ejw.b;
-   }
-
-   public boolean a(egv $$0) {
-      return !this.b.test($$0);
+   private ejr() {
    }
 
    @Override
-   public Set<ejd<?>> a() {
-      return this.b.a();
+   public ejw b() {
+      return ejx.m;
    }
 
    @Override
-   public void a(ehe $$0) {
-      eju.super.a($$0);
-      this.b.a($$0);
+   public Set<eje<?>> a() {
+      return ImmutableSet.of(ejh.j);
    }
 
-   public static eju.a a(eju.a $$0) {
-      ejr $$1 = new ejr($$0.build());
-      return () -> $$1;
+   public boolean a(egw $$0) {
+      Float $$1 = $$0.c(ejh.j);
+      if ($$1 != null) {
+         auv $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public eju c() {
-      return this.b;
+   public static ejv.a c() {
+      return () -> b;
    }
 }

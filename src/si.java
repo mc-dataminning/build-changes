@@ -47,8 +47,8 @@ public abstract class si {
          }
 
          @Override
-         public atz a(vk $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> avi.c($$2xxx, $$1x, $$1) ? Optional.empty() : vk.a, wc.a).isPresent();
+         public aua a(vk $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> avj.c($$2xxx, $$1x, $$1) ? Optional.empty() : vk.a, wc.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class si {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(aud.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(aue.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class si {
 
    public abstract boolean b();
 
-   public abstract atz a(vk var1);
+   public abstract aua a(vk var1);
 
-   public List<atz> a(List<vk> $$0) {
+   public List<aua> a(List<vk> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

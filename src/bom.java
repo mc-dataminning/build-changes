@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class bom implements bod<bml> {
+   private final int a;
+   private final int b;
+   private boc.a c = boc.a.a;
+   private long d;
 
-public class bom implements bpp {
-   private final blu a;
-   private final boolean b;
-
-   public bom(blu $$0, boolean $$1) {
+   public bom(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public els a() {
-      return this.b ? this.a.dk().b(0.0, (double)this.a.cI(), 0.0) : this.a.dk();
+   public boc.a a() {
+      return this.c;
    }
 
    @Override
-   public hx b() {
-      return this.a.dm();
+   public final boolean e(and $$0, bml $$1, long $$2) {
+      this.c = boc.a.b;
+      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bmk $$0) {
-      if (this.a instanceof bmk $$1) {
-         if (!$$1.bx()) {
-            return false;
-         } else {
-            Optional<bvo> $$3 = $$0.dO().c(bvm.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(and $$0, bml $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public blu c() {
-      return this.a;
+   @Override
+   public final void g(and $$0, bml $$1, long $$2) {
+      this.c = boc.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

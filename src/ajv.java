@@ -30,17 +30,17 @@ public class ajv {
       );
    }
 
-   private static Optional<? extends il.b<dzf>> a(ev.c<dzf> $$0, it<dzf> $$1) {
-      return (Optional<? extends il.b<dzf>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> il.a($$0xx)), $$1::b);
+   private static Optional<? extends il.b<dzg>> a(ev.c<dzg> $$0, it<dzg> $$1) {
+      return (Optional<? extends il.b<dzg>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> il.a($$0xx)), $$1::b);
    }
 
-   private static int a(ds $$0, ev.c<dzf> $$1) throws CommandSyntaxException {
-      it<dzf> $$2 = $$0.e().I_().d(ke.aD);
-      il<dzf> $$3 = (il<dzf>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ds $$0, ev.c<dzg> $$1) throws CommandSyntaxException {
+      it<dzg> $$2 = $$0.e().I_().d(ke.aD);
+      il<dzg> $$3 = (il<dzg>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       hx $$4 = hx.a($$0.d());
       and $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<hx, ih<dzf>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      Pair<hx, ih<dzg>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class ajv {
       }
    }
 
-   private static int a(ds $$0, eu.c<cun> $$1) throws CommandSyntaxException {
+   private static int a(ds $$0, eu.c<cuo> $$1) throws CommandSyntaxException {
       hx $$2 = hx.a($$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<hx, ih<cun>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<hx, ih<cuo>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class ajv {
       }
    }
 
-   private static int b(ds $$0, eu.c<bxo> $$1) throws CommandSyntaxException {
+   private static int b(ds $$0, eu.c<bxp> $$1) throws CommandSyntaxException {
       hx $$2 = hx.a($$0.d());
       and $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<ih<bxo>, hx>> $$5 = $$3.y().e($$1, $$2, 256, bxl.b.c);
+      Optional<Pair<ih<bxp>, hx>> $$5 = $$3.y().e($$1, $$2, 256, bxm.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());
@@ -90,7 +90,7 @@ public class ajv {
 
    private static int a(ds $$0, hx $$1, Pair<hx, ? extends ih<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
       hx $$7 = (hx)$$2.getFirst();
-      int $$8 = $$4 ? aun.d(aun.c((float)$$1.j($$7))) : aun.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      int $$8 = $$4 ? auo.d(auo.c((float)$$1.j($$7))) : auo.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
       vf $$10 = vi.a((vf)vf.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
          .a($$2x -> $$2x.a(n.k).a(new vd(vd.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new vl(vl.a.a, vf.c("chat.coordinates.tooltip"))));
@@ -102,6 +102,6 @@ public class ajv {
    private static float a(int $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$2 - $$0;
       int $$5 = $$3 - $$1;
-      return aun.c((float)($$4 * $$4 + $$5 * $$5));
+      return auo.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

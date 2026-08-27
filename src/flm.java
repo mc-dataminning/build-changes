@@ -1,16 +1,21 @@
-public class flm<T extends byt> extends flg<T> {
+public class flm<T extends byu> extends flh<T> {
    private float j;
 
-   public flm(fmw $$0) {
+   public flm(fmx $$0) {
       super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fnc c() {
-      fne $$0 = flg.a(12, fna.a);
-      fnf $$1 = $$0.a();
-      $$1.a("head", fnb.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fmy.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fnb.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fmy.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fnc.a($$0, 64, 32);
+   public static fnd c() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("head", fnc.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fnb(0.6F)), fmz.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fnc.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fnb(1.75F)), fmz.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fnc $$2 = fnc.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fnb(0.5F));
+      $$1.a("right_hind_leg", $$2, fmz.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fmz.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fmz.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fmz.a(3.0F, 12.0F, -5.0F));
+      return fnd.a($$0, 64, 32);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3) {

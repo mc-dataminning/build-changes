@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public record dzu(List<dzj> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ahg c = new ahg("jigsaw");
-   private static final Map<ahg, ahg> d = ImmutableMap.builder()
-      .put(new ahg("nvi"), c)
-      .put(new ahg("pcp"), c)
-      .put(new ahg("bastionremnant"), c)
-      .put(new ahg("runtime"), c)
-      .build();
+@FunctionalInterface
+public interface dzu<C extends dty> {
+   Optional<dzt<C>> createGenerator(dzu.a<C> var1);
 
-   public dzu(List<dzj> a) {
-      this.a = List.copyOf(a);
+   static <C extends dty> dzu<C> simple(Predicate<dzu.a<C>> $$0, dzt<C> $$1) {
+      Optional<dzt<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   static <C extends dty> Predicate<dzu.a<C>> checkForBiomeOnTop(doq.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public boolean a(hx $$0) {
-      for (dzj $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
+   public static record a<C extends dty>(dle a, cus b, dpe c, long d, csw e, C f, ctr g, Predicate<ih<cuo>> h, edh i, iu j) {
+      public boolean a(doq.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         ih<cuo> $$4 = this.a.c().getNoiseBiome(is.a($$1), is.a($$3), is.a($$2), this.c.b());
+         return this.h.test($$4);
       }
-
-      return false;
-   }
-
-   public tk a(dzv $$0) {
-      st $$1 = new st();
-
-      for (dzj $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static dzu a(st $$0, dzv $$1) {
-      List<dzj> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         sn $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         ahg $$6 = new ahg($$5);
-         ahg $$7 = d.getOrDefault($$6, $$6);
-         dzw $$8 = kd.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dzj $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new dzu($$2);
-   }
-
-   public dyx b() {
-      return dzj.a(this.a.stream());
-   }
-
-   public List<dzj> c() {
-      return this.a;
    }
 }

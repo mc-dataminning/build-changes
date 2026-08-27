@@ -3,33 +3,31 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dfp extends dey {
-   public static final MapCodec<dfp> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dfp::new));
-   public static final dka g = dak.aE;
-   protected static final float h = 2.5F;
-   private static final Map<ic, eml> i = Maps.newEnumMap(
+public class dfp extends cvm {
+   public static final MapCodec<dfp> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddr.a.b.fieldOf("kind").forGetter(cvm::b), u()).apply($$0, dfp::new));
+   public static final dkb d = dal.aE;
+   private static final Map<ic, emm> b = Maps.newEnumMap(
       ImmutableMap.of(
          ic.c,
-         cwp.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         cwq.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
          ic.d,
-         cwp.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         ic.e,
-         cwp.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         cwq.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
          ic.f,
-         cwp.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+         cwq.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ic.e,
+         cwq.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
       )
    );
 
    @Override
-   public MapCodec<dfp> a() {
-      return f;
+   public MapCodec<? extends dfp> a() {
+      return c;
    }
 
-   protected dfp(ka $$0, djf.d $$1) {
+   protected dfp(ddr.a $$0, djg.d $$1) {
       super($$0, $$1);
-      this.k(this.E.b().a(g, ic.c));
+      this.k(this.o().a(d, ic.c));
    }
 
    @Override
@@ -38,35 +36,22 @@ public class dfp extends dey {
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return h($$0);
-   }
-
-   public static eml h(djg $$0) {
-      return i.get($$0.c(g));
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b.get($$0.c(d));
    }
 
    @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      ic $$3 = $$0.c(g);
-      hx $$4 = $$2.a($$3.g());
-      djg $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
-   }
-
-   @Nullable
-   @Override
-   public djg a(cpg $$0) {
-      djg $$1 = this.o();
-      ctr $$2 = $$0.q();
+   public djh a(cph $$0) {
+      djh $$1 = super.a($$0);
+      csv $$2 = $$0.q();
       hx $$3 = $$0.a();
       ic[] $$4 = $$0.f();
 
       for (ic $$5 : $$4) {
          if ($$5.o().d()) {
             ic $$6 = $$5.g();
-            $$1 = $$1.a(g, $$6);
-            if ($$1.a($$2, $$3)) {
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
                return $$1;
             }
          }
@@ -76,35 +61,18 @@ public class dfp extends dey {
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? cwr.a.o() : $$0;
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
-      ic $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      ic $$10 = $$4.g();
-      $$1.a(jx.ab, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   public djg a(djg $$0, ddb $$1) {
-      return $$0.a(g, $$1.a($$0.c(g)));
-   }
-
-   @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(g);
+   protected void a(dji.a<cwq, djh> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

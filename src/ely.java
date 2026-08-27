@@ -1,21 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-
-public class ely extends AbstractDoubleList {
-   private final int a;
-
-   ely(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+public interface ely {
+   static ely a() {
+      return emd.a;
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   static ely a(blv $$0) {
+      return new emd($$0);
    }
 
-   public int size() {
-      return this.a + 1;
-   }
+   boolean b();
+
+   boolean a(emm var1, hx var2, boolean var3);
+
+   boolean a(cmt var1);
+
+   boolean a(eer var1, eer var2);
 }

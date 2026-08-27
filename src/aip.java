@@ -21,12 +21,12 @@ public class aip {
    }
 
    private static int a(ds $$0, Collection<GameProfile> $$1, @Nullable vf $$2) throws CommandSyntaxException {
-      ara $$3 = $$0.l().ae().f();
+      arb $$3 = $$0.l().ae().f();
       int $$4 = 0;
 
       for (GameProfile $$5 : $$1) {
          if (!$$3.a($$5)) {
-            arb $$6 = new arb($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            arc $$6 = new arc($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
             $$3.a($$6);
             $$4++;
             $$0.a(() -> vf.a("commands.ban.success", vf.b($$5.getName()), $$6.d()), true);

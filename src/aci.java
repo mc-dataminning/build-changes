@@ -6,12 +6,12 @@ public class aci implements xf<za> {
    public static final int c = 2;
    private final String d;
    private final vf e;
-   private final emz.a f;
+   private final ena.a f;
    @Nullable
    private final wv g;
    private final int h;
 
-   public aci(emo $$0, int $$1) {
+   public aci(emp $$0, int $$1) {
       this.d = $$0.b();
       this.e = $$0.d();
       this.f = $$0.h();
@@ -24,11 +24,11 @@ public class aci implements xf<za> {
       this.h = $$0.readByte();
       if (this.h != 0 && this.h != 2) {
          this.e = ve.a;
-         this.f = emz.a.a;
+         this.f = ena.a.a;
          this.g = null;
       } else {
          this.e = $$0.m();
-         this.f = $$0.b(emz.a.class);
+         this.f = $$0.b(ena.a.class);
          this.g = $$0.c(wx::a);
       }
    }
@@ -60,7 +60,7 @@ public class aci implements xf<za> {
       return this.h;
    }
 
-   public emz.a f() {
+   public ena.a f() {
       return this.f;
    }
 

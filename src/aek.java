@@ -3,7 +3,7 @@ public class aek implements xf<adj> {
    private final ahg b;
    private final boolean c;
 
-   public aek(int $$0, cqd<?> $$1, boolean $$2) {
+   public aek(int $$0, cqe<?> $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1.a();
       this.c = $$2;

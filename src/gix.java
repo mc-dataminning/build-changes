@@ -1,58 +1,87 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gix implements giv {
-   private final gix.a a;
-   private giv b;
-   private final BufferedInputStream c;
+public class gix {
+   private final Set<gix.a> a = Sets.newIdentityHashSet();
+   final enw b;
+   final Executor c;
 
-   public gix(gix.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new gix.b(this.c));
+   public gix(enw $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
-
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new gix.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
+   public CompletableFuture<gix.a> a(enw.c $$0) {
+      CompletableFuture<gix.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         env $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gix.a $$3 = new gix.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
       return $$1;
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
+   public void a(Consumer<Stream<env>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
    }
 
-   @FunctionalInterface
-   public interface a {
-      giv create(InputStream var1) throws IOException;
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gix.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gix.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
    }
 
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
+   public void b() {
+      this.a.forEach(gix.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      env b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      @Override
-      public void close() {
+      public a(env $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<env> $$0) {
+         gix.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gix.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

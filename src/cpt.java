@@ -1,22 +1,8 @@
-public abstract class cpt implements cps {
-   private final cpr a;
-
-   public cpt(cpr $$0) {
-      this.a = $$0;
-   }
-
+public interface cpt extends cqc<cir> {
    @Override
-   public boolean aq_() {
-      return true;
+   default cqh<?> e() {
+      return cqh.a;
    }
 
-   @Override
-   public cmx a(iu $$0) {
-      return cmx.f;
-   }
-
-   @Override
-   public cpr d() {
-      return this.a;
-   }
+   cps d();
 }

@@ -60,12 +60,12 @@ public record vc(String b, List<vc.a> c, wc d) {
       return this.d;
    }
 
-   public static enum a implements avj {
+   public static enum a implements avk {
       a("sender", ($$0, $$1) -> $$1.b()),
       b("target", ($$0, $$1) -> $$1.c()),
       c("content", ($$0, $$1) -> $$0);
 
-      public static final Codec<vc.a> d = avj.a(vc.a::values);
+      public static final Codec<vc.a> d = avk.a(vc.a::values);
       private final String e;
       private final vc.a.a f;
 

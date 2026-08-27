@@ -1,116 +1,223 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.chars.CharArraySet;
+import it.unimi.dsi.fastutil.chars.CharSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cqk implements cps {
-   final String a;
-   final cpr b;
-   final cmx c;
-   final iq<cpy> d;
+public record cqk(int b, int c, iq<cpz> d, Optional<cqk.a> e) {
+   private static final int f = 3;
+   public static final MapCodec<cqk> a = cqk.a.a
+      .flatXmap(cqk::a, $$0 -> $$0.d().<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
 
-   public cqk(String $$0, cpr $$1, cmx $$2, iq<cpy> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static cqk a(Map<Character, cpz> $$0, String... $$1) {
+      return a($$0, List.of($$1));
    }
 
-   @Override
-   public cqf<?> ar_() {
-      return cqf.b;
+   public static cqk a(Map<Character, cpz> $$0, List<String> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1);
+      return ac.a(a($$2), IllegalArgumentException::new);
    }
 
-   @Override
-   public String c() {
-      return this.a;
+   private static DataResult<cqk> a(cqk.a $$0) {
+      String[] $$1 = a($$0.c);
+      int $$2 = $$1[0].length();
+      int $$3 = $$1.length;
+      iq<cpz> $$4 = iq.a($$2 * $$3, cpz.a);
+      CharSet $$5 = new CharArraySet($$0.b.keySet());
+
+      for (int $$6 = 0; $$6 < $$1.length; $$6++) {
+         String $$7 = $$1[$$6];
+
+         for (int $$8 = 0; $$8 < $$7.length(); $$8++) {
+            char $$9 = $$7.charAt($$8);
+            cpz $$10 = $$9 == ' ' ? cpz.a : $$0.b.get($$9);
+            if ($$10 == null) {
+               return DataResult.error(() -> "Pattern references symbol '" + $$9 + "' but it's not defined in the key");
+            }
+
+            $$5.remove($$9);
+            $$4.set($$8 + $$2 * $$6, $$10);
+         }
+      }
+
+      return !$$5.isEmpty()
+         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
+         : DataResult.success(new cqk($$2, $$3, $$4, Optional.of($$0)));
    }
 
-   @Override
-   public cpr d() {
+   @VisibleForTesting
+   static String[] a(List<String> $$0) {
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         String $$6 = $$0.get($$5);
+         $$1 = Math.min($$1, a($$6));
+         int $$7 = b($$6);
+         $$2 = Math.max($$2, $$7);
+         if ($$7 < 0) {
+            if ($$3 == $$5) {
+               $$3++;
+            }
+
+            $$4++;
+         } else {
+            $$4 = 0;
+         }
+      }
+
+      if ($$0.size() == $$4) {
+         return new String[0];
+      } else {
+         String[] $$8 = new String[$$0.size() - $$4 - $$3];
+
+         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
+            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
+         }
+
+         return $$8;
+      }
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 0;
+
+      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private static int b(String $$0) {
+      int $$1 = $$0.length() - 1;
+
+      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
+         $$1--;
+      }
+
+      return $$1;
+   }
+
+   public boolean a(cir $$0) {
+      for (int $$1 = 0; $$1 <= $$0.f() - this.b; $$1++) {
+         for (int $$2 = 0; $$2 <= $$0.g() - this.c; $$2++) {
+            if (this.a($$0, $$1, $$2, true)) {
+               return true;
+            }
+
+            if (this.a($$0, $$1, $$2, false)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private boolean a(cir $$0, int $$1, int $$2, boolean $$3) {
+      for (int $$4 = 0; $$4 < $$0.f(); $$4++) {
+         for (int $$5 = 0; $$5 < $$0.g(); $$5++) {
+            int $$6 = $$4 - $$1;
+            int $$7 = $$5 - $$2;
+            cpz $$8 = cpz.a;
+            if ($$6 >= 0 && $$7 >= 0 && $$6 < this.b && $$7 < this.c) {
+               if ($$3) {
+                  $$8 = this.d.get(this.b - $$6 - 1 + $$7 * this.b);
+               } else {
+                  $$8 = this.d.get($$6 + $$7 * this.b);
+               }
+            }
+
+            if (!$$8.a($$0.a($$4 + $$5 * $$0.f()))) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   public void a(ui $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+
+      for (cpz $$1 : this.d) {
+         $$1.a($$0);
+      }
+   }
+
+   public static cqk b(ui $$0) {
+      int $$1 = $$0.n();
+      int $$2 = $$0.n();
+      iq<cpz> $$3 = iq.a($$1 * $$2, cpz.a);
+      $$3.replaceAll($$1x -> cpz.b($$0));
+      return new cqk($$1, $$2, $$3, Optional.empty());
+   }
+
+   public int a() {
       return this.b;
    }
 
-   @Override
-   public cmx a(iu $$0) {
+   public int b() {
       return this.c;
    }
 
-   @Override
-   public iq<cpy> a() {
+   public iq<cpz> c() {
       return this.d;
    }
 
-   public boolean a(ciq $$0, cto $$1) {
-      cfl $$2 = new cfl();
-      int $$3 = 0;
+   public Optional<cqk.a> d() {
+      return this.e;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            $$3++;
-            $$2.a($$5, 1);
+   public static record a(Map<Character, cpz> b, List<String> c) {
+      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
+         if ($$0.size() > 3) {
+            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
+         } else if ($$0.isEmpty()) {
+            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
+         } else {
+            int $$1 = ((String)$$0.get(0)).length();
+
+            for (String $$2 : $$0) {
+               if ($$2.length() > 3) {
+                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
+               }
+
+               if ($$1 != $$2.length()) {
+                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
+               }
+            }
+
+            return DataResult.success($$0);
          }
-      }
-
-      return $$3 == this.d.size() && $$2.a(this, null);
-   }
-
-   public cmx a(ciq $$0, iu $$1) {
-      return this.c.p();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
-   }
-
-   public static class a implements cqf<cqk> {
-      private static final Codec<cqk> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atv.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.a),
-                  cpr.e.fieldOf("category").orElse(cpr.d).forGetter($$0x -> $$0x.b),
-                  cmx.c.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  cpy.c.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     cpy[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(cpy[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(iq.a(cpy.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cqk::new)
+      }, Function.identity());
+      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
+         if ($$0.length() != 1) {
+            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
+         } else {
+            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
+         }
+      }, String::valueOf);
+      public static final MapCodec<cqk.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(atw.d(e, cpz.c).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, cqk.a::new)
       );
 
-      @Override
-      public Codec<cqk> a() {
-         return x;
+      public Map<Character, cpz> a() {
+         return this.b;
       }
 
-      public cqk b(ui $$0) {
-         String $$1 = $$0.s();
-         cpr $$2 = $$0.b(cpr.class);
-         int $$3 = $$0.n();
-         iq<cpy> $$4 = iq.a($$3, cpy.a);
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, cpy.b($$0));
-         }
-
-         cmx $$6 = $$0.r();
-         return new cqk($$1, $$2, $$6, $$4);
-      }
-
-      public void a(ui $$0, cqk $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (cpy $$2 : $$1.d) {
-            $$2.a($$0);
-         }
-
-         $$0.a($$1.c);
+      public List<String> b() {
+         return this.c;
       }
    }
 }

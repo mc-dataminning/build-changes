@@ -1,22 +1,15 @@
-public interface cqr extends cqb<bjt> {
-   @Override
-   default cqg<?> e() {
-      return cqg.g;
+public class cqr extends cpl {
+   public cqr(String $$0, cpr $$1, cpz $$2, cmy $$3, float $$4, int $$5) {
+      super(cqh.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cmy g() {
+      return new cmy(cws.cD);
    }
 
    @Override
-   default cmx g() {
-      return new cmx(cwr.ob);
+   public cqg<?> ar_() {
+      return cqg.p;
    }
-
-   boolean a(cmx var1);
-
-   boolean b(cmx var1);
-
-   boolean c(cmx var1);
 }

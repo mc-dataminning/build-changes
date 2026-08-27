@@ -1,5 +1,6 @@
-public interface bni<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T c();
+public interface bni {
+   @Nullable
+   blv w();
 }

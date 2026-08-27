@@ -1,5 +1,5 @@
-public class clo extends cmn implements clp {
-   public clo(int $$0, String $$1, cms.a $$2) {
+public class clo extends cki implements clq {
+   public clo(ckj $$0, cki.a $$1, cmt.a $$2) {
       super($$0, $$1, $$2);
    }
 }

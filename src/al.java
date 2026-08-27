@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements avj {
+public enum al implements avk {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = avj.a(al::values);
+   public static final Codec<al> d = avk.a(al::values);
    private final String e;
    private final n f;
    private final vf g;

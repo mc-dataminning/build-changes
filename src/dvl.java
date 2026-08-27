@@ -1,39 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvl extends dvj {
-   public static final Codec<dvl> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dvl::new)
-   );
-   protected final int b;
+public class dvl<P extends dvk> {
+   public static final dvl<dvf> a = a("blob_foliage_placer", dvf.a);
+   public static final dvl<dvq> b = a("spruce_foliage_placer", dvq.a);
+   public static final dvl<dvo> c = a("pine_foliage_placer", dvo.a);
+   public static final dvl<dve> d = a("acacia_foliage_placer", dve.a);
+   public static final dvl<dvg> e = a("bush_foliage_placer", dvg.c);
+   public static final dvl<dvj> f = a("fancy_foliage_placer", dvj.c);
+   public static final dvl<dvm> g = a("jungle_foliage_placer", dvm.a);
+   public static final dvl<dvn> h = a("mega_pine_foliage_placer", dvn.a);
+   public static final dvl<dvi> i = a("dark_oak_foliage_placer", dvi.a);
+   public static final dvl<dvp> j = a("random_spread_foliage_placer", dvp.a);
+   public static final dvl<dvh> k = a("cherry_foliage_placer", dvh.a);
+   private final Codec<P> l;
 
-   public dvl(bjf $$0, bjf $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends dvk> dvl<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.W, $$0, new dvl<>($$1));
    }
 
-   @Override
-   protected dvk<?> a() {
-      return dvk.g;
+   private dvl(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(ctu $$0, dvj.b $$1, auu $$2, dut $$3, int $$4, dvj.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(auu $$0, int $$1, dut $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(auu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public Codec<P> a() {
+      return this.l;
    }
 }

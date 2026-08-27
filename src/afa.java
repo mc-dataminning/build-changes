@@ -3,13 +3,13 @@ public class afa implements xf<adj> {
    private static final int b = 2;
    private static final int c = 4;
    private final hx d;
-   private final dii.a e;
-   private final dkq f;
+   private final dij.a e;
+   private final dkr f;
    private final String g;
    private final hx h;
    private final jb i;
-   private final dbl j;
-   private final ddb k;
+   private final dbm j;
+   private final ddc k;
    private final String l;
    private final boolean m;
    private final boolean n;
@@ -18,7 +18,7 @@ public class afa implements xf<adj> {
    private final long q;
 
    public afa(
-      hx $$0, dii.a $$1, dkq $$2, String $$3, hx $$4, jb $$5, dbl $$6, ddb $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      hx $$0, dij.a $$1, dkr $$2, String $$3, hx $$4, jb $$5, dbm $$6, ddc $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.d = $$0;
       this.e = $$1;
@@ -38,17 +38,17 @@ public class afa implements xf<adj> {
 
    public afa(ui $$0) {
       this.d = $$0.e();
-      this.e = $$0.b(dii.a.class);
-      this.f = $$0.b(dkq.class);
+      this.e = $$0.b(dij.a.class);
+      this.f = $$0.b(dkr.class);
       this.g = $$0.s();
       int $$1 = 48;
-      this.h = new hx(aun.a($$0.readByte(), -48, 48), aun.a($$0.readByte(), -48, 48), aun.a($$0.readByte(), -48, 48));
+      this.h = new hx(auo.a($$0.readByte(), -48, 48), auo.a($$0.readByte(), -48, 48), auo.a($$0.readByte(), -48, 48));
       int $$2 = 48;
-      this.i = new jb(aun.a($$0.readByte(), 0, 48), aun.a($$0.readByte(), 0, 48), aun.a($$0.readByte(), 0, 48));
-      this.j = $$0.b(dbl.class);
-      this.k = $$0.b(ddb.class);
+      this.i = new jb(auo.a($$0.readByte(), 0, 48), auo.a($$0.readByte(), 0, 48), auo.a($$0.readByte(), 0, 48));
+      this.j = $$0.b(dbm.class);
+      this.k = $$0.b(ddc.class);
       this.l = $$0.d(128);
-      this.p = aun.a($$0.readFloat(), 0.0F, 1.0F);
+      this.p = auo.a($$0.readFloat(), 0.0F, 1.0F);
       this.q = $$0.o();
       int $$3 = $$0.readByte();
       this.m = ($$3 & 1) != 0;
@@ -97,11 +97,11 @@ public class afa implements xf<adj> {
       return this.d;
    }
 
-   public dii.a d() {
+   public dij.a d() {
       return this.e;
    }
 
-   public dkq e() {
+   public dkr e() {
       return this.f;
    }
 
@@ -117,11 +117,11 @@ public class afa implements xf<adj> {
       return this.i;
    }
 
-   public dbl i() {
+   public dbm i() {
       return this.j;
    }
 
-   public ddb j() {
+   public ddc j() {
       return this.k;
    }
 

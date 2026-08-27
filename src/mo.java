@@ -22,19 +22,19 @@ public class mo {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public ahg a(cwp $$0) {
+   public ahg a(cwq $$0) {
       return mn.a($$0, this.c.orElse(""));
    }
 
-   public ahg a(cwp $$0, mq $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
+   public ahg a(cwq $$0, mq $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
       return this.a(mn.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public ahg a(cwp $$0, String $$1, mq $$2, BiConsumer<ahg, Supplier<JsonElement>> $$3) {
+   public ahg a(cwq $$0, String $$1, mq $$2, BiConsumer<ahg, Supplier<JsonElement>> $$3) {
       return this.a(mn.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public ahg b(cwp $$0, String $$1, mq $$2, BiConsumer<ahg, Supplier<JsonElement>> $$3) {
+   public ahg b(cwq $$0, String $$1, mq $$2, BiConsumer<ahg, Supplier<JsonElement>> $$3) {
       return this.a(mn.a($$0, $$1), $$2, $$3);
    }
 

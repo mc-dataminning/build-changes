@@ -1,17 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class edl implements edn {
-   private static final edl b = new edl();
-   public static final Codec<edl> a = Codec.unit(b);
+public class edl implements edo {
+   public static final Codec<edl> a = RecordCodecBuilder.create($$0 -> $$0.group(sn.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, edl::new));
+   private final sn b;
 
-   @Override
-   public sn a(auu $$0, @Nullable sn $$1) {
-      return new sn();
+   public edl(sn $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public edo<?> a() {
-      return edo.a;
+   public sn a(auv $$0, @Nullable sn $$1) {
+      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   }
+
+   @Override
+   public edp<?> a() {
+      return edp.c;
    }
 }

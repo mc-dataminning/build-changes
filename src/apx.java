@@ -1,4 +1,8 @@
-public interface apx extends aqh, AutoCloseable {
-   @Override
-   void close();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface apx {
 }

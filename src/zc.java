@@ -5,7 +5,7 @@ public class zc implements xf<za> {
    private final double d;
    private final int e;
 
-   public zc(bma $$0) {
+   public zc(bmb $$0) {
       this.a = $$0.aj();
       this.b = $$0.dr();
       this.c = $$0.dt();

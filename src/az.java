@@ -14,7 +14,7 @@ public class az extends cv<az.a> {
 
    public static record a(Optional<bb> b, ck.d c) implements cv.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(az.a::a), atv.a(ck.d.d, "level", ck.d.c).forGetter(az.a::c)).apply($$0, az.a::new)
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(az.a::a), atw.a(ck.d.d, "level", ck.d.c).forGetter(az.a::c)).apply($$0, az.a::new)
       );
 
       public static an<az.a> b() {

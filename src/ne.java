@@ -2,14 +2,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ne {
-   private final cpy a;
-   private final cpy b;
-   private final cpy c;
+   private final cpz a;
+   private final cpz b;
+   private final cpz c;
    private final mx d;
-   private final cms e;
+   private final cmt e;
    private final Map<String, an<?>> f = new LinkedHashMap<>();
 
-   public ne(cpy $$0, cpy $$1, cpy $$2, mx $$3, cms $$4) {
+   public ne(cpz $$0, cpz $$1, cpz $$2, mx $$3, cmt $$4) {
       this.d = $$3;
       this.a = $$0;
       this.b = $$1;
@@ -17,7 +17,7 @@ public class ne {
       this.e = $$4;
    }
 
-   public static ne a(cpy $$0, cpy $$1, cpy $$2, mx $$3, cms $$4) {
+   public static ne a(cpz $$0, cpz $$1, cpz $$2, mx $$3, cmt $$4) {
       return new ne($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -34,7 +34,7 @@ public class ne {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      cqs $$3 = new cqs(this.a, this.b, this.c, new cmx(this.e));
+      cqt $$3 = new cqt(this.a, this.b, this.c, new cmy(this.e));
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.d.a() + "/")));
    }
 

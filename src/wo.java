@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 public class wo implements vg {
    private static final Logger d = LogUtils.getLogger();
    public static final MapCodec<wo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wo::b), atv.a(vh.a, "separator").forGetter(wo::d)).apply($$0, wo::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wo::b), atw.a(vh.a, "separator").forGetter(wo::d)).apply($$0, wo::new)
    );
    public static final vg.a<wo> b = new vg.a<>(a, "selector");
    private final String e;
@@ -58,10 +58,10 @@ public class wo implements vg {
    }
 
    @Override
-   public vt a(@Nullable ds $$0, @Nullable blu $$1, int $$2) throws CommandSyntaxException {
+   public vt a(@Nullable ds $$0, @Nullable blv $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends vf> $$3 = vi.a($$0, this.c, $$1, $$2);
-         return vi.a(this.f.b($$0), $$3, blu::Q_);
+         return vi.a(this.f.b($$0), $$3, blv::Q_);
       } else {
          return vf.i();
       }

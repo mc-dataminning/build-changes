@@ -1,11 +1,10 @@
-public final class asl {
-   public static final asv<eep> a = a("water");
-   public static final asv<eep> b = a("lava");
+public class asl {
+   public static final asw<dxh> a = a("visible");
 
    private asl() {
    }
 
-   private static asv<eep> a(String $$0) {
-      return asv.a(ke.y, new ahg($$0));
+   private static asw<dxh> a(String $$0) {
+      return asw.a(ke.az, new ahg($$0));
    }
 }

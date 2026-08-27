@@ -1,286 +1,176 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class fdi extends fda {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ahg b = new ahg("textures/misc/vignette.png");
-   private static final vf c = vf.b("============").a(n.p);
-   private static final String k = "           ";
-   private static final String l = "" + n.p + n.q + n.k + n.l;
-   private static final float m = 5.0F;
-   private static final float n = 15.0F;
-   private final boolean o;
-   private final Runnable p;
-   private float q;
-   private List<atz> r;
-   private IntSet t;
-   private int u;
-   private boolean v;
-   private final IntSet w = new IntOpenHashSet();
-   private float x;
-   private final float y;
-   private int z;
-   private final exw A = new exw(false);
+public class fdi extends fct {
+   private static final vf c = vf.c("options.graphics.fabulous").a(n.u);
+   private static final vf k = vf.a("options.graphics.warning.message", c, c);
+   private static final vf l = vf.c("options.graphics.warning.title").a(n.m);
+   private static final vf m = vf.c("options.graphics.warning.accept");
+   private static final vf n = vf.c("options.graphics.warning.cancel");
+   private eyd o;
+   private final ftb p;
+   private final int q;
 
-   public fdi(boolean $$0, Runnable $$1) {
-      super(euz.a);
-      this.o = $$0;
-      this.p = $$1;
-      if (!$$0) {
-         this.y = 0.75F;
-      } else {
-         this.y = 0.5F;
+   private static evl<?>[] a(evm $$0) {
+      return new evl[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
+      };
+   }
+
+   public fdi(fdb $$0, evm $$1) {
+      super($$0, $$1, vf.c("options.videoTitle"));
+      this.p = $$0.f.ah();
+      this.p.i();
+      if ($$1.j().c() == evb.c) {
+         this.p.e();
       }
 
-      this.z = 1;
-      this.x = this.y;
-   }
-
-   private float n() {
-      return this.v ? this.y * (5.0F + (float)this.w.size() * 15.0F) * (float)this.z : this.y * (float)this.z;
-   }
-
-   @Override
-   public void d() {
-      this.f.r().a();
-      this.f.ai().a(false);
-      float $$0 = (float)(this.u + this.h + this.h + 24);
-      if (this.q > $$0) {
-         this.D();
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.add($$0);
-      } else if ($$0 == 32) {
-         this.v = true;
-      }
-
-      this.x = this.n();
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = 1;
-      }
-
-      if ($$0 == 32) {
-         this.v = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.remove($$0);
-      }
-
-      this.x = this.n();
-      return super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void aE_() {
-      this.D();
-   }
-
-   private void D() {
-      this.p.run();
+      this.q = $$1.A().c();
    }
 
    @Override
    protected void aN_() {
-      if (this.r == null) {
-         this.r = Lists.newArrayList();
-         this.t = new IntOpenHashSet();
-         if (this.o) {
-            this.a("texts/end.txt", this::a);
+      this.o = this.d(new eyd(this.f, this.g, this.h - 64, 32, 25));
+      int $$0 = -1;
+      epf $$1 = this.f.aM();
+      epa $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<epe> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+      }
+
+      evl<Integer> $$6 = new evl<>("options.fullscreen.resolution", evl.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return vf.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return evm.a($$1x, vf.c("options.fullscreen.current"));
+         } else {
+            epe $$3x = $$2.a($$2x);
+            return evm.a($$1x, vf.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
-
-         this.a("texts/credits.json", this::b);
-         if (this.o) {
-            this.a("texts/postcredits.txt", this::a);
+      }, new evl.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
          }
-
-         this.u = this.r.size() * 12;
-      }
-   }
-
-   private void a(String $$0, fdi.a $$1) {
-      try (Reader $$2 = this.f.Z().openAsReader(new ahg($$0))) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits", var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      auu $$2 = auu.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.f.V().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(l)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + l.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.E();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.E();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : aud.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(vf.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.E();
-         this.E();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(vf.b($$8).a(n.o), true);
-               this.E();
-               this.E();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(vf.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(vf.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.E();
-               this.E();
-            }
-         }
-      }
-   }
-
-   private void E() {
-      this.r.add(atz.a);
-   }
-
-   private void a(String $$0) {
-      this.r.addAll(this.f.h.c(vf.b($$0), 256));
-   }
-
-   private void a(vf $$0, boolean $$1) {
-      if ($$1) {
-         this.t.add(this.r.size());
-      }
-
-      this.r.add($$0.g());
-   }
-
-   @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      this.q = Math.max(0.0F, this.q + $$3 * this.x);
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 128;
-      int $$5 = this.h + 50;
-      float $$6 = -this.q;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.A.a($$0, this.g, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.r.size(); $$8++) {
-         if ($$8 == this.r.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.h / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.h) {
-            atz $$10 = this.r.get($$8);
-            if (this.t.contains($$8)) {
-               $$0.a(this.i, $$10, $$4 + 128, $$7, 16777215);
-            } else {
-               $$0.b(this.i, $$10, $$4, $$7, 16777215);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, this.g, this.h);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   }
-
-   @Override
-   public void b(ewt $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.g;
-      float $$5 = this.q * 0.5F;
-      int $$6 = 64;
-      float $$7 = this.q / this.y;
-      float $$8 = $$7 * 0.02F;
-      float $$9 = (float)(this.u + this.h + this.h + 24) / this.y;
-      float $$10 = ($$9 - 20.0F - $$7) * 0.005F;
-      if ($$10 < $$8) {
-         $$8 = $$10;
-      }
-
-      if ($$8 > 1.0F) {
-         $$8 = 1.0F;
-      }
-
-      $$8 *= $$8;
-      $$8 = $$8 * 96.0F / 255.0F;
-      $$0.a($$8, $$8, $$8, 1.0F);
-      $$0.a(d, 0, 0, 0, 0.0F, $$5, $$4, this.h, 64, 64);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      });
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.d(exg.a(ve.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
    public void j() {
-      this.f.r().b(arp.c);
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.P();
+      }
+
+      super.j();
    }
 
    @Override
-   public aro C() {
-      return arp.c;
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
+         }
+
+         if (this.p.g()) {
+            List<vf> $$4 = Lists.newArrayList(new vf[]{k, ve.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new fdh(l, $$4, ImmutableList.of(new fdh.a(m, $$0x -> {
+               this.b.j().a(evb.c);
+               evi.O().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new fdh.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (fdb.s()) {
+         evl<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   }
+
+   @Override
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

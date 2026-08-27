@@ -1,62 +1,70 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
-
 public class ftm {
-   private final ftr a = new ftr();
-   private final fts b;
-   private final ftg.a c;
-   private final ftg.a d;
-   private final fth e;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public ftm(int $$0) {
-      this.b = fts.a($$0);
-      SortedMap<fto, epv> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(ftv.h(), this.a.a(fto.c()));
-         $$0x.put(ftv.i(), this.a.a(fto.e()));
-         $$0x.put(ftv.a(), this.a.a(fto.d()));
-         $$0x.put(ftv.k(), this.a.a(fto.f()));
-         a($$0x, ftv.b());
-         a($$0x, ftv.c());
-         a($$0x, ftv.d());
-         a($$0x, ftv.e());
-         a($$0x, ftv.f());
-         $$0x.put(ftv.g(), new epv(786432));
-         a($$0x, fto.j());
-         a($$0x, fto.k());
-         a($$0x, fto.m());
-         a($$0x, fto.n());
-         a($$0x, fto.l());
-         a($$0x, fto.o());
-         a($$0x, fto.p());
-         a($$0x, fto.i());
-         ggr.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = ftg.a(new epv(1536));
-      this.c = ftg.a($$1, new epv(786432));
-      this.e = new fth(this.c);
+   public ftm(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fto, epv> $$0, fto $$1) {
-      $$0.put($$1, new epv($$1.G()));
+   public ftm a(ftm $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public ftr a() {
+   public int a() {
       return this.a;
    }
 
-   public fts b() {
+   public int b() {
       return this.b;
    }
 
-   public ftg.a c() {
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public ftg.a d() {
+   public int d() {
       return this.d;
    }
 
-   public fth e() {
-      return this.e;
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

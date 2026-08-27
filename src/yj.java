@@ -1,8 +1,8 @@
-public record yj(int b, eff c, float d) implements ya {
+public record yj(int b, efg c, float d) implements ya {
    public static final ahg a = new ahg("debug/path");
 
    public yj(ui $$0) {
-      this($$0.readInt(), eff.b($$0), $$0.readFloat());
+      this($$0.readInt(), efg.b($$0), $$0.readFloat());
    }
 
    @Override

@@ -1,48 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class ebn {
+   private static final ahg[] a = new ahg[]{
+      new ahg("nether_fossils/fossil_1"),
+      new ahg("nether_fossils/fossil_2"),
+      new ahg("nether_fossils/fossil_3"),
+      new ahg("nether_fossils/fossil_4"),
+      new ahg("nether_fossils/fossil_5"),
+      new ahg("nether_fossils/fossil_6"),
+      new ahg("nether_fossils/fossil_7"),
+      new ahg("nether_fossils/fossil_8"),
+      new ahg("nether_fossils/fossil_9"),
+      new ahg("nether_fossils/fossil_10"),
+      new ahg("nether_fossils/fossil_11"),
+      new ahg("nether_fossils/fossil_12"),
+      new ahg("nether_fossils/fossil_13"),
+      new ahg("nether_fossils/fossil_14")
+   };
 
-public class ebn extends dzf {
-   public static final Codec<ebn> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dxm.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ebn::new)
-   );
-   public final dxm e;
-
-   public ebn(dzf.c $$0, dxm $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(edh $$0, dzl $$1, auv $$2, hx $$3) {
+      ddc $$4 = ddc.a($$2);
+      $$1.a(new ebn.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<dzf.b> a(dzf.a $$0) {
-      dpo $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dpm $$5 = new dpm($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cua $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      hx.a $$8 = new hx.a($$2, $$6, $$3);
-
-      while ($$6 > $$4) {
-         djg $$9 = $$7.a($$6);
-         djg $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(cwr.dW) || $$10.d(ctd.a, $$8.q($$6), ic.b))) {
-            break;
-         }
+   public static class a extends dzq {
+      public a(edh $$0, ahg $$1, hx $$2, ddc $$3) {
+         super(dzx.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         hx $$11 = new hx($$2, $$6, $$3);
-         return Optional.of(new dzf.b($$11, (Consumer<dzx>)($$3x -> ebm.a($$0.e(), $$3x, $$1, $$11))));
+      public a(edh $$0, sn $$1) {
+         super(dzx.ac, $$1, $$0, $$1x -> a(ddc.valueOf($$1.l("Rot"))));
       }
-   }
 
-   @Override
-   public dzo<?> e() {
-      return dzo.i;
+      private static edc a(ddc $$0) {
+         return new edc().a($$0).a(dbm.a).a(eci.d);
+      }
+
+      @Override
+      protected void a(dzw $$0, sn $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, hx $$1, cue $$2, auv $$3, dyy $$4) {
+      }
+
+      @Override
+      public void a(cuk $$0, cui $$1, dle $$2, auv $$3, dyy $$4, csw $$5, hx $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

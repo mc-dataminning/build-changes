@@ -1,158 +1,75 @@
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dib extends dgu implements dns.b<dnz.b>, dnz {
+public class dib extends dgv implements dnt.b<doa.b>, doa {
    private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int g = 6;
-   private static final int h = 40;
-   private static final int i = 90;
-   private static final Int2ObjectMap<arq> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, arr.AG);
-      $$0.put(2, arr.AH);
-      $$0.put(3, arr.AI);
-      $$0.put(4, arr.AF);
-   });
-   private int k;
-   private final dnz.d l = new dib.a();
-   private dnz.a m = new dnz.a();
-   private final dnz.b n = new dnz.b(this);
+   private doa.a c;
+   private final doa.b d;
+   private final doa.d e = this.c();
+   private int g;
 
-   public dib(hx $$0, djg $$1) {
-      super(dgw.L, $$0, $$1);
+   protected dib(dgx<?> $$0, hx $$1, djh $$2) {
+      super($$0, $$1, $$2);
+      this.c = new doa.a();
+      this.d = new doa.b(this);
    }
 
-   @Override
-   public dnz.a gg() {
-      return this.m;
+   public dib(hx $$0, djh $$1) {
+      this(dgx.I, $$0, $$1);
    }
 
-   @Override
-   public dnz.d gh() {
-      return this.l;
+   public doa.d c() {
+      return new dib.a(this.aB_());
    }
 
    @Override
    public void a(sn $$0) {
       super.a($$0);
-      if ($$0.b("warning_level", 99)) {
-         this.k = $$0.h("warning_level");
-      }
-
+      this.g = $$0.h("last_vibration_frequency");
       if ($$0.b("listener", 10)) {
-         dnz.a.a.parse(new Dynamic(tb.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
+         doa.a.a.parse(new Dynamic(tb.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
    }
 
    @Override
    protected void b(sn $$0) {
       super.b($$0);
-      $$0.a("warning_level", this.k);
-      dnz.a.a.encodeStart(tb.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+      $$0.a("last_vibration_frequency", this.g);
+      doa.a.a.encodeStart(tb.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   @Nullable
-   public static ane a(@Nullable blu $$0) {
-      if ($$0 instanceof ane) {
-         return (ane)$$0;
-      } else {
-         if ($$0 != null) {
-            bmk $$6 = $$0.cN();
-            if ($$6 instanceof ane) {
-               return (ane)$$6;
-            }
-         }
-
-         if ($$0 instanceof cfz $$3) {
-            blu var3 = $$3.w();
-            if (var3 instanceof ane) {
-               return (ane)var3;
-            }
-         }
-
-         if ($$0 instanceof cbt $$5) {
-            blu var9 = $$5.w();
-            if (var9 instanceof ane) {
-               return (ane)var9;
-            }
-         }
-
-         return null;
-      }
+   @Override
+   public doa.a gg() {
+      return this.c;
    }
 
-   public void a(and $$0, @Nullable ane $$1) {
-      if ($$1 != null) {
-         djg $$2 = this.r();
-         if (!$$2.c(ddi.b)) {
-            this.k = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (blu)$$1);
-            }
-         }
-      }
+   @Override
+   public doa.d gh() {
+      return this.e;
    }
 
-   private boolean b(and $$0, ane $$1) {
-      OptionalInt $$2 = cen.a($$0, this.aB_(), $$1);
-      $$2.ifPresent($$0x -> this.k = $$0x);
-      return $$2.isPresent();
+   public int f() {
+      return this.g;
    }
 
-   private void a(and $$0, @Nullable blu $$1) {
-      hx $$2 = this.aB_();
-      djg $$3 = this.r();
-      $$0.a($$2, $$3.a(ddi.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(dnq.N, $$2, dnq.a.a($$1));
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   private boolean b(and $$0) {
-      return this.r().c(ddi.d) && $$0.ak() != bjx.a && $$0.Z().b(ctk.M);
+   public doa.b g() {
+      return this.d;
    }
 
-   public void a(and $$0) {
-      if (this.b($$0) && this.k > 0) {
-         if (!this.c($$0)) {
-            this.b((cto)$$0);
-         }
+   protected class a implements doa.d {
+      public static final int b = 8;
+      protected final hx c;
+      private final dnv a;
 
-         cel.a($$0, els.b(this.aB_()), null, 40);
-      }
-   }
-
-   private void b(cto $$0) {
-      arq $$1 = (arq)j.get(this.k);
-      if ($$1 != null) {
-         hx $$2 = this.aB_();
-         int $$3 = $$2.u() + aun.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + aun.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + aun.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, ars.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(and $$0) {
-      return this.k < 4 ? false : avh.a(bly.bj, bmo.k, $$0, this.aB_(), 20, 5, 6, avh.a.b).isPresent();
-   }
-
-   public dnz.b c() {
-      return this.n;
-   }
-
-   class a implements dnz.d {
-      private static final int b = 8;
-      private final dnu c = new dnm(dib.this.p);
-
-      public a() {
+      public a(hx $$1) {
+         this.c = $$1;
+         this.a = new dnn($$1);
       }
 
       @Override
@@ -161,23 +78,30 @@ public class dib extends dgu implements dns.b<dnz.b>, dnz {
       }
 
       @Override
-      public dnu b() {
-         return this.c;
+      public dnv b() {
+         return this.a;
       }
 
       @Override
-      public asv<dnq> c() {
-         return asm.c;
+      public boolean d() {
+         return true;
       }
 
       @Override
-      public boolean a(and $$0, hx $$1, dnq $$2, dnq.a $$3) {
-         return !dib.this.r().c(ddi.b) && dib.a($$3.a()) != null;
+      public boolean a(and $$0, hx $$1, dnr $$2, @Nullable dnr.a $$3) {
+         return !$$1.equals(this.c) || $$2 != dnr.f && $$2 != dnr.i ? ddi.n(dib.this.r()) : false;
       }
 
       @Override
-      public void a(and $$0, hx $$1, dnq $$2, @Nullable blu $$3, @Nullable blu $$4, float $$5) {
-         dib.this.a($$0, dib.a($$4 != null ? $$4 : $$3));
+      public void a(and $$0, hx $$1, dnr $$2, @Nullable blv $$3, @Nullable blv $$4, float $$5) {
+         djh $$6 = dib.this.r();
+         if (ddi.n($$6)) {
+            dib.this.a(doa.a_($$2));
+            int $$7 = doa.a_($$5, this.a());
+            if ($$6.b() instanceof ddi $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dib.this.f());
+            }
+         }
       }
 
       @Override

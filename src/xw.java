@@ -22,9 +22,9 @@ public record xw(xw.a b) implements ya {
       return a;
    }
 
-   public static record a(UUID a, int b, els c, @Nullable eff d, @Nullable hx e, @Nullable hx f, int g, Set<String> h, List<hx> i) {
+   public static record a(UUID a, int b, elt c, @Nullable efg d, @Nullable hx e, @Nullable hx f, int g, Set<String> h, List<hx> i) {
       public a(ui $$0) {
-         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(eff::b), $$0.c(ui::e), $$0.c(ui::e), $$0.readInt(), $$0.a(HashSet::new, ui::s), $$0.a(ui::e));
+         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(efg::b), $$0.c(ui::e), $$0.c(ui::e), $$0.readInt(), $$0.a(HashSet::new, ui::s), $$0.a(ui::e));
       }
 
       public void a(ui $$0) {
@@ -60,12 +60,12 @@ public record xw(xw.a b) implements ya {
          return this.b;
       }
 
-      public els d() {
+      public elt d() {
          return this.c;
       }
 
       @Nullable
-      public eff e() {
+      public efg e() {
          return this.d;
       }
 

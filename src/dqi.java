@@ -1,18 +1,21 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-class dqi implements dpw {
-   public static dqi a = new dqi();
-   public static final Codec<dqi> e = Codec.unit(() -> a);
+public abstract class dqi implements dpx {
+   protected final jb f;
 
-   private dqi() {
+   protected static <P extends dqi> P1<Mu<P>, jb> a(Instance<P> $$0) {
+      return $$0.group(jb.v(16).optionalFieldOf("offset", jb.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(cuj $$0, hx $$1) {
-      return true;
+   protected dqi(jb $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public dpx<?> a() {
-      return dpx.l;
+   public final boolean a(cuk $$0, hx $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(djh var1);
 }

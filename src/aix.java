@@ -49,8 +49,8 @@ public class aix {
       if (!$$1.be()) {
          throw b.create();
       } else {
-         bgq $$2 = $$1.bg();
-         double $$3 = (double)$$2.g() / (double)avo.a;
+         bgr $$2 = $$1.bg();
+         double $$3 = (double)$$2.g() / (double)avp.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> vf.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
          return (int)$$4;

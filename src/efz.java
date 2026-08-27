@@ -1,48 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+public class efz {
+   private final hx a;
+   private final int b;
+   private final int c;
 
-public class efz extends efv {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
-
-   public static efv.a<efz> a() {
-      return new efv.a<>(efz::new, efz::b, avv.k);
+   public efz(hx $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public efz() {
-      this.b.defaultReturnValue(-1);
+   public static efz a(sn $$0) {
+      hx $$1 = tc.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new efz($$1, $$2, $$3);
    }
 
-   public static efz b(sn $$0) {
-      efz $$1 = new efz();
-
-      for (String $$2 : $$0.e()) {
-         if ($$0.b($$2, 99)) {
-            $$1.b.put($$2, $$0.h($$2));
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public sn a(sn $$0) {
-      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<String> $$1 = (Entry<String>)var2.next();
-         $$0.a((String)$$1.getKey(), $$1.getIntValue());
-      }
-
+   public sn a() {
+      sn $$0 = new sn();
+      $$0.a("Pos", tc.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
       return $$0;
    }
 
-   public int b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return $$0;
+   public hx b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public String e() {
+      return a(this.a);
+   }
+
+   public static String a(hx $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

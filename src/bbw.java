@@ -1,34 +1,39 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bbw extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public bbw(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bbv.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bdd::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
-   }
+public class bbw {
+   public static final TypeReference a = () -> "level";
+   public static final TypeReference b = () -> "player";
+   public static final TypeReference c = () -> "chunk";
+   public static final TypeReference d = () -> "hotbar";
+   public static final TypeReference e = () -> "options";
+   public static final TypeReference f = () -> "structure";
+   public static final TypeReference g = () -> "stats";
+   public static final TypeReference h = () -> "saved_data/command_storage";
+   public static final TypeReference i = () -> "saved_data/chunks";
+   public static final TypeReference j = () -> "saved_data/map_data";
+   public static final TypeReference k = () -> "saved_data/idcounts";
+   public static final TypeReference l = () -> "saved_data/raids";
+   public static final TypeReference m = () -> "saved_data/random_sequences";
+   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
+   public static final TypeReference o = () -> "saved_data/scoreboard";
+   public static final TypeReference p = () -> "advancements";
+   public static final TypeReference q = () -> "poi_chunk";
+   public static final TypeReference r = () -> "entity_chunk";
+   public static final TypeReference s = () -> "block_entity";
+   public static final TypeReference t = () -> "item_stack";
+   public static final TypeReference u = () -> "block_state";
+   public static final TypeReference v = () -> "entity_name";
+   public static final TypeReference w = () -> "entity_tree";
+   public static final TypeReference x = () -> "entity";
+   public static final TypeReference y = () -> "block_name";
+   public static final TypeReference z = () -> "item_name";
+   public static final TypeReference A = () -> "game_event_name";
+   public static final TypeReference B = () -> "untagged_spawner";
+   public static final TypeReference C = () -> "structure_feature";
+   public static final TypeReference D = () -> "objective";
+   public static final TypeReference E = () -> "team";
+   public static final TypeReference F = () -> "recipe";
+   public static final TypeReference G = () -> "biome";
+   public static final TypeReference H = () -> "multi_noise_biome_source_parameter_list";
+   public static final TypeReference I = () -> "world_gen_settings";
 }

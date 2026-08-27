@@ -1,16 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public interface dxn<P extends dxm> {
-   dxn<dxl> a = a("constant", dxl.b);
-   dxn<dxp> b = a("uniform", dxp.a);
-   dxn<dxk> c = a("biased_to_bottom", dxk.a);
-   dxn<dxq> d = a("very_biased_to_bottom", dxq.a);
-   dxn<dxo> e = a("trapezoid", dxo.a);
-   dxn<dxr> f = a("weighted_list", dxr.a);
+public abstract class dxn {
+   private static final Codec<Either<dpk, dxn>> a = Codec.either(dpk.a, kd.N.q().dispatch(dxn::a, dxo::codec));
+   public static final Codec<dxn> c = a.xmap(
+      $$0 -> (dxn)$$0.map(dxm::a, $$0x -> $$0x), $$0 -> $$0.a() == dxo.a ? Either.left(((dxm)$$0).b()) : Either.right($$0)
+   );
 
-   Codec<P> codec();
+   public abstract int a(auv var1, dpn var2);
 
-   private static <P extends dxm> dxn<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.N, $$0, () -> $$1);
-   }
+   public abstract dxo<?> a();
 }

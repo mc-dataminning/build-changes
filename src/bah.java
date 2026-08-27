@@ -1,69 +1,46 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
 
 public class bah extends DataFix {
    public bah(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map($$0xxx -> {
-               if ($$0xxx.asString().result().isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  String $$1x = $$0xxx.asString("");
-                  vf $$2 = null;
-                  if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
-                     if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
-                        try {
-                           $$2 = aud.b(awu.a, $$1x, vf.class, true);
-                           if ($$2 == null) {
-                              $$2 = ve.a;
-                           }
-                        } catch (Exception var6) {
-                        }
-
-                        if ($$2 == null) {
-                           try {
-                              $$2 = vf.a.a($$1x);
-                           } catch (Exception var5) {
-                           }
-                        }
-
-                        if ($$2 == null) {
-                           try {
-                              $$2 = vf.a.b($$1x);
-                           } catch (Exception var4) {
-                           }
-                        }
-
-                        if ($$2 == null) {
-                           $$2 = vf.b($$1x);
-                        }
-                     } else {
-                        $$2 = vf.b($$1x);
-                     }
-                  } else {
-                     $$2 = ve.a;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
                   }
 
-                  return $$0xxx.createString(vf.a.a($$2));
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
                }
-            })).map($$0::createList).result(), $$0.emptyList()));
-   }
+            }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbv.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+            return $$2x;
+         }
       );
    }
 }

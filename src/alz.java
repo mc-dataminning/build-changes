@@ -3,10 +3,10 @@ import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import org.slf4j.Logger;
 
-public class alz extends aqu {
+public class alz extends aqv {
    private static final Logger a = LogUtils.getLogger();
 
-   public alz(ama $$0, io<ahp> $$1, ego $$2) {
+   public alz(ama $$0, io<ahp> $$1, egp $$2) {
       super($$0, $$1, $$2, $$0.a().H);
       amb $$3 = $$0.a();
       this.a($$3.F);

@@ -1,33 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cxi extends cwp {
+public class cxi extends cyl {
    public static final MapCodec<cxi> a = b(cxi::new);
-   private static final vf b = vf.c("container.cartography_table");
+   private static final emm[] b = new emm[]{
+      cwq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cwq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<cxi> a() {
       return a;
    }
 
-   protected cxi(djf.d $$0) {
+   public cxi(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      if ($$1.B) {
-         return bka.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(asb.aw);
-         return bka.b;
-      }
+   protected cto d() {
+      return cnb.tY;
    }
 
-   @Nullable
    @Override
-   public bkd b(djg $$0, cto $$1, hx $$2) {
-      return new bkj(($$2x, $$3, $$4) -> new cig($$2x, $$3, cil.a($$1, $$2)), b);
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b[this.g($$0)];
    }
 }

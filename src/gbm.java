@@ -1,28 +1,22 @@
-public class gbm extends fzs<cbh, fmm<cbh>> {
-   private static final ahg a = new ahg("textures/entity/wither/wither_invulnerable.png");
-   private static final ahg i = new ahg("textures/entity/wither/wither.png");
+public class gbm extends fzt<cdf, fmm<cdf>> {
+   private static final ahg a = new ahg("textures/entity/witch.png");
 
-   public gbm(fym.a $$0) {
-      super($$0, new fmm<>($$0.a(fmv.bS)), 1.0F);
-      this.a(new gdl(this, $$0.f()));
+   public gbm(fyn.a $$0) {
+      super($$0, new fmm<>($$0.a(fmw.bR)), 0.5F);
+      this.a(new gdl<>(this, $$0.d()));
    }
 
-   protected int a(cbh $$0, hx $$1) {
-      return 15;
+   public void a(cdf $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
+      this.f.b(!$$0.eT().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahg a(cbh $$0) {
-      int $$1 = $$0.A();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   public ahg a(cdf $$0) {
+      return a;
    }
 
-   protected void a(cbh $$0, eqa $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.A();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   protected void a(cdf $$0, eqb $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

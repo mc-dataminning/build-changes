@@ -32,8 +32,8 @@ public class afp implements xf<afm> {
       return this.a;
    }
 
-   public PublicKey d() throws atm {
-      return atl.a(this.b);
+   public PublicKey d() throws atn {
+      return atm.a(this.b);
    }
 
    public byte[] e() {

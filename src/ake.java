@@ -12,14 +12,14 @@ public class ake {
    public static void a(CommandDispatcher<ds> $$0) {
       RequiredArgumentBuilder<ds, ahg> $$1 = dt.a("sound", et.a()).suggests(hn.c);
 
-      for (ars $$2 : ars.values()) {
+      for (art $$2 : art.values()) {
          $$1.then(a($$2));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static LiteralArgumentBuilder<ds> a(ars $$0) {
+   private static LiteralArgumentBuilder<ds> a(art $$0) {
       return (LiteralArgumentBuilder<ds>)dt.a($$0.a())
          .then(
             ((RequiredArgumentBuilder)dt.a("targets", ef.d())
@@ -76,9 +76,9 @@ public class ake {
          );
    }
 
-   private static int a(ds $$0, Collection<ane> $$1, ahg $$2, ars $$3, els $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      ih<arq> $$8 = ih.a(arq.a($$2));
-      double $$9 = (double)aun.k($$8.a().a($$5));
+   private static int a(ds $$0, Collection<ane> $$1, ahg $$2, art $$3, elt $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      ih<arr> $$8 = ih.a(arr.a($$2));
+      double $$9 = (double)auo.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().F_().g();
 
@@ -87,7 +87,7 @@ public class ake {
          double $$14 = $$4.d - $$12.dt();
          double $$15 = $$4.e - $$12.dx();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         els $$17 = $$4;
+         elt $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -95,7 +95,7 @@ public class ake {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new els($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
+            $$17 = new elt($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

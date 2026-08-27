@@ -21,7 +21,7 @@ public class ds implements du<ds>, dx {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("permissions.requires.entity"));
    private final dr c;
-   private final els d;
+   private final elt d;
    private final and e;
    private final int f;
    private final String g;
@@ -29,32 +29,32 @@ public class ds implements du<ds>, dx {
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final blu k;
+   private final blv k;
    private final dp l;
    private final ee.a m;
-   private final elr n;
+   private final els n;
    private final dq o;
-   private final avl p;
+   private final avm p;
 
-   public ds(dr $$0, els $$1, elr $$2, and $$3, int $$4, String $$5, vf $$6, MinecraftServer $$7, @Nullable blu $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dp.a, ee.a.a, dq.a, avl.immediate($$7));
+   public ds(dr $$0, elt $$1, els $$2, and $$3, int $$4, String $$5, vf $$6, MinecraftServer $$7, @Nullable blv $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dp.a, ee.a.a, dq.a, avm.immediate($$7));
    }
 
    protected ds(
       dr $$0,
-      els $$1,
-      elr $$2,
+      elt $$1,
+      els $$2,
       and $$3,
       int $$4,
       String $$5,
       vf $$6,
       MinecraftServer $$7,
-      @Nullable blu $$8,
+      @Nullable blv $$8,
       boolean $$9,
       dp $$10,
       ee.a $$11,
       dq $$12,
-      avl $$13
+      avm $$13
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -76,17 +76,17 @@ public class ds implements du<ds>, dx {
       return this.c == $$0 ? this : new ds($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(blu $$0) {
+   public ds a(blv $$0) {
       return this.k == $$0
          ? this
          : new ds(this.c, this.d, this.n, this.e, this.f, $$0.ad().getString(), $$0.Q_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(els $$0) {
+   public ds a(elt $$0) {
       return this.d.equals($$0) ? this : new ds(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(elr $$0) {
+   public ds a(els $$0) {
       return this.n.c($$0) ? this : new ds(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -123,28 +123,28 @@ public class ds implements du<ds>, dx {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dmp.a(this.e.E_(), $$0.E_());
-         els $$2 = new els(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dmq.a(this.e.E_(), $$0.E_());
+         elt $$2 = new elt(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new ds(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public ds a(blu $$0, ee.a $$1) {
+   public ds a(blv $$0, ee.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ds b(els $$0) {
-      els $$1 = this.m.a(this);
+   public ds b(elt $$0) {
+      elt $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = aun.g((float)(-(aun.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = aun.g((float)(aun.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new elr($$6, $$7));
+      float $$6 = auo.g((float)(-(auo.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = auo.g((float)(auo.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new els($$6, $$7));
    }
 
-   public ds a(dq $$0, avl $$1) {
+   public ds a(dq $$0, avm $$1) {
       return $$0 == this.o && $$1 == this.p
          ? this
          : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, $$1);
@@ -163,7 +163,7 @@ public class ds implements du<ds>, dx {
       return this.f >= $$0;
    }
 
-   public els d() {
+   public elt d() {
       return this.d;
    }
 
@@ -172,11 +172,11 @@ public class ds implements du<ds>, dx {
    }
 
    @Nullable
-   public blu f() {
+   public blv f() {
       return this.k;
    }
 
-   public blu g() throws CommandSyntaxException {
+   public blv g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class ds implements du<ds>, dx {
    }
 
    public ane h() throws CommandSyntaxException {
-      blu var2 = this.k;
+      blv var2 = this.k;
       if (var2 instanceof ane) {
          return (ane)var2;
       } else {
@@ -202,7 +202,7 @@ public class ds implements du<ds>, dx {
       return this.k instanceof ane;
    }
 
-   public elr k() {
+   public els k() {
       return this.n;
    }
 
@@ -218,7 +218,7 @@ public class ds implements du<ds>, dx {
       return this.o;
    }
 
-   public avl o() {
+   public avm o() {
       return this.p;
    }
 
@@ -266,7 +266,7 @@ public class ds implements du<ds>, dx {
 
    private void c(vf $$0) {
       vf $$1 = vf.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aK().b(ctk.p)) {
+      if (this.i.aK().b(ctl.p)) {
          for (ane $$2 : this.i.ae().t()) {
             if ($$2 != this.c && this.i.ae().f($$2.fR())) {
                $$2.a($$1);
@@ -274,7 +274,7 @@ public class ds implements du<ds>, dx {
          }
       }
 
-      if (this.c != this.i && this.i.aK().b(ctk.m)) {
+      if (this.c != this.i && this.i.aK().b(ctl.m)) {
          this.i.a($$1);
       }
    }
@@ -302,7 +302,7 @@ public class ds implements du<ds>, dx {
 
    @Override
    public Stream<ahg> s() {
-      return kd.b.s().map(arq::a);
+      return kd.b.s().map(arr::a);
    }
 
    @Override
@@ -324,7 +324,7 @@ public class ds implements du<ds>, dx {
    }
 
    @Override
-   public Set<ahf<cto>> u() {
+   public Set<ahf<ctp>> u() {
       return this.i.G();
    }
 
@@ -334,7 +334,7 @@ public class ds implements du<ds>, dx {
    }
 
    @Override
-   public chr w() {
+   public chs w() {
       return this.e.I();
    }
 

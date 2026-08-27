@@ -1,7 +1,7 @@
 import java.util.Set;
 
-public class fgw extends fgk {
-   private static final vf i = vf.c("gui.recipebook.toggleRecipes.smokable");
+public class fgw extends fgl {
+   private static final vf i = vf.c("gui.recipebook.toggleRecipes.smeltable");
 
    @Override
    protected vf c() {
@@ -9,7 +9,7 @@ public class fgw extends fgk {
    }
 
    @Override
-   protected Set<cms> b() {
-      return dgj.f().keySet();
+   protected Set<cmt> b() {
+      return dgk.f().keySet();
    }
 }

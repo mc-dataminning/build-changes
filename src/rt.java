@@ -21,21 +21,21 @@ public class rt extends MinecraftServer {
    private static final ahz o = new ahz(null, ServicesKeySet.EMPTY, null, null);
    private final List<rj> p;
    private final hx q;
-   private static final ctk r = ac.a(new ctk(), $$0 -> {
-      $$0.a(ctk.e).a(false, null);
-      $$0.a(ctk.v).a(false, null);
+   private static final ctl r = ac.a(new ctl(), $$0 -> {
+      $$0.a(ctl.e).a(false, null);
+      $$0.a(ctl.v).a(false, null);
    });
-   private static final dpn s = new dpn(0L, false, false);
+   private static final dpo s = new dpo(0L, false, false);
    @Nullable
    private rz t;
 
-   public static rt a(Thread $$0, egl.c $$1, aps $$2, Collection<rj> $$3, hx $$4) {
+   public static rt a(Thread $$0, egm.c $$1, apt $$2, Collection<rj> $$3, hx $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test batches were given!");
       } else {
          $$2.a();
-         cui $$5 = new cui(new ctc(new ArrayList<>($$2.b()), List.of()), cht.e.a());
-         cts $$6 = new cts("Test Level", ctl.b, false, bjx.c, true, r, $$5);
+         cuj $$5 = new cuj(new ctd(new ArrayList<>($$2.b()), List.of()), chu.e.a());
+         ctt $$6 = new ctt("Test Level", ctm.b, false, bjy.c, true, r, $$5);
          aib.d $$7 = new aib.d($$2, $$5, false, true);
          aib.c $$8 = new aib.c($$7, dt.a.b, 4);
 
@@ -43,9 +43,9 @@ public class rt extends MinecraftServer {
             l.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             aic $$10 = ac.<aic>c($$2x -> aib.a($$8, $$1xx -> {
-                  it<dmq> $$2xx = new ip<>(ke.aN, Lifecycle.stable()).l();
-                  dpk.b $$3x = $$1xx.c().d(ke.aK).f(dyv.b).a().a().a($$2xx);
-                  return new aib.b<>(new egp($$6, s, $$3x.d(), $$3x.a()), $$3x.b());
+                  it<dmr> $$2xx = new ip<>(ke.aN, Lifecycle.stable()).l();
+                  dpl.b $$3x = $$1xx.c().d(ke.aK).f(dyw.b).a().a().a($$2xx);
+                  return new aib.b<>(new egq($$6, s, $$3x.d(), $$3x.a()), $$3x.b());
                }, aic::new, ac.f(), $$2x)).get();
             $$9.stop();
             l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -58,15 +58,15 @@ public class rt extends MinecraftServer {
       }
    }
 
-   private rt(Thread $$0, egl.c $$1, aps $$2, aic $$3, Collection<rj> $$4, hx $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, avw.a(), o, ano::new);
+   private rt(Thread $$0, egm.c $$1, apt $$2, aic $$3, Collection<rj> $$4, hx $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, avx.a(), o, ano::new);
       this.p = Lists.newArrayList($$4);
       this.q = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new aqu(this, this.ba(), this.h, 1) {
+      this.a(new aqv(this, this.ba(), this.h, 1) {
       });
       this.u_();
       and $$0 = this.F();
@@ -137,7 +137,7 @@ public class rt extends MinecraftServer {
 
    private void b(and $$0) {
       hx $$1 = new hx($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
-      Collection<ro> $$2 = rr.a(this.p, $$1, ddb.a, $$0, ru.a, 8);
+      Collection<ro> $$2 = rr.a(this.p, $$1, ddc.a, $$0, ru.a, 8);
       this.t = new rz($$2);
       l.info("{} tests are now running at position {}!", this.t.h(), $$1.x());
    }

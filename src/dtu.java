@@ -1,30 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dtu(dwg b, dpw c, bjf d, int e) implements dtx {
+public class dtu implements dty {
    public static final Codec<dtu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dwg.a.fieldOf("state_provider").forGetter(dtu::a),
-               dpw.b.fieldOf("target").forGetter(dtu::b),
-               bjf.b(0, 8).fieldOf("radius").forGetter(dtu::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dtu::d)
+               djh.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               djh.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bjg.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bjg.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dtu::new)
    );
+   private final djh b;
+   private final djh c;
+   private final bjg d;
+   private final bjg e;
 
-   public dwg a() {
+   public dtu(djh $$0, djh $$1, bjg $$2, bjg $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public djh a() {
       return this.b;
    }
 
-   public dpw b() {
+   public djh b() {
       return this.c;
    }
 
-   public bjf c() {
+   public bjg c() {
       return this.d;
    }
 
-   public int d() {
+   public bjg d() {
       return this.e;
    }
 }

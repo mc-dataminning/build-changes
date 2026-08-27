@@ -1,21 +1,23 @@
-public enum dks implements avj {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dks implements avk {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-   private final String d;
+   private final String e;
+   private final boolean f;
 
-   private dks(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dks(String $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
    }
 }

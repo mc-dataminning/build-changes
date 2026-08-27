@@ -1,8 +1,41 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface etr {
+public interface etr {
+   etr a = new etr() {
+      @Override
+      public long a() {
+         return 1L;
+      }
+
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static etr a(final int $$0) {
+      return new etr() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
+   }
 }

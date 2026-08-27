@@ -1,59 +1,81 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cyd extends cwp {
+public class cyd extends cwc implements ddq {
    public static final MapCodec<cyd> a = b(cyd::new);
-   public static final djx b = djw.w;
-   public static final djx c = djw.r;
+   public static final djy b = djx.C;
+   private static final int d = 3;
+   protected static final emm c = cwq.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
-   protected MapCodec<? extends cyd> a() {
+   public MapCodec<cyd> a() {
       return a;
    }
 
-   public cyd(djf.d $$0) {
+   public cyd(djg.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public void b(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof and $$5) {
-         this.a($$0, $$5, $$2);
-      }
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
-      if ($$1 instanceof and $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public dgv a(hx $$0, djh $$1) {
+      return new dhh($$0, $$1);
    }
 
-   public void a(djg $$0, and $$1, hx $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         djg $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? arr.fd : arr.fe, ars.e);
+   @Nullable
+   @Override
+   public <T extends dgv> dgw<T> a(ctp $$0, djh $$1, dgx<T> $$2) {
+      return a($$2, dgx.z, $$0.B ? dhh::a : dhh::b);
+   }
+
+   @Override
+   public dcv b_(djh $$0) {
+      return dcv.b;
+   }
+
+   @Override
+   public eer c_(djh $$0) {
+      return $$0.c(b) ? ees.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(ctp $$0, hx $$1, djh $$2, @Nullable bml $$3, cmy $$4) {
+      if ($$4.A()) {
+         dgv $$5 = $$0.c_($$1);
+         if ($$5 instanceof dgq) {
+            ((dgq)$$5).a($$4.y());
          }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
    }
 
+   @Nullable
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(c, b);
+   public djh a(cph $$0) {
+      eer $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(asm.a) && $$1.e() == 8));
    }
 
    @Override
-   public boolean d_(djg $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(djg $$0, cto $$1, hx $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
    }
 }

@@ -1,45 +1,44 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ecn extends edc {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ecn> a = Codec.unit(() -> ecn.b);
-   public static final ecn b = new ecn();
+public class ecn extends edd {
+   public static final Codec<ecn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(doq.a.g.fieldOf("heightmap").orElse(doq.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, ecn::new)
+   );
+   private final doq.a b;
+   private final int c;
 
-   private ecn() {
+   public ecn(doq.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public edf.c a(ctr $$0, hx $$1, hx $$2, edf.c $$3, edf.c $$4, edb $$5) {
-      djg $$6 = $$4.b();
-      if ($$6.a(cwr.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
+   public edg.c a(cts $$0, hx $$1, hx $$2, edg.c $$3, edg.c $$4, edc $$5) {
+      doq.a $$6;
+      if ($$0 instanceof and) {
+         if (this.b == doq.a.a) {
+            $$6 = doq.a.b;
+         } else if (this.b == doq.a.c) {
+            $$6 = doq.a.d;
          } else {
-            String $$7 = $$4.c().l("final_state");
-
-            djg $$9;
-            try {
-               fk.a $$8 = fk.a($$0.a(ke.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
-
-            return $$9.a(cwr.kN) ? null : new edf.c($$4.a(), $$9, null);
+            $$6 = this.b;
          }
       } else {
-         return $$4;
+         $$6 = this.b;
       }
+
+      hx $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new edg.c(new hx($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.h;
+   protected edf<?> a() {
+      return edf.g;
    }
 }

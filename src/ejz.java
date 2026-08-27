@@ -1,23 +1,29 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ejz(float b) implements eju {
-   public static final Codec<ejz> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(ejz::c)).apply($$0, ejz::new));
+public class ejz implements ejv {
+   private static final ejz b = new ejz();
+   public static final Codec<ejz> a = Codec.unit(b);
+
+   private ejz() {
+   }
 
    @Override
-   public ejv b() {
-      return ejw.e;
+   public ejw b() {
+      return ejx.h;
    }
 
-   public boolean a(egv $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public Set<eje<?>> a() {
+      return ImmutableSet.of(ejh.b);
    }
 
-   public static eju.a a(float $$0) {
-      return () -> new ejz($$0);
+   public boolean a(egw $$0) {
+      return $$0.a(ejh.b);
    }
 
-   public float c() {
-      return this.b;
+   public static ejv.a c() {
+      return () -> b;
    }
 }

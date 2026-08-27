@@ -15,13 +15,13 @@ public class akf {
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), false, null)))
+               .executes($$0x -> a((ds)$$0x.getSource(), auf.a(), false, null)))
             .then(
                ((RequiredArgumentBuilder)dt.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                     .executes($$0x -> a((ds)$$0x.getSource(), auf.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
                      ((RequiredArgumentBuilder)dt.a("gamemode", eg.a())
-                           .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eg.a($$0x, "gamemode"))))
+                           .executes($$0x -> a((ds)$$0x.getSource(), auf.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eg.a($$0x, "gamemode"))))
                         .then(
                            dt.a("port", IntegerArgumentType.integer(0, 65535))
                               .executes(
@@ -38,7 +38,7 @@ public class akf {
       );
    }
 
-   private static int a(ds $$0, int $$1, boolean $$2, @Nullable ctl $$3) throws CommandSyntaxException {
+   private static int a(ds $$0, int $$1, boolean $$2, @Nullable ctm $$3) throws CommandSyntaxException {
       if ($$0.l().p()) {
          throw b.create($$0.l().O());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

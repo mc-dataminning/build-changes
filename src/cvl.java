@@ -1,68 +1,95 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class cvl extends cwb implements cly {
-   public static final djx a = djw.w;
-   private final ddq.a b;
+public abstract class cvl extends cwc {
+   public static final dkb a = dal.aE;
+   public static final djy b = djx.r;
 
-   public cvl(ddq.a $$0, djf.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+   protected cvl(djg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
    protected abstract MapCodec<? extends cvl> a();
 
    @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dif($$0, $$1);
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      if ($$1.B) {
+         return bkb.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bkb.b;
+      }
+   }
+
+   protected abstract void a(ctp var1, hx var2, cfi var3);
+
+   @Override
+   public djh a(cph $$0) {
+      return this.o().a(a, $$0.g().g());
+   }
+
+   @Override
+   public void a(ctp $$0, hx $$1, djh $$2, bml $$3, cmy $$4) {
+      if ($$4.A()) {
+         dgv $$5 = $$0.c_($$1);
+         if ($$5 instanceof dgk) {
+            ((dgk)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dgv $$5 = $$1.c_($$2);
+         if ($$5 instanceof dgk) {
+            if ($$1 instanceof and) {
+               bjx.a($$1, $$2, (dgk)$$5);
+               ((dgk)$$5).a((and)$$1, elt.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public boolean d_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      return cib.a($$1.c_($$2));
+   }
+
+   @Override
+   public dcv b_(djh $$0) {
+      return dcv.c;
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(cwr.gO) || $$1.a(cwr.gP) || $$1.a(cwr.gQ) || $$1.a(cwr.gR);
-         if ($$3) {
-            return a($$2, dgw.p, dif::a);
-         }
-      }
-
-      return null;
-   }
-
-   public ddq.a b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
-      return false;
-   }
-
-   @Override
-   public blz g() {
-      return blz.f;
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   protected static <T extends dgv> dgw<T> a(ctp $$0, dgx<T> $$1, dgx<? extends dgk> $$2) {
+      return $$0.B ? null : a($$1, $$2, dgk::a);
    }
 }

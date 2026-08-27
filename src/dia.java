@@ -1,117 +1,96 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dia extends dgu implements dns.b<dnz.b>, dnz {
-   private static final Logger b = LogUtils.getLogger();
-   private dnz.a c;
-   private final dnz.b d;
-   private final dnz.d e = this.c();
-   private int g;
+public class dia extends dgv implements dnt.b<dia.a> {
+   private final dia.a a;
 
-   protected dia(dgw<?> $$0, hx $$1, djg $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dnz.a();
-      this.d = new dnz.b(this);
+   public dia(hx $$0, djh $$1) {
+      super(dgx.K, $$0, $$1);
+      this.a = new dia.a($$1, new dnn($$0));
    }
 
-   public dia(hx $$0, djg $$1) {
-      this(dgw.I, $$0, $$1);
-   }
-
-   public dnz.d c() {
-      return new dia.a(this.aB_());
+   public static void a(ctp $$0, hx $$1, djh $$2, dia $$3) {
+      $$3.a.d().a($$0, $$1, $$0.F_(), true);
    }
 
    @Override
    public void a(sn $$0) {
-      super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dnz.a.a.parse(new Dynamic(tb.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+      this.a.b.a($$0);
    }
 
    @Override
    protected void b(sn $$0) {
+      this.a.b.b($$0);
       super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      dnz.a.a.encodeStart(tb.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   @Override
-   public dnz.a gg() {
-      return this.c;
+   public dia.a c() {
+      return this.a;
    }
 
-   @Override
-   public dnz.d gh() {
-      return this.e;
-   }
+   public static class a implements dnt {
+      public static final int a = 8;
+      final ddk b;
+      private final djh c;
+      private final dnv d;
 
-   public int f() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public dnz.b g() {
-      return this.d;
-   }
-
-   protected class a implements dnz.d {
-      public static final int b = 8;
-      protected final hx c;
-      private final dnu a;
-
-      public a(hx $$1) {
-         this.c = $$1;
-         this.a = new dnm($$1);
+      public a(djh $$0, dnv $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = ddk.a();
       }
 
       @Override
-      public int a() {
+      public dnv a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public dnu b() {
-         return this.a;
+      public dnt.a c() {
+         return dnt.a.b;
       }
 
       @Override
-      public boolean d() {
-         return true;
-      }
+      public boolean a(and $$0, dnr $$1, dnr.a $$2, elt $$3) {
+         if ($$1 == dnr.p && $$2.a() instanceof bml $$4) {
+            if (!$$4.eD()) {
+               int $$5 = $$4.ee();
+               if ($$4.ec() && $$5 > 0) {
+                  this.b.a(hx.a($$3.a(ic.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
 
-      @Override
-      public boolean a(and $$0, hx $$1, dnq $$2, @Nullable dnq.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dnq.f && $$2 != dnq.i ? ddh.n(dia.this.r()) : false;
-      }
-
-      @Override
-      public void a(and $$0, hx $$1, dnq $$2, @Nullable blu $$3, @Nullable blu $$4, float $$5) {
-         djg $$6 = dia.this.r();
-         if (ddh.n($$6)) {
-            dia.this.a(dnz.a_($$2));
-            int $$7 = dnz.a_($$5, this.a());
-            if ($$6.b() instanceof ddh $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dia.this.f());
+               $$4.eC();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, hx.a($$1x), this.c, $$0.F_()));
             }
+
+            return true;
+         } else {
+            return false;
          }
       }
 
-      @Override
-      public void e() {
-         dia.this.e();
+      @VisibleForTesting
+      public ddk d() {
+         return this.b;
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      private void a(and $$0, hx $$1, djh $$2, auv $$3) {
+         $$0.a($$1, $$2.a(ddh.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(jx.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, ars.vd, art.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(ctp $$0, bml $$1) {
+         if ($$1.eh() instanceof ane $$3) {
+            bkt $$4 = $$1.ex() == null ? $$0.ai().a((cfi)$$3) : $$1.ex();
+            am.X.a($$3, $$1, $$4);
+         }
       }
    }
 }

@@ -104,7 +104,7 @@ public class alr {
    }
 
    private static int a(ds $$0, float $$1) throws CommandSyntaxException {
-      dkx $$2 = $$0.l().F().D_();
+      dky $$2 = $$0.l().F().D_();
       if ($$2.n() == (double)$$1) {
          throw h.create();
       } else {
@@ -115,7 +115,7 @@ public class alr {
    }
 
    private static int b(ds $$0, float $$1) throws CommandSyntaxException {
-      dkx $$2 = $$0.l().F().D_();
+      dky $$2 = $$0.l().F().D_();
       if ($$2.o() == (double)$$1) {
          throw i.create();
       } else {
@@ -126,7 +126,7 @@ public class alr {
    }
 
    private static int a(ds $$0, int $$1) throws CommandSyntaxException {
-      dkx $$2 = $$0.l().F().D_();
+      dky $$2 = $$0.l().F().D_();
       if ($$2.q() == $$1) {
          throw f.create();
       } else {
@@ -137,7 +137,7 @@ public class alr {
    }
 
    private static int b(ds $$0, int $$1) throws CommandSyntaxException {
-      dkx $$2 = $$0.l().F().D_();
+      dky $$2 = $$0.l().F().D_();
       if ($$2.r() == $$1) {
          throw g.create();
       } else {
@@ -150,11 +150,11 @@ public class alr {
    private static int a(ds $$0) {
       double $$1 = $$0.l().F().D_().i();
       $$0.a(() -> vf.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
-      return aun.a($$1 + 0.5);
+      return auo.a($$1 + 0.5);
    }
 
-   private static int a(ds $$0, elr $$1) throws CommandSyntaxException {
-      dkx $$2 = $$0.l().F().D_();
+   private static int a(ds $$0, els $$1) throws CommandSyntaxException {
+      dky $$2 = $$0.l().F().D_();
       if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
          throw a.create();
       } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
@@ -167,7 +167,7 @@ public class alr {
    }
 
    private static int a(ds $$0, double $$1, long $$2) throws CommandSyntaxException {
-      dkx $$3 = $$0.l().F().D_();
+      dky $$3 = $$0.l().F().D_();
       double $$4 = $$3.i();
       if ($$4 == $$1) {
          throw b.create();

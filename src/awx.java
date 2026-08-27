@@ -3,44 +3,26 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
 
-public abstract class awx extends DataFix {
-   private final String a;
-
-   public awx(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class awx extends DataFix {
+   public awx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbv.y);
-      Type<Pair<String, String>> $$1 = DSL.named(bbv.y.typeName(), bdd.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bbv.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
-                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
-               })
+      Type<?> $$0 = this.getInputSchema().getType(bbw.y);
+      Type<?> $$1 = this.getOutputSchema().getType(bbw.y);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bbw.y.typeName(), DSL.or(DSL.intType(), bde.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(bbw.y.typeName(), bde.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(axa::a, $$0xxxx -> axa.a(bde.a($$0xxxx))))
          );
-         return TypeRewriteRule.seq($$2, $$3);
+      } else {
+         throw new IllegalStateException("Expected and actual types don't match.");
       }
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new awx($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
    }
 }

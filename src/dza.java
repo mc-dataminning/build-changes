@@ -1,224 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
+public interface dza {
+   ahf<dzg> a = a("pillager_outpost");
+   ahf<dzg> b = a("mineshaft");
+   ahf<dzg> c = a("mineshaft_mesa");
+   ahf<dzg> d = a("mansion");
+   ahf<dzg> e = a("jungle_pyramid");
+   ahf<dzg> f = a("desert_pyramid");
+   ahf<dzg> g = a("igloo");
+   ahf<dzg> h = a("shipwreck");
+   ahf<dzg> i = a("shipwreck_beached");
+   ahf<dzg> j = a("swamp_hut");
+   ahf<dzg> k = a("stronghold");
+   ahf<dzg> l = a("monument");
+   ahf<dzg> m = a("ocean_ruin_cold");
+   ahf<dzg> n = a("ocean_ruin_warm");
+   ahf<dzg> o = a("fortress");
+   ahf<dzg> p = a("nether_fossil");
+   ahf<dzg> q = a("end_city");
+   ahf<dzg> r = a("buried_treasure");
+   ahf<dzg> s = a("bastion_remnant");
+   ahf<dzg> t = a("village_plains");
+   ahf<dzg> u = a("village_desert");
+   ahf<dzg> v = a("village_savanna");
+   ahf<dzg> w = a("village_snowy");
+   ahf<dzg> x = a("village_taiga");
+   ahf<dzg> y = a("ruined_portal");
+   ahf<dzg> z = a("ruined_portal_desert");
+   ahf<dzg> A = a("ruined_portal_jungle");
+   ahf<dzg> B = a("ruined_portal_swamp");
+   ahf<dzg> C = a("ruined_portal_mountain");
+   ahf<dzg> D = a("ruined_portal_ocean");
+   ahf<dzg> E = a("ruined_portal_nether");
+   ahf<dzg> F = a("ancient_city");
+   ahf<dzg> G = a("trail_ruins");
+   ahf<dzg> H = a("trial_chambers");
 
-public class dza {
-   private static final Map<String, String> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Village", "Village");
-      $$0.put("Mineshaft", "Mineshaft");
-      $$0.put("Mansion", "Mansion");
-      $$0.put("Igloo", "Temple");
-      $$0.put("Desert_Pyramid", "Temple");
-      $$0.put("Jungle_Pyramid", "Temple");
-      $$0.put("Swamp_Hut", "Temple");
-      $$0.put("Stronghold", "Stronghold");
-      $$0.put("Monument", "Monument");
-      $$0.put("Fortress", "Fortress");
-      $$0.put("EndCity", "EndCity");
-   });
-   private static final Map<String, String> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Iglu", "Igloo");
-      $$0.put("TeDP", "Desert_Pyramid");
-      $$0.put("TeJP", "Jungle_Pyramid");
-      $$0.put("TeSH", "Swamp_Hut");
-   });
-   private static final Set<String> c = Set.of(
-      "pillager_outpost",
-      "mineshaft",
-      "mansion",
-      "jungle_pyramid",
-      "desert_pyramid",
-      "igloo",
-      "ruined_portal",
-      "shipwreck",
-      "swamp_hut",
-      "stronghold",
-      "monument",
-      "ocean_ruin",
-      "fortress",
-      "endcity",
-      "buried_treasure",
-      "village",
-      "nether_fossil",
-      "bastion_remnant"
-   );
-   private final boolean d;
-   private final Map<String, Long2ObjectMap<sn>> e = Maps.newHashMap();
-   private final Map<String, dzi> f = Maps.newHashMap();
-   private final List<String> g;
-   private final List<String> h;
-
-   public dza(@Nullable egg $$0, List<String> $$1, List<String> $$2) {
-      this.g = $$1;
-      this.h = $$2;
-      this.a($$0);
-      boolean $$3 = false;
-
-      for (String $$4 : this.h) {
-         $$3 |= this.e.get($$4) != null;
-      }
-
-      this.d = $$3;
-   }
-
-   public void a(long $$0) {
-      for (String $$1 : this.g) {
-         dzi $$2 = this.f.get($$1);
-         if ($$2 != null && $$2.c($$0)) {
-            $$2.d($$0);
-            $$2.c();
-         }
-      }
-   }
-
-   public sn a(sn $$0) {
-      sn $$1 = $$0.p("Level");
-      csv $$2 = new csv($$1.h("xPos"), $$1.h("zPos"));
-      if (this.a($$2.e, $$2.f)) {
-         $$0 = this.a($$0, $$2);
-      }
-
-      sn $$3 = $$1.p("Structures");
-      sn $$4 = $$3.p("References");
-
-      for (String $$5 : this.h) {
-         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
-         if (!$$4.b($$5, 12) && $$6) {
-            int $$7 = 8;
-            LongList $$8 = new LongArrayList();
-
-            for (int $$9 = $$2.e - 8; $$9 <= $$2.e + 8; $$9++) {
-               for (int $$10 = $$2.f - 8; $$10 <= $$2.f + 8; $$10++) {
-                  if (this.a($$9, $$10, $$5)) {
-                     $$8.add(csv.c($$9, $$10));
-                  }
-               }
-            }
-
-            $$4.c($$5, $$8);
-         }
-      }
-
-      $$3.a("References", $$4);
-      $$1.a("Structures", $$3);
-      $$0.a("Level", $$1);
-      return $$0;
-   }
-
-   private boolean a(int $$0, int $$1, String $$2) {
-      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(csv.c($$0, $$1));
-   }
-
-   private boolean a(int $$0, int $$1) {
-      if (!this.d) {
-         return false;
-      } else {
-         for (String $$2 : this.h) {
-            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(csv.c($$0, $$1))) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private sn a(sn $$0, csv $$1) {
-      sn $$2 = $$0.p("Level");
-      sn $$3 = $$2.p("Structures");
-      sn $$4 = $$3.p("Starts");
-
-      for (String $$5 : this.h) {
-         Long2ObjectMap<sn> $$6 = this.e.get($$5);
-         if ($$6 != null) {
-            long $$7 = $$1.a();
-            if (this.f.get(a.get($$5)).c($$7)) {
-               sn $$8 = (sn)$$6.get($$7);
-               if ($$8 != null) {
-                  $$4.a($$5, $$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Starts", $$4);
-      $$2.a("Structures", $$3);
-      $$0.a("Level", $$2);
-      return $$0;
-   }
-
-   private void a(@Nullable egg $$0) {
-      if ($$0 != null) {
-         for (String $$1 : this.g) {
-            sn $$2 = new sn();
-
-            try {
-               $$2 = $$0.a($$1, avv.o, 1493).p("data").p("Features");
-               if ($$2.g()) {
-                  continue;
-               }
-            } catch (IOException var13) {
-            }
-
-            for (String $$3 : $$2.e()) {
-               sn $$4 = $$2.p($$3);
-               long $$5 = csv.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
-               st $$6 = $$4.c("Children", 10);
-               if (!$$6.isEmpty()) {
-                  String $$7 = $$6.a(0).l("id");
-                  String $$8 = b.get($$7);
-                  if ($$8 != null) {
-                     $$4.a("id", $$8);
-                  }
-               }
-
-               String $$9 = $$4.l("id");
-               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
-            }
-
-            String $$10 = $$1 + "_index";
-            dzi $$11 = $$0.a(dzi.a(), $$10);
-            if (!$$11.b().isEmpty()) {
-               this.f.put($$1, $$11);
-            } else {
-               dzi $$12 = new dzi();
-               this.f.put($$1, $$12);
-
-               for (String $$13 : $$2.e()) {
-                  sn $$14 = $$2.p($$13);
-                  $$12.a(csv.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
-               }
-
-               $$12.c();
-            }
-         }
-      }
-   }
-
-   public static dza a(ahf<cto> $$0, @Nullable egg $$1) {
-      if ($$0 == cto.h) {
-         return new dza(
-            $$1,
-            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
-            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
-         );
-      } else if ($$0 == cto.i) {
-         List<String> $$2 = ImmutableList.of("Fortress");
-         return new dza($$1, $$2, $$2);
-      } else if ($$0 == cto.j) {
-         List<String> $$3 = ImmutableList.of("EndCity");
-         return new dza($$1, $$3, $$3);
-      } else {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
-      }
+   private static ahf<dzg> a(String $$0) {
+      return ahf.a(ke.aD, new ahg($$0));
    }
 }

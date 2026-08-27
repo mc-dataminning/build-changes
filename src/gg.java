@@ -92,8 +92,8 @@ public class gg {
             $$0.h();
             $$0.f($$0.g().readDouble());
          }, $$0 -> $$0.r() == null, vf.c("argument.entity.options.dz.description"));
-         a("x_rotation", $$0 -> $$0.a(di.a($$0.g(), true, aun::g)), $$0 -> $$0.k() == di.a, vf.c("argument.entity.options.x_rotation.description"));
-         a("y_rotation", $$0 -> $$0.b(di.a($$0.g(), true, aun::g)), $$0 -> $$0.l() == di.a, vf.c("argument.entity.options.y_rotation.description"));
+         a("x_rotation", $$0 -> $$0.a(di.a($$0.g(), true, auo::g)), $$0 -> $$0.k() == di.a, vf.c("argument.entity.options.x_rotation.description"));
+         a("y_rotation", $$0 -> $$0.b(di.a($$0.g(), true, auo::g)), $$0 -> $$0.l() == di.a, vf.c("argument.entity.options.y_rotation.description"));
          a("limit", $$0 -> {
             int $$1 = $$0.g().getCursor();
             int $$2 = $$0.g().readInt();
@@ -136,7 +136,7 @@ public class gg {
                   }
                }
 
-               for (ctl $$6 : ctl.values()) {
+               for (ctm $$6 : ctm.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class gg {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               ctl $$4 = ctl.a($$3, null);
+               ctm $$4 = ctm.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class gg {
                      if (!($$2x instanceof ane)) {
                         return false;
                      } else {
-                        ctl $$3x = ((ane)$$2x).e.b();
+                        ctm $$3x = ((ane)$$2x).e.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,10 +183,10 @@ public class gg {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof bmk)) {
+               if (!($$2x instanceof bml)) {
                   return false;
                } else {
-                  emy $$3 = $$2x.cg();
+                  emz $$3 = $$2x.cg();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -200,10 +200,10 @@ public class gg {
          a("type", $$0 -> {
             $$0.a(($$1x, $$2x) -> {
                dx.a(kd.g.e(), $$1x, String.valueOf('!'));
-               dx.a(kd.g.j().map(asv::b), $$1x, "!#");
+               dx.a(kd.g.j().map(asw::b), $$1x, "!#");
                if (!$$0.F()) {
                   dx.a(kd.g.e(), $$1x);
-                  dx.a(kd.g.j().map(asv::b), $$1x, String.valueOf('#'));
+                  dx.a(kd.g.j().map(asw::b), $$1x, String.valueOf('#'));
                }
 
                return $$1x.buildFuture();
@@ -219,15 +219,15 @@ public class gg {
                }
 
                if ($$0.f()) {
-                  asv<bly<?>> $$3 = asv.a(ke.u, ahg.a($$0.g()));
+                  asw<blz<?>> $$3 = asw.a(ke.u, ahg.a($$0.g()));
                   $$0.a($$2x -> $$2x.ai().a($$3) != $$2);
                } else {
                   ahg $$4 = ahg.a($$0.g());
-                  bly<?> $$5 = kd.g.b($$4).orElseThrow(() -> {
+                  blz<?> $$5 = kd.g.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bly.bv, $$5) && !$$2) {
+                  if (Objects.equals(blz.bv, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
@@ -249,7 +249,7 @@ public class gg {
             $$0.a($$2x -> {
                sn $$3 = $$2x.f(new sn());
                if ($$2x instanceof ane) {
-                  cmx $$4 = ((ane)$$2x).fS().f();
+                  cmy $$4 = ((ane)$$2x).fS().f();
                   if (!$$4.b()) {
                      $$3.a("SelectedItem", $$4.b(new sn()));
                   }
@@ -281,15 +281,15 @@ public class gg {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  emw $$2x = $$1x.cL().aH();
+                  emx $$2x = $$1x.cL().aH();
 
                   for (Entry<String, ck.d> $$3x : $$2.entrySet()) {
-                     emo $$4x = $$2x.a($$3x.getKey());
+                     emp $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     ems $$5 = $$2x.d($$1x, $$4x);
+                     emt $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -393,13 +393,13 @@ public class gg {
                   return false;
                } else {
                   and $$3 = (and)$$2x.dM();
-                  eju $$4 = $$3.o().aJ().getElement(eha.a, $$2);
+                  ejv $$4 = $$3.o().aJ().getElement(ehb.a, $$2);
                   if ($$4 == null) {
                      return false;
                   } else {
-                     ehb $$5 = new ehb.a($$3).a(ejg.a, $$2x).a(ejg.f, $$2x.dk()).a(ejf.e);
-                     egv $$6 = new egv.a($$5).a(Optional.empty());
-                     $$6.b(egv.a($$4));
+                     ehc $$5 = new ehc.a($$3).a(ejh.a, $$2x).a(ejh.f, $$2x.dk()).a(ejg.e);
+                     egw $$6 = new egw.a($$5).a(Optional.empty());
+                     $$6.b(egw.a($$4));
                      return $$1 ^ $$4.test($$6);
                   }
                }

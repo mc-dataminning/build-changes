@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 public class aho {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final aqu c;
+   private final aqv c;
    private final Path d;
    private ak e;
    private final Map<af, ah> f = new LinkedHashMap<>();
@@ -39,13 +39,13 @@ public class aho {
    private boolean l = true;
    private final Codec<aho.a> m;
 
-   public aho(DataFixer $$0, aqu $$1, ahs $$2, Path $$3, ane $$4) {
+   public aho(DataFixer $$0, aqv $$1, ahs $$2, Path $$3, ane $$4) {
       this.c = $$1;
       this.d = $$3;
       this.j = $$4;
       this.e = $$2.a();
       int $$5 = 1343;
-      this.m = avv.p.a(aho.a.a, $$0, 1343);
+      this.m = avw.p.a(aho.a.a, $$0, 1343);
       this.d($$2);
    }
 
@@ -167,7 +167,7 @@ public class aho {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.dM().Z().b(ctk.A)) {
+               if ($$1x.i() && this.j.dM().Z().b(ctl.A)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });

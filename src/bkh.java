@@ -1,76 +1,171 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public interface bkh extends bjt {
-   String c = "LootTable";
-   String d = "LootTableSeed";
+public class bkh extends efw {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<ahg, bkg> f = new Object2ObjectOpenHashMap();
 
-   @Nullable
-   ahg az_();
-
-   void a(@Nullable ahg var1);
-
-   default void a(ahg $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   public static efw.a<bkh> a(long $$0) {
+      return new efw.a<>(() -> new bkh($$0), $$1 -> a($$0, $$1), avw.m);
    }
 
-   long aA_();
-
-   void a(long var1);
-
-   hx aB_();
-
-   @Nullable
-   cto i();
-
-   static void a(csu $$0, auu $$1, hx $$2, ahg $$3) {
-      if ($$0.c_($$2) instanceof bkh $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   public bkh(long $$0) {
+      this.b = $$0;
    }
 
-   default boolean c_(sn $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ahg($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-         return true;
-      } else {
-         return false;
-      }
+   public auv a(ahg $$0) {
+      auv $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bkh.a($$1);
    }
 
-   default boolean d_(sn $$0) {
-      ahg $$1 = this.az_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", $$1.toString());
-         long $$2 = this.aA_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
+   private bkg c(ahg $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
+
+   private bkg b(ahg $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bkg($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
+
+   public void a(BiConsumer<ahg, bkg> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public sn a(sn $$0) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      sn $$1 = new sn();
+      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (tk)bkg.a.encodeStart(tb.a, $$2).result().orElseThrow()));
+      $$0.a("sequences", $$1);
+      return $$0;
+   }
+
+   private static boolean a(sn $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bkh a(long $$0, sn $$1) {
+      bkh $$2 = new bkh($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      sn $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bkg $$6 = (bkg)((Pair)bkg.a.decode(tb.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(new ahg($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
          }
-
-         return true;
       }
+
+      return $$2;
    }
 
-   default void e_(@Nullable cfh $$0) {
-      cto $$1 = this.i();
-      hx $$2 = this.aB_();
-      ahg $$3 = this.az_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         ehd $$4 = $$1.o().aJ().getLootTable($$3);
-         if ($$0 instanceof ane) {
-            am.O.a((ane)$$0, $$3);
-         }
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
+   }
 
-         this.a(null);
-         ehb.a $$5 = new ehb.a((and)$$1).a(ejg.f, els.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.go()).a(ejg.a, $$0);
-         }
+   public void b(ahg $$0) {
+      this.f.put($$0, this.c($$0));
+   }
 
-         $$4.a(this, $$5.a(ejf.c), this.aA_());
+   public void a(ahg $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
+   }
+
+   class a implements auv {
+      private final auv c;
+
+      a(auv $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public auv d() {
+         bkh.this.c();
+         return this.c.d();
+      }
+
+      @Override
+      public dpd e() {
+         bkh.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bkh.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bkh.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bkh.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bkh.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bkh.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bkh.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bkh.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bkh.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return $$0 instanceof bkh.a $$1 ? this.c.equals($$1.c) : false;
+         }
       }
    }
 }

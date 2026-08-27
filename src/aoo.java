@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class aoo implements aov {
+public abstract class aoo implements aow {
    private static final Logger c = LogUtils.getLogger();
    private final String d;
    private final boolean e;
@@ -20,8 +20,8 @@ public abstract class aoo implements aov {
 
    @Nullable
    @Override
-   public <T> T a(aph<T> $$0) throws IOException {
-      apz<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+   public <T> T a(api<T> $$0) throws IOException {
+      aqa<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
       if ($$1 == null) {
          return null;
       } else {
@@ -35,10 +35,10 @@ public abstract class aoo implements aov {
    }
 
    @Nullable
-   public static <T> T a(aph<T> $$0, InputStream $$1) {
+   public static <T> T a(api<T> $$0, InputStream $$1) {
       JsonObject $$3;
       try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
-         $$3 = aud.a($$2);
+         $$3 = aue.a($$2);
       } catch (Exception var9) {
          c.error("Couldn't load {} metadata", $$0.a(), var9);
          return null;
@@ -48,7 +48,7 @@ public abstract class aoo implements aov {
          return null;
       } else {
          try {
-            return $$0.a(aud.u($$3, $$0.a()));
+            return $$0.a(aue.u($$3, $$0.a()));
          } catch (Exception var7) {
             c.error("Couldn't load {} metadata", $$0.a(), var7);
             return null;

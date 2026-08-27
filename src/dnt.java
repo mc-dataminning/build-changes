@@ -1,34 +1,20 @@
 public interface dnt {
-   dnt a = new dnt() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   dnv a();
 
-      @Override
-      public void a(dns $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(dns $$0) {
-      }
+   boolean a(and var1, dnr var2, dnr.a var3, elt var4);
 
-      @Override
-      public boolean a(dnq $$0, els $$1, dnq.a $$2, dnt.a $$3) {
-         return false;
-      }
-   };
+   default dnt.a c() {
+      return dnt.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(dns var1);
-
-   void b(dns var1);
-
-   boolean a(dnq var1, els var2, dnq.a var3, dnt.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dns var1, els var2);
+   public interface b<T extends dnt> {
+      T d();
    }
 }

@@ -1,84 +1,154 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fgz extends fgy<fon.a> {
-   private static final int r = 120;
-   private static final vf t = vf.c("gui.chatReport.title");
-   private static final vf u = vf.c("gui.chatReport.select_chat");
-   private final fat v = fat.d().a(8);
-   private exx w;
-   private exf x;
-   private exf y;
-   private exf z;
+public abstract class fgz<B extends fos.a<?>> extends fdb {
+   private static final vf r = vf.c("gui.abuseReport.report_sent_msg");
+   private static final vf t = vf.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vf u = vf.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vf v = vf.c("gui.abuseReport.error.title").a(n.r);
+   private static final vf w = vf.c("gui.abuseReport.send.generic_error");
+   protected static final vf a = vf.c("gui.abuseReport.send");
+   protected static final vf b = vf.c("gui.abuseReport.observed_what");
+   protected static final vf c = vf.c("gui.abuseReport.select_reason");
+   private static final vf x = vf.c("gui.abuseReport.describe");
+   protected static final vf k = vf.c("gui.abuseReport.more_comments");
+   private static final vf y = vf.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final fdb o;
+   protected final fow p;
+   protected B q;
 
-   private fgz(fda $$0, fov $$1, fon.a $$2) {
-      super(t, $$0, $$1, $$2);
+   protected fgz(vf $$0, fdb $$1, fow $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
    }
 
-   public fgz(fda $$0, fov $$1, UUID $$2) {
-      this($$0, $$1, new fon.a($$2, $$1.a().b()));
+   protected exy a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      exy $$4 = new exy(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   public fgz(fda $$0, fov $$1, fon $$2) {
-      this($$0, $$1, new fon.a($$2, $$1.a().b()));
-   }
+   protected void n() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(fci.a(t, ve.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.D();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
 
-   @Override
-   protected void aN_() {
-      this.v.c().b();
-      this.v.a(new eym(this.e, this.i));
-      this.y = this.v.a(exf.a(u, $$0x -> this.f.a(new fhb(this, this.p, this.q, $$0xx -> {
-            this.q = $$0xx;
-            this.D();
-         }))).a(280).a());
-      this.z = exf.a(c, $$0x -> this.f.a(new fhe(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.D();
-         }))).a(280).a();
-      this.v.a(fal.a(this.i, this.z, b));
-      this.w = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.D();
-      });
-      this.v.a(fal.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
-      fat $$0 = this.v.a(fat.e().a(8));
-      $$0.a(exf.a(ve.k, $$0x -> this.aE_()).a(120).a());
-      this.x = $$0.a(exf.a(a, $$0x -> this.n()).a(120).a());
-      this.v.a($$1 -> {
-         exd var10000 = this.d($$1);
-      });
-      this.c();
-      this.D();
-   }
+               this.a($$1x);
+            }
 
-   @Override
-   protected void c() {
-      this.v.a();
-      fan.a(this.v, this.F());
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
    private void D() {
-      IntSet $$0 = this.q.a();
-      if ($$0.isEmpty()) {
-         this.y.b(u);
+      this.H();
+      this.f.a(fci.a(u, r, ve.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vf $$2;
+      if ($$0.getCause() instanceof wf $$1) {
+         $$2 = $$1.b();
       } else {
-         this.y.b(vf.a("gui.chatReport.selected_chat", $$0.size()));
+         $$2 = w;
       }
 
-      fot $$1 = this.q.h();
-      if ($$1 != null) {
-         this.z.b($$1.b());
-      } else {
-         this.z.b(c);
-      }
+      this.a($$2);
+   }
 
-      foq.b $$2 = this.q.c();
-      this.x.j = $$2 == null;
-      this.x.a(x.a($$2, foq.b::a));
+   private void a(vf $$0) {
+      vf $$1 = $$0.f().a(n.m);
+      this.f.a(fci.a(v, $$1, ve.k, () -> this.f.a(this)));
+   }
+
+   void E() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
+      }
+   }
+
+   void H() {
+      this.p.a(null);
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
+   public void aE_() {
+      if (this.q.b()) {
+         this.f.a(new fgz.a());
+      } else {
+         this.f.a(this.o);
+      }
+   }
+
+   @Override
+   public void j() {
+      this.E();
+      super.j();
+   }
+
+   class a extends fge {
+      private static final int c = 20;
+      private static final vf k = vf.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vf l = vf.c("gui.abuseReport.discard.content");
+      private static final vf m = vf.c("gui.abuseReport.discard.return");
+      private static final vf n = vf.c("gui.abuseReport.discard.draft");
+      private static final vf o = vf.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(k, l, l);
+      }
+
+      @Override
+      protected void a(int $$0) {
+         this.d(exg.a(m, $$0x -> this.aE_()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.d(exg.a(n, $$0x -> {
+            fgz.this.E();
+            this.f.a(fgz.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.d(exg.a(o, $$0x -> {
+            fgz.this.H();
+            this.f.a(fgz.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
+      }
+
+      @Override
+      public void aE_() {
+         this.f.a(fgz.this);
+      }
+
+      @Override
+      public boolean aL_() {
+         return false;
+      }
+
+      @Override
+      protected void c(ewu $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
+      }
    }
 }

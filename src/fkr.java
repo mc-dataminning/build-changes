@@ -1,23 +1,29 @@
-public class fkr<T extends blu> extends fkf<T> {
-   private final fmw a;
+public class fkr<T extends blv> extends fkg<T> {
+   private static final String a = "main";
+   private final fmx b;
 
-   public fkr(fmw $$0) {
-      this.a = $$0;
+   public fkr(fmx $$0) {
+      this.b = $$0;
    }
 
-   public static fnc b() {
-      fne $$0 = new fne();
-      fnf $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", fnb.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fmy.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", fnb.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmy.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", fnb.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmy.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", fnb.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmy.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", fnb.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmy.a(0.0F, 4.0F, 7.0F));
-      return fnc.a($$0, 64, 32);
+   public static fnd b() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         fnc.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         fmz.a
+      );
+      return fnd.a($$0, 64, 32);
    }
 
    @Override
@@ -25,7 +31,7 @@ public class fkr<T extends blu> extends fkf<T> {
    }
 
    @Override
-   public fmw a() {
-      return this.a;
+   public fmx a() {
+      return this.b;
    }
 }

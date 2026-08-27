@@ -1,33 +1,104 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bre {
-   private static final int a = 16;
+public class bre extends boc<cev> {
+   private static final int c = 80;
+   private long d;
+   private long e;
+   private int f;
+   private Optional<hx> g = Optional.empty();
 
-   public static boc<bmk> a(Predicate<ih<bxo>> $$0, bvm<ig> $$1) {
-      return bro.a((Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               ig $$6 = $$2.b($$2x);
-               hx $$7 = $$6.b();
-               if ($$3.ae() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
-                  and $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     adi.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public bre() {
+      super(ImmutableMap.of(bvn.n, bvo.b, bvn.m, bvo.b));
    }
 
-   private static boolean a(and $$0, hx $$1, bmk $$2) {
-      djg $$3 = $$0.a_($$1);
-      return $$3.a(asg.R) && $$3.c(cwi.c) && !$$2.fD();
+   protected boolean a(and $$0, cev $$1) {
+      if ($$1.ah % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ah)) {
+         if ($$1.A().a_(cnb.rv) <= 0) {
+            return false;
+         } else {
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(and $$0, cev $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
+
+   private Optional<hx> b(and $$0, cev $$1) {
+      hx.a $$2 = new hx.a();
+      Optional<hx> $$3 = Optional.empty();
+      int $$4 = 0;
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.dm(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.z.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.i());
+                  }
+               }
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   private boolean a(hx $$0, and $$1) {
+      djh $$2 = $$1.a_($$0);
+      cwq $$3 = $$2.b();
+      return $$3 instanceof cyl && !((cyl)$$3).h($$2);
+   }
+
+   protected void b(and $$0, cev $$1, long $$2) {
+      this.a($$1);
+      $$1.a(bma.a, new cmy(cnb.rv));
+      this.d = $$2;
+      this.f = 0;
+   }
+
+   private void a(cev $$0) {
+      this.g.ifPresent($$1 -> {
+         bof $$2 = new bof($$1);
+         $$0.dO().a(bvn.n, $$2);
+         $$0.dO().a(bvn.m, new bvq($$2, 0.5F, 1));
+      });
+   }
+
+   protected void c(and $$0, cev $$1, long $$2) {
+      $$1.a(bma.a, cmy.f);
+      this.e = (long)$$1.ah;
+   }
+
+   protected void d(and $$0, cev $$1, long $$2) {
+      hx $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dk(), 1.0)) {
+         cmy $$4 = cmy.f;
+         bkj $$5 = $$1.A();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            cmy $$8 = $$5.a($$7);
+            if ($$8.a(cnb.rv)) {
+               $$4 = $$8;
+               break;
+            }
+         }
+
+         if (!$$4.b() && ckt.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 0);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
+      }
    }
 }

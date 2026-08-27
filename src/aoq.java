@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public class aoq implements aov {
-   private final aov c;
-   private final List<aov> d;
+public class aoq implements aow {
+   private final aow c;
+   private final List<aow> d;
 
-   public aoq(aov $$0, List<aov> $$1) {
+   public aoq(aow $$0, List<aow> $$1) {
       this.c = $$0;
-      List<aov> $$2 = new ArrayList<>($$1.size() + 1);
+      List<aow> $$2 = new ArrayList<>($$1.size() + 1);
       $$2.addAll(Lists.reverse($$1));
       $$2.add($$0);
       this.d = List.copyOf($$2);
@@ -23,15 +23,15 @@ public class aoq implements aov {
 
    @Nullable
    @Override
-   public apz<InputStream> a(String... $$0) {
+   public aqa<InputStream> a(String... $$0) {
       return this.c.a($$0);
    }
 
    @Nullable
    @Override
-   public apz<InputStream> a(aow $$0, ahg $$1) {
-      for (aov $$2 : this.d) {
-         apz<InputStream> $$3 = $$2.a($$0, $$1);
+   public aqa<InputStream> a(aox $$0, ahg $$1) {
+      for (aow $$2 : this.d) {
+         aqa<InputStream> $$3 = $$2.a($$0, $$1);
          if ($$3 != null) {
             return $$3;
          }
@@ -41,10 +41,10 @@ public class aoq implements aov {
    }
 
    @Override
-   public void a(aow $$0, String $$1, String $$2, aov.a $$3) {
-      Map<ahg, apz<InputStream>> $$4 = new HashMap<>();
+   public void a(aox $$0, String $$1, String $$2, aow.a $$3) {
+      Map<ahg, aqa<InputStream>> $$4 = new HashMap<>();
 
-      for (aov $$5 : this.d) {
+      for (aow $$5 : this.d) {
          $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
       }
 
@@ -52,10 +52,10 @@ public class aoq implements aov {
    }
 
    @Override
-   public Set<String> a(aow $$0) {
+   public Set<String> a(aox $$0) {
       Set<String> $$1 = new HashSet<>();
 
-      for (aov $$2 : this.d) {
+      for (aow $$2 : this.d) {
          $$1.addAll($$2.a($$0));
       }
 
@@ -64,7 +64,7 @@ public class aoq implements aov {
 
    @Nullable
    @Override
-   public <T> T a(aph<T> $$0) throws IOException {
+   public <T> T a(api<T> $$0) throws IOException {
       return this.c.a($$0);
    }
 
@@ -80,6 +80,6 @@ public class aoq implements aov {
 
    @Override
    public void close() {
-      this.d.forEach(aov::close);
+      this.d.forEach(aow::close);
    }
 }

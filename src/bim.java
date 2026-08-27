@@ -1,52 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public interface bim {
-   bil a();
+public class bim {
+   public static final Codec<bim> a = Codec.INT.xmap(bim::a, bim::a);
+   private static final bim b = new bim(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   static <T> bim.b<T> a(T $$0, int $$1) {
-      return new bim.b<>($$0, bil.a($$1));
+   private bim(int $$0) {
+      this.d = $$0;
    }
 
-   public static class a implements bim {
-      private final bil a;
-
-      public a(int $$0) {
-         this.a = bil.a($$0);
-      }
-
-      public a(bil $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bil a() {
-         return this.a;
+   public static bim a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bim($$0);
       }
    }
 
-   public static class b<T> implements bim {
-      private final T a;
-      private final bil b;
+   public int a() {
+      return this.d;
+   }
 
-      b(T $$0, bil $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aW) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
       }
+   }
 
-      public T b() {
-         return this.a;
-      }
+   @Override
+   public String toString() {
+      return Integer.toString(this.d);
+   }
 
-      @Override
-      public bil a() {
-         return this.b;
-      }
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
 
-      public static <E> Codec<bim.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bim.b::b), bil.a.fieldOf("weight").forGetter(bim.b::a)).apply($$1, bim.b::new)
-         );
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bim && this.d == ((bim)$$0).d;
    }
 }

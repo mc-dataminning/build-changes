@@ -1,31 +1,23 @@
+import java.util.Optional;
+
 public class cti {
-   private static int[] a = new int[65536];
-
-   public static void a(int[] $$0) {
-      a = $$0;
+   public Optional<Float> a(cth $$0, csv $$1, hx $$2, djh $$3, eer $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   public boolean a(cth $$0, csv $$1, hx $$2, djh $$3, float $$4) {
+      return true;
    }
 
-   public static int a() {
-      return 6396257;
+   public boolean a(cth $$0, blv $$1) {
+      return true;
    }
 
-   public static int b() {
-      return 8431445;
-   }
-
-   public static int c() {
-      return 4764952;
-   }
-
-   public static int d() {
-      return 9619016;
+   public float b(cth $$0, blv $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      elt $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)cth.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

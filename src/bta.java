@@ -1,28 +1,70 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bta extends btg {
-   private final bmm a;
+public class bta extends bth {
+   protected final bmu a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final ctp f;
 
-   public bta(bmm $$0) {
+   public bta(bmu $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(btg.a.c));
-      $$0.N().a(true);
+      this.e = $$1;
+      this.f = $$0.dM();
+      this.a(EnumSet.of(bth.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aZ() && this.a.b(asl.a) > this.a.df() || this.a.bn();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.eg().i() < 0.8F) {
-         this.a.M().a();
+      if (this.a.q() != null) {
+         return false;
+      } else if (!this.f.P()) {
+         return false;
+      } else if (!this.a.bN()) {
+         return false;
+      } else if (!this.f.h(this.a.dm())) {
+         return false;
+      } else {
+         return !this.a.c(bma.f).b() ? false : this.h();
       }
+   }
+
+   protected boolean h() {
+      elt $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.N().l();
+   }
+
+   @Override
+   public void c() {
+      this.a.N().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected elt i() {
+      auv $$0 = this.a.eg();
+      hx $$1 = this.a.dm();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         hx $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
+            return elt.c($$3);
+         }
+      }
+
+      return null;
    }
 }

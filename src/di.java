@@ -66,13 +66,13 @@ public record di(@Nullable Float c, @Nullable Float d) {
    public static di a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (aud.b($$0)) {
-         float $$1 = aud.e($$0, "value");
+      } else if (aue.b($$0)) {
+         float $$1 = aue.e($$0, "value");
          return new di($$1, $$1);
       } else {
-         JsonObject $$2 = aud.m($$0, "value");
-         Float $$3 = $$2.has("min") ? aud.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? aud.m($$2, "max") : null;
+         JsonObject $$2 = aue.m($$0, "value");
+         Float $$3 = $$2.has("min") ? aue.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? aue.m($$2, "max") : null;
          return new di($$3, $$4);
       }
    }

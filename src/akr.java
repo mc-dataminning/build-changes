@@ -58,14 +58,14 @@ public class akr {
       } else {
          long $$4 = $$0.e().X() + (long)$$2;
          ahg $$5 = (ahg)$$1.getFirst();
-         elf<MinecraftServer> $$6 = $$0.l().aY().K().u();
+         elg<MinecraftServer> $$6 = $$0.l().aY().K().u();
          ((Either)$$1.getSecond()).ifLeft($$6x -> {
             String $$7 = $$5.toString();
             if ($$3) {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new elb($$5));
+            $$6.a($$7, $$4, new elc($$5));
             $$0.a(() -> vf.a("commands.schedule.created.function", vf.a($$5), $$2, $$4), true);
          }).ifRight($$6x -> {
             String $$7 = "#" + $$5;
@@ -73,7 +73,7 @@ public class akr {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new elc($$5));
+            $$6.a($$7, $$4, new eld($$5));
             $$0.a(() -> vf.a("commands.schedule.created.tag", vf.a($$5), $$2, $$4), true);
          });
          return Math.floorMod($$4, Integer.MAX_VALUE);

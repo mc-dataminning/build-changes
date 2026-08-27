@@ -1,110 +1,189 @@
-import java.util.Map;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dhl {
-   private static final String b = "decorated_pot_base";
-   public static final ahf<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final ahf<String> x = a("decorated_pot_side");
-   private static final ahf<String> y = a("angler_pottery_pattern");
-   private static final ahf<String> z = a("archer_pottery_pattern");
-   private static final ahf<String> A = a("arms_up_pottery_pattern");
-   private static final ahf<String> B = a("blade_pottery_pattern");
-   private static final ahf<String> C = a("brewer_pottery_pattern");
-   private static final ahf<String> D = a("burn_pottery_pattern");
-   private static final ahf<String> E = a("danger_pottery_pattern");
-   private static final ahf<String> F = a("explorer_pottery_pattern");
-   private static final ahf<String> G = a("friend_pottery_pattern");
-   private static final ahf<String> H = a("heart_pottery_pattern");
-   private static final ahf<String> I = a("heartbreak_pottery_pattern");
-   private static final ahf<String> J = a("howl_pottery_pattern");
-   private static final ahf<String> K = a("miner_pottery_pattern");
-   private static final ahf<String> L = a("mourner_pottery_pattern");
-   private static final ahf<String> M = a("plenty_pottery_pattern");
-   private static final ahf<String> N = a("prize_pottery_pattern");
-   private static final ahf<String> O = a("sheaf_pottery_pattern");
-   private static final ahf<String> P = a("shelter_pottery_pattern");
-   private static final ahf<String> Q = a("skull_pottery_pattern");
-   private static final ahf<String> R = a("snort_pottery_pattern");
-   private static final Map<cms, ahf<String>> S = Map.ofEntries(
-      Map.entry(cna.qI, x),
-      Map.entry(cna.xA, y),
-      Map.entry(cna.xB, z),
-      Map.entry(cna.xC, A),
-      Map.entry(cna.xD, B),
-      Map.entry(cna.xE, C),
-      Map.entry(cna.xF, D),
-      Map.entry(cna.xG, E),
-      Map.entry(cna.xH, F),
-      Map.entry(cna.xI, G),
-      Map.entry(cna.xJ, H),
-      Map.entry(cna.xK, I),
-      Map.entry(cna.xL, J),
-      Map.entry(cna.xM, K),
-      Map.entry(cna.xN, L),
-      Map.entry(cna.xO, M),
-      Map.entry(cna.xP, N),
-      Map.entry(cna.xQ, O),
-      Map.entry(cna.xR, P),
-      Map.entry(cna.xS, Q),
-      Map.entry(cna.xT, R)
-   );
+public class dhl extends dgv implements bki, ene {
+   public static final String e = "sherds";
+   public static final String f = "item";
+   public static final int g = 1;
+   public long h;
+   @Nullable
+   public dhl.b i;
+   private dhl.a l;
+   private cmy m = cmy.f;
+   @Nullable
+   protected ahg j;
+   protected long k;
 
-   private static ahf<String> a(String $$0) {
-      return ahf.a(ke.ar, new ahg($$0));
+   public dhl(hx $$0, djh $$1) {
+      super(dgx.O, $$0, $$1);
+      this.l = dhl.a.a;
    }
 
-   public static ahg a(ahf<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      this.l.a($$0);
+      if (!this.d_($$0) && !this.m.b()) {
+         $$0.a("item", this.m.b(new sn()));
+      }
+   }
+
+   @Override
+   public void a(sn $$0) {
+      super.a($$0);
+      this.l = dhl.a.b($$0);
+      if (!this.c_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.m = cmy.a($$0.p("item"));
+         } else {
+            this.m = cmy.f;
+         }
+      }
+   }
+
+   public zh k() {
+      return zh.a(this);
+   }
+
+   @Override
+   public sn ax_() {
+      return this.q();
+   }
+
+   public ic l() {
+      return this.r().c(djx.R);
+   }
+
+   public dhl.a m() {
+      return this.l;
+   }
+
+   public void a(cmy $$0) {
+      this.l = dhl.a.b(ckr.a($$0));
+   }
+
+   public cmy w() {
+      return a(this.l);
+   }
+
+   public static cmy a(dhl.a $$0) {
+      cmy $$1 = cnb.eB.am_();
+      sn $$2 = $$0.a(new sn());
+      ckr.a($$1, dgx.O, $$2);
+      return $$1;
    }
 
    @Nullable
-   public static ahf<String> a(cms $$0) {
-      return S.get($$0);
+   @Override
+   public ahg az_() {
+      return this.j;
    }
 
-   public static String a(it<String> $$0) {
-      it.a($$0, x, "decorated_pot_side");
-      it.a($$0, y, "angler_pottery_pattern");
-      it.a($$0, z, "archer_pottery_pattern");
-      it.a($$0, A, "arms_up_pottery_pattern");
-      it.a($$0, B, "blade_pottery_pattern");
-      it.a($$0, C, "brewer_pottery_pattern");
-      it.a($$0, D, "burn_pottery_pattern");
-      it.a($$0, E, "danger_pottery_pattern");
-      it.a($$0, F, "explorer_pottery_pattern");
-      it.a($$0, G, "friend_pottery_pattern");
-      it.a($$0, H, "heart_pottery_pattern");
-      it.a($$0, I, "heartbreak_pottery_pattern");
-      it.a($$0, J, "howl_pottery_pattern");
-      it.a($$0, K, "miner_pottery_pattern");
-      it.a($$0, L, "mourner_pottery_pattern");
-      it.a($$0, M, "plenty_pottery_pattern");
-      it.a($$0, N, "prize_pottery_pattern");
-      it.a($$0, O, "sheaf_pottery_pattern");
-      it.a($$0, P, "shelter_pottery_pattern");
-      it.a($$0, Q, "skull_pottery_pattern");
-      it.a($$0, R, "snort_pottery_pattern");
-      return it.a($$0, a, "decorated_pot_base");
+   @Override
+   public void a(@Nullable ahg $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.k;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public cmy x() {
+      this.e_(null);
+      return this.m;
+   }
+
+   @Override
+   public cmy c(int $$0) {
+      this.e_(null);
+      cmy $$1 = this.m.a($$0);
+      if (this.m.b()) {
+         this.m = cmy.f;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cmy $$0) {
+      this.e_(null);
+      this.m = $$0;
+   }
+
+   @Override
+   public dgv y() {
+      return this;
+   }
+
+   public void a(dhl.b $$0) {
+      if (this.o != null && !this.o.y_()) {
+         this.o.a(this.aB_(), this.r().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dhl.b.values().length) {
+         this.h = this.o.X();
+         this.i = dhl.b.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static record a(cmt b, cmt c, cmt d, cmt e) {
+      public static final dhl.a a = new dhl.a(cnb.qI, cnb.qI, cnb.qI, cnb.qI);
+
+      public sn a(sn $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            st $$1 = new st();
+            this.a().forEach($$1x -> $$1.add(ti.a(kd.h.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
+         }
+      }
+
+      public Stream<cmt> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static dhl.a b(@Nullable sn $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            st $$1 = $$0.c("sherds", 8);
+            return new dhl.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static cmt a(st $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return cnb.qI;
+         } else {
+            tk $$2 = $$0.k($$1);
+            return kd.h.a(ahg.a($$2.t_()));
+         }
+      }
+   }
+
+   public static enum b {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private b(int $$0) {
+         this.c = $$0;
+      }
    }
 }

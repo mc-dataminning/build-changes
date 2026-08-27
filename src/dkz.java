@@ -1,5 +1,8 @@
-public interface dkz {
-   djg a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, djg var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dkz {
 }

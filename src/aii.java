@@ -110,7 +110,7 @@ public class aii {
    }
 
    private Optional<aii.a> b(Scanner $$0) {
-      ahf<cto> $$1 = (ahf<cto>)air.a.get($$0.next());
+      ahf<ctp> $$1 = (ahf<ctp>)air.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class aii {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new aii.a($$1, new els((double)$$2, (double)$$3, (double)$$4), new elr($$6, $$5)));
+         return Optional.of(new aii.a($$1, new elt((double)$$2, (double)$$3, (double)$$4), new els($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class aii {
          if (!$$1.isEmpty()) {
             ane $$2 = $$1.get(0);
             and $$3 = this.e.F();
-            ds $$4 = new ds($$2, els.a($$3.T()), elr.a, $$3, 4, "", ve.a, this.e, $$2);
+            ds $$4 = new ds($$2, elt.a($$3.T()), els.a, $$3, 4, "", ve.a, this.e, $$2);
             dt $$5 = this.e.aE();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(ahf<cto> a, els b, elr c) {
+   static record a(ahf<ctp> a, elt b, els c) {
    }
 }

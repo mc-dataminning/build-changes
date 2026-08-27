@@ -1,17 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fxw extends gat<cca> {
+   private static final ahg a = new ahg("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-public class fxw<T extends bzv> extends fxi<T, fjk<T>> {
-   private static final Map<bly<?>, ahg> a = Maps.newHashMap(
-      ImmutableMap.of(bly.x, new ahg("textures/entity/horse/donkey.png"), bly.aq, new ahg("textures/entity/horse/mule.png"))
-   );
-
-   public fxw(fym.a $$0, float $$1, fmu $$2) {
-      super($$0, new fjk<>($$0.a($$2)), $$1);
+   public fxw(fyn.a $$0) {
+      super($$0, fmw.t);
+      this.d *= 0.7F;
    }
 
-   public ahg a(T $$0) {
-      return a.get($$0.ai());
+   protected void a(cca $$0, eqb $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
+
+   public ahg a(cca $$0) {
+      return a;
    }
 }

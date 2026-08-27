@@ -1,4 +1,4 @@
-public record aae(csv a) implements xf<za> {
+public record aae(csw a) implements xf<za> {
    public aae(ui $$0) {
       this($$0.f());
    }

@@ -1,91 +1,57 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+public class fbp extends fdb {
+   private final Runnable c;
+   protected final fbp.a a;
+   private final vf k;
+   private final boolean l;
+   private exz m = exz.a;
+   protected int b;
+   private exi n;
 
-public class fbp {
-   private static final vf b = vf.c("gui.banned.title.temporary").a(n.r);
-   private static final vf c = vf.c("gui.banned.title.permanent").a(n.r);
-   public static final vf a = vf.c("gui.banned.name.title").a(n.r);
-   private static final vf d = vf.c("gui.banned.skin.title").a(n.r);
-   private static final vf e = vf.a("gui.banned.skin.description", vf.b("https://aka.ms/mcjavamoderation"));
-
-   public static fbs a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fbs($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", ve.m, true);
+   public fbp(Runnable $$0, fbp.a $$1, vf $$2, vf $$3, boolean $$4) {
+      super($$2);
+      this.c = $$0;
+      this.a = $$1;
+      this.k = $$3;
+      this.l = $$4;
    }
 
-   public static fbs a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fbs($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", ve.m, true);
-   }
-
-   public static fbs a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fbs($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, vf.a("gui.banned.name.description", vf.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", ve.m, true);
-   }
-
-   private static vf a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static vf b(BanDetails $$0) {
-      return vf.a("gui.banned.description", c($$0), d($$0), vf.b("https://aka.ms/mcjavamoderation"));
-   }
-
-   private static vf c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fom $$4 = fom.a($$3);
-         vf $$5;
-         if ($$4 != null) {
-            $$5 = vi.a($$4.a().f(), wc.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = vf.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = vf.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return vf.a("gui.banned.description.reason", $$5);
-      } else {
-         return vf.c("gui.banned.description.unknownreason");
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.m = exz.a(this.i, this.k, this.g - 50);
+      int $$0 = (this.m.a() + 1) * 9;
+      this.d(exg.a(vf.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(exg.a(vf.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.d(exg.a(ve.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.n = exi.a(vf.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
+      if (this.l) {
+         this.d(this.n);
       }
    }
 
-   private static vf d(BanDetails $$0) {
-      if (f($$0)) {
-         vf $$1 = e($$0);
-         return vf.a("gui.banned.description.temporary", vf.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+   @Override
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      this.m.a($$0, this.g / 2, 70);
+   }
+
+   @Override
+   public boolean aL_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
       } else {
-         return vf.c("gui.banned.description.permanent").a(n.r);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private static vf e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return ve.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? ve.c($$1.toMinutes()) : ve.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

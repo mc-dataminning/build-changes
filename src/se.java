@@ -10,17 +10,17 @@ public class se {
    private final Consumer<rn> g;
    private final int h;
    private final long i;
-   private final ddb j;
+   private final ddc j;
 
    public se(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<rn> $$6) {
-      this($$0, $$1, $$2, ddb.a, $$3, $$4, $$5, 1, 1, $$6);
+      this($$0, $$1, $$2, ddc.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public se(String $$0, String $$1, String $$2, ddb $$3, int $$4, long $$5, boolean $$6, Consumer<rn> $$7) {
+   public se(String $$0, String $$1, String $$2, ddc $$3, int $$4, long $$5, boolean $$6, Consumer<rn> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public se(String $$0, String $$1, String $$2, ddb $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<rn> $$9) {
+   public se(String $$0, String $$1, String $$2, ddc $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<rn> $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -66,7 +66,7 @@ public class se {
       return this.i;
    }
 
-   public ddb g() {
+   public ddc g() {
       return this.j;
    }
 

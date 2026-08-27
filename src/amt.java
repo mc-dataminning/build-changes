@@ -2,8 +2,8 @@ public record amt(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public csv a() {
-      return new csv(iz.a(this.a), iz.a(this.b));
+   public csw a() {
+      return new csw(iz.a(this.a), iz.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record amt(int a, int b) {
 
    @Override
    public int hashCode() {
-      return csv.d(this.a, this.b);
+      return csw.d(this.a, this.b);
    }
 
    public int c() {

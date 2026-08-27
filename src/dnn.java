@@ -1,43 +1,37 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dnn<T extends dns> {
-   private final T a;
-   @Nullable
-   private iz b;
+public class dnn implements dnv {
+   public static final Codec<dnn> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dnn::new));
+   final hx c;
 
-   public dnn(T $$0) {
-      this.a = $$0;
+   public dnn(hx $$0) {
+      this.c = $$0;
    }
 
-   public void a(and $$0) {
-      this.c($$0);
+   @Override
+   public Optional<elt> a(ctp $$0) {
+      return Optional.of(elt.b(this.c));
    }
 
-   public T a() {
-      return this.a;
+   @Override
+   public dnw<?> a() {
+      return dnw.a;
    }
 
-   public void b(and $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   public static class a implements dnw<dnn> {
+      public dnn a(ui $$0) {
+         return new dnn($$0.e());
+      }
 
-   public void c(and $$0) {
-      this.a.a().a($$0).map(iz::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
+      public void a(ui $$0, dnn $$1) {
+         $$0.a($$1.c);
+      }
 
-   private static void a(ctr $$0, @Nullable iz $$1, Consumer<dnt> $$2) {
-      if ($$1 != null) {
-         dlc $$3 = $$0.a($$1.a(), $$1.c(), dlh.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
+      @Override
+      public Codec<dnn> a() {
+         return dnn.a;
       }
    }
 }

@@ -5,10 +5,10 @@ import com.mojang.brigadier.context.CommandContext;
 public class ajn {
    public static void a(CommandDispatcher<ds> $$0) {
       final LiteralArgumentBuilder<ds> $$1 = (LiteralArgumentBuilder<ds>)dt.a("gamerule").requires($$0x -> $$0x.c(2));
-      ctk.a(
-         new ctk.c() {
+      ctl.a(
+         new ctl.c() {
             @Override
-            public <T extends ctk.g<T>> void a(ctk.e<T> $$0, ctk.f<T> $$1x) {
+            public <T extends ctl.g<T>> void a(ctl.e<T> $$0, ctl.f<T> $$1x) {
                $$1.then(
                   ((LiteralArgumentBuilder)dt.a($$0.a()).executes($$1xxx -> ajn.a((ds)$$1xxx.getSource(), $$0)))
                      .then($$1.a("value").executes($$1xxx -> ajn.a($$1xxx, $$0)))
@@ -19,7 +19,7 @@ public class ajn {
       $$0.register($$1);
    }
 
-   static <T extends ctk.g<T>> int a(CommandContext<ds> $$0, ctk.e<T> $$1) {
+   static <T extends ctl.g<T>> int a(CommandContext<ds> $$0, ctl.e<T> $$1) {
       ds $$2 = (ds)$$0.getSource();
       T $$3 = $$2.l().aK().a($$1);
       $$3.b($$0, "value");
@@ -27,7 +27,7 @@ public class ajn {
       return $$3.c();
    }
 
-   static <T extends ctk.g<T>> int a(ds $$0, ctk.e<T> $$1) {
+   static <T extends ctl.g<T>> int a(ds $$0, ctl.e<T> $$1) {
       T $$2 = $$0.l().aK().a($$1);
       $$0.a(() -> vf.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
       return $$2.c();

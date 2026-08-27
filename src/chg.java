@@ -1,55 +1,48 @@
 public class chg extends cha {
-   public chg(bly<? extends chg> $$0, cto $$1) {
+   public chg(blz<?> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
-   public chg(cto $$0, double $$1, double $$2, double $$3) {
-      super(bly.q, $$1, $$2, $$3, $$0);
+   public chg(ctp $$0, double $$1, double $$2, double $$3) {
+      super(blz.ao, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cms ah_() {
-      return cna.nM;
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cgz.a w() {
-      return cgz.a.b;
-   }
-
-   @Override
-   public djg y() {
-      return cwr.cv.o().a(cxs.c, ic.c);
-   }
-
-   @Override
-   public int A() {
-      return 8;
-   }
-
-   @Override
-   public cia a(int $$0, cfg $$1) {
-      return cih.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cfh $$0) {
-      this.dM().a(dnq.j, this.dk(), dnq.a.a($$0));
-   }
-
-   @Override
-   public bka a(cfh $$0, bjz $$1) {
-      bka $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dnq.k, $$0);
-         cdy.a($$0, true);
+   public bkb a(cfi $$0, bka $$1) {
+      if ($$0.fI()) {
+         return bkb.d;
+      } else if (this.bP()) {
+         return bkb.d;
+      } else if (!this.dM().B) {
+         return $$0.n(this) ? bkb.b : bkb.d;
+      } else {
+         return bkb.a;
       }
+   }
 
-      return $$2;
+   @Override
+   protected cmt ah_() {
+      return cnb.nL;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bP()) {
+            this.bB();
+         }
+
+         if (this.O() == 0) {
+            this.m(-this.P());
+            this.d(10);
+            this.b(50.0F);
+            this.bq();
+         }
+      }
+   }
+
+   @Override
+   public cha.a w() {
+      return cha.a.a;
    }
 }

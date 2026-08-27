@@ -1,4 +1,4 @@
-public abstract class amz extends eec {
+public abstract class amz extends eed {
    protected amz(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

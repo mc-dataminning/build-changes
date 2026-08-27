@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class gb implements ArgumentType<gb.a> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final ij<cms> b;
+   private final ij<cmt> b;
 
    public gb(dn $$0) {
       this.b = $$0.a(ke.F);
@@ -28,8 +28,8 @@ public class gb implements ArgumentType<gb.a> {
       return (gb.a)$$1.map($$0x -> a($$1x -> $$1x == $$0x.a(), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
    }
 
-   public static Predicate<cmx> a(CommandContext<ds> $$0, String $$1) {
-      return (Predicate<cmx>)$$0.getArgument($$1, gb.a.class);
+   public static Predicate<cmy> a(CommandContext<ds> $$0, String $$1) {
+      return (Predicate<cmy>)$$0.getArgument($$1, gb.a.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -40,10 +40,10 @@ public class gb implements ArgumentType<gb.a> {
       return a;
    }
 
-   private static gb.a a(Predicate<ih<cms>> $$0, @Nullable sn $$1) {
+   private static gb.a a(Predicate<ih<cmt>> $$0, @Nullable sn $$1) {
       return $$1 != null ? $$2 -> $$2.a($$0) && tc.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
    }
 
-   public interface a extends Predicate<cmx> {
+   public interface a extends Predicate<cmy> {
    }
 }

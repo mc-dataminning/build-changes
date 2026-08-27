@@ -1,62 +1,71 @@
-public enum dkh implements avj {
-   a("harp", arr.rd, dkh.a.a),
-   b("basedrum", arr.qX, dkh.a.a),
-   c("snare", arr.rg, dkh.a.a),
-   d("hat", arr.re, dkh.a.a),
-   e("bass", arr.qY, dkh.a.a),
-   f("flute", arr.rb, dkh.a.a),
-   g("bell", arr.qZ, dkh.a.a),
-   h("guitar", arr.rc, dkh.a.a),
-   i("chime", arr.ra, dkh.a.a),
-   j("xylophone", arr.rh, dkh.a.a),
-   k("iron_xylophone", arr.ri, dkh.a.a),
-   l("cow_bell", arr.rj, dkh.a.a),
-   m("didgeridoo", arr.rk, dkh.a.a),
-   n("bit", arr.rl, dkh.a.a),
-   o("banjo", arr.rm, dkh.a.a),
-   p("pling", arr.rf, dkh.a.a),
-   q("zombie", arr.rn, dkh.a.b),
-   r("skeleton", arr.ro, dkh.a.b),
-   s("creeper", arr.rp, dkh.a.b),
-   t("dragon", arr.rq, dkh.a.b),
-   u("wither_skeleton", arr.rr, dkh.a.b),
-   v("piglin", arr.rs, dkh.a.b),
-   w("custom_head", arr.zu, dkh.a.c);
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
-   private final String x;
-   private final ih<arq> y;
-   private final dkh.a z;
+public class dkh extends dkk<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   private dkh(String $$0, ih<arq> $$1, dkh.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dkh(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public ih<arq> a() {
-      return this.y;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dkh $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this.z == dkh.a.a;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dkh.a.c;
+   public static dkh a(String $$0, int $$1, int $$2) {
+      return new dkh($$0, $$1, $$2);
    }
 
-   public boolean e() {
-      return this.z != dkh.a.a;
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

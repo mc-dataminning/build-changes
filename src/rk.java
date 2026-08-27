@@ -18,12 +18,12 @@ public class rk {
    private final List<ro> f;
    private final List<Pair<rj, Collection<ro>>> g;
    private int h;
-   private eln i;
+   private elo i;
    private final hx.a j;
 
-   public rk(Collection<rj> $$0, hx $$1, ddb $$2, and $$3, ru $$4, int $$5) {
+   public rk(Collection<rj> $$0, hx $$1, ddc $$2, and $$3, ru $$4, int $$5) {
       this.j = $$1.j();
-      this.i = new eln(this.j);
+      this.i = new elo(this.j);
       this.b = $$1;
       this.c = $$3;
       this.d = $$4;
@@ -59,7 +59,7 @@ public class rk {
                if ($$6.i()) {
                   $$2.b(rk.this.c);
                   LongSet $$0 = new LongArraySet(rk.this.c.w());
-                  $$0.forEach($$0xxx -> rk.this.c.a(csv.a($$0xxx), csv.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> rk.this.c.a(csw.a($$0xxx), csw.b($$0xxx), false));
                   rk.this.a($$0 + 1);
                }
             }
@@ -90,8 +90,8 @@ public class rk {
 
       for (ro $$2 : $$0) {
          hx $$3 = new hx(this.j);
-         dii $$4 = sb.a($$2, $$3, $$2.v(), this.c);
-         eln $$5 = sb.a($$4);
+         dij $$4 = sb.a($$2, $$3, $$2.v(), this.c);
+         elo $$5 = sb.a($$4);
          $$2.a($$4.aB_());
          $$1.put($$2, new hx(this.j));
          this.i = this.i.b($$5);
@@ -99,7 +99,7 @@ public class rk {
          if (this.h++ % this.e == this.e - 1) {
             this.j.e(0, 0, (int)this.i.d() + 6);
             this.j.p(this.b.u());
-            this.i = new eln(this.j);
+            this.i = new elo(this.j);
          }
       }
 

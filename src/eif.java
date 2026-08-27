@@ -1,22 +1,60 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import org.slf4j.Logger;
 
-public interface eif<T extends eif<T>> {
-   T b(eii.a var1);
+public class eif extends eii {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eif> a = RecordCodecBuilder.create($$0 -> a($$0).and(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eif::new));
+   private final ahg c;
 
-   default <E> T a(Iterable<E> $$0, Function<E, eii.a> $$1) {
-      T $$2 = this.c();
+   private eif(List<ejv> $$0, ahg $$1) {
+      super($$0);
+      this.c = $$1;
+   }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+   @Override
+   public eik b() {
+      return eil.B;
+   }
+
+   @Override
+   public void a(ehf $$0) {
+      egy<eij> $$1 = new egy<>(ehb.b, this.c);
+      if ($$0.a($$1)) {
+         $$0.b("Function " + this.c + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
       }
-
-      return $$2;
    }
 
-   default <E> T a(E[] $$0, Function<E, eii.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   protected cmy a(cmy $$0, egw $$1) {
+      eij $$2 = $$1.a().getElement(ehb.b, this.c);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c);
+         return $$0;
+      } else {
+         egw.c<?> $$3 = egw.a($$2);
+         if ($$1.b($$3)) {
+            cmy var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
    }
 
-   T c();
+   public static eii.a<?> a(ahg $$0) {
+      return a($$1 -> new eif($$1, $$0));
+   }
 }

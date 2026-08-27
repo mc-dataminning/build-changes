@@ -21,10 +21,10 @@ public class ala {
       );
    }
 
-   private static int a(ds $$0, @Nullable blu $$1, ane $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, @Nullable blv $$1, ane $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.e.b() != ctl.d) {
+      } else if ($$2.e.b() != ctm.d) {
          throw b.create($$2.Q_());
       } else {
          $$2.c($$1);

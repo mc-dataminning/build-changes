@@ -1,23 +1,10 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtr implements dtx {
-   public static final Codec<dtr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bjf.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bjf.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dtr::new)
-   );
-   private final bjf b;
-   private final bjf c;
+public class dtr implements dty {
+   public static final Codec<dtr> a = djh.b.fieldOf("state").xmap(dtr::new, $$0 -> $$0.b).codec();
+   public final djh b;
 
-   public dtr(bjf $$0, bjf $$1) {
+   public dtr(djh $$0) {
       this.b = $$0;
-      this.c = $$1;
-   }
-
-   public bjf a() {
-      return this.b;
-   }
-
-   public bjf b() {
-      return this.c;
    }
 }

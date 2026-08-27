@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dqf extends dqh {
-   public static final Codec<dqf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dqf::new));
+class dqf implements dpx {
+   public static final Codec<dqf> a = RecordCodecBuilder.create($$0 -> $$0.group(dpx.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dqf::new));
+   private final dpx e;
 
-   public dqf(jb $$0) {
-      super($$0);
+   public dqf(dpx $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cuk $$0, hx $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   protected boolean a(djg $$0) {
-      return $$0.r();
-   }
-
-   @Override
-   public dpx<?> a() {
-      return dpx.f;
+   public dpy<?> a() {
+      return dpy.k;
    }
 }

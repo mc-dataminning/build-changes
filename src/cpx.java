@@ -1,66 +1,28 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Map;
 
-public class cpx extends cpt {
-   private static final cpy a = cpy.a(cna.tS, cna.pq, cna.sf, cna.ue, cna.uf, cna.ui, cna.ug, cna.uj, cna.uh, cna.uk);
-   private static final cpy b = cpy.a(cna.ov);
-   private static final cpy c = cpy.a(cna.qV);
-   private static final Map<cms, cmb.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cna.tS, cmb.a.b);
-      $$0.put(cna.pq, cmb.a.e);
-      $$0.put(cna.sf, cmb.a.c);
-      $$0.put(cna.ue, cmb.a.d);
-      $$0.put(cna.uf, cmb.a.d);
-      $$0.put(cna.ui, cmb.a.d);
-      $$0.put(cna.ug, cmb.a.d);
-      $$0.put(cna.uj, cmb.a.d);
-      $$0.put(cna.uh, cmb.a.d);
-      $$0.put(cna.uk, cmb.a.d);
-   });
-   private static final cpy e = cpy.a(cna.pr);
+public class cpx extends cpu {
+   private static final cpz a = cpz.a(cnb.uo);
 
-   public cpx(cpr $$0) {
+   public cpx(cps $$0) {
       super($$0);
    }
 
-   public boolean a(ciq $$0, cto $$1) {
+   public boolean a(cir $$0, ctp $$1) {
       boolean $$2 = false;
       boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
 
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         cmx $$8 = $$0.a($$7);
-         if (!$$8.b()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof cln) {
                $$2 = true;
             } else {
-               if (!($$8.d() instanceof clm)) {
+               if (!a.a($$5)) {
+                  return false;
+               }
+
+               if ($$3) {
                   return false;
                }
 
@@ -69,33 +31,29 @@ public class cpx extends cpt {
          }
       }
 
-      return $$2 && $$3;
+      return $$3 && $$2;
    }
 
-   public cmx a(ciq $$0, iu $$1) {
-      cmx $$2 = new cmx(cna.uo);
-      sn $$3 = $$2.a("Explosion");
-      cmb.a $$4 = cmb.a.a;
-      List<Integer> $$5 = Lists.newArrayList();
+   public cmy a(cir $$0, iu $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      cmy $$3 = null;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cmx $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (a.a($$7)) {
-               $$4 = d.get($$7.d());
-            } else if (c.a($$7)) {
-               $$3.a("Flicker", true);
-            } else if (b.a($$7)) {
-               $$3.a("Trail", true);
-            } else if ($$7.d() instanceof clm) {
-               $$5.add(((clm)$$7.d()).d().f());
-            }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmy $$5 = $$0.a($$4);
+         cmt $$6 = $$5.d();
+         if ($$6 instanceof cln) {
+            $$2.add(((cln)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      $$3.b("Colors", $$5);
-      $$3.a("Type", (byte)$$4.a());
-      return $$2;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return cmy.f;
+      }
    }
 
    @Override
@@ -104,12 +62,7 @@ public class cpx extends cpt {
    }
 
    @Override
-   public cmx a(iu $$0) {
-      return new cmx(cna.uo);
-   }
-
-   @Override
-   public cqf<?> ar_() {
-      return cqf.h;
+   public cqg<?> ar_() {
+      return cqg.i;
    }
 }

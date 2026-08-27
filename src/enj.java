@@ -1,22 +1,17 @@
 import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record enj<T>(T d, hx e, long f, enn g, long h) {
-   public static final Comparator<enj<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<enj<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<enj<?>> c = new Strategy<enj<?>>() {
+public record enj<T>(T b, hx c, int d, eno e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<enj<?>> a = new Strategy<enj<?>>() {
       public int a(enj<?> $$0) {
          return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
@@ -30,40 +25,66 @@ public record enj<T>(T d, hx e, long f, enn g, long h) {
       }
    };
 
-   public enj(T $$0, hx $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, enn.d, $$3);
+   public static <T> void a(st $$0, Function<String, Optional<T>> $$1, csw $$2, Consumer<enj<T>> $$3) {
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         sn $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (csw.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
+      }
    }
 
-   public enj(T d, hx e, long f, enn g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public static <T> Optional<enj<T>> a(sn $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         hx $$2 = new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new enj<>((T)$$1x, $$2, $$0.h("t"), eno.a($$0.h("p")));
+      });
+   }
+
+   private static sn a(String $$0, hx $$1, int $$2, eno $$3) {
+      sn $$4 = new sn();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public static <T> sn a(enk<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
+
+   public sn a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public enk<T> a(long $$0, long $$1) {
+      return new enk<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
    }
 
    public static <T> enj<T> a(T $$0, hx $$1) {
-      return new enj<>($$0, $$1, 0L, enn.d, 0L);
+      return new enj<>($$0, $$1, 0, eno.d);
    }
 
    public T a() {
-      return this.d;
+      return this.b;
    }
 
    public hx b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public eno d() {
       return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public enn d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
    }
 }

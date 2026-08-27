@@ -4,29 +4,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bff extends bdd {
+public class bff extends bde {
    public bff(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1,
-         $$2,
-         () -> DSL.optionalFields(
-               "ArmorItems",
-               DSL.list(bbv.t.in($$0)),
-               "HandItems",
-               DSL.list(bbv.t.in($$0)),
-               "listener",
-               DSL.optionalFields("event", DSL.optionalFields("game_event", bbv.A.in($$0)))
-            )
-      );
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:allay");
+      $$0.register($$1, "minecraft:chest_boat", $$1x -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0))));
       return $$1;
    }
 }

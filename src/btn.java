@@ -1,119 +1,48 @@
 import java.util.EnumSet;
-import java.util.List;
 
-public class btn extends btg {
-   public final bzz a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class btn extends bth {
+   private final bmn a;
+   private bml b;
+   private final float c;
 
-   public btn(bzz $$0, double $$1) {
+   public btn(bmn $$0, float $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(btg.a.a));
+      this.c = $$1;
+      this.a(EnumSet.of(bth.a.c, bth.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.fS() && !this.a.gS()) {
-         List<blu> $$0 = this.a.dM().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
-            bly<?> $$1x = $$0x.ai();
-            return $$1x == bly.ak || $$1x == bly.bb;
-         });
-         bzz $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (blu $$3 : $$0) {
-            bzz $$4 = (bzz)$$3;
-            if ($$4.gS() && !$$4.gR()) {
-               double $$5 = this.a.f($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (blu $$6 : $$0) {
-               bzz $$7 = (bzz)$$6;
-               if ($$7.fS() && !$$7.gR()) {
-                  double $$8 = this.a.f($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fS() && !this.a($$1, 1)) {
+      if (this.a.cO()) {
+         return false;
+      } else {
+         this.b = this.a.q();
+         if (this.b == null) {
             return false;
          } else {
-            this.a.a($$1);
-            return true;
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
+            }
          }
-      } else {
-         return false;
       }
    }
 
    @Override
    public boolean b() {
-      if (this.a.gS() && this.a.gT().bx() && this.a(this.a, 0)) {
-         double $$0 = this.a.f(this.a.gT());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+      return !this.a.aC();
    }
 
    @Override
-   public void d() {
-      this.a.gQ();
-      this.b = 2.1;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.gS()) {
-         if (!(this.a.fT() instanceof cbn)) {
-            bzz $$0 = this.a.gT();
-            double $$1 = (double)this.a.e($$0);
-            float $$2 = 2.0F;
-            els $$3 = new els($$0.dr() - this.a.dr(), $$0.dt() - this.a.dt(), $$0.dx() - this.a.dx()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.N().a(this.a.dr() + $$3.c, this.a.dt() + $$3.d, this.a.dx() + $$3.e, this.b);
-         }
+   public void c() {
+      elt $$0 = this.a.dp();
+      elt $$1 = new elt(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }
-   }
 
-   private boolean a(bzz $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gS()) {
-         return $$0.gT().fS() ? true : this.a($$0.gT(), ++$$1);
-      } else {
-         return false;
-      }
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

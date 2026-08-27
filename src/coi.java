@@ -1,60 +1,50 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class coi extends col implements cos {
-   private final float a;
-   private final Multimap<bnl, bno> b;
+public class coi extends cmt {
+   public static final String a = "effects";
+   public static final int b = 160;
 
-   public coi(cok $$0, int $$1, float $$2, cms.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<bnl, bno> $$4 = ImmutableMultimap.builder();
-      $$4.put(bnq.c, new bno(m, "Weapon modifier", (double)this.a, bno.a.a));
-      $$4.put(bnq.e, new bno(n, "Weapon modifier", (double)$$2, bno.a.a));
-      this.b = $$4.build();
+   public coi(cmt.a $$0) {
+      super($$0);
    }
 
-   public float h() {
-      return this.a;
+   public static void a(cmy $$0, List<der.a> $$1) {
+      sn $$2 = $$0.w();
+      der.a.b.encodeStart(tb.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   @Override
-   public boolean a(djg $$0, cto $$1, hx $$2, cfh $$3) {
-      return !$$3.f();
+   public static void b(cmy $$0, List<der.a> $$1) {
+      sn $$2 = $$0.w();
+      List<der.a> $$3 = new ArrayList<>();
+      a($$0, $$3::add);
+      $$3.addAll($$1);
+      der.a.b.encodeStart(tb.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   @Override
-   public float a(cmx $$0, djg $$1) {
-      if ($$1.a(cwr.bs)) {
-         return 15.0F;
-      } else {
-         return $$1.a(asg.bD) ? 1.5F : 1.0F;
+   private static void a(cmy $$0, Consumer<der.a> $$1) {
+      sn $$2 = $$0.v();
+      if ($$2 != null && $$2.b("effects", 9)) {
+         der.a.b.parse(tb.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
       }
    }
 
    @Override
-   public boolean a(cmx $$0, bmk $$1, bmk $$2) {
-      $$0.a(1, $$2, $$0x -> $$0x.d(blz.a));
-      return true;
-   }
-
-   @Override
-   public boolean a(cmx $$0, cto $$1, djg $$2, hx $$3, bmk $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, $$0x -> $$0x.d(blz.a));
+   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bli> $$4 = new ArrayList<>();
+         a($$0, $$1x -> $$4.add($$1x.a()));
+         coy.a($$4, $$2, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
       }
-
-      return true;
    }
 
    @Override
-   public boolean a_(djg $$0) {
-      return $$0.a(cwr.bs);
-   }
-
-   @Override
-   public Multimap<bnl, bno> a(blz $$0) {
-      return $$0 == blz.a ? this.b : super.a($$0);
+   public cmy a(cmy $$0, ctp $$1, bml $$2) {
+      cmy $$3 = super.a($$0, $$1, $$2);
+      a($$3, $$1x -> $$2.b($$1x.a()));
+      return $$2 instanceof cfi && ((cfi)$$2).fT().d ? $$3 : new cmy(cnb.pn);
    }
 }

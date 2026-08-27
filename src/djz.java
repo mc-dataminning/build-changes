@@ -1,20 +1,24 @@
-public enum djz implements avj {
-   a("compare"),
-   b("subtract");
+public enum djz implements avk {
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final String c;
+   private final String d;
 
    private djz(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
+   }
+
+   public djz a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

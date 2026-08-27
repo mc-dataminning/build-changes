@@ -1,66 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eui extends euh {
+public abstract class eui implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final vf c = vf.c("mco.configure.world.opening");
-   private final erh d;
-   private final fda e;
-   private final boolean f;
-   private final evh g;
+   private boolean c = false;
 
-   public eui(erh $$0, fda $$1, boolean $$2, evh $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void run() {
-      eqq $$0 = eqq.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof esq) {
-                     ((esq)this.e).e();
-                  }
-
-                  this.d.e = erh.c.b;
-                  if (this.f) {
-                     eql.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (ese var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public vf a() {
-      return c;
+   public static void a(fdb $$0) {
+      evi $$1 = evi.O();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(vf $$0) {
+      this.b();
+      evi $$1 = evi.O();
+      $$1.execute(() -> $$1.a(new esv($$0, new eqm(new fdg()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof ese $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vf.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(ese $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vf a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

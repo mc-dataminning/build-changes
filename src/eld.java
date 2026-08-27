@@ -1,26 +1,32 @@
-@FunctionalInterface
-public interface eld<T> {
-   void handle(T var1, elf<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends eld<T>> {
-      private final ahg a;
-      private final Class<?> b;
+public class eld implements ele<MinecraftServer> {
+   final ahg a;
 
-      public a(ahg $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public eld(ahg $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, elg<MinecraftServer> $$1, long $$2) {
+      ahu $$3 = $$0.aC();
+
+      for (hb<ds> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
+   }
+
+   public static class a extends ele.a<MinecraftServer, eld> {
+      public a() {
+         super(new ahg("function_tag"), eld.class);
       }
 
-      public ahg a() {
-         return this.a;
+      public void a(sn $$0, eld $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public eld a(sn $$0) {
+         ahg $$1 = new ahg($$0.l("Name"));
+         return new eld($$1);
       }
-
-      public abstract void a(sn var1, C var2);
-
-      public abstract C b(sn var1);
    }
 }

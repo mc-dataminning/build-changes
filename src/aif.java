@@ -10,7 +10,7 @@ public class aif extends ana {
    private int k = 100;
 
    public aif(ahg $$0, vf $$1) {
-      super($$1, bjq.a.g, bjq.b.a);
+      super($$1, bjr.a.g, bjr.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -51,12 +51,12 @@ public class aif extends ana {
 
    public void a(int $$0) {
       this.j = $$0;
-      this.a(aun.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+      this.a(auo.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
    }
 
    public void b(int $$0) {
       this.k = $$0;
-      this.a(aun.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+      this.a(auo.a((float)this.j / (float)$$0, 0.0F, 1.0F));
    }
 
    public final vf e() {
@@ -141,8 +141,8 @@ public class aif extends ana {
       $$2.d($$0.q("Visible"));
       $$2.a($$0.h("Value"));
       $$2.b($$0.h("Max"));
-      $$2.a(bjq.a.a($$0.l("Color")));
-      $$2.a(bjq.b.a($$0.l("Overlay")));
+      $$2.a(bjr.a.a($$0.l("Color")));
+      $$2.a(bjr.b.a($$0.l("Overlay")));
       $$2.a($$0.q("DarkenScreen"));
       $$2.b($$0.q("PlayBossMusic"));
       $$2.c($$0.q("CreateWorldFog"));

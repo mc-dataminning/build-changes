@@ -11,10 +11,10 @@ public class aha<E> implements Codec<il<E>> {
    private final ahf<? extends it<E>> a;
    private final Codec<ih<E>> b;
    private final Codec<List<ih<E>>> c;
-   private final Codec<Either<asv<E>, List<ih<E>>>> d;
+   private final Codec<Either<asw<E>, List<ih<E>>>> d;
 
    private static <E> Codec<List<ih<E>>> a(Codec<ih<E>> $$0, boolean $$1) {
-      Codec<List<ih<E>>> $$2 = atv.a($$0.listOf(), atv.b(ih::f));
+      Codec<List<ih<E>>> $$2 = atw.a($$0.listOf(), atw.b(ih::f));
       return $$1
          ? $$2
          : Codec.either($$2, $$0)
@@ -29,7 +29,7 @@ public class aha<E> implements Codec<il<E>> {
       this.a = $$0;
       this.b = $$1;
       this.c = a($$1, $$2);
-      this.d = Codec.either(asv.b($$0), this.c);
+      this.d = Codec.either(asw.b($$0), this.c);
    }
 
    public <T> DataResult<Pair<il<E>, T>> decode(DynamicOps<T> $$0, T $$1) {

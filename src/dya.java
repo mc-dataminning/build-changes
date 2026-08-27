@@ -1,30 +1,26 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public enum dya implements avj {
-   a(ic.b, 1, "ceiling"),
-   b(ic.a, -1, "floor");
+public class dya extends dyn {
+   public static final Codec<dya> a = dom.a.c.fieldOf("step").xmap(dya::new, $$0 -> $$0.c).codec();
+   private final dom.a c;
 
-   public static final Codec<dya> c = avj.a(dya::values);
-   private final ic d;
-   private final int e;
-   private final String f;
-
-   private dya(ic $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private dya(dom.a $$0) {
+      this.c = $$0;
    }
 
-   public ic a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static dya a(dom.a $$0) {
+      return new dya($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<hx> a_(dyl $$0, auv $$1, hx $$2) {
+      csw $$3 = new csw($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public dyo<?> b() {
+      return dyo.o;
    }
 }

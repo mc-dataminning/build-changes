@@ -1,15 +1,17 @@
-import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class fcy extends fda {
-   private static final vf a = vf.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier k;
+public class fcy extends fdb implements auu {
+   @Nullable
+   private vf a;
+   @Nullable
+   private vf b;
+   private int c;
+   private boolean k;
+   private final boolean l;
 
-   public fcy(BooleanSupplier $$0) {
-      super(euz.a);
-      this.k = $$0;
-      this.c = System.currentTimeMillis();
+   public fcy(boolean $$0) {
+      super(eva.a);
+      this.l = $$0;
    }
 
    @Override
@@ -23,31 +25,47 @@ public class fcy extends fda {
    }
 
    @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void b(ewt $$0, int $$1, int $$2, float $$3) {
+   public void a(vf $$0) {
       this.b($$0);
    }
 
    @Override
-   public void d() {
-      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.aE_();
+   public void b(vf $$0) {
+      this.a = $$0;
+      this.c(vf.c("menu.working"));
+   }
+
+   @Override
+   public void c(vf $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, vf.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
       }
-   }
-
-   @Override
-   public void aE_() {
-      this.f.aV().c(vf.c("narrator.ready_to_play"));
-      super.aE_();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
    }
 }

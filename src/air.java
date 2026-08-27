@@ -16,7 +16,7 @@ public class air {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, ahf<cto>> a = ImmutableBiMap.of("o", cto.h, "n", cto.i, "e", cto.j);
+   public static BiMap<String, ahf<ctp>> a = ImmutableBiMap.of("o", ctp.h, "n", ctp.i, "e", ctp.j);
    @Nullable
    private static aij g;
    @Nullable

@@ -1,52 +1,52 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public class bil {
-   public static final Codec<bil> a = Codec.INT.xmap(bil::a, bil::a);
-   private static final bil b = new bil(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private bil(int $$0) {
-      this.d = $$0;
+public class bil<E> extends bip<bin.b<E>> {
+   public static <E> Codec<bil<E>> a(Codec<E> $$0) {
+      return bin.b.a($$0).listOf().xmap(bil::new, bip::e);
    }
 
-   public static bil a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bil($$0);
+   public static <E> Codec<bil<E>> b(Codec<E> $$0) {
+      return atw.a(bin.b.a($$0).listOf()).xmap(bil::new, bip::e);
+   }
+
+   bil(List<? extends bin.b<E>> $$0) {
+      super($$0);
+   }
+
+   public static <E> bil.a<E> a() {
+      return new bil.a<>();
+   }
+
+   public static <E> bil<E> b() {
+      return new bil<>(List.of());
+   }
+
+   public static <E> bil<E> a(E $$0) {
+      return new bil<>(List.of(bin.a($$0, 1)));
+   }
+
+   public Optional<E> a(auv $$0) {
+      return this.b($$0).map(bin.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bin.b<E>> a = ImmutableList.builder();
+
+      public bil.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aW) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
+      public bil.a<E> a(E $$0, int $$1) {
+         this.a.add(bin.a($$0, $$1));
+         return this;
       }
-   }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bil && this.d == ((bil)$$0).d;
+      public bil<E> a() {
+         return new bil<>(this.a.build());
+      }
    }
 }

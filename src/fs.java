@@ -27,9 +27,9 @@ public class fs implements ArgumentType<fo> {
       return new fs($$0);
    }
 
-   public static elr a(CommandContext<ds> $$0, String $$1) {
-      els $$2 = ((fo)$$0.getArgument($$1, fo.class)).a((ds)$$0.getSource());
-      return new elr((float)$$2.c, (float)$$2.e);
+   public static els a(CommandContext<ds> $$0, String $$1) {
+      elt $$2 = ((fo)$$0.getArgument($$1, fo.class)).a((ds)$$0.getSource());
+      return new els((float)$$2.c, (float)$$2.e);
    }
 
    public fo a(StringReader $$0) throws CommandSyntaxException {

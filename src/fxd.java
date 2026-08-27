@@ -1,74 +1,107 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.util.Map;
 
-public class fxd implements fwr.a {
-   private final evh a;
-   private double b = Double.MIN_VALUE;
-   private List<blu> c = Collections.emptyList();
+public class fxd implements fws.a {
+   private final evi a;
+   private final Map<ahf<ctp>, Map<String, dyy>> b = Maps.newIdentityHashMap();
+   private final Map<ahf<ctp>, Map<String, yo.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public fxd(evh $$0) {
+   public fxd(evi $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(eqa $$0, ftg $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         blu $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
+   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
+      eut $$5 = this.a.j.m();
+      ahf<ctp> $$6 = this.a.r.ae();
+      hx $$7 = hx.a($$5.b().c, 0.0, $$5.b().e);
+      eqf $$8 = $$1.getBuffer(ftp.w());
+      if (this.b.containsKey($$6)) {
+         for (dyy $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               ftf.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
       }
 
-      cfh $$7 = this.a.s;
-      if ($$7 != null && $$7.aD.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (blu $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      Map<String, yo.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (yo.a $$11 : $$10.values()) {
+            dyy $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  ftf.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  ftf.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
          }
       }
    }
 
-   private void a(eqa $$0, ftg $$1, double $$2, double $$3, double $$4, blu $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aD.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         hx $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         hx $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
+   public void a(dyy $$0, List<yo.a> $$1, ahf<ctp> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, yo.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (yo.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   private double a(blu $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(hx $$0, eqa $$1, double $$2, double $$3, double $$4, ftg $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fte.a($$1, $$5.getBuffer(fto.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fte.a(
-         $$1,
-         $$5.getBuffer(fto.w()),
-         this.a.r.a_($$0).b(this.a.r, $$0, elx.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

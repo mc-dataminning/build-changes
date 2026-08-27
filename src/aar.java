@@ -1,12 +1,12 @@
 public class aar implements xf<za> {
    private final int a;
-   private final csn b;
+   private final cso b;
    private final int c;
    private final int d;
    private final boolean e;
    private final boolean f;
 
-   public aar(int $$0, csn $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public aar(int $$0, cso $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.a = $$0;
       this.b = $$1.b();
       this.c = $$2;
@@ -17,7 +17,7 @@ public class aar implements xf<za> {
 
    public aar(ui $$0) {
       this.a = $$0.n();
-      this.b = csn.b($$0);
+      this.b = cso.b($$0);
       this.c = $$0.n();
       this.d = $$0.n();
       this.e = $$0.readBoolean();
@@ -42,7 +42,7 @@ public class aar implements xf<za> {
       return this.a;
    }
 
-   public csn d() {
+   public cso d() {
       return this.b;
    }
 

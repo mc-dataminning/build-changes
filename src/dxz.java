@@ -1,26 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dxz extends dym {
-   public static final Codec<dxz> a = dol.a.c.fieldOf("step").xmap(dxz::new, $$0 -> $$0.c).codec();
-   private final dol.a c;
+   public static final Codec<dxz> a = RecordCodecBuilder.create($$0 -> $$0.group(dpx.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dxz::new));
+   private final dpx c;
 
-   private dxz(dol.a $$0) {
+   private dxz(dpx $$0) {
       this.c = $$0;
    }
 
-   public static dxz a(dol.a $$0) {
+   public static dxz a(dpx $$0) {
       return new dxz($$0);
    }
 
    @Override
-   public Stream<hx> a_(dyk $$0, auu $$1, hx $$2) {
-      csv $$3 = new csv($$2);
-      return $$0.a($$3, this.c).a($$3);
+   protected boolean a(dyl $$0, auv $$1, hx $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public dyn<?> b() {
-      return dyn.o;
+   public dyo<?> b() {
+      return dyo.a;
    }
 }

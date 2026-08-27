@@ -1,118 +1,93 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class eeq extends dji<eep, eeq> {
-   public static final Codec<eeq> a = a(kd.c.q(), eep::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
+public abstract class eeq {
+   public static final in<eer> c = new in<>();
+   protected final dji<eeq, eer> d;
+   private eer a;
+   private final ih.c<eeq> b = kd.c.f(this);
 
-   public eeq(eep $$0, ImmutableMap<dkj<?>, Comparable<?>> $$1, MapCodec<eeq> $$2) {
-      super($$0, $$1, $$2);
+   protected eeq() {
+      dji.a<eeq, eer> $$0 = new dji.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(eeq::g, eer::new);
+      this.f(this.d.b());
    }
 
-   public eep a() {
-      return this.e;
+   protected void a(dji.a<eeq, eer> $$0) {
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   public dji<eeq, eer> f() {
+      return this.d;
    }
 
-   public boolean a(eep $$0) {
-      return this.e == $$0 && this.e.c(this);
+   protected final void f(eer $$0) {
+      this.a = $$0;
    }
 
-   public boolean c() {
-      return this.a().b();
+   public final eer g() {
+      return this.a;
    }
 
-   public float a(csu $$0, hx $$1) {
-      return this.a().a(this, $$0, $$1);
+   public abstract cmt a();
+
+   protected void a(ctp $$0, hx $$1, eer $$2, auv $$3) {
    }
 
-   public float d() {
-      return this.a().a(this);
+   protected void b(ctp $$0, hx $$1, eer $$2) {
    }
 
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(csu $$0, hx $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            hx $$4 = $$1.b($$2, 0, $$3);
-            eeq $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(cto $$0, hx $$1) {
-      this.a().b($$0, $$1, this);
-   }
-
-   public void a(cto $$0, hx $$1, auu $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void b(cto $$0, hx $$1, auu $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public els c(csu $$0, hx $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public djg g() {
-      return this.a().b(this);
+   protected void b(ctp $$0, hx $$1, eer $$2, auv $$3) {
    }
 
    @Nullable
-   public jv h() {
-      return this.a().h();
+   protected jv h() {
+      return null;
    }
 
-   public boolean a(asv<eep> $$0) {
-      return this.a().k().a($$0);
+   protected abstract boolean a(eer var1, csv var2, hx var3, eeq var4, ic var5);
+
+   protected abstract elt a(csv var1, hx var2, eer var3);
+
+   public abstract int a(cts var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean a(il<eep> $$0) {
-      return $$0.a(this.a().k());
+   protected boolean b() {
+      return false;
    }
 
-   public boolean b(eep $$0) {
-      return this.a() == $$0;
+   protected abstract float c();
+
+   public abstract float a(eer var1, csv var2, hx var3);
+
+   public abstract float a(eer var1);
+
+   protected abstract djh b(eer var1);
+
+   public abstract boolean c(eer var1);
+
+   public abstract int d(eer var1);
+
+   public boolean a(eeq $$0) {
+      return $$0 == this;
    }
 
-   public float i() {
-      return this.a().c();
+   @Deprecated
+   public boolean a(asw<eeq> $$0) {
+      return this.b.a($$0);
    }
 
-   public boolean a(csu $$0, hx $$1, eep $$2, ic $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
+   public abstract emm b(eer var1, csv var2, hx var3);
+
+   public Optional<arr> j() {
+      return Optional.empty();
    }
 
-   public eml d(csu $$0, hx $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public ih<eep> j() {
-      return this.e.k();
-   }
-
-   public Stream<asv<eep>> k() {
-      return this.e.k().c();
+   @Deprecated
+   public ih.c<eeq> k() {
+      return this.b;
    }
 }

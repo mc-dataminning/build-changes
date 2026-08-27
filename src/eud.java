@@ -1,34 +1,53 @@
-public class eud extends euh {
-   private static final vf b = vf.c("mco.connect.connecting");
-   private final gkl c;
-   private final erh d;
-   private final eri e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public eud(fda $$0, erh $$1, eri $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gkl($$0);
+public class eud extends eui {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vf c = vf.c("mco.configure.world.closing");
+   private final eri d;
+   private final esr e;
+
+   public eud(eri $$0, esr $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      this.c.a(this.d, fpe.a(this.e.a));
-   }
+      eqr $$0 = eqr.a();
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      evh.O().ac().i();
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   @Override
-   public void c() {
-      this.c.b();
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = eri.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (esf var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
    public vf a() {
-      return b;
+      return c;
    }
 }

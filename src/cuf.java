@@ -1,71 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface cuf extends csv {
+   ic[] C = ic.values();
 
-public record cuf(sn d, Optional<cuf.a> e) {
-   public static final String a = "entity";
-   public static final Codec<cuf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(sn.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cuf.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
-            .apply($$0, cuf::new)
-   );
-   public static final Codec<bik<cuf>> c = bik.a(b);
-
-   public cuf() {
-      this(new sn(), Optional.empty());
+   default int a(hx $$0, ic $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public cuf(sn d, Optional<cuf.a> e) {
-      if (d.e("id")) {
-         ahg $$2 = ahg.a(d.l("id"));
-         if ($$2 != null) {
-            d.a("id", $$2.toString());
+   default int e_(hx $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ic.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ic.b));
+         if ($$1 >= 15) {
+            return $$1;
          } else {
-            d.r("id");
+            $$1 = Math.max($$1, this.a($$0.e(), ic.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ic.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ic.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ic.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   default int a(hx $$0, ic $$1, boolean $$2) {
+      djh $$3 = this.a_($$0);
+      if ($$2) {
+         return cys.h($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cws.ha)) {
+         return 15;
+      } else if ($$3.a(cws.cw)) {
+         return $$3.c(dcr.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
+   }
+
+   default boolean b(hx $$0, ic $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(hx $$0, ic $$1) {
+      djh $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(hx $$0) {
+      if (this.c($$0.d(), ic.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ic.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ic.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ic.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ic.e) > 0 ? true : this.c($$0.h(), ic.f) > 0;
+      }
+   }
+
+   default int D(hx $$0) {
+      int $$1 = 0;
+
+      for (ic $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
          }
       }
 
-      this.d = d;
-      this.e = e;
-   }
-
-   public sn a() {
-      return this.d;
-   }
-
-   public Optional<cuf.a> b() {
-      return this.e;
-   }
-
-   public sn c() {
-      return this.d;
-   }
-
-   public Optional<cuf.a> d() {
-      return this.e;
-   }
-
-   public static record a(auf<Integer> b, auf<Integer> c) {
-      private static final auf<Integer> d = new auf<>(0, 15);
-      public static final Codec<cuf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cuf.a::new)
-      );
-
-      private static DataResult<auf<Integer>> a(auf<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
-
-      private static MapCodec<auf<Integer>> a(String $$0) {
-         return atv.a(auf.a.optionalFieldOf($$0, d), cuf.a::a);
-      }
-
-      public auf<Integer> a() {
-         return this.b;
-      }
-
-      public auf<Integer> b() {
-         return this.c;
-      }
+      return $$1;
    }
 }

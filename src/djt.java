@@ -1,20 +1,21 @@
-public enum djt implements avj {
-   a("head"),
-   b("foot");
+public enum djt implements avk {
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String c;
+   private final String d;
 
    private djt(String $$0) {
-      this.c = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

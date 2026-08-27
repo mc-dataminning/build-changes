@@ -1,230 +1,135 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ckz extends cms {
-   private static final String b = "Items";
-   public static final int a = 64;
-   private static final int c = 4;
-   private static final int d = aun.f(0.4F, 0.4F, 1.0F);
+public class ckz extends cmt implements clk {
+   private final eeq a;
 
-   public ckz(cms.a $$0) {
-      super($$0);
-   }
-
-   public static float d(cmx $$0) {
-      return (float)o($$0) / 64.0F;
+   public ckz(eeq $$0, cmt.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cmx $$0, cjv $$1, cii $$2, cfh $$3) {
-      if ($$2 != cii.b) {
-         return false;
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      elp $$4 = a($$0, $$1, this.a == ees.a ? csy.b.b : csy.b.a);
+      if ($$4.c() == elr.a.a) {
+         return bkc.c($$3);
+      } else if ($$4.c() != elr.a.b) {
+         return bkc.c($$3);
       } else {
-         cmx $$4 = $$1.g();
-         if ($$4.b()) {
-            this.a($$3);
-            p($$0).ifPresent($$2x -> b($$0, $$1.d($$2x)));
-         } else if ($$4.d().ap_()) {
-            int $$5 = (64 - o($$0)) / k($$4);
-            int $$6 = b($$0, $$1.b($$4.L(), $$5, $$3));
-            if ($$6 > 0) {
-               this.b($$3);
+         hx $$5 = $$4.a();
+         ic $$6 = $$4.b();
+         hx $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bkc.d($$3);
+         } else if (this.a == ees.a) {
+            djh $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof cwx $$9) {
+               cmy $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.b()) {
+                  $$1.b(asc.c.b(this));
+                  $$9.au_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, dnr.y, $$5);
+                  cmy $$11 = cna.a($$3, $$1, $$10);
+                  if (!$$0.B) {
+                     am.k.a((ane)$$1, $$10);
+                  }
+
+                  return bkc.a($$11, $$0.y_());
+               }
             }
-         }
 
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(cmx $$0, cmx $$1, cjv $$2, cii $$3, cfh $$4, bnc $$5) {
-      if ($$3 == cii.b && $$2.b($$4)) {
-         if ($$1.b()) {
-            p($$0).ifPresent($$2x -> {
-               this.a($$4);
-               $$5.a($$2x);
-            });
+            return bkc.d($$3);
          } else {
-            int $$6 = b($$0, $$1);
-            if ($$6 > 0) {
-               this.b($$4);
-               $$1.h($$6);
-            }
-         }
+            djh $$12 = $$0.a_($$5);
+            hx $$13 = $$12.b() instanceof dbg && this.a == ees.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof ane) {
+                  am.z.a((ane)$$1, $$13, $$3);
+               }
 
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(asb.c.b(this));
-         return bkb.a($$3, $$0.y_());
-      } else {
-         return bkb.d($$3);
-      }
-   }
-
-   @Override
-   public boolean e(cmx $$0) {
-      return o($$0) > 0;
-   }
-
-   @Override
-   public int f(cmx $$0) {
-      return Math.min(1 + 12 * o($$0) / 64, 13);
-   }
-
-   @Override
-   public int g(cmx $$0) {
-      return d;
-   }
-
-   private static int b(cmx $$0, cmx $$1) {
-      if (!$$1.b() && $$1.d().ap_()) {
-         sn $$2 = $$0.w();
-         if (!$$2.e("Items")) {
-            $$2.a("Items", new st());
-         }
-
-         int $$3 = o($$0);
-         int $$4 = k($$1);
-         int $$5 = Math.min($$1.L(), (64 - $$3) / $$4);
-         if ($$5 == 0) {
-            return 0;
-         } else {
-            st $$6 = $$2.c("Items", 10);
-            Optional<sn> $$7 = a($$1, $$6);
-            if ($$7.isPresent()) {
-               sn $$8 = $$7.get();
-               cmx $$9 = cmx.a($$8);
-               $$9.g($$5);
-               $$9.b($$8);
-               $$6.remove($$8);
-               $$6.c(0, $$8);
+               $$1.b(asc.c.b(this));
+               return bkc.a(a($$3, $$1), $$0.y_());
             } else {
-               cmx $$10 = $$1.c($$5);
-               sn $$11 = new sn();
-               $$10.b($$11);
-               $$6.c(0, $$11);
+               return bkc.d($$3);
             }
-
-            return $$5;
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   private static Optional<sn> a(cmx $$0, st $$1) {
-      return $$0.a(cna.qR)
-         ? Optional.empty()
-         : $$1.stream().filter(sn.class::isInstance).map(sn.class::cast).filter($$1x -> cmx.c(cmx.a($$1x), $$0)).findFirst();
-   }
-
-   private static int k(cmx $$0) {
-      if ($$0.a(cna.qR)) {
-         return 4 + o($$0);
-      } else {
-         if (($$0.a(cna.wp) || $$0.a(cna.wo)) && $$0.u()) {
-            sn $$1 = ckq.a($$0);
-            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
-               return 64;
-            }
-         }
-
-         return 64 / $$0.g();
-      }
-   }
-
-   private static int o(cmx $$0) {
-      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.L()).sum();
-   }
-
-   private static Optional<cmx> p(cmx $$0) {
-      sn $$1 = $$0.w();
-      if (!$$1.e("Items")) {
-         return Optional.empty();
-      } else {
-         st $$2 = $$1.c("Items", 10);
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$3 = 0;
-            sn $$4 = $$2.a(0);
-            cmx $$5 = cmx.a($$4);
-            $$2.c(0);
-            if ($$2.isEmpty()) {
-               $$0.c("Items");
-            }
-
-            return Optional.of($$5);
          }
       }
    }
 
-   private static boolean a(cmx $$0, cfh $$1) {
-      sn $$2 = $$0.w();
-      if (!$$2.e("Items")) {
+   public static cmy a(cmy $$0, cfi $$1) {
+      return !$$1.fT().d ? new cmy(cnb.qv) : $$0;
+   }
+
+   @Override
+   public void a(@Nullable cfi $$0, ctp $$1, cmy $$2, hx $$3) {
+   }
+
+   @Override
+   public boolean a(@Nullable cfi $$0, ctp $$1, hx $$2, @Nullable elp $$3) {
+      if (!(this.a instanceof eep $$4)) {
          return false;
       } else {
-         if ($$1 instanceof ane) {
-            st $$3 = $$2.c("Items", 10);
+         cwq $$7;
+         boolean $$8;
+         djh $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.i() && !$$8) {
+               if ($$7 instanceof dbg $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
 
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               sn $$5 = $$3.a($$4);
-               cmx $$6 = cmx.a($$5);
-               $$1.a($$6, true);
+               var10000 = false;
+               break label82;
             }
+
+            var10000 = true;
          }
 
-         $$0.c("Items");
-         return true;
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
+         } else if ($$1.E_().i() && this.a.a(asm.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, ars.iq, art.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(jx.U, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
+            return true;
+         } else {
+            if ($$7 instanceof dbg $$15 && this.a == ees.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.B && $$8 && !$$6.k()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+         }
       }
    }
 
-   private static Stream<cmx> q(cmx $$0) {
-      sn $$1 = $$0.v();
-      if ($$1 == null) {
-         return Stream.empty();
-      } else {
-         st $$2 = $$1.c("Items", 10);
-         return $$2.stream().map(sn.class::cast).map(cmx::a);
-      }
-   }
-
-   @Override
-   public Optional<ckd> h(cmx $$0) {
-      iq<cmx> $$1 = iq.a();
-      q($$0).forEach($$1::add);
-      return Optional.of(new ckc($$1, o($$0)));
-   }
-
-   @Override
-   public void a(cmx $$0, cto $$1, List<vf> $$2, cop $$3) {
-      $$2.add(vf.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
-   }
-
-   @Override
-   public void a(cbt $$0) {
-      cmz.a($$0, q($$0.q()));
-   }
-
-   private void a(blu $$0) {
-      $$0.a(arr.cS, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
-   }
-
-   private void b(blu $$0) {
-      $$0.a(arr.cR, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
-   }
-
-   private void c(blu $$0) {
-      $$0.a(arr.cQ, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
+   protected void a(@Nullable cfi $$0, ctq $$1, hx $$2) {
+      arr $$3 = this.a.a(asm.b) ? ars.cH : ars.cE;
+      $$1.a($$0, $$2, $$3, art.e, 1.0F, 1.0F);
+      $$1.a($$0, dnr.z, $$2);
    }
 }

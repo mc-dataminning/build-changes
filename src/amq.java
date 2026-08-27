@@ -1,23 +1,23 @@
-public abstract class amq extends eec {
+public abstract class amq extends eed {
    protected amq(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
    protected boolean a(long $$0) {
-      return $$0 == csv.a;
+      return $$0 == csw.a;
    }
 
    @Override
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
-         csv $$3 = new csv($$0);
+         csw $$3 = new csw($$0);
          int $$4 = $$3.e;
          int $$5 = $$3.f;
 
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = csv.c($$4 + $$6, $$5 + $$7);
+               long $$8 = csw.c($$4 + $$6, $$5 + $$7);
                if ($$8 != $$0) {
                   this.b($$0, $$8, $$1, $$2);
                }
@@ -29,15 +29,15 @@ public abstract class amq extends eec {
    @Override
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
-      csv $$4 = new csv($$0);
+      csw $$4 = new csw($$0);
       int $$5 = $$4.e;
       int $$6 = $$4.f;
 
       for (int $$7 = -1; $$7 <= 1; $$7++) {
          for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = csv.c($$5 + $$7, $$6 + $$8);
+            long $$9 = csw.c($$5 + $$7, $$6 + $$8);
             if ($$9 == $$0) {
-               $$9 = csv.a;
+               $$9 = csw.a;
             }
 
             if ($$9 != $$1) {
@@ -58,12 +58,12 @@ public abstract class amq extends eec {
 
    @Override
    protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == csv.a ? this.b($$1) : $$2 + 1;
+      return $$0 == csw.a ? this.b($$1) : $$2 + 1;
    }
 
    protected abstract int b(long var1);
 
    public void b(long $$0, int $$1, boolean $$2) {
-      this.a(csv.a, $$0, $$1, $$2);
+      this.a(csw.a, $$0, $$1, $$2);
    }
 }

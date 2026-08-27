@@ -1,45 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class dwr extends dwp {
-   public static final Codec<dwr> a = Codec.unit(() -> dwr.b);
-   public static final dwr b = new dwr();
+public class dwr<P extends dwq> {
+   public static final dwr<dws> a = a("trunk_vine", dws.a);
+   public static final dwr<dwp> b = a("leave_vine", dwp.a);
+   public static final dwr<dwo> c = a("cocoa", dwo.a);
+   public static final dwr<dwn> d = a("beehive", dwn.a);
+   public static final dwr<dwl> e = a("alter_ground", dwl.a);
+   public static final dwr<dwm> f = a("attached_to_leaves", dwm.a);
+   private final Codec<P> g;
 
-   @Override
-   protected dwq<?> a() {
-      return dwq.a;
+   private static <P extends dwq> dwr<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.Z, $$0, new dwr<>($$1));
    }
 
-   @Override
-   public void a(dwp.a $$0) {
-      auu $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            hx $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dfj.d);
-            }
-         }
+   private dwr(Codec<P> $$0) {
+      this.g = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            hx $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dfj.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            hx $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dfj.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            hx $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dfj.c);
-            }
-         }
-      });
+   public Codec<P> a() {
+      return this.g;
    }
 }

@@ -1,9 +1,11 @@
-public class chp {
-   final chs a;
-   final long b;
+import java.util.Set;
 
-   chp(chs $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface chp {
+   Set<ahf<? extends it<? extends chp>>> bx = Set.of(ke.F, ke.f, ke.u, ke.P);
+
+   chs m();
+
+   default boolean a(chs $$0) {
+      return this.m().a($$0);
    }
 }

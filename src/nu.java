@@ -10,14 +10,14 @@ public class nu implements nt.a {
    }
 
    public static sn a(String $$0, sn $$1) {
-      edf $$2 = new edf();
+      edg $$2 = new edg();
       int $$3 = tc.b($$1, 500);
       int $$4 = 3678;
       if ($$3 < 3678) {
          a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3678, $$0});
       }
 
-      sn $$5 = avv.f.a(avw.a(), $$1, $$3);
+      sn $$5 = avw.f.a(avx.a(), $$1, $$3);
       $$2.a(kd.e.p(), $$5);
       return $$2.a(new sn());
    }

@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzh {
-   public static boc<bmk> a() {
-      return bro.a(
-         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$0 -> $$0.group($$0.b(bvm.M), $$0.a(bvm.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dO().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class bzh extends boc<bzf> {
+   public bzh() {
+      super(ImmutableMap.of(bvn.M, bvo.a, bvn.y, bvo.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(and $$0, bzf $$1) {
+      return $$1.bc();
+   }
+
+   protected boolean a(and $$0, bzf $$1, long $$2) {
+      return $$1.bc() && $$1.dO().a(bvn.M);
+   }
+
+   protected void b(and $$0, bzf $$1, long $$2) {
+      bnl<bzf> $$3 = $$1.dO();
+      $$3.b(bvn.m);
+      $$3.b(bvn.n);
+      $$1.b(new bli(blk.j, 200, 0));
    }
 }

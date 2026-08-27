@@ -1,7 +1,7 @@
 public class aeq implements xf<adj> {
    private final ahg a;
 
-   public aeq(cqd<?> $$0) {
+   public aeq(cqe<?> $$0) {
       this.a = $$0.a();
    }
 

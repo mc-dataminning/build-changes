@@ -34,7 +34,7 @@ public class zk implements xf<za> {
       this.e = $$1.g.apply($$0);
    }
 
-   public static zk a(bjq $$0) {
+   public static zk a(bjr $$0) {
       return new zk($$0.i(), new zk.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class zk implements xf<za> {
       return new zk($$0, f);
    }
 
-   public static zk b(bjq $$0) {
+   public static zk b(bjr $$0) {
       return new zk($$0.i(), new zk.f($$0.k()));
    }
 
-   public static zk c(bjq $$0) {
+   public static zk c(bjr $$0) {
       return new zk($$0.i(), new zk.e($$0.j()));
    }
 
-   public static zk d(bjq $$0) {
+   public static zk d(bjr $$0) {
       return new zk($$0.i(), new zk.h($$0.l(), $$0.m()));
    }
 
-   public static zk e(bjq $$0) {
+   public static zk e(bjr $$0) {
       return new zk($$0.i(), new zk.g($$0.n(), $$0.o(), $$0.p()));
    }
 
@@ -93,13 +93,13 @@ public class zk implements xf<za> {
    static class a implements zk.c {
       private final vf a;
       private final float b;
-      private final bjq.a c;
-      private final bjq.b d;
+      private final bjr.a c;
+      private final bjr.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bjq $$0) {
+      a(bjr $$0) {
          this.a = $$0.j();
          this.b = $$0.k();
          this.c = $$0.l();
@@ -112,8 +112,8 @@ public class zk implements xf<za> {
       private a(ui $$0) {
          this.a = $$0.m();
          this.b = $$0.readFloat();
-         this.c = $$0.b(bjq.a.class);
-         this.d = $$0.b(bjq.b.class);
+         this.c = $$0.b(bjr.a.class);
+         this.d = $$0.b(bjr.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -141,7 +141,7 @@ public class zk implements xf<za> {
    }
 
    public interface b {
-      default void a(UUID $$0, vf $$1, float $$2, bjq.a $$3, bjq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, vf $$1, float $$2, bjr.a $$3, bjr.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -153,7 +153,7 @@ public class zk implements xf<za> {
       default void a(UUID $$0, vf $$1) {
       }
 
-      default void a(UUID $$0, bjq.a $$1, bjq.b $$2) {
+      default void a(UUID $$0, bjr.a $$1, bjr.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class zk implements xf<za> {
    }
 
    static class h implements zk.c {
-      private final bjq.a a;
-      private final bjq.b b;
+      private final bjr.a a;
+      private final bjr.b b;
 
-      h(bjq.a $$0, bjq.b $$1) {
+      h(bjr.a $$0, bjr.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(ui $$0) {
-         this.a = $$0.b(bjq.a.class);
-         this.b = $$0.b(bjq.b.class);
+         this.a = $$0.b(bjr.a.class);
+         this.b = $$0.b(bjr.b.class);
       }
 
       @Override

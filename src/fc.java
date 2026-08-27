@@ -17,10 +17,10 @@ public class fc implements ArgumentType<String> {
       return new fc();
    }
 
-   public static emr a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ems a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      emw $$3 = ((ds)$$0.getSource()).l().aH();
-      emr $$4 = $$3.b($$2);
+      emx $$3 = ((ds)$$0.getSource()).l().aH();
+      ems $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

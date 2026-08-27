@@ -1,96 +1,43 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dfs extends cxq<dfs.a> {
-   Supplier<BiMap<cwp, cwp>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(cwr.qW, cwr.qX)
-            .put(cwr.qX, cwr.qY)
-            .put(cwr.qY, cwr.qZ)
-            .put(cwr.rf, cwr.re)
-            .put(cwr.re, cwr.rd)
-            .put(cwr.rd, cwr.rc)
-            .put(cwr.rj, cwr.ri)
-            .put(cwr.ri, cwr.rh)
-            .put(cwr.rh, cwr.rg)
-            .put(cwr.rv, cwr.ru)
-            .put(cwr.ru, cwr.rt)
-            .put(cwr.rt, cwr.rs)
-            .put(cwr.rr, cwr.rq)
-            .put(cwr.rq, cwr.rp)
-            .put(cwr.rp, cwr.ro)
-            .put(cwr.rM, cwr.rN)
-            .put(cwr.rN, cwr.rP)
-            .put(cwr.rP, cwr.rO)
-            .put(cwr.rU, cwr.rV)
-            .put(cwr.rV, cwr.rX)
-            .put(cwr.rX, cwr.rW)
-            .put(cwr.sc, cwr.sd)
-            .put(cwr.sd, cwr.se)
-            .put(cwr.se, cwr.sf)
-            .put(cwr.sk, cwr.sl)
-            .put(cwr.sl, cwr.sm)
-            .put(cwr.sm, cwr.sn)
-            .build()
-   );
-   Supplier<BiMap<cwp, cwp>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class dfs extends dfb implements ddq {
+   public static final MapCodec<dfs> a = b(dfs::new);
+   public static final djy c = djx.C;
 
-   static Optional<cwp> a(cwp $$0) {
-      return Optional.ofNullable((cwp)w_.get().get($$0));
+   @Override
+   protected MapCodec<? extends dfs> a() {
+      return a;
    }
 
-   static cwp b(cwp $$0) {
-      cwp $$1 = $$0;
-
-      for (cwp $$2 = (cwp)w_.get().get($$0); $$2 != null; $$2 = (cwp)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
+   protected dfs(djg.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
    }
 
-   static Optional<djg> b(djg $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<cwp> c(cwp $$0) {
-      return Optional.ofNullable((cwp)v_.get().get($$0));
-   }
-
-   static djg c(djg $$0) {
-      return b($$0.b()).l($$0);
+   @Nullable
+   @Override
+   public djh a(cph $$0) {
+      eer $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(ees.c)));
    }
 
    @Override
-   default Optional<djg> i_(djg $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default float aw_() {
-      return this.c() == dfs.a.a ? 0.75F : 1.0F;
+   public eer c_(djh $$0) {
+      return $$0.c(c) ? ees.c.a(true) : super.c_($$0);
    }
 
-   public static enum a implements avj {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
-
-      public static final Codec<dfs.a> e = avj.a(dfs.a::values);
-      private final String f;
-
-      private a(String $$0) {
-         this.f = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(c);
    }
 }

@@ -11,8 +11,8 @@ public class alh {
    public static void a(CommandDispatcher<ds> $$0) {
       LiteralCommandNode<ds> $$1 = $$0.register((LiteralArgumentBuilder)dt.a("teammsg").then(dt.a("message", ej.a()).executes($$0x -> {
          ds $$1x = (ds)$$0x.getSource();
-         blu $$2 = $$1x.g();
-         emr $$3 = $$2.cg();
+         blv $$2 = $$1x.g();
+         ems $$3 = $$2.cg();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class alh {
       $$0.register((LiteralArgumentBuilder)dt.a("tm").redirect($$1));
    }
 
-   private static void a(ds $$0, blu $$1, emr $$2, List<ane> $$3, vv $$4) {
+   private static void a(ds $$0, blv $$1, ems $$2, List<ane> $$3, vv $$4) {
       vf $$5 = $$2.d().c(a);
       vb.a $$6 = vb.a(vb.g, $$0).c($$5);
       vb.a $$7 = vb.a(vb.h, $$0).c($$5);
@@ -38,11 +38,11 @@ public class alh {
          vb.a $$11 = $$10 == $$1 ? $$7 : $$6;
          boolean $$12 = $$0.a($$10);
          $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.i();
+         $$9 |= $$12 && $$4.j();
       }
 
       if ($$9) {
-         $$0.a(aqu.f);
+         $$0.a(aqv.f);
       }
    }
 }

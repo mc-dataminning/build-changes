@@ -2,30 +2,29 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record ekv(String b) implements ekx {
-   public static final Codec<ekv> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ekv::c)).apply($$0, ekv::new));
+public record ekv(egw.b c) implements eky {
+   public static final Codec<ekv> a = RecordCodecBuilder.create($$0 -> $$0.group(egw.b.e.fieldOf("target").forGetter(ekv::c)).apply($$0, ekv::new));
+   public static final Codec<ekv> b = egw.b.e.xmap(ekv::new, ekv::c);
 
-   public static ekx a(String $$0) {
+   public static eky a(egw.b $$0) {
       return new ekv($$0);
    }
 
    @Override
-   public ekw a() {
-      return eky.b;
+   public ekx a() {
+      return ekz.c;
+   }
+
+   @Nullable
+   @Override
+   public emw a(egw $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
-   public emv a(egv $$0) {
-      return emv.d(this.b);
-   }
-
-   @Override
-   public Set<ejd<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   public Set<eje<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

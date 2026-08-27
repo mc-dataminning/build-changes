@@ -21,7 +21,7 @@ public class alq {
                         .then(dt.a("off").executes($$0x -> c((ds)$$0x.getSource()))))
                      .then(dt.a("list").executes($$0x -> d((ds)$$0x.getSource()))))
                   .then(dt.a("add").then(dt.a("targets", eh.a()).suggests(($$0x, $$1) -> {
-                     aqu $$2 = ((ds)$$0x.getSource()).l().ae();
+                     aqv $$2 = ((ds)$$0x.getSource()).l().ae();
                      return dx.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
                   }).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"))))))
                .then(
@@ -44,12 +44,12 @@ public class alq {
    }
 
    private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      arc $$2 = $$0.l().ae().i();
+      ard $$2 = $$0.l().ae().i();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {
          if (!$$2.a($$4)) {
-            ard $$5 = new ard($$4);
+            are $$5 = new are($$4);
             $$2.a($$5);
             $$0.a(() -> vf.a("commands.whitelist.add.success", vf.b($$4.getName())), true);
             $$3++;
@@ -64,12 +64,12 @@ public class alq {
    }
 
    private static int b(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      arc $$2 = $$0.l().ae().i();
+      ard $$2 = $$0.l().ae().i();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {
          if ($$2.a($$4)) {
-            ard $$5 = new ard($$4);
+            are $$5 = new are($$4);
             $$2.b($$5);
             $$0.a(() -> vf.a("commands.whitelist.remove.success", vf.b($$4.getName())), true);
             $$3++;
@@ -85,7 +85,7 @@ public class alq {
    }
 
    private static int b(ds $$0) throws CommandSyntaxException {
-      aqu $$1 = $$0.l().ae();
+      aqv $$1 = $$0.l().ae();
       if ($$1.o()) {
          throw a.create();
       } else {
@@ -97,7 +97,7 @@ public class alq {
    }
 
    private static int c(ds $$0) throws CommandSyntaxException {
-      aqu $$1 = $$0.l().ae();
+      aqv $$1 = $$0.l().ae();
       if (!$$1.o()) {
          throw b.create();
       } else {

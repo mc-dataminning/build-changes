@@ -3,24 +3,24 @@ import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
 public class pv {
-   public static final ahf<eao> a = pl.a("trial_chambers/chamber/end");
-   public static final ahf<eao> b = pl.a("trial_chambers/hallway/fallback");
-   public static final ahf<eao> c = pl.a("trial_chambers/chamber/entrance_cap");
-   public static final List<eaq> d = ImmutableList.builder()
+   public static final ahf<eap> a = pl.a("trial_chambers/chamber/end");
+   public static final ahf<eap> b = pl.a("trial_chambers/hallway/fallback");
+   public static final ahf<eap> c = pl.a("trial_chambers/chamber/entrance_cap");
+   public static final List<ear> d = ImmutableList.builder()
       .add(
-         eaq.a(
-            bik.<List<eaq>>a()
-               .a(List.of(eaq.a(a("contents/ranged"), a("ranged/skeleton")), eaq.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
-               .a(List.of(eaq.a(a("contents/ranged"), a("ranged/stray")), eaq.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
-               .a(List.of(eaq.a(a("contents/ranged"), a("ranged/poison_skeleton")), eaq.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
+         ear.a(
+            bil.<List<ear>>a()
+               .a(List.of(ear.a(a("contents/ranged"), a("ranged/skeleton")), ear.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
+               .a(List.of(ear.a(a("contents/ranged"), a("ranged/stray")), ear.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
+               .a(List.of(ear.a(a("contents/ranged"), a("ranged/poison_skeleton")), ear.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
                .a()
          )
       )
-      .add(eaq.a(a("contents/melee"), bik.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/slime")).a()))
+      .add(ear.a(a("contents/melee"), bil.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/slime")).a()))
       .add(
-         eaq.a(
+         ear.a(
             a("contents/small_melee"),
-            bik.<String>a().a(a("small_melee/spider")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
+            bil.<String>a().a(a("small_melee/spider")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
          )
       )
       .build();
@@ -29,268 +29,268 @@ public class pv {
       return "trial_chambers/spawner/" + $$0;
    }
 
-   public static void a(pe<eao> $$0) {
-      ii<eao> $$1 = $$0.a(ke.aG);
-      ih<eao> $$2 = $$1.b(pl.a);
-      ih<eao> $$3 = $$1.b(b);
-      ih<eao> $$4 = $$1.b(c);
-      ii<edd> $$5 = $$0.a(ke.aE);
-      ih<edd> $$6 = $$5.b(px.a);
-      $$0.a(a, new eao($$2, List.of(Pair.of(eam.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(eam.b("trial_chambers/corridor/end_2", $$6), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/chamber/entrance_cap", new eao($$4, List.of(Pair.of(eam.b("trial_chambers/chamber/entrance_cap", $$6), 1)), eao.a.b));
+   public static void a(pe<eap> $$0) {
+      ii<eap> $$1 = $$0.a(ke.aG);
+      ih<eap> $$2 = $$1.b(pl.a);
+      ih<eap> $$3 = $$1.b(b);
+      ih<eap> $$4 = $$1.b(c);
+      ii<ede> $$5 = $$0.a(ke.aE);
+      ih<ede> $$6 = $$5.b(px.a);
+      $$0.a(a, new eap($$2, List.of(Pair.of(ean.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(ean.b("trial_chambers/corridor/end_2", $$6), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/chamber/entrance_cap", new eap($$4, List.of(Pair.of(ean.b("trial_chambers/chamber/entrance_cap", $$6), 1)), eap.a.b));
       pl.a(
          $$0,
          "trial_chambers/chambers/end",
-         new eao(
+         new eap(
             $$3,
             List.of(
-               Pair.of(eam.b("trial_chambers/chamber/chamber_1", $$6), 1),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_5", $$6), 1),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_6", $$6), 1),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_9", $$6), 1)
+               Pair.of(ean.b("trial_chambers/chamber/chamber_1", $$6), 1),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_5", $$6), 1),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_6", $$6), 1),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_9", $$6), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/chamber/addon",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/full_corner_column"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/full_column_ranged_spawner", $$6), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/middle_column_ranged_spawner", $$6), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/grate_bridge"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/hanging_platform"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/short_platform"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/lower_walkway_platform"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/walkway_extension"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/side_walkway"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/closed_side_walkway"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/middle_walkway"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/10x15_rise"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/10x15_stacked_pathway"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/10x15_pathway_3"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/platform_with_space"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/stairs_with_space"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/stairs_with_space_2"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c3_side_walkway_1"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c3_side_walkway_2"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/corner_room_1"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_wide_platform"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c1_breeze"), 1)
+               Pair.of(ean.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/full_corner_column"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/full_column_ranged_spawner", $$6), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/middle_column_ranged_spawner", $$6), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/grate_bridge"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/hanging_platform"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/short_platform"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/lower_walkway_platform"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/walkway_extension"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/side_walkway"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/closed_side_walkway"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/middle_walkway"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/10x15_rise"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/10x15_stacked_pathway"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/10x15_pathway_3"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/platform_with_space"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/stairs_with_space"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/stairs_with_space_2"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c3_side_walkway_1"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c3_side_walkway_2"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/corner_room_1"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_wide_platform"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c1_breeze"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/chamber/addon/c6",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 3),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_small_1"), 2),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_small_2"), 2),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_small_3"), 2),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_column_full"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_column_tall"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_column_tall_wide"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_ranged_column_short"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_ranged_column_short_wide"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_chest"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_melee_spawner"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_long"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_short"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_cover_small"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/addon/c6_stairs"), 1)
+               Pair.of(ean.g(), 3),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_small_1"), 2),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_small_2"), 2),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_small_3"), 2),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_column_full"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_column_tall"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_column_tall_wide"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_ranged_column_short"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_ranged_column_short_wide"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_chest"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_melee_spawner"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_long"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_short"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_cover_small"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/addon/c6_stairs"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/corridor/second",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.b("trial_chambers/corridor/second_plate"), 1),
-               Pair.of(eam.b("trial_chambers/intersection/intersection_1", $$6), 1),
-               Pair.of(eam.b("trial_chambers/intersection/intersection_2", $$6), 1)
+               Pair.of(ean.b("trial_chambers/corridor/second_plate"), 1),
+               Pair.of(ean.b("trial_chambers/intersection/intersection_1", $$6), 1),
+               Pair.of(ean.b("trial_chambers/intersection/intersection_2", $$6), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/corridor/first",
-         new eao($$2, List.of(Pair.of(eam.b("trial_chambers/corridor/first_plate"), 1), Pair.of(eam.b("trial_chambers/corridor/entrance_1", $$6), 2)), eao.a.b)
+         new eap($$2, List.of(Pair.of(ean.b("trial_chambers/corridor/first_plate"), 1), Pair.of(ean.b("trial_chambers/corridor/entrance_1", $$6), 2)), eap.a.b)
       );
-      pl.a($$0, "trial_chambers/corridor/first/straight", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/corridor/first_plate"), 1)), eao.a.b));
+      pl.a($$0, "trial_chambers/corridor/first/straight", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/corridor/first_plate"), 1)), eap.a.b));
       pl.a(
          $$0,
          "trial_chambers/corridor",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.b("trial_chambers/corridor/straight_1", $$6), 1),
-               Pair.of(eam.b("trial_chambers/corridor/straight_2", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_3", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_4", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_5", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_6", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_7", $$6), 2),
-               Pair.of(eam.b("trial_chambers/corridor/straight_8", $$6), 2)
+               Pair.of(ean.b("trial_chambers/corridor/straight_1", $$6), 1),
+               Pair.of(ean.b("trial_chambers/corridor/straight_2", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_3", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_4", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_5", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_6", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_7", $$6), 2),
+               Pair.of(ean.b("trial_chambers/corridor/straight_8", $$6), 2)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       $$0.a(
          b,
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(eam.b("trial_chambers/hallway/rubble_chamber"), 1),
-               Pair.of(eam.b("trial_chambers/hallway/rubble_thin"), 1),
-               Pair.of(eam.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+               Pair.of(ean.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ean.b("trial_chambers/hallway/rubble_chamber"), 1),
+               Pair.of(ean.b("trial_chambers/hallway/rubble_thin"), 1),
+               Pair.of(ean.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/hallway",
-         new eao(
+         new eap(
             $$3,
             List.of(
-               Pair.of(eam.b("trial_chambers/hallway/corridor_connector_1"), 1),
-               Pair.of(eam.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_1", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_2", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_3", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_4", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_5", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_6", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_8", $$6), 150),
-               Pair.of(eam.b("trial_chambers/chamber/chamber_9", $$6), 150),
-               Pair.of(eam.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
-               Pair.of(eam.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/cache_1", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/left_corner", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/right_corner", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/corner_staircase", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/straight", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/straight_staircase", $$6), 1),
-               Pair.of(eam.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
+               Pair.of(ean.b("trial_chambers/hallway/corridor_connector_1"), 1),
+               Pair.of(ean.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_1", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_2", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_3", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_4", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_5", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_6", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_8", $$6), 150),
+               Pair.of(ean.b("trial_chambers/chamber/chamber_9", $$6), 150),
+               Pair.of(ean.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
+               Pair.of(ean.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/cache_1", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/left_corner", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/right_corner", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/corner_staircase", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/straight", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/straight_staircase", $$6), 1),
+               Pair.of(ean.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/corridors/addon/lower",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 8),
-               Pair.of(eam.b("trial_chambers/corridor/addon/staircase"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/wall"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+               Pair.of(ean.g(), 8),
+               Pair.of(ean.b("trial_chambers/corridor/addon/staircase"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/wall"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/bridge_lower"), 2)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/corridors/addon/middle",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 8),
-               Pair.of(eam.b("trial_chambers/corridor/addon/open_walkway"), 2),
-               Pair.of(eam.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+               Pair.of(ean.g(), 8),
+               Pair.of(ean.b("trial_chambers/corridor/addon/open_walkway"), 2),
+               Pair.of(ean.b("trial_chambers/corridor/addon/walled_walkway"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/corridors/addon/middle_upper",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 6),
-               Pair.of(eam.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
-               Pair.of(eam.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/decoration_upper"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/head_upper"), 1),
-               Pair.of(eam.b("trial_chambers/corridor/addon/reward_upper"), 1)
+               Pair.of(ean.g(), 6),
+               Pair.of(ean.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
+               Pair.of(ean.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/decoration_upper"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/head_upper"), 1),
+               Pair.of(ean.b("trial_chambers/corridor/addon/reward_upper"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       pl.a(
          $$0,
          "trial_chambers/decor",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 22),
-               Pair.of(eam.b("trial_chambers/decor/empty_pot"), 2),
-               Pair.of(eam.b("trial_chambers/decor/dead_bush_pot"), 2),
-               Pair.of(eam.b("trial_chambers/decor/undecorated_pot"), 3),
-               Pair.of(eam.b("trial_chambers/decor/candle_1"), 1),
-               Pair.of(eam.b("trial_chambers/decor/candle_2"), 1),
-               Pair.of(eam.b("trial_chambers/decor/candle_3"), 1),
-               Pair.of(eam.b("trial_chambers/decor/candle_4"), 1),
-               Pair.of(eam.b("trial_chambers/decor/barrel"), 2)
+               Pair.of(ean.g(), 22),
+               Pair.of(ean.b("trial_chambers/decor/empty_pot"), 2),
+               Pair.of(ean.b("trial_chambers/decor/dead_bush_pot"), 2),
+               Pair.of(ean.b("trial_chambers/decor/undecorated_pot"), 3),
+               Pair.of(ean.b("trial_chambers/decor/candle_1"), 1),
+               Pair.of(ean.b("trial_chambers/decor/candle_2"), 1),
+               Pair.of(ean.b("trial_chambers/decor/candle_3"), 1),
+               Pair.of(ean.b("trial_chambers/decor/candle_4"), 1),
+               Pair.of(ean.b("trial_chambers/decor/barrel"), 2)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
-      pl.a($$0, "trial_chambers/decor_chamber", new eao($$2, List.of(Pair.of(eam.g(), 4), Pair.of(eam.b("trial_chambers/decor/undecorated_pot"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/reward/all", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/reward/connectors/default"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/reward/contents/default", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/reward/default"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/chests/supply", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/chests/connectors/supply"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/chests/contents/supply", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/chests/supply"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/spawner/ranged", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/connectors/ranged"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/spawner/slow_ranged", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/spawner/melee", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/connectors/melee"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/spawner/small_melee", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/connectors/small_melee"), 1)), eao.a.b));
-      pl.a($$0, "trial_chambers/spawner/breeze", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/connectors/breeze"), 1)), eao.a.b));
+      pl.a($$0, "trial_chambers/decor_chamber", new eap($$2, List.of(Pair.of(ean.g(), 4), Pair.of(ean.b("trial_chambers/decor/undecorated_pot"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/reward/all", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/reward/connectors/default"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/reward/contents/default", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/reward/default"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/chests/supply", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/chests/connectors/supply"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/chests/contents/supply", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/chests/supply"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/spawner/ranged", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/connectors/ranged"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/spawner/slow_ranged", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/spawner/melee", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/connectors/melee"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/spawner/small_melee", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/connectors/small_melee"), 1)), eap.a.b));
+      pl.a($$0, "trial_chambers/spawner/breeze", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/connectors/breeze"), 1)), eap.a.b));
       pl.a(
          $$0,
          "trial_chambers/spawner/all",
-         new eao(
+         new eap(
             $$2,
             List.of(
-               Pair.of(eam.g(), 10),
-               Pair.of(eam.b("trial_chambers/spawner/connectors/ranged"), 1),
-               Pair.of(eam.b("trial_chambers/spawner/connectors/melee"), 1),
-               Pair.of(eam.b("trial_chambers/spawner/connectors/small_melee"), 1)
+               Pair.of(ean.g(), 10),
+               Pair.of(ean.b("trial_chambers/spawner/connectors/ranged"), 1),
+               Pair.of(ean.b("trial_chambers/spawner/connectors/melee"), 1),
+               Pair.of(ean.b("trial_chambers/spawner/connectors/small_melee"), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
-      pl.a($$0, "trial_chambers/spawner/contents/breeze", new eao($$2, List.of(Pair.of(eam.b("trial_chambers/spawner/breeze/breeze"), 1)), eao.a.b));
+      pl.a($$0, "trial_chambers/spawner/contents/breeze", new eap($$2, List.of(Pair.of(ean.b("trial_chambers/spawner/breeze/breeze"), 1)), eap.a.b));
       pl.a(
-         $$0, "trial_chambers/dispensers/chamber", new eao($$2, List.of(Pair.of(eam.g(), 1), Pair.of(eam.b("trial_chambers/dispensers/chamber"), 1)), eao.a.b)
+         $$0, "trial_chambers/dispensers/chamber", new eap($$2, List.of(Pair.of(ean.g(), 1), Pair.of(ean.b("trial_chambers/dispensers/chamber"), 1)), eap.a.b)
       );
-      ear.a($$0, $$2, d);
+      eas.a($$0, $$2, d);
    }
 }

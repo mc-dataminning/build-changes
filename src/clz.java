@@ -1,29 +1,44 @@
-public class clz extends cms {
-   public clz(cms.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface clz extends cot {
+   bma g();
+
+   default arr as_() {
+      return ars.af;
    }
 
-   @Override
-   public boolean i(cmx $$0) {
-      return true;
+   default bkc<cmy> a(cmt $$0, ctp $$1, cfi $$2, bka $$3) {
+      cmy $$4 = $$2.b($$3);
+      bma $$5 = bmn.h($$4);
+      cmy $$6 = $$2.c($$5);
+      if ((!crl.d($$6) || $$2.f()) && !cmy.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(asc.c.b($$0));
+         }
+
+         cmy $$7 = $$6.b() ? $$4 : $$6.c();
+         cmy $$8 = $$4.c();
+         $$2.a($$5, $$8);
+         return bkc.a($$7, $$1.y_());
+      } else {
+         return bkc.d($$4);
+      }
    }
 
-   @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.ic, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cgj $$4 = new cgj($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
+   @Nullable
+   static clz c_(cmy $$0) {
+      cmt $$3 = $$0.d();
+      if ($$3 instanceof clz) {
+         return (clz)$$3;
+      } else {
+         if ($$0.d() instanceof ckr $$2) {
+            cwq var6 = $$2.e();
+            if (var6 instanceof clz) {
+               return (clz)var6;
+            }
+         }
 
-      $$1.b(asb.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
+         return null;
       }
-
-      return bkb.a($$3, $$0.y_());
    }
 }

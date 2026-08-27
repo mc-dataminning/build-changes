@@ -17,7 +17,7 @@ public class akj {
       });
    }
 
-   private static Collection<String> a(aps $$0, egr $$1, Collection<String> $$2) {
+   private static Collection<String> a(apt $$0, egs $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.F().a().b();
@@ -35,8 +35,8 @@ public class akj {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
          ds $$1 = (ds)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
-         aps $$3 = $$2.aD();
-         egr $$4 = $$2.aY();
+         apt $$3 = $$2.aD();
+         egs $$4 = $$2.aY();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> vf.c("commands.reload.success"), true);

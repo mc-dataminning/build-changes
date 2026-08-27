@@ -1,26 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcz extends cwy {
+public class dcz extends cwq implements cwt {
    public static final MapCodec<dcz> a = b(dcz::new);
-   protected static final float b = 6.0F;
-   protected static final eml c = cwp.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dcz> a() {
       return a;
    }
 
-   protected dcz(djf.d $$0) {
+   public dcz(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return c;
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected boolean b(djg $$0, csu $$1, hx $$2) {
-      return $$0.a(asg.aK) || $$0.a(cwr.dX) || super.b($$0, $$1, $$2);
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      $$0.b($$2.d(), cws.sG.o());
    }
 }

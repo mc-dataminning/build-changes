@@ -10,11 +10,11 @@ public class ajb {
       );
    }
 
-   private static int a(ds $$0, ctl $$1) {
+   private static int a(ds $$0, ctm $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      ctl $$4 = $$3.bb();
+      ctm $$4 = $$3.bb();
       if ($$4 != null) {
          for (ane $$5 : $$3.ae().t()) {
             if ($$5.a($$4)) {

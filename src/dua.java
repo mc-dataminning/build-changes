@@ -1,40 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dua implements dtx {
+public class dua implements dty {
    public static final Codec<dua> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bjf.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bjd.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bjd.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bjd.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bjd.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               dvz.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               dvz.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dua::new)
    );
-   public final int b;
-   public final bjf c;
-   public final bjd d;
-   public final float e;
-   public final bjd f;
-   public final bjd g;
-   public final bjd h;
-   public final int i;
-   public final float j;
+   public final dvz b;
+   public final dvz c;
+   public final int d;
 
-   public dua(int $$0, bjf $$1, bjd $$2, float $$3, bjd $$4, bjd $$5, bjd $$6, int $$7, float $$8) {
+   public dua(dvz $$0, dvz $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
    }
 }

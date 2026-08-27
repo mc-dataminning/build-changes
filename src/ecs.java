@@ -1,9 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public abstract class ecs {
-   public static final Codec<ecs> c = kd.q.q().dispatch("predicate_type", ecs::a, ect::codec);
+public class ecs extends ect {
+   public static final Codec<ecs> a = Codec.unit(() -> ecs.b);
+   public static final ecs b = new ecs();
 
-   public abstract boolean a(hx var1, hx var2, hx var3, auu var4);
+   private ecs() {
+   }
 
-   protected abstract ect<?> a();
+   @Override
+   public boolean a(hx $$0, hx $$1, hx $$2, auv $$3) {
+      return true;
+   }
+
+   @Override
+   protected ecu<?> a() {
+      return ecu.a;
+   }
 }

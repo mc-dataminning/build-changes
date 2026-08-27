@@ -1,32 +1,23 @@
-public interface cop {
-   cop.a a = new cop.a(false, false);
-   cop.a b = new cop.a(true, false);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   boolean a();
+public class cop extends ckm {
+   public cop(cmt.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public cmy am_() {
+      return coy.a(super.am_(), coz.E);
+   }
 
-   public static record a(boolean c, boolean d) implements cop {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
+      coy.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cop.a c() {
-         return new cop.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public String j(cmy $$0) {
+      return coy.d($$0).b(this.a() + ".effect.");
    }
 }

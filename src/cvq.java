@@ -1,91 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvq extends cwy {
-   public static final MapCodec<cvq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ahf.a(ke.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               ahf.a(ke.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               ahf.a(ke.F).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
-            .apply($$0, cvq::new)
-   );
-   public static final dka b = dak.aE;
-   protected static final float c = 2.0F;
-   private static final Map<ic, eml> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         ic.d,
-         cwp.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         ic.e,
-         cwp.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         ic.c,
-         cwp.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         ic.f,
-         cwp.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final ahf<cwp> e;
-   private final ahf<cwp> f;
-   private final ahf<cms> g;
+public class cvq extends czm {
+   public static final MapCodec<cvq> a = b(cvq::new);
+   public static final dkb b = dal.aE;
+   private static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final emm d = cwq.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final emm e = cwq.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final emm f = cwq.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final emm g = cwq.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final emm h = cwq.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final emm i = cwq.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final emm j = emj.a(c, d, e, f);
+   private static final emm k = emj.a(c, g, h, i);
+   private static final vf l = vf.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
    @Override
    public MapCodec<cvq> a() {
       return a;
    }
 
-   protected cvq(ahf<cwp> $$0, ahf<cwp> $$1, ahf<cms> $$2, djf.d $$3) {
-      super($$3);
+   public cvq(djg.d $$0) {
+      super($$0);
       this.k(this.E.b().a(b, ic.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return d.get($$0.c(b));
+   public djh a(cph $$0) {
+      return this.o().a(b, $$0.g().h());
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<cwp> $$6 = $$3.I_().d(ke.f).d(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().o().b(dek.c, Integer.valueOf(7));
-         }
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      if ($$1.B) {
+         return bkb.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(asc.aC);
+         return bkb.b;
       }
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Nullable
+   @Override
+   public bke b(djh $$0, ctp $$1, hx $$2) {
+      return new bkk(($$2x, $$3, $$4) -> new cid($$2x, $$3, cim.a($$1, $$2)), l);
    }
 
    @Override
-   protected boolean b(djg $$0, csu $$1, hx $$2) {
-      return $$0.a(cwr.cC);
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      ic $$4 = $$0.c(b);
+      return $$4.o() == ic.a.a ? j : k;
    }
 
    @Override
-   public cmx a(ctr $$0, hx $$1, djg $$2) {
-      return new cmx((ctn)DataFixUtils.orElse($$0.I_().d(ke.F).d(this.g), this));
+   protected void a(cbt $$0) {
+      $$0.b(2.0F, 40);
    }
 
    @Override
-   public djg a(djg $$0, ddb $$1) {
+   public void a(ctp $$0, hx $$1, djh $$2, djh $$3, cbt $$4) {
+      if (!$$4.aU()) {
+         $$0.c(1031, $$1, 0);
+      }
+   }
+
+   @Override
+   public void a(ctp $$0, hx $$1, cbt $$2) {
+      if (!$$2.aU()) {
+         $$0.c(1029, $$1, 0);
+      }
+   }
+
+   @Override
+   public bkt a(blv $$0) {
+      return $$0.dN().b($$0);
+   }
+
+   @Nullable
+   public static djh e(djh $$0) {
+      if ($$0.a(cws.gS)) {
+         return cws.gT.o().a(b, $$0.c(b));
+      } else {
+         return $$0.a(cws.gT) ? cws.gU.o().a(b, $$0.c(b)) : null;
+      }
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
       return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b);
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
+   }
+
+   @Override
+   public int b(djh $$0, csv $$1, hx $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

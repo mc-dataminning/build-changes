@@ -1,7 +1,7 @@
 public class acs implements xf<za> {
    public static final float a = 8.0F;
-   private final ih<arq> b;
-   private final ars c;
+   private final ih<arr> b;
+   private final art c;
    private final int d;
    private final int e;
    private final int f;
@@ -9,7 +9,7 @@ public class acs implements xf<za> {
    private final float h;
    private final long i;
 
-   public acs(ih<arq> $$0, ars $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public acs(ih<arr> $$0, art $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = (int)($$2 * 8.0);
@@ -21,8 +21,8 @@ public class acs implements xf<za> {
    }
 
    public acs(ui $$0) {
-      this.b = $$0.a(kd.b.t(), arq::b);
-      this.c = $$0.b(ars.class);
+      this.b = $$0.a(kd.b.t(), arr::b);
+      this.c = $$0.b(art.class);
       this.d = $$0.readInt();
       this.e = $$0.readInt();
       this.f = $$0.readInt();
@@ -43,11 +43,11 @@ public class acs implements xf<za> {
       $$0.b(this.i);
    }
 
-   public ih<arq> a() {
+   public ih<arr> a() {
       return this.b;
    }
 
-   public ars d() {
+   public art d() {
       return this.c;
    }
 

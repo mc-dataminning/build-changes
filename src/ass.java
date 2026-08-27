@@ -1,35 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
+public interface ass {
+   asw<dzg> a = a("eye_of_ender_located");
+   asw<dzg> b = a("dolphin_located");
+   asw<dzg> c = a("on_woodland_explorer_maps");
+   asw<dzg> d = a("on_ocean_explorer_maps");
+   asw<dzg> e = a("on_savanna_village_maps");
+   asw<dzg> f = a("on_desert_village_maps");
+   asw<dzg> g = a("on_plains_village_maps");
+   asw<dzg> h = a("on_taiga_village_maps");
+   asw<dzg> i = a("on_snowy_village_maps");
+   asw<dzg> j = a("on_jungle_explorer_maps");
+   asw<dzg> k = a("on_swamp_explorer_maps");
+   asw<dzg> l = a("on_treasure_maps");
+   asw<dzg> m = a("cats_spawn_in");
+   asw<dzg> n = a("cats_spawn_as_black");
+   asw<dzg> o = a("village");
+   asw<dzg> p = a("mineshaft");
+   asw<dzg> q = a("shipwreck");
+   asw<dzg> r = a("ruined_portal");
+   asw<dzg> s = a("ocean_ruin");
 
-public class ass {
-   private final List<ast> a = new ArrayList<>();
-
-   public static ass a() {
-      return new ass();
-   }
-
-   public List<ast> b() {
-      return List.copyOf(this.a);
-   }
-
-   public ass a(ast $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public ass a(ahg $$0) {
-      return this.a(ast.a($$0));
-   }
-
-   public ass b(ahg $$0) {
-      return this.a(ast.b($$0));
-   }
-
-   public ass c(ahg $$0) {
-      return this.a(ast.c($$0));
-   }
-
-   public ass d(ahg $$0) {
-      return this.a(ast.d($$0));
+   private static asw<dzg> a(String $$0) {
+      return asw.a(ke.aD, new ahg($$0));
    }
 }

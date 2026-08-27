@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duv implements dtx {
+public record duv(int b, int c, int d) implements dty {
    public static final Codec<duv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               atw.j.fieldOf("spread_width").forGetter(duv::a), atw.j.fieldOf("spread_height").forGetter(duv::b), atw.j.fieldOf("max_height").forGetter(duv::c)
             )
             .apply($$0, duv::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public duv(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

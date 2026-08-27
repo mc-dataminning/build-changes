@@ -1,21 +1,33 @@
-public class ffi extends fdz<cjs> {
-   private static final ahg x = new ahg("textures/gui/container/shulker_box.png");
+public class ffi extends exg {
+   private static final ahg a = new ahg("widget/page_forward_highlighted");
+   private static final ahg b = new ahg("widget/page_forward");
+   private static final ahg c = new ahg("widget/page_backward_highlighted");
+   private static final ahg d = new ahg("widget/page_backward");
+   private final boolean t;
+   private final boolean u;
 
-   public ffi(cjs $$0, cfg $$1, vf $$2) {
-      super($$0, $$1, $$2);
-      this.k++;
+   public ffi(int $$0, int $$1, boolean $$2, exg.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, ve.a, $$3, p);
+      this.t = $$2;
+      this.u = $$4;
    }
 
    @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      ahg $$4;
+      if (this.t) {
+         $$4 = this.z() ? a : b;
+      } else {
+         $$4 = this.z() ? c : d;
+      }
+
+      $$0.a($$4, this.B(), this.C(), 23, 13);
    }
 
    @Override
-   protected void a(ewt $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void a(gje $$0) {
+      if (this.u) {
+         $$0.a(ghv.a(ars.ce, 1.0F));
+      }
    }
 }

@@ -1,110 +1,117 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
-public record dov(doi b, doi c, doi d, doi e, doi f, doi g, doi h, doi i, doi j, doi k, doi l, doi m, doi n, doi o, doi p) {
+public record dov(doy j, djh k, djh l, dow m, dph.o n, List<cux.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<dov> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               a("barrier", dov::a),
-               a("fluid_level_floodedness", dov::b),
-               a("fluid_level_spread", dov::c),
-               a("lava", dov::d),
-               a("temperature", dov::e),
-               a("vegetation", dov::f),
-               a("continents", dov::g),
-               a("erosion", dov::h),
-               a("depth", dov::i),
-               a("ridges", dov::j),
-               a("initial_density_without_jaggedness", dov::k),
-               a("final_density", dov::l),
-               a("vein_toggle", dov::m),
-               a("vein_ridged", dov::n),
-               a("vein_gap", dov::o)
+               doy.a.fieldOf("noise").forGetter(dov::f),
+               djh.b.fieldOf("default_block").forGetter(dov::g),
+               djh.b.fieldOf("default_fluid").forGetter(dov::h),
+               dow.a.fieldOf("noise_router").forGetter(dov::i),
+               dph.o.b.fieldOf("surface_rule").forGetter(dov::j),
+               cux.d.a.listOf().fieldOf("spawn_target").forGetter(dov::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dov::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dov::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dov::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dov::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dov::n)
             )
             .apply($$0, dov::new)
    );
+   public static final Codec<ih<dov>> b = ahc.a(ke.aA, a);
+   public static final ahf<dov> c = ahf.a(ke.aA, new ahg("overworld"));
+   public static final ahf<dov> d = ahf.a(ke.aA, new ahg("large_biomes"));
+   public static final ahf<dov> e = ahf.a(ke.aA, new ahg("amplified"));
+   public static final ahf<dov> f = ahf.a(ke.aA, new ahg("nether"));
+   public static final ahf<dov> g = ahf.a(ke.aA, new ahg("end"));
+   public static final ahf<dov> h = ahf.a(ke.aA, new ahg("caves"));
+   public static final ahf<dov> i = ahf.a(ke.aA, new ahg("floating_islands"));
 
-   private static RecordCodecBuilder<dov, doi> a(String $$0, Function<dov, doi> $$1) {
-      return doi.d.fieldOf($$0).forGetter($$1);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public dov a(doi.f $$0) {
-      return new dov(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public boolean b() {
+      return this.r;
    }
 
-   public doi a() {
-      return this.b;
+   public boolean c() {
+      return this.s;
    }
 
-   public doi b() {
-      return this.c;
+   public dpp.a d() {
+      return this.t ? dpp.a.a : dpp.a.b;
    }
 
-   public doi c() {
-      return this.d;
+   public static void a(pe<dov> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public doi d() {
-      return this.e;
+   private static dov b(pe<?> $$0) {
+      return new dov(doy.d, cws.fz.o(), cws.a.o(), dox.a($$0.a(ke.ax)), pr.c(), List.of(), 0, true, false, false, true);
    }
 
-   public doi e() {
-      return this.f;
+   private static dov c(pe<?> $$0) {
+      return new dov(doy.c, cws.dV.o(), cws.H.o(), dox.a($$0.a(ke.ax), $$0.a(ke.aB)), pr.b(), List.of(), 32, false, false, false, true);
    }
 
-   public doi f() {
-      return this.g;
+   private static dov a(pe<?> $$0, boolean $$1, boolean $$2) {
+      return new dov(doy.b, cws.b.o(), cws.G.o(), dox.a($$0.a(ke.ax), $$0.a(ke.aB), $$2, $$1), pr.a(), new cve().a(), 63, false, true, true, false);
    }
 
-   public doi g() {
-      return this.h;
+   private static dov d(pe<?> $$0) {
+      return new dov(doy.e, cws.b.o(), cws.G.o(), dox.b($$0.a(ke.ax), $$0.a(ke.aB)), pr.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   public doi h() {
-      return this.i;
+   private static dov e(pe<?> $$0) {
+      return new dov(doy.f, cws.b.o(), cws.G.o(), dox.c($$0.a(ke.ax), $$0.a(ke.aB)), pr.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   public doi i() {
+   public static dov e() {
+      return new dov(doy.b, cws.b.o(), cws.a.o(), dox.a(), pr.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public doy f() {
       return this.j;
    }
 
-   public doi j() {
+   public djh g() {
       return this.k;
    }
 
-   public doi k() {
+   public djh h() {
       return this.l;
    }
 
-   public doi l() {
+   public dow i() {
       return this.m;
    }
 
-   public doi m() {
+   public dph.o j() {
       return this.n;
    }
 
-   public doi n() {
+   public List<cux.d> k() {
       return this.o;
    }
 
-   public doi o() {
+   public int l() {
       return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

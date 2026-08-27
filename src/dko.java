@@ -1,7 +1,7 @@
-public enum dko implements avj {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dko implements avk {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

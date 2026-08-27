@@ -1,59 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class ejl implements eju {
-   protected final List<eju> c;
-   private final Predicate<egv> a;
+public record ejl(ih<crj> b, List<Float> c) implements ejv {
+   public static final Codec<ejl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.f.r().fieldOf("enchantment").forGetter(ejl::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(ejl::d)).apply($$0, ejl::new)
+   );
 
-   protected ejl(List<eju> $$0, Predicate<egv> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ejl> Codec<T> a(Function<List<eju>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(ejw.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ejl> Codec<T> b(Function<List<eju>, T> $$0) {
-      return ejw.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(egv $$0) {
-      return this.a.test($$0);
+   @Override
+   public ejw b() {
+      return ejx.l;
    }
 
    @Override
-   public void a(ehe $$0) {
-      eju.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<eje<?>> a() {
+      return ImmutableSet.of(ejh.i);
    }
 
-   public abstract static class a implements eju.a {
-      private final Builder<eju> a = ImmutableList.builder();
+   public boolean a(egw $$0) {
+      cmy $$1 = $$0.c(ejh.i);
+      int $$2 = $$1 != null ? crl.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
 
-      protected a(eju.a... $$0) {
-         for (eju.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   public static ejv.a a(crj $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      public void a(eju.a $$0) {
-         this.a.add($$0.build());
-      }
+      return () -> new ejl($$0.j(), $$2);
+   }
 
-      @Override
-      public eju build() {
-         return this.a(this.a.build());
-      }
+   public ih<crj> c() {
+      return this.b;
+   }
 
-      protected abstract eju a(List<eju> var1);
+   public List<Float> d() {
+      return this.c;
    }
 }

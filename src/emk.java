@@ -1,46 +1,24 @@
-public final class emk extends emb {
-   private final emb d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   protected emk(emb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class emk extends emm {
+   private final emm b;
+   private final ic.a c;
+   private static final DoubleList d = new elz(1);
+
+   public emk(emm $$0, ic.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private static emc a(emc $$0, ic.a $$1, int $$2) {
+      return new eml(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(ic.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(ic.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(ic.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return aun.a($$1, $$2, $$3) - $$2;
+   protected DoubleList a(ic.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

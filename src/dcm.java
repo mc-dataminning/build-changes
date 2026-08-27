@@ -1,39 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcm extends cwp {
-   public static final MapCodec<dcm> a = b(dcm::new);
+public class dcm extends cwe {
+   public static final MapCodec<dcm> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(djw.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dcm::new)
+   );
+   public static final djy f = djx.w;
 
    @Override
    public MapCodec<dcm> a() {
-      return a;
+      return e;
    }
 
-   protected dcm(djf.d $$0) {
-      super($$0);
+   protected dcm(djw $$0, djg.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      cmx $$6 = $$3.b($$4);
-      if ($$6.a(cna.rS)) {
-         if (!$$1.B) {
-            ic $$7 = $$5.b();
-            ic $$8 = $$7.o() == ic.a.b ? $$3.cE().g() : $$7;
-            $$1.a(null, $$2, arr.tZ, ars.e, 1.0F, 1.0F);
-            $$1.a($$2, cwr.ee.o().a(cxj.b, $$8), 11);
-            cbt $$9 = new cbt(
-               $$1, (double)$$2.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$2.v() + 0.1, (double)$$2.w() + 0.5 + (double)$$8.l() * 0.65, new cmx(cna.rV, 4)
-            );
-            $$9.o(0.05 * (double)$$8.j() + $$1.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$1.z.j() * 0.02);
-            $$1.b($$9);
-            $$6.a(1, $$3, $$1x -> $$1x.d($$4));
-            $$1.a($$3, dnq.M, $$2);
-            $$3.b(asb.c.b(cna.rS));
-         }
+   protected int g(djh $$0) {
+      return $$0.c(f) ? 15 : 0;
+   }
 
-         return bka.a($$1.B);
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   @Override
+   protected djh a(djh $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(ctp $$0, hx $$1) {
+      Class<? extends blv> $$2 = switch (this.d.f()) {
+         case a -> blv.class;
+         case b -> bml.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(f);
    }
 }

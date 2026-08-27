@@ -1,5 +1,5 @@
 public record aah(int a, float b) implements xf<za> {
-   public aah(bmk $$0) {
+   public aah(bml $$0) {
       this($$0.aj(), $$0.eE());
    }
 

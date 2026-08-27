@@ -1,55 +1,66 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cnu extends cms implements cly {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
-
-   public cnu(cms.a $$0) {
+public class cnu extends cmt {
+   public cnu(cmt.a $$0) {
       super($$0);
-      cyu.a(this, ckh.a);
    }
 
    @Override
-   public String j(cmx $$0) {
-      return ckq.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   public boolean a(cmy $$0, ctp $$1, djh $$2, hx $$3, bml $$4) {
+      if (!$$1.B && !$$2.a(ash.aJ)) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bma.a));
+      }
+
+      return !$$2.a(ash.O)
+            && !$$2.a(cws.bs)
+            && !$$2.a(cws.bt)
+            && !$$2.a(cws.bu)
+            && !$$2.a(cws.bv)
+            && !$$2.a(cws.sG)
+            && !$$2.a(cws.ff)
+            && !$$2.a(cws.fI)
+            && !$$2.a(ash.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
    }
 
    @Override
-   public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      ckn.a($$0, $$2);
+   public boolean a_(djh $$0) {
+      return $$0.a(cws.bs) || $$0.a(cws.cw) || $$0.a(cws.fI);
    }
 
    @Override
-   public cor c(cmx $$0) {
-      return cor.d;
+   public float a(cmy $$0, djh $$1) {
+      if ($$1.a(cws.bs) || $$1.a(ash.O)) {
+         return 15.0F;
+      } else if ($$1.a(ash.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(cws.ff) && !$$1.a(cws.fg) ? super.a($$0, $$1) : 2.0F;
+      }
    }
 
    @Override
-   public int b(cmx $$0) {
-      return 72000;
-   }
+   public bkb a(cpj $$0) {
+      ctp $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      djh $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof daf $$5 && !$$5.o($$3)) {
+         cfi $$6 = $$0.o();
+         cmy $$7 = $$0.n();
+         if ($$6 instanceof ane) {
+            am.N.a((ane)$$6, $$2, $$7);
+         }
 
-   @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bkb.b($$3);
-   }
+         $$1.a($$6, $$2, ars.kL, art.e, 1.0F, 1.0F);
+         djh $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dnr.c, $$2, dnr.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
+         }
 
-   @Override
-   public boolean a(cmx $$0, cmx $$1) {
-      return $$1.a(aso.b) || super.a($$0, $$1);
-   }
+         return bkb.a($$1.B);
+      }
 
-   public static cll d(cmx $$0) {
-      sn $$1 = ckq.a($$0);
-      return $$1 != null ? cll.a($$1.h("Base")) : cll.a;
-   }
-
-   @Override
-   public blz g() {
-      return blz.b;
+      return super.a($$0);
    }
 }

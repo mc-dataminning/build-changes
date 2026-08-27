@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class me implements mc {
-   private final cwp a;
+   private final cwq a;
    private final List<me.b> b = Lists.newArrayList();
 
-   private me(cwp $$0) {
+   private me(cwq $$0) {
       this.a = $$0;
    }
 
    @Override
-   public cwp a() {
+   public cwq a() {
       return this.a;
    }
 
-   public static me a(cwp $$0) {
+   public static me a(cwq $$0) {
       return new me($$0);
    }
 
@@ -46,7 +46,7 @@ public class me implements mc {
    }
 
    public JsonElement b() {
-      djh<cwp, djg> $$0 = this.a.n();
+      dji<cwq, djh> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(me.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class me implements mc {
       }
 
       @Override
-      public void a(djh<?, ?> $$0) {
+      public void a(dji<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class me implements mc {
          this.a = $$0;
       }
 
-      public void a(djh<?, ?> $$0) {
+      public void a(dji<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

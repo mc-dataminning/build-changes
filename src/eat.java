@@ -1,25 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-record eat(ahf<eao> c, bik<ahf<eao>> d) implements eaq {
-   static Codec<eat> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahf.a(ke.aG).fieldOf("alias").forGetter(eat::c), bik.b(ahf.a(ke.aG)).fieldOf("targets").forGetter(eat::d)).apply($$0, eat::new)
-   );
+@FunctionalInterface
+public interface eat {
+   eat a = $$0 -> $$0;
 
-   @Override
-   public void a(auu $$0, BiConsumer<ahf<eao>, ahf<eao>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ahf<eao>)$$1x.b()));
-   }
+   ahf<eap> lookup(ahf<eap> var1);
 
-   @Override
-   public Stream<ahf<eao>> a() {
-      return this.d.e().stream().map(bim.b::b);
-   }
-
-   @Override
-   public Codec<eat> b() {
-      return a;
+   static eat create(List<ear> $$0, hx $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         auv $$3 = auv.a($$2).e().a($$1);
+         Builder<ahf<eap>, ahf<eap>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<ahf<eap>, ahf<eap>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

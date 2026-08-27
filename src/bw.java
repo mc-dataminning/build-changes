@@ -2,9 +2,9 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record bw(Optional<asv<eep>> b, Optional<ih<eep>> c, Optional<cz> d) {
+public record bw(Optional<asw<eeq>> b, Optional<ih<eeq>> c, Optional<cz> d) {
    public static final Codec<bw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atv.a(asv.a(ke.y), "tag").forGetter(bw::a), atv.a(kd.c.r(), "fluid").forGetter(bw::b), atv.a(cz.a, "state").forGetter(bw::c))
+      $$0 -> $$0.group(atw.a(asw.a(ke.y), "tag").forGetter(bw::a), atw.a(kd.c.r(), "fluid").forGetter(bw::b), atw.a(cz.a, "state").forGetter(bw::c))
             .apply($$0, bw::new)
    );
 
@@ -12,7 +12,7 @@ public record bw(Optional<asv<eep>> b, Optional<ih<eep>> c, Optional<cz> d) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         eeq $$2 = $$0.b_($$1);
+         eer $$2 = $$0.b_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else {
@@ -21,11 +21,11 @@ public record bw(Optional<asv<eep>> b, Optional<ih<eep>> c, Optional<cz> d) {
       }
    }
 
-   public Optional<asv<eep>> a() {
+   public Optional<asw<eeq>> a() {
       return this.b;
    }
 
-   public Optional<ih<eep>> b() {
+   public Optional<ih<eeq>> b() {
       return this.c;
    }
 
@@ -34,8 +34,8 @@ public record bw(Optional<asv<eep>> b, Optional<ih<eep>> c, Optional<cz> d) {
    }
 
    public static class a {
-      private Optional<ih<eep>> a = Optional.empty();
-      private Optional<asv<eep>> b = Optional.empty();
+      private Optional<ih<eeq>> a = Optional.empty();
+      private Optional<asw<eeq>> b = Optional.empty();
       private Optional<cz> c = Optional.empty();
 
       private a() {
@@ -45,12 +45,12 @@ public record bw(Optional<asv<eep>> b, Optional<ih<eep>> c, Optional<cz> d) {
          return new bw.a();
       }
 
-      public bw.a a(eep $$0) {
+      public bw.a a(eeq $$0) {
          this.a = Optional.of($$0.k());
          return this;
       }
 
-      public bw.a a(asv<eep> $$0) {
+      public bw.a a(asw<eeq> $$0) {
          this.b = Optional.of($$0);
          return this;
       }

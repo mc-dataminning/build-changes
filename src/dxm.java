@@ -1,13 +1,34 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public abstract class dxm {
-   private static final Codec<Either<dpj, dxm>> a = Codec.either(dpj.a, kd.N.q().dispatch(dxm::a, dxn::codec));
-   public static final Codec<dxm> c = a.xmap(
-      $$0 -> (dxm)$$0.map(dxl::a, $$0x -> $$0x), $$0 -> $$0.a() == dxn.a ? Either.left(((dxl)$$0).b()) : Either.right($$0)
-   );
+public class dxm extends dxn {
+   public static final dxm a = new dxm(dpk.a(0));
+   public static final Codec<dxm> b = atw.e(dpk.a, dpk.a.fieldOf("value").codec()).xmap(dxm::new, dxm::b);
+   private final dpk d;
 
-   public abstract int a(auu var1, dpm var2);
+   public static dxm a(dpk $$0) {
+      return new dxm($$0);
+   }
 
-   public abstract dxn<?> a();
+   private dxm(dpk $$0) {
+      this.d = $$0;
+   }
+
+   public dpk b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(auv $$0, dpn $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public dxo<?> a() {
+      return dxo.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 }

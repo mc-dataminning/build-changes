@@ -14,7 +14,7 @@ public interface ij<T> extends ii<T> {
 
    Stream<il.c<T>> d();
 
-   default Stream<asv<T>> e() {
+   default Stream<asw<T>> e() {
       return this.d().map(il.c::f);
    }
 
@@ -50,7 +50,7 @@ public interface ij<T> extends ii<T> {
       }
 
       @Override
-      public Optional<il.c<T>> a(asv<T> $$0) {
+      public Optional<il.c<T>> a(asw<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -99,8 +99,8 @@ public interface ij<T> extends ii<T> {
 
       Lifecycle g();
 
-      default ij<T> a(chr $$0) {
-         return (ij<T>)(cho.bx.contains(this.f()) ? this.a($$1 -> ((cho)$$1).a($$0)) : this);
+      default ij<T> a(chs $$0) {
+         return (ij<T>)(chp.bx.contains(this.f()) ? this.a($$1 -> ((chp)$$1).a($$0)) : this);
       }
 
       public abstract static class a<T> implements ij.c<T> {
@@ -127,7 +127,7 @@ public interface ij<T> extends ii<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asv<T> $$0) {
+         public Optional<il.c<T>> a(asw<T> $$0) {
             return this.a().a($$0);
          }
 

@@ -1,84 +1,61 @@
-public class fua implements aqi {
-   private final ftz a;
-   private final fuc b;
-   private final fst c;
-   private final fub d;
-   private final auu e = auu.a();
-   private final ewk f;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public fua(ftz $$0, fst $$1, ewk $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new fuc(this.f);
-      this.d = new fub();
+public class fua {
+   private Map<djh, ggn> a = Map.of();
+   private final ggt b;
+
+   public fua(ggt $$0) {
+      this.b = $$0;
    }
 
-   public ftz a() {
-      return this.a;
+   public gen a(djh $$0) {
+      return this.b($$0).e();
    }
 
-   public void a(djg $$0, hx $$1, csr $$2, eqa $$3, eqe $$4) {
-      if ($$0.l() == dcu.c) {
-         ggm $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, ged.d);
+   public ggn b(djh $$0) {
+      ggn $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   public void a(djg $$0, hx $$1, csr $$2, eqa $$3, eqe $$4, boolean $$5, auu $$6) {
-      try {
-         dcu $$7 = $$0.l();
-         if ($$7 == dcu.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), ged.d);
-         }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
-
-   public void a(hx $$0, csr $$1, eqe $$2, djg $$3, eeq $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
-
-   public fuc b() {
+   public ggt a() {
       return this.b;
    }
 
-   public ggm a(djg $$0) {
-      return this.a.b($$0);
+   public void a(Map<djh, ggn> $$0) {
+      this.a = $$0;
    }
 
-   public void a(djg $$0, eqa $$1, ftg $$2, int $$3, int $$4) {
-      dcu $$5 = $$0.l();
-      if ($$5 != dcu.a) {
-         switch ($$5) {
-            case c:
-               ggm $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(ftb.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cmx($$0.b()), cmu.a, $$1, $$2, $$3, $$4);
+   public static ggu c(djh $$0) {
+      return a(kd.e.b($$0.b()), $$0);
+   }
+
+   public static ggu a(ahg $$0, djh $$1) {
+      return new ggu($$0, b($$1.C()));
+   }
+
+   public static String b(Map<dkk<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dkk<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
+
+         dkk<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
    }
 
-   @Override
-   public void a(aqh $$0) {
-      this.d.a();
+   private static <T extends Comparable<T>> String a(dkk<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

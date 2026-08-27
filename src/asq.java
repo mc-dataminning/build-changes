@@ -1,12 +1,10 @@
 public class asq {
-   public static final asv<bxo> a = a("acquirable_job_site");
-   public static final asv<bxo> b = a("village");
-   public static final asv<bxo> c = a("bee_home");
+   public static final asw<cbq> a = a("placeable");
 
    private asq() {
    }
 
-   private static asv<bxo> a(String $$0) {
-      return asv.a(ke.U, new ahg($$0));
+   private static asw<cbq> a(String $$0) {
+      return asw.a(ke.R, new ahg($$0));
    }
 }

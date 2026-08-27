@@ -1,4 +1,4 @@
-public record yc(ahf<dnq> b, els c) implements ya {
+public record yc(ahf<dnr> b, elt c) implements ya {
    public static final ahg a = new ahg("debug/game_event");
 
    public yc(ui $$0) {

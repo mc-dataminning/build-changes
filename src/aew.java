@@ -7,9 +7,9 @@ public class aew implements xf<adj> {
    private final boolean f;
    private final boolean g;
    private final boolean h;
-   private final dhe.a i;
+   private final dhf.a i;
 
-   public aew(hx $$0, String $$1, dhe.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public aew(hx $$0, String $$1, dhf.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$3;
@@ -21,7 +21,7 @@ public class aew implements xf<adj> {
    public aew(ui $$0) {
       this.d = $$0.e();
       this.e = $$0.s();
-      this.i = $$0.b(dhe.a.class);
+      this.i = $$0.b(dhf.a.class);
       int $$1 = $$0.readByte();
       this.f = ($$1 & 1) != 0;
       this.g = ($$1 & 2) != 0;
@@ -73,7 +73,7 @@ public class aew implements xf<adj> {
       return this.h;
    }
 
-   public dhe.a h() {
+   public dhf.a h() {
       return this.i;
    }
 }

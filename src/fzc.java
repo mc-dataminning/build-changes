@@ -1,24 +1,15 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fzc extends fzt<cds, fkh<cds>> {
+   private static final ahg a = new ahg("textures/entity/hoglin/hoglin.png");
 
-public final class fzc extends fxi<bzy, fkh<bzy>> {
-   private static final Map<caf, ahg> a = ac.a(Maps.newEnumMap(caf.class), $$0 -> {
-      $$0.put(caf.a, new ahg("textures/entity/horse/horse_white.png"));
-      $$0.put(caf.b, new ahg("textures/entity/horse/horse_creamy.png"));
-      $$0.put(caf.c, new ahg("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(caf.d, new ahg("textures/entity/horse/horse_brown.png"));
-      $$0.put(caf.e, new ahg("textures/entity/horse/horse_black.png"));
-      $$0.put(caf.f, new ahg("textures/entity/horse/horse_gray.png"));
-      $$0.put(caf.g, new ahg("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public fzc(fym.a $$0) {
-      super($$0, new fkh<>($$0.a(fmv.am)), 1.1F);
-      this.a(new gcm(this));
-      this.a(new gcl(this, $$0.f()));
+   public fzc(fyn.a $$0) {
+      super($$0, new fkh<>($$0.a(fmw.ak)), 0.7F);
    }
 
-   public ahg a(bzy $$0) {
-      return a.get($$0.w());
+   public ahg a(cds $$0) {
+      return a;
+   }
+
+   protected boolean b(cds $$0) {
+      return super.a($$0) || $$0.A();
    }
 }

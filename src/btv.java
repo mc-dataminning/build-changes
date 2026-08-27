@@ -1,38 +1,30 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class btv extends btg {
-   private final bmt a;
-   @Nullable
-   private bmk b;
+public class btv extends bth {
+   private final bmu a;
+   private double b;
    private double c;
    private double d;
-   private double e;
-   private final double f;
-   private final float g;
+   private final double e;
 
-   public btv(bmt $$0, double $$1, float $$2) {
+   public btv(bmu $$0, double $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(btg.a.a));
+      this.e = $$1;
+      this.a(EnumSet.of(bth.a.a));
    }
 
    @Override
    public boolean a() {
-      this.b = this.a.q();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+      if (this.a.fM()) {
          return false;
       } else {
-         els $$0 = bxc.a(this.a, 16, 7, this.b.dk(), (float) (Math.PI / 2));
+         elt $$0 = bxd.a(this.a, 16, 7, elt.c(this.a.fN()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
             return true;
          }
       }
@@ -40,16 +32,11 @@ public class btv extends btg {
 
    @Override
    public boolean b() {
-      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+      return !this.a.N().l();
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.f);
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 }

@@ -1,18 +1,41 @@
-public class arp {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final aro a = new aro(arr.ph, 20, 600, true);
-   public static final aro b = new aro(arr.oM, 12000, 24000, false);
-   public static final aro c = new aro(arr.oN, 0, 0, true);
-   public static final aro d = new aro(arr.pe, 0, 0, true);
-   public static final aro e = new aro(arr.pf, 6000, 24000, true);
-   public static final aro f = a(arr.pG);
-   public static final aro g = a(arr.pg);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static aro a(ih<arq> $$0) {
-      return new aro($$0, 12000, 24000, false);
+public class arp {
+   public static final Codec<arp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arr.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, arp::new)
+   );
+   private final ih<arr> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public arp(ih<arr> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public ih<arr> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

@@ -1,38 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bnx {
-   public static boc<ceu> a() {
-      return bro.a(
-         (Function<bro.b<ceu>, ? extends App<bro.c<ceu>, brr<ceu>>>)($$0 -> $$0.group($$0.b(bvm.d), $$0.a(bvm.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ig $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dk(), 2.0) && !$$4.go()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gp().b() != cex.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.o();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
-                                 .flatMap($$0xxx -> kd.z.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gp().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class bnx extends boc<bmu> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<bmu> g = $$0 -> $$0.eh() != null || $$0.dB() || $$0.bN();
+   private final float h;
+   private final Predicate<bmu> i;
+
+   public bnx(float $$0) {
+      this($$0, g);
+   }
+
+   public bnx(float $$0, Predicate<bmu> $$1) {
+      super(ImmutableMap.of(bvn.Y, bvo.c, bvn.x, bvo.a), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   protected boolean a(and $$0, bmu $$1) {
+      return this.i.test($$1);
+   }
+
+   protected boolean a(and $$0, bmu $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(and $$0, bmu $$1, long $$2) {
+      $$1.dO().a(bvn.Y, true);
+      $$1.dO().b(bvn.m);
+   }
+
+   protected void c(and $$0, bmu $$1, long $$2) {
+      bnl<?> $$3 = $$1.dO();
+      $$3.b(bvn.Y);
+   }
+
+   protected void d(and $$0, bmu $$1, long $$2) {
+      if ($$1.N().l()) {
+         elt $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dO().a(bvn.m, new bvq($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private elt a(bmu $$0, and $$1) {
+      if ($$0.bN()) {
+         Optional<elt> $$2 = this.a((csv)$$1, (blv)$$0).map(elt::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return bxg.a($$0, 5, 4);
+   }
+
+   private Optional<hx> a(csv $$0, blv $$1) {
+      hx $$2 = $$1.dm();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<hx> $$3;
+         if (auo.f($$1.dg()) == 2) {
+            $$3 = $$1x -> hx.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(asm.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(asm.a);
+         }
+
+         return hx.a($$2, 5, 1, $$3);
+      }
    }
 }

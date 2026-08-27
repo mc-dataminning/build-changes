@@ -8,26 +8,26 @@ public class at extends cv<at.a> {
       return at.a.a;
    }
 
-   public void a(ane $$0, djg $$1, cmx $$2, int $$3) {
+   public void a(ane $$0, djh $$1, cmy $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bb> b, Optional<ih<cwp>> c, Optional<ca> d, ck.d e) implements cv.a {
+   public static record a(Optional<bb> b, Optional<ih<cwq>> c, Optional<ca> d, ck.d e) implements cv.a {
       public static final Codec<at.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atv.a(bp.b, "player").forGetter(at.a::a),
-                  atv.a(kd.e.r(), "block").forGetter(at.a::b),
-                  atv.a(ca.a, "item").forGetter(at.a::c),
-                  atv.a(ck.d.d, "num_bees_inside", ck.d.c).forGetter(at.a::d)
+                  atw.a(bp.b, "player").forGetter(at.a::a),
+                  atw.a(kd.e.r(), "block").forGetter(at.a::b),
+                  atw.a(ca.a, "item").forGetter(at.a::c),
+                  atw.a(ck.d.d, "num_bees_inside", ck.d.c).forGetter(at.a::d)
                )
                .apply($$0, at.a::new)
       );
 
-      public static an<at.a> a(cwp $$0, ca.a $$1, ck.d $$2) {
+      public static an<at.a> a(cwq $$0, ca.a $$1, ck.d $$2) {
          return am.L.a(new at.a(Optional.empty(), Optional.of($$0.r()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(djg $$0, cmx $$1, int $$2) {
+      public boolean a(djh $$0, cmy $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class at extends cv<at.a> {
          return this.b;
       }
 
-      public Optional<ih<cwp>> b() {
+      public Optional<ih<cwq>> b() {
          return this.c;
       }
 

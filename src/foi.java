@@ -1,30 +1,60 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface foi {
-   Codec<foi> a = avj.a(foi.a::values).dispatch(foi::a, foi.a::a);
+public enum foi implements avk {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   foi.a a();
+   public static final Codec<foi> d = avk.a(foi::values);
+   private final String e;
 
-   public static enum a implements avj {
-      a("player", () -> foj.a.b),
-      b("system", () -> foj.b.b);
+   private foi(String $$0) {
+      this.e = $$0;
+   }
 
-      private final String c;
-      private final Supplier<Codec<? extends foi>> d;
-
-      private a(String $$0, Supplier<Codec<? extends foi>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   public static foi a(vv $$0, vf $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
+   }
 
-      private Codec<? extends foi> a() {
-         return this.d.get();
+   private static boolean a(vv $$0, vf $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         vf $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      @Override
-      public String c() {
-         return this.c;
-      }
+   private static boolean a(vf $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), wc.a).orElse(false);
+   }
+
+   private static boolean a(wc $$0) {
+      return !$$0.k().equals(wc.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public evd a(vv $$0) {
+      return switch (this) {
+         case b -> evd.a($$0.c());
+         case c -> evd.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

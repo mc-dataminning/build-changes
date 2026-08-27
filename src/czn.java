@@ -1,96 +1,109 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class czn extends cyl {
-   public static final MapCodec<czn> i = b(czn::new);
-   private final eml[] j;
+public class czn extends cwq {
+   public static final MapCodec<czn> a = b(czn::new);
+   public static final dkh b = djx.aQ;
+   protected static final emm c = cwq.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<czn> a() {
-      return i;
+      return a;
    }
 
-   public czn(djf.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
-      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+   protected czn(djg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public eml f(djg $$0, csu $$1, hx $$2) {
-      return this.j[this.g($$0)];
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eml c(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      djh $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof czp || $$3.b() instanceof diz;
    }
 
    @Override
-   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+   public djh a(cph $$0) {
+      return !this.o().a((cts)$$0.q(), $$0.a()) ? cws.j.o() : super.a($$0);
+   }
+
+   @Override
+   public boolean g_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((cts)$$1, $$2) && !$$1.r($$2.c())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((csv)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
+      }
+   }
+
+   @Override
+   public void a(ctp $$0, djh $$1, hx $$2, blv $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bml && ($$3 instanceof cfi || $$0.Z().b(ctl.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable blv $$0, djh $$1, ctp $$2, hx $$3) {
+      djh $$4 = a($$1, cws.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dnr.c, $$3, dnr.a.a($$0, $$4));
+   }
+
+   private static boolean a(csv $$0, hx $$1) {
+      return $$0.a_($$1.c()).a(ash.cp);
+   }
+
+   private static boolean a(cts $$0, hx $$1) {
+      for (hx $$2 : hx.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(asm.a)) {
+            return true;
+         }
+      }
+
       return false;
    }
 
-   public boolean a(djg $$0, boolean $$1, ic $$2) {
-      cwp $$3 = $$0.b();
-      boolean $$4 = this.h($$0);
-      boolean $$5 = $$3 instanceof czo && czo.a($$0, $$2);
-      return !j($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean h(djg $$0) {
-      return $$0.a(asg.S) && $$0.a(asg.k) == this.o().a(asg.k);
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      if ($$1.B) {
-         cmx $$6 = $$3.b($$4);
-         return $$6.a(cna.uD) ? bka.a : bka.d;
-      } else {
-         return cnc.a($$3, $$1, $$2);
-      }
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      csu $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      eeq $$3 = $$0.q().b_($$0.a());
-      hx $$4 = $$2.e();
-      hx $$5 = $$2.h();
-      hx $$6 = $$2.f();
-      hx $$7 = $$2.g();
-      djg $$8 = $$1.a_($$4);
-      djg $$9 = $$1.a_($$5);
-      djg $$10 = $$1.a_($$6);
-      djg $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ic.d), ic.d)))
-         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ic.e), ic.e)))
-         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ic.c), ic.c)))
-         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ic.f), ic.f)))
-         .a(e, Boolean.valueOf($$3.a() == eer.c));
-   }
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eer.c, eer.c.a($$3));
-      }
-
-      return $$1.o().e() == ic.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(a, b, d, c, e);
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
    }
 }

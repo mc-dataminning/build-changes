@@ -9,18 +9,18 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public record ae(Optional<ahg> b, Optional<ar> c, aj d, Map<String, an<?>> e, ai f, boolean g, Optional<vf> h) {
-   private static final Codec<Map<String, an<?>>> i = atv.a(
+   private static final Codec<Map<String, an<?>>> i = atw.a(
       Codec.unboundedMap(Codec.STRING, an.a), $$0 -> $$0.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success($$0)
    );
-   public static final Codec<ae> a = atv.a(
+   public static final Codec<ae> a = atw.a(
       RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atv.a(ahg.a, "parent").forGetter(ae::b),
-                  atv.a(ar.a, "display").forGetter(ae::c),
-                  atv.a(aj.a, "rewards", aj.b).forGetter(ae::d),
+                  atw.a(ahg.a, "parent").forGetter(ae::b),
+                  atw.a(ar.a, "display").forGetter(ae::c),
+                  atw.a(aj.a, "rewards", aj.b).forGetter(ae::d),
                   i.fieldOf("criteria").forGetter(ae::e),
-                  atv.a(ai.a, "requirements").forGetter($$0x -> Optional.of($$0x.f())),
-                  atv.a(Codec.BOOL, "sends_telemetry_event", false).forGetter(ae::g)
+                  atw.a(ai.a, "requirements").forGetter($$0x -> Optional.of($$0x.f())),
+                  atw.a(Codec.BOOL, "sends_telemetry_event", false).forGetter(ae::g)
                )
                .apply($$0, ($$0x, $$1, $$2, $$3, $$4, $$5) -> {
                   ai $$6 = $$4.orElseGet(() -> ai.a($$3.keySet()));
@@ -65,7 +65,7 @@ public record ae(Optional<ahg> b, Optional<ar> c, aj d, Map<String, an<?>> e, ai
       return this.b.isEmpty();
    }
 
-   public void a(aus $$0, egz $$1) {
+   public void a(aut $$0, eha $$1) {
       this.e.forEach(($$2, $$3) -> {
          bc $$4 = new bc($$0.a($$2), $$1);
          $$3.b().a($$4);
@@ -102,12 +102,12 @@ public record ae(Optional<ahg> b, Optional<ar> c, aj d, Map<String, an<?>> e, ai
          return this;
       }
 
-      public ae.a a(cmx $$0, vf $$1, vf $$2, @Nullable ahg $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cmy $$0, vf $$1, vf $$2, @Nullable ahg $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new ar($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(ctn $$0, vf $$1, vf $$2, @Nullable ahg $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new ar(new cmx($$0.k()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ae.a a(cto $$0, vf $$1, vf $$2, @Nullable ahg $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new ar(new cmy($$0.k()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(ar $$0) {

@@ -4,14 +4,14 @@ public class ani<T> {
    private final String i;
    private final Comparator<T> j;
    private final long k;
-   public static final ani<avr> a = a("start", ($$0, $$1) -> 0);
-   public static final ani<avr> b = a("dragon", ($$0, $$1) -> 0);
-   public static final ani<csv> c = a("player", Comparator.comparingLong(csv::a));
-   public static final ani<csv> d = a("forced", Comparator.comparingLong(csv::a));
-   public static final ani<csv> e = a("light", Comparator.comparingLong(csv::a));
+   public static final ani<avs> a = a("start", ($$0, $$1) -> 0);
+   public static final ani<avs> b = a("dragon", ($$0, $$1) -> 0);
+   public static final ani<csw> c = a("player", Comparator.comparingLong(csw::a));
+   public static final ani<csw> d = a("forced", Comparator.comparingLong(csw::a));
+   public static final ani<csw> e = a("light", Comparator.comparingLong(csw::a));
    public static final ani<hx> f = a("portal", jb::i, 300);
    public static final ani<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final ani<csv> h = a("unknown", Comparator.comparingLong(csv::a), 1);
+   public static final ani<csw> h = a("unknown", Comparator.comparingLong(csw::a), 1);
 
    public static <T> ani<T> a(String $$0, Comparator<T> $$1) {
       return new ani<>($$0, $$1, 0L);

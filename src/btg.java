@@ -1,57 +1,78 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class btg {
-   private final EnumSet<btg.a> a = EnumSet.noneOf(btg.a.class);
+public class btg extends bth {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final bxy d;
+   @Nullable
+   private bxy e;
+   private final double f;
+   private int g;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
-   }
-
-   public boolean S_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean T_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<btg.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public btg(bxy $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean a() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else {
+         List<? extends bxy> $$0 = this.d.dM().a((Class<? extends bxy>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
+         bxy $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bxy $$3 : $$0) {
+            if ($$3.h() >= 0) {
+               double $$4 = this.d.f($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
+      }
    }
 
-   public EnumSet<btg.a> j() {
-      return this.a;
+   @Override
+   public boolean b() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else if (!this.e.bx()) {
+         return false;
+      } else {
+         double $$0 = this.d.f(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
    }
 
-   protected int a(int $$0) {
-      return this.T_() ? $$0 : b($$0);
+   @Override
+   public void c() {
+      this.g = 0;
    }
 
-   protected static int b(int $$0) {
-      return aun.e($$0, 2);
+   @Override
+   public void d() {
+      this.e = null;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void e() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.N().a(this.e, this.f);
+      }
    }
 }

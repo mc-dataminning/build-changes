@@ -1,287 +1,712 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class edg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "structures";
-   private static final String c = ".nbt";
-   private static final String d = ".snbt";
-   private final Map<ahg, Optional<edf>> e = Maps.newConcurrentMap();
-   private final DataFixer f;
-   private aqh g;
-   private final Path h;
-   private final List<edg.b> i;
-   private final ii<cwp> j;
-   private static final agz k = new agz("structures", ".nbt");
+   public static final String a = "palette";
+   public static final String b = "palettes";
+   public static final String c = "entities";
+   public static final String d = "blocks";
+   public static final String e = "pos";
+   public static final String f = "state";
+   public static final String g = "nbt";
+   public static final String h = "pos";
+   public static final String i = "blockPos";
+   public static final String j = "nbt";
+   public static final String k = "size";
+   private final List<edg.a> l = Lists.newArrayList();
+   private final List<edg.d> m = Lists.newArrayList();
+   private jb n = jb.g;
+   private String o = "?";
 
-   public edg(aqh $$0, egl.c $$1, DataFixer $$2, ii<cwp> $$3) {
-      this.g = $$0;
-      this.f = $$2;
-      this.h = $$1.a(egj.i).normalize();
-      this.j = $$3;
-      Builder<edg.b> $$4 = ImmutableList.builder();
-      $$4.add(new edg.b(this::h, this::d));
-      if (aa.aW) {
-         $$4.add(new edg.b(this::g, this::c));
-      }
-
-      $$4.add(new edg.b(this::f, this::b));
-      this.i = $$4.build();
+   public jb a() {
+      return this.n;
    }
 
-   public edf a(ahg $$0) {
-      Optional<edf> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         return $$1.get();
-      } else {
-         edf $$2 = new edf();
-         this.e.put($$0, Optional.of($$2));
-         return $$2;
-      }
+   public void a(String $$0) {
+      this.o = $$0;
    }
 
-   public Optional<edf> b(ahg $$0) {
-      return this.e.computeIfAbsent($$0, this::e);
+   public String b() {
+      return this.o;
    }
 
-   public Stream<ahg> a() {
-      return this.i.stream().flatMap($$0 -> $$0.b().get()).distinct();
-   }
+   public void a(ctp $$0, hx $$1, jb $$2, boolean $$3, @Nullable cwq $$4) {
+      if ($$2.u() >= 1 && $$2.v() >= 1 && $$2.w() >= 1) {
+         hx $$5 = $$1.a($$2).b(-1, -1, -1);
+         List<edg.c> $$6 = Lists.newArrayList();
+         List<edg.c> $$7 = Lists.newArrayList();
+         List<edg.c> $$8 = Lists.newArrayList();
+         hx $$9 = new hx(Math.min($$1.u(), $$5.u()), Math.min($$1.v(), $$5.v()), Math.min($$1.w(), $$5.w()));
+         hx $$10 = new hx(Math.max($$1.u(), $$5.u()), Math.max($$1.v(), $$5.v()), Math.max($$1.w(), $$5.w()));
+         this.n = $$2;
 
-   private Optional<edf> e(ahg $$0) {
-      for (edg.b $$1 : this.i) {
-         try {
-            Optional<edf> $$2 = $$1.a().apply($$0);
-            if ($$2.isPresent()) {
-               return $$2;
-            }
-         } catch (Exception var5) {
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public void a(aqh $$0) {
-      this.g = $$0;
-      this.e.clear();
-   }
-
-   private Optional<edf> f(ahg $$0) {
-      ahg $$1 = k.a($$0);
-      return this.a(() -> this.g.open($$1), $$1x -> a.error("Couldn't load structure {}", $$0, $$1x));
-   }
-
-   private Stream<ahg> b() {
-      return k.a(this.g).keySet().stream().map(k::b);
-   }
-
-   private Optional<edf> g(ahg $$0) {
-      return this.a($$0, Paths.get(sb.b));
-   }
-
-   private Stream<ahg> c() {
-      return this.a(Paths.get(sb.b), "minecraft", ".snbt");
-   }
-
-   private Optional<edf> h(ahg $$0) {
-      if (!Files.isDirectory(this.h)) {
-         return Optional.empty();
-      } else {
-         Path $$1 = b(this.h, $$0, ".nbt");
-         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> a.error("Couldn't load structure from {}", $$1, $$1x));
-      }
-   }
-
-   private Stream<ahg> d() {
-      if (!Files.isDirectory(this.h)) {
-         return Stream.empty();
-      } else {
-         try {
-            return Files.list(this.h).filter($$0 -> Files.isDirectory($$0)).flatMap($$0 -> this.a($$0));
-         } catch (IOException var2) {
-            return Stream.empty();
-         }
-      }
-   }
-
-   private Stream<ahg> a(Path $$0) {
-      Path $$1 = $$0.resolve("structures");
-      return this.a($$1, $$0.getFileName().toString(), ".nbt");
-   }
-
-   private Stream<ahg> a(Path $$0, String $$1, String $$2) {
-      if (!Files.isDirectory($$0)) {
-         return Stream.empty();
-      } else {
-         int $$3 = $$2.length();
-         Function<String, String> $$4 = $$1x -> $$1x.substring(0, $$1x.length() - $$3);
-
-         try {
-            return Files.walk($$0).filter($$1x -> $$1x.toString().endsWith($$2)).mapMulti(($$3x, $$4x) -> {
-               try {
-                  $$4x.accept(new ahg($$1, $$4.apply(this.a($$0, $$3x))));
-               } catch (z var7x) {
-                  a.error("Invalid location while listing pack contents", var7x);
+         for (hx $$11 : hx.a($$9, $$10)) {
+            hx $$12 = $$11.b($$9);
+            djh $$13 = $$0.a_($$11);
+            if ($$4 == null || !$$13.a($$4)) {
+               dgv $$14 = $$0.c_($$11);
+               edg.c $$15;
+               if ($$14 != null) {
+                  $$15 = new edg.c($$12, $$13, $$14.p());
+               } else {
+                  $$15 = new edg.c($$12, $$13, null);
                }
-            });
-         } catch (IOException var7) {
-            a.error("Failed to list folder contents", var7);
-            return Stream.empty();
+
+               a($$15, $$6, $$7, $$8);
+            }
+         }
+
+         List<edg.c> $$17 = a($$6, $$7, $$8);
+         this.l.clear();
+         this.l.add(new edg.a($$17));
+         if ($$3) {
+            this.a($$0, $$9, $$10);
+         } else {
+            this.m.clear();
          }
       }
    }
 
-   private String a(Path $$0, Path $$1) {
-      return $$0.relativize($$1).toString().replace(File.separator, "/");
+   private static void a(edg.c $$0, List<edg.c> $$1, List<edg.c> $$2, List<edg.c> $$3) {
+      if ($$0.c != null) {
+         $$2.add($$0);
+      } else if (!$$0.b.b().p() && $$0.b.r(cte.a, hx.b)) {
+         $$1.add($$0);
+      } else {
+         $$3.add($$0);
+      }
    }
 
-   private Optional<edf> a(ahg $$0, Path $$1) {
-      if (!Files.isDirectory($$1)) {
-         return Optional.empty();
-      } else {
-         Path $$2 = v.b($$1, $$0.a(), ".snbt");
+   private static List<edg.c> a(List<edg.c> $$0, List<edg.c> $$1, List<edg.c> $$2) {
+      Comparator<edg.c> $$3 = Comparator.<edg.c>comparingInt($$0x -> $$0x.a.v()).thenComparingInt($$0x -> $$0x.a.u()).thenComparingInt($$0x -> $$0x.a.w());
+      $$0.sort($$3);
+      $$2.sort($$3);
+      $$1.sort($$3);
+      List<edg.c> $$4 = Lists.newArrayList();
+      $$4.addAll($$0);
+      $$4.addAll($$2);
+      $$4.addAll($$1);
+      return $$4;
+   }
 
-         try {
-            Optional var6;
-            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
-               String $$4 = IOUtils.toString($$3);
-               var6 = Optional.of(this.a(tc.a($$4)));
+   private void a(ctp $$0, hx $$1, hx $$2) {
+      List<blv> $$3 = $$0.a(blv.class, elo.a($$1, $$2), $$0x -> !($$0x instanceof cfi));
+      this.m.clear();
+
+      for (blv $$4 : $$3) {
+         elt $$5 = new elt($$4.dr() - (double)$$1.u(), $$4.dt() - (double)$$1.v(), $$4.dx() - (double)$$1.w());
+         sn $$6 = new sn();
+         $$4.e($$6);
+         hx $$7;
+         if ($$4 instanceof cbp) {
+            $$7 = ((cbp)$$4).E().b($$1);
+         } else {
+            $$7 = hx.a($$5);
+         }
+
+         this.m.add(new edg.d($$5, $$7, $$6.h()));
+      }
+   }
+
+   public List<edg.c> a(hx $$0, edc $$1, cwq $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   public ObjectArrayList<edg.c> a(hx $$0, edc $$1, cwq $$2, boolean $$3) {
+      ObjectArrayList<edg.c> $$4 = new ObjectArrayList();
+      dyy $$5 = $$1.g();
+      if (this.l.isEmpty()) {
+         return $$4;
+      } else {
+         for (edg.c $$6 : $$1.a(this.l, $$0).a($$2)) {
+            hx $$7 = $$3 ? a($$1, $$6.a).a((jb)$$0) : $$6.a;
+            if ($$5 == null || $$5.b($$7)) {
+               $$4.add(new edg.c($$7, $$6.b.a($$1.d()), $$6.c));
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public hx a(edc $$0, hx $$1, edc $$2, hx $$3) {
+      hx $$4 = a($$0, $$1);
+      hx $$5 = a($$2, $$3);
+      return $$4.b($$5);
+   }
+
+   public static hx a(edc $$0, hx $$1) {
+      return a($$1, $$0.c(), $$0.d(), $$0.e());
+   }
+
+   public boolean a(cue $$0, hx $$1, hx $$2, edc $$3, auv $$4, int $$5) {
+      if (this.l.isEmpty()) {
+         return false;
+      } else {
+         List<edg.c> $$6 = $$3.a(this.l, $$1).a();
+         if ((!$$6.isEmpty() || !$$3.f() && !this.m.isEmpty()) && this.n.u() >= 1 && this.n.v() >= 1 && this.n.w() >= 1) {
+            dyy $$7 = $$3.g();
+            List<hx> $$8 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<hx> $$9 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<Pair<hx, sn>> $$10 = Lists.newArrayListWithCapacity($$6.size());
+            int $$11 = Integer.MAX_VALUE;
+            int $$12 = Integer.MAX_VALUE;
+            int $$13 = Integer.MAX_VALUE;
+            int $$14 = Integer.MIN_VALUE;
+            int $$15 = Integer.MIN_VALUE;
+            int $$16 = Integer.MIN_VALUE;
+
+            for (edg.c $$18 : a($$0, $$1, $$2, $$3, $$6)) {
+               hx $$19 = $$18.a;
+               if ($$7 == null || $$7.b($$19)) {
+                  eer $$20 = $$3.j() ? $$0.b_($$19) : null;
+                  djh $$21 = $$18.b.a($$3.c()).a($$3.d());
+                  if ($$18.c != null) {
+                     dgv $$22 = $$0.c_($$19);
+                     bjs.a_($$22);
+                     $$0.a($$19, cws.hW.o(), 20);
+                  }
+
+                  if ($$0.a($$19, $$21, $$5)) {
+                     $$11 = Math.min($$11, $$19.u());
+                     $$12 = Math.min($$12, $$19.v());
+                     $$13 = Math.min($$13, $$19.w());
+                     $$14 = Math.max($$14, $$19.u());
+                     $$15 = Math.max($$15, $$19.v());
+                     $$16 = Math.max($$16, $$19.w());
+                     $$10.add(Pair.of($$19, $$18.c));
+                     if ($$18.c != null) {
+                        dgv $$23 = $$0.c_($$19);
+                        if ($$23 != null) {
+                           if ($$23 instanceof bki) {
+                              $$18.c.a("LootTableSeed", $$4.g());
+                           }
+
+                           $$23.a($$18.c);
+                        }
+                     }
+
+                     if ($$20 != null) {
+                        if ($$21.u().b()) {
+                           $$9.add($$19);
+                        } else if ($$21.b() instanceof dbg) {
+                           ((dbg)$$21.b()).a($$0, $$19, $$21, $$20);
+                           if (!$$20.b()) {
+                              $$8.add($$19);
+                           }
+                        }
+                     }
+                  }
+               }
             }
 
-            return var6;
-         } catch (NoSuchFileException var9) {
-            return Optional.empty();
-         } catch (CommandSyntaxException | IOException var10) {
-            a.error("Couldn't load structure from {}", $$2, var10);
-            return Optional.empty();
+            boolean $$24 = true;
+            ic[] $$25 = new ic[]{ic.b, ic.c, ic.f, ic.d, ic.e};
+
+            while ($$24 && !$$8.isEmpty()) {
+               $$24 = false;
+               Iterator<hx> $$26 = $$8.iterator();
+
+               while ($$26.hasNext()) {
+                  hx $$27 = $$26.next();
+                  eer $$28 = $$0.b_($$27);
+
+                  for (int $$29 = 0; $$29 < $$25.length && !$$28.b(); $$29++) {
+                     hx $$30 = $$27.a($$25[$$29]);
+                     eer $$31 = $$0.b_($$30);
+                     if ($$31.b() && !$$9.contains($$30)) {
+                        $$28 = $$31;
+                     }
+                  }
+
+                  if ($$28.b()) {
+                     djh $$32 = $$0.a_($$27);
+                     cwq $$33 = $$32.b();
+                     if ($$33 instanceof dbg) {
+                        ((dbg)$$33).a($$0, $$27, $$32, $$28);
+                        $$24 = true;
+                        $$26.remove();
+                     }
+                  }
+               }
+            }
+
+            if ($$11 <= $$14) {
+               if (!$$3.h()) {
+                  emc $$34 = new elw($$14 - $$11 + 1, $$15 - $$12 + 1, $$16 - $$13 + 1);
+                  int $$35 = $$11;
+                  int $$36 = $$12;
+                  int $$37 = $$13;
+
+                  for (Pair<hx, sn> $$38 : $$10) {
+                     hx $$39 = (hx)$$38.getFirst();
+                     $$34.c($$39.u() - $$35, $$39.v() - $$36, $$39.w() - $$37);
+                  }
+
+                  a($$0, $$5, $$34, $$35, $$36, $$37);
+               }
+
+               for (Pair<hx, sn> $$40 : $$10) {
+                  hx $$41 = (hx)$$40.getFirst();
+                  if (!$$3.h()) {
+                     djh $$42 = $$0.a_($$41);
+                     djh $$43 = cwq.b($$42, $$0, $$41);
+                     if ($$42 != $$43) {
+                        $$0.a($$41, $$43, $$5 & -2 | 16);
+                     }
+
+                     $$0.b($$41, $$43.b());
+                  }
+
+                  if ($$40.getSecond() != null) {
+                     dgv $$44 = $$0.c_($$41);
+                     if ($$44 != null) {
+                        $$44.e();
+                     }
+                  }
+               }
+            }
+
+            if (!$$3.f()) {
+               this.a($$0, $$1, $$3.c(), $$3.d(), $$3.e(), $$7, $$3.k());
+            }
+
+            return true;
+         } else {
+            return false;
          }
       }
    }
 
-   private Optional<edf> a(edg.a $$0, Consumer<Throwable> $$1) {
+   public static void a(ctq $$0, int $$1, emc $$2, int $$3, int $$4, int $$5) {
+      $$2.a(($$5x, $$6, $$7, $$8) -> {
+         hx $$9 = new hx($$3 + $$6, $$4 + $$7, $$5 + $$8);
+         hx $$10 = $$9.a($$5x);
+         djh $$11 = $$0.a_($$9);
+         djh $$12 = $$0.a_($$10);
+         djh $$13 = $$11.a($$5x, $$12, $$0, $$9, $$10);
+         if ($$11 != $$13) {
+            $$0.a($$9, $$13, $$1 & -2);
+         }
+
+         djh $$14 = $$12.a($$5x.g(), $$13, $$0, $$10, $$9);
+         if ($$12 != $$14) {
+            $$0.a($$10, $$14, $$1 & -2);
+         }
+      });
+   }
+
+   public static List<edg.c> a(cue $$0, hx $$1, hx $$2, edc $$3, List<edg.c> $$4) {
+      List<edg.c> $$5 = new ArrayList<>();
+      List<edg.c> $$6 = new ArrayList<>();
+
+      for (edg.c $$7 : $$4) {
+         hx $$8 = a($$3, $$7.a).a((jb)$$1);
+         edg.c $$9 = new edg.c($$8, $$7.b, $$7.c != null ? $$7.c.h() : null);
+         Iterator<edd> $$10 = $$3.i().iterator();
+
+         while ($$9 != null && $$10.hasNext()) {
+            $$9 = $$10.next().a($$0, $$1, $$2, $$7, $$9, $$3);
+         }
+
+         if ($$9 != null) {
+            $$6.add($$9);
+            $$5.add($$7);
+         }
+      }
+
+      for (edd $$11 : $$3.i()) {
+         $$6 = $$11.a($$0, $$1, $$2, $$5, $$6, $$3);
+      }
+
+      return $$6;
+   }
+
+   private void a(cue $$0, hx $$1, dbm $$2, ddc $$3, hx $$4, @Nullable dyy $$5, boolean $$6) {
+      for (edg.d $$7 : this.m) {
+         hx $$8 = a($$7.b, $$2, $$3, $$4).a((jb)$$1);
+         if ($$5 == null || $$5.b($$8)) {
+            sn $$9 = $$7.c.h();
+            elt $$10 = a($$7.a, $$2, $$3, $$4);
+            elt $$11 = $$10.b((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            st $$12 = new st();
+            $$12.add(so.a($$11.c));
+            $$12.add(so.a($$11.d));
+            $$12.add(so.a($$11.e));
+            $$9.a("Pos", $$12);
+            $$9.r("UUID");
+            a($$0, $$9).ifPresent($$6x -> {
+               float $$7x = $$6x.a($$3);
+               $$7x += $$6x.a($$2) - $$6x.dC();
+               $$6x.b($$11.c, $$11.d, $$11.e, $$7x, $$6x.dE());
+               if ($$6 && $$6x instanceof bmn) {
+                  ((bmn)$$6x).a($$0, $$0.d_(hx.a($$11)), bmp.d, null, $$9);
+               }
+
+               $$0.a_($$6x);
+            });
+         }
+      }
+   }
+
+   private static Optional<blv> a(cue $$0, sn $$1) {
       try {
-         Optional var4;
-         try (InputStream $$2 = $$0.open()) {
-            var4 = Optional.of(this.a($$2));
-         }
-
-         return var4;
-      } catch (FileNotFoundException var8) {
-         return Optional.empty();
-      } catch (Throwable var9) {
-         $$1.accept(var9);
+         return blz.a($$1, $$0.E());
+      } catch (Exception var3) {
          return Optional.empty();
       }
    }
 
-   private edf a(InputStream $$0) throws IOException {
-      sn $$1 = ta.a($$0, sw.a());
-      return this.a($$1);
+   public jb a(ddc $$0) {
+      switch ($$0) {
+         case d:
+         case b:
+            return new jb(this.n.w(), this.n.v(), this.n.u());
+         default:
+            return this.n;
+      }
    }
 
-   public edf a(sn $$0) {
-      edf $$1 = new edf();
-      int $$2 = tc.b($$0, 500);
-      $$1.a(this.j, avv.f.a(this.f, $$0, $$2));
+   public static hx a(hx $$0, dbm $$1, ddc $$2, hx $$3) {
+      int $$4 = $$0.u();
+      int $$5 = $$0.v();
+      int $$6 = $$0.w();
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = -$$6;
+            break;
+         case c:
+            $$4 = -$$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new hx($$8 - $$9 + $$6, $$5, $$8 + $$9 - $$4);
+         case b:
+            return new hx($$8 + $$9 - $$6, $$5, $$9 - $$8 + $$4);
+         case c:
+            return new hx($$8 + $$8 - $$4, $$5, $$9 + $$9 - $$6);
+         default:
+            return $$7 ? new hx($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public static elt a(elt $$0, dbm $$1, ddc $$2, hx $$3) {
+      double $$4 = $$0.c;
+      double $$5 = $$0.d;
+      double $$6 = $$0.e;
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = 1.0 - $$6;
+            break;
+         case c:
+            $$4 = 1.0 - $$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new elt((double)($$8 - $$9) + $$6, $$5, (double)($$8 + $$9 + 1) - $$4);
+         case b:
+            return new elt((double)($$8 + $$9 + 1) - $$6, $$5, (double)($$9 - $$8) + $$4);
+         case c:
+            return new elt((double)($$8 + $$8 + 1) - $$4, $$5, (double)($$9 + $$9 + 1) - $$6);
+         default:
+            return $$7 ? new elt($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public hx a(hx $$0, dbm $$1, ddc $$2) {
+      return a($$0, $$1, $$2, this.a().u(), this.a().w());
+   }
+
+   public static hx a(hx $$0, dbm $$1, ddc $$2, int $$3, int $$4) {
+      $$3--;
+      $$4--;
+      int $$5 = $$1 == dbm.c ? $$3 : 0;
+      int $$6 = $$1 == dbm.b ? $$4 : 0;
+      hx $$7 = $$0;
+      switch ($$2) {
+         case d:
+            $$7 = $$0.b($$6, 0, $$3 - $$5);
+            break;
+         case b:
+            $$7 = $$0.b($$4 - $$6, 0, $$5);
+            break;
+         case c:
+            $$7 = $$0.b($$3 - $$5, 0, $$4 - $$6);
+            break;
+         case a:
+            $$7 = $$0.b($$5, 0, $$6);
+      }
+
+      return $$7;
+   }
+
+   public dyy b(edc $$0, hx $$1) {
+      return this.a($$1, $$0.d(), $$0.e(), $$0.c());
+   }
+
+   public dyy a(hx $$0, ddc $$1, hx $$2, dbm $$3) {
+      return a($$0, $$1, $$2, $$3, this.n);
+   }
+
+   @VisibleForTesting
+   protected static dyy a(hx $$0, ddc $$1, hx $$2, dbm $$3, jb $$4) {
+      jb $$5 = $$4.c(-1, -1, -1);
+      hx $$6 = a(hx.b, $$3, $$1, $$2);
+      hx $$7 = a(hx.b.a($$5), $$3, $$1, $$2);
+      return dyy.a($$6, $$7).a((jb)$$0);
+   }
+
+   public sn a(sn $$0) {
+      if (this.l.isEmpty()) {
+         $$0.a("blocks", new st());
+         $$0.a("palette", new st());
+      } else {
+         List<edg.b> $$1 = Lists.newArrayList();
+         edg.b $$2 = new edg.b();
+         $$1.add($$2);
+
+         for (int $$3 = 1; $$3 < this.l.size(); $$3++) {
+            $$1.add(new edg.b());
+         }
+
+         st $$4 = new st();
+         List<edg.c> $$5 = this.l.get(0).a();
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            edg.c $$7 = $$5.get($$6);
+            sn $$8 = new sn();
+            $$8.a("pos", this.a($$7.a.u(), $$7.a.v(), $$7.a.w()));
+            int $$9 = $$2.a($$7.b);
+            $$8.a("state", $$9);
+            if ($$7.c != null) {
+               $$8.a("nbt", $$7.c);
+            }
+
+            $$4.add($$8);
+
+            for (int $$10 = 1; $$10 < this.l.size(); $$10++) {
+               edg.b $$11 = $$1.get($$10);
+               $$11.a(this.l.get($$10).a().get($$6).b, $$9);
+            }
+         }
+
+         $$0.a("blocks", $$4);
+         if ($$1.size() == 1) {
+            st $$12 = new st();
+
+            for (djh $$13 : $$2) {
+               $$12.add(tc.a($$13));
+            }
+
+            $$0.a("palette", $$12);
+         } else {
+            st $$14 = new st();
+
+            for (edg.b $$15 : $$1) {
+               st $$16 = new st();
+
+               for (djh $$17 : $$15) {
+                  $$16.add(tc.a($$17));
+               }
+
+               $$14.add($$16);
+            }
+
+            $$0.a("palettes", $$14);
+         }
+      }
+
+      st $$18 = new st();
+
+      for (edg.d $$19 : this.m) {
+         sn $$20 = new sn();
+         $$20.a("pos", this.a($$19.a.c, $$19.a.d, $$19.a.e));
+         $$20.a("blockPos", this.a($$19.b.u(), $$19.b.v(), $$19.b.w()));
+         if ($$19.c != null) {
+            $$20.a("nbt", $$19.c);
+         }
+
+         $$18.add($$20);
+      }
+
+      $$0.a("entities", $$18);
+      $$0.a("size", this.a(this.n.u(), this.n.v(), this.n.w()));
+      return tc.g($$0);
+   }
+
+   public void a(ii<cwq> $$0, sn $$1) {
+      this.l.clear();
+      this.m.clear();
+      st $$2 = $$1.c("size", 3);
+      this.n = new jb($$2.e(0), $$2.e(1), $$2.e(2));
+      st $$3 = $$1.c("blocks", 10);
+      if ($$1.b("palettes", 9)) {
+         st $$4 = $$1.c("palettes", 9);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            this.a($$0, $$4.b($$5), $$3);
+         }
+      } else {
+         this.a($$0, $$1.c("palette", 10), $$3);
+      }
+
+      st $$6 = $$1.c("entities", 10);
+
+      for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+         sn $$8 = $$6.a($$7);
+         st $$9 = $$8.c("pos", 6);
+         elt $$10 = new elt($$9.h(0), $$9.h(1), $$9.h(2));
+         st $$11 = $$8.c("blockPos", 3);
+         hx $$12 = new hx($$11.e(0), $$11.e(1), $$11.e(2));
+         if ($$8.e("nbt")) {
+            sn $$13 = $$8.p("nbt");
+            this.m.add(new edg.d($$10, $$12, $$13));
+         }
+      }
+   }
+
+   private void a(ii<cwq> $$0, st $$1, st $$2) {
+      edg.b $$3 = new edg.b();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         $$3.a(tc.a($$0, $$1.a($$4)), $$4);
+      }
+
+      List<edg.c> $$5 = Lists.newArrayList();
+      List<edg.c> $$6 = Lists.newArrayList();
+      List<edg.c> $$7 = Lists.newArrayList();
+
+      for (int $$8 = 0; $$8 < $$2.size(); $$8++) {
+         sn $$9 = $$2.a($$8);
+         st $$10 = $$9.c("pos", 3);
+         hx $$11 = new hx($$10.e(0), $$10.e(1), $$10.e(2));
+         djh $$12 = $$3.a($$9.h("state"));
+         sn $$13;
+         if ($$9.e("nbt")) {
+            $$13 = $$9.p("nbt");
+         } else {
+            $$13 = null;
+         }
+
+         edg.c $$15 = new edg.c($$11, $$12, $$13);
+         a($$15, $$5, $$6, $$7);
+      }
+
+      List<edg.c> $$16 = a($$5, $$6, $$7);
+      this.l.add(new edg.a($$16));
+   }
+
+   private st a(int... $$0) {
+      st $$1 = new st();
+
+      for (int $$2 : $$0) {
+         $$1.add(ss.a($$2));
+      }
+
       return $$1;
    }
 
-   public boolean c(ahg $$0) {
-      Optional<edf> $$1 = this.e.get($$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         edf $$2 = $$1.get();
-         Path $$3 = b(this.h, $$0, ".nbt");
-         Path $$4 = $$3.getParent();
-         if ($$4 == null) {
-            return false;
-         } else {
-            try {
-               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
-            } catch (IOException var13) {
-               a.error("Failed to create parent directory: {}", $$4);
-               return false;
-            }
+   private st a(double... $$0) {
+      st $$1 = new st();
 
-            sn $$6 = $$2.a(new sn());
+      for (double $$2 : $$0) {
+         $$1.add(so.a($$2));
+      }
 
-            try {
-               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
-                  ta.a($$6, $$7);
-               }
+      return $$1;
+   }
 
-               return true;
-            } catch (Throwable var12) {
-               return false;
-            }
+   public static final class a {
+      private final List<edg.c> a;
+      private final Map<cwq, List<edg.c>> b = Maps.newHashMap();
+
+      a(List<edg.c> $$0) {
+         this.a = $$0;
+      }
+
+      public List<edg.c> a() {
+         return this.a;
+      }
+
+      public List<edg.c> a(cwq $$0) {
+         return this.b.computeIfAbsent($$0, $$0x -> this.a.stream().filter($$1 -> $$1.b.a($$0x)).collect(Collectors.toList()));
+      }
+   }
+
+   static class b implements Iterable<djh> {
+      public static final djh a = cws.a.o();
+      private final in<djh> b = new in<>(16);
+      private int c;
+
+      public int a(djh $$0) {
+         int $$1 = this.b.a($$0);
+         if ($$1 == -1) {
+            $$1 = this.c++;
+            this.b.a($$0, $$1);
          }
+
+         return $$1;
+      }
+
+      @Nullable
+      public djh a(int $$0) {
+         djh $$1 = this.b.a($$0);
+         return $$1 == null ? a : $$1;
+      }
+
+      @Override
+      public Iterator<djh> iterator() {
+         return this.b.iterator();
+      }
+
+      public void a(djh $$0, int $$1) {
+         this.b.a($$0, $$1);
       }
    }
 
-   public Path a(ahg $$0, String $$1) {
-      return a(this.h, $$0, $$1);
-   }
+   public static record c(hx a, djh b, @Nullable sn c) {
 
-   public static Path a(Path $$0, ahg $$1, String $$2) {
-      try {
-         Path $$3 = $$0.resolve($$1.b());
-         Path $$4 = $$3.resolve("structures");
-         return v.b($$4, $$1.a(), $$2);
-      } catch (InvalidPathException var5) {
-         throw new z("Invalid resource path: " + $$1, var5);
+      @Override
+      public String toString() {
+         return String.format(Locale.ROOT, "<StructureBlockInfo | %s | %s | %s>", this.a, this.b, this.c);
       }
    }
 
-   private static Path b(Path $$0, ahg $$1, String $$2) {
-      if ($$1.a().contains("//")) {
-         throw new z("Invalid resource path: " + $$1);
-      } else {
-         Path $$3 = a($$0, $$1, $$2);
-         if ($$3.startsWith($$0) && v.a($$3) && v.b($$3)) {
-            return $$3;
-         } else {
-            throw new z("Invalid resource path: " + $$3);
-         }
+   public static class d {
+      public final elt a;
+      public final hx b;
+      public final sn c;
+
+      public d(elt $$0, hx $$1, sn $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
-   }
-
-   public void d(ahg $$0) {
-      this.e.remove($$0);
-   }
-
-   @FunctionalInterface
-   interface a {
-      InputStream open() throws IOException;
-   }
-
-   static record b(Function<ahg, Optional<edf>> a, Supplier<Stream<ahg>> b) {
    }
 }

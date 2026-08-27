@@ -1,48 +1,79 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class ggw implements ggm {
-   protected final List<fud> a;
-   protected final Map<ic, List<fud>> b;
+public class ggw implements ggn {
+   private final List<Pair<Predicate<djh>, ggn>> g;
+   protected final boolean a;
+   protected final boolean b;
    protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gem f;
-   protected final fup g;
-   protected final fun h;
+   protected final gen d;
+   protected final fuq e;
+   protected final fuo f;
+   private final Map<djh, BitSet> h = new Reference2ObjectOpenHashMap();
 
-   public ggw(List<fud> $$0, Map<ic, List<fud>> $$1, boolean $$2, boolean $$3, boolean $$4, gem $$5, fup $$6, fun $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public ggw(List<Pair<Predicate<djh>, ggn>> $$0) {
+      this.g = $$0;
+      ggn $$1 = (ggn)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
    }
 
    @Override
-   public List<fud> a(@Nullable djg $$0, @Nullable ic $$1, auu $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
+   public List<fue> a(@Nullable djh $$0, @Nullable ic $$1, auv $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<djh>, ggn> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.h.put($$0, $$3);
+         }
+
+         List<fue> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
+
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((ggn)this.g.get($$8).getRight()).a($$0, $$1, auv.a($$7)));
+            }
+         }
+
+         return $$6;
+      }
    }
 
    @Override
    public boolean a() {
-      return this.c;
+      return this.a;
    }
 
    @Override
    public boolean b() {
-      return this.d;
+      return this.b;
    }
 
    @Override
    public boolean c() {
-      return this.e;
+      return this.c;
    }
 
    @Override
@@ -51,71 +82,29 @@ public class ggw implements ggm {
    }
 
    @Override
-   public gem e() {
+   public gen e() {
+      return this.d;
+   }
+
+   @Override
+   public fuq f() {
+      return this.e;
+   }
+
+   @Override
+   public fuo g() {
       return this.f;
    }
 
-   @Override
-   public fup f() {
-      return this.g;
-   }
-
-   @Override
-   public fun g() {
-      return this.h;
-   }
-
    public static class a {
-      private final List<fud> a = Lists.newArrayList();
-      private final Map<ic, List<fud>> b = Maps.newEnumMap(ic.class);
-      private final fun c;
-      private final boolean d;
-      private gem e;
-      private final boolean f;
-      private final boolean g;
-      private final fup h;
+      private final List<Pair<Predicate<djh>, ggn>> a = Lists.newArrayList();
 
-      public a(fui $$0, fun $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      public void a(Predicate<djh> $$0, ggn $$1) {
+         this.a.add(Pair.of($$0, $$1));
       }
 
-      private a(boolean $$0, boolean $$1, boolean $$2, fup $$3, fun $$4) {
-         for (ic $$5 : ic.values()) {
-            this.b.put($$5, Lists.newArrayList());
-         }
-
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-      }
-
-      public ggw.a a(ic $$0, fud $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public ggw.a a(fud $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public ggw.a a(gem $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ggw.a a() {
-         return this;
-      }
-
-      public ggm b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new ggw(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
-         }
+      public ggn a() {
+         return new ggw(this.a);
       }
    }
 }

@@ -1,42 +1,120 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-public class ckk extends cms {
-   public ckk(cms.a $$0) {
-      super($$0);
+public enum ckk implements avk, ckj {
+   a("leather", 5, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 1);
+      $$0.put(cki.a.c, 2);
+      $$0.put(cki.a.b, 3);
+      $$0.put(cki.a.a, 1);
+   }), 15, ars.ai, 0.0F, 0.0F, () -> cpz.a(cnb.qA)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 1);
+      $$0.put(cki.a.c, 4);
+      $$0.put(cki.a.b, 5);
+      $$0.put(cki.a.a, 2);
+   }), 12, ars.ac, 0.0F, 0.0F, () -> cpz.a(cnb.oB)),
+   c("iron", 15, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 2);
+      $$0.put(cki.a.c, 5);
+      $$0.put(cki.a.b, 6);
+      $$0.put(cki.a.a, 2);
+   }), 9, ars.ah, 0.0F, 0.0F, () -> cpz.a(cnb.oB)),
+   d("gold", 7, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 1);
+      $$0.put(cki.a.c, 3);
+      $$0.put(cki.a.b, 5);
+      $$0.put(cki.a.a, 2);
+   }), 25, ars.ag, 0.0F, 0.0F, () -> cpz.a(cnb.oF)),
+   e("diamond", 33, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 3);
+      $$0.put(cki.a.c, 6);
+      $$0.put(cki.a.b, 8);
+      $$0.put(cki.a.a, 3);
+   }), 10, ars.ad, 2.0F, 0.0F, () -> cpz.a(cnb.ov)),
+   f("turtle", 25, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 2);
+      $$0.put(cki.a.c, 5);
+      $$0.put(cki.a.b, 6);
+      $$0.put(cki.a.a, 2);
+   }), 9, ars.ak, 0.0F, 0.0F, () -> cpz.a(cnb.oo)),
+   g("netherite", 37, ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 3);
+      $$0.put(cki.a.c, 6);
+      $$0.put(cki.a.b, 8);
+      $$0.put(cki.a.a, 3);
+   }), 15, ars.aj, 3.0F, 0.1F, () -> cpz.a(cnb.oG));
+
+   public static final Codec<ckk> h = avk.a(ckk::values);
+   private static final EnumMap<cki.a, Integer> i = ac.a(new EnumMap<>(cki.a.class), $$0 -> {
+      $$0.put(cki.a.d, 13);
+      $$0.put(cki.a.c, 15);
+      $$0.put(cki.a.b, 16);
+      $$0.put(cki.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cki.a, Integer> l;
+   private final int m;
+   private final arr n;
+   private final float o;
+   private final float p;
+   private final auj<cpz> q;
+
+   private ckk(String $$0, int $$1, EnumMap<cki.a, Integer> $$2, int $$3, arr $$4, float $$5, float $$6, Supplier<cpz> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new auj<>($$7);
    }
 
    @Override
-   public bka a(cpi $$0) {
-      ic $$1 = $$0.k();
-      if ($$1 == ic.a) {
-         return bka.e;
-      } else {
-         cto $$2 = $$0.q();
-         cpg $$3 = new cpg($$0);
-         hx $$4 = $$3.a();
-         cmx $$5 = $$0.n();
-         els $$6 = els.c($$4);
-         eln $$7 = bly.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof and $$8) {
-               Consumer<cbj> $$9 = bly.a($$8, $$5, $$0.o());
-               cbj $$10 = bly.d.b($$8, $$5.v(), $$9, $$4, bmo.m, true, true);
-               if ($$10 == null) {
-                  return bka.e;
-               }
+   public int a(cki.a $$0) {
+      return i.get($$0) * this.k;
+   }
 
-               float $$11 = (float)aun.d((aun.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), arr.ao, ars.e, 0.75F, 0.8F);
-               $$10.a(dnq.t, $$0.o());
-            }
+   @Override
+   public int b(cki.a $$0) {
+      return this.l.get($$0);
+   }
 
-            $$5.h(1);
-            return bka.a($$2.B);
-         } else {
-            return bka.e;
-         }
-      }
+   @Override
+   public int a() {
+      return this.m;
+   }
+
+   @Override
+   public arr b() {
+      return this.n;
+   }
+
+   @Override
+   public cpz d() {
+      return this.q.a();
+   }
+
+   @Override
+   public String e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.o;
+   }
+
+   @Override
+   public float g() {
+      return this.p;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
    }
 }

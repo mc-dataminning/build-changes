@@ -36,19 +36,19 @@ public class ajf {
       );
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, ih<cri> $$2, int $$3) throws CommandSyntaxException {
-      cri $$4 = $$2.a();
+   private static int a(ds $$0, Collection<? extends blv> $$1, ih<crj> $$2, int $$3) throws CommandSyntaxException {
+      crj $$4 = $$2.a();
       if ($$3 > $$4.a()) {
          throw d.create($$3, $$4.a());
       } else {
          int $$5 = 0;
 
-         for (blu $$6 : $$1) {
-            if ($$6 instanceof bmk) {
-               bmk $$7 = (bmk)$$6;
-               cmx $$8 = $$7.eT();
+         for (blv $$6 : $$1) {
+            if ($$6 instanceof bml) {
+               bml $$7 = (bml)$$6;
+               cmy $$8 = $$7.eT();
                if (!$$8.b()) {
-                  if ($$4.a($$8) && crk.a(crk.a($$8).keySet(), $$4)) {
+                  if ($$4.a($$8) && crl.a(crl.a($$8).keySet(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

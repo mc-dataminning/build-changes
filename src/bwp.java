@@ -1,42 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bwp extends bwr<ceu> {
-   private static final int a = 40;
-
-   public bwp() {
-      super(40);
-   }
-
-   protected void a(and $$0, ceu $$1) {
-      ahf<cto> $$2 = $$0.ae();
-      hx $$3 = $$1.dm();
-      List<ig> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hx $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ig.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bnk<?> $$10 = $$1.dO();
-      if (!$$4.isEmpty()) {
-         $$10.a(bvm.f, $$4);
-      } else {
-         $$10.b(bvm.f);
-      }
+public class bwp extends bws<bml> {
+   @Override
+   public Set<bvn<?>> a() {
+      return ImmutableSet.of(bvn.j, bvn.k, bvn.l);
    }
 
    @Override
-   public Set<bvm<?>> a() {
-      return ImmutableSet.of(bvm.f);
+   protected void a(and $$0, bml $$1) {
+      List<cfi> $$2 = $$0.x().stream().filter(bly.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
+      bnl<?> $$3 = $$1.dO();
+      $$3.a(bvn.j, $$2);
+      List<cfi> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(bvn.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cfi> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(bvn.l, $$5);
    }
 }

@@ -1,171 +1,88 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dcd extends cyx implements cws {
-   public static final MapCodec<dcd> c = b(dcd::new);
-   public static final dkg d = djw.at;
-   public static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 1;
-   private static final eml h = cwp.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
-   private static final eml i = cwp.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
-   private static final eml j = cwp.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
-   private static final eml k = cwp.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
-   private static final eml[] l = new eml[]{cwp.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
-   private static final eml[] m = new eml[]{j, cwp.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
+public abstract class dcd extends cwq {
+   private static final ic[] a = ic.values();
+   public static final djy b = djx.L;
+   public static final djy c = djx.M;
+   public static final djy d = djx.N;
+   public static final djy e = djx.O;
+   public static final djy f = djx.J;
+   public static final djy g = djx.K;
+   public static final Map<ic, djy> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ic.class), $$0 -> {
+      $$0.put(ic.c, b);
+      $$0.put(ic.f, c);
+      $$0.put(ic.d, d);
+      $$0.put(ic.e, e);
+      $$0.put(ic.b, f);
+      $$0.put(ic.a, g);
+   }));
+   protected final emm[] i;
 
-   @Override
-   public MapCodec<dcd> a() {
-      return c;
-   }
-
-   public dcd(djf.d $$0) {
-      super($$0);
-   }
-
-   @Nullable
-   @Override
-   public djg a(cpg $$0) {
-      return this.o();
+   protected dcd(float $$0, djg.d $$1) {
+      super($$1);
+      this.i = this.a($$0);
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return $$0.c(b) == dkc.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
-   }
+   protected abstract MapCodec<? extends dcd> a();
 
-   @Override
-   public eml b(djg $$0, csu $$1, hx $$2, elx $$3) {
-      if ($$0.c(d) == 0) {
-         return j;
-      } else {
-         return $$0.c(b) == dkc.b ? k : super.b($$0, $$1, $$2, $$3);
-      }
-   }
+   private emm[] a(float $$0) {
+      float $$1 = 0.5F - $$0;
+      float $$2 = 0.5F + $$0;
+      emm $$3 = cwq.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
+      emm[] $$4 = new emm[a.length];
 
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if (b($$0.c(d))) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$0.a($$3, $$4) ? $$0 : cwr.a.o();
-      }
-   }
-
-   @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return h($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean b(djg $$0, csu $$1, hx $$2) {
-      return $$0.a(cwr.cC);
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(d);
-      super.a($$0);
-   }
-
-   @Override
-   public void a(djg $$0, cto $$1, hx $$2, blu $$3) {
-      if ($$3 instanceof cct && $$1.Z().b(ctk.c)) {
-         $$1.a($$2, true, $$3);
+      for (int $$5 = 0; $$5 < a.length; $$5++) {
+         ic $$6 = a[$$5];
+         $$4[$$5] = emj.a(
+            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
+         );
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      emm[] $$7 = new emm[64];
+
+      for (int $$8 = 0; $$8 < 64; $$8++) {
+         emm $$9 = $$3;
+
+         for (int $$10 = 0; $$10 < a.length; $$10++) {
+            if (($$8 & 1 << $$10) != 0) {
+               $$9 = emj.a($$9, $$4[$$10]);
+            }
+         }
+
+         $$7[$$8] = $$9;
+      }
+
+      return $$7;
    }
 
    @Override
-   public boolean a(djg $$0, cpg $$1) {
+   public boolean a_(djh $$0, csv $$1, hx $$2) {
       return false;
    }
 
    @Override
-   public void a(cto $$0, hx $$1, djg $$2, bmk $$3, cmx $$4) {
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return this.i[this.h($$0)];
    }
 
-   @Override
-   public boolean e_(djg $$0) {
-      return $$0.c(b) == dkc.b && !this.n($$0);
-   }
+   protected int h(djh $$0) {
+      int $$1 = 0;
 
-   @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      float $$4 = cyk.a(this, $$1, $$2);
-      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
-      if ($$5) {
-         this.a($$1, $$0, $$2, 1);
-      }
-   }
-
-   private void a(and $$0, djg $$1, hx $$2, int $$3) {
-      int $$4 = Math.min($$1.c(d) + $$3, 4);
-      if (this.a($$0, $$2, $$1, $$4)) {
-         djg $$5 = $$1.a(d, Integer.valueOf($$4));
-         $$0.a($$2, $$5, 2);
-         if (b($$4)) {
-            $$0.a($$2.c(), $$5.a(b, dkc.a), 3);
+      for (int $$2 = 0; $$2 < a.length; $$2++) {
+         if ($$0.c(h.get(a[$$2]))) {
+            $$1 |= 1 << $$2;
          }
       }
-   }
 
-   private static boolean a(ctr $$0, hx $$1) {
-      djg $$2 = $$0.a_($$1);
-      return $$2.i() || $$2.a(cwr.kB);
-   }
-
-   private static boolean b(ctr $$0, hx $$1) {
-      return cyk.a($$0, $$1);
-   }
-
-   private static boolean h(djg $$0) {
-      return $$0.a(cwr.kB) && $$0.c(b) == dkc.b;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 >= 3;
-   }
-
-   private boolean a(ctr $$0, hx $$1, djg $$2, int $$3) {
-      return !this.n($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.c()));
-   }
-
-   private boolean n(djg $$0) {
-      return $$0.c(d) >= 4;
-   }
-
-   @Nullable
-   private dcd.a d(ctr $$0, hx $$1, djg $$2) {
-      if (h($$2)) {
-         return new dcd.a($$1, $$2);
-      } else {
-         hx $$3 = $$1.d();
-         djg $$4 = $$0.a_($$3);
-         return h($$4) ? new dcd.a($$3, $$4) : null;
-      }
-   }
-
-   @Override
-   public boolean b(ctr $$0, hx $$1, djg $$2) {
-      dcd.a $$3 = this.d($$0, $$1, $$2);
-      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
-   }
-
-   @Override
-   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
-      dcd.a $$4 = this.d($$0, $$2, $$3);
-      if ($$4 != null) {
-         this.a($$0, $$4.b, $$4.a, 1);
-      }
-   }
-
-   static record a(hx a, djg b) {
+      return $$1;
    }
 }

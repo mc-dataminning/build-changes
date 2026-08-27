@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record duk(int b, int c, int d, ih<dyj> e) implements dtx {
+public class duk implements dty {
    public static final Codec<duk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atv.j.fieldOf("tries").orElse(128).forGetter(duk::a),
-               atv.i.fieldOf("xz_spread").orElse(7).forGetter(duk::b),
-               atv.i.fieldOf("y_spread").orElse(3).forGetter(duk::c),
-               dyj.b.fieldOf("feature").forGetter(duk::d)
-            )
-            .apply($$0, duk::new)
+      $$0 -> $$0.apply2(duk::new, dto.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dyk.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<dto> b;
+   public final ih<dyk> c;
 
-   public int a() {
-      return this.b;
+   public duk(List<dto> $$0, ih<dyk> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public ih<dyj> d() {
-      return this.e;
+   @Override
+   public Stream<drh<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

@@ -1,120 +1,133 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class efi extends efe {
-   private final boolean k;
-   private final Long2ObjectMap<efb> l = new Long2ObjectOpenHashMap();
+public class efi {
+   private static final float a = 1.5F;
+   private final efe[] b = new efe[32];
+   private final int c;
+   private final eff d;
+   private static final boolean e = false;
+   private final efb f = new efb();
 
-   public efi(boolean $$0) {
-      this.k = $$0;
+   public efi(eff $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a(cub $$0, bmm $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   @Nullable
+   public efg a(cuc $$0, bmn $$1, Set<hx> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      efe $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<efk, hx> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         efg $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
-   }
+   @Nullable
+   private efg a(bgs $$0, efe $$1, Map<efk, hx> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bhv.a);
+      Set<efk> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<efe> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<efk> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
 
-   @Override
-   public efd a() {
-      return this.b(aun.a(this.b.cH().a), aun.a(this.b.cH().b + 0.5), aun.a(this.b.cH().c));
-   }
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
 
-   @Override
-   public efj a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(aun.a($$0), aun.a($$1), aun.a($$2)));
-   }
+         efe $$11 = this.f.c();
+         $$11.i = true;
 
-   @Override
-   public int a(efd[] $$0, efd $$1) {
-      int $$2 = 0;
-      Map<ic, efd> $$3 = Maps.newEnumMap(ic.class);
+         for (efk $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
 
-      for (ic $$4 : ic.values()) {
-         efd $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.b($$5)) {
-            $$0[$$2++] = $$5;
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               efe $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
          }
       }
 
-      for (ic $$6 : ic.c.a) {
-         ic $$7 = $$6.h();
-         efd $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
-            $$0[$$2++] = $$8;
-         }
+      Optional<efg> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(efg::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(efg::m).thenComparingInt(efg::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
+   }
+
+   protected float a(efe $$0, efe $$1) {
+      return $$0.a($$1);
+   }
+
+   private float a(efe $$0, Set<efk> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (efk $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
 
       return $$2;
    }
 
-   protected boolean b(@Nullable efd $$0) {
-      return $$0 != null && !$$0.i;
-   }
+   private efg a(efe $$0, hx $$1, boolean $$2) {
+      List<efe> $$3 = Lists.newArrayList();
+      efe $$4 = $$0;
+      $$3.add(0, $$0);
 
-   protected boolean a(@Nullable efd $$0, @Nullable efd $$1, @Nullable efd $$2) {
-      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
-   }
-
-   @Nullable
-   protected efd a(int $$0, int $$1, int $$2) {
-      efd $$3 = null;
-      efb $$4 = this.c($$0, $$1, $$2);
-      if (this.k && $$4 == efb.u || $$4 == efb.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.b($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.b_(new hx($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
       }
 
-      return $$3;
-   }
-
-   protected efb c(int $$0, int $$1, int $$2) {
-      return (efb)this.l.computeIfAbsent(hx.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
-   }
-
-   @Override
-   public efb a(csu $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
-   }
-
-   @Override
-   public efb a(csu $$0, int $$1, int $$2, int $$3, bmm $$4) {
-      hx.a $$5 = new hx.a();
-
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               eeq $$9 = $$0.b_($$5.d($$6, $$7, $$8));
-               djg $$10 = $$0.a_($$5.d($$6, $$7, $$8));
-               if ($$9.c() && $$10.a($$0, $$5.d(), efg.b) && $$10.i()) {
-                  return efb.u;
-               }
-
-               if (!$$9.a(asl.a)) {
-                  return efb.a;
-               }
-            }
-         }
-      }
-
-      djg $$11 = $$0.a_($$5);
-      return $$11.a($$0, $$5, efg.b) ? efb.j : efb.a;
+      return new efg($$3, $$1, $$2);
    }
 }

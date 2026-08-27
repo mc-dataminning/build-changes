@@ -1,7 +1,7 @@
 public class abt implements xf<za> {
    private final double a;
 
-   public abt(dkx $$0) {
+   public abt(dky $$0) {
       this.a = $$0.k();
    }
 

@@ -1,25 +1,74 @@
-public class clx extends cms {
-   public clx(cms.a $$0) {
+public class clx extends cmt {
+   public clx(cmt.a $$0) {
       super($$0);
    }
 
    @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.hP, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      $$1.gn().a(this, 20);
-      if (!$$0.B) {
-         cgi $$4 = new cgi($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public bkb a(cpj $$0) {
+      ctp $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      djh $$3 = $$1.a_($$2);
+      if (!$$3.a(cws.fy) || $$3.c(czf.c)) {
+         return bkb.d;
+      } else if ($$1.B) {
+         return bkb.a;
+      } else {
+         djh $$4 = $$3.a(czf.c, Boolean.valueOf(true));
+         cwq.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.c($$2, cws.fy);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         djm.b $$5 = czf.b().a($$1, $$2);
+         if ($$5 != null) {
+            hx $$6 = $$5.a().b(-3, 0, -3);
 
-      $$1.b(asb.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  $$1.a($$6.b($$7, 0, $$8), cws.fx.o(), 2);
+               }
+            }
 
-      return bkb.a($$3, $$0.y_());
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
+         }
+
+         return bkb.b;
+      }
+   }
+
+   @Override
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      elp $$4 = a($$0, $$1, csy.b.a);
+      if ($$4.c() == elr.a.b && $$0.a_($$4.a()).a(cws.fy)) {
+         return bkc.c($$3);
+      } else {
+         $$1.c($$2);
+         if ($$0 instanceof and $$5) {
+            hx $$6 = $$5.a(ass.a, $$1.dm(), 100, false);
+            if ($$6 != null) {
+               cft $$7 = new cft($$0, $$1.dr(), $$1.e(0.5), $$1.dx());
+               $$7.a($$3);
+               $$7.a($$6);
+               $$0.a(dnr.K, $$7.dk(), dnr.a.a($$1));
+               $$0.b($$7);
+               if ($$1 instanceof ane) {
+                  am.n.a((ane)$$1, $$6);
+               }
+
+               $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), ars.hE, art.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+               $$0.a(null, 1003, $$1.dm(), 0);
+               if (!$$1.fT().d) {
+                  $$3.h(1);
+               }
+
+               $$1.b(asc.c.b(this));
+               $$1.a($$2, true);
+               return bkc.a($$3);
+            }
+         }
+
+         return bkc.b($$3);
+      }
    }
 }

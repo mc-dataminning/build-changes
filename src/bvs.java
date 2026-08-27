@@ -1,78 +1,41 @@
-public class bvs extends bvu {
-   public bvs(bmm $$0, cto $$1) {
+public class bvs extends bvv {
+   public bvs(bmn $$0, ctp $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected efh a(int $$0) {
-      this.o = new efc();
+   protected efi a(int $$0) {
+      this.o = new efa(false);
       this.o.a(true);
-      return new efh(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(els $$0, els $$1) {
-      return a(this.a, $$0, $$1, true);
+      return new efi(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p() && this.a.bd() || !this.a.bO();
+      return true;
    }
 
    @Override
-   protected els b() {
-      return this.a.dk();
+   protected elt b() {
+      return new elt(this.a.dr(), this.a.e(0.5), this.a.dx());
    }
 
    @Override
-   public eff a(blu $$0, int $$1) {
-      return this.a($$0.dm(), $$1);
+   protected double a(elt $$0) {
+      return $$0.d;
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
-      }
-
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            els $$0 = this.c.a(this.a);
-            if (this.a.dq() == aun.a($$0.c) && this.a.ds() == aun.a($$0.d) && this.a.dw() == aun.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         adi.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            els $$1 = this.c.a(this.a);
-            this.a.K().a($$1.c, $$1.d, $$1.e, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
+   protected boolean a(elt $$0, elt $$1) {
+      return this.a.bd() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(hx $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      return !this.b.a_($$0.d()).i();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

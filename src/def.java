@@ -1,46 +1,53 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class def extends ddy {
-   protected def(djf.d $$0) {
+public class def extends cwq {
+   public static final MapCodec<def> a = b(def::new);
+   private static final emm b = cwq.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
+
+   @Override
+   public MapCodec<def> a() {
+      return a;
+   }
+
+   public def(djg.d $$0) {
       super($$0);
    }
 
-   private static boolean b(djg $$0, ctr $$1, hx $$2) {
-      hx $$3 = $$2.c();
-      djg $$4 = $$1.a_($$3);
-      if ($$4.a(cwr.dN) && $$4.c(ddx.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = eeh.a($$1, $$0, $$2, $$4, $$3, ic.b, $$4.b($$1, $$3));
-         return $$5 < $$1.O();
-      }
+   @Override
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      return cwq.a($$1, $$2.c(), ic.a) && !$$1.z($$2);
    }
 
    @Override
-   protected abstract MapCodec<? extends def> a();
-
-   private static boolean c(djg $$0, ctr $$1, hx $$2) {
-      hx $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(asl.a);
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, cwr.j.o());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            djg $$4 = this.o();
+   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(jx.aw, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      hx.a $$10 = new hx.a();
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               hx $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(cwr.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cwr.dN))));
-               }
-            }
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + auo.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + auo.a($$3, -10, 10));
+         djh $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(jx.aA, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
          }
       }
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
    }
 }

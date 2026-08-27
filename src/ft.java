@@ -28,7 +28,7 @@ public class ft implements ArgumentType<fo> {
       return new ft($$0);
    }
 
-   public static els a(CommandContext<ds> $$0, String $$1) {
+   public static elt a(CommandContext<ds> $$0, String $$1) {
       return ((fo)$$0.getArgument($$1, fo.class)).a((ds)$$0.getSource());
    }
 

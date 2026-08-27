@@ -1,6 +1,17 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface dxu {
+public record dxu(List<dou.c> a) implements dou.c {
    @Nullable
-   djg a(dot var1, int var2, int var3, int var4);
+   @Override
+   public djh calculate(doj.b $$0) {
+      for (dou.c $$1 : this.a) {
+         djh $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
 }

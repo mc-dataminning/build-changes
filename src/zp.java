@@ -9,7 +9,7 @@ public record zp(List<zp.a> a) implements xf<za> {
       this($$0.a(zp.a::new));
    }
 
-   public static zp a(List<dln> $$0) {
+   public static zp a(List<dlo> $$0) {
       return new zp($$0.stream().map(zp.a::new).toList());
    }
 
@@ -22,8 +22,8 @@ public record zp(List<zp.a> a) implements xf<za> {
       $$0.a(this);
    }
 
-   public static record a(csv a, byte[] b) {
-      public a(dln $$0) {
+   public static record a(csw a, byte[] b) {
+      public a(dlo $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new ui(this.d()), $$0);
       }
@@ -32,10 +32,10 @@ public record zp(List<zp.a> a) implements xf<za> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dln $$0) {
+      private static int a(dlo $$0) {
          int $$1 = 0;
 
-         for (dlo $$2 : $$0.d()) {
+         for (dlp $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -52,8 +52,8 @@ public record zp(List<zp.a> a) implements xf<za> {
          return $$0;
       }
 
-      public static void a(ui $$0, dln $$1) {
-         for (dlo $$2 : $$1.d()) {
+      public static void a(ui $$0, dlo $$1) {
+         for (dlp $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -63,7 +63,7 @@ public record zp(List<zp.a> a) implements xf<za> {
          $$0.a(this.b);
       }
 
-      public csv b() {
+      public csw b() {
          return this.a;
       }
 

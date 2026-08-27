@@ -5,7 +5,7 @@ public class aat implements xf<za> {
    private final float d;
    private final float e;
 
-   public aat(blu $$0) {
+   public aat(blv $$0) {
       this.a = $$0.dr();
       this.b = $$0.dt();
       this.c = $$0.dx();

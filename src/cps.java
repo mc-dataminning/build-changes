@@ -1,8 +1,20 @@
-public interface cps extends cqb<ciq> {
-   @Override
-   default cqg<?> e() {
-      return cqg.a;
+import com.mojang.serialization.Codec;
+
+public enum cps implements avk {
+   a("building"),
+   b("redstone"),
+   c("equipment"),
+   d("misc");
+
+   public static final Codec<cps> e = avk.a(cps::values);
+   private final String f;
+
+   private cps(String $$0) {
+      this.f = $$0;
    }
 
-   cpr d();
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

@@ -1,98 +1,39 @@
-public class asb {
-   public static final asa<cwp> a = a("mined", kd.e);
-   public static final asa<cms> b = a("crafted", kd.h);
-   public static final asa<cms> c = a("used", kd.h);
-   public static final asa<cms> d = a("broken", kd.h);
-   public static final asa<cms> e = a("picked_up", kd.h);
-   public static final asa<cms> f = a("dropped", kd.h);
-   public static final asa<bly<?>> g = a("killed", kd.g);
-   public static final asa<bly<?>> h = a("killed_by", kd.g);
-   public static final asa<ahg> i = a("custom", kd.m);
-   public static final ahg j = a("leave_game", arz.b);
-   public static final ahg k = a("play_time", arz.e);
-   public static final ahg l = a("total_world_time", arz.e);
-   public static final ahg m = a("time_since_death", arz.e);
-   public static final ahg n = a("time_since_rest", arz.e);
-   public static final ahg o = a("sneak_time", arz.e);
-   public static final ahg p = a("walk_one_cm", arz.d);
-   public static final ahg q = a("crouch_one_cm", arz.d);
-   public static final ahg r = a("sprint_one_cm", arz.d);
-   public static final ahg s = a("walk_on_water_one_cm", arz.d);
-   public static final ahg t = a("fall_one_cm", arz.d);
-   public static final ahg u = a("climb_one_cm", arz.d);
-   public static final ahg v = a("fly_one_cm", arz.d);
-   public static final ahg w = a("walk_under_water_one_cm", arz.d);
-   public static final ahg x = a("minecart_one_cm", arz.d);
-   public static final ahg y = a("boat_one_cm", arz.d);
-   public static final ahg z = a("pig_one_cm", arz.d);
-   public static final ahg A = a("horse_one_cm", arz.d);
-   public static final ahg B = a("aviate_one_cm", arz.d);
-   public static final ahg C = a("swim_one_cm", arz.d);
-   public static final ahg D = a("strider_one_cm", arz.d);
-   public static final ahg E = a("jump", arz.b);
-   public static final ahg F = a("drop", arz.b);
-   public static final ahg G = a("damage_dealt", arz.c);
-   public static final ahg H = a("damage_dealt_absorbed", arz.c);
-   public static final ahg I = a("damage_dealt_resisted", arz.c);
-   public static final ahg J = a("damage_taken", arz.c);
-   public static final ahg K = a("damage_blocked_by_shield", arz.c);
-   public static final ahg L = a("damage_absorbed", arz.c);
-   public static final ahg M = a("damage_resisted", arz.c);
-   public static final ahg N = a("deaths", arz.b);
-   public static final ahg O = a("mob_kills", arz.b);
-   public static final ahg P = a("animals_bred", arz.b);
-   public static final ahg Q = a("player_kills", arz.b);
-   public static final ahg R = a("fish_caught", arz.b);
-   public static final ahg S = a("talked_to_villager", arz.b);
-   public static final ahg T = a("traded_with_villager", arz.b);
-   public static final ahg U = a("eat_cake_slice", arz.b);
-   public static final ahg V = a("fill_cauldron", arz.b);
-   public static final ahg W = a("use_cauldron", arz.b);
-   public static final ahg X = a("clean_armor", arz.b);
-   public static final ahg Y = a("clean_banner", arz.b);
-   public static final ahg Z = a("clean_shulker_box", arz.b);
-   public static final ahg aa = a("interact_with_brewingstand", arz.b);
-   public static final ahg ab = a("interact_with_beacon", arz.b);
-   public static final ahg ac = a("inspect_dropper", arz.b);
-   public static final ahg ad = a("inspect_hopper", arz.b);
-   public static final ahg ae = a("inspect_dispenser", arz.b);
-   public static final ahg af = a("play_noteblock", arz.b);
-   public static final ahg ag = a("tune_noteblock", arz.b);
-   public static final ahg ah = a("pot_flower", arz.b);
-   public static final ahg ai = a("trigger_trapped_chest", arz.b);
-   public static final ahg aj = a("open_enderchest", arz.b);
-   public static final ahg ak = a("enchant_item", arz.b);
-   public static final ahg al = a("play_record", arz.b);
-   public static final ahg am = a("interact_with_furnace", arz.b);
-   public static final ahg an = a("interact_with_crafting_table", arz.b);
-   public static final ahg ao = a("open_chest", arz.b);
-   public static final ahg ap = a("sleep_in_bed", arz.b);
-   public static final ahg aq = a("open_shulker_box", arz.b);
-   public static final ahg ar = a("open_barrel", arz.b);
-   public static final ahg as = a("interact_with_blast_furnace", arz.b);
-   public static final ahg at = a("interact_with_smoker", arz.b);
-   public static final ahg au = a("interact_with_lectern", arz.b);
-   public static final ahg av = a("interact_with_campfire", arz.b);
-   public static final ahg aw = a("interact_with_cartography_table", arz.b);
-   public static final ahg ax = a("interact_with_loom", arz.b);
-   public static final ahg ay = a("interact_with_stonecutter", arz.b);
-   public static final ahg az = a("bell_ring", arz.b);
-   public static final ahg aA = a("raid_trigger", arz.b);
-   public static final ahg aB = a("raid_win", arz.b);
-   public static final ahg aC = a("interact_with_anvil", arz.b);
-   public static final ahg aD = a("interact_with_grindstone", arz.b);
-   public static final ahg aE = a("target_hit", arz.b);
-   public static final ahg aF = a("interact_with_smithing_table", arz.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static ahg a(String $$0, arz $$1) {
-      ahg $$2 = new ahg($$0);
-      it.a(kd.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class asb<T> implements Iterable<arz<T>> {
+   private final it<T> a;
+   private final Map<T, arz<T>> b = new IdentityHashMap<>();
+   private final vf c;
+
+   public asb(it<T> $$0, vf $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static <T> asa<T> a(String $$0, it<T> $$1) {
-      vf $$2 = vf.c("stat_type.minecraft." + $$0);
-      return it.a(kd.x, $$0, new asa<>($$1, $$2));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public arz<T> a(T $$0, asa $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new arz<>(this, (T)$$1x, $$1));
+   }
+
+   public it<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<arz<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public arz<T> b(T $$0) {
+      return this.a($$0, asa.b);
+   }
+
+   public vf b() {
+      return this.c;
    }
 }

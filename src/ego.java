@@ -1,70 +1,54 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class ego {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
+   private final int a;
+   private final long b;
+   private final String c;
+   private final egf d;
+   private final boolean e;
 
-   public ego(egl.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(egj.c).toFile();
-      this.c.mkdirs();
+   private ego(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new egf($$3, $$4);
+      this.e = $$5;
    }
 
-   public void a(cfh $$0) {
-      try {
-         sn $$1 = $$0.f(new sn());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
-         ta.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cx() + ".dat");
-         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ad().getString());
-      }
+   public static ego a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new ego(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(egf.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new ego($$1, $$2, "", 0, egf.a, false);
    }
 
-   @Nullable
-   public sn b(cfh $$0) {
-      sn $$1 = null;
-
-      try {
-         File $$2 = new File(this.c, $$0.cx() + ".dat");
-         if ($$2.exists() && $$2.isFile()) {
-            $$1 = ta.a($$2.toPath(), sw.a());
-         }
-      } catch (Exception var4) {
-         b.warn("Failed to load player data for {}", $$0.ad().getString());
-      }
-
-      if ($$1 != null) {
-         int $$4 = tc.b($$1, -1);
-         $$1 = avv.b.a(this.a, $$1, $$4);
-         $$0.g($$1);
-      }
-
-      return $$1;
+   public int a() {
+      return this.a;
    }
 
-   public String[] a() {
-      String[] $$0 = this.c.list();
-      if ($$0 == null) {
-         $$0 = new String[0];
-      }
+   public long b() {
+      return this.b;
+   }
 
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         if ($$0[$$1].endsWith(".dat")) {
-            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
-         }
-      }
+   public String c() {
+      return this.c;
+   }
 
-      return $$0;
+   public egf d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

@@ -33,7 +33,7 @@ public abstract class aas implements xf<za> {
    }
 
    @Nullable
-   public blu a(cto $$0) {
+   public blv a(ctp $$0) {
       return $$0.a(this.a);
    }
 

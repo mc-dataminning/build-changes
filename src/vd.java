@@ -47,7 +47,7 @@ public class vd {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements avj {
+   public static enum a implements avk {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,8 +55,8 @@ public class vd {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<vd.a> g = avj.a(vd.a::values).fieldOf("action");
-      public static final MapCodec<vd.a> h = atv.a(g, vd.a::a);
+      public static final MapCodec<vd.a> g = avk.a(vd.a::values).fieldOf("action");
+      public static final MapCodec<vd.a> h = atw.a(g, vd.a::a);
       private final boolean i;
       private final String j;
 

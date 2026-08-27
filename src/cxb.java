@@ -1,119 +1,98 @@
 import com.mojang.serialization.MapCodec;
 
-public class cxb extends cwp {
+public class cxb extends cwq {
    public static final MapCodec<cxb> a = b(cxb::new);
-   public static final int b = 6;
-   public static final dkg c = djw.ay;
-   public static final int d = b(0);
-   protected static final float e = 1.0F;
-   protected static final float f = 2.0F;
-   protected static final eml[] g = new eml[]{
-      cwp.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      cwp.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
-   };
+   public static final dkh b = djx.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final emm e = cwq.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final emm f = cwq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cxb> a() {
       return a;
    }
 
-   protected cxb(djf.d $$0) {
+   protected cxb(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return g[$$0.c(c)];
+   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      cmx $$6 = $$3.b($$4);
-      cms $$7 = $$6.d();
-      if ($$6.a(aso.ai) && $$0.c(c) == 0) {
-         cwp $$8 = cwp.a($$7);
-         if ($$8 instanceof cxe) {
-            if (!$$3.f()) {
-               $$6.h(1);
+   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
+      hx $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.o());
+               djh $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
             }
+         }
+      }
+   }
 
-            $$1.a(null, $$2, arr.cT, ars.e, 1.0F, 1.0F);
-            $$1.b($$2, cxf.a($$8));
-            $$1.a($$3, dnq.c, $$2);
-            $$3.b(asb.c.b($$7));
-            return bka.a;
+   @Override
+   public emm b(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return e;
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return f;
+   }
+
+   @Override
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      for (ic $$3 : ic.c.a) {
+         djh $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(asm.b)) {
+            return false;
          }
       }
 
-      if ($$1.B) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bka.a;
-         }
-
-         if ($$6.b()) {
-            return bka.b;
-         }
-      }
-
-      return a($$1, $$2, $$0, $$3);
-   }
-
-   protected static bka a(ctp $$0, hx $$1, djg $$2, cfh $$3) {
-      if (!$$3.t(false)) {
-         return bka.d;
-      } else {
-         $$3.a(asb.U);
-         $$3.gc().a(2, 0.1F);
-         int $$4 = $$2.c(c);
-         $$0.a($$3, dnq.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, dnq.f, $$1);
-         }
-
-         return bka.a;
-      }
+      djh $$5 = $$1.a_($$2.d());
+      return ($$5.a(cws.dQ) || $$5.a(ash.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      return $$1 == ic.a && !$$0.a($$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      $$3.a($$1.ai().j(), 1.0F);
    }
 
    @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return $$1.a_($$2.d()).e();
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public int a(djg $$0, cto $$1, hx $$2) {
-      return b($$0.c(c));
-   }
-
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
-   }
-
-   @Override
-   public boolean d_(djg $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
       return false;
    }
 }

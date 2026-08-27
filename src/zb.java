@@ -5,7 +5,7 @@ public class zb implements xf<za> {
    private static final double b = 3.9;
    private final int c;
    private final UUID d;
-   private final bly<?> e;
+   private final blz<?> e;
    private final double f;
    private final double g;
    private final double h;
@@ -17,32 +17,32 @@ public class zb implements xf<za> {
    private final byte n;
    private final int o;
 
-   public zb(blu $$0) {
+   public zb(blv $$0) {
       this($$0, 0);
    }
 
-   public zb(blu $$0, int $$1) {
+   public zb(blv $$0, int $$1) {
       this($$0.aj(), $$0.cw(), $$0.dr(), $$0.dt(), $$0.dx(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   public zb(blu $$0, int $$1, hx $$2) {
+   public zb(blv $$0, int $$1, hx $$2) {
       this($$0.aj(), $$0.cw(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   public zb(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bly<?> $$7, int $$8, els $$9, double $$10) {
+   public zb(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, blz<?> $$7, int $$8, elt $$9, double $$10) {
       this.c = $$0;
       this.d = $$1;
       this.f = $$2;
       this.g = $$3;
       this.h = $$4;
-      this.l = (byte)aun.d($$5 * 256.0F / 360.0F);
-      this.m = (byte)aun.d($$6 * 256.0F / 360.0F);
-      this.n = (byte)aun.a($$10 * 256.0 / 360.0);
+      this.l = (byte)auo.d($$5 * 256.0F / 360.0F);
+      this.m = (byte)auo.d($$6 * 256.0F / 360.0F);
+      this.n = (byte)auo.a($$10 * 256.0 / 360.0);
       this.e = $$7;
       this.o = $$8;
-      this.i = (int)(aun.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.j = (int)(aun.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.k = (int)(aun.a($$9.e, -3.9, 3.9) * 8000.0);
+      this.i = (int)(auo.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.j = (int)(auo.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.k = (int)(auo.a($$9.e, -3.9, 3.9) * 8000.0);
    }
 
    public zb(ui $$0) {
@@ -90,7 +90,7 @@ public class zb implements xf<za> {
       return this.d;
    }
 
-   public bly<?> e() {
+   public blz<?> e() {
       return this.e;
    }
 

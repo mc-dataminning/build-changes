@@ -9,14 +9,14 @@ public class bi extends cv<bi.a> {
       return bi.a.a;
    }
 
-   public void a(ane $$0, @Nullable blu $$1) {
-      egv $$2 = $$1 != null ? bp.b($$0, $$1) : null;
+   public void a(ane $$0, @Nullable blv $$1) {
+      egw $$2 = $$1 != null ? bp.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
    public static record a(Optional<bb> b, Optional<cl> c, Optional<bb> d) implements cv.a {
       public static final Codec<bi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(bi.a::a), atv.a(cl.a, "effects").forGetter(bi.a::b), atv.a(bp.b, "source").forGetter(bi.a::c))
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(bi.a::a), atw.a(cl.a, "effects").forGetter(bi.a::b), atw.a(bp.b, "source").forGetter(bi.a::c))
                .apply($$0, bi.a::new)
       );
 
@@ -28,8 +28,8 @@ public class bi extends cv<bi.a> {
          return am.B.a(new bi.a(Optional.empty(), Optional.empty(), Optional.of(bp.a($$0.b()))));
       }
 
-      public boolean a(ane $$0, @Nullable egv $$1) {
-         return this.c.isPresent() && !this.c.get().a((bmk)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(ane $$0, @Nullable egw $$1) {
+         return this.c.isPresent() && !this.c.get().a((bml)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

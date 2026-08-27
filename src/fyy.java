@@ -1,16 +1,19 @@
-public class fyy extends gat<bmc> {
-   private static final ahg a = new ahg("textures/entity/squid/glow_squid.png");
+public class fyy extends fzt<cck, fkk<cck>> {
+   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public fyy(fym.a $$0, fly<bmc> $$1) {
-      super($$0, $$1);
+   public fyy(fyn.a $$0, float $$1) {
+      super($$0, new fkc($$0.a(fmw.ae)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gcr<>(this, $$0.d()));
+      this.a(new gco<>(this, new fkc($$0.a(fmw.af)), new fkc($$0.a(fmw.ag)), $$0.g()));
    }
 
-   public ahg a(bmc $$0) {
+   protected void a(cck $$0, eqb $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ahg a(cck $$0) {
       return a;
-   }
-
-   protected int a(bmc $$0, hx $$1) {
-      int $$2 = (int)aun.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -1,20 +1,20 @@
-public class cru extends cri {
-   public cru(cri.a $$0, blz... $$1) {
-      super($$0, crj.e, $$1);
+public class cru extends crj {
+   public cru(crj.a $$0, bma... $$1) {
+      super($$0, crk.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 * $$0;
+      return 20;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 30;
+      return 50;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean a(crj $$0) {
+      return super.a($$0) && $$0 != crn.K;
    }
 }

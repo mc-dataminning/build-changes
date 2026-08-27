@@ -17,7 +17,7 @@ public class df extends cv<df.a> {
 
    public static record a(Optional<bb> b, ck.c c) implements cv.a {
       public static final Codec<df.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(df.a::a), atv.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(df.a::a), atw.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
       );
 
       public boolean a(double $$0) {

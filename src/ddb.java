@@ -1,105 +1,48 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum ddb implements avj {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class ddb extends cwq {
+   public static final MapCodec<ddb> h = b(ddb::new);
+   public static final dkf<ic.a> i = djx.I;
 
-   public static final Codec<ddb> e = avj.a(ddb::values);
-   private final String f;
-   private final h g;
-
-   private ddb(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends ddb> a() {
+      return h;
    }
 
-   public ddb a(ddb $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
+   public ddb(djg.d $$0) {
+      super($$0);
+      this.k(this.o().a(i, ic.a.b));
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return b($$0, $$1);
+   }
+
+   public static djh b(djh $$0, ddc $$1) {
+      switch ($$1) {
          case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
          case b:
-            switch (this) {
+            switch ((ic.a)$$0.c(i)) {
                case a:
-                  return b;
-               case b:
-                  return c;
+                  return $$0.a(i, ic.a.c);
                case c:
-                  return d;
-               case d:
-                  return a;
+                  return $$0.a(i, ic.a.a);
+               default:
+                  return $$0;
             }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ic a(ic $$0) {
-      if ($$0.o() == ic.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
          default:
             return $$0;
       }
    }
 
-   public static ddb a(auu $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<ddb> b(auu $$0) {
-      return ac.b(values(), $$0);
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public djh a(cph $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

@@ -1,7 +1,14 @@
+import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bhl(double a, double b, double c) {
+public record bhl(Duration a, csw b, amt c, dli d, String e) implements bhs {
    public static bhl a(RecordedEvent $$0) {
-      return new bhl((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
+      return new bhl(
+         $$0.getDuration(),
+         new csw($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new amt($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dli.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

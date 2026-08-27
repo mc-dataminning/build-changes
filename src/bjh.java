@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bjh implements bji {
-   private final bji[] a;
+public interface bjh<P extends bjg> {
+   bjh<bjd> a = a("constant", bjd.b);
+   bjh<bjm> b = a("uniform", bjm.a);
+   bjh<biy> c = a("biased_to_bottom", biy.a);
+   bjh<biz> d = a("clamped", biz.a);
+   bjh<bjn> e = a("weighted_list", bjn.a);
+   bjh<bjb> f = a("clamped_normal", bjb.a);
 
-   public bjh(bji... $$0) {
-      this.a = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public float a(auu $$0) {
-      float $$1 = 1.0F;
-
-      for (bji $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bjg> bjh<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.M, $$0, () -> $$1);
    }
 }

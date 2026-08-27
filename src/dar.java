@@ -1,96 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dar extends cwb {
+public class dar extends cwq implements czi, czy {
    public static final MapCodec<dar> a = b(dar::new);
-   public static final djx b = djw.n;
+   public static final dkf<ie> b = djx.T;
 
    @Override
    public MapCodec<dar> a() {
       return a;
    }
 
-   protected dar(djf.d $$0) {
+   protected dar(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, ie.k));
    }
 
    @Override
-   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      sn $$5 = ckq.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dhv $$6) {
-         $$6.k();
-         return bka.a($$1.B);
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public djh a(cph $$0) {
+      ic $$1 = $$0.k();
+      ic $$2;
+      if ($$1.o() == ic.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         return bka.d;
+         $$2 = ic.b;
       }
+
+      return this.o().a(b, ie.a($$1, $$2));
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dhv $$5) {
-            $$5.k();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dgu a(hx $$0, djg $$1) {
+   public dgv a(hx $$0, djh $$1) {
       return new dhv($$0, $$1);
    }
 
    @Override
-   public boolean f_(djg $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
-      if ($$1.c_($$2) instanceof dhv $$4 && $$4.f()) {
-         return 15;
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      dgv $$6 = $$1.c_($$2);
+      if ($$6 instanceof dhv && $$3.gp()) {
+         $$3.a((dhv)$$6);
+         return bkb.a($$1.B);
+      } else {
+         return bkb.d;
       }
-
-      return 0;
    }
 
-   @Override
-   public boolean d_(djg $$0) {
-      return true;
+   public static boolean a(edg.c $$0, edg.c $$1) {
+      ic $$2 = h($$0.b());
+      ic $$3 = h($$1.b());
+      ic $$4 = n($$0.b());
+      ic $$5 = n($$1.b());
+      dhv.a $$6 = dhv.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dhv.a.b : dhv.a.a);
+      boolean $$7 = $$6 == dhv.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public int a(djg $$0, cto $$1, hx $$2) {
-      if ($$1.c_($$2) instanceof dhv $$3 && $$3.x().d() instanceof cnp $$4) {
-         return $$4.h();
-      }
-
-      return 0;
+   public static ic h(djh $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   public dcu b_(djg $$0) {
-      return dcu.c;
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
-      return $$1.c(b) ? a($$2, dgw.e, dhv::a) : null;
+   public static ic n(djh $$0) {
+      return $$0.c(b).b();
    }
 }

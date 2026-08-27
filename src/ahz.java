@@ -6,34 +6,38 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import java.io.File;
 import javax.annotation.Nullable;
 
-public record ahz(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aqq d) {
+public record ahz(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aqr d) {
    private static final String e = "usercache.json";
 
    public static ahz a(YggdrasilAuthenticationService $$0, File $$1) {
       MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
       GameProfileRepository $$3 = $$0.createProfileRepository();
-      aqq $$4 = new aqq($$3, new File($$1, "usercache.json"));
+      aqr $$4 = new aqr($$3, new File($$1, "usercache.json"));
       return new ahz($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
    @Nullable
-   public avb a() {
-      return avb.a(this.b, ServicesKeyType.PROFILE_KEY);
+   public avc a() {
+      return avc.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   public MinecraftSessionService b() {
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+   }
+
+   public MinecraftSessionService c() {
       return this.a;
    }
 
-   public ServicesKeySet c() {
+   public ServicesKeySet d() {
       return this.b;
    }
 
-   public GameProfileRepository d() {
+   public GameProfileRepository e() {
       return this.c;
    }
 
-   public aqq e() {
+   public aqr f() {
       return this.d;
    }
 }

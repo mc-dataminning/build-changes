@@ -1,74 +1,176 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.authlib.GameProfile;
+import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class fvv implements fvg<dif> {
-   private final Map<ddq.a, flt> a;
-   private static final Map<ddq.a, ahg> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ddq.b.c, new ahg("textures/entity/skeleton/skeleton.png"));
-      $$0.put(ddq.b.d, new ahg("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(ddq.b.f, new ahg("textures/entity/zombie/zombie.png"));
-      $$0.put(ddq.b.g, new ahg("textures/entity/creeper/creeper.png"));
-      $$0.put(ddq.b.i, new ahg("textures/entity/enderdragon/dragon.png"));
-      $$0.put(ddq.b.h, new ahg("textures/entity/piglin/piglin.png"));
-      $$0.put(ddq.b.e, gfe.a());
-   });
+public class fvv implements fvh<die> {
+   private static final String a = "stick";
+   private static final int b = -988212;
+   private static final int c = auo.h(16);
+   private static final float d = 0.6666667F;
+   private static final elt e = new elt(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dku, fvv.a> f;
+   private final ews g;
 
-   public static Map<ddq.a, flt> a(fms $$0) {
-      Builder<ddq.a, flt> $$1 = ImmutableMap.builder();
-      $$1.put(ddq.b.c, new fls($$0.a(fmv.bo)));
-      $$1.put(ddq.b.d, new fls($$0.a(fmv.bX)));
-      $$1.put(ddq.b.e, new fls($$0.a(fmv.aQ)));
-      $$1.put(ddq.b.f, new fls($$0.a(fmv.cc)));
-      $$1.put(ddq.b.g, new fls($$0.a(fmv.G)));
-      $$1.put(ddq.b.i, new fmq($$0.a(fmv.N)));
-      $$1.put(ddq.b.h, new fkz($$0.a(fmv.aK)));
-      return $$1.build();
+   public fvv(fvi.a $$0) {
+      this.f = dku.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fvv.a($$0.a(fmw.a($$1)))));
+      this.g = $$0.f();
    }
 
-   public fvv(fvh.a $$0) {
-      this.a = a($$0.e());
+   public void a(die $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
+      djh $$6 = $$0.r();
+      ddp $$7 = (ddp)$$6.b();
+      dku $$8 = ddp.a($$7);
+      fvv.a $$9 = this.f.get($$8);
+      $$9.b.k = $$6.b() instanceof dek;
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public void a(dif $$0, float $$1, eqa $$2, ftg $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      djg $$7 = $$0.r();
-      boolean $$8 = $$7.b() instanceof dfo;
-      ic $$9 = $$8 ? $$7.c(dfo.d) : null;
-      int $$10 = $$8 ? dkm.a($$9.g()) : $$7.c(ddq.e);
-      float $$11 = dkm.b($$10);
-      ddq.a $$12 = ((cvl)$$7.b()).b();
-      flt $$13 = this.a.get($$12);
-      fto $$14 = a($$12, $$0.d());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   public float b() {
+      return 0.6666667F;
    }
 
-   public static void a(@Nullable ic $$0, float $$1, float $$2, eqa $$3, ftg $$4, int $$5, flt $$6, fto $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
+   public float c() {
+      return 0.6666667F;
+   }
+
+   void a(die $$0, eqb $$1, fth $$2, int $$3, int $$4, djh $$5, ddp $$6, dku $$7, fkt $$8) {
+      $$1.a();
+      this.a($$1, -$$6.g($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.c(), $$0.d(), true);
+      this.a($$0.aB_(), $$0.l(), $$1, $$2, $$3, $$0.c(), $$0.d(), false);
+      $$1.b();
+   }
+
+   void a(eqb $$0, float $$1, djh $$2) {
+      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+      if (!($$2.b() instanceof dek)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
+      }
+   }
+
+   void a(eqb $$0, fth $$1, int $$2, int $$3, dku $$4, fkt $$5) {
+      $$0.a();
+      float $$6 = this.b();
+      $$0.b($$6, -$$6, -$$6);
+      ggq $$7 = this.a($$4);
+      eqf $$8 = $$7.a($$1, $$5::a);
+      this.a($$0, $$2, $$3, $$5, $$8);
+      $$0.b();
+   }
+
+   void a(eqb $$0, int $$1, int $$2, fkt $$3, eqf $$4) {
+      fvv.a $$5 = (fvv.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
+   }
+
+   ggq a(dku $$0) {
+      return ftw.a($$0);
+   }
+
+   void a(hx $$0, dif $$1, eqb $$2, fth $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.d());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      aua[] $$10 = $$1.a(evi.O().aQ(), $$1x -> {
+         List<aua> $$2x = this.g.c($$1x, $$6);
+         return $$2x.isEmpty() ? aua.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
       } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      eqe $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, ged.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         aua $$18 = $$10[$$17];
+         float $$19 = (float)(-this.g.a($$18) / 2);
+         if ($$12) {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ews.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
    }
 
-   public static fto a(ddq.a $$0, @Nullable GameProfile $$1) {
-      ahg $$2 = b.get($$0);
-      if ($$0 == ddq.b.e && $$1 != null) {
-         gfm $$3 = evh.O().al();
-         return fto.i($$3.b($$1).a());
+   private void a(eqb $$0, boolean $$1, elt $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.c();
+      $$0.a($$2.c, $$2.d, $$2.e);
+      $$0.b($$3, -$$3, $$3);
+   }
+
+   elt d() {
+      return e;
+   }
+
+   static boolean a(hx $$0, int $$1) {
+      if ($$1 == clm.p.g()) {
+         return true;
       } else {
-         return fto.f($$2);
+         evi $$2 = evi.O();
+         fsj $$3 = $$2.s;
+         if ($$3 != null && $$2.m.ax().a() && $$3.gq()) {
+            return true;
+         } else {
+            blv $$4 = $$2.am();
+            return $$4 != null && $$4.f(elt.b($$0)) < (double)c;
+         }
+      }
+   }
+
+   public static int a(dif $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == clm.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)aty.b.b($$1) * 0.4);
+         int $$4 = (int)((double)aty.b.c($$1) * 0.4);
+         int $$5 = (int)((double)aty.b.d($$1) * 0.4);
+         return aty.b.a(0, $$3, $$4, $$5);
+      }
+   }
+
+   public static fvv.a a(fmt $$0, dku $$1) {
+      return new fvv.a($$0.a(fmw.a($$1)));
+   }
+
+   public static fnd f() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("sign", fnc.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fmz.a);
+      $$1.a("stick", fnc.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fmz.a);
+      return fnd.a($$0, 64, 32);
+   }
+
+   public static final class a extends fkt {
+      public final fmx a;
+      public final fmx b;
+
+      public a(fmx $$0) {
+         super(ftp::e);
+         this.a = $$0;
+         this.b = $$0.b("stick");
+      }
+
+      @Override
+      public void a(eqb $$0, eqf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

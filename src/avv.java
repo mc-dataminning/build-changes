@@ -1,76 +1,33 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import java.util.Set;
 
-public enum avv {
-   a(bbv.a),
-   b(bbv.b),
-   c(bbv.c),
-   d(bbv.d),
-   e(bbv.e),
-   f(bbv.f),
-   g(bbv.g),
-   h(bbv.h),
-   i(bbv.i),
-   j(bbv.j),
-   k(bbv.k),
-   l(bbv.l),
-   m(bbv.m),
-   n(bbv.o),
-   o(bbv.n),
-   p(bbv.p),
-   q(bbv.q),
-   r(bbv.I),
-   s(bbv.r);
+public class avv {
+   private static final String a = a("");
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private avv(TypeReference $$0) {
-      this.u = $$0;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = a($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   static int a() {
-      return aa.b().d().c();
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(avv.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = avv.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+   private static String a(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return aue.e($$1);
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(aue.e($$2)));
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public sn a(DataFixer $$0, sn $$1, int $$2, int $$3) {
-      return (sn)this.a($$0, new Dynamic(tb.a, $$1), $$2, $$3).getValue();
-   }
-
-   public sn a(DataFixer $$0, sn $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
 }

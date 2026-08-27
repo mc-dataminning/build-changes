@@ -1,58 +1,59 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record ejm(ahg b) implements eju {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ejm> a = RecordCodecBuilder.create($$0 -> $$0.group(ahg.a.fieldOf("name").forGetter(ejm::c)).apply($$0, ejm::new));
+public abstract class ejm implements ejv {
+   protected final List<ejv> c;
+   private final Predicate<egw> a;
 
-   @Override
-   public ejv b() {
-      return ejw.q;
+   protected ejm(List<ejv> $$0, Predicate<egw> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends ejm> Codec<T> a(Function<List<ejv>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(ejx.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends ejm> Codec<T> b(Function<List<ejv>, T> $$0) {
+      return ejx.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(egw $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public void a(ehe $$0) {
-      egx<eju> $$1 = new egx<>(eha.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.b("Condition " + this.b + " is recursively called");
-      } else {
-         eju.super.a($$0);
-         $$0.a()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
+   public void a(ehf $$0) {
+      ejv.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   public boolean a(egv $$0) {
-      eju $$1 = $$0.a().getElement(eha.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         egv.c<?> $$2 = egv.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
+   public abstract static class a implements ejv.a {
+      private final Builder<ejv> a = ImmutableList.builder();
 
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
+      protected a(ejv.a... $$0) {
+         for (ejv.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
       }
-   }
 
-   public static eju.a a(ahg $$0) {
-      return () -> new ejm($$0);
-   }
+      public void a(ejv.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public ahg c() {
-      return this.b;
+      @Override
+      public ejv build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract ejv a(List<ejv> var1);
    }
 }

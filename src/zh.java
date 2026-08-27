@@ -3,19 +3,19 @@ import javax.annotation.Nullable;
 
 public class zh implements xf<za> {
    private final hx a;
-   private final dgw<?> b;
+   private final dgx<?> b;
    @Nullable
    private final sn c;
 
-   public static zh a(dgu $$0, Function<dgu, sn> $$1) {
+   public static zh a(dgv $$0, Function<dgv, sn> $$1) {
       return new zh($$0.aB_(), $$0.v(), $$1.apply($$0));
    }
 
-   public static zh a(dgu $$0) {
-      return a($$0, dgu::ax_);
+   public static zh a(dgv $$0) {
+      return a($$0, dgv::ax_);
    }
 
-   private zh(hx $$0, dgw<?> $$1, sn $$2) {
+   private zh(hx $$0, dgx<?> $$1, sn $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2.g() ? null : $$2;
@@ -42,7 +42,7 @@ public class zh implements xf<za> {
       return this.a;
    }
 
-   public dgw<?> d() {
+   public dgx<?> d() {
       return this.b;
    }
 

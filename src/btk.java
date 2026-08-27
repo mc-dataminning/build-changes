@@ -1,7 +1,13 @@
 import java.util.EnumSet;
 
-public abstract class btk extends btg {
-   public btk() {
-      this.a(EnumSet.of(btg.a.a, btg.a.c));
+public class btk extends btp {
+   public btk(bmn $$0, Class<? extends bml> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(bth.a.b, bth.a.a));
+   }
+
+   public btk(bmn $$0, Class<? extends bml> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(bth.a.b, bth.a.a));
    }
 }

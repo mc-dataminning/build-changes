@@ -42,9 +42,9 @@ public class ajk {
    }
 
    private static int a(ds $$0, amt $$1) throws CommandSyntaxException {
-      csv $$2 = $$1.a();
+      csw $$2 = $$1.a();
       and $$3 = $$0.e();
-      ahf<cto> $$4 = $$3.ae();
+      ahf<ctp> $$4 = $$3.ae();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> vf.a("commands.forceload.query.success", vf.a($$2), vf.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class ajk {
 
    private static int a(ds $$0) {
       and $$1 = $$0.e();
-      ahf<cto> $$2 = $$1.ae();
+      ahf<ctp> $$2 = $$1.ae();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(csv::new).map(csv::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(csw::new).map(csw::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> vf.a("commands.forceload.list.single", vf.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class ajk {
 
    private static int b(ds $$0) {
       and $$1 = $$0.e();
-      ahf<cto> $$2 = $$1.ae();
+      ahf<ctp> $$2 = $$1.ae();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(csv.a($$1x), csv.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(csw.a($$1x), csw.b($$1x), false));
       $$0.a(() -> vf.a("commands.forceload.removed.all", vf.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class ajk {
             throw b.create(256, $$12);
          } else {
             and $$13 = $$0.e();
-            ahf<cto> $$14 = $$13.ae();
-            csv $$15 = null;
+            ahf<ctp> $$14 = $$13.ae();
+            csw $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,21 +107,21 @@ public class ajk {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new csv($$17, $$18);
+                        $$15 = new csw($$17, $$18);
                      }
                   }
                }
             }
 
-            csv $$20 = $$15;
+            csw $$20 = $$15;
             if ($$16 == 0) {
                throw ($$3 ? d : e).create();
             } else {
                if ($$16 == 1) {
                   $$0.a(() -> vf.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", vf.a($$20), vf.a($$14.a())), true);
                } else {
-                  csv $$21 = new csv($$8, $$9);
-                  csv $$22 = new csv($$10, $$11);
+                  csw $$21 = new csw($$8, $$9);
+                  csw $$22 = new csw($$10, $$11);
                   $$0.a(() -> vf.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", vf.a($$20), vf.a($$14.a()), vf.a($$21), vf.a($$22)), true);
                }
 

@@ -1,16 +1,10 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duq implements dtx {
-   public static final Codec<duq> a = atv.b(dyj.c).fieldOf("features").xmap(duq::new, $$0 -> $$0.b).codec();
-   public final il<dyj> b;
+public record duq(dvz b) implements dty {
+   public static final Codec<duq> a = RecordCodecBuilder.create($$0 -> $$0.group(dvz.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, duq::new));
 
-   public duq(il<dyj> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<drg<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public dvz a() {
+      return this.b;
    }
 }

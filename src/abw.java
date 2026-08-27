@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 public class abw implements xf<za> {
    private final int a;
 
-   public abw(blu $$0) {
+   public abw(blv $$0) {
       this.a = $$0.aj();
    }
 
@@ -21,7 +21,7 @@ public class abw implements xf<za> {
    }
 
    @Nullable
-   public blu a(cto $$0) {
+   public blv a(ctp $$0) {
       return $$0.a(this.a);
    }
 }

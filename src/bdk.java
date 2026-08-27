@@ -4,20 +4,34 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bdk extends Schema {
+public class bdk extends bde {
    public bdk(int $$0, Schema $$1) {
       super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.registerSimple($$1, "minecraft:bed");
+      return $$1;
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bbv.b,
+         bbw.p,
          () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", bbv.w.in($$0)), "Inventory", DSL.list(bbv.t.in($$0)), "EnderItems", DSL.list(bbv.t.in($$0))
+               "minecraft:adventure/adventuring_time",
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.G.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_a_mob",
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_all_mobs",
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:husbandry/bred_all_animals",
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string())))
             )
       );
-      $$0.registerType(true, bbv.w, () -> DSL.optionalFields("Passengers", DSL.list(bbv.w.in($$0)), bbv.x.in($$0)));
+      $$0.registerType(false, bbw.G, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.v, () -> DSL.constType(a()));
    }
 }

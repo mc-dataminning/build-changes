@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface fat {
+   fat a(int var1);
 
-public class fat implements faq {
-   private final fao a;
-   private final fat.a b;
-   private int c = 0;
+   fat a(int var1, int var2);
 
-   private fat(fat.a $$0) {
-      this(0, 0, $$0);
+   fat a(int var1, int var2, int var3, int var4);
+
+   fat b(int var1);
+
+   fat c(int var1);
+
+   fat d(int var1);
+
+   fat e(int var1);
+
+   fat f(int var1);
+
+   fat g(int var1);
+
+   fat a(float var1, float var2);
+
+   fat a(float var1);
+
+   fat b(float var1);
+
+   default fat a() {
+      return this.a(0.0F);
    }
 
-   public fat(int $$0, int $$1, fat.a $$2) {
-      this.a = new fao($$0, $$1);
-      this.b = $$2;
+   default fat b() {
+      return this.a(0.5F);
    }
 
-   public fat a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default fat c() {
+      return this.a(1.0F);
    }
 
-   public fas b() {
-      return this.a.b();
+   default fat d() {
+      return this.b(0.0F);
    }
 
-   public fas c() {
-      return this.a.c();
+   default fat e() {
+      return this.b(0.5F);
    }
 
-   public <T extends far> T a(T $$0, fas $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default fat f() {
+      return this.b(1.0F);
    }
 
-   public <T extends far> T a(T $$0) {
-      return this.a($$0, this.b());
+   fat g();
+
+   fat.a h();
+
+   static fat i() {
+      return new fat.a();
    }
 
-   public <T extends far> T a(T $$0, Consumer<fas> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
+   public static class a implements fat {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<far> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public int u() {
-      return this.a.u();
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.a.n($$0);
-   }
-
-   @Override
-   public void o(int $$0) {
-      this.a.o($$0);
-   }
-
-   @Override
-   public int B() {
-      return this.a.B();
-   }
-
-   @Override
-   public int C() {
-      return this.a.C();
-   }
-
-   public static fat d() {
-      return new fat(fat.a.b);
-   }
-
-   public static fat e() {
-      return new fat(fat.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fao $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends far> T a(fao $$0, T $$1, int $$2, fas $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      public a(fat.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public fat.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fat.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fat.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fat.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fat.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fat.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fat.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fat.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fat.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fat.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fat.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fat.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fat.a j() {
+         return new fat.a(this);
+      }
+
+      @Override
+      public fat.a h() {
+         return this;
       }
    }
 }

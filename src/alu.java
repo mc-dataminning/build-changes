@@ -274,7 +274,7 @@ public class alu {
       tk $$3 = a($$2, $$1);
       int $$4;
       if ($$3 instanceof td) {
-         $$4 = aun.a(((td)$$3).j());
+         $$4 = auo.a(((td)$$3).j());
       } else if ($$3 instanceof sm) {
          $$4 = ((sm)$$3).size();
       } else if ($$3 instanceof sn) {
@@ -296,7 +296,7 @@ public class alu {
       if (!($$4 instanceof td)) {
          throw e.create($$2.toString());
       } else {
-         int $$5 = aun.a(((td)$$4).j() * $$3);
+         int $$5 = auo.a(((td)$$4).j() * $$3);
          $$0.a(() -> $$1.a($$2, $$3, $$5), false);
          return $$5;
       }

@@ -41,15 +41,15 @@ public class es<T> implements ArgumentType<ahf<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ih.c<drg<?, ?>> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<drh<?, ?>> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, ke.aw, b);
    }
 
-   public static ih.c<dzf> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<dzg> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, ke.aD, c);
    }
 
-   public static ih.c<eao> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<eap> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, ke.aG, d);
    }
 

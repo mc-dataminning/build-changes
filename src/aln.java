@@ -51,14 +51,14 @@ public class aln {
    }
 
    public static CompletableFuture<Suggestions> a(ds $$0, SuggestionsBuilder $$1) {
-      emv $$2 = $$0.f();
+      emw $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         emw $$4 = $$0.l().aH();
+         emx $$4 = $$0.l().aH();
 
-         for (emo $$5 : $$4.c()) {
-            if ($$5.c() == emz.b) {
-               ems $$6 = $$4.d($$2, $$5);
+         for (emp $$5 : $$4.c()) {
+            if ($$5.c() == ena.b) {
+               emt $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.b());
                }
@@ -69,34 +69,34 @@ public class aln {
       return dx.b($$3, $$1);
    }
 
-   private static int a(ds $$0, ane $$1, emo $$2, int $$3) throws CommandSyntaxException {
-      emu $$4 = a($$0.l().aH(), $$1, $$2);
+   private static int a(ds $$0, ane $$1, emp $$2, int $$3) throws CommandSyntaxException {
+      emv $$4 = a($$0.l().aH(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> vf.a("commands.trigger.add.success", $$2.g(), $$3), true);
       return $$5;
    }
 
-   private static int b(ds $$0, ane $$1, emo $$2, int $$3) throws CommandSyntaxException {
-      emu $$4 = a($$0.l().aH(), $$1, $$2);
+   private static int b(ds $$0, ane $$1, emp $$2, int $$3) throws CommandSyntaxException {
+      emv $$4 = a($$0.l().aH(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> vf.a("commands.trigger.set.success", $$2.g(), $$3), true);
       return $$3;
    }
 
-   private static int a(ds $$0, ane $$1, emo $$2) throws CommandSyntaxException {
-      emu $$3 = a($$0.l().aH(), $$1, $$2);
+   private static int a(ds $$0, ane $$1, emp $$2) throws CommandSyntaxException {
+      emv $$3 = a($$0.l().aH(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> vf.a("commands.trigger.simple.success", $$2.g()), true);
       return $$4;
    }
 
-   private static emu a(emw $$0, emv $$1, emo $$2) throws CommandSyntaxException {
-      if ($$2.c() != emz.b) {
+   private static emv a(emx $$0, emw $$1, emp $$2) throws CommandSyntaxException {
+      if ($$2.c() != ena.b) {
          throw b.create();
       } else {
-         ems $$3 = $$0.d($$1, $$2);
+         emt $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            emu $$4 = $$0.c($$1, $$2);
+            emv $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

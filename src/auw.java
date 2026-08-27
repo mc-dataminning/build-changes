@@ -1,41 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+
 public class auw {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
+   public static final Codec<auw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atw.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), atw.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, auw::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<ahg> f;
 
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
-      } else {
-         this.c = this.b(this.c + 1);
-      }
+   private auw(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   public int a() {
-      return this.b.length;
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   public int b() {
-      return this.d;
+   public Predicate<String> b() {
+      return this.e;
    }
 
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
-      }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   public void c() {
-      this.c = 0;
-      this.d = 0;
+   public Predicate<ahg> c() {
+      return this.f;
    }
 }

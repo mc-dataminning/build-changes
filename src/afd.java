@@ -22,7 +22,7 @@ public class afd implements xf<adj> {
    }
 
    @Nullable
-   public blu a(and $$0) {
+   public blv a(and $$0) {
       return $$0.a(this.a);
    }
 }

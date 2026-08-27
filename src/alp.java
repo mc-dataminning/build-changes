@@ -23,7 +23,7 @@ public class alp {
       );
    }
 
-   private static int a(ds $$0, int $$1, bjf $$2) {
+   private static int a(ds $$0, int $$1, bjg $$2) {
       return $$1 == -1 ? $$2.a($$0.e().F_()) : $$1;
    }
 

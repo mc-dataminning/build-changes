@@ -6,11 +6,11 @@ public class add implements xf<za> {
    private final int a;
    private final List<add.a> b;
 
-   public add(int $$0, Collection<bnm> $$1) {
+   public add(int $$0, Collection<bnn> $$1) {
       this.a = $$0;
       this.b = Lists.newArrayList();
 
-      for (bnm $$2 : $$1) {
+      for (bnn $$2 : $$1) {
          this.b.add(new add.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -19,9 +19,9 @@ public class add implements xf<za> {
       this.a = $$0.n();
       this.b = $$0.a((ui.a<add.a>)($$0x -> {
          ahg $$1 = $$0x.t();
-         bnl $$2 = kd.u.a($$1);
+         bnm $$2 = kd.u.a($$1);
          double $$3 = $$0x.readDouble();
-         List<bno> $$4 = $$0x.a((ui.a<bno>)($$0xx -> new bno($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bno.a.a($$0xx.readByte()))));
+         List<bnp> $$4 = $$0x.a((ui.a<bnp>)($$0xx -> new bnp($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bnp.a.a($$0xx.readByte()))));
          return new add.a($$2, $$3, $$4);
       }));
    }
@@ -53,17 +53,17 @@ public class add implements xf<za> {
    }
 
    public static class a {
-      private final bnl a;
+      private final bnm a;
       private final double b;
-      private final Collection<bno> c;
+      private final Collection<bnp> c;
 
-      public a(bnl $$0, double $$1, Collection<bno> $$2) {
+      public a(bnm $$0, double $$1, Collection<bnp> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public bnl a() {
+      public bnm a() {
          return this.a;
       }
 
@@ -71,7 +71,7 @@ public class add implements xf<za> {
          return this.b;
       }
 
-      public Collection<bno> c() {
+      public Collection<bnp> c() {
          return this.c;
       }
    }

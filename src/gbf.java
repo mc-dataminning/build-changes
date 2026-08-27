@@ -1,17 +1,17 @@
-public class gbf extends fzs<cdc, fmf> {
-   private static final ahg a = new ahg("textures/entity/illager/vex.png");
-   private static final ahg i = new ahg("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gbf(fym.a $$0) {
-      super($$0, new fmf($$0.a(fmv.bL)), 0.3F);
-      this.a(new gcq<>(this, $$0.d()));
+public class gbf extends fxj<bzx, fki<bzx>> {
+   private static final Map<blz<?>, ahg> a = Maps.newHashMap(
+      ImmutableMap.of(blz.bs, new ahg("textures/entity/horse/horse_zombie.png"), blz.aL, new ahg("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gbf(fyn.a $$0, fmv $$1) {
+      super($$0, new fki<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(cdc $$0, hx $$1) {
-      return 15;
-   }
-
-   public ahg a(cdc $$0) {
-      return $$0.gf() ? i : a;
+   public ahg a(bzx $$0) {
+      return a.get($$0.ai());
    }
 }

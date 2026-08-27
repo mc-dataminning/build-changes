@@ -12,11 +12,11 @@ import javax.annotation.Nullable;
 public record vv(wa d, @Nullable vr e, vy f, @Nullable vf g, vj h) {
    public static final MapCodec<vv> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               wa.a.fieldOf("link").forGetter(vv::j),
+               wa.a.fieldOf("link").forGetter(vv::k),
                vr.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               vy.a.forGetter(vv::l),
+               vy.a.forGetter(vv::m),
                vh.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               vj.a.optionalFieldOf("filter_mask", vj.c).forGetter(vv::n)
+               vj.a.optionalFieldOf("filter_mask", vj.c).forGetter(vv::o)
             )
             .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new vv($$0x, (vr)$$1.orElse(null), $$2, (vf)$$3.orElse(null), $$4))
    );
@@ -35,7 +35,7 @@ public record vv(wa d, @Nullable vr e, vy f, @Nullable vf g, vj h) {
    }
 
    public vv a(vf $$0) {
-      vf $$1 = !$$0.equals(vf.b(this.b())) ? $$0 : null;
+      vf $$1 = !$$0.equals(vf.b(this.c())) ? $$0 : null;
       return new vv(this.d, this.e, this.f, $$1, this.h);
    }
 
@@ -51,79 +51,85 @@ public record vv(wa d, @Nullable vr e, vy f, @Nullable vf g, vj h) {
       return this.a($$0 ? this.h : vj.c);
    }
 
-   public static void a(ava.a $$0, wa $$1, vy $$2) throws SignatureException {
+   public vv b() {
+      vy $$0 = vy.a(this.c());
+      wa $$1 = wa.a(this.g());
+      return new vv($$1, null, $$0, this.g, this.h);
+   }
+
+   public static void a(avb.a $$0, wa $$1, vy $$2) throws SignatureException {
       $$0.update(Ints.toByteArray(1));
       $$1.a($$0);
       $$2.a($$0);
    }
 
-   public boolean a(avb $$0) {
+   public boolean a(avc $$0) {
       return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
    }
 
-   public String b() {
+   public String c() {
       return this.f.a();
    }
 
-   public vf c() {
-      return Objects.requireNonNullElseGet(this.g, () -> vf.b(this.b()));
+   public vf d() {
+      return Objects.requireNonNullElseGet(this.g, () -> vf.b(this.c()));
    }
 
-   public Instant d() {
+   public Instant e() {
       return this.f.b();
    }
 
-   public long e() {
+   public long f() {
       return this.f.c();
    }
 
    public boolean a(Instant $$0) {
-      return $$0.isAfter(this.d().plus(b));
+      return $$0.isAfter(this.e().plus(b));
    }
 
    public boolean b(Instant $$0) {
-      return $$0.isAfter(this.d().plus(c));
+      return $$0.isAfter(this.e().plus(c));
    }
 
-   public UUID f() {
+   public UUID g() {
       return this.d.c();
    }
 
-   public boolean g() {
-      return this.f().equals(i);
+   public boolean h() {
+      return this.g().equals(i);
    }
 
-   public boolean h() {
+   public boolean i() {
       return this.e != null;
    }
 
    public boolean a(UUID $$0) {
-      return this.h() && this.d.c().equals($$0);
+      return this.i() && this.d.c().equals($$0);
    }
 
-   public boolean i() {
+   public boolean j() {
       return this.h.b();
    }
 
-   public wa j() {
+   public wa k() {
       return this.d;
    }
 
    @Nullable
-   public vr k() {
+   public vr l() {
       return this.e;
    }
 
-   public vy l() {
+   public vy m() {
       return this.f;
    }
 
    @Nullable
-   public vf m() {
+   public vf n() {
       return this.g;
    }
 
-   public vj n() {
+   public vj o() {
       return this.h;
    }
 }

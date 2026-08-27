@@ -1,136 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gkg implements gki {
+   private static final int a = 600;
+   private static final vf b = vf.c("tutorial.punch_tree.title");
+   private static final vf c = vf.a("tutorial.punch_tree.description", gkh.a("attack"));
+   private final gkh d;
+   private ezq e;
+   private int f;
+   private int g;
 
-public class gkg {
-   private final evh a;
-   @Nullable
-   private gkh b;
-   private final List<gkg.a> c = Lists.newArrayList();
-   private final gjz d;
-
-   public gkg(evh $$0, evl $$1) {
-      this.a = $$0;
-      this.d = new gjz(this, $$1);
+   public gkg(gkh $$0) {
+      this.d = $$0;
    }
 
-   public void a(fsg $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fnr $$0, @Nullable elq $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fnr $$0, hx $$1, djg $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gkj.f);
+      } else {
+         if (this.f == 1) {
+            fsj $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fS().a(asp.r)) {
+                  this.d.a(gkj.e);
+                  return;
+               }
+
+               if (gkd.a($$0)) {
+                  this.d.a(gkj.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new ezq(ezq.a.c, b, c, true);
+            this.d.e().ay().a(this.e);
+         }
       }
    }
 
-   public void a(cmx $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
+   @Override
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
    }
 
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(ezp $$0, int $$1) {
-      this.c.add(new gkg.a($$0, $$1));
-      this.a.ay().a($$0);
-   }
-
-   public void a(ezp $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gkg.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
+   @Override
+   public void a(fns $$0, hx $$1, djh $$2, float $$3) {
+      boolean $$4 = $$2.a(ash.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
          }
-      } else if (this.a.r != null) {
-         this.c();
-      }
-   }
 
-   public void a(gki $$0) {
-      this.a.m.r = $$0;
-      this.a.m.as();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public evh e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.l() == ctl.a;
-   }
-
-   public static vf a(String $$0) {
-      return vf.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cmx $$0, cmx $$1, cii $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final ezp a;
-      private final int b;
-      private int c;
-
-      a(ezp $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
-            return true;
-         } else {
-            return false;
+         if ($$3 >= 1.0F) {
+            this.d.a(gkj.d);
          }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(cmy $$0) {
+      if ($$0.a(asp.r)) {
+         this.d.a(gkj.e);
       }
    }
 }

@@ -3,13 +3,13 @@ import java.util.List;
 public class zu implements xf<za> {
    private final int a;
    private final int b;
-   private final List<cmx> c;
-   private final cmx d;
+   private final List<cmy> c;
+   private final cmy d;
 
-   public zu(int $$0, int $$1, iq<cmx> $$2, cmx $$3) {
+   public zu(int $$0, int $$1, iq<cmy> $$2, cmy $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.c = iq.a($$2.size(), cmx.f);
+      this.c = iq.a($$2.size(), cmy.f);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.c.set($$4, $$2.get($$4).p());
@@ -41,11 +41,11 @@ public class zu implements xf<za> {
       return this.a;
    }
 
-   public List<cmx> d() {
+   public List<cmy> d() {
       return this.c;
    }
 
-   public cmx e() {
+   public cmy e() {
       return this.d;
    }
 

@@ -1,71 +1,62 @@
-import javax.annotation.Nullable;
+public class cpi extends cph {
+   private final ic b;
 
-public class cpi {
-   @Nullable
-   private final cfh a;
-   private final bjz b;
-   private final elo c;
-   private final cto d;
-   private final cmx e;
-
-   public cpi(cfh $$0, bjz $$1, elo $$2) {
-      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
-   }
-
-   protected cpi(cto $$0, @Nullable cfh $$1, bjz $$2, cmx $$3, elo $$4) {
-      this.a = $$1;
+   public cpi(ctp $$0, hx $$1, ic $$2, cmy $$3, ic $$4) {
+      super($$0, null, bka.a, $$3, new elp(elt.c($$1), $$4, $$1, false));
       this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
    }
 
-   protected final elo j() {
-      return this.c;
-   }
-
+   @Override
    public hx a() {
-      return this.c.a();
+      return this.j().a();
    }
 
-   public ic k() {
-      return this.c.b();
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
    }
 
-   public els l() {
-      return this.c.e();
+   @Override
+   public boolean c() {
+      return this.b();
    }
 
-   public boolean m() {
-      return this.c.d();
+   @Override
+   public ic d() {
+      return ic.a;
    }
 
-   public cmx n() {
-      return this.e;
+   @Override
+   public ic[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new ic[]{ic.a, ic.c, ic.f, ic.d, ic.e, ic.b};
+         case b:
+            return new ic[]{ic.a, ic.b, ic.c, ic.f, ic.d, ic.e};
+         case c:
+            return new ic[]{ic.a, ic.c, ic.f, ic.e, ic.b, ic.d};
+         case d:
+            return new ic[]{ic.a, ic.d, ic.f, ic.e, ic.b, ic.c};
+         case e:
+            return new ic[]{ic.a, ic.e, ic.d, ic.b, ic.c, ic.f};
+         case f:
+            return new ic[]{ic.a, ic.f, ic.d, ic.b, ic.c, ic.e};
+      }
    }
 
-   @Nullable
-   public cfh o() {
-      return this.a;
-   }
-
-   public bjz p() {
-      return this.b;
-   }
-
-   public cto q() {
-      return this.d;
-   }
-
+   @Override
    public ic g() {
-      return this.a == null ? ic.c : this.a.cE();
+      return this.b.o() == ic.a.b ? ic.c : this.b;
    }
 
+   @Override
    public boolean h() {
-      return this.a != null && this.a.fI();
+      return false;
    }
 
+   @Override
    public float i() {
-      return this.a == null ? 0.0F : this.a.dC();
+      return (float)(this.b.e() * 90);
    }
 }

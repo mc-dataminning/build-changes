@@ -1,13 +1,13 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ny extends ok<byb> {
+public class ny extends ok<byc> {
    public ny(km $$0, CompletableFuture<ij.b> $$1) {
       super($$0, ke.l, $$1);
    }
 
    @Override
    protected void a(ij.b $$0) {
-      this.b(ash.a).a(byb.a, byb.b, byb.c, byb.d, byb.e, byb.f, byb.g, byb.h, byb.i, byb.j);
-      this.b(ash.b).b(ash.a).a(byb.k);
+      this.b(asi.a).a(byc.a, byc.b, byc.c, byc.d, byc.e, byc.f, byc.g, byc.h, byc.i, byc.j);
+      this.b(asi.b).b(asi.a).a(byc.k);
    }
 }

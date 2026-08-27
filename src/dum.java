@@ -1,26 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dum implements dtx {
+public class dum implements dty {
    public static final Codec<dum> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               djg.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               djg.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bjf.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dum::new)
+      $$0 -> $$0.group(Codec.list(dug.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dum::new)
    );
-   public final djg b;
-   public final djg c;
-   private final bjf d;
+   public final List<dug.a> b;
 
-   public dum(djg $$0, djg $$1, bjf $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public dum(djh $$0, djh $$1) {
+      this(ImmutableList.of(dug.a(new ecl($$0), $$1)));
    }
 
-   public bjf a() {
-      return this.d;
+   public dum(List<dug.a> $$0) {
+      this.b = $$0;
    }
 }

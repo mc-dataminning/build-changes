@@ -1,26 +1,21 @@
-public abstract class elq {
-   protected final els a;
+public class elq extends elr {
+   private final blv b;
 
-   protected elq(els $$0) {
-      this.a = $$0;
+   public elq(blv $$0) {
+      this($$0, $$0.dk());
    }
 
-   public double a(blu $$0) {
-      double $$1 = this.a.c - $$0.dr();
-      double $$2 = this.a.d - $$0.dt();
-      double $$3 = this.a.e - $$0.dx();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public elq(blv $$0, elt $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract elq.a c();
-
-   public els e() {
-      return this.a;
+   public blv a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public elr.a c() {
+      return elr.a.c;
    }
 }

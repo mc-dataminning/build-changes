@@ -1,50 +1,15 @@
-@FunctionalInterface
-public interface fvh<T extends dgu> {
-   fvg<T> create(fvh.a var1);
+public interface fvh<T extends dgv> {
+   void a(T var1, float var2, eqb var3, fth var4, int var5, int var6);
 
-   public static class a {
-      private final fvf a;
-      private final fua b;
-      private final fzk c;
-      private final fyk d;
-      private final fms e;
-      private final ewr f;
+   default boolean a(T $$0) {
+      return false;
+   }
 
-      public a(fvf $$0, fua $$1, fzk $$2, fyk $$3, fms $$4, ewr $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   default int aQ_() {
+      return 64;
+   }
 
-      public fvf a() {
-         return this.a;
-      }
-
-      public fua b() {
-         return this.b;
-      }
-
-      public fyk c() {
-         return this.d;
-      }
-
-      public fzk d() {
-         return this.c;
-      }
-
-      public fms e() {
-         return this.e;
-      }
-
-      public fmw a(fmu $$0) {
-         return this.e.a($$0);
-      }
-
-      public ewr f() {
-         return this.f;
-      }
+   default boolean a(T $$0, elt $$1) {
+      return elt.b($$0.aB_()).a((ir)$$1, (double)this.aQ_());
    }
 }

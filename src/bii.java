@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.time.Instant;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bii {
+public final class bii {
+   public final Instant a;
+   public final int b;
+   public final bgr c;
+
+   public bii(Instant $$0, int $$1, bgr $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 }

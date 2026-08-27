@@ -1,29 +1,24 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bwk<T extends bmk> extends bwr<T> {
+public class bwk extends bws<bmn> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
    @Override
-   protected void a(and $$0, T $$1) {
-      eln $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bmk> $$3 = $$0.a(bmk.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+   public Set<bvn<?>> a() {
+      return ImmutableSet.of(bvn.K);
+   }
+
+   protected void a(and $$0, bmn $$1) {
+      bnl<?> $$2 = $$1.dO();
+      List<cbu> $$3 = $$0.a(cbu.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
       $$3.sort(Comparator.comparingDouble($$1::f));
-      bnk<?> $$4 = $$1.dO();
-      $$4.a(bvm.g, $$3);
-      $$4.a(bvm.h, new bvo($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
-   }
-
-   @Override
-   public Set<bvm<?>> a() {
-      return ImmutableSet.of(bvm.g, bvm.h);
+      Optional<cbu> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(bvn.K, $$4);
    }
 }

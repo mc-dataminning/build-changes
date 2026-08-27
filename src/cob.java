@@ -1,47 +1,24 @@
-import javax.annotation.Nullable;
-
-public class cob extends ckq implements clj {
-   private final arq c;
-
-   public cob(cwp $$0, arq $$1, cms.a $$2) {
-      super($$0, $$2);
-      this.c = $$1;
+public class cob extends cmt {
+   public cob(cmt.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bka a(cpi $$0) {
-      bka $$1 = super.a($$0);
-      cfh $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bjz $$3 = $$0.p();
-         $$2.a($$3, cna.qv.am_());
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), ars.xD, art.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cge $$4 = new cge($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public String a() {
-      return this.q();
-   }
-
-   @Override
-   protected arq a(djg $$0) {
-      return this.c;
-   }
-
-   @Override
-   public boolean a(@Nullable cfh $$0, cto $$1, hx $$2, @Nullable elo $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.e().o(), 3);
-         }
-
-         $$1.a($$0, dnq.z, $$2);
-         $$1.a($$0, $$2, this.c, ars.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+      $$1.b(asc.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
       }
+
+      return bkc.a($$3, $$0.y_());
    }
 }

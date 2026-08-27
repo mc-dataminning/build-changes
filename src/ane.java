@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ane extends cfh {
+public class ane extends cfi {
    private static final Logger b = LogUtils.getLogger();
    private static final int cm = 32;
    private static final int cn = 10;
@@ -23,7 +23,7 @@ public class ane extends cfh {
    public final MinecraftServer d;
    public final anf e;
    private final aho cp;
-   private final arx cq;
+   private final ary cq;
    private float cr = Float.MIN_VALUE;
    private int cs = Integer.MIN_VALUE;
    private int ct = Integer.MIN_VALUE;
@@ -35,29 +35,29 @@ public class ane extends cfh {
    private boolean cA = true;
    private int cB = -99999999;
    private int cC = 60;
-   private cff cD = cff.a;
+   private cfg cD = cfg.a;
    private boolean cE = true;
    private long cF = ac.b();
    @Nullable
-   private blu cG;
+   private blv cG;
    private boolean cH;
    private boolean cI;
-   private final arw cJ = new arw();
+   private final arx cJ = new arx();
    @Nullable
-   private els cK;
+   private elt cK;
    private int cL;
    private boolean cM;
    private int cN = 2;
    private String cO = "en_us";
    @Nullable
-   private els cP;
+   private elt cP;
    @Nullable
-   private els cQ;
+   private elt cQ;
    @Nullable
-   private els cR;
+   private elt cR;
    private iz cS = iz.a(0, 0, 0);
    private amr cT = amr.a;
-   private ahf<cto> cU = cto.h;
+   private ahf<ctp> cU = ctp.h;
    @Nullable
    private hx cV;
    private boolean cW;
@@ -65,10 +65,10 @@ public class ane extends cfh {
    private final aoh cY;
    private boolean cZ;
    private boolean da;
-   private cen db = new cen(0, 0, 0);
-   private final cin dc = new cin() {
+   private ceo db = new ceo(0, 0, 0);
+   private final cio dc = new cio() {
       @Override
-      public void a(cia $$0, iq<cmx> $$1, cmx $$2, int[] $$3) {
+      public void a(cib $$0, iq<cmy> $$1, cmy $$2, int[] $$3) {
          ane.this.c.b(new zu($$0.j, $$0.k(), $$1, $$2));
 
          for (int $$4 = 0; $$4 < $$3.length; $$4++) {
@@ -77,29 +77,29 @@ public class ane extends cfh {
       }
 
       @Override
-      public void a(cia $$0, int $$1, cmx $$2) {
+      public void a(cib $$0, int $$1, cmy $$2) {
          ane.this.c.b(new zw($$0.j, $$0.k(), $$1, $$2));
       }
 
       @Override
-      public void a(cia $$0, cmx $$1) {
+      public void a(cib $$0, cmy $$1) {
          ane.this.c.b(new zw(-1, $$0.k(), -1, $$1));
       }
 
       @Override
-      public void a(cia $$0, int $$1, int $$2) {
+      public void a(cib $$0, int $$1, int $$2) {
          this.b($$0, $$1, $$2);
       }
 
-      private void b(cia $$0, int $$1, int $$2) {
+      private void b(cib $$0, int $$1, int $$2) {
          ane.this.c.b(new zv($$0.j, $$1, $$2));
       }
    };
-   private final cim dd = new cim() {
+   private final cin dd = new cin() {
       @Override
-      public void a(cia $$0, int $$1, cmx $$2) {
-         cjv $$3 = $$0.b($$1);
-         if (!($$3 instanceof cjr)) {
+      public void a(cib $$0, int $$1, cmy $$2) {
+         cjw $$3 = $$0.b($$1);
+         if (!($$3 instanceof cjs)) {
             if ($$3.d == ane.this.fS()) {
                am.f.a(ane.this, ane.this.fS(), $$2);
             }
@@ -107,7 +107,7 @@ public class ane extends cfh {
       }
 
       @Override
-      public void a(cia $$0, int $$1, int $$2) {
+      public void a(cib $$0, int $$1, int $$2) {
       }
    };
    @Nullable
@@ -120,7 +120,7 @@ public class ane extends cfh {
       this.cY = $$0.a(this);
       this.e = $$0.b(this);
       this.d = $$0;
-      this.cq = $$0.ae().a((cfh)this);
+      this.cq = $$0.ae().a((cfi)this);
       this.cp = $$0.ae().f(this);
       this.t(1.0F);
       this.e($$1);
@@ -129,9 +129,9 @@ public class ane extends cfh {
 
    private void e(and $$0) {
       hx $$1 = $$0.T();
-      if ($$0.E_().g() && $$0.o().aY().m() != ctl.c) {
+      if ($$0.E_().g() && $$0.o().aY().m() != ctm.c) {
          int $$2 = Math.max(0, this.d.a($$0));
-         int $$3 = aun.a($$0.D_().b((double)$$1.u(), (double)$$1.w()));
+         int $$3 = auo.a($$0.D_().b((double)$$1.u(), (double)$$1.w()));
          if ($$3 < $$2) {
             $$2 = $$3;
          }
@@ -144,7 +144,7 @@ public class ane extends cfh {
          long $$5 = $$4 * $$4;
          int $$6 = $$5 > 2147483647L ? Integer.MAX_VALUE : (int)$$5;
          int $$7 = this.u($$6);
-         int $$8 = auu.a().a($$6);
+         int $$8 = auv.a().a($$6);
 
          for (int $$9 = 0; $$9 < $$6; $$9++) {
             int $$10 = ($$8 + $$7 * $$9) % $$6;
@@ -175,12 +175,12 @@ public class ane extends cfh {
    public void a(sn $$0) {
       super.a($$0);
       if ($$0.b("warden_spawn_tracker", 10)) {
-         cen.a.parse(new Dynamic(tb.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(b::error).ifPresent($$0x -> this.db = $$0x);
+         ceo.a.parse(new Dynamic(tb.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(b::error).ifPresent($$0x -> this.db = $$0x);
       }
 
       if ($$0.b("enteredNetherPosition", 10)) {
          sn $$1 = $$0.p("enteredNetherPosition");
-         this.cQ = new els($$1.k("x"), $$1.k("y"), $$1.k("z"));
+         this.cQ = new elt($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
       this.cI = $$0.q("seenCredits");
@@ -197,7 +197,7 @@ public class ane extends cfh {
          this.cW = $$0.q("SpawnForced");
          this.cX = $$0.j("SpawnAngle");
          if ($$0.e("SpawnDimension")) {
-            this.cU = cto.g.parse(tb.a, $$0.c("SpawnDimension")).resultOrPartial(b::error).orElse(cto.h);
+            this.cU = ctp.g.parse(tb.a, $$0.c("SpawnDimension")).resultOrPartial(b::error).orElse(ctp.h);
          }
       }
    }
@@ -205,7 +205,7 @@ public class ane extends cfh {
    @Override
    public void b(sn $$0) {
       super.b($$0);
-      cen.a.encodeStart(tb.a, this.db).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
+      ceo.a.encodeStart(tb.a, this.db).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
       this.k($$0);
       $$0.a("seenCredits", this.cI);
       if (this.cQ != null) {
@@ -216,8 +216,8 @@ public class ane extends cfh {
          $$0.a("enteredNetherPosition", $$1);
       }
 
-      blu $$2 = this.cW();
-      blu $$3 = this.cZ();
+      blv $$2 = this.cW();
+      blv $$3 = this.cZ();
       if ($$3 != null && $$2 != this && $$2.cV()) {
          sn $$4 = new sn();
          sn $$5 = new sn();
@@ -242,7 +242,7 @@ public class ane extends cfh {
    public void a(int $$0) {
       float $$1 = (float)this.gb();
       float $$2 = ($$1 - 1.0F) / $$1;
-      this.ch = aun.a((float)$$0 / $$1, 0.0F, $$2);
+      this.ch = auo.a((float)$$0 / $$1, 0.0F, $$2);
       this.cB = -1;
    }
 
@@ -258,12 +258,12 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(cmx $$0, int $$1) {
+   public void a(cmy $$0, int $$1) {
       super.a($$0, $$1);
       this.cB = -1;
    }
 
-   private void a(cia $$0) {
+   private void a(cib $$0) {
       $$0.a(this.dd);
       $$0.a(this.dc);
    }
@@ -285,13 +285,13 @@ public class ane extends cfh {
    }
 
    @Override
-   protected void a(djg $$0) {
+   protected void a(djh $$0) {
       am.e.a(this, $$0);
    }
 
    @Override
-   protected cmt k() {
-      return new cns(this);
+   protected cmu k() {
+      return new cnt(this);
    }
 
    @Override
@@ -309,7 +309,7 @@ public class ane extends cfh {
          this.bS = this.bR;
       }
 
-      blu $$0 = this.K();
+      blv $$0 = this.K();
       if ($$0 != this) {
          if ($$0.bx()) {
             this.a($$0.dr(), $$0.dt(), $$0.dx(), $$0.dC(), $$0.dE());
@@ -339,9 +339,9 @@ public class ane extends cfh {
          }
 
          for (int $$0 = 0; $$0 < this.fS().b(); $$0++) {
-            cmx $$1 = this.fS().a($$0);
+            cmy $$1 = this.fS().a($$0);
             if ($$1.d().al_()) {
-               xf<?> $$2 = ((clc)$$1.d()).a($$1, this.dM(), this);
+               xf<?> $$2 = ((cld)$$1.d()).a($$1, this.dM(), this);
                if ($$2 != null) {
                   this.c.b($$2);
                }
@@ -357,32 +357,32 @@ public class ane extends cfh {
 
          if (this.ev() + this.fk() != this.cr) {
             this.cr = this.ev() + this.fk();
-            this.a(emz.f, aun.f(this.cr));
+            this.a(ena.f, auo.f(this.cr));
          }
 
          if (this.bT.a() != this.cs) {
             this.cs = this.bT.a();
-            this.a(emz.g, aun.f((float)this.cs));
+            this.a(ena.g, auo.f((float)this.cs));
          }
 
          if (this.ci() != this.ct) {
             this.ct = this.ci();
-            this.a(emz.h, aun.f((float)this.ct));
+            this.a(ena.h, auo.f((float)this.ct));
          }
 
          if (this.eJ() != this.cu) {
             this.cu = this.eJ();
-            this.a(emz.i, aun.f((float)this.cu));
+            this.a(ena.i, auo.f((float)this.cu));
          }
 
          if (this.cg != this.cx) {
             this.cx = this.cg;
-            this.a(emz.j, aun.f((float)this.cx));
+            this.a(ena.j, auo.f((float)this.cx));
          }
 
          if (this.cf != this.cw) {
             this.cw = this.cf;
-            this.a(emz.k, aun.f((float)this.cw));
+            this.a(ena.k, auo.f((float)this.cw));
          }
 
          if (this.cg != this.cB) {
@@ -431,14 +431,14 @@ public class ane extends cfh {
       }
    }
 
-   private void a(emz $$0, int $$1) {
+   private void a(ena $$0, int $$1) {
       this.gh().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
-   public void a(bks $$0) {
-      this.a(dnq.p);
-      boolean $$1 = this.dM().Z().b(ctk.n);
+   public void a(bkt $$0) {
+      this.a(dnr.p);
+      boolean $$1 = this.dM().Z().b(ctl.n);
       if ($$1) {
          vf $$2 = this.eK().a();
          this.c.a(new abc(this.aj(), $$2), up.a(() -> {
@@ -448,12 +448,12 @@ public class ane extends cfh {
             vf $$4x = vf.a("death.attack.even_more_magic", this.Q_()).a($$1xx -> $$1xx.a(new vl(vl.a.a, $$3x)));
             return new abc(this.aj(), $$4x);
          }));
-         emy $$3 = this.cg();
-         if ($$3 == null || $$3.k() == emy.b.a) {
+         emz $$3 = this.cg();
+         if ($$3 == null || $$3.k() == emz.b.a) {
             this.d.ae().a($$2, false);
-         } else if ($$3.k() == emy.b.c) {
+         } else if ($$3.k() == emz.b.c) {
             this.d.ae().a(this, $$2);
-         } else if ($$3.k() == emy.b.d) {
+         } else if ($$3.k() == emz.b.d) {
             this.d.ae().b(this, $$2);
          }
       } else {
@@ -461,7 +461,7 @@ public class ane extends cfh {
       }
 
       this.gg();
-      if (this.dM().Z().b(ctk.N)) {
+      if (this.dM().Z().b(ctl.N)) {
          this.gs();
       }
 
@@ -469,18 +469,18 @@ public class ane extends cfh {
          this.g($$0);
       }
 
-      this.gh().a(emz.c, this, emu::b);
-      bmk $$4 = this.eL();
+      this.gh().a(ena.c, this, emv::b);
+      bml $$4 = this.eL();
       if ($$4 != null) {
-         this.b(asb.h.b($$4.ai()));
+         this.b(asc.h.b($$4.ai()));
          $$4.a(this, this.bh, $$0);
          this.f($$4);
       }
 
       this.dM().a(this, (byte)3);
-      this.a(asb.N);
-      this.a(asb.i.b(asb.m));
-      this.a(asb.i.b(asb.n));
+      this.a(asc.N);
+      this.a(asc.i.b(asc.m));
+      this.a(asc.i.b(asc.n));
       this.aA();
       this.k(0);
       this.a_(false);
@@ -489,54 +489,54 @@ public class ane extends cfh {
    }
 
    private void gs() {
-      eln $$0 = new eln(this.dm()).c(32.0, 10.0, 32.0);
-      this.dM().a(bmm.class, $$0, blx.f).stream().filter($$0x -> $$0x instanceof bmr).forEach($$0x -> ((bmr)$$0x).a_((cfh)this));
+      elo $$0 = new elo(this.dm()).c(32.0, 10.0, 32.0);
+      this.dM().a(bmn.class, $$0, bly.f).stream().filter($$0x -> $$0x instanceof bms).forEach($$0x -> ((bms)$$0x).a_((cfi)this));
    }
 
    @Override
-   public void a(blu $$0, int $$1, bks $$2) {
+   public void a(blv $$0, int $$1, bkt $$2) {
       if ($$0 != this) {
          super.a($$0, $$1, $$2);
          this.s($$1);
-         this.gh().a(emz.e, this, emu::b);
-         if ($$0 instanceof cfh) {
-            this.a(asb.Q);
-            this.gh().a(emz.d, this, emu::b);
+         this.gh().a(ena.e, this, emv::b);
+         if ($$0 instanceof cfi) {
+            this.a(asc.Q);
+            this.gh().a(ena.d, this, emv::b);
          } else {
-            this.a(asb.O);
+            this.a(asc.O);
          }
 
-         this.a(this, $$0, emz.l);
-         this.a($$0, this, emz.m);
+         this.a(this, $$0, ena.l);
+         this.a($$0, this, ena.m);
          am.c.a(this, $$0, $$2);
       }
    }
 
-   private void a(emv $$0, emv $$1, emz[] $$2) {
-      emr $$3 = this.gh().e($$1.cy());
+   private void a(emw $$0, emw $$1, ena[] $$2) {
+      ems $$3 = this.gh().e($$1.cy());
       if ($$3 != null) {
          int $$4 = $$3.n().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gh().a($$2[$$4], $$0, emu::b);
+            this.gh().a($$2[$$4], $$0, emv::b);
          }
       }
    }
 
    @Override
-   public boolean a(bks $$0, float $$1) {
+   public boolean a(bkt $$0, float $$1) {
       if (this.b($$0)) {
          return false;
       } else {
-         boolean $$2 = this.d.l() && this.gt() && $$0.a(asi.n);
-         if (!$$2 && this.cC > 0 && !$$0.a(asi.e)) {
+         boolean $$2 = this.d.l() && this.gt() && $$0.a(asj.n);
+         if (!$$2 && this.cC > 0 && !$$0.a(asj.e)) {
             return false;
          } else {
-            blu $$3 = $$0.d();
-            if ($$3 instanceof cfh $$4 && !this.a($$4)) {
+            blv $$3 = $$0.d();
+            if ($$3 instanceof cfi $$4 && !this.a($$4)) {
                return false;
             }
 
-            if ($$3 instanceof cfn $$5 && $$5.w() instanceof cfh $$7 && !this.a($$7)) {
+            if ($$3 instanceof cfo $$5 && $$5.w() instanceof cfi $$7 && !this.a($$7)) {
                return false;
             }
 
@@ -546,7 +546,7 @@ public class ane extends cfh {
    }
 
    @Override
-   public boolean a(cfh $$0) {
+   public boolean a(cfi $$0) {
       return !this.gt() ? false : super.a($$0);
    }
 
@@ -556,11 +556,11 @@ public class ane extends cfh {
 
    @Nullable
    @Override
-   protected efn a(and $$0) {
-      efn $$1 = super.a($$0);
-      if ($$1 != null && this.dM().ae() == cto.h && $$0.ae() == cto.j) {
-         els $$2 = $$1.a.b(0.0, -1.0, 0.0);
-         return new efn($$2, els.b, 90.0F, 0.0F);
+   protected efo a(and $$0) {
+      efo $$1 = super.a($$0);
+      if ($$1 != null && this.dM().ae() == ctp.h && $$0.ae() == ctp.j) {
+         elt $$2 = $$1.a.b(0.0, -1.0, 0.0);
+         return new efo($$2, elt.b, 90.0F, 0.0F);
       } else {
          return $$1;
       }
@@ -568,13 +568,13 @@ public class ane extends cfh {
 
    @Nullable
    @Override
-   public blu b(and $$0) {
+   public blv b(and $$0) {
       this.cH = true;
       and $$1 = this.z();
-      ahf<cto> $$2 = $$1.ae();
-      if ($$2 == cto.j && $$0.ae() == cto.h) {
+      ahf<ctp> $$2 = $$1.ae();
+      if ($$2 == ctp.j && $$0.ae() == ctp.h) {
          this.ag();
-         this.z().a(this, blu.c.e);
+         this.z().a(this, blv.c.e);
          if (!this.f) {
             this.f = true;
             this.c.b(new aaf(aaf.e, this.cI ? 0.0F : 1.0F));
@@ -583,19 +583,19 @@ public class ane extends cfh {
 
          return this;
       } else {
-         egh $$3 = $$0.B_();
+         egi $$3 = $$0.B_();
          this.c.b(new abl(this.d($$0), (byte)3));
          this.c.b(new zm($$3.s(), $$3.t()));
-         aqu $$4 = this.d.ae();
+         aqv $$4 = this.d.ae();
          $$4.d(this);
-         $$1.a(this, blu.c.e);
+         $$1.a(this, blv.c.e);
          this.dJ();
-         efn $$5 = this.a($$0);
+         efo $$5 = this.a($$0);
          if ($$5 != null) {
             $$1.af().a("moving");
-            if ($$2 == cto.h && $$0.ae() == cto.i) {
+            if ($$2 == ctp.h && $$0.ae() == ctp.i) {
                this.cQ = this.dk();
-            } else if ($$0.ae() == cto.j) {
+            } else if ($$0.ae() == ctp.j) {
                this.a($$0, hx.a($$5.a));
             }
 
@@ -611,7 +611,7 @@ public class ane extends cfh {
             $$4.a(this, $$0);
             $$4.e(this);
 
-            for (blh $$6 : this.es()) {
+            for (bli $$6 : this.es()) {
                this.c.b(new ade(this.aj(), $$6));
             }
 
@@ -631,7 +631,7 @@ public class ane extends cfh {
       for (int $$3 = -2; $$3 <= 2; $$3++) {
          for (int $$4 = -2; $$4 <= 2; $$4++) {
             for (int $$5 = -1; $$5 < 3; $$5++) {
-               djg $$6 = $$5 == -1 ? cwr.co.o() : cwr.a.o();
+               djh $$6 = $$5 == -1 ? cws.co.o() : cws.a.o();
                $$0.b($$2.g($$1).e($$4, $$5, $$3), $$6);
             }
          }
@@ -639,12 +639,12 @@ public class ane extends cfh {
    }
 
    @Override
-   protected Optional<l.a> a(and $$0, hx $$1, boolean $$2, dkx $$3) {
+   protected Optional<l.a> a(and $$0, hx $$1, boolean $$2, dky $$3) {
       Optional<l.a> $$4 = super.a($$0, $$1, $$2, $$3);
       if ($$4.isPresent()) {
          return $$4;
       } else {
-         ic.a $$5 = this.dM().a_(this.ax).d(dbs.b).orElse(ic.a.a);
+         ic.a $$5 = this.dM().a_(this.ax).d(dbt.b).orElse(ic.a.a);
          Optional<l.a> $$6 = $$0.p().a($$1, $$5);
          if ($$6.isEmpty()) {
             b.error("Unable to create a portal, likely target out of worldborder");
@@ -655,14 +655,14 @@ public class ane extends cfh {
    }
 
    private void f(and $$0) {
-      ahf<cto> $$1 = $$0.ae();
-      ahf<cto> $$2 = this.dM().ae();
+      ahf<ctp> $$1 = $$0.ae();
+      ahf<ctp> $$2 = this.dM().ae();
       am.w.a(this, $$1, $$2);
-      if ($$1 == cto.i && $$2 == cto.h && this.cQ != null) {
+      if ($$1 == ctp.i && $$2 == ctp.h && this.cQ != null) {
          am.D.a(this, this.cQ);
       }
 
-      if ($$2 != cto.i) {
+      if ($$2 != ctp.i) {
          this.cQ = null;
       }
    }
@@ -677,40 +677,40 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(blu $$0, int $$1) {
+   public void a(blv $$0, int $$1) {
       super.a($$0, $$1);
       this.bS.d();
    }
 
    @Override
-   public Either<cfh.a, avr> a(hx $$0) {
-      ic $$1 = this.dM().a_($$0).c(dak.aE);
+   public Either<cfi.a, avs> a(hx $$0) {
+      ic $$1 = this.dM().a_($$0).c(dal.aE);
       if (this.fD() || !this.bx()) {
-         return Either.left(cfh.a.e);
+         return Either.left(cfi.a.e);
       } else if (!this.dM().E_().j()) {
-         return Either.left(cfh.a.a);
+         return Either.left(cfi.a.a);
       } else if (!this.a($$0, $$1)) {
-         return Either.left(cfh.a.c);
+         return Either.left(cfi.a.c);
       } else if (this.b($$0, $$1)) {
-         return Either.left(cfh.a.d);
+         return Either.left(cfi.a.d);
       } else {
          this.a(this.dM().ae(), $$0, this.dC(), false, true);
          if (this.dM().P()) {
-            return Either.left(cfh.a.b);
+            return Either.left(cfi.a.b);
          } else {
             if (!this.f()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               els $$4 = els.c($$0);
-               List<cco> $$5 = this.dM()
-                  .a(cco.class, new eln($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
+               elt $$4 = elt.c($$0);
+               List<ccp> $$5 = this.dM()
+                  .a(ccp.class, new elo($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
                if (!$$5.isEmpty()) {
-                  return Either.left(cfh.a.f);
+                  return Either.left(cfi.a.f);
                }
             }
 
-            Either<cfh.a, avr> $$6 = super.a($$0).ifRight($$0x -> {
-               this.a(asb.ap);
+            Either<cfi.a, avs> $$6 = super.a($$0).ifRight($$0x -> {
+               this.a(asc.ap);
                am.r.a(this);
             });
             if (!this.z().d()) {
@@ -725,7 +725,7 @@ public class ane extends cfh {
 
    @Override
    public void b(hx $$0) {
-      this.a(asb.i.b(asb.n));
+      this.a(asc.i.b(asc.n));
       super.b($$0);
    }
 
@@ -734,7 +734,7 @@ public class ane extends cfh {
    }
 
    private boolean i(hx $$0) {
-      els $$1 = els.c($$0);
+      elt $$1 = elt.c($$0);
       return Math.abs(this.dr() - $$1.a()) <= 3.0 && Math.abs(this.dt() - $$1.b()) <= 2.0 && Math.abs(this.dx() - $$1.c()) <= 3.0;
    }
 
@@ -762,12 +762,12 @@ public class ane extends cfh {
    }
 
    @Override
-   public boolean b(bks $$0) {
+   public boolean b(bkt $$0) {
       return super.b($$0) || this.O();
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, djg $$2, hx $$3) {
+   protected void a(double $$0, boolean $$1, djh $$2, hx $$3) {
    }
 
    @Override
@@ -779,7 +779,7 @@ public class ane extends cfh {
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.de()) {
-         this.b($$3, new els($$0, $$1, $$2));
+         this.b($$3, new elt($$0, $$1, $$2));
          hx $$4 = this.aH();
          super.a($$1, $$3, this.dM().a_($$4), $$4);
       }
@@ -793,7 +793,7 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(did $$0, boolean $$1) {
+   public void a(die $$0, boolean $$1) {
       this.c.b(new zj(this.dM(), $$0.aB_()));
       this.c.b(new aaw($$0.aB_(), $$1));
    }
@@ -803,7 +803,7 @@ public class ane extends cfh {
    }
 
    @Override
-   public OptionalInt a(@Nullable bkd $$0) {
+   public OptionalInt a(@Nullable bke $$0) {
       if ($$0 == null) {
          return OptionalInt.empty();
       } else {
@@ -812,7 +812,7 @@ public class ane extends cfh {
          }
 
          this.gu();
-         cia $$1 = $$0.createMenu(this.df, this.fS(), this);
+         cib $$1 = $$0.createMenu(this.df, this.fS(), this);
          if ($$1 == null) {
             if (this.P_()) {
                this.a(vf.c("container.spectatorCantOpen").a(n.m), true);
@@ -829,26 +829,26 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(int $$0, csn $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public void a(int $$0, cso $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.c.b(new aar($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(bzw $$0, bjt $$1) {
+   public void a(bzx $$0, bju $$1) {
       if (this.bS != this.bR) {
          this.r();
       }
 
       this.gu();
       this.c.b(new aag(this.df, $$1.b(), $$0.aj()));
-      this.bS = new cja(this.df, this.fS(), $$1, $$0);
+      this.bS = new cjb(this.df, this.fS(), $$1, $$0);
       this.a(this.bS);
    }
 
    @Override
-   public void a(cmx $$0, bjz $$1) {
-      if ($$0.a(cna.tU)) {
-         if (cou.a($$0, this.dd(), this)) {
+   public void a(cmy $$0, bka $$1) {
+      if ($$0.a(cnb.tU)) {
+         if (cov.a($$0, this.dd(), this)) {
             this.bS.d();
          }
 
@@ -857,8 +857,8 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(dhe $$0) {
-      this.c.b(zh.a($$0, dgu::q));
+   public void a(dhf $$0) {
+      this.c.b(zh.a($$0, dgv::q));
    }
 
    @Override
@@ -890,7 +890,7 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(els $$0) {
+   public void a(elt $$0) {
       double $$1 = this.dr();
       double $$2 = this.dt();
       double $$3 = this.dx();
@@ -912,46 +912,46 @@ public class ane extends cfh {
          if (this.bZ()) {
             int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
             if ($$3 > 0) {
-               this.a(asb.C, $$3);
+               this.a(asc.C, $$3);
                this.A(0.01F * (float)$$3 * 0.01F);
             }
-         } else if (this.a(asl.a)) {
+         } else if (this.a(asm.a)) {
             int $$4 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
             if ($$4 > 0) {
-               this.a(asb.w, $$4);
+               this.a(asc.w, $$4);
                this.A(0.01F * (float)$$4 * 0.01F);
             }
          } else if (this.aZ()) {
             int $$5 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$5 > 0) {
-               this.a(asb.s, $$5);
+               this.a(asc.s, $$5);
                this.A(0.01F * (float)$$5 * 0.01F);
             }
          } else if (this.e_()) {
             if ($$1 > 0.0) {
-               this.a(asb.u, (int)Math.round($$1 * 100.0));
+               this.a(asc.u, (int)Math.round($$1 * 100.0));
             }
          } else if (this.aC()) {
             int $$6 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$6 > 0) {
                if (this.bY()) {
-                  this.a(asb.r, $$6);
+                  this.a(asc.r, $$6);
                   this.A(0.1F * (float)$$6 * 0.01F);
                } else if (this.bX()) {
-                  this.a(asb.q, $$6);
+                  this.a(asc.q, $$6);
                   this.A(0.0F * (float)$$6 * 0.01F);
                } else {
-                  this.a(asb.p, $$6);
+                  this.a(asc.p, $$6);
                   this.A(0.0F * (float)$$6 * 0.01F);
                }
             }
          } else if (this.fw()) {
             int $$7 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-            this.a(asb.B, $$7);
+            this.a(asc.B, $$7);
          } else {
             int $$8 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$8 > 25) {
-               this.a(asb.v, $$8);
+               this.a(asc.v, $$8);
             }
          }
       }
@@ -960,17 +960,17 @@ public class ane extends cfh {
    private void r(double $$0, double $$1, double $$2) {
       if (this.bO() && !s($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-         blu $$4 = this.cZ();
-         if ($$4 instanceof cgz) {
-            this.a(asb.x, $$3);
-         } else if ($$4 instanceof chb) {
-            this.a(asb.y, $$3);
-         } else if ($$4 instanceof byo) {
-            this.a(asb.z, $$3);
-         } else if ($$4 instanceof bzw) {
-            this.a(asb.A, $$3);
-         } else if ($$4 instanceof cdb) {
-            this.a(asb.D, $$3);
+         blv $$4 = this.cZ();
+         if ($$4 instanceof cha) {
+            this.a(asc.x, $$3);
+         } else if ($$4 instanceof chc) {
+            this.a(asc.y, $$3);
+         } else if ($$4 instanceof byp) {
+            this.a(asc.z, $$3);
+         } else if ($$4 instanceof bzx) {
+            this.a(asc.A, $$3);
+         } else if ($$4 instanceof cdc) {
+            this.a(asc.D, $$3);
          }
       }
    }
@@ -980,35 +980,35 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(ary<?> $$0, int $$1) {
+   public void a(arz<?> $$0, int $$1) {
       this.cq.b(this, $$0, $$1);
       this.gh().a($$0, this, $$1x -> $$1x.b($$1));
    }
 
    @Override
-   public void a(ary<?> $$0) {
+   public void a(arz<?> $$0) {
       this.cq.a(this, $$0, 0);
-      this.gh().a($$0, this, emu::c);
+      this.gh().a($$0, this, emv::c);
    }
 
    @Override
-   public int a(Collection<cqd<?>> $$0) {
+   public int a(Collection<cqe<?>> $$0) {
       return this.cJ.a($$0, this);
    }
 
    @Override
-   public void a(cqd<?> $$0, List<cmx> $$1) {
+   public void a(cqe<?> $$0, List<cmy> $$1) {
       am.aa.a(this, $$0.a(), $$1);
    }
 
    @Override
    public void a(List<ahg> $$0) {
-      List<cqd<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aG().a($$0x).stream()).collect(Collectors.toList());
+      List<cqe<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aG().a($$0x).stream()).collect(Collectors.toList());
       this.a($$1);
    }
 
    @Override
-   public int b(Collection<cqd<?>> $$0) {
+   public int b(Collection<cqe<?>> $$0) {
       return this.cJ.b($$0, this);
    }
 
@@ -1050,13 +1050,13 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(ee.a $$0, els $$1) {
+   public void a(ee.a $$0, elt $$1) {
       super.a($$0, $$1);
       this.c.b(new abf($$0, $$1.c, $$1.d, $$1.e));
    }
 
-   public void a(ee.a $$0, blu $$1, ee.a $$2) {
-      els $$3 = $$2.a($$1);
+   public void a(ee.a $$0, blv $$1, ee.a $$2) {
+      elt $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.c.b(new abf($$0, $$1, $$2));
    }
@@ -1075,7 +1075,7 @@ public class ane extends cfh {
          this.ch = $$0.ch;
          this.r($$0.fN());
          this.ax = $$0.ax;
-      } else if (this.dM().Z().b(ctk.d) || $$0.P_()) {
+      } else if (this.dM().Z().b(ctl.d) || $$0.P_()) {
          this.fS().a($$0.fS());
          this.cf = $$0.cf;
          this.cg = $$0.cg;
@@ -1099,10 +1099,10 @@ public class ane extends cfh {
    }
 
    @Override
-   protected void a(blh $$0, @Nullable blu $$1) {
+   protected void a(bli $$0, @Nullable blv $$1) {
       super.a($$0, $$1);
       this.c.b(new ade(this.aj(), $$0));
-      if ($$0.c() == blj.y) {
+      if ($$0.c() == blk.y) {
          this.cL = this.ah;
          this.cK = this.dk();
       }
@@ -1111,17 +1111,17 @@ public class ane extends cfh {
    }
 
    @Override
-   protected void a(blh $$0, boolean $$1, @Nullable blu $$2) {
+   protected void a(bli $$0, boolean $$1, @Nullable blv $$2) {
       super.a($$0, $$1, $$2);
       this.c.b(new ade(this.aj(), $$0));
       am.B.a(this, $$2);
    }
 
    @Override
-   protected void a(blh $$0) {
+   protected void a(bli $$0) {
       super.a($$0);
       this.c.b(new abj(this.aj(), $$0.c()));
-      if ($$0.c() == blj.y) {
+      if ($$0.c() == blk.y) {
          this.cK = null;
       }
 
@@ -1130,17 +1130,17 @@ public class ane extends cfh {
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.c.a($$0, $$1, $$2, this.dC(), this.dE(), bmy.g);
+      this.c.a($$0, $$1, $$2, this.dC(), this.dE(), bmz.g);
    }
 
    @Override
    public void d(double $$0, double $$1, double $$2) {
-      this.c.a(this.dr() + $$0, this.dt() + $$1, this.dx() + $$2, this.dC(), this.dE(), bmy.f);
+      this.c.a(this.dr() + $$0, this.dt() + $$1, this.dx() + $$2, this.dC(), this.dE(), bmz.f);
    }
 
    @Override
-   public boolean a(and $$0, double $$1, double $$2, double $$3, Set<bmy> $$4, float $$5, float $$6) {
-      csv $$7 = new csv(hx.a($$1, $$2, $$3));
+   public boolean a(and $$0, double $$1, double $$2, double $$3, Set<bmz> $$4, float $$5, float $$6) {
+      csw $$7 = new csw(hx.a($$1, $$2, $$3));
       $$0.l().a(ani.g, $$7, 1, this.aj());
       this.ac();
       if (this.fD()) {
@@ -1164,12 +1164,12 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(blu $$0) {
+   public void a(blv $$0) {
       this.z().l().a(this, new zd($$0, 4));
    }
 
    @Override
-   public void b(blu $$0) {
+   public void b(blv $$0) {
       this.z().l().a(this, new zd($$0, 5));
    }
 
@@ -1185,12 +1185,12 @@ public class ane extends cfh {
       return (and)this.dM();
    }
 
-   public boolean a(ctl $$0) {
+   public boolean a(ctm $$0) {
       if (!this.e.a($$0)) {
          return false;
       } else {
          this.c.b(new aaf(aaf.d, (float)$$0.a()));
-         if ($$0 == ctl.d) {
+         if ($$0 == ctm.d) {
             this.gg();
             this.ac();
          } else {
@@ -1205,12 +1205,12 @@ public class ane extends cfh {
 
    @Override
    public boolean P_() {
-      return this.e.b() == ctl.d;
+      return this.e.b() == ctm.d;
    }
 
    @Override
    public boolean f() {
-      return this.e.b() == ctl.b;
+      return this.e.b() == ctm.b;
    }
 
    @Override
@@ -1256,7 +1256,7 @@ public class ane extends cfh {
 
    public ams B() {
       int $$0 = this.an().b(bM);
-      bme $$1 = bme.d.apply(this.an().b(bN));
+      bmf $$1 = bmf.d.apply(this.an().b(bN));
       return new ams(this.cO, this.cN, this.cD, this.cE, $$0, $$1, this.cZ, this.da);
    }
 
@@ -1264,16 +1264,16 @@ public class ane extends cfh {
       return this.cE;
    }
 
-   public cff D() {
+   public cfg D() {
       return this.cD;
    }
 
    private boolean w(boolean $$0) {
-      return this.cD == cff.c ? $$0 : true;
+      return this.cD == cfg.c ? $$0 : true;
    }
 
    private boolean gv() {
-      return this.cD == cff.a;
+      return this.cD == cfg.a;
    }
 
    public int E() {
@@ -1293,11 +1293,11 @@ public class ane extends cfh {
       this.cF = ac.b();
    }
 
-   public arx H() {
+   public ary H() {
       return this.cq;
    }
 
-   public arw I() {
+   public arx I() {
       return this.cJ;
    }
 
@@ -1311,14 +1311,14 @@ public class ane extends cfh {
       }
    }
 
-   public blu K() {
-      return (blu)(this.cG == null ? this : this.cG);
+   public blv K() {
+      return (blv)(this.cG == null ? this : this.cG);
    }
 
    @Override
-   public void c(@Nullable blu $$0) {
-      blu $$1 = this.K();
-      this.cG = (blu)($$0 == null ? this : $$0);
+   public void c(@Nullable blv $$0) {
+      blv $$1 = this.K();
+      this.cG = (blv)($$0 == null ? this : $$0);
       if ($$1 != this.cG) {
          if (this.cG.dM() instanceof and $$2) {
             this.a($$2, this.cG.dr(), this.cG.dt(), this.cG.dx(), Set.of(), this.dC(), this.dE());
@@ -1341,8 +1341,8 @@ public class ane extends cfh {
    }
 
    @Override
-   public void d(blu $$0) {
-      if (this.e.b() == ctl.d) {
+   public void d(blv $$0) {
+      if (this.e.b() == ctm.d) {
          this.c($$0);
       } else {
          super.d($$0);
@@ -1359,7 +1359,7 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(bjz $$0) {
+   public void a(bka $$0) {
       super.a($$0);
       this.gm();
    }
@@ -1383,11 +1383,11 @@ public class ane extends cfh {
          this.c.a($$1, $$2, $$3, $$4, $$5);
       } else {
          and $$6 = this.z();
-         egh $$7 = $$0.B_();
+         egi $$7 = $$0.B_();
          this.c.b(new abl(this.d($$0), (byte)3));
          this.c.b(new zm($$7.s(), $$7.t()));
          this.d.ae().d(this);
-         $$6.a(this, blu.c.e);
+         $$6.a(this, blv.c.e);
          this.dJ();
          this.b($$1, $$2, $$3, $$4, $$5);
          this.c($$0);
@@ -1408,7 +1408,7 @@ public class ane extends cfh {
       return this.cX;
    }
 
-   public ahf<cto> T() {
+   public ahf<ctp> T() {
       return this.cU;
    }
 
@@ -1416,7 +1416,7 @@ public class ane extends cfh {
       return this.cW;
    }
 
-   public void a(ahf<cto> $$0, @Nullable hx $$1, float $$2, boolean $$3, boolean $$4) {
+   public void a(ahf<ctp> $$0, @Nullable hx $$1, float $$2, boolean $$3, boolean $$4) {
       if ($$1 != null) {
          boolean $$5 = $$1.equals(this.cV) && $$0.equals(this.cU);
          if ($$4 && !$$5) {
@@ -1429,7 +1429,7 @@ public class ane extends cfh {
          this.cW = $$3;
       } else {
          this.cV = null;
-         this.cU = cto.h;
+         this.cU = ctp.h;
          this.cX = 0.0F;
          this.cW = false;
       }
@@ -1452,24 +1452,24 @@ public class ane extends cfh {
    }
 
    @Override
-   public void a(arq $$0, ars $$1, float $$2, float $$3) {
+   public void a(arr $$0, art $$1, float $$2, float $$3) {
       this.c.b(new acs(kd.b.d($$0), $$1, this.dr(), this.dt(), this.dx(), $$2, $$3, this.ag.g()));
    }
 
    @Override
-   public cbt a(cmx $$0, boolean $$1, boolean $$2) {
-      cbt $$3 = super.a($$0, $$1, $$2);
+   public cbu a(cmy $$0, boolean $$1, boolean $$2) {
+      cbu $$3 = super.a($$0, $$1, $$2);
       if ($$3 == null) {
          return null;
       } else {
          this.dM().b($$3);
-         cmx $$4 = $$3.q();
+         cmy $$4 = $$3.q();
          if ($$2) {
             if (!$$4.b()) {
-               this.a(asb.f.b($$4.d()), $$0.L());
+               this.a(asc.f.b($$4.d()), $$0.L());
             }
 
-            this.a(asb.F);
+            this.a(asc.F);
          }
 
          return $$3;
@@ -1481,17 +1481,17 @@ public class ane extends cfh {
    }
 
    public void c(and $$0) {
-      this.a((cto)$$0);
+      this.a((ctp)$$0);
       this.e.a($$0);
    }
 
    @Nullable
-   private static ctl a(@Nullable sn $$0, String $$1) {
-      return $$0 != null && $$0.b($$1, 99) ? ctl.a($$0.h($$1)) : null;
+   private static ctm a(@Nullable sn $$0, String $$1) {
+      return $$0 != null && $$0.b($$1, 99) ? ctm.a($$0.h($$1)) : null;
    }
 
-   private ctl b(@Nullable ctl $$0) {
-      ctl $$1 = this.d.bb();
+   private ctm b(@Nullable ctm $$0) {
+      ctm $$1 = this.d.bb();
       if ($$1 != null) {
          return $$1;
       } else {
@@ -1506,7 +1506,7 @@ public class ane extends cfh {
 
    private void k(sn $$0) {
       $$0.a("playerGameType", this.e.b().a());
-      ctl $$1 = this.e.c();
+      ctm $$1 = this.e.c();
       if ($$1 != null) {
          $$0.a("previousPlayerGameType", $$1.a());
       }
@@ -1522,19 +1522,19 @@ public class ane extends cfh {
    }
 
    @Override
-   public boolean a(cto $$0, hx $$1) {
+   public boolean a(ctp $$0, hx $$1) {
       return super.a($$0, $$1) && $$0.a(this, $$1);
    }
 
    @Override
-   protected void a(cmx $$0) {
+   protected void a(cmy $$0) {
       am.U.a(this, $$0);
       super.a($$0);
    }
 
    public boolean a(boolean $$0) {
-      cfg $$1 = this.fS();
-      cmx $$2 = $$1.a($$0);
+      cfh $$1 = this.fS();
+      cmy $$2 = $$1.a($$0);
       this.bS.b($$1, $$1.l).ifPresent($$1x -> this.bS.a($$1x, $$1.f()));
       return this.a($$2, false, true) != null;
    }
@@ -1544,14 +1544,14 @@ public class ane extends cfh {
    }
 
    @Override
-   public Optional<cen> aa() {
+   public Optional<ceo> aa() {
       return Optional.of(this.db);
    }
 
    @Override
-   public void a(cbt $$0) {
+   public void a(cbu $$0) {
       super.a($$0);
-      blu $$1 = $$0.w();
+      blv $$1 = $$0.w();
       if ($$1 != null) {
          am.Q.a(this, $$0.q(), $$1);
       }
@@ -1568,19 +1568,19 @@ public class ane extends cfh {
 
    @Override
    public void a(double $$0, double $$1) {
-      this.cl = (float)(aun.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dC());
+      this.cl = (float)(auo.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dC());
       this.c.b(new aah(this));
    }
 
    @Override
-   public boolean a(blu $$0, boolean $$1) {
+   public boolean a(blv $$0, boolean $$1) {
       if (!super.a($$0, $$1)) {
          return false;
       } else {
          $$0.i(this);
          this.c.a(this.dr(), this.dt(), this.dx(), this.dC(), this.dE());
-         if ($$0 instanceof bmk $$2) {
-            for (blh $$3 : $$2.es()) {
+         if ($$0 instanceof bml $$2) {
+            for (bli $$3 : $$2.es()) {
                this.c.b(new ade($$0.aj(), $$3));
             }
          }
@@ -1591,16 +1591,16 @@ public class ane extends cfh {
 
    @Override
    public void ac() {
-      blu $$0 = this.cZ();
+      blv $$0 = this.cZ();
       super.ac();
-      if ($$0 instanceof bmk $$1) {
-         for (blh $$2 : $$1.es()) {
+      if ($$0 instanceof bml $$1) {
+         for (bli $$2 : $$1.es()) {
             this.c.b(new abj($$0.aj(), $$2.c()));
          }
       }
    }
 
    public adg d(and $$0) {
-      return new adg($$0.ac(), $$0.ae(), cup.a($$0.C()), this.e.b(), this.e.c(), $$0.ah(), $$0.B(), this.gr(), this.av());
+      return new adg($$0.ac(), $$0.ae(), cuq.a($$0.C()), this.e.b(), this.e.c(), $$0.ah(), $$0.B(), this.gr(), this.av());
    }
 }

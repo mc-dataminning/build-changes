@@ -1,17 +1,15 @@
-public enum cpq implements avj {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final avj.a<cpq> d = avj.a(cpq::values);
-   private final String e;
-
-   private cpq(String $$0) {
-      this.e = $$0;
+public class cpq extends cpl {
+   public cpq(String $$0, cpr $$1, cpz $$2, cmy $$3, float $$4, int $$5) {
+      super(cqh.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cmy g() {
+      return new cmy(cws.og);
+   }
+
+   @Override
+   public cqg<?> ar_() {
+      return cqg.s;
    }
 }

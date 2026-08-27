@@ -1,86 +1,151 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bti extends bud {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class bti {
+   private static final Logger a = LogUtils.getLogger();
+   private static final buv b = new buv(Integer.MAX_VALUE, new bth() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bth.a, buv> c = new EnumMap<>(bth.a.class);
+   private final Set<buv> d = Sets.newLinkedHashSet();
+   private final Supplier<bgs> e;
+   private final EnumSet<bth.a> f = EnumSet.noneOf(bth.a.class);
+   private int g;
+   private int h = 3;
 
-   public bti(bmt $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bti(Supplier<bgs> $$0) {
+      this.e = $$0;
    }
 
-   @Nullable
-   @Override
-   protected els h() {
-      float $$0 = this.b.dM().z.i();
-      if (this.b.dM().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         els $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+   public void a(int $$0, bth $$1) {
+      this.d.add(new buv($$0, $$1));
+   }
+
+   @VisibleForTesting
+   public void a(Predicate<bth> $$0) {
+      this.d.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(bth $$0) {
+      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(buv::h).forEach(buv::d);
+      this.d.removeIf($$1 -> $$1.k() == $$0);
+   }
+
+   private static boolean a(buv $$0, EnumSet<bth.a> $$1) {
+      for (bth.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      return false;
    }
 
-   @Nullable
-   private els k() {
-      return bxf.a(this.b, 10, 7);
+   private static boolean a(buv $$0, Map<bth.a, buv> $$1) {
+      for (bth.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, b).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Nullable
-   private els l() {
-      and $$0 = (and)this.b.dM();
-      List<ceu> $$1 = $$0.a(bly.bg, this.b.cH().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   public void a() {
+      bgs $$0 = this.e.get();
+      $$0.a("goalCleanup");
+
+      for (buv $$1 : this.d) {
+         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      Iterator<Entry<bth.a, buv>> $$2 = this.c.entrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<bth.a, buv> $$3 = $$2.next();
+         if (!$$3.getValue().h()) {
+            $$2.remove();
+         }
+      }
+
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (buv $$4 : this.d) {
+         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
+            for (bth.a $$5 : $$4.j()) {
+               buv $$6 = this.c.getOrDefault($$5, b);
+               $$6.d();
+               this.c.put($$5, $$4);
+            }
+
+            $$4.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bgs $$1 = this.e.get();
+      $$1.a("goalTick");
+
+      for (buv $$2 : this.d) {
+         if ($$2.h() && ($$0 || $$2.T_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<buv> b() {
+      return this.d;
+   }
+
+   public Stream<buv> c() {
+      return this.d.stream().filter(buv::h);
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(bth.a $$0) {
+      this.f.add($$0);
+   }
+
+   public void b(bth.a $$0) {
+      this.f.remove($$0);
+   }
+
+   public void a(bth.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
       } else {
-         ceu $$2 = $$1.get(this.b.dM().z.a($$1.size()));
-         els $$3 = $$2.dk();
-         return bxf.a(this.b, 10, 7, $$3);
+         this.a($$0);
       }
-   }
-
-   @Nullable
-   private els m() {
-      iz $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         hx $$1 = this.a($$0);
-         return $$1 == null ? null : bxf.a(this.b, 10, 7, els.c($$1));
-      }
-   }
-
-   @Nullable
-   private iz n() {
-      and $$0 = (and)this.b.dM();
-      List<iz> $$1 = iz.a(iz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private hx a(iz $$0) {
-      and $$1 = (and)this.b.dM();
-      bxl $$2 = $$1.y();
-      List<hx> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bxl.b.b).map(bxm::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(ceu $$0) {
-      return $$0.a(this.b.dM().X());
    }
 }

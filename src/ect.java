@@ -1,13 +1,9 @@
 import com.mojang.serialization.Codec;
 
-public interface ect<P extends ecs> {
-   ect<ecr> a = a("always_true", ecr.a);
-   ect<ecp> b = a("linear_pos", ecp.a);
-   ect<ece> c = a("axis_aligned_linear_pos", ece.a);
+public abstract class ect {
+   public static final Codec<ect> c = kd.q.q().dispatch("predicate_type", ect::a, ecu::codec);
 
-   Codec<P> codec();
+   public abstract boolean a(hx var1, hx var2, hx var3, auv var4);
 
-   static <P extends ecs> ect<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.q, $$0, () -> $$1);
-   }
+   protected abstract ecu<?> a();
 }

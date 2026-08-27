@@ -42,7 +42,7 @@ public class fm implements ArgumentType<fo> {
 
    public static hx c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       hx $$2 = b($$0, $$1);
-      if (!cto.l($$2)) {
+      if (!ctp.l($$2)) {
          throw c.create();
       } else {
          return $$2;

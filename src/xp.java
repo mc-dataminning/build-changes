@@ -1,14 +1,14 @@
 import java.util.Map;
 
 public class xp implements xf<xi> {
-   private final Map<ahf<? extends it<?>>, asy.a> a;
+   private final Map<ahf<? extends it<?>>, asz.a> a;
 
-   public xp(Map<ahf<? extends it<?>>, asy.a> $$0) {
+   public xp(Map<ahf<? extends it<?>>, asz.a> $$0) {
       this.a = $$0;
    }
 
    public xp(ui $$0) {
-      this.a = $$0.a(ui::u, asy.a::b);
+      this.a = $$0.a(ui::u, asz.a::b);
    }
 
    @Override
@@ -20,7 +20,7 @@ public class xp implements xf<xi> {
       $$0.a(this);
    }
 
-   public Map<ahf<? extends it<?>>, asy.a> a() {
+   public Map<ahf<? extends it<?>>, asz.a> a() {
       return this.a;
    }
 }

@@ -3,11 +3,11 @@ public class aen implements xf<adj> {
    private final aen.a b;
    private final int c;
 
-   public aen(blu $$0, aen.a $$1) {
+   public aen(blv $$0, aen.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public aen(blu $$0, aen.a $$1, int $$2) {
+   public aen(blv $$0, aen.a $$1, int $$2) {
       this.a = $$0.aj();
       this.b = $$1;
       this.c = $$2;

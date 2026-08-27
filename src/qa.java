@@ -1,5 +1,5 @@
 public class qa {
-   public static void a(pe<eao> $$0) {
+   public static void a(pe<eap> $$0) {
       pk.a($$0);
       po.a($$0);
       pn.a($$0);

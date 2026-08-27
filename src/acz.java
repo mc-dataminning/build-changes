@@ -7,9 +7,9 @@ public class acz implements xf<za> {
    private final byte f;
    private final boolean g;
 
-   public acz(blu $$0) {
+   public acz(blv $$0) {
       this.a = $$0.aj();
-      els $$1 = $$0.dl();
+      elt $$1 = $$0.dl();
       this.b = $$1.c;
       this.c = $$1.d;
       this.d = $$1.e;

@@ -7,7 +7,7 @@ public interface mw {
 
    mw a(@Nullable String var1);
 
-   cms a();
+   cmt a();
 
    void a(my var1, ahg var2);
 
@@ -25,16 +25,16 @@ public interface mw {
       }
    }
 
-   static ahg a(ctn $$0) {
+   static ahg a(cto $$0) {
       return kd.h.b($$0.k());
    }
 
-   static cpr a(mx $$0) {
+   static cps a(mx $$0) {
       return switch ($$0) {
-         case a -> cpr.a;
-         case e, f -> cpr.c;
-         case c -> cpr.b;
-         default -> cpr.d;
+         case a -> cps.a;
+         case e, f -> cps.c;
+         case c -> cps.b;
+         default -> cps.d;
       };
    }
 }

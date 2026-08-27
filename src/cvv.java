@@ -1,99 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cvv extends cwb {
-   public static final MapCodec<cvv> a = b(cvv::new);
-   public static final dka b = djw.P;
-   public static final djx c = djw.u;
+public class cvv extends cvh {
+   public static final MapCodec<cvv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clm.q.fieldOf("color").forGetter(cvh::b), u()).apply($$0, cvv::new));
+   public static final dkh b = djx.ba;
+   private static final Map<clm, cwq> c = Maps.newHashMap();
+   private static final emm d = cwq.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<cvv> a() {
       return a;
    }
 
-   public cvv(djf.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
+   public cvv(clm $$0, djg.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      if ($$1.B) {
-         return bka.a;
-      } else {
-         dgu $$6 = $$1.c_($$2);
-         if ($$6 instanceof dgn) {
-            $$3.a((dgn)$$6);
-            $$3.a(asb.ar);
-            cdy.a($$3, true);
-         }
-
-         return bka.b;
-      }
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      bjw.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return d;
    }
 
    @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      dgu $$4 = $$1.c_($$2);
-      if ($$4 instanceof dgn) {
-         ((dgn)$$4).m();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dgn($$0, $$1);
+   public djh a(cph $$0) {
+      return this.o().a(b, Integer.valueOf(dkn.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public dcu b_(djg $$0) {
-      return dcu.c;
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      return $$1 == ic.a && !$$0.a($$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
-      if ($$4.A()) {
-         dgu $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgn) {
-            ((dgn)$$5).a($$4.y());
-         }
-      }
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public boolean d_(djg $$0) {
-      return true;
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public int a(djg $$0, cto $$1, hx $$2) {
-      return cia.a($$1.c_($$2));
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   public djg a(djg $$0, ddb $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      return this.o().a(b, $$0.d().g());
+   public static cwq a(clm $$0) {
+      return c.getOrDefault($$0, cws.iJ);
    }
 }

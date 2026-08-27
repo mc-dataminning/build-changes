@@ -1,69 +1,83 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eiq extends eih {
+public class eiq extends eii {
    public static final Codec<eiq> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ahg.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  atv.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  kd.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(kd.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ehn.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, eiq::new)
    );
-   private final ahg b;
-   private final long c;
-   private final ih<dgw<?>> d;
+   private final ih<dgx<?>> b;
+   private final List<ehp> c;
 
-   private eiq(List<eju> $$0, ahg $$1, long $$2, ih<dgw<?>> $$3) {
+   eiq(List<ejv> $$0, ih<dgx<?>> $$1, List<ehp> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eij b() {
-      return eik.s;
+   public eik b() {
+      return eil.p;
    }
 
    @Override
-   public cmx a(cmx $$0, egv $$1) {
+   public cmy a(cmy $$0, egw $$1) {
       if ($$0.b()) {
          return $$0;
       } else {
-         sn $$2 = ckq.a($$0);
-         if ($$2 == null) {
-            $$2 = new sn();
+         iq<cmy> $$2 = iq.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ehe.a($$1.d(), $$2::add), $$1)));
+         sn $$3 = new sn();
+         bjv.a($$3, $$2);
+         sn $$4 = ckr.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
+         } else {
+            $$4.a($$3);
          }
 
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
-         }
-
-         ckq.a($$0, this.d.a(), $$2);
+         ckr.a($$0, this.b.a(), $$4);
          return $$0;
       }
    }
 
    @Override
-   public void a(ehe $$0) {
+   public void a(ehf $$0) {
       super.a($$0);
-      egx<ehd> $$1 = new egx<>(eha.c, this.b);
-      if ($$0.a().getElementOptional($$1).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   public static eih.a<?> a(dgw<?> $$0, ahg $$1) {
-      return a($$2 -> new eiq($$2, $$1, 0L, $$0.a()));
+   public static eiq.a a(dgx<?> $$0) {
+      return new eiq.a($$0);
    }
 
-   public static eih.a<?> a(dgw<?> $$0, ahg $$1, long $$2) {
-      return a($$3 -> new eiq($$3, $$1, $$2, $$0.a()));
+   public static class a extends eii.a<eiq.a> {
+      private final Builder<ehp> a = ImmutableList.builder();
+      private final dgx<?> b;
+
+      public a(dgx<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected eiq.a a() {
+         return this;
+      }
+
+      public eiq.a a(ehp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eij b() {
+         return new eiq(this.g(), this.b.a(), this.a.build());
+      }
    }
 }

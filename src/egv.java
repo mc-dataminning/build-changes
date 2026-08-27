@@ -1,142 +1,106 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
 public class egv {
-   private final ehb a;
-   private final auu b;
-   private final egz c;
-   private final Set<egv.c<?>> d = Sets.newLinkedHashSet();
-
-   egv(ehb $$0, auu $$1, egz $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(ejd<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(ejd<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(ahg $$0, Consumer<cmx> $$1) {
-      this.a.a($$0, $$1);
-   }
-
+   private static final Codec<egv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atw.a(ekr.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), atw.a(ekr.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, egv::new)
+   );
+   public static final Codec<egv> a = Codec.either(Codec.INT, b).xmap($$0 -> (egv)$$0.map(egv::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   public <T> T c(ejd<T> $$0) {
-      return this.a.d($$0);
-   }
+   private final ekq c;
+   @Nullable
+   private final ekq d;
+   private final egv.b e;
+   private final egv.a f;
 
-   public boolean a(egv.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(egv.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(egv.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public egz a() {
-      return this.c;
-   }
-
-   public auu b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public and d() {
-      return this.a.a();
-   }
-
-   public static egv.c<ehd> a(ehd $$0) {
-      return new egv.c<>(eha.c, $$0);
-   }
-
-   public static egv.c<eju> a(eju $$0) {
-      return new egv.c<>(eha.a, $$0);
-   }
-
-   public static egv.c<eii> a(eii $$0) {
-      return new egv.c<>(eha.b, $$0);
-   }
-
-   public static class a {
-      private final ehb a;
-      @Nullable
-      private auu b;
-
-      public a(ehb $$0) {
-         this.a = $$0;
+   public Set<eje<?>> a() {
+      Builder<eje<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      public egv.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = auu.a($$0);
-         }
-
-         return this;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
       }
 
-      public and a() {
-         return this.a.a();
-      }
-
-      public egv a(Optional<ahg> $$0) {
-         and $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         auu $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::F_);
-         return new egv(this.a, $$3, $$2.aJ());
-      }
+      return $$0.build();
    }
 
-   public static enum b implements avj {
-      a("this", ejg.a),
-      b("killer", ejg.d),
-      c("direct_killer", ejg.e),
-      d("killer_player", ejg.b);
+   private egv(Optional<ekq> $$0, Optional<ekq> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      public static final avj.a<egv.b> e = avj.a(egv.b::values);
-      private final String f;
-      private final ejd<? extends blu> g;
-
-      private b(String $$0, ejd<? extends blu> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public ejd<? extends blu> a() {
-         return this.g;
-      }
-
-      public static egv.b a(String $$0) {
-         egv.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+   private egv(@Nullable ekq $$0, @Nullable ekq $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> auo.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static record c<T>(eha<T> a, T b) {
+   public static egv a(int $$0) {
+      eko $$1 = eko.a((float)$$0);
+      return new egv(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static egv a(int $$0, int $$1) {
+      return new egv(Optional.of(eko.a((float)$$0)), Optional.of(eko.a((float)$$1)));
+   }
+
+   public static egv b(int $$0) {
+      return new egv(Optional.of(eko.a((float)$$0)), Optional.empty());
+   }
+
+   public static egv c(int $$0) {
+      return new egv(Optional.empty(), Optional.of(eko.a((float)$$0)));
+   }
+
+   public int a(egw $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(egw $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eko $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(egw var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(egw var1, int var2);
    }
 }

@@ -1,78 +1,49 @@
-public class cpv extends cpt {
-   private static final cpy a = cpy.a(cna.qL);
-   private static final cpy b = cpy.a(cna.pr);
-   private static final cpy c = cpy.a(cna.uo);
-
-   public cpv(cpr $$0) {
+public class cpv extends cpu {
+   public cpv(cps $$0) {
       super($$0);
    }
 
-   public boolean a(ciq $$0, cto $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
+   public boolean a(cir $$0, ctp $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cmy $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(asp.aM)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cnb.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return $$2 && $$3 >= 1;
+         return true;
+      }
    }
 
-   public cmx a(ciq $$0, iu $$1) {
-      cmx $$2 = new cmx(cna.un, 3);
-      sn $$3 = $$2.a("Fireworks");
-      st $$4 = new st();
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cmx $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               sn $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
-      return $$2;
+   public cmy a(cir $$0, iu $$1) {
+      dhl.a $$2 = new dhl.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
+      return dhl.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cmx a(iu $$0) {
-      return new cmx(cna.un);
-   }
-
-   @Override
-   public cqf<?> ar_() {
-      return cqf.g;
+   public cqg<?> ar_() {
+      return cqg.w;
    }
 }

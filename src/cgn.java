@@ -1,93 +1,73 @@
-public class cgn extends cfo {
-   private static final agm<Boolean> e = agp.a(cgn.class, ago.k);
+import javax.annotation.Nullable;
 
-   public cgn(bly<? extends cgn> $$0, cto $$1) {
+public class cgn extends cfp implements cfx {
+   public static final cgn.a e = new cgn.a();
+
+   public cgn(blz<? extends cgn> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
-   public cgn(cto $$0, bmk $$1, double $$2, double $$3, double $$4) {
-      super(bly.bo, $$1, $$2, $$3, $$4, $$0);
+   public cgn(blz<? extends cgn> $$0, cdl $$1, ctp $$2) {
+      super($$0, $$1.dr(), $$1.gf(), $$1.dx(), $$2);
+      this.b($$1);
    }
 
    @Override
-   protected float x() {
-      return this.z() ? 0.73F : super.x();
+   protected elo aq() {
+      float $$0 = this.ai().n().a / 2.0F;
+      float $$1 = this.ai().n().b;
+      float $$2 = 0.15F;
+      return new elo(
+         this.dk().c - (double)$$0,
+         this.dk().d - 0.15F,
+         this.dk().e - (double)$$0,
+         this.dk().c + (double)$$0,
+         this.dk().d - 0.15F + (double)$$1,
+         this.dk().e + (double)$$0
+      );
    }
 
    @Override
-   public boolean bN() {
-      return false;
+   protected float a(bmx $$0, blw $$1) {
+      return 0.0F;
    }
 
    @Override
-   public float a(ctg $$0, csu $$1, hx $$2, djg $$3, eeq $$4, float $$5) {
-      return this.z() && cbh.d($$3) ? Math.min(0.8F, $$5) : $$5;
+   public boolean h(blv $$0) {
+      return $$0 instanceof cgn ? false : super.h($$0);
    }
 
    @Override
-   protected void a(elp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         blu $$1 = $$0.a();
-         boolean $$4;
-         if (this.w() instanceof bmk $$3) {
-            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
-            if ($$4) {
-               if ($$1.bx()) {
-                  this.a($$3, $$1);
-               } else {
-                  $$3.b(5.0F);
-               }
-            }
-         } else {
-            $$4 = $$1.a(this.dN().o(), 5.0F);
-         }
-
-         if ($$4 && $$1 instanceof bmk $$6) {
-            int $$7 = 0;
-            if (this.dM().ak() == bjx.c) {
-               $$7 = 10;
-            } else if (this.dM().ak() == bjx.d) {
-               $$7 = 40;
-            }
-
-            if ($$7 > 0) {
-               $$6.b(new blh(blj.t, 20 * $$7, 1), this.J());
-            }
-         }
-      }
+   protected boolean a(blv $$0) {
+      return $$0 instanceof cgn ? false : super.a($$0);
    }
 
    @Override
    protected void a(elq $$0) {
       super.a($$0);
       if (!this.dM().B) {
-         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, cto.a.c);
-         this.am();
+         $$0.a().a(this.dN().a(this, this.w() instanceof bml $$1 ? $$1 : null), 1.0F);
+         this.z();
       }
    }
 
-   @Override
-   public boolean bt() {
-      return false;
+   private void z() {
+      this.dM().a(this, null, e, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.ag.j()), false, ctp.a.e, jx.y, jx.z, ars.Be);
    }
 
    @Override
-   public boolean a(bks $$0, float $$1) {
-      return false;
+   protected void a(elp $$0) {
+      super.a($$0);
+      this.z();
+      this.am();
    }
 
    @Override
-   protected void c_() {
-      this.an.a(e, false);
-   }
-
-   public boolean z() {
-      return this.an.b(e);
-   }
-
-   public void a(boolean $$0) {
-      this.an.b(e, $$0);
+   protected void a(elr $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
    }
 
    @Override
@@ -96,14 +76,35 @@ public class cgn extends cfo {
    }
 
    @Override
-   public void b(sn $$0) {
-      super.b($$0);
-      $$0.a("dangerous", this.z());
+   public cmy q() {
+      return cmy.f;
    }
 
    @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.a($$0.q("dangerous"));
+   protected float x() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float y() {
+      return this.x();
+   }
+
+   @Nullable
+   @Override
+   protected jv u() {
+      return null;
+   }
+
+   @Override
+   protected csy.a ag_() {
+      return csy.a.b;
+   }
+
+   public static final class a extends cti {
+      @Override
+      public boolean a(cth $$0, blv $$1) {
+         return false;
+      }
    }
 }

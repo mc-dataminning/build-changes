@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class amn extends dme implements aml.d {
+public class amn extends dmf implements aml.d {
    private static final byte f = -1;
    private static final byte g = 0;
    private static final byte h = 1;
@@ -67,22 +67,22 @@ public class amn extends dme implements aml.d {
    private final LongSet p = new LongOpenHashSet();
    final and q;
    private final ang r;
-   private final biq<Runnable> s;
-   private dld t;
-   private final dpd u;
-   private final dle v;
-   private final Supplier<egg> w;
-   private final bxl x;
+   private final bir<Runnable> s;
+   private dle t;
+   private final dpe u;
+   private final dlf v;
+   private final Supplier<egh> w;
+   private final bxm x;
    final LongSet y = new LongOpenHashSet();
    private boolean z;
    private final amp A;
-   private final bis<amp.a<Runnable>> B;
-   private final bis<amp.a<Runnable>> C;
+   private final bit<amp.a<Runnable>> B;
+   private final bit<amp.a<Runnable>> C;
    private final anm D;
-   private final dmw E;
+   private final dmx E;
    private final amn.a F;
    private final AtomicInteger G = new AtomicInteger();
-   private final edg H;
+   private final edh H;
    private final String I;
    private final amx J = new amx();
    private final Int2ObjectMap<amn.b> K = new Int2ObjectOpenHashMap();
@@ -93,16 +93,16 @@ public class amn extends dme implements aml.d {
 
    public amn(
       and $$0,
-      egl.c $$1,
+      egm.c $$1,
       DataFixer $$2,
-      edg $$3,
+      edh $$3,
       Executor $$4,
-      biq<Runnable> $$5,
-      dlq $$6,
-      dld $$7,
+      bir<Runnable> $$5,
+      dlr $$6,
+      dle $$7,
       anm $$8,
-      dmw $$9,
-      Supplier<egg> $$10,
+      dmx $$9,
+      Supplier<egh> $$10,
       int $$11,
       boolean $$12
    ) {
@@ -114,48 +114,48 @@ public class amn extends dme implements aml.d {
       this.t = $$7;
       iu $$14 = $$0.I_();
       long $$15 = $$0.C();
-      if ($$7 instanceof dos $$16) {
-         this.u = dpd.a($$16.g().a(), $$14.b(ke.aB), $$15);
+      if ($$7 instanceof dot $$16) {
+         this.u = dpe.a($$16.g().a(), $$14.b(ke.aB), $$15);
       } else {
-         this.u = dpd.a(dou.e(), $$14.b(ke.aB), $$15);
+         this.u = dpe.a(dov.e(), $$14.b(ke.aB), $$15);
       }
 
       this.v = $$7.a($$14.b(ke.aF), this.u, $$15);
       this.s = $$5;
-      bit<Runnable> $$17 = bit.a($$4, "worldgen");
-      bis<Runnable> $$18 = bis.a("main", $$5::i);
+      biu<Runnable> $$17 = biu.a($$4, "worldgen");
+      bit<Runnable> $$18 = bit.a("main", $$5::i);
       this.D = $$8;
       this.E = $$9;
-      bit<Runnable> $$19 = bit.a($$4, "light");
+      biu<Runnable> $$19 = biu.a($$4, "light");
       this.A = new amp(ImmutableList.of($$17, $$18, $$19), $$4, Integer.MAX_VALUE);
       this.B = this.A.a($$17, false);
       this.C = this.A.a($$18, false);
       this.r = new ang($$6, this, this.q.E_().g(), $$19, this.A.a($$19, false));
       this.F = new amn.a($$4, $$5);
       this.w = $$10;
-      this.x = new bxl($$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.x = new bxm($$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
    }
 
-   protected dld a() {
+   protected dle a() {
       return this.t;
    }
 
-   protected dle b() {
+   protected dlf b() {
       return this.v;
    }
 
-   protected dpd c() {
+   protected dpe c() {
       return this.u;
    }
 
    public void d() {
-      DataResult<JsonElement> $$0 = dld.a.encodeStart(JsonOps.INSTANCE, this.t);
-      DataResult<dld> $$1 = $$0.flatMap($$0x -> dld.a.parse(JsonOps.INSTANCE, $$0x));
+      DataResult<JsonElement> $$0 = dle.a.encodeStart(JsonOps.INSTANCE, this.t);
+      DataResult<dle> $$1 = $$0.flatMap($$0x -> dle.a.parse(JsonOps.INSTANCE, $$0x));
       $$1.result().ifPresent($$0x -> this.t = $$0x);
    }
 
-   private static double a(csv $$0, blu $$1) {
+   private static double a(csw $$0, blv $$1) {
       double $$2 = (double)iz.a($$0.e, 8);
       double $$3 = (double)iz.a($$0.f, 8);
       double $$4 = $$2 - $$1.dr();
@@ -164,7 +164,7 @@ public class amn extends dme implements aml.d {
    }
 
    boolean a(ane $$0, int $$1, int $$2) {
-      return $$0.W().a($$1, $$2) && !$$0.c.f.a(csv.c($$1, $$2));
+      return $$0.W().a($$1, $$2) && !$$0.c.f.a(csw.c($$1, $$2));
    }
 
    private boolean b(ane $$0, int $$1, int $$2) {
@@ -204,14 +204,14 @@ public class amn extends dme implements aml.d {
       };
    }
 
-   public String a(csv $$0) {
+   public String a(csw $$0) {
       aml $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.m() + "\n";
-         dlh $$3 = $$1.h();
-         dlc $$4 = $$1.i();
+         dli $$3 = $$1.h();
+         dld $$4 = $$1.i();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.c() + $$3 + "§r\n";
          }
@@ -226,21 +226,21 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private CompletableFuture<Either<List<dlc>, aml.a>> a(aml $$0, int $$1, IntFunction<dlh> $$2) {
+   private CompletableFuture<Either<List<dld>, aml.a>> a(aml $$0, int $$1, IntFunction<dli> $$2) {
       if ($$1 == 0) {
-         dlh $$3 = $$2.apply(0);
+         dli $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.mapLeft(List::of));
       } else {
-         List<CompletableFuture<Either<dlc, aml.a>>> $$4 = new ArrayList<>();
+         List<CompletableFuture<Either<dld, aml.a>>> $$4 = new ArrayList<>();
          List<aml> $$5 = new ArrayList<>();
-         csv $$6 = $$0.l();
+         csw $$6 = $$0.l();
          int $$7 = $$6.e;
          int $$8 = $$6.f;
 
          for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
             for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
                int $$11 = Math.max(Math.abs($$10), Math.abs($$9));
-               final csv $$12 = new csv($$7 + $$10, $$8 + $$9);
+               final csw $$12 = new csw($$7 + $$10, $$8 + $$9);
                long $$13 = $$12.a();
                aml $$14 = this.a($$13);
                if ($$14 == null) {
@@ -252,30 +252,30 @@ public class amn extends dme implements aml.d {
                   }));
                }
 
-               dlh $$15 = $$2.apply($$11);
-               CompletableFuture<Either<dlc, aml.a>> $$16 = $$14.a($$15, this);
+               dli $$15 = $$2.apply($$11);
+               CompletableFuture<Either<dld, aml.a>> $$16 = $$14.a($$15, this);
                $$5.add($$14);
                $$4.add($$16);
             }
          }
 
-         CompletableFuture<List<Either<dlc, aml.a>>> $$17 = ac.b($$4);
-         CompletableFuture<Either<List<dlc>, aml.a>> $$18 = $$17.thenApply($$3 -> {
-            List<dlc> $$4x = Lists.newArrayList();
+         CompletableFuture<List<Either<dld, aml.a>>> $$17 = ac.b($$4);
+         CompletableFuture<Either<List<dld>, aml.a>> $$18 = $$17.thenApply($$3 -> {
+            List<dld> $$4x = Lists.newArrayList();
             int $$5x = 0;
 
-            for (final Either<dlc, aml.a> $$6x : $$3) {
+            for (final Either<dld, aml.a> $$6x : $$3) {
                if ($$6x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               Optional<dlc> $$7x = $$6x.left();
+               Optional<dld> $$7x = $$6x.left();
                if ($$7x.isEmpty()) {
                   final int $$8x = $$5x;
                   return Either.right(new aml.a() {
                      @Override
                      public String toString() {
-                        return "Unloaded " + new csv($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
+                        return "Unloaded " + new csw($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
                      }
                   });
                }
@@ -298,8 +298,8 @@ public class amn extends dme implements aml.d {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<aml> $$3 = $$1x -> $$1x.q().forEach($$2x -> {
-            dlh $$3x = (dlh)$$2x.getFirst();
-            CompletableFuture<Either<dlc, aml.a>> $$4x = (CompletableFuture<Either<dlc, aml.a>>)$$2x.getSecond();
+            dli $$3x = (dli)$$2x.getFirst();
+            CompletableFuture<Either<dld, aml.a>> $$4x = (CompletableFuture<Either<dld, aml.a>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.l()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -315,8 +315,8 @@ public class amn extends dme implements aml.d {
       return new y($$4);
    }
 
-   public CompletableFuture<Either<dln, aml.a>> a(aml $$0) {
-      return this.a($$0, 2, $$0x -> dlh.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dln)$$0xx.get($$0xx.size() / 2)), this.s);
+   public CompletableFuture<Either<dlo, aml.a>> a(aml $$0) {
+      return this.a($$0, 2, $$0x -> dli.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dlo)$$0xx.get($$0xx.size() / 2)), this.s);
    }
 
    @Nullable
@@ -341,7 +341,7 @@ public class amn extends dme implements aml.d {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new aml(new csv($$0), $$1, this.q, this.r, this.A, this);
+               $$2 = new aml(new csw($$0), $$1, this.q, this.r, this.A, this);
             }
 
             this.m.put($$0, $$2);
@@ -370,14 +370,14 @@ public class amn extends dme implements aml.d {
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               CompletableFuture<dlc> $$1x;
+               CompletableFuture<dld> $$1x;
                do {
                   $$1x = $$0x.j();
                   this.s.c($$1x::isDone);
                } while ($$1x != $$0x.j());
 
                return $$1x.join();
-            }).filter($$0x -> $$0x instanceof dlm || $$0x instanceof dln).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof dln || $$0x instanceof dlo).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b((BooleanSupplier)(() -> true));
@@ -388,7 +388,7 @@ public class amn extends dme implements aml.d {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bgr $$1 = this.q.af();
+      bgs $$1 = this.q.af();
       $$1.a("poi");
       this.x.a($$0);
       $$1.b("chunk_unload");
@@ -436,19 +436,19 @@ public class amn extends dme implements aml.d {
    }
 
    private void a(long $$0, aml $$1) {
-      CompletableFuture<dlc> $$2 = $$1.j();
+      CompletableFuture<dld> $$2 = $$1.j();
       $$2.thenAcceptAsync($$3 -> {
-         CompletableFuture<dlc> $$4 = $$1.j();
+         CompletableFuture<dld> $$4 = $$1.j();
          if ($$4 != $$2) {
             this.a($$0, $$1);
          } else {
             if (this.o.remove($$0, $$1) && $$3 != null) {
-               if ($$3 instanceof dln) {
-                  ((dln)$$3).c(false);
+               if ($$3 instanceof dlo) {
+                  ((dlo)$$3).c(false);
                }
 
                this.a($$3);
-               if (this.p.remove($$0) && $$3 instanceof dln $$5) {
+               if (this.p.remove($$0) && $$3 instanceof dlo $$5) {
                   this.q.a($$5);
                }
 
@@ -475,19 +475,19 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   public CompletableFuture<Either<dlc, aml.a>> a(aml $$0, dlh $$1) {
-      csv $$2 = $$0.l();
-      if ($$1 == dlh.c) {
+   public CompletableFuture<Either<dld, aml.a>> a(aml $$0, dli $$1) {
+      csw $$2 = $$0.l();
+      if ($$1 == dli.c) {
          return this.f($$2);
       } else {
-         if ($$1 == dlh.l) {
-            this.F.a(ani.e, $$2, amm.a(dlh.l), $$2);
+         if ($$1 == dli.l) {
+            this.F.a(ani.e, $$2, amm.a(dli.l), $$2);
          }
 
          if (!$$1.f()) {
-            Optional<dlc> $$3 = $$0.a($$1.d(), this).getNow(aml.a).left();
+            Optional<dld> $$3 = $$0.a($$1.d(), this).getNow(aml.a).left();
             if ($$3.isPresent() && $$3.get().j().b($$1)) {
-               CompletableFuture<Either<dlc, aml.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
+               CompletableFuture<Either<dld, aml.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
                this.D.a($$2, $$1);
                return $$4;
             }
@@ -497,7 +497,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private CompletableFuture<Either<dlc, aml.a>> f(csv $$0) {
+   private CompletableFuture<Either<dld, aml.a>> f(csw $$0) {
       return this.j($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -508,7 +508,7 @@ public class amn extends dme implements aml.d {
          })).thenApplyAsync($$1 -> {
          this.q.af().d("chunkLoad");
          if ($$1.isPresent()) {
-            dlc $$2 = dmd.a(this.q, this.x, $$0, $$1.get());
+            dld $$2 = dme.a(this.q, this.x, $$0, $$1.get());
             this.a($$0, $$2.j().g());
             return Either.left($$2);
          } else {
@@ -521,7 +521,7 @@ public class amn extends dme implements aml.d {
       return $$0.b("Status", 8);
    }
 
-   private Either<dlc, aml.a> a(Throwable $$0, csv $$1) {
+   private Either<dld, aml.a> a(Throwable $$0, csw $$1) {
       if ($$0 instanceof y $$2) {
          Throwable $$3 = $$2.getCause();
          if (!($$3 instanceof IOException)) {
@@ -537,28 +537,28 @@ public class amn extends dme implements aml.d {
       return Either.left(this.g($$1));
    }
 
-   private dlc g(csv $$0) {
+   private dld g(csw $$0) {
       this.h($$0);
-      return new dlx($$0, dma.a, this.q, this.q.I_().d(ke.at), null);
+      return new dly($$0, dmb.a, this.q, this.q.I_().d(ke.at), null);
    }
 
-   private void h(csv $$0) {
+   private void h(csw $$0) {
       this.L.put($$0.a(), (byte)-1);
    }
 
-   private byte a(csv $$0, dlh.a $$1) {
-      return this.L.put($$0.a(), (byte)($$1 == dlh.a.a ? -1 : 1));
+   private byte a(csw $$0, dli.a $$1) {
+      return this.L.put($$0.a(), (byte)($$1 == dli.a.a ? -1 : 1));
    }
 
-   private CompletableFuture<Either<dlc, aml.a>> b(aml $$0, dlh $$1) {
-      csv $$2 = $$0.l();
-      CompletableFuture<Either<List<dlc>, aml.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
+   private CompletableFuture<Either<dld, aml.a>> b(aml $$0, dli $$1) {
+      csw $$2 = $$0.l();
+      CompletableFuture<Either<List<dld>, aml.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
       this.q.af().c(() -> "chunkGenerate " + $$1);
       Executor $$4 = $$1x -> this.B.a(amp.a($$0, $$1x));
-      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dlc, aml.a>>)$$4x.map($$4xx -> {
+      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dld, aml.a>>)$$4x.map($$4xx -> {
             try {
-               dlc $$5 = (dlc)$$4xx.get($$4xx.size() / 2);
-               CompletableFuture<Either<dlc, aml.a>> $$6;
+               dld $$5 = (dld)$$4xx.get($$4xx.size() / 2);
+               CompletableFuture<Either<dld, aml.a>> $$6;
                if ($$5.j().b($$1)) {
                   $$6 = $$1.a(this.q, this.H, this.r, $$1xxx -> this.d($$0), $$5);
                } else {
@@ -572,7 +572,7 @@ public class amn extends dme implements aml.d {
                o $$9 = o.a(var9, "Exception generating new chunk");
                p $$10 = $$9.a("Chunk to be generated");
                $$10.a("Location", String.format(Locale.ROOT, "%d,%d", $$2.e, $$2.f));
-               $$10.a("Position hash", csv.c($$2.e, $$2.f));
+               $$10.a("Position hash", csw.c($$2.e, $$2.f));
                $$10.a("Generator", this.t);
                this.s.execute(() -> {
                   throw new y($$9);
@@ -585,16 +585,16 @@ public class amn extends dme implements aml.d {
          }), $$4);
    }
 
-   protected void b(csv $$0) {
-      this.s.i(ac.a((Runnable)(() -> this.F.b(ani.e, $$0, amm.a(dlh.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
+   protected void b(csw $$0) {
+      this.s.i(ac.a((Runnable)(() -> this.F.b(ani.e, $$0, amm.a(dli.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
    }
 
-   private dlh a(dlh $$0, int $$1) {
-      dlh $$2;
+   private dli a(dli $$0, int $$1) {
+      dli $$2;
       if ($$1 == 0) {
          $$2 = $$0.d();
       } else {
-         $$2 = dlh.a(dlh.a($$0) + $$1);
+         $$2 = dli.a(dli.a($$0) + $$1);
       }
 
       return $$2;
@@ -602,23 +602,23 @@ public class amn extends dme implements aml.d {
 
    private static void a(and $$0, List<sn> $$1) {
       if (!$$1.isEmpty()) {
-         $$0.b(bly.a($$1, $$0));
+         $$0.b(blz.a($$1, $$0));
       }
    }
 
-   private CompletableFuture<Either<dlc, aml.a>> d(aml $$0) {
-      CompletableFuture<Either<dlc, aml.a>> $$1 = $$0.a(dlh.n.d());
+   private CompletableFuture<Either<dld, aml.a>> d(aml $$0) {
+      CompletableFuture<Either<dld, aml.a>> $$1 = $$0.a(dli.n.d());
       return $$1.thenApplyAsync($$1x -> {
-         dlh $$2 = amm.a($$0.m());
-         return !$$2.b(dlh.n) ? aml.a : $$1x.mapLeft($$1xx -> {
-            csv $$2x = $$0.l();
-            dlx $$3 = (dlx)$$1xx;
-            dln $$4;
-            if ($$3 instanceof dlm) {
-               $$4 = ((dlm)$$3).C();
+         dli $$2 = amm.a($$0.m());
+         return !$$2.b(dli.n) ? aml.a : $$1x.mapLeft($$1xx -> {
+            csw $$2x = $$0.l();
+            dly $$3 = (dly)$$1xx;
+            dlo $$4;
+            if ($$3 instanceof dln) {
+               $$4 = ((dln)$$3).C();
             } else {
-               $$4 = new dln(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
-               $$0.a(new dlm($$4, false));
+               $$4 = new dlo(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
+               $$0.a(new dln($$4, false));
             }
 
             $$4.b(() -> amm.b($$0.m()));
@@ -634,10 +634,10 @@ public class amn extends dme implements aml.d {
       }, $$1x -> this.C.a(amp.a($$1x, $$0.l().a(), $$0::m)));
    }
 
-   public CompletableFuture<Either<dln, aml.a>> b(aml $$0) {
-      CompletableFuture<Either<List<dlc>, aml.a>> $$1 = this.a($$0, 1, $$0x -> dlh.n);
-      CompletableFuture<Either<dln, aml.a>> $$2 = $$1.<Either>thenApplyAsync(
-            $$0x -> $$0x.mapLeft($$0xx -> (dln)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(amp.a($$0, $$1x))
+   public CompletableFuture<Either<dlo, aml.a>> b(aml $$0) {
+      CompletableFuture<Either<List<dld>, aml.a>> $$1 = this.a($$0, 1, $$0x -> dli.n);
+      CompletableFuture<Either<dlo, aml.a>> $$2 = $$1.<Either>thenApplyAsync(
+            $$0x -> $$0x.mapLeft($$0xx -> (dlo)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(amp.a($$0, $$1x))
          )
          .thenApplyAsync($$1x -> $$1x.ifLeft($$1xx -> {
                $$1xx.H();
@@ -656,8 +656,8 @@ public class amn extends dme implements aml.d {
       return $$2;
    }
 
-   private void a(dln $$0) {
-      csv $$1 = $$0.f();
+   private void a(dlo $$0) {
+      csw $$1 = $$0.f();
 
       for (ane $$2 : this.J.a()) {
          if ($$2.W().a($$1)) {
@@ -666,8 +666,8 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   public CompletableFuture<Either<dln, aml.a>> c(aml $$0) {
-      return this.a($$0, 1, dlh::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dln)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(amp.a($$0, $$1)));
+   public CompletableFuture<Either<dlo, aml.a>> c(aml $$0) {
+      return this.a($$0, 1, dli::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dlo)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(amp.a($$0, $$1)));
    }
 
    public int h() {
@@ -678,8 +678,8 @@ public class amn extends dme implements aml.d {
       if (!$$0.o()) {
          return false;
       } else {
-         dlc $$1 = $$0.j().getNow(null);
-         if (!($$1 instanceof dlm) && !($$1 instanceof dln)) {
+         dld $$1 = $$0.j().getNow(null);
+         if (!($$1 instanceof dln) && !($$1 instanceof dlo)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -700,28 +700,28 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private boolean a(dlc $$0) {
+   private boolean a(dld $$0) {
       this.x.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         csv $$1 = $$0.f();
+         csw $$1 = $$0.f();
 
          try {
-            dlh $$2 = $$0.j();
-            if ($$2.g() != dlh.a.b) {
+            dli $$2 = $$0.j();
+            if ($$2.g() != dli.a.b) {
                if (this.i($$1)) {
                   return false;
                }
 
-               if ($$2 == dlh.c && $$0.g().values().stream().noneMatch(dzn::b)) {
+               if ($$2 == dli.c && $$0.g().values().stream().noneMatch(dzo::b)) {
                   return false;
                }
             }
 
             this.q.af().d("chunkSave");
-            sn $$3 = dmd.a(this.q, $$0);
+            sn $$3 = dme.a(this.q, $$0);
             this.a($$1, $$3);
             this.a($$1, $$2.g());
             return true;
@@ -732,7 +732,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private boolean i(csv $$0) {
+   private boolean i(csw $$0) {
       byte $$1 = this.L.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -750,13 +750,13 @@ public class amn extends dme implements aml.d {
             return false;
          }
 
-         dlh.a $$5 = dmd.a($$2);
+         dli.a $$5 = dme.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
 
    protected void a(int $$0) {
-      int $$1 = aun.a($$0, 2, 32);
+      int $$1 = auo.a($$0, 2, 32);
       if ($$1 != this.O) {
          this.O = $$1;
          this.F.a(this.O);
@@ -768,26 +768,26 @@ public class amn extends dme implements aml.d {
    }
 
    int b(ane $$0) {
-      return aun.a($$0.E(), 2, this.O);
+      return auo.a($$0.E(), 2, this.O);
    }
 
-   private void a(ane $$0, csv $$1) {
-      dln $$2 = this.d($$1.a());
+   private void a(ane $$0, csw $$1) {
+      dlo $$2 = this.d($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(ane $$0, dln $$1) {
+   private static void a(ane $$0, dlo $$1) {
       $$0.c.f.a($$1);
    }
 
-   private static void b(ane $$0, csv $$1) {
+   private static void b(ane $$0, csw $$1) {
       $$0.c.f.a($$0, $$1);
    }
 
    @Nullable
-   public dln d(long $$0) {
+   public dlo d(long $$0) {
       aml $$1 = this.b($$0);
       return $$1 == null ? null : $$1.f();
    }
@@ -805,7 +805,7 @@ public class amn extends dme implements aml.d {
    }
 
    void a(Writer $$0) throws IOException {
-      atn $$1 = atn.a()
+      ato $$1 = ato.a()
          .a("x")
          .a("z")
          .a("level")
@@ -829,17 +829,17 @@ public class amn extends dme implements aml.d {
       while (var4.hasNext()) {
          Entry<aml> $$3 = (Entry<aml>)var4.next();
          long $$4 = $$3.getLongKey();
-         csv $$5 = new csv($$4);
+         csw $$5 = new csw($$4);
          aml $$6 = (aml)$$3.getValue();
-         Optional<dlc> $$7 = Optional.ofNullable($$6.i());
-         Optional<dln> $$8 = $$7.flatMap($$0x -> $$0x instanceof dln ? Optional.of((dln)$$0x) : Optional.empty());
+         Optional<dld> $$7 = Optional.ofNullable($$6.i());
+         Optional<dlo> $$8 = $$7.flatMap($$0x -> $$0x instanceof dlo ? Optional.of((dlo)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.m(),
             $$7.isPresent(),
-            $$7.map(dlc::j).orElse(null),
-            $$8.map(dln::D).orElse(null),
+            $$7.map(dld::j).orElse(null),
+            $$8.map(dlo::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -854,9 +854,9 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private static String a(CompletableFuture<Either<dln, aml.a>> $$0) {
+   private static String a(CompletableFuture<Either<dlo, aml.a>> $$0) {
       try {
-         Either<dln, aml.a> $$1 = $$0.getNow(null);
+         Either<dlo, aml.a> $$1 = $$0.getNow(null);
          return $$1 != null ? (String)$$1.map($$0x -> "done", $$0x -> "unloaded") : "not completed";
       } catch (CompletionException var2) {
          return "failed " + var2.getCause().getMessage();
@@ -865,7 +865,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private CompletableFuture<Optional<sn>> j(csv $$0) {
+   private CompletableFuture<Optional<sn>> j(csw $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.f());
    }
 
@@ -873,7 +873,7 @@ public class amn extends dme implements aml.d {
       return this.a(this.q.ae(), this.w, $$0, this.t.b());
    }
 
-   boolean c(csv $$0) {
+   boolean c(csw $$0) {
       if (!this.F.f($$0.a())) {
          return false;
       } else {
@@ -887,7 +887,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   public List<ane> d(csv $$0) {
+   public List<ane> d(csw $$0) {
       long $$1 = $$0.a();
       if (!this.F.f($$1)) {
          return List.of();
@@ -904,7 +904,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   private boolean c(ane $$0, csv $$1) {
+   private boolean c(ane $$0, csw $$1) {
       if ($$0.P_()) {
          return false;
       } else {
@@ -914,7 +914,7 @@ public class amn extends dme implements aml.d {
    }
 
    private boolean c(ane $$0) {
-      return $$0.P_() && !this.q.Z().b(ctk.r);
+      return $$0.P_() && !this.q.Z().b(ctl.r);
    }
 
    void a(ane $$0, boolean $$1) {
@@ -985,7 +985,7 @@ public class amn extends dme implements aml.d {
    }
 
    private void e(ane $$0) {
-      csv $$1 = $$0.do();
+      csw $$1 = $$0.do();
       int $$2 = this.b($$0);
       if ($$0.W() instanceof amr.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -1007,7 +1007,7 @@ public class amn extends dme implements aml.d {
    }
 
    @Override
-   public List<ane> a(csv $$0, boolean $$1) {
+   public List<ane> a(csw $$0, boolean $$1) {
       Set<ane> $$2 = this.J.a();
       Builder<ane> $$3 = ImmutableList.builder();
 
@@ -1020,9 +1020,9 @@ public class amn extends dme implements aml.d {
       return $$3.build();
    }
 
-   protected void a(blu $$0) {
-      if (!($$0 instanceof cal)) {
-         bly<?> $$1 = $$0.ai();
+   protected void a(blv $$0) {
+      if (!($$0 instanceof cam)) {
+         blz<?> $$1 = $$0.ai();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
@@ -1048,7 +1048,7 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   protected void b(blu $$0) {
+   protected void b(blv $$0) {
       if ($$0 instanceof ane $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.K.values().iterator();
@@ -1081,7 +1081,7 @@ public class amn extends dme implements aml.d {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            blu $$7 = $$3.c;
+            blv $$7 = $$3.c;
             if ($$7 instanceof ane) {
                $$1.add((ane)$$7);
             }
@@ -1104,27 +1104,27 @@ public class amn extends dme implements aml.d {
       }
    }
 
-   public void a(blu $$0, xf<?> $$1) {
+   public void a(blv $$0, xf<?> $$1) {
       amn.b $$2 = (amn.b)this.K.get($$0.aj());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(blu $$0, xf<?> $$1) {
+   protected void b(blv $$0, xf<?> $$1) {
       amn.b $$2 = (amn.b)this.K.get($$0.aj());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<dlc> $$0) {
-      Map<ane, List<dln>> $$1 = new HashMap<>();
+   public void a(List<dld> $$0) {
+      Map<ane, List<dlo>> $$1 = new HashMap<>();
 
-      for (dlc $$2 : $$0) {
-         csv $$3 = $$2.f();
-         dln $$5;
-         if ($$2 instanceof dln $$4) {
+      for (dld $$2 : $$0) {
+         csw $$3 = $$2.f();
+         dlo $$5;
+         if ($$2 instanceof dlo $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.q.d($$3.e, $$3.f);
@@ -1138,7 +1138,7 @@ public class amn extends dme implements aml.d {
       $$1.forEach(($$0x, $$1x) -> $$0x.c.b(zp.a($$1x)));
    }
 
-   protected bxl m() {
+   protected bxm m() {
       return this.x;
    }
 
@@ -1146,13 +1146,13 @@ public class amn extends dme implements aml.d {
       return this.I;
    }
 
-   void a(csv $$0, amw $$1) {
+   void a(csw $$0, amw $$1) {
       this.E.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(csv $$0, int $$1) {
+   public void a(csw $$0, int $$1) {
       int $$2 = $$1 + 1;
-      csv.a($$0, $$2).forEach($$0x -> {
+      csw.a($$0, $$2).forEach($$0x -> {
          aml $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.r.a($$0x.e, $$0x.f));
@@ -1185,12 +1185,12 @@ public class amn extends dme implements aml.d {
 
    class b {
       final anc b;
-      final blu c;
+      final blv c;
       private final int d;
       iz e;
       private final Set<aof> f = Sets.newIdentityHashSet();
 
-      public b(blu $$0, int $$1, int $$2, boolean $$3) {
+      public b(blv $$0, int $$1, int $$2, boolean $$3) {
          this.b = new anc(amn.this.q, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1234,7 +1234,7 @@ public class amn extends dme implements aml.d {
 
       public void b(ane $$0) {
          if ($$0 != this.c) {
-            els $$1 = $$0.dk().d(this.c.dk());
+            elt $$1 = $$0.dk().d(this.c.dk());
             int $$2 = amn.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
@@ -1257,7 +1257,7 @@ public class amn extends dme implements aml.d {
       private int b() {
          int $$0 = this.d;
 
-         for (blu $$1 : this.c.cT()) {
+         for (blv $$1 : this.c.cT()) {
             int $$2 = $$1.ai().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

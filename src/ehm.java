@@ -1,17 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ehm {
-   public static final Codec<eho> a = kd.F.q().dispatch(eho::a, ehp::a);
-   public static final ehp b = a("empty", ehj.a);
-   public static final ehp c = a("item", ehl.a);
-   public static final ehp d = a("loot_table", ehr.a);
-   public static final ehp e = a("dynamic", ehi.a);
-   public static final ehp f = a("tag", eht.a);
-   public static final ehp g = a("alternatives", ehf.a);
-   public static final ehp h = a("sequence", ehs.a);
-   public static final ehp i = a("group", ehk.a);
+public class ehm extends ehr {
+   public static final Codec<ehm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehm::new)
+   );
+   private final ih<cmt> j;
 
-   private static ehp a(String $$0, Codec<? extends eho> $$1) {
-      return it.a(kd.F, new ahg($$0), new ehp($$1));
+   private ehm(ih<cmt> $$0, int $$1, int $$2, List<ejv> $$3, List<eij> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
+   }
+
+   @Override
+   public ehq a() {
+      return ehn.c;
+   }
+
+   @Override
+   public void a(Consumer<cmy> $$0, egw $$1) {
+      $$0.accept(new cmy(this.j));
+   }
+
+   public static ehr.a<?> a(cto $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ehm($$0.k().j(), $$1, $$2, $$3, $$4));
    }
 }

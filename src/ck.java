@@ -29,7 +29,7 @@ public interface ck<T extends Number> {
 
    static <T extends Number, R extends ck<T>> Codec<R> a(Codec<T> $$0, ck.a<T, R> $$1) {
       Codec<R> $$2 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(atv.a($$0, "min").forGetter(ck::a), atv.a($$0, "max").forGetter(ck::b)).apply($$2x, $$1::create)
+         $$2x -> $$2x.group(atw.a($$0, "min").forGetter(ck::a), atw.a($$0, "max").forGetter(ck::b)).apply($$2x, $$1::create)
       );
       return Codec.either($$2, $$0).xmap($$1x -> (ck)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
          Optional<T> $$1x = $$0x.d();

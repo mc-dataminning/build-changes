@@ -27,7 +27,7 @@ public class aiu {
                                              (ds)$$0x.getSource(),
                                              ef.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bks(er.a($$0x, "damageType", ke.r))
+                                             new bkt(er.a($$0x, "damageType", ke.r))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class aiu {
                                                       (ds)$$0x.getSource(),
                                                       ef.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bks(er.a($$0x, "damageType", ke.r), ft.a($$0x, "location"))
+                                                      new bkt(er.a($$0x, "damageType", ke.r), ft.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class aiu {
                                                       (ds)$$0x.getSource(),
                                                       ef.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bks(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"))
+                                                      new bkt(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class aiu {
                                                                (ds)$$0x.getSource(),
                                                                ef.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bks(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"), ef.a($$0x, "cause"))
+                                                               new bkt(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"), ef.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class aiu {
       );
    }
 
-   private static int a(ds $$0, blu $$1, float $$2, bks $$3) throws CommandSyntaxException {
+   private static int a(ds $$0, blv $$1, float $$2, bkt $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> vf.a("commands.damage.success", $$2, $$1.Q_()), true);
          return 1;

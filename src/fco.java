@@ -1,40 +1,86 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fco extends fcs {
-   private eyc c;
+public class fco {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cji<?>, fco.a<?, ?>> b = Maps.newHashMap();
 
-   private static evk<?>[] a(evl $$0) {
-      return new evk[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
-   }
-
-   public fco(fda $$0, evl $$1) {
-      super($$0, $$1, vf.c("options.mouse_settings.title"));
-   }
-
-   @Override
-   protected void aN_() {
-      this.c = this.d(new eyc(this.f, this.g, this.h - 64, 32, 25));
-      if (eov.a()) {
-         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(evk[]::new));
+   public static <T extends cib> void a(@Nullable cji<T> $$0, evi $$1, int $$2, vf $$3) {
+      if ($$0 == null) {
+         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
       } else {
-         this.c.a(a(this.b));
+         fco.a<T, ?> $$4 = a($$0);
+         if ($$4 == null) {
+            a.warn("Failed to create screen for menu type: {}", kd.r.b($$0));
+         } else {
+            $$4.a($$3, $$0, $$1, $$2);
+         }
+      }
+   }
+
+   @Nullable
+   private static <T extends cib> fco.a<T, ?> a(cji<T> $$0) {
+      return (fco.a<T, ?>)b.get($$0);
+   }
+
+   private static <M extends cib, U extends fdb & fff<M>> void a(cji<? extends M> $$0, fco.a<M, U> $$1) {
+      fco.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + kd.r.b($$0));
+      }
+   }
+
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (cji<?> $$1 : kd.r) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", kd.r.b($$1));
+            $$0 = true;
+         }
       }
 
-      this.d(exf.a(ve.d, $$0 -> {
-         this.b.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+      return $$0;
    }
 
-   @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+   static {
+      a(cji.a, fel::new);
+      a(cji.b, fel::new);
+      a(cji.c, fel::new);
+      a(cji.d, fel::new);
+      a(cji.e, fel::new);
+      a(cji.f, fel::new);
+      a(cji.g, fer::new);
+      a(cji.h, fem::new);
+      a(cji.i, fed::new);
+      a(cji.j, fee::new);
+      a(cji.k, fef::new);
+      a(cji.l, fei::new);
+      a(cji.m, fen::new);
+      a(cji.n, feu::new);
+      a(cji.o, fev::new);
+      a(cji.p, few::new);
+      a(cji.q, fey::new);
+      a(cji.r, ffd::new);
+      a(cji.s, ffe::new);
+      a(cji.t, ffg::new);
+      a(cji.u, ffj::new);
+      a(cji.v, ffl::new);
+      a(cji.w, ffm::new);
+      a(cji.x, fej::new);
+      a(cji.y, ffn::new);
    }
 
-   @Override
-   public void b(ewt $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   interface a<T extends cib, U extends fdb & fff<T>> {
+      default void a(vf $$0, cji<T> $$1, evi $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.s.fS()), $$2.s.fS(), $$0);
+         $$2.s.bS = $$4.E();
+         $$2.a($$4);
+      }
+
+      U create(T var1, cfh var2, vf var3);
    }
 }

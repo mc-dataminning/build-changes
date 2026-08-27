@@ -1,11 +1,18 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public interface edn {
-   Codec<edn> c = kd.p.q().dispatch(edn::a, edo::codec);
+public class edn implements edo {
+   public static final edn a = new edn();
+   public static final Codec<edn> b = Codec.unit(a);
 
    @Nullable
-   sn a(auu var1, @Nullable sn var2);
+   @Override
+   public sn a(auv $$0, @Nullable sn $$1) {
+      return $$1;
+   }
 
-   edo<?> a();
+   @Override
+   public edp<?> a() {
+      return edp.b;
+   }
 }

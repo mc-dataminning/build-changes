@@ -1,105 +1,59 @@
 import com.mojang.serialization.MapCodec;
 
-public class dbz extends cys {
-   public static final MapCodec<dbz> b = b(dbz::new);
-   public static final djx c = djw.w;
+public class dbz extends cwq implements cwt {
+   public static final MapCodec<dbz> a = b(dbz::new);
 
    @Override
    public MapCodec<dbz> a() {
-      return b;
+      return a;
    }
 
-   public dbz(djf.d $$0) {
+   protected dbz(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(a, ic.d).a(c, Boolean.valueOf(false)));
+   }
+
+   private static boolean b(djh $$0, cts $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      djh $$4 = $$1.a_($$3);
+      int $$5 = eei.a($$1, $$0, $$2, $$4, $$3, ic.b, $$4.b($$1, $$3));
+      return $$5 < $$1.O();
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(a, c);
-   }
-
-   @Override
-   public djg a(djg $$0, ddb $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      if ($$0.c(c)) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
-      } else {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         $$1.a($$2, this, 2);
-      }
-
-      this.a($$1, $$2, $$0);
-   }
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$0.c(a) == $$1 && !$$0.c(c)) {
-         this.a($$3, $$4);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private void a(ctp $$0, hx $$1) {
-      if (!$$0.y_() && !$$0.N().a($$1, this)) {
-         $$0.a($$1, this, 2);
+   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cws.dV.o());
       }
    }
 
-   protected void a(cto $$0, hx $$1, djg $$2) {
-      ic $$3 = $$2.c(a);
-      hx $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
+   @Override
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public boolean f_(djg $$0) {
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
       return true;
    }
 
    @Override
-   public int b(djg $$0, csu $$1, hx $$2, ic $$3) {
-      return $$0.b($$1, $$2, $$3);
-   }
-
-   @Override
-   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
-      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   public void b(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.y_() && $$0.c(c) && !$$1.N().a($$2, this)) {
-            djg $$5 = $$0.a(c, Boolean.valueOf(false));
-            $$1.a($$2, $$5, 18);
-            this.a($$1, $$2, $$5);
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      djh $$4 = $$0.a_($$2);
+      hx $$5 = $$2.c();
+      dle $$6 = $$0.l().g();
+      it<drh<?, ?>> $$7 = $$0.I_().d(ke.aw);
+      if ($$4.a(cws.ow)) {
+         this.a($$7, ql.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(cws.on)) {
+         this.a($$7, ql.j, $$0, $$6, $$1, $$5);
+         this.a($$7, ql.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, ql.n, $$0, $$6, $$1, $$5);
          }
       }
    }
 
-   @Override
-   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.B && $$0.c(c) && $$1.N().a($$2, this)) {
-            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
-         }
-      }
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      return this.o().a(a, $$0.d().g().g());
+   private void a(it<drh<?, ?>> $$0, ahf<drh<?, ?>> $$1, and $$2, dle $$3, auv $$4, hx $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((drh)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 }

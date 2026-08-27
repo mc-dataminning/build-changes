@@ -106,9 +106,9 @@ public class ali {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, blu $$2) throws CommandSyntaxException {
-      for (blu $$3 : $$1) {
-         a($$0, $$3, (and)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bmy.class), $$2.dC(), $$2.dE(), null);
+   private static int a(ds $$0, Collection<? extends blv> $$1, blv $$2) throws CommandSyntaxException {
+      for (blv $$3 : $$1) {
+         a($$0, $$3, (and)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bmz.class), $$2.dC(), $$2.dE(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,36 +120,36 @@ public class ali {
       return $$1.size();
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, and $$2, fo $$3, @Nullable fo $$4, @Nullable ali.a $$5) throws CommandSyntaxException {
-      els $$6 = $$3.a($$0);
-      elr $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bmy> $$8 = EnumSet.noneOf(bmy.class);
+   private static int a(ds $$0, Collection<? extends blv> $$1, and $$2, fo $$3, @Nullable fo $$4, @Nullable ali.a $$5) throws CommandSyntaxException {
+      elt $$6 = $$3.a($$0);
+      els $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bmz> $$8 = EnumSet.noneOf(bmz.class);
       if ($$3.a()) {
-         $$8.add(bmy.a);
+         $$8.add(bmz.a);
       }
 
       if ($$3.b()) {
-         $$8.add(bmy.b);
+         $$8.add(bmz.b);
       }
 
       if ($$3.c()) {
-         $$8.add(bmy.c);
+         $$8.add(bmz.c);
       }
 
       if ($$4 == null) {
-         $$8.add(bmy.e);
-         $$8.add(bmy.d);
+         $$8.add(bmz.e);
+         $$8.add(bmz.d);
       } else {
          if ($$4.a()) {
-            $$8.add(bmy.e);
+            $$8.add(bmz.e);
          }
 
          if ($$4.b()) {
-            $$8.add(bmy.d);
+            $$8.add(bmz.d);
          }
       }
 
-      for (blu $$9 : $$1) {
+      for (blv $$9 : $$1) {
          if ($$4 == null) {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
          } else {
@@ -170,24 +170,24 @@ public class ali {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(ds $$0, blu $$1, and $$2, double $$3, double $$4, double $$5, Set<bmy> $$6, float $$7, float $$8, @Nullable ali.a $$9) throws CommandSyntaxException {
+   private static void a(ds $$0, blv $$1, and $$2, double $$3, double $$4, double $$5, Set<bmz> $$6, float $$7, float $$8, @Nullable ali.a $$9) throws CommandSyntaxException {
       hx $$10 = hx.a($$3, $$4, $$5);
-      if (!cto.l($$10)) {
+      if (!ctp.l($$10)) {
          throw a.create();
       } else {
-         float $$11 = aun.g($$7);
-         float $$12 = aun.g($$8);
+         float $$11 = auo.g($$7);
+         float $$12 = auo.g($$8);
          if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
             if ($$9 != null) {
                $$9.a($$0, $$1);
             }
 
-            if (!($$1 instanceof bmk $$13) || !$$13.fw()) {
+            if (!($$1 instanceof bml $$13) || !$$13.fw()) {
                $$1.g($$1.dp().d(1.0, 0.0, 1.0));
                $$1.c(true);
             }
 
-            if ($$1 instanceof bmt $$14) {
+            if ($$1 instanceof bmu $$14) {
                $$14.N().n();
             }
          }
@@ -195,23 +195,23 @@ public class ali {
    }
 
    static class a {
-      private final els a;
-      private final blu b;
+      private final elt a;
+      private final blv b;
       private final ee.a c;
 
-      public a(blu $$0, ee.a $$1) {
+      public a(blv $$0, ee.a $$1) {
          this.b = $$0;
          this.c = $$1;
          this.a = $$1.a($$0);
       }
 
-      public a(els $$0) {
+      public a(elt $$0) {
          this.b = null;
          this.a = $$0;
          this.c = null;
       }
 
-      public void a(ds $$0, blu $$1) {
+      public void a(ds $$0, blv $$1) {
          if (this.b != null) {
             if ($$1 instanceof ane) {
                ((ane)$$1).a($$0.m(), this.b, this.c);

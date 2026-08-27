@@ -15,7 +15,7 @@ public class hn {
    public static final SuggestionProvider<ds> c = a(new ahg("available_sounds"), ($$0, $$1) -> dx.a(((dx)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ds> d = a(
       new ahg("summonable_entities"),
-      ($$0, $$1) -> dx.a(kd.g.s().filter($$1x -> $$1x.a(((dx)$$0.getSource()).w()) && $$1x.c()), $$1, bly::a, $$0x -> vf.c(ac.a("entity", bly.a($$0x))))
+      ($$0, $$1) -> dx.a(kd.g.s().filter($$1x -> $$1x.a(((dx)$$0.getSource()).w()) && $$1x.c()), $$1, blz::a, $$0x -> vf.c(ac.a("entity", blz.a($$0x))))
    );
 
    public static <S extends dx> SuggestionProvider<S> a(ahg $$0, SuggestionProvider<dx> $$1) {

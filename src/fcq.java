@@ -1,57 +1,59 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
+public class fcq extends fdb {
+   private static final vf a = vf.c("symlink_warning.title.world").a(n.r);
+   private static final vf b = vf.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final vf c = vf.c("symlink_warning.title.pack").a(n.r);
+   private static final vf k = vf.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final vf l;
+   private final String m;
+   private final Runnable n;
+   private final fap o = new fap().b(10);
 
-public class fcq extends fdc {
-   @Nullable
-   private final evk<Unit> l;
-
-   public static fcq a(evh $$0, fda $$1, evl $$2) {
-      List<evk<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.Q());
-      $$3.add($$2.R());
-      evk<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bjx $$1x = $$0x.ak();
-            return new evk<>(
-               "options.difficulty.online",
-               evk.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new evk.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fcq($$1, $$2, $$3.toArray(new evk[0]), $$4);
+   public fcq(vf $$0, vf $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   private fcq(fda $$0, evl $$1, evk<?>[] $$2, @Nullable evk<Unit> $$3) {
-      super($$0, $$1, vf.c("options.online.title"), $$2);
-      this.l = $$3;
+   public static fdb a(Runnable $$0) {
+      return new fcq(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fdb b(Runnable $$0) {
+      return new fcq(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
    protected void aN_() {
       super.aN_();
-      if (this.l != null) {
-         exd $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+      this.o.c().b();
+      fap.b $$0 = this.o.d(1);
+      $$0.a(new eyn(this.e, this.i));
+      $$0.a(new eya(this.l, this.i).c(this.g - 50).b(true));
+      int $$1 = 120;
+      fap $$2 = new fap().a(5);
+      fap.b $$3 = $$2.d(3);
+      $$3.a(exg.a(ve.n, $$0x -> ac.j().a(this.m)).b(120, 20).a());
+      $$3.a(exg.a(ve.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
+      $$3.a(exg.a(ve.k, $$0x -> this.aE_()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.o.a(this::d);
+   }
 
-      exd $$1 = this.k.b(this.b.af());
-      if ($$1 != null) {
-         $$1.j = this.f.B();
-      }
+   @Override
+   protected void c() {
+      this.o.a();
+      fao.a(this.o, this.F());
+   }
+
+   @Override
+   public vf h() {
+      return ve.a(super.h(), this.l);
+   }
+
+   @Override
+   public void aE_() {
+      this.n.run();
    }
 }

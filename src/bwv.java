@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class bwv extends bwl {
-   private static final ImmutableMap<bly<?>, Float> a = ImmutableMap.builder()
-      .put(bly.z, 8.0F)
-      .put(bly.H, 12.0F)
-      .put(bly.aa, 8.0F)
-      .put(bly.ab, 12.0F)
-      .put(bly.az, 15.0F)
-      .put(bly.aE, 12.0F)
-      .put(bly.bf, 8.0F)
-      .put(bly.bh, 10.0F)
-      .put(bly.bq, 10.0F)
-      .put(bly.br, 8.0F)
-      .put(bly.bt, 8.0F)
-      .build();
-
+public class bwv extends bws<bml> {
    @Override
-   protected boolean a(bmk $$0, bmk $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(bmk $$0, bmk $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((blu)$$0) <= (double)($$2 * $$2);
+   public Set<bvn<?>> a() {
+      return ImmutableSet.of(bvn.i);
    }
 
    @Override
-   protected bvm<bmk> b() {
-      return bvm.A;
+   protected void a(and $$0, bml $$1) {
+      $$1.dO().a(bvn.i, this.a($$1));
    }
 
-   private boolean b(bmk $$0) {
-      return a.containsKey($$0.ai());
+   private List<bml> a(bml $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bml $$0) {
+      return $$0.ai() == blz.bg && $$0.o_();
+   }
+
+   private bvp c(bml $$0) {
+      return $$0.dO().c(bvn.h).orElse(bvp.a());
    }
 }

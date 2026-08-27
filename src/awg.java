@@ -1,30 +1,78 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.Map;
 
 public class awg extends DataFix {
-   public awg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("generic.maxHealth", "generic.max_health")
+      .put("Max Health", "generic.max_health")
+      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
+      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
+      .put("horse.jumpStrength", "horse.jump_strength")
+      .put("Jump Strength", "horse.jump_strength")
+      .put("generic.followRange", "generic.follow_range")
+      .put("Follow Range", "generic.follow_range")
+      .put("generic.knockbackResistance", "generic.knockback_resistance")
+      .put("Knockback Resistance", "generic.knockback_resistance")
+      .put("generic.movementSpeed", "generic.movement_speed")
+      .put("Movement Speed", "generic.movement_speed")
+      .put("generic.flyingSpeed", "generic.flying_speed")
+      .put("Flying Speed", "generic.flying_speed")
+      .put("generic.attackDamage", "generic.attack_damage")
+      .put("generic.attackKnockback", "generic.attack_knockback")
+      .put("generic.attackSpeed", "generic.attack_speed")
+      .put("generic.armorToughness", "generic.armor_toughness")
+      .build();
+
+   public awg(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bbv.z.typeName(), bdd.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bbv.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbw.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, awg::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(bbw.x), awg::b),
+            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(bbw.b), awg::b)
          }
+      );
+   }
 
-         return $$1;
-      });
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", awg::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
+   }
+
+   private static Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", awg::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 }

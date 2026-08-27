@@ -1,41 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bot extends bob<ceu> {
-   private static final int d = 1200;
-   final float c;
+public class bot {
+   public static bod<cev> a(float $$0, int $$1) {
+      return brp.a((Function<brp.b<cev>, ? extends App<brp.c<cev>, brs<cev>>>)($$2 -> $$2.group($$2.c(bvn.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dm())) {
+                  return false;
+               } else {
+                  bxm $$6 = $$3.y();
+                  int $$7 = $$6.a(iz.a($$4.dm()));
+                  elt $$8 = null;
 
-   public bot(float $$0) {
-      super(ImmutableMap.of(bvm.d, bvn.a), 1200);
-      this.c = $$0;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     elt $$10 = bxg.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(iz.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(iz.a(hx.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(and $$0, ceu $$1) {
-      return $$1.dO().g().map($$0x -> $$0x == cgt.b || $$0x == cgt.c || $$0x == cgt.d).orElse(true);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected boolean a(and $$0, ceu $$1, long $$2) {
-      return $$1.dO().a(bvm.d);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new bvq($$8, $$0, $$1));
+                  }
 
-   protected void b(and $$0, ceu $$1, long $$2) {
-      bod.a($$1, $$1.dO().c(bvm.d).get().b(), this.c, 1);
-   }
-
-   protected void c(and $$0, ceu $$1, long $$2) {
-      Optional<ig> $$3 = $$1.dO().c(bvm.d);
-      $$3.ifPresent($$1x -> {
-         hx $$2x = $$1x.b();
-         and $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            bxl $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            adi.c($$0, $$2x);
-         }
-      });
-      $$1.dO().b(bvm.d);
+                  return true;
+               }
+            })));
    }
 }

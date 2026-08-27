@@ -2,7 +2,7 @@ public class abr implements xf<za> {
    private final double a;
    private final double b;
 
-   public abr(dkx $$0) {
+   public abr(dky $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
    }

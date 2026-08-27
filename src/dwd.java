@@ -1,48 +1,40 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class dwd extends dwb {
-   public static final Codec<dwd> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  djg.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(djg.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(djg.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, dwd::new)
-   );
-   private final float g;
-   private final float h;
-   private final djg i;
-   private final List<djg> j;
-   private final List<djg> k;
+public class dwd extends dwc {
+   public static final Codec<dwd> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dwd::new));
+   protected final List<djh> h;
 
-   public dwd(long $$0, edt.a $$1, float $$2, float $$3, float $$4, djg $$5, List<djg> $$6, List<djg> $$7) {
+   protected static <P extends dwd> P4<Mu<P>, Long, edu.a, Float, List<djh>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(djh.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public dwd(long $$0, edu.a $$1, float $$2, List<djh> $$3) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+      this.h = $$3;
    }
 
    @Override
-   protected dvz<?> a() {
-      return dvz.c;
+   protected dwa<?> a() {
+      return dwa.d;
    }
 
    @Override
-   public djg a(auu $$0, hx $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   public djh a(auv $$0, hx $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected djh a(List<djh> $$0, hx $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected djh a(List<djh> $$0, double $$1) {
+      double $$2 = auo.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

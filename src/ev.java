@@ -38,7 +38,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
          try {
             $$0.skip();
             ahg $$2 = ahg.a($$0);
-            return new ev.d<>(asv.a(this.b, $$2));
+            return new ev.d<>(asw.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
@@ -94,7 +94,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
 
    static record b<T>(ahf<T> a) implements ev.c<T> {
       @Override
-      public Either<ahf<T>, asv<T>> a() {
+      public Either<ahf<T>, asw<T>> a() {
          return Either.left(this.a);
       }
 
@@ -118,16 +118,16 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
    }
 
    public interface c<T> extends Predicate<ih<T>> {
-      Either<ahf<T>, asv<T>> a();
+      Either<ahf<T>, asw<T>> a();
 
       <E> Optional<ev.c<E>> a(ahf<? extends it<E>> var1);
 
       String b();
    }
 
-   static record d<T>(asv<T> a) implements ev.c<T> {
+   static record d<T>(asw<T> a) implements ev.c<T> {
       @Override
-      public Either<ahf<T>, asv<T>> a() {
+      public Either<ahf<T>, asw<T>> a() {
          return Either.right(this.a);
       }
 
@@ -145,7 +145,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
          return "#" + this.a.b();
       }
 
-      public asv<T> c() {
+      public asw<T> c() {
          return this.a;
       }
    }

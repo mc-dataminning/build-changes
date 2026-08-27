@@ -1,50 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cqn extends cpu {
+   public cqn(cps $$0) {
+      super($$0);
+   }
 
-public class cqn<T extends cpk> implements cqf<T> {
-   private final cpk.a<T> x;
-   private final Codec<T> y;
+   public boolean a(cir $$0, ctp $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-   public cqn(cpk.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  atv.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cpq.d.fieldOf("category").orElse(cpq.c).forGetter($$0xx -> $$0xx.b),
-                  cpy.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  kd.h.q().xmap(cmx::new, cmx::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (cwq.a($$5.d()) instanceof ddo) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof cln)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
+   }
+
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = cmy.f;
+      cln $$3 = (cln)cnb.rf;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cmt $$6 = $$5.d();
+            if (cwq.a($$6) instanceof ddo) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cln) {
+               $$3 = (cln)$$6;
+            }
+         }
+      }
+
+      cmy $$7 = ddo.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   public T b(ui $$0) {
-      String $$1 = $$0.s();
-      cpq $$2 = $$0.b(cpq.class);
-      cpy $$3 = cpy.b($$0);
-      cmx $$4 = $$0.r();
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.n();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(ui $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   public cpk a(String $$0, cpq $$1, cpy $$2, cmx $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public cqg<?> ar_() {
+      return cqg.m;
    }
 }

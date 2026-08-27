@@ -1,136 +1,55 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ehb {
-   private final and a;
-   private final Map<ejd<?>, Object> b;
-   private final Map<ahg, ehb.b> c;
-   private final float d;
+public class ehb<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ehb<ejv> a = new ehb<>(ejx.a, "predicates", c());
+   public static final ehb<eij> b = new ehb<>(eil.b, "item_modifiers", c());
+   public static final ehb<ehe> c = new ehb<>(ehe.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final ehb.a<T> g;
 
-   public ehb(and $$0, Map<ejd<?>, Object> $$1, Map<ahg, ehb.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private ehb(Codec<T> $$0, String $$1, ehb.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public and a() {
-      return this.a;
+   public String a() {
+      return this.f;
    }
 
-   public boolean a(ejd<?> $$0) {
-      return this.b.containsKey($$0);
+   public void a(ehf $$0, egy<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   public <T> T b(ejd<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
+   public Optional<T> a(ahg $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   @Nullable
-   public <T> T c(ejd<T> $$0) {
-      return (T)this.b.get($$0);
+   public static Stream<ehb<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   @Nullable
-   public <T> T d(ejd<T> $$0) {
-      return (T)this.b.get($$0);
+   private static <T extends egx> ehb.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
    }
 
-   public void a(ahg $$0, Consumer<cmx> $$1) {
-      ehb.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public static class a {
-      private final and a;
-      private final Map<ejd<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<ahg, ehb.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(and $$0) {
-         this.a = $$0;
-      }
-
-      public and a() {
-         return this.a;
-      }
-
-      public <T> ehb.a a(ejd<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> ehb.a b(ejd<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(ejd<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(ejd<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public ehb.a a(ahg $$0, ehb.b $$1) {
-         ehb.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public ehb.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ehb a(eje $$0) {
-         Set<ejd<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<ejd<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new ehb(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+   private static ehb.a<ehe> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cmx> var1);
+   public interface a<T> {
+      void run(ehf var1, egy<T> var2, T var3);
    }
 }

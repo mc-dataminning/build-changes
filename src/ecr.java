@@ -1,6 +1,6 @@
 import com.mojang.serialization.Codec;
 
-public class ecr extends ecs {
+public class ecr extends edd {
    public static final Codec<ecr> a = Codec.unit(() -> ecr.b);
    public static final ecr b = new ecr();
 
@@ -8,12 +8,7 @@ public class ecr extends ecs {
    }
 
    @Override
-   public boolean a(hx $$0, hx $$1, hx $$2, auu $$3) {
-      return true;
-   }
-
-   @Override
-   protected ect<?> a() {
-      return ect.a;
+   protected edf<?> a() {
+      return edf.j;
    }
 }

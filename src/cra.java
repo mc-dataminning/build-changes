@@ -1,15 +1,20 @@
-public class cra extends cri {
-   public cra(cri.a $$0, blz... $$1) {
-      super($$0, crj.k, $$1);
+public class cra extends crj {
+   public cra(crj.a $$0, bma... $$1) {
+      super($$0, crk.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 20;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public int a() {
+      return 5;
    }
 }

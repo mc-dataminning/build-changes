@@ -1,12 +1,12 @@
-public class gkc implements gkh {
-   private static final int a = 6000;
-   private static final vf b = vf.c("tutorial.find_tree.title");
-   private static final vf c = vf.c("tutorial.find_tree.description");
-   private final gkg d;
-   private ezp e;
+public class gkc implements gki {
+   private static final int a = 1200;
+   private static final vf b = vf.c("tutorial.craft_planks.title");
+   private static final vf c = vf.c("tutorial.craft_planks.description");
+   private final gkh d;
+   private ezq e;
    private int f;
 
-   public gkc(gkg $$0) {
+   public gkc(gkh $$0) {
       this.d = $$0;
    }
 
@@ -14,18 +14,25 @@ public class gkc implements gkh {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gki.f);
+         this.d.a(gkj.f);
       } else {
          if (this.f == 1) {
-            fsi $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gki.e);
-               return;
+            fsj $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fS().a(asp.b)) {
+                  this.d.a(gkj.f);
+                  return;
+               }
+
+               if (a($$0, asp.b)) {
+                  this.d.a(gkj.f);
+                  return;
+               }
             }
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new ezp(ezp.a.c, b, c, false);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new ezq(ezq.a.e, b, c, false);
             this.d.e().ay().a(this.e);
          }
       }
@@ -40,30 +47,15 @@ public class gkc implements gkh {
    }
 
    @Override
-   public void a(fnr $$0, elq $$1) {
-      if ($$1.c() == elq.a.b) {
-         djg $$2 = $$0.a_(((elo)$$1).a());
-         if ($$2.a(asg.ai)) {
-            this.d.a(gki.c);
-         }
+   public void a(cmy $$0) {
+      if ($$0.a(asp.b)) {
+         this.d.a(gkj.f);
       }
    }
 
-   @Override
-   public void a(cmx $$0) {
-      if ($$0.a(aso.al)) {
-         this.d.a(gki.e);
-      }
-   }
-
-   private static boolean b(fsi $$0) {
-      return $$0.fS().a_($$0x -> $$0x.a(aso.al));
-   }
-
-   public static boolean a(fsi $$0) {
-      for (ih<cwp> $$1 : kd.e.c(asg.ai)) {
-         cwp $$2 = $$1.a();
-         if ($$0.j().a(asb.a.b($$2)) > 0) {
+   public static boolean a(fsj $$0, asw<cmt> $$1) {
+      for (ih<cmt> $$2 : kd.h.c($$1)) {
+         if ($$0.j().a(asc.b.b($$2.a())) > 0) {
             return true;
          }
       }

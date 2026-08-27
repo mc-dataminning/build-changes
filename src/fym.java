@@ -1,60 +1,86 @@
-@FunctionalInterface
-public interface fym<T extends blu> {
-   fyl<T> create(fym.a var1);
+import org.joml.Matrix4f;
 
-   public static class a {
-      private final fyk a;
-      private final fzk b;
-      private final fua c;
-      private final ftc d;
-      private final aqh e;
-      private final fms f;
-      private final ewr g;
+public abstract class fym<T extends blv> {
+   protected static final float b = 0.025F;
+   protected final fyl c;
+   private final ews a;
+   protected float d;
+   protected float e = 1.0F;
 
-      public a(fyk $$0, fzk $$1, fua $$2, ftc $$3, aqh $$4, fms $$5, ewr $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   protected fym(fyn.a $$0) {
+      this.c = $$0.a();
+      this.a = $$0.h();
+   }
+
+   public final int b(T $$0, float $$1) {
+      hx $$2 = hx.a($$0.k($$1));
+      return ftg.a(this.a($$0, $$2), this.b($$0, $$2));
+   }
+
+   protected int b(T $$0, hx $$1) {
+      return $$0.dM().a(cty.a, $$1);
+   }
+
+   protected int a(T $$0, hx $$1) {
+      return $$0.bN() ? 15 : $$0.dM().a(cty.b, $$1);
+   }
+
+   public boolean a(T $$0, fwk $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if ($$0.at) {
+         return true;
+      } else {
+         elo $$5 = $$0.i_().g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new elo($$0.dr() - 2.0, $$0.dt() - 2.0, $$0.dx() - 2.0, $$0.dr() + 2.0, $$0.dt() + 2.0, $$0.dx() + 2.0);
+         }
+
+         return $$1.a($$5);
       }
+   }
 
-      public fyk a() {
-         return this.a;
+   public elt a(T $$0, float $$1) {
+      return elt.b;
+   }
+
+   public void a(T $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
+      if (this.b($$0)) {
+         this.a($$0, $$0.Q_(), $$3, $$4, $$5);
       }
+   }
 
-      public fzk b() {
-         return this.b;
-      }
+   protected boolean b(T $$0) {
+      return $$0.cC() || $$0.ae() && $$0 == this.c.c;
+   }
 
-      public fua c() {
-         return this.c;
-      }
+   public abstract ahg a(T var1);
 
-      public ftc d() {
-         return this.d;
-      }
+   public ews b() {
+      return this.a;
+   }
 
-      public aqh e() {
-         return this.e;
-      }
+   protected void a(T $$0, vf $$1, eqb $$2, fth $$3, int $$4) {
+      double $$5 = this.c.b($$0);
+      if (!($$5 > 4096.0)) {
+         boolean $$6 = !$$0.bV();
+         float $$7 = $$0.di();
+         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+         $$2.a();
+         $$2.a(0.0F, $$7, 0.0F);
+         $$2.a(this.c.b());
+         $$2.b(-0.025F, -0.025F, 0.025F);
+         Matrix4f $$9 = $$2.c().a();
+         float $$10 = evi.O().m.a(0.25F);
+         int $$11 = (int)($$10 * 255.0F) << 24;
+         ews $$12 = this.b();
+         float $$13 = (float)(-$$12.a($$1) / 2);
+         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? ews.a.b : ews.a.a, $$11, $$4);
+         if ($$6) {
+            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, ews.a.a, 0, $$4);
+         }
 
-      public fms f() {
-         return this.f;
-      }
-
-      public ggs g() {
-         return this.c.a().a();
-      }
-
-      public fmw a(fmu $$0) {
-         return this.f.a($$0);
-      }
-
-      public ewr h() {
-         return this.g;
+         $$2.b();
       }
    }
 }

@@ -41,24 +41,24 @@ public class er<T> implements ArgumentType<ih.c<T>> {
       }
    }
 
-   public static ih.c<bnl> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<bnm> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.c);
    }
 
-   public static ih.c<drg<?, ?>> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<drh<?, ?>> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.aw);
    }
 
-   public static ih.c<dzf> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<dzg> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.aD);
    }
 
-   public static ih.c<bly<?>> d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<blz<?>> d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.u);
    }
 
-   public static ih.c<bly<?>> e(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      ih.c<bly<?>> $$2 = a($$0, $$1, ke.u);
+   public static ih.c<blz<?>> e(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      ih.c<blz<?>> $$2 = a($$0, $$1, ke.u);
       if (!$$2.a().c()) {
          throw d.create($$2.g().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class er<T> implements ArgumentType<ih.c<T>> {
       }
    }
 
-   public static ih.c<blf> f(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<blg> f(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.Q);
    }
 
-   public static ih.c<cri> g(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ih.c<crj> g(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ke.t);
    }
 

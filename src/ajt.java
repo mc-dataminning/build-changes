@@ -12,8 +12,8 @@ public class ajt {
       );
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1) {
-      for (blu $$2 : $$1) {
+   private static int a(ds $$0, Collection<? extends blv> $$1) {
+      for (blv $$2 : $$1) {
          $$2.al();
       }
 

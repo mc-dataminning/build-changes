@@ -12,7 +12,7 @@ public class go<T> implements AutoCloseable {
    private static final Logger b = LogUtils.getLogger();
    private final int c;
    private final int d;
-   private final bgr e;
+   private final bgs e;
    @Nullable
    private gr f;
    private int g;
@@ -20,7 +20,7 @@ public class go<T> implements AutoCloseable {
    private final Deque<gk<T>> i = Queues.newArrayDeque();
    private final List<gk<T>> j = new ObjectArrayList();
 
-   public go(int $$0, int $$1, bgr $$2) {
+   public go(int $$0, int $$1, bgs $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -106,7 +106,7 @@ public class go<T> implements AutoCloseable {
       return this.f;
    }
 
-   public bgr c() {
+   public bgs c() {
       return this.e;
    }
 

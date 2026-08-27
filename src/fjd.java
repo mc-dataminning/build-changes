@@ -1,88 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
 
-public class fjd extends fko<chb> implements fmj {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fmw l;
-   private final fmw m;
-   private final fmw n;
-   private final ImmutableList<fmw> o;
+public class fjd<T extends blv> extends fkg<T> {
+   private final fmx a;
+   private final fmx[] b;
+   private final fmx f;
 
-   public fjd(fmw $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+   public fjd(fmx $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fmx[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   protected Builder<fmw> a(fmw $$0) {
-      Builder<fmw> $$1 = new Builder();
-      $$1.add(new fmw[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
-   public static void a(fnf $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fnb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fmy.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fnb.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fmy.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fnb.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fmy.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fnb.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fmy.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fnb.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fmy.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fnb.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fmy.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fnb.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fmy.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fnb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fmy.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-   }
+   public static fnd b() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("head", fnc.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fmz.a);
+      float $$2 = 0.0F;
+      fnc $$3 = fnc.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
 
-   public static fnc a() {
-      fne $$0 = new fne();
-      fnf $$1 = $$0.a();
-      a($$1);
-      return fnc.a($$0, 128, 64);
-   }
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = auo.b($$2) * 9.0F;
+         float $$6 = -2.0F + auo.b((float)($$4 * 2) * 0.25F);
+         float $$7 = auo.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fmz.a($$5, $$6, $$7));
+         $$2++;
+      }
 
-   public void a(chb $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
-   }
+      $$2 = (float) (Math.PI / 4);
 
-   public ImmutableList<fmw> b() {
-      return this.o;
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = auo.b($$2) * 7.0F;
+         float $$10 = 2.0F + auo.b((float)($$8 * 2) * 0.25F);
+         float $$11 = auo.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fmz.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = auo.b($$2) * 5.0F;
+         float $$14 = 11.0F + auo.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = auo.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fmz.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fnd.a($$0, 64, 32);
    }
 
    @Override
-   public fmw c() {
-      return this.n;
+   public fmx a() {
+      return this.a;
    }
 
-   private static void a(chb $$0, int $$1, fmw $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = aun.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aun.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = aun.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aun.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + auo.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = auo.b($$6) * 9.0F;
+         this.b[$$7].d = auo.a($$6) * 9.0F;
+         $$6++;
       }
+
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + auo.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = auo.b($$6) * 7.0F;
+         this.b[$$8].d = auo.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + auo.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = auo.b($$6) * 5.0F;
+         this.b[$$9].d = auo.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

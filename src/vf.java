@@ -64,7 +64,7 @@ public interface vf extends Message, vk {
       return new vt(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   atz g();
+   aua g();
 
    @Override
    default <T> Optional<T> a(vk.b<T> $$0, wc $$1) {
@@ -198,7 +198,7 @@ public interface vf extends Message, vk {
       return b($$0.toString());
    }
 
-   static vf a(csv $$0) {
+   static vf a(csw $$0) {
       return b($$0.toString());
    }
 

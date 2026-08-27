@@ -1,24 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dss extends drt<duj> {
-   public dss(Codec<duj> $$0) {
+public class dss extends dru<dul> {
+   public dss(Codec<dul> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drv<duj> $$0) {
-      duj $$1 = $$0.f();
-      auu $$2 = $$0.d();
-      cuj $$3 = $$0.b();
-      dld $$4 = $$0.c();
-      hx $$5 = $$0.e();
+   public boolean a(drw<dul> $$0) {
+      dul $$1 = $$0.f();
+      auv $$2 = $$0.d();
+      hx $$3 = $$0.e();
+      cuk $$4 = $$0.b();
+      int $$5 = 0;
+      hx.a $$6 = new hx.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (dtn $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      return $$5 > 0;
    }
 }

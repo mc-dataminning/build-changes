@@ -1,24 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
-@FunctionalInterface
-public interface eas {
-   eas a = $$0 -> $$0;
+public class eas {
+   public static Codec<? extends ear> a(it<Codec<? extends ear>> $$0) {
+      it.a($$0, "random", eau.a);
+      it.a($$0, "random_group", eav.a);
+      return it.a($$0, "direct", eaq.a);
+   }
 
-   ahf<eao> lookup(ahf<eao> var1);
-
-   static eas create(List<eaq> $$0, hx $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         auu $$3 = auu.a($$2).e().a($$1);
-         Builder<ahf<eao>, ahf<eao>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<ahf<eao>, ahf<eao>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   public static void a(pe<eap> $$0, ih<eap> $$1, List<ear> $$2) {
+      $$2.stream().flatMap(ear::a).map($$0x -> $$0x.a().a()).forEach($$2x -> pl.a($$0, $$2x, new eap($$1, List.of(Pair.of(ean.b($$2x), 1)), eap.a.b)));
    }
 }

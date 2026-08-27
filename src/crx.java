@@ -1,31 +1,16 @@
-public class crx extends cri {
-   public crx(cri.a $$0, blz... $$1) {
-      super($$0, crj.b, $$1);
+public class crx extends crj {
+   public crx(crj.a $$0, bma... $$1) {
+      super($$0, crk.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return 50;
    }
 
    @Override

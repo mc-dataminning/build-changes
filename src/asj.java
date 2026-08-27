@@ -1,29 +1,35 @@
-public final class asj {
-   public static final asv<bly<?>> a = a("skeletons");
-   public static final asv<bly<?>> b = a("zombies");
-   public static final asv<bly<?>> c = a("raiders");
-   public static final asv<bly<?>> d = a("undead");
-   public static final asv<bly<?>> e = a("beehive_inhabitors");
-   public static final asv<bly<?>> f = a("arrows");
-   public static final asv<bly<?>> g = a("impact_projectiles");
-   public static final asv<bly<?>> h = a("powder_snow_walkable_mobs");
-   public static final asv<bly<?>> i = a("axolotl_always_hostiles");
-   public static final asv<bly<?>> j = a("axolotl_hunt_targets");
-   public static final asv<bly<?>> k = a("freeze_immune_entity_types");
-   public static final asv<bly<?>> l = a("freeze_hurts_extra_types");
-   public static final asv<bly<?>> m = a("can_breathe_under_water");
-   public static final asv<bly<?>> n = a("frog_food");
-   public static final asv<bly<?>> o = a("fall_damage_immune");
-   public static final asv<bly<?>> p = a("dismounts_underwater");
-   public static final asv<bly<?>> q = a("non_controlling_rider");
-   public static final asv<bly<?>> r = a("deflects_arrows");
-   public static final asv<bly<?>> s = a("deflects_tridents");
-   public static final asv<bly<?>> t = a("can_turn_in_boats");
+public interface asj {
+   asw<bkv> a = a("damages_helmet");
+   asw<bkv> b = a("breeze_immune_to");
+   asw<bkv> c = a("bypasses_armor");
+   asw<bkv> d = a("bypasses_shield");
+   asw<bkv> e = a("bypasses_invulnerability");
+   asw<bkv> f = a("bypasses_cooldown");
+   asw<bkv> g = a("bypasses_effects");
+   asw<bkv> h = a("bypasses_resistance");
+   asw<bkv> i = a("bypasses_enchantments");
+   asw<bkv> j = a("is_fire");
+   asw<bkv> k = a("is_projectile");
+   asw<bkv> l = a("witch_resistant_to");
+   asw<bkv> m = a("is_explosion");
+   asw<bkv> n = a("is_fall");
+   asw<bkv> o = a("is_drowning");
+   asw<bkv> p = a("is_freezing");
+   asw<bkv> q = a("is_lightning");
+   asw<bkv> r = a("no_anger");
+   asw<bkv> s = a("no_impact");
+   asw<bkv> t = a("always_most_significant_fall");
+   asw<bkv> u = a("wither_immune_to");
+   asw<bkv> v = a("ignites_armor_stands");
+   asw<bkv> w = a("burns_armor_stands");
+   asw<bkv> x = a("avoids_guardian_thorns");
+   asw<bkv> y = a("always_triggers_silverfish");
+   asw<bkv> z = a("always_hurts_ender_dragons");
+   asw<bkv> A = a("no_knockback");
+   asw<bkv> B = a("always_kills_armor_stands");
+   asw<bkv> C = a("can_break_armor_stand");
 
-   private asj() {
-   }
-
-   private static asv<bly<?>> a(String $$0) {
-      return asv.a(ke.u, new ahg($$0));
+   private static asw<bkv> a(String $$0) {
+      return asw.a(ke.r, new ahg($$0));
    }
 }

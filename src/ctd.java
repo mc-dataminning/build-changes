@@ -1,31 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum ctd implements csu {
-   a;
+public class ctd {
+   public static final ctd a = new ctd(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<ctd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, ctd::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Nullable
-   @Override
-   public dgu c_(hx $$0) {
-      return null;
+   public ctd(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public djg a_(hx $$0) {
-      return cwr.a.o();
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public eeq b_(hx $$0) {
-      return eer.a.g();
-   }
-
-   @Override
-   public int J_() {
-      return 0;
-   }
-
-   @Override
-   public int K_() {
-      return 0;
+   public List<String> b() {
+      return this.d;
    }
 }

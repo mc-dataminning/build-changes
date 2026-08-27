@@ -2,31 +2,31 @@ import java.util.function.BiConsumer;
 
 public class lv implements lh {
    @Override
-   public void generate(BiConsumer<ahg, ehd.a> $$0) {
+   public void generate(BiConsumer<ahg, ehe.a> $$0) {
       $$0.accept(
-         egt.aL,
-         ehd.b()
+         egu.aL,
+         ehe.b()
             .a(
-               ehc.a()
-                  .a(ekn.a(1.0F))
-                  .a(ehl.a(cna.qM).a(5).a(new eia.a().a(crm.l)))
-                  .a(ehl.a(cna.pG).a(8).a(new eia.a().a(crm.l)))
-                  .a(ehl.a(cna.sh).a(8).a(eiy.a(coy.n)))
-                  .a(ehl.a(cna.vh).a(8).a(eiy.a(coy.n)))
-                  .a(ehl.a(cna.sh).a(10).a(eiy.a(coy.c)))
-                  .a(ehl.a(cna.vo).a(10).a(eit.a(eks.a(10.0F, 36.0F))))
-                  .a(ehl.a(cna.sc).a(10).a(eit.a(eks.a(2.0F, 4.0F))))
-                  .a(ehl.a(cna.pp).a(20).a(eit.a(eks.a(3.0F, 9.0F))))
-                  .a(ehl.a(cna.oy).a(20).a(eit.a(eks.a(5.0F, 12.0F))))
-                  .a(ehl.a(cna.eD).a(40))
-                  .a(ehl.a(cna.wt).a(40).a(eit.a(eks.a(1.0F, 3.0F))))
-                  .a(ehl.a(cna.tS).a(40))
-                  .a(ehl.a(cna.qA).a(40).a(eit.a(eks.a(2.0F, 4.0F))))
-                  .a(ehl.a(cna.fn).a(40).a(eit.a(eks.a(2.0F, 8.0F))))
-                  .a(ehl.a(cna.uq).a(40).a(eit.a(eks.a(2.0F, 8.0F))))
-                  .a(ehl.a(cna.vi).a(40).a(eit.a(eks.a(6.0F, 12.0F))))
-                  .a(ehl.a(cna.aj).a(40).a(eit.a(eks.a(8.0F, 16.0F))))
-                  .a(ehl.a(cna.wu).a(40).a(eit.a(eks.a(8.0F, 16.0F))))
+               ehd.a()
+                  .a(eko.a(1.0F))
+                  .a(ehm.a(cnb.qM).a(5).a(new eib.a().a(crn.l)))
+                  .a(ehm.a(cnb.pG).a(8).a(new eib.a().a(crn.l)))
+                  .a(ehm.a(cnb.sh).a(8).a(eiz.a(coz.n)))
+                  .a(ehm.a(cnb.vh).a(8).a(eiz.a(coz.n)))
+                  .a(ehm.a(cnb.sh).a(10).a(eiz.a(coz.c)))
+                  .a(ehm.a(cnb.vo).a(10).a(eiu.a(ekt.a(10.0F, 36.0F))))
+                  .a(ehm.a(cnb.sc).a(10).a(eiu.a(ekt.a(2.0F, 4.0F))))
+                  .a(ehm.a(cnb.pp).a(20).a(eiu.a(ekt.a(3.0F, 9.0F))))
+                  .a(ehm.a(cnb.oy).a(20).a(eiu.a(ekt.a(5.0F, 12.0F))))
+                  .a(ehm.a(cnb.eD).a(40))
+                  .a(ehm.a(cnb.wt).a(40).a(eiu.a(ekt.a(1.0F, 3.0F))))
+                  .a(ehm.a(cnb.tS).a(40))
+                  .a(ehm.a(cnb.qA).a(40).a(eiu.a(ekt.a(2.0F, 4.0F))))
+                  .a(ehm.a(cnb.fn).a(40).a(eiu.a(ekt.a(2.0F, 8.0F))))
+                  .a(ehm.a(cnb.uq).a(40).a(eiu.a(ekt.a(2.0F, 8.0F))))
+                  .a(ehm.a(cnb.vi).a(40).a(eiu.a(ekt.a(6.0F, 12.0F))))
+                  .a(ehm.a(cnb.aj).a(40).a(eiu.a(ekt.a(8.0F, 16.0F))))
+                  .a(ehm.a(cnb.wu).a(40).a(eiu.a(ekt.a(8.0F, 16.0F))))
             )
       );
    }

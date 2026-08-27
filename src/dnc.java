@@ -1,121 +1,72 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dnc<T extends dmx> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dnk> b;
-   private final Long2ObjectMap<dnb<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public class dnc<T extends dmy> {
+   private static final Logger a = LogUtils.getLogger();
+   private final ath<T> b;
+   private dnl c;
 
-   public dnc(Class<T> $$0, Long2ObjectFunction<dnk> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public dnc(Class<T> $$0, dnl $$1) {
+      this.c = $$1;
+      this.b = new ath<>($$0);
    }
 
-   public void a(eln $$0, atb<dnb<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = iz.a($$0.a - 2.0);
-      int $$4 = iz.a($$0.b - 4.0);
-      int $$5 = iz.a($$0.c - 2.0);
-      int $$6 = iz.a($$0.d + 2.0);
-      int $$7 = iz.a($$0.e + 0.0);
-      int $$8 = iz.a($$0.f + 2.0);
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = iz.b($$9, 0, 0);
-         long $$11 = iz.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = iz.c($$13);
-            int $$15 = iz.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               dnb<T> $$16 = (dnb<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
-            }
+   public atc.a a(elo $$0, atc<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+            return atc.a.b;
          }
       }
+
+      return atc.a.a;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = csv.a($$0);
-      int $$2 = csv.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
+   public <U extends T> atc.a a(dnf<T, U> $$0, elo $$1, atc<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
       if ($$3.isEmpty()) {
-         return LongStream.empty();
+         return atc.a.a;
       } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+               return atc.a.b;
+            }
+         }
+
+         return atc.a.a;
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = iz.b($$0, 0, $$1);
-      long $$3 = iz.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public Stream<dnb<T>> b(long $$0) {
-      return this.a($$0).<dnb<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   private static long f(long $$0) {
-      return csv.c(iz.b($$0), iz.d($$0));
+   public dnl c() {
+      return this.c;
    }
 
-   public dnb<T> c(long $$0) {
-      return (dnb<T>)this.c.computeIfAbsent($$0, this::g);
+   public dnl a(dnl $$0) {
+      dnl $$1 = this.c;
+      this.c = $$0;
+      return $$1;
    }
 
-   @Nullable
-   public dnb<T> d(long $$0) {
-      return (dnb<T>)this.c.get($$0);
-   }
-
-   private dnb<T> g(long $$0) {
-      long $$1 = f($$0);
-      dnk $$2 = (dnk)this.b.get($$1);
-      this.d.add($$0);
-      return new dnb<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(eln $$0, atb<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(dne<T, U> $$0, eln $$1, atb<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   @avs
-   public int b() {
-      return this.d.size();
+   @avt
+   public int d() {
+      return this.b.size();
    }
 }

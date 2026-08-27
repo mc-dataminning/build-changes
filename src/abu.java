@@ -1,7 +1,7 @@
 public class abu implements xf<za> {
    private final int a;
 
-   public abu(dkx $$0) {
+   public abu(dky $$0) {
       this.a = $$0.q();
    }
 

@@ -2,12 +2,24 @@ import javax.annotation.Nullable;
 
 public class bxb {
    @Nullable
-   public static els a(bmt $$0, int $$1, int $$2, int $$3, els $$4, double $$5) {
-      els $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = bxd.a($$0, $$1);
-      return bxg.a($$0, () -> {
-         hx $$7x = bxa.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bxd.a($$0, $$7x) ? $$7x : null;
-      });
+   public static elt a(bmu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = bxe.a($$0, $$1);
+      return bxh.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   @Nullable
+   public static hx a(bmu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      hx $$8 = bxh.a($$0.eg(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         hx $$9 = bxh.a($$0, $$1, $$0.eg(), $$8);
+         if (!bxe.a($$9, $$0) && !bxe.a($$7, $$0, $$9)) {
+            $$9 = bxh.a($$9, $$0.dM().al(), $$1x -> bxe.c($$0, $$1x));
+            return bxe.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

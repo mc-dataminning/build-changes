@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record aap(int a, boolean b, Set<ahf<cto>> c, int d, int e, int f, boolean g, boolean h, boolean i, adg j) implements xf<za> {
+public record aap(int a, boolean b, Set<ahf<ctp>> c, int d, int e, int f, boolean g, boolean h, boolean i, adg j) implements xf<za> {
    public aap(ui $$0) {
       this(
          $$0.readInt(),
@@ -39,7 +39,7 @@ public record aap(int a, boolean b, Set<ahf<cto>> c, int d, int e, int f, boolea
       return this.b;
    }
 
-   public Set<ahf<cto>> e() {
+   public Set<ahf<ctp>> e() {
       return this.c;
    }
 

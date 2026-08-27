@@ -7,9 +7,9 @@ public interface ii<T> {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   Optional<il.c<T>> a(asv<T> var1);
+   Optional<il.c<T>> a(asw<T> var1);
 
-   default il.c<T> b(asv<T> $$0) {
+   default il.c<T> b(asw<T> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 

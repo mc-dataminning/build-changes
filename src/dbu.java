@@ -1,19 +1,25 @@
-public class dbu {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(djg $$0) {
-      return $$0.i();
+public class dbu extends cwz {
+   public static final MapCodec<dbu> a = b(dbu::new);
+   protected static final emm b = cwq.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dbu> a() {
+      return a;
    }
 
-   public static int a(auu $$0) {
-      double $$1 = 1.0;
+   public dbu(djg.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(djh $$0, csv $$1, hx $$2) {
+      return $$0.a(ash.aK) || $$0.a(cws.dX) || super.b($$0, $$1, $$2);
    }
 }

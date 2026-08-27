@@ -37,20 +37,20 @@ public class alf {
       );
    }
 
-   private static Collection<String> a(Collection<? extends blu> $$0) {
+   private static Collection<String> a(Collection<? extends blv> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (blu $$2 : $$0) {
+      for (blv $$2 : $$0) {
          $$1.addAll($$2.ak());
       }
 
       return $$1;
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, Collection<? extends blv> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (blu $$4 : $$1) {
+      for (blv $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class alf {
       }
    }
 
-   private static int b(ds $$0, Collection<? extends blu> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(ds $$0, Collection<? extends blv> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (blu $$4 : $$1) {
+      for (blv $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class alf {
       }
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1) {
+   private static int a(ds $$0, Collection<? extends blv> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (blu $$3 : $$1) {
+      for (blv $$3 : $$1) {
          $$2.addAll($$3.ak());
       }
 
       if ($$1.size() == 1) {
-         blu $$4 = $$1.iterator().next();
+         blv $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> vf.a("commands.tag.list.single.empty", $$4.Q_()), false);
          } else {

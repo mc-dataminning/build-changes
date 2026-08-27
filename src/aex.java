@@ -29,9 +29,9 @@ public class aex implements xf<adj> {
    }
 
    @Nullable
-   public csp a(cto $$0) {
-      blu $$1 = $$0.a(this.a);
-      return $$1 instanceof chh ? ((chh)$$1).C() : null;
+   public csq a(ctp $$0) {
+      blv $$1 = $$0.a(this.a);
+      return $$1 instanceof chi ? ((chi)$$1).C() : null;
    }
 
    public String a() {

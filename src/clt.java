@@ -1,62 +1,30 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class clt extends cms {
-   public static final String a = "StoredEnchantments";
-
-   public clt(cms.a $$0) {
+public class clt extends cld {
+   public clt(cmt.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cmx $$0) {
-      return true;
-   }
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bkc.a($$3);
+      } else {
+         if (!$$1.fT().d) {
+            $$3.h(1);
+         }
 
-   @Override
-   public boolean d_(cmx $$0) {
-      return false;
-   }
-
-   public static st d(cmx $$0) {
-      sn $$1 = $$0.v();
-      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new st();
-   }
-
-   @Override
-   public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      cmx.a($$2, d($$0));
-   }
-
-   public static void a(cmx $$0, crl $$1) {
-      st $$2 = d($$0);
-      boolean $$3 = true;
-      ahg $$4 = crk.a($$1.a);
-
-      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-         sn $$6 = $$2.a($$5);
-         ahg $$7 = crk.b($$6);
-         if ($$7 != null && $$7.equals($$4)) {
-            if (crk.a($$6) < $$1.b) {
-               crk.a($$6, $$1.b);
+         $$1.b(asc.c.b(this));
+         $$1.dM().a(null, $$1, ars.zx, $$1.db(), 1.0F, 1.0F);
+         cmy $$4 = cnf.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
+         if ($$3.b()) {
+            return bkc.b($$4);
+         } else {
+            if (!$$1.fS().e($$4.p())) {
+               $$1.a($$4, false);
             }
 
-            $$3 = false;
-            break;
+            return bkc.b($$3);
          }
       }
-
-      if ($$3) {
-         $$2.add(crk.a($$4, $$1.b));
-      }
-
-      $$0.w().a("StoredEnchantments", $$2);
-   }
-
-   public static cmx a(crl $$0) {
-      cmx $$1 = new cmx(cna.up);
-      a($$1, $$0);
-      return $$1;
    }
 }

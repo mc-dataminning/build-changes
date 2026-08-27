@@ -1,14 +1,14 @@
 public class zm implements xf<za> {
-   private final bjx a;
+   private final bjy a;
    private final boolean b;
 
-   public zm(bjx $$0, boolean $$1) {
+   public zm(bjy $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public zm(ui $$0) {
-      this.a = bjx.a($$0.readUnsignedByte());
+      this.a = bjy.a($$0.readUnsignedByte());
       this.b = $$0.readBoolean();
    }
 
@@ -26,7 +26,7 @@ public class zm implements xf<za> {
       return this.b;
    }
 
-   public bjx d() {
+   public bjy d() {
       return this.a;
    }
 }

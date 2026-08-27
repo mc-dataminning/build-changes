@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class vh {
-   public static final Codec<vf> a = atv.a("Component", vh::a);
-   public static final Codec<vf> b = atv.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+   public static final Codec<vf> a = atw.a("Component", vh::a);
+   public static final Codec<vf> b = atw.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
    private static vt a(List<vf> $$0) {
       vt $$1 = $$0.get(0).f();
@@ -28,22 +28,22 @@ public class vh {
       return $$1;
    }
 
-   public static <T extends avj, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+   public static <T extends avk, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
       MapCodec<E> $$4 = new vh.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = avj.b((Supplier<T[]>)(() -> $$0));
+      Codec<T> $$5 = avk.b((Supplier<T[]>)(() -> $$0));
       MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
       MapCodec<E> $$7 = new vh.b($$3, $$6, $$4);
-      return atv.a($$7, $$6);
+      return atw.a($$7, $$6);
    }
 
    private static Codec<vf> a(Codec<vf> $$0) {
       vg.a<?>[] $$1 = new vg.a[]{wm.b, wq.c, wj.b, wn.c, wo.b, wl.b};
       MapCodec<vg> $$2 = a($$1, vg.a::a, vg::a, "type");
       Codec<vf> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(vf::b), atv.a(atv.a($$0.listOf()), "extra", List.of()).forGetter(vf::c), wc.b.a.forGetter(vf::a))
+         $$2x -> $$2x.group($$2.forGetter(vf::b), atw.a(atw.a($$0.listOf()), "extra", List.of()).forGetter(vf::c), wc.b.a.forGetter(vf::a))
                .apply($$2x, vt::new)
       );
-      return Codec.either(Codec.either(Codec.STRING, atv.a($$0.listOf())), $$3)
+      return Codec.either(Codec.either(Codec.STRING, atw.a($$0.listOf())), $$3)
          .xmap($$0x -> (vf)$$0x.map($$0xx -> (vf)$$0xx.map(vf::b, vh::a), $$0xx -> $$0xx), $$0x -> {
             String $$1x = $$0x.d();
             return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);

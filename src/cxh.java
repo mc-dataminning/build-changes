@@ -1,34 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class cxh extends cyk {
+public class cxh extends cwq {
    public static final MapCodec<cxh> a = b(cxh::new);
-   private static final eml[] b = new eml[]{
-      cwp.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cwp.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+   protected static final emm b = cwq.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<cxh> a() {
+   public MapCodec<? extends cxh> a() {
       return a;
    }
 
-   public cxh(djf.d $$0) {
+   public cxh(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ctn d() {
-      return cna.tY;
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return b[this.g($$0)];
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      return !$$0.a($$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      return !$$1.u($$2.d());
    }
 }

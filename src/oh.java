@@ -1,40 +1,40 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oh extends ok<cbp> {
+public class oh extends ok<cbq> {
    public oh(km $$0, CompletableFuture<ij.b> $$1) {
       super($$0, ke.R, $$1);
    }
 
    @Override
    protected void a(ij.b $$0) {
-      this.b(asp.a)
+      this.b(asq.a)
          .a(
-            cbq.a,
-            cbq.b,
-            cbq.c,
-            cbq.d,
-            cbq.e,
-            cbq.f,
-            cbq.g,
-            cbq.h,
-            cbq.i,
-            cbq.j,
-            cbq.k,
-            cbq.l,
-            cbq.m,
-            cbq.n,
-            cbq.o,
-            cbq.p,
-            cbq.q,
-            cbq.r,
-            cbq.s,
-            cbq.t,
-            cbq.u,
-            cbq.v,
-            cbq.w,
-            cbq.x,
-            cbq.y,
-            cbq.z
+            cbr.a,
+            cbr.b,
+            cbr.c,
+            cbr.d,
+            cbr.e,
+            cbr.f,
+            cbr.g,
+            cbr.h,
+            cbr.i,
+            cbr.j,
+            cbr.k,
+            cbr.l,
+            cbr.m,
+            cbr.n,
+            cbr.o,
+            cbr.p,
+            cbr.q,
+            cbr.r,
+            cbr.s,
+            cbr.t,
+            cbr.u,
+            cbr.v,
+            cbr.w,
+            cbr.x,
+            cbr.y,
+            cbr.z
          );
    }
 }

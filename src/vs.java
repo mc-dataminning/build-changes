@@ -33,16 +33,15 @@ public class vs {
       return this.c[$$0];
    }
 
-   public void a(vv $$0) {
-      List<vr> $$1 = $$0.l().d().a();
-      ArrayDeque<vr> $$2 = new ArrayDeque<>($$1.size() + 1);
-      $$2.addAll($$1);
-      vr $$3 = $$0.k();
-      if ($$3 != null) {
-         $$2.add($$3);
+   public void a(vy $$0, @Nullable vr $$1) {
+      List<vr> $$2 = $$0.d().a();
+      ArrayDeque<vr> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      this.a($$2);
+      this.a($$3);
    }
 
    @VisibleForTesting

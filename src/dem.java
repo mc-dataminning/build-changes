@@ -1,84 +1,76 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dem extends cwb implements czx {
+public class dem extends cwq {
    public static final MapCodec<dem> a = b(dem::new);
-   public static final dke<dkq> b = djw.bj;
+   private static final vf d = vf.c("container.stonecutter");
+   public static final dkb b = dal.aE;
+   protected static final emm c = cwq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dem> a() {
       return a;
    }
 
-   protected dem(djf.d $$0) {
+   public dem(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dkq.b));
+      this.k(this.E.b().a(b, ic.c));
    }
 
    @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dii($$0, $$1);
+   public djh a(cph $$0) {
+      return this.o().a(b, $$0.g().g());
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      dgu $$6 = $$1.c_($$2);
-      if ($$6 instanceof dii) {
-         return ((dii)$$6).a($$3) ? bka.a($$1.B) : bka.d;
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      if ($$1.B) {
+         return bkb.a;
       } else {
-         return bka.d;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(asc.ay);
+         return bkb.b;
       }
    }
 
+   @Nullable
    @Override
-   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dgu $$5 = $$0.c_($$1);
-            if ($$5 instanceof dii) {
-               ((dii)$$5).a($$3);
-            }
-         }
-      }
+   public bke b(djh $$0, ctp $$1, hx $$2) {
+      return new bkk(($$2x, $$3, $$4) -> new cka($$2x, $$3, cim.a($$1, $$2)), d);
    }
 
    @Override
-   public dcu b_(djg $$0) {
-      return dcu.c;
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return c;
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
+   public boolean g_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public dcv b_(djh $$0) {
+      return dcv.c;
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
       $$0.a(b);
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
-      if ($$1 instanceof and) {
-         if ($$1.c_($$2) instanceof dii $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.F();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((and)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(and $$0, dii $$1) {
-      switch ($$1.x()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.D();
-         case d:
-      }
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
    }
 }

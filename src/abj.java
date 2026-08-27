@@ -2,9 +2,9 @@ import javax.annotation.Nullable;
 
 public class abj implements xf<za> {
    private final int a;
-   private final blf b;
+   private final blg b;
 
-   public abj(int $$0, blf $$1) {
+   public abj(int $$0, blg $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -25,12 +25,12 @@ public class abj implements xf<za> {
    }
 
    @Nullable
-   public blu a(cto $$0) {
+   public blv a(ctp $$0) {
       return $$0.a(this.a);
    }
 
    @Nullable
-   public blf a() {
+   public blg a() {
       return this.b;
    }
 }

@@ -30,7 +30,7 @@ public record vb(vc j, vc k) {
       $$0.a(i, new vb(vc.a("chat.type.emote"), vc.a("chat.type.emote")));
    }
 
-   public static vb.a a(ahf<vb> $$0, blu $$1) {
+   public static vb.a a(ahf<vb> $$0, blv $$1) {
       return a($$0, $$1.dM().I_(), $$1.Q_());
    }
 

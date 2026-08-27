@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface agt<T> {
-   default void a(int $$0, int $$1, int $$2, cqd<?> $$3, Iterator<T> $$4, int $$5) {
+   default void a(int $$0, int $$1, int $$2, cqe<?> $$3, Iterator<T> $$4, int $$5) {
       int $$6 = $$0;
       int $$7 = $$1;
-      if ($$3.b() instanceof cqi $$9) {
+      if ($$3.b() instanceof cqj $$9) {
          $$6 = $$9.j();
          $$7 = $$9.k();
       }
@@ -17,7 +17,7 @@ public interface agt<T> {
          }
 
          boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$13 = aun.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         int $$13 = auo.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
          if ($$12 && $$13 > $$11) {
             $$10 += $$0;
             $$11++;
@@ -29,7 +29,7 @@ public interface agt<T> {
             }
 
             $$12 = (float)$$6 < (float)$$0 / 2.0F;
-            $$13 = aun.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            $$13 = auo.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
             int $$15 = $$6;
             boolean $$16 = $$14 < $$6;
             if ($$12) {

@@ -1,94 +1,66 @@
-import com.mojang.serialization.Lifecycle;
 import java.util.Locale;
-import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface egr {
-   int d = 19133;
-   int e = 19132;
-
-   cui F();
-
-   void a(cui var1);
-
-   boolean H();
-
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
-   }
-
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
-   }
-
-   @Nullable
-   sn G();
-
-   void a(@Nullable sn var1);
-
-   egq K();
-
-   cts L();
-
-   sn a(iu var1, @Nullable sn var2);
-
-   boolean n();
-
-   int z();
-
+public interface egr extends egt {
+   @Override
    String g();
 
-   ctl m();
+   void a(boolean var1);
 
-   void a(ctl var1);
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
+
+   @Override
+   default void a(p $$0, ctr $$1) {
+      egt.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   }
+
+   int h();
+
+   void a(int var1);
+
+   int v();
+
+   void g(int var1);
+
+   int w();
+
+   void h(int var1);
+
+   @Nullable
+   UUID x();
+
+   void a(UUID var1);
+
+   ctm m();
+
+   void a(dky.c var1);
+
+   dky.c r();
+
+   boolean p();
+
+   void c(boolean var1);
 
    boolean o();
 
-   bjx s();
+   void a(ctm var1);
 
-   void a(bjx var1);
+   elg<MinecraftServer> u();
 
-   boolean t();
+   void a(long var1);
 
-   void d(boolean var1);
-
-   ctk q();
-
-   @Nullable
-   sn y();
-
-   dms.a E();
-
-   void a(dms.a var1);
-
-   dpn A();
-
-   boolean B();
-
-   boolean C();
-
-   Lifecycle D();
-
-   default chr M() {
-      return this.F().b();
-   }
+   void b(long var1);
 }

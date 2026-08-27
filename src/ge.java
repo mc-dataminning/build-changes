@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class ge {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<els, List<? extends blu>> b = ($$0, $$1) -> {
+   public static final BiConsumer<elt, List<? extends blv>> b = ($$0, $$1) -> {
    };
-   private static final dne<blu, ?> c = new dne<blu, blu>() {
-      public blu a(blu $$0) {
+   private static final dnf<blv, ?> c = new dnf<blv, blv>() {
+      public blv a(blv $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends blu> a() {
-         return blu.class;
+      public Class<? extends blv> a() {
+         return blv.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<blu> g;
+   private final Predicate<blv> g;
    private final ck.c h;
-   private final Function<els, els> i;
+   private final Function<elt, elt> i;
    @Nullable
-   private final eln j;
-   private final BiConsumer<els, List<? extends blu>> k;
+   private final elo j;
+   private final BiConsumer<elt, List<? extends blv>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dne<blu, ?> o;
+   private final dnf<blv, ?> o;
    private final boolean p;
 
    public ge(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<blu> $$3,
+      Predicate<blv> $$3,
       ck.c $$4,
-      Function<els, els> $$5,
-      @Nullable eln $$6,
-      BiConsumer<els, List<? extends blu>> $$7,
+      Function<elt, elt> $$5,
+      @Nullable elo $$6,
+      BiConsumer<elt, List<? extends blv>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bly<?> $$11,
+      @Nullable blz<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class ge {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dne<blu, ?>)($$11 == null ? c : $$11);
+      this.o = (dnf<blv, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class ge {
       }
    }
 
-   public blu a(ds $$0) throws CommandSyntaxException {
+   public blv a(ds $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends blu> $$1 = this.b($$0);
+      List<? extends blv> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw ef.d.create();
       } else if ($$1.size() > 1) {
@@ -107,33 +107,33 @@ public class ge {
       }
    }
 
-   public List<? extends blu> b(ds $$0) throws CommandSyntaxException {
+   public List<? extends blv> b(ds $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
    }
 
-   private List<? extends blu> f(ds $$0) throws CommandSyntaxException {
+   private List<? extends blv> f(ds $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
          ane $$1 = $$0.l().ae().a(this.m);
-         return (List<? extends blu>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$1}));
+         return (List<? extends blv>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$1}));
       } else if (this.n != null) {
          for (and $$2 : $$0.l().H()) {
-            blu $$3 = $$2.a(this.n);
+            blv $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new blu[]{$$3});
+               return Lists.newArrayList(new blv[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         els $$4 = this.i.apply($$0.d());
-         Predicate<blu> $$5 = this.a($$4);
+         elt $$4 = this.i.apply($$0.d());
+         Predicate<blv> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends blu>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blu[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends blv>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blv[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<blu> $$6 = Lists.newArrayList();
+            List<blv> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
@@ -147,7 +147,7 @@ public class ge {
       }
    }
 
-   private void a(List<blu> $$0, and $$1, els $$2, Predicate<blu> $$3) {
+   private void a(List<blv> $$0, and $$1, elt $$2, Predicate<blv> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -181,8 +181,8 @@ public class ge {
          ane $$2 = $$0.l().ae().a(this.n);
          return (List<ane>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$2}));
       } else {
-         els $$3 = this.i.apply($$0.d());
-         Predicate<blu> $$4 = this.a($$3);
+         elt $$3 = this.i.apply($$0.d());
+         Predicate<blv> $$4 = this.a($$3);
          if (this.l) {
             if ($$0.f() instanceof ane $$5 && $$4.test($$5)) {
                return Lists.newArrayList(new ane[]{$$5});
@@ -212,10 +212,10 @@ public class ge {
       }
    }
 
-   private Predicate<blu> a(els $$0) {
-      Predicate<blu> $$1 = this.g;
+   private Predicate<blv> a(elt $$0) {
+      Predicate<blv> $$1 = this.g;
       if (this.j != null) {
-         eln $$2 = this.j.c($$0);
+         elo $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
       }
 
@@ -226,7 +226,7 @@ public class ge {
       return $$1;
    }
 
-   private <T extends blu> List<T> a(els $$0, List<T> $$1) {
+   private <T extends blv> List<T> a(elt $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class ge {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static vf a(List<? extends blu> $$0) {
-      return vi.b($$0, blu::Q_);
+   public static vf a(List<? extends blv> $$0) {
+      return vi.b($$0, blv::Q_);
    }
 }

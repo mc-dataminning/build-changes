@@ -11,7 +11,7 @@ public class als implements alt {
          @Override
          public alt a(CommandContext<ds> $$0x) throws CommandSyntaxException {
             hx $$1 = fm.a($$0, $$0 + "Pos");
-            dgu $$2 = ((ds)$$0.getSource()).e().c_($$1);
+            dgv $$2 = ((ds)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw als.b.create();
             } else {
@@ -24,17 +24,17 @@ public class als implements alt {
             return $$0.then(dt.a("block").then($$1.apply(dt.a($$0 + "Pos", fm.a()))));
          }
       };
-   private final dgu c;
+   private final dgv c;
    private final hx d;
 
-   public als(dgu $$0, hx $$1) {
+   public als(dgv $$0, hx $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(sn $$0) {
-      djg $$1 = this.c.i().a_(this.d);
+      djh $$1 = this.c.i().a_(this.d);
       this.c.a($$0);
       this.c.e();
       this.c.i().a(this.d, $$1, $$1, 3);

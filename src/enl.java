@@ -1,7 +1,5 @@
+import java.util.function.Function;
+
 public interface enl<T> {
-   void a(enj<T> var1);
-
-   boolean a(hx var1, T var2);
-
-   int a();
+   tk b(long var1, Function<T, String> var3);
 }

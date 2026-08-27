@@ -1,12 +1,12 @@
 public class aau implements xf<za> {
-   private final bjz a;
+   private final bka a;
 
-   public aau(bjz $$0) {
+   public aau(bka $$0) {
       this.a = $$0;
    }
 
    public aau(ui $$0) {
-      this.a = $$0.b(bjz.class);
+      this.a = $$0.b(bka.class);
    }
 
    @Override
@@ -18,7 +18,7 @@ public class aau implements xf<za> {
       $$0.a(this);
    }
 
-   public bjz a() {
+   public bka a() {
       return this.a;
    }
 }

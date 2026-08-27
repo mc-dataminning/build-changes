@@ -1,7 +1,27 @@
-public class bmp {
-   public static final bmp a = new bmp();
-   public static final bmp b = new bmp();
-   public static final bmp c = new bmp();
-   public static final bmp d = new bmp();
-   public static final bmp e = new bmp();
+public enum bmp {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o,
+   p,
+   q;
+
+   public static boolean a(bmp $$0) {
+      return $$0 == c || $$0 == q;
+   }
+
+   public static boolean b(bmp $$0) {
+      return $$0 == q;
+   }
 }

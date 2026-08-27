@@ -2,201 +2,201 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
 public class pr {
-   private static final dpg.o a = a(cwr.a);
-   private static final dpg.o b = a(cwr.F);
-   private static final dpg.o c = a(cwr.hj);
-   private static final dpg.o d = a(cwr.hk);
-   private static final dpg.o e = a(cwr.iA);
-   private static final dpg.o f = a(cwr.K);
-   private static final dpg.o g = a(cwr.jp);
-   private static final dpg.o h = a(cwr.b);
-   private static final dpg.o i = a(cwr.sJ);
-   private static final dpg.o j = a(cwr.j);
-   private static final dpg.o k = a(cwr.l);
-   private static final dpg.o l = a(cwr.k);
-   private static final dpg.o m = a(cwr.fl);
-   private static final dpg.o n = a(cwr.i);
-   private static final dpg.o o = a(cwr.qN);
-   private static final dpg.o p = a(cwr.L);
-   private static final dpg.o q = a(cwr.I);
-   private static final dpg.o r = a(cwr.aV);
-   private static final dpg.o s = a(cwr.iC);
-   private static final dpg.o t = a(cwr.dP);
-   private static final dpg.o u = a(cwr.sI);
-   private static final dpg.o v = a(cwr.qP);
-   private static final dpg.o w = a(cwr.dO);
-   private static final dpg.o x = a(cwr.G);
-   private static final dpg.o y = a(cwr.H);
-   private static final dpg.o z = a(cwr.dV);
-   private static final dpg.o A = a(cwr.dW);
-   private static final dpg.o B = a(cwr.dX);
-   private static final dpg.o C = a(cwr.dY);
-   private static final dpg.o D = a(cwr.pr);
-   private static final dpg.o E = a(cwr.op);
-   private static final dpg.o F = a(cwr.on);
-   private static final dpg.o G = a(cwr.kK);
-   private static final dpg.o H = a(cwr.ow);
-   private static final dpg.o I = a(cwr.fz);
+   private static final dph.o a = a(cws.a);
+   private static final dph.o b = a(cws.F);
+   private static final dph.o c = a(cws.hj);
+   private static final dph.o d = a(cws.hk);
+   private static final dph.o e = a(cws.iA);
+   private static final dph.o f = a(cws.K);
+   private static final dph.o g = a(cws.jp);
+   private static final dph.o h = a(cws.b);
+   private static final dph.o i = a(cws.sJ);
+   private static final dph.o j = a(cws.j);
+   private static final dph.o k = a(cws.l);
+   private static final dph.o l = a(cws.k);
+   private static final dph.o m = a(cws.fl);
+   private static final dph.o n = a(cws.i);
+   private static final dph.o o = a(cws.qN);
+   private static final dph.o p = a(cws.L);
+   private static final dph.o q = a(cws.I);
+   private static final dph.o r = a(cws.aV);
+   private static final dph.o s = a(cws.iC);
+   private static final dph.o t = a(cws.dP);
+   private static final dph.o u = a(cws.sI);
+   private static final dph.o v = a(cws.qP);
+   private static final dph.o w = a(cws.dO);
+   private static final dph.o x = a(cws.G);
+   private static final dph.o y = a(cws.H);
+   private static final dph.o z = a(cws.dV);
+   private static final dph.o A = a(cws.dW);
+   private static final dph.o B = a(cws.dX);
+   private static final dph.o C = a(cws.dY);
+   private static final dph.o D = a(cws.pr);
+   private static final dph.o E = a(cws.op);
+   private static final dph.o F = a(cws.on);
+   private static final dph.o G = a(cws.kK);
+   private static final dph.o H = a(cws.ow);
+   private static final dph.o I = a(cws.fz);
 
-   private static dpg.o a(cwp $$0) {
-      return dpg.a($$0.o());
+   private static dph.o a(cwq $$0) {
+      return dph.a($$0.o());
    }
 
-   public static dpg.o a() {
+   public static dph.o a() {
       return a(true, false, true);
    }
 
-   public static dpg.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dpg.f $$3 = dpg.a(dpj.a(97), 2);
-      dpg.f $$4 = dpg.a(dpj.a(256), 0);
-      dpg.f $$5 = dpg.b(dpj.a(63), -1);
-      dpg.f $$6 = dpg.b(dpj.a(74), 1);
-      dpg.f $$7 = dpg.a(dpj.a(60), 0);
-      dpg.f $$8 = dpg.a(dpj.a(62), 0);
-      dpg.f $$9 = dpg.a(dpj.a(63), 0);
-      dpg.f $$10 = dpg.a(-1, 0);
-      dpg.f $$11 = dpg.a(0, 0);
-      dpg.f $$12 = dpg.b(-6, -1);
-      dpg.f $$13 = dpg.b();
-      dpg.f $$14 = dpg.a(cuu.W, cuu.X);
-      dpg.f $$15 = dpg.a();
-      dpg.o $$16 = dpg.a(dpg.a($$11, n), j);
-      dpg.o $$17 = dpg.a(dpg.a(dpg.e, r), q);
-      dpg.o $$18 = dpg.a(dpg.a(dpg.e, h), p);
-      dpg.f $$19 = dpg.a(cuu.P, cuu.M, cuu.N);
-      dpg.f $$20 = dpg.a(cuu.f);
-      dpg.o $$21 = dpg.a(
-         dpg.a(dpg.a(cuu.J), dpg.a(dpg.a(dpg.a(doy.X, -0.0125, 0.0125), o), h)),
-         dpg.a(dpg.a(cuu.O), dpg.a(dpg.a(dpg.a(doy.Y, -0.05, 0.05), $$18), h)),
-         dpg.a(dpg.a(cuu.t), dpg.a(a(1.0), h)),
-         dpg.a($$19, $$17),
-         dpg.a($$20, $$17),
-         dpg.a(dpg.a(cuu.Z), h)
+   public static dph.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dph.f $$3 = dph.a(dpk.a(97), 2);
+      dph.f $$4 = dph.a(dpk.a(256), 0);
+      dph.f $$5 = dph.b(dpk.a(63), -1);
+      dph.f $$6 = dph.b(dpk.a(74), 1);
+      dph.f $$7 = dph.a(dpk.a(60), 0);
+      dph.f $$8 = dph.a(dpk.a(62), 0);
+      dph.f $$9 = dph.a(dpk.a(63), 0);
+      dph.f $$10 = dph.a(-1, 0);
+      dph.f $$11 = dph.a(0, 0);
+      dph.f $$12 = dph.b(-6, -1);
+      dph.f $$13 = dph.b();
+      dph.f $$14 = dph.a(cuv.W, cuv.X);
+      dph.f $$15 = dph.a();
+      dph.o $$16 = dph.a(dph.a($$11, n), j);
+      dph.o $$17 = dph.a(dph.a(dph.e, r), q);
+      dph.o $$18 = dph.a(dph.a(dph.e, h), p);
+      dph.f $$19 = dph.a(cuv.P, cuv.M, cuv.N);
+      dph.f $$20 = dph.a(cuv.f);
+      dph.o $$21 = dph.a(
+         dph.a(dph.a(cuv.J), dph.a(dph.a(dph.a(doz.X, -0.0125, 0.0125), o), h)),
+         dph.a(dph.a(cuv.O), dph.a(dph.a(dph.a(doz.Y, -0.05, 0.05), $$18), h)),
+         dph.a(dph.a(cuv.t), dph.a(a(1.0), h)),
+         dph.a($$19, $$17),
+         dph.a($$20, $$17),
+         dph.a(dph.a(cuv.Z), h)
       );
-      dpg.o $$22 = dpg.a(dpg.a(doy.Z, 0.45, 0.58), dpg.a($$11, v));
-      dpg.o $$23 = dpg.a(dpg.a(doy.Z, 0.35, 0.6), dpg.a($$11, v));
-      dpg.o $$24 = dpg.a(
-         dpg.a(dpg.a(cuu.H), dpg.a(dpg.a($$15, s), dpg.a(dpg.a(doy.aa, -0.5, 0.2), s), dpg.a(dpg.a(doy.ab, -0.0625, 0.025), w), dpg.a($$11, t))),
-         dpg.a(dpg.a(cuu.G), dpg.a(dpg.a($$15, h), $$22, dpg.a($$11, t))),
-         dpg.a(dpg.a(cuu.I), h),
-         dpg.a(dpg.a(cuu.F), dpg.a($$22, j)),
+      dph.o $$22 = dph.a(dph.a(doz.Z, 0.45, 0.58), dph.a($$11, v));
+      dph.o $$23 = dph.a(dph.a(doz.Z, 0.35, 0.6), dph.a($$11, v));
+      dph.o $$24 = dph.a(
+         dph.a(dph.a(cuv.H), dph.a(dph.a($$15, s), dph.a(dph.a(doz.aa, -0.5, 0.2), s), dph.a(dph.a(doz.ab, -0.0625, 0.025), w), dph.a($$11, t))),
+         dph.a(dph.a(cuv.G), dph.a(dph.a($$15, h), $$22, dph.a($$11, t))),
+         dph.a(dph.a(cuv.I), h),
+         dph.a(dph.a(cuv.F), dph.a($$22, j)),
          $$21,
-         dpg.a(dpg.a(cuu.w), dpg.a(a(1.75), h)),
-         dpg.a(dpg.a(cuu.u), dpg.a(dpg.a(a(2.0), $$18), dpg.a(a(1.0), h), dpg.a(a(-1.0), j), $$18)),
-         dpg.a(dpg.a(cuu.h), u),
+         dph.a(dph.a(cuv.w), dph.a(a(1.75), h)),
+         dph.a(dph.a(cuv.u), dph.a(dph.a(a(2.0), $$18), dph.a(a(1.0), h), dph.a(a(-1.0), j), $$18)),
+         dph.a(dph.a(cuv.h), u),
          j
       );
-      dpg.o $$25 = dpg.a(
-         dpg.a(dpg.a(cuu.H), dpg.a(dpg.a($$15, s), dpg.a(dpg.a(doy.aa, 0.0, 0.2), s), dpg.a(dpg.a(doy.ab, 0.0, 0.025), w), dpg.a($$11, t))),
-         dpg.a(dpg.a(cuu.G), dpg.a(dpg.a($$15, h), $$23, dpg.a($$11, t))),
-         dpg.a(dpg.a(cuu.I), dpg.a(dpg.a($$15, h), dpg.a($$11, t))),
-         dpg.a(dpg.a(cuu.F), dpg.a($$23, dpg.a($$11, t))),
+      dph.o $$25 = dph.a(
+         dph.a(dph.a(cuv.H), dph.a(dph.a($$15, s), dph.a(dph.a(doz.aa, 0.0, 0.2), s), dph.a(dph.a(doz.ab, 0.0, 0.025), w), dph.a($$11, t))),
+         dph.a(dph.a(cuv.G), dph.a(dph.a($$15, h), $$23, dph.a($$11, t))),
+         dph.a(dph.a(cuv.I), dph.a(dph.a($$15, h), dph.a($$11, t))),
+         dph.a(dph.a(cuv.F), dph.a($$23, dph.a($$11, t))),
          $$21,
-         dpg.a(dpg.a(cuu.w), dpg.a(dpg.a(a(1.75), h), dpg.a(a(-0.5), l))),
-         dpg.a(dpg.a(cuu.u), dpg.a(dpg.a(a(2.0), $$18), dpg.a(a(1.0), h), dpg.a(a(-1.0), $$16), $$18)),
-         dpg.a(dpg.a(cuu.n, cuu.o), dpg.a(dpg.a(a(1.75), l), dpg.a(a(-0.95), k))),
-         dpg.a(dpg.a(cuu.e), dpg.a($$11, t)),
-         dpg.a(dpg.a(cuu.h), u),
-         dpg.a(dpg.a(cuu.Y), m),
+         dph.a(dph.a(cuv.w), dph.a(dph.a(a(1.75), h), dph.a(a(-0.5), l))),
+         dph.a(dph.a(cuv.u), dph.a(dph.a(a(2.0), $$18), dph.a(a(1.0), h), dph.a(a(-1.0), $$16), $$18)),
+         dph.a(dph.a(cuv.n, cuv.o), dph.a(dph.a(a(1.75), l), dph.a(a(-0.95), k))),
+         dph.a(dph.a(cuv.e), dph.a($$11, t)),
+         dph.a(dph.a(cuv.h), u),
+         dph.a(dph.a(cuv.Y), m),
          $$16
       );
-      dpg.f $$26 = dpg.a(doy.N, -0.909, -0.5454);
-      dpg.f $$27 = dpg.a(doy.N, -0.1818, 0.1818);
-      dpg.f $$28 = dpg.a(doy.N, 0.5454, 0.909);
-      dpg.o $$29 = dpg.a(
-         dpg.a(
-            dpg.a,
-            dpg.a(
-               dpg.a(dpg.a(cuu.C), dpg.a($$3, dpg.a(dpg.a($$26, l), dpg.a($$27, l), dpg.a($$28, l), $$16))),
-               dpg.a(dpg.a(cuu.g), dpg.a($$8, dpg.a(dpg.a($$9), dpg.a(dpg.a(doy.W, 0.0), x)))),
-               dpg.a(dpg.a(cuu.h), dpg.a($$7, dpg.a(dpg.a($$9), dpg.a(dpg.a(doy.W, 0.0), x))))
+      dph.f $$26 = dph.a(doz.N, -0.909, -0.5454);
+      dph.f $$27 = dph.a(doz.N, -0.1818, 0.1818);
+      dph.f $$28 = dph.a(doz.N, 0.5454, 0.909);
+      dph.o $$29 = dph.a(
+         dph.a(
+            dph.a,
+            dph.a(
+               dph.a(dph.a(cuv.C), dph.a($$3, dph.a(dph.a($$26, l), dph.a($$27, l), dph.a($$28, l), $$16))),
+               dph.a(dph.a(cuv.g), dph.a($$8, dph.a(dph.a($$9), dph.a(dph.a(doz.W, 0.0), x)))),
+               dph.a(dph.a(cuv.h), dph.a($$7, dph.a(dph.a($$9), dph.a(dph.a(doz.W, 0.0), x))))
             )
          ),
-         dpg.a(
-            dpg.a(cuu.A, cuu.B, cuu.C),
-            dpg.a(
-               dpg.a(
-                  dpg.a,
-                  dpg.a(
-                     dpg.a($$4, d),
-                     dpg.a($$6, dpg.a(dpg.a($$26, e), dpg.a($$27, e), dpg.a($$28, e), dpg.e())),
-                     dpg.a($$10, dpg.a(dpg.a(dpg.e, g), f)),
-                     dpg.a(dpg.a($$13), d),
-                     dpg.a($$12, c),
+         dph.a(
+            dph.a(cuv.A, cuv.B, cuv.C),
+            dph.a(
+               dph.a(
+                  dph.a,
+                  dph.a(
+                     dph.a($$4, d),
+                     dph.a($$6, dph.a(dph.a($$26, e), dph.a($$27, e), dph.a($$28, e), dph.e())),
+                     dph.a($$10, dph.a(dph.a(dph.e, g), f)),
+                     dph.a(dph.a($$13), d),
+                     dph.a($$12, c),
                      $$18
                   )
                ),
-               dpg.a($$5, dpg.a(dpg.a($$9, dpg.a(dpg.a($$6), d)), dpg.e())),
-               dpg.a(dpg.b, dpg.a($$12, c))
+               dph.a($$5, dph.a(dph.a($$9, dph.a(dph.a($$6), d)), dph.e())),
+               dph.a(dph.b, dph.a($$12, c))
             )
          ),
-         dpg.a(dpg.a, dpg.a($$10, dpg.a(dpg.a($$14, dpg.a($$13, dpg.a(dpg.a($$11, a), dpg.a(dpg.d(), w), x))), $$25))),
-         dpg.a($$12, dpg.a(dpg.a(dpg.a, dpg.a($$14, dpg.a($$13, x))), dpg.a(dpg.b, $$24), dpg.a($$19, dpg.a(dpg.c, r)), dpg.a($$20, dpg.a(dpg.d, r)))),
-         dpg.a(dpg.a, dpg.a(dpg.a(dpg.a(cuu.H, cuu.I), h), dpg.a(dpg.a(cuu.P, cuu.Q, cuu.R), $$17), $$18))
+         dph.a(dph.a, dph.a($$10, dph.a(dph.a($$14, dph.a($$13, dph.a(dph.a($$11, a), dph.a(dph.d(), w), x))), $$25))),
+         dph.a($$12, dph.a(dph.a(dph.a, dph.a($$14, dph.a($$13, x))), dph.a(dph.b, $$24), dph.a($$19, dph.a(dph.c, r)), dph.a($$20, dph.a(dph.d, r)))),
+         dph.a(dph.a, dph.a(dph.a(dph.a(cuv.H, cuv.I), h), dph.a(dph.a(cuv.P, cuv.Q, cuv.R), $$17), $$18))
       );
-      Builder<dpg.o> $$30 = ImmutableList.builder();
+      Builder<dph.o> $$30 = ImmutableList.builder();
       if ($$1) {
-         $$30.add(dpg.a(dpg.a(dpg.a("bedrock_roof", dpj.c(5), dpj.b())), b));
+         $$30.add(dph.a(dph.a(dph.a("bedrock_roof", dpk.c(5), dpk.b())), b));
       }
 
       if ($$2) {
-         $$30.add(dpg.a(dpg.a("bedrock_floor", dpj.a(), dpj.b(5)), b));
+         $$30.add(dph.a(dph.a("bedrock_floor", dpk.a(), dpk.b(5)), b));
       }
 
-      dpg.o $$31 = dpg.a(dpg.c(), $$29);
+      dph.o $$31 = dph.a(dph.c(), $$29);
       $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dpg.a(dpg.a("deepslate", dpj.a(0), dpj.a(8)), i));
-      return dpg.a((dpg.o[])$$30.build().toArray(dpg.o[]::new));
+      $$30.add(dph.a(dph.a("deepslate", dpk.a(0), dpk.a(8)), i));
+      return dph.a((dph.o[])$$30.build().toArray(dph.o[]::new));
    }
 
-   public static dpg.o b() {
-      dpg.f $$0 = dpg.a(dpj.a(31), 0);
-      dpg.f $$1 = dpg.a(dpj.a(32), 0);
-      dpg.f $$2 = dpg.b(dpj.a(30), 0);
-      dpg.f $$3 = dpg.a(dpg.b(dpj.a(35), 0));
-      dpg.f $$4 = dpg.a(dpj.c(5), 0);
-      dpg.f $$5 = dpg.b();
-      dpg.f $$6 = dpg.a(doy.ac, -0.012);
-      dpg.f $$7 = dpg.a(doy.ad, -0.012);
-      dpg.f $$8 = dpg.a(doy.ae, -0.012);
-      dpg.f $$9 = dpg.a(doy.af, 0.54);
-      dpg.f $$10 = dpg.a(doy.ag, 1.17);
-      dpg.f $$11 = dpg.a(doy.ah, 0.0);
-      dpg.o $$12 = dpg.a($$8, dpg.a($$2, dpg.a($$3, p)));
-      return dpg.a(
-         dpg.a(dpg.a("bedrock_floor", dpj.a(), dpj.b(5)), b),
-         dpg.a(dpg.a(dpg.a("bedrock_roof", dpj.c(5), dpj.b())), b),
-         dpg.a($$4, z),
-         dpg.a(dpg.a(cuu.ag), dpg.a(dpg.a(dpg.f, C), dpg.a(dpg.b, dpg.a($$12, dpg.a($$11, C), D)))),
-         dpg.a(dpg.a(cuu.af), dpg.a(dpg.a(dpg.f, dpg.a(dpg.a($$11, A), B)), dpg.a(dpg.b, dpg.a($$12, dpg.a($$11, A), B)))),
-         dpg.a(
-            dpg.a,
-            dpg.a(
-               dpg.a(dpg.a($$1), dpg.a($$5, y)),
-               dpg.a(dpg.a(cuu.ad), dpg.a(dpg.a($$9), dpg.a($$0, dpg.a(dpg.a($$10, E), F)))),
-               dpg.a(dpg.a(cuu.ae), dpg.a(dpg.a($$9), dpg.a($$0, dpg.a(dpg.a($$10, G), H))))
+   public static dph.o b() {
+      dph.f $$0 = dph.a(dpk.a(31), 0);
+      dph.f $$1 = dph.a(dpk.a(32), 0);
+      dph.f $$2 = dph.b(dpk.a(30), 0);
+      dph.f $$3 = dph.a(dph.b(dpk.a(35), 0));
+      dph.f $$4 = dph.a(dpk.c(5), 0);
+      dph.f $$5 = dph.b();
+      dph.f $$6 = dph.a(doz.ac, -0.012);
+      dph.f $$7 = dph.a(doz.ad, -0.012);
+      dph.f $$8 = dph.a(doz.ae, -0.012);
+      dph.f $$9 = dph.a(doz.af, 0.54);
+      dph.f $$10 = dph.a(doz.ag, 1.17);
+      dph.f $$11 = dph.a(doz.ah, 0.0);
+      dph.o $$12 = dph.a($$8, dph.a($$2, dph.a($$3, p)));
+      return dph.a(
+         dph.a(dph.a("bedrock_floor", dpk.a(), dpk.b(5)), b),
+         dph.a(dph.a(dph.a("bedrock_roof", dpk.c(5), dpk.b())), b),
+         dph.a($$4, z),
+         dph.a(dph.a(cuv.ag), dph.a(dph.a(dph.f, C), dph.a(dph.b, dph.a($$12, dph.a($$11, C), D)))),
+         dph.a(dph.a(cuv.af), dph.a(dph.a(dph.f, dph.a(dph.a($$11, A), B)), dph.a(dph.b, dph.a($$12, dph.a($$11, A), B)))),
+         dph.a(
+            dph.a,
+            dph.a(
+               dph.a(dph.a($$1), dph.a($$5, y)),
+               dph.a(dph.a(cuv.ad), dph.a(dph.a($$9), dph.a($$0, dph.a(dph.a($$10, E), F)))),
+               dph.a(dph.a(cuv.ae), dph.a(dph.a($$9), dph.a($$0, dph.a(dph.a($$10, G), H))))
             )
          ),
-         dpg.a(
-            dpg.a(cuu.ac),
-            dpg.a(
-               dpg.a(dpg.b, dpg.a($$6, dpg.a(dpg.a(dpg.a($$5), dpg.a($$2, dpg.a($$3, A))), z))),
-               dpg.a(dpg.a, dpg.a($$0, dpg.a($$3, dpg.a($$7, dpg.a(dpg.a($$1, p), dpg.a(dpg.a($$5), p))))))
+         dph.a(
+            dph.a(cuv.ac),
+            dph.a(
+               dph.a(dph.b, dph.a($$6, dph.a(dph.a(dph.a($$5), dph.a($$2, dph.a($$3, A))), z))),
+               dph.a(dph.a, dph.a($$0, dph.a($$3, dph.a($$7, dph.a(dph.a($$1, p), dph.a(dph.a($$5), p))))))
             )
          ),
          z
       );
    }
 
-   public static dpg.o c() {
+   public static dph.o c() {
       return I;
    }
 
-   public static dpg.o d() {
+   public static dph.o d() {
       return a;
    }
 
-   private static dpg.f a(double $$0) {
-      return dpg.a(doy.N, $$0 / 8.25, Double.MAX_VALUE);
+   private static dph.f a(double $$0) {
+      return dph.a(doz.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

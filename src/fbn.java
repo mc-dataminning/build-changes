@@ -1,47 +1,49 @@
-public class fbn extends fda {
-   private static final int a = 90;
-   private final vf b;
-   private exy c = exy.a;
-   private final Runnable k;
-   private final vf l;
-   private final boolean m;
-
-   public fbn(Runnable $$0, vf $$1, vf $$2) {
-      this($$0, $$1, $$2, ve.k, true);
+public class fbn extends fdd {
+   private static evl<?>[] a(evm $$0) {
+      return new evl[]{
+         $$0.ap(),
+         $$0.T(),
+         $$0.r(),
+         $$0.F(),
+         $$0.p(),
+         $$0.V(),
+         $$0.n(),
+         $$0.o(),
+         $$0.y(),
+         $$0.z(),
+         $$0.Z(),
+         $$0.aa(),
+         $$0.ag(),
+         $$0.ah(),
+         $$0.ai(),
+         $$0.al(),
+         $$0.aj(),
+         $$0.ak(),
+         $$0.b(),
+         $$0.a(),
+         $$0.q(),
+         $$0.c(),
+         $$0.s()
+      };
    }
 
-   public fbn(Runnable $$0, vf $$1, vf $$2, vf $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
-   }
-
-   @Override
-   public vf h() {
-      return ve.a(super.h(), this.b);
+   public fbn(fdb $$0, evm $$1) {
+      super($$0, $$1, vf.c("options.accessibility.title"), a($$1));
    }
 
    @Override
    protected void aN_() {
       super.aN_();
-      this.c = exy.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = aun.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(exf.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+      exe $$0 = this.k.b(this.b.r());
+      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(eyr.a(vf.c("options.accessibility.high_contrast.error.tooltip")));
+      }
    }
 
    @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
-   }
-
-   @Override
-   public boolean aL_() {
-      return this.m;
+   protected void i() {
+      this.d(exg.a(vf.c("options.accessibility.link"), fbt.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
+      this.d(exg.a(ve.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
    }
 }

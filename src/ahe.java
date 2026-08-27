@@ -48,7 +48,7 @@ public class ahe<T> extends agy<T> {
    }
 
    public static <E, O> RecordCodecBuilder<O, ii<E>> c(ahf<? extends it<? extends E>> $$0) {
-      return atv.a(
+      return atw.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ahe<?> $$2
                   ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
                   : DataResult.error(() -> "Not a registry ops"))
@@ -58,7 +58,7 @@ public class ahe<T> extends agy<T> {
 
    public static <E, O> RecordCodecBuilder<O, ih.c<E>> d(ahf<E> $$0) {
       ahf<? extends it<E>> $$1 = ahf.a($$0.b());
-      return atv.a(
+      return atw.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ahe<?> $$3
                   ? $$3.b
                      .a($$1)

@@ -3,27 +3,27 @@ import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fz implements Predicate<cmx> {
+public class fz implements Predicate<cmy> {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vf.b("arguments.item.overstacked", $$0, $$1));
-   private final ih<cms> b;
+   private final ih<cmt> b;
    @Nullable
    private final sn c;
 
-   public fz(ih<cms> $$0, @Nullable sn $$1) {
+   public fz(ih<cmt> $$0, @Nullable sn $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public cms a() {
+   public cmt a() {
       return this.b.a();
    }
 
-   public boolean a(cmx $$0) {
+   public boolean a(cmy $$0) {
       return $$0.a(this.b) && tc.a(this.c, $$0.v(), true);
    }
 
-   public cmx a(int $$0, boolean $$1) throws CommandSyntaxException {
-      cmx $$2 = new cmx(this.b, $$0);
+   public cmy a(int $$0, boolean $$1) throws CommandSyntaxException {
+      cmy $$2 = new cmy(this.b, $$0);
       if (this.c != null) {
          $$2.c(this.c);
       }

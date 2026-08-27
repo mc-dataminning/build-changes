@@ -1,30 +1,30 @@
-public class cls extends clc {
-   public cls(cms.a $$0) {
+public class cls extends cmt implements clz {
+   public cls(cmt.a $$0) {
       super($$0);
+      cyv.a(this, cki.a);
+   }
+
+   public static boolean d(cmy $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bkb.a($$3);
-      } else {
-         if (!$$1.fT().d) {
-            $$3.h(1);
-         }
+   public boolean a(cmy $$0, cmy $$1) {
+      return $$1.a(cnb.vJ);
+   }
 
-         $$1.b(asb.c.b(this));
-         $$1.dM().a(null, $$1, arr.zx, $$1.db(), 1.0F, 1.0F);
-         cmx $$4 = cne.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bkb.b($$4);
-         } else {
-            if (!$$1.fS().e($$4.p())) {
-               $$1.a($$4, false);
-            }
+   @Override
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
 
-            return bkb.b($$3);
-         }
-      }
+   @Override
+   public arr as_() {
+      return ars.ae;
+   }
+
+   @Override
+   public bma g() {
+      return bma.e;
    }
 }

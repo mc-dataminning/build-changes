@@ -1,42 +1,61 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eks(ekp b, ekp c) implements ekp {
+public record eks(eky b, String c, float d) implements ekq {
    public static final Codec<eks> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekq.a.fieldOf("min").forGetter(eks::c), ekq.a.fieldOf("max").forGetter(eks::d)).apply($$0, eks::new)
+      $$0 -> $$0.group(
+               ekz.a.fieldOf("target").forGetter(eks::c),
+               Codec.STRING.fieldOf("score").forGetter(eks::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eks::e)
+            )
+            .apply($$0, eks::new)
    );
 
    @Override
-   public eko b() {
-      return ekq.c;
-   }
-
-   public static eks a(float $$0, float $$1) {
-      return new eks(ekn.a($$0), ekn.a($$1));
+   public ekp b() {
+      return ekr.e;
    }
 
    @Override
-   public int a(egv $$0) {
-      return aun.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public Set<eje<?>> a() {
+      return this.b.b();
+   }
+
+   public static eks a(egw.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static eks a(egw.b $$0, String $$1, float $$2) {
+      return new eks(ekv.a($$0), $$1, $$2);
    }
 
    @Override
-   public float b(egv $$0) {
-      return aun.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public float b(egw $$0) {
+      emw $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         emx $$2 = $$0.d().f();
+         emp $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            emt $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
+      }
    }
 
-   @Override
-   public Set<ejd<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ekp c() {
+   public eky c() {
       return this.b;
    }
 
-   public ekp d() {
+   public String d() {
       return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

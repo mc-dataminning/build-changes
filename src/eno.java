@@ -1,29 +1,29 @@
-import java.util.function.Function;
+public enum eno {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class eno<T> implements enf<T> {
-   private final Function<hx, enm<T>> a;
+   private final int h;
 
-   public eno(Function<hx, enm<T>> $$0) {
-      this.a = $$0;
+   private eno(int $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public boolean a(hx $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public static eno a(int $$0) {
+      for (eno $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
    }
 
-   @Override
-   public void a(enj<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(hx $$0, T $$1) {
-      return false;
-   }
-
-   @Override
    public int a() {
-      return 0;
+      return this.h;
    }
 }

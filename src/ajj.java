@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class ajj {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vf.b("commands.fill.toobig", $$0, $$1));
-   static final fh b = new fh(cwr.a.o(), Collections.emptySet(), null);
+   static final fh b = new fh(cws.a.o(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<ds> $$0, dn $$1) {
@@ -27,14 +27,14 @@ public class ajj {
                                                 "block", fj.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((ds)$$0x.getSource(), dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.a, null)
+                                                $$0x -> a((ds)$$0x.getSource(), dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)dt.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (ds)$$0x.getSource(),
-                                                            dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                            dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
                                                             fj.a($$0x, "block"),
                                                             ajj.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class ajj {
                                                       .executes(
                                                          $$0x -> a(
                                                                (ds)$$0x.getSource(),
-                                                               dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                               dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
                                                                fj.a($$0x, "block"),
                                                                ajj.a.a,
                                                                fi.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class ajj {
                                              .executes(
                                                 $$0x -> a(
                                                       (ds)$$0x.getSource(),
-                                                      dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                      dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
                                                       fj.a($$0x, "block"),
                                                       ajj.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class ajj {
                                     .then(
                                        dt.a("outline")
                                           .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.b, null)
+                                             $$0x -> a((ds)$$0x.getSource(), dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.b, null)
                                           )
                                     ))
                                  .then(
                                     dt.a("hollow")
                                        .executes(
-                                          $$0x -> a((ds)$$0x.getSource(), dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.c, null)
+                                          $$0x -> a((ds)$$0x.getSource(), dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.c, null)
                                        )
                                  ))
                               .then(
                                  dt.a("destroy")
-                                    .executes($$0x -> a((ds)$$0x.getSource(), dyx.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.d, null))
+                                    .executes($$0x -> a((ds)$$0x.getSource(), dyy.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ajj.a.d, null))
                               )
                         )
                   )
@@ -87,9 +87,9 @@ public class ajj {
       );
    }
 
-   private static int a(ds $$0, dyx $$1, fh $$2, ajj.a $$3, @Nullable Predicate<djk> $$4) throws CommandSyntaxException {
+   private static int a(ds $$0, dyy $$1, fh $$2, ajj.a $$3, @Nullable Predicate<djl> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().Z().c(ctk.z);
+      int $$6 = $$0.e().Z().c(ctl.z);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
@@ -98,11 +98,11 @@ public class ajj {
          int $$9 = 0;
 
          for (hx $$10 : hx.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new djk($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new djl($$8, $$10, true))) {
                fh $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dgu $$12 = $$8.c_($$10);
-                  bjr.a_($$12);
+                  dgv $$12 = $$8.c_($$10);
+                  bjs.a_($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.i());
                      $$9++;
@@ -112,7 +112,7 @@ public class ajj {
          }
 
          for (hx $$13 : $$7) {
-            cwp $$14 = $$8.a_($$13).b();
+            cwq $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 

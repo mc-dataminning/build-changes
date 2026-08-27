@@ -1,46 +1,41 @@
-import org.joml.Matrix4f;
+public class fvz extends fwa<dik> {
+   private static final ahg c = new ahg("textures/entity/end_gateway_beam.png");
 
-public class fvz<T extends dik> implements fvg<T> {
-   public static final ahg a = new ahg("textures/environment/end_sky.png");
-   public static final ahg b = new ahg("textures/entity/end_portal.png");
-
-   public fvz(fvh.a $$0) {
+   public fvz(fvi.a $$0) {
+      super($$0);
    }
 
-   public void a(T $$0, float $$1, eqa $$2, ftg $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, eqe $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ic.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ic.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ic.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ic.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, eqe $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ic $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   public void a(dik $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
+      if ($$0.c() || $$0.d()) {
+         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.c() ? (double)$$0.i().al() : 50.0;
+         $$6 = auo.a($$6 * (float) Math.PI);
+         int $$8 = auo.a((double)$$6 * $$7);
+         float[] $$9 = $$0.c() ? clm.c.d() : clm.k.d();
+         long $$10 = $$0.i().X();
+         fvd.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
+   @Override
    protected float b() {
-      return 0.75F;
+      return 1.0F;
    }
 
+   @Override
    protected float c() {
-      return 0.375F;
+      return 0.0F;
    }
 
-   protected fto d() {
-      return fto.u();
+   @Override
+   protected ftp d() {
+      return ftp.v();
+   }
+
+   @Override
+   public int aQ_() {
+      return 256;
    }
 }

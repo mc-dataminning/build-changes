@@ -1,68 +1,71 @@
-public final class doz {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class doz {
+   public static final ahf<edu.a> a = a("temperature");
+   public static final ahf<edu.a> b = a("vegetation");
+   public static final ahf<edu.a> c = a("continentalness");
+   public static final ahf<edu.a> d = a("erosion");
+   public static final ahf<edu.a> e = a("temperature_large");
+   public static final ahf<edu.a> f = a("vegetation_large");
+   public static final ahf<edu.a> g = a("continentalness_large");
+   public static final ahf<edu.a> h = a("erosion_large");
+   public static final ahf<edu.a> i = a("ridge");
+   public static final ahf<edu.a> j = a("offset");
+   public static final ahf<edu.a> k = a("aquifer_barrier");
+   public static final ahf<edu.a> l = a("aquifer_fluid_level_floodedness");
+   public static final ahf<edu.a> m = a("aquifer_lava");
+   public static final ahf<edu.a> n = a("aquifer_fluid_level_spread");
+   public static final ahf<edu.a> o = a("pillar");
+   public static final ahf<edu.a> p = a("pillar_rareness");
+   public static final ahf<edu.a> q = a("pillar_thickness");
+   public static final ahf<edu.a> r = a("spaghetti_2d");
+   public static final ahf<edu.a> s = a("spaghetti_2d_elevation");
+   public static final ahf<edu.a> t = a("spaghetti_2d_modulator");
+   public static final ahf<edu.a> u = a("spaghetti_2d_thickness");
+   public static final ahf<edu.a> v = a("spaghetti_3d_1");
+   public static final ahf<edu.a> w = a("spaghetti_3d_2");
+   public static final ahf<edu.a> x = a("spaghetti_3d_rarity");
+   public static final ahf<edu.a> y = a("spaghetti_3d_thickness");
+   public static final ahf<edu.a> z = a("spaghetti_roughness");
+   public static final ahf<edu.a> A = a("spaghetti_roughness_modulator");
+   public static final ahf<edu.a> B = a("cave_entrance");
+   public static final ahf<edu.a> C = a("cave_layer");
+   public static final ahf<edu.a> D = a("cave_cheese");
+   public static final ahf<edu.a> E = a("ore_veininess");
+   public static final ahf<edu.a> F = a("ore_vein_a");
+   public static final ahf<edu.a> G = a("ore_vein_b");
+   public static final ahf<edu.a> H = a("ore_gap");
+   public static final ahf<edu.a> I = a("noodle");
+   public static final ahf<edu.a> J = a("noodle_thickness");
+   public static final ahf<edu.a> K = a("noodle_ridge_a");
+   public static final ahf<edu.a> L = a("noodle_ridge_b");
+   public static final ahf<edu.a> M = a("jagged");
+   public static final ahf<edu.a> N = a("surface");
+   public static final ahf<edu.a> O = a("surface_secondary");
+   public static final ahf<edu.a> P = a("clay_bands_offset");
+   public static final ahf<edu.a> Q = a("badlands_pillar");
+   public static final ahf<edu.a> R = a("badlands_pillar_roof");
+   public static final ahf<edu.a> S = a("badlands_surface");
+   public static final ahf<edu.a> T = a("iceberg_pillar");
+   public static final ahf<edu.a> U = a("iceberg_pillar_roof");
+   public static final ahf<edu.a> V = a("iceberg_surface");
+   public static final ahf<edu.a> W = a("surface_swamp");
+   public static final ahf<edu.a> X = a("calcite");
+   public static final ahf<edu.a> Y = a("gravel");
+   public static final ahf<edu.a> Z = a("powder_snow");
+   public static final ahf<edu.a> aa = a("packed_ice");
+   public static final ahf<edu.a> ab = a("ice");
+   public static final ahf<edu.a> ac = a("soul_sand_layer");
+   public static final ahf<edu.a> ad = a("gravel_layer");
+   public static final ahf<edu.a> ae = a("patch");
+   public static final ahf<edu.a> af = a("netherrack");
+   public static final ahf<edu.a> ag = a("nether_wart");
+   public static final ahf<edu.a> ah = a("nether_state_selector");
 
-   private doz() {
+   private static ahf<edu.a> a(String $$0) {
+      return ahf.a(ke.aB, new ahg($$0));
    }
 
-   protected static dot.c a(doi $$0, doi $$1, doi $$2, dpc $$3) {
-      djg $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         doz.a $$8 = $$6 > 0.0 ? doz.a.a : doz.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = aun.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               auu $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = aun.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(cwr.ra.o(), cwr.tg.o(), cwr.c.o(), 0, 50),
-      b(cwr.Q.o(), cwr.tf.o(), cwr.qz.o(), -60, -8);
-
-      final djg e;
-      final djg f;
-      final djg g;
-      protected final int c;
-      protected final int d;
-
-      private a(djg $$0, djg $$1, djg $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static edu a(ii<edu.a> $$0, dpd $$1, ahf<edu.a> $$2) {
+      ih<edu.a> $$3 = $$0.b($$2);
+      return edu.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

@@ -6,13 +6,13 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class ana extends bjq {
+public class ana extends bjr {
    private final Set<ane> h = Sets.newHashSet();
    private final Set<ane> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public ana(vf $$0, bjq.a $$1, bjq.b $$2) {
-      super(aun.a(), $$0, $$1, $$2);
+   public ana(vf $$0, bjr.a $$1, bjr.b $$2) {
+      super(auo.a(), $$0, $$1, $$2);
    }
 
    @Override
@@ -24,7 +24,7 @@ public class ana extends bjq {
    }
 
    @Override
-   public void a(bjq.a $$0) {
+   public void a(bjr.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(zk::d);
@@ -32,7 +32,7 @@ public class ana extends bjq {
    }
 
    @Override
-   public void a(bjq.b $$0) {
+   public void a(bjr.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(zk::d);
@@ -40,7 +40,7 @@ public class ana extends bjq {
    }
 
    @Override
-   public bjq a(boolean $$0) {
+   public bjr a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(zk::e);
@@ -50,7 +50,7 @@ public class ana extends bjq {
    }
 
    @Override
-   public bjq b(boolean $$0) {
+   public bjr b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(zk::e);
@@ -60,7 +60,7 @@ public class ana extends bjq {
    }
 
    @Override
-   public bjq c(boolean $$0) {
+   public bjr c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(zk::e);
@@ -77,7 +77,7 @@ public class ana extends bjq {
       }
    }
 
-   private void a(Function<bjq, zk> $$0) {
+   private void a(Function<bjr, zk> $$0) {
       if (this.j) {
          zk $$1 = $$0.apply(this);
 

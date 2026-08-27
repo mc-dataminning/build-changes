@@ -1,93 +1,58 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.lang.reflect.Type;
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class awu extends bav {
-   public static final Gson a = new GsonBuilder().registerTypeAdapter(vf.class, new JsonDeserializer<vf>() {
-      public vt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         if ($$0.isJsonPrimitive()) {
-            return vf.b($$0.getAsString());
-         } else if ($$0.isJsonArray()) {
-            JsonArray $$3 = $$0.getAsJsonArray();
-            vt $$4 = null;
+public class awu extends baw {
+   public static final String a = "_filtered_correct";
+   private static final String b = "black";
 
-            for (JsonElement $$5 : $$3) {
-               vt $$6 = this.a($$5, $$5.getClass(), $$2);
-               if ($$4 == null) {
-                  $$4 = $$6;
-               } else {
-                  $$4.b($$6);
-               }
-            }
-
-            return $$4;
-         } else {
-            throw new JsonParseException("Don't know how to turn " + $$0 + " into a Component");
-         }
-      }
-   }).create();
-
-   public awu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bbv.s, "Sign");
+   public awu(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bbw.s, $$2);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      String $$2 = $$0.get($$1).asString("");
-      vf $$3 = null;
-      if (!"null".equals($$2) && !StringUtils.isEmpty($$2)) {
-         if ($$2.charAt(0) == '"' && $$2.charAt($$2.length() - 1) == '"' || $$2.charAt(0) == '{' && $$2.charAt($$2.length() - 1) == '}') {
-            try {
-               $$3 = aud.b(a, $$2, vf.class, true);
-               if ($$3 == null) {
-                  $$3 = ve.a;
-               }
-            } catch (Exception var8) {
-            }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
+   }
 
-            if ($$3 == null) {
-               try {
-                  $$3 = vf.a.a($$2);
-               } catch (Exception var7) {
-               }
-            }
-
-            if ($$3 == null) {
-               try {
-                  $$3 = vf.a.b($$2);
-               } catch (Exception var6) {
-               }
-            }
-
-            if ($$3 == null) {
-               $$3 = vf.b($$2);
-            }
-         } else {
-            $$3 = vf.b($$2);
-         }
-      } else {
-         $$3 = ve.a;
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = avv.a($$0.getOps());
+      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
+      Dynamic<T> $$3 = $$0.emptyMap()
+         .set("messages", $$0.createList($$2.stream()))
+         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
+         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
+         .set("_filtered_correct", $$0.createBoolean(true));
+      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
+      if ($$4.stream().anyMatch(Optional::isPresent)) {
+         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
+            Dynamic<T> $$3x = $$2.get((int)$$2x);
+            return $$1x.orElse($$3x);
+         })));
       }
 
-      return $$0.set($$1, $$0.createString(vf.a.a($$3)));
+      return $$3;
+   }
+
+   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
+      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
+   }
+
+   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = avv.a($$0.getOps());
+      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         $$0x = this.a($$0x, "Text1");
-         $$0x = this.a($$0x, "Text2");
-         $$0x = this.a($$0x, "Text3");
-         return this.a($$0x, "Text4");
-      });
+      return $$0.update(DSL.remainderFinder(), awu::a);
    }
 }

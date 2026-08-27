@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class en implements ArgumentType<emz> {
+public class en implements ArgumentType<ena> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("argument.criteria.invalid", $$0));
 
@@ -22,11 +22,11 @@ public class en implements ArgumentType<emz> {
       return new en();
    }
 
-   public static emz a(CommandContext<ds> $$0, String $$1) {
-      return (emz)$$0.getArgument($$1, emz.class);
+   public static ena a(CommandContext<ds> $$0, String $$1) {
+      return (ena)$$0.getArgument($$1, ena.class);
    }
 
-   public emz a(StringReader $$0) throws CommandSyntaxException {
+   public ena a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,16 +34,16 @@ public class en implements ArgumentType<emz> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return emz.a($$2).orElseThrow(() -> {
+      return ena.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.create($$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(emz.c());
+      List<String> $$2 = Lists.newArrayList(ena.c());
 
-      for (asa<?> $$3 : kd.x) {
+      for (asb<?> $$3 : kd.x) {
          for (Object $$4 : $$3.a()) {
             String $$5 = this.a($$3, $$4);
             $$2.add($$5);
@@ -53,8 +53,8 @@ public class en implements ArgumentType<emz> {
       return dx.b($$2, $$1);
    }
 
-   public <T> String a(asa<T> $$0, Object $$1) {
-      return ary.a($$0, (T)$$1);
+   public <T> String a(asb<T> $$0, Object $$1) {
+      return arz.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {

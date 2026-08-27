@@ -1,30 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgb extends dae {
-   public static final MapCodec<dgb> c = b(dgb::new);
-   protected static final eml g = cwp.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dgb extends cwq {
+   public static final MapCodec<dgb> a = b(dgb::new);
 
    @Override
    public MapCodec<dgb> a() {
-      return c;
+      return a;
    }
 
-   public dgb(djf.d $$0) {
-      super($$0, ic.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(auu $$0) {
-      return dbu.a($$0);
+   public dgb(djg.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected cwp b() {
-      return cwr.oA;
-   }
-
-   @Override
-   protected boolean g(djg $$0) {
-      return dbu.a($$0);
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      $$3.a($$0, new elt(0.25, 0.05F, 0.25));
    }
 }

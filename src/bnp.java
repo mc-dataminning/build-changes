@@ -1,96 +1,123 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bnp {
-   private final Map<bnl, bnm> a;
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bnp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ja.a.fieldOf("UUID").forGetter(bnp::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bnp::c),
+               bnp.a.d.fieldOf("Operation").forGetter(bnp::b)
+            )
+            .apply($$0, bnp::new)
+   );
+   private final double c;
+   private final bnp.a d;
+   private final String e;
+   private final UUID f;
 
-   public bnp(Map<bnl, bnm> $$0) {
-      this.a = ImmutableMap.copyOf($$0);
+   public bnp(String $$0, double $$1, bnp.a $$2) {
+      this(auo.a(auv.c()), $$0, $$1, $$2);
    }
 
-   private bnm d(bnl $$0) {
-      bnm $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + kd.u.b($$0));
+   public bnp(UUID $$0, String $$1, double $$2, bnp.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public UUID a() {
+      return this.f;
+   }
+
+   public bnp.a b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bnp $$1 = (bnp)$$0;
+         return Objects.equals(this.f, $$1.f);
       } else {
-         return $$1;
+         return false;
       }
    }
 
-   public double a(bnl $$0) {
-      return this.d($$0).f();
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
    }
 
-   public double b(bnl $$0) {
-      return this.d($$0).b();
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
    }
 
-   public double a(bnl $$0, UUID $$1) {
-      bno $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + kd.u.b($$0));
-      } else {
-         return $$2.c();
-      }
+   public sn d() {
+      sn $$0 = new sn();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
    }
 
    @Nullable
-   public bnm a(Consumer<bnm> $$0, bnl $$1) {
-      bnm $$2 = this.a.get($$1);
-      if ($$2 == null) {
+   public static bnp a(sn $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bnp.a $$2 = bnp.a.a($$0.h("Operation"));
+         return new bnp($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
          return null;
-      } else {
-         bnm $$3 = new bnm($$1, $$0);
-         $$3.a($$2);
-         return $$3;
       }
    }
 
-   public static bnp.a a() {
-      return new bnp.a();
-   }
+   public static enum a implements avk {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
 
-   public boolean c(bnl $$0) {
-      return this.a.containsKey($$0);
-   }
+      private static final bnp.a[] e = new bnp.a[]{a, b, c};
+      public static final Codec<bnp.a> d = avk.a(bnp.a::values);
+      private final String f;
+      private final int g;
 
-   public boolean b(bnl $$0, UUID $$1) {
-      bnm $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Map<bnl, bnm> a = Maps.newHashMap();
-      private boolean b;
-
-      private bnm b(bnl $$0) {
-         bnm $$1 = new bnm($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + kd.u.b($$0));
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public bnp.a a(bnl $$0) {
-         this.b($$0);
-         return this;
+      public int a() {
+         return this.g;
       }
 
-      public bnp.a a(bnl $$0, double $$1) {
-         bnm $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      public static bnp.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
+         }
       }
 
-      public bnp a() {
-         this.b = true;
-         return new bnp(this.a);
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

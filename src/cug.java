@@ -1,40 +1,71 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface cug {
-   void a(bly<?> var1, auu var2);
+public record cug(sn d, Optional<cug.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cug> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(sn.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cug.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, cug::new)
+   );
+   public static final Codec<bil<cug>> c = bil.a(b);
 
-   static void a(cmx $$0, List<vf> $$1, String $$2) {
-      vf $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(ve.a);
-         $$1.add(vf.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(ve.a().b(vf.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
+   public cug() {
+      this(new sn(), Optional.empty());
    }
 
-   @Nullable
-   static vf a(cmx $$0, String $$1) {
-      sn $$2 = ckq.a($$0);
-      if ($$2 != null) {
-         ahg $$3 = a($$2, $$1);
-         if ($$3 != null) {
-            return kd.g.b($$3).map($$0x -> vf.c($$0x.g()).a(n.h)).orElse(null);
+   public cug(sn d, Optional<cug.a> e) {
+      if (d.e("id")) {
+         ahg $$2 = ahg.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
+         } else {
+            d.r("id");
          }
       }
 
-      return null;
+      this.d = d;
+      this.e = e;
    }
 
-   @Nullable
-   private static ahg a(sn $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return ahg.a($$2);
-      } else {
-         return null;
+   public sn a() {
+      return this.d;
+   }
+
+   public Optional<cug.a> b() {
+      return this.e;
+   }
+
+   public sn c() {
+      return this.d;
+   }
+
+   public Optional<cug.a> d() {
+      return this.e;
+   }
+
+   public static record a(aug<Integer> b, aug<Integer> c) {
+      private static final aug<Integer> d = new aug<>(0, 15);
+      public static final Codec<cug.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cug.a::new)
+      );
+
+      private static DataResult<aug<Integer>> a(aug<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<aug<Integer>> a(String $$0) {
+         return atw.a(aug.a.optionalFieldOf($$0, d), cug.a::a);
+      }
+
+      public aug<Integer> a() {
+         return this.b;
+      }
+
+      public aug<Integer> b() {
+         return this.c;
       }
    }
 }

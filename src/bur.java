@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bur extends bth {
+   private final bmu a;
 
-public class bur<T extends bmm> extends btg {
-   private final T a;
-   private final cmx b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final arq d;
-
-   public bur(T $$0, cmx $$1, @Nullable arq $$2, Predicate<? super T> $$3) {
+   public bur(bmu $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fn();
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(asm.a);
    }
 
    @Override
    public void c() {
-      this.a.a(blz.a, this.b.p());
-      this.a.c(bjz.a);
-   }
+      hx $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.a(blz.a, cmx.f);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.eg().i() * 0.2F + 0.9F);
+      for (hx $$2 : hx.b(
+         auo.a(this.a.dr() - 2.0), auo.a(this.a.dt() - 2.0), auo.a(this.a.dx() - 2.0), auo.a(this.a.dr() + 2.0), this.a.ds(), auo.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(asm.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

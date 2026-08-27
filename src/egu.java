@@ -1,106 +1,122 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.google.common.collect.Sets;
+import java.util.Collections;
 import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class egu {
-   private static final Codec<egu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atv.a(ekq.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), atv.a(ekq.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, egu::new)
-   );
-   public static final Codec<egu> a = Codec.either(Codec.INT, b).xmap($$0 -> (egu)$$0.map(egu::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final ekp c;
-   @Nullable
-   private final ekp d;
-   private final egu.b e;
-   private final egu.a f;
+   private static final Set<ahg> aU = Sets.newHashSet();
+   private static final Set<ahg> aV = Collections.unmodifiableSet(aU);
+   public static final ahg a = new ahg("empty");
+   public static final ahg b = a("chests/spawn_bonus_chest");
+   public static final ahg c = a("chests/end_city_treasure");
+   public static final ahg d = a("chests/simple_dungeon");
+   public static final ahg e = a("chests/village/village_weaponsmith");
+   public static final ahg f = a("chests/village/village_toolsmith");
+   public static final ahg g = a("chests/village/village_armorer");
+   public static final ahg h = a("chests/village/village_cartographer");
+   public static final ahg i = a("chests/village/village_mason");
+   public static final ahg j = a("chests/village/village_shepherd");
+   public static final ahg k = a("chests/village/village_butcher");
+   public static final ahg l = a("chests/village/village_fletcher");
+   public static final ahg m = a("chests/village/village_fisher");
+   public static final ahg n = a("chests/village/village_tannery");
+   public static final ahg o = a("chests/village/village_temple");
+   public static final ahg p = a("chests/village/village_desert_house");
+   public static final ahg q = a("chests/village/village_plains_house");
+   public static final ahg r = a("chests/village/village_taiga_house");
+   public static final ahg s = a("chests/village/village_snowy_house");
+   public static final ahg t = a("chests/village/village_savanna_house");
+   public static final ahg u = a("chests/abandoned_mineshaft");
+   public static final ahg v = a("chests/nether_bridge");
+   public static final ahg w = a("chests/stronghold_library");
+   public static final ahg x = a("chests/stronghold_crossing");
+   public static final ahg y = a("chests/stronghold_corridor");
+   public static final ahg z = a("chests/desert_pyramid");
+   public static final ahg A = a("chests/jungle_temple");
+   public static final ahg B = a("chests/jungle_temple_dispenser");
+   public static final ahg C = a("chests/igloo_chest");
+   public static final ahg D = a("chests/woodland_mansion");
+   public static final ahg E = a("chests/underwater_ruin_small");
+   public static final ahg F = a("chests/underwater_ruin_big");
+   public static final ahg G = a("chests/buried_treasure");
+   public static final ahg H = a("chests/shipwreck_map");
+   public static final ahg I = a("chests/shipwreck_supply");
+   public static final ahg J = a("chests/shipwreck_treasure");
+   public static final ahg K = a("chests/pillager_outpost");
+   public static final ahg L = a("chests/bastion_treasure");
+   public static final ahg M = a("chests/bastion_other");
+   public static final ahg N = a("chests/bastion_bridge");
+   public static final ahg O = a("chests/bastion_hoglin_stable");
+   public static final ahg P = a("chests/ancient_city");
+   public static final ahg Q = a("chests/ancient_city_ice_box");
+   public static final ahg R = a("chests/ruined_portal");
+   public static final ahg S = a("chests/trial_chambers/reward");
+   public static final ahg T = a("chests/trial_chambers/supply");
+   public static final ahg U = a("chests/trial_chambers/corridor");
+   public static final ahg V = a("chests/trial_chambers/intersection");
+   public static final ahg W = a("chests/trial_chambers/intersection_barrel");
+   public static final ahg X = a("chests/trial_chambers/entrance");
+   public static final ahg Y = a("dispensers/trial_chambers/corridor");
+   public static final ahg Z = a("dispensers/trial_chambers/chamber");
+   public static final ahg aa = a("dispensers/trial_chambers/water");
+   public static final ahg ab = a("pots/trial_chambers/corridor");
+   public static final ahg ac = a("entities/sheep/white");
+   public static final ahg ad = a("entities/sheep/orange");
+   public static final ahg ae = a("entities/sheep/magenta");
+   public static final ahg af = a("entities/sheep/light_blue");
+   public static final ahg ag = a("entities/sheep/yellow");
+   public static final ahg ah = a("entities/sheep/lime");
+   public static final ahg ai = a("entities/sheep/pink");
+   public static final ahg aj = a("entities/sheep/gray");
+   public static final ahg ak = a("entities/sheep/light_gray");
+   public static final ahg al = a("entities/sheep/cyan");
+   public static final ahg am = a("entities/sheep/purple");
+   public static final ahg an = a("entities/sheep/blue");
+   public static final ahg ao = a("entities/sheep/brown");
+   public static final ahg ap = a("entities/sheep/green");
+   public static final ahg aq = a("entities/sheep/red");
+   public static final ahg ar = a("entities/sheep/black");
+   public static final ahg as = a("gameplay/fishing");
+   public static final ahg at = a("gameplay/fishing/junk");
+   public static final ahg au = a("gameplay/fishing/treasure");
+   public static final ahg av = a("gameplay/fishing/fish");
+   public static final ahg aw = a("gameplay/cat_morning_gift");
+   public static final ahg ax = a("gameplay/hero_of_the_village/armorer_gift");
+   public static final ahg ay = a("gameplay/hero_of_the_village/butcher_gift");
+   public static final ahg az = a("gameplay/hero_of_the_village/cartographer_gift");
+   public static final ahg aA = a("gameplay/hero_of_the_village/cleric_gift");
+   public static final ahg aB = a("gameplay/hero_of_the_village/farmer_gift");
+   public static final ahg aC = a("gameplay/hero_of_the_village/fisherman_gift");
+   public static final ahg aD = a("gameplay/hero_of_the_village/fletcher_gift");
+   public static final ahg aE = a("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final ahg aF = a("gameplay/hero_of_the_village/librarian_gift");
+   public static final ahg aG = a("gameplay/hero_of_the_village/mason_gift");
+   public static final ahg aH = a("gameplay/hero_of_the_village/shepherd_gift");
+   public static final ahg aI = a("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final ahg aJ = a("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final ahg aK = a("gameplay/sniffer_digging");
+   public static final ahg aL = a("gameplay/piglin_bartering");
+   public static final ahg aM = a("spawners/trial_chamber/key");
+   public static final ahg aN = a("spawners/trial_chamber/consumables");
+   public static final ahg aO = a("archaeology/desert_well");
+   public static final ahg aP = a("archaeology/desert_pyramid");
+   public static final ahg aQ = a("archaeology/trail_ruins_common");
+   public static final ahg aR = a("archaeology/trail_ruins_rare");
+   public static final ahg aS = a("archaeology/ocean_ruin_warm");
+   public static final ahg aT = a("archaeology/ocean_ruin_cold");
 
-   public Set<ejd<?>> a() {
-      Builder<ejd<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   private static ahg a(String $$0) {
+      return a(new ahg($$0));
    }
 
-   private egu(Optional<ekp> $$0, Optional<ekp> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
-
-   private egu(@Nullable ekp $$0, @Nullable ekp $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+   private static ahg a(ahg $$0) {
+      if (aU.add($$0)) {
+         return $$0;
       } else {
-         this.e = ($$2, $$3) -> aun.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+         throw new IllegalArgumentException($$0 + " is already a registered built-in loot table");
       }
    }
 
-   public static egu a(int $$0) {
-      ekn $$1 = ekn.a((float)$$0);
-      return new egu(Optional.of($$1), Optional.of($$1));
-   }
-
-   public static egu a(int $$0, int $$1) {
-      return new egu(Optional.of(ekn.a((float)$$0)), Optional.of(ekn.a((float)$$1)));
-   }
-
-   public static egu b(int $$0) {
-      return new egu(Optional.of(ekn.a((float)$$0)), Optional.empty());
-   }
-
-   public static egu c(int $$0) {
-      return new egu(Optional.empty(), Optional.of(ekn.a((float)$$0)));
-   }
-
-   public int a(egv $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(egv $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ekn $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(egv var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(egv var1, int var2);
+   public static Set<ahg> a() {
+      return aV;
    }
 }

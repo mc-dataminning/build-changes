@@ -2,25 +2,20 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bpx {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static boc<bmk> a() {
-      return bro.a((Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$0 -> $$0.group($$0.b(bvm.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  hx $$5 = $$0.<ig>b($$1).b();
-                  if ($$5.a($$3.dm(), 3.0)) {
-                     djg $$6 = $$2.a_($$5);
-                     if ($$6.a(cwr.od)) {
-                        cwl $$7 = (cwl)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
+   public static bod<bml> a() {
+      return brp.a((Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$0 -> $$0.a((brs<bml>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bnl<?> $$3 = $$1.dO();
+               cgq $$4 = $$0x.d($$1.dm());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(cgu.b);
+                  $$3.a($$0x.Y(), $$0x.X());
                }
-            })));
+
+               return true;
+            }
+         }))));
    }
 }

@@ -1,347 +1,1678 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class clf extends cnn implements cos {
-   private static final String b = "Charged";
-   private static final String e = "ChargedProjectiles";
-   private static final int f = 25;
-   public static final int a = 8;
-   private boolean g = false;
-   private boolean h = false;
-   private static final float i = 0.2F;
-   private static final float j = 0.5F;
-   private static final float k = 3.15F;
-   private static final float r = 1.6F;
+public class clf {
+   private static final ahf<cle> a = a("building_blocks");
+   private static final ahf<cle> b = a("colored_blocks");
+   private static final ahf<cle> c = a("natural_blocks");
+   private static final ahf<cle> d = a("functional_blocks");
+   private static final ahf<cle> e = a("redstone_blocks");
+   private static final ahf<cle> f = a("hotbar");
+   private static final ahf<cle> g = a("search");
+   private static final ahf<cle> h = a("tools_and_utilities");
+   private static final ahf<cle> i = a("combat");
+   private static final ahf<cle> j = a("food_and_drinks");
+   private static final ahf<cle> k = a("ingredients");
+   private static final ahf<cle> l = a("spawn_eggs");
+   private static final ahf<cle> m = a("op_blocks");
+   private static final ahf<cle> n = a("inventory");
+   private static final Comparator<ih<cbq>> o = Comparator.comparing(ih::a, Comparator.<cbq>comparingInt($$0 -> $$0.b() * $$0.a()).thenComparing(cbq::a));
+   @Nullable
+   private static cle.d p;
 
-   public clf(cms.a $$0) {
-      super($$0);
+   private static ahf<cle> a(String $$0) {
+      return ahf.a(ke.p, new ahg($$0));
    }
 
-   @Override
-   public Predicate<cmx> e() {
-      return d;
-   }
+   public static cle a(it<cle> $$0) {
+      it.a($$0, a, cle.a(cle.f.a, 0).a(vf.c("itemGroup.buildingBlocks")).a(() -> new cmy(cws.cj)).a(($$0x, $$1) -> {
+         $$1.a(cnb.bB);
+         $$1.a(cnb.cj);
+         $$1.a(cnb.bO);
+         $$1.a(cnb.bY);
+         $$1.a(cnb.K);
+         $$1.a(cnb.gs);
+         $$1.a(cnb.dR);
+         $$1.a(cnb.eY);
+         $$1.a(cnb.nv);
+         $$1.a(cnb.mI);
+         $$1.a(cnb.nc);
+         $$1.a(cnb.mw);
+         $$1.a(cnb.mh);
+         $$1.a(cnb.bC);
+         $$1.a(cnb.ck);
+         $$1.a(cnb.bP);
+         $$1.a(cnb.bZ);
+         $$1.a(cnb.L);
+         $$1.a(cnb.gt);
+         $$1.a(cnb.dS);
+         $$1.a(cnb.eZ);
+         $$1.a(cnb.nw);
+         $$1.a(cnb.mJ);
+         $$1.a(cnb.nd);
+         $$1.a(cnb.mx);
+         $$1.a(cnb.mi);
+         $$1.a(cnb.bD);
+         $$1.a(cnb.cl);
+         $$1.a(cnb.bQ);
+         $$1.a(cnb.ca);
+         $$1.a(cnb.M);
+         $$1.a(cnb.gu);
+         $$1.a(cnb.dT);
+         $$1.a(cnb.fa);
+         $$1.a(cnb.nx);
+         $$1.a(cnb.mK);
+         $$1.a(cnb.ne);
+         $$1.a(cnb.my);
+         $$1.a(cnb.mj);
+         $$1.a(cnb.bE);
+         $$1.a(cnb.cm);
+         $$1.a(cnb.bR);
+         $$1.a(cnb.cb);
+         $$1.a(cnb.N);
+         $$1.a(cnb.gv);
+         $$1.a(cnb.dU);
+         $$1.a(cnb.fb);
+         $$1.a(cnb.ny);
+         $$1.a(cnb.mL);
+         $$1.a(cnb.nf);
+         $$1.a(cnb.mz);
+         $$1.a(cnb.mk);
+         $$1.a(cnb.bF);
+         $$1.a(cnb.cn);
+         $$1.a(cnb.bS);
+         $$1.a(cnb.cc);
+         $$1.a(cnb.O);
+         $$1.a(cnb.gw);
+         $$1.a(cnb.dV);
+         $$1.a(cnb.fc);
+         $$1.a(cnb.nz);
+         $$1.a(cnb.mM);
+         $$1.a(cnb.ng);
+         $$1.a(cnb.mA);
+         $$1.a(cnb.ml);
+         $$1.a(cnb.bH);
+         $$1.a(cnb.cp);
+         $$1.a(cnb.bU);
+         $$1.a(cnb.ce);
+         $$1.a(cnb.Q);
+         $$1.a(cnb.gy);
+         $$1.a(cnb.dX);
+         $$1.a(cnb.fe);
+         $$1.a(cnb.nB);
+         $$1.a(cnb.mO);
+         $$1.a(cnb.ni);
+         $$1.a(cnb.mC);
+         $$1.a(cnb.mn);
+         $$1.a(cnb.bI);
+         $$1.a(cnb.cq);
+         $$1.a(cnb.bV);
+         $$1.a(cnb.cf);
+         $$1.a(cnb.R);
+         $$1.a(cnb.gz);
+         $$1.a(cnb.dY);
+         $$1.a(cnb.ff);
+         $$1.a(cnb.nC);
+         $$1.a(cnb.mP);
+         $$1.a(cnb.nj);
+         $$1.a(cnb.mD);
+         $$1.a(cnb.mo);
+         $$1.a(cnb.bG);
+         $$1.a(cnb.co);
+         $$1.a(cnb.bT);
+         $$1.a(cnb.cd);
+         $$1.a(cnb.P);
+         $$1.a(cnb.gx);
+         $$1.a(cnb.dW);
+         $$1.a(cnb.fd);
+         $$1.a(cnb.nA);
+         $$1.a(cnb.mN);
+         $$1.a(cnb.nh);
+         $$1.a(cnb.mB);
+         $$1.a(cnb.mm);
+         $$1.a(cnb.bN);
+         $$1.a(cnb.ci);
+         $$1.a(cnb.S);
+         $$1.a(cnb.V);
+         $$1.a(cnb.gA);
+         $$1.a(cnb.gB);
+         $$1.a(cnb.dZ);
+         $$1.a(cnb.ea);
+         $$1.a(cnb.fg);
+         $$1.a(cnb.nD);
+         $$1.a(cnb.mQ);
+         $$1.a(cnb.nk);
+         $$1.a(cnb.mE);
+         $$1.a(cnb.mp);
+         $$1.a(cnb.bL);
+         $$1.a(cnb.cr);
+         $$1.a(cnb.bW);
+         $$1.a(cnb.cg);
+         $$1.a(cnb.T);
+         $$1.a(cnb.gC);
+         $$1.a(cnb.eb);
+         $$1.a(cnb.fh);
+         $$1.a(cnb.nE);
+         $$1.a(cnb.mR);
+         $$1.a(cnb.nl);
+         $$1.a(cnb.mF);
+         $$1.a(cnb.mq);
+         $$1.a(cnb.bM);
+         $$1.a(cnb.cs);
+         $$1.a(cnb.bX);
+         $$1.a(cnb.ch);
+         $$1.a(cnb.U);
+         $$1.a(cnb.gD);
+         $$1.a(cnb.ec);
+         $$1.a(cnb.fi);
+         $$1.a(cnb.nF);
+         $$1.a(cnb.mS);
+         $$1.a(cnb.nm);
+         $$1.a(cnb.mG);
+         $$1.a(cnb.mr);
+         $$1.a(cnb.b);
+         $$1.a(cnb.lc);
+         $$1.a(cnb.ed);
+         $$1.a(cnb.ms);
+         $$1.a(cnb.mf);
+         $$1.a(cnb.J);
+         $$1.a(cnb.eR);
+         $$1.a(cnb.ei);
+         $$1.a(cnb.gG);
+         $$1.a(cnb.eC);
+         $$1.a(cnb.la);
+         $$1.a(cnb.ls);
+         $$1.a(cnb.gH);
+         $$1.a(cnb.ex);
+         $$1.a(cnb.ee);
+         $$1.a(cnb.fB);
+         $$1.a(cnb.fD);
+         $$1.a(cnb.fX);
+         $$1.a(cnb.ek);
+         $$1.a(cnb.gN);
+         $$1.a(cnb.fE);
+         $$1.a(cnb.fC);
+         $$1.a(cnb.kY);
+         $$1.a(cnb.lq);
+         $$1.a(cnb.gL);
+         $$1.a(cnb.c);
+         $$1.a(cnb.lf);
+         $$1.a(cnb.lw);
+         $$1.a(cnb.gM);
+         $$1.a(cnb.d);
+         $$1.a(cnb.kW);
+         $$1.a(cnb.lo);
+         $$1.a(cnb.e);
+         $$1.a(cnb.lj);
+         $$1.a(cnb.lA);
+         $$1.a(cnb.gU);
+         $$1.a(cnb.f);
+         $$1.a(cnb.kZ);
+         $$1.a(cnb.lr);
+         $$1.a(cnb.g);
+         $$1.a(cnb.lg);
+         $$1.a(cnb.lx);
+         $$1.a(cnb.gQ);
+         $$1.a(cnb.h);
+         $$1.a(cnb.li);
+         $$1.a(cnb.lz);
+         $$1.a(cnb.i);
+         $$1.a(cnb.j);
+         $$1.a(cnb.lk);
+         $$1.a(cnb.lB);
+         $$1.a(cnb.gY);
+         $$1.a(cnb.fL);
+         $$1.a(cnb.k);
+         $$1.a(cnb.ll);
+         $$1.a(cnb.lC);
+         $$1.a(cnb.gZ);
+         $$1.a(cnb.fH);
+         $$1.a(cnb.fI);
+         $$1.a(cnb.lm);
+         $$1.a(cnb.lD);
+         $$1.a(cnb.ha);
+         $$1.a(cnb.fJ);
+         $$1.a(cnb.fK);
+         $$1.a(cnb.ln);
+         $$1.a(cnb.lE);
+         $$1.a(cnb.hb);
+         $$1.a(cnb.fM);
+         $$1.a(cnb.m);
+         $$1.a(cnb.o);
+         $$1.a(cnb.n);
+         $$1.a(cnb.p);
+         $$1.a(cnb.q);
+         $$1.a(cnb.r);
+         $$1.a(cnb.t);
+         $$1.a(cnb.s);
+         $$1.a(cnb.u);
+         $$1.a(cnb.v);
+         $$1.a(cnb.x);
+         $$1.a(cnb.w);
+         $$1.a(cnb.y);
+         $$1.a(cnb.z);
+         $$1.a(cnb.ey);
+         $$1.a(cnb.fW);
+         $$1.a(cnb.ej);
+         $$1.a(cnb.gI);
+         $$1.a(cnb.fF);
+         $$1.a(cnb.fG);
+         $$1.a(cnb.fY);
+         $$1.a(cnb.el);
+         $$1.a(cnb.gO);
+         $$1.a(cnb.cI);
+         $$1.a(cnb.gp);
+         $$1.a(cnb.ef);
+         $$1.a(cnb.gS);
+         $$1.a(cnb.cJ);
+         $$1.a(cnb.ew);
+         $$1.a(cnb.ld);
+         $$1.a(cnb.lu);
+         $$1.a(cnb.cK);
+         $$1.a(cnb.eg);
+         $$1.a(cnb.iP);
+         $$1.a(cnb.iS);
+         $$1.a(cnb.eo);
+         $$1.a(cnb.gK);
+         $$1.a(cnb.iQ);
+         $$1.a(cnb.ev);
+         $$1.a(cnb.kX);
+         $$1.a(cnb.lp);
+         $$1.a(cnb.iR);
+         $$1.a(cnb.ep);
+         $$1.a(cnb.iO);
+         $$1.a(cnb.iI);
+         $$1.a(cnb.iL);
+         $$1.a(cnb.er);
+         $$1.a(cnb.gJ);
+         $$1.a(cnb.iJ);
+         $$1.a(cnb.iM);
+         $$1.a(cnb.es);
+         $$1.a(cnb.iK);
+         $$1.a(cnb.iN);
+         $$1.a(cnb.et);
+         $$1.a(cnb.fm);
+         $$1.a(cnb.gb);
+         $$1.a(cnb.gc);
+         $$1.a(cnb.gf);
+         $$1.a(cnb.em);
+         $$1.a(cnb.gP);
+         $$1.a(cnb.ge);
+         $$1.a(cnb.gd);
+         $$1.a(cnb.iY);
+         $$1.a(cnb.lh);
+         $$1.a(cnb.ly);
+         $$1.a(cnb.gR);
+         $$1.a(cnb.fp);
+         $$1.a(cnb.fr);
+         $$1.a(cnb.fq);
+         $$1.a(cnb.wu);
+         $$1.a(cnb.wx);
+         $$1.a(cnb.ww);
+         $$1.a(cnb.wv);
+         $$1.a(cnb.gV);
+         $$1.a(cnb.wB);
+         $$1.a(cnb.wy);
+         $$1.a(cnb.wA);
+         $$1.a(cnb.wz);
+         $$1.a(cnb.gW);
+         $$1.a(cnb.mt);
+         $$1.a(cnb.mg);
+         $$1.a(cnb.wC);
+         $$1.a(cnb.wF);
+         $$1.a(cnb.wE);
+         $$1.a(cnb.wD);
+         $$1.a(cnb.gX);
+         $$1.a(cnb.gm);
+         $$1.a(cnb.gn);
+         $$1.a(cnb.lb);
+         $$1.a(cnb.lt);
+         $$1.a(cnb.gT);
+         $$1.a(cnb.eI);
+         $$1.a(cnb.eJ);
+         $$1.a(cnb.eK);
+         $$1.a(cnb.eq);
+         $$1.a(cnb.aD);
+         $$1.a(cnb.aJ);
+         $$1.a(cnb.fQ);
+         $$1.a(cnb.mH);
+         $$1.a(cnb.nb);
+         $$1.a(cnb.mv);
+         $$1.a(cnb.fR);
+         $$1.a(cnb.aL);
+         $$1.a(cnb.mu);
+         $$1.a(cnb.lI);
+         $$1.a(cnb.gr);
+         $$1.a(cnb.cH);
+         $$1.a(cnb.aM);
+         $$1.a(cnb.aN);
+         $$1.a(cnb.hg);
+         $$1.a(cnb.hj);
+         $$1.a(cnb.en);
+         $$1.a(cnb.hf);
+         $$1.a(cnb.hh);
+         $$1.a(cnb.hi);
+         $$1.a(cnb.eu);
+         $$1.a(cnb.le);
+         $$1.a(cnb.lv);
+         $$1.a(cnb.aH);
+         $$1.a(cnb.aK);
+         $$1.a(cnb.aR);
+         $$1.a(cnb.xU);
+         $$1.a(cnb.aV);
+         $$1.a(cnb.aZ);
+         $$1.a(cnb.bd);
+         $$1.a(cnb.mT);
+         $$1.a(cnb.nn);
+         $$1.a(cnb.yc);
+         $$1.a(cnb.aO);
+         $$1.a(cnb.aS);
+         $$1.a(cnb.xV);
+         $$1.a(cnb.aW);
+         $$1.a(cnb.ba);
+         $$1.a(cnb.be);
+         $$1.a(cnb.mU);
+         $$1.a(cnb.no);
+         $$1.a(cnb.yd);
+         $$1.a(cnb.aP);
+         $$1.a(cnb.aT);
+         $$1.a(cnb.xW);
+         $$1.a(cnb.aX);
+         $$1.a(cnb.bb);
+         $$1.a(cnb.bf);
+         $$1.a(cnb.mV);
+         $$1.a(cnb.np);
+         $$1.a(cnb.ye);
+         $$1.a(cnb.aQ);
+         $$1.a(cnb.aU);
+         $$1.a(cnb.xX);
+         $$1.a(cnb.aY);
+         $$1.a(cnb.bc);
+         $$1.a(cnb.bg);
+         $$1.a(cnb.mW);
+         $$1.a(cnb.nq);
+         $$1.a(cnb.yf);
+         $$1.a(cnb.bh);
+         $$1.a(cnb.bl);
+         $$1.a(cnb.xY);
+         $$1.a(cnb.bp);
+         $$1.a(cnb.bt);
+         $$1.a(cnb.bx);
+         $$1.a(cnb.mX);
+         $$1.a(cnb.nr);
+         $$1.a(cnb.yg);
+         $$1.a(cnb.bi);
+         $$1.a(cnb.bm);
+         $$1.a(cnb.xZ);
+         $$1.a(cnb.bq);
+         $$1.a(cnb.bu);
+         $$1.a(cnb.by);
+         $$1.a(cnb.mY);
+         $$1.a(cnb.ns);
+         $$1.a(cnb.yh);
+         $$1.a(cnb.bj);
+         $$1.a(cnb.bn);
+         $$1.a(cnb.ya);
+         $$1.a(cnb.br);
+         $$1.a(cnb.bv);
+         $$1.a(cnb.bz);
+         $$1.a(cnb.mZ);
+         $$1.a(cnb.nt);
+         $$1.a(cnb.yi);
+         $$1.a(cnb.bk);
+         $$1.a(cnb.bo);
+         $$1.a(cnb.yb);
+         $$1.a(cnb.bs);
+         $$1.a(cnb.bw);
+         $$1.a(cnb.bA);
+         $$1.a(cnb.na);
+         $$1.a(cnb.nu);
+         $$1.a(cnb.yj);
+      }).d());
+      it.a($$0, b, cle.a(cle.f.a, 1).a(vf.c("itemGroup.coloredBlocks")).a(() -> new cmy(cws.bJ)).a(($$0x, $$1) -> {
+         $$1.a(cnb.cT);
+         $$1.a(cnb.db);
+         $$1.a(cnb.da);
+         $$1.a(cnb.di);
+         $$1.a(cnb.df);
+         $$1.a(cnb.dh);
+         $$1.a(cnb.cU);
+         $$1.a(cnb.cX);
+         $$1.a(cnb.cY);
+         $$1.a(cnb.dg);
+         $$1.a(cnb.dc);
+         $$1.a(cnb.cW);
+         $$1.a(cnb.de);
+         $$1.a(cnb.dd);
+         $$1.a(cnb.cV);
+         $$1.a(cnb.cZ);
+         $$1.a(cnb.hD);
+         $$1.a(cnb.hL);
+         $$1.a(cnb.hK);
+         $$1.a(cnb.hS);
+         $$1.a(cnb.hP);
+         $$1.a(cnb.hR);
+         $$1.a(cnb.hE);
+         $$1.a(cnb.hH);
+         $$1.a(cnb.hI);
+         $$1.a(cnb.hQ);
+         $$1.a(cnb.hM);
+         $$1.a(cnb.hG);
+         $$1.a(cnb.hO);
+         $$1.a(cnb.hN);
+         $$1.a(cnb.hF);
+         $$1.a(cnb.hJ);
+         $$1.a(cnb.hT);
+         $$1.a(cnb.hk);
+         $$1.a(cnb.hs);
+         $$1.a(cnb.hr);
+         $$1.a(cnb.hz);
+         $$1.a(cnb.hw);
+         $$1.a(cnb.hy);
+         $$1.a(cnb.hl);
+         $$1.a(cnb.ho);
+         $$1.a(cnb.hp);
+         $$1.a(cnb.hx);
+         $$1.a(cnb.ht);
+         $$1.a(cnb.hn);
+         $$1.a(cnb.hv);
+         $$1.a(cnb.hu);
+         $$1.a(cnb.hm);
+         $$1.a(cnb.hq);
+         $$1.a(cnb.jI);
+         $$1.a(cnb.jQ);
+         $$1.a(cnb.jP);
+         $$1.a(cnb.jX);
+         $$1.a(cnb.jU);
+         $$1.a(cnb.jW);
+         $$1.a(cnb.jJ);
+         $$1.a(cnb.jM);
+         $$1.a(cnb.jN);
+         $$1.a(cnb.jV);
+         $$1.a(cnb.jR);
+         $$1.a(cnb.jL);
+         $$1.a(cnb.jT);
+         $$1.a(cnb.jS);
+         $$1.a(cnb.jK);
+         $$1.a(cnb.jO);
+         $$1.a(cnb.jY);
+         $$1.a(cnb.kg);
+         $$1.a(cnb.kf);
+         $$1.a(cnb.kn);
+         $$1.a(cnb.kk);
+         $$1.a(cnb.km);
+         $$1.a(cnb.jZ);
+         $$1.a(cnb.kc);
+         $$1.a(cnb.kd);
+         $$1.a(cnb.kl);
+         $$1.a(cnb.kh);
+         $$1.a(cnb.kb);
+         $$1.a(cnb.kj);
+         $$1.a(cnb.ki);
+         $$1.a(cnb.ka);
+         $$1.a(cnb.ke);
+         $$1.a(cnb.js);
+         $$1.a(cnb.jA);
+         $$1.a(cnb.jz);
+         $$1.a(cnb.jH);
+         $$1.a(cnb.jE);
+         $$1.a(cnb.jG);
+         $$1.a(cnb.jt);
+         $$1.a(cnb.jw);
+         $$1.a(cnb.jx);
+         $$1.a(cnb.jF);
+         $$1.a(cnb.jB);
+         $$1.a(cnb.jv);
+         $$1.a(cnb.jD);
+         $$1.a(cnb.jC);
+         $$1.a(cnb.ju);
+         $$1.a(cnb.jy);
+         $$1.a(cnb.cF);
+         $$1.a(cnb.cG);
+         $$1.a(cnb.ic);
+         $$1.a(cnb.ik);
+         $$1.a(cnb.ij);
+         $$1.a(cnb.ir);
+         $$1.a(cnb.io);
+         $$1.a(cnb.iq);
+         $$1.a(cnb.id);
+         $$1.a(cnb.ig);
+         $$1.a(cnb.ih);
+         $$1.a(cnb.ip);
+         $$1.a(cnb.il);
+         $$1.a(cnb.if);
+         $$1.a(cnb.in);
+         $$1.a(cnb.im);
+         $$1.a(cnb.ie);
+         $$1.a(cnb.ii);
+         $$1.a(cnb.fS);
+         $$1.a(cnb.is);
+         $$1.a(cnb.iA);
+         $$1.a(cnb.iz);
+         $$1.a(cnb.iH);
+         $$1.a(cnb.iE);
+         $$1.a(cnb.iG);
+         $$1.a(cnb.it);
+         $$1.a(cnb.iw);
+         $$1.a(cnb.ix);
+         $$1.a(cnb.iF);
+         $$1.a(cnb.iB);
+         $$1.a(cnb.iv);
+         $$1.a(cnb.iD);
+         $$1.a(cnb.iC);
+         $$1.a(cnb.iu);
+         $$1.a(cnb.iy);
+         $$1.a(cnb.jb);
+         $$1.a(cnb.jc);
+         $$1.a(cnb.jk);
+         $$1.a(cnb.jj);
+         $$1.a(cnb.jr);
+         $$1.a(cnb.jo);
+         $$1.a(cnb.jq);
+         $$1.a(cnb.jd);
+         $$1.a(cnb.jg);
+         $$1.a(cnb.jh);
+         $$1.a(cnb.jp);
+         $$1.a(cnb.jl);
+         $$1.a(cnb.jf);
+         $$1.a(cnb.jn);
+         $$1.a(cnb.jm);
+         $$1.a(cnb.je);
+         $$1.a(cnb.ji);
+         $$1.a(cnb.rz);
+         $$1.a(cnb.rH);
+         $$1.a(cnb.rG);
+         $$1.a(cnb.rO);
+         $$1.a(cnb.rL);
+         $$1.a(cnb.rN);
+         $$1.a(cnb.rA);
+         $$1.a(cnb.rD);
+         $$1.a(cnb.rE);
+         $$1.a(cnb.rM);
+         $$1.a(cnb.rI);
+         $$1.a(cnb.rC);
+         $$1.a(cnb.rK);
+         $$1.a(cnb.rJ);
+         $$1.a(cnb.rB);
+         $$1.a(cnb.rF);
+         $$1.a(cnb.wH);
+         $$1.a(cnb.wI);
+         $$1.a(cnb.wQ);
+         $$1.a(cnb.wP);
+         $$1.a(cnb.wX);
+         $$1.a(cnb.wU);
+         $$1.a(cnb.wW);
+         $$1.a(cnb.wJ);
+         $$1.a(cnb.wM);
+         $$1.a(cnb.wN);
+         $$1.a(cnb.wV);
+         $$1.a(cnb.wR);
+         $$1.a(cnb.wL);
+         $$1.a(cnb.wT);
+         $$1.a(cnb.wS);
+         $$1.a(cnb.wK);
+         $$1.a(cnb.wO);
+         $$1.a(cnb.uI);
+         $$1.a(cnb.uQ);
+         $$1.a(cnb.uP);
+         $$1.a(cnb.uX);
+         $$1.a(cnb.uU);
+         $$1.a(cnb.uW);
+         $$1.a(cnb.uJ);
+         $$1.a(cnb.uM);
+         $$1.a(cnb.uN);
+         $$1.a(cnb.uV);
+         $$1.a(cnb.uR);
+         $$1.a(cnb.uL);
+         $$1.a(cnb.uT);
+         $$1.a(cnb.uS);
+         $$1.a(cnb.uK);
+         $$1.a(cnb.uO);
+      }).d());
+      it.a($$0, c, cle.a(cle.f.a, 2).a(vf.c("itemGroup.natural")).a(() -> new cmy(cws.i)).a(($$0x, $$1) -> {
+         $$1.a(cnb.B);
+         $$1.a(cnb.E);
+         $$1.a(cnb.fZ);
+         $$1.a(cnb.hV);
+         $$1.a(cnb.C);
+         $$1.a(cnb.D);
+         $$1.a(cnb.F);
+         $$1.a(cnb.eO);
+         $$1.a(cnb.G);
+         $$1.a(cnb.eW);
+         $$1.a(cnb.aj);
+         $$1.a(cnb.af);
+         $$1.a(cnb.cI);
+         $$1.a(cnb.ai);
+         $$1.a(cnb.iP);
+         $$1.a(cnb.eT);
+         $$1.a(cnb.hU);
+         $$1.a(cnb.kU);
+         $$1.a(cnb.eU);
+         $$1.a(cnb.eS);
+         $$1.a(cnb.dM);
+         $$1.a(cnb.dK);
+         $$1.a(cnb.b);
+         $$1.a(cnb.i);
+         $$1.a(cnb.c);
+         $$1.a(cnb.e);
+         $$1.a(cnb.g);
+         $$1.a(cnb.l);
+         $$1.a(cnb.m);
+         $$1.a(cnb.A);
+         $$1.a(cnb.xc);
+         $$1.a(cnb.iI);
+         $$1.a(cnb.iV);
+         $$1.a(cnb.eD);
+         $$1.a(cnb.wt);
+         $$1.a(cnb.fm);
+         $$1.a(cnb.H);
+         $$1.a(cnb.I);
+         $$1.a(cnb.fn);
+         $$1.a(cnb.fo);
+         $$1.a(cnb.iZ);
+         $$1.a(cnb.wu);
+         $$1.a(cnb.fp);
+         $$1.a(cnb.fr);
+         $$1.a(cnb.gm);
+         $$1.a(cnb.ak);
+         $$1.a(cnb.al);
+         $$1.a(cnb.am);
+         $$1.a(cnb.an);
+         $$1.a(cnb.ao);
+         $$1.a(cnb.ap);
+         $$1.a(cnb.aq);
+         $$1.a(cnb.ar);
+         $$1.a(cnb.as);
+         $$1.a(cnb.at);
+         $$1.a(cnb.au);
+         $$1.a(cnb.av);
+         $$1.a(cnb.aw);
+         $$1.a(cnb.ax);
+         $$1.a(cnb.ay);
+         $$1.a(cnb.az);
+         $$1.a(cnb.aA);
+         $$1.a(cnb.aB);
+         $$1.a(cnb.aC);
+         $$1.a(cnb.aE);
+         $$1.a(cnb.aF);
+         $$1.a(cnb.aG);
+         $$1.a(cnb.ft);
+         $$1.a(cnb.aH);
+         $$1.a(cnb.aI);
+         $$1.a(cnb.wY);
+         $$1.a(cnb.wZ);
+         $$1.a(cnb.xa);
+         $$1.a(cnb.xb);
+         $$1.a(cnb.bB);
+         $$1.a(cnb.bC);
+         $$1.a(cnb.bD);
+         $$1.a(cnb.bE);
+         $$1.a(cnb.bF);
+         $$1.a(cnb.bH);
+         $$1.a(cnb.bI);
+         $$1.a(cnb.bJ);
+         $$1.a(cnb.bK);
+         $$1.a(cnb.bG);
+         $$1.a(cnb.fP);
+         $$1.a(cnb.bL);
+         $$1.a(cnb.bM);
+         $$1.a(cnb.ct);
+         $$1.a(cnb.cu);
+         $$1.a(cnb.cv);
+         $$1.a(cnb.cw);
+         $$1.a(cnb.cx);
+         $$1.a(cnb.cz);
+         $$1.a(cnb.cA);
+         $$1.a(cnb.cy);
+         $$1.a(cnb.cB);
+         $$1.a(cnb.cC);
+         $$1.a(cnb.fN);
+         $$1.a(cnb.fO);
+         $$1.a(cnb.iW);
+         $$1.a(cnb.iX);
+         $$1.a(cnb.wm);
+         $$1.a(cnb.W);
+         $$1.a(cnb.X);
+         $$1.a(cnb.Y);
+         $$1.a(cnb.Z);
+         $$1.a(cnb.aa);
+         $$1.a(cnb.ac);
+         $$1.a(cnb.ad);
+         $$1.a(cnb.ab);
+         $$1.a(cnb.cO);
+         $$1.a(cnb.cP);
+         $$1.a(cnb.dz);
+         $$1.a(cnb.dA);
+         $$1.a(cnb.dB);
+         $$1.a(cnb.dC);
+         $$1.a(cnb.cM);
+         $$1.a(cnb.cN);
+         $$1.a(cnb.cQ);
+         $$1.a(cnb.dj);
+         $$1.a(cnb.dk);
+         $$1.a(cnb.dl);
+         $$1.a(cnb.dm);
+         $$1.a(cnb.dn);
+         $$1.a(cnb.do);
+         $$1.a(cnb.dp);
+         $$1.a(cnb.dq);
+         $$1.a(cnb.dr);
+         $$1.a(cnb.ds);
+         $$1.a(cnb.dt);
+         $$1.a(cnb.du);
+         $$1.a(cnb.dw);
+         $$1.a(cnb.dv);
+         $$1.a(cnb.dL);
+         $$1.a(cnb.dy);
+         $$1.a(cnb.dQ);
+         $$1.a(cnb.dI);
+         $$1.a(cnb.eV);
+         $$1.a(cnb.dD);
+         $$1.a(cnb.dE);
+         $$1.a(cnb.dF);
+         $$1.a(cnb.dG);
+         $$1.a(cnb.dH);
+         $$1.a(cnb.fU);
+         $$1.a(cnb.ia);
+         $$1.a(cnb.ib);
+         $$1.a(cnb.hW);
+         $$1.a(cnb.hX);
+         $$1.a(cnb.hY);
+         $$1.a(cnb.hZ);
+         $$1.a(cnb.dx);
+         $$1.a(cnb.dO);
+         $$1.a(cnb.dP);
+         $$1.a(cnb.eG);
+         $$1.a(cnb.eH);
+         $$1.a(cnb.fV);
+         $$1.a(cnb.dN);
+         $$1.a(cnb.xg);
+         $$1.a(cnb.ko);
+         $$1.a(cnb.kp);
+         $$1.a(cnb.ps);
+         $$1.a(cnb.re);
+         $$1.a(cnb.rV);
+         $$1.a(cnb.rW);
+         $$1.a(cnb.ve);
+         $$1.a(cnb.vb);
+         $$1.a(cnb.vc);
+         $$1.a(cnb.wj);
+         $$1.a(cnb.wi);
+         $$1.a(cnb.sg);
+         $$1.a(cnb.ga);
+         $$1.a(cnb.cR);
+         $$1.a(cnb.cS);
+         $$1.a(cnb.dJ);
+         $$1.a(cnb.qK);
+         $$1.a(cnb.kv);
+         $$1.a(cnb.kw);
+         $$1.a(cnb.kx);
+         $$1.a(cnb.ky);
+         $$1.a(cnb.kz);
+         $$1.a(cnb.kq);
+         $$1.a(cnb.kr);
+         $$1.a(cnb.ks);
+         $$1.a(cnb.kt);
+         $$1.a(cnb.ku);
+         $$1.a(cnb.kA);
+         $$1.a(cnb.kB);
+         $$1.a(cnb.kC);
+         $$1.a(cnb.kD);
+         $$1.a(cnb.kE);
+         $$1.a(cnb.kJ);
+         $$1.a(cnb.kF);
+         $$1.a(cnb.kG);
+         $$1.a(cnb.kH);
+         $$1.a(cnb.kI);
+         $$1.a(cnb.kK);
+         $$1.a(cnb.kL);
+         $$1.a(cnb.kM);
+         $$1.a(cnb.kN);
+         $$1.a(cnb.kO);
+         $$1.a(cnb.kP);
+         $$1.a(cnb.kQ);
+         $$1.a(cnb.kR);
+         $$1.a(cnb.kS);
+         $$1.a(cnb.kT);
+         $$1.a(cnb.cD);
+         $$1.a(cnb.cE);
+         $$1.a(cnb.fT);
+         $$1.a(cnb.fj);
+         $$1.a(cnb.fk);
+         $$1.a(cnb.fl);
+         $$1.a(cnb.hC);
+         $$1.a(cnb.wo);
+         $$1.a(cnb.wr);
+         $$1.a(cnb.lN);
+         $$1.a(cnb.lO);
+         $$1.a(cnb.xd);
+         $$1.a(cnb.xe);
+         $$1.a(cnb.xf);
+         $$1.a(cnb.gg);
+         $$1.a(cnb.gh);
+         $$1.a(cnb.gi);
+         $$1.a(cnb.gj);
+         $$1.a(cnb.lY);
+         $$1.a(cnb.cL);
+         $$1.a(cnb.ae);
+      }).d());
+      it.a($$0, d, cle.a(cle.f.a, 3).a(vf.c("itemGroup.functional")).a(() -> new cmy(cnb.pZ)).a(($$0x, $$1) -> {
+         $$1.a(cnb.eE);
+         $$1.a(cnb.fs);
+         $$1.a(cnb.lH);
+         $$1.a(cnb.wg);
+         $$1.a(cnb.wh);
+         $$1.a(cnb.fR);
+         $$1.a(cnb.eF);
+         $$1.a(cnb.iO);
+         $$1.a(cnb.md);
+         $$1.a(cnb.yg);
+         $$1.a(cnb.yh);
+         $$1.a(cnb.yi);
+         $$1.a(cnb.yj);
+         $$1.a(cnb.ft);
+         $$1.a(cnb.wm);
+         $$1.a(cnb.xd);
+         $$1.a(cnb.xe);
+         $$1.a(cnb.xf);
+         $$1.a(cnb.wt);
+         $$1.a(cnb.fV);
+         $$1.a(cnb.iV);
+         $$1.a(cnb.eN);
+         $$1.a(cnb.we);
+         $$1.a(cnb.wa);
+         $$1.a(cnb.wb);
+         $$1.a(cnb.wd);
+         $$1.a(cnb.wc);
+         $$1.a(cnb.vO);
+         $$1.a(cnb.eP);
+         $$1.a(cnb.vY);
+         $$1.a(cnb.vZ);
+         $$1.a(cnb.wk);
+         $$1.a(cnb.wl);
+         $$1.a(cnb.hc);
+         $$1.a(cnb.hd);
+         $$1.a(cnb.he);
+         $$1.a(cnb.vW);
+         $$1.a(cnb.me);
+         $$1.a(cnb.eX);
+         $$1.a(cnb.gk);
+         $$1.a(cnb.uY);
+         $$1.a(cnb.sn);
+         $$1.a(cnb.so);
+         $$1.a(cnb.wf);
+         $$1.a(cnb.gF);
+         $$1.a(cnb.kV);
+         $$1.a(cnb.ws);
+         $$1.a(cnb.eQ);
+         $$1.a(cnb.lF);
+         $$1.a(cnb.wo);
+         $$1.a(cnb.wp);
+         $$1.a(cnb.ag);
+         $$1.a(cnb.ah);
+         $$1.a(cnb.lW);
+         $$1.a(cnb.tX);
+         $$1.a(cnb.eB);
+         $$1.a(cnb.uy);
+         $$1.a(cnb.tV);
+         $$1.a(cnb.tW);
+         $$1.a(cnb.pW);
+         $$0x.c().a(ke.R).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> $$0xxx.a(asq.a), cle.g.a));
+         $$1.a(cnb.ez);
+         $$1.a(cnb.eA);
+         $$1.a(cnb.lT);
+         $$1.a(cnb.cG);
+         $$1.a(cnb.pZ);
+         $$1.a(cnb.qk);
+         $$1.a(cnb.qa);
+         $$1.a(cnb.ql);
+         $$1.a(cnb.qb);
+         $$1.a(cnb.qm);
+         $$1.a(cnb.qc);
+         $$1.a(cnb.qn);
+         $$1.a(cnb.qd);
+         $$1.a(cnb.qo);
+         $$1.a(cnb.qf);
+         $$1.a(cnb.qq);
+         $$1.a(cnb.qg);
+         $$1.a(cnb.qr);
+         $$1.a(cnb.qe);
+         $$1.a(cnb.qp);
+         $$1.a(cnb.qh);
+         $$1.a(cnb.qs);
+         $$1.a(cnb.qi);
+         $$1.a(cnb.qt);
+         $$1.a(cnb.qj);
+         $$1.a(cnb.qu);
+         $$1.a(cnb.eM);
+         $$1.a(cnb.vX);
+         $$1.a(cnb.gq);
+         $$1.a(cnb.jb);
+         $$1.a(cnb.jc);
+         $$1.a(cnb.jk);
+         $$1.a(cnb.jj);
+         $$1.a(cnb.jr);
+         $$1.a(cnb.jo);
+         $$1.a(cnb.jq);
+         $$1.a(cnb.jd);
+         $$1.a(cnb.jg);
+         $$1.a(cnb.jh);
+         $$1.a(cnb.jp);
+         $$1.a(cnb.jl);
+         $$1.a(cnb.jf);
+         $$1.a(cnb.jn);
+         $$1.a(cnb.jm);
+         $$1.a(cnb.je);
+         $$1.a(cnb.ji);
+         $$1.a(cnb.wG);
+         $$1.a(cnb.rz);
+         $$1.a(cnb.rH);
+         $$1.a(cnb.rG);
+         $$1.a(cnb.rO);
+         $$1.a(cnb.rL);
+         $$1.a(cnb.rN);
+         $$1.a(cnb.rA);
+         $$1.a(cnb.rD);
+         $$1.a(cnb.rE);
+         $$1.a(cnb.rM);
+         $$1.a(cnb.rI);
+         $$1.a(cnb.rC);
+         $$1.a(cnb.rK);
+         $$1.a(cnb.rJ);
+         $$1.a(cnb.rB);
+         $$1.a(cnb.rF);
+         $$1.a(cnb.wH);
+         $$1.a(cnb.wI);
+         $$1.a(cnb.wQ);
+         $$1.a(cnb.wP);
+         $$1.a(cnb.wX);
+         $$1.a(cnb.wU);
+         $$1.a(cnb.wW);
+         $$1.a(cnb.wJ);
+         $$1.a(cnb.wM);
+         $$1.a(cnb.wN);
+         $$1.a(cnb.wV);
+         $$1.a(cnb.wR);
+         $$1.a(cnb.wL);
+         $$1.a(cnb.wT);
+         $$1.a(cnb.wS);
+         $$1.a(cnb.wK);
+         $$1.a(cnb.wO);
+         $$1.a(cnb.uI);
+         $$1.a(cnb.uQ);
+         $$1.a(cnb.uP);
+         $$1.a(cnb.uX);
+         $$1.a(cnb.uU);
+         $$1.a(cnb.uW);
+         $$1.a(cnb.uJ);
+         $$1.a(cnb.uM);
+         $$1.a(cnb.uN);
+         $$1.a(cnb.uV);
+         $$1.a(cnb.uR);
+         $$1.a(cnb.uL);
+         $$1.a(cnb.uT);
+         $$1.a(cnb.uS);
+         $$1.a(cnb.uK);
+         $$1.a(cnb.uO);
+         $$1.a(cgq.s());
+         $$1.a(cnb.ue);
+         $$1.a(cnb.uf);
+         $$1.a(cnb.ug);
+         $$1.a(cnb.uh);
+         $$1.a(cnb.ui);
+         $$1.a(cnb.uk);
+         $$1.a(cnb.uj);
+         $$1.a(cnb.go);
+         $$1.a(cnb.gl);
+         $$1.a(cnb.sp);
+         $$1.a(cnb.fu);
+         $$1.a(cnb.fv);
+         $$1.a(cnb.fw);
+         $$1.a(cnb.fx);
+         $$1.a(cnb.fy);
+         $$1.a(cnb.fz);
+         $$1.a(cnb.fA);
+      }).d());
+      it.a($$0, e, cle.a(cle.f.a, 4).a(vf.c("itemGroup.redstone")).a(() -> new cmy(cnb.lG)).a(($$0x, $$1) -> {
+         $$1.a(cnb.lG);
+         $$1.a(cnb.lH);
+         $$1.a(cnb.lI);
+         $$1.a(cnb.lJ);
+         $$1.a(cnb.lK);
+         $$1.a(cnb.lU);
+         $$1.a(cnb.yg);
+         $$1.a(cnb.yh);
+         $$1.a(cnb.yi);
+         $$1.a(cnb.yj);
+         $$1.a(cnb.lV);
+         $$1.a(cnb.mh);
+         $$1.a(cnb.mf);
+         $$1.a(cnb.mw);
+         $$1.a(cnb.ms);
+         $$1.a(cnb.mu);
+         $$1.a(cnb.mv);
+         $$1.a(cnb.lY);
+         $$1.a(cnb.lZ);
+         $$1.a(cnb.gj);
+         $$1.a(cnb.aH);
+         $$1.a(cnb.cT);
+         $$1.a(cnb.ma);
+         $$1.a(cnb.pp);
+         $$1.a(cnb.lT);
+         $$1.a(cnb.lX);
+         $$1.a(cnb.lW);
+         $$1.a(cnb.lL);
+         $$1.a(cnb.lM);
+         $$1.a(cnb.lN);
+         $$1.a(cnb.lO);
+         $$1.a(cnb.lR);
+         $$1.a(cnb.lS);
+         $$1.a(cnb.rQ);
+         $$1.a(cnb.lQ);
+         $$1.a(cnb.eM);
+         $$1.a(cnb.vX);
+         $$1.a(cnb.eA);
+         $$1.a(cnb.eP);
+         $$1.a(cnb.mb);
+         $$1.a(cnb.eX);
+         $$1.a(cnb.eB);
+         $$1.a(cnb.lP);
+         $$1.a(cnb.me);
+         $$1.a(cnb.vW);
+         $$1.a(cnb.so);
+         $$1.a(cnb.nI);
+         $$1.a(cnb.nG);
+         $$1.a(cnb.nH);
+         $$1.a(cnb.nJ);
+         $$1.a(cnb.nL);
+         $$1.a(cnb.nP);
+         $$1.a(cnb.nM);
+         $$1.a(cnb.nN);
+         $$1.a(cnb.nO);
+         $$1.a(cnb.nU);
+         $$1.a(cnb.ok);
+         $$1.a(cnb.mI);
+         $$1.a(cnb.mH);
+         $$1.a(cnb.nv);
+         $$1.a(cnb.nc);
+         $$1.a(cnb.nb);
+         $$1.a(cnb.mc);
+         $$1.a(cnb.md);
+         $$1.a(cnb.wf);
+         $$1.a(cnb.dO);
+         $$1.a(cnb.uy);
+         $$1.a(cnb.as);
+      }).d());
+      it.a($$0, f, cle.a(cle.f.a, 5).a(vf.c("itemGroup.hotbar")).a(() -> new cmy(cws.cl)).a().a(cle.h.c).d());
+      it.a($$0, g, cle.a(cle.f.a, 6).a(vf.c("itemGroup.search")).a(() -> new cmy(cnb.qP)).a(($$1, $$2) -> {
+         Set<cmy> $$3 = cmz.a();
 
-   @Override
-   public Predicate<cmx> b() {
-      return c;
-   }
-
-   @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      if (d($$3)) {
-         a($$0, $$1, $$2, $$3, o($$3), 1.0F);
-         a($$3, false);
-         return bkb.b($$3);
-      } else if (!$$1.g($$3).b()) {
-         if (!d($$3)) {
-            this.g = false;
-            this.h = false;
-            $$1.c($$2);
+         for (cle $$4 : $$0) {
+            if ($$4.k() != cle.h.d) {
+               $$3.addAll($$4.m());
+            }
          }
 
-         return bkb.b($$3);
-      } else {
-         return bkb.d($$3);
+         $$2.a($$3);
+      }).a("item_search.png").a().a(cle.h.d).d());
+      it.a($$0, h, cle.a(cle.f.b, 0).a(vf.c("itemGroup.tools")).a(() -> new cmy(cnb.pe)).a(($$0x, $$1) -> {
+         $$1.a(cnb.oJ);
+         $$1.a(cnb.oK);
+         $$1.a(cnb.oL);
+         $$1.a(cnb.oM);
+         $$1.a(cnb.oO);
+         $$1.a(cnb.oP);
+         $$1.a(cnb.oQ);
+         $$1.a(cnb.oR);
+         $$1.a(cnb.oY);
+         $$1.a(cnb.oZ);
+         $$1.a(cnb.pa);
+         $$1.a(cnb.pb);
+         $$1.a(cnb.oT);
+         $$1.a(cnb.oU);
+         $$1.a(cnb.oV);
+         $$1.a(cnb.oW);
+         $$1.a(cnb.pd);
+         $$1.a(cnb.pe);
+         $$1.a(cnb.pf);
+         $$1.a(cnb.pg);
+         $$1.a(cnb.pi);
+         $$1.a(cnb.pj);
+         $$1.a(cnb.pk);
+         $$1.a(cnb.pl);
+         $$1.a(cnb.qv);
+         $$1.a(cnb.qw);
+         $$1.a(cnb.qE);
+         $$1.a(cnb.qD);
+         $$1.a(cnb.qF);
+         $$1.a(cnb.qC);
+         $$1.a(cnb.qG);
+         $$1.a(cnb.qH);
+         $$1.a(cnb.qx);
+         $$1.a(cnb.qy);
+         $$1.a(cnb.qB);
+         $$1.a(cnb.qS);
+         $$1.a(cnb.op);
+         $$1.a(cnb.tS);
+         $$1.a(cnb.rv);
+         $$1.a(cnb.rS);
+         $$1.a(cnb.xi);
+         $$1.a(cnb.uE);
+         $$1.a(cnb.uD);
+         if ($$0x.a().b(chu.b)) {
+            $$1.a(cnb.qR);
+         }
+
+         $$1.a(cnb.qP);
+         $$1.a(cnb.qQ);
+         $$1.a(cnb.qT);
+         $$1.a(cnb.qU);
+         $$1.a(cnb.uc);
+         $$1.a(cnb.tT);
+         $$1.a(cnb.sc);
+         $$1.a(cnb.sp);
+         $$1.a(cnb.nS);
+         b($$1, cle.g.a);
+         $$1.a(cnb.nK);
+         $$1.a(cnb.nQ);
+         $$1.a(cnb.nR);
+         $$1.a(cnb.nT);
+         $$1.a(cnb.nU);
+         $$1.a(cnb.nV);
+         $$1.a(cnb.nW);
+         $$1.a(cnb.nX);
+         $$1.a(cnb.nY);
+         $$1.a(cnb.nZ);
+         $$1.a(cnb.oa);
+         $$1.a(cnb.ob);
+         $$1.a(cnb.oc);
+         $$1.a(cnb.of);
+         $$1.a(cnb.og);
+         $$1.a(cnb.oh);
+         $$1.a(cnb.oi);
+         $$1.a(cnb.od);
+         $$1.a(cnb.oe);
+         $$1.a(cnb.oj);
+         $$1.a(cnb.ok);
+         $$1.a(cnb.nI);
+         $$1.a(cnb.nG);
+         $$1.a(cnb.nH);
+         $$1.a(cnb.nJ);
+         $$1.a(cnb.nL);
+         $$1.a(cnb.nP);
+         $$1.a(cnb.nM);
+         $$1.a(cnb.nN);
+         $$1.a(cnb.nO);
+         $$0x.c().a(ke.D).ifPresent($$1x -> a($$1, $$1x, cnb.vV, aso.c, cle.g.a));
+         $$1.a(cnb.vr);
+         $$1.a(cnb.vs);
+         $$1.a(cnb.vt);
+         $$1.a(cnb.vu);
+         $$1.a(cnb.vv);
+         $$1.a(cnb.vw);
+         $$1.a(cnb.vx);
+         $$1.a(cnb.vy);
+         $$1.a(cnb.vz);
+         $$1.a(cnb.vA);
+         $$1.a(cnb.vB);
+         $$1.a(cnb.vC);
+         $$1.a(cnb.vD);
+         $$1.a(cnb.vE);
+         $$1.a(cnb.vF);
+         $$1.a(cnb.vG);
+      }).d());
+      it.a($$0, i, cle.a(cle.f.b, 1).a(vf.c("itemGroup.combat")).a(() -> new cmy(cnb.ph)).a(($$0x, $$1) -> {
+         $$1.a(cnb.oI);
+         $$1.a(cnb.oN);
+         $$1.a(cnb.oX);
+         $$1.a(cnb.oS);
+         $$1.a(cnb.pc);
+         $$1.a(cnb.ph);
+         $$1.a(cnb.oL);
+         $$1.a(cnb.oQ);
+         $$1.a(cnb.pa);
+         $$1.a(cnb.oV);
+         $$1.a(cnb.pf);
+         $$1.a(cnb.pk);
+         $$1.a(cnb.vI);
+         $$1.a(cnb.vl);
+         $$1.a(cnb.pv);
+         $$1.a(cnb.pw);
+         $$1.a(cnb.px);
+         $$1.a(cnb.py);
+         $$1.a(cnb.pz);
+         $$1.a(cnb.pA);
+         $$1.a(cnb.pB);
+         $$1.a(cnb.pC);
+         $$1.a(cnb.pD);
+         $$1.a(cnb.pE);
+         $$1.a(cnb.pF);
+         $$1.a(cnb.pG);
+         $$1.a(cnb.pL);
+         $$1.a(cnb.pM);
+         $$1.a(cnb.pN);
+         $$1.a(cnb.pO);
+         $$1.a(cnb.pH);
+         $$1.a(cnb.pI);
+         $$1.a(cnb.pJ);
+         $$1.a(cnb.pK);
+         $$1.a(cnb.pP);
+         $$1.a(cnb.pQ);
+         $$1.a(cnb.pR);
+         $$1.a(cnb.pS);
+         $$1.a(cnb.on);
+         $$1.a(cnb.uC);
+         $$1.a(cnb.uz);
+         $$1.a(cnb.uA);
+         $$1.a(cnb.uB);
+         $$1.a(cnb.vm);
+         $$1.a(cnb.mc);
+         $$1.a(cnb.uY);
+         $$1.a(cnb.qz);
+         $$1.a(cnb.qO);
+         $$1.a(cnb.or);
+         $$1.a(cnb.vM);
+         b($$1, cle.g.a);
+         $$1.a(cnb.os);
+         $$1.a(cnb.vi);
+         $$0x.c().a(ke.X).ifPresent($$1x -> a($$1, $$1x, cnb.vj, cle.g.a));
+      }).d());
+      it.a($$0, j, cle.a(cle.f.b, 2).a(vf.c("itemGroup.foodAndDrink")).a(() -> new cmy(cnb.pX)).a(($$0x, $$1) -> {
+         $$1.a(cnb.oq);
+         $$1.a(cnb.pX);
+         $$1.a(cnb.pY);
+         $$1.a(cnb.rT);
+         $$1.a(cnb.wi);
+         $$1.a(cnb.wj);
+         $$1.a(cnb.uZ);
+         $$1.a(cnb.tY);
+         $$1.a(cnb.ud);
+         $$1.a(cnb.tZ);
+         $$1.a(cnb.ua);
+         $$1.a(cnb.ub);
+         $$1.a(cnb.vd);
+         $$1.a(cnb.rU);
+         $$1.a(cnb.rX);
+         $$1.a(cnb.rY);
+         $$1.a(cnb.pU);
+         $$1.a(cnb.pV);
+         $$1.a(cnb.uG);
+         $$1.a(cnb.uH);
+         $$1.a(cnb.rZ);
+         $$1.a(cnb.sa);
+         $$1.a(cnb.ut);
+         $$1.a(cnb.uu);
+         $$1.a(cnb.qW);
+         $$1.a(cnb.ra);
+         $$1.a(cnb.qX);
+         $$1.a(cnb.rb);
+         $$1.a(cnb.qY);
+         $$1.a(cnb.qZ);
+         $$1.a(cnb.pu);
+         $$1.a(cnb.rP);
+         $$1.a(cnb.ry);
+         $$1.a(cnb.um);
+         $$1.a(cnb.sb);
+         $$1.a(cnb.sj);
+         $$1.a(cnb.po);
+         $$1.a(cnb.vf);
+         $$1.a(cnb.uv);
+         a($$1, cle.g.a);
+         $$1.a(cnb.qB);
+         $$1.a(cnb.wq);
+         $$0x.c().a(ke.X).ifPresent($$1x -> {
+            a($$1, $$1x, cnb.sh, cle.g.a);
+            a($$1, $$1x, cnb.vh, cle.g.a);
+            a($$1, $$1x, cnb.vk, cle.g.a);
+         });
+      }).d());
+      it.a($$0, k, cle.a(cle.f.b, 3).a(vf.c("itemGroup.ingredients")).a(() -> new cmy(cnb.oB)).a(($$0x, $$1) -> {
+         $$1.a(cnb.ot);
+         $$1.a(cnb.ou);
+         $$1.a(cnb.oA);
+         $$1.a(cnb.oC);
+         $$1.a(cnb.oE);
+         $$1.a(cnb.ow);
+         $$1.a(cnb.ox);
+         $$1.a(cnb.ov);
+         $$1.a(cnb.aC);
+         $$1.a(cnb.oy);
+         $$1.a(cnb.oz);
+         $$1.a(cnb.vo);
+         $$1.a(cnb.sf);
+         $$1.a(cnb.oB);
+         $$1.a(cnb.oD);
+         $$1.a(cnb.oF);
+         $$1.a(cnb.oH);
+         $$1.a(cnb.oG);
+         $$1.a(cnb.pm);
+         $$1.a(cnb.pT);
+         $$1.a(cnb.pt);
+         $$1.a(cnb.rw);
+         $$1.a(cnb.rv);
+         $$1.a(cnb.pp);
+         $$1.a(cnb.pq);
+         $$1.a(cnb.qz);
+         $$1.a(cnb.qO);
+         $$1.a(cnb.qA);
+         $$1.a(cnb.ux);
+         $$1.a(cnb.wn);
+         $$1.a(cnb.rc);
+         $$1.a(cnb.rd);
+         $$1.a(cnb.oo);
+         $$1.a(cnb.qN);
+         $$1.a(cnb.qJ);
+         $$1.a(cnb.ur);
+         $$1.a(cnb.us);
+         $$1.a(cnb.vK);
+         $$1.a(cnb.vL);
+         $$1.a(cnb.tS);
+         $$1.a(cnb.sd);
+         $$1.a(cnb.ul);
+         $$1.a(cnb.sc);
+         $$1.a(cnb.sp);
+         $$1.a(cnb.vn);
+         $$1.a(cnb.va);
+         $$1.a(cnb.xh);
+         $$1.a(cnb.vH);
+         $$1.a(cnb.rf);
+         $$1.a(cnb.rn);
+         $$1.a(cnb.rm);
+         $$1.a(cnb.ru);
+         $$1.a(cnb.rr);
+         $$1.a(cnb.rt);
+         $$1.a(cnb.rg);
+         $$1.a(cnb.rj);
+         $$1.a(cnb.rk);
+         $$1.a(cnb.rs);
+         $$1.a(cnb.ro);
+         $$1.a(cnb.ri);
+         $$1.a(cnb.rq);
+         $$1.a(cnb.rp);
+         $$1.a(cnb.rh);
+         $$1.a(cnb.rl);
+         $$1.a(cnb.pn);
+         $$1.a(cnb.qI);
+         $$1.a(cnb.uq);
+         $$1.a(cnb.qL);
+         $$1.a(cnb.qM);
+         $$1.a(cnb.uo);
+         $$1.a(cnb.si);
+         $$1.a(cnb.sg);
+         $$1.a(cnb.lG);
+         $$1.a(cnb.qV);
+         $$1.a(cnb.pr);
+         $$1.a(cnb.vg);
+         $$1.a(cnb.sk);
+         $$1.a(cnb.sl);
+         $$1.a(cnb.rx);
+         $$1.a(cnb.uw);
+         $$1.a(cnb.sq);
+         $$1.a(cnb.sj);
+         $$1.a(cnb.qZ);
+         $$1.a(cnb.sm);
+         $$1.a(cnb.ud);
+         $$1.a(cnb.se);
+         $$1.a(cnb.on);
+         $$1.a(cnb.vJ);
+         $$1.a(cnb.vP);
+         $$1.a(cnb.vQ);
+         $$1.a(cnb.vR);
+         $$1.a(cnb.vS);
+         $$1.a(cnb.vT);
+         $$1.a(cnb.vU);
+         $$1.a(cnb.xA);
+         $$1.a(cnb.xB);
+         $$1.a(cnb.xC);
+         $$1.a(cnb.xD);
+         $$1.a(cnb.xE);
+         $$1.a(cnb.xF);
+         $$1.a(cnb.xG);
+         $$1.a(cnb.xH);
+         $$1.a(cnb.xI);
+         $$1.a(cnb.xJ);
+         $$1.a(cnb.xK);
+         $$1.a(cnb.xL);
+         $$1.a(cnb.xM);
+         $$1.a(cnb.xN);
+         $$1.a(cnb.xO);
+         $$1.a(cnb.xP);
+         $$1.a(cnb.xQ);
+         $$1.a(cnb.xR);
+         $$1.a(cnb.xS);
+         $$1.a(cnb.xT);
+         $$1.a(cnb.xj);
+         $$1.a(cnb.xk);
+         $$1.a(cnb.xq);
+         $$1.a(cnb.xn);
+         $$1.a(cnb.xm);
+         $$1.a(cnb.xl);
+         $$1.a(cnb.xv);
+         $$1.a(cnb.xy);
+         $$1.a(cnb.xw);
+         $$1.a(cnb.xz);
+         $$1.a(cnb.xo);
+         $$1.a(cnb.xx);
+         $$1.a(cnb.xr);
+         $$1.a(cnb.xs);
+         $$1.a(cnb.xt);
+         $$1.a(cnb.xp);
+         $$1.a(cnb.xu);
+         $$1.a(cnb.tR);
+         $$1.a(cnb.yl);
+         Set<crk> $$2 = EnumSet.allOf(crk.class);
+         $$0x.c().a(ke.t).ifPresent($$2x -> {
+            a($$1, $$2x, $$2, cle.g.b);
+            b($$1, $$2x, $$2, cle.g.c);
+         });
+      }).d());
+      it.a($$0, l, cle.a(cle.f.b, 4).a(vf.c("itemGroup.spawnEggs")).a(() -> new cmy(cnb.te)).a(($$0x, $$1) -> {
+         $$1.a(cnb.eL);
+         $$1.a(cnb.yk);
+         $$1.a(cnb.sr);
+         $$1.a(cnb.ss);
+         $$1.a(cnb.st);
+         $$1.a(cnb.su);
+         $$1.a(cnb.sv);
+         $$1.a(cnb.sw);
+         $$1.a(cnb.sy);
+         $$1.a(cnb.sx);
+         $$1.a(cnb.sz);
+         $$1.a(cnb.sA);
+         $$1.a(cnb.sB);
+         $$1.a(cnb.sC);
+         $$1.a(cnb.sD);
+         $$1.a(cnb.sE);
+         $$1.a(cnb.sF);
+         $$1.a(cnb.sG);
+         $$1.a(cnb.sH);
+         $$1.a(cnb.sJ);
+         $$1.a(cnb.sK);
+         $$1.a(cnb.sL);
+         $$1.a(cnb.sM);
+         $$1.a(cnb.sN);
+         $$1.a(cnb.sO);
+         $$1.a(cnb.sP);
+         $$1.a(cnb.sQ);
+         $$1.a(cnb.sR);
+         $$1.a(cnb.sS);
+         $$1.a(cnb.sT);
+         $$1.a(cnb.sU);
+         $$1.a(cnb.sV);
+         $$1.a(cnb.sW);
+         $$1.a(cnb.sX);
+         $$1.a(cnb.sY);
+         $$1.a(cnb.sZ);
+         $$1.a(cnb.ta);
+         $$1.a(cnb.tb);
+         $$1.a(cnb.tc);
+         $$1.a(cnb.td);
+         $$1.a(cnb.te);
+         $$1.a(cnb.tf);
+         $$1.a(cnb.tg);
+         $$1.a(cnb.th);
+         $$1.a(cnb.ti);
+         $$1.a(cnb.tj);
+         $$1.a(cnb.tk);
+         $$1.a(cnb.tl);
+         $$1.a(cnb.tm);
+         $$1.a(cnb.tn);
+         $$1.a(cnb.to);
+         $$1.a(cnb.tp);
+         $$1.a(cnb.tq);
+         $$1.a(cnb.tr);
+         $$1.a(cnb.ts);
+         $$1.a(cnb.tt);
+         $$1.a(cnb.tu);
+         $$1.a(cnb.tv);
+         $$1.a(cnb.tw);
+         $$1.a(cnb.tx);
+         $$1.a(cnb.ty);
+         $$1.a(cnb.tz);
+         $$1.a(cnb.tA);
+         $$1.a(cnb.tB);
+         $$1.a(cnb.tC);
+         $$1.a(cnb.tD);
+         $$1.a(cnb.tE);
+         $$1.a(cnb.tF);
+         $$1.a(cnb.tG);
+         $$1.a(cnb.tH);
+         $$1.a(cnb.tI);
+         $$1.a(cnb.tK);
+         $$1.a(cnb.tL);
+         $$1.a(cnb.tM);
+         $$1.a(cnb.tN);
+         $$1.a(cnb.tO);
+         $$1.a(cnb.tP);
+         $$1.a(cnb.tQ);
+      }).d());
+      it.a($$0, m, cle.a(cle.f.b, 5).a(vf.c("itemGroup.op")).a(() -> new cmy(cnb.gE)).a().a(($$0x, $$1) -> {
+         if ($$0x.b()) {
+            $$1.a(cnb.gE);
+            $$1.a(cnb.iU);
+            $$1.a(cnb.iT);
+            $$1.a(cnb.uF);
+            $$1.a(cnb.om);
+            $$1.a(cnb.ol);
+            $$1.a(cnb.ja);
+            $$1.a(cnb.hA);
+            $$1.a(cnb.vq);
+
+            for (int $$2 = 15; $$2 >= 0; $$2--) {
+               $$1.a(dbd.a(new cmy(cnb.hB), $$2));
+            }
+
+            $$0x.c().a(ke.R).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> !$$0xxx.a(asq.a), cle.g.a));
+         }
+      }).d());
+      return it.a($$0, n, cle.a(cle.f.b, 6).a(vf.c("itemGroup.inventory")).a(() -> new cmy(cws.cv)).a("inventory.png").b().a().a(cle.h.b).c().d());
+   }
+
+   public static void a() {
+      Map<Pair<cle.f, Integer>, String> $$0 = new HashMap<>();
+
+      for (ahf<cle> $$1 : kd.ap.f()) {
+         cle $$2 = kd.ap.e($$1);
+         String $$3 = $$2.a().getString();
+         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
+         if ($$4 != null) {
+            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
+         }
       }
    }
 
-   private static float o(cmx $$0) {
-      return a($$0, cna.un) ? 1.6F : 3.15F;
+   public static cle b() {
+      return kd.ap.e(a);
    }
 
-   @Override
-   public void a(cmx $$0, cto $$1, bmk $$2, int $$3) {
-      int $$4 = this.b($$0) - $$3;
-      float $$5 = a($$4, $$0);
-      if ($$5 >= 1.0F && !d($$0) && a($$2, $$0)) {
-         a($$0, true);
-         ars $$6 = $$2 instanceof cfh ? ars.h : ars.f;
-         $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), arr.fL, $$6, 1.0F, 1.0F / ($$1.F_().i() * 0.5F + 1.0F) + 0.2F);
+   private static void a(cle.e $$0, ij<cow> $$1, cmt $$2, cle.g $$3) {
+      $$1.b().filter($$0x -> !$$0x.a(coz.a)).map($$1x -> coy.a(new cmy($$2), (cow)$$1x.a())).forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(cle.e $$0, ij<crj> $$1, Set<crk> $$2, cle.g $$3) {
+      $$1.b().map(ih::a).filter($$1x -> $$2.contains($$1x.e)).map($$0x -> clu.a(new crm($$0x, $$0x.a()))).forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void b(cle.e $$0, ij<crj> $$1, Set<crk> $$2, cle.g $$3) {
+      $$1.b()
+         .map(ih::a)
+         .filter($$1x -> $$2.contains($$1x.e))
+         .flatMap($$0x -> IntStream.rangeClosed($$0x.e(), $$0x.a()).mapToObj($$1x -> clu.a(new crm($$0x, $$1x))))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(cle.e $$0, ij<cmq> $$1, cmt $$2, asw<cmq> $$3, cle.g $$4) {
+      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cmr.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
+   }
+
+   private static void a(cle.e $$0, cle.g $$1) {
+      List<der> $$2 = der.c();
+      Set<cmy> $$3 = cmz.a();
+
+      for (der $$4 : $$2) {
+         cmy $$5 = new cmy(cnb.vN);
+         coi.a($$5, $$4.b());
+         $$3.add($$5);
+      }
+
+      $$0.a($$3, $$1);
+   }
+
+   private static void b(cle.e $$0, cle.g $$1) {
+      for (byte $$2 : cmc.a) {
+         cmy $$3 = new cmy(cnb.un);
+         cmc.a($$3, $$2);
+         $$0.a($$3, $$1);
       }
    }
 
-   private static boolean a(bmk $$0, cmx $$1) {
-      int $$2 = crk.a(crm.I, $$1);
-      int $$3 = $$2 == 0 ? 1 : 3;
-      boolean $$4 = $$0 instanceof cfh && ((cfh)$$0).fT().d;
-      cmx $$5 = $$0.g($$1);
-      cmx $$6 = $$5.p();
-
-      for (int $$7 = 0; $$7 < $$3; $$7++) {
-         if ($$7 > 0) {
-            $$5 = $$6.p();
-         }
-
-         if ($$5.b() && $$4) {
-            $$5 = new cmx(cna.os);
-            $$6 = $$5.p();
-         }
-
-         if (!a($$0, $$1, $$5, $$7 > 0, $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   private static void a(cle.e $$0, ij.c<cbq> $$1, Predicate<ih<cbq>> $$2, cle.g $$3) {
+      $$1.b().filter($$2).sorted(o).forEach($$2x -> {
+         cmy $$3x = new cmy(cnb.pW);
+         sn $$4 = $$3x.a("EntityTag");
+         cbp.a($$4, $$2x);
+         $$0.a($$3x, $$3);
+      });
    }
 
-   private static boolean a(bmk $$0, cmx $$1, cmx $$2, boolean $$3, boolean $$4) {
-      if ($$2.b()) {
+   public static List<cle> c() {
+      return f().filter(cle::i).toList();
+   }
+
+   public static List<cle> d() {
+      return f().toList();
+   }
+
+   private static Stream<cle> f() {
+      return kd.ap.s();
+   }
+
+   public static cle e() {
+      return kd.ap.e(g);
+   }
+
+   private static void a(cle.d $$0) {
+      f().filter($$0x -> $$0x.k() == cle.h.a).forEach($$1 -> $$1.a($$0));
+      f().filter($$0x -> $$0x.k() != cle.h.a).forEach($$1 -> $$1.a($$0));
+   }
+
+   public static boolean a(chs $$0, boolean $$1, ij.b $$2) {
+      if (p != null && !p.a($$0, $$1, $$2)) {
          return false;
       } else {
-         boolean $$5 = $$4 && $$2.d() instanceof ckl;
-         cmx $$6;
-         if (!$$5 && !$$4 && !$$3) {
-            $$6 = $$2.a(1);
-            if ($$2.b() && $$0 instanceof cfh) {
-               ((cfh)$$0).fS().g($$2);
-            }
-         } else {
-            $$6 = $$2.p();
-         }
-
-         b($$1, $$6);
+         p = new cle.d($$0, $$1, $$2);
+         a(p);
          return true;
       }
-   }
-
-   public static boolean d(cmx $$0) {
-      sn $$1 = $$0.v();
-      return $$1 != null && $$1.q("Charged");
-   }
-
-   public static void a(cmx $$0, boolean $$1) {
-      sn $$2 = $$0.w();
-      $$2.a("Charged", $$1);
-   }
-
-   private static void b(cmx $$0, cmx $$1) {
-      sn $$2 = $$0.w();
-      st $$3;
-      if ($$2.b("ChargedProjectiles", 9)) {
-         $$3 = $$2.c("ChargedProjectiles", 10);
-      } else {
-         $$3 = new st();
-      }
-
-      sn $$5 = new sn();
-      $$1.b($$5);
-      $$3.add($$5);
-      $$2.a("ChargedProjectiles", $$3);
-   }
-
-   private static List<cmx> p(cmx $$0) {
-      List<cmx> $$1 = Lists.newArrayList();
-      sn $$2 = $$0.v();
-      if ($$2 != null && $$2.b("ChargedProjectiles", 9)) {
-         st $$3 = $$2.c("ChargedProjectiles", 10);
-         if ($$3 != null) {
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               sn $$5 = $$3.a($$4);
-               $$1.add(cmx.a($$5));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static void q(cmx $$0) {
-      sn $$1 = $$0.v();
-      if ($$1 != null) {
-         st $$2 = $$1.c("ChargedProjectiles", 9);
-         $$2.clear();
-         $$1.a("ChargedProjectiles", $$2);
-      }
-   }
-
-   public static boolean a(cmx $$0, cms $$1) {
-      return p($$0).stream().anyMatch($$1x -> $$1x.a($$1));
-   }
-
-   private static void a(cto $$0, bmk $$1, bjz $$2, cmx $$3, cmx $$4, float $$5, boolean $$6, float $$7, float $$8, float $$9) {
-      if (!$$0.B) {
-         boolean $$10 = $$4.a(cna.un);
-         cfz $$11;
-         if ($$10) {
-            $$11 = new cfu($$0, $$4, $$1, $$1.dr(), $$1.dv() - 0.15F, $$1.dx(), true);
-         } else {
-            $$11 = a($$0, $$1, $$3, $$4);
-            if ($$6 || $$9 != 0.0F) {
-               ((cfn)$$11).d = cfn.a.c;
-            }
-         }
-
-         if ($$1 instanceof ccb $$13) {
-            $$13.a($$13.q(), $$3, $$11, $$9);
-         } else {
-            els $$14 = $$1.i(1.0F);
-            Quaternionf $$15 = new Quaternionf().setAngleAxis((double)($$9 * (float) (Math.PI / 180.0)), $$14.c, $$14.d, $$14.e);
-            els $$16 = $$1.f(1.0F);
-            Vector3f $$17 = $$16.j().rotate($$15);
-            $$11.c((double)$$17.x(), (double)$$17.y(), (double)$$17.z(), $$7, $$8);
-         }
-
-         $$3.a($$10 ? 3 : 1, $$1, $$1x -> $$1x.d($$2));
-         $$0.b($$11);
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.fR, ars.h, 1.0F, $$5);
-      }
-   }
-
-   private static cfn a(cto $$0, bmk $$1, cmx $$2, cmx $$3) {
-      ckl $$4 = (ckl)($$3.d() instanceof ckl ? $$3.d() : cna.os);
-      cfn $$5 = $$4.a($$0, $$3, $$1);
-      if ($$1 instanceof cfh) {
-         $$5.a(true);
-      }
-
-      $$5.b(arr.fK);
-      $$5.q(true);
-      int $$6 = crk.a(crm.K, $$2);
-      if ($$6 > 0) {
-         $$5.a((byte)$$6);
-      }
-
-      return $$5;
-   }
-
-   public static void a(cto $$0, bmk $$1, bjz $$2, cmx $$3, float $$4, float $$5) {
-      List<cmx> $$6 = p($$3);
-      float[] $$7 = a($$1.eg());
-
-      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
-         cmx $$9 = $$6.get($$8);
-         boolean $$10 = $$1 instanceof cfh && ((cfh)$$1).fT().d;
-         if (!$$9.b()) {
-            if ($$8 == 0) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 0.0F);
-            } else if ($$8 == 1) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, -10.0F);
-            } else if ($$8 == 2) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 10.0F);
-            }
-         }
-      }
-
-      a($$0, $$1, $$3);
-   }
-
-   private static float[] a(auu $$0) {
-      boolean $$1 = $$0.h();
-      return new float[]{1.0F, a($$1, $$0), a(!$$1, $$0)};
-   }
-
-   private static float a(boolean $$0, auu $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
-   }
-
-   private static void a(cto $$0, bmk $$1, cmx $$2) {
-      if ($$1 instanceof ane $$3) {
-         if (!$$0.B) {
-            am.G.a($$3, $$2);
-         }
-
-         $$3.b(asb.c.b($$2.d()));
-      }
-
-      q($$2);
-   }
-
-   @Override
-   public void a(cto $$0, bmk $$1, cmx $$2, int $$3) {
-      if (!$$0.B) {
-         int $$4 = crk.a(crm.J, $$2);
-         arq $$5 = this.a($$4);
-         arq $$6 = $$4 == 0 ? arr.fM : null;
-         float $$7 = (float)($$2.r() - $$3) / (float)k($$2);
-         if ($$7 < 0.2F) {
-            this.g = false;
-            this.h = false;
-         }
-
-         if ($$7 >= 0.2F && !this.g) {
-            this.g = true;
-            $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), $$5, ars.h, 0.5F, 1.0F);
-         }
-
-         if ($$7 >= 0.5F && $$6 != null && !this.h) {
-            this.h = true;
-            $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), $$6, ars.h, 0.5F, 1.0F);
-         }
-      }
-   }
-
-   @Override
-   public int b(cmx $$0) {
-      return k($$0) + 3;
-   }
-
-   public static int k(cmx $$0) {
-      int $$1 = crk.a(crm.J, $$0);
-      return $$1 == 0 ? 25 : 25 - 5 * $$1;
-   }
-
-   @Override
-   public cor c(cmx $$0) {
-      return cor.g;
-   }
-
-   private arq a(int $$0) {
-      switch ($$0) {
-         case 1:
-            return arr.fO;
-         case 2:
-            return arr.fP;
-         case 3:
-            return arr.fQ;
-         default:
-            return arr.fN;
-      }
-   }
-
-   private static float a(int $$0, cmx $$1) {
-      float $$2 = (float)$$0 / (float)k($$1);
-      if ($$2 > 1.0F) {
-         $$2 = 1.0F;
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      List<cmx> $$4 = p($$0);
-      if (d($$0) && !$$4.isEmpty()) {
-         cmx $$5 = $$4.get(0);
-         $$2.add(vf.c("item.minecraft.crossbow.projectile").b(ve.u).b($$5.J()));
-         if ($$3.a() && $$5.a(cna.un)) {
-            List<vf> $$6 = Lists.newArrayList();
-            cna.un.a($$5, $$1, $$6, $$3);
-            if (!$$6.isEmpty()) {
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, vf.b("  ").b($$6.get($$7)).a(n.h));
-               }
-
-               $$2.addAll($$6);
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean l(cmx $$0) {
-      return $$0.a(this);
-   }
-
-   @Override
-   public int d() {
-      return 8;
    }
 }

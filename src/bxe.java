@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
-
 public class bxe {
-   @Nullable
-   public static els a(bmt $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = bxd.a($$0, $$1);
-      return bxg.a($$0, () -> {
-         hx $$9 = bxg.a($$0.eg(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            hx $$10 = bxf.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = bxg.a($$10, $$0.eg().a($$6 - $$7 + 1) + $$7, $$0.dM().al(), $$1xx -> bxd.c($$0, $$1xx));
-               return !bxd.a($$0, $$10) && !bxd.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+   public static boolean a(bmn $$0) {
+      return $$0.N() instanceof bvu;
+   }
+
+   public static boolean a(bmu $$0, int $$1) {
+      return $$0.fQ() && $$0.fN().a($$0.dk(), (double)($$0.fO() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(hx $$0, bmu $$1) {
+      return $$0.v() < $$1.dM().J_() || $$0.v() > $$1.dM().al();
+   }
+
+   public static boolean a(boolean $$0, bmu $$1, hx $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(bvv $$0, hx $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bmu $$0, hx $$1) {
+      return $$0.dM().b_($$1).a(asm.a);
+   }
+
+   public static boolean b(bmu $$0, hx $$1) {
+      return $$0.a(efl.a($$0.dM(), $$1.j())) != 0.0F;
+   }
+
+   public static boolean c(bmu $$0, hx $$1) {
+      return $$0.dM().a_($$1).e();
    }
 }

@@ -1,22 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
 
-public class fie implements fig {
-   private static final vf a = vf.c("spectatorMenu.root.prompt");
-   private final List<fih> b = Lists.newArrayList();
+public class fie implements fii {
+   private final GameProfile a;
+   private final Supplier<gfm> b;
+   private final vf c;
 
-   public fie() {
-      this.b.add(new fik());
-      this.b.add(new fil());
+   public fie(GameProfile $$0) {
+      this.a = $$0;
+      this.b = evi.O().al().a($$0);
+      this.c = vf.b($$0.getName());
    }
 
    @Override
-   public List<fih> a() {
-      return this.b;
+   public void a(fig $$0) {
+      evi.O().J().b(new afd(this.a.getId()));
    }
 
    @Override
-   public vf b() {
-      return a;
+   public vf aO_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ewu $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      eyf.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aP_() {
+      return true;
    }
 }

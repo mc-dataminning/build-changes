@@ -1,8 +1,8 @@
 public class aey implements xf<adj> {
    private final int a;
-   private final cmx b;
+   private final cmy b;
 
-   public aey(int $$0, cmx $$1) {
+   public aey(int $$0, cmy $$1) {
       this.a = $$0;
       this.b = $$1.p();
    }
@@ -26,7 +26,7 @@ public class aey implements xf<adj> {
       return this.a;
    }
 
-   public cmx d() {
+   public cmy d() {
       return this.b;
    }
 }

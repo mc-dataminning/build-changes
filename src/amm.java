@@ -2,14 +2,14 @@ public class amm {
    private static final int b = 33;
    private static final int c = 32;
    private static final int d = 31;
-   public static final int a = 33 + dlh.b();
+   public static final int a = 33 + dli.b();
 
-   public static dlh a(int $$0) {
-      return $$0 < 33 ? dlh.n : dlh.a($$0 - 33);
+   public static dli a(int $$0) {
+      return $$0 < 33 ? dli.n : dli.a($$0 - 33);
    }
 
-   public static int a(dlh $$0) {
-      return 33 + dlh.a($$0);
+   public static int a(dli $$0) {
+      return 33 + dli.a($$0);
    }
 
    public static amw b(int $$0) {

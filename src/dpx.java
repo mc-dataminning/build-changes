@@ -1,22 +1,119 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public interface dpx<P extends dpw> {
-   dpx<dqc> a = a("matching_blocks", dqc.a);
-   dpx<dqb> b = a("matching_block_tag", dqb.e);
-   dpx<dqd> c = a("matching_fluids", dqd.a);
-   dpx<dpz> d = a("has_sturdy_face", dpz.a);
-   dpx<dqg> e = a("solid", dqg.a);
-   dpx<dqf> f = a("replaceable", dqf.a);
-   dpx<dqj> g = a("would_survive", dqj.a);
-   dpx<dqa> h = a("inside_world_bounds", dqa.a);
-   dpx<dpv> i = a("any_of", dpv.a);
-   dpx<dpu> j = a("all_of", dpu.a);
-   dpx<dqe> k = a("not", dqe.a);
-   dpx<dqi> l = a("true", dqi.e);
+public interface dpx extends BiPredicate<cuk, hx> {
+   Codec<dpx> b = kd.O.q().dispatch(dpx::a, dpy::codec);
+   dpx c = a(cws.a);
+   dpx d = a(cws.a, cws.G);
 
-   Codec<P> codec();
+   dpy<?> a();
 
-   private static <P extends dpw> dpx<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.O, $$0, () -> $$1);
+   static dpx a(List<dpx> $$0) {
+      return new dpv($$0);
+   }
+
+   static dpx a(dpx... $$0) {
+      return a(List.of($$0));
+   }
+
+   static dpx a(dpx $$0, dpx $$1) {
+      return a(List.of($$0, $$1));
+   }
+
+   static dpx b(List<dpx> $$0) {
+      return new dpw($$0);
+   }
+
+   static dpx b(dpx... $$0) {
+      return b(List.of($$0));
+   }
+
+   static dpx b(dpx $$0, dpx $$1) {
+      return b(List.of($$0, $$1));
+   }
+
+   static dpx a(jb $$0, List<cwq> $$1) {
+      return new dqd($$0, il.a(cwq::r, $$1));
+   }
+
+   static dpx c(List<cwq> $$0) {
+      return a(jb.g, $$0);
+   }
+
+   static dpx a(jb $$0, cwq... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static dpx a(cwq... $$0) {
+      return a(jb.g, $$0);
+   }
+
+   static dpx a(jb $$0, asw<cwq> $$1) {
+      return new dqc($$0, $$1);
+   }
+
+   static dpx a(asw<cwq> $$0) {
+      return a(jb.g, $$0);
+   }
+
+   static dpx b(jb $$0, List<eeq> $$1) {
+      return new dqe($$0, il.a(eeq::k, $$1));
+   }
+
+   static dpx a(jb $$0, eeq... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static dpx a(eeq... $$0) {
+      return a(jb.g, $$0);
+   }
+
+   static dpx a(dpx $$0) {
+      return new dqf($$0);
+   }
+
+   static dpx a(jb $$0) {
+      return new dqg($$0);
+   }
+
+   static dpx b() {
+      return a(jb.g);
+   }
+
+   static dpx a(djh $$0, jb $$1) {
+      return new dqk($$1, $$0);
+   }
+
+   static dpx a(jb $$0, ic $$1) {
+      return new dqa($$0, $$1);
+   }
+
+   static dpx a(ic $$0) {
+      return a(jb.g, $$0);
+   }
+
+   static dpx b(jb $$0) {
+      return new dqh($$0);
+   }
+
+   static dpx c() {
+      return b(jb.g);
+   }
+
+   static dpx d() {
+      return c(jb.g);
+   }
+
+   static dpx c(jb $$0) {
+      return a($$0, ees.a);
+   }
+
+   static dpx d(jb $$0) {
+      return new dqb($$0);
+   }
+
+   static dpx e() {
+      return dqj.a;
    }
 }

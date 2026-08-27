@@ -1,19 +1,31 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cte extends cth {
-   private final blu a;
+public enum cte implements csv {
+   a;
 
-   public cte(blu $$0) {
-      this.a = $$0;
+   @Nullable
+   @Override
+   public dgv c_(hx $$0) {
+      return null;
    }
 
    @Override
-   public Optional<Float> a(ctg $$0, csu $$1, hx $$2, djg $$3, eeq $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public djh a_(hx $$0) {
+      return cws.a.o();
    }
 
    @Override
-   public boolean a(ctg $$0, csu $$1, hx $$2, djg $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public eer b_(hx $$0) {
+      return ees.a.g();
+   }
+
+   @Override
+   public int J_() {
+      return 0;
+   }
+
+   @Override
+   public int K_() {
+      return 0;
    }
 }

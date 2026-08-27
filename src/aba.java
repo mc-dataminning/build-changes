@@ -1,7 +1,7 @@
 public class aba implements xf<za> {
    private final int a;
 
-   public aba(bkp $$0) {
+   public aba(bkq $$0) {
       this($$0.b());
    }
 

@@ -11,7 +11,7 @@ public abstract class js implements jv {
 
    public js(Vector3f $$0, float $$1) {
       this.g = $$0;
-      this.h = aun.a($$1, 0.01F, 4.0F);
+      this.h = auo.a($$1, 0.01F, 4.0F);
    }
 
    public static Vector3f a(StringReader $$0) throws CommandSyntaxException {

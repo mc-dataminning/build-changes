@@ -1,69 +1,80 @@
-public class cjs extends cia {
-   private static final int k = 27;
-   private final bjt l;
+public class cjs extends cjw {
+   private final cir a;
+   private final cfi b;
+   private int c;
 
-   public cjs(int $$0, cfg $$1) {
-      this($$0, $$1, new bki(27));
-   }
-
-   public cjs(int $$0, cfg $$1, bjt $$2) {
-      super(cjh.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cjt($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cjv($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cjv($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   public cjs(cfi $$0, cir $$1, bju $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(cfh $$0) {
-      return this.l.a($$0);
+   public boolean a(cmy $$0) {
+      return false;
    }
 
    @Override
-   public cmx a(cfh $$0, int $$1) {
-      cmx $$2 = cmx.f;
-      cjv $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmx $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cmx.f;
+   public cmy a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().L());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cmy $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.c += $$0;
+   }
+
+   @Override
+   protected void b_(cmy $$0) {
+      if (this.c > 0) {
+         $$0.a(this.b.dM(), this.b, this.c);
+      }
+
+      if (this.d instanceof cjq $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.c = 0;
+   }
+
+   @Override
+   public void a(cfi $$0, cmy $$1) {
+      this.b_($$1);
+      iq<cmy> $$2 = $$0.dM().r().c(cqh.a, this.a, $$0.dM());
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         cmy $$4 = this.a.a($$3);
+         cmy $$5 = $$2.get($$3);
+         if (!$$4.b()) {
+            this.a.a($$3, 1);
+            $$4 = this.a.a($$3);
+         }
+
+         if (!$$5.b()) {
+            if ($$4.b()) {
+               this.a.a($$3, $$5);
+            } else if (cmy.c($$4, $$5)) {
+               $$5.g($$4.L());
+               this.a.a($$3, $$5);
+            } else if (!this.b.fS().e($$5)) {
+               this.b.a($$5, false);
             }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cmx.f;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cmx.f);
-         } else {
-            $$3.b();
          }
       }
-
-      return $$2;
    }
 
    @Override
-   public void b(cfh $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public boolean f() {
+      return true;
    }
 }

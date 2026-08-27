@@ -1,735 +1,348 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import java.util.HashMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dot implements doi.a, doi.b {
-   private final dox a;
-   final int b;
-   final int c;
-   final int d;
-   private final int e;
-   private final int f;
-   final int g;
-   final int h;
-   final List<dot.i> i;
-   final List<dot.e> j;
-   private final Map<doi, doi> k = new HashMap<>();
-   private final Long2IntMap l = new Long2IntOpenHashMap();
-   private final dob m;
-   private final doi n;
-   private final dot.c o;
-   private final dpr p;
-   private final dot.g q;
-   private final dot.g r;
-   private final doj.c s;
-   private long t = csv.a;
-   private dpr.a u = new dpr.a(1.0, 0.0);
-   final int v;
-   final int w;
-   final int x;
-   boolean y;
-   boolean z;
-   private int A;
-   int B;
-   private int C;
-   int D;
-   int E;
-   int F;
-   long G;
-   long H;
-   int I;
-   private final doi.a J = new doi.a() {
-      @Override
-      public doi.b a(int $$0) {
-         dot.this.B = ($$0 + dot.this.d) * dot.this.x;
-         dot.this.G++;
-         dot.this.E = 0;
-         dot.this.I = $$0;
-         return dot.this;
-      }
+public final class dot extends dle {
+   public static final Codec<dot> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cus.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dov.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(dot::new))
+   );
+   private static final djh d = cws.a.o();
+   private final ih<dov> e;
+   private final Supplier<doc.a> f;
 
-      @Override
-      public void a(double[] $$0, doi $$1) {
-         for (int $$2 = 0; $$2 < dot.this.c + 1; $$2++) {
-            dot.this.B = ($$2 + dot.this.d) * dot.this.x;
-            dot.this.G++;
-            dot.this.E = 0;
-            dot.this.I = $$2;
-            $$0[$$2] = $$1.a(dot.this);
-         }
-      }
-   };
-
-   public static dot a(dlc $$0, dpd $$1, doj.c $$2, dou $$3, dob.a $$4, dpr $$5) {
-      dox $$6 = $$3.f().a($$0);
-      csv $$7 = $$0.f();
-      int $$8 = 16 / $$6.b();
-      return new dot($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
+   public dot(cus $$0, ih<dov> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   public dot(int $$0, dpd $$1, int $$2, int $$3, dox $$4, doj.c $$5, dou $$6, dob.a $$7, dpr $$8) {
-      this.a = $$4;
-      this.w = $$4.b();
-      this.x = $$4.a();
-      this.b = $$0;
-      this.c = aun.a($$4.d(), this.x);
-      this.d = aun.a($$4.c(), this.x);
-      this.e = Math.floorDiv($$2, this.w);
-      this.f = Math.floorDiv($$3, this.w);
-      this.i = Lists.newArrayList();
-      this.j = Lists.newArrayList();
-      this.g = is.a($$2);
-      this.h = is.a($$3);
-      this.v = is.a($$0 * this.w);
-      this.p = $$8;
-      this.s = $$5;
-      this.q = new dot.g(new dot.a(), false);
-      this.r = new dot.g(new dot.b(), false);
-
-      for (int $$9 = 0; $$9 <= this.v; $$9++) {
-         int $$10 = this.g + $$9;
-         int $$11 = is.c($$10);
-
-         for (int $$12 = 0; $$12 <= this.v; $$12++) {
-            int $$13 = this.h + $$12;
-            int $$14 = is.c($$13);
-            dpr.a $$15 = $$8.a($$11, $$14);
-            this.q.f[$$9][$$12] = $$15.a();
-            this.r.f[$$9][$$12] = $$15.b();
-         }
-      }
-
-      dov $$16 = $$1.a();
-      dov $$17 = $$16.a(this::a);
-      if (!$$6.b()) {
-         this.m = dob.a($$7);
-      } else {
-         int $$18 = iz.a($$2);
-         int $$19 = iz.a($$3);
-         this.m = dob.a(this, new csv($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
-      }
-
-      Builder<dot.c> $$20 = ImmutableList.builder();
-      doi $$21 = doj.e(doj.a($$17.l(), doj.b.a)).a(this::a);
-      $$20.add((dot.c)$$1x -> this.m.a($$1x, $$21.a($$1x)));
-      if ($$6.c()) {
-         $$20.add(doz.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
-      }
-
-      this.o = new dxt($$20.build());
-      this.n = $$17.k();
-   }
-
-   protected cuw.f a(dov $$0, List<cuw.d> $$1) {
-      return new cuw.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
-   }
-
-   @Nullable
-   protected djg e() {
-      return this.o.calculate(this);
+   private static doc.a a(dov $$0) {
+      doc.b $$1 = new doc.b(-54, cws.H.o());
+      int $$2 = $$0.l();
+      doc.b $$3 = new doc.b($$2, $$0.h());
+      doc.b $$4 = new doc.b(dmq.e * 2, cws.a.o());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
    }
 
    @Override
-   public int a() {
-      return this.A + this.D;
+   public CompletableFuture<dld> a(Executor $$0, dpe $$1, dps $$2, cui $$3, dld $$4) {
+      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
+         this.a($$2, $$1, $$3, $$4);
+         return $$4;
+      }), ac.f());
+   }
+
+   private void a(dps $$0, dpe $$1, cui $$2, dld $$3) {
+      dou $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      cur $$5 = doe.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
+   }
+
+   private dou a(dld $$0, cui $$1, dps $$2, dpe $$3) {
+      return dou.a($$0, $$3, dod.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
    }
 
    @Override
-   public int b() {
-      return this.B + this.E;
+   protected Codec<? extends dle> a() {
+      return c;
+   }
+
+   public ih<dov> g() {
+      return this.e;
+   }
+
+   public boolean a(ahf<dov> $$0) {
+      return this.e.a($$0);
    }
 
    @Override
-   public int c() {
-      return this.C + this.F;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = is.c(is.a($$0));
-      int $$3 = is.c(is.a($$1));
-      return this.l.computeIfAbsent(amt.a($$2, $$3), this::a);
-   }
-
-   private int a(long $$0) {
-      int $$1 = amt.a($$0);
-      int $$2 = amt.b($$0);
-      int $$3 = this.a.c();
-
-      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
-         if (this.n.a(new doi.e($$1, $$4, $$2)) > 0.390625) {
-            return $$4;
-         }
-      }
-
-      return Integer.MAX_VALUE;
+   public int a(int $$0, int $$1, doq.a $$2, ctr $$3, dpe $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.J_());
    }
 
    @Override
-   public dpr d() {
-      return this.p;
-   }
-
-   private void a(boolean $$0, int $$1) {
-      this.A = $$1 * this.w;
-      this.D = 0;
-
-      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
-         int $$3 = this.f + $$2;
-         this.C = $$3 * this.w;
-         this.F = 0;
-         this.H++;
-
-         for (dot.i $$4 : this.i) {
-            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
-            $$4.a($$5, this.J);
-         }
-      }
-
-      this.H++;
-   }
-
-   public void f() {
-      if (this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = true;
-         this.G = 0L;
-         this.a(true, this.e);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a(false, this.e + $$0 + 1);
-      this.A = (this.e + $$0) * this.w;
-   }
-
-   public dot c(int $$0) {
-      int $$1 = Math.floorMod($$0, this.w);
-      int $$2 = Math.floorDiv($$0, this.w);
-      int $$3 = Math.floorMod($$2, this.w);
-      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
-      this.D = $$3;
-      this.E = $$4;
-      this.F = $$1;
-      this.I = $$0;
-      return this;
+   public cub a(int $$0, int $$1, ctr $$2, dpe $$3) {
+      MutableObject<cub> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (cub)$$4.getValue();
    }
 
    @Override
-   public void a(double[] $$0, doi $$1) {
-      this.I = 0;
-
-      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
-         this.E = $$2;
-
-         for (int $$3 = 0; $$3 < this.w; $$3++) {
-            this.D = $$3;
-
-            for (int $$4 = 0; $$4 < this.w; $$4++) {
-               this.F = $$4;
-               $$0[this.I++] = $$1.a(this);
-            }
-         }
-      }
+   public void a(List<String> $$0, dpe $$1, hx $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      dow $$4 = $$1.a();
+      doj.e $$5 = new doj.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)dox.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
+      );
    }
 
-   public void b(int $$0, int $$1) {
-      this.i.forEach($$2x -> $$2x.b($$0, $$1));
-      this.z = true;
-      this.B = ($$0 + this.d) * this.x;
-      this.C = (this.f + $$1) * this.w;
-      this.H++;
-
-      for (dot.e $$2 : this.j) {
-         $$2.e.a($$2.f, this);
-      }
-
-      this.H++;
-      this.z = false;
-   }
-
-   public void a(int $$0, double $$1) {
-      this.E = $$0 - this.B;
-      this.i.forEach($$1x -> $$1x.a($$1));
-   }
-
-   public void b(int $$0, double $$1) {
-      this.D = $$0 - this.A;
-      this.i.forEach($$1x -> $$1x.b($$1));
-   }
-
-   public void c(int $$0, double $$1) {
-      this.F = $$0 - this.C;
-      this.G++;
-      this.i.forEach($$1x -> $$1x.c($$1));
-   }
-
-   public void g() {
-      if (!this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
+   private OptionalInt a(ctr $$0, dpe $$1, int $$2, int $$3, @Nullable MutableObject<cub> $$4, @Nullable Predicate<djh> $$5) {
+      doy $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = auo.a($$8, $$7);
+      int $$10 = auo.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
       } else {
-         this.y = false;
-      }
-   }
-
-   public void h() {
-      this.i.forEach(dot.i::l);
-   }
-
-   public dob i() {
-      return this.m;
-   }
-
-   protected int j() {
-      return this.w;
-   }
-
-   protected int k() {
-      return this.x;
-   }
-
-   dpr.a c(int $$0, int $$1) {
-      long $$2 = csv.c($$0, $$1);
-      if (this.t == $$2) {
-         return this.u;
-      } else {
-         this.t = $$2;
-         dpr.a $$3 = this.p.a($$0, $$1);
-         this.u = $$3;
-         return $$3;
-      }
-   }
-
-   protected doi a(doi $$0) {
-      return this.k.computeIfAbsent($$0, this::b);
-   }
-
-   private doi b(doi $$0) {
-      if ($$0 instanceof doj.l $$1) {
-         return (doi)(switch ($$1.j()) {
-            case a -> new dot.i($$1.k());
-            case b -> new dot.g($$1.k(), true);
-            case c -> new dot.d($$1.k());
-            case d -> new dot.f($$1.k());
-            case e -> new dot.e($$1.k());
-         });
-      } else {
-         if (this.p != dpr.a()) {
-            if ($$0 == doj.d.a) {
-               return this.q;
-            }
-
-            if ($$0 == doj.f.a) {
-               return this.r;
-            }
-         }
-
-         if ($$0 == doj.b.a) {
-            return this.s;
+         djh[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
          } else {
-            return $$0 instanceof doj.j $$2 ? $$2.j().a() : $$0;
+            $$11 = new djh[$$6.d()];
+            $$4.setValue(new cub($$8, $$11));
          }
-      }
-   }
 
-   class a implements dot.h {
-      @Override
-      public doi k() {
-         return doj.d.a;
-      }
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         dou $$22 = new dou(1, $$1, $$18, $$19, $$6, dok.b.a, this.e.a(), this.f.get(), dps.a());
+         $$22.f();
+         $$22.b(0);
 
-      @Override
-      public doi a(doi.f $$0) {
-         return this.k().a($$0);
-      }
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
 
-      @Override
-      public double a(doi.b $$0) {
-         return dot.this.c($$0.a(), $$0.c()).a();
-      }
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               djh $$27 = $$22.e();
+               djh $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
 
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return 0.0;
-      }
-
-      @Override
-      public double b() {
-         return 1.0;
-      }
-
-      @Override
-      public auh<? extends doi> c() {
-         return doj.d.e;
-      }
-   }
-
-   class b implements dot.h {
-      @Override
-      public doi k() {
-         return doj.f.a;
-      }
-
-      @Override
-      public doi a(doi.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(doi.b $$0) {
-         return dot.this.c($$0.a(), $$0.c()).b();
-      }
-
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return Double.NEGATIVE_INFINITY;
-      }
-
-      @Override
-      public double b() {
-         return Double.POSITIVE_INFINITY;
-      }
-
-      @Override
-      public auh<? extends doi> c() {
-         return doj.f.e;
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
-      @Nullable
-      djg calculate(doi.b var1);
-   }
-
-   static class d implements doj.m, dot.h {
-      private final doi a;
-      private long e = csv.a;
-      private double f;
-
-      d(doi $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public double a(doi.b $$0) {
-         int $$1 = $$0.a();
-         int $$2 = $$0.c();
-         long $$3 = csv.c($$1, $$2);
-         if (this.e == $$3) {
-            return this.f;
-         } else {
-            this.e = $$3;
-            double $$4 = this.a.a($$0);
-            this.f = $$4;
-            return $$4;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public doi k() {
-         return this.a;
-      }
-
-      @Override
-      public doj.l.a j() {
-         return doj.l.a.c;
-      }
-   }
-
-   class e implements doj.m, dot.h {
-      final doi e;
-      final double[] f;
-
-      e(doi $$0) {
-         this.e = $$0;
-         this.f = new double[dot.this.w * dot.this.w * dot.this.x];
-         dot.this.j.add(this);
-      }
-
-      @Override
-      public double a(doi.b $$0) {
-         if ($$0 != dot.this) {
-            return this.e.a($$0);
-         } else if (!dot.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            int $$1 = dot.this.D;
-            int $$2 = dot.this.E;
-            int $$3 = dot.this.F;
-            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < dot.this.w && $$2 < dot.this.x && $$3 < dot.this.w
-               ? this.f[((dot.this.x - 1 - $$2) * dot.this.w + $$1) * dot.this.w + $$3]
-               : this.e.a($$0);
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public doi k() {
-         return this.e;
-      }
-
-      @Override
-      public doj.l.a j() {
-         return doj.l.a.e;
-      }
-   }
-
-   class f implements doj.m, dot.h {
-      private final doi e;
-      private long f;
-      private long g;
-      private double h;
-      @Nullable
-      private double[] i;
-
-      f(doi $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public double a(doi.b $$0) {
-         if ($$0 != dot.this) {
-            return this.e.a($$0);
-         } else if (this.i != null && this.g == dot.this.H) {
-            return this.i[dot.this.I];
-         } else if (this.f == dot.this.G) {
-            return this.h;
-         } else {
-            this.f = dot.this.G;
-            double $$1 = this.e.a($$0);
-            this.h = $$1;
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         if (this.i != null && this.g == dot.this.H) {
-            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
-         } else {
-            this.k().a($$0, $$1);
-            if (this.i != null && this.i.length == $$0.length) {
-               System.arraycopy($$0, 0, this.i, 0, $$0.length);
-            } else {
-               this.i = (double[])$$0.clone();
-            }
-
-            this.g = dot.this.H;
-         }
-      }
-
-      @Override
-      public doi k() {
-         return this.e;
-      }
-
-      @Override
-      public doj.l.a j() {
-         return doj.l.a.d;
-      }
-   }
-
-   class g implements doj.m, dot.h {
-      private final doi e;
-      final double[][] f;
-
-      g(doi $$0, boolean $$1) {
-         this.e = $$0;
-         this.f = new double[dot.this.v + 1][dot.this.v + 1];
-         if ($$1) {
-            for (int $$2 = 0; $$2 <= dot.this.v; $$2++) {
-               int $$3 = dot.this.g + $$2;
-               int $$4 = is.c($$3);
-
-               for (int $$5 = 0; $$5 <= dot.this.v; $$5++) {
-                  int $$6 = dot.this.h + $$5;
-                  int $$7 = is.c($$6);
-                  this.f[$$2][$$5] = $$0.a(new doi.e($$4, 0, $$7));
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
                }
             }
          }
-      }
 
-      @Override
-      public double a(doi.b $$0) {
-         int $$1 = is.a($$0.a());
-         int $$2 = is.a($$0.c());
-         int $$3 = $$1 - dot.this.g;
-         int $$4 = $$2 - dot.this.h;
-         int $$5 = this.f.length;
-         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
-      }
-
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public doi k() {
-         return this.e;
-      }
-
-      @Override
-      public doj.l.a j() {
-         return doj.l.a.b;
+         $$22.g();
+         return OptionalInt.empty();
       }
    }
 
-   interface h extends doi {
-      doi k();
-
-      @Override
-      default double a() {
-         return this.k().a();
-      }
-
-      @Override
-      default double b() {
-         return this.k().b();
+   @Override
+   public void a(ank $$0, cui $$1, dpe $$2, dld $$3) {
+      if (!aa.a($$3.f())) {
+         dpn $$4 = new dpn(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.G_(), $$0.I_().d(ke.at), dps.a($$0));
       }
    }
 
-   public class i implements doj.m, dot.h {
-      double[][] e;
-      double[][] f;
-      private final doi g;
-      private double h;
-      private double i;
-      private double j;
-      private double k;
-      private double l;
-      private double m;
-      private double n;
-      private double o;
-      private double p;
-      private double q;
-      private double r;
-      private double s;
-      private double t;
-      private double u;
-      private double v;
+   @VisibleForTesting
+   public void a(dld $$0, dpn $$1, dpe $$2, cui $$3, cuq $$4, it<cuo> $$5, dps $$6) {
+      dou $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      dov $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
 
-      i(doi $$1) {
-         this.g = $$1;
-         this.e = this.a(dot.this.c, dot.this.b);
-         this.f = this.a(dot.this.c, dot.this.b);
-         dot.this.i.add(this);
-      }
+   @Override
+   public void a(ank $$0, long $$1, dpe $$2, cuq $$3, cui $$4, dld $$5, dom.a $$6) {
+      cuq $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      dpp $$8 = new dpp(new dor(dpf.a()));
+      int $$9 = 8;
+      csw $$10 = $$5.f();
+      dou $$11 = $$5.a($$3x -> this.a($$3x, $$4, dps.a($$0), $$2));
+      doc $$12 = $$11.i();
+      dqq $$13 = new dqq(this, $$0.I_(), $$5.z(), $$11, $$2, this.e.a().j());
+      dlc $$14 = ((dly)$$5).b($$6);
 
-      private double[][] a(int $$0, int $$1) {
-         int $$2 = $$1 + 1;
-         int $$3 = $$0 + 1;
-         double[][] $$4 = new double[$$2][$$3];
+      for (int $$15 = -8; $$15 <= 8; $$15++) {
+         for (int $$16 = -8; $$16 <= 8; $$16++) {
+            csw $$17 = new csw($$10.e + $$15, $$10.f + $$16);
+            dld $$18 = $$0.a($$17.e, $$17.f);
+            cup $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(is.a($$17.d()), 0, is.a($$17.e()), $$2.b())));
+            Iterable<ih<dqt<?>>> $$20 = $$19.a($$6);
+            int $$21 = 0;
 
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            $$4[$$5] = new double[$$3];
-         }
+            for (ih<dqt<?>> $$22 : $$20) {
+               dqt<?> $$23 = $$22.a();
+               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
+               if ($$23.a($$8)) {
+                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
+               }
 
-         return $$4;
-      }
-
-      void b(int $$0, int $$1) {
-         this.h = this.e[$$1][$$0];
-         this.i = this.e[$$1 + 1][$$0];
-         this.j = this.f[$$1][$$0];
-         this.k = this.f[$$1 + 1][$$0];
-         this.l = this.e[$$1][$$0 + 1];
-         this.m = this.e[$$1 + 1][$$0 + 1];
-         this.n = this.f[$$1][$$0 + 1];
-         this.o = this.f[$$1 + 1][$$0 + 1];
-      }
-
-      void a(double $$0) {
-         this.p = aun.d($$0, this.h, this.l);
-         this.q = aun.d($$0, this.j, this.n);
-         this.r = aun.d($$0, this.i, this.m);
-         this.s = aun.d($$0, this.k, this.o);
-      }
-
-      void b(double $$0) {
-         this.t = aun.d($$0, this.p, this.q);
-         this.u = aun.d($$0, this.r, this.s);
-      }
-
-      void c(double $$0) {
-         this.v = aun.d($$0, this.t, this.u);
-      }
-
-      @Override
-      public double a(doi.b $$0) {
-         if ($$0 != dot.this) {
-            return this.g.a($$0);
-         } else if (!dot.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            return dot.this.z
-               ? aun.a(
-                  (double)dot.this.D / (double)dot.this.w,
-                  (double)dot.this.E / (double)dot.this.x,
-                  (double)dot.this.F / (double)dot.this.w,
-                  this.h,
-                  this.j,
-                  this.l,
-                  this.n,
-                  this.i,
-                  this.k,
-                  this.m,
-                  this.o
-               )
-               : this.v;
+               $$21++;
+            }
          }
       }
+   }
 
-      @Override
-      public void a(double[] $$0, doi.a $$1) {
-         if (dot.this.z) {
-            $$1.a($$0, this);
-         } else {
-            this.k().a($$0, $$1);
+   @Override
+   public CompletableFuture<dld> a(Executor $$0, dps $$1, dpe $$2, cui $$3, dld $$4) {
+      doy $$5 = this.e.a().f().a($$4.z());
+      int $$6 = $$5.c();
+      int $$7 = auo.a($$6, $$5.a());
+      int $$8 = auo.a($$5.d(), $$5.a());
+      if ($$8 <= 0) {
+         return CompletableFuture.completedFuture($$4);
+      } else {
+         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
+         int $$10 = $$4.e($$6);
+         Set<dlp> $$11 = Sets.newHashSet();
+
+         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
+            dlp $$13 = $$4.b($$12);
+            $$13.a();
+            $$11.add($$13);
          }
+
+         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
+            for (dlp $$3x : $$11) {
+               $$3x.b();
+            }
+         }, $$0);
+      }
+   }
+
+   private dld a(dps $$0, cui $$1, dpe $$2, dld $$3, int $$4, int $$5) {
+      dou $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      doq $$7 = $$3.a(doq.a.c);
+      doq $$8 = $$3.a(doq.a.a);
+      csw $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      doc $$12 = $$6.i();
+      $$6.f();
+      hx.a $$13 = new hx.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.am() - 1;
+            dlp $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.e($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
+                  }
+
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        djh $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !aa.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.u().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$6.h();
       }
 
-      @Override
-      public doi k() {
-         return this.g;
-      }
+      $$6.g();
+      return $$3;
+   }
 
-      private void l() {
-         double[][] $$0 = this.e;
-         this.e = this.f;
-         this.f = $$0;
-      }
+   private djh a(dou $$0, int $$1, int $$2, int $$3, djh $$4) {
+      return $$4;
+   }
 
-      @Override
-      public doj.l.a j() {
-         return doj.l.a.a;
+   @Override
+   public int d() {
+      return this.e.a().f().d();
+   }
+
+   @Override
+   public int e() {
+      return this.e.a().l();
+   }
+
+   @Override
+   public int f() {
+      return this.e.a().f().c();
+   }
+
+   @Override
+   public void a(ank $$0) {
+      if (!this.e.a().a()) {
+         csw $$1 = $$0.a();
+         ih<cuo> $$2 = $$0.t($$1.l().h($$0.al() - 1));
+         dpp $$3 = new dpp(new dor(dpf.a()));
+         $$3.a($$0.C(), $$1.d(), $$1.e());
+         cua.a($$0, $$2, $$1, $$3);
       }
    }
 }

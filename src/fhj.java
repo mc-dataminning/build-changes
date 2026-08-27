@@ -1,160 +1,78 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.UserApiService;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
-public class fhj extends exl<fhh> {
-   private final fhk a;
-   private final List<fhh> m = Lists.newArrayList();
-   @Nullable
-   private String n;
+public class fhj {
+   private final evi a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fhj(fhk $$0, evh $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
+   public fhj(evi $$0, UserApiService $$1) {
       this.a = $$0;
-      this.c(false);
-   }
-
-   @Override
-   protected void a(ewt $$0) {
-      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fhh> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fhh> $$1) {
-      fns $$2 = this.c.s.cn;
-
-      for (UUID $$3 : $$0) {
-         foa $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fhh(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
-   }
-
-   private void a(Map<UUID, fhh> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aX().b())) {
-         fhh $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fhh $$2 = new fhh(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
-
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(fog $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         foi $$3 = $$0.b($$2);
-         if ($$3 instanceof foj.a) {
-            foj.a $$4 = (foj.a)$$3;
-            if ($$4.g().h()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void e() {
-      this.m.sort(Comparator.<fhh, Integer>comparing($$0 -> {
-         if (this.c.b($$0.c())) {
-            return 0;
-         } else if (this.c.aX().a($$0.c())) {
-            return 1;
-         } else if ($$0.c().version() == 2) {
-            return 4;
-         } else {
-            return $$0.i() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.b().isBlank()) {
-            int $$1 = $$0.b().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fhh::b, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fhh> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.e();
-      this.H();
-      this.a(this.m);
-      this.a($$1);
-   }
-
-   private void H() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(foa $$0, fhk.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fhh $$3 : this.m) {
-         if ($$3.c().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
-      }
-
-      if (($$1 == fhk.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fhh $$5 = new fhh(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
-      }
+      this.c = $$1;
    }
 
    public void a(UUID $$0) {
-      for (fhh $$1 : this.m) {
-         if ($$1.c().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
+      this.b.add($$0);
+   }
+
+   public void b(UUID $$0) {
+      this.b.remove($$0);
+   }
+
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
+      }
+   }
+
+   public Set<UUID> c() {
+      return this.b;
+   }
+
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ac.d);
+   }
+
+   public void a(fob $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.y instanceof fhl $$2) {
+         $$2.a($$0);
+      }
+   }
+
+   public void f(UUID $$0) {
+      if (this.a.y instanceof fhl $$1) {
+         $$1.a($$0);
       }
    }
 }

@@ -1,7 +1,7 @@
 public class abv implements xf<za> {
    private final int a;
 
-   public abv(dkx $$0) {
+   public abv(dky $$0) {
       this.a = $$0.r();
    }
 

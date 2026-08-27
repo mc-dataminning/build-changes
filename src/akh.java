@@ -104,7 +104,7 @@ public class akh {
    }
 
    private static int a(ds $$0, ck.d $$1, @Nullable ahg $$2, boolean $$3) throws CommandSyntaxException {
-      auu $$4;
+      auv $$4;
       if ($$2 != null) {
          $$4 = $$0.e().a($$2);
       } else {
@@ -119,7 +119,7 @@ public class akh {
       } else if ($$8 >= 2147483647L) {
          throw a.create();
       } else {
-         int $$9 = aun.b($$4, $$6, $$7);
+         int $$9 = auo.b($$4, $$6, $$7);
          if ($$3) {
             $$0.l().ae().a(vf.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
          } else {
@@ -149,7 +149,7 @@ public class akh {
    }
 
    private static int a(ds $$0, int $$1, boolean $$2, boolean $$3) {
-      bkg $$4 = $$0.e().J();
+      bkh $$4 = $$0.e().J();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> vf.a("commands.random.reset.all.success", $$5), false);

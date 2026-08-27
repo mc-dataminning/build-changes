@@ -10,17 +10,17 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ang extends eef implements AutoCloseable {
+public class ang extends eeg implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger d = LogUtils.getLogger();
-   private final bit<Runnable> e;
+   private final biu<Runnable> e;
    private final ObjectList<Pair<ang.a, Runnable>> f = new ObjectArrayList();
    private final amn g;
-   private final bis<amp.a<Runnable>> h;
+   private final bit<amp.a<Runnable>> h;
    private final int i = 1000;
    private final AtomicBoolean j = new AtomicBoolean();
 
-   public ang(dlq $$0, amn $$1, boolean $$2, bit<Runnable> $$3, bis<amp.a<Runnable>> $$4) {
+   public ang(dlr $$0, amn $$1, boolean $$2, biu<Runnable> $$3, bit<amp.a<Runnable>> $$4) {
       super($$0, true, $$2);
       this.g = $$1;
       this.h = $$4;
@@ -42,14 +42,14 @@ public class ang extends eef implements AutoCloseable {
       this.a(iz.a($$0.u()), iz.a($$0.w()), ang.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   protected void a(csv $$0) {
+   protected void a(csw $$0) {
       this.a($$0.e, $$0.f, () -> 0, ang.a.a, ac.a((Runnable)(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
          for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(ctx.b, iz.a($$0, $$1), null);
-            super.a(ctx.a, iz.a($$0, $$1), null);
+            super.a(cty.b, iz.a($$0, $$1), null);
+            super.a(cty.a, iz.a($$0, $$1), null);
          }
 
          for (int $$2 = this.c.an(); $$2 < this.c.ao(); $$2++) {
@@ -64,22 +64,22 @@ public class ang extends eef implements AutoCloseable {
    }
 
    @Override
-   public void b(csv $$0) {
+   public void b(csw $$0) {
       this.a($$0.e, $$0.f, ang.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
    @Override
-   public void a(csv $$0, boolean $$1) {
+   public void a(csw $$0, boolean $$1) {
       this.a($$0.e, $$0.f, ang.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
    }
 
    @Override
-   public void a(ctx $$0, iz $$1, @Nullable dli $$2) {
+   public void a(cty $$0, iz $$1, @Nullable dlj $$2) {
       this.a($$1.a(), $$1.c(), () -> 0, ang.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
    }
 
    private void a(int $$0, int $$1, ang.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(csv.c($$0, $$1)), $$2, $$3);
+      this.a($$0, $$1, this.g.c(csw.c($$0, $$1)), $$2, $$3);
    }
 
    private void a(int $$0, int $$1, IntSupplier $$2, ang.a $$3, Runnable $$4) {
@@ -88,21 +88,21 @@ public class ang extends eef implements AutoCloseable {
          if (this.f.size() >= 1000) {
             this.f();
          }
-      }, csv.c($$0, $$1), $$2));
+      }, csw.c($$0, $$1), $$2));
    }
 
    @Override
-   public void b(csv $$0, boolean $$1) {
+   public void b(csw $$0, boolean $$1) {
       this.a($$0.e, $$0.f, () -> 0, ang.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
    }
 
-   public CompletableFuture<dlc> a(dlc $$0, boolean $$1) {
-      csv $$2 = $$0.f();
+   public CompletableFuture<dld> a(dld $$0, boolean $$1) {
+      csw $$2 = $$0.f();
       this.a($$2.e, $$2.f, ang.a.a, ac.a((Runnable)(() -> {
-         dlo[] $$2x = $$0.d();
+         dlp[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.am(); $$3++) {
-            dlo $$4 = $$2x[$$3];
+            dlp $$4 = $$2x[$$3];
             if (!$$4.c()) {
                int $$5 = this.c.g($$3);
                super.a(iz.a($$2, $$5), false);
@@ -116,8 +116,8 @@ public class ang extends eef implements AutoCloseable {
       }, $$1x -> this.a($$2.e, $$2.f, ang.a.b, $$1x));
    }
 
-   public CompletableFuture<dlc> b(dlc $$0, boolean $$1) {
-      csv $$2 = $$0.f();
+   public CompletableFuture<dld> b(dld $$0, boolean $$1) {
+      csw $$2 = $$0.f();
       $$0.b(false);
       this.a($$2.e, $$2.f, ang.a.a, ac.a((Runnable)(() -> {
          if (!$$1) {

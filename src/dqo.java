@@ -1,61 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqo {
-   public static final dqo a = new dqo(false, cwr.gz.o(), cwr.pL.o(), cwr.ej.o(), cwr.aQ.o());
-   public static final Codec<dqo> b = RecordCodecBuilder.create(
+public class dqo extends dui {
+   public static final MapCodec<dqo> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dqo::a),
-               djg.b.optionalFieldOf("air_state", a.b()).forGetter(dqo::b),
-               djg.b.optionalFieldOf("water_state", a.b()).forGetter(dqo::c),
-               djg.b.optionalFieldOf("lava_state", a.b()).forGetter(dqo::d),
-               djg.b.optionalFieldOf("barrier_state", a.b()).forGetter(dqo::e)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               dxn.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bje.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dpk.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dqp.b.optionalFieldOf("debug_settings", dqp.a).forGetter($$0x -> $$0x.h),
+               iv.a(ke.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
             )
             .apply($$0, dqo::new)
    );
-   private final boolean c;
-   private final djg d;
-   private final djg e;
-   private final djg f;
-   private final djg g;
+   public final dxn e;
+   public final bje f;
+   public final dpk g;
+   public final dqp h;
+   public final il<cwq> i;
 
-   public static dqo a(boolean $$0, djg $$1, djg $$2, djg $$3, djg $$4) {
-      return new dqo($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static dqo a(djg $$0, djg $$1, djg $$2, djg $$3) {
-      return new dqo(false, $$0, $$1, $$2, $$3);
-   }
-
-   public static dqo a(boolean $$0, djg $$1) {
-      return new dqo($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private dqo(boolean $$0, djg $$1, djg $$2, djg $$3, djg $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public djg b() {
-      return this.d;
-   }
-
-   public djg c() {
-      return this.e;
-   }
-
-   public djg d() {
-      return this.f;
-   }
-
-   public djg e() {
-      return this.g;
+   public dqo(float $$0, dxn $$1, bje $$2, dpk $$3, dqp $$4, il<cwq> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

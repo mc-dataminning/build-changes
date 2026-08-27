@@ -1,62 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class dwe extends dvy {
+public class dwe extends dwc {
    public static final Codec<dwe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvy.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bjf.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  djh.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(djh.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(djh.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
             )
             .apply($$0, dwe::new)
    );
-   private final dvy c;
-   private final String d;
-   @Nullable
-   private dkg e;
-   private final bjf f;
+   private final float g;
+   private final float h;
+   private final djh i;
+   private final List<djh> j;
+   private final List<djh> k;
 
-   public dwe(dvy $$0, dkg $$1, bjf $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public dwe(dvy $$0, String $$1, bjf $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public dwe(long $$0, edu.a $$1, float $$2, float $$3, float $$4, djh $$5, List<djh> $$6, List<djh> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected dvz<?> a() {
-      return dvz.g;
+   protected dwa<?> a() {
+      return dwa.c;
    }
 
    @Override
-   public djg a(auu $$0, hx $$1) {
-      djg $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
+   public djh a(auv $$0, hx $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   private static dkg a(djg $$0, String $$1) {
-      Collection<dkj<?>> $$2 = $$0.B();
-      Optional<dkg> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dkg).map($$0x -> (dkg)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

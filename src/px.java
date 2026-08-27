@@ -1,26 +1,26 @@
 import java.util.List;
 
 public class px {
-   public static final ahf<edd> a = ahf.a(ke.aE, new ahg("trial_chambers_copper_bulb_degradation"));
+   public static final ahf<ede> a = ahf.a(ke.aE, new ahg("trial_chambers_copper_bulb_degradation"));
 
-   public static void a(pe<edd> $$0) {
+   public static void a(pe<ede> $$0) {
       a(
          $$0,
          a,
          List.of(
-            new ecy(
+            new ecz(
                List.of(
-                  new ecu(new ecw(cwr.so, 0.1F), ecd.b, cwr.sn.o().a(cyd.c, Boolean.valueOf(true))),
-                  new ecu(new ecw(cwr.so, 0.33333334F), ecd.b, cwr.sm.o().a(cyd.c, Boolean.valueOf(true))),
-                  new ecu(new ecw(cwr.so, 0.5F), ecd.b, cwr.sl.o().a(cyd.c, Boolean.valueOf(true)))
+                  new ecv(new ecx(cws.so, 0.1F), ece.b, cws.sn.o().a(cye.c, Boolean.valueOf(true))),
+                  new ecv(new ecx(cws.so, 0.33333334F), ece.b, cws.sm.o().a(cye.c, Boolean.valueOf(true))),
+                  new ecv(new ecx(cws.so, 0.5F), ece.b, cws.sl.o().a(cye.c, Boolean.valueOf(true)))
                )
             ),
-            new ecv(asg.bH)
+            new ecw(ash.bH)
          )
       );
    }
 
-   private static void a(pe<edd> $$0, ahf<edd> $$1, List<edc> $$2) {
-      $$0.a($$1, new edd($$2));
+   private static void a(pe<ede> $$0, ahf<ede> $$1, List<edd> $$2) {
+      $$0.a($$1, new ede($$2));
    }
 }

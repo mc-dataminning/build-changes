@@ -2,7 +2,7 @@ public class ael implements xf<adj> {
    private static final int a = 2;
    private final boolean b;
 
-   public ael(cfe $$0) {
+   public ael(cff $$0) {
       this.b = $$0.b;
    }
 

@@ -1,83 +1,133 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-public class dct extends dcs {
-   public static final MapCodec<dct> h = b(dct::new);
-   public static final dka i = dak.aE;
-   public static final djx j = dcs.d;
+public class dct extends cwg {
+   public static final MapCodec<dct> c = b(dct::new);
+   public static final djy d = djx.r;
+   private static final Map<csv, List<dct.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
    @Override
-   public MapCodec<dct> a() {
-      return h;
+   public MapCodec<? extends dct> a() {
+      return c;
    }
 
-   protected dct(djf.d $$0) {
+   protected dct(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ic.c).a(j, Boolean.valueOf(true)));
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public String h() {
-      return this.k().a();
-   }
-
-   @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return dfp.h($$0);
-   }
-
-   @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return cwr.cq.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      return cwr.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public djg a(cpg $$0) {
-      djg $$1 = cwr.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
-      if ($$0.c(j)) {
-         ic $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(jr.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public void b(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      for (ic $$5 : ic.values()) {
+         $$1.a($$2.a($$5), this);
       }
    }
 
    @Override
-   protected boolean a(cto $$0, hx $$1, djg $$2) {
-      ic $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$4) {
+         for (ic $$5 : ic.values()) {
+            $$1.a($$2.a($$5), this);
+         }
+      }
    }
 
    @Override
-   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   public int a(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return $$0.c(d) && ic.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(ctp $$0, hx $$1, djh $$2) {
+      return $$0.b($$1.d(), ic.a);
    }
 
    @Override
-   public djg a(djg $$0, ddb $$1) {
-      return cwr.cq.a($$0, $$1);
+   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dct.a> $$5 = h.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.X() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
+      }
+
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      }
    }
 
    @Override
-   public djg a(djg $$0, dbl $$1) {
-      return cwr.cq.a($$0, $$1);
+   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.N().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(i, j);
+   public int b(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return $$3 == ic.a ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   public boolean f_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(jr.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(ctp $$0, hx $$1, boolean $$2) {
+      List<dct.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dct.a($$1.i(), $$0.X()));
+      }
+
+      int $$4 = 0;
+
+      for (dct.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static class a {
+      final hx a;
+      final long b;
+
+      public a(hx $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

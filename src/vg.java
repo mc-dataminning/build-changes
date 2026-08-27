@@ -12,13 +12,13 @@ public interface vg {
       return Optional.empty();
    }
 
-   default vt a(@Nullable ds $$0, @Nullable blu $$1, int $$2) throws CommandSyntaxException {
+   default vt a(@Nullable ds $$0, @Nullable blv $$1, int $$2) throws CommandSyntaxException {
       return vt.a(this);
    }
 
    vg.a<?> a();
 
-   public static record a<T extends vg>(MapCodec<T> a, String b) implements avj {
+   public static record a<T extends vg>(MapCodec<T> a, String b) implements avk {
       @Override
       public String c() {
          return this.b;

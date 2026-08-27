@@ -1,50 +1,36 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record eke(Optional<Boolean> b, Optional<Boolean> c) implements eju {
+public record eke(ekq b, egv c) implements ejv {
    public static final Codec<eke> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atv.a(Codec.BOOL, "raining").forGetter(eke::d), atv.a(Codec.BOOL, "thundering").forGetter(eke::e)).apply($$0, eke::new)
+      $$0 -> $$0.group(ekr.a.fieldOf("value").forGetter(eke::c), egv.a.fieldOf("range").forGetter(eke::d)).apply($$0, eke::new)
    );
 
    @Override
-   public ejv b() {
-      return ejw.p;
+   public ejw b() {
+      return ejx.s;
    }
 
-   public boolean a(egv $$0) {
-      and $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+   @Override
+   public Set<eje<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static eke.a c() {
-      return new eke.a();
+   public boolean a(egw $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public Optional<Boolean> d() {
+   public static ejv.a a(ekq $$0, egv $$1) {
+      return () -> new eke($$0, $$1);
+   }
+
+   public ekq c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public egv d() {
       return this.c;
-   }
-
-   public static class a implements eju.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eke.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eke.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eke a() {
-         return new eke(this.a, this.b);
-      }
    }
 }

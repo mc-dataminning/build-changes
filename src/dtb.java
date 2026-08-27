@@ -1,19 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dtb extends drt<duq> {
+public class dtb extends dru<duq> {
    public dtb(Codec<duq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drv<duq> $$0) {
-      auu $$1 = $$0.d();
-      duq $$2 = $$0.f();
-      cuj $$3 = $$0.b();
-      hx $$4 = $$0.e();
-      dld $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      dyj $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(drw<duq> $$0) {
+      duq $$1 = $$0.f();
+      cuk $$2 = $$0.b();
+      hx $$3 = $$0.e();
+      djh $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof cyy) {
+            if (!$$2.u($$3.c())) {
+               return false;
+            }
+
+            cyy.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

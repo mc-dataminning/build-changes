@@ -52,21 +52,21 @@ public class aiq {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
                                                                      "color"
                                                                   )
-                                                                  .then(dt.a("pink").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.a))))
-                                                               .then(dt.a("blue").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.b))))
-                                                            .then(dt.a("red").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.c))))
-                                                         .then(dt.a("green").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.d))))
-                                                      .then(dt.a("yellow").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.e))))
-                                                   .then(dt.a("purple").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.f))))
-                                                .then(dt.a("white").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.a.g)))
+                                                                  .then(dt.a("pink").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.a))))
+                                                               .then(dt.a("blue").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.b))))
+                                                            .then(dt.a("red").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.c))))
+                                                         .then(dt.a("green").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.d))))
+                                                      .then(dt.a("yellow").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.e))))
+                                                   .then(dt.a("purple").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.f))))
+                                                .then(dt.a("white").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("style")
-                                                         .then(dt.a("progress").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.b.a))))
-                                                      .then(dt.a("notched_6").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.b.b))))
-                                                   .then(dt.a("notched_10").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.b.c))))
-                                                .then(dt.a("notched_12").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.b.d))))
-                                             .then(dt.a("notched_20").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjq.b.e)))
+                                                         .then(dt.a("progress").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.b.a))))
+                                                      .then(dt.a("notched_6").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.b.b))))
+                                                   .then(dt.a("notched_10").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.b.c))))
+                                                .then(dt.a("notched_12").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.b.d))))
+                                             .then(dt.a("notched_20").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjr.b.e)))
                                        ))
                                     .then(
                                        dt.a("value")
@@ -133,7 +133,7 @@ public class aiq {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> vf.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> vf.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vi.b($$1.h(), cfh::Q_)), true);
+         $$0.a(() -> vf.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vi.b($$1.h(), cfi::Q_)), true);
       }
 
       return $$1.h().size();
@@ -178,7 +178,7 @@ public class aiq {
       }
    }
 
-   private static int a(ds $$0, aif $$1, bjq.a $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, aif $$1, bjr.a $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw f.create();
       } else {
@@ -188,7 +188,7 @@ public class aiq {
       }
    }
 
-   private static int a(ds $$0, aif $$1, bjq.b $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, aif $$1, bjr.b $$2) throws CommandSyntaxException {
       if ($$1.m().equals($$2)) {
          throw g.create();
       } else {
@@ -217,7 +217,7 @@ public class aiq {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> vf.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> vf.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vi.b($$2, cfh::Q_)), true);
+            $$0.a(() -> vf.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vi.b($$2, cfi::Q_)), true);
          }
 
          return $$1.h().size();

@@ -1,59 +1,40 @@
-public class fcp extends fda {
-   private static final vf a = vf.c("symlink_warning.title.world").a(n.r);
-   private static final vf b = vf.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final vf c = vf.c("symlink_warning.title.pack").a(n.r);
-   private static final vf k = vf.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final vf l;
-   private final String m;
-   private final Runnable n;
-   private final fao o = new fao().b(10);
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-   public fcp(vf $$0, vf $$1, String $$2, Runnable $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+public class fcp extends fct {
+   private eyd c;
+
+   private static evl<?>[] a(evm $$0) {
+      return new evl[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
    }
 
-   public static fda a(Runnable $$0) {
-      return new fcp(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static fda b(Runnable $$0) {
-      return new fcp(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   public fcp(fdb $$0, evm $$1) {
+      super($$0, $$1, vf.c("options.mouse_settings.title"));
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.o.c().b();
-      fao.b $$0 = this.o.d(1);
-      $$0.a(new eym(this.e, this.i));
-      $$0.a(new exz(this.l, this.i).c(this.g - 50).b(true));
-      int $$1 = 120;
-      fao $$2 = new fao().a(5);
-      fao.b $$3 = $$2.d(3);
-      $$3.a(exf.a(ve.n, $$0x -> ac.j().a(this.m)).b(120, 20).a());
-      $$3.a(exf.a(ve.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(exf.a(ve.k, $$0x -> this.aE_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.o.a(this::d);
+      this.c = this.d(new eyd(this.f, this.g, this.h - 64, 32, 25));
+      if (eow.a()) {
+         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(evl[]::new));
+      } else {
+         this.c.a(a(this.b));
+      }
+
+      this.d(exg.a(ve.d, $$0 -> {
+         this.b.as();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-      fan.a(this.o, this.F());
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
    }
 
    @Override
-   public vf h() {
-      return ve.a(super.h(), this.l);
-   }
-
-   @Override
-   public void aE_() {
-      this.n.run();
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

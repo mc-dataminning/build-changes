@@ -1,73 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deu extends cyx implements dbf {
-   public static final MapCodec<deu> c = b(deu::new);
-   public static final dke<dkc> d = cyx.b;
-   protected static final float e = 6.0F;
-   protected static final eml f = cwp.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class deu extends cwz implements cwt {
+   public static final MapCodec<deu> a = b(deu::new);
+   protected static final float b = 6.0F;
+   protected static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<deu> a() {
-      return c;
+      return a;
    }
 
-   public deu(djf.d $$0) {
+   protected deu(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return f;
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return c;
    }
 
    @Override
-   protected boolean b(djg $$0, csu $$1, hx $$2) {
-      return $$0.d($$1, $$2, ic.b) && !$$0.a(cwr.kJ);
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      return true;
    }
 
    @Override
-   public cmx a(ctr $$0, hx $$1, djg $$2) {
-      return new cmx(cwr.bw);
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+      return true;
    }
 
-   @Nullable
    @Override
-   public djg a(cpg $$0) {
-      djg $$1 = super.a($$0);
-      if ($$1 != null) {
-         eeq $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(asl.a) && $$2.e() == 8) {
-            return $$1;
-         }
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      cyy $$4 = (cyy)($$3.a(cws.bu) ? cws.iI : cws.iH);
+      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
+         cyy.a($$0, $$4.o(), $$2, 2);
       }
-
-      return null;
-   }
-
-   @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      if ($$0.c(d) == dkc.a) {
-         djg $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dkc.b;
-      } else {
-         eeq $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(asl.a) && $$4.e() == 8;
-      }
-   }
-
-   @Override
-   public eeq c_(djg $$0) {
-      return eer.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cfh $$0, csu $$1, hx $$2, djg $$3, eep $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(ctp $$0, hx $$1, djg $$2, eeq $$3) {
-      return false;
    }
 }

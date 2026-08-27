@@ -231,7 +231,7 @@ public class ahg implements Comparable<ahg> {
 
    public static class b implements JsonDeserializer<ahg>, JsonSerializer<ahg> {
       public ahg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new ahg(aud.a($$0, "location"));
+         return new ahg(aue.a($$0, "location"));
       }
 
       public JsonElement a(ahg $$0, Type $$1, JsonSerializationContext $$2) {

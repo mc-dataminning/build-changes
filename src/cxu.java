@@ -1,223 +1,181 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cxu extends cwp {
-   public static final MapCodec<cxu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), u()).apply($$0, cxu::new)
-   );
-   public static final int b = 5;
-   public static final dkg c = djw.au;
-   protected static final eml d = cwp.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   private final cwp e;
+public class cxu extends cwc {
+   public static final MapCodec<cxu> a = b(cxu::new);
+   private static final int d = 6;
+   public static final int b = 3;
+   public static final List<djy> c = List.of(djx.bp, djx.bq, djx.br, djx.bs, djx.bt, djx.bu);
 
    @Override
    public MapCodec<cxu> a() {
       return a;
    }
 
-   protected cxu(cwp $$0, djf.d $$1) {
-      super($$1);
-      this.e = $$0;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
-   }
+   public cxu(djg.d $$0) {
+      super($$0);
+      djh $$1 = this.E.b().a(dal.aE, ic.c);
 
-   @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+      for (djy $$2 : c) {
+         $$1 = $$1.a($$2, Boolean.valueOf(false));
       }
+
+      this.k($$1);
    }
 
    @Override
-   public boolean e_(djg $$0) {
-      return $$0.c(c) < 5;
+   public dcv b_(djh $$0) {
+      return dcv.c;
    }
 
    @Override
-   public eml b_(djg $$0, csu $$1, hx $$2) {
-      return d;
-   }
-
-   @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      hx $$4 = $$2.c();
-      if ($$1.u($$4) && $$4.v() < $$1.al()) {
-         int $$5 = $$0.c(c);
-         if ($$5 < 5) {
-            boolean $$6 = false;
-            boolean $$7 = false;
-            djg $$8 = $$1.a_($$2.d());
-            if ($$8.a(cwr.fz)) {
-               $$6 = true;
-            } else if ($$8.a(this.e)) {
-               int $$9 = 1;
-
-               for (int $$10 = 0; $$10 < 4; $$10++) {
-                  djg $$11 = $$1.a_($$2.c($$9 + 1));
-                  if (!$$11.a(this.e)) {
-                     if ($$11.a(cwr.fz)) {
-                        $$7 = true;
-                     }
-                     break;
-                  }
-
-                  $$9++;
-               }
-
-               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
-                  $$6 = true;
-               }
-            } else if ($$8.i()) {
-               $$6 = true;
-            }
-
-            if ($$6 && b($$1, $$4, null) && $$1.u($$2.b(2))) {
-               $$1.a($$2, cxv.a($$1, $$2, this.e.o()), 2);
-               this.a($$1, $$4, $$5);
-            } else if ($$5 < 4) {
-               int $$12 = $$3.a(4);
-               if ($$7) {
-                  $$12++;
-               }
-
-               boolean $$13 = false;
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  ic $$15 = ic.c.a.a($$3);
-                  hx $$16 = $$2.a($$15);
-                  if ($$1.u($$16) && $$1.u($$16.d()) && b($$1, $$16, $$15.g())) {
-                     this.a($$1, $$16, $$5 + 1);
-                     $$13 = true;
-                  }
-               }
-
-               if ($$13) {
-                  $$1.a($$2, cxv.a($$1, $$2, this.e.o()), 2);
-               } else {
-                  this.a($$1, $$2);
-               }
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      if ($$1.c_($$2) instanceof dhe $$6) {
+         Optional<els> $$8 = a($$5, $$0.c(dal.aE));
+         if ($$8.isEmpty()) {
+            return bkb.d;
+         } else {
+            int $$9 = a($$8.get());
+            if ($$0.c(c.get($$9))) {
+               a($$1, $$2, $$3, $$6, $$9);
+               return bkb.a($$1.B);
             } else {
-               this.a($$1, $$2);
+               cmy $$10 = $$3.b($$4);
+               if ($$10.a(asp.av)) {
+                  a($$1, $$2, $$3, $$6, $$10, $$9);
+                  return bkb.a($$1.B);
+               } else {
+                  return bkb.b;
+               }
             }
          }
+      } else {
+         return bkb.d;
       }
    }
 
-   private void a(cto $$0, hx $$1, int $$2) {
-      $$0.a($$1, this.o().a(c, Integer.valueOf($$2)), 2);
-      $$0.c(1033, $$1, 0);
+   private static Optional<els> a(elp $$0, ic $$1) {
+      ic $$2 = $$0.b();
+      if ($$1 != $$2) {
+         return Optional.empty();
+      } else {
+         hx $$3 = $$0.a().a($$2);
+         elt $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+         double $$5 = $$4.a();
+         double $$6 = $$4.b();
+         double $$7 = $$4.c();
+
+         return switch ($$2) {
+            case c -> Optional.of(new els((float)(1.0 - $$5), (float)$$6));
+            case d -> Optional.of(new els((float)$$5, (float)$$6));
+            case e -> Optional.of(new els((float)$$7, (float)$$6));
+            case f -> Optional.of(new els((float)(1.0 - $$7), (float)$$6));
+            case a, b -> Optional.empty();
+         };
+      }
    }
 
-   private void a(cto $$0, hx $$1) {
-      $$0.a($$1, this.o().a(c, Integer.valueOf(5)), 2);
-      $$0.c(1034, $$1, 0);
+   private static int a(els $$0) {
+      int $$1 = $$0.j >= 0.5F ? 0 : 1;
+      int $$2 = a($$0.i);
+      return $$2 + $$1 * 3;
    }
 
-   private static boolean b(ctr $$0, hx $$1, @Nullable ic $$2) {
-      for (ic $$3 : ic.c.a) {
-         if ($$3 != $$2 && !$$0.u($$1.a($$3))) {
-            return false;
+   private static int a(float $$0) {
+      float $$1 = 0.0625F;
+      float $$2 = 0.375F;
+      if ($$0 < 0.375F) {
+         return 0;
+      } else {
+         float $$3 = 0.6875F;
+         return $$0 < 0.6875F ? 1 : 2;
+      }
+   }
+
+   private static void a(ctp $$0, hx $$1, cfi $$2, dhe $$3, cmy $$4, int $$5) {
+      if (!$$0.B) {
+         $$2.b(asc.c.b($$4.d()));
+         arr $$6 = $$4.a(cnb.up) ? ars.eC : ars.eB;
+         $$3.a($$5, $$4.a(1));
+         $$0.a(null, $$1, $$6, art.e, 1.0F, 1.0F);
+         if ($$2.f()) {
+            $$4.g(1);
          }
       }
+   }
 
+   private static void a(ctp $$0, hx $$1, cfi $$2, dhe $$3, int $$4) {
+      if (!$$0.B) {
+         cmy $$5 = $$3.a($$4, 1);
+         arr $$6 = $$5.a(cnb.up) ? ars.eF : ars.eE;
+         $$0.a(null, $$1, $$6, art.e, 1.0F, 1.0F);
+         if (!$$2.fS().e($$5)) {
+            $$2.a($$5, false);
+         }
+
+         $$0.a($$2, dnr.c, $$1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dgv a(hx $$0, djh $$1) {
+      return new dhe($$0, $$1);
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(dal.aE);
+      c.forEach($$1 -> $$0.a($$1));
+   }
+
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dhe $$6 && !$$6.ai_()) {
+            for (int $$7 = 0; $$7 < 6; $$7++) {
+               cmy $$8 = $$6.a($$7);
+               if (!$$8.b()) {
+                  bjx.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
+               }
+            }
+
+            $$6.a();
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public djh a(cph $$0) {
+      return this.o().a(dal.aE, $$0.g().g());
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(dal.aE, $$1.a($$0.c(dal.aE)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(dal.aE)));
+   }
+
+   @Override
+   public boolean d_(djh $$0) {
       return true;
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$1 != ic.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      djg $$3 = $$1.a_($$2.d());
-      if (!$$3.a(this.e) && !$$3.a(cwr.fz)) {
-         if (!$$3.i()) {
-            return false;
-         } else {
-            boolean $$4 = false;
-
-            for (ic $$5 : ic.c.a) {
-               djg $$6 = $$1.a_($$2.a($$5));
-               if ($$6.a(this.e)) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (!$$6.i()) {
-                  return false;
-               }
-            }
-
-            return $$4;
-         }
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      if ($$1.y_()) {
+         return 0;
       } else {
-         return true;
-      }
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(c);
-   }
-
-   public static void a(ctp $$0, hx $$1, auu $$2, int $$3) {
-      $$0.a($$1, cxv.a($$0, $$1, cwr.ku.o()), 2);
-      a($$0, $$1, $$2, $$1, $$3, 0);
-   }
-
-   private static void a(ctp $$0, hx $$1, auu $$2, hx $$3, int $$4, int $$5) {
-      cwp $$6 = cwr.ku;
-      int $$7 = $$2.a(4) + 1;
-      if ($$5 == 0) {
-         $$7++;
-      }
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         hx $$9 = $$1.b($$8 + 1);
-         if (!b($$0, $$9, null)) {
-            return;
-         }
-
-         $$0.a($$9, cxv.a($$0, $$9, $$6.o()), 2);
-         $$0.a($$9.d(), cxv.a($$0, $$9.d(), $$6.o()), 2);
-      }
-
-      boolean $$10 = false;
-      if ($$5 < 4) {
-         int $$11 = $$2.a(4);
-         if ($$5 == 0) {
-            $$11++;
-         }
-
-         for (int $$12 = 0; $$12 < $$11; $$12++) {
-            ic $$13 = ic.c.a.a($$2);
-            hx $$14 = $$1.b($$7).a($$13);
-            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.u($$14) && $$0.u($$14.d()) && b($$0, $$14, $$13.g())) {
-               $$10 = true;
-               $$0.a($$14, cxv.a($$0, $$14, $$6.o()), 2);
-               $$0.a($$14.a($$13.g()), cxv.a($$0, $$14.a($$13.g()), $$6.o()), 2);
-               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
-            }
-         }
-      }
-
-      if (!$$10) {
-         $$0.a($$1.b($$7), cwr.kv.o().a(c, Integer.valueOf(5)), 2);
-      }
-   }
-
-   @Override
-   public void a(cto $$0, djg $$1, elo $$2, cfz $$3) {
-      hx $$4 = $$2.a();
-      if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
-         $$0.a($$4, true, $$3);
+         return $$1.c_($$2) instanceof dhe $$3 ? $$3.g() + 1 : 0;
       }
    }
 }

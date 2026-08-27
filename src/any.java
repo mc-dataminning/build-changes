@@ -24,11 +24,11 @@ public class any {
       this.g = $$0;
    }
 
-   public void a(dln $$0) {
+   public void a(dlo $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(ane $$0, csv $$1) {
+   public void a(ane $$0, csw $$1) {
       if (!this.f.remove($$1.a()) && $$0.bx()) {
          $$0.c.b(new aae($$1));
       }
@@ -42,13 +42,13 @@ public class any {
             if (!this.f.isEmpty()) {
                and $$2 = $$0.z();
                amn $$3 = $$2.l().a;
-               List<dln> $$4 = this.a($$3, $$0.do());
+               List<dlo> $$4 = this.a($$3, $$0.do());
                if (!$$4.isEmpty()) {
                   aoc $$5 = $$0.c;
                   this.j++;
                   $$5.b(new zo());
 
-                  for (dln $$6 : $$4) {
+                  for (dlo $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class any {
       }
    }
 
-   private static void a(aoc $$0, and $$1, dln $$2) {
+   private static void a(aoc $$0, and $$1, dlo $$2) {
       $$0.b(new aak($$2, $$1.z_(), null, null));
-      csv $$3 = $$2.f();
+      csw $$3 = $$2.f();
       adi.a($$1, $$3);
    }
 
-   private List<dln> a(amn $$0, csv $$1) {
-      int $$2 = aun.d(this.i);
-      List<dln> $$4;
+   private List<dlo> a(amn $$0, csw $$1) {
+      int $$2 = auo.d(this.i);
+      List<dlo> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class any {
          $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (dln $$5 : $$4) {
+      for (dlo $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 
@@ -91,7 +91,7 @@ public class any {
 
    public void a(float $$0) {
       this.j--;
-      this.h = Double.isNaN((double)$$0) ? 0.01F : aun.a($$0, 0.01F, 64.0F);
+      this.h = Double.isNaN((double)$$0) ? 0.01F : auo.a($$0, 0.01F, 64.0F);
       if (this.j == 0) {
          this.i = 1.0F;
       }

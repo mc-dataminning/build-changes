@@ -11,14 +11,14 @@ public class ajy {
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("op").requires($$0x -> $$0x.c(3))).then(dt.a("targets", eh.a()).suggests(($$0x, $$1) -> {
-            aqu $$2 = ((ds)$$0x.getSource()).l().ae();
+            aqv $$2 = ((ds)$$0x.getSource()).l().ae();
             return dx.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
          }).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"))))
       );
    }
 
    private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqu $$2 = $$0.l().ae();
+      aqv $$2 = $$0.l().ae();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

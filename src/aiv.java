@@ -23,11 +23,11 @@ public class aiv {
          ((ds)$$0.getSource()).l().aD().d().stream().map(StringArgumentType::escapeIfRequired), $$1
       );
    private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
-      aps $$2 = ((ds)$$0.getSource()).l().aD();
+      apt $$2 = ((ds)$$0.getSource()).l().aD();
       Collection<String> $$3 = $$2.d();
-      chr $$4 = ((ds)$$0.getSource()).w();
+      chs $$4 = ((ds)$$0.getSource()).w();
       return dx.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(app::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(apq::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
    };
 
@@ -89,21 +89,21 @@ public class aiv {
       );
    }
 
-   private static int a(ds $$0, app $$1, aiv.a $$2) throws CommandSyntaxException {
-      aps $$3 = $$0.l().aD();
-      List<app> $$4 = Lists.newArrayList($$3.f());
+   private static int a(ds $$0, apq $$1, aiv.a $$2) throws CommandSyntaxException {
+      apt $$3 = $$0.l().aD();
+      List<apq> $$4 = Lists.newArrayList($$3.f());
       $$2.apply($$4, $$1);
       $$0.a(() -> vf.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      akj.a($$4.stream().map(app::f).collect(Collectors.toList()), $$0);
+      akj.a($$4.stream().map(apq::f).collect(Collectors.toList()), $$0);
       return $$4.size();
    }
 
-   private static int a(ds $$0, app $$1) {
-      aps $$2 = $$0.l().aD();
-      List<app> $$3 = Lists.newArrayList($$2.f());
+   private static int a(ds $$0, apq $$1) {
+      apt $$2 = $$0.l().aD();
+      List<apq> $$3 = Lists.newArrayList($$2.f());
       $$3.remove($$1);
       $$0.a(() -> vf.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      akj.a($$3.stream().map(app::f).collect(Collectors.toList()), $$0);
+      akj.a($$3.stream().map(apq::f).collect(Collectors.toList()), $$0);
       return $$3.size();
    }
 
@@ -112,12 +112,12 @@ public class aiv {
    }
 
    private static int b(ds $$0) {
-      aps $$1 = $$0.l().aD();
+      apt $$1 = $$0.l().aD();
       $$1.a();
-      Collection<app> $$2 = $$1.f();
-      Collection<app> $$3 = $$1.c();
-      chr $$4 = $$0.w();
-      List<app> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
+      Collection<apq> $$2 = $$1.f();
+      Collection<apq> $$3 = $$1.c();
+      chs $$4 = $$0.w();
+      List<apq> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> vf.c("commands.datapack.list.available.none"), false);
       } else {
@@ -128,9 +128,9 @@ public class aiv {
    }
 
    private static int c(ds $$0) {
-      aps $$1 = $$0.l().aD();
+      apt $$1 = $$0.l().aD();
       $$1.a();
-      Collection<? extends app> $$2 = $$1.f();
+      Collection<? extends apq> $$2 = $$1.f();
       if ($$2.isEmpty()) {
          $$0.a(() -> vf.c("commands.datapack.list.enabled.none"), false);
       } else {
@@ -140,10 +140,10 @@ public class aiv {
       return $$2.size();
    }
 
-   private static app a(CommandContext<ds> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   private static apq a(CommandContext<ds> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       String $$3 = StringArgumentType.getString($$0, $$1);
-      aps $$4 = ((ds)$$0.getSource()).l().aD();
-      app $$5 = $$4.c($$3);
+      apt $$4 = ((ds)$$0.getSource()).l().aD();
+      apq $$5 = $$4.c($$3);
       if ($$5 == null) {
          throw a.create($$3);
       } else {
@@ -153,10 +153,10 @@ public class aiv {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            chr $$7 = ((ds)$$0.getSource()).w();
-            chr $$8 = $$5.d();
+            chs $$7 = ((ds)$$0.getSource()).w();
+            chs $$8 = $$5.d();
             if (!$$8.a($$7)) {
-               throw d.create($$3, cht.a($$7, $$8));
+               throw d.create($$3, chu.a($$7, $$8));
             } else {
                return $$5;
             }
@@ -165,6 +165,6 @@ public class aiv {
    }
 
    interface a {
-      void apply(List<app> var1, app var2) throws CommandSyntaxException;
+      void apply(List<apq> var1, apq var2) throws CommandSyntaxException;
    }
 }

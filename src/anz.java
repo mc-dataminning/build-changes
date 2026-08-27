@@ -114,7 +114,7 @@ public abstract class anz implements xq {
 
    protected abstract GameProfile j();
 
-   @avs
+   @avt
    public GameProfile k() {
       return this.j();
    }

@@ -4,16 +4,16 @@ public class ace implements xf<za> {
    private final int c;
    private final int d;
 
-   public ace(blu $$0) {
+   public ace(blv $$0) {
       this($$0.aj(), $$0.dp());
    }
 
-   public ace(int $$0, els $$1) {
+   public ace(int $$0, elt $$1) {
       this.a = $$0;
       double $$2 = 3.9;
-      double $$3 = aun.a($$1.c, -3.9, 3.9);
-      double $$4 = aun.a($$1.d, -3.9, 3.9);
-      double $$5 = aun.a($$1.e, -3.9, 3.9);
+      double $$3 = auo.a($$1.c, -3.9, 3.9);
+      double $$4 = auo.a($$1.d, -3.9, 3.9);
+      double $$5 = auo.a($$1.e, -3.9, 3.9);
       this.b = (int)($$3 * 8000.0);
       this.c = (int)($$4 * 8000.0);
       this.d = (int)($$5 * 8000.0);

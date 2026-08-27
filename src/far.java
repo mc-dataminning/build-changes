@@ -1,26 +1,18 @@
 import java.util.function.Consumer;
 
-public interface far {
-   void n(int var1);
+public interface far extends fas {
+   void b(Consumer<fas> var1);
 
-   void o(int var1);
-
-   int B();
-
-   int C();
-
-   int w();
-
-   int u();
-
-   default fbi F() {
-      return new fbi(this.B(), this.C(), this.w(), this.u());
+   @Override
+   default void a(Consumer<exe> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void c(int $$0, int $$1) {
-      this.n($$0);
-      this.o($$1);
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof far $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   void a(Consumer<exd> var1);
 }

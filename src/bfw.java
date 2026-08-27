@@ -9,13 +9,13 @@ public class bfw extends Schema {
    }
 
    protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bde.a($$0));
+      $$0.register($$1, $$2, () -> bdf.a($$0));
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ZombieVillager");
-      a($$0, $$1, "Husk");
+      a($$0, $$1, "WitherSkeleton");
+      a($$0, $$1, "Stray");
       return $$1;
    }
 }

@@ -69,8 +69,8 @@ public class adh {
       "Fist"
    };
 
-   public static String a(blu $$0) {
-      if ($$0 instanceof cfh) {
+   public static String a(blv $$0) {
+      if ($$0 instanceof cfi) {
          return $$0.ad().getString();
       } else {
          vf $$1 = $$0.af();
@@ -79,15 +79,15 @@ public class adh {
    }
 
    public static String a(UUID $$0) {
-      auu $$1 = b($$0);
+      auv $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(auu $$0, String[] $$1) {
+   private static String a(auv $$0, String[] $$1) {
       return ac.a($$1, $$0);
    }
 
-   private static auu b(UUID $$0) {
-      return auu.a((long)($$0.hashCode() >> 2));
+   private static auv b(UUID $$0) {
+      return auv.a((long)($$0.hashCode() >> 2));
    }
 }

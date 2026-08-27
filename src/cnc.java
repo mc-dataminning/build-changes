@@ -1,51 +1,50 @@
-public class cnc extends cms {
-   public cnc(cms.a $$0) {
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+
+public class cnc extends cmt {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
+
+   public cnc(cmt.a $$0) {
       super($$0);
    }
 
    @Override
-   public bka a(cpi $$0) {
-      cto $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djg $$3 = $$1.a_($$2);
-      if ($$3.a(asg.S)) {
-         cfh $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bka.a($$1.B);
-      } else {
-         return bka.d;
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      sn $$4 = $$3.v();
+      if (!$$1.fT().d) {
+         $$1.a($$2, cmy.f);
       }
-   }
 
-   public static bka a(cfh $$0, cto $$1, hx $$2) {
-      cbn $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            st $$5 = $$4.c("Recipes", 8);
+            List<cqe<?>> $$6 = Lists.newArrayList();
+            cqf $$7 = $$0.o().aG();
 
-      for (bmm $$10 : $$1.a(
-         bmm.class, new eln((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fT() == $$0) {
-            if ($$3 == null) {
-               $$3 = cbn.b($$1, $$2);
-               $$3.D();
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<cqe<?>> $$10 = $$7.a(new ahg($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bkc.d($$3);
+               }
+
+               $$6.add($$10.get());
             }
 
-            $$10.b($$3, true);
-            $$4 = true;
+            $$1.a($$6);
+            $$1.b(asc.c.b(this));
          }
-      }
 
-      if ($$4) {
-         $$1.a(dnq.b, $$2, dnq.a.a($$0));
+         return bkc.a($$3, $$0.y_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bkc.d($$3);
       }
-
-      return $$4 ? bka.a : bka.d;
    }
 }

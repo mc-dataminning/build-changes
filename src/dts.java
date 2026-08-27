@@ -1,18 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dts implements dtx {
-   public static final Codec<dts> a = bjf.b(0, 256).fieldOf("count").xmap(dts::new, dts::a).codec();
-   private final bjf b;
+public class dts implements dty {
+   public static final Codec<dts> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bjg.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bjg.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dts::new)
+   );
+   private final bjg b;
+   private final bjg c;
 
-   public dts(int $$0) {
-      this.b = bjc.a($$0);
-   }
-
-   public dts(bjf $$0) {
+   public dts(bjg $$0, bjg $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public bjf a() {
+   public bjg a() {
       return this.b;
+   }
+
+   public bjg b() {
+      return this.c;
    }
 }

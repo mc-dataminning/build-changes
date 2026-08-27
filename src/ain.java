@@ -37,12 +37,12 @@ public class ain {
    }
 
    private static int b(ds $$0, String $$1, @Nullable vf $$2) throws CommandSyntaxException {
-      aqr $$3 = $$0.l().ae().g();
+      aqs $$3 = $$0.l().ae().g();
       if ($$3.a($$1)) {
          throw b.create();
       } else {
          List<ane> $$4 = $$0.l().ae().b($$1);
-         aqs $$5 = new aqs($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         aqt $$5 = new aqt($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
          $$3.a($$5);
          $$0.a(() -> vf.a("commands.banip.success", $$1, $$5.d()), true);
          if (!$$4.isEmpty()) {

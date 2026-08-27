@@ -1,100 +1,61 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class fuv implements ggx {
-   private final djh<cwp, djg> a;
-   private final List<fux> b;
+public class fuv implements fuu {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public fuv(djh<cwp, djg> $$0, List<fux> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public List<fux> a() {
-      return this.b;
-   }
-
-   public Set<fuq> b() {
-      Set<fuq> $$0 = Sets.newHashSet();
-
-      for (fux $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   public fuv(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public Predicate<djh> getPredicate(dji<cwq, djh> $$0) {
+      dkk<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         return !($$0 instanceof fuv $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
-   }
-
-   @Override
-   public Collection<ahg> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<ahg, ggx> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public ggm a(ggq $$0, Function<ggp, gem> $$1, ggu $$2, ahg $$3) {
-      ggv.a $$4 = new ggv.a();
-
-      for (fux $$5 : this.a()) {
-         ggm $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
-   }
-
-   public static class a implements JsonDeserializer<fuv> {
-      private final fuj.a a;
-
-      public a(fuj.a $$0) {
-         this.a = $$0;
-      }
-
-      public fuv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fuv(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<fux> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fux> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fux)$$0.deserialize($$3, fux.class));
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
          }
 
-         return $$2;
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<djh> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<djh>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
       }
+   }
+
+   private Predicate<djh> a(dji<cwq, djh> $$0, dkk<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

@@ -34,22 +34,22 @@ public abstract class amv {
    static final int b = amm.a(amw.d);
    private static final int c = 4;
    final Long2ObjectMap<ObjectSet<ane>> d = new Long2ObjectOpenHashMap();
-   final Long2ObjectOpenHashMap<avg<anh<?>>> e = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<avh<anh<?>>> e = new Long2ObjectOpenHashMap();
    private final amv.a f = new amv.a();
    private final amv.b g = new amv.b(8);
    private final anj h = new anj();
    private final amv.c i = new amv.c(32);
    final Set<aml> j = Sets.newHashSet();
    final amp k;
-   final bis<amp.a<Runnable>> l;
-   final bis<amp.b> m;
+   final bit<amp.a<Runnable>> l;
+   final bit<amp.b> m;
    final LongSet n = new LongOpenHashSet();
    final Executor o;
    private long p;
    private int q = 10;
 
    protected amv(Executor $$0, Executor $$1) {
-      bis<Runnable> $$2 = bis.a("player ticket throttler", $$1::execute);
+      bit<Runnable> $$2 = bit.a("player ticket throttler", $$1::execute);
       amp $$3 = new amp(ImmutableList.of($$2), $$0, 4);
       this.k = $$3;
       this.l = $$3.a($$2, true);
@@ -59,11 +59,11 @@ public abstract class amv {
 
    protected void a() {
       this.p++;
-      ObjectIterator<Entry<avg<anh<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
+      ObjectIterator<Entry<avh<anh<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$0.hasNext()) {
-         Entry<avg<anh<?>>> $$1 = (Entry<avg<anh<?>>>)$$0.next();
-         Iterator<anh<?>> $$2 = ((avg)$$1.getValue()).iterator();
+         Entry<avh<anh<?>>> $$1 = (Entry<avh<anh<?>>>)$$0.next();
+         Iterator<anh<?>> $$2 = ((avh)$$1.getValue()).iterator();
          boolean $$3 = false;
 
          while ($$2.hasNext()) {
@@ -76,16 +76,16 @@ public abstract class amv {
          }
 
          if ($$3) {
-            this.f.b($$1.getLongKey(), a((avg<anh<?>>)$$1.getValue()), false);
+            this.f.b($$1.getLongKey(), a((avh<anh<?>>)$$1.getValue()), false);
          }
 
-         if (((avg)$$1.getValue()).isEmpty()) {
+         if (((avh)$$1.getValue()).isEmpty()) {
             $$0.remove();
          }
       }
    }
 
-   private static int a(avg<anh<?>> $$0) {
+   private static int a(avh<anh<?>> $$0) {
       return !$$0.isEmpty() ? $$0.b().b() : amm.a + 1;
    }
 
@@ -122,7 +122,7 @@ public abstract class amv {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<Either<dln, aml.a>> $$6 = $$5.b();
+                  CompletableFuture<Either<dlo, aml.a>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(amp.a(() -> {
                         }, $$4, false))));
                }
@@ -136,7 +136,7 @@ public abstract class amv {
    }
 
    void a(long $$0, anh<?> $$1) {
-      avg<anh<?>> $$2 = this.g($$0);
+      avh<anh<?>> $$2 = this.g($$0);
       int $$3 = a($$2);
       anh<?> $$4 = $$2.a($$1);
       $$4.a(this.p);
@@ -146,7 +146,7 @@ public abstract class amv {
    }
 
    void b(long $$0, anh<?> $$1) {
-      avg<anh<?>> $$2 = this.g($$0);
+      avh<anh<?>> $$2 = this.g($$0);
       if ($$2.remove($$1)) {
       }
 
@@ -157,35 +157,35 @@ public abstract class amv {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void a(ani<T> $$0, csw $$1, int $$2, T $$3) {
       this.a($$1.a(), new anh<>($$0, $$2, $$3));
    }
 
-   public <T> void b(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void b(ani<T> $$0, csw $$1, int $$2, T $$3) {
       anh<T> $$4 = new anh<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void c(ani<T> $$0, csw $$1, int $$2, T $$3) {
       anh<T> $$4 = new anh<>($$0, amm.a(amw.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void d(ani<T> $$0, csw $$1, int $$2, T $$3) {
       anh<T> $$4 = new anh<>($$0, amm.a(amw.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
       this.h.b($$5, $$4);
    }
 
-   private avg<anh<?>> g(long $$0) {
-      return (avg<anh<?>>)this.e.computeIfAbsent($$0, $$0x -> avg.a(4));
+   private avh<anh<?>> g(long $$0) {
+      return (avh<anh<?>>)this.e.computeIfAbsent($$0, $$0x -> avh.a(4));
    }
 
-   protected void a(csv $$0, boolean $$1) {
-      anh<csv> $$2 = new anh<>(ani.d, amn.c, $$0);
+   protected void a(csw $$0, boolean $$1) {
+      anh<csw> $$2 = new anh<>(ani.d, amn.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -197,7 +197,7 @@ public abstract class amv {
    }
 
    public void a(iz $$0, ane $$1) {
-      csv $$2 = $$0.r();
+      csw $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -206,7 +206,7 @@ public abstract class amv {
    }
 
    public void b(iz $$0, ane $$1) {
-      csv $$2 = $$0.r();
+      csw $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<ane> $$4 = (ObjectSet<ane>)this.d.get($$3);
       $$4.remove($$1);
@@ -231,7 +231,7 @@ public abstract class amv {
    }
 
    protected String e(long $$0) {
-      avg<anh<?>> $$1 = (avg<anh<?>>)this.e.get($$0);
+      avh<anh<?>> $$1 = (avh<anh<?>>)this.e.get($$0);
       return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 
@@ -265,10 +265,10 @@ public abstract class amv {
          ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
 
          while (var3.hasNext()) {
-            Entry<avg<anh<?>>> $$2 = (Entry<avg<anh<?>>>)var3.next();
-            csv $$3 = new csv($$2.getLongKey());
+            Entry<avh<anh<?>>> $$2 = (Entry<avh<anh<?>>>)var3.next();
+            csw $$3 = new csw($$2.getLongKey());
 
-            for (anh<?> $$4 : (avg)$$2.getValue()) {
+            for (anh<?> $$4 : (avh)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
             }
          }
@@ -284,11 +284,11 @@ public abstract class amv {
 
    public void e() {
       ImmutableSet<ani<?>> $$0 = ImmutableSet.of(ani.h, ani.g, ani.e);
-      ObjectIterator<Entry<avg<anh<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+      ObjectIterator<Entry<avh<anh<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$1.hasNext()) {
-         Entry<avg<anh<?>>> $$2 = (Entry<avg<anh<?>>>)$$1.next();
-         Iterator<anh<?>> $$3 = ((avg)$$2.getValue()).iterator();
+         Entry<avh<anh<?>>> $$2 = (Entry<avh<anh<?>>>)$$1.next();
+         Iterator<anh<?>> $$3 = ((avh)$$2.getValue()).iterator();
          boolean $$4 = false;
 
          while ($$3.hasNext()) {
@@ -301,10 +301,10 @@ public abstract class amv {
          }
 
          if ($$4) {
-            this.f.b($$2.getLongKey(), a((avg<anh<?>>)$$2.getValue()), false);
+            this.f.b($$2.getLongKey(), a((avh<anh<?>>)$$2.getValue()), false);
          }
 
-         if (((avg)$$2.getValue()).isEmpty()) {
+         if (((avh)$$2.getValue()).isEmpty()) {
             $$1.remove();
          }
       }
@@ -323,7 +323,7 @@ public abstract class amv {
 
       @Override
       protected int b(long $$0) {
-         avg<anh<?>> $$1 = (avg<anh<?>>)amv.this.e.get($$0);
+         avh<anh<?>> $$1 = (avh<anh<?>>)amv.this.e.get($$0);
          if ($$1 == null) {
             return Integer.MAX_VALUE;
          } else {
@@ -410,7 +410,7 @@ public abstract class amv {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               csv $$3 = new csv($$2.getLongKey());
+               csw $$3 = new csw($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -451,7 +451,7 @@ public abstract class amv {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            anh<?> $$4 = new anh<>(ani.c, amv.b, new csv($$0));
+            anh<?> $$4 = new anh<>(ani.c, amv.b, new csw($$0));
             if ($$3) {
                amv.this.l.a(amp.a(() -> amv.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -479,7 +479,7 @@ public abstract class amv {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  amv.this.k.onLevelChange(new csv($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  amv.this.k.onLevelChange(new csw($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

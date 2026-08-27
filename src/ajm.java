@@ -19,12 +19,12 @@ public class ajm {
       );
    }
 
-   private static void a(ds $$0, ane $$1, ctl $$2) {
+   private static void a(ds $$0, ane $$1, ctm $$2) {
       vf $$3 = vf.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> vf.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().Z().b(ctk.p)) {
+         if ($$0.e().Z().b(ctl.p)) {
             $$1.a(vf.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class ajm {
       }
    }
 
-   private static int a(CommandContext<ds> $$0, Collection<ane> $$1, ctl $$2) {
+   private static int a(CommandContext<ds> $$0, Collection<ane> $$1, ctm $$2) {
       int $$3 = 0;
 
       for (ane $$4 : $$1) {

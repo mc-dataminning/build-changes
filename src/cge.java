@@ -1,45 +1,51 @@
-public class cge extends cfn {
-   private static final cmx f = new cmx(cna.vi);
-   private int g = 200;
-
-   public cge(bly<? extends cge> $$0, cto $$1) {
-      super($$0, $$1, f);
+public class cge extends cgg {
+   public cge(blz<? extends cge> $$0, ctp $$1) {
+      super($$0, $$1);
    }
 
-   public cge(cto $$0, bmk $$1, cmx $$2) {
-      super(bly.aS, $$1, $$0, $$2);
+   public cge(ctp $$0, bml $$1) {
+      super(blz.aQ, $$1, $$0);
    }
 
-   public cge(cto $$0, double $$1, double $$2, double $$3, cmx $$4) {
-      super(bly.aS, $$1, $$2, $$3, $$0, $$4);
+   public cge(ctp $$0, double $$1, double $$2, double $$3) {
+      super(blz.aQ, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dM().B && !this.b) {
-         this.dM().a(jx.P, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+   protected cmt s() {
+      return cnb.qz;
+   }
+
+   private jv y() {
+      cmy $$0 = this.u();
+      return (jv)($$0.b() ? jx.T : new jt(jx.Q, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         jv $$1 = this.y();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(bmk $$0) {
+   protected void a(elq $$0) {
       super.a($$0);
-      blh $$1 = new blh(blj.x, this.g, 0);
-      $$0.b($$1, this.J());
+      blv $$1 = $$0.a();
+      int $$2 = $$1 instanceof cbz ? 3 : 0;
+      $$1.a(this.dN().b(this, this.w()), (float)$$2);
    }
 
    @Override
-   public void a(sn $$0) {
+   protected void a(elr $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.g = $$0.h("Duration");
+      if (!this.dM().B) {
+         this.dM().a(this, (byte)3);
+         this.am();
       }
-   }
-
-   @Override
-   public void b(sn $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.g);
    }
 }

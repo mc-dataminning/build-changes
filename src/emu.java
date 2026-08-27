@@ -1,34 +1,81 @@
 import javax.annotation.Nullable;
 
-public interface emu {
-   int a();
+public class emu implements emt {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private vf g;
+   @Nullable
+   private wv h;
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   default int b() {
-      return this.b(1);
+   public void a(int $$0) {
+      this.e = $$0;
    }
 
-   default void c() {
-      this.a(0);
+   @Override
+   public boolean b() {
+      return this.f;
    }
 
-   boolean d();
-
-   void e();
-
-   void f();
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
 
    @Nullable
-   vf g();
+   public vf d() {
+      return this.g;
+   }
 
-   void a(@Nullable vf var1);
+   public void a(@Nullable vf $$0) {
+      this.g = $$0;
+   }
 
-   void a(@Nullable wv var1);
+   @Nullable
+   @Override
+   public wv c() {
+      return this.h;
+   }
+
+   public void b(@Nullable wv $$0) {
+      this.h = $$0;
+   }
+
+   public sn e() {
+      sn $$0 = new sn();
+      $$0.a("Score", this.e);
+      $$0.a("Locked", this.f);
+      if (this.g != null) {
+         $$0.a("display", vf.a.a(this.g));
+      }
+
+      if (this.h != null) {
+         wx.b.encodeStart(tb.a, this.h).result().ifPresent($$1 -> $$0.a("format", $$1));
+      }
+
+      return $$0;
+   }
+
+   public static emu a(sn $$0) {
+      emu $$1 = new emu();
+      $$1.e = $$0.h("Score");
+      $$1.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$1.g = vf.a.a($$0.l("display"));
+      }
+
+      if ($$0.b("format", 10)) {
+         wx.b.parse(tb.a, $$0.c("format")).result().ifPresent($$1x -> $$1.h = $$1x);
+      }
+
+      return $$1;
+   }
 }

@@ -49,7 +49,7 @@ public class ahu {
    }
 
    public void a(hb<ds> $$0, ds $$1) {
-      bgr $$2 = this.d.aR();
+      bgs $$2 = this.d.aR();
       $$2.a(() -> "function " + $$0.a());
 
       try {

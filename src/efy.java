@@ -1,46 +1,124 @@
-public class efy {
-   private final hx a;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   public efy(hx $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record efy(efy.a a, byte b, byte c, byte d, @Nullable vf e) {
+   public byte a() {
+      return this.a.a();
    }
 
-   public static efy a(sn $$0) {
-      hx $$1 = tc.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new efy($$1, $$2, $$3);
+   public boolean b() {
+      return this.a.d();
    }
 
-   public sn a() {
-      sn $$0 = new sn();
-      $$0.a("Pos", tc.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
-      return $$0;
-   }
-
-   public hx b() {
+   public efy.a c() {
       return this.a;
    }
 
-   public int c() {
+   public byte d() {
       return this.b;
    }
 
-   public int d() {
+   public byte e() {
       return this.c;
    }
 
-   public String e() {
-      return a(this.a);
+   public byte f() {
+      return this.d;
    }
 
-   public static String a(hx $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Nullable
+   public vf g() {
+      return this.e;
+   }
+
+   public static enum a implements avk {
+      a("player", false, true),
+      b("frame", true, true),
+      c("red_marker", false, true),
+      d("blue_marker", false, true),
+      e("target_x", true, false),
+      f("target_point", true, false),
+      g("player_off_map", false, true),
+      h("player_off_limits", false, true),
+      i("mansion", true, 5393476, false, true),
+      j("monument", true, 3830373, false, true),
+      k("banner_white", true, true),
+      l("banner_orange", true, true),
+      m("banner_magenta", true, true),
+      n("banner_light_blue", true, true),
+      o("banner_yellow", true, true),
+      p("banner_lime", true, true),
+      q("banner_pink", true, true),
+      r("banner_gray", true, true),
+      s("banner_light_gray", true, true),
+      t("banner_cyan", true, true),
+      u("banner_purple", true, true),
+      v("banner_blue", true, true),
+      w("banner_brown", true, true),
+      x("banner_green", true, true),
+      y("banner_red", true, true),
+      z("banner_black", true, true),
+      A("red_x", true, false),
+      B("village_desert", true, eev.w.ak, false, true),
+      C("village_plains", true, eev.w.ak, false, true),
+      D("village_savanna", true, eev.w.ak, false, true),
+      E("village_snowy", true, eev.w.ak, false, true),
+      F("village_taiga", true, eev.w.ak, false, true),
+      G("jungle_temple", true, eev.w.ak, false, true),
+      H("swamp_hut", true, eev.w.ak, false, true);
+
+      public static final Codec<efy.a> I = avk.a(efy.a::values);
+      private final String J;
+      private final byte K;
+      private final boolean L;
+      private final int M;
+      private final boolean N;
+      private final boolean O;
+
+      private a(String $$0, boolean $$1, boolean $$2) {
+         this($$0, $$1, -1, $$2, false);
+      }
+
+      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
+         this.J = $$0;
+         this.O = $$3;
+         this.K = (byte)this.ordinal();
+         this.L = $$1;
+         this.M = $$2;
+         this.N = $$4;
+      }
+
+      public byte a() {
+         return this.K;
+      }
+
+      public boolean b() {
+         return this.N;
+      }
+
+      public boolean d() {
+         return this.L;
+      }
+
+      public boolean e() {
+         return this.M >= 0;
+      }
+
+      public int f() {
+         return this.M;
+      }
+
+      public static efy.a a(byte $$0) {
+         return values()[auo.a($$0, 0, values().length - 1)];
+      }
+
+      public boolean g() {
+         return this.O;
+      }
+
+      @Override
+      public String c() {
+         return this.J;
+      }
    }
 }

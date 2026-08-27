@@ -51,9 +51,9 @@ public class wn implements vg {
       return this.f;
    }
 
-   private emv a(ds $$0) throws CommandSyntaxException {
+   private emw a(ds $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends blu> $$1 = this.e.b($$0);
+         List<? extends blv> $$1 = this.e.b($$0);
          if (!$$1.isEmpty()) {
             if ($$1.size() != 1) {
                throw ef.a.create();
@@ -63,16 +63,16 @@ public class wn implements vg {
          }
       }
 
-      return emv.d(this.d);
+      return emw.d(this.d);
    }
 
-   private vt a(emv $$0, ds $$1) {
+   private vt a(emw $$0, ds $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         emw $$3 = $$2.aH();
-         emo $$4 = $$3.a(this.f);
+         emx $$3 = $$2.aH();
+         emp $$4 = $$3.a(this.f);
          if ($$4 != null) {
-            ems $$5 = $$3.d($$0, $$4);
+            emt $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(wy.b));
             }
@@ -83,12 +83,12 @@ public class wn implements vg {
    }
 
    @Override
-   public vt a(@Nullable ds $$0, @Nullable blu $$1, int $$2) throws CommandSyntaxException {
+   public vt a(@Nullable ds $$0, @Nullable blv $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return vf.i();
       } else {
-         emv $$3 = this.a($$0);
-         emv $$4 = (emv)($$1 != null && $$3.equals(emv.cv) ? $$1 : $$3);
+         emw $$3 = this.a($$0);
+         emw $$4 = (emw)($$1 != null && $$3.equals(emw.cv) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

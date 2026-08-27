@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public interface dlq {
-   @Nullable
-   dlp c(int var1, int var2);
+public interface dlq extends csv {
+   void a(BiConsumer<hx, djh> var1);
 
-   default void a(ctx $$0, iz $$1) {
-   }
-
-   csu q();
+   eeb B();
 }

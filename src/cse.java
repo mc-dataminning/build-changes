@@ -1,11 +1,11 @@
-public class cse extends cri {
-   public cse(cri.a $$0, blz... $$1) {
-      super($$0, crj.i, $$1);
+public class cse extends crj {
+   public cse(crj.a $$0, bma... $$1) {
+      super($$0, crk.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 5 + $$0 * 7;
    }
 
    @Override
@@ -16,10 +16,5 @@ public class cse extends cri {
    @Override
    public int a() {
       return 3;
-   }
-
-   @Override
-   public boolean a(cri $$0) {
-      return super.a($$0) && $$0 != crm.E && $$0 != crm.H;
    }
 }

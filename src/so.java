@@ -97,17 +97,17 @@ public class so extends td {
 
    @Override
    public int g() {
-      return aun.a(this.w);
+      return auo.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aun.a(this.w) & 65535);
+      return (short)(auo.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aun.a(this.w) & 0xFF);
+      return (byte)(auo.a(this.w) & 0xFF);
    }
 
    @Override

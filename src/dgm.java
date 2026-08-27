@@ -1,91 +1,56 @@
-public class dgm {
-   public static final ahf<dgl> a = a("base");
-   public static final ahf<dgl> b = a("square_bottom_left");
-   public static final ahf<dgl> c = a("square_bottom_right");
-   public static final ahf<dgl> d = a("square_top_left");
-   public static final ahf<dgl> e = a("square_top_right");
-   public static final ahf<dgl> f = a("stripe_bottom");
-   public static final ahf<dgl> g = a("stripe_top");
-   public static final ahf<dgl> h = a("stripe_left");
-   public static final ahf<dgl> i = a("stripe_right");
-   public static final ahf<dgl> j = a("stripe_center");
-   public static final ahf<dgl> k = a("stripe_middle");
-   public static final ahf<dgl> l = a("stripe_downright");
-   public static final ahf<dgl> m = a("stripe_downleft");
-   public static final ahf<dgl> n = a("small_stripes");
-   public static final ahf<dgl> o = a("cross");
-   public static final ahf<dgl> p = a("straight_cross");
-   public static final ahf<dgl> q = a("triangle_bottom");
-   public static final ahf<dgl> r = a("triangle_top");
-   public static final ahf<dgl> s = a("triangles_bottom");
-   public static final ahf<dgl> t = a("triangles_top");
-   public static final ahf<dgl> u = a("diagonal_left");
-   public static final ahf<dgl> v = a("diagonal_up_right");
-   public static final ahf<dgl> w = a("diagonal_up_left");
-   public static final ahf<dgl> x = a("diagonal_right");
-   public static final ahf<dgl> y = a("circle");
-   public static final ahf<dgl> z = a("rhombus");
-   public static final ahf<dgl> A = a("half_vertical");
-   public static final ahf<dgl> B = a("half_horizontal");
-   public static final ahf<dgl> C = a("half_vertical_right");
-   public static final ahf<dgl> D = a("half_horizontal_bottom");
-   public static final ahf<dgl> E = a("border");
-   public static final ahf<dgl> F = a("curly_border");
-   public static final ahf<dgl> G = a("gradient");
-   public static final ahf<dgl> H = a("gradient_up");
-   public static final ahf<dgl> I = a("bricks");
-   public static final ahf<dgl> J = a("globe");
-   public static final ahf<dgl> K = a("creeper");
-   public static final ahf<dgl> L = a("skull");
-   public static final ahf<dgl> M = a("flower");
-   public static final ahf<dgl> N = a("mojang");
-   public static final ahf<dgl> O = a("piglin");
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static ahf<dgl> a(String $$0) {
-      return ahf.a(ke.d, new ahg($$0));
+public class dgm {
+   final String a;
+
+   public dgm(String $$0) {
+      this.a = $$0;
    }
 
-   public static dgl a(it<dgl> $$0) {
-      it.a($$0, a, new dgl("b"));
-      it.a($$0, b, new dgl("bl"));
-      it.a($$0, c, new dgl("br"));
-      it.a($$0, d, new dgl("tl"));
-      it.a($$0, e, new dgl("tr"));
-      it.a($$0, f, new dgl("bs"));
-      it.a($$0, g, new dgl("ts"));
-      it.a($$0, h, new dgl("ls"));
-      it.a($$0, i, new dgl("rs"));
-      it.a($$0, j, new dgl("cs"));
-      it.a($$0, k, new dgl("ms"));
-      it.a($$0, l, new dgl("drs"));
-      it.a($$0, m, new dgl("dls"));
-      it.a($$0, n, new dgl("ss"));
-      it.a($$0, o, new dgl("cr"));
-      it.a($$0, p, new dgl("sc"));
-      it.a($$0, q, new dgl("bt"));
-      it.a($$0, r, new dgl("tt"));
-      it.a($$0, s, new dgl("bts"));
-      it.a($$0, t, new dgl("tts"));
-      it.a($$0, u, new dgl("ld"));
-      it.a($$0, v, new dgl("rd"));
-      it.a($$0, w, new dgl("lud"));
-      it.a($$0, x, new dgl("rud"));
-      it.a($$0, y, new dgl("mc"));
-      it.a($$0, z, new dgl("mr"));
-      it.a($$0, A, new dgl("vh"));
-      it.a($$0, B, new dgl("hh"));
-      it.a($$0, C, new dgl("vhr"));
-      it.a($$0, D, new dgl("hhb"));
-      it.a($$0, E, new dgl("bo"));
-      it.a($$0, F, new dgl("cbo"));
-      it.a($$0, G, new dgl("gra"));
-      it.a($$0, H, new dgl("gru"));
-      it.a($$0, I, new dgl("bri"));
-      it.a($$0, J, new dgl("glb"));
-      it.a($$0, K, new dgl("cre"));
-      it.a($$0, L, new dgl("sku"));
-      it.a($$0, M, new dgl("flo"));
-      it.a($$0, N, new dgl("moj"));
-      return it.a($$0, O, new dgl("pig"));
+   public static ahg a(ahf<dgm> $$0, boolean $$1) {
+      String $$2 = $$1 ? "banner" : "shield";
+      return $$0.a().d("entity/" + $$2 + "/");
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   @Nullable
+   public static ih<dgm> a(String $$0) {
+      return kd.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   }
+
+   public static class a {
+      private final List<Pair<ih<dgm>, clm>> a = Lists.newArrayList();
+
+      public dgm.a a(ahf<dgm> $$0, clm $$1) {
+         return this.a(kd.am.f($$0), $$1);
+      }
+
+      public dgm.a a(ih<dgm> $$0, clm $$1) {
+         return this.a(Pair.of($$0, $$1));
+      }
+
+      public dgm.a a(Pair<ih<dgm>, clm> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public st a() {
+         st $$0 = new st();
+
+         for (Pair<ih<dgm>, clm> $$1 : this.a) {
+            sn $$2 = new sn();
+            $$2.a("Pattern", ((dgm)((ih)$$1.getFirst()).a()).a);
+            $$2.a("Color", ((clm)$$1.getSecond()).a());
+            $$0.add($$2);
+         }
+
+         return $$0;
+      }
    }
 }

@@ -1,70 +1,88 @@
-public class ftl {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-   public ftl(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class ftl implements AutoCloseable {
+   private final fsx c;
+   public final eon a;
+   public final eon b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
+
+   public ftl(aqi $$0, String $$1, eon $$2, eon $$3) throws IOException {
+      this.c = new fsx($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public ftl a(ftl $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   public int a() {
-      return this.a;
+   public final String a() {
+      return this.c.h();
    }
 
-   public int b() {
-      return this.b;
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
    }
 
-   public void b(int $$0) {
-      this.b = $$0;
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+      }
+
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      evi $$4 = evi.O();
+      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
+      this.c.g();
+      this.b.b(evi.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      epw $$5 = eqd.b().d();
+      $$5.a(eqg.b.h, epz.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      epx.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
+
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof eon) {
+            ((eon)$$6).d();
+         }
+      }
    }
 
-   public int c() {
+   public fsx b() {
       return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

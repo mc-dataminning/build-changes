@@ -1,15 +1,13 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-@Deprecated
-public class aui<T> {
-   private final Supplier<T> a;
-
-   public aui(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
+public record aui<A>(Codec<A> a) {
+   @Deprecated
+   public static <A> aui<A> a(Codec<A> $$0) {
+      return new aui<>($$0);
    }
 
-   public T a() {
-      return this.a.get();
+   public static <A> aui<A> a(MapCodec<A> $$0) {
+      return new aui<>($$0.codec());
    }
 }

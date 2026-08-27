@@ -1,75 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dgg extends ddq {
-   public static final MapCodec<dgg> b = b(dgg::new);
-   @Nullable
-   private static djl h;
-   @Nullable
-   private static djl i;
+public class dgg extends czs {
+   public static final MapCodec<dgg> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(czs::b), u()).apply($$0, dgg::new));
 
    @Override
    public MapCodec<dgg> a() {
-      return b;
+      return e;
    }
 
-   protected dgg(djf.d $$0) {
-      super(ddq.b.d, $$0);
+   public dgg(blg $$0, int $$1, djg.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dgg(List<der.a> $$0, djg.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dgu $$5 = $$0.c_($$1);
-      if ($$5 instanceof dif) {
-         a($$0, $$1, (dif)$$5);
-      }
+   protected boolean b(djh $$0, csv $$1, hx $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(cws.dV) || $$0.a(cws.dW) || $$0.a(cws.dX);
    }
 
-   public static void a(cto $$0, hx $$1, dif $$2) {
-      if (!$$0.B) {
-         djg $$3 = $$2.r();
-         boolean $$4 = $$3.a(cwr.gG) || $$3.a(cwr.gH);
-         if ($$4 && $$1.v() >= $$0.J_() && $$0.ak() != bjx.a) {
-            djl.b $$5 = s().a($$0, $$1);
-            if ($$5 != null) {
-               cbh $$6 = bly.bm.a($$0);
-               if ($$6 != null) {
-                  cxj.a($$0, $$5);
-                  hx $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ic.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aU = $$5.b().o() == ic.a.a ? 0.0F : 90.0F;
-                  $$6.u();
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
+      emm $$4 = this.a($$0, $$1, $$2, ely.a());
+      elt $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.c;
+      double $$7 = (double)$$2.w() + $$5.e;
 
-                  for (ane $$8 : $$0.a(ane.class, $$6.cH().g(50.0))) {
-                     am.o.a($$8, $$6);
-                  }
-
-                  $$0.b($$6);
-                  cxj.b($$0, $$5);
-               }
-            }
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(jx.ab, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
    }
 
-   public static boolean b(cto $$0, hx $$1, cmx $$2) {
-      return $$2.a(cna.uf) && $$1.v() >= $$0.J_() + 2 && $$0.ak() != bjx.a && !$$0.B ? y().a($$0, $$1) != null : false;
-   }
-
-   private static djl s() {
-      if (h == null) {
-         h = djm.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(asg.aE)).a('^', djk.a(djp.a(cwr.gG).or(djp.a(cwr.gH)))).a('~', $$0 -> $$0.a().i()).b();
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      if (!$$1.B && $$1.ak() != bjy.a) {
+         if ($$3 instanceof bml $$4 && !$$4.b($$1.ai().p())) {
+            $$4.b(new bli(blk.t, 40));
+         }
       }
-
-      return h;
-   }
-
-   private static djl y() {
-      if (i == null) {
-         i = djm.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(asg.aE)).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return i;
    }
 }

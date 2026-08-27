@@ -3,27 +3,27 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record ci(
-   Optional<ci.b> b, Optional<ahf<cun>> c, Optional<ahf<dzf>> d, Optional<ahf<cto>> e, Optional<Boolean> f, Optional<cf> g, Optional<au> h, Optional<bw> i
+   Optional<ci.b> b, Optional<ahf<cuo>> c, Optional<ahf<dzg>> d, Optional<ahf<ctp>> e, Optional<Boolean> f, Optional<cf> g, Optional<au> h, Optional<bw> i
 ) {
    public static final Codec<ci> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atv.a(ci.b.a, "position").forGetter(ci::a),
-               atv.a(ahf.a(ke.at), "biome").forGetter(ci::b),
-               atv.a(ahf.a(ke.aD), "structure").forGetter(ci::c),
-               atv.a(ahf.a(ke.aM), "dimension").forGetter(ci::d),
-               atv.a(Codec.BOOL, "smokey").forGetter(ci::e),
-               atv.a(cf.a, "light").forGetter(ci::f),
-               atv.a(au.a, "block").forGetter(ci::g),
-               atv.a(bw.a, "fluid").forGetter(ci::h)
+               atw.a(ci.b.a, "position").forGetter(ci::a),
+               atw.a(ahf.a(ke.at), "biome").forGetter(ci::b),
+               atw.a(ahf.a(ke.aD), "structure").forGetter(ci::c),
+               atw.a(ahf.a(ke.aM), "dimension").forGetter(ci::d),
+               atw.a(Codec.BOOL, "smokey").forGetter(ci::e),
+               atw.a(cf.a, "light").forGetter(ci::f),
+               atw.a(au.a, "block").forGetter(ci::g),
+               atw.a(bw.a, "fluid").forGetter(ci::h)
             )
             .apply($$0, ci::new)
    );
 
    private static Optional<ci> a(
       Optional<ci.b> $$0,
-      Optional<ahf<cun>> $$1,
-      Optional<ahf<dzf>> $$2,
-      Optional<ahf<cto>> $$3,
+      Optional<ahf<cuo>> $$1,
+      Optional<ahf<dzg>> $$2,
+      Optional<ahf<ctp>> $$3,
       Optional<Boolean> $$4,
       Optional<cf> $$5,
       Optional<au> $$6,
@@ -44,7 +44,7 @@ public record ci(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && $$0.t($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == cxd.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == cxe.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -66,15 +66,15 @@ public record ci(
       return this.b;
    }
 
-   public Optional<ahf<cun>> b() {
+   public Optional<ahf<cuo>> b() {
       return this.c;
    }
 
-   public Optional<ahf<dzf>> c() {
+   public Optional<ahf<dzg>> c() {
       return this.d;
    }
 
-   public Optional<ahf<cto>> d() {
+   public Optional<ahf<ctp>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record ci(
       private ck.c a;
       private ck.c b;
       private ck.c c;
-      private Optional<ahf<cun>> d;
-      private Optional<ahf<dzf>> e;
-      private Optional<ahf<cto>> f;
+      private Optional<ahf<cuo>> d;
+      private Optional<ahf<dzg>> e;
+      private Optional<ahf<ctp>> f;
       private Optional<Boolean> g;
       private Optional<cf> h;
       private Optional<au> i;
@@ -123,15 +123,15 @@ public record ci(
          return new ci.a();
       }
 
-      public static ci.a a(ahf<cun> $$0) {
+      public static ci.a a(ahf<cuo> $$0) {
          return a().d($$0);
       }
 
-      public static ci.a b(ahf<cto> $$0) {
+      public static ci.a b(ahf<ctp> $$0) {
          return a().f($$0);
       }
 
-      public static ci.a c(ahf<dzf> $$0) {
+      public static ci.a c(ahf<dzg> $$0) {
          return a().e($$0);
       }
 
@@ -154,17 +154,17 @@ public record ci(
          return this;
       }
 
-      public ci.a d(ahf<cun> $$0) {
+      public ci.a d(ahf<cuo> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ci.a e(ahf<dzf> $$0) {
+      public ci.a e(ahf<dzg> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ci.a f(ahf<cto> $$0) {
+      public ci.a f(ahf<ctp> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -198,7 +198,7 @@ public record ci(
    static record b(ck.c b, ck.c c, ck.c d) {
       public static final Codec<ci.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atv.a(ck.c.d, "x", ck.c.c).forGetter(ci.b::a), atv.a(ck.c.d, "y", ck.c.c).forGetter(ci.b::b), atv.a(ck.c.d, "z", ck.c.c).forGetter(ci.b::c)
+                  atw.a(ck.c.d, "x", ck.c.c).forGetter(ci.b::a), atw.a(ck.c.d, "y", ck.c.c).forGetter(ci.b::b), atw.a(ck.c.d, "z", ck.c.c).forGetter(ci.b::c)
                )
                .apply($$0, ci.b::new)
       );

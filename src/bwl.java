@@ -1,27 +1,29 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
-public abstract class bwl extends bwr<bmk> {
-   protected abstract boolean a(bmk var1, bmk var2);
+public class bwl<T extends bml> extends bws<T> {
+   @Override
+   protected void a(and $$0, T $$1) {
+      elo $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bml> $$3 = $$0.a(bml.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bnl<?> $$4 = $$1.dO();
+      $$4.a(bvn.g, $$3);
+      $$4.a(bvn.h, new bvp($$1, $$3));
+   }
 
-   protected abstract bvm<bmk> b();
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
+   }
 
    @Override
-   public Set<bvm<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
-
-   @Override
-   protected void a(and $$0, bmk $$1) {
-      $$1.dO().a(this.b(), this.b($$1));
-   }
-
-   private Optional<bmk> b(bmk $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<bvo> a(bmk $$0) {
-      return $$0.dO().c(bvm.h);
+   public Set<bvn<?>> a() {
+      return ImmutableSet.of(bvn.g, bvn.h);
    }
 }

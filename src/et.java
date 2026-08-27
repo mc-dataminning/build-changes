@@ -27,16 +27,16 @@ public class et implements ArgumentType<ahg> {
       }
    }
 
-   public static cqd<?> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      cqe $$2 = ((ds)$$0.getSource()).l().aG();
+   public static cqe<?> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      cqf $$2 = ((ds)$$0.getSource()).l().aG();
       ahg $$3 = e($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static eju c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static ejv c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       ahg $$2 = e($$0, $$1);
-      egy $$3 = ((ds)$$0.getSource()).l().aJ();
-      eju $$4 = $$3.getElement(eha.a, $$2);
+      egz $$3 = ((ds)$$0.getSource()).l().aJ();
+      ejv $$4 = $$3.getElement(ehb.a, $$2);
       if ($$4 == null) {
          throw d.create($$2);
       } else {
@@ -44,10 +44,10 @@ public class et implements ArgumentType<ahg> {
       }
    }
 
-   public static eii d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static eij d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       ahg $$2 = e($$0, $$1);
-      egy $$3 = ((ds)$$0.getSource()).l().aJ();
-      eii $$4 = $$3.getElement(eha.b, $$2);
+      egz $$3 = ((ds)$$0.getSource()).l().aJ();
+      eij $$4 = $$3.getElement(ehb.b, $$2);
       if ($$4 == null) {
          throw e.create($$2);
       } else {

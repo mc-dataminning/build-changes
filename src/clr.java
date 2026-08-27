@@ -1,30 +1,24 @@
-public class clr extends cms implements cly {
-   public clr(cms.a $$0) {
+public class clr extends cmt {
+   public clr(cmt.a $$0) {
       super($$0);
-      cyu.a(this, ckh.a);
-   }
-
-   public static boolean d(cmx $$0) {
-      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public boolean a(cmx $$0, cmx $$1) {
-      return $$1.a(cna.vJ);
-   }
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), ars.hj, art.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cgi $$4 = new cgi($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
+      $$1.b(asc.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public arq as_() {
-      return arr.ae;
-   }
-
-   @Override
-   public blz g() {
-      return blz.e;
+      return bkc.a($$3, $$0.y_());
    }
 }

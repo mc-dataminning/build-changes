@@ -1,34 +1,87 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record emp(String a, int b, @Nullable vf c, @Nullable wv d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public class emp {
+   private final emx a;
+   private final String b;
+   private final ena c;
+   private vf d;
+   private vf e;
+   private ena.a f;
+   private boolean g;
+   @Nullable
+   private wv h;
+
+   public emp(emx $$0, String $$1, ena $$2, vf $$3, ena.a $$4, boolean $$5, @Nullable wv $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public vf b() {
-      return (vf)(this.c != null ? this.c : vf.b(this.c()));
-   }
-
-   public vt a(wv $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
+   public emx a() {
       return this.a;
    }
 
-   public int d() {
+   public String b() {
       return this.b;
    }
 
-   @Nullable
-   public vf e() {
+   public ena c() {
       return this.c;
+   }
+
+   public vf d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.g;
    }
 
    @Nullable
    public wv f() {
-      return this.d;
+      return this.h;
+   }
+
+   public wv a(wv $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
+
+   private vf i() {
+      return vi.a((vf)this.d.f().a($$0 -> $$0.a(new vl(vl.a.a, vf.b(this.b)))));
+   }
+
+   public vf g() {
+      return this.e;
+   }
+
+   public void a(vf $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
+
+   public ena.a h() {
+      return this.f;
+   }
+
+   public void a(ena.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable wv $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

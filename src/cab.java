@@ -1,44 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class cab extends bzv {
-   public cab(bly<? extends cab> $$0, cto $$1) {
-      super($$0, $$1);
+public enum cab {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<cab> f = atg.a(cab::a, values(), atg.a.b);
+   private final int g;
+
+   private cab(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected arq y() {
-      return arr.oG;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected arq gD() {
-      return arr.oH;
-   }
-
-   @Override
-   protected arq n_() {
-      return arr.oJ;
-   }
-
-   @Nullable
-   @Override
-   protected arq gl() {
-      return arr.oK;
-   }
-
-   @Override
-   protected arq d(bks $$0) {
-      return arr.oL;
-   }
-
-   @Override
-   protected void ge() {
-      this.a(arr.oI, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public blp a(and $$0, blp $$1) {
-      return bly.aq.a((cto)$$0);
+   public static cab a(int $$0) {
+      return f.apply($$0);
    }
 }

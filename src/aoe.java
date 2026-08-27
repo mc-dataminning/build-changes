@@ -36,7 +36,7 @@ public class aoe implements afs, uu {
    public aoe(MinecraftServer $$0, ug $$1) {
       this.f = $$0;
       this.g = $$1;
-      this.e = Ints.toByteArray(auu.a().f());
+      this.e = Ints.toByteArray(auv.a().f());
    }
 
    @Override
@@ -78,6 +78,7 @@ public class aoe implements afs, uu {
       b.info("{} lost connection: {}", this.f(), $$0.getString());
    }
 
+   @Override
    public String f() {
       String $$0 = this.g.a(this.f.bj());
       return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
@@ -86,7 +87,7 @@ public class aoe implements afs, uu {
    @Override
    public void a(afu $$0) {
       Validate.validState(this.h == aoe.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(cfh.c($$0.a()), "Invalid characters in username", new Object[0]);
+      Validate.validState(cfi.c($$0.a()), "Invalid characters in username", new Object[0]);
       this.j = $$0.a();
       GameProfile $$1 = this.f.P();
       if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
@@ -107,7 +108,7 @@ public class aoe implements afs, uu {
    }
 
    private void c(GameProfile $$0) {
-      aqu $$1 = this.f.ae();
+      aqv $$1 = this.f.ae();
       vf $$2 = $$1.a(this.g.f(), $$0);
       if ($$2 != null) {
          this.b($$2);
@@ -142,12 +143,12 @@ public class aoe implements afs, uu {
          }
 
          SecretKey $$2 = $$0.a($$1);
-         Cipher $$3 = atl.a(2, $$2);
-         Cipher $$4 = atl.a(1, $$2);
-         $$5 = new BigInteger(atl.a("", this.f.N().getPublic(), $$2)).toString(16);
+         Cipher $$3 = atm.a(2, $$2);
+         Cipher $$4 = atm.a(1, $$2);
+         $$5 = new BigInteger(atm.a("", this.f.N().getPublic(), $$2)).toString(16);
          this.h = aoe.a.c;
          this.g.a($$3, $$4);
-      } catch (atm var7) {
+      } catch (atn var7) {
          throw new IllegalStateException("Protocol error", var7);
       }
 
@@ -203,6 +204,11 @@ public class aoe implements afs, uu {
       this.g.a($$2);
       $$2.m();
       this.h = aoe.a.h;
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Login phase", () -> this.h.toString());
    }
 
    static enum a {

@@ -1,6 +1,17 @@
-public enum fax {
-   a,
-   b,
-   c,
-   d;
+public interface fax extends eyq, fba {
+   fax.a s();
+
+   default boolean A() {
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
+   }
 }

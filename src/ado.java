@@ -1,7 +1,7 @@
 public class ado implements xf<adj> {
-   private final bjx a;
+   private final bjy a;
 
-   public ado(bjx $$0) {
+   public ado(bjy $$0) {
       this.a = $$0;
    }
 
@@ -10,7 +10,7 @@ public class ado implements xf<adj> {
    }
 
    public ado(ui $$0) {
-      this.a = bjx.a($$0.readUnsignedByte());
+      this.a = bjy.a($$0.readUnsignedByte());
    }
 
    @Override
@@ -18,7 +18,7 @@ public class ado implements xf<adj> {
       $$0.k(this.a.a());
    }
 
-   public bjx a() {
+   public bjy a() {
       return this.a;
    }
 }

@@ -1,30 +1,27 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
 
-public class aya extends bce {
-   public aya(Schema $$0, boolean $$1) {
-      super("EntityCatSplitFix", $$0, $$1);
+public class aya extends baw {
+   public aya(Schema $$0) {
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bbw.s, "minecraft:brushable_block");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
    }
 
    @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("minecraft:ocelot", $$0)) {
-         int $$2 = $$1.get("CatType").asInt(0);
-         if ($$2 == 0) {
-            String $$3 = $$1.get("Owner").asString("");
-            String $$4 = $$1.get("OwnerUUID").asString("");
-            if ($$3.length() > 0 || $$4.length() > 0) {
-               $$1.set("Trusting", $$1.createBoolean(true));
-            }
-         } else if ($$2 > 0 && $$2 < 4) {
-            $$1 = $$1.set("CatType", $$1.createInt($$2));
-            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
-            return Pair.of("minecraft:cat", $$1);
-         }
-      }
-
-      return Pair.of($$0, $$1);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

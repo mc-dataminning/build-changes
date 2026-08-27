@@ -1,99 +1,26 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class buu extends btg {
-   private final btg a;
-   private final int b;
-   private boolean c;
+public class buu extends bue {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public buu(int $$0, btg $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public buu(bmu $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   public boolean a(buu $$0) {
-      return this.S_() && $$0.i() < this.i();
+   public buu(bmu $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean S_() {
-      return this.a.S_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
-   }
-
-   @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean T_() {
-      return this.a.T_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<btg.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<btg.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public btg k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
+   protected elt h() {
+      if (this.b.bc()) {
+         elt $$0 = bxg.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((buu)$$0).a) : false;
+         return this.b.eg().i() >= this.j ? bxg.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

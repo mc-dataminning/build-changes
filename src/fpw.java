@@ -1,26 +1,30 @@
-public class fpw extends fru {
-   private final eep b;
-   protected boolean a;
+public class fpw extends frv {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final frq M;
 
-   fpw(fnr $$0, double $$1, double $$2, double $$3, eep $$4) {
+   fpw(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, frq $$7) {
       super($$0, $$1, $$2, $$3);
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.b = $$4;
-   }
-
-   protected eep g() {
-      return this.b;
-   }
-
-   @Override
-   public fqy b() {
-      return fqy.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = auo.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = auo.a(this.r, 0.0F, 0.0F);
+      this.x = auo.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
@@ -28,260 +32,52 @@ public class fpw extends fru {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      this.h();
-      if (!this.o) {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.i();
-         if (!this.o) {
-            this.j *= 0.98F;
-            this.k *= 0.98F;
-            this.l *= 0.98F;
-            if (this.b != eer.a) {
-               hx $$0 = hx.a(this.g, this.h, this.i);
-               eeq $$1 = this.c.b_($$0);
-               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((csu)this.c, $$0))) {
-                  this.k();
-               }
-            }
-         }
-      }
-   }
-
-   protected void h() {
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
-      }
-   }
-
-   protected void i() {
-   }
-
-   public static fru a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.b($$1, $$2, $$3, $$4, eer.c, jx.n);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fru b(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.e($$1, $$2, $$3, $$4, eer.c, jx.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fru c(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fpw.a($$1, $$2, $$3, $$4, eer.e, jx.k);
-   }
-
-   public static fru d(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.e($$1, $$2, $$3, $$4, eer.e, jx.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fru e(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.c($$1, $$2, $$3, $$4, eer.e);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fru f(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw.b $$8 = new fpw.b($$1, $$2, $$3, $$4, eer.a, jx.at);
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.622F, 0.508F, 0.082F);
-      return $$8;
-   }
-
-   public static fru g(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.g($$1, $$2, $$3, $$4, eer.a, jx.au);
-      $$8.u = 0.01F;
-      $$8.a(0.582F, 0.448F, 0.082F);
-      return $$8;
-   }
-
-   public static fru h(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.c($$1, $$2, $$3, $$4, eer.a);
-      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.522F, 0.408F, 0.082F);
-      return $$8;
-   }
-
-   public static fru i(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.b($$1, $$2, $$3, $$4, eer.c, jx.aL);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fru j(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.d($$1, $$2, $$3, $$4, eer.c, jx.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fru k(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fpw.a($$1, $$2, $$3, $$4, eer.e, jx.aJ);
-   }
-
-   public static fru l(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.d($$1, $$2, $$3, $$4, eer.e, jx.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fru m(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.f($$1, $$2, $$3, $$4, eer.a);
-      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      $$8.u = 0.007F;
-      $$8.a(0.92F, 0.782F, 0.72F);
-      return $$8;
-   }
-
-   public static fru n(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      int $$8 = (int)(64.0F / aun.b($$1.F_(), 0.1F, 0.9F));
-      fpw $$9 = new fpw.f($$1, $$2, $$3, $$4, eer.a, $$8);
-      $$9.u = 0.005F;
-      $$9.a(0.32F, 0.5F, 0.22F);
-      return $$9;
-   }
-
-   public static fru o(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw.b $$8 = new fpw.b($$1, $$2, $$3, $$4, eer.a, jx.aC);
-      $$8.a = true;
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fru p(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.e($$1, $$2, $$3, $$4, eer.a, jx.aD);
-      $$8.a = true;
-      $$8.u = 0.01F;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fru q(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fpw $$8 = new fpw.c($$1, $$2, $$3, $$4, eer.a);
-      $$8.a = true;
-      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   static class a extends fpw.b {
-      a(fnr $$0, double $$1, double $$2, double $$3, eep $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void h() {
-         this.v = 1.0F;
-         this.w = 16.0F / (float)(40 - this.t + 16);
-         this.x = 4.0F / (float)(40 - this.t + 8);
-         super.h();
-      }
-   }
-
-   static class b extends fpw {
-      private final jv b;
-
-      b(fnr $$0, double $$1, double $$2, double $$3, eep $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-         this.u *= 0.02F;
-         this.t = 40;
-      }
-
-      @Override
-      protected void h() {
-         if (this.t-- <= 0) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
-
-      @Override
-      protected void i() {
-         this.j *= 0.02;
-         this.k *= 0.02;
-         this.l *= 0.02;
-      }
-   }
-
-   static class c extends fpw {
-      c(fnr $$0, double $$1, double $$2, double $$3, eep $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      }
-   }
-
-   static class d extends fpw.e {
-      d(fnr $$0, double $$1, double $$2, double $$3, eep $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void i() {
+      } else {
+         this.b(this.M);
          if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            arq $$0 = this.g() == eer.e ? arr.gT : arr.gU;
-            float $$1 = aun.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, $$0, ars.e, $$1, 1.0F, false);
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
          }
       }
    }
 
-   static class e extends fpw.f {
-      protected final jv b;
-
-      e(fnr $$0, double $$1, double $$2, double $$3, eep $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   public fqz b() {
+      return fqz.b;
    }
 
-   static class f extends fpw {
-      f(fnr $$0, double $$1, double $$2, double $$3, eep $$4) {
-         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
-      }
-
-      f(fnr $$0, double $$1, double $$2, double $$3, eep $$4, int $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-         }
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * auo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   static class g extends fpw.e {
-      g(fnr $$0, double $$1, double $$2, double $$3, eep $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
+   public static class a implements fqy<ka> {
+      private final frq a;
+
+      public a(frq $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            float $$0 = aun.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, arr.bF, ars.e, $$0, 1.0F, false);
-         }
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,11 +1,11 @@
-public class cre extends cri {
-   public cre(cri.a $$0, blz... $$1) {
-      super($$0, crj.l, $$1);
+public class cre extends crj {
+   public cre(crj.a $$0, bma... $$1) {
+      super($$0, crk.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
@@ -14,17 +14,12 @@ public class cre extends cri {
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 4;
    }
 
    @Override
-   public boolean c() {
-      return true;
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return !$$0.a(cna.vl) && super.a($$0);
+   public boolean a(crj $$0) {
+      return super.a($$0) && $$0 != crn.I;
    }
 }

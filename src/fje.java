@@ -1,61 +1,88 @@
-public class fje extends fks {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fmw e;
-   private final fmw f;
-   private final fmw g;
-   private final fmw h;
-   private final fmw i;
-   private final fmw j;
-   private final fmw k;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fje(fmw $$0) {
-      super(fto::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+public class fje extends fkp<chc> implements fmk {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "water_patch";
+   private static final String g = "bottom";
+   private static final String h = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
+   private final fmx l;
+   private final fmx m;
+   private final fmx n;
+   private final ImmutableList<fmx> o;
+
+   public fje(fmx $$0) {
+      this.l = $$0.b("left_paddle");
+      this.m = $$0.b("right_paddle");
+      this.n = $$0.b("water_patch");
+      this.o = this.a($$0).build();
    }
 
-   public static fnc a() {
-      fne $$0 = new fne();
-      fnf $$1 = $$0.a();
-      $$1.a("left_lid", fnb.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fmy.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fnb.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fmy.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fnb.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fmy.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fnb.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fmy.a);
-      $$1.a("right_pages", fnb.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fmy.a);
-      fnb $$2 = fnb.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fmy.a);
-      $$1.a("flip_page2", $$2, fmy.a);
-      return fnc.a($$0, 64, 32);
+   protected Builder<fmx> a(fmx $$0) {
+      Builder<fmx> $$1 = new Builder();
+      $$1.add(new fmx[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
+      return $$1;
+   }
+
+   public static void a(fng $$0) {
+      int $$1 = 32;
+      int $$2 = 6;
+      int $$3 = 20;
+      int $$4 = 4;
+      int $$5 = 28;
+      $$0.a("bottom", fnc.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fmz.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", fnc.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fmz.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", fnc.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fmz.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", fnc.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fmz.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", fnc.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fmz.a(0.0F, 4.0F, 9.0F));
+      int $$6 = 20;
+      int $$7 = 7;
+      int $$8 = 6;
+      float $$9 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fnc.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fmz.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fnc.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fmz.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
+      $$0.a("water_patch", fnc.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fmz.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   }
+
+   public static fnd a() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      a($$1);
+      return fnd.a($$0, 128, 64);
+   }
+
+   public void a(chc $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.l, $$1);
+      a($$0, 1, this.m, $$1);
+   }
+
+   public ImmutableList<fmx> b() {
+      return this.o;
    }
 
    @Override
-   public void a(eqa $$0, eqe $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fmx c() {
+      return this.n;
    }
 
-   public void b(eqa $$0, eqe $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (aun.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = aun.a($$4);
-      this.i.b = aun.a($$4);
-      this.j.b = aun.a($$4);
-      this.k.b = aun.a($$4);
+   private static void a(chc $$0, int $$1, fmx $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = auo.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (auo.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = auo.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (auo.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

@@ -1,11 +1,11 @@
-public class crr extends cri {
-   protected crr(cri.a $$0, crj $$1, blz... $$2) {
-      super($$0, $$1, $$2);
+public class crr extends crj {
+   protected crr(crj.a $$0, bma... $$1) {
+      super($$0, crk.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 5 + 20 * ($$0 - 1);
    }
 
    @Override
@@ -15,11 +15,6 @@ public class crr extends cri {
 
    @Override
    public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cri $$0) {
-      return super.a($$0) && $$0 != crm.v;
+      return 2;
    }
 }

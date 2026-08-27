@@ -39,7 +39,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
             ahf<?> $$2x = $$1xx.g();
             return er.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            asv<?> $$2x = $$1xx.f();
+            asw<?> $$2x = $$1xx.f();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -51,7 +51,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
          try {
             $$0.skip();
             ahg $$2 = ahg.a($$0);
-            asv<T> $$3 = asv.a(this.e, $$2);
+            asw<T> $$3 = asw.a(this.e, $$2);
             il.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
             return new eu.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -67,7 +67,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dx.a(this.d.e().map(asv::b), $$1, "#");
+      dx.a(this.d.e().map(asw::b), $$1, "#");
       return dx.a(this.d.c().map(ahf::a), $$1);
    }
 

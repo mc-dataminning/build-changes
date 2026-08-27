@@ -1,33 +1,38 @@
+import javax.annotation.Nullable;
+
 public class bxd {
-   public static boolean a(bmm $$0) {
-      return $$0.N() instanceof bvt;
+   @Nullable
+   public static elt a(bmu $$0, int $$1, int $$2) {
+      boolean $$3 = bxe.a($$0, $$1);
+      return bxh.a($$0, () -> {
+         hx $$4 = bxh.a($$0.eg(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   public static boolean a(bmt $$0, int $$1) {
-      return $$0.fQ() && $$0.fN().a($$0.dk(), (double)($$0.fO() + (float)$$1) + 1.0);
+   @Nullable
+   public static elt a(bmu $$0, int $$1, int $$2, elt $$3, double $$4) {
+      elt $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$6 = bxe.a($$0, $$1);
+      return bxh.a($$0, () -> {
+         hx $$6x = bxh.a($$0.eg(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public static boolean a(hx $$0, bmt $$1) {
-      return $$0.v() < $$1.dM().J_() || $$0.v() > $$1.dM().al();
+   @Nullable
+   public static elt a(bmu $$0, int $$1, int $$2, elt $$3) {
+      elt $$4 = $$0.dk().d($$3);
+      boolean $$5 = bxe.a($$0, $$1);
+      return bxh.a($$0, () -> {
+         hx $$5x = bxh.a($$0.eg(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   public static boolean a(boolean $$0, bmt $$1, hx $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bvu $$0, hx $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bmt $$0, hx $$1) {
-      return $$0.dM().b_($$1).a(asl.a);
-   }
-
-   public static boolean b(bmt $$0, hx $$1) {
-      return $$0.a(efk.a($$0.dM(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bmt $$0, hx $$1) {
-      return $$0.dM().a_($$1).e();
+   @Nullable
+   private static hx a(bmu $$0, int $$1, boolean $$2, hx $$3) {
+      hx $$4 = bxh.a($$0, $$1, $$0.eg(), $$3);
+      return !bxe.a($$4, $$0) && !bxe.a($$2, $$0, $$4) && !bxe.a($$0.N(), $$4) && !bxe.b($$0, $$4) ? $$4 : null;
    }
 }

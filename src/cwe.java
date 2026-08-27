@@ -1,140 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class cwe extends cwp implements ddp {
-   protected static final eml a = cwp.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final eml b = cwp.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final djx c = djw.C;
-   private final boolean d;
+public abstract class cwe extends cwq {
+   protected static final emm a = cwq.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final emm b = cwq.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final elo c = new elo(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   protected final djw d;
 
-   public static boolean a(cto $$0, hx $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(djg $$0) {
-      return $$0.a(asg.N) && $$0.b() instanceof cwe;
-   }
-
-   protected cwe(boolean $$0, djf.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected cwe(djg.d $$0, djw $$1) {
+      super($$0.a($$1.g()));
+      this.d = $$1;
    }
 
    @Override
    protected abstract MapCodec<? extends cwe> a();
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return this.g($$0) > 0 ? a : b;
+   }
+
+   protected int b() {
+      return 20;
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      dkk $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
+   public boolean a(djh $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return c($$1, $$2.d());
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      return $$1 == ic.a && !$$0.a($$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      return c($$1, $$3) || a($$1, $$3, ic.b);
+   }
+
+   @Override
+   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
+      int $$4 = this.g($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
    }
 
-   protected djg a(djg $$0, cto $$1, hx $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dkk $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      if (!$$1.B) {
+         int $$4 = this.g($$0);
+         if ($$4 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$4);
          }
       }
    }
 
-   private static boolean a(hx $$0, cto $$1, dkk $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
+   private void a(@Nullable blv $$0, ctp $$1, hx $$2, djh $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         djh $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
       }
-   }
 
-   protected void a(djg $$0, cto $$1, hx $$2, cwp $$3) {
-   }
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.d.l(), art.e);
+         $$1.a($$0, dnr.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.d.m(), art.e);
+         $$1.a($$0, dnr.a, $$2);
+      }
 
-   protected djg a(cto $$0, hx $$1, djg $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dkk $$4 = $$2.c(this.c());
-         return new dco($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
+      if ($$7) {
+         $$1.a(new hx($$2), this, this.b());
       }
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
-      if (!$$4) {
+   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if (this.g($$0) > 0) {
+            this.a($$1, $$2);
+         }
+
          super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
       }
    }
 
-   @Override
-   public djg a(cpg $$0) {
-      eeq $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eer.c;
-      djg $$3 = super.o();
-      ic $$4 = $$0.g();
-      boolean $$5 = $$4 == ic.f || $$4 == ic.e;
-      return $$3.a(this.c(), $$5 ? dkk.b : dkk.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dkj<dkk> c();
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eer.c, eer.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(ctp $$0, hx $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.d(), this);
    }
 
    @Override
-   public eeq c_(djg $$0) {
-      return $$0.c(c) ? eer.c.a(false) : super.c_($$0);
+   public int a(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return this.g($$0);
    }
+
+   @Override
+   public int b(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return $$3 == ic.b ? this.g($$0) : 0;
+   }
+
+   @Override
+   public boolean f_(djh $$0) {
+      return true;
+   }
+
+   protected static int a(ctp $$0, elo $$1, Class<? extends blv> $$2) {
+      return $$0.a($$2, $$1, bly.f.and($$0x -> !$$0x.r_())).size();
+   }
+
+   protected abstract int b(ctp var1, hx var2);
+
+   protected abstract int g(djh var1);
+
+   protected abstract djh a(djh var1, int var2);
 }

@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ty {
    private final AtomicInteger a = new AtomicInteger();
-   private final auw b;
+   private final auy b;
 
-   public ty(auw $$0) {
+   public ty(auy $$0) {
       this.b = $$0;
    }
 

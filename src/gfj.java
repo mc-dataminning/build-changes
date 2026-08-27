@@ -1,9 +1,17 @@
-public class gfj extends gfo {
-   public gfj(gen $$0) {
-      super($$0, new ahg("textures/atlas/mob_effects.png"), new ahg("mob_effects"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public gem a(blf $$0) {
-      return this.a(kd.d.b($$0));
+public class gfj {
+   @Deprecated
+   public static int[] a(aqi $$0, ahg $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         epc $$3 = epc.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
+
+      return var4;
    }
 }

@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface brs {
+public interface brs<E extends bml> {
+   boolean trigger(and var1, E var2, long var3);
 }

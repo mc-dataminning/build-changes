@@ -1,24 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bqv extends bob<bmm> {
-   private final float c;
+public class bqv {
+   public static bod<cev> a(bvn<List<ig>> $$0, float $$1, int $$2, int $$3, bvn<ig> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return brp.a(
+         (Function<brp.b<cev>, ? extends App<brp.c<cev>, brs<cev>>>)($$6 -> $$6.group($$6.a(bvn.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<ig> $$11 = $$6.b($$6x);
+                     ig $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        ig $$13 = $$11.get($$8.F_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dk(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bvq($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public bqv(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   protected boolean a(and $$0, bmm $$1) {
-      return $$1.aZ() && $$1.b(asl.a) > $$1.df() || $$1.bn();
-   }
-
-   protected boolean a(and $$0, bmm $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(and $$0, bmm $$1, long $$2) {
-      if ($$1.eg().i() < this.c) {
-         $$1.M().a();
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

@@ -6,23 +6,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List<bk> f, List<bk> g, Optional<ih<cov>> h, Optional<cm> i) {
-   private static final Codec<il<cms>> j = kd.h.r().listOf().xmap(il::a, $$0 -> $$0.a().toList());
+public record ca(Optional<asw<cmt>> b, Optional<il<cmt>> c, ck.d d, ck.d e, List<bk> f, List<bk> g, Optional<ih<cow>> h, Optional<cm> i) {
+   private static final Codec<il<cmt>> j = kd.h.r().listOf().xmap(il::a, $$0 -> $$0.a().toList());
    public static final Codec<ca> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atv.a(asv.a(ke.F), "tag").forGetter(ca::a),
-               atv.a(j, "items").forGetter(ca::b),
-               atv.a(ck.d.d, "count", ck.d.c).forGetter(ca::c),
-               atv.a(ck.d.d, "durability", ck.d.c).forGetter(ca::d),
-               atv.a(bk.a.listOf(), "enchantments", List.of()).forGetter(ca::e),
-               atv.a(bk.a.listOf(), "stored_enchantments", List.of()).forGetter(ca::f),
-               atv.a(kd.i.r(), "potion").forGetter(ca::g),
-               atv.a(cm.a, "nbt").forGetter(ca::h)
+               atw.a(asw.a(ke.F), "tag").forGetter(ca::a),
+               atw.a(j, "items").forGetter(ca::b),
+               atw.a(ck.d.d, "count", ck.d.c).forGetter(ca::c),
+               atw.a(ck.d.d, "durability", ck.d.c).forGetter(ca::d),
+               atw.a(bk.a.listOf(), "enchantments", List.of()).forGetter(ca::e),
+               atw.a(bk.a.listOf(), "stored_enchantments", List.of()).forGetter(ca::f),
+               atw.a(kd.i.r(), "potion").forGetter(ca::g),
+               atw.a(cm.a, "nbt").forGetter(ca::h)
             )
             .apply($$0, ca::new)
    );
 
-   public boolean a(cmx $$0) {
+   public boolean a(cmy $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
@@ -37,7 +37,7 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
          return false;
       } else {
          if (!this.f.isEmpty()) {
-            Map<cri, Integer> $$1 = crk.a($$0.x());
+            Map<crj, Integer> $$1 = crl.a($$0.x());
 
             for (bk $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -47,7 +47,7 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
          }
 
          if (!this.g.isEmpty()) {
-            Map<cri, Integer> $$3 = crk.a(clt.d($$0));
+            Map<crj, Integer> $$3 = crl.a(clu.d($$0));
 
             for (bk $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -56,15 +56,15 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
             }
          }
 
-         return !this.h.isPresent() || this.h.get().a() == cox.d($$0);
+         return !this.h.isPresent() || this.h.get().a() == coy.d($$0);
       }
    }
 
-   public Optional<asv<cms>> a() {
+   public Optional<asw<cmt>> a() {
       return this.b;
    }
 
-   public Optional<il<cms>> b() {
+   public Optional<il<cmt>> b() {
       return this.c;
    }
 
@@ -84,7 +84,7 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
       return this.g;
    }
 
-   public Optional<ih<cov>> g() {
+   public Optional<ih<cow>> g() {
       return this.h;
    }
 
@@ -95,11 +95,11 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
    public static class a {
       private final Builder<bk> a = ImmutableList.builder();
       private final Builder<bk> b = ImmutableList.builder();
-      private Optional<il<cms>> c = Optional.empty();
-      private Optional<asv<cms>> d = Optional.empty();
+      private Optional<il<cmt>> c = Optional.empty();
+      private Optional<asw<cmt>> d = Optional.empty();
       private ck.d e = ck.d.c;
       private ck.d f = ck.d.c;
-      private Optional<ih<cov>> g = Optional.empty();
+      private Optional<ih<cow>> g = Optional.empty();
       private Optional<cm> h = Optional.empty();
 
       private a() {
@@ -109,12 +109,12 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
          return new ca.a();
       }
 
-      public ca.a a(ctn... $$0) {
+      public ca.a a(cto... $$0) {
          this.c = Optional.of(il.a($$0x -> $$0x.k().j(), $$0));
          return this;
       }
 
-      public ca.a a(asv<cms> $$0) {
+      public ca.a a(asw<cmt> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
@@ -129,7 +129,7 @@ public record ca(Optional<asv<cms>> b, Optional<il<cms>> c, ck.d d, ck.d e, List
          return this;
       }
 
-      public ca.a a(cov $$0) {
+      public ca.a a(cow $$0) {
          this.g = Optional.of($$0.c());
          return this;
       }

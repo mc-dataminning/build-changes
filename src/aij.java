@@ -18,14 +18,14 @@ public class aij {
    private static final Logger a = LogUtils.getLogger();
    private final String b;
    private final int c;
-   private final aqu d;
+   private final aqv d;
    private final int e;
    private volatile boolean f;
    @Nullable
    private ServerSocket g;
    private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public aij(String $$0, int $$1, aqu $$2, int $$3) {
+   public aij(String $$0, int $$1, aqv $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;

@@ -1,40 +1,30 @@
-import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class dwc extends dwb {
-   public static final Codec<dwc> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dwc::new));
-   protected final List<djg> h;
+public abstract class dwc extends dvz {
+   protected final long c;
+   protected final edu.a d;
+   protected final float e;
+   protected final edu f;
 
-   protected static <P extends dwc> P4<Mu<P>, Long, edt.a, Float, List<djg>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(djg.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   protected static <P extends dwc> P3<Mu<P>, Long, edu.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         edu.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         atw.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public dwc(long $$0, edt.a $$1, float $$2, List<djg> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   protected dwc(long $$0, edu.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = edu.b(new dpp(new dor($$0)), $$1);
    }
 
-   @Override
-   protected dvz<?> a() {
-      return dvz.d;
-   }
-
-   @Override
-   public djg a(auu $$0, hx $$1) {
-      return this.a(this.h, $$1, (double)this.e);
-   }
-
-   protected djg a(List<djg> $$0, hx $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected djg a(List<djg> $$0, double $$1) {
-      double $$2 = aun.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   protected double a(hx $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

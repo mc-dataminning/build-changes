@@ -3,51 +3,44 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bra {
-   public static boc<bmt> a(int $$0, float $$1) {
+   public static bod<bmu> a(int $$0, float $$1) {
       MutableLong $$2 = new MutableLong(0L);
-      return bro.a(
-         (Function<bro.b<bmt>, ? extends App<bro.c<bmt>, brr<bmt>>>)($$3 -> $$3.group($$3.c(bvm.o), $$3.c(bvm.m), $$3.a(bvm.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dm()).a(asl.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        hx $$8 = null;
-                        hx $$9 = null;
-                        hx $$10 = $$6.dm();
+      return brp.a(
+         (Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$3 -> $$3.group($$3.c(bvn.o), $$3.c(bvn.m), $$3.a(bvn.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dm()).a(asm.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           ely $$8 = ely.a($$6);
+                           hx $$9 = $$6.dm();
+                           hx.a $$10 = new hx.a();
 
-                        for (hx $$12 : hx.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              djg $$13 = $$6.dM().a_($$12.c());
-                              djg $$14 = $$6.dM().a_($$12);
-                              if ($$14.a(cwr.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
-                                    $$9 = $$12.i();
+                           label45:
+                           for (hx $$11 : hx.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, ic.a)).b($$5x, $$11, $$8).c()) {
+                                 for (ic $$12 : ic.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ic.a)).a(cws.G)) {
+                                       $$5.a(new bof($$11));
+                                       $$4.a(new bvq(new bof($$11), $$1, 0));
+                                       break label45;
+                                    }
                                  }
                               }
                            }
-                        }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
+                           $$2.setValue($$7 + 40L);
+                           return true;
                         }
-
-                        if ($$8 != null) {
-                           $$5.a(new boe($$8));
-                           $$4.a(new bvp(new boe($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

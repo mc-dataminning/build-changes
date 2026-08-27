@@ -243,12 +243,12 @@ public enum uh {
       this.h = $$1.a(this);
    }
 
-   @avs
+   @avt
    public Int2ObjectMap<Class<? extends xf<?>>> a(xg $$0) {
       return this.h.get($$0).d();
    }
 
-   @avs
+   @avt
    public String a() {
       return this.g;
    }

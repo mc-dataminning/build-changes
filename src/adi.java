@@ -20,7 +20,7 @@ public class adi {
       a($$0, (ya)(new yf()));
    }
 
-   public static void a(and $$0, csv $$1) {
+   public static void a(and $$0, csw $$1) {
    }
 
    public static void a(and $$0, hx $$1) {
@@ -38,51 +38,51 @@ public class adi {
    private static void d(and $$0, hx $$1) {
    }
 
-   public static void a(cto $$0, bmm $$1, @Nullable eff $$2, float $$3) {
+   public static void a(ctp $$0, bmn $$1, @Nullable efg $$2, float $$3) {
    }
 
-   public static void a(cto $$0, hx $$1) {
+   public static void a(ctp $$0, hx $$1) {
    }
 
-   public static void a(cuj $$0, dzn $$1) {
+   public static void a(cuk $$0, dzo $$1) {
    }
 
-   public static void a(cto $$0, bmm $$1, bth $$2) {
+   public static void a(ctp $$0, bmn $$1, bti $$2) {
    }
 
-   public static void a(and $$0, Collection<cgp> $$1) {
+   public static void a(and $$0, Collection<cgq> $$1) {
    }
 
-   public static void a(bmk $$0) {
+   public static void a(bml $$0) {
    }
 
-   public static void a(bxy $$0) {
+   public static void a(bxz $$0) {
    }
 
-   public static void a(cdk $$0) {
+   public static void a(cdl $$0) {
    }
 
-   public static void a(cto $$0, dnq $$1, els $$2) {
+   public static void a(ctp $$0, dnr $$1, elt $$2) {
    }
 
-   public static void a(cto $$0, dns $$1) {
+   public static void a(ctp $$0, dnt $$1) {
    }
 
-   public static void a(cto $$0, hx $$1, djg $$2, dgr $$3) {
+   public static void a(ctp $$0, hx $$1, djh $$2, dgs $$3) {
    }
 
-   private static List<String> a(bmk $$0, long $$1) {
-      Map<bvm<?>, Optional<? extends bvl<?>>> $$2 = $$0.dO().b();
+   private static List<String> a(bml $$0, long $$1) {
+      Map<bvn<?>, Optional<? extends bvm<?>>> $$2 = $$0.dO().b();
       List<String> $$3 = Lists.newArrayList();
 
-      for (Entry<bvm<?>, Optional<? extends bvl<?>>> $$4 : $$2.entrySet()) {
-         bvm<?> $$5 = $$4.getKey();
-         Optional<? extends bvl<?>> $$6 = $$4.getValue();
+      for (Entry<bvn<?>, Optional<? extends bvm<?>>> $$4 : $$2.entrySet()) {
+         bvn<?> $$5 = $$4.getKey();
+         Optional<? extends bvm<?>> $$6 = $$4.getValue();
          String $$10;
          if ($$6.isPresent()) {
-            bvl<?> $$7 = (bvl<?>)$$6.get();
+            bvm<?> $$7 = (bvm<?>)$$6.get();
             Object $$8 = $$7.c();
-            if ($$5 == bvm.D) {
+            if ($$5 == bvn.D) {
                long $$9 = $$1 - (Long)$$8;
                $$10 = $$9 + " ticks ago";
             } else if ($$7.e()) {
@@ -106,21 +106,21 @@ public class adi {
          return "-";
       } else if ($$1 instanceof UUID) {
          return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof bmk) {
-         blu $$2 = (blu)$$1;
+      } else if ($$1 instanceof bml) {
+         blv $$2 = (blv)$$1;
          return adh.a($$2);
-      } else if ($$1 instanceof bke) {
-         return ((bke)$$1).ad().getString();
-      } else if ($$1 instanceof bvp) {
-         return a($$0, ((bvp)$$1).a());
-      } else if ($$1 instanceof bom) {
-         return a($$0, ((bom)$$1).c());
+      } else if ($$1 instanceof bkf) {
+         return ((bkf)$$1).ad().getString();
+      } else if ($$1 instanceof bvq) {
+         return a($$0, ((bvq)$$1).a());
+      } else if ($$1 instanceof bon) {
+         return a($$0, ((bon)$$1).c());
       } else if ($$1 instanceof ig) {
          return a($$0, ((ig)$$1).b());
-      } else if ($$1 instanceof boe) {
-         return a($$0, ((boe)$$1).b());
-      } else if ($$1 instanceof bks) {
-         blu $$3 = ((bks)$$1).d();
+      } else if ($$1 instanceof bof) {
+         return a($$0, ((bof)$$1).b());
+      } else if ($$1 instanceof bkt) {
+         blv $$3 = ((bkt)$$1).d();
          return $$3 == null ? $$1.toString() : a($$0, $$3);
       } else if (!($$1 instanceof Collection)) {
          return $$1.toString();

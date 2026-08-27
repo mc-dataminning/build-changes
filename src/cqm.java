@@ -1,56 +1,66 @@
-public class cqm extends cpt {
-   public cqm(cpr $$0) {
+public class cqm extends cpu {
+   public cqm(cps $$0) {
       super($$0);
    }
 
-   public boolean a(ciq $$0, cto $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+   public boolean a(cir $$0, ctp $$1) {
+      cmy $$2 = cmy.f;
+      cmy $$3 = cmy.f;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
+         cmy $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if (cwp.a($$5.d()) instanceof ddn) {
-               $$2++;
-            } else {
-               if (!($$5.d() instanceof clm)) {
+            if ($$5.d() instanceof cko) {
+               if (!$$3.b()) {
                   return false;
                }
 
-               $$3++;
-            }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cnb.vl)) {
+                  return false;
+               }
 
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
+               if (!$$2.b()) {
+                  return false;
+               }
+
+               if (ckr.a($$5) != null) {
+                  return false;
+               }
+
+               $$2 = $$5;
             }
          }
       }
 
-      return $$2 == 1 && $$3 == 1;
+      return !$$2.b() && !$$3.b();
    }
 
-   public cmx a(ciq $$0, iu $$1) {
-      cmx $$2 = cmx.f;
-      clm $$3 = (clm)cna.rf;
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = cmy.f;
+      cmy $$3 = cmy.f;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
+         cmy $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            cms $$6 = $$5.d();
-            if (cwp.a($$6) instanceof ddn) {
+            if ($$5.d() instanceof cko) {
                $$2 = $$5;
-            } else if ($$6 instanceof clm) {
-               $$3 = (clm)$$6;
+            } else if ($$5.a(cnb.vl)) {
+               $$3 = $$5.p();
             }
          }
       }
 
-      cmx $$7 = ddn.b($$3.d());
-      if ($$2.u()) {
-         $$7.c($$2.v().h());
+      if ($$3.b()) {
+         return $$3;
+      } else {
+         sn $$6 = ckr.a($$2);
+         sn $$7 = $$6 == null ? new sn() : $$6.h();
+         $$7.a("Base", ((cko)$$2.d()).b().a());
+         ckr.a($$3, dgx.t, $$7);
+         return $$3;
       }
-
-      return $$7;
    }
 
    @Override
@@ -59,7 +69,7 @@ public class cqm extends cpt {
    }
 
    @Override
-   public cqf<?> ar_() {
-      return cqf.m;
+   public cqg<?> ar_() {
+      return cqg.l;
    }
 }

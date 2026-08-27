@@ -1,164 +1,78 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
 public class ewl {
-   private static final int a = 256;
-   private final ThreadLocal<ewl.b> b = ThreadLocal.withInitial(ewl.b::new);
-   private final Long2ObjectLinkedOpenHashMap<ewl.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<hx> e;
+   private static final int a = -1;
+   private final in<ewk> b = new in<>(32);
+   private final Map<cwq, Set<dkk<?>>> c = Maps.newHashMap();
 
-   public ewl(ToIntFunction<hx> $$0) {
-      this.e = $$0;
+   public static ewl a() {
+      ewl $$0 = new ewl();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$0x.c(cyy.b) == dkd.a ? $$2.d() : $$2) : ctn.a(), cws.iI, cws.iH);
+      $$0.a(cyy.b, cws.iI, cws.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$2) : ctn.a(), cws.i, cws.bu, cws.bt, cws.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? fst.a($$1, $$2) : ctn.a();
+         } else {
+            return -1;
+         }
+      }, cws.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> ctj.a(), cws.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> ctj.b(), cws.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.b($$1, $$2) : ctj.c(), cws.aE, cws.aH, cws.aI, cws.aK, cws.ff, cws.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.c($$1, $$2) : -1, cws.G, cws.nd, cws.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dcr.b($$0x.c(dcr.f)), cws.cw);
+      $$0.a(dcr.f, cws.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$2) : -1, cws.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, cws.fc, cws.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(del.c);
+         int $$5 = $$4 * 32;
+         int $$6 = 255 - $$4 * 8;
+         int $$7 = $$4 * 4;
+         return $$5 << 16 | $$6 << 8 | $$7;
+      }, cws.fe, cws.fd);
+      $$0.a(del.c, cws.fe, cws.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, cws.fm);
+      return $$0;
    }
 
-   public int a(hx $$0) {
-      int $$1 = iz.a($$0.u());
-      int $$2 = iz.a($$0.w());
-      ewl.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      ewk $$3 = this.b.a(kd.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
       } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
+         eev $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
+   public int a(djh $$0, @Nullable css $$1, @Nullable hx $$2, int $$3) {
+      ewk $$4 = this.b.a(kd.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   }
 
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = csv.c($$0 + $$2, $$1 + $$3);
-               ewl.a $$5 = (ewl.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
+   public void a(ewk $$0, cwq... $$1) {
+      for (cwq $$2 : $$1) {
+         this.b.a($$0, kd.e.a($$2));
       }
    }
 
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(ewl.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
+   private void a(Set<dkk<?>> $$0, cwq... $$1) {
+      for (cwq $$2 : $$1) {
+         this.c.put($$2, $$0);
       }
    }
 
-   private ewl.a b(int $$0, int $$1) {
-      long $$2 = csv.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         ewl.a $$3 = (ewl.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      ewl.a $$5;
-      try {
-         ewl.a $$4 = (ewl.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new ewl.a();
-            if (this.c.size() >= 256) {
-               ewl.a $$6 = (ewl.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
+   private void a(dkk<?> $$0, cwq... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
    }
 
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = aun.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      ewl.a c;
-
-      private b() {
-      }
+   public Set<dkk<?>> a(cwq $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

@@ -3,7 +3,7 @@ public class abs implements xf<za> {
    private final double b;
    private final long c;
 
-   public abs(dkx $$0) {
+   public abs(dky $$0) {
       this.a = $$0.i();
       this.b = $$0.k();
       this.c = $$0.j();

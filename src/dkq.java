@@ -1,23 +1,23 @@
-public enum dkq implements avj {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dkq implements avk {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final String e;
-   private final vf f;
+   private final String f;
 
    private dkq(String $$0) {
-      this.e = $$0;
-      this.f = vf.c("structure_block.mode_info." + $$0);
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public vf a() {
       return this.f;
    }
 }

@@ -1,57 +1,155 @@
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
 import java.util.BitSet;
+import java.util.EnumSet;
 import java.util.Set;
 
 public class fwh {
-   private static final int a = ic.values().length;
-   private final BitSet b = new BitSet(a * a);
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ic[] l = ic.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public void a(Set<ic> $$0) {
-      for (ic $$1 : $$0) {
-         for (ic $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
-   }
-
-   public void a(ic $$0, ic $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ic $$0, ic $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (ic $$1 : ic.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (ic $$2 : ic.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ic $$3 : ic.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
             }
          }
+      }
+   });
+   private int o = 4096;
 
-         $$0.append('\n');
+   public void a(hx $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
+   }
+
+   private static int b(hx $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fwi a() {
+      fwi $$0 = new fwi();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
+         }
       }
 
-      return $$0.toString();
+      return $$0;
+   }
+
+   private Set<ic> a(int $$0) {
+      Set<ic> $$1 = EnumSet.noneOf(ic.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ic $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ic> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ic.e);
+      } else if ($$2 == 15) {
+         $$1.add(ic.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ic.a);
+      } else if ($$3 == 15) {
+         $$1.add(ic.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ic.c);
+      } else if ($$4 == 15) {
+         $$1.add(ic.d);
+      }
+   }
+
+   private int a(int $$0, ic $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
+      }
    }
 }

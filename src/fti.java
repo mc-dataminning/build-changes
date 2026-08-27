@@ -1,22 +1,125 @@
-public class fti {
-   private final evh a;
-   private final fsu b;
-   private float c;
-   private float d;
+import java.util.Optional;
 
-   public fti(fsu $$0) {
-      this.b = $$0;
-      this.a = evh.O();
+public class fti implements fth {
+   private final fth.a a;
+   private final fth.a b = fth.a(new epw(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public fti(fth.a $$0) {
+      this.a = $$0;
    }
 
-   public void a(float $$0, float $$1) {
-      float $$2 = (float)((double)$$0 * this.a.m.q().c());
-      this.c = b(this.c + $$2 * 0.1F, 360.0F);
-      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
-      this.b.a(this.a, 10.0F, -this.c, $$1);
+   @Override
+   public eqf getBuffer(ftp $$0) {
+      if ($$0.K()) {
+         eqf $$1 = this.b.getBuffer($$0);
+         return new fti.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         eqf $$2 = this.a.getBuffer($$0);
+         Optional<ftp> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            eqf $$4 = this.b.getBuffer($$3.get());
+            fti.a $$5 = new fti.a($$4, this.c, this.d, this.e, this.f);
+            return eqi.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   private static float b(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends eqa {
+      private final eqf f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(eqf $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public eqf a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public eqf a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eqf a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eqf a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eqf b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eqf a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

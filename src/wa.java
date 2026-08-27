@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public record wa(int b, UUID c, UUID d) {
    public static final Codec<wa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atv.i.fieldOf("index").forGetter(wa::b), ja.a.fieldOf("sender").forGetter(wa::c), ja.a.fieldOf("session_id").forGetter(wa::d))
+      $$0 -> $$0.group(atw.i.fieldOf("index").forGetter(wa::b), ja.a.fieldOf("sender").forGetter(wa::c), ja.a.fieldOf("session_id").forGetter(wa::d))
             .apply($$0, wa::new)
    );
 
@@ -19,7 +19,7 @@ public record wa(int b, UUID c, UUID d) {
       return new wa(0, $$0, $$1);
    }
 
-   public void a(ava.a $$0) throws SignatureException {
+   public void a(avb.a $$0) throws SignatureException {
       $$0.update(ja.b(this.c));
       $$0.update(ja.b(this.d));
       $$0.update(Ints.toByteArray(this.b));

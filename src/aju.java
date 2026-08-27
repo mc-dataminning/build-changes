@@ -12,7 +12,7 @@ public class aju {
    }
 
    private static int a(ds $$0) {
-      return a($$0, cfh::Q_);
+      return a($$0, cfi::Q_);
    }
 
    private static int b(ds $$0) {
@@ -20,7 +20,7 @@ public class aju {
    }
 
    private static int a(ds $$0, Function<ane, vf> $$1) {
-      aqu $$2 = $$0.l().ae();
+      aqv $$2 = $$0.l().ae();
       List<ane> $$3 = $$2.t();
       vf $$4 = vi.b($$3, $$1);
       $$0.a(() -> vf.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);

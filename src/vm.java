@@ -11,7 +11,7 @@ public record vm(List<vr> d) {
    public static vm b = new vm(List.of());
    public static final int c = 20;
 
-   public void a(ava.a $$0) throws SignatureException {
+   public void a(avb.a $$0) throws SignatureException {
       $$0.update(Ints.toByteArray(this.d.size()));
 
       for (vr $$1 : this.d) {

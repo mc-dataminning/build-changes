@@ -3,7 +3,7 @@ public record adb(int a) implements xf<za> {
       this($$0.n());
    }
 
-   public static adb a(bkk $$0) {
+   public static adb a(bkl $$0) {
       return new adb($$0.k());
    }
 

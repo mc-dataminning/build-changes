@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public enum bkr implements avj {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+public enum bkr implements avk {
+   a("hurt", ars.to),
+   b("thorns", ars.yA),
+   c("drowning", ars.tp),
+   d("burning", ars.tr),
+   e("poking", ars.ts),
+   f("freezing", ars.tq);
 
-   public static final Codec<bkr> d = avj.a(bkr::values);
-   private final String e;
+   public static final Codec<bkr> g = avk.a(bkr::values);
+   private final String h;
+   private final arr i;
 
-   private bkr(String $$0) {
-      this.e = $$0;
+   private bkr(String $$0, arr $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public arr a() {
+      return this.i;
    }
 }

@@ -1,96 +1,214 @@
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-
-public class csn extends ArrayList<csm> {
-   public csn() {
-   }
-
-   private csn(int $$0) {
-      super($$0);
-   }
+public class csn {
+   private final cmy a;
+   private final cmy b;
+   private final cmy c;
+   private int d;
+   private final int e;
+   private boolean f = true;
+   private int g;
+   private int h;
+   private float i;
+   private int j = 1;
 
    public csn(sn $$0) {
-      st $$1 = $$0.c("Recipes", 10);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.add(new csm($$1.a($$2)));
-      }
-   }
-
-   @Nullable
-   public csm a(cmx $$0, cmx $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         csm $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
+      this.a = cmy.a($$0.p("buy"));
+      this.b = cmy.a($$0.p("buyB"));
+      this.c = cmy.a($$0.p("sell"));
+      this.d = $$0.h("uses");
+      if ($$0.b("maxUses", 99)) {
+         this.e = $$0.h("maxUses");
       } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            csm $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
-         }
+         this.e = 4;
+      }
 
-         return null;
+      if ($$0.b("rewardExp", 1)) {
+         this.f = $$0.q("rewardExp");
+      }
+
+      if ($$0.b("xp", 3)) {
+         this.j = $$0.h("xp");
+      }
+
+      if ($$0.b("priceMultiplier", 5)) {
+         this.i = $$0.j("priceMultiplier");
+      }
+
+      this.g = $$0.h("specialPrice");
+      this.h = $$0.h("demand");
+   }
+
+   public csn(cmy $$0, cmy $$1, int $$2, int $$3, float $$4) {
+      this($$0, cmy.f, $$1, $$2, $$3, $$4);
+   }
+
+   public csn(cmy $$0, cmy $$1, cmy $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public csn(cmy $$0, cmy $$1, cmy $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public csn(cmy $$0, cmy $$1, cmy $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.j = $$5;
+      this.i = $$6;
+      this.h = $$7;
+   }
+
+   private csn(csn $$0) {
+      this.a = $$0.a.p();
+      this.b = $$0.b.p();
+      this.c = $$0.c.p();
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+   }
+
+   public cmy a() {
+      return this.a;
+   }
+
+   public cmy b() {
+      if (this.a.b()) {
+         return cmy.f;
+      } else {
+         int $$0 = this.a.L();
+         int $$1 = Math.max(0, auo.d((float)($$0 * this.h) * this.i));
+         return this.a.c(auo.a($$0 + $$1 + this.g, 1, this.a.d().l()));
       }
    }
 
-   public void a(ui $$0) {
-      $$0.a(this, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.d());
-         $$0x.a($$1.c());
-         $$0x.a($$1.p());
-         $$0x.p($$1.g());
-         $$0x.p($$1.i());
-         $$0x.p($$1.o());
-         $$0x.p($$1.m());
-         $$0x.a($$1.n());
-         $$0x.p($$1.k());
-      });
+   public cmy c() {
+      return this.b;
    }
 
-   public static csn b(ui $$0) {
-      return $$0.a(csn::new, $$0x -> {
-         cmx $$1 = $$0x.r();
-         cmx $$2 = $$0x.r();
-         cmx $$3 = $$0x.r();
-         boolean $$4 = $$0x.readBoolean();
-         int $$5 = $$0x.readInt();
-         int $$6 = $$0x.readInt();
-         int $$7 = $$0x.readInt();
-         int $$8 = $$0x.readInt();
-         float $$9 = $$0x.readFloat();
-         int $$10 = $$0x.readInt();
-         csm $$11 = new csm($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-         if ($$4) {
-            $$11.q();
-         }
-
-         $$11.b($$8);
-         return $$11;
-      });
+   public cmy d() {
+      return this.c;
    }
 
-   public sn a() {
+   public void e() {
+      this.h = this.h + this.d - (this.e - this.d);
+   }
+
+   public cmy f() {
+      return this.c.p();
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public void h() {
+      this.d = 0;
+   }
+
+   public int i() {
+      return this.e;
+   }
+
+   public void j() {
+      this.d++;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.g += $$0;
+   }
+
+   public void l() {
+      this.g = 0;
+   }
+
+   public int m() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public float n() {
+      return this.i;
+   }
+
+   public int o() {
+      return this.j;
+   }
+
+   public boolean p() {
+      return this.d >= this.e;
+   }
+
+   public void q() {
+      this.d = this.e;
+   }
+
+   public boolean r() {
+      return this.d > 0;
+   }
+
+   public boolean s() {
+      return this.f;
+   }
+
+   public sn t() {
       sn $$0 = new sn();
-      st $$1 = new st();
-
-      for (int $$2 = 0; $$2 < this.size(); $$2++) {
-         csm $$3 = this.get($$2);
-         $$1.add($$3.t());
-      }
-
-      $$0.a("Recipes", $$1);
+      $$0.a("buy", this.a.b(new sn()));
+      $$0.a("sell", this.c.b(new sn()));
+      $$0.a("buyB", this.b.b(new sn()));
+      $$0.a("uses", this.d);
+      $$0.a("maxUses", this.e);
+      $$0.a("rewardExp", this.f);
+      $$0.a("xp", this.j);
+      $$0.a("priceMultiplier", this.i);
+      $$0.a("specialPrice", this.g);
+      $$0.a("demand", this.h);
       return $$0;
    }
 
-   public csn b() {
-      csn $$0 = new csn(this.size());
+   public boolean a(cmy $$0, cmy $$1) {
+      return this.c($$0, this.b()) && $$0.L() >= this.b().L() && this.c($$1, this.b) && $$1.L() >= this.b.L();
+   }
 
-      for (csm $$1 : this) {
-         $$0.add($$1.u());
+   private boolean c(cmy $$0, cmy $$1) {
+      if ($$1.b() && $$0.b()) {
+         return true;
+      } else {
+         cmy $$2 = $$0.p();
+         if ($$2.d().o()) {
+            $$2.b($$2.k());
+         }
+
+         return cmy.b($$2, $$1) && (!$$1.u() || $$2.u() && tc.a($$1.v(), $$2.v(), false));
       }
+   }
 
-      return $$0;
+   public boolean b(cmy $$0, cmy $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().L());
+         if (!this.c().b()) {
+            $$1.h(this.c().L());
+         }
+
+         return true;
+      }
+   }
+
+   public csn u() {
+      return new csn(this);
    }
 }

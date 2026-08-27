@@ -1,248 +1,229 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class did extends dgu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
+public class did extends dhz implements bkm {
+   public static final int e = 9;
+   public static final int f = 3;
+   public static final int g = 27;
+   public static final int h = 1;
+   public static final int i = 10;
+   public static final float j = 0.5F;
+   public static final float k = 270.0F;
+   public static final String l = "Items";
+   private static final int[] r = IntStream.range(0, 27).toArray();
+   private iq<cmy> s = iq.a(27, cmy.f);
+   private int t;
+   private did.a u = did.a.a;
+   private float v;
+   private float w;
    @Nullable
-   private UUID d;
-   private die e = this.g();
-   private die f = this.g();
-   private boolean g;
+   private final clm x;
 
-   public did(hx $$0, djg $$1) {
-      this(dgw.h, $$0, $$1);
+   public did(@Nullable clm $$0, hx $$1, djh $$2) {
+      super(dgx.x, $$1, $$2);
+      this.x = $$0;
    }
 
-   public did(dgw $$0, hx $$1, djg $$2) {
-      super($$0, $$1, $$2);
+   public did(hx $$0, djh $$1) {
+      super(dgx.x, $$0, $$1);
+      this.x = ddo.a($$1.b());
    }
 
-   protected die g() {
-      return new die();
+   public static void a(ctp $$0, hx $$1, djh $$2, did $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   public boolean a(cfh $$0) {
-      if (this.r().b() instanceof ddo $$1) {
-         els $$2 = $$1.h(this.r());
-         double $$3 = $$0.dr() - ((double)this.aB_().u() + $$2.c);
-         double $$4 = $$0.dx() - ((double)this.aB_().w() + $$2.e);
-         float $$5 = $$1.g(this.r());
-         float $$6 = (float)(aun.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return aun.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
+   private void b(ctp $$0, hx $$1, djh $$2) {
+      this.w = this.v;
+      switch (this.u) {
+         case a:
+            this.v = 0.0F;
+            break;
+         case b:
+            this.v += 0.1F;
+            if (this.w == 0.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v >= 1.0F) {
+               this.u = did.a.c;
+               this.v = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case d:
+            this.v -= 0.1F;
+            if (this.w == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v <= 0.0F) {
+               this.u = did.a.a;
+               this.v = 0.0F;
+               d($$0, $$1, $$2);
+            }
+            break;
+         case c:
+            this.v = 1.0F;
       }
    }
 
-   public die a(boolean $$0) {
-      return $$0 ? this.e : this.f;
+   public did.a m() {
+      return this.u;
    }
 
-   public die k() {
-      return this.e;
+   public elo a(djh $$0) {
+      return ccv.a($$0.c(ddo.b), 0.5F * this.a(1.0F));
    }
 
-   public die l() {
-      return this.f;
-   }
-
-   public int c() {
-      return 10;
-   }
-
-   public int d() {
-      return 90;
+   private void c(ctp $$0, hx $$1, djh $$2) {
+      if ($$2.b() instanceof ddo) {
+         ic $$3 = $$2.c(ddo.b);
+         elo $$4 = ccv.a($$3, this.w, this.v).a($$1);
+         List<blv> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (blv $$6 : $$5) {
+               if ($$6.s_() != eew.d) {
+                  $$6.a(bmr.d, new elt(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               }
+            }
+         }
+      }
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      die.a.encodeStart(tb.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
-      die.a.encodeStart(tb.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
-      $$0.a("is_waxed", this.g);
+   public int b() {
+      return this.s.size();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.t = $$1;
+         if ($$1 == 0) {
+            this.u = did.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.u = did.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void d(ctp $$0, hx $$1, djh $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
+   }
+
+   @Override
+   public void d_(cfi $$0) {
+      if (!this.q && !$$0.P_()) {
+         if (this.t < 0) {
+            this.t = 0;
+         }
+
+         this.t++;
+         this.o.a(this.p, this.r().b(), 1, this.t);
+         if (this.t == 1) {
+            this.o.a($$0, dnr.k, this.p);
+            this.o.a(null, this.p, ars.vQ, art.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   public void c(cfi $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.t--;
+         this.o.a(this.p, this.r().b(), 1, this.t);
+         if (this.t <= 0) {
+            this.o.a($$0, dnr.j, this.p);
+            this.o.a(null, this.p, ars.vP, art.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected vf l() {
+      return vf.c("container.shulkerBox");
    }
 
    @Override
    public void a(sn $$0) {
       super.a($$0);
-      if ($$0.e("front_text")) {
-         die.a.parse(tb.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         die.a.parse(tb.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private die a(die $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         vf $$2 = this.a($$0.a($$1, false));
-         vf $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private vf a(vf $$0) {
-      if (this.o instanceof and $$1) {
-         try {
-            return vi.a(a(null, $$1, this.p), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cfh $$0, boolean $$1, List<anu> $$2) {
-      if (!this.x() && $$0.cw().equals(this.w()) && this.o != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.o.a(this.aB_(), this.r(), this.r(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ad().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<die> $$0, boolean $$1) {
-      die $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private die a(cfh $$0, List<anu> $$1, die $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         anu $$4 = $$1.get($$3);
-         wc $$5 = $$2.a($$3, $$0.Y()).a();
-         if ($$0.Y()) {
-            $$2 = $$2.a($$3, vf.b($$4.b()).b($$5));
-         } else {
-            $$2 = $$2.a($$3, vf.b($$4.d()).b($$5), vf.b($$4.b()).b($$5));
-         }
-      }
-
-      return $$2;
-   }
-
-   public boolean a(die $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(die $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.y();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(die $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.y();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, cfh $$1) {
-      return this.x() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cfh $$0, cto $$1, hx $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (vf $$5 : this.a($$3).b($$0.Y())) {
-         wc $$6 = $$5.a();
-         vd $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == vd.a.c) {
-            $$0.cL().aE().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static ds a(@Nullable cfh $$0, cto $$1, hx $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ad().getString();
-      vf $$4 = (vf)($$0 == null ? vf.b("Sign") : $$0.Q_());
-      return new ds(dr.a, els.b($$2), elr.a, (and)$$1, 2, $$3, $$4, $$1.o(), $$0);
-   }
-
-   public zh m() {
-      return zh.a(this);
+      this.d($$0);
    }
 
    @Override
-   public sn ax_() {
-      return this.q();
+   protected void b(sn $$0) {
+      super.b($$0);
+      if (!this.d_($$0)) {
+         bjv.a($$0, this.s, false);
+      }
    }
 
    @Override
-   public boolean u() {
+   public void d(sn $$0) {
+      this.s = iq.a(this.b(), cmy.f);
+      if (!this.c_($$0) && $$0.b("Items", 9)) {
+         bjv.b($$0, this.s);
+      }
+   }
+
+   @Override
+   protected iq<cmy> k() {
+      return this.s;
+   }
+
+   @Override
+   protected void a(iq<cmy> $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public int[] a(ic $$0) {
+      return r;
+   }
+
+   @Override
+   public boolean a(int $$0, cmy $$1, @Nullable ic $$2) {
+      return !(cwq.a($$1.d()) instanceof ddo);
+   }
+
+   @Override
+   public boolean b(int $$0, cmy $$1, ic $$2) {
       return true;
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
+   public float a(float $$0) {
+      return auo.i($$0, this.w, this.v);
    }
 
    @Nullable
-   public UUID w() {
-      return this.d;
+   public clm w() {
+      return this.x;
    }
 
-   private void y() {
-      this.e();
-      this.o.a(this.aB_(), this.r(), this.r(), 3);
+   @Override
+   protected cib a(int $$0, cfh $$1) {
+      return new cjt($$0, $$1, this);
    }
 
    public boolean x() {
-      return this.g;
+      return this.u == did.a.a;
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.y();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cfh $$1 = this.o.b($$0);
-      return $$1 == null || $$1.i((double)this.aB_().u(), (double)this.aB_().v(), (double)this.aB_().w()) > 64.0;
-   }
-
-   public static void a(cto $$0, hx $$1, djg $$2, did $$3) {
-      UUID $$4 = $$3.w();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(did $$0, cto $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public arq f() {
-      return arr.AQ;
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

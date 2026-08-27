@@ -1,44 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class bjc extends bjf {
-   public static final bjc a = new bjc(0);
-   public static final Codec<bjc> b = atv.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bjc::new, bjc::d);
-   private final int f;
+public class bjc extends bje {
+   public static final bjc a = new bjc(0.0F);
+   public static final Codec<bjc> b = atw.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bjc::new, bjc::d);
+   private final float d;
 
-   public static bjc a(int $$0) {
-      return $$0 == 0 ? a : new bjc($$0);
+   public static bjc a(float $$0) {
+      return $$0 == 0.0F ? a : new bjc($$0);
    }
 
-   private bjc(int $$0) {
-      this.f = $$0;
+   private bjc(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(auu $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(auv $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bjg<?> c() {
-      return bjg.a;
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bjf<?> c() {
+      return bjf.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

@@ -1,15 +1,15 @@
-public class fkt {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+import java.util.function.Function;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
+public abstract class fkt {
+   protected final Function<ahg, ftp> v;
 
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
-
-      return $$0 + $$2 * $$3;
+   public fkt(Function<ahg, ftp> $$0) {
+      this.v = $$0;
    }
+
+   public final ftp a(ahg $$0) {
+      return this.v.apply($$0);
+   }
+
+   public abstract void a(eqb var1, eqf var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

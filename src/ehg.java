@@ -1,20 +1,81 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-@FunctionalInterface
-interface ehg {
-   ehg b = ($$0, $$1) -> false;
-   ehg c = ($$0, $$1) -> true;
+public class ehg extends ehi {
+   public static final Codec<ehg> a = a(ehg::new);
 
-   boolean expand(egv var1, Consumer<ehn> var2);
-
-   default ehg and(ehg $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   ehg(List<ehp> $$0, List<ejv> $$1) {
+      super($$0, $$1);
    }
 
-   default ehg or(ehg $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   @Override
+   public ehq a() {
+      return ehn.g;
+   }
+
+   @Override
+   protected ehh a(List<? extends ehh> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (ehh)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ehh $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(ehf $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static ehg.a a(ehp.a<?>... $$0) {
+      return new ehg.a($$0);
+   }
+
+   public static <E> ehg.a a(Collection<E> $$0, Function<E, ehp.a<?>> $$1) {
+      return new ehg.a($$0.stream().map($$1::apply).toArray(ehp.a[]::new));
+   }
+
+   public static class a extends ehp.a<ehg.a> {
+      private final Builder<ehp> a = ImmutableList.builder();
+
+      public a(ehp.a<?>... $$0) {
+         for (ehp.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ehg.a a() {
+         return this;
+      }
+
+      @Override
+      public ehg.a a(ehp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ehp b() {
+         return new ehg(this.a.build(), this.f());
+      }
    }
 }

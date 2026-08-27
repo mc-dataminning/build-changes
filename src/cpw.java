@@ -1,59 +1,64 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class cpw extends cpu {
+   private static final cpz a = cpz.a(cnb.qL);
+   private static final cpz b = cpz.a(cnb.pr);
+   private static final cpz c = cpz.a(cnb.uo);
 
-public class cpw extends cpt {
-   private static final cpy a = cpy.a(cna.uo);
-
-   public cpw(cpr $$0) {
+   public cpw(cps $$0) {
       super($$0);
    }
 
-   public boolean a(ciq $$0, cto $$1) {
+   public boolean a(cir $$0, ctp $$1) {
       boolean $$2 = false;
-      boolean $$3 = false;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
+         cmy $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if ($$5.d() instanceof clm) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
                $$2 = true;
-            } else {
-               if (!a.a($$5)) {
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return $$3 && $$2;
+      return $$2 && $$3 >= 1;
    }
 
-   public cmx a(ciq $$0, iu $$1) {
-      List<Integer> $$2 = Lists.newArrayList();
-      cmx $$3 = null;
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = new cmy(cnb.un, 3);
+      sn $$3 = $$2.a("Fireworks");
+      st $$4 = new st();
+      int $$5 = 0;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmx $$5 = $$0.a($$4);
-         cms $$6 = $$5.d();
-         if ($$6 instanceof clm) {
-            $$2.add(((clm)$$6).d().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmy $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               sn $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a("Explosion").b("FadeColors", $$2);
-         return $$3;
-      } else {
-         return cmx.f;
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
       }
+
+      return $$2;
    }
 
    @Override
@@ -62,7 +67,12 @@ public class cpw extends cpt {
    }
 
    @Override
-   public cqf<?> ar_() {
-      return cqf.i;
+   public cmy a(iu $$0) {
+      return new cmy(cnb.un);
+   }
+
+   @Override
+   public cqg<?> ar_() {
+      return cqg.g;
    }
 }

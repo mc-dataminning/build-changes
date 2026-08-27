@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfr extends dfa implements ddp {
+public class dfr extends cwz {
    public static final MapCodec<dfr> a = b(dfr::new);
-   public static final djx c = djw.C;
+   protected static final emm b = cwq.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends dfr> a() {
+   public MapCodec<dfr> a() {
       return a;
    }
 
-   protected dfr(djf.d $$0) {
+   protected dfr(djg.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public djg a(cpg $$0) {
-      eeq $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(eer.c)));
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eer.c, eer.c.a($$3));
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof and && $$3 instanceof chc) {
+         $$1.a(new hx($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eeq c_(djg $$0) {
-      return $$0.c(c) ? eer.c.a(true) : super.c_($$0);
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(c);
+   protected boolean b(djh $$0, csv $$1, hx $$2) {
+      eer $$3 = $$1.b_($$2);
+      eer $$4 = $$1.b_($$2.c());
+      return ($$3.a() == ees.c || $$0.b() instanceof dan) && $$4.a() == ees.a;
    }
 }

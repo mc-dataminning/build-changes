@@ -1,23 +1,41 @@
-public class gdk<T extends bmk> extends gcb<T, fml<T>> {
-   public gdk(gah<T, fml<T>> $$0, ftc $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class gdk<T extends cem, M extends fmj<T>> extends gcy<T, M> {
+   private final ahg a;
+   private final gdk.a<T> b;
+   private final gdk.b<T, M> c;
+
+   public gdk(gai<T, M> $$0, ahg $$1, gdk.a<T> $$2, gdk.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public void a(eqa $$0, ftg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cmx $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cna.sh)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         this.a();
+         eqf $$10 = $$1.getBuffer(ftp.j(this.a));
+         this.c().a($$0, $$10, $$2, fzo.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+   private void a() {
+      List<fmx> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
+   }
+
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<T extends cem> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends cem, M extends fjx<T>> {
+      List<fmx> getPartsToDraw(M var1);
    }
 }

@@ -1,235 +1,76 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bki implements bjt, cjy {
-   private final int c;
-   private final iq<cmx> d;
+public interface bki extends bju {
+   String c = "LootTable";
+   String d = "LootTableSeed";
+
    @Nullable
-   private List<bjv> e;
+   ahg az_();
 
-   public bki(int $$0) {
-      this.c = $$0;
-      this.d = iq.a($$0, cmx.f);
+   void a(@Nullable ahg var1);
+
+   default void a(ahg $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   public bki(cmx... $$0) {
-      this.c = $$0.length;
-      this.d = iq.a(cmx.f, $$0);
-   }
+   long aA_();
 
-   public void a(bjv $$0) {
-      if (this.e == null) {
-         this.e = Lists.newArrayList();
-      }
+   void a(long var1);
 
-      this.e.add($$0);
-   }
+   hx aB_();
 
-   public void b(bjv $$0) {
-      if (this.e != null) {
-         this.e.remove($$0);
+   @Nullable
+   ctp i();
+
+   static void a(csv $$0, auv $$1, hx $$2, ahg $$3) {
+      if ($$0.c_($$2) instanceof bki $$5) {
+         $$5.a($$3, $$1.g());
       }
    }
 
-   @Override
-   public cmx a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : cmx.f;
-   }
-
-   public List<cmx> f() {
-      List<cmx> $$0 = this.d.stream().filter($$0x -> !$$0x.b()).collect(Collectors.toList());
-      this.a();
-      return $$0;
-   }
-
-   @Override
-   public cmx a(int $$0, int $$1) {
-      cmx $$2 = bju.a(this.d, $$0, $$1);
-      if (!$$2.b()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public cmx a(cms $$0, int $$1) {
-      cmx $$2 = new cmx($$0, 0);
-
-      for (int $$3 = this.c - 1; $$3 >= 0; $$3--) {
-         cmx $$4 = this.a($$3);
-         if ($$4.d().equals($$0)) {
-            int $$5 = $$1 - $$2.L();
-            cmx $$6 = $$4.a($$5);
-            $$2.g($$6.L());
-            if ($$2.L() == $$1) {
-               break;
-            }
-         }
-      }
-
-      if (!$$2.b()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public cmx a(cmx $$0) {
-      if ($$0.b()) {
-         return cmx.f;
+   default boolean c_(sn $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(new ahg($$0.l("LootTable")));
+         this.a($$0.i("LootTableSeed"));
+         return true;
       } else {
-         cmx $$1 = $$0.p();
-         this.d($$1);
-         if ($$1.b()) {
-            return cmx.f;
-         } else {
-            this.c($$1);
-            return $$1.b() ? cmx.f : $$1;
-         }
+         return false;
       }
    }
 
-   public boolean b(cmx $$0) {
-      boolean $$1 = false;
-
-      for (cmx $$2 : this.d) {
-         if ($$2.b() || cmx.c($$2, $$0) && $$2.L() < $$2.g()) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cmx b(int $$0) {
-      cmx $$1 = this.d.get($$0);
-      if ($$1.b()) {
-         return cmx.f;
+   default boolean d_(sn $$0) {
+      ahg $$1 = this.az_();
+      if ($$1 == null) {
+         return false;
       } else {
-         this.d.set($$0, cmx.f);
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(int $$0, cmx $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-
-      this.e();
-   }
-
-   @Override
-   public int b() {
-      return this.c;
-   }
-
-   @Override
-   public boolean ai_() {
-      for (cmx $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
+         $$0.a("LootTable", $$1.toString());
+         long $$2 = this.aA_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
          }
-      }
 
-      return true;
+         return true;
+      }
    }
 
-   @Override
-   public void e() {
-      if (this.e != null) {
-         for (bjv $$0 : this.e) {
-            $$0.a(this);
+   default void e_(@Nullable cfi $$0) {
+      ctp $$1 = this.i();
+      hx $$2 = this.aB_();
+      ahg $$3 = this.az_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         ehe $$4 = $$1.o().aJ().getLootTable($$3);
+         if ($$0 instanceof ane) {
+            am.O.a((ane)$$0, $$3);
          }
-      }
-   }
 
-   @Override
-   public boolean a(cfh $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-      this.e();
-   }
-
-   @Override
-   public void a(cfl $$0) {
-      for (cmx $$1 : this.d) {
-         $$0.b($$1);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.d.stream().filter($$0 -> !$$0.b()).collect(Collectors.toList()).toString();
-   }
-
-   private void c(cmx $$0) {
-      for (int $$1 = 0; $$1 < this.c; $$1++) {
-         cmx $$2 = this.a($$1);
-         if ($$2.b()) {
-            this.a($$1, $$0.c());
-            return;
+         this.a(null);
+         ehc.a $$5 = new ehc.a((and)$$1).a(ejh.f, elt.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.go()).a(ejh.a, $$0);
          }
+
+         $$4.a(this, $$5.a(ejg.c), this.aA_());
       }
-   }
-
-   private void d(cmx $$0) {
-      for (int $$1 = 0; $$1 < this.c; $$1++) {
-         cmx $$2 = this.a($$1);
-         if (cmx.c($$2, $$0)) {
-            this.a($$0, $$2);
-            if ($$0.b()) {
-               return;
-            }
-         }
-      }
-   }
-
-   private void a(cmx $$0, cmx $$1) {
-      int $$2 = Math.min(this.ak_(), $$1.g());
-      int $$3 = Math.min($$0.L(), $$2 - $$1.L());
-      if ($$3 > 0) {
-         $$1.g($$3);
-         $$0.h($$3);
-         this.e();
-      }
-   }
-
-   public void a(st $$0) {
-      this.a();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cmx $$2 = cmx.a($$0.a($$1));
-         if (!$$2.b()) {
-            this.a($$2);
-         }
-      }
-   }
-
-   public st g() {
-      st $$0 = new st();
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cmx $$2 = this.a($$1);
-         if (!$$2.b()) {
-            $$0.add($$2.b(new sn()));
-         }
-      }
-
-      return $$0;
-   }
-
-   public iq<cmx> h() {
-      return this.d;
    }
 }

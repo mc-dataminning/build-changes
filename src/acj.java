@@ -4,9 +4,9 @@ public class acj implements xf<za> {
    private final int a;
    private final int[] b;
 
-   public acj(blu $$0) {
+   public acj(blv $$0) {
       this.a = $$0.aj();
-      List<blu> $$1 = $$0.cP();
+      List<blv> $$1 = $$0.cP();
       this.b = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

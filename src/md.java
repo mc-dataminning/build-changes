@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public interface md extends Supplier<JsonElement> {
-   void a(djh<?, ?> var1);
+   void a(dji<?, ?> var1);
 
    static md.c a() {
       return new md.c();
@@ -34,7 +34,7 @@ public interface md extends Supplier<JsonElement> {
       }
 
       @Override
-      public void a(djh<?, ?> $$0) {
+      public void a(dji<?, ?> $$0) {
          this.b.forEach($$1 -> $$1.a($$0));
       }
 
@@ -59,41 +59,41 @@ public interface md extends Supplier<JsonElement> {
    }
 
    public static class c implements md {
-      private final Map<dkj<?>, String> a = Maps.newHashMap();
+      private final Map<dkk<?>, String> a = Maps.newHashMap();
 
-      private static <T extends Comparable<T>> String a(dkj<T> $$0, Stream<T> $$1) {
+      private static <T extends Comparable<T>> String a(dkk<T> $$0, Stream<T> $$1) {
          return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
       }
 
-      private static <T extends Comparable<T>> String c(dkj<T> $$0, T $$1, T[] $$2) {
+      private static <T extends Comparable<T>> String c(dkk<T> $$0, T $$1, T[] $$2) {
          return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
       }
 
-      private <T extends Comparable<T>> void a(dkj<T> $$0, String $$1) {
+      private <T extends Comparable<T>> void a(dkk<T> $$0, String $$1) {
          String $$2 = this.a.put($$0, $$1);
          if ($$2 != null) {
             throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
          }
       }
 
-      public final <T extends Comparable<T>> md.c a(dkj<T> $$0, T $$1) {
+      public final <T extends Comparable<T>> md.c a(dkk<T> $$0, T $$1) {
          this.a($$0, $$0.a($$1));
          return this;
       }
 
       @SafeVarargs
-      public final <T extends Comparable<T>> md.c a(dkj<T> $$0, T $$1, T... $$2) {
+      public final <T extends Comparable<T>> md.c a(dkk<T> $$0, T $$1, T... $$2) {
          this.a($$0, c($$0, $$1, $$2));
          return this;
       }
 
-      public final <T extends Comparable<T>> md.c b(dkj<T> $$0, T $$1) {
+      public final <T extends Comparable<T>> md.c b(dkk<T> $$0, T $$1) {
          this.a($$0, "!" + $$0.a($$1));
          return this;
       }
 
       @SafeVarargs
-      public final <T extends Comparable<T>> md.c b(dkj<T> $$0, T $$1, T... $$2) {
+      public final <T extends Comparable<T>> md.c b(dkk<T> $$0, T $$1, T... $$2) {
          this.a($$0, "!" + c($$0, $$1, $$2));
          return this;
       }
@@ -105,8 +105,8 @@ public interface md extends Supplier<JsonElement> {
       }
 
       @Override
-      public void a(djh<?, ?> $$0) {
-         List<dkj<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+      public void a(dji<?, ?> $$0) {
+         List<dkk<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
          if (!$$1.isEmpty()) {
             throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
          }

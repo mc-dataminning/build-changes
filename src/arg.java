@@ -1,33 +1,46 @@
-import java.nio.charset.StandardCharsets;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class arg {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
-
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
-      }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+   public arg(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
    }
 
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

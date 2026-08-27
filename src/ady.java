@@ -9,11 +9,11 @@ public class ady implements xf<adj> {
    private final int c;
    private final int d;
    private final int e;
-   private final cij f;
-   private final cmx g;
-   private final Int2ObjectMap<cmx> h;
+   private final cik f;
+   private final cmy g;
+   private final Int2ObjectMap<cmy> h;
 
-   public ady(int $$0, int $$1, int $$2, int $$3, cij $$4, cmx $$5, Int2ObjectMap<cmx> $$6) {
+   public ady(int $$0, int $$1, int $$2, int $$3, cik $$4, cmy $$5, Int2ObjectMap<cmy> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -28,8 +28,8 @@ public class ady implements xf<adj> {
       this.c = $$0.n();
       this.d = $$0.readShort();
       this.e = $$0.readByte();
-      this.f = $$0.b(cij.class);
-      IntFunction<Int2ObjectOpenHashMap<cmx>> $$1 = ui.a(Int2ObjectOpenHashMap::new, 128);
+      this.f = $$0.b(cik.class);
+      IntFunction<Int2ObjectOpenHashMap<cmy>> $$1 = ui.a(Int2ObjectOpenHashMap::new, 128);
       this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), ui::r));
       this.g = $$0.r();
    }
@@ -61,15 +61,15 @@ public class ady implements xf<adj> {
       return this.e;
    }
 
-   public cmx f() {
+   public cmy f() {
       return this.g;
    }
 
-   public Int2ObjectMap<cmx> g() {
+   public Int2ObjectMap<cmy> g() {
       return this.h;
    }
 
-   public cij h() {
+   public cik h() {
       return this.f;
    }
 

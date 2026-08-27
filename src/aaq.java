@@ -8,11 +8,11 @@ public class aaq implements xf<za> {
    private final byte b;
    private final boolean c;
    @Nullable
-   private final List<efx> d;
+   private final List<efy> d;
    @Nullable
-   private final ega.b e;
+   private final egb.b e;
 
-   public aaq(int $$0, byte $$1, boolean $$2, @Nullable Collection<efx> $$3, @Nullable ega.b $$4) {
+   public aaq(int $$0, byte $$1, boolean $$2, @Nullable Collection<efy> $$3, @Nullable egb.b $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -25,12 +25,12 @@ public class aaq implements xf<za> {
       this.b = $$0.readByte();
       this.c = $$0.readBoolean();
       this.d = $$0.c($$0x -> $$0x.a((ui.a)($$0xx -> {
-            efx.a $$1x = $$0xx.b(efx.a.class);
+            efy.a $$1x = $$0xx.b(efy.a.class);
             byte $$2x = $$0xx.readByte();
             byte $$3x = $$0xx.readByte();
             byte $$4x = (byte)($$0xx.readByte() & 15);
             vf $$5x = $$0xx.c(ui::m);
-            return new efx($$1x, $$2x, $$3x, $$4x, $$5x);
+            return new efy($$1x, $$2x, $$3x, $$4x, $$5x);
          })));
       int $$1 = $$0.readUnsignedByte();
       if ($$1 > 0) {
@@ -38,7 +38,7 @@ public class aaq implements xf<za> {
          int $$3 = $$0.readUnsignedByte();
          int $$4 = $$0.readUnsignedByte();
          byte[] $$5 = $$0.b();
-         this.e = new ega.b($$3, $$4, $$1, $$2, $$5);
+         this.e = new egb.b($$3, $$4, $$1, $$2, $$5);
       } else {
          this.e = null;
       }
@@ -75,7 +75,7 @@ public class aaq implements xf<za> {
       return this.a;
    }
 
-   public void a(ega $$0) {
+   public void a(egb $$0) {
       if (this.d != null) {
          $$0.a(this.d);
       }

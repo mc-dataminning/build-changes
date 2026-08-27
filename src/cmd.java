@@ -1,36 +1,55 @@
-public class cmd extends cms implements cos {
-   public cmd(cms.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cmd extends cmt {
+   public cmd(cmt.a $$0) {
       super($$0);
    }
 
    @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
-         }
-
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.is, ars.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         $$1.a(dnq.C);
-      } else {
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.iu, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = crk.c($$3);
-            int $$6 = crk.b($$3);
-            $$0.b(new cfv($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(asb.c.b(this));
-         $$1.a(dnq.D);
+   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
+      sn $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
-
-      return bkb.a($$3, $$0.y_());
    }
 
-   @Override
-   public int c() {
-      return 1;
+   public static void a(sn $$0, List<vf> $$1) {
+      cmc.a $$2 = cmc.a.a($$0.f("Type"));
+      $$1.add(vf.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(vf.i().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(vf.c("item.minecraft.firework_star.fade_to").b(ve.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(vf.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(vf.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static vf a(vt $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
+   }
+
+   private static vf a(int $$0) {
+      clm $$1 = clm.b($$0);
+      return $$1 == null ? vf.c("item.minecraft.firework_star.custom_color") : vf.c("item.minecraft.firework_star." + $$1.b());
    }
 }

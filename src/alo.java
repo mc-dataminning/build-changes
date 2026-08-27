@@ -21,8 +21,8 @@ public class alo {
       );
    }
 
-   private static int a(ds $$0, Collection<? extends cfh> $$1, int $$2) {
-      for (cfh $$3 : $$1) {
+   private static int a(ds $$0, Collection<? extends cfi> $$1, int $$2) {
+      for (cfi $$3 : $$1) {
          $$3.aa().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class alo {
       return $$1.size();
    }
 
-   private static int a(ds $$0, Collection<? extends cfh> $$1) {
-      for (cfh $$2 : $$1) {
-         $$2.aa().ifPresent(cen::b);
+   private static int a(ds $$0, Collection<? extends cfi> $$1) {
+      for (cfi $$2 : $$1) {
+         $$2.aa().ifPresent(ceo::b);
       }
 
       if ($$1.size() == 1) {

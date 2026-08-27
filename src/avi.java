@@ -1,144 +1,69 @@
 import java.util.Optional;
 
 public class avi {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(avr.a);
+   public static <T extends bmn> Optional<T> a(blz<T> $$0, bmp $$1, and $$2, hx $$3, int $$4, int $$5, int $$6, avi.a $$7) {
+      hx.a $$8 = $$3.j();
 
-   private static boolean a(wc $$0, aua $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
-   }
-
-   public static boolean a(String $$0, wc $$1, aua $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = auo.b($$2.z, -$$5, $$5);
+         int $$11 = auo.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.D_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
                }
 
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
+               $$12.am();
             }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
          }
       }
 
-      return true;
+      return Optional.empty();
    }
 
-   public static boolean b(String $$0, wc $$1, aua $$2) {
-      int $$3 = $$0.length();
+   private static boolean a(and $$0, int $$1, hx.a $$2, avi.a $$3) {
+      hx.a $$4 = new hx.a().g($$2);
+      djh $$5 = $$0.a_($$4);
 
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(ic.a);
+         $$4.a($$2, ic.b);
+         djh $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(ic.b);
+            return true;
          }
+
+         $$5 = $$7;
       }
 
-      return true;
+      return false;
    }
 
-   public static boolean c(String $$0, wc $$1, aua $$2) {
-      return a($$0, 0, $$1, $$2);
-   }
+   public interface a {
+      @Deprecated
+      avi.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(cws.bs)
+               && !$$2.a(cws.dQ)
+               && !$$2.a(cws.eY)
+               && !($$2.b() instanceof dei)
+               && !($$2.b() instanceof deh)
+               && !($$2.b() instanceof daz)
+               && !$$2.a(cws.mX)
+               && !$$2.a(cws.dO)
+               && !$$2.a(cws.ck)
+               && !$$2.a(cws.ec)
+               && !$$2.a(cws.fO)
+               && !$$2.a(cws.ii)
+               && !$$2.a(cws.kI)
+               && !$$2.a(cws.qO)
+               && !$$2.a(cws.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(cws.qP))
+            : false;
+      avi.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && cwq.a($$2.k($$0, $$1), ic.b);
 
-   public static boolean a(String $$0, int $$1, wc $$2, aua $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public static boolean a(String $$0, int $$1, wc $$2, wc $$3, aua $$4) {
-      int $$5 = $$0.length();
-      wc $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean a(vk $$0, wc $$1, aua $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
-   }
-
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, wc.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
-   }
-
-   public static String a(vk $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, wc.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+      boolean canSpawnOn(and var1, hx var2, djh var3, hx var4, djh var5);
    }
 }

@@ -1,17 +1,20 @@
 public interface elx {
-   static elx a() {
-      return emc.a;
-   }
+   elx a = ($$0, $$1) -> false;
+   elx b = ($$0, $$1) -> !$$0 && !$$1;
+   elx c = ($$0, $$1) -> $$1 && !$$0;
+   elx d = ($$0, $$1) -> !$$0;
+   elx e = ($$0, $$1) -> $$0 && !$$1;
+   elx f = ($$0, $$1) -> !$$1;
+   elx g = ($$0, $$1) -> $$0 != $$1;
+   elx h = ($$0, $$1) -> !$$0 || !$$1;
+   elx i = ($$0, $$1) -> $$0 && $$1;
+   elx j = ($$0, $$1) -> $$0 == $$1;
+   elx k = ($$0, $$1) -> $$1;
+   elx l = ($$0, $$1) -> !$$0 || $$1;
+   elx m = ($$0, $$1) -> $$0;
+   elx n = ($$0, $$1) -> $$0 || !$$1;
+   elx o = ($$0, $$1) -> $$0 || $$1;
+   elx p = ($$0, $$1) -> true;
 
-   static elx a(blu $$0) {
-      return new emc($$0);
-   }
-
-   boolean b();
-
-   boolean a(eml var1, hx var2, boolean var3);
-
-   boolean a(cms var1);
-
-   boolean a(eeq var1, eeq var2);
+   boolean apply(boolean var1, boolean var2);
 }

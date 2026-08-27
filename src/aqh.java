@@ -1,52 +1,23 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public interface aqh extends aqk {
-   Set<String> a();
+public class aqh {
+   private static final Codec<aqh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(auw.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aqh::new)
+   );
+   public static final apj<aqh> a = apj.a("filter", b);
+   private final List<auw> c;
 
-   List<aqf> a(ahg var1);
+   public aqh(List<auw> $$0) {
+      this.c = List.copyOf($$0);
+   }
 
-   Map<ahg, aqf> b(String var1, Predicate<ahg> var2);
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   }
 
-   Map<ahg, List<aqf>> c(String var1, Predicate<ahg> var2);
-
-   Stream<aov> b();
-
-   public static enum a implements aqh {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<aqf> getResource(ahg $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<aqf> a(ahg $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<ahg, aqf> b(String $$0, Predicate<ahg> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<ahg, List<aqf>> c(String $$0, Predicate<ahg> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<aov> b() {
-         return Stream.of();
-      }
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

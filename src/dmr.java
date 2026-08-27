@@ -1,91 +1,19 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dmr {
-   a {
-      @Override
-      public void a(and $$0, dms $$1, List<cam> $$2, int $$3, hx $$4) {
-         hx $$5 = new hx(0, 128, 0);
+public record dmr(ih<dmq> e, dle f) {
+   public static final Codec<dmr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dmq.j.fieldOf("type").forGetter(dmr::a), dle.a.fieldOf("generator").forGetter(dmr::b)).apply($$0, $$0.stable(dmr::new))
+   );
+   public static final ahf<dmr> b = ahf.a(ke.aN, new ahg("overworld"));
+   public static final ahf<dmr> c = ahf.a(ke.aN, new ahg("the_nether"));
+   public static final ahf<dmr> d = ahf.a(ke.aN, new ahg("the_end"));
 
-         for (cam $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public ih<dmq> a() {
+      return this.e;
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(and $$0, dms $$1, List<cam> $$2, int $$3, hx $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new hx(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(and $$0, dms $$1, List<cam> $$2, int $$3, hx $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dtd.a> $$8 = dtd.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dtd.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cam $$11 : $$2) {
-                     $$11.a(new hx($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
-
-                  for (hx $$13 : hx.a(new hx($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hx($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cto.a.b);
-                  dur $$14 = new dur(true, ImmutableList.of($$10), new hx(0, 128, 0));
-                  drt.J.a($$14, $$0, $$0.l().g(), auu.a(), new hx($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(and $$0, dms $$1, List<cam> $$2, int $$3, hx $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
-
-            for (cam $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cto.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cam $$6 : $$2) {
-               $$6.a(new hx(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(and $$0, dms $$1, List<cam> $$2, int $$3, hx $$4) {
-      }
-   };
-
-   public abstract void a(and var1, dms var2, List<cam> var3, int var4, hx var5);
+   public dle b() {
+      return this.f;
+   }
 }

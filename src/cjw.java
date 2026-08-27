@@ -1,116 +1,156 @@
-import java.util.List;
-import java.util.OptionalInt;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cjw extends cjc {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int s = 8;
-   public static final int t = 26;
-   public static final int u = 44;
-   private static final int w = 98;
-   public static final int v = 48;
-   private final cto x;
-   @Nullable
-   private cqd<cqr> y;
-   private final List<cqd<cqr>> z;
+public class cjw {
+   private final int a;
+   public final bju d;
+   public int e;
+   public final int f;
+   public final int g;
 
-   public cjw(int $$0, cfg $$1) {
-      this($$0, $$1, cil.a);
+   public cjw(bju $$0, int $$1, int $$2, int $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public cjw(int $$0, cfg $$1, cil $$2) {
-      super(cjh.v, $$0, $$1, $$2);
-      this.x = $$1.m.dM();
-      this.z = this.x.r().a(cqg.g);
-   }
-
-   @Override
-   protected cjd l() {
-      return cjd.a()
-         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
-   }
-
-   @Override
-   protected boolean a(djg $$0) {
-      return $$0.a(cwr.ob);
-   }
-
-   @Override
-   protected boolean a(cfh $$0, boolean $$1) {
-      return this.y != null && this.y.b().a(this.q, this.x);
-   }
-
-   @Override
-   protected void a(cfh $$0, cmx $$1) {
-      $$1.a($$0.dM(), $$0, $$1.L());
-      this.r.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cmx> n() {
-      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
-   }
-
-   private void e(int $$0) {
-      cmx $$1 = this.q.a($$0);
-      if (!$$1.b()) {
-         $$1.h(1);
-         this.q.a($$0, $$1);
+   public void b(cmy $$0, cmy $$1) {
+      int $$2 = $$1.L() - $$0.L();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   public void m() {
-      List<cqd<cqr>> $$0 = this.x.r().b(cqg.g, this.q, this.x);
-      if ($$0.isEmpty()) {
-         this.r.a(0, cmx.f);
+   protected void a(cmy $$0, int $$1) {
+   }
+
+   protected void b(int $$0) {
+   }
+
+   protected void b_(cmy $$0) {
+   }
+
+   public void a(cfi $$0, cmy $$1) {
+      this.b();
+   }
+
+   public boolean a(cmy $$0) {
+      return true;
+   }
+
+   public cmy g() {
+      return this.d.a(this.a);
+   }
+
+   public boolean h() {
+      return !this.g().b();
+   }
+
+   public void e(cmy $$0) {
+      this.a($$0, this.g());
+   }
+
+   public void a(cmy $$0, cmy $$1) {
+      this.f($$0);
+   }
+
+   public void f(cmy $$0) {
+      this.d.a(this.a, $$0);
+      this.b();
+   }
+
+   public void b() {
+      this.d.e();
+   }
+
+   public int a() {
+      return this.d.ak_();
+   }
+
+   public int a_(cmy $$0) {
+      return Math.min(this.a(), $$0.g());
+   }
+
+   @Nullable
+   public Pair<ahg, ahg> c() {
+      return null;
+   }
+
+   public cmy a(int $$0) {
+      return this.d.a(this.a, $$0);
+   }
+
+   public boolean a(cfi $$0) {
+      return true;
+   }
+
+   public boolean d() {
+      return true;
+   }
+
+   public Optional<cmy> a(int $$0, int $$1, cfi $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().L()) {
+         return Optional.empty();
       } else {
-         cqd<cqr> $$1 = $$0.get(0);
-         cmx $$2 = $$1.b().a(this.q, this.x.I_());
-         if ($$2.a(this.x.I())) {
-            this.y = $$1;
-            this.r.a($$1);
-            this.r.a(0, $$2);
+         $$0 = Math.min($$0, $$1);
+         cmy $$3 = this.a($$0);
+         if ($$3.b()) {
+            return Optional.empty();
+         } else {
+            if (this.g().b()) {
+               this.a(cmy.f, $$3);
+            }
+
+            return Optional.of($$3);
          }
       }
    }
 
-   @Override
-   public int d(cmx $$0) {
-      return this.e($$0).orElse(0);
+   public cmy b(int $$0, int $$1, cfi $$2) {
+      Optional<cmy> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(cmy.f);
    }
 
-   private static OptionalInt a(cqr $$0, cmx $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
+   public cmy d(cmy $$0) {
+      return this.b($$0, $$0.L());
+   }
+
+   public cmy b(cmy $$0, int $$1) {
+      if (!$$0.b() && this.a($$0)) {
+         cmy $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.L()), this.a_($$0) - $$2.L());
+         if ($$2.b()) {
+            this.e($$0.a($$3));
+         } else if (cmy.c($$2, $$0)) {
+            $$0.h($$3);
+            $$2.g($$3);
+            this.e($$2);
+         }
+
+         return $$0;
       } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
+         return $$0;
       }
    }
 
-   @Override
-   public boolean a(cmx $$0, cjv $$1) {
-      return $$1.d != this.r && super.a($$0, $$1);
+   public boolean b(cfi $$0) {
+      return this.a($$0) && this.a(this.g());
    }
 
-   @Override
-   public boolean c(cmx $$0) {
-      return this.e($$0).isPresent();
+   public int i() {
+      return this.a;
    }
 
-   private OptionalInt e(cmx $$0) {
-      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+   public boolean e() {
+      return true;
+   }
+
+   public boolean f() {
+      return false;
    }
 }

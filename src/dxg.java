@@ -1,17 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dxg(ih<cms> c, dxi d) {
+public class dxg {
    public static final Codec<dxg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahd.a(ke.F).fieldOf("display").forGetter($$0x -> $$0x.c), dxi.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dxg::new)
+      $$0 -> $$0.group(Codec.intRange(0, dmq.c).fieldOf("height").forGetter(dxg::a), kd.e.q().fieldOf("block").orElse(cws.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, dxg::new)
    );
-   public static final Codec<ih<dxg>> b = ahc.a(ke.az, a);
+   private final cwq b;
+   private final int c;
 
-   public ih<cms> a() {
+   public dxg(int $$0, cwq $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
       return this.c;
    }
 
-   public dxi b() {
-      return this.d;
+   public djh b() {
+      return this.b.o();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + kd.e.b(this.b);
    }
 }

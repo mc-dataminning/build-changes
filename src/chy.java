@@ -1,54 +1,88 @@
-public class chy {
-   public static final chx a = new chx.a().a(4).a(0.3F).d();
-   public static final chx b = new chx.a().a(5).a(0.6F).d();
-   public static final chx c = new chx.a().a(3).a(0.3F).a().d();
-   public static final chx d = new chx.a().a(1).a(0.6F).d();
-   public static final chx e = a(6).d();
-   public static final chx f = new chx.a().a(5).a(0.6F).d();
-   public static final chx g = new chx.a().a(3).a(0.6F).d();
-   public static final chx h = new chx.a().a(2).a(0.3F).a(new blh(blj.q, 600, 0), 0.3F).a().d();
-   public static final chx i = new chx.a().a(4).a(0.3F).b().d();
-   public static final chx j = new chx.a().a(2).a(0.1F).d();
-   public static final chx k = new chx.a().a(8).a(0.8F).a().d();
-   public static final chx l = new chx.a().a(6).a(0.6F).a().d();
-   public static final chx m = new chx.a().a(5).a(0.6F).d();
-   public static final chx n = new chx.a().a(6).a(0.8F).a().d();
-   public static final chx o = new chx.a().a(8).a(0.8F).a().d();
-   public static final chx p = new chx.a().a(5).a(0.6F).a().d();
-   public static final chx q = new chx.a().a(6).a(0.8F).d();
-   public static final chx r = new chx.a().a(2).a(0.1F).d();
-   public static final chx s = new chx.a().a(1).a(0.3F).c().d();
-   public static final chx t = new chx.a()
-      .a(4)
-      .a(1.2F)
-      .a(new blh(blj.j, 400, 1), 1.0F)
-      .a(new blh(blj.k, 6000, 0), 1.0F)
-      .a(new blh(blj.l, 6000, 0), 1.0F)
-      .a(new blh(blj.v, 2400, 3), 1.0F)
-      .b()
-      .d();
-   public static final chx u = new chx.a().a(4).a(1.2F).a(new blh(blj.j, 100, 1), 1.0F).a(new blh(blj.v, 2400, 0), 1.0F).b().d();
-   public static final chx v = new chx.a().a(6).a(1.2F).d();
-   public static final chx w = new chx.a().a(6).a(0.1F).d();
-   public static final chx x = new chx.a().a(2).a(0.3F).d();
-   public static final chx y = a(6).d();
-   public static final chx z = new chx.a().a(2).a(0.3F).a().d();
-   public static final chx A = new chx.a().a(2).a(0.3F).a(new blh(blj.s, 100, 0), 0.6F).d();
-   public static final chx B = new chx.a().a(3).a(0.3F).a().d();
-   public static final chx C = new chx.a().a(1).a(0.3F).d();
-   public static final chx D = new chx.a().a(1).a(0.1F).a(new blh(blj.s, 1200, 1), 1.0F).a(new blh(blj.q, 300, 2), 1.0F).a(new blh(blj.i, 300, 0), 1.0F).d();
-   public static final chx E = new chx.a().a(8).a(0.3F).d();
-   public static final chx F = new chx.a().a(3).a(0.3F).a().d();
-   public static final chx G = a(10).d();
-   public static final chx H = new chx.a().a(4).a(0.1F).a(new blh(blj.q, 600, 0), 0.8F).a().d();
-   public static final chx I = new chx.a().a(2).a(0.1F).d();
-   public static final chx J = new chx.a().a(2).a(0.8F).a(new blh(blj.s, 100, 0), 1.0F).d();
-   public static final chx K = a(6).b().d();
-   public static final chx L = new chx.a().a(2).a(0.1F).d();
-   public static final chx M = new chx.a().a(2).a(0.1F).d();
-   public static final chx N = new chx.a().a(1).a(0.1F).d();
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   private static chx.a a(int $$0) {
-      return new chx.a().a($$0).a(0.6F);
+public class chy {
+   private final int a;
+   private final float b;
+   private final boolean c;
+   private final boolean d;
+   private final boolean e;
+   private final List<Pair<bli, Float>> f;
+
+   chy(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bli, Float>> $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public List<Pair<bli, Float>> f() {
+      return this.f;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private boolean d;
+      private boolean e;
+      private final List<Pair<bli, Float>> f = Lists.newArrayList();
+
+      public chy.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public chy.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public chy.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public chy.a b() {
+         this.d = true;
+         return this;
+      }
+
+      public chy.a c() {
+         this.e = true;
+         return this;
+      }
+
+      public chy.a a(bli $$0, float $$1) {
+         this.f.add(Pair.of($$0, $$1));
+         return this;
+      }
+
+      public chy d() {
+         return new chy(this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

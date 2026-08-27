@@ -25,10 +25,10 @@ public abstract class mg {
    }
 
    private void c() {
-      List<dkj<?>> $$0 = this.b();
+      List<dkk<?>> $$0 = this.b();
       Stream<mh> $$1 = Stream.of(mh.a());
 
-      for (dkj<?> $$2 : $$0) {
+      for (dkk<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class mg {
       }
    }
 
-   abstract List<dkj<?>> b();
+   abstract List<dkk<?>> b();
 
-   public static <T1 extends Comparable<T1>> mg.a<T1> a(dkj<T1> $$0) {
+   public static <T1 extends Comparable<T1>> mg.a<T1> a(dkk<T1> $$0) {
       return new mg.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> mg.b<T1, T2> a(dkj<T1> $$0, dkj<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> mg.b<T1, T2> a(dkk<T1> $$0, dkk<T2> $$1) {
       return new mg.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> mg.c<T1, T2, T3> a(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> mg.c<T1, T2, T3> a(dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2) {
       return new mg.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> mg.d<T1, T2, T3, T4> a(
-      dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3
+      dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2, dkk<T4> $$3
    ) {
       return new mg.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> mg.e<T1, T2, T3, T4, T5> a(
-      dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3, dkj<T5> $$4
+      dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2, dkk<T4> $$3, dkk<T5> $$4
    ) {
       return new mg.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends mg {
-      private final dkj<T1> a;
+      private final dkk<T1> a;
 
-      a(dkj<T1> $$0) {
+      a(dkk<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<dkj<?>> b() {
+      public List<dkk<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class mg {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends mg {
-      private final dkj<T1> a;
-      private final dkj<T2> b;
+      private final dkk<T1> a;
+      private final dkk<T2> b;
 
-      b(dkj<T1> $$0, dkj<T2> $$1) {
+      b(dkk<T1> $$0, dkk<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<dkj<?>> b() {
+      public List<dkk<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class mg {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends mg {
-      private final dkj<T1> a;
-      private final dkj<T2> b;
-      private final dkj<T3> c;
+      private final dkk<T1> a;
+      private final dkk<T2> b;
+      private final dkk<T3> c;
 
-      c(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2) {
+      c(dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<dkj<?>> b() {
+      public List<dkk<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class mg {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends mg {
-      private final dkj<T1> a;
-      private final dkj<T2> b;
-      private final dkj<T3> c;
-      private final dkj<T4> d;
+      private final dkk<T1> a;
+      private final dkk<T2> b;
+      private final dkk<T3> c;
+      private final dkk<T4> d;
 
-      d(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3) {
+      d(dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2, dkk<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class mg {
       }
 
       @Override
-      public List<dkj<?>> b() {
+      public List<dkk<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class mg {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends mg {
-      private final dkj<T1> a;
-      private final dkj<T2> b;
-      private final dkj<T3> c;
-      private final dkj<T4> d;
-      private final dkj<T5> e;
+      private final dkk<T1> a;
+      private final dkk<T2> b;
+      private final dkk<T3> c;
+      private final dkk<T4> d;
+      private final dkk<T5> e;
 
-      e(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3, dkj<T5> $$4) {
+      e(dkk<T1> $$0, dkk<T2> $$1, dkk<T3> $$2, dkk<T4> $$3, dkk<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class mg {
       }
 
       @Override
-      public List<dkj<?>> b() {
+      public List<dkk<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

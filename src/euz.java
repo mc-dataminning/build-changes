@@ -1,104 +1,38 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class euz {
-   public static final vf a = ve.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final evh c;
-   private final Narrator d = Narrator.getNarrator();
+   private final fnt a;
+   private int b = -1;
+   @Nullable
+   private Consumer<sn> c;
 
-   public euz(evh $$0) {
-      this.c = $$0;
+   public euz(fnt $$0) {
+      this.a = $$0;
    }
 
-   public void a(vf $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void b(vf $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void c(vf $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
-      }
-   }
-
-   private evj d() {
-      return this.c.m.ap().c();
-   }
-
-   private void b(String $$0) {
-      if (aa.aW) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(evj $$0) {
-      this.b();
-      this.d.say(vf.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      ezo $$1 = evh.O().ay();
-      if (this.d.active()) {
-         if ($$0 == evj.a) {
-            ezm.b($$1, ezm.a.a, vf.c("narrator.toast.disabled"), null);
-         } else {
-            ezm.b($$1, ezm.a.a, vf.c("narrator.toast.enabled"), $$0.b());
-         }
+   public boolean a(int $$0, @Nullable sn $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
       } else {
-         ezm.b($$1, ezm.a.a, vf.c("narrator.toast.disabled"), vf.c("options.narrator.notavailable"));
+         return false;
       }
    }
 
-   public boolean a() {
-      return this.d.active();
+   private int a(Consumer<sn> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public void b() {
-      if (this.d() != evj.a && this.d.active()) {
-         this.d.clear();
-      }
+   public void a(int $$0, Consumer<sn> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aec($$2, $$0));
    }
 
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new euz.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fip {
-      public a(String $$0) {
-         super($$0);
-      }
+   public void a(hx $$0, Consumer<sn> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new adn($$2, $$0));
    }
 }

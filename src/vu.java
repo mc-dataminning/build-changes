@@ -4,7 +4,7 @@ public interface vu {
    void a(ane var1, boolean var2, vb.a var3);
 
    static vu a(vv $$0) {
-      return (vu)($$0.g() ? new vu.a($$0.c()) : new vu.b($$0));
+      return (vu)($$0.h() ? new vu.a($$0.d()) : new vu.b($$0));
    }
 
    public static record a(vf a) implements vu {
@@ -17,13 +17,13 @@ public interface vu {
    public static record b(vv a) implements vu {
       @Override
       public vf a() {
-         return this.a.c();
+         return this.a.d();
       }
 
       @Override
       public void a(ane $$0, boolean $$1, vb.a $$2) {
          vv $$3 = this.a.a($$1);
-         if (!$$3.i()) {
+         if (!$$3.j()) {
             $$0.c.a($$3, $$2);
          }
       }

@@ -1,81 +1,128 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class eam {
-   public static final Codec<eam> e = kd.ai.q().dispatch("element_type", eam::a, ean::codec);
-   private static final ih<edd> a = ih.a(new edd(List.of()));
-   @Nullable
-   private volatile eao.a b;
+public class eam extends ean {
+   private static final Codec<Either<ahg, edg>> a = Codec.of(eam::a, ahg.a.map(Either::left));
+   public static final Codec<eam> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eam::new));
+   protected final Either<ahg, edg> c;
+   protected final ih<ede> d;
 
-   protected static <E extends eam> RecordCodecBuilder<E, eao.a> d() {
-      return eao.a.c.fieldOf("projection").forGetter(eam::e);
+   private static <T> DataResult<T> a(Either<ahg, edg> $$0, DynamicOps<T> $$1, T $$2) {
+      Optional<ahg> $$3 = $$0.left();
+      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : ahg.a.encode($$3.get(), $$1, $$2);
    }
 
-   protected eam(eao.a $$0) {
-      this.b = $$0;
+   protected static <E extends eam> RecordCodecBuilder<E, ih<ede>> b() {
+      return edf.d.fieldOf("processors").forGetter($$0 -> $$0.d);
    }
 
-   public abstract jb a(edg var1, ddb var2);
-
-   public abstract List<edf.c> a(edg var1, hx var2, ddb var3, auu var4);
-
-   public abstract dyx a(edg var1, hx var2, ddb var3);
-
-   public abstract boolean a(edg var1, cuj var2, cuh var3, dld var4, hx var5, hx var6, ddb var7, dyx var8, auu var9, boolean var10);
-
-   public abstract ean<?> a();
-
-   public void a(ctp $$0, edf.c $$1, hx $$2, ddb $$3, auu $$4, dyx $$5) {
+   protected static <E extends eam> RecordCodecBuilder<E, Either<ahg, edg>> c() {
+      return a.fieldOf("location").forGetter($$0 -> $$0.c);
    }
 
-   public eam a(eao.a $$0) {
-      this.b = $$0;
-      return this;
+   protected eam(Either<ahg, edg> $$0, ih<ede> $$1, eap.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public eao.a e() {
-      eao.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   @Override
+   public jb a(edh $$0, ddc $$1) {
+      edg $$2 = this.a($$0);
+      return $$2.a($$1);
+   }
+
+   private edg a(edh $$0) {
+      return (edg)this.c.map($$0::a, Function.identity());
+   }
+
+   public List<edg.c> a(edh $$0, hx $$1, ddc $$2, boolean $$3) {
+      edg $$4 = this.a($$0);
+      List<edg.c> $$5 = $$4.a($$1, new edc().a($$2), cws.pa, $$3);
+      List<edg.c> $$6 = Lists.newArrayList();
+
+      for (edg.c $$7 : $$5) {
+         sn $$8 = $$7.c();
+         if ($$8 != null) {
+            dkr $$9 = dkr.valueOf($$8.l("mode"));
+            if ($$9 == dkr.d) {
+               $$6.add($$7);
+            }
+         }
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public List<edg.c> a(edh $$0, hx $$1, ddc $$2, auv $$3) {
+      edg $$4 = this.a($$0);
+      ObjectArrayList<edg.c> $$5 = $$4.a($$1, new edc().a($$2), cws.pb, true);
+      ac.c($$5, $$3);
+      a($$5);
+      return $$5;
+   }
+
+   @VisibleForTesting
+   static void a(List<edg.c> $$0) {
+      $$0.sort(Comparator.<edg.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   }
+
+   @Override
+   public dyy a(edh $$0, hx $$1, ddc $$2) {
+      edg $$3 = this.a($$0);
+      return $$3.b(new edc().a($$2), $$1);
+   }
+
+   @Override
+   public boolean a(edh $$0, cuk $$1, cui $$2, dle $$3, hx $$4, hx $$5, ddc $$6, dyy $$7, auv $$8, boolean $$9) {
+      edg $$10 = this.a($$0);
+      edc $$11 = this.a($$6, $$7, $$9);
+      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
+         return false;
       } else {
-         return $$0;
+         for (edg.c $$13 : edg.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
+            this.a($$1, $$13, $$4, $$6, $$8, $$7);
+         }
+
+         return true;
       }
    }
 
-   public int f() {
-      return 1;
+   protected edc a(ddc $$0, dyy $$1, boolean $$2) {
+      edc $$3 = new edc();
+      $$3.a($$1);
+      $$3.a($$0);
+      $$3.c(true);
+      $$3.a(false);
+      $$3.a(eci.b);
+      $$3.d(true);
+      if (!$$2) {
+         $$3.a(eco.b);
+      }
+
+      this.d.a().a().forEach($$3::a);
+      this.e().b().forEach($$3::a);
+      return $$3;
    }
 
-   public static Function<eao.a, eaf> g() {
-      return $$0 -> eaf.b;
+   @Override
+   public eao<?> a() {
+      return eao.a;
    }
 
-   public static Function<eao.a, eaj> a(String $$0) {
-      return $$1 -> new eaj(Either.left(new ahg($$0)), a, $$1);
-   }
-
-   public static Function<eao.a, eaj> a(String $$0, ih<edd> $$1) {
-      return $$2 -> new eaj(Either.left(new ahg($$0)), $$1, $$2);
-   }
-
-   public static Function<eao.a, eal> b(String $$0) {
-      return $$1 -> new eal(Either.left(new ahg($$0)), a, $$1);
-   }
-
-   public static Function<eao.a, eal> b(String $$0, ih<edd> $$1) {
-      return $$2 -> new eal(Either.left(new ahg($$0)), $$1, $$2);
-   }
-
-   public static Function<eao.a, eag> a(ih<dyj> $$0) {
-      return $$1 -> new eag($$0, $$1);
-   }
-
-   public static Function<eao.a, eak> b(List<Function<eao.a, ? extends eam>> $$0) {
-      return $$1 -> new eak($$0.stream().map($$1x -> (eam)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "Single[" + this.c + "]";
    }
 }

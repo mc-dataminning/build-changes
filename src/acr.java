@@ -1,12 +1,12 @@
 public class acr implements xf<za> {
-   private final ih<arq> a;
-   private final ars b;
+   private final ih<arr> a;
+   private final art b;
    private final int c;
    private final float d;
    private final float e;
    private final long f;
 
-   public acr(ih<arq> $$0, ars $$1, blu $$2, float $$3, float $$4, long $$5) {
+   public acr(ih<arr> $$0, art $$1, blv $$2, float $$3, float $$4, long $$5) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2.aj();
@@ -16,8 +16,8 @@ public class acr implements xf<za> {
    }
 
    public acr(ui $$0) {
-      this.a = $$0.a(kd.b.t(), arq::b);
-      this.b = $$0.b(ars.class);
+      this.a = $$0.a(kd.b.t(), arr::b);
+      this.b = $$0.b(art.class);
       this.c = $$0.n();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -34,11 +34,11 @@ public class acr implements xf<za> {
       $$0.b(this.f);
    }
 
-   public ih<arq> a() {
+   public ih<arr> a() {
       return this.a;
    }
 
-   public ars d() {
+   public art d() {
       return this.b;
    }
 

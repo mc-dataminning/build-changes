@@ -1,39 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class azf extends bav {
-   private static final int a = 6;
-   private static final auu b = auu.a();
-
+public class azf extends bcf {
    public azf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bbv.x, "Zombie");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(b.a(6));
-            }
-
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
-         }
-
-         $$0 = $$0.remove("IsVillager");
-      }
-
-      return $$0;
-   }
-
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+      super("EntityZombieSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("Zombie", $$0)) {
+         String $$2 = "Zombie";
+         int $$3 = $$1.get("ZombieType").asInt(0);
+         switch ($$3) {
+            case 0:
+            default:
+               break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$2 = "ZombieVillager";
+               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
+               break;
+            case 6:
+               $$2 = "Husk";
+         }
+
+         $$1 = $$1.remove("ZombieType");
+         return Pair.of($$2, $$1);
+      } else {
+         return Pair.of($$0, $$1);
+      }
    }
 }

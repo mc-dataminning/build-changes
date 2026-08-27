@@ -1,45 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class eit extends eih {
+public class eit extends eii {
    public static final Codec<eit> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ekq.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, eit::new)
+      $$0 -> a($$0).and(asw.b(ke.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eit::new)
    );
-   private final ekp b;
-   private final boolean c;
+   private final asw<cmq> b;
 
-   private eit(List<eju> $$0, ekp $$1, boolean $$2) {
+   private eit(List<ejv> $$0, asw<cmq> $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public eij b() {
-      return eik.c;
+   public eik b() {
+      return eil.A;
    }
 
    @Override
-   public Set<ejd<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cmx a(cmx $$0, egv $$1) {
-      int $$2 = this.c ? $$0.L() : 0;
-      $$0.f(aun.a($$2 + this.b.a($$1), 0, $$0.g()));
+   public cmy a(cmy $$0, egw $$1) {
+      cmr.a($$0, this.b, $$1.b());
       return $$0;
    }
 
-   public static eih.a<?> a(ekp $$0) {
-      return a($$1 -> new eit($$1, $$0, false));
-   }
-
-   public static eih.a<?> a(ekp $$0, boolean $$1) {
-      return a($$2 -> new eit($$2, $$0, $$1));
+   public static eii.a<?> a(asw<cmq> $$0) {
+      return a($$1 -> new eit($$1, $$0));
    }
 }

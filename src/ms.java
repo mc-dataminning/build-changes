@@ -52,15 +52,15 @@ public class ms {
       return this;
    }
 
-   public ahg a(cwp $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
+   public ahg a(cwq $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public ahg a(cwp $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
+   public ahg a(cwq $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static ms.a a(Function<cwp, mq> $$0, mo $$1) {
+   private static ms.a a(Function<cwq, mq> $$0, mo $$1) {
       return $$2 -> new ms($$0.apply($$2), $$1);
    }
 
@@ -70,13 +70,13 @@ public class ms {
 
    @FunctionalInterface
    public interface a {
-      ms get(cwp var1);
+      ms get(cwq var1);
 
-      default ahg create(cwp $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
+      default ahg create(cwq $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default ahg createWithSuffix(cwp $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
+      default ahg createWithSuffix(cwq $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

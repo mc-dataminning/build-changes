@@ -1,8 +1,17 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface clj {
-   default void a(@Nullable cfh $$0, cto $$1, cmx $$2, hx $$3) {
+public class clj extends cmt {
+   public clj(cmt.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cfh var1, cto var2, hx var3, @Nullable elo var4);
+   @Override
+   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
+      $$2.add(this.d().a(n.h));
+   }
+
+   public vt d() {
+      return vf.c(this.a() + ".desc");
+   }
 }

@@ -1,9 +1,9 @@
-import com.google.common.collect.ImmutableList;
-
 public class fne {
-   private final fnf a = new fnf(ImmutableList.of(), fmy.a);
+   final int a;
+   final int b;
 
-   public fnf a() {
-      return this.a;
+   public fne(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

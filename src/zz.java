@@ -1,12 +1,12 @@
 import java.util.Optional;
 
-public record zz(int a, int b, int c, int d, Optional<els> e) implements xf<za> {
-   public zz(blu $$0, bks $$1) {
+public record zz(int a, int b, int c, int d, Optional<elt> e) implements xf<za> {
+   public zz(blv $$0, bkt $$1) {
       this($$0.aj(), $$0.dM().I_().d(ke.r).a($$1.j()), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
    public zz(ui $$0) {
-      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((ui.a<els>)($$0x -> new els($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((ui.a<elt>)($$0x -> new elt($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
    }
 
    private static void a(ui $$0, int $$1) {
@@ -34,14 +34,14 @@ public record zz(int a, int b, int c, int d, Optional<els> e) implements xf<za> 
       $$0.a(this);
    }
 
-   public bks a(cto $$0) {
-      ih<bku> $$1 = $$0.I_().d(ke.r).c(this.b).get();
+   public bkt a(ctp $$0) {
+      ih<bkv> $$1 = $$0.I_().d(ke.r).c(this.b).get();
       if (this.e.isPresent()) {
-         return new bks($$1, this.e.get());
+         return new bkt($$1, this.e.get());
       } else {
-         blu $$2 = $$0.a(this.c);
-         blu $$3 = $$0.a(this.d);
-         return new bks($$1, $$3, $$2);
+         blv $$2 = $$0.a(this.c);
+         blv $$3 = $$0.a(this.d);
+         return new bkt($$1, $$3, $$2);
       }
    }
 
@@ -57,7 +57,7 @@ public record zz(int a, int b, int c, int d, Optional<els> e) implements xf<za> 
       return this.d;
    }
 
-   public Optional<els> g() {
+   public Optional<elt> g() {
       return this.e;
    }
 }

@@ -1,56 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class cye extends cwp {
-   public static final MapCodec<cwp> a = kd.e.q().fieldOf("dead");
-   public static final MapCodec<cye> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, cye::new));
-   private final cwp c;
+public class cye extends cwq {
+   public static final MapCodec<cye> a = b(cye::new);
+   public static final djy b = djx.w;
+   public static final djy c = djx.r;
 
-   public cye(cwp $$0, djf.d $$1) {
-      super($$1);
-      this.c = $$0;
+   @Override
+   protected MapCodec<? extends cye> a() {
+      return a;
+   }
+
+   public cye(djg.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public MapCodec<cye> a() {
-      return b;
-   }
-
-   @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
+   public void b(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof and $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.F_().a(40));
+   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
+      if ($$1 instanceof and $$6) {
+         this.a($$0, $$6, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean a(csu $$0, hx $$1) {
-      for (ic $$2 : ic.values()) {
-         eeq $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(asl.a)) {
-            return true;
+   public void a(djh $$0, and $$1, hx $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         djh $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? ars.fd : ars.fe, art.e);
          }
-      }
 
-      return false;
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
+      }
    }
 
-   @Nullable
    @Override
-   public djg a(cpg $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().F_().a(40));
-      }
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(c, b);
+   }
 
-      return this.o();
+   @Override
+   public boolean d_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

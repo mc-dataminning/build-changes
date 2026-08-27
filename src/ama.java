@@ -26,20 +26,20 @@ public class ama extends MinecraftServer implements ahw {
    private static final int n = 2;
    private final List<ahk> o = Collections.synchronizedList(Lists.newArrayList());
    @Nullable
-   private ark p;
-   private final arh q;
+   private arl p;
+   private final ari q;
    @Nullable
-   private arm r;
+   private arn r;
    private final amc s;
    @Nullable
    private amg t;
    @Nullable
    private final aoi u;
 
-   public ama(Thread $$0, egl.c $$1, aps $$2, aic $$3, amc $$4, DataFixer $$5, ahz $$6, ann $$7) {
+   public ama(Thread $$0, egm.c $$1, apt $$2, aic $$3, amc $$4, DataFixer $$5, ahz $$6, ann $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
-      this.q = new arh(this);
+      this.q = new ari(this);
       this.u = aoi.a($$4.a().R);
    }
 
@@ -119,30 +119,30 @@ public class ama extends MinecraftServer implements ahw {
          this.ar().c();
       }
 
-      if (!aqt.e(this)) {
+      if (!aqu.e(this)) {
          return false;
       } else {
          this.a(new alz(this, this.ba(), this.h));
          long $$4 = ac.c();
-         dif.a(this.j, this);
-         aqq.a(this.W());
+         dig.a(this.j, this);
+         aqr.a(this.W());
          l.info("Preparing level \"{}\"", this.q());
          this.u_();
          long $$5 = ac.c() - $$4;
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aK().a(ctk.A).a($$1.o, this);
+            this.aK().a(ctl.A).a($$1.o, this);
          }
 
          if ($$1.p) {
             l.info("Starting GS4 status listener");
-            this.p = ark.a(this);
+            this.p = arl.a(this);
          }
 
          if ($$1.r) {
             l.info("Starting remote control listener");
-            this.r = arm.a(this);
+            this.r = arn.a(this);
          }
 
          if (this.bo() > 0L) {
@@ -154,7 +154,7 @@ public class ama extends MinecraftServer implements ahw {
          }
 
          if ($$1.N) {
-            bgh.a(this);
+            bgi.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -321,8 +321,8 @@ public class ama extends MinecraftServer implements ahw {
    }
 
    @Override
-   public boolean a(and $$0, hx $$1, cfh $$2) {
-      if ($$0.ae() != cto.h) {
+   public boolean a(and $$0, hx $$1, cfi $$2) {
+      if ($$0.ae() != ctp.h) {
          return false;
       } else if (this.bl().k().c()) {
          return false;
@@ -332,8 +332,8 @@ public class ama extends MinecraftServer implements ahw {
          return false;
       } else {
          hx $$3 = $$0.T();
-         int $$4 = aun.a($$1.u() - $$3.u());
-         int $$5 = aun.a($$1.w() - $$3.w());
+         int $$4 = auo.a($$1.u() - $$3.u());
+         int $$5 = auo.a($$1.w() - $$3.w());
          int $$6 = Math.max($$4, $$5);
          return $$6 <= this.aj();
       }
@@ -388,7 +388,7 @@ public class ama extends MinecraftServer implements ahw {
    @Override
    public boolean ay() {
       amb $$0 = this.a();
-      return $$0.W && $$0.a && this.j.a() != null;
+      return $$0.W && $$0.a && this.j.b();
    }
 
    @Override
@@ -405,7 +405,7 @@ public class ama extends MinecraftServer implements ahw {
             this.bx();
          }
 
-         $$0 = aqt.a((MinecraftServer)this);
+         $$0 = aqu.a((MinecraftServer)this);
       }
 
       boolean $$2 = false;
@@ -416,7 +416,7 @@ public class ama extends MinecraftServer implements ahw {
             this.bx();
          }
 
-         $$2 = aqt.b(this);
+         $$2 = aqu.b(this);
       }
 
       boolean $$3 = false;
@@ -427,7 +427,7 @@ public class ama extends MinecraftServer implements ahw {
             this.bx();
          }
 
-         $$3 = aqt.c(this);
+         $$3 = aqu.c(this);
       }
 
       boolean $$4 = false;
@@ -438,7 +438,7 @@ public class ama extends MinecraftServer implements ahw {
             this.bx();
          }
 
-         $$4 = aqt.d(this);
+         $$4 = aqu.d(this);
       }
 
       boolean $$5 = false;
@@ -449,7 +449,7 @@ public class ama extends MinecraftServer implements ahw {
             this.bx();
          }
 
-         $$5 = aqt.a(this);
+         $$5 = aqu.a(this);
       }
 
       return $$0 || $$2 || $$3 || $$4 || $$5;
@@ -491,7 +491,7 @@ public class ama extends MinecraftServer implements ahw {
    public void t() {
       super.t();
       ac.i();
-      dif.c();
+      dig.c();
    }
 
    @Override
@@ -521,7 +521,7 @@ public class ama extends MinecraftServer implements ahw {
 
    @Nullable
    @Override
-   public ctl bb() {
+   public ctm bb() {
       return this.s.a().i ? this.k.m() : null;
    }
 

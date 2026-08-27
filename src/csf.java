@@ -1,20 +1,25 @@
-public class csf extends cri {
-   protected csf(cri.a $$0, blz... $$1) {
-      super($$0, crj.g, $$1);
+public class csf extends crj {
+   public csf(crj.a $$0, bma... $$1) {
+      super($$0, crk.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return 10 + $$0 * 7;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
-   public boolean a(cri $$0) {
-      return super.a($$0) && $$0 != crm.x;
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(crj $$0) {
+      return super.a($$0) && $$0 != crn.E && $$0 != crn.H;
    }
 }

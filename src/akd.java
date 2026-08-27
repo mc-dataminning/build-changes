@@ -16,7 +16,7 @@ public class akd {
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vf.b("commands.place.template.invalid", $$0));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vf.c("commands.place.template.failed"));
    private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
-      edg $$2 = ((ds)$$0.getSource()).e().q();
+      edh $$2 = ((ds)$$0.getSource()).e().q();
       return dx.a($$2.a(), $$1);
    };
 
@@ -78,14 +78,14 @@ public class akd {
                   .then(
                      ((RequiredArgumentBuilder)dt.a("template", et.a())
                            .suggests(f)
-                           .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), hx.a(((ds)$$0x.getSource()).d()), ddb.a, dbl.a, 1.0F, 0)))
+                           .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), hx.a(((ds)$$0x.getSource()).d()), ddc.a, dbm.a, 1.0F, 0)))
                         .then(
                            ((RequiredArgumentBuilder)dt.a("pos", fm.a())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), ddb.a, dbl.a, 1.0F, 0)))
+                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), ddc.a, dbm.a, 1.0F, 0)))
                               .then(
                                  ((RequiredArgumentBuilder)dt.a("rotation", fe.a())
                                        .executes(
-                                          $$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), fe.a($$0x, "rotation"), dbl.a, 1.0F, 0)
+                                          $$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), fe.a($$0x, "rotation"), dbm.a, 1.0F, 0)
                                        ))
                                     .then(
                                        ((RequiredArgumentBuilder)dt.a("mirror", fd.a())
@@ -136,11 +136,11 @@ public class akd {
       );
    }
 
-   public static int a(ds $$0, ih.c<drg<?, ?>> $$1, hx $$2) throws CommandSyntaxException {
+   public static int a(ds $$0, ih.c<drh<?, ?>> $$1, hx $$2) throws CommandSyntaxException {
       and $$3 = $$0.e();
-      drg<?, ?> $$4 = $$1.a();
-      csv $$5 = new csv($$2);
-      a($$3, new csv($$5.e - 1, $$5.f - 1), new csv($$5.e + 1, $$5.f + 1));
+      drh<?, ?> $$4 = $$1.a();
+      csw $$5 = new csw($$2);
+      a($$3, new csw($$5.e - 1, $$5.f - 1), new csw($$5.e + 1, $$5.f + 1));
       if (!$$4.a($$3, $$3.l().g(), $$3.F_(), $$2)) {
          throw a.create();
       } else {
@@ -150,9 +150,9 @@ public class akd {
       }
    }
 
-   public static int a(ds $$0, ih<eao> $$1, ahg $$2, int $$3, hx $$4) throws CommandSyntaxException {
+   public static int a(ds $$0, ih<eap> $$1, ahg $$2, int $$3, hx $$4) throws CommandSyntaxException {
       and $$5 = $$0.e();
-      if (!eai.a($$5, $$1, $$2, $$3, $$4, false)) {
+      if (!eaj.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
          $$0.a(() -> vf.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
@@ -160,30 +160,30 @@ public class akd {
       }
    }
 
-   public static int b(ds $$0, ih.c<dzf> $$1, hx $$2) throws CommandSyntaxException {
+   public static int b(ds $$0, ih.c<dzg> $$1, hx $$2) throws CommandSyntaxException {
       and $$3 = $$0.e();
-      dzf $$4 = $$1.a();
-      dld $$5 = $$3.l().g();
-      dzn $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new csv($$2), 0, $$3, $$0x -> true);
+      dzg $$4 = $$1.a();
+      dle $$5 = $$3.l().g();
+      dzo $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new csw($$2), 0, $$3, $$0x -> true);
       if (!$$6.b()) {
          throw c.create();
       } else {
-         dyx $$7 = $$6.a();
-         csv $$8 = new csv(iz.a($$7.h()), iz.a($$7.j()));
-         csv $$9 = new csv(iz.a($$7.k()), iz.a($$7.m()));
+         dyy $$7 = $$6.a();
+         csw $$8 = new csw(iz.a($$7.h()), iz.a($$7.j()));
+         csw $$9 = new csw(iz.a($$7.k()), iz.a($$7.m()));
          a($$3, $$8, $$9);
-         csv.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new dyx($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.al(), $$3x.g()), $$3x));
+         csw.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new dyy($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.al(), $$3x.g()), $$3x));
          String $$10 = $$1.g().a().toString();
          $$0.a(() -> vf.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
 
-   public static int a(ds $$0, ahg $$1, hx $$2, ddb $$3, dbl $$4, float $$5, int $$6) throws CommandSyntaxException {
+   public static int a(ds $$0, ahg $$1, hx $$2, ddc $$3, dbm $$4, float $$5, int $$6) throws CommandSyntaxException {
       and $$7 = $$0.e();
-      edg $$8 = $$7.q();
+      edh $$8 = $$7.q();
 
-      Optional<edf> $$9;
+      Optional<edg> $$9;
       try {
          $$9 = $$8.b($$1);
       } catch (z var13) {
@@ -193,14 +193,14 @@ public class akd {
       if ($$9.isEmpty()) {
          throw d.create($$1);
       } else {
-         edf $$12 = $$9.get();
-         a($$7, new csv($$2), new csv($$2.a($$12.a())));
-         edb $$13 = new edb().a($$4).a($$3);
+         edg $$12 = $$9.get();
+         a($$7, new csw($$2), new csw($$2.a($$12.a())));
+         edc $$13 = new edc().a($$4).a($$3);
          if ($$5 < 1.0F) {
-            $$13.b().a(new ecj($$5)).a(dii.b((long)$$6));
+            $$13.b().a(new eck($$5)).a(dij.b((long)$$6));
          }
 
-         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dii.b((long)$$6), 2);
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dij.b((long)$$6), 2);
          if (!$$14) {
             throw e.create();
          } else {
@@ -210,8 +210,8 @@ public class akd {
       }
    }
 
-   private static void a(and $$0, csv $$1, csv $$2) throws CommandSyntaxException {
-      if (csv.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+   private static void a(and $$0, csw $$1, csw $$2) throws CommandSyntaxException {
+      if (csw.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
          throw fm.a.create();
       }
    }

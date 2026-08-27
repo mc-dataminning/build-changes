@@ -18,7 +18,7 @@ public class anc {
    public static final int a = 60;
    private static final int e = 400;
    private final and f;
-   private final blu g;
+   private final blv g;
    private final int h;
    private final boolean i;
    private final Consumer<xf<?>> j;
@@ -26,31 +26,31 @@ public class anc {
    private int l;
    private int m;
    private int n;
-   private els o = els.b;
+   private elt o = elt.b;
    private int p;
    private int q;
-   private List<blu> r = Collections.emptyList();
+   private List<blv> r = Collections.emptyList();
    private boolean s;
    private boolean t;
    @Nullable
    private List<agp.b<?>> u;
 
-   public anc(and $$0, blu $$1, int $$2, boolean $$3, Consumer<xf<?>> $$4) {
+   public anc(and $$0, blv $$1, int $$2, boolean $$3, Consumer<xf<?>> $$4) {
       this.f = $$0;
       this.j = $$4;
       this.g = $$1;
       this.h = $$2;
       this.i = $$3;
       this.k.e($$1.dl());
-      this.l = aun.d($$1.dC() * 256.0F / 360.0F);
-      this.m = aun.d($$1.dE() * 256.0F / 360.0F);
-      this.n = aun.d($$1.cp() * 256.0F / 360.0F);
+      this.l = auo.d($$1.dC() * 256.0F / 360.0F);
+      this.m = auo.d($$1.dE() * 256.0F / 360.0F);
+      this.n = auo.d($$1.cp() * 256.0F / 360.0F);
       this.t = $$1.aC();
       this.u = $$1.an().c();
    }
 
    public void a() {
-      List<blu> $$0 = this.g.cP();
+      List<blv> $$0 = this.g.cP();
       if (!$$0.equals(this.r)) {
          this.j.accept(new acj(this.g));
          a($$0, this.r).forEach($$0x -> {
@@ -61,11 +61,11 @@ public class anc {
          this.r = $$0;
       }
 
-      if (this.g instanceof cbm $$1 && this.p % 10 == 0) {
-         cmx $$2 = $$1.G();
-         if ($$2.d() instanceof cne) {
-            Integer $$3 = cne.d($$2);
-            ega $$4 = cne.a($$3, this.f);
+      if (this.g instanceof cbn $$1 && this.p % 10 == 0) {
+         cmy $$2 = $$1.G();
+         if ($$2.d() instanceof cnf) {
+            Integer $$3 = cnf.d($$2);
+            egb $$4 = cnf.a($$3, this.f);
             if ($$4 != null) {
                for (ane $$5 : this.f.x()) {
                   $$4.a($$5, $$2);
@@ -82,8 +82,8 @@ public class anc {
 
       if (this.p % this.h == 0 || this.g.au || this.g.an().a()) {
          if (this.g.bO()) {
-            int $$7 = aun.d(this.g.dC() * 256.0F / 360.0F);
-            int $$8 = aun.d(this.g.dE() * 256.0F / 360.0F);
+            int $$7 = auo.d(this.g.dC() * 256.0F / 360.0F);
+            int $$8 = auo.d(this.g.dE() * 256.0F / 360.0F);
             boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
             if ($$9) {
                this.j.accept(new aas.c(this.g.aj(), (byte)$$7, (byte)$$8, this.g.aC()));
@@ -96,16 +96,16 @@ public class anc {
             this.s = true;
          } else {
             this.q++;
-            int $$10 = aun.d(this.g.dC() * 256.0F / 360.0F);
-            int $$11 = aun.d(this.g.dE() * 256.0F / 360.0F);
-            els $$12 = this.g.dl();
+            int $$10 = auo.d(this.g.dC() * 256.0F / 360.0F);
+            int $$11 = auo.d(this.g.dE() * 256.0F / 360.0F);
+            elt $$12 = this.g.dl();
             boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
             xf<?> $$14 = null;
             boolean $$15 = $$13 || this.p % 60 == 0;
             boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
             boolean $$17 = false;
             boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cfn) {
+            if (this.p > 0 || this.g instanceof cfo) {
                long $$19 = this.k.a($$12);
                long $$20 = this.k.b($$12);
                long $$21 = this.k.c($$12);
@@ -116,7 +116,7 @@ public class anc {
                   $$14 = new acz(this.g);
                   $$17 = true;
                   $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cfn)) {
+               } else if ((!$$15 || !$$16) && !(this.g instanceof cfo)) {
                   if ($$15) {
                      $$14 = new aas.a(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aC());
                      $$17 = true;
@@ -131,8 +131,8 @@ public class anc {
                }
             }
 
-            if ((this.i || this.g.au || this.g instanceof bmk && ((bmk)this.g).fw()) && this.p > 0) {
-               els $$23 = this.g.dp();
+            if ((this.i || this.g.au || this.g instanceof bml && ((bml)this.g).fw()) && this.p > 0) {
+               elt $$23 = this.g.dp();
                double $$24 = $$23.g(this.o);
                if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
                   this.o = $$23;
@@ -157,7 +157,7 @@ public class anc {
             this.s = false;
          }
 
-         int $$25 = aun.d(this.g.cp() * 256.0F / 360.0F);
+         int $$25 = auo.d(this.g.cp() * 256.0F / 360.0F);
          if (Math.abs($$25 - this.n) >= 1) {
             this.j.accept(new abm(this.g, (byte)$$25));
             this.n = $$25;
@@ -173,7 +173,7 @@ public class anc {
       }
    }
 
-   private static Stream<blu> a(List<blu> $$0, List<blu> $$1) {
+   private static Stream<blv> a(List<blv> $$0, List<blv> $$1) {
       return $$1.stream().filter($$1x -> !$$0.contains($$1x));
    }
 
@@ -195,34 +195,34 @@ public class anc {
       }
 
       xf<za> $$2 = this.g.dj();
-      this.n = aun.d(this.g.cp() * 256.0F / 360.0F);
+      this.n = auo.d(this.g.cp() * 256.0F / 360.0F);
       $$1.accept($$2);
       if (this.u != null) {
          $$1.accept(new acc(this.g.aj(), this.u));
       }
 
       boolean $$3 = this.i;
-      if (this.g instanceof bmk) {
-         Collection<bnm> $$4 = ((bmk)this.g).eR().b();
+      if (this.g instanceof bml) {
+         Collection<bnn> $$4 = ((bml)this.g).eR().b();
          if (!$$4.isEmpty()) {
             $$1.accept(new add(this.g.aj(), $$4));
          }
 
-         if (((bmk)this.g).fw()) {
+         if (((bml)this.g).fw()) {
             $$3 = true;
          }
       }
 
       this.o = this.g.dp();
-      if ($$3 && !(this.g instanceof bmk)) {
+      if ($$3 && !(this.g instanceof bml)) {
          $$1.accept(new ace(this.g.aj(), this.o));
       }
 
-      if (this.g instanceof bmk) {
-         List<Pair<blz, cmx>> $$5 = Lists.newArrayList();
+      if (this.g instanceof bml) {
+         List<Pair<bma, cmy>> $$5 = Lists.newArrayList();
 
-         for (blz $$6 : blz.values()) {
-            cmx $$7 = ((bmk)this.g).c($$6);
+         for (bma $$6 : bma.values()) {
+            cmy $$7 = ((bml)this.g).c($$6);
             if (!$$7.b()) {
                $$5.add(Pair.of($$6, $$7.p()));
             }
@@ -241,7 +241,7 @@ public class anc {
          $$1.accept(new acj(this.g.cZ()));
       }
 
-      if (this.g instanceof bmm $$8 && $$8.fS()) {
+      if (this.g instanceof bmn $$8 && $$8.fS()) {
          $$1.accept(new acd($$8, $$8.fT()));
       }
    }
@@ -254,8 +254,8 @@ public class anc {
          this.a(new acc(this.g.aj(), $$1));
       }
 
-      if (this.g instanceof bmk) {
-         Set<bnm> $$2 = ((bmk)this.g).eR().a();
+      if (this.g instanceof bml) {
+         Set<bnn> $$2 = ((bml)this.g).eR().a();
          if (!$$2.isEmpty()) {
             this.a(new add(this.g.aj(), $$2));
          }

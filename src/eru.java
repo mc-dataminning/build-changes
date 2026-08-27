@@ -1,40 +1,31 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class eru extends erw {
-   private static final Logger d = LogUtils.getLogger();
+public class eru extends erx {
    public long a;
-   public int b;
-   public eru.a c = eru.a.a;
+   public List<ert> b = Lists.newArrayList();
 
    public static eru a(String $$0) {
       eru $$1 = new eru();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = ett.a("startDate", $$3, 0L);
-         $$1.b = ett.a("daysLeft", $$3, 0);
-         $$1.c = b(ett.b("subscriptionType", $$3, eru.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = etu.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               ert $$8 = ert.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
 
       return $$1;
-   }
-
-   private static eru.a b(String $$0) {
-      try {
-         return eru.a.valueOf($$0);
-      } catch (Exception var2) {
-         return eru.a.a;
-      }
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

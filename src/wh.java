@@ -9,7 +9,7 @@ public interface wh {
 
    wh.a<?> a();
 
-   public static record a<T extends wh>(MapCodec<T> a, String b) implements avj {
+   public static record a<T extends wh>(MapCodec<T> a, String b) implements avk {
       @Override
       public String c() {
          return this.b;

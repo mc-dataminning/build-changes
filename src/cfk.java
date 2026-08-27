@@ -1,83 +1,19 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
+import java.security.PrivateKey;
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
 
-public record cfk(cfk.a d) {
-   public static final vf a = vf.c("multiplayer.disconnect.expired_public_key");
-   private static final vf e = vf.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cfk> c = cfk.a.a.xmap(cfk::new, cfk::b);
+public record cfk(PrivateKey b, cfl c, Instant d) {
+   public static final Codec<cfk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atm.g.fieldOf("private_key").forGetter(cfk::b),
+               cfl.c.fieldOf("public_key").forGetter(cfk::c),
+               atw.m.fieldOf("refreshed_after").forGetter(cfk::d)
+            )
+            .apply($$0, cfk::new)
+   );
 
-   public static cfk a(avb $$0, UUID $$1, cfk.a $$2) throws cfk.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cfk.b(e);
-      } else {
-         return new cfk($$2);
-      }
-   }
-
-   public avb a() {
-      return avb.a(this.d.c, "SHA256withRSA");
-   }
-
-   public cfk.a b() {
-      return this.d;
-   }
-
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cfk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atv.m.fieldOf("expires_at").forGetter(cfk.a::b), atl.f.fieldOf("key").forGetter(cfk.a::c), atv.n.fieldOf("signature_v2").forGetter(cfk.a::d)
-               )
-               .apply($$0, cfk.a::new)
-      );
-
-      public a(ui $$0) {
-         this($$0.w(), $$0.x(), $$0.a(4096));
-      }
-
-      public void a(ui $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(avb $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cfk.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends wf {
-      public b(vf $$0) {
-         super($$0);
-      }
+   public boolean a() {
+      return this.d.isBefore(Instant.now());
    }
 }

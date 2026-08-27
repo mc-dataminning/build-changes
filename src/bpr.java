@@ -1,88 +1,146 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
 
-public class bpr extends bob<bzs> {
-   public static final int c = 200;
-   public static final float d = 1.65F;
-   private final Function<bzs, bjl> e;
-   private final bwy f;
+public class bpr<E extends bmu> extends boc<E> {
+   public static final int c = 160;
+   private final ToIntFunction<E> d;
+   private final int e;
+   private final int f;
    private final float g;
-   private final ToDoubleFunction<bzs> h;
-   private els i;
-   private final Function<bzs, arq> j;
-   private final Function<bzs, arq> k;
+   private final bwz h;
+   private final int i;
+   private final Function<E, arr> j;
+   private Optional<Long> k = Optional.empty();
+   private Optional<bpr.a> l = Optional.empty();
 
-   public bpr(Function<bzs, bjl> $$0, bwy $$1, float $$2, ToDoubleFunction<bzs> $$3, Function<bzs, arq> $$4, Function<bzs, arq> $$5) {
-      super(ImmutableMap.of(bvm.U, bvn.b, bvm.V, bvn.a), 200);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.i = els.b;
+   public bpr(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, bwz $$4, int $$5, Function<E, arr> $$6) {
+      super(ImmutableMap.of(bvn.n, bvo.c, bvn.U, bvo.b, bvn.h, bvo.a, bvn.V, bvo.b), 160);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   protected boolean a(and $$0, bzs $$1) {
-      return $$1.dO().a(bvm.V);
+   protected void a(and $$0, bmu $$1, long $$2) {
+      bnl<?> $$3 = $$1.dO();
+      $$3.c(bvn.h).flatMap($$1x -> $$1x.a($$1xx -> this.h.a($$1, $$1xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
-   protected boolean a(and $$0, bzs $$1, long $$2) {
-      return $$1.dO().a(bvm.V);
+   protected void b(and $$0, E $$1, long $$2) {
+      bnl<?> $$3 = $$1.dO();
+      if (!$$3.a(bvn.V)) {
+         $$0.a($$1, (byte)59);
+         $$3.a(bvn.U, this.d.applyAsInt($$1));
+      }
    }
 
-   protected void b(and $$0, bzs $$1, long $$2) {
-      hx $$3 = $$1.dm();
-      bnk<?> $$4 = $$1.dO();
-      els $$5 = $$4.c(bvm.V).get();
-      this.i = new els((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
-      $$4.a(bvm.m, new bvp($$5, this.g, 0));
+   protected boolean c(and $$0, bmu $$1, long $$2) {
+      return this.l.isPresent() && this.l.get().c().bx();
    }
 
-   protected void c(and $$0, bzs $$1, long $$2) {
-      List<bmk> $$3 = $$0.a(bmk.class, this.f, $$1, $$1.cH());
-      bnk<?> $$4 = $$1.dO();
-      if (!$$3.isEmpty()) {
-         bmk $$5 = $$3.get(0);
-         $$5.a($$0.ai().c((bmk)$$1), (float)$$1.b(bnq.c));
-         int $$6 = $$1.a(blj.a) ? $$1.b(blj.a).e() + 1 : 0;
-         int $$7 = $$1.a(blj.b) ? $$1.b(blj.b).e() + 1 : 0;
-         float $$8 = 0.25F * (float)($$6 - $$7);
-         float $$9 = aun.a($$1.ff() * 1.65F, 0.2F, 3.0F) + $$8;
-         float $$10 = $$5.f($$0.ai().b((bmk)$$1)) ? 0.5F : 1.0F;
-         $$5.q((double)($$10 * $$9) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
-         this.b($$0, $$1);
-         $$0.a(null, $$1, this.j.apply($$1), ars.g, 1.0F, 1.0F);
-      } else if (this.c($$0, $$1)) {
-         $$0.a(null, $$1, this.j.apply($$1), ars.g, 1.0F, 1.0F);
-         boolean $$11 = $$1.gl();
-         if ($$11) {
-            $$0.a(null, $$1, this.k.apply($$1), ars.g, 1.0F, 1.0F);
-         }
+   protected void d(and $$0, E $$1, long $$2) {
+      if (!this.l.isEmpty()) {
+         $$1.dO().a(bvn.m, new bvq(this.l.get().a(), this.g, 0));
+         $$1.dO().a(bvn.n, new bon(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dm().equals(this.l.get().b());
+         if ($$3) {
+            $$0.a($$1, (byte)59);
+            $$1.N().n();
+            this.b($$1, this.l.get().c);
+         } else {
+            hx $$4 = $$1.dm();
+            if ($$4.equals(this.l.get().a())) {
+               $$0.a($$1, (byte)58);
+               if (this.k.isEmpty()) {
+                  this.k = Optional.of($$2);
+               }
 
-         this.b($$0, $$1);
-      } else {
-         Optional<bvp> $$12 = $$4.c(bvm.m);
-         Optional<els> $$13 = $$4.c(bvm.V);
-         boolean $$14 = $$12.isEmpty() || $$13.isEmpty() || $$12.get().a().a().a($$13.get(), 0.25);
-         if ($$14) {
-            this.b($$0, $$1);
+               if ($$2 - this.k.get() >= (long)this.i) {
+                  $$1.dO().a(bvn.V, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), art.g, 1.0F, $$1.eX());
+                  this.l = Optional.empty();
+               }
+            }
          }
       }
    }
 
-   private boolean c(and $$0, bzs $$1) {
-      els $$2 = $$1.dp().d(1.0, 0.0, 1.0).d();
-      hx $$3 = hx.a($$1.dk().e($$2));
-      return $$0.a_($$3).a(asg.ce) || $$0.a_($$3.c()).a(asg.ce);
+   private elt a(hx $$0, hx $$1) {
+      double $$2 = 0.5;
+      double $$3 = 0.5 * (double)auo.j((double)($$1.u() - $$0.u()));
+      double $$4 = 0.5 * (double)auo.j((double)($$1.w() - $$0.w()));
+      return elt.c($$1).b($$3, 0.0, $$4);
    }
 
-   protected void b(and $$0, bzs $$1) {
-      $$0.a($$1, (byte)59);
-      $$1.dO().a(bvm.U, this.e.apply($$1).a($$0.z));
-      $$1.dO().b(bvm.V);
+   private Optional<hx> a(bmu $$0, bml $$1) {
+      hx $$2 = $$1.dm();
+      if (!this.a($$0, $$2)) {
+         return Optional.empty();
+      } else {
+         List<hx> $$3 = Lists.newArrayList();
+         hx.a $$4 = $$2.j();
+
+         for (ic $$5 : ic.c.a) {
+            $$4.g($$2);
+
+            for (int $$6 = 0; $$6 < this.f; $$6++) {
+               if (!this.a($$0, $$4.c($$5))) {
+                  $$4.c($$5.g());
+                  break;
+               }
+            }
+
+            if ($$4.k($$2) >= this.e) {
+               $$3.add($$4.i());
+            }
+         }
+
+         bvv $$7 = $$0.N();
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dm()::j)).filter($$1x -> {
+            efg $$2x = $$7.a($$1x, 0);
+            return $$2x != null && $$2x.j();
+         }).findFirst();
+      }
+   }
+
+   private boolean a(bmu $$0, hx $$1) {
+      return $$0.N().a($$1) && $$0.a(efl.a($$0.dM(), $$1.j())) == 0.0F;
+   }
+
+   private void b(bmu $$0, bml $$1) {
+      this.k = Optional.empty();
+      this.l = this.a($$0, $$1).map($$1x -> new bpr.a($$1x, $$1.dm(), $$1));
+   }
+
+   public static class a {
+      private final hx a;
+      private final hx b;
+      final bml c;
+
+      public a(hx $$0, hx $$1, bml $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public hx a() {
+         return this.a;
+      }
+
+      public hx b() {
+         return this.b;
+      }
+
+      public bml c() {
+         return this.c;
+      }
    }
 }

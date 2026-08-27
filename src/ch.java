@@ -10,15 +10,15 @@ public class ch extends cv<ch.a> {
       return ch.a.a;
    }
 
-   public void a(ane $$0, bmj $$1, List<blu> $$2) {
-      List<egv> $$3 = $$2.stream().map($$1x -> bp.b($$0, $$1x)).collect(Collectors.toList());
-      egv $$4 = bp.b($$0, $$1);
+   public void a(ane $$0, bmk $$1, List<blv> $$2) {
+      List<egw> $$3 = $$2.stream().map($$1x -> bp.b($$0, $$1x)).collect(Collectors.toList());
+      egw $$4 = bp.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
    public static record a(Optional<bb> b, Optional<bb> c, Optional<bb> d) implements cv.a {
       public static final Codec<ch.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(ch.a::a), atv.a(bp.b, "lightning").forGetter(ch.a::b), atv.a(bp.b, "bystander").forGetter(ch.a::c))
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(ch.a::a), atw.a(bp.b, "lightning").forGetter(ch.a::b), atw.a(bp.b, "bystander").forGetter(ch.a::c))
                .apply($$0, ch.a::new)
       );
 
@@ -26,7 +26,7 @@ public class ch extends cv<ch.a> {
          return am.T.a(new ch.a(Optional.empty(), bp.a($$0), bp.a($$1)));
       }
 
-      public boolean a(egv $$0, List<egv> $$1) {
+      public boolean a(egw $$0, List<egw> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

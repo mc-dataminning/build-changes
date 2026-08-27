@@ -1,90 +1,54 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public record eni<T>(T b, hx c, int d, enn e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<eni<?>> a = new Strategy<eni<?>>() {
-      public int a(eni<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+public class eni<T> implements enl<T>, enn<T> {
+   private final List<enj<T>> a = Lists.newArrayList();
+   private final Set<enj<?>> b = new ObjectOpenCustomHashSet(enj.a);
 
-      public boolean a(@Nullable eni<?> $$0, @Nullable eni<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
-   };
+   @Override
+   public void a(enk<T> $$0) {
+      enj<T> $$1 = new enj<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
+   }
 
-   public static <T> void a(st $$0, Function<String, Optional<T>> $$1, csv $$2, Consumer<eni<T>> $$3) {
-      long $$4 = $$2.a();
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         sn $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (csv.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
-            }
-         });
+   private void a(enj<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
    }
 
-   public static <T> Optional<eni<T>> a(sn $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         hx $$2 = new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new eni<>((T)$$1x, $$2, $$0.h("t"), enn.a($$0.h("p")));
-      });
+   @Override
+   public boolean a(hx $$0, T $$1) {
+      return this.b.contains(enj.a($$1, $$0));
    }
 
-   private static sn a(String $$0, hx $$1, int $$2, enn $$3) {
-      sn $$4 = new sn();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   public static <T> sn a(enj<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   @Override
+   public tk b(long $$0, Function<T, String> $$1) {
+      st $$2 = new st();
+
+      for (enj<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
+      }
+
+      return $$2;
    }
 
-   public sn a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
+   public List<enj<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public enj<T> a(long $$0, long $$1) {
-      return new enj<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
-
-   public static <T> eni<T> a(T $$0, hx $$1) {
-      return new eni<>($$0, $$1, 0, enn.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public hx b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public enn d() {
-      return this.e;
+   public static <T> eni<T> a(st $$0, Function<String, Optional<T>> $$1, csw $$2) {
+      eni<T> $$3 = new eni<>();
+      enj.a($$0, $$1, $$2, $$3::a);
+      return $$3;
    }
 }

@@ -14,7 +14,7 @@ public class lx implements kk {
       this.d = $$0;
    }
 
-   public <T> lx a(api<T> $$0, T $$1) {
+   public <T> lx a(apj<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class lx implements kk {
    }
 
    public static lx a(km $$0, vf $$1) {
-      return new lx($$0).a(apj.b, new apj($$1, t.a.a(aow.b), Optional.empty()));
+      return new lx($$0).a(apk.b, new apk($$1, t.a.a(aox.b), Optional.empty()));
    }
 
-   public static lx a(km $$0, vf $$1, chr $$2) {
-      return a($$0, $$1).a(aos.a, new aos($$2));
+   public static lx a(km $$0, vf $$1, chs $$2) {
+      return a($$0, $$1).a(aot.a, new aot($$2));
    }
 }

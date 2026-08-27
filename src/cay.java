@@ -1,30 +1,26 @@
-public class cay extends caq {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cay(can $$0) {
-      super($$0);
-   }
+public interface cay {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), arr.hA, this.a.db(), 2.5F, 0.8F + this.a.eg().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gb().a(cbd.f);
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.c = 0;
-   }
+   void a(can var1, hx var2, bkt var3, @Nullable cfi var4);
 
-   @Override
-   public cbd<cay> i() {
-      return cbd.h;
-   }
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   cbe<? extends cay> i();
+
+   @Nullable
+   elt g();
+
+   float a(bkt var1, float var2);
 }

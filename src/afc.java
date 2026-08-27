@@ -1,12 +1,12 @@
 public class afc implements xf<adj> {
-   private final bjz a;
+   private final bka a;
 
-   public afc(bjz $$0) {
+   public afc(bka $$0) {
       this.a = $$0;
    }
 
    public afc(ui $$0) {
-      this.a = $$0.b(bjz.class);
+      this.a = $$0.b(bka.class);
    }
 
    @Override
@@ -18,7 +18,7 @@ public class afc implements xf<adj> {
       $$0.a(this);
    }
 
-   public bjz a() {
+   public bka a() {
       return this.a;
    }
 }

@@ -1,71 +1,70 @@
-public class doy {
-   public static final ahf<edt.a> a = a("temperature");
-   public static final ahf<edt.a> b = a("vegetation");
-   public static final ahf<edt.a> c = a("continentalness");
-   public static final ahf<edt.a> d = a("erosion");
-   public static final ahf<edt.a> e = a("temperature_large");
-   public static final ahf<edt.a> f = a("vegetation_large");
-   public static final ahf<edt.a> g = a("continentalness_large");
-   public static final ahf<edt.a> h = a("erosion_large");
-   public static final ahf<edt.a> i = a("ridge");
-   public static final ahf<edt.a> j = a("offset");
-   public static final ahf<edt.a> k = a("aquifer_barrier");
-   public static final ahf<edt.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ahf<edt.a> m = a("aquifer_lava");
-   public static final ahf<edt.a> n = a("aquifer_fluid_level_spread");
-   public static final ahf<edt.a> o = a("pillar");
-   public static final ahf<edt.a> p = a("pillar_rareness");
-   public static final ahf<edt.a> q = a("pillar_thickness");
-   public static final ahf<edt.a> r = a("spaghetti_2d");
-   public static final ahf<edt.a> s = a("spaghetti_2d_elevation");
-   public static final ahf<edt.a> t = a("spaghetti_2d_modulator");
-   public static final ahf<edt.a> u = a("spaghetti_2d_thickness");
-   public static final ahf<edt.a> v = a("spaghetti_3d_1");
-   public static final ahf<edt.a> w = a("spaghetti_3d_2");
-   public static final ahf<edt.a> x = a("spaghetti_3d_rarity");
-   public static final ahf<edt.a> y = a("spaghetti_3d_thickness");
-   public static final ahf<edt.a> z = a("spaghetti_roughness");
-   public static final ahf<edt.a> A = a("spaghetti_roughness_modulator");
-   public static final ahf<edt.a> B = a("cave_entrance");
-   public static final ahf<edt.a> C = a("cave_layer");
-   public static final ahf<edt.a> D = a("cave_cheese");
-   public static final ahf<edt.a> E = a("ore_veininess");
-   public static final ahf<edt.a> F = a("ore_vein_a");
-   public static final ahf<edt.a> G = a("ore_vein_b");
-   public static final ahf<edt.a> H = a("ore_gap");
-   public static final ahf<edt.a> I = a("noodle");
-   public static final ahf<edt.a> J = a("noodle_thickness");
-   public static final ahf<edt.a> K = a("noodle_ridge_a");
-   public static final ahf<edt.a> L = a("noodle_ridge_b");
-   public static final ahf<edt.a> M = a("jagged");
-   public static final ahf<edt.a> N = a("surface");
-   public static final ahf<edt.a> O = a("surface_secondary");
-   public static final ahf<edt.a> P = a("clay_bands_offset");
-   public static final ahf<edt.a> Q = a("badlands_pillar");
-   public static final ahf<edt.a> R = a("badlands_pillar_roof");
-   public static final ahf<edt.a> S = a("badlands_surface");
-   public static final ahf<edt.a> T = a("iceberg_pillar");
-   public static final ahf<edt.a> U = a("iceberg_pillar_roof");
-   public static final ahf<edt.a> V = a("iceberg_surface");
-   public static final ahf<edt.a> W = a("surface_swamp");
-   public static final ahf<edt.a> X = a("calcite");
-   public static final ahf<edt.a> Y = a("gravel");
-   public static final ahf<edt.a> Z = a("powder_snow");
-   public static final ahf<edt.a> aa = a("packed_ice");
-   public static final ahf<edt.a> ab = a("ice");
-   public static final ahf<edt.a> ac = a("soul_sand_layer");
-   public static final ahf<edt.a> ad = a("gravel_layer");
-   public static final ahf<edt.a> ae = a("patch");
-   public static final ahf<edt.a> af = a("netherrack");
-   public static final ahf<edt.a> ag = a("nether_wart");
-   public static final ahf<edt.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private static ahf<edt.a> a(String $$0) {
-      return ahf.a(ke.aB, new ahg($$0));
+public record doy(int g, int h, int i, int j) {
+   public static final Codec<doy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dmq.e, dmq.d).fieldOf("min_y").forGetter(doy::c),
+                  Codec.intRange(0, dmq.c).fieldOf("height").forGetter(doy::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(doy::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(doy::f)
+               )
+               .apply($$0, doy::new)
+      )
+      .comapFlatMap(doy::a, Function.identity());
+   protected static final doy b = a(-64, 384, 1, 2);
+   protected static final doy c = a(0, 128, 1, 2);
+   protected static final doy d = a(0, 128, 2, 1);
+   protected static final doy e = a(-64, 192, 1, 2);
+   protected static final doy f = a(0, 256, 2, 1);
+
+   private static DataResult<doy> a(doy $$0) {
+      if ($$0.c() + $$0.d() > dmq.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dmq.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public static edt a(ii<edt.a> $$0, dpc $$1, ahf<edt.a> $$2) {
-      ih<edt.a> $$3 = $$0.b($$2);
-      return edt.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static doy a(int $$0, int $$1, int $$2, int $$3) {
+      doy $$4 = new doy($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return is.c(this.f());
+   }
+
+   public int b() {
+      return is.c(this.e());
+   }
+
+   public doy a(ctr $$0) {
+      int $$1 = Math.max(this.g, $$0.J_());
+      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
+      return new doy($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

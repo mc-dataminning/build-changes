@@ -1,76 +1,249 @@
-public class dba {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2005;
-   public static final int ac = 2006;
-   public static final int ad = 2007;
-   public static final int ae = 2008;
-   public static final int af = 2009;
-   public static final int ag = 2010;
-   public static final int ah = 3000;
-   public static final int ai = 3001;
-   public static final int aj = 3002;
-   public static final int ak = 3003;
-   public static final int al = 3004;
-   public static final int am = 3005;
-   public static final int an = 3006;
-   public static final int ao = 3007;
-   public static final int ap = 3008;
-   public static final int aq = 3009;
-   public static final int ar = 3010;
-   public static final int as = 3011;
-   public static final int at = 3012;
-   public static final int au = 3013;
-   public static final int av = 3014;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class dba extends cwc {
+   public static final MapCodec<dba> a = b(dba::new);
+   public static final dkb b = dal.aE;
+   public static final djy c = djx.w;
+   public static final djy d = djx.o;
+   public static final emm e = cwq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   public static final emm f = cwq.a(4.0, 2.0, 4.0, 12.0, 14.0, 12.0);
+   public static final emm g = emj.a(e, f);
+   public static final emm h = cwq.a(0.0, 15.0, 0.0, 16.0, 15.0, 16.0);
+   public static final emm i = emj.a(g, h);
+   public static final emm j = emj.a(
+      cwq.a(1.0, 10.0, 0.0, 5.333333, 14.0, 16.0), cwq.a(5.333333, 12.0, 0.0, 9.666667, 16.0, 16.0), cwq.a(9.666667, 14.0, 0.0, 14.0, 18.0, 16.0), g
+   );
+   public static final emm k = emj.a(
+      cwq.a(0.0, 10.0, 1.0, 16.0, 14.0, 5.333333), cwq.a(0.0, 12.0, 5.333333, 16.0, 16.0, 9.666667), cwq.a(0.0, 14.0, 9.666667, 16.0, 18.0, 14.0), g
+   );
+   public static final emm l = emj.a(
+      cwq.a(10.666667, 10.0, 0.0, 15.0, 14.0, 16.0), cwq.a(6.333333, 12.0, 0.0, 10.666667, 16.0, 16.0), cwq.a(2.0, 14.0, 0.0, 6.333333, 18.0, 16.0), g
+   );
+   public static final emm m = emj.a(
+      cwq.a(0.0, 10.0, 10.666667, 16.0, 14.0, 15.0), cwq.a(0.0, 12.0, 6.333333, 16.0, 16.0, 10.666667), cwq.a(0.0, 14.0, 2.0, 16.0, 18.0, 6.333333), g
+   );
+   private static final int n = 2;
+
+   @Override
+   public MapCodec<dba> a() {
+      return a;
+   }
+
+   protected dba(djg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public dcv b_(djh $$0) {
+      return dcv.c;
+   }
+
+   @Override
+   public emm f(djh $$0, csv $$1, hx $$2) {
+      return g;
+   }
+
+   @Override
+   public boolean g_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public djh a(cph $$0) {
+      ctp $$1 = $$0.q();
+      cmy $$2 = $$0.n();
+      cfi $$3 = $$0.o();
+      boolean $$4 = false;
+      if (!$$1.B && $$3 != null && $$3.gp()) {
+         sn $$5 = ckr.a($$2);
+         if ($$5 != null && $$5.e("Book")) {
+            $$4 = true;
+         }
+      }
+
+      return this.o().a(b, $$0.g().g()).a(d, Boolean.valueOf($$4));
+   }
+
+   @Override
+   public emm b(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return i;
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      switch ((ic)$$0.c(b)) {
+         case c:
+            return k;
+         case d:
+            return m;
+         case f:
+            return l;
+         case e:
+            return j;
+         default:
+            return g;
+      }
+   }
+
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dgv a(hx $$0, djh $$1) {
+      return new dhx($$0, $$1);
+   }
+
+   public static boolean a(@Nullable blv $$0, ctp $$1, hx $$2, djh $$3, cmy $$4) {
+      if (!$$3.c(d)) {
+         if (!$$1.B) {
+            b($$0, $$1, $$2, $$3, $$4);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static void b(@Nullable blv $$0, ctp $$1, hx $$2, djh $$3, cmy $$4) {
+      if ($$1.c_($$2) instanceof dhx $$6) {
+         $$6.a($$4.a(1));
+         a($$0, $$1, $$2, $$3, true);
+         $$1.a(null, $$2, ars.cf, art.e, 1.0F, 1.0F);
+      }
+   }
+
+   public static void a(@Nullable blv $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      djh $$5 = $$3.a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf($$4));
+      $$1.a($$2, $$5, 3);
+      $$1.a(dnr.c, $$2, dnr.a.a($$0, $$5));
+      b($$1, $$2, $$3);
+   }
+
+   public static void a(ctp $$0, hx $$1, djh $$2) {
+      a($$0, $$1, $$2, true);
+      $$0.a($$1, $$2.b(), 2);
+      $$0.c(1043, $$1, 0);
+   }
+
+   private static void a(ctp $$0, hx $$1, djh $$2, boolean $$3) {
+      $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 3);
+      b($$0, $$1, $$2);
+   }
+
+   private static void b(ctp $$0, hx $$1, djh $$2) {
+      $$0.a($$1.d(), $$2.b());
+   }
+
+   @Override
+   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
+      a($$1, $$2, $$0, false);
+   }
+
+   @Override
+   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.d($$0, $$1, $$2);
+         }
+
+         if ($$0.c(c)) {
+            $$1.a($$2.d(), this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   private void d(djh $$0, ctp $$1, hx $$2) {
+      if ($$1.c_($$2) instanceof dhx $$4) {
+         ic $$5 = $$0.c(b);
+         cmy $$6 = $$4.c().p();
+         float $$7 = 0.25F * (float)$$5.j();
+         float $$8 = 0.25F * (float)$$5.l();
+         cbu $$9 = new cbu($$1, (double)$$2.u() + 0.5 + (double)$$7, (double)($$2.v() + 1), (double)$$2.w() + 0.5 + (double)$$8, $$6);
+         $$9.u();
+         $$1.b($$9);
+         $$4.a();
+      }
+   }
+
+   @Override
+   public boolean f_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   public int b(djh $$0, csv $$1, hx $$2, ic $$3) {
+      return $$3 == ic.b && $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   public boolean d_(djh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djh $$0, ctp $$1, hx $$2) {
+      if ($$0.c(d)) {
+         dgv $$3 = $$1.c_($$2);
+         if ($$3 instanceof dhx) {
+            return ((dhx)$$3).k();
+         }
+      }
+
+      return 0;
+   }
+
+   @Override
+   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
+      if ($$0.c(d)) {
+         if (!$$1.B) {
+            this.a($$1, $$2, $$3);
+         }
+
+         return bkb.a($$1.B);
+      } else {
+         cmy $$6 = $$3.b($$4);
+         return !$$6.b() && !$$6.a(asp.au) ? bkb.b : bkb.d;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bke b(djh $$0, ctp $$1, hx $$2) {
+      return !$$0.c(d) ? null : super.b($$0, $$1, $$2);
+   }
+
+   private void a(ctp $$0, hx $$1, cfi $$2) {
+      dgv $$3 = $$0.c_($$1);
+      if ($$3 instanceof dhx) {
+         $$2.a((dhx)$$3);
+         $$2.a(asc.au);
+      }
+   }
+
+   @Override
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
+   }
 }

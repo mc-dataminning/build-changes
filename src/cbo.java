@@ -1,163 +1,138 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cbo extends cbl implements bni<ih<cbp>> {
-   private static final agm<ih<cbp>> f = agp.a(cbo.class, ago.y);
-   private static final ahf<cbp> g = cbq.a;
-   public static final String e = "variant";
+public class cbo extends cbm {
+   public static final double e = 0.375;
 
-   private static ih<cbp> s() {
-      return kd.l.f(g);
-   }
-
-   public cbo(bly<? extends cbo> $$0, cto $$1) {
+   public cbo(blz<? extends cbo> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void c_() {
-      this.an.a(f, s());
+   public cbo(ctp $$0, hx $$1) {
+      super(blz.ai, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   public void a(agm<?> $$0) {
-      if (f.equals($$0)) {
-         this.z();
-      }
-   }
-
-   public void a(ih<cbp> $$0) {
-      this.an.b(f, $$0);
-   }
-
-   public ih<cbp> q() {
-      return this.an.b(f);
-   }
-
-   public static Optional<cbo> a(cto $$0, hx $$1, ic $$2) {
-      cbo $$3 = new cbo($$0, $$1);
-      List<ih<cbp>> $$4 = new ArrayList<>();
-      kd.l.c(asp.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.a($$1x);
-            return !$$3.A();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(cbo::b).max().orElse(0);
-            $$4.removeIf($$1x -> b($$1x) < $$5);
-            Optional<ih<cbp>> $$6 = ac.b($$4, $$3.ag);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.a($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
-            }
-         }
-      }
-   }
-
-   private static int b(ih<cbp> $$0) {
-      return $$0.a().a() * $$0.a().b();
-   }
-
-   private cbo(cto $$0, hx $$1) {
-      super(bly.as, $$0, $$1);
-   }
-
-   public cbo(cto $$0, hx $$1, ic $$2, ih<cbp> $$3) {
-      this($$0, $$1);
-      this.a($$3);
-      this.a($$2);
+   protected void z() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ai().k() / 2.0;
+      double $$1 = (double)this.ai().l();
+      this.a(new elo(this.dr() - $$0, this.dt(), this.dx() - $$0, this.dr() + $$0, this.dt() + $$1, this.dx() + $$0));
    }
 
    @Override
-   public void b(sn $$0) {
-      a($$0, this.q());
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(sn $$0) {
-      ih<cbp> $$1 = c($$0).orElseGet(cbo::s);
-      this.a($$1);
-      this.d = ic.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
-
-   public static void a(sn $$0, ih<cbp> $$1) {
-      $$0.a("variant", $$1.e().orElse(g).a().toString());
-   }
-
-   public static Optional<ih<cbp>> c(sn $$0) {
-      return Optional.ofNullable(ahg.a($$0.l("variant"))).map($$0x -> ahf.a(ke.R, $$0x)).flatMap(kd.l::b);
+   public void a(ic $$0) {
    }
 
    @Override
    public int B() {
-      return this.q().a().a();
+      return 9;
    }
 
    @Override
    public int C() {
-      return this.q().a().b();
+      return 9;
    }
 
    @Override
-   public void a(@Nullable blu $$0) {
-      if (this.dM().Z().b(ctk.i)) {
-         this.a(arr.rw, 1.0F, 1.0F);
-         if ($$0 instanceof cfh $$1 && $$1.fT().d) {
-            return;
+   protected float a(bmx $$0, blw $$1) {
+      return 0.0625F;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void a(@Nullable blv $$0) {
+      this.a(ars.ne, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(sn $$0) {
+   }
+
+   @Override
+   public void a(sn $$0) {
+   }
+
+   @Override
+   public bkb a(cfi $$0, bka $$1) {
+      if (this.dM().B) {
+         return bkb.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bmn> $$4 = this.dM().a(bmn.class, new elo(this.dr() - 7.0, this.dt() - 7.0, this.dx() - 7.0, this.dr() + 7.0, this.dt() + 7.0, this.dx() + 7.0));
+
+         for (bmn $$5 : $$4) {
+            if ($$5.fT() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
          }
 
-         this.a(cna.pW);
+         boolean $$6 = false;
+         if (!$$2) {
+            this.am();
+            if ($$0.fT().d) {
+               for (bmn $$7 : $$4) {
+                  if ($$7.fS() && $$7.fT() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dnr.b, $$0);
+         }
+
+         return bkb.b;
       }
    }
 
    @Override
+   public boolean A() {
+      return this.dM().a_(this.c).a(ash.S);
+   }
+
+   public static cbo b(ctp $$0, hx $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (cbo $$6 : $$0.a(cbo.class, new elo((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.E().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      cbo $$7 = new cbo($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
    public void D() {
-      this.a(arr.rx, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public els dl() {
-      return els.a(this.c);
+      this.a(ars.nf, 1.0F, 1.0F);
    }
 
    @Override
    public xf<za> dj() {
-      return new zb(this, this.d.d(), this.E());
+      return new zb(this, 0, this.E());
    }
 
    @Override
-   public void a(zb $$0) {
-      super.a($$0);
-      this.a(ic.a($$0.o()));
+   public elt q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
    }
 
    @Override
-   public cmx dz() {
-      return new cmx(cna.pW);
+   public cmy dz() {
+      return new cmy(cnb.uD);
    }
 }

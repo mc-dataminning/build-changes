@@ -1,20 +1,17 @@
-import com.mojang.serialization.Codec;
+public enum cpr implements avk {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-public enum cpr implements avj {
-   a("building"),
-   b("redstone"),
-   c("equipment"),
-   d("misc");
-
-   public static final Codec<cpr> e = avj.a(cpr::values);
-   private final String f;
+   public static final avk.a<cpr> d = avk.a(cpr::values);
+   private final String e;
 
    private cpr(String $$0) {
-      this.f = $$0;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

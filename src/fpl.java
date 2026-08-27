@@ -1,49 +1,17 @@
-public class fpl extends fru {
-   private final frp a;
-
-   fpl(fnr $$0, double $$1, double $$2, double $$3, double $$4, frp $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class fpl extends fpn {
+   protected fpl(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, frq $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements fqy<ka> {
+      private final frq a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public fqy b() {
-      return fqy.d;
-   }
-
-   public static class a implements fqx<ka> {
-      private final frp a;
-
-      public a(frp $$0) {
+      public a(frq $$0) {
          this.a = $$0;
       }
 
-      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpl($$1, $$2, $$3, $$4, $$5, this.a);
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpl($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

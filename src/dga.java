@@ -1,19 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dga extends cwp {
-   public static final MapCodec<dga> a = b(dga::new);
+public class dga extends dfc implements dft {
+   public static final MapCodec<dga> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(djw.a.fieldOf("block_set_type").forGetter(dfc::g), dft.a.e.fieldOf("weathering_state").forGetter(dga::s), u()).apply($$0, dga::new)
+   );
+   private final dft.a n;
 
    @Override
    public MapCodec<dga> a() {
-      return a;
+      return m;
    }
 
-   public dga(djf.d $$0) {
-      super($$0);
+   protected dga(djw $$0, dft.a $$1, djg.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, blu $$3) {
-      $$3.a($$0, new els(0.25, 0.05F, 0.25));
+   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(djh $$0) {
+      return dft.c($$0.b()).isPresent();
+   }
+
+   public dft.a s() {
+      return this.n;
    }
 }

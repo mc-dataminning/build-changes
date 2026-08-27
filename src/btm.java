@@ -1,48 +1,36 @@
-import java.util.EnumSet;
+public class btm extends bth {
+   private final byv a;
+   private ane b;
+   private boolean c;
 
-public class btm extends btg {
-   private final bmm a;
-   private bmk b;
-   private final float c;
-
-   public btm(bmm $$0, float $$1) {
+   public btm(byv $$0) {
       this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(btg.a.c, btg.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.cO()) {
-         return false;
-      } else {
-         this.b = this.a.q();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.f(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
-            }
-         }
-      }
+      ane $$0 = (ane)this.a.R_();
+      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fT().b && !$$0.aZ() && !$$0.aA;
+      return !this.a.ge() && $$1 && this.a.gn();
    }
 
    @Override
-   public boolean b() {
-      return !this.a.aC();
+   public boolean S_() {
+      return !this.c;
    }
 
    @Override
    public void c() {
-      els $$0 = this.a.dp();
-      els $$1 = new els(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+      this.b = (ane)this.a.R_();
+      this.c = false;
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void e() {
+      if (!this.c && !this.a.A() && !this.a.fS()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

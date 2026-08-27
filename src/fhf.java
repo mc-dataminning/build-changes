@@ -1,77 +1,155 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fhf extends fgy<fow.a> {
-   private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final vf v = vf.c("gui.abuseReport.skin.title");
-   private final fat w = fat.d().a(8);
-   private exx x;
-   private exf y;
-   private exf z;
+public class fhf extends fdb {
+   private static final vf a = vf.c("gui.abuseReport.reason.title");
+   private static final vf b = vf.c("gui.abuseReport.reason.description");
+   private static final vf c = vf.c("gui.abuseReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
+   @Nullable
+   private final fdb p;
+   @Nullable
+   private fhf.a q;
+   @Nullable
+   fou r;
+   private final Consumer<fou> t;
 
-   private fhf(fda $$0, fov $$1, fow.a $$2) {
-      super(v, $$0, $$1, $$2);
-   }
-
-   public fhf(fda $$0, fov $$1, UUID $$2, Supplier<gfl> $$3) {
-      this($$0, $$1, new fow.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fhf(fda $$0, fov $$1, fow $$2) {
-      this($$0, $$1, new fow.a($$2, $$1.a().b()));
+   public fhf(@Nullable fdb $$0, @Nullable fou $$1, Consumer<fou> $$2) {
+      super(a);
+      this.p = $$0;
+      this.r = $$1;
+      this.t = $$2;
    }
 
    @Override
    protected void aN_() {
-      this.w.c().b();
-      this.w.a(new eym(this.e, this.i));
-      fat $$0 = this.w.a(fat.e().a(8));
-      $$0.c().e();
-      $$0.a(new eyf(85, 120, this.f.aP(), this.q.e().a()));
-      fat $$1 = $$0.a(fat.d().a(8));
-      this.z = exf.a(c, $$0x -> this.f.a(new fhe(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.D();
-         }))).a(178).a();
-      $$1.a(fal.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.D();
-      });
-      $$1.a(fal.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      fat $$2 = this.w.a(fat.e().a(8));
-      $$2.a(exf.a(ve.k, $$0x -> this.aE_()).a(120).a());
-      this.y = $$2.a(exf.a(a, $$0x -> this.n()).a(120).a());
-      this.w.a($$1x -> {
-         exd var10000 = this.d($$1x);
-      });
-      this.c();
-      this.D();
+      this.q = this.d(new fhf.a(this.f));
+      fhf.a.a $$0 = x.a(this.r, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(exg.a(c, fbt.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.n(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(exg.a(ve.d, $$0x -> {
+         fhf.a.a $$1x = this.q.i();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
+         }
+
+         this.f.a(this.p);
+      }).a($$2, this.n(), 150, 20).a());
+      super.aN_();
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-      fan.a(this.w, this.F());
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.D(), this.H(), this.E(), this.I(), 2130706432);
+      $$0.b(this.i, b, this.D() + 4, this.H() + 4, -8421505);
+      fhf.a.a $$4 = this.q.i();
+      if ($$4 != null) {
+         int $$5 = this.D() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.H() + 4 + 9 + 2;
+         int $$8 = this.I() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
    }
 
-   private void D() {
-      fot $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
-      } else {
-         this.z.b(c);
+   @Override
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private int n() {
+      return this.h - 20 - 4;
+   }
+
+   private int D() {
+      return (this.g - 320) / 2;
+   }
+
+   private int E() {
+      return (this.g + 320) / 2;
+   }
+
+   private int H() {
+      return this.h - 95 + 4;
+   }
+
+   private int I() {
+      return this.n() - 4;
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.p);
+   }
+
+   public class a extends eyc<fhf.a.a> {
+      public a(evi $$1) {
+         super($$1, fhf.this.g, fhf.this.h - 95 - 40, 40, 18);
+
+         for (fou $$2 : fou.values()) {
+            this.b(new fhf.a.a($$2));
+         }
       }
 
-      foq.b $$1 = this.q.c();
-      this.y.j = $$1 == null;
-      this.y.a(x.a($$1, foq.b::a));
-   }
+      @Nullable
+      public fhf.a.a a(fou $$0) {
+         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+      @Override
+      public int b() {
+         return 320;
+      }
+
+      @Override
+      protected int c() {
+         return this.r() - 2;
+      }
+
+      public void a(@Nullable fhf.a.a $$0) {
+         super.a($$0);
+         fhf.this.r = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends eyc.a<fhf.a.a> {
+         final fou b;
+
+         public a(fou $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fhf.this.i, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public vf a() {
+            return vf.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         public fou b() {
+            return this.b;
+         }
+      }
    }
 }

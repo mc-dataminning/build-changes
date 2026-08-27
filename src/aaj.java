@@ -12,10 +12,10 @@ public class aaj {
    private final byte[] c;
    private final List<aaj.a> d;
 
-   public aaj(dln $$0) {
+   public aaj(dlo $$0) {
       this.b = new sn();
 
-      for (Entry<dop.a, dop> $$1 : $$0.e()) {
+      for (Entry<doq.a, doq> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new su($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class aaj {
       a(new ui(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<hx, dgu> $$2 : $$0.G().entrySet()) {
+      for (Entry<hx, dgv> $$2 : $$0.G().entrySet()) {
          this.d.add(aaj.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class aaj {
       $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   private static int a(dln $$0) {
+   private static int a(dlo $$0) {
       int $$1 = 0;
 
-      for (dlo $$2 : $$0.d()) {
+      for (dlp $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class aaj {
       return $$0;
    }
 
-   public static void a(ui $$0, dln $$1) {
-      for (dlo $$2 : $$1.d()) {
+   public static void a(ui $$0, dlo $$1) {
+      for (dlp $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -103,11 +103,11 @@ public class aaj {
    static class a {
       final int a;
       final int b;
-      final dgw<?> c;
+      final dgx<?> c;
       @Nullable
       final sn d;
 
-      private a(int $$0, int $$1, dgw<?> $$2, @Nullable sn $$3) {
+      private a(int $$0, int $$1, dgx<?> $$2, @Nullable sn $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -128,7 +128,7 @@ public class aaj {
          $$0.a((tk)this.d);
       }
 
-      static aaj.a a(dgu $$0) {
+      static aaj.a a(dgv $$0) {
          sn $$1 = $$0.ax_();
          hx $$2 = $$0.aB_();
          int $$3 = iz.b($$2.u()) << 4 | iz.b($$2.w());
@@ -138,6 +138,6 @@ public class aaj {
 
    @FunctionalInterface
    public interface b {
-      void accept(hx var1, dgw<?> var2, @Nullable sn var3);
+      void accept(hx var1, dgx<?> var2, @Nullable sn var3);
    }
 }

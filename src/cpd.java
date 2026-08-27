@@ -1,35 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public record cpd(ahg c, ih<cms> d, vf e, boolean f) {
-   public static final Codec<cpd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ahg.a.fieldOf("asset_id").forGetter(cpd::a),
-               ahd.a(ke.F).fieldOf("template_item").forGetter(cpd::b),
-               vh.a.fieldOf("description").forGetter(cpd::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cpd::d)
-            )
-            .apply($$0, cpd::new)
-   );
-   public static final Codec<ih<cpd>> b = ahc.a(ke.aJ, a);
+public class cpd {
+   public static final ahf<cpc> a = a("quartz");
+   public static final ahf<cpc> b = a("iron");
+   public static final ahf<cpc> c = a("netherite");
+   public static final ahf<cpc> d = a("redstone");
+   public static final ahf<cpc> e = a("copper");
+   public static final ahf<cpc> f = a("gold");
+   public static final ahf<cpc> g = a("emerald");
+   public static final ahf<cpc> h = a("diamond");
+   public static final ahf<cpc> i = a("lapis");
+   public static final ahf<cpc> j = a("amethyst");
 
-   public vf a(ih<cpb> $$0) {
-      return this.e.f().c($$0.a().e().a());
+   public static void a(pe<cpc> $$0) {
+      a($$0, a, cnb.oy, wc.a.a(14931140), 0.1F);
+      a($$0, b, cnb.oB, wc.a.a(15527148), 0.2F, Map.of(ckk.c, "iron_darker"));
+      a($$0, c, cnb.oG, wc.a.a(6445145), 0.3F, Map.of(ckk.g, "netherite_darker"));
+      a($$0, d, cnb.lG, wc.a.a(9901575), 0.4F);
+      a($$0, e, cnb.oD, wc.a.a(11823181), 0.5F);
+      a($$0, f, cnb.oF, wc.a.a(14594349), 0.6F, Map.of(ckk.d, "gold_darker"));
+      a($$0, g, cnb.ow, wc.a.a(1155126), 0.7F);
+      a($$0, h, cnb.ov, wc.a.a(7269586), 0.8F, Map.of(ckk.e, "diamond_darker"));
+      a($$0, i, cnb.ox, wc.a.a(4288151), 0.9F);
+      a($$0, j, cnb.oz, wc.a.a(10116294), 1.0F);
    }
 
-   public ahg a() {
-      return this.c;
+   public static Optional<ih.c<cpc>> a(iu $$0, cmy $$1) {
+      return $$0.d(ke.aI).h().filter($$1x -> $$1.a(((cpc)$$1x.a()).b())).findFirst();
    }
 
-   public ih<cms> b() {
-      return this.d;
+   private static void a(pe<cpc> $$0, ahf<cpc> $$1, cmt $$2, wc $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public vf c() {
-      return this.e;
+   private static void a(pe<cpc> $$0, ahf<cpc> $$1, cmt $$2, wc $$3, float $$4, Map<ckk, String> $$5) {
+      cpc $$6 = cpc.a($$1.a().a(), $$2, $$4, vf.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public boolean d() {
-      return this.f;
+   private static ahf<cpc> a(String $$0) {
+      return ahf.a(ke.aI, new ahg($$0));
    }
 }

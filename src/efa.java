@@ -1,145 +1,98 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class efa {
-   private efd[] a = new efd[128];
-   private int b;
+public class efa extends efl {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public efd a(efd $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
+   public efa(boolean $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public void a(cuc $$0, bmn $$1) {
+      super.a($$0, $$1);
+      $$1.a(efc.j, 0.0F);
+      this.m = $$1.a(efc.c);
+      $$1.a(efc.c, 6.0F);
+      this.n = $$1.a(efc.k);
+      $$1.a(efc.k, 4.0F);
+   }
+
+   @Override
+   public void b() {
+      this.b.a(efc.c, this.m);
+      this.b.a(efc.k, this.n);
+      super.b();
+   }
+
+   @Override
+   public efe a() {
+      return !this.b.aZ() ? super.a() : this.c(new hx(auo.a(this.b.cH().a), auo.a(this.b.cH().b + 0.5), auo.a(this.b.cH().c)));
+   }
+
+   @Override
+   public efk a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(auo.a($$0), auo.a($$1 + 0.5), auo.a($$2)));
+   }
+
+   @Override
+   public int a(efe[] $$0, efe $$1) {
+      int $$2 = super.a($$0, $$1);
+      efc $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      efc $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != efc.w) {
+         $$5 = auo.d(Math.max(1.0F, this.b.dG()));
       } else {
-         if (this.b == this.a.length) {
-            efd[] $$1 = new efd[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public efd b() {
-      return this.a[0];
-   }
-
-   public efd c() {
-      efd $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
+         $$5 = 0;
       }
 
-      $$0.d = -1;
-      return $$0;
-   }
+      double $$7 = this.d(new hx($$1.a, $$1.b, $$1.c));
+      efe $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ic.b, $$4);
+      efe $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ic.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
 
-   public void b(efd $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
+      if (this.b($$9, $$1) && $$4 != efc.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         efe $$11 = $$0[$$10];
+         if ($$11.l == efc.j && this.l && $$11.b < this.b.dM().A_() - 10) {
+            $$11.k++;
          }
       }
 
-      $$0.d = -1;
+      return $$2;
    }
 
-   public void a(efd $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
+   private boolean b(@Nullable efe $$0, efe $$1) {
+      return this.a($$0, $$1) && $$0.l == efc.j;
+   }
+
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public efc a(csv $$0, int $$1, int $$2, int $$3) {
+      hx.a $$4 = new hx.a();
+      efc $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == efc.j) {
+         for (ic $$6 : ic.values()) {
+            efc $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == efc.a) {
+               return efc.k;
+            }
+         }
+
+         return efc.j;
       } else {
-         this.b($$0.d);
+         return a($$0, $$4);
       }
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      efd $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         efd $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      efd $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         efd $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         efd $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public efd[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

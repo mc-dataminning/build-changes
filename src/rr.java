@@ -21,13 +21,13 @@ public class rr {
       $$0.b($$1);
    }
 
-   public static Collection<ro> a(Collection<rj> $$0, hx $$1, ddb $$2, and $$3, ru $$4, int $$5) {
+   public static Collection<ro> a(Collection<rj> $$0, hx $$1, ddc $$2, and $$3, ru $$4, int $$5) {
       rk $$6 = new rk($$0, $$1, $$2, $$3, $$4, $$5);
       $$6.b();
       return $$6.a();
    }
 
-   public static Collection<ro> b(Collection<se> $$0, hx $$1, ddb $$2, and $$3, ru $$4, int $$5) {
+   public static Collection<ro> b(Collection<se> $$0, hx $$1, ddc $$2, and $$3, ru $$4, int $$5) {
       return a(a($$0), $$1, $$2, $$3, $$4, $$5);
    }
 
@@ -47,9 +47,9 @@ public class rr {
       $$2.a();
       hx $$4 = $$1.b(-$$3, 0, -$$3);
       hx $$5 = $$1.b($$3, 0, $$3);
-      hx.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(cwr.pa)).forEach($$1x -> {
-         dii $$2x = (dii)$$0.c_($$1x);
-         dyx $$3x = sb.b($$2x);
+      hx.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(cws.pa)).forEach($$1x -> {
+         dij $$2x = (dij)$$0.c_($$1x);
+         dyy $$3x = sb.b($$2x);
          sb.a($$3x, $$0);
       });
    }

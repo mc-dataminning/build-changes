@@ -1,15 +1,14 @@
-public class cmh extends cms implements cnw {
-   public cmh(cms.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cmh extends ckr {
+   public cmh(cwq $$0, cmt.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a(cto $$0, did $$1, boolean $$2, cfh $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.aB_(), arr.jW, ars.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   protected djh c(cph $$0) {
+      cfi $$1 = $$0.o();
+      return $$1 != null && !$$1.gp() ? null : super.c($$0);
    }
 }

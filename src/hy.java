@@ -12,8 +12,8 @@ public class hy<T> {
    }
 
    public T a(T $$0, ij.b $$1, ij.b $$2) {
-      DynamicOps<Object> $$3 = ahe.a(aug.a, $$1);
-      DynamicOps<Object> $$4 = ahe.a(aug.a, $$2);
+      DynamicOps<Object> $$3 = ahe.a(auh.a, $$1);
+      DynamicOps<Object> $$4 = ahe.a(auh.a, $$2);
       Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
       return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
    }

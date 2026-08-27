@@ -1,23 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class cvn extends cwp {
+public class cvn extends cwq {
    public static final MapCodec<cvn> a = b(cvn::new);
 
    @Override
-   public MapCodec<? extends cvn> a() {
+   public MapCodec<cvn> a() {
       return a;
    }
 
-   public cvn(djf.d $$0) {
+   public cvn(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cto $$0, djg $$1, elo $$2, cfz $$3) {
-      if (!$$0.B) {
-         hx $$4 = $$2.a();
-         $$0.a(null, $$4, arr.G, ars.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, arr.E, ars.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-      }
+   public dcv b_(djh $$0) {
+      return dcv.a;
+   }
+
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return emj.a();
    }
 }

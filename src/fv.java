@@ -13,15 +13,15 @@ public class fv implements fo {
    }
 
    @Override
-   public els a(ds $$0) {
-      els $$1 = $$0.d();
-      return new els(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public elt a(ds $$0) {
+      elt $$1 = $$0.d();
+      return new elt(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public elr b(ds $$0) {
-      elr $$1 = $$0.k();
-      return new elr((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public els b(ds $$0) {
+      els $$1 = $$0.k();
+      return new els((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fv implements fo {
       return new fv(new fu(false, $$0), new fu(false, $$1), new fu(false, $$2));
    }
 
-   public static fv a(elr $$0) {
+   public static fv a(els $$0) {
       return new fv(new fu(false, (double)$$0.i), new fu(false, (double)$$0.j), new fu(true, 0.0));
    }
 

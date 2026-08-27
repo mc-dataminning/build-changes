@@ -30,7 +30,7 @@ public class ta {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new atw(new GZIPInputStream($$0)));
+      return new DataInputStream(new atx(new GZIPInputStream($$0)));
    }
 
    private static DataOutputStream a(OutputStream $$0) throws IOException {
@@ -184,7 +184,7 @@ public class ta {
       }
    }
 
-   public static class a extends atr {
+   public static class a extends ats {
       public a(DataOutput $$0) {
          super($$0);
       }

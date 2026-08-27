@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dgi extends cxg {
-   public static final MapCodec<dgi> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cll.q.fieldOf("color").forGetter(dgi::b), u()).apply($$0, dgi::new));
-   private final cll d;
+public class dgi extends dfp {
+   public static final MapCodec<dgi> b = b(dgi::new);
 
    @Override
    public MapCodec<dgi> a() {
-      return c;
+      return b;
    }
 
-   protected dgi(cll $$0, djf.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected dgi(djg.d $$0) {
+      super(ddr.b.d, $$0);
    }
 
-   public cll b() {
-      return this.d;
+   @Override
+   public void a(ctp $$0, hx $$1, djh $$2, @Nullable bml $$3, cmy $$4) {
+      cws.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

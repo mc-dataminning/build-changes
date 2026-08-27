@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cl(Map<ih<blf>, cl.b> b) {
+public record cl(Map<ih<blg>, cl.b> b) {
    public static final Codec<cl> a = Codec.unboundedMap(kd.d.r(), cl.b.a).xmap(cl::new, cl::a);
 
-   public boolean a(blu $$0) {
-      if ($$0 instanceof bmk $$1 && this.a($$1.et())) {
+   public boolean a(blv $$0) {
+      if ($$0 instanceof bml $$1 && this.a($$1.et())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bmk $$0) {
+   public boolean a(bml $$0) {
       return this.a($$0.et());
    }
 
-   public boolean a(Map<blf, blh> $$0) {
-      for (Entry<ih<blf>, cl.b> $$1 : this.b.entrySet()) {
-         blh $$2 = $$0.get($$1.getKey().a());
+   public boolean a(Map<blg, bli> $$0) {
+      for (Entry<ih<blg>, cl.b> $$1 : this.b.entrySet()) {
+         bli $$2 = $$0.get($$1.getKey().a());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record cl(Map<ih<blf>, cl.b> b) {
       return true;
    }
 
-   public Map<ih<blf>, cl.b> a() {
+   public Map<ih<blg>, cl.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<ih<blf>, cl.b> a = ImmutableMap.builder();
+      private final Builder<ih<blg>, cl.b> a = ImmutableMap.builder();
 
       public static cl.a a() {
          return new cl.a();
       }
 
-      public cl.a a(blf $$0) {
+      public cl.a a(blg $$0) {
          this.a.put($$0.j(), new cl.b());
          return this;
       }
 
-      public cl.a a(blf $$0, cl.b $$1) {
+      public cl.a a(blg $$0, cl.b $$1) {
          this.a.put($$0.j(), $$1);
          return this;
       }
@@ -62,10 +62,10 @@ public record cl(Map<ih<blf>, cl.b> b) {
    public static record b(ck.d b, ck.d c, Optional<Boolean> d, Optional<Boolean> e) {
       public static final Codec<cl.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atv.a(ck.d.d, "amplifier", ck.d.c).forGetter(cl.b::a),
-                  atv.a(ck.d.d, "duration", ck.d.c).forGetter(cl.b::b),
-                  atv.a(Codec.BOOL, "ambient").forGetter(cl.b::c),
-                  atv.a(Codec.BOOL, "visible").forGetter(cl.b::d)
+                  atw.a(ck.d.d, "amplifier", ck.d.c).forGetter(cl.b::a),
+                  atw.a(ck.d.d, "duration", ck.d.c).forGetter(cl.b::b),
+                  atw.a(Codec.BOOL, "ambient").forGetter(cl.b::c),
+                  atw.a(Codec.BOOL, "visible").forGetter(cl.b::d)
                )
                .apply($$0, cl.b::new)
       );
@@ -74,7 +74,7 @@ public record cl(Map<ih<blf>, cl.b> b) {
          this(ck.d.c, ck.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable blh $$0) {
+      public boolean a(@Nullable bli $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

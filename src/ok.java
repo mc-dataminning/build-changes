@@ -21,14 +21,14 @@ public abstract class ok<T> implements kk {
    private final CompletableFuture<Void> h = new CompletableFuture<>();
    private final CompletableFuture<ok.c<T>> i;
    protected final ahf<? extends it<T>> f;
-   private final Map<ahg, ass> j = Maps.newLinkedHashMap();
+   private final Map<ahg, ast> j = Maps.newLinkedHashMap();
 
    protected ok(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(ok.c.empty()));
    }
 
    protected ok(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3) {
-      this.e = $$0.a(km.b.a, asx.a($$1));
+      this.e = $$0.a(km.b.a, asy.a($$1));
       this.f = $$1;
       this.i = $$3;
       this.g = $$2;
@@ -56,7 +56,7 @@ public abstract class ok<T> implements kk {
             $$1 -> {
                ij.c<T> $$2 = $$1.a.b(this.f);
                Predicate<ahg> $$3 = $$1x -> $$2.a(ahf.a(this.f, $$1x)).isPresent();
-               Predicate<ahg> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(asv.a(this.f, $$1x));
+               Predicate<ahg> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(asw.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.j
                      .entrySet()
@@ -64,9 +64,9 @@ public abstract class ok<T> implements kk {
                      .map(
                         $$3x -> {
                            ahg $$4x = (ahg)$$3x.getKey();
-                           ass $$5 = (ass)$$3x.getValue();
-                           List<ast> $$6 = $$5.b();
-                           List<ast> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           ast $$5 = (ast)$$3x.getValue();
+                           List<asu> $$6 = $$5.b();
+                           List<asu> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$7.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -77,7 +77,7 @@ public abstract class ok<T> implements kk {
                                  )
                               );
                            } else {
-                              JsonElement $$8 = (JsonElement)asu.a.encodeStart(JsonOps.INSTANCE, new asu($$6, false)).getOrThrow(false, d::error);
+                              JsonElement $$8 = (JsonElement)asv.a.encodeStart(JsonOps.INSTANCE, new asv($$6, false)).getOrThrow(false, d::error);
                               Path $$9 = this.e.a($$4x);
                               return kk.a($$0, $$8, $$9);
                            }
@@ -89,13 +89,13 @@ public abstract class ok<T> implements kk {
          );
    }
 
-   protected ok.b<T> b(asv<T> $$0) {
-      ass $$1 = this.c($$0);
+   protected ok.b<T> b(asw<T> $$0) {
+      ast $$1 = this.c($$0);
       return new ok.b<>($$1);
    }
 
-   protected ass c(asv<T> $$0) {
-      return this.j.computeIfAbsent($$0.b(), $$0x -> ass.a());
+   protected ast c(asw<T> $$0) {
+      return this.j.computeIfAbsent($$0.b(), $$0x -> ast.a());
    }
 
    public CompletableFuture<ok.c<T>> c() {
@@ -111,9 +111,9 @@ public abstract class ok<T> implements kk {
    }
 
    protected static class b<T> {
-      private final ass a;
+      private final ast a;
 
-      protected b(ass $$0) {
+      protected b(ast $$0) {
          this.a = $$0;
       }
 
@@ -136,7 +136,7 @@ public abstract class ok<T> implements kk {
          return this;
       }
 
-      public ok.b<T> b(asv<T> $$0) {
+      public ok.b<T> b(asw<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
@@ -148,12 +148,12 @@ public abstract class ok<T> implements kk {
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<asv<T>, Optional<ass>> {
+   public interface c<T> extends Function<asw<T>, Optional<ast>> {
       static <T> ok.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(asv<T> $$0) {
+      default boolean contains(asw<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

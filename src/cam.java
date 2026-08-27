@@ -1,62 +1,28 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cam extends blu {
-   private static final agm<Optional<hx>> c = agp.a(cam.class, ago.o);
-   private static final agm<Boolean> d = agp.a(cam.class, ago.k);
-   public int b;
+public class cam extends blv {
+   public final cao b;
+   public final String c;
+   private final blw d;
 
-   public cam(bly<? extends cam> $$0, cto $$1) {
-      super($$0, $$1);
-      this.I = true;
-      this.b = this.ag.a(100000);
-   }
-
-   public cam(cto $$0, double $$1, double $$2, double $$3) {
-      this(bly.C, $$0);
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected blu.b aW() {
-      return blu.b.a;
+   public cam(cao $$0, String $$1, float $$2, float $$3) {
+      super($$0.ai(), $$0.dM());
+      this.d = blw.b($$2, $$3);
+      this.k_();
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void c_() {
-      this.an().a(c, Optional.empty());
-      this.an().a(d, true);
-   }
-
-   @Override
-   public void l() {
-      this.b++;
-      if (this.dM() instanceof and) {
-         hx $$0 = this.dm();
-         if (((and)this.dM()).D() != null && this.dM().a_($$0).i()) {
-            this.dM().b($$0, cwc.a(this.dM(), $$0));
-         }
-      }
-   }
-
-   @Override
-   protected void b(sn $$0) {
-      if (this.q() != null) {
-         $$0.a("BeamTarget", tc.a(this.q()));
-      }
-
-      $$0.a("ShowBottom", this.s());
    }
 
    @Override
    protected void a(sn $$0) {
-      if ($$0.b("BeamTarget", 10)) {
-         this.a(tc.b($$0.p("BeamTarget")));
-      }
+   }
 
-      if ($$0.b("ShowBottom", 1)) {
-         this.a($$0.q("ShowBottom"));
-      }
+   @Override
+   protected void b(sn $$0) {
    }
 
    @Override
@@ -64,66 +30,34 @@ public class cam extends blu {
       return true;
    }
 
-   @Override
-   public boolean a(bks $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if ($$0.d() instanceof can) {
-         return false;
-      } else {
-         if (!this.dH() && !this.dM().B) {
-            this.a(blu.c.a);
-            if (!$$0.a(asi.m)) {
-               bks $$2 = $$0.d() != null ? this.dN().d(this, $$0.d()) : null;
-               this.dM().a(this, $$2, null, this.dr(), this.dt(), this.dx(), 6.0F, false, cto.a.b);
-            }
-
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void al() {
-      this.a(this.dN().n());
-      super.al();
-   }
-
-   private void a(bks $$0) {
-      if (this.dM() instanceof and) {
-         dms $$1 = ((and)this.dM()).D();
-         if ($$1 != null) {
-            $$1.a(this, $$0);
-         }
-      }
-   }
-
-   public void a(@Nullable hx $$0) {
-      this.an().b(c, Optional.ofNullable($$0));
-   }
-
    @Nullable
-   public hx q() {
-      return this.an().b(c).orElse(null);
-   }
-
-   public void a(boolean $$0) {
-      this.an().b(d, $$0);
-   }
-
-   public boolean s() {
-      return this.an().b(d);
+   @Override
+   public cmy dz() {
+      return this.b.dz();
    }
 
    @Override
-   public boolean a(double $$0) {
-      return super.a($$0) || this.q() != null;
+   public boolean a(bkt $$0, float $$1) {
+      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
    }
 
    @Override
-   public cmx dz() {
-      return new cmx(cna.uY);
+   public boolean t(blv $$0) {
+      return this == $$0 || this.b == $$0;
+   }
+
+   @Override
+   public xf<za> dj() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public blw a(bmx $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean dK() {
+      return false;
    }
 }

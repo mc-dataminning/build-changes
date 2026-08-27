@@ -1,356 +1,178 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ctg {
-   private static final cth a = new cth();
-   private static final int b = 16;
-   private final boolean c;
-   private final ctg.a d;
-   private final auu e = auu.a();
-   private final cto f;
-   private final double g;
-   private final double h;
-   private final double i;
-   @Nullable
-   private final blu j;
-   private final float k;
-   private final bks l;
-   private final cth m;
-   private final jv n;
-   private final jv o;
-   private final arq p;
-   private final ObjectArrayList<hx> q = new ObjectArrayList();
-   private final Map<cfh, els> r = Maps.newHashMap();
+public interface ctg {
+   List<blv> a(@Nullable blv var1, elo var2, Predicate<? super blv> var3);
 
-   public static bks a(cto $$0, @Nullable blu $$1) {
-      return $$0.ai().d($$1, b($$1));
+   <T extends blv> List<T> a(dnf<blv, T> var1, elo var2, Predicate<? super T> var3);
+
+   default <T extends blv> List<T> a(Class<T> $$0, elo $$1, Predicate<? super T> $$2) {
+      return this.a(dnf.a($$0), $$1, $$2);
    }
 
-   public ctg(cto $$0, @Nullable blu $$1, double $$2, double $$3, double $$4, float $$5, List<hx> $$6, ctg.a $$7, jv $$8, jv $$9, arq $$10) {
-      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, false, $$7, $$8, $$9, $$10);
-      this.q.addAll($$6);
+   List<? extends cfi> x();
+
+   default List<blv> a_(@Nullable blv $$0, elo $$1) {
+      return this.a($$0, $$1, bly.f);
    }
 
-   public ctg(cto $$0, @Nullable blu $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, ctg.a $$7, List<hx> $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.q.addAll($$8);
-   }
-
-   public ctg(cto $$0, @Nullable blu $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, ctg.a $$7) {
-      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, $$6, $$7, jx.x, jx.w, arr.jA);
-   }
-
-   public ctg(
-      cto $$0,
-      @Nullable blu $$1,
-      @Nullable bks $$2,
-      @Nullable cth $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      float $$7,
-      boolean $$8,
-      ctg.a $$9,
-      jv $$10,
-      jv $$11,
-      arq $$12
-   ) {
-      this.f = $$0;
-      this.j = $$1;
-      this.k = $$7;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.c = $$8;
-      this.d = $$9;
-      this.l = $$2 == null ? $$0.ai().a(this) : $$2;
-      this.m = $$3 == null ? this.a($$1) : $$3;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
-   }
-
-   private cth a(@Nullable blu $$0) {
-      return (cth)($$0 == null ? a : new cte($$0));
-   }
-
-   public static float a(els $$0, blu $$1) {
-      eln $$2 = $$1.cH();
-      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
-      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
-      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
-      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
-      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
-      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
-         int $$8 = 0;
-         int $$9 = 0;
-
-         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
-            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
-               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
-                  double $$13 = aun.d($$10, $$2.a, $$2.d);
-                  double $$14 = aun.d($$11, $$2.b, $$2.e);
-                  double $$15 = aun.d($$12, $$2.c, $$2.f);
-                  els $$16 = new els($$13 + $$6, $$14, $$15 + $$7);
-                  if ($$1.dM().a(new csx($$16, $$0, csx.a.a, csx.b.a, $$1)).c() == elq.a.a) {
-                     $$8++;
-                  }
-
-                  $$9++;
-               }
-            }
-         }
-
-         return (float)$$8 / (float)$$9;
+   default boolean a(@Nullable blv $$0, emm $$1) {
+      if ($$1.c()) {
+         return true;
       } else {
-         return 0.0F;
-      }
-   }
-
-   public float a() {
-      return this.k;
-   }
-
-   public els b() {
-      return new els(this.g, this.h, this.i);
-   }
-
-   public void c() {
-      this.f.a(this.j, dnq.w, new els(this.g, this.h, this.i));
-      Set<hx> $$0 = Sets.newHashSet();
-      int $$1 = 16;
-
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            for (int $$4 = 0; $$4 < 16; $$4++) {
-               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
-                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
-                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
-                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
-                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
-                  $$5 /= $$8;
-                  $$6 /= $$8;
-                  $$7 /= $$8;
-                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
-                  double $$10 = this.g;
-                  double $$11 = this.h;
-                  double $$12 = this.i;
-
-                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
-                     hx $$14 = hx.a($$10, $$11, $$12);
-                     djg $$15 = this.f.a_($$14);
-                     eeq $$16 = this.f.b_($$14);
-                     if (!this.f.k($$14)) {
-                        break;
-                     }
-
-                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
-                     if ($$17.isPresent()) {
-                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
-                     }
-
-                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
-                        $$0.add($$14);
-                     }
-
-                     $$10 += $$5 * 0.3F;
-                     $$11 += $$6 * 0.3F;
-                     $$12 += $$7 * 0.3F;
-                  }
-               }
+         for (blv $$2 : this.a_($$0, $$1.a())) {
+            if (!$$2.dH() && $$2.I && ($$0 == null || !$$2.y($$0)) && emj.c($$1, emj.a($$2.cH()), elx.i)) {
+               return false;
             }
          }
-      }
 
-      this.q.addAll($$0);
-      float $$18 = this.k * 2.0F;
-      int $$19 = aun.a(this.g - (double)$$18 - 1.0);
-      int $$20 = aun.a(this.g + (double)$$18 + 1.0);
-      int $$21 = aun.a(this.h - (double)$$18 - 1.0);
-      int $$22 = aun.a(this.h + (double)$$18 + 1.0);
-      int $$23 = aun.a(this.i - (double)$$18 - 1.0);
-      int $$24 = aun.a(this.i + (double)$$18 + 1.0);
-      List<blu> $$25 = this.f.a_(this.j, new eln((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
-      els $$26 = new els(this.g, this.h, this.i);
-
-      for (blu $$27 : $$25) {
-         if (!$$27.a(this)) {
-            double $$28 = Math.sqrt($$27.f($$26)) / (double)$$18;
-            if ($$28 <= 1.0) {
-               double $$29 = $$27.dr() - this.g;
-               double $$30 = ($$27 instanceof cbu ? $$27.dt() : $$27.dv()) - this.h;
-               double $$31 = $$27.dx() - this.i;
-               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
-               if ($$32 != 0.0) {
-                  $$29 /= $$32;
-                  $$30 /= $$32;
-                  $$31 /= $$32;
-                  if (this.m.a(this, $$27)) {
-                     $$27.a(this.l, this.m.b(this, $$27));
-                  }
-
-                  double $$33 = (1.0 - $$28) * (double)a($$26, $$27);
-                  double $$35;
-                  if ($$27 instanceof bmk $$34) {
-                     $$35 = crv.a($$34, $$33);
-                  } else {
-                     $$35 = $$33;
-                  }
-
-                  $$29 *= $$35;
-                  $$30 *= $$35;
-                  $$31 *= $$35;
-                  els $$37 = new els($$29, $$30, $$31);
-                  $$27.g($$27.dp().e($$37));
-                  if ($$27 instanceof cfh) {
-                     cfh $$38 = (cfh)$$27;
-                     if (!$$38.P_() && (!$$38.f() || !$$38.fT().b)) {
-                        this.r.put($$38, $$37);
-                     }
-                  }
-               }
-            }
-         }
+         return true;
       }
    }
 
-   public void a(boolean $$0) {
-      if (this.f.B) {
-         this.f.a(this.g, this.h, this.i, this.p, ars.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
-      }
+   default <T extends blv> List<T> a(Class<T> $$0, elo $$1) {
+      return this.a($$0, $$1, bly.f);
+   }
 
-      boolean $$1 = this.d();
-      if ($$0) {
-         jv $$3;
-         if (!(this.k < 2.0F) && $$1) {
-            $$3 = this.o;
+   default List<emm> c(@Nullable blv $$0, elo $$1) {
+      if ($$1.a() < 1.0E-7) {
+         return List.of();
+      } else {
+         Predicate<blv> $$2 = $$0 == null ? bly.g : bly.f.and($$0::h);
+         List<blv> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
+         if ($$3.isEmpty()) {
+            return List.of();
          } else {
-            $$3 = this.n;
-         }
+            Builder<emm> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
 
-         this.f.a($$3, this.g, this.h, this.i, 1.0, 0.0, 0.0);
-      }
-
-      if ($$1) {
-         this.f.af().a("explosion_blocks");
-         List<Pair<cmx, hx>> $$4 = new ArrayList<>();
-         ac.c(this.q, this.f.z);
-         ObjectListIterator $$7 = this.q.iterator();
-
-         while ($$7.hasNext()) {
-            hx $$5 = (hx)$$7.next();
-            this.f.a_($$5).a(this.f, $$5, this, ($$1x, $$2) -> a($$4, $$1x, $$2));
-         }
-
-         for (Pair<cmx, hx> $$6 : $$4) {
-            cwp.a(this.f, (hx)$$6.getSecond(), (cmx)$$6.getFirst());
-         }
-
-         this.f.af().c();
-      }
-
-      if (this.c) {
-         ObjectListIterator var7 = this.q.iterator();
-
-         while (var7.hasNext()) {
-            hx $$7 = (hx)var7.next();
-            if (this.e.a(3) == 0 && this.f.a_($$7).i() && this.f.a_($$7.d()).i(this.f, $$7.d())) {
-               this.f.b($$7, cwc.a(this.f, $$7));
+            for (blv $$5 : $$3) {
+               $$4.add(emj.a($$5.cH()));
             }
+
+            return $$4.build();
          }
-      }
-   }
-
-   private static void a(List<Pair<cmx, hx>> $$0, cmx $$1, hx $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         Pair<cmx, hx> $$4 = $$0.get($$3);
-         cmx $$5 = (cmx)$$4.getFirst();
-         if (cbt.a($$5, $$1)) {
-            $$0.set($$3, Pair.of(cbt.a($$5, $$1, 16), (hx)$$4.getSecond()));
-            if ($$1.b()) {
-               return;
-            }
-         }
-      }
-
-      $$0.add(Pair.of($$1, $$2));
-   }
-
-   public boolean d() {
-      return this.d != ctg.a.a;
-   }
-
-   public Map<cfh, els> e() {
-      return this.r;
-   }
-
-   @Nullable
-   private static bmk b(@Nullable blu $$0) {
-      if ($$0 == null) {
-         return null;
-      } else if ($$0 instanceof cbu $$1) {
-         return $$1.q();
-      } else if ($$0 instanceof bmk) {
-         return (bmk)$$0;
-      } else {
-         if ($$0 instanceof cfz $$3) {
-            blu $$4 = $$3.w();
-            if ($$4 instanceof bmk) {
-               return (bmk)$$4;
-            }
-         }
-
-         return null;
       }
    }
 
    @Nullable
-   public bmk f() {
-      return b(this.j);
+   default cfi a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<blv> $$4) {
+      double $$5 = -1.0;
+      cfi $$6 = null;
+
+      for (cfi $$7 : this.x()) {
+         if ($$4 == null || $$4.test($$7)) {
+            double $$8 = $$7.i($$0, $$1, $$2);
+            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
+               $$5 = $$8;
+               $$6 = $$7;
+            }
+         }
+      }
+
+      return $$6;
    }
 
    @Nullable
-   public blu g() {
-      return this.j;
+   default cfi a(blv $$0, double $$1) {
+      return this.a($$0.dr(), $$0.dt(), $$0.dx(), $$1, false);
    }
 
-   public void h() {
-      this.q.clear();
+   @Nullable
+   default cfi a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
+      Predicate<blv> $$5 = $$4 ? bly.e : bly.f;
+      return this.a($$0, $$1, $$2, $$3, $$5);
    }
 
-   public List<hx> i() {
-      return this.q;
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      for (cfi $$4 : this.x()) {
+         if (bly.f.test($$4) && bly.b.test($$4)) {
+            double $$5 = $$4.i($$0, $$1, $$2);
+            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public ctg.a j() {
-      return this.d;
+   @Nullable
+   default cfi a(bwz $$0, bml $$1) {
+      return this.a(this.x(), $$0, $$1, $$1.dr(), $$1.dt(), $$1.dx());
    }
 
-   public jv k() {
-      return this.n;
+   @Nullable
+   default cfi a(bwz $$0, bml $$1, double $$2, double $$3, double $$4) {
+      return this.a(this.x(), $$0, $$1, $$2, $$3, $$4);
    }
 
-   public jv l() {
-      return this.o;
+   @Nullable
+   default cfi a(bwz $$0, double $$1, double $$2, double $$3) {
+      return this.a(this.x(), $$0, null, $$1, $$2, $$3);
    }
 
-   public arq m() {
-      return this.p;
+   @Nullable
+   default <T extends bml> T a(Class<? extends T> $$0, bwz $$1, @Nullable bml $$2, double $$3, double $$4, double $$5, elo $$6) {
+      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Nullable
+   default <T extends bml> T a(List<? extends T> $$0, bwz $$1, @Nullable bml $$2, double $$3, double $$4, double $$5) {
+      double $$6 = -1.0;
+      T $$7 = null;
+
+      for (T $$8 : $$0) {
+         if ($$1.a($$2, $$8)) {
+            double $$9 = $$8.i($$3, $$4, $$5);
+            if ($$6 == -1.0 || $$9 < $$6) {
+               $$6 = $$9;
+               $$7 = $$8;
+            }
+         }
+      }
+
+      return $$7;
+   }
+
+   default List<cfi> a(bwz $$0, bml $$1, elo $$2) {
+      List<cfi> $$3 = Lists.newArrayList();
+
+      for (cfi $$4 : this.x()) {
+         if ($$2.e($$4.dr(), $$4.dt(), $$4.dx()) && $$0.a($$1, $$4)) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3;
+   }
+
+   default <T extends bml> List<T> a(Class<T> $$0, bwz $$1, bml $$2, elo $$3) {
+      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
+      List<T> $$5 = Lists.newArrayList();
+
+      for (T $$6 : $$4) {
+         if ($$1.a($$2, $$6)) {
+            $$5.add($$6);
+         }
+      }
+
+      return $$5;
+   }
+
+   @Nullable
+   default cfi b(UUID $$0) {
+      for (int $$1 = 0; $$1 < this.x().size(); $$1++) {
+         cfi $$2 = this.x().get($$1);
+         if ($$0.equals($$2.cw())) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 }

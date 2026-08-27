@@ -1,43 +1,51 @@
-public class cqx extends cpt {
-   public cqx(cpr $$0) {
+public class cqx extends cpu {
+   public cqx(cps $$0) {
       super($$0);
    }
 
-   public boolean a(ciq $$0, cto $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cmx $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
+   public boolean a(cir $$0, ctp $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmy $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if ($$7.a(cws.cf.k()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(cws.cg.k()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(asp.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cnb.pn) || $$5) {
                   return false;
                }
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cna.vk)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cna.os)) {
-                  return false;
-               }
+               $$5 = true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   public cmx a(ciq $$0, iu $$1) {
-      cmx $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cna.vk)) {
-         return cmx.f;
-      } else {
-         cmx $$3 = new cmx(cna.vj, 8);
-         cox.a($$3, cox.d($$2));
-         cox.a($$3, cox.b($$2));
-         return $$3;
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = new cmy(cnb.vN, 1);
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cmy $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            der $$5 = der.a($$4.d());
+            if ($$5 != null) {
+               coi.a($$2, $$5.b());
+               break;
+            }
+         }
       }
+
+      return $$2;
    }
 
    @Override
@@ -46,7 +54,7 @@ public class cqx extends cpt {
    }
 
    @Override
-   public cqf<?> ar_() {
-      return cqf.j;
+   public cqg<?> ar_() {
+      return cqg.n;
    }
 }

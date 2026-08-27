@@ -3,28 +3,43 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ehi extends ehq {
-   public static final Codec<ehi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehi::new)
-   );
-   private final ahg j;
+public abstract class ehi extends ehp {
+   protected final List<ehp> d;
+   private final ehh a;
 
-   private ehi(ahg $$0, int $$1, int $$2, List<eju> $$3, List<eii> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected ehi(List<ehp> $$0, List<ejv> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public ehp a() {
-      return ehm.e;
+   public void a(ehf $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract ehh a(List<? extends ehh> var1);
 
    @Override
-   public void a(Consumer<cmx> $$0, egv $$1) {
-      $$1.a(this.j, $$0);
+   public final boolean expand(egw $$0, Consumer<eho> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static ehq.a<?> a(ahg $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ehi($$0, $$1, $$2, $$3, $$4));
+   public static <T extends ehi> Codec<T> a(ehi.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(atw.a(ehn.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends ehi> {
+      T create(List<ehp> var1, List<ejv> var2);
    }
 }

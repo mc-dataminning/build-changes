@@ -26,11 +26,11 @@ public class vi {
       }
    }
 
-   public static Optional<vt> a(@Nullable ds $$0, Optional<vf> $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<vt> a(@Nullable ds $$0, Optional<vf> $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static vt a(@Nullable ds $$0, vf $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+   public static vt a(@Nullable ds $$0, vf $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class vi {
       }
    }
 
-   private static wc a(@Nullable ds $$0, wc $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+   private static wc a(@Nullable ds $$0, wc $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
       vl $$4 = $$1.i();
       if ($$4 != null) {
          vf $$5 = $$4.a(vl.a.a);

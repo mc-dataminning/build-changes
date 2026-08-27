@@ -15,21 +15,21 @@ public class ano implements anm {
    }
 
    @Override
-   public void a(csv $$0) {
+   public void a(csw $$0) {
       this.e = ac.b();
       this.d = this.e;
    }
 
    @Override
-   public void a(csv $$0, @Nullable dlh $$1) {
-      if ($$1 == dlh.n) {
+   public void a(csw $$0, @Nullable dli $$1) {
+      if ($$1 == dli.n) {
          this.c++;
       }
 
       int $$2 = this.c();
       if (ac.b() > this.e) {
          this.e += 500L;
-         a.info(vf.a("menu.preparingSpawn", aun.a($$2, 0, 100)).getString());
+         a.info(vf.a("menu.preparingSpawn", auo.a($$2, 0, 100)).getString());
       }
    }
 
@@ -44,6 +44,6 @@ public class ano implements anm {
    }
 
    public int c() {
-      return aun.d((float)this.c * 100.0F / (float)this.b);
+      return auo.d((float)this.c * 100.0F / (float)this.b);
    }
 }

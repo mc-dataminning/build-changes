@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public record bu(Optional<Boolean> d) implements bq {
    public static final bu b = new bu(Optional.empty());
-   public static final MapCodec<bu> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(atv.a(Codec.BOOL, "in_open_water").forGetter(bu::b)).apply($$0, bu::new));
+   public static final MapCodec<bu> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(atw.a(Codec.BOOL, "in_open_water").forGetter(bu::b)).apply($$0, bu::new));
 
    public static bu a(boolean $$0) {
       return new bu(Optional.of($$0));
@@ -18,11 +18,11 @@ public record bu(Optional<Boolean> d) implements bq {
    }
 
    @Override
-   public boolean a(blu $$0, and $$1, @Nullable els $$2) {
+   public boolean a(blv $$0, and $$1, @Nullable elt $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cfv $$3 ? this.d.get() == $$3.q() : false;
+         return $$0 instanceof cfw $$3 ? this.d.get() == $$3.q() : false;
       }
    }
 

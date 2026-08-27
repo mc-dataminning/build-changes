@@ -1,117 +1,55 @@
-import com.google.common.base.Functions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class aps {
-   private final Set<apu> a;
-   private Map<String, app> b = ImmutableMap.of();
-   private List<app> c = ImmutableList.of();
+public abstract class aps<T> {
+   private final elj a;
 
-   public aps(apu... $$0) {
-      this.a = ImmutableSet.copyOf($$0);
-   }
-
-   public void a() {
-      List<String> $$0 = this.c.stream().map(app::f).collect(ImmutableList.toImmutableList());
-      this.b = this.h();
-      this.c = this.b($$0);
-   }
-
-   private Map<String, app> h() {
-      Map<String, app> $$0 = Maps.newTreeMap();
-
-      for (apu $$1 : this.a) {
-         $$1.loadPacks($$1x -> $$0.put($$1x.f(), $$1x));
-      }
-
-      return ImmutableMap.copyOf($$0);
-   }
-
-   public void a(Collection<String> $$0) {
-      this.c = this.b($$0);
-   }
-
-   public boolean a(String $$0) {
-      app $$1 = this.b.get($$0);
-      if ($$1 != null && !this.c.contains($$1)) {
-         List<app> $$2 = Lists.newArrayList(this.c);
-         $$2.add($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(String $$0) {
-      app $$1 = this.b.get($$0);
-      if ($$1 != null && this.c.contains($$1)) {
-         List<app> $$2 = Lists.newArrayList(this.c);
-         $$2.remove($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private List<app> b(Collection<String> $$0) {
-      List<app> $$1 = this.c($$0).collect(Collectors.toList());
-
-      for (app $$2 : this.b.values()) {
-         if ($$2.g() && !$$1.contains($$2)) {
-            $$2.i().a($$1, $$2, Functions.identity(), false);
-         }
-      }
-
-      return ImmutableList.copyOf($$1);
-   }
-
-   private Stream<app> c(Collection<String> $$0) {
-      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> b() {
-      return this.b.keySet();
-   }
-
-   public Collection<app> c() {
-      return this.b.values();
-   }
-
-   public Collection<String> d() {
-      return this.c.stream().map(app::f).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public chr e() {
-      return this.f().stream().map(app::d).reduce(chr::b).orElse(chr.a());
-   }
-
-   public Collection<app> f() {
-      return this.c;
+   protected aps(elj $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   public app c(String $$0) {
-      return this.b.get($$0);
+   public T a(Path $$0, List<elk> $$1) throws IOException {
+      Path $$2 = $$0;
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
+      }
+
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
+
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      }
+
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
    }
 
-   public boolean d(String $$0) {
-      return this.b.containsKey($$0);
-   }
+   @Nullable
+   protected abstract T d(Path var1) throws IOException;
 
-   public List<aov> g() {
-      return this.c.stream().map(app::e).collect(ImmutableList.toImmutableList());
-   }
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

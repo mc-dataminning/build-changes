@@ -33,8 +33,8 @@ public class amb extends ame<amb> {
    public final String h = this.a("motd", "A Minecraft Server");
    public final boolean i = this.a("force-gamemode", false);
    public final boolean j = this.a("enforce-whitelist", false);
-   public final bjx k = this.a("difficulty", a(bjx::a, bjx::a), bjx::e, bjx.b);
-   public final ctl l = this.a("gamemode", a(ctl::a, ctl::a), ctl::b, ctl.a);
+   public final bjy k = this.a("difficulty", a(bjy::a, bjy::a), bjy::e, bjy.b);
+   public final ctm l = this.a("gamemode", a(ctm::a, ctm::a), ctm::b, ctm.a);
    public final String m = this.a("level-name", "world");
    public final int n = this.a("server-port", 25565);
    @Nullable
@@ -61,31 +61,31 @@ public class amb extends ame<amb> {
    public final int I = this.a("network-compression-threshold", 256);
    public final boolean J = this.a("broadcast-rcon-to-ops", true);
    public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> aun.a($$0x, 1, 29999984), 29999984);
+   public final int L = this.a("max-world-size", $$0x -> auo.a($$0x, 1, 29999984), 29999984);
    public final boolean M = this.a("sync-chunk-writes", true);
    public final boolean N = this.a("enable-jmx-monitoring", false);
    public final boolean O = this.a("enable-status", true);
    public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> aun.a($$0x, 10, 1000), 100);
+   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> auo.a($$0x, 10, 1000), 100);
    public final String R = this.a("text-filtering-config", "");
    public final Optional<MinecraftServer.b> S;
-   public final ctc T;
+   public final ctd T;
    public final ame<amb>.a<Integer> U = this.b("player-idle-timeout", 0);
    public final ame<amb>.a<Boolean> V = this.b("white-list", false);
    public final boolean W = this.a("enforce-secure-profile", true);
    public final boolean X = this.a("log-ips", true);
    private final amb.a ad;
-   public final dpn Y;
+   public final dpo Y;
 
    public amb(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dpn.a($$1).orElse(dpn.f());
-      this.Y = new dpn($$3, $$2, false);
+      long $$3 = dpo.a($$1).orElse(dpo.f());
+      this.Y = new dpo($$3, $$2, false);
       this.ad = new amb.a(
-         this.a("generator-settings", $$0x -> aud.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dyv.a.a().toString())
+         this.a("generator-settings", $$0x -> aue.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dyw.a.a().toString())
       );
       this.S = a(
          this.a("resource-pack-id", ""),
@@ -95,7 +95,7 @@ public class amb extends ame<amb> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.T = b(this.a("initial-enabled-packs", String.join(",", cui.c.a().a())), this.a("initial-disabled-packs", String.join(",", cui.c.a().b())));
+      this.T = b(this.a("initial-enabled-packs", String.join(",", cuj.c.a().a())), this.a("initial-disabled-packs", String.join(",", cuj.c.a().b())));
    }
 
    public static amb a(Path $$0) {
@@ -160,25 +160,25 @@ public class amb extends ame<amb> {
       }
    }
 
-   private static ctc b(String $$0, String $$1) {
+   private static ctd b(String $$0, String $$1) {
       List<String> $$2 = ac.splitToList($$0);
       List<String> $$3 = ac.splitToList($$1);
-      return new ctc($$2, $$3);
+      return new ctd($$2, $$3);
    }
 
-   public dpk a(iu $$0) {
+   public dpl a(iu $$0) {
       return this.ad.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, ahf<dyu>> c = Map.of("default", dyv.a, "largebiomes", dyv.c);
+      private static final Map<String, ahf<dyv>> c = Map.of("default", dyw.a, "largebiomes", dyw.c);
 
-      public dpk a(iu $$0) {
-         it<dyu> $$1 = $$0.d(ke.aK);
-         ih.c<dyu> $$2 = $$1.b(dyv.a)
+      public dpl a(iu $$0) {
+         it<dyv> $$1 = $$0.d(ke.aK);
+         ih.c<dyv> $$2 = $$1.b(dyw.a)
             .or(() -> $$1.h().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         ih<dyu> $$3 = Optional.ofNullable(ahg.a(this.b))
+         ih<dyv> $$3 = Optional.ofNullable(ahg.a(this.b))
             .map($$0x -> ahf.a(ke.aK, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -186,12 +186,12 @@ public class amb extends ame<amb> {
                amb.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.g().a());
                return $$2;
             });
-         dpk $$4 = $$3.a().a();
-         if ($$3.a(dyv.b)) {
+         dpl $$4 = $$3.a().a();
+         if ($$3.a(dyw.b)) {
             ahe<JsonElement> $$5 = ahe.a(JsonOps.INSTANCE, $$0);
-            Optional<dxi> $$6 = dxi.a.parse(new Dynamic($$5, this.a())).resultOrPartial(amb.aa::error);
+            Optional<dxj> $$6 = dxj.a.parse(new Dynamic($$5, this.a())).resultOrPartial(amb.aa::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new dok($$6.get()));
+               return $$4.a($$0, new dol($$6.get()));
             }
          }
 

@@ -1,52 +1,35 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cpe {
-   public static final ahf<cpd> a = a("sentry");
-   public static final ahf<cpd> b = a("dune");
-   public static final ahf<cpd> c = a("coast");
-   public static final ahf<cpd> d = a("wild");
-   public static final ahf<cpd> e = a("ward");
-   public static final ahf<cpd> f = a("eye");
-   public static final ahf<cpd> g = a("vex");
-   public static final ahf<cpd> h = a("tide");
-   public static final ahf<cpd> i = a("snout");
-   public static final ahf<cpd> j = a("rib");
-   public static final ahf<cpd> k = a("spire");
-   public static final ahf<cpd> l = a("wayfinder");
-   public static final ahf<cpd> m = a("shaper");
-   public static final ahf<cpd> n = a("silence");
-   public static final ahf<cpd> o = a("raiser");
-   public static final ahf<cpd> p = a("host");
+public record cpe(ahg c, ih<cmt> d, vf e, boolean f) {
+   public static final Codec<cpe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ahg.a.fieldOf("asset_id").forGetter(cpe::a),
+               ahd.a(ke.F).fieldOf("template_item").forGetter(cpe::b),
+               vh.a.fieldOf("description").forGetter(cpe::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cpe::d)
+            )
+            .apply($$0, cpe::new)
+   );
+   public static final Codec<ih<cpe>> b = ahc.a(ke.aJ, a);
 
-   public static void a(pe<cpd> $$0) {
-      a($$0, cna.xk, a);
-      a($$0, cna.xl, b);
-      a($$0, cna.xm, c);
-      a($$0, cna.xn, d);
-      a($$0, cna.xo, e);
-      a($$0, cna.xp, f);
-      a($$0, cna.xq, g);
-      a($$0, cna.xr, h);
-      a($$0, cna.xs, i);
-      a($$0, cna.xt, j);
-      a($$0, cna.xu, k);
-      a($$0, cna.xv, l);
-      a($$0, cna.xw, m);
-      a($$0, cna.xx, n);
-      a($$0, cna.xy, o);
-      a($$0, cna.xz, p);
+   public vf a(ih<cpc> $$0) {
+      return this.e.f().c($$0.a().e().a());
    }
 
-   public static Optional<ih.c<cpd>> a(iu $$0, cmx $$1) {
-      return $$0.d(ke.aJ).h().filter($$1x -> $$1.a(((cpd)$$1x.a()).b())).findFirst();
+   public ahg a() {
+      return this.c;
    }
 
-   private static void a(pe<cpd> $$0, cms $$1, ahf<cpd> $$2) {
-      cpd $$3 = new cpd($$2.a(), kd.h.d($$1), vf.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public ih<cmt> b() {
+      return this.d;
    }
 
-   private static ahf<cpd> a(String $$0) {
-      return ahf.a(ke.aJ, new ahg($$0));
+   public vf c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
    }
 }

@@ -1,69 +1,146 @@
-import java.util.OptionalInt;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public class exz extends exc {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final ave<exz.a, exy> c;
-   private boolean d = false;
-
-   public exz(vf $$0, ewr $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public exz(int $$0, int $$1, vf $$2, ewr $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? exy.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : exy.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public exz b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public exz c(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public exz d(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public exz b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int w() {
-      return this.c.a(this.d()).b();
-   }
-
-   @Override
-   public int u() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(ewt $$0, int $$1, int $$2, float $$3) {
-      exy $$4 = this.c.a(this.d());
-      int $$5 = this.B();
-      int $$6 = this.C();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+public interface exz {
+   exz a = new exz() {
+      @Override
+      public int a(ewu $$0, int $$1, int $$2) {
+         return $$2;
       }
+
+      @Override
+      public int a(ewu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(ewu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(ewu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static exz a(ews $$0, vk $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new exz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   private exz.a d() {
-      return new exz.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   static exz a(ews $$0, vk $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new exz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static record a(vf a, int b, OptionalInt c) {
+   static exz a(ews $$0, vf... $$1) {
+      return b($$0, Arrays.stream($$1).map(vf::g).map($$1x -> new exz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static exz a(ews $$0, List<vf> $$1) {
+      return b($$0, $$1.stream().map(vf::g).map($$1x -> new exz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static exz b(final ews $$0, final List<exz.a> $$1) {
+      return $$1.isEmpty() ? a : new exz() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(ewu $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(ewu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (exz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(ewu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (exz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(ewu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (exz.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(ewu $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
+   }
+
+   int a(ewu var1, int var2, int var3);
+
+   int a(ewu var1, int var2, int var3, int var4, int var5);
+
+   int b(ewu var1, int var2, int var3, int var4, int var5);
+
+   int c(ewu var1, int var2, int var3, int var4, int var5);
+
+   void a(ewu var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final aua a;
+      final int b;
+
+      a(aua $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

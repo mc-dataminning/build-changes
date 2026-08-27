@@ -1,12 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bby {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-      .build();
+public class bby extends baw {
+   public bby(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Remove Golem Gossip Fix", bbw.x, "minecraft:villager");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bby::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   }
 }

@@ -1,205 +1,150 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public class csv {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final csv b = new csv(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+public interface csv extends ctr {
+   @Nullable
+   dgv c_(hx var1);
 
-   public csv(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   default <T extends dgv> Optional<T> a(hx $$0, dgx<T> $$1) {
+      dgv $$2 = this.c_($$0);
+      return $$2 != null && $$2.v() == $$1 ? Optional.of((T)$$2) : Optional.empty();
    }
 
-   public csv(hx $$0) {
-      this.e = iz.a($$0.u());
-      this.f = iz.a($$0.w());
+   djh a_(hx var1);
+
+   eer b_(hx var1);
+
+   default int i(hx $$0) {
+      return this.a_($$0).h();
    }
 
-   public csv(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
+   default int O() {
+      return 15;
    }
 
-   public static csv a(int $$0, int $$1) {
-      return new csv($$0 << 5, $$1 << 5);
+   default Stream<djh> a(elo $$0) {
+      return hx.a($$0).map(this::a_);
    }
 
-   public static csv b(int $$0, int $$1) {
-      return new csv(($$0 << 5) + 31, ($$1 << 5) + 31);
+   default elp a(csx $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         djh $$2 = this.a_($$1);
+         elt $$3 = $$0x.b().d($$0x.a());
+         return $$0x.c().test($$2) ? new elp($$0x.a(), ic.a($$3.c, $$3.d, $$3.e), hx.a($$0x.a()), false) : null;
+      }, $$0x -> {
+         elt $$1 = $$0x.b().d($$0x.a());
+         return elp.a($$0x.a(), ic.a($$1.c, $$1.d, $$1.e), hx.a($$0x.a()));
+      });
    }
 
-   public long a() {
-      return c(this.e, this.f);
+   default elp a(csy $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         djh $$2 = this.a_($$1);
+         eer $$3 = this.b_($$1);
+         elt $$4 = $$0x.b();
+         elt $$5 = $$0x.a();
+         emm $$6 = $$0x.a($$2, this, $$1);
+         elp $$7 = this.a($$4, $$5, $$1, $$6, $$2);
+         emm $$8 = $$0x.a($$3, this, $$1);
+         elp $$9 = $$8.a($$4, $$5, $$1);
+         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.e());
+         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.e());
+         return $$10 <= $$11 ? $$7 : $$9;
+      }, $$0x -> {
+         elt $$1 = $$0x.b().d($$0x.a());
+         return elp.a($$0x.a(), ic.a($$1.c, $$1.d, $$1.e), hx.a($$0x.a()));
+      });
    }
 
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   @Nullable
+   default elp a(elt $$0, elt $$1, hx $$2, emm $$3, djh $$4) {
+      elp $$5 = $$3.a($$0, $$1, $$2);
+      if ($$5 != null) {
+         elp $$6 = $$4.m(this, $$2).a($$0, $$1, $$2);
+         if ($$6 != null && $$6.e().d($$0).g() < $$5.e().d($$0).g()) {
+            return $$5.a($$6.b());
+         }
+      }
+
+      return $$5;
    }
 
-   public static long a(hx $$0) {
-      return c(iz.a($$0.u()), iz.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   default double a(emm $$0, Supplier<emm> $$1) {
+      if (!$$0.c()) {
+         return $$0.c(ic.a.b);
       } else {
-         return !($$0 instanceof csv $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         double $$2 = $$1.get().c(ic.a.b);
+         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
       }
    }
 
-   public int b() {
-      return this.a(8);
+   default double j(hx $$0) {
+      return this.a(this.a_($$0).k(this, $$0), () -> {
+         hx $$1 = $$0.d();
+         return this.a_($$1).k(this, $$1);
+      });
    }
 
-   public int c() {
-      return this.b(8);
-   }
+   static <T, C> T a(elt $$0, elt $$1, C $$2, BiFunction<C, hx, T> $$3, Function<C, T> $$4) {
+      if ($$0.equals($$1)) {
+         return $$4.apply($$2);
+      } else {
+         double $$5 = auo.d(-1.0E-7, $$1.c, $$0.c);
+         double $$6 = auo.d(-1.0E-7, $$1.d, $$0.d);
+         double $$7 = auo.d(-1.0E-7, $$1.e, $$0.e);
+         double $$8 = auo.d(-1.0E-7, $$0.c, $$1.c);
+         double $$9 = auo.d(-1.0E-7, $$0.d, $$1.d);
+         double $$10 = auo.d(-1.0E-7, $$0.e, $$1.e);
+         int $$11 = auo.a($$8);
+         int $$12 = auo.a($$9);
+         int $$13 = auo.a($$10);
+         hx.a $$14 = new hx.a($$11, $$12, $$13);
+         T $$15 = $$3.apply($$2, $$14);
+         if ($$15 != null) {
+            return $$15;
+         } else {
+            double $$16 = $$5 - $$8;
+            double $$17 = $$6 - $$9;
+            double $$18 = $$7 - $$10;
+            int $$19 = auo.j($$16);
+            int $$20 = auo.j($$17);
+            int $$21 = auo.j($$18);
+            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
+            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
+            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
+            double $$25 = $$22 * ($$19 > 0 ? 1.0 - auo.e($$8) : auo.e($$8));
+            double $$26 = $$23 * ($$20 > 0 ? 1.0 - auo.e($$9) : auo.e($$9));
+            double $$27 = $$24 * ($$21 > 0 ? 1.0 - auo.e($$10) : auo.e($$10));
 
-   public int d() {
-      return iz.c(this.e);
-   }
-
-   public int e() {
-      return iz.c(this.f);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public hx a(int $$0, int $$1, int $$2) {
-      return new hx(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return iz.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return iz.a(this.f, $$0);
-   }
-
-   public hx c(int $$0) {
-      return new hx(this.b(), $$0, this.c());
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
-   }
-
-   public hx l() {
-      return new hx(this.d(), 0, this.e());
-   }
-
-   public int a(csv $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
-   }
-
-   public int b(csv $$0) {
-      return this.e($$0.e, $$0.f);
-   }
-
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
-   }
-
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<csv> a(csv $$0, int $$1) {
-      return a(new csv($$0.e - $$1, $$0.f - $$1), new csv($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<csv> a(final csv $$0, final csv $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<csv>((long)($$2 * $$3), 64) {
-         @Nullable
-         private csv e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super csv> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
+            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
+               if ($$25 < $$26) {
+                  if ($$25 < $$27) {
+                     $$11 += $$19;
+                     $$25 += $$22;
+                  } else {
+                     $$13 += $$21;
+                     $$27 += $$24;
                   }
-
-                  this.e = new csv($$0.e, $$2 + $$5);
+               } else if ($$26 < $$27) {
+                  $$12 += $$20;
+                  $$26 += $$23;
                } else {
-                  this.e = new csv($$1 + $$4, $$2);
+                  $$13 += $$21;
+                  $$27 += $$24;
+               }
+
+               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
+               if ($$28 != null) {
+                  return $$28;
                }
             }
 
-            $$0.accept(this.e);
-            return true;
+            return $$4.apply($$2);
          }
-      }, false);
+      }
    }
 }

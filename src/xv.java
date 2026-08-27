@@ -26,6 +26,11 @@ public record xv(UUID a, xv.a b) implements xf<xq> {
       d,
       e,
       f,
-      g;
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

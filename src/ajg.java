@@ -38,8 +38,8 @@ public class ajg {
       ($$0, $$1) -> vf.b("commands.execute.function.instantiationFailure", $$0, $$1)
    );
    private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
-      egy $$2 = ((ds)$$0.getSource()).l().aJ();
-      return dx.a($$2.a(eha.a), $$1);
+      egz $$2 = ((ds)$$0.getSource()).l().aJ();
+      return dx.a($$2.a(ehb.a), $$1);
    };
 
    public static void a(CommandDispatcher<ds> $$0, dn $$1) {
@@ -55,7 +55,7 @@ public class ajg {
                                           .then(dt.a("as").then(dt.a("targets", ef.b()).fork($$2, $$0x -> {
                                              List<ds> $$1x = Lists.newArrayList();
 
-                                             for (blu $$2x : ef.c($$0x, "targets")) {
+                                             for (blv $$2x : ef.c($$0x, "targets")) {
                                                 $$1x.add(((ds)$$0x.getSource()).a($$2x));
                                              }
 
@@ -64,7 +64,7 @@ public class ajg {
                                        .then(dt.a("at").then(dt.a("targets", ef.b()).fork($$2, $$0x -> {
                                           List<ds> $$1x = Lists.newArrayList();
 
-                                          for (blu $$2x : ef.c($$0x, "targets")) {
+                                          for (blv $$2x : ef.c($$0x, "targets")) {
                                              $$1x.add(((ds)$$0x.getSource()).a((and)$$2x.dM()).a($$2x.dk()).a($$2x.bG()));
                                           }
 
@@ -77,22 +77,22 @@ public class ajg {
                                           .then(dt.a("as").then(dt.a("targets", ef.b()).fork($$2, $$0x -> {
                                              List<ds> $$1x = Lists.newArrayList();
 
-                                             for (blu $$2x : ef.c($$0x, "targets")) {
+                                             for (blv $$2x : ef.c($$0x, "targets")) {
                                                 $$1x.add(((ds)$$0x.getSource()).a($$2x.dk()));
                                              }
 
                                              return $$1x;
                                           }))))
                                        .then(dt.a("over").then(dt.a("heightmap", ei.a()).redirect($$2, $$0x -> {
-                                          els $$1x = ((ds)$$0x.getSource()).d();
+                                          elt $$1x = ((ds)$$0x.getSource()).d();
                                           and $$2x = ((ds)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
                                           if (!$$2x.b(iz.b($$3), iz.b($$4))) {
                                              throw fm.a.create();
                                           } else {
-                                             int $$5 = $$2x.a(ei.a($$0x, "heightmap"), aun.a($$3), aun.a($$4));
-                                             return ((ds)$$0x.getSource()).a(new els($$3, (double)$$5, $$4));
+                                             int $$5 = $$2x.a(ei.a($$0x, "heightmap"), auo.a($$3), auo.a($$4));
+                                             return ((ds)$$0x.getSource()).a(new elt($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -102,7 +102,7 @@ public class ajg {
                                     .then(dt.a("as").then(dt.a("targets", ef.b()).fork($$2, $$0x -> {
                                        List<ds> $$1x = Lists.newArrayList();
 
-                                       for (blu $$2x : ef.c($$0x, "targets")) {
+                                       for (blv $$2x : ef.c($$0x, "targets")) {
                                           $$1x.add(((ds)$$0x.getSource()).a($$2x.bG()));
                                        }
 
@@ -115,7 +115,7 @@ public class ajg {
                                        List<ds> $$1x = Lists.newArrayList();
                                        ee.a $$2x = ee.a($$0x, "anchor");
 
-                                       for (blu $$3 : ef.c($$0x, "targets")) {
+                                       for (blv $$3 : ef.c($$0x, "targets")) {
                                           $$1x.add(((ds)$$0x.getSource()).a($$3, $$2x));
                                        }
 
@@ -263,11 +263,11 @@ public class ajg {
       return $$1;
    }
 
-   private static ds a(ds $$0, Collection<emv> $$1, emo $$2, boolean $$3) {
-      emw $$4 = $$0.l().aH();
+   private static ds a(ds $$0, Collection<emw> $$1, emp $$2, boolean $$3) {
+      emx $$4 = $$0.l().aH();
       return $$0.a(($$4x, $$5) -> {
-         for (emv $$6 : $$1) {
-            emu $$7 = $$4.c($$6, $$2);
+         for (emw $$6 : $$1) {
+            emv $$7 = $$4.c($$6, $$2);
             int $$8 = $$3 ? $$5 : ($$4x ? 1 : 0);
             $$7.a($$8);
          }
@@ -298,8 +298,8 @@ public class ajg {
    }
 
    private static boolean a(and $$0, hx $$1) {
-      csv $$2 = new csv($$1);
-      dln $$3 = $$0.l().a($$2.e, $$2.f);
+      csw $$2 = new csw($$1);
+      dlo $$3 = $$0.l().a($$2.e, $$2.f);
       return $$3 == null ? false : $$3.D() == amw.d && $$0.c($$2.a());
    }
 
@@ -313,7 +313,7 @@ public class ajg {
                                                 $$0,
                                                 dt.a("block", fi.a($$3)),
                                                 $$2,
-                                                $$0x -> fi.a($$0x, "block").test(new djk(((ds)$$0x.getSource()).e(), fm.a($$0x, "pos"), true))
+                                                $$0x -> fi.a($$0x, "block").test(new djl(((ds)$$0x.getSource()).e(), fm.a($$0x, "pos"), true))
                                              )
                                           )
                                     )
@@ -480,29 +480,29 @@ public class ajg {
    }
 
    private static boolean a(CommandContext<ds> $$0, ajg.e $$1) throws CommandSyntaxException {
-      emv $$2 = ew.a($$0, "target");
-      emo $$3 = em.a($$0, "targetObjective");
-      emv $$4 = ew.a($$0, "source");
-      emo $$5 = em.a($$0, "sourceObjective");
-      emw $$6 = ((ds)$$0.getSource()).l().aH();
-      ems $$7 = $$6.d($$2, $$3);
-      ems $$8 = $$6.d($$4, $$5);
+      emw $$2 = ew.a($$0, "target");
+      emp $$3 = em.a($$0, "targetObjective");
+      emw $$4 = ew.a($$0, "source");
+      emp $$5 = em.a($$0, "sourceObjective");
+      emx $$6 = ((ds)$$0.getSource()).l().aH();
+      emt $$7 = $$6.d($$2, $$3);
+      emt $$8 = $$6.d($$4, $$5);
       return $$7 != null && $$8 != null ? $$1.test($$7.a(), $$8.a()) : false;
    }
 
    private static boolean a(CommandContext<ds> $$0, ck.d $$1) throws CommandSyntaxException {
-      emv $$2 = ew.a($$0, "target");
-      emo $$3 = em.a($$0, "targetObjective");
-      emw $$4 = ((ds)$$0.getSource()).l().aH();
-      ems $$5 = $$4.d($$2, $$3);
+      emw $$2 = ew.a($$0, "target");
+      emp $$3 = em.a($$0, "targetObjective");
+      emx $$4 = ((ds)$$0.getSource()).l().aH();
+      emt $$5 = $$4.d($$2, $$3);
       return $$5 == null ? false : $$1.d($$5.a());
    }
 
-   private static boolean a(ds $$0, eju $$1) {
+   private static boolean a(ds $$0, ejv $$1) {
       and $$2 = $$0.e();
-      ehb $$3 = new ehb.a($$2).a(ejg.f, $$0.d()).b(ejg.a, $$0.f()).a(ejf.d);
-      egv $$4 = new egv.a($$3).a(Optional.empty());
-      $$4.b(egv.a($$1));
+      ehc $$3 = new ehc.a($$2).a(ejh.f, $$0.d()).b(ejh.a, $$0.f()).a(ejg.d);
+      egw $$4 = new egw.a($$3).a(Optional.empty());
+      $$4.b(egw.a($$1));
       return $$1.test($$4);
    }
 
@@ -550,8 +550,8 @@ public class ajg {
    }
 
    private static OptionalInt a(and $$0, hx $$1, hx $$2, hx $$3, boolean $$4) throws CommandSyntaxException {
-      dyx $$5 = dyx.a($$1, $$2);
-      dyx $$6 = dyx.a($$3, $$3.a($$5.c()));
+      dyy $$5 = dyy.a($$1, $$2);
+      dyy $$6 = dyy.a($$3, $$3.a($$5.c()));
       hx $$7 = new hx($$6.h() - $$5.h(), $$6.i() - $$5.i(), $$6.j() - $$5.j());
       int $$8 = $$5.d() * $$5.e() * $$5.f();
       if ($$8 > 32768) {
@@ -564,14 +564,14 @@ public class ajg {
                for (int $$12 = $$5.h(); $$12 <= $$5.k(); $$12++) {
                   hx $$13 = new hx($$12, $$11, $$10);
                   hx $$14 = $$13.a((jb)$$7);
-                  djg $$15 = $$0.a_($$13);
-                  if (!$$4 || !$$15.a(cwr.a)) {
+                  djh $$15 = $$0.a_($$13);
+                  if (!$$4 || !$$15.a(cws.a)) {
                      if ($$15 != $$0.a_($$14)) {
                         return OptionalInt.empty();
                      }
 
-                     dgu $$16 = $$0.c_($$13);
-                     dgu $$17 = $$0.c_($$14);
+                     dgv $$16 = $$0.c_($$13);
+                     dgv $$17 = $$0.c_($$14);
                      if ($$16 != null) {
                         if ($$17 == null) {
                            return OptionalInt.empty();
@@ -598,18 +598,18 @@ public class ajg {
       }
    }
 
-   private static RedirectModifier<ds> a(Function<blu, Optional<blu>> $$0) {
+   private static RedirectModifier<ds> a(Function<blv, Optional<blv>> $$0) {
       return $$1 -> {
          ds $$2 = (ds)$$1.getSource();
-         blu $$3 = $$2.f();
+         blv $$3 = $$2.f();
          return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dH()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
       };
    }
 
-   private static RedirectModifier<ds> b(Function<blu, Stream<blu>> $$0) {
+   private static RedirectModifier<ds> b(Function<blv, Stream<blv>> $$0) {
       return $$1 -> {
          ds $$2 = (ds)$$1.getSource();
-         blu $$3 = $$2.f();
+         blv $$3 = $$2.f();
          return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dH()).map($$2::a).toList();
       };
    }
@@ -619,34 +619,34 @@ public class ajg {
                               dt.a("owner")
                                  .fork(
                                     $$0,
-                                    a((Function<blu, Optional<blu>>)($$0x -> $$0x instanceof bms $$1x ? Optional.ofNullable($$1x.R_()) : Optional.empty()))
+                                    a((Function<blv, Optional<blv>>)($$0x -> $$0x instanceof bmt $$1x ? Optional.ofNullable($$1x.R_()) : Optional.empty()))
                                  )
                            ))
                            .then(
                               dt.a("leasher")
                                  .fork(
                                     $$0,
-                                    a((Function<blu, Optional<blu>>)($$0x -> $$0x instanceof bmm $$1x ? Optional.ofNullable($$1x.fT()) : Optional.empty()))
+                                    a((Function<blv, Optional<blv>>)($$0x -> $$0x instanceof bmn $$1x ? Optional.ofNullable($$1x.fT()) : Optional.empty()))
                                  )
                            ))
                         .then(
                            dt.a("target")
-                              .fork($$0, a((Function<blu, Optional<blu>>)($$0x -> $$0x instanceof bng $$1x ? Optional.ofNullable($$1x.q()) : Optional.empty())))
+                              .fork($$0, a((Function<blv, Optional<blv>>)($$0x -> $$0x instanceof bnh $$1x ? Optional.ofNullable($$1x.q()) : Optional.empty())))
                         ))
                      .then(
                         dt.a("attacker")
-                           .fork($$0, a((Function<blu, Optional<blu>>)($$0x -> $$0x instanceof bls $$1x ? Optional.ofNullable($$1x.V_()) : Optional.empty())))
+                           .fork($$0, a((Function<blv, Optional<blv>>)($$0x -> $$0x instanceof blt $$1x ? Optional.ofNullable($$1x.V_()) : Optional.empty())))
                      ))
-                  .then(dt.a("vehicle").fork($$0, a((Function<blu, Optional<blu>>)($$0x -> Optional.ofNullable($$0x.cZ()))))))
-               .then(dt.a("controller").fork($$0, a((Function<blu, Optional<blu>>)($$0x -> Optional.ofNullable($$0x.cN()))))))
+                  .then(dt.a("vehicle").fork($$0, a((Function<blv, Optional<blv>>)($$0x -> Optional.ofNullable($$0x.cZ()))))))
+               .then(dt.a("controller").fork($$0, a((Function<blv, Optional<blv>>)($$0x -> Optional.ofNullable($$0x.cN()))))))
             .then(
-               dt.a("origin").fork($$0, a((Function<blu, Optional<blu>>)($$0x -> $$0x instanceof bnh $$1x ? Optional.ofNullable($$1x.w()) : Optional.empty())))
+               dt.a("origin").fork($$0, a((Function<blv, Optional<blv>>)($$0x -> $$0x instanceof bni $$1x ? Optional.ofNullable($$1x.w()) : Optional.empty())))
             ))
-         .then(dt.a("passengers").fork($$0, b((Function<blu, Stream<blu>>)($$0x -> $$0x.cP().stream()))));
+         .then(dt.a("passengers").fork($$0, b((Function<blv, Stream<blv>>)($$0x -> $$0x.cP().stream()))));
    }
 
-   private static ds a(ds $$0, ih.c<bly<?>> $$1) throws CommandSyntaxException {
-      blu $$2 = ale.a($$0, $$1, $$0.d(), new sn(), true);
+   private static ds a(ds $$0, ih.c<blz<?>> $$1) throws CommandSyntaxException {
+      blv $$2 = ale.a($$0, $$1, $$0.d(), new sn(), true);
       return $$0.a($$2);
    }
 

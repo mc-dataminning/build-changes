@@ -95,7 +95,7 @@ public class aim {
                                                                                  fg.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 bno.a.a
+                                                                                 bnp.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class aim {
                                                                               fg.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              bno.a.c
+                                                                              bnp.a.c
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class aim {
                                                                            fg.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bno.a.b
+                                                                           bnp.a.b
                                                                         )
                                                                   )
                                                             )
@@ -168,8 +168,8 @@ public class aim {
       );
    }
 
-   private static bnm a(blu $$0, ih<bnl> $$1) throws CommandSyntaxException {
-      bnm $$2 = a($$0).eR().a($$1);
+   private static bnn a(blv $$0, ih<bnm> $$1) throws CommandSyntaxException {
+      bnn $$2 = a($$0).eR().a($$1);
       if ($$2 == null) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -177,16 +177,16 @@ public class aim {
       }
    }
 
-   private static bmk a(blu $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bmk)) {
+   private static bml a(blv $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bml)) {
          throw a.create($$0.ad());
       } else {
-         return (bmk)$$0;
+         return (bml)$$0;
       }
    }
 
-   private static bmk b(blu $$0, ih<bnl> $$1) throws CommandSyntaxException {
-      bmk $$2 = a($$0);
+   private static bml b(blv $$0, ih<bnm> $$1) throws CommandSyntaxException {
+      bml $$2 = a($$0);
       if (!$$2.eR().b($$1)) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -194,23 +194,23 @@ public class aim {
       }
    }
 
-   private static int a(ds $$0, blu $$1, ih<bnl> $$2, double $$3) throws CommandSyntaxException {
-      bmk $$4 = b($$1, $$2);
+   private static int a(ds $$0, blv $$1, ih<bnm> $$2, double $$3) throws CommandSyntaxException {
+      bml $$4 = b($$1, $$2);
       double $$5 = $$4.a($$2);
       $$0.a(() -> vf.a("commands.attribute.value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ds $$0, blu $$1, ih<bnl> $$2, double $$3) throws CommandSyntaxException {
-      bmk $$4 = b($$1, $$2);
+   private static int b(ds $$0, blv $$1, ih<bnm> $$2, double $$3) throws CommandSyntaxException {
+      bml $$4 = b($$1, $$2);
       double $$5 = $$4.b($$2);
       $$0.a(() -> vf.a("commands.attribute.base_value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ds $$0, blu $$1, ih<bnl> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      bmk $$5 = b($$1, $$2);
-      bnn $$6 = $$5.eR();
+   private static int a(ds $$0, blv $$1, ih<bnm> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      bml $$5 = b($$1, $$2);
+      bno $$6 = $$5.eR();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.ad(), a($$2), $$3);
       } else {
@@ -220,15 +220,15 @@ public class aim {
       }
    }
 
-   private static int c(ds $$0, blu $$1, ih<bnl> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ds $$0, blv $$1, ih<bnm> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> vf.a("commands.attribute.base_value.set.success", a($$2), $$1.ad(), $$3), false);
       return 1;
    }
 
-   private static int a(ds $$0, blu $$1, ih<bnl> $$2, UUID $$3, String $$4, double $$5, bno.a $$6) throws CommandSyntaxException {
-      bnm $$7 = a($$1, $$2);
-      bno $$8 = new bno($$3, $$4, $$5, $$6);
+   private static int a(ds $$0, blv $$1, ih<bnm> $$2, UUID $$3, String $$4, double $$5, bnp.a $$6) throws CommandSyntaxException {
+      bnn $$7 = a($$1, $$2);
+      bnp $$8 = new bnp($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
          throw d.create($$1.ad(), a($$2), $$3);
       } else {
@@ -238,8 +238,8 @@ public class aim {
       }
    }
 
-   private static int a(ds $$0, blu $$1, ih<bnl> $$2, UUID $$3) throws CommandSyntaxException {
-      bnm $$4 = a($$1, $$2);
+   private static int a(ds $$0, blv $$1, ih<bnm> $$2, UUID $$3) throws CommandSyntaxException {
+      bnn $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> vf.a("commands.attribute.modifier.remove.success", vf.a($$3), a($$2), $$1.ad()), false);
          return 1;
@@ -248,7 +248,7 @@ public class aim {
       }
    }
 
-   private static vf a(ih<bnl> $$0) {
+   private static vf a(ih<bnm> $$0) {
       return vf.c($$0.a().c());
    }
 }

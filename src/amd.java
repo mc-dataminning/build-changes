@@ -19,7 +19,7 @@ public class amd implements Runnable {
 
    public amd(ama $$0) {
       this.d = $$0;
-      this.e = $$0.bo() * avo.b;
+      this.e = $$0.bo() * avp.b;
    }
 
    @Override
@@ -32,8 +32,8 @@ public class amd implements Runnable {
             a.error(
                LogUtils.FATAL_MARKER,
                "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)avo.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aO().g() / (float)avo.c)
+               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)avp.a),
+               String.format(Locale.ROOT, "%.2f", this.d.aO().g() / (float)avp.c)
             );
             a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
             ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
@@ -55,7 +55,7 @@ public class amd implements Runnable {
             p $$9 = $$8.a("Thread Dump");
             $$9.a("Threads", $$5);
             p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aY().q().a(ctk.o).toString());
+            $$10.a("Random tick rate", () -> this.d.aY().q().a(ctl.o).toString());
             $$10.a("Level stats", () -> Streams.stream(this.d.H()).map($$0x -> $$0x.ae() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
             ahi.a("Crash report:\n" + $$8.e());
             File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");
@@ -69,7 +69,7 @@ public class amd implements Runnable {
          }
 
          try {
-            Thread.sleep(($$0 + this.e - $$1) / avo.b);
+            Thread.sleep(($$0 + this.e - $$1) / avp.b);
          } catch (InterruptedException var15) {
          }
       }

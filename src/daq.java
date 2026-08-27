@@ -1,78 +1,82 @@
 import com.mojang.serialization.MapCodec;
 
-public class daq extends cwp implements czh, czx {
-   public static final MapCodec<daq> a = b(daq::new);
-   public static final dke<ie> b = djw.T;
+public class daq extends cym {
+   public static final MapCodec<daq> i = b(daq::new);
 
    @Override
-   public MapCodec<daq> a() {
-      return a;
+   public MapCodec<? extends daq> a() {
+      return i;
    }
 
-   protected daq(djf.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ie.k));
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public djg a(djg $$0, ddb $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
+   protected daq(djg.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
+   public djh a(cph $$0) {
+      csv $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      eer $$3 = $$0.q().b_($$0.a());
+      hx $$4 = $$2.e();
+      hx $$5 = $$2.f();
+      hx $$6 = $$2.g();
+      hx $$7 = $$2.h();
+      djh $$8 = $$1.a_($$4);
+      djh $$9 = $$1.a_($$5);
+      djh $$10 = $$1.a_($$6);
+      djh $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ic.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ic.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ic.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ic.e))))
+         .a(e, Boolean.valueOf($$3.a() == ees.c));
    }
 
    @Override
-   public djg a(cpg $$0) {
-      ic $$1 = $$0.k();
-      ic $$2;
-      if ($$1.o() == ic.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ic.b;
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
       }
 
-      return this.o().a(b, ie.a($$1, $$2));
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dhu($$0, $$1);
+   public emm c(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return emj.a();
    }
 
    @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      dgu $$6 = $$1.c_($$2);
-      if ($$6 instanceof dhu && $$3.gp()) {
-         $$3.a((dhu)$$6);
-         return bka.a($$1.B);
-      } else {
-         return bka.d;
+   public boolean a(djh $$0, djh $$1, ic $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   public static boolean a(edf.c $$0, edf.c $$1) {
-      ic $$2 = h($$0.b());
-      ic $$3 = h($$1.b());
-      ic $$4 = n($$0.b());
-      ic $$5 = n($$1.b());
-      dhu.a $$6 = dhu.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dhu.a.b : dhu.a.a);
-      boolean $$7 = $$6 == dhu.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   public final boolean a(djh $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof daq || $$0.a(ash.L);
    }
 
-   public static ic h(djg $$0) {
-      return $$0.c(b).a();
-   }
-
-   public static ic n(djg $$0) {
-      return $$0.c(b).b();
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

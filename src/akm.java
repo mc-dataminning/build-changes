@@ -25,11 +25,11 @@ public class akm {
       );
    }
 
-   private static int a(ds $$0, blu $$1, blu $$2) throws CommandSyntaxException {
-      blu $$3 = $$1.cZ();
+   private static int a(ds $$0, blv $$1, blv $$2) throws CommandSyntaxException {
+      blv $$3 = $$1.cZ();
       if ($$3 != null) {
          throw b.create($$1.Q_(), $$3.Q_());
-      } else if ($$2.ai() == bly.bv) {
+      } else if ($$2.ai() == blz.bv) {
          throw d.create();
       } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
@@ -43,8 +43,8 @@ public class akm {
       }
    }
 
-   private static int a(ds $$0, blu $$1) throws CommandSyntaxException {
-      blu $$2 = $$1.cZ();
+   private static int a(ds $$0, blv $$1) throws CommandSyntaxException {
+      blv $$2 = $$1.cZ();
       if ($$2 == null) {
          throw a.create($$1.Q_());
       } else {

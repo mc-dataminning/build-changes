@@ -1,57 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class czw extends cvk {
-   public static final MapCodec<czw> c = b(czw::new);
+public class czw extends cwz implements cwt {
+   public static final MapCodec<czw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ahf.a(ke.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kd.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, czw::new)
+   );
+   protected static final emm b = cwq.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cwq d;
+   private final ahf<drh<?, ?>> e;
 
    @Override
    public MapCodec<czw> a() {
-      return c;
+      return a;
    }
 
-   protected czw(djf.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dhq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
-      return a($$0, $$2, dgw.a);
+   protected czw(ahf<drh<?, ?>> $$0, cwq $$1, djg.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(cto $$0, hx $$1, cfh $$2) {
-      dgu $$3 = $$0.c_($$1);
-      if ($$3 instanceof dhq) {
-         $$2.a((bkd)$$3);
-         $$2.a(asb.am);
-      }
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
    }
 
    @Override
-   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, arr.ju, ars.e, 1.0F, 1.0F, false);
-         }
+   protected boolean b(djh $$0, csv $$1, hx $$2) {
+      return $$0.a(ash.aK) || $$0.a(cws.fl) || $$0.a(cws.dX) || super.b($$0, $$1, $$2);
+   }
 
-         ic $$7 = $$0.c(a);
-         ic.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ic.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == ic.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(jx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(jx.E, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   private Optional<? extends ih<drh<?, ?>>> a(cts $$0) {
+      return $$0.I_().d(ke.aw).b(this.e);
+   }
+
+   @Override
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      djh $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
+   }
+
+   @Override
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      this.a($$0).ifPresent($$3x -> ((drh)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dmc {
-   CompletableFuture<Void> a(csv var1, th var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dmc {
 }

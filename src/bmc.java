@@ -1,83 +1,46 @@
-public class bmc extends byw {
-   private static final agm<Integer> bX = agp.a(bmc.class, ago.b);
-
-   public bmc(bly<? extends bmc> $$0, cto $$1) {
+public abstract class bmc extends bmn {
+   protected bmc(blz<? extends bmc> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected jv u() {
-      return jx.aM;
+   protected void a(double $$0, boolean $$1, djh $$2, hx $$3) {
    }
 
    @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(bX, 0);
-   }
+   public void a(elt $$0) {
+      if (this.cX()) {
+         if (this.aZ()) {
+            this.a(0.02F, $$0);
+            this.a(bmr.a, this.dp());
+            this.g(this.dp().a(0.8F));
+         } else if (this.bn()) {
+            this.a(0.02F, $$0);
+            this.a(bmr.a, this.dp());
+            this.g(this.dp().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
 
-   @Override
-   protected arq w() {
-      return arr.kf;
-   }
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
 
-   @Override
-   protected arq y() {
-      return arr.kc;
-   }
-
-   @Override
-   protected arq d(bks $$0) {
-      return arr.ke;
-   }
-
-   @Override
-   protected arq n_() {
-      return arr.kd;
-   }
-
-   @Override
-   public void b(sn $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.A());
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      int $$0 = this.A();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bmr.a, this.dp());
+            this.g(this.dp().a((double)$$1));
+         }
       }
 
-      this.dM().a(jx.aN, this.d(0.6), this.du(), this.g(0.6), 0.0, 0.0, 0.0);
+      this.q(false);
    }
 
    @Override
-   public boolean a(bks $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
-      }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int A() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(bly<? extends bmk> $$0, cud $$1, bmo $$2, hx $$3, auu $$4) {
-      return $$3.v() <= $$1.A_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(cwr.G);
+   public boolean e_() {
+      return false;
    }
 }

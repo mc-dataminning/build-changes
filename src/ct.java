@@ -8,7 +8,7 @@ public class ct extends cv<ct.a> {
       return ct.a.a;
    }
 
-   public void a(ane $$0, cqd<?> $$1) {
+   public void a(ane $$0, cqe<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -18,10 +18,10 @@ public class ct extends cv<ct.a> {
 
    public static record a(Optional<bb> b, ahg c) implements cv.a {
       public static final Codec<ct.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(ct.a::a), ahg.a.fieldOf("recipe").forGetter(ct.a::b)).apply($$0, ct.a::new)
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(ct.a::a), ahg.a.fieldOf("recipe").forGetter(ct.a::b)).apply($$0, ct.a::new)
       );
 
-      public boolean a(cqd<?> $$0) {
+      public boolean a(cqe<?> $$0) {
          return this.c.equals($$0.a());
       }
 

@@ -1,20 +1,15 @@
-public class gan extends fzd<cbx, flr<cbx>> {
-   private static final ahg a = new ahg("textures/entity/skeleton/skeleton.png");
+public class gan extends fzt<ccw, flr<ccw>> {
+   private static final ahg a = new ahg("textures/entity/silverfish.png");
 
-   public gan(fym.a $$0) {
-      this($$0, fmv.bk, fmv.bm, fmv.bn);
+   public gan(fyn.a $$0) {
+      super($$0, new flr<>($$0.a(fmw.bj)), 0.3F);
    }
 
-   public gan(fym.a $$0, fmu $$1, fmu $$2, fmu $$3) {
-      super($$0, new flr<>($$0.a($$1)), 0.5F);
-      this.a(new gcn<>(this, new flr($$0.a($$2)), new flr($$0.a($$3)), $$0.g()));
+   protected float a(ccw $$0) {
+      return 180.0F;
    }
 
-   public ahg a(cbx $$0) {
+   public ahg b(ccw $$0) {
       return a;
-   }
-
-   protected boolean b(cbx $$0) {
-      return $$0.ge();
    }
 }

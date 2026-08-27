@@ -95,7 +95,7 @@ public class dt {
       aln.a(this.h);
       alp.a(this.h);
       alr.a(this.h);
-      if (bgx.e.d()) {
+      if (bgy.e.d()) {
          ajr.a(this.h);
       }
 
@@ -212,8 +212,8 @@ public class dt {
       go<ds> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aK().c(ctk.x));
-         int $$6 = $$2.aK().c(ctk.y);
+         int $$5 = Math.max(1, $$2.aK().c(ctl.x));
+         int $$6 = $$2.aK().c(ctl.y);
 
          try (go<ds> $$7 = new go<>($$5, $$6, $$2.aR())) {
             f.set($$7);
@@ -315,12 +315,12 @@ public class dt {
             final ij.c<T> $$1 = $$0.b($$0);
             return new ij.a<T>($$1) {
                @Override
-               public Optional<il.c<T>> a(asv<T> $$0x) {
+               public Optional<il.c<T>> a(asw<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public il.c<T> b(asv<T> $$0x) {
+               public il.c<T> b(asw<T> $$0x) {
                   Optional<il.c<T>> $$1 = $$1.a($$0);
                   return $$1.orElseGet(() -> il.a($$1, $$0));
                }

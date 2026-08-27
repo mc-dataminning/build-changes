@@ -1,26 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bqm {
-   private static final float a = 0.3F;
+public class bqm extends boc<bml> {
+   public static final int c = 100;
+   private long d;
 
-   public static bpm<bmk> a() {
-      return bro.a(
-         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$0 -> $$0.group($$0.a(bvm.m), $$0.a(bvm.n), $$0.b(bvm.e), $$0.b(bvm.h), $$0.c(bvm.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     ig $$9 = $$0.b($$3);
-                     bvo $$10 = $$0.b($$4);
-                     if ($$6.F_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> bly.bg.equals($$0xxx.ai()))) {
-                        $$10.a($$1xx -> bly.bg.equals($$1xx.ai()) && $$1xx.f((blu)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bom($$3xx, true));
-                           $$1.a(new bvp(new bom($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bqm() {
+      super(ImmutableMap.of(bvn.b, bvo.a, bvn.H, bvo.c));
+   }
+
+   @Override
+   protected boolean a(and $$0, bml $$1) {
+      if ($$1.bO()) {
+         return false;
+      } else {
+         bnl<?> $$2 = $$1.dO();
+         ig $$3 = $$2.c(bvn.b).get();
+         if ($$0.ae() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(bvn.H);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.X() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            djh $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dk(), 2.0) && $$6.a(ash.R) && !$$6.c(cwj.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(and $$0, bml $$1, long $$2) {
+      Optional<ig> $$3 = $$1.dO().c(bvn.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         hx $$4 = $$3.get().b();
+         return $$1.dO().c(cgu.e) && $$1.dt() > (double)$$4.v() + 0.4 && $$4.a($$1.dk(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(and $$0, bml $$1, long $$2) {
+      if ($$2 > this.d) {
+         bnl<?> $$3 = $$1.dO();
+         if ($$3.a(bvn.v)) {
+            Set<ig> $$4 = $$3.c(bvn.v).get();
+            Optional<List<bml>> $$5;
+            if ($$3.a(bvn.g)) {
+               $$5 = $$3.c(bvn.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bpa.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dO().c(bvn.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(and $$0, bml $$1, long $$2) {
+      if ($$1.fD()) {
+         $$1.fE();
+         this.d = $$2 + 40L;
+      }
    }
 }

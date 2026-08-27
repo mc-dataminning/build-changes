@@ -1,71 +1,32 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
 
-public class fhw extends fda {
-   private static final Logger k = LogUtils.getLogger();
-   public static final dpn a = new dpn((long)"test1".hashCode(), true, false);
-   protected final fda b;
-   private exf l;
-   private exf m;
-   private exf n;
-   private exf o;
-   protected exo c;
-   private fib p;
+public interface fhw {
+   Map<Optional<ahf<dyv>>, fhw> a = Map.of(Optional.of(dyw.b), ($$0, $$1) -> {
+      dle $$2 = $$1.d().a();
+      iu $$3 = $$1.a();
+      ii<cuo> $$4 = $$3.b(ke.at);
+      ii<dzm> $$5 = $$3.b(ke.aF);
+      ii<dyk> $$6 = $$3.b(ke.aC);
+      return new fbx($$0, $$1x -> $$0.n().a(a($$1x)), $$2 instanceof dol ? ((dol)$$2).g() : dxj.a($$4, $$5, $$6));
+   }, Optional.of(dyw.e), ($$0, $$1) -> new fbw($$0, $$1, $$1x -> $$0.n().a(a($$1x))));
 
-   public fhw(fda $$0) {
-      super(vf.c("selectWorld.title"));
-      this.b = $$0;
+   fdb createEditScreen(fhr var1, fhz var2);
+
+   private static fhz.a a(dxj $$0) {
+      return ($$1, $$2) -> {
+         dle $$3 = new dol($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   @Override
-   protected void aN_() {
-      this.c = new exo(this.i, this.g / 2 - 100, 22, 200, 20, this.c, vf.c("selectWorld.search"));
-      this.c.b($$0 -> this.p.a($$0));
-      this.e(this.c);
-      this.p = this.d(new fib(this, this.f, this.g, this.h - 112, 48, 36, this.c.a(), this.p));
-      this.m = this.d(exf.a(egm.a, $$0 -> this.p.d().ifPresent(fib.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
-      this.d(exf.a(vf.c("selectWorld.create"), $$0 -> fhq.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
-      this.n = this.d(exf.a(vf.c("selectWorld.edit"), $$0 -> this.p.d().ifPresent(fib.c::f)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
-      this.l = this.d(exf.a(vf.c("selectWorld.delete"), $$0 -> this.p.d().ifPresent(fib.c::d)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
-      this.o = this.d(exf.a(vf.c("selectWorld.recreate"), $$0 -> this.p.d().ifPresent(fib.c::g)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
-      this.d(exf.a(ve.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
-      this.a(null);
-      this.c(this.c);
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.b);
-   }
-
-   @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable egm $$0) {
-      if ($$0 == null) {
-         this.m.b(egm.a);
-         this.m.j = false;
-         this.n.j = false;
-         this.o.j = false;
-         this.l.j = false;
-      } else {
-         this.m.b($$0.t());
-         this.m.j = $$0.u();
-         this.n.j = $$0.v();
-         this.o.j = $$0.w();
-         this.l.j = $$0.x();
-      }
-   }
-
-   @Override
-   public void j() {
-      if (this.p != null) {
-         this.p.l().forEach(fib.a::close);
-      }
+   private static fhz.a a(ih<cuo> $$0) {
+      return ($$1, $$2) -> {
+         it<dov> $$3 = $$1.d(ke.aA);
+         ih<dov> $$4 = $$3.f(dov.c);
+         cus $$5 = new cuz($$0);
+         dle $$6 = new dot($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
 }

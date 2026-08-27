@@ -1,61 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dez extends cyk {
-   public static final MapCodec<dez> a = b(dez::new);
-   public static final int b = 2;
-   public static final dkg c = djw.aq;
-   private static final float g = 3.0F;
-   private static final eml[] h = new eml[]{cwp.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), cwp.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
-
-   @Override
-   public MapCodec<dez> a() {
-      return a;
-   }
-
-   public dez(djf.d $$0) {
-      super($$0);
-   }
+public class dez extends cwg {
+   protected static final MapCodec<ka> c = kd.j
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof ka $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dez> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dez::new));
+   protected final ka e;
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(c);
+   public MapCodec<? extends dez> a() {
+      return d;
+   }
+
+   protected dez(ka $$0, djg.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return h[this.g($$0)];
-   }
-
-   @Override
-   protected dkg b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 2;
-   }
-
-   @Override
-   protected ctn d() {
-      return cna.vb;
-   }
-
-   @Override
-   public djg b(int $$0) {
-      return $$0 == 2 ? cwr.bS.o() : super.b($$0);
-   }
-
-   @Override
-   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(cto $$0) {
-      return 1;
+   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(jx.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

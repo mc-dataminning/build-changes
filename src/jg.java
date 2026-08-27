@@ -1,5 +1,5 @@
-public record jg(and a, hx b, djg c, dhm d) {
-   public els a() {
+public record jg(and a, hx b, djh c, dhn d) {
+   public elt a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record jg(and a, hx b, djg c, dhm d) {
       return this.b;
    }
 
-   public djg d() {
+   public djh d() {
       return this.c;
    }
 
-   public dhm e() {
+   public dhn e() {
       return this.d;
    }
 }

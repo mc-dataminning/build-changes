@@ -1,50 +1,167 @@
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class eta extends gko {
-   private static final vf a = vf.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fat c = fat.d();
-   private final fda v;
+public class eta extends gkp {
+   private static final ahg a = new ahg("icon/unseen_notification");
+   private static final ahg b = new ahg("icon/news");
+   private static final ahg c = new ahg("icon/invite");
+   private static final ahg v = new ahg("icon/trial_available");
+   private final CompletableFuture<Boolean> w = eql.a().thenApply($$0 -> $$0.a() == eql.b.a);
    @Nullable
-   private exz w;
+   private etq.c x;
+   @Nullable
+   private eta.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final eta.a D = new eta.a() {
+      @Override
+      public etq.c a(esh $$0) {
+         etq.c $$1 = $$0.a.a();
+         eta.this.a($$0, $$1);
+         eta.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public eta(fda $$0) {
-      super(euz.a);
-      this.v = $$0;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final eta.a E = new eta.a() {
+      @Override
+      public etq.c a(esh $$0) {
+         etq.c $$1 = $$0.a.a();
+         eta.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public eta() {
+      super(eva.a);
    }
 
    @Override
    public void aN_() {
-      this.c.a(15).c().b();
-      this.w = new exz(a, this.i).b(true);
-      this.c.a(this.w);
-      fat $$0 = this.c.a(fat.e().a(8));
-      vf $$1 = vf.c("mco.account.privacy.info.button");
-      $$0.a(exf.a($$1, fbs.b(this, "https://aka.ms/MinecraftGDPR")).a());
-      $$0.a(exf.a(ve.k, $$0x -> this.aE_()).a());
-      this.c.a($$1x -> {
-         exd var10000 = this.d($$1x);
-      });
-      this.c();
+      if (this.x != null) {
+         this.x.a();
+      }
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.v);
+   public void aF_() {
+      super.aF_();
+      this.f.aZ().b.a();
+   }
+
+   @Nullable
+   private eta.a D() {
+      boolean $$0 = this.H() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.E() ? this.D : this.E;
+      }
    }
 
    @Override
-   protected void c() {
-      if (this.w != null) {
-         this.w.c(this.g - 15);
+   public void d() {
+      eta.a $$0 = this.D();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.aZ());
+         } else {
+            this.x = null;
+         }
       }
 
-      this.c.a();
-      fan.a(this.c, this.F());
+      if (this.x != null) {
+         this.x.b();
+      }
+   }
+
+   private boolean E() {
+      return this.f.m.Q().c();
+   }
+
+   private boolean H() {
+      return this.f.y instanceof fdg;
    }
 
    @Override
-   public vf h() {
-      return a;
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(ewu $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(esh $$0, etq.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
+   }
+
+   void b(esh $$0, etq.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
+
+         for (erh $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      etq.c a(esh var1);
+
+      boolean a();
    }
 }

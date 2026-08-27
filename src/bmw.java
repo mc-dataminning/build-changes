@@ -1,20 +1,13 @@
-public enum bmw {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o,
-   p,
-   q,
-   r;
+public interface bmw extends bmv {
+   void b(int var1);
+
+   boolean a();
+
+   void c(int var1);
+
+   void b();
+
+   default int ad_() {
+      return 0;
+   }
 }

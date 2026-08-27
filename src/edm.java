@@ -1,18 +1,17 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class edm implements edn {
-   public static final edm a = new edm();
-   public static final Codec<edm> b = Codec.unit(a);
+public class edm implements edo {
+   private static final edm b = new edm();
+   public static final Codec<edm> a = Codec.unit(b);
 
-   @Nullable
    @Override
-   public sn a(auu $$0, @Nullable sn $$1) {
-      return $$1;
+   public sn a(auv $$0, @Nullable sn $$1) {
+      return new sn();
    }
 
    @Override
-   public edo<?> a() {
-      return edo.b;
+   public edp<?> a() {
+      return edp.a;
    }
 }

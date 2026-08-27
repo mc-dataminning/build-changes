@@ -6,10 +6,10 @@ public class abg implements xf<za> {
    private final double c;
    private final float d;
    private final float e;
-   private final Set<bmy> f;
+   private final Set<bmz> f;
    private final int g;
 
-   public abg(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bmy> $$5, int $$6) {
+   public abg(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bmz> $$5, int $$6) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -25,7 +25,7 @@ public class abg implements xf<za> {
       this.c = $$0.readDouble();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
-      this.f = bmy.a($$0.readUnsignedByte());
+      this.f = bmz.a($$0.readUnsignedByte());
       this.g = $$0.n();
    }
 
@@ -36,7 +36,7 @@ public class abg implements xf<za> {
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.k(bmy.a(this.f));
+      $$0.k(bmz.a(this.f));
       $$0.c(this.g);
    }
 
@@ -68,7 +68,7 @@ public class abg implements xf<za> {
       return this.g;
    }
 
-   public Set<bmy> i() {
+   public Set<bmz> i() {
       return this.f;
    }
 }

@@ -1,68 +1,63 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eip extends eih {
+public class eip extends eii {
+   private static final Codec<Pair<ih<dgm>, clm>> b = Codec.mapPair(kd.am.r().fieldOf("pattern"), clm.q.fieldOf("color")).codec();
    public static final Codec<eip> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(kd.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ehm.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
             .apply($$0, eip::new)
    );
-   private final ih<dgw<?>> b;
-   private final List<eho> c;
+   private final List<Pair<ih<dgm>, clm>> c;
+   private final boolean d;
 
-   eip(List<eju> $$0, ih<dgw<?>> $$1, List<eho> $$2) {
+   eip(List<ejv> $$0, List<Pair<ih<dgm>, clm>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eij b() {
-      return eik.p;
-   }
+   protected cmy a(cmy $$0, egw $$1) {
+      sn $$2 = ckr.a($$0);
+      if ($$2 == null) {
+         $$2 = new sn();
+      }
 
-   @Override
-   public cmx a(cmx $$0, egv $$1) {
-      if ($$0.b()) {
-         return $$0;
+      dgm.a $$3 = new dgm.a();
+      this.c.forEach($$3::a);
+      st $$4 = $$3.a();
+      st $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
       } else {
-         iq<cmx> $$2 = iq.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ehd.a($$1.d(), $$2::add), $$1)));
-         sn $$3 = new sn();
-         bju.a($$3, $$2);
-         sn $$4 = ckq.a($$0);
-         if ($$4 == null) {
-            $$4 = $$3;
-         } else {
-            $$4.a($$3);
-         }
-
-         ckq.a($$0, this.b.a(), $$4);
-         return $$0;
+         $$5 = $$4;
       }
+
+      $$2.a("Patterns", $$5);
+      ckr.a($$0, dgx.t, $$2);
+      return $$0;
    }
 
    @Override
-   public void a(ehe $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
+   public eik b() {
+      return eil.y;
    }
 
-   public static eip.a a(dgw<?> $$0) {
+   public static eip.a a(boolean $$0) {
       return new eip.a($$0);
    }
 
-   public static class a extends eih.a<eip.a> {
-      private final Builder<eho> a = ImmutableList.builder();
-      private final dgw<?> b;
+   public static class a extends eii.a<eip.a> {
+      private final Builder<Pair<ih<dgm>, clm>> a = ImmutableList.builder();
+      private final boolean b;
 
-      public a(dgw<?> $$0) {
+      a(boolean $$0) {
          this.b = $$0;
       }
 
@@ -70,14 +65,18 @@ public class eip extends eih {
          return this;
       }
 
-      public eip.a a(eho.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      @Override
+      public eij b() {
+         return new eip(this.g(), this.a.build(), this.b);
       }
 
-      @Override
-      public eii b() {
-         return new eip(this.g(), this.b.a(), this.a.build());
+      public eip.a a(ahf<dgm> $$0, clm $$1) {
+         return this.a(kd.am.f($$0), $$1);
+      }
+
+      public eip.a a(ih<dgm> $$0, clm $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
       }
    }
 }

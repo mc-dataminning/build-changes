@@ -11,6 +11,27 @@ public class bdh extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bbv.B, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bbv.w.in($$0))), "SpawnData", bbv.w.in($$0)));
+      $$0.registerType(false, bbw.F, () -> DSL.constType(bde.a()));
+      $$0.registerType(
+         false,
+         bbw.b,
+         () -> DSL.optionalFields(
+               "RootVehicle",
+               DSL.optionalFields("Entity", bbw.w.in($$0)),
+               "Inventory",
+               DSL.list(bbw.t.in($$0)),
+               "EnderItems",
+               DSL.list(bbw.t.in($$0)),
+               DSL.optionalFields(
+                  "ShoulderEntityLeft",
+                  bbw.w.in($$0),
+                  "ShoulderEntityRight",
+                  bbw.w.in($$0),
+                  "recipeBook",
+                  DSL.optionalFields("recipes", DSL.list(bbw.F.in($$0)), "toBeDisplayed", DSL.list(bbw.F.in($$0)))
+               )
+            )
+      );
+      $$0.registerType(false, bbw.d, () -> DSL.compoundList(DSL.list(bbw.t.in($$0))));
    }
 }

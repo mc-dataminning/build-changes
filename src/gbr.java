@@ -1,9 +1,11 @@
-public class gbr extends fxj<cdh, fmo<cdh>> {
-   public gbr(fym.a $$0) {
-      this($$0, fmv.cb, fmv.ce, fmv.cf);
+public class gbr extends fzt<cdh, fkh<cdh>> {
+   private static final ahg a = new ahg("textures/entity/hoglin/zoglin.png");
+
+   public gbr(fyn.a $$0) {
+      super($$0, new fkh<>($$0.a(fmw.ca)), 0.7F);
    }
 
-   public gbr(fym.a $$0, fmu $$1, fmu $$2, fmu $$3) {
-      super($$0, new fmo<>($$0.a($$1)), new fmo<>($$0.a($$2)), new fmo<>($$0.a($$3)));
+   public ahg a(cdh $$0) {
+      return a;
    }
 }

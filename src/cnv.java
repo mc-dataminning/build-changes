@@ -1,59 +1,55 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cnv extends clh {
-   protected static final Map<cwp, djg> a = Maps.newHashMap(
-      new Builder()
-         .put(cwr.i, cwr.kE.o())
-         .put(cwr.j, cwr.kE.o())
-         .put(cwr.l, cwr.kE.o())
-         .put(cwr.k, cwr.kE.o())
-         .put(cwr.fl, cwr.kE.o())
-         .put(cwr.sH, cwr.kE.o())
-         .build()
-   );
+public class cnv extends cmt implements clz {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+   public static final String c = "Base";
 
-   public cnv(cok $$0, float $$1, float $$2, cms.a $$3) {
-      super($$1, $$2, $$0, asg.bC, $$3);
+   public cnv(cmt.a $$0) {
+      super($$0);
+      cyv.a(this, cki.a);
    }
 
    @Override
-   public bka a(cpi $$0) {
-      cto $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djg $$3 = $$1.a_($$2);
-      if ($$0.k() == ic.a) {
-         return bka.d;
-      } else {
-         cfh $$4 = $$0.o();
-         djg $$5 = a.get($$3.b());
-         djg $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, arr.vN, ars.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof cxd && $$3.c(cxd.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public String j(cmy $$0) {
+      return ckr.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   }
 
-            cxd.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(cxd.c, Boolean.valueOf(false));
-         }
+   @Override
+   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
+      cko.a($$0, $$2);
+   }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dnq.c, $$2, dnq.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
-               }
-            }
+   @Override
+   public cos c(cmy $$0) {
+      return cos.d;
+   }
 
-            return bka.a($$1.B);
-         } else {
-            return bka.d;
-         }
-      }
+   @Override
+   public int b(cmy $$0) {
+      return 72000;
+   }
+
+   @Override
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bkc.b($$3);
+   }
+
+   @Override
+   public boolean a(cmy $$0, cmy $$1) {
+      return $$1.a(asp.b) || super.a($$0, $$1);
+   }
+
+   public static clm d(cmy $$0) {
+      sn $$1 = ckr.a($$0);
+      return $$1 != null ? clm.a($$1.h("Base")) : clm.a;
+   }
+
+   @Override
+   public bma g() {
+      return bma.b;
    }
 }

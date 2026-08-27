@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class mf implements mc {
-   private final cwp a;
+   private final cwq a;
    private final List<mi> b;
-   private final Set<dkj<?>> c = Sets.newHashSet();
+   private final Set<dkk<?>> c = Sets.newHashSet();
    private final List<mg> d = Lists.newArrayList();
 
-   private mf(cwp $$0, List<mi> $$1) {
+   private mf(cwq $$0, List<mi> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class mf implements mc {
    }
 
    @Override
-   public cwp a() {
+   public cwq a() {
       return this.a;
    }
 
-   public static mf a(cwp $$0) {
+   public static mf a(cwq $$0) {
       return new mf($$0, ImmutableList.of(mi.a()));
    }
 
-   public static mf a(cwp $$0, mi $$1) {
+   public static mf a(cwq $$0, mi $$1) {
       return new mf($$0, ImmutableList.of($$1));
    }
 
-   public static mf a(cwp $$0, mi... $$1) {
+   public static mf a(cwq $$0, mi... $$1) {
       return new mf($$0, ImmutableList.copyOf($$1));
    }
 }

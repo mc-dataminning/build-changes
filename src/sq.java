@@ -96,17 +96,17 @@ public class sq extends td {
 
    @Override
    public int g() {
-      return aun.d(this.w);
+      return auo.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aun.d(this.w) & 65535);
+      return (short)(auo.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aun.d(this.w) & 0xFF);
+      return (byte)(auo.d(this.w) & 0xFF);
    }
 
    @Override

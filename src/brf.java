@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class brf {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 16;
 
-   public static bpm<bmt> a(float $$0) {
-      return a($$0, 10, 7);
+   public static bod<bml> a(Predicate<ih<bxp>> $$0, bvn<ig> $$1) {
+      return brp.a((Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               ig $$6 = $$2.b($$2x);
+               hx $$7 = $$6.b();
+               if ($$3.ae() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
+                  and $$8 = $$3.o().a($$6.a());
+                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.y().b($$7);
+                     adi.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public static bpm<bmt> a(float $$0, int $$1, int $$2) {
-      return bro.a((Function<bro.b<bmt>, ? extends App<bro.c<bmt>, brr<bmt>>>)($$3 -> $$3.group($$3.c(bvm.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               hx $$7 = $$5.dm();
-               els $$8;
-               if ($$4.c($$7)) {
-                  $$8 = bxf.a($$5, $$1, $$2);
-               } else {
-                  iz $$9 = iz.a($$7);
-                  iz $$10 = bod.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = bxc.a($$5, $$1, $$2, els.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = bxf.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bvp($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   private static boolean a(and $$0, hx $$1, bml $$2) {
+      djh $$3 = $$0.a_($$1);
+      return $$3.a(ash.R) && $$3.c(cwj.c) && !$$2.fD();
    }
 }

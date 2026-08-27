@@ -25,23 +25,23 @@ public class ale {
       );
    }
 
-   public static blu a(ds $$0, ih.c<bly<?>> $$1, els $$2, sn $$3, boolean $$4) throws CommandSyntaxException {
+   public static blv a(ds $$0, ih.c<blz<?>> $$1, elt $$2, sn $$3, boolean $$4) throws CommandSyntaxException {
       hx $$5 = hx.a($$2);
-      if (!cto.l($$5)) {
+      if (!ctp.l($$5)) {
          throw c.create();
       } else {
          sn $$6 = $$3.h();
          $$6.a("id", $$1.g().a().toString());
          and $$7 = $$0.e();
-         blu $$8 = bly.a($$6, $$7, $$1x -> {
+         blv $$8 = blz.a($$6, $$7, $$1x -> {
             $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bmm) {
-               ((bmm)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bmo.n, null, null);
+            if ($$4 && $$8 instanceof bmn) {
+               ((bmn)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bmp.n, null, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class ale {
       }
    }
 
-   private static int b(ds $$0, ih.c<bly<?>> $$1, els $$2, sn $$3, boolean $$4) throws CommandSyntaxException {
-      blu $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(ds $$0, ih.c<blz<?>> $$1, elt $$2, sn $$3, boolean $$4) throws CommandSyntaxException {
+      blv $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> vf.a("commands.summon.success", $$5.Q_()), true);
       return 1;
    }

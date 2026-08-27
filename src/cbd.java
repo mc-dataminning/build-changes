@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cbd<T extends cax> {
-   private static cbd<?>[] l = new cbd[0];
-   public static final cbd<cat> a = a(cat.class, "HoldingPattern");
-   public static final cbd<cbb> b = a(cbb.class, "StrafePlayer");
-   public static final cbd<cav> c = a(cav.class, "LandingApproach");
-   public static final cbd<caw> d = a(caw.class, "Landing");
-   public static final cbd<cbc> e = a(cbc.class, "Takeoff");
-   public static final cbd<caz> f = a(caz.class, "SittingFlaming");
-   public static final cbd<cba> g = a(cba.class, "SittingScanning");
-   public static final cbd<cay> h = a(cay.class, "SittingAttacking");
-   public static final cbd<car> i = a(car.class, "ChargingPlayer");
-   public static final cbd<cas> j = a(cas.class, "Dying");
-   public static final cbd<cau> k = a(cau.class, "Hover");
-   private final Class<? extends cax> m;
-   private final int n;
-   private final String o;
+public class cbd extends caq {
+   private boolean b;
+   @Nullable
+   private efg c;
+   @Nullable
+   private elt d;
 
-   private cbd(int $$0, Class<? extends cax> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cax a(can $$0) {
-      try {
-         Constructor<? extends cax> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cax> a() throws NoSuchMethodException {
-      return this.m.getConstructor(can.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cbd(cao $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      if (!this.b && this.c != null) {
+         hx $$0 = this.a.dM().a(doq.a.f, drt.a(this.a.u()));
+         if (!$$0.a(this.a.dk(), 10.0)) {
+            this.a.gb().a(cbe.a);
+         }
+      } else {
+         this.b = false;
+         this.j();
+      }
    }
 
-   public static cbd<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void j() {
+      int $$0 = this.a.A();
+      elt $$1 = this.a.D(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.gc() != null && this.a.gc().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
    }
 
-   private static <T extends cax> cbd<T> a(Class<T> $$0, String $$1) {
-      cbd<T> $$2 = new cbd<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            jb $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new elt((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public elt g() {
+      return this.d;
+   }
+
+   @Override
+   public cbe<cbd> i() {
+      return cbe.e;
    }
 }

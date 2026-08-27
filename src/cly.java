@@ -1,44 +1,25 @@
-import javax.annotation.Nullable;
-
-public interface cly extends cos {
-   blz g();
-
-   default arq as_() {
-      return arr.af;
+public class cly extends cmt {
+   public cly(cmt.a $$0) {
+      super($$0);
    }
 
-   default bkb<cmx> a(cms $$0, cto $$1, cfh $$2, bjz $$3) {
-      cmx $$4 = $$2.b($$3);
-      blz $$5 = bmm.h($$4);
-      cmx $$6 = $$2.c($$5);
-      if ((!crk.d($$6) || $$2.f()) && !cmx.a($$4, $$6)) {
-         if (!$$1.y_()) {
-            $$2.b(asb.c.b($$0));
-         }
-
-         cmx $$7 = $$6.b() ? $$4 : $$6.c();
-         cmx $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bkb.a($$7, $$1.y_());
-      } else {
-         return bkb.d($$4);
+   @Override
+   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
+      cmy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), ars.hP, art.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      $$1.gn().a(this, 20);
+      if (!$$0.B) {
+         cgj $$4 = new cgj($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Nullable
-   static cly c_(cmx $$0) {
-      cms $$3 = $$0.d();
-      if ($$3 instanceof cly) {
-         return (cly)$$3;
-      } else {
-         if ($$0.d() instanceof ckq $$2) {
-            cwp var6 = $$2.e();
-            if (var6 instanceof cly) {
-               return (cly)var6;
-            }
-         }
-
-         return null;
+      $$1.b(asc.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
       }
+
+      return bkc.a($$3, $$0.y_());
    }
 }

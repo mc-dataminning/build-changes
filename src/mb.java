@@ -23,31 +23,31 @@ public class mb implements kk {
 
    @Override
    public CompletableFuture<?> a(ki $$0) {
-      Map<cwp, mc> $$1 = Maps.newHashMap();
+      Map<cwq, mc> $$1 = Maps.newHashMap();
       Consumer<mc> $$2 = $$1x -> {
-         cwp $$2x = $$1x.a();
+         cwq $$2x = $$1x.a();
          mc $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
       Map<ahg, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cms> $$4 = Sets.newHashSet();
+      Set<cmt> $$4 = Sets.newHashSet();
       BiConsumer<ahg, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cms> $$6 = $$4::add;
+      Consumer<cmt> $$6 = $$4::add;
       new lz($$2, $$5, $$6).a();
       new ma($$5).a();
-      List<cwp> $$7 = kd.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<cwq> $$7 = kd.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          kd.e.forEach($$2x -> {
-            cms $$3x = cms.l.get($$2x);
+            cmt $$3x = cmt.l.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;

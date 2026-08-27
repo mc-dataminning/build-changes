@@ -6,7 +6,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class ago {
-   private static final atk<agn<?>> C = atk.c(16);
+   private static final atl<agn<?>> C = atl.c(16);
    public static final agn<Byte> a = agn.a(($$0, $$1) -> $$0.k($$1), ui::readByte);
    public static final agn<Integer> b = agn.a(ui::c, ui::n);
    public static final agn<Long> c = agn.a(ui::a, ui::o);
@@ -14,32 +14,32 @@ public class ago {
    public static final agn<String> e = agn.a(ui::a, ui::s);
    public static final agn<vf> f = agn.a(ui::a, ui::m);
    public static final agn<Optional<vf>> g = agn.b(ui::a, ui::m);
-   public static final agn<cmx> h = new agn<cmx>() {
-      public void a(ui $$0, cmx $$1) {
+   public static final agn<cmy> h = new agn<cmy>() {
+      public void a(ui $$0, cmy $$1) {
          $$0.a($$1);
       }
 
-      public cmx b(ui $$0) {
+      public cmy b(ui $$0) {
          return $$0.r();
       }
 
-      public cmx a(cmx $$0) {
+      public cmy a(cmy $$0) {
          return $$0.p();
       }
    };
-   public static final agn<djg> i = agn.a(cwp.q);
-   public static final agn<Optional<djg>> j = new agn.a<Optional<djg>>() {
-      public void a(ui $$0, Optional<djg> $$1) {
+   public static final agn<djh> i = agn.a(cwq.q);
+   public static final agn<Optional<djh>> j = new agn.a<Optional<djh>>() {
+      public void a(ui $$0, Optional<djh> $$1) {
          if ($$1.isPresent()) {
-            $$0.c(cwp.i($$1.get()));
+            $$0.c(cwq.i($$1.get()));
          } else {
             $$0.c(0);
          }
       }
 
-      public Optional<djg> b(ui $$0) {
+      public Optional<djh> b(ui $$0) {
          int $$1 = $$0.n();
-         return $$1 == 0 ? Optional.empty() : Optional.of(cwp.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(cwq.a($$1));
       }
    };
    public static final agn<Boolean> k = agn.a(ui::a, ui::readBoolean);
@@ -86,15 +86,15 @@ public class ago {
          return $$0.h();
       }
    };
-   public static final agn<cev> t = new agn.a<cev>() {
-      public void a(ui $$0, cev $$1) {
+   public static final agn<cew> t = new agn.a<cew>() {
+      public void a(ui $$0, cew $$1) {
          $$0.a(kd.y, $$1.a());
          $$0.a(kd.z, $$1.b());
          $$0.c($$1.c());
       }
 
-      public cev b(ui $$0) {
-         return new cev($$0.a(kd.y), $$0.a(kd.z), $$0.n());
+      public cew b(ui $$0) {
+         return new cew($$0.a(kd.y), $$0.a(kd.z), $$0.n());
       }
    };
    public static final agn<OptionalInt> u = new agn.a<OptionalInt>() {
@@ -107,11 +107,11 @@ public class ago {
          return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
       }
    };
-   public static final agn<bmw> v = agn.a(bmw.class);
-   public static final agn<byb> w = agn.a(kd.ak);
-   public static final agn<byi> x = agn.a(kd.al);
-   public static final agn<ih<cbp>> y = agn.a(kd.l.t());
-   public static final agn<caj.a> z = agn.a(caj.a.class);
+   public static final agn<bmx> v = agn.a(bmx.class);
+   public static final agn<byc> w = agn.a(kd.ak);
+   public static final agn<byj> x = agn.a(kd.al);
+   public static final agn<ih<cbq>> y = agn.a(kd.l.t());
+   public static final agn<cak.a> z = agn.a(cak.a.class);
    public static final agn<Vector3f> A = agn.a(ui::a, ui::i);
    public static final agn<Quaternionf> B = agn.a(ui::a, ui::j);
 

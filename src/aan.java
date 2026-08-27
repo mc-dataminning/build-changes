@@ -6,7 +6,7 @@ public class aan implements xf<za> {
    private final int b;
    private final aao c;
 
-   public aan(csv $$0, eef $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public aan(csw $$0, eeg $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.a = $$0.e;
       this.b = $$0.f;
       this.c = new aao($$0, $$1, $$2, $$3);

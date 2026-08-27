@@ -1,135 +1,112 @@
-import javax.annotation.Nullable;
+public class cky extends cmt {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cky extends cms implements clj {
-   private final eep a;
-
-   public cky(eep $$0, cms.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cky(cmt.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
-      cmx $$3 = $$1.b($$2);
-      elo $$4 = a($$0, $$1, this.a == eer.a ? csx.b.b : csx.b.a);
-      if ($$4.c() == elq.a.a) {
-         return bkb.c($$3);
-      } else if ($$4.c() != elq.a.b) {
-         return bkb.c($$3);
-      } else {
-         hx $$5 = $$4.a();
-         ic $$6 = $$4.b();
-         hx $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bkb.d($$3);
-         } else if (this.a == eer.a) {
-            djg $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof cww $$9) {
-               cmx $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.b()) {
-                  $$1.b(asb.c.b(this));
-                  $$9.au_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, dnq.y, $$5);
-                  cmx $$11 = cmz.a($$3, $$1, $$10);
-                  if (!$$0.B) {
-                     am.k.a((ane)$$1, $$10);
+   public bkb a(cpj $$0) {
+      cfi $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == elr.a.b) {
+         $$1.c($$0.p());
+      }
+
+      return bkb.b;
+   }
+
+   @Override
+   public cos c(cmy $$0) {
+      return cos.j;
+   }
+
+   @Override
+   public int b(cmy $$0) {
+      return 200;
+   }
+
+   @Override
+   public void a(ctp $$0, bml $$1, cmy $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cfi $$4) {
+         elr $$6 = this.a($$4);
+         if ($$6 instanceof elp $$7 && $$6.c() == elr.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               hx $$11 = $$7.a();
+               djh $$12 = $$0.a_($$11);
+               bmf $$13 = $$1.fo() == bka.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != dcv.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
+
+               arr $$15;
+               if ($$12.b() instanceof cwv $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = ars.cu;
+               }
+
+               $$0.a($$4, $$11, $$15, art.e);
+               if (!$$0.y_() && $$0.c_($$11) instanceof dgz $$17) {
+                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
+                  if ($$18) {
+                     bma $$19 = $$2.equals($$4.c(bma.b)) ? bma.b : bma.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
                   }
-
-                  return bkb.a($$11, $$0.y_());
                }
             }
 
-            return bkb.d($$3);
-         } else {
-            djg $$12 = $$0.a_($$5);
-            hx $$13 = $$12.b() instanceof dbf && this.a == eer.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof ane) {
-                  am.z.a((ane)$$1, $$13, $$3);
-               }
-
-               $$1.b(asb.c.b(this));
-               return bkb.a(a($$3, $$1), $$0.y_());
-            } else {
-               return bkb.d($$3);
-            }
+            return;
          }
-      }
-   }
 
-   public static cmx a(cmx $$0, cfh $$1) {
-      return !$$1.fT().d ? new cmx(cna.qv) : $$0;
-   }
-
-   @Override
-   public void a(@Nullable cfh $$0, cto $$1, cmx $$2, hx $$3) {
-   }
-
-   @Override
-   public boolean a(@Nullable cfh $$0, cto $$1, hx $$2, @Nullable elo $$3) {
-      if (!(this.a instanceof eeo $$4)) {
-         return false;
+         $$1.fs();
       } else {
-         cwp $$7;
-         boolean $$8;
-         djg $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.i() && !$$8) {
-               if ($$7 instanceof dbf $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
-            }
-
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
-         } else if ($$1.E_().i() && this.a.a(asl.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, arr.iq, ars.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(jx.U, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof dbf $$15 && this.a == eer.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.B && $$8 && !$$6.k()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
-               return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-         }
+         $$1.fs();
       }
    }
 
-   protected void a(@Nullable cfh $$0, ctp $$1, hx $$2) {
-      arq $$3 = this.a.a(asl.b) ? arr.cH : arr.cE;
-      $$1.a($$0, $$2, $$3, ars.e, 1.0F, 1.0F);
-      $$1.a($$0, dnq.z, $$2);
+   private elr a(cfi $$0) {
+      return cgb.a($$0, $$0x -> !$$0x.P_() && $$0x.bt(), (double)cfi.v($$0.f()));
+   }
+
+   private void a(ctp $$0, elp $$1, djh $$2, elt $$3, bmf $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bmf.b ? 1 : -1;
+      int $$7 = $$0.F_().b(7, 12);
+      jp $$8 = new jp(jx.c, $$2);
+      ic $$9 = $$1.b();
+      cky.a $$10 = cky.a.a($$3, $$9);
+      elt $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ic.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ic.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.F_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.F_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cky.a a(elt $$0, ic $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cky.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cky.a(1.0, 0.0, -0.1);
+            case d -> new cky.a(-1.0, 0.0, 0.1);
+            case e -> new cky.a(-0.1, 0.0, -1.0);
+            case f -> new cky.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

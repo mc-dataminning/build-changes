@@ -1,95 +1,85 @@
-public abstract class bsx extends btg {
-   protected bmm d;
-   protected hx e = hx.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+public class bsx extends btl {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final byg b;
+   private final int c;
+   private boolean d;
 
-   public bsx(bmm $$0) {
-      this.d = $$0;
-      if (!bxd.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
-
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         djg $$0 = this.d.dM().a_(this.e);
-         if (!($$0.b() instanceof cyv)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cyv.c);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         djg $$1 = this.d.dM().a_(this.e);
-         if ($$1.b() instanceof cyv) {
-            ((cyv)$$1.b()).a(this.d, this.d.dM(), $$1, this.e, $$0);
-         }
-      }
+   public bsx(byg $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean a() {
-      if (!bxd.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
+      if (this.b.eg().a(this.c) != 0) {
          return false;
       } else {
-         bvt $$0 = (bvt)this.d.N();
-         eff $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               efd $$3 = $$1.a($$2);
-               this.e = new hx($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dt(), (double)this.e.w()) > 2.25)) {
-                  this.f = cyv.a(this.d.dM(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
+         ic $$0 = this.b.cF();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         hx $$3 = this.b.dm();
 
-            this.e = this.d.dm().c();
-            this.f = cyv.a(this.d.dM(), this.e);
-            return this.f;
-         } else {
-            return false;
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
          }
+
+         return true;
       }
+   }
+
+   private boolean a(hx $$0, int $$1, int $$2, int $$3) {
+      hx $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dM().b_($$4).a(asm.a) && !this.b.dM().a_($$4).d();
+   }
+
+   private boolean b(hx $$0, int $$1, int $$2, int $$3) {
+      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean b() {
-      return !this.a;
+      double $$0 = this.b.dp().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
+   }
+
+   @Override
+   public boolean S_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dx());
+      ic $$0 = this.b.cF();
+      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.N().n();
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void d() {
+      this.b.s(0.0F);
    }
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dx());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      boolean $$0 = this.d;
+      if (!$$0) {
+         eer $$1 = this.b.dM().b_(this.b.dm());
+         this.d = $$1.a(asm.a);
+      }
+
+      if (this.d && !$$0) {
+         this.b.a(ars.gy, 1.0F, 1.0F);
+      }
+
+      elt $$2 = this.b.dp();
+      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
+         this.b.s(auo.j(0.2F, this.b.dE(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.s((float)$$4);
       }
    }
 }

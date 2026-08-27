@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gbe extends fzt<byz, fmf<byz>> {
+   private static final ahg a = new ahg("textures/entity/turtle/big_sea_turtle.png");
 
-public class gbe extends fxi<bzw, fkh<bzw>> {
-   private static final Map<bly<?>, ahg> a = Maps.newHashMap(
-      ImmutableMap.of(bly.bs, new ahg("textures/entity/horse/horse_zombie.png"), bly.aL, new ahg("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gbe(fym.a $$0, fmu $$1) {
-      super($$0, new fkh<>($$0.a($$1)), 1.0F);
+   public gbe(fyn.a $$0) {
+      super($$0, new fmf<>($$0.a(fmw.bK)), 0.7F);
    }
 
-   public ahg a(bzw $$0) {
-      return a.get($$0.ai());
+   public void a(byz $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
+      if ($$0.o_()) {
+         this.d *= 0.5F;
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ahg a(byz $$0) {
+      return a;
    }
 }

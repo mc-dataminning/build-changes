@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fiq extends RuntimeException {
+   public fiq(String $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fiq {
+   public fiq(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class czi extends cxj implements cly {
-   public static final MapCodec<czi> c = b(czi::new);
+public interface czi {
+   @Nullable
+   dgv a(hx var1, djh var2);
 
-   @Override
-   public MapCodec<czi> a() {
-      return c;
+   @Nullable
+   default <T extends dgv> dgw<T> a(ctp $$0, djh $$1, dgx<T> $$2) {
+      return null;
    }
 
-   protected czi(djf.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public blz g() {
-      return blz.f;
+   @Nullable
+   default <T extends dgv> dnt a(and $$0, T $$1) {
+      return $$1 instanceof dnt.b<?> $$2 ? $$2.d() : null;
    }
 }

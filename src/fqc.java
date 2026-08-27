@@ -1,13 +1,34 @@
-public class fqc extends frg {
-   fqc(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, frp $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+public class fqc extends frv {
+   private final double a;
+   private final double b;
+   private final double F;
+
+   fqc(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$7;
+      this.w = 0.9F * $$7;
+      this.x = $$7;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
+   }
+
+   @Override
+   public fqz b() {
+      return fqz.b;
    }
 
    @Override
@@ -16,15 +37,66 @@ public class fqc extends frg {
       this.l();
    }
 
-   public static class a implements fqx<ka> {
-      private final frp a;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
+      }
 
-      public a(frp $$0) {
+      return $$3 | $$4 << 16;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
+   }
+
+   public static class a implements fqy<ka> {
+      private final frq a;
+
+      public a(frq $$0) {
          this.a = $$0;
       }
 
-      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqc $$8 = new fqc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqy<ka> {
+      private final frq a;
+
+      public b(frq $$0) {
+         this.a = $$0;
+      }
+
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqc $$8 = new fqc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

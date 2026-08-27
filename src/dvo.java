@@ -1,49 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvo extends dvj {
+public class dvo extends dvk {
    public static final Codec<dvo> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bjf.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, dvo::new)
+      $$0 -> b($$0).and(bjg.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dvo::new)
    );
-   private final bjf b;
-   private final int c;
+   private final bjg b;
 
-   public dvo(bjf $$0, bjf $$1, bjf $$2, int $$3) {
+   public dvo(bjg $$0, bjg $$1, bjg $$2) {
       super($$0, $$1);
       this.b = $$2;
-      this.c = $$3;
    }
 
    @Override
-   protected dvk<?> a() {
-      return dvk.j;
+   protected dvl<?> a() {
+      return dvl.c;
    }
 
    @Override
-   protected void a(ctu $$0, dvj.b $$1, auu $$2, dut $$3, int $$4, dvj.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a();
-      hx.a $$10 = $$9.j();
+   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
    }
 
    @Override
-   public int a(auu $$0, int $$1, dut $$2) {
+   public int a(auv $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(auv $$0, int $$1, duu $$2) {
       return this.b.a($$0);
    }
 
    @Override
-   protected boolean a(auu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

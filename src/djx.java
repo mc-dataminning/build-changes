@@ -1,47 +1,131 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
-
-public class djx extends dkj<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
-
-   protected djx(String $$0) {
-      super($$0, Boolean.class);
-   }
-
-   @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static djx a(String $$0) {
-      return new djx($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof djx $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
-   }
+public class djx {
+   public static final djy a = djy.a("attached");
+   public static final djy b = djy.a("bottom");
+   public static final djy c = djy.a("conditional");
+   public static final djy d = djy.a("disarmed");
+   public static final djy e = djy.a("drag");
+   public static final djy f = djy.a("enabled");
+   public static final djy g = djy.a("extended");
+   public static final djy h = djy.a("eye");
+   public static final djy i = djy.a("falling");
+   public static final djy j = djy.a("hanging");
+   public static final djy k = djy.a("has_bottle_0");
+   public static final djy l = djy.a("has_bottle_1");
+   public static final djy m = djy.a("has_bottle_2");
+   public static final djy n = djy.a("has_record");
+   public static final djy o = djy.a("has_book");
+   public static final djy p = djy.a("inverted");
+   public static final djy q = djy.a("in_wall");
+   public static final djy r = djy.a("lit");
+   public static final djy s = djy.a("locked");
+   public static final djy t = djy.a("occupied");
+   public static final djy u = djy.a("open");
+   public static final djy v = djy.a("persistent");
+   public static final djy w = djy.a("powered");
+   public static final djy x = djy.a("short");
+   public static final djy y = djy.a("signal_fire");
+   public static final djy z = djy.a("snowy");
+   public static final djy A = djy.a("triggered");
+   public static final djy B = djy.a("unstable");
+   public static final djy C = djy.a("waterlogged");
+   public static final djy D = djy.a("berries");
+   public static final djy E = djy.a("bloom");
+   public static final djy F = djy.a("shrieking");
+   public static final djy G = djy.a("can_summon");
+   public static final dkf<ic.a> H = dkf.a("axis", ic.a.class, ic.a.a, ic.a.c);
+   public static final dkf<ic.a> I = dkf.a("axis", ic.a.class);
+   public static final djy J = djy.a("up");
+   public static final djy K = djy.a("down");
+   public static final djy L = djy.a("north");
+   public static final djy M = djy.a("east");
+   public static final djy N = djy.a("south");
+   public static final djy O = djy.a("west");
+   public static final dkb P = dkb.a("facing", ic.c, ic.f, ic.d, ic.e, ic.b, ic.a);
+   public static final dkb Q = dkb.a("facing", $$0 -> $$0 != ic.b);
+   public static final dkb R = dkb.a("facing", ic.c.a);
+   public static final dkh S = dkh.a("flower_amount", 1, 4);
+   public static final dkf<ie> T = dkf.a("orientation", ie.class);
+   public static final dkf<djs> U = dkf.a("face", djs.class);
+   public static final dkf<djv> V = dkf.a("attachment", djv.class);
+   public static final dkf<dkt> W = dkf.a("east", dkt.class);
+   public static final dkf<dkt> X = dkf.a("north", dkt.class);
+   public static final dkf<dkt> Y = dkf.a("south", dkt.class);
+   public static final dkf<dkt> Z = dkf.a("west", dkt.class);
+   public static final dkf<dkm> aa = dkf.a("east", dkm.class);
+   public static final dkf<dkm> ab = dkf.a("north", dkm.class);
+   public static final dkf<dkm> ac = dkf.a("south", dkm.class);
+   public static final dkf<dkm> ad = dkf.a("west", dkm.class);
+   public static final dkf<dkd> ae = dkf.a("half", dkd.class);
+   public static final dkf<dkg> af = dkf.a("half", dkg.class);
+   public static final dkf<dkl> ag = dkf.a("shape", dkl.class);
+   public static final dkf<dkl> ah = dkf.a("shape", dkl.class, $$0 -> $$0 != dkl.j && $$0 != dkl.i && $$0 != dkl.g && $$0 != dkl.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dkh aq = dkh.a("age", 0, 1);
+   public static final dkh ar = dkh.a("age", 0, 2);
+   public static final dkh as = dkh.a("age", 0, 3);
+   public static final dkh at = dkh.a("age", 0, 4);
+   public static final dkh au = dkh.a("age", 0, 5);
+   public static final dkh av = dkh.a("age", 0, 7);
+   public static final dkh aw = dkh.a("age", 0, 15);
+   public static final dkh ax = dkh.a("age", 0, 25);
+   public static final dkh ay = dkh.a("bites", 0, 6);
+   public static final dkh az = dkh.a("candles", 1, 4);
+   public static final dkh aA = dkh.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dkh aC = dkh.a("distance", 1, 7);
+   public static final dkh aD = dkh.a("eggs", 1, 4);
+   public static final dkh aE = dkh.a("hatch", 0, 2);
+   public static final dkh aF = dkh.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dkh aK = dkh.a("level", 1, 3);
+   public static final dkh aL = dkh.a("level", 0, 8);
+   public static final dkh aM = dkh.a("level", 1, 8);
+   public static final dkh aN = dkh.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dkh aP = dkh.a("level", 0, 15);
+   public static final dkh aQ = dkh.a("moisture", 0, 7);
+   public static final dkh aR = dkh.a("note", 0, 24);
+   public static final dkh aS = dkh.a("pickles", 1, 4);
+   public static final dkh aT = dkh.a("power", 0, 15);
+   public static final dkh aU = dkh.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dkh aW = dkh.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dkh aZ = dkh.a("charges", 0, 4);
+   public static final dkh ba = dkh.a("rotation", 0, dkn.a());
+   public static final dkf<dju> bb = dkf.a("part", dju.class);
+   public static final dkf<djz> bc = dkf.a("type", djz.class);
+   public static final dkf<dka> bd = dkf.a("mode", dka.class);
+   public static final dkf<dkc> be = dkf.a("hinge", dkc.class);
+   public static final dkf<dki> bf = dkf.a("instrument", dki.class);
+   public static final dkf<dkj> bg = dkf.a("type", dkj.class);
+   public static final dkf<dkp> bh = dkf.a("type", dkp.class);
+   public static final dkf<dkq> bi = dkf.a("shape", dkq.class);
+   public static final dkf<dkr> bj = dkf.a("mode", dkr.class);
+   public static final dkf<djt> bk = dkf.a("leaves", djt.class);
+   public static final dkf<dks> bl = dkf.a("tilt", dks.class);
+   public static final dkb bm = dkb.a("vertical_direction", ic.b, ic.a);
+   public static final dkf<dke> bn = dkf.a("thickness", dke.class);
+   public static final dkf<dko> bo = dkf.a("sculk_sensor_phase", dko.class);
+   public static final djy bp = djy.a("slot_0_occupied");
+   public static final djy bq = djy.a("slot_1_occupied");
+   public static final djy br = djy.a("slot_2_occupied");
+   public static final djy bs = djy.a("slot_3_occupied");
+   public static final djy bt = djy.a("slot_4_occupied");
+   public static final djy bu = djy.a("slot_5_occupied");
+   public static final dkh bv = dkh.a("dusted", 0, 3);
+   public static final djy bw = djy.a("cracked");
+   public static final djy bx = djy.a("crafting");
+   public static final dkf<diu> by = dkf.a("trial_spawner_state", diu.class);
 }

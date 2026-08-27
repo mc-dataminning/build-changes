@@ -8,14 +8,14 @@ public class cd extends cv<cd.a> {
       return cd.a.a;
    }
 
-   public void a(ane $$0, blu $$1, bks $$2) {
-      egv $$3 = bp.b($$0, $$1);
+   public void a(ane $$0, blv $$1, bkt $$2) {
+      egw $$3 = bp.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
    public static record a(Optional<bb> b, Optional<bb> c, Optional<bf> d) implements cv.a {
       public static final Codec<cd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(cd.a::a), atv.a(bp.b, "entity").forGetter(cd.a::e), atv.a(bf.a, "killing_blow").forGetter(cd.a::f))
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(cd.a::a), atw.a(bp.b, "entity").forGetter(cd.a::e), atw.a(bf.a, "killing_blow").forGetter(cd.a::f))
                .apply($$0, cd.a::new)
       );
 
@@ -79,7 +79,7 @@ public class cd extends cv<cd.a> {
          return am.d.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(ane $$0, egv $$1, bks $$2) {
+      public boolean a(ane $$0, egw $$1, bkt $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

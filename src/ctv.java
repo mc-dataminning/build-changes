@@ -1,15 +1,12 @@
-public interface ctv extends ctr {
-   long aj();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float ap() {
-      return dmp.i[this.E_().b(this.aj())];
-   }
+public interface ctv {
+   boolean a(hx var1, Predicate<djh> var2);
 
-   default float f(float $$0) {
-      return this.E_().a(this.aj());
-   }
+   boolean b(hx var1, Predicate<eer> var2);
 
-   default int aq() {
-      return this.E_().b(this.aj());
-   }
+   <T extends dgv> Optional<T> a(hx var1, dgx<T> var2);
+
+   hx a(doq.a var1, hx var2);
 }

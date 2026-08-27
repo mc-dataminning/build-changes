@@ -1,82 +1,56 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class cze extends cwp {
+public class cze extends cwc {
    public static final MapCodec<cze> a = b(cze::new);
-   public static final dka b = dak.aE;
-   public static final djx c = djw.h;
-   protected static final eml d = cwp.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final eml e = cwp.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final eml f = emi.a(d, e);
-   private static djl g;
+   protected static final emm b = cwq.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<cze> a() {
       return a;
    }
 
-   public cze(djf.d $$0) {
+   protected cze(djg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(djg $$0) {
-      return true;
+   public dgv a(hx $$0, djh $$1) {
+      return new dil($$0, $$1);
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return $$0.c(c) ? f : d;
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return b;
    }
 
    @Override
-   public djg a(cpg $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
+   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
+      if ($$1 instanceof and && $$3.ct() && emj.c(emj.a($$3.cH().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), elx.i)) {
+         ahf<ctp> $$4 = $$1.ae() == ctp.j ? ctp.h : ctp.j;
+         and $$5 = ((and)$$1).o().a($$4);
+         if ($$5 == null) {
+            return;
+         }
 
-   @Override
-   public boolean d_(djg $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(djg $$0, cto $$1, hx $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   public djg a(djg $$0, ddb $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public djg a(djg $$0, dbl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static djl b() {
-      if (g == null) {
-         g = djm.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', djk.a(djp.a))
-            .a('^', djk.a(djp.a(cwr.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.d))))
-            .a('>', djk.a(djp.a(cwr.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.e))))
-            .a('v', djk.a(djp.a(cwr.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.c))))
-            .a('<', djk.a(djp.a(cwr.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.f))))
-            .b();
+         $$3.b($$5);
       }
-
-      return g;
    }
 
    @Override
-   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(jx.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public cmy a(cts $$0, hx $$1, djh $$2) {
+      return cmy.f;
+   }
+
+   @Override
+   public boolean a(djh $$0, eeq $$1) {
       return false;
    }
 }

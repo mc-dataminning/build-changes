@@ -5,14 +5,14 @@ public class ade implements xf<za> {
    private static final int b = 2;
    private static final int c = 4;
    private final int d;
-   private final blf e;
+   private final blg e;
    private final byte f;
    private final int g;
    private final byte h;
    @Nullable
-   private final blh.a i;
+   private final bli.a i;
 
-   public ade(int $$0, blh $$1) {
+   public ade(int $$0, bli $$1) {
       this.d = $$0;
       this.e = $$1.c();
       this.f = (byte)($$1.e() & 0xFF);
@@ -40,7 +40,7 @@ public class ade implements xf<za> {
       this.f = $$0.readByte();
       this.g = $$0.n();
       this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(tb.a, blh.a.a));
+      this.i = $$0.c($$0x -> $$0x.a(tb.a, bli.a.a));
    }
 
    @Override
@@ -50,7 +50,7 @@ public class ade implements xf<za> {
       $$0.k(this.f);
       $$0.c(this.g);
       $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(tb.a, blh.a.a, $$1));
+      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(tb.a, bli.a.a, $$1));
    }
 
    public void a(za $$0) {
@@ -61,7 +61,7 @@ public class ade implements xf<za> {
       return this.d;
    }
 
-   public blf d() {
+   public blg d() {
       return this.e;
    }
 
@@ -86,7 +86,7 @@ public class ade implements xf<za> {
    }
 
    @Nullable
-   public blh.a j() {
+   public bli.a j() {
       return this.i;
    }
 }

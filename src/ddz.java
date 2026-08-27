@@ -1,33 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddz extends cwc {
-   public static final MapCodec<ddz> c = b(ddz::new);
+public class ddz extends cwq {
+   public static final MapCodec<ddz> b = b(ddz::new);
+   public static final djy c = djx.z;
 
    @Override
-   public MapCodec<ddz> a() {
-      return c;
+   protected MapCodec<? extends ddz> a() {
+      return b;
    }
 
-   public ddz(djf.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : cwr.a.o();
+   protected ddz(djg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(djg $$0) {
-      return $$0.a(asg.aS);
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      return $$1 == ic.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean f(djg $$0) {
-      return true;
+   public djh a(cph $$0) {
+      djh $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(h($$1)));
+   }
+
+   private static boolean h(djh $$0) {
+      return $$0.a(ash.by);
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(c);
    }
 }

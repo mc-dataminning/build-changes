@@ -1,90 +1,57 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class esv extends gkp {
+   private final fdb a;
+   private final esv.a b;
+   private exz c = exz.a;
 
-public class esv extends gko {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vf b = vf.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final vf c = vf.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final vf v = vf.c("mco.configure.world.players.error").b(-65536);
-   private exo w;
-   private exf x;
-   private final erh y;
-   private final esq z;
-   private final fda A;
-   @Nullable
-   private vf B;
+   public esv(ese $$0, fdb $$1) {
+      super(eva.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public esv(esq $$0, fda $$1, erh $$2) {
-      super(euz.a);
-      this.z = $$0;
-      this.A = $$1;
-      this.y = $$2;
+   public esv(vf $$0, fdb $$1) {
+      super(eva.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public esv(vf $$0, vf $$1, fdb $$2) {
+      super(eva.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static esv.a a(ese $$0) {
+      eqt $$1 = $$0.a;
+      return a(vf.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static esv.a a(vf $$0) {
+      return a(vf.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static esv.a a(vf $$0, vf $$1) {
+      return new esv.a($$0, $$1);
    }
 
    @Override
    public void aN_() {
-      this.w = new exo(this.f.h, this.g / 2 - 100, g(2), 200, 20, null, vf.c("mco.configure.world.invite.profile.name"));
-      this.e(this.w);
-      this.c(this.w);
-      this.x = this.d(exf.a(vf.c("mco.configure.world.buttons.invite"), $$0 -> this.D()).a(this.g / 2 - 100, g(10), 200, 20).a());
-      this.d(exf.a(ve.e, $$0 -> this.f.a(this.A)).a(this.g / 2 - 100, g(12), 200, 20).a());
-   }
-
-   private void D() {
-      if (ac.b(this.w.a())) {
-         this.a(v);
-      } else {
-         long $$0 = this.y.a;
-         String $$1 = this.w.a().trim();
-         this.x.j = false;
-         this.w.e(false);
-         this.a(c);
-         CompletableFuture.<erh>supplyAsync(() -> {
-            try {
-               return eqq.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ac.g()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.y.h = $$0x.h;
-               this.f.a(new etc(this.z, this.y));
-            } else {
-               this.a(v);
-            }
-
-            this.w.e(true);
-            this.x.j = true;
-         }, this.j);
-      }
-   }
-
-   private void a(vf $$0) {
-      this.B = $$0;
-      this.f.aV().c($$0);
+      this.d(exg.a(ve.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = exz.a(this.i, this.b.b, this.g * 3 / 4);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.A);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public vf h() {
+      return vf.i().b(this.b.a).f(": ").b(this.b.b);
    }
 
    @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, b, this.g / 2 - 100, g(1), -1, false);
-      if (this.B != null) {
-         $$0.a(this.i, this.B, this.g / 2, g(5), -1);
-      }
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -2142128);
+   }
 
-      this.w.a($$0, $$1, $$2, $$3);
+   static record a(vf a, vf b) {
    }
 }

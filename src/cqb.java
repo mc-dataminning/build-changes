@@ -1,55 +1,54 @@
-import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface cqb<C extends bjt> {
-   Codec<cqb<?>> h = kd.t.q().dispatch(cqb::ar_, cqf::a);
+public class cqb extends cqj {
+   public cqb(cps $$0) {
+      super("", $$0, cqk.a(Map.of('#', cpz.a(cnb.qL), 'x', cpz.a(cnb.rR)), "###", "#x#", "###"), new cmy(cnb.uc));
+   }
 
-   boolean a(C var1, cto var2);
+   @Override
+   public boolean a(cir $$0, ctp $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cmy $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            egb $$3 = cnf.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
 
-   cmx a(C var1, iu var2);
+   @Override
+   public cmy a(cir $$0, iu $$1) {
+      cmy $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
+   }
 
-   boolean a(int var1, int var2);
-
-   cmx a(iu var1);
-
-   default iq<cmx> a(C $$0) {
-      iq<cmx> $$1 = iq.a($$0.b(), cmx.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cms $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new cmx($$3.s()));
+   private static cmy a(cir $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cmy $$2 = $$0.a($$1);
+         if ($$2.a(cnb.rR)) {
+            return $$2;
          }
       }
 
-      return $$1;
+      return cmy.f;
    }
 
-   default iq<cpy> a() {
-      return iq.a();
-   }
-
-   default boolean aq_() {
-      return false;
-   }
-
-   default boolean h() {
+   @Override
+   public boolean aq_() {
       return true;
    }
 
-   default String c() {
-      return "";
-   }
-
-   default cmx g() {
-      return new cmx(cwr.cA);
-   }
-
-   cqf<?> ar_();
-
-   cqg<?> e();
-
-   default boolean i() {
-      iq<cpy> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cqg<?> ar_() {
+      return cqg.f;
    }
 }

@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dmy {
-   dmy a = new dmy() {
-      @Override
-      public void a() {
-      }
+   int aj();
 
-      @Override
-      public void a(blu.c $$0) {
-      }
-   };
+   UUID cw();
 
-   void a();
+   hx dm();
 
-   void a(blu.c var1);
+   elo cH();
+
+   void a(dmz var1);
+
+   Stream<? extends dmy> cR();
+
+   Stream<? extends dmy> cS();
+
+   void b(blv.c var1);
+
+   boolean dK();
+
+   boolean dL();
 }

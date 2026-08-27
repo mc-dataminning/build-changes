@@ -1,14 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oi extends ok<bxo> {
+public class oi extends ok<bxp> {
    public oi(km $$0, CompletableFuture<ij.b> $$1) {
       super($$0, ke.U, $$1);
    }
 
    @Override
    protected void a(ij.b $$0) {
-      this.b(asq.a).a(bxp.a, bxp.b, bxp.c, bxp.d, bxp.e, bxp.f, bxp.g, bxp.h, bxp.i, bxp.j, bxp.k, bxp.l, bxp.m);
-      this.b(asq.b).b(asq.a).a(bxp.n, bxp.o);
-      this.b(asq.c).a(bxp.p, bxp.q);
+      this.b(asr.a).a(bxq.a, bxq.b, bxq.c, bxq.d, bxq.e, bxq.f, bxq.g, bxq.h, bxq.i, bxq.j, bxq.k, bxq.l, bxq.m);
+      this.b(asr.b).b(asr.a).a(bxq.n, bxq.o);
+      this.b(asr.c).a(bxq.p, bxq.q);
    }
 }

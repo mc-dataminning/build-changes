@@ -1,52 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class dri extends drt<due> {
-   public dri(Codec<due> $$0) {
+public class dri extends drj {
+   public dri(Codec<duf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drv<due> $$0) {
-      auu $$1 = $$0.d();
-      cuj $$2 = $$0.b();
-      hx $$3 = $$0.e();
-      Optional<cwp> $$4 = kd.e.b(asg.ap).flatMap($$1x -> $$1x.a($$1)).map(ih::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
-   }
+   protected boolean a(ctq $$0, auv $$1, hx $$2, djh $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ic $$4 = ic.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ic> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   protected abstract boolean a(ctp var1, auu var2, hx var3, djg var4);
+         for (ic $$8 : $$6.subList(0, $$5)) {
+            hx.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ic $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ic.b);
+               ic[] $$13 = new ic[]{$$8, ic.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-   protected boolean b(ctp $$0, auu $$1, hx $$2, djg $$3) {
-      hx $$4 = $$2.c();
-      djg $$5 = $$0.a_($$2);
-      if (($$5.a(cwr.G) || $$5.a(asg.as)) && $$0.a_($$4).a(cwr.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            kd.e.b(asg.as).flatMap($$1x -> $$1x.a($$1)).map(ih::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, cwr.mV.o().a(ddl.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-         for (ic $$6 : ic.c.a) {
-            if ($$1.i() < 0.2F) {
-               hx $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(cwr.G)) {
-                  kd.e.b(asg.aq).flatMap($$1x -> $$1x.a($$1)).map(ih::a).ifPresent($$3x -> {
-                     djg $$4x = $$3x.o();
-                     if ($$4x.b(cwa.c)) {
-                        $$4x = $$4x.a(cwa.c, $$6);
-                     }
+            $$9.c($$11.g());
+            $$9.c(ic.b);
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ic.b);
                }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 }

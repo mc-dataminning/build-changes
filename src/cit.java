@@ -1,77 +1,58 @@
-public class cit extends cia {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bjt p;
+public abstract class cit {
+   private int a;
 
-   public cit(int $$0, cfg $$1) {
-      this($$0, $$1, new bki(9));
+   public static cit a(final cil $$0, final int $$1) {
+      return new cit() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   public cit(int $$0, cfg $$1, bjt $$2) {
-      super(cjh.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.m);
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new cjv($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+   public static cit a(final int[] $$0, final int $$1) {
+      return new cit() {
+         @Override
+         public int b() {
+            return $$0[$$1];
          }
-      }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cjv($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
          }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cjv($$1, $$7, 8 + $$7 * 18, 142));
-      }
+      };
    }
 
-   @Override
-   public boolean a(cfh $$0) {
-      return this.p.a($$0);
+   public static cit a() {
+      return new cit() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
    }
 
-   @Override
-   public cmx a(cfh $$0, int $$1) {
-      cmx $$2 = cmx.f;
-      cjv $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmx $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cmx.f;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cmx.f;
-         }
+   public abstract int b();
 
-         if ($$4.b()) {
-            $$3.e(cmx.f);
-         } else {
-            $$3.b();
-         }
+   public abstract void a(int var1);
 
-         if ($$4.L() == $$2.L()) {
-            return cmx.f;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void b(cfh $$0) {
-      super.b($$0);
-      this.p.c($$0);
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

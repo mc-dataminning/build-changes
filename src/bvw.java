@@ -1,43 +1,50 @@
-public class bvw extends bvu {
-   private boolean p;
+import javax.annotation.Nullable;
 
-   public bvw(bmm $$0, cto $$1) {
+public class bvw extends bvu {
+   @Nullable
+   private hx p;
+
+   public bvw(bmn $$0, ctp $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected efh a(int $$0) {
-      this.p = this.a.ai() == bly.w;
-      this.o = new efi(this.p);
-      return new efh(this.o, $$0);
+   public efg a(hx $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bd();
+   public efg a(blv $$0, int $$1) {
+      this.p = $$0.dm();
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected els b() {
-      return new els(this.a.dr(), this.a.e(0.5), this.a.dx());
+   public boolean a(blv $$0, double $$1) {
+      efg $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dm();
+         this.d = $$1;
+         return true;
+      }
    }
 
    @Override
-   protected double a(els $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(els $$0, els $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(hx $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dk(), (double)this.a.dg())
+               && (!(this.a.dt() > (double)this.p.v()) || !hx.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
+               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

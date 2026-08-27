@@ -1,22 +1,13 @@
-public class col extends cms {
-   private final cok a;
+public interface col {
+   int a();
 
-   public col(cok $$0, cms.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+   float b();
 
-   public cok i() {
-      return this.a;
-   }
+   float c();
 
-   @Override
-   public int c() {
-      return this.a.e();
-   }
+   int d();
 
-   @Override
-   public boolean a(cmx $$0, cmx $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
-   }
+   int e();
+
+   cpz f();
 }

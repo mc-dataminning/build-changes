@@ -1,13 +1,35 @@
-public class gdf<T extends bmm & ccs, M extends fjw<T>> extends gcx<T, M> {
-   private static final ahg a = new ahg("textures/entity/skeleton/stray_overlay.png");
-   private final flr<T> b;
+public class gdf<T extends bml> extends gcy<T, flc<T>> {
+   public static final ahg a = new ahg("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fmx c;
 
-   public gdf(gah<T, M> $$0, fms $$1) {
+   public gdf(gai<T, flc<T>> $$0, fmt $$1) {
       super($$0);
-      this.b = new flr<>($$1.a(fmv.bz));
+      fmx $$2 = $$1.a(fmw.aW);
+      this.c = $$2.b("box");
    }
 
-   public void a(eqa $$0, ftg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public static fnd a() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("box", fnc.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fmz.a);
+      return fnd.a($$0, 64, 64);
+   }
+
+   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fj()) {
+         eqf $$10 = $$1.getBuffer(ftp.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gee.d);
+            $$0.b();
+         }
+      }
    }
 }

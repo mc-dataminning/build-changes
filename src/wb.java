@@ -6,29 +6,23 @@ import org.slf4j.Logger;
 @FunctionalInterface
 public interface wb {
    Logger a = LogUtils.getLogger();
-   wb b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
+   wb b = vv::b;
    wb c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
    };
 
-   boolean updateAndValidate(vv var1);
+   @Nullable
+   vv updateAndValidate(vv var1);
 
    public static class a implements wb {
-      private final avb d;
+      private final avc d;
       private final BooleanSupplier e;
       @Nullable
       private vv f;
       private boolean g = true;
 
-      public a(avb $$0, BooleanSupplier $$1) {
+      public a(avc $$0, BooleanSupplier $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -36,10 +30,10 @@ public interface wb {
       private boolean a(vv $$0) {
          if ($$0.equals(this.f)) {
             return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
             a.error(
                "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
             );
             return false;
          } else {
@@ -52,21 +46,22 @@ public interface wb {
             a.error("Received message from player with expired profile public key: {}", $$0);
             return false;
          } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
+            a.error("Received message with invalid signature from {}", $$0.g());
             return false;
          } else {
             return this.a($$0);
          }
       }
 
+      @Nullable
       @Override
-      public boolean updateAndValidate(vv $$0) {
+      public vv updateAndValidate(vv $$0) {
          this.g = this.g && this.b($$0);
          if (!this.g) {
-            return false;
+            return null;
          } else {
             this.f = $$0;
-            return true;
+            return $$0;
          }
       }
    }

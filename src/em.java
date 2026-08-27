@@ -18,10 +18,10 @@ public class em implements ArgumentType<String> {
       return new em();
    }
 
-   public static emo a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static emp a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      emw $$3 = ((ds)$$0.getSource()).l().aH();
-      emo $$4 = $$3.a($$2);
+      emx $$3 = ((ds)$$0.getSource()).l().aH();
+      emp $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class em implements ArgumentType<String> {
       }
    }
 
-   public static emo b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      emo $$2 = a($$0, $$1);
+   public static emp b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      emp $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

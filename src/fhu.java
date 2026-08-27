@@ -1,102 +1,83 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fhu extends fda {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<ahf<cto>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(cto.h, -13408734);
-      $$0.put(cto.i, -10075085);
-      $$0.put(cto.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bjo k;
+public class fhu extends fdb {
+   private static final int a = 310;
+   private final faq b = new faq(this);
+   private final fdb c;
+   private final apt k;
+   private final Consumer<apt> l;
+   private final Object2BooleanMap<apq> m = new Object2BooleanLinkedOpenHashMap();
 
-   @Nullable
-   public static fhu a(evh $$0, BooleanConsumer $$1, DataFixer $$2, egl.c $$3, boolean $$4) {
-      try {
-         fia $$5 = $$0.w();
-         aps $$6 = apv.a($$3);
-
-         fhu var10;
-         try (aic $$7 = $$5.a($$3.f(), false, $$6)) {
-            egr $$8 = $$7.d();
-            iu.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fhu($$1, $$2, $$3, $$8.L(), $$4, $$9.d(ke.aN));
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
-   }
-
-   private fhu(BooleanConsumer $$0, DataFixer $$1, egl.c $$2, cts $$3, boolean $$4, it<dmq> $$5) {
-      super(vf.a("optimizeWorld.title", $$3.a()));
+   public fhu(fdb $$0, apt $$1, Consumer<apt> $$2) {
+      super(vf.c("experiments_screen.title"));
       this.c = $$0;
-      this.k = new bjo($$2, $$1, $$5, $$4);
+      this.k = $$1;
+      this.l = $$2;
+
+      for (apq $$3 : $$1.c()) {
+         if ($$3.j() == apu.d) {
+            this.m.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.d(exf.a(ve.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
+      this.b.a(new eyn(vf.c("selectWorld.experiments"), this.i));
+      fau $$0 = this.b.c(fau.d());
+      $$0.a(new eya(vf.c("selectWorld.experiments.info").a(n.m), this.i).c(310), $$0x -> $$0x.e(15));
+      fhy.a $$1 = fhy.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
+      $$1.a($$0::a);
+      fap.b $$2 = this.b.b(new fap().a(10)).d(2);
+      $$2.a(exg.a(ve.d, $$0x -> this.n()).a());
+      $$2.a(exg.a(ve.e, $$0x -> this.aE_()).a());
+      this.b.a($$1x -> {
+         exe var10000 = this.d($$1x);
+      });
+      this.c();
    }
 
-   @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
-      }
+   private static vf a(apq $$0) {
+      String $$1 = "dataPack." + $$0.f() + ".name";
+      return (vf)(gfs.a($$1) ? vf.c($$1) : $$0.a());
    }
 
    @Override
    public void aE_() {
-      this.c.accept(false);
+      this.f.a(this.c);
    }
 
-   @Override
-   public void j() {
-      this.k.a();
-   }
-
-   @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, vf.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, vf.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, vf.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (ahf<cto> $$9 : this.k.c()) {
-            int $$10 = aun.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+   private void n() {
+      List<apq> $$0 = new ArrayList<>(this.k.f());
+      List<apq> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
          }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(apq::f).toList());
+      this.l.accept(this.k);
+   }
 
-         int $$11 = this.k.f() + this.k.g();
-         vf $$12 = vf.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         vf $$13 = vf.a("optimizeWorld.progress.percentage", aun.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
-      }
+   @Override
+   protected void c() {
+      this.b.a();
+   }
+
+   @Override
+   public void b(ewu $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

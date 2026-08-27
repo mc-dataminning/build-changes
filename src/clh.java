@@ -1,62 +1,87 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class clh extends col implements cos {
-   private final asv<cwp> a;
-   protected final float b;
-   private final float c;
-   private final Multimap<bnl, bno> d;
-
-   protected clh(float $$0, float $$1, cok $$2, asv<cwp> $$3, cms.a $$4) {
-      super($$2, $$4);
-      this.a = $$3;
-      this.b = $$2.b();
-      this.c = $$0 + $$2.c();
-      Builder<bnl, bno> $$5 = ImmutableMultimap.builder();
-      $$5.put(bnq.c, new bno(m, "Tool modifier", (double)this.c, bno.a.a));
-      $$5.put(bnq.e, new bno(n, "Tool modifier", (double)$$1, bno.a.a));
-      this.d = $$5.build();
+public class clh extends cmt {
+   public clh(cmt.a $$0) {
+      super($$0);
    }
 
    @Override
-   public float a(cmx $$0, djg $$1) {
-      return $$1.a(this.a) ? this.b : 1.0F;
-   }
-
-   @Override
-   public boolean a(cmx $$0, bmk $$1, bmk $$2) {
-      $$0.a(2, $$2, $$0x -> $$0x.d(blz.a));
+   public boolean i(cmy $$0) {
       return true;
    }
 
    @Override
-   public boolean a(cmx $$0, cto $$1, djg $$2, hx $$3, bmk $$4) {
-      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
-         $$0.a(1, $$4, $$0x -> $$0x.d(blz.a));
+   public boolean a(djh $$0, ctp $$1, hx $$2, cfi $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bka.a));
       }
 
-      return true;
+      return false;
    }
 
    @Override
-   public Multimap<bnl, bno> a(blz $$0) {
-      return $$0 == blz.a ? this.d : super.a($$0);
+   public bkb a(cpj $$0) {
+      cfi $$1 = $$0.o();
+      ctp $$2 = $$0.q();
+      if (!$$2.B && $$1 != null) {
+         hx $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bkb.e;
+         }
+      }
+
+      return bkb.a($$2.B);
    }
 
-   public float d() {
-      return this.c;
-   }
-
-   @Override
-   public boolean a_(djg $$0) {
-      int $$1 = this.i().d();
-      if ($$1 < 3 && $$0.a(asg.bE)) {
-         return false;
-      } else if ($$1 < 2 && $$0.a(asg.bF)) {
+   private boolean a(cfi $$0, djh $$1, ctq $$2, hx $$3, boolean $$4, cmy $$5) {
+      if (!$$0.gp()) {
          return false;
       } else {
-         return $$1 < 1 && $$0.a(asg.bG) ? false : $$0.a(this.a);
+         cwq $$6 = $$1.b();
+         dji<cwq, djh> $$7 = $$6.n();
+         Collection<dkk<?>> $$8 = $$7.d();
+         String $$9 = kd.e.b($$6).toString();
+         if ($$8.isEmpty()) {
+            a($$0, vf.a(this.a() + ".empty", $$9));
+            return false;
+         } else {
+            sn $$10 = $$5.a("DebugProperty");
+            String $$11 = $$10.l($$9);
+            dkk<?> $$12 = $$7.a($$11);
+            if ($$4) {
+               if ($$12 == null) {
+                  $$12 = $$8.iterator().next();
+               }
+
+               djh $$13 = a($$1, $$12, $$0.fI());
+               $$2.a($$3, $$13, 18);
+               a($$0, vf.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            } else {
+               $$12 = a($$8, $$12, $$0.fI());
+               String $$14 = $$12.f();
+               $$10.a($$9, $$14);
+               a($$0, vf.a(this.a() + ".select", $$14, a($$1, $$12)));
+            }
+
+            return true;
+         }
       }
+   }
+
+   private static <T extends Comparable<T>> djh a(djh $$0, dkk<T> $$1, boolean $$2) {
+      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   }
+
+   private static void a(cfi $$0, vf $$1) {
+      ((ane)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(djh $$0, dkk<T> $$1) {
+      return $$1.a($$0.c($$1));
    }
 }

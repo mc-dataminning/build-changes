@@ -1,15 +1,9 @@
-public class gfk extends gfo {
-   private static final ahg a = new ahg("back");
-
-   public gfk(gen $$0) {
-      super($$0, new ahg("textures/atlas/paintings.png"), new ahg("paintings"));
+public class gfk extends gfp {
+   public gfk(geo $$0) {
+      super($$0, new ahg("textures/atlas/mob_effects.png"), new ahg("mob_effects"));
    }
 
-   public gem a(cbp $$0) {
-      return this.a(kd.l.b($$0));
-   }
-
-   public gem a() {
-      return this.a(a);
+   public gen a(blg $$0) {
+      return this.a(kd.d.b($$0));
    }
 }

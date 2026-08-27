@@ -1,8 +1,8 @@
-public record ams(String b, int c, cff d, boolean e, int f, bme g, boolean h, boolean i) {
+public record ams(String b, int c, cfg d, boolean e, int f, bmf g, boolean h, boolean i) {
    public static final int a = 16;
 
    public ams(ui $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cff.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bme.class), $$0.readBoolean(), $$0.readBoolean());
+      this($$0.d(16), $$0.readByte(), $$0.b(cfg.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bmf.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
    public void a(ui $$0) {
@@ -17,6 +17,6 @@ public record ams(String b, int c, cff d, boolean e, int f, bme g, boolean h, bo
    }
 
    public static ams a() {
-      return new ams("en_us", 2, cff.a, true, 0, cfh.bB, false, false);
+      return new ams("en_us", 2, cfg.a, true, 0, cfi.bB, false, false);
    }
 }

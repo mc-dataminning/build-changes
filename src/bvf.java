@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class bvf<T extends bmm & bmr> extends btg {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class bvf extends bvh {
+   private final bng a;
+   private bml b;
+   private int c;
 
-   public bvf(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bvf(bng $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bth.a.d));
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().Z().b(ctk.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.eh() != null && this.b.eh().ai() == bly.bv && this.b.ei() > this.d;
+      if (this.a.u() && !this.a.ge()) {
+         bml $$0 = this.a.R_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, bwz.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.ei();
-      this.b.ab_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bmr)$$0).forEach(bmr::ab_);
+      this.e.h(this.b);
+      bml $$0 = this.a.R_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
       }
 
       super.c();
-   }
-
-   private List<? extends bmm> i() {
-      double $$0 = this.b.b(bnq.g);
-      eln $$1 = eln.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends bmm>)this.b.getClass(), $$1, blx.f);
    }
 }

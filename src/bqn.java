@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bqn {
-   public static <E extends bmm> boc<E> a(Function<E, Optional<? extends bmk>> $$0) {
-      return a($$0x -> true, $$0);
-   }
+   private static final float a = 0.3F;
 
-   public static <E extends bmm> boc<E> a(Predicate<E> $$0, Function<E, Optional<? extends bmk>> $$1) {
-      return bro.a(
-         (Function<bro.b<E>, ? extends App<bro.c<E>, brr<E>>>)($$2 -> $$2.group($$2.c(bvm.o), $$2.a(bvm.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bmk> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
+   public static bpn<bml> a() {
+      return brp.a(
+         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$0 -> $$0.group($$0.a(bvn.m), $$0.a(bvn.n), $$0.b(bvn.e), $$0.b(bvn.h), $$0.c(bvn.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     ig $$9 = $$0.b($$3);
+                     bvp $$10 = $$0.b($$4);
+                     if ($$6.F_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> blz.bg.equals($$0xxx.ai()))) {
+                        $$10.a($$1xx -> blz.bg.equals($$1xx.ai()) && $$1xx.f((blv)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bon($$3xx, true));
+                           $$1.a(new bvq(new bon($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
                      } else {
-                        bmk $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
+                        return false;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

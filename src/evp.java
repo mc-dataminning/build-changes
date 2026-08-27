@@ -1,46 +1,30 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class evp {
-   private static final Logger a = LogUtils.getLogger();
-   private final evh b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public enum evp implements auq {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public evp(evh $$0) {
-      this.b = $$0;
+   private static final IntFunction<evp> d = atg.a(evp::a, values(), atg.a.b);
+   private final int e;
+   private final String f;
+
+   private evp(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public void a(fda $$0) {
-      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new ffz($$0));
-         this.d = true;
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   private boolean b() {
-      try {
-         return eqq.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (esd var2) {
-         return false;
-      }
+   public static evp a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,77 +1,44 @@
-public class fmm<T extends cbh> extends fkf<T> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String f = "right_head";
-   private static final String g = "left_head";
-   private static final float h = 0.065F;
-   private static final float i = 0.265F;
-   private final fmw j;
-   private final fmw k;
-   private final fmw l;
-   private final fmw m;
-   private final fmw n;
-   private final fmw o;
+public class fmm<T extends blv> extends fmi<T> {
+   private boolean b;
 
-   public fmm(fmw $$0) {
-      this.j = $$0;
-      this.n = $$0.b("ribcage");
-      this.o = $$0.b("tail");
-      this.k = $$0.b("center_head");
-      this.l = $$0.b("right_head");
-      this.m = $$0.b("left_head");
+   public fmm(fmx $$0) {
+      super($$0);
    }
 
-   public static fnc a(fna $$0) {
-      fne $$1 = new fne();
-      fnf $$2 = $$1.a();
-      $$2.a("shoulders", fnb.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fmy.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         fnb.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         fmy.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+   public static fnd c() {
+      fnf $$0 = fmi.b();
+      fng $$1 = $$0.a();
+      fng $$2 = $$1.a("head", fnc.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fmz.a);
+      fng $$3 = $$2.a("hat", fnc.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fmz.a(-5.0F, -10.03125F, -5.0F));
+      fng $$4 = $$3.a("hat2", fnc.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fmz.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      fng $$5 = $$4.a("hat3", fnc.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fmz.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fnc.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fnb(0.25F)), fmz.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
       );
-      $$2.a(
-         "tail",
-         fnb.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         fmy.a(-2.0F, 6.9F + aun.b(0.20420352F) * 10.0F, -0.5F + aun.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", fnb.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fmy.a);
-      fnb $$4 = fnb.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, fmy.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, fmy.a(10.0F, 4.0F, 0.0F));
-      return fnc.a($$1, 64, 64);
+      fng $$6 = $$2.a("nose");
+      $$6.a("mole", fnc.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fnb(-0.25F)), fmz.a(0.0F, -2.0F, 0.0F));
+      return fnd.a($$0, 64, 128);
    }
 
    @Override
-   public fmw a() {
-      return this.j;
-   }
-
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = aun.b($$3 * 0.1F);
-      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
-      this.o.a(-2.0F, 6.9F + aun.b(this.n.e) * 10.0F, -0.5F + aun.a(this.n.e) * 10.0F);
-      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.aj() % 10);
+      this.a.e = auo.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = auo.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      a($$0, this.l, 0);
-      a($$0, this.m, 1);
+   public fmx e() {
+      return this.a;
    }
 
-   private static <T extends cbh> void a(T $$0, fmw $$1, int $$2) {
-      $$1.f = ($$0.b($$2) - $$0.aU) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

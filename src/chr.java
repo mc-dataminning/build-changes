@@ -1,93 +1,107 @@
-import it.unimi.dsi.fastutil.HashCommon;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public final class chr {
-   private static final chr b = new chr(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final chs c;
-   private final long d;
+public class chr {
+   private static final Logger a = LogUtils.getLogger();
+   private final cht b;
+   private final Map<ahg, chq> c;
+   private final chs d;
 
-   private chr(@Nullable chs $$0, long $$1) {
-      this.c = $$0;
+   chr(cht $$0, chs $$1, Map<ahg, chq> $$2) {
+      this.b = $$0;
+      this.c = $$2;
       this.d = $$1;
    }
 
-   static chr a(chs $$0, Collection<chp> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new chr($$0, $$2);
-      }
+   public boolean a(chs $$0) {
+      return $$0.a(this.d);
    }
 
-   public static chr a() {
-      return b;
+   public chs a() {
+      return this.d;
    }
 
-   public static chr a(chp $$0) {
-      return new chr($$0.a, $$0.b);
+   public chs a(Iterable<ahg> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
    }
 
-   public static chr a(chp $$0, chp... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new chr($$0.a, $$2);
+   public chs a(chq... $$0) {
+      return chs.a(this.b, Arrays.asList($$0));
    }
 
-   private static long a(chs $$0, long $$1, Iterable<chp> $$2) {
-      for (chp $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+   public chs a(Iterable<ahg> $$0, Consumer<ahg> $$1) {
+      Set<chq> $$2 = Sets.newIdentityHashSet();
+
+      for (ahg $$3 : $$0) {
+         chq $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
          }
-
-         $$1 |= $$3.b;
       }
 
+      return chs.a(this.b, $$2);
+   }
+
+   public Set<ahg> b(chs $$0) {
+      Set<ahg> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
       return $$1;
    }
 
-   public boolean b(chp $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   public Codec<chs> b() {
+      return ahg.a.listOf().comapFlatMap($$0 -> {
+         Set<ahg> $$1 = new HashSet<>();
+         chs $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
-   public boolean a(chr $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+   public static class a {
+      private final cht a;
+      private int b;
+      private final Map<ahg, chq> c = new LinkedHashMap<>();
+
+      public a(String $$0) {
+         this.a = new cht($$0);
       }
-   }
 
-   public chr b(chr $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new chr(this.c, this.d | $$0.d);
+      public chq a(String $$0) {
+         return this.a(new ahg("minecraft", $$0));
       }
-   }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof chr $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
+      public chq a(ahg $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            chq $$1 = new chq(this.a, this.b++);
+            chq $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
          }
-
-         return false;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+      public chr a() {
+         chs $$0 = chs.a(this.a, this.c.values());
+         return new chr(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

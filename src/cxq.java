@@ -1,51 +1,67 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface cxq<T extends Enum<T>> {
-   int x_ = 4;
+public class cxq extends ddb implements ddq {
+   public static final MapCodec<cxq> a = b(cxq::new);
+   public static final djy b = djx.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final emm e = cwq.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final emm f = cwq.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final emm g = cwq.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
-   Optional<djg> i_(djg var1);
+   @Override
+   public MapCodec<cxq> a() {
+      return a;
+   }
 
-   float aw_();
+   public cxq(djg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ic.a.b));
+   }
 
-   default void a_(djg $$0, and $$1, hx $$2, auu $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      switch ((ic.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
    }
 
-   T c();
+   @Nullable
+   @Override
+   public djh a(cph $$0) {
+      eer $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ees.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
+   }
 
-   default Optional<djg> c(djg $$0, and $$1, hx $$2, auu $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (hx $$7 : hx.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof cxq<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
+   @Override
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
       }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.aw_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(b).a(i);
+   }
+
+   @Override
+   public eer c_(djh $$0) {
+      return $$0.c(b) ? ees.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+      return false;
    }
 }

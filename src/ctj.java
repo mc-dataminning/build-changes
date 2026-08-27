@@ -1,34 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class ctj {
+   private static int[] a = new int[65536];
 
-public class ctj extends efv {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static efv.a<ctj> a() {
-      return new efv.a<>(ctj::new, ctj::b, avv.i);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   private ctj(LongSet $$0) {
-      this.c = $$0;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   public ctj() {
-      this(new LongOpenHashSet());
+   public static int a() {
+      return 6396257;
    }
 
-   public static ctj b(sn $$0) {
-      return new ctj(new LongOpenHashSet($$0.o("Forced")));
+   public static int b() {
+      return 8431445;
    }
 
-   @Override
-   public sn a(sn $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public static int c() {
+      return 4764952;
    }
 
-   public LongSet b() {
-      return this.c;
+   public static int d() {
+      return 9619016;
    }
 }

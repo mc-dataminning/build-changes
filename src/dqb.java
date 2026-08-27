@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqb extends dqh {
-   final asv<cwp> a;
-   public static final Codec<dqb> e = RecordCodecBuilder.create($$0 -> a($$0).and(asv.a(ke.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dqb::new));
+public class dqb implements dpx {
+   public static final Codec<dqb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jb.v(16).optionalFieldOf("offset", hx.b).forGetter($$0x -> $$0x.e)).apply($$0, dqb::new)
+   );
+   private final jb e;
 
-   protected dqb(jb $$0, asv<cwp> $$1) {
-      super($$0);
-      this.a = $$1;
+   public dqb(jb $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cuk $$0, hx $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(djg $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dpx<?> a() {
-      return dpx.b;
+   public dpy<?> a() {
+      return dpy.h;
    }
 }

@@ -1,274 +1,193 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
 import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class exm<T> extends eww {
-   public static final BooleanSupplier a = fda::v;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final vf c;
-   private int d;
-   private T f;
-   private final exm.c<T> m;
-   private final Function<T, vf> n;
-   private final Function<exm<T>, vt> o;
-   private final exm.b<T> p;
-   private final boolean q;
-   private final evk.l<T> r;
-
-   exm(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      vf $$4,
-      vf $$5,
-      int $$6,
-      T $$7,
-      exm.c<T> $$8,
-      Function<T, vf> $$9,
-      Function<exm<T>, vt> $$10,
-      exm.b<T> $$11,
-      evk.l<T> $$12,
-      boolean $$13
-   ) {
+public abstract class exm<E extends exm.a<E>> extends exb<E> {
+   public exm(evi $$0, int $$1, int $$2, int $$3, int $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
    }
 
-   private void f() {
-      this.a(this.r.apply(this.f));
-   }
-
+   @Nullable
    @Override
-   public void b() {
-      if (fda.t()) {
-         this.a(-1);
+   public ewr a(fbf $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (!($$0 instanceof fbf.a $$1)) {
+         return super.a($$0);
       } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = aun.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(aun.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      vf $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.f();
-   }
-
-   private vf c(T $$0) {
-      return (vf)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private vt d(T $$0) {
-      return ve.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected vt aK_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fay $$0) {
-      $$0.a(fax.a, this.aK_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         vf $$2 = this.c($$1);
-         if (this.aI_()) {
-            $$0.a(fax.d, vf.a("narration.cycle_button.usage.focused", $$2));
+         E $$2 = this.k();
+         if ($$1.b().a() == fbg.a && $$2 != null) {
+            return ewr.a(this, $$2.a($$0));
          } else {
-            $$0.a(fax.d, vf.a("narration.cycle_button.usage.hovered", $$2));
+            int $$3 = -1;
+            fbh $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.l().indexOf($$2.aH_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = fbh.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = fbh.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            ewr $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.l().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return ewr.a(this, $$6);
          }
       }
    }
 
-   public vt d() {
-      return a_((vf)(this.q ? this.d(this.f) : this.x()));
+   @Override
+   public void a(@Nullable ezb $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
+      }
    }
 
-   public static <T> exm.a<T> a(Function<T, vf> $$0) {
-      return new exm.a<>($$0);
+   @Override
+   public fax.a s() {
+      return this.aI_() ? fax.a.c : super.s();
    }
 
-   public static exm.a<Boolean> a(vf $$0, vf $$1) {
-      return new exm.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   @Override
+   protected boolean e(int $$0) {
+      return false;
    }
 
-   public static exm.a<Boolean> e() {
-      return new exm.a<Boolean>($$0 -> $$0 ? ve.b : ve.c).a(b);
+   @Override
+   public void a(faz $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.k();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(fay.d, vf.c("narration.component_list.usage"));
    }
 
-   public static exm.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
+   public abstract static class a<E extends exm.a<E>> extends exb.a<E> implements eza {
       @Nullable
-      private T b;
-      private final Function<T, vf> c;
-      private evk.l<T> d = $$0x -> null;
-      private Function<exm<T>, vt> e = exm::d;
-      private exm.c<T> f = exm.c.a(ImmutableList.of());
-      private boolean g;
+      private ezb a;
+      @Nullable
+      private fax b;
+      private boolean c;
 
-      public a(Function<T, vf> $$0) {
+      @Override
+      public boolean aG_() {
+         return this.c;
+      }
+
+      @Override
+      public void b(boolean $$0) {
          this.c = $$0;
       }
 
-      public exm.a<T> a(Collection<T> $$0) {
-         return this.a(exm.c.a($$0));
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return eza.super.a($$0, $$1, $$2);
       }
 
-      @SafeVarargs
-      public final exm.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public exm.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(exm.c.a(exm.a, $$0, $$1));
-      }
-
-      public exm.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(exm.c.a($$0, $$1, $$2));
-      }
-
-      public exm.a<T> a(exm.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public exm.a<T> a(evk.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exm.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      @Override
+      public void a(@Nullable ezb $$0) {
+         if (this.a != null) {
+            this.a.a(false);
          }
 
-         return this;
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
       }
 
-      public exm.a<T> a(Function<exm<T>, vt> $$0) {
-         this.e = $$0;
-         return this;
+      @Nullable
+      @Override
+      public ezb aH_() {
+         return this.a;
       }
 
-      public exm.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public exm<T> a(int $$0, int $$1, int $$2, int $$3, vf $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public exm<T> a(int $$0, int $$1, int $$2, int $$3, vf $$4, exm.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      @Nullable
+      public ewr a(fbf $$0, int $$1) {
+         if (this.l().isEmpty()) {
+            return null;
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            vf $$8 = this.c.apply($$7);
-            vf $$9 = (vf)(this.g ? $$8 : ve.a($$4, $$8));
-            return new exm<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            ewr $$2 = this.l().get(Math.min($$1, this.l().size() - 1)).a($$0);
+            return ewr.a(this, $$2);
          }
       }
-   }
 
-   public interface b<T> {
-      void onValueChange(exm<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> exm.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new exm.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
+      @Nullable
+      @Override
+      public ewr a(fbf $$0) {
+         if ($$0 instanceof fbf.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
             }
 
-            @Override
-            public List<T> b() {
-               return $$1;
+            int $$3 = auo.a($$2 + this.l().indexOf(this.aH_()), 0, this.l().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.l().size(); $$4 += $$2) {
+               ezb $$5 = this.l().get($$4);
+               ewr $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return ewr.a(this, $$6);
+               }
             }
-         };
+         }
+
+         return eza.super.a($$0);
       }
 
-      static <T> exm.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new exm.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
+      public abstract List<? extends fax> a();
+
+      void a(faz $$0) {
+         List<? extends fax> $$1 = this.a();
+         fdb.b $$2 = fdb.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
             }
 
-            @Override
-            public List<T> b() {
-               return $$3;
+            if ($$1.size() > 1) {
+               $$0.a(fay.b, vf.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == fax.a.c) {
+                  $$0.a(fay.d, vf.c("narration.component_list.usage"));
+               }
             }
-         };
+
+            $$2.a.b($$0.a());
+         }
       }
    }
 }

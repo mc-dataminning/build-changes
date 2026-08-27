@@ -1,72 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class cxm extends dae implements cws, cxl {
-   public static final MapCodec<cxm> c = b(cxm::new);
-   private static final float g = 0.11F;
+public interface cxm {
+   emm s_ = cwq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   djy t_ = djx.D;
 
-   @Override
-   public MapCodec<cxm> a() {
-      return c;
+   static bkb a(@Nullable blv $$0, djh $$1, ctp $$2, hx $$3) {
+      if ($$1.c(t_)) {
+         cwq.a($$2, $$3, new cmy(cnb.wj, 1));
+         float $$4 = auo.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, ars.dG, art.e, 1.0F, $$4);
+         djh $$5 = $$1.a(t_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dnr.c, $$3, dnr.a.a($$0, $$5));
+         return bkb.a($$2.B);
+      } else {
+         return bkb.d;
+      }
    }
 
-   public cxm(djf.d $$0) {
-      super($$0, ic.a, s_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(t_, Boolean.valueOf(false)));
+   static boolean h_(djh $$0) {
+      return $$0.b(t_) && $$0.c(t_);
    }
 
-   @Override
-   protected int a(auu $$0) {
-      return 1;
-   }
-
-   @Override
-   protected boolean g(djg $$0) {
-      return $$0.i();
-   }
-
-   @Override
-   protected cwp b() {
-      return cwr.sw;
-   }
-
-   @Override
-   protected djg a(djg $$0, djg $$1) {
-      return $$1.a(t_, $$0.c(t_));
-   }
-
-   @Override
-   protected djg a(djg $$0, auu $$1) {
-      return super.a($$0, $$1).a(t_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cmx a(ctr $$0, hx $$1, djg $$2) {
-      return new cmx(cna.wj);
-   }
-
-   @Override
-   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      return cxl.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      super.a($$0);
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean b(ctr $$0, hx $$1, djg $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
-      $$0.a($$2, $$3.a(t_, Boolean.valueOf(true)), 2);
+   static ToIntFunction<djh> h_(int $$0) {
+      return $$1 -> $$1.c(djx.D) ? $$0 : 0;
    }
 }

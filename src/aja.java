@@ -16,11 +16,11 @@ public class aja {
    }
 
    private static int a(ds $$0, hx $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bmm $$3)) {
+      if (!($$0.f() instanceof bmn $$3)) {
          throw a.create();
       } else {
-         bvu $$4 = new bvt($$3, $$0.e());
-         eff $$5 = $$4.a($$1, 0);
+         bvv $$4 = new bvu($$3, $$0.e());
+         efg $$5 = $$4.a($$1, 0);
          adi.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

@@ -2,10 +2,10 @@ import javax.annotation.Nullable;
 
 public class aav implements xf<za> {
    private final int a;
-   private final cjh<?> b;
+   private final cji<?> b;
    private final vf c;
 
-   public aav(int $$0, cjh<?> $$1, vf $$2) {
+   public aav(int $$0, cji<?> $$1, vf $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -33,7 +33,7 @@ public class aav implements xf<za> {
    }
 
    @Nullable
-   public cjh<?> d() {
+   public cji<?> d() {
       return this.b;
    }
 

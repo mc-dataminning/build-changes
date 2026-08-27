@@ -38,7 +38,7 @@ public class ej implements ey<ej.a> {
    private static void a(Consumer<vv> $$0, ds $$1, vv $$2) {
       MinecraftServer $$3 = $$1.l();
       CompletableFuture<anu> $$4 = a($$1, $$2);
-      vf $$5 = $$3.bi().decorate($$1.i(), $$2.c());
+      vf $$5 = $$3.bi().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
          vv $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
@@ -47,13 +47,13 @@ public class ej implements ey<ej.a> {
 
    private static void b(Consumer<vv> $$0, ds $$1, vv $$2) {
       va $$3 = $$1.l().bi();
-      vf $$4 = $$3.decorate($$1.i(), $$2.c());
+      vf $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
    private static CompletableFuture<anu> a(ds $$0, vv $$1) {
       ane $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.b()) : CompletableFuture.completedFuture(anu.a($$1.b()));
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(anu.a($$1.c()));
    }
 
    public ej.a a(StringReader $$0) throws CommandSyntaxException {

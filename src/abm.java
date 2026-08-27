@@ -2,7 +2,7 @@ public class abm implements xf<za> {
    private final int a;
    private final byte b;
 
-   public abm(blu $$0, byte $$1) {
+   public abm(blv $$0, byte $$1) {
       this.a = $$0.aj();
       this.b = $$1;
    }
@@ -22,7 +22,7 @@ public class abm implements xf<za> {
       $$0.a(this);
    }
 
-   public blu a(cto $$0) {
+   public blv a(ctp $$0) {
       return $$0.a(this.a);
    }
 

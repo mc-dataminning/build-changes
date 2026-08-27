@@ -1,60 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class eht extends ehq {
-   public static final Codec<eht> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asv.a(ke.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, eht::new)
-   );
-   private final asv<cms> j;
-   private final boolean k;
+public class eht extends ehi {
+   public static final Codec<eht> a = a(eht::new);
 
-   private eht(asv<cms> $$0, boolean $$1, int $$2, int $$3, List<eju> $$4, List<eii> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   eht(List<ehp> $$0, List<ejv> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ehp a() {
-      return ehm.f;
+   public ehq a() {
+      return ehn.h;
    }
 
    @Override
-   public void a(Consumer<cmx> $$0, egv $$1) {
-      kd.h.c(this.j).forEach($$1x -> $$0.accept(new cmx($$1x)));
-   }
-
-   private boolean a(egv $$0, Consumer<ehn> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ih<cms> $$2 : kd.h.c(this.j)) {
-            $$1.accept(new ehq.c() {
-               @Override
-               public void a(Consumer<cmx> $$0, egv $$1) {
-                  $$0.accept(new cmx($$2));
-               }
-            });
+   protected ehh a(List<? extends ehh> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ehh)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ehh $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
          return true;
+      };
+      };
+   }
+
+   public static eht.a a(ehp.a<?>... $$0) {
+      return new eht.a($$0);
+   }
+
+   public static class a extends ehp.a<eht.a> {
+      private final Builder<ehp> a = ImmutableList.builder();
+
+      public a(ehp.a<?>... $$0) {
+         for (ehp.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(egv $$0, Consumer<ehn> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected eht.a a() {
+         return this;
+      }
 
-   public static ehq.a<?> a(asv<cms> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eht($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public eht.a c(ehp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ehq.a<?> b(asv<cms> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eht($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public ehp b() {
+         return new eht(this.a.build(), this.f());
+      }
    }
 }

@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dto(List<dto.a> b, ic c, dpw d, boolean e) implements dtx {
+public class dto {
    public static final Codec<dto> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dto.a.a.listOf().fieldOf("layers").forGetter(dto::a),
-               ic.g.fieldOf("direction").forGetter(dto::b),
-               dpw.b.fieldOf("allowed_placement").forGetter(dto::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dto::d)
-            )
+      $$0 -> $$0.group(dyk.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, dto::new)
    );
+   public final ih<dyk> b;
+   public final float c;
 
-   public static dto.a a(bjf $$0, dvy $$1) {
-      return new dto.a($$0, $$1);
+   public dto(ih<dyk> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static dto b(bjf $$0, dvy $$1) {
-      return new dto(List.of(a($$0, $$1)), ic.b, dpw.c, false);
-   }
-
-   public List<dto.a> a() {
-      return this.b;
-   }
-
-   public ic b() {
-      return this.c;
-   }
-
-   public dpw c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bjf b, dvy c) {
-      public static final Codec<dto.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bjf.d.fieldOf("height").forGetter(dto.a::a), dvy.a.fieldOf("provider").forGetter(dto.a::b)).apply($$0, dto.a::new)
-      );
-
-      public bjf a() {
-         return this.b;
-      }
-
-      public dvy b() {
-         return this.c;
-      }
+   public boolean a(cuk $$0, dle $$1, auv $$2, hx $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

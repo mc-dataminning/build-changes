@@ -1,48 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 
-public class bio<E extends bim> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bio(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bin.a($$0);
+public class bio {
+   private bio() {
    }
 
-   public static <E extends bim> bio<E> c() {
-      return new bio<>(ImmutableList.of());
-   }
+   public static int a(List<? extends bin> $$0) {
+      long $$1 = 0L;
 
-   @SafeVarargs
-   public static <E extends bim> bio<E> a(E... $$0) {
-      return new bio<>(ImmutableList.copyOf($$0));
-   }
+      for (bin $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
 
-   public static <E extends bim> bio<E> a(List<E> $$0) {
-      return new bio<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(auu $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
       } else {
-         int $$1 = $$0.a(this.a);
-         return bin.a(this.b, $$1);
+         return (int)$$1;
       }
    }
 
-   public List<E> e() {
-      return this.b;
+   public static <T extends bin> Optional<T> a(auv $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   public static <E extends bim> Codec<bio<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bio::a, bio::e);
+   public static <T extends bin> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public static <T extends bin> Optional<T> a(auv $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

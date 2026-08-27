@@ -1,23 +1,50 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class fvj<S extends dgu> implements cyw.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = fte.a($$0.i(), $$0.aB_());
-         int $$4 = fte.a($$1.i(), $$1.aB_());
-         int $$5 = ftf.a($$3);
-         int $$6 = ftf.a($$4);
-         int $$7 = ftf.b($$3);
-         int $$8 = ftf.b($$4);
-         return ftf.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class fvj {
+   private static final Map<dgx<?>, fvi<?>> a = Maps.newHashMap();
+
+   private static <T extends dgv> void a(dgx<? extends T> $$0, fvi<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   public static Map<dgx<?>, fvh<?>> a(fvi.a $$0) {
+      Builder<dgx<?>, fvh<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + kd.k.b((dgx<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   static {
+      a(dgx.h, fvv::new);
+      a(dgx.i, fvr::new);
+      a(dgx.j, fvx::new);
+      a(dgx.k, fvt::new);
+      a(dgx.b, fvn::new);
+      a(dgx.d, fvn::new);
+      a(dgx.c, fvn::new);
+      a(dgx.m, fvq::new);
+      a(dgx.D, fvs::new);
+      a(dgx.n, fwa::new);
+      a(dgx.v, fvz::new);
+      a(dgx.o, fvd::new);
+      a(dgx.p, fvw::new);
+      a(dgx.t, fvc::new);
+      a(dgx.u, fvy::new);
+      a(dgx.x, fvu::new);
+      a(dgx.y, fve::new);
+      a(dgx.z, fvo::new);
+      a(dgx.E, fvf::new);
+      a(dgx.G, fvm::new);
+      a(dgx.N, fvl::new);
+      a(dgx.O, fvp::new);
+      a(dgx.Q, fwb::new);
    }
 }

@@ -1,115 +1,69 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public class dwu extends dxb {
-   private static final Codec<bjl> b = atv.a(
-      bjl.a,
-      (Function<bjl, DataResult<bjl>>)($$0 -> $$0.b() - $$0.a() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success($$0))
-   );
+public class dwu extends dxc {
    public static final Codec<dwu> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  bjf.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bjf.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bjf.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bjf.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
+                  atw.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bjg.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, dwu::new)
    );
-   private final bjf h;
-   private final bjf i;
-   private final bjl j;
-   private final bjl k;
-   private final bjf l;
+   private final int b;
+   private final bjg h;
 
-   public dwu(int $$0, int $$1, int $$2, bjf $$3, bjf $$4, bjl $$5, bjf $$6) {
+   public dwu(int $$0, int $$1, int $$2, int $$3, bjg $$4) {
       super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bjl.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected dxc<?> a() {
-      return dxc.i;
+   protected dxd<?> a() {
+      return dxd.g;
    }
 
    @Override
-   public List<dvj.a> a(ctu $$0, BiConsumer<hx, djg> $$1, auu $$2, int $$3, hx $$4, dut $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
-      }
+   public List<dvk.a> a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, hx $$4, duu $$5) {
+      ic $$6 = ic.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      hx.a $$8 = $$4.j();
+      hx $$9 = $$8.d();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<dvk.a> $$10 = Lists.newArrayList();
 
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
-      }
-
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<dvj.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new dvj.a($$4.b($$11), 0, false));
-      }
-
-      hx.a $$16 = new hx.a();
-      ic $$17 = ic.c.a.a($$2);
-      Function<djg, djg> $$18 = $$1x -> $$1x.b(dda.i, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
-   }
-
-   private dvj.a a(ctu $$0, BiConsumer<hx, djg> $$1, auu $$2, int $$3, hx $$4, dut $$5, Function<djg, djg> $$6, ic $$7, int $$8, boolean $$9, hx.a $$10) {
-      $$10.g($$4).c(ic.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      hx $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
-
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
-      }
-
-      ic $$17 = $$14.v() > $$10.v() ? ic.b : ic.a;
-
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new dvj.a($$14.c(), 0, false);
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+         if (dtg.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new dvk.a($$8.i(), 0, false));
+         }
+
+         $$8.c(ic.b);
       }
+
+      int $$12 = this.h.a($$2);
+
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (dtg.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new dvk.a($$8.i(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

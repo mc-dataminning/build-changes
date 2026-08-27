@@ -1,118 +1,103 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fvo implements fvg<dhk> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fmw h;
-   private final fmw i;
-   private final fmw j;
-   private final fmw k;
-   private final fmw l;
-   private final fmw m;
-   private final fmw n;
-   private final ggp o = Objects.requireNonNull(ftv.c(dhl.a));
-   private static final float p = 0.125F;
+public class fvo implements fvh<dhh> {
+   public static final ggq a = new ggq(gem.e, new ahg("entity/conduit/base"));
+   public static final ggq b = new ggq(gem.e, new ahg("entity/conduit/cage"));
+   public static final ggq c = new ggq(gem.e, new ahg("entity/conduit/wind"));
+   public static final ggq d = new ggq(gem.e, new ahg("entity/conduit/wind_vertical"));
+   public static final ggq e = new ggq(gem.e, new ahg("entity/conduit/open_eye"));
+   public static final ggq f = new ggq(gem.e, new ahg("entity/conduit/closed_eye"));
+   private final fmx g;
+   private final fmx h;
+   private final fmx i;
+   private final fmx j;
+   private final fvg k;
 
-   public fvo(fvh.a $$0) {
-      fmw $$1 = $$0.a(fmv.H);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fmw $$2 = $$0.a(fmv.I);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public fvo(fvi.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fmw.A);
+      this.h = $$0.a(fmw.C);
+      this.i = $$0.a(fmw.B);
+      this.j = $$0.a(fmw.z);
    }
 
-   public static fnc b() {
-      fne $$0 = new fne();
-      fnf $$1 = $$0.a();
-      fna $$2 = new fna(0.2F);
-      fna $$3 = new fna(-0.1F);
-      $$1.a(
-         "neck",
-         fnb.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fmy.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fnb $$4 = fnb.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fmy.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fmy.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fnc.a($$0, 32, 32);
+   public static fnd b() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("eye", fnc.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fnb(0.01F)), fmz.a);
+      return fnd.a($$0, 16, 16);
    }
 
-   public static fnc c() {
-      fne $$0 = new fne();
-      fnf $$1 = $$0.a();
-      fnb $$2 = fnb.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ic.c));
-      $$1.a("back", $$2, fmy.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fmy.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fmy.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fmy.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fnc.a($$0, 16, 16);
+   public static fnd c() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("wind", fnc.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fmz.a);
+      return fnd.a($$0, 64, 32);
    }
 
-   @Nullable
-   private static ggp a(cms $$0) {
-      ggp $$1 = ftv.c(dhl.a($$0));
-      if ($$1 == null) {
-         $$1 = ftv.c(dhl.a(cna.qI));
-      }
-
-      return $$1;
+   public static fnd d() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("shell", fnc.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fmz.a);
+      return fnd.a($$0, 32, 16);
    }
 
-   public void a(dhk $$0, float $$1, eqa $$2, ftg $$3, int $$4, int $$5) {
-      $$2.a();
-      ic $$6 = $$0.l();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dhk.b $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dhk.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (aun.b($$10) + 0.5F) * aun.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = aun.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = aun.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
+   public static fnd e() {
+      fnf $$0 = new fnf();
+      fng $$1 = $$0.a();
+      $$1.a("shell", fnc.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fmz.a);
+      return fnd.a($$0, 32, 16);
+   }
+
+   public void a(dhh $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.d()) {
+         float $$7 = $$0.a(0.0F);
+         eqf $$8 = a.a($$3, ftp::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = auo.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, ftp::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
-      }
 
-      eqe $$15 = this.o.a($$3, fto::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dhk.a $$16 = $$0.m();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
-   }
-
-   private void a(fmw $$0, eqa $$1, ftg $$2, int $$3, int $$4, @Nullable ggp $$5) {
-      if ($$5 == null) {
-         $$5 = a(cna.qI);
-      }
-
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, fto::c), $$3, $$4);
+         eqf $$13 = ($$12 == 1 ? d : c).a($$3, ftp::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         eut $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.f() ? e : f).a($$3, ftp::e), $$4, $$5);
+         $$2.b();
       }
    }
 }

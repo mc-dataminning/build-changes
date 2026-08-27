@@ -2,10 +2,10 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class afg {
    private static final double a = 4096.0;
-   private els b;
+   private elt b;
 
    public afg() {
-      this.b = els.b;
+      this.b = elt.b;
    }
 
    @VisibleForTesting
@@ -18,34 +18,34 @@ public class afg {
       return (double)$$0 / 4096.0;
    }
 
-   public els a(long $$0, long $$1, long $$2) {
+   public elt a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
          double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
          double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new els($$3, $$4, $$5);
+         return new elt($$3, $$4, $$5);
       }
    }
 
-   public long a(els $$0) {
+   public long a(elt $$0) {
       return a($$0.c) - a(this.b.c);
    }
 
-   public long b(els $$0) {
+   public long b(elt $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long c(els $$0) {
+   public long c(elt $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public els d(els $$0) {
+   public elt d(elt $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(els $$0) {
+   public void e(elt $$0) {
       this.b = $$0;
    }
 }

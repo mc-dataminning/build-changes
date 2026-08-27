@@ -10,7 +10,7 @@ public class aay implements xf<za> {
    private final float i;
    private final float j;
 
-   public aay(cfe $$0) {
+   public aay(cff $$0) {
       this.e = $$0.a;
       this.f = $$0.b;
       this.g = $$0.c;

@@ -5,6 +5,6 @@ public class ni extends mz {
 
    @Override
    protected void a(my $$0) {
-      na.a(mx.e, cna.qR).a('#', cna.ux).a('-', cna.pp).b("-#-").b("# #").b("###").b("has_string", a(cna.pp)).a($$0);
+      na.a(mx.e, cnb.qR).a('#', cnb.ux).a('-', cnb.pp).b("-#-").b("# #").b("###").b("has_string", a(cnb.pp)).a($$0);
    }
 }

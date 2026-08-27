@@ -2,13 +2,13 @@ import java.util.Map;
 
 public class aop {
    private static final aop a = new aop(Map.of());
-   private final Map<aph<?>, ?> b;
+   private final Map<api<?>, ?> b;
 
-   private aop(Map<aph<?>, ?> $$0) {
+   private aop(Map<api<?>, ?> $$0) {
       this.b = $$0;
    }
 
-   public <T> T a(aph<T> $$0) {
+   public <T> T a(api<T> $$0) {
       return (T)this.b.get($$0);
    }
 
@@ -16,11 +16,11 @@ public class aop {
       return a;
    }
 
-   public static <T> aop a(aph<T> $$0, T $$1) {
+   public static <T> aop a(api<T> $$0, T $$1) {
       return new aop(Map.of($$0, $$1));
    }
 
-   public static <T1, T2> aop a(aph<T1> $$0, T1 $$1, aph<T2> $$2, T2 $$3) {
+   public static <T1, T2> aop a(api<T1> $$0, T1 $$1, api<T2> $$2, T2 $$3) {
       return new aop(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

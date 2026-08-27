@@ -1,7 +1,7 @@
 public interface dn {
    <T> ij<T> a(ahf<? extends it<T>> var1);
 
-   static dn a(final ij.b $$0, final chr $$1) {
+   static dn a(final ij.b $$0, final chs $$1) {
       return new dn() {
          @Override
          public <T> ij<T> a(ahf<? extends it<T>> $$0x) {
@@ -10,7 +10,7 @@ public interface dn {
       };
    }
 
-   static dn.a a(final iu $$0, final chr $$1) {
+   static dn.a a(final iu $$0, final chs $$1) {
       return new dn.a() {
          dn.b c = dn.b.b;
 

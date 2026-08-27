@@ -1,153 +1,93 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public final class arv {
-   private static final Map<cjo, Pair<String, String>> a = ImmutableMap.of(
-      cjo.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cjo.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cjo.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cjo.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cjo, arv.a> b;
-
-   private arv(Map<cjo, arv.a> $$0) {
-      this.b = $$0;
-   }
-
-   public arv() {
-      this(ac.a(Maps.newEnumMap(cjo.class), $$0 -> {
-         for (cjo $$1 : cjo.values()) {
-            $$0.put($$1, new arv.a(false, false));
-         }
-      }));
-   }
-
-   public boolean a(cjo $$0) {
-      return this.b.get($$0).a;
-   }
-
-   public void a(cjo $$0, boolean $$1) {
-      this.b.get($$0).a = $$1;
-   }
-
-   public boolean b(cjo $$0) {
-      return this.b.get($$0).b;
-   }
-
-   public void b(cjo $$0, boolean $$1) {
-      this.b.get($$0).b = $$1;
-   }
-
-   public static arv a(ui $$0) {
-      Map<cjo, arv.a> $$1 = Maps.newEnumMap(cjo.class);
-
-      for (cjo $$2 : cjo.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         $$1.put($$2, new arv.a($$3, $$4));
-      }
-
-      return new arv($$1);
-   }
-
-   public void b(ui $$0) {
-      for (cjo $$1 : cjo.values()) {
-         arv.a $$2 = this.b.get($$1);
-         if ($$2 == null) {
-            $$0.a(false);
-            $$0.a(false);
-         } else {
-            $$0.a($$2.a);
-            $$0.a($$2.b);
-         }
-      }
-   }
-
-   public static arv a(sn $$0) {
-      Map<cjo, arv.a> $$1 = Maps.newEnumMap(cjo.class);
-      a.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         $$1.put($$2, new arv.a($$4, $$5));
-      });
-      return new arv($$1);
-   }
-
-   public void b(sn $$0) {
-      a.forEach(($$1, $$2) -> {
-         arv.a $$3 = this.b.get($$1);
-         $$0.a((String)$$2.getFirst(), $$3.a);
-         $$0.a((String)$$2.getSecond(), $$3.b);
-      });
-   }
-
-   public arv a() {
-      Map<cjo, arv.a> $$0 = Maps.newEnumMap(cjo.class);
-
-      for (cjo $$1 : cjo.values()) {
-         arv.a $$2 = this.b.get($$1);
-         $$0.put($$1, $$2.a());
-      }
-
-      return new arv($$0);
-   }
+public class arv {
+   protected final Set<ahg> a = Sets.newHashSet();
+   protected final Set<ahg> b = Sets.newHashSet();
+   private final arw c = new arw();
 
    public void a(arv $$0) {
+      this.a.clear();
       this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
+   }
 
-      for (cjo $$1 : cjo.values()) {
-         arv.a $$2 = $$0.b.get($$1);
-         this.b.put($$1, $$2.a());
+   public void a(cqe<?> $$0) {
+      if (!$$0.b().aq_()) {
+         this.a($$0.a());
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof arv && this.b.equals(((arv)$$0).b);
+   protected void a(ahg $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean b(@Nullable cqe<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
    }
 
-   static final class a {
-      boolean a;
-      boolean b;
+   public boolean b(ahg $$0) {
+      return this.a.contains($$0);
+   }
 
-      public a(boolean $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void c(cqe<?> $$0) {
+      this.c($$0.a());
+   }
 
-      public arv.a a() {
-         return new arv.a(this.a, this.b);
-      }
+   protected void c(ahg $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof arv.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
-         }
-      }
+   public boolean d(cqe<?> $$0) {
+      return this.b.contains($$0.a());
+   }
 
-      @Override
-      public int hashCode() {
-         int $$0 = this.a ? 1 : 0;
-         return 31 * $$0 + (this.b ? 1 : 0);
-      }
+   public void e(cqe<?> $$0) {
+      this.b.remove($$0.a());
+   }
 
-      @Override
-      public String toString() {
-         return "[open=" + this.a + ", filtering=" + this.b + "]";
-      }
+   public void f(cqe<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(ahg $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(cjp $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(cjp $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(cjo<?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(cjp $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(cjp $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(arw $$0) {
+      this.c.a($$0);
+   }
+
+   public arw a() {
+      return this.c.a();
+   }
+
+   public void a(cjp $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
    }
 }

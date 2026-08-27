@@ -1,34 +1,37 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class boi extends bob<bzm> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+public class boi extends boc<bml> {
+   private final bvn<Integer> c;
 
-   public boi() {
-      super(ImmutableMap.of(bvm.m, bvn.b), 100);
+   public boi(bvn<Integer> $$0) {
+      super(ImmutableMap.of($$0, bvo.a));
+      this.c = $$0;
    }
 
-   protected boolean a(and $$0, bzm $$1) {
-      return $$1.ap() == bmw.a;
+   private Optional<Integer> b(bml $$0) {
+      return $$0.dO().c(this.c);
    }
 
-   protected boolean a(and $$0, bzm $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   protected void b(and $$0, bzm $$1, long $$2) {
-      if (!$$1.bd()) {
-         $$1.b(bmw.i);
-         this.e = 0;
-      }
+   @Override
+   protected boolean a(and $$0, bml $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
-   protected void c(and $$0, bzm $$1, long $$2) {
-      $$1.b(bmw.a);
+   @Override
+   protected void c(and $$0, bml $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dO().a(this.c, $$3.get() - 1);
    }
 
-   protected void d(and $$0, bzm $$1, long $$2) {
-      this.e++;
+   @Override
+   protected void b(and $$0, bml $$1, long $$2) {
+      $$1.dO().b(this.c);
    }
 }

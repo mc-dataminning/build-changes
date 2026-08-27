@@ -2,10 +2,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class bc {
-   private final aus a;
-   private final egz b;
+   private final aut a;
+   private final eha b;
 
-   public bc(aus $$0, egz $$1) {
+   public bc(aut $$0, eha $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -15,21 +15,21 @@ public class bc {
    }
 
    public void a(List<bb> $$0, String $$1) {
-      this.a($$0, ejf.l, $$1);
+      this.a($$0, ejg.l, $$1);
    }
 
    public void a(bb $$0, String $$1) {
-      this.a($$0, ejf.l, $$1);
+      this.a($$0, ejg.l, $$1);
    }
 
-   public void a(bb $$0, eje $$1, String $$2) {
-      $$0.a(new ehe(this.a.a($$2), $$1, this.b));
+   public void a(bb $$0, ejf $$1, String $$2) {
+      $$0.a(new ehf(this.a.a($$2), $$1, this.b));
    }
 
-   public void a(List<bb> $$0, eje $$1, String $$2) {
+   public void a(List<bb> $$0, ejf $$1, String $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          bb $$4 = $$0.get($$3);
-         $$4.a(new ehe(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
+         $$4.a(new ehf(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

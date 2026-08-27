@@ -1,63 +1,74 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class evd {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fsk[] e = new fsk[9];
-   private boolean f;
+public record evd(int a, @Nullable evd.a b, @Nullable vf c, @Nullable String d) {
+   private static final vf e = vf.c("chat.tag.system");
+   private static final vf f = vf.c("chat.tag.system_single_player");
+   private static final vf g = vf.c("chat.tag.not_secure");
+   private static final vf h = vf.c("chat.tag.modified");
+   private static final vf i = vf.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final evd l = new evd(13684944, null, e, "System");
+   private static final evd m = new evd(13684944, null, f, "System");
+   private static final evd n = new evd(13684944, null, g, "Not Secure");
+   private static final evd o = new evd(16733525, null, i, "Chat Error");
 
-   public evd(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fsk();
-      }
+   public static evd a() {
+      return l;
    }
 
-   private void b() {
-      try {
-         sn $$0 = ta.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = tc.b($$0, 1343);
-         $$0 = avv.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public static evd b() {
+      return m;
    }
 
-   public void a() {
-      try {
-         sn $$0 = tc.g(new sn());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
-
-         ta.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
-      }
+   public static evd c() {
+      return n;
    }
 
-   public fsk a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   public static evd a(String $$0) {
+      vf $$1 = vf.b($$0).a(n.h);
+      vf $$2 = vf.i().b(h).b(ve.r).b($$1);
+      return new evd(6316128, evd.a.a, $$2, "Modified");
+   }
+
+   public static evd d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public evd.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public vf g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new ahg("icon/chat_modified"), 9, 9);
+
+      public final ahg b;
+      public final int c;
+      public final int d;
+
+      private a(ahg $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return this.e[$$0];
+      public void a(ewu $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

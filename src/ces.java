@@ -1,36 +1,64 @@
-public interface ces {
-   String d_ = "Inventory";
+import javax.annotation.Nullable;
 
-   bki A();
+public class ces implements csm {
+   private final cfi a;
+   private cso b = new cso();
+   private int c;
 
-   static void a(bmm $$0, ces $$1, cbt $$2) {
-      cmx $$3 = $$2.q();
-      if ($$0.k($$3)) {
-         bki $$4 = $$1.A();
-         boolean $$5 = $$4.b($$3);
-         if (!$$5) {
-            return;
-         }
-
-         $$0.a($$2);
-         int $$6 = $$3.L();
-         cmx $$7 = $$4.a($$3);
-         $$0.a($$2, $$6 - $$7.L());
-         if ($$7.b()) {
-            $$2.am();
-         } else {
-            $$3.f($$7.L());
-         }
-      }
+   public ces(cfi $$0) {
+      this.a = $$0;
    }
 
-   default void c(sn $$0) {
-      if ($$0.b("Inventory", 9)) {
-         this.A().a($$0.c("Inventory", 10));
-      }
+   @Override
+   public cfi ge() {
+      return this.a;
    }
 
-   default void a_(sn $$0) {
-      $$0.a("Inventory", this.A().g());
+   @Override
+   public void f(@Nullable cfi $$0) {
+   }
+
+   @Override
+   public cso gg() {
+      return this.b;
+   }
+
+   @Override
+   public void a(cso $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(csn $$0) {
+      $$0.j();
+   }
+
+   @Override
+   public void l(cmy $$0) {
+   }
+
+   @Override
+   public boolean gm() {
+      return this.a.dM().B;
+   }
+
+   @Override
+   public int w() {
+      return this.c;
+   }
+
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gh() {
+      return true;
+   }
+
+   @Override
+   public arr gi() {
+      return ars.zN;
    }
 }

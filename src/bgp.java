@@ -1,12 +1,68 @@
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.tuple.Pair;
 
-public interface bgp extends bgr {
-   bgq d();
+public class bgp implements bgq {
+   public static final bgp a = new bgp();
+
+   private bgp() {
+   }
+
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(bhv $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bgr d() {
+      return bgn.a;
+   }
 
    @Nullable
-   bgk.a c(String var1);
+   @Override
+   public bgl.a c(String $$0) {
+      return null;
+   }
 
-   Set<Pair<String, bhu>> e();
+   @Override
+   public Set<Pair<String, bhv>> e() {
+      return ImmutableSet.of();
+   }
 }

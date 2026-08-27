@@ -1,186 +1,94 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class app {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final app.c c;
-   private final vf d;
-   private final app.a e;
-   private final app.b f;
-   private final boolean g;
-   private final boolean h;
-   private final apt i;
+public class app implements apv {
+   static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final aox c;
+   private final apu d;
+   private final elj e;
 
-   @Nullable
-   public static app a(String $$0, vf $$1, boolean $$2, app.c $$3, aow $$4, app.b $$5, apt $$6) {
-      int $$7 = aa.b().a($$4);
-      app.a $$8 = a($$0, $$3, $$7);
-      return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
-   }
-
-   public static app a(String $$0, vf $$1, boolean $$2, app.c $$3, app.a $$4, app.b $$5, boolean $$6, apt $$7) {
-      return new app($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
-   }
-
-   private app(String $$0, boolean $$1, app.c $$2, vf $$3, app.a $$4, app.b $$5, boolean $$6, apt $$7) {
+   public app(Path $$0, aox $$1, apu $$2, elj $$3) {
       this.b = $$0;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.g = $$1;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Nullable
-   public static app.a a(String $$0, app.c $$1, int $$2) {
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
+   }
+
+   @Override
+   public void loadPacks(Consumer<apq> $$0) {
       try {
-         app.a var11;
-         try (aov $$3 = $$1.a($$0)) {
-            apj $$4 = $$3.a(apj.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0);
-               return null;
+         v.c(this.b);
+         a(this.b, this.e, false, ($$1, $$2) -> {
+            String $$3 = a($$1);
+            apq $$4 = apq.a("file/" + $$3, vf.b($$3), false, $$2, this.c, apq.b.a, this.d);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-
-            aos $$5 = $$3.a(aos.a);
-            chr $$6 = $$5 != null ? $$5.a() : chr.a();
-            auf<Integer> $$7 = a($$0, $$4);
-            apq $$8 = apq.a($$7, $$2);
-            aou $$9 = $$3.a(aou.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new app.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0, var14);
-         return null;
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.b, var3);
       }
    }
 
-   private static auf<Integer> a(String $$0, apj $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new auf<>($$2);
-      } else {
-         auf<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new auf<>($$2);
-         } else {
-            return $$3;
-         }
-      }
-   }
+   public static void a(Path $$0, elj $$1, boolean $$2, BiConsumer<Path, apq.c> $$3) throws IOException {
+      app.a $$4 = new app.a($$1, $$2);
 
-   public vf a() {
-      return this.d;
-   }
-
-   public vf b() {
-      return this.e.a();
-   }
-
-   public vf a(boolean $$0) {
-      return vi.a(this.i.a(vf.b(this.b)))
-         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new vl(vl.a.a, vf.i().b(this.d).f("\n").b(this.e.a))));
-   }
-
-   public apq c() {
-      return this.e.b();
-   }
-
-   public chr d() {
-      return this.e.c();
-   }
-
-   public aov e() {
-      return this.c.a(this.b, this.e);
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public app.b i() {
-      return this.f;
-   }
-
-   public apt j() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof app $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(vf a, apq b, chr c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, app> $$2, boolean $$3) {
-         app.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               app $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.h() || $$6.i() != this) {
-                  break;
+      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
+         for (Path $$6 : $$5) {
+            try {
+               List<elk> $$7 = new ArrayList<>();
+               apq.c $$8 = $$4.a($$6, $$7);
+               if (!$$7.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", eli.a($$6, $$7));
+               } else if ($$8 != null) {
+                  $$3.accept($$6, $$8);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$6);
                }
+            } catch (IOException var11) {
+               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
             }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               app $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.h() || $$8.i() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
          }
-      }
-
-      public app.b a() {
-         return this == a ? b : a;
       }
    }
 
-   public interface c {
-      aov a(String var1);
+   static class a extends aps<apq.c> {
+      private final boolean a;
 
-      aov a(String var1, app.a var2);
+      protected a(elj $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      @Nullable
+      protected apq.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof apf)) {
+            app.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new aou.a($$0, this.a);
+         }
+      }
+
+      protected apq.c b(Path $$0) {
+         return new aoy.a($$0, this.a);
+      }
    }
 }

@@ -1,88 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fbb {
-   int a;
-   final Map<fbb.a, fbb.b> b = Maps.newTreeMap(Comparator.<fbb.a, fax>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fbb<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fbb<?> a = new fbb<>(avs.a, ($$0, $$1) -> {
+   });
 
-   public void a(Consumer<fay> $$0) {
-      this.a++;
-      $$0.accept(new fbb.c(0));
+   private fbb(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
-
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public static fbb<?> a(String $$0) {
+      return new fbb<>($$0, Consumer::accept);
    }
 
-   static class a {
-      final fax a;
-      final int b;
+   public static fbb<?> a(vf $$0) {
+      return new fbb<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
 
-      a(fax $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static fbb<?> a(List<vf> $$0) {
+      return new fbb<>($$0, ($$1, $$2) -> $$0.stream().map(vf::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fbb<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
       }
    }
 
-   static class b {
-      fba<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fba.a;
-         this.b = -1;
-      }
-
-      public fbb.b a(int $$0, fba<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements fay {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fax $$0, fba<?> $$1) {
-         fbb.this.b.computeIfAbsent(new fbb.a($$0, this.b), $$0x -> new fbb.b()).a(fbb.this.a, $$1);
-      }
-
-      @Override
-      public fay a() {
-         return fbb.this.new c(this.b + 1);
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

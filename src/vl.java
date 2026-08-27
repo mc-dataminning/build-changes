@@ -54,12 +54,12 @@ public class vl {
       return this.b.hashCode();
    }
 
-   public static class a<T> implements avj {
+   public static class a<T> implements avk {
       public static final vl.a<vf> a = new vl.a<>("show_text", true, vh.a, DataResult::success);
       public static final vl.a<vl.c> b = new vl.a<>("show_item", true, vl.c.b, vl.c::a);
       public static final vl.a<vl.b> c = new vl.a<>("show_entity", true, vl.b.a, vl.b::a);
-      public static final Codec<vl.a<?>> d = avj.b(() -> new vl.a[]{a, b, c});
-      public static final Codec<vl.a<?>> e = atv.a(d, vl.a::a);
+      public static final Codec<vl.a<?>> d = avk.b(() -> new vl.a[]{a, b, c});
+      public static final Codec<vl.a<?>> e = atw.a(d, vl.a::a);
       private final String f;
       private final boolean g;
       final Codec<vl.d<T>> h;
@@ -104,21 +104,21 @@ public class vl {
          $$0 -> $$0.group(
                   kd.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
                   ja.e.fieldOf("id").forGetter($$0x -> $$0x.c),
-                  atv.a(vh.a, "name").forGetter($$0x -> $$0x.d)
+                  atw.a(vh.a, "name").forGetter($$0x -> $$0x.d)
                )
                .apply($$0, vl.b::new)
       );
-      public final bly<?> b;
+      public final blz<?> b;
       public final UUID c;
       public final Optional<vf> d;
       @Nullable
       private List<vf> e;
 
-      public b(bly<?> $$0, UUID $$1, @Nullable vf $$2) {
+      public b(blz<?> $$0, UUID $$1, @Nullable vf $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bly<?> $$0, UUID $$1, Optional<vf> $$2) {
+      public b(blz<?> $$0, UUID $$1, Optional<vf> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -128,7 +128,7 @@ public class vl {
          try {
             sn $$1 = tl.a($$0.getString());
             vf $$2 = vf.a.a($$1.l("name"));
-            bly<?> $$3 = kd.g.a(new ahg($$1.l("type")));
+            blz<?> $$3 = kd.g.a(new ahg($$1.l("type")));
             UUID $$4 = UUID.fromString($$1.l("id"));
             return DataResult.success(new vl.b($$3, $$4, $$2));
          } catch (Exception var5) {
@@ -171,30 +171,30 @@ public class vl {
       public static final Codec<vl.c> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kd.h.q().fieldOf("id").forGetter($$0x -> $$0x.c),
-                  atv.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
-                  atv.a(tl.i, "tag").forGetter($$0x -> $$0x.e)
+                  atw.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
+                  atw.a(tl.i, "tag").forGetter($$0x -> $$0x.e)
                )
                .apply($$0, vl.c::new)
       );
       public static final Codec<vl.c> b = Codec.either(kd.h.q(), a)
          .xmap($$0 -> (vl.c)$$0.map($$0x -> new vl.c($$0x, 1, Optional.empty()), $$0x -> $$0x), Either::right);
-      private final cms c;
+      private final cmt c;
       private final int d;
       private final Optional<sn> e;
       @Nullable
-      private cmx f;
+      private cmy f;
 
-      c(cms $$0, int $$1, @Nullable sn $$2) {
+      c(cmt $$0, int $$1, @Nullable sn $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      c(cms $$0, int $$1, Optional<sn> $$2) {
+      c(cmt $$0, int $$1, Optional<sn> $$2) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
       }
 
-      public c(cmx $$0) {
+      public c(cmy $$0) {
          this($$0.d(), $$0.L(), $$0.v() != null ? Optional.of($$0.v().h()) : Optional.empty());
       }
 
@@ -217,9 +217,9 @@ public class vl {
          return 31 * $$0 + this.e.hashCode();
       }
 
-      public cmx a() {
+      public cmy a() {
          if (this.f == null) {
-            this.f = new cmx(this.c, this.d);
+            this.f = new cmy(this.c, this.d);
             this.e.ifPresent(this.f::c);
          }
 
@@ -229,7 +229,7 @@ public class vl {
       private static DataResult<vl.c> a(vf $$0) {
          try {
             sn $$1 = tl.a($$0.getString());
-            return DataResult.success(new vl.c(cmx.a($$1)));
+            return DataResult.success(new vl.c(cmy.a($$1)));
          } catch (CommandSyntaxException var2) {
             return DataResult.error(() -> "Failed to parse item tag: " + var2.getMessage());
          }

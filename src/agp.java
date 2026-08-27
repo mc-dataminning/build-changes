@@ -18,18 +18,18 @@ import org.slf4j.Logger;
 
 public class agp {
    private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<Class<? extends blu>> b = new Object2IntOpenHashMap();
+   private static final Object2IntMap<Class<? extends blv>> b = new Object2IntOpenHashMap();
    private static final int c = 254;
-   private final blu d;
+   private final blv d;
    private final Int2ObjectMap<agp.a<?>> e = new Int2ObjectOpenHashMap();
    private final ReadWriteLock f = new ReentrantReadWriteLock();
    private boolean g;
 
-   public agp(blu $$0) {
+   public agp(blv $$0) {
       this.d = $$0;
    }
 
-   public static <T> agm<T> a(Class<? extends blu> $$0, agn<T> $$1) {
+   public static <T> agm<T> a(Class<? extends blv> $$0, agn<T> $$1) {
       if (a.isDebugEnabled()) {
          try {
             Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
@@ -47,7 +47,7 @@ public class agp {
          int $$4 = 0;
          Class<?> $$5 = $$0;
 
-         while ($$5 != blu.class) {
+         while ($$5 != blv.class) {
             $$5 = $$5.getSuperclass();
             if (b.containsKey($$5)) {
                $$4 = b.getInt($$5) + 1;

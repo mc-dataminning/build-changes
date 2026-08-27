@@ -1,100 +1,53 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class att implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public class att<K, V extends att.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-   public static att a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw att.a.a($$1);
-         } else {
-            return new att($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
+   public att<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   private att(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
          }
       }
    }
 
-   public boolean a() {
-      return this.c.isValid();
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
    }
 
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
       }
    }
 
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
    }
 
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
-      }
+   public interface a<K> {
+      void a(Consumer<K> var1);
 
-      public static att.a a(Path $$0) {
-         return new att.a($$0, "already locked (possibly by other Minecraft instance?)");
-      }
+      void b(Consumer<K> var1);
    }
 }

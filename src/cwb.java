@@ -1,35 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class cwb extends cwp implements czh {
-   protected cwb(djf.d $$0) {
+public class cwb extends cvy {
+   public static final MapCodec<cwb> b = b(cwb::new);
+   public static final dkb c = dal.aE;
+   private static final Map<ic, emm> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         ic.c,
+         cwq.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ic.d,
+         cwq.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ic.e,
+         cwq.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ic.f,
+         cwq.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
+
+   @Override
+   public MapCodec<? extends cwb> a() {
+      return b;
+   }
+
+   protected cwb(djg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, ic.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected abstract MapCodec<? extends cwb> a();
-
-   @Override
-   public dcu b_(djg $$0) {
-      return dcu.a;
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public boolean a(djg $$0, cto $$1, hx $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dgu $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   public djh a(djh $$0, ddc $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cws.a.o() : $$0;
+   }
+
+   @Override
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      ic $$3 = $$0.c(c);
+      hx $$4 = $$2.a($$3.g());
+      djh $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public bkd b(djg $$0, cto $$1, hx $$2) {
-      dgu $$3 = $$1.c_($$2);
-      return $$3 instanceof bkd ? (bkd)$$3 : null;
-   }
+   public djh a(cph $$0) {
+      djh $$1 = super.a($$0);
+      cts $$2 = $$0.q();
+      hx $$3 = $$0.a();
+      ic[] $$4 = $$0.f();
 
-   @Nullable
-   protected static <E extends dgu, A extends dgu> dgv<A> a(dgw<A> $$0, dgw<E> $$1, dgv<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+      for (ic $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 }

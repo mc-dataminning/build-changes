@@ -17,14 +17,14 @@ public class alw implements alt {
             return $$0.then(dt.a("storage").then($$1.apply(dt.a($$0, et.a()).suggests(alw.b))));
          }
       };
-   private final egd c;
+   private final ege c;
    private final ahg d;
 
-   static egd a(CommandContext<ds> $$0) {
+   static ege a(CommandContext<ds> $$0) {
       return ((ds)$$0.getSource()).l().aI();
    }
 
-   alw(egd $$0, ahg $$1) {
+   alw(ege $$0, ahg $$1) {
       this.c = $$0;
       this.d = $$1;
    }

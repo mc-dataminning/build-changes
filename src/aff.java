@@ -1,14 +1,14 @@
 public class aff implements xf<adj> {
-   private final bjz a;
+   private final bka a;
    private final int b;
 
-   public aff(bjz $$0, int $$1) {
+   public aff(bka $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public aff(ui $$0) {
-      this.a = $$0.b(bjz.class);
+      this.a = $$0.b(bka.class);
       this.b = $$0.n();
    }
 
@@ -22,7 +22,7 @@ public class aff implements xf<adj> {
       $$0.a(this);
    }
 
-   public bjz a() {
+   public bka a() {
       return this.a;
    }
 

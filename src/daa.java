@@ -1,70 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public class daa extends def implements cws {
+public class daa extends dbp implements cwt, ddq {
    public static final MapCodec<daa> a = b(daa::new);
+   private static final djy c = djx.C;
+   private final dbq d = new dbq(this);
 
    @Override
    public MapCodec<daa> a() {
       return a;
    }
 
-   public daa(djf.d $$0) {
+   public daa(djg.d $$0) {
       super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<djh> b(int $$0) {
+      return $$1 -> dbp.n($$1) ? $$0 : 0;
    }
 
    @Override
-   public boolean b(ctr $$0, hx $$1, djg $$2) {
-      return $$0.a_($$1.c()).i();
+   protected void a(dji.a<cwq, djh> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ees.c, ees.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djh $$0, cph $$1) {
+      return !$$1.n().a(cnb.fV) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(cts $$0, hx $$1, djh $$2) {
+      return ic.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
       return true;
    }
 
    @Override
-   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
-      hx $$4 = $$2.c();
-      djg $$5 = cwr.bt.o();
-      Optional<ih.c<dyj>> $$6 = $$0.I_().d(ke.aC).b(ra.n);
+   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         hx $$8 = $$4;
+   @Override
+   public eer c_(djh $$0) {
+      return $$0.c(c) ? ees.c.a(false) : super.c_($$0);
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
+   @Override
+   public boolean a_(djh $$0, csv $$1, hx $$2) {
+      return $$0.u().c();
+   }
 
-         djg $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((cws)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            ih<dyj> $$12;
-            if ($$1.a(8) == 0) {
-               List<drg<?, ?>> $$11 = $$0.t($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((duk)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
-      }
+   @Override
+   public dbq c() {
+      return this.d;
    }
 }

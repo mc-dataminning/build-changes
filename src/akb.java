@@ -17,13 +17,13 @@ public class akb {
                ((RequiredArgumentBuilder)dt.a("name", ep.a($$1))
                      .executes(
                         $$0x -> a(
-                              (ds)$$0x.getSource(), ep.a($$0x, "name"), ((ds)$$0x.getSource()).d(), els.b, 0.0F, 0, false, ((ds)$$0x.getSource()).l().ae().t()
+                              (ds)$$0x.getSource(), ep.a($$0x, "name"), ((ds)$$0x.getSource()).d(), elt.b, 0.0F, 0, false, ((ds)$$0x.getSource()).l().ae().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)dt.a("pos", ft.a())
                            .executes(
-                              $$0x -> a((ds)$$0x.getSource(), ep.a($$0x, "name"), ft.a($$0x, "pos"), els.b, 0.0F, 0, false, ((ds)$$0x.getSource()).l().ae().t())
+                              $$0x -> a((ds)$$0x.getSource(), ep.a($$0x, "name"), ft.a($$0x, "pos"), elt.b, 0.0F, 0, false, ((ds)$$0x.getSource()).l().ae().t())
                            ))
                         .then(
                            dt.a("delta", ft.a(false))
@@ -111,7 +111,7 @@ public class akb {
       );
    }
 
-   private static int a(ds $$0, jv $$1, els $$2, els $$3, float $$4, int $$5, boolean $$6, Collection<ane> $$7) throws CommandSyntaxException {
+   private static int a(ds $$0, jv $$1, elt $$2, elt $$3, float $$4, int $$5, boolean $$6, Collection<ane> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (ane $$9 : $$7) {

@@ -119,14 +119,14 @@ public class ajh {
    }
 
    static enum a {
-      a("points", cfh::d, ($$0, $$1) -> {
+      a("points", cfi::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gb()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> aun.d($$0.ch * (float)$$0.gb())),
+      }, $$0 -> auo.d($$0.ch * (float)$$0.gb())),
       b("levels", ane::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;

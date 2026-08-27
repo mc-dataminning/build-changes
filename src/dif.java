@@ -1,186 +1,127 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.time.Duration;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dif extends dgu {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
+public class dif {
+   private static final Codec<vf[]> c = vh.b
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new vf[]{(vf)$$0x.get(0), (vf)$$0x.get(1), (vf)$$0x.get(2), (vf)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dif> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.optionalFieldOf("filtered_messages").forGetter(dif::d),
+               clm.q.fieldOf("color").orElse(clm.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dif::a)
+   );
+   public static final int b = 4;
+   private final vf[] d;
+   private final vf[] e;
+   private final clm f;
+   private final boolean g;
    @Nullable
-   private static Executor c;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> d;
-   private static final Executor e = $$0 -> {
-      Executor $$1 = c;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile f;
-   @Nullable
-   private ahg g;
-   private int h;
+   private aua[] h;
    private boolean i;
 
-   public dif(hx $$0, djg $$1) {
-      super(dgw.p, $$0, $$1);
+   public dif() {
+      this(c(), c(), clm.p, false);
    }
 
-   public static void a(final ahz $$0, Executor $$1) {
-      c = $$1;
-      final BooleanSupplier $$2 = () -> d == null;
-      d = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : dif.a($$0, $$0, $$2);
-            }
-         });
+   public dif(vf[] $$0, vf[] $$1, clm $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static void c() {
-      c = null;
-      d = null;
+   private static vf[] c() {
+      return new vf[]{ve.a, ve.a, ve.a, ve.a};
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, ahz $$1, BooleanSupplier $$2) {
-      return $$1.e().b($$0).thenApplyAsync($$2x -> {
-         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
-            UUID $$3 = ((GameProfile)$$2x.get()).getId();
-            ProfileResult $$4 = $$1.b().fetchProfile($$3, true);
-            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
+   private static dif a(vf[] $$0, Optional<vf[]> $$1, clm $$2, boolean $$3) {
+      return new dif($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      if (this.f != null) {
-         sn $$1 = new sn();
-         tc.a($$1, this.f);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.g != null) {
-         $$0.a("note_block_sound", this.g.toString());
-      }
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(tc.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!avk.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.g = ahg.a($$0.l("note_block_sound"));
-      }
-   }
-
-   public static void a(cto $$0, hx $$1, djg $$2, dif $$3) {
-      if ($$2.b(ddq.a) && $$2.c(ddq.a)) {
-         $$3.i = true;
-         $$3.h++;
-      } else {
-         $$3.i = false;
-      }
-   }
-
-   public float a(float $$0) {
-      return this.i ? (float)this.h + $$0 : (float)this.h;
-   }
-
-   @Nullable
-   public GameProfile d() {
-      return this.f;
-   }
-
-   @Nullable
-   public ahg f() {
+   public boolean a() {
       return this.g;
    }
 
-   public zh g() {
-      return zh.a(this);
+   public dif a(boolean $$0) {
+      return $$0 == this.g ? this : new dif(this.d, this.e, this.f, $$0);
    }
 
-   @Override
-   public sn ax_() {
-      return this.q();
+   public clm b() {
+      return this.f;
    }
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.f = $$0;
-      }
-
-      this.k();
+   public dif a(clm $$0) {
+      return $$0 == this.b() ? this : new dif(this.d, this.e, $$0, this.g);
    }
 
-   private void k() {
-      if (this.f != null && !ac.b(this.f.getName()) && !b(this.f)) {
-         a(this.f.getName()).thenAcceptAsync($$0 -> {
-            this.f = $$0.orElse(this.f);
-            this.e();
-         }, e);
-      } else {
-         this.e();
-      }
+   public vf a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
    }
 
-   @Nullable
-   public static GameProfile d(sn $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return tc.a($$0.p("SkullOwner"));
-      } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
-            }
+   public dif a(int $$0, vf $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dif a(int $$0, vf $$1, vf $$2) {
+      vf[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      vf[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dif($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(cfi $$0) {
+      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public vf[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public aua[] a(boolean $$0, Function<vf, aua> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new aua[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
-
-         return null;
       }
+
+      return this.h;
    }
 
-   public static void e(sn $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+   private Optional<vf[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
    }
 
-   private static void a(sn $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", tc.a(new sn(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
+   public boolean b(cfi $$0) {
+      for (vf $$1 : this.b($$0.Y())) {
+         wc $$2 = $$1.a();
+         vd $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == vd.a.c) {
+            return true;
+         }
+      }
 
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = d;
-      return $$1 != null && cfh.c($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   private static boolean b(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
+      return false;
    }
 }

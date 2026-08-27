@@ -1,35 +1,53 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ekn(float c) implements ekp {
-   public static final Codec<ekn> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ekn::c)).apply($$0, ekn::new));
-   public static final Codec<ekn> b = Codec.FLOAT.xmap(ekn::new, ekn::c);
+public record ekn(ekq b, ekq c) implements ekq {
+   public static final Codec<ekn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ekr.a.fieldOf("n").forGetter(ekn::c), ekr.a.fieldOf("p").forGetter(ekn::d)).apply($$0, ekn::new)
+   );
 
    @Override
-   public eko b() {
-      return ekq.b;
+   public ekp b() {
+      return ekr.d;
    }
 
    @Override
-   public float b(egv $$0) {
-      return this.c;
-   }
+   public int a(egw $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      auv $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static ekn a(float $$0) {
-      return new ekn($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ekn)$$0).c, this.c) == 0 : false;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
       }
+
+      return $$4;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public float b(egw $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static ekn a(int $$0, float $$1) {
+      return new ekn(eko.a((float)$$0), eko.a($$1));
+   }
+
+   @Override
+   public Set<eje<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ekq c() {
+      return this.b;
+   }
+
+   public ekq d() {
+      return this.c;
    }
 }

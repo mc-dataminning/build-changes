@@ -13,10 +13,10 @@ public class aad implements xf<za> {
    private final float h;
    private final jv i;
    private final jv j;
-   private final ctg.a k;
-   private final arq l;
+   private final cth.a k;
+   private final arr l;
 
-   public aad(double $$0, double $$1, double $$2, float $$3, List<hx> $$4, @Nullable els $$5, ctg.a $$6, jv $$7, jv $$8, arq $$9) {
+   public aad(double $$0, double $$1, double $$2, float $$3, List<hx> $$4, @Nullable elt $$5, cth.a $$6, jv $$7, jv $$8, arr $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -43,9 +43,9 @@ public class aad implements xf<za> {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readFloat();
-      int $$1 = aun.a(this.a);
-      int $$2 = aun.a(this.b);
-      int $$3 = aun.a(this.c);
+      int $$1 = auo.a(this.a);
+      int $$2 = auo.a(this.b);
+      int $$3 = auo.a(this.c);
       this.e = $$0.a((ui.a<hx>)($$3x -> {
          int $$4 = $$3x.readByte() + $$1;
          int $$5 = $$3x.readByte() + $$2;
@@ -55,10 +55,10 @@ public class aad implements xf<za> {
       this.f = $$0.readFloat();
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
-      this.k = $$0.b(ctg.a.class);
+      this.k = $$0.b(cth.a.class);
       this.i = a($$0, $$0.a(kd.j));
       this.j = a($$0, $$0.a(kd.j));
-      this.l = arq.b($$0);
+      this.l = arr.b($$0);
    }
 
    private static <T extends jv> T a(ui $$0, jw<T> $$1) {
@@ -71,9 +71,9 @@ public class aad implements xf<za> {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      int $$1 = aun.a(this.a);
-      int $$2 = aun.a(this.b);
-      int $$3 = aun.a(this.c);
+      int $$1 = auo.a(this.a);
+      int $$2 = auo.a(this.b);
+      int $$3 = auo.a(this.c);
       $$0.a(this.e, ($$3x, $$4) -> {
          int $$5 = $$4.u() - $$1;
          int $$6 = $$4.v() - $$2;
@@ -127,7 +127,7 @@ public class aad implements xf<za> {
       return this.e;
    }
 
-   public ctg.a k() {
+   public cth.a k() {
       return this.k;
    }
 
@@ -139,7 +139,7 @@ public class aad implements xf<za> {
       return this.j;
    }
 
-   public arq n() {
+   public arr n() {
       return this.l;
    }
 }

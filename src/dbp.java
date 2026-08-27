@@ -1,160 +1,253 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dbp {
-   public static final dbp.e[] a = new dbp.e[]{dbp.e.a, dbp.e.b, dbp.e.c};
-   private final dbp.b b;
+public abstract class dbp extends cwq {
+   private static final float a = 1.0F;
+   private static final emm c = cwq.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final emm d = cwq.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final emm e = cwq.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final emm f = cwq.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final emm g = cwq.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final emm h = cwq.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<ic, djy> i = dcd.h;
+   private static final Map<ic, emm> j = ac.a(Maps.newEnumMap(ic.class), $$0 -> {
+      $$0.put(ic.c, g);
+      $$0.put(ic.f, f);
+      $$0.put(ic.d, h);
+      $$0.put(ic.e, e);
+      $$0.put(ic.b, c);
+      $$0.put(ic.a, d);
+   });
+   protected static final ic[] b = ic.values();
+   private final ImmutableMap<djh, emm> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
 
-   public dbp(dbo $$0) {
-      this(new dbp.a($$0));
+   public dbp(djg.d $$0) {
+      super($$0);
+      this.k(a(this.E));
+      this.k = this.a(dbp::o);
+      this.l = ic.c.a.a().allMatch(this::a);
+      this.m = ic.c.a.a().filter(ic.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = ic.c.a.a().filter(ic.a.c).filter(this::a).count() % 2L == 0L;
    }
 
-   public dbp(dbp.b $$0) {
-      this.b = $$0;
-   }
+   @Override
+   protected abstract MapCodec<? extends dbp> a();
 
-   public boolean a(djg $$0, csu $$1, hx $$2, ic $$3) {
-      return ic.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
-   }
+   public static Set<ic> h(djh $$0) {
+      if (!($$0.b() instanceof dbp)) {
+         return Set.of();
+      } else {
+         Set<ic> $$1 = EnumSet.noneOf(ic.class);
 
-   public Optional<dbp.c> a(djg $$0, ctp $$1, hx $$2, auu $$3) {
-      return ic.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(djg $$0, ctp $$1, hx $$2, boolean $$3) {
-      return ic.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<dbp.c> a(djg $$0, ctp $$1, hx $$2, ic $$3, auu $$4, boolean $$5) {
-      return ic.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(djg $$0, ctp $$1, hx $$2, ic $$3, boolean $$4) {
-      return ic.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dbp.c> a(djg $$0, ctp $$1, hx $$2, ic $$3, ic $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dbp.c> a(djg $$0, csu $$1, hx $$2, ic $$3, ic $$4, dbp.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dbp.e $$6 : this.b.a()) {
-            dbp.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
+         for (ic $$2 : ic.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
             }
          }
 
-         return Optional.empty();
+         return $$1;
+      }
+   }
+
+   public static Set<ic> a(byte $$0) {
+      Set<ic> $$1 = EnumSet.noneOf(ic.class);
+
+      for (ic $$2 : ic.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static byte a(Collection<ic> $$0) {
+      byte $$1 = 0;
+
+      for (ic $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(ic $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dji.a<cwq, djh> $$0) {
+      for (ic $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
+   }
+
+   @Override
+   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
+      if (!n($$0)) {
+         return cws.a.o();
       } else {
-         return Optional.empty();
+         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
       }
    }
 
-   public Optional<dbp.c> a(ctp $$0, dbp.c $$1, boolean $$2) {
-      djg $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   @Override
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return (emm)this.k.get($$0);
    }
 
-   public static class a implements dbp.b {
-      protected dbo a;
+   @Override
+   public boolean a(djh $$0, cts $$1, hx $$2) {
+      boolean $$3 = false;
 
-      public a(dbo $$0) {
-         this.a = $$0;
+      for (ic $$4 : b) {
+         if (a($$0, $$4)) {
+            hx $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
+               return false;
+            }
+
+            $$3 = true;
+         }
       }
 
-      @Nullable
-      @Override
-      public djg a(djg $$0, csu $$1, hx $$2, ic $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(csu $$0, hx $$1, hx $$2, ic $$3, djg $$4) {
-         return $$4.i() || $$4.a(this.a) || $$4.a(cwr.G) && $$4.u().b();
-      }
-
-      @Override
-      public boolean a(csu $$0, hx $$1, dbp.c $$2) {
-         djg $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
+      return $$3;
    }
 
-   public interface b {
-      @Nullable
-      djg a(djg var1, csu var2, hx var3, ic var4);
+   @Override
+   public boolean a(djh $$0, cph $$1) {
+      return p($$0);
+   }
 
-      boolean a(csu var1, hx var2, dbp.c var3);
+   @Nullable
+   @Override
+   public djh a(cph $$0) {
+      ctp $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      djh $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
 
-      default dbp.e[] a() {
-         return dbp.a;
-      }
-
-      default boolean a(djg $$0, ic $$1) {
-         return dbo.a($$0, $$1);
-      }
-
-      default boolean a(djg $$0) {
+   public boolean a(csv $$0, djh $$1, hx $$2, ic $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         hx $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
          return false;
       }
+   }
 
-      default boolean b(djg $$0, ic $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(ctp $$0, dbp.c $$1, djg $$2, boolean $$3) {
-         djg $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
+   @Nullable
+   public djh c(djh $$0, csv $$1, hx $$2, ic $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         djh $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.g() && $$0.u().a(ees.c)) {
+            $$4 = this.o().a(djx.C, Boolean.valueOf(true));
          } else {
-            return false;
+            $$4 = this.o();
          }
+
+         return $$4.a(b($$3), Boolean.valueOf(true));
       }
    }
 
-   public static record c(hx a, ic b) {
+   @Override
+   public djh a(djh $$0, ddc $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(csu var1, hx var2, dbp.c var3);
+   @Override
+   public djh a(djh $$0, dbm $$1) {
+      if ($$1 == dbm.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dbm.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
    }
 
-   public static enum e {
-      a {
-         @Override
-         public dbp.c a(hx $$0, ic $$1, ic $$2) {
-            return new dbp.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dbp.c a(hx $$0, ic $$1, ic $$2) {
-            return new dbp.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dbp.c a(hx $$0, ic $$1, ic $$2) {
-            return new dbp.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   private djh a(djh $$0, Function<ic, ic> $$1) {
+      djh $$2 = $$0;
 
-      public abstract dbp.c a(hx var1, ic var2, ic var3);
+      for (ic $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
+         }
+      }
+
+      return $$2;
    }
+
+   public static boolean a(djh $$0, ic $$1) {
+      djy $$2 = b($$1);
+      return $$0.b($$2) && $$0.c($$2);
+   }
+
+   public static boolean a(csv $$0, ic $$1, hx $$2, djh $$3) {
+      return cwq.a($$3.l($$0, $$2), $$1.g()) || cwq.a($$3.k($$0, $$2), $$1.g());
+   }
+
+   private boolean g() {
+      return this.E.d().contains(djx.C);
+   }
+
+   private static djh a(djh $$0, djy $$1) {
+      djh $$2 = $$0.a($$1, Boolean.valueOf(false));
+      return n($$2) ? $$2 : cws.a.o();
+   }
+
+   public static djy b(ic $$0) {
+      return i.get($$0);
+   }
+
+   private static djh a(dji<cwq, djh> $$0) {
+      djh $$1 = $$0.b();
+
+      for (djy $$2 : i.values()) {
+         if ($$1.b($$2)) {
+            $$1 = $$1.a($$2, Boolean.valueOf(false));
+         }
+      }
+
+      return $$1;
+   }
+
+   private static emm o(djh $$0) {
+      emm $$1 = emj.a();
+
+      for (ic $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = emj.a($$1, j.get($$2));
+         }
+      }
+
+      return $$1.c() ? emj.b() : $$1;
+   }
+
+   protected static boolean n(djh $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
+   }
+
+   private static boolean p(djh $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
+   }
+
+   public abstract dbq c();
 }

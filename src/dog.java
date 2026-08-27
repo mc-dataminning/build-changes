@@ -1,108 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dog extends dld {
-   public static final Codec<dog> c = RecordCodecBuilder.create($$0 -> $$0.group(ahe.d(cuu.b)).apply($$0, $$0.stable(dog::new)));
-   private static final int h = 2;
-   private static final List<djg> i = StreamSupport.stream(kd.e.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
-   private static final int j = aun.f(aun.c((float)i.size()));
-   private static final int k = aun.f((float)i.size() / (float)j);
-   protected static final djg d = cwr.a.o();
-   protected static final djg e = cwr.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
-
-   public dog(ih.c<cun> $$0) {
-      super(new cuy($$0));
+public abstract class dog {
+   public static dog.b a(int $$0, int $$1) {
+      return new dog.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   protected Codec<? extends dld> a() {
-      return c;
+   public static dog.b b(int $$0, int $$1) {
+      return new dog.b($$0, $$1);
    }
 
-   @Override
-   public void a(ank $$0, cuh $$1, dpd $$2, dlc $$3) {
+   public static dog a(int $$0) {
+      return new dog.c($$0, false);
    }
 
-   @Override
-   public void a(cuj $$0, dlc $$1, cuh $$2) {
-      hx.a $$3 = new hx.a();
-      csv $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
+   public static dog b(int $$0) {
+      return new dog.c($$0 + 1, false);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = iz.a($$5, $$7);
-            int $$10 = iz.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            djg $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
+   public static dog c(int $$0) {
+      return new dog.c($$0, true);
+   }
+
+   public static dog d(int $$0) {
+      return new dog.c($$0 - 1, true);
+   }
+
+   public static dog a() {
+      return dog.a.a;
+   }
+
+   public static dog a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public CompletableFuture<dlc> a(Executor $$0, dpr $$1, dpd $$2, cuh $$3, dlc $$4) {
-      return CompletableFuture.completedFuture($$4);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dog a(OptionalInt $$0) {
+      return a($$0, this.b());
    }
 
-   @Override
-   public int a(int $$0, int $$1, dop.a $$2, ctq $$3, dpd $$4) {
-      return 0;
+   public dog b(OptionalInt $$0) {
+      return a(this.c(), $$0);
    }
 
-   @Override
-   public cua a(int $$0, int $$1, ctq $$2, dpd $$3) {
-      return new cua(0, new djg[0]);
+   public static Optional<dog> a(ctv $$0, hx $$1, int $$2, Predicate<djh> $$3, Predicate<djh> $$4) {
+      hx.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.a);
+         return Optional.of(a($$8, $$7));
+      }
    }
 
-   @Override
-   public void a(List<String> $$0, dpd $$1, hx $$2) {
+   private static OptionalInt a(ctv $$0, int $$1, Predicate<djh> $$2, Predicate<djh> $$3, hx.a $$4, int $$5, ic $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static djg a(int $$0, int $$1) {
-      djg $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = aun.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
-            }
+   public static final class a extends dog {
+      static final dog.a a = new dog.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dog {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      return $$2;
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   @Override
-   public void a(ank $$0, long $$1, dpd $$2, cup $$3, cuh $$4, dlc $$5, dol.a $$6) {
-   }
+   public static final class c extends dog {
+      private final int a;
+      private final boolean b;
 
-   @Override
-   public void a(ank $$0) {
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public int f() {
-      return 0;
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   @Override
-   public int d() {
-      return 384;
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   @Override
-   public int e() {
-      return 63;
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

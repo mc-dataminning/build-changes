@@ -64,7 +64,7 @@ public class aoi implements AutoCloseable {
    }
 
    private static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? aud.a($$0, $$1, $$2) : $$2;
+      return $$0 != null ? aue.a($$0, $$1, $$2) : $$2;
    }
 
    @Nullable
@@ -73,18 +73,18 @@ public class aoi implements AutoCloseable {
          return null;
       } else {
          try {
-            JsonObject $$1 = aud.a($$0);
-            URI $$2 = new URI(aud.i($$1, "apiServer"));
-            String $$3 = aud.i($$1, "apiKey");
+            JsonObject $$1 = aue.a($$0);
+            URI $$2 = new URI(aue.i($$1, "apiServer"));
+            String $$3 = aue.i($$1, "apiKey");
             if ($$3.isEmpty()) {
                throw new IllegalArgumentException("Missing API key");
             } else {
-               int $$4 = aud.a($$1, "ruleId", 1);
-               String $$5 = aud.a($$1, "serverId", "");
-               String $$6 = aud.a($$1, "roomId", "Java:Chat");
-               int $$7 = aud.a($$1, "hashesToDrop", -1);
-               int $$8 = aud.a($$1, "maxConcurrentRequests", 7);
-               JsonObject $$9 = aud.a($$1, "endpoints", null);
+               int $$4 = aue.a($$1, "ruleId", 1);
+               String $$5 = aue.a($$1, "serverId", "");
+               String $$6 = aue.a($$1, "roomId", "Java:Chat");
+               int $$7 = aue.a($$1, "hashesToDrop", -1);
+               int $$8 = aue.a($$1, "maxConcurrentRequests", 7);
+               JsonObject $$9 = aue.a($$1, "endpoints", null);
                String $$10 = a($$9, "chat", "v1/chat");
                boolean $$11 = $$10.equals("v1/chat");
                URL $$12 = $$2.resolve("/" + $$10).toURL();
@@ -155,15 +155,15 @@ public class aoi implements AutoCloseable {
 
          try {
             JsonObject $$4 = this.a($$3x, this.e);
-            boolean $$5 = aud.a($$4, "response", false);
+            boolean $$5 = aue.a($$4, "response", false);
             if ($$5) {
                return anu.a($$1);
             } else {
-               String $$6 = aud.a($$4, "hashed", null);
+               String $$6 = aue.a($$4, "hashed", null);
                if ($$6 == null) {
                   return anu.b($$1);
                } else {
-                  JsonArray $$7 = aud.v($$4, "hashes");
+                  JsonArray $$7 = aue.v($$4, "hashes");
                   vj $$8 = this.a($$1, $$7, $$2);
                   return new anu($$1, $$8);
                }
@@ -319,7 +319,7 @@ public class aoi implements AutoCloseable {
 
       d(GameProfile $$0) {
          this.c = $$0;
-         bit<Runnable> $$1 = bit.a(aoi.this.m, "chat stream for " + $$0.getName());
+         biu<Runnable> $$1 = biu.a(aoi.this.m, "chat stream for " + $$0.getName());
          this.d = $$1::a;
       }
 

@@ -1,55 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddg extends cwb {
-   public static final MapCodec<ddg> a = b(ddg::new);
-   public static final djx b = djw.E;
-   private final bjf c = bjc.a(5);
+public class ddg extends cza implements ddf {
+   public static final MapCodec<ddg> b = b(ddg::new);
 
    @Override
    public MapCodec<ddg> a() {
-      return a;
+      return b;
    }
 
-   public ddg(djf.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(b);
+   public ddg(djg.d $$0) {
+      super(bjd.a(1), $$0);
    }
 
    @Override
-   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+   public int a(ddk.a $$0, ctq $$1, hx $$2, auv $$3, ddk $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         hx $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               hx $$10 = $$7.c();
+               djh $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), art.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
       }
    }
 
-   @Nullable
-   @Override
-   public dgu a(hx $$0, djg $$1) {
-      return new dhz($$0, $$1);
+   private static int a(ddk $$0, hx $$1, hx $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = auo.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = auo.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Nullable
-   @Override
-   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
-      return $$0.B ? null : a($$2, dgw.K, dhz::a);
-   }
-
-   @Override
-   public dcu b_(djg $$0) {
-      return dcu.c;
-   }
-
-   @Override
-   public void a(djg $$0, and $$1, hx $$2, cmx $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   private djh a(ctq $$0, hx $$1, auv $$2, boolean $$3) {
+      djh $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = cws.qV.o().a(ddj.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = cws.qQ.o();
       }
+
+      return $$4.b(djx.C) && !$$0.b_($$1).c() ? $$4.a(djx.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(ctq $$0, hx $$1) {
+      djh $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(cws.G) && $$2.u().b(ees.c)) {
+         int $$3 = 0;
+
+         for (hx $$4 : hx.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            djh $$5 = $$0.a_($$4);
+            if ($$5.a(cws.qQ) || $$5.a(cws.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

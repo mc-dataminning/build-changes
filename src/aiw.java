@@ -20,7 +20,7 @@ public class aiw {
    }
 
    private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqu $$2 = $$0.l().ae();
+      aqv $$2 = $$0.l().ae();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

@@ -1,40 +1,33 @@
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class esh {
-   private final etv a;
-   private boolean b;
-   private String c;
+   public final etq a = new etq(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<etq.e<?>> h;
+   public final etq.e<List<erh>> b;
+   public final etq.e<esh.a> c;
+   public final etq.e<Integer> d;
+   public final etq.e<Boolean> e;
+   public final etq.e<erg> f;
+   public final esi g = new esi(new etw());
 
-   public esh(etv $$0) {
-      this.a = $$0;
-      etv.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+   public esh(eqr $$0) {
+      this.c = this.a.a("server list", () -> {
+         erk $$1 = $$0.b();
+         return eqm.b() ? new esh.a($$1.a, $$0.c()) : new esh.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), etr.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), etr.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), etr.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), etr.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), etr.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   public boolean a() {
-      return this.b;
+   public List<etq.e<?>> a() {
+      return this.h;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(erf $$0) {
-      etv.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private etv.a b(erf $$0) {
-      etv.a $$1 = new etv.a();
-      $$1.a = $$0.a;
-      etv.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+   public static record a(List<eri> a, List<eri> b) {
    }
 }

@@ -1,171 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqr extends dqu<dqq> {
-   public dqr(Codec<dqq> $$0) {
-      super($$0);
+public class dqr extends dqo {
+   public static final Codec<dqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dqo.d.forGetter($$0x -> $$0x),
+               bje.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bje.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bje.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dqr::new)
+   );
+   public final bje b;
+   public final bje c;
+   final bje j;
+
+   public dqr(float $$0, dxn $$1, bje $$2, dpk $$3, dqp $$4, il<cwq> $$5, bje $$6, bje $$7, bje $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public boolean a(dqq $$0, auu $$1) {
-      return $$1.i() <= $$0.l;
+   public dqr(float $$0, dxn $$1, bje $$2, dpk $$3, il<cwq> $$4, bje $$5, bje $$6, bje $$7) {
+      this($$0, $$1, $$2, $$3, dqp.a, $$4, $$5, $$6, $$7);
    }
 
-   public boolean a(dqp $$0, dqq $$1, dlc $$2, Function<hx, ih<cun>> $$3, auu $$4, dob $$5, csv $$6, dlb $$7) {
-      int $$8 = iz.c(this.d() * 2 - 1);
-      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
-
-      for (int $$10 = 0; $$10 < $$9; $$10++) {
-         double $$11 = (double)$$6.a($$4.a(16));
-         double $$12 = (double)$$1.e.a($$4, $$0);
-         double $$13 = (double)$$6.b($$4.a(16));
-         double $$14 = (double)$$1.b.a($$4);
-         double $$15 = (double)$$1.c.a($$4);
-         double $$16 = (double)$$1.j.a($$4);
-         dqu.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
-         int $$18 = 1;
-         if ($$4.a(4) == 0) {
-            double $$19 = (double)$$1.f.a($$4);
-            float $$20 = 1.0F + $$4.i() * 6.0F;
-            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
-            $$18 += $$4.a(4);
-         }
-
-         for (int $$21 = 0; $$21 < $$18; $$21++) {
-            float $$22 = $$4.i() * (float) (Math.PI * 2);
-            float $$23 = ($$4.i() - 0.5F) / 4.0F;
-            float $$24 = this.a($$4);
-            int $$25 = $$8 - $$4.a($$8 / 4);
-            int $$26 = 0;
-            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
-         }
-      }
-
-      return true;
-   }
-
-   protected int a() {
-      return 15;
-   }
-
-   protected float a(auu $$0) {
-      float $$1 = $$0.i() * 2.0F + $$0.i();
-      if ($$0.a(10) == 0) {
-         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
-      }
-
-      return $$1;
-   }
-
-   protected double b() {
-      return 1.0;
-   }
-
-   protected void a(
-      dqp $$0, dqq $$1, dlc $$2, Function<hx, ih<cun>> $$3, dob $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dlb $$10, dqu.a $$11
-   ) {
-      double $$12 = 1.5 + (double)(aun.a((float) (Math.PI / 2)) * $$8);
-      double $$13 = $$12 * $$9;
-      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
-   }
-
-   protected void a(
-      dqp $$0,
-      dqq $$1,
-      dlc $$2,
-      Function<hx, ih<cun>> $$3,
-      long $$4,
-      dob $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      double $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      int $$14,
-      int $$15,
-      double $$16,
-      dlb $$17,
-      dqu.a $$18
-   ) {
-      auu $$19 = auu.a($$4);
-      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
-      boolean $$21 = $$19.a(6) == 0;
-      float $$22 = 0.0F;
-      float $$23 = 0.0F;
-
-      for (int $$24 = $$14; $$24 < $$15; $$24++) {
-         double $$25 = 1.5 + (double)(aun.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
-         double $$26 = $$25 * $$16;
-         float $$27 = aun.b($$13);
-         $$6 += (double)(aun.b($$12) * $$27);
-         $$7 += (double)aun.a($$13);
-         $$8 += (double)(aun.a($$12) * $$27);
-         $$13 *= $$21 ? 0.92F : 0.7F;
-         $$13 += $$23 * 0.1F;
-         $$12 += $$22 * 0.1F;
-         $$23 *= 0.9F;
-         $$22 *= 0.75F;
-         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
-         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
-         if ($$24 == $$20 && $$11 > 1.0F) {
-            this.a(
-               $$0,
-               $$1,
-               $$2,
-               $$3,
-               $$19.g(),
-               $$5,
-               $$6,
-               $$7,
-               $$8,
-               $$9,
-               $$10,
-               $$19.i() * 0.5F + 0.5F,
-               $$12 - (float) (Math.PI / 2),
-               $$13 / 3.0F,
-               $$24,
-               $$15,
-               1.0,
-               $$17,
-               $$18
-            );
-            this.a(
-               $$0,
-               $$1,
-               $$2,
-               $$3,
-               $$19.g(),
-               $$5,
-               $$6,
-               $$7,
-               $$8,
-               $$9,
-               $$10,
-               $$19.i() * 0.5F + 0.5F,
-               $$12 + (float) (Math.PI / 2),
-               $$13 / 3.0F,
-               $$24,
-               $$15,
-               1.0,
-               $$17,
-               $$18
-            );
-            return;
-         }
-
-         if ($$19.a(4) != 0) {
-            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
-               return;
-            }
-
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
-         }
-      }
-   }
-
-   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
+   public dqr(dqo $$0, bje $$1, bje $$2, bje $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

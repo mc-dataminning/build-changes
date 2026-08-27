@@ -1,40 +1,66 @@
-public class fpp extends fru {
-   fpp(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+public class fpp extends frv {
+   private final float a;
+   private final float b;
+
+   fpp(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cmy $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(hx.a(this.g, this.h, this.i)).a(asl.a)) {
-         this.k();
-      }
+   public fqz b() {
+      return fqz.a;
+   }
+
+   protected fpp(fns $$0, double $$1, double $$2, double $$3, cmy $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(evi.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public fqy b() {
-      return fqy.b;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements fqx<ka> {
-      private final frp a;
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-      public a(frp $$0) {
-         this.a = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements fqy<jt> {
+      public fqv a(jt $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
+   }
 
-      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpp $$8 = new fpp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class b implements fqy<ka> {
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpp($$1, $$2, $$3, $$4, new cmy(cnb.qN));
+      }
+   }
+
+   public static class c implements fqy<ka> {
+      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpp($$1, $$2, $$3, $$4, new cmy(cnb.qz));
       }
    }
 }

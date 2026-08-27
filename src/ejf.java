@@ -1,45 +1,70 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
 public class ejf {
-   private static final BiMap<ahg, eje> p = HashBiMap.create();
-   public static final Codec<eje> a = ahg.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((eje)p.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         p.inverse()::get
-      );
-   public static final eje b = a("empty", $$0 -> {
-   });
-   public static final eje c = a("chest", $$0 -> $$0.a(ejg.f).b(ejg.a));
-   public static final eje d = a("command", $$0 -> $$0.a(ejg.f).b(ejg.a));
-   public static final eje e = a("selector", $$0 -> $$0.a(ejg.f).a(ejg.a));
-   public static final eje f = a("fishing", $$0 -> $$0.a(ejg.f).a(ejg.i).b(ejg.a));
-   public static final eje g = a("entity", $$0 -> $$0.a(ejg.a).a(ejg.f).a(ejg.c).b(ejg.d).b(ejg.e).b(ejg.b));
-   public static final eje h = a("archaeology", $$0 -> $$0.a(ejg.f).b(ejg.a));
-   public static final eje i = a("gift", $$0 -> $$0.a(ejg.f).a(ejg.a));
-   public static final eje j = a("barter", $$0 -> $$0.a(ejg.a));
-   public static final eje k = a("advancement_reward", $$0 -> $$0.a(ejg.a).a(ejg.f));
-   public static final eje l = a("advancement_entity", $$0 -> $$0.a(ejg.a).a(ejg.f));
-   public static final eje m = a("advancement_location", $$0 -> $$0.a(ejg.a).a(ejg.f).a(ejg.i).a(ejg.g));
-   public static final eje n = a("generic", $$0 -> $$0.a(ejg.a).a(ejg.b).a(ejg.c).a(ejg.d).a(ejg.e).a(ejg.f).a(ejg.g).a(ejg.h).a(ejg.i).a(ejg.j));
-   public static final eje o = a("block", $$0 -> $$0.a(ejg.g).a(ejg.f).a(ejg.i).b(ejg.a).b(ejg.h).b(ejg.j));
+   private final Set<eje<?>> a;
+   private final Set<eje<?>> b;
 
-   private static eje a(String $$0, Consumer<eje.a> $$1) {
-      eje.a $$2 = new eje.a();
-      $$1.accept($$2);
-      eje $$3 = $$2.a();
-      ahg $$4 = new ahg($$0);
-      eje $$5 = (eje)p.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
+   ejf(Set<eje<?>> $$0, Set<eje<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   }
+
+   public boolean a(eje<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eje<?>> a() {
+      return this.a;
+   }
+
+   public Set<eje<?>> b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(ehf $$0, egx $$1) {
+      Set<eje<?>> $$2 = $$1.a();
+      Set<eje<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static ejf.a c() {
+      return new ejf.a();
+   }
+
+   public static class a {
+      private final Set<eje<?>> a = Sets.newIdentityHashSet();
+      private final Set<eje<?>> b = Sets.newIdentityHashSet();
+
+      public ejf.a a(eje<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public ejf.a b(eje<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public ejf a() {
+         return new ejf(this.a, this.b);
       }
    }
 }

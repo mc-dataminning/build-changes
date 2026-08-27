@@ -19,7 +19,7 @@ public class aai implements xf<za> {
       this.h = $$0.n();
    }
 
-   public aai(dkx $$0) {
+   public aai(dky $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
       this.c = $$0.i();

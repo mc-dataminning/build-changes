@@ -9,33 +9,33 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ank implements cuj {
+public class ank implements cuk {
    private static final Logger a = LogUtils.getLogger();
-   private final List<dlc> b;
-   private final dlc c;
+   private final List<dld> b;
+   private final dld c;
    private final int d;
    private final and e;
    private final long f;
-   private final egh g;
-   private final auu h;
-   private final dmp i;
-   private final eno<cwp> j = new eno<>($$0x -> this.y($$0x).o());
-   private final eno<eep> k = new eno<>($$0x -> this.y($$0x).p());
-   private final cup l;
-   private final csv m;
-   private final csv n;
-   private final cuh o;
-   private final dlh p;
+   private final egi g;
+   private final auv h;
+   private final dmq i;
+   private final enp<cwq> j = new enp<>($$0x -> this.y($$0x).o());
+   private final enp<eeq> k = new enp<>($$0x -> this.y($$0x).p());
+   private final cuq l;
+   private final csw m;
+   private final csw n;
+   private final cui o;
+   private final dli p;
    private final int q;
    @Nullable
    private Supplier<String> r;
    private final AtomicLong s = new AtomicLong();
    private static final ahg t = new ahg("worldgen_region_random");
 
-   public ank(and $$0, List<dlc> $$1, dlh $$2, int $$3) {
+   public ank(and $$0, List<dld> $$1, dli $$2, int $$3) {
       this.p = $$2;
       this.q = $$3;
-      int $$4 = aun.a(Math.sqrt((double)$$1.size()));
+      int $$4 = auo.a(Math.sqrt((double)$$1.size()));
       if ($$4 * $$4 != $$1.size()) {
          throw (IllegalStateException)ac.b(new IllegalStateException("Cache size is not a square."));
       } else {
@@ -47,18 +47,18 @@ public class ank implements cuj {
          this.g = $$0.B_();
          this.h = $$0.l().i().a(t).a(this.c.f().l());
          this.i = $$0.E_();
-         this.l = new cup(this, cup.a(this.f));
+         this.l = new cuq(this, cuq.a(this.f));
          this.m = $$1.get(0).f();
          this.n = $$1.get($$1.size() - 1).f();
          this.o = $$0.a().a(this);
       }
    }
 
-   public boolean a(csv $$0, int $$1) {
+   public boolean a(csw $$0, int $$1) {
       return this.e.l().a.b($$0, $$1);
    }
 
-   public csv a() {
+   public csw a() {
       return this.c.f();
    }
 
@@ -68,14 +68,14 @@ public class ank implements cuj {
    }
 
    @Override
-   public dlc a(int $$0, int $$1) {
-      return this.a($$0, $$1, dlh.c);
+   public dld a(int $$0, int $$1) {
+      return this.a($$0, $$1, dli.c);
    }
 
    @Nullable
    @Override
-   public dlc a(int $$0, int $$1, dlh $$2, boolean $$3) {
-      dlc $$6;
+   public dld a(int $$0, int $$1, dli $$2, boolean $$3) {
+      dld $$6;
       if (this.b($$0, $$1)) {
          int $$4 = $$0 - this.m.e;
          int $$5 = $$1 - this.m.f;
@@ -108,18 +108,18 @@ public class ank implements cuj {
    }
 
    @Override
-   public djg a_(hx $$0) {
+   public djh a_(hx $$0) {
       return this.a(iz.a($$0.u()), iz.a($$0.w())).a_($$0);
    }
 
    @Override
-   public eeq b_(hx $$0) {
+   public eer b_(hx $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cfh a(double $$0, double $$1, double $$2, double $$3, Predicate<blu> $$4) {
+   public cfi a(double $$0, double $$1, double $$2, double $$3, Predicate<blv> $$4) {
       return null;
    }
 
@@ -129,12 +129,12 @@ public class ank implements cuj {
    }
 
    @Override
-   public cup G_() {
+   public cuq G_() {
       return this.l;
    }
 
    @Override
-   public ih<cun> a(int $$0, int $$1, int $$2) {
+   public ih<cuo> a(int $$0, int $$1, int $$2) {
       return this.e.a($$0, $$1, $$2);
    }
 
@@ -144,44 +144,44 @@ public class ank implements cuj {
    }
 
    @Override
-   public eef z_() {
+   public eeg z_() {
       return this.e.z_();
    }
 
    @Override
-   public boolean a(hx $$0, boolean $$1, @Nullable blu $$2, int $$3) {
-      djg $$4 = this.a_($$0);
+   public boolean a(hx $$0, boolean $$1, @Nullable blv $$2, int $$3) {
+      djh $$4 = this.a_($$0);
       if ($$4.i()) {
          return false;
       } else {
          if ($$1) {
-            dgu $$5 = $$4.t() ? this.c_($$0) : null;
-            cwp.a($$4, (cto)this.e, $$0, $$5, $$2, cmx.f);
+            dgv $$5 = $$4.t() ? this.c_($$0) : null;
+            cwq.a($$4, (ctp)this.e, $$0, $$5, $$2, cmy.f);
          }
 
-         return this.a($$0, cwr.a.o(), 3, $$3);
+         return this.a($$0, cws.a.o(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dgu c_(hx $$0) {
-      dlc $$1 = this.y($$0);
-      dgu $$2 = $$1.c_($$0);
+   public dgv c_(hx $$0) {
+      dld $$1 = this.y($$0);
+      dgv $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          sn $$3 = $$1.f($$0);
-         djg $$4 = $$1.a_($$0);
+         djh $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.t()) {
                   return null;
                }
 
-               $$2 = ((czh)$$4.b()).a($$0, $$4);
+               $$2 = ((czi)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dgu.a($$0, $$4, $$3);
+               $$2 = dgv.a($$0, $$4, $$3);
             }
 
             if ($$2 != null) {
@@ -202,12 +202,12 @@ public class ank implements cuj {
    public boolean f_(hx $$0) {
       int $$1 = iz.a($$0.u());
       int $$2 = iz.a($$0.w());
-      csv $$3 = this.a();
+      csw $$3 = this.a();
       int $$4 = Math.abs($$3.e - $$1);
       int $$5 = Math.abs($$3.f - $$2);
       if ($$4 <= this.q && $$5 <= this.q) {
          if (this.c.y()) {
-            ctq $$6 = this.c.z();
+            ctr $$6 = this.c.z();
             if ($$0.v() < $$6.J_() || $$0.v() >= $$6.al()) {
                return false;
             }
@@ -231,19 +231,19 @@ public class ank implements cuj {
    }
 
    @Override
-   public boolean a(hx $$0, djg $$1, int $$2, int $$3) {
+   public boolean a(hx $$0, djh $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dlc $$4 = this.y($$0);
-         djg $$5 = $$4.a($$0, $$1, false);
+         dld $$4 = this.y($$0);
+         djh $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.e.a($$0, $$5, $$1);
          }
 
          if ($$1.t()) {
-            if ($$4.j().g() == dlh.a.b) {
-               dgu $$6 = ((czh)$$1.b()).a($$0, $$1);
+            if ($$4.j().g() == dli.a.b) {
+               dgv $$6 = ((czi)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -274,7 +274,7 @@ public class ank implements cuj {
    }
 
    @Override
-   public boolean b(blu $$0) {
+   public boolean b(blv $$0) {
       int $$1 = iz.a($$0.dq());
       int $$2 = iz.a($$0.dw());
       this.a($$1, $$2).a($$0);
@@ -283,11 +283,11 @@ public class ank implements cuj {
 
    @Override
    public boolean a(hx $$0, boolean $$1) {
-      return this.a($$0, cwr.a.o(), 3);
+      return this.a($$0, cws.a.o(), 3);
    }
 
    @Override
-   public dkx D_() {
+   public dky D_() {
       return this.e.D_();
    }
 
@@ -308,21 +308,21 @@ public class ank implements cuj {
    }
 
    @Override
-   public chr I() {
+   public chs I() {
       return this.e.I();
    }
 
    @Override
-   public egh B_() {
+   public egi B_() {
       return this.g;
    }
 
    @Override
-   public bjy d_(hx $$0) {
+   public bjz d_(hx $$0) {
       if (!this.b(iz.a($$0.u()), iz.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bjy(this.e.ak(), this.e.Y(), 0L, this.e.ap());
+         return new bjz(this.e.ak(), this.e.Y(), 0L, this.e.ap());
       }
    }
 
@@ -333,7 +333,7 @@ public class ank implements cuj {
    }
 
    @Override
-   public dlg L() {
+   public dlh L() {
       return this.e.l();
    }
 
@@ -343,12 +343,12 @@ public class ank implements cuj {
    }
 
    @Override
-   public enf<cwp> N() {
+   public eng<cwq> N() {
       return this.j;
    }
 
    @Override
-   public enf<eep> M() {
+   public eng<eeq> M() {
       return this.k;
    }
 
@@ -358,17 +358,17 @@ public class ank implements cuj {
    }
 
    @Override
-   public auu F_() {
+   public auv F_() {
       return this.h;
    }
 
    @Override
-   public int a(dop.a $$0, int $$1, int $$2) {
+   public int a(doq.a $$0, int $$1, int $$2) {
       return this.a(iz.a($$1), iz.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cfh $$0, hx $$1, arq $$2, ars $$3, float $$4, float $$5) {
+   public void a(@Nullable cfi $$0, hx $$1, arr $$2, art $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -376,40 +376,40 @@ public class ank implements cuj {
    }
 
    @Override
-   public void a(@Nullable cfh $$0, int $$1, hx $$2, int $$3) {
+   public void a(@Nullable cfi $$0, int $$1, hx $$2, int $$3) {
    }
 
    @Override
-   public void a(dnq $$0, els $$1, dnq.a $$2) {
+   public void a(dnr $$0, elt $$1, dnr.a $$2) {
    }
 
    @Override
-   public dmp E_() {
+   public dmq E_() {
       return this.i;
    }
 
    @Override
-   public boolean a(hx $$0, Predicate<djg> $$1) {
+   public boolean a(hx $$0, Predicate<djh> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(hx $$0, Predicate<eeq> $$1) {
+   public boolean b(hx $$0, Predicate<eer> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends blu> List<T> a(dne<blu, T> $$0, eln $$1, Predicate<? super T> $$2) {
+   public <T extends blv> List<T> a(dnf<blv, T> $$0, elo $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<blu> a(@Nullable blu $$0, eln $$1, @Nullable Predicate<? super blu> $$2) {
+   public List<blv> a(@Nullable blv $$0, elo $$1, @Nullable Predicate<? super blv> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cfh> x() {
+   public List<cfi> x() {
       return Collections.emptyList();
    }
 

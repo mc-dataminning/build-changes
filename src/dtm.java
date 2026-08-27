@@ -1,96 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dtm extends drt<due> {
-   private static final ic[] a = ic.values();
-
-   public dtm(Codec<due> $$0) {
+public class dtm extends dtj {
+   public dtm(Codec<dux> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drv<due> $$0) {
-      cuj $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      auu $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
+   protected Set<hx> a(cuk $$0, dux $$1, auv $$2, hx $$3, Predicate<djh> $$4, int $$5, int $$6) {
+      Set<hx> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hx> $$8 = new HashSet<>();
+      hx.a $$9 = new hx.a();
+
+      for (hx $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hx $$11 : $$8) {
+         $$0.a($$11, cws.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(cuk $$0, Set<hx> $$1, hx $$2, hx.a $$3) {
+      return a($$0, $$2, $$3, ic.c) || a($$0, $$2, $$3, ic.f) || a($$0, $$2, $$3, ic.d) || a($$0, $$2, $$3, ic.e) || a($$0, $$2, $$3, ic.a);
+   }
+
+   private static boolean a(cuk $$0, hx $$1, hx.a $$2, ic $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(cuk $$0, dux $$1, dle $$2, auv $$3, hx $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         djh $$5 = $$0.a_($$4);
+         if ($$5.b(djx.C) && !$$5.c(djx.C)) {
+            $$0.a($$4, $$5.a(djx.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
       } else {
-         djg $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cwr.dV) && !$$4.a(cwr.kK)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
-      }
-   }
-
-   private void a(ctp $$0, auu $$1, hx $$2) {
-      $$0.a($$2, cwr.kK.o(), 2);
-      hx.a $$3 = new hx.a();
-      hx.a $$4 = new hx.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (ic $$7 : a) {
-               djg $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(cwr.dV) || $$8.a(cwr.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, cwr.kK.o(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(ctp $$0, auu $$1, hx $$2) {
-      hx.a $$3 = new hx.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            djg $$5 = $$0.a_($$3.c());
-            if ($$5.a(cwr.dV) || $$5.a(cwr.kK)) {
-               int $$6 = aun.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(ctp $$0, auu $$1, hx.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.d())) {
-               $$0.a($$2, cwr.oz.o().a(dae.e, Integer.valueOf(aun.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, cwr.oA.o(), 2);
-         }
-
-         $$2.c(ic.a);
+         return false;
       }
    }
 }

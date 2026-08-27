@@ -13,7 +13,7 @@ public class cy extends cv<cy.a> {
    }
 
    public static record a(Optional<bb> b) implements cv.a {
-      public static final Codec<cy.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atv.a(bp.b, "player").forGetter(cy.a::a)).apply($$0, cy.a::new));
+      public static final Codec<cy.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atw.a(bp.b, "player").forGetter(cy.a::a)).apply($$0, cy.a::new));
 
       public static an<cy.a> a(bp.a $$0) {
          return am.S.a(new cy.a(Optional.of(bp.a($$0))));

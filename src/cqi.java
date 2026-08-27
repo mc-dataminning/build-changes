@@ -1,114 +1,90 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-public class cqi implements cps {
-   final cqj a;
-   final cmx b;
-   final String c;
-   final cpr d;
-   final boolean e;
-
-   public cqi(String $$0, cpr $$1, cqj $$2, cmx $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class cqi extends cpu {
+   public cqi(cps $$0) {
+      super($$0);
    }
 
-   public cqi(String $$0, cpr $$1, cqj $$2, cmx $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(cir $$0, ctp $$1) {
+      List<cmy> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cmy $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cmy $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return $$2.size() == 2;
    }
 
-   @Override
-   public cqf<?> ar_() {
-      return cqf.a;
-   }
+   public cmy a(cir $$0, iu $$1) {
+      List<cmy> $$2 = Lists.newArrayList();
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cmy $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cmy $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return cmy.f;
+               }
+            }
+         }
+      }
 
-   @Override
-   public cpr d() {
-      return this.d;
-   }
+      if ($$2.size() == 2) {
+         cmy $$6 = $$2.get(0);
+         cmy $$7 = $$2.get(1);
+         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
+            cmt $$8 = $$6.d();
+            int $$9 = $$8.n() - $$6.k();
+            int $$10 = $$8.n() - $$7.k();
+            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
+            int $$12 = $$8.n() - $$11;
+            if ($$12 < 0) {
+               $$12 = 0;
+            }
 
-   @Override
-   public cmx a(iu $$0) {
-      return this.b;
-   }
+            cmy $$13 = new cmy($$6.d());
+            $$13.b($$12);
+            Map<crj, Integer> $$14 = Maps.newHashMap();
+            Map<crj, Integer> $$15 = crl.a($$6);
+            Map<crj, Integer> $$16 = crl.a($$7);
+            kd.f.s().filter(crj::c).forEach($$3x -> {
+               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
+               if ($$4 > 0) {
+                  $$14.put($$3x, $$4);
+               }
+            });
+            if (!$$14.isEmpty()) {
+               crl.a($$14, $$13);
+            }
 
-   @Override
-   public iq<cpy> a() {
-      return this.a.c();
-   }
+            return $$13;
+         }
+      }
 
-   @Override
-   public boolean h() {
-      return this.e;
+      return cmy.f;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(ciq $$0, cto $$1) {
-      return this.a.a($$0);
-   }
-
-   public cmx a(ciq $$0, iu $$1) {
-      return this.a($$1).p();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      iq<cpy> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cqf<cqi> {
-      public static final Codec<cqi> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atv.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  cpr.e.fieldOf("category").orElse(cpr.d).forGetter($$0x -> $$0x.d),
-                  cqj.a.forGetter($$0x -> $$0x.a),
-                  cmx.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  atv.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cqi::new)
-      );
-
-      @Override
-      public Codec<cqi> a() {
-         return x;
-      }
-
-      public cqi b(ui $$0) {
-         String $$1 = $$0.s();
-         cpr $$2 = $$0.b(cpr.class);
-         cqj $$3 = cqj.b($$0);
-         cmx $$4 = $$0.r();
-         boolean $$5 = $$0.readBoolean();
-         return new cqi($$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(ui $$0, cqi $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-         $$0.a($$1.e);
-      }
+   public cqg<?> ar_() {
+      return cqg.o;
    }
 }

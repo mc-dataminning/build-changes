@@ -1,21 +1,21 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dqh implements dpw {
-   protected final jb f;
+@Deprecated
+public class dqh extends dqi {
+   public static final Codec<dqh> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dqh::new));
 
-   protected static <P extends dqh> P1<Mu<P>, jb> a(Instance<P> $$0) {
-      return $$0.group(jb.v(16).optionalFieldOf("offset", jb.g).forGetter($$0x -> $$0x.f));
+   public dqh(jb $$0) {
+      super($$0);
    }
 
-   protected dqh(jb $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(djh $$0) {
+      return $$0.e();
    }
 
-   public final boolean a(cuj $$0, hx $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dpy<?> a() {
+      return dpy.e;
    }
-
-   protected abstract boolean a(djg var1);
 }

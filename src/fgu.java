@@ -1,5 +1,5 @@
-public interface fgu {
-   void H();
+import java.util.List;
 
-   fgo I();
+public interface fgu {
+   void a(List<cqe<?>> var1);
 }

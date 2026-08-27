@@ -3,11 +3,11 @@ import javax.annotation.Nullable;
 
 public class anp implements anm {
    private final anm a;
-   private final bit<Runnable> b;
+   private final biu<Runnable> b;
 
    private anp(anm $$0, Executor $$1) {
       this.a = $$0;
-      this.b = bit.a($$1, "progressListener");
+      this.b = biu.a($$1, "progressListener");
    }
 
    public static anp a(anm $$0, Executor $$1) {
@@ -17,12 +17,12 @@ public class anp implements anm {
    }
 
    @Override
-   public void a(csv $$0) {
+   public void a(csw $$0) {
       this.b.a(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(csv $$0, @Nullable dlh $$1) {
+   public void a(csw $$0, @Nullable dli $$1) {
       this.b.a(() -> this.a.a($$0, $$1));
    }
 

@@ -4,9 +4,9 @@ public class zw implements xf<za> {
    private final int c;
    private final int d;
    private final int e;
-   private final cmx f;
+   private final cmy f;
 
-   public zw(int $$0, int $$1, int $$2, cmx $$3) {
+   public zw(int $$0, int $$1, int $$2, cmy $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -40,7 +40,7 @@ public class zw implements xf<za> {
       return this.e;
    }
 
-   public cmx e() {
+   public cmy e() {
       return this.f;
    }
 

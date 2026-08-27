@@ -14,33 +14,33 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class anb extends dlg {
-   private static final List<dlh> b = dlh.a();
+public class anb extends dlh {
+   private static final List<dli> b = dli.a();
    private final amv c;
    final and d;
    final Thread e;
    final ang f;
    private final anb.b g;
    public final amn a;
-   private final egg h;
+   private final egh h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final dlh[] n = new dlh[4];
-   private final dlc[] o = new dlc[4];
+   private final dli[] n = new dli[4];
+   private final dld[] o = new dld[4];
    @Nullable
-   @avs
-   private ctz.d p;
+   @avt
+   private cua.d p;
 
-   public anb(and $$0, egl.c $$1, DataFixer $$2, edg $$3, Executor $$4, dld $$5, int $$6, int $$7, boolean $$8, anm $$9, dmw $$10, Supplier<egg> $$11) {
+   public anb(and $$0, egm.c $$1, DataFixer $$2, edh $$3, Executor $$4, dle $$5, int $$6, int $$7, boolean $$8, anm $$9, dmx $$10, Supplier<egh> $$11) {
       this.d = $$0;
       this.g = new anb.b($$0);
       this.e = Thread.currentThread();
       File $$12 = $$1.a($$0.ae()).resolve("data").toFile();
       $$12.mkdirs();
-      this.h = new egg($$12, $$2);
+      this.h = new egh($$12, $$2);
       this.a = new amn($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.e();
       this.c = this.a.j();
@@ -61,7 +61,7 @@ public class anb extends dlg {
       return this.a.h();
    }
 
-   private void a(long $$0, dlc $$1, dlh $$2) {
+   private void a(long $$0, dld $$1, dli $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -75,17 +75,17 @@ public class anb extends dlg {
 
    @Nullable
    @Override
-   public dlc a(int $$0, int $$1, dlh $$2, boolean $$3) {
+   public dld a(int $$0, int $$1, dli $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dlc>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dld>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bgr $$4 = this.d.af();
+         bgs $$4 = this.d.af();
          $$4.d("getChunk");
-         long $$5 = csv.c($$0, $$1);
+         long $$5 = csw.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dlc $$7 = this.o[$$6];
+               dld $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -93,9 +93,9 @@ public class anb extends dlg {
          }
 
          $$4.d("getChunkCacheMiss");
-         CompletableFuture<Either<dlc, aml.a>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<Either<dld, aml.a>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$8::isDone);
-         dlc $$9 = (dlc)$$8.join().map($$0x -> $$0x, $$1x -> {
+         dld $$9 = (dld)$$8.join().map($$0x -> $$0x, $$1x -> {
             if ($$3) {
                throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
             } else {
@@ -109,17 +109,17 @@ public class anb extends dlg {
 
    @Nullable
    @Override
-   public dln a(int $$0, int $$1) {
+   public dlo a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
          this.d.af().d("getChunkNow");
-         long $$2 = csv.c($$0, $$1);
+         long $$2 = csw.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dlh.n) {
-               dlc $$4 = this.o[$$3];
-               return $$4 instanceof dln ? (dln)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == dli.n) {
+               dld $$4 = this.o[$$3];
+               return $$4 instanceof dlo ? (dlo)$$4 : null;
             }
          }
 
@@ -127,15 +127,15 @@ public class anb extends dlg {
          if ($$5 == null) {
             return null;
          } else {
-            Either<dlc, aml.a> $$6 = $$5.b(dlh.n).getNow(null);
+            Either<dld, aml.a> $$6 = $$5.b(dli.n).getNow(null);
             if ($$6 == null) {
                return null;
             } else {
-               dlc $$7 = (dlc)$$6.left().orElse(null);
+               dld $$7 = (dld)$$6.left().orElse(null);
                if ($$7 != null) {
-                  this.a($$2, $$7, dlh.n);
-                  if ($$7 instanceof dln) {
-                     return (dln)$$7;
+                  this.a($$2, $$7, dli.n);
+                  if ($$7 instanceof dlo) {
+                     return (dlo)$$7;
                   }
                }
 
@@ -146,33 +146,33 @@ public class anb extends dlg {
    }
 
    private void r() {
-      Arrays.fill(this.m, csv.a);
+      Arrays.fill(this.m, csw.a);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<Either<dlc, aml.a>> b(int $$0, int $$1, dlh $$2, boolean $$3) {
+   public CompletableFuture<Either<dld, aml.a>> b(int $$0, int $$1, dli $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<Either<dlc, aml.a>> $$5;
+      CompletableFuture<Either<dld, aml.a>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<Either<dlc, aml.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<Either<dld, aml.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<Either<dlc, aml.a>> c(int $$0, int $$1, dlh $$2, boolean $$3) {
-      csv $$4 = new csv($$0, $$1);
+   private CompletableFuture<Either<dld, aml.a>> c(int $$0, int $$1, dli $$2, boolean $$3) {
+      csw $$4 = new csw($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = amm.a($$2);
       aml $$7 = this.b($$5);
       if ($$3) {
          this.c.a(ani.h, $$4, $$6, $$4);
          if (this.a($$7, $$6)) {
-            bgr $$8 = this.d.af();
+            bgs $$8 = this.d.af();
             $$8.a("chunkLoad");
             this.s();
             $$7 = this.b($$5);
@@ -192,15 +192,15 @@ public class anb extends dlg {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      aml $$2 = this.b(new csv($$0, $$1).a());
-      int $$3 = amm.a(dlh.n);
+      aml $$2 = this.b(new csw($$0, $$1).a());
+      int $$3 = amm.a(dli.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dlp c(int $$0, int $$1) {
-      long $$2 = csv.c($$0, $$1);
+   public dlq c(int $$0, int $$1) {
+      long $$2 = csw.c($$0, $$1);
       aml $$3 = this.b($$2);
       if ($$3 == null) {
          return null;
@@ -208,13 +208,13 @@ public class anb extends dlg {
          int $$4 = b.size() - 1;
 
          while (true) {
-            dlh $$5 = b.get($$4);
-            Optional<dlc> $$6 = $$3.a($$5).getNow(aml.a).left();
+            dli $$5 = b.get($$4);
+            Optional<dld> $$6 = $$3.a($$5).getNow(aml.a).left();
             if ($$6.isPresent()) {
                return $$6.get();
             }
 
-            if ($$5 == dlh.k.d()) {
+            if ($$5 == dli.k.d()) {
                return null;
             }
 
@@ -223,7 +223,7 @@ public class anb extends dlg {
       }
    }
 
-   public cto c() {
+   public ctp c() {
       return this.d;
    }
 
@@ -249,7 +249,7 @@ public class anb extends dlg {
       } else if (!this.d.a($$0)) {
          return false;
       } else {
-         Either<dln, aml.a> $$2 = $$1.a().getNow(null);
+         Either<dlo, aml.a> $$2 = $$1.a().getNow(null);
          return $$2 != null && $$2.left().isPresent();
       }
    }
@@ -288,13 +288,13 @@ public class anb extends dlg {
       long $$1 = $$0 - this.i;
       this.i = $$0;
       if (!this.d.ah()) {
-         bgr $$2 = this.d.af();
+         bgs $$2 = this.d.af();
          $$2.a("pollingChunks");
          $$2.a("filteringLoadedChunks");
          List<anb.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
 
          for (aml $$4 : this.a.k()) {
-            dln $$5 = $$4.d();
+            dlo $$5 = $$4.d();
             if ($$5 != null) {
                $$3.add(new anb.a($$5, $$4));
             }
@@ -303,21 +303,21 @@ public class anb extends dlg {
          if (this.d.o().aO().i()) {
             $$2.b("naturalSpawnCount");
             int $$6 = this.c.b();
-            ctz.d $$7 = ctz.a($$6, this.d.A(), this::a, new cty(this.a));
+            cua.d $$7 = cua.a($$6, this.d.A(), this::a, new ctz(this.a));
             this.p = $$7;
             $$2.b("spawnAndTick");
-            boolean $$8 = this.d.Z().b(ctk.e);
+            boolean $$8 = this.d.Z().b(ctl.e);
             ac.c($$3, this.d.z);
-            int $$9 = this.d.Z().c(ctk.o);
+            int $$9 = this.d.Z().c(ctl.o);
             boolean $$10 = this.d.B_().e() % 400L == 0L;
 
             for (anb.a $$11 : $$3) {
-               dln $$12 = $$11.a;
-               csv $$13 = $$12.f();
+               dlo $$12 = $$11.a;
+               csw $$13 = $$12.f();
                if (this.d.a($$13) && this.a.c($$13)) {
                   $$12.a($$1);
                   if ($$8 && (this.j || this.k) && this.d.D_().a($$13)) {
-                     ctz.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                     cua.a(this.d, $$12, $$7, this.k, this.j, $$10);
                   }
 
                   if (this.d.a($$13.a())) {
@@ -339,7 +339,7 @@ public class anb extends dlg {
       }
    }
 
-   private void a(long $$0, Consumer<dln> $$1) {
+   private void a(long $$0, Consumer<dlo> $$1) {
       aml $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(aml.c).left().ifPresent($$1);
@@ -356,15 +356,15 @@ public class anb extends dlg {
       return this.g.br();
    }
 
-   public dld g() {
+   public dle g() {
       return this.a.a();
    }
 
-   public dle h() {
+   public dlf h() {
       return this.a.b();
    }
 
-   public dpd i() {
+   public dpe i() {
       return this.a.c();
    }
 
@@ -376,14 +376,14 @@ public class anb extends dlg {
    public void a(hx $$0) {
       int $$1 = iz.a($$0.u());
       int $$2 = iz.a($$0.w());
-      aml $$3 = this.b(csv.c($$1, $$2));
+      aml $$3 = this.b(csw.c($$1, $$2));
       if ($$3 != null) {
          $$3.a($$0);
       }
    }
 
    @Override
-   public void a(ctx $$0, iz $$1) {
+   public void a(cty $$0, iz $$1) {
       this.g.execute(() -> {
          aml $$2 = this.b($$1.r().a());
          if ($$2 != null) {
@@ -392,16 +392,16 @@ public class anb extends dlg {
       });
    }
 
-   public <T> void a(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void a(ani<T> $$0, csw $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(ani<T> $$0, csv $$1, int $$2, T $$3) {
+   public <T> void b(ani<T> $$0, csw $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(csv $$0, boolean $$1) {
+   public void a(csw $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -411,19 +411,19 @@ public class anb extends dlg {
       }
    }
 
-   public void a(blu $$0) {
+   public void a(blv $$0) {
       this.a.b($$0);
    }
 
-   public void b(blu $$0) {
+   public void b(blv $$0) {
       this.a.a($$0);
    }
 
-   public void a(blu $$0, xf<?> $$1) {
+   public void a(blv $$0, xf<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(blu $$0, xf<?> $$1) {
+   public void b(blv $$0, xf<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -441,25 +441,25 @@ public class anb extends dlg {
       this.k = $$1;
    }
 
-   public String a(csv $$0) {
+   public String a(csw $$0) {
       return this.a.a($$0);
    }
 
-   public egg k() {
+   public egh k() {
       return this.h;
    }
 
-   public bxl l() {
+   public bxm l() {
       return this.a.m();
    }
 
-   public dmc m() {
+   public dmd m() {
       return this.a.p();
    }
 
    @Nullable
-   @avs
-   public ctz.d n() {
+   @avt
+   public cua.d n() {
       return this.p;
    }
 
@@ -467,11 +467,11 @@ public class anb extends dlg {
       this.c.e();
    }
 
-   static record a(dln a, aml b) {
+   static record a(dlo a, aml b) {
    }
 
-   final class b extends biq<Runnable> {
-      b(cto $$0) {
+   final class b extends bir<Runnable> {
+      b(ctp $$0) {
          super("Chunk source main thread executor for " + $$0.ae().a());
       }
 

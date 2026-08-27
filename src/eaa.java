@@ -1,41 +1,41 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 import java.util.Optional;
 
-public class eaa extends eac {
-   public static final Codec<eaa> a = atv.<eaa>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> a($$0)
-                  .and(
-                     $$0.group(
-                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(eaa::a),
-                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(eaa::b),
-                        eab.c.optionalFieldOf("spread_type", eab.a).forGetter(eaa::c)
-                     )
-                  )
-                  .apply($$0, eaa::new)
-         ),
-         eaa::a
-      )
-      .codec();
+public class eaa extends ead {
+   public static final Codec<eaa> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, eaa::new));
    private final int c;
    private final int d;
-   private final eab e;
+   private final int e;
+   private final il<cuo> f;
 
-   private static DataResult<eaa> a(eaa $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   private static P9<Mu<eaa>, jb, ead.c, Float, Integer, Optional<ead.a>, Integer, Integer, Integer, il<cuo>> b(Instance<eaa> $$0) {
+      P5<Mu<eaa>, jb, ead.c, Float, Integer, Optional<ead.a>> $$1 = a($$0);
+      P4<Mu<eaa>, Integer, Integer, Integer, il<cuo>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eaa::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eaa::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(eaa::c),
+         iv.a(ke.at).fieldOf("preferred_biomes").forGetter(eaa::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   public eaa(jb $$0, eac.c $$1, float $$2, int $$3, Optional<eac.a> $$4, int $$5, int $$6, eab $$7) {
+   public eaa(jb $$0, ead.c $$1, float $$2, int $$3, Optional<ead.a> $$4, int $$5, int $$6, int $$7, il<cuo> $$8) {
       super($$0, $$1, $$2, $$3, $$4);
       this.c = $$5;
       this.d = $$6;
       this.e = $$7;
+      this.f = $$8;
    }
 
-   public eaa(int $$0, int $$1, eab $$2, int $$3) {
-      this(jb.g, eac.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public eaa(int $$0, int $$1, int $$2, il<cuo> $$3) {
+      this(jb.g, ead.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
    }
 
    public int a() {
@@ -46,29 +46,22 @@ public class eaa extends eac {
       return this.d;
    }
 
-   public eab c() {
+   public int c() {
       return this.e;
    }
 
-   public csv a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dpo $$5 = new dpo(new doq(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new csv($$3 * this.c + $$7, $$4 * this.c + $$8);
+   public il<cuo> d() {
+      return this.f;
    }
 
    @Override
-   protected boolean a(dle $$0, int $$1, int $$2) {
-      csv $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
+   protected boolean a(dlf $$0, int $$1, int $$2) {
+      List<csw> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new csw($$1, $$2));
    }
 
    @Override
-   public ead<?> e() {
-      return ead.a;
+   public eae<?> e() {
+      return eae.b;
    }
 }

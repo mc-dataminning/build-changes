@@ -1,53 +1,73 @@
 import com.mojang.serialization.MapCodec;
 
-public class dee extends cwp {
+public class dee extends cwq {
    public static final MapCodec<dee> a = b(dee::new);
-   private static final eml b = cwp.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ic[] d = ic.values();
 
    @Override
    public MapCodec<dee> a() {
       return a;
    }
 
-   public dee(djf.d $$0) {
+   protected dee(djg.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(djg $$0, ctr $$1, hx $$2) {
-      return cwp.a($$1, $$2.c(), ic.a) && !$$1.z($$2);
-   }
-
-   @Override
-   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
-      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(jx.aw, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      hx.a $$10 = new hx.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aun.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aun.a($$3, -10, 10));
-         djg $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(jx.aA, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   public void b(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
-      return b;
+   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(ctp $$0, hx $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, cws.aP.o(), 2);
+         $$0.a(null, $$1, ars.xZ, art.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(ctp $$0, hx $$1) {
+      return hx.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ic $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            djh $$3 = $$0.a_($$2);
+            eer $$4 = $$0.b_($$2);
+            if (!$$4.a(asm.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof cwx $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
+                  return true;
+               }
+
+               if ($$3.b() instanceof dbf) {
+                  $$0.a($$2, cws.a.o(), 3);
+               } else {
+                  if (!$$3.a(cws.mc) && !$$3.a(cws.md) && !$$3.a(cws.bw) && !$$3.a(cws.bx)) {
+                     return false;
+                  }
+
+                  dgv $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, cws.a.o(), 3);
+               }
+
+               return true;
+            }
+         }
+      }) > 1;
    }
 }

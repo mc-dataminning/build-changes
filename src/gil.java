@@ -1,63 +1,54 @@
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gil implements aqi {
-   public static final gil.a<cmx> a = new gil.a<>();
-   public static final gil.a<cmx> b = new gil.a<>();
-   public static final gil.a<fgs> c = new gil.a<>();
-   private final Map<gil.a<?>, gil.c<?>> d = new HashMap<>();
+public interface gil<T> {
+   static <T> gil<T> a() {
+      return new gil<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   @Override
-   public void a(aqh $$0) {
-      for (gil.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public <T> void a(gil.a<T> $$0, gil.b<T> $$1) {
-      this.d.put($$0, new gil.c<>($$1));
-   }
-
-   private <T> gil.c<T> b(gil.a<T> $$0) {
-      gil.c<T> $$1 = (gil.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
+   static <T> gil<T> a(List<T> $$0, Function<T, Stream<ahg>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
       } else {
-         return $$1;
+         final gio<T> $$2 = new gio<>();
+         final gio<T> $$3 = new gio<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gil<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   public <T> void a(gil.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
+   List<T> a(String var1);
 
-   public <T> gim<T> a(gil.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gij<T>> {
-   }
-
-   static class c<T> {
-      private final gil.b<T> a;
-      gij<T> b = gij.b();
-
-      c(gil.b<T> $$0) {
-         this.a = $$0;
-      }
-
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
-      }
-
-      void a() {
-         this.b.a();
-      }
-   }
+   List<T> b(String var1);
 }

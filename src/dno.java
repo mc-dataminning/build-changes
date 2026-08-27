@@ -1,71 +1,43 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dno implements dnu {
-   public static final Codec<dno> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ja.a.fieldOf("source_entity").forGetter(dno::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
-            .apply($$0, ($$0x, $$1) -> new dno(Either.right(Either.left($$0x)), $$1))
-   );
-   private Either<blu, Either<UUID, Integer>> c;
-   final float d;
+public class dno<T extends dnt> {
+   private final T a;
+   @Nullable
+   private iz b;
 
-   public dno(blu $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dno(T $$0) {
+      this.a = $$0;
    }
 
-   dno(Either<blu, Either<UUID, Integer>> $$0, float $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public void a(and $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public Optional<els> a(cto $$0) {
-      if (this.c.left().isEmpty()) {
-         this.b($$0);
-      }
-
-      return this.c.left().map($$0x -> $$0x.dk().b(0.0, (double)this.d, 0.0));
+   public T a() {
+      return this.a;
    }
 
-   private void b(cto $$0) {
-      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((blu)$$1.map($$1x -> $$0 instanceof and $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.c = Either.left($$0x));
+   public void b(and $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   private UUID b() {
-      return (UUID)this.c.map(blu::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+   public void c(and $$0) {
+      this.a.a().a($$0).map(iz::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   int c() {
-      return (Integer)this.c.map(blu::aj, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dnv<?> a() {
-      return dnv.b;
-   }
-
-   public static class a implements dnv<dno> {
-      public dno a(ui $$0) {
-         return new dno(Either.right(Either.right($$0.n())), $$0.readFloat());
-      }
-
-      public void a(ui $$0, dno $$1) {
-         $$0.c($$1.c());
-         $$0.a($$1.d);
-      }
-
-      @Override
-      public Codec<dno> a() {
-         return dno.a;
+   private static void a(cts $$0, @Nullable iz $$1, Consumer<dnu> $$2) {
+      if ($$1 != null) {
+         dld $$3 = $$0.a($$1.a(), $$1.c(), dli.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

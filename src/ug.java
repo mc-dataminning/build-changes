@@ -331,8 +331,8 @@ public class ug extends SimpleChannelInboundHandler<xf<?>> {
    }
 
    protected void e() {
-      this.x = aun.i(0.75F, (float)this.v, this.x);
-      this.w = aun.i(0.75F, (float)this.u, this.w);
+      this.x = auo.i(0.75F, (float)this.v, this.x);
+      this.w = auo.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -372,7 +372,7 @@ public class ug extends SimpleChannelInboundHandler<xf<?>> {
       return this.l.a();
    }
 
-   public static ug a(InetSocketAddress $$0, boolean $$1, @Nullable auw $$2) {
+   public static ug a(InetSocketAddress $$0, boolean $$1, @Nullable auy $$2) {
       ug $$3 = new ug(xg.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -532,7 +532,7 @@ public class ug extends SimpleChannelInboundHandler<xf<?>> {
       return this.x;
    }
 
-   public void a(auw $$0) {
+   public void a(auy $$0) {
       this.B = new ty($$0);
    }
 }

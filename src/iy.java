@@ -39,14 +39,14 @@ public class iy {
    }
 
    public float e() {
-      return aun.g(this.a);
+      return auo.g(this.a);
    }
 
    public float f() {
-      return aun.g(this.b);
+      return auo.g(this.b);
    }
 
    public float g() {
-      return aun.g(this.c);
+      return auo.g(this.c);
    }
 }

@@ -1,85 +1,34 @@
-public class bsw extends btk {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final byf b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
 
-   public bsw(byf $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class bsw extends bth {
+   private final bmn a;
+   private final ctp b;
+
+   public bsw(bmn $$0, ctp $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bth.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.b.eg().a(this.c) != 0) {
-         return false;
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(ask.h)) {
+         hx $$1 = this.a.dm().c();
+         djh $$2 = this.b.a_($$1);
+         return $$2.a(cws.qP) || $$2.k(this.b, $$1) == emj.a();
       } else {
-         ic $$0 = this.b.cF();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         hx $$3 = this.b.dm();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
+         return false;
       }
    }
 
-   private boolean a(hx $$0, int $$1, int $$2, int $$3) {
-      hx $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dM().b_($$4).a(asl.a) && !this.b.dM().a_($$4).d();
-   }
-
-   private boolean b(hx $$0, int $$1, int $$2, int $$3) {
-      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
    @Override
-   public boolean b() {
-      double $$0 = this.b.dp().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      ic $$0 = this.b.cF();
-      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.N().n();
-   }
-
-   @Override
-   public void d() {
-      this.b.s(0.0F);
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         eeq $$1 = this.b.dM().b_(this.b.dm());
-         this.d = $$1.a(asl.a);
-      }
-
-      if (this.d && !$$0) {
-         this.b.a(arr.gy, 1.0F, 1.0F);
-      }
-
-      els $$2 = this.b.dp();
-      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
-         this.b.s(aun.j(0.2F, this.b.dE(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+      this.a.M().a();
    }
 }

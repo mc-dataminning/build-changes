@@ -31,7 +31,7 @@ public class ais {
       );
    }
 
-   private static int a(ds $$0, Collection<ane> $$1, Predicate<cmx> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ds $$0, Collection<ane> $$1, Predicate<cmy> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (ane $$5 : $$1) {

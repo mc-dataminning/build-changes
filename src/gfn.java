@@ -1,56 +1,140 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gfn extends aqm<List<String>> {
-   private static final ahg a = new ahg("texts/splashes.txt");
-   private static final auu b = auu.a();
-   private final List<String> c = Lists.newArrayList();
-   private final evw d;
+public class gfn {
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<gfn.a, CompletableFuture<gfm>> c;
+   private final gfn.b d;
+   private final gfn.b e;
+   private final gfn.b f;
 
-   public gfn(evw $$0) {
-      this.d = $$0;
+   public gfn(geo $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
+      this.b = $$2;
+      this.d = new gfn.b($$0, $$1, Type.SKIN);
+      this.e = new gfn.b($$0, $$1, Type.CAPE);
+      this.f = new gfn.b($$0, $$1, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gfn.a, CompletableFuture<gfm>>() {
+         public CompletableFuture<gfm> a(gfn.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
+                  if ($$3xx.signatureState() == SignatureState.INVALID) {
+                     gfn.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
+
+                  return $$3xx;
+               }
+            }, ac.f()).thenComposeAsync($$1 -> gfn.this.a($$0.a(), $$1), $$3);
+         }
+      });
    }
 
-   protected List<String> a(aqh $$0, bgr $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = evh.O().Z().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+   public Supplier<gfm> a(GameProfile $$0) {
+      CompletableFuture<gfm> $$1 = this.c($$0);
+      gfm $$2 = gff.a($$0);
+      return () -> $$1.getNow($$2);
+   }
+
+   public gfm b(GameProfile $$0) {
+      gfm $$1 = this.c($$0).getNow(null);
+      return $$1 != null ? $$1 : gff.a($$0);
+   }
+
+   public CompletableFuture<gfm> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<gfm>)this.c.getUnchecked(new gfn.a($$0.getId(), $$1));
+   }
+
+   CompletableFuture<gfm> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<ahg> $$3;
+      gfm.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = gfm.a.a($$2.getMetadata("model"));
+      } else {
+         gfm $$5 = gff.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
+      }
+
+      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<ahg> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<ahg> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new gfm($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
+   }
+
+   static record a(UUID a, @Nullable Property b) {
+   }
+
+   static class b {
+      private final geo a;
+      private final Path b;
+      private final Type c;
+      private final Map<String, CompletableFuture<ahg>> d = new Object2ObjectOpenHashMap();
+
+      b(geo $$0, Path $$1, Type $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public CompletableFuture<ahg> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<ahg> $$2 = this.d.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.d.put($$1, $$2);
          }
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+         return $$2;
       }
-   }
 
-   protected void a(List<String> $$0, aqh $$1, bgr $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
+      private CompletableFuture<ahg> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         ahg $$2 = this.a($$1);
+         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         CompletableFuture<ahg> $$4 = new CompletableFuture<>();
+         geb $$5 = new geb($$3.toFile(), $$0.getUrl(), gff.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
+         this.a.a($$2, $$5);
+         return $$4;
+      }
 
-   @Nullable
-   public eyj a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return eyj.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return eyj.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return eyj.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new eyj(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new eyj(this.c.get(b.a(this.c.size())));
+      private ahg a(String $$0) {
+         String $$1 = switch (this.c) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new IncompatibleClassChangeError();
+         };
+         return new ahg($$1 + "/" + $$0);
       }
    }
 }

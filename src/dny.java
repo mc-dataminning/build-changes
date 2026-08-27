@@ -1,60 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dny {
+public record dny(dnr b, float c, elt d, @Nullable UUID e, @Nullable UUID f, @Nullable blv g) {
    public static final Codec<dny> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dnx.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+               kd.a.q().fieldOf("game_event").forGetter(dny::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dny::b),
+               elt.a.fieldOf("pos").forGetter(dny::c),
+               ja.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               ja.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, dny::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dny($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   private Optional<Pair<dnx, Long>> b;
 
-   public dny(Optional<dnx> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public dny(dnr $$0, float $$1, elt $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public dny() {
-      this.b = Optional.empty();
+   public dny(dnr $$0, float $$1, elt $$2, @Nullable blv $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   public void a(dnx $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+   @Nullable
+   private static UUID a(@Nullable blv $$0) {
+      if ($$0 instanceof cga $$1 && $$1.w() != null) {
+         return $$1.w().cw();
       }
+
+      return null;
    }
 
-   private boolean b(dnx $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dnx, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dnx $$4 = (dnx)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dnz.a_($$0.a()) > dnz.a_($$4.a());
-            }
-         }
-      }
+   public Optional<blv> a(and $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public Optional<dnx> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dnx)this.b.get().getLeft()) : Optional.empty();
-      }
+   public Optional<blv> b(and $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cga).map($$0x -> (cga)$$0x).map(cga::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public void a() {
-      this.b = Optional.empty();
+   public dnr a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public elt c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public blv f() {
+      return this.g;
    }
 }

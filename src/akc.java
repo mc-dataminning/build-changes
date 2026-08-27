@@ -30,7 +30,7 @@ public class akc {
       if ($$1.aS()) {
          throw c.create();
       } else {
-         Consumer<bgq> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bgr> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> vf.c("commands.perf.started"), false);
@@ -53,14 +53,14 @@ public class akc {
 
       String $$4;
       try {
-         $$4 = v.a(big.a, $$3, ".zip");
+         $$4 = v.a(bih.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(vf.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (aty $$7 = new aty(big.a.resolve($$4))) {
+      try (atz $$7 = new atz(bih.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
          $$7.a($$1);
       }
@@ -74,10 +74,10 @@ public class akc {
       $$0.a(() -> vf.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(ds $$0, bgq $$1) {
-      if ($$1 != bgm.a) {
+   private static void a(ds $$0, bgr $$1) {
+      if ($$1 != bgn.a) {
          int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)avo.a;
+         double $$3 = (double)$$1.g() / (double)avp.a;
          $$0.a(() -> vf.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }

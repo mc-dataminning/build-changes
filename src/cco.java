@@ -1,114 +1,98 @@
-import java.util.function.Predicate;
-
-public abstract class cco extends bmt implements ccg {
-   protected cco(bly<? extends cco> $$0, cto $$1) {
+public class cco extends ccy {
+   public cco(blz<? extends cco> $$0, ctp $$1) {
       super($$0, $$1);
-      this.bJ = 5;
+   }
+
+   public static bnq.a u() {
+      return ccp.gk().a(bnr.m, 0.2F);
+   }
+
+   public static boolean b(blz<cco> $$0, ctq $$1, bmp $$2, hx $$3, auv $$4) {
+      return $$1.ak() != bjy.a;
    }
 
    @Override
-   public ars db() {
-      return ars.f;
+   public boolean a(cts $$0) {
+      return $$0.f(this) && !$$0.d(this.cH());
    }
 
    @Override
-   public void d_() {
-      this.eQ();
-      this.gj();
-      super.d_();
-   }
-
-   protected void gj() {
-      float $$0 = this.bo();
-      if ($$0 > 0.5F) {
-         this.bb += 2;
-      }
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.a(bnr.a).a((double)($$0 * 3));
    }
 
    @Override
-   protected boolean X() {
-      return true;
+   public float bo() {
+      return 1.0F;
    }
 
    @Override
-   protected arq aN() {
-      return arr.mk;
+   protected jv w() {
+      return jx.E;
    }
 
    @Override
-   protected arq aO() {
-      return arr.mj;
+   public boolean bN() {
+      return false;
    }
 
    @Override
-   protected arq d(bks $$0) {
-      return arr.mh;
+   protected int A() {
+      return super.A() * 4;
    }
 
    @Override
-   protected arq n_() {
-      return arr.mg;
+   protected void ga() {
+      this.d *= 0.9F;
    }
 
    @Override
-   public bmk.a eG() {
-      return new bmk.a(arr.mi, arr.mf);
+   protected void fb() {
+      elt $$0 = this.dp();
+      float $$1 = (float)this.gf() * 0.1F;
+      this.o($$0.c, (double)(this.eZ() + $$1), $$0.e);
+      this.au = true;
    }
 
    @Override
-   public float a(hx $$0, ctr $$1) {
-      return -$$1.w($$0);
-   }
-
-   public static boolean a(cud $$0, hx $$1, auu $$2) {
-      if ($$0.a(ctx.a, $$1) > $$2.a(32)) {
-         return false;
+   protected void c(asw<eeq> $$0) {
+      if ($$0 == asm.b) {
+         elt $$1 = this.dp();
+         this.o($$1.c, (double)(0.22F + (float)this.gf() * 0.05F), $$1.e);
+         this.au = true;
       } else {
-         dmp $$3 = $$0.E_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(ctx.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.E().aa() ? $$0.c($$1, 10) : $$0.A($$1);
-            return $$5 <= $$3.d().a($$2);
-         }
+         super.c($$0);
       }
    }
 
-   public static boolean b(bly<? extends cco> $$0, cud $$1, bmo $$2, hx $$3, auu $$4) {
-      return $$1.ak() != bjx.a && (bmo.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bly<? extends cco> $$0, ctp $$1, bmo $$2, hx $$3, auu $$4) {
-      return $$1.ak() != bjx.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bnp.a gk() {
-      return bmm.C().a(bnq.c);
+   @Override
+   protected boolean gb() {
+      return this.cY();
    }
 
    @Override
-   public boolean ec() {
-      return true;
+   protected float gc() {
+      return super.gc() + 2.0F;
    }
 
    @Override
-   protected boolean ed() {
-      return true;
-   }
-
-   public boolean f(cfh $$0) {
-      return true;
+   protected arr d(bkt $$0) {
+      return this.gg() ? ars.nC : ars.nB;
    }
 
    @Override
-   public cmx g(cmx $$0) {
-      if ($$0.d() instanceof cnn) {
-         Predicate<cmx> $$1 = ((cnn)$$0.d()).e();
-         cmx $$2 = cnn.a(this, $$1);
-         return $$2.b() ? new cmx(cna.os) : $$2;
-      } else {
-         return cmx.f;
-      }
+   protected arr n_() {
+      return this.gg() ? ars.nt : ars.nA;
+   }
+
+   @Override
+   protected arr gd() {
+      return this.gg() ? ars.nF : ars.nE;
+   }
+
+   @Override
+   protected arr ge() {
+      return ars.nD;
    }
 }

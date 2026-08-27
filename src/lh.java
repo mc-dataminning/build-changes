@@ -2,5 +2,5 @@ import java.util.function.BiConsumer;
 
 @FunctionalInterface
 public interface lh {
-   void generate(BiConsumer<ahg, ehd.a> var1);
+   void generate(BiConsumer<ahg, ehe.a> var1);
 }

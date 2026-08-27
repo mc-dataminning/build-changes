@@ -1,41 +1,22 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class bwe extends bwr<bmk> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class bwe extends bwm {
+   public static final float a = 10.0F;
 
-   public bwe() {
-      this(200);
+   @Override
+   protected boolean a(bml $$0, bml $$1) {
+      return !$$0.dO().a(bvn.T) && bws.c($$0, $$1) && bzn.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   public bwe(int $$0) {
-      super($$0);
+   private boolean e(bml $$0, bml $$1) {
+      List<UUID> $$2 = $$0.dO().c(bvn.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cw());
    }
 
    @Override
-   protected void a(and $$0, bmk $$1) {
-      a($$1);
-   }
-
-   @Override
-   public Set<bvm<?>> a() {
-      return ImmutableSet.of(bvm.g);
-   }
-
-   public static void a(bmk $$0) {
-      Optional<List<bmk>> $$1 = $$0.dO().c(bvm.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bly.ad));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bmk $$0) {
-      $$0.dO().a(bvm.F, true, 599L);
+   protected bvn<bml> b() {
+      return bvn.B;
    }
 }

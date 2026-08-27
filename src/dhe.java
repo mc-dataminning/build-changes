@@ -1,146 +1,120 @@
-public class dhe extends dgu {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final csp d = new csp() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dhe.this.e();
-      }
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-      @Override
-      public and e() {
-         return (and)dhe.this.o;
-      }
+public class dhe extends dgv implements bju {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final iq<cmy> e = iq.a(6, cmy.f);
+   private int f = -1;
 
-      @Override
-      public void f() {
-         djg $$0 = dhe.this.o.a_(dhe.this.p);
-         this.e().a(dhe.this.p, $$0, $$0, 3);
-      }
-
-      @Override
-      public els g() {
-         return els.b(dhe.this.p);
-      }
-
-      @Override
-      public ds i() {
-         ic $$0 = dhe.this.r().c(cxy.b);
-         return new ds(this, els.b(dhe.this.p), new elr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dhe.this.s();
-      }
-   };
-
-   public dhe(hx $$0, djg $$1) {
-      super(dgw.w, $$0, $$1);
+   public dhe(hx $$0, djh $$1) {
+      super(dgx.M, $$0, $$1);
    }
 
-   @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      this.d.a($$0);
-      $$0.a("powered", this.d());
-      $$0.a("conditionMet", this.k());
-      $$0.a("auto", this.f());
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         djh $$1 = this.r();
+
+         for (int $$2 = 0; $$2 < cxu.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            djy $$4 = cxu.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dnr.c, this.p, dnr.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
    @Override
    public void a(sn $$0) {
-      super.a($$0);
-      this.d.b($$0);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.e.clear();
+      bjv.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
    @Override
-   public boolean u() {
-      return true;
+   protected void b(sn $$0) {
+      bjv.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
    }
 
-   public csp c() {
-      return this.d;
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cmy::b)).count();
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.e.clear();
    }
 
-   public boolean d() {
-      return this.a;
+   @Override
+   public int b() {
+      return 6;
    }
 
-   public boolean f() {
-      return this.b;
+   @Override
+   public boolean ai_() {
+      return this.e.stream().allMatch(cmy::b);
    }
 
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != dhe.a.a) {
-         this.x();
+   @Override
+   public cmy a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cmy a(int $$0, int $$1) {
+      cmy $$2 = Objects.requireNonNullElse(this.e.get($$0), cmy.f);
+      this.e.set($$0, cmy.f);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cmy b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cmy $$1) {
+      if ($$1.a(asp.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
    }
 
-   public void g() {
-      dhe.a $$0 = this.m();
-      if ($$0 == dhe.a.b && (this.a || this.b) && this.o != null) {
-         this.x();
-      }
+   @Override
+   public boolean a(bju $$0, int $$1, cmy $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cmy.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ak_()));
    }
 
-   private void x() {
-      cwp $$0 = this.r().b();
-      if ($$0 instanceof cxy) {
-         this.l();
-         this.o.a(this.p, $$0, 1);
-      }
+   @Override
+   public int ak_() {
+      return 1;
    }
 
-   public boolean k() {
-      return this.c;
+   @Override
+   public boolean a(cfi $$0) {
+      return bju.a(this, $$0);
    }
 
-   public boolean l() {
-      this.c = true;
-      if (this.w()) {
-         hx $$0 = this.p.a(this.o.a_(this.p).c(cxy.b).g());
-         if (this.o.a_($$0).b() instanceof cxy) {
-            dgu $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof dhe && ((dhe)$$1).c().k() > 0;
-         } else {
-            this.c = false;
-         }
-      }
-
-      return this.c;
+   @Override
+   public boolean b(int $$0, cmy $$1) {
+      return $$1.a(asp.av) && this.a($$0).b() && $$1.L() == this.ak_();
    }
 
-   public dhe.a m() {
-      djg $$0 = this.r();
-      if ($$0.a(cwr.fN)) {
-         return dhe.a.c;
-      } else if ($$0.a(cwr.kG)) {
-         return dhe.a.b;
-      } else {
-         return $$0.a(cwr.kH) ? dhe.a.a : dhe.a.c;
-      }
-   }
-
-   public boolean w() {
-      djg $$0 = this.o.a_(this.aB_());
-      return $$0.b() instanceof cxy ? $$0.c(cxy.c) : false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public int g() {
+      return this.f;
    }
 }

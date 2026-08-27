@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -11,27 +12,30 @@ public class bdg extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bbv.F, () -> DSL.constType(bdd.a()));
       $$0.registerType(
-         false,
-         bbv.b,
-         () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bbv.w.in($$0)),
-               "Inventory",
-               DSL.list(bbv.t.in($$0)),
-               "EnderItems",
-               DSL.list(bbv.t.in($$0)),
+         true,
+         bbw.t,
+         () -> DSL.hook(
                DSL.optionalFields(
-                  "ShoulderEntityLeft",
-                  bbv.w.in($$0),
-                  "ShoulderEntityRight",
-                  bbv.w.in($$0),
-                  "recipeBook",
-                  DSL.optionalFields("recipes", DSL.list(bbv.F.in($$0)), "toBeDisplayed", DSL.list(bbv.F.in($$0)))
-               )
+                  "id",
+                  bbw.z.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     "EntityTag",
+                     bbw.w.in($$0),
+                     "BlockEntityTag",
+                     bbw.s.in($$0),
+                     "CanDestroy",
+                     DSL.list(bbw.y.in($$0)),
+                     "CanPlaceOn",
+                     DSL.list(bbw.y.in($$0)),
+                     "Items",
+                     DSL.list(bbw.t.in($$0))
+                  )
+               ),
+               bgc.a,
+               HookFunction.IDENTITY
             )
       );
-      $$0.registerType(false, bbv.d, () -> DSL.compoundList(DSL.list(bbv.t.in($$0))));
    }
 }

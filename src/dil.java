@@ -1,9 +1,13 @@
-public interface dil {
-   void a();
+public class dil extends dgv {
+   protected dil(dgx<?> $$0, hx $$1, djh $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   boolean b();
+   public dil(hx $$0, djh $$1) {
+      this(dgx.n, $$0, $$1);
+   }
 
-   hx c();
-
-   String d();
+   public boolean a(ic $$0) {
+      return $$0.o() == ic.a.b;
+   }
 }

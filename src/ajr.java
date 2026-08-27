@@ -22,8 +22,8 @@ public class ajr {
    }
 
    private static int a(ds $$0) throws CommandSyntaxException {
-      bgv $$1 = bgv.a($$0.l());
-      if (!bgx.e.a($$1)) {
+      bgw $$1 = bgw.a($$0.l());
+      if (!bgy.e.a($$1)) {
          throw a.create();
       } else {
          $$0.a(() -> vf.c("commands.jfr.started"), false);
@@ -33,7 +33,7 @@ public class ajr {
 
    private static int b(ds $$0) throws CommandSyntaxException {
       try {
-         Path $$1 = Paths.get(".").relativize(bgx.e.b().normalize());
+         Path $$1 = Paths.get(".").relativize(bgy.e.b().normalize());
          Path $$2 = $$0.l().p() && !aa.aW ? $$1 : $$1.toAbsolutePath();
          vf $$3 = vf.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new vd(vd.a.f, $$2.toString())).a(new vl(vl.a.a, vf.c("chat.copy.click"))));
          $$0.a(() -> vf.a("commands.jfr.stopped", $$3), false);

@@ -1,138 +1,55 @@
-import javax.annotation.Nullable;
+public class cji<T extends cib> implements chp {
+   public static final cji<cii> a = a("generic_9x1", cii::a);
+   public static final cji<cii> b = a("generic_9x2", cii::b);
+   public static final cji<cii> c = a("generic_9x3", cii::c);
+   public static final cji<cii> d = a("generic_9x4", cii::d);
+   public static final cji<cii> e = a("generic_9x5", cii::e);
+   public static final cji<cii> f = a("generic_9x6", cii::f);
+   public static final cji<ciu> g = a("generic_3x3", ciu::new);
+   public static final cji<cip> h = a("crafter_3x3", cip::new);
+   public static final cji<cid> i = a("anvil", cid::new);
+   public static final cji<cie> j = a("beacon", cie::new);
+   public static final cji<cif> k = a("blast_furnace", cif::new);
+   public static final cji<cig> l = a("brewing_stand", cig::new);
+   public static final cji<cis> m = a("crafting", cis::new);
+   public static final cji<civ> n = a("enchantment", civ::new);
+   public static final cji<cix> o = a("furnace", cix::new);
+   public static final cji<ciz> p = a("grindstone", ciz::new);
+   public static final cji<cja> q = a("hopper", cja::new);
+   public static final cji<cjf> r = a("lectern", ($$0, $$1) -> new cjf($$0));
+   public static final cji<cjg> s = a("loom", cjg::new);
+   public static final cji<cjk> t = a("merchant", cjk::new);
+   public static final cji<cjt> u = a("shulker_box", cjt::new);
+   public static final cji<cjx> v = a("smithing", cjx::new);
+   public static final cji<cjy> w = a("smoker", cjy::new);
+   public static final cji<cih> x = a("cartography_table", cih::new);
+   public static final cji<cka> y = a("stonecutter", cka::new);
+   private final chs z;
+   private final cji.a<T> A;
 
-public class cji implements bjt {
-   private final csl c;
-   private final iq<cmx> d = iq.a(3, cmx.f);
-   @Nullable
-   private csm e;
-   private int f;
-   private int g;
+   private static <T extends cib> cji<T> a(String $$0, cji.a<T> $$1) {
+      return it.a(kd.r, $$0, new cji<>($$1, chu.g));
+   }
 
-   public cji(csl $$0) {
-      this.c = $$0;
+   private static <T extends cib> cji<T> a(String $$0, cji.a<T> $$1, chq... $$2) {
+      return it.a(kd.r, $$0, new cji<>($$1, chu.e.a($$2)));
+   }
+
+   private cji(cji.a<T> $$0, chs $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cfh $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.d.size();
+   public chs m() {
+      return this.z;
    }
 
-   @Override
-   public boolean ai_() {
-      for (cmx $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cmx a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cmx a(int $$0, int $$1) {
-      cmx $$2 = this.d.get($$0);
-      if ($$0 == 2 && !$$2.b()) {
-         return bju.a(this.d, $$0, $$2.L());
-      } else {
-         cmx $$3 = bju.a(this.d, $$0, $$1);
-         if (!$$3.b() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cmx b(int $$0) {
-      return bju.a(this.d, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cmx $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cfh $$0) {
-      return this.c.ge() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.e = null;
-      cmx $$0;
-      cmx $$1;
-      if (this.d.get(0).b()) {
-         $$0 = this.d.get(1);
-         $$1 = cmx.f;
-      } else {
-         $$0 = this.d.get(0);
-         $$1 = this.d.get(1);
-      }
-
-      if ($$0.b()) {
-         this.a(2, cmx.f);
-         this.g = 0;
-      } else {
-         csn $$4 = this.c.gg();
-         if (!$$4.isEmpty()) {
-            csm $$5 = $$4.a($$0, $$1, this.f);
-            if ($$5 == null || $$5.p()) {
-               this.e = $$5;
-               $$5 = $$4.a($$1, $$0, this.f);
-            }
-
-            if ($$5 != null && !$$5.p()) {
-               this.e = $$5;
-               this.a(2, $$5.f());
-               this.g = $$5.o();
-            } else {
-               this.a(2, cmx.f);
-               this.g = 0;
-            }
-         }
-
-         this.c.l(this.a(2));
-      }
-   }
-
-   @Nullable
-   public csm g() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-      this.f = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   public int h() {
-      return this.g;
+   interface a<T extends cib> {
+      T create(int var1, cfh var2);
    }
 }

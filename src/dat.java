@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dat extends dad implements dbf {
+public class dat extends daf implements dbg {
    public static final MapCodec<dat> c = b(dat::new);
+   protected static final emm g = cwq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dat> a() {
       return c;
    }
 
-   protected dat(djf.d $$0) {
-      super($$0, ic.b, emi.b(), true);
+   protected dat(djg.d $$0) {
+      super($$0, ic.b, g, true, 0.14);
    }
 
    @Override
-   protected dae c() {
-      return (dae)cwr.mc;
+   protected boolean g(djh $$0) {
+      return $$0.a(cws.G);
    }
 
    @Override
-   public eeq c_(djg $$0) {
-      return eer.c.a(false);
+   protected cwq b() {
+      return cws.md;
    }
 
    @Override
-   protected boolean h(djg $$0) {
-      return this.c().h($$0);
+   protected boolean h(djh $$0) {
+      return !$$0.a(cws.kJ);
    }
 
    @Override
-   public boolean a(@Nullable cfh $$0, csu $$1, hx $$2, djg $$3, eep $$4) {
+   public boolean a(@Nullable cfi $$0, csv $$1, hx $$2, djh $$3, eeq $$4) {
       return false;
    }
 
    @Override
-   public boolean a(ctp $$0, hx $$1, djg $$2, eeq $$3) {
+   public boolean a(ctq $$0, hx $$1, djh $$2, eer $$3) {
       return false;
+   }
+
+   @Override
+   protected int a(auv $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public djh a(cph $$0) {
+      eer $$1 = $$0.q().b_($$0.a());
+      return $$1.a(asm.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public eer c_(djh $$0) {
+      return ees.c.a(false);
    }
 }

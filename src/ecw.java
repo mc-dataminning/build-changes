@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ecw extends ecz {
-   public static final Codec<ecw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ecw::new)
-   );
-   private final cwp b;
-   private final float d;
+public class ecw extends edd {
+   public final asw<cwq> a;
+   public static final Codec<ecw> b = asw.b(ke.f).xmap(ecw::new, $$0 -> $$0.a);
 
-   public ecw(cwp $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public ecw(asw<cwq> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public edg.c a(cts $$0, hx $$1, hx $$2, edg.c $$3, edg.c $$4, edc $$5) {
+      return dru.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public boolean a(djg $$0, auu $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected eda<?> a() {
-      return eda.e;
+   protected edf<?> a() {
+      return edf.n;
    }
 }

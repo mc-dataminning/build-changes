@@ -1,119 +1,58 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class bxg {
-   private static final int a = 10;
-
-   public static hx a(auu $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new hx($$3, $$4, $$5);
+   @Nullable
+   public static elt a(bmu $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::h);
    }
 
    @Nullable
-   public static hx a(auu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = aun.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)aun.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return hx.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
-   }
-
-   @VisibleForTesting
-   public static hx a(hx $$0, int $$1, Predicate<hx> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         hx $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public static hx a(hx $$0, int $$1, int $$2, Predicate<hx> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         hx $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         hx $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            hx $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
+   public static elt a(bmu $$0, int $$1, int $$2, ToDoubleFunction<hx> $$3) {
+      boolean $$4 = bxe.a($$0, $$1);
+      return bxh.a(() -> {
+         hx $$4x = bxh.a($$0.eg(), $$1, $$2);
+         hx $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
    @Nullable
-   public static els a(bmt $$0, Supplier<hx> $$1) {
-      return a($$1, $$0::h);
+   public static elt a(bmu $$0, int $$1, int $$2, elt $$3) {
+      elt $$4 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$5 = bxe.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
    @Nullable
-   public static els a(Supplier<hx> $$0, ToDoubleFunction<hx> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      hx $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         hx $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? els.c($$3) : null;
+   public static elt b(bmu $$0, int $$1, int $$2, elt $$3) {
+      elt $$4 = $$0.dk().d($$3);
+      boolean $$5 = bxe.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public static hx a(bmt $$0, int $$1, auu $$2, hx $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fQ() && $$1 > 1) {
-         hx $$6 = $$0.fN();
-         if ($$0.dr() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
+   @Nullable
+   private static elt a(bmu $$0, int $$1, int $$2, elt $$3, boolean $$4) {
+      return bxh.a($$0, () -> {
+         hx $$5 = bxh.a($$0.eg(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
          } else {
-            $$4 += $$2.a($$1 / 2);
+            hx $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
+      });
+   }
 
-         if ($$0.dx() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
+   @Nullable
+   public static hx a(bmu $$0, hx $$1) {
+      $$1 = bxh.a($$1, $$0.dM().al(), $$1x -> bxe.c($$0, $$1x));
+      return !bxe.a($$0, $$1) && !bxe.b($$0, $$1) ? $$1 : null;
+   }
 
-      return hx.a((double)$$4 + $$0.dr(), (double)$$3.v() + $$0.dt(), (double)$$5 + $$0.dx());
+   @Nullable
+   public static hx a(bmu $$0, int $$1, boolean $$2, hx $$3) {
+      hx $$4 = bxh.a($$0, $$1, $$0.eg(), $$3);
+      return !bxe.a($$4, $$0) && !bxe.a($$2, $$0, $$4) && !bxe.a($$0.N(), $$4) ? $$4 : null;
    }
 }

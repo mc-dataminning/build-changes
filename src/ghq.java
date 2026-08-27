@@ -1,29 +1,44 @@
-public class ghq extends ghi {
-   private final blu n;
+public class ghq extends ghj {
+   public static final int n = 20;
+   private final fsj o;
+   private int p;
 
-   public ghq(arq $$0, ars $$1, float $$2, float $$3, blu $$4, long $$5) {
-      super($$0, $$1, auu.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dr());
-      this.g = (double)((float)this.n.dt());
-      this.h = (double)((float)this.n.dx());
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.aU();
+   public ghq(fsj $$0) {
+      super(ars.hs, art.h, gia.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
    public void q() {
-      if (this.n.dH()) {
-         this.n();
+      this.p++;
+      if (!this.o.dH() && (this.p <= 20 || this.o.fw())) {
+         this.f = (double)((float)this.o.dr());
+         this.g = (double)((float)this.o.dt());
+         this.h = (double)((float)this.o.dx());
+         float $$0 = (float)this.o.dp().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = auo.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
+
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
       } else {
-         this.f = (double)((float)this.n.dr());
-         this.g = (double)((float)this.n.dt());
-         this.h = (double)((float)this.n.dx());
+         this.n();
       }
    }
 }

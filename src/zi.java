@@ -2,9 +2,9 @@ public class zi implements xf<za> {
    private final hx a;
    private final int b;
    private final int c;
-   private final cwp d;
+   private final cwq d;
 
-   public zi(hx $$0, cwp $$1, int $$2, int $$3) {
+   public zi(hx $$0, cwq $$1, int $$2, int $$3) {
       this.a = $$0;
       this.d = $$1;
       this.b = $$2;
@@ -42,7 +42,7 @@ public class zi implements xf<za> {
       return this.c;
    }
 
-   public cwp f() {
+   public cwq f() {
       return this.d;
    }
 }

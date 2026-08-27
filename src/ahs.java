@@ -13,19 +13,19 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ahs extends aql {
+public class ahs extends aqm {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().create();
    private Map<ahg, af> c = Map.of();
    private ak d = new ak();
-   private final egy e;
+   private final egz e;
 
-   public ahs(egy $$0) {
+   public ahs(egz $$0) {
       super(b, "advancements");
       this.e = $$0;
    }
 
-   protected void a(Map<ahg, JsonElement> $$0, aqh $$1, bgr $$2) {
+   protected void a(Map<ahg, JsonElement> $$0, aqi $$1, bgs $$2) {
       Builder<ahg, af> $$3 = ImmutableMap.builder();
       $$0.forEach(($$1x, $$2x) -> {
          try {
@@ -50,7 +50,7 @@ public class ahs extends aql {
    }
 
    private void a(ahg $$0, ae $$1) {
-      aus.a $$2 = new aus.a();
+      aut.a $$2 = new aut.a();
       $$1.a($$2, this.e);
       Multimap<String, String> $$3 = $$2.a();
       if (!$$3.isEmpty()) {

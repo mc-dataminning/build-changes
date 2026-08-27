@@ -14,7 +14,7 @@ public class cj extends cv<cj.a> {
 
    public static record a(Optional<bb> b, ahg c) implements cv.a {
       public static final Codec<cj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(cj.a::a), ahg.a.fieldOf("loot_table").forGetter(cj.a::b)).apply($$0, cj.a::new)
+         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(cj.a::a), ahg.a.fieldOf("loot_table").forGetter(cj.a::b)).apply($$0, cj.a::new)
       );
 
       public static an<cj.a> a(ahg $$0) {

@@ -30,8 +30,8 @@ public interface it<T> extends Keyable, im<T> {
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      Codec<T> $$1 = atv.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return atv.a(atv.b($$0, $$1), this::e, this::e);
+      Codec<T> $$1 = atw.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return atw.a(atw.b($$0, $$1), this::e, this::e);
    }
 
    default Codec<ih<T>> r() {
@@ -45,7 +45,7 @@ public interface it<T> extends Keyable, im<T> {
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      return atv.a($$0, (Function<ih<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
+      return atw.a($$0, (Function<ih<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
    }
 
    default <U> Stream<U> keys(DynamicOps<U> $$0) {
@@ -93,7 +93,7 @@ public interface it<T> extends Keyable, im<T> {
 
    Set<ahf<T>> f();
 
-   Optional<ih.c<T>> a(auu var1);
+   Optional<ih.c<T>> a(auv var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
@@ -140,21 +140,21 @@ public interface it<T> extends Keyable, im<T> {
 
    Stream<ih.c<T>> h();
 
-   Optional<il.c<T>> b(asv<T> var1);
+   Optional<il.c<T>> b(asw<T> var1);
 
-   default Iterable<ih<T>> c(asv<T> $$0) {
+   default Iterable<ih<T>> c(asw<T> $$0) {
       return (Iterable<ih<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   il.c<T> a(asv<T> var1);
+   il.c<T> a(asw<T> var1);
 
-   Stream<Pair<asv<T>, il.c<T>>> i();
+   Stream<Pair<asw<T>, il.c<T>>> i();
 
-   Stream<asv<T>> j();
+   Stream<asw<T>> j();
 
    void m();
 
-   void a(Map<asv<T>, List<ih<T>>> var1);
+   void a(Map<asw<T>, List<ih<T>>> var1);
 
    default im<ih<T>> t() {
       return new im<ih<T>>() {
@@ -191,12 +191,12 @@ public interface it<T> extends Keyable, im<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asv<T> $$0) {
+         public Optional<il.c<T>> a(asw<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public il.c<T> b(asv<T> $$0) {
+         public il.c<T> b(asw<T> $$0) {
             return it.this.a($$0);
          }
       };

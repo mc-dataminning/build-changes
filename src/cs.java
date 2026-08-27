@@ -11,16 +11,16 @@ public class cs extends cv<cs.a> {
       return cs.a.a;
    }
 
-   public void a(ane $$0, ahg $$1, List<cmx> $$2) {
+   public void a(ane $$0, ahg $$1, List<cmy> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
    public static record a(Optional<bb> b, ahg c, List<ca> d) implements cv.a {
       public static final Codec<cs.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atv.a(bp.b, "player").forGetter(cs.a::a),
+                  atw.a(bp.b, "player").forGetter(cs.a::a),
                   ahg.a.fieldOf("recipe_id").forGetter(cs.a::b),
-                  atv.a(ca.a.listOf(), "ingredients", List.of()).forGetter(cs.a::c)
+                  atw.a(ca.a.listOf(), "ingredients", List.of()).forGetter(cs.a::c)
                )
                .apply($$0, cs.a::new)
       );
@@ -33,15 +33,15 @@ public class cs extends cv<cs.a> {
          return am.aa.a(new cs.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(ahg $$0, List<cmx> $$1) {
+      boolean b(ahg $$0, List<cmy> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cmx> $$2 = new ArrayList<>($$1);
+            List<cmy> $$2 = new ArrayList<>($$1);
 
             for (ca $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cmx> $$5 = $$2.iterator();
+               Iterator<cmy> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {

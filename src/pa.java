@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pa {
-   public static final ahf<eao> a = pl.a("bastion/starts");
+   public static final ahf<eap> a = pl.a("bastion/starts");
 
-   public static void a(pe<eao> $$0) {
-      ii<edd> $$1 = $$0.a(ke.aE);
-      ih<edd> $$2 = $$1.b(pm.w);
-      ii<eao> $$3 = $$0.a(ke.aG);
-      ih<eao> $$4 = $$3.b(pl.a);
+   public static void a(pe<eap> $$0) {
+      ii<ede> $$1 = $$0.a(ke.aE);
+      ih<ede> $$2 = $$1.b(pm.w);
+      ii<eap> $$3 = $$0.a(ke.aG);
+      ih<eap> $$4 = $$3.b(pl.a);
       $$0.a(
          a,
-         new eao(
+         new eap(
             $$4,
             ImmutableList.of(
-               Pair.of(eam.b("bastion/units/air_base", $$2), 1),
-               Pair.of(eam.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(eam.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(eam.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(ean.b("bastion/units/air_base", $$2), 1),
+               Pair.of(ean.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(ean.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(ean.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            eao.a.b
+            eap.a.b
          )
       );
       oz.a($$0);

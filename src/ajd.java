@@ -106,8 +106,8 @@ public class ajd {
       );
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, ih<blf> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      blf $$6 = $$2.a();
+   private static int a(ds $$0, Collection<? extends blv> $$1, ih<blg> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      blg $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class ajd {
          $$8 = 600;
       }
 
-      for (blu $$13 : $$1) {
-         if ($$13 instanceof bmk) {
-            blh $$14 = new blh($$6, $$8, $$4, false, $$5);
-            if (((bmk)$$13).b($$14, $$0.f())) {
+      for (blv $$13 : $$1) {
+         if ($$13 instanceof bml) {
+            bli $$14 = new bli($$6, $$8, $$4, false, $$5);
+            if (((bml)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class ajd {
       }
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1) throws CommandSyntaxException {
+   private static int a(ds $$0, Collection<? extends blv> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (blu $$3 : $$1) {
-         if ($$3 instanceof bmk && ((bmk)$$3).er()) {
+      for (blv $$3 : $$1) {
+         if ($$3 instanceof bml && ((bml)$$3).er()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class ajd {
       }
    }
 
-   private static int a(ds $$0, Collection<? extends blu> $$1, ih<blf> $$2) throws CommandSyntaxException {
-      blf $$3 = $$2.a();
+   private static int a(ds $$0, Collection<? extends blv> $$1, ih<blg> $$2) throws CommandSyntaxException {
+      blg $$3 = $$2.a();
       int $$4 = 0;
 
-      for (blu $$5 : $$1) {
-         if ($$5 instanceof bmk && ((bmk)$$5).d($$3)) {
+      for (blv $$5 : $$1) {
+         if ($$5 instanceof bml && ((bml)$$5).d($$3)) {
             $$4++;
          }
       }

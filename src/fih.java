@@ -1,9 +1,7 @@
+import java.util.List;
+
 public interface fih {
-   void a(fif var1);
+   List<fii> a();
 
-   vf aO_();
-
-   void a(ewt var1, float var2, int var3);
-
-   boolean aP_();
+   vf b();
 }

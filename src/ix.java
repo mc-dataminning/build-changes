@@ -11,12 +11,12 @@ import java.util.stream.Stream;
 public class ix {
    private static final Map<ahf<? extends it<?>>, ix.a<?>> b = ac.a(() -> {
       Builder<ahf<? extends it<?>>, ix.a<?>> $$0 = ImmutableMap.builder();
-      a($$0, ke.at, cun.b);
+      a($$0, ke.at, cuo.b);
       a($$0, ke.au, vb.a);
-      a($$0, ke.aJ, cpd.a);
-      a($$0, ke.aI, cpb.a);
-      a($$0, ke.ay, dmp.h);
-      a($$0, ke.r, bku.a);
+      a($$0, ke.aJ, cpe.a);
+      a($$0, ke.aI, cpc.a);
+      a($$0, ke.ay, dmq.h);
+      a($$0, ke.r, bkv.a);
       return $$0.build();
    });
    public static final Codec<iu> a = a();

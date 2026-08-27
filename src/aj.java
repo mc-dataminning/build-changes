@@ -10,10 +10,10 @@ import net.minecraft.server.MinecraftServer;
 public record aj(int c, List<ahg> d, List<ahg> e, Optional<dm> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atv.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
-               atv.a(ahg.a.listOf(), "loot", List.of()).forGetter(aj::b),
-               atv.a(ahg.a.listOf(), "recipes", List.of()).forGetter(aj::c),
-               atv.a(dm.a, "function").forGetter(aj::d)
+               atw.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
+               atw.a(ahg.a.listOf(), "loot", List.of()).forGetter(aj::b),
+               atw.a(ahg.a.listOf(), "recipes", List.of()).forGetter(aj::c),
+               atw.a(dm.a, "function").forGetter(aj::d)
             )
             .apply($$0, aj::new)
    );
@@ -21,19 +21,19 @@ public record aj(int c, List<ahg> d, List<ahg> e, Optional<dm> f) {
 
    public void a(ane $$0) {
       $$0.d(this.c);
-      ehb $$1 = new ehb.a($$0.z()).a(ejg.a, $$0).a(ejg.f, $$0.dk()).a(ejf.k);
+      ehc $$1 = new ehc.a($$0.z()).a(ejh.a, $$0).a(ejh.f, $$0.dk()).a(ejg.k);
       boolean $$2 = false;
 
       for (ahg $$3 : this.d) {
          ObjectListIterator var6 = $$0.d.aJ().getLootTable($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cmx $$4 = (cmx)var6.next();
+            cmy $$4 = (cmy)var6.next();
             if ($$0.i($$4)) {
-               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), arr.mO, ars.h, 0.2F, (($$0.eg().i() - $$0.eg().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), ars.mO, art.h, 0.2F, (($$0.eg().i() - $$0.eg().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cbt $$5 = $$0.a($$4, false);
+               cbu $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.x();
                   $$5.b($$0.cw());

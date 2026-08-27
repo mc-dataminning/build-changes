@@ -2,10 +2,10 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class acb implements xf<za> {
-   private final emn a;
+   private final emo a;
    private final String b;
 
-   public acb(emn $$0, @Nullable emo $$1) {
+   public acb(emo $$0, @Nullable emp $$1) {
       this.a = $$0;
       if ($$1 == null) {
          this.b = "";
@@ -15,13 +15,13 @@ public class acb implements xf<za> {
    }
 
    public acb(ui $$0) {
-      this.a = $$0.a(emn.u);
+      this.a = $$0.a(emo.u);
       this.b = $$0.s();
    }
 
    @Override
    public void a(ui $$0) {
-      $$0.a(emn::a, this.a);
+      $$0.a(emo::a, this.a);
       $$0.a(this.b);
    }
 
@@ -29,7 +29,7 @@ public class acb implements xf<za> {
       $$0.a(this);
    }
 
-   public emn a() {
+   public emo a() {
       return this.a;
    }
 

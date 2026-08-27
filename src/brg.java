@@ -1,22 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class brg {
-   private static final int a = 36;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static boc<bmk> a() {
-      return bro.a(
-         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$0 -> $$0.group($$0.a(bvm.x), $$0.a(bvm.y), $$0.a(bvm.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bmk>a($$2).filter($$1xx -> $$1xx.f((blu)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dO().a($$4.Y(), $$4.X());
-                     }
+   public static bpn<bmu> a(float $$0) {
+      return a($$0, 10, 7);
+   }
 
-                     return true;
-                  }))
-      );
+   public static bpn<bmu> a(float $$0, int $$1, int $$2) {
+      return brp.a((Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$3 -> $$3.group($$3.c(bvn.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               hx $$7 = $$5.dm();
+               elt $$8;
+               if ($$4.c($$7)) {
+                  $$8 = bxg.a($$5, $$1, $$2);
+               } else {
+                  iz $$9 = iz.a($$7);
+                  iz $$10 = boe.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = bxd.a($$5, $$1, $$2, elt.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = bxg.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bvq($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

@@ -15,27 +15,27 @@ public class fp implements fo {
    }
 
    @Override
-   public els a(ds $$0) {
-      elr $$1 = $$0.k();
-      els $$2 = $$0.m().a($$0);
-      float $$3 = aun.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = aun.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = aun.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = aun.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = aun.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = aun.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      els $$9 = new els((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      els $$10 = new els((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      els $$11 = $$9.c($$10).a(-1.0);
+   public elt a(ds $$0) {
+      els $$1 = $$0.k();
+      elt $$2 = $$0.m().a($$0);
+      float $$3 = auo.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = auo.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = auo.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = auo.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = auo.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = auo.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      elt $$9 = new elt((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      elt $$10 = new elt((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      elt $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new els($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new elt($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public elr b(ds $$0) {
-      return elr.a;
+   public els b(ds $$0) {
+      return els.a;
    }
 
    @Override

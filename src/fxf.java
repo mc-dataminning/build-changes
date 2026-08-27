@@ -1,44 +1,37 @@
-public class fxf implements fwr.a {
-   private final evh a;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public fxf(evh $$0) {
-      this.a = $$0;
+public class fxf implements fws.a {
+   private static final int a = 60;
+   private final Set<iz> b = Sets.newHashSet();
+
+   fxf() {
    }
 
    @Override
-   public void a(eqa $$0, ftg $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = this.a.s.dm();
-      ctr $$6 = this.a.s.dM();
+   public void a() {
+      this.b.clear();
+   }
 
-      for (hx $$7 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eeq $$8 = $$6.b_($$7);
-         if ($$8.a(asl.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            fwr.a(
-               $$0,
-               $$1,
-               new eln(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
-      }
+   public void a(iz $$0) {
+      this.b.add($$0);
+   }
 
-      for (hx $$10 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eeq $$11 = $$6.b_($$10);
-         if ($$11.a(asl.a)) {
-            fwr.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+   public void b(iz $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
+      hx $$5 = hx.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
          }
-      }
+      });
+   }
+
+   private static void a(eqb $$0, fth $$1, iz $$2) {
+      fws.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

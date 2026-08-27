@@ -1,96 +1,102 @@
-import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class dhz extends dgu implements dns.b<dhz.a> {
-   private final dhz.a a;
+public abstract class dhz extends dgp implements bki {
+   @Nullable
+   protected ahg m;
+   protected long n;
 
-   public dhz(hx $$0, djg $$1) {
-      super(dgw.K, $$0, $$1);
-      this.a = new dhz.a($$1, new dnm($$0));
+   protected dhz(dgx<?> $$0, hx $$1, djh $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(cto $$0, hx $$1, djg $$2, dhz $$3) {
-      $$3.a.d().a($$0, $$1, $$0.F_(), true);
+   @Nullable
+   @Override
+   public ahg az_() {
+      return this.m;
    }
 
    @Override
-   public void a(sn $$0) {
-      this.a.b.a($$0);
+   public void a(@Nullable ahg $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected void b(sn $$0) {
-      this.a.b.b($$0);
-      super.b($$0);
+   public long aA_() {
+      return this.n;
    }
 
-   public dhz.a c() {
-      return this.a;
+   @Override
+   public void a(long $$0) {
+      this.n = $$0;
    }
 
-   public static class a implements dns {
-      public static final int a = 8;
-      final ddj b;
-      private final djg c;
-      private final dnu d;
+   @Override
+   public boolean ai_() {
+      this.e_(null);
+      return this.k().stream().allMatch(cmy::b);
+   }
 
-      public a(djg $$0, dnu $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = ddj.a();
+   @Override
+   public cmy a(int $$0) {
+      this.e_(null);
+      return this.k().get($$0);
+   }
+
+   @Override
+   public cmy a(int $$0, int $$1) {
+      this.e_(null);
+      cmy $$2 = bjv.a(this.k(), $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
       }
 
-      @Override
-      public dnu a() {
-         return this.d;
+      return $$2;
+   }
+
+   @Override
+   public cmy b(int $$0) {
+      this.e_(null);
+      return bjv.a(this.k(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, cmy $$1) {
+      this.e_(null);
+      this.k().set($$0, $$1);
+      if ($$1.L() > this.ak_()) {
+         $$1.f(this.ak_());
       }
 
-      @Override
-      public int b() {
-         return 8;
-      }
+      this.e();
+   }
 
-      @Override
-      public dns.a c() {
-         return dns.a.b;
-      }
+   @Override
+   public boolean a(cfi $$0) {
+      return bju.a(this, $$0);
+   }
 
-      @Override
-      public boolean a(and $$0, dnq $$1, dnq.a $$2, els $$3) {
-         if ($$1 == dnq.p && $$2.a() instanceof bmk $$4) {
-            if (!$$4.eD()) {
-               int $$5 = $$4.ee();
-               if ($$4.ec() && $$5 > 0) {
-                  this.b.a(hx.a($$3.a(ic.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
+   @Override
+   public void a() {
+      this.k().clear();
+   }
 
-               $$4.eC();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, hx.a($$1x), this.c, $$0.F_()));
-            }
+   protected abstract iq<cmy> k();
 
-            return true;
-         } else {
-            return false;
-         }
-      }
+   protected abstract void a(iq<cmy> var1);
 
-      @VisibleForTesting
-      public ddj d() {
-         return this.b;
-      }
+   @Override
+   public boolean d(cfi $$0) {
+      return super.d($$0) && (this.m == null || !$$0.P_());
+   }
 
-      private void a(and $$0, hx $$1, djg $$2, auu $$3) {
-         $$0.a($$1, $$2.a(ddg.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(jx.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, arr.vd, ars.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(cto $$0, bmk $$1) {
-         if ($$1.eh() instanceof ane $$3) {
-            bks $$4 = $$1.ex() == null ? $$0.ai().a((cfh)$$3) : $$1.ex();
-            am.X.a($$3, $$1, $$4);
-         }
+   @Nullable
+   @Override
+   public cib createMenu(int $$0, cfh $$1, cfi $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.m);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
    }
 }

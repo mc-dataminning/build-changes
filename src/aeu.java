@@ -1,17 +1,17 @@
 import java.util.Optional;
 
 public class aeu implements xf<adj> {
-   private final Optional<blf> a;
-   private final Optional<blf> b;
+   private final Optional<blg> a;
+   private final Optional<blg> b;
 
-   public aeu(Optional<blf> $$0, Optional<blf> $$1) {
+   public aeu(Optional<blg> $$0, Optional<blg> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public aeu(ui $$0) {
-      this.a = $$0.b((ui.a<blf>)($$0x -> $$0x.a(kd.d)));
-      this.b = $$0.b((ui.a<blf>)($$0x -> $$0x.a(kd.d)));
+      this.a = $$0.b((ui.a<blg>)($$0x -> $$0x.a(kd.d)));
+      this.b = $$0.b((ui.a<blg>)($$0x -> $$0x.a(kd.d)));
    }
 
    @Override
@@ -24,11 +24,11 @@ public class aeu implements xf<adj> {
       $$0.a(this);
    }
 
-   public Optional<blf> a() {
+   public Optional<blg> a() {
       return this.a;
    }
 
-   public Optional<blf> d() {
+   public Optional<blg> d() {
       return this.b;
    }
 }

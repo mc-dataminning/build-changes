@@ -32,7 +32,7 @@ public class ef implements ArgumentType<ge> {
       return new ef(true, false);
    }
 
-   public static blu a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static blv a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return ((ge)$$0.getArgument($$1, ge.class)).a((ds)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class ef implements ArgumentType<ge> {
       return new ef(false, false);
    }
 
-   public static Collection<? extends blu> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends blu> $$2 = c($$0, $$1);
+   public static Collection<? extends blv> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends blv> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class ef implements ArgumentType<ge> {
       }
    }
 
-   public static Collection<? extends blu> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends blv> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       return ((ge)$$0.getArgument($$1, ge.class)).b((ds)$$0.getSource());
    }
 

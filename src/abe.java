@@ -83,7 +83,7 @@ public class abe implements xf<za> {
          $$0.a($$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(vw.a::a), ($$0, $$1) -> $$0.a($$1.g, vw.a::a)),
-      c(($$0, $$1) -> $$0.e = ctl.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = ctm.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.n(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = $$1.c(ui::m), ($$0, $$1) -> $$0.a($$1.f(), ui::a));
@@ -105,7 +105,7 @@ public class abe implements xf<za> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, ctl e, @Nullable vf f, @Nullable vw.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, ctm e, @Nullable vf f, @Nullable vw.a g) {
 
       b(ane $$0) {
          this($$0.cw(), $$0.fR(), true, $$0.c.l(), $$0.e.b(), $$0.N(), x.a($$0.ab(), vw::a));
@@ -118,14 +118,14 @@ public class abe implements xf<za> {
       GameProfile b;
       boolean c;
       int d;
-      ctl e;
+      ctm e;
       @Nullable
       vf f;
       @Nullable
       vw.a g;
 
       c(UUID $$0) {
-         this.e = ctl.e;
+         this.e = ctm.e;
          this.a = $$0;
       }
 

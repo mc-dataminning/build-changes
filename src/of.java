@@ -15,20 +15,20 @@ public abstract class of<T> extends ok<T> {
       this.d = $$4;
    }
 
-   protected of.a<T> a(asv<T> $$0) {
-      ass $$1 = this.c($$0);
+   protected of.a<T> a(asw<T> $$0) {
+      ast $$1 = this.c($$0);
       return new of.a<>($$1, this.d);
    }
 
    protected static class a<T> extends ok.b<T> {
       private final Function<T, ahf<T>> a;
 
-      a(ass $$0, Function<T, ahf<T>> $$1) {
+      a(ast $$0, Function<T, ahf<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public of.a<T> a(asv<T> $$0) {
+      public of.a<T> a(asw<T> $$0) {
          super.b($$0);
          return this;
       }

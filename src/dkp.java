@@ -1,23 +1,21 @@
-public enum dkp implements avj {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dkp implements avk {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final String f;
+   private final String d;
 
    private dkp(String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

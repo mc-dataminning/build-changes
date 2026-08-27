@@ -1,106 +1,174 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fbv extends fda {
-   private static final vf a = vf.c("createWorld.customize.buffet.biome");
-   private final fda b;
-   private final Consumer<ih<cun>> c;
-   final it<cun> k;
-   private fbv.a l;
-   ih<cun> m;
-   private exf n;
+public class fbv extends fdb {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger k = LogUtils.getLogger();
+   private static final long l = 2000L;
+   public static final vf a = vf.c("connect.aborted");
+   public static final vf b = vf.a("disconnect.genericReason", vf.c("disconnect.unknownHost"));
+   @Nullable
+   volatile ug m;
+   @Nullable
+   ChannelFuture n;
+   volatile boolean o;
+   final fdb p;
+   private vf q = vf.c("connect.connecting");
+   private long r = -1L;
+   final vf t;
 
-   public fbv(fda $$0, fhy $$1, Consumer<ih<cun>> $$2) {
-      super(vf.c("createWorld.customize.buffet.title"));
-      this.b = $$0;
-      this.c = $$2;
-      this.k = $$1.a().d(ke.at);
-      ih<cun> $$3 = this.k.b(cuu.b).or(() -> this.k.h().findAny()).orElseThrow();
-      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
+   private fbv(fdb $$0, vf $$1) {
+      super(eva.a);
+      this.p = $$0;
+      this.t = $$1;
+   }
+
+   public static void a(fdb $$0, evi $$1, fpf $$2, fod $$3, boolean $$4) {
+      if ($$1.y instanceof fbv) {
+         k.error("Attempt to connect while already connecting");
+      } else {
+         fbv $$5 = new fbv($$0, $$4 ? fsq.a : ve.q);
+         $$1.y();
+         $$1.aR();
+         $$1.a(fot.a($$3 != null ? $$3.b : $$2.a()));
+         $$1.ba().a(fsr.c.b, $$3.b, $$3.a);
+         $$1.a($$5);
+         $$5.a($$1, $$2, $$3);
+      }
+   }
+
+   private void a(final evi $$0, final fpf $$1, @Nullable final fod $$2) {
+      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fbv.this.o) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = fph.a.a($$1).map(fpe::d);
+               if (fbv.this.o) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fcd(fbv.this.p, fbv.this.t, fbv.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               ug $$2;
+               synchronized (fbv.this) {
+                  if (fbv.this.o) {
+                     return;
+                  }
+
+                  $$2 = new ug(xg.b);
+                  $$2.a($$0.aN().l());
+                  fbv.this.n = ug.a($$0, $$0.m.aw(), $$2);
+               }
+
+               fbv.this.n.syncUninterruptibly();
+               synchronized (fbv.this) {
+                  if (fbv.this.o) {
+                     $$2.a(fbv.a);
+                     return;
+                  }
+
+                  fbv.this.m = $$2;
+                  $$0.ac().a($$2, $$2 != null ? a($$2.b()) : ghg.c.a);
+               }
+
+               fbv.this.m.a($$0.getHostName(), $$0.getPort(), new fnr(fbv.this.m, $$0, $$2, fbv.this.p, false, null, fbv.this::a));
+               fbv.this.m.a(new afu($$0.V().c(), $$0.V().b()));
+            } catch (Exception var9) {
+               if (fbv.this.o) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fbv.k.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fcd(fbv.this.p, fbv.this.t, vf.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static ghg.c a(fod.a $$0x) {
+            return switch ($$0) {
+               case a -> ghg.c.b;
+               case b -> ghg.c.c;
+               case c -> ghg.c.a;
+            };
+         }
+      };
+      $$3.setUncaughtExceptionHandler(new r(k));
+      $$3.start();
+   }
+
+   private void a(vf $$0) {
+      this.q = $$0;
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.b);
+   public void d() {
+      if (this.m != null) {
+         if (this.m.k()) {
+            this.m.d();
+         } else {
+            this.m.p();
+         }
+      }
+   }
+
+   @Override
+   public boolean aL_() {
+      return false;
    }
 
    @Override
    protected void aN_() {
-      this.l = this.d(new fbv.a());
-      this.n = this.d(exf.a(ve.d, $$0 -> {
-         this.c.accept(this.m);
-         this.f.a(this.b);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(exf.a(ve.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.l.a(this.l.l().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
-   }
+      this.d(exg.a(ve.e, $$0 -> {
+         synchronized (this) {
+            this.o = true;
+            if (this.n != null) {
+               this.n.cancel(true);
+               this.n = null;
+            }
 
-   void n() {
-      this.n.j = this.l.i() != null;
-   }
-
-   @Override
-   public void a(ewt $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, a, this.g / 2, 28, 10526880);
-   }
-
-   @Override
-   public void b(ewt $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   class a extends eyb<fbv.a.a> {
-      a() {
-         super(fbv.this.f, fbv.this.g, fbv.this.h - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fbv.this.k.h().map($$0x -> new fbv.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable fbv.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fbv.this.m = $$0.b;
-         }
-
-         fbv.this.n();
-      }
-
-      class a extends eyb.a<fbv.a.a> {
-         final ih.c<cun> b;
-         final vf c;
-
-         public a(ih.c<cun> $$0) {
-            this.b = $$0;
-            ahg $$1 = $$0.g().a();
-            String $$2 = $$1.f("biome");
-            if (si.a().b($$2)) {
-               this.c = vf.c($$2);
-            } else {
-               this.c = vf.b($$1.toString());
+            if (this.m != null) {
+               this.m.a(a);
             }
          }
 
-         @Override
-         public vf a() {
-            return vf.a("narrator.select", this.c);
-         }
+         this.f.a(this.p);
+      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+   }
 
-         @Override
-         public void a(ewt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fbv.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
+   @Override
+   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.b();
+      if ($$4 - this.r > 2000L) {
+         this.r = $$4;
+         this.f.aW().c(vf.c("narrator.joining"));
       }
+
+      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
    }
 }

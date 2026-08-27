@@ -3,7 +3,7 @@ public record ada(float a, boolean b) implements xf<za> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static ada a(bkk $$0) {
+   public static ada a(bkl $$0) {
       return new ada($$0.f(), $$0.l());
    }
 

@@ -1,79 +1,110 @@
-public class dhm extends dhy {
-   public static final int e = 9;
-   private iq<cmx> f = iq.a(9, cmx.f);
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected dhm(dgw<?> $$0, hx $$1, djg $$2) {
-      super($$0, $$1, $$2);
+public class dhm {
+   private static final String b = "decorated_pot_base";
+   public static final ahf<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "friend_pottery_pattern";
+   private static final String m = "heart_pottery_pattern";
+   private static final String n = "heartbreak_pottery_pattern";
+   private static final String o = "howl_pottery_pattern";
+   private static final String p = "miner_pottery_pattern";
+   private static final String q = "mourner_pottery_pattern";
+   private static final String r = "plenty_pottery_pattern";
+   private static final String s = "prize_pottery_pattern";
+   private static final String t = "sheaf_pottery_pattern";
+   private static final String u = "shelter_pottery_pattern";
+   private static final String v = "skull_pottery_pattern";
+   private static final String w = "snort_pottery_pattern";
+   private static final ahf<String> x = a("decorated_pot_side");
+   private static final ahf<String> y = a("angler_pottery_pattern");
+   private static final ahf<String> z = a("archer_pottery_pattern");
+   private static final ahf<String> A = a("arms_up_pottery_pattern");
+   private static final ahf<String> B = a("blade_pottery_pattern");
+   private static final ahf<String> C = a("brewer_pottery_pattern");
+   private static final ahf<String> D = a("burn_pottery_pattern");
+   private static final ahf<String> E = a("danger_pottery_pattern");
+   private static final ahf<String> F = a("explorer_pottery_pattern");
+   private static final ahf<String> G = a("friend_pottery_pattern");
+   private static final ahf<String> H = a("heart_pottery_pattern");
+   private static final ahf<String> I = a("heartbreak_pottery_pattern");
+   private static final ahf<String> J = a("howl_pottery_pattern");
+   private static final ahf<String> K = a("miner_pottery_pattern");
+   private static final ahf<String> L = a("mourner_pottery_pattern");
+   private static final ahf<String> M = a("plenty_pottery_pattern");
+   private static final ahf<String> N = a("prize_pottery_pattern");
+   private static final ahf<String> O = a("sheaf_pottery_pattern");
+   private static final ahf<String> P = a("shelter_pottery_pattern");
+   private static final ahf<String> Q = a("skull_pottery_pattern");
+   private static final ahf<String> R = a("snort_pottery_pattern");
+   private static final Map<cmt, ahf<String>> S = Map.ofEntries(
+      Map.entry(cnb.qI, x),
+      Map.entry(cnb.xA, y),
+      Map.entry(cnb.xB, z),
+      Map.entry(cnb.xC, A),
+      Map.entry(cnb.xD, B),
+      Map.entry(cnb.xE, C),
+      Map.entry(cnb.xF, D),
+      Map.entry(cnb.xG, E),
+      Map.entry(cnb.xH, F),
+      Map.entry(cnb.xI, G),
+      Map.entry(cnb.xJ, H),
+      Map.entry(cnb.xK, I),
+      Map.entry(cnb.xL, J),
+      Map.entry(cnb.xM, K),
+      Map.entry(cnb.xN, L),
+      Map.entry(cnb.xO, M),
+      Map.entry(cnb.xP, N),
+      Map.entry(cnb.xQ, O),
+      Map.entry(cnb.xR, P),
+      Map.entry(cnb.xS, Q),
+      Map.entry(cnb.xT, R)
+   );
+
+   private static ahf<String> a(String $$0) {
+      return ahf.a(ke.ar, new ahg($$0));
    }
 
-   public dhm(hx $$0, djg $$1) {
-      this(dgw.f, $$0, $$1);
+   public static ahg a(ahf<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
-   @Override
-   public int b() {
-      return 9;
+   @Nullable
+   public static ahf<String> a(cmt $$0) {
+      return S.get($$0);
    }
 
-   public int a(auu $$0) {
-      this.e_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
-         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
-   }
-
-   public int a(cmx $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         if (this.f.get($$1).b()) {
-            this.a($$1, $$0);
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   @Override
-   protected vf l() {
-      return vf.c("container.dispenser");
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.f = iq.a(this.b(), cmx.f);
-      if (!this.c_($$0)) {
-         bju.b($$0, this.f);
-      }
-   }
-
-   @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         bju.a($$0, this.f);
-      }
-   }
-
-   @Override
-   protected iq<cmx> k() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(iq<cmx> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   protected cia a(int $$0, cfg $$1) {
-      return new cit($$0, $$1, this);
+   public static String a(it<String> $$0) {
+      it.a($$0, x, "decorated_pot_side");
+      it.a($$0, y, "angler_pottery_pattern");
+      it.a($$0, z, "archer_pottery_pattern");
+      it.a($$0, A, "arms_up_pottery_pattern");
+      it.a($$0, B, "blade_pottery_pattern");
+      it.a($$0, C, "brewer_pottery_pattern");
+      it.a($$0, D, "burn_pottery_pattern");
+      it.a($$0, E, "danger_pottery_pattern");
+      it.a($$0, F, "explorer_pottery_pattern");
+      it.a($$0, G, "friend_pottery_pattern");
+      it.a($$0, H, "heart_pottery_pattern");
+      it.a($$0, I, "heartbreak_pottery_pattern");
+      it.a($$0, J, "howl_pottery_pattern");
+      it.a($$0, K, "miner_pottery_pattern");
+      it.a($$0, L, "mourner_pottery_pattern");
+      it.a($$0, M, "plenty_pottery_pattern");
+      it.a($$0, N, "prize_pottery_pattern");
+      it.a($$0, O, "sheaf_pottery_pattern");
+      it.a($$0, P, "shelter_pottery_pattern");
+      it.a($$0, Q, "skull_pottery_pattern");
+      it.a($$0, R, "snort_pottery_pattern");
+      return it.a($$0, a, "decorated_pot_base");
    }
 }

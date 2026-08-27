@@ -1,192 +1,199 @@
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
 public class cox {
-   public static final String a = "custom_potion_effects";
-   public static final String b = "CustomPotionColor";
-   public static final String c = "Potion";
-   private static final int d = 16253176;
-   private static final vf e = vf.c("effect.none").a(n.h);
+   public static final int a = 20;
+   private static final List<cox.a<cow>> b = Lists.newArrayList();
+   private static final List<cox.a<cmt>> c = Lists.newArrayList();
+   private static final List<cpz> d = Lists.newArrayList();
+   private static final Predicate<cmy> e = $$0 -> {
+      for (cpz $$1 : d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
 
-   public static List<blh> a(cmx $$0) {
-      return a($$0.v());
+      return false;
+   };
+
+   public static boolean a(cmy $$0) {
+      return b($$0) || c($$0);
    }
 
-   public static List<blh> a(cov $$0, Collection<blh> $$1) {
-      List<blh> $$2 = Lists.newArrayList();
-      $$2.addAll($$0.a());
-      $$2.addAll($$1);
-      return $$2;
+   protected static boolean b(cmy $$0) {
+      for (cox.a<cmt> $$1 : c) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public static List<blh> a(@Nullable sn $$0) {
-      List<blh> $$1 = Lists.newArrayList();
-      $$1.addAll(c($$0).a());
-      a($$0, $$1);
+   protected static boolean c(cmy $$0) {
+      for (cox.a<cow> $$1 : b) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(cow $$0) {
+      for (cox.a<cow> $$1 : b) {
+         if ($$1.c == $$0) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(cmy $$0, cmy $$1) {
+      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
+   }
+
+   protected static boolean b(cmy $$0, cmy $$1) {
+      cmt $$2 = $$0.d();
+
+      for (cox.a<cmt> $$3 : c) {
+         if ($$3.a == $$2 && $$3.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(cmy $$0, cmy $$1) {
+      cow $$2 = coy.d($$0);
+
+      for (cox.a<cow> $$3 : b) {
+         if ($$3.a == $$2 && $$3.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static cmy d(cmy $$0, cmy $$1) {
+      if (!$$1.b()) {
+         cow $$2 = coy.d($$1);
+         cmt $$3 = $$1.d();
+
+         for (cox.a<cmt> $$4 : c) {
+            if ($$4.a == $$3 && $$4.b.a($$0)) {
+               return coy.a(new cmy($$4.c), $$2);
+            }
+         }
+
+         for (cox.a<cow> $$5 : b) {
+            if ($$5.a == $$2 && $$5.b.a($$0)) {
+               return coy.a(new cmy($$3), $$5.c);
+            }
+         }
+      }
+
       return $$1;
    }
 
-   public static List<blh> b(cmx $$0) {
-      return b($$0.v());
+   public static void a() {
+      a(cnb.sh);
+      a(cnb.vh);
+      a(cnb.vk);
+      a(cnb.sh, cnb.pr, cnb.vh);
+      a(cnb.vh, cnb.vg, cnb.vk);
+      a(coz.c, cnb.sq, coz.d);
+      a(coz.c, cnb.se, coz.d);
+      a(coz.c, cnb.uw, coz.d);
+      a(coz.c, cnb.sl, coz.d);
+      a(coz.c, cnb.sj, coz.d);
+      a(coz.c, cnb.rx, coz.d);
+      a(coz.c, cnb.sm, coz.d);
+      a(coz.c, cnb.qV, coz.e);
+      a(coz.c, cnb.lG, coz.d);
+      a(coz.c, cnb.sg, coz.f);
+      a(coz.f, cnb.ud, coz.g);
+      a(coz.g, cnb.lG, coz.h);
+      a(coz.g, cnb.sk, coz.i);
+      a(coz.h, cnb.sk, coz.j);
+      a(coz.i, cnb.lG, coz.j);
+      a(coz.f, cnb.sm, coz.n);
+      a(coz.n, cnb.lG, coz.o);
+      a(coz.f, cnb.uw, coz.k);
+      a(coz.k, cnb.lG, coz.l);
+      a(coz.k, cnb.qV, coz.m);
+      a(coz.k, cnb.sk, coz.s);
+      a(coz.l, cnb.sk, coz.t);
+      a(coz.s, cnb.lG, coz.t);
+      a(coz.s, cnb.qV, coz.u);
+      a(coz.f, cnb.on, coz.v);
+      a(coz.v, cnb.lG, coz.w);
+      a(coz.v, cnb.qV, coz.x);
+      a(coz.p, cnb.sk, coz.s);
+      a(coz.q, cnb.sk, coz.t);
+      a(coz.f, cnb.rx, coz.p);
+      a(coz.p, cnb.lG, coz.q);
+      a(coz.p, cnb.qV, coz.r);
+      a(coz.f, cnb.qZ, coz.y);
+      a(coz.y, cnb.lG, coz.z);
+      a(coz.f, cnb.sq, coz.A);
+      a(coz.A, cnb.qV, coz.B);
+      a(coz.A, cnb.sk, coz.C);
+      a(coz.B, cnb.sk, coz.D);
+      a(coz.C, cnb.qV, coz.D);
+      a(coz.E, cnb.sk, coz.C);
+      a(coz.F, cnb.sk, coz.C);
+      a(coz.G, cnb.sk, coz.D);
+      a(coz.f, cnb.sj, coz.E);
+      a(coz.E, cnb.lG, coz.F);
+      a(coz.E, cnb.qV, coz.G);
+      a(coz.f, cnb.se, coz.H);
+      a(coz.H, cnb.lG, coz.I);
+      a(coz.H, cnb.qV, coz.J);
+      a(coz.f, cnb.sl, coz.K);
+      a(coz.K, cnb.lG, coz.L);
+      a(coz.K, cnb.qV, coz.M);
+      a(coz.c, cnb.sk, coz.N);
+      a(coz.N, cnb.lG, coz.O);
+      a(coz.f, cnb.vJ, coz.Q);
+      a(coz.Q, cnb.lG, coz.R);
    }
 
-   public static List<blh> b(@Nullable sn $$0) {
-      List<blh> $$1 = Lists.newArrayList();
-      a($$0, $$1);
-      return $$1;
-   }
-
-   public static void a(@Nullable sn $$0, List<blh> $$1) {
-      if ($$0 != null && $$0.b("custom_potion_effects", 9)) {
-         st $$2 = $$0.c("custom_potion_effects", 10);
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            sn $$4 = $$2.a($$3);
-            blh $$5 = blh.b($$4);
-            if ($$5 != null) {
-               $$1.add($$5);
-            }
-         }
-      }
-   }
-
-   public static int c(cmx $$0) {
-      sn $$1 = $$0.v();
-      if ($$1 != null && $$1.b("CustomPotionColor", 99)) {
-         return $$1.h("CustomPotionColor");
+   private static void a(cmt $$0, cmt $$1, cmt $$2) {
+      if (!($$0 instanceof cnn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$0));
+      } else if (!($$2 instanceof cnn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$2));
       } else {
-         return d($$0) == coy.b ? 16253176 : a(a($$0));
+         c.add(new cox.a<>($$0, cpz.a($$1), $$2));
       }
    }
 
-   public static int a(cov $$0) {
-      return $$0 == coy.b ? 16253176 : a($$0.a());
-   }
-
-   public static int a(Collection<blh> $$0) {
-      int $$1 = 3694022;
-      if ($$0.isEmpty()) {
-         return 3694022;
+   private static void a(cmt $$0) {
+      if (!($$0 instanceof cnn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$0));
       } else {
-         float $$2 = 0.0F;
-         float $$3 = 0.0F;
-         float $$4 = 0.0F;
-         int $$5 = 0;
-
-         for (blh $$6 : $$0) {
-            if ($$6.g()) {
-               int $$7 = $$6.c().g();
-               int $$8 = $$6.e() + 1;
-               $$2 += (float)($$8 * ($$7 >> 16 & 0xFF)) / 255.0F;
-               $$3 += (float)($$8 * ($$7 >> 8 & 0xFF)) / 255.0F;
-               $$4 += (float)($$8 * ($$7 >> 0 & 0xFF)) / 255.0F;
-               $$5 += $$8;
-            }
-         }
-
-         if ($$5 == 0) {
-            return 0;
-         } else {
-            $$2 = $$2 / (float)$$5 * 255.0F;
-            $$3 = $$3 / (float)$$5 * 255.0F;
-            $$4 = $$4 / (float)$$5 * 255.0F;
-            return (int)$$2 << 16 | (int)$$3 << 8 | (int)$$4;
-         }
+         d.add(cpz.a($$0));
       }
    }
 
-   public static cov d(cmx $$0) {
-      return c($$0.v());
+   private static void a(cow $$0, cmt $$1, cow $$2) {
+      b.add(new cox.a<>($$0, cpz.a($$1), $$2));
    }
 
-   public static cov c(@Nullable sn $$0) {
-      return $$0 == null ? coy.b : cov.a($$0.l("Potion"));
-   }
+   static class a<T> {
+      final T a;
+      final cpz b;
+      final T c;
 
-   public static cmx a(cmx $$0, cov $$1) {
-      ahg $$2 = kd.i.b($$1);
-      if ($$1 == coy.b) {
-         $$0.c("Potion");
-      } else {
-         $$0.w().a("Potion", $$2.toString());
-      }
-
-      return $$0;
-   }
-
-   public static cmx a(cmx $$0, Collection<blh> $$1) {
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else {
-         sn $$2 = $$0.w();
-         st $$3 = $$2.c("custom_potion_effects", 9);
-
-         for (blh $$4 : $$1) {
-            $$3.add($$4.a(new sn()));
-         }
-
-         $$2.a("custom_potion_effects", $$3);
-         return $$0;
-      }
-   }
-
-   public static void a(cmx $$0, List<vf> $$1, float $$2, float $$3) {
-      a(a($$0), $$1, $$2, $$3);
-   }
-
-   public static void a(List<blh> $$0, List<vf> $$1, float $$2, float $$3) {
-      List<Pair<bnl, bno>> $$4 = Lists.newArrayList();
-      if ($$0.isEmpty()) {
-         $$1.add(e);
-      } else {
-         for (blh $$5 : $$0) {
-            vt $$6 = vf.c($$5.i());
-            blf $$7 = $$5.c();
-            Map<bnl, bla> $$8 = $$7.h();
-            if (!$$8.isEmpty()) {
-               for (Entry<bnl, bla> $$9 : $$8.entrySet()) {
-                  $$4.add(new Pair($$9.getKey(), $$9.getValue().a($$5.e())));
-               }
-            }
-
-            if ($$5.e() > 0) {
-               $$6 = vf.a("potion.withAmplifier", $$6, vf.c("potion.potency." + $$5.e()));
-            }
-
-            if (!$$5.a(20)) {
-               $$6 = vf.a("potion.withDuration", $$6, bli.a($$5, $$2, $$3));
-            }
-
-            $$1.add($$6.a($$7.f().a()));
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.add(ve.a);
-         $$1.add(vf.c("potion.whenDrank").a(n.f));
-
-         for (Pair<bnl, bno> $$10 : $$4) {
-            bno $$11 = (bno)$$10.getSecond();
-            double $$12 = $$11.c();
-            double $$14;
-            if ($$11.b() != bno.a.b && $$11.b() != bno.a.c) {
-               $$14 = $$11.c();
-            } else {
-               $$14 = $$11.c() * 100.0;
-            }
-
-            if ($$12 > 0.0) {
-               $$1.add(vf.a("attribute.modifier.plus." + $$11.b().a(), cmx.g.format($$14), vf.c(((bnl)$$10.getFirst()).c())).a(n.j));
-            } else if ($$12 < 0.0) {
-               $$14 *= -1.0;
-               $$1.add(vf.a("attribute.modifier.take." + $$11.b().a(), cmx.g.format($$14), vf.c(((bnl)$$10.getFirst()).c())).a(n.m));
-            }
-         }
+      public a(T $$0, cpz $$1, T $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

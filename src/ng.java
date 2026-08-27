@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public class ng {
-   private final Function<cpr, cqb<?>> a;
+   private final Function<cps, cqc<?>> a;
 
-   public ng(Function<cpr, cqb<?>> $$0) {
+   public ng(Function<cps, cqc<?>> $$0) {
       this.a = $$0;
    }
 
-   public static ng a(Function<cpr, cqb<?>> $$0) {
+   public static ng a(Function<cps, cqc<?>> $$0) {
       return new ng($$0);
    }
 
@@ -16,6 +16,6 @@ public class ng {
    }
 
    public void a(my $$0, ahg $$1) {
-      $$0.a($$1, this.a.apply(cpr.d), null);
+      $$0.a($$1, this.a.apply(cps.d), null);
    }
 }

@@ -2,29 +2,21 @@ import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class ceg {
-   public static boc<bmk> a(int $$0, int $$1) {
-      return bro.a(
-         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$2 -> $$2.group($$2.b(bvm.ac), $$2.b(bvm.K), $$2.a(bvm.ad), $$2.a(bvm.ae))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eU().b()) {
+public class ceg<E extends cdy> {
+   public static bod<bml> a(int $$0) {
+      return brp.a(
+         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$1 -> $$1.group($$1.b(bvn.ac), $$1.a(bvn.K))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.eU().b()) {
                         return false;
                      } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
+                        Optional<cbu> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
                         } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
+                           $$2.b();
+                           return true;
                         }
-
-                        return true;
                      }
                   }))
       );

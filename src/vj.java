@@ -5,13 +5,13 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class vj {
-   public static final Codec<vj> a = avj.a(vj.a::values).dispatch(vj::c, vj.a::a);
+   public static final Codec<vj> a = avk.a(vj.a::values).dispatch(vj::c, vj.a::a);
    public static final vj b = new vj(new BitSet(0), vj.a.b);
    public static final vj c = new vj(new BitSet(0), vj.a.a);
    public static final wc d = wc.a.a(n.i).a(new vl(vl.a.a, vf.c("chat.filtered")));
    static final Codec<vj> e = Codec.unit(c);
    static final Codec<vj> f = Codec.unit(b);
-   static final Codec<vj> g = atv.s.xmap(vj::new, vj::d);
+   static final Codec<vj> g = atw.s.xmap(vj::new, vj::d);
    private static final char h = '#';
    private final BitSet i;
    private final vj.a j;
@@ -134,7 +134,7 @@ public class vj {
       return 31 * $$0 + this.j.hashCode();
    }
 
-   static enum a implements avj {
+   static enum a implements avk {
       a("pass_through", () -> vj.e),
       b("fully_filtered", () -> vj.f),
       c("partially_filtered", () -> vj.g);

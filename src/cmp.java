@@ -1,23 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cmp(ih<arq> b, int c, float d) {
-   public static final Codec<cmp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arq.b.fieldOf("sound_event").forGetter(cmp::a), atv.j.fieldOf("use_duration").forGetter(cmp::b), atv.k.fieldOf("range").forGetter(cmp::c)
-            )
-            .apply($$0, cmp::new)
-   );
-
-   public ih<arq> a() {
-      return this.b;
+public class cmp extends cmt implements cnx {
+   public cmp(cmt.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
+   @Override
+   public boolean a(ctp $$0, die $$1, boolean $$2, cfi $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aB_(), ars.mx, art.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

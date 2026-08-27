@@ -1,30 +1,50 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class dwb extends dvy {
-   protected final long c;
-   protected final edt.a d;
-   protected final float e;
-   protected final edt f;
+public class dwb extends dwd {
+   public static final Codec<dwb> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aug.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               edu.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               atw.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, dwb::new)
+   );
+   private final aug<Integer> i;
+   private final edu.a j;
+   private final float k;
+   private final edu l;
 
-   protected static <P extends dwb> P3<Mu<P>, Long, edt.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         edt.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         atv.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public dwb(aug<Integer> $$0, edu.a $$1, float $$2, long $$3, edu.a $$4, float $$5, List<djh> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = edu.b(new dpp(new dor($$3)), $$1);
    }
 
-   protected dwb(long $$0, edt.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = edt.b(new dpo(new doq($$0)), $$1);
+   @Override
+   protected dwa<?> a() {
+      return dwa.e;
    }
 
-   protected double a(hx $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   public djh a(auv $$0, hx $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)auo.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<djh> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(hx $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

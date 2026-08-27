@@ -1,123 +1,133 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class bno {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<bno> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ja.a.fieldOf("UUID").forGetter(bno::a),
-               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("Amount").forGetter(bno::c),
-               bno.a.d.fieldOf("Operation").forGetter(bno::b)
-            )
-            .apply($$0, bno::new)
-   );
-   private final double c;
-   private final bno.a d;
-   private final String e;
-   private final UUID f;
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<bnm, bnn> b = Maps.newHashMap();
+   private final Set<bnn> c = Sets.newHashSet();
+   private final bnq d;
 
-   public bno(String $$0, double $$1, bno.a $$2) {
-      this(aun.a(auu.c()), $$0, $$1, $$2);
+   public bno(bnq $$0) {
+      this.d = $$0;
    }
 
-   public bno(UUID $$0, String $$1, double $$2, bno.a $$3) {
-      this.f = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private void a(bnn $$0) {
+      if ($$0.a().b()) {
+         this.c.add($$0);
+      }
    }
 
-   public UUID a() {
-      return this.f;
-   }
-
-   public bno.a b() {
-      return this.d;
-   }
-
-   public double c() {
+   public Set<bnn> a() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bno $$1 = (bno)$$0;
-         return Objects.equals(this.f, $$1.f);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.f.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
-   }
-
-   public sn d() {
-      sn $$0 = new sn();
-      $$0.a("Name", this.e);
-      $$0.a("Amount", this.c);
-      $$0.a("Operation", this.d.a());
-      $$0.a("UUID", this.f);
-      return $$0;
+   public Collection<bnn> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public static bno a(sn $$0) {
-      try {
-         UUID $$1 = $$0.a("UUID");
-         bno.a $$2 = bno.a.a($$0.h("Operation"));
-         return new bno($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
-      } catch (Exception var3) {
-         b.warn("Unable to create attribute: {}", var3.getMessage());
-         return null;
-      }
+   public bnn a(bnm $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
    }
 
-   public static enum a implements avj {
-      a("addition", 0),
-      b("multiply_base", 1),
-      c("multiply_total", 2);
+   @Nullable
+   public bnn a(ih<bnm> $$0) {
+      return this.a($$0.a());
+   }
 
-      private static final bno.a[] e = new bno.a[]{a, b, c};
-      public static final Codec<bno.a> d = avj.a(bno.a::values);
-      private final String f;
-      private final int g;
+   public boolean b(bnm $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
+   }
 
-      private a(String $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   public boolean b(ih<bnm> $$0) {
+      return this.b($$0.a());
+   }
 
-      public int a() {
-         return this.g;
-      }
+   public boolean a(bnm $$0, UUID $$1) {
+      bnn $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
 
-      public static bno.a a(int $$0) {
-         if ($$0 >= 0 && $$0 < e.length) {
-            return e[$$0];
-         } else {
-            throw new IllegalArgumentException("No operation with value " + $$0);
+   public boolean a(ih<bnm> $$0, UUID $$1) {
+      return this.a($$0.a(), $$1);
+   }
+
+   public double c(bnm $$0) {
+      bnn $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
+   }
+
+   public double d(bnm $$0) {
+      bnn $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(bnm $$0, UUID $$1) {
+      bnn $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
+   }
+
+   public double b(ih<bnm> $$0, UUID $$1) {
+      return this.b($$0.a(), $$1);
+   }
+
+   public void a(Multimap<bnm, bnp> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bnn $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.a()));
          }
+      });
+   }
+
+   public void b(Multimap<bnm, bnp> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bnn $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.a());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void a(bno $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bnn $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public st c() {
+      st $$0 = new st();
+
+      for (bnn $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      return $$0;
+   }
+
+   public void a(st $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         sn $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         ac.a(kd.u.b(ahg.a($$3)), $$1x -> {
+            bnn $$2x = this.a($$1x);
+            if ($$2x != null) {
+               $$2x.a($$2);
+            }
+         }, () -> a.warn("Ignoring unknown attribute '{}'", $$3));
       }
    }
 }

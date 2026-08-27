@@ -1,118 +1,55 @@
-public class chh extends cgz {
-   static final agm<String> c = agp.a(chh.class, ago.e);
-   static final agm<vf> d = agp.a(chh.class, ago.f);
-   private final csp e = new chh.a();
-   private static final int i = 4;
-   private int j;
-
-   public chh(bly<? extends chh> $$0, cto $$1) {
+public class chh extends chb {
+   public chh(blz<? extends chh> $$0, ctp $$1) {
       super($$0, $$1);
    }
 
-   public chh(cto $$0, double $$1, double $$2, double $$3) {
-      super(bly.t, $$0, $$1, $$2, $$3);
+   public chh(ctp $$0, double $$1, double $$2, double $$3) {
+      super(blz.q, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cms ah_() {
-      return cna.nL;
+   protected cmt ah_() {
+      return cnb.nM;
    }
 
    @Override
-   protected void c_() {
-      super.c_();
-      this.an().a(c, "");
-      this.an().a(d, ve.a);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(sn $$0) {
-      super.a($$0);
-      this.e.b($$0);
-      this.an().b(c, this.C().m());
-      this.an().b(d, this.C().l());
+   public cha.a w() {
+      return cha.a.b;
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      this.e.a($$0);
+   public djh y() {
+      return cws.cv.o().a(cxt.c, ic.c);
    }
 
    @Override
-   public cgz.a w() {
-      return cgz.a.g;
+   public int A() {
+      return 8;
    }
 
    @Override
-   public djg y() {
-      return cwr.fN.o();
-   }
-
-   public csp C() {
-      return this.e;
+   public cib a(int $$0, cfh $$1) {
+      return cii.a($$0, $$1, this);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.j >= 4) {
-         this.C().a(this.dM());
-         this.j = this.ah;
-      }
+   public void c(cfi $$0) {
+      this.dM().a(dnr.j, this.dk(), dnr.a.a($$0));
    }
 
    @Override
-   public bka a(cfh $$0, bjz $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(agm<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.an().b(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.an().b(c));
-      }
-   }
-
-   @Override
-   public boolean cM() {
-      return true;
-   }
-
-   public class a extends csp {
-      @Override
-      public and e() {
-         return (and)chh.this.dM();
+   public bkb a(cfi $$0, bka $$1) {
+      bkb $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dnr.k, $$0);
+         cdz.a($$0, true);
       }
 
-      @Override
-      public void f() {
-         chh.this.an().b(chh.c, this.m());
-         chh.this.an().b(chh.d, this.l());
-      }
-
-      @Override
-      public els g() {
-         return chh.this.dk();
-      }
-
-      public chh h() {
-         return chh.this;
-      }
-
-      @Override
-      public ds i() {
-         return new ds(this, chh.this.dk(), chh.this.bG(), this.e(), 2, this.n().getString(), chh.this.Q_(), this.e().o(), chh.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !chh.this.dH();
-      }
+      return $$2;
    }
 }

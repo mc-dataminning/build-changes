@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dqc extends dqh {
-   private final il<cwp> e;
-   public static final Codec<dqc> a = RecordCodecBuilder.create($$0 -> a($$0).and(iv.a(ke.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dqc::new));
+public class dqc extends dqi {
+   final asw<cwq> a;
+   public static final Codec<dqc> e = RecordCodecBuilder.create($$0 -> a($$0).and(asw.a(ke.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dqc::new));
 
-   public dqc(jb $$0, il<cwp> $$1) {
+   protected dqc(jb $$0, asw<cwq> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(djg $$0) {
-      return $$0.a(this.e);
+   protected boolean a(djh $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dpx<?> a() {
-      return dpx.a;
+   public dpy<?> a() {
+      return dpy.b;
    }
 }

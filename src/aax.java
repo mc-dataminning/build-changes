@@ -2,7 +2,7 @@ public class aax implements xf<za> {
    private final int a;
    private final ahg b;
 
-   public aax(int $$0, cqd<?> $$1) {
+   public aax(int $$0, cqe<?> $$1) {
       this.a = $$0;
       this.b = $$1.a();
    }

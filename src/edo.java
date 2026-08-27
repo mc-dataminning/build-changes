@@ -1,14 +1,11 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface edo<P extends edn> {
-   edo<edl> a = a("clear", edl.a);
-   edo<edm> b = a("passthrough", edm.b);
-   edo<edk> c = a("append_static", edk.a);
-   edo<edj> d = a("append_loot", edj.a);
+public interface edo {
+   Codec<edo> c = kd.p.q().dispatch(edo::a, edp::codec);
 
-   Codec<P> codec();
+   @Nullable
+   sn a(auv var1, @Nullable sn var2);
 
-   private static <P extends edn> edo<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.p, $$0, () -> $$1);
-   }
+   edp<?> a();
 }

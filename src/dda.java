@@ -1,48 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dda extends cwp {
-   public static final MapCodec<dda> h = b(dda::new);
-   public static final dke<ic.a> i = djw.I;
+public class dda extends cwz {
+   public static final MapCodec<dda> a = b(dda::new);
+   protected static final float b = 6.0F;
+   protected static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dda> a() {
-      return h;
+   public MapCodec<dda> a() {
+      return a;
    }
 
-   public dda(djf.d $$0) {
+   protected dda(djg.d $$0) {
       super($$0);
-      this.k(this.o().a(i, ic.a.b));
    }
 
    @Override
-   public djg a(djg $$0, ddb $$1) {
-      return b($$0, $$1);
-   }
-
-   public static djg b(djg $$0, ddb $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ic.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ic.a.c);
-               case c:
-                  return $$0.a(i, ic.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+      return c;
    }
 
    @Override
-   protected void a(djh.a<cwp, djg> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public djg a(cpg $$0) {
-      return this.o().a(i, $$0.k().o());
+   protected boolean b(djh $$0, csv $$1, hx $$2) {
+      return $$0.a(ash.aK) || $$0.a(cws.dX) || super.b($$0, $$1, $$2);
    }
 }

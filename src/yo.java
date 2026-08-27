@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record yo(ahf<cto> b, dyx c, List<yo.a> d) implements ya {
+public record yo(ahf<ctp> b, dyy c, List<yo.a> d) implements ya {
    public static final ahg a = new ahg("debug/structures");
 
    public yo(ui $$0) {
@@ -19,11 +19,11 @@ public record yo(ahf<cto> b, dyx c, List<yo.a> d) implements ya {
       return a;
    }
 
-   static dyx b(ui $$0) {
-      return new dyx($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static dyy b(ui $$0) {
+      return new dyy($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(ui $$0, dyx $$1) {
+   static void a(ui $$0, dyy $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -32,7 +32,7 @@ public record yo(ahf<cto> b, dyx c, List<yo.a> d) implements ya {
       $$0.p($$1.m());
    }
 
-   public static record a(dyx a, boolean b) {
+   public static record a(dyy a, boolean b) {
       public a(ui $$0) {
          this(yo.b($$0), $$0.readBoolean());
       }
