@@ -1,4 +1,4 @@
-// 1.20.2 Release Candidate 2	2026-08-28T00:39:24.6416844	vanilla/Tags for minecraft:block
+// 1.20.2	2026-08-28T00:41:26.4378741	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -24,8 +24,8 @@ af12451a6897e7ada9cfb050679665ae3017838e data\minecraft\tags\blocks\corals.json
 aeaa445db335760020004d563a198676fdad5ddf data\minecraft\tags\blocks\guarded_by_piglins.json
 4bee09ae134c8c7e450e996a5b9a9bcc4d7e7420 data\minecraft\tags\blocks\moss_replaceable.json
 9d786349359c04ae72a7f261654b6b4fa33d425e data\minecraft\tags\blocks\snow_layer_cannot_survive_on.json
-d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\blocks\small_flowers.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\blocks\wooden_fences.json
+d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\blocks\small_flowers.json
 5b64c6e3c9cd3170bab9758491e742e0307d6617 data\minecraft\tags\blocks\deepslate_ore_replaceables.json
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\blocks\candles.json
 62b3c476ebacc9707c4f2ddcc513e14294fd1988 data\minecraft\tags\blocks\needs_iron_tool.json
@@ -151,8 +151,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
 aed8b700fe72fa0af5894e299b41da331f1cf0c9 data\minecraft\tags\blocks\sword_efficient.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
-88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
+88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 5b7a16c4ba8e702114347cf2a688167b9789cd58 data\minecraft\tags\blocks\wall_post_override.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\blocks\fences.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\blocks\mangrove_logs.json
