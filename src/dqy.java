@@ -1,65 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dqy extends drh {
-   private final ha c;
-   private final dir d;
-   private final dir e;
-   private final int f;
+public class dqy extends drb {
    public static final Codec<dqy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ha.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               dir.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               dir.b.optionalFieldOf("allowed_search_condition", dir.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bft.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
             )
             .apply($$0, dqy::new)
    );
+   private final bft b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   private dqy(ha $$0, dir $$1, dir $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public static dqy a(ha $$0, dir $$1, dir $$2, int $$3) {
-      return new dqy($$0, $$1, $$2, $$3);
-   }
-
-   public static dqy a(ha $$0, dir $$1, int $$2) {
-      return a($$0, $$1, dir.e(), $$2);
+   public dqy(bft $$0, bft $$1, bft $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   public Stream<gu> a_(drf $$0, apf $$1, gu $$2) {
-      gu.a $$3 = $$2.j();
-      cng $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
+   protected drc<?> a() {
+      return drc.k;
+   }
 
-            $$3.c(this.c);
-            if ($$4.d($$3.v())) {
-               return Stream.of();
-            }
+   @Override
+   protected void a(cpq $$0, drb.b $$1, art $$2, dql $$3, int $$4, drb.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      gv $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
    @Override
-   public dri<?> b() {
-      return dri.j;
+   public int a(art $$0, int $$1, dql $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(art $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

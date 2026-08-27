@@ -1,48 +1,53 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class boc extends bmv {
-   private final bvo a;
+public interface boc<F extends K1, Value> {
+   bry<Value> a();
+
+   brz b();
+
    @Nullable
-   private bfz b;
+   bob<F, Value> a(bjx<?> var1, Optional<Value> var2);
 
-   public boc(bvo $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bmv.a.a));
+   public static record a<Value>(bry<Value> a) implements boc<Mu<Unit>, Value> {
+      @Override
+      public brz b() {
+         return brz.b;
+      }
+
+      @Override
+      public bob<Mu<Unit>, Value> a(bjx<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new bob<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   @Override
-   public boolean a() {
-      bfz $$0 = this.a.j();
-      return this.a.r() > 0 || $$0 != null && this.a.f((bfj)$$0) < 9.0;
+   public static record b<Value>(bry<Value> a) implements boc<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public brz b() {
+         return brz.a;
+      }
+
+      @Override
+      public bob<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bjx<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new bob<>($$0, this.a, IdF.create($$1.get()));
+      }
    }
 
-   @Override
-   public void c() {
-      this.a.J().n();
-      this.b = this.a.j();
-   }
+   public static record c<Value>(bry<Value> a) implements boc<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public brz b() {
+         return brz.c;
+      }
 
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.f((bfj)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.K().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      @Override
+      public bob<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bjx<?> $$0, Optional<Value> $$1) {
+         return new bob<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

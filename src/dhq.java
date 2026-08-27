@@ -1,110 +1,89 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public record dhq(dhd b, dhd c, dhd d, dhd e, dhd f, dhd g, dhd h, dhd i, dhd j, dhd k, dhd l, dhd m, dhd n, dhd o, dhd p) {
-   public static final Codec<dhq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dhq::a),
-               a("fluid_level_floodedness", dhq::b),
-               a("fluid_level_spread", dhq::c),
-               a("lava", dhq::d),
-               a("temperature", dhq::e),
-               a("vegetation", dhq::f),
-               a("continents", dhq::g),
-               a("erosion", dhq::h),
-               a("depth", dhq::i),
-               a("ridges", dhq::j),
-               a("initial_density_without_jaggedness", dhq::k),
-               a("final_density", dhq::l),
-               a("vein_toggle", dhq::m),
-               a("vein_ridged", dhq::n),
-               a("vein_gap", dhq::o)
-            )
-            .apply($$0, dhq::new)
-   );
+public class dhq<T> implements dhl<T> {
+   private final hk<T> a;
+   @Nullable
+   private T b;
+   private final dhm<T> c;
 
-   private static RecordCodecBuilder<dhq, dhd> a(String $$0, Function<dhq, dhd> $$1) {
-      return dhd.d.fieldOf($$0).forGetter($$1);
+   public dhq(hk<T> $$0, dhm<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   public dhq a(dhd.f $$0) {
-      return new dhq(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public static <A> dhl<A> a(int $$0, hk<A> $$1, dhm<A> $$2, List<A> $$3) {
+      return new dhq<>($$1, $$2, $$3);
    }
 
-   public dhd a() {
-      return this.b;
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
    }
 
-   public dhd b() {
-      return this.c;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
    }
 
-   public dhd c() {
-      return this.d;
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
    }
 
-   public dhd d() {
-      return this.e;
+   @Override
+   public void a(sh $$0) {
+      this.b = this.a.b($$0.m());
    }
 
-   public dhd e() {
-      return this.f;
+   @Override
+   public void b(sh $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
    }
 
-   public dhd f() {
-      return this.g;
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return sv.a(this.a.a(this.b));
+      }
    }
 
-   public dhd g() {
-      return this.h;
+   @Override
+   public int b() {
+      return 1;
    }
 
-   public dhd h() {
-      return this.i;
-   }
-
-   public dhd i() {
-      return this.j;
-   }
-
-   public dhd j() {
-      return this.k;
-   }
-
-   public dhd k() {
-      return this.l;
-   }
-
-   public dhd l() {
-      return this.m;
-   }
-
-   public dhd m() {
-      return this.n;
-   }
-
-   public dhd n() {
-      return this.o;
-   }
-
-   public dhd o() {
-      return this.p;
+   @Override
+   public dhl<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

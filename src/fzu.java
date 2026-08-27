@@ -1,22 +1,38 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class fzu {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   public static final fzv a = new fzv();
+   public static final String b = "villager";
+   private final fzu.a c;
 
-   public fzu(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public fzu(fzu.a $$0) {
+      this.c = $$0;
    }
 
-   public void a(fzk $$0) {
-      if (this.b != null) {
-         $$0.send(fzl.d, $$0x -> {
-            $$0x.a(fzn.x, (int)this.b.toMillis());
-            $$0x.a(fzn.y, this.a);
-         });
+   public fzu.a a() {
+      return this.c;
+   }
+
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, fzu.a> d = Arrays.stream(values()).collect(Collectors.toMap(fzu.a::a, $$0 -> (fzu.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static fzu.a a(String $$0) {
+         return d.getOrDefault($$0, a);
       }
    }
 }

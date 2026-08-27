@@ -1,40 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmv implements dms {
-   public static final Codec<dmv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bdc.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bda.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bda.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bda.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bda.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dmv::new)
-   );
-   public final int b;
-   public final bdc c;
-   public final bda d;
-   public final float e;
-   public final bda f;
-   public final bda g;
-   public final bda h;
-   public final int i;
-   public final float j;
+public class dmv extends dnl<dpw> {
+   public dmv(Codec<dpw> $$0) {
+      super($$0);
+   }
 
-   public dmv(int $$0, bdc $$1, bda $$2, float $$3, bda $$4, bda $$5, bda $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(dnn<dpw> $$0) {
+      gv $$1 = $$0.e();
+      cqe $$2 = $$0.b();
+      art $$3 = $$0.d();
+      if ($$1.v() > $$2.t_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(csl.G) && !$$2.a_($$1.d()).a(csl.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
+
+         for (hb $$5 : hb.values()) {
+            if ($$5 != hb.a && $$2.a_($$1.a($$5)).a(csl.iC)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, csl.mW.n(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  gv $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dey $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(csl.G) || $$10.a(csl.iC) || $$10.a(csl.dO)) {
+                     for (hb $$11 : hb.values()) {
+                        dey $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(csl.mW)) {
+                           $$2.a($$9, csl.mW.n(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

@@ -1,6 +1,11 @@
-import javax.annotation.Nullable;
+public class fud extends ftp<bze, ffx> {
+   private static final aep a = new aep("textures/entity/illager/ravager.png");
 
-@Deprecated
-public interface fud {
-   float call(cfz var1, @Nullable few var2, @Nullable bfz var3, int var4);
+   public fud(fsj.a $$0) {
+      super($$0, new ffx($$0.a(fhi.aZ)), 1.1F);
+   }
+
+   public aep a(bze $$0) {
+      return a;
+   }
 }

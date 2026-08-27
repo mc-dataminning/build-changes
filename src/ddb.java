@@ -1,70 +1,79 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+public class ddb extends ddn {
+   public static final int c = 9;
+   private ho<ciw> f = ho.a(9, ciw.b);
 
-public class ddb extends dde<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
-
-   protected ddb(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
-
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
-         }
-
-         this.a = ImmutableSet.copyOf($$3);
-      }
+   protected ddb(dcm<?> $$0, gv $$1, dey $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public Collection<Integer> a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof ddb && super.equals($$0)) {
-         ddb $$1 = (ddb)$$0;
-         return this.a.equals($$1.a);
-      } else {
-         return false;
-      }
+   public ddb(gv $$0, dey $$1) {
+      this(dcm.f, $$0, $$1);
    }
 
    @Override
    public int b() {
-      return 31 * super.b() + this.a.hashCode();
+      return 9;
    }
 
-   public static ddb a(String $$0, int $$1, int $$2) {
-      return new ddb($$0, $$1, $$2);
+   public int a(art $$0) {
+      this.e(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
+   }
+
+   public int a(ciw $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
    }
 
    @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
+   protected te g() {
+      return te.c("container.dispenser");
+   }
+
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.f = ho.a(this.b(), ciw.b);
+      if (!this.d($$0)) {
+         bgi.b($$0, this.f);
       }
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   @Override
+   protected void b(qs $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgi.a($$0, this.f);
+      }
+   }
+
+   @Override
+   protected ho<ciw> f() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(ho<ciw> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   protected cec a(int $$0, cbk $$1) {
+      return new cet($$0, $$1, this);
    }
 }

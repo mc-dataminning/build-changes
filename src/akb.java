@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum akb {
+   a,
+   b,
+   c,
+   d;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface akb {
+   public boolean a(akb $$0) {
+      return this.ordinal() >= $$0.ordinal();
+   }
 }

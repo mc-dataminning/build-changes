@@ -1,5 +1,45 @@
-public class aoa extends Exception {
-   public aoa(Throwable $$0) {
-      super($$0);
+import java.util.List;
+
+public class aoa {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
+   }
+
+   public boolean a(int $$0, List<akj> $$1) {
+      int $$2 = (int)$$1.stream().filter(cbl::fT).count();
+      return $$2 >= this.b($$0);
+   }
+
+   public int b(int $$0) {
+      return Math.max(1, aro.f((float)(this.a * $$0) / 100.0F));
+   }
+
+   public void a() {
+      this.b = 0;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<akj> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (akj $$3 : $$0) {
+         if (!$$3.G_()) {
+            this.a++;
+            if ($$3.fB()) {
+               this.b++;
+            }
+         }
+      }
+
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

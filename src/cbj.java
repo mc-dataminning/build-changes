@@ -1,9 +1,30 @@
-public class cbj extends cbg {
-   public cbj(int $$0, byn $$1) {
-      super(cck.j, cjf.c, ccq.c, $$0, $$1);
+import java.util.function.IntFunction;
+
+public enum cbj implements arq {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
+
+   private static final IntFunction<cbj> d = aqi.a(cbj::a, values(), aqi.a.b);
+   private final int e;
+   private final String f;
+
+   private cbj(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public cbj(int $$0, byn $$1, bdq $$2, cbp $$3) {
-      super(cck.j, cjf.c, ccq.c, $$0, $$1, $$2, $$3);
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static cbj a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
 public class fhn {
-   private final List<acq> a;
+   public static final fhn a = new fhn(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   private fhn(List<acq> $$0) {
-      this.a = $$0;
+   public fhn(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public List<acq> a() {
-      return this.a;
+   public fhn(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public static fhn a(JsonObject $$0) {
-      JsonArray $$1 = aor.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fhn(List.of());
-      } else {
-         List<acq> $$2 = Streams.stream($$1).map($$0x -> aor.a($$0x, "texture")).map(acq::new).collect(ImmutableList.toImmutableList());
-         return new fhn($$2);
-      }
+   public fhn a(float $$0) {
+      return new fhn(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public fhn a(float $$0, float $$1, float $$2) {
+      return new fhn(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

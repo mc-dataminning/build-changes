@@ -1,29 +1,20 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-
 public class bkd {
-   public static bhs<bfz> a(int $$0, BiPredicate<bfz, bfz> $$1) {
-      return bld.a(
-         (Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$2 -> $$2.group($$2.b(bpb.o), $$2.a(bpb.aa), $$2.c(bpb.ah), $$2.a(bpb.ai))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bfz $$10 = $$2.b($$3);
-                     if (!$$10.es()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   public static final bjy a = a("generic.max_health", new bkf("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final bjy b = a("generic.follow_range", new bkf("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final bjy c = a("generic.knockback_resistance", new bkf("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final bjy d = a("generic.movement_speed", new bkf("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final bjy e = a("generic.flying_speed", new bkf("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final bjy f = a("generic.attack_damage", new bkf("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final bjy g = a("generic.attack_knockback", new bkf("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final bjy h = a("generic.attack_speed", new bkf("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final bjy i = a("generic.armor", new bkf("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final bjy j = a("generic.armor_toughness", new bkf("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final bjy k = a("generic.luck", new bkf("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final bjy l = a("generic.max_absorption", new bkf("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
+   public static final bjy m = a("zombie.spawn_reinforcements", new bkf("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final bjy n = a("horse.jump_strength", new bkf("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
 
-                        $$5.a($$10.di(), (long)$$0);
-                        if ($$10.ae() != bfn.bt || $$7.X().b(cmi.J)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
-                     }
-                  }))
-      );
+   private static bjy a(String $$0, bjy $$1) {
+      return hs.a(jc.v, $$0, $$1);
    }
 }

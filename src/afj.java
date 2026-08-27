@@ -1,84 +1,95 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
 public class afj {
    private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(sw.c("commands.perf.alreadyRunning"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
-            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
-      );
-   }
-
-   private static int a(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aO()) {
-         throw c.create();
-      } else {
-         Consumer<bam> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> sw.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aO()) {
-         throw b.create();
-      } else {
-         $$1.aQ();
-         return 0;
-      }
-   }
-
-   private static void a(ds $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aU().g(), aa.b().b());
-
-      String $$4;
+   public static <D, R> CompletableFuture<R> a(afj.c $$0, afj.f<D> $$1, afj.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         $$4 = v.a(bcd.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(sw.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
+         Pair<cqd, ana> $$5 = $$0.a.a();
+         ana $$6 = (ana)$$5.getSecond();
+         hm<aey> $$7 = aey.a();
+         hm<aey> $$8 = b($$6, $$7, aey.b, aek.a);
+         ht.b $$9 = $$8.b(aey.c);
+         ht.b $$10 = aek.a($$6, $$9, aek.b);
+         cqd $$11 = (cqd)$$5.getFirst();
+         afj.b<D> $$12 = $$1.get(new afj.a($$6, $$11, $$9, $$10));
+         hm<aey> $$13 = $$8.a(aey.c, $$12.b);
+         ht.b $$14 = $$13.b(aey.d);
+         return aez.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$5x -> {
+            $$5x.a($$14);
+            return $$2.create($$6, $$5x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var15) {
+         return CompletableFuture.failedFuture(var15);
       }
-
-      try (aol $$7 = new aol(bcd.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> sw.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(ds $$0, bam $$1) {
-      if ($$1 != bai.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)apw.a;
-         $$0.a(() -> sw.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+   private static ht.b a(ank $$0, hm<aey> $$1, aey $$2, List<aek.b<?>> $$3) {
+      ht.b $$4 = $$1.b($$2);
+      return aek.a($$0, $$4, $$3);
+   }
+
+   private static hm<aey> b(ank $$0, hm<aey> $$1, aey $$2, List<aek.b<?>> $$3) {
+      ht.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(ank a, cqd b, ht.b c, ht.b d) {
+   }
+
+   public static record b<D>(D a, ht.b b) {
+   }
+
+   public static record c(afj.d a, dt.a b, int c) {
+   }
+
+   public static record d(amv a, cqd b, boolean c, boolean d) {
+      public Pair<cqd, ana> a() {
+         cdt $$0 = this.d ? cdv.d.a() : this.b.b();
+         cqd $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+         if (!this.d) {
+            $$1 = $$1.a(this.b.b());
+         }
+
+         List<aly> $$2 = this.a.g();
+         ana $$3 = new and(alz.b, $$2);
+         return Pair.of($$1, $$3);
       }
+
+      public amv b() {
+         return this.a;
+      }
+
+      public cqd c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(ana var1, aez var2, hm<aey> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      afj.b<D> get(afj.a var1);
    }
 }

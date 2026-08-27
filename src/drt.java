@@ -1,25 +1,30 @@
-public interface drt {
-   acp<dsg> a = a("villages");
-   acp<dsg> b = a("desert_pyramids");
-   acp<dsg> c = a("igloos");
-   acp<dsg> d = a("jungle_temples");
-   acp<dsg> e = a("swamp_huts");
-   acp<dsg> f = a("pillager_outposts");
-   acp<dsg> g = a("ocean_monuments");
-   acp<dsg> h = a("woodland_mansions");
-   acp<dsg> i = a("buried_treasures");
-   acp<dsg> j = a("mineshafts");
-   acp<dsg> k = a("ruined_portals");
-   acp<dsg> l = a("shipwrecks");
-   acp<dsg> m = a("ocean_ruins");
-   acp<dsg> n = a("nether_complexes");
-   acp<dsg> o = a("nether_fossils");
-   acp<dsg> p = a("end_cities");
-   acp<dsg> q = a("ancient_cities");
-   acp<dsg> r = a("strongholds");
-   acp<dsg> s = a("trail_ruins");
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-   private static acp<dsg> a(String $$0) {
-      return acp.a(jc.aB, new acq($$0));
+public abstract class drt extends drq {
+   protected final long c;
+   protected final dze.a d;
+   protected final float e;
+   protected final dze f;
+
+   protected static <P extends drt> P3<Mu<P>, Long, dze.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         dze.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         aqw.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
+   }
+
+   protected drt(long $$0, dze.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = dze.b(new dlg(new dki($$0)), $$1);
+   }
+
+   protected double a(gv $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

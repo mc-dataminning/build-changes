@@ -3,15 +3,15 @@ import com.google.gson.JsonSyntaxException;
 import javax.annotation.Nullable;
 
 public class cw extends cv<cw.a> {
-   static final acq a = new acq("slide_down_block");
+   static final aep a = new aep("slide_down_block");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
    public cw.a a(JsonObject $$0, ba $$1, be $$2) {
-      cpn $$3 = a($$0);
+      csk $$3 = a($$0);
       cz $$4 = cz.a($$0.get("state"));
       if ($$3 != null) {
          $$4.a($$3.l(), $$1x -> {
@@ -23,31 +23,31 @@ public class cw extends cv<cw.a> {
    }
 
    @Nullable
-   private static cpn a(JsonObject $$0) {
+   private static csk a(JsonObject $$0) {
       if ($$0.has("block")) {
-         acq $$1 = new acq(aor.i($$0, "block"));
-         return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
+         aep $$1 = new aep(arf.i($$0, "block"));
+         return jc.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
       } else {
          return null;
       }
    }
 
-   public void a(aig $$0, dcb $$1) {
+   public void a(akj $$0, dey $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends ar {
       @Nullable
-      private final cpn a;
+      private final csk a;
       private final cz b;
 
-      public a(ba $$0, @Nullable cpn $$1, cz $$2) {
+      public a(ba $$0, @Nullable csk $$1, cz $$2) {
          super(cw.a, $$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static cw.a a(cpn $$0) {
+      public static cw.a a(csk $$0) {
          return new cw.a(ba.a, $$0, cz.a);
       }
 
@@ -55,14 +55,14 @@ public class cw extends cv<cw.a> {
       public JsonObject a(ct $$0) {
          JsonObject $$1 = super.a($$0);
          if (this.a != null) {
-            $$1.addProperty("block", jb.f.b(this.a).toString());
+            $$1.addProperty("block", jc.f.b(this.a).toString());
          }
 
          $$1.add("state", this.b.a());
          return $$1;
       }
 
-      public boolean a(dcb $$0) {
+      public boolean a(dey $$0) {
          return this.a != null && !$$0.a(this.a) ? false : this.b.a($$0);
       }
    }

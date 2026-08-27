@@ -1,37 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class auv extends auz {
-   public auv(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", avw.q, $$1);
+public class auv extends ayv {
+   public auv(Schema $$0, boolean $$1) {
+      super("EntityCatSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("minecraft:ocelot", $$0)) {
+         int $$2 = $$1.get("CatType").asInt(0);
+         if ($$2 == 0) {
+            String $$3 = $$1.get("Owner").asString("");
+            String $$4 = $$1.get("OwnerUUID").asString("");
+            if ($$3.length() > 0 || $$4.length() > 0) {
+               $$1.set("Trusting", $$1.createBoolean(true));
+            }
+         } else if ($$2 > 0 && $$2 < 4) {
+            $$1 = $$1.set("CatType", $$1.createInt($$2));
+            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
+            return Pair.of("minecraft:cat", $$1);
+         }
+      }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+      return Pair.of($$0, $$1);
    }
 }

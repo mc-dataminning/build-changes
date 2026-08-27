@@ -1,25 +1,18 @@
-public enum ddg implements apr {
-   a("up"),
-   b("side"),
-   c("none");
+public class ddg extends dds {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   private final String d;
-
-   private ddg(String $$0) {
-      this.d = $$0;
+   public ddg(gv $$0, dey $$1) {
+      super(dcm.i, $$0, $$1);
    }
 
    @Override
-   public String toString() {
-      return this.c();
+   public int c() {
+      return 9;
    }
 
    @Override
-   public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
+   public int d() {
+      return 60;
    }
 }

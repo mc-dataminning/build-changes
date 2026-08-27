@@ -1,14 +1,12 @@
-public enum enk {
-   a,
-   b,
-   c,
-   d;
+public class enk extends Exception {
+   public final elz a;
 
-   public boolean a() {
-      return this == b;
+   public enk(elz $$0) {
+      this.a = $$0;
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

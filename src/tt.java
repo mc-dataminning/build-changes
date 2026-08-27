@@ -1,73 +1,129 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class tt {
-   private final String a;
-   private final List<ts> b;
-   private final Int2IntFunction c;
+public record tt(ty d, @Nullable tp e, tw f, @Nullable te g, th h) {
+   public static final MapCodec<tt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ty.a.fieldOf("link").forGetter(tt::j),
+               tp.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               tw.a.forGetter(tt::l),
+               aqw.b.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               th.a.optionalFieldOf("filter_mask", th.c).forGetter(tt::n)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new tt($$0x, (tp)$$1.orElse(null), $$2, (te)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = ac.c;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
 
-   private tt(String $$0, List<ts> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
+   public static tt a(String $$0) {
+      return a(i, $$0);
    }
 
-   public String a() {
-      return this.a;
+   public static tt a(UUID $$0, String $$1) {
+      tw $$2 = tw.a($$1);
+      ty $$3 = ty.a($$0);
+      return new tt($$3, null, $$2, null, th.c);
    }
 
-   public List<aom> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
-      } else {
-         List<aom> $$3 = Lists.newArrayList();
-         ts $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            ts $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? aom.backward($$9, $$4, this.c) : aom.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
-         }
-
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? aom.backward($$10, $$4, this.c) : aom.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
-      }
+   public tt a(te $$0) {
+      te $$1 = !$$0.equals(te.b(this.b())) ? $$0 : null;
+      return new tt(this.d, this.e, this.f, $$1, this.h);
    }
 
-   public static tt a(ta $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   public tt a() {
+      return this.g != null ? new tt(this.d, this.e, this.f, null, this.h) : this;
    }
 
-   public static tt a(ta $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<ts> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         apq.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
+   public tt a(th $$0) {
+      return this.h.equals($$0) ? this : new tt(this.d, this.e, this.f, this.g, $$0);
+   }
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
+   public tt a(boolean $$0) {
+      return this.a($$0 ? this.h : th.c);
+   }
 
-            return true;
-         });
-         return Optional.empty();
-      }, ts.a);
-      return new tt($$2.apply($$3.toString()), $$4, $$1);
+   public static void a(arw.a $$0, ty $$1, tw $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(arx $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String b() {
+      return this.f.a();
+   }
+
+   public te c() {
+      return Objects.requireNonNullElseGet(this.g, () -> te.b(this.b()));
+   }
+
+   public Instant d() {
+      return this.f.b();
+   }
+
+   public long e() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.d().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.d().plus(c));
+   }
+
+   public UUID f() {
+      return this.d.c();
+   }
+
+   public boolean g() {
+      return this.f().equals(i);
+   }
+
+   public boolean h() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.h() && this.d.c().equals($$0);
+   }
+
+   public boolean i() {
+      return this.h.b();
+   }
+
+   public ty j() {
+      return this.d;
+   }
+
+   @Nullable
+   public tp k() {
+      return this.e;
+   }
+
+   public tw l() {
+      return this.f;
+   }
+
+   @Nullable
+   public te m() {
+      return this.g;
+   }
+
+   public th n() {
+      return this.h;
    }
 }

@@ -1,24 +1,44 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public class ayt extends axd {
-   public ayt(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class ayt extends asv {
+   private static final Logger b = LogUtils.getLogger();
+
+   public ayt(Schema $$0) {
+      super($$0, aym.l);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, avw.t, () -> DSL.constType(a()));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1, "minecraft:sculk_sensor", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", avw.t.in($$0))))
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "SavedDataUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update(
+                           "Raids",
+                           $$0xxx -> $$0xxx.createList(
+                                 $$0xxx.asStream()
+                                    .map(
+                                       $$0xxxx -> $$0xxxx.update(
+                                             "HeroesOfTheVillage",
+                                             $$0xxxxx -> $$0xxxxx.createList(
+                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                                         return $$0xxxxxx;
+                                                      }))
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
-      return $$1;
    }
 }

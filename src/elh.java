@@ -1,112 +1,97 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-public class elh extends gan implements ekp {
-   private static final gao b = new gao(Duration.ofSeconds(5L));
-   private static final Logger c = LogUtils.getLogger();
-   private final euq G;
-   private volatile sw H = sv.a;
-   @Nullable
-   private volatile sw I;
-   private volatile boolean J;
-   private int K;
-   private final emo L;
-   private final int M = 212;
-   private epi N;
-   public static final String[] a = new String[]{
-      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
-      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
-      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
-      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
-      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
-      "_ _ _ _ _ ▃ ▄ ▅ ▆ ▇ █",
-      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
-      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
-      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
-      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
-      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
-      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _",
-      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
-      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
-      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
-      "█ ▇ ▆ ▅ ▄ ▃ _ _ _ _ _",
-      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
-      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
-      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
-      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _"
-   };
+public class elh {
+   private final Deque<elh.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new elh.a($$1, $$2));
+   });
 
-   public elh(euq $$0, emo $$1) {
-      super(enf.a);
-      this.G = $$0;
-      this.L = $$1;
-      $$1.a(this);
-      Thread $$2 = new Thread($$1, "Realms-long-running-task");
-      $$2.setUncaughtExceptionHandler(new ekk(c));
-      $$2.start();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   @Override
-   public void f() {
-      super.f();
-      b.a(this.f.aU(), this.H);
-      this.K++;
-      this.L.b();
+   public void a(float $$0, float $$1, float $$2) {
+      elh.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.B();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void b(float $$0, float $$1, float $$2) {
+      elh.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if ($$0 == $$1 && $$1 == $$2) {
+         if ($$0 > 0.0F) {
+            return;
+         }
+
+         $$3.b.scale(-1.0F);
       }
+
+      float $$4 = 1.0F / $$0;
+      float $$5 = 1.0F / $$1;
+      float $$6 = 1.0F / $$2;
+      float $$7 = aro.j($$4 * $$5 * $$6);
+      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
    }
 
-   @Override
+   public void a(Quaternionf $$0) {
+      elh.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
+   }
+
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      elh.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
+   }
+
+   public void a() {
+      elh.a $$0 = this.a.getLast();
+      this.a.addLast(new elh.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
+   }
+
    public void b() {
-      this.L.d();
-      this.N = this.d(epi.a(sv.e, $$0 -> this.B()).a(this.g / 2 - 106, h(12), 212, 20).a());
+      this.a.removeLast();
    }
 
-   private void B() {
-      this.J = true;
-      this.L.a();
-      this.f.a(this.G);
+   public elh.a c() {
+      return this.a.getLast();
    }
 
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.H, this.g / 2, h(3), 16777215);
-      sw $$4 = this.I;
-      if ($$4 == null) {
-         $$0.a(this.i, a[this.K % a.length], this.g / 2, h(8), 8421504);
-      } else {
-         $$0.a(this.i, $$4, this.g / 2, h(8), 16711680);
+   public boolean d() {
+      return this.a.size() == 1;
+   }
+
+   public void e() {
+      elh.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+   }
+
+   public void a(Matrix4f $$0) {
+      this.a.getLast().a.mul($$0);
+   }
+
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
+      public Matrix4f a() {
+         return this.a;
+      }
 
-   @Override
-   public void a(sw $$0) {
-      this.I = $$0;
-      this.f.aU().c($$0);
-      this.f.execute(() -> {
-         this.f(this.N);
-         this.N = this.d(epi.a(sv.k, $$0x -> this.B()).a(this.g / 2 - 106, this.h / 4 + 120 + 12, 200, 20).a());
-      });
-   }
-
-   public void b(sw $$0) {
-      this.H = $$0;
-   }
-
-   public boolean c() {
-      return this.J;
+      public Matrix3f b() {
+         return this.b;
+      }
    }
 }

@@ -1,13 +1,26 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public interface bgq {
-   boolean g();
+@Immutable
+public class bgq {
+   public static final bgq a = new bgq("");
+   public static final String b = "Lock";
+   private final String c;
 
-   void a(@Nullable ami var1);
-
-   default amg R_() {
-      return amh.lo;
+   public bgq(String $$0) {
+      this.c = $$0;
    }
 
-   boolean i();
+   public boolean a(ciw $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   }
+
+   public void a(qs $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
+
+   public static bgq b(qs $$0) {
+      return $$0.b("Lock", 8) ? new bgq($$0.l("Lock")) : a;
+   }
 }

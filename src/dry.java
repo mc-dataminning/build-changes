@@ -1,84 +1,49 @@
-public abstract class dry extends dse {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   protected dry(dsr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ha $$7) {
-      super($$0, 0, dse.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public record dry(drq b, List<dry.a> c) {
+   public static final Codec<dry> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(drq.a.fieldOf("fallback").forGetter(dry::a), dry.a.a.listOf().fieldOf("rules").forGetter(dry::b)).apply($$0, dry::new)
+   );
+
+   public static dry a(drq $$0) {
+      return new dry($$0, List.of());
    }
 
-   protected dry(dsr $$0, qr $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public static dry a(csk $$0) {
+      return a(drq.a($$0));
    }
 
-   @Override
-   protected void a(dsq $$0, qr $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
-   }
-
-   protected boolean a(cmn $$0, drs $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         gu.a $$5 = new gu.a();
-
-         for (int $$6 = this.f.i(); $$6 <= this.f.l(); $$6++) {
-            for (int $$7 = this.f.g(); $$7 <= this.f.j(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dhk.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.h() + $$2, 0);
-            return true;
+   public dey a(cqe $$0, art $$1, gv $$2) {
+      for (dry.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
       }
+
+      return this.b.a($$1, $$2);
    }
 
-   protected boolean a(cmn $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.aj();
-         boolean $$3 = false;
-         gu.a $$4 = new gu.a();
+   public drq a() {
+      return this.b;
+   }
 
-         for (int $$5 = this.f.i(); $$5 <= this.f.l(); $$5++) {
-            for (int $$6 = this.f.g(); $$6 <= this.f.j(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dhk.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
+   public List<dry.a> b() {
+      return this.c;
+   }
 
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.h() + $$1, 0);
-            return true;
-         }
+   public static record a(dlo b, drq c) {
+      public static final Codec<dry.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dlo.b.fieldOf("if_true").forGetter(dry.a::a), drq.a.fieldOf("then").forGetter(dry.a::b)).apply($$0, dry.a::new)
+      );
+
+      public dlo a() {
+         return this.b;
+      }
+
+      public drq b() {
+         return this.c;
       }
    }
 }

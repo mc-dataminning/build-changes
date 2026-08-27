@@ -1,24 +1,14 @@
-public class xp implements uo<ur> {
-   private final int a;
-
-   public xp(dds $$0) {
-      this.a = $$0.r();
-   }
-
-   public xp(sf $$0) {
-      this.a = $$0.m();
+public record xp(tp.a a) implements uw<wo> {
+   public xp(sh $$0) {
+      this(tp.a.a($$0));
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
+   public void a(sh $$0) {
+      tp.a.a($$0, this.a);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
    }
 }

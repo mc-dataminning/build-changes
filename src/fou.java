@@ -1,31 +1,61 @@
-public class fou extends fqe<bvs, fbd<bvs>> {
-   private static final acq a = new acq("textures/entity/enderman/enderman.png");
-   private final apf i = apf.a();
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public fou(foy.a $$0) {
-      super($$0, new fbd<>($$0.a(fed.R)), 0.5F);
-      this.a(new fsq<>(this));
-      this.a(new fsh(this, $$0.c()));
+public class fou implements fot {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public fou(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(bvs $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      dcb $$6 = $$0.fY();
-      fbd<bvs> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.fZ();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public eei a(bvs $$0, float $$1) {
-      if ($$0.fZ()) {
-         double $$2 = 0.02;
-         return new eei(this.i.k() * 0.02, 0.0, this.i.k() * 0.02);
+   @Override
+   public Predicate<dey> getPredicate(dez<csk, dey> $$0) {
+      dgb<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         return super.a($$0, $$1);
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dey> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dey>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
       }
    }
 
-   public acq a(bvs $$0) {
-      return a;
+   private Predicate<dey> a(dez<csk, dey> $$0, dgb<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if (!$$3.isPresent()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

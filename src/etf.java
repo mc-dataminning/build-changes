@@ -1,58 +1,98 @@
-public class etf extends euq {
-   private final euq c;
-   protected final etf.a a;
-   private final sw k;
-   private final boolean l;
-   private epz m = epz.a;
-   protected int b;
-   private epk n;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public etf(euq $$0, etf.a $$1, sw $$2, sw $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+public class etf extends eso<etf.a> {
+   public etf(eqn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
    }
 
-   @Override
-   protected void b() {
-      super.b();
-      this.m = epz.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(epi.a(sw.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(epi.a(sw.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(epi.a(sv.e, $$0x -> this.f.a(this.c)).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = new epk(this.g / 2 - 155 + 80, 76 + $$0, 150, 20, sw.c("selectWorld.backupEraseCache"), false);
-      if (this.l) {
-         this.d(this.n);
+   public int a(eqq<?> $$0) {
+      return this.b(etf.a.a(this.b.m, this.d, $$0));
+   }
+
+   public void a(eqq<?> $$0, @Nullable eqq<?> $$1) {
+      this.b(etf.a.a(this.b.m, this.d, $$0, $$1));
+   }
+
+   public void a(eqq<?>[] $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         this.a($$0[$$1], $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null);
       }
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-      super.a($$0, $$1, $$2, $$3);
+   public int b() {
+      return 400;
    }
 
    @Override
-   public boolean av_() {
-      return false;
+   protected int c() {
+      return super.c() + 32;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   @Nullable
+   public esg b(eqq<?> $$0) {
+      for (etf.a $$1 : this.i()) {
+         esg $$2 = $$1.a.get($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public Optional<esg> c(double $$0, double $$1) {
+      for (etf.a $$2 : this.i()) {
+         for (esg $$3 : $$2.b) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   protected static class a extends eso.a<etf.a> {
+      final Map<eqq<?>, esg> a;
+      final List<esg> b;
+
+      private a(Map<eqq<?>, esg> $$0) {
+         this.a = $$0;
+         this.b = ImmutableList.copyOf($$0.values());
+      }
+
+      public static etf.a a(eqr $$0, int $$1, eqq<?> $$2) {
+         return new etf.a(ImmutableMap.of($$2, $$2.a($$0, $$1 / 2 - 155, 0, 310)));
+      }
+
+      public static etf.a a(eqr $$0, int $$1, eqq<?> $$2, @Nullable eqq<?> $$3) {
+         esg $$4 = $$2.a($$0, $$1 / 2 - 155, 0, 150);
+         return $$3 == null ? new etf.a(ImmutableMap.of($$2, $$4)) : new etf.a(ImmutableMap.of($$2, $$4, $$3, $$3.a($$0, $$1 / 2 - 155 + 160, 0, 150)));
+      }
+
+      @Override
+      public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.b.forEach($$5x -> {
+            $$5x.f($$2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public List<? extends etw> i() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends evr> b() {
+         return this.b;
+      }
    }
 }

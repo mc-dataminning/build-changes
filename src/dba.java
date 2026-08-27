@@ -1,428 +1,223 @@
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.google.common.base.MoreObjects;
 import javax.annotation.Nullable;
 
-public class dba extends czn {
-   private static final int d = 5;
-   public static final int a = 48;
-   public static final int b = 48;
-   public static final String c = "author";
-   private acq e;
-   private String f = "";
-   private String g = "";
-   private gu h = new gu(0, 1, 0);
-   private hz i = hz.g;
-   private cui j = cui.a;
-   private cvz k = cvz.a;
-   private ddl l;
-   private boolean m = true;
-   private boolean n;
-   private boolean r;
-   private boolean s = true;
-   private float t = 1.0F;
-   private long u;
+public class dba extends csk {
+   public static final dfs a = cwd.aC;
+   public static final dfp b = dfo.w;
+   public static final dfp c = dfo.a;
+   protected static final int d = 1;
+   protected static final int e = 42;
+   private static final int k = 10;
+   protected static final int f = 3;
+   protected static final ehy g = csk.a(5.0, 0.0, 10.0, 11.0, 10.0, 16.0);
+   protected static final ehy h = csk.a(5.0, 0.0, 0.0, 11.0, 10.0, 6.0);
+   protected static final ehy i = csk.a(10.0, 0.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ehy j = csk.a(0.0, 0.0, 5.0, 6.0, 10.0, 11.0);
 
-   public dba(gu $$0, dcb $$1) {
-      super(czp.u, $$0, $$1);
-      this.l = $$1.c(cxm.a);
+   public dba(dex.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hb.c).a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("name", this.d());
-      $$0.a("author", this.f);
-      $$0.a("metadata", this.g);
-      $$0.a("posX", this.h.u());
-      $$0.a("posY", this.h.v());
-      $$0.a("posZ", this.h.w());
-      $$0.a("sizeX", this.i.u());
-      $$0.a("sizeY", this.i.v());
-      $$0.a("sizeZ", this.i.w());
-      $$0.a("rotation", this.k.toString());
-      $$0.a("mirror", this.j.toString());
-      $$0.a("mode", this.l.toString());
-      $$0.a("ignoreEntities", this.m);
-      $$0.a("powered", this.n);
-      $$0.a("showair", this.r);
-      $$0.a("showboundingbox", this.s);
-      $$0.a("integrity", this.t);
-      $$0.a("seed", this.u);
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      switch ((hb)$$0.c(a)) {
+         case f:
+         default:
+            return j;
+         case e:
+            return i;
+         case d:
+            return h;
+         case c:
+            return g;
+      }
    }
 
    @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      this.a($$0.l("name"));
-      this.f = $$0.l("author");
-      this.g = $$0.l("metadata");
-      int $$1 = apa.a($$0.h("posX"), -48, 48);
-      int $$2 = apa.a($$0.h("posY"), -48, 48);
-      int $$3 = apa.a($$0.h("posZ"), -48, 48);
-      this.h = new gu($$1, $$2, $$3);
-      int $$4 = apa.a($$0.h("sizeX"), 0, 48);
-      int $$5 = apa.a($$0.h("sizeY"), 0, 48);
-      int $$6 = apa.a($$0.h("sizeZ"), 0, 48);
-      this.i = new hz($$4, $$5, $$6);
-
-      try {
-         this.k = cvz.valueOf($$0.l("rotation"));
-      } catch (IllegalArgumentException var11) {
-         this.k = cvz.a;
-      }
-
-      try {
-         this.j = cui.valueOf($$0.l("mirror"));
-      } catch (IllegalArgumentException var10) {
-         this.j = cui.a;
-      }
-
-      try {
-         this.l = ddl.valueOf($$0.l("mode"));
-      } catch (IllegalArgumentException var9) {
-         this.l = ddl.d;
-      }
-
-      this.m = $$0.q("ignoreEntities");
-      this.n = $$0.q("powered");
-      this.r = $$0.q("showair");
-      this.s = $$0.q("showboundingbox");
-      if ($$0.e("integrity")) {
-         this.t = $$0.j("integrity");
-      } else {
-         this.t = 1.0F;
-      }
-
-      this.u = $$0.i("seed");
-      this.J();
-   }
-
-   private void J() {
-      if (this.o != null) {
-         gu $$0 = this.p();
-         dcb $$1 = this.o.a_($$0);
-         if ($$1.a(cpo.pa)) {
-            this.o.a($$0, $$1.a(cxm.a, this.l), 2);
-         }
-      }
-   }
-
-   public uz c() {
-      return uz.a(this);
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      hb $$3 = $$0.c(a);
+      gv $$4 = $$2.a($$3.g());
+      dey $$5 = $$1.a_($$4);
+      return $$3.o().d() && $$5.d($$1, $$4, $$3);
    }
 
    @Override
-   public qr ao_() {
-      return this.o();
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public boolean a(byo $$0) {
-      if (!$$0.gk()) {
-         return false;
-      } else {
-         if ($$0.cH().B) {
-            $$0.a(this);
-         }
-
-         return true;
-      }
-   }
-
-   public String d() {
-      return this.e == null ? "" : this.e.toString();
-   }
-
+   @Nullable
    @Override
-   public String f() {
-      return this.e == null ? "" : this.e.a();
-   }
+   public dey a(cle $$0) {
+      dey $$1 = this.n().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false));
+      cpn $$2 = $$0.q();
+      gv $$3 = $$0.a();
+      hb[] $$4 = $$0.f();
 
-   public boolean g() {
-      return this.e != null;
-   }
-
-   public void a(@Nullable String $$0) {
-      this.a(aps.b($$0) ? null : acq.a($$0));
-   }
-
-   public void a(@Nullable acq $$0) {
-      this.e = $$0;
-   }
-
-   public void a(bfz $$0) {
-      this.f = $$0.Z().getString();
-   }
-
-   public gu i() {
-      return this.h;
-   }
-
-   public void a(gu $$0) {
-      this.h = $$0;
-   }
-
-   public hz j() {
-      return this.i;
-   }
-
-   public void a(hz $$0) {
-      this.i = $$0;
-   }
-
-   public cui v() {
-      return this.j;
-   }
-
-   public void a(cui $$0) {
-      this.j = $$0;
-   }
-
-   public cvz w() {
-      return this.k;
-   }
-
-   public void a(cvz $$0) {
-      this.k = $$0;
-   }
-
-   public String x() {
-      return this.g;
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-   }
-
-   public ddl y() {
-      return this.l;
-   }
-
-   public void a(ddl $$0) {
-      this.l = $$0;
-      dcb $$1 = this.o.a_(this.p());
-      if ($$1.a(cpo.pa)) {
-         this.o.a(this.p(), $$1.a(cxm.a, $$0), 2);
-      }
-   }
-
-   public boolean z() {
-      return this.m;
-   }
-
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   public float A() {
-      return this.t;
-   }
-
-   public void a(float $$0) {
-      this.t = $$0;
-   }
-
-   public long B() {
-      return this.u;
-   }
-
-   public void a(long $$0) {
-      this.u = $$0;
-   }
-
-   public boolean C() {
-      if (this.l != ddl.a) {
-         return false;
-      } else {
-         gu $$0 = this.p();
-         int $$1 = 80;
-         gu $$2 = new gu($$0.u() - 80, this.o.C_(), $$0.w() - 80);
-         gu $$3 = new gu($$0.u() + 80, this.o.aj() - 1, $$0.w() + 80);
-         Stream<gu> $$4 = this.a($$2, $$3);
-         return a($$0, $$4).filter($$1x -> {
-            int $$2x = $$1x.j() - $$1x.g();
-            int $$3x = $$1x.k() - $$1x.h();
-            int $$4x = $$1x.l() - $$1x.i();
-            if ($$2x > 1 && $$3x > 1 && $$4x > 1) {
-               this.h = new gu($$1x.g() - $$0.u() + 1, $$1x.h() - $$0.v() + 1, $$1x.i() - $$0.w() + 1);
-               this.i = new hz($$2x - 1, $$3x - 1, $$4x - 1);
-               this.e();
-               dcb $$5 = this.o.a_($$0);
-               this.o.a($$0, $$5, $$5, 3);
-               return true;
-            } else {
-               return false;
+      for (hb $$5 : $$4) {
+         if ($$5.o().d()) {
+            hb $$6 = $$5.g();
+            $$1 = $$1.a(a, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
-         }).isPresent();
-      }
-   }
-
-   private Stream<gu> a(gu $$0, gu $$1) {
-      return gu.b($$0, $$1)
-         .filter($$0x -> this.o.a_($$0x).a(cpo.pa))
-         .map(this.o::c_)
-         .filter($$0x -> $$0x instanceof dba)
-         .map($$0x -> (dba)$$0x)
-         .filter($$0x -> $$0x.l == ddl.c && Objects.equals(this.e, $$0x.e))
-         .map(czn::p);
-   }
-
-   private static Optional<drs> a(gu $$0, Stream<gu> $$1) {
-      Iterator<gu> $$2 = $$1.iterator();
-      if (!$$2.hasNext()) {
-         return Optional.empty();
-      } else {
-         gu $$3 = $$2.next();
-         drs $$4 = new drs($$3);
-         if ($$2.hasNext()) {
-            $$2.forEachRemaining($$4::a);
-         } else {
-            $$4.a($$0);
          }
-
-         return Optional.of($$4);
       }
+
+      return null;
    }
 
-   public boolean D() {
-      return this.b(true);
+   @Override
+   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
+      this.a($$0, $$1, $$2, false, false, -1, null);
    }
 
-   public boolean b(boolean $$0) {
-      if (this.l == ddl.a && !this.o.B && this.e != null) {
-         gu $$1 = this.p().a((hz)this.h);
-         aif $$2 = (aif)this.o;
-         dvu $$3 = $$2.p();
+   public void a(cpk $$0, gv $$1, dey $$2, boolean $$3, boolean $$4, int $$5, @Nullable dey $$6) {
+      hb $$7 = $$2.c(a);
+      boolean $$8 = $$2.c(c);
+      boolean $$9 = $$2.c(b);
+      boolean $$10 = !$$3;
+      boolean $$11 = false;
+      int $$12 = 0;
+      dey[] $$13 = new dey[42];
 
-         dvt $$4;
-         try {
-            $$4 = $$3.a(this.e);
-         } catch (z var8) {
-            return false;
-         }
-
-         $$4.a(this.o, $$1, this.i, !this.m, cpo.kN);
-         $$4.a(this.f);
-         if ($$0) {
-            try {
-               return $$3.c(this.e);
-            } catch (z var7) {
-               return false;
+      for (int $$14 = 1; $$14 < 42; $$14++) {
+         gv $$15 = $$1.a($$7, $$14);
+         dey $$16 = $$0.a_($$15);
+         if ($$16.a(csl.fH)) {
+            if ($$16.c(a) == $$7.g()) {
+               $$12 = $$14;
             }
+            break;
+         }
+
+         if (!$$16.a(csl.fI) && $$14 != $$5) {
+            $$13[$$14] = null;
+            $$10 = false;
          } else {
-            return true;
+            if ($$14 == $$5) {
+               $$16 = (dey)MoreObjects.firstNonNull($$6, $$16);
+            }
+
+            boolean $$17 = !$$16.c(daz.c);
+            boolean $$18 = $$16.c(daz.a);
+            $$11 |= $$17 && $$18;
+            $$13[$$14] = $$16;
+            if ($$14 == $$5) {
+               $$0.a($$1, this, 10);
+               $$10 &= $$17;
+            }
          }
-      } else {
-         return false;
+      }
+
+      $$10 &= $$12 > 1;
+      $$11 &= $$10;
+      dey $$19 = this.n().a(c, Boolean.valueOf($$10)).a(b, Boolean.valueOf($$11));
+      if ($$12 > 0) {
+         gv $$20 = $$1.a($$7, $$12);
+         hb $$21 = $$7.g();
+         $$0.a($$20, $$19.a(a, $$21), 3);
+         this.a($$0, $$20, $$21);
+         this.a($$0, $$20, $$10, $$11, $$8, $$9);
+      }
+
+      this.a($$0, $$1, $$10, $$11, $$8, $$9);
+      if (!$$3) {
+         $$0.a($$1, $$19.a(a, $$7), 3);
+         if ($$4) {
+            this.a($$0, $$1, $$7);
+         }
+      }
+
+      if ($$8 != $$10) {
+         for (int $$22 = 1; $$22 < $$12; $$22++) {
+            gv $$23 = $$1.a($$7, $$22);
+            dey $$24 = $$13[$$22];
+            if ($$24 != null) {
+               $$0.a($$23, $$24.a(c, Boolean.valueOf($$10)), 3);
+               if (!$$0.a_($$23).i()) {
+               }
+            }
+         }
       }
    }
 
-   public boolean a(aif $$0) {
-      return this.a($$0, true);
+   @Override
+   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
+      this.a($$1, $$2, $$0, false, true, -1, null);
    }
 
-   public static apf b(long $$0) {
-      return $$0 == 0L ? apf.a(ac.b()) : apf.a($$0);
+   private void a(cpk $$0, gv $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
+      if ($$3 && !$$5) {
+         $$0.a(null, $$1, aou.xS, aov.e, 0.4F, 0.6F);
+         $$0.a(null, dji.a, $$1);
+      } else if (!$$3 && $$5) {
+         $$0.a(null, $$1, aou.xR, aov.e, 0.4F, 0.5F);
+         $$0.a(null, dji.e, $$1);
+      } else if ($$2 && !$$4) {
+         $$0.a(null, $$1, aou.xQ, aov.e, 0.4F, 0.7F);
+         $$0.a(null, dji.b, $$1);
+      } else if (!$$2 && $$4) {
+         $$0.a(null, $$1, aou.xT, aov.e, 0.4F, 1.2F / ($$0.z.i() * 0.2F + 0.9F));
+         $$0.a(null, dji.g, $$1);
+      }
    }
 
-   public boolean a(aif $$0, boolean $$1) {
-      if (this.l == ddl.b && this.e != null) {
-         dvu $$2 = $$0.p();
+   private void a(cpk $$0, gv $$1, hb $$2) {
+      $$0.a($$1, this);
+      $$0.a($$1.a($$2.g()), this);
+   }
 
-         Optional<dvt> $$3;
-         try {
-            $$3 = $$2.b(this.e);
-         } catch (z var6) {
-            return false;
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         boolean $$5 = $$0.c(c);
+         boolean $$6 = $$0.c(b);
+         if ($$5 || $$6) {
+            this.a($$1, $$2, $$0, true, false, -1, null);
          }
 
-         return !$$3.isPresent() ? false : this.a($$0, $$1, $$3.get());
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(aif $$0, boolean $$1, dvt $$2) {
-      gu $$3 = this.p();
-      if (!aps.b($$2.b())) {
-         this.f = $$2.b();
-      }
-
-      hz $$4 = $$2.a();
-      boolean $$5 = this.i.equals($$4);
-      if (!$$5) {
-         this.i = $$4;
-         this.e();
-         dcb $$6 = $$0.a_($$3);
-         $$0.a($$3, $$6, $$6, 3);
-      }
-
-      if ($$1 && !$$5) {
-         return false;
-      } else {
-         dvp $$7 = new dvp().a(this.j).a(this.k).a(this.m);
-         if (this.t < 1.0F) {
-            $$7.b().a(new dux(apa.a(this.t, 0.0F, 1.0F))).a(b(this.u));
+         if ($$6) {
+            $$1.a($$2, this);
+            $$1.a($$2.a($$0.c(a).g()), this);
          }
 
-         gu $$8 = $$3.a((hz)this.h);
-         $$2.a($$0, $$8, $$8, $$7, b(this.u), 2);
-         return true;
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public void E() {
-      if (this.e != null) {
-         aif $$0 = (aif)this.o;
-         dvu $$1 = $$0.p();
-         $$1.d(this.e);
-      }
+   @Override
+   public int a(dey $$0, coq $$1, gv $$2, hb $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
-   public boolean F() {
-      if (this.l == ddl.b && !this.o.B && this.e != null) {
-         aif $$0 = (aif)this.o;
-         dvu $$1 = $$0.p();
-
-         try {
-            return $$1.b(this.e).isPresent();
-         } catch (z var4) {
-            return false;
-         }
+   @Override
+   public int b(dey $$0, coq $$1, gv $$2, hb $$3) {
+      if (!$$0.c(b)) {
+         return 0;
       } else {
-         return false;
+         return $$0.c(a) == $$3 ? 15 : 0;
       }
    }
 
-   public boolean G() {
-      return this.n;
+   @Override
+   public boolean f_(dey $$0) {
+      return true;
    }
 
-   public void c(boolean $$0) {
-      this.n = $$0;
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public boolean H() {
-      return this.r;
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
-   public void d(boolean $$0) {
-      this.r = $$0;
-   }
-
-   public boolean I() {
-      return this.s;
-   }
-
-   public void e(boolean $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b, c);
    }
 }

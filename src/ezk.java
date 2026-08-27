@@ -1,227 +1,109 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-public class ezk {
-   private static final Logger a = LogUtils.getLogger();
-   private final enn b;
-   private final dyy c;
+public abstract class ezk<T extends cec> extends eyt<T> {
+   private static final aep x = new aep("container/inventory/effect_background_large");
+   private static final aep y = new aep("container/inventory/effect_background_small");
 
-   public ezk(enn $$0, dyy $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ezk(T $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(euq $$0, String $$1) {
-      this.a($$0, $$1, false, true);
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
    }
 
-   public void a(String $$0, cmq $$1, dii $$2, Function<hs, dif> $$3) {
-      dyy.c $$4 = this.a($$0);
-      if ($$4 != null) {
-         aki $$5 = akl.a($$4);
-         cnf $$6 = $$1.g();
+   @Override
+   public boolean F() {
+      int $$0 = this.t + this.c + 2;
+      int $$1 = this.g - $$0;
+      return $$1 >= 32;
+   }
 
-         try {
-            adj.d $$7 = new adj.d($$5, $$6, false, false);
-            adk $$8 = this.a($$7, $$3x -> {
-               dif.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(jc.aI));
-               return new adj.b<>(new dzc($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, adk::new);
-            this.b.a($$0, $$4, $$5, $$8, true);
-         } catch (Exception var10) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var10);
-            a($$4, $$0);
+   private void c(erx $$0, int $$1, int $$2) {
+      int $$3 = this.t + this.c + 2;
+      int $$4 = this.g - $$3;
+      Collection<bht> $$5 = this.f.t.eq();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
          }
-      }
-   }
 
-   @Nullable
-   private dyy.c a(String $$0) {
-      try {
-         return this.c.c($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         erf.a(this.b, $$0);
-         this.b.a(null);
-         return null;
-      } catch (edx var4) {
-         a.warn("{}", var4.getMessage());
-         this.b.a(new euv(null));
-         return null;
-      }
-   }
+         Iterable<bht> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.u;
+            bht $$10 = null;
 
-   public void a(dyy.c $$0, ada $$1, hl<acz> $$2, dze $$3) {
-      aki $$4 = akl.a($$0);
-      akn $$5 = (akn)new adj.d($$4, $$3.F(), false, false).a().getSecond();
-      this.b.a($$0.a(), $$0, $$4, new adk($$5, $$1, $$2, $$3), true);
-   }
+            for (bht $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
 
-   private adk a(dyy.c $$0, boolean $$1, aki $$2) throws Exception {
-      adj.d $$3 = this.b($$0, $$1, $$2);
-      return this.a($$3, $$1x -> {
-         DynamicOps<rk> $$2x = aco.a(rc.a, $$1x.c());
-         hr<dfl> $$3x = $$1x.d().d(jc.aI);
-         Pair<dze, dif.b> $$4 = $$0.a($$2x, $$1x.b(), $$3x, $$1x.c().d());
-         if ($$4 == null) {
-            throw new IllegalStateException("Failed to load world");
-         } else {
-            return new adj.b<>((dze)$$4.getFirst(), ((dif.b)$$4.getSecond()).b());
-         }
-      }, adk::new);
-   }
-
-   public Pair<cmq, ezi> a(dyy.c $$0) throws Exception {
-      aki $$1 = akl.a($$0);
-      adj.d $$2 = this.b($$0, false, $$1);
-
-      record a(cmq a, dii b, hr<dfl> c) {
-      }
-
-      return this.a($$2, $$1x -> {
-         DynamicOps<rk> $$2x = aco.a(rc.a, $$1x.c());
-         hr<dfl> $$3 = new hm<>(jc.aI, Lifecycle.stable()).l();
-         Pair<dze, dif.b> $$4 = $$0.a($$2x, $$1x.b(), $$3, $$1x.c().d());
-         if ($$4 == null) {
-            throw new IllegalStateException("Failed to load world");
-         } else {
-            return new adj.b<>(new a(((dze)$$4.getFirst()).L(), ((dze)$$4.getFirst()).A(), ((dif.b)$$4.getSecond()).c()), $$1x.d());
-         }
-      }, ($$0x, $$1x, $$2x, $$3) -> {
-         $$0x.close();
-         return Pair.of($$3.a, new ezi($$3.b, new dif($$3.c), $$2x, $$1x, $$3.a.g()));
-      });
-   }
-
-   private adj.d b(dyy.c $$0, boolean $$1, aki $$2) {
-      cnf $$3 = $$0.d();
-      if ($$3 == null) {
-         throw new IllegalStateException("Failed to load data pack config");
-      } else {
-         return new adj.d($$2, $$3, $$1, false);
-      }
-   }
-
-   public adk a(dyy.c $$0, boolean $$1) throws Exception {
-      aki $$2 = akl.a($$0);
-      return this.a($$0, $$1, $$2);
-   }
-
-   private <D, R> R a(adj.d $$0, adj.f<D> $$1, adj.e<D, R> $$2) throws Exception {
-      adj.c $$3 = new adj.c($$0, dt.a.c, 2);
-      CompletableFuture<R> $$4 = adj.a($$3, $$1, $$2, ac.f(), this.b);
-      this.b.c($$4::isDone);
-      return $$4.get();
-   }
-
-   private void a(euq $$0, String $$1, boolean $$2, boolean $$3) {
-      dyy.c $$4 = this.a($$1);
-      if ($$4 != null) {
-         aki $$5 = akl.a($$4);
-
-         adk $$6;
-         try {
-            $$6 = this.a($$4, $$2, $$5);
-         } catch (Exception var11) {
-            a.warn("Failed to load level data or datapacks, can't proceed with server load", var11);
-            if (!$$2) {
-               this.b.a(new etp(() -> this.a($$0, $$1, true, $$3)));
-            } else {
-               this.b
-                  .a(
-                     new ete(
-                        () -> this.b.a(null), sw.c("datapackFailure.safeMode.failed.title"), sw.c("datapackFailure.safeMode.failed.description"), sv.l, true
-                     )
-                  );
+               $$9 += $$7;
             }
 
-            a($$4, $$1);
-            return;
+            if ($$10 != null) {
+               List<te> $$12 = List.of(this.a($$10), bhu.a($$10, 1.0F));
+               $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
+            }
          }
+      }
+   }
 
-         dze $$9 = $$6.d();
-         boolean $$10 = $$9.A().e();
-         boolean $$11 = $$9.D() != Lifecycle.stable();
-         if (!$$3 || !$$10 && !$$11) {
-            this.b.ab().a($$4).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-               a.warn("Failed to load pack: ", $$0x);
-               return this.a();
-            }, this.b).thenAcceptAsync($$5x -> {
-               if ($$5x) {
-                  this.b.a($$1, $$4, $$5, $$6, false);
-               } else {
-                  $$6.close();
-                  a($$4, $$1);
-                  this.b.ab().a().thenRunAsync(() -> this.b.a($$0), this.b);
-               }
-            }, this.b).exceptionally($$0x -> {
-               this.b.a(o.a($$0x, "Load world"));
-               return null;
-            });
+   private void a(erx $$0, int $$1, int $$2, Iterable<bht> $$3, boolean $$4) {
+      int $$5 = this.u;
+
+      for (bht $$6 : $$3) {
+         if ($$4) {
+            $$0.a(x, $$1, $$5, 120, 32);
          } else {
-            this.a($$0, $$1, $$10, () -> this.a($$0, $$1, $$2, false));
-            $$6.close();
-            a($$4, $$1);
-         }
-      }
-   }
-
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.b.a(new etk($$0::complete, sw.c("multiplayer.texturePrompt.failure.line1"), sw.c("multiplayer.texturePrompt.failure.line2"), sv.i, sv.e));
-      return $$0;
-   }
-
-   private static void a(dyy.c $$0, String $$1) {
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         a.warn("Failed to unlock access to level {}", $$1, var3);
-      }
-   }
-
-   private void a(euq $$0, String $$1, boolean $$2, Runnable $$3) {
-      sw $$4;
-      sw $$5;
-      if ($$2) {
-         $$4 = sw.c("selectWorld.backupQuestion.customized");
-         $$5 = sw.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = sw.c("selectWorld.backupQuestion.experimental");
-         $$5 = sw.c("selectWorld.backupWarning.experimental");
-      }
-
-      this.b.a(new etf($$0, ($$2x, $$3x) -> {
-         if ($$2x) {
-            ezc.a(this.c, $$1);
+            $$0.a(y, $$1, $$5, 32, 32);
          }
 
-         $$3.run();
-      }, $$4, $$5, false));
+         $$5 += $$2;
+      }
    }
 
-   public static void a(enn $$0, eza $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new etk($$5, sw.c("selectWorld.warning.experimental.title"), sw.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new etk($$5, sw.c("selectWorld.warning.deprecated.title"), sw.c("selectWorld.warning.deprecated.question")));
+   private void b(erx $$0, int $$1, int $$2, Iterable<bht> $$3, boolean $$4) {
+      fze $$5 = this.f.aE();
+      int $$6 = this.u;
+
+      for (bht $$7 : $$3) {
+         bhr $$8 = $$7.c();
+         fyg $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
       }
+   }
+
+   private void a(erx $$0, int $$1, int $$2, Iterable<bht> $$3) {
+      int $$4 = this.u;
+
+      for (bht $$5 : $$3) {
+         te $$6 = this.a($$5);
+         $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         te $$7 = bhu.a($$5, 1.0F);
+         $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private te a(bht $$0) {
+      tr $$1 = $$0.c().e().e();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(td.u).b(te.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

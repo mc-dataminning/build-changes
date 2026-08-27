@@ -1,44 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agi {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.b("Target not reached"));
+
    public static void a(CommandDispatcher<ds> $$0) {
-      RequiredArgumentBuilder<ds, ga> $$1 = (RequiredArgumentBuilder<ds, ga>)((RequiredArgumentBuilder)dt.a("targets", ec.d())
-            .executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), null, null)))
-         .then(dt.a("*").then(dt.a("sound", eq.a()).suggests(gk.c).executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), null, eq.e($$0x, "sound")))));
-
-      for (ami $$2 : ami.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)dt.a($$2.a()).executes($$1x -> a((ds)$$1x.getSource(), ec.f($$1x, "targets"), $$2, null)))
-               .then(dt.a("sound", eq.a()).suggests(gk.c).executes($$1x -> a((ds)$$1x.getSource(), ec.f($$1x, "targets"), $$2, eq.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dt.a("to", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "to"))))
+      );
    }
 
-   private static int a(ds $$0, Collection<aig> $$1, @Nullable ami $$2, @Nullable acq $$3) {
-      yn $$4 = new yn($$3, $$2);
-
-      for (aig $$5 : $$1) {
-         $$5.c.a($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> sw.a("commands.stopsound.success.source.sound", $$3, $$2.a()), true);
-         } else {
-            $$0.a(() -> sw.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> sw.a("commands.stopsound.success.sourceless.sound", $$3), true);
+   private static int a(ds $$0, gv $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof biy $$3)) {
+         throw a.create();
       } else {
-         $$0.a(() -> sw.c("commands.stopsound.success.sourceless.any"), true);
+         bsg $$4 = new bsf($$3, $$0.e());
+         eaq $$5 = $$4.a($$1, 0);
+         aau.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> te.b("Made path"), true);
+            return 1;
+         }
       }
-
-      return $$1.size();
    }
 }

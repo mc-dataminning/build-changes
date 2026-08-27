@@ -1,56 +1,110 @@
-public class dkn extends dko<dmz> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final gu an = gu.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   public static gu a(gu $$0) {
-      return an.a((hz)$$0);
+public record dkn(dka b, dka c, dka d, dka e, dka f, dka g, dka h, dka i, dka j, dka k, dka l, dka m, dka n, dka o, dka p) {
+   public static final Codec<dkn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dkn::a),
+               a("fluid_level_floodedness", dkn::b),
+               a("fluid_level_spread", dkn::c),
+               a("lava", dkn::d),
+               a("temperature", dkn::e),
+               a("vegetation", dkn::f),
+               a("continents", dkn::g),
+               a("erosion", dkn::h),
+               a("depth", dkn::i),
+               a("ridges", dkn::j),
+               a("initial_density_without_jaggedness", dkn::k),
+               a("final_density", dkn::l),
+               a("vein_toggle", dkn::m),
+               a("vein_ridged", dkn::n),
+               a("vein_gap", dkn::o)
+            )
+            .apply($$0, dkn::new)
+   );
+
+   private static RecordCodecBuilder<dkn, dka> a(String $$0, Function<dkn, dka> $$1) {
+      return dka.d.fieldOf($$0).forGetter($$1);
    }
 
-   public dkn(boolean $$0) {
-      super(dmz.a);
-      this.ao = $$0;
+   public dkn a(dka.f $$0) {
+      return new dkn(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   @Override
-   public boolean a(dkq<dmz> $$0) {
-      gu $$1 = $$0.e();
-      cng $$2 = $$0.b();
+   public dka a() {
+      return this.b;
+   }
 
-      for (gu $$3 : gu.a(new gu($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new gu($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cpo.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cpo.fz.n());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cpo.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, cpo.F.n());
-            } else if (this.ao) {
-               this.a($$2, new gu($$3), cpo.fx.n());
-            } else {
-               this.a($$2, new gu($$3), cpo.a.n());
-            }
-         }
-      }
+   public dka b() {
+      return this.c;
+   }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cpo.F.n());
-      }
+   public dka c() {
+      return this.d;
+   }
 
-      gu $$6 = $$1.b(2);
+   public dka d() {
+      return this.e;
+   }
 
-      for (ha $$7 : ha.c.a) {
-         this.a($$2, $$6.a($$7), cpo.cq.n().a(cyn.a, $$7));
-      }
+   public dka e() {
+      return this.f;
+   }
 
-      return true;
+   public dka f() {
+      return this.g;
+   }
+
+   public dka g() {
+      return this.h;
+   }
+
+   public dka h() {
+      return this.i;
+   }
+
+   public dka i() {
+      return this.j;
+   }
+
+   public dka j() {
+      return this.k;
+   }
+
+   public dka k() {
+      return this.l;
+   }
+
+   public dka l() {
+      return this.m;
+   }
+
+   public dka m() {
+      return this.n;
+   }
+
+   public dka n() {
+      return this.o;
+   }
+
+   public dka o() {
+      return this.p;
    }
 }

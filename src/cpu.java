@@ -1,36 +1,50 @@
-public class cpu extends col {
-   public static final int a = 5;
-   private static final ha[] b = ha.values();
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-   public cpu(dca.d $$0) {
-      super($$0);
+public class cpu {
+   private final Long2ObjectMap<List<akj>> a = new Long2ObjectOpenHashMap();
+   private final Map<akj, cpu.a> b = Maps.newHashMap();
+   private final ajt c;
+
+   public cpu(ajt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$3.a(5) == 0) {
-         ha $$4 = b[$$3.a(b.length)];
-         gu $$5 = $$2.a($$4);
-         dcb $$6 = $$1.a_($$5);
-         cpn $$7 = null;
-         if (g($$6)) {
-            $$7 = cpo.qy;
-         } else if ($$6.a(cpo.qy) && $$6.c(com.b) == $$4) {
-            $$7 = cpo.qx;
-         } else if ($$6.a(cpo.qx) && $$6.c(com.b) == $$4) {
-            $$7 = cpo.qw;
-         } else if ($$6.a(cpo.qw) && $$6.c(com.b) == $$4) {
-            $$7 = cpo.qv;
-         }
+   private List<akj> a(cor $$0) {
+      return (List<akj>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   }
 
-         if ($$7 != null) {
-            dcb $$8 = $$7.n().a(com.b, $$4).a(com.a, Boolean.valueOf($$6.u().a() == dxf.c));
-            $$1.b($$5, $$8);
-         }
+   public void a(cor $$0, biz $$1) {
+      for (akj $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new cpu.a()).a($$1);
       }
    }
 
-   public static boolean g(dcb $$0) {
-      return $$0.i() || $$0.a(cpo.G) && $$0.u().e() == 8;
+   public boolean a(biz $$0, cor $$1) {
+      for (akj $$2 : this.a($$1)) {
+         cpu.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<biz> a = new Object2IntOpenHashMap(biz.values().length);
+
+      public void a(biz $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(biz $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

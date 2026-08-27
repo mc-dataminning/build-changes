@@ -1,141 +1,55 @@
-import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class ded {
-   public static final int a = 16;
-   public static final int b = 128;
-   public static final int c = 2048;
-   private static final int e = 4;
-   @Nullable
-   protected byte[] d;
-   private int f;
-
-   public ded() {
-      this(0);
-   }
-
-   public ded(int $$0) {
-      this.f = $$0;
-   }
-
-   public ded(byte[] $$0) {
-      this.d = $$0;
-      this.f = 0;
-      if ($$0.length != 2048) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
-      }
-   }
-
-   public int a(int $$0, int $$1, int $$2) {
-      return this.d(b($$0, $$1, $$2));
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(b($$0, $$1, $$2), $$3);
-   }
-
-   private static int b(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
-   }
-
-   private int d(int $$0) {
-      if (this.d == null) {
-         return this.f;
-      } else {
-         int $$1 = f($$0);
-         int $$2 = e($$0);
-         return this.d[$$1] >> 4 * $$2 & 15;
-      }
-   }
-
-   private void a(int $$0, int $$1) {
-      byte[] $$2 = this.a();
-      int $$3 = f($$0);
-      int $$4 = e($$0);
-      int $$5 = ~(15 << 4 * $$4);
-      int $$6 = ($$1 & 15) << 4 * $$4;
-      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
-   }
-
-   private static int e(int $$0) {
-      return $$0 & 1;
-   }
-
-   private static int f(int $$0) {
-      return $$0 >> 1;
-   }
-
-   public void a(int $$0) {
-      this.f = $$0;
-      this.d = null;
-   }
-
-   private static byte g(int $$0) {
-      byte $$1 = (byte)$$0;
-
-      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
-         $$1 = (byte)($$1 | $$0 << $$2);
-      }
-
-      return $$1;
-   }
-
-   public byte[] a() {
-      if (this.d == null) {
-         this.d = new byte[2048];
-         if (this.f != 0) {
-            Arrays.fill(this.d, g(this.f));
-         }
-      }
-
-      return this.d;
-   }
-
-   public ded b() {
-      return this.d == null ? new ded(this.f) : new ded((byte[])this.d.clone());
-   }
-
+public abstract class ded extends dee {
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-
-      for (int $$1 = 0; $$1 < 4096; $$1++) {
-         $$0.append(Integer.toHexString(this.d($$1)));
-         if (($$1 & 15) == 15) {
-            $$0.append("\n");
-         }
-
-         if (($$1 & 0xFF) == 255) {
-            $$0.append("\n");
+   public boolean a(aki $$0, dgv $$1, gv $$2, dey $$3, art $$4) {
+      for (int $$5 = 0; $$5 >= -1; $$5--) {
+         for (int $$6 = 0; $$6 >= -1; $$6--) {
+            if (a($$3, $$0, $$2, $$5, $$6)) {
+               return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            }
          }
       }
 
-      return $$0.toString();
+      return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @aqa
-   public String b(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
+   @Nullable
+   protected abstract aeo<dmy<?, ?>> a(art var1);
 
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         $$1.append(Integer.toHexString(this.d($$2)));
-         if (($$2 & 15) == 15) {
-            $$1.append("\n");
+   public boolean a(aki $$0, dgv $$1, gv $$2, dey $$3, art $$4, int $$5, int $$6) {
+      aeo<dmy<?, ?>> $$7 = this.a($$4);
+      if ($$7 == null) {
+         return false;
+      } else {
+         hf<dmy<?, ?>> $$8 = $$0.B_().d(jd.as).b($$7).orElse(null);
+         if ($$8 == null) {
+            return false;
+         } else {
+            dmy<?, ?> $$9 = $$8.a();
+            dey $$10 = csl.a.n();
+            $$0.a($$2.b($$5, 0, $$6), $$10, 4);
+            $$0.a($$2.b($$5 + 1, 0, $$6), $$10, 4);
+            $$0.a($$2.b($$5, 0, $$6 + 1), $$10, 4);
+            $$0.a($$2.b($$5 + 1, 0, $$6 + 1), $$10, 4);
+            if ($$9.a($$0, $$1, $$4, $$2.b($$5, 0, $$6))) {
+               return true;
+            } else {
+               $$0.a($$2.b($$5, 0, $$6), $$3, 4);
+               $$0.a($$2.b($$5 + 1, 0, $$6), $$3, 4);
+               $$0.a($$2.b($$5, 0, $$6 + 1), $$3, 4);
+               $$0.a($$2.b($$5 + 1, 0, $$6 + 1), $$3, 4);
+               return false;
+            }
          }
       }
-
-      return $$1.toString();
    }
 
-   public boolean c() {
-      return this.d == null;
-   }
-
-   public boolean c(int $$0) {
-      return this.d == null && this.f == $$0;
-   }
-
-   public boolean d() {
-      return this.d == null && this.f == 0;
+   public static boolean a(dey $$0, coq $$1, gv $$2, int $$3, int $$4) {
+      csk $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 }

@@ -1,116 +1,183 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class eyg {
-   private final hs a;
-   private final List<cjc<?>> b;
-   private final boolean c;
-   private final Set<cjc<?>> d = Sets.newHashSet();
-   private final Set<cjc<?>> e = Sets.newHashSet();
-   private final Set<cjc<?>> f = Sets.newHashSet();
+   private final eqn a;
+   private final eyk b;
+   private final eyh c;
+   private final int d;
+   private final ae e;
+   private final an f;
+   private final ciw g;
+   private final te h;
+   private final eyi i;
+   private final Map<ae, eyi> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public eyg(hs $$0, List<cjc<?>> $$1) {
+   public eyg(eqn $$0, eyk $$1, eyh $$2, int $$3, ae $$4, an $$5) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
-      } else {
-         this.c = a($$0, $$1);
-      }
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new eyi(this, $$0, $$4, $$5);
+      this.a(this.i, $$4);
    }
 
-   private static boolean a(hs $$0, List<cjc<?>> $$1) {
-      int $$2 = $$1.size();
-      cfz $$3 = $$1.get(0).a($$0);
-
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cfz $$5 = $$1.get($$4).a($$0);
-         if (!cfz.c($$3, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public hs a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public void a(amk $$0) {
-      for (cjc<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
-   }
-
-   public void a(bys $$0, int $$1, int $$2, amk $$3) {
-      for (cjc<?> $$4 : this.b) {
-         boolean $$5 = $$4.a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4, null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(cjc<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<cjc<?>> e() {
-      return this.b;
-   }
-
-   public List<cjc<?>> a(boolean $$0) {
-      List<cjc<?>> $$1 = Lists.newArrayList();
-      Set<cjc<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (cjc<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
-      }
-
-      return $$1;
-   }
-
-   public List<cjc<?>> b(boolean $$0) {
-      List<cjc<?>> $$1 = Lists.newArrayList();
-
-      for (cjc<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean f() {
+   public eyh a() {
       return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ae c() {
+      return this.e;
+   }
+
+   public te d() {
+      return this.h;
+   }
+
+   public an e() {
+      return this.f;
+   }
+
+   public void a(erx $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(erx $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(erx $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      aep $$3 = Objects.requireNonNullElse(this.f.d(), fyh.a);
+      int $$4 = aro.a(this.k);
+      int $$5 = aro.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
+      }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
+
+   public void a(erx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, aro.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = aro.a(this.k);
+      int $$7 = aro.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (eyi $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
+
+      $$0.c().b();
+      if ($$5) {
+         this.q = aro.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = aro.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static eyg a(eqn $$0, eyk $$1, int $$2, ae $$3) {
+      if ($$3.d() == null) {
+         return null;
+      } else {
+         for (eyh $$4 : eyh.values()) {
+            if ($$2 < $$4.a()) {
+               return new eyg($$0, $$1, $$4, $$2, $$3, $$3.d());
+            }
+
+            $$2 -= $$4.a();
+         }
+
+         return null;
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = aro.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = aro.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
+   public void a(ae $$0) {
+      if ($$0.d() != null) {
+         eyi $$1 = new eyi(this, this.a, $$0, $$0.d());
+         this.a($$1, $$0);
+      }
+   }
+
+   private void a(eyi $$0, ae $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (eyi $$6 : this.j.values()) {
+         $$6.b();
+      }
+   }
+
+   @Nullable
+   public eyi b(ae $$0) {
+      return this.j.get($$0);
+   }
+
+   public eyk f() {
+      return this.b;
    }
 }

@@ -1,110 +1,34 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenCustomHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
-
-public class fxa implements fwr {
-   private final List<Pair<Predicate<dcb>, fwr>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final fuv d;
-   protected final fld e;
-   protected final flb f;
-   private final Map<dcb, BitSet> h = new Object2ObjectOpenCustomHashMap(ac.k());
-
-   public fxa(List<Pair<Predicate<dcb>, fwr>> $$0) {
-      this.g = $$0;
-      fwr $$1 = (fwr)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+public abstract class fxa<T extends biw, M extends ffp<T>> extends fwr<T, M> {
+   public fxa(ftk<T, M> $$0) {
+      super($$0);
    }
 
-   @Override
-   public List<fkr> a(@Nullable dcb $$0, @Nullable ha $$1, apf $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
+   protected abstract int a(T var1);
 
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dcb>, fwr> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
+   protected abstract void a(elh var1, fng var2, int var3, big var4, float var5, float var6, float var7, float var8);
 
-            this.h.put($$0, $$3);
+   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      art $$11 = art.a((long)$$3.ah());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fhj $$13 = this.c().a($$11);
+            fhj.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = aro.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = aro.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = aro.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
-
-         List<fkr> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((fwr)this.g.get($$8).getRight()).a($$0, $$1, apf.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public fuv e() {
-      return this.d;
-   }
-
-   @Override
-   public fld f() {
-      return this.e;
-   }
-
-   @Override
-   public flb g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<dcb>, fwr>> a = Lists.newArrayList();
-
-      public void a(Predicate<dcb> $$0, fwr $$1) {
-         this.a.add(Pair.of($$0, $$1));
-      }
-
-      public fwr a() {
-         return new fxa(this.a);
       }
    }
 }

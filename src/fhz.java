@@ -1,69 +1,93 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fhz extends fhm {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+public class fhz {
+   private static final Logger a = LogUtils.getLogger();
+   private final eqn b;
+   private final gdf c;
+   private final af d = new af();
+   private final Map<ae, ag> e = Maps.newHashMap();
+   @Nullable
+   private fhz.a f;
+   @Nullable
+   private ae g;
 
-   protected fhz(few $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+   public fhz(eqn $$0, gdf $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected fhz(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public void a(ein $$0, emz $$1, float $$2) {
-      eei $$3 = $$1.b();
-      float $$4 = (float)(apa.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(apa.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(apa.d((double)$$2, this.f, this.i) - $$3.c());
-      Quaternionf $$7;
-      if (this.z == 0.0F) {
-         $$7 = $$1.f();
-      } else {
-         $$7 = new Quaternionf($$1.f());
-         $$7.rotateZ(apa.i($$2, this.A, this.z));
+   public void a(aao $$0) {
+      if ($$0.f()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
+      this.d.a($$0.d());
+      this.d.a($$0.a());
 
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$7);
-         $$12.mul($$10);
-         $$12.add($$4, $$5, $$6);
+      for (Entry<aep, ag> $$1 : $$0.e().entrySet()) {
+         ae $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ag $$3 = $$1.getValue();
+            $$3.a($$2.h(), $$2.k());
+            this.e.put($$2, $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.f() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2);
+               }
+
+               if ($$2.d() != null && $$2.d().h()) {
+                  this.b.ay().a(new eug($$2));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
+   }
+
+   public af a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ae $$0, boolean $$1) {
+      fif $$2 = this.b.I();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(acd.a($$0));
       }
 
-      float $$13 = this.c();
-      float $$14 = this.d();
-      float $$15 = this.e();
-      float $$16 = this.f();
-      int $$17 = this.a($$2);
-      $$0.a((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z()).a($$14, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z()).a($$13, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z()).a($$13, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.e($$0);
+         }
+      }
    }
 
-   public float b(float $$0) {
-      return this.D;
+   public void a(@Nullable fhz.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         for (Entry<ae, ag> $$1 : this.e.entrySet()) {
+            $$0.a($$1.getKey(), $$1.getValue());
+         }
+
+         $$0.e(this.g);
+      }
    }
 
-   @Override
-   public fhm d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public interface a extends af.a {
+      void a(ae var1, ag var2);
+
+      void e(@Nullable ae var1);
    }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
 }

@@ -1,15 +1,91 @@
-public abstract class um<T extends sk> implements uo<T> {
-   private final Iterable<uo<T>> a;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   protected um(Iterable<uo<T>> $$0) {
-      this.a = $$0;
+public class um implements tf {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   @Nullable
+   private final gb e;
+   protected final Optional<te> b;
+
+   public um(String $$0, Optional<te> $$1) {
+      this.d = $$0;
+      this.b = $$1;
+      this.e = a($$0);
    }
 
-   public final Iterable<uo<T>> a() {
-      return this.a;
+   @Nullable
+   private static gb a(String $$0) {
+      gb $$1 = null;
+
+      try {
+         gc $$2 = new gc(new StringReader($$0));
+         $$1 = $$2.t();
+      } catch (CommandSyntaxException var3) {
+         c.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+      }
+
+      return $$1;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   @Nullable
+   public gb b() {
+      return this.e;
+   }
+
+   public Optional<te> c() {
+      return this.b;
    }
 
    @Override
-   public final void a(sf $$0) {
+   public tr a(@Nullable ds $$0, @Nullable big $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.e != null) {
+         Optional<? extends te> $$3 = tg.a($$0, this.b, $$1, $$2);
+         return tg.a(this.e.b($$0), $$3, big::H_);
+      } else {
+         return te.h();
+      }
+   }
+
+   @Override
+   public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
+      return $$0.accept($$1, this.d);
+   }
+
+   @Override
+   public <T> Optional<T> a(ti.a<T> $$0) {
+      return $$0.accept(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof um $$1 && this.d.equals($$1.d) && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "pattern{" + this.d + "}";
    }
 }

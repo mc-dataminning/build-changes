@@ -1,4 +1,8 @@
-public enum bdw {
-   a,
-   b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bdw {
 }

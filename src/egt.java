@@ -1,3 +1,8 @@
-public interface egt {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egt {
 }

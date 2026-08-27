@@ -1,41 +1,32 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+public class abn implements uw<aav> {
+   private final int a;
+   private final int b;
 
-public class abn implements uo<abk> {
-   private final byte[] a;
-   private final byte[] b;
-
-   public abn(SecretKey $$0, PublicKey $$1, byte[] $$2) throws aoa {
-      this.a = anz.a($$1, $$0.getEncoded());
-      this.b = anz.a($$1, $$2);
+   public abn(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public abn(sf $$0) {
-      this.a = $$0.b();
-      this.b = $$0.b();
+   public abn(sh $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(abk $$0) {
+   public void a(aav $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws aoa {
-      return anz.a($$0, this.a);
+   public int a() {
+      return this.a;
    }
 
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, anz.b($$1, this.b));
-      } catch (aoa var4) {
-         return false;
-      }
+   public int d() {
+      return this.b;
    }
 }

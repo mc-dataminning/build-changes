@@ -1,38 +1,25 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+class bhn extends bhr {
+   protected bhn(bhs $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public class bhn {
-   public static bhs<byb> a() {
-      return bld.a(
-         (Function<bld.b<byb>, ? extends App<bld.c<byb>, blg<byb>>>)($$0 -> $$0.group($$0.b(bpb.d), $$0.a(bpb.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        hd $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dg(), 2.0) && !$$4.gi()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gj().b() != bye.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.n();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
-                                 .flatMap($$0xxx -> jb.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gj().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public void a(biw $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof akj $$2 && !$$0.G_()) {
+         aki $$3 = $$2.x();
+         if ($$3.ai() == bgl.a) {
+            return;
+         }
+
+         if ($$3.b($$0.dk())) {
+            $$3.x().a($$2);
+         }
+      }
    }
 }

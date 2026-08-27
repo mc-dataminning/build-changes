@@ -1,88 +1,53 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class crq {
-   public static <S extends czn> crq.c<S> a(
-      czp<S> $$0, Function<dcb, crq.a> $$1, Function<dcb, ha> $$2, dcv $$3, dcb $$4, cmn $$5, gu $$6, BiPredicate<cmn, gu> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return crq.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return crq.b::b;
-      } else {
-         crq.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == crq.a.a;
-         boolean $$11 = $$9 == crq.a.b;
-         if ($$10) {
-            return new crq.c.b<>($$8);
-         } else {
-            gu $$12 = $$6.a($$2.apply($$4));
-            dcb $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               crq.a $$14 = $$1.apply($$13);
-               if ($$14 != crq.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return crq.b::b;
-                  }
+public class crq extends crb {
+   public static final dfy a = dfo.ba;
+   private static final Map<chk, csk> b = Maps.newHashMap();
+   private static final ehy c = csk.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new crq.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new crq.c.b<>($$8);
-         }
-      }
+   public crq(chk $$0, dex.d $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      b.put($$0, this);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return c;
    }
 
-   public interface c<S> {
-      <T> T apply(crq.b<? super S, T> var1);
+   @Override
+   public dey a(cle $$0) {
+      return this.n().a(a, Integer.valueOf(dge.a($$0.i() + 180.0F)));
+   }
 
-      public static final class a<S> implements crq.c<S> {
-         private final S a;
-         private final S b;
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return $$1 == hb.a && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   }
 
-         @Override
-         public <T> T apply(crq.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
-      }
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   }
 
-      public static final class b<S> implements crq.c<S> {
-         private final S a;
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a);
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
-
-         @Override
-         public <T> T apply(crq.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   public static csk a(chk $$0) {
+      return b.getOrDefault($$0, csl.iJ);
    }
 }

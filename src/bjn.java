@@ -1,15 +1,13 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bjn<E extends bfz> extends bif<E> {
-   public bjn(List<Pair<? extends bhs<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
+public interface bjn {
+   boolean g();
+
+   void a(@Nullable aov var1);
+
+   default aot R_() {
+      return aou.lo;
    }
 
-   public bjn(Map<bpb<?>, bpc> $$0, List<Pair<? extends bhs<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bif.a.b, bif.b.a, $$1);
-   }
+   boolean i();
 }

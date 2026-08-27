@@ -1,23 +1,25 @@
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
 
-public interface lo {
-   void a(JsonObject var1);
-
-   default JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("type", jb.u.b(this.c()).toString());
-      this.a($$0);
-      return $$0;
+public abstract class lo {
+   protected static clp a(lr $$0) {
+      return switch ($$0) {
+         case a -> clp.a;
+         case e, f -> clp.c;
+         case c -> clp.b;
+         default -> clp.d;
+      };
    }
 
-   acq b();
+   protected abstract static class a implements lp {
+      private final clp a;
 
-   cje<?> c();
+      protected a(clp $$0) {
+         this.a = $$0;
+      }
 
-   @Nullable
-   JsonObject d();
-
-   @Nullable
-   acq e();
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.addProperty("category", this.a.c());
+      }
+   }
 }

@@ -1,49 +1,49 @@
-public class fgm extends fim {
-   fgm(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import java.util.Arrays;
+
+public class fgm<T extends big> extends fet<T> {
+   private final fhj[] a = new fhj[8];
+   private final fhj b;
+
+   public fgm(fhj $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   }
+
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhn $$2 = new fhn(0.02F);
+      int $$3 = -16;
+      $$1.a("body", fho.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fhl.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      fho $$5 = fho.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, fhl.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      }
+
+      return fhp.a($$0, 64, 32);
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(gu.a(this.g, this.h, this.i)).a(anb.a)) {
-            this.k();
-         }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (fhj $$6 : this.a) {
+         $$6.e = $$3;
       }
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
-   }
-
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgm $$8 = new fgm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public fhj a() {
+      return this.b;
    }
 }

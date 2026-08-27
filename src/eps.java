@@ -1,68 +1,62 @@
-public class eps extends epb {
-   private final eov a;
-   private final eqa b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public eps(int $$0, int $$1, int $$2, int $$3, sw $$4, eov $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new eqa(0, 0, $$4, $$5).i(this.k() - this.b());
-   }
+public class eps extends epn {
+   private static final Logger c = LogUtils.getLogger();
+   private final emd d;
+   private final long e;
+   private final eny f;
 
-   public eps a(int $$0) {
-      this.b.h($$0);
-      return this;
-   }
-
-   @Override
-   public void d(int $$0) {
-      super.d($$0);
-      this.b.i(this.k() - this.b());
+   public eps(emd $$0, long $$1, eny $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected int f() {
-      return this.b.h();
-   }
+   public void run() {
+      this.b(te.c("mco.backup.restoring"));
+      elx $$0 = elx.a();
+      int $$1 = 0;
 
-   @Override
-   protected double g() {
-      return 9.0;
-   }
+      while ($$1 < 25) {
+         try {
+            if (this.c()) {
+               return;
+            }
 
-   @Override
-   protected void b(eox $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aB_()) {
-         this.a($$0, this.p() - this.a(), this.r() - this.a(), this.k() + this.b(), this.h() + this.b());
-      }
-   }
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.c()) {
+               return;
+            }
 
-   @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
-      if (this.s) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.p(), (float)this.r(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
+            a(this.f.f());
+            return;
+         } catch (enl var4) {
+            if (this.c()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (enk var5) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't restore backup", var5);
+            a(new eoc(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
-   }
-
-   @Override
-   protected void c(eox $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.p() + this.a()), (float)(this.r() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(esp $$0) {
-      $$0.a(eso.a, this.l());
    }
 }

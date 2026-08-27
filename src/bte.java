@@ -1,47 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bte {
-   private static final float a = 2.0F;
-   private static final float b = 0.5F;
-   private static final float c = 1.25F;
+public class bte extends btc<bjf> {
+   public static final int a = 10;
+   private static final btj c = btj.b().a(10.0).d();
+   private final clw d;
 
-   protected static bha<?> a(bha<btd> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(bzz.a));
-      $$0.b(bzz.b);
-      $$0.f();
-      return $$0;
+   public bte(clw $$0) {
+      this.d = $$0;
    }
 
-   private static void b(bha<btd> $$0) {
-      $$0.a(bzz.a, 0, ImmutableList.of(new bhm(2.0F), new biw(45, 90), new bja(), new bhx(bpb.O)));
+   protected void a(aki $$0, bjf $$1) {
+      bjx<?> $$2 = $$1.dM();
+      List<cbl> $$3 = $$0.v()
+         .stream()
+         .filter(bij.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::f))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cbl $$4 = $$3.get(0);
+         $$2.a(bry.N, $$4);
+      } else {
+         $$2.b(bry.N);
+      }
    }
 
-   private static void c(bha<btd> $$0) {
-      $$0.a(
-         bzz.b,
-         ImmutableList.of(
-            Pair.of(0, bjq.a(bfn.bt, 6.0F, bdi.a(30, 60))),
-            Pair.of(1, new bie($$0x -> 1.25F)),
-            Pair.of(
-               2,
-               new bif(
-                  ImmutableMap.of(bpb.m, bpc.b),
-                  ImmutableSet.of(),
-                  bif.a.a,
-                  bif.b.b,
-                  ImmutableList.of(Pair.of(bji.c(0.5F), 2), Pair.of(bjx.a(0.5F, 3), 3), Pair.of(bld.a(bfj::aY), 5))
-               )
-            )
-         )
-      );
+   private boolean a(cbl $$0) {
+      return this.a($$0.eR()) || this.a($$0.eS());
    }
 
-   public static void a(btd $$0) {
-      $$0.dK().a(ImmutableList.of(bzz.b));
+   private boolean a(ciw $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public Set<bry<?>> a() {
+      return ImmutableSet.of(bry.N);
    }
 }

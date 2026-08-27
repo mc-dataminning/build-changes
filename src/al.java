@@ -1,13 +1,13 @@
 import com.google.gson.JsonObject;
 
 public interface al<T extends am> {
-   acq a();
+   aep a();
 
-   void a(acy var1, al.a<T> var2);
+   void a(aex var1, al.a<T> var2);
 
-   void b(acy var1, al.a<T> var2);
+   void b(aex var1, al.a<T> var2);
 
-   void a(acy var1);
+   void a(aex var1);
 
    T a(JsonObject var1, be var2);
 
@@ -26,7 +26,7 @@ public interface al<T extends am> {
          return this.a;
       }
 
-      public void a(acy $$0) {
+      public void a(aex $$0) {
          $$0.a(this.b, this.c);
       }
 

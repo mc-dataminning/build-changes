@@ -1,15 +1,14 @@
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-public class asj extends awe {
-   public asj(Schema $$0, boolean $$1) {
-      super("EntityElderGuardianSplitFix", $$0, $$1);
-   }
+@FunctionalInterface
+public interface asj {
+   long get(TimeUnit var1);
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
+   public interface a extends asj, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
    }
 }

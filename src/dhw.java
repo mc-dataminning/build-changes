@@ -1,60 +1,94 @@
-public class dhw implements clz {
-   private int a;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   @Override
-   public int a(aif $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.X().b(cmi.A)) {
-         return 0;
-      } else {
-         apf $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.v_() < 5 && $$0.x_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+public class dhw implements AutoCloseable {
+   public static final int c = 1493;
+   private final dhy a;
+   protected final DataFixer d;
+   @Nullable
+   private volatile dus b;
 
-               for (aig $$5 : $$0.v()) {
-                  if (!$$5.G_()) {
-                     gu $$6 = $$5.di();
-                     if (!$$0.x_().g() || $$6.v() >= $$0.t_() && $$0.g($$6)) {
-                        bdv $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           amn $$8 = $$5.D();
-                           int $$9 = apa.a($$8.a(amr.i.b(amr.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              gu $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dcb $$12 = $$0.a_($$11);
-                              dxe $$13 = $$0.b_($$11);
-                              if (cmx.a($$0, $$11, $$12, $$13, bfn.au)) {
-                                 bgt $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+   public dhw(Path $$0, DataFixer $$1, boolean $$2) {
+      this.d = $$1;
+      this.a = new dhy($$0, $$2, "chunk");
+   }
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    bwe $$17 = bfn.au.a((cmm)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bgd.a, $$14, null);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   public boolean a(cor $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-               return $$4;
+   public qs a(aeo<cpk> $$0, Supplier<ebr> $$1, qs $$2, Optional<aeo<Codec<? extends dgv>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = asq.c.a(this.d, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dus $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
+         }
+      }
+
+      a($$2, $$0, $$3);
+      $$2 = asq.c.a(this.d, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         re.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private dus a(aeo<cpk> $$0, Supplier<ebr> $$1) {
+      dus $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dus.a($$0, $$1.get());
             }
          }
       }
+
+      return $$2;
+   }
+
+   public static void a(qs $$0, aeo<cpk> $$1, Optional<aeo<Codec<? extends dgv>>> $$2) {
+      qs $$3 = new qs();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(qs $$0) {
+      return re.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<qs>> e(cor $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(cor $$0, qs $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public dhu p() {
+      return this.a;
    }
 }

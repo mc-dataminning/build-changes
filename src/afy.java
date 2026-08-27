@@ -1,503 +1,266 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collections;
 
 public class afy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.scoreboard.objectives.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.scoreboard.objectives.display.alreadyEmpty"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(sw.c("commands.scoreboard.objectives.display.alreadySet"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(sw.c("commands.scoreboard.players.enable.failed"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(sw.c("commands.scoreboard.players.enable.invalid"));
-   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> sw.a("commands.scoreboard.players.get.null", $$0, $$1));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> te.a("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(te.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(te.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(te.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(te.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(te.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(te.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(te.c("commands.bossbar.set.visibility.unchanged.visible"));
+   public static final SuggestionProvider<ds> a = ($$0, $$1) -> dv.a(((ds)$$0.getSource()).l().aJ().a(), $$1);
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("scoreboard").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("objectives")
-                                 .then(dt.a("list").executes($$0x -> b((ds)$$0x.getSource()))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                              "bossbar"
+                           )
+                           .requires($$0x -> $$0x.c(2)))
+                        .then(
+                           dt.a("add")
                               .then(
-                                 dt.a("add")
-                                    .then(
-                                       dt.a("objective", StringArgumentType.word())
+                                 dt.a("id", er.a()).then(dt.a("name", dz.a()).executes($$0x -> a((ds)$$0x.getSource(), er.e($$0x, "id"), dz.a($$0x, "name"))))
+                              )
+                        ))
+                     .then(dt.a("remove").then(dt.a("id", er.a()).suggests(a).executes($$0x -> e((ds)$$0x.getSource(), a($$0x))))))
+                  .then(dt.a("list").executes($$0x -> a((ds)$$0x.getSource()))))
+               .then(
+                  dt.a("set")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
+                                                "id", er.a()
+                                             )
+                                             .suggests(a)
+                                             .then(
+                                                dt.a("name").then(dt.a("name", dz.a()).executes($$0x -> a((ds)$$0x.getSource(), a($$0x), dz.a($$0x, "name"))))
+                                             ))
                                           .then(
-                                             ((RequiredArgumentBuilder)dt.a("criteria", ek.a())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ds)$$0x.getSource(),
-                                                            StringArgumentType.getString($$0x, "objective"),
-                                                            ek.a($$0x, "criteria"),
-                                                            sw.b(StringArgumentType.getString($$0x, "objective"))
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dt.a("displayName", dy.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               StringArgumentType.getString($$0x, "objective"),
-                                                               ek.a($$0x, "criteria"),
-                                                               dy.a($$0x, "displayName")
-                                                            )
-                                                      )
-                                                )
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                                                                     "color"
+                                                                  )
+                                                                  .then(dt.a("pink").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.a))))
+                                                               .then(dt.a("blue").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.b))))
+                                                            .then(dt.a("red").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.c))))
+                                                         .then(dt.a("green").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.d))))
+                                                      .then(dt.a("yellow").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.e))))
+                                                   .then(dt.a("purple").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.f))))
+                                                .then(dt.a("white").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.a.g)))
+                                          ))
+                                       .then(
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("style")
+                                                         .then(dt.a("progress").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.b.a))))
+                                                      .then(dt.a("notched_6").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.b.b))))
+                                                   .then(dt.a("notched_10").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.b.c))))
+                                                .then(dt.a("notched_12").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.b.d))))
+                                             .then(dt.a("notched_20").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bge.b.e)))
+                                       ))
+                                    .then(
+                                       dt.a("value")
+                                          .then(
+                                             dt.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((ds)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
                                           )
+                                    ))
+                                 .then(
+                                    dt.a("max")
+                                       .then(
+                                          dt.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((ds)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("visible")
+                                    .then(
+                                       dt.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((ds)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
                                     )
                               ))
                            .then(
-                              dt.a("modify")
-                                 .then(
-                                    ((RequiredArgumentBuilder)dt.a("objective", ej.a())
-                                          .then(
-                                             dt.a("displayname")
-                                                .then(
-                                                   dt.a("displayName", dy.a())
-                                                      .executes($$0x -> a((ds)$$0x.getSource(), ej.a($$0x, "objective"), dy.a($$0x, "displayName")))
-                                                )
-                                          ))
-                                       .then(a())
-                                 )
-                           ))
-                        .then(dt.a("remove").then(dt.a("objective", ej.a()).executes($$0x -> a((ds)$$0x.getSource(), ej.a($$0x, "objective"))))))
-                     .then(
-                        dt.a("setdisplay")
-                           .then(
-                              ((RequiredArgumentBuilder)dt.a("slot", eu.a()).executes($$0x -> a((ds)$$0x.getSource(), eu.a($$0x, "slot"))))
-                                 .then(dt.a("objective", ej.a()).executes($$0x -> a((ds)$$0x.getSource(), eu.a($$0x, "slot"), ej.a($$0x, "objective"))))
+                              ((LiteralArgumentBuilder)dt.a("players").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(dt.a("targets", ed.d()).executes($$0x -> a((ds)$$0x.getSource(), a($$0x), ed.d($$0x, "targets"))))
                            )
                      )
                ))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                          "players"
-                                       )
-                                       .then(
-                                          ((LiteralArgumentBuilder)dt.a("list").executes($$0x -> a((ds)$$0x.getSource())))
-                                             .then(dt.a("target", et.a()).suggests(et.a).executes($$0x -> a((ds)$$0x.getSource(), et.a($$0x, "target"))))
-                                       ))
-                                    .then(
-                                       dt.a("set")
-                                          .then(
-                                             dt.a("targets", et.b())
-                                                .suggests(et.a)
-                                                .then(
-                                                   dt.a("objective", ej.a())
-                                                      .then(
-                                                         dt.a("score", IntegerArgumentType.integer())
-                                                            .executes(
-                                                               $$0x -> a(
-                                                                     (ds)$$0x.getSource(),
-                                                                     et.c($$0x, "targets"),
-                                                                     ej.b($$0x, "objective"),
-                                                                     IntegerArgumentType.getInteger($$0x, "score")
-                                                                  )
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("get")
-                                       .then(
-                                          dt.a("target", et.a())
-                                             .suggests(et.a)
-                                             .then(
-                                                dt.a("objective", ej.a())
-                                                   .executes($$0x -> a((ds)$$0x.getSource(), et.a($$0x, "target"), ej.a($$0x, "objective")))
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("add")
-                                    .then(
-                                       dt.a("targets", et.b())
-                                          .suggests(et.a)
-                                          .then(
-                                             dt.a("objective", ej.a())
-                                                .then(
-                                                   dt.a("score", IntegerArgumentType.integer(0))
-                                                      .executes(
-                                                         $$0x -> b(
-                                                               (ds)$$0x.getSource(),
-                                                               et.c($$0x, "targets"),
-                                                               ej.b($$0x, "objective"),
-                                                               IntegerArgumentType.getInteger($$0x, "score")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              ))
-                           .then(
-                              dt.a("remove")
-                                 .then(
-                                    dt.a("targets", et.b())
-                                       .suggests(et.a)
-                                       .then(
-                                          dt.a("objective", ej.a())
-                                             .then(
-                                                dt.a("score", IntegerArgumentType.integer(0))
-                                                   .executes(
-                                                      $$0x -> c(
-                                                            (ds)$$0x.getSource(),
-                                                            et.c($$0x, "targets"),
-                                                            ej.b($$0x, "objective"),
-                                                            IntegerArgumentType.getInteger($$0x, "score")
-                                                         )
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           dt.a("reset")
-                              .then(
-                                 ((RequiredArgumentBuilder)dt.a("targets", et.b())
-                                       .suggests(et.a)
-                                       .executes($$0x -> a((ds)$$0x.getSource(), et.c($$0x, "targets"))))
-                                    .then(dt.a("objective", ej.a()).executes($$0x -> b((ds)$$0x.getSource(), et.c($$0x, "targets"), ej.a($$0x, "objective"))))
-                              )
-                        ))
-                     .then(
-                        dt.a("enable")
-                           .then(
-                              dt.a("targets", et.b())
-                                 .suggests(et.a)
-                                 .then(
-                                    dt.a("objective", ej.a())
-                                       .suggests(($$0x, $$1) -> a((ds)$$0x.getSource(), et.c($$0x, "targets"), $$1))
-                                       .executes($$0x -> a((ds)$$0x.getSource(), et.c($$0x, "targets"), ej.a($$0x, "objective")))
-                                 )
-                           )
-                     ))
+               dt.a("get")
                   .then(
-                     dt.a("operation")
-                        .then(
-                           dt.a("targets", et.b())
-                              .suggests(et.a)
-                              .then(
-                                 dt.a("targetObjective", ej.a())
-                                    .then(
-                                       dt.a("operation", el.a())
-                                          .then(
-                                             dt.a("source", et.b())
-                                                .suggests(et.a)
-                                                .then(
-                                                   dt.a("sourceObjective", ej.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               et.c($$0x, "targets"),
-                                                               ej.b($$0x, "targetObjective"),
-                                                               el.a($$0x, "operation"),
-                                                               et.c($$0x, "source"),
-                                                               ej.a($$0x, "sourceObjective")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("id", er.a())
+                                 .suggests(a)
+                                 .then(dt.a("value").executes($$0x -> a((ds)$$0x.getSource(), a($$0x)))))
+                              .then(dt.a("max").executes($$0x -> b((ds)$$0x.getSource(), a($$0x)))))
+                           .then(dt.a("visible").executes($$0x -> c((ds)$$0x.getSource(), a($$0x)))))
+                        .then(dt.a("players").executes($$0x -> d((ds)$$0x.getSource(), a($$0x))))
                   )
             )
       );
    }
 
-   private static LiteralArgumentBuilder<ds> a() {
-      LiteralArgumentBuilder<ds> $$0 = dt.a("rendertype");
-
-      for (efj.a $$1 : efj.a.values()) {
-         $$0.then(dt.a($$1.a()).executes($$1x -> a((ds)$$1x.getSource(), ej.a($$1x, "objective"), $$1)));
-      }
-
-      return $$0;
+   private static int a(ds $$0, afn $$1) {
+      $$0.a(() -> te.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      return $$1.c();
    }
 
-   private static CompletableFuture<Suggestions> a(ds $$0, Collection<String> $$1, SuggestionsBuilder $$2) {
-      List<String> $$3 = Lists.newArrayList();
-      efg $$4 = $$0.l().aF();
-
-      for (efd $$5 : $$4.c()) {
-         if ($$5.c() == efj.b) {
-            boolean $$6 = false;
-
-            for (String $$7 : $$1) {
-               if (!$$4.b($$7, $$5) || $$4.c($$7, $$5).g()) {
-                  $$6 = true;
-                  break;
-               }
-            }
-
-            if ($$6) {
-               $$3.add($$5.b());
-            }
-         }
-      }
-
-      return du.b($$3, $$2);
+   private static int b(ds $$0, afn $$1) {
+      $$0.a(() -> te.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      return $$1.d();
    }
 
-   private static int a(ds $$0, String $$1, efd $$2) throws CommandSyntaxException {
-      efg $$3 = $$0.l().aF();
-      if (!$$3.b($$1, $$2)) {
-         throw f.create($$2.b(), $$1);
+   private static int c(ds $$0, afn $$1) {
+      if ($$1.g()) {
+         $$0.a(() -> te.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         return 1;
       } else {
-         eff $$4 = $$3.c($$1, $$2);
-         $$0.a(() -> sw.a("commands.scoreboard.players.get.success", $$1, $$4.b(), $$2.e()), false);
-         return $$4.b();
+         $$0.a(() -> te.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
+         return 0;
       }
    }
 
-   private static int a(ds $$0, Collection<String> $$1, efd $$2, el.a $$3, Collection<String> $$4, efd $$5) throws CommandSyntaxException {
-      efg $$6 = $$0.l().aF();
-      int $$7 = 0;
+   private static int d(ds $$0, afn $$1) {
+      if ($$1.h().isEmpty()) {
+         $$0.a(() -> te.a("commands.bossbar.get.players.none", $$1.e()), true);
+      } else {
+         $$0.a(() -> te.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), tg.b($$1.h(), cbl::H_)), true);
+      }
 
-      for (String $$8 : $$1) {
-         eff $$9 = $$6.c($$8, $$2);
+      return $$1.h().size();
+   }
 
-         for (String $$10 : $$4) {
-            eff $$11 = $$6.c($$10, $$5);
-            $$3.apply($$9, $$11);
+   private static int a(ds $$0, afn $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.g() == $$2) {
+         if ($$2) {
+            throw k.create();
+         } else {
+            throw j.create();
+         }
+      } else {
+         $$1.d($$2);
+         if ($$2) {
+            $$0.a(() -> te.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+         } else {
+            $$0.a(() -> te.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
          }
 
-         $$7 += $$9.b();
+         return 0;
       }
-
-      if ($$1.size() == 1) {
-         int $$12 = $$7;
-         $$0.a(() -> sw.a("commands.scoreboard.players.operation.success.single", $$2.e(), $$1.iterator().next(), $$12), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.operation.success.multiple", $$2.e(), $$1.size()), true);
-      }
-
-      return $$7;
    }
 
-   private static int a(ds $$0, Collection<String> $$1, efd $$2) throws CommandSyntaxException {
-      if ($$2.c() != efj.b) {
+   private static int a(ds $$0, afn $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.c() == $$2) {
+         throw h.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> te.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int b(ds $$0, afn $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.d() == $$2) {
+         throw i.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> te.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int a(ds $$0, afn $$1, bge.a $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
+         throw f.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> te.a("commands.bossbar.set.color.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, afn $$1, bge.b $$2) throws CommandSyntaxException {
+      if ($$1.m().equals($$2)) {
+         throw g.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> te.a("commands.bossbar.set.style.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, afn $$1, te $$2) throws CommandSyntaxException {
+      te $$3 = tg.a($$0, $$2, null, 0);
+      if ($$1.j().equals($$3)) {
          throw e.create();
       } else {
-         efg $$3 = $$0.l().aF();
-         int $$4 = 0;
+         $$1.a($$3);
+         $$0.a(() -> te.a("commands.bossbar.set.name.success", $$1.e()), true);
+         return 0;
+      }
+   }
 
-         for (String $$5 : $$1) {
-            eff $$6 = $$3.c($$5, $$2);
-            if ($$6.g()) {
-               $$6.a(false);
-               $$4++;
-            }
-         }
-
-         if ($$4 == 0) {
-            throw d.create();
+   private static int a(ds $$0, afn $$1, Collection<akj> $$2) throws CommandSyntaxException {
+      boolean $$3 = $$1.a($$2);
+      if (!$$3) {
+         throw d.create();
+      } else {
+         if ($$1.h().isEmpty()) {
+            $$0.a(() -> te.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> sw.a("commands.scoreboard.players.enable.success.single", $$2.e(), $$1.iterator().next()), true);
-            } else {
-               $$0.a(() -> sw.a("commands.scoreboard.players.enable.success.multiple", $$2.e(), $$1.size()), true);
-            }
-
-            return $$4;
+            $$0.a(() -> te.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), tg.b($$2, cbl::H_)), true);
          }
+
+         return $$1.h().size();
       }
-   }
-
-   private static int a(ds $$0, Collection<String> $$1) {
-      efg $$2 = $$0.l().aF();
-
-      for (String $$3 : $$1) {
-         $$2.d($$3, null);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.scoreboard.players.reset.all.single", $$1.iterator().next()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.reset.all.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(ds $$0, Collection<String> $$1, efd $$2) {
-      efg $$3 = $$0.l().aF();
-
-      for (String $$4 : $$1) {
-         $$3.d($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.scoreboard.players.reset.specific.single", $$2.e(), $$1.iterator().next()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.reset.specific.multiple", $$2.e(), $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ds $$0, Collection<String> $$1, efd $$2, int $$3) {
-      efg $$4 = $$0.l().aF();
-
-      for (String $$5 : $$1) {
-         eff $$6 = $$4.c($$5, $$2);
-         $$6.b($$3);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.scoreboard.players.set.success.single", $$2.e(), $$1.iterator().next(), $$3), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.set.success.multiple", $$2.e(), $$1.size(), $$3), true);
-      }
-
-      return $$3 * $$1.size();
-   }
-
-   private static int b(ds $$0, Collection<String> $$1, efd $$2, int $$3) {
-      efg $$4 = $$0.l().aF();
-      int $$5 = 0;
-
-      for (String $$6 : $$1) {
-         eff $$7 = $$4.c($$6, $$2);
-         $$7.b($$7.b() + $$3);
-         $$5 += $$7.b();
-      }
-
-      if ($$1.size() == 1) {
-         int $$8 = $$5;
-         $$0.a(() -> sw.a("commands.scoreboard.players.add.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.add.success.multiple", $$3, $$2.e(), $$1.size()), true);
-      }
-
-      return $$5;
-   }
-
-   private static int c(ds $$0, Collection<String> $$1, efd $$2, int $$3) {
-      efg $$4 = $$0.l().aF();
-      int $$5 = 0;
-
-      for (String $$6 : $$1) {
-         eff $$7 = $$4.c($$6, $$2);
-         $$7.b($$7.b() - $$3);
-         $$5 += $$7.b();
-      }
-
-      if ($$1.size() == 1) {
-         int $$8 = $$5;
-         $$0.a(() -> sw.a("commands.scoreboard.players.remove.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.remove.success.multiple", $$3, $$2.e(), $$1.size()), true);
-      }
-
-      return $$5;
    }
 
    private static int a(ds $$0) {
-      Collection<String> $$1 = $$0.l().aF().e();
+      Collection<afn> $$1 = $$0.l().aJ().b();
       if ($$1.isEmpty()) {
-         $$0.a(() -> sw.c("commands.scoreboard.players.list.empty"), false);
+         $$0.a(() -> te.c("commands.bossbar.list.bars.none"), false);
       } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.list.success", $$1.size(), sy.a($$1)), false);
+         $$0.a(() -> te.a("commands.bossbar.list.bars.some", $$1.size(), tg.b($$1, afn::e)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(ds $$0, String $$1) {
-      Map<efd, eff> $$2 = $$0.l().aF().e($$1);
-      if ($$2.isEmpty()) {
-         $$0.a(() -> sw.a("commands.scoreboard.players.list.entity.empty", $$1), false);
+   private static int a(ds $$0, aep $$1, te $$2) throws CommandSyntaxException {
+      afo $$3 = $$0.l().aJ();
+      if ($$3.a($$1) != null) {
+         throw b.create($$1.toString());
       } else {
-         $$0.a(() -> sw.a("commands.scoreboard.players.list.entity.success", $$1, $$2.size()), false);
-
-         for (Entry<efd, eff> $$3 : $$2.entrySet()) {
-            $$0.a(() -> sw.a("commands.scoreboard.players.list.entity.entry", $$3.getKey().e(), $$3.getValue().b()), false);
-         }
+         afn $$4 = $$3.a($$1, tg.a($$0, $$2, null, 0));
+         $$0.a(() -> te.a("commands.bossbar.create.success", $$4.e()), true);
+         return $$3.b().size();
       }
-
-      return $$2.size();
    }
 
-   private static int a(ds $$0, int $$1) throws CommandSyntaxException {
-      efg $$2 = $$0.l().aF();
-      if ($$2.a($$1) == null) {
-         throw b.create();
+   private static int e(ds $$0, afn $$1) {
+      afo $$2 = $$0.l().aJ();
+      $$1.b();
+      $$2.a($$1);
+      $$0.a(() -> te.a("commands.bossbar.remove.success", $$1.e()), true);
+      return $$2.b().size();
+   }
+
+   public static afn a(CommandContext<ds> $$0) throws CommandSyntaxException {
+      aep $$1 = er.e($$0, "id");
+      afn $$2 = ((ds)$$0.getSource()).l().aJ().a($$1);
+      if ($$2 == null) {
+         throw c.create($$1.toString());
       } else {
-         $$2.a($$1, null);
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.display.cleared", efg.h()[$$1]), true);
-         return 0;
+         return $$2;
       }
-   }
-
-   private static int a(ds $$0, int $$1, efd $$2) throws CommandSyntaxException {
-      efg $$3 = $$0.l().aF();
-      if ($$3.a($$1) == $$2) {
-         throw c.create();
-      } else {
-         $$3.a($$1, $$2);
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.display.set", efg.h()[$$1], $$2.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ds $$0, efd $$1, sw $$2) {
-      if (!$$1.d().equals($$2)) {
-         $$1.a($$2);
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.e()), true);
-      }
-
-      return 0;
-   }
-
-   private static int a(ds $$0, efd $$1, efj.a $$2) {
-      if ($$1.f() != $$2) {
-         $$1.a($$2);
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.modify.rendertype", $$1.e()), true);
-      }
-
-      return 0;
-   }
-
-   private static int a(ds $$0, efd $$1) {
-      efg $$2 = $$0.l().aF();
-      $$2.j($$1);
-      $$0.a(() -> sw.a("commands.scoreboard.objectives.remove.success", $$1.e()), true);
-      return $$2.c().size();
-   }
-
-   private static int a(ds $$0, String $$1, efj $$2, sw $$3) throws CommandSyntaxException {
-      efg $$4 = $$0.l().aF();
-      if ($$4.d($$1) != null) {
-         throw a.create();
-      } else {
-         $$4.a($$1, $$2, $$3, $$2.f());
-         efd $$5 = $$4.d($$1);
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.add.success", $$5.e()), true);
-         return $$4.c().size();
-      }
-   }
-
-   private static int b(ds $$0) {
-      Collection<efd> $$1 = $$0.l().aF().c();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> sw.c("commands.scoreboard.objectives.list.empty"), false);
-      } else {
-         $$0.a(() -> sw.a("commands.scoreboard.objectives.list.success", $$1.size(), sy.b($$1, efd::e)), false);
-      }
-
-      return $$1.size();
    }
 }

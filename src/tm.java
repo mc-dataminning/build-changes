@@ -1,44 +1,72 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record tm(UUID a, byr b) {
-   public tr a() {
-      return new tr.a(this.b.a());
-   }
+public class tm {
+   private final int a;
+   private final ObjectList<tn> b = new ObjectArrayList();
+   @Nullable
+   private tp c;
 
-   public tp.b a(UUID $$0) {
-      return new tp($$0, this.a).a(this.b);
-   }
+   public tm(int $$0) {
+      this.a = $$0;
 
-   public tm.a b() {
-      return new tm.a(this.a, this.b.b());
-   }
-
-   public boolean c() {
-      return this.b.b().a();
-   }
-
-   public UUID d() {
-      return this.a;
-   }
-
-   public byr e() {
-      return this.b;
-   }
-
-   public static record a(UUID a, byr.a b) {
-      public static tm.a a(sf $$0) {
-         return new tm.a($$0.o(), new byr.a($$0));
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
+   }
 
-      public static void a(sf $$0, tm.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+   public void a(tp $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new tn($$0, true));
+         this.c = $$0;
       }
+   }
 
-      public tm a(GameProfile $$0, apj $$1, Duration $$2) throws byr.b {
-         return new tm(this.a, byr.a($$1, $$0.getId(), this.b, $$2));
+   public int a() {
+      return this.b.size();
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public Optional<tk> a(tk.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<tp> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               tn $$4 = (tn)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new tk($$1));
+         }
       }
    }
 }

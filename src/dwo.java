@@ -1,166 +1,80 @@
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
 public class dwo {
-   private static final int b = 16;
-   public static final int a = Integer.MIN_VALUE;
-   private final int c;
-   private final ans d;
-   private final gu.a e = new gu.a();
-   private final gu.a f = new gu.a();
+   public static final int a = 90;
+   static final aep b = new aep("igloo/top");
+   private static final aep c = new aep("igloo/middle");
+   private static final aep d = new aep("igloo/bottom");
+   static final Map<aep, gv> e = ImmutableMap.of(b, new gv(3, 5, 5), c, new gv(1, 3, 1), d, new gv(3, 6, 7));
+   static final Map<aep, gv> f = ImmutableMap.of(b, gv.b, c, new gv(2, -3, 4), d, new gv(0, -3, -2));
 
-   public dwo(cmo $$0) {
-      this.c = $$0.C_() - 1;
-      int $$1 = $$0.aj();
-      int $$2 = apa.e($$1 - this.c + 1);
-      this.d = new apl($$2, 256);
+   public static void a(dyr $$0, gv $$1, cyw $$2, dvc $$3, art $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new dwo.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new dwo.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new dwo.a($$0, b, $$1, $$2, 0));
    }
 
-   public void a(ddx $$0) {
-      int $$1 = $$0.a();
-      if ($$1 == -1) {
-         this.a(this.c);
-      } else {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
-               this.b(c($$3, $$2), $$4);
+   public static class a extends dvh {
+      public a(dyr $$0, aep $$1, gv $$2, cyw $$3, int $$4) {
+         super(dvo.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
+
+      public a(dyr $$0, qs $$1) {
+         super(dvo.I, $$1, $$0, $$1x -> a(cyw.valueOf($$1.l("Rot")), $$1x));
+      }
+
+      private static dym a(cyw $$0, aep $$1) {
+         return new dym().a($$0).a(cxf.a).a(dwo.e.get($$1)).a(dxs.b);
+      }
+
+      private static gv a(aep $$0, gv $$1, int $$2) {
+         return $$1.a(dwo.f.get($$0)).c($$2);
+      }
+
+      @Override
+      protected void a(dvn $$0, qs $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, gv $$1, cpz $$2, art $$3, dup $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, csl.a.n(), 3);
+            dck $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dcr) {
+               ((dcr)$$5).a(ecd.C, $$3.g());
             }
          }
       }
-   }
 
-   private int a(ddx $$0, int $$1, int $$2, int $$3) {
-      int $$4 = hx.c($$0.g($$1) + 1);
-      gu.a $$5 = this.e.d($$2, $$4, $$3);
-      gu.a $$6 = this.f.a($$5, ha.a);
-      dcb $$7 = cpo.a.n();
-
-      for (int $$8 = $$1; $$8 >= 0; $$8--) {
-         dej $$9 = $$0.b($$8);
-         if ($$9.c()) {
-            $$7 = cpo.a.n();
-            int $$10 = $$0.g($$8);
-            $$5.q(hx.c($$10));
-            $$6.q($$5.v() - 1);
-         } else {
-            for (int $$11 = 15; $$11 >= 0; $$11--) {
-               dcb $$12 = $$9.a($$2, $$11, $$3);
-               if (a($$0, $$5, $$7, $$6, $$12)) {
-                  return $$5.v();
-               }
-
-               $$7 = $$12;
-               $$5.g($$6);
-               $$6.c(ha.a);
+      @Override
+      public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, cor $$5, gv $$6) {
+         aep $$7 = new aep(this.a);
+         dym $$8 = a(this.c.d(), $$7);
+         gv $$9 = dwo.f.get($$7);
+         gv $$10 = this.d.a((ia)dyq.a($$8, new gv(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dkh.a.a, $$10.u(), $$10.w());
+         gv $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(dwo.b)) {
+            gv $$13 = this.d.a((ia)dyq.a($$8, new gv(3, 0, 5)));
+            dey $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(csl.cO)) {
+               $$0.a($$13, csl.dP.n(), 3);
             }
          }
+
+         this.d = $$12;
       }
-
-      return this.c;
-   }
-
-   public boolean a(cls $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 + 1;
-      int $$5 = c($$1, $$3);
-      int $$6 = this.b($$5);
-      if ($$4 < $$6) {
-         return false;
-      } else {
-         gu $$7 = this.e.d($$1, $$2 + 1, $$3);
-         dcb $$8 = $$0.a_($$7);
-         gu $$9 = this.f.d($$1, $$2, $$3);
-         dcb $$10 = $$0.a_($$9);
-         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return true;
-         } else {
-            gu $$11 = this.e.d($$1, $$2 - 1, $$3);
-            dcb $$12 = $$0.a_($$11);
-            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
-         }
-      }
-   }
-
-   private boolean a(cls $$0, int $$1, int $$2, gu $$3, dcb $$4, gu $$5, dcb $$6) {
-      int $$7 = $$3.v();
-      if (a($$0, $$3, $$4, $$5, $$6)) {
-         if ($$7 > $$2) {
-            this.b($$1, $$7);
-            return true;
-         }
-      } else if ($$7 == $$2) {
-         this.b($$1, this.a($$0, $$5, $$6));
-         return true;
-      }
-
-      return false;
-   }
-
-   private int a(cls $$0, gu $$1, dcb $$2) {
-      gu.a $$3 = this.e.g($$1);
-      gu.a $$4 = this.f.a($$1, ha.a);
-      dcb $$5 = $$2;
-
-      while ($$4.v() >= this.c) {
-         dcb $$6 = $$0.a_($$4);
-         if (a($$0, $$3, $$5, $$4, $$6)) {
-            return $$3.v();
-         }
-
-         $$5 = $$6;
-         $$3.g($$4);
-         $$4.c(ha.a);
-      }
-
-      return this.c;
-   }
-
-   private static boolean a(cls $$0, gu $$1, dcb $$2, gu $$3, dcb $$4) {
-      if ($$4.b($$0, $$3) != 0) {
-         return true;
-      } else {
-         efb $$5 = dwv.a($$0, $$1, $$2, ha.a);
-         efb $$6 = dwv.a($$0, $$3, $$4, ha.b);
-         return eey.b($$5, $$6);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = this.b(c($$0, $$1));
-      return this.c($$2);
-   }
-
-   public int a() {
-      int $$0 = Integer.MIN_VALUE;
-
-      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
-         int $$2 = this.d.a($$1);
-         if ($$2 > $$0) {
-            $$0 = $$2;
-         }
-      }
-
-      return this.c($$0 + this.c);
-   }
-
-   private void a(int $$0) {
-      int $$1 = $$0 - this.c;
-
-      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
-         this.d.b($$2, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      this.d.b($$0, $$1 - this.c);
-   }
-
-   private int b(int $$0) {
-      return this.d.a($$0) + this.c;
-   }
-
-   private int c(int $$0) {
-      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
    }
 }

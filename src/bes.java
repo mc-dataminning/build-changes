@@ -1,46 +1,88 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public record bes(String i) {
-   public static final bes a = new bes("generic");
-   public static final bes b = new bes("ladder");
-   public static final bes c = new bes("vines");
-   public static final bes d = new bes("weeping_vines");
-   public static final bes e = new bes("twisting_vines");
-   public static final bes f = new bes("scaffolding");
-   public static final bes g = new bes("other_climbable");
-   public static final bes h = new bes("water");
+public class bes implements bel {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bej> b = new ObjectOpenHashSet();
+   private final ber c = new ber();
 
-   public static bes a(dcb $$0) {
-      if ($$0.a(cpo.cO) || $$0.a(amw.P)) {
-         return b;
-      } else if ($$0.a(cpo.ff)) {
-         return c;
-      } else if ($$0.a(cpo.oz) || $$0.a(cpo.oA)) {
-         return d;
-      } else if ($$0.a(cpo.oB) || $$0.a(cpo.oC)) {
-         return e;
-      } else {
-         return $$0.a(cpo.nS) ? f : g;
+   public bes(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   @Nullable
-   public static bes a(bfz $$0) {
-      Optional<gu> $$1 = $$0.eD();
-      if ($$1.isPresent()) {
-         dcb $$2 = $$0.dI().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aV() ? h : null;
+   public static Set<bej> a() {
+      Builder<bej> $$0 = ImmutableSet.builder();
+
+      try {
+         bes.a $$1 = new bes.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bej.a("cpu#" + $$1x, bei.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
+
+      $$0.add(bej.a("heap MiB", bei.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bek.a.a());
+      return $$0.build();
    }
 
-   public String a() {
-      return "death.fell.accident." + this.i;
+   @Override
+   public Set<bej> a(Supplier<bdc> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 
-   public String b() {
-      return this.i;
+   public static bej a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bej.d $$3 = new bej.d(2.0F);
+      return bej.a("ticktime", bei.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
+
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
+      }
    }
 }

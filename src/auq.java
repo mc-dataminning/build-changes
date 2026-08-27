@@ -1,24 +1,10 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class auq extends DataFix {
-   public auq(Schema $$0) {
-      super($$0, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(avw.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
-            if ($$1.result().isPresent()) {
-               return $$0x;
-            } else {
-               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-               return $$0x.set("DragonFight", $$2);
-            }
-         }));
-   }
+public class auq {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

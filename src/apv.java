@@ -1,14 +1,35 @@
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
+import java.util.ArrayList;
+import java.util.List;
 
-@FunctionalInterface
-public interface apv {
-   long get(TimeUnit var1);
+public class apv {
+   private final List<apw> a = new ArrayList<>();
 
-   public interface a extends apv, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-      }
+   public static apv a() {
+      return new apv();
+   }
+
+   public List<apw> b() {
+      return List.copyOf(this.a);
+   }
+
+   public apv a(apw $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public apv a(aep $$0) {
+      return this.a(apw.a($$0));
+   }
+
+   public apv b(aep $$0) {
+      return this.a(apw.b($$0));
+   }
+
+   public apv c(aep $$0) {
+      return this.a(apw.c($$0));
+   }
+
+   public apv d(aep $$0) {
+      return this.a(apw.d($$0));
    }
 }

@@ -1,74 +1,183 @@
-public class fbi<T extends bta> extends fbo<T> {
-   private static final float a = 1.5F;
-   private static final float b = 1.0F;
-   private static final float f = 2.5F;
-   private final fee g;
-   private final fee h;
-   private final fee i;
-   private final fee j;
-   private final fee k;
-   private final fee l;
-   private final fee m;
-   private final fee n;
-   private final fee o;
-   private final fee p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fbi(fee $$0) {
-      this.g = $$0.b("root");
-      this.h = this.g.b("body");
-      this.i = this.h.b("head");
-      this.j = this.i.b("eyes");
-      this.k = this.h.b("tongue");
-      this.l = this.h.b("left_arm");
-      this.m = this.h.b("right_arm");
-      this.n = this.g.b("left_leg");
-      this.o = this.g.b("right_leg");
-      this.p = this.h.b("croaking_body");
+public class fbi {
+   public static final int a = 20;
+   private static final ett b = new ett(new aep("recipe_book/page_forward"), new aep("recipe_book/page_forward_highlighted"));
+   private static final ett c = new ett(new aep("recipe_book/page_backward"), new aep("recipe_book/page_backward_highlighted"));
+   private final List<fbk> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fbk e;
+   private final fbg f = new fbg();
+   private eqn g;
+   private final List<fbm> h = Lists.newArrayList();
+   private List<fbl> i = ImmutableList.of();
+   private etm j;
+   private etm k;
+   private int l;
+   private int m;
+   private aox n;
+   @Nullable
+   private clz<?> o;
+   @Nullable
+   private fbl p;
+
+   public fbi() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fbk());
+      }
    }
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      fen $$2 = $$1.a("root", fej.c(), feg.a(0.0F, 24.0F, 0.0F));
-      fen $$3 = $$2.a(
-         "body", fej.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), feg.a(0.0F, -2.0F, 4.0F)
-      );
-      fen $$4 = $$3.a(
-         "head", fej.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), feg.a(0.0F, -2.0F, -1.0F)
-      );
-      fen $$5 = $$4.a("eyes", fej.c(), feg.a(-0.5F, 0.0F, 2.0F));
-      $$5.a("right_eye", fej.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), feg.a(-1.5F, -3.0F, -6.5F));
-      $$5.a("left_eye", fej.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), feg.a(2.5F, -3.0F, -6.5F));
-      $$3.a("croaking_body", fej.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new fei(-0.1F)), feg.a(0.0F, -1.0F, -5.0F));
-      fen $$6 = $$3.a("tongue", fej.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), feg.a(0.0F, -1.01F, 1.0F));
-      fen $$7 = $$3.a("left_arm", fej.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), feg.a(4.0F, -1.0F, -6.5F));
-      $$7.a("left_hand", fej.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), feg.a(0.0F, 3.0F, -1.0F));
-      fen $$8 = $$3.a("right_arm", fej.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), feg.a(-4.0F, -1.0F, -6.5F));
-      $$8.a("right_hand", fej.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), feg.a(0.0F, 3.0F, 0.0F));
-      fen $$9 = $$2.a("left_leg", fej.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), feg.a(3.5F, -3.0F, 4.0F));
-      $$9.a("left_foot", fej.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), feg.a(2.0F, 3.0F, 0.0F));
-      fen $$10 = $$2.a("right_leg", fej.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), feg.a(-3.5F, -3.0F, 4.0F));
-      $$10.a("right_foot", fej.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), feg.a(-2.0F, 3.0F, 0.0F));
-      return fek.a($$0, 48, 48);
-   }
+   public void a(eqn $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.t.m();
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fee::c);
-      this.a($$0.bY, eoi.c, $$3);
-      this.a($$0.bZ, eoi.a, $$3);
-      this.a($$0.ca, eoi.d, $$3);
-      if ($$0.aY()) {
-         this.a(eoi.e, $$1, $$2, 1.0F, 2.5F);
-      } else {
-         this.a(eoi.b, $$1, $$2, 1.5F, 2.5F);
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).b($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
       }
 
-      this.a($$0.cb, eoi.f, $$3);
-      this.p.k = $$0.bZ.c();
+      this.j = new etm($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new etm($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   @Override
-   public fee a() {
+   public void a(fbh $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
+   }
+
+   public void a(List<fbl> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fbk $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fbl $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.j = true;
+         } else {
+            $$2.j = false;
+         }
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.j.j = this.l > 1 && this.m < this.l - 1;
+      this.k.j = this.l > 1 && this.m > 0;
+   }
+
+   public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         String $$6 = this.m + 1 + "/" + this.l;
+         int $$7 = this.g.h.b($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fbk $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.j && $$8.n()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(erx $$0, int $$1, int $$2) {
+      if (this.g.z != null && this.e != null && !this.f.d()) {
+         $$0.a(this.g.h, this.e.f(), $$1, $$2);
+      }
+   }
+
+   @Nullable
+   public clz<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fbl b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.d()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fbk $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.e();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.d() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.p(), $$7.r(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.k());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(List<clz<?>> $$0) {
+      for (fbm $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public eqn d() {
       return this.g;
+   }
+
+   public aox e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<esg> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

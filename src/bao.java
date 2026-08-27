@@ -1,11 +1,16 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bao {
-   long a();
+public class bao extends azu {
+   public bao(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
 
-   long b();
-
-   long c();
-
-   Object2LongMap<String> d();
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.put("minecraft:pufferfish", $$1.remove("minecraft:puffer_fish"));
+      return $$1;
+   }
 }

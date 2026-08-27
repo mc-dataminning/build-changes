@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class cn extends cv<cn.a> {
-   static final acq a = new acq("player_hurt_entity");
+   static final aep a = new aep("player_hurt_entity");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -14,8 +14,8 @@ public class cn extends cv<cn.a> {
       return new cn.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, bfj $$1, ben $$2, float $$3, float $$4, boolean $$5) {
-      dzk $$6 = bo.b($$0, $$1);
+   public void a(akj $$0, big $$1, bhe $$2, float $$3, float $$4, boolean $$5) {
+      ech $$6 = bo.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -53,7 +53,7 @@ public class cn extends cv<cn.a> {
          return new cn.a(ba.a, $$0.b(), bo.a($$1));
       }
 
-      public boolean a(aig $$0, dzk $$1, ben $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(akj $$0, ech $$1, bhe $$2, float $$3, float $$4, boolean $$5) {
          return !this.a.a($$0, $$2, $$3, $$4, $$5) ? false : this.b.a($$1);
       }
 

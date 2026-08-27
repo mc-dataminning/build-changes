@@ -1,21 +1,96 @@
 import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dpa extends dot {
-   public static final Codec<dpa> b = dcb.b.fieldOf("state").xmap(dca.a::b, cpn::n).xmap(dpa::new, $$0 -> $$0.c).codec();
-   private final cpn c;
-
-   public dpa(cpn $$0) {
-      this.c = $$0;
+public class dpa extends dnl<dqo> {
+   public dpa(Codec<dqo> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dou<?> a() {
-      return dou.f;
+   public boolean a(dnn<dqo> $$0) {
+      cqe $$1 = $$0.b();
+      dqo $$2 = $$0.f();
+      art $$3 = $$0.d();
+      gv $$4 = $$0.e();
+      Predicate<dey> $$5 = $$1x -> $$1x.a($$2.b);
+      int $$6 = $$2.j.a($$3) + 1;
+      int $$7 = $$2.j.a($$3) + 1;
+      Set<gv> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
+      return !$$8.isEmpty();
    }
 
-   @Override
-   public dcb a(apf $$0, gu $$1) {
-      ha.a $$2 = ha.a.a($$0);
-      return this.c.n().a(cvy.g, $$2);
+   protected Set<gv> a(cqe $$0, dqo $$1, art $$2, gv $$3, Predicate<dey> $$4, int $$5, int $$6) {
+      gv.a $$7 = $$3.j();
+      gv.a $$8 = $$7.j();
+      hb $$9 = $$1.e.a();
+      hb $$10 = $$9.g();
+      Set<gv> $$11 = new HashSet<>();
+
+      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
+         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+
+         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
+            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
+            boolean $$16 = $$13 || $$15;
+            boolean $$17 = $$13 && $$15;
+            boolean $$18 = $$16 && !$$17;
+            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
+               $$7.a($$3, $$12, 0, $$14);
+
+               for (int $$19 = 0; $$0.a($$7, dex.a::i) && $$19 < $$1.h; $$19++) {
+                  $$7.c($$9);
+               }
+
+               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
+                  $$7.c($$10);
+               }
+
+               $$8.a($$7, $$1.e.a());
+               dey $$20 = $$0.a_($$8);
+               if ($$0.t($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
+                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
+                  gv $$22 = $$8.i();
+                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
+                  if ($$23) {
+                     $$11.add($$22);
+                  }
+               }
+            }
+         }
+      }
+
+      return $$11;
+   }
+
+   protected void a(dnn<dqo> $$0, cqe $$1, dqo $$2, art $$3, Set<gv> $$4, int $$5, int $$6) {
+      for (gv $$7 : $$4) {
+         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
+            this.a($$1, $$2, $$0.c(), $$3, $$7);
+         }
+      }
+   }
+
+   protected boolean a(cqe $$0, dqo $$1, dgv $$2, art $$3, gv $$4) {
+      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
+   }
+
+   protected boolean a(cqe $$0, dqo $$1, Predicate<dey> $$2, art $$3, gv.a $$4, int $$5) {
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         dey $$7 = $$1.c.a($$3, $$4);
+         dey $$8 = $$0.a_($$4);
+         if (!$$7.a($$8.b())) {
+            if (!$$2.test($$8)) {
+               return $$6 != 0;
+            }
+
+            $$0.a($$4, $$7, 2);
+            $$4.c($$1.e.a());
+         }
+      }
+
+      return true;
    }
 }

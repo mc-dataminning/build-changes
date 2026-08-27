@@ -1,29 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bho {
-   public static bjb<bfe> a(bdi $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
+class bho extends bhq {
+   private final boolean a;
+
+   public bho(bhs $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public static bjb<bfe> a(bdi $$0, Function<bfz, Float> $$1) {
-      return bld.a(
-         (Function<bld.b<bfe>, ? extends App<bld.c<bfe>, blg<bfe>>>)($$2 -> $$2.group($$2.b(bpb.J), $$2.a(bpb.n), $$2.c(bpb.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.h_()) {
-                        return false;
-                     } else {
-                        bfe $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           bpe $$10 = new bpe(new bic($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bic($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   @Override
+   public void a(biw $$0, int $$1) {
+      super.a($$0, $$1);
+      if (this.a == $$0.es()) {
+         $$0.b((float)Math.max(4 << $$1, 0));
+      } else {
+         $$0.a($$0.dL().o(), (float)(6 << $$1));
+      }
+   }
+
+   @Override
+   public void a(@Nullable big $$0, @Nullable big $$1, biw $$2, int $$3, double $$4) {
+      if (this.a == $$2.es()) {
+         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
+         $$2.b((float)$$5);
+      } else {
+         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
+         if ($$0 == null) {
+            $$2.a($$2.dL().o(), (float)$$6);
+         } else {
+            $$2.a($$2.dL().c($$0, $$1), (float)$$6);
+         }
+      }
    }
 }

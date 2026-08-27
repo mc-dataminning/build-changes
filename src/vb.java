@@ -1,36 +1,24 @@
-public class vb implements uo<ur> {
-   private final gu a;
-   private final dcb b;
+public class vb implements uw<uz> {
+   private final te a;
 
-   public vb(gu $$0, dcb $$1) {
+   public vb(te $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public vb(cls $$0, gu $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public vb(sf $$0) {
-      this.a = $$0.f();
-      this.b = $$0.a(cpn.o);
+   public vb(sh $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sf $$0) {
+   public void a(sh $$0) {
       $$0.a(this.a);
-      $$0.a(cpn.o, this.b);
    }
 
-   public void a(ur $$0) {
+   public void a(uz $$0) {
       $$0.a(this);
    }
 
-   public dcb a() {
-      return this.b;
-   }
-
-   public gu c() {
+   public te a() {
       return this.a;
    }
 }

@@ -1,71 +1,78 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public record tc(List<th> d) {
-   public static final Codec<tc> a = th.a.listOf().xmap(tc::new, tc::a);
-   public static tc b = new tc(List.of());
-   public static final int c = 20;
+public class tc {
+   private final tc.a a;
+   private final String b;
 
-   public void a(api.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (th $$1 : this.d) {
-         $$0.update($$1.b());
-      }
+   public tc(tc.a $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public tc.a a(ti $$0) {
-      return new tc.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public tc.a a() {
+      return this.a;
    }
 
-   public List<th> a() {
-      return this.d;
+   public String b() {
+      return this.b;
    }
 
-   public static record a(List<th.a> b) {
-      public static final tc.a a = new tc.a(List.of());
-
-      public a(sf $$0) {
-         this($$0.a(sf.a(ArrayList::new, 20), th.a::a));
-      }
-
-      public void a(sf $$0) {
-         $$0.a(this.b, th.a::a);
-      }
-
-      public Optional<tc> a(ti $$0) {
-         List<th> $$1 = new ArrayList<>(this.b.size());
-
-         for (th.a $$2 : this.b) {
-            Optional<th> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         tc $$1 = (tc)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else {
+            return this.b != null ? this.b.equals($$1.b) : $$1.b == null;
          }
-
-         return Optional.of(new tc($$1));
-      }
-
-      public List<th.a> a() {
-         return this.b;
+      } else {
+         return false;
       }
    }
 
-   public static record b(int a, BitSet b) {
-      public b(sf $$0) {
-         this($$0.m(), $$0.f(20));
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.a + ", value='" + this.b + "'}";
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + (this.b != null ? this.b.hashCode() : 0);
+   }
+
+   public static enum a {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
+
+      private static final Map<String, tc.a> g = Arrays.stream(values()).collect(Collectors.toMap(tc.a::b, $$0 -> (tc.a)$$0));
+      private final boolean h;
+      private final String i;
+
+      private a(String $$0, boolean $$1) {
+         this.i = $$0;
+         this.h = $$1;
       }
 
-      public void a(sf $$0) {
-         $$0.d(this.a);
-         $$0.a(this.b, 20);
+      public boolean a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public static tc.a a(String $$0) {
+         return g.get($$0);
       }
    }
 }

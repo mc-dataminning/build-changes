@@ -1,72 +1,78 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public final class dtt extends dsa {
-   public static final int d = 128;
-   public static final Codec<dtt> e = aoi.<dtt>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     a($$0),
-                     dtj.b.fieldOf("start_pool").forGetter($$0x -> $$0x.f),
-                     acq.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.g),
-                     Codec.intRange(0, 7).fieldOf("size").forGetter($$0x -> $$0x.h),
-                     dqh.c.fieldOf("start_height").forGetter($$0x -> $$0x.i),
-                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.j),
-                     dhk.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.k),
-                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.l)
-                  )
-                  .apply($$0, dtt::new)
-         ),
-         dtt::a
-      )
-      .codec();
-   private final he<dtj> f;
-   private final Optional<acq> g;
-   private final int h;
-   private final dqh i;
-   private final boolean j;
-   private final Optional<dhk.a> k;
-   private final int l;
+@Deprecated
+public class dtt extends due {
+   public static final Codec<dtt> a = bft.b(0, 256).fieldOf("count").xmap(dtt::new, $$0 -> $$0.c).codec();
+   private final bft c;
 
-   private static DataResult<dtt> a(dtt $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d -> 12;
-      };
-      return $$0.l + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   private dtt(bft $$0) {
+      this.c = $$0;
    }
 
-   public dtt(dsa.c $$0, he<dtj> $$1, Optional<acq> $$2, int $$3, dqh $$4, boolean $$5, Optional<dhk.a> $$6, int $$7) {
-      super($$0);
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
+   public static dtt a(bft $$0) {
+      return new dtt($$0);
    }
 
-   public dtt(dsa.c $$0, he<dtj> $$1, int $$2, dqh $$3, boolean $$4, dhk.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80);
-   }
-
-   public dtt(dsa.c $$0, he<dtj> $$1, int $$2, dqh $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80);
+   public static dtt a(int $$0) {
+      return a(bfq.a($$0));
    }
 
    @Override
-   public Optional<dsa.b> a(dsa.a $$0) {
-      clt $$1 = $$0.h();
-      int $$2 = this.i.a($$0.f(), new dih($$0.b(), $$0.i()));
-      gu $$3 = new gu($$1.d(), $$2, $$1.e());
-      return dtd.a($$0, this.f, this.g, this.h, $$3, this.j, this.k, this.l);
+   public Stream<gv> a_(duc $$0, art $$1, gv $$2) {
+      Builder<gv> $$3 = Stream.builder();
+      int $$4 = 0;
+
+      boolean $$5;
+      do {
+         $$5 = false;
+
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(dkh.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new gv($$7, $$10, $$8));
+               $$5 = true;
+            }
+         }
+
+         $$4++;
+      } while ($$5);
+
+      return $$3.build();
    }
 
    @Override
-   public dsj<?> e() {
-      return dsj.f;
+   public duf<?> b() {
+      return duf.i;
+   }
+
+   private static int a(duc $$0, int $$1, int $$2, int $$3, int $$4) {
+      gv.a $$5 = new gv.a($$1, $$2, $$3);
+      int $$6 = 0;
+      dey $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         dey $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(csl.F)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   private static boolean a(dey $$0) {
+      return $$0.i() || $$0.a(csl.G) || $$0.a(csl.H);
    }
 }

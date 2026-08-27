@@ -1,119 +1,172 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+public class ffk extends fet<buy> {
+   private static final String a = "feather";
+   private final fhj b;
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
+   private final fhj j;
+   private final fhj k;
+   private final fhj l;
+   private final fhj m;
 
-public interface ffk extends ffj {
-   static ffk.a a(GameProfile $$0, tl $$1, ffi $$2) {
-      return new ffk.a($$0, $$1, $$2);
+   public ffk(fhj $$0) {
+      this.b = $$0;
+      this.f = $$0.b("body");
+      this.g = $$0.b("tail");
+      this.h = $$0.b("left_wing");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("head");
+      this.k = this.j.b("feather");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("right_leg");
    }
 
-   static ffk.b a(sw $$0, Instant $$1) {
-      return new ffk.b($$0, $$1);
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("body", fho.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), fhl.a(0.0F, 16.5F, -3.0F));
+      $$1.a("tail", fho.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), fhl.a(0.0F, 21.07F, 1.16F));
+      $$1.a("left_wing", fho.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fhl.a(1.5F, 16.94F, -2.76F));
+      $$1.a("right_wing", fho.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fhl.a(-1.5F, 16.94F, -2.76F));
+      fhs $$2 = $$1.a("head", fho.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), fhl.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", fho.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), fhl.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", fho.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), fhl.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", fho.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), fhl.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", fho.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), fhl.a(0.0F, -2.15F, 0.15F));
+      fho $$3 = fho.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, fhl.a(1.0F, 22.0F, -1.05F));
+      $$1.a("right_leg", $$3, fhl.a(-1.0F, 22.0F, -1.05F));
+      return fhp.a($$0, 32, 32);
    }
 
-   sw b();
-
-   default sw c() {
-      return this.b();
+   @Override
+   public fhj a() {
+      return this.b;
    }
 
-   boolean a(UUID var1);
+   public void a(buy $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a(a($$0), $$0.ah, $$1, $$2, $$3, $$4, $$5);
+   }
 
-   public static record a(GameProfile c, tl d, ffi e) implements ffk {
-      public static final Codec<ffk.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aoi.t.fieldOf("profile").forGetter(ffk.a::f), tl.a.forGetter(ffk.a::g), ffi.d.optionalFieldOf("trust_level", ffi.a).forGetter(ffk.a::h)
-               )
-               .apply($$0, ffk.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+   public void a(buy $$0, float $$1, float $$2, float $$3) {
+      this.a(a($$0));
+   }
 
-      @Override
-      public sw b() {
-         if (!this.d.n().a()) {
-            sw $$0 = this.d.n().b(this.d.b());
-            return (sw)($$0 != null ? $$0 : sw.h());
-         } else {
-            return this.d.c();
-         }
-      }
+   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8) {
+      this.a(ffk.a.e);
+      this.a(ffk.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
+      this.b.a($$0, $$1, $$2, $$3);
+   }
 
-      @Override
-      public sw c() {
-         sw $$0 = this.b();
-         sw $$1 = this.i();
-         return sw.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public sw d() {
-         sw $$0 = this.i();
-         return sw.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private sw i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
-         return sw.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public ffj.a a() {
-         return ffj.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public tl g() {
-         return this.d;
-      }
-
-      public ffi h() {
-         return this.e;
+   private void a(ffk.a $$0, int $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.j.e = $$6 * (float) (Math.PI / 180.0);
+      this.j.f = $$5 * (float) (Math.PI / 180.0);
+      this.j.g = 0.0F;
+      this.j.b = 0.0F;
+      this.f.b = 0.0F;
+      this.g.b = 0.0F;
+      this.i.b = -1.5F;
+      this.h.b = 1.5F;
+      switch ($$0) {
+         case c:
+            break;
+         case d:
+            float $$7 = aro.b((float)$$1);
+            float $$8 = aro.a((float)$$1);
+            this.j.b = $$7;
+            this.j.c = 15.69F + $$8;
+            this.j.e = 0.0F;
+            this.j.f = 0.0F;
+            this.j.g = aro.a((float)$$1) * 0.4F;
+            this.f.b = $$7;
+            this.f.c = 16.5F + $$8;
+            this.h.g = -0.0873F - $$4;
+            this.h.b = 1.5F + $$7;
+            this.h.c = 16.94F + $$8;
+            this.i.g = 0.0873F + $$4;
+            this.i.b = -1.5F + $$7;
+            this.i.c = 16.94F + $$8;
+            this.g.b = $$7;
+            this.g.c = 21.07F + $$8;
+            break;
+         case b:
+            this.l.e = this.l.e + aro.b($$2 * 0.6662F) * 1.4F * $$3;
+            this.m.e = this.m.e + aro.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
+         case a:
+         case e:
+         default:
+            float $$9 = $$4 * 0.3F;
+            this.j.c = 15.69F + $$9;
+            this.g.e = 1.015F + aro.b($$2 * 0.6662F) * 0.3F * $$3;
+            this.g.c = 21.07F + $$9;
+            this.f.c = 16.5F + $$9;
+            this.h.g = -0.0873F - $$4;
+            this.h.c = 16.94F + $$9;
+            this.i.g = 0.0873F + $$4;
+            this.i.c = 16.94F + $$9;
+            this.l.c = 22.0F + $$9;
+            this.m.c = 22.0F + $$9;
       }
    }
 
-   public static record b(sw c, Instant d) implements ffk {
-      public static final Codec<ffk.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aoi.b.fieldOf("message").forGetter(ffk.b::d), aoi.m.fieldOf("time_stamp").forGetter(ffk.b::e)).apply($$0, ffk.b::new)
-      );
-
-      @Override
-      public sw b() {
-         return this.c;
+   private void a(ffk.a $$0) {
+      this.k.e = -0.2214F;
+      this.f.e = 0.4937F;
+      this.h.e = -0.6981F;
+      this.h.f = (float) -Math.PI;
+      this.i.e = -0.6981F;
+      this.i.f = (float) -Math.PI;
+      this.l.e = -0.0299F;
+      this.m.e = -0.0299F;
+      this.l.c = 22.0F;
+      this.m.c = 22.0F;
+      this.l.g = 0.0F;
+      this.m.g = 0.0F;
+      switch ($$0) {
+         case c:
+            float $$1 = 1.9F;
+            this.j.c = 17.59F;
+            this.g.e = 1.5388988F;
+            this.g.c = 22.97F;
+            this.f.c = 18.4F;
+            this.h.g = -0.0873F;
+            this.h.c = 18.84F;
+            this.i.g = 0.0873F;
+            this.i.c = 18.84F;
+            this.l.c++;
+            this.m.c++;
+            this.l.e++;
+            this.m.e++;
+            break;
+         case d:
+            this.l.g = (float) (-Math.PI / 9);
+            this.m.g = (float) (Math.PI / 9);
+         case b:
+         case e:
+         default:
+            break;
+         case a:
+            this.l.e += (float) (Math.PI * 2.0 / 9.0);
+            this.m.e += (float) (Math.PI * 2.0 / 9.0);
       }
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
+   private static ffk.a a(buy $$0) {
+      if ($$0.gg()) {
+         return ffk.a.d;
+      } else if ($$0.t()) {
+         return ffk.a.c;
+      } else {
+         return $$0.gm() ? ffk.a.a : ffk.a.b;
       }
+   }
 
-      @Override
-      public ffj.a a() {
-         return ffj.a.b;
-      }
-
-      public sw d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

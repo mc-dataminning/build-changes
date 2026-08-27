@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class dd extends cv<dd.a> {
-   static final acq a = new acq("target_hit");
+   static final aep a = new aep("target_hit");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -14,8 +14,8 @@ public class dd extends cv<dd.a> {
       return new dd.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, bfj $$1, eei $$2, int $$3) {
-      dzk $$4 = bo.b($$0, $$1);
+   public void a(akj $$0, big $$1, ehf $$2, int $$3) {
+      ech $$4 = bo.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -41,7 +41,7 @@ public class dd extends cv<dd.a> {
          return $$1;
       }
 
-      public boolean a(dzk $$0, eei $$1, int $$2) {
+      public boolean a(ech $$0, ehf $$1, int $$2) {
          return !this.a.d($$2) ? false : this.b.a($$0);
       }
    }

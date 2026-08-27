@@ -1,18 +1,11 @@
-import java.net.Proxy;
-import javax.annotation.Nullable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public class eja {
-   @Nullable
-   private static Proxy a;
-
-   @Nullable
-   public static Proxy a() {
-      return a;
-   }
-
-   public static void a(Proxy $$0) {
-      if (a == null) {
-         a = $$0;
-      }
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface eja {
 }

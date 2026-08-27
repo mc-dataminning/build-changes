@@ -1,7 +1,7 @@
 import com.google.gson.JsonObject;
 
 public interface am {
-   acq a();
+   aep a();
 
    JsonObject a(ct var1);
 }

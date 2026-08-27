@@ -1,49 +1,20 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class aiq implements aio {
-   private static final Logger a = LogUtils.getLogger();
-   private final int b;
-   private int c;
-   private long d;
-   private long e = Long.MAX_VALUE;
+public class aiq {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(dt.a("targets", ed.d()).then(dt.a("message", dz.a()).executes($$0x -> {
+               int $$1 = 0;
 
-   public aiq(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.b = $$1 * $$1;
-   }
+               for (akj $$2 : ed.f($$0x, "targets")) {
+                  $$2.b(tg.a((ds)$$0x.getSource(), dz.a($$0x, "message"), $$2, 0), false);
+                  $$1++;
+               }
 
-   @Override
-   public void a(clt $$0) {
-      this.e = ac.b();
-      this.d = this.e;
-   }
-
-   @Override
-   public void a(clt $$0, @Nullable dec $$1) {
-      if ($$1 == dec.n) {
-         this.c++;
-      }
-
-      int $$2 = this.c();
-      if (ac.b() > this.e) {
-         this.e += 500L;
-         a.info(sw.a("menu.preparingSpawn", apa.a($$2, 0, 100)).getString());
-      }
-   }
-
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ac.b() - this.d);
-      this.e = Long.MAX_VALUE;
-   }
-
-   public int c() {
-      return apa.d((float)this.c * 100.0F / (float)this.b);
+               return $$1;
+            })))
+      );
    }
 }

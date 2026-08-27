@@ -1,21 +1,22 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class ayf extends axd {
-   public ayf(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class ayf extends asv {
+   public ayf(Schema $$0) {
+      super($$0, aym.b);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0))));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:campfire");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "PlayerUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> {
+            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
+            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
+               .update(DSL.remainderFinder(), $$0x -> avx.c(avx.b($$0x)));
+         }
+      );
    }
 }

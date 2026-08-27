@@ -1,22 +1,29 @@
-public enum ami {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+import java.nio.file.Path;
+import java.util.Map;
 
-   private final String k;
+interface ami {
+   ami a = new ami() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   ami b = new ami() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   private ami(String $$0) {
-      this.k = $$0;
+   public static record a(Map<String, amf> c) implements ami {
+      public Map<String, amf> a() {
+         return this.c;
+      }
    }
 
-   public String a() {
-      return this.k;
+   public static record b(Path c) implements ami {
+      public Path a() {
+         return this.c;
+      }
    }
 }

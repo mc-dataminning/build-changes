@@ -1,22 +1,130 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bqs {
-   @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = bqr.a($$0, $$1);
-      return bqu.a($$0, () -> {
-         gu $$9 = bqu.a($$0.ec(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            gu $$10 = bqt.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = bqu.a($$10, $$0.ec().a($$6 - $$7 + 1) + $$7, $$0.dI().aj(), $$1xx -> bqr.c($$0, $$1xx));
-               return !bqr.a($$0, $$10) && !bqr.b($$0, $$10) ? $$10 : null;
-            }
+public class bqs<T extends byz & bzd> extends bps {
+   private final T a;
+   private final double b;
+   private int c;
+   private final float d;
+   private int e = -1;
+   private int f;
+   private boolean g;
+   private boolean h;
+   private int i = -1;
+
+   public bqs(T $$0, double $$1, int $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 * $$3;
+      this.a(EnumSet.of(bps.a.a, bps.a.b));
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.j() == null ? false : this.h();
+   }
+
+   protected boolean h() {
+      return this.a.b(ciz.nG);
+   }
+
+   @Override
+   public boolean b() {
+      return (this.a() || !this.a.H().l()) && this.h();
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.a.v(true);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a.v(false);
+      this.f = 0;
+      this.e = -1;
+      this.a.fr();
+   }
+
+   @Override
+   public boolean K_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      biw $$0 = this.a.j();
+      if ($$0 != null) {
+         double $$1 = this.a.i($$0.dp(), $$0.dr(), $$0.dv());
+         boolean $$2 = this.a.J().a($$0);
+         boolean $$3 = this.f > 0;
+         if ($$2 != $$3) {
+            this.f = 0;
          }
-      });
+
+         if ($$2) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         if (!($$1 > (double)this.d) && this.f >= 20) {
+            this.a.H().n();
+            this.i++;
+         } else {
+            this.a.H().a($$0, this.b);
+            this.i = -1;
+         }
+
+         if (this.i >= 20) {
+            if ((double)this.a.ee().i() < 0.3) {
+               this.g = !this.g;
+            }
+
+            if ((double)this.a.ee().i() < 0.3) {
+               this.h = !this.h;
+            }
+
+            this.i = 0;
+         }
+
+         if (this.i > -1) {
+            if ($$1 > (double)(this.d * 0.75F)) {
+               this.h = false;
+            } else if ($$1 < (double)(this.d * 0.25F)) {
+               this.h = true;
+            }
+
+            this.a.E().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
+            if (this.a.cZ() instanceof biy $$4) {
+               $$4.a($$0, 30.0F, 30.0F);
+            }
+
+            this.a.a($$0, 30.0F, 30.0F);
+         } else {
+            this.a.D().a($$0, 30.0F, 30.0F);
+         }
+
+         if (this.a.fl()) {
+            if (!$$2 && this.f < -60) {
+               this.a.fr();
+            } else if ($$2) {
+               int $$5 = this.a.fp();
+               if ($$5 >= 20) {
+                  this.a.fr();
+                  this.a.a($$0, cgu.a($$5));
+                  this.e = this.c;
+               }
+            }
+         } else if (--this.e <= 0 && this.f >= -60) {
+            this.a.c(cce.a(this.a, ciz.nG));
+         }
+      }
    }
 }

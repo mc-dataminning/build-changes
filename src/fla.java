@@ -1,68 +1,117 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fla {
-   private final acq a;
-   private final List<fla.b> b;
-
-   public fla(acq $$0, List<fla.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-   }
-
-   public acq a() {
-      return this.a;
-   }
-
-   public Stream<fla.b> b() {
-      return this.b.stream();
-   }
-
-   protected static class a implements JsonDeserializer<fla> {
-      public fla a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         acq $$4 = new acq(aor.i($$3, "model"));
-         List<fla.b> $$5 = this.a($$3);
-         return new fla($$4, $$5);
+public interface fla {
+   fla a = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fyf.e);
+         $$0.a(elm.b.h, elf.l);
       }
 
-      protected List<fla.b> a(JsonObject $$0) {
-         Map<acq, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = aor.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new acq($$3.getKey()), aor.e($$3.getValue(), $$3.getKey()));
-         }
-
-         return $$1.entrySet().stream().map($$0x -> new fla.b((acq)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
-   }
-
-   public static class b {
-      private final acq a;
-      private final float b;
-
-      public b(acq $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public void a(elj $$0) {
+         $$0.b();
       }
 
-      public acq a() {
-         return this.a;
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fla b = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fmz::u);
+         RenderSystem.setShaderTexture(0, fyf.f);
+         $$0.a(elm.b.h, elf.l);
       }
 
-      public float b() {
-         return this.b;
+      @Override
+      public void a(elj $$0) {
+         $$0.b();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fla c = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fyf.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(elm.b.h, elf.l);
+      }
+
+      @Override
+      public void a(elj $$0) {
+         $$0.b();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fla d = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fyf.f);
+         $$0.a(elm.b.h, elf.l);
+      }
+
+      @Override
+      public void a(elj $$0) {
+         $$0.b();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fla e = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(elj $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fla f = new fla() {
+      @Override
+      public void a(elc $$0, fyh $$1) {
+      }
+
+      @Override
+      public void a(elj $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(elc var1, fyh var2);
+
+   void a(elj var1);
 }

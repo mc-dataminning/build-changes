@@ -1,27 +1,15 @@
-public class fpg extends fqe<brv, fbh<brv>> {
-   private static final acq a = new acq("textures/entity/fox/fox.png");
-   private static final acq i = new acq("textures/entity/fox/fox_sleep.png");
-   private static final acq j = new acq("textures/entity/fox/snow_fox.png");
-   private static final acq k = new acq("textures/entity/fox/snow_fox_sleep.png");
+public interface fpg<T extends dck> {
+   void a(T var1, float var2, elh var3, fng var4, int var5, int var6);
 
-   public fpg(foy.a $$0) {
-      super($$0, new fbh<>($$0.a(fed.X)), 0.4F);
-      this.a(new fst(this, $$0.d()));
+   default boolean a(T $$0) {
+      return false;
    }
 
-   protected void a(brv $$0, eij $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.ge() || $$0.fY()) {
-         float $$5 = -apa.i($$4, $$0.N, $$0.dA());
-         $$1.a(a.b.rotationDegrees($$5));
-      }
+   default int aH_() {
+      return 64;
    }
 
-   public acq a(brv $$0) {
-      if ($$0.r() == brv.v.a) {
-         return $$0.fy() ? i : a;
-      } else {
-         return $$0.fy() ? k : j;
-      }
+   default boolean a(T $$0, ehf $$1) {
+      return ehf.b($$0.p()).a((hp)$$1, (double)this.aH_());
    }
 }

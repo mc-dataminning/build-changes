@@ -1,15 +1,39 @@
-public class foc extends fqe<bvm, fam<bvm>> {
-   private static final acq a = new acq("textures/entity/blaze.png");
+public class foc {
+   protected final int[] a;
+   protected final int b;
+   protected final hb c;
+   protected final fyg d;
+   private final boolean e;
 
-   public foc(foy.a $$0) {
-      super($$0, new fam<>($$0.a(fed.l)), 0.5F);
+   public foc(int[] $$0, int $$1, hb $$2, fyg $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   protected int a(bvm $$0, gu $$1) {
-      return 15;
+   public fyg a() {
+      return this.d;
    }
 
-   public acq a(bvm $$0) {
-      return a;
+   public int[] b() {
+      return this.a;
+   }
+
+   public boolean c() {
+      return this.b != -1;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public hb e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.e;
    }
 }

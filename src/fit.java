@@ -1,26 +1,30 @@
-public class fit extends fgi {
-   private static final int a = 12235202;
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-   protected fit(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fih $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
-   }
+public interface fit {
+   Codec<fit> a = asf.a(fit.a::values).dispatch(fit::a, fit.a::a);
 
-   public static class a implements fhp<iy> {
-      private final fih a;
+   fit.a a();
 
-      public a(fih $$0) {
-         this.a = $$0;
+   public static enum a implements asf {
+      a("player", () -> fiu.a.b),
+      b("system", () -> fiu.b.b);
+
+      private final String c;
+      private final Supplier<Codec<? extends fit>> d;
+
+      private a(String $$0, Supplier<Codec<? extends fit>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         apf $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fit($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      private Codec<? extends fit> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

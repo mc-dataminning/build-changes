@@ -1,21 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class fvh extends ftp<bzp, fgy<bzp>> {
+   private static final aep a = new aep("textures/entity/witch.png");
 
-public class fvh implements fuz {
-   public static final Codec<fvh> b = RecordCodecBuilder.create($$0 -> $$0.group(apg.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, fvh::new));
-   private final apg c;
-
-   public fvh(apg $$0) {
-      this.c = $$0;
+   public fvh(fsj.a $$0) {
+      super($$0, new fgy<>($$0.a(fhi.bN)), 0.5F);
+      this.a(new fxe<>(this, $$0.d()));
    }
 
-   @Override
-   public void a(akx $$0, fuz.a $$1) {
-      $$1.a(this.c.c());
+   public void a(bzp $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
+      this.f.b(!$$0.eR().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public fva a() {
-      return fvb.c;
+   public aep a(bzp $$0) {
+      return a;
+   }
+
+   protected void a(bzp $$0, elh $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

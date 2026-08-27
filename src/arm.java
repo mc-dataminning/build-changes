@@ -1,48 +1,14 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class arm extends DataFix {
-   public arm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class arm {
+   @Nullable
+   private static byte[] a = null;
+
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
-               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
-               if ($$1xx.isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  int[] $$2 = $$1xx.get().toArray();
-                  if ($$2.length != 256) {
-                     return $$0xxx;
-                  } else {
-                     int[] $$3 = new int[1024];
-
-                     for (int $$4 = 0; $$4 < 4; $$4++) {
-                        for (int $$5 = 0; $$5 < 4; $$5++) {
-                           int $$6 = ($$5 << 2) + 2;
-                           int $$7 = ($$4 << 2) + 2;
-                           int $$8 = $$7 << 4 | $$6;
-                           $$3[$$4 << 2 | $$5] = $$2[$$8];
-                        }
-                     }
-
-                     for (int $$9 = 1; $$9 < 64; $$9++) {
-                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
-                     }
-
-                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
-                  }
-               }
-            })));
+   public static void b() {
+      a = new byte[0];
    }
 }

@@ -1,33 +1,56 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fzi implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final baa<fzh> b;
-   private final bcq<Runnable> c;
+public class fzi extends anp<List<String>> {
+   private static final aep a = new aep("texts/splashes.txt");
+   private static final art b = art.a();
+   private final List<String> c = Lists.newArrayList();
+   private final erc d;
 
-   public fzi(FileChannel $$0, Executor $$1) {
-      this.b = new baa<>(fzh.a, $$0);
-      this.c = bcq.a($$1, "telemetry-event-log");
+   public fzi(erc $$0) {
+      this.d = $$0;
    }
 
-   public fzj a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   protected List<String> a(ank $$0, bde $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = eqn.N().Y().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   protected void a(List<String> $$0, ank $$1, bde $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
+   }
+
+   @Nullable
+   public etk a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return etk.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return etk.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return etk.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new etk(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new etk(this.c.get(b.a(this.c.size())));
+      }
    }
 }

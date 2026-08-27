@@ -1,29 +1,33 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-
-public class eil {
-   private static final int a = 8388608;
-   private static final int b = 2097152;
-   private final eie c;
-   private static final eil d = new eil();
-
-   public static eil a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      return d;
+public interface eil extends bgh {
+   @Override
+   default int b() {
+      return 1;
    }
 
-   public eil(int $$0) {
-      this.c = new eie($$0);
+   @Override
+   default boolean ab_() {
+      return this.ar_().b();
    }
 
-   public eil() {
-      this(2097152);
+   @Override
+   default void a() {
+      this.j();
    }
 
-   public void b() {
-      eif.a(this.c.d());
+   default ciw ar_() {
+      return this.a(0);
    }
 
-   public eie c() {
-      return this.c;
+   default ciw j() {
+      return this.b(0);
+   }
+
+   default void b(ciw $$0) {
+      this.a(0, $$0);
+   }
+
+   @Override
+   default ciw b(int $$0) {
+      return this.a($$0, this.ac_());
    }
 }

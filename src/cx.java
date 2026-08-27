@@ -25,8 +25,8 @@ public class cx implements bp {
    }
 
    @Override
-   public boolean a(bfj $$0, aif $$1, @Nullable eei $$2) {
-      return $$0 instanceof bwl $$3 ? this.b.d($$3.ga()) : false;
+   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
+      return $$0 instanceof bzi $$3 ? this.b.d($$3.ga()) : false;
    }
 
    @Override

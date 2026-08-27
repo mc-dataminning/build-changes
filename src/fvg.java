@@ -1,35 +1,20 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class fvg extends ftp<cap, fgw<cap>> {
+   private static final aep a = new aep("textures/entity/warden/warden.png");
+   private static final aep i = new aep("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final aep j = new aep("textures/entity/warden/warden_heart.png");
+   private static final aep k = new aep("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final aep l = new aep("textures/entity/warden/warden_pulsating_spots_2.png");
 
-public class fvg implements fuz {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<fvg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(acq.a.fieldOf("resource").forGetter($$0x -> $$0x.d), acq.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, fvg::new)
-   );
-   private final acq d;
-   private final Optional<acq> e;
-
-   public fvg(acq $$0, Optional<acq> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fvg(fsj.a $$0) {
+      super($$0, new fgw<>($$0.a(fhi.bL)), 0.9F);
+      this.a(new fxd<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fgw::e));
+      this.a(new fxd<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aro.b($$2 * 0.045F) * 0.25F), fgw::f));
+      this.a(new fxd<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aro.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fgw::f));
+      this.a(new fxd<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fgw::c));
+      this.a(new fxd<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fgw::d));
    }
 
-   @Override
-   public void a(akx $$0, fuz.a $$1) {
-      acq $$2 = a.a(this.d);
-      Optional<akv> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public fva a() {
-      return fvb.a;
+   public aep a(cap $$0) {
+      return a;
    }
 }

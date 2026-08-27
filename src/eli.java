@@ -1,200 +1,93 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class eli extends gan {
-   private static final acq a = new acq("realms", "textures/gui/realms/invite_icon.png");
-   private static final acq b = new acq("realms", "textures/gui/realms/trial_icon.png");
-   private static final acq c = new acq("realms", "textures/gui/realms/news_notification_mainscreen.png");
-   private static final acq G = new acq("minecraft", "textures/gui/unseen_notification.png");
-   @Nullable
-   private elx.c H;
-   @Nullable
-   private eli.a I;
-   private volatile int J;
-   static boolean K;
-   private static boolean L;
-   static boolean M;
-   private static boolean N;
-   private static boolean O;
-   private final eli.a P = new eli.a() {
-      @Override
-      public elx.c a(ekq $$0) {
-         elx.c $$1 = $$0.a.a();
-         eli.this.a($$0, $$1);
-         eli.this.b($$0, $$1);
-         return $$1;
-      }
+public class eli extends elg {
+   private final ell f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final eli.a Q = new eli.a() {
-      @Override
-      public elx.c a(ekq $$0) {
-         elx.c $$1 = $$0.a.a();
-         eli.this.b($$0, $$1);
-         return $$1;
-      }
+   public eli(ell $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1).invert();
+      this.h = new Matrix3f($$2).invert();
+      this.i = $$3;
+      this.a();
+   }
 
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public eli() {
-      super(enf.a);
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
    @Override
-   public void b() {
-      this.E();
-      if (this.H != null) {
-         this.H.a();
-      }
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      hb $$1 = hb.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
    @Override
-   public void ay_() {
-      super.ay_();
-      this.f.aX().b.a();
-   }
-
-   @Nullable
-   private eli.a B() {
-      boolean $$0 = this.D() && M;
-      if (!$$0) {
-         return null;
-      } else {
-         return this.C() ? this.P : this.Q;
-      }
+   public ell a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
    @Override
-   public void f() {
-      eli.a $$0 = this.B();
-      if (!Objects.equals(this.I, $$0)) {
-         this.I = $$0;
-         if (this.I != null) {
-            this.H = this.I.a(this.f.aX());
-         } else {
-            this.H = null;
-         }
-      }
-
-      if (this.H != null) {
-         this.H.b();
-      }
-   }
-
-   private boolean C() {
-      return this.f.m.O().c();
-   }
-
-   private boolean D() {
-      return this.f.z instanceof euw;
-   }
-
-   private void E() {
-      if (!K) {
-         K = true;
-         (new Thread("Realms Notification Availability checker #1") {
-            @Override
-            public void run() {
-               eiz $$0 = eiz.a();
-
-               try {
-                  eiz.a $$1 = $$0.j();
-                  if ($$1 != eiz.a.a) {
-                     return;
-                  }
-               } catch (ekm var3) {
-                  if (var3.a != 401) {
-                     eli.K = false;
-                  }
-
-                  return;
-               }
-
-               eli.M = true;
-            }
-         }).start();
-      }
+   public ell a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      if (M) {
-         this.c($$0);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public ell a(float $$0, float $$1) {
+      return this;
    }
 
-   private void c(eox $$0) {
-      int $$1 = this.J;
-      int $$2 = 24;
-      int $$3 = this.h / 4 + 48;
-      int $$4 = this.g / 2 + 80;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = 0;
-      if (O) {
-         $$0.a(G, $$4 - $$6 + 5, $$5 + 3, 0.0F, 0.0F, 10, 10, 10, 10);
-         $$6 += 14;
-      }
-
-      if (this.I != null && this.I.a()) {
-         if (N) {
-            $$0.c().a();
-            $$0.c().b(0.4F, 0.4F, 0.4F);
-            $$0.a(c, (int)((double)($$4 + 2 - $$6) * 2.5), (int)((double)$$5 * 2.5), 0.0F, 0.0F, 40, 40, 40, 40);
-            $$0.c().b();
-            $$6 += 14;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(a, $$4 - $$6, $$5, 0.0F, 0.0F, 18, 15, 18, 30);
-            $$6 += 16;
-         }
-
-         if (L) {
-            int $$7 = 0;
-            if ((ac.b() / 800L & 1L) == 1L) {
-               $$7 = 8;
-            }
-
-            $$0.a(b, $$4 + 4 - $$6, $$5 + 4, 0.0F, (float)$$7, 8, 8, 8, 16);
-         }
-      }
+   @Override
+   public ell a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
    }
 
-   void a(ekq $$0, elx.c $$1) {
-      $$1.a($$0.e, $$0x -> this.J = $$0x);
-      $$1.a($$0.f, $$0x -> L = $$0x);
-      $$1.a($$0.g, $$1x -> {
-         $$0.h.a($$1x);
-         N = $$0.h.a();
-      });
+   @Override
+   public ell b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
    }
 
-   void b(ekq $$0, elx.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         O = false;
-
-         for (ejp $$1x : $$0x) {
-            if (!$$1x.a()) {
-               O = true;
-               break;
-            }
-         }
-      });
-   }
-
-   interface a {
-      elx.c a(ekq var1);
-
-      boolean a();
+   @Override
+   public ell a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

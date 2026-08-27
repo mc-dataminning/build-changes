@@ -1,120 +1,84 @@
-import java.util.function.Supplier;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class eul extends euq {
-   private static final int a = 2;
-   private static final int b = 50;
-   private static final int c = 4;
-   private static final int k = 204;
-   private static final int l = 98;
-   private static final sw m = sw.c("menu.returnToGame");
-   private static final sw n = sw.c("gui.advancements");
-   private static final sw o = sw.c("gui.stats");
-   private static final sw p = sw.c("menu.sendFeedback");
-   private static final sw q = sw.c("menu.reportBugs");
-   private static final sw r = sw.c("menu.options");
-   private static final sw s = sw.c("menu.shareToLan");
-   private static final sw t = sw.c("menu.playerReporting");
-   private static final sw u = sw.c("menu.returnToMenu");
-   private static final sw v = sw.c("menu.disconnect");
-   private static final sw w = sw.c("menu.savingLevel");
-   private static final sw x = sw.c("menu.game");
-   private static final sw y = sw.c("menu.paused");
-   private final boolean z;
+public class eul implements euj {
+   private static final aep g = new aep("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final eul.a h;
+   private final te i;
    @Nullable
-   private epi A;
+   private final te j;
+   private euj.a k = euj.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public eul(boolean $$0) {
-      super($$0 ? x : y);
-      this.z = $$0;
+   public eul(eul.a $$0, te $$1, @Nullable te $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   protected void b() {
-      if (this.z) {
-         this.l();
-      }
-
-      this.d(new eqk(0, this.z ? 40 : 10, this.g, 9, this.e, this.i));
-   }
-
-   private void l() {
-      esf $$0 = new esf();
-      $$0.b().a(4, 4, 4, 0);
-      esf.b $$1 = $$0.d(2);
-      $$1.a(epi.a(m, $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(204).a(), 2, $$0.a().c(50));
-      $$1.a(this.a(n, () -> new evg(this.f.t.cl.l())));
-      $$1.a(this.a(o, () -> new euz(this, this.f.t.v())));
-      $$1.a(this.a(p, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(q, "https://aka.ms/snapshotbugs?ref=game")).r = !aa.b().d().a();
-      $$1.a(this.a(r, () -> new euh(this, this.f.m)));
-      if (this.f.R() && !this.f.S().p()) {
-         $$1.a(this.a(s, () -> new eur(this)));
+   public euj.a a(erx $$0, euk $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
       } else {
-         $$1.a(this.a(t, eyu::new));
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      sw $$2 = this.f.Q() ? u : v;
-      this.A = $$1.a(epi.a($$2, $$0x -> {
-         $$0x.r = false;
-         this.f.aW().a(this.f, this, this::B, true);
-      }).a(204).a(), 2);
-      $$0.c();
-      ese.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
-      $$0.a(this::d);
-   }
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aro.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
 
-   private void B() {
-      boolean $$0 = this.f.Q();
-      boolean $$1 = this.f.ar();
-      this.f.s.U();
-      if ($$0) {
-         this.f.b(new etx(w));
-      } else {
-         this.f.y();
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
 
-      euw $$2 = new euw();
-      if ($$0) {
-         this.f.a($$2);
-      } else if ($$1) {
-         this.f.a(new eiu($$2));
-      } else {
-         this.f.a(new exn($$2));
+      return this.k;
+   }
+
+   public void c() {
+      this.k = euj.a.b;
+   }
+
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new aep("toast/movement_keys")),
+      b(new aep("toast/mouse")),
+      c(new aep("toast/tree")),
+      d(new aep("toast/recipe_book")),
+      e(new aep("toast/wooden_planks")),
+      f(new aep("toast/social_interactions")),
+      g(new aep("toast/right_click"));
+
+      private final aep h;
+
+      private a(aep $$0) {
+         this.h = $$0;
       }
-   }
 
-   @Override
-   public void f() {
-      super.f();
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      if (this.z) {
-         this.a($$0);
+      public void a(erx $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
-
-      super.a($$0, $$1, $$2, $$3);
-      if (this.z && this.f != null && this.f.aW().c() && this.A != null) {
-         $$0.a(epf.m, this.A.p() + this.A.k() - 17, this.A.r() + 3, 182, 24, 15, 15);
-      }
-   }
-
-   private epi a(sw $$0, Supplier<euq> $$1) {
-      return epi.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
-   }
-
-   private epi a(sw $$0, String $$1) {
-      return this.a($$0, () -> new etj($$1x -> {
-            if ($$1x) {
-               ac.i().a($$1);
-            }
-
-            this.f.a(this);
-         }, $$1, true));
    }
 }

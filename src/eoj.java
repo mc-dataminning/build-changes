@@ -1,1032 +1,278 @@
-public class eoj {
-   public static final eoe a = eoe.a.a(0.0F)
-      .a("head", new eod(eod.d.c, new eof(0.0F, eog.a(1.2F, 1.2F, 1.2F), eod.b.a)))
-      .a("head", new eod(eod.d.a, new eof(0.0F, eog.a(0.0F, 1.0F, 1.0F), eod.b.a)))
-      .b();
-   public static final eoe b = eoe.a.a(8.0F)
-      .a()
-      .a(
-         "nose",
-         new eod(
-            eod.d.c,
-            new eof(0.0F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(0.5417F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(0.5833F, eog.a(1.0, 0.5, 1.0), eod.b.b),
-            new eof(0.6667F, eog.a(1.0, 2.5, 1.0), eod.b.b),
-            new eof(0.7917F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.9167F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.0F, eog.a(1.0, 3.0, 1.0), eod.b.b),
-            new eof(1.125F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(2.0F, eog.a(1.0, 1.0, 1.0), eod.b.a)
-         )
-      )
-      .b();
-   public static final eoe c = eoe.a.a(1.0F)
-      .a(
-         "nose",
-         new eod(
-            eod.d.c,
-            new eof(0.0F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.0833F, eog.a(1.0, 0.7F, 1.0), eod.b.b),
-            new eof(0.125F, eog.a(1.0, 3.0, 1.0), eod.b.b),
-            new eof(0.25F, eog.a(1.0, 3.0, 1.0), eod.b.b),
-            new eof(0.7083F, eog.a(1.0, 4.0, 1.0), eod.b.b),
-            new eof(0.8333F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.0F, eog.a(1.0, 1.0, 1.0), eod.b.b)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.125F, eog.b(-5.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.875F, eog.b(-20.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .b();
-   public static final eoe d = eoe.a.a(2.0F)
-      .a()
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(0.75F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(-7.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-7.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 2.67F, -0.67F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.3333F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(1.9167F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 2.67F, -0.67F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, -1.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(1.75F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(0.9167F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a),
-            new eof(0.3333F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a),
-            new eof(1.5833F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(1.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(0.5F, eog.b(-1.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(1.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(1.5F, eog.b(-1.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(1.0F, 0.0F, -2.5F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.2083F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.375F, eog.a(0.0F, -1.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2083F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.a(0.0F, -1.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(7.5F, 0.0F, 0.0F), eod.b.b),
-            new eof(0.1667F, eog.b(9.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(0.875F, eog.b(-1.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.25F, eog.b(7.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.75F, eog.b(5.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.0F, eog.b(7.5F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.b),
-            new eof(0.5F, eog.b(0.0F, 0.0F, -7.5F), eod.b.b),
-            new eof(1.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.b),
-            new eof(1.5F, eog.b(0.0F, 0.0F, -7.5F), eod.b.b),
-            new eof(2.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.b),
-            new eof(0.5F, eog.b(0.0F, 0.0F, 7.5F), eod.b.b),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.b),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 7.5F), eod.b.b),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.b)
-         )
-      )
-      .b();
-   public static final eoe e = eoe.a.a(2.0F)
-      .a()
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(0.75F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(-7.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-7.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 2.67F, -0.67F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.3333F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(1.9167F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 2.67F, -0.67F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, -1.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(1.75F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.1667F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(0.1667F, eog.a(0.0F, 0.0F, 3.0F), eod.b.a),
-            new eof(0.9167F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(1.1667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.1667F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5833F, eog.b(-35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(25.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a),
-            new eof(0.3333F, eog.a(0.0F, 4.0F, -1.0F), eod.b.a),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.a(0.0F, 0.0F, -2.0F), eod.b.a),
-            new eof(1.0F, eog.a(0.0F, 0.0F, -0.5F), eod.b.a),
-            new eof(1.5833F, eog.a(0.0F, 0.0F, 2.0F), eod.b.a),
-            new eof(2.0F, eog.a(0.0F, 2.22F, 0.78F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5F, eog.b(1.25F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.125F, eog.b(33.61503F, 11.46526F, 9.803F), eod.b.a),
-            new eof(0.875F, eog.b(34.71128F, 17.67415F, 14.15251F), eod.b.a),
-            new eof(1.125F, eog.b(37.21128F, -17.67415F, -14.15251F), eod.b.a),
-            new eof(1.875F, eog.b(38.30529F, -21.62827F, -17.40292F), eod.b.a),
-            new eof(2.0F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("head", new eod(eod.d.a, new eof(0.0F, eog.a(0.0F, -2.0F, 0.0F), eod.b.a), new eof(2.0F, eog.a(0.0F, -2.0F, 0.0F), eod.b.a)))
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(0.25F, eog.b(0.0F, 0.0F, -15.0F), eod.b.a),
-            new eof(0.5F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(0.75F, eog.b(0.0F, 0.0F, -15.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, -15.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(1.75F, eog.b(0.0F, 0.0F, -15.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(0.25F, eog.b(0.0F, 0.0F, 15.0F), eod.b.a),
-            new eof(0.5F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(0.75F, eog.b(0.0F, 0.0F, 15.0F), eod.b.a),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 15.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(1.75F, eog.b(0.0F, 0.0F, 15.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a)
-         )
-      )
-      .a(
-         "nose",
-         new eod(
-            eod.d.c,
-            new eof(0.0F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.0833F, eog.a(1.0, 1.5, 1.0), eod.b.b),
-            new eof(0.2083F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.375F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.4583F, eog.a(1.0, 2.5, 1.0), eod.b.b),
-            new eof(0.625F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.8333F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(0.9167F, eog.a(1.0, 2.5, 1.0), eod.b.b),
-            new eof(1.0833F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.2917F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.3333F, eog.a(1.0, 2.5, 1.0), eod.b.b),
-            new eof(1.5F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.625F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(1.6667F, eog.a(1.0, 3.5, 1.0), eod.b.b),
-            new eof(1.8333F, eog.a(1.0, 1.0, 1.0), eod.b.b),
-            new eof(2.0F, eog.a(1.0, 1.0, 1.0), eod.b.b)
-         )
-      )
-      .b();
-   public static final eoe f = eoe.a.a(8.0F)
-      .a(
-         "body",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5F, eog.b(1.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.b(-5.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.5F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.5F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(4.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(4.5F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(5.6667F, eog.b(5.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(5.8333F, eog.b(-2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(6.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.a(0.0F, -7.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.c,
-            new eof(0.0F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(1.5F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(1.5417F, eog.a(1.04F, 0.98F, 1.02F), eod.b.a),
-            new eof(1.5833F, eog.a(1.0, 1.0, 1.0), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.1667F, eog.b(10.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.4167F, eog.b(-10.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.875F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.0833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.5F, eog.b(47.5F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.6667F, eog.b(38.44F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.875F, eog.b(10.95951F, 13.57454F, -14.93501F), eod.b.b),
-            new eof(3.2083F, eog.b(47.5F, 0.0F, 0.0F), eod.b.b),
-            new eof(3.5833F, eog.b(55.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(3.7917F, eog.b(4.2932F, -16.187F, 10.90042F), eod.b.b),
-            new eof(4.125F, eog.b(47.5F, 0.0F, 0.0F), eod.b.b),
-            new eof(4.4167F, eog.b(54.71135F, 7.98009F, -5.56662F), eod.b.b),
-            new eof(4.5F, eog.b(55.72895F, -6.77684F, 4.46197F), eod.b.b),
-            new eof(4.5833F, eog.b(54.71135F, 7.98009F, -5.56662F), eod.b.b),
-            new eof(4.6667F, eog.b(55.72895F, -6.77684F, 4.46197F), eod.b.b),
-            new eof(4.75F, eog.b(54.71135F, 7.98009F, -5.56662F), eod.b.b),
-            new eof(4.8333F, eog.b(55.72895F, -6.77684F, 4.46197F), eod.b.b),
-            new eof(5.0F, eog.b(65.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(5.75F, eog.b(65.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(5.9167F, eog.b(-32.5F, 0.0F, 0.0F), eod.b.b),
-            new eof(6.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.625F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(1.5833F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(1.875F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(2.0833F, eog.a(0.0F, 3.0F, 0.0F), eod.b.a),
-            new eof(2.2917F, eog.a(0.0F, 6.0F, 0.0F), eod.b.a),
-            new eof(2.6667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.2083F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a),
-            new eof(3.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(4.125F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a),
-            new eof(5.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(5.75F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a),
-            new eof(6.0F, eog.a(0.0F, 1.5F, 0.0F), eod.b.a),
-            new eof(6.25F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, -2.5F), eod.b.a),
-            new eof(1.4167F, eog.b(0.0F, 0.0F, -50.0F), eod.b.a),
-            new eof(1.5833F, eog.b(0.0F, 0.0F, -30.0F), eod.b.a),
-            new eof(5.9167F, eog.b(0.0F, 0.0F, -30.0F), eod.b.a),
-            new eof(6.0833F, eog.b(0.0F, 0.0F, -65.0F), eod.b.a),
-            new eof(6.3333F, eog.b(0.0F, 0.0F, -30.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 2.5F), eod.b.a),
-            new eof(1.4167F, eog.b(0.0F, 0.0F, 50.0F), eod.b.a),
-            new eof(1.5833F, eog.b(0.0F, 0.0F, 30.0F), eod.b.a),
-            new eof(5.9167F, eog.b(0.0F, 0.0F, 30.0F), eod.b.a),
-            new eof(6.0833F, eog.b(0.0F, 0.0F, 65.0F), eod.b.a),
-            new eof(6.3333F, eog.b(0.0F, 0.0F, 30.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2083F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.b(0.0F, 0.0F, 90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2083F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2917F, eog.a(-2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.b(0.0F, 0.0F, 90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(-2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.a(-2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2083F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.b(0.0F, 0.0F, -90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2083F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2917F, eog.a(2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.a(4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.b(0.0F, 0.0F, -90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.a(4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, -90.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.3333F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.4167F, eog.a(2.0F, -0.75F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.a(4.0F, -5.5F, 0.0F), eod.b.a)
-         )
-      )
-      .b();
-   public static final eoe g = eoe.a.a(3.0F)
-      .a(
-         "body",
-         new eod(
-            eod.d.b,
-            new eof(0.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.b(2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(-2.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.7083F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.a,
-            new eof(0.25F, eog.a(0.0F, -7.0F, 0.0F), eod.b.a),
-            new eof(0.75F, eog.a(0.0F, -7.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.7083F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.3333F, eog.b(-5.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.7083F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.0F, eog.b(10.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("head", new eod(eod.d.a, new eof(0.0F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a), new eof(1.375F, eog.a(0.0F, 1.0F, 0.0F), eod.b.a)))
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, -30.0F), eod.b.a),
-            new eof(0.9167F, eog.b(0.0F, 0.0F, -30.0F), eod.b.a),
-            new eof(1.2083F, eog.b(0.0F, 0.0F, -5.0F), eod.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 30.0F), eod.b.a),
-            new eof(0.9167F, eog.b(0.0F, 0.0F, 30.0F), eod.b.a),
-            new eof(1.2083F, eog.b(0.0F, 0.0F, 5.0F), eod.b.a)
-         )
-      )
-      .a("right_front_leg", new eod(eod.d.b, new eof(0.0F, eog.b(0.0F, 0.0F, 90.0F), eod.b.b), new eof(0.4583F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.2083F, eog.a(6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.4583F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a("right_mid_leg", new eod(eod.d.b, new eof(0.0833F, eog.b(0.0F, 0.0F, 90.0F), eod.b.b), new eof(0.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0833F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.3333F, eog.a(6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a("right_hind_leg", new eod(eod.d.b, new eof(0.1667F, eog.b(0.0F, 0.0F, 90.0F), eod.b.b), new eof(0.6667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.1667F, eog.a(-4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.4167F, eog.a(6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.6667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a("left_front_leg", new eod(eod.d.b, new eof(0.0F, eog.b(0.0F, 0.0F, -90.0F), eod.b.b), new eof(0.4583F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0F, eog.a(4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.2083F, eog.a(-6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.4583F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a("left_mid_leg", new eod(eod.d.b, new eof(0.0833F, eog.b(0.0F, 0.0F, -90.0F), eod.b.b), new eof(0.5833F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.0833F, eog.a(4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.3333F, eog.a(-6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.5833F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a("left_hind_leg", new eod(eod.d.b, new eof(0.1667F, eog.b(0.0F, 0.0F, -90.0F), eod.b.b), new eof(0.6667F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)))
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.a,
-            new eof(0.1667F, eog.a(4.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.4167F, eog.a(-6.0F, -5.5F, 0.0F), eod.b.b),
-            new eof(0.6667F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .b();
-   public static final eoe h = eoe.a.a(4.0F)
-      .a(
-         "bone",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(-90.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.5F, eog.b(-98.91F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.9583F, eog.b(-90.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.7083F, eog.b(-68.28F, 0.0F, 0.0F), eod.b.b),
-            new eof(2.9583F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a(
-         "bone",
-         new eod(
-            eod.d.a,
-            new eof(1.0F, eog.a(0.0F, 20.0F, 17.0F), eod.b.b),
-            new eof(1.5F, eog.a(0.0F, 25.19F, 20.37F), eod.b.b),
-            new eof(1.9583F, eog.a(0.0F, 20.0F, 17.0F), eod.b.b),
-            new eof(2.7083F, eog.a(0.0F, 17.06F, 11.25F), eod.b.b),
-            new eof(2.8333F, eog.a(0.0F, 9.85F, 2.2F), eod.b.b),
-            new eof(2.9583F, eog.a(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a(
-         "body",
-         new eod(
-            eod.d.c,
-            new eof(1.0F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(1.9583F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(2.9167F, eog.a(1.0, 1.0, 1.0), eod.b.a),
-            new eof(3.0F, eog.a(1.05F, 0.95F, 1.05F), eod.b.a),
-            new eof(3.0833F, eog.a(1.0, 1.0, 1.0), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.2917F, eog.b(17.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.9583F, eog.b(-10.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.75F, eog.b(35.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.9167F, eog.b(-30.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0417F, eog.b(7.5F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.125F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eod(
-            eod.d.a,
-            new eof(1.0F, eog.a(0.0F, 7.0F, 19.0F), eod.b.a),
-            new eof(1.5F, eog.a(0.0F, 7.0F, 0.0F), eod.b.a),
-            new eof(1.9583F, eog.a(0.0F, 7.0F, 0.0F), eod.b.a),
-            new eof(2.75F, eog.a(0.0F, 7.0F, 0.0F), eod.b.a),
-            new eof(2.9583F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, -5.0F), eod.b.a),
-            new eof(1.9583F, eog.b(0.0F, 0.0F, -5.0F), eod.b.a),
-            new eof(2.7083F, eog.b(0.0F, 0.0F, -5.0F), eod.b.a),
-            new eof(2.9167F, eog.b(0.0F, 0.0F, -90.0F), eod.b.b),
-            new eof(3.125F, eog.b(0.0F, 0.0F, -5.0F), eod.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 5.0F), eod.b.a),
-            new eof(1.9583F, eog.b(0.0F, 0.0F, 5.0F), eod.b.a),
-            new eof(2.7083F, eog.b(0.0F, 0.0F, 5.0F), eod.b.a),
-            new eof(2.9167F, eog.b(0.0F, 0.0F, 90.0F), eod.b.b),
-            new eof(3.125F, eog.b(0.0F, 0.0F, 5.0F), eod.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.25F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.5F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.75F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("right_front_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .a(
-         "right_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.625F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.875F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.125F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.375F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.625F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("right_mid_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .a(
-         "right_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.25F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.5F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("right_hind_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .a(
-         "left_front_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.25F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.5F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.75F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("left_front_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .a(
-         "left_mid_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.375F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.625F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.875F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.125F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.375F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.625F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("left_mid_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .a(
-         "left_hind_leg",
-         new eod(
-            eod.d.b,
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.25F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.5F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(1.75F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.0F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.25F, eog.b(-15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(2.5F, eog.b(15.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(3.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a)
-         )
-      )
-      .a("left_hind_leg", new eod(eod.d.a, new eof(1.0F, eog.a(0.0F, 4.0F, 0.0F), eod.b.a), new eof(1.5F, eog.a(0.0F, 0.0F, 0.0F), eod.b.a)))
-      .b();
-   public static final eoe i = eoe.a.a(2.0F)
-      .a()
-      .a(
-         "head",
-         new eod(
-            eod.d.b,
-            new eof(0.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.a),
-            new eof(0.5F, eog.b(-32.00206F, 19.3546F, -11.70092F), eod.b.b),
-            new eof(1.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.5F, eog.b(-32.00206F, -19.3546F, 11.70092F), eod.b.b),
-            new eof(2.0F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(0.75F, eog.b(0.0F, 0.0F, -67.5F), eod.b.b),
-            new eof(0.9583F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.125F, eog.b(0.0F, 0.0F, -67.5F), eod.b.b),
-            new eof(1.2917F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eod(
-            eod.d.b,
-            new eof(0.5F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(0.75F, eog.b(0.0F, 0.0F, 67.5F), eod.b.b),
-            new eof(0.9583F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b),
-            new eof(1.125F, eog.b(0.0F, 0.0F, 67.5F), eod.b.b),
-            new eof(1.2917F, eog.b(0.0F, 0.0F, 0.0F), eod.b.b)
-         )
-      )
-      .b();
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class eoj extends ged {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aep b = new aep("minecraft", "textures/gui/options_background.png");
+   private static final te c = te.c("mco.question");
+   static final te y = te.c("mco.configure.world.invites.normal.tooltip");
+   static final te z = te.c("mco.configure.world.invites.ops.tooltip");
+   static final te A = te.c("mco.configure.world.invites.remove.tooltip");
+   private static final int B = -1;
+   private final eny C;
+   final emo D;
+   eoj.b E;
+   int F;
+   int G;
+   private esi H;
+   private esi I;
+   int J = -1;
+   private boolean K;
+
+   public eoj(eny $$0, emo $$1) {
+      super(te.c("mco.configure.world.players.title"));
+      this.C = $$0;
+      this.D = $$1;
+   }
+
+   @Override
+   public void aE_() {
+      this.F = this.g / 2 - 160;
+      this.G = 150;
+      int $$0 = this.g / 2 + 12;
+      this.E = new eoj.b();
+      this.E.f(this.F);
+      this.e(this.E);
+
+      for (emk $$1 : this.D.h) {
+         this.E.a($$1);
+      }
+
+      this.J = -1;
+      this.d(esi.a(te.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new eod(this.C, this, this.D))).a($$0, h(1), this.G + 10, 20).a());
+      this.H = this.d(esi.a(te.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.J)).a($$0, h(7), this.G + 10, 20).a());
+      this.I = this.d(esi.a(te.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
+         if (this.D.h.get(this.J).c()) {
+            this.k(this.J);
+         } else {
+            this.j(this.J);
+         }
+      }).a($$0, h(9), this.G + 10, 20).a());
+      this.d(esi.a(td.k, $$0x -> this.C()).a($$0 + this.G / 2 + 2, h(12), this.G / 2 + 10 - 2, 20).a());
+      this.B();
+   }
+
+   @Override
+   void B() {
+      this.H.j = this.i(this.J);
+      this.I.j = this.i(this.J);
+      this.E.d();
+   }
+
+   private boolean i(int $$0) {
+      return $$0 != -1;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   private void C() {
+      if (this.K) {
+         this.f.a(this.C.f());
+      } else {
+         this.f.a(this.C);
+      }
+   }
+
+   void j(int $$0) {
+      elx $$1 = elx.a();
+      UUID $$2 = this.D.h.get($$0).b();
+
+      try {
+         this.a($$1.b(this.D.a, $$2));
+      } catch (enk var5) {
+         a.error("Couldn't op the user", var5);
+      }
+
+      this.B();
+   }
+
+   void k(int $$0) {
+      elx $$1 = elx.a();
+      UUID $$2 = this.D.h.get($$0).b();
+
+      try {
+         this.a($$1.c(this.D.a, $$2));
+      } catch (enk var5) {
+         a.error("Couldn't deop the user", var5);
+      }
+
+      this.B();
+   }
+
+   private void a(emg $$0) {
+      for (emk $$1 : this.D.h) {
+         $$1.a($$0.a.contains($$1.a()));
+      }
+   }
+
+   void l(int $$0) {
+      this.B();
+      if ($$0 >= 0 && $$0 < this.D.h.size()) {
+         emk $$1 = this.D.h.get($$0);
+         enz $$2 = new enz($$1x -> {
+            if ($$1x) {
+               elx $$2x = elx.a();
+
+               try {
+                  $$2x.a(this.D.a, $$1.b());
+               } catch (enk var5) {
+                  a.error("Couldn't uninvite user", var5);
+               }
+
+               this.D.h.remove(this.J);
+               this.J = -1;
+               this.B();
+            }
+
+            this.K = true;
+            this.f.a(this);
+         }, c, te.a("mco.configure.world.uninvite.player", $$1.a()));
+         this.f.a($$2);
+      }
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      int $$4 = h(12) + 20;
+      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
+      $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      String $$5 = this.D.h != null ? Integer.toString(this.D.h.size()) : "0";
+      $$0.a(this.i, te.a("mco.configure.world.invited.number", $$5), this.F, h(0), -6250336, false);
+   }
+
+   class a extends ete.a<eoj.a> {
+      private static final int b = 3;
+      private static final int c = 1;
+      private static final int d = 8;
+      private static final int e = 7;
+      private static final ett f = new ett(new aep("player_list/remove_player"), new aep("player_list/remove_player_highlighted"));
+      private static final ett g = new ett(new aep("player_list/make_operator"), new aep("player_list/make_operator_highlighted"));
+      private static final ett h = new ett(new aep("player_list/remove_operator"), new aep("player_list/remove_operator_highlighted"));
+      private final emk i;
+      private final List<esg> j = new ArrayList<>();
+      private final esu k;
+      private final esu l;
+      private final esu m;
+
+      public a(emk $$0) {
+         this.i = $$0;
+         int $$1 = eoj.this.D.h.indexOf(this.i);
+         int $$2 = eoj.this.E.p() - 16 - 9;
+         int $$3 = eoj.this.E.g($$1) + 1;
+         this.k = new esu($$2, $$3, 8, 7, f, $$1x -> eoj.this.l($$1), td.a);
+         this.k.a(etr.a(eoj.A));
+         this.j.add(this.k);
+         $$2 += 11;
+         this.l = new esu($$2, $$3, 8, 7, g, $$1x -> eoj.this.j($$1), td.a);
+         this.l.a(etr.a(eoj.y));
+         this.j.add(this.l);
+         this.m = new esu($$2, $$3, 8, 7, h, $$1x -> eoj.this.k($$1), td.a);
+         this.m.a(etr.a(eoj.z));
+         this.j.add(this.m);
+         this.b();
+      }
+
+      public void b() {
+         this.l.j = !this.i.c();
+         this.m.j = !this.l.j;
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (!this.l.a($$0, $$1, $$2)) {
+            this.m.a($$0, $$1, $$2);
+         }
+
+         this.k.a($$0, $$1, $$2);
+         return true;
+      }
+
+      @Override
+      public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.i.d()) {
+            $$10 = -6250336;
+         } else if (this.i.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         epe.a($$0, eoj.this.F + 2 + 2, $$2 + 1, 8, this.i.b());
+         $$0.a(eoj.this.i, this.i.a(), eoj.this.F + 3 + 12, $$2 + 1, $$10, false);
+         this.j.forEach($$5x -> {
+            $$5x.f($$2 + 1);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public te a() {
+         return te.a("narrator.select", this.i.a());
+      }
+   }
+
+   class b extends gec<eoj.a> {
+      public b() {
+         super(eoj.this.G + 10, eoj.h(12) + 20, eoj.h(1), eoj.h(12) + 20, 13);
+      }
+
+      public void d() {
+         if (eoj.this.J != -1) {
+            this.d(eoj.this.J).b();
+         }
+      }
+
+      public void a(emk $$0) {
+         this.a((eoj.a)(eoj.this.new a($$0)));
+      }
+
+      @Override
+      public int b() {
+         return (int)((double)this.d * 1.0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         eoj.this.J = $$0;
+         eoj.this.B();
+      }
+
+      public void a(@Nullable eoj.a $$0) {
+         super.a($$0);
+         eoj.this.J = this.i().indexOf($$0);
+         eoj.this.B();
+      }
+
+      @Override
+      public int c() {
+         return eoj.this.F + this.d - 5;
+      }
+
+      @Override
+      public int a() {
+         return this.k() * 13;
+      }
+   }
 }

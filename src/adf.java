@@ -1,23 +1,21 @@
-public interface adf {
-   ahf a();
+import java.util.UUID;
 
-   String b();
+public record adf(String a, UUID b) implements uw<add> {
+   public adf(sh $$0) {
+      this($$0.d(16), $$0.o());
+   }
 
-   int d();
+   @Override
+   public void a(sh $$0) {
+      $$0.a(this.a, 16);
+      $$0.a(this.b);
+   }
 
-   String f();
+   public void a(add $$0) {
+      $$0.a(this);
+   }
 
-   String G();
-
-   int H();
-
-   int I();
-
-   String[] J();
-
-   String q();
-
-   String s();
-
-   String a(String var1);
+   public UUID d() {
+      return this.b;
+   }
 }

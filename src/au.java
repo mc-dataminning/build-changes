@@ -2,10 +2,10 @@ import com.google.gson.JsonObject;
 import javax.annotation.Nullable;
 
 public class au extends cv<au.a> {
-   static final acq a = new acq("bred_animals");
+   static final aep a = new aep("bred_animals");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -16,10 +16,10 @@ public class au extends cv<au.a> {
       return new au.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(aig $$0, brl $$1, brl $$2, @Nullable bfe $$3) {
-      dzk $$4 = bo.b($$0, $$1);
-      dzk $$5 = bo.b($$0, $$2);
-      dzk $$6 = $$3 != null ? bo.b($$0, $$3) : null;
+   public void a(akj $$0, bui $$1, bui $$2, @Nullable bib $$3) {
+      ech $$4 = bo.b($$0, $$1);
+      ech $$5 = bo.b($$0, $$2);
+      ech $$6 = $$3 != null ? bo.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -47,7 +47,7 @@ public class au extends cv<au.a> {
          return new au.a(ba.a, bo.a($$0), bo.a($$1), bo.a($$2));
       }
 
-      public boolean a(dzk $$0, dzk $$1, @Nullable dzk $$2) {
+      public boolean a(ech $$0, ech $$1, @Nullable ech $$2) {
          return this.c == ba.a || $$2 != null && this.c.a($$2) ? this.a.a($$0) && this.b.a($$1) || this.a.a($$1) && this.b.a($$0) : false;
       }
 

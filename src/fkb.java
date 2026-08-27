@@ -1,88 +1,83 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+public class fkb extends flw {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final flr M;
 
-public class fkb implements AutoCloseable {
-   private final fjn c;
-   public final egv a;
-   public final egv b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-
-   public fkb(akx $$0, String $$1, egv $$2, egv $$3) throws IOException {
-      this.c = new fjn($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   fkb(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flr $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = aro.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = aro.a(this.r, 0.0F, 0.0F);
+      this.x = aro.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
-   public void close() {
-      this.c.close();
-   }
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
 
-   public final String a() {
-      return this.c.h();
-   }
+         if (this.L) {
+            this.k += 0.002;
+         }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      enn $$4 = enn.N();
-      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
-      this.c.g();
-      this.b.b(enn.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      eie $$5 = eil.a().c();
-      $$5.a(eio.b.h, eih.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      eif.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof egv) {
-            ((egv)$$6).d();
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
          }
       }
    }
 
-   public fjn b() {
-      return this.c;
+   @Override
+   public fla b() {
+      return fla.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aro.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fkz<iz> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

@@ -1,9 +1,20 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import javax.annotation.Nullable;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface pp {
+class pp {
+   @Nullable
+   public final Long a;
+   public final Runnable b;
+
+   private pp(@Nullable Long $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   static pp a(Runnable $$0) {
+      return new pp(null, $$0);
+   }
+
+   static pp a(long $$0, Runnable $$1) {
+      return new pp($$0, $$1);
+   }
 }

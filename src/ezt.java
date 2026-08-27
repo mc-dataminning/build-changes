@@ -1,21 +1,50 @@
-import com.google.common.base.MoreObjects;
-import java.util.List;
+public abstract class ezt<T extends cfc> extends eyt<T> implements ceo {
+   private final aep x;
 
-public class ezt {
-   public static final int a = -1;
-   private final List<ezr> b;
-   private final int c;
-
-   public ezt(List<ezr> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ezt(T $$0, cbk $$1, te $$2, aep $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
    }
 
-   public ezr a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (ezr)MoreObjects.firstNonNull(this.b.get($$0), ezp.a) : ezp.a;
+   protected void D() {
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   protected void aE_() {
+      super.aE_();
+      this.D();
+      this.p.a(this);
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      this.p.b(this);
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(erx $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(erx var1, int var2, int var3);
+
+   @Override
+   public void a(cec $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cec $$0, int $$1, ciw $$2) {
    }
 }

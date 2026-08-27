@@ -1,54 +1,17 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class om {
-   public static void a(nm<dkb<?, ?>> $$0) {
-      oj.a($$0);
-      ok.a($$0);
-      ol.a($$0);
-      on.a($$0);
-      oo.a($$0);
-      op.a($$0);
-      oq.a($$0);
-      or.a($$0);
-      os.a($$0);
-   }
+   public static final aeo<dmy<?, ?>> a = on.a("end_spike");
+   public static final aeo<dmy<?, ?>> b = on.a("end_gateway_return");
+   public static final aeo<dmy<?, ?>> c = on.a("end_gateway_delayed");
+   public static final aeo<dmy<?, ?>> d = on.a("chorus_plant");
+   public static final aeo<dmy<?, ?>> e = on.a("end_island");
 
-   private static dir a(List<cpn> $$0) {
-      dir $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = dir.a(dir.c, dir.a(ha.a.q(), $$0));
-      } else {
-         $$1 = dir.c;
-      }
-
-      return $$1;
-   }
-
-   public static dnf a(int $$0, he<dre> $$1) {
-      return new dnf($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends dms, F extends dko<FC>> dnf a(F $$0, FC $$1, List<cpn> $$2, int $$3) {
-      return a($$3, pb.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends dms, F extends dko<FC>> dnf a(F $$0, FC $$1, List<cpn> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends dms, F extends dko<FC>> dnf a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static acp<dkb<?, ?>> a(String $$0) {
-      return acp.a(jc.as, new acq($$0));
-   }
-
-   public static void a(nm<dkb<?, ?>> $$0, acp<dkb<?, ?>> $$1, dko<dmz> $$2) {
-      a($$0, $$1, $$2, dms.m);
-   }
-
-   public static <FC extends dms, F extends dko<FC>> void a(nm<dkb<?, ?>> $$0, acp<dkb<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new dkb($$2, $$3));
+   public static void a(nn<dmy<?, ?>> $$0) {
+      on.a($$0, a, dnl.J, new dqj(false, ImmutableList.of(), null));
+      on.a($$0, b, dnl.L, dpo.a(aki.a, true));
+      on.a($$0, c, dnl.L, dpo.a());
+      on.a($$0, d, dnl.l);
+      on.a($$0, e, dnl.K);
    }
 }

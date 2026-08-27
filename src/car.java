@@ -1,154 +1,117 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class car extends caf {
-   private static final byte c = 10;
-   private int d = -1;
+public class car {
+   public static final Codec<car> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqw.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               aqw.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               aqw.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, car::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   public car(bfn<? extends car> $$0, cmm $$1) {
-      super($$0, $$1);
+   public car(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   public car(cmm $$0, double $$1, double $$2, double $$3) {
-      super(bfn.aZ, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public caf.a t() {
-      return caf.a.d;
-   }
-
-   @Override
-   public dcb w() {
-      return cpo.ck.n();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.d > 0) {
-         this.d--;
-         this.dI().a(iv.Z, this.dn(), this.dp() + 0.5, this.dt(), 0.0, 0.0, 0.0);
-      } else if (this.d == 0) {
-         this.h(this.dl().i());
-      }
-
-      if (this.O) {
-         double $$0 = this.dl().i();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(ben $$0, float $$1) {
-      if ($$0.c() instanceof byu $$3 && $$3.bL()) {
-         ben $$4 = this.dJ().d(this, $$0.d());
-         this.a($$4, $$3.dl().g());
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(ben $$0) {
-      double $$1 = this.dl().i();
-      if (!$$0.a(amy.i) && !$$0.a(amy.l) && !($$1 >= 0.01F)) {
-         super.a($$0);
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
       } else {
-         if (this.d < 0) {
-            this.A();
-            this.d = this.af.a(20) + this.af.a(20);
-         }
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
       }
    }
 
-   @Override
-   protected cfu j() {
-      return cgc.nd;
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable ben $$0, double $$1) {
-      if (!this.dI().B) {
-         double $$2 = Math.sqrt($$1);
-         if ($$2 > 5.0) {
-            $$2 = 5.0;
-         }
-
-         this.dI().a(this, $$0, null, this.dn(), this.dp(), this.dt(), (float)(4.0 + this.af.j() * 1.5 * $$2), false, cmm.a.d);
-         this.ai();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, ben $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.d < 0) {
-         this.A();
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.A();
+   public static OptionalInt a(aki $$0, gv $$1, akj $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
       } else {
-         super.b($$0);
-      }
-   }
+         List<akj> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
 
-   public void A() {
-      this.d = 80;
-      if (!this.dI().B) {
-         this.dI().a(this, (byte)10);
-         if (!this.aQ()) {
-            this.dI().a(null, this.dn(), this.dp(), this.dt(), amh.xF, ami.e, 1.0F, 1.0F);
+         if ($$3.stream().anyMatch($$0x -> $$0x.Y().map(car::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<car> $$4 = $$3.stream().flatMap($$0x -> $$0x.Y().stream()).max(Comparator.comparingInt(car::c));
+            if ($$4.isPresent()) {
+               car $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.Y().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
          }
       }
    }
 
-   public int C() {
-      return this.d;
+   private boolean d() {
+      return this.i > 0;
    }
 
-   public boolean D() {
-      return this.d > -1;
+   private static boolean a(aki $$0, gv $$1) {
+      eha $$2 = eha.a(ehf.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cap.class, $$2).isEmpty();
    }
 
-   @Override
-   public float a(cme $$0, cls $$1, gu $$2, dcb $$3, dxe $$4, float $$5) {
-      return !this.D() || !$$3.a(amw.N) && !$$1.a_($$2.c()).a(amw.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   private static List<akj> b(aki $$0, gv $$1) {
+      ehf $$2 = ehf.b($$1);
+      Predicate<akj> $$3 = $$1x -> $$1x.di().a((hp)$$2, 16.0);
+      return $$0.a($$3.and(biw::bv).and(bij.f));
    }
 
-   @Override
-   public boolean a(cme $$0, cls $$1, gu $$2, dcb $$3, float $$4) {
-      return !this.D() || !$$3.a(amw.N) && !$$1.a_($$2.c()).a(amw.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.d = $$0.h("TNTFuse");
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
       }
    }
 
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("TNTFuse", this.d);
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = aro.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(car $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

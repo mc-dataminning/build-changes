@@ -1,32 +1,28 @@
-public class aae implements uo<zb> {
+public class aae implements uw<wo> {
    private final int a;
-   private final aae.a b;
+   private final int b;
    private final int c;
 
-   public aae(bfj $$0, aae.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aae(bfj $$0, aae.a $$1, int $$2) {
-      this.a = $$0.af();
+   public aae(int $$0, int $$1, int $$2) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public aae(sf $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(aae.a.class);
-      this.c = $$0.m();
+   public aae(sh $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
-      $$0.a(this.b);
-      $$0.d(this.c);
+   public void a(sh $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
@@ -34,23 +30,11 @@ public class aae implements uo<zb> {
       return this.a;
    }
 
-   public aae.a c() {
+   public int d() {
       return this.b;
    }
 
-   public int d() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

@@ -1,58 +1,45 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class agz implements agx {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.data.entity.invalid"));
-   public static final Function<String, agy.c> a = $$0 -> new agy.c() {
-         @Override
-         public agx a(CommandContext<ds> $$0x) throws CommandSyntaxException {
-            return new agz(ec.a($$0, $$0));
-         }
+public class agz {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("commands.jfr.dump.failed", $$0));
 
-         @Override
-         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
-            return $$0.then(dt.a("entity").then($$1.apply(dt.a($$0, ec.a()))));
-         }
-      };
-   private final bfj c;
-
-   public agz(bfj $$0) {
-      this.c = $$0;
+   private agz() {
    }
 
-   @Override
-   public void a(qr $$0) throws CommandSyntaxException {
-      if (this.c instanceof byo) {
-         throw b.create();
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
+            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
+      );
+   }
+
+   private static int a(ds $$0) throws CommandSyntaxException {
+      bdi $$1 = bdi.a($$0.l());
+      if (!bdk.e.a($$1)) {
+         throw a.create();
       } else {
-         UUID $$1 = this.c.ct();
-         this.c.g($$0);
-         this.c.a_($$1);
+         $$0.a(() -> te.c("commands.jfr.started"), false);
+         return 1;
       }
    }
 
-   @Override
-   public qr a() {
-      return cl.b(this.c);
-   }
-
-   @Override
-   public sw b() {
-      return sw.a("commands.data.entity.modified", this.c.H_());
-   }
-
-   @Override
-   public sw a(rk $$0) {
-      return sw.a("commands.data.entity.query", this.c.H_(), rd.c($$0));
-   }
-
-   @Override
-   public sw a(eh.g $$0, double $$1, int $$2) {
-      return sw.a("commands.data.entity.get", $$0, this.c.H_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int b(ds $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bdk.e.b().normalize());
+         Path $$2 = $$0.l().p() && !aa.aS ? $$1 : $$1.toAbsolutePath();
+         te $$3 = te.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new tc(tc.a.f, $$2.toString())).a(new tj(tj.a.a, te.c("chat.copy.click"))));
+         $$0.a(() -> te.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
+      }
    }
 }

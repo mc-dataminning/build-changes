@@ -1,201 +1,142 @@
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bwn extends bwc {
-   private static final aby<Byte> b = acb.a(bwn.class, aca.a);
-   private static final float c = 0.1F;
+public class bwn extends bwh {
+   private final bwo bT = new bwo(this);
+   private static final int bU = 18000;
+   private boolean bW;
+   private int bX;
 
-   public bwn(bfn<? extends bwn> $$0, cmm $$1) {
+   public bwn(bik<? extends bwn> $$0, cpk $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void x() {
-      this.bO.a(1, new bmp(this));
-      this.bO.a(3, new bnb(this, 0.4F));
-      this.bO.a(4, new bwn.a(this));
-      this.bO.a(5, new boi(this, 0.8));
-      this.bO.a(6, new bnd(this, byo.class, 8.0F));
-      this.bO.a(6, new bnq(this));
-      this.bP.a(1, new bon(this));
-      this.bP.a(2, new bwn.c<>(this, byo.class));
-      this.bP.a(3, new bwn.c<>(this, brx.class));
+   public static bkc.a p() {
+      return gz().a(bkd.a, 15.0).a(bkd.d, 0.2F);
    }
 
    @Override
-   public double bx() {
-      return (double)(this.de() * 0.5F);
+   protected void a(art $$0) {
+      this.a(bkd.n).a(a($$0::j));
    }
 
    @Override
-   protected bpj b(cmm $$0) {
-      return new bpk(this, $$0);
+   protected void gp() {
    }
 
    @Override
-   protected void a_() {
-      super.a_();
-      this.am.a(b, (byte)0);
+   protected aot r() {
+      return this.a(apo.a) ? aou.vv : aou.vr;
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (!this.dI().B) {
-         this.w(this.O);
+   protected aot h_() {
+      return aou.vs;
+   }
+
+   @Override
+   protected aot d(bhe $$0) {
+      return aou.vt;
+   }
+
+   @Override
+   protected aot aL() {
+      if (this.aA()) {
+         if (!this.bO()) {
+            return aou.vy;
+         }
+
+         this.cu++;
+         if (this.cu > 5 && this.cu % 3 == 0) {
+            return aou.vw;
+         }
+
+         if (this.cu <= 5) {
+            return aou.vy;
+         }
       }
-   }
 
-   public static bhf.a r() {
-      return bwc.ge().a(bhg.a, 16.0).a(bhg.d, 0.3F);
-   }
-
-   @Override
-   protected amg s() {
-      return amh.wY;
+      return aou.vu;
    }
 
    @Override
-   protected amg d(ben $$0) {
-      return amh.xa;
-   }
-
-   @Override
-   protected amg g_() {
-      return amh.wZ;
-   }
-
-   @Override
-   protected void b(gu $$0, dcb $$1) {
-      this.a(amh.xb, 0.15F, 1.0F);
-   }
-
-   @Override
-   public boolean i_() {
-      return this.w();
-   }
-
-   @Override
-   public void a(dcb $$0, eei $$1) {
-      if (!$$0.a(cpo.bs)) {
-         super.a($$0, $$1);
+   protected void e(float $$0) {
+      if (this.aA()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
    @Override
-   public bge eN() {
-      return bge.c;
+   protected void gG() {
+      if (this.aX()) {
+         this.a(aou.vx, 0.4F, 1.0F);
+      } else {
+         super.gG();
+      }
    }
 
    @Override
-   public boolean c(bfa $$0) {
-      return $$0.c() == bfc.s ? false : super.c($$0);
+   public bjb eQ() {
+      return bjb.b;
    }
 
-   public boolean w() {
-      return (this.am.b(b) & 1) != 0;
+   @Override
+   protected Vector3f a(big $$0, bih $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - (this.i_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      if (this.q() && this.bX++ >= 18000) {
+         this.ak();
+      }
+   }
+
+   @Override
+   public void b(qs $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.q());
+      $$0.a("SkeletonTrapTime", this.bX);
+   }
+
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.bX = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fb() {
+      return 0.96F;
+   }
+
+   public boolean q() {
+      return this.bW;
    }
 
    public void w(boolean $$0) {
-      byte $$1 = this.am.b(b);
-      if ($$0) {
-         $$1 = (byte)($$1 | 1);
-      } else {
-         $$1 = (byte)($$1 & -2);
+      if ($$0 != this.bW) {
+         this.bW = $$0;
+         if ($$0) {
+            this.bO.a(1, this.bT);
+         } else {
+            this.bO.a(this.bT);
+         }
       }
-
-      this.am.b(b, $$1);
    }
 
    @Nullable
    @Override
-   public bgt a(cnb $$0, bdv $$1, bgd $$2, @Nullable bgt $$3, @Nullable qr $$4) {
-      $$3 = super.a($$0, $$1, $$2, $$3, $$4);
-      apf $$5 = $$0.y_();
-      if ($$5.a(100) == 0) {
-         bwk $$6 = bfn.aJ.a(this.dI());
-         if ($$6 != null) {
-            $$6.b(this.dn(), this.dp(), this.dt(), this.dy(), 0.0F);
-            $$6.a($$0, $$1, $$2, null, null);
-            $$6.k(this);
-         }
-      }
-
-      if ($$3 == null) {
-         $$3 = new bwn.b();
-         if ($$0.ai() == bdu.d && $$5.i() < 0.1F * $$1.d()) {
-            ((bwn.b)$$3).a($$5);
-         }
-      }
-
-      if ($$3 instanceof bwn.b $$7) {
-         bey $$8 = $$7.a;
-         if ($$8 != null) {
-            this.b(new bfa($$8, -1));
-         }
-      }
-
-      return $$3;
+   public bib a(aki $$0, bib $$1) {
+      return bik.aK.a((cpk)$$0);
    }
 
    @Override
-   protected float b(bgl $$0, bfk $$1) {
-      return 0.65F;
-   }
-
-   static class a extends bnf {
-      public a(bwn $$0) {
-         super($$0, 1.0, true);
-      }
-
-      @Override
-      public boolean a() {
-         return super.a() && !this.a.bN();
-      }
-
-      @Override
-      public boolean b() {
-         float $$0 = this.a.bj();
-         if ($$0 >= 0.5F && this.a.ec().a(100) == 0) {
-            this.a.h(null);
-            return false;
-         } else {
-            return super.b();
-         }
-      }
-
-      @Override
-      protected double a(bfz $$0) {
-         return (double)(4.0F + $$0.dd());
-      }
-   }
-
-   public static class b implements bgt {
-      @Nullable
-      public bey a;
-
-      public void a(apf $$0) {
-         int $$1 = $$0.a(5);
-         if ($$1 <= 1) {
-            this.a = bfc.a;
-         } else if ($$1 <= 2) {
-            this.a = bfc.e;
-         } else if ($$1 <= 3) {
-            this.a = bfc.j;
-         } else if ($$1 <= 4) {
-            this.a = bfc.n;
-         }
-      }
-   }
-
-   static class c<T extends bfz> extends boo<T> {
-      public c(bwn $$0, Class<T> $$1) {
-         super($$0, $$1, true);
-      }
-
-      @Override
-      public boolean a() {
-         float $$0 = this.e.bj();
-         return $$0 >= 0.5F ? false : super.a();
-      }
+   public bgo b(cbl $$0, bgn $$1) {
+      return !this.go() ? bgo.d : super.b($$0, $$1);
    }
 }

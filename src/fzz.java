@@ -1,4 +1,8 @@
-public class fzz implements gag {
-   public fzz(gaf $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzz {
 }

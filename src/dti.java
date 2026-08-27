@@ -1,15 +1,53 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public interface dti<P extends dth> {
-   dti<dtg> a = a("single_pool_element", dtg.b);
-   dti<dtf> b = a("list_pool_element", dtf.a);
-   dti<dtb> c = a("feature_pool_element", dtb.a);
-   dti<dta> d = a("empty_pool_element", dta.a);
-   dti<dte> e = a("legacy_single_pool_element", dte.a);
+public class dti extends dte {
+   public static final Codec<dti> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dlb.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dlb.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dti::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dlb d;
+   private final dlb e;
+   private final int f;
 
-   Codec<P> codec();
+   private dti(dlb $$0, dlb $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   static <P extends dth> dti<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.ai, $$0, () -> $$1);
+   public static dti a(dlb $$0, dlb $$1, int $$2) {
+      return new dti($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(art $$0, dle $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = aro.a($$0, $$2 + this.f, $$3);
+         int $$5 = aro.a($$0, $$2, $$4 - 1);
+         return aro.a($$0, $$2, $$5 - 1 + this.f);
+      }
+   }
+
+   @Override
+   public dtf<?> a() {
+      return dtf.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

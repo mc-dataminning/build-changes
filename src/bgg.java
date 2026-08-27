@@ -1,118 +1,86 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class bgg implements bgh {
+   private final bgh c;
+   private final bgh d;
 
-public interface bgg {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
-
-   int a();
-
-   void a(int var1);
-
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void c(qr $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
-      }
+   public bgg(bgh $$0, bgh $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   default void a(cmm $$0, qr $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof aif) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bfj $$3 = ((aif)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof bgb) {
-                  this.a((bgb)$$3);
-               }
-
-               if ($$3.ae() == bfn.bt) {
-                  this.c((byo)$$3);
-               }
-            }
-         }
-      }
+   @Override
+   public int b() {
+      return this.c.b() + this.d.b();
    }
 
-   default void a(aif $$0, boolean $$1) {
-      bfz $$2 = this.j();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.es()) && $$3 != null && $$0.a($$3) instanceof bgb) {
-         this.O_();
+   @Override
+   public boolean ab_() {
+      return this.c.ab_() && this.d.ab_();
+   }
+
+   public boolean a(bgh $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public ciw a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public ciw a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public ciw b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, ciw $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
       } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.ct())) {
-            this.a($$2.ct());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.ae() != bfn.bt || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.O_();
-            }
-         }
+         this.c.a($$0, $$1);
       }
    }
 
-   default boolean a_(bfz $$0) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.ae() == bfn.bt && this.a_($$0.dI()) ? true : $$0.ct().equals(this.b());
-      }
+   @Override
+   public int ac_() {
+      return this.c.ac_();
    }
 
-   default boolean a_(cmm $$0) {
-      return $$0.X().b(cmi.K) && this.S_() && this.b() == null;
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
    }
 
-   default boolean S_() {
-      return this.a() > 0;
+   @Override
+   public boolean a(cbl $$0) {
+      return this.c.a($$0) && this.d.a($$0);
    }
 
-   default void a_(byo $$0) {
-      if ($$0.dI().X().b(cmi.J)) {
-         if ($$0.ct().equals(this.b())) {
-            this.O_();
-         }
-      }
+   @Override
+   public void d_(cbl $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
    }
 
-   default void T_() {
-      this.O_();
-      this.c();
+   @Override
+   public void c(cbl $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
    }
 
-   default void O_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
+   @Override
+   public boolean b(int $$0, ciw $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
    }
 
-   @Nullable
-   bfz ed();
-
-   void a(@Nullable bfz var1);
-
-   void c(@Nullable byo var1);
-
-   void h(@Nullable bfz var1);
-
-   boolean c(bfz var1);
-
-   @Nullable
-   bfz j();
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
+   }
 }

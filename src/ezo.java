@@ -1,22 +1,24 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class ezo extends eyt<cey> {
+   private static final aep x = new aep("container/grindstone/error");
+   private static final aep y = new aep("textures/gui/container/grindstone.png");
 
-public class ezo implements ezq {
-   private static final sw a = sw.c("spectatorMenu.root.prompt");
-   private final List<ezr> b = Lists.newArrayList();
-
-   public ezo() {
-      this.b.add(new ezu());
-      this.b.add(new ezv());
+   public ezo(cey $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public List<ezr> a() {
-      return this.b;
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public sw b() {
-      return a;
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
+      if ((this.p.b(0).f() || this.p.b(1).f()) && !this.p.b(2).f()) {
+         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

@@ -1,89 +1,88 @@
-import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class cun extends cpv implements cpp {
-   protected static final float a = 3.0F;
-   protected static final efb b = cpn.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final acp<dkb<?, ?>> c;
+public class cun {
+   public static <S extends dck> cun.c<S> a(
+      dcm<S> $$0, Function<dey, cun.a> $$1, Function<dey, hb> $$2, dfs $$3, dey $$4, cpl $$5, gv $$6, BiPredicate<cpl, gv> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return cun.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return cun.b::b;
+      } else {
+         cun.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == cun.a.a;
+         boolean $$11 = $$9 == cun.a.b;
+         if ($$10) {
+            return new cun.c.b<>($$8);
+         } else {
+            gv $$12 = $$6.a($$2.apply($$4));
+            dey $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               cun.a $$14 = $$1.apply($$13);
+               if ($$14 != cun.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return cun.b::b;
+                  }
 
-   public cun(dca.d $$0, acp<dkb<?, ?>> $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return b;
-   }
-
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (gu $$6 : gu.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new cun.c.a<>($$16, $$17);
+                  }
                }
             }
-         }
 
-         gu $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.t($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.t($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
+            return new cun.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   protected boolean d(dcb $$0, cls $$1, gu $$2) {
-      return $$0.i($$1, $$2);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      gu $$3 = $$2.d();
-      dcb $$4 = $$1.a_($$3);
-      return $$4.a(amw.aY) ? true : $$1.b($$2, 0) < 13 && this.d($$4, $$1, $$3);
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   public boolean a(aif $$0, gu $$1, dcb $$2, apf $$3) {
-      Optional<? extends he<dkb<?, ?>>> $$4 = $$0.B_().d(jc.as).b(this.c);
-      if ($$4.isEmpty()) {
-         return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+   public interface c<S> {
+      <T> T apply(cun.b<? super S, T> var1);
+
+      public static final class a<S> implements cun.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(cun.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
          }
       }
-   }
 
-   @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return true;
-   }
+      public static final class b<S> implements cun.c<S> {
+         private final S a;
 
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return (double)$$1.i() < 0.4;
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      this.a($$0, $$2, $$3, $$1);
+         @Override
+         public <T> T apply(cun.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

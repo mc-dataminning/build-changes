@@ -1,121 +1,99 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URL;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class emn extends emo {
-   private static final Logger c = LogUtils.getLogger();
-   private final ejq d;
-   private final euq e;
-   private final eiu f;
-   private final ReentrantLock g;
+public class emn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   final UUID g;
+   final boolean h;
+   final boolean i;
+   final String j;
 
-   public emn(eiu $$0, euq $$1, ejq $$2, ReentrantLock $$3) {
-      this.e = $$1;
-      this.f = $$0;
-      this.d = $$2;
-      this.g = $$3;
+   emn(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
    }
 
-   @Override
-   public void run() {
-      this.b(sw.c("mco.connect.connecting"));
+   public boolean a() {
+      return this.i;
+   }
 
-      ejr $$0;
+   public boolean b() {
+      return this.h;
+   }
+
+   public UUID c() {
+      return this.g;
+   }
+
+   public static List<emn> a(String $$0) {
+      List<emn> $$1 = new ArrayList<>();
+
       try {
-         $$0 = this.e();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (ekm var5) {
-         switch (var5.a(-1)) {
-            case 6002:
-               a(new elt(this.e, this.f, this.d));
-               return;
-            case 6006:
-               boolean $$3 = this.d.g.equals(enn.N().U().b());
-               a(
-                  (euq)($$3
-                     ? new eky(this.e, this.f, this.d.a, this.d.m == ejq.c.b)
-                     : new ele(sw.c("mco.brokenworld.nonowner.title"), sw.c("mco.brokenworld.nonowner.error"), this.e))
-               );
-               return;
-            default:
-               this.a(var5.toString());
-               c.error("Couldn't connect to world", var5);
-               return;
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
-      } catch (TimeoutException var6) {
-         this.a(sw.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7.getLocalizedMessage());
-         return;
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      euq $$8 = (euq)($$7 ? this.a($$0, this::a) : this.a($$0));
-      a($$8);
+      return $$1;
    }
 
-   private ejr e() throws ekm, TimeoutException, CancellationException {
-      eiz $$0 = eiz.a();
+   private static emn a(JsonObject $$0) {
+      UUID $$1 = epa.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
+      } else {
+         boolean $$2 = epa.a("dismissable", $$0, true);
+         boolean $$3 = epa.a("seen", $$0, false);
+         String $$4 = epa.a("type", $$0);
+         emn $$5 = new emn($$1, $$2, $$3, $$4);
+         return (emn)("visitUrl".equals($$4) ? emn.a.a($$5, $$0) : $$5);
+      }
+   }
 
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.c()) {
-            throw new CancellationException();
-         }
+   public static class a extends emn {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final emu e;
+      private final emu f;
 
-         try {
-            return $$0.c(this.d.a);
-         } catch (ekn var4) {
-            a((long)var4.e);
-         }
+      private a(emn $$0, String $$1, emu $$2, emu $$3) {
+         super($$0.g, $$0.h, $$0.i, $$0.j);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
 
-      throw new TimeoutException();
-   }
+      public static emn.a a(emn $$0, JsonObject $$1) {
+         String $$2 = epa.a("url", $$1);
+         emu $$3 = epa.a("buttonText", $$1, emu::a);
+         emu $$4 = epa.a("message", $$1, emu::a);
+         return new emn.a($$0, $$2, $$3, $$4);
+      }
 
-   public elh a(ejr $$0) {
-      return new elh(this.e, new eml(this.e, this.d, $$0));
-   }
+      public te d() {
+         return this.f.a(te.c("mco.notification.visitUrl.message.default"));
+      }
 
-   private elg a(ejr $$0, Function<ejr, euq> $$1) {
-      BooleanConsumer $$2 = $$2x -> {
-         try {
-            if ($$2x) {
-               this.b($$0).thenRun(() -> a($$1.apply($$0))).exceptionally($$1xx -> {
-                  enn.N().ab().a();
-                  c.error("Failed to download resource pack from {}", $$0, $$1xx);
-                  a(new ele(sw.c("mco.download.resourcePack.fail"), this.e));
-                  return null;
-               });
-               return;
-            }
-
-            a(this.e);
-         } finally {
-            if (this.g.isHeldByCurrentThread()) {
-               this.g.unlock();
-            }
-         }
-      };
-      return new elg($$2, elg.a.b, sw.c("mco.configure.world.resourcepack.question.line1"), sw.c("mco.configure.world.resourcepack.question.line2"), true);
-   }
-
-   private CompletableFuture<?> b(ejr $$0) {
-      try {
-         return enn.N().ab().a(new URL($$0.b), $$0.c, false);
-      } catch (Exception var4) {
-         CompletableFuture<Void> $$2 = new CompletableFuture<>();
-         $$2.completeExceptionally(var4);
-         return $$2;
+      public esi a(exv $$0) {
+         te $$1 = this.e.a(te.c("mco.notification.visitUrl.buttonText.default"));
+         return esi.a($$1, ewn.b(this.d, $$0, true)).a();
       }
    }
 }

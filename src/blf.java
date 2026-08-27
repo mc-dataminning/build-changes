@@ -1,53 +1,37 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public interface blf<F extends K1, Value> {
-   bpb<Value> a();
+public class blf {
+   public static bkp<cay> a(float $$0, int $$1) {
+      return boa.a((Function<boa.b<cay>, ? extends App<boa.c<cay>, bod<cay>>>)($$2 -> $$2.group($$2.c(bry.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.b($$4.dk())) {
+                  return false;
+               } else {
+                  btw $$6 = $$3.w();
+                  int $$7 = $$6.a(hy.a($$4.dk()));
+                  ehf $$8 = null;
 
-   bpc b();
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     ehf $$10 = btq.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(hy.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(hy.a(gv.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   @Nullable
-   ble<F, Value> a(bha<?> var1, Optional<Value> var2);
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   public static record a<Value>(bpb<Value> a) implements blf<Mu<Unit>, Value> {
-      @Override
-      public bpc b() {
-         return bpc.b;
-      }
+                  if ($$8 != null) {
+                     $$2x.a(new bsb($$8, $$0, $$1));
+                  }
 
-      @Override
-      public ble<Mu<Unit>, Value> a(bha<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new ble<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
-   }
-
-   public static record b<Value>(bpb<Value> a) implements blf<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public bpc b() {
-         return bpc.a;
-      }
-
-      @Override
-      public ble<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bha<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new ble<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(bpb<Value> a) implements blf<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public bpc b() {
-         return bpc.c;
-      }
-
-      @Override
-      public ble<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bha<?> $$0, Optional<Value> $$1) {
-         return new ble<>($$0, this.a, OptionalBox.create($$1));
-      }
+                  return true;
+               }
+            })));
    }
 }

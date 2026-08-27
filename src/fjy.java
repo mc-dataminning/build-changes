@@ -1,125 +1,70 @@
-import java.util.Optional;
+public class fjy extends flw {
+   fjy(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-public class fjy implements fjx {
-   private final fjx.a a;
-   private final fjx.a b = fjx.a(new eie(256));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public fjy(fjx.a $$0) {
-      this.a = $$0;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
-   public ein getBuffer(fkf $$0) {
-      if ($$0.L()) {
-         ein $$1 = this.b.getBuffer($$0);
-         return new fjy.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         ein $$2 = this.a.getBuffer($$0);
-         Optional<fkf> $$3 = $$0.K();
-         if ($$3.isPresent()) {
-            ein $$4 = this.b.getBuffer($$3.get());
-            fjy.a $$5 = new fjy.a($$4, this.c, this.d, this.e, this.f);
-            return eiq.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
    public void a() {
-      this.b.b();
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
    }
 
-   static class a extends eii {
-      private final ein f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
+   @Override
+   public fla b() {
+      return fla.c;
+   }
 
-      a(ein $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+   public static class a implements fkz<iz> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fjy $$8 = new fjy($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fkz<iz> {
+      private final flr a;
+
+      public b(flr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void k() {
-      }
-
-      @Override
-      public ein a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public ein a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public ein a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public ein a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public ein b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public ein a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fjy $$8 = new fjy($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

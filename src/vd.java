@@ -1,9 +1,24 @@
-public class vd extends um<ur> {
-   public vd(Iterable<uo<ur>> $$0) {
-      super($$0);
+public class vd implements uw<uz> {
+   private final int a;
+
+   public vd(int $$0) {
+      this.a = $$0;
    }
 
-   public void a(ur $$0) {
+   public vd(sh $$0) {
+      this.a = $$0.readInt();
+   }
+
+   @Override
+   public void a(sh $$0) {
+      $$0.p(this.a);
+   }
+
+   public void a(uz $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

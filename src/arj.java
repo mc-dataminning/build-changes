@@ -1,26 +1,15 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public class arj extends DataFix {
-   public arj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+@Deprecated
+public class arj<T> {
+   private final Supplier<T> a;
+
+   public arj(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(avw.n), $$0 -> $$0.update(DSL.remainderFinder(), arj::a));
+   public T a() {
+      return this.a.get();
    }
 }

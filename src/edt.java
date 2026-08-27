@@ -1,26 +1,22 @@
-@FunctionalInterface
-public interface edt<T> {
-   void handle(T var1, edv<T> var2, long var3);
+import java.util.Arrays;
+import java.util.function.Function;
 
-   public abstract static class a<T, C extends edt<T>> {
-      private final acq a;
-      private final Class<?> b;
+public interface edt<T extends edt<T>> {
+   T b(edw.a var1);
 
-      public a(acq $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   default <E> T a(Iterable<E> $$0, Function<E, edw.a> $$1) {
+      T $$2 = this.c();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      public acq a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(qr var1, C var2);
-
-      public abstract C b(qr var1);
+      return $$2;
    }
+
+   default <E> T a(E[] $$0, Function<E, edw.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
+   }
+
+   T c();
 }

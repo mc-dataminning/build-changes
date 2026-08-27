@@ -1,72 +1,133 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class eas extends eay {
-   final edf a;
-   final boolean b;
+public class eas {
+   private static final float a = 1.5F;
+   private final eao[] b = new eao[32];
+   private final int c;
+   private final eap d;
+   private static final boolean e = false;
+   private final eal f = new eal();
 
-   eas(eck[] $$0, edf $$1, boolean $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+   public eas(eap $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public eba b() {
-      return ebb.c;
-   }
-
-   @Override
-   public Set<ebt<?>> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      apf $$2 = $$1.b();
-      return cki.a($$2, $$0, this.a.a($$1), this.b);
-   }
-
-   public static eas.a a(edf $$0) {
-      return new eas.a($$0);
-   }
-
-   public static class a extends eay.a<eas.a> {
-      private final edf a;
-      private boolean b;
-
-      public a(edf $$0) {
-         this.a = $$0;
-      }
-
-      protected eas.a a() {
-         return this;
-      }
-
-      public eas.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public eaz b() {
-         return new eas(this.g(), this.a, this.b);
+   @Nullable
+   public eaq a(cpx $$0, biy $$1, Set<gv> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      eao $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<eau, gv> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         eaq $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
       }
    }
 
-   public static class b extends eay.c<eas> {
-      public void a(JsonObject $$0, eas $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.add("levels", $$2.serialize($$1.a));
-         $$0.addProperty("treasure", $$1.b);
+   @Nullable
+   private eaq a(bde $$0, eao $$1, Map<eau, gv> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bei.a);
+      Set<eau> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<eao> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<eau> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
+
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         eao $$11 = this.f.c();
+         $$11.i = true;
+
+         for (eau $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               eao $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
       }
 
-      public eas a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         edf $$3 = aor.a($$0, "levels", $$1, edf.class);
-         boolean $$4 = aor.a($$0, "treasure", false);
-         return new eas($$2, $$3, $$4);
+      Optional<eaq> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eaq::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eaq::m).thenComparingInt(eaq::e));
+      $$0.c();
+      return !$$18.isPresent() ? null : $$18.get();
+   }
+
+   protected float a(eao $$0, eao $$1) {
+      return $$0.a($$1);
+   }
+
+   private float a(eao $$0, Set<eau> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (eau $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
+
+      return $$2;
+   }
+
+   private eaq a(eao $$0, gv $$1, boolean $$2) {
+      List<eao> $$3 = Lists.newArrayList();
+      eao $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new eaq($$3, $$1, $$2);
    }
 }

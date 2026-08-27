@@ -2,10 +2,10 @@ import com.google.gson.JsonObject;
 import javax.annotation.Nullable;
 
 public class bh extends cv<bh.a> {
-   static final acq a = new acq("effects_changed");
+   static final aep a = new aep("effects_changed");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -15,8 +15,8 @@ public class bh extends cv<bh.a> {
       return new bh.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, @Nullable bfj $$1) {
-      dzk $$2 = $$1 != null ? bo.b($$0, $$1) : null;
+   public void a(akj $$0, @Nullable big $$1) {
+      ech $$2 = $$1 != null ? bo.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -38,8 +38,8 @@ public class bh extends cv<bh.a> {
          return new bh.a(ba.a, ck.a, bo.a($$0));
       }
 
-      public boolean a(aig $$0, @Nullable dzk $$1) {
-         return !this.a.a((bfz)$$0) ? false : this.b == ba.a || $$1 != null && this.b.a($$1);
+      public boolean a(akj $$0, @Nullable ech $$1) {
+         return !this.a.a((biw)$$0) ? false : this.b == ba.a || $$1 != null && this.b.a($$1);
       }
 
       @Override

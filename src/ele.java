@@ -1,64 +1,104 @@
-public class ele extends gan {
-   private final euq a;
-   private final ele.a b;
-   private epz c = epz.a;
+public interface ele extends ell {
+   eln i();
 
-   public ele(ekm $$0, euq $$1) {
-      super(enf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+   void f();
 
-   public ele(sw $$0, euq $$1) {
-      super(enf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+   void a(int var1, byte var2);
 
-   public ele(sw $$0, sw $$1, euq $$2) {
-      super(enf.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
+   void a(int var1, short var2);
 
-   private static ele.a a(ekm $$0) {
-      ejb $$1 = $$0.c;
-      if ($$1 == null) {
-         return a(sw.a("mco.errorMessage.realmsService", $$0.a), sw.b($$0.b));
+   void a(int var1, float var2);
+
+   @Override
+   default ell a(double $$0, double $$1, double $$2) {
+      if (this.i().b() != eln.b.a) {
+         return this;
+      } else if (this.i().a() == eln.a.a && this.i().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
       } else {
-         int $$2 = $$1.b();
-         String $$3 = "mco.errorMessage." + $$2;
-         return a(sw.a("mco.errorMessage.realmsService.realmsError", $$2), (sw)(fvz.a($$3) ? sw.c($$3) : sw.a($$1.a())));
+         throw new IllegalStateException();
       }
    }
 
-   private static ele.a a(sw $$0) {
-      return a(sw.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static ele.a a(sw $$0, sw $$1) {
-      return new ele.a($$0, $$1);
+   @Override
+   default ell a(int $$0, int $$1, int $$2, int $$3) {
+      eln $$4 = this.i();
+      if ($$4.b() != eln.b.c) {
+         return this;
+      } else if ($$4.a() == eln.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
    }
 
    @Override
-   public void b() {
-      this.d(epi.a(sv.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = epz.a(this.i, this.b.b, this.g * 3 / 4);
+   default ell a(float $$0, float $$1) {
+      eln $$2 = this.i();
+      if ($$2.b() == eln.b.d && $$2.d() == 0) {
+         if ($$2.a() == eln.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
+         }
+      } else {
+         return this;
+      }
    }
 
    @Override
-   public sw au_() {
-      return sw.h().b(this.b.a).f(": ").b(this.b.b);
+   default ell a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, 16777215);
-      this.c.a($$0, this.g / 2, 100, 9, 16711680);
-      super.a($$0, $$1, $$2, $$3);
+   default ell b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
    }
 
-   static record a(sw a, sw b) {
+   default ell a(short $$0, short $$1, int $$2) {
+      eln $$3 = this.i();
+      if ($$3.b() != eln.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == eln.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default ell a(float $$0, float $$1, float $$2) {
+      eln $$3 = this.i();
+      if ($$3.b() != eln.b.b) {
+         return this;
+      } else if ($$3.a() == eln.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   static byte a(float $$0) {
+      return (byte)((int)(aro.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

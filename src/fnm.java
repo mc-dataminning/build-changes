@@ -1,45 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
-public class fnm implements fnd.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final enn c;
-   private Collection<gu> d = Lists.newArrayList();
+public class fnm {
+   private final fnr a = new fnr();
+   private final SortedMap<fno, elc> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
+      $$0.put(fnu.i(), this.a.a(fno.c()));
+      $$0.put(fnu.j(), this.a.a(fno.e()));
+      $$0.put(fnu.a(), this.a.a(fno.d()));
+      $$0.put(fnu.l(), this.a.a(fno.f()));
+      a($$0, fnu.b());
+      a($$0, fnu.c());
+      a($$0, fnu.d());
+      a($$0, fnu.e());
+      a($$0, fnu.f());
+      a($$0, fnu.g());
+      a($$0, fno.h());
+      a($$0, fno.k());
+      a($$0, fno.l());
+      a($$0, fno.n());
+      a($$0, fno.o());
+      a($$0, fno.m());
+      a($$0, fno.p());
+      a($$0, fno.q());
+      a($$0, fno.j());
+      gam.l.forEach($$1 -> a($$0, $$1));
+   });
+   private final fng.a c = fng.a(this.b, new elc(256));
+   private final fng.a d = fng.a(new elc(256));
+   private final fnh e = new fnh(this.c);
 
-   public fnm(enn $$0) {
-      this.c = $$0;
+   private static void a(Object2ObjectLinkedOpenHashMap<fno, elc> $$0, fno $$1) {
+      $$0.put($$1, new elc($$1.H()));
    }
 
-   public void a(Collection<gu> $$0) {
-      this.d = $$0;
+   public fnr a() {
+      return this.a;
    }
 
-   @Override
-   public void a(eij $$0, fjx $$1, double $$2, double $$3, double $$4) {
-      gu $$5 = this.b().c();
-
-      for (gu $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
-      }
+   public fng.a b() {
+      return this.c;
    }
 
-   private static void a(eij $$0, fjx $$1, gu $$2) {
-      fnd.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   public fng.a c() {
+      return this.d;
    }
 
-   private static void a(eij $$0, fjx $$1, String $$2, gu $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fnd.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private emz b() {
-      return this.c.j.m();
+   public fnh d() {
+      return this.e;
    }
 }

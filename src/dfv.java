@@ -1,14 +1,23 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+public enum dfv implements asf {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-public interface dfv<T> extends AutoCloseable {
-   CompletableFuture<dfq<T>> a(clt var1);
+   private final String f;
 
-   void a(dfq<T> var1);
-
-   void a(boolean var1);
+   private dfv(String $$0) {
+      this.f = $$0;
+   }
 
    @Override
-   default void close() throws IOException {
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

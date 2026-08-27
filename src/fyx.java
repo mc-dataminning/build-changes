@@ -1,62 +1,69 @@
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class fyx {
-   private static final int a = 100;
-   private final apf b = apf.a();
-   private final enn c;
+public class fyx extends amq {
+   private static final amm c = new amm(te.c("resourcePack.vanilla.description"), aa.b().a(alz.a), Optional.empty());
+   private static final alt d = alt.a(amm.b, c);
+   private static final te e = te.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, te> f = Map.of(
+      "programmer_art", te.c("resourcePack.programmer_art.name"), "high_contrast", te.c("resourcePack.high_contrast.name")
+   );
+   private static final aep g = new aep("minecraft", "resourcepacks");
    @Nullable
-   private fxy d;
-   private int e = 100;
+   private final Path h;
 
-   public fyx(enn $$0) {
-      this.c = $$0;
+   public fyx(Path $$0, egv $$1) {
+      super(alz.a, b($$0), g, $$1);
+      this.h = this.a($$0);
    }
 
-   public void a() {
-      ame $$0 = this.c.ai();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ah().b(this.d);
-            this.e = apa.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ah().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, apa.a(this.b, $$0.b(), $$0.c()));
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aS && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
       }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+      return null;
    }
 
-   public void a(ame $$0) {
-      this.d = fxt.a($$0.a().a());
-      if (this.d.b() != fzc.a) {
-         this.c.ah().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
+   private static amb b(Path $$0) {
+      amc $$1 = new amc().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(alz.a, $$0).c();
    }
 
-   public void b(ame $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
+   @Override
+   protected te a(String $$0) {
+      te $$1 = f.get($$0);
+      return (te)($$1 != null ? $$1 : te.b($$0));
    }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.ah().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
+   @Nullable
+   @Override
+   protected ams a(aly $$0) {
+      return ams.a("vanilla", e, true, b($$0), alz.a, ams.b.b, amw.c);
    }
 
-   public boolean c(ame $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   @Nullable
+   @Override
+   protected ams a(String $$0, ams.c $$1, te $$2) {
+      return ams.a($$0, $$2, false, $$1, alz.a, ams.b.a, amw.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, ams>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
+      }
    }
 }

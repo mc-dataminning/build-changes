@@ -1,99 +1,133 @@
-import javax.annotation.Nullable;
-
-public class fxv implements fze<fxv> {
-   public static final acj a = new acj("sounds", ".ogg");
-   private final acq b;
-   private final bdf c;
-   private final bdf d;
-   private final int e;
-   private final fxv.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public fxv(String $$0, bdf $$1, bdf $$2, int $$3, fxv.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new acq($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public acq a() {
-      return this.b;
-   }
-
-   public acq b() {
-      return a.a(this.b);
-   }
-
-   public bdf c() {
-      return this.c;
-   }
-
-   public bdf d() {
-      return this.d;
-   }
-
-   @Override
-   public int e() {
-      return this.e;
-   }
-
-   public fxv a(apf $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(fyz $$0) {
-      if (this.h) {
-         $$0.a(this);
+public class fxv {
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private fxv() {
    }
 
-   public fxv.a f() {
-      return this.f;
-   }
+   public static eki[] a(eki[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
+      } else {
+         eki[] $$2 = new eki[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-   public boolean g() {
-      return this.g;
-   }
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
+            } else {
+               eki $$5 = $$2[$$4 - 1];
+               eki $$6 = new eki($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
 
-   public boolean h() {
-      return this.h;
-   }
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
 
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static fxv.a a(String $$0) {
-         for (fxv.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
+               $$2[$$4] = $$6;
             }
          }
 
-         return null;
+         return $$2;
       }
+   }
+
+   private static boolean a(eki $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
+      }
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
+
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

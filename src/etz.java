@@ -1,67 +1,130 @@
-public class etz extends eti {
-   private epi c;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public etz() {
-      super("");
+public class etz implements fcx {
+   private static final aep a = new aep("hud/hotbar");
+   private static final aep b = new aep("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final eqn e;
+   private long f;
+   @Nullable
+   private fcu g;
+
+   public etz(eqn $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected void b() {
-      super.b();
-      this.c = epi.a(sw.c("multiplayer.stopSleeping"), $$0 -> this.l()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
-      this.d(this.c);
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      if (!this.f.G().a(this.f.Q())) {
-         this.c.a($$0, $$1, $$2, $$3);
+   public void a(int $$0) {
+      this.f = ac.b();
+      if (this.g != null) {
+         this.g.b($$0);
       } else {
-         super.a($$0, $$1, $$2, $$3);
+         this.g = new fcu(this);
       }
    }
 
-   @Override
-   public void aw_() {
-      this.l();
+   private float c() {
+      long $$0 = this.f - ac.b() + 5000L;
+      return aro.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.f.G().a(this.f.Q()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l();
-      }
-
-      if (!this.f.G().a(this.f.Q())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         if (this.b(this.b.b(), true)) {
-            this.f.a(null);
-            this.b.a("");
-            this.f.l.d().d();
+   public void a(erx $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = aro.d((float)$$0.b() - 22.0F * $$1);
+            fcy $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
          }
-
-         return true;
       }
    }
 
-   private void l() {
-      fex $$0 = this.f.t.cl;
-      $$0.a(new aae(this.f.t, aae.a.c));
+   protected void a(erx $$0, float $$1, int $$2, int $$3, fcy $$4) {
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$1);
+      $$0.a(a, $$2 - 91, $$3, 182, 22);
+      if ($$4.a() >= 0) {
+         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
+      }
+
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
+      }
+
+      RenderSystem.disableBlend();
    }
 
-   public void k() {
-      if (this.b.b().isEmpty()) {
-         this.f.a(null);
+   private void a(erx $$0, int $$1, int $$2, float $$3, float $$4, fcw $$5) {
+      if ($$5 != fcu.a) {
+         int $$6 = (int)($$4 * 255.0F);
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$7 = $$5.aG_() ? 1.0F : 0.25F;
+         $$0.a($$7, $$7, $$7, $$4);
+         $$5.a($$0, $$7, $$6);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         if ($$6 > 3 && $$5.aG_()) {
+            te $$8 = this.e.m.U[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
+         }
+      }
+   }
+
+   public void b(erx $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fcw $$2 = this.g.b();
+         te $$3 = $$2 == fcu.a ? this.g.c().b() : $$2.aF_();
+         if ($$3 != null) {
+            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
+            int $$5 = $$0.b() - 35;
+            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
+         }
+      }
+   }
+
+   @Override
+   public void a(fcu $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fcu.a || !this.g.a($$1).aG_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ac.b();
+      }
+   }
+
+   public void b() {
+      this.f = ac.b();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
+         }
       } else {
-         this.f.a(new eti(this.b.b()));
+         this.g = new fcu(this);
       }
    }
 }

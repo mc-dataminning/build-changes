@@ -1,37 +1,37 @@
-public class fdm<T extends bfj> extends fax<T> {
-   private final fee a;
-   private final fee b;
-
-   public fdm(fee $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+public class fdm extends fex<bxu> {
+   public fdm(fhj $$0) {
+      super($$0);
    }
 
-   public static fek a(fei $$0) {
-      fem $$1 = new fem();
-      fen $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", fej.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), feg.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", fej.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), feg.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", fej.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), feg.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fej.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), feg.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fej.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), feg.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", fej.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), feg.a(0.0F, 22.0F, -3.0F));
-      return fek.a($$1, 32, 32);
+   public static fhp a(fhn $$0) {
+      fhr $$1 = fex.a($$0, 0.0F);
+      fhs $$2 = $$1.a();
+      $$2.a("head", fho.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fhl.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fho.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fhl.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fho.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fhl.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fho.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fhl.a(1.9F, 11.0F, 0.0F));
+      return fhp.a($$1, 64, 32);
    }
 
-   @Override
-   public fee a() {
-      return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.aV()) {
-         $$6 = 1.5F;
-      }
-
-      this.b.f = -$$6 * 0.45F * apa.a(0.6F * $$3);
+   public void a(bxu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.w().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.w().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.w().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.x().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.x().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.x().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.y().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.y().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.y().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.z().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.z().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.z().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.l.a(this.k);
    }
 }

@@ -1,48 +1,224 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dus extends dvg {
-   public static final Codec<dus> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ha.a.e.fieldOf("axis").orElse(ha.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dus::new)
+public class dus {
+   private static final Map<String, String> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Village", "Village");
+      $$0.put("Mineshaft", "Mineshaft");
+      $$0.put("Mansion", "Mansion");
+      $$0.put("Igloo", "Temple");
+      $$0.put("Desert_Pyramid", "Temple");
+      $$0.put("Jungle_Pyramid", "Temple");
+      $$0.put("Swamp_Hut", "Temple");
+      $$0.put("Stronghold", "Stronghold");
+      $$0.put("Monument", "Monument");
+      $$0.put("Fortress", "Fortress");
+      $$0.put("EndCity", "EndCity");
+   });
+   private static final Map<String, String> b = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Iglu", "Igloo");
+      $$0.put("TeDP", "Desert_Pyramid");
+      $$0.put("TeJP", "Jungle_Pyramid");
+      $$0.put("TeSH", "Swamp_Hut");
+   });
+   private static final Set<String> c = Set.of(
+      "pillager_outpost",
+      "mineshaft",
+      "mansion",
+      "jungle_pyramid",
+      "desert_pyramid",
+      "igloo",
+      "ruined_portal",
+      "shipwreck",
+      "swamp_hut",
+      "stronghold",
+      "monument",
+      "ocean_ruin",
+      "fortress",
+      "endcity",
+      "buried_treasure",
+      "village",
+      "nether_fossil",
+      "bastion_remnant"
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ha.a g;
+   private final boolean d;
+   private final Map<String, Long2ObjectMap<qs>> e = Maps.newHashMap();
+   private final Map<String, dva> f = Maps.newHashMap();
+   private final List<String> g;
+   private final List<String> h;
 
-   public dus(float $$0, float $$1, int $$2, int $$3, ha.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+   public dus(@Nullable ebr $$0, List<String> $$1, List<String> $$2) {
+      this.g = $$1;
+      this.h = $$2;
+      this.a($$0);
+      boolean $$3 = false;
+
+      for (String $$4 : this.h) {
+         $$3 |= this.e.get($$4) != null;
+      }
+
+      this.d = $$3;
+   }
+
+   public void a(long $$0) {
+      for (String $$1 : this.g) {
+         dva $$2 = this.f.get($$1);
+         if ($$2 != null && $$2.c($$0)) {
+            $$2.d($$0);
+            $$2.c();
+         }
       }
    }
 
-   @Override
-   public boolean a(gu $$0, gu $$1, gu $$2, apf $$3) {
-      ha $$4 = ha.a(ha.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= apa.b(this.b, this.d, apa.g((float)$$8, (float)this.e, (float)this.f));
+   public qs a(qs $$0) {
+      qs $$1 = $$0.p("Level");
+      cor $$2 = new cor($$1.h("xPos"), $$1.h("zPos"));
+      if (this.a($$2.e, $$2.f)) {
+         $$0 = this.a($$0, $$2);
+      }
+
+      qs $$3 = $$1.p("Structures");
+      qs $$4 = $$3.p("References");
+
+      for (String $$5 : this.h) {
+         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
+         if (!$$4.b($$5, 12) && $$6) {
+            int $$7 = 8;
+            LongList $$8 = new LongArrayList();
+
+            for (int $$9 = $$2.e - 8; $$9 <= $$2.e + 8; $$9++) {
+               for (int $$10 = $$2.f - 8; $$10 <= $$2.f + 8; $$10++) {
+                  if (this.a($$9, $$10, $$5)) {
+                     $$8.add(cor.c($$9, $$10));
+                  }
+               }
+            }
+
+            $$4.c($$5, $$8);
+         }
+      }
+
+      $$3.a("References", $$4);
+      $$1.a("Structures", $$3);
+      $$0.a("Level", $$1);
+      return $$0;
    }
 
-   @Override
-   protected dvh<?> a() {
-      return dvh.c;
+   private boolean a(int $$0, int $$1, String $$2) {
+      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(cor.c($$0, $$1));
+   }
+
+   private boolean a(int $$0, int $$1) {
+      if (!this.d) {
+         return false;
+      } else {
+         for (String $$2 : this.h) {
+            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(cor.c($$0, $$1))) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private qs a(qs $$0, cor $$1) {
+      qs $$2 = $$0.p("Level");
+      qs $$3 = $$2.p("Structures");
+      qs $$4 = $$3.p("Starts");
+
+      for (String $$5 : this.h) {
+         Long2ObjectMap<qs> $$6 = this.e.get($$5);
+         if ($$6 != null) {
+            long $$7 = $$1.a();
+            if (this.f.get(a.get($$5)).c($$7)) {
+               qs $$8 = (qs)$$6.get($$7);
+               if ($$8 != null) {
+                  $$4.a($$5, $$8);
+               }
+            }
+         }
+      }
+
+      $$3.a("Starts", $$4);
+      $$2.a("Structures", $$3);
+      $$0.a("Level", $$2);
+      return $$0;
+   }
+
+   private void a(@Nullable ebr $$0) {
+      if ($$0 != null) {
+         for (String $$1 : this.g) {
+            qs $$2 = new qs();
+
+            try {
+               $$2 = $$0.a($$1, asq.o, 1493).p("data").p("Features");
+               if ($$2.g()) {
+                  continue;
+               }
+            } catch (IOException var13) {
+            }
+
+            for (String $$3 : $$2.e()) {
+               qs $$4 = $$2.p($$3);
+               long $$5 = cor.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
+               qy $$6 = $$4.c("Children", 10);
+               if (!$$6.isEmpty()) {
+                  String $$7 = $$6.a(0).l("id");
+                  String $$8 = b.get($$7);
+                  if ($$8 != null) {
+                     $$4.a("id", $$8);
+                  }
+               }
+
+               String $$9 = $$4.l("id");
+               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
+            }
+
+            String $$10 = $$1 + "_index";
+            dva $$11 = $$0.a(dva.a(), $$10);
+            if (!$$11.b().isEmpty()) {
+               this.f.put($$1, $$11);
+            } else {
+               dva $$12 = new dva();
+               this.f.put($$1, $$12);
+
+               for (String $$13 : $$2.e()) {
+                  qs $$14 = $$2.p($$13);
+                  $$12.a(cor.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
+               }
+
+               $$12.c();
+            }
+         }
+      }
+   }
+
+   public static dus a(aeo<cpk> $$0, @Nullable ebr $$1) {
+      if ($$0 == cpk.h) {
+         return new dus(
+            $$1,
+            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
+            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
+         );
+      } else if ($$0 == cpk.i) {
+         List<String> $$2 = ImmutableList.of("Fortress");
+         return new dus($$1, $$2, $$2);
+      } else if ($$0 == cpk.j) {
+         List<String> $$3 = ImmutableList.of("EndCity");
+         return new dus($$1, $$3, $$3);
+      } else {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
+      }
    }
 }

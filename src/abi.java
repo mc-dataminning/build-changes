@@ -1,24 +1,18 @@
-public class abi implements uo<abe> {
-   private final int a;
-
-   public abi(int $$0) {
-      this.a = $$0;
-   }
-
-   public abi(sf $$0) {
-      this.a = $$0.m();
+public record abi() implements uw<aav> {
+   public abi(sh $$0) {
+      this();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
+   public void a(sh $$0) {
    }
 
-   public void a(abe $$0) {
+   public void a(aav $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public sg c() {
+      return sg.e;
    }
 }

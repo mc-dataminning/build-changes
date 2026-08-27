@@ -1,102 +1,147 @@
-public class fgw extends fim {
-   private final double a;
-   private final double b;
-   private final double F;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-   fgw(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$7;
-      this.w = 0.9F * $$7;
-      this.x = $$7;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+public class fgw<T extends cap> extends fet<T> {
+   private static final float o = 13.0F;
+   private static final float p = 1.0F;
+   private final fhj q;
+   protected final fhj a;
+   protected final fhj b;
+   protected final fhj f;
+   protected final fhj g;
+   protected final fhj h;
+   protected final fhj i;
+   protected final fhj j;
+   protected final fhj k;
+   protected final fhj l;
+   protected final fhj m;
+   protected final fhj n;
+   private final List<fhj> r;
+   private final List<fhj> s;
+   private final List<fhj> t;
+   private final List<fhj> u;
+
+   public fgw(fhj $$0) {
+      super(fno::d);
+      this.q = $$0;
+      this.a = $$0.b("bone");
+      this.b = this.a.b("body");
+      this.f = this.b.b("head");
+      this.m = this.a.b("right_leg");
+      this.i = this.a.b("left_leg");
+      this.l = this.b.b("right_arm");
+      this.j = this.b.b("left_arm");
+      this.g = this.f.b("right_tendril");
+      this.h = this.f.b("left_tendril");
+      this.n = this.b.b("right_ribcage");
+      this.k = this.b.b("left_ribcage");
+      this.r = ImmutableList.of(this.h, this.g);
+      this.s = ImmutableList.of(this.b);
+      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
+      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
+   }
+
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhs $$2 = $$1.a("bone", fho.c(), fhl.a(0.0F, 24.0F, 0.0F));
+      fhs $$3 = $$2.a("body", fho.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), fhl.a(0.0F, -21.0F, 0.0F));
+      $$3.a("right_ribcage", fho.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), fhl.a(-7.0F, -2.0F, -4.0F));
+      $$3.a("left_ribcage", fho.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), fhl.a(7.0F, -2.0F, -4.0F));
+      fhs $$4 = $$3.a("head", fho.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), fhl.a(0.0F, -13.0F, 0.0F));
+      $$4.a("right_tendril", fho.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fhl.a(-8.0F, -12.0F, 0.0F));
+      $$4.a("left_tendril", fho.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fhl.a(8.0F, -12.0F, 0.0F));
+      $$3.a("right_arm", fho.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fhl.a(-13.0F, -13.0F, 1.0F));
+      $$3.a("left_arm", fho.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fhl.a(13.0F, -13.0F, 1.0F));
+      $$2.a("right_leg", fho.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fhl.a(-5.9F, -13.0F, 0.0F));
+      $$2.a("left_leg", fho.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fhl.a(5.9F, -13.0F, 0.0F));
+      return fhp.a($$0, 128, 128);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fhj::c);
+      float $$6 = $$3 - (float)$$0.ah;
+      this.a($$4, $$5);
+      this.b($$1, $$2);
+      this.a($$3);
+      this.a($$0, $$3, $$6);
+      this.a($$0.bT, erk.e, $$3);
+      this.a($$0.bU, erk.f, $$3);
+      this.a($$0.e, erk.b, $$3);
+      this.a($$0.d, erk.a, $$3);
+      this.a($$0.b, erk.c, $$3);
+      this.a($$0.c, erk.d, $$3);
+   }
+
+   private void a(float $$0, float $$1) {
+      this.f.e = $$1 * (float) (Math.PI / 180.0);
+      this.f.f = $$0 * (float) (Math.PI / 180.0);
+   }
+
+   private void a(float $$0) {
+      float $$1 = $$0 * 0.1F;
+      float $$2 = aro.b($$1);
+      float $$3 = aro.a($$1);
+      this.f.g += 0.06F * $$2;
+      this.f.e += 0.06F * $$3;
+      this.b.g += 0.025F * $$3;
+      this.b.e += 0.025F * $$2;
+   }
+
+   private void b(float $$0, float $$1) {
+      float $$2 = Math.min(0.5F, 3.0F * $$1);
+      float $$3 = $$0 * 0.8662F;
+      float $$4 = aro.b($$3);
+      float $$5 = aro.a($$3);
+      float $$6 = Math.min(0.35F, $$2);
+      this.f.g += 0.3F * $$5 * $$2;
+      this.f.e = this.f.e + 1.2F * aro.b($$3 + (float) (Math.PI / 2)) * $$6;
+      this.b.g = 0.1F * $$5 * $$2;
+      this.b.e = 1.0F * $$4 * $$6;
+      this.i.e = 1.0F * $$4 * $$2;
+      this.m.e = 1.0F * aro.b($$3 + (float) Math.PI) * $$2;
+      this.j.e = -(0.8F * $$4 * $$2);
+      this.j.g = 0.0F;
+      this.l.e = -(0.8F * $$5 * $$2);
+      this.l.g = 0.0F;
+      this.g();
+   }
+
+   private void g() {
+      this.j.f = 0.0F;
+      this.j.d = 1.0F;
+      this.j.b = 13.0F;
+      this.j.c = -13.0F;
+      this.l.f = 0.0F;
+      this.l.d = 1.0F;
+      this.l.b = -13.0F;
+      this.l.c = -13.0F;
+   }
+
+   private void a(T $$0, float $$1, float $$2) {
+      float $$3 = $$0.E($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
+      this.h.e = $$3;
+      this.g.e = -$$3;
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
+   public fhj a() {
+      return this.q;
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public List<fhj> c() {
+      return this.r;
    }
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public List<fhj> d() {
+      return this.s;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
-      }
+   public List<fhj> e() {
+      return this.t;
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgw $$8 = new fgw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fhp<iy> {
-      private final fih a;
-
-      public b(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgw $$8 = new fgw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public List<fhj> f() {
+      return this.u;
    }
 }

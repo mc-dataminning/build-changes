@@ -1,31 +1,32 @@
-public class aak implements uo<zb> {
-   private final aak.a a;
+public class aak implements uw<wo> {
+   private final te a;
+   private final te b;
 
-   public aak(aak.a $$0) {
+   public aak(te $$0, te $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public aak(sf $$0) {
-      this.a = $$0.b(aak.a.class);
+   public aak(sh $$0) {
+      this.a = $$0.l();
+      this.b = $$0.l();
    }
 
    @Override
-   public void a(sf $$0) {
+   public void a(sh $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public aak.a a() {
+   public te a() {
       return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public te d() {
+      return this.b;
    }
 }

@@ -1,84 +1,91 @@
-import java.util.function.LongFunction;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dij extends dhl {
-   private final apf d;
-   private int e;
+public enum dij {
+   a {
+      @Override
+      public void a(aki $$0, dik $$1, List<bwx> $$2, int $$3, gv $$4) {
+         gv $$5 = new gv(0, 128, 0);
 
-   public dij(apf $$0) {
-      super(0L);
-      this.d = $$0;
-   }
+         for (bwx $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   public int l() {
-      return this.e;
-   }
-
-   @Override
-   public apf d() {
-      return this.d.d();
-   }
-
-   @Override
-   public dhx e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dhl $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+         $$1.a(b);
       }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static apf a(int $$0, int $$1, long $$2, long $$3) {
-      return apf.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dhl::new),
-      b(dil::new);
-
-      private final LongFunction<apf> c;
-
-      private a(LongFunction<apf> $$0) {
-         this.c = $$0;
+   },
+   b {
+      @Override
+      public void a(aki $$0, dik $$1, List<bwx> $$2, int $$3, gv $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new gv(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
       }
+   },
+   c {
+      @Override
+      public void a(aki $$0, dik $$1, List<bwx> $$2, int $$3, gv $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dov.a> $$8 = dov.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dov.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (bwx $$11 : $$2) {
+                     $$11.a(new gv($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-      public apf a(long $$0) {
-         return this.c.apply($$0);
+                  for (gv $$13 : gv.a(new gv($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new gv($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
+
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cpk.a.b);
+                  dqj $$14 = new dqj(true, ImmutableList.of($$10), new gv(0, 128, 0));
+                  dnl.J.a($$14, $$0, $$0.k().g(), art.a(), new gv($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
       }
-   }
+   },
+   d {
+      @Override
+      public void a(aki $$0, dik $$1, List<bwx> $$2, int $$3, gv $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
+
+            for (bwx $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dp(), $$5.dr(), $$5.dv(), 6.0F, cpk.a.a);
+               $$5.ak();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new gv(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (bwx $$6 : $$2) {
+               $$6.a(new gv(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new gv(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(aki $$0, dik $$1, List<bwx> $$2, int $$3, gv $$4) {
+      }
+   };
+
+   public abstract void a(aki var1, dik var2, List<bwx> var3, int var4, gv var5);
 }

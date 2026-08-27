@@ -11,26 +11,26 @@ import javax.annotation.Nullable;
 public class at {
    public static final at a = new at(null, null, cz.a, cl.a);
    @Nullable
-   private final anl<cpn> b;
+   private final apy<csk> b;
    @Nullable
-   private final Set<cpn> c;
+   private final Set<csk> c;
    private final cz d;
    private final cl e;
 
-   public at(@Nullable anl<cpn> $$0, @Nullable Set<cpn> $$1, cz $$2, cl $$3) {
+   public at(@Nullable apy<csk> $$0, @Nullable Set<csk> $$1, cz $$2, cl $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
    }
 
-   public boolean a(aif $$0, gu $$1) {
+   public boolean a(aki $$0, gv $$1) {
       if (this == a) {
          return true;
       } else if (!$$0.o($$1)) {
          return false;
       } else {
-         dcb $$2 = $$0.a_($$1);
+         dey $$2 = $$0.a_($$1);
          if (this.b != null && !$$2.a(this.b)) {
             return false;
          } else if (this.c != null && !this.c.contains($$2.b())) {
@@ -39,7 +39,7 @@ public class at {
             return false;
          } else {
             if (this.e != cl.a) {
-               czn $$3 = $$0.c_($$1);
+               dck $$3 = $$0.c_($$1);
                if ($$3 == null || !this.e.a($$3.m())) {
                   return false;
                }
@@ -52,25 +52,25 @@ public class at {
 
    public static at a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "block");
+         JsonObject $$1 = arf.m($$0, "block");
          cl $$2 = cl.a($$1.get("nbt"));
-         Set<cpn> $$3 = null;
-         JsonArray $$4 = aor.a($$1, "blocks", null);
+         Set<csk> $$3 = null;
+         JsonArray $$4 = arf.a($$1, "blocks", null);
          if ($$4 != null) {
-            Builder<cpn> $$5 = ImmutableSet.builder();
+            Builder<csk> $$5 = ImmutableSet.builder();
 
             for (JsonElement $$6 : $$4) {
-               acq $$7 = new acq(aor.a($$6, "block"));
-               $$5.add(jb.f.b($$7).orElseThrow(() -> new JsonSyntaxException("Unknown block id '" + $$7 + "'")));
+               aep $$7 = new aep(arf.a($$6, "block"));
+               $$5.add(jc.f.b($$7).orElseThrow(() -> new JsonSyntaxException("Unknown block id '" + $$7 + "'")));
             }
 
             $$3 = $$5.build();
          }
 
-         anl<cpn> $$8 = null;
+         apy<csk> $$8 = null;
          if ($$1.has("tag")) {
-            acq $$9 = new acq(aor.i($$1, "tag"));
-            $$8 = anl.a(jc.e, $$9);
+            aep $$9 = new aep(arf.i($$1, "tag"));
+            $$8 = apy.a(jd.e, $$9);
          }
 
          cz $$10 = cz.a($$1.get("state"));
@@ -88,8 +88,8 @@ public class at {
          if (this.c != null) {
             JsonArray $$1 = new JsonArray();
 
-            for (cpn $$2 : this.c) {
-               $$1.add(jb.f.b($$2).toString());
+            for (csk $$2 : this.c) {
+               $$1.add(jc.f.b($$2).toString());
             }
 
             $$0.add("blocks", $$1);
@@ -107,9 +107,9 @@ public class at {
 
    public static class a {
       @Nullable
-      private Set<cpn> a;
+      private Set<csk> a;
       @Nullable
-      private anl<cpn> b;
+      private apy<csk> b;
       private cz c = cz.a;
       private cl d = cl.a;
 
@@ -120,22 +120,22 @@ public class at {
          return new at.a();
       }
 
-      public at.a a(cpn... $$0) {
+      public at.a a(csk... $$0) {
          this.a = ImmutableSet.copyOf($$0);
          return this;
       }
 
-      public at.a a(Iterable<cpn> $$0) {
+      public at.a a(Iterable<csk> $$0) {
          this.a = ImmutableSet.copyOf($$0);
          return this;
       }
 
-      public at.a a(anl<cpn> $$0) {
+      public at.a a(apy<csk> $$0) {
          this.b = $$0;
          return this;
       }
 
-      public at.a a(qr $$0) {
+      public at.a a(qs $$0) {
          this.d = new cl($$0);
          return this;
       }

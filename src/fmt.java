@@ -1,155 +1,109 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
-public class fmt {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ha[] l = ha.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public class fmt implements anl {
+   private static final ddr[] a = Arrays.stream(chk.values())
+      .sorted(Comparator.comparingInt(chk::a))
+      .map($$0 -> new ddr($$0, gv.b, csl.kP.n()))
+      .toArray(ddr[]::new);
+   private static final ddr b = new ddr(gv.b, csl.kP.n());
+   private final dcr c = new dcr(gv.b, csl.cv.n());
+   private final dcr d = new deb(gv.b, csl.gV.n());
+   private final dde e = new dde(gv.b, csl.fG.n());
+   private final dca f = new dca(gv.b, csl.iJ.n());
+   private final dcg g = new dcg(gv.b, csl.bn.n());
+   private final dcw h = new dcw(gv.b, csl.mX.n());
+   private final dcz i = new dcz(gv.b, csl.so.n());
+   private fgb j;
+   private fgp k;
+   private Map<czm.a, fgh> l;
+   private final fpf m;
+   private final fhf n;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
+   public fmt(fpf $$0, fhf $$1) {
+      this.m = $$0;
+      this.n = $$1;
+   }
+
+   @Override
+   public void a(ank $$0) {
+      this.j = new fgb(this.n.a(fhi.bd));
+      this.k = new fgp(this.n.a(fhi.bC));
+      this.l = fpv.a(this.n);
+   }
+
+   public void a(ciw $$0, cit $$1, elh $$2, fng $$3, int $$4, int $$5) {
+      cir $$6 = $$0.d();
+      if ($$6 instanceof cgp) {
+         csk $$7 = ((cgp)$$6).e();
+         if ($$7 instanceof crh $$8) {
+            qs $$9 = $$0.v();
+            GameProfile $$10 = $$9 != null ? ddu.d($$9) : null;
+            fgh $$11 = this.l.get($$8.a());
+            fno $$12 = fpv.a($$8.a(), $$10);
+            fpv.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
+         } else {
+            dey $$13 = $$7.n();
+            dck $$14;
+            if ($$7 instanceof crb) {
+               this.f.a($$0, ((crb)$$7).a());
+               $$14 = this.f;
+            } else if ($$7 instanceof csd) {
+               this.g.a(((csd)$$7).a());
+               $$14 = this.g;
+            } else if ($$13.a(csl.mX)) {
+               $$14 = this.h;
+            } else if ($$13.a(csl.cv)) {
+               $$14 = this.c;
+            } else if ($$13.a(csl.fG)) {
+               $$14 = this.e;
+            } else if ($$13.a(csl.gV)) {
+               $$14 = this.d;
+            } else if ($$13.a(csl.so)) {
+               this.i.a($$0);
+               $$14 = this.i;
+            } else {
+               if (!($$7 instanceof czj)) {
+                  return;
+               }
+
+               chk $$21 = czj.b($$6);
+               if ($$21 == null) {
+                  $$14 = b;
+               } else {
+                  $$14 = a[$$21.a()];
                }
             }
+
+            this.m.a($$14, $$2, $$3, $$4, $$5);
          }
-      }
-   });
-   private int o = 4096;
-
-   public void a(gu $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
-   }
-
-   private static int b(gu $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public fmu a() {
-      fmu $$0 = new fmu();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
+         if ($$0.a(ciz.uy)) {
+            boolean $$25 = cgp.a($$0) != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            gak $$26 = $$25 ? gam.g : gam.h;
+            ell $$27 = $$26.c().a(fth.c($$3, this.j.a($$26.a()), true, $$0.B()));
+            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$25) {
+               List<Pair<hf<dcb>, chk>> $$28 = dca.a(cjt.d($$0), dca.a($$0));
+               fpb.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
+            } else {
+               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
             }
+
+            $$2.b();
+         } else if ($$0.a(ciz.uV)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            ell $$29 = fth.c($$3, this.k.a(fgp.a), false, $$0.B());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
          }
-      }
-
-      return $$0;
-   }
-
-   private Set<ha> a(int $$0) {
-      Set<ha> $$1 = EnumSet.noneOf(ha.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ha $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<ha> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ha.e);
-      } else if ($$2 == 15) {
-         $$1.add(ha.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ha.a);
-      } else if ($$3 == 15) {
-         $$1.add(ha.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ha.c);
-      } else if ($$4 == 15) {
-         $$1.add(ha.d);
-      }
-   }
-
-   private int a(int $$0, ha $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
       }
    }
 }

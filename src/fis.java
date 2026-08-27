@@ -1,62 +1,60 @@
-public class fis extends fim {
-   protected fis(few $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public enum fis implements asf {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<fis> d = asf.a(fis::values);
+   private final String e;
+
+   private fis(String $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public fhq b() {
-      return fhq.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   public static fis a(tt $$0, te $$1, Instant $$2) {
+      if (!$$0.h() || $$0.b($$2)) {
+         return c;
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         gu $$0 = gu.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ha.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cls)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
+   private static boolean a(tt $$0, te $$1) {
+      if (!$$1.getString().contains($$0.b())) {
+         return true;
+      } else {
+         te $$2 = $$0.m();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fis $$8 = new fis($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private static boolean a(te $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ua.a).orElse(false);
+   }
+
+   private static boolean a(ua $$0) {
+      return !$$0.k().equals(ua.c);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public eqi a(tt $$0) {
+      return switch (this) {
+         case b -> eqi.a($$0.b());
+         case c -> eqi.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

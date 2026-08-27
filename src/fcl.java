@@ -1,62 +1,73 @@
-public class fcl<T extends bsd> extends fcp<T> {
-   public fcl(fee $$0) {
-      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class fcl extends exv {
+   private static final Logger k = LogUtils.getLogger();
+   public static final dlf a = new dlf((long)"test1".hashCode(), true, false);
+   protected final exv b;
+   private esi l;
+   private esi m;
+   private esi n;
+   private esi o;
+   protected esr c;
+   private fcq p;
+
+   public fcl(exv $$0) {
+      super(te.c("selectWorld.title"));
+      this.b = $$0;
    }
 
-   public static fek c() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fej.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         feg.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         fej.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         feg.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      fej $$3 = fej.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, feg.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, feg.a(4.5F, 14.0F, 6.0F));
-      fej $$4 = fej.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, feg.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, feg.a(3.5F, 14.0F, -8.0F));
-      return fek.a($$0, 128, 64);
+   @Override
+   protected void aE_() {
+      this.c = new esr(this.i, this.g / 2 - 100, 22, 200, 20, this.c, te.c("selectWorld.search"));
+      this.c.b($$0 -> this.p.a($$0));
+      this.p = new fcq(this, this.f, this.g, this.h, 48, this.h - 64, 36, this.c.a(), this.p);
+      this.e(this.c);
+      this.e(this.p);
+      this.m = this.d(esi.a(te.c("selectWorld.select"), $$0 -> this.p.d().ifPresent(fcq.c::d)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
+      this.d(esi.a(te.c("selectWorld.create"), $$0 -> fcf.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
+      this.n = this.d(esi.a(te.c("selectWorld.edit"), $$0 -> this.p.d().ifPresent(fcq.c::g)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
+      this.l = this.d(esi.a(te.c("selectWorld.delete"), $$0 -> this.p.d().ifPresent(fcq.c::e)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
+      this.o = this.d(esi.a(te.c("selectWorld.recreate"), $$0 -> this.p.d().ifPresent(fcq.c::h)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
+      this.d(esi.a(td.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
+      this.a(false, false);
+      this.c(this.c);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$3 - (float)$$0.ag;
-      float $$7 = $$0.D($$6);
-      $$7 *= $$7;
-      float $$8 = 1.0F - $$7;
-      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
-      this.b.c = 9.0F * $$8 + 11.0F * $$7;
-      this.h.c = 14.0F * $$8 - 6.0F * $$7;
-      this.h.d = -8.0F * $$8 - 4.0F * $$7;
-      this.h.e -= $$7 * (float) Math.PI * 0.45F;
-      this.i.c = this.h.c;
-      this.i.d = this.h.d;
-      this.i.e -= $$7 * (float) Math.PI * 0.45F;
-      if (this.e) {
-         this.a.c = 10.0F * $$8 - 9.0F * $$7;
-         this.a.d = -16.0F * $$8 - 7.0F * $$7;
-      } else {
-         this.a.c = 10.0F * $$8 - 14.0F * $$7;
-         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.c.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.b);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.p.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+   }
+
+   public void a(boolean $$0, boolean $$1) {
+      this.m.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.l.i = $$1;
+   }
+
+   @Override
+   public void h() {
+      if (this.p != null) {
+         this.p.i().forEach(fcq.a::close);
       }
-
-      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

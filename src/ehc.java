@@ -1,31 +1,21 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+public class ehc extends ehd {
+   private final big b;
 
-public class ehc {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   public ehc(big $$0) {
+      this($$0, $$0.di());
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   public ehc(big $$0, ehf $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   public big a() {
+      return this.b;
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
-
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   @Override
+   public ehd.a c() {
+      return ehd.a.c;
    }
 }

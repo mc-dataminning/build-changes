@@ -1,26 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public interface dsj<S extends dsa> {
-   dsj<dtm> a = a("buried_treasure", dtm.d);
-   dsj<dto> b = a("desert_pyramid", dto.d);
-   dsj<dtq> c = a("end_city", dtq.d);
-   dsj<dtz> d = a("fortress", dtz.e);
-   dsj<dts> e = a("igloo", dts.d);
-   dsj<dtt> f = a("jigsaw", dtt.e);
-   dsj<dtv> g = a("jungle_temple", dtv.d);
-   dsj<dtx> h = a("mineshaft", dtx.d);
-   dsj<dub> i = a("nether_fossil", dub.d);
-   dsj<dud> j = a("ocean_monument", dud.d);
-   dsj<duf> k = a("ocean_ruin", duf.d);
-   dsj<duh> l = a("ruined_portal", duh.d);
-   dsj<duj> m = a("shipwreck", duj.d);
-   dsj<dul> n = a("stronghold", dul.d);
-   dsj<dun> o = a("swamp_hut", dun.d);
-   dsj<dup> p = a("woodland_mansion", dup.d);
+public class dsj extends dsh {
+   public static final Codec<dsj> a = Codec.unit(() -> dsj.b);
+   public static final dsj b = new dsj();
 
-   Codec<S> codec();
+   @Override
+   protected dsi<?> a() {
+      return dsi.a;
+   }
 
-   private static <S extends dsa> dsj<S> a(String $$0, Codec<S> $$1) {
-      return hr.a(jb.U, $$0, () -> $$1);
+   @Override
+   public void a(dsh.a $$0) {
+      art $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            gv $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dbe.c);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            gv $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dbe.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            gv $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dbe.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            gv $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dbe.b);
+            }
+         }
+      });
    }
 }

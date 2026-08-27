@@ -1,36 +1,42 @@
-import java.util.Locale;
+public class ffr<T extends big> extends fet<T> {
+   private final fhj a;
+   private final fhj b;
+   private final fhj f;
 
-public enum ffr {
-   a("hate_speech"),
-   b("terrorism_or_violent_extremism"),
-   c("child_sexual_exploitation_or_abuse"),
-   d("imminent_harm"),
-   e("non_consensual_intimate_imagery"),
-   f("harassment_or_bullying"),
-   g("defamation_impersonation_false_information"),
-   h("self_harm_or_suicide"),
-   i("alcohol_tobacco_drugs");
-
-   private final String j;
-   private final sw k;
-   private final sw l;
-
-   private ffr(String $$0) {
-      this.j = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.k = sw.c($$1);
-      this.l = sw.c($$1 + ".description");
+   public ffr(fhj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public String a() {
-      return this.j;
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fho.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fho.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fhl.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fho.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fhl.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fho.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhl.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fho.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fhl.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fho.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhl.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fho.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhl.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fho.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhl.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fho.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhl.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fho.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhl.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fho.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhl.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fho.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhl.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fho.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhl.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fhp.a($$0, 32, 32);
    }
 
-   public sw b() {
-      return this.k;
+   @Override
+   public fhj a() {
+      return this.a;
    }
 
-   public sw c() {
-      return this.l;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * aro.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * aro.a($$3 * 0.2F);
    }
 }

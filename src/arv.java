@@ -1,41 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
+public class arv {
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-public class arv extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("structure_references", "empty")
-      .put("biomes", "empty")
-      .put("base", "surface")
-      .put("carved", "carvers")
-      .put("liquid_carved", "liquid_carvers")
-      .put("decorated", "features")
-      .put("lighted", "light")
-      .put("mobs_spawned", "spawn")
-      .put("finalized", "heightmaps")
-      .put("fullchunk", "full")
-      .build();
-
-   public arv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public arv(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      } else {
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
+      }
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(avw.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            String $$3 = a.getOrDefault($$2x, "empty");
-            return Objects.equals($$2x, $$3) ? $$0xx : $$0xx.set(DSL.remainderFinder(), $$1xx.set("Status", $$1xx.createString($$3)));
-         }));
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
+   }
+
+   public int a(hb $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
+      }
+   }
+
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
+   }
+
+   public int b(float $$0) {
+      return this.c(this.a($$0));
+   }
+
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
+   }
+
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   }
+
+   public int c(int $$0) {
+      return $$0 & this.a;
+   }
+
+   public int a() {
+      return this.a;
    }
 }

@@ -1,44 +1,59 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dsg(List<dsg.a> c, dsx d) {
-   public static final Codec<dsg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dsg.a.a.listOf().fieldOf("structures").forGetter(dsg::a), dsx.b.fieldOf("placement").forGetter(dsg::b)).apply($$0, dsg::new)
-   );
-   public static final Codec<he<dsg>> b = acm.a(jc.aB, a);
+public class dsg extends dsh {
+   public static final Codec<dsg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsg::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dsg(he<dsa> $$0, dsx $$1) {
-      this(List.of(new dsg.a($$0, 1)), $$1);
+   @Override
+   protected dsi<?> a() {
+      return dsi.b;
    }
 
-   public static dsg.a a(he<dsa> $$0, int $$1) {
-      return new dsg.a($$0, $$1);
+   public dsg(float $$0) {
+      this.b = $$0;
    }
 
-   public static dsg.a a(he<dsa> $$0) {
-      return new dsg.a($$0, 1);
+   @Override
+   public void a(dsh.a $$0) {
+      art $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            gv $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dbe.c, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gv $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dbe.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gv $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dbe.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gv $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dbe.b, $$0);
+            }
+         }
+      });
    }
 
-   public List<dsg.a> a() {
-      return this.c;
-   }
+   private static void a(gv $$0, dfp $$1, dsh.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-   public dsx b() {
-      return this.d;
-   }
-
-   public static record a(he<dsa> b, int c) {
-      public static final Codec<dsg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dsa.b.fieldOf("structure").forGetter(dsg.a::a), aoi.j.fieldOf("weight").forGetter(dsg.a::b)).apply($$0, dsg.a::new)
-      );
-
-      public he<dsa> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
+      for (gv var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
    }
 }

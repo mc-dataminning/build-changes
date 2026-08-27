@@ -1,19 +1,22 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cgf extends chl {
-   public cgf(cfu.a $$0) {
-      super($$0);
+public class cgf extends cir {
+   private final csk a;
+
+   public cgf(csk $$0, cir.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public void a(cfz $$0, @Nullable cmm $$1, List<sw> $$2, chq $$3) {
-      chy.a($$0, $$2, 0.25F);
+   public String a() {
+      return this.a.f();
    }
 
    @Override
-   public bdy<cfz> a(cmm $$0, byo $$1, bdw $$2) {
-      $$0.a(null, $$1.dn(), $$1.dp(), $$1.dt(), amh.mv, ami.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

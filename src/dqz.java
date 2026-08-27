@@ -1,34 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dqz extends drh {
-   public static final Codec<dqz> a = RecordCodecBuilder.create($$0 -> $$0.group(dqh.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dqz::new));
-   private final dqh c;
+public class dqz extends drb {
+   public static final Codec<dqz> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dqz::new));
 
-   private dqz(dqh $$0) {
-      this.c = $$0;
-   }
-
-   public static dqz a(dqh $$0) {
-      return new dqz($$0);
-   }
-
-   public static dqz a(die $$0, die $$1) {
-      return a(dqk.a($$0, $$1));
-   }
-
-   public static dqz b(die $$0, die $$1) {
-      return a(dqj.a($$0, $$1));
+   public dqz(bft $$0, bft $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Stream<gu> a_(drf $$0, apf $$1, gu $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected drc<?> a() {
+      return drc.i;
    }
 
    @Override
-   public dri<?> b() {
-      return dri.l;
+   protected void a(cpq $$0, drb.b $$1, art $$2, dql $$3, int $$4, drb.a $$5, int $$6, int $$7, int $$8) {
+      gv $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
+   }
+
+   @Override
+   public int a(art $$0, int $$1, dql $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(art $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(art $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

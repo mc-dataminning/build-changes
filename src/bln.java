@@ -1,21 +1,101 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bln {
-   public static <E extends bxs> bhs<E> a(Function<E, Optional<? extends bfz>> $$0) {
-      return bld.a(
-         (Function<bld.b<E>, ? extends App<bld.c<E>, blg<E>>>)($$1 -> $$1.group($$1.c(bpb.ax), $$1.c(bpb.o), $$1.a(bpb.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bfz> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::a).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bln extends bko<biy> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private gv h;
+   private int i;
+   private int j;
+   private int k;
+
+   public bln(float $$0) {
+      super(ImmutableMap.of(bry.w, brz.a, bry.m, brz.b));
+      this.g = $$0;
+   }
+
+   protected boolean a(aki $$0, biy $$1) {
+      return $$1.i_() && this.b($$0, $$1);
+   }
+
+   protected void a(aki $$0, biy $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(aki $$0, biy $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(aki $$0, biy $$1, long $$2) {
+      return $$1.i_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(aki $$0, biy $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.F().a();
+            this.j--;
+            this.k = 5;
+         }
+      }
+   }
+
+   private void a(biy $$0, gv $$1) {
+      $$0.dM().a(bry.m, new bsb($$1, this.g, 0));
+   }
+
+   private boolean b(aki $$0, biy $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(aki $$0, biy $$1) {
+      gv $$2 = $$1.dk();
+      gv $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(aki $$0, biy $$1) {
+      return this.a($$0, $$1.dk());
+   }
+
+   private boolean a(aki $$0, gv $$1) {
+      return $$0.a_($$1).a(apj.R);
+   }
+
+   private Optional<gv> a(biy $$0) {
+      return $$0.dM().c(bry.w);
+   }
+
+   private boolean e(aki $$0, biy $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(aki $$0, biy $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

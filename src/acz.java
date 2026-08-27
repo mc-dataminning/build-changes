@@ -1,15 +1,31 @@
-import java.util.List;
+import com.mojang.authlib.GameProfile;
 
-public enum acz {
-   a,
-   b,
-   c,
-   d;
+public class acz implements uw<acx> {
+   private final GameProfile a;
 
-   private static final List<acz> e = List.of(values());
-   private static final hs.b f = hs.a(jb.ap);
+   public acz(GameProfile $$0) {
+      this.a = $$0;
+   }
 
-   public static hl<acz> a() {
-      return new hl<>(e).a(a, f);
+   public acz(sh $$0) {
+      this.a = $$0.z();
+   }
+
+   @Override
+   public void a(sh $$0) {
+      $$0.a(this.a);
+   }
+
+   public void a(acx $$0) {
+      $$0.a(this);
+   }
+
+   public GameProfile a() {
+      return this.a;
+   }
+
+   @Override
+   public sg c() {
+      return sg.e;
    }
 }

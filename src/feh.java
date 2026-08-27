@@ -1,61 +1,80 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
 
-public final class feh {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fei d;
-   private final boolean e;
-   private final feo f;
-   private final feo g;
-   private final Set<ha> h;
+public class feh<T extends biw> extends fdi<T> {
+   private final fhj a;
+   private final fhj b;
 
-   protected feh(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fei $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<ha> $$13
-   ) {
-      this.a = $$0;
-      this.f = new feo($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new feo($$11, $$12);
-      this.h = $$13;
+   public feh(fhj $$0) {
+      this.b = $$0.b("left_wing");
+      this.a = $$0.b("right_wing");
    }
 
-   public fee.a a(int $$0, int $$1) {
-      return new fee.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
+   public static fhp c() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhn $$2 = new fhn(1.0F);
+      $$1.a(
+         "left_wing",
+         fho.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fhl.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
       );
+      $$1.a(
+         "right_wing",
+         fho.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fhl.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return fhp.a($$0, 64, 32);
+   }
+
+   @Override
+   protected Iterable<fhj> a() {
+      return ImmutableList.of();
+   }
+
+   @Override
+   protected Iterable<fhj> b() {
+      return ImmutableList.of(this.b, this.a);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = (float) (Math.PI / 12);
+      float $$7 = (float) (-Math.PI / 12);
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      if ($$0.fu()) {
+         float $$10 = 1.0F;
+         ehf $$11 = $$0.dn();
+         if ($$11.d < 0.0) {
+            ehf $$12 = $$11.d();
+            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
+         }
+
+         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
+         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
+      } else if ($$0.bW()) {
+         $$6 = (float) (Math.PI * 2.0 / 9.0);
+         $$7 = (float) (-Math.PI / 4);
+         $$8 = 3.0F;
+         $$9 = 0.08726646F;
+      }
+
+      this.b.c = $$8;
+      if ($$0 instanceof fmf $$13) {
+         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
+         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
+         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
+         this.b.e = $$13.c;
+         this.b.f = $$13.d;
+         this.b.g = $$13.e;
+      } else {
+         this.b.e = $$6;
+         this.b.g = $$7;
+         this.b.f = $$9;
+      }
+
+      this.a.f = -this.b.f;
+      this.a.c = this.b.c;
+      this.a.e = this.b.e;
+      this.a.g = -this.b.g;
    }
 }

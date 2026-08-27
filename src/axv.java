@@ -1,29 +1,18 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class axv extends axd {
-   public axv(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class axv extends DataFix {
+   public axv(Schema $$0) {
+      super($$0, false);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> axe.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", avw.n.in($$0)));
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAccessibilityOnboardFix",
+         this.getInputSchema().getType(aym.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
+      );
    }
 }

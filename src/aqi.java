@@ -1,35 +1,83 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.IntFunction;
+import java.util.function.ToIntFunction;
 
-public class aqi extends DataFix {
-   private final String a;
-   private final boolean b;
-   private final String c;
-   private final TypeReference d;
+public class aqi {
+   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
 
-   public aqi(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
-      super($$0, true);
-      this.b = $$3;
-      this.c = $$2;
-      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
-      this.d = $$1;
+         for (T $$3 : $$1) {
+            int $$4 = $$0.applyAsInt($$3);
+            T $$5 = (T)$$2.put($$4, $$3);
+            if ($$5 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+            }
+         }
+
+         return $$2;
+      }
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.d);
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
-            )
-      );
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
+      IntFunction<T> $$3 = a($$0, $$1);
+      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
+   }
+
+   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
+      int $$2 = $$1.length;
+      if ($$2 == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         T[] $$3 = (T[])$$1.clone();
+         Arrays.fill($$3, null);
+
+         for (T $$4 : $$1) {
+            int $$5 = $$0.applyAsInt($$4);
+            if ($$5 < 0 || $$5 >= $$2) {
+               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
+            }
+
+            T $$6 = $$3[$$5];
+            if ($$6 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
+            }
+
+            $$3[$$5] = $$4;
+         }
+
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            if ($$3[$$7] == null) {
+               throw new IllegalArgumentException("Missing value at index: " + $$7);
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, aqi.a $$2) {
+      T[] $$3 = b($$0, $$1);
+      int $$4 = $$3.length;
+
+      return switch ($$2) {
+         case a -> {
+            T $$5 = $$3[0];
+            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
+         }
+         case b -> $$2x -> $$3[aro.b($$2x, $$4)];
+         case c -> $$2x -> $$3[aro.a($$2x, 0, $$4 - 1)];
+      };
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

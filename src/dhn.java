@@ -1,348 +1,371 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public final class dhn extends ddy {
-   public static final Codec<dhn> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cno.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dhp.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
-            .apply($$0, $$0.stable(dhn::new))
-   );
-   private static final dcb d = cpo.a.n();
-   private final he<dhp> e;
-   private final Supplier<dgw.a> f;
+public class dhn<T> implements dhm<T>, dho<T> {
+   private static final int a = 0;
+   private final dhm<T> b = ($$0x, $$1x) -> 0;
+   private final hk<T> c;
+   private volatile dhn.c<T> d;
+   private final dhn.d e;
+   private final asi f = new asi("PalettedContainer");
 
-   public dhn(cno $$0, he<dhp> $$1) {
-      super($$0);
+   public void a() {
+      this.f.a();
+   }
+
+   public void b() {
+      this.f.b();
+   }
+
+   public static <T> Codec<dhn<T>> a(hk<T> $$0, Codec<T> $$1, dhn.d $$2, T $$3) {
+      dho.b<T, dhn<T>> $$4 = dhn::a;
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static <T> Codec<dho<T>> b(hk<T> $$0, Codec<T> $$1, dhn.d $$2, T $$3) {
+      dho.b<T, dho<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private static <T, C extends dho<T>> Codec<C> a(hk<T> $$0, Codec<T> $$1, dhn.d $$2, T $$3, dho.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(aqw.a($$3)).listOf().fieldOf("palette").forGetter(dho.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dho.a::b)
+                  )
+                  .apply($$2x, dho.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public dhn(hk<T> $$0, dhn.d $$1, dhn.a<T> $$2, aqg $$3, List<T> $$4) {
+      this.c = $$0;
       this.e = $$1;
-      this.f = Suppliers.memoize(() -> a($$1.a()));
+      this.d = new dhn.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
    }
 
-   private static dgw.a a(dhp $$0) {
-      dgw.b $$1 = new dgw.b(-54, cpo.H.n());
-      int $$2 = $$0.l();
-      dgw.b $$3 = new dgw.b($$2, $$0.h());
-      dgw.b $$4 = new dgw.b(dfk.e * 2, cpo.a.n());
-      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
+   private dhn(hk<T> $$0, dhn.d $$1, dhn.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public CompletableFuture<ddx> a(Executor $$0, dhy $$1, dim $$2, cne $$3, ddx $$4) {
-      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
-         this.a($$2, $$1, $$3, $$4);
-         return $$4;
-      }), ac.f());
+   public dhn(hk<T> $$0, T $$1, dhn.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
    }
 
-   private void a(dim $$0, dhy $$1, cne $$2, ddx $$3) {
-      dho $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
-      cnn $$5 = dgy.a($$0.a(this.b), $$3);
-      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
-   }
-
-   private dho a(ddx $$0, cne $$1, dim $$2, dhy $$3) {
-      return dho.a($$0, $$3, dgx.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
+   private dhn.c<T> a(@Nullable dhn.c<T> $$0, int $$1) {
+      dhn.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
    }
 
    @Override
-   protected Codec<? extends ddy> a() {
-      return c;
+   public int onResize(int $$0, T $$1) {
+      dhn.c<T> $$2 = this.d;
+      dhn.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
    }
 
-   public he<dhp> g() {
-      return this.e;
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
    }
 
-   public boolean a(acp<dhp> $$0) {
-      return this.e.a($$0);
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
    }
 
    @Override
-   public int a(int $$0, int $$1, dhk.a $$2, cmo $$3, dhy $$4) {
-      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.C_());
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      dhn.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
    }
 
    @Override
-   public cmy a(int $$0, int $$1, cmo $$2, dhy $$3) {
-      MutableObject<cmy> $$4 = new MutableObject();
-      this.a($$2, $$3, $$0, $$1, $$4, null);
-      return (cmy)$$4.getValue();
+   public void a(Consumer<T> $$0) {
+      dhl<T> $$1 = this.d.e();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(sh $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         dhn.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
+      }
    }
 
    @Override
-   public void a(List<String> $$0, dhy $$1, gu $$2) {
-      DecimalFormat $$3 = new DecimalFormat("0.000");
-      dhq $$4 = $$1.a();
-      dhd.e $$5 = new dhd.e($$2.u(), $$2.v(), $$2.w());
-      double $$6 = $$4.j().a($$5);
-      $$0.add(
-         "NoiseRouter T: "
-            + $$3.format($$4.e().a($$5))
-            + " V: "
-            + $$3.format($$4.f().a($$5))
-            + " C: "
-            + $$3.format($$4.g().a($$5))
-            + " E: "
-            + $$3.format($$4.h().a($$5))
-            + " D: "
-            + $$3.format($$4.i().a($$5))
-            + " W: "
-            + $$3.format($$6)
-            + " PV: "
-            + $$3.format((double)dhr.a((float)$$6))
-            + " AS: "
-            + $$3.format($$4.k().a($$5))
-            + " N: "
-            + $$3.format($$4.l().a($$5))
-      );
+   public void b(sh $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
    }
 
-   private OptionalInt a(cmo $$0, dhy $$1, int $$2, int $$3, @Nullable MutableObject<cmy> $$4, @Nullable Predicate<dcb> $$5) {
-      dhs $$6 = this.e.a().f().a($$0);
-      int $$7 = $$6.a();
-      int $$8 = $$6.c();
-      int $$9 = apa.a($$8, $$7);
-      int $$10 = apa.a($$6.d(), $$7);
-      if ($$10 <= 0) {
-         return OptionalInt.empty();
+   private static <T> DataResult<dhn<T>> a(hk<T> $$0, dhn.d $$1, dho.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dhn.a<T> $$6 = $$1.a($$0, $$5);
+      aqg $$7;
+      if ($$5 == 0) {
+         $$7 = new asp($$4);
       } else {
-         dcb[] $$11;
-         if ($$4 == null) {
-            $$11 = null;
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == dhn.d.f) {
+               dhl<T> $$10 = new dhd<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               arz $$11 = new arz($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new arz($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new arz($$6.b(), $$4, $$9);
+            }
+         } catch (arz.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
+         }
+      }
+
+      return DataResult.success(new dhn<>($$0, $$1, $$6, $$7, $$3));
+   }
+
+   @Override
+   public dho.a<T> a(hk<T> $$0, dhn.d $$1) {
+      this.a();
+
+      dho.a var12;
+      try {
+         dhd<T> $$2 = new dhd<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            arz $$6 = new arz($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
          } else {
-            $$11 = new dcb[$$6.d()];
-            $$4.setValue(new cmy($$8, $$11));
+            $$7 = Optional.empty();
          }
 
-         int $$13 = $$6.b();
-         int $$14 = Math.floorDiv($$2, $$13);
-         int $$15 = Math.floorDiv($$3, $$13);
-         int $$16 = Math.floorMod($$2, $$13);
-         int $$17 = Math.floorMod($$3, $$13);
-         int $$18 = $$14 * $$13;
-         int $$19 = $$15 * $$13;
-         double $$20 = (double)$$16 / (double)$$13;
-         double $$21 = (double)$$17 / (double)$$13;
-         dho $$22 = new dho(1, $$1, $$18, $$19, $$6, dhe.b.a, this.e.a(), this.f.get(), dim.a());
-         $$22.f();
-         $$22.b(0);
+         var12 = new dho.a<>($$2.d(), $$7);
+      } finally {
+         this.b();
+      }
 
-         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
-            $$22.b($$23, 0);
+      return var12;
+   }
 
-            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
-               int $$25 = ($$9 + $$23) * $$7 + $$24;
-               double $$26 = (double)$$24 / (double)$$7;
-               $$22.a($$25, $$26);
-               $$22.b($$2, $$20);
-               $$22.c($$3, $$21);
-               dcb $$27 = $$22.e();
-               dcb $$28 = $$27 == null ? this.e.a().g() : $$27;
-               if ($$11 != null) {
-                  int $$29 = $$23 * $$7 + $$24;
-                  $$11[$$29] = $$28;
-               }
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
 
-               if ($$5 != null && $$5.test($$28)) {
-                  $$22.g();
-                  return OptionalInt.of($$25 + 1);
-               }
-            }
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
          }
 
-         $$22.g();
-         return OptionalInt.empty();
+         $$0[$$4] = $$3;
       }
    }
 
    @Override
-   public void a(aim $$0, cne $$1, dhy $$2, ddx $$3) {
-      if (!aa.a($$3.f())) {
-         dih $$4 = new dih(this, $$0);
-         this.a($$3, $$4, $$2, $$1, $$0.z_(), $$0.B_().d(jc.ap), dim.a($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public void a(ddx $$0, dih $$1, dhy $$2, cne $$3, cnm $$4, hr<cnk> $$5, dim $$6) {
-      dho $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
-      dhp $$8 = this.e.a();
-      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   public int c() {
+      return this.d.a();
    }
 
    @Override
-   public void a(aim $$0, long $$1, dhy $$2, cnm $$3, cne $$4, ddx $$5, dhg.a $$6) {
-      cnm $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
-      dij $$8 = new dij(new dhl(dhz.a()));
-      int $$9 = 8;
-      clt $$10 = $$5.f();
-      dho $$11 = $$5.a($$3x -> this.a($$3x, $$4, dim.a($$0), $$2));
-      dgw $$12 = $$11.i();
-      djk $$13 = new djk(this, $$0.B_(), $$5.z(), $$11, $$2, this.e.a().j());
-      ddw $$14 = ((des)$$5).b($$6);
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
 
-      for (int $$15 = -8; $$15 <= 8; $$15++) {
-         for (int $$16 = -8; $$16 <= 8; $$16++) {
-            clt $$17 = new clt($$10.e + $$15, $$10.f + $$16);
-            ddx $$18 = $$0.a($$17.e, $$17.f);
-            cnl $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(hq.a($$17.d()), 0, hq.a($$17.e()), $$2.b())));
-            Iterable<he<djn<?>>> $$20 = $$19.a($$6);
-            int $$21 = 0;
-
-            for (he<djn<?>> $$22 : $$20) {
-               djn<?> $$23 = $$22.a();
-               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
-               if ($$23.a($$8)) {
-                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
-               }
-
-               $$21++;
-            }
-         }
-      }
+   public dhn<T> d() {
+      return new dhn<>(this.c, this.e, this.d.b());
    }
 
    @Override
-   public CompletableFuture<ddx> a(Executor $$0, dim $$1, dhy $$2, cne $$3, ddx $$4) {
-      dhs $$5 = this.e.a().f().a($$4.z());
-      int $$6 = $$5.c();
-      int $$7 = apa.a($$6, $$5.a());
-      int $$8 = apa.a($$5.d(), $$5.a());
-      if ($$8 <= 0) {
-         return CompletableFuture.completedFuture($$4);
+   public dhn<T> e() {
+      return new dhn<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dhn.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
       } else {
-         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
-         int $$10 = $$4.e($$6);
-         Set<dej> $$11 = Sets.newHashSet();
-
-         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
-            dej $$13 = $$4.b($$12);
-            $$13.a();
-            $$11.add($$13);
-         }
-
-         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
-            for (dej $$3x : $$11) {
-               $$3x.b();
-            }
-         }, $$0);
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
       }
    }
 
-   private ddx a(dim $$0, cne $$1, dhy $$2, ddx $$3, int $$4, int $$5) {
-      dho $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
-      dhk $$7 = $$3.a(dhk.a.c);
-      dhk $$8 = $$3.a(dhk.a.a);
-      clt $$9 = $$3.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dgw $$12 = $$6.i();
-      $$6.f();
-      gu.a $$13 = new gu.a();
-      int $$14 = $$6.j();
-      int $$15 = $$6.k();
-      int $$16 = 16 / $$14;
-      int $$17 = 16 / $$14;
+   static record a<T>(dhl.a a, int b) {
+      public dhn.c<T> a(hk<T> $$0, dhm<T> $$1, int $$2) {
+         aqg $$3 = (aqg)(this.b == 0 ? new asp($$2) : new arz(this.b, $$2));
+         dhl<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dhn.c<>(this, $$3, $$4);
+      }
+   }
 
-      for (int $$18 = 0; $$18 < $$16; $$18++) {
-         $$6.b($$18);
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
 
-         for (int $$19 = 0; $$19 < $$17; $$19++) {
-            int $$20 = $$3.ak() - 1;
-            dej $$21 = $$3.b($$20);
+   static record c<T>(dhn.a<T> a, aqg b, dhl<T> c) {
 
-            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
-               $$6.b($$22, $$19);
-
-               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
-                  int $$24 = ($$4 + $$22) * $$15 + $$23;
-                  int $$25 = $$24 & 15;
-                  int $$26 = $$3.e($$24);
-                  if ($$20 != $$26) {
-                     $$20 = $$26;
-                     $$21 = $$3.b($$26);
-                  }
-
-                  double $$27 = (double)$$23 / (double)$$15;
-                  $$6.a($$24, $$27);
-
-                  for (int $$28 = 0; $$28 < $$14; $$28++) {
-                     int $$29 = $$10 + $$18 * $$14 + $$28;
-                     int $$30 = $$29 & 15;
-                     double $$31 = (double)$$28 / (double)$$14;
-                     $$6.b($$29, $$31);
-
-                     for (int $$32 = 0; $$32 < $$14; $$32++) {
-                        int $$33 = $$11 + $$19 * $$14 + $$32;
-                        int $$34 = $$33 & 15;
-                        double $$35 = (double)$$32 / (double)$$14;
-                        $$6.c($$33, $$35);
-                        dcb $$36 = $$6.e();
-                        if ($$36 == null) {
-                           $$36 = this.e.a().g();
-                        }
-
-                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
-                        if ($$36 != d && !aa.a($$3.f())) {
-                           $$21.a($$30, $$25, $$34, $$36, false);
-                           $$7.a($$30, $$24, $$34, $$36);
-                           $$8.a($$30, $$24, $$34, $$36);
-                           if ($$12.a() && !$$36.u().c()) {
-                              $$13.d($$29, $$24, $$33);
-                              $$3.e($$13);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+      public void a(dhl<T> $$0, aqg $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
          }
-
-         $$6.h();
       }
 
-      $$6.g();
-      return $$3;
+      public int a() {
+         return 1 + this.c.a() + sv.a(this.b.b()) + this.b.a().length * 8;
+      }
+
+      public void a(sh $$0) {
+         $$0.k(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
+
+      public dhn.c<T> b() {
+         return new dhn.c<>(this.a, this.b.d(), this.c.c());
+      }
+
+      public dhn.a<T> c() {
+         return this.a;
+      }
+
+      public aqg d() {
+         return this.b;
+      }
+
+      public dhl<T> e() {
+         return this.c;
+      }
    }
 
-   private dcb a(dho $$0, int $$1, int $$2, int $$3, dcb $$4) {
-      return $$4;
-   }
+   public abstract static class d {
+      public static final dhl.a a = dhq::a;
+      public static final dhl.a b = dhj::a;
+      public static final dhl.a c = dhd::a;
+      static final dhl.a f = dhc::a;
+      public static final dhn.d d = new dhn.d(4) {
+         @Override
+         public <A> dhn.a<A> a(hk<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhn.a(a, $$1);
+               case 1, 2, 3, 4 -> new dhn.a(b, 4);
+               case 5, 6, 7, 8 -> new dhn.a(c, $$1);
+               default -> new dhn.a(dhn.d.f, aro.e($$0.b()));
+            };
+         }
+      };
+      public static final dhn.d e = new dhn.d(2) {
+         @Override
+         public <A> dhn.a<A> a(hk<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhn.a(a, $$1);
+               case 1, 2, 3 -> new dhn.a(b, $$1);
+               default -> new dhn.a(dhn.d.f, aro.e($$0.b()));
+            };
+         }
+      };
+      private final int g;
 
-   @Override
-   public int d() {
-      return this.e.a().f().d();
-   }
+      d(int $$0) {
+         this.g = $$0;
+      }
 
-   @Override
-   public int e() {
-      return this.e.a().l();
-   }
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-   @Override
-   public int f() {
-      return this.e.a().f().c();
-   }
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
 
-   @Override
-   public void a(aim $$0) {
-      if (!this.e.a().a()) {
-         clt $$1 = $$0.a();
-         he<cnk> $$2 = $$0.s($$1.l().h($$0.aj() - 1));
-         dij $$3 = new dij(new dhl(dhz.a()));
-         $$3.a($$0.A(), $$1.d(), $$1.e());
-         cmx.a($$0, $$2, $$1, $$3);
+      public abstract <A> dhn.a<A> a(hk<A> var1, int var2);
+
+      <A> int b(hk<A> $$0, int $$1) {
+         int $$2 = aro.e($$1);
+         dhn.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
       }
    }
 }

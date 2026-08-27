@@ -1,22 +1,14 @@
-import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dis<P extends dir> {
-   dis<dix> a = a("matching_blocks", dix.a);
-   dis<diw> b = a("matching_block_tag", diw.e);
-   dis<diy> c = a("matching_fluids", diy.a);
-   dis<diu> d = a("has_sturdy_face", diu.a);
-   dis<djb> e = a("solid", djb.a);
-   dis<dja> f = a("replaceable", dja.a);
-   dis<dje> g = a("would_survive", dje.a);
-   dis<div> h = a("inside_world_bounds", div.a);
-   dis<diq> i = a("any_of", diq.a);
-   dis<dip> j = a("all_of", dip.a);
-   dis<diz> k = a("not", diz.a);
-   dis<djd> l = a("true", djd.e);
+public interface dis<T> extends AutoCloseable {
+   CompletableFuture<din<T>> a(cor var1);
 
-   Codec<P> codec();
+   void a(din<T> var1);
 
-   private static <P extends dir> dis<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.P, $$0, () -> $$1);
+   void a(boolean var1);
+
+   @Override
+   default void close() throws IOException {
    }
 }

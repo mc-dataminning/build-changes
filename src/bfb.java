@@ -1,47 +1,47 @@
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public final class bfb {
-   public static sw a(bfa $$0, float $$1) {
-      if ($$0.b()) {
-         return sw.c("effect.duration.infinite");
+public class bfb {
+   private bfb() {
+   }
+
+   public static int a(List<? extends bfa> $$0) {
+      long $$1 = 0L;
+
+      for (bfa $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
       } else {
-         int $$2 = apa.d((float)$$0.d() * $$1);
-         return sw.b(aps.a($$2));
+         return (int)$$1;
       }
    }
 
-   public static boolean a(bfz $$0) {
-      return $$0.a(bfc.c) || $$0.a(bfc.C);
+   public static <T extends bfa> Optional<T> a(art $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   public static int b(bfz $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.a(bfc.c)) {
-         $$1 = $$0.b(bfc.c).e();
+   public static <T extends bfa> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
       }
 
-      if ($$0.a(bfc.C)) {
-         $$2 = $$0.b(bfc.C).e();
-      }
-
-      return Math.max($$1, $$2);
+      return Optional.empty();
    }
 
-   public static boolean c(bfz $$0) {
-      return $$0.a(bfc.m) || $$0.a(bfc.C);
-   }
-
-   public static List<aig> a(aif $$0, @Nullable bfj $$1, eei $$2, double $$3, bfa $$4, int $$5) {
-      bey $$6 = $$4.c();
-      List<aig> $$7 = $$0.a(
-         $$6x -> $$6x.e.d()
-               && ($$1 == null || !$$1.p($$6x))
-               && $$2.a((ho)$$6x.dg(), $$3)
-               && (!$$6x.a($$6) || $$6x.b($$6).e() < $$4.e() || $$6x.b($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new bfa($$4), $$1));
-      return $$7;
+   public static <T extends bfa> Optional<T> a(art $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

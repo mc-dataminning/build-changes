@@ -1,5 +1,8 @@
-public class eba extends dzu<eaz> {
-   public eba(dzt<? extends eaz> $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eba {
 }

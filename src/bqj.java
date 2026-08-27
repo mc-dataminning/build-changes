@@ -1,36 +1,49 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.EnumSet;
 
-public class bqj extends bpz {
-   private static final ImmutableMap<bfn<?>, Float> a = ImmutableMap.builder()
-      .put(bfn.y, 8.0F)
-      .put(bfn.G, 12.0F)
-      .put(bfn.Z, 8.0F)
-      .put(bfn.aa, 12.0F)
-      .put(bfn.ay, 15.0F)
-      .put(bfn.aD, 12.0F)
-      .put(bfn.be, 8.0F)
-      .put(bfn.bg, 10.0F)
-      .put(bfn.bo, 10.0F)
-      .put(bfn.bp, 8.0F)
-      .put(bfn.br, 8.0F)
-      .build();
+public class bqj extends bps {
+   private static final btj b = btj.b().a(6.0);
+   public static final int a = 400;
+   private final buu c;
+   private cay d;
+   private int e;
 
-   @Override
-   protected boolean a(bfz $$0, bfz $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(bfz $$0, bfz $$1) {
-      float $$2 = (Float)a.get($$1.ae());
-      return $$1.f((bfj)$$0) <= (double)($$2 * $$2);
+   public bqj(buu $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bps.a.a, bps.a.b));
    }
 
    @Override
-   protected bpb<bfz> b() {
-      return bpb.A;
+   public boolean a() {
+      if (!this.c.dK().N()) {
+         return false;
+      } else if (this.c.ee().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dK().a(cay.class, b, this.c, this.c.dp(), this.c.dr(), this.c.dv(), this.c.cG().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
-   private boolean b(bfz $$0) {
-      return a.containsKey($$0.ae());
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void e() {
+      this.c.D().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

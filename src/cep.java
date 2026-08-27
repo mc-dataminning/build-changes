@@ -1,5 +1,9 @@
-public class cep extends cdj implements cer {
-   public cep(cdk $$0, cdj.a $$1, cfu.a $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface cep {
+   void a(cec var1, ho<ciw> var2, ciw var3, int[] var4);
+
+   void a(cec var1, int var2, ciw var3);
+
+   void a(cec var1, ciw var2);
+
+   void a(cec var1, int var2, int var3);
 }

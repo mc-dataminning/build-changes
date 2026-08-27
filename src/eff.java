@@ -1,77 +1,56 @@
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 
-public class eff {
-   public static final Comparator<eff> a = ($$0, $$1) -> {
-      if ($$0.b() > $$1.b()) {
-         return 1;
-      } else {
-         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
+public class eff implements efh {
+   final ch a;
+   final gv b;
+
+   eff(ch $$0, gv $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public efi b() {
+      return efj.n;
+   }
+
+   public boolean a(ech $$0) {
+      ehf $$1 = $$0.c(eet.f);
+      return $$1 != null && this.a.a($$0.d(), $$1.a() + (double)this.b.u(), $$1.b() + (double)this.b.v(), $$1.c() + (double)this.b.w());
+   }
+
+   public static efh.a a(ch.a $$0) {
+      return () -> new eff($$0.b(), gv.b);
+   }
+
+   public static efh.a a(ch.a $$0, gv $$1) {
+      return () -> new eff($$0.b(), $$1);
+   }
+
+   public static class a implements ecq<eff> {
+      public void a(JsonObject $$0, eff $$1, JsonSerializationContext $$2) {
+         $$0.add("predicate", $$1.a.a());
+         if ($$1.b.u() != 0) {
+            $$0.addProperty("offsetX", $$1.b.u());
+         }
+
+         if ($$1.b.v() != 0) {
+            $$0.addProperty("offsetY", $$1.b.v());
+         }
+
+         if ($$1.b.w() != 0) {
+            $$0.addProperty("offsetZ", $$1.b.w());
+         }
       }
-   };
-   private final efg b;
-   @Nullable
-   private final efd c;
-   private final String d;
-   private int e;
-   private boolean f;
-   private boolean g;
 
-   public eff(efg $$0, efd $$1, String $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.f = true;
-      this.g = true;
-   }
-
-   public void a(int $$0) {
-      if (this.c.c().e()) {
-         throw new IllegalStateException("Cannot modify read-only score");
-      } else {
-         this.b(this.b() + $$0);
+      public eff b(JsonObject $$0, JsonDeserializationContext $$1) {
+         ch $$2 = ch.a($$0.get("predicate"));
+         int $$3 = arf.a($$0, "offsetX", 0);
+         int $$4 = arf.a($$0, "offsetY", 0);
+         int $$5 = arf.a($$0, "offsetZ", 0);
+         return new eff($$2, new gv($$3, $$4, $$5));
       }
-   }
-
-   public void a() {
-      this.a(1);
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public void c() {
-      this.b(0);
-   }
-
-   public void b(int $$0) {
-      int $$1 = this.e;
-      this.e = $$0;
-      if ($$1 != $$0 || this.g) {
-         this.g = false;
-         this.f().a(this);
-      }
-   }
-
-   @Nullable
-   public efd d() {
-      return this.c;
-   }
-
-   public String e() {
-      return this.d;
-   }
-
-   public efg f() {
-      return this.b;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
    }
 }

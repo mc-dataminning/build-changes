@@ -1,26 +1,33 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
-public class aql extends DataFix {
-   private final String a;
-   private final Function<String, String> b;
+public class aql {
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String l = "https://aka.ms/aboutjavareporting";
+   public static final String m = "https://aka.ms/mcjavamoderation";
+   public static final String n = "https://aka.ms/javablocking";
+   public static final String o = "https://aka.ms/MinecraftSymLinks";
+   public static final String p = "https://aka.ms/startjavarealmstrial";
+   public static final String q = "https://aka.ms/BuyJavaRealms";
+   public static final String r = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String s = "https://aka.ms/MinecraftRealmsContentCreator";
+   public static final String t = "https://aka.ms/UpdateMojangAccount";
 
-   public aql(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(avw.i), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
-                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
-                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
-               }))
-      );
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

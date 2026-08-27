@@ -28,7 +28,7 @@ public class bc {
       this.f = $$4;
    }
 
-   public boolean a(aig $$0, ben $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(akj $$0, bhe $$1, float $$2, float $$3, boolean $$4) {
       if (this == a) {
          return true;
       } else if (!this.b.d((double)$$2)) {
@@ -44,10 +44,10 @@ public class bc {
 
    public static bc a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "damage");
+         JsonObject $$1 = arf.m($$0, "damage");
          cj.c $$2 = cj.c.a($$1.get("dealt"));
          cj.c $$3 = cj.c.a($$1.get("taken"));
-         Boolean $$4 = $$1.has("blocked") ? aor.k($$1, "blocked") : null;
+         Boolean $$4 = $$1.has("blocked") ? arf.k($$1, "blocked") : null;
          bo $$5 = bo.a($$1.get("source_entity"));
          bd $$6 = bd.a($$1.get("type"));
          return new bc($$2, $$3, $$5, $$4, $$6);

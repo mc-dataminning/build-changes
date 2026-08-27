@@ -1,24 +1,27 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public interface dfs {
-   int af();
+public class dfs extends dfw<hb> {
+   protected dfs(String $$0, Collection<hb> $$1) {
+      super($$0, hb.class, $$1);
+   }
 
-   UUID ct();
+   public static dfs a(String $$0) {
+      return a($$0, $$0x -> true);
+   }
 
-   gu di();
+   public static dfs a(String $$0, Predicate<hb> $$1) {
+      return a($$0, Arrays.stream(hb.values()).filter($$1).collect(Collectors.toList()));
+   }
 
-   eed cE();
+   public static dfs a(String $$0, hb... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
 
-   void a(dft var1);
-
-   Stream<? extends dfs> cP();
-
-   Stream<? extends dfs> cQ();
-
-   void b(bfj.c var1);
-
-   boolean dG();
-
-   boolean dH();
+   public static dfs a(String $$0, Collection<hb> $$1) {
+      return new dfs($$0, $$1);
+   }
 }

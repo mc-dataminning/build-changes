@@ -1,77 +1,107 @@
-import javax.annotation.Nullable;
+public class cxm extends csk {
+   public static final dfw<hb.a> a = dfo.H;
+   protected static final int b = 2;
+   protected static final ehy c = csk.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final ehy d = csk.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
-public class cxm extends cpa implements csr {
-   public static final dcz<ddl> a = dcr.bj;
-
-   protected cxm(dca.d $$0) {
+   public cxm(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ddl.b));
+      this.k(this.C.b().a(a, hb.a.a));
    }
 
    @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new dba($$0, $$1);
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      czn $$6 = $$1.c_($$2);
-      if ($$6 instanceof dba) {
-         return ((dba)$$6).a($$3) ? bdx.a($$1.B) : bdx.d;
-      } else {
-         return bdx.d;
-      }
-   }
-
-   @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, @Nullable bfz $$3, cfz $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            czn $$5 = $$0.c_($$1);
-            if ($$5 instanceof dba) {
-               ((dba)$$5).a($$3);
-            }
-         }
-      }
-   }
-
-   @Override
-   public cvs b_(dcb $$0) {
-      return cvs.c;
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, cpn $$3, gu $$4, boolean $$5) {
-      if ($$1 instanceof aif) {
-         if ($$1.c_($$2) instanceof dba $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.G();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aif)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(aif $$0, dba $$1) {
-      switch ($$1.y()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.a($$0, false);
-            break;
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      switch ((hb.a)$$0.c(a)) {
          case c:
-            $$1.E();
-         case d:
+            return d;
+         case a:
+         default:
+            return c;
       }
+   }
+
+   @Override
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$1.x_().j() && $$1.X().b(cpg.e) && $$3.a(2000) < $$1.ai().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.d();
+         }
+
+         if ($$1.a_($$2).a($$1, $$2, bik.bs)) {
+            big $$4 = bik.bs.a($$1, $$2.c(), bja.d);
+            if ($$4 != null) {
+               $$4.as();
+            }
+         }
+      }
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      hb.a $$6 = $$1.o();
+      hb.a $$7 = $$0.c(a);
+      boolean $$8 = $$7 != $$6 && $$6.d();
+      return !$$8 && !$$2.a(this) && !new eaz($$3, $$4, $$7).c() ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
+      if ($$3.cs()) {
+         $$3.f($$2);
+      }
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aou.sU, aov.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+         } else {
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+         }
+
+         $$1.a(iw.X, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   @Override
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      return ciw.b;
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((hb.a)$$0.c(a)) {
+               case c:
+                  return $$0.a(a, hb.a.a);
+               case a:
+                  return $$0.a(a, hb.a.c);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a);
    }
 }

@@ -12,8 +12,8 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public abstract class cj<T extends Number> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("argument.range.empty"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("argument.range.swapped"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.range.empty"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("argument.range.swapped"));
    @Nullable
    protected final T c;
    @Nullable
@@ -60,11 +60,11 @@ public abstract class cj<T extends Number> {
    protected static <T extends Number, R extends cj<T>> R a(@Nullable JsonElement $$0, R $$1, BiFunction<JsonElement, String, T> $$2, cj.a<T, R> $$3) {
       if ($$0 == null || $$0.isJsonNull()) {
          return $$1;
-      } else if (aor.b($$0)) {
+      } else if (arf.b($$0)) {
          T $$4 = (T)$$2.apply($$0, "value");
          return $$3.create($$4, $$4);
       } else {
-         JsonObject $$5 = aor.m($$0, "value");
+         JsonObject $$5 = arf.m($$0, "value");
          T $$6 = $$5.has("min") ? $$2.apply($$5.get("min"), "min") : null;
          T $$7 = $$5.has("max") ? $$2.apply($$5.get("max"), "max") : null;
          return $$3.create($$6, $$7);
@@ -200,7 +200,7 @@ public abstract class cj<T extends Number> {
       }
 
       public static cj.c a(@Nullable JsonElement $$0) {
-         return a($$0, e, aor::d, cj.c::new);
+         return a($$0, e, arf::d, cj.c::new);
       }
 
       public static cj.c a(StringReader $$0) throws CommandSyntaxException {
@@ -263,7 +263,7 @@ public abstract class cj<T extends Number> {
       }
 
       public static cj.d a(@Nullable JsonElement $$0) {
-         return a($$0, e, aor::g, cj.d::new);
+         return a($$0, e, arf::g, cj.d::new);
       }
 
       public static cj.d a(StringReader $$0) throws CommandSyntaxException {

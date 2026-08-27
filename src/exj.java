@@ -1,27 +1,42 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class exj implements exi {
-   public static final exi a = new exj();
+public class exj extends exn {
+   private etf c;
 
-   private exj() {
+   private static eqq<?>[] a(eqr $$0) {
+      return new eqq[]{$$0.c(), $$0.M(), $$0.B(), $$0.N(), $$0.U()};
+   }
+
+   public exj(exv $$0, eqr $$1) {
+      super($$0, $$1, te.c("options.mouse_settings.title"));
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   protected void aE_() {
+      this.c = new etf(this.f, this.g, this.h, 32, this.h - 32, 25);
+      if (ekc.a()) {
+         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.C())).toArray(eqq[]::new));
+      } else {
+         this.c.a(a(this.b));
+      }
+
+      this.e(this.c);
+      this.d(esi.a(td.d, $$0 -> {
+         this.b.aq();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+   }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   @Override
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

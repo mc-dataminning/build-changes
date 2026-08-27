@@ -1,154 +1,167 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import java.util.UUID;
 
-public class afn {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 dt.a("start")
-                                    .then(
-                                       dt.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(dt.a("stop").executes($$0x -> c((ds)$$0x.getSource()))))
-                        .then(dt.a("check").executes($$0x -> d((ds)$$0x.getSource()))))
-                     .then(dt.a("sound").then(dt.a("type", dy.a()).executes($$0x -> a((ds)$$0x.getSource(), dy.a($$0x, "type"))))))
-                  .then(dt.a("spawnleader").executes($$0x -> b((ds)$$0x.getSource()))))
-               .then(
-                  dt.a("setomen")
-                     .then(
-                        dt.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
-                     )
-               ))
-            .then(dt.a("glow").executes($$0x -> a((ds)$$0x.getSource())))
-      );
+public class afn extends akf {
+   private final aep h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
+
+   public afn(aep $$0, te $$1) {
+      super($$1, bge.a.g, bge.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   private static int a(ds $$0) throws CommandSyntaxException {
-      bzv $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (bzw $$3 : $$1.h()) {
-            $$3.b(new bfa(bfc.x, 1000, 1));
+   public aep a() {
+      return this.h;
+   }
+
+   @Override
+   public void a(akj $$0) {
+      super.a($$0);
+      this.i.add($$0.cv());
+   }
+
+   public void a(UUID $$0) {
+      this.i.add($$0);
+   }
+
+   @Override
+   public void b(akj $$0) {
+      super.b($$0);
+      this.i.remove($$0.cv());
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
+   }
+
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(aro.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(aro.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final te e() {
+      return tg.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new tj(tj.a.a, te.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<akj> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<akj> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (akj $$5 : $$0) {
+            if ($$5.cv().equals($$3)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            $$1.add($$3);
          }
       }
 
-      return 1;
-   }
+      for (akj $$6 : $$0) {
+         boolean $$7 = false;
 
-   private static int a(ds $$0, int $$1) throws CommandSyntaxException {
-      bzv $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(sw.b("Sorry, the max bad omen level you can set is " + $$3));
-         } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> sw.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
-         }
-      } else {
-         $$0.b(sw.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(ds $$0) {
-      $$0.a(() -> sw.b("Spawned a raid captain"), false);
-      bzw $$1 = bfn.ay.a((cmm)$$0.e());
-      if ($$1 == null) {
-         $$0.b(sw.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(bfo.f, bzv.s());
-         $$1.e($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(gu.a($$0.d())), bgd.n, null, null);
-         $$0.e().a_($$1);
-         return 1;
-      }
-   }
-
-   private static int a(ds $$0, @Nullable sw $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         aif $$2 = $$0.e();
-         eei $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, amh.tp, ami.g, 2.0F, 1.0F, $$2.z.g());
-      }
-
-      return 1;
-   }
-
-   private static int b(ds $$0, int $$1) throws CommandSyntaxException {
-      aig $$2 = $$0.h();
-      gu $$3 = $$2.di();
-      if ($$2.x().d($$3)) {
-         $$0.b(sw.b("Raid already started close by"));
-         return -1;
-      } else {
-         bzx $$4 = $$2.x().x();
-         bzv $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.b();
-            $$0.a(() -> sw.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(sw.b("Failed to create a raid in your local village"));
+         for (UUID $$8 : this.i) {
+            if ($$6.cv().equals($$8)) {
+               $$7 = true;
+               break;
+            }
          }
 
-         return 1;
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (akj $$10 : this.h()) {
+            if ($$10.cv().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (akj $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public qs f() {
+      qs $$0 = new qs();
+      $$0.a("Name", te.a.a(this.a));
+      $$0.a("Visible", this.g());
+      $$0.a("Value", this.j);
+      $$0.a("Max", this.k);
+      $$0.a("Color", this.l().b());
+      $$0.a("Overlay", this.m().a());
+      $$0.a("DarkenScreen", this.n());
+      $$0.a("PlayBossMusic", this.o());
+      $$0.a("CreateWorldFog", this.p());
+      qy $$1 = new qy();
+
+      for (UUID $$2 : this.i) {
+         $$1.add(re.a($$2));
+      }
+
+      $$0.a("Players", $$1);
+      return $$0;
+   }
+
+   public static afn a(qs $$0, aep $$1) {
+      afn $$2 = new afn($$1, te.a.a($$0.l("Name")));
+      $$2.d($$0.q("Visible"));
+      $$2.a($$0.h("Value"));
+      $$2.b($$0.h("Max"));
+      $$2.a(bge.a.a($$0.l("Color")));
+      $$2.a(bge.b.a($$0.l("Overlay")));
+      $$2.a($$0.q("DarkenScreen"));
+      $$2.b($$0.q("PlayBossMusic"));
+      $$2.c($$0.q("CreateWorldFog"));
+      qy $$3 = $$0.c("Players", 11);
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         $$2.a(re.a($$3.k($$4)));
+      }
+
+      return $$2;
+   }
+
+   public void c(akj $$0) {
+      if (this.i.contains($$0.cv())) {
+         this.a($$0);
       }
    }
 
-   private static int c(ds $$0) throws CommandSyntaxException {
-      aig $$1 = $$0.h();
-      gu $$2 = $$1.di();
-      bzv $$3 = $$1.x().c($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> sw.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(sw.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(ds $$0) throws CommandSyntaxException {
-      bzv $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> sw.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> sw.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(sw.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static bzv a(aig $$0) {
-      return $$0.x().c($$0.di());
+   public void d(akj $$0) {
+      super.b($$0);
    }
 }

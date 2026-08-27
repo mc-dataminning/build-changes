@@ -1,111 +1,136 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class ahs<T> {
-   public static final int a = ahq.a + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
+public class ahs {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ahs(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), 0, true)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+                  .then(
+                     dt.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
+                  )
+            )
+      );
    }
 
-   protected void a(int $$0, clt $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
+   private static int a(ds $$0, int $$1, boolean $$2) {
+      aki $$3 = $$0.e();
+      akg $$4 = $$3.k();
+      $$4.a.d();
+      ehf $$5 = $$0.d();
+      cor $$6 = new cor(gv.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
 
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> !$$0x.isPresent());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            cor $$13 = new cor($$12, $$11);
+            dhf $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (gv $$15 : gv.b($$13.d(), $$3.C_(), $$13.e(), $$13.f(), $$3.aj() - 1, $$13.g())) {
+                  $$3.a($$15, csl.a.n(), 16);
+               }
             }
          }
       }
 
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
+      bfh<Runnable> $$16 = bfh.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dgz.f, dgz.g, dgz.h, dgz.i, dgz.j, dgz.k).iterator();
 
-      this.e.remove($$0);
-   }
+      while (var33.hasNext()) {
+         dgz $$19 = (dgz)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
 
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
-   }
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               cor $$24 = new cor($$23, $$22);
+               dhf $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dgu> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
 
-   @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dgu $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dgu $$31;
+                        if ($$30 instanceof dhe) {
+                           $$31 = new dhe(((dhe)$$30).C(), true);
+                        } else if ($$30 instanceof dhf) {
+                           $$31 = new dhe((dhf)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
 
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dgz.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dkh.a($$0xxx, dgz.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
          }
 
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
       }
-   }
 
-   public boolean b() {
-      return this.c < a;
-   }
+      long $$34 = System.currentTimeMillis();
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
-   }
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            cor $$37 = new cor($$36, $$35);
+            dhf $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (gv $$39 : gv.b($$37.d(), $$3.C_(), $$37.e(), $$37.f(), $$3.aj() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
+      }
 
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> te.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

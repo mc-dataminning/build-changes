@@ -1,43 +1,106 @@
-import org.joml.Vector3f;
+public class fgt extends fet<bzn> implements fdl {
+   private final fhj a;
+   private final fhj b;
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
+   private final fhj j;
 
-public class fgt extends fgv<io> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fgt(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, io $$7, fih $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
+   public fgt(fhj $$0) {
+      super(fno::h);
+      this.a = $$0.b("root");
+      this.b = this.a.b("body");
+      this.f = this.b.b("right_arm");
+      this.g = this.b.b("left_arm");
+      this.h = this.b.b("right_wing");
+      this.i = this.b.b("left_wing");
+      this.j = this.a.b("head");
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhs $$2 = $$1.a("root", fho.c(), fhl.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", fho.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fhn(0.0F)), fhl.a(0.0F, 20.0F, 0.0F));
+      fhs $$3 = $$2.a(
+         "body",
+         fho.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fhn(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fhn(-0.2F)),
+         fhl.a(0.0F, 20.0F, 0.0F)
+      );
+      $$3.a("right_arm", fho.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fhn(-0.1F)), fhl.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", fho.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fhn(-0.1F)), fhl.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", fho.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fhn(0.0F)).a(false), fhl.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", fho.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fhn(0.0F)), fhl.a(-0.5F, 1.0F, 1.0F));
+      return fhp.a($$0, 32, 32);
    }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   public void a(bzn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fhj::c);
+      this.j.f = $$4 * (float) (Math.PI / 180.0);
+      this.j.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = aro.b($$3 * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.f.g = (float) (Math.PI / 5) + $$6;
+      this.g.g = -((float) (Math.PI / 5) + $$6);
+      if ($$0.fZ()) {
+         this.b.e = 0.0F;
+         this.a($$0.eR(), $$0.eS(), $$6);
+      } else {
+         this.b.e = (float) (Math.PI / 20);
+      }
+
+      this.i.f = 1.0995574F + aro.b($$3 * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.h.f = -this.i.f;
+      this.i.e = 0.47123888F;
+      this.i.g = -0.47123888F;
+      this.h.e = 0.47123888F;
+      this.h.g = 0.47123888F;
+   }
+
+   private void a(ciw $$0, ciw $$1, float $$2) {
+      if ($$0.b() && $$1.b()) {
+         this.f.e = -1.2217305F;
+         this.f.f = (float) (Math.PI / 12);
+         this.f.g = -0.47123888F - $$2;
+         this.g.e = -1.2217305F;
+         this.g.f = (float) (-Math.PI / 12);
+         this.g.g = 0.47123888F + $$2;
+      } else {
+         if (!$$0.b()) {
+            this.f.e = (float) (Math.PI * 7.0 / 6.0);
+            this.f.f = (float) (Math.PI / 12);
+            this.f.g = -0.47123888F - $$2;
+         }
+
+         if (!$$1.b()) {
+            this.g.e = (float) (Math.PI * 7.0 / 6.0);
+            this.g.f = (float) (-Math.PI / 12);
+            this.g.g = 0.47123888F + $$2;
+         }
+      }
    }
 
    @Override
-   public void a(ein $$0, emz $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public fhj a() {
+      return this.a;
    }
 
-   public static class a implements fhp<io> {
-      private final fih a;
+   @Override
+   public void a(biq $$0, elh $$1) {
+      boolean $$2 = $$0 == biq.b;
+      fhj $$3 = $$2 ? this.f : this.g;
+      this.a.a($$1);
+      this.b.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
 
-      public a(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(io $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fgt($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+   private void a(elh $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
       }
    }
 }

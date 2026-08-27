@@ -1,64 +1,94 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class ecb implements eck {
-   final eck[] a;
-   private final Predicate<dzk> b;
+public interface ecb {
+   int c = 19133;
+   int d = 19132;
 
-   protected ecb(eck[] $$0, Predicate<dzk> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   cqd F();
+
+   void a(cqd var1);
+
+   boolean H();
+
+   Set<String> I();
+
+   Set<String> J();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.I()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.z();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
+      });
    }
 
-   public final boolean a(dzk $$0) {
-      return this.b.test($$0);
-   }
-
-   @Override
-   public void a(dzv $$0) {
-      eck.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].a($$0.b(".term[" + $$1 + "]"));
+   default String i(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   public abstract static class a implements eck.a {
-      private final List<eck> a = new ArrayList<>();
+   @Nullable
+   qs G();
 
-      public a(eck.a... $$0) {
-         for (eck.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   void a(@Nullable qs var1);
 
-      public void a(eck.a $$0) {
-         this.a.add($$0.build());
-      }
+   eca K();
 
-      @Override
-      public eck build() {
-         eck[] $$0 = this.a.toArray(eck[]::new);
-         return this.a($$0);
-      }
+   cpo L();
 
-      protected abstract eck a(eck[] var1);
-   }
+   qs a(ht var1, @Nullable qs var2);
 
-   public abstract static class b<T extends ecb> implements dzt<T> {
-      public void a(JsonObject $$0, ecb $$1, JsonSerializationContext $$2) {
-         $$0.add("terms", $$2.serialize($$1.a));
-      }
+   boolean n();
 
-      public T b(JsonObject $$0, JsonDeserializationContext $$1) {
-         eck[] $$2 = aor.a($$0, "terms", $$1, eck[].class);
-         return this.b($$2);
-      }
+   int z();
 
-      protected abstract T b(eck[] var1);
+   String g();
+
+   cph m();
+
+   void a(cph var1);
+
+   boolean o();
+
+   bgl s();
+
+   void a(bgl var1);
+
+   boolean t();
+
+   void d(boolean var1);
+
+   cpg q();
+
+   @Nullable
+   qs y();
+
+   dik.a E();
+
+   void a(dik.a var1);
+
+   dlf A();
+
+   boolean B();
+
+   boolean C();
+
+   Lifecycle D();
+
+   default cdt M() {
+      return this.F().b();
    }
 }

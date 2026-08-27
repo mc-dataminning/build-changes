@@ -1,9 +1,18 @@
-import java.time.Duration;
-import java.time.Instant;
-import jdk.jfr.consumer.RecordedEvent;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public record bbm(Instant a, Duration b) {
-   public static bbm a(RecordedEvent $$0) {
-      return new bbm($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+public class bbm extends azu {
+   public bbm(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:glow_squid", () -> azv.a($$0));
+      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", aym.t.in($$0)));
+      return $$1;
    }
 }

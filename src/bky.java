@@ -1,40 +1,41 @@
-import com.google.common.collect.ImmutableMap;
+public class bky implements bkp<biw> {
+   private final int a;
+   private final int b;
+   private bko.a c = bko.a.a;
+   private long d;
 
-public class bky extends bhr<byb> {
-   public bky() {
-      super(ImmutableMap.of());
+   public bky(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected boolean a(aif $$0, byb $$1, long $$2) {
-      return c($$1) || b($$1);
+   @Override
+   public bko.a a() {
+      return this.c;
    }
 
-   protected void b(aif $$0, byb $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bha<?> $$3 = $$1.dK();
-         if (!$$3.c(bzz.g)) {
-            $$3.b(bpb.t);
-            $$3.b(bpb.m);
-            $$3.b(bpb.n);
-            $$3.b(bpb.r);
-            $$3.b(bpb.q);
-         }
+   @Override
+   public final boolean e(aki $$0, biw $$1, long $$2) {
+      this.c = bko.a.b;
+      int $$3 = this.a + $$0.y_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
 
-         $$3.a(bzz.g);
+   @Override
+   public final void f(aki $$0, biw $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   protected void c(aif $$0, byb $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
+   @Override
+   public final void g(aki $$0, biw $$1, long $$2) {
+      this.c = bko.a.a;
    }
 
-   public static boolean b(bfz $$0) {
-      return $$0.dK().a(bpb.A);
-   }
-
-   public static boolean c(bfz $$0) {
-      return $$0.dK().a(bpb.x);
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

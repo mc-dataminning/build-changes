@@ -1,49 +1,37 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class fkt extends fkw {
+   private final ffg a;
+   private final fno b = fno.h(fsc.a);
 
-public class fkt {
-   public static final int a = -1;
-   public final ha b;
-   public final int c;
-   public final String d;
-   public final fkv e;
-
-   public fkt(@Nullable ha $$0, int $$1, String $$2, fkv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   fkt(fie $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fer(eqn.N().aO().a(fhi.P));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
-   protected static class a implements JsonDeserializer<fkt> {
-      private static final int a = -1;
+   @Override
+   public fla b() {
+      return fla.e;
+   }
 
-      public fkt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ha $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fkv $$7 = (fkv)$$2.deserialize($$3, fkv.class);
-         return new fkt($$4, $$5, $$6, $$7);
-      }
+   @Override
+   public void a(ell $$0, epy $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * aro.a($$3 * (float) Math.PI);
+      elh $$5 = new elh();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      fng.a $$6 = eqn.N().aN().b();
+      ell $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, fxx.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
+   }
 
-      protected int a(JsonObject $$0) {
-         return aor.a($$0, "tintindex", -1);
-      }
-
-      private String b(JsonObject $$0) {
-         return aor.i($$0, "texture");
-      }
-
-      @Nullable
-      private ha c(JsonObject $$0) {
-         String $$1 = aor.a($$0, "cullface", "");
-         return ha.a($$1);
+   public static class a implements fkz<iz> {
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkt($$1, $$2, $$3, $$4);
       }
    }
 }

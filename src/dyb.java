@@ -1,13 +1,14 @@
-public class dyb {
-   public final eei a;
-   public final eei b;
-   public final float c;
-   public final float d;
+import com.mojang.serialization.Codec;
 
-   public dyb(eei $$0, eei $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class dyb extends dyn {
+   public static final Codec<dyb> a = Codec.unit(() -> dyb.b);
+   public static final dyb b = new dyb();
+
+   private dyb() {
+   }
+
+   @Override
+   protected dyp<?> a() {
+      return dyp.j;
    }
 }

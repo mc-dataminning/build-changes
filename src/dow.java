@@ -1,30 +1,75 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class dow extends dot {
-   protected final long c;
-   protected final dwh.a d;
-   protected final float e;
-   protected final dwh f;
-
-   protected static <P extends dow> P3<Mu<P>, Long, dwh.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         dwh.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         aoi.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+public class dow extends dnl<dqk> {
+   public dow(Codec<dqk> $$0) {
+      super($$0);
    }
 
-   protected dow(long $$0, dwh.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = dwh.b(new dij(new dhl($$0)), $$1);
-   }
+   @Override
+   public boolean a(dnn<dqk> $$0) {
+      dqk $$1 = $$0.f();
+      cqe $$2 = $$0.b();
+      gv $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         dey $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
 
-   protected double a(gu $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.t($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

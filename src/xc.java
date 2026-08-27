@@ -1,31 +1,14 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class xc implements uo<ur> {
-   private final IntList a;
-
-   public xc(IntList $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public xc(int... $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public xc(sf $$0) {
-      this.a = $$0.a();
+public record xc(int a) implements uw<wo> {
+   public xc(sh $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
-   }
-
-   public IntList a() {
-      return this.a;
    }
 }

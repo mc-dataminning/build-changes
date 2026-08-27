@@ -1,69 +1,42 @@
 import javax.annotation.Nullable;
 
-public class dee extends dei {
-   private final he<cnk> n;
-
-   public dee(cmm $$0, clt $$1, he<cnk> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
-   }
-
-   @Override
-   public dcb a_(gu $$0) {
-      return cpo.nb.n();
-   }
-
+public abstract class dee {
    @Nullable
-   @Override
-   public dcb a(gu $$0, dcb $$1, boolean $$2) {
-      return null;
+   protected abstract aeo<dmy<?, ?>> a(art var1, boolean var2);
+
+   public boolean a(aki $$0, dgv $$1, gv $$2, dey $$3, art $$4) {
+      aeo<dmy<?, ?>> $$5 = this.a($$4, this.a($$0, $$2));
+      if ($$5 == null) {
+         return false;
+      } else {
+         hf<dmy<?, ?>> $$6 = $$0.B_().d(jd.as).b($$5).orElse(null);
+         if ($$6 == null) {
+            return false;
+         } else {
+            dmy<?, ?> $$7 = $$6.a();
+            dey $$8 = $$0.b_($$2).g();
+            $$0.a($$2, $$8, 4);
+            if ($$7.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$8) {
+                  $$0.a($$2, $$3, $$8, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
+         }
+      }
    }
 
-   @Override
-   public dxe b_(gu $$0) {
-      return dxf.a.g();
-   }
+   private boolean a(cpl $$0, gv $$1) {
+      for (gv $$2 : gv.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
+         if ($$0.a_($$2).a(apj.U)) {
+            return true;
+         }
+      }
 
-   @Override
-   public int h(gu $$0) {
-      return 0;
-   }
-
-   @Nullable
-   @Override
-   public czn a(gu $$0, dei.b $$1) {
-      return null;
-   }
-
-   @Override
-   public void b(czn $$0) {
-   }
-
-   @Override
-   public void a(czn $$0) {
-   }
-
-   @Override
-   public void d(gu $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public ahy D() {
-      return ahy.b;
-   }
-
-   @Override
-   public he<cnk> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+      return false;
    }
 }

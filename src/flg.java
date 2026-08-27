@@ -1,19 +1,38 @@
-import com.google.common.collect.Streams;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class flg extends flw {
+   private final flr a;
 
-public class flg implements flh {
-   public static final String a = "AND";
-   private final Iterable<? extends flh> d;
-
-   public flg(Iterable<? extends flh> $$0) {
-      this.d = $$0;
+   flg(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flr $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public Predicate<dcb> getPredicate(dcc<cpn, dcb> $$0) {
-      List<Predicate<dcb>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fla b() {
+      return fla.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(flr a) implements fkz<iz> {
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flg $$8 = new flg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
+      }
    }
 }

@@ -1,272 +1,45 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fzc extends alc<fzc.a> {
-   public static final fxv a = new fxv("minecraft:empty", bcy.a(1.0F), bcy.a(1.0F), 1, fxv.a.a, false, false, 16);
-   public static final acq b = new acq("minecraft", "intentionally_empty");
-   public static final fzd c = new fzd(b, null);
-   public static final fxv d = new fxv(b.toString(), bcy.a(1.0F), bcy.a(1.0F), 1, fxv.a.a, false, false, 16);
-   static final Logger e = LogUtils.getLogger();
-   private static final String f = "sounds.json";
-   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(sw.class, new sw.a()).registerTypeAdapter(fxw.class, new fxx()).create();
-   private static final TypeToken<Map<String, fxw>> h = new TypeToken<Map<String, fxw>>() {
-   };
-   private final Map<acq, fzd> i = Maps.newHashMap();
-   private final fyz j;
-   private final Map<acq, akv> k = new HashMap<>();
+public class fzc {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
 
-   public fzc(enr $$0) {
-      this.j = new fyz(this, $$0, ala.fromMap(this.k));
-   }
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      amh.a $$3 = amh.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
 
-   protected fzc.a a(akx $$0, ban $$1) {
-      fzc.a $$2 = new fzc.a();
-      $$1.a();
-      $$1.a("list");
-      $$2.a($$0);
-      $$1.c();
-
-      for (String $$3 : $$0.a()) {
-         $$1.a($$3);
-
-         try {
-            for (akv $$5 : $$0.a(new acq($$3, "sounds.json"))) {
-               $$1.a($$5.b());
-
-               try (Reader $$6 = $$5.e()) {
-                  $$1.a("parse");
-                  Map<String, fxw> $$7 = aor.a(g, $$6, h);
-                  $$1.b("register");
-
-                  for (Entry<String, fxw> $$8 : $$7.entrySet()) {
-                     $$2.a(new acq($$3, $$8.getKey()), $$8.getValue());
-                  }
-
-                  $$1.c();
-               } catch (RuntimeException var15) {
-                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
-               }
-
-               $$1.c();
-            }
-         } catch (IOException var16) {
-         }
-
-         $$1.c();
-      }
-
-      $$1.b();
-      return $$2;
-   }
-
-   protected void a(fzc.a $$0, akx $$1, ban $$2) {
-      $$0.a(this.i, this.k, this.j);
-      if (aa.aS) {
-         for (acq $$3 : this.i.keySet()) {
-            fzd $$4 = this.i.get($$3);
-            if (!sy.b($$4.a()) && jb.c.c($$3)) {
-               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = arf.a($$5);
+         JsonObject $$7 = arf.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = arf.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
             }
          }
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      if (e.isDebugEnabled()) {
-         for (acq $$5 : this.i.keySet()) {
-            if (!jb.c.c($$5)) {
-               e.debug("Not having sound event for: {}", $$5);
-            }
-         }
-      }
-
-      this.j.a();
-   }
-
-   public List<String> a() {
-      return this.j.g();
-   }
-
-   static boolean a(fxv $$0, acq $$1, ala $$2) {
-      acq $$3 = $$0.b();
-      if ($$2.getResource($$3).isEmpty()) {
-         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   public fzd a(acq $$0) {
-      return this.i.get($$0);
-   }
-
-   public Collection<acq> b() {
-      return this.i.keySet();
-   }
-
-   public void a(fxz $$0) {
-      this.j.a($$0);
-   }
-
-   public void a(fxy $$0) {
-      this.j.c($$0);
-   }
-
-   public void a(fxy $$0, int $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public void a(emz $$0) {
-      this.j.a($$0);
-   }
-
-   public void d() {
-      this.j.d();
-   }
-
-   public void e() {
-      this.j.c();
-   }
-
-   public void f() {
-      this.j.b();
-   }
-
-   public void a(boolean $$0) {
-      this.j.a($$0);
-   }
-
-   public void g() {
-      this.j.e();
-   }
-
-   public void a(ami $$0, float $$1) {
-      if ($$0 == ami.a && $$1 <= 0.0F) {
-         this.e();
-      }
-
-      this.j.a($$0, $$1);
-   }
-
-   public void b(fxy $$0) {
-      this.j.a($$0);
-   }
-
-   public boolean c(fxy $$0) {
-      return this.j.b($$0);
-   }
-
-   public void a(fzb $$0) {
-      this.j.a($$0);
-   }
-
-   public void b(fzb $$0) {
-      this.j.b($$0);
-   }
-
-   public void a(@Nullable acq $$0, @Nullable ami $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public String h() {
-      return this.j.f();
-   }
-
-   public void i() {
-      this.j.a();
-   }
-
-   protected static class a {
-      final Map<acq, fzd> a = Maps.newHashMap();
-      private Map<acq, akv> b = Map.of();
-
-      void a(akx $$0) {
-         this.b = fxv.a.a($$0);
-      }
-
-      void a(acq $$0, fxw $$1) {
-         fzd $$2 = this.a.get($$0);
-         boolean $$3 = $$2 == null;
-         if ($$3 || $$1.b()) {
-            if (!$$3) {
-               fzc.e.debug("Replaced sound event location {}", $$0);
-            }
-
-            $$2 = new fzd($$0, $$1.c());
-            this.a.put($$0, $$2);
-         }
-
-         ala $$4 = ala.fromMap(this.b);
-
-         for (final fxv $$5 : $$1.a()) {
-            final acq $$6 = $$5.a();
-            fze<fxv> $$8;
-            switch ($$5.f()) {
-               case a:
-                  if (!fzc.a($$5, $$0, $$4)) {
-                     continue;
-                  }
-
-                  $$8 = $$5;
-                  break;
-               case b:
-                  $$8 = new fze<fxv>() {
-                     @Override
-                     public int e() {
-                        fzd $$0 = a.this.a.get($$6);
-                        return $$0 == null ? 0 : $$0.e();
-                     }
-
-                     public fxv a(apf $$0) {
-                        fzd $$1 = a.this.a.get($$6);
-                        if ($$1 == null) {
-                           return fzc.a;
-                        } else {
-                           fxv $$2 = $$1.a($$0);
-                           return new fxv(
-                              $$2.a().toString(), new bde($$2.c(), $$5.c()), new bde($$2.d(), $$5.d()), $$5.e(), fxv.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
-                           );
-                        }
-                     }
-
-                     @Override
-                     public void a(fyz $$0) {
-                        fzd $$1 = a.this.a.get($$6);
-                        if ($$1 != null) {
-                           $$1.a($$0);
-                        }
-                     }
-                  };
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
-            }
-
-            $$2.a($$8);
-         }
-      }
-
-      public void a(Map<acq, fzd> $$0, Map<acq, akv> $$1, fyz $$2) {
-         $$0.clear();
-         $$1.clear();
-         $$1.putAll(this.b);
-
-         for (Entry<acq, fzd> $$3 : this.a.entrySet()) {
-            $$0.put($$3.getKey(), $$3.getValue());
-            $$3.getValue().a($$2);
-         }
-      }
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

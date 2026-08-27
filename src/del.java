@@ -1,11 +1,15 @@
 import javax.annotation.Nullable;
 
-public interface del {
-   @Nullable
-   dek c(int var1, int var2);
+public class del extends dee {
+   private final float a;
 
-   default void a(cmv $$0, hx $$1) {
+   public del(float $$0) {
+      this.a = $$0;
    }
 
-   cls q();
+   @Nullable
+   @Override
+   protected aeo<dmy<?, ?>> a(art $$0, boolean $$1) {
+      return $$0.i() < this.a ? os.y : os.x;
+   }
 }

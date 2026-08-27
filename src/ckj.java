@@ -1,10 +1,13 @@
-public class ckj extends bcj.a {
-   public final ckg a;
-   public final int b;
+public interface ckj {
+   int a();
 
-   public ckj(ckg $$0, int $$1) {
-      super($$0.d().a());
-      this.a = $$0;
-      this.b = $$1;
-   }
+   float b();
+
+   float c();
+
+   int d();
+
+   int e();
+
+   clw f();
 }

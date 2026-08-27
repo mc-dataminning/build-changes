@@ -1,44 +1,48 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class awd extends aqh {
-   private static final Logger b = LogUtils.getLogger();
+public class awd extends DataFix {
+   private final String a;
+   private final Set<String> b;
 
-   public awd(Schema $$0) {
-      super($$0, avw.h);
+   public awd(Schema $$0, String $$1, Set<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.updateTyped(
-               $$0.getType().findField("data"),
-               $$0x -> $$0x.update(
-                     DSL.remainderFinder(),
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(aym.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      List<Dynamic<T>> $$1 = $$0.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
+      Dynamic<T> $$2 = $$0.update("enabled_features", $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asStreamOpt().result().map($$2xx -> $$2xx.filter($$2xxx -> {
+               Optional<String> $$3 = $$2xxx.asString().result();
+               if ($$3.isEmpty()) {
+                  return true;
+               } else {
+                  boolean $$4 = this.b.contains($$3.get());
+                  if ($$4) {
+                     $$1.add($$0.createString($$3.get()));
+                  }
+
+                  return !$$4;
+               }
+            })).map($$0::createList), $$2x));
+      if (!$$1.isEmpty()) {
+         $$2 = $$2.set("removed_features", $$0.createList($$1.stream()));
+      }
+
+      return $$2;
    }
 }

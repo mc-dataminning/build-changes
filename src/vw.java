@@ -1,32 +1,18 @@
-public class vw implements uo<ur> {
-   private final int a;
-   private final int b;
+public record vw(long b, gv c) implements vo {
+   public static final aep a = new aep("debug/neighbors_update");
 
-   public vw(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public vw(sf $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   public vw(sh $$0) {
+      this($$0.n(), $$0.e());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
-      $$0.writeInt(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
+   @Override
+   public aep a() {
+      return a;
    }
 }

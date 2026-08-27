@@ -1,34 +1,15 @@
-public interface dgo {
-   dgo a = new dgo() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+public enum dgo {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-      @Override
-      public void a(dgn $$0) {
-      }
+   private final int d;
 
-      @Override
-      public void b(dgn $$0) {
-      }
+   private dgo(int $$0) {
+      this.d = $$0;
+   }
 
-      @Override
-      public boolean a(dgl $$0, eei $$1, dgl.a $$2, dgo.a $$3) {
-         return false;
-      }
-   };
-
-   boolean a();
-
-   void a(dgn var1);
-
-   void b(dgn var1);
-
-   boolean a(dgl var1, eei var2, dgl.a var3, dgo.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dgn var1, eei var2);
+   public int a() {
+      return this.d;
    }
 }

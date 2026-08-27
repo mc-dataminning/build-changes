@@ -1,143 +1,178 @@
-public class cwc extends cpn implements cwo {
-   private static final int e = 1;
-   private static final efb f;
-   private static final efb g;
-   private static final efb h = cpn.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   private static final efb i = eey.b().a(0.0, -1.0, 0.0);
-   public static final int a = 7;
-   public static final ddb b = dcr.aW;
-   public static final dcs c = dcr.C;
-   public static final dcs d = dcr.b;
+import javax.annotation.Nullable;
 
-   protected cwc(dca.d $$0) {
+public class cwc extends crx {
+   public static final dfs a = dfo.Q;
+   public static final dfp b = dfo.f;
+   private static final ehy c = csk.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
+   private static final ehy d = csk.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
+   private static final ehy e = ehv.a(d, c);
+   private static final ehy f = ehv.a(e, ddh.c, ehj.e);
+   private static final ehy g = ehv.a(f, csk.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
+   private static final ehy h = ehv.a(f, csk.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
+   private static final ehy i = ehv.a(f, csk.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
+   private static final ehy j = ehv.a(f, csk.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
+   private static final ehy k = ehv.a(f, csk.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
+   private static final ehy l = ddh.c;
+   private static final ehy m = ehv.a(ddh.c, csk.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
+   private static final ehy n = ehv.a(ddh.c, csk.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
+   private static final ehy D = ehv.a(ddh.c, csk.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
+   private static final ehy E = ehv.a(ddh.c, csk.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+
+   public cwc(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.C.b().a(a, hb.a).a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      if (!$$3.a($$0.b().k())) {
-         return $$0.c(d) ? g : f;
-      } else {
-         return eey.b();
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      switch ((hb)$$0.c(a)) {
+         case a:
+            return g;
+         case c:
+            return i;
+         case d:
+            return j;
+         case e:
+            return k;
+         case f:
+            return h;
+         default:
+            return f;
       }
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2) {
-      return eey.b();
-   }
-
-   @Override
-   public boolean a(dcb $$0, cih $$1) {
-      return $$1.n().a(this.k());
-   }
-
-   @Override
-   public dcb a(cih $$0) {
-      gu $$1 = $$0.a();
-      cmm $$2 = $$0.q();
-      int $$3 = a($$2, $$1);
-      return this.n().a(c, Boolean.valueOf($$2.b_($$1).a() == dxf.c)).a(b, Integer.valueOf($$3)).a(d, Boolean.valueOf(this.a($$2, $$1, $$3)));
-   }
-
-   @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      if (!$$1.B) {
-         $$1.a($$2, this, 1);
+   public ehy a(dey $$0, coq $$1, gv $$2) {
+      switch ((hb)$$0.c(a)) {
+         case a:
+            return l;
+         case c:
+            return n;
+         case d:
+            return D;
+         case e:
+            return E;
+         case f:
+            return m;
+         default:
+            return ddh.c;
       }
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
-      }
-
-      if (!$$3.r_()) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
+   public dey a(cle $$0) {
+      hb $$1 = $$0.k().g();
+      return this.n().a(a, $$1.o() == hb.a.b ? hb.a : $$1).a(b, Boolean.valueOf(true));
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      int $$4 = a($$1, $$2);
-      dcb $$5 = $$0.a(b, Integer.valueOf($$4)).a(d, Boolean.valueOf(this.a($$1, $$2, $$4)));
-      if ($$5.c(b) == 7) {
-         if ($$0.c(b) == 7) {
-            bvg.a($$1, $$2, $$5);
-         } else {
-            $$1.b($$2, true);
-         }
-      } else if ($$0 != $$5) {
-         $$1.a($$2, $$5, 3);
-      }
+   public dck a(gv $$0, dey $$1) {
+      return new ddi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
+      return $$0.B ? null : a($$2, dcm.r, ddi::a);
    }
 
    @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return a($$1, $$2) < 7;
-   }
-
-   @Override
-   public efb c(dcb $$0, cls $$1, gu $$2, een $$3) {
-      if ($$3.a(eey.b(), $$2, true) && !$$3.b()) {
-         return f;
-      } else {
-         return $$0.c(b) != 0 && $$0.c(d) && $$3.a(i, $$2, true) ? h : eey.a();
-      }
-   }
-
-   @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(c) ? dxf.c.a(false) : super.c_($$0);
-   }
-
-   private boolean a(cls $$0, gu $$1, int $$2) {
-      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
-   }
-
-   public static int a(cls $$0, gu $$1) {
-      gu.a $$2 = $$1.j().c(ha.a);
-      dcb $$3 = $$0.a_($$2);
-      int $$4 = 7;
-      if ($$3.a(cpo.nS)) {
-         $$4 = $$3.c(b);
-      } else if ($$3.d($$0, $$2, ha.b)) {
-         return 0;
-      }
-
-      for (ha $$5 : ha.c.a) {
-         dcb $$6 = $$0.a_($$2.a($$1, $$5));
-         if ($$6.a(cpo.nS)) {
-            $$4 = Math.min($$4, $$6.c(b) + 1);
-            if ($$4 == 1) {
-               break;
-            }
+   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
+      if ($$4.A()) {
+         dck $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddi) {
+            ((ddi)$$5).a($$4.y());
          }
       }
-
-      return $$4;
    }
 
-   static {
-      efb $$0 = cpn.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
-      efb $$1 = cpn.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
-      efb $$2 = cpn.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
-      efb $$3 = cpn.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
-      efb $$4 = cpn.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
-      f = eey.a($$0, $$1, $$2, $$3, $$4);
-      efb $$5 = cpn.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
-      efb $$6 = cpn.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-      efb $$7 = cpn.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
-      efb $$8 = cpn.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
-      g = eey.a(cwc.h, f, $$6, $$5, $$8, $$7);
+   @Override
+   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0, 2);
+      }
+   }
+
+   @Override
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if ($$1.B) {
+         return bgo.a;
+      } else {
+         dck $$6 = $$1.c_($$2);
+         if ($$6 instanceof ddi) {
+            $$3.a((ddi)$$6);
+            $$3.a(ape.ad);
+         }
+
+         return bgo.b;
+      }
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, csk $$3, gv $$4, boolean $$5) {
+      this.a($$1, $$2, $$0, 4);
+   }
+
+   private void a(cpk $$0, gv $$1, dey $$2, int $$3) {
+      boolean $$4 = !$$0.B($$1);
+      if ($$4 != $$2.c(b)) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf($$4)), $$3);
+      }
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dck $$5 = $$1.c_($$2);
+         if ($$5 instanceof ddi) {
+            bgk.a($$1, $$2, (ddi)$$5);
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public cyp b_(dey $$0) {
+      return cyp.c;
+   }
+
+   @Override
+   public boolean d_(dey $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dey $$0, cpk $$1, gv $$2) {
+      return cec.a($$1.c_($$2));
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
+      dck $$4 = $$1.c_($$2);
+      if ($$4 instanceof ddi) {
+         ddi.a($$1, $$2, $$0, $$3, (ddi)$$4);
+      }
+   }
+
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

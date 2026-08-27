@@ -1,99 +1,171 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dkh extends dko<dmz> {
-   private static final dck a = dck.a(cpo.I);
-   private final dcb b = cpo.I.n();
-   private final dcb c = cpo.jF.n();
-   private final dcb d = cpo.aV.n();
-   private final dcb an = cpo.G.n();
+public class dkh {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dey> b = $$0 -> !$$0.i();
+   static final Predicate<dey> c = dex.a::d;
+   private final aqg d;
+   private final Predicate<dey> e;
+   private final dgu f;
 
-   public dkh(Codec<dmz> $$0) {
-      super($$0);
+   public dkh(dgu $$0, dkh.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = aro.e($$0.D_() + 1);
+      this.d = new arz($$2, 256);
    }
 
-   @Override
-   public boolean a(dkq<dmz> $$0) {
-      cng $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      $$2 = $$2.c();
+   public static void a(dgu $$0, Set<dkh.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dkh> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dkh> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      gv.a $$6 = new gv.a();
 
-      while ($$1.t($$2) && $$2.v() > $$1.C_() + 2) {
-         $$2 = $$2.d();
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dkh.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.C_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dey $$11 = $$0.a_($$6);
+               if (!$$11.a(csl.a)) {
+                  while ($$4.hasNext()) {
+                     dkh $$12 = (dkh)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
+               }
+            }
+         }
       }
+   }
 
-      if (!a.a($$1.a_($$2))) {
+   public boolean a(int $$0, int $$1, int $$2, dey $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
          return false;
       } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
-                  return false;
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            gv.a $$5 = new gv.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.C_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
                }
             }
+
+            this.a($$0, $$2, this.f.C_());
+            return true;
          }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (ha $$8 : ha.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         gu $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (ha $$10 : ha.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<gu> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         apf $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
+         return false;
       }
    }
 
-   private static void b(cng $$0, gu $$1) {
-      $$0.a($$1, cpo.J.n(), 3);
-      $$0.a($$1, czp.N).ifPresent($$1x -> $$1x.a(dzg.aC, $$1.a()));
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.C_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.C_());
+   }
+
+   public void a(dgu $$0, dkh.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements asf {
+      a("WORLD_SURFACE_WG", dkh.b.a, dkh.b),
+      b("WORLD_SURFACE", dkh.b.c, dkh.b),
+      c("OCEAN_FLOOR_WG", dkh.b.a, dkh.c),
+      d("OCEAN_FLOOR", dkh.b.b, dkh.c),
+      e("MOTION_BLOCKING", dkh.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dkh.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof cwr));
+
+      public static final Codec<dkh.a> g = asf.a(dkh.a::values);
+      private final String h;
+      private final dkh.b i;
+      private final Predicate<dey> j;
+
+      private a(String $$0, dkh.b $$1, Predicate<dey> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == dkh.b.c;
+      }
+
+      public boolean d() {
+         return this.i != dkh.b.a;
+      }
+
+      public Predicate<dey> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

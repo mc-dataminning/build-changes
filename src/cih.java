@@ -1,77 +1,86 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cih extends cij {
-   private final gu b;
-   protected boolean a = true;
+public class cih extends cir {
+   private static final te a = te.c("painting.random").a(n.h);
+   private final bik<? extends bxw> b;
 
-   public cih(byo $$0, bdw $$1, cfz $$2, eee $$3) {
-      this($$0.dI(), $$0, $$1, $$2, $$3);
-   }
-
-   public cih(cij $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
-   }
-
-   protected cih(cmm $$0, @Nullable byo $$1, bdw $$2, cfz $$3, eee $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
-   }
-
-   public static cih a(cih $$0, gu $$1, ha $$2) {
-      return new cih(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new eee(
-            new eei((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public cih(bik<? extends bxw> $$0, cir.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public gu a() {
-      return this.a ? super.a() : this.b;
-   }
-
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public ha d() {
-      return ha.a(this.o())[0];
-   }
-
-   public ha e() {
-      return ha.a(this.o(), ha.a.b);
-   }
-
-   public ha[] f() {
-      ha[] $$0 = ha.a(this.o());
-      if (this.a) {
-         return $$0;
+   public bgo a(clg $$0) {
+      gv $$1 = $$0.a();
+      hb $$2 = $$0.k();
+      gv $$3 = $$1.a($$2);
+      cbl $$4 = $$0.o();
+      ciw $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bgo.e;
       } else {
-         ha $$1 = this.k();
-         int $$2 = 0;
+         cpk $$6 = $$0.q();
+         bxw $$8;
+         if (this.b == bik.ar) {
+            Optional<bxz> $$7 = bxz.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bgo.b;
+            }
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
+            $$8 = $$7.get();
+         } else if (this.b == bik.af) {
+            $$8 = new bxx($$6, $$3, $$2);
+         } else {
+            if (this.b != bik.S) {
+               return bgo.a($$6.B);
+            }
+
+            $$8 = new bxv($$6, $$3, $$2);
          }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
+         qs $$12 = $$5.v();
+         if ($$12 != null) {
+            bik.a($$6, $$4, $$8, $$12);
          }
 
-         return $$0;
+         if ($$8.t()) {
+            if (!$$6.B) {
+               $$8.x();
+               $$6.a($$4, dji.t, $$8.di());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bgo.a($$6.B);
+         } else {
+            return bgo.b;
+         }
+      }
+   }
+
+   protected boolean a(cbl $$0, hb $$1, ciw $$2, gv $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == bik.ar) {
+         qs $$4 = $$0.v();
+         if ($$4 != null && $$4.b("EntityTag", 10)) {
+            qs $$5 = $$4.p("EntityTag");
+            bxz.c($$5).ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(te.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(te.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(te.a("painting.dimensions", aro.e(((bya)$$1x.a()).a(), 16), aro.e(((bya)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
       }
    }
 }

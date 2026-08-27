@@ -1,61 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class blq extends bhr<bxs> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = apa.c(34.0);
-   private static final int i = apa.f(60.0F);
+public class blq<E extends biy> extends blr<E> {
+   private final apy<csk> m;
+   private final float n;
+   private final List<blr.a> o = new ArrayList<>();
+   private boolean p;
 
-   public blq() {
-      super(ImmutableMap.of(bpb.o, bpc.a, bpb.aI, bpc.b, bpb.aJ, bpc.c, bpb.aK, bpc.c), i);
+   public blq(bfz $$0, int $$1, int $$2, float $$3, Function<E, aot> $$4, apy<csk> $$5, float $$6, BiPredicate<E, gv> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   protected boolean a(aif $$0, bxs $$1) {
-      return $$1.a($$1.dK().c(bpb.o).get(), 15.0, 20.0);
+   @Override
+   protected void a(aki $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ee().i() < this.n;
    }
 
-   protected boolean a(aif $$0, bxs $$1, long $$2) {
-      return true;
-   }
+   @Override
+   protected Optional<blr.a> a(aki $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         gv.a $$1 = new gv.a();
 
-   protected void b(aif $$0, bxs $$1, long $$2) {
-      $$1.dK().a(bpb.p, true, (long)i);
-      $$1.dK().a(bpb.aK, apz.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(amh.zG, 3.0F, 1.0F);
-   }
+         while (!this.h.isEmpty()) {
+            Optional<blr.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               blr.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), hb.a)).a(this.m)) {
+                  return $$2;
+               }
 
-   protected void c(aif $$0, bxs $$1, long $$2) {
-      $$1.dK().c(bpb.o).ifPresent($$1x -> $$1.E().a($$1x.dg()));
-      if (!$$1.dK().a(bpb.aK) && !$$1.dK().a(bpb.aJ)) {
-         $$1.dK().a(bpb.aJ, apz.a, (long)(i - h));
-         $$1.dK().c(bpb.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            eei $$3 = $$1.dg().b(0.0, 1.6F, 0.0);
-            eei $$4 = $$2x.bm().d($$3);
-            eei $$5 = $$4.d();
-
-            for (int $$6 = 1; $$6 < apa.a($$4.f()) + 7; $$6++) {
-               eei $$7 = $$3.e($$5.a((double)$$6));
-               $$0.a(iv.y, $$7.c, $$7.d, $$7.e, 1, 0.0, 0.0, 0.0, 0.0);
+               this.o.add($$3);
             }
+         }
 
-            $$1.a(amh.zF, 3.0F, 1.0F);
-            $$2x.a($$0.ag().e($$1), 10.0F);
-            double $$8 = 0.5 * (1.0 - $$2x.b(bhg.c));
-            double $$9 = 2.5 * (1.0 - $$2x.b(bhg.c));
-            $$2x.j($$5.a() * $$9, $$5.b() * $$8, $$5.c() * $$9);
-         });
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-   }
-
-   protected void d(aif $$0, bxs $$1, long $$2) {
-      a($$1, 40);
-   }
-
-   public static void a(bfz $$0, int $$1) {
-      $$0.dK().a(bpb.aI, apz.a, (long)$$1);
    }
 }

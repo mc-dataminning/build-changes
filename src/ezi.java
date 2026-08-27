@@ -1,59 +1,50 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.List;
 
-public record ezi(dii a, hr<dfl> b, dif c, hl<acz> d, ada e, cnf f) {
-   public ezi(dig $$0, hl<acz> $$1, ada $$2, cnf $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class ezi {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<aep> e = List.of();
+   private int f;
+   private int g;
+
+   public ezi(int $$0) {
+      this.d = $$0;
    }
 
-   public ezi(dii $$0, dif $$1, hl<acz> $$2, ada $$3, cnf $$4) {
-      this($$0, $$2.a(acz.c).d(jc.aI), $$1, $$2.a(acz.c), $$3, $$4);
+   public void a(List<aep> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   public ezi a(dii $$0, dif $$1) {
-      return new ezi($$0, this.b, $$1, this.d, this.e, this.f);
+   public void a(cec $$0, erx $$1, float $$2, int $$3, int $$4) {
+      cfu $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.f()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   public ezi a(ezi.b $$0) {
-      return new ezi($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   private void a(cfu $$0, aep $$1, float $$2, erx $$3, int $$4, int $$5) {
+      fyg $$6 = eqn.N().a(fyf.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 
-   public ezi a(ezi.a $$0) {
-      return new ezi(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
-   }
-
-   public hs.b a() {
-      return this.d.a();
-   }
-
-   public dii b() {
-      return this.a;
-   }
-
-   public hr<dfl> c() {
-      return this.b;
-   }
-
-   public dif d() {
-      return this.c;
-   }
-
-   public hl<acz> e() {
-      return this.d;
-   }
-
-   public ada f() {
-      return this.e;
-   }
-
-   public cnf g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<hs.b, dif, dif> {
-   }
-
-   public interface b extends UnaryOperator<dii> {
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

@@ -1,32 +1,64 @@
-public class zz implements uo<zb> {
-   private final boolean a;
-   private final boolean b;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public zz(boolean $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class zz implements uw<wo> {
+   private final String a;
+   @Nullable
+   private final String b;
+   private final int c;
+   private final afg.a d;
+
+   public zz(afg.a $$0, @Nullable String $$1, String $$2, int $$3) {
+      if ($$0 != afg.a.b && $$1 == null) {
+         throw new IllegalArgumentException("Need an objective name");
+      } else {
+         this.a = $$2;
+         this.b = $$1;
+         this.c = $$3;
+         this.d = $$0;
+      }
    }
 
-   public zz(sf $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.readBoolean();
+   public zz(sh $$0) {
+      this.a = $$0.r();
+      this.d = $$0.b(afg.a.class);
+      String $$1 = $$0.r();
+      this.b = Objects.equals($$1, "") ? null : $$1;
+      if (this.d != afg.a.b) {
+         this.c = $$0.m();
+      } else {
+         this.c = 0;
+      }
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeBoolean(this.a);
-      $$0.writeBoolean(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.d);
+      $$0.a(this.b == null ? "" : this.b);
+      if (this.d != afg.a.b) {
+         $$0.c(this.c);
+      }
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public String a() {
       return this.a;
    }
 
-   public boolean c() {
+   @Nullable
+   public String d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public afg.a f() {
+      return this.d;
    }
 }

@@ -1,42 +1,35 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bom extends bov {
-   private final brx a;
-   @Nullable
-   private bfz b;
-   private final bqm c = bqm.a().a(64.0);
+public class bom<E extends cap> extends bko<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public bom(brx $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bmv.a.d));
+   public bom(int $$0) {
+      super(ImmutableMap.of(bry.aA, brz.a, bry.o, brz.b, bry.m, brz.b, bry.n, brz.c, bry.B, brz.c, bry.ay, brz.c, bry.aF, brz.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      eed $$0 = this.a.cE().c(10.0, 8.0, 10.0);
-      List<? extends bfz> $$1 = this.a.dI().a(byb.class, this.c, this.a, $$0);
-      List<byo> $$2 = this.a.dI().a(this.c, this.a, $$0);
+   protected boolean a(aki $$0, E $$1, long $$2) {
+      return true;
+   }
 
-      for (bfz $$3 : $$1) {
-         byb $$4 = (byb)$$3;
+   protected void b(aki $$0, E $$1, long $$2) {
+      $$1.a(aou.zF, 5.0F, 1.0F);
+   }
 
-         for (byo $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
+   protected void c(aki $$0, E $$1, long $$2) {
+      if ($$1.c(bji.m)) {
+         $$1.b(bji.a);
       }
 
-      return this.b == null ? false : !(this.b instanceof byo) || !this.b.G_() && !((byo)this.b).f();
-   }
+      $$1.dM().b(bry.aA);
+      $$1.dM().c(bry.B).filter($$1::a).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.c($$1x);
+         }
 
-   @Override
-   public void c() {
-      this.a.h(this.b);
-      super.c();
+         if (!$$1.dM().a(bry.ay)) {
+            caq.a($$1, $$1x.dk());
+         }
+      });
    }
 }

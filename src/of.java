@@ -1,32 +1,70 @@
-public class of {
-   private static cnk a(cnl.a $$0) {
-      cnw.a $$1 = new cnw.a();
-      nl.j($$1);
-      return new cnk.a().a(false).a(0.5F).b(0.5F).a(new cnq.a().b(4159204).c(329011).a(10518688).d(0).a(cni.b).a()).a($$1.a()).a($$0.a()).a();
-   }
-
-   public static cnk a(hf<dre> $$0, hf<djn<?>> $$1) {
-      cnl.a $$2 = new cnl.a($$0, $$1);
-      return a($$2);
-   }
-
-   public static cnk b(hf<dre> $$0, hf<djn<?>> $$1) {
-      cnl.a $$2 = new cnl.a($$0, $$1).a(dhg.b.e, ox.a);
-      return a($$2);
-   }
-
-   public static cnk c(hf<dre> $$0, hf<djn<?>> $$1) {
-      cnl.a $$2 = new cnl.a($$0, $$1);
-      return a($$2);
-   }
-
-   public static cnk d(hf<dre> $$0, hf<djn<?>> $$1) {
-      cnl.a $$2 = new cnl.a($$0, $$1).a(dhg.b.e, ox.b).a(dhg.b.j, ox.c);
-      return a($$2);
-   }
-
-   public static cnk e(hf<dre> $$0, hf<djn<?>> $$1) {
-      cnl.a $$2 = new cnl.a($$0, $$1).a(dhg.b.a, ox.d);
-      return a($$2);
+public abstract class of {
+   public static void a(nn<cqi> $$0) {
+      hg<dub> $$1 = $$0.a(jd.ay);
+      hg<dmk<?>> $$2 = $$0.a(jd.ar);
+      $$0.a(cqp.a, oi.j($$1, $$2));
+      $$0.a(cqp.b, oi.a($$1, $$2, false, false, false));
+      $$0.a(cqp.c, oi.a($$1, $$2, true, false, false));
+      $$0.a(cqp.d, oi.a($$1, $$2, false, true, false));
+      $$0.a(cqp.e, oi.a($$1, $$2, false, true, true));
+      $$0.a(cqp.f, oi.d($$1, $$2));
+      $$0.a(cqp.g, oi.h($$1, $$2));
+      $$0.a(cqp.h, oi.i($$1, $$2));
+      $$0.a(cqp.i, oi.b($$1, $$2, false, false, false));
+      $$0.a(cqp.j, oi.b($$1, $$2, false, false, true));
+      $$0.a(cqp.k, oi.b($$1, $$2, true, false, false));
+      $$0.a(cqp.l, oi.g($$1, $$2));
+      $$0.a(cqp.m, oi.b($$1, $$2, true, true, false));
+      $$0.a(cqp.n, oi.a($$1, $$2, false));
+      $$0.a(cqp.o, oi.a($$1, $$2, true));
+      $$0.a(cqp.p, oi.h($$1, $$2, false));
+      $$0.a(cqp.q, oi.h($$1, $$2, true));
+      $$0.a(cqp.r, oi.a($$1, $$2, false, false));
+      $$0.a(cqp.s, oi.a($$1, $$2, false, true));
+      $$0.a(cqp.t, oi.b($$1, $$2, false));
+      $$0.a(cqp.u, oi.b($$1, $$2, false));
+      $$0.a(cqp.v, oi.b($$1, $$2, true));
+      $$0.a(cqp.w, oi.a($$1, $$2, true, false));
+      $$0.a(cqp.x, oi.b($$1, $$2));
+      $$0.a(cqp.y, oi.a($$1, $$2));
+      $$0.a(cqp.z, oi.c($$1, $$2));
+      $$0.a(cqp.A, oi.c($$1, $$2, false));
+      $$0.a(cqp.B, oi.c($$1, $$2, false));
+      $$0.a(cqp.C, oi.c($$1, $$2, true));
+      $$0.a(cqp.D, oi.j($$1, $$2, false));
+      $$0.a(cqp.E, oi.j($$1, $$2, true));
+      $$0.a(cqp.F, oi.o($$1, $$2));
+      $$0.a(cqp.G, oi.n($$1, $$2));
+      $$0.a(cqp.H, oi.k($$1, $$2));
+      $$0.a(cqp.I, oi.l($$1, $$2));
+      $$0.a(cqp.J, oi.m($$1, $$2));
+      $$0.a(cqp.K, oi.i($$1, $$2, false));
+      $$0.a(cqp.L, oi.i($$1, $$2, true));
+      $$0.a(cqp.M, oi.b($$1, $$2, false, false));
+      $$0.a(cqp.N, oi.b($$1, $$2, true, false));
+      $$0.a(cqp.O, oi.b($$1, $$2, false, true));
+      $$0.a(cqp.P, oi.f($$1, $$2));
+      $$0.a(cqp.Q, oi.f($$1, $$2, false));
+      $$0.a(cqp.R, oi.f($$1, $$2, true));
+      $$0.a(cqp.S, oi.e($$1, $$2, false));
+      $$0.a(cqp.T, oi.e($$1, $$2, true));
+      $$0.a(cqp.U, oi.d($$1, $$2, false));
+      $$0.a(cqp.V, oi.d($$1, $$2, true));
+      $$0.a(cqp.W, oi.g($$1, $$2, false));
+      $$0.a(cqp.X, oi.g($$1, $$2, true));
+      $$0.a(cqp.Y, oi.e($$1, $$2));
+      $$0.a(cqp.Z, oi.q($$1, $$2));
+      $$0.a(cqp.aa, oi.p($$1, $$2));
+      $$0.a(cqp.ab, oi.r($$1, $$2));
+      $$0.a(cqp.ac, oh.a($$1, $$2));
+      $$0.a(cqp.ad, oh.e($$1, $$2));
+      $$0.a(cqp.ae, oh.d($$1, $$2));
+      $$0.a(cqp.af, oh.b($$1, $$2));
+      $$0.a(cqp.ag, oh.c($$1, $$2));
+      $$0.a(cqp.ah, og.b($$1, $$2));
+      $$0.a(cqp.ai, og.d($$1, $$2));
+      $$0.a(cqp.aj, og.c($$1, $$2));
+      $$0.a(cqp.ak, og.e($$1, $$2));
+      $$0.a(cqp.al, og.a($$1, $$2));
    }
 }

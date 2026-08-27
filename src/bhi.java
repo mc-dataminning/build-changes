@@ -1,30 +1,19 @@
-public class bhi extends bhb {
-   private final double b;
-   private final double c;
+import com.mojang.serialization.Codec;
 
-   public bhi(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
-   }
+public enum bhi implements asf {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
 
-   public double d() {
-      return this.b;
-   }
+   public static final Codec<bhi> d = asf.a(bhi::values);
+   private final String e;
 
-   public double e() {
-      return this.c;
+   private bhi(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : apa.a($$0, this.b, this.c);
+   public String c() {
+      return this.e;
    }
 }

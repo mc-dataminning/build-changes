@@ -1,136 +1,30 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public abstract class fjm {
-   private static final Object2ObjectMap<acq, fjm> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fjm.c $$1 = new fjm.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dfi.e, $$1);
-      $$0.put(dfi.f, new fjm.b());
-      $$0.put(dfi.g, new fjm.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fjm.d e;
-   private final boolean f;
-   private final boolean g;
+public class fjm {
+   public static final fjm a = new fjm(fjl.b, fjn.createDnsSrvRedirectHandler(), fji.a());
+   private final fjl b;
+   private final fjn c;
+   private final fji d;
 
-   public fjm(float $$0, boolean $$1, fjm.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   @VisibleForTesting
+   fjm(fjl $$0, fjn $$1, fji $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static fjm a(dfk $$0) {
-      return (fjm)a.get($$0.r());
-   }
+   public Optional<fjj> a(fjk $$0) {
+      Optional<fjj> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fjk> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = apa.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - apa.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+         return $$1;
       } else {
-         return null;
+         return Optional.empty();
       }
-   }
-
-   public float a() {
-      return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public abstract eei a(eei var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fjm.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fjm {
-      public a() {
-         super(Float.NaN, false, fjm.d.c, true, false);
-      }
-
-      @Override
-      public eei a(eei $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fjm {
-      public b() {
-         super(Float.NaN, true, fjm.d.a, false, true);
-      }
-
-      @Override
-      public eei a(eei $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fjm {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fjm.d.b, false, false);
-      }
-
-      @Override
-      public eei a(eei $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

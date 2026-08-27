@@ -1,46 +1,51 @@
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
-public class jl implements ji {
-   private final jk.a d;
-   private final List<jm> e;
-   private final CompletableFuture<hg.b> f;
+public class jl {
+   private final Path a;
 
-   public jl(jk $$0, CompletableFuture<hg.b> $$1, List<jm> $$2) {
-      this.d = $$0.a(jk.b.a, "advancements");
-      this.e = $$2;
-      this.f = $$1;
+   public jl(Path $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public CompletableFuture<?> a(jg $$0) {
-      return this.f.thenCompose($$1 -> {
-         Set<acq> $$2 = new HashSet<>();
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         Consumer<ae> $$4 = $$3x -> {
-            if (!$$2.add($$3x.j())) {
-               throw new IllegalStateException("Duplicate advancement " + $$3x.j());
-            } else {
-               Path $$4x = this.d.a($$3x.j());
-               $$3.add(ji.a($$0, $$3x.a().c(), $$4x));
-            }
-         };
-
-         for (jm $$5 : this.e) {
-            $$5.a($$1, $$4);
-         }
-
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
+   public Path a() {
+      return this.a;
    }
 
-   @Override
-   public final String a() {
-      return "Advancements";
+   public Path a(jl.b $$0) {
+      return this.a().resolve($$0.d);
+   }
+
+   public jl.a a(jl.b $$0, String $$1) {
+      return new jl.a(this, $$0, $$1);
+   }
+
+   public static class a {
+      private final Path a;
+      private final String b;
+
+      a(jl $$0, jl.b $$1, String $$2) {
+         this.a = $$0.a($$1);
+         this.b = $$2;
+      }
+
+      public Path a(aep $$0, String $$1) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
+      }
+
+      public Path a(aep $$0) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
+      }
+   }
+
+   public static enum b {
+      a("data"),
+      b("assets"),
+      c("reports");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
    }
 }

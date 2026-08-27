@@ -1,49 +1,51 @@
-public class csf extends cpn implements cse {
-   public csf(dca.d $$0) {
+public class csf extends cub {
+   public static final int a = 3;
+   public static final dfy b = dfo.as;
+   private static final ehy[] e = new ehy[]{
+      csk.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
+   };
+
+   public csf(dex.d $$0) {
       super($$0);
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      $$1.a($$2, this, this.a());
+   protected dfy a() {
+      return b;
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      $$3.a($$4, this, this.a());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b() {
+      return 3;
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (h($$1.a_($$2.d())) && $$2.v() >= $$1.C_()) {
-         bvg $$4 = bvg.a($$1, $$2, $$0);
-         this.a($$4);
+   protected cpj c() {
+      return ciz.ur;
+   }
+
+   @Override
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   protected void a(bvg $$0) {
-   }
-
-   protected int a() {
-      return 2;
-   }
-
-   public static boolean h(dcb $$0) {
-      return $$0.i() || $$0.a(amw.aI) || $$0.k() || $$0.r();
+   @Override
+   protected int a(cpk $$0) {
+      return super.a($$0) / 3;
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$3.a(16) == 0) {
-         gu $$4 = $$2.d();
-         if (h($$1.a_($$4))) {
-            apd.a($$1, $$2, $$3, new in(iv.z, $$0));
-         }
-      }
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(b);
    }
 
-   public int d(dcb $$0, cls $$1, gu $$2) {
-      return -16777216;
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return e[this.g($$0)];
    }
 }

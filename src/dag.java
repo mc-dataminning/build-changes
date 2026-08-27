@@ -1,109 +1,92 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class dag extends czn implements beb {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final apf k = apf.a();
-   private sw l;
+public class dag extends css implements csm {
+   public static final int a = 7;
+   public static final dfy b = dfo.av;
+   protected static final float c = 1.0F;
+   protected static final ehy[] d = new ehy[]{
+      csk.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final dah e;
+   private final Supplier<cir> f;
 
-   public dag(gu $$0, dcb $$1) {
-      super(czp.m, $$0, $$1);
+   protected dag(dah $$0, Supplier<cir> $$1, dex.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      if (this.aa()) {
-         $$0.a("CustomName", sw.a.a(this.l));
-      }
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return d[$$0.c(b)];
    }
 
    @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = sw.a.a($$0.l("CustomName"));
-      }
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return $$0.a(csl.cC);
    }
 
-   public static void a(cmm $$0, gu $$1, dcb $$2, dag $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      byo $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dn() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dt() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)apa.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+   @Override
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = cub.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(b);
+            if ($$5 < 7) {
+               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               hb $$6 = hb.c.a.a($$3);
+               gv $$7 = $$2.a($$6);
+               dey $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(csl.cC) || $$8.a(apj.af))) {
+                  $$1.b($$7, this.e.n());
+                  $$1.b($$2, this.e.b().n().a(cwd.aC, $$6));
+               }
+            }
          }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
       }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = apa.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = apa.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   public sw Z() {
-      return (sw)(this.l != null ? this.l : sw.c("container.enchant"));
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      return new ciw(this.f.get());
    }
 
-   public void a(@Nullable sw $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
    @Override
-   public sw ab() {
-      return this.l;
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
+      return $$2.c(b) != 7;
+   }
+
+   @Override
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      int $$4 = Math.min(7, $$3.c(b) + aro.a($$0.z, 2, 5));
+      dey $$5 = $$3.a(b, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(b);
+   }
+
+   public dah a() {
+      return this.e;
    }
 }

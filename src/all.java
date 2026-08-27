@@ -1,29 +1,33 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class all extends alp<GameProfile, alm> {
-   public all(File $$0) {
-      super($$0);
-   }
+public interface all {
+   all a = new all() {
+      @Override
+      public void a() {
+      }
 
-   @Override
-   protected alo<GameProfile> a(JsonObject $$0) {
-      return new alm($$0);
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(alo::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+      @Override
+      public CompletableFuture<aky> a(String $$0) {
+         return CompletableFuture.completedFuture(aky.a($$0));
+      }
 
-   public boolean a(GameProfile $$0) {
-      alm $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
+      @Override
+      public CompletableFuture<List<aky>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(aky::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
-   }
+   void a();
+
+   void b();
+
+   CompletableFuture<aky> a(String var1);
+
+   CompletableFuture<List<aky>> a(List<String> var1);
 }

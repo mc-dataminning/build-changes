@@ -1,125 +1,80 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class bnx extends bni {
-   private final cpn g;
-   private final bgb h;
-   private int i;
-   private static final int j = 20;
-
-   public bnx(cpn $$0, bgi $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
-   }
+public class bnx extends bny {
+   private static final List<cir> c = ImmutableList.of(ciz.oH, ciz.ur);
 
    @Override
-   public boolean a() {
-      if (!this.h.dI().X().b(cmi.c)) {
-         return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
-      } else {
-         this.c = this.a(this.a);
-         return false;
+   protected void a(aki $$0, cay $$1) {
+      Optional<he> $$2 = $$1.dM().c(bry.c);
+      if ($$2.isPresent()) {
+         he $$3 = $$2.get();
+         dey $$4 = $$0.a_($$3.b());
+         if ($$4.a(csl.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.h.aa = 1.0F;
-   }
+   private void a(aki $$0, cay $$1, he $$2, dey $$3) {
+      gv $$4 = $$2.b();
+      if ($$3.c(ctt.d) == 8) {
+         $$3 = ctt.a($$1, $$3, (cpk)$$0, $$4);
+      }
 
-   @Override
-   public void c() {
-      super.c();
-      this.i = 0;
-   }
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bgv $$8 = $$1.t();
+      int $$9 = $$8.b();
+      dey $$10 = $$3;
 
-   public void a(cmn $$0, gu $$1) {
-   }
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         ciw $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
 
-   public void a(cmm $$0, gu $$1) {
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      cmm $$0 = this.h.dI();
-      gu $$1 = this.h.di();
-      gu $$2 = this.a($$1, $$0);
-      apf $$3 = this.h.ec();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            eei $$4 = this.h.dl();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((aif)$$0)
-                  .a(
-                     new ir(iv.O, new cfz(cgc.qd)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
-         }
-
-         if (this.i % 2 == 0) {
-            eei $$6 = this.h.dl();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((cmn)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((aif)$$0).a(iv.W, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = ctt.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(ctt.d) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
                }
-
-               this.a($$0, $$2);
             }
          }
-
-         this.i++;
       }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   @Nullable
-   private gu a(gu $$0, cls $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         gu[] $$2 = new gu[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+   private void a(aki $$0, dey $$1, gv $$2, dey $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
 
-         for (gu $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
+   private void a(cay $$0) {
+      bgv $$1 = $$0.t();
+      if ($$1.a_(ciz.oJ) <= 36) {
+         int $$2 = $$1.a_(ciz.oI);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(ciz.oI, $$6);
+            ciw $$7 = $$1.a(new ciw(ciz.oJ, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
             }
          }
-
-         return null;
       }
-   }
-
-   @Override
-   protected boolean a(cmp $$0, gu $$1) {
-      ddx $$2 = $$0.a(hx.a($$1.u()), hx.a($$1.w()), dec.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

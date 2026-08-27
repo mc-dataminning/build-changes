@@ -1,17 +1,37 @@
-public class fhh extends fia {
-   protected fhh(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fih $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public final class fhh {
+   private final aep a;
+   private final String b;
+
+   public fhh(aep $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
+   public aep a() {
+      return this.a;
+   }
 
-      public a(fih $$0) {
-         this.a = $$0;
-      }
+   public String b() {
+      return this.b;
+   }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fhh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fhh $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
       }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

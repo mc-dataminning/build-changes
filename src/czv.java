@@ -1,23 +1,24 @@
-public class czv {
-   private boolean a;
-   private float b;
-   private float c;
-
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class czv extends cry {
+   public czv(dex.d $$0) {
+      super($$0, 2.0F);
    }
 
-   public float a(float $$0) {
-      return apa.i($$0, this.c, this.b);
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return this.a($$0, $$3, $$4) ? this.n() : csl.a.n();
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      return h($$1.a_($$2.d()));
+   }
+
+   public static boolean h(dey $$0) {
+      return $$0.a(apj.aS);
+   }
+
+   @Override
+   protected boolean f(dey $$0) {
+      return true;
    }
 }

@@ -1,22 +1,78 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class bpr extends bpz {
-   public static final float a = 10.0F;
+public class bpr extends bps {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final bui d;
+   @Nullable
+   private bui e;
+   private final double f;
+   private int g;
 
-   @Override
-   protected boolean a(bfz $$0, bfz $$1) {
-      return !$$0.dK().a(bpb.T) && bqf.c($$0, $$1) && bta.l($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public bpr(bui $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
-   private boolean e(bfz $$0, bfz $$1) {
-      List<UUID> $$2 = $$0.dK().c(bpb.Z).orElseGet(ArrayList::new);
-      return $$2.contains($$1.ct());
+   @Override
+   public boolean a() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else {
+         List<? extends bui> $$0 = this.d.dK().a((Class<? extends bui>)this.d.getClass(), this.d.cG().c(8.0, 4.0, 8.0));
+         bui $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bui $$3 : $$0) {
+            if ($$3.h() >= 0) {
+               double $$4 = this.d.f($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
+      }
    }
 
    @Override
-   protected bpb<bfz> b() {
-      return bpb.B;
+   public boolean b() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else if (!this.e.bv()) {
+         return false;
+      } else {
+         double $$0 = this.d.f(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e = null;
+   }
+
+   @Override
+   public void e() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.H().a(this.e, this.f);
+      }
    }
 }

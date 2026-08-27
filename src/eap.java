@@ -1,74 +1,83 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class eap extends eay {
-   final eap.a a;
+public abstract class eap {
+   protected cpx a;
+   protected biy b;
+   protected final Int2ObjectMap<eao> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   eap(eck[] $$0, eap.a $$1) {
-      super($$0);
-      this.a = $$1;
+   public void a(cpx $$0, biy $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c.clear();
+      this.d = aro.d($$1.df() + 1.0F);
+      this.e = aro.d($$1.dg() + 1.0F);
+      this.f = aro.d($$1.df() + 1.0F);
    }
 
-   @Override
-   public eba b() {
-      return ebb.n;
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(this.a.f);
+   protected eao b(gv $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      if ($$1.c(this.a.f) instanceof beb $$3 && $$3.aa()) {
-         $$0.a($$3.H_());
-      }
-
-      return $$0;
+   protected eao b(int $$0, int $$1, int $$2) {
+      return (eao)this.c.computeIfAbsent(eao.b($$0, $$1, $$2), $$3 -> new eao($$0, $$1, $$2));
    }
 
-   public static eay.a<?> a(eap.a $$0) {
-      return a($$1 -> new eap($$1, $$0));
+   public abstract eao a();
+
+   public abstract eau a(double var1, double var3, double var5);
+
+   protected eau a(eao $$0) {
+      return new eau($$0);
    }
 
-   public static enum a {
-      a("this", ebw.a),
-      b("killer", ebw.d),
-      c("killer_player", ebw.b),
-      d("block_entity", ebw.h);
+   public abstract int a(eao[] var1, eao var2);
 
-      public final String e;
-      public final ebt<?> f;
+   public abstract eam a(coq var1, int var2, int var3, int var4, biy var5);
 
-      private a(String $$0, ebt<?> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   public abstract eam a(coq var1, int var2, int var3, int var4);
 
-      public static eap.a a(String $$0) {
-         for (eap.a $$1 : values()) {
-            if ($$1.e.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid name source " + $$0);
-      }
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public static class b extends eay.c<eap> {
-      public void a(JsonObject $$0, eap $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("source", $$1.a.e);
-      }
+   public void b(boolean $$0) {
+      this.h = $$0;
+   }
 
-      public eap a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         eap.a $$3 = eap.a.a(aor.i($$0, "source"));
-         return new eap($$2, $$3);
-      }
+   public void c(boolean $$0) {
+      this.i = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.j = $$0;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public boolean e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public boolean g() {
+      return this.j;
    }
 }

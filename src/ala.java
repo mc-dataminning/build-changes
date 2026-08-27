@@ -1,27 +1,112 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface ala {
-   Optional<akv> getResource(acq var1);
+public class ala extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final afe b;
 
-   default akv getResourceOrThrow(acq $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   public ala(afe $$0) {
+      this.b = $$0;
    }
 
-   default InputStream open(acq $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
+
+      try {
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
+            }
+
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
+
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
+         }
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
+      }
    }
 
-   default BufferedReader openAsReader(acq $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
+      } else {
+         String $$2 = akz.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
+         } else {
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = akz.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
+         }
+      }
    }
 
-   static ala fromMap(Map<acq, akv> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   private static String a(afe $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.aa(), $$0.H(), $$0.I());
+   }
+
+   private static String b(afe $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.G(), $$0.aa(), $$0.H(), $$0.I());
+   }
+
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   }
+
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      akz.a($$2, $$1);
+      return $$2;
    }
 }

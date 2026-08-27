@@ -1,65 +1,28 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public interface apf {
-   @Deprecated
-   double a = 2.297;
+public class apf {
+   protected final Object2IntMap<apb<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
 
-   static apf a() {
-      return a(dhz.a());
+   public apf() {
+      this.a.defaultReturnValue(0);
    }
 
-   @Deprecated
-   static apf b() {
-      return new did(dhz.a());
+   public void b(cbl $$0, apb<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
    }
 
-   static apf a(long $$0) {
-      return new dhl($$0);
+   public void a(cbl $$0, apb<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
    }
 
-   static apf c() {
-      return new dia(ThreadLocalRandom.current().nextLong());
+   public <T> int a(apd<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
    }
 
-   apf d();
-
-   dhx e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
-      }
+   public int a(apb<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

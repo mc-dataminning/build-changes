@@ -1,24 +1,27 @@
-public class xn implements uo<ur> {
-   private final double a;
+import java.util.List;
 
-   public xn(dds $$0) {
-      this.a = $$0.k();
-   }
-
-   public xn(sf $$0) {
-      this.a = $$0.readDouble();
+public record xn(xn.a a, List<String> b) implements uw<wo> {
+   public xn(sh $$0) {
+      this($$0.b(xn.a.class), $$0.a(sh::r));
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeDouble(this.a);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, sh::a);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   public List<String> d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

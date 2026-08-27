@@ -1,72 +1,77 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class dfw<T extends dfs> {
-   private static final Logger a = LogUtils.getLogger();
-   private final anv<T> b;
-   private dgf c;
+public class dfw<T extends Enum<T> & asf> extends dgb<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   public dfw(Class<T> $$0, dgf $$1) {
-      this.c = $$1;
-      this.b = new anv<>($$0);
-   }
+   protected dfw(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
 
-   public void a(T $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public anr.a a(eed $$0, anr<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cE().c($$0) && $$1.accept($$2).a()) {
-            return anr.a.b;
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
          }
-      }
 
-      return anr.a.a;
+         this.b.put($$4, $$3);
+      }
    }
 
-   public <U extends T> anr.a a(dfz<T, U> $$0, eed $$1, anr<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return anr.a.a;
+   @Override
+   public Collection<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof dfw && super.equals($$0)) {
+         dfw<?> $$1 = (dfw<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
       } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cE().c($$1) && $$2.accept($$5).a()) {
-               return anr.a.b;
-            }
-         }
-
-         return anr.a.a;
+         return false;
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
+   public static <T extends Enum<T> & asf> dfw<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public dgf c() {
-      return this.c;
+   public static <T extends Enum<T> & asf> dfw<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
    }
 
-   public dgf a(dgf $$0) {
-      dgf $$1 = this.c;
-      this.c = $$0;
-      return $$1;
+   public static <T extends Enum<T> & asf> dfw<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
    }
 
-   @aqa
-   public int d() {
-      return this.b.size();
+   public static <T extends Enum<T> & asf> dfw<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dfw<>($$0, $$1, $$2);
    }
 }

@@ -1,54 +1,181 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public final class apj {
+   public static final apy<csk> a = a("wool");
+   public static final apy<csk> b = a("planks");
+   public static final apy<csk> c = a("stone_bricks");
+   public static final apy<csk> d = a("wooden_buttons");
+   public static final apy<csk> e = a("stone_buttons");
+   public static final apy<csk> f = a("buttons");
+   public static final apy<csk> g = a("wool_carpets");
+   public static final apy<csk> h = a("wooden_doors");
+   public static final apy<csk> i = a("wooden_stairs");
+   public static final apy<csk> j = a("wooden_slabs");
+   public static final apy<csk> k = a("wooden_fences");
+   public static final apy<csk> l = a("pressure_plates");
+   public static final apy<csk> m = a("wooden_pressure_plates");
+   public static final apy<csk> n = a("stone_pressure_plates");
+   public static final apy<csk> o = a("wooden_trapdoors");
+   public static final apy<csk> p = a("doors");
+   public static final apy<csk> q = a("saplings");
+   public static final apy<csk> r = a("logs_that_burn");
+   public static final apy<csk> s = a("overworld_natural_logs");
+   public static final apy<csk> t = a("logs");
+   public static final apy<csk> u = a("dark_oak_logs");
+   public static final apy<csk> v = a("oak_logs");
+   public static final apy<csk> w = a("birch_logs");
+   public static final apy<csk> x = a("acacia_logs");
+   public static final apy<csk> y = a("cherry_logs");
+   public static final apy<csk> z = a("jungle_logs");
+   public static final apy<csk> A = a("spruce_logs");
+   public static final apy<csk> B = a("mangrove_logs");
+   public static final apy<csk> C = a("crimson_stems");
+   public static final apy<csk> D = a("warped_stems");
+   public static final apy<csk> E = a("bamboo_blocks");
+   public static final apy<csk> F = a("wart_blocks");
+   public static final apy<csk> G = a("banners");
+   public static final apy<csk> H = a("sand");
+   public static final apy<csk> I = a("smelts_to_glass");
+   public static final apy<csk> J = a("stairs");
+   public static final apy<csk> K = a("slabs");
+   public static final apy<csk> L = a("walls");
+   public static final apy<csk> M = a("anvil");
+   public static final apy<csk> N = a("rails");
+   public static final apy<csk> O = a("leaves");
+   public static final apy<csk> P = a("trapdoors");
+   public static final apy<csk> Q = a("small_flowers");
+   public static final apy<csk> R = a("beds");
+   public static final apy<csk> S = a("fences");
+   public static final apy<csk> T = a("tall_flowers");
+   public static final apy<csk> U = a("flowers");
+   public static final apy<csk> V = a("piglin_repellents");
+   public static final apy<csk> W = a("gold_ores");
+   public static final apy<csk> X = a("iron_ores");
+   public static final apy<csk> Y = a("diamond_ores");
+   public static final apy<csk> Z = a("redstone_ores");
+   public static final apy<csk> aa = a("lapis_ores");
+   public static final apy<csk> ab = a("coal_ores");
+   public static final apy<csk> ac = a("emerald_ores");
+   public static final apy<csk> ad = a("copper_ores");
+   public static final apy<csk> ae = a("candles");
+   public static final apy<csk> af = a("dirt");
+   public static final apy<csk> ag = a("terracotta");
+   public static final apy<csk> ah = a("concrete_powder");
+   public static final apy<csk> ai = a("completes_find_tree_tutorial");
+   public static final apy<csk> aj = a("flower_pots");
+   public static final apy<csk> ak = a("enderman_holdable");
+   public static final apy<csk> al = a("ice");
+   public static final apy<csk> am = a("valid_spawn");
+   public static final apy<csk> an = a("impermeable");
+   public static final apy<csk> ao = a("underwater_bonemeals");
+   public static final apy<csk> ap = a("coral_blocks");
+   public static final apy<csk> aq = a("wall_corals");
+   public static final apy<csk> ar = a("coral_plants");
+   public static final apy<csk> as = a("corals");
+   public static final apy<csk> at = a("bamboo_plantable_on");
+   public static final apy<csk> au = a("standing_signs");
+   public static final apy<csk> av = a("wall_signs");
+   public static final apy<csk> aw = a("signs");
+   public static final apy<csk> ax = a("ceiling_hanging_signs");
+   public static final apy<csk> ay = a("wall_hanging_signs");
+   public static final apy<csk> az = a("all_hanging_signs");
+   public static final apy<csk> aA = a("all_signs");
+   public static final apy<csk> aB = a("dragon_immune");
+   public static final apy<csk> aC = a("dragon_transparent");
+   public static final apy<csk> aD = a("wither_immune");
+   public static final apy<csk> aE = a("wither_summon_base_blocks");
+   public static final apy<csk> aF = a("beehives");
+   public static final apy<csk> aG = a("crops");
+   public static final apy<csk> aH = a("bee_growables");
+   public static final apy<csk> aI = a("portals");
+   public static final apy<csk> aJ = a("fire");
+   public static final apy<csk> aK = a("nylium");
+   public static final apy<csk> aL = a("beacon_base_blocks");
+   public static final apy<csk> aM = a("soul_speed_blocks");
+   public static final apy<csk> aN = a("wall_post_override");
+   public static final apy<csk> aO = a("climbable");
+   public static final apy<csk> aP = a("fall_damage_resetting");
+   public static final apy<csk> aQ = a("shulker_boxes");
+   public static final apy<csk> aR = a("hoglin_repellents");
+   public static final apy<csk> aS = a("soul_fire_base_blocks");
+   public static final apy<csk> aT = a("strider_warm_blocks");
+   public static final apy<csk> aU = a("campfires");
+   public static final apy<csk> aV = a("guarded_by_piglins");
+   public static final apy<csk> aW = a("prevent_mob_spawning_inside");
+   public static final apy<csk> aX = a("fence_gates");
+   public static final apy<csk> aY = a("unstable_bottom_center");
+   public static final apy<csk> aZ = a("mushroom_grow_block");
+   public static final apy<csk> ba = a("infiniburn_overworld");
+   public static final apy<csk> bb = a("infiniburn_nether");
+   public static final apy<csk> bc = a("infiniburn_end");
+   public static final apy<csk> bd = a("base_stone_overworld");
+   public static final apy<csk> be = a("stone_ore_replaceables");
+   public static final apy<csk> bf = a("deepslate_ore_replaceables");
+   public static final apy<csk> bg = a("base_stone_nether");
+   public static final apy<csk> bh = a("overworld_carver_replaceables");
+   public static final apy<csk> bi = a("nether_carver_replaceables");
+   public static final apy<csk> bj = a("candle_cakes");
+   public static final apy<csk> bk = a("cauldrons");
+   public static final apy<csk> bl = a("crystal_sound_blocks");
+   public static final apy<csk> bm = a("inside_step_sound_blocks");
+   public static final apy<csk> bn = a("combination_step_sound_blocks");
+   public static final apy<csk> bo = a("camel_sand_step_sound_blocks");
+   public static final apy<csk> bp = a("occludes_vibration_signals");
+   public static final apy<csk> bq = a("dampens_vibrations");
+   public static final apy<csk> br = a("dripstone_replaceable_blocks");
+   public static final apy<csk> bs = a("cave_vines");
+   public static final apy<csk> bt = a("moss_replaceable");
+   public static final apy<csk> bu = a("lush_ground_replaceable");
+   public static final apy<csk> bv = a("azalea_root_replaceable");
+   public static final apy<csk> bw = a("small_dripleaf_placeable");
+   public static final apy<csk> bx = a("big_dripleaf_placeable");
+   public static final apy<csk> by = a("snow");
+   public static final apy<csk> bz = a("mineable/axe");
+   public static final apy<csk> bA = a("mineable/hoe");
+   public static final apy<csk> bB = a("mineable/pickaxe");
+   public static final apy<csk> bC = a("mineable/shovel");
+   public static final apy<csk> bD = a("sword_efficient");
+   public static final apy<csk> bE = a("needs_diamond_tool");
+   public static final apy<csk> bF = a("needs_iron_tool");
+   public static final apy<csk> bG = a("needs_stone_tool");
+   public static final apy<csk> bH = a("features_cannot_replace");
+   public static final apy<csk> bI = a("lava_pool_stone_cannot_replace");
+   public static final apy<csk> bJ = a("geode_invalid_blocks");
+   public static final apy<csk> bK = a("frog_prefer_jump_to");
+   public static final apy<csk> bL = a("sculk_replaceable");
+   public static final apy<csk> bM = a("sculk_replaceable_world_gen");
+   public static final apy<csk> bN = a("ancient_city_replaceable");
+   public static final apy<csk> bO = a("vibration_resonators");
+   public static final apy<csk> bP = a("animals_spawnable_on");
+   public static final apy<csk> bQ = a("axolotls_spawnable_on");
+   public static final apy<csk> bR = a("goats_spawnable_on");
+   public static final apy<csk> bS = a("mooshrooms_spawnable_on");
+   public static final apy<csk> bT = a("parrots_spawnable_on");
+   public static final apy<csk> bU = a("polar_bears_spawnable_on_alternate");
+   public static final apy<csk> bV = a("rabbits_spawnable_on");
+   public static final apy<csk> bW = a("foxes_spawnable_on");
+   public static final apy<csk> bX = a("wolves_spawnable_on");
+   public static final apy<csk> bY = a("frogs_spawnable_on");
+   public static final apy<csk> bZ = a("azalea_grows_on");
+   public static final apy<csk> ca = a("convertable_to_mud");
+   public static final apy<csk> cb = a("mangrove_logs_can_grow_through");
+   public static final apy<csk> cc = a("mangrove_roots_can_grow_through");
+   public static final apy<csk> cd = a("dead_bush_may_place_on");
+   public static final apy<csk> ce = a("snaps_goat_horn");
+   public static final apy<csk> cf = a("replaceable_by_trees");
+   public static final apy<csk> cg = a("snow_layer_cannot_survive_on");
+   public static final apy<csk> ch = a("snow_layer_can_survive_on");
+   public static final apy<csk> ci = a("invalid_spawn_inside");
+   public static final apy<csk> cj = a("sniffer_diggable_block");
+   public static final apy<csk> ck = a("sniffer_egg_hatch_boost");
+   public static final apy<csk> cl = a("trail_ruins_replaceable");
+   public static final apy<csk> cm = a("replaceable");
+   public static final apy<csk> cn = a("enchantment_power_provider");
+   public static final apy<csk> co = a("enchantment_power_transmitter");
+   public static final apy<csk> cp = a("maintains_farmland");
 
-public interface apj {
-   apj a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
-
-   boolean validate(api var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   private apj() {
    }
 
-   private static boolean a(api $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
-   }
-
-   static apj a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
-   }
-
-   @Nullable
-   static apj a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
-
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   private static apy<csk> a(String $$0) {
+      return apy.a(jd.e, new aep($$0));
    }
 }

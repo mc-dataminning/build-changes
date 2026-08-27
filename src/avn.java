@@ -1,23 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class avn extends DataFix {
-   public avn(Schema $$0) {
-      super($$0, false);
+public class avn extends ayw {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+
+   public avn(Schema $$0, boolean $$1) {
+      super("EntityRavagerRenameFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsProgrammerArtFix",
-         this.getInputSchema().getType(avw.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
-      );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
    }
 }

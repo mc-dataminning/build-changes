@@ -1,23 +1,47 @@
-public class epu extends epf {
-   private final acq a;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public epu(int $$0, int $$1, acq $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
+public class epu extends epn {
+   private static final Logger c = LogUtils.getLogger();
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public epu(int $$0, int $$1, int $$2, int $$3, acq $$4) {
-      super($$0, $$1, $$2, $$3, sw.h());
-      this.a = $$4;
+   public epu(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected void a(esp $$0) {
-   }
+   public void run() {
+      elx $$0 = elx.a();
+      this.b(te.c("mco.minigame.world.slot.screen.title"));
 
-   @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.k();
-      int $$5 = this.h();
-      $$0.a(this.a, this.p(), this.r(), 0.0F, 0.0F, $$4, $$5, $$4, $$5);
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.c()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (enl var4) {
+            if (this.c()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 }

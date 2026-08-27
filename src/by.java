@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class by extends cv<by.a> {
-   static final acq a = new acq("item_durability_changed");
+   static final aep a = new aep("item_durability_changed");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -15,7 +15,7 @@ public class by extends cv<by.a> {
       return new by.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(aig $$0, cfz $$1, int $$2) {
+   public void a(akj $$0, ciw $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -39,7 +39,7 @@ public class by extends cv<by.a> {
          return new by.a($$0, $$1, $$2, cj.d.e);
       }
 
-      public boolean a(cfz $$0, int $$1) {
+      public boolean a(ciw $$0, int $$1) {
          if (!this.a.a($$0)) {
             return false;
          } else {

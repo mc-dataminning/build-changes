@@ -1,27 +1,69 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public enum bil {
+   a(bil.a.a, 0, 0, "mainhand"),
+   b(bil.a.a, 1, 5, "offhand"),
+   c(bil.a.b, 0, 1, "feet"),
+   d(bil.a.b, 1, 2, "legs"),
+   e(bil.a.b, 2, 3, "chest"),
+   f(bil.a.b, 3, 4, "head");
 
-public class bil {
-   public static bhs<bfz> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   private final bil.a g;
+   private final int h;
+   private final int i;
+   private final String j;
+
+   private bil(bil.a $$0, int $$1, int $$2, String $$3) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
    }
 
-   public static <E extends bfz> bhs<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bld.a((Function<bld.b<E>, ? extends App<bld.c<E>, blg<E>>>)($$4 -> {
-         bld<E, ? extends ble<? extends K1, bpe>> $$5 = $$2 ? $$4.a(bpb.m) : $$4.c(bpb.m);
-         return $$4.group($$4.a(bpb.n), $$5, $$4.b(bpb.K), $$4.a(bpb.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               bvh $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dI().w_().a($$11.di())) {
-                  bpe $$12 = new bpe(new bic($$11, false), $$1, 0);
-                  $$4x.a(new bic($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   public bil.a a() {
+      return this.g;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.h;
+   }
+
+   public int c() {
+      return this.i;
+   }
+
+   public String d() {
+      return this.j;
+   }
+
+   public boolean e() {
+      return this.g == bil.a.b;
+   }
+
+   public static bil a(String $$0) {
+      for (bil $$1 : values()) {
+         if ($$1.d().equals($$0)) {
+            return $$1;
+         }
+      }
+
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+   }
+
+   public static bil a(bil.a $$0, int $$1) {
+      for (bil $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
+         }
+      }
+
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

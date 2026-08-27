@@ -1,11 +1,9 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+public interface egc extends eci {
+   float b(ech var1);
 
-@Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface egc {
+   default int a(ech $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   egb b();
 }

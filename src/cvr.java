@@ -1,76 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class cvr extends cvq {
-   public static final dcv e = ctg.aC;
-   public static final dcs f = cvq.a;
+public class cvr extends cxi implements csm, czl {
+   private static final dfp b = dfo.C;
+   private final cxj c = new cxj(this);
 
-   protected cvr(dca.d $$0) {
+   public cvr(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(e, ha.c).a(f, Boolean.valueOf(true)));
+      this.k(this.n().a(b, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dey> b(int $$0) {
+      return $$1 -> cxi.n($$1) ? $$0 : 0;
    }
 
    @Override
-   public String f() {
-      return this.k().a();
+   protected void a(dez.a<csk, dey> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return cyn.h($$0);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return cpo.cq.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      return cpo.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dcb a(cih $$0) {
-      dcb $$1 = cpo.cq.a($$0);
-      return $$1 == null ? null : this.n().a(e, $$1.c(e));
-   }
-
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$0.c(f)) {
-         ha $$4 = $$0.c(e).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(this.i, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(cmm $$0, gu $$1, dcb $$2) {
-      ha $$3 = $$2.c(e).g();
-      return $$0.b($$1.a($$3), $$3);
+   public boolean a(dey $$0, cle $$1) {
+      return !$$1.n().a(ciz.fA) || super.a($$0, $$1);
    }
 
    @Override
-   public int a(dcb $$0, cls $$1, gu $$2, ha $$3) {
-      return $$0.c(f) && $$0.c(e) != $$3 ? 15 : 0;
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
+      return hb.a().anyMatch($$3 -> this.c.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return cpo.cq.a($$0, $$1);
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return true;
    }
 
    @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return cpo.cq.a($$0, $$1);
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      this.c.a($$3, $$0, $$2, $$1);
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(e, f);
+   public eab c_(dey $$0) {
+      return $$0.c(b) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean c(dey $$0, coq $$1, gv $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public cxj b() {
+      return this.c;
    }
 }

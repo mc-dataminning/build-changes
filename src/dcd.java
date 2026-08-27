@@ -1,170 +1,108 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public abstract class dcd<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dde<?>, Comparable<?>>, String> a = new Function<Entry<dde<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dde<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dde<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
+public class dcd extends ddn {
+   private ho<ciw> c = ho.a(27, ciw.b);
+   private final dcx f = new dcx() {
+      @Override
+      protected void a(cpk $$0, gv $$1, dey $$2) {
+         dcd.this.a($$2, aou.bk);
+         dcd.this.a($$2, true);
       }
 
-      private <T extends Comparable<T>> String a(dde<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
+      @Override
+      protected void b(cpk $$0, gv $$1, dey $$2) {
+         dcd.this.a($$2, aou.bj);
+         dcd.this.a($$2, false);
+      }
+
+      @Override
+      protected void a(cpk $$0, gv $$1, dey $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cbl $$0) {
+         if ($$0.bQ instanceof cej) {
+            bgh $$1 = ((cej)$$0.bQ).l();
+            return $$1 == dcd.this;
+         } else {
+            return false;
+         }
       }
    };
-   protected final O e;
-   private final ImmutableMap<dde<?>, Comparable<?>> b;
-   private Table<dde<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
 
-   protected dcd(O $$0, ImmutableMap<dde<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(dde<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
-      }
-
-      return $$2.next();
+   public dcd(gv $$0, dey $$1) {
+      super(dcm.A, $$0, $$1);
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
-   }
-
-   public Collection<dde<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dde<T> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dde<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
-      } else {
-         return $$0.g().cast($$1);
+   protected void b(qs $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgi.a($$0, this.c);
       }
    }
 
-   public <T extends Comparable<T>> Optional<T> d(dde<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
-   }
-
-   public <T extends Comparable<T>, V extends T> S a(dde<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.c = ho.a(this.b(), ciw.b);
+      if (!this.d($$0)) {
+         bgi.b($$0, this.c);
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S b(dde<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected ho<ciw> f() {
+      return this.c;
+   }
+
+   @Override
+   protected void a(ho<ciw> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   protected te g() {
+      return te.c("container.barrel");
+   }
+
+   @Override
+   protected cec a(int $$0, cbk $$1) {
+      return cej.a($$0, $$1, this);
+   }
+
+   @Override
+   public void d_(cbl $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.a($$0, this.k(), this.p(), this.q());
       }
    }
 
-   public void a(Map<Map<dde<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dde<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         UnmodifiableIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dde<?>, Comparable<?>> $$2 = (Entry<dde<?>, Comparable<?>>)var3.next();
-            dde<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
-               }
-            }
-         }
-
-         this.g = (Table<dde<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+   @Override
+   public void c(cbl $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.b($$0, this.k(), this.p(), this.q());
       }
    }
 
-   private Map<dde<?>, Comparable<?>> c(dde<?> $$0, Comparable<?> $$1) {
-      Map<dde<?>, Comparable<?>> $$2 = Maps.newHashMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
+   public void i() {
+      if (!this.q) {
+         this.f.c(this.k(), this.p(), this.q());
+      }
    }
 
-   public ImmutableMap<dde<?>, Comparable<?>> C() {
-      return this.b;
+   void a(dey $$0, boolean $$1) {
+      this.o.a(this.p(), $$0.a(crr.b, Boolean.valueOf($$1)), 3);
    }
 
-   protected static <O, S extends dcd<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? Codec.unit($$2) : $$2.f.codec().optionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of).codec();
-      });
+   void a(dey $$0, aot $$1) {
+      ia $$2 = $$0.c(crr.a).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, aov.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

@@ -1,24 +1,16 @@
-public record vt(sw a, ss.b b) implements uo<ur> {
-   public vt(sf $$0) {
-      this($$0.l(), new ss.b($$0));
+public record vt() implements vo {
+   public static final aep a = new aep("debug/game_test_clear");
+
+   public vt(sh $$0) {
+      this();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
-   }
-
-   public void a(ur $$0) {
-      $$0.a(this);
+   public void a(sh $$0) {
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   public ss.b c() {
-      return this.b;
+   public aep a() {
+      return a;
    }
 }

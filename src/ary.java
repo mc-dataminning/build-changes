@@ -1,14 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.logging.LogUtils;
+import java.security.PrivateKey;
+import java.security.Signature;
+import org.slf4j.Logger;
 
-public class ary extends auz {
-   public ary(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", avw.q, "minecraft:shulker");
+public interface ary {
+   Logger a = LogUtils.getLogger();
+
+   byte[] sign(arw var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
+   static ary a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
+         }
+      };
    }
 }

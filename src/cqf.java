@@ -1,26 +1,23 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cqf extends cpn {
-   private static final sw a = sw.c("container.cartography_table");
+public class cqf {
+   public static final Codec<cqf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aot.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cqf::new)
+   );
+   private final hf<aot> b;
+   private final double c;
 
-   protected cqf(dca.d $$0) {
-      super($$0);
+   public cqf(hf<aot> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if ($$1.B) {
-         return bdx.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(amr.aw);
-         return bdx.b;
-      }
+   public hf<aot> a() {
+      return this.b;
    }
 
-   @Nullable
-   @Override
-   public bea b(dcb $$0, cmm $$1, gu $$2) {
-      return new bef(($$2x, $$3, $$4) -> new cbl($$2x, $$3, cbq.a($$1, $$2)), a);
+   public double b() {
+      return this.c;
    }
 }

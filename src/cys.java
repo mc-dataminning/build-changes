@@ -1,22 +1,39 @@
-public class cys extends cxh implements cyp {
-   private final cyp.a F;
+public class cys extends cuj {
+   protected static final float e = 6.0F;
+   protected static final float f = 10.0F;
+   protected static final ehy g = csk.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ehy h = csk.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ehy i = csk.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   public cys(cyp.a $$0, dcb $$1, dca.d $$2) {
-      super($$1, $$2);
-      this.F = $$0;
+   protected cys(dex.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return i;
+         case c:
+            return h;
+         case b:
+            return g;
+      }
    }
 
    @Override
-   public boolean e_(dcb $$0) {
-      return cyp.c($$0.b()).isPresent();
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public cyp.a g() {
-      return this.F;
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

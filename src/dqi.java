@@ -1,16 +1,16 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public interface dqi<P extends dqh> {
-   dqi<dqg> a = a("constant", dqg.b);
-   dqi<dqk> b = a("uniform", dqk.a);
-   dqi<dqf> c = a("biased_to_bottom", dqf.a);
-   dqi<dql> d = a("very_biased_to_bottom", dql.a);
-   dqi<dqj> e = a("trapezoid", dqj.a);
-   dqi<dqm> f = a("weighted_list", dqm.a);
+public class dqi implements dpp {
+   public static final Codec<dqi> a = aqw.b(dub.c).fieldOf("features").xmap(dqi::new, $$0 -> $$0.b).codec();
+   public final hj<dub> b;
 
-   Codec<P> codec();
+   public dqi(hj<dub> $$0) {
+      this.b = $$0;
+   }
 
-   private static <P extends dqh> dqi<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.O, $$0, () -> $$1);
+   @Override
+   public Stream<dmy<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

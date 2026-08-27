@@ -1,46 +1,82 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class ect implements eck {
-   final edf a;
-   final dzj b;
-
-   ect(edf $$0, dzj $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class ect extends ecv {
+   ect(edc[] $$0, efh[] $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ecl b() {
-      return ecm.r;
+   public edd a() {
+      return eda.f;
    }
 
    @Override
-   public Set<ebt<?>> a() {
-      return Sets.union(this.a.a(), this.b.a());
+   protected ecu a(ecu[] $$0) {
+      switch ($$0.length) {
+         case 0:
+            return a;
+         case 1:
+            return $$0[0];
+         case 2:
+            return $$0[0].or($$0[1]);
+         default:
+            return ($$1, $$2) -> {
+               for (ecu $$3 : $$0) {
+                  if ($$3.expand($$1, $$2)) {
+                     return true;
+                  }
+               }
+
+               return false;
+            };
+      }
    }
 
-   public boolean a(dzk $$0) {
-      return this.b.b($$0, this.a.a($$0));
+   @Override
+   public void a(ecs $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.length - 1; $$1++) {
+         if (ArrayUtils.isEmpty(this.c[$$1].d)) {
+            $$0.a("Unreachable entry!");
+         }
+      }
    }
 
-   public static eck.a a(edf $$0, dzj $$1) {
-      return () -> new ect($$0, $$1);
+   public static ect.a a(edc.a<?>... $$0) {
+      return new ect.a($$0);
    }
 
-   public static class a implements dzt<ect> {
-      public void a(JsonObject $$0, ect $$1, JsonSerializationContext $$2) {
-         $$0.add("value", $$2.serialize($$1.a));
-         $$0.add("range", $$2.serialize($$1.b));
+   public static <E> ect.a a(Collection<E> $$0, Function<E, edc.a<?>> $$1) {
+      return new ect.a($$0.stream().map($$1::apply).toArray(edc.a[]::new));
+   }
+
+   public static class a extends edc.a<ect.a> {
+      private final List<edc> a = Lists.newArrayList();
+
+      public a(edc.a<?>... $$0) {
+         for (edc.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      public ect b(JsonObject $$0, JsonDeserializationContext $$1) {
-         edf $$2 = aor.a($$0, "value", $$1, edf.class);
-         dzj $$3 = aor.a($$0, "range", $$1, dzj.class);
-         return new ect($$2, $$3);
+      protected ect.a a() {
+         return this;
+      }
+
+      @Override
+      public ect.a a(edc.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public edc b() {
+         return new ect(this.a.toArray(new edc[0]), this.f());
       }
    }
 }

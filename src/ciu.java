@@ -1,29 +1,10 @@
-public abstract class ciu implements cit {
-   private final acq a;
-   private final cis b;
-
-   public ciu(acq $$0, cis $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class ciu extends cih {
+   public ciu(bik<? extends bxw> $$0, cir.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public acq e() {
-      return this.a;
-   }
-
-   @Override
-   public boolean ai_() {
-      return true;
-   }
-
-   @Override
-   public cfz a(hs $$0) {
-      return cfz.b;
-   }
-
-   @Override
-   public cis d() {
-      return this.b;
+   protected boolean a(cbl $$0, hb $$1, ciw $$2, gv $$3) {
+      return !$$0.dK().r($$3) && $$0.a($$3, $$1, $$2);
    }
 }

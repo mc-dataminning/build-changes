@@ -1,105 +1,241 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class aep {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> sw.a("commands.fillbiome.toobig", $$0, $$1));
+public class aep implements Comparable<aep> {
+   public static final Codec<aep> a = Codec.STRING.comapFlatMap(aep::b, aep::toString).stable();
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.c("argument.id.invalid"));
+   public static final char b = ':';
+   public static final String c = "minecraft";
+   public static final String d = "realms";
+   private final String f;
+   private final String g;
 
-   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("fillbiome").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("from", fi.a())
-                  .then(
-                     dt.a("to", fi.a())
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("biome", eo.a($$1, jc.ap))
-                                 .executes($$0x -> a((ds)$$0x.getSource(), fi.a($$0x, "from"), fi.a($$0x, "to"), eo.a($$0x, "biome", jc.ap), $$0xx -> true)))
-                              .then(
-                                 dt.a("replace")
-                                    .then(
-                                       dt.a("filter", er.a($$1, jc.ap))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ds)$$0x.getSource(),
-                                                   fi.a($$0x, "from"),
-                                                   fi.a($$0x, "to"),
-                                                   eo.a($$0x, "biome", jc.ap),
-                                                   er.a($$0x, "filter", jc.ap)::test
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   protected aep(String $$0, String $$1, @Nullable aep.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   private static int a(int $$0) {
-      return hq.c(hq.a($$0));
+   public aep(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
    }
 
-   private static gu a(gu $$0) {
-      return new gu(a($$0.u()), a($$0.v()), a($$0.w()));
+   private aep(String[] $$0) {
+      this($$0[0], $$0[1]);
    }
 
-   private static cnn a(MutableInt $$0, ddx $$1, drs $$2, he<cnk> $$3, Predicate<he<cnk>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = hq.c($$5);
-         int $$10 = hq.c($$6);
-         int $$11 = hq.c($$7);
-         he<cnk> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
+   public aep(String $$0) {
+      this(b($$0, ':'));
+   }
+
+   public static aep a(String $$0, char $$1) {
+      return new aep(b($$0, $$1));
+   }
+
+   @Nullable
+   public static aep a(String $$0) {
+      try {
+         return new aep($$0);
+      } catch (z var2) {
+         return null;
+      }
+   }
+
+   @Nullable
+   public static aep a(String $$0, String $$1) {
+      try {
+         return new aep($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
+   }
+
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
          }
-      };
+      }
+
+      return $$2;
    }
 
-   private static int a(ds $$0, gu $$1, gu $$2, he.c<cnk> $$3, Predicate<he<cnk>> $$4) throws CommandSyntaxException {
-      gu $$5 = a($$1);
-      gu $$6 = a($$2);
-      drs $$7 = drs.a($$5, $$6);
-      int $$8 = $$7.c() * $$7.d() * $$7.e();
-      int $$9 = $$0.e().X().c(cmi.x);
-      if ($$8 > $$9) {
-         throw b.create($$9, $$8);
+   public static DataResult<aep> b(String $$0) {
+      try {
+         return DataResult.success(new aep($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.f;
+   }
+
+   public aep c(String $$0) {
+      return new aep(this.f, d(this.f, $$0), null);
+   }
+
+   public aep a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.g));
+   }
+
+   public aep d(String $$0) {
+      return this.c($$0 + this.g);
+   }
+
+   public aep e(String $$0) {
+      return this.c(this.g + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.f + ":" + this.g;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         aif $$10 = $$0.e();
-         List<ddx> $$11 = new ArrayList<>();
+         return !($$0 instanceof aep $$1) ? false : this.f.equals($$1.f) && this.g.equals($$1.g);
+      }
+   }
 
-         for (int $$12 = hx.a($$7.i()); $$12 <= hx.a($$7.l()); $$12++) {
-            for (int $$13 = hx.a($$7.g()); $$13 <= hx.a($$7.j()); $$13++) {
-               ddx $$14 = $$10.a($$13, $$12, dec.n, false);
-               if ($$14 == null) {
-                  throw a.create();
-               }
+   @Override
+   public int hashCode() {
+      return 31 * this.f.hashCode() + this.g.hashCode();
+   }
 
-               $$11.add($$14);
-            }
+   public int a(aep $$0) {
+      int $$1 = this.g.compareTo($$0.g);
+      if ($$1 == 0) {
+         $$1 = this.f.compareTo($$0.f);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.f + "." + this.g;
+   }
+
+   public String e() {
+      return this.f.equals("minecraft") ? this.g : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   public static aep a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
+
+      try {
+         return new aep($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw e.createWithContext($$0);
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
          }
+      }
 
-         MutableInt $$15 = new MutableInt(0);
+      return true;
+   }
 
-         for (ddx $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$7, $$3, $$4), $$10.k().i().b());
-            $$16.a(true);
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
          }
+      }
 
-         $$10.k().a.a($$11);
-         $$0.a(() -> sw.a("commands.fillbiome.success.count", $$15.getValue(), $$7.g(), $$7.h(), $$7.i(), $$7.j(), $$7.k(), $$7.l()), true);
-         return $$15.getValue();
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<aep>, JsonSerializer<aep> {
+      public aep a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new aep(arf.a($$0, "location"));
+      }
+
+      public JsonElement a(aep $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
       }
    }
 }

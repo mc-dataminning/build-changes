@@ -1,35 +1,18 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import org.slf4j.Logger;
 
-public class aeu {
-   public static void a(CommandDispatcher<ds> $$0) {
-      final LiteralArgumentBuilder<ds> $$1 = (LiteralArgumentBuilder<ds>)dt.a("gamerule").requires($$0x -> $$0x.c(2));
-      cmi.a(
-         new cmi.c() {
-            @Override
-            public <T extends cmi.g<T>> void a(cmi.e<T> $$0, cmi.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)dt.a($$0.a()).executes($$1xxx -> aeu.a((ds)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> aeu.a($$1xxx, $$0)))
-               );
-            }
-         }
-      );
-      $$0.register($$1);
+public class aeu extends aew {
+   private static final Logger b = LogUtils.getLogger();
+
+   public aeu(String $$0, OutputStream $$1) {
+      super($$0, $$1);
    }
 
-   static <T extends cmi.g<T>> int a(CommandContext<ds> $$0, cmi.e<T> $$1) {
-      ds $$2 = (ds)$$0.getSource();
-      T $$3 = $$2.l().aI().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> sw.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
-
-   static <T extends cmi.g<T>> int a(ds $$0, cmi.e<T> $$1) {
-      T $$2 = $$0.l().aI().a($$1);
-      $$0.a(() -> sw.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   @Override
+   protected void a(String $$0) {
+      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
+      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
+      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
    }
 }

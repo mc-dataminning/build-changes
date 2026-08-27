@@ -1,46 +1,63 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dkw extends djr {
-   public dkw(Codec<dmu> $$0) {
-      super($$0);
+public final class dkw {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   @Override
-   protected void a(cmn $$0, apf $$1, gu $$2, int $$3, gu.a $$4, dmu $$5) {
-      int $$6 = $$5.d;
+   public static dkw.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dkw.a($$1, $$2);
+   }
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dcb $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(cth.d) && $$19.b(cth.b) && $$19.b(cth.a) && $$19.b(cth.c)) {
-                     $$19 = $$19.a(cth.d, Boolean.valueOf($$15))
-                        .a(cth.b, Boolean.valueOf($$16))
-                        .a(cth.a, Boolean.valueOf($$17))
-                        .a(cth.c, Boolean.valueOf($$18));
-                  }
+   public static dkw.a c(long $$0) {
+      return b($$0).a();
+   }
 
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
+   public static dkw.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dkw.a($$2, $$3);
+   }
+
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
+
+   public static record a(long a, long b) {
+      public dkw.a a(long $$0, long $$1) {
+         return new dkw.a(this.a ^ $$0, this.b ^ $$1);
       }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+      public dkw.a a(dkw.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public dkw.a a() {
+         return new dkw.a(dkw.a(this.a), dkw.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

@@ -1,41 +1,31 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bog<T extends bgb> extends bmv {
-   private final T a;
-   private final cfz b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final amg d;
-
-   public bog(T $$0, cfz $$1, @Nullable amg $$2, Predicate<? super T> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+public class bog<E extends cap> extends bko<E> {
+   public bog(int $$0) {
+      super(ImmutableMap.of(bry.o, brz.b, bry.m, brz.b), $$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.c.test(this.a);
+   protected boolean a(aki $$0, E $$1, long $$2) {
+      return $$1.dG() == null;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.fi();
+   protected boolean a(aki $$0, E $$1) {
+      return $$1.aA() || $$1.aX() || $$1.bl();
    }
 
-   @Override
-   public void c() {
-      this.a.a(bfo.a, this.b.p());
-      this.a.c(bdw.a);
+   protected void b(aki $$0, E $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.b(bji.o);
+         $$1.a(aou.zv, 5.0F, 1.0F);
+      } else {
+         $$1.a(aou.zq, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public void d() {
-      this.a.a(bfo.a, cfz.b);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.ec().i() * 0.2F + 0.9F);
+   protected void c(aki $$0, E $$1, long $$2) {
+      if ($$1.dG() == null) {
+         $$1.a(big.c.b);
       }
    }
 }

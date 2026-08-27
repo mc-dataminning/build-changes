@@ -1,29 +1,117 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dkm extends dko<dmz> {
-   public dkm(Codec<dmz> $$0) {
-      super($$0);
+public record dkm(dkp j, dey k, dey l, dkn m, dky.o n, List<cqr.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dkm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dkp.a.fieldOf("noise").forGetter(dkm::f),
+               dey.b.fieldOf("default_block").forGetter(dkm::g),
+               dey.b.fieldOf("default_fluid").forGetter(dkm::h),
+               dkn.a.fieldOf("noise_router").forGetter(dkm::i),
+               dky.o.b.fieldOf("surface_rule").forGetter(dkm::j),
+               cqr.d.a.listOf().fieldOf("spawn_target").forGetter(dkm::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dkm::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dkm::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dkm::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dkm::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dkm::n)
+            )
+            .apply($$0, dkm::new)
+   );
+   public static final Codec<hf<dkm>> b = ael.a(jd.aw, a);
+   public static final aeo<dkm> c = aeo.a(jd.aw, new aep("overworld"));
+   public static final aeo<dkm> d = aeo.a(jd.aw, new aep("large_biomes"));
+   public static final aeo<dkm> e = aeo.a(jd.aw, new aep("amplified"));
+   public static final aeo<dkm> f = aeo.a(jd.aw, new aep("nether"));
+   public static final aeo<dkm> g = aeo.a(jd.aw, new aep("end"));
+   public static final aeo<dkm> h = aeo.a(jd.aw, new aep("caves"));
+   public static final aeo<dkm> i = aeo.a(jd.aw, new aep("floating_islands"));
+
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   @Override
-   public boolean a(dkq<dmz> $$0) {
-      cng $$1 = $$0.b();
-      apf $$2 = $$0.d();
-      gu $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public boolean b() {
+      return this.r;
+   }
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = apa.d(-$$4); $$6 <= apa.f($$4); $$6++) {
-            for (int $$7 = apa.d(-$$4); $$7 <= apa.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), cpo.fz.n());
-               }
-            }
-         }
+   public boolean c() {
+      return this.s;
+   }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
-      }
+   public dlg.a d() {
+      return this.t ? dlg.a.a : dlg.a.b;
+   }
 
-      return true;
+   public static void a(nn<dkm> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static dkm b(nn<?> $$0) {
+      return new dkm(dkp.d, csl.fz.n(), csl.a.n(), dko.a($$0.a(jd.at)), oa.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static dkm c(nn<?> $$0) {
+      return new dkm(dkp.c, csl.dW.n(), csl.H.n(), dko.a($$0.a(jd.at), $$0.a(jd.ax)), oa.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static dkm a(nn<?> $$0, boolean $$1, boolean $$2) {
+      return new dkm(dkp.b, csl.b.n(), csl.G.n(), dko.a($$0.a(jd.at), $$0.a(jd.ax), $$2, $$1), oa.a(), new cqy().a(), 63, false, true, true, false);
+   }
+
+   private static dkm d(nn<?> $$0) {
+      return new dkm(dkp.e, csl.b.n(), csl.G.n(), dko.b($$0.a(jd.at), $$0.a(jd.ax)), oa.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dkm e(nn<?> $$0) {
+      return new dkm(dkp.f, csl.b.n(), csl.G.n(), dko.c($$0.a(jd.at), $$0.a(jd.ax)), oa.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dkm e() {
+      return new dkm(dkp.b, csl.b.n(), csl.a.n(), dko.a(), oa.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dkp f() {
+      return this.j;
+   }
+
+   public dey g() {
+      return this.k;
+   }
+
+   public dey h() {
+      return this.l;
+   }
+
+   public dkn i() {
+      return this.m;
+   }
+
+   public dky.o j() {
+      return this.n;
+   }
+
+   public List<cqr.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

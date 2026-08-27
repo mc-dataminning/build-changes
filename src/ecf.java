@@ -1,105 +1,114 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
 import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.datafixers.util.Pair;
+import java.lang.reflect.Type;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ecf implements eck {
-   final Map<String, dzj> a;
-   final dzk.b b;
-
-   ecf(Map<String, dzj> $$0, dzk.b $$1) {
-      this.a = ImmutableMap.copyOf($$0);
-      this.b = $$1;
+public class ecf {
+   public static <E, T extends ecr<E>> ecf.a<E, T> a(hs<T> $$0, String $$1, String $$2, Function<E, T> $$3) {
+      return new ecf.a<>($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public ecl b() {
-      return ecm.h;
-   }
+   public static class a<E, T extends ecr<E>> {
+      private final hs<T> a;
+      private final String b;
+      private final String c;
+      private final Function<E, T> d;
+      @Nullable
+      private Pair<T, ecf.b<? extends E>> e;
+      @Nullable
+      private T f;
 
-   @Override
-   public Set<ebt<?>> a() {
-      return Stream.concat(Stream.of(this.b.a()), this.a.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean a(dzk $$0) {
-      bfj $$1 = $$0.c(this.b.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         efg $$2 = $$1.dI().I();
-
-         for (Entry<String, dzj> $$3 : this.a.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected boolean a(dzk $$0, bfj $$1, efg $$2, String $$3, dzj $$4) {
-      efd $$5 = $$2.d($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         String $$6 = $$1.cv();
-         return !$$2.b($$6, $$5) ? false : $$4.b($$0, $$2.c($$6, $$5).b());
-      }
-   }
-
-   public static ecf.a a(dzk.b $$0) {
-      return new ecf.a($$0);
-   }
-
-   public static class a implements eck.a {
-      private final Map<String, dzj> a = Maps.newHashMap();
-      private final dzk.b b;
-
-      public a(dzk.b $$0) {
-         this.b = $$0;
+      a(hs<T> $$0, String $$1, String $$2, Function<E, T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      public ecf.a a(String $$0, dzj $$1) {
-         this.a.put($$0, $$1);
+      public ecf.a<E, T> a(T $$0, ecf.b<? extends E> $$1) {
+         this.e = Pair.of($$0, $$1);
          return this;
       }
 
-      @Override
-      public eck build() {
-         return new ecf(this.a, this.b);
+      public ecf.a<E, T> a(T $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public Object a() {
+         return new ecf.c<>(this.a, this.b, this.c, this.d, this.f, this.e);
       }
    }
 
-   public static class b implements dzt<ecf> {
-      public void a(JsonObject $$0, ecf $$1, JsonSerializationContext $$2) {
-         JsonObject $$3 = new JsonObject();
+   public interface b<T> {
+      JsonElement a(T var1, JsonSerializationContext var2);
 
-         for (Entry<String, dzj> $$4 : $$1.a.entrySet()) {
-            $$3.add($$4.getKey(), $$2.serialize($$4.getValue()));
-         }
+      T a(JsonElement var1, JsonDeserializationContext var2);
+   }
 
-         $$0.add("scores", $$3);
-         $$0.add("entity", $$2.serialize($$1.b));
+   static class c<E, T extends ecr<E>> implements JsonDeserializer<E>, JsonSerializer<E> {
+      private final hs<T> a;
+      private final String b;
+      private final String c;
+      private final Function<E, T> d;
+      @Nullable
+      private final T e;
+      @Nullable
+      private final Pair<T, ecf.b<? extends E>> f;
+
+      c(hs<T> $$0, String $$1, String $$2, Function<E, T> $$3, @Nullable T $$4, @Nullable Pair<T, ecf.b<? extends E>> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
 
-      public ecf b(JsonObject $$0, JsonDeserializationContext $$1) {
-         Set<Entry<String, JsonElement>> $$2 = aor.u($$0, "scores").entrySet();
-         Map<String, dzj> $$3 = Maps.newLinkedHashMap();
+      public E deserialize(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         if ($$0.isJsonObject()) {
+            JsonObject $$3 = arf.m($$0, this.b);
+            String $$4 = arf.a($$3, this.c, "");
+            T $$5;
+            if ($$4.isEmpty()) {
+               $$5 = this.e;
+            } else {
+               aep $$6 = new aep($$4);
+               $$5 = this.a.a($$6);
+            }
 
-         for (Entry<String, JsonElement> $$4 : $$2) {
-            $$3.put($$4.getKey(), aor.a($$4.getValue(), "score", $$1, dzj.class));
+            if ($$5 == null) {
+               throw new JsonSyntaxException("Unknown type '" + $$4 + "'");
+            } else {
+               return (E)$$5.a().a($$3, $$2);
+            }
+         } else if (this.f == null) {
+            throw new UnsupportedOperationException("Object " + $$0 + " can't be deserialized");
+         } else {
+            return (E)((ecf.b)this.f.getSecond()).a($$0, $$2);
          }
+      }
 
-         return new ecf($$3, aor.a($$0, "entity", $$1, dzk.b.class));
+      public JsonElement serialize(E $$0, Type $$1, JsonSerializationContext $$2) {
+         T $$3 = this.d.apply($$0);
+         if (this.f != null && this.f.getFirst() == $$3) {
+            return ((ecf.b)this.f.getSecond()).a($$0, $$2);
+         } else if ($$3 == null) {
+            throw new JsonSyntaxException("Unknown type: " + $$0);
+         } else {
+            JsonObject $$4 = new JsonObject();
+            $$4.addProperty(this.c, this.a.b($$3).toString());
+            $$3.a().a($$4, $$0, $$2);
+            return $$4;
+         }
       }
    }
 }

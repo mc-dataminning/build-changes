@@ -1,21 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Objects;
 
-public class avm extends DataFix {
+public class avm extends ayw {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+
    public avm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityPufferfishRenameFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(avw.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<String> $$1 = $$0x.get("lang").asString().result();
-               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
-            })
-      );
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
    }
 }

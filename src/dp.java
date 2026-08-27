@@ -1,14 +1,14 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 public class dp extends RuntimeException {
-   private final sw a;
+   private final te a;
 
-   public dp(sw $$0) {
+   public dp(te $$0) {
       super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
       this.a = $$0;
    }
 
-   public sw a() {
+   public te a() {
       return this.a;
    }
 }

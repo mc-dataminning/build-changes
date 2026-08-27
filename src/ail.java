@@ -1,113 +1,61 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class ail extends ahu {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<apo<aij<?>>> d = new Long2ObjectOpenHashMap();
+public class ail {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("commands.summon.invalidPosition"));
 
-   public ail() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("entity", ep.a($$1, jd.s))
+                     .suggests(gl.d)
+                     .executes($$0x -> b((ds)$$0x.getSource(), ep.e($$0x, "entity"), ((ds)$$0x.getSource()).d(), new qs(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("pos", fq.a())
+                           .executes($$0x -> b((ds)$$0x.getSource(), ep.e($$0x, "entity"), fq.a($$0x, "pos"), new qs(), true)))
+                        .then(dt.a("nbt", ea.a()).executes($$0x -> b((ds)$$0x.getSource(), ep.e($$0x, "entity"), fq.a($$0x, "pos"), ea.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   private apo<aij<?>> g(long $$0) {
-      return (apo<aij<?>>)this.d.computeIfAbsent($$0, $$0x -> apo.a(4));
-   }
+   public static big a(ds $$0, hf.c<bik<?>> $$1, ehf $$2, qs $$3, boolean $$4) throws CommandSyntaxException {
+      gv $$5 = gv.a($$2);
+      if (!cpk.k($$5)) {
+         throw c.create();
+      } else {
+         qs $$6 = $$3.h();
+         $$6.a("id", $$1.g().a().toString());
+         aki $$7 = $$0.e();
+         big $$8 = bik.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dA(), $$1x.dC());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof biy) {
+               ((biy)$$8).a($$0.e(), $$0.e().d_($$8.dk()), bja.n, null, null);
+            }
 
-   private int a(apo<aij<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, aij<?> $$1) {
-      apo<aij<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, aij<?> $$1) {
-      apo<aij<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(aik<T> $$0, clt $$1, int $$2, T $$3) {
-      this.a($$1.a(), new aij<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(aik<T> $$0, clt $$1, int $$2, T $$3) {
-      aij<T> $$4 = new aij<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<aij<clt>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<apo<aij<?>>> $$2 = (Entry<apo<aij<?>>>)var3.next();
-
-         for (aij<?> $$3 : (apo)$$2.getValue()) {
-            if ($$3.a() == aik.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
             }
          }
       }
-
-      for (Pair<aij<clt>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         aij<clt> $$6 = (aij<clt>)$$4.getFirst();
-         this.b($$5, $$6);
-         clt $$7 = new clt($$5);
-         aik<clt> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
    }
 
-   @Override
-   protected int b(long $$0) {
-      apo<aij<?>> $$1 = (apo<aij<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(clt $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 > 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public void a() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      apo<aij<?>> $$1 = (apo<aij<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   private static int b(ds $$0, hf.c<bik<?>> $$1, ehf $$2, qs $$3, boolean $$4) throws CommandSyntaxException {
+      big $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> te.a("commands.summon.success", $$5.H_()), true);
+      return 1;
    }
 }

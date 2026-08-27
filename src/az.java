@@ -2,10 +2,10 @@ import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 
 public class az extends cv<az.a> {
-   static final acq a = new acq("consume_item");
+   static final aep a = new aep("consume_item");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -13,7 +13,7 @@ public class az extends cv<az.a> {
       return new az.a($$1, bz.a($$0.get("item")));
    }
 
-   public void a(aig $$0, cfz $$1) {
+   public void a(akj $$0, ciw $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -33,11 +33,11 @@ public class az extends cv<az.a> {
          return new az.a(ba.a, $$0);
       }
 
-      public static az.a a(cml $$0) {
+      public static az.a a(cpj $$0) {
          return new az.a(ba.a, new bz(null, ImmutableSet.of($$0.k()), cj.d.e, cj.d.e, bj.b, bj.b, null, cl.a));
       }
 
-      public boolean a(cfz $$0) {
+      public boolean a(ciw $$0) {
          return this.a.a($$0);
       }
 

@@ -1,29 +1,16 @@
-public class bby implements bbz {
-   public static final bbz a = new bby();
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   @Override
-   public void a() {
+public class bby extends azu {
+   public bby(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public ban f() {
-      return bak.a;
-   }
-
-   @Override
-   public void d() {
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:camel", () -> azv.a($$0));
+      return $$1;
    }
 }

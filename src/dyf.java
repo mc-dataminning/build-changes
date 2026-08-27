@@ -1,23 +1,51 @@
-public class dyf implements dyg {
-   private final cmm b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-   public dyf(cmm $$0) {
-      this.b = $$0;
+public class dyf {
+   public static final dyx a = dyx.a;
+   public static final Codec<dyf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dyk.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               dyk.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               dyd.c.optionalFieldOf("position_predicate", dyc.b).forGetter($$0x -> $$0x.e),
+               dey.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               dyy.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dyf::new)
+   );
+   private final dyk c;
+   private final dyk d;
+   private final dyd e;
+   private final dey f;
+   private final dyy g;
+
+   public dyf(dyk $$0, dyk $$1, dey $$2) {
+      this($$0, $$1, dyc.b, $$2);
    }
 
-   @Override
-   public void a(ha $$0, dcb $$1, gu $$2, gu $$3, int $$4, int $$5) {
-      dyg.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   public dyf(dyk $$0, dyk $$1, dyd $$2, dey $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   @Override
-   public void a(gu $$0, cpn $$1, gu $$2) {
-      dcb $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
+   public dyf(dyk $$0, dyk $$1, dyd $$2, dey $$3, dyy $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public void a(dcb $$0, gu $$1, cpn $$2, gu $$3, boolean $$4) {
-      dyg.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public boolean a(dey $$0, dey $$1, gv $$2, gv $$3, gv $$4, art $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public dey a() {
+      return this.f;
+   }
+
+   @Nullable
+   public qs a(art $$0, @Nullable qs $$1) {
+      return this.g.a($$0, $$1);
    }
 }

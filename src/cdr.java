@@ -1,10 +1,9 @@
-public class cdr extends cds {
-   public cdr(cpn $$0, cfu.a $$1) {
-      super($$0, $$1);
-   }
+public class cdr {
+   final cdu a;
+   final long b;
 
-   @Override
-   protected boolean a(cih $$0, dcb $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   cdr(cdu $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

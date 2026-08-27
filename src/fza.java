@@ -1,59 +1,17 @@
-import java.util.concurrent.locks.LockSupport;
+import java.io.IOException;
 
-public class fza extends bcn<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class fza extends anp<int[]> {
+   private static final aep a = new aep("textures/colormap/foliage.png");
 
-   public fza() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread au() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void bq() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
+   protected int[] a(ank $$0, bde $$1) {
       try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+         return fzd.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
       }
+   }
 
-      this.bo();
-      this.b = false;
-      this.a = this.b();
+   protected void a(int[] $$0, ank $$1, bde $$2) {
+      cpe.a($$0);
    }
 }

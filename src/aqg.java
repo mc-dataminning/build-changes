@@ -1,42 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.function.IntConsumer;
 
-public abstract class aqg extends DataFix {
-   private final String a;
+public interface aqg {
+   int a(int var1, int var2);
 
-   public aqg(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
-   }
+   void b(int var1, int var2);
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(avw.j.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(avw.j))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
-   }
+   int a(int var1);
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
-   }
+   long[] a();
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
-   }
+   int b();
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
+   int c();
 
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
+   void a(IntConsumer var1);
+
+   void a(int[] var1);
+
+   aqg d();
 }

@@ -1,67 +1,50 @@
-public class cja extends ciu {
-   public cja(acq $$0, cis $$1) {
-      super($$0, $$1);
-   }
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public boolean a(cbt $$0, cmm $$1) {
-      int $$2 = 0;
-      cfz $$3 = cfz.b;
+public class cja extends cir {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cfz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cgc.rf)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cgc.tp)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
-   }
-
-   public cfz a(cbt $$0, hs $$1) {
-      int $$2 = 0;
-      cfz $$3 = cfz.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cfz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cgc.rf)) {
-               if (!$$3.b()) {
-                  return cfz.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cgc.tp)) {
-                  return cfz.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cfz.b;
+   public cja(cir.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
-   }
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      ciw $$3 = $$1.b($$2);
+      qs $$4 = $$3.v();
+      if (!$$1.fR().d) {
+         $$1.a($$2, ciw.b);
+      }
 
-   @Override
-   public cje<?> aj_() {
-      return cje.e;
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            qy $$5 = $$4.c("Recipes", 8);
+            List<clz<?>> $$6 = Lists.newArrayList();
+            cma $$7 = $$0.n().aE();
+
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<? extends clz<?>> $$10 = $$7.a(new aep($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bgp.d($$3);
+               }
+
+               $$6.add((clz<?>)$$10.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(ape.c.b(this));
+         }
+
+         return bgp.a($$3, $$0.r_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bgp.d($$3);
+      }
    }
 }

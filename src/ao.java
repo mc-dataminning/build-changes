@@ -1,26 +1,20 @@
 public enum ao {
-   a("task", 0, n.k),
-   b("challenge", 26, n.f),
-   c("goal", 52, n.k);
+   a("task", n.k),
+   b("challenge", n.f),
+   c("goal", n.k);
 
    private final String d;
-   private final int e;
-   private final n f;
-   private final sw g;
+   private final n e;
+   private final te f;
 
-   private ao(String $$0, int $$1, n $$2) {
+   private ao(String $$0, n $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
-      this.g = sw.c("advancements.toast." + $$0);
+      this.f = te.c("advancements.toast." + $$0);
    }
 
    public String a() {
       return this.d;
-   }
-
-   public int b() {
-      return this.e;
    }
 
    public static ao a(String $$0) {
@@ -33,11 +27,11 @@ public enum ao {
       throw new IllegalArgumentException("Unknown frame type '" + $$0 + "'");
    }
 
-   public n c() {
-      return this.f;
+   public n b() {
+      return this.e;
    }
 
-   public sw d() {
-      return this.g;
+   public te c() {
+      return this.f;
    }
 }

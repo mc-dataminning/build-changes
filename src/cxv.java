@@ -1,83 +1,82 @@
-public class cxv extends cpn {
-   private static final ddb a = dcr.aT;
-   private static final int b = 20;
-   private static final int c = 8;
+import java.util.function.BiFunction;
 
-   public cxv(dca.d $$0) {
+public class cxv extends css implements csm {
+   public static final int a = 1;
+   public static final int b = 4;
+   public static final dfs c = dfo.R;
+   public static final dfy d = dfo.S;
+   private static final BiFunction<hb, Integer, ehy> e = ac.a(
+      ($$0, $$1) -> {
+         ehy[] $$2 = new ehy[]{
+            csk.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            csk.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            csk.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            csk.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         ehy $$3 = ehv.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = ehv.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
+
+   protected cxv(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      this.k(this.C.b().a(c, hb.c).a(d, Integer.valueOf(1)));
    }
 
    @Override
-   public void a(cmm $$0, dcb $$1, eee $$2, bzg $$3) {
-      int $$4 = a((cmn)$$0, $$1, $$2, (bfj)$$3);
-      if ($$3.v() instanceof aig $$6) {
-         $$6.a(amr.aE);
-         ai.L.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(cmn $$0, dcb $$1, eee $$2, bfj $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof byu ? 20 : 8;
-      if (!$$0.L().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(eee $$0, eei $$1) {
-      ha $$2 = $$0.b();
-      double $$3 = Math.abs(apa.e($$1.c) - 0.5);
-      double $$4 = Math.abs(apa.e($$1.d) - 0.5);
-      double $$5 = Math.abs(apa.e($$1.e) - 0.5);
-      ha.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ha.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ha.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, apa.c(15.0 * apa.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cmn $$0, dcb $$1, int $$2, gu $$3, int $$4) {
-      $$0.a($$3, $$1.a(a, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$0.c(a) != 0) {
-         $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 3);
-      }
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   public int a(dcb $$0, cls $$1, gu $$2, ha $$3) {
-      return $$0.c(a);
+   public boolean a(dey $$0, cle $$1) {
+      return !$$1.h() && $$1.n().a(this.k()) && $$0.c(d) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   public boolean f_(dcb $$0) {
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return e.apply($$0.c(c), $$0.c(d));
+   }
+
+   @Override
+   public dey a(cle $$0) {
+      dey $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(d, Integer.valueOf(Math.min(4, $$1.c(d) + 1))) : this.n().a(c, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
       return true;
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return true;
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      if (!$$1.r_() && !$$0.a($$3.b())) {
-         if ($$0.c(a) > 0 && !$$1.L().a($$2, this)) {
-            $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 18);
-         }
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      int $$4 = $$3.c(d);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(d, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new ciw(this));
       }
    }
 }

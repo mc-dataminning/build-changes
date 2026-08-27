@@ -1,35 +1,55 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
 public class ani {
-   private final List<anj> a = new ArrayList<>();
+   private final aly a;
+   private final anc<InputStream> b;
+   private final anc<anm> c;
+   @Nullable
+   private anm d;
 
-   public static ani a() {
-      return new ani();
+   public ani(aly $$0, anc<InputStream> $$1, anc<anm> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public List<anj> b() {
-      return List.copyOf(this.a);
+   public ani(aly $$0, anc<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = anm.b;
+      this.d = anm.a;
    }
 
-   public ani a(anj $$0) {
-      this.a.add($$0);
-      return this;
+   public aly a() {
+      return this.a;
    }
 
-   public ani a(acq $$0) {
-      return this.a(anj.a($$0));
+   public String b() {
+      return this.a.a();
    }
 
-   public ani b(acq $$0) {
-      return this.a(anj.b($$0));
+   public boolean c() {
+      return this.a.b();
    }
 
-   public ani c(acq $$0) {
-      return this.a(anj.c($$0));
+   public InputStream d() throws IOException {
+      return this.b.get();
    }
 
-   public ani d(acq $$0) {
-      return this.a(anj.d($$0));
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public anm f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

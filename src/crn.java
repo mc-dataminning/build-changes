@@ -1,47 +1,33 @@
-public class crn extends cpn {
-   protected static final efb a = csg.b;
+public class crn extends css implements csm {
+   private static final deg a = new deg();
+   private static final ehy b = ehv.a(csk.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), csk.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
-   protected crn(dca.d $$0) {
+   protected crn(dex.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean g_(dcb $$0) {
-      return true;
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return b;
    }
 
    @Override
-   public dcb a(cih $$0) {
-      return !this.n().a((cmp)$$0.q(), $$0.a()) ? cpn.a(this.n(), cpo.j.n(), $$0.q(), $$0.a()) : super.a($$0);
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return $$0.a(csl.dR) || super.d($$0, $$1, $$2);
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$1 == ha.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
+      return $$0.b_($$1.c()).c();
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      csg.a(null, $$0, $$1, $$2);
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
    @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      dcb $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof csi;
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return a;
-   }
-
-   @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      a.a($$0, $$0.k().g(), $$2, $$3, $$1);
    }
 }

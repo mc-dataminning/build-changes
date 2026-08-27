@@ -1,104 +1,96 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public final class dfe implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dfd> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
+public class dfe {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dfc>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   dfe(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private dfe() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   private dfd b(clt $$0) throws IOException {
-      long $$1 = clt.c($$0.h(), $$0.i());
-      dfd $$2 = (dfd)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
+   public dfe a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
+
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
+
+            this.b.add($$0);
+            return this;
+         }
       } else {
-         if (this.c.size() >= 256) {
-            ((dfd)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dfd $$4 = new dfd($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   @Nullable
-   public qr a(clt $$0) throws IOException {
-      dfd $$1 = this.b($$0);
-
-      qr var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = rb.a((DataInput)$$2);
-      }
-
-      return var4;
+   public static dfe a() {
+      return new dfe();
    }
 
-   public void a(clt $$0, rh $$1) throws IOException {
-      dfd $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            rb.a((DataInput)$$3, $$1);
-         }
-      }
+   public dfe a(char $$0, Predicate<dfc> $$1) {
+      this.c.put($$0, $$1);
+      return this;
    }
 
-   protected void a(clt $$0, @Nullable qr $$1) throws IOException {
-      dfd $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            rb.a($$1, (DataOutput)$$3);
-         }
-      }
+   public dfd b() {
+      return new dfd(this.c());
    }
 
-   @Override
-   public void close() throws IOException {
-      aoh<IOException> $$0 = new aoh<>();
-      ObjectIterator var2 = this.c.values().iterator();
+   private Predicate<dfc>[][][] c() {
+      this.d();
+      Predicate<dfc>[][][] $$0 = (Predicate<dfc>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
 
-      while (var2.hasNext()) {
-         dfd $$1 = (dfd)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
          }
       }
 
-      $$0.a();
+      return $$0;
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-      while (var1.hasNext()) {
-         dfd $$0 = (dfd)var1.next();
-         $$0.a();
+      for (Entry<Character, Predicate<dfc>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
       }
    }
 }

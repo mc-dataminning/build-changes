@@ -1,40 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class mv extends my<bvd> {
-   public mv(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.P, $$1);
+public abstract class mv extends mu<cir> {
+   private final CompletableFuture<mz.c<csk>> d;
+   private final Map<apy<csk>, apy<cir>> g = new HashMap<>();
+
+   public mv(jl $$0, CompletableFuture<hh.b> $$1, CompletableFuture<mz.c<csk>> $$2) {
+      super($$0, jd.D, $$1, $$0x -> $$0x.j().g());
+      this.d = $$2;
+   }
+
+   public mv(jl $$0, CompletableFuture<hh.b> $$1, CompletableFuture<mz.c<cir>> $$2, CompletableFuture<mz.c<csk>> $$3) {
+      super($$0, jd.D, $$1, $$2, $$0x -> $$0x.j().g());
+      this.d = $$3;
+   }
+
+   protected void a(apy<csk> $$0, apy<cir> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(hg.b $$0) {
-      this.b(anf.a)
-         .a(
-            bve.a,
-            bve.b,
-            bve.c,
-            bve.d,
-            bve.e,
-            bve.f,
-            bve.g,
-            bve.h,
-            bve.i,
-            bve.j,
-            bve.k,
-            bve.l,
-            bve.m,
-            bve.n,
-            bve.o,
-            bve.p,
-            bve.q,
-            bve.r,
-            bve.s,
-            bve.t,
-            bve.u,
-            bve.v,
-            bve.w,
-            bve.x,
-            bve.y,
-            bve.z
-         );
+   protected CompletableFuture<hh.b> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            apv $$3 = this.c((apy<cir>)$$2);
+            Optional<apv> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (hh.b)$$0;
+      });
    }
 }

@@ -1,141 +1,190 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class qz extends re {
-   private static final int b = 16;
-   public static final rm<qz> a = new rm.a<qz>() {
-      public qz a(DataInput $$0, int $$1, ra $$2) throws IOException {
-         $$2.a(16L);
-         return qz.a($$0.readLong());
+public class qz extends qr<ra> {
+   private static final int b = 24;
+   public static final rn<qz> a = new rn.b<qz>() {
+      public qz a(DataInput $$0, int $$1, rb $$2) throws IOException {
+         $$2.a(24L);
+         int $$3 = $$0.readInt();
+         $$2.a(8L * (long)$$3);
+         long[] $$4 = new long[$$3];
+
+         for (int $$5 = 0; $$5 < $$3; $$5++) {
+            $$4[$$5] = $$0.readLong();
+         }
+
+         return new qz($$4);
       }
 
       @Override
-      public rh.b a(DataInput $$0, rh $$1) throws IOException {
-         return $$1.a($$0.readLong());
+      public ri.b a(DataInput $$0, ri $$1) throws IOException {
+         int $$2 = $$0.readInt();
+         long[] $$3 = new long[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readLong();
+         }
+
+         return $$1.a($$3);
       }
 
       @Override
-      public int c() {
-         return 8;
+      public void a(DataInput $$0) throws IOException {
+         $$0.skipBytes($$0.readInt() * 8);
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "LONG[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
+         return "TAG_Long_Array";
       }
    };
-   private final long c;
+   private long[] c;
 
-   qz(long $$0) {
+   public qz(long[] $$0) {
       this.c = $$0;
    }
 
-   public static qz a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? qz.a.a[(int)$$0 - -128] : new qz($$0);
+   public qz(LongSet $$0) {
+      this.c = $$0.toLongArray();
+   }
+
+   public qz(List<Long> $$0) {
+      this(a($$0));
+   }
+
+   private static long[] a(List<Long> $$0) {
+      long[] $$1 = new long[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Long $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0L : $$3;
+      }
+
+      return $$1;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeInt(this.c.length);
+
+      for (long $$1 : this.c) {
+         $$0.writeLong($$1);
+      }
    }
 
    @Override
    public int a() {
-      return 16;
+      return 24 + 8 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 12;
    }
 
    @Override
-   public rm<qz> c() {
+   public rn<qz> c() {
       return a;
    }
 
+   @Override
+   public String toString() {
+      return this.m_();
+   }
+
    public qz e() {
-      return this;
+      long[] $$0 = new long[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new qz($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof qz && this.c == ((qz)$$0).c;
+      return this == $$0 ? true : $$0 instanceof qz && Arrays.equals(this.c, ((qz)$$0).c);
    }
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
-   public void a(ro $$0) {
+   public void a(rp $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public long f() {
+   public long[] g() {
       return this.c;
    }
 
    @Override
-   public int g() {
-      return (int)(this.c & -1L);
+   public int size() {
+      return this.c.length;
+   }
+
+   public ra a(int $$0) {
+      return ra.a(this.c[$$0]);
+   }
+
+   public ra a(int $$0, ra $$1) {
+      long $$2 = this.c[$$0];
+      this.c[$$0] = $$1.f();
+      return ra.a($$2);
+   }
+
+   public void b(int $$0, ra $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
    }
 
    @Override
-   public short h() {
-      return (short)((int)(this.c & 65535L));
+   public boolean a(int $$0, rl $$1) {
+      if ($$1 instanceof rf) {
+         this.c[$$0] = ((rf)$$1).f();
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public byte i() {
-      return (byte)((int)(this.c & 255L));
+   public boolean b(int $$0, rl $$1) {
+      if ($$1 instanceof rf) {
+         this.c = ArrayUtils.add(this.c, $$0, ((rf)$$1).f());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public ra b(int $$0) {
+      long $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return ra.a($$1);
    }
 
    @Override
-   public double j() {
-      return (double)this.c;
+   public byte f() {
+      return 4;
    }
 
    @Override
-   public float k() {
-      return (float)this.c;
+   public void clear() {
+      this.c = new long[0];
    }
 
    @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public rh.b a(rh $$0) {
+   public ri.b a(ri $$0) {
       return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final qz[] a = new qz[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new qz((long)(-128 + $$0));
-         }
-      }
    }
 }

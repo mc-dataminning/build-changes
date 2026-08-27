@@ -1,19 +1,17 @@
-import com.google.common.collect.Streams;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-public class flk implements flh {
-   public static final String a = "OR";
-   private final Iterable<? extends flh> d;
-
-   public flk(Iterable<? extends flh> $$0) {
-      this.d = $$0;
+public class flk extends fjs {
+   protected flk(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, flr $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   @Override
-   public Predicate<dcb> getPredicate(dcc<cpn, dcb> $$0) {
-      List<Predicate<dcb>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+   public static class a implements fkz<iz> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flk($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

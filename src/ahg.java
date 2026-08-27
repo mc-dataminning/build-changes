@@ -1,25 +1,38 @@
-import java.nio.file.Path;
-import java.util.function.UnaryOperator;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class ahg {
-   private final Path a;
-   private ahf b;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.op.failed"));
 
-   public ahg(Path $$0) {
-      this.a = $$0;
-      this.b = ahf.a($$0);
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("op").requires($$0x -> $$0x.c(3))).then(dt.a("targets", ef.a()).suggests(($$0x, $$1) -> {
+            anx $$2 = ((ds)$$0x.getSource()).l().ac();
+            return dv.b($$2.t().stream().filter($$1x -> !$$2.g($$1x.fP())).map($$0xx -> $$0xx.fP().getName()), $$1);
+         }).executes($$0x -> a((ds)$$0x.getSource(), ef.a($$0x, "targets"))))
+      );
    }
 
-   public ahf a() {
-      return this.b;
-   }
+   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      anx $$2 = $$0.l().ac();
+      int $$3 = 0;
 
-   public void b() {
-      this.b.c(this.a);
-   }
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.g($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> te.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
 
-   public ahg a(UnaryOperator<ahf> $$0) {
-      (this.b = $$0.apply(this.b)).c(this.a);
-      return this;
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
+      }
    }
 }

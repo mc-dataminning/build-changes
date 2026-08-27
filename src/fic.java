@@ -1,20 +1,66 @@
-public class fic extends fhe {
-   protected fic(few $$0, double $$1, double $$2, double $$3, double $$4, fih $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class fic extends fib implements st, wh {
+   private static final Logger g = LogUtils.getLogger();
+   private final GameProfile h;
+   private ht.b i;
+   private cdt j;
+
+   public fic(eqn $$0, sf $$1, fii $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.i = $$2.c();
+      this.j = $$2.d();
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
+   @Override
+   public boolean c() {
+      return this.b.k();
+   }
 
-      public a(fih $$0) {
-         this.a = $$0;
+   @Override
+   protected ht.b f() {
+      return this.i;
+   }
+
+   @Override
+   protected void a(vo $$0) {
+      this.b($$0);
+   }
+
+   private void b(vo $$0) {
+      g.warn("Unknown custom packet payload: {}", $$0.a());
+   }
+
+   @Override
+   public void a(wj $$0) {
+      uy.a($$0, this, this.a);
+      ht.b $$1 = fig.a().a(fig.b, $$0.a()).a();
+      if (!this.b.g()) {
+         $$1.b().forEach($$0x -> $$0x.b().m());
       }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fic($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+      this.i = $$1;
+   }
+
+   @Override
+   public void a(wk $$0) {
+      this.j = cdv.d.a($$0.a());
+   }
+
+   @Override
+   public void a(wi $$0) {
+      this.b.a();
+      uy.a($$0, this, this.a);
+      this.b.a(new fif(this.a, this.b, new fii(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
+      this.b.b();
+      this.b.a(new wm());
+   }
+
+   @Override
+   public void e() {
+      this.g();
    }
 }

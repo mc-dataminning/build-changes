@@ -1,119 +1,88 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class edv<T> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Callback";
-   private static final String c = "Name";
-   private static final String d = "TriggerTime";
-   private final edu<T> e;
-   private final Queue<edv.a<T>> f = new PriorityQueue<>(c());
-   private UnsignedLong g = UnsignedLong.ZERO;
-   private final Table<String, Long, edv.a<T>> h = HashBasedTable.create();
+public abstract class edv implements edw {
+   protected final efh[] g;
+   private final Predicate<ech> a;
 
-   private static <T> Comparator<edv.a<T>> c() {
-      return Comparator.<edv.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   protected edv(efh[] $$0) {
+      this.g = $$0;
+      this.a = efj.a($$0);
    }
 
-   public edv(edu<T> $$0, Stream<? extends Dynamic<?>> $$1) {
-      this($$0);
-      this.f.clear();
-      this.h.clear();
-      this.g = UnsignedLong.ZERO;
-      $$1.forEach($$0x -> {
-         rk $$1x = (rk)$$0x.convert(rc.a).getValue();
-         if ($$1x instanceof qr $$2) {
-            this.a($$2);
-         } else {
-            a.warn("Invalid format of events: {}", $$1x);
-         }
-      });
+   public final ciw b(ciw $$0, ech $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
    }
 
-   public edv(edu<T> $$0) {
-      this.e = $$0;
-   }
+   protected abstract ciw a(ciw var1, ech var2);
 
-   public void a(T $$0, long $$1) {
-      while (true) {
-         edv.a<T> $$2 = this.f.peek();
-         if ($$2 == null || $$2.a > $$1) {
-            return;
-         }
+   @Override
+   public void a(ecs $$0) {
+      edw.super.a($$0);
 
-         this.f.remove();
-         this.h.remove($$2.c, $$1);
-         $$2.d.handle($$0, this, $$1);
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         this.g[$$1].a($$0.b(".conditions[" + $$1 + "]"));
       }
    }
 
-   public void a(String $$0, long $$1, edt<T> $$2) {
-      if (!this.h.contains($$0, $$1)) {
-         this.g = this.g.plus(UnsignedLong.ONE);
-         edv.a<T> $$3 = new edv.a<>($$1, this.g, $$0, $$2);
-         this.h.put($$0, $$1, $$3);
-         this.f.add($$3);
+   protected static edv.a<?> a(Function<efh[], edw> $$0) {
+      return new edv.b($$0);
+   }
+
+   public abstract static class a<T extends edv.a<T>> implements edw.a, efa<T> {
+      private final List<efh> a = Lists.newArrayList();
+
+      public T a(efh.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected efh[] g() {
+         return this.a.toArray(new efh[0]);
       }
    }
 
-   public int a(String $$0) {
-      Collection<edv.a<T>> $$1 = this.h.row($$0).values();
-      $$1.forEach(this.f::remove);
-      int $$2 = $$1.size();
-      $$1.clear();
-      return $$2;
-   }
+   static final class b extends edv.a<edv.b> {
+      private final Function<efh[], edw> a;
 
-   public Set<String> a() {
-      return Collections.unmodifiableSet(this.h.rowKeySet());
-   }
-
-   private void a(qr $$0) {
-      qr $$1 = $$0.p("Callback");
-      edt<T> $$2 = this.e.a($$1);
-      if ($$2 != null) {
-         String $$3 = $$0.l("Name");
-         long $$4 = $$0.i("TriggerTime");
-         this.a($$3, $$4, $$2);
-      }
-   }
-
-   private qr a(edv.a<T> $$0) {
-      qr $$1 = new qr();
-      $$1.a("Name", $$0.c);
-      $$1.a("TriggerTime", $$0.a);
-      $$1.a("Callback", this.e.a($$0.d));
-      return $$1;
-   }
-
-   public qx b() {
-      qx $$0 = new qx();
-      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
-      return $$0;
-   }
-
-   public static class a<T> {
-      public final long a;
-      public final UnsignedLong b;
-      public final String c;
-      public final edt<T> d;
-
-      a(long $$0, UnsignedLong $$1, String $$2, edt<T> $$3) {
+      public b(Function<efh[], edw> $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
       }
+
+      protected edv.b a() {
+         return this;
+      }
+
+      @Override
+      public edw b() {
+         return this.a.apply(this.g());
+      }
+   }
+
+   public abstract static class c<T extends edv> implements ecq<T> {
+      public void a(JsonObject $$0, T $$1, JsonSerializationContext $$2) {
+         if (!ArrayUtils.isEmpty($$1.g)) {
+            $$0.add("conditions", $$2.serialize($$1.g));
+         }
+      }
+
+      public final T b(JsonObject $$0, JsonDeserializationContext $$1) {
+         efh[] $$2 = arf.a($$0, "conditions", new efh[0], $$1, efh[].class);
+         return this.b($$0, $$1, $$2);
+      }
+
+      public abstract T b(JsonObject var1, JsonDeserializationContext var2, efh[] var3);
    }
 }

@@ -1,17 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class bjk {
-   public static bhs<byb> a() {
-      return bld.a((Function<bld.b<byb>, ? extends App<bld.c<byb>, blg<byb>>>)($$0 -> $$0.group($$0.c(bpb.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               byc $$3 = $$1.gj();
-               if ($$3.b() != bye.b && $$3.b() != bye.m && $$1.r() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gj().a(bye.b));
-                  $$1.c($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public enum bjk {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   public static final Set<bjk> f = Set.of(values());
+   public static final Set<bjk> g = Set.of(e, d);
+   private final int h;
+
+   private bjk(int $$0) {
+      this.h = $$0;
+   }
+
+   private int a() {
+      return 1 << this.h;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<bjk> a(int $$0) {
+      Set<bjk> $$1 = EnumSet.noneOf(bjk.class);
+
+      for (bjk $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static int a(Set<bjk> $$0) {
+      int $$1 = 0;
+
+      for (bjk $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
    }
 }

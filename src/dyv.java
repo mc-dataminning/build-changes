@@ -1,34 +1,22 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public interface dyv {
-   int a();
+public class dyv implements dyy {
+   public static final Codec<dyv> a = RecordCodecBuilder.create($$0 -> $$0.group(qs.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, dyv::new));
+   private final qs b;
 
-   int b();
+   public dyv(qs $$0) {
+      this.b = $$0;
+   }
 
-   int c();
+   @Override
+   public qs a(art $$0, @Nullable qs $$1) {
+      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   }
 
-   float d();
-
-   long e();
-
-   long f();
-
-   boolean i();
-
-   boolean k();
-
-   void b(boolean var1);
-
-   boolean n();
-
-   cmi q();
-
-   bdu s();
-
-   boolean t();
-
-   default void a(p $$0, cmo $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
+   @Override
+   public dyz<?> a() {
+      return dyz.c;
    }
 }

@@ -1,203 +1,250 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class ob {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final apx<Float> e = apx.a;
-   private static final apx<Float> f = apx.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final apx<Float> g = apx.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final apx<Float> h = apx.a($$0 -> $$0 * 2.0F);
+   public static final aeo<dwg> a = nu.a("village/taiga/town_centers");
+   private static final aeo<dwg> b = nu.a("village/taiga/terminators");
 
-   public static <C, I extends apx<C>> aod<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      apx<Float> $$4 = $$3 ? f : e;
-      aod<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      aod<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      aod<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      aod<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return aod.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
-   }
-
-   public static <C, I extends apx<C>> aod<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      apx<Float> $$5 = $$4 ? g : e;
-      return aod.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
-   }
-
-   public static <C, I extends apx<C>> aod<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      apx<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return aod.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, apx<Float> $$7) {
-      float $$8 = -0.5775F;
-      aod<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      aod<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return aod.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, I $$1, float $$2, float $$3, apx<Float> $$4) {
-      float $$5 = dhr.a(0.4F);
-      float $$6 = dhr.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      aod.b<C, I> $$8 = aod.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
-      }
-
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
-      }
-
-      return $$8.a();
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, float $$1, apx<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return aod.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, apx<Float> $$5) {
-      aod<C, I> $$6 = aod.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      aod.b<C, I> $$7 = aod.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, aod.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, aod.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         aod<C, I> $$8 = aod.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         aod<C, I> $$9 = aod.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         aod<C, I> $$10 = aod.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         aod<C, I> $$11 = aod.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, float $$1, boolean $$2, apx<Float> $$3) {
-      aod.b<C, I> $$4 = aod.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, apa.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends apx<C>> aod<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, apx<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      aod<C, I> $$14 = a($$1, apa.i($$5, 0.6F, 1.5F), $$9, $$10);
-      aod<C, I> $$15 = a($$1, apa.i($$5, 0.6F, 1.0F), $$9, $$10);
-      aod<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      aod<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, apa.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      aod<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      aod<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      aod<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      aod<C, I> $$21 = aod.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      aod<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      aod.b<C, I> $$23 = aod.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends apx<C>> aod<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, apx<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return aod.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   public static void a(nn<dwg> $$0) {
+      hg<dub> $$1 = $$0.a(jd.ay);
+      hf<dub> $$2 = $$1.b(pf.h);
+      hf<dub> $$3 = $$1.b(pf.i);
+      hf<dub> $$4 = $$1.b(pf.e);
+      hf<dub> $$5 = $$1.b(pf.l);
+      hf<dub> $$6 = $$1.b(pf.m);
+      hg<dyo> $$7 = $$0.a(jd.aA);
+      hf<dyo> $$8 = $$7.b(nv.f);
+      hf<dyo> $$9 = $$7.b(nv.d);
+      hf<dyo> $$10 = $$7.b(nv.k);
+      hf<dyo> $$11 = $$7.b(nv.o);
+      hg<dwg> $$12 = $$0.a(jd.aC);
+      hf<dwg> $$13 = $$12.b(nu.a);
+      hf<dwg> $$14 = $$12.b(b);
+      $$0.a(
+         a,
+         new dwg(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
+               Pair.of(dwe.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
+               Pair.of(dwe.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
+               Pair.of(dwe.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
+            ),
+            dwg.a.b
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/streets",
+         new dwg(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/streets/corner_01", $$10), 2),
+               Pair.of(dwe.a("village/taiga/streets/corner_02", $$10), 2),
+               Pair.of(dwe.a("village/taiga/streets/corner_03", $$10), 2),
+               Pair.of(dwe.a("village/taiga/streets/straight_01", $$10), 4),
+               Pair.of(dwe.a("village/taiga/streets/straight_02", $$10), 4),
+               Pair.of(dwe.a("village/taiga/streets/straight_03", $$10), 4),
+               Pair.of(dwe.a("village/taiga/streets/straight_04", $$10), 7),
+               Pair.of(dwe.a("village/taiga/streets/straight_05", $$10), 7),
+               Pair.of(dwe.a("village/taiga/streets/straight_06", $$10), 4),
+               Pair.of(dwe.a("village/taiga/streets/crossroad_01", $$10), 1),
+               Pair.of(dwe.a("village/taiga/streets/crossroad_02", $$10), 1),
+               Pair.of(dwe.a("village/taiga/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dwe.a("village/taiga/streets/crossroad_04", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/streets/crossroad_05", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/streets/crossroad_06", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/streets/turn_01", $$10), 3)
+               }
+            ),
+            dwg.a.a
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/zombie/streets",
+         new dwg(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/zombie/streets/corner_01", $$10), 2),
+               Pair.of(dwe.a("village/taiga/zombie/streets/corner_02", $$10), 2),
+               Pair.of(dwe.a("village/taiga/zombie/streets/corner_03", $$10), 2),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_01", $$10), 4),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_02", $$10), 4),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_03", $$10), 4),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_04", $$10), 7),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_05", $$10), 7),
+               Pair.of(dwe.a("village/taiga/zombie/streets/straight_06", $$10), 4),
+               Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
+               Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            dwg.a.a
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/houses",
+         new dwg(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
+               Pair.of(dwe.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
+               Pair.of(dwe.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
+               Pair.of(dwe.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
+               Pair.of(dwe.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
+               Pair.of(dwe.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(dwe.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_library_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_temple_1", $$8), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
+                  Pair.of(dwe.g(), 6)
+               }
+            ),
+            dwg.a.b
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/zombie/houses",
+         new dwg(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
+               Pair.of(dwe.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
+               Pair.of(dwe.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
+                  Pair.of(dwe.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
+                  Pair.of(dwe.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
+                  Pair.of(dwe.g(), 6)
+               }
+            ),
+            dwg.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new dwg(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(dwe.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(dwe.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(dwe.a("village/plains/terminators/terminator_04", $$10), 1)
+            ),
+            dwg.a.a
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/decor",
+         new dwg(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/taiga_lamp_post_1"), 10),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_5"), 2),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_6"), 1),
+               Pair.of(dwe.a($$2), 4),
+               Pair.of(dwe.a($$3), 4),
+               Pair.of(dwe.a($$4), 2),
+               Pair.of(dwe.a($$5), 4),
+               Pair.of(dwe.a($$6), 1),
+               new Pair[]{Pair.of(dwe.g(), 4)}
+            ),
+            dwg.a.b
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/zombie/decor",
+         new dwg(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(dwe.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(dwe.a($$2), 4),
+               Pair.of(dwe.a($$3), 4),
+               Pair.of(dwe.a($$4), 2),
+               Pair.of(dwe.a($$5), 4),
+               Pair.of(dwe.a($$6), 1),
+               Pair.of(dwe.g(), 4)
+            ),
+            dwg.a.b
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/villagers",
+         new dwg(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwe.a("village/taiga/villagers/nitwit"), 1),
+               Pair.of(dwe.a("village/taiga/villagers/baby"), 1),
+               Pair.of(dwe.a("village/taiga/villagers/unemployed"), 10)
+            ),
+            dwg.a.b
+         )
+      );
+      nu.a(
+         $$0,
+         "village/taiga/zombie/villagers",
+         new dwg(
+            $$13,
+            ImmutableList.of(Pair.of(dwe.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(dwe.a("village/taiga/zombie/villagers/unemployed"), 10)),
+            dwg.a.b
+         )
+      );
    }
 }

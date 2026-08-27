@@ -1,60 +1,59 @@
-public class cju extends ciu {
-   public cju(acq $$0, cis $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+
+public class cju extends chg {
+   protected static final Map<csk, dey> a = Maps.newHashMap(
+      new Builder()
+         .put(csl.i, csl.kE.n())
+         .put(csl.j, csl.kE.n())
+         .put(csl.l, csl.kE.n())
+         .put(csl.k, csl.kE.n())
+         .put(csl.fl, csl.kE.n())
+         .put(csl.rG, csl.kE.n())
+         .build()
+   );
+
+   public cju(ckj $$0, float $$1, float $$2, cir.a $$3) {
+      super($$1, $$2, $$0, apj.bC, $$3);
    }
 
-   public boolean a(cbt $$0, cmm $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+   @Override
+   public bgo a(clg $$0) {
+      cpk $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      dey $$3 = $$1.a_($$2);
+      if ($$0.k() == hb.a) {
+         return bgo.d;
+      } else {
+         cbl $$4 = $$0.o();
+         dey $$5 = a.get($$3.b());
+         dey $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, aou.uX, aov.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof csx && $$3.c(csx.b)) {
+            if (!$$1.r_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cfz $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(cpo.cf.k()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(cpo.cg.k()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(ane.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(cgc.oC) || $$5) {
-                  return false;
+            csx.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(csx.b, Boolean.valueOf(false));
+         }
+
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dji.c, $$2, dji.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
                }
-
-               $$5 = true;
             }
+
+            return bgo.a($$1.B);
+         } else {
+            return bgo.d;
          }
       }
-
-      return $$2 && $$4 && $$3 && $$5;
-   }
-
-   public cfz a(cbt $$0, hs $$1) {
-      cfz $$2 = new cfz(cgc.va, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cfz $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            cxq $$5 = cxq.a($$4.d());
-            if ($$5 != null) {
-               chj.a($$2, $$5.a(), $$5.b());
-               break;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
-   }
-
-   @Override
-   public cje<?> aj_() {
-      return cje.n;
    }
 }

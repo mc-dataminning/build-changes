@@ -1,54 +1,38 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.mojang.authlib.GameProfile;
-import java.util.Set;
+public class eau extends eao {
+   private float m = Float.MAX_VALUE;
+   private eao n;
+   private boolean o;
 
-public class eau extends eay {
-   final dzk.b a;
-
-   public eau(eck[] $$0, dzk.b $$1) {
-      super($$0);
-      this.a = $$1;
+   public eau(eao $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Override
-   public eba b() {
-      return ebb.u;
+   public eau(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(this.a.a());
-   }
-
-   @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      if ($$0.a(cgc.tt)) {
-         bfj $$2 = $$1.c(this.a.a());
-         if ($$2 instanceof byo) {
-            GameProfile $$3 = ((byo)$$2).fM();
-            $$0.w().a("SkullOwner", rd.a(new qr(), $$3));
-         }
+   public void a(float $$0, eao $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
-
-      return $$0;
    }
 
-   public static eay.a<?> a(dzk.b $$0) {
-      return a($$1 -> new eau($$1, $$0));
+   public eao d() {
+      return this.n;
    }
 
-   public static class a extends eay.c<eau> {
-      public void a(JsonObject $$0, eau $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.add("entity", $$2.serialize($$1.a));
-      }
+   public void e() {
+      this.o = true;
+   }
 
-      public eau a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         dzk.b $$3 = aor.a($$0, "entity", $$1, dzk.b.class);
-         return new eau($$2, $$3);
-      }
+   public boolean f() {
+      return this.o;
+   }
+
+   public static eau c(sh $$0) {
+      eau $$1 = new eau($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

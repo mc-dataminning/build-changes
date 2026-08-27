@@ -1,69 +1,44 @@
-public class gx {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private int l;
-   private int m;
-   private int n;
-   private int o;
+public class gx implements gw {
+   private final aki a;
+   private final gv b;
 
-   public gx(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3 - $$0 + 1;
-      this.i = $$4 - $$1 + 1;
-      this.j = $$5 - $$2 + 1;
-      this.k = this.h * this.i * this.j;
+   public gx(aki $$0, gv $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a() {
-      if (this.l == this.k) {
-         return false;
-      } else {
-         this.m = this.l % this.h;
-         int $$0 = this.l / this.h;
-         this.n = $$0 % this.i;
-         this.o = $$0 / this.i;
-         this.l++;
-         return true;
-      }
+   @Override
+   public aki g() {
+      return this.a;
    }
 
-   public int b() {
-      return this.e + this.m;
+   @Override
+   public double a() {
+      return (double)this.b.u() + 0.5;
    }
 
-   public int c() {
-      return this.f + this.n;
+   @Override
+   public double b() {
+      return (double)this.b.v() + 0.5;
    }
 
-   public int d() {
-      return this.g + this.o;
+   @Override
+   public double c() {
+      return (double)this.b.w() + 0.5;
    }
 
-   public int e() {
-      int $$0 = 0;
-      if (this.m == 0 || this.m == this.h - 1) {
-         $$0++;
-      }
+   @Override
+   public gv d() {
+      return this.b;
+   }
 
-      if (this.n == 0 || this.n == this.i - 1) {
-         $$0++;
-      }
+   @Override
+   public dey e() {
+      return this.a.a_(this.b);
+   }
 
-      if (this.o == 0 || this.o == this.j - 1) {
-         $$0++;
-      }
-
-      return $$0;
+   @Override
+   public <T extends dck> T f() {
+      return (T)this.a.c_(this.b);
    }
 }

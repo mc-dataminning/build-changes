@@ -1,10 +1,35 @@
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+public interface ejl {
+   int a();
 
-public class ejl extends ekf implements ejz {
-   @SerializedName("pingResults")
-   public List<eka> a = Lists.newArrayList();
-   @SerializedName("worldIds")
-   public List<Long> b = Lists.newArrayList();
+   int b();
+
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
+   }
+
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
+   }
+
+   default float g() {
+      return this.j();
+   }
+
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
+
+   default float i() {
+      return 0.0F;
+   }
+
+   default float j() {
+      return 3.0F;
+   }
 }

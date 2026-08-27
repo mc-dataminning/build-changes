@@ -1,45 +1,40 @@
-import java.util.Map;
-import java.util.Optional;
-
-public class cid {
-   public static final acp<cic> a = a("quartz");
-   public static final acp<cic> b = a("iron");
-   public static final acp<cic> c = a("netherite");
-   public static final acp<cic> d = a("redstone");
-   public static final acp<cic> e = a("copper");
-   public static final acp<cic> f = a("gold");
-   public static final acp<cic> g = a("emerald");
-   public static final acp<cic> h = a("diamond");
-   public static final acp<cic> i = a("lapis");
-   public static final acp<cic> j = a("amethyst");
-
-   public static void a(nm<cic> $$0) {
-      a($$0, a, cgc.nN, ts.a.a(14931140), 0.1F);
-      a($$0, b, cgc.nQ, ts.a.a(15527148), 0.2F, Map.of(cdl.c, "iron_darker"));
-      a($$0, c, cgc.nV, ts.a.a(6445145), 0.3F, Map.of(cdl.g, "netherite_darker"));
-      a($$0, d, cgc.ll, ts.a.a(9901575), 0.4F);
-      a($$0, e, cgc.nS, ts.a.a(11823181), 0.5F);
-      a($$0, f, cgc.nU, ts.a.a(14594349), 0.6F, Map.of(cdl.d, "gold_darker"));
-      a($$0, g, cgc.nL, ts.a.a(1155126), 0.7F);
-      a($$0, h, cgc.nK, ts.a.a(7269586), 0.8F, Map.of(cdl.e, "diamond_darker"));
-      a($$0, i, cgc.nM, ts.a.a(4288151), 0.9F);
-      a($$0, j, cgc.nO, ts.a.a(10116294), 1.0F);
+public class cid extends cir {
+   public cid(cir.a $$0) {
+      super($$0);
    }
 
-   public static Optional<he.c<cic>> a(hs $$0, cfz $$1) {
-      return $$0.d(jc.aD).h().filter($$1x -> $$1.a(((cic)$$1x.a()).b())).findFirst();
-   }
+   @Override
+   public bgo a(clg $$0) {
+      cbl $$1 = $$0.o();
+      cpk $$2 = $$0.q();
+      gv $$3 = $$0.a();
+      dey $$4 = $$2.a_($$3);
+      if (!csx.h($$4) && !csy.g($$4) && !csz.g($$4)) {
+         gv $$5 = $$3.a($$0.k());
+         if (cry.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, aou.hS, aov.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
+            dey $$6 = cry.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dji.i, $$3);
+            ciw $$7 = $$0.n();
+            if ($$1 instanceof akj) {
+               ai.y.a((akj)$$1, $$5, $$7);
+               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
+            }
 
-   private static void a(nm<cic> $$0, acp<cic> $$1, cfu $$2, ts $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
-   }
+            return bgo.a($$2.r_());
+         } else {
+            return bgo.e;
+         }
+      } else {
+         $$2.a($$1, $$3, aou.hS, aov.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dfo.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dji.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
+         }
 
-   private static void a(nm<cic> $$0, acp<cic> $$1, cfu $$2, ts $$3, float $$4, Map<cdl, String> $$5) {
-      cic $$6 = cic.a($$1.a().a(), $$2, $$4, sw.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
-   }
-
-   private static acp<cic> a(String $$0) {
-      return acp.a(jc.aD, new acq($$0));
+         return bgo.a($$2.r_());
+      }
    }
 }

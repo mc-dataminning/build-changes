@@ -1,20 +1,18 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public enum bar {
-   a("client"),
-   b("server");
-
-   private final String c;
-
-   private bar(String $$0) {
-      this.c = $$0;
+public class bar extends azu {
+   public bar(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static bar a(MinecraftServer $$0) {
-      return $$0.l() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:panda", () -> azv.a($$0));
+      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(aym.t.in($$0)), azv.a($$0)));
+      return $$1;
    }
 }

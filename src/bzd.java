@@ -1,3 +1,3 @@
 public interface bzd {
-   cfz j();
+   void a(biw var1, float var2);
 }

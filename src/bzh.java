@@ -1,139 +1,114 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bzh extends byi {
+   private static final int c = 300;
+   private static final adx<Boolean> d = aea.a(bzh.class, adz.k);
+   public static final String b = "StrayConversionTime";
+   private int e;
+   private int bT;
 
-public final class bzh {
-   public static eeg a(bfj $$0, Predicate<bfj> $$1) {
-      eei $$2 = $$0.dl();
-      cmm $$3 = $$0.dI();
-      eei $$4 = $$0.dg();
-      return a($$4, $$0, $$1, $$2, $$3);
+   public bzh(bik<? extends bzh> $$0, cpk $$1) {
+      super($$0, $$1);
    }
 
-   public static eeg a(bfj $$0, Predicate<bfj> $$1, double $$2) {
-      eei $$3 = $$0.f(0.0F).a($$2);
-      cmm $$4 = $$0.dI();
-      eei $$5 = $$0.bm();
-      return a($$5, $$0, $$1, $$3, $$4);
+   @Override
+   protected void a_() {
+      super.a_();
+      this.al().a(d, false);
    }
 
-   private static eeg a(eei $$0, bfj $$1, Predicate<bfj> $$2, eei $$3, cmm $$4) {
-      eei $$5 = $$0.e($$3);
-      eeg $$6 = $$4.a(new clv($$0, $$5, clv.a.a, clv.b.a, $$1));
-      if ($$6.c() != eeg.a.a) {
-         $$5 = $$6.e();
-      }
-
-      eeg $$7 = a($$4, $$1, $$0, $$5, $$1.cE().b($$3).g(1.0), $$2);
-      if ($$7 != null) {
-         $$6 = $$7;
-      }
-
-      return $$6;
+   public boolean ga() {
+      return this.al().b(d);
    }
 
-   @Nullable
-   public static eef a(bfj $$0, eei $$1, eei $$2, eed $$3, Predicate<bfj> $$4, double $$5) {
-      cmm $$6 = $$0.dI();
-      double $$7 = $$5;
-      bfj $$8 = null;
-      eei $$9 = null;
+   public void w(boolean $$0) {
+      this.an.b(d, $$0);
+   }
 
-      for (bfj $$10 : $$6.a($$0, $$3, $$4)) {
-         eed $$11 = $$10.cE().g((double)$$10.bC());
-         Optional<eei> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
-            }
-         } else if ($$12.isPresent()) {
-            eei $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cT() == $$0.cT()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+   @Override
+   public boolean fZ() {
+      return this.ga();
+   }
+
+   @Override
+   public void l() {
+      if (!this.dK().B && this.bv() && !this.fQ()) {
+         if (this.aA) {
+            if (this.ga()) {
+               this.bT--;
+               if (this.bT < 0) {
+                  this.gb();
+               }
+            } else {
+               this.e++;
+               if (this.e >= 140) {
+                  this.b(300);
                }
             }
+         } else {
+            this.e = -1;
+            this.w(false);
          }
       }
 
-      return $$8 == null ? null : new eef($$8, $$9);
+      super.l();
    }
 
-   @Nullable
-   public static eef a(cmm $$0, bfj $$1, eei $$2, eei $$3, eed $$4, Predicate<bfj> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   @Override
+   public void b(qs $$0) {
+      super.b($$0);
+      $$0.a("StrayConversionTime", this.ga() ? this.bT : -1);
    }
 
-   @Nullable
-   public static eef a(cmm $$0, bfj $$1, eei $$2, eei $$3, eed $$4, Predicate<bfj> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bfj $$8 = null;
-
-      for (bfj $$9 : $$0.a($$1, $$4, $$5)) {
-         eed $$10 = $$9.cE().g((double)$$6);
-         Optional<eei> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
-            }
-         }
-      }
-
-      return $$8 == null ? null : new eef($$8);
-   }
-
-   public static void a(bfj $$0, float $$1) {
-      eei $$2 = $$0.dl();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.a_((float)(apa.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.b_((float)(apa.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dA() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dA() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         while ($$0.dy() - $$0.M < -180.0F) {
-            $$0.M -= 360.0F;
-         }
-
-         while ($$0.dy() - $$0.M >= 180.0F) {
-            $$0.M += 360.0F;
-         }
-
-         $$0.b_(apa.i($$1, $$0.N, $$0.dA()));
-         $$0.a_(apa.i($$1, $$0.M, $$0.dy()));
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
+         this.b($$0.h("StrayConversionTime"));
       }
    }
 
-   public static bdw a(bfz $$0, cfu $$1) {
-      return $$0.eO().a($$1) ? bdw.a : bdw.b;
+   private void b(int $$0) {
+      this.bT = $$0;
+      this.w(true);
    }
 
-   public static byu a(bfz $$0, cfz $$1, float $$2) {
-      cdn $$3 = (cdn)($$1.d() instanceof cdn ? $$1.d() : cgc.nH);
-      byu $$4 = $$3.a($$0.dI(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cgc.uw) && $$4 instanceof byw) {
-         ((byw)$$4).a($$1);
+   protected void gb() {
+      this.a(bik.aU, true);
+      if (!this.aS()) {
+         this.dK().a(null, 1048, this.dk(), 0);
       }
+   }
 
-      return $$4;
+   @Override
+   public boolean dy() {
+      return false;
+   }
+
+   @Override
+   protected aot r() {
+      return aou.vo;
+   }
+
+   @Override
+   protected aot d(bhe $$0) {
+      return aou.vz;
+   }
+
+   @Override
+   protected aot h_() {
+      return aou.vq;
+   }
+
+   @Override
+   aot q() {
+      return aou.vB;
+   }
+
+   @Override
+   protected void a(bhe $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof byl $$4 && $$4.ga()) {
+         $$4.gb();
+         this.a(ciz.tr);
+      }
    }
 }

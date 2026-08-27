@@ -1,154 +1,91 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class dcc {
+   public static final aeo<dcb> a = a("base");
+   public static final aeo<dcb> b = a("square_bottom_left");
+   public static final aeo<dcb> c = a("square_bottom_right");
+   public static final aeo<dcb> d = a("square_top_left");
+   public static final aeo<dcb> e = a("square_top_right");
+   public static final aeo<dcb> f = a("stripe_bottom");
+   public static final aeo<dcb> g = a("stripe_top");
+   public static final aeo<dcb> h = a("stripe_left");
+   public static final aeo<dcb> i = a("stripe_right");
+   public static final aeo<dcb> j = a("stripe_center");
+   public static final aeo<dcb> k = a("stripe_middle");
+   public static final aeo<dcb> l = a("stripe_downright");
+   public static final aeo<dcb> m = a("stripe_downleft");
+   public static final aeo<dcb> n = a("small_stripes");
+   public static final aeo<dcb> o = a("cross");
+   public static final aeo<dcb> p = a("straight_cross");
+   public static final aeo<dcb> q = a("triangle_bottom");
+   public static final aeo<dcb> r = a("triangle_top");
+   public static final aeo<dcb> s = a("triangles_bottom");
+   public static final aeo<dcb> t = a("triangles_top");
+   public static final aeo<dcb> u = a("diagonal_left");
+   public static final aeo<dcb> v = a("diagonal_up_right");
+   public static final aeo<dcb> w = a("diagonal_up_left");
+   public static final aeo<dcb> x = a("diagonal_right");
+   public static final aeo<dcb> y = a("circle");
+   public static final aeo<dcb> z = a("rhombus");
+   public static final aeo<dcb> A = a("half_vertical");
+   public static final aeo<dcb> B = a("half_horizontal");
+   public static final aeo<dcb> C = a("half_vertical_right");
+   public static final aeo<dcb> D = a("half_horizontal_bottom");
+   public static final aeo<dcb> E = a("border");
+   public static final aeo<dcb> F = a("curly_border");
+   public static final aeo<dcb> G = a("gradient");
+   public static final aeo<dcb> H = a("gradient_up");
+   public static final aeo<dcb> I = a("bricks");
+   public static final aeo<dcb> J = a("globe");
+   public static final aeo<dcb> K = a("creeper");
+   public static final aeo<dcb> L = a("skull");
+   public static final aeo<dcb> M = a("flower");
+   public static final aeo<dcb> N = a("mojang");
+   public static final aeo<dcb> O = a("piglin");
 
-public class dcc<O, S extends dcd<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dde<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dcc(Function<O, S> $$0, O $$1, dcc.b<O, S> $$2, Map<String, dde<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dde<?>> $$6 = (Entry<String, dde<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dde<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dde<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dde<?> $$11 = (dde<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dde<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dde<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   private static aeo<dcb> a(String $$0) {
+      return aeo.a(jd.c, new aep($$0));
    }
 
-   private static <S extends dcd<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dde<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dcd)((dcd)$$1x.getFirst()).a($$3, ((dde.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dde<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dde::f).collect(Collectors.toList()))
-         .toString();
-   }
-
-   @Nullable
-   public dde<?> a(String $$0) {
-      return (dde<?>)this.c.get($$0);
-   }
-
-   public static class a<O, S extends dcd<O, S>> {
-      private final O a;
-      private final Map<String, dde<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dcc.a<O, S> a(dde<?>... $$0) {
-         for (dde<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(dde<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dcc.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dcc.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
-            }
-         }
-      }
-
-      public dcc<O, S> a(Function<O, S> $$0, dcc.b<O, S> $$1) {
-         return new dcc<>($$0, this.a, $$1, this.b);
-      }
-   }
-
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dde<?>, Comparable<?>> var2, MapCodec<S> var3);
+   public static dcb a(hs<dcb> $$0) {
+      hs.a($$0, a, new dcb("b"));
+      hs.a($$0, b, new dcb("bl"));
+      hs.a($$0, c, new dcb("br"));
+      hs.a($$0, d, new dcb("tl"));
+      hs.a($$0, e, new dcb("tr"));
+      hs.a($$0, f, new dcb("bs"));
+      hs.a($$0, g, new dcb("ts"));
+      hs.a($$0, h, new dcb("ls"));
+      hs.a($$0, i, new dcb("rs"));
+      hs.a($$0, j, new dcb("cs"));
+      hs.a($$0, k, new dcb("ms"));
+      hs.a($$0, l, new dcb("drs"));
+      hs.a($$0, m, new dcb("dls"));
+      hs.a($$0, n, new dcb("ss"));
+      hs.a($$0, o, new dcb("cr"));
+      hs.a($$0, p, new dcb("sc"));
+      hs.a($$0, q, new dcb("bt"));
+      hs.a($$0, r, new dcb("tt"));
+      hs.a($$0, s, new dcb("bts"));
+      hs.a($$0, t, new dcb("tts"));
+      hs.a($$0, u, new dcb("ld"));
+      hs.a($$0, v, new dcb("rd"));
+      hs.a($$0, w, new dcb("lud"));
+      hs.a($$0, x, new dcb("rud"));
+      hs.a($$0, y, new dcb("mc"));
+      hs.a($$0, z, new dcb("mr"));
+      hs.a($$0, A, new dcb("vh"));
+      hs.a($$0, B, new dcb("hh"));
+      hs.a($$0, C, new dcb("vhr"));
+      hs.a($$0, D, new dcb("hhb"));
+      hs.a($$0, E, new dcb("bo"));
+      hs.a($$0, F, new dcb("cbo"));
+      hs.a($$0, G, new dcb("gra"));
+      hs.a($$0, H, new dcb("gru"));
+      hs.a($$0, I, new dcb("bri"));
+      hs.a($$0, J, new dcb("glb"));
+      hs.a($$0, K, new dcb("cre"));
+      hs.a($$0, L, new dcb("sku"));
+      hs.a($$0, M, new dcb("flo"));
+      hs.a($$0, N, new dcb("moj"));
+      return hs.a($$0, O, new dcb("pig"));
    }
 }

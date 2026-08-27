@@ -1,49 +1,150 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class fx implements ArgumentType<fx.a> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final hg<cfu> b;
+public class fx {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.item.tag.disallowed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("argument.item.id.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> te.a("arguments.item.tag.unknown", $$0));
+   private static final char d = '{';
+   private static final char e = '#';
+   private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
+   private final hh<cir> g;
+   private final StringReader h;
+   private final boolean i;
+   private Either<hf<cir>, hj<cir>> j;
+   @Nullable
+   private qs k;
+   private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
-   public fx(dm $$0) {
-      this.b = $$0.a(jc.D);
+   private fx(hh<cir> $$0, StringReader $$1, boolean $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   public static fx a(dm $$0) {
-      return new fx($$0);
+   public static fx.a a(hh<cir> $$0, StringReader $$1) throws CommandSyntaxException {
+      int $$2 = $$1.getCursor();
+
+      try {
+         fx $$3 = new fx($$0, $$1, false);
+         $$3.d();
+         hf<cir> $$4 = (hf<cir>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
+         return new fx.a($$4, $$3.k);
+      } catch (CommandSyntaxException var5) {
+         $$1.setCursor($$2);
+         throw var5;
+      }
    }
 
-   public fx.a a(StringReader $$0) throws CommandSyntaxException {
-      Either<fw.a, fw.b> $$1 = fw.b(this.b, $$0);
-      return (fx.a)$$1.map($$0x -> a($$1x -> $$1x == $$0x.a(), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
+   public static Either<fx.a, fx.b> b(hh<cir> $$0, StringReader $$1) throws CommandSyntaxException {
+      int $$2 = $$1.getCursor();
+
+      try {
+         fx $$3 = new fx($$0, $$1, true);
+         $$3.d();
+         return $$3.j.mapBoth($$1x -> new fx.a($$1x, $$3.k), $$1x -> new fx.b($$1x, $$3.k));
+      } catch (CommandSyntaxException var4) {
+         $$1.setCursor($$2);
+         throw var4;
+      }
    }
 
-   public static Predicate<cfz> a(CommandContext<ds> $$0, String $$1) {
-      return (Predicate<cfz>)$$0.getArgument($$1, fx.a.class);
+   public static CompletableFuture<Suggestions> a(hh<cir> $$0, SuggestionsBuilder $$1, boolean $$2) {
+      StringReader $$3 = new StringReader($$1.getInput());
+      $$3.setCursor($$1.getStart());
+      fx $$4 = new fx($$0, $$3, $$2);
+
+      try {
+         $$4.d();
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return $$4.l.apply($$1.createOffset($$3.getCursor()));
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fw.a(this.b, $$1, true);
+   private void a() throws CommandSyntaxException {
+      int $$0 = this.h.getCursor();
+      aep $$1 = aep.a(this.h);
+      Optional<? extends hf<cir>> $$2 = this.g.a(aeo.a(jd.D, $$1));
+      this.j = Either.left($$2.orElseThrow(() -> {
+         this.h.setCursor($$0);
+         return b.createWithContext(this.h, $$1);
+      }));
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   private void b() throws CommandSyntaxException {
+      if (!this.i) {
+         throw a.createWithContext(this.h);
+      } else {
+         int $$0 = this.h.getCursor();
+         this.h.expect('#');
+         this.l = this::b;
+         aep $$1 = aep.a(this.h);
+         Optional<? extends hj<cir>> $$2 = this.g.a(apy.a(jd.D, $$1));
+         this.j = Either.right($$2.orElseThrow(() -> {
+            this.h.setCursor($$0);
+            return c.createWithContext(this.h, $$1);
+         }));
+      }
    }
 
-   private static fx.a a(Predicate<he<cfu>> $$0, @Nullable qr $$1) {
-      return $$1 != null ? $$2 -> $$2.a($$0) && rd.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
+   private void c() throws CommandSyntaxException {
+      this.k = new rm(this.h).f();
    }
 
-   public interface a extends Predicate<cfz> {
+   private void d() throws CommandSyntaxException {
+      if (this.i) {
+         this.l = this::d;
+      } else {
+         this.l = this::c;
+      }
+
+      if (this.h.canRead() && this.h.peek() == '#') {
+         this.b();
+      } else {
+         this.a();
+      }
+
+      this.l = this::a;
+      if (this.h.canRead() && this.h.peek() == '{') {
+         this.l = f;
+         this.c();
+      }
+   }
+
+   private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      if ($$0.getRemaining().isEmpty()) {
+         $$0.suggest(String.valueOf('{'));
+      }
+
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
+      return dv.a(this.g.e().map(apy::b), $$0, String.valueOf('#'));
+   }
+
+   private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
+      return dv.a(this.g.c().map(aeo::a), $$0);
+   }
+
+   private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
+      this.b($$0);
+      return this.c($$0);
+   }
+
+   public static record a(hf<cir> a, @Nullable qs b) {
+   }
+
+   public static record b(hj<cir> a, @Nullable qs b) {
    }
 }

@@ -1,15 +1,8 @@
-public class fxk extends fxl {
-   public fxk(brm $$0) {
-      super($$0, amh.bC, ami.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected fxh o() {
-      return new fxj(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.S_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fxk {
 }

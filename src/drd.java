@@ -1,37 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drd extends drl {
+public class drd extends drb {
    public static final Codec<drd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drd::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, drd::new)
    );
-   private final double c;
-   private final int d;
-   private final int e;
+   protected final int b;
 
-   private drd(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static drd a(double $$0, int $$1, int $$2) {
-      return new drd($$0, $$1, $$2);
+   public drd(bft $$0, bft $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected int a(apf $$0, gu $$1) {
-      double $$2 = cnk.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   protected drc<?> a() {
+      return drc.g;
    }
 
    @Override
-   public dri<?> b() {
-      return dri.h;
+   protected void a(cpq $$0, drb.b $$1, art $$2, dql $$3, int $$4, drb.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(art $$0, int $$1, dql $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(art $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

@@ -1,23 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class ash extends awf {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:salmon_mob", "minecraft:salmon")
-      .put("minecraft:cod_mob", "minecraft:cod")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
-      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
-      .build();
+@FunctionalInterface
+public interface ash {
+   Logger a = LogUtils.getLogger();
 
-   public ash(Schema $$0, boolean $$1) {
-      super("EntityCodSalmonFix", $$0, $$1);
+   static ash immediate(Executor $$0) {
+      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
+            a.error("Task failed", $$0xx);
+            return null;
+         });
    }
 
-   @Override
-   protected String a(String $$0) {
-      return a.getOrDefault($$0, $$0);
+   void append(ash.a var1);
+
+   public interface a {
+      CompletableFuture<?> submit(Executor var1);
    }
 }

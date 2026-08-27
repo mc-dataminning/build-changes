@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dje implements dir {
-   public static final Codec<dje> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.e), dcb.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dje::new)
-   );
-   private final hz e;
-   private final dcb f;
+public class dje implements djm {
+   public static final Codec<dje> a = RecordCodecBuilder.create($$0 -> $$0.group(gv.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dje::new));
+   final gv c;
 
-   protected dje(hz $$0, dcb $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(cng $$0, gu $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public dje(gv $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public dis<?> a() {
-      return dis.g;
+   public Optional<ehf> a(cpk $$0) {
+      return Optional.of(ehf.b(this.c));
+   }
+
+   @Override
+   public djn<?> a() {
+      return djn.a;
+   }
+
+   public static class a implements djn<dje> {
+      public dje a(sh $$0) {
+         return new dje($$0.e());
+      }
+
+      public void a(sh $$0, dje $$1) {
+         $$0.a($$1.c);
+      }
+
+      @Override
+      public Codec<dje> a() {
+         return dje.a;
+      }
    }
 }

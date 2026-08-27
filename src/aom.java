@@ -1,80 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface aom {
-   aom a = $$0 -> true;
+public abstract class aom implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
 
-   boolean accept(aon var1);
-
-   static aom codepoint(int $$0, ts $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   protected aom(String $$0) {
+      this.b = $$0;
    }
 
-   static aom forward(String $$0, ts $$1) {
-      return $$0.isEmpty() ? a : $$2 -> apq.a($$0, $$1, $$2);
-   }
-
-   static aom forward(String $$0, ts $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> apq.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static aom backward(String $$0, ts $$1) {
-      return $$0.isEmpty() ? a : $$2 -> apq.b($$0, $$1, $$2);
-   }
-
-   static aom backward(String $$0, ts $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> apq.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static aon decorateOutput(aon $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static aom composite() {
-      return a;
-   }
-
-   static aom composite(aom $$0) {
-      return $$0;
-   }
-
-   static aom composite(aom $$0, aom $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static aom composite(aom... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static aom composite(List<aom> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
       }
    }
 
-   static aom fromPair(aom $$0, aom $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
 
-   static aom fromList(List<aom> $$0) {
-      return $$1 -> {
-         for (aom $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
             }
          }
 
-         return true;
-      };
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
+   }
+
+   public boolean c() {
+      return this.a;
    }
 }

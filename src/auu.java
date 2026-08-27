@@ -1,24 +1,27 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class auu extends DataFix {
-   public auu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class auu extends axo {
+   public auu(Schema $$0) {
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", aym.s, "minecraft:brushable_block");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.h);
-      OpticFinder<?> $$1 = $$0.findField("data");
-      return this.fixTypeEverywhereTyped("Map id fix", $$0, $$1x -> {
-         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
-         return $$2.isPresent() ? $$1x : $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.createMap(ImmutableMap.of($$0xx.createString("data"), $$0xx)));
-      });
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

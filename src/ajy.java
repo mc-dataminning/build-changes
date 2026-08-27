@@ -1,29 +1,42 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+public record ajy(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public interface ajy<T> extends ajx<T> {
-   JsonObject a(T var1);
+   public cor a() {
+      return new cor(hy.a(this.a), hy.a(this.b));
+   }
 
-   static <T> ajy<T> a(final String $$0, final Codec<T> $$1) {
-      return new ajy<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public long b() {
+      return a(this.a, this.b);
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(false, $$0xx -> {
-            });
-         }
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-         @Override
-         public JsonObject a(T $$0x) {
-            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(false, $$0xx -> {
-            })).getAsJsonObject();
-         }
-      };
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
+   }
+
+   @Override
+   public int hashCode() {
+      return cor.d(this.a, this.b);
+   }
+
+   public int c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

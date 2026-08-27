@@ -1,370 +1,406 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
 import com.mojang.logging.LogUtils;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.io.OutputStream;
+import java.nio.file.Path;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.zip.GZIPOutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.CountingOutputStream;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 
-public class elu extends gan {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int G = 80;
-   private static final int H = 95;
-   private static final int I = 1;
-   private static final String[] J = new String[]{"", ".", ". .", ". . ."};
-   private static final sw K = sw.c("mco.upload.verifying");
-   private final eln L;
-   private final dyz M;
-   private final long N;
-   private final int O;
-   private final ejd P;
-   private final RateLimiter Q;
+public class elu {
+   static final Logger a = LogUtils.getLogger();
+   volatile boolean b;
+   volatile boolean c;
+   volatile boolean d;
+   volatile boolean e;
    @Nullable
-   private volatile sw[] R;
-   private volatile sw S = sw.c("mco.upload.preparing");
-   private volatile String T;
-   private volatile boolean U;
-   private volatile boolean V;
-   private volatile boolean W = true;
-   private volatile boolean X;
-   private epi Y;
-   private epi Z;
-   private int aa;
+   private volatile File f;
+   volatile File g;
    @Nullable
-   private Long ab;
+   private volatile HttpGet h;
    @Nullable
-   private Long ac;
-   private long ad;
-   private final Runnable ae;
+   private Thread i;
+   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
+   private static final String[] k = new String[]{
+      "CON",
+      "COM",
+      "PRN",
+      "AUX",
+      "CLOCK$",
+      "NUL",
+      "COM1",
+      "COM2",
+      "COM3",
+      "COM4",
+      "COM5",
+      "COM6",
+      "COM7",
+      "COM8",
+      "COM9",
+      "LPT1",
+      "LPT2",
+      "LPT3",
+      "LPT4",
+      "LPT5",
+      "LPT6",
+      "LPT7",
+      "LPT8",
+      "LPT9"
+   };
 
-   public elu(long $$0, int $$1, eln $$2, dyz $$3, Runnable $$4) {
-      super(enf.a);
-      this.N = $$0;
-      this.O = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.P = new ejd();
-      this.Q = RateLimiter.create(0.1F);
-      this.ae = $$4;
-   }
+   public long a(String $$0) {
+      CloseableHttpClient $$1 = null;
+      HttpGet $$2 = null;
 
-   @Override
-   public void b() {
-      this.Y = this.d(epi.a(sv.k, $$0 -> this.B()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
-      this.Y.s = false;
-      this.Z = this.d(epi.a(sv.e, $$0 -> this.C()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
-      if (!this.X) {
-         if (this.L.a == -1) {
-            this.E();
-         } else {
-            this.L.a(() -> {
-               if (!this.X) {
-                  this.X = true;
-                  this.f.a(this);
-                  this.E();
-               }
-            });
-         }
-      }
-   }
-
-   private void B() {
-      this.ae.run();
-   }
-
-   private void C() {
-      this.U = true;
-      this.f.a(this.L);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         if (this.W) {
-            this.C();
-         } else {
-            this.B();
-         }
-
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      if (!this.V && this.P.a != 0L && this.P.a == this.P.b) {
-         this.S = K;
-         this.Z.r = false;
-      }
-
-      $$0.a(this.i, this.S, this.g / 2, 50, 16777215);
-      if (this.W) {
-         this.c($$0);
-      }
-
-      if (this.P.a != 0L && !this.U) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.R != null) {
-         for (int $$4 = 0; $$4 < this.R.length; $$4++) {
-            $$0.a(this.i, this.R[$$4], this.g / 2, 110 + 12 * $$4, 16711680);
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void c(eox $$0) {
-      int $$1 = this.i.a(this.S);
-      $$0.a(this.i, J[this.aa / 10 % J.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
-   }
-
-   private void d(eox $$0) {
-      double $$1 = Math.min((double)this.P.a / (double)this.P.b, 1.0);
-      this.T = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.g - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.i, this.T + " %", this.g / 2, 84, 16777215);
-   }
-
-   private void e(eox $$0) {
-      if (this.aa % 20 == 0) {
-         if (this.ab != null) {
-            long $$1 = ac.b() - this.ac;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.ad = 1000L * (this.P.a - this.ab) / $$1;
-            this.a($$0, this.ad);
-         }
-
-         this.ab = this.P.a;
-         this.ac = ac.b();
-      } else {
-         this.a($$0, this.ad);
-      }
-   }
-
-   private void a(eox $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.i.b(this.T);
-         String $$3 = "(" + eiv.b($$1) + "/s)";
-         $$0.a(this.i, $$3, this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
-      }
-   }
-
-   @Override
-   public void f() {
-      super.f();
-      this.aa++;
-      if (this.S != null && this.Q.tryAcquire(1)) {
-         sw $$0 = this.D();
-         this.f.aU().c($$0);
-      }
-   }
-
-   private sw D() {
-      List<sw> $$0 = Lists.newArrayList();
-      $$0.add(this.S);
-      if (this.T != null) {
-         $$0.add(sw.b(this.T + "%"));
-      }
-
-      if (this.R != null) {
-         $$0.addAll(Arrays.asList(this.R));
-      }
-
-      return sv.a($$0);
-   }
-
-   private void E() {
-      this.X = true;
-      new Thread(
-            () -> {
-               File $$0 = null;
-               eiz $$1 = eiz.a();
-               long $$2 = this.N;
-
-               try {
-                  if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                     this.S = sw.c("mco.upload.close.failure");
-                  } else {
-                     eke $$3 = null;
-
-                     for (int $$4 = 0; $$4 < 20; $$4++) {
-                        try {
-                           if (this.U) {
-                              this.F();
-                              return;
-                           }
-
-                           $$3 = $$1.h($$2, emh.a($$2));
-                           if ($$3 != null) {
-                              break;
-                           }
-                        } catch (ekn var20) {
-                           Thread.sleep((long)(var20.e * 1000));
-                        }
-                     }
-
-                     if ($$3 == null) {
-                        this.S = sw.c("mco.upload.close.failure");
-                     } else {
-                        emh.a($$2, $$3.a());
-                        if (!$$3.c()) {
-                           this.S = sw.c("mco.upload.close.failure");
-                        } else if (this.U) {
-                           this.F();
-                        } else {
-                           File $$6 = new File(this.f.p.getAbsolutePath(), "saves");
-                           $$0 = this.b(new File($$6, this.M.a()));
-                           if (this.U) {
-                              this.F();
-                           } else if (this.a($$0)) {
-                              this.S = sw.a("mco.upload.uploading", this.M.b());
-                              eix $$11 = new eix($$0, this.N, this.O, $$3, this.f.U(), aa.b().c(), this.P);
-                              $$11.a($$1x -> {
-                                 if ($$1x.a >= 200 && $$1x.a < 300) {
-                                    this.V = true;
-                                    this.S = sw.c("mco.upload.done");
-                                    this.Y.b(sv.d);
-                                    emh.b($$2);
-                                 } else if ($$1x.a == 400 && $$1x.b != null) {
-                                    this.a(sw.a("mco.upload.failed", $$1x.b));
-                                 } else {
-                                    this.a(sw.a("mco.upload.failed", $$1x.a));
-                                 }
-                              });
-
-                              while (!$$11.b()) {
-                                 if (this.U) {
-                                    $$11.a();
-                                    this.F();
-                                    return;
-                                 }
-
-                                 try {
-                                    Thread.sleep(500L);
-                                 } catch (InterruptedException var19) {
-                                    a.error("Failed to check Realms file upload status");
-                                 }
-                              }
-                           } else {
-                              long $$7 = $$0.length();
-                              eiv $$8 = eiv.a($$7);
-                              eiv $$9 = eiv.a(5368709120L);
-                              if (eiv.b($$7, $$8).equals(eiv.b(5368709120L, $$9)) && $$8 != eiv.a) {
-                                 eiv $$10 = eiv.values()[$$8.ordinal() - 1];
-                                 this.a(
-                                    sw.a("mco.upload.size.failure.line1", this.M.b()),
-                                    sw.a("mco.upload.size.failure.line2", eiv.b($$7, $$10), eiv.b(5368709120L, $$10))
-                                 );
-                              } else {
-                                 this.a(
-                                    sw.a("mco.upload.size.failure.line1", this.M.b()),
-                                    sw.a("mco.upload.size.failure.line2", eiv.b($$7, $$8), eiv.b(5368709120L, $$9))
-                                 );
-                              }
-                           }
-                        }
-                     }
-                  }
-               } catch (IOException var21) {
-                  this.a(sw.a("mco.upload.failed", var21.getMessage()));
-               } catch (ekm var22) {
-                  this.a(sw.a("mco.upload.failed", var22.toString()));
-               } catch (InterruptedException var23) {
-                  a.error("Could not acquire upload lock");
-               } finally {
-                  this.V = true;
-                  if (b.isHeldByCurrentThread()) {
-                     b.unlock();
-                     this.W = false;
-                     this.Y.s = true;
-                     this.Z.s = false;
-                     if ($$0 != null) {
-                        a.debug("Deleting file {}", $$0.getAbsolutePath());
-                        $$0.delete();
-                     }
-                  } else {
-                     return;
-                  }
-               }
-            }
-         )
-         .start();
-   }
-
-   private void a(sw... $$0) {
-      this.R = $$0;
-   }
-
-   private void F() {
-      this.S = sw.c("mco.upload.cancelled");
-      a.debug("Upload was cancelled");
-   }
-
-   private boolean a(File $$0) {
-      return $$0.length() < 5368709120L;
-   }
-
-   private File b(File $$0) throws IOException {
-      TarArchiveOutputStream $$1 = null;
-
-      File var4;
+      long var5;
       try {
-         File $$2 = File.createTempFile("realms-upload-file", ".tar.gz");
-         $$1 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$2)));
-         $$1.setLongFileMode(3);
-         this.a($$1, $$0.getAbsolutePath(), "world", true);
-         $$1.finish();
-         var4 = $$2;
+         $$2 = new HttpGet($$0);
+         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+         CloseableHttpResponse $$3 = $$1.execute($$2);
+         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
+      } catch (Throwable var16) {
+         a.error("Unable to get content length for download");
+         var5 = 0L;
       } finally {
+         if ($$2 != null) {
+            $$2.releaseConnection();
+         }
+
          if ($$1 != null) {
-            $$1.close();
+            try {
+               $$1.close();
+            } catch (IOException var15) {
+               a.error("Could not close http client", var15);
+            }
          }
       }
 
-      return var4;
+      return var5;
    }
 
-   private void a(TarArchiveOutputStream $$0, String $$1, String $$2, boolean $$3) throws IOException {
-      if (!this.U) {
-         File $$4 = new File($$1);
-         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
-         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
-         $$0.putArchiveEntry($$6);
-         if ($$4.isFile()) {
-            IOUtils.copy(new FileInputStream($$4), $$0);
-            $$0.closeArchiveEntry();
-         } else {
-            $$0.closeArchiveEntry();
-            File[] $$7 = $$4.listFiles();
-            if ($$7 != null) {
-               for (File $$8 : $$7) {
-                  this.a($$0, $$8.getAbsolutePath(), $$5 + "/", false);
+   public void a(ene $$0, String $$1, eob.a $$2, ebv $$3) {
+      if (this.i == null) {
+         this.i = new Thread(() -> {
+            CloseableHttpClient $$4 = null;
+
+            try {
+               this.f = File.createTempFile("backup", ".tar.gz");
+               this.h = new HttpGet($$0.a);
+               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+               HttpResponse $$5 = $$4.execute(this.h);
+               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
+               if ($$5.getStatusLine().getStatusCode() == 200) {
+                  OutputStream $$12 = new FileOutputStream(this.f);
+                  elu.b $$13 = new elu.b($$1.trim(), this.f, $$3, $$2);
+                  elu.a $$14 = new elu.a($$12);
+                  $$14.a($$13);
+                  IOUtils.copy($$5.getEntity().getContent(), $$14);
+                  return;
                }
+
+               this.d = true;
+               this.h.abort();
+            } catch (Exception var93) {
+               a.error("Caught exception while downloading: {}", var93.getMessage());
+               this.d = true;
+               return;
+            } finally {
+               this.h.releaseConnection();
+               if (this.f != null) {
+                  this.f.delete();
+               }
+
+               if (!this.d) {
+                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
+                     try {
+                        this.f = File.createTempFile("resources", ".tar.gz");
+                        this.h = new HttpGet($$0.b);
+                        HttpResponse $$28 = $$4.execute(this.h);
+                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
+                        if ($$28.getStatusLine().getStatusCode() != 200) {
+                           this.d = true;
+                           this.h.abort();
+                           return;
+                        }
+
+                        OutputStream $$29 = new FileOutputStream(this.f);
+                        elu.c $$30 = new elu.c(this.f, $$2, $$0);
+                        elu.a $$31 = new elu.a($$29);
+                        $$31.a($$30);
+                        IOUtils.copy($$28.getEntity().getContent(), $$31);
+                     } catch (Exception var91) {
+                        a.error("Caught exception while downloading: {}", var91.getMessage());
+                        this.d = true;
+                     } finally {
+                        this.h.releaseConnection();
+                        if (this.f != null) {
+                           this.f.delete();
+                        }
+                     }
+                  } else {
+                     this.c = true;
+                  }
+               }
+
+               if ($$4 != null) {
+                  try {
+                     $$4.close();
+                  } catch (IOException var90) {
+                     a.error("Failed to close Realms download client");
+                  }
+               }
+            }
+         });
+         this.i.setUncaughtExceptionHandler(new eni(a));
+         this.i.start();
+      }
+   }
+
+   public void a() {
+      if (this.h != null) {
+         this.h.abort();
+      }
+
+      if (this.f != null) {
+         this.f.delete();
+      }
+
+      this.b = true;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static String b(String $$0) {
+      $$0 = $$0.replaceAll("[\\./\"]", "_");
+
+      for (String $$1 : k) {
+         if ($$0.equalsIgnoreCase($$1)) {
+            $$0 = "_" + $$0 + "_";
+         }
+      }
+
+      return $$0;
+   }
+
+   void a(String $$0, @Nullable File $$1, ebv $$2) throws IOException {
+      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
+      int $$4 = 1;
+
+      for (char $$5 : aa.aZ) {
+         $$0 = $$0.replace($$5, '_');
+      }
+
+      if (StringUtils.isEmpty($$0)) {
+         $$0 = "Realm";
+      }
+
+      $$0 = b($$0);
+
+      try {
+         for (ebv.b $$6 : $$2.b()) {
+            String $$7 = $$6.a();
+            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
+               Matcher $$8 = $$3.matcher($$7);
+               if ($$8.matches()) {
+                  int $$9 = Integer.parseInt($$8.group(1));
+                  if ($$9 > $$4) {
+                     $$4 = $$9;
+                  }
+               } else {
+                  $$4++;
+               }
+            }
+         }
+      } catch (Exception var43) {
+         a.error("Error getting level list", var43);
+         this.d = true;
+         return;
+      }
+
+      String $$13;
+      if ($$2.a($$0) && $$4 <= 1) {
+         $$13 = $$0;
+      } else {
+         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+         if (!$$2.a($$13)) {
+            boolean $$12 = false;
+
+            while (!$$12) {
+               $$4++;
+               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+               if ($$2.a($$13)) {
+                  $$12 = true;
+               }
+            }
+         }
+      }
+
+      TarArchiveInputStream $$14 = null;
+      File $$15 = new File(eqn.N().p.getAbsolutePath(), "saves");
+
+      try {
+         $$15.mkdir();
+         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
+
+         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
+            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
+            if ($$16.isDirectory()) {
+               $$17.mkdirs();
+            } else {
+               $$17.createNewFile();
+
+               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
+                  IOUtils.copy($$14, $$18);
+               }
+            }
+         }
+      } catch (Exception var41) {
+         a.error("Error extracting world", var41);
+         this.d = true;
+      } finally {
+         if ($$14 != null) {
+            $$14.close();
+         }
+
+         if ($$1 != null) {
+            $$1.delete();
+         }
+
+         try (ebv.c $$28 = $$2.c($$13)) {
+            $$28.a($$13.trim());
+            Path $$29 = $$28.a(ebt.e);
+            a($$29.toFile());
+         } catch (IOException var39) {
+            a.error("Failed to rename unpacked realms level {}", $$13, var39);
+         } catch (egu var40) {
+            a.warn("{}", var40.getMessage());
+         }
+
+         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+      }
+   }
+
+   private static void a(File $$0) {
+      if ($$0.exists()) {
+         try {
+            qs $$1 = rc.a($$0);
+            qs $$2 = $$1.p("Data");
+            $$2.r("Player");
+            rc.a($$1, $$0);
+         } catch (Exception var3) {
+            a.info("Exception while removing player tag", var3);
+         }
+      }
+   }
+
+   static class a extends CountingOutputStream {
+      @Nullable
+      private ActionListener a;
+
+      public a(OutputStream $$0) {
+         super($$0);
+      }
+
+      public void a(ActionListener $$0) {
+         this.a = $$0;
+      }
+
+      protected void afterWrite(int $$0) throws IOException {
+         super.afterWrite($$0);
+         if (this.a != null) {
+            this.a.actionPerformed(new ActionEvent(this, 0, null));
+         }
+      }
+   }
+
+   class b implements ActionListener {
+      private final String b;
+      private final File c;
+      private final ebv d;
+      private final eob.a e;
+
+      b(String $$0, File $$1, ebv $$2, eob.a $$3) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.e.a = ((elu.a)$$0.getSource()).getByteCount();
+         if (this.e.a >= this.e.b && !elu.this.b && !elu.this.d) {
+            try {
+               elu.this.e = true;
+               elu.this.a(this.b, this.c, this.d);
+            } catch (IOException var3) {
+               elu.a.error("Error extracting archive", var3);
+               elu.this.d = true;
+            }
+         }
+      }
+   }
+
+   class c implements ActionListener {
+      private final File b;
+      private final eob.a c;
+      private final ene d;
+
+      c(File $$0, eob.a $$1, ene $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.c.a = ((elu.a)$$0.getSource()).getByteCount();
+         if (this.c.a >= this.c.b && !elu.this.b) {
+            try {
+               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
+               if ($$1.equals(this.d.c)) {
+                  FileUtils.copyFile(this.b, elu.this.g);
+                  elu.this.c = true;
+               } else {
+                  elu.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
+                  FileUtils.deleteQuietly(this.b);
+                  elu.this.d = true;
+               }
+            } catch (IOException var3) {
+               elu.a.error("Error copying resourcepack file: {}", var3.getMessage());
+               elu.this.d = true;
             }
          }
       }

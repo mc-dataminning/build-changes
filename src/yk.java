@@ -1,28 +1,30 @@
-public class yk implements uo<ur> {
-   private final int a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public yk(int $$0, int $$1, int $$2) {
+public class yk implements uw<wo> {
+   private final int a;
+   private final cfh<?> b;
+   private final te c;
+
+   public yk(int $$0, cfh<?> $$1, te $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public yk(sf $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   public yk(sh $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jc.s);
+      this.c = $$0.l();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
-      $$0.writeInt(this.b);
-      $$0.writeInt(this.c);
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.a(jc.s, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +32,12 @@ public class yk implements uo<ur> {
       return this.a;
    }
 
-   public int c() {
+   @Nullable
+   public cfh<?> d() {
       return this.b;
    }
 
-   public int d() {
+   public te e() {
       return this.c;
    }
 }

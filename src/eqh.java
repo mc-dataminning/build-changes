@@ -1,3 +1,6 @@
-public interface eqh {
-   void a(eox var1, int var2, int var3, float var4);
+import javax.annotation.Nullable;
+
+public record eqh(int a, te b, @Nullable tp c, @Nullable eqi d) {
+   public static record a(int a, ara b, @Nullable eqi c, boolean d) {
+   }
 }

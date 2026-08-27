@@ -1,103 +1,93 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.slf4j.Logger;
+public interface bhh {
+   aeo<bhg> a = aeo.a(jd.p, new aep("in_fire"));
+   aeo<bhg> b = aeo.a(jd.p, new aep("lightning_bolt"));
+   aeo<bhg> c = aeo.a(jd.p, new aep("on_fire"));
+   aeo<bhg> d = aeo.a(jd.p, new aep("lava"));
+   aeo<bhg> e = aeo.a(jd.p, new aep("hot_floor"));
+   aeo<bhg> f = aeo.a(jd.p, new aep("in_wall"));
+   aeo<bhg> g = aeo.a(jd.p, new aep("cramming"));
+   aeo<bhg> h = aeo.a(jd.p, new aep("drown"));
+   aeo<bhg> i = aeo.a(jd.p, new aep("starve"));
+   aeo<bhg> j = aeo.a(jd.p, new aep("cactus"));
+   aeo<bhg> k = aeo.a(jd.p, new aep("fall"));
+   aeo<bhg> l = aeo.a(jd.p, new aep("fly_into_wall"));
+   aeo<bhg> m = aeo.a(jd.p, new aep("out_of_world"));
+   aeo<bhg> n = aeo.a(jd.p, new aep("generic"));
+   aeo<bhg> o = aeo.a(jd.p, new aep("magic"));
+   aeo<bhg> p = aeo.a(jd.p, new aep("wither"));
+   aeo<bhg> q = aeo.a(jd.p, new aep("dragon_breath"));
+   aeo<bhg> r = aeo.a(jd.p, new aep("dry_out"));
+   aeo<bhg> s = aeo.a(jd.p, new aep("sweet_berry_bush"));
+   aeo<bhg> t = aeo.a(jd.p, new aep("freeze"));
+   aeo<bhg> u = aeo.a(jd.p, new aep("stalagmite"));
+   aeo<bhg> v = aeo.a(jd.p, new aep("falling_block"));
+   aeo<bhg> w = aeo.a(jd.p, new aep("falling_anvil"));
+   aeo<bhg> x = aeo.a(jd.p, new aep("falling_stalactite"));
+   aeo<bhg> y = aeo.a(jd.p, new aep("sting"));
+   aeo<bhg> z = aeo.a(jd.p, new aep("mob_attack"));
+   aeo<bhg> A = aeo.a(jd.p, new aep("mob_attack_no_aggro"));
+   aeo<bhg> B = aeo.a(jd.p, new aep("player_attack"));
+   aeo<bhg> C = aeo.a(jd.p, new aep("arrow"));
+   aeo<bhg> D = aeo.a(jd.p, new aep("trident"));
+   aeo<bhg> E = aeo.a(jd.p, new aep("mob_projectile"));
+   aeo<bhg> F = aeo.a(jd.p, new aep("fireworks"));
+   aeo<bhg> G = aeo.a(jd.p, new aep("fireball"));
+   aeo<bhg> H = aeo.a(jd.p, new aep("unattributed_fireball"));
+   aeo<bhg> I = aeo.a(jd.p, new aep("wither_skull"));
+   aeo<bhg> J = aeo.a(jd.p, new aep("thrown"));
+   aeo<bhg> K = aeo.a(jd.p, new aep("indirect_magic"));
+   aeo<bhg> L = aeo.a(jd.p, new aep("thorns"));
+   aeo<bhg> M = aeo.a(jd.p, new aep("explosion"));
+   aeo<bhg> N = aeo.a(jd.p, new aep("player_explosion"));
+   aeo<bhg> O = aeo.a(jd.p, new aep("sonic_boom"));
+   aeo<bhg> P = aeo.a(jd.p, new aep("bad_respawn_point"));
+   aeo<bhg> Q = aeo.a(jd.p, new aep("outside_border"));
+   aeo<bhg> R = aeo.a(jd.p, new aep("generic_kill"));
 
-public class bhh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bfn<? extends bfz>, bhf> b = ImmutableMap.builder()
-      .put(bfn.b, bsp.q().a())
-      .put(bfn.d, bfz.dM().a())
-      .put(bfn.f, bss.gf().a())
-      .put(bfn.g, brg.q().a())
-      .put(bfn.h, brm.gk().a())
-      .put(bfn.i, bvm.q().a())
-      .put(bfn.m, bro.gk().a())
-      .put(bfn.l, bsx.q().a())
-      .put(bfn.n, bvn.q().a())
-      .put(bfn.q, brq.q().a())
-      .put(bfn.r, bri.q().a())
-      .put(bfn.t, brs.q().a())
-      .put(bfn.u, bvo.q().a())
-      .put(bfn.v, brt.fY().a())
-      .put(bfn.w, btj.q().a())
-      .put(bfn.y, bwv.gc().a())
-      .put(bfn.A, bvr.q().a())
-      .put(bfn.E, bvs.q().a())
-      .put(bfn.F, bvt.q().a())
-      .put(bfn.C, bub.r().a())
-      .put(bfn.G, bvv.r().a())
-      .put(bfn.N, brv.q().a())
-      .put(bfn.O, bta.fY().a())
-      .put(bfn.Q, bvw.w().a())
-      .put(bfn.R, bvx.q().a())
-      .put(bfn.T, bfr.fY().a())
-      .put(bfn.U, btg.r().a())
-      .put(bfn.V, bvy.fY().a())
-      .put(bfn.W, bwy.q().a())
-      .put(bfn.Y, btk.gy().a())
-      .put(bfn.Z, bwv.gc().a())
-      .put(bfn.aa, bwa.r().a())
-      .put(bfn.ac, brx.q().a())
-      .put(bfn.aj, btn.gj().a())
-      .put(bfn.al, bwb.q().a())
-      .put(bfn.ao, brs.q().a())
-      .put(bfn.ap, btj.q().a())
-      .put(bfn.aq, brz.q().a())
-      .put(bfn.as, bsa.gj().a())
-      .put(bfn.at, bsb.ge().a())
-      .put(bfn.au, bwc.ge().a())
-      .put(bfn.av, bsc.q().a())
-      .put(bfn.aw, bxe.gf().a())
-      .put(bfn.ax, bxh.w().a())
-      .put(bfn.ay, bwf.r().a())
-      .put(bfn.bt, byo.fC().a())
-      .put(bfn.az, bsd.q().a())
-      .put(bfn.aB, bri.q().a())
-      .put(bfn.aC, bsf.r().a())
-      .put(bfn.aD, bwh.q().a())
-      .put(bfn.aE, bri.q().a())
-      .put(bfn.aF, bsh.q().a())
-      .put(bfn.aG, bwi.q().a())
-      .put(bfn.aI, bwj.q().a())
-      .put(bfn.aJ, bvl.q().a())
-      .put(bfn.aK, btq.q().a())
-      .put(bfn.aL, bwc.ge().a())
-      .put(bfn.aN, btx.q().a())
-      .put(bfn.aO, bsj.q().a())
-      .put(bfn.aS, bwn.r().a())
-      .put(bfn.aT, bsk.fY().a())
-      .put(bfn.aU, bvl.q().a())
-      .put(bfn.aV, bwp.r().a())
-      .put(bfn.aW, btd.ga().a())
-      .put(bfn.ba, btn.gj().a())
-      .put(bfn.bc, bri.q().a())
-      .put(bfn.bd, bsm.w().a())
-      .put(bfn.be, bwq.q().a())
-      .put(bfn.bf, byb.gh().a())
-      .put(bfn.bg, bwr.r().a())
-      .put(bfn.bi, bxs.q().a())
-      .put(bfn.bh, bgb.y().a())
-      .put(bfn.bj, bws.r().a())
-      .put(bfn.bk, buv.r().a())
-      .put(bfn.bl, bvl.q().a())
-      .put(bfn.bn, bso.ge().a())
-      .put(bfn.bo, bwu.q().a())
-      .put(bfn.bp, bwv.gc().a())
-      .put(bfn.bq, btu.q().a())
-      .put(bfn.br, bwv.gc().a())
-      .put(bfn.bs, bwx.gi().a())
-      .build();
-
-   public static bhf a(bfn<? extends bfz> $$0) {
-      return b.get($$0);
-   }
-
-   public static boolean b(bfn<?> $$0) {
-      return b.containsKey($$0);
-   }
-
-   public static void a() {
-      jb.h.s().filter($$0 -> $$0.f() != bgc.h).filter($$0 -> !b((bfn<?>)$$0)).map(jb.h::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
+   static void a(nn<bhg> $$0) {
+      $$0.a(a, new bhg("inFire", 0.1F, bhc.d));
+      $$0.a(b, new bhg("lightningBolt", 0.1F));
+      $$0.a(c, new bhg("onFire", 0.0F, bhc.d));
+      $$0.a(d, new bhg("lava", 0.1F, bhc.d));
+      $$0.a(e, new bhg("hotFloor", 0.1F, bhc.d));
+      $$0.a(f, new bhg("inWall", 0.0F));
+      $$0.a(g, new bhg("cramming", 0.0F));
+      $$0.a(h, new bhg("drown", 0.0F, bhc.c));
+      $$0.a(i, new bhg("starve", 0.0F));
+      $$0.a(j, new bhg("cactus", 0.1F));
+      $$0.a(k, new bhg("fall", bhd.b, 0.0F, bhc.a, bhi.b));
+      $$0.a(l, new bhg("flyIntoWall", 0.0F));
+      $$0.a(m, new bhg("outOfWorld", 0.0F));
+      $$0.a(n, new bhg("generic", 0.0F));
+      $$0.a(o, new bhg("magic", 0.0F));
+      $$0.a(p, new bhg("wither", 0.0F));
+      $$0.a(q, new bhg("dragonBreath", 0.0F));
+      $$0.a(r, new bhg("dryout", 0.1F));
+      $$0.a(s, new bhg("sweetBerryBush", 0.1F, bhc.e));
+      $$0.a(t, new bhg("freeze", 0.0F, bhc.f));
+      $$0.a(u, new bhg("stalagmite", 0.0F));
+      $$0.a(v, new bhg("fallingBlock", 0.1F));
+      $$0.a(w, new bhg("anvil", 0.1F));
+      $$0.a(x, new bhg("fallingStalactite", 0.1F));
+      $$0.a(y, new bhg("sting", 0.1F));
+      $$0.a(z, new bhg("mob", 0.1F));
+      $$0.a(A, new bhg("mob", 0.1F));
+      $$0.a(B, new bhg("player", 0.1F));
+      $$0.a(C, new bhg("arrow", 0.1F));
+      $$0.a(D, new bhg("trident", 0.1F));
+      $$0.a(E, new bhg("mob", 0.1F));
+      $$0.a(F, new bhg("fireworks", 0.1F));
+      $$0.a(H, new bhg("onFire", 0.1F, bhc.d));
+      $$0.a(G, new bhg("fireball", 0.1F, bhc.d));
+      $$0.a(I, new bhg("witherSkull", 0.1F));
+      $$0.a(J, new bhg("thrown", 0.1F));
+      $$0.a(K, new bhg("indirectMagic", 0.0F));
+      $$0.a(L, new bhg("thorns", 0.1F, bhc.b));
+      $$0.a(M, new bhg("explosion", bhd.c, 0.1F));
+      $$0.a(N, new bhg("explosion.player", bhd.c, 0.1F));
+      $$0.a(O, new bhg("sonic_boom", bhd.c, 0.0F));
+      $$0.a(P, new bhg("badRespawnPoint", bhd.c, 0.1F, bhc.a, bhi.c));
+      $$0.a(Q, new bhg("outsideBorder", 0.0F));
+      $$0.a(R, new bhg("genericKill", 0.0F));
    }
 }

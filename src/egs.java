@@ -1,140 +1,119 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class egs extends egv {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final egs.b l = new egs.b(854, 480);
+public class egs<T> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final egr<T> e;
+   private final Queue<egs.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, egs.a<T>> h = HashBasedTable.create();
 
-   public egs(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
-      } else {
-         this.b($$0, $$1);
+   private static <T> Comparator<egs.a<T>> c() {
+      return Comparator.<egs.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   }
+
+   public egs(egr<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         rl $$1x = (rl)$$0x.convert(rd.a).getValue();
+         if ($$1x instanceof qs $$2) {
+            this.a($$2);
+         } else {
+            a.warn("Invalid format of events: {}", $$1x);
+         }
+      });
+   }
+
+   public egs(egr<T> $$0) {
+      this.e = $$0;
+   }
+
+   public void a(T $$0, long $$1) {
+      while (true) {
+         egs.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
+            return;
+         }
+
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
    }
 
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      egs.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
-
-   private egs.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      egs.a $$2 = egs.a.a;
-
-      for (egs.b $$3 : egs.b.a($$0, $$1)) {
-         $$2 = egs.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(egs.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(egs.a.c);
-         }
-
-         if ($$2 == egs.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
-
-   private boolean a(egs.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(egs.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final egs.a[] e = values();
-
-      egs.a a(egs.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
+   public void a(String $$0, long $$1, egq<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         egs.a<T> $$3 = new egs.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
       }
    }
 
-   static class b {
-      public final int a;
-      public final int b;
+   public int a(String $$0) {
+      Collection<egs.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
+   }
 
-      b(int $$0, int $$1) {
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
+   }
+
+   private void a(qs $$0) {
+      qs $$1 = $$0.p("Callback");
+      egq<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
+      }
+   }
+
+   private qs a(egs.a<T> $$0) {
+      qs $$1 = new qs();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
+      return $$1;
+   }
+
+   public qy b() {
+      qy $$0 = new qy();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
+   }
+
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final egq<T> d;
+
+      a(long $$0, UnsignedLong $$1, String $$2, egq<T> $$3) {
          this.a = $$0;
          this.b = $$1;
-      }
-
-      static List<egs.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new egs.b($$0, $$1), egs.l) : ImmutableList.of(egs.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            egs.b $$1 = (egs.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
-      }
-
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
+         this.c = $$2;
+         this.d = $$3;
       }
    }
 }

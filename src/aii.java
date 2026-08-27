@@ -1,171 +1,312 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
+import java.util.Collection;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
-public class aii extends dwt implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger d = LogUtils.getLogger();
-   private final bcq<Runnable> e;
-   private final ObjectList<Pair<aii.a, Runnable>> f = new ObjectArrayList();
-   private final ahr g;
-   private final bcp<aht.a<Runnable>> h;
-   private final int i = 1000;
-   private final AtomicBoolean j = new AtomicBoolean();
+public class aii {
+   private static final int a = 10000;
+   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> te.a("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> te.a("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> te.a("commands.spreadplayers.failed.invalid.height", $$0, $$1)
+   );
 
-   public aii(del $$0, ahr $$1, boolean $$2, bcq<Runnable> $$3, bcp<aht.a<Runnable>> $$4) {
-      super($$0, true, $$2);
-      this.g = $$1;
-      this.h = $$4;
-      this.e = $$3;
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spreadplayers").requires($$0x -> $$0x.c(2)))
+            .then(
+               dt.a("center", fp.a())
+                  .then(
+                     dt.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                        .then(
+                           ((RequiredArgumentBuilder)dt.a("maxRange", FloatArgumentType.floatArg(1.0F))
+                                 .then(
+                                    dt.a("respectTeams", BoolArgumentType.bool())
+                                       .then(
+                                          dt.a("targets", ed.b())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      fp.a($$0x, "center"),
+                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                      ((ds)$$0x.getSource()).e().aj(),
+                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                      ed.b($$0x, "targets")
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("under")
+                                    .then(
+                                       dt.a("maxHeight", IntegerArgumentType.integer())
+                                          .then(
+                                             dt.a("respectTeams", BoolArgumentType.bool())
+                                                .then(
+                                                   dt.a("targets", ed.b())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               fp.a($$0x, "center"),
+                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
+                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                               ed.b($$0x, "targets")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void close() {
+   private static int a(ds $$0, ehe $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends big> $$6) throws CommandSyntaxException {
+      aki $$7 = $$0.e();
+      int $$8 = $$7.C_();
+      if ($$4 < $$8) {
+         throw d.create($$4, $$8);
+      } else {
+         art $$9 = art.a();
+         double $$10 = (double)($$1.i - $$3);
+         double $$11 = (double)($$1.j - $$3);
+         double $$12 = (double)($$1.i + $$3);
+         double $$13 = (double)($$1.j + $$3);
+         aii.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
+         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
+         double $$15 = a($$6, $$7, $$14, $$4, $$5);
+         $$0.a(
+            () -> te.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            true
+         );
+         return $$14.length;
+      }
    }
 
-   @Override
-   public int a() {
-      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
-   }
+   private static int a(Collection<? extends big> $$0) {
+      Set<eig> $$1 = Sets.newHashSet();
 
-   @Override
-   public void a(gu $$0) {
-      gu $$1 = $$0.i();
-      this.a(hx.a($$0.u()), hx.a($$0.w()), aii.a.a, ac.a(() -> super.a($$1), () -> "checkBlock " + $$1));
-   }
-
-   protected void a(clt $$0) {
-      this.a($$0.e, $$0.f, () -> 0, aii.a.a, ac.a(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(cmv.b, hx.a($$0, $$1), null);
-            super.a(cmv.a, hx.a($$0, $$1), null);
+      for (big $$2 : $$0) {
+         if ($$2 instanceof cbl) {
+            $$1.add($$2.cf());
+         } else {
+            $$1.add(null);
          }
+      }
 
-         for (int $$2 = this.c.al(); $$2 < this.c.am(); $$2++) {
-            super.a(hx.a($$0, $$2), true);
-         }
-      }, () -> "updateChunkStatus " + $$0 + " true"));
+      return $$1.size();
    }
 
-   @Override
-   public void a(hx $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, aii.a.a, ac.a(() -> super.a($$0, $$1), () -> "updateSectionStatus " + $$0 + " " + $$1));
-   }
+   private static void a(ehe $$0, double $$1, aki $$2, art $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aii.a[] $$9, boolean $$10) throws CommandSyntaxException {
+      boolean $$11 = true;
+      double $$12 = Float.MAX_VALUE;
 
-   @Override
-   public void b(clt $$0) {
-      this.a($$0.e, $$0.f, aii.a.a, ac.a(() -> super.b($$0), () -> "propagateLight " + $$0));
-   }
+      int $$13;
+      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
+         $$11 = false;
+         $$12 = Float.MAX_VALUE;
 
-   @Override
-   public void a(clt $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, aii.a.a, ac.a(() -> super.a($$0, $$1), () -> "enableLight " + $$0 + " " + $$1));
-   }
+         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
+            aii.a $$15 = $$9[$$14];
+            int $$16 = 0;
+            aii.a $$17 = new aii.a();
 
-   @Override
-   public void a(cmv $$0, hx $$1, @Nullable ded $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, aii.a.a, ac.a(() -> super.a($$0, $$1, $$2), () -> "queueData " + $$1));
-   }
+            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
+               if ($$14 != $$18) {
+                  aii.a $$19 = $$9[$$18];
+                  double $$20 = $$15.a($$19);
+                  $$12 = Math.min($$20, $$12);
+                  if ($$20 < $$1) {
+                     $$16++;
+                     $$17.a = $$17.a + ($$19.a - $$15.a);
+                     $$17.b = $$17.b + ($$19.b - $$15.b);
+                  }
+               }
+            }
 
-   private void a(int $$0, int $$1, aii.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(clt.c($$0, $$1)), $$2, $$3);
-   }
+            if ($$16 > 0) {
+               $$17.a /= (double)$$16;
+               $$17.b /= (double)$$16;
+               double $$21 = $$17.b();
+               if ($$21 > 0.0) {
+                  $$17.a();
+                  $$15.b($$17);
+               } else {
+                  $$15.a($$3, $$4, $$5, $$6, $$7);
+               }
 
-   private void a(int $$0, int $$1, IntSupplier $$2, aii.a $$3, Runnable $$4) {
-      this.h.a(aht.a(() -> {
-         this.f.add(Pair.of($$3, $$4));
-         if (this.f.size() >= 1000) {
-            this.f();
-         }
-      }, clt.c($$0, $$1), $$2));
-   }
+               $$11 = true;
+            }
 
-   @Override
-   public void b(clt $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, () -> 0, aii.a.a, ac.a(() -> super.b($$0, $$1), () -> "retainData " + $$0));
-   }
-
-   public CompletableFuture<ddx> a(ddx $$0, boolean $$1) {
-      clt $$2 = $$0.f();
-      this.a($$2.e, $$2.f, aii.a.a, ac.a(() -> {
-         dej[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.ak(); $$3++) {
-            dej $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.c.g($$3);
-               super.a(hx.a($$2, $$5), false);
+            if ($$15.a($$4, $$5, $$6, $$7)) {
+               $$11 = true;
             }
          }
-      }, () -> "initializeLight: " + $$2));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, aii.a.b, $$1x));
-   }
 
-   public CompletableFuture<ddx> b(ddx $$0, boolean $$1) {
-      clt $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.e, $$2.f, aii.a.a, ac.a(() -> {
-         if (!$$1) {
-            super.b($$2);
-         }
-      }, () -> "lightChunk " + $$2 + " " + $$1));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         this.g.b($$2);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, aii.a.b, $$1x));
-   }
-
-   public void b() {
-      if ((!this.f.isEmpty() || super.E_()) && this.j.compareAndSet(false, true)) {
-         this.e.a(() -> {
-            this.f();
-            this.j.set(false);
-         });
-      }
-   }
-
-   private void f() {
-      int $$0 = Math.min(this.f.size(), 1000);
-      ObjectListIterator<Pair<aii.a, Runnable>> $$1 = this.f.iterator();
-
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<aii.a, Runnable> $$3 = (Pair<aii.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == aii.a.a) {
-            ((Runnable)$$3.getSecond()).run();
+         if (!$$11) {
+            for (aii.a $$22 : $$9) {
+               if (!$$22.b($$2, $$8)) {
+                  $$22.a($$3, $$4, $$5, $$6, $$7);
+                  $$11 = true;
+               }
+            }
          }
       }
 
-      $$1.back($$2);
-      super.a();
+      if ($$12 == Float.MAX_VALUE) {
+         $$12 = 0.0;
+      }
 
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<aii.a, Runnable> $$4 = (Pair<aii.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == aii.a.b) {
-            ((Runnable)$$4.getSecond()).run();
+      if ($$13 >= 10000) {
+         if ($$10) {
+            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+         } else {
+            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
          }
-
-         $$1.remove();
       }
    }
 
-   static enum a {
-      a,
-      b;
+   private static double a(Collection<? extends big> $$0, aki $$1, aii.a[] $$2, int $$3, boolean $$4) {
+      double $$5 = 0.0;
+      int $$6 = 0;
+      Map<eig, aii.a> $$7 = Maps.newHashMap();
+
+      for (big $$8 : $$0) {
+         aii.a $$10;
+         if ($$4) {
+            eig $$9 = $$8 instanceof cbl ? $$8.cf() : null;
+            if (!$$7.containsKey($$9)) {
+               $$7.put($$9, $$2[$$6++]);
+            }
+
+            $$10 = $$7.get($$9);
+         } else {
+            $$10 = $$2[$$6++];
+         }
+
+         $$8.a($$1, (double)aro.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)aro.a($$10.b) + 0.5, Set.of(), $$8.dA(), $$8.dC());
+         double $$12 = Double.MAX_VALUE;
+
+         for (aii.a $$13 : $$2) {
+            if ($$10 != $$13) {
+               double $$14 = $$10.a($$13);
+               $$12 = Math.min($$14, $$12);
+            }
+         }
+
+         $$5 += $$12;
+      }
+
+      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
+   }
+
+   private static aii.a[] a(art $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+      aii.a[] $$6 = new aii.a[$$1];
+
+      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
+         aii.a $$8 = new aii.a();
+         $$8.a($$0, $$2, $$3, $$4, $$5);
+         $$6[$$7] = $$8;
+      }
+
+      return $$6;
+   }
+
+   static class a {
+      double a;
+      double b;
+
+      double a(aii.a $$0) {
+         double $$1 = this.a - $$0.a;
+         double $$2 = this.b - $$0.b;
+         return Math.sqrt($$1 * $$1 + $$2 * $$2);
+      }
+
+      void a() {
+         double $$0 = this.b();
+         this.a /= $$0;
+         this.b /= $$0;
+      }
+
+      double b() {
+         return Math.sqrt(this.a * this.a + this.b * this.b);
+      }
+
+      public void b(aii.a $$0) {
+         this.a = this.a - $$0.a;
+         this.b = this.b - $$0.b;
+      }
+
+      public boolean a(double $$0, double $$1, double $$2, double $$3) {
+         boolean $$4 = false;
+         if (this.a < $$0) {
+            this.a = $$0;
+            $$4 = true;
+         } else if (this.a > $$2) {
+            this.a = $$2;
+            $$4 = true;
+         }
+
+         if (this.b < $$1) {
+            this.b = $$1;
+            $$4 = true;
+         } else if (this.b > $$3) {
+            this.b = $$3;
+            $$4 = true;
+         }
+
+         return $$4;
+      }
+
+      public int a(coq $$0, int $$1) {
+         gv.a $$2 = new gv.a(this.a, (double)($$1 + 1), this.b);
+         boolean $$3 = $$0.a_($$2).i();
+         $$2.c(hb.a);
+         boolean $$4 = $$0.a_($$2).i();
+
+         while ($$2.v() > $$0.C_()) {
+            $$2.c(hb.a);
+            boolean $$5 = $$0.a_($$2).i();
+            if (!$$5 && $$4 && $$3) {
+               return $$2.v() + 1;
+            }
+
+            $$3 = $$4;
+            $$4 = $$5;
+         }
+
+         return $$1 + 1;
+      }
+
+      public boolean b(coq $$0, int $$1) {
+         gv $$2 = gv.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
+         dey $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.k() && !$$3.a(apj.aJ);
+      }
+
+      public void a(art $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = aro.a($$0, $$1, $$3);
+         this.b = aro.a($$0, $$2, $$4);
+      }
    }
 }

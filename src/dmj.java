@@ -1,53 +1,171 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Function;
 
-public record dmj(List<dmj.a> b, ha c, dir d, boolean e) implements dms {
-   public static final Codec<dmj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dmj.a.a.listOf().fieldOf("layers").forGetter(dmj::a),
-               ha.g.fieldOf("direction").forGetter(dmj::b),
-               dir.b.fieldOf("allowed_placement").forGetter(dmj::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dmj::d)
-            )
-            .apply($$0, dmj::new)
-   );
-
-   public static dmj.a a(bdc $$0, dot $$1) {
-      return new dmj.a($$0, $$1);
+public class dmj extends dmm<dmi> {
+   public dmj(Codec<dmi> $$0) {
+      super($$0);
    }
 
-   public static dmj b(bdc $$0, dot $$1) {
-      return new dmj(List.of(a($$0, $$1)), ha.b, dir.c, false);
+   public boolean a(dmi $$0, art $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   public List<dmj.a> a() {
-      return this.b;
-   }
+   public boolean a(dmh $$0, dmi $$1, dgu $$2, Function<gv, hf<cqi>> $$3, art $$4, djt $$5, cor $$6, dgt $$7) {
+      int $$8 = hy.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
 
-   public ha b() {
-      return this.c;
-   }
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         dmm.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
+         }
 
-   public dir c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bdc b, dot c) {
-      public static final Codec<dmj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bdc.d.fieldOf("height").forGetter(dmj.a::a), dot.a.fieldOf("provider").forGetter(dmj.a::b)).apply($$0, dmj.a::new)
-      );
-
-      public bdc a() {
-         return this.b;
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
+         }
       }
 
-      public dot b() {
-         return this.c;
+      return true;
+   }
+
+   protected int a() {
+      return 15;
+   }
+
+   protected float a(art $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
       }
+
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      dmh $$0, dmi $$1, dgu $$2, Function<gv, hf<cqi>> $$3, djt $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dgt $$10, dmm.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(aro.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      dmh $$0,
+      dmi $$1,
+      dgu $$2,
+      Function<gv, hf<cqi>> $$3,
+      long $$4,
+      djt $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dgt $$17,
+      dmm.a $$18
+   ) {
+      art $$19 = art.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(aro.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = aro.b($$13);
+         $$6 += (double)(aro.b($$12) * $$27);
+         $$7 += (double)aro.a($$13);
+         $$8 += (double)(aro.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
+         }
+
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
+            }
+
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
+         }
+      }
+   }
+
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

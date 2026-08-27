@@ -1,115 +1,78 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class ero extends fug implements fuh {
-   private static final int e = 256;
-   private final erp f;
-   private final boolean g;
-   private final ero.a h;
+public class ero {
+   private static final int a = -1;
+   private final hl<ern> b = new hl<>(32);
+   private final Map<csk, Set<dgb<?>>> c = Maps.newHashMap();
 
-   public ero(erp $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new ero.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? ehk.b.a : ehk.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public static ero a() {
+      ero $$0 = new ero();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fms.a($$1, $$0x.c(cuo.a) == dfu.a ? $$2.d() : $$2) : cpi.a(), csl.iI, csl.iH);
+      $$0.a(cuo.a, csl.iI, csl.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fms.a($$1, $$2) : cpi.a(), csl.i, csl.bu, csl.bt, csl.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? fms.a($$1, $$2) : cpi.a();
+         } else {
+            return -1;
+         }
+      }, csl.rA);
+      $$0.a(($$0x, $$1, $$2, $$3) -> cpe.a(), csl.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> cpe.b(), csl.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fms.b($$1, $$2) : cpe.c(), csl.aE, csl.aH, csl.aI, csl.aK, csl.ff, csl.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fms.c($$1, $$2) : -1, csl.G, csl.nd, csl.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> cyl.b($$0x.c(cyl.e)), csl.cw);
+      $$0.a(cyl.e, csl.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fms.a($$1, $$2) : -1, csl.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, csl.fc, csl.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dag.b);
+         int $$5 = $$4 * 32;
+         int $$6 = 255 - $$4 * 8;
+         int $$7 = $$4 * 4;
+         return $$5 << 16 | $$6 << 8 | $$7;
+      }, csl.fe, csl.fd);
+      $$0.a(dag.b, csl.fe, csl.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, csl.fm);
+      return $$0;
    }
 
-   @Override
-   public void a(akx $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
-   }
-
-   @Nullable
-   public err a(egn $$0) {
-      if ($$0.c() != this.g) {
-         return null;
+   public int a(dey $$0, cpk $$1, gv $$2) {
+      ern $$3 = this.b.a(jc.f.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
       } else {
-         ero.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new err(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+         eaf $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   @Override
-   public void a(acq $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   public int a(dey $$0, @Nullable com $$1, @Nullable gv $$2, int $$3) {
+      ern $$4 = this.b.a(jc.f.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private ero.a e;
-      @Nullable
-      private ero.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public void a(ern $$0, csk... $$1) {
+      for (csk $$2 : $$1) {
+         this.b.a($$0, jc.f.a($$2));
       }
+   }
 
-      @Nullable
-      ero.a a(egn $$0) {
-         if (this.e != null && this.f != null) {
-            ero.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new ero.a(this.a, this.b, $$2, this.d);
-                  this.f = new ero.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new ero.a(this.a, this.b, this.c, $$3);
-                  this.f = new ero.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
+   private void a(Set<dgb<?>> $$0, csk... $$1) {
+      for (csk $$2 : $$1) {
+         this.c.put($$2, $$0);
       }
+   }
+
+   private void a(dgb<?> $$0, csk... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
+   }
+
+   public Set<dgb<?>> a(csk $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

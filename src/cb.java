@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Set;
 
 public class cb extends cv<cb.a> {
-   static final acq a = new acq("killed_by_crossbow");
+   static final aep a = new aep("killed_by_crossbow");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -20,12 +20,12 @@ public class cb extends cv<cb.a> {
       return new cb.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, Collection<bfj> $$1) {
-      List<dzk> $$2 = Lists.newArrayList();
-      Set<bfn<?>> $$3 = Sets.newHashSet();
+   public void a(akj $$0, Collection<big> $$1) {
+      List<ech> $$2 = Lists.newArrayList();
+      Set<bik<?>> $$3 = Sets.newHashSet();
 
-      for (bfj $$4 : $$1) {
-         $$3.add($$4.ae());
+      for (big $$4 : $$1) {
+         $$3.add($$4.ag());
          $$2.add(bo.b($$0, $$4));
       }
 
@@ -58,16 +58,16 @@ public class cb extends cv<cb.a> {
          return new cb.a(ba.a, $$1, $$0);
       }
 
-      public boolean a(Collection<dzk> $$0, int $$1) {
+      public boolean a(Collection<ech> $$0, int $$1) {
          if (this.a.length > 0) {
-            List<dzk> $$2 = Lists.newArrayList($$0);
+            List<ech> $$2 = Lists.newArrayList($$0);
 
             for (ba $$3 : this.a) {
                boolean $$4 = false;
-               Iterator<dzk> $$5 = $$2.iterator();
+               Iterator<ech> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  dzk $$6 = $$5.next();
+                  ech $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

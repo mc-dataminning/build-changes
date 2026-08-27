@@ -1,51 +1,66 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eca implements eck {
-   final ckg a;
-   final float[] b;
+public interface eca extends ecc {
+   @Override
+   String g();
 
-   eca(ckg $$0, float[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
 
    @Override
-   public ecl b() {
-      return ecm.k;
+   default void a(p $$0, cpm $$1) {
+      ecc.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(ebw.i);
-   }
+   int h();
 
-   public boolean a(dzk $$0) {
-      cfz $$1 = $$0.c(ebw.i);
-      int $$2 = $$1 != null ? cki.a(this.a, $$1) : 0;
-      float $$3 = this.b[Math.min($$2, this.b.length - 1)];
-      return $$0.b().i() < $$3;
-   }
+   void a(int var1);
 
-   public static eck.a a(ckg $$0, float... $$1) {
-      return () -> new eca($$0, $$1);
-   }
+   int v();
 
-   public static class a implements dzt<eca> {
-      public void a(JsonObject $$0, eca $$1, JsonSerializationContext $$2) {
-         $$0.addProperty("enchantment", jb.g.b($$1.a).toString());
-         $$0.add("chances", $$2.serialize($$1.b));
-      }
+   void g(int var1);
 
-      public eca b(JsonObject $$0, JsonDeserializationContext $$1) {
-         acq $$2 = new acq(aor.i($$0, "enchantment"));
-         ckg $$3 = jb.g.b($$2).orElseThrow(() -> new JsonParseException("Invalid enchantment id: " + $$2));
-         float[] $$4 = aor.a($$0, "chances", $$1, float[].class);
-         return new eca($$3, $$4);
-      }
-   }
+   int w();
+
+   void h(int var1);
+
+   @Nullable
+   UUID x();
+
+   void a(UUID var1);
+
+   cph m();
+
+   void a(dgp.c var1);
+
+   dgp.c r();
+
+   boolean p();
+
+   void c(boolean var1);
+
+   boolean o();
+
+   void a(cph var1);
+
+   egs<MinecraftServer> u();
+
+   void a(long var1);
+
+   void b(long var1);
 }

@@ -1,58 +1,35 @@
-import java.util.Optional;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class tz implements sx {
-   private final String b;
-   @Nullable
-   private Supplier<sw> c;
+@FunctionalInterface
+public interface tz {
+   tz a = $$0 -> !$$0.h();
+   tz b = $$0 -> false;
 
-   public tz(String $$0) {
-      this.b = $$0;
-   }
+   boolean updateAndValidate(tt var1);
 
-   private sw b() {
-      if (this.c == null) {
-         this.c = ua.a.apply(this.b);
+   public static class a implements tz {
+      private final arx c;
+      @Nullable
+      private tt d;
+      private boolean e = true;
+
+      public a(arx $$0) {
+         this.c = $$0;
       }
 
-      return this.c.get();
-   }
+      private boolean a(tt $$0) {
+         return $$0.equals(this.d) ? true : this.d == null || $$0.j().a(this.d.j());
+      }
 
-   @Override
-   public <T> Optional<T> a(ta.a<T> $$0) {
-      return this.b().a($$0);
-   }
-
-   @Override
-   public <T> Optional<T> a(ta.b<T> $$0, ts $$1) {
-      return this.b().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof tz $$1 && this.b.equals($$1.b)) {
+      @Override
+      public boolean updateAndValidate(tt $$0) {
+         this.e = this.e && $$0.a(this.c) && this.a($$0);
+         if (!this.e) {
+            return false;
+         } else {
+            this.d = $$0;
             return true;
          }
-
-         return false;
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
    }
 }

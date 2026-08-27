@@ -1,60 +1,64 @@
-public class eeh {
-   public static final eeh a = new eeh(0.0F, 0.0F);
-   public static final eeh b = new eeh(1.0F, 1.0F);
-   public static final eeh c = new eeh(1.0F, 0.0F);
-   public static final eeh d = new eeh(-1.0F, 0.0F);
-   public static final eeh e = new eeh(0.0F, 1.0F);
-   public static final eeh f = new eeh(0.0F, -1.0F);
-   public static final eeh g = new eeh(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final eeh h = new eeh(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.mojang.logging.LogUtils;
+import java.util.Set;
+import org.slf4j.Logger;
 
-   public eeh(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public class eeh extends edv {
+   private static final Logger a = LogUtils.getLogger();
+   final egc b;
+   final boolean c;
+
+   eeh(efh[] $$0, egc $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public eeh a(float $$0) {
-      return new eeh(this.i * $$0, this.j * $$0);
+   @Override
+   public edx b() {
+      return edy.i;
    }
 
-   public float a(eeh $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   @Override
+   public Set<eeq<?>> a() {
+      return this.b.a();
    }
 
-   public eeh b(eeh $$0) {
-      return new eeh(this.i + $$0.i, this.j + $$0.j);
+   @Override
+   public ciw a(ciw $$0, ech $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.c ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - aro.a(this.b.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(aro.d($$4 * (float)$$2));
+      } else {
+         a.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
    }
 
-   public eeh b(float $$0) {
-      return new eeh(this.i + $$0, this.j + $$0);
+   public static edv.a<?> a(egc $$0) {
+      return a($$1 -> new eeh($$1, $$0, false));
    }
 
-   public boolean c(eeh $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
+   public static edv.a<?> a(egc $$0, boolean $$1) {
+      return a($$2 -> new eeh($$2, $$0, $$1));
    }
 
-   public eeh a() {
-      float $$0 = apa.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new eeh(this.i / $$0, this.j / $$0);
-   }
+   public static class a extends edv.c<eeh> {
+      public void a(JsonObject $$0, eeh $$1, JsonSerializationContext $$2) {
+         super.a($$0, $$1, $$2);
+         $$0.add("damage", $$2.serialize($$1.b));
+         $$0.addProperty("add", $$1.c);
+      }
 
-   public float b() {
-      return apa.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(eeh $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public eeh d() {
-      return new eeh(-this.i, -this.j);
+      public eeh a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
+         egc $$3 = arf.a($$0, "damage", $$1, egc.class);
+         boolean $$4 = arf.a($$0, "add", false);
+         return new eeh($$2, $$3, $$4);
+      }
    }
 }

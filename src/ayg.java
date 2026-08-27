@@ -1,26 +1,22 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class ayg extends axd {
-   public ayg(int $$0, Schema $$1) {
+public class ayg extends asu {
+   private final Predicate<String> a;
+
+   public ayg(Schema $$0, String $$1, Predicate<String> $$2) {
       super($$0, $$1);
+      this.a = $$2.negate();
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(avw.m.in($$0)), "HandItems", DSL.list(avw.m.in($$0)));
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:illager_beast");
-      a($$0, $$1, "minecraft:ravager");
-      return $$1;
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
    }
 }

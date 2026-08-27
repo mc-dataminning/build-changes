@@ -1,60 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
 public class dgt {
-   public static final Codec<dgt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dgs.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, dgt::new)
-   );
-   private Optional<Pair<dgs, Long>> b;
+   private final int a;
+   private final BitSet b;
+   private dgt.a c = ($$0x, $$1x, $$2) -> false;
 
-   public dgt(Optional<dgs> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public dgt(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   public dgt() {
-      this.b = Optional.empty();
+   public void a(dgt.a $$0) {
+      this.c = $$0;
    }
 
-   public void a(dgs $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
-      }
+   public dgt(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   private boolean b(dgs $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dgs, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dgs $$4 = (dgs)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dgu.a_($$0.a()) > dgu.a_($$4.a());
-            }
-         }
-      }
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   public Optional<dgs> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dgs)this.b.get().getLeft()) : Optional.empty();
-      }
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   public void a() {
-      this.b = Optional.empty();
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   }
+
+   public Stream<gv> a(cor $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
+   }
+
+   public long[] a() {
+      return this.b.toLongArray();
+   }
+
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

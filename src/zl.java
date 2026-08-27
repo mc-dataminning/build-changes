@@ -1,27 +1,24 @@
-public record zl(String b, int c, bym d, boolean e, int f, bft g, boolean h, boolean i) implements uo<zb> {
-   public static final int a = 16;
+public class zl implements uw<wo> {
+   private final int a;
 
-   public zl(sf $$0) {
-      this($$0.e(16), $$0.readByte(), $$0.b(bym.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bft.class), $$0.readBoolean(), $$0.readBoolean());
+   public zl(int $$0) {
+      this.a = $$0;
+   }
+
+   public zl(sh $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.b);
-      $$0.writeByte(this.c);
-      $$0.a(this.d);
-      $$0.writeBoolean(this.e);
-      $$0.writeByte(this.f);
-      $$0.a(this.g);
-      $$0.writeBoolean(this.h);
-      $$0.writeBoolean(this.i);
+   public void a(sh $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.b;
+   public int a() {
+      return this.a;
    }
 }

@@ -1,112 +1,74 @@
-import org.joml.Matrix3f;
+import org.joml.FrustumIntersection;
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class fqi extends fox<bvc> {
-   public fqi(foy.a $$0) {
-      super($$0);
+public class fqi {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
+
+   public fqi(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   public void a(bvc $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      bvd $$6 = $$0.j().a();
-      float $$7 = 0.0625F;
-      $$3.b(0.0625F, 0.0625F, 0.0625F);
-      ein $$8 = $$4.getBuffer(fkf.b(this.a($$0)));
-      fvt $$9 = enn.N().aE();
-      this.a($$3, $$8, $$0, $$6.a(), $$6.b(), $$9.a($$6), $$9.a());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public fqi(fqi $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   public acq a(bvc $$0) {
-      return enn.N().aE().a().i();
-   }
+   public fqi a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
 
-   private void a(eij $$0, ein $$1, bvc $$2, int $$3, int $$4, fuv $$5, fuv $$6) {
-      eij.a $$7 = $$0.c();
-      Matrix4f $$8 = $$7.a();
-      Matrix3f $$9 = $$7.b();
-      float $$10 = (float)(-$$3) / 2.0F;
-      float $$11 = (float)(-$$4) / 2.0F;
-      float $$12 = 0.5F;
-      float $$13 = $$6.c();
-      float $$14 = $$6.d();
-      float $$15 = $$6.g();
-      float $$16 = $$6.h();
-      float $$17 = $$6.c();
-      float $$18 = $$6.d();
-      float $$19 = $$6.g();
-      float $$20 = $$6.b(1.0);
-      float $$21 = $$6.c();
-      float $$22 = $$6.a(1.0);
-      float $$23 = $$6.g();
-      float $$24 = $$6.h();
-      int $$25 = $$3 / 16;
-      int $$26 = $$4 / 16;
-      double $$27 = 16.0 / (double)$$25;
-      double $$28 = 16.0 / (double)$$26;
-
-      for (int $$29 = 0; $$29 < $$25; $$29++) {
-         for (int $$30 = 0; $$30 < $$26; $$30++) {
-            float $$31 = $$10 + (float)(($$29 + 1) * 16);
-            float $$32 = $$10 + (float)($$29 * 16);
-            float $$33 = $$11 + (float)(($$30 + 1) * 16);
-            float $$34 = $$11 + (float)($$30 * 16);
-            int $$35 = $$2.dm();
-            int $$36 = apa.a($$2.dp() + (double)(($$33 + $$34) / 2.0F / 16.0F));
-            int $$37 = $$2.ds();
-            ha $$38 = $$2.cB();
-            if ($$38 == ha.c) {
-               $$35 = apa.a($$2.dn() + (double)(($$31 + $$32) / 2.0F / 16.0F));
-            }
-
-            if ($$38 == ha.e) {
-               $$37 = apa.a($$2.dt() - (double)(($$31 + $$32) / 2.0F / 16.0F));
-            }
-
-            if ($$38 == ha.d) {
-               $$35 = apa.a($$2.dn() - (double)(($$31 + $$32) / 2.0F / 16.0F));
-            }
-
-            if ($$38 == ha.f) {
-               $$37 = apa.a($$2.dt() + (double)(($$31 + $$32) / 2.0F / 16.0F));
-            }
-
-            int $$39 = fjv.a($$2.dI(), new gu($$35, $$36, $$37));
-            float $$40 = $$5.a($$27 * (double)($$25 - $$29));
-            float $$41 = $$5.a($$27 * (double)($$25 - ($$29 + 1)));
-            float $$42 = $$5.b($$28 * (double)($$26 - $$30));
-            float $$43 = $$5.b($$28 * (double)($$26 - ($$30 + 1)));
-            this.a($$8, $$9, $$1, $$31, $$34, $$41, $$42, -0.5F, 0, 0, -1, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$40, $$42, -0.5F, 0, 0, -1, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$40, $$43, -0.5F, 0, 0, -1, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$41, $$43, -0.5F, 0, 0, -1, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$14, $$15, 0.5F, 0, 0, 1, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$13, $$15, 0.5F, 0, 0, 1, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$13, $$16, 0.5F, 0, 0, 1, $$39);
-            this.a($$8, $$9, $$1, $$31, $$34, $$14, $$16, 0.5F, 0, 0, 1, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$19, -0.5F, 0, 1, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$19, -0.5F, 0, 1, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$20, 0.5F, 0, 1, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$20, 0.5F, 0, 1, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$19, 0.5F, 0, -1, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$19, 0.5F, 0, -1, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$20, -0.5F, 0, -1, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$20, -0.5F, 0, -1, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$22, $$23, 0.5F, -1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$34, $$22, $$24, 0.5F, -1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$34, $$21, $$24, -0.5F, -1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$31, $$33, $$21, $$23, -0.5F, -1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$22, $$23, -0.5F, 1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$22, $$24, -0.5F, 1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$34, $$21, $$24, 0.5F, 1, 0, 0, $$39);
-            this.a($$8, $$9, $$1, $$32, $$33, $$21, $$23, 0.5F, 1, 0, 0, $$39);
-         }
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
       }
+
+      return this;
    }
 
-   private void a(Matrix4f $$0, Matrix3f $$1, ein $$2, float $$3, float $$4, float $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, $$3, $$4, $$7).a(255, 255, 255, 255).a($$5, $$6).c(fum.d).b($$11).a($$1, (float)$$8, (float)$$9, (float)$$10).e();
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
+
+   public boolean a(eha $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
    }
 }

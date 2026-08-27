@@ -1,41 +1,57 @@
-public interface bxa {
-   int l_ = 10;
+import javax.annotation.Nullable;
 
-   int fY();
+public abstract class bxa implements bxi {
+   protected final bwy a;
 
-   static boolean a(bfz $$0, bfz $$1) {
-      float $$2 = (float)$$0.b(bhg.f);
-      float $$3;
-      if (!$$0.h_() && (int)$$2 > 0) {
-         $$3 = $$2 / 2.0F + (float)$$0.dI().z.a((int)$$2);
-      } else {
-         $$3 = $$2;
-      }
-
-      boolean $$5 = $$1.a($$0.dJ().b($$0), $$3);
-      if ($$5) {
-         $$0.a($$0, $$1);
-         if (!$$0.h_()) {
-            b($$0, $$1);
-         }
-      }
-
-      return $$5;
+   public bxa(bwy $$0) {
+      this.a = $$0;
    }
 
-   static void b(bfz $$0, bfz $$1) {
-      double $$2 = $$0.b(bhg.g);
-      double $$3 = $$1.b(bhg.c);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dn() - $$0.dn();
-         double $$6 = $$1.dt() - $$0.dt();
-         float $$7 = (float)($$0.dI().z.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dI().z.i() * 0.5F + 0.2F);
-         eei $$9 = new eei($$5, 0.0, $$6).d().a($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dI().z.i() * 0.5;
-         $$1.j($$9.c, $$10, $$9.e);
-         $$1.S = true;
-      }
+   @Override
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(bwx $$0, gv $$1, bhe $$2, @Nullable cbl $$3) {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public ehf g() {
+      return null;
+   }
+
+   @Override
+   public float a(bhe $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dn().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

@@ -1,70 +1,33 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class fwq<T extends cbl, M extends fek<T> & fdl & fes> extends fwk<T, M> {
+   private final fnc a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-public class fwq implements AutoCloseable {
-   private final Map<acq, fwq.a> a;
-
-   public fwq(Map<acq, acq> $$0, fuw $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         fuu $$2 = new fuu((acq)$$1x.getKey());
-         $$1.a((acq)$$1x.getKey(), $$2);
-         return new fwq.a($$2, (acq)$$1x.getValue());
-      }));
-   }
-
-   public fuu a(acq $$0) {
-      return this.a.get($$0).a();
+   public fwq(fue<T, M> $$0, fnc $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(fwq.a::close);
-      this.a.clear();
-   }
-
-   public Map<acq, CompletableFuture<fwq.b>> a(akx $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         fwq.a $$4 = $$3.getValue();
-         return fuq.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new fwq.b($$4.a, $$1xx));
-      }));
-   }
-
-   static record a(fuu a, acq b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
+   protected void a(biw $$0, ciw $$1, cit $$2, biq $$3, elh $$4, fng $$5, int $$6) {
+      if ($$1.a(ciz.qj) && $$0.fn() == $$1 && $$0.aH == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   public static class b {
-      private final fuu a;
-      private final fuq.a b;
-
-      public b(fuu $$0, fuq.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Nullable
-      public fuv a(acq $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public fuv a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   private void a(biw $$0, ciw $$1, biq $$2, elh $$3, fng $$4, int $$5) {
+      $$3.a();
+      fhj $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = aro.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      fvw.a($$3, false);
+      boolean $$8 = $$2 == biq.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, cit.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

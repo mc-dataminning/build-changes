@@ -1,119 +1,18 @@
-import javax.annotation.Nullable;
+public class cuf extends css {
+   protected static final float a = 6.0F;
+   protected static final ehy b = csk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-public class cuf extends cwb implements cwo {
-   public static final ddb a = dcr.at;
-   public static final int b = 4;
-   private static final efb[] g = new efb[]{
-      cpn.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      cpn.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      cpn.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      cpn.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      cpn.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dcs h = dcr.C;
-   public static final dcs c = dcr.j;
-   private static final float i = 0.85F;
-
-   public cuf(dca.d $$0) {
-      super(new dbo(0.85F), $$0);
-      this.k(this.C.b().a(d, Integer.valueOf(0)).a(a, Integer.valueOf(0)).a(h, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   protected cuf(dex.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(d).a(a).a(h).a(c);
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return b;
    }
 
    @Override
-   protected boolean d(dcb $$0, cls $$1, gu $$2) {
-      return super.d($$0, $$1, $$2) || $$0.a(cpo.dR);
-   }
-
-   @Nullable
-   @Override
-   public dcb a(cih $$0) {
-      dxe $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == dxf.c;
-      return super.a($$0).a(h, Boolean.valueOf($$2)).a(a, Integer.valueOf(4));
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      eei $$4 = $$0.n($$1, $$2);
-      efb $$5;
-      if (!$$0.c(c)) {
-         $$5 = g[4];
-      } else {
-         $$5 = g[$$0.c(a)];
-      }
-
-      return $$5.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return h($$0) ? $$1.a_($$2.c()).a(cpo.aL) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
-      }
-
-      return $$1 == ha.b && !$$0.a($$3, $$4) ? cpo.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(h) ? dxf.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!h($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
-         }
-      } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(a), 2);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return !h($$2) || !n($$2);
-   }
-
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      if (h($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(a), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static boolean h(dcb $$0) {
-      return $$0.c(c);
-   }
-
-   private static boolean n(dcb $$0) {
-      return $$0.c(a) == 4;
-   }
-
-   public static dcb b() {
-      return b(0);
-   }
-
-   public static dcb b(int $$0) {
-      return cpo.E.n().a(c, Boolean.valueOf(true)).a(a, Integer.valueOf($$0));
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return $$0.a(apj.cd);
    }
 }

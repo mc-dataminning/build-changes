@@ -1,77 +1,28 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public abstract class dwp<M extends dwp<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final ded[] d = new ded[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<ded> a;
+public class dwp extends dux {
+   public static final Codec<dwp> d = a(dwp::new);
 
-   protected dwp(Long2ObjectOpenHashMap<ded> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public dwp(dux.c $$0) {
+      super($$0);
    }
 
-   public abstract M b();
-
-   public ded a(long $$0) {
-      ded $$1 = ((ded)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   @Override
+   public Optional<dux.b> a(dux.a $$0) {
+      return a($$0, dkh.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
+   private void a(dvp $$0, dux.a $$1) {
+      cor $$2 = $$1.h();
+      dlg $$3 = $$1.f();
+      gv $$4 = new gv($$2.d(), 90, $$2.e());
+      cyw $$5 = cyw.a($$3);
+      dwo.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
-   @Nullable
-   public ded c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      ded $$2 = (ded)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public ded d(long $$0) {
-      return (ded)this.a.remove($$0);
-   }
-
-   public void a(long $$0, ded $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
+   @Override
+   public dvg<?> e() {
+      return dvg.e;
    }
 }

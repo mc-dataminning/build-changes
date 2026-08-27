@@ -1,27 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class awa {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-      .put("minecraft:red_coral", "minecraft:fire_coral_block")
-      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-      .build();
+public class awa extends ayv {
+   public awa(Schema $$0, boolean $$1) {
+      super("EntityZombieSplitFix", $$0, $$1);
+   }
+
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("Zombie", $$0)) {
+         String $$2 = "Zombie";
+         int $$3 = $$1.get("ZombieType").asInt(0);
+         switch ($$3) {
+            case 0:
+            default:
+               break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$2 = "ZombieVillager";
+               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
+               break;
+            case 6:
+               $$2 = "Husk";
+         }
+
+         $$1 = $$1.remove("ZombieType");
+         return Pair.of($$2, $$1);
+      } else {
+         return Pair.of($$0, $$1);
+      }
+   }
 }

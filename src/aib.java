@@ -1,61 +1,13 @@
-public abstract class aib extends dwq {
-   protected aib(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = hx.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = hx.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+public class aib {
+   public static void a(CommandDispatcher<ds> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((ds)$$0x.getSource()).e().A();
+         te $$2 = tg.a(String.valueOf($$1x));
+         ((ds)$$0x.getSource()).a(() -> te.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

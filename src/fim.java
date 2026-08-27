@@ -1,45 +1,26 @@
-public abstract class fim extends fhz {
-   protected fuv E;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   protected fim(few $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected fim(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(fuv $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(fih $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(fih $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+public interface fim {
+   fim a = new fim() {
+      @Override
+      public CompletableFuture<Optional<cbn>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
+
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static fim a(UserApiService $$0, erc $$1, Path $$2) {
+      return (fim)($$1.h() == erc.a.c ? new fhx($$0, $$1.b(), $$2) : a);
    }
+
+   CompletableFuture<Optional<cbn>> a();
+
+   boolean b();
 }

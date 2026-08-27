@@ -35,7 +35,7 @@ public class bf {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)apa.e($$6)) || !this.c.d((double)apa.e($$7)) || !this.d.d((double)apa.e($$8))) {
+      if (!this.b.d((double)aro.e($$6)) || !this.c.d((double)aro.e($$7)) || !this.d.d((double)aro.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
@@ -44,7 +44,7 @@ public class bf {
 
    public static bf a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "distance");
+         JsonObject $$1 = arf.m($$0, "distance");
          cj.c $$2 = cj.c.a($$1.get("x"));
          cj.c $$3 = cj.c.a($$1.get("y"));
          cj.c $$4 = cj.c.a($$1.get("z"));

@@ -1,49 +1,124 @@
-public class eto extends euq {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final sw c = sw.c("credits_and_attribution.screen.title");
-   private static final sw k = sw.c("credits_and_attribution.button.credits");
-   private static final sw l = sw.c("credits_and_attribution.button.attribution");
-   private static final sw m = sw.c("credits_and_attribution.button.licenses");
-   private final euq n;
-   private final esg o = new esg(this);
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
 
-   public eto(euq $$0) {
-      super(c);
-      this.n = $$0;
+public class eto implements gcr {
+   private static final long a = 3000L;
+   private final eqn b;
+   private final List<eto.a> c = Lists.newArrayList();
+   private boolean d;
+
+   public eto(eqn $$0) {
+      this.b = $$0;
+   }
+
+   public void a(erx $$0) {
+      if (!this.d && this.b.m.R().c()) {
+         this.b.ah().a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.R().c()) {
+         this.b.ah().b(this);
+         this.d = false;
+      }
+
+      if (this.d && !this.c.isEmpty()) {
+         ehf $$1 = new ehf(this.b.t.dp(), this.b.t.dt(), this.b.t.dv());
+         ehf $$2 = new ehf(0.0, 0.0, -1.0).a(-this.b.t.dC() * (float) (Math.PI / 180.0)).b(-this.b.t.dA() * (float) (Math.PI / 180.0));
+         ehf $$3 = new ehf(0.0, 1.0, 0.0).a(-this.b.t.dC() * (float) (Math.PI / 180.0)).b(-this.b.t.dA() * (float) (Math.PI / 180.0));
+         ehf $$4 = $$2.c($$3);
+         int $$5 = 0;
+         int $$6 = 0;
+         double $$7 = this.b.m.x().c();
+         Iterator<eto.a> $$8 = this.c.iterator();
+
+         while ($$8.hasNext()) {
+            eto.a $$9 = $$8.next();
+            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
+               $$8.remove();
+            } else {
+               $$6 = Math.max($$6, this.b.h.a($$9.a()));
+            }
+         }
+
+         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+         for (eto.a $$10 : this.c) {
+            int $$11 = 255;
+            te $$12 = $$10.a();
+            ehf $$13 = $$10.c().d($$1).d();
+            double $$14 = -$$4.b($$13);
+            double $$15 = -$$2.b($$13);
+            boolean $$16 = $$15 > 0.5;
+            int $$17 = $$6 / 2;
+            int $$18 = 9;
+            int $$19 = $$18 / 2;
+            float $$20 = 1.0F;
+            int $$21 = this.b.h.a($$12);
+            int $$22 = aro.d(aro.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
+            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
+            $$0.c().a();
+            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
+            $$0.c().b(1.0F, 1.0F, 1.0F);
+            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
+            int $$24 = $$23 + -16777216;
+            if (!$$16) {
+               if ($$14 > 0.0) {
+                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
+               } else if ($$14 < 0.0) {
+                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
+               }
+            }
+
+            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
+            $$0.c().b();
+            $$5++;
+         }
+      }
    }
 
    @Override
-   protected void b() {
-      this.o.a(new eqk(this.m(), this.i));
-      esf $$0 = this.o.c(new esf()).c(8);
-      $$0.b().b();
-      esf.b $$1 = $$0.d(1);
-      $$1.a(epi.a(k, $$0x -> this.l()).a(210).a());
-      $$1.a(epi.a(l, etj.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
-      $$1.a(epi.a(m, etj.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
-      this.o.b(epi.a(sv.d, $$0x -> this.aw_()).a());
-      this.o.c();
-      this.o.a(this::d);
+   public void a(gbo $$0, gct $$1) {
+      if ($$1.a() != null) {
+         te $$2 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (eto.a $$3 : this.c) {
+               if ($$3.a().equals($$2)) {
+                  $$3.a(new ehf($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new eto.a($$2, new ehf($$0.h(), $$0.i(), $$0.j())));
+      }
    }
 
-   @Override
-   protected void aG_() {
-      this.o.c();
-   }
+   public static class a {
+      private final te a;
+      private long b;
+      private ehf c;
 
-   private void l() {
-      this.f.a(new euy(false, () -> this.f.a(this)));
-   }
+      public a(te $$0, ehf $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = ac.b();
+      }
 
-   @Override
-   public void aw_() {
-      this.f.a(this.n);
-   }
+      public te a() {
+         return this.a;
+      }
 
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      super.a($$0, $$1, $$2, $$3);
+      public long b() {
+         return this.b;
+      }
+
+      public ehf c() {
+         return this.c;
+      }
+
+      public void a(ehf $$0) {
+         this.c = $$0;
+         this.b = ac.b();
+      }
    }
 }

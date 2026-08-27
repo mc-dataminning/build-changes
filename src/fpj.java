@@ -1,19 +1,23 @@
-public class fpj extends fqe<bvx, fbs<bvx>> {
-   private static final acq a = new acq("textures/entity/zombie/zombie.png");
-   private final float i;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public fpj(foy.a $$0, float $$1) {
-      super($$0, new fbk($$0.a(fed.ab)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new fsz<>(this, $$0.d()));
-      this.a(new fsw<>(this, new fbk($$0.a(fed.ac)), new fbk($$0.a(fed.ad)), $$0.g()));
+public class fpj<S extends dck> implements cun.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = fne.a($$0.k(), $$0.p());
+         int $$4 = fne.a($$1.k(), $$1.p());
+         int $$5 = fnf.a($$3);
+         int $$6 = fnf.a($$4);
+         int $$7 = fnf.b($$3);
+         int $$8 = fnf.b($$4);
+         return fnf.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   protected void a(bvx $$0, eij $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
    }
 
-   public acq a(bvx $$0) {
-      return a;
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

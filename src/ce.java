@@ -11,7 +11,7 @@ public class ce {
       this.b = $$0;
    }
 
-   public boolean a(aif $$0, gu $$1) {
+   public boolean a(aki $$0, gv $$1) {
       if (this == a) {
          return true;
       } else {
@@ -31,7 +31,7 @@ public class ce {
 
    public static ce a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "light");
+         JsonObject $$1 = arf.m($$0, "light");
          cj.d $$2 = cj.d.a($$1.get("light"));
          return new ce($$2);
       } else {

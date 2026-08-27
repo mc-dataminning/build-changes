@@ -1,5 +1,3 @@
-public interface bgr {
-   void a(ami var1);
-
-   boolean a();
+public interface bgr extends cfg {
+   te H_();
 }

@@ -1,70 +1,98 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eak extends eah {
-   final anl<cfu> i;
-   final boolean j;
+public class eak extends eav {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   eak(anl<cfu> $$0, boolean $$1, int $$2, int $$3, eck[] $$4, eaz[] $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.i = $$0;
-      this.j = $$1;
+   public eak(boolean $$0) {
+      this.l = $$0;
    }
 
    @Override
-   public eag a() {
-      return ead.e;
+   public void a(cpx $$0, biy $$1) {
+      super.a($$0, $$1);
+      $$1.a(eam.j, 0.0F);
+      this.m = $$1.a(eam.c);
+      $$1.a(eam.c, 6.0F);
+      this.n = $$1.a(eam.k);
+      $$1.a(eam.k, 4.0F);
    }
 
    @Override
-   public void a(Consumer<cfz> $$0, dzk $$1) {
-      jb.i.c(this.i).forEach($$1x -> $$0.accept(new cfz($$1x)));
+   public void b() {
+      this.b.a(eam.c, this.m);
+      this.b.a(eam.k, this.n);
+      super.b();
    }
 
-   private boolean a(dzk $$0, Consumer<eae> $$1) {
-      if (!this.a($$0)) {
-         return false;
+   @Override
+   public eao a() {
+      return !this.b.aX() ? super.a() : this.c(new gv(aro.a(this.b.cG().a), aro.a(this.b.cG().b + 0.5), aro.a(this.b.cG().c)));
+   }
+
+   @Override
+   public eau a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(aro.a($$0), aro.a($$1 + 0.5), aro.a($$2)));
+   }
+
+   @Override
+   public int a(eao[] $$0, eao $$1) {
+      int $$2 = super.a($$0, $$1);
+      eam $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      eam $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != eam.w) {
+         $$5 = aro.d(Math.max(1.0F, this.b.dE()));
       } else {
-         for (final he<cfu> $$2 : jb.i.c(this.i)) {
-            $$1.accept(new eah.c() {
-               @Override
-               public void a(Consumer<cfz> $$0, dzk $$1) {
-                  $$0.accept(new cfz($$2));
-               }
-            });
+         $$5 = 0;
+      }
+
+      double $$7 = this.d(new gv($$1.a, $$1.b, $$1.c));
+      eao $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, hb.b, $$4);
+      eao $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, hb.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
+
+      if (this.b($$9, $$1) && $$4 != eam.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eao $$11 = $$0[$$10];
+         if ($$11.l == eam.j && this.l && $$11.b < this.b.dK().t_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable eao $$0, eao $$1) {
+      return this.a($$0, $$1) && $$0.l == eam.j;
+   }
+
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public eam a(coq $$0, int $$1, int $$2, int $$3) {
+      gv.a $$4 = new gv.a();
+      eam $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == eam.j) {
+         for (hb $$6 : hb.values()) {
+            eam $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == eam.a) {
+               return eam.k;
+            }
          }
 
-         return true;
-      }
-   }
-
-   @Override
-   public boolean expand(dzk $$0, Consumer<eae> $$1) {
-      return this.j ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
-
-   public static eah.a<?> a(anl<cfu> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eak($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static eah.a<?> b(anl<cfu> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eak($$0, true, $$1, $$2, $$3, $$4));
-   }
-
-   public static class a extends eah.e<eak> {
-      public void a(JsonObject $$0, eak $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("name", $$1.i.b().toString());
-         $$0.addProperty("expand", $$1.j);
-      }
-
-      protected eak a(JsonObject $$0, JsonDeserializationContext $$1, int $$2, int $$3, eck[] $$4, eaz[] $$5) {
-         acq $$6 = new acq(aor.i($$0, "name"));
-         anl<cfu> $$7 = anl.a(jc.D, $$6);
-         boolean $$8 = aor.k($$0, "expand");
-         return new eak($$7, $$8, $$2, $$3, $$4, $$5);
+         return eam.j;
+      } else {
+         return a($$0, $$4);
       }
    }
 }

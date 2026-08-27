@@ -1,52 +1,37 @@
-import java.util.List;
+import org.joml.Vector3f;
 
-public class erd implements erg {
-   public static final int a = 5000;
-   private final ae e;
-   private boolean f;
-
-   public erd(ae $$0) {
-      this.e = $$0;
+public record erd(erd.c a, erf... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, erf[] var3, int var4, int var5, float var6);
    }
 
-   @Override
-   public erg.a a(eox $$0, erh $$1, long $$2) {
-      an $$3 = this.e.d();
-      $$0.a(b, 0, 0, 0, 0, this.a(), this.b());
-      if ($$3 != null) {
-         List<aom> $$4 = $$1.b().h.c($$3.a(), 125);
-         int $$5 = $$3.e() == ao.b ? 16746751 : 16776960;
-         if ($$4.size() == 1) {
-            $$0.a($$1.b().h, $$3.e().d(), 30, 7, $$5 | 0xFF000000, false);
-            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = apa.d(apa.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1.b().h, $$3.e().d(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = apa.d(apa.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+   public static class b {
+      public static final erd.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final erd.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            aro.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            aro.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            aro.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
 
-               for (aom $$11 : $$4) {
-                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
+   public interface c {
+      void apply(fhj var1, Vector3f var2);
+   }
 
-         if (!this.f && $$2 > 0L) {
-            this.f = true;
-            if ($$3.e() == ao.b) {
-               $$1.b().ah().a(fxt.a(amh.yu, 1.0F, 1.0F));
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-         return (double)$$2 >= 5000.0 * $$1.c() ? erg.a.b : erg.a.a;
-      } else {
-         return erg.a.b;
-      }
+   public static class d {
+      public static final erd.c a = fhj::a;
+      public static final erd.c b = fhj::b;
+      public static final erd.c c = fhj::c;
    }
 }

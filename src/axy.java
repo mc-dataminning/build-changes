@@ -1,17 +1,18 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class axy extends axd {
-   public axy(int $$0, Schema $$1) {
+public class axy extends DataFix {
+   public axy(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.put("minecraft:cod", $$1.remove("minecraft:cod_mob"));
-      $$1.put("minecraft:salmon", $$1.remove("minecraft:salmon_mob"));
-      return $$1;
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsForceVBOFix",
+         this.getInputSchema().getType(aym.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
+      );
    }
 }

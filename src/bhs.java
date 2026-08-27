@@ -1,11 +1,15 @@
-public interface bhs<E extends bfz> {
-   bhr.a a();
+public enum bhs {
+   a(n.j),
+   b(n.m),
+   c(n.j);
 
-   boolean e(aif var1, E var2, long var3);
+   private final n d;
 
-   void f(aif var1, E var2, long var3);
+   private bhs(n $$0) {
+      this.d = $$0;
+   }
 
-   void g(aif var1, E var2, long var3);
-
-   String b();
+   public n a() {
+      return this.d;
+   }
 }

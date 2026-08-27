@@ -1,5 +1,5 @@
-import java.util.function.Function;
-
-public interface efu<T> {
-   rk b(long var1, Function<T, String> var3);
+public class efu extends ecr<efv> {
+   public efu(ecq<? extends efv> $$0) {
+      super($$0);
+   }
 }

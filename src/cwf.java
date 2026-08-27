@@ -1,48 +1,43 @@
 import javax.annotation.Nullable;
 
-public class cwf extends cpa {
-   public static final dcs a = dcr.E;
-   private final bdc b = bcz.a(5);
-
-   public cwf(dca.d $$0) {
+public class cwf extends cvy {
+   public cwf(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)));
+   }
+
+   public static dey a() {
+      return csl.G.n();
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
-   }
+   public void a(cpk $$0, cbl $$1, gv $$2, dey $$3, @Nullable dck $$4, ciw $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cnf.a(cnh.v, $$5) == 0) {
+         if ($$0.x_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
 
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
+         dey $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, a());
+         }
       }
    }
 
-   @Nullable
    @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new dar($$0, $$1);
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$1.a(cpt.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Nullable
-   @Override
-   public <T extends czn> czo<T> a(cmm $$0, dcb $$1, czp<T> $$2) {
-      return $$0.B ? null : a($$2, czp.K, dar::a);
-   }
-
-   @Override
-   public cvs b_(dcb $$0) {
-      return cvs.c;
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, cfz $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
+   protected void d(dey $$0, cpk $$1, gv $$2) {
+      if ($$1.x_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, a());
+         $$1.a($$2, a().b(), $$2);
       }
    }
 }

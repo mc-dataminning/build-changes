@@ -1,15 +1,23 @@
-public class cio extends cil {
-   public cio(acq $$0, String $$1, cir $$2, ciz $$3, cfz $$4, float $$5, int $$6) {
-      super(cjf.c, $$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cio(hf<aot> b, int c, float d) {
+   public static final Codec<cio> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aot.b.fieldOf("sound_event").forGetter(cio::a), aqw.j.fieldOf("use_duration").forGetter(cio::b), aqw.k.fieldOf("range").forGetter(cio::c)
+            )
+            .apply($$0, cio::new)
+   );
+
+   public hf<aot> a() {
+      return this.b;
    }
 
-   @Override
-   public cfz h() {
-      return new cfz(cpo.nW);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public cje<?> aj_() {
-      return cje.q;
+   public float c() {
+      return this.d;
    }
 }

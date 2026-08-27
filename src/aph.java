@@ -1,59 +1,16 @@
 public class aph {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+   public static final apy<dcb> a = a("no_item_required");
+   public static final apy<dcb> b = a("pattern_item/flower");
+   public static final apy<dcb> c = a("pattern_item/creeper");
+   public static final apy<dcb> d = a("pattern_item/skull");
+   public static final apy<dcb> e = a("pattern_item/mojang");
+   public static final apy<dcb> f = a("pattern_item/globe");
+   public static final apy<dcb> g = a("pattern_item/piglin");
 
-   public aph(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
-      }
+   private aph() {
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
-   }
-
-   public int a(ha $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
-   }
-
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
-   }
-
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
-
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
-
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+   private static apy<dcb> a(String $$0) {
+      return apy.a(jd.c, new aep($$0));
    }
 }

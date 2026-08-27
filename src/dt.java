@@ -30,93 +30,97 @@ public class dt {
    private final CommandDispatcher<ds> g = new CommandDispatcher();
 
    public dt(dt.a $$0, dm $$1) {
-      adt.a(this.g);
-      adu.a(this.g, $$1);
-      aen.a(this.g, $$1);
-      ady.a(this.g);
-      aea.a(this.g, $$1);
-      aeb.a(this.g, $$1);
-      aec.a(this.g, $$1);
-      agy.a(this.g);
-      aed.a(this.g);
-      aef.a(this.g);
-      aei.a(this.g);
-      aej.a(this.g);
-      aek.a(this.g, $$1);
-      ael.a(this.g);
-      aem.a(this.g, $$1);
-      aeo.a(this.g);
-      aeq.a(this.g, $$1);
-      aep.a(this.g, $$1);
-      aer.a(this.g);
-      aes.a(this.g);
-      aet.a(this.g);
-      aeu.a(this.g);
-      aev.a(this.g, $$1);
-      aew.a(this.g);
-      aex.a(this.g, $$1);
-      aez.a(this.g);
-      afa.a(this.g);
-      afb.a(this.g);
-      afc.a(this.g, $$1);
-      afd.a(this.g, $$1);
-      afe.a(this.g);
-      afi.a(this.g, $$1);
-      afk.a(this.g);
-      afl.a(this.g);
-      afp.a(this.g);
-      afo.a(this.g);
-      afr.a(this.g);
-      afs.a(this.g);
-      afw.a(this.g);
-      afx.a(this.g);
+      aft.a(this.g);
+      afu.a(this.g, $$1);
+      ago.a(this.g, $$1);
       afy.a(this.g);
-      afz.a(this.g, $$0 != dt.a.c);
       aga.a(this.g, $$1);
-      agc.a(this.g);
+      agb.a(this.g, $$1);
+      agc.a(this.g, $$1);
+      aja.a(this.g);
       agd.a(this.g);
       agf.a(this.g);
-      agg.a(this.g);
-      agi.a(this.g);
-      agj.a(this.g, $$1);
+      agj.a(this.g);
       agk.a(this.g);
-      agl.a(this.g);
+      agl.a(this.g, $$1);
       agm.a(this.g);
-      agn.a(this.g);
-      ago.a(this.g);
+      agn.a(this.g, $$1);
       agp.a(this.g);
-      agq.a(this.g);
-      agr.a(this.g);
+      agr.a(this.g, $$1);
+      agq.a(this.g, $$1);
+      ags.a(this.g);
       agt.a(this.g);
+      agu.a(this.g);
       agv.a(this.g);
-      if (bat.e.d()) {
-         aey.a(this.g);
+      agw.a(this.g, $$1);
+      agx.a(this.g);
+      agy.a(this.g, $$1);
+      aha.a(this.g);
+      ahb.a(this.g);
+      ahc.a(this.g);
+      ahd.a(this.g, $$1);
+      ahe.a(this.g, $$1);
+      ahf.a(this.g);
+      ahj.a(this.g, $$1);
+      ahl.a(this.g);
+      ahm.a(this.g);
+      ahp.a(this.g);
+      ahr.a(this.g);
+      ahq.a(this.g);
+      aht.a(this.g);
+      ahu.a(this.g);
+      ahy.a(this.g);
+      ahz.a(this.g);
+      aia.a(this.g);
+      aib.a(this.g, $$0 != dt.a.c);
+      aic.a(this.g, $$1);
+      aie.a(this.g);
+      aif.a(this.g);
+      aih.a(this.g);
+      aii.a(this.g);
+      aik.a(this.g);
+      ail.a(this.g, $$1);
+      aim.a(this.g);
+      ain.a(this.g);
+      aio.a(this.g);
+      aip.a(this.g);
+      aiq.a(this.g);
+      air.a(this.g);
+      ais.a(this.g);
+      ait.a(this.g);
+      aiv.a(this.g);
+      aix.a(this.g);
+      if (bdk.e.d()) {
+         agz.a(this.g);
       }
 
       if (aa.aS) {
-         qh.a(this.g);
-         age.a(this.g);
+         qi.a(this.g);
+         aig.a(this.g);
+         if ($$0.e) {
+            agg.a(this.g);
+         }
       }
 
       if ($$0.e) {
-         adv.a(this.g);
-         adw.a(this.g);
-         adx.a(this.g);
-         aee.a(this.g);
-         aff.a(this.g);
-         afg.a(this.g);
-         afh.a(this.g);
-         afj.a(this.g);
-         aft.a(this.g);
-         afu.a(this.g);
          afv.a(this.g);
-         agb.a(this.g);
-         agh.a(this.g);
-         agu.a(this.g);
+         afw.a(this.g);
+         afx.a(this.g);
+         age.a(this.g);
+         ahg.a(this.g);
+         ahh.a(this.g);
+         ahi.a(this.g);
+         ahk.a(this.g);
+         ahv.a(this.g);
+         ahw.a(this.g);
+         ahx.a(this.g);
+         aid.a(this.g);
+         aij.a(this.g);
+         aiw.a(this.g);
       }
 
       if ($$0.d) {
-         afm.a(this.g);
+         ahn.a(this.g);
       }
 
       this.g.setConsumer(($$0x, $$1x, $$2) -> ((ds)$$0x.getSource()).a($$0x, $$1x, $$2));
@@ -144,27 +148,27 @@ public class dt {
          $$2.b(var13.a());
          return 0;
       } catch (CommandSyntaxException var14) {
-         $$2.b(sy.a(var14.getRawMessage()));
+         $$2.b(tg.a(var14.getRawMessage()));
          if (var14.getInput() != null && var14.getCursor() >= 0) {
             int $$5 = Math.min(var14.getInput().length(), var14.getCursor());
-            tj $$6 = sw.h().a(n.h).a($$1x -> $$1x.a(new su(su.a.d, "/" + $$1)));
+            tr $$6 = te.h().a(n.h).a($$1x -> $$1x.a(new tc(tc.a.d, "/" + $$1)));
             if ($$5 > 10) {
-               $$6.b(sv.s);
+               $$6.b(td.t);
             }
 
             $$6.f(var14.getInput().substring(Math.max(0, $$5 - 10), $$5));
             if ($$5 < var14.getInput().length()) {
-               sw $$7 = sw.b(var14.getInput().substring($$5)).a(n.m, n.t);
+               te $$7 = te.b(var14.getInput().substring($$5)).a(n.m, n.t);
                $$6.b($$7);
             }
 
-            $$6.b(sw.c("command.context.here").a(n.m, n.u));
+            $$6.b(te.c("command.context.here").a(n.m, n.u));
             $$2.b($$6);
          }
 
          return 0;
       } catch (Exception var15) {
-         tj $$9 = sw.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
+         tr $$9 = te.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
          if (f.isDebugEnabled()) {
             f.error("Command exception: /{}", $$1, var15);
             StackTraceElement[] $$10 = var15.getStackTrace();
@@ -174,9 +178,9 @@ public class dt {
             }
          }
 
-         $$2.b(sw.c("command.failed").a($$1x -> $$1x.a(new tb(tb.a.a, $$9))));
+         $$2.b(te.c("command.failed").a($$1x -> $$1x.a(new tj(tj.a.a, $$9))));
          if (aa.aS) {
-            $$2.b(sw.b(ac.c(var15)));
+            $$2.b(te.b(ac.c(var15)));
             f.error("'/{}' threw an exception", $$1, var15);
          }
 
@@ -188,27 +192,27 @@ public class dt {
       return var20;
    }
 
-   public void a(aig $$0) {
-      Map<CommandNode<ds>, CommandNode<du>> $$1 = Maps.newHashMap();
-      RootCommandNode<du> $$2 = new RootCommandNode();
+   public void a(akj $$0) {
+      Map<CommandNode<ds>, CommandNode<dv>> $$1 = Maps.newHashMap();
+      RootCommandNode<dv> $$2 = new RootCommandNode();
       $$1.put(this.g.getRoot(), $$2);
-      this.a(this.g.getRoot(), $$2, $$0.da(), $$1);
-      $$0.c.a(new vi($$2));
+      this.a(this.g.getRoot(), $$2, $$0.dc(), $$1);
+      $$0.c.b(new xh($$2));
    }
 
-   private void a(CommandNode<ds> $$0, CommandNode<du> $$1, ds $$2, Map<CommandNode<ds>, CommandNode<du>> $$3) {
+   private void a(CommandNode<ds> $$0, CommandNode<dv> $$1, ds $$2, Map<CommandNode<ds>, CommandNode<dv>> $$3) {
       for (CommandNode<ds> $$4 : $$0.getChildren()) {
          if ($$4.canUse($$2)) {
-            ArgumentBuilder<du, ?> $$5 = $$4.createBuilder();
+            ArgumentBuilder<dv, ?> $$5 = $$4.createBuilder();
             $$5.requires($$0x -> true);
             if ($$5.getCommand() != null) {
                $$5.executes($$0x -> 0);
             }
 
             if ($$5 instanceof RequiredArgumentBuilder) {
-               RequiredArgumentBuilder<du, ?> $$6 = (RequiredArgumentBuilder<du, ?>)$$5;
+               RequiredArgumentBuilder<dv, ?> $$6 = (RequiredArgumentBuilder<dv, ?>)$$5;
                if ($$6.getSuggestionsProvider() != null) {
-                  $$6.suggests(gk.b($$6.getSuggestionsProvider()));
+                  $$6.suggests(gl.b($$6.getSuggestionsProvider()));
                }
             }
 
@@ -216,7 +220,7 @@ public class dt {
                $$5.redirect($$3.get($$5.getRedirect()));
             }
 
-            CommandNode<du> $$7 = $$5.build();
+            CommandNode<dv> $$7 = $$5.build();
             $$3.put($$4, $$7);
             $$1.addChild($$7);
             if (!$$4.getChildren().isEmpty()) {
@@ -262,21 +266,21 @@ public class dt {
       }
    }
 
-   public static dm a(final hg.b $$0) {
+   public static dm a(final hh.b $$0) {
       return new dm() {
          @Override
-         public <T> hg<T> a(acp<? extends hr<T>> $$0x) {
-            final hg.c<T> $$1 = $$0.b($$0);
-            return new hg.a<T>($$1) {
+         public <T> hh<T> a(aeo<? extends hs<T>> $$0x) {
+            final hh.c<T> $$1 = $$0.b($$0);
+            return new hh.a<T>($$1) {
                @Override
-               public Optional<hi.c<T>> a(anl<T> $$0x) {
+               public Optional<hj.c<T>> a(apy<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public hi.c<T> b(anl<T> $$0x) {
-                  Optional<hi.c<T>> $$1 = $$1.a($$0);
-                  return $$1.orElseGet(() -> hi.a($$1, $$0));
+               public hj.c<T> b(apy<T> $$0x) {
+                  Optional<hj.c<T>> $$1 = $$1.a($$0);
+                  return $$1.orElseGet(() -> hj.a($$1, $$0));
                }
             };
          }
@@ -284,14 +288,14 @@ public class dt {
    }
 
    public static void b() {
-      dm $$0 = a(me.a());
+      dm $$0 = a(mf.a());
       CommandDispatcher<ds> $$1 = new dt(dt.a.a, $$0).a();
       RootCommandNode<ds> $$2 = $$1.getRoot();
       $$1.findAmbiguities(
          ($$1x, $$2x, $$3x, $$4x) -> f.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
       );
-      Set<ArgumentType<?>> $$3 = gi.a($$2);
-      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !gh.a($$0x.getClass())).collect(Collectors.toSet());
+      Set<ArgumentType<?>> $$3 = gj.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !gi.a($$0x.getClass())).collect(Collectors.toSet());
       if (!$$4.isEmpty()) {
          f.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
          throw new IllegalStateException("Unregistered argument types");

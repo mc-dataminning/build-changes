@@ -1,24 +1,27 @@
-public abstract class fsr<T extends bfj & bgm, M extends fbf<T>> extends ftg<T, M> {
-   public fsr(fqt<T, M> $$0) {
-      super($$0);
+public class fsr extends ftp<bus, fem<bus>> {
+   private static final aep a = new aep("textures/entity/fox/fox.png");
+   private static final aep i = new aep("textures/entity/fox/fox_sleep.png");
+   private static final aep j = new aep("textures/entity/fox/snow_fox.png");
+   private static final aep k = new aep("textures/entity/fox/snow_fox_sleep.png");
+
+   public fsr(fsj.a $$0) {
+      super($$0, new fem<>($$0.a(fhi.X)), 0.4F);
+      this.a(new fwe(this, $$0.d()));
    }
 
-   @Override
-   public void a(eij $$0, fjx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ag + $$6;
-         fbf<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         ein $$12 = $$1.getBuffer(fkf.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fum.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   protected void a(bus $$0, elh $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.gf() || $$0.fZ()) {
+         float $$5 = -aro.i($$4, $$0.O, $$0.dC());
+         $$1.a(a.b.rotationDegrees($$5));
       }
    }
 
-   protected abstract float a(float var1);
-
-   protected abstract acq a();
-
-   protected abstract fbf<T> b();
+   public aep a(bus $$0) {
+      if ($$0.q() == bus.v.a) {
+         return $$0.fB() ? i : a;
+      } else {
+         return $$0.fB() ? k : j;
+      }
+   }
 }

@@ -1,26 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class dvl extends dvn {
-   public static final Codec<dvl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dcb.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, dvl::new)
-   );
-   private final dcb b;
-   private final float d;
+@FunctionalInterface
+public interface dvl<C extends dpp> {
+   Optional<dvk<C>> createGenerator(dvl.a<C> var1);
 
-   public dvl(dcb $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   static <C extends dpp> dvl<C> simple(Predicate<dvl.a<C>> $$0, dvk<C> $$1) {
+      Optional<dvk<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   @Override
-   public boolean a(dcb $$0, apf $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   static <C extends dpp> Predicate<dvl.a<C>> checkForBiomeOnTop(dkh.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Override
-   protected dvo<?> a() {
-      return dvo.f;
+   public static record a<C extends dpp>(dgv a, cqm b, dkv c, long d, cor e, C f, cpm g, Predicate<hf<cqi>> h, dyr i, ht j) {
+      public boolean a(dkh.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         hf<cqi> $$4 = this.a.c().getNoiseBiome(hr.a($$1), hr.a($$3), hr.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

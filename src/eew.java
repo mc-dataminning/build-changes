@@ -1,53 +1,37 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class eew extends AbstractDoubleList implements eeu {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
-
-   protected eew(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class eew extends eey {
+   eew(efh[] $$0) {
+      super($$0, efj.b($$0));
    }
 
    @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public efi b() {
+      return efj.b;
    }
 
-   @Override
-   public boolean a(eeu.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   public static eew.a a(efh.a... $$0) {
+      return new eew.a($$0);
    }
 
-   private boolean b(eeu.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
+   public static class a extends eey.a {
+      public a(efh.a... $$0) {
+         super($$0);
       }
 
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
+      @Override
+      public eew.a or(efh.a $$0) {
+         this.a($$0);
+         return this;
       }
 
-      return true;
+      @Override
+      protected efh a(efh[] $$0) {
+         return new eew($$0);
+      }
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
+   public static class b extends eey.b<eew> {
+      protected eew a(efh[] $$0) {
+         return new eew($$0);
+      }
    }
 }

@@ -1,71 +1,55 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class bmn extends bmv {
-   private static final int a = 40;
-   private static final Predicate<dcb> b = dck.a(cpo.bt);
-   private final bgb c;
-   private final cmm d;
-   private int e;
-
-   public bmn(bgb $$0) {
-      this.c = $$0;
-      this.d = $$0.dI();
-      this.a(EnumSet.of(bmv.a.a, bmv.a.b, bmv.a.c));
+@Deprecated
+public class bmn {
+   public static bkp<biw> a(float $$0, bfz $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   @Override
-   public boolean a() {
-      if (this.c.ec().a(this.c.h_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         gu $$0 = this.c.di();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(cpo.i);
-      }
+   public static bkp<biw> a(bik<?> $$0, float $$1, bfz $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
    }
 
-   @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.J().n();
+   private static bkp<biw> a(float $$0, bfz $$1, Predicate<biw> $$2) {
+      float $$3 = $$0 * $$0;
+      bmn.a $$4 = new bmn.a($$1);
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$3x -> $$3x.group($$3x.c(bry.n), $$3x.b(bry.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<biw> $$9 = $$3x.<bsa>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((big)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bkz($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 
-   @Override
-   public void d() {
-      this.e = 0;
-   }
+   public static final class a {
+      private final bfz a;
+      private int b;
 
-   @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
-   }
-
-   @Override
-   public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         gu $$0 = this.c.di();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.X().b(cmi.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.L();
+      public a(bfz $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
          } else {
-            gu $$1 = $$0.d();
-            if (this.d.a_($$1).a(cpo.i)) {
-               if (this.d.X().b(cmi.c)) {
-                  this.d.c(2001, $$1, cpn.i(cpo.i.n()));
-                  this.d.a($$1, cpo.j.n(), 2);
-               }
+            this.a = $$0;
+         }
+      }
 
-               this.c.L();
-            }
+      public boolean a(art $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
          }
       }
    }

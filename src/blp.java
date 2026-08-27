@@ -1,35 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class blp<E extends bxs> extends bhr<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class blp extends bko<biy> {
+   public static final int c = 100;
+   private final bfz d;
+   private final aot e;
 
-   public blp(int $$0) {
-      super(ImmutableMap.of(bpb.aA, bpc.a, bpb.o, bpc.b, bpb.m, bpc.b, bpb.n, bpc.c, bpb.B, bpc.c, bpb.ay, bpc.c, bpb.aF, bpc.c), $$0);
+   public blp(bfz $$0, aot $$1) {
+      super(ImmutableMap.of(bry.n, brz.c, bry.S, brz.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected boolean a(aif $$0, E $$1, long $$2) {
-      return true;
+   protected boolean a(aki $$0, biy $$1, long $$2) {
+      return !$$1.aA();
    }
 
-   protected void b(aif $$0, E $$1, long $$2) {
-      $$1.a(amh.zE, 5.0F, 1.0F);
+   protected void b(aki $$0, biy $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bji.g);
    }
 
-   protected void c(aif $$0, E $$1, long $$2) {
-      if ($$1.c(bgl.m)) {
-         $$1.b(bgl.a);
+   protected void c(aki $$0, biy $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.f($$1.dn().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, aov.g, 2.0F, 1.0F);
       }
 
-      $$1.dK().b(bpb.aA);
-      $$1.dK().c(bpb.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
-
-         if (!$$1.dK().a(bpb.ay)) {
-            bxt.a($$1, $$1x.di());
-         }
-      });
+      $$1.p(false);
+      $$1.b(bji.a);
+      $$1.dM().b(bry.S);
+      $$1.dM().a(bry.R, this.d.a($$0.z));
    }
 }

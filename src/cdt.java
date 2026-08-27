@@ -1,63 +1,93 @@
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class cdt extends cfu {
-   private static final Predicate<bfj> a = bfm.f.and(bfj::bo);
-   private final cah.b b;
-   private final boolean c;
+public final class cdt {
+   private static final cdt b = new cdt(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cdu c;
+   private final long d;
 
-   public cdt(boolean $$0, cah.b $$1, cfu.a $$2) {
-      super($$2);
+   private cdt(@Nullable cdu $$0, long $$1) {
       this.c = $$0;
-      this.b = $$1;
+      this.d = $$1;
    }
 
-   @Override
-   public bdy<cfz> a(cmm $$0, byo $$1, bdw $$2) {
-      cfz $$3 = $$1.b($$2);
-      eeg $$4 = a($$0, $$1, clv.b.c);
-      if ($$4.c() == eeg.a.a) {
-         return bdy.c($$3);
+   static cdt a(cdu $$0, Collection<cdr> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         eei $$5 = $$1.f(1.0F);
-         double $$6 = 5.0;
-         List<bfj> $$7 = $$0.a($$1, $$1.cE().b($$5.a(5.0)).g(1.0), a);
-         if (!$$7.isEmpty()) {
-            eei $$8 = $$1.bm();
-
-            for (bfj $$9 : $$7) {
-               eed $$10 = $$9.cE().g((double)$$9.bC());
-               if ($$10.d($$8)) {
-                  return bdy.c($$3);
-               }
-            }
-         }
-
-         if ($$4.c() == eeg.a.b) {
-            cah $$11 = this.a($$0, $$4);
-            $$11.a(this.b);
-            $$11.a_($$1.dy());
-            if (!$$0.a($$11, $$11.cE())) {
-               return bdy.d($$3);
-            } else {
-               if (!$$0.B) {
-                  $$0.b($$11);
-                  $$0.a($$1, dgl.t, $$4.e());
-                  if (!$$1.fO().d) {
-                     $$3.h(1);
-                  }
-               }
-
-               $$1.b(amr.c.b(this));
-               return bdy.a($$3, $$0.r_());
-            }
-         } else {
-            return bdy.c($$3);
-         }
+         long $$2 = a($$0, 0L, $$1);
+         return new cdt($$0, $$2);
       }
    }
 
-   private cah a(cmm $$0, eeg $$1) {
-      return (cah)(this.c ? new cai($$0, $$1.e().c, $$1.e().d, $$1.e().e) : new cah($$0, $$1.e().c, $$1.e().d, $$1.e().e));
+   public static cdt a() {
+      return b;
+   }
+
+   public static cdt a(cdr $$0) {
+      return new cdt($$0.a, $$0.b);
+   }
+
+   public static cdt a(cdr $$0, cdr... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cdt($$0.a, $$2);
+   }
+
+   private static long a(cdu $$0, long $$1, Iterable<cdr> $$2) {
+      for (cdr $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(cdr $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean a(cdt $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public cdt b(cdt $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cdt(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cdt $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

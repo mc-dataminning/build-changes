@@ -1,25 +1,46 @@
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public class ehh {
-   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
+public class ehh extends ehy {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   public static ByteBuffer a(int $$0) {
-      long $$1 = a.malloc((long)$$0);
-      if ($$1 == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+   protected ehh(eho $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
+   }
+
+   ehh(eho $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       } else {
-         return MemoryUtil.memByteBuffer($$1, $$0);
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
    }
 
-   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
-      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
-      if ($$2 == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$2, $$1);
+   @Override
+   protected DoubleList a(hb.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
       }
    }
 }

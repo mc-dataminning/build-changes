@@ -1,31 +1,34 @@
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class epv extends bdn {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public class epv extends epn {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final String e;
+   private final long f;
+   private final exv g;
 
-   public epv(UUID $$0, sw $$1, float $$2, bdn.a $$3, bdn.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public epv(long $$0, String $$1, String $$2, exv $$3) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
-   }
+   public void run() {
+      this.b(te.c("mco.create.world.wait"));
+      elx $$0 = elx.a();
 
-   @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = apa.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return apa.i($$1, this.b, this.h);
+      try {
+         $$0.a(this.f, this.d, this.e);
+         a(this.g);
+      } catch (enk var3) {
+         c.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         c.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 }

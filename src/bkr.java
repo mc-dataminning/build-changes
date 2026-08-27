@@ -1,11 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bkr implements bmb {
+   private final gv a;
+   private final ehf b;
 
-public class bkr {
-   public static bhs<bfz> a() {
-      return bld.a((Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$0 -> $$0.a((blg<bfz>)(($$0x, $$1, $$2) -> {
-            $$1.dK().a($$0x.W(), $$0x.V());
-            return true;
-         }))));
+   public bkr(gv $$0) {
+      this.a = $$0.i();
+      this.b = ehf.b($$0);
+   }
+
+   public bkr(ehf $$0) {
+      this.a = gv.a($$0);
+      this.b = $$0;
+   }
+
+   @Override
+   public ehf a() {
+      return this.b;
+   }
+
+   @Override
+   public gv b() {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(biw $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

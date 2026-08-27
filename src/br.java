@@ -11,18 +11,18 @@ import javax.annotation.Nullable;
 public class br<V> {
    private static final String a = "variant";
    final Codec<V> b;
-   final Function<bfj, Optional<V>> c;
+   final Function<big, Optional<V>> c;
    final bp.a d;
 
-   public static <V> br<V> a(hr<V> $$0, Function<bfj, Optional<V>> $$1) {
+   public static <V> br<V> a(hs<V> $$0, Function<big, Optional<V>> $$1) {
       return new br<>($$0.q(), $$1);
    }
 
-   public static <V> br<V> a(Codec<V> $$0, Function<bfj, Optional<V>> $$1) {
+   public static <V> br<V> a(Codec<V> $$0, Function<big, Optional<V>> $$1) {
       return new br<>($$0, $$1);
    }
 
-   private br(Codec<V> $$0, Function<bfj, Optional<V>> $$1) {
+   private br(Codec<V> $$0, Function<big, Optional<V>> $$1) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$1x -> {
@@ -43,7 +43,7 @@ public class br<V> {
    public bp a(final V $$0) {
       return new bp() {
          @Override
-         public boolean a(bfj $$0x, aif $$1, @Nullable eei $$2) {
+         public boolean a(big $$0x, aki $$1, @Nullable ehf $$2) {
             return br.this.c.apply($$0).filter($$1x -> $$1x.equals($$0)).isPresent();
          }
 

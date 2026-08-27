@@ -1,36 +1,29 @@
-public class bna extends bmv {
-   private final bsi a;
-   private aig b;
-   private boolean c;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-   public bna(bsi $$0) {
-      this.a = $$0;
-   }
+public class bna {
+   public static bkp<biw> a(int $$0, BiPredicate<biw, biw> $$1) {
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$2 -> $$2.group($$2.b(bry.o), $$2.a(bry.aa), $$2.c(bry.ah), $$2.a(bry.ai))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     biw $$10 = $$2.b($$3);
+                     if (!$$10.eu()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   @Override
-   public boolean a() {
-      aig $$0 = (aig)this.a.I_();
-      boolean $$1 = $$0 != null && !$$0.G_() && !$$0.fO().b && !$$0.aV() && !$$0.az;
-      return !this.a.fY() && $$1 && this.a.gh();
-   }
+                        $$5.a($$10.dk(), (long)$$0);
+                        if ($$10.ag() != bik.bt || $$7.X().b(cpg.J)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-   @Override
-   public boolean J_() {
-      return !this.c;
-   }
-
-   @Override
-   public void c() {
-      this.b = (aig)this.a.I_();
-      this.c = false;
-   }
-
-   @Override
-   public void e() {
-      if (!this.c && !this.a.w() && !this.a.fO()) {
-         if (this.a.cE().c(this.b.cE())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+                        return true;
+                     }
+                  }))
+      );
    }
 }

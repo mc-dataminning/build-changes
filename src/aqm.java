@@ -1,78 +1,176 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
+import java.util.Arrays;
+import java.util.Iterator;
+import javax.annotation.Nullable;
 
-public class aqm extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("generic.maxHealth", "generic.max_health")
-      .put("Max Health", "generic.max_health")
-      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
-      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
-      .put("horse.jumpStrength", "horse.jump_strength")
-      .put("Jump Strength", "horse.jump_strength")
-      .put("generic.followRange", "generic.follow_range")
-      .put("Follow Range", "generic.follow_range")
-      .put("generic.knockbackResistance", "generic.knockback_resistance")
-      .put("Knockback Resistance", "generic.knockback_resistance")
-      .put("generic.movementSpeed", "generic.movement_speed")
-      .put("Movement Speed", "generic.movement_speed")
-      .put("generic.flyingSpeed", "generic.flying_speed")
-      .put("Flying Speed", "generic.flying_speed")
-      .put("generic.attackDamage", "generic.attack_damage")
-      .put("generic.attackKnockback", "generic.attack_knockback")
-      .put("generic.attackSpeed", "generic.attack_speed")
-      .put("generic.armorToughness", "generic.armor_toughness")
-      .build();
+public class aqm<K> implements hk<K> {
+   private static final int b = -1;
+   private static final Object c = null;
+   private static final float d = 0.8F;
+   private K[] e;
+   private int[] f;
+   private K[] g;
+   private int h;
+   private int i;
 
-   public aqm(Schema $$0) {
-      super($$0, false);
+   private aqm(int $$0) {
+      this.e = (K[])(new Object[$$0]);
+      this.f = new int[$$0];
+      this.g = (K[])(new Object[$$0]);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.m);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, aqm::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(avw.q), aqm::b),
-            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(avw.b), aqm::b)
+   private aqm(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+   }
+
+   public static <A> aqm<A> c(int $$0) {
+      return new aqm((int)((float)$$0 / 0.8F));
+   }
+
+   @Override
+   public int a(@Nullable K $$0) {
+      return this.e(this.b($$0, this.d($$0)));
+   }
+
+   @Nullable
+   @Override
+   public K a(int $$0) {
+      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
+   }
+
+   private int e(int $$0) {
+      return $$0 == -1 ? -1 : this.f[$$0];
+   }
+
+   public boolean b(K $$0) {
+      return this.a($$0) != -1;
+   }
+
+   public boolean d(int $$0) {
+      return this.a($$0) != null;
+   }
+
+   public int c(K $$0) {
+      int $$1 = this.d();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   private int d() {
+      while (this.h < this.g.length && this.g[this.h] != null) {
+         this.h++;
+      }
+
+      return this.h;
+   }
+
+   private void f(int $$0) {
+      K[] $$1 = this.e;
+      int[] $$2 = this.f;
+      aqm<K> $$3 = new aqm<>($$0);
+
+      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
+         if ($$1[$$4] != null) {
+            $$3.a($$1[$$4], $$2[$$4]);
          }
-      );
+      }
+
+      this.e = $$3.e;
+      this.f = $$3.f;
+      this.g = $$3.g;
+      this.h = $$3.h;
+      this.i = $$3.i;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   public void a(K $$0, int $$1) {
+      int $$2 = Math.max($$1, this.i + 1);
+      if ((float)$$2 >= (float)this.e.length * 0.8F) {
+         int $$3 = this.e.length << 1;
+
+         while ($$3 < $$1) {
+            $$3 <<= 1;
+         }
+
+         this.f($$3);
+      }
+
+      int $$4 = this.g(this.d($$0));
+      this.e[$$4] = $$0;
+      this.f[$$4] = $$1;
+      this.g[$$1] = $$0;
+      this.i++;
+      if ($$1 == this.h) {
+         this.h++;
+      }
    }
 
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", aqm::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   private int d(@Nullable K $$0) {
+      return (aro.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
    }
 
-   private static Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", aqm::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   private int b(@Nullable K $$0, int $$1) {
+      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
+         if (this.e[$$2] == $$0) {
+            return $$2;
+         }
+
+         if (this.e[$$2] == c) {
+            return -1;
+         }
+      }
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         if (this.e[$$3] == $$0) {
+            return $$3;
+         }
+
+         if (this.e[$$3] == c) {
+            return -1;
+         }
+      }
+
+      return -1;
+   }
+
+   private int g(int $$0) {
+      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
+         if (this.e[$$1] == c) {
+            return $$1;
+         }
+      }
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         if (this.e[$$2] == c) {
+            return $$2;
+         }
+      }
+
+      throw new RuntimeException("Overflowed :(");
+   }
+
+   @Override
+   public Iterator<K> iterator() {
+      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
+   }
+
+   public void a() {
+      Arrays.fill(this.e, null);
+      Arrays.fill(this.g, null);
+      this.h = 0;
+      this.i = 0;
+   }
+
+   @Override
+   public int b() {
+      return this.i;
+   }
+
+   public aqm<K> c() {
+      return new aqm<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
    }
 }

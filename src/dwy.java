@@ -1,140 +1,48 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dwy extends dws<dwy.a> {
-   protected dwy(del $$0) {
-      super(cmv.a, $$0, new dwy.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class dwy extends dux {
+   public static final Codec<dwy> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dte.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dwy::new)
+   );
+   public final dte e;
+
+   public dwy(dux.c $$0, dte $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
-   }
+   public Optional<dux.b> a(dux.a $$0) {
+      dlg $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dle $$5 = new dle($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cpw $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      gv.a $$8 = new gv.a($$2, $$6, $$3);
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = hx.e($$0);
-      int $$3 = hx.c($$2);
-      dwy.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(hx.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         ded $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = gu.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
-
-               $$2 = hx.a($$2, ha.b);
-            }
+      while ($$6 > $$4) {
+         dey $$9 = $$7.a($$6);
+         dey $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(csl.dX) || $$10.d(coz.a, $$8.q($$6), hb.b))) {
+            break;
          }
+      }
 
-         return $$6.a(hx.b(gu.a($$0)), hx.b(gu.b($$0)), hx.b(gu.c($$0)));
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
+         gv $$11 = new gv($$2, $$6, $$3);
+         return Optional.of(new dux.b($$11, (Consumer<dvp>)($$3x -> dwx.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   protected void h(long $$0) {
-      int $$1 = hx.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = hx.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = hx.f($$0);
-      int $$2 = hx.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = hx.a($$3, ha.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
-   }
-
-   @Override
-   protected ded g(long $$0) {
-      ded $$1 = (ded)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(hx.f($$0));
-         if ($$2 != this.d.b && hx.c($$0) < $$2) {
-            long $$3 = hx.a($$0, ha.b);
-
-            ded $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = hx.a($$3, ha.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new ded(15) : new ded();
-         }
-      }
-   }
-
-   private static ded a(ded $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new ded($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean l(long $$0) {
-      long $$1 = hx.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || hx.c($$0) >= $$2;
-   }
-
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends dwp<dwy.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<ded> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public dwy.a a() {
-         return new dwy.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   public dvg<?> e() {
+      return dvg.i;
    }
 }

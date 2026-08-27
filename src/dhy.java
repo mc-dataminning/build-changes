@@ -1,127 +1,231 @@
-import java.util.HashMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dhy {
-   final dhx a;
-   private final hf<dwh.a> b;
-   private final dhq c;
-   private final cnt.f d;
-   private final dic e;
-   private final dhx f;
-   private final dhx g;
-   private final Map<acp<dwh.a>, dwh> h;
-   private final Map<acq, dhx> i;
+public class dhy implements dhu, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bfh<bfj.b> c;
+   private final dib d;
+   private final Map<cor, dhy.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   public static dhy a(hf.a $$0, acp<dhp> $$1, long $$2) {
-      return a($$0.b(jc.aw).b($$1).a(), $$0.b(jc.ax), $$2);
+   protected dhy(Path $$0, boolean $$1, String $$2) {
+      this.d = new dib($$0, $$1);
+      this.c = new bfh<>(new bfj.a(dhy.b.values().length), ac.g(), "IOWorker-" + $$2);
    }
 
-   public static dhy a(dhp $$0, hf<dwh.a> $$1, long $$2) {
-      return new dhy($$0, $$1, $$2);
-   }
+   public boolean a(cor $$0, int $$1) {
+      cor $$2 = new cor($$0.e - $$1, $$0.f - $$1);
+      cor $$3 = new cor($$0.e + $$1, $$0.f + $$1);
 
-   private dhy(dhp $$0, hf<dwh.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new acq("aquifer")).e();
-      this.g = this.a.a(new acq("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dic(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               cor $$7 = cor.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
 
-      class a implements dhd.f {
-         private final Map<dhd, dhd> d = new HashMap<>();
-
-         private apf a(long $$0) {
-            return new dhl($$2 + $$0);
-         }
-
-         @Override
-         public dhd.c a(dhd.c $$0) {
-            he<dwh.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dht.a)) {
-                  dwh $$2 = dwh.a(this.a(0L), new dwh.a(-7, 1.0, 1.0));
-                  return new dhd.c($$1, $$2);
-               }
-
-               if ($$1.a(dht.b)) {
-                  dwh $$3 = dwh.a(this.a(1L), new dwh.a(-7, 1.0, 1.0));
-                  return new dhd.c($$1, $$3);
-               }
-
-               if ($$1.a(dht.j)) {
-                  dwh $$4 = dwh.b(dhy.this.a.a(dht.j.a()), new dwh.a(0, 0.0));
-                  return new dhd.c($$1, $$4);
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
                }
             }
-
-            dwh $$5 = dhy.this.a($$1.e().orElseThrow());
-            return new dhd.c($$1, $$5);
-         }
-
-         private dhd a(dhd $$0) {
-            if ($$0 instanceof dwe $$1) {
-               apf $$2 = $$3 ? this.a(0L) : dhy.this.a.a(new acq("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dhd)($$0 instanceof dhe.i ? new dhe.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public dhd apply(dhd $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
          }
       }
 
-      this.c = $$0.i().a(new a());
-      dhd.f $$4 = new dhd.f() {
-         private final Map<dhd, dhd> b = new HashMap<>();
+      return false;
+   }
 
-         private dhd a(dhd $$0) {
-            if ($$0 instanceof dhe.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dhe.l $$2 ? $$2.k() : $$0;
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = cor.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
             }
          }
 
-         @Override
-         public dhd apply(dhd $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
+         return $$3;
+      }
+   }
+
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         cor $$2 = cor.a($$0, $$1);
+         cor $$3 = cor.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         cor.a($$2, $$3).forEach($$1xx -> {
+            rs $$2x = new rs(new ru(qx.a, "DataVersion"), new ru(qs.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof qs $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ac.f());
+   }
+
+   private boolean a(qs $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(cor $$0, @Nullable qs $$1) {
+      return this.a(() -> {
+         dhy.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dhy.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<qs>> a(cor $$0) {
+      return this.a(() -> {
+         dhy.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
+         } else {
+            try {
+               qs $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
          }
-      };
-      this.d = new cnt.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      });
    }
 
-   public dwh a(acp<dwh.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dht.a(this.b, this.a, $$0));
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
    }
 
-   public dhx a(acq $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   @Override
+   public CompletableFuture<Void> a(cor $$0, ri $$1) {
+      return this.a(() -> {
+         try {
+            dhy.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
    }
 
-   public dhq a() {
-      return this.c;
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bfj.b(dhy.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
    }
 
-   public cnt.f b() {
-      return this.d;
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<cor, dhy.a>> $$0 = this.e.entrySet().iterator();
+         Entry<cor, dhy.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
    }
 
-   public dic c() {
-      return this.e;
+   private void b() {
+      this.c.a(new bfj.b(dhy.b.b.ordinal(), this::a));
    }
 
-   public dhx d() {
-      return this.f;
+   private void a(cor $$0, dhy.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
    }
 
-   public dhx e() {
-      return this.g;
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bfj.b(dhy.b.c.ordinal(), () -> $$0.a(asn.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
+   }
+
+   static class a {
+      @Nullable
+      qs a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable qs $$0) {
+         this.a = $$0;
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

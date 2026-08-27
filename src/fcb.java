@@ -1,15 +1,141 @@
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public abstract class fcb {
-   protected final Function<acq, fkf> v;
+public class fcb extends esc {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final te d = te.c("telemetry_info.property_title").a(n.t);
+   private final erv e;
+   private fcb.a l;
+   @Nullable
+   private DoubleConsumer m;
 
-   public fcb(Function<acq, fkf> $$0) {
-      this.v = $$0;
+   public fcb(int $$0, int $$1, int $$2, int $$3, erv $$4) {
+      super($$0, $$1, $$2, $$3, te.h());
+      this.e = $$4;
+      this.l = this.c(eqn.N().z());
    }
 
-   public final fkf a(acq $$0) {
-      return this.v.apply($$0);
+   public void b(boolean $$0) {
+      this.l = this.c($$0);
+      this.a(this.c());
    }
 
-   public abstract void a(eij var1, ein var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   private fcb.a c(boolean $$0) {
+      fcb.b $$1 = new fcb.b(this.v());
+      List<gdb> $$2 = new ArrayList<>(gdb.g());
+      $$2.sort(Comparator.comparing(gdb::d));
+      if (!$$0) {
+         $$2.removeIf(gdb::d);
+      }
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gdb $$4 = $$2.get($$3);
+         this.a($$1, $$4);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.m != null) {
+         this.m.accept(this.c());
+      }
+   }
+
+   @Override
+   protected int f() {
+      return this.l.a().h();
+   }
+
+   @Override
+   protected double g() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(erx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.r() + this.a();
+      int $$5 = this.p() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.l.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(evt $$0) {
+      $$0.a(evs.a, this.l.b());
+   }
+
+   private void a(fcb.b $$0, gdb $$1) {
+      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
+      $$0.b(this.e, te.a($$2, $$1.e()));
+      $$0.b(this.e, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.e, d, 2);
+      this.a($$1, $$0);
+   }
+
+   private void a(gdb $$0, fcb.b $$1) {
+      for (gdd<?> $$2 : $$0.b()) {
+         $$1.a(this.e, $$2.a());
+      }
+   }
+
+   private int v() {
+      return this.f - this.b();
+   }
+
+   static record a(evl a, te b) {
+   }
+
+   static class b {
+      private final int a;
+      private final evo b;
+      private final tr c = te.h();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = evo.d();
+         this.b.c().a();
+         this.b.a(evp.a($$0));
+      }
+
+      public void a(erv $$0, te $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(erv $$0, te $$1, int $$2) {
+         this.b.a(new etc($$1, $$0).i(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(erv $$0, te $$1) {
+         this.b.a(new etc($$1, $$0).i(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(evp.b($$0));
+      }
+
+      public fcb.a a() {
+         this.b.a();
+         return new fcb.a(this.b, this.c);
+      }
+   }
 }

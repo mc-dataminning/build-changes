@@ -1,39 +1,56 @@
-public class aby<T> {
+public class aby implements uw<aav> {
    private final int a;
-   private final abz<T> b;
+   private final aby.a b;
+   private final int c;
 
-   public aby(int $$0, abz<T> $$1) {
-      this.a = $$0;
+   public aby(big $$0, aby.a $$1) {
+      this($$0, $$1, 0);
+   }
+
+   public aby(big $$0, aby.a $$1, int $$2) {
+      this.a = $$0.ah();
       this.b = $$1;
+      this.c = $$2;
+   }
+
+   public aby(sh $$0) {
+      this.a = $$0.m();
+      this.b = $$0.b(aby.a.class);
+      this.c = $$0.m();
+   }
+
+   @Override
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   public void a(aav $$0) {
+      $$0.a(this);
    }
 
    public int a() {
       return this.a;
    }
 
-   public abz<T> b() {
+   public aby.a d() {
       return this.b;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aby<?> $$1 = (aby<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+   public int e() {
+      return this.c;
    }
 
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

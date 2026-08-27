@@ -1,17 +1,35 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class asw extends awf {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+public class asw extends DataFix {
+   private final String a;
+   private final boolean b;
+   private final String c;
+   private final TypeReference d;
 
-   public asw(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+   public asw(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
+      super($$0, true);
+      this.b = $$3;
+      this.c = $$2;
+      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
+      this.d = $$1;
    }
 
-   @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.d);
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
+            )
+      );
    }
 }

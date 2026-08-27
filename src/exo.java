@@ -1,24 +1,27 @@
-public class exo extends exr {
-   private static final sw b = sw.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final sw c = sw.c("title.32bit.deprecation.realms");
-   private static final sw k = sw.c("title.32bit.deprecation.realms.check");
-   private static final sw l = b.e().f("\n").b(c);
-   private final euq m;
+public class exo extends exv {
+   private etb a;
 
-   public exo(euq $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public exo() {
+      super(te.c("outOfMemory.title"));
+      this.a = etb.a;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(epi.a(sv.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.aq();
-         }
+   protected void aE_() {
+      this.d(esi.a(td.l, $$0 -> this.f.a(new eya())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
+      this.d(esi.a(te.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
+      this.a = etb.a(this.i, te.c("outOfMemory.message"), 295);
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   @Override
+   public boolean aA_() {
+      return false;
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
+      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
    }
 }

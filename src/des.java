@@ -1,283 +1,138 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class des extends ddx {
-   @Nullable
-   private volatile dwt n;
-   private volatile dec o = dec.c;
-   private final List<qr> p = Lists.newArrayList();
-   private final Map<dhg.a, ddw> q = new Object2ObjectArrayMap();
-   @Nullable
-   private dgy r;
-   private final efr<cpn> s;
-   private final efr<dxd> t;
+public class des extends cuj {
+   public static final dfw<dga> b = dfo.bg;
+   public static final dfp c = dfo.x;
+   public static final float d = 4.0F;
+   protected static final ehy e = csk.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ehy f = csk.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final ehy g = csk.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final ehy h = csk.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final ehy i = csk.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ehy j = csk.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float k = 2.0F;
+   protected static final float l = 6.0F;
+   protected static final float m = 10.0F;
+   protected static final ehy n = csk.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ehy D = csk.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final ehy E = csk.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final ehy F = csk.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final ehy G = csk.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ehy H = csk.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final ehy I = csk.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ehy J = csk.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ehy K = csk.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final ehy L = csk.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final ehy M = csk.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ehy N = csk.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final ehy[] O = a(true);
+   private static final ehy[] P = a(false);
 
-   public des(clt $$0, dev $$1, cmo $$2, hr<cnk> $$3, @Nullable din $$4) {
-      this($$0, $$1, null, new efr<>(), new efr<>(), $$2, $$3, $$4);
+   private static ehy[] a(boolean $$0) {
+      return Arrays.stream(hb.values()).map($$1 -> a($$1, $$0)).toArray(ehy[]::new);
    }
 
-   public des(clt $$0, dev $$1, @Nullable dej[] $$2, efr<cpn> $$3, efr<dxd> $$4, cmo $$5, hr<cnk> $$6, @Nullable din $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
-   }
-
-   @Override
-   public efw<cpn> o() {
-      return this.s;
-   }
-
-   @Override
-   public efw<dxd> p() {
-      return this.t;
-   }
-
-   @Override
-   public ddx.a q() {
-      return new ddx.a(this.s, this.t);
-   }
-
-   @Override
-   public dcb a_(gu $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return cpo.nb.n();
-      } else {
-         dej $$2 = this.b(this.e($$1));
-         return $$2.c() ? cpo.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   private static ehy a(hb $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return ehv.a(j, $$1 ? J : D);
+         case b:
+            return ehv.a(i, $$1 ? I : n);
+         case c:
+            return ehv.a(h, $$1 ? L : F);
+         case d:
+            return ehv.a(g, $$1 ? K : E);
+         case e:
+            return ehv.a(f, $$1 ? N : H);
+         case f:
+            return ehv.a(e, $$1 ? M : G);
       }
    }
 
-   @Override
-   public dxe b_(gu $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return dxf.a.g();
-      } else {
-         dej $$2 = this.b(this.e($$1));
-         return $$2.c() ? dxf.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dcb a(gu $$0, dcb $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.C_() && $$4 < this.aj()) {
-         int $$6 = this.e($$4);
-         dej $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(cpo.a)) {
-            return $$1;
-         } else {
-            int $$9 = hx.b($$3);
-            int $$10 = hx.b($$4);
-            int $$11 = hx.b($$5);
-            dcb $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dec.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (dwv.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<dhk.a> $$14 = this.j().h();
-            EnumSet<dhk.a> $$15 = null;
-
-            for (dhk.a $$16 : $$14) {
-               dhk $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dhk.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               dhk.a(this, $$15);
-            }
-
-            for (dhk.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
-         }
-      } else {
-         return cpo.nb.n();
-      }
+   public des(dex.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hb.c).a(b, dga.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(czn $$0) {
-      this.k.put($$0.p(), $$0);
-   }
-
-   @Nullable
-   @Override
-   public czn c_(gu $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<gu, czn> D() {
-      return this.k;
-   }
-
-   public void b(qr $$0) {
-      this.p.add($$0);
+   public boolean g_(dey $$0) {
+      return true;
    }
 
    @Override
-   public void a(bfj $$0) {
-      if (!$$0.bM()) {
-         qr $$1 = new qr();
-         $$0.e($$1);
-         this.b($$1);
-      }
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return ($$0.c(c) ? O : P)[$$0.c(a).ordinal()];
+   }
+
+   private boolean a(dey $$0, dey $$1) {
+      csk $$2 = $$0.c(b) == dga.a ? csl.by : csl.br;
+      return $$1.a($$2) && $$1.c(der.b) && $$1.c(a) == $$0.c(a);
    }
 
    @Override
-   public void a(dsa $$0, dsi $$1) {
-      dgy $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         drs $$3 = $$1.a();
-         cmo $$4 = this.z();
-         if ($$3.h() < $$4.C_() || $$3.k() >= $$4.aj()) {
-            return;
+   public void a(cpk $$0, gv $$1, dey $$2, cbl $$3) {
+      if (!$$0.B && $$3.fR().d) {
+         gv $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
       }
 
-      super.a($$0, $$1);
-   }
-
-   public List<qr> E() {
-      return this.p;
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dec j() {
-      return this.o;
-   }
-
-   public void a(dec $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
-      }
-
-      this.a(true);
-   }
-
-   @Override
-   public he<cnk> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dec.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
-      }
-   }
-
-   public static short j(gu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static gu a(short $$0, int $$1, clt $$2) {
-      int $$3 = hx.a($$2.e, $$0 & 15);
-      int $$4 = hx.a($$1, $$0 >>> 4 & 15);
-      int $$5 = hx.a($$2.f, $$0 >>> 8 & 15);
-      return new gu($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(gu $$0) {
-      if (!this.r($$0)) {
-         ddx.a(this.b, this.e($$0.v())).add(j($$0));
+   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         gv $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
       }
    }
 
    @Override
-   public void a(short $$0, int $$1) {
-      ddx.a(this.b, $$1).add($$0);
-   }
-
-   public Map<gu, qr> F() {
-      return Collections.unmodifiableMap(this.j);
-   }
-
-   @Nullable
-   @Override
-   public qr g(gu $$0) {
-      czn $$1 = this.c_($$0);
-      return $$1 != null ? $$1.m() : this.j.get($$0);
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void d(gu $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public ddw a(dhg.a $$0) {
-      return this.q.get($$0);
-   }
-
-   public ddw b(dhg.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new ddw(this.D_(), this.C_()));
-   }
-
-   public void a(dhg.a $$0, ddw $$1) {
-      this.q.put($$0, $$1);
-   }
-
-   public void a(dwt $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable dgy $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dgy x() {
-      return this.r;
-   }
-
-   private static <T> efo<T> a(efr<T> $$0) {
-      return new efo<>($$0.b());
-   }
-
-   public efo<cpn> G() {
-      return a(this.s);
-   }
-
-   public efo<dxd> H() {
-      return a(this.t);
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      dey $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(csl.bQ) && $$3.c(a) == $$0.c(a);
    }
 
    @Override
-   public cmo z() {
-      return (cmo)(this.y() ? dgy.b : this);
+   public void a(dey $$0, cpk $$1, gv $$2, csk $$3, gv $$4, boolean $$5) {
+      if ($$0.a((cpn)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+      }
+   }
+
+   @Override
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      return new ciw($$2.c(b) == dga.b ? csl.br : csl.by);
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b, c);
+   }
+
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

@@ -1,40 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record doo(hi<cpn> b, hi<cpn> c, dot d, int e, int f, float g) {
-   public static final Codec<doo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ht.a(jc.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               ht.a(jc.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               dot.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, doo::new)
-   );
+public class doo extends dnl<dpx> {
+   private static final int a = 7;
 
-   public hi<cpn> a() {
-      return this.b;
+   doo(Codec<dpx> $$0) {
+      super($$0);
    }
 
-   public hi<cpn> b() {
-      return this.c;
+   @Override
+   public boolean a(dnn<dpx> $$0) {
+      cqe $$1 = $$0.b();
+      art $$2 = $$0.d();
+      dpx $$3 = $$0.f();
+      gv $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      gv.a $$6 = new gv.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dey $$8 = $$1.a_($$6);
+
+         for (dpx.a $$9 : $$3.b) {
+            if (dog.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public dot c() {
-      return this.d;
+   private void a(gv.a $$0, art $$1, gv $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
    }
 
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   private int a(art $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

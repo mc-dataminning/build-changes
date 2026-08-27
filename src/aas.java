@@ -1,64 +1,22 @@
-public class aas implements uo<zb> {
-   private final gu a;
-   private final acq b;
-   private final acq c;
-   private final acq d;
-   private final String e;
-   private final dam.a f;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public aas(gu $$0, acq $$1, acq $$2, acq $$3, String $$4, dam.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public record aas(aeo<dih> a, aeo<cpk> b, long c, cph d, @Nullable cph e, boolean f, boolean g, Optional<he> h, int i) {
+   public aas(sh $$0) {
+      this(
+         $$0.a(jd.au), $$0.a(jd.aH), $$0.readLong(), cph.a($$0.readByte()), cph.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(sh::h), $$0.m()
+      );
    }
 
-   public aas(sf $$0) {
-      this.a = $$0.f();
-      this.b = $$0.t();
-      this.c = $$0.t();
-      this.d = $$0.t();
-      this.e = $$0.s();
-      this.f = dam.a.a($$0.s()).orElse(dam.a.b);
-   }
-
-   @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f.c());
-   }
-
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   public gu a() {
-      return this.a;
-   }
-
-   public acq c() {
-      return this.b;
-   }
-
-   public acq d() {
-      return this.c;
-   }
-
-   public acq e() {
-      return this.d;
-   }
-
-   public String f() {
-      return this.e;
-   }
-
-   public dam.a g() {
-      return this.f;
+   public void a(sh $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cph.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, sh::a);
+      $$0.c(this.i);
    }
 }

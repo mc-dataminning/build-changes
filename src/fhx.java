@@ -1,100 +1,138 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fhx extends fim {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
+public class fhx implements fim {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cbn>> g;
+   private Instant h = Instant.EPOCH;
 
-   fhx(few $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
+   public fhx(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
+      this.g = CompletableFuture.<Optional<cbn>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   public CompletableFuture<Optional<cbn>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
    @Override
-   public void a(ein $$0, emz $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - apa.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cbn::a).orElse(true) : false;
    }
 
-   private void a(ein $$0, emz $$1, float $$2, Consumer<Quaternionf> $$3) {
-      eei $$4 = $$1.b();
-      float $$5 = (float)(apa.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(apa.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(apa.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
+   private CompletableFuture<Optional<cbn>> a(Optional<cbn> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aS) {
+               this.a(null);
+            }
 
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+            return $$0;
+         } else {
+            try {
+               cbn $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.of($$1);
+            } catch (aqo | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
+         }
+      }, ac.f());
    }
 
-   private void a(ein $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fhq b() {
-      return fhq.c;
-   }
-
-   @Override
-   public void a() {
-      if (this.G > 0) {
-         this.G--;
+   private Optional<cbn> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
       } else {
-         super.a();
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cbn.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
       }
    }
 
-   public static class a implements fhp<ix> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
+   private void a(@Nullable cbn $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
       }
 
-      public fhm a(ix $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fhx $$8 = new fhx($$1, $$2, $$3, $$4, $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+      if ($$0 != null) {
+         if (aa.aS) {
+            cbn.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
+   }
+
+   private cbn a(UserApiService $$0) throws aqo, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cbo.a $$2 = a($$1);
+         return new cbn(aqn.a($$1.keyPair().privateKey()), new cbo($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         throw new IOException("Could not retrieve profile key pair");
+      }
+   }
+
+   private static cbo.a a(KeyPairResponse $$0) throws aqo {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = aqn.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cbo.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new aqo(var5);
+         }
+      } else {
+         throw new aqo(new MissingException());
       }
    }
 }

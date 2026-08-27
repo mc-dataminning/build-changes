@@ -1,14 +1,14 @@
 import com.google.gson.JsonObject;
 
 public class bg extends cv<bg.a> {
-   final acq a;
+   final aep a;
 
-   public bg(acq $$0) {
+   public bg(aep $$0) {
       this.a = $$0;
    }
 
    @Override
-   public acq a() {
+   public aep a() {
       return this.a;
    }
 
@@ -18,8 +18,8 @@ public class bg extends cv<bg.a> {
       return new bg.a(this.a, $$1, $$3, $$4);
    }
 
-   public void a(aig $$0, eei $$1) {
-      eei $$2 = $$0.dg();
+   public void a(akj $$0, ehf $$1) {
+      ehf $$2 = $$0.di();
       this.a($$0, $$3 -> $$3.a($$0.x(), $$1, $$2));
    }
 
@@ -27,7 +27,7 @@ public class bg extends cv<bg.a> {
       private final ch a;
       private final bf b;
 
-      public a(acq $$0, ba $$1, ch $$2, bf $$3) {
+      public a(aep $$0, ba $$1, ch $$2, bf $$3) {
          super($$0, $$1);
          this.a = $$2;
          this.b = $$3;
@@ -53,7 +53,7 @@ public class bg extends cv<bg.a> {
          return $$1;
       }
 
-      public boolean a(aif $$0, eei $$1, eei $$2) {
+      public boolean a(aki $$0, ehf $$1, ehf $$2) {
          return !this.a.a($$0, $$1.c, $$1.d, $$1.e) ? false : this.b.a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
       }
    }

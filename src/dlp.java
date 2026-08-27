@@ -1,23 +1,22 @@
 import com.mojang.serialization.Codec;
 
-public class dlp extends dko<dng> {
-   public dlp(Codec<dng> $$0) {
-      super($$0);
-   }
+public interface dlp<P extends dlo> {
+   dlp<dlu> a = a("matching_blocks", dlu.a);
+   dlp<dlt> b = a("matching_block_tag", dlt.e);
+   dlp<dlv> c = a("matching_fluids", dlv.a);
+   dlp<dlr> d = a("has_sturdy_face", dlr.a);
+   dlp<dly> e = a("solid", dly.a);
+   dlp<dlx> f = a("replaceable", dlx.a);
+   dlp<dmb> g = a("would_survive", dmb.a);
+   dlp<dls> h = a("inside_world_bounds", dls.a);
+   dlp<dln> i = a("any_of", dln.a);
+   dlp<dlm> j = a("all_of", dlm.a);
+   dlp<dlw> k = a("not", dlw.a);
+   dlp<dma> l = a("true", dma.e);
 
-   @Override
-   public boolean a(dkq<dng> $$0) {
-      cng $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      dng $$3 = $$0.f();
+   Codec<P> codec();
 
-      for (dna.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
-         }
-      }
-
-      return true;
+   private static <P extends dlo> dlp<P> a(String $$0, Codec<P> $$1) {
+      return hs.a(jc.P, $$0, () -> $$1);
    }
 }

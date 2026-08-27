@@ -1,71 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+public class fwf extends fwr<bwj, fev<bwj>> {
+   private final fev<bwj> a;
 
-public class fwf implements ajx<fwe> {
-   public fwe b(JsonObject $$0) {
-      Builder<fwd> $$1 = ImmutableList.builder();
-      int $$2 = aor.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
-
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = aor.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               fwd $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = aor.a($$0, "width", -1);
-      int $$9 = aor.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = aor.a($$0, "interpolate", false);
-      return new fwe($$1.build(), $$8, $$9, $$2, $$10);
+   public fwf(fue<bwj, fev<bwj>> $$0, fhf $$1) {
+      super($$0);
+      this.a = new fev<>($$1.a(fhi.ak));
    }
 
-   @Nullable
-   private fwd a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new fwd(aor.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = aor.m($$1, "frames[" + $$0 + "]");
-         int $$3 = aor.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+   public void a(elh $$0, fng $$1, int $$2, bwj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ciw $$10 = $$3.p();
+      if ($$10.d() instanceof cim) {
+         cim $$11 = (cim)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof chn) {
+            int $$12 = ((chn)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
          }
 
-         int $$4 = aor.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new fwd($$4, $$3);
-      } else {
-         return null;
+         ell $$19 = $$1.getBuffer(fno.d($$11.h()));
+         this.a.a($$0, $$19, $$2, fxx.d, $$13, $$14, $$15, 1.0F);
       }
-   }
-
-   @Override
-   public String a() {
-      return "animation";
    }
 }

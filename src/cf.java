@@ -34,7 +34,7 @@ public class cf implements bp {
    }
 
    @Override
-   public boolean a(bfj $$0, aif $$1, @Nullable eei $$2) {
-      return !($$0 instanceof bfy $$3) ? false : this.d.d($$3.k()) && (this.e == bo.a || $$3.o().anyMatch($$2x -> this.e.a($$1, $$2, $$2x)));
+   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
+      return !($$0 instanceof biv $$3) ? false : this.d.d($$3.m()) && (this.e == bo.a || $$3.o().anyMatch($$2x -> this.e.a($$1, $$2, $$2x)));
    }
 }

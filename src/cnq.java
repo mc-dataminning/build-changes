@@ -1,245 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public class cnq extends cnd {
+   public final cnq.a a;
 
-public class cnq {
-   public static final Codec<cnq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               cnq.b.d.optionalFieldOf("grass_color_modifier", cnq.b.a).forGetter($$0x -> $$0x.h),
-               cnj.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               amg.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               cni.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               cnh.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               ame.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
-            )
-            .apply($$0, cnq::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final cnq.b h;
-   private final Optional<cnj> i;
-   private final Optional<he<amg>> j;
-   private final Optional<cni> k;
-   private final Optional<cnh> l;
-   private final Optional<ame> m;
-
-   cnq(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      cnq.b $$6,
-      Optional<cnj> $$7,
-      Optional<he<amg>> $$8,
-      Optional<cni> $$9,
-      Optional<cnh> $$10,
-      Optional<ame> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   public cnq(cnd.a $$0, cnq.a $$1, bil... $$2) {
+      super($$0, $$1 == cnq.a.c ? cne.b : cne.a, $$2);
+      this.a = $$1;
    }
 
+   @Override
+   public int a(int $$0) {
+      return this.a.a() + ($$0 - 1) * this.a.b();
+   }
+
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + this.a.b();
+   }
+
+   @Override
    public int a() {
-      return this.b;
+      return 4;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public cnq.b g() {
-      return this.h;
-   }
-
-   public Optional<cnj> h() {
-      return this.i;
-   }
-
-   public Optional<he<amg>> i() {
-      return this.j;
-   }
-
-   public Optional<cni> j() {
-      return this.k;
-   }
-
-   public Optional<cnh> k() {
-      return this.l;
-   }
-
-   public Optional<ame> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private cnq.b g = cnq.b.a;
-      private Optional<cnj> h = Optional.empty();
-      private Optional<he<amg>> i = Optional.empty();
-      private Optional<cni> j = Optional.empty();
-      private Optional<cnh> k = Optional.empty();
-      private Optional<ame> l = Optional.empty();
-
-      public cnq.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cnq.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cnq.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cnq.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cnq.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a a(cnq.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public cnq.a a(cnj $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a a(he<amg> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a a(cni $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a a(cnh $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public cnq.a a(@Nullable ame $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
-      }
-
-      public cnq a() {
-         return new cnq(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
+   @Override
+   public int a(int $$0, bhe $$1) {
+      if ($$1.a(apl.d)) {
+         return 0;
+      } else if (this.a == cnq.a.a) {
+         return $$0;
+      } else if (this.a == cnq.a.b && $$1.a(apl.i)) {
+         return $$0 * 2;
+      } else if (this.a == cnq.a.c && $$1.a(apl.m)) {
+         return $$0 * 3;
+      } else if (this.a == cnq.a.d && $$1.a(apl.l)) {
+         return $$0 * 2;
+      } else {
+         return this.a == cnq.a.e && $$1.a(apl.j) ? $$0 * 2 : 0;
       }
    }
 
-   public static enum b implements apr {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = cnk.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
+   @Override
+   public boolean a(cnd $$0) {
+      if ($$0 instanceof cnq $$1) {
+         return this.a == $$1.a ? false : this.a == cnq.a.c || $$1.a == cnq.a.c;
+      } else {
+         return super.a($$0);
+      }
+   }
 
-      private final String e;
-      public static final Codec<cnq.b> d = apr.a(cnq.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(String $$0) {
-         this.e = $$0;
+   public static int a(biw $$0, int $$1) {
+      int $$2 = cnf.a(cnh.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= aro.d((float)$$1 * (float)$$2 * 0.15F);
       }
 
-      public String a() {
-         return this.e;
+      return $$1;
+   }
+
+   public static double a(biw $$0, double $$1) {
+      int $$2 = cnf.a(cnh.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= aro.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      return $$1;
+   }
+
+   public static enum a {
+      a(1, 11),
+      b(10, 8),
+      c(5, 6),
+      d(5, 8),
+      e(3, 6);
+
+      private final int f;
+      private final int g;
+
+      private a(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.f;
+      }
+
+      public int b() {
+         return this.g;
       }
    }
 }

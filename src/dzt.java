@@ -1,9 +1,17 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+public interface dzt {
+   void a(gv var1);
 
-public interface dzt<T> {
-   void a(JsonObject var1, T var2, JsonSerializationContext var3);
+   boolean E_();
 
-   T a(JsonObject var1, JsonDeserializationContext var2);
+   int a();
+
+   default void a(gv $$0, boolean $$1) {
+      this.a(hy.a($$0), $$1);
+   }
+
+   void a(hy var1, boolean var2);
+
+   void a(cor var1, boolean var2);
+
+   void b(cor var1);
 }

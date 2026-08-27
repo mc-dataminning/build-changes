@@ -1,56 +1,67 @@
-public class fir extends fim {
-   private float a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   fir(few $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+public class fir {
+   private final fit[] a;
+   private int b;
+
+   public static Codec<fir> a(int $$0) {
+      return Codec.list(fit.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fir($$0, $$1));
+            },
+            fir::c
+         );
    }
 
-   @Override
-   public fhq b() {
-      return fhq.b;
+   public fir(int $$0) {
+      this.a = new fit[$$0];
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * apa.b(this.a));
-         this.l = this.l + (double)(0.6F * apa.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(gu.a(this.g, this.h, this.i)).a(anb.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
+   private fir(int $$0, List<fit> $$1) {
+      this.a = $$1.toArray(fit[]::new);
+      this.b = $$1.size();
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
+   private List<fit> c() {
+      List<fit> $$0 = new ArrayList<>(this.d());
 
-      public a(fih $$0) {
-         this.a = $$0;
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fir $$8 = new fir($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+      return $$0;
+   }
+
+   public void a(fit $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
+   @Nullable
+   public fit b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
+
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

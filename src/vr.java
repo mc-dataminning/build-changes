@@ -1,14 +1,18 @@
-public record vr(th.a a) implements uo<ur> {
-   public vr(sf $$0) {
-      this(th.a.a($$0));
+public record vr(djm b, int c) implements vo {
+   public static final aep a = new aep("debug/game_event_listeners");
+
+   public vr(sh $$0) {
+      this(djn.c($$0), $$0.m());
    }
 
    @Override
-   public void a(sf $$0) {
-      th.a.a($$0, this.a);
+   public void a(sh $$0) {
+      djn.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
+   @Override
+   public aep a() {
+      return a;
    }
 }

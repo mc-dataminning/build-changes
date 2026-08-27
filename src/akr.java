@@ -1,14 +1,11 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
 public interface akr {
-   CompletableFuture<Void> a(akr.a var1, akx var2, ban var3, ban var4, Executor var5, Executor var6);
+   void a(cor var1);
 
-   default String c() {
-      return this.getClass().getSimpleName();
-   }
+   void a(cor var1, @Nullable dgz var2);
 
-   public interface a {
-      <T> CompletableFuture<T> a(T var1);
-   }
+   void a();
+
+   void b();
 }

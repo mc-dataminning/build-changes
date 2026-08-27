@@ -1,24 +1,38 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class bkk extends bhr<bgb> {
-   private final float c;
-
-   public bkk(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   protected boolean a(aif $$0, bgb $$1) {
-      return $$1.aV() && $$1.b(anb.a) > $$1.dc() || $$1.bi();
-   }
-
-   protected boolean a(aif $$0, bgb $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aif $$0, bgb $$1, long $$2) {
-      if ($$1.ec().i() < this.c) {
-         $$1.I().a();
-      }
+public class bkk {
+   public static bkp<cay> a() {
+      return boa.a(
+         (Function<boa.b<cay>, ? extends App<boa.c<cay>, bod<cay>>>)($$0 -> $$0.group($$0.b(bry.d), $$0.a(bry.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        he $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.di(), 2.0) && !$$4.gj()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gk().b() != cbb.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.n();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
+                                 .flatMap($$0xxx -> jc.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gk().a($$2xx));
+                                    $$4.c($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

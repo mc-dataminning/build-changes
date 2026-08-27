@@ -1,184 +1,218 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.function.Consumer;
 
-public class evj extends epo<evj.b> {
-   final evk a;
-   int l;
+public class evj extends evg {
+   private final List<evm> c = new ArrayList<>();
+   private final List<evj.a> d = new ArrayList<>();
+   private final evn e = evn.i();
+   private int f = 0;
+   private int g = 0;
 
-   public evj(evk $$0, enn $$1) {
-      super($$1, $$0.g + 45, $$0.h, 20, $$0.h - 32, 20);
-      this.a = $$0;
-      enl[] $$2 = (enl[])ArrayUtils.clone($$1.m.X);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
-
-      for (enl $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new evj.a(sw.c($$5)));
-         }
-
-         sw $$6 = sw.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.l) {
-            this.l = $$7;
-         }
-
-         this.b(new evj.c($$4, $$6));
-      }
+   public evj() {
+      this(0, 0);
    }
 
-   public void d() {
-      enl.d();
-      this.e();
-   }
-
-   public void e() {
-      this.i().forEach(evj.b::d);
+   public evj(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   protected int c() {
-      return super.c() + 15;
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (evj.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (evj.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (evj.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.p() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.r() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2, evn $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2, Consumer<evn> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2, int $$3, int $$4, evn $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      } else {
+         this.d.add(new evj.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
+      }
+   }
+
+   public <T extends evm> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<evn> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
+   }
+
+   public evj a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public evj b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public evj c(int $$0) {
+      return this.a($$0).b($$0);
    }
 
    @Override
-   public int b() {
-      return super.b() + 32;
+   public void b(Consumer<evm> $$0) {
+      this.c.forEach($$0);
    }
 
-   public class a extends evj.b {
-      final sw b;
-      private final int c;
+   public evn b() {
+      return this.e.g();
+   }
 
-      public a(sw $$1) {
+   public evn c() {
+      return this.e;
+   }
+
+   public evj.b d(int $$0) {
+      return new evj.b($$0);
+   }
+
+   static class a extends evg.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(evm $$0, int $$1, int $$2, int $$3, int $$4, evn $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(int $$1) {
          this.b = $$1;
-         this.c = evj.this.b.h.a(this.b);
       }
 
-      @Override
-      public void a(eox $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(evj.this.b.h, this.b, evj.this.b.z.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, 16777215, false);
+      public <T extends evm> T a(T $$0) {
+         return this.a($$0, 1);
       }
 
-      @Nullable
-      @Override
-      public eou a(esv $$0) {
-         return null;
+      public <T extends evm> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
       }
 
-      @Override
-      public List<? extends eqt> i() {
-         return Collections.emptyList();
+      public <T extends evm> T a(T $$0, evn $$1) {
+         return this.a($$0, 1, $$1);
       }
 
-      @Override
-      public List<? extends esn> b() {
-         return ImmutableList.of(new esn() {
-            @Override
-            public esn.a q() {
-               return esn.a.b;
-            }
-
-            @Override
-            public void b(esp $$0) {
-               $$0.a(eso.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void d() {
-      }
-   }
-
-   public abstract static class b extends epo.a<evj.b> {
-      abstract void d();
-   }
-
-   public class c extends evj.b {
-      private final enl b;
-      private final sw c;
-      private final epi d;
-      private final epi e;
-      private boolean f = false;
-
-      c(enl $$1, sw $$2) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = epi.a($$2, $$1x -> {
-            evj.this.a.c = $$1;
-            evj.this.d();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? sw.a("narrator.controls.unbound", $$2) : sw.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.e = epi.a(sw.c("controls.reset"), $$1x -> {
-            evj.this.b.m.a($$1, $$1.i());
-            evj.this.d();
-         }).a(0, 0, 50, 20).a($$1x -> sw.a("narrator.controls.reset", $$2)).a();
-         this.d();
-      }
-
-      @Override
-      public void a(eox $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int var10003 = $$3 + 90 - evj.this.l;
-         $$0.a(evj.this.b.h, this.c, var10003, $$2 + $$5 / 2 - 9 / 2, 16777215, false);
-         this.e.e($$3 + 190);
-         this.e.f($$2);
-         this.e.a($$0, $$6, $$7, $$9);
-         this.d.e($$3 + 105);
-         this.d.f($$2);
-         if (this.f) {
-            int $$10 = 3;
-            int $$11 = this.d.p() - 6;
-            $$0.a($$11, $$2 + 2, $$11 + 3, $$2 + $$5 + 2, n.m.f() | 0xFF000000);
+      public <T extends evm> T a(T $$0, int $$1, evn $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = aro.d(this.c, this.b);
          }
 
-         this.d.a($$0, $$6, $$7, $$9);
+         this.c += $$1;
+         return evj.this.a($$0, $$3, $$4, 1, $$1, $$2);
       }
 
-      @Override
-      public List<? extends eqt> i() {
-         return ImmutableList.of(this.d, this.e);
+      public evj a() {
+         return evj.this;
       }
 
-      @Override
-      public List<? extends esn> b() {
-         return ImmutableList.of(this.d, this.e);
+      public evn b() {
+         return evj.this.b();
       }
 
-      @Override
-      protected void d() {
-         this.d.b(this.b.k());
-         this.e.r = !this.b.l();
-         this.f = false;
-         tj $$0 = sw.h();
-         if (!this.b.j()) {
-            for (enl $$1 : evj.this.b.m.X) {
-               if ($$1 != this.b && this.b.b($$1)) {
-                  if (this.f) {
-                     $$0.f(", ");
-                  }
-
-                  this.f = true;
-                  $$0.b(sw.c($$1.h()));
-               }
-            }
-         }
-
-         if (this.f) {
-            this.d.b(sw.b("[ ").b(this.d.l().e().a(n.p)).f(" ]").a(n.m));
-            this.d.a(eqp.a(sw.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.d.a(null);
-         }
-
-         if (evj.this.a.c == this.b) {
-            this.d.b(sw.b("> ").b(this.d.l().e().a(n.p, n.t)).f(" <").a(n.o));
-         }
+      public evn c() {
+         return evj.this.c();
       }
    }
 }

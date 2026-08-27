@@ -1,32 +1,90 @@
-import java.util.Map;
-import java.util.Optional;
+public class ezf extends eyt<cer> implements fbn {
+   private static final aep x = new aep("textures/gui/container/crafting_table.png");
+   private final fbh y = new fbh();
+   private boolean z;
 
-public interface ezf {
-   Map<Optional<acp<drp>>, ezf> a = Map.of(Optional.of(drq.b), ($$0, $$1) -> {
-      ddy $$2 = $$1.d().a();
-      hs $$3 = $$1.a();
-      hf<cnk> $$4 = $$3.b(jc.ap);
-      hf<dsg> $$5 = $$3.b(jc.aB);
-      hf<dre> $$6 = $$3.b(jc.ay);
-      return new etn($$0, $$1x -> $$0.l().a(a($$1x)), $$2 instanceof dhf ? ((dhf)$$2).g() : dqd.a($$4, $$5, $$6));
-   }, Optional.of(drq.e), ($$0, $$1) -> new etm($$0, $$1, $$1x -> $$0.l().a(a($$1x))));
-
-   euq createEditScreen(eza var1, ezi var2);
-
-   private static ezi.a a(dqd $$0) {
-      return ($$1, $$2) -> {
-         ddy $$3 = new dhf($$0);
-         return $$2.a($$1, $$3);
-      };
+   public ezf(cer $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static ezi.a a(he<cnk> $$0) {
-      return ($$1, $$2) -> {
-         hr<dhp> $$3 = $$1.d(jc.aw);
-         he<dhp> $$4 = $$3.f(dhp.c);
-         cno $$5 = new cnv($$0);
-         ddy $$6 = new dhn($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   @Override
+   protected void aE_() {
+      super.aE_();
+      this.z = this.g < 379;
+      this.y.a(this.g, this.h, this.f, this.z, this.p);
+      this.t = this.y.a(this.g, this.c);
+      this.d(new esu(this.t + 5, this.h / 2 - 49, 20, 18, fbh.a, $$0 -> {
+         this.y.f();
+         this.t = this.y.a(this.g, this.c);
+         $$0.b(this.t + 5, this.h / 2 - 49);
+      }));
+      this.e(this.y);
+      this.c(this.y);
+      this.l = 29;
+   }
+
+   @Override
+   public void B() {
+      super.B();
+      this.y.h();
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      if (this.y.g() && this.z) {
+         this.b($$0, $$1, $$2, $$3);
+         this.y.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.y.a($$0, $$1, $$2, $$3);
+         this.y.a($$0, this.t, this.u, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.y.a($$0, this.t, this.u, $$1, $$2);
+   }
+
+   @Override
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.z || !this.y.g()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.y.a($$0, $$1, $$2)) {
+         this.a(this.y);
+         return true;
+      } else {
+         return this.z && this.y.g() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.y.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cfu $$0, int $$1, int $$2, cel $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.y.a($$0);
+   }
+
+   @Override
+   public void D() {
+      this.y.i();
+   }
+
+   @Override
+   public fbh E() {
+      return this.y;
    }
 }

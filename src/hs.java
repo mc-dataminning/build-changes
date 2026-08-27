@@ -1,106 +1,209 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
 import com.mojang.serialization.Lifecycle;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public interface hs extends hg.b {
-   Logger a = LogUtils.getLogger();
-   hs.b b = new hs.c(Map.of()).c();
+public interface hs<T> extends Keyable, hk<T> {
+   aeo<? extends hs<T>> c();
 
-   <E> Optional<hr<E>> c(acp<? extends hr<? extends E>> var1);
+   default Codec<T> q() {
+      Codec<T> $$0 = aep.a
+         .flatXmap(
+            $$0x -> Optional.ofNullable(this.a($$0x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
+            $$0x -> this.c((T)$$0x)
+                  .map(aeo::a)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
+         );
+      Codec<T> $$1 = aqw.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return aqw.a(aqw.b($$0, $$1), this::e, this::e);
+   }
+
+   default Codec<hf<T>> r() {
+      Codec<hf<T>> $$0 = aep.a
+         .flatXmap(
+            $$0x -> this.b(aeo.a(this.c(), $$0x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
+            $$0x -> $$0x.e()
+                  .map(aeo::a)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
+         );
+      return aqw.a($$0, (Function<hf<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
+   }
+
+   default <U> Stream<U> keys(DynamicOps<U> $$0) {
+      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   }
+
+   @Nullable
+   aep b(T var1);
+
+   Optional<aeo<T>> c(T var1);
 
    @Override
-   default <T> Optional<hg.c<T>> a(acp<? extends hr<? extends T>> $$0) {
-      return this.c($$0).map(hr::p);
+   int a(@Nullable T var1);
+
+   @Nullable
+   T a(@Nullable aeo<T> var1);
+
+   @Nullable
+   T a(@Nullable aep var1);
+
+   Lifecycle e(T var1);
+
+   Lifecycle d();
+
+   default Optional<T> b(@Nullable aep $$0) {
+      return Optional.ofNullable(this.a($$0));
    }
 
-   default <E> hr<E> d(acp<? extends hr<? extends E>> $$0) {
-      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   default Optional<T> d(@Nullable aeo<T> $$0) {
+      return Optional.ofNullable(this.a($$0));
    }
 
-   Stream<hs.d<?>> b();
+   default T e(aeo<T> $$0) {
+      T $$1 = this.a($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
+      } else {
+         return $$1;
+      }
+   }
 
-   static hs.b a(final hr<? extends hr<?>> $$0) {
-      return new hs.b() {
-         @Override
-         public <T> Optional<hr<T>> c(acp<? extends hr<? extends T>> $$0x) {
-            hr<hr<T>> $$1 = (hr<hr<T>>)$$0;
-            return $$1.d((acp<hr<T>>)$$0);
+   Set<aep> e();
+
+   Set<Entry<aeo<T>, T>> g();
+
+   Set<aeo<T>> f();
+
+   Optional<hf.c<T>> a(art var1);
+
+   default Stream<T> s() {
+      return StreamSupport.stream(this.spliterator(), false);
+   }
+
+   boolean c(aep var1);
+
+   boolean c(aeo<T> var1);
+
+   static <T> T a(hs<? super T> $$0, String $$1, T $$2) {
+      return a($$0, new aep($$1), $$2);
+   }
+
+   static <V, T extends V> T a(hs<V> $$0, aep $$1, T $$2) {
+      return a($$0, aeo.a($$0.c(), $$1), $$2);
+   }
+
+   static <V, T extends V> T a(hs<V> $$0, aeo<V> $$1, T $$2) {
+      ((ib)$$0).a($$1, (V)$$2, Lifecycle.stable());
+      return $$2;
+   }
+
+   static <T> hf.c<T> b(hs<T> $$0, aeo<T> $$1, T $$2) {
+      return ((ib)$$0).a($$1, $$2, Lifecycle.stable());
+   }
+
+   static <T> hf.c<T> b(hs<T> $$0, aep $$1, T $$2) {
+      return b($$0, aeo.a($$0.c(), $$1), $$2);
+   }
+
+   static <V, T extends V> T a(hs<V> $$0, int $$1, String $$2, T $$3) {
+      ((ib)$$0).b($$1, aeo.a($$0.c(), new aep($$2)), (V)$$3, Lifecycle.stable());
+      return $$3;
+   }
+
+   hs<T> l();
+
+   hf.c<T> f(T var1);
+
+   Optional<hf.c<T>> c(int var1);
+
+   Optional<hf.c<T>> b(aeo<T> var1);
+
+   hf<T> d(T var1);
+
+   default hf.c<T> f(aeo<T> $$0) {
+      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
+   }
+
+   Stream<hf.c<T>> h();
+
+   Optional<hj.c<T>> b(apy<T> var1);
+
+   default Iterable<hf<T>> c(apy<T> $$0) {
+      return (Iterable<hf<T>>)DataFixUtils.orElse(this.b($$0), List.of());
+   }
+
+   hj.c<T> a(apy<T> var1);
+
+   Stream<Pair<apy<T>, hj.c<T>>> i();
+
+   Stream<apy<T>> j();
+
+   void m();
+
+   void a(Map<apy<T>, List<hf<T>>> var1);
+
+   default hk<hf<T>> t() {
+      return new hk<hf<T>>() {
+         public int a(hf<T> $$0) {
+            return hs.this.a($$0.a());
+         }
+
+         @Nullable
+         public hf<T> c(int $$0) {
+            return (hf<T>)hs.this.c($$0).orElse(null);
          }
 
          @Override
-         public Stream<hs.d<?>> b() {
-            return $$0.g().stream().map(hs.d::a);
+         public int b() {
+            return hs.this.b();
          }
 
          @Override
-         public hs.b c() {
-            return this;
+         public Iterator<hf<T>> iterator() {
+            return hs.this.h().map($$0 -> (hf<T>)$$0).iterator();
          }
       };
    }
 
-   default hs.b c() {
-      class a extends hs.c implements hs.b {
-         protected a(Stream<hs.d<?>> $$1) {
-            super($$1);
+   hi<T> o();
+
+   hh.c<T> p();
+
+   default hh.c<T> u() {
+      return new hh.c.a<T>() {
+         @Override
+         protected hh.c<T> a() {
+            return hs.this.p();
          }
-      }
 
-      return new a(this.b().map(hs.d::c));
-   }
+         @Override
+         public Optional<hj.c<T>> a(apy<T> $$0) {
+            return Optional.of(this.b($$0));
+         }
 
-   default Lifecycle d() {
-      return this.b().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
-   }
-
-   public interface b extends hs {
-   }
-
-   public static class c implements hs {
-      private final Map<? extends acp<? extends hr<?>>, ? extends hr<?>> c;
-
-      public c(List<? extends hr<?>> $$0) {
-         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(hr::c, $$0x -> $$0x));
-      }
-
-      public c(Map<? extends acp<? extends hr<?>>, ? extends hr<?>> $$0) {
-         this.c = Map.copyOf($$0);
-      }
-
-      public c(Stream<hs.d<?>> $$0) {
-         this.c = $$0.collect(ImmutableMap.toImmutableMap(hs.d::a, hs.d::b));
-      }
-
-      @Override
-      public <E> Optional<hr<E>> c(acp<? extends hr<? extends E>> $$0) {
-         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
-      }
-
-      @Override
-      public Stream<hs.d<?>> b() {
-         return this.c.entrySet().stream().map(hs.d::a);
-      }
-   }
-
-   public static record d<T>(acp<? extends hr<T>> a, hr<T> b) {
-
-      private static <T, R extends hr<? extends T>> hs.d<T> a(Entry<? extends acp<? extends hr<?>>, R> $$0) {
-         return a((acp<? extends hr<?>>)$$0.getKey(), $$0.getValue());
-      }
-
-      private static <T> hs.d<T> a(acp<? extends hr<?>> $$0, hr<?> $$1) {
-         return new hs.d<>((acp<? extends hr<T>>)$$0, (hr<T>)$$1);
-      }
-
-      private hs.d<T> c() {
-         return new hs.d<>(this.a, this.b.l());
-      }
+         @Override
+         public hj.c<T> b(apy<T> $$0) {
+            return hs.this.a($$0);
+         }
+      };
    }
 }

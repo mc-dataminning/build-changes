@@ -1,71 +1,174 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fod extends fox<cah> {
-   private final Map<cah.b, Pair<acq, fbx<cah>>> a;
+public class fod {
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<hb, foe> c;
+   public final fof d;
+   public final boolean e;
 
-   public fod(foy.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(cah.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new acq(a($$2, $$1)), this.a($$0, $$2, $$1))));
+   public fod(Vector3f $$0, Vector3f $$1, Map<hb, foe> $$2, @Nullable fof $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   private fbx<cah> a(foy.a $$0, cah.b $$1, boolean $$2) {
-      fec $$3 = $$2 ? fed.d($$1) : fed.c($$1);
-      fee $$4 = $$0.a($$3);
-      if ($$1 == cah.b.i) {
-         return (fbx<cah>)($$2 ? new fas($$4) : new fcr($$4));
-      } else {
-         return (fbx<cah>)($$2 ? new far($$4) : new fan($$4));
+   private void a() {
+      for (Entry<hb, foe> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
       }
    }
 
-   private static String a(cah.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   private float[] a(hb $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+      }
    }
 
-   public void a(cah $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.s() - $$2;
-      float $$7 = $$0.r() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
-      }
+   protected static class a implements JsonDeserializer<fod> {
+      private static final boolean a = true;
 
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(apa.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.t()));
-      }
-
-      float $$8 = $$0.s($$2);
-      if (!apa.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.s($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      Pair<acq, fbx<cah>> $$9 = this.a.get($$0.v());
-      acq $$10 = (acq)$$9.getFirst();
-      fbx<cah> $$11 = (fbx<cah>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      ein $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, fum.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.aZ()) {
-         ein $$13 = $$4.getBuffer(fkf.j());
-         if ($$11 instanceof fds $$14) {
-            $$14.c().a($$3, $$13, $$5, fum.d);
+      public fod a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         fof $$6 = this.a($$3);
+         Map<hb, foe> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !arf.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = arf.a($$3, "shade", true);
+            return new fod($$4, $$5, $$7, $$6, $$8);
          }
       }
 
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      @Nullable
+      private fof a(JsonObject $$0) {
+         fof $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = arf.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            hb.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = arf.a($$2, "rescale", false);
+            $$1 = new fof($$3, $$4, $$5, $$6);
+         }
 
-   public acq a(cah $$0) {
-      return (acq)this.a.get($$0.v()).getFirst();
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = arf.m($$0, "angle");
+         if ($$1 != 0.0F && aro.e($$1) != 22.5F && aro.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private hb.a c(JsonObject $$0) {
+         String $$1 = arf.i($$0, "axis");
+         hb.a $$2 = hb.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hb, foe> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hb, foe> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hb, foe> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hb, foe> $$2 = Maps.newEnumMap(hb.class);
+         JsonObject $$3 = arf.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            hb $$5 = this.a($$4.getKey());
+            $$2.put($$5, (foe)$$0.deserialize($$4.getValue(), foe.class));
+         }
+
+         return $$2;
+      }
+
+      private hb a(String $$0) {
+         hb $$1 = hb.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = arf.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = arf.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
+      }
    }
 }

@@ -1,40 +1,51 @@
-import java.util.EnumSet;
-
 public class bos extends bov {
-   private final bgv a;
-   private bfz b;
-   private int c;
+   private final int l;
+   private final boolean m;
 
-   public bos(bgv $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bmv.a.d));
+   public bos(biy $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      if (this.a.q() && !this.a.fY()) {
-         bfz $$0 = this.a.I_();
-         if ($$0 == null) {
-            return false;
+   public void a() {
+      if (this.k == bov.a.b) {
+         this.k = bov.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.dp();
+         double $$1 = this.f - this.d.dr();
+         double $$2 = this.g - this.d.dv();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
+            this.d.A(0.0F);
+            return;
+         }
+
+         float $$4 = (float)(aro.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dA(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aA()) {
+            $$5 = (float)(this.h * this.d.b(bkd.d));
          } else {
-            this.b = $$0.ed();
-            int $$1 = $$0.ee();
-            return $$1 != this.c && this.a(this.b, bqm.a) && this.a.a(this.b, $$0);
+            $$5 = (float)(this.h * this.d.b(bkd.e));
+         }
+
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(aro.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dC(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
          }
       } else {
-         return false;
-      }
-   }
+         if (!this.m) {
+            this.d.e(false);
+         }
 
-   @Override
-   public void c() {
-      this.e.h(this.b);
-      bfz $$0 = this.a.I_();
-      if ($$0 != null) {
-         this.c = $$0.ee();
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
-
-      super.c();
    }
 }

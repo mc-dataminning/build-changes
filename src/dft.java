@@ -1,15 +1,14 @@
-public interface dft {
-   dft a = new dft() {
-      @Override
-      public void a() {
-      }
+public enum dft implements asf {
+   a,
+   b;
 
-      @Override
-      public void a(bfj.c $$0) {
-      }
-   };
+   @Override
+   public String toString() {
+      return this.c();
+   }
 
-   void a();
-
-   void a(bfj.c var1);
+   @Override
+   public String c() {
+      return this == a ? "left" : "right";
+   }
 }

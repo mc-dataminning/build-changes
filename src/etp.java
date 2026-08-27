@@ -1,30 +1,61 @@
-public class etp extends euq {
-   private epz a;
-   private final Runnable b;
+public class etp extends esg {
+   private static final ett a = new ett(
+      new aep("widget/tab_selected"), new aep("widget/tab"), new aep("widget/tab_selected_highlighted"), new aep("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int l = 2;
+   private final eud m;
+   private final euc n;
 
-   public etp(Runnable $$0) {
-      super(sw.c("datapackFailure.title"));
-      this.a = epz.a;
-      this.b = $$0;
+   public etp(eud $$0, euc $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   protected void b() {
-      super.b();
-      this.a = epz.a(this.i, this.m(), this.g - 50);
-      this.d(epi.a(sw.c("datapackFailure.safeMode"), $$0 -> this.b.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
-      this.d(epi.a(sv.l, $$0 -> this.f.a(null)).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      $$0.a(a.a(this.b(), this.m()), this.p(), this.r(), this.f, this.g);
+      erv $$4 = eqn.N().h;
+      int $$5 = this.i ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.b($$0, $$4, $$5);
+      }
+   }
+
+   public void a(erx $$0, erv $$1, int $$2) {
+      int $$3 = this.p() + 1;
+      int $$4 = this.r() + (this.b() ? 0 : 3);
+      int $$5 = this.p() + this.k() - 1;
+      int $$6 = this.r() + this.h();
+      a($$0, $$1, this.l(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(erx $$0, erv $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.l()), this.k() - 4);
+      int $$4 = this.p() + (this.k() - $$3) / 2;
+      int $$5 = this.r() + this.h() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      this.a.a($$0, this.g / 2, 70);
-      super.a($$0, $$1, $$2, $$3);
+   protected void a(evt $$0) {
+      $$0.a(evs.a, te.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   public boolean av_() {
-      return false;
+   public void a(gcs $$0) {
+   }
+
+   public euc a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

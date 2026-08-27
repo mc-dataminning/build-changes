@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class df extends cv<df.a> {
-   static final acq a = new acq("used_ender_eye");
+   static final aep a = new aep("used_ender_eye");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -13,9 +13,9 @@ public class df extends cv<df.a> {
       return new df.a($$1, $$3);
    }
 
-   public void a(aig $$0, gu $$1) {
-      double $$2 = $$0.dn() - (double)$$1.u();
-      double $$3 = $$0.dt() - (double)$$1.w();
+   public void a(akj $$0, gv $$1) {
+      double $$2 = $$0.dp() - (double)$$1.u();
+      double $$3 = $$0.dv() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }

@@ -1,40 +1,40 @@
-public class zu implements uo<zb> {
-   private final gu a;
+public class zu implements uw<wo> {
+   private final float a;
    private final int b;
-   private final boolean c;
+   private final int c;
 
-   public zu(gu $$0, int $$1, boolean $$2) {
+   public zu(float $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public zu(sf $$0) {
-      this.a = $$0.f();
+   public zu(sh $$0) {
+      this.a = $$0.readFloat();
+      this.c = $$0.m();
       this.b = $$0.m();
-      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sf $$0) {
+   public void a(sh $$0) {
       $$0.a(this.a);
-      $$0.d(this.b);
-      $$0.writeBoolean(this.c);
+      $$0.c(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
+   public float a() {
       return this.a;
    }
 
-   public int c() {
+   public int d() {
       return this.b;
    }
 
-   public boolean d() {
+   public int e() {
       return this.c;
    }
 }

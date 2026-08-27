@@ -1,83 +1,37 @@
-public class fgr extends fim {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fih M;
+public class fgr<T extends big> extends fec<T> {
+   private final fhj a;
+   private final fhj b;
 
-   fgr(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fih $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = apa.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = apa.a(this.r, 0.0F, 0.0F);
-      this.x = apa.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+   public fgr(fhj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
+   }
+
+   public static fhp a(fhn $$0) {
+      fhr $$1 = new fhr();
+      fhs $$2 = $$1.a();
+      int $$3 = 19;
+      $$2.a("body", fho.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fhl.a(0.0F, 19.0F, 0.0F));
+      $$2.a("tail", fho.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fhl.a(0.0F, 19.0F, 3.0F));
+      $$2.a("right_fin", fho.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhl.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fho.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhl.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fho.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fhl.a(0.0F, 16.0F, -3.0F));
+      $$2.a("bottom_fin", fho.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fhl.a(0.0F, 22.0F, -3.0F));
+      return fhp.a($$1, 32, 32);
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
+   public fhj a() {
+      return this.a;
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.aX()) {
+         $$6 = 1.5F;
       }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fgr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+      this.b.f = -$$6 * 0.45F * aro.a(0.6F * $$3);
    }
 }

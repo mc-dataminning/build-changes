@@ -1,94 +1,60 @@
-public class fdi<T extends bwp> extends fbo<T> {
-   private static final String a = "right_bottom_bristle";
-   private static final String b = "right_middle_bristle";
-   private static final String f = "right_top_bristle";
-   private static final String g = "left_top_bristle";
-   private static final String h = "left_middle_bristle";
-   private static final String i = "left_bottom_bristle";
-   private final fee j;
-   private final fee k;
-   private final fee l;
-   private final fee m;
-   private final fee n;
-   private final fee o;
-   private final fee p;
-   private final fee q;
-   private final fee r;
-   private final fee s;
+import java.util.function.Function;
 
-   public fdi(fee $$0) {
-      this.j = $$0;
-      this.k = $$0.b("right_leg");
-      this.l = $$0.b("left_leg");
-      this.m = $$0.b("body");
-      this.n = this.m.b("right_bottom_bristle");
-      this.o = this.m.b("right_middle_bristle");
-      this.p = this.m.b("right_top_bristle");
-      this.q = this.m.b("left_top_bristle");
-      this.r = this.m.b("left_middle_bristle");
-      this.s = this.m.b("left_bottom_bristle");
+public abstract class fdi<E extends big> extends fek<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fdi(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
    }
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a("right_leg", fej.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), feg.a(-4.0F, 8.0F, 0.0F));
-      $$1.a("left_leg", fej.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), feg.a(4.0F, 8.0F, 0.0F));
-      fen $$2 = $$1.a("body", fej.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), feg.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_bottom_bristle", fej.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), feg.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
-      $$2.a("right_middle_bristle", fej.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), feg.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
-      $$2.a("right_top_bristle", fej.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), feg.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
-      $$2.a("left_top_bristle", fej.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), feg.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
-      $$2.a("left_middle_bristle", fej.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), feg.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
-      $$2.a("left_bottom_bristle", fej.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), feg.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
-      return fek.a($$0, 64, 128);
+   protected fdi(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(fno::d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void a(bwp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$2 = Math.min(0.25F, $$2);
-      if (!$$0.bN()) {
-         this.m.e = $$5 * (float) (Math.PI / 180.0);
-         this.m.f = $$4 * (float) (Math.PI / 180.0);
-      } else {
-         this.m.e = 0.0F;
-         this.m.f = 0.0F;
-      }
+   protected fdi(Function<aep, fno> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
 
-      float $$6 = 1.5F;
-      this.m.g = 0.1F * apa.a($$1 * 1.5F) * 4.0F * $$2;
-      this.m.c = 2.0F;
-      this.m.c = this.m.c - 2.0F * apa.b($$1 * 1.5F) * 2.0F * $$2;
-      this.l.e = apa.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.k.e = apa.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.l.g = (float) (Math.PI / 18) * apa.b($$1 * 1.5F * 0.5F) * $$2;
-      this.k.g = (float) (Math.PI / 18) * apa.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
-      this.l.c = 8.0F + 2.0F * apa.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.k.c = 8.0F + 2.0F * apa.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.n.g = -1.2217305F;
-      this.o.g = -1.134464F;
-      this.p.g = -0.87266463F;
-      this.q.g = 0.87266463F;
-      this.r.g = 1.134464F;
-      this.s.g = 1.2217305F;
-      float $$7 = apa.b($$1 * 1.5F + (float) Math.PI) * $$2;
-      this.n.g += $$7 * 1.3F;
-      this.o.g += $$7 * 1.2F;
-      this.p.g += $$7 * 0.6F;
-      this.q.g += $$7 * 0.6F;
-      this.r.g += $$7 * 1.2F;
-      this.s.g += $$7 * 1.3F;
-      float $$8 = 1.0F;
-      float $$9 = 1.0F;
-      this.n.g = this.n.g + 0.05F * apa.a($$3 * 1.0F * -0.4F);
-      this.o.g = this.o.g + 0.1F * apa.a($$3 * 1.0F * 0.2F);
-      this.p.g = this.p.g + 0.1F * apa.a($$3 * 1.0F * 0.4F);
-      this.q.g = this.q.g + 0.1F * apa.a($$3 * 1.0F * 0.4F);
-      this.r.g = this.r.g + 0.1F * apa.a($$3 * 1.0F * 0.2F);
-      this.s.g = this.s.g + 0.05F * apa.a($$3 * 1.0F * -0.4F);
+   protected fdi() {
+      this(false, 5.0F, 2.0F);
    }
 
    @Override
-   public fee a() {
-      return this.j;
+   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+      }
    }
+
+   protected abstract Iterable<fhj> a();
+
+   protected abstract Iterable<fhj> b();
 }

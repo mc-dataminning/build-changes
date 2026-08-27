@@ -1,77 +1,92 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dcz<T extends Enum<T> & apr> extends dde<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
+public class dcz extends dck {
+   public static final String a = "sherds";
+   private dcz.a b = dcz.a.a;
 
-   protected dcz(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
+   public dcz(gv $$0, dey $$1) {
+      super(dcm.O, $$0, $$1);
+   }
 
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+   @Override
+   protected void b(qs $$0) {
+      super.b($$0);
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.b = dcz.a.b($$0);
+   }
+
+   public ww c() {
+      return ww.a(this);
+   }
+
+   @Override
+   public qs ao_() {
+      return this.o();
+   }
+
+   public hb d() {
+      return this.q().c(dfo.R);
+   }
+
+   public dcz.a f() {
+      return this.b;
+   }
+
+   public void a(ciw $$0) {
+      this.b = dcz.a.b(cgp.a($$0));
+   }
+
+   public ciw g() {
+      return a(this.b);
+   }
+
+   public static ciw a(dcz.a $$0) {
+      ciw $$1 = ciz.eg.ae_();
+      qs $$2 = $$0.a(new qs());
+      cgp.a($$1, dcm.O, $$2);
+      return $$1;
+   }
+
+   public static record a(cir b, cir c, cir d, cir e) {
+      public static final dcz.a a = new dcz.a(ciz.pX, ciz.pX, ciz.pX, ciz.pX);
+
+      public qs a(qs $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            qy $$1 = new qy();
+            this.a().forEach($$1x -> $$1.add(rj.a(jc.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
          }
-
-         this.b.put($$4, $$3);
       }
-   }
 
-   @Override
-   public Collection<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof dcz && super.equals($$0)) {
-         dcz<?> $$1 = (dcz<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
-      } else {
-         return false;
+      public Stream<cir> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
       }
-   }
 
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
+      public static dcz.a b(@Nullable qs $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            qy $$1 = $$0.c("sherds", 8);
+            return new dcz.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
 
-   public static <T extends Enum<T> & apr> dcz<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   public static <T extends Enum<T> & apr> dcz<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
-
-   public static <T extends Enum<T> & apr> dcz<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
-   }
-
-   public static <T extends Enum<T> & apr> dcz<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dcz<>($$0, $$1, $$2);
+      private static cir a(qy $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return ciz.pX;
+         } else {
+            rl $$2 = $$0.k($$1);
+            return jc.i.a(aep.a($$2.m_()));
+         }
+      }
    }
 }

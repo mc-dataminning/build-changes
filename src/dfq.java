@@ -1,24 +1,24 @@
-import java.util.List;
-import java.util.stream.Stream;
+public enum dfq implements asf {
+   a("single"),
+   b("left"),
+   c("right");
 
-public class dfq<T> {
-   private final clt a;
-   private final List<T> b;
+   private final String d;
 
-   public dfq(clt $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private dfq(String $$0) {
+      this.d = $$0;
    }
 
-   public clt a() {
-      return this.a;
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+   public dfq a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

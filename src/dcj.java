@@ -1,18 +1,20 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class dcj implements Predicate<dcb> {
-   private final cpn a;
-
-   public dcj(cpn $$0) {
-      this.a = $$0;
+public class dcj extends dbz {
+   public dcj(gv $$0, dey $$1) {
+      super(dcm.C, $$0, $$1, cmc.c);
    }
 
-   public static dcj a(cpn $$0) {
-      return new dcj($$0);
+   @Override
+   protected te g() {
+      return te.c("container.blast_furnace");
    }
 
-   public boolean a(@Nullable dcb $$0) {
-      return $$0 != null && $$0.a(this.a);
+   @Override
+   protected int a(ciw $$0) {
+      return super.a($$0) / 2;
+   }
+
+   @Override
+   protected cec a(int $$0, cbk $$1) {
+      return new ceg($$0, $$1, this, this.n);
    }
 }

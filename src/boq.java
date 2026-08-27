@@ -1,37 +1,59 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class boq implements bor {
+   private final biy a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class boq<T extends bfz> extends boo<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public boq(bzw $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bfz> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public boq(biy $$0) {
+      this.a = $$0;
    }
 
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
-   }
-
-   @Override
-   public boolean a() {
-      if (this.j > 0 || !this.e.ec().h()) {
-         return false;
-      } else if (!((bzw)this.e).gn()) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aU = this.a.dA();
+         this.c();
+         this.f = this.a.aW;
+         this.e = 0;
       } else {
-         this.h();
-         return this.c != null;
+         if (this.e()) {
+            if (Math.abs(this.a.aW - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aW;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public void c() {
-      this.j = b(200);
-      super.c();
+   private void b() {
+      this.a.aU = aro.c(this.a.aU, this.a.aW, (float)this.a.X());
+   }
+
+   private void c() {
+      this.a.aW = aro.c(this.a.aW, this.a.aU, (float)this.a.X());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = aro.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.X() * (1.0F - $$1);
+      this.a.aU = aro.c(this.a.aU, this.a.aW, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cQ() instanceof biy);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dp() - this.a.K;
+      double $$1 = this.a.dv() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

@@ -1,18 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+class bhw extends bhr {
+   protected bhw(bhs $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public class bhw {
-   public static <E extends bfz, T> bhs<E> a(Predicate<E> $$0, bpb<? extends T> $$1, bpb<T> $$2, bdi $$3) {
-      return bld.a(
-         (Function<bld.b<E>, ? extends App<bld.c<E>, blg<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
-                     return true;
-                  }
-               }))
-      );
+   @Override
+   public void a(biw $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0.et() > 1.0F) {
+         $$0.a($$0.dL().o(), 1.0F);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

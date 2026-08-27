@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class cy extends cv<cy.a> {
-   static final acq a = new acq("started_riding");
+   static final aep a = new aep("started_riding");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -12,7 +12,7 @@ public class cy extends cv<cy.a> {
       return new cy.a($$1);
    }
 
-   public void a(aig $$0) {
+   public void a(akj $$0) {
       this.a($$0, $$0x -> true);
    }
 

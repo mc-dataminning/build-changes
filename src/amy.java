@@ -1,31 +1,50 @@
-public interface amy {
-   anl<bep> a = a("damages_helmet");
-   anl<bep> b = a("bypasses_armor");
-   anl<bep> c = a("bypasses_shield");
-   anl<bep> d = a("bypasses_invulnerability");
-   anl<bep> e = a("bypasses_cooldown");
-   anl<bep> f = a("bypasses_effects");
-   anl<bep> g = a("bypasses_resistance");
-   anl<bep> h = a("bypasses_enchantments");
-   anl<bep> i = a("is_fire");
-   anl<bep> j = a("is_projectile");
-   anl<bep> k = a("witch_resistant_to");
-   anl<bep> l = a("is_explosion");
-   anl<bep> m = a("is_fall");
-   anl<bep> n = a("is_drowning");
-   anl<bep> o = a("is_freezing");
-   anl<bep> p = a("is_lightning");
-   anl<bep> q = a("no_anger");
-   anl<bep> r = a("no_impact");
-   anl<bep> s = a("always_most_significant_fall");
-   anl<bep> t = a("wither_immune_to");
-   anl<bep> u = a("ignites_armor_stands");
-   anl<bep> v = a("burns_armor_stands");
-   anl<bep> w = a("avoids_guardian_thorns");
-   anl<bep> x = a("always_triggers_silverfish");
-   anl<bep> y = a("always_hurts_ender_dragons");
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private static anl<bep> a(String $$0) {
-      return anl.a(jc.p, new acq($$0));
+public class amy extends amq {
+   private static final amm b = new amm(te.c("dataPack.vanilla.description"), aa.b().a(alz.b), Optional.empty());
+   private static final alv c = new alv(cdv.g);
+   private static final alt d = alt.a(amm.b, b, alv.a, c);
+   private static final te e = te.c("dataPack.vanilla.name");
+   private static final aep f = new aep("minecraft", "datapacks");
+
+   public amy(egv $$0) {
+      super(alz.b, b(), f, $$0);
+   }
+
+   @VisibleForTesting
+   public static amb b() {
+      return new amc().a(d).a("minecraft").b().a().c();
+   }
+
+   @Override
+   protected te a(String $$0) {
+      return te.b($$0);
+   }
+
+   @Nullable
+   @Override
+   protected ams a(aly $$0) {
+      return ams.a("vanilla", e, false, b($$0), alz.b, ams.b.b, amw.c);
+   }
+
+   @Nullable
+   @Override
+   protected ams a(String $$0, ams.c $$1, te $$2) {
+      return ams.a($$0, $$2, false, $$1, alz.b, ams.b.a, amw.d);
+   }
+
+   public static amv a(Path $$0, egv $$1) {
+      return new amv(new amy($$1), new amr($$0, alz.b, amw.e, $$1));
+   }
+
+   public static amv c() {
+      return new amv(new amy(new egv($$0 -> true)));
+   }
+
+   public static amv a(ebv.c $$0) {
+      return a($$0.a(ebt.j), $$0.a().e());
    }
 }

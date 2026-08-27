@@ -1,43 +1,70 @@
-public class bpl extends bpj {
-   private boolean p;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bpl(bgb $$0, cmm $$1) {
-      super($$0, $$1);
+public class bpl extends bps {
+   protected final bjf a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cpk f;
+
+   public bpl(bjf $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dK();
+      this.a(EnumSet.of(bps.a.a));
    }
 
    @Override
-   protected dxv a(int $$0) {
-      this.p = this.a.ae() == bfn.v;
-      this.o = new dxw(this.p);
-      return new dxv(this.o, $$0);
+   public boolean a() {
+      if (this.a.j() != null) {
+         return false;
+      } else if (!this.f.N()) {
+         return false;
+      } else if (!this.a.bM()) {
+         return false;
+      } else if (!this.f.g(this.a.dk())) {
+         return false;
+      } else {
+         return !this.a.c(bil.f).b() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      ehf $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.o();
+   public boolean b() {
+      return !this.a.H().l();
    }
 
    @Override
-   protected eei b() {
-      return new eei(this.a.dn(), this.a.e(0.5), this.a.dt());
+   public void c() {
+      this.a.H().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   protected double a(eei $$0) {
-      return $$0.d;
-   }
+   @Nullable
+   protected ehf i() {
+      art $$0 = this.a.ee();
+      gv $$1 = this.a.dk();
 
-   @Override
-   protected boolean a(eei $$0, eei $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         gv $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
+            return ehf.c($$3);
+         }
+      }
 
-   @Override
-   public boolean a(gu $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+      return null;
    }
 }

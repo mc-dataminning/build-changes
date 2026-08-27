@@ -1,122 +1,179 @@
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public class fip extends fim {
-   private final dgp a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
+public class fip {
+   private static final Logger a = LogUtils.getLogger();
+   private static final te b = te.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
+   private final List<sf> c = Collections.synchronizedList(Lists.newArrayList());
 
-   fip(few $$0, double $$1, double $$2, double $$3, dgp $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<eei> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         eei $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)apa.d($$8, $$10);
-         this.H = this.G = (float)apa.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
-      }
-   }
-
-   @Override
-   public void a(ein $$0, emz $$1, float $$2) {
-      float $$3 = apa.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = apa.i($$2, this.F, this.b);
-      float $$5 = apa.i($$2, this.H, this.G) + (float) (Math.PI / 2);
-      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
-      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
-   }
-
-   private void a(ein $$0, emz $$1, float $$2, Consumer<Quaternionf> $$3) {
-      eei $$4 = $$1.b();
-      float $$5 = (float)(apa.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(apa.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(apa.d((double)$$2, this.f, this.i) - $$4.c());
-      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
-      $$3.accept($$9);
-      Vector3f[] $$10 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$11 = this.b($$2);
-
-      for (int $$12 = 0; $$12 < 4; $$12++) {
-         Vector3f $$13 = $$10[$$12];
-         $$13.rotate($$9);
-         $$13.mul($$11);
-         $$13.add($$5, $$6, $$7);
-      }
-
-      float $$14 = this.c();
-      float $$15 = this.d();
-      float $$16 = this.e();
-      float $$17 = this.f();
-      int $$18 = this.a($$2);
-      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
-      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
-      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
-      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fhq b() {
-      return fhq.c;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public void a(final fin $$0, final Runnable $$1) throws UnknownHostException {
+      final fjk $$2 = fjk.a($$0.b);
+      Optional<InetSocketAddress> $$3 = fjm.a.a($$2).map(fjj::d);
+      if ($$3.isEmpty()) {
+         this.a(ewp.b, $$0);
       } else {
-         Optional<eei> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            eei $$3 = $$0.get();
-            this.g = apa.d($$2, this.g, $$3.a());
-            this.h = apa.d($$2, this.h, $$3.b());
-            this.i = apa.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)apa.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)apa.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         final InetSocketAddress $$4 = $$3.get();
+         final sf $$5 = sf.a($$4, false);
+         this.c.add($$5);
+         $$0.d = te.c("multiplayer.status.pinging");
+         $$0.f = -1L;
+         $$0.j = Collections.emptyList();
+         adp $$6 = new adp() {
+            private boolean g;
+            private boolean h;
+            private long i;
+
+            @Override
+            public void a(adr $$0x) {
+               if (this.h) {
+                  $$5.a(te.c("multiplayer.status.unrequested"));
+               } else {
+                  this.h = true;
+                  ads $$1 = $$0.a();
+                  $$0.d = $$1.a();
+                  $$1.c().ifPresentOrElse($$1xxx -> {
+                     $$0.h = te.b($$1xxx.b());
+                     $$0.g = $$1xxx.c();
+                  }, () -> {
+                     $$0.h = te.c("multiplayer.status.old");
+                     $$0.g = 0;
+                  });
+                  $$1.b().ifPresentOrElse($$1xxx -> {
+                     $$0.c = fip.a($$1xxx.b(), $$1xxx.a());
+                     $$0.e = $$1xxx;
+                     if (!$$1xxx.c().isEmpty()) {
+                        List<te> $$2xx = new ArrayList<>($$1xxx.c().size());
+
+                        for (GameProfile $$3 : $$1xxx.c()) {
+                           $$2xx.add(te.b($$3.getName()));
+                        }
+
+                        if ($$1xxx.c().size() < $$1xxx.b()) {
+                           $$2xx.add(te.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
+                        }
+
+                        $$0.j = $$2xx;
+                     } else {
+                        $$0.j = List.of();
+                     }
+                  }, () -> $$0.c = te.c("multiplayer.status.unknown").a(n.i));
+                  $$1.d().ifPresent($$2xx -> {
+                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
+                        $$0.a($$2xx.a());
+                        $$1.run();
+                     }
+                  });
+                  this.i = ac.b();
+                  $$5.a(new adu(this.i));
+                  this.g = true;
+               }
+            }
+
+            @Override
+            public void a(adq $$0x) {
+               long $$1 = this.i;
+               long $$2 = ac.b();
+               $$0.f = $$2 - $$1;
+               $$5.a(te.c("multiplayer.status.finished"));
+            }
+
+            @Override
+            public void a(te $$0x) {
+               if (!this.g) {
+                  fip.this.a($$0, $$0);
+                  fip.this.a($$4, $$2, $$0);
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return $$5.k();
+            }
+         };
+
+         try {
+            $$5.a($$2.a(), $$2.b(), $$6);
+            $$5.a(new adv());
+         } catch (Throwable var9) {
+            a.error("Failed to ping server {}", $$2, var9);
          }
       }
    }
 
-   public static class a implements fhp<iz> {
-      private final fih a;
+   void a(te $$0, fin $$1) {
+      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
+      $$1.d = b;
+      $$1.c = td.a;
+   }
 
-      public a(fih $$0) {
-         this.a = $$0;
+   void a(InetSocketAddress $$0, final fjk $$1, final fin $$2) {
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)sf.g.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            $$0.pipeline().addLast(new ChannelHandler[]{new fij($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
+               $$2.g = -1;
+               $$2.h = te.b($$2xx);
+               $$2.d = te.b($$3);
+               $$2.c = fip.a($$4, $$5);
+               $$2.e = new ads.b($$5, $$4, List.of());
+            })});
+         }
+      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   public static te a(int $$0, int $$1) {
+      return te.b(Integer.toString($$0)).b(te.b("/").a(n.i)).f(Integer.toString($$1)).a(n.h);
+   }
+
+   public void a() {
+      synchronized (this.c) {
+         Iterator<sf> $$0 = this.c.iterator();
+
+         while ($$0.hasNext()) {
+            sf $$1 = $$0.next();
+            if ($$1.k()) {
+               $$1.d();
+            } else {
+               $$0.remove();
+               $$1.p();
+            }
+         }
       }
+   }
 
-      public fhm a(iz $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fip $$8 = new fip($$1, $$2, $$3, $$4, $$0.c(), $$0.d());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+   public void b() {
+      synchronized (this.c) {
+         Iterator<sf> $$0 = this.c.iterator();
+
+         while ($$0.hasNext()) {
+            sf $$1 = $$0.next();
+            if ($$1.k()) {
+               $$0.remove();
+               $$1.a(te.c("multiplayer.status.cancelled"));
+            }
+         }
       }
    }
 }

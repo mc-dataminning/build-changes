@@ -1,54 +1,40 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public record wt(UUID a, int b, @Nullable th c, to.a d, @Nullable sw e, sz f, ss.b g) implements uo<ur> {
-   public wt(sf $$0) {
-      this($$0.o(), $$0.m(), $$0.c(th::a), new to.a($$0), $$0.c(sf::l), sz.a($$0), new ss.b($$0));
+public class wt implements uw<wo> {
+   private final Object2IntMap<apb<?>> a;
+
+   public wt(Object2IntMap<apb<?>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      $$0.d(this.b);
-      $$0.a(this.c, th::a);
-      this.d.a($$0);
-      $$0.a(this.e, sf::a);
-      sz.a($$0, this.f);
-      this.g.a($$0);
+   public wt(sh $$0) {
+      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
+         apd<?> $$2 = $$1.a(jc.y);
+         return a($$0, $$2);
+      }, sh::m);
    }
 
-   public void a(ur $$0) {
+   private static <T> apb<T> a(sh $$0, apd<T> $$1) {
+      return $$1.b($$0.a($$1.a()));
+   }
+
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public void a(sh $$0) {
+      $$0.a(this.a, wt::a, sh::c);
    }
 
-   public int c() {
-      return this.b;
+   private static <T> void a(sh $$0, apb<T> $$1) {
+      $$0.a(jc.y, $$1.a());
+      $$0.a($$1.a().a(), $$1.b());
    }
 
-   @Nullable
-   public th d() {
-      return this.c;
-   }
-
-   public to.a e() {
-      return this.d;
-   }
-
-   @Nullable
-   public sw f() {
-      return this.e;
-   }
-
-   public sz g() {
-      return this.f;
-   }
-
-   public ss.b h() {
-      return this.g;
+   public Map<apb<?>, Integer> a() {
+      return this.a;
    }
 }

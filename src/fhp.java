@@ -1,11 +1,17 @@
-import javax.annotation.Nullable;
+public class fhp {
+   private final fhr a;
+   private final fhq b;
 
-public interface fhp<T extends it> {
-   @Nullable
-   fhm createParticle(T var1, few var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   private fhp(fhr $$0, fhq $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public interface a<T extends it> {
-      @Nullable
-      fim createParticle(T var1, few var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   public fhj a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static fhp a(fhr $$0, int $$1, int $$2) {
+      return new fhp($$0, new fhq($$1, $$2));
    }
 }

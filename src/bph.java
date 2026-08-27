@@ -1,78 +1,34 @@
-public class bph extends bpj {
-   public bph(bgb $$0, cmm $$1) {
-      super($$0, $$1);
+import java.util.EnumSet;
+
+public class bph extends bps {
+   private final biy a;
+   private final cpk b;
+
+   public bph(biy $$0, cpk $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bps.a.c));
    }
 
    @Override
-   protected dxv a(int $$0) {
-      this.o = new dxq();
-      this.o.a(true);
-      return new dxv(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(eei $$0, eei $$1) {
-      return a(this.a, $$0, $$1, true);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.q() && this.o() || !this.a.bM();
-   }
-
-   @Override
-   protected eei b() {
-      return this.a.dg();
-   }
-
-   @Override
-   public dxt a(bfj $$0, int $$1) {
-      return this.a($$0.di(), $$1);
-   }
-
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
-      }
-
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            eei $$0 = this.c.a(this.a);
-            if (this.a.dm() == apa.a($$0.c) && this.a.do() == apa.a($$0.d) && this.a.ds() == apa.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         za.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            eei $$1 = this.c.a(this.a);
-            this.a.G().a($$1.c, $$1.d, $$1.e, this.d);
-         }
+   public boolean a() {
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ag().a(apm.f)) {
+         gv $$1 = this.a.dk().c();
+         dey $$2 = this.b.a_($$1);
+         return $$2.a(csl.qC) || $$2.k(this.b, $$1) == ehv.a();
+      } else {
+         return false;
       }
    }
 
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
+   @Override
+   public boolean K_() {
+      return true;
    }
 
    @Override
-   public boolean a(gu $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+   public void e() {
+      this.a.F().a();
    }
 }

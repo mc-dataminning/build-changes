@@ -1,61 +1,48 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bmr extends bmv {
-   private static final int a = 200;
-   private final brk b;
-   private int c;
-   private int d;
-
-   public bmr(brk $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
+public class bmr {
+   public static bkp<bjf> a(bry<gv> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, ehf::c);
    }
 
-   protected int a(brk $$0) {
-      return b(200 + $$0.ec().a(200) % 20);
+   public static bly<bjf> b(bry<? extends big> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, big::di);
    }
 
-   @Override
-   public boolean a() {
-      if (this.b.ge()) {
-         return false;
-      } else if (this.b.gb()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<brk> $$0 = $$0x -> $$0x.gd() || !$$0x.gb();
-         List<? extends brk> $$1 = this.b.dI().a((Class<? extends brk>)this.b.getClass(), this.b.cE().c(8.0, 8.0, 8.0), $$0);
-         brk $$2 = (brk)DataFixUtils.orElse($$1.stream().filter(brk::gd).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gb()));
-         return this.b.gb();
-      }
-   }
+   private static <T> bly<bjf> a(bry<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ehf> $$4) {
+      return boa.a(
+         (Function<boa.b<bjf>, ? extends App<boa.c<bjf>, bod<bjf>>>)($$5 -> $$5.group($$5.a(bry.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<bsb> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     ehf $$11 = $$8.di();
+                     ehf $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((hp)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           ehf $$13 = $$10.get().a().a().d($$11);
+                           ehf $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
 
-   @Override
-   public boolean b() {
-      return this.b.gb() && this.b.gf();
-   }
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           ehf $$16 = btq.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new bsb($$16, $$1, 0));
+                              break;
+                           }
+                        }
 
-   @Override
-   public void c() {
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      this.b.gc();
-   }
-
-   @Override
-   public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gg();
-      }
+                        return true;
+                     }
+                  }
+               }))
+      );
    }
 }

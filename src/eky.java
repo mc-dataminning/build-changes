@@ -1,273 +1,517 @@
-import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class eky extends gan {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 80;
-   private final euq c;
-   private final eiu G;
-   @Nullable
-   private ejq H;
-   private final long I;
-   private final sw[] J = new sw[]{sw.c("mco.brokenworld.message.line1"), sw.c("mco.brokenworld.message.line2")};
-   private int K;
-   private int L;
-   private final List<Integer> M = Lists.newArrayList();
-   private int N;
+public class eky extends ekq implements AutoCloseable {
+   private static final Logger l = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   public static final int g = 6;
+   public static final int h = 7;
+   public static final int i = 8;
+   public static final int j = 9;
+   public static final int k = 10;
+   private static final boolean m = false;
+   private int n;
+   private final int o;
+   private final int p;
+   private final IntBuffer q;
+   private final FloatBuffer r;
+   private final String s;
+   private boolean t;
+   private final ekx u;
 
-   public eky(euq $$0, eiu $$1, long $$2, boolean $$3) {
-      super($$3 ? sw.c("mco.brokenworld.minigame.title") : sw.c("mco.brokenworld.title"));
-      this.c = $$0;
-      this.G = $$1;
-      this.I = $$2;
+   public eky(String $$0, int $$1, int $$2, ekx $$3) {
+      this.s = $$0;
+      this.o = $$2;
+      this.p = $$1;
+      this.u = $$3;
+      if ($$1 <= 3) {
+         this.q = MemoryUtil.memAllocInt($$2);
+         this.r = null;
+      } else {
+         this.q = null;
+         this.r = MemoryUtil.memAllocFloat($$2);
+      }
+
+      this.n = -1;
+      this.h();
+   }
+
+   public static int a(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetUniformLocation($$0, $$1);
+   }
+
+   public static void b(int $$0, int $$1) {
+      RenderSystem.glUniform1i($$0, $$1);
+   }
+
+   public static int b(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetAttribLocation($$0, $$1);
+   }
+
+   public static void a(int $$0, int $$1, CharSequence $$2) {
+      GlStateManager._glBindAttribLocation($$0, $$1, $$2);
    }
 
    @Override
+   public void close() {
+      if (this.q != null) {
+         MemoryUtil.memFree(this.q);
+      }
+
+      if (this.r != null) {
+         MemoryUtil.memFree(this.r);
+      }
+   }
+
+   private void h() {
+      this.t = true;
+      if (this.u != null) {
+         this.u.b();
+      }
+   }
+
+   public static int a(String $$0) {
+      int $$1 = -1;
+      if ("int".equals($$0)) {
+         $$1 = 0;
+      } else if ("float".equals($$0)) {
+         $$1 = 4;
+      } else if ($$0.startsWith("matrix")) {
+         if ($$0.endsWith("2x2")) {
+            $$1 = 8;
+         } else if ($$0.endsWith("3x3")) {
+            $$1 = 9;
+         } else if ($$0.endsWith("4x4")) {
+            $$1 = 10;
+         }
+      }
+
+      return $$1;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   public String a() {
+      return this.s;
+   }
+
+   @Override
+   public final void a(float $$0) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.h();
+   }
+
+   public final void a(int $$0, float $$1) {
+      this.r.position(0);
+      this.r.put($$0, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put($$0);
+      this.r.put($$1);
+      this.r.put($$2);
+      this.r.put($$3);
+      this.r.flip();
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      if (this.p >= 4) {
+         this.r.put(0, $$0);
+      }
+
+      if (this.p >= 5) {
+         this.r.put(1, $$1);
+      }
+
+      if (this.p >= 6) {
+         this.r.put(2, $$2);
+      }
+
+      if (this.p >= 7) {
+         this.r.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      if (this.p >= 0) {
+         this.q.put(0, $$0);
+      }
+
+      if (this.p >= 1) {
+         this.q.put(1, $$1);
+      }
+
+      if (this.p >= 2) {
+         this.q.put(2, $$2);
+      }
+
+      if (this.p >= 3) {
+         this.q.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void b(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.q.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float[] $$0) {
+      if ($$0.length < this.o) {
+         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
+      } else {
+         this.r.position(0);
+         this.r.put($$0);
+         this.r.position(0);
+         this.h();
+      }
+   }
+
+   @Override
+   public final void c(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.r.put(12, $$12);
+      this.r.put(13, $$13);
+      this.r.put(14, $$14);
+      this.r.put(15, $$15);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
    public void b() {
-      this.K = this.g / 2 - 150;
-      this.L = this.g / 2 + 190;
-      this.d(epi.a(sv.k, $$0 -> this.C()).a(this.L - 80 + 8, h(13) - 5, 70, 20).a());
-      if (this.H == null) {
-         this.a(this.I);
+      if (!this.t) {
+      }
+
+      this.t = false;
+      if (this.p <= 3) {
+         this.i();
+      } else if (this.p <= 7) {
+         this.j();
       } else {
-         this.B();
-      }
-   }
-
-   @Override
-   public sw au_() {
-      return sy.a(Stream.concat(Stream.of(this.e), Stream.of(this.J)).collect(Collectors.toList()), sv.t);
-   }
-
-   private void B() {
-      for (Entry<Integer, ejx> $$0 : this.H.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.H.n || this.H.m == ejq.c.b;
-         epi $$3;
-         if ($$2) {
-            $$3 = epi.a(
-                  sw.c("mco.brokenworld.play"),
-                  $$1x -> {
-                     if (this.H.i.get($$1).l) {
-                        eln $$2x = new eln(
-                           this,
-                           this.H,
-                           sw.c("mco.configure.world.switch.slot"),
-                           sw.c("mco.configure.world.switch.slot.subtitle"),
-                           10526880,
-                           sv.e,
-                           this::c,
-                           () -> {
-                              this.f.a(this);
-                              this.c();
-                           }
-                        );
-                        $$2x.a($$1);
-                        $$2x.a(sw.c("mco.create.world.reset.title"));
-                        this.f.a($$2x);
-                     } else {
-                        this.f.a(new elh(this.c, new emv(this.H.a, $$1, this::c)));
-                     }
-                  }
-               )
-               .a(this.a($$1), h(8), 80, 20)
-               .a();
-         } else {
-            $$3 = epi.a(sw.c("mco.brokenworld.download"), $$1x -> {
-               sw $$2x = sw.c("mco.configure.world.restore.download.question.line1");
-               sw $$3x = sw.c("mco.configure.world.restore.download.question.line2");
-               this.f.a(new elg($$1xx -> {
-                  if ($$1xx) {
-                     this.b($$1);
-                  } else {
-                     this.f.a(this);
-                  }
-               }, elg.a.b, $$2x, $$3x, true));
-            }).a(this.a($$1), h(8), 80, 20).a();
+         if (this.p > 10) {
+            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
+            return;
          }
 
-         if (this.M.contains($$1)) {
-            $$3.r = false;
-            $$3.b(sw.c("mco.brokenworld.downloaded"));
-         }
-
-         this.d($$3);
-         this.d(epi.a(sw.c("mco.brokenworld.reset"), $$1x -> {
-            eln $$2x = new eln(this, this.H, this::c, () -> {
-               this.f.a(this);
-               this.c();
-            });
-            if ($$1 != this.H.n || this.H.m == ejq.c.b) {
-               $$2x.a($$1);
-            }
-
-            this.f.a($$2x);
-         }).a(this.a($$1), h(10), 80, 20).a());
+         this.k();
       }
    }
 
-   @Override
-   public void f() {
-      this.N++;
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-
-      for (int $$4 = 0; $$4 < this.J.length; $$4++) {
-         $$0.a(this.i, this.J[$$4], this.g / 2, h(-1) + 3 + $$4 * 12, 10526880);
-      }
-
-      if (this.H != null) {
-         for (Entry<Integer, ejx> $$5 : this.H.i.entrySet()) {
-            if ($$5.getValue().k != null && $$5.getValue().j != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  h(1) + 5,
-                  $$1,
-                  $$2,
-                  this.H.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().j,
-                  $$5.getValue().k,
-                  $$5.getValue().l
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  h(1) + 5,
-                  $$1,
-                  $$2,
-                  this.H.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().l
-               );
-            }
-         }
+   private void i() {
+      this.q.rewind();
+      switch (this.p) {
+         case 0:
+            RenderSystem.glUniform1(this.n, this.q);
+            break;
+         case 1:
+            RenderSystem.glUniform2(this.n, this.q);
+            break;
+         case 2:
+            RenderSystem.glUniform3(this.n, this.q);
+            break;
+         case 3:
+            RenderSystem.glUniform4(this.n, this.q);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
       }
    }
 
-   private int a(int $$0) {
-      return this.K + ($$0 - 1) * 110;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private void j() {
+      this.r.rewind();
+      switch (this.p) {
+         case 4:
+            RenderSystem.glUniform1(this.n, this.r);
+            break;
+         case 5:
+            RenderSystem.glUniform2(this.n, this.r);
+            break;
+         case 6:
+            RenderSystem.glUniform3(this.n, this.r);
+            break;
+         case 7:
+            RenderSystem.glUniform4(this.n, this.r);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
       }
    }
 
-   private void C() {
-      this.f.a(this.c);
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         eiz $$1 = eiz.a();
-
-         try {
-            this.H = $$1.a($$0);
-            this.B();
-         } catch (ekm var5) {
-            a.error("Couldn't get own world");
-            this.f.a(new ele(sw.a(var5.getMessage()), this.c));
-         }
-      }).start();
-   }
-
-   public void c() {
-      new Thread(() -> {
-         eiz $$0 = eiz.a();
-         if (this.H.e == ejq.b.a) {
-            this.f.execute(() -> this.f.a(new elh(this, new emp(this.H, this, this.G, true, this.f))));
-         } else {
-            try {
-               ejq $$1 = $$0.a(this.I);
-               this.f.execute(() -> this.G.h().a($$1, this));
-            } catch (ekm var3) {
-               a.error("Couldn't get own world");
-               this.f.execute(() -> this.f.a(this.c));
-            }
-         }
-      }).start();
-   }
-
-   private void b(int $$0) {
-      eiz $$1 = eiz.a();
-
-      try {
-         ekg $$2 = $$1.b(this.H.a, $$0);
-         eld $$3 = new eld(this, $$2, this.H.a($$0), $$1x -> {
-            if ($$1x) {
-               this.M.add($$0);
-               this.n();
-               this.B();
-            } else {
-               this.f.a(this);
-            }
-         });
-         this.f.a($$3);
-      } catch (ekm var5) {
-         a.error("Couldn't download world data");
-         this.f.a(new ele(var5, this));
+   private void k() {
+      this.r.clear();
+      switch (this.p) {
+         case 8:
+            RenderSystem.glUniformMatrix2(this.n, false, this.r);
+            break;
+         case 9:
+            RenderSystem.glUniformMatrix3(this.n, false, this.r);
+            break;
+         case 10:
+            RenderSystem.glUniformMatrix4(this.n, false, this.r);
       }
    }
 
-   private boolean D() {
-      return this.H != null && this.H.m == ejq.c.b;
+   public int c() {
+      return this.n;
    }
 
-   private void a(eox $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      acq $$11;
-      if ($$10) {
-         $$11 = ekt.b;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = eme.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = ekt.d;
-      } else if ($$7 == 2) {
-         $$11 = ekt.e;
-      } else if ($$7 == 3) {
-         $$11 = ekt.f;
-      } else {
-         $$11 = eme.a(String.valueOf(this.H.p), this.H.q);
-      }
+   public int d() {
+      return this.o;
+   }
 
-      if (!$$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      } else if ($$5) {
-         float $$17 = 0.9F + 0.1F * apa.b((float)this.N * 0.2F);
-         $$0.a($$17, $$17, $$17, 1.0F);
-      }
+   public int e() {
+      return this.p;
+   }
 
-      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-      if ($$5) {
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      }
+   public IntBuffer f() {
+      return this.q;
+   }
 
-      $$0.a(ekt.a, $$1, $$2, 0.0F, 0.0F, 80, 80, 80, 80);
-      $$0.a(this.i, $$6, $$1 + 40, $$2 + 66, 16777215);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public FloatBuffer g() {
+      return this.r;
    }
 }

@@ -1,253 +1,290 @@
+import com.google.common.collect.ImmutableList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class os {
-   public static final acp<dkb<?, ?>> a = om.a("bamboo_no_podzol");
-   public static final acp<dkb<?, ?>> b = om.a("bamboo_some_podzol");
-   public static final acp<dkb<?, ?>> c = om.a("vines");
-   public static final acp<dkb<?, ?>> d = om.a("patch_brown_mushroom");
-   public static final acp<dkb<?, ?>> e = om.a("patch_red_mushroom");
-   public static final acp<dkb<?, ?>> f = om.a("patch_sunflower");
-   public static final acp<dkb<?, ?>> g = om.a("patch_pumpkin");
-   public static final acp<dkb<?, ?>> h = om.a("patch_berry_bush");
-   public static final acp<dkb<?, ?>> i = om.a("patch_taiga_grass");
-   public static final acp<dkb<?, ?>> j = om.a("patch_grass");
-   public static final acp<dkb<?, ?>> k = om.a("patch_grass_jungle");
-   public static final acp<dkb<?, ?>> l = om.a("single_piece_of_grass");
-   public static final acp<dkb<?, ?>> m = om.a("patch_dead_bush");
-   public static final acp<dkb<?, ?>> n = om.a("patch_melon");
-   public static final acp<dkb<?, ?>> o = om.a("patch_waterlily");
-   public static final acp<dkb<?, ?>> p = om.a("patch_tall_grass");
-   public static final acp<dkb<?, ?>> q = om.a("patch_large_fern");
-   public static final acp<dkb<?, ?>> r = om.a("patch_cactus");
-   public static final acp<dkb<?, ?>> s = om.a("patch_sugar_cane");
-   public static final acp<dkb<?, ?>> t = om.a("flower_default");
-   public static final acp<dkb<?, ?>> u = om.a("flower_flower_forest");
-   public static final acp<dkb<?, ?>> v = om.a("flower_swamp");
-   public static final acp<dkb<?, ?>> w = om.a("flower_plain");
-   public static final acp<dkb<?, ?>> x = om.a("flower_meadow");
-   public static final acp<dkb<?, ?>> y = om.a("flower_cherry");
-   public static final acp<dkb<?, ?>> z = om.a("forest_flowers");
-   public static final acp<dkb<?, ?>> A = om.a("dark_forest_vegetation");
-   public static final acp<dkb<?, ?>> B = om.a("trees_flower_forest");
-   public static final acp<dkb<?, ?>> C = om.a("meadow_trees");
-   public static final acp<dkb<?, ?>> D = om.a("trees_taiga");
-   public static final acp<dkb<?, ?>> E = om.a("trees_grove");
-   public static final acp<dkb<?, ?>> F = om.a("trees_savanna");
-   public static final acp<dkb<?, ?>> G = om.a("birch_tall");
-   public static final acp<dkb<?, ?>> H = om.a("trees_windswept_hills");
-   public static final acp<dkb<?, ?>> I = om.a("trees_water");
-   public static final acp<dkb<?, ?>> J = om.a("trees_birch_and_oak");
-   public static final acp<dkb<?, ?>> K = om.a("trees_plains");
-   public static final acp<dkb<?, ?>> L = om.a("trees_sparse_jungle");
-   public static final acp<dkb<?, ?>> M = om.a("trees_old_growth_spruce_taiga");
-   public static final acp<dkb<?, ?>> N = om.a("trees_old_growth_pine_taiga");
-   public static final acp<dkb<?, ?>> O = om.a("trees_jungle");
-   public static final acp<dkb<?, ?>> P = om.a("bamboo_vegetation");
-   public static final acp<dkb<?, ?>> Q = om.a("mushroom_island_vegetation");
-   public static final acp<dkb<?, ?>> R = om.a("mangrove_vegetation");
+   public static final aeo<dmy<?, ?>> a = on.a("crimson_fungus");
+   public static final aeo<dmy<?, ?>> b = on.a("crimson_fungus_planted");
+   public static final aeo<dmy<?, ?>> c = on.a("warped_fungus");
+   public static final aeo<dmy<?, ?>> d = on.a("warped_fungus_planted");
+   public static final aeo<dmy<?, ?>> e = on.a("huge_brown_mushroom");
+   public static final aeo<dmy<?, ?>> f = on.a("huge_red_mushroom");
+   public static final aeo<dmy<?, ?>> g = on.a("oak");
+   public static final aeo<dmy<?, ?>> h = on.a("dark_oak");
+   public static final aeo<dmy<?, ?>> i = on.a("birch");
+   public static final aeo<dmy<?, ?>> j = on.a("acacia");
+   public static final aeo<dmy<?, ?>> k = on.a("spruce");
+   public static final aeo<dmy<?, ?>> l = on.a("pine");
+   public static final aeo<dmy<?, ?>> m = on.a("jungle_tree");
+   public static final aeo<dmy<?, ?>> n = on.a("fancy_oak");
+   public static final aeo<dmy<?, ?>> o = on.a("jungle_tree_no_vine");
+   public static final aeo<dmy<?, ?>> p = on.a("mega_jungle_tree");
+   public static final aeo<dmy<?, ?>> q = on.a("mega_spruce");
+   public static final aeo<dmy<?, ?>> r = on.a("mega_pine");
+   public static final aeo<dmy<?, ?>> s = on.a("super_birch_bees_0002");
+   public static final aeo<dmy<?, ?>> t = on.a("super_birch_bees");
+   public static final aeo<dmy<?, ?>> u = on.a("swamp_oak");
+   public static final aeo<dmy<?, ?>> v = on.a("jungle_bush");
+   public static final aeo<dmy<?, ?>> w = on.a("azalea_tree");
+   public static final aeo<dmy<?, ?>> x = on.a("mangrove");
+   public static final aeo<dmy<?, ?>> y = on.a("tall_mangrove");
+   public static final aeo<dmy<?, ?>> z = on.a("cherry");
+   public static final aeo<dmy<?, ?>> A = on.a("oak_bees_0002");
+   public static final aeo<dmy<?, ?>> B = on.a("oak_bees_002");
+   public static final aeo<dmy<?, ?>> C = on.a("oak_bees_005");
+   public static final aeo<dmy<?, ?>> D = on.a("birch_bees_0002");
+   public static final aeo<dmy<?, ?>> E = on.a("birch_bees_002");
+   public static final aeo<dmy<?, ?>> F = on.a("birch_bees_005");
+   public static final aeo<dmy<?, ?>> G = on.a("fancy_oak_bees_0002");
+   public static final aeo<dmy<?, ?>> H = on.a("fancy_oak_bees_002");
+   public static final aeo<dmy<?, ?>> I = on.a("fancy_oak_bees_005");
+   public static final aeo<dmy<?, ?>> J = on.a("fancy_oak_bees");
+   public static final aeo<dmy<?, ?>> K = on.a("cherry_bees_005");
 
-   private static dnf a(dot $$0, int $$1) {
-      return om.a($$1, pb.a(dko.S, new dnk($$0)));
+   private static dql.a a(csk $$0, csk $$1, int $$2, int $$3, int $$4, int $$5) {
+      return new dql.a(drq.a($$0), new dss($$2, $$3, $$4), drq.a($$1), new dqw(bfq.a($$5), bfq.a(0), 3), new dqt(1, 0, 1));
    }
 
-   public static void a(nm<dkb<?, ?>> $$0) {
-      hf<dkb<?, ?>> $$1 = $$0.a(jc.as);
-      he<dkb<?, ?>> $$2 = $$1.b(or.e);
-      he<dkb<?, ?>> $$3 = $$1.b(or.f);
-      he<dkb<?, ?>> $$4 = $$1.b(or.I);
-      he<dkb<?, ?>> $$5 = $$1.b(or.C);
-      he<dkb<?, ?>> $$6 = $$1.b(k);
-      hf<dre> $$7 = $$0.a(jc.ay);
-      he<dre> $$8 = $$7.b(pc.d);
-      he<dre> $$9 = $$7.b(pc.e);
-      he<dre> $$10 = $$7.b(pc.n);
-      he<dre> $$11 = $$7.b(pc.y);
-      he<dre> $$12 = $$7.b(pc.A);
-      he<dre> $$13 = $$7.b(pc.B);
-      he<dre> $$14 = $$7.b(pc.l);
-      he<dre> $$15 = $$7.b(pc.g);
-      he<dre> $$16 = $$7.b(pc.j);
-      he<dre> $$17 = $$7.b(pc.f);
-      he<dre> $$18 = $$7.b(pc.t);
-      he<dre> $$19 = $$7.b(pc.x);
-      he<dre> $$20 = $$7.b(pc.z);
-      he<dre> $$21 = $$7.b(pc.s);
-      he<dre> $$22 = $$7.b(pc.p);
-      he<dre> $$23 = $$7.b(pc.q);
-      he<dre> $$24 = $$7.b(pc.o);
-      he<dre> $$25 = $$7.b(pc.r);
-      he<dre> $$26 = $$7.b(pc.c);
-      he<dre> $$27 = $$7.b(pc.w);
-      he<dre> $$28 = $$7.b(pc.u);
-      he<dre> $$29 = $$7.b(pc.k);
-      he<dre> $$30 = $$7.b(pc.v);
-      he<dre> $$31 = $$7.b(pc.m);
-      he<dre> $$32 = $$7.b(pc.h);
-      om.a($$0, a, dko.T, new dnc(0.0F));
-      om.a($$0, b, dko.T, new dnc(0.2F));
-      om.a($$0, c, dko.v);
-      om.a($$0, d, dko.i, om.a(dko.S, new dnk(dot.a(cpo.cf))));
-      om.a($$0, e, dko.i, om.a(dko.S, new dnk(dot.a(cpo.cg))));
-      om.a($$0, f, dko.i, om.a(dko.S, new dnk(dot.a(cpo.iD))));
-      om.a($$0, g, dko.i, om.a(dko.S, new dnk(dot.a(cpo.dV)), List.of(cpo.i)));
-      om.a($$0, h, dko.i, om.a(dko.S, new dnk(dot.a(cpo.oi.n().a(cxr.b, Integer.valueOf(3)))), List.of(cpo.i)));
-      om.a($$0, i, dko.i, a(new dpd(bch.<dcb>a().a(cpo.bt.n(), 1).a(cpo.bu.n(), 4)), 32));
-      om.a($$0, j, dko.i, a(dot.a(cpo.bt), 32));
-      om.a(
-         $$0,
-         k,
-         dko.i,
-         new dnf(32, 7, 3, pb.a(dko.S, new dnk(new dpd(bch.<dcb>a().a(cpo.bt.n(), 3).a(cpo.bu.n(), 1))), dir.a(dir.c, dir.a(dir.a(ha.a.q(), cpo.l)))))
+   private static dql.a a() {
+      return a(csl.U, csl.aE, 4, 2, 0, 2).a();
+   }
+
+   private static dql.a b() {
+      return a(csl.W, csl.aG, 5, 2, 0, 2).a();
+   }
+
+   private static dql.a c() {
+      return a(csl.W, csl.aG, 5, 2, 6, 2).a();
+   }
+
+   private static dql.a d() {
+      return a(csl.X, csl.aH, 4, 8, 0, 2);
+   }
+
+   private static dql.a e() {
+      return new dql.a(drq.a(csl.U), new dso(3, 11, 0), drq.a(csl.aE), new dra(bfq.a(2), bfq.a(4), 4), new dqt(0, 0, 0, OptionalInt.of(4))).a();
+   }
+
+   private static dql.a f() {
+      return new dql.a(
+            drq.a(csl.Z),
+            new dsm(7, 1, 0, new bga(bey.<bft>a().a(bfq.a(1), 1).a(bfq.a(2), 1).a(bfq.a(3), 1).a()), bfz.a(2, 4), bfz.a(-4, -3), bfz.a(-1, 0)),
+            drq.a(csl.aJ),
+            new dqy(bfq.a(4), bfq.a(0), bfq.a(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F),
+            new dqt(1, 0, 2)
+         )
+         .a();
+   }
+
+   public static void a(nn<dmy<?, ?>> $$0) {
+      hg<csk> $$1 = $$0.a(jd.e);
+      dlo $$2 = dlo.a(
+         csl.x,
+         csl.y,
+         csl.z,
+         csl.A,
+         csl.B,
+         csl.C,
+         csl.D,
+         csl.E,
+         csl.bR,
+         csl.bS,
+         csl.bT,
+         csl.bU,
+         csl.bV,
+         csl.bW,
+         csl.bX,
+         csl.bY,
+         csl.bZ,
+         csl.ca,
+         csl.cb,
+         csl.cc,
+         csl.cd,
+         csl.ce,
+         csl.cf,
+         csl.cg,
+         csl.cB,
+         csl.dS,
+         csl.fb,
+         csl.fc,
+         csl.fd,
+         csl.fe,
+         csl.fm,
+         csl.fq,
+         csl.fC,
+         csl.gt,
+         csl.gu,
+         csl.ku,
+         csl.kv,
+         csl.kA,
+         csl.kB,
+         csl.kD,
+         csl.oi,
+         csl.oo,
+         csl.ox,
+         csl.oz,
+         csl.oA,
+         csl.oB,
+         csl.oC,
+         csl.ru,
+         csl.rv,
+         csl.rw,
+         csl.rx,
+         csl.ry,
+         csl.rz,
+         csl.rA,
+         csl.rC,
+         csl.rD,
+         csl.rE
       );
-      om.a($$0, l, dko.S, new dnk(dot.a(cpo.bt.n())));
-      om.a($$0, m, dko.i, a(dot.a(cpo.bv), 4));
-      om.a($$0, n, dko.i, new dnf(64, 7, 3, pb.a(dko.S, new dnk(dot.a(cpo.fa)), dir.a(dir.b(), dir.d(), dir.a(ha.a.q(), cpo.i)))));
-      om.a($$0, o, dko.i, new dnf(10, 7, 3, pb.a(dko.S, new dnk(dot.a(cpo.fm)))));
-      om.a($$0, p, dko.i, om.a(dko.S, new dnk(dot.a(cpo.iH))));
-      om.a($$0, q, dko.i, om.a(dko.S, new dnk(dot.a(cpo.iI))));
-      om.a($$0, r, dko.i, om.a(10, pb.a(dko.w, dmj.b(bcu.a(1, 3), dot.a(cpo.dQ)), dqt.a(dir.a(dir.c, dir.a(cpo.dQ.n(), gu.b))))));
-      om.a(
+      on.a($$0, a, dnl.U, new dnu(csl.ow.n(), csl.os.n(), csl.kK.n(), csl.oy.n(), $$2, false));
+      on.a($$0, b, dnl.U, new dnu(csl.ow.n(), csl.os.n(), csl.kK.n(), csl.oy.n(), $$2, true));
+      on.a($$0, c, dnl.U, new dnu(csl.on.n(), csl.oj.n(), csl.op.n(), csl.oy.n(), $$2, false));
+      on.a($$0, d, dnl.U, new dnu(csl.on.n(), csl.oj.n(), csl.op.n(), csl.oy.n(), $$2, true));
+      on.a(
          $$0,
-         s,
-         dko.i,
-         new dnf(
-            20,
-            4,
-            0,
-            pb.a(
-               dko.w,
-               dmj.b(bcu.a(2, 4), dot.a(cpo.dS)),
-               dqt.a(
-                  dir.a(
-                     dir.c,
-                     dir.a(cpo.dS.n(), gu.b),
-                     dir.b(
-                        dir.a(new gu(1, -1, 0), dxf.c, dxf.b),
-                        dir.a(new gu(-1, -1, 0), dxf.c, dxf.b),
-                        dir.a(new gu(0, -1, 1), dxf.c, dxf.b),
-                        dir.a(new gu(0, -1, -1), dxf.c, dxf.b)
-                     )
-                  )
-               )
-            )
+         e,
+         dnl.r,
+         new dpr(
+            drq.a(csl.eU.n().a(cwe.e, Boolean.valueOf(true)).a(cwe.f, Boolean.valueOf(false))),
+            drq.a(csl.eW.n().a(cwe.e, Boolean.valueOf(false)).a(cwe.f, Boolean.valueOf(false))),
+            3
          )
       );
-      om.a($$0, t, dko.g, a(new dpd(bch.<dcb>a().a(cpo.bT.n(), 2).a(cpo.bR.n(), 1)), 64));
-      om.a(
+      on.a(
          $$0,
-         u,
-         dko.g,
-         new dnf(
-            96,
-            6,
-            2,
-            pb.a(
-               dko.S,
-               new dnk(
-                  new dox(
-                     2345L,
-                     new dwh.a(0, 1.0),
-                     0.020833334F,
-                     List.of(cpo.bR.n(), cpo.bT.n(), cpo.bV.n(), cpo.bW.n(), cpo.bX.n(), cpo.bY.n(), cpo.bZ.n(), cpo.ca.n(), cpo.cb.n(), cpo.cc.n(), cpo.ce.n())
-                  )
-               )
-            )
-         )
+         f,
+         dnl.q,
+         new dpr(drq.a(csl.eV.n().a(cwe.f, Boolean.valueOf(false))), drq.a(csl.eW.n().a(cwe.e, Boolean.valueOf(false)).a(cwe.f, Boolean.valueOf(false))), 2)
       );
-      om.a($$0, v, dko.g, new dnf(64, 6, 2, pb.a(dko.S, new dnk(dot.a(cpo.bU)))));
-      om.a(
+      dse $$3 = new dse(0.002F);
+      dse $$4 = new dse(0.01F);
+      dse $$5 = new dse(0.02F);
+      dse $$6 = new dse(0.05F);
+      dse $$7 = new dse(1.0F);
+      on.a($$0, g, dnl.f, a().c());
+      on.a(
+         $$0,
+         h,
+         dnl.f,
+         new dql.a(drq.a(csl.aa), new dsn(6, 2, 1), drq.a(csl.aK), new dqz(bfq.a(0), bfq.a(0)), new dqs(1, 1, 0, 1, 2, OptionalInt.empty())).a().c()
+      );
+      on.a($$0, i, dnl.f, b().c());
+      on.a($$0, j, dnl.f, new dql.a(drq.a(csl.Y), new dsp(5, 2, 2), drq.a(csl.aI), new dqv(bfq.a(2), bfq.a(0)), new dqt(1, 0, 2)).a().c());
+      on.a($$0, z, dnl.f, f().c());
+      on.a($$0, K, dnl.f, f().a(List.of($$6)).c());
+      on.a($$0, k, dnl.f, new dql.a(drq.a(csl.V), new dss(5, 2, 1), drq.a(csl.aF), new drh(bfz.a(2, 3), bfz.a(0, 2), bfz.a(1, 2)), new dqt(2, 0, 2)).a().c());
+      on.a($$0, l, dnl.f, new dql.a(drq.a(csl.V), new dss(6, 4, 0), drq.a(csl.aF), new drf(bfq.a(1), bfq.a(1), bfz.a(3, 4)), new dqt(2, 0, 2)).a().c());
+      on.a($$0, m, dnl.f, d().a(ImmutableList.of(new dsf(0.2F), dsj.b, new dsg(0.25F))).a().c());
+      on.a($$0, n, dnl.f, e().c());
+      on.a($$0, o, dnl.f, d().a().c());
+      on.a(
+         $$0,
+         p,
+         dnl.f,
+         new dql.a(drq.a(csl.X), new dsr(10, 2, 19), drq.a(csl.aH), new drd(bfq.a(2), bfq.a(0), 2), new dqt(1, 1, 2))
+            .a(ImmutableList.of(dsj.b, new dsg(0.25F)))
+            .c()
+      );
+      on.a(
+         $$0,
+         q,
+         dnl.f,
+         new dql.a(drq.a(csl.V), new dsq(13, 2, 14), drq.a(csl.aF), new dre(bfq.a(0), bfq.a(0), bfz.a(13, 17)), new dqt(1, 1, 2))
+            .a(ImmutableList.of(new dsc(drq.a(csl.l))))
+            .c()
+      );
+      on.a(
+         $$0,
+         r,
+         dnl.f,
+         new dql.a(drq.a(csl.V), new dsq(13, 2, 14), drq.a(csl.aF), new dre(bfq.a(0), bfq.a(0), bfz.a(3, 7)), new dqt(1, 1, 2))
+            .a(ImmutableList.of(new dsc(drq.a(csl.l))))
+            .c()
+      );
+      on.a($$0, s, dnl.f, c().a(ImmutableList.of($$3)).c());
+      on.a($$0, t, dnl.f, c().a(ImmutableList.of($$7)).c());
+      on.a($$0, u, dnl.f, a(csl.U, csl.aE, 5, 3, 0, 3).a(ImmutableList.of(new dsg(0.25F))).c());
+      on.a($$0, v, dnl.f, new dql.a(drq.a(csl.X), new dss(1, 0, 0), drq.a(csl.aE), new dqx(bfq.a(2), bfq.a(1), 2), new dqt(0, 0, 0)).c());
+      on.a(
          $$0,
          w,
-         dko.g,
-         new dnf(
-            64,
-            6,
-            2,
-            pb.a(
-               dko.S,
-               new dnk(
-                  new doy(
-                     2345L,
-                     new dwh.a(0, 1.0),
-                     0.005F,
-                     -0.8F,
-                     0.33333334F,
-                     cpo.bR.n(),
-                     List.of(cpo.bY.n(), cpo.bX.n(), cpo.ca.n(), cpo.bZ.n()),
-                     List.of(cpo.bT.n(), cpo.bW.n(), cpo.cb.n(), cpo.cc.n())
-                  )
-               )
+         dnl.f,
+         new dql.a(
+               drq.a(csl.U),
+               new dsl(4, 2, 0, 3, bfz.a(1, 2)),
+               new dsa(bey.<dey>a().a(csl.aM.n(), 3).a(csl.aN.n(), 1)),
+               new drg(bfq.a(3), bfq.a(0), bfq.a(2), 50),
+               new dqt(1, 0, 1)
             )
-         )
+            .a(drq.a(csl.rG))
+            .b()
+            .c()
       );
-      om.a(
+      on.a(
          $$0,
          x,
-         dko.g,
-         new dnf(
-            96,
-            6,
-            2,
-            pb.a(
-               dko.S,
-               new dnk(
-                  new dov(
-                     new aot<>(1, 3),
-                     new dwh.a(-10, 1.0),
-                     1.0F,
-                     2345L,
-                     new dwh.a(-3, 1.0),
-                     1.0F,
-                     List.of(cpo.iH.n(), cpo.bV.n(), cpo.bT.n(), cpo.bW.n(), cpo.bR.n(), cpo.cc.n(), cpo.cb.n(), cpo.bt.n())
+         dnl.f,
+         new dql.a(
+               drq.a(csl.ab),
+               new dsv(2, 1, 4, bfz.a(1, 4), 0.5F, bfz.a(0, 1), $$1.b(apj.cb)),
+               drq.a(csl.aL),
+               new drg(bfq.a(3), bfq.a(0), bfq.a(2), 70),
+               Optional.of(
+                  new drm(
+                     bfz.a(1, 3),
+                     drq.a(csl.ac),
+                     Optional.of(new drk(drq.a(csl.rz), 0.5F)),
+                     new drl($$1.b(apj.cc), hj.a(csk::q, csl.rH, csl.ad), drq.a(csl.ad), 8, 15, 0.2F)
                   )
+               ),
+               new dqt(2, 0, 2)
+            )
+            .a(
+               List.of(
+                  new dsg(0.125F), new dsd(0.14F, 1, 0, new drw(drq.a(csl.E.n().a(cxc.c, Boolean.valueOf(true))), cxc.a, bfz.a(0, 4)), 2, List.of(hb.a)), $$4
                )
             )
-         )
+            .a()
+            .c()
       );
-      bch.a<dcb> $$33 = bch.a();
-
-      for (int $$34 = 1; $$34 <= 4; $$34++) {
-         for (ha $$35 : ha.c.a) {
-            $$33.a(cpo.rA.n().a(cuy.d, Integer.valueOf($$34)).a(cuy.c, $$35), 1);
-         }
-      }
-
-      om.a($$0, y, dko.g, new dnf(96, 6, 2, pb.a(dko.S, new dnk(new dpd($$33)))));
-      om.a(
+      on.a(
          $$0,
-         z,
-         dko.ag,
-         new dnl(
-            hi.a(
-               pb.a(dko.i, om.a(dko.S, new dnk(dot.a(cpo.iE)))),
-               pb.a(dko.i, om.a(dko.S, new dnk(dot.a(cpo.iF)))),
-               pb.a(dko.i, om.a(dko.S, new dnk(dot.a(cpo.iG)))),
-               pb.a(dko.h, om.a(dko.S, new dnk(dot.a(cpo.ce))))
+         y,
+         dnl.f,
+         new dql.a(
+               drq.a(csl.ab),
+               new dsv(4, 1, 9, bfz.a(1, 6), 0.5F, bfz.a(0, 1), $$1.b(apj.cb)),
+               drq.a(csl.aL),
+               new drg(bfq.a(3), bfq.a(0), bfq.a(2), 70),
+               Optional.of(
+                  new drm(
+                     bfz.a(3, 7),
+                     drq.a(csl.ac),
+                     Optional.of(new drk(drq.a(csl.rz), 0.5F)),
+                     new drl($$1.b(apj.cc), hj.a(csk::q, csl.rH, csl.ad), drq.a(csl.ad), 8, 15, 0.2F)
+                  )
+               ),
+               new dqt(3, 0, 2)
             )
-         )
+            .a(
+               List.of(
+                  new dsg(0.125F), new dsd(0.14F, 1, 0, new drw(drq.a(csl.E.n().a(cxc.c, Boolean.valueOf(true))), cxc.a, bfz.a(0, 4)), 2, List.of(hb.a)), $$4
+               )
+            )
+            .a()
+            .c()
       );
-      om.a(
-         $$0,
-         A,
-         dko.af,
-         new dne(List.of(new dmi(pb.a($$2), 0.025F), new dmi(pb.a($$3), 0.05F), new dmi($$8, 0.6666667F), new dmi($$9, 0.2F), new dmi($$10, 0.1F)), $$26)
-      );
-      om.a($$0, B, dko.af, new dne(List.of(new dmi($$11, 0.2F), new dmi($$12, 0.1F)), $$27));
-      om.a($$0, C, dko.af, new dne(List.of(new dmi($$13, 0.5F)), $$28));
-      om.a($$0, D, dko.af, new dne(List.of(new dmi($$14, 0.33333334F)), $$15));
-      om.a($$0, E, dko.af, new dne(List.of(new dmi($$16, 0.33333334F)), $$29));
-      om.a($$0, F, dko.af, new dne(List.of(new dmi($$17, 0.8F)), $$26));
-      om.a($$0, G, dko.af, new dne(List.of(new dmi($$18, 0.5F)), $$19));
-      om.a($$0, H, dko.af, new dne(List.of(new dmi($$15, 0.666F), new dmi($$10, 0.1F)), $$26));
-      om.a($$0, I, dko.af, new dne(List.of(new dmi($$10, 0.1F)), $$26));
-      om.a($$0, J, dko.af, new dne(List.of(new dmi($$19, 0.2F), new dmi($$20, 0.1F)), $$30));
-      om.a($$0, K, dko.af, new dne(List.of(new dmi(pb.a($$4), 0.33333334F)), pb.a($$5)));
-      om.a($$0, L, dko.af, new dne(List.of(new dmi($$10, 0.1F), new dmi($$21, 0.5F)), $$31));
-      om.a($$0, M, dko.af, new dne(List.of(new dmi($$22, 0.33333334F), new dmi($$14, 0.33333334F)), $$15));
-      om.a($$0, N, dko.af, new dne(List.of(new dmi($$22, 0.025641026F), new dmi($$23, 0.30769232F), new dmi($$14, 0.33333334F)), $$15));
-      om.a($$0, O, dko.af, new dne(List.of(new dmi($$10, 0.1F), new dmi($$21, 0.5F), new dmi($$24, 0.33333334F)), $$31));
-      om.a($$0, P, dko.af, new dne(List.of(new dmi($$10, 0.05F), new dmi($$21, 0.15F), new dmi($$24, 0.7F)), pb.a($$6)));
-      om.a($$0, Q, dko.ah, new dnd(pb.a($$3), pb.a($$2)));
-      om.a($$0, R, dko.af, new dne(List.of(new dmi($$25, 0.85F)), $$32));
+      on.a($$0, A, dnl.f, a().a(List.of($$3)).c());
+      on.a($$0, B, dnl.f, a().a(List.of($$5)).c());
+      on.a($$0, C, dnl.f, a().a(List.of($$6)).c());
+      on.a($$0, D, dnl.f, b().a(List.of($$3)).c());
+      on.a($$0, E, dnl.f, b().a(List.of($$5)).c());
+      on.a($$0, F, dnl.f, b().a(List.of($$6)).c());
+      on.a($$0, G, dnl.f, e().a(List.of($$3)).c());
+      on.a($$0, H, dnl.f, e().a(List.of($$5)).c());
+      on.a($$0, I, dnl.f, e().a(List.of($$6)).c());
+      on.a($$0, J, dnl.f, e().a(List.of($$7)).c());
    }
 }

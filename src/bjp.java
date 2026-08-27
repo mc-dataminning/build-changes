@@ -1,34 +1,65 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class bjp {
-   public static bhs<bfz> a(bgc $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ae().f()), $$1);
+public interface bjp {
+   bjp b = new bjp() {
+      @Override
+      public ciw a() {
+         return ciw.b;
+      }
+
+      @Override
+      public boolean a(ciw $$0) {
+         return false;
+      }
+   };
+
+   static bjp a(final bgh $$0, final int $$1, final Predicate<ciw> $$2) {
+      return new bjp() {
+         @Override
+         public ciw a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(ciw $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   public static bjb<bfz> a(bfn<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ae()), $$1);
+   static bjp a(bgh $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static bjb<bfz> a(float $$0) {
-      return a($$0x -> true, $$0);
+   static bjp a(final biw $$0, final bil $$1, final Predicate<ciw> $$2) {
+      return new bjp() {
+         @Override
+         public ciw a() {
+            return $$0.c($$1);
+         }
+
+         @Override
+         public boolean a(ciw $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   public static bjb<bfz> a(Predicate<bfz> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bld.a(
-         (Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$2x -> $$2x.group($$2x.c(bpb.n), $$2x.b(bpb.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bfz> $$8 = $$2x.<bpd>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bfj)$$6) <= (double)$$2 && !$$6.u($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bic($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   static bjp a(biw $$0, bil $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
+
+   ciw a();
+
+   boolean a(ciw var1);
 }

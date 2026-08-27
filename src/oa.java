@@ -1,250 +1,202 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList.Builder;
 
 public class oa {
-   public static final acp<dtj> a = nt.a("village/taiga/town_centers");
-   private static final acp<dtj> b = nt.a("village/taiga/terminators");
+   private static final dky.o a = a(csl.a);
+   private static final dky.o b = a(csl.F);
+   private static final dky.o c = a(csl.hj);
+   private static final dky.o d = a(csl.hk);
+   private static final dky.o e = a(csl.iA);
+   private static final dky.o f = a(csl.K);
+   private static final dky.o g = a(csl.jp);
+   private static final dky.o h = a(csl.b);
+   private static final dky.o i = a(csl.rI);
+   private static final dky.o j = a(csl.j);
+   private static final dky.o k = a(csl.l);
+   private static final dky.o l = a(csl.k);
+   private static final dky.o m = a(csl.fl);
+   private static final dky.o n = a(csl.i);
+   private static final dky.o o = a(csl.qA);
+   private static final dky.o p = a(csl.L);
+   private static final dky.o q = a(csl.I);
+   private static final dky.o r = a(csl.aV);
+   private static final dky.o s = a(csl.iC);
+   private static final dky.o t = a(csl.dP);
+   private static final dky.o u = a(csl.rH);
+   private static final dky.o v = a(csl.qC);
+   private static final dky.o w = a(csl.dO);
+   private static final dky.o x = a(csl.G);
+   private static final dky.o y = a(csl.H);
+   private static final dky.o z = a(csl.dW);
+   private static final dky.o A = a(csl.dX);
+   private static final dky.o B = a(csl.dY);
+   private static final dky.o C = a(csl.dZ);
+   private static final dky.o D = a(csl.pr);
+   private static final dky.o E = a(csl.op);
+   private static final dky.o F = a(csl.on);
+   private static final dky.o G = a(csl.kK);
+   private static final dky.o H = a(csl.ow);
+   private static final dky.o I = a(csl.fz);
 
-   public static void a(nm<dtj> $$0) {
-      hf<dre> $$1 = $$0.a(jc.ay);
-      he<dre> $$2 = $$1.b(pe.h);
-      he<dre> $$3 = $$1.b(pe.i);
-      he<dre> $$4 = $$1.b(pe.e);
-      he<dre> $$5 = $$1.b(pe.l);
-      he<dre> $$6 = $$1.b(pe.m);
-      hf<dvr> $$7 = $$0.a(jc.aA);
-      he<dvr> $$8 = $$7.b(nu.f);
-      he<dvr> $$9 = $$7.b(nu.d);
-      he<dvr> $$10 = $$7.b(nu.k);
-      he<dvr> $$11 = $$7.b(nu.o);
-      hf<dtj> $$12 = $$0.a(jc.aC);
-      he<dtj> $$13 = $$12.b(nt.a);
-      he<dtj> $$14 = $$12.b(b);
-      $$0.a(
-         a,
-         new dtj(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
-               Pair.of(dth.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
-               Pair.of(dth.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
-               Pair.of(dth.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
-            ),
-            dtj.a.b
-         )
+   private static dky.o a(csk $$0) {
+      return dky.a($$0.n());
+   }
+
+   public static dky.o a() {
+      return a(true, false, true);
+   }
+
+   public static dky.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dky.f $$3 = dky.a(dlb.a(97), 2);
+      dky.f $$4 = dky.a(dlb.a(256), 0);
+      dky.f $$5 = dky.b(dlb.a(63), -1);
+      dky.f $$6 = dky.b(dlb.a(74), 1);
+      dky.f $$7 = dky.a(dlb.a(60), 0);
+      dky.f $$8 = dky.a(dlb.a(62), 0);
+      dky.f $$9 = dky.a(dlb.a(63), 0);
+      dky.f $$10 = dky.a(-1, 0);
+      dky.f $$11 = dky.a(0, 0);
+      dky.f $$12 = dky.b(-6, -1);
+      dky.f $$13 = dky.b();
+      dky.f $$14 = dky.a(cqp.W, cqp.X);
+      dky.f $$15 = dky.a();
+      dky.o $$16 = dky.a(dky.a($$11, n), j);
+      dky.o $$17 = dky.a(dky.a(dky.e, r), q);
+      dky.o $$18 = dky.a(dky.a(dky.e, h), p);
+      dky.f $$19 = dky.a(cqp.P, cqp.M, cqp.N);
+      dky.f $$20 = dky.a(cqp.f);
+      dky.o $$21 = dky.a(
+         dky.a(dky.a(cqp.J), dky.a(dky.a(dky.a(dkq.X, -0.0125, 0.0125), o), h)),
+         dky.a(dky.a(cqp.O), dky.a(dky.a(dky.a(dkq.Y, -0.05, 0.05), $$18), h)),
+         dky.a(dky.a(cqp.t), dky.a(a(1.0), h)),
+         dky.a($$19, $$17),
+         dky.a($$20, $$17),
+         dky.a(dky.a(cqp.Z), h)
       );
-      nt.a(
-         $$0,
-         "village/taiga/streets",
-         new dtj(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/streets/corner_01", $$10), 2),
-               Pair.of(dth.a("village/taiga/streets/corner_02", $$10), 2),
-               Pair.of(dth.a("village/taiga/streets/corner_03", $$10), 2),
-               Pair.of(dth.a("village/taiga/streets/straight_01", $$10), 4),
-               Pair.of(dth.a("village/taiga/streets/straight_02", $$10), 4),
-               Pair.of(dth.a("village/taiga/streets/straight_03", $$10), 4),
-               Pair.of(dth.a("village/taiga/streets/straight_04", $$10), 7),
-               Pair.of(dth.a("village/taiga/streets/straight_05", $$10), 7),
-               Pair.of(dth.a("village/taiga/streets/straight_06", $$10), 4),
-               Pair.of(dth.a("village/taiga/streets/crossroad_01", $$10), 1),
-               Pair.of(dth.a("village/taiga/streets/crossroad_02", $$10), 1),
-               Pair.of(dth.a("village/taiga/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dth.a("village/taiga/streets/crossroad_04", $$10), 2),
-                  Pair.of(dth.a("village/taiga/streets/crossroad_05", $$10), 2),
-                  Pair.of(dth.a("village/taiga/streets/crossroad_06", $$10), 2),
-                  Pair.of(dth.a("village/taiga/streets/turn_01", $$10), 3)
-               }
-            ),
-            dtj.a.a
-         )
+      dky.o $$22 = dky.a(dky.a(dkq.Z, 0.45, 0.58), dky.a($$11, v));
+      dky.o $$23 = dky.a(dky.a(dkq.Z, 0.35, 0.6), dky.a($$11, v));
+      dky.o $$24 = dky.a(
+         dky.a(dky.a(cqp.H), dky.a(dky.a($$15, s), dky.a(dky.a(dkq.aa, -0.5, 0.2), s), dky.a(dky.a(dkq.ab, -0.0625, 0.025), w), dky.a($$11, t))),
+         dky.a(dky.a(cqp.G), dky.a(dky.a($$15, h), $$22, dky.a($$11, t))),
+         dky.a(dky.a(cqp.I), h),
+         dky.a(dky.a(cqp.F), dky.a($$22, j)),
+         $$21,
+         dky.a(dky.a(cqp.w), dky.a(a(1.75), h)),
+         dky.a(dky.a(cqp.u), dky.a(dky.a(a(2.0), $$18), dky.a(a(1.0), h), dky.a(a(-1.0), j), $$18)),
+         dky.a(dky.a(cqp.h), u),
+         j
       );
-      nt.a(
-         $$0,
-         "village/taiga/zombie/streets",
-         new dtj(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/zombie/streets/corner_01", $$10), 2),
-               Pair.of(dth.a("village/taiga/zombie/streets/corner_02", $$10), 2),
-               Pair.of(dth.a("village/taiga/zombie/streets/corner_03", $$10), 2),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_01", $$10), 4),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_02", $$10), 4),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_03", $$10), 4),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_04", $$10), 7),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_05", $$10), 7),
-               Pair.of(dth.a("village/taiga/zombie/streets/straight_06", $$10), 4),
-               Pair.of(dth.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
-               Pair.of(dth.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(dth.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dth.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(dth.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(dth.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(dth.a("village/taiga/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            dtj.a.a
-         )
+      dky.o $$25 = dky.a(
+         dky.a(dky.a(cqp.H), dky.a(dky.a($$15, s), dky.a(dky.a(dkq.aa, 0.0, 0.2), s), dky.a(dky.a(dkq.ab, 0.0, 0.025), w), dky.a($$11, t))),
+         dky.a(dky.a(cqp.G), dky.a(dky.a($$15, h), $$23, dky.a($$11, t))),
+         dky.a(dky.a(cqp.I), dky.a(dky.a($$15, h), dky.a($$11, t))),
+         dky.a(dky.a(cqp.F), dky.a($$23, dky.a($$11, t))),
+         $$21,
+         dky.a(dky.a(cqp.w), dky.a(dky.a(a(1.75), h), dky.a(a(-0.5), l))),
+         dky.a(dky.a(cqp.u), dky.a(dky.a(a(2.0), $$18), dky.a(a(1.0), h), dky.a(a(-1.0), $$16), $$18)),
+         dky.a(dky.a(cqp.n, cqp.o), dky.a(dky.a(a(1.75), l), dky.a(a(-0.95), k))),
+         dky.a(dky.a(cqp.e), dky.a($$11, t)),
+         dky.a(dky.a(cqp.h), u),
+         dky.a(dky.a(cqp.Y), m),
+         $$16
       );
-      nt.a(
-         $$0,
-         "village/taiga/houses",
-         new dtj(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
-               Pair.of(dth.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
-               Pair.of(dth.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
-               Pair.of(dth.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
-               Pair.of(dth.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
-               Pair.of(dth.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
-               new Pair[]{
-                  Pair.of(dth.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
-                  Pair.of(dth.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
-                  Pair.of(dth.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
-                  Pair.of(dth.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_library_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_temple_1", $$8), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
-                  Pair.of(dth.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
-                  Pair.of(dth.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
-                  Pair.of(dth.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
-                  Pair.of(dth.g(), 6)
-               }
-            ),
-            dtj.a.b
-         )
+      dky.f $$26 = dky.a(dkq.N, -0.909, -0.5454);
+      dky.f $$27 = dky.a(dkq.N, -0.1818, 0.1818);
+      dky.f $$28 = dky.a(dkq.N, 0.5454, 0.909);
+      dky.o $$29 = dky.a(
+         dky.a(
+            dky.a,
+            dky.a(
+               dky.a(dky.a(cqp.C), dky.a($$3, dky.a(dky.a($$26, l), dky.a($$27, l), dky.a($$28, l), $$16))),
+               dky.a(dky.a(cqp.g), dky.a($$8, dky.a(dky.a($$9), dky.a(dky.a(dkq.W, 0.0), x)))),
+               dky.a(dky.a(cqp.h), dky.a($$7, dky.a(dky.a($$9), dky.a(dky.a(dkq.W, 0.0), x))))
+            )
+         ),
+         dky.a(
+            dky.a(cqp.A, cqp.B, cqp.C),
+            dky.a(
+               dky.a(
+                  dky.a,
+                  dky.a(
+                     dky.a($$4, d),
+                     dky.a($$6, dky.a(dky.a($$26, e), dky.a($$27, e), dky.a($$28, e), dky.e())),
+                     dky.a($$10, dky.a(dky.a(dky.e, g), f)),
+                     dky.a(dky.a($$13), d),
+                     dky.a($$12, c),
+                     $$18
+                  )
+               ),
+               dky.a($$5, dky.a(dky.a($$9, dky.a(dky.a($$6), d)), dky.e())),
+               dky.a(dky.b, dky.a($$12, c))
+            )
+         ),
+         dky.a(dky.a, dky.a($$10, dky.a(dky.a($$14, dky.a($$13, dky.a(dky.a($$11, a), dky.a(dky.d(), w), x))), $$25))),
+         dky.a($$12, dky.a(dky.a(dky.a, dky.a($$14, dky.a($$13, x))), dky.a(dky.b, $$24), dky.a($$19, dky.a(dky.c, r)), dky.a($$20, dky.a(dky.d, r)))),
+         dky.a(dky.a, dky.a(dky.a(dky.a(cqp.H, cqp.I), h), dky.a(dky.a(cqp.P, cqp.Q, cqp.R), $$17), $$18))
       );
-      nt.a(
-         $$0,
-         "village/taiga/zombie/houses",
-         new dtj(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
-               Pair.of(dth.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
-               Pair.of(dth.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
-                  Pair.of(dth.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
-                  Pair.of(dth.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
-                  Pair.of(dth.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
-                  Pair.of(dth.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
-                  Pair.of(dth.g(), 6)
-               }
-            ),
-            dtj.a.b
-         )
+      Builder<dky.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dky.a(dky.a(dky.a("bedrock_roof", dlb.c(5), dlb.b())), b));
+      }
+
+      if ($$2) {
+         $$30.add(dky.a(dky.a("bedrock_floor", dlb.a(), dlb.b(5)), b));
+      }
+
+      dky.o $$31 = dky.a(dky.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dky.a(dky.a("deepslate", dlb.a(0), dlb.a(8)), i));
+      return dky.a((dky.o[])$$30.build().toArray(dky.o[]::new));
+   }
+
+   public static dky.o b() {
+      dky.f $$0 = dky.a(dlb.a(31), 0);
+      dky.f $$1 = dky.a(dlb.a(32), 0);
+      dky.f $$2 = dky.b(dlb.a(30), 0);
+      dky.f $$3 = dky.a(dky.b(dlb.a(35), 0));
+      dky.f $$4 = dky.a(dlb.c(5), 0);
+      dky.f $$5 = dky.b();
+      dky.f $$6 = dky.a(dkq.ac, -0.012);
+      dky.f $$7 = dky.a(dkq.ad, -0.012);
+      dky.f $$8 = dky.a(dkq.ae, -0.012);
+      dky.f $$9 = dky.a(dkq.af, 0.54);
+      dky.f $$10 = dky.a(dkq.ag, 1.17);
+      dky.f $$11 = dky.a(dkq.ah, 0.0);
+      dky.o $$12 = dky.a($$8, dky.a($$2, dky.a($$3, p)));
+      return dky.a(
+         dky.a(dky.a("bedrock_floor", dlb.a(), dlb.b(5)), b),
+         dky.a(dky.a(dky.a("bedrock_roof", dlb.c(5), dlb.b())), b),
+         dky.a($$4, z),
+         dky.a(dky.a(cqp.ag), dky.a(dky.a(dky.f, C), dky.a(dky.b, dky.a($$12, dky.a($$11, C), D)))),
+         dky.a(dky.a(cqp.af), dky.a(dky.a(dky.f, dky.a(dky.a($$11, A), B)), dky.a(dky.b, dky.a($$12, dky.a($$11, A), B)))),
+         dky.a(
+            dky.a,
+            dky.a(
+               dky.a(dky.a($$1), dky.a($$5, y)),
+               dky.a(dky.a(cqp.ad), dky.a(dky.a($$9), dky.a($$0, dky.a(dky.a($$10, E), F)))),
+               dky.a(dky.a(cqp.ae), dky.a(dky.a($$9), dky.a($$0, dky.a(dky.a($$10, G), H))))
+            )
+         ),
+         dky.a(
+            dky.a(cqp.ac),
+            dky.a(
+               dky.a(dky.b, dky.a($$6, dky.a(dky.a(dky.a($$5), dky.a($$2, dky.a($$3, A))), z))),
+               dky.a(dky.a, dky.a($$0, dky.a($$3, dky.a($$7, dky.a(dky.a($$1, p), dky.a(dky.a($$5), p))))))
+            )
+         ),
+         z
       );
-      $$0.a(
-         b,
-         new dtj(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dth.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(dth.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(dth.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(dth.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            dtj.a.a
-         )
-      );
-      nt.a(
-         $$0,
-         "village/taiga/decor",
-         new dtj(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/taiga_lamp_post_1"), 10),
-               Pair.of(dth.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(dth.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(dth.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(dth.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(dth.a("village/taiga/taiga_decoration_5"), 2),
-               Pair.of(dth.a("village/taiga/taiga_decoration_6"), 1),
-               Pair.of(dth.a($$2), 4),
-               Pair.of(dth.a($$3), 4),
-               Pair.of(dth.a($$4), 2),
-               Pair.of(dth.a($$5), 4),
-               Pair.of(dth.a($$6), 1),
-               new Pair[]{Pair.of(dth.g(), 4)}
-            ),
-            dtj.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "village/taiga/zombie/decor",
-         new dtj(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(dth.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(dth.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(dth.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(dth.a($$2), 4),
-               Pair.of(dth.a($$3), 4),
-               Pair.of(dth.a($$4), 2),
-               Pair.of(dth.a($$5), 4),
-               Pair.of(dth.a($$6), 1),
-               Pair.of(dth.g(), 4)
-            ),
-            dtj.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "village/taiga/villagers",
-         new dtj(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dth.a("village/taiga/villagers/nitwit"), 1),
-               Pair.of(dth.a("village/taiga/villagers/baby"), 1),
-               Pair.of(dth.a("village/taiga/villagers/unemployed"), 10)
-            ),
-            dtj.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "village/taiga/zombie/villagers",
-         new dtj(
-            $$13,
-            ImmutableList.of(Pair.of(dth.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(dth.a("village/taiga/zombie/villagers/unemployed"), 10)),
-            dtj.a.b
-         )
-      );
+   }
+
+   public static dky.o c() {
+      return I;
+   }
+
+   public static dky.o d() {
+      return a;
+   }
+
+   private static dky.f a(double $$0) {
+      return dky.a(dkq.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

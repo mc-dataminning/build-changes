@@ -1,101 +1,139 @@
+import com.google.common.collect.Maps;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.Map.Entry;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public abstract class bhr<E extends bfz> implements bhs<E> {
-   public static final int a = 60;
-   protected final Map<bpb<?>, bpc> b;
-   private bhr.a c = bhr.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bhr {
+   private final Map<bjy, bhm> a = Maps.newHashMap();
+   private final bhs b;
+   private final int c;
+   @Nullable
+   private String d;
+   private Supplier<bht.a> e = () -> null;
 
-   public bhr(Map<bpb<?>, bpc> $$0) {
-      this($$0, 60);
+   @Nullable
+   public static bhr a(int $$0) {
+      return jc.e.a($$0);
    }
 
-   public bhr(Map<bpb<?>, bpc> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public static int a(bhr $$0) {
+      return jc.e.a($$0);
    }
 
-   public bhr(Map<bpb<?>, bpc> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
+   public static int b(@Nullable bhr $$0) {
+      return jc.e.a($$0);
+   }
+
+   protected bhr(bhs $$0, int $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public bhr.a a() {
-      return this.c;
+   public Optional<bht.a> b() {
+      return Optional.ofNullable(this.e.get());
    }
 
-   @Override
-   public final boolean e(aif $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bhr.a.b;
-         int $$3 = this.e + $$0.y_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
+   public void a(biw $$0, int $$1) {
    }
 
-   protected void d(aif $$0, E $$1, long $$2) {
+   public void a(@Nullable big $$0, @Nullable big $$1, biw $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
    }
 
-   @Override
-   public final void f(aif $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(aif $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(aif $$0, E $$1, long $$2) {
-      this.c = bhr.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(aif $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(aif $$0, E $$1, long $$2) {
+   public boolean a(int $$0, int $$1) {
       return false;
    }
 
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
+   public void b(biw $$0, int $$1) {
    }
 
-   protected boolean a(aif $$0, E $$1) {
-      return true;
+   public boolean a() {
+      return false;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<bpb<?>, bpc> $$1 : this.b.entrySet()) {
-         bpb<?> $$2 = $$1.getKey();
-         bpc $$3 = $$1.getValue();
-         if (!$$0.dK().a($$2, $$3)) {
-            return false;
-         }
+   protected String c() {
+      if (this.d == null) {
+         this.d = ac.a("effect", jc.e.b(this));
       }
 
-      return true;
+      return this.d;
    }
 
-   public static enum a {
-      a,
-      b;
+   public String d() {
+      return this.c();
+   }
+
+   public te e() {
+      return te.c(this.d());
+   }
+
+   public bhs f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   public bhr a(bjy $$0, String $$1, double $$2, bkb.a $$3) {
+      this.a.put($$0, new bhr.a(UUID.fromString($$1), $$2, $$3));
+      return this;
+   }
+
+   public bhr a(Supplier<bht.a> $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public Map<bjy, bhm> h() {
+      return this.a;
+   }
+
+   public void a(bka $$0) {
+      for (Entry<bjy, bhm> $$1 : this.a.entrySet()) {
+         bjz $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.b($$1.getValue().a());
+         }
+      }
+   }
+
+   public void a(bka $$0, int $$1) {
+      for (Entry<bjy, bhm> $$2 : this.a.entrySet()) {
+         bjz $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.b($$2.getValue().a());
+            $$3.c($$2.getValue().a($$1));
+         }
+      }
+   }
+
+   public boolean i() {
+      return this.b == bhs.a;
+   }
+
+   class a implements bhm {
+      private final UUID b;
+      private final double c;
+      private final bkb.a d;
+
+      public a(UUID $$0, double $$1, bkb.a $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public UUID a() {
+         return this.b;
+      }
+
+      @Override
+      public bkb a(int $$0) {
+         return new bkb(this.b, bhr.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
+      }
    }
 }

@@ -1,48 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
-@FunctionalInterface
-public interface fgd {
-   Logger a = LogUtils.getLogger();
-   fgd b = $$0 -> Optional.empty();
+public class fgd<T extends bzf> extends ffc<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
 
-   Optional<fga> lookupRedirect(fga var1);
+   public fgd(fhj $$0) {
+      super(fno::e);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
+   }
 
-   static fgd createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public static fhp a() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("lid", fho.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fhl.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fho.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fhl.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fho.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhl.a(0.0F, 12.0F, 0.0F));
+      return fhp.a($$0, 64, 64);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + aro.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = aro.a($$3 * 0.1F) * 0.7F;
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fga($$4x[3], fga.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      this.g.a(0.0F, 16.0F + aro.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.E($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
 
-         return Optional.empty();
-      };
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public Iterable<fhj> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fhj b() {
+      return this.g;
+   }
+
+   public fhj c() {
+      return this.h;
    }
 }

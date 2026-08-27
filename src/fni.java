@@ -1,41 +1,22 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class fni {
+   private final eqn a;
+   private final fmu b;
+   private float c;
+   private float d;
 
-public class fni implements fnd.a {
-   private final enn a;
-   private static final int b = 10;
-
-   public fni(enn $$0) {
-      this.a = $$0;
+   public fni(fmu $$0) {
+      this.b = $$0;
+      this.a = eqn.N();
    }
 
-   @Override
-   public void a(eij $$0, fjx $$1, double $$2, double $$3, double $$4) {
-      cmm $$5 = this.a.s;
-      gu $$6 = gu.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(float $$0, float $$1) {
+      float $$2 = (float)((double)$$0 * this.a.m.p().c());
+      this.c = b(this.c + $$2 * 0.1F, 360.0F);
+      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
+      this.b.a(this.a, 10.0F, -this.c, $$1);
+   }
 
-      for (gu $$8 : gu.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(cmv.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = apa.h($$10, 0.9F, 0.9F);
-         long $$12 = hx.e($$8.a());
-         if ($$7.add($$12)) {
-            fnd.a(
-               $$0,
-               $$1,
-               $$5.J().p().a(cmv.a, hx.a($$12)),
-               (double)hx.a(hx.b($$12), 8),
-               (double)hx.a(hx.c($$12), 8),
-               (double)hx.a(hx.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            fnd.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
-      }
+   private static float b(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

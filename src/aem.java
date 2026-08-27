@@ -1,78 +1,65 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class aem {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> sw.a("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> sw.a("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> sw.a("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> sw.a("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(sw.c("commands.enchant.failed"));
+public final class aem<E> implements Codec<hf<E>> {
+   private final aeo<? extends hs<E>> a;
 
-   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("targets", ec.b())
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("enchantment", eo.a($$1, jc.r))
-                           .executes($$0x -> a((ds)$$0x.getSource(), ec.b($$0x, "targets"), eo.g($$0x, "enchantment"), 1)))
-                        .then(
-                           dt.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ds)$$0x.getSource(), ec.b($$0x, "targets"), eo.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public static <E> aem<E> a(aeo<? extends hs<E>> $$0) {
+      return new aem<>($$0);
    }
 
-   private static int a(ds $$0, Collection<? extends bfj> $$1, he<ckg> $$2, int $$3) throws CommandSyntaxException {
-      ckg $$4 = $$2.a();
-      if ($$3 > $$4.a()) {
-         throw d.create($$3, $$4.a());
-      } else {
-         int $$5 = 0;
+   private aem(aeo<? extends hs<E>> $$0) {
+      this.a = $$0;
+   }
 
-         for (bfj $$6 : $$1) {
-            if ($$6 instanceof bfz) {
-               bfz $$7 = (bfz)$$6;
-               cfz $$8 = $$7.eO();
-               if (!$$8.b()) {
-                  if ($$4.a($$8) && cki.a(cki.a($$8).keySet(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.d().m($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.Z().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.Z().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> sw.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().H_()), true);
-            } else {
-               $$0.a(() -> sw.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+   public <T> DataResult<T> a(hf<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aen<?> $$3) {
+         Optional<hi<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
             }
 
-            return $$5;
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> aep.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
       }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
+   }
+
+   public <T> DataResult<Pair<hf<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aen<?> $$2) {
+         Optional<hg<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return aep.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     aep $$2x = (aep)$$1x.getFirst();
+                     return $$3.get()
+                        .a(aeo.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
+   }
+
+   @Override
+   public String toString() {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

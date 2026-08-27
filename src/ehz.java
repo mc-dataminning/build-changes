@@ -1,11 +1,8 @@
-public interface ehz {
-   int a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   ehx c();
-
-   ehx d();
-
-   void e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ehz {
 }

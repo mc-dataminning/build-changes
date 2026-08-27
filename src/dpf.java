@@ -1,75 +1,20 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpf extends dpk {
-   public static final Codec<dpf> a = dot.a.fieldOf("provider").xmap(dpf::new, $$0 -> $$0.b).codec();
-   private final dot b;
+public class dpf {
+   public static final Codec<dpf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dub.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dpf::new)
+   );
+   public final hf<dub> b;
+   public final float c;
 
-   public dpf(dot $$0) {
+   public dpf(hf<dub> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected dpl<?> a() {
-      return dpl.e;
-   }
-
-   @Override
-   public void a(dpk.a $$0) {
-      List<gu> $$1 = Lists.newArrayList();
-      List<gu> $$2 = $$0.e();
-      List<gu> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(dpk.a $$0, gu $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(dpk.a $$0, gu $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         gu $$3 = $$1.b($$2);
-         if (dko.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public boolean a(cqe $$0, dgv $$1, art $$2, gv $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

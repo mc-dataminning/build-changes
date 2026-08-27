@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ax extends cv<ax.a> {
-   static final acq a = new acq("channeled_lightning");
+   static final aep a = new aep("channeled_lightning");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -17,8 +17,8 @@ public class ax extends cv<ax.a> {
       return new ax.a($$1, $$3);
    }
 
-   public void a(aig $$0, Collection<? extends bfj> $$1) {
-      List<dzk> $$2 = $$1.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(akj $$0, Collection<? extends big> $$1) {
+      List<ech> $$2 = $$1.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -34,11 +34,11 @@ public class ax extends cv<ax.a> {
          return new ax.a(ba.a, Stream.of($$0).map(bo::a).toArray(ba[]::new));
       }
 
-      public boolean a(Collection<? extends dzk> $$0) {
+      public boolean a(Collection<? extends ech> $$0) {
          for (ba $$1 : this.a) {
             boolean $$2 = false;
 
-            for (dzk $$3 : $$0) {
+            for (ech $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

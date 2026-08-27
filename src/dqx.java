@@ -1,28 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqx extends drl {
-   public static final Codec<dqx> a = bdc.b(0, 256).fieldOf("count").xmap(dqx::new, $$0 -> $$0.c).codec();
-   private final bdc c;
+public class dqx extends dqw {
+   public static final Codec<dqx> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dqx::new));
 
-   private dqx(bdc $$0) {
-      this.c = $$0;
-   }
-
-   public static dqx a(bdc $$0) {
-      return new dqx($$0);
-   }
-
-   public static dqx a(int $$0) {
-      return a(bcz.a($$0));
+   public dqx(bft $$0, bft $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(apf $$0, gu $$1) {
-      return this.c.a($$0);
+   protected drc<?> a() {
+      return drc.e;
    }
 
    @Override
-   public dri<?> b() {
-      return dri.f;
+   protected void a(cpq $$0, drb.b $$1, art $$2, dql $$3, int $$4, drb.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(art $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

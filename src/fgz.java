@@ -1,79 +1,77 @@
-import javax.annotation.Nullable;
+public class fgz<T extends bxs> extends fet<T> {
+   private static final String a = "ribcage";
+   private static final String b = "center_head";
+   private static final String f = "right_head";
+   private static final String g = "left_head";
+   private static final float h = 0.065F;
+   private static final float i = 0.265F;
+   private final fhj j;
+   private final fhj k;
+   private final fhj l;
+   private final fhj m;
+   private final fhj n;
+   private final fhj o;
 
-public class fgz extends fim {
-   private final float a;
-   private final fih b;
+   public fgz(fhj $$0) {
+      this.j = $$0;
+      this.n = $$0.b("ribcage");
+      this.o = $$0.b("tail");
+      this.k = $$0.b("center_head");
+      this.l = $$0.b("right_head");
+      this.m = $$0.b("left_head");
+   }
 
-   fgz(few $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fih $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   public static fhp a(fhn $$0) {
+      fhr $$1 = new fhr();
+      fhs $$2 = $$1.a();
+      $$2.a("shoulders", fho.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fhl.a);
+      float $$3 = 0.20420352F;
+      $$2.a(
+         "ribcage",
+         fho.c()
+            .a(0, 22)
+            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
+         fhl.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+      );
+      $$2.a(
+         "tail",
+         fho.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
+         fhl.a(-2.0F, 6.9F + aro.b(0.20420352F) * 10.0F, -0.5F + aro.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
+      );
+      $$2.a("center_head", fho.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fhl.a);
+      fho $$4 = fho.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
+      $$2.a("right_head", $$4, fhl.a(-8.0F, 4.0F, 0.0F));
+      $$2.a("left_head", $$4, fhl.a(10.0F, 4.0F, 0.0F));
+      return fhp.a($$1, 64, 64);
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
+   public fhj a() {
+      return this.j;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = aro.b($$3 * 0.1F);
+      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
+      this.o.a(-2.0F, 6.9F + aro.b(this.n.e) * 10.0F, -0.5F + aro.a(this.n.e) * 10.0F);
+      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
+      this.k.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = $$5 * (float) (Math.PI / 180.0);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      a($$0, this.l, 0);
+      a($$0, this.m, 1);
    }
 
-   public static class a implements fhp<in> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      public fhm a(in $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dcb $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == cvs.a) {
-            return null;
-         } else {
-            gu $$9 = gu.a($$2, $$3, $$4);
-            int $$10 = enn.N().ax().a($$8, $$1, $$9);
-            if ($$8.b() instanceof csf) {
-               $$10 = ((csf)$$8.b()).d($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fgz($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
-      }
+   private static <T extends bxs> void a(T $$0, fhj $$1, int $$2) {
+      $$1.f = ($$0.b($$2) - $$0.aU) * (float) (Math.PI / 180.0);
+      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
    }
 }

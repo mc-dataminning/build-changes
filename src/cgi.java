@@ -1,88 +1,119 @@
-public class cgi extends cfu {
-   private static final ih a = new ig() {
-      private final ig c = new ig();
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-      @Override
-      public cfz a(gv $$0, cfz $$1) {
-         ha $$2 = $$0.e().c(cro.a);
-         cmm $$3 = $$0.g();
-         double $$4 = $$0.a() + (double)$$2.j() * 1.125;
-         double $$5 = Math.floor($$0.b()) + (double)$$2.k();
-         double $$6 = $$0.c() + (double)$$2.l() * 1.125;
-         gu $$7 = $$0.d().a($$2);
-         dcb $$8 = $$3.a_($$7);
-         ddf $$9 = $$8.b() instanceof cpd ? $$8.c(((cpd)$$8.b()).b()) : ddf.a;
-         double $$10;
-         if ($$8.a(amw.N)) {
-            if ($$9.b()) {
-               $$10 = 0.6;
-            } else {
-               $$10 = 0.1;
-            }
-         } else {
-            if (!$$8.i() || !$$3.a_($$7.d()).a(amw.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public enum cgi implements asf, cgh {
+   a("leather", 5, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 1);
+      $$0.put(cgg.a.c, 2);
+      $$0.put(cgg.a.b, 3);
+      $$0.put(cgg.a.a, 1);
+   }), 15, aou.ai, 0.0F, 0.0F, () -> clw.a(ciz.pP)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 1);
+      $$0.put(cgg.a.c, 4);
+      $$0.put(cgg.a.b, 5);
+      $$0.put(cgg.a.a, 2);
+   }), 12, aou.ac, 0.0F, 0.0F, () -> clw.a(ciz.nQ)),
+   c("iron", 15, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 2);
+      $$0.put(cgg.a.c, 5);
+      $$0.put(cgg.a.b, 6);
+      $$0.put(cgg.a.a, 2);
+   }), 9, aou.ah, 0.0F, 0.0F, () -> clw.a(ciz.nQ)),
+   d("gold", 7, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 1);
+      $$0.put(cgg.a.c, 3);
+      $$0.put(cgg.a.b, 5);
+      $$0.put(cgg.a.a, 2);
+   }), 25, aou.ag, 0.0F, 0.0F, () -> clw.a(ciz.nU)),
+   e("diamond", 33, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 3);
+      $$0.put(cgg.a.c, 6);
+      $$0.put(cgg.a.b, 8);
+      $$0.put(cgg.a.a, 3);
+   }), 10, aou.ad, 2.0F, 0.0F, () -> clw.a(ciz.nK)),
+   f("turtle", 25, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 2);
+      $$0.put(cgg.a.c, 5);
+      $$0.put(cgg.a.b, 6);
+      $$0.put(cgg.a.a, 2);
+   }), 9, aou.ak, 0.0F, 0.0F, () -> clw.a(ciz.nD)),
+   g("netherite", 37, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 3);
+      $$0.put(cgg.a.c, 6);
+      $$0.put(cgg.a.b, 8);
+      $$0.put(cgg.a.a, 3);
+   }), 15, aou.aj, 3.0F, 0.1F, () -> clw.a(ciz.nV));
 
-            dcb $$12 = $$3.a_($$7.d());
-            ddf $$13 = $$12.b() instanceof cpd ? $$12.c(((cpd)$$12.b()).b()) : ddf.a;
-            if ($$2 != ha.a && $$13.b()) {
-               $$10 = -0.4;
-            } else {
-               $$10 = -0.9;
-            }
-         }
+   public static final asf.a<cgi> h = asf.a(cgi::values);
+   private static final EnumMap<cgg.a, Integer> i = ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
+      $$0.put(cgg.a.d, 13);
+      $$0.put(cgg.a.c, 15);
+      $$0.put(cgg.a.b, 16);
+      $$0.put(cgg.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cgg.a, Integer> l;
+   private final int m;
+   private final aot n;
+   private final float o;
+   private final float p;
+   private final arj<clw> q;
 
-         caf $$17 = caf.a($$3, $$4, $$5 + $$10, $$6, ((cgi)$$1.d()).b);
-         if ($$1.A()) {
-            $$17.b($$1.y());
-         }
-
-         $$3.b($$17);
-         $$1.h(1);
-         return $$1;
-      }
-
-      @Override
-      protected void a(gv $$0) {
-         $$0.g().c(1000, $$0.d(), 0);
-      }
-   };
-   final caf.a b;
-
-   public cgi(caf.a $$0, cfu.a $$1) {
-      super($$1);
-      this.b = $$0;
-      cro.a(this, a);
+   private cgi(String $$0, int $$1, EnumMap<cgg.a, Integer> $$2, int $$3, aot $$4, float $$5, float $$6, Supplier<clw> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new arj<>($$7);
    }
 
    @Override
-   public bdx a(cij $$0) {
-      cmm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dcb $$3 = $$1.a_($$2);
-      if (!$$3.a(amw.N)) {
-         return bdx.e;
-      } else {
-         cfz $$4 = $$0.n();
-         if (!$$1.B) {
-            ddf $$5 = $$3.b() instanceof cpd ? $$3.c(((cpd)$$3.b()).b()) : ddf.a;
-            double $$6 = 0.0;
-            if ($$5.b()) {
-               $$6 = 0.5;
-            }
+   public int a(cgg.a $$0) {
+      return i.get($$0) * this.k;
+   }
 
-            caf $$7 = caf.a($$1, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5, this.b);
-            if ($$4.A()) {
-               $$7.b($$4.y());
-            }
+   @Override
+   public int b(cgg.a $$0) {
+      return this.l.get($$0);
+   }
 
-            $$1.b($$7);
-            $$1.a(dgl.t, $$2, dgl.a.a($$0.o(), $$1.a_($$2.d())));
-         }
+   @Override
+   public int a() {
+      return this.m;
+   }
 
-         $$4.h(1);
-         return bdx.a($$1.B);
-      }
+   @Override
+   public aot b() {
+      return this.n;
+   }
+
+   @Override
+   public clw d() {
+      return this.q.a();
+   }
+
+   @Override
+   public String e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.o;
+   }
+
+   @Override
+   public float g() {
+      return this.p;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
    }
 }

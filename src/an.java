@@ -6,11 +6,11 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import javax.annotation.Nullable;
 
 public class an {
-   private final sw a;
-   private final sw b;
-   private final cfz c;
+   private final te a;
+   private final te b;
+   private final ciw c;
    @Nullable
-   private final acq d;
+   private final aep d;
    private final ao e;
    private final boolean f;
    private final boolean g;
@@ -18,7 +18,7 @@ public class an {
    private float i;
    private float j;
 
-   public an(cfz $$0, sw $$1, sw $$2, @Nullable acq $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public an(ciw $$0, te $$1, te $$2, @Nullable aep $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$0;
@@ -34,20 +34,20 @@ public class an {
       this.j = $$1;
    }
 
-   public sw a() {
+   public te a() {
       return this.a;
    }
 
-   public sw b() {
+   public te b() {
       return this.b;
    }
 
-   public cfz c() {
+   public ciw c() {
       return this.c;
    }
 
    @Nullable
-   public acq d() {
+   public aep d() {
       return this.d;
    }
 
@@ -76,33 +76,33 @@ public class an {
    }
 
    public static an a(JsonObject $$0) {
-      sw $$1 = sw.a.a($$0.get("title"));
-      sw $$2 = sw.a.a($$0.get("description"));
+      te $$1 = te.a.a($$0.get("title"));
+      te $$2 = te.a.a($$0.get("description"));
       if ($$1 != null && $$2 != null) {
-         cfz $$3 = b(aor.u($$0, "icon"));
-         acq $$4 = $$0.has("background") ? new acq(aor.i($$0, "background")) : null;
-         ao $$5 = $$0.has("frame") ? ao.a(aor.i($$0, "frame")) : ao.a;
-         boolean $$6 = aor.a($$0, "show_toast", true);
-         boolean $$7 = aor.a($$0, "announce_to_chat", true);
-         boolean $$8 = aor.a($$0, "hidden", false);
+         ciw $$3 = b(arf.u($$0, "icon"));
+         aep $$4 = $$0.has("background") ? new aep(arf.i($$0, "background")) : null;
+         ao $$5 = $$0.has("frame") ? ao.a(arf.i($$0, "frame")) : ao.a;
+         boolean $$6 = arf.a($$0, "show_toast", true);
+         boolean $$7 = arf.a($$0, "announce_to_chat", true);
+         boolean $$8 = arf.a($$0, "hidden", false);
          return new an($$3, $$1, $$2, $$4, $$5, $$6, $$7, $$8);
       } else {
          throw new JsonSyntaxException("Both title and description must be set");
       }
    }
 
-   private static cfz b(JsonObject $$0) {
+   private static ciw b(JsonObject $$0) {
       if (!$$0.has("item")) {
          throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
       } else {
-         cfu $$1 = aor.j($$0, "item");
+         cir $$1 = arf.j($$0, "item");
          if ($$0.has("data")) {
             throw new JsonParseException("Disallowed data tag found");
          } else {
-            cfz $$2 = new cfz($$1);
+            ciw $$2 = new ciw($$1);
             if ($$0.has("nbt")) {
                try {
-                  qr $$3 = rl.a(aor.a($$0.get("nbt"), "nbt"));
+                  qs $$3 = rm.a(arf.a($$0.get("nbt"), "nbt"));
                   $$2.c($$3);
                } catch (CommandSyntaxException var4) {
                   throw new JsonSyntaxException("Invalid nbt tag: " + var4.getMessage());
@@ -114,7 +114,7 @@ public class an {
       }
    }
 
-   public void a(sf $$0) {
+   public void a(sh $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -132,22 +132,22 @@ public class an {
          $$1 |= 4;
       }
 
-      $$0.writeInt($$1);
+      $$0.p($$1);
       if (this.d != null) {
          $$0.a(this.d);
       }
 
-      $$0.writeFloat(this.i);
-      $$0.writeFloat(this.j);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   public static an b(sf $$0) {
-      sw $$1 = $$0.l();
-      sw $$2 = $$0.l();
-      cfz $$3 = $$0.r();
+   public static an b(sh $$0) {
+      te $$1 = $$0.l();
+      te $$2 = $$0.l();
+      ciw $$3 = $$0.q();
       ao $$4 = $$0.b(ao.class);
       int $$5 = $$0.readInt();
-      acq $$6 = ($$5 & 1) != 0 ? $$0.t() : null;
+      aep $$6 = ($$5 & 1) != 0 ? $$0.s() : null;
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       an $$9 = new an($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);
@@ -158,8 +158,8 @@ public class an {
    public JsonElement k() {
       JsonObject $$0 = new JsonObject();
       $$0.add("icon", this.l());
-      $$0.add("title", sw.a.c(this.a));
-      $$0.add("description", sw.a.c(this.b));
+      $$0.add("title", te.a.c(this.a));
+      $$0.add("description", te.a.c(this.b));
       $$0.addProperty("frame", this.e.a());
       $$0.addProperty("show_toast", this.f);
       $$0.addProperty("announce_to_chat", this.g);
@@ -173,7 +173,7 @@ public class an {
 
    private JsonObject l() {
       JsonObject $$0 = new JsonObject();
-      $$0.addProperty("item", jb.i.b(this.c.d()).toString());
+      $$0.addProperty("item", jc.i.b(this.c.d()).toString());
       if (this.c.u()) {
          $$0.addProperty("nbt", this.c.v().toString());
       }

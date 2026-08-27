@@ -1,55 +1,52 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import com.mojang.util.UndashedUuid;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public abstract class ems extends emo {
+public class ems extends end {
    private static final Logger c = LogUtils.getLogger();
-   private final long d;
-   private final sw e;
-   private final Runnable f;
+   public long a;
+   public List<UUID> b;
 
-   public ems(long $$0, sw $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static ems a(JsonObject $$0) {
+      ems $$1 = new ems();
+
+      try {
+         $$1.a = epa.a("serverId", $$0, -1L);
+         String $$2 = epa.a("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
+         }
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   protected abstract void a(eiz var1, long var2) throws ekm;
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = Lists.newArrayList();
 
-   @Override
-   public void run() {
-      eiz $$0 = eiz.a();
-      this.b(this.e);
-      int $$1 = 0;
-
-      while ($$1 < 25) {
+      for (JsonElement $$2 : $$0) {
          try {
-            if (this.c()) {
-               return;
-            }
-
-            this.a($$0, this.d);
-            if (this.c()) {
-               return;
-            }
-
-            this.f.run();
-            return;
-         } catch (ekn var4) {
-            if (this.c()) {
-               return;
-            }
-
-            a((long)var4.e);
-            $$1++;
+            $$1.add(UndashedUuid.fromStringLenient($$2.getAsString()));
          } catch (Exception var5) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't reset world");
-            this.a(var5.toString());
-            return;
          }
       }
+
+      return $$1;
    }
 }

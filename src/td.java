@@ -1,77 +1,75 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class td {
-   private final tf[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private th d;
+   public static final te a = te.h();
+   public static final te b = te.c("options.on");
+   public static final te c = te.c("options.off");
+   public static final te d = te.c("gui.done");
+   public static final te e = te.c("gui.cancel");
+   public static final te f = te.c("gui.yes");
+   public static final te g = te.c("gui.no");
+   public static final te h = te.c("gui.ok");
+   public static final te i = te.c("gui.proceed");
+   public static final te j = te.c("gui.continue");
+   public static final te k = te.c("gui.back");
+   public static final te l = te.c("gui.toTitle");
+   public static final te m = te.c("gui.acknowledge");
+   public static final te n = te.c("chat.link.open");
+   public static final te o = te.c("gui.copy_link_to_clipboard");
+   public static final te p = te.c("menu.disconnect");
+   public static final te q = te.c("connect.failed");
+   public static final te r = te.b("\n");
+   public static final te s = te.b(". ");
+   public static final te t = te.b("...");
+   public static final te u = a();
 
-   public td(int $$0) {
-      this.a = new tf[$$0];
+   public static tr a() {
+      return te.b(" ");
    }
 
-   public boolean a(th $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new tf($$0, true) : null);
-         return true;
-      }
+   public static tr a(long $$0) {
+      return te.a("gui.days", $$0);
    }
 
-   private void a(@Nullable tf $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public static tr b(long $$0) {
+      return te.a("gui.hours", $$0);
    }
 
-   public void a(th $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         tf $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public static tr c(long $$0) {
+      return te.a("gui.minutes", $$0);
+   }
+
+   public static te a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static tr a(te $$0, boolean $$1) {
+      return te.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static tr a(te $$0, te $$1) {
+      return te.a("options.generic_value", $$0, $$1);
+   }
+
+   public static tr a(te... $$0) {
+      tr $$1 = te.h();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
          }
       }
+
+      return $$1;
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
+   public static te b(te... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public td.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<th> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         tf $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      tc $$6 = new tc($$2);
-      tc.b $$7 = new tc.b($$0, $$1);
-      return new td.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(tc a, tc.b b) {
+   public static te a(Collection<? extends te> $$0) {
+      return tg.a($$0, r);
    }
 }

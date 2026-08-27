@@ -1,57 +1,80 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public class ara extends auz {
-   public ara(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, avw.l, $$2);
+@FunctionalInterface
+public interface ara {
+   ara a = $$0 -> true;
+
+   boolean accept(arb var1);
+
+   static ara codepoint(int $$0, ua $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = "black";
-      Dynamic<?> $$2 = $$0.emptyMap();
-      $$2 = $$2.set("messages", a($$0, "Text"));
-      $$2 = $$2.set("filtered_messages", a($$0, "FilteredText"));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Color").result();
-      $$2 = $$2.set("color", $$3.isPresent() ? $$3.get() : $$2.createString("black"));
-      Optional<? extends Dynamic<?>> $$4 = $$0.get("GlowingText").result();
-      $$2 = $$2.set("has_glowing_text", $$4.isPresent() ? $$4.get() : $$2.createBoolean(false));
-      Dynamic<?> $$5 = $$0.emptyMap();
-      Dynamic<?> $$6 = b($$0);
-      $$5 = $$5.set("messages", $$6);
-      $$5 = $$5.set("filtered_messages", $$6);
-      $$5 = $$5.set("color", $$5.createString("black"));
-      $$5 = $$5.set("has_glowing_text", $$5.createBoolean(false));
-      $$0 = $$0.set("front_text", $$2);
-      return $$0.set("back_text", $$5);
+   static ara forward(String $$0, ua $$1) {
+      return $$0.isEmpty() ? a : $$2 -> ase.a($$0, $$1, $$2);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      Dynamic<T> $$2 = $$0.createString(a());
-      return $$0.createList(
-         Stream.of(
-            $$0.get($$1 + "1").result().orElse($$2),
-            $$0.get($$1 + "2").result().orElse($$2),
-            $$0.get($$1 + "3").result().orElse($$2),
-            $$0.get($$1 + "4").result().orElse($$2)
-         )
-      );
+   static ara forward(String $$0, ua $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> ase.a($$0, $$1, decorateOutput($$3, $$2));
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = $$0.createString(a());
-      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
+   static ara backward(String $$0, ua $$1) {
+      return $$0.isEmpty() ? a : $$2 -> ase.b($$0, $$1, $$2);
    }
 
-   private static String a() {
-      return sw.a.a(sv.a);
+   static ara backward(String $$0, ua $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> ase.b($$0, $$1, decorateOutput($$3, $$2));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), ara::a);
+   static arb decorateOutput(arb $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static ara composite() {
+      return a;
+   }
+
+   static ara composite(ara $$0) {
+      return $$0;
+   }
+
+   static ara composite(ara $$0, ara $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static ara composite(ara... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static ara composite(List<ara> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
+      }
+   }
+
+   static ara fromPair(ara $$0, ara $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static ara fromList(List<ara> $$0) {
+      return $$1 -> {
+         for (ara $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 }

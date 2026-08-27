@@ -1,73 +1,110 @@
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class euo extends euq implements ape {
-   @Nullable
-   private sw a;
-   @Nullable
-   private sw b;
-   private int c;
-   private boolean k;
-   private final boolean l;
+public class euo<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public euo(boolean $$0) {
-      super(enf.a);
-      this.l = $$0;
+   public euo(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   @Override
-   public boolean av_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aH_() {
-      return false;
-   }
-
-   @Override
-   public void a(sw $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(sw $$0) {
-      this.a = $$0;
-      this.c(sw.c("progress.working"));
-   }
-
-   @Override
-   public void c(sw $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
    public void a() {
-      this.k = true;
+      Arrays.fill(this.g, this.f);
    }
 
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
-         }
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
+   }
+
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
       } else {
-         this.a($$0);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, sw.h().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
-         }
-
-         super.a($$0, $$1, $$2, $$3);
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
       }
+   }
+
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
+   }
+
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(euo.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

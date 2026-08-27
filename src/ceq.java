@@ -1,5 +1,9 @@
-public class ceq extends cfp implements cer {
-   public ceq(int $$0, String $$1, cfu.a $$2) {
-      super($$0, $$1, $$2);
-   }
+import java.util.List;
+
+public interface ceq extends bgh, cfx {
+   int f();
+
+   int g();
+
+   List<ciw> h();
 }

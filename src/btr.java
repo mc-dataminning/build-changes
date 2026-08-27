@@ -1,85 +1,119 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class btr extends bmv {
-   private final btq a;
+public class btr {
+   private static final int a = 10;
 
-   public btr(btq $$0) {
-      this.a = $$0;
+   public static gv a(art $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new gv($$3, $$4, $$5);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.dI().a(this.a.dn(), this.a.dp(), this.a.dt(), 10.0);
+   @Nullable
+   public static gv a(art $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = aro.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)aro.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return gv.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   public void e() {
-      aif $$0 = (aif)this.a.dI();
-      bdv $$1 = $$0.d_(this.a.di());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      bfy $$2 = bfn.ai.a((cmm)$$0);
-      if ($$2 != null) {
-         $$2.d(this.a.dn(), this.a.dp(), this.a.dt());
-         $$2.a(true);
-         $$0.b($$2);
-         bwk $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.k(this.a);
-            $$0.a_($$3);
+   @VisibleForTesting
+   public static gv a(gv $$0, int $$1, Predicate<gv> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         gv $$3 = $$0.c();
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               btk $$5 = this.a($$1);
-               if ($$5 != null) {
-                  bwk $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.k($$5);
-                     $$5.j(this.a.ec().a(0.0, 1.1485), 0.0, this.a.ec().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static gv a(gv $$0, int $$1, int $$2, Predicate<gv> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         gv $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         gv $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            gv $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
+            }
+
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
+   }
+
+   @Nullable
+   public static ehf a(bjf $$0, Supplier<gv> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static ehf a(Supplier<gv> $$0, ToDoubleFunction<gv> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      gv $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         gv $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
             }
          }
       }
+
+      return $$3 != null ? ehf.c($$3) : null;
    }
 
-   @Nullable
-   private btk a(bdv $$0) {
-      btq $$1 = bfn.aK.a(this.a.dI());
-      if ($$1 != null) {
-         $$1.a((aif)this.a.dI(), $$0, bgd.k, null, null);
-         $$1.e(this.a.dn(), this.a.dp(), this.a.dt());
-         $$1.ak = 60;
-         $$1.fF();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   private bwk a(bdv $$0, btk $$1) {
-      bwk $$2 = bfn.aJ.a($$1.dI());
-      if ($$2 != null) {
-         $$2.a((aif)$$1.dI(), $$0, bgd.k, null, null);
-         $$2.e($$1.dn(), $$1.dp(), $$1.dt());
-         $$2.ak = 60;
-         $$2.fF();
-         if ($$2.c(bfo.f).b()) {
-            $$2.a(bfo.f, new cfz(cgc.oS));
+   public static gv a(bjf $$0, int $$1, art $$2, gv $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fM() && $$1 > 1) {
+         gv $$6 = $$0.fJ();
+         if ($$0.dp() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
          }
 
-         $$2.a(bfo.a, cki.a($$2.ec(), this.a($$2.eO()), (int)(5.0F + $$0.d() * (float)$$2.ec().a(18)), false));
-         $$2.a(bfo.f, cki.a($$2.ec(), this.a($$2.c(bfo.f)), (int)(5.0F + $$0.d() * (float)$$2.ec().a(18)), false));
+         if ($$0.dv() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
       }
 
-      return $$2;
-   }
-
-   private cfz a(cfz $$0) {
-      $$0.c("Enchantments");
-      return $$0;
+      return gv.a((double)$$4 + $$0.dp(), (double)$$3.v() + $$0.dr(), (double)$$5 + $$0.dv());
    }
 }

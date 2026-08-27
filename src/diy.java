@@ -1,22 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-class diy extends djc {
-   private final hi<dxd> e;
-   public static final Codec<diy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, diy::new));
+public interface diy<T extends dip> {
+   @Nullable
+   T a(int var1);
 
-   public diy(hz $$0, hi<dxd> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   @Override
-   protected boolean a(dcb $$0) {
-      return $$0.u().a(this.e);
-   }
+   Iterable<T> a();
 
-   @Override
-   public dis<?> a() {
-      return dis.c;
-   }
+   <U extends T> void a(diw<T, U> var1, aqe<U> var2);
+
+   void a(eha var1, Consumer<T> var2);
+
+   <U extends T> void a(diw<T, U> var1, eha var2, aqe<U> var3);
 }

@@ -1,110 +1,123 @@
-public class fce<T extends bsa> extends fcp<T> {
-   private float j;
-   private float k;
-   private float l;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-   public fce(fee $$0) {
-      super($$0, true, 23.0F, 4.8F, 2.7F, 3.0F, 49);
+public class fce extends exv {
+   private static final te a = te.c("selectWorld.experimental.title");
+   private static final te b = te.c("selectWorld.experimental.message");
+   private static final te c = te.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<ams> n;
+   private final evj o = new evj().a(10).b(20);
+
+   public fce(Collection<ams> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
-   public static fek c() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fej.c()
-            .a(0, 6)
-            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
-            .a(45, 16)
-            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
-            .a(52, 25)
-            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
-            .a(52, 25)
-            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
-         feg.a(0.0F, 11.5F, -17.0F)
-      );
-      $$1.a("body", fej.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), feg.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 9;
-      int $$3 = 6;
-      fej $$4 = fej.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
-      $$1.a("right_hind_leg", $$4, feg.a(-5.5F, 15.0F, 9.0F));
-      $$1.a("left_hind_leg", $$4, feg.a(5.5F, 15.0F, 9.0F));
-      $$1.a("right_front_leg", $$4, feg.a(-5.5F, 15.0F, -9.0F));
-      $$1.a("left_front_leg", $$4, feg.a(5.5F, 15.0F, -9.0F));
-      return fek.a($$0, 64, 64);
+   @Override
+   public te e() {
+      return td.a(super.e(), b);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.j = $$0.D($$3);
-      this.k = $$0.E($$3);
-      this.l = $$0.h_() ? 0.0F : $$0.F($$3);
+   @Override
+   protected void aE_() {
+      super.aE_();
+      evj.b $$0 = this.o.d(2);
+      evn $$1 = $$0.b().b();
+      $$0.a(new etn(this.e, this.i), 2, $$1);
+      etc $$2 = $$0.a(new etc(b, this.i).b(true), 2, $$1);
+      $$2.i(310);
+      $$0.a(esi.a(c, $$0x -> this.f.a(new fce.a())).a(100).a(), 2, $$1);
+      $$0.a(esi.a(td.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(esi.a(td.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         esg var10000 = this.d($$1x);
+      });
+      this.o.a();
+      this.b();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      boolean $$6 = $$0.q() > 0;
-      boolean $$7 = $$0.r();
-      int $$8 = $$0.gf();
-      boolean $$9 = $$0.ge();
-      boolean $$10 = $$0.gq();
-      if ($$6) {
-         this.a.f = 0.35F * apa.a(0.6F * $$3);
-         this.a.g = 0.35F * apa.a(0.6F * $$3);
-         this.h.e = -0.75F * apa.a(0.3F * $$3);
-         this.i.e = 0.75F * apa.a(0.3F * $$3);
-      } else {
-         this.a.g = 0.0F;
+   @Override
+   protected void b() {
+      evi.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void au_() {
+      this.m.accept(false);
+   }
+
+   class a extends exv {
+      private fce.a.a b;
+
+      a() {
+         super(te.c("selectWorld.experimental.details.title"));
       }
 
-      if ($$7) {
-         if ($$8 < 15) {
-            this.a.e = (float) (-Math.PI / 4) * (float)$$8 / 14.0F;
-         } else if ($$8 < 20) {
-            float $$11 = (float)(($$8 - 15) / 5);
-            this.a.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$11;
+      @Override
+      public void au_() {
+         this.f.a(fce.this);
+      }
+
+      @Override
+      protected void aE_() {
+         super.aE_();
+         this.d(esi.a(td.k, $$0 -> this.au_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new fce.a.a(this.f, fce.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(erx $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends ete<fce.a.b> {
+         public a(eqn $$0, Collection<ams> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (ams $$2 : $$1) {
+               String $$3 = cdv.a(cdv.f, $$2.d());
+               if (!$$3.isEmpty()) {
+                  te $$4 = tg.a($$2.a().e(), ua.a.a(true));
+                  te $$5 = te.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, etb.a(a.this.i, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.d * 3 / 4;
          }
       }
 
-      if (this.j > 0.0F) {
-         this.b.e = fcc.a(this.b.e, 1.7407963F, this.j);
-         this.a.e = fcc.a(this.a.e, (float) (Math.PI / 2), this.j);
-         this.h.g = -0.27079642F;
-         this.i.g = 0.27079642F;
-         this.f.g = 0.5707964F;
-         this.g.g = -0.5707964F;
-         if ($$9) {
-            this.a.e = (float) (Math.PI / 2) + 0.2F * apa.a($$3 * 0.6F);
-            this.h.e = -0.4F - 0.2F * apa.a($$3 * 0.6F);
-            this.i.e = -0.4F - 0.2F * apa.a($$3 * 0.6F);
+      class b extends ete.a<fce.a.b> {
+         private final te b;
+         private final te c;
+         private final etb d;
+
+         b(te $$0, te $$1, etb $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
          }
 
-         if ($$10) {
-            this.a.e = 2.1707964F;
-            this.h.e = -0.9F;
-            this.i.e = -0.9F;
+         @Override
+         public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
          }
-      } else {
-         this.f.g = 0.0F;
-         this.g.g = 0.0F;
-         this.h.g = 0.0F;
-         this.i.g = 0.0F;
-      }
 
-      if (this.k > 0.0F) {
-         this.f.e = -0.6F * apa.a($$3 * 0.15F);
-         this.g.e = 0.6F * apa.a($$3 * 0.15F);
-         this.h.e = 0.3F * apa.a($$3 * 0.25F);
-         this.i.e = -0.3F * apa.a($$3 * 0.25F);
-         this.a.e = fcc.a(this.a.e, (float) (Math.PI / 2), this.k);
-      }
-
-      if (this.l > 0.0F) {
-         this.a.e = fcc.a(this.a.e, 2.0561945F, this.l);
-         this.f.e = -0.5F * apa.a($$3 * 0.5F);
-         this.g.e = 0.5F * apa.a($$3 * 0.5F);
-         this.h.e = 0.5F * apa.a($$3 * 0.5F);
-         this.i.e = -0.5F * apa.a($$3 * 0.5F);
+         @Override
+         public te a() {
+            return te.a("narrator.select", td.a(this.b, this.c));
+         }
       }
    }
 }

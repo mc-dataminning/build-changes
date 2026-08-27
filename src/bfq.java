@@ -1,46 +1,44 @@
-public abstract class bfq extends bgb {
-   protected bfq(bfn<? extends bfq> $$0, cmm $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public class bfq extends bft {
+   public static final bfq a = new bfq(0);
+   public static final Codec<bfq> b = aqw.c(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bfq::new, bfq::d);
+   private final int f;
+
+   public static bfq a(int $$0) {
+      return $$0 == 0 ? a : new bfq($$0);
+   }
+
+   private bfq(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dcb $$2, gu $$3) {
+   public int a(art $$0) {
+      return this.f;
    }
 
    @Override
-   public void h(eei $$0) {
-      if (this.cU()) {
-         if (this.aV()) {
-            this.a(0.02F, $$0);
-            this.a(bgf.a, this.dl());
-            this.f(this.dl().a(0.8F));
-         } else if (this.bi()) {
-            this.a(0.02F, $$0);
-            this.a(bgf.a, this.dl());
-            this.f(this.dl().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.ay()) {
-               $$1 = this.dI().a_(this.aE()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.ay()) {
-               $$1 = this.dI().a_(this.aE()).b().h() * 0.91F;
-            }
-
-            this.a(this.ay() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bgf.a, this.dl());
-            this.f(this.dl().a((double)$$1));
-         }
-      }
-
-      this.q(false);
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public boolean i_() {
-      return false;
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bfu<?> c() {
+      return bfu.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

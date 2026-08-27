@@ -1,83 +1,148 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class dju extends dko<dmz> {
-   public dju(Codec<dmz> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dkq<dmz> $$0) {
-      gu $$1 = $$0.e();
-      cng $$2 = $$0.b();
-      apf $$3 = $$0.d();
-      if ($$2.t($$1) && !$$2.t($$1.c())) {
-         gu.a $$4 = $$1.j();
-         gu.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.t($$4)) {
-            if ($$2.r($$4)) {
-               return true;
+public class dju implements dkb.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
             }
-
-            $$2.a($$4, cpo.dZ.n(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ha.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ha.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ha.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ha.f));
-            $$4.c(ha.a);
          }
+      }
+   });
+   private final ObjectListIterator<dju.a> h;
+   private final ObjectListIterator<dvz> i;
 
-         $$4.c(ha.b);
-         this.a($$2, $$3, $$5.a($$4, ha.c));
-         this.a($$2, $$3, $$5.a($$4, ha.d));
-         this.a($$2, $$3, $$5.a($$4, ha.e));
-         this.a($$2, $$3, $$5.a($$4, ha.f));
-         $$4.c(ha.a);
-         gu.a $$10 = new gu.a();
+   public static dju a(cqc $$0, cor $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dju.a> $$4 = new ObjectArrayList(10);
+      ObjectList<dvz> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != dvi.a).forEach($$5x -> {
+         dvi $$6 = $$5x.h().d();
 
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = apa.a($$11) * apa.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
+         for (dvb $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof dut) {
+                  dut $$8 = (dut)$$7;
+                  dwg.a $$9 = $$8.b().e();
+                  if ($$9 == dwg.a.b) {
+                     $$4.add(new dju.a($$8.f(), $$6, $$8.d()));
+                  }
 
-                  while ($$2.t($$5.a($$10, ha.a))) {
-                     $$10.c(ha.a);
-                     if (--$$14 <= 0) {
-                        break;
+                  for (dvz $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
                      }
                   }
-
-                  if (!$$2.t($$5.a($$10, ha.a))) {
-                     $$2.a($$10, cpo.dZ.n(), 2);
-                  }
+               } else {
+                  $$4.add(new dju.a($$7.f(), $$6, 0));
                }
             }
          }
+      });
+      return new dju($$4.iterator(), $$5.iterator());
+   }
 
-         return true;
+   @VisibleForTesting
+   public dju(ObjectListIterator<dju.a> $$0, ObjectListIterator<dvz> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(dka.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dju.a $$5 = (dju.a)this.h.next();
+         dup $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.g() - $$1, $$1 - $$6.j()));
+         int $$9 = Math.max(0, Math.max($$6.i() - $$3, $$3 - $$6.l()));
+         int $$10 = $$6.h() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.k()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         dvz $$13 = (dvz)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = aro.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return aro.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = aro.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * aro.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
       } else {
-         return false;
+         return 0.0;
       }
    }
 
-   private void a(cmn $$0, apf $$1, gu $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, cpo.dZ.n(), 2);
-      }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   private boolean b(cmn $$0, apf $$1, gu $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, cpo.dZ.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = aro.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(dup a, dvi b, int c) {
    }
 }

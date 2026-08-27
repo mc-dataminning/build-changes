@@ -1,30 +1,20 @@
-public class dys {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
 
-   public dys(int $$0) {
-      this($$0, a);
-   }
+public class dys extends dyk {
+   public static final Codec<dys> a = apy.a(jd.e).fieldOf("tag").xmap(dys::new, $$0 -> $$0.b).codec();
+   private final apy<csk> b;
 
-   public dys(int $$0, String $$1) {
+   public dys(apy<csk> $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   @Override
+   public boolean a(dey $$0, art $$1) {
+      return $$0.a(this.b);
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(dys $$0) {
-      return this.b().equals($$0.b());
+   @Override
+   protected dyl<?> a() {
+      return dyl.d;
    }
 }

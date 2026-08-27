@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class dts extends dsa {
-   public static final Codec<dts> d = a(dts::new);
+public enum dts implements asf {
+   a(hb.b, 1, "ceiling"),
+   b(hb.a, -1, "floor");
 
-   public dts(dsa.c $$0) {
-      super($$0);
+   public static final Codec<dts> c = asf.a(dts::values);
+   private final hb d;
+   private final int e;
+   private final String f;
+
+   private dts(hb $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public hb a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public Optional<dsa.b> a(dsa.a $$0) {
-      return a($$0, dhk.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dss $$0, dsa.a $$1) {
-      clt $$2 = $$1.h();
-      dij $$3 = $$1.f();
-      gu $$4 = new gu($$2.d(), 90, $$2.e());
-      cvz $$5 = cvz.a($$3);
-      dtr.a($$1.e(), $$4, $$5, $$0, $$3);
-   }
-
-   @Override
-   public dsj<?> e() {
-      return dsj.e;
+   public String c() {
+      return this.f;
    }
 }

@@ -1,52 +1,21 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bci {
-   public static final Codec<bci> a = Codec.INT.xmap(bci::a, bci::a);
-   private static final bci b = new bci(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private bci(int $$0) {
-      this.d = $$0;
+public class bci extends Schema {
+   public bci(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static bci a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bci($$0);
-      }
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> azv.a($$0));
    }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aS) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bci && this.d == ((bci)$$0).d;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "WitherSkeleton");
+      a($$0, $$1, "Stray");
+      return $$1;
    }
 }

@@ -1,32 +1,46 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+public abstract class bin extends biy {
+   protected bin(bik<? extends bin> $$0, cpk $$1) {
+      super($$0, $$1);
+   }
 
-public class bin {
-   public static bhs<bgi> a(float $$0) {
-      return bld.a(
-         (Function<bld.b<bgi>, ? extends App<bld.c<bgi>, blg<bgi>>>)($$1 -> $$1.group($$1.c(bpb.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.g($$3.di())) {
-                           return false;
-                        } else {
-                           gu $$5 = $$3.di();
-                           List<gu> $$6 = gu.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(gu::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.g($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bpe($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
-      );
+   @Override
+   protected void a(double $$0, boolean $$1, dey $$2, gv $$3) {
+   }
+
+   @Override
+   public void h(ehf $$0) {
+      if (this.cW()) {
+         if (this.aX()) {
+            this.a(0.02F, $$0);
+            this.a(bjc.a, this.dn());
+            this.f(this.dn().a(0.8F));
+         } else if (this.bl()) {
+            this.a(0.02F, $$0);
+            this.a(bjc.a, this.dn());
+            this.f(this.dn().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
+            }
+
+            this.a(this.aA() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bjc.a, this.dn());
+            this.f(this.dn().a((double)$$1));
+         }
+      }
+
+      this.q(false);
+   }
+
+   @Override
+   public boolean j_() {
+      return false;
    }
 }

@@ -1,45 +1,17 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bai implements bam {
-   public static final bai a = new bai();
-
-   private bai() {
+public class bai extends azu {
+   public bai(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public List<bap> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.remove("minecraft:flower_pot");
+      $$1.remove("minecraft:noteblock");
+      return $$1;
    }
 }

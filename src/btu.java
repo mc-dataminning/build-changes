@@ -1,51 +1,122 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class btu extends btk {
-   public btu(bfn<? extends btu> $$0, cmm $$1) {
-      super($$0, $$1);
-   }
+public class btu implements cox {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private btu.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static bhf.a q() {
-      return gy().a(bhg.a, 15.0).a(bhg.d, 0.2F);
-   }
-
-   @Override
-   protected void a(apf $$0) {
-      this.a(bhg.m).a(a($$0::j));
-   }
-
-   @Override
-   public bge eN() {
-      return bge.b;
+   public btu() {
+      this.c = btu.a.c;
    }
 
    @Override
-   protected amg s() {
-      return amh.AW;
+   public int a(aki $$0, boolean $$1, boolean $$2) {
+      if (!$$0.N() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? btu.a.b : btu.a.c;
+         }
+
+         if (this.c == btu.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = btu.a.c;
+               }
+
+               return 1;
+            }
+         }
+      } else {
+         this.c = btu.a.c;
+         this.b = false;
+         return 0;
+      }
    }
 
-   @Override
-   protected amg g_() {
-      return amh.AX;
+   private boolean a(aki $$0) {
+      for (cbl $$1 : $$0.v()) {
+         if (!$$1.G_()) {
+            gv $$2 = $$1.dk();
+            if ($$0.b($$2) && !$$0.s($$2).a(api.ae)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + aro.d(aro.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + aro.d(aro.a($$4) * 32.0F);
+                  if (this.a($$0, new gv(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   protected amg d(ben $$0) {
-      return amh.AY;
+   private void b(aki $$0) {
+      ehf $$1 = this.a($$0, new gv(this.f, this.g, this.h));
+      if ($$1 != null) {
+         bzs $$2;
+         try {
+            $$2 = new bzs($$0);
+            $$2.a($$0, $$0.d_($$2.dk()), bja.h, null, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
    }
 
    @Nullable
-   @Override
-   public bfe a(aif $$0, bfe $$1) {
-      return bfn.bq.a((cmm)$$0);
+   private ehf a(aki $$0, gv $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dkh.a.b, $$3, $$4);
+         gv $$6 = new gv($$3, $$5, $$4);
+         if ($$0.b($$6) && byz.b(bik.bp, $$0, bja.h, $$6, $$0.z)) {
+            return ehf.c($$6);
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   public bdx b(byo $$0, bdw $$1) {
-      return !this.gn() ? bdx.d : super.b($$0, $$1);
-   }
-
-   @Override
-   protected void go() {
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

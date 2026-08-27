@@ -1,46 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bko {
-   public static bhs<bgi> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bld.a(
-         (Function<bld.b<bgi>, ? extends App<bld.c<bgi>, blg<bgi>>>)($$3 -> $$3.group($$3.c(bpb.o), $$3.c(bpb.m), $$3.a(bpb.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.di()).a(anb.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           een $$8 = een.a($$6);
-                           gu $$9 = $$6.di();
-                           gu.a $$10 = new gu.a();
+public abstract class bko<E extends biw> implements bkp<E> {
+   public static final int a = 60;
+   protected final Map<bry<?>, brz> b;
+   private bko.a c = bko.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-                           label45:
-                           for (gu $$11 : gu.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).b()
-                                 && !$$5x.a_($$10.a($$11, ha.a)).b($$5x, $$11, $$8).b()) {
-                                 for (ha $$12 : ha.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ha.a)).a(cpo.G)) {
-                                       $$5.a(new bhu($$11));
-                                       $$4.a(new bpe(new bhu($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public bko(Map<bry<?>, brz> $$0) {
+      this($$0, 60);
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   public bko(Map<bry<?>, brz> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bko(Map<bry<?>, brz> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
+
+   @Override
+   public bko.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(aki $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bko.a.b;
+         int $$3 = this.e + $$0.y_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(aki $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(aki $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(aki $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(aki $$0, E $$1, long $$2) {
+      this.c = bko.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(aki $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(aki $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(aki $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<bry<?>, brz> $$1 : this.b.entrySet()) {
+         bry<?> $$2 = $$1.getKey();
+         brz $$3 = $$1.getValue();
+         if (!$$0.dM().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

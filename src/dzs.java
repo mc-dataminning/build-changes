@@ -1,276 +1,313 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.lang.reflect.Type;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.util.Arrays;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
-import org.slf4j.Logger;
 
-public class dzs {
-   static final Logger c = LogUtils.getLogger();
-   public static final dzs a = new dzs(ebv.a, null, new dzr[0], new eaz[0]);
-   public static final ebu b = ebv.m;
-   final ebu d;
-   @Nullable
-   final acq e;
-   final dzr[] f;
-   final eaz[] g;
-   private final BiFunction<cfz, dzk, cfz> h;
+public abstract class dzs<M extends dzm<M>, S extends dzp<M>> implements dzo {
+   public static final int a = 15;
+   protected static final int b = 1;
+   protected static final long c = dzs.a.a(1);
+   private static final int g = 512;
+   protected static final hb[] d = hb.values();
+   protected final dhi e;
+   protected final S f;
+   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
+   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
+   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
+   private final gv.a k = new gv.a();
+   private static final int l = 2;
+   private final long[] m = new long[2];
+   private final dhh[] n = new dhh[2];
 
-   dzs(ebu $$0, @Nullable acq $$1, dzr[] $$2, eaz[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = ebb.a($$3);
+   protected dzs(dhi $$0, S $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c();
    }
 
-   public static Consumer<cfz> a(aif $$0, Consumer<cfz> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.G())) {
-            if ($$2.L() < $$2.g()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.L();
-
-               while ($$3 > 0) {
-                  cfz $$4 = $$2.c(Math.min($$2.g(), $$3));
-                  $$3 -= $$4.L();
-                  $$1.accept($$4);
-               }
-            }
-         }
-      };
+   public static boolean a(coq $$0, gv $$1, dey $$2, dey $$3) {
+      return $$3 == $$2 ? false : $$3.b($$0, $$1) != $$2.b($$0, $$1) || $$3.h() != $$2.h() || $$3.g() || $$2.g();
    }
 
-   public void a(dzq $$0, Consumer<cfz> $$1) {
-      this.a(new dzk.a($$0).a(this.e), $$1);
-   }
-
-   public void a(dzk $$0, Consumer<cfz> $$1) {
-      dzk.c<?> $$2 = dzk.a(this);
-      if ($$0.b($$2)) {
-         Consumer<cfz> $$3 = eaz.a(this.h, $$1, $$0);
-
-         for (dzr $$4 : this.f) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
+   public static int a(coq $$0, dey $$1, gv $$2, dey $$3, gv $$4, hb $$5, int $$6) {
+      boolean $$7 = a($$1);
+      boolean $$8 = a($$3);
+      if ($$7 && $$8) {
+         return $$6;
       } else {
-         c.warn("Detected infinite loop in loot tables");
+         ehy $$9 = $$7 ? ehv.a() : $$1.c($$0, $$2);
+         ehy $$10 = $$8 ? ehv.a() : $$3.c($$0, $$4);
+         return ehv.b($$9, $$10, $$5) ? 16 : $$6;
       }
    }
 
-   public void a(dzq $$0, long $$1, Consumer<cfz> $$2) {
-      this.a(new dzk.a($$0).a($$1).a(this.e), a($$0.a(), $$2));
+   public static ehy a(coq $$0, gv $$1, dey $$2, hb $$3) {
+      return a($$2) ? ehv.a() : $$2.a($$0, $$1, $$3);
    }
 
-   public void b(dzq $$0, Consumer<cfz> $$1) {
-      this.a($$0, a($$0.a(), $$1));
+   protected static boolean a(dey $$0) {
+      return !$$0.p() || !$$0.g();
    }
 
-   public void b(dzk $$0, Consumer<cfz> $$1) {
-      this.a($$0, a($$0.d(), $$1));
+   protected dey c(gv $$0) {
+      int $$1 = hy.a($$0.u());
+      int $$2 = hy.a($$0.w());
+      dhh $$3 = this.a($$1, $$2);
+      return $$3 == null ? csl.F.n() : $$3.a_($$0);
    }
 
-   public ObjectArrayList<cfz> a(dzq $$0, long $$1) {
-      return this.a(new dzk.a($$0).a($$1).a(this.e));
+   protected int a(dey $$0, gv $$1) {
+      return Math.max(1, $$0.b(this.e.q(), $$1));
    }
 
-   public ObjectArrayList<cfz> a(dzq $$0) {
-      return this.a(new dzk.a($$0).a(this.e));
+   protected boolean a(long $$0, dey $$1, long $$2, dey $$3, hb $$4) {
+      ehy $$5 = this.a($$1, $$0, $$4);
+      ehy $$6 = this.a($$3, $$2, $$4.g());
+      return ehv.b($$5, $$6);
    }
 
-   private ObjectArrayList<cfz> a(dzk $$0) {
-      ObjectArrayList<cfz> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
+   protected ehy a(dey $$0, long $$1, hb $$2) {
+      return a(this.e.q(), this.k.f($$1), $$0, $$2);
+   }
+
+   @Nullable
+   protected dhh a(int $$0, int $$1) {
+      long $$2 = cor.c($$0, $$1);
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         if ($$2 == this.m[$$3]) {
+            return this.n[$$3];
+         }
+      }
+
+      dhh $$4 = this.e.c($$0, $$1);
+
+      for (int $$5 = 1; $$5 > 0; $$5--) {
+         this.m[$$5] = this.m[$$5 - 1];
+         this.n[$$5] = this.n[$$5 - 1];
+      }
+
+      this.m[0] = $$2;
+      this.n[0] = $$4;
+      return $$4;
+   }
+
+   private void c() {
+      Arrays.fill(this.m, cor.a);
+      Arrays.fill(this.n, null);
+   }
+
+   @Override
+   public void a(gv $$0) {
+      this.h.add($$0.a());
+   }
+
+   public void a(long $$0, @Nullable dha $$1) {
+      this.f.a($$0, $$1);
+   }
+
+   public void b(cor $$0, boolean $$1) {
+      this.f.c(hy.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public void a(hy $$0, boolean $$1) {
+      this.f.d($$0.s(), $$1);
+   }
+
+   @Override
+   public void a(cor $$0, boolean $$1) {
+      this.f.b(hy.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public int a() {
+      LongIterator $$0 = this.h.iterator();
+
+      while ($$0.hasNext()) {
+         this.a($$0.nextLong());
+      }
+
+      this.h.clear();
+      this.h.trim(512);
+      int $$1 = 0;
+      $$1 += this.e();
+      $$1 += this.d();
+      this.c();
+      this.f.a(this);
+      this.f.b();
       return $$1;
    }
 
-   public ebu a() {
-      return this.d;
+   private int d() {
+      int $$0;
+      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
+         long $$1 = this.j.dequeueLong();
+         long $$2 = this.j.dequeueLong();
+         int $$3 = this.f.e($$1);
+         int $$4 = dzs.a.a($$2);
+         if (dzs.a.c($$2) && $$3 < $$4) {
+            this.f.a($$1, $$4);
+            $$3 = $$4;
+         }
+
+         if ($$3 == $$4) {
+            this.a($$1, $$2, $$3);
+         }
+      }
+
+      return $$0;
    }
 
-   public void a(dzv $$0) {
-      for (int $$1 = 0; $$1 < this.f.length; $$1++) {
-         this.f[$$1].a($$0.b(".pools[" + $$1 + "]"));
+   private int e() {
+      int $$0;
+      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
+         long $$1 = this.i.dequeueLong();
+         long $$2 = this.i.dequeueLong();
+         this.a($$1, $$2);
       }
 
-      for (int $$2 = 0; $$2 < this.g.length; $$2++) {
-         this.g[$$2].a($$0.b(".functions[" + $$2 + "]"));
-      }
+      return $$0;
    }
 
-   public void a(bdq $$0, dzq $$1, long $$2) {
-      dzk $$3 = new dzk.a($$1).a($$2).a(this.e);
-      ObjectArrayList<cfz> $$4 = this.a($$3);
-      apf $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         cfz $$7 = (cfz)var9.next();
-         if ($$6.isEmpty()) {
-            c.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.b()) {
-            $$0.a($$6.remove($$6.size() - 1), cfz.b);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
+   protected void b(long $$0, long $$1) {
+      this.i.enqueue($$0);
+      this.i.enqueue($$1);
    }
 
-   private void a(ObjectArrayList<cfz> $$0, int $$1, apf $$2) {
-      List<cfz> $$3 = Lists.newArrayList();
-      Iterator<cfz> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         cfz $$5 = $$4.next();
-         if ($$5.b()) {
-            $$4.remove();
-         } else if ($$5.L() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
-
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         cfz $$6 = $$3.remove(apa.a($$2, 0, $$3.size() - 1));
-         int $$7 = apa.a($$2, 1, $$6.L() / 2);
-         cfz $$8 = $$6.a($$7);
-         if ($$6.L() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.L() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
-
-      $$0.addAll($$3);
-      ac.b($$0, $$2);
+   protected void c(long $$0, long $$1) {
+      this.j.enqueue($$0);
+      this.j.enqueue($$1);
    }
 
-   private List<Integer> a(bdq $$0, apf $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).b()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.b($$2, $$1);
-      return $$2;
+   @Override
+   public boolean E_() {
+      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
    }
 
-   public static dzs.a b() {
-      return new dzs.a();
+   @Nullable
+   @Override
+   public dha a(hy $$0) {
+      return this.f.d($$0.s());
    }
 
-   public static class a implements eaw<dzs.a> {
-      private final List<dzr> a = Lists.newArrayList();
-      private final List<eaz> b = Lists.newArrayList();
-      private ebu c = dzs.b;
-      @Nullable
-      private acq d = null;
-
-      public dzs.a a(dzr.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public dzs.a a(ebu $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dzs.a a(acq $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public dzs.a a(eaz.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public dzs.a a() {
-         return this;
-      }
-
-      public dzs b() {
-         return new dzs(this.c, this.d, this.a.toArray(new dzr[0]), this.b.toArray(new eaz[0]));
-      }
+   @Override
+   public int b(gv $$0) {
+      return this.f.a($$0.a());
    }
 
-   public static class b implements JsonDeserializer<dzs>, JsonSerializer<dzs> {
-      public dzs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = aor.m($$0, "loot table");
-         dzr[] $$4 = aor.a($$3, "pools", new dzr[0], $$2, dzr[].class);
-         ebu $$5 = null;
-         if ($$3.has("type")) {
-            String $$6 = aor.i($$3, "type");
-            $$5 = ebv.a(new acq($$6));
-         }
+   public String b(long $$0) {
+      return this.c($$0).a();
+   }
 
-         acq $$8;
-         if ($$3.has("random_sequence")) {
-            String $$7 = aor.i($$3, "random_sequence");
-            $$8 = new acq($$7);
-         } else {
-            $$8 = null;
-         }
+   public dzp.b c(long $$0) {
+      return this.f.k($$0);
+   }
 
-         eaz[] $$10 = aor.a($$3, "functions", new eaz[0], $$2, eaz[].class);
-         return new dzs($$5 != null ? $$5 : ebv.m, $$8, $$4, $$10);
+   protected abstract void a(long var1);
+
+   protected abstract void a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, long var3);
+
+   public static class a {
+      private static final int a = 4;
+      private static final int b = 6;
+      private static final long c = 15L;
+      private static final long d = 1008L;
+      private static final long e = 1024L;
+      private static final long f = 2048L;
+
+      public static long a(int $$0, hb $$1) {
+         long $$2 = c(1008L, $$1);
+         return a($$2, $$0);
       }
 
-      public JsonElement a(dzs $$0, Type $$1, JsonSerializationContext $$2) {
-         JsonObject $$3 = new JsonObject();
-         if ($$0.d != dzs.b) {
-            acq $$4 = ebv.a($$0.d);
-            if ($$4 != null) {
-               $$3.addProperty("type", $$4.toString());
-            } else {
-               dzs.c.warn("Failed to find id for param set {}", $$0.d);
-            }
+      public static long a(int $$0) {
+         return a(1008L, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1) {
+         long $$2 = 1008L;
+         $$2 |= 2048L;
+         if ($$1) {
+            $$2 |= 1024L;
          }
 
-         if ($$0.e != null) {
-            $$3.addProperty("random_sequence", $$0.e.toString());
+         return a($$2, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1, hb $$2) {
+         long $$3 = c(1008L, $$2);
+         if ($$1) {
+            $$3 |= 1024L;
          }
 
-         if ($$0.f.length > 0) {
-            $$3.add("pools", $$2.serialize($$0.f));
+         return a($$3, $$0);
+      }
+
+      public static long b(int $$0, boolean $$1, hb $$2) {
+         long $$3 = 0L;
+         if ($$1) {
+            $$3 |= 1024L;
          }
 
-         if (!ArrayUtils.isEmpty($$0.g)) {
-            $$3.add("functions", $$2.serialize($$0.g));
+         $$3 = b($$3, $$2);
+         return a($$3, $$0);
+      }
+
+      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
+         long $$5 = a(0L, 15);
+         if ($$0) {
+            $$5 = b($$5, hb.a);
          }
 
-         return $$3;
+         if ($$1) {
+            $$5 = b($$5, hb.c);
+         }
+
+         if ($$2) {
+            $$5 = b($$5, hb.d);
+         }
+
+         if ($$3) {
+            $$5 = b($$5, hb.e);
+         }
+
+         if ($$4) {
+            $$5 = b($$5, hb.f);
+         }
+
+         return $$5;
+      }
+
+      public static int a(long $$0) {
+         return (int)($$0 & 15L);
+      }
+
+      public static boolean b(long $$0) {
+         return ($$0 & 1024L) != 0L;
+      }
+
+      public static boolean c(long $$0) {
+         return ($$0 & 2048L) != 0L;
+      }
+
+      public static boolean a(long $$0, hb $$1) {
+         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
+      }
+
+      private static long a(long $$0, int $$1) {
+         return $$0 & -16L | (long)$$1 & 15L;
+      }
+
+      private static long b(long $$0, hb $$1) {
+         return $$0 | 1L << $$1.ordinal() + 4;
+      }
+
+      private static long c(long $$0, hb $$1) {
+         return $$0 & ~(1L << $$1.ordinal() + 4);
       }
    }
 }

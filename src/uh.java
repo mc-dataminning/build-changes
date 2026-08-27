@@ -1,15 +1,58 @@
-import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class uh extends IllegalArgumentException {
-   public uh(ug $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public class uh implements tf {
+   private final String b;
+   @Nullable
+   private Supplier<te> c;
+
+   public uh(String $$0) {
+      this.b = $$0;
    }
 
-   public uh(ug $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   private te b() {
+      if (this.c == null) {
+         this.c = ui.a.apply(this.b);
+      }
+
+      return this.c.get();
    }
 
-   public uh(ug $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   @Override
+   public <T> Optional<T> a(ti.a<T> $$0) {
+      return this.b().a($$0);
+   }
+
+   @Override
+   public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
+      return this.b().a($$0, $$1);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof uh $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.b + "}";
+   }
+
+   public String a() {
+      return this.b;
    }
 }

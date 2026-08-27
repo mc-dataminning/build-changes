@@ -1,73 +1,51 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import org.slf4j.Logger;
 
 public class aev {
-   public static final int a = 100;
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final boolean c;
 
-   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("targets", ec.d())
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("item", fu.a($$1)).executes($$0x -> a((ds)$$0x.getSource(), fu.a($$0x, "item"), ec.f($$0x, "targets"), 1)))
-                        .then(
-                           dt.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ds)$$0x.getSource(), fu.a($$0x, "item"), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
+   public aev(Path $$0) {
+      this.b = $$0;
+      this.c = aa.aS || this.b();
    }
 
-   private static int a(ds $$0, fv $$1, Collection<aig> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().l();
-      int $$5 = $$4 * 100;
-      cfz $$6 = $$1.a($$3, false);
-      if ($$3 > $$5) {
-         $$0.b(sw.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
-         return 0;
-      } else {
-         for (aig $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               cfz $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fN().e($$10);
-               if ($$11 && $$10.b()) {
-                  $$10.f(1);
-                  bvh $$13 = $$7.a($$10, false);
-                  if ($$13 != null) {
-                     $$13.w();
-                  }
-
-                  $$7.dI().a(null, $$7.dn(), $$7.dp(), $$7.dt(), amh.ma, ami.h, 0.2F, (($$7.ec().i() - $$7.ec().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bR.d();
-               } else {
-                  bvh $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.p();
-                     $$12.b($$7.ct());
-                  }
-               }
-            }
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
          }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> sw.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> sw.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
-         }
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
+      }
+   }
 
-         return $$2.size();
+   public boolean a() {
+      return this.c;
+   }
+
+   private void c() {
+      if (!aa.aS) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
+         }
       }
    }
 }

@@ -1,224 +1,315 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class eti extends euq {
-   public static final double a = 7.0;
-   private static final sw c = sw.c("chat_screen.usage");
-   private static final int k = 210;
-   private String l = "";
-   private int m = -1;
-   protected epr b;
-   private String n;
-   epl o;
-
-   public eti(String $$0) {
-      super(sw.c("chat_screen.title"));
-      this.n = $$0;
-   }
-
-   @Override
-   protected void b() {
-      this.m = this.f.l.d().c().size();
-      this.b = new epr(this.f.i, 4, this.h - 12, this.g - 4, 12, sw.c("chat.editBox")) {
-         @Override
-         protected tj aE_() {
-            return super.aE_().b(eti.this.o.c());
-         }
-      };
-      this.b.m(256);
-      this.b.b(false);
-      this.b.a(this.n);
-      this.b.b(this::b);
-      this.b.d(false);
-      this.e(this.b);
-      this.o = new epl(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
-      this.o.b();
-      this.c(this.b);
-   }
-
-   @Override
-   public void a(enn $$0, int $$1, int $$2) {
-      String $$3 = this.b.b();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.o.b();
-   }
-
-   @Override
-   public void ax_() {
-      this.f.l.d().d();
-   }
-
-   @Override
-   public void f() {
-      this.b.a();
-   }
-
-   private void b(String $$0) {
-      String $$1 = this.b.b();
-      this.o.a(!$$1.equals(this.n));
-      this.o.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.o.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.f.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         if (this.b(this.b.b(), true)) {
-            this.f.a(null);
-         }
-
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.f.l.d().a(this.f.l.d().i() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.f.l.d().a(-this.f.l.d().i() + 1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2) {
-      $$2 = apa.a($$2, -1.0, 1.0);
-      if (this.o.a($$2)) {
-         return true;
-      } else {
-         if (!q()) {
-            $$2 *= 7.0;
-         }
-
-         this.f.l.d().a((int)$$2);
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            epj $$3 = this.f.l.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            ts $$4 = this.a($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.n = this.b.b();
-               return true;
-            }
-         }
-
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
-      }
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.m + $$0;
-      int $$2 = this.f.l.d().c().size();
-      $$1 = apa.a($$1, 0, $$2);
-      if ($$1 != this.m) {
-         if ($$1 == $$2) {
-            this.m = $$2;
-            this.b.a(this.l);
-         } else {
-            if (this.m == $$2) {
-               this.l = this.b.b();
-            }
-
-            this.b.a(this.f.l.d().c().get($$1));
-            this.o.a(false);
-            this.m = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      this.o.a($$0, $$1, $$2);
-      eni $$4 = this.f.l.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.f() != null) {
-         $$0.b(this.i, this.i.c($$4.f(), 210), $$1, $$2);
-      } else {
-         ts $$5 = this.a((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.i, $$5, $$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public boolean az_() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(esp $$0) {
-      $$0.a(eso.a, this.m());
-      $$0.a(eso.d, c);
-      String $$1 = this.b.b();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(eso.a, sw.a("chat_screen.message", $$1));
-      }
-   }
-
+public class eti {
+   private static final aep b = new aep("icon/ping_unknown");
+   private static final aep c = new aep("icon/ping_1");
+   private static final aep d = new aep("icon/ping_2");
+   private static final aep e = new aep("icon/ping_3");
+   private static final aep f = new aep("icon/ping_4");
+   private static final aep g = new aep("icon/ping_5");
+   private static final aep h = new aep("hud/heart/container_blinking");
+   private static final aep i = new aep("hud/heart/container");
+   private static final aep j = new aep("hud/heart/full_blinking");
+   private static final aep k = new aep("hud/heart/half_blinking");
+   private static final aep l = new aep("hud/heart/absorbing_full_blinking");
+   private static final aep m = new aep("hud/heart/full");
+   private static final aep n = new aep("hud/heart/absorbing_half_blinking");
+   private static final aep o = new aep("hud/heart/half");
+   private static final Comparator<fil> p = Comparator.<fil>comparingInt($$0 -> $$0.e() == cph.d ? 1 : 0)
+      .thenComparing($$0 -> x.a($$0.h(), eic::b, ""))
+      .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
+   public static final int a = 20;
+   private final eqn q;
+   private final erw r;
    @Nullable
-   private ts a(double $$0, double $$1) {
-      return this.f.l.d().b($$0, $$1);
+   private te s;
+   @Nullable
+   private te t;
+   private boolean u;
+   private final Map<UUID, eti.a> v = new Object2ObjectOpenHashMap();
+
+   public eti(eqn $$0, erw $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   public boolean b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if ($$0.isEmpty()) {
-         return true;
-      } else {
-         if ($$1) {
-            this.f.l.d().a($$0);
-         }
+   public te a(fil $$0) {
+      return $$0.i() != null ? this.a($$0, $$0.i().e()) : this.a($$0, eic.a($$0.h(), te.b($$0.a().getName())));
+   }
 
-         if ($$0.startsWith("/")) {
-            this.f.t.cl.c($$0.substring(1));
-         } else {
-            this.f.t.cl.b($$0);
-         }
+   private te a(fil $$0, tr $$1) {
+      return $$0.e() == cph.d ? $$1.a(n.u) : $$1;
+   }
 
-         return true;
+   public void a(boolean $$0) {
+      if (this.u != $$0) {
+         this.v.clear();
+         this.u = $$0;
+         if ($$0) {
+            te $$1 = tg.a(this.b(), te.b(", "), this::a);
+            this.q.aU().c(te.a("multiplayer.player.list.narration", $$1));
+         }
       }
    }
 
-   public String a(String $$0) {
-      return aps.e(StringUtils.normalizeSpace($$0.trim()));
+   private List<fil> b() {
+      return this.q.t.cl.m().stream().sorted(p).limit(80L).toList();
+   }
+
+   public void a(erx $$0, int $$1, eie $$2, @Nullable eib $$3) {
+      List<fil> $$4 = this.b();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (fil $$7 : $$4) {
+         int $$8 = this.q.h.a(this.a($$7));
+         $$5 = Math.max($$5, $$8);
+         if ($$3 != null && $$3.f() != eih.a.b) {
+            $$8 = this.q.h.b(" " + $$2.c($$7.a().getName(), $$3).b());
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      if (!this.v.isEmpty()) {
+         Set<UUID> $$9 = $$4.stream().map($$0x -> $$0x.a().getId()).collect(Collectors.toSet());
+         this.v.keySet().removeIf($$1x -> !$$9.contains($$1x));
+      }
+
+      int $$10 = $$4.size();
+      int $$11 = $$10;
+
+      int $$12;
+      for ($$12 = 1; $$11 > 20; $$11 = ($$10 + $$12 - 1) / $$12) {
+         $$12++;
+      }
+
+      boolean $$13 = this.q.Q() || this.q.I().l().j();
+      int $$14;
+      if ($$3 != null) {
+         if ($$3.f() == eih.a.b) {
+            $$14 = 90;
+         } else {
+            $$14 = $$6;
+         }
+      } else {
+         $$14 = 0;
+      }
+
+      int $$17 = Math.min($$12 * (($$13 ? 9 : 0) + $$5 + $$14 + 13), $$1 - 50) / $$12;
+      int $$18 = $$1 / 2 - ($$17 * $$12 + ($$12 - 1) * 5) / 2;
+      int $$19 = 10;
+      int $$20 = $$17 * $$12 + ($$12 - 1) * 5;
+      List<ara> $$21 = null;
+      if (this.t != null) {
+         $$21 = this.q.h.c(this.t, $$1 - 50);
+
+         for (ara $$22 : $$21) {
+            $$20 = Math.max($$20, this.q.h.a($$22));
+         }
+      }
+
+      List<ara> $$23 = null;
+      if (this.s != null) {
+         $$23 = this.q.h.c(this.s, $$1 - 50);
+
+         for (ara $$24 : $$23) {
+            $$20 = Math.max($$20, this.q.h.a($$24));
+         }
+      }
+
+      if ($$21 != null) {
+         $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$21.size() * 9, Integer.MIN_VALUE);
+
+         for (ara $$25 : $$21) {
+            int $$26 = this.q.h.a($$25);
+            $$0.b(this.q.h, $$25, $$1 / 2 - $$26 / 2, $$19, -1);
+            $$19 += 9;
+         }
+
+         $$19++;
+      }
+
+      $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$11 * 9, Integer.MIN_VALUE);
+      int $$27 = this.q.m.a(553648127);
+
+      for (int $$28 = 0; $$28 < $$10; $$28++) {
+         int $$29 = $$28 / $$11;
+         int $$30 = $$28 % $$11;
+         int $$31 = $$18 + $$29 * $$17 + $$29 * 5;
+         int $$32 = $$19 + $$30 * 9;
+         $$0.a($$31, $$32, $$31 + $$17, $$32 + 8, $$27);
+         RenderSystem.enableBlend();
+         if ($$28 < $$4.size()) {
+            fil $$33 = $$4.get($$28);
+            GameProfile $$34 = $$33.a();
+            if ($$13) {
+               cbl $$35 = this.q.s.b($$34.getId());
+               boolean $$36 = $$35 != null && ftk.e($$35);
+               boolean $$37 = $$35 != null && $$35.a(cbm.g);
+               eth.a($$0, $$33.g().a(), $$31, $$32, 8, $$37, $$36);
+               $$31 += 9;
+            }
+
+            $$0.b(this.q.h, this.a($$33), $$31, $$32, $$33.e() == cph.d ? -1862270977 : -1);
+            if ($$3 != null && $$33.e() != cph.d) {
+               int $$38 = $$31 + $$5 + 1;
+               int $$39 = $$38 + $$14;
+               if ($$39 - $$38 > 5) {
+                  this.a($$3, $$32, $$34.getName(), $$38, $$39, $$34.getId(), $$0);
+               }
+            }
+
+            this.a($$0, $$17, $$31 - ($$13 ? 9 : 0), $$32, $$33);
+         }
+      }
+
+      if ($$23 != null) {
+         $$19 += $$11 * 9 + 1;
+         $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$23.size() * 9, Integer.MIN_VALUE);
+
+         for (ara $$40 : $$23) {
+            int $$41 = this.q.h.a($$40);
+            $$0.b(this.q.h, $$40, $$1 / 2 - $$41 / 2, $$19, -1);
+            $$19 += 9;
+         }
+      }
+   }
+
+   protected void a(erx $$0, int $$1, int $$2, int $$3, fil $$4) {
+      aep $$5;
+      if ($$4.f() < 0) {
+         $$5 = b;
+      } else if ($$4.f() < 150) {
+         $$5 = g;
+      } else if ($$4.f() < 300) {
+         $$5 = f;
+      } else if ($$4.f() < 600) {
+         $$5 = e;
+      } else if ($$4.f() < 1000) {
+         $$5 = d;
+      } else {
+         $$5 = c;
+      }
+
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a($$5, $$2 + $$1 - 11, $$3, 10, 8);
+      $$0.c().b();
+   }
+
+   private void a(eib $$0, int $$1, String $$2, int $$3, int $$4, UUID $$5, erx $$6) {
+      int $$7 = $$0.a().c($$2, $$0).b();
+      if ($$0.f() == eih.a.b) {
+         this.a($$1, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         String $$8 = "" + n.o + $$7;
+         $$6.b(this.q.h, $$8, $$4 - this.q.h.b($$8), $$1, 16777215);
+      }
+   }
+
+   private void a(int $$0, int $$1, int $$2, UUID $$3, erx $$4, int $$5) {
+      eti.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new eti.a($$5));
+      $$6.a($$5, (long)this.r.e());
+      int $$7 = aro.e(Math.max($$5, $$6.a()), 2);
+      int $$8 = Math.max($$5, Math.max($$6.a(), 20)) / 2;
+      boolean $$9 = $$6.a((long)this.r.e());
+      if ($$7 > 0) {
+         int $$10 = aro.d(Math.min((float)($$2 - $$1 - 4) / (float)$$8, 9.0F));
+         if ($$10 <= 3) {
+            float $$11 = aro.a((float)$$5 / 20.0F, 0.0F, 1.0F);
+            int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
+            String $$13 = (float)$$5 / 2.0F + "";
+            if ($$2 - this.q.h.b($$13 + "hp") >= $$1) {
+               $$13 = $$13 + "hp";
+            }
+
+            $$4.b(this.q.h, $$13, ($$2 + $$1 - this.q.h.b($$13)) / 2, $$0, $$12);
+         } else {
+            aep $$14 = $$9 ? h : i;
+
+            for (int $$15 = $$7; $$15 < $$8; $$15++) {
+               $$4.a($$14, $$1 + $$15 * $$10, $$0, 9, 9);
+            }
+
+            for (int $$16 = 0; $$16 < $$7; $$16++) {
+               $$4.a($$14, $$1 + $$16 * $$10, $$0, 9, 9);
+               if ($$9) {
+                  if ($$16 * 2 + 1 < $$6.a()) {
+                     $$4.a(j, $$1 + $$16 * $$10, $$0, 9, 9);
+                  }
+
+                  if ($$16 * 2 + 1 == $$6.a()) {
+                     $$4.a(k, $$1 + $$16 * $$10, $$0, 9, 9);
+                  }
+               }
+
+               if ($$16 * 2 + 1 < $$5) {
+                  $$4.a($$16 >= 10 ? l : m, $$1 + $$16 * $$10, $$0, 9, 9);
+               }
+
+               if ($$16 * 2 + 1 == $$5) {
+                  $$4.a($$16 >= 10 ? n : o, $$1 + $$16 * $$10, $$0, 9, 9);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(@Nullable te $$0) {
+      this.s = $$0;
+   }
+
+   public void b(@Nullable te $$0) {
+      this.t = $$0;
+   }
+
+   public void a() {
+      this.t = null;
+      this.s = null;
+   }
+
+   static class a {
+      private static final long a = 20L;
+      private static final long b = 20L;
+      private static final long c = 10L;
+      private int d;
+      private int e;
+      private long f;
+      private long g;
+
+      public a(int $$0) {
+         this.e = $$0;
+         this.d = $$0;
+      }
+
+      public void a(int $$0, long $$1) {
+         if ($$0 != this.d) {
+            long $$2 = $$0 < this.d ? 20L : 10L;
+            this.g = $$1 + $$2;
+            this.d = $$0;
+            this.f = $$1;
+         }
+
+         if ($$1 - this.f > 20L) {
+            this.e = $$0;
+         }
+      }
+
+      public int a() {
+         return this.e;
+      }
+
+      public boolean a(long $$0) {
+         return this.g > $$0 && (this.g - $$0) % 6L >= 3L;
+      }
    }
 }

@@ -1,12 +1,18 @@
-public class ang {
-   public static final anl<brc> a = a("acquirable_job_site");
-   public static final anl<brc> b = a("village");
-   public static final anl<brc> c = a("bee_home");
+import java.util.concurrent.CompletableFuture;
 
-   private ang() {
+public interface ang {
+   CompletableFuture<?> a();
+
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   private static anl<brc> a(String $$0) {
-      return anl.a(jc.S, new acq($$0));
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
    }
 }

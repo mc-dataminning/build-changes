@@ -1,49 +1,45 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public abstract class flw extends flj {
+   protected fyg E;
 
-public class flw {
-   private static final Map<czp<?>, flv<?>> a = Maps.newHashMap();
-
-   private static <T extends czn> void a(czp<? extends T> $$0, flv<T> $$1) {
-      a.put($$0, $$1);
+   protected flw(fie $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static Map<czp<?>, flu<?>> a(flv.a $$0) {
-      Builder<czp<?>, flu<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + jb.l.b((czp<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   protected flw(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   static {
-      a(czp.h, fmi::new);
-      a(czp.i, fme::new);
-      a(czp.j, fmk::new);
-      a(czp.k, fmg::new);
-      a(czp.b, fma::new);
-      a(czp.d, fma::new);
-      a(czp.c, fma::new);
-      a(czp.m, fmd::new);
-      a(czp.D, fmf::new);
-      a(czp.n, fmn::new);
-      a(czp.v, fmm::new);
-      a(czp.o, flq::new);
-      a(czp.p, fmj::new);
-      a(czp.t, flp::new);
-      a(czp.u, fml::new);
-      a(czp.x, fmh::new);
-      a(czp.y, flr::new);
-      a(czp.z, fmb::new);
-      a(czp.E, fls::new);
-      a(czp.G, flz::new);
-      a(czp.N, fly::new);
-      a(czp.O, fmc::new);
+   protected void a(fyg $$0) {
+      this.E = $$0;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(flr $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(flr $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
+      }
    }
 }

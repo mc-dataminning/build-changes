@@ -1,29 +1,47 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public abstract class fac<E extends bfj> extends fbo<E> {
-   private final float a;
-   private final float b;
+public class fac extends eyv {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private fpu.a l;
 
-   public fac(float $$0, float $$1) {
-      this($$0, $$1, fkf::d);
-   }
-
-   public fac(float $$0, float $$1, Function<acq, fkf> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+   public fac(dds $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(eij $$0, ein $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected void aE_() {
+      super.aE_();
+      this.l = fpu.a(this.f.aO(), this.a);
+   }
+
+   @Override
+   protected void b(erx $$0, dey $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof daf;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
+   }
+
+   @Override
+   protected void a(erx $$0, dey $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof daf;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gak $$3 = fnu.a(this.a);
+         ell $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, fxx.d);
+      }
+   }
+
+   @Override
+   protected Vector3f l() {
+      return k;
    }
 }

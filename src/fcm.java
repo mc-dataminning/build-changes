@@ -1,42 +1,173 @@
-public class fcm<T extends bfj> extends fbo<T> {
-   private final fee a;
-   private final fee b;
-   private final fee f;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fcm(fee $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+class fcm {
+   private static final int a = 44;
+   private final List<fcm.c> b;
+
+   fcm(List<fcm.c> $$0) {
+      this.b = $$0;
    }
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fej.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), feg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fej.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), feg.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", fej.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), feg.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", fej.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), feg.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", fej.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), feg.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", fej.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), feg.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fej.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), feg.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fej.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), feg.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", fej.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), feg.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", fej.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), feg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", fej.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), feg.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", fej.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), feg.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fej.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), feg.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return fek.a($$0, 32, 32);
+   public void a() {
+      this.b.forEach(fcm.c::a);
    }
 
-   @Override
-   public fee a() {
-      return this.a;
+   public static fcm.a a(int $$0) {
+      return new fcm.a($$0);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * apa.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * apa.a($$3 * 0.2F);
+   public static class a {
+      final int a;
+      private final List<fcm.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<fcm.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
+      }
+
+      void a() {
+         this.e++;
+      }
+
+      public fcm.d a(te $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         fcm.d $$3 = new fcm.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public fcm.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fcm.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fcm a(Consumer<evm> $$0) {
+         evj $$1 = new evj().b(this.d);
+         $$1.a(evp.a(this.a - 44), 0, 0);
+         $$1.a(evp.a(44), 0, 1);
+         List<fcm.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (fcm.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         fcm $$4 = new fcm($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public fcm.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new fcm.b($$0, $$1));
+         return this;
+      }
+   }
+
+   static record b(int a, boolean b) {
+   }
+
+   static record c(esp<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.i = this.c.getAsBoolean();
+         }
+      }
+
+      public esp<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final te a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private te d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(te $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public fcm.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fcm.d a(te $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      fcm.c a(fcm.a $$0, evj $$1, int $$2) {
+         $$0.a();
+         etn $$3 = new etn(this.a, eqn.N().h).e();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<fcm.b> $$4 = $$0.f;
+         esp.a<Boolean> $$5 = esp.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && !$$4.isPresent();
+         if ($$6) {
+            etr $$7 = etr.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> td.a(this.a, $$0x.b(), this.d));
+         } else {
+            $$5.a($$0x -> td.a(this.a, $$0x.b()));
+         }
+
+         esp<Boolean> $$8 = $$5.a(0, 0, this.f, 20, te.h(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.i = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               te $$4x = this.d.e().a(n.h);
+               erv $$5x = eqn.N().h;
+               etc $$6x = new etc($$4x, $$5x);
+               $$6x.i($$0.a - $$0.c - this.f);
+               $$6x.j($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.h() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new fcm.c($$8, this.b, this.e);
+      }
    }
 }

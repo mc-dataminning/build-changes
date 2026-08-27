@@ -1,20 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-class diz implements dir {
-   public static final Codec<diz> a = RecordCodecBuilder.create($$0 -> $$0.group(dir.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, diz::new));
-   private final dir e;
+public class diz<T extends dip> implements diy<T> {
+   private final dir<T> a;
+   private final diu<T> b;
 
-   public diz(dir $$0) {
-      this.e = $$0;
+   public diz(dir<T> $$0, diu<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a(cng $$0, gu $$1) {
-      return !this.e.test($$0, $$1);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public dis<?> a() {
-      return dis.k;
+   public Iterable<T> a() {
+      return this.a.a();
+   }
+
+   @Override
+   public <U extends T> void a(diw<T, U> $$0, aqe<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(eha $$0, Consumer<T> $$1) {
+      this.b.b($$0, aqe.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(diw<T, U> $$0, eha $$1, aqe<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

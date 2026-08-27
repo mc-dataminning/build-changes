@@ -1,65 +1,66 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class aga {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.setblock.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> te.a("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("clear.failed.multiple", $$0));
 
    public static void a(CommandDispatcher<ds> $$0, dm $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), Collections.singleton(((ds)$$0x.getSource()).h()), $$0xx -> true, -1)))
             .then(
-               dt.a("pos", fi.a())
+               ((RequiredArgumentBuilder)dt.a("targets", ed.d()).executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), $$0xx -> true, -1)))
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("block", ff.a($$1))
-                                 .executes($$0x -> a((ds)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aga.b.a, null)))
-                              .then(dt.a("destroy").executes($$0x -> a((ds)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aga.b.b, null))))
-                           .then(
-                              dt.a("keep")
-                                 .executes($$0x -> a((ds)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aga.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
-                           ))
-                        .then(dt.a("replace").executes($$0x -> a((ds)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aga.b.a, null)))
+                     ((RequiredArgumentBuilder)dt.a("item", fy.a($$1)).executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), fy.a($$0x, "item"), -1)))
+                        .then(
+                           dt.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), fy.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ds $$0, gu $$1, fd $$2, aga.b $$3, @Nullable Predicate<dcf> $$4) throws CommandSyntaxException {
-      aif $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dcf($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == aga.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            czn $$7 = $$5.c_($$1);
-            bdo.a_($$7);
-            $$6 = true;
-         }
+   private static int a(ds $$0, Collection<akj> $$1, Predicate<ciw> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> sw.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+      for (akj $$5 : $$1) {
+         $$4 += $$5.fQ().a($$2, $$3, $$5.bP.q());
+         $$5.bQ.d();
+         $$5.bP.a($$5.fQ());
       }
-   }
 
-   public interface a {
-      @Nullable
-      fd filter(drs var1, gu var2, fd var3, aif var4);
-   }
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ab());
+         } else {
+            throw b.create($$1.size());
+         }
+      } else {
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> te.a("commands.clear.test.single", $$6, $$1.iterator().next().H_()), true);
+            } else {
+               $$0.a(() -> te.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> te.a("commands.clear.success.single", $$6, $$1.iterator().next().H_()), true);
+         } else {
+            $$0.a(() -> te.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
 
-   public static enum b {
-      a,
-      b;
+         return $$4;
+      }
    }
 }

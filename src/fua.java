@@ -1,11 +1,16 @@
-import javax.annotation.Nullable;
+public class fua extends ftp<bva, ffq<bva>> {
+   private static final aep a = new aep("textures/entity/bear/polarbear.png");
 
-public interface fua extends fud {
-   @Deprecated
-   @Override
-   default float call(cfz $$0, @Nullable few $$1, @Nullable bfz $$2, int $$3) {
-      return apa.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public fua(fsj.a $$0) {
+      super($$0, new ffq<>($$0.a(fhi.aU)), 0.9F);
    }
 
-   float unclampedCall(cfz var1, @Nullable few var2, @Nullable bfz var3, int var4);
+   public aep a(bva $$0) {
+      return a;
+   }
+
+   protected void a(bva $$0, elh $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
+   }
 }

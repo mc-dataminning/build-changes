@@ -1,92 +1,64 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public class yw implements uo<ur> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final bey e;
-   private final byte f;
-   private final int g;
-   private final byte h;
-   @Nullable
-   private final bfa.a i;
+public class yw implements uw<wo> {
+   private final yw.a a;
+   private final List<aep> b;
+   private final List<aep> c;
+   private final aoy d;
 
-   public yw(int $$0, bfa $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
-      }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
+   public yw(yw.a $$0, Collection<aep> $$1, Collection<aep> $$2, aoy $$3) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = ImmutableList.copyOf($$2);
+      this.d = $$3;
    }
 
-   public yw(sf $$0) {
-      this.d = $$0.m();
-      this.e = $$0.a(jb.e);
-      this.f = $$0.readByte();
-      this.g = $$0.m();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(rc.a, bfa.a.a));
+   public yw(sh $$0) {
+      this.a = $$0.b(yw.a.class);
+      this.d = aoy.a($$0);
+      this.b = $$0.a(sh::s);
+      if (this.a == yw.a.a) {
+         this.c = $$0.a(sh::s);
+      } else {
+         this.c = ImmutableList.of();
+      }
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.d);
-      $$0.a(jb.e, this.e);
-      $$0.writeByte(this.f);
-      $$0.d(this.g);
-      $$0.writeByte(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(rc.a, bfa.a.a, $$1));
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      this.d.b($$0);
+      $$0.a(this.b, sh::a);
+      if (this.a == yw.a.a) {
+         $$0.a(this.c, sh::a);
+      }
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public List<aep> a() {
+      return this.b;
+   }
+
+   public List<aep> d() {
+      return this.c;
+   }
+
+   public aoy e() {
       return this.d;
    }
 
-   public bey c() {
-      return this.e;
+   public yw.a f() {
+      return this.a;
    }
 
-   public byte d() {
-      return this.f;
-   }
-
-   public int e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return (this.h & 2) == 2;
-   }
-
-   public boolean g() {
-      return (this.h & 1) == 1;
-   }
-
-   public boolean h() {
-      return (this.h & 4) == 4;
-   }
-
-   @Nullable
-   public bfa.a i() {
-      return this.i;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

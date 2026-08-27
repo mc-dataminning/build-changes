@@ -1,18 +1,30 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.stream.Collectors;
 
-public class aya extends axd {
-   public aya(int $$0, Schema $$1) {
+public class aya extends DataFix {
+   public aya(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:panda", () -> axe.a($$0));
-      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(avw.m.in($$0)), axe.a($$0)));
-      return $$1;
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(aym.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
+
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
+      );
    }
 }

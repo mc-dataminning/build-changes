@@ -1,29 +1,27 @@
-public class zk implements uo<zb> {
-   private final zk.a a;
+import javax.annotation.Nullable;
 
-   public zk(zk.a $$0) {
-      this.a = $$0;
+public class zk implements uw<wo> {
+   private final int a;
+
+   public zk(big $$0) {
+      this.a = $$0.ah();
    }
 
-   public zk(sf $$0) {
-      this.a = $$0.b(zk.a.class);
+   public zk(sh $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public zk.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Nullable
+   public big a(cpk $$0) {
+      return $$0.a(this.a);
    }
 }

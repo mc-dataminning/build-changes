@@ -1,62 +1,73 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import java.util.Collection;
 
-public class agw implements agx {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.data.block.invalid"));
-   public static final Function<String, agy.c> a = $$0 -> new agy.c() {
-         @Override
-         public agx a(CommandContext<ds> $$0x) throws CommandSyntaxException {
-            gu $$1 = fi.a($$0, $$0 + "Pos");
-            czn $$2 = ((ds)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw agw.b.create();
-            } else {
-               return new agw($$2, $$1);
+public class agw {
+   public static final int a = 100;
+
+   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("give").requires($$0x -> $$0x.c(2)))
+            .then(
+               dt.a("targets", ed.d())
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("item", fv.a($$1)).executes($$0x -> a((ds)$$0x.getSource(), fv.a($$0x, "item"), ed.f($$0x, "targets"), 1)))
+                        .then(
+                           dt.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((ds)$$0x.getSource(), fv.a($$0x, "item"), ed.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ds $$0, fw $$1, Collection<akj> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = $$1.a().l();
+      int $$5 = $$4 * 100;
+      ciw $$6 = $$1.a($$3, false);
+      if ($$3 > $$5) {
+         $$0.b(te.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
+         return 0;
+      } else {
+         for (akj $$7 : $$2) {
+            int $$8 = $$3;
+
+            while ($$8 > 0) {
+               int $$9 = Math.min($$4, $$8);
+               $$8 -= $$9;
+               ciw $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.fQ().e($$10);
+               if ($$11 && $$10.b()) {
+                  $$10.f(1);
+                  bye $$13 = $$7.a($$10, false);
+                  if ($$13 != null) {
+                     $$13.w();
+                  }
+
+                  $$7.dK().a(null, $$7.dp(), $$7.dr(), $$7.dv(), aou.ma, aov.h, 0.2F, (($$7.ee().i() - $$7.ee().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.bQ.d();
+               } else {
+                  bye $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.p();
+                     $$12.b($$7.cv());
+                  }
+               }
             }
          }
 
-         @Override
-         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
-            return $$0.then(dt.a("block").then($$1.apply(dt.a($$0 + "Pos", fi.a()))));
+         if ($$2.size() == 1) {
+            $$0.a(() -> te.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().H_()), true);
+         } else {
+            $$0.a(() -> te.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
          }
-      };
-   private final czn c;
-   private final gu d;
 
-   public agw(czn $$0, gu $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(qr $$0) {
-      dcb $$1 = this.c.k().a_(this.d);
-      this.c.a($$0);
-      this.c.e();
-      this.c.k().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public qr a() {
-      return this.c.m();
-   }
-
-   @Override
-   public sw b() {
-      return sw.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public sw a(rk $$0) {
-      return sw.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), rd.c($$0));
-   }
-
-   @Override
-   public sw a(eh.g $$0, double $$1, int $$2) {
-      return sw.a("commands.data.block.get", $$0, this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+         return $$2.size();
+      }
    }
 }

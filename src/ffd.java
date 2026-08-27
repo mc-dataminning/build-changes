@@ -1,130 +1,90 @@
-import com.mojang.logging.LogUtils;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
-public class ffd {
-   private static final Logger k = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public sw c;
-   public sw d;
-   @Nullable
-   public abt.b e;
-   public long f;
-   public int g = aa.b().e();
-   public sw h = sw.b(aa.b().c());
-   public boolean i;
-   public List<sw> j = Collections.emptyList();
-   private ffd.a l = ffd.a.c;
-   @Nullable
-   private byte[] m;
-   private boolean n;
-   private boolean o;
+public class ffd<T extends bwg> extends fek<T> {
+   private final fhj a;
+   private final fhj b;
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
+   private final fhj j;
+   private final fhj k;
 
-   public ffd(String $$0, String $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public ffd(fhj $$0) {
+      this.a = $$0.b("head");
+      this.b = $$0.b("body");
+      this.j = $$0.b("right_chest");
+      this.k = $$0.b("left_chest");
+      this.f = $$0.b("right_hind_leg");
+      this.g = $$0.b("left_hind_leg");
+      this.h = $$0.b("right_front_leg");
+      this.i = $$0.b("left_front_leg");
    }
 
-   public qr a() {
-      qr $$0 = new qr();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == ffd.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == ffd.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+   public static fhp a(fhn $$0) {
+      fhr $$1 = new fhr();
+      fhs $$2 = $$1.a();
+      $$2.a(
+         "head",
+         fho.c()
+            .a(0, 0)
+            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
+            .a(0, 14)
+            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
+            .a(17, 0)
+            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
+            .a(17, 0)
+            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
+         fhl.a(0.0F, 7.0F, -6.0F)
+      );
+      $$2.a("body", fho.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), fhl.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("right_chest", fho.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), fhl.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$2.a("left_chest", fho.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), fhl.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      int $$3 = 4;
+      int $$4 = 14;
+      fho $$5 = fho.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$5, fhl.a(-3.5F, 10.0F, 6.0F));
+      $$2.a("left_hind_leg", $$5, fhl.a(3.5F, 10.0F, 6.0F));
+      $$2.a("right_front_leg", $$5, fhl.a(-3.5F, 10.0F, -5.0F));
+      $$2.a("left_front_leg", $$5, fhl.a(3.5F, 10.0F, -5.0F));
+      return fhp.a($$1, 128, 64);
    }
 
-   public ffd.a b() {
-      return this.l;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.e = $$5 * (float) (Math.PI / 180.0);
+      this.a.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = aro.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = aro.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = aro.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = aro.b($$1 * 0.6662F) * 1.4F * $$2;
+      boolean $$6 = !$$0.i_() && $$0.q();
+      this.j.k = $$6;
+      this.k.k = $$6;
    }
 
-   public void a(ffd.a $$0) {
-      this.l = $$0;
-   }
-
-   public static ffd a(qr $$0) {
-      ffd $$1 = new ffd($$0.l("name"), $$0.l("ip"), false);
-      if ($$0.b("icon", 8)) {
-         try {
-            $$1.a(Base64.getDecoder().decode($$0.l("icon")));
-         } catch (IllegalArgumentException var3) {
-            k.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(ffd.a.a);
-         } else {
-            $$1.a(ffd.a.b);
-         }
+   @Override
+   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         float $$8 = 2.0F;
+         $$0.a();
+         float $$9 = 0.7F;
+         $$0.b(0.71428573F, 0.64935064F, 0.7936508F);
+         $$0.a(0.0F, 1.3125F, 0.22F);
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+         $$0.a();
+         float $$10 = 1.1F;
+         $$0.b(0.625F, 0.45454544F, 0.45454544F);
+         $$0.a(0.0F, 2.0625F, 0.0F);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+         $$0.a();
+         $$0.b(0.45454544F, 0.41322312F, 0.45454544F);
+         $$0.a(0.0F, 2.0625F, 0.0F);
+         ImmutableList.of(this.f, this.g, this.h, this.i, this.j, this.k).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
       } else {
-         $$1.a(ffd.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public void a(boolean $$0) {
-      this.o = $$0;
-   }
-
-   public boolean e() {
-      return this.o;
-   }
-
-   public void a(ffd $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(ffd $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-      this.o = $$0.o;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final sw d;
-
-      private a(String $$0) {
-         this.d = sw.c("addServer.resourcePack." + $$0);
-      }
-
-      public sw a() {
-         return this.d;
+         ImmutableList.of(this.a, this.b, this.f, this.g, this.h, this.i, this.j, this.k).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
    }
 }

@@ -1,7 +1,17 @@
-import io.netty.handler.codec.EncoderException;
+public interface sn {
+   ux a();
 
-public class sn extends EncoderException {
-   public sn(Throwable $$0) {
-      super($$0);
+   sg b();
+
+   void a(te var1);
+
+   boolean c();
+
+   default boolean a(uw<?> $$0) {
+      return this.c();
+   }
+
+   default boolean d() {
+      return true;
    }
 }

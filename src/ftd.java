@@ -1,25 +1,43 @@
-public class ftd<T extends byo> extends ftg<T, fck<T>> {
-   private final fcf a;
+public class ftd extends ftc<byx> {
+   private static final aep a = new aep("textures/entity/illager/illusioner.png");
 
-   public ftd(fqt<T, fck<T>> $$0, fea $$1) {
-      super($$0);
-      this.a = new fcf($$1.a(fed.aA));
-   }
-
-   public void a(eij $$0, fjx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(eij $$0, fjx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qr $$9 = $$8 ? $$3.ge() : $$3.gf();
-      bfn.a($$9.l("id")).filter($$0x -> $$0x == bfn.at).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bU() ? -1.3F : -1.5F, 0.0F);
-         bsb.b $$11 = bsb.b.a($$9.h("Variant"));
-         ein $$12 = $$1.getBuffer(this.a.a(fqk.a($$11)));
-         this.a.a($$0, $$12, $$2, fum.d, $$4, $$5, $$6, $$7, $$3.ag);
-         $$0.b();
+   public ftd(fsj.a $$0) {
+      super($$0, new fey<>($$0.a(fhi.ao)), 0.5F);
+      this.a(new fwk<byx, fey<byx>>(this, $$0.d()) {
+         public void a(elh $$0, fng $$1, int $$2, byx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gj() || $$3.fS()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
       });
+      this.f.c().k = true;
+   }
+
+   public aep a(byx $$0) {
+      return a;
+   }
+
+   public void a(byx $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
+      if ($$0.cd()) {
+         ehf[] $$6 = $$0.E($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)aro.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)aro.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)aro.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   protected boolean b(byx $$0) {
+      return true;
    }
 }

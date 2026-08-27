@@ -1,110 +1,102 @@
+import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class brk extends bri {
+public class brk extends brs {
+   private static final btj a = btj.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   private brk b;
-   private int c = 1;
+   private Class<?>[] j;
 
-   public brk(bfn<? extends brk> $$0, cmm $$1) {
-      super($$0, $$1);
+   public brk(bjf $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(bps.a.d));
    }
 
    @Override
-   protected void x() {
-      super.x();
-      this.bO.a(5, new bmr(this));
-   }
+   public boolean a() {
+      int $$0 = this.e.eg();
+      biw $$1 = this.e.ef();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ag() == bik.bt && this.e.dK().X().b(cpg.K)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
 
-   @Override
-   public int fE() {
-      return this.ga();
-   }
-
-   public int ga() {
-      return super.fE();
-   }
-
-   @Override
-   protected boolean fY() {
-      return !this.gb();
-   }
-
-   public boolean gb() {
-      return this.b != null && this.b.bs();
-   }
-
-   public brk a(brk $$0) {
-      this.b = $$0;
-      $$0.gh();
-      return $$0;
-   }
-
-   public void gc() {
-      this.b.gi();
-      this.b = null;
-   }
-
-   private void gh() {
-      this.c++;
-   }
-
-   private void gi() {
-      this.c--;
-   }
-
-   public boolean gd() {
-      return this.ge() && this.c < this.ga();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.ge() && this.dI().z.a(200) == 1) {
-         List<? extends bri> $$0 = this.dI().a((Class<? extends bri>)this.getClass(), this.cE().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
+            return this.a($$1, a);
          }
-      }
-   }
-
-   public boolean ge() {
-      return this.c > 1;
-   }
-
-   public boolean gf() {
-      return this.f(this.b) <= 121.0;
-   }
-
-   public void gg() {
-      if (this.gb()) {
-         this.J().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends brk> $$0) {
-      $$0.limit((long)(this.ga() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public bgt a(cnb $$0, bdv $$1, bgd $$2, @Nullable bgt $$3, @Nullable qr $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 == null) {
-         $$3 = new brk.a(this);
       } else {
-         this.a(((brk.a)$$3).a);
+         return false;
       }
-
-      return $$3;
    }
 
-   public static class a implements bgt {
-      public final brk a;
+   public brk a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
+   }
 
-      public a(brk $$0) {
-         this.a = $$0;
+   @Override
+   public void c() {
+      this.e.h(this.e.ef());
+      this.g = this.e.j();
+      this.d = this.e.eg();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
+
+      super.c();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      eha $$1 = eha.a(this.e.di()).c($$0, 10.0, $$0);
+      List<? extends biy> $$2 = this.e.dK().a((Class<? extends biy>)this.e.getClass(), $$1, bij.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         biy $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (biy)var5.next();
+            if (this.e != $$3 && $$3.j() == null && (!(this.e instanceof bjs) || ((bjs)this.e).I_() == ((bjs)$$3).I_()) && !$$3.s(this.e.ef())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.ef());
+      }
+   }
+
+   protected void a(biy $$0, biw $$1) {
+      $$0.h($$1);
    }
 }

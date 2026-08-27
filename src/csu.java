@@ -1,65 +1,90 @@
-import java.util.function.ToIntFunction;
+public class csu extends csk {
+   public static final dfy a = dfo.aw;
+   public static final int b = 15;
+   protected static final int c = 1;
+   protected static final ehy d = csk.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final ehy e = csk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-public class csu extends cul implements cpp, cwo {
-   private static final dcs b = dcr.C;
-   private final cum c = new cum(this);
-
-   public csu(dca.d $$0) {
+   protected csu(dex.d $$0) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dcb> b(int $$0) {
-      return $$1 -> cul.n($$1) ? $$0 : 0;
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      gv $$4 = $$2.c();
+      if ($$1.t($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(a);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               dey $$7 = $$0.a(a, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(a, Integer.valueOf($$6 + 1)), 4);
+            }
+         }
+      }
+   }
+
+   @Override
+   public ehy c(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return d;
+   }
+
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return e;
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dcb $$0, cih $$1) {
-      return !$$1.n().a(cgc.fA) || super.a($$0, $$1);
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      for (hb $$3 : hb.c.a) {
+         dey $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(apo.b)) {
+            return false;
+         }
+      }
+
+      dey $$5 = $$1.a_($$2.d());
+      return ($$5.a(csl.dQ) || $$5.a(apj.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return ha.a().anyMatch($$3x -> this.c.a($$2, $$0, $$1, $$3x.g()));
+   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
+      $$3.a($$1.ag().j(), 1.0F);
    }
 
    @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return true;
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      this.c.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(b) ? dxf.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean c(dcb $$0, cls $$1, gu $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public cum b() {
-      return this.c;
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

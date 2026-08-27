@@ -1,28 +1,28 @@
-public class frx extends fqe<buv, fdu<buv>> {
-   private static final acq a = new acq("textures/entity/wither/wither_invulnerable.png");
-   private static final acq i = new acq("textures/entity/wither/wither.png");
+public class frx extends ftp<byl, fee<byl>> {
+   private static final aep a = new aep("textures/entity/creeper/creeper.png");
 
-   public frx(foy.a $$0) {
-      super($$0, new fdu<>($$0.a(fed.bO)), 1.0F);
-      this.a(new ftu(this, $$0.f()));
+   public frx(fsj.a $$0) {
+      super($$0, new fee<>($$0.a(fhi.B)), 0.5F);
+      this.a(new fvu(this, $$0.f()));
    }
 
-   protected int a(buv $$0, gu $$1) {
-      return 15;
+   protected void a(byl $$0, elh $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + aro.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = aro.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   public acq a(buv $$0) {
-      int $$1 = $$0.w();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   protected float a(byl $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : aro.a($$2, 0.5F, 1.0F);
    }
 
-   protected void a(buv $$0, eij $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.w();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   public aep a(byl $$0) {
+      return a;
    }
 }

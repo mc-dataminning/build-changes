@@ -1,25 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class ayk extends axd {
-   public ayk(int $$0, Schema $$1) {
-      super($$0, $$1);
-   }
-
-   private static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0)), "RecipesUsed", DSL.compoundList(avw.y.in($$0), DSL.constType(DSL.intType())))
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:furnace");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      return $$1;
-   }
+public class ayk {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

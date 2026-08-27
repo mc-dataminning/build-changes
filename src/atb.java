@@ -1,19 +1,30 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 
-public class atb extends auz {
+public class atb extends DataFix {
    public atb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", avw.q, "minecraft:shulker");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return !$$0.get("Color").map(Dynamic::asNumber).result().isPresent() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
-   }
+   public TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(aym.z.typeName(), azu.a()));
+      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(aym.t), $$1 -> {
+         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
+         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
+            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+            if ($$3.get("Damage").asInt(0) == 0) {
+               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
+            }
+         }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+         return $$1;
+      });
    }
 }

@@ -1,37 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drc extends drl {
-   public static final Codec<drc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drc::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class drc<P extends drb> {
+   public static final drc<dqw> a = a("blob_foliage_placer", dqw.a);
+   public static final drc<drh> b = a("spruce_foliage_placer", drh.a);
+   public static final drc<drf> c = a("pine_foliage_placer", drf.a);
+   public static final drc<dqv> d = a("acacia_foliage_placer", dqv.a);
+   public static final drc<dqx> e = a("bush_foliage_placer", dqx.c);
+   public static final drc<dra> f = a("fancy_foliage_placer", dra.c);
+   public static final drc<drd> g = a("jungle_foliage_placer", drd.a);
+   public static final drc<dre> h = a("mega_pine_foliage_placer", dre.a);
+   public static final drc<dqz> i = a("dark_oak_foliage_placer", dqz.a);
+   public static final drc<drg> j = a("random_spread_foliage_placer", drg.a);
+   public static final drc<dqy> k = a("cherry_foliage_placer", dqy.a);
+   private final Codec<P> l;
 
-   private drc(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private static <P extends drb> drc<P> a(String $$0, Codec<P> $$1) {
+      return hs.a(jc.X, $$0, new drc<>($$1));
    }
 
-   public static drc a(int $$0, double $$1, double $$2) {
-      return new drc($$0, $$1, $$2);
+   private drc(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected int a(apf $$0, gu $$1) {
-      double $$2 = cnk.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
-   }
-
-   @Override
-   public dri<?> b() {
-      return dri.g;
+   public Codec<P> a() {
+      return this.l;
    }
 }

@@ -1,48 +1,55 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class emk extends emo {
-   private static final Logger c = LogUtils.getLogger();
-   private final ejq d;
-   private final ela e;
+public class emk extends end implements emx {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public emk(ejq $$0, ela $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public void run() {
-      this.b(sw.c("mco.configure.world.closing"));
-      eiz $$0 = eiz.a();
+   public void a(String $$0) {
+      this.a = $$0;
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.c()) {
-            return;
-         }
+   public UUID b() {
+      return this.b;
+   }
 
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.c();
-               this.d.e = ejq.b.a;
-               a(this.e);
-               break;
-            }
-         } catch (ekn var4) {
-            if (this.c()) {
-               return;
-            }
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
 
-            a((long)var4.e);
-         } catch (Exception var5) {
-            if (this.c()) {
-               return;
-            }
+   public boolean c() {
+      return this.c;
+   }
 
-            c.error("Failed to close server", var5);
-            this.a("Failed to close the server");
-         }
-      }
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

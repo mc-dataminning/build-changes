@@ -1,270 +1,557 @@
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class exv extends euq {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final sw c = sw.c("pack.dropInfo").a(n.h);
-   private static final sw k = sw.c("pack.folderInfo");
-   private static final int l = 20;
-   private static final acq m = new acq("textures/misc/unknown_pack.png");
-   private final exu n;
+public abstract class exv extends etu implements etj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Set<String> b = Sets.newHashSet(new String[]{"http", "https"});
+   private static final te c = te.c("narrator.screen.usage");
+   public static final aep d = new aep("textures/gui/options_background.png");
+   protected final te e;
+   private final List<etw> k = Lists.newArrayList();
+   private final List<evr> l = Lists.newArrayList();
    @Nullable
-   private exv.a o;
-   private long p;
-   private exw q;
-   private exw r;
-   private final Path s;
-   private epi t;
-   private final Map<String, acq> u = Maps.newHashMap();
+   protected eqn f;
+   private boolean m;
+   public int g;
+   public int h;
+   private final List<etj> n = Lists.newArrayList();
+   protected erv i;
+   @Nullable
+   private URI o;
+   private static final long p = TimeUnit.SECONDS.toMillis(2L);
+   private static final long q = p;
+   private static final long s = 750L;
+   private static final long t = 200L;
+   private static final long u = 200L;
+   private final evw v = new evw();
+   private long w = Long.MIN_VALUE;
+   private long x = Long.MAX_VALUE;
+   @Nullable
+   private evr y;
+   @Nullable
+   private exv.a z;
+   protected final Executor j = $$0x -> this.f.execute(() -> {
+         if (this.f.z == this) {
+            $$0x.run();
+         }
+      });
 
-   public exv(aki $$0, Consumer<aki> $$1, Path $$2, sw $$3) {
-      super($$3);
-      this.n = new exu(this::C, this::a, $$0, $$1);
-      this.s = $$2;
-      this.o = exv.a.a($$2);
+   protected exv(te $$0) {
+      this.e = $$0;
+   }
+
+   public te m() {
+      return this.e;
+   }
+
+   public te e() {
+      return this.m();
+   }
+
+   public final void c(erx $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$1, $$2, $$3);
+      if (this.z != null) {
+         $$0.a(this.i, this.z.a(), this.z.b(), $$1, $$2);
+         this.z = null;
+      }
    }
 
    @Override
-   public void aw_() {
-      this.n.c();
-      this.B();
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0, $$1, $$2, $$3);
+
+      for (etj $$4 : this.n) {
+         $$4.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256 && this.aA_()) {
+         this.au_();
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         evz $$3 = (evz)(switch ($$0) {
+            case 258 -> this.l();
+            default -> null;
+            case 262 -> this.a(ewb.d);
+            case 263 -> this.a(ewb.c);
+            case 264 -> this.a(ewb.b);
+            case 265 -> this.a(ewb.a);
+         });
+         if ($$3 != null) {
+            eru $$4 = super.a($$3);
+            if ($$4 == null && $$3 instanceof evz.c) {
+               this.B();
+               $$4 = super.a($$3);
+            }
+
+            if ($$4 != null) {
+               this.a($$4);
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private evz.c l() {
+      boolean $$0 = !q();
+      return new evz.c($$0);
+   }
+
+   private evz.a a(ewb $$0) {
+      return new evz.a($$0);
+   }
+
+   protected void c(etw $$0) {
+      eru $$1 = eru.a(this, $$0.a(new evz.b()));
+      if ($$1 != null) {
+         this.a($$1);
+      }
    }
 
    private void B() {
-      if (this.o != null) {
-         try {
-            this.o.close();
-            this.o = null;
-         } catch (Exception var2) {
-         }
+      eru $$0 = this.aC_();
+      if ($$0 != null) {
+         $$0.a(false);
       }
    }
 
-   @Override
-   protected void b() {
-      this.q = new exw(this.f, this, 200, this.h, sw.c("pack.available.title"));
-      this.q.f(this.g / 2 - 4 - 200);
-      this.e(this.q);
-      this.r = new exw(this.f, this, 200, this.h, sw.c("pack.selected.title"));
-      this.r.f(this.g / 2 + 4);
-      this.e(this.r);
-      this.d(epi.a(sw.c("pack.openFolder"), $$0 -> ac.i().a(this.s.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(eqp.a(k)).a());
-      this.t = this.d(epi.a(sv.d, $$0 -> this.aw_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
-      this.D();
+   @VisibleForTesting
+   protected void a(eru $$0) {
+      this.B();
+      $$0.a(true);
    }
 
-   @Override
-   public void f() {
-      if (this.o != null) {
-         try {
-            if (this.o.a()) {
-               this.p = 20L;
+   public boolean aA_() {
+      return true;
+   }
+
+   public void au_() {
+      this.f.a(null);
+   }
+
+   protected <T extends etw & etj & evr> T d(T $$0) {
+      this.n.add($$0);
+      return this.e($$0);
+   }
+
+   protected <T extends etj> T a(T $$0) {
+      this.n.add($$0);
+      return $$0;
+   }
+
+   protected <T extends etw & evr> T e(T $$0) {
+      this.k.add($$0);
+      this.l.add($$0);
+      return $$0;
+   }
+
+   protected void f(etw $$0) {
+      if ($$0 instanceof etj) {
+         this.n.remove((etj)$$0);
+      }
+
+      if ($$0 instanceof evr) {
+         this.l.remove((evr)$$0);
+      }
+
+      this.k.remove($$0);
+   }
+
+   protected void n() {
+      this.n.clear();
+      this.k.clear();
+      this.l.clear();
+   }
+
+   public static List<te> a(eqn $$0, ciw $$1) {
+      return $$1.a($$0.t, $$0.m.m ? ckn.a.b : ckn.a.a);
+   }
+
+   protected void a(String $$0, boolean $$1) {
+   }
+
+   public boolean a(@Nullable ua $$0) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         tc $$1 = $$0.h();
+         if (q()) {
+            if ($$0.j() != null) {
+               this.a($$0.j(), false);
             }
-         } catch (IOException var2) {
-            a.warn("Failed to poll for directory {} changes, stopping", this.s);
-            this.B();
-         }
-      }
+         } else if ($$1 != null) {
+            if ($$1.a() == tc.a.a) {
+               if (!this.f.m.H().c()) {
+                  return false;
+               }
 
-      if (this.p > 0L && --this.p == 0L) {
-         this.D();
-      }
-   }
-
-   private void C() {
-      this.a(this.r, this.n.b());
-      this.a(this.q, this.n.a());
-      this.t.r = !this.r.i().isEmpty();
-   }
-
-   private void a(exw $$0, Stream<exu.a> $$1) {
-      $$0.i().clear();
-      exw.a $$2 = $$0.f();
-      String $$3 = $$2 == null ? "" : $$2.b();
-      $$0.a(null);
-      $$1.forEach($$2x -> {
-         exw.a $$3x = new exw.a(this.f, $$0, $$2x);
-         $$0.i().add($$3x);
-         if ($$2x.c().equals($$3)) {
-            $$0.a($$3x);
-         }
-      });
-   }
-
-   public void a(exw $$0) {
-      exw $$1 = this.r == $$0 ? this.q : this.r;
-      this.a(eou.a($$1.g(), $$1, this));
-   }
-
-   public void l() {
-      this.r.a(null);
-      this.q.a(null);
-   }
-
-   private void D() {
-      this.n.d();
-      this.C();
-      this.p = 0L;
-      this.u.clear();
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      this.q.a($$0, $$1, $$2, $$3);
-      this.r.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, c, this.g / 2, 20, 16777215);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected static void a(enn $$0, List<Path> $$1, Path $$2) {
-      MutableBoolean $$3 = new MutableBoolean();
-      $$1.forEach($$2x -> {
-         try (Stream<Path> $$3x = Files.walk($$2x)) {
-            $$3x.forEach($$3xx -> {
                try {
-                  ac.b($$2x.getParent(), $$2, $$3xx);
-               } catch (IOException var5) {
-                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
-                  $$3.setTrue();
+                  URI $$2 = new URI($$1.b());
+                  String $$3 = $$2.getScheme();
+                  if ($$3 == null) {
+                     throw new URISyntaxException($$1.b(), "Missing protocol");
+                  }
+
+                  if (!b.contains($$3.toLowerCase(Locale.ROOT))) {
+                     throw new URISyntaxException($$1.b(), "Unsupported protocol: " + $$3.toLowerCase(Locale.ROOT));
+                  }
+
+                  if (this.f.m.I().c()) {
+                     this.o = $$2;
+                     this.f.a(new ewn(this::c, $$1.b(), false));
+                  } else {
+                     this.a($$2);
+                  }
+               } catch (URISyntaxException var5) {
+                  a.error("Can't open url for {}", $$1, var5);
                }
-            });
-         } catch (IOException var8) {
-            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
-            $$3.setTrue();
+            } else if ($$1.a() == tc.a.b) {
+               URI $$5 = new File($$1.b()).toURI();
+               this.a($$5);
+            } else if ($$1.a() == tc.a.d) {
+               this.a(aa.a($$1.b()), true);
+            } else if ($$1.a() == tc.a.c) {
+               String $$6 = aa.a($$1.b());
+               if ($$6.startsWith("/")) {
+                  if (!this.f.t.cl.d($$6.substring(1))) {
+                     a.error("Not allowed to run command with signed argument from click event: '{}'", $$6);
+                  }
+               } else {
+                  a.error("Failed to run command without '/' prefix from click event: '{}'", $$6);
+               }
+            } else if ($$1.a() == tc.a.f) {
+               this.f.o.a($$1.b());
+            } else {
+               a.error("Don't know how to handle {}", $$1);
+            }
+
+            return true;
          }
-      });
-      if ($$3.isTrue()) {
-         erf.c($$0, $$2.toString());
+
+         return false;
+      }
+   }
+
+   public final void b(eqn $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.i = $$0.h;
+      this.g = $$1;
+      this.h = $$2;
+      if (!this.m) {
+         this.aE_();
+      } else {
+         this.b();
+      }
+
+      this.m = true;
+      this.d(false);
+      this.a(p);
+   }
+
+   protected void o() {
+      this.n();
+      this.B();
+      this.aE_();
+   }
+
+   @Override
+   public List<? extends etw> i() {
+      return this.k;
+   }
+
+   protected void aE_() {
+   }
+
+   public void c() {
+   }
+
+   public void h() {
+   }
+
+   public void av_() {
+   }
+
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      if (this.f.s != null) {
+         this.a($$0);
+      } else {
+         this.b($$0);
+      }
+   }
+
+   public void a(erx $$0) {
+      $$0.b(0, 0, this.g, this.h, -1072689136, -804253680);
+   }
+
+   public void b(erx $$0) {
+      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
+      int $$1 = 32;
+      $$0.a(d, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public boolean j() {
+      return true;
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         this.a(this.o);
+      }
+
+      this.o = null;
+      this.f.a(this);
+   }
+
+   private void a(URI $$0) {
+      ac.i().a($$0);
+   }
+
+   public static boolean p() {
+      return eqn.a ? ekc.a(eqn.N().aM().i(), 343) || ekc.a(eqn.N().aM().i(), 347) : ekc.a(eqn.N().aM().i(), 341) || ekc.a(eqn.N().aM().i(), 345);
+   }
+
+   public static boolean q() {
+      return ekc.a(eqn.N().aM().i(), 340) || ekc.a(eqn.N().aM().i(), 344);
+   }
+
+   public static boolean r() {
+      return ekc.a(eqn.N().aM().i(), 342) || ekc.a(eqn.N().aM().i(), 346);
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 == 88 && p() && !q() && !r();
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 == 86 && p() && !q() && !r();
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 == 67 && p() && !q() && !r();
+   }
+
+   public static boolean g(int $$0) {
+      return $$0 == 65 && p() && !q() && !r();
+   }
+
+   protected void b() {
+      this.o();
+   }
+
+   public void a(eqn $$0, int $$1, int $$2) {
+      this.g = $$1;
+      this.h = $$2;
+      this.b();
+   }
+
+   public static void a(Runnable $$0, String $$1, String $$2) {
+      try {
+         $$0.run();
+      } catch (Throwable var6) {
+         o $$4 = o.a(var6, $$1);
+         p $$5 = $$4.a("Affected screen");
+         $$5.a("Screen name", () -> $$2);
+         throw new y($$4);
+      }
+   }
+
+   protected boolean a(String $$0, char $$1, int $$2) {
+      int $$3 = $$0.indexOf(58);
+      int $$4 = $$0.indexOf(47);
+      if ($$1 == ':') {
+         return ($$4 == -1 || $$2 <= $$4) && $$3 == -1;
+      } else {
+         return $$1 == '/' ? $$2 > $$3 : $$1 == '_' || $$1 == '-' || $$1 >= 'a' && $$1 <= 'z' || $$1 >= '0' && $$1 <= '9' || $$1 == '.';
       }
    }
 
    @Override
+   public boolean a_(double $$0, double $$1) {
+      return true;
+   }
+
    public void a(List<Path> $$0) {
-      String $$1 = $$0.stream().map(Path::getFileName).map(Path::toString).collect(Collectors.joining(", "));
-      this.f.a(new etk($$1x -> {
-         if ($$1x) {
-            a(this.f, $$0, this.s);
-            this.D();
-         }
-
-         this.f.a(this);
-      }, sw.c("pack.dropConfirm"), sw.b($$1)));
    }
 
-   private acq a(fuw $$0, akg $$1) {
-      try {
-         acq var9;
-         try (ajl $$2 = $$1.e()) {
-            akp<InputStream> $$3 = $$2.a("pack.png");
-            if ($$3 == null) {
-               return m;
-            }
-
-            String $$4 = $$1.f();
-            acq $$5 = new acq("minecraft", "pack/" + ac.a($$4, acq::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
-
-            try (InputStream $$6 = $$3.get()) {
-               ehk $$7 = ehk.a($$6);
-               $$0.a($$5, new fui($$7));
-               var9 = $$5;
-            }
-         }
-
-         return var9;
-      } catch (Exception var14) {
-         a.warn("Failed to load icon from pack {}", $$1.f(), var14);
-         return m;
+   private void a(long $$0, boolean $$1) {
+      this.x = ac.b() + $$0;
+      if ($$1) {
+         this.w = Long.MIN_VALUE;
       }
    }
 
-   private acq a(akg $$0) {
-      return this.u.computeIfAbsent($$0.f(), $$1 -> this.a(this.f.X(), $$0));
+   private void a(long $$0) {
+      this.w = ac.b() + $$0;
    }
 
-   static class a implements AutoCloseable {
-      private final WatchService a;
-      private final Path b;
+   public void v() {
+      this.a(750L, false);
+   }
 
-      public a(Path $$0) throws IOException {
-         this.b = $$0;
-         this.a = $$0.getFileSystem().newWatchService();
+   public void w() {
+      this.a(200L, true);
+   }
 
-         try {
-            this.b($$0);
+   public void x() {
+      this.a(200L, true);
+   }
 
-            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
-               for (Path $$2 : $$1) {
-                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$2);
-                  }
-               }
+   private boolean F() {
+      return this.f.aU().a();
+   }
+
+   public void y() {
+      if (this.F()) {
+         long $$0 = ac.b();
+         if ($$0 > this.x && $$0 > this.w) {
+            this.e(true);
+            this.x = Long.MAX_VALUE;
+         }
+      }
+   }
+
+   public void d(boolean $$0) {
+      if (this.F()) {
+         this.e($$0);
+      }
+   }
+
+   private void e(boolean $$0) {
+      this.v.a(this::a);
+      String $$1 = this.v.a(!$$0);
+      if (!$$1.isEmpty()) {
+         this.f.aU().a($$1);
+      }
+   }
+
+   protected boolean aD_() {
+      return true;
+   }
+
+   protected void a(evt $$0) {
+      $$0.a(evs.a, this.e());
+      if (this.aD_()) {
+         $$0.a(evs.d, c);
+      }
+
+      this.b($$0);
+   }
+
+   protected void b(evt $$0) {
+      List<evr> $$1 = this.l.stream().filter(evr::az_).collect(Collectors.toList());
+      Collections.sort($$1, Comparator.comparingInt(etq::ay_));
+      exv.b $$2 = a($$1, this.y);
+      if ($$2 != null) {
+         if ($$2.c.a()) {
+            this.y = $$2.a;
+         }
+
+         if ($$1.size() > 1) {
+            $$0.a(evs.b, te.a("narrator.position.screen", $$2.b + 1, $$1.size()));
+            if ($$2.c == evr.a.c) {
+               $$0.a(evs.d, te.c("narration.component_list.usage"));
             }
-         } catch (Exception var7) {
-            this.a.close();
-            throw var7;
          }
+
+         $$2.a.b($$0.a());
       }
+   }
 
-      @Nullable
-      public static exv.a a(Path $$0) {
-         try {
-            return new exv.a($$0);
-         } catch (IOException var2) {
-            exv.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
-            return null;
-         }
-      }
+   @Nullable
+   public static exv.b a(List<? extends evr> $$0, @Nullable evr $$1) {
+      exv.b $$2 = null;
+      exv.b $$3 = null;
+      int $$4 = 0;
 
-      private void b(Path $$0) throws IOException {
-         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean a() throws IOException {
-         boolean $$0 = false;
-
-         WatchKey $$1;
-         while (($$1 = this.a.poll()) != null) {
-            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
-               $$0 = true;
-               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path $$4 = this.b.resolve((Path)$$3.context());
-                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$4);
-                  }
-               }
+      for (int $$5 = $$0.size(); $$4 < $$5; $$4++) {
+         evr $$6 = $$0.get($$4);
+         evr.a $$7 = $$6.q();
+         if ($$7.a()) {
+            if ($$6 != $$1) {
+               return new exv.b($$6, $$4, $$7);
             }
 
-            $$1.reset();
+            $$3 = new exv.b($$6, $$4, $$7);
+         } else if ($$7.compareTo($$2 != null ? $$2.c : evr.a.a) > 0) {
+            $$2 = new exv.b($$6, $$4, $$7);
          }
-
-         return $$0;
       }
 
-      @Override
-      public void close() throws IOException {
-         this.a.close();
+      return $$2 != null ? $$2 : $$3;
+   }
+
+   public void z() {
+      this.a(q, false);
+   }
+
+   public void b(List<ara> $$0) {
+      this.a($$0, fan.a, true);
+   }
+
+   public void a(List<ara> $$0, fam $$1, boolean $$2) {
+      if (this.z == null || $$2) {
+         this.z = new exv.a($$0, $$1);
+      }
+   }
+
+   protected void d(te $$0) {
+      this.b(etr.a(this.f, $$0));
+   }
+
+   public void a(etr $$0, fam $$1, boolean $$2) {
+      this.a($$0.a(this.f), $$1, $$2);
+   }
+
+   protected static void a(esg... $$0) {
+      for (esg $$1 : $$0) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public ewd s() {
+      return new ewd(0, 0, this.g, this.h);
+   }
+
+   @Nullable
+   public aor A() {
+      return null;
+   }
+
+   static record a(List<ara> a, fam b) {
+   }
+
+   public static class b {
+      public final evr a;
+      public final int b;
+      public final evr.a c;
+
+      public b(evr $$0, int $$1, evr.a $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

@@ -1,4 +1,21 @@
-import javax.annotation.Nullable;
+public enum bei {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public record bei(ben a, float b, @Nullable bes c, float d) {
+   private final String j;
+
+   private bei(String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

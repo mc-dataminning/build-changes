@@ -1,50 +1,75 @@
-public class cuv extends cpn implements cpp {
-   protected cuv(dca.d $$0) {
+import com.google.common.base.Predicates;
+
+public class cuv extends csk {
+   public static final dfs a = cwd.aC;
+   public static final dfp b = dfo.h;
+   protected static final ehy c = csk.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final ehy d = csk.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final ehy e = ehv.a(c, d);
+   private static dfd f;
+
+   public cuv(dex.d $$0) {
       super($$0);
-   }
-
-   private static boolean b(dcb $$0, cmp $$1, gu $$2) {
-      gu $$3 = $$2.c();
-      dcb $$4 = $$1.a_($$3);
-      int $$5 = dwv.a($$1, $$0, $$2, $$4, $$3, ha.b, $$4.b($$1, $$3));
-      return $$5 < $$1.M();
+      this.k(this.C.b().a(a, hb.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, cpo.dW.n());
-      }
-   }
-
-   @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
+   public boolean g_(dey $$0) {
       return true;
    }
 
    @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      dcb $$4 = $$0.a_($$2);
-      gu $$5 = $$2.c();
-      ddy $$6 = $$0.k().g();
-      hr<dkb<?, ?>> $$7 = $$0.B_().d(jc.as);
-      if ($$4.a(cpo.ow)) {
-         this.a($$7, oo.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(cpo.on)) {
-         this.a($$7, oo.j, $$0, $$6, $$1, $$5);
-         this.a($$7, oo.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, oo.n, $$0, $$6, $$1, $$5);
-         }
-      }
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return $$0.c(b) ? e : c;
    }
 
-   private void a(hr<dkb<?, ?>> $$0, acp<dkb<?, ?>> $$1, aif $$2, ddy $$3, apf $$4, gu $$5) {
-      $$0.b($$1).ifPresent($$4x -> ((dkb)$$4x.a()).a($$2, $$3, $$4, $$5));
+   @Override
+   public dey a(cle $$0) {
+      return this.n().a(a, $$0.g().g()).a(b, Boolean.valueOf(false));
+   }
+
+   @Override
+   public boolean d_(dey $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dey $$0, cpk $$1, gv $$2) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b);
+   }
+
+   public static dfd a() {
+      if (f == null) {
+         f = dfe.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dfc.a(dfh.a))
+            .a('^', dfc.a(dfh.a(csl.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(hb.d))))
+            .a('>', dfc.a(dfh.a(csl.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(hb.e))))
+            .a('v', dfc.a(dfh.a(csl.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(hb.c))))
+            .a('<', dfc.a(dfh.a(csl.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(hb.f))))
+            .b();
+      }
+
+      return f;
+   }
+
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

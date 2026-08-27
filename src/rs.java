@@ -1,148 +1,77 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class rs implements rh {
-   private String a = "";
-   @Nullable
-   private rk b;
-   private final Deque<Consumer<rk>> c = new ArrayDeque<>();
+public class rs extends rt {
+   private int a;
+   private final Set<rn<?>> b;
+   private final Deque<rv> c = new ArrayDeque<>();
 
-   @Nullable
-   public rk d() {
-      return this.b;
-   }
+   public rs(ru... $$0) {
+      this.a = $$0.length;
+      Builder<rn<?>> $$1 = ImmutableSet.builder();
+      rv $$2 = rv.a();
 
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(rk $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public rh.b a() {
-      this.a(qt.b);
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(String $$0) {
-      this.a(ri.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(byte $$0) {
-      this.a(qp.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(short $$0) {
-      this.a(rf.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(int $$0) {
-      this.a(qw.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(long $$0) {
-      this.a(qz.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(float $$0) {
-      this.a(qu.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(double $$0) {
-      this.a(qs.a($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(byte[] $$0) {
-      this.a(new qo($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(int[] $$0) {
-      this.a(new qv($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(long[] $$0) {
-      this.a(new qy($$0));
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.b a(rm<?> $$0, int $$1) {
-      return rh.b.a;
-   }
-
-   @Override
-   public rh.a b(rm<?> $$0, int $$1) {
-      this.c($$0);
-      return rh.a.a;
-   }
-
-   @Override
-   public rh.a a(rm<?> $$0) {
-      return rh.a.a;
-   }
-
-   @Override
-   public rh.a a(rm<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return rh.a.a;
-   }
-
-   private void c(rm<?> $$0) {
-      if ($$0 == qx.a) {
-         qx $$1 = new qx();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == qr.b) {
-         qr $$2 = new qr();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      for (ru $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
+
+      this.c.push($$2);
+      $$1.add(qs.b);
+      this.b = $$1.build();
    }
 
    @Override
-   public rh.b b() {
-      this.c.removeLast();
-      return rh.b.a;
+   public ri.b b(rn<?> $$0) {
+      return $$0 != qs.b ? ri.b.c : super.b($$0);
    }
 
    @Override
-   public rh.b b(rm<?> $$0) {
-      if ($$0 == qx.a) {
-         qx $$1 = new qx();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == qr.b) {
-         qr $$2 = new qr();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   public ri.a a(rn<?> $$0) {
+      rv $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return ri.a.d;
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         return !this.b.contains($$0) ? ri.a.b : super.a($$0);
+      }
+   }
+
+   @Override
+   public ri.a a(rn<?> $$0, String $$1) {
+      rv $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == qs.b) {
+            rv $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return ri.a.b;
+      }
+   }
+
+   @Override
+   public ri.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      return rh.b.a;
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

@@ -1,52 +1,33 @@
-public class cwz extends cpn {
-   protected static final efb a = cpn.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int b = 20;
+public class cwz extends cwd {
+   private static final te a = te.c("container.loom");
 
-   public cwz(dca.d $$0) {
+   protected cwz(dex.d $$0) {
       super($$0);
    }
 
    @Override
-   public efb c(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return a;
-   }
-
-   @Override
-   public efb b_(dcb $$0, cls $$1, gu $$2) {
-      return eey.b();
-   }
-
-   @Override
-   public efb b(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return eey.b();
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      cps.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$1 == ha.b && $$2.a(cpo.G)) {
-         $$3.a($$4, this, 20);
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if ($$1.B) {
+         return bgo.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(ape.ax);
+         return bgo.b;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   public bgr b(dey $$0, cpk $$1, gv $$2) {
+      return new bgw(($$2x, $$3, $$4) -> new cff($$2x, $$3, cen.a($$1, $$2)), a);
    }
 
    @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
+   public dey a(cle $$0) {
+      return this.n().a(aC, $$0.g().g());
    }
 
    @Override
-   public float b(dcb $$0, cls $$1, gu $$2) {
-      return 0.2F;
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(aC);
    }
 }

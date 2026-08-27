@@ -1,49 +1,46 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import java.util.Set;
 
-public class edu<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final edu<MinecraftServer> a = new edu<MinecraftServer>().a(new edr.a()).a(new eds.a());
-   private final Map<acq, edt.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, edt.a<C, ?>> d = Maps.newHashMap();
+public class edu extends edv {
+   final ecg a;
 
-   public edu<C> a(edt.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   edu(efh[] $$0, ecg $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   private <T extends edt<C>> edt.a<C, T> a(Class<?> $$0) {
-      return (edt.a<C, T>)this.d.get($$0);
+   @Override
+   public edx b() {
+      return edy.p;
    }
 
-   public <T extends edt<C>> qr a(T $$0) {
-      edt.a<C, T> $$1 = this.a($$0.getClass());
-      qr $$2 = new qr();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public Set<eeq<?>> a() {
+      return this.a.a();
    }
 
-   @Nullable
-   public edt<C> a(qr $$0) {
-      acq $$1 = acq.a($$0.l("Type"));
-      edt.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
+   @Override
+   public ciw a(ciw $$0, ech $$1) {
+      int $$2 = this.a.a($$1, $$0.L());
+      $$0.f($$2);
+      return $$0;
+   }
+
+   public static edv.a<?> a(ecg $$0) {
+      return a($$1 -> new edu($$1, $$0));
+   }
+
+   public static class a extends edv.c<edu> {
+      public void a(JsonObject $$0, edu $$1, JsonSerializationContext $$2) {
+         super.a($$0, $$1, $$2);
+         $$0.add("limit", $$2.serialize($$1.a));
+      }
+
+      public edu a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
+         ecg $$3 = arf.a($$0, "limit", $$1, ecg.class);
+         return new edu($$2, $$3);
       }
    }
 }

@@ -1,53 +1,44 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+public class aqq {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-public class aqq extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
-
-   public aqq(Schema $$0) {
-      super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
+   private aqq() {
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(avw.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
-   }
+   public static ehf a(ehf $$0, aqq.a $$1) {
+      int $$2 = aro.a($$0.a());
+      int $$3 = aro.a($$0.b());
+      int $$4 = aro.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      ehf $$9 = ehf.b;
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = axd.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = axd.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = aro.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
+
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = aro.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
+
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = aro.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
             }
          }
       }
 
-      return $$0;
+      return $$9.a(1.0 / $$8);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(hx.a($$2)), $$0.createString("max_section"), $$0.createInt(hx.a($$2 + $$1))))
-      );
+   @FunctionalInterface
+   public interface a {
+      ehf fetch(int var1, int var2, int var3);
    }
 }

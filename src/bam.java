@@ -1,32 +1,29 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bam {
-   char d = '\u001e';
-
-   List<bap> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+public class bam extends azu {
+   public bam(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   default int f() {
-      return this.d() - this.b();
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> azv.a($$0));
    }
 
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:turtle");
+      a($$0, $$1, "minecraft:cod_mob");
+      a($$0, $$1, "minecraft:tropical_fish");
+      a($$0, $$1, "minecraft:salmon_mob");
+      a($$0, $$1, "minecraft:puffer_fish");
+      a($$0, $$1, "minecraft:phantom");
+      a($$0, $$1, "minecraft:dolphin");
+      a($$0, $$1, "minecraft:drowned");
+      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", aym.u.in($$0)));
+      return $$1;
    }
 }

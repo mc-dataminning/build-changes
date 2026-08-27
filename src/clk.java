@@ -1,197 +1,90 @@
-public class clk {
-   private final cfz a;
-   private final cfz b;
-   private final cfz c;
-   private int d;
-   private final int e;
-   private boolean f = true;
-   private int g;
-   private int h;
-   private float i;
-   private int j = 1;
-
-   public clk(qr $$0) {
-      this.a = cfz.a($$0.p("buy"));
-      this.b = cfz.a($$0.p("buyB"));
-      this.c = cfz.a($$0.p("sell"));
-      this.d = $$0.h("uses");
-      if ($$0.b("maxUses", 99)) {
-         this.e = $$0.h("maxUses");
-      } else {
-         this.e = 4;
-      }
-
-      if ($$0.b("rewardExp", 1)) {
-         this.f = $$0.q("rewardExp");
-      }
-
-      if ($$0.b("xp", 3)) {
-         this.j = $$0.h("xp");
-      }
-
-      if ($$0.b("priceMultiplier", 5)) {
-         this.i = $$0.j("priceMultiplier");
-      }
-
-      this.g = $$0.h("specialPrice");
-      this.h = $$0.h("demand");
+public class clk extends clr {
+   public clk(aep $$0, clp $$1) {
+      super($$0, $$1);
    }
 
-   public clk(cfz $$0, cfz $$1, int $$2, int $$3, float $$4) {
-      this($$0, cfz.b, $$1, $$2, $$3, $$4);
-   }
+   public boolean a(ceq $$0, cpk $$1) {
+      chk $$2 = null;
+      ciw $$3 = null;
+      ciw $$4 = null;
 
-   public clk(cfz $$0, cfz $$1, cfz $$2, int $$3, int $$4, float $$5) {
-      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
-   }
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         ciw $$6 = $$0.a($$5);
+         if (!$$6.b()) {
+            cir $$7 = $$6.d();
+            if (!($$7 instanceof cgm)) {
+               return false;
+            }
 
-   public clk(cfz $$0, cfz $$1, cfz $$2, int $$3, int $$4, int $$5, float $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
-   }
+            cgm $$8 = (cgm)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
 
-   public clk(cfz $$0, cfz $$1, cfz $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.j = $$5;
-      this.i = $$6;
-      this.h = $$7;
-   }
+            int $$9 = dca.c($$6);
+            if ($$9 > 6) {
+               return false;
+            }
 
-   public cfz a() {
-      return this.a;
-   }
+            if ($$9 > 0) {
+               if ($$3 != null) {
+                  return false;
+               }
 
-   public cfz b() {
-      if (this.a.b()) {
-         return cfz.b;
-      } else {
-         int $$0 = this.a.L();
-         int $$1 = Math.max(0, apa.d((float)($$0 * this.h) * this.i));
-         return this.a.c(apa.a($$0 + $$1 + this.g, 1, this.a.d().l()));
-      }
-   }
+               $$3 = $$6;
+            } else {
+               if ($$4 != null) {
+                  return false;
+               }
 
-   public cfz c() {
-      return this.b;
-   }
-
-   public cfz d() {
-      return this.c;
-   }
-
-   public void e() {
-      this.h = this.h + this.d - (this.e - this.d);
-   }
-
-   public cfz f() {
-      return this.c.p();
-   }
-
-   public int g() {
-      return this.d;
-   }
-
-   public void h() {
-      this.d = 0;
-   }
-
-   public int i() {
-      return this.e;
-   }
-
-   public void j() {
-      this.d++;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.g += $$0;
-   }
-
-   public void l() {
-      this.g = 0;
-   }
-
-   public int m() {
-      return this.g;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public float n() {
-      return this.i;
-   }
-
-   public int o() {
-      return this.j;
-   }
-
-   public boolean p() {
-      return this.d >= this.e;
-   }
-
-   public void q() {
-      this.d = this.e;
-   }
-
-   public boolean r() {
-      return this.d > 0;
-   }
-
-   public boolean s() {
-      return this.f;
-   }
-
-   public qr t() {
-      qr $$0 = new qr();
-      $$0.a("buy", this.a.b(new qr()));
-      $$0.a("sell", this.c.b(new qr()));
-      $$0.a("buyB", this.b.b(new qr()));
-      $$0.a("uses", this.d);
-      $$0.a("maxUses", this.e);
-      $$0.a("rewardExp", this.f);
-      $$0.a("xp", this.j);
-      $$0.a("priceMultiplier", this.i);
-      $$0.a("specialPrice", this.g);
-      $$0.a("demand", this.h);
-      return $$0;
-   }
-
-   public boolean a(cfz $$0, cfz $$1) {
-      return this.c($$0, this.b()) && $$0.L() >= this.b().L() && this.c($$1, this.b) && $$1.L() >= this.b.L();
-   }
-
-   private boolean c(cfz $$0, cfz $$1) {
-      if ($$1.b() && $$0.b()) {
-         return true;
-      } else {
-         cfz $$2 = $$0.p();
-         if ($$2.d().o()) {
-            $$2.b($$2.k());
+               $$4 = $$6;
+            }
          }
-
-         return cfz.b($$2, $$1) && (!$$1.u() || $$2.u() && rd.a($$1.v(), $$2.v(), false));
       }
+
+      return $$3 != null && $$4 != null;
    }
 
-   public boolean b(cfz $$0, cfz $$1) {
-      if (!this.a($$0, $$1)) {
-         return false;
-      } else {
-         $$0.h(this.b().L());
-         if (!this.c().b()) {
-            $$1.h(this.c().L());
+   public ciw a(ceq $$0, ht $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         ciw $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            int $$4 = dca.c($$3);
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
          }
-
-         return true;
       }
+
+      return ciw.b;
+   }
+
+   public ho<ciw> a(ceq $$0) {
+      ho<ciw> $$1 = ho.a($$0.b(), ciw.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ciw $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            if ($$3.d().t()) {
+               $$1.set($$2, new ciw($$3.d().s()));
+            } else if ($$3.u() && dca.c($$3) > 0) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cmb<?> aj_() {
+      return cmb.k;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 }

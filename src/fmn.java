@@ -1,46 +1,36 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public class fmn<T extends dbc> implements flu<T> {
-   public static final acq a = new acq("textures/environment/end_sky.png");
-   public static final acq b = new acq("textures/entity/end_portal.png");
+public class fmn implements bel {
+   private final fne a;
+   private final Set<bej> b = new ObjectOpenHashSet();
+   private final ber c = new ber();
 
-   public fmn(flv.a $$0) {
+   public fmn(LongSupplier $$0, fne $$1) {
+      this.a = $$1;
+      this.b.add(bes.a($$0));
+      this.a();
    }
 
-   public void a(T $$0, float $$1, eij $$2, fjx $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, ein $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ha.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ha.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ha.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ha.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ha.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ha.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, ein $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ha $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   private void a() {
+      this.b.addAll(bes.a());
+      this.b.add(bej.a("totalChunks", bei.f, this.a, fne::i));
+      this.b.add(bej.a("renderedChunks", bei.f, this.a, fne::k));
+      this.b.add(bej.a("lastViewDistance", bei.f, this.a, fne::j));
+      fqe $$0 = this.a.h();
+      this.b.add(bej.a("toUpload", bei.g, $$0, fqe::c));
+      this.b.add(bej.a("freeBufferCount", bei.g, $$0, fqe::d));
+      this.b.add(bej.a("toBatchCount", bei.g, $$0, fqe::b));
+      if (ela.a().isPresent()) {
+         this.b.add(bej.a("gpuUtilization", bei.i, eqn.N(), eqn::u));
       }
    }
 
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected fkf d() {
-      return fkf.v();
+   @Override
+   public Set<bej> a(Supplier<bdc> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

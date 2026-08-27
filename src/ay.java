@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class ay extends cv<ay.a> {
-   static final acq a = new acq("construct_beacon");
+   static final aep a = new aep("construct_beacon");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -13,7 +13,7 @@ public class ay extends cv<ay.a> {
       return new ay.a($$1, $$3);
    }
 
-   public void a(aig $$0, int $$1) {
+   public void a(akj $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 

@@ -1,40 +1,59 @@
-public class fcn<T extends bfj> extends fbo<T> {
-   private final fee a;
-   private final fee b;
-   private final fee f;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-   public fcn(fee $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public record fcn(dlf a, hs<dii> b, dlc c, hm<aey> d, aez e, cqd f) {
+   public fcn(dld $$0, hm<aey> $$1, aez $$2, cqd $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fej.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), feg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fej.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), feg.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fej.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), feg.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fej.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), feg.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fej.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), feg.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fej.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), feg.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fej.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), feg.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fej.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), feg.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fej.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), feg.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fej.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), feg.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fej.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), feg.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fek.a($$0, 32, 32);
+   public fcn(dlf $$0, dlc $$1, hm<aey> $$2, aez $$3, cqd $$4) {
+      this($$0, $$2.a(aey.c).d(jd.aI), $$1, $$2.a(aey.c), $$3, $$4);
    }
 
-   @Override
-   public fee a() {
+   public fcn a(dlf $$0, dlc $$1) {
+      return new fcn($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fcn a(fcn.b $$0) {
+      return new fcn($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fcn a(fcn.a $$0) {
+      return new fcn(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public ht.b a() {
+      return this.d.a();
+   }
+
+   public dlf b() {
       return this.a;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * apa.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * apa.a($$3 * 0.2F);
+   public hs<dii> c() {
+      return this.b;
+   }
+
+   public dlc d() {
+      return this.c;
+   }
+
+   public hm<aey> e() {
+      return this.d;
+   }
+
+   public aez f() {
+      return this.e;
+   }
+
+   public cqd g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<ht.b, dlc, dlc> {
+   }
+
+   public interface b extends UnaryOperator<dlf> {
    }
 }

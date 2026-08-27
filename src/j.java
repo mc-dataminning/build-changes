@@ -1,4 +1,3 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Objects;
@@ -15,14 +14,14 @@ public final class j {
    private final Matrix4f c;
    public static final Codec<j> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aoi.d.fieldOf("translation").forGetter($$0x -> $$0x.e),
-               aoi.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
-               aoi.d.fieldOf("scale").forGetter($$0x -> $$0x.g),
-               aoi.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
+               aqw.d.fieldOf("translation").forGetter($$0x -> $$0x.e),
+               aqw.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
+               aqw.d.fieldOf("scale").forGetter($$0x -> $$0x.g),
+               aqw.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, j::new)
    );
-   public static final Codec<j> b = Codec.either(a, aoi.h.xmap(j::new, j::c)).xmap($$0 -> (j)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::left);
+   public static final Codec<j> b = aqw.c(a, aqw.h.xmap(j::new, j::c));
    private boolean d;
    @Nullable
    private Vector3f e;

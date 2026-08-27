@@ -1,124 +1,110 @@
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class buh extends bud {
-   private static final bqm b = bqm.a().d();
+public abstract class buh extends buf {
    @Nullable
-   private dxt c;
+   private buh b;
+   private int c = 1;
+
+   public buh(bik<? extends buh> $$0, cpk $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void w() {
+      super.w();
+      this.bO.a(5, new bpo(this));
+   }
+
+   @Override
+   public int Z() {
+      return this.gb();
+   }
+
+   public int gb() {
+      return super.Z();
+   }
+
+   @Override
+   protected boolean fZ() {
+      return !this.gc();
+   }
+
+   public boolean gc() {
+      return this.b != null && this.b.bv();
+   }
+
+   public buh a(buh $$0) {
+      this.b = $$0;
+      $$0.gi();
+      return $$0;
+   }
+
+   public void gd() {
+      this.b.gj();
+      this.b = null;
+   }
+
+   private void gi() {
+      this.c++;
+   }
+
+   private void gj() {
+      this.c--;
+   }
+
+   public boolean ge() {
+      return this.gf() && this.c < this.gb();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.gf() && this.dK().z.a(200) == 1) {
+         List<? extends buf> $$0 = this.dK().a((Class<? extends buf>)this.getClass(), this.cG().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
+      }
+   }
+
+   public boolean gf() {
+      return this.c > 1;
+   }
+
+   public boolean gg() {
+      return this.f(this.b) <= 121.0;
+   }
+
+   public void gh() {
+      if (this.gc()) {
+         this.H().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends buh> $$0) {
+      $$0.limit((long)(this.gb() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
    @Nullable
-   private eei d;
-   private boolean e;
-
-   public buh(bub $$0) {
-      super($$0);
-   }
-
    @Override
-   public bur<buh> i() {
-      return bur.a;
-   }
-
-   @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dn(), this.a.dp(), this.a.dt());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.O || this.a.P) {
-         this.j();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Nullable
-   @Override
-   public eei g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         gu $$0 = this.a.dI().a(dhk.a.f, new gu(dkn.a(this.a.q())));
-         int $$1 = this.a.fX() == null ? 0 : this.a.fX().e();
-         if (this.a.ec().a($$1 + 3) == 0) {
-            this.a.fW().a(bur.c);
-            return;
-         }
-
-         byo $$2 = this.a.dI().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dg()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.ec().a((int)($$3 + 2.0)) == 0 || this.a.ec().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
+   public bjq a(cpz $$0, bgm $$1, bja $$2, @Nullable bjq $$3, @Nullable qs $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 == null) {
+         $$3 = new buh.a(this);
+      } else {
+         this.a(((buh.a)$$3).a);
       }
 
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.w();
-         int $$6 = $$5;
-         if (this.a.ec().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
-
-         if (this.a.fX() != null && this.a.fX().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
-            }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
+      return $$3;
    }
 
-   private void a(byo $$0) {
-      this.a.fW().a(bur.b);
-      this.a.fW().b(bur.b).a($$0);
-   }
+   public static class a implements bjq {
+      public final buh a;
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         hz $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ec().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new eei($$1, $$3, $$2);
-      }
-   }
-
-   @Override
-   public void a(bua $$0, gu $$1, ben $$2, @Nullable byo $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+      public a(buh $$0) {
+         this.a = $$0;
       }
    }
 }

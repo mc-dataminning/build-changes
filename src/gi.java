@@ -1,123 +1,97 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Set;
-import org.slf4j.Logger;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import java.util.Locale;
+import java.util.Map;
 
 public class gi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final byte b = 1;
-   private static final byte c = 2;
+   private static final Map<Class<?>, gh<?, ?>> a = Maps.newHashMap();
 
-   public static int a(boolean $$0, boolean $$1) {
-      int $$2 = 0;
-      if ($$0) {
-         $$2 |= 1;
+   private static <A extends ArgumentType<?>, T extends gh.a<A>> gh<A, T> a(hs<gh<?, ?>> $$0, String $$1, Class<? extends A> $$2, gh<A, T> $$3) {
+      a.put($$2, $$3);
+      return hs.a($$0, $$1, $$3);
+   }
+
+   public static gh<?, ?> a(hs<gh<?, ?>> $$0) {
+      a($$0, "brigadier:bool", BoolArgumentType.class, gk.a(BoolArgumentType::bool));
+      a($$0, "brigadier:float", FloatArgumentType.class, new gn());
+      a($$0, "brigadier:double", DoubleArgumentType.class, new gm());
+      a($$0, "brigadier:integer", IntegerArgumentType.class, new go());
+      a($$0, "brigadier:long", LongArgumentType.class, new gp());
+      a($$0, "brigadier:string", StringArgumentType.class, new gq());
+      a($$0, "entity", ed.class, new ed.a());
+      a($$0, "game_profile", ef.class, gk.a(ef::a));
+      a($$0, "block_pos", fj.class, gk.a(fj::a));
+      a($$0, "column_pos", fk.class, gk.a(fk::a));
+      a($$0, "vec3", fq.class, gk.a(fq::a));
+      a($$0, "vec2", fp.class, gk.a(fp::a));
+      a($$0, "block_state", fg.class, gk.a(fg::a));
+      a($$0, "block_predicate", ff.class, gk.a(ff::a));
+      a($$0, "item_stack", fv.class, gk.a(fv::a));
+      a($$0, "item_predicate", fy.class, gk.a(fy::a));
+      a($$0, "color", dy.class, gk.a(dy::a));
+      a($$0, "component", dz.class, gk.a(dz::a));
+      a($$0, "message", eh.class, gk.a(eh::a));
+      a($$0, "nbt_compound_tag", ea.class, gk.a(ea::a));
+      a($$0, "nbt_tag", ej.class, gk.a(ej::a));
+      a($$0, "nbt_path", ei.class, gk.a(ei::a));
+      a($$0, "objective", ek.class, gk.a(ek::a));
+      a($$0, "objective_criteria", el.class, gk.a(el::a));
+      a($$0, "operation", em.class, gk.a(em::a));
+      a($$0, "particle", en.class, gk.a(en::a));
+      a($$0, "angle", dw.class, gk.a(dw::a));
+      a($$0, "rotation", fn.class, gk.a(fn::a));
+      a($$0, "scoreboard_slot", ev.class, gk.a(ev::a));
+      a($$0, "score_holder", eu.class, new eu.a());
+      a($$0, "swizzle", fo.class, gk.a(fo::a));
+      a($$0, "team", ez.class, gk.a(ez::a));
+      a($$0, "item_slot", ex.class, gk.a(ex::a));
+      a($$0, "resource_location", er.class, gk.a(er::a));
+      a($$0, "function", fu.class, gk.a(fu::a));
+      a($$0, "entity_anchor", ec.class, gk.a(ec::a));
+      a($$0, "int_range", eo.b.class, gk.a(eo::a));
+      a($$0, "float_range", eo.a.class, gk.a(eo::b));
+      a($$0, "dimension", eb.class, gk.a(eb::a));
+      a($$0, "gamemode", ee.class, gk.a(ee::a));
+      a($$0, "time", fc.class, new fc.a());
+      a($$0, "resource_or_tag", b(es.class), new es.a());
+      a($$0, "resource_or_tag_key", b(et.class), new et.a());
+      a($$0, "resource", b(ep.class), new ep.a());
+      a($$0, "resource_key", b(eq.class), new eq.a());
+      a($$0, "template_mirror", fa.class, gk.a(fa::a));
+      a($$0, "template_rotation", fb.class, gk.a(fb::a));
+      a($$0, "heightmap", eg.class, gk.a(eg::a));
+      if (aa.aS) {
+         a($$0, "test_argument", qk.class, gk.a(qk::a));
+         a($$0, "test_class", qh.class, gk.a(qh::a));
       }
 
-      if ($$1) {
-         $$2 |= 2;
-      }
-
-      return $$2;
+      return a($$0, "uuid", fd.class, gk.a(fd::a));
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 1) != 0;
+   private static <T extends ArgumentType<?>> Class<T> b(Class<? super T> $$0) {
+      return (Class<T>)$$0;
    }
 
-   public static boolean b(byte $$0) {
-      return ($$0 & 2) != 0;
+   public static boolean a(Class<?> $$0) {
+      return a.containsKey($$0);
    }
 
-   private static <A extends ArgumentType<?>> void a(JsonObject $$0, gg.a<A> $$1) {
-      a($$0, $$1.a(), $$1);
-   }
-
-   private static <A extends ArgumentType<?>, T extends gg.a<A>> void a(JsonObject $$0, gg<A, T> $$1, gg.a<A> $$2) {
-      $$1.a((T)$$2, $$0);
-   }
-
-   private static <T extends ArgumentType<?>> void a(JsonObject $$0, T $$1) {
-      gg.a<T> $$2 = gh.b($$1);
-      $$0.addProperty("type", "argument");
-      $$0.addProperty("parser", jb.x.b($$2.a()).toString());
-      JsonObject $$3 = new JsonObject();
-      a($$3, $$2);
-      if ($$3.size() > 0) {
-         $$0.add("properties", $$3);
-      }
-   }
-
-   public static <S> JsonObject a(CommandDispatcher<S> $$0, CommandNode<S> $$1) {
-      JsonObject $$2 = new JsonObject();
-      if ($$1 instanceof RootCommandNode) {
-         $$2.addProperty("type", "root");
-      } else if ($$1 instanceof LiteralCommandNode) {
-         $$2.addProperty("type", "literal");
-      } else if ($$1 instanceof ArgumentCommandNode<?, ?> $$3) {
-         a($$2, $$3.getType());
+   public static <A extends ArgumentType<?>> gh<A, ?> a(A $$0) {
+      gh<?, ?> $$1 = a.get($$0.getClass());
+      if ($$1 == null) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unrecognized argument type %s (%s)", $$0, $$0.getClass()));
       } else {
-         a.error("Could not serialize node {} ({})!", $$1, $$1.getClass());
-         $$2.addProperty("type", "unknown");
+         return (gh<A, ?>)$$1;
       }
-
-      JsonObject $$4 = new JsonObject();
-
-      for (CommandNode<S> $$5 : $$1.getChildren()) {
-         $$4.add($$5.getName(), a($$0, $$5));
-      }
-
-      if ($$4.size() > 0) {
-         $$2.add("children", $$4);
-      }
-
-      if ($$1.getCommand() != null) {
-         $$2.addProperty("executable", true);
-      }
-
-      if ($$1.getRedirect() != null) {
-         Collection<String> $$6 = $$0.getPath($$1.getRedirect());
-         if (!$$6.isEmpty()) {
-            JsonArray $$7 = new JsonArray();
-
-            for (String $$8 : $$6) {
-               $$7.add($$8);
-            }
-
-            $$2.add("redirect", $$7);
-         }
-      }
-
-      return $$2;
    }
 
-   public static <T> Set<ArgumentType<?>> a(CommandNode<T> $$0) {
-      Set<CommandNode<T>> $$1 = Sets.newIdentityHashSet();
-      Set<ArgumentType<?>> $$2 = Sets.newHashSet();
-      a($$0, $$2, $$1);
-      return $$2;
-   }
-
-   private static <T> void a(CommandNode<T> $$0, Set<ArgumentType<?>> $$1, Set<CommandNode<T>> $$2) {
-      if ($$2.add($$0)) {
-         if ($$0 instanceof ArgumentCommandNode<?, ?> $$3) {
-            $$1.add($$3.getType());
-         }
-
-         $$0.getChildren().forEach($$2x -> a($$2x, $$1, $$2));
-         CommandNode<T> $$4 = $$0.getRedirect();
-         if ($$4 != null) {
-            a($$4, $$1, $$2);
-         }
-      }
+   public static <A extends ArgumentType<?>> gh.a<A> b(A $$0) {
+      return a($$0).a($$0);
    }
 }

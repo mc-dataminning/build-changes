@@ -1,80 +1,197 @@
-import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public abstract class alf<T> extends alo<T> {
-   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String b = "forever";
-   protected final Date c;
-   protected final String d;
-   @Nullable
-   protected final Date e;
-   protected final String f;
+public class alf {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
+   final MinecraftServer e;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<sf> g = Collections.synchronizedList(Lists.newArrayList());
 
-   public alf(T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0);
-      this.c = $$1 == null ? new Date() : $$1;
-      this.d = $$2 == null ? "(Unknown)" : $$2;
-      this.e = $$3;
-      this.f = $$4 == null ? "Banned by an operator." : $$4;
+   public alf(MinecraftServer $$0) {
+      this.e = $$0;
+      this.c = true;
    }
 
-   protected alf(T $$0, JsonObject $$1) {
-      super($$0);
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.n()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
+         } else {
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
+         }
 
-      Date $$2;
-      try {
-         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
-         $$2 = new Date();
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               sf.a($$0);
+
+               try {
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
+               }
+
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("legacy_query", new ala(alf.this.d()));
+               sf.a($$1, ux.a);
+               int $$2 = alf.this.e.m();
+               sf $$3 = (sf)($$2 > 0 ? new sq($$2) : new sf(ux.a));
+               alf.this.g.add($$3);
+               $$1.addLast("packet_handler", $$3);
+               $$3.b(new alh(alf.this.e, $$3));
+            }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
+   }
+
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               sf.a($$0);
+               sf $$1 = new sf(ux.a);
+               $$1.b(new alb(alf.this.e, $$1));
+               alf.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               sf.b($$2, ux.a);
+               $$2.addLast("packet_handler", $$1);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
       }
 
-      this.c = $$2;
-      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
+      return $$0.channel().localAddress();
+   }
 
-      Date $$5;
-      try {
-         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
-         $$5 = null;
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
       }
-
-      this.e = $$5;
-      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
    }
 
-   public Date a() {
-      return this.c;
+   public void c() {
+      synchronized (this.g) {
+         Iterator<sf> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            sf $$1 = $$0.next();
+            if (!$$1.l()) {
+               if ($$1.k()) {
+                  try {
+                     $$1.d();
+                  } catch (Exception var7) {
+                     if ($$1.g()) {
+                        throw new y(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bf()), var7);
+                     te $$3 = te.b("Internal server error");
+                     $$1.a(new vb($$3), so.a(() -> $$1.a($$3)));
+                     $$1.o();
+                  }
+               } else {
+                  $$0.remove();
+                  $$1.p();
+               }
+            }
+         }
+      }
    }
 
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public Date c() {
+   public MinecraftServer d() {
       return this.e;
    }
 
-   public String d() {
-      return this.f;
+   public List<sf> e() {
+      return this.g;
    }
 
-   public abstract sw e();
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<alf.a.a> d = Lists.newArrayList();
 
-   @Override
-   boolean f() {
-      return this.e == null ? false : this.e.before(new Date());
-   }
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      $$0.addProperty("created", a.format(this.c));
-      $$0.addProperty("source", this.d);
-      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
-      $$0.addProperty("reason", this.f);
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
+      }
+
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new alf.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      }
+
+      private void a(Timeout $$0) {
+         alf.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
+      }
+
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
+
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+      }
    }
 }

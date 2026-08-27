@@ -1,48 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class blb extends bhr<byb> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class blb extends bko<bjf> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<biw, Float> f;
+   private final Function<biw, Double> g;
 
-   public blb() {
-      super(ImmutableMap.of(bpb.c, bpc.a, bpb.n, bpc.c));
+   public blb(Function<biw, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   protected boolean b(aif $$0, byb $$1) {
-      if ($$0.V() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
+   public blb(Function<biw, Float> $$0, Function<biw, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<bry<?>, brz> $$0x = ImmutableMap.builder();
+         $$0x.put(bry.n, brz.c);
+         $$0x.put(bry.m, brz.c);
+         $$0x.put(bry.O, brz.b);
+         $$0x.put(bry.Q, brz.c);
+         $$0x.put(bry.N, brz.a);
+         $$0x.put(bry.r, brz.b);
+         $$0x.put(bry.Y, brz.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected float a(bjf $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<cbl> b(bjf $$0) {
+      return $$0.dM().c(bry.N);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(aki $$0, bjf $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dM().a(bry.r) && !$$1.dM().a(bry.Y);
+   }
+
+   protected void b(aki $$0, bjf $$1, long $$2) {
+      $$1.dM().a(bry.Q, true);
+   }
+
+   protected void c(aki $$0, bjf $$1, long $$2) {
+      bjx<?> $$3 = $$1.dM();
+      $$3.a(bry.O, 100);
+      $$3.a(bry.Q, false);
+      $$3.b(bry.m);
+      $$3.b(bry.n);
+   }
+
+   protected void d(aki $$0, bjf $$1, long $$2) {
+      cbl $$3 = this.b($$1).get();
+      bjx<?> $$4 = $$1.dM();
+      $$4.a(bry.n, new bkz($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.f($$3) < aro.k($$5)) {
+         $$4.b(bry.m);
       } else {
-         this.e = $$0.V();
-         hd $$2 = $$1.dK().c(bpb.c).get();
-         return $$2.a() == $$0.ac() && $$2.b().a($$1.dg(), 1.73);
-      }
-   }
-
-   protected void a(aif $$0, byb $$1, long $$2) {
-      bha<byb> $$3 = $$1.dK();
-      $$3.a(bpb.I, $$2);
-      $$3.c(bpb.c).ifPresent($$1x -> $$3.a(bpb.n, new bhu($$1x.b())));
-      $$1.gn();
-      this.a($$0, $$1);
-      if ($$1.gm()) {
-         $$1.gl();
-      }
-   }
-
-   protected void a(aif $$0, byb $$1) {
-   }
-
-   protected boolean b(aif $$0, byb $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dK().c(bpb.c);
-      if (!$$3.isPresent()) {
-         return false;
-      } else {
-         hd $$4 = $$3.get();
-         return $$4.a() == $$0.ac() && $$4.b().a($$1.dg(), 1.73);
+         $$4.a(bry.m, new bsb(new bkz($$3, false), this.a($$1), 2));
       }
    }
 }

@@ -1,16 +1,66 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class arh extends DataFix {
-   public arh(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public record arh<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<arh<Integer>> a = a(Codec.INT);
+
+   public arh(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
+      }
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(avw.n), $$0 -> $$0.update(DSL.remainderFinder(), arg::a)
+   public arh(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<arh<T>> a(Codec<T> $$0) {
+      return aqw.a($$0, "min_inclusive", "max_inclusive", arh::a, arh::a, arh::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<arh<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return aqw.a(
+         a($$0),
+         (Function<arh<T>, DataResult<arh<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
       );
+   }
+
+   public static <T extends Comparable<T>> DataResult<arh<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new arh($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(arh<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

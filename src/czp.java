@@ -1,210 +1,106 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class czp<T extends czn> {
-   private static final Logger P = LogUtils.getLogger();
-   public static final czp<dai> a = a("furnace", czp.b.a(dai::new, cpo.cD));
-   public static final czp<czu> b = a("chest", czp.b.a(czu::new, cpo.cv));
-   public static final czp<dbe> c = a("trapped_chest", czp.b.a(dbe::new, cpo.gV));
-   public static final czp<dah> d = a("ender_chest", czp.b.a(dah::new, cpo.fG));
-   public static final czp<dan> e = a("jukebox", czp.b.a(dan::new, cpo.dT));
-   public static final czp<dae> f = a("dispenser", czp.b.a(dae::new, cpo.aU));
-   public static final czp<daf> g = a("dropper", czp.b.a(daf::new, cpo.hi));
-   public static final czp<dav> h = a(
-      "sign",
-      czp.b.a(
-         dav::new,
-         cpo.cE,
-         cpo.cF,
-         cpo.cG,
-         cpo.cH,
-         cpo.cI,
-         cpo.cJ,
-         cpo.cK,
-         cpo.cR,
-         cpo.cS,
-         cpo.cT,
-         cpo.cU,
-         cpo.cV,
-         cpo.cW,
-         cpo.cX,
-         cpo.oW,
-         cpo.oY,
-         cpo.oX,
-         cpo.oZ,
-         cpo.cL,
-         cpo.cY,
-         cpo.cM,
-         cpo.cZ
-      )
-   );
-   public static final czp<daj> i = a(
-      "hanging_sign",
-      czp.b.a(
-         daj::new,
-         cpo.da,
-         cpo.db,
-         cpo.dc,
-         cpo.dd,
-         cpo.de,
-         cpo.df,
-         cpo.dg,
-         cpo.dh,
-         cpo.di,
-         cpo.dj,
-         cpo.dk,
-         cpo.dl,
-         cpo.dm,
-         cpo.dn,
-         cpo.do,
-         cpo.dp,
-         cpo.dq,
-         cpo.dr,
-         cpo.dt,
-         cpo.du,
-         cpo.ds,
-         cpo.dv
-      )
-   );
-   public static final czp<daz> j = a("mob_spawner", czp.b.a(daz::new, cpo.ct));
-   public static final czp<dbx> k = a("piston", czp.b.a(dbx::new, cpo.bQ));
-   public static final czp<czq> l = a("brewing_stand", czp.b.a(czq::new, cpo.fs));
-   public static final czp<dag> m = a("enchanting_table", czp.b.a(dag::new, cpo.fr));
-   public static final czp<dbc> n = a("end_portal", czp.b.a(dbc::new, cpo.fx));
-   public static final czp<czi> o = a("beacon", czp.b.a(czi::new, cpo.fO));
-   public static final czp<dax> p = a(
-      "skull", czp.b.a(dax::new, cpo.gE, cpo.gF, cpo.gM, cpo.gN, cpo.gO, cpo.gP, cpo.gI, cpo.gJ, cpo.gG, cpo.gH, cpo.gK, cpo.gL, cpo.gQ, cpo.gR)
-   );
-   public static final czp<dab> q = a("daylight_detector", czp.b.a(dab::new, cpo.gZ));
-   public static final czp<dal> r = a("hopper", czp.b.a(dal::new, cpo.hc));
-   public static final czp<czy> s = a("comparator", czp.b.a(czy::new, cpo.gY));
-   public static final czp<czd> t = a(
-      "banner",
-      czp.b.a(
-         czd::new,
-         cpo.iJ,
-         cpo.iK,
-         cpo.iL,
-         cpo.iM,
-         cpo.iN,
-         cpo.iO,
-         cpo.iP,
-         cpo.iQ,
-         cpo.iR,
-         cpo.iS,
-         cpo.iT,
-         cpo.iU,
-         cpo.iV,
-         cpo.iW,
-         cpo.iX,
-         cpo.iY,
-         cpo.iZ,
-         cpo.ja,
-         cpo.jb,
-         cpo.jc,
-         cpo.jd,
-         cpo.je,
-         cpo.jf,
-         cpo.jg,
-         cpo.jh,
-         cpo.ji,
-         cpo.jj,
-         cpo.jk,
-         cpo.jl,
-         cpo.jm,
-         cpo.jn,
-         cpo.jo
-      )
-   );
-   public static final czp<dba> u = a("structure_block", czp.b.a(dba::new, cpo.pa));
-   public static final czp<dbb> v = a("end_gateway", czp.b.a(dbb::new, cpo.kF));
-   public static final czp<czx> w = a("command_block", czp.b.a(czx::new, cpo.fN, cpo.kH, cpo.kG));
-   public static final czp<dau> x = a(
-      "shulker_box",
-      czp.b.a(dau::new, cpo.kP, cpo.lf, cpo.lb, cpo.lc, cpo.kZ, cpo.kX, cpo.ld, cpo.kT, cpo.kY, cpo.kV, cpo.kS, cpo.kR, cpo.kW, cpo.la, cpo.le, cpo.kQ, cpo.kU)
-   );
-   public static final czp<czj> y = a(
-      "bed", czp.b.a(czj::new, cpo.bn, cpo.bo, cpo.bk, cpo.bl, cpo.bi, cpo.bg, cpo.bm, cpo.bc, cpo.bh, cpo.be, cpo.bb, cpo.ba, cpo.bf, cpo.bj, cpo.aZ, cpo.bd)
-   );
-   public static final czp<czz> z = a("conduit", czp.b.a(czz::new, cpo.mX));
-   public static final czp<czg> A = a("barrel", czp.b.a(czg::new, cpo.nU));
-   public static final czp<day> B = a("smoker", czp.b.a(day::new, cpo.nV));
-   public static final czp<czm> C = a("blast_furnace", czp.b.a(czm::new, cpo.nW));
-   public static final czp<dao> D = a("lectern", czp.b.a(dao::new, cpo.oa));
-   public static final czp<czl> E = a("bell", czp.b.a(czl::new, cpo.od));
-   public static final czp<dam> F = a("jigsaw", czp.b.a(dam::new, cpo.pb));
-   public static final czp<czt> G = a("campfire", czp.b.a(czt::new, cpo.og, cpo.oh));
-   public static final czp<czk> H = a("beehive", czp.b.a(czk::new, cpo.pe, cpo.pf));
-   public static final czp<das> I = a("sculk_sensor", czp.b.a(das::new, cpo.qD));
-   public static final czp<czs> J = a("calibrated_sculk_sensor", czp.b.a(czs::new, cpo.qE));
-   public static final czp<dar> K = a("sculk_catalyst", czp.b.a(dar::new, cpo.qH));
-   public static final czp<dat> L = a("sculk_shrieker", czp.b.a(dat::new, cpo.qI));
-   public static final czp<czw> M = a("chiseled_bookshelf", czp.b.a(czw::new, cpo.cm));
-   public static final czp<czr> N = a("brushable_block", czp.b.a(czr::new, cpo.J, cpo.M));
-   public static final czp<dac> O = a("decorated_pot", czp.b.a(dac::new, cpo.so));
-   private final czp.a<? extends T> Q;
-   private final Set<cpn> R;
-   private final Type<?> S;
+public class czp extends cuo implements csm, czl {
+   private static final dfp e = dfo.C;
+   public static final dfs b = dfo.R;
+   protected static final float c = 6.0F;
+   protected static final ehy d = csk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   @Nullable
-   public static acq a(czp<?> $$0) {
-      return jb.l.b($$0);
+   public czp(dex.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, dfu.b).a(e, Boolean.valueOf(false)).a(b, hb.c));
    }
 
-   private static <T extends czn> czp<T> a(String $$0, czp.b<T> $$1) {
-      if ($$1.b.isEmpty()) {
-         P.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
-      }
-
-      Type<?> $$2 = ac.a(avw.l, $$0);
-      return hr.a(jb.l, $$0, $$1.a($$2));
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return d;
    }
 
-   public czp(czp.a<? extends T> $$0, Set<cpn> $$1, Type<?> $$2) {
-      this.Q = $$0;
-      this.R = $$1;
-      this.S = $$2;
+   @Override
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return $$0.a(apj.bw) || $$1.b_($$2.c()).a(eac.c) && super.d($$0, $$1, $$2);
    }
 
    @Nullable
-   public T a(gu $$0, dcb $$1) {
-      return (T)this.Q.create($$0, $$1);
+   @Override
+   public dey a(cle $$0) {
+      dey $$1 = super.a($$0);
+      return $$1 != null ? b($$0.q(), $$0.a(), $$1.a(b, $$0.g().g())) : null;
    }
 
-   public boolean a(dcb $$0) {
-      return this.R.contains($$0.b());
+   @Override
+   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
+      if (!$$0.r_()) {
+         gv $$5 = $$1.c();
+         dey $$6 = cuo.b($$0, $$5, this.n().a(a, dfu.a).a(b, $$2.c(b)));
+         $$0.a($$5, $$6, 3);
+      }
    }
 
-   @Nullable
-   public T a(cls $$0, gu $$1) {
-      czn $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.u() == this ? $$2 : null);
+   @Override
+   public eab c_(dey $$0) {
+      return $$0.c(e) ? eac.c.a(false) : super.c_($$0);
    }
 
-   @FunctionalInterface
-   interface a<T extends czn> {
-      T create(gu var1, dcb var2);
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      if ($$0.c(a) == dfu.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         gv $$3 = $$2.d();
+         dey $$4 = $$1.a_($$3);
+         return this.d($$4, $$1, $$3);
+      }
    }
 
-   public static final class b<T extends czn> {
-      private final czp.a<? extends T> a;
-      final Set<cpn> b;
-
-      private b(czp.a<? extends T> $$0, Set<cpn> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
       }
 
-      public static <T extends czn> czp.b<T> a(czp.a<? extends T> $$0, cpn... $$1) {
-         return new czp.b<>($$0, ImmutableSet.copyOf($$1));
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public czp<T> a(Type<?> $$0) {
-         return new czp<>(this.a, this.b, $$0);
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, e, b);
+   }
+
+   @Override
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      if ($$3.c(cuo.a) == dfu.b) {
+         gv $$4 = $$2.c();
+         $$0.a($$4, $$0.b_($$4).g(), 18);
+         csh.a($$0, $$1, $$2, $$3.c(b));
+      } else {
+         gv $$5 = $$2.d();
+         this.a($$0, $$1, $$5, $$0.a_($$5));
       }
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public float an_() {
+      return 0.1F;
    }
 }

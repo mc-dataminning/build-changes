@@ -10,25 +10,25 @@ import javax.annotation.Nullable;
 
 public class bd {
    public static final bd a = bd.a.a().b();
-   private final List<db<bep>> b;
+   private final List<db<bhg>> b;
    private final bo c;
    private final bo d;
 
-   public bd(List<db<bep>> $$0, bo $$1, bo $$2) {
+   public bd(List<db<bhg>> $$0, bo $$1, bo $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   public boolean a(aig $$0, ben $$1) {
-      return this.a($$0.x(), $$0.dg(), $$1);
+   public boolean a(akj $$0, bhe $$1) {
+      return this.a($$0.x(), $$0.di(), $$1);
    }
 
-   public boolean a(aif $$0, eei $$1, ben $$2) {
+   public boolean a(aki $$0, ehf $$1, bhe $$2) {
       if (this == a) {
          return true;
       } else {
-         for (db<bep> $$3 : this.b) {
+         for (db<bhg> $$3 : this.b) {
             if (!$$3.a($$2.k())) {
                return false;
             }
@@ -40,14 +40,14 @@ public class bd {
 
    public static bd a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "damage type");
-         JsonArray $$2 = aor.a($$1, "tags", null);
-         List<db<bep>> $$3;
+         JsonObject $$1 = arf.m($$0, "damage type");
+         JsonArray $$2 = arf.a($$1, "tags", null);
+         List<db<bhg>> $$3;
          if ($$2 != null) {
             $$3 = new ArrayList<>($$2.size());
 
             for (JsonElement $$4 : $$2) {
-               $$3.add(db.a($$4, jc.p));
+               $$3.add(db.a($$4, jd.p));
             }
          } else {
             $$3 = List.of();
@@ -83,7 +83,7 @@ public class bd {
    }
 
    public static class a {
-      private final Builder<db<bep>> a = ImmutableList.builder();
+      private final Builder<db<bhg>> a = ImmutableList.builder();
       private bo b = bo.a;
       private bo c = bo.a;
 
@@ -91,7 +91,7 @@ public class bd {
          return new bd.a();
       }
 
-      public bd.a a(db<bep> $$0) {
+      public bd.a a(db<bhg> $$0) {
          this.a.add($$0);
          return this;
       }

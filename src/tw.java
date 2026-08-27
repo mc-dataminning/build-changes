@@ -1,58 +1,71 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public record tw(String a, @Nullable fk b) implements tx {
-   public tw(String $$0) {
-      this($$0, a($$0));
+public record tw(String b, Instant c, long d, tk e) {
+   public static final MapCodec<tw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(tw::a),
+               aqw.m.fieldOf("time_stamp").forGetter(tw::b),
+               Codec.LONG.fieldOf("salt").forGetter(tw::c),
+               tk.a.optionalFieldOf("last_seen", tk.b).forGetter(tw::d)
+            )
+            .apply($$0, tw::new)
+   );
+
+   public static tw a(String $$0) {
+      return new tw($$0, Instant.now(), 0L, tk.b);
    }
 
-   @Nullable
-   private static fk a(String $$0) {
-      try {
-         return fi.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public void a(arw.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
+   }
+
+   public tw.a a(tq $$0) {
+      return new tw.a(this.b, this.c, this.d, this.e.a($$0));
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public tk d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, tk.a d) {
+      public a(sh $$0) {
+         this($$0.d(256), $$0.v(), $$0.readLong(), new tk.a($$0));
       }
-   }
 
-   @Override
-   public Stream<qr> getData(ds $$0) {
-      if (this.b != null) {
-         aif $$1 = $$0.e();
-         gu $$2 = this.b.c($$0);
-         if ($$1.o($$2)) {
-            czn $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.m());
-            }
-         }
+      public void a(sh $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof tw $$1 && this.a.equals($$1.a)) {
-            return true;
-         }
-
-         return false;
+      public Optional<tw> a(tq $$0) {
+         return this.d.a($$0).map($$0x -> new tw(this.a, this.b, this.c, $$0x));
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

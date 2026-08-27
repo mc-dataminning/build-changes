@@ -1,29 +1,40 @@
-public class cke extends ckg {
-   protected cke(ckg.a $$0, bfo... $$1) {
-      super($$0, ckh.j, $$1);
+public class cke extends cir {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
+
+   public cke(cir.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 8;
+   public int b(ciw $$0) {
+      return 1200;
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
+   public ckp c(ciw $$0) {
+      return ckp.h;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      $$1.a(aou.xf, 1.0F, 1.0F);
+      $$1.b(ape.c.b(this));
+      return ciy.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(cfz $$0) {
-      return $$0.i() ? true : super.a($$0);
+   public ciw a(ciw $$0, cpk $$1, biw $$2) {
+      this.a($$2);
+      return $$0;
    }
 
-   public static boolean a(cfz $$0, int $$1, apf $$2) {
-      return $$0.d() instanceof cdj && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   @Override
+   public void a(ciw $$0, cpk $$1, biw $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(biw $$0) {
+      $$0.a(aou.xg, 1.0F, 1.0F);
    }
 }

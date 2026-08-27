@@ -1,36 +1,64 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public record tq(int b, UUID c, UUID d) {
-   public static final Codec<tq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aoi.i.fieldOf("index").forGetter(tq::b), hy.a.fieldOf("sender").forGetter(tq::c), hy.a.fieldOf("session_id").forGetter(tq::d))
-            .apply($$0, tq::new)
-   );
+public class tq {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final tp[] c;
 
-   public static tq a(UUID $$0) {
-      return a($$0, ac.c);
+   public tq(int $$0) {
+      this.c = new tp[$$0];
    }
 
-   public static tq a(UUID $$0, UUID $$1) {
-      return new tq(0, $$0, $$1);
+   public static tq a() {
+      return new tq(128);
    }
 
-   public void a(api.a $$0) throws SignatureException {
-      $$0.update(hy.b(this.c));
-      $$0.update(hy.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
+   public int a(tp $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
+      }
 
-   public boolean a(tq $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+      return -1;
    }
 
    @Nullable
-   public tq a() {
-      return this.b == Integer.MAX_VALUE ? null : new tq(this.b + 1, this.c, this.d);
+   public tp a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(tt $$0) {
+      List<tp> $$1 = $$0.l().d().a();
+      ArrayDeque<tp> $$2 = new ArrayDeque<>($$1.size() + 1);
+      $$2.addAll($$1);
+      tp $$3 = $$0.k();
+      if ($$3 != null) {
+         $$2.add($$3);
+      }
+
+      this.a($$2);
+   }
+
+   @VisibleForTesting
+   void a(List<tp> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<tp> $$0) {
+      Set<tp> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         tp $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
+      }
    }
 }

@@ -1,144 +1,90 @@
-import com.google.common.collect.UnmodifiableIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class crf extends cpn implements cwo {
-   public static final dcs a = cuz.a;
-   public static final dcs b = cuz.b;
-   public static final dcs c = cuz.c;
-   public static final dcs d = cuz.d;
-   public static final dcs e = dcr.C;
-   protected static final Map<ha, dcs> f = cuz.g.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
-   protected final efb[] g;
-   protected final efb[] h;
-   private final Object2IntMap<dcb> i = new Object2IntOpenHashMap();
+public abstract class crf extends crx {
+   public static final dfs a = cwd.aC;
+   public static final dfp b = dfo.r;
 
-   protected crf(float $$0, float $$1, float $$2, float $$3, float $$4, dca.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.C.a().iterator();
+   protected crf(dex.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hb.c).a(b, Boolean.valueOf(false)));
+   }
 
-      while (var7.hasNext()) {
-         dcb $$6 = (dcb)var7.next();
-         this.g($$6);
+   @Override
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if ($$1.B) {
+         return bgo.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bgo.b;
       }
    }
 
-   protected efb[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      efb $$9 = cpn.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      efb $$10 = cpn.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      efb $$11 = cpn.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      efb $$12 = cpn.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      efb $$13 = cpn.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      efb $$14 = eey.a($$10, $$13);
-      efb $$15 = eey.a($$11, $$12);
-      efb[] $$16 = new efb[]{
-         eey.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         eey.a($$11, $$10),
-         eey.a($$12, $$10),
-         eey.a($$15, $$10),
-         $$13,
-         eey.a($$11, $$13),
-         eey.a($$12, $$13),
-         eey.a($$15, $$13),
-         $$14,
-         eey.a($$11, $$14),
-         eey.a($$12, $$14),
-         eey.a($$15, $$14)
-      };
+   protected abstract void a(cpk var1, gv var2, cbl var3);
 
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = eey.a($$9, $$16[$$17]);
-      }
-
-      return $$16;
+   @Override
+   public dey a(cle $$0) {
+      return this.n().a(a, $$0.g().g());
    }
 
    @Override
-   public boolean c(dcb $$0, cls $$1, gu $$2) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return this.h[this.g($$0)];
-   }
-
-   @Override
-   public efb c(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return this.g[this.g($$0)];
-   }
-
-   private static int a(ha $$0) {
-      return 1 << $$0.e();
-   }
-
-   protected int g(dcb $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(ha.c);
+   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
+      if ($$4.A()) {
+         dck $$5 = $$0.c_($$1);
+         if ($$5 instanceof dbz) {
+            ((dbz)$$5).a($$4.y());
          }
-
-         if ($$0x.c(b)) {
-            $$1 |= a(ha.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(ha.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(ha.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(e) ? dxf.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
-   }
-
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
-         case d:
-            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
-         case b:
-            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
-         default:
-            return $$0;
       }
    }
 
    @Override
-   public dcb a(dcb $$0, cui $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
-         case c:
-            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
+   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dck $$5 = $$1.c_($$2);
+         if ($$5 instanceof dbz) {
+            if ($$1 instanceof aki) {
+               bgk.a($$1, $$2, (dbz)$$5);
+               ((dbz)$$5).a((aki)$$1, ehf.b($$2));
+            }
+
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   @Override
+   public boolean d_(dey $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dey $$0, cpk $$1, gv $$2) {
+      return cec.a($$1.c_($$2));
+   }
+
+   @Override
+   public cyp b_(dey $$0) {
+      return cyp.c;
+   }
+
+   @Override
+   public dey a(dey $$0, cyw $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dck> dcl<T> a(cpk $$0, dcm<T> $$1, dcm<? extends dbz> $$2) {
+      return $$0.B ? null : a($$1, $$2, dbz::a);
    }
 }

@@ -1,28 +1,31 @@
-import com.google.gson.JsonObject;
+import java.util.function.Predicate;
 
-public class cjm<T extends cit> implements cje<T> {
-   private final cjm.a<T> x;
+public abstract class cjm extends cir {
+   public static final Predicate<ciw> c = $$0 -> $$0.a(apr.at);
+   public static final Predicate<ciw> d = c.or($$0 -> $$0.a(ciz.tA));
 
-   public cjm(cjm.a<T> $$0) {
-      this.x = $$0;
+   public cjm(cir.a $$0) {
+      super($$0);
    }
 
-   public T b(acq $$0, JsonObject $$1) {
-      cis $$2 = cis.e.a(aor.a($$1, "category", null), cis.d);
-      return this.x.create($$0, $$2);
+   public Predicate<ciw> e() {
+      return this.b();
    }
 
-   public T b(acq $$0, sf $$1) {
-      cis $$2 = $$1.b(cis.class);
-      return this.x.create($$0, $$2);
+   public abstract Predicate<ciw> b();
+
+   public static ciw a(biw $$0, Predicate<ciw> $$1) {
+      if ($$1.test($$0.b(bgn.b))) {
+         return $$0.b(bgn.b);
+      } else {
+         return $$1.test($$0.b(bgn.a)) ? $$0.b(bgn.a) : ciw.b;
+      }
    }
 
-   public void a(sf $$0, T $$1) {
-      $$0.a($$1.d());
+   @Override
+   public int c() {
+      return 1;
    }
 
-   @FunctionalInterface
-   public interface a<T extends cit> {
-      T create(acq var1, cis var2);
-   }
+   public abstract int d();
 }

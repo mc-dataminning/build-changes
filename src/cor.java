@@ -1,68 +1,205 @@
-public class cor extends cpn implements cpp {
-   protected static final float a = 4.0F;
-   protected static final efb b = cpn.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-   public cor(dca.d $$0) {
-      super($$0);
+public class cor {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final cor b = new cor(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
+
+   public cor(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public cor(gv $$0) {
+      this.e = hy.a($$0.u());
+      this.f = hy.a($$0.w());
+   }
+
+   public cor(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
+   }
+
+   public static cor a(int $$0, int $$1) {
+      return new cor($$0 << 5, $$1 << 5);
+   }
+
+   public static cor b(int $$0, int $$1) {
+      return new cor(($$0 << 5) + 31, ($$1 << 5) + 31);
+   }
+
+   public long a() {
+      return c(this.e, this.f);
+   }
+
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static long a(gv $$0) {
+      return c(hy.a($$0.u()), hy.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      eei $$4 = $$0.n($$1, $$2);
-      return b.a($$4.c, $$4.d, $$4.e);
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
    }
 
    @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return $$1.a_($$2.d()).a(amw.as);
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return cpo.a.n();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         if ($$1 == ha.b && $$2.a(cpo.mZ)) {
-            $$3.a($$4, cpo.mZ.n(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return !($$0 instanceof cor $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
    }
 
-   @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return new cfz(cgc.dv);
+   public int b() {
+      return this.a(8);
+   }
+
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return hy.c(this.e);
+   }
+
+   public int e() {
+      return hy.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public gv a(int $$0, int $$1, int $$2) {
+      return new gv(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return hy.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return hy.a(this.f, $$0);
+   }
+
+   public gv c(int $$0) {
+      return new gv(this.b(), $$0, this.c());
    }
 
    @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return $$0.a_($$1.c()).i();
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
    }
 
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return true;
+   public gv l() {
+      return new gv(this.d(), 0, this.e());
    }
 
-   @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      this.a($$0, $$2);
+   public int a(cor $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
    }
 
-   @Override
-   public float a(dcb $$0, byo $$1, cls $$2, gu $$3) {
-      return $$1.eO().d() instanceof chk ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   public int b(cor $$0) {
+      return this.e($$0.e, $$0.f);
    }
 
-   protected void a(cmm $$0, gu $$1) {
-      $$0.a($$1.c(), cpo.mZ.n().a(cos.h, dcn.b), 3);
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<cor> a(cor $$0, int $$1) {
+      return a(new cor($$0.e - $$1, $$0.f - $$1), new cor($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<cor> a(final cor $$0, final cor $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<cor>((long)($$2 * $$3), 64) {
+         @Nullable
+         private cor e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super cor> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new cor($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new cor($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

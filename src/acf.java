@@ -1,53 +1,34 @@
-import java.util.Iterator;
+import java.util.Optional;
 
-public interface acf<T> {
-   default void a(int $$0, int $$1, int $$2, cjc<?> $$3, Iterator<T> $$4, int $$5) {
-      int $$6 = $$0;
-      int $$7 = $$1;
-      if ($$3 instanceof cjh $$8) {
-         $$6 = $$8.k();
-         $$7 = $$8.l();
-      }
+public class acf implements uw<aav> {
+   private final Optional<bhr> a;
+   private final Optional<bhr> b;
 
-      int $$9 = 0;
-
-      for (int $$10 = 0; $$10 < $$1; $$10++) {
-         if ($$9 == $$2) {
-            $$9++;
-         }
-
-         boolean $$11 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$12 = apa.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
-         if ($$11 && $$12 > $$10) {
-            $$9 += $$0;
-            $$10++;
-         }
-
-         for (int $$13 = 0; $$13 < $$0; $$13++) {
-            if (!$$4.hasNext()) {
-               return;
-            }
-
-            $$11 = (float)$$6 < (float)$$0 / 2.0F;
-            $$12 = apa.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
-            int $$14 = $$6;
-            boolean $$15 = $$13 < $$6;
-            if ($$11) {
-               $$14 = $$12 + $$6;
-               $$15 = $$12 <= $$13 && $$13 < $$12 + $$6;
-            }
-
-            if ($$15) {
-               this.a($$4, $$9, $$5, $$10, $$13);
-            } else if ($$14 == $$13) {
-               $$9 += $$0 - $$13;
-               break;
-            }
-
-            $$9++;
-         }
-      }
+   public acf(Optional<bhr> $$0, Optional<bhr> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
+   public acf(sh $$0) {
+      this.a = $$0.b((sh.a<bhr>)($$0x -> $$0x.a(jc.e)));
+      this.b = $$0.b((sh.a<bhr>)($$0x -> $$0x.a(jc.e)));
+   }
+
+   @Override
+   public void a(sh $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jc.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jc.e, $$1));
+   }
+
+   public void a(aav $$0) {
+      $$0.a(this);
+   }
+
+   public Optional<bhr> a() {
+      return this.a;
+   }
+
+   public Optional<bhr> d() {
+      return this.b;
+   }
 }

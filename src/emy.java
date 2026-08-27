@@ -1,30 +1,23 @@
-import java.util.function.IntFunction;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public enum emy implements apc {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class emy extends end implements emx {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   private static final IntFunction<emy> d = anu.a(emy::a, values(), anu.a.b);
-   private final int e;
-   private final String f;
-
-   private emy(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public emy(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
    public int a() {
-      return this.e;
+      return this.b;
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static emy a(int $$0) {
-      return d.apply($$0);
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

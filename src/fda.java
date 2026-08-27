@@ -1,57 +1,112 @@
-public class fda<T extends bgb & bwg> extends fbs<T> {
-   public fda(fee $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class fda implements fcv, fcw {
+   private static final aep a = new aep("spectator/teleport_to_team");
+   private static final te b = te.c("spectatorMenu.team_teleport");
+   private static final te c = te.c("spectatorMenu.team_teleport.prompt");
+   private final List<fcw> d;
+
+   public fda() {
+      eqn $$0 = eqn.N();
+      this.d = a($$0, $$0.s.I());
    }
 
-   public static fek c() {
-      fem $$0 = fbs.a(fei.a, 0.0F);
-      fen $$1 = $$0.a();
-      $$1.a("right_arm", fej.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), feg.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fej.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), feg.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fej.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), feg.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fej.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), feg.a(2.0F, 12.0F, 0.0F));
-      return fek.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fbs.a.a;
-      this.r = fbs.a.a;
-      cfz $$4 = $$0.b(bdw.a);
-      if ($$4.a(cgc.nG) && $$0.fS()) {
-         if ($$0.fh() == bft.b) {
-            this.s = fbs.a.d;
-         } else {
-            this.r = fbs.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cfz $$6 = $$0.eO();
-      if ($$0.fS() && ($$6.b() || !$$6.a(cgc.nG))) {
-         float $$7 = apa.a(this.c * (float) Math.PI);
-         float $$8 = apa.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         faf.a(this.n, this.o, $$3);
-      }
+   private static List<fcw> a(eqn $$0, eie $$1) {
+      return $$1.g().stream().flatMap($$1x -> fda.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public void a(bft $$0, eij $$1) {
-      float $$2 = $$0 == bft.b ? 1.0F : -1.0F;
-      fee $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public List<fcw> a() {
+      return this.d;
+   }
+
+   @Override
+   public te b() {
+      return c;
+   }
+
+   @Override
+   public void a(fcu $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public te aF_() {
+      return b;
+   }
+
+   @Override
+   public void a(erx $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aG_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fcw {
+      private final eic a;
+      private final Supplier<fzg> b;
+      private final List<fil> c;
+
+      private a(eic $$0, List<fil> $$1, Supplier<fzg> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<fcw> a(eqn $$0, eic $$1) {
+         List<fil> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fil $$4 = $$0.I().a($$3);
+            if ($$4 != null && $$4.e() != cph.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(art.a().a($$2.size())).a();
+            Supplier<fzg> $$6 = $$0.ak().a($$5);
+            return Optional.of(new fda.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(fcu $$0) {
+         $$0.a(new fcz(this.c));
+      }
+
+      @Override
+      public te aF_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(erx $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, aro.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         eth.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aG_() {
+         return true;
+      }
    }
 }

@@ -1,49 +1,45 @@
-import java.util.List;
-
 public class cex extends cfu {
-   public cex(cfu.a $$0) {
-      super($$0);
+   private final cbl a;
+   private int b;
+
+   public cex(cbl $$0, bgh $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public bdx a(cij $$0) {
-      cmm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dcb $$3 = $$1.a_($$2);
-      if (!$$3.a(cpo.co) && !$$3.a(cpo.F)) {
-         return bdx.e;
-      } else {
-         gu $$4 = $$2.c();
-         if (!$$1.t($$4)) {
-            return bdx.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bfj> $$8 = $$1.a_(null, new eed($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bdx.e;
-            } else {
-               if ($$1 instanceof aif) {
-                  bua $$9 = new bua($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dgl.t, $$4);
-                  dfn $$10 = ((aif)$$1).B();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
+   public boolean a(ciw $$0) {
+      return false;
+   }
 
-               $$0.n().h(1);
-               return bdx.a($$1.B);
-            }
-         }
+   @Override
+   public ciw a(int $$0) {
+      if (this.f()) {
+         this.b = this.b + Math.min($$0, this.e().L());
       }
+
+      return super.a($$0);
    }
 
    @Override
-   public boolean i(cfz $$0) {
-      return true;
+   public void a(cbl $$0, ciw $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(ciw $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(ciw $$0) {
+      $$0.a(this.a.dK(), this.a, this.b);
+      if (this.a instanceof akj $$1 && this.d instanceof dbz $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

@@ -1,31 +1,61 @@
-public class fqr extends fqe<bsf, fcq<bsf>> {
-   private static final acq a = new acq("textures/entity/rabbit/brown.png");
-   private static final acq i = new acq("textures/entity/rabbit/white.png");
-   private static final acq j = new acq("textures/entity/rabbit/black.png");
-   private static final acq k = new acq("textures/entity/rabbit/gold.png");
-   private static final acq l = new acq("textures/entity/rabbit/salt.png");
-   private static final acq m = new acq("textures/entity/rabbit/white_splotched.png");
-   private static final acq n = new acq("textures/entity/rabbit/toast.png");
-   private static final acq o = new acq("textures/entity/rabbit/caerbannog.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fqr(foy.a $$0) {
-      super($$0, new fcq<>($$0.a(fed.aY)), 0.3F);
+public class fqr implements fqp.a {
+   private static final float a = 0.02F;
+   private final Map<gv, fqr.a> b = Maps.newHashMap();
+
+   public void a(gv $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new fqr.a($$1, $$2, ac.b() + (long)$$3));
    }
 
-   public acq a(bsf $$0) {
-      String $$1 = n.a($$0.Z().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.fY()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((fqr.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(elh $$0, fng $$1, gv $$2, fqr.a $$3) {
+      fqp.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         fqp.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

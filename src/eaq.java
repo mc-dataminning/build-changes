@@ -1,203 +1,201 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class eaq extends eay {
-   final ecy a;
-   final List<eaq.b> b;
+public class eaq {
+   private final List<eao> a;
+   @Nullable
+   private eaq.a b;
+   private int c;
+   private final gv d;
+   private final float e;
+   private final boolean f;
 
-   eaq(eck[] $$0, ecy $$1, List<eaq.b> $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = ImmutableList.copyOf($$2);
+   public eaq(List<eao> $$0, gv $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   @Override
-   public eba b() {
-      return ebb.v;
+   public void a() {
+      this.c++;
    }
 
-   static eh.g a(String $$0) {
-      try {
-         return new eh().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         throw new IllegalArgumentException("Failed to parse path " + $$0, var2);
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public eao d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public eao a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   @Override
-   public Set<ebt<?>> a() {
-      return this.a.b();
+   public void a(int $$0, eao $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ehf a(big $$0, int $$1) {
+      eao $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      return new ehf($$3, $$4, $$5);
+   }
+
+   public gv d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ehf a(big $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public gv g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eao h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eao i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eaq $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eao $$2 = this.a.get($$1);
+            eao $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @aso
+   void a(eao[] $$0, eao[] $$1, Set<eau> $$2) {
+      this.b = new eaq.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eaq.a k() {
+      return this.b;
+   }
+
+   public void a(sh $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static eaq b(sh $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      gv $$3 = $$0.e();
+      List<eao> $$4 = $$0.a(eao::b);
+      eaq.a $$5 = eaq.a.b($$0);
+      eaq $$6 = new eaq($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
    }
 
    @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      rk $$2 = this.a.a($$1);
-      if ($$2 != null) {
-         this.b.forEach($$2x -> $$2x.a($$0::w, $$2));
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public gv l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eao[] c(sh $$0) {
+      eao[] $$1 = new eao[$$0.m()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eao.b($$0);
       }
 
+      return $$1;
+   }
+
+   static void a(sh $$0, eao[] $$1) {
+      $$0.c($$1.length);
+
+      for (eao $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eaq n() {
+      eaq $$0 = new eaq(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
       return $$0;
    }
 
-   public static eaq.a a(ecy $$0) {
-      return new eaq.a($$0);
-   }
+   public static record a(eao[] a, eao[] b, Set<eau> c) {
 
-   public static eaq.a a(dzk.b $$0) {
-      return new eaq.a(ecw.a($$0));
-   }
-
-   public static class a extends eay.a<eaq.a> {
-      private final ecy a;
-      private final List<eaq.b> b = Lists.newArrayList();
-
-      a(ecy $$0) {
-         this.a = $$0;
+      public void a(sh $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eaq.a($$0, this.a);
+         eaq.a($$0, this.b);
       }
 
-      public eaq.a a(String $$0, String $$1, eaq.c $$2) {
-         this.b.add(new eaq.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public eaq.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, eaq.c.a);
-      }
-
-      protected eaq.a a() {
-         return this;
-      }
-
-      @Override
-      public eaz b() {
-         return new eaq(this.g(), this.a, this.b);
-      }
-   }
-
-   static class b {
-      private final String a;
-      private final eh.g b;
-      private final String c;
-      private final eh.g d;
-      private final eaq.c e;
-
-      b(String $$0, String $$1, eaq.c $$2) {
-         this.a = $$0;
-         this.b = eaq.a($$0);
-         this.c = $$1;
-         this.d = eaq.a($$1);
-         this.e = $$2;
-      }
-
-      public void a(Supplier<rk> $$0, rk $$1) {
-         try {
-            List<rk> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.e.a($$0.get(), this.d, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public JsonObject a() {
-         JsonObject $$0 = new JsonObject();
-         $$0.addProperty("source", this.a);
-         $$0.addProperty("target", this.c);
-         $$0.addProperty("op", this.e.d);
-         return $$0;
-      }
-
-      public static eaq.b a(JsonObject $$0) {
-         String $$1 = aor.i($$0, "source");
-         String $$2 = aor.i($$0, "target");
-         eaq.c $$3 = eaq.c.a(aor.i($$0, "op"));
-         return new eaq.b($$1, $$2, $$3);
-      }
-   }
-
-   public static enum c {
-      a("replace") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (rk)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            List<rk> $$3 = $$1.a($$0, qx::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof qx) {
-                  $$2.forEach($$1xx -> ((qx)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            List<rk> $$3 = $$1.a($$0, qr::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof qr) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof qr) {
-                        ((qr)$$1x).a((qr)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      final String d;
-
-      public abstract void a(rk var1, eh.g var2, List<rk> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.d = $$0;
-      }
-
-      public static eaq.c a(String $$0) {
-         for (eaq.c $$1 : values()) {
-            if ($$1.d.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid merge strategy" + $$0);
-      }
-   }
-
-   public static class d extends eay.c<eaq> {
-      public void a(JsonObject $$0, eaq $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.add("source", $$2.serialize($$1.a));
-         JsonArray $$3 = new JsonArray();
-         $$1.b.stream().map(eaq.b::a).forEach($$3::add);
-         $$0.add("ops", $$3);
-      }
-
-      public eaq a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         ecy $$3 = aor.a($$0, "source", $$1, ecy.class);
-         List<eaq.b> $$4 = Lists.newArrayList();
-
-         for (JsonElement $$6 : aor.v($$0, "ops")) {
-            JsonObject $$7 = aor.m($$6, "op");
-            $$4.add(eaq.b.a($$7));
-         }
-
-         return new eaq($$2, $$3, $$4);
+      public static eaq.a b(sh $$0) {
+         HashSet<eau> $$1 = $$0.a(HashSet::new, eau::c);
+         eao[] $$2 = eaq.c($$0);
+         eao[] $$3 = eaq.c($$0);
+         return new eaq.a($$2, $$3, $$1);
       }
    }
 }

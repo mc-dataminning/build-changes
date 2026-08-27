@@ -1,43 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aoe<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
-
-   public aoe(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
+public class aoe extends ans<GameProfile> {
+   public aoe(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
    }
 
-   public void a(T $$0) {
-      int $$1 = this.a.length();
-
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
-
-      this.a.set($$3, $$0);
+   public aoe(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
+   public aoe(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
 
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
-         }
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
       }
+   }
 
-      return $$1.build();
+   @Override
+   public te e() {
+      GameProfile $$0 = this.g();
+      return te.b($$0 != null ? $$0.getName() : "(Unknown)");
+   }
+
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

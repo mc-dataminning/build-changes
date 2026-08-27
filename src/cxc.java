@@ -1,65 +1,119 @@
-public class cxc extends cpn {
-   public static final int a = 6;
-   public static final int b = 64;
-   private static final ha[] c = ha.values();
+import javax.annotation.Nullable;
 
-   protected cxc(dca.d $$0) {
-      super($$0);
+public class cxc extends cyy implements czl {
+   public static final dfy a = dfo.at;
+   public static final int b = 4;
+   private static final ehy[] g = new ehy[]{
+      csk.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      csk.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      csk.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      csk.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      csk.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dfp h = dfo.C;
+   public static final dfp c = dfo.j;
+   private static final float i = 0.85F;
+
+   public cxc(dex.d $$0) {
+      super(new del(0.85F), $$0);
+      this.k(this.C.b().a(d, Integer.valueOf(0)).a(a, Integer.valueOf(0)).a(h, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(d).a(a).a(h).a(c);
+   }
+
+   @Override
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return super.d($$0, $$1, $$2) || $$0.a(csl.dR);
+   }
+
+   @Nullable
+   @Override
+   public dey a(cle $$0) {
+      eab $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eac.c;
+      return super.a($$0).a(h, Boolean.valueOf($$2)).a(a, Integer.valueOf(4));
+   }
+
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      ehf $$4 = $$0.n($$1, $$2);
+      ehy $$5;
+      if (!$$0.c(c)) {
+         $$5 = g[4];
+      } else {
+         $$5 = g[$$0.c(a)];
+      }
+
+      return $$5.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      return h($$0) ? $$1.a_($$2.c()).a(csl.aL) : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
+      }
+
+      return $$1 == hb.b && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eab c_(dey $$0) {
+      return $$0.c(h) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if (!h($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!n($$0)) {
+            $$1.a($$2, $$0.a(a), 2);
+         }
       }
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, cpn $$3, gu $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(cpn $$0, gv $$1, dey $$2) {
+      return !h($$2) || !n($$2);
    }
 
-   protected void a(cmm $$0, gu $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cpo.aP.n(), 2);
-         $$0.c(2001, $$1, cpn.i(cpo.G.n()));
+   @Override
+   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
+      if (h($$3) && !n($$3)) {
+         $$0.a($$2, $$3.a(a), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   private boolean b(cmm $$0, gu $$1) {
-      return gu.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ha $$2 : c) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dcb $$3 = $$0.a_($$2);
-            dxe $$4 = $$0.b_($$2);
-            if (!$$4.a(anb.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof cpt $$6 && !$$6.c($$0, $$2, $$3).b()) {
-                  return true;
-               }
+   private static boolean h(dey $$0) {
+      return $$0.c(c);
+   }
 
-               if ($$3.b() instanceof cua) {
-                  $$0.a($$2, cpo.a.n(), 3);
-               } else {
-                  if (!$$3.a(cpo.mc) && !$$3.a(cpo.md) && !$$3.a(cpo.bw) && !$$3.a(cpo.bx)) {
-                     return false;
-                  }
+   private static boolean n(dey $$0) {
+      return $$0.c(a) == 4;
+   }
 
-                  czn $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cpo.a.n(), 3);
-               }
+   public static dey b() {
+      return b(0);
+   }
 
-               return true;
-            }
-         }
-      }) > 1;
+   public static dey b(int $$0) {
+      return csl.E.n().a(c, Boolean.valueOf(true)).a(a, Integer.valueOf($$0));
    }
 }

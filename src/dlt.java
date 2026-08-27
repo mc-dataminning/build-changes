@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlt extends dko<dmn> {
-   public dlt(Codec<dmn> $$0) {
+public class dlt extends dlz {
+   final apy<csk> a;
+   public static final Codec<dlt> e = RecordCodecBuilder.create($$0 -> a($$0).and(apy.a(jd.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlt::new));
+
+   protected dlt(ia $$0, apy<csk> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(dkq<dmn> $$0) {
-      int $$1 = 0;
-      apf $$2 = $$0.d();
-      cng $$3 = $$0.b();
-      gu $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   protected boolean a(dey $$0) {
+      return $$0.a(this.a);
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dhk.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         gu $$10 = new gu($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dcb $$11 = cpo.mV.n().a(cwk.b, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(cpo.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
-         }
-      }
-
-      return $$1 > 0;
+   @Override
+   public dlp<?> a() {
+      return dlp.b;
    }
 }

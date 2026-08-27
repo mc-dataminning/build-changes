@@ -1,3 +1,8 @@
-public interface beh {
-   beg a(dcb var1, cmn var2, gu var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface beh {
 }

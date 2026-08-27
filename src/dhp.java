@@ -1,117 +1,283 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record dhp(dhs j, dcb k, dcb l, dhq m, dib.o n, List<cnt.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<dhp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dhs.a.fieldOf("noise").forGetter(dhp::f),
-               dcb.b.fieldOf("default_block").forGetter(dhp::g),
-               dcb.b.fieldOf("default_fluid").forGetter(dhp::h),
-               dhq.a.fieldOf("noise_router").forGetter(dhp::i),
-               dib.o.b.fieldOf("surface_rule").forGetter(dhp::j),
-               cnt.d.a.listOf().fieldOf("spawn_target").forGetter(dhp::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dhp::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dhp::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dhp::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dhp::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dhp::n)
-            )
-            .apply($$0, dhp::new)
-   );
-   public static final Codec<he<dhp>> b = acm.a(jc.aw, a);
-   public static final acp<dhp> c = acp.a(jc.aw, new acq("overworld"));
-   public static final acp<dhp> d = acp.a(jc.aw, new acq("large_biomes"));
-   public static final acp<dhp> e = acp.a(jc.aw, new acq("amplified"));
-   public static final acp<dhp> f = acp.a(jc.aw, new acq("nether"));
-   public static final acp<dhp> g = acp.a(jc.aw, new acq("end"));
-   public static final acp<dhp> h = acp.a(jc.aw, new acq("caves"));
-   public static final acp<dhp> i = acp.a(jc.aw, new acq("floating_islands"));
+public class dhp extends dgu {
+   @Nullable
+   private volatile dzq n;
+   private volatile dgz o = dgz.c;
+   private final List<qs> p = Lists.newArrayList();
+   private final Map<dkd.a, dgt> q = new Object2ObjectArrayMap();
+   @Nullable
+   private djv r;
+   private final eip<csk> s;
+   private final eip<eaa> t;
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   public dhp(cor $$0, dhs $$1, cpm $$2, hs<cqi> $$3, @Nullable dlk $$4) {
+      this($$0, $$1, null, new eip<>(), new eip<>(), $$2, $$3, $$4);
    }
 
-   public boolean b() {
-      return this.r;
+   public dhp(cor $$0, dhs $$1, @Nullable dhg[] $$2, eip<csk> $$3, eip<eaa> $$4, cpm $$5, hs<cqi> $$6, @Nullable dlk $$7) {
+      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
+      this.s = $$3;
+      this.t = $$4;
    }
 
-   public boolean c() {
+   @Override
+   public eiu<csk> o() {
       return this.s;
    }
 
-   public dij.a d() {
-      return this.t ? dij.a.a : dij.a.b;
+   @Override
+   public eiu<eaa> p() {
+      return this.t;
    }
 
-   public static void a(nm<dhp> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   @Override
+   public dgu.a q() {
+      return new dgu.a(this.s, this.t);
    }
 
-   private static dhp b(nm<?> $$0) {
-      return new dhp(dhs.d, cpo.fz.n(), cpo.a.n(), dhr.a($$0.a(jc.at)), nz.c(), List.of(), 0, true, false, false, true);
+   @Override
+   public dey a_(gv $$0) {
+      int $$1 = $$0.v();
+      if (this.d($$1)) {
+         return csl.nb.n();
+      } else {
+         dhg $$2 = this.b(this.e($$1));
+         return $$2.c() ? csl.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      }
    }
 
-   private static dhp c(nm<?> $$0) {
-      return new dhp(dhs.c, cpo.dW.n(), cpo.H.n(), dhr.a($$0.a(jc.at), $$0.a(jc.ax)), nz.b(), List.of(), 32, false, false, false, true);
+   @Override
+   public eab b_(gv $$0) {
+      int $$1 = $$0.v();
+      if (this.d($$1)) {
+         return eac.a.g();
+      } else {
+         dhg $$2 = this.b(this.e($$1));
+         return $$2.c() ? eac.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      }
    }
 
-   private static dhp a(nm<?> $$0, boolean $$1, boolean $$2) {
-      return new dhp(dhs.b, cpo.b.n(), cpo.G.n(), dhr.a($$0.a(jc.at), $$0.a(jc.ax), $$2, $$1), nz.a(), new coa().a(), 63, false, true, true, false);
+   @Nullable
+   @Override
+   public dey a(gv $$0, dey $$1, boolean $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      if ($$4 >= this.C_() && $$4 < this.aj()) {
+         int $$6 = this.e($$4);
+         dhg $$7 = this.b($$6);
+         boolean $$8 = $$7.c();
+         if ($$8 && $$1.a(csl.a)) {
+            return $$1;
+         } else {
+            int $$9 = hy.b($$3);
+            int $$10 = hy.b($$4);
+            int $$11 = hy.b($$5);
+            dey $$12 = $$7.a($$9, $$10, $$11, $$1);
+            if (this.o.b(dgz.k)) {
+               boolean $$13 = $$7.c();
+               if ($$13 != $$8) {
+                  this.n.a($$0, $$13);
+               }
+
+               if (dzs.a(this, $$0, $$12, $$1)) {
+                  this.i.a(this, $$9, $$4, $$11);
+                  this.n.a($$0);
+               }
+            }
+
+            EnumSet<dkh.a> $$14 = this.j().h();
+            EnumSet<dkh.a> $$15 = null;
+
+            for (dkh.a $$16 : $$14) {
+               dkh $$17 = this.h.get($$16);
+               if ($$17 == null) {
+                  if ($$15 == null) {
+                     $$15 = EnumSet.noneOf(dkh.a.class);
+                  }
+
+                  $$15.add($$16);
+               }
+            }
+
+            if ($$15 != null) {
+               dkh.a(this, $$15);
+            }
+
+            for (dkh.a $$18 : $$14) {
+               this.h.get($$18).a($$9, $$4, $$11, $$1);
+            }
+
+            return $$12;
+         }
+      } else {
+         return csl.nb.n();
+      }
    }
 
-   private static dhp d(nm<?> $$0) {
-      return new dhp(dhs.e, cpo.b.n(), cpo.G.n(), dhr.b($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, true, true), List.of(), 32, false, false, false, true);
+   @Override
+   public void a(dck $$0) {
+      this.k.put($$0.p(), $$0);
    }
 
-   private static dhp e(nm<?> $$0) {
-      return new dhp(dhs.f, cpo.b.n(), cpo.G.n(), dhr.c($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, false, false), List.of(), -64, false, false, false, true);
+   @Nullable
+   @Override
+   public dck c_(gv $$0) {
+      return this.k.get($$0);
    }
 
-   public static dhp e() {
-      return new dhp(dhs.b, cpo.b.n(), cpo.a.n(), dhr.a(), nz.d(), List.of(), 63, true, false, false, false);
-   }
-
-   public dhs f() {
-      return this.j;
-   }
-
-   public dcb g() {
+   public Map<gv, dck> D() {
       return this.k;
    }
 
-   public dcb h() {
-      return this.l;
+   public void b(qs $$0) {
+      this.p.add($$0);
    }
 
-   public dhq i() {
-      return this.m;
+   @Override
+   public void a(big $$0) {
+      if (!$$0.bN()) {
+         qs $$1 = new qs();
+         $$0.e($$1);
+         this.b($$1);
+      }
    }
 
-   public dib.o j() {
-      return this.n;
+   @Override
+   public void a(dux $$0, dvf $$1) {
+      djv $$2 = this.x();
+      if ($$2 != null && $$1.b()) {
+         dup $$3 = $$1.a();
+         cpm $$4 = this.z();
+         if ($$3.h() < $$4.C_() || $$3.k() >= $$4.aj()) {
+            return;
+         }
+      }
+
+      super.a($$0, $$1);
    }
 
-   public List<cnt.d> k() {
-      return this.o;
-   }
-
-   public int l() {
+   public List<qs> E() {
       return this.p;
    }
 
-   public boolean m() {
+   @Override
+   public dgz j() {
+      return this.o;
+   }
+
+   public void a(dgz $$0) {
+      this.o = $$0;
+      if (this.r != null && $$0.b(this.r.a())) {
+         this.a(null);
+      }
+
+      this.a(true);
+   }
+
+   @Override
+   public hf<cqi> getNoiseBiome(int $$0, int $$1, int $$2) {
+      if (this.k().b(dgz.f)) {
+         return super.getNoiseBiome($$0, $$1, $$2);
+      } else {
+         throw new IllegalStateException("Asking for biomes before we have biomes");
+      }
+   }
+
+   public static short j(gv $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      int $$4 = $$1 & 15;
+      int $$5 = $$2 & 15;
+      int $$6 = $$3 & 15;
+      return (short)($$4 | $$5 << 4 | $$6 << 8);
+   }
+
+   public static gv a(short $$0, int $$1, cor $$2) {
+      int $$3 = hy.a($$2.e, $$0 & 15);
+      int $$4 = hy.a($$1, $$0 >>> 4 & 15);
+      int $$5 = hy.a($$2.f, $$0 >>> 8 & 15);
+      return new gv($$3, $$4, $$5);
+   }
+
+   @Override
+   public void e(gv $$0) {
+      if (!this.r($$0)) {
+         dgu.a(this.b, this.e($$0.v())).add(j($$0));
+      }
+   }
+
+   @Override
+   public void a(short $$0, int $$1) {
+      dgu.a(this.b, $$1).add($$0);
+   }
+
+   public Map<gv, qs> F() {
+      return Collections.unmodifiableMap(this.j);
+   }
+
+   @Nullable
+   @Override
+   public qs g(gv $$0) {
+      dck $$1 = this.c_($$0);
+      return $$1 != null ? $$1.m() : this.j.get($$0);
+   }
+
+   @Override
+   public void d(gv $$0) {
+      this.k.remove($$0);
+      this.j.remove($$0);
+   }
+
+   @Nullable
+   public dgt a(dkd.a $$0) {
+      return this.q.get($$0);
+   }
+
+   public dgt b(dkd.a $$0) {
+      return this.q.computeIfAbsent($$0, $$0x -> new dgt(this.D_(), this.C_()));
+   }
+
+   public void a(dkd.a $$0, dgt $$1) {
+      this.q.put($$0, $$1);
+   }
+
+   public void a(dzq $$0) {
+      this.n = $$0;
+   }
+
+   public void a(@Nullable djv $$0) {
+      this.r = $$0;
+   }
+
+   @Nullable
+   @Override
+   public djv x() {
       return this.r;
    }
 
-   public boolean n() {
-      return this.t;
+   private static <T> eim<T> a(eip<T> $$0) {
+      return new eim<>($$0.b());
+   }
+
+   public eim<csk> G() {
+      return a(this.s);
+   }
+
+   public eim<eaa> H() {
+      return a(this.t);
+   }
+
+   @Override
+   public cpm z() {
+      return (cpm)(this.y() ? djv.b : this);
    }
 }

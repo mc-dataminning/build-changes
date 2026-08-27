@@ -1,94 +1,60 @@
-import com.google.gson.JsonObject;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cjq implements cjp {
-   private final acq a;
-   final ciz b;
-   final ciz c;
-   final ciz d;
-   final cfz e;
-
-   public cjq(acq $$0, ciz $$1, ciz $$2, ciz $$3, cfz $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+public class cjq extends cgp {
+   public cjq(csk $$0, cir.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a(bdq $$0, cmm $$1) {
-      return this.b.a($$0.a(0)) && this.c.a($$0.a(1)) && this.d.a($$0.a(2));
-   }
+   public cle b(cle $$0) {
+      gv $$1 = $$0.a();
+      cpk $$2 = $$0.q();
+      dey $$3 = $$2.a_($$1);
+      csk $$4 = this.e();
+      if (!$$3.a($$4)) {
+         return cyz.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         hb $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == hb.b ? $$0.g() : hb.b;
+         }
 
-   @Override
-   public cfz a(bdq $$0, hs $$1) {
-      cfz $$2 = this.e.p();
-      qr $$3 = $$0.a(1).v();
-      if ($$3 != null) {
-         $$2.c($$3.h());
+         int $$7 = 0;
+         gv.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.j($$8)) {
+               cbl $$9 = $$0.o();
+               int $$10 = $$2.aj();
+               if ($$9 instanceof akj && $$8.v() >= $$10) {
+                  ((akj)$$9).b(te.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.e())) {
+               if ($$3.a($$0)) {
+                  return cle.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
       }
-
-      return $$2;
    }
 
    @Override
-   public cfz a(hs $$0) {
-      return this.e;
-   }
-
-   @Override
-   public boolean a(cfz $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean b(cfz $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public boolean c(cfz $$0) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public acq e() {
-      return this.a;
-   }
-
-   @Override
-   public cje<?> aj_() {
-      return cje.u;
-   }
-
-   @Override
-   public boolean j() {
-      return Stream.of(this.b, this.c, this.d).anyMatch(ciz::d);
-   }
-
-   public static class a implements cje<cjq> {
-      public cjq b(acq $$0, JsonObject $$1) {
-         ciz $$2 = ciz.a(aor.h($$1, "template"));
-         ciz $$3 = ciz.a(aor.h($$1, "base"));
-         ciz $$4 = ciz.a(aor.h($$1, "addition"));
-         cfz $$5 = cjh.a(aor.u($$1, "result"));
-         return new cjq($$0, $$2, $$3, $$4, $$5);
-      }
-
-      public cjq b(acq $$0, sf $$1) {
-         ciz $$2 = ciz.b($$1);
-         ciz $$3 = ciz.b($$1);
-         ciz $$4 = ciz.b($$1);
-         cfz $$5 = $$1.r();
-         return new cjq($$0, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(sf $$0, cjq $$1) {
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-         $$1.d.a($$0);
-         $$0.a($$1.e);
-      }
+   protected boolean d() {
+      return false;
    }
 }

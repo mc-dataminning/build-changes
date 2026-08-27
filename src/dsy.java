@@ -1,12 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dsy<SP extends dsx> {
-   dsy<dsv> a = a("random_spread", dsv.a);
-   dsy<dsu> b = a("concentric_rings", dsu.a);
+public record dsy(hf<cir> c, dta d) {
+   public static final Codec<dsy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aem.a(jd.D).fieldOf("display").forGetter($$0x -> $$0x.c), dta.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dsy::new)
+   );
+   public static final Codec<hf<dsy>> b = ael.a(jd.av, a);
 
-   Codec<SP> codec();
+   public hf<cir> a() {
+      return this.c;
+   }
 
-   private static <SP extends dsx> dsy<SP> a(String $$0, Codec<SP> $$1) {
-      return hr.a(jb.S, $$0, () -> $$1);
+   public dta b() {
+      return this.d;
    }
 }

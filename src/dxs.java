@@ -1,83 +1,27 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class dxs {
-   protected cmz a;
-   protected bgb b;
-   protected final Int2ObjectMap<dxr> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class dxs extends dyn {
+   public static final Codec<dxs> a = dey.b.xmap(dex.a::b, csk::n).listOf().fieldOf("blocks").xmap(dxs::new, $$0 -> $$0.e).codec();
+   public static final dxs b = new dxs(ImmutableList.of(csl.pa));
+   public static final dxs c = new dxs(ImmutableList.of(csl.a));
+   public static final dxs d = new dxs(ImmutableList.of(csl.a, csl.pa));
+   private final ImmutableList<csk> e;
 
-   public void a(cmz $$0, bgb $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c.clear();
-      this.d = apa.d($$1.dd() + 1.0F);
-      this.e = apa.d($$1.de() + 1.0F);
-      this.f = apa.d($$1.dd() + 1.0F);
+   public dxs(List<csk> $$0) {
+      this.e = ImmutableList.copyOf($$0);
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   @Nullable
+   @Override
+   public dyq.c a(cpn $$0, gv $$1, gv $$2, dyq.c $$3, dyq.c $$4, dym $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
-   protected dxr b(gu $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
-   }
-
-   protected dxr b(int $$0, int $$1, int $$2) {
-      return (dxr)this.c.computeIfAbsent(dxr.b($$0, $$1, $$2), $$3 -> new dxr($$0, $$1, $$2));
-   }
-
-   public abstract dxr a();
-
-   public abstract dxx a(double var1, double var3, double var5);
-
-   protected dxx a(dxr $$0) {
-      return new dxx($$0);
-   }
-
-   public abstract int a(dxr[] var1, dxr var2);
-
-   public abstract dxp a(cls var1, int var2, int var3, int var4, bgb var5);
-
-   public abstract dxp a(cls var1, int var2, int var3, int var4);
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public boolean d() {
-      return this.g;
-   }
-
-   public boolean e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
+   @Override
+   protected dyp<?> a() {
+      return dyp.e;
    }
 }

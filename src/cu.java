@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class cu extends cv<cu.a> {
-   static final acq a = new acq("shot_crossbow");
+   static final aep a = new aep("shot_crossbow");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -13,7 +13,7 @@ public class cu extends cv<cu.a> {
       return new cu.a($$1, $$3);
    }
 
-   public void a(aig $$0, cfz $$1) {
+   public void a(akj $$0, ciw $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -29,11 +29,11 @@ public class cu extends cv<cu.a> {
          return new cu.a(ba.a, $$0);
       }
 
-      public static cu.a a(cml $$0) {
+      public static cu.a a(cpj $$0) {
          return new cu.a(ba.a, bz.a.a().a($$0).b());
       }
 
-      public boolean a(cfz $$0) {
+      public boolean a(ciw $$0) {
          return this.a.a($$0);
       }
 

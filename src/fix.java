@@ -1,31 +1,47 @@
-public class fix extends fiw {
-   private final enr i;
+import javax.annotation.Nullable;
 
-   public fix(enr $$0) {
-      this.i = $$0;
+public enum fix {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
+
+   private final te n;
+
+   private fix(String $$0) {
+      this.n = te.c("gui.banned.reason." + $$0);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   public te a() {
+      return this.n;
    }
 
-   @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.x.e();
-      this.d = this.i.z.e();
-      this.e = this.i.y.e();
-      this.f = this.i.A.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.B.e();
-      this.h = this.i.C.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
-      }
+   @Nullable
+   public static fix a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

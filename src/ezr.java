@@ -1,9 +1,47 @@
-public interface ezr {
-   void a(ezp var1);
+public class ezr extends eyt<cfa> {
+   private static final aep x = new aep("container/horse/chest_slots");
+   private static final aep y = new aep("container/horse/saddle_slot");
+   private static final aep z = new aep("container/horse/llama_armor_slot");
+   private static final aep A = new aep("container/horse/armor_slot");
+   private static final aep B = new aep("textures/gui/container/horse.png");
+   private final bwh C;
+   private float D;
+   private float E;
 
-   sw aI_();
+   public ezr(cfa $$0, cbk $$1, bwh $$2) {
+      super($$0, $$1, $$2.H_());
+      this.C = $$2;
+   }
 
-   void a(eox var1, float var2, int var3);
+   @Override
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.C instanceof bwg $$6 && $$6.q()) {
+         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gh() * 18, 54);
+      }
 
-   boolean aJ_();
+      if (this.C.g()) {
+         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      }
+
+      if (this.C.gI()) {
+         if (this.C instanceof bwk) {
+            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+         }
+      }
+
+      ezs.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      this.D = (float)$$1;
+      this.E = (float)$$2;
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 }

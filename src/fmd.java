@@ -1,36 +1,26 @@
-public class fmd implements flu<dag> {
-   public static final fwu a = new fwu(fuu.e, new acq("entity/enchanting_table_book"));
-   private final fao b;
+public class fmd extends fjs {
+   private static final int a = 12235202;
 
-   public fmd(flv.a $$0) {
-      this.b = new fao($$0.a(fed.m));
+   protected fmd(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, flr $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   public void a(dag $$0, float $$1, eij $$2, fjx $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + apa.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public static class a implements fkz<iz> {
+      private final flr a;
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+      public a(flr $$0) {
+         this.a = $$0;
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         art $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fmd($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = apa.i($$1, $$0.c, $$0.b);
-      float $$10 = apa.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = apa.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = apa.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, apa.a($$10, 0.0F, 1.0F), apa.a($$11, 0.0F, 1.0F), $$12);
-      ein $$13 = a.a($$3, fkf::b);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
    }
 }

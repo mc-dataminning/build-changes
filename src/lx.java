@@ -3,98 +3,111 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class lx {
-   private final lq a;
-   private final ciz b;
-   private final ciz c;
-   private final ciz d;
-   private final ae.a e = ae.a.b();
-   private final cje<?> f;
+   private final clw a;
+   private final clw b;
+   private final clw c;
+   private final lr d;
+   private final cir e;
+   private final ae.a f = ae.a.b();
+   private final cmb<?> g;
 
-   public lx(cje<?> $$0, lq $$1, ciz $$2, ciz $$3, ciz $$4) {
+   public lx(cmb<?> $$0, clw $$1, clw $$2, clw $$3, lr $$4, cir $$5) {
+      this.d = $$4;
+      this.g = $$0;
       this.a = $$1;
-      this.f = $$0;
       this.b = $$2;
       this.c = $$3;
-      this.d = $$4;
+      this.e = $$5;
    }
 
-   public static lx a(ciz $$0, ciz $$1, ciz $$2, lq $$3) {
-      return new lx(cje.v, $$3, $$0, $$1, $$2);
+   public static lx a(clw $$0, clw $$1, clw $$2, lr $$3, cir $$4) {
+      return new lx(cmb.u, $$0, $$1, $$2, $$3, $$4);
    }
 
    public lx a(String $$0, am $$1) {
-      this.e.a($$0, $$1);
+      this.f.a($$0, $$1);
       return this;
    }
 
-   public void a(Consumer<lo> $$0, acq $$1) {
-      this.a($$1);
-      this.e.a(lp.a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
-      $$0.accept(new lx.a($$1, this.f, this.b, this.c, this.d, this.e, $$1.d("recipes/" + this.a.a() + "/")));
+   public void a(Consumer<lp> $$0, String $$1) {
+      this.a($$0, new aep($$1));
    }
 
-   private void a(acq $$0) {
-      if (this.e.d().isEmpty()) {
+   public void a(Consumer<lp> $$0, aep $$1) {
+      this.a($$1);
+      this.f.a(lq.a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
+      $$0.accept(new lx.a($$1, this.g, this.a, this.b, this.c, this.e, this.f, $$1.d("recipes/" + this.d.a() + "/")));
+   }
+
+   private void a(aep $$0) {
+      if (this.f.d().isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(acq a, cje<?> b, ciz c, ciz d, ciz e, ae.a f, acq g) implements lo {
+   public static record a(aep a, cmb<?> b, clw c, clw d, clw e, cir f, ae.a g, aep h) implements lp {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.c());
          $$0.add("base", this.d.c());
          $$0.add("addition", this.e.c());
+         JsonObject $$1 = new JsonObject();
+         $$1.addProperty("item", jc.i.b(this.f).toString());
+         $$0.add("result", $$1);
       }
 
       @Override
-      public acq b() {
+      public aep b() {
          return this.a;
       }
 
       @Override
-      public cje<?> c() {
+      public cmb<?> c() {
          return this.b;
       }
 
       @Nullable
       @Override
       public JsonObject d() {
-         return this.f.c();
+         return this.g.c();
       }
 
       @Nullable
       @Override
-      public acq e() {
-         return this.g;
+      public aep e() {
+         return this.h;
       }
 
-      public acq f() {
+      public aep f() {
          return this.a;
       }
 
-      public cje<?> g() {
+      public cmb<?> g() {
          return this.b;
       }
 
-      public ciz h() {
+      public clw h() {
          return this.c;
       }
 
-      public ciz i() {
+      public clw i() {
          return this.d;
       }
 
-      public ciz j() {
+      public clw j() {
          return this.e;
       }
 
-      public ae.a k() {
+      public cir k() {
          return this.f;
       }
 
-      public acq l() {
+      public ae.a l() {
          return this.g;
+      }
+
+      public aep m() {
+         return this.h;
       }
    }
 }

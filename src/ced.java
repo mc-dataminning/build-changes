@@ -1,111 +1,175 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class ced extends cfm<bgh> {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   public static final int n = 3;
+   public static final int o = 4;
+   private static final int q = 3;
+   private static final int r = 30;
+   private static final int s = 30;
+   private static final int t = 39;
+   private final bgh u;
+   private final cem v;
+   protected final cpk p;
+   private final cmc<? extends cli> w;
+   private final cfn x;
 
-public class ced extends cfu implements cht {
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "LodestonePos";
-   public static final String b = "LodestoneDimension";
-   public static final String c = "LodestoneTracked";
-
-   public ced(cfu.a $$0) {
-      super($$0);
+   protected ced(cfh<?> $$0, cmc<? extends cli> $$1, cfn $$2, int $$3, cbk $$4) {
+      this($$0, $$1, $$2, $$3, $$4, new bgv(3), new cft(4));
    }
 
-   public static boolean d(cfz $$0) {
-      qr $$1 = $$0.v();
-      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
-   }
+   protected ced(cfh<?> $$0, cmc<? extends cli> $$1, cfn $$2, int $$3, cbk $$4, bgh $$5, cem $$6) {
+      super($$0, $$3);
+      this.w = $$1;
+      this.x = $$2;
+      a($$5, 3);
+      a($$6, 4);
+      this.u = $$5;
+      this.v = $$6;
+      this.p = $$4.m.dK();
+      this.a(new cfu($$5, 0, 56, 17));
+      this.a(new cev(this, $$5, 1, 56, 53));
+      this.a(new cex($$4.m, $$5, 2, 116, 35));
 
-   private static Optional<acp<cmm>> c(qr $$0) {
-      return cmm.g.parse(rc.a, $$0.c("LodestoneDimension")).result();
-   }
-
-   @Nullable
-   public static hd a(qr $$0) {
-      boolean $$1 = $$0.e("LodestonePos");
-      boolean $$2 = $$0.e("LodestoneDimension");
-      if ($$1 && $$2) {
-         Optional<acp<cmm>> $$3 = c($$0);
-         if ($$3.isPresent()) {
-            gu $$4 = rd.b($$0.p("LodestonePos"));
-            return hd.a($$3.get(), $$4);
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cfu($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
          }
       }
 
-      return null;
-   }
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cfu($$4, $$9, 8 + $$9 * 18, 142));
+      }
 
-   @Nullable
-   public static hd a(cmm $$0) {
-      return $$0.x_().j() ? hd.a($$0.ac(), $$0.R()) : null;
-   }
-
-   @Override
-   public boolean i(cfz $$0) {
-      return d($$0) || super.i($$0);
+      this.a($$6);
    }
 
    @Override
-   public void a(cfz $$0, cmm $$1, bfj $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         if (d($$0)) {
-            qr $$5 = $$0.w();
-            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
-               return;
+   public void a(cbp $$0) {
+      if (this.u instanceof cfx) {
+         ((cfx)this.u).a($$0);
+      }
+   }
+
+   @Override
+   public void l() {
+      this.b(0).e(ciw.b);
+      this.b(2).e(ciw.b);
+   }
+
+   @Override
+   public boolean a(clz<? super bgh> $$0) {
+      return $$0.a(this.u, this.p);
+   }
+
+   @Override
+   public int m() {
+      return 2;
+   }
+
+   @Override
+   public int n() {
+      return 1;
+   }
+
+   @Override
+   public int o() {
+      return 1;
+   }
+
+   @Override
+   public int p() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cbl $$0) {
+      return this.u.a($$0);
+   }
+
+   @Override
+   public ciw a(cbl $$0, int $$1) {
+      ciw $$2 = ciw.b;
+      cfu $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ciw $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return ciw.b;
             }
 
-            Optional<acp<cmm>> $$6 = c($$5);
-            if ($$6.isPresent() && $$6.get() == $$1.ac() && $$5.e("LodestonePos")) {
-               gu $$7 = rd.b($$5.p("LodestonePos"));
-               if (!$$1.j($$7) || !((aif)$$1).w().a(brd.s, $$7)) {
-                  $$5.r("LodestonePos");
+            $$3.a($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return ciw.b;
                }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return ciw.b;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return ciw.b;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return ciw.b;
             }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return ciw.b;
          }
-      }
-   }
 
-   @Override
-   public bdx a(cij $$0) {
-      gu $$1 = $$0.a();
-      cmm $$2 = $$0.q();
-      if (!$$2.a_($$1).a(cpo.pq)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, amh.mL, ami.h, 1.0F, 1.0F);
-         byo $$3 = $$0.o();
-         cfz $$4 = $$0.n();
-         boolean $$5 = !$$3.fO().d && $$4.L() == 1;
-         if ($$5) {
-            this.a($$2.ac(), $$1, $$4.w());
+         if ($$4.b()) {
+            $$3.d(ciw.b);
          } else {
-            cfz $$6 = new cfz(cgc.qe, 1);
-            qr $$7 = $$4.u() ? $$4.v().h() : new qr();
-            $$6.c($$7);
-            if (!$$3.fO().d) {
-               $$4.h(1);
-            }
-
-            this.a($$2.ac(), $$1, $$7);
-            if (!$$3.fN().e($$6)) {
-               $$3.a($$6, false);
-            }
+            $$3.d();
          }
 
-         return bdx.a($$2.B);
+         if ($$4.L() == $$2.L()) {
+            return ciw.b;
+         }
+
+         $$3.a($$0, $$4);
       }
+
+      return $$2;
    }
 
-   private void a(acp<cmm> $$0, gu $$1, qr $$2) {
-      $$2.a("LodestonePos", rd.a($$1));
-      cmm.g.encodeStart(rc.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
-      $$2.a("LodestoneTracked", true);
+   protected boolean c(ciw $$0) {
+      return this.p.q().a(this.w, new bgv($$0), this.p).isPresent();
+   }
+
+   protected boolean d(ciw $$0) {
+      return dbz.b($$0);
+   }
+
+   public int q() {
+      int $$0 = this.v.a(2);
+      int $$1 = this.v.a(3);
+      return $$1 != 0 && $$0 != 0 ? $$0 * 24 / $$1 : 0;
+   }
+
+   public int r() {
+      int $$0 = this.v.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
+      }
+
+      return this.v.a(0) * 13 / $$0;
+   }
+
+   public boolean s() {
+      return this.v.a(0) > 0;
    }
 
    @Override
-   public String j(cfz $$0) {
-      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
+   public cfn t() {
+      return this.x;
+   }
+
+   @Override
+   public boolean e(int $$0) {
+      return $$0 != 1;
    }
 }

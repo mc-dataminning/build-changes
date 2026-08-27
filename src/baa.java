@@ -1,83 +1,37 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class baa<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
-
-   public baa(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class baa extends azu {
+   public baa(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static <T> baa<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new baa<>($$0, $$2);
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.registerSimple($$1, "minecraft:bed");
+      return $$1;
    }
 
-   public void a(T $$0) throws IOException, JsonIOException {
-      JsonElement $$1 = ac.a(this.b.encodeStart(JsonOps.INSTANCE, $$0), IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, $$2);
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public bab<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      } else {
-         this.d.incrementAndGet();
-         final bab<T> $$0 = bab.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bab<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  baa.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = baa.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               baa.this.b();
-            }
-         };
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b();
-   }
-
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
-      }
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         aym.p,
+         () -> DSL.optionalFields(
+               "minecraft:adventure/adventuring_time",
+               DSL.optionalFields("criteria", DSL.compoundList(aym.G.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_a_mob",
+               DSL.optionalFields("criteria", DSL.compoundList(aym.v.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_all_mobs",
+               DSL.optionalFields("criteria", DSL.compoundList(aym.v.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:husbandry/bred_all_animals",
+               DSL.optionalFields("criteria", DSL.compoundList(aym.v.in($$0), DSL.constType(DSL.string())))
+            )
+      );
+      $$0.registerType(false, aym.G, () -> DSL.constType(a()));
+      $$0.registerType(false, aym.v, () -> DSL.constType(a()));
    }
 }

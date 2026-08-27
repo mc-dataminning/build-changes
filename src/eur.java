@@ -1,100 +1,115 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class eur extends euq {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final sw c = sw.c("selectWorld.allowCommands");
-   private static final sw k = sw.c("selectWorld.gameMode");
-   private static final sw l = sw.c("lanServer.otherPlayers");
-   private static final sw m = sw.c("lanServer.port");
-   private static final sw n = sw.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final sw o = sw.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final euq q;
-   private cmj r = cmj.a;
-   private boolean s;
-   private int t = aos.a();
-   @Nullable
-   private epr u;
+public class eur extends fxr implements fxs {
+   private static final int e = 256;
+   private final eus f;
+   private final boolean g;
+   private final eur.a h;
 
-   public eur(euq $$0) {
-      super(sw.c("lanServer.title"));
-      this.q = $$0;
+   public eur(eus $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new eur.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? eki.b.a : eki.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
    @Override
-   protected void b() {
-      fyp $$0 = this.f.S();
-      this.r = $$0.o_();
-      this.s = $$0.aU().o();
-      this.d(epp.a(cmj::e).a(cmj.a, cmj.d, cmj.b, cmj.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
-      this.d(epp.b(this.s).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.s = $$1x));
-      epi $$1 = epi.a(sw.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         sw $$2;
-         if ($$0.a(this.r, this.s, this.t)) {
-            $$2 = afm.a(this.t);
-         } else {
-            $$2 = sw.c("commands.publish.failed");
-         }
-
-         this.f.l.d().a($$2);
-         this.f.c();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.u = new epr(this.i, this.g / 2 - 75, 160, 150, 20, sw.c("lanServer.port"));
-      this.u.b($$1x -> {
-         sw $$2 = this.a($$1x);
-         this.u.c(sw.b(this.t + "").a(n.i));
-         if ($$2 == null) {
-            this.u.n(14737632);
-            this.u.a(null);
-            $$1.r = true;
-         } else {
-            this.u.n(16733525);
-            this.u.a(eqp.a($$2));
-            $$1.r = false;
-         }
-      });
-      this.u.c(sw.b(this.t + "").a(n.i));
-      this.d(this.u);
-      this.d($$1);
-      this.d(epi.a(sv.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+   public void a(ank $$0) {
    }
 
    @Override
-   public void f() {
-      super.f();
-      if (this.u != null) {
-         this.u.a();
-      }
+   public void close() {
+      this.b();
    }
 
    @Nullable
-   private sw a(String $$0) {
-      if ($$0.isBlank()) {
-         this.t = aos.a();
+   public euu a(ejl $$0) {
+      if ($$0.c() != this.g) {
          return null;
       } else {
-         try {
-            this.t = Integer.parseInt($$0);
-            if (this.t < 1024 || this.t > 65535) {
-               return o;
-            } else {
-               return !aos.a(this.t) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.t = aos.a();
-            return o;
+         eur.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new euu(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
          }
       }
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
-      super.a($$0, $$1, $$2, $$3);
+   public void a(aep $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
+
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private eur.a e;
+      @Nullable
+      private eur.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      eur.a a(ejl $$0) {
+         if (this.e != null && this.f != null) {
+            eur.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new eur.a(this.a, this.b, $$2, this.d);
+                  this.f = new eur.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new eur.a(this.a, this.b, this.c, $$3);
+                  this.f = new eur.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

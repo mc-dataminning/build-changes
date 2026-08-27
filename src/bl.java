@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 public class bl {
    public static final bl a = new bl(bz.a, bz.a, bz.a, bz.a, bz.a, bz.a);
-   public static final bl b = new bl(bz.a.a().a(cgc.tV).a(bzv.s().v()).b(), bz.a, bz.a, bz.a, bz.a, bz.a);
+   public static final bl b = new bl(bz.a.a().a(ciz.tV).a(ccs.s().v()).b(), bz.a, bz.a, bz.a, bz.a, bz.a);
    private final bz c;
    private final bz d;
    private final bz e;
@@ -22,27 +22,27 @@ public class bl {
       this.h = $$5;
    }
 
-   public boolean a(@Nullable bfj $$0) {
+   public boolean a(@Nullable big $$0) {
       if (this == a) {
          return true;
-      } else if (!($$0 instanceof bfz $$1)) {
+      } else if (!($$0 instanceof biw $$1)) {
          return false;
-      } else if (!this.c.a($$1.c(bfo.f))) {
+      } else if (!this.c.a($$1.c(bil.f))) {
          return false;
-      } else if (!this.d.a($$1.c(bfo.e))) {
+      } else if (!this.d.a($$1.c(bil.e))) {
          return false;
-      } else if (!this.e.a($$1.c(bfo.d))) {
+      } else if (!this.e.a($$1.c(bil.d))) {
          return false;
-      } else if (!this.f.a($$1.c(bfo.c))) {
+      } else if (!this.f.a($$1.c(bil.c))) {
          return false;
       } else {
-         return !this.g.a($$1.c(bfo.a)) ? false : this.h.a($$1.c(bfo.b));
+         return !this.g.a($$1.c(bil.a)) ? false : this.h.a($$1.c(bil.b));
       }
    }
 
    public static bl a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "equipment");
+         JsonObject $$1 = arf.m($$0, "equipment");
          bz $$2 = bz.a($$1.get("head"));
          bz $$3 = bz.a($$1.get("chest"));
          bz $$4 = bz.a($$1.get("legs"));

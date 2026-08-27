@@ -1,46 +1,162 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.Optional;
 
-public class eax extends eay {
-   final dzj a;
+public class eax {
+   private static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final aki n;
 
-   eax(eck[] $$0, dzj $$1) {
-      super($$0);
-      this.a = $$1;
+   public eax(aki $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   public eba b() {
-      return ebb.p;
+   public Optional<l.a> a(gv $$0, boolean $$1, dgp $$2) {
+      btw $$3 = this.n.w();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<btx> $$5 = $$3.b($$0x -> $$0x.a(bua.r), $$0, $$4, btw.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<btx>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(dfo.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         gv $$1x = $$0x.f();
+         this.n.k().a(akn.f, new cor($$1x), 3, $$1x);
+         dey $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(dfo.H), 21, hb.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
    }
 
-   @Override
-   public Set<ebt<?>> a() {
-      return this.a.a();
-   }
+   public Optional<l.a> a(gv $$0, hb.a $$1) {
+      hb $$2 = hb.a(hb.b.a, $$1);
+      double $$3 = -1.0;
+      gv $$4 = null;
+      double $$5 = -1.0;
+      gv $$6 = null;
+      dgp $$7 = this.n.w_();
+      int $$8 = Math.min(this.n.aj(), this.n.C_() + this.n.j()) - 1;
+      gv.a $$9 = $$0.j();
 
-   @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      int $$2 = this.a.a($$1, $$0.L());
-      $$0.f($$2);
-      return $$0;
-   }
+      for (gv.a $$10 : gv.a($$0, 16, hb.f, hb.d)) {
+         int $$11 = Math.min($$8, this.n.a(dkh.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
 
-   public static eay.a<?> a(dzj $$0) {
-      return a($$1 -> new eax($$1, $$0));
-   }
+            for (int $$13 = $$11; $$13 >= this.n.C_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
 
-   public static class a extends eay.c<eax> {
-      public void a(JsonObject $$0, eax $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.add("limit", $$2.serialize($$1.a));
+                  while ($$13 > this.n.C_() && this.a($$10.c(hb.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      public eax a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         dzj $$3 = aor.a($$0, "limit", $$1, dzj.class);
-         return new eax($$2, $$3);
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
+
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.C_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new gv($$0.u(), aro.a($$0.v(), $$17, $$18), $$0.w()).i();
+         hb $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dey $$23 = $$22 < 0 ? csl.co.n() : csl.a.n();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, csl.co.n(), 3);
+            }
+         }
+      }
+
+      dey $$26 = csl.ee.n().a(cxm.a, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
+   }
+
+   private boolean a(gv.a $$0) {
+      dey $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
+   }
+
+   private boolean a(gv $$0, gv.a $$1, hb $$2, int $$3) {
+      hb $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

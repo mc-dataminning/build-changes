@@ -1,36 +1,69 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
 
-public interface eir {
-   eir a = a(0.0F, 0.0F, 0.0F);
-   eir b = a((eir.a)($$0 -> -$$0.z()));
+public record eir<T>(T d, gv e, long f, eiv g, long h) {
+   public static final Comparator<eir<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<eir<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<eir<?>> c = new Strategy<eir<?>>() {
+      public int a(eir<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-   static eir a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
-   }
-
-   static eir a(Vector3f $$0) {
-      return a($$0::distanceSquared);
-   }
-
-   static eir a(eir.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
+      public boolean a(@Nullable eir<?> $$0, @Nullable eir<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
+      }
+   };
 
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+   public eir(T $$0, gv $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, eiv.d, $$3);
    }
 
-   int[] sort(Vector3f[] var1);
+   public eir(T d, gv e, long f, eiv g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
+   }
 
-   public interface a {
-      float apply(Vector3f var1);
+   public static <T> eir<T> a(T $$0, gv $$1) {
+      return new eir<>($$0, $$1, 0L, eiv.d, 0L);
+   }
+
+   public T a() {
+      return this.d;
+   }
+
+   public gv b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public eiv d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

@@ -1,283 +1,129 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class ell extends gan {
-   private static final Logger a = LogUtils.getLogger();
-   static final acq b = new acq("realms", "textures/gui/realms/op_icon.png");
-   static final acq c = new acq("realms", "textures/gui/realms/user_icon.png");
-   static final acq G = new acq("realms", "textures/gui/realms/cross_player_icon.png");
-   private static final acq H = new acq("minecraft", "textures/gui/options_background.png");
-   private static final sw I = sw.c("mco.question");
-   static final sw J = sw.c("mco.configure.world.invites.normal.tooltip");
-   static final sw K = sw.c("mco.configure.world.invites.ops.tooltip");
-   static final sw L = sw.c("mco.configure.world.invites.remove.tooltip");
-   private static final int M = -1;
-   private final ela N;
-   final ejq O;
-   ell.b P;
-   int Q;
-   int R;
-   private epi S;
-   private epi T;
-   int U = -1;
-   private boolean V;
+public interface ell {
+   ell a(double var1, double var3, double var5);
 
-   public ell(ela $$0, ejq $$1) {
-      super(sw.c("mco.configure.world.players.title"));
-      this.N = $$0;
-      this.O = $$1;
+   ell a(int var1, int var2, int var3, int var4);
+
+   ell a(float var1, float var2);
+
+   ell a(int var1, int var2);
+
+   ell b(int var1, int var2);
+
+   ell a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   @Override
-   public void b() {
-      this.Q = this.g / 2 - 160;
-      this.R = 150;
-      int $$0 = this.g / 2 + 12;
-      this.P = new ell.b();
-      this.P.f(this.Q);
-      this.e(this.P);
+   void b(int var1, int var2, int var3, int var4);
 
-      for (ejm $$1 : this.O.h) {
-         this.P.a($$1);
-      }
+   void k();
 
-      this.U = -1;
-      this.d(epi.a(sw.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new elf(this.N, this, this.O))).a($$0, h(1), this.R + 10, 20).a());
-      this.S = this.d(epi.a(sw.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.U)).a($$0, h(7), this.R + 10, 20).a());
-      this.T = this.d(epi.a(sw.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
-         if (this.O.h.get(this.U).c()) {
-            this.k(this.U);
-         } else {
-            this.j(this.U);
-         }
-      }).a($$0, h(9), this.R + 10, 20).a());
-      this.d(epi.a(sv.k, $$0x -> this.C()).a($$0 + this.R / 2 + 2, h(12), this.R / 2 + 10 - 2, 20).a());
-      this.B();
+   default ell a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   @Override
-   void B() {
-      this.S.s = this.i(this.U);
-      this.T.s = this.i(this.U);
-      this.P.d();
+   default ell a(int $$0) {
+      return this.a(aqy.b.b($$0), aqy.b.c($$0), aqy.b.d($$0), aqy.b.a($$0));
    }
 
-   private boolean i(int $$0) {
-      return $$0 != -1;
+   default ell b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   default ell c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   private void C() {
-      if (this.V) {
-         this.f.a(this.N.d());
-      } else {
-         this.f.a(this.N);
-      }
+   default void a(elh.a $$0, foc $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
    }
 
-   void j(int $$0) {
-      eiz $$1 = eiz.a();
-      String $$2 = this.O.h.get($$0).b();
+   default void a(elh.a $$0, foc $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      ia $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
 
       try {
-         this.a($$1.e(this.O.a, $$2));
-      } catch (ekm var5) {
-         a.error("Couldn't op the user");
-      }
+         ByteBuffer $$18 = $$17.malloc(elf.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
 
-      this.B();
-   }
-
-   void k(int $$0) {
-      eiz $$1 = eiz.a();
-      String $$2 = this.O.h.get($$0).b();
-
-      try {
-         this.a($$1.f(this.O.a, $$2));
-      } catch (ekm var5) {
-         a.error("Couldn't deop the user");
-      }
-
-      this.B();
-   }
-
-   private void a(eji $$0) {
-      for (ejm $$1 : this.O.h) {
-         $$1.a($$0.a.contains($$1.a()));
-      }
-   }
-
-   void l(int $$0) {
-      this.B();
-      if ($$0 >= 0 && $$0 < this.O.h.size()) {
-         ejm $$1 = this.O.h.get($$0);
-         elb $$2 = new elb($$1x -> {
-            if ($$1x) {
-               eiz $$2x = eiz.a();
-
-               try {
-                  $$2x.a(this.O.a, $$1.b());
-               } catch (ekm var5) {
-                  a.error("Couldn't uninvite user");
-               }
-
-               this.O.h.remove(this.U);
-               this.U = -1;
-               this.B();
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
+            } else {
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
             }
 
-            this.V = true;
-            this.f.a(this);
-         }, I, sw.a("mco.configure.world.uninvite.player", $$1.a()));
-         this.f.a($$2);
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
+         }
+      } catch (Throwable var33) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
+            }
+         }
+
+         throw var33;
+      }
+
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      this.P.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      int $$4 = h(12) + 20;
-      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
-      $$0.a(H, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      String $$5 = this.O.h != null ? Integer.toString(this.O.h.size()) : "0";
-      $$0.a(this.i, sw.a("mco.configure.world.invited.number", $$5), this.Q, h(0), 10526880, false);
-      super.a($$0, $$1, $$2, $$3);
+   default ell a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   class a extends eqc.a<ell.a> {
-      private static final int b = 3;
-      private static final int c = 1;
-      private static final int d = 8;
-      private static final int e = 7;
-      private final ejm f;
-      private final List<epf> g = new ArrayList<>();
-      private final ept h;
-      private final ept i;
-      private final ept j;
-
-      public a(ejm $$0) {
-         this.f = $$0;
-         int $$1 = ell.this.O.h.indexOf(this.f);
-         int $$2 = ell.this.P.p() - 16 - 9;
-         int $$3 = ell.this.P.g($$1) + 1;
-         this.h = new ept($$2, $$3, 8, 7, 0, 0, 7, ell.G, 8, 14, $$1x -> ell.this.l($$1));
-         this.h.a(eqp.a(ell.L));
-         this.g.add(this.h);
-         $$2 += 11;
-         this.i = new ept($$2, $$3, 8, 7, 0, 0, 7, ell.c, 8, 14, $$1x -> ell.this.j($$1));
-         this.i.a(eqp.a(ell.J));
-         this.g.add(this.i);
-         this.j = new ept($$2, $$3, 8, 7, 0, 0, 7, ell.b, 8, 14, $$1x -> ell.this.k($$1));
-         this.j.a(eqp.a(ell.K));
-         this.g.add(this.j);
-         this.b();
-      }
-
-      public void b() {
-         this.i.s = !this.f.c();
-         this.j.s = !this.i.s;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.i.a($$0, $$1, $$2)) {
-            this.j.a($$0, $$1, $$2);
-         }
-
-         this.h.a($$0, $$1, $$2);
-         return true;
-      }
-
-      @Override
-      public void a(eox $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.f.d()) {
-            $$10 = 10526880;
-         } else if (this.f.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = 16777215;
-         }
-
-         emf.a($$0, ell.this.Q + 2 + 2, $$2 + 1, 8, this.f.b());
-         $$0.a(ell.this.i, this.f.a(), ell.this.Q + 3 + 12, $$2 + 1, $$10, false);
-         this.g.forEach($$5x -> {
-            $$5x.f($$2 + 1);
-            $$5x.a($$0, $$6, $$7, $$9);
-         });
-      }
-
-      @Override
-      public sw a() {
-         return sw.a("narrator.select", this.f.a());
-      }
-   }
-
-   class b extends gam<ell.a> {
-      public b() {
-         super(ell.this.R + 10, ell.h(12) + 20, ell.h(1), ell.h(12) + 20, 13);
-      }
-
-      public void d() {
-         if (ell.this.U != -1) {
-            this.d(ell.this.U).b();
-         }
-      }
-
-      public void a(ejm $$0) {
-         this.a((ell.a)(ell.this.new a($$0)));
-      }
-
-      @Override
-      public int b() {
-         return (int)((double)this.d * 1.0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.b($$0);
-      }
-
-      public void b(int $$0) {
-         ell.this.U = $$0;
-         ell.this.B();
-      }
-
-      public void a(@Nullable ell.a $$0) {
-         super.a($$0);
-         ell.this.U = this.i().indexOf($$0);
-         ell.this.B();
-      }
-
-      @Override
-      public void a(eox $$0) {
-         ell.this.a($$0);
-      }
-
-      @Override
-      public int c() {
-         return ell.this.Q + this.d - 5;
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 13;
-      }
+   default ell a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

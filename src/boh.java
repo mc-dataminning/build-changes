@@ -1,16 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class boh extends boi {
-   public boh(bgi $$0, double $$1) {
-      super($$0, $$1);
+public class boh<E extends cap> extends bko<E> {
+   public boh(int $$0) {
+      super(ImmutableMap.of(bry.aB, brz.a, bry.m, brz.b, bry.n, brz.c), $$0);
    }
 
-   @Nullable
-   @Override
-   protected eei h() {
-      eei $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      eei $$2 = bqs.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : bqo.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   protected boolean a(aki $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aki $$0, E $$1, long $$2) {
+      $$1.b(bji.n);
+      $$1.a(aou.zw, 5.0F, 1.0F);
+   }
+
+   protected void c(aki $$0, E $$1, long $$2) {
+      if ($$1.c(bji.n)) {
+         $$1.b(bji.a);
+      }
    }
 }

@@ -1,57 +1,33 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class eme {
-   private static final Map<String, eme.a> a = Maps.newHashMap();
+public class eme extends end {
    private static final Logger b = LogUtils.getLogger();
-   private static final acq c = new acq("textures/gui/presets/isles.png");
+   public List<emd> a;
 
-   public static acq a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static acq b(String $$0, String $$1) {
-      eme.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ehk $$3 = a($$1);
-         if ($$3 == null) {
-            acq $$4 = ful.b();
-            a.put($$0, new eme.a($$1, $$4));
-            return $$4;
-         } else {
-            acq $$5 = new acq("realms", "dynamic/" + $$0);
-            enn.N().X().a($$5, new fui($$3));
-            a.put($$0, new eme.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
-   @Nullable
-   private static ehk a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   public static eme a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      eme $$2 = new eme();
+      $$2.a = Lists.newArrayList();
 
       try {
-         return ehk.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(emd.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return null;
-   }
-
-   public static record a(String a, acq b) {
+      return $$2;
    }
 }

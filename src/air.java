@@ -1,38 +1,54 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class air implements aio {
-   private final aio a;
-   private final bcq<Runnable> b;
-
-   private air(aio $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bcq.a($$1, "progressListener");
+public class air {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("time").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("set")
+                                    .then(dt.a("day").executes($$0x -> a((ds)$$0x.getSource(), 1000))))
+                                 .then(dt.a("noon").executes($$0x -> a((ds)$$0x.getSource(), 6000))))
+                              .then(dt.a("night").executes($$0x -> a((ds)$$0x.getSource(), 13000))))
+                           .then(dt.a("midnight").executes($$0x -> a((ds)$$0x.getSource(), 18000))))
+                        .then(dt.a("time", fc.a()).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dt.a("add").then(dt.a("time", fc.a()).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("query")
+                        .then(dt.a("daytime").executes($$0x -> c((ds)$$0x.getSource(), a(((ds)$$0x.getSource()).e())))))
+                     .then(dt.a("gametime").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().V() % 2147483647L)))))
+                  .then(dt.a("day").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().W() / 24000L % 2147483647L))))
+            )
+      );
    }
 
-   public static air a(aio $$0, Executor $$1) {
-      air $$2 = new air($$0, $$1);
-      $$2.a();
-      return $$2;
+   private static int a(aki $$0) {
+      return (int)($$0.W() % 24000L);
    }
 
-   @Override
-   public void a(clt $$0) {
-      this.b.a(() -> this.a.a($$0));
+   private static int c(ds $$0, int $$1) {
+      $$0.a(() -> te.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   @Override
-   public void a(clt $$0, @Nullable dec $$1) {
-      this.b.a(() -> this.a.a($$0, $$1));
+   public static int a(ds $$0, int $$1) {
+      for (aki $$2 : $$0.l().F()) {
+         $$2.b((long)$$1);
+      }
+
+      $$0.a(() -> te.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   @Override
-   public void a() {
-      this.b.a(this.a::a);
-   }
+   public static int b(ds $$0, int $$1) {
+      for (aki $$2 : $$0.l().F()) {
+         $$2.b($$2.W() + (long)$$1);
+      }
 
-   @Override
-   public void b() {
-      this.b.a(this.a::b);
+      int $$3 = a($$0.e());
+      $$0.a(() -> te.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

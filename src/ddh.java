@@ -1,37 +1,15 @@
-import java.util.Optional;
+public interface ddh extends bgh {
+   ehy c = csk.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
+   ehy x_ = csk.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
+   ehy y_ = ehv.a(c, x_);
 
-public class ddh {
-   private static final aph a = new aph(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
-
-   public static int a() {
-      return b;
+   default ehy aq_() {
+      return y_;
    }
 
-   public static int a(ha $$0) {
-      return a.a($$0);
-   }
+   double G();
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
+   double H();
 
-   public static Optional<ha> a(int $$0) {
-      ha $$1 = switch ($$0) {
-         case 0 -> ha.c;
-         case 4 -> ha.f;
-         case 8 -> ha.d;
-         case 12 -> ha.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
-   }
+   double J();
 }

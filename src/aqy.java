@@ -1,26 +1,69 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
+public class aqy {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-public class aqy extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   private aqy(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(avw.l);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(avw.l);
-      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
-   }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      return new aqy($$0, $$1, $$2);
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = aro.a($$0, a($$1), a($$2));
+         int $$4 = aro.a($$0, b($$1), b($$2));
+         int $$5 = aro.a($$0, c($$1), c($$2));
+         int $$6 = aro.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
    }
 }

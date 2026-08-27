@@ -1,24 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class dou<P extends dot> {
-   public static final dou<dpc> a = a("simple_state_provider", dpc.b);
-   public static final dou<dpd> b = a("weighted_state_provider", dpd.b);
-   public static final dou<doy> c = a("noise_threshold_provider", doy.b);
-   public static final dou<dox> d = a("noise_provider", dox.g);
-   public static final dou<dov> e = a("dual_noise_provider", dov.b);
-   public static final dou<dpa> f = a("rotated_block_provider", dpa.b);
-   public static final dou<doz> g = a("randomized_int_state_provider", doz.b);
-   private final Codec<P> h;
-
-   private static <P extends dot> dou<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.W, $$0, new dou<>($$1));
+public class dou extends dnl<dpw> {
+   public dou(Codec<dpw> $$0) {
+      super($$0);
    }
 
-   private dou(Codec<P> $$0) {
-      this.h = $$0;
-   }
+   @Override
+   public boolean a(dnn<dpw> $$0) {
+      cqe $$1 = $$0.b();
+      gv $$2 = $$0.e();
+      gv.a $$3 = new gv.a();
+      gv.a $$4 = new gv.a();
 
-   public Codec<P> a() {
-      return this.h;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dkh.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(hb.a, 1);
+            cqi $$10 = $$1.s($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, csl.dO.n(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, csl.dN.n(), 2);
+               dey $$11 = $$1.a_($$4);
+               if ($$11.b(czu.a)) {
+                  $$1.a($$4, $$11.a(czu.a, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

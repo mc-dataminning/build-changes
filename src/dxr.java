@@ -1,143 +1,92 @@
+import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class dxr {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
+public class dxr extends dyn {
+   public static final Codec<dxr> a = Codec.FLOAT.fieldOf("mossiness").xmap(dxr::new, $$0 -> $$0.f).codec();
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dey[] e = new dey[]{csl.jD.n(), csl.jK.n()};
+   private final float f;
+
+   public dxr(float $$0) {
+      this.f = $$0;
+   }
+
    @Nullable
-   public dxr h;
-   public boolean i;
-   public float j;
-   public float k;
-   public dxp l = dxp.a;
+   @Override
+   public dyq.c a(cpn $$0, gv $$1, gv $$2, dyq.c $$3, dyq.c $$4, dym $$5) {
+      art $$6 = $$5.b($$4.a());
+      dey $$7 = $$4.b();
+      gv $$8 = $$4.a();
+      dey $$9 = null;
+      if ($$7.a(csl.eI) || $$7.a(csl.b) || $$7.a(csl.eL)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(apj.J)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(apj.K)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(apj.L)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(csl.co)) {
+         $$9 = this.d($$6);
+      }
 
-   public dxr(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+      return $$9 != null ? new dyq.c($$8, $$9, $$4.c()) : $$4;
    }
 
-   public dxr a(int $$0, int $$1, int $$2) {
-      dxr $$3 = new dxr($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
+   @Nullable
+   private dey a(art $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dey[] $$1 = new dey[]{csl.eK.n(), a($$0, csl.fj)};
+         dey[] $$2 = new dey[]{csl.eJ.n(), a($$0, csl.ng)};
+         return this.a($$0, $$1, $$2);
+      }
    }
 
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   @Nullable
+   private dey a(art $$0, dey $$1) {
+      hb $$2 = $$1.c(dae.a);
+      dfx $$3 = $$1.c(dae.b);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dey[] $$4 = new dey[]{csl.ng.n().a(dae.a, $$2).a(dae.b, $$3), csl.nu.n()};
+         return this.a($$0, e, $$4);
+      }
    }
 
-   public float a(dxr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return apa.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   @Nullable
+   private dey b(art $$0) {
+      return $$0.i() < this.f ? csl.nu.n() : null;
    }
 
-   public float b(dxr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return apa.c($$1 * $$1 + $$2 * $$2);
+   @Nullable
+   private dey c(art $$0) {
+      return $$0.i() < this.f ? csl.nI.n() : null;
    }
 
-   public float a(gu $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return apa.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   @Nullable
+   private dey d(art $$0) {
+      return $$0.i() < 0.15F ? csl.pk.n() : null;
    }
 
-   public float c(dxr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   private static dey a(art $$0, csk $$1) {
+      return $$1.n().a(dae.a, hb.c.a.a($$0)).a(dae.b, ac.a(dfx.values(), $$0));
    }
 
-   public float b(gu $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   private dey a(art $$0, dey[] $$1, dey[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
    }
 
-   public float d(dxr $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(gu $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public gu a() {
-      return new gu(this.a, this.b, this.c);
-   }
-
-   public eei b() {
-      return new eei((double)this.a, (double)this.b, (double)this.c);
+   private static dey a(art $$0, dey[] $$1) {
+      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof dxr $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
-   }
-
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
-      $$0.writeInt(this.b);
-      $$0.writeInt(this.c);
-      $$0.writeFloat(this.j);
-      $$0.writeFloat(this.k);
-      $$0.writeBoolean(this.i);
-      $$0.a(this.l);
-      $$0.writeFloat(this.g);
-   }
-
-   public static dxr b(sf $$0) {
-      dxr $$1 = new dxr($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
-   }
-
-   protected static void a(sf $$0, dxr $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(dxp.class);
-      $$1.g = $$0.readFloat();
+   protected dyp<?> a() {
+      return dyp.k;
    }
 }

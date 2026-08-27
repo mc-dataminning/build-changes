@@ -1,29 +1,33 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
+import java.util.List;
+import java.util.Map;
 
 public class aei {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(dt.a("gamemode", ed.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "gamemode"))))
-      );
+   private final String a;
+   private final String b;
+
+   public aei(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static int a(ds $$0, cmj $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      cmj $$4 = $$3.aX();
-      if ($$4 != null) {
-         for (aig $$5 : $$3.ac().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
-         }
-      }
+   public static aei a(String $$0) {
+      return new aei($$0, ".json");
+   }
 
-      $$0.a(() -> sw.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
+   public aep a(aep $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
+   }
+
+   public aep b(aep $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   }
+
+   public Map<aep, ani> a(ank $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
+
+   public Map<aep, List<ani>> b(ank $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

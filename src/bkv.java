@@ -1,22 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bkv {
-   private static final int a = 36;
+public class bkv extends bko<bvx> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public static bhs<bfz> a() {
-      return bld.a(
-         (Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$0 -> $$0.group($$0.a(bpb.x), $$0.a(bpb.y), $$0.a(bpb.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bfz>a($$2).filter($$1xx -> $$1xx.f((bfj)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dK().a($$4.W(), $$4.V());
-                     }
+   public bkv() {
+      super(ImmutableMap.of(bry.m, brz.b), 100);
+   }
 
-                     return true;
-                  }))
-      );
+   protected boolean a(aki $$0, bvx $$1) {
+      return $$1.an() == bji.a;
+   }
+
+   protected boolean a(aki $$0, bvx $$1, long $$2) {
+      return this.e < 60;
+   }
+
+   protected void b(aki $$0, bvx $$1, long $$2) {
+      if (!$$1.bb()) {
+         $$1.b(bji.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(aki $$0, bvx $$1, long $$2) {
+      $$1.b(bji.a);
+   }
+
+   protected void d(aki $$0, bvx $$1, long $$2) {
+      this.e++;
    }
 }

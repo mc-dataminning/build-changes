@@ -1,17 +1,35 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface aky extends akr {
-   @Override
-   default CompletableFuture<Void> a(akr.a $$0, akx $$1, ban $$2, ban $$3, Executor $$4, Executor $$5) {
-      return $$0.a(apz.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public record aky(String b, th c) {
+   public static final aky a = a("");
+
+   public static aky a(String $$0) {
+      return new aky($$0, th.c);
    }
 
-   void a(akx var1);
+   public static aky b(String $$0) {
+      return new aky($$0, th.b);
+   }
+
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
+   }
+
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
+   public boolean c() {
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public th e() {
+      return this.c;
+   }
 }

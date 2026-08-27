@@ -1,35 +1,24 @@
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import io.netty.buffer.ByteBuf;
 import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 
-public interface akz {
-   akz a = new akz() {
-      @Override
-      public <T> Optional<T> a(ajx<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   akp<akz> b = () -> a;
+public class akz {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   static akz a(InputStream $$0) throws IOException {
-      akz var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = aor.a($$1);
-         var3 = new akz() {
-            @Override
-            public <T> Optional<T> a(ajx<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(aor.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   <T> Optional<T> a(ajx<T> var1);
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
+   }
 }

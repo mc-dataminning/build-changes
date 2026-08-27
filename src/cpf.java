@@ -1,53 +1,34 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class cpf extends cpa implements cpe {
-   public cpf(dca.d $$0) {
-      super($$0);
+public class cpf extends ebg {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
+
+   public static ebg.a<cpf> a() {
+      return new ebg.a<>(cpf::new, cpf::b, asq.m);
+   }
+
+   private cpf(LongSet $$0) {
+      this.c = $$0;
+   }
+
+   public cpf() {
+      this(new LongOpenHashSet());
+   }
+
+   public static cpf b(qs $$0) {
+      return new cpf(new LongOpenHashSet($$0.o("Forced")));
    }
 
    @Override
-   public cen a() {
-      return cen.a;
+   public qs a(qs $$0) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
    }
 
-   @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new czi($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends czn> czo<T> a(cmm $$0, dcb $$1, czp<T> $$2) {
-      return a($$2, czp.o, czi::a);
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if ($$1.B) {
-         return bdx.a;
-      } else {
-         czn $$6 = $$1.c_($$2);
-         if ($$6 instanceof czi) {
-            $$3.a((czi)$$6);
-            $$3.a(amr.ab);
-         }
-
-         return bdx.b;
-      }
-   }
-
-   @Override
-   public cvs b_(dcb $$0) {
-      return cvs.c;
-   }
-
-   @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, bfz $$3, cfz $$4) {
-      if ($$4.A()) {
-         czn $$5 = $$0.c_($$1);
-         if ($$5 instanceof czi) {
-            ((czi)$$5).a($$4.y());
-         }
-      }
+   public LongSet b() {
+      return this.c;
    }
 }

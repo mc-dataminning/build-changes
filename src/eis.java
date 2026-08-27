@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@egd
-@egc
-interface eis {
+public interface eis<T> {
+   rl b(long var1, Function<T, String> var3);
 }

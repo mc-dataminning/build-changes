@@ -1,13 +1,13 @@
-public class bev extends bey {
-   protected final double a;
+import java.time.Instant;
 
-   protected bev(bez $$0, int $$1, double $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
+public final class bev {
+   public final Instant a;
+   public final int b;
+   public final bdd c;
 
-   @Override
-   public double a(int $$0, bhe $$1) {
-      return this.a * (double)($$0 + 1);
+   public bev(Instant $$0, int $$1, bdd $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

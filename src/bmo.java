@@ -1,70 +1,33 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class bmo extends bmv {
-   protected final bgi a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cmm f;
+public class bmo {
+   private static final int a = 300;
 
-   public bmo(bgi $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dI();
-      this.a(EnumSet.of(bmv.a.a));
-   }
+   public static bkp<biw> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$3x -> $$3x.group($$3x.b(bry.C), $$3x.b(bry.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        gv $$11 = $$3x.<he>b($$4).b();
+                        if ($$11.a($$7.dk(), (double)$$1)) {
+                           $$3.increment();
+                        }
 
-   @Override
-   public boolean a() {
-      if (this.a.j() != null) {
-         return false;
-      } else if (!this.f.N()) {
-         return false;
-      } else if (!this.a.bL()) {
-         return false;
-      } else if (!this.f.g(this.a.di())) {
-         return false;
-      } else {
-         return !this.a.c(bfo.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      eei $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.J().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.J().a(this.b, this.c, this.d, this.e);
-   }
-
-   @Nullable
-   protected eei i() {
-      apf $$0 = this.a.ec();
-      gu $$1 = this.a.di();
-
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         gu $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
-            return eei.c($$3);
-         }
-      }
-
-      return null;
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dM().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,62 +1,59 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record aot<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<aot<Integer>> a = a(Codec.INT);
+public class aot {
+   public static final Codec<aot> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aep.a.fieldOf("sound_id").forGetter(aot::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aot::b)).apply($$0, aot::a)
+   );
+   public static final Codec<hf<aot>> b = ael.a(jd.ad, a);
+   private static final float c = 16.0F;
+   private final aep d;
+   private final float e;
+   private final boolean f;
 
-   public aot(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+   private static aot a(aep $$0, Optional<Float> $$1) {
+      return $$1.<aot>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   }
+
+   public static aot a(aep $$0) {
+      return new aot($$0, 16.0F, false);
+   }
+
+   public static aot a(aep $$0, float $$1) {
+      return new aot($$0, $$1, true);
+   }
+
+   private aot(aep $$0, float $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public aep a() {
+      return this.d;
+   }
+
+   public float a(float $$0) {
+      if (this.f) {
+         return this.e;
       } else {
-         this.b = b;
-         this.c = c;
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
       }
    }
 
-   public static <T extends Comparable<T>> Codec<aot<T>> a(Codec<T> $$0) {
-      return aoi.a($$0, "min_inclusive", "max_inclusive", aot::a, aot::a, aot::b);
+   private Optional<Float> b() {
+      return this.f ? Optional.of(this.e) : Optional.empty();
    }
 
-   public static <T extends Comparable<T>> Codec<aot<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return aoi.a(
-         a($$0),
-         (Function<aot<T>, DataResult<aot<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
+   public void a(sh $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b(), sh::a);
    }
 
-   public static <T extends Comparable<T>> DataResult<aot<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new aot($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(aot<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   public static aot b(sh $$0) {
+      aep $$1 = $$0.s();
+      Optional<Float> $$2 = $$0.b(sh::readFloat);
+      return a($$1, $$2);
    }
 }

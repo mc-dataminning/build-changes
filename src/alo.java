@@ -1,22 +1,21 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class alo<T> {
-   @Nullable
-   private final T a;
+public class alo implements akx {
+   public static final akx.a a = new akx.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   public alo(@Nullable T $$0) {
-      this.a = $$0;
+   public alo(MinecraftServer.b $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   T g() {
-      return this.a;
+   @Override
+   public void a(Consumer<uw<?>> $$0) {
+      $$0.accept(new ve(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
    }
 
-   boolean f() {
-      return false;
+   @Override
+   public akx.a a() {
+      return a;
    }
-
-   protected abstract void a(JsonObject var1);
 }

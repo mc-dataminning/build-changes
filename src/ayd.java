@@ -1,25 +1,29 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class ayd extends axd {
-   public ayd(int $$0, Schema $$1) {
+public class ayd extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
+
+   public ayd(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
       super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:barrel");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      $$0.register($$1, "minecraft:lectern", $$1x -> DSL.optionalFields("Book", avw.m.in($$0)));
-      $$0.registerSimple($$1, "minecraft:bell");
-      return $$1;
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(aym.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
+            )
+      );
    }
 }

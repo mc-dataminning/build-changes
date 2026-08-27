@@ -1,34 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-
-public class cns extends cno {
-   public static final Codec<cns> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cnk.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, cns::new)
-   );
-   private final hi<cnk> c;
-   private final int d;
-   private final int e;
-
-   public cns(hi<cnk> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+public class cns extends cnd {
+   public cns(cnd.a $$0, bil... $$1) {
+      super($$0, cne.b, $$1);
    }
 
    @Override
-   protected Stream<he<cnk>> b() {
-      return this.c.a();
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
    @Override
-   protected Codec<? extends cno> a() {
-      return b;
+   public int b(int $$0) {
+      return this.a($$0) + 15;
    }
 
    @Override
-   public he<cnk> getNoiseBiome(int $$0, int $$1, int $$2, cnt.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

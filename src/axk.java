@@ -1,23 +1,19 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class axk extends Schema {
-   public axk(int $$0, Schema $$1) {
+public class axk extends DataFix {
+   public axk(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         avw.b,
-         () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", avw.p.in($$0)), "Inventory", DSL.list(avw.m.in($$0)), "EnderItems", DSL.list(avw.m.in($$0))
-            )
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "Map id fix",
+         this.getInputSchema().getType(aym.j),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
       );
-      $$0.registerType(true, avw.p, () -> DSL.optionalFields("Passengers", DSL.list(avw.p.in($$0)), avw.q.in($$0)));
    }
 }

@@ -1,56 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class agq {
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.fillbiome.toobig", $$0, $$1));
+
+   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("title").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
-                                    "targets", ec.d()
-                                 )
-                                 .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets")))))
-                              .then(dt.a("reset").executes($$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets")))))
-                           .then(
-                              dt.a("title")
-                                 .then(
-                                    dt.a("title", dy.a())
-                                       .executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "title", yj::new))
-                                 )
-                           ))
-                        .then(
-                           dt.a("subtitle")
-                              .then(
-                                 dt.a("title", dy.a())
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "subtitle", yh::new))
-                              )
-                        ))
-                     .then(
-                        dt.a("actionbar")
-                           .then(
-                              dt.a("title", dy.a()).executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "actionbar", xk::new))
-                           )
-                     ))
+               dt.a("from", fj.a())
                   .then(
-                     dt.a("times")
+                     dt.a("to", fj.a())
                         .then(
-                           dt.a("fadeIn", fb.a())
+                           ((RequiredArgumentBuilder)dt.a("biome", ep.a($$1, jd.ap))
+                                 .executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "from"), fj.a($$0x, "to"), ep.a($$0x, "biome", jd.ap), $$0xx -> true)))
                               .then(
-                                 dt.a("stay", fb.a())
+                                 dt.a("replace")
                                     .then(
-                                       dt.a("fadeOut", fb.a())
+                                       dt.a("filter", es.a($$1, jd.ap))
                                           .executes(
                                              $$0x -> a(
                                                    (ds)$$0x.getSource(),
-                                                   ec.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                   fj.a($$0x, "from"),
+                                                   fj.a($$0x, "to"),
+                                                   ep.a($$0x, "biome", jd.ap),
+                                                   es.a($$0x, "filter", jd.ap)::test
                                                 )
                                           )
                                     )
@@ -61,65 +44,62 @@ public class agq {
       );
    }
 
-   private static int a(ds $$0, Collection<aig> $$1) {
-      vg $$2 = new vg(false);
-
-      for (aig $$3 : $$1) {
-         $$3.c.a($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.title.cleared.single", $$1.iterator().next().H_()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(int $$0) {
+      return hr.c(hr.a($$0));
    }
 
-   private static int b(ds $$0, Collection<aig> $$1) {
-      vg $$2 = new vg(true);
-
-      for (aig $$3 : $$1) {
-         $$3.c.a($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.title.reset.single", $$1.iterator().next().H_()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static gv a(gv $$0) {
+      return new gv(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static int a(ds $$0, Collection<aig> $$1, sw $$2, String $$3, Function<sw, uo<?>> $$4) throws CommandSyntaxException {
-      for (aig $$5 : $$1) {
-         $$5.c.a($$4.apply(sy.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().H_()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static cql a(MutableInt $$0, dgu $$1, dup $$2, hf<cqi> $$3, Predicate<hf<cqi>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = hr.c($$5);
+         int $$10 = hr.c($$6);
+         int $$11 = hr.c($$7);
+         hf<cqi> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
+         }
+      };
    }
 
-   private static int a(ds $$0, Collection<aig> $$1, int $$2, int $$3, int $$4) {
-      yk $$5 = new yk($$2, $$3, $$4);
-
-      for (aig $$6 : $$1) {
-         $$6.c.a($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.title.times.single", $$1.iterator().next().H_()), true);
+   private static int a(ds $$0, gv $$1, gv $$2, hf.c<cqi> $$3, Predicate<hf<cqi>> $$4) throws CommandSyntaxException {
+      gv $$5 = a($$1);
+      gv $$6 = a($$2);
+      dup $$7 = dup.a($$5, $$6);
+      int $$8 = $$7.c() * $$7.d() * $$7.e();
+      int $$9 = $$0.e().X().c(cpg.x);
+      if ($$8 > $$9) {
+         throw b.create($$9, $$8);
       } else {
-         $$0.a(() -> sw.a("commands.title.times.multiple", $$1.size()), true);
-      }
+         aki $$10 = $$0.e();
+         List<dgu> $$11 = new ArrayList<>();
 
-      return $$1.size();
+         for (int $$12 = hy.a($$7.i()); $$12 <= hy.a($$7.l()); $$12++) {
+            for (int $$13 = hy.a($$7.g()); $$13 <= hy.a($$7.j()); $$13++) {
+               dgu $$14 = $$10.a($$13, $$12, dgz.n, false);
+               if ($$14 == null) {
+                  throw a.create();
+               }
+
+               $$11.add($$14);
+            }
+         }
+
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dgu $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$7, $$3, $$4), $$10.k().i().b());
+            $$16.a(true);
+         }
+
+         $$10.k().a.a($$11);
+         $$0.a(() -> te.a("commands.fillbiome.success.count", $$15.getValue(), $$7.g(), $$7.h(), $$7.i(), $$7.j(), $$7.k(), $$7.l()), true);
+         return $$15.getValue();
+      }
    }
 }

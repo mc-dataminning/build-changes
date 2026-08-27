@@ -1,109 +1,104 @@
-public class exf implements exh {
-   public static final acq a = new acq("textures/gui/container/bundle.png");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 128;
-   private static final int e = 18;
-   private static final int f = 20;
-   private final hn<cfz> g;
-   private final int h;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public exf(cde $$0) {
-      this.g = $$0.a();
-      this.h = $$0.b();
+public class exf extends exv {
+   private static final long a = 2000L;
+   private final akv b;
+   private long c = -1L;
+   private boolean k;
+   private static final Object2IntMap<dgz> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dgz.c, 5526612);
+      $$0.put(dgz.d, 10066329);
+      $$0.put(dgz.e, 6250897);
+      $$0.put(dgz.f, 8434258);
+      $$0.put(dgz.g, 13750737);
+      $$0.put(dgz.h, 7497737);
+      $$0.put(dgz.i, 3159410);
+      $$0.put(dgz.j, 2213376);
+      $$0.put(dgz.k, 13421772);
+      $$0.put(dgz.l, 16769184);
+      $$0.put(dgz.m, 15884384);
+      $$0.put(dgz.n, 16777215);
+   });
+
+   public exf(akv $$0) {
+      super(eqf.a);
+      this.b = $$0;
    }
 
    @Override
-   public int a() {
-      return this.c() * 20 + 2 + 4;
+   public boolean aA_() {
+      return false;
    }
 
    @Override
-   public int a(eov $$0) {
-      return this.b() * 18 + 2;
+   protected boolean aD_() {
+      return false;
    }
 
    @Override
-   public void a(eov $$0, int $$1, int $$2, eox $$3) {
-      int $$4 = this.b();
-      int $$5 = this.c();
-      boolean $$6 = this.h >= 64;
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
-         }
-      }
-
-      this.a($$1, $$2, $$4, $$5, $$3);
+   public void h() {
+      this.k = true;
+      this.d(true);
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, eox $$4, eov $$5) {
-      if ($$2 >= this.g.size()) {
-         this.a($$4, $$0, $$1, $$3 ? exf.a.b : exf.a.a);
+   @Override
+   protected void b(evt $$0) {
+      if (this.k) {
+         $$0.a(evs.a, te.c("narrator.loading.done"));
       } else {
-         cfz $$6 = this.g.get($$2);
-         this.a($$4, $$0, $$1, exf.a.a);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            evp.a($$4, $$0 + 1, $$1 + 1, 0);
+         String $$1 = this.l();
+         $$0.a(evs.a, $$1);
+      }
+   }
+
+   private String l() {
+      return aro.a(this.b.e(), 0, 100) + "%";
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.g / 2;
+      int $$6 = this.h / 2;
+      int $$7 = 30;
+      a($$0, this.b, $$5, $$6 + 30, 2, 0);
+      $$0.a(this.i, this.l(), $$5, $$6 - 9 / 2 - 30, 16777215);
+   }
+
+   public static void a(erx $$0, akv $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.c();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.d();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
          }
-      }
-   }
 
-   private void a(int $$0, int $$1, int $$2, int $$3, eox $$4) {
-      this.a($$4, $$0, $$1, exf.a.f);
-      this.a($$4, $$0 + $$2 * 18 + 1, $$1, exf.a.f);
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         this.a($$4, $$0 + 1 + $$5 * 18, $$1, exf.a.d);
-         this.a($$4, $$0 + 1 + $$5 * 18, $$1 + $$3 * 20, exf.a.e);
-      }
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.a($$4, $$0, $$1 + $$6 * 20 + 1, exf.a.c);
-         this.a($$4, $$0 + $$2 * 18 + 1, $$1 + $$6 * 20 + 1, exf.a.c);
-      }
-
-      this.a($$4, $$0, $$1 + $$3 * 20, exf.a.g);
-      this.a($$4, $$0 + $$2 * 18 + 1, $$1 + $$3 * 20, exf.a.g);
-   }
-
-   private void a(eox $$0, int $$1, int $$2, exf.a $$3) {
-      $$0.a(a, $$1, $$2, 0, (float)$$3.h, (float)$$3.i, $$3.j, $$3.k, 128, 128);
-   }
-
-   private int b() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.g.size() + 1.0)));
-   }
-
-   private int c() {
-      return (int)Math.ceil(((double)this.g.size() + 1.0) / (double)this.b());
-   }
-
-   static enum a {
-      a(0, 0, 18, 20),
-      b(0, 40, 18, 20),
-      c(0, 18, 1, 20),
-      d(0, 20, 18, 1),
-      e(0, 60, 18, 1),
-      f(0, 20, 1, 1),
-      g(0, 60, 1, 1);
-
-      public final int h;
-      public final int i;
-      public final int j;
-      public final int k;
-
-      private a(int $$0, int $$1, int $$2, int $$3) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-         this.k = $$3;
-      }
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dgz $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
+            }
+         }
+      });
    }
 }

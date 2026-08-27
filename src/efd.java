@@ -1,56 +1,46 @@
-public class efd {
-   private final efg a;
-   private final String b;
-   private final efj c;
-   private sw d;
-   private sw e;
-   private efj.a f;
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import java.util.Set;
 
-   public efd(efg $$0, String $$1, efj $$2, sw $$3, efj.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.g();
-      this.f = $$4;
+public class efd implements efh {
+   static final efd a = new efd();
+
+   private efd() {
    }
 
-   public efg a() {
-      return this.a;
+   @Override
+   public efi b() {
+      return efj.l;
    }
 
-   public String b() {
-      return this.b;
+   @Override
+   public Set<eeq<?>> a() {
+      return ImmutableSet.of(eet.j);
    }
 
-   public efj c() {
-      return this.c;
+   public boolean a(ech $$0) {
+      Float $$1 = $$0.c(eet.j);
+      if ($$1 != null) {
+         art $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public sw d() {
-      return this.d;
+   public static efh.a c() {
+      return () -> a;
    }
 
-   private sw g() {
-      return sy.a((sw)this.d.e().a($$0 -> $$0.a(new tb(tb.a.a, sw.b(this.b)))));
-   }
+   public static class a implements ecq<efd> {
+      public void a(JsonObject $$0, efd $$1, JsonSerializationContext $$2) {
+      }
 
-   public sw e() {
-      return this.e;
-   }
-
-   public void a(sw $$0) {
-      this.d = $$0;
-      this.e = this.g();
-      this.a.b(this);
-   }
-
-   public efj.a f() {
-      return this.f;
-   }
-
-   public void a(efj.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
+      public efd b(JsonObject $$0, JsonDeserializationContext $$1) {
+         return efd.a;
+      }
    }
 }

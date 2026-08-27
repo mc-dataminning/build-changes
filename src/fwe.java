@@ -1,58 +1,45 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class fwe extends fwr<bus, fem<bus>> {
+   private final fnc a;
 
-public class fwe {
-   public static final fwf a = new fwf();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final fwe e = new fwe(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public fwg a(int $$0, int $$1) {
-         return new fwg($$0, $$1);
-      }
-   };
-   private final List<fwd> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
-
-   public fwe(List<fwd> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+   public fwe(fue<bus, fem<bus>> $$0, fnc $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public fwg a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new fwg(this.g, this.h) : new fwg(this.g, $$1);
-      } else if (this.h != -1) {
-         return new fwg($$0, this.h);
+   public void a(elh $$0, fng $$1, int $$2, bus $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fB();
+      boolean $$11 = $$3.i_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
+      }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.i_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
       } else {
-         int $$2 = Math.min($$0, $$1);
-         return new fwg($$2, $$2);
+         $$0.a(0.06F, 0.27F, -0.5F);
       }
-   }
 
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(fwe.a $$0) {
-      for (fwd $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
       }
-   }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+      ciw $$14 = $$3.c(bil.a);
+      this.a.a($$3, $$14, cit.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

@@ -1,83 +1,36 @@
-public class fgq extends fim {
-   fgq(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+public class fgq<T extends big> extends fec<T> {
+   private final fhj a;
+   private final fhj b;
+
+   public fgq(fhj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
+   }
+
+   public static fhp a(fhn $$0) {
+      fhr $$1 = new fhr();
+      fhs $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fho.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fhl.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fho.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fhl.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fho.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhl.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fho.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhl.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fho.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fhl.a(0.0F, 20.5F, -3.0F));
+      return fhp.a($$1, 32, 32);
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public fhj a() {
+      return this.a;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public fhq b() {
-      return fhq.b;
-   }
-
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.aX()) {
+         $$6 = 1.5F;
       }
 
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgq $$8 = new fgq($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fhp<iy> {
-      private final fih a;
-
-      public b(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgq $$8 = new fgq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements fhp<iy> {
-      private final fih a;
-
-      public c(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgq $$8 = new fgq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+      this.b.f = -$$6 * 0.45F * aro.a(0.6F * $$3);
    }
 }

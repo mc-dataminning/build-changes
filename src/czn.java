@@ -1,181 +1,104 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class czn {
-   private static final Logger c = LogUtils.getLogger();
-   private final czp<?> d;
+public class czn extends csk implements czl {
+   public static final dfw<dgg> a = dfo.bh;
+   public static final dfp b = dfo.C;
+   protected static final ehy c = csk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final ehy d = csk.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+
+   public czn(dex.d $$0) {
+      super($$0);
+      this.k(this.n().a(a, dgg.b).a(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public boolean g_(dey $$0) {
+      return $$0.c(a) != dgg.c;
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      dgg $$4 = $$0.c(a);
+      switch ($$4) {
+         case c:
+            return ehv.b();
+         case a:
+            return d;
+         default:
+            return c;
+      }
+   }
+
    @Nullable
-   protected cmm o;
-   protected final gu p;
-   protected boolean q;
-   private dcb e;
-
-   public czn(czp<?> $$0, gu $$1, dcb $$2) {
-      this.d = $$0;
-      this.p = $$1.i();
-      this.e = $$2;
-   }
-
-   public static gu c(qr $$0) {
-      return new gu($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
-
-   @Nullable
-   public cmm k() {
-      return this.o;
-   }
-
-   public void a(cmm $$0) {
-      this.o = $$0;
-   }
-
-   public boolean l() {
-      return this.o != null;
-   }
-
-   public void a(qr $$0) {
-   }
-
-   protected void b(qr $$0) {
-   }
-
-   public final qr m() {
-      qr $$0 = this.o();
-      this.e($$0);
-      return $$0;
-   }
-
-   public final qr n() {
-      qr $$0 = this.o();
-      this.d($$0);
-      return $$0;
-   }
-
-   public final qr o() {
-      qr $$0 = new qr();
-      this.b($$0);
-      return $$0;
-   }
-
-   private void d(qr $$0) {
-      acq $$1 = czp.a(this.u());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+   @Override
+   public dey a(cle $$0) {
+      gv $$1 = $$0.a();
+      dey $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(a, dgg.c).a(b, Boolean.valueOf(false));
       } else {
-         $$0.a("id", $$1.toString());
+         eab $$3 = $$0.q().b_($$1);
+         dey $$4 = this.n().a(a, dgg.b).a(b, Boolean.valueOf($$3.a() == eac.c));
+         hb $$5 = $$0.k();
+         return $$5 != hb.a && ($$5 == hb.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(a, dgg.a);
       }
    }
 
-   public static void a(qr $$0, czp<?> $$1) {
-      $$0.a("id", czp.a($$1).toString());
-   }
-
-   public void e(cfz $$0) {
-      cds.a($$0, this.u(), this.o());
-   }
-
-   private void e(qr $$0) {
-      this.d($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static czn a(gu $$0, dcb $$1, qr $$2) {
-      String $$3 = $$2.l("id");
-      acq $$4 = acq.a($$3);
-      if ($$4 == null) {
-         c.error("Block entity has invalid type: {}", $$3);
-         return null;
+   @Override
+   public boolean a(dey $$0, cle $$1) {
+      ciw $$2 = $$1.n();
+      dgg $$3 = $$0.c(a);
+      if ($$3 == dgg.c || !$$2.a(this.k())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         hb $$5 = $$1.k();
+         return $$3 == dgg.b ? $$5 == hb.b || $$4 && $$5.o().d() : $$5 == hb.a || !$$4 && $$5.o().d();
       } else {
-         return jb.l.b($$4).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5) {
-               c.error("Failed to create block entity {}", $$3, var5);
-               return null;
-            }
-         }).map($$2x -> {
-            try {
-               $$2x.a($$2);
-               return $$2x;
-            } catch (Throwable var4x) {
-               c.error("Failed to load data for block entity {}", $$3, var4x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            c.warn("Skipping BlockEntity with id {}", $$3);
-            return null;
-         });
+         return true;
       }
    }
 
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.e);
+   @Override
+   public eab c_(dey $$0) {
+      return $$0.c(b) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(cpl $$0, gv $$1, dey $$2, eab $$3) {
+      return $$2.c(a) != dgg.c ? czl.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cbl $$0, coq $$1, gv $$2, dey $$3, eaa $$4) {
+      return $$3.c(a) != dgg.c ? czl.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected static void a(cmm $$0, gu $$1, dcb $$2) {
-      $$0.p($$1);
-      if (!$$2.i()) {
-         $$0.c($$1, $$2.b());
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(apo.a);
+         case c:
+            return false;
+         default:
+            return false;
       }
-   }
-
-   public gu p() {
-      return this.p;
-   }
-
-   public dcb q() {
-      return this.e;
-   }
-
-   @Nullable
-   public uo<ur> h() {
-      return null;
-   }
-
-   public qr ao_() {
-      return new qr();
-   }
-
-   public boolean r() {
-      return this.q;
-   }
-
-   public void ap_() {
-      this.q = true;
-   }
-
-   public void s() {
-      this.q = false;
-   }
-
-   public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", () -> jb.l.b(this.u()) + " // " + this.getClass().getCanonicalName());
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.q());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
-      }
-   }
-
-   public boolean t() {
-      return false;
-   }
-
-   public czp<?> u() {
-      return this.d;
-   }
-
-   @Deprecated
-   public void b(dcb $$0) {
-      this.e = $$0;
    }
 }

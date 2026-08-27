@@ -1,28 +1,13 @@
-public class eml extends emo {
-   private final gak c;
-   private final ejq d;
-   private final ejr e;
+import com.google.gson.annotations.SerializedName;
 
-   public eml(euq $$0, ejq $$1, ejr $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gak($$0);
-   }
+public class eml extends end implements emx {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
 
-   @Override
-   public void run() {
-      this.b(sw.c("mco.connect.connecting"));
-      this.c.a(this.d, fga.a(this.e.a));
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      enn.N().ab().a();
-   }
-
-   @Override
-   public void b() {
-      this.c.b();
+   public eml(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

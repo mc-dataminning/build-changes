@@ -1,345 +1,322 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fmy implements fnd.a {
-   private static final boolean a = true;
-   private static final boolean b = true;
-   private static final boolean c = true;
-   private static final boolean d = true;
-   private static final boolean e = true;
-   private static final boolean f = false;
-   private static final boolean g = true;
-   private static final boolean h = true;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final boolean k = true;
-   private static final boolean l = true;
-   private static final boolean m = true;
-   private static final boolean n = true;
-   private static final int o = 30;
-   private static final int p = 30;
-   private static final int q = 8;
-   private static final int r = 20;
-   private static final float s = 0.02F;
-   private static final int t = -1;
-   private static final int u = -256;
-   private static final int v = -23296;
-   private static final int w = -16711936;
-   private static final int x = -3355444;
-   private static final int y = -98404;
-   private static final int z = -65536;
-   private final enn A;
-   private final Map<gu, fmy.b> B = Maps.newHashMap();
-   private final Map<UUID, fmy.a> C = Maps.newHashMap();
-   private UUID D;
+public class fmy {
+   private static final int b = 96;
+   private static final List<fmy.e> c = Lists.newArrayList(new fmy.e[]{new fmy.a(), new fmy.b()});
+   public static final float a = 5000.0F;
+   private static float d;
+   private static float e;
+   private static float f;
+   private static int g = -1;
+   private static int h = -1;
+   private static long i = -1L;
 
-   public fmy(enn $$0) {
-      this.A = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.B.clear();
-      this.C.clear();
-      this.D = null;
-   }
-
-   public void a(fmy.b $$0) {
-      this.B.put($$0.a, $$0);
-   }
-
-   public void a(fmy.a $$0) {
-      this.C.put($$0.a, $$0);
-   }
-
-   public void a(int $$0) {
-      this.C.values().removeIf($$1 -> $$1.b == $$0);
-   }
-
-   @Override
-   public void a(eij $$0, fjx $$1, double $$2, double $$3, double $$4) {
-      this.c();
-      this.b();
-      this.a($$0, $$1);
-      if (!this.A.t.G_()) {
-         this.g();
-      }
-   }
-
-   private void b() {
-      this.C.entrySet().removeIf($$0 -> this.A.s.a($$0.getValue().b) == null);
-   }
-
-   private void c() {
-      long $$0 = this.A.s.V() - 20L;
-      this.B.entrySet().removeIf($$1 -> $$1.getValue().f < $$0);
-   }
-
-   private void a(eij $$0, fjx $$1) {
-      gu $$2 = this.e().c();
-      this.C.values().forEach($$2x -> {
-         if (this.c($$2x)) {
-            this.b($$0, $$1, $$2x);
+   public static void a(epy $$0, float $$1, fie $$2, int $$3, float $$4) {
+      ead $$5 = $$0.k();
+      big $$6 = $$0.g();
+      if ($$5 == ead.b) {
+         long $$7 = ac.b();
+         int $$8 = $$2.s(gv.a($$0.b())).a().j();
+         if (i < 0L) {
+            g = $$8;
+            h = $$8;
+            i = $$7;
          }
-      });
-      this.b($$0, $$1);
 
-      for (gu $$3 : this.B.keySet()) {
-         if ($$2.a($$3, 30.0)) {
-            a($$0, $$1, $$3);
+         int $$9 = g >> 16 & 0xFF;
+         int $$10 = g >> 8 & 0xFF;
+         int $$11 = g & 0xFF;
+         int $$12 = h >> 16 & 0xFF;
+         int $$13 = h >> 8 & 0xFF;
+         int $$14 = h & 0xFF;
+         float $$15 = aro.a((float)($$7 - i) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = aro.i($$15, (float)$$12, (float)$$9);
+         float $$17 = aro.i($$15, (float)$$13, (float)$$10);
+         float $$18 = aro.i($$15, (float)$$14, (float)$$11);
+         d = $$16 / 255.0F;
+         e = $$17 / 255.0F;
+         f = $$18 / 255.0F;
+         if (g != $$8) {
+            g = $$8;
+            h = aro.d($$16) << 16 | aro.d($$17) << 8 | aro.d($$18);
+            i = $$7;
          }
-      }
-
-      Map<gu, Set<UUID>> $$4 = this.d();
-      this.B.values().forEach($$4x -> {
-         if ($$2.a($$4x.a, 30.0)) {
-            Set<UUID> $$5 = $$4.get($$4x.a);
-            this.a($$0, $$1, $$4x, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
-         }
-      });
-      this.f().forEach(($$3x, $$4x) -> {
-         if ($$2.a($$3x, 30.0)) {
-            this.a($$0, $$1, $$3x, (List<String>)$$4x);
-         }
-      });
-   }
-
-   private Map<gu, Set<UUID>> d() {
-      Map<gu, Set<UUID>> $$0 = Maps.newHashMap();
-      this.C.values().forEach($$1 -> $$1.i.forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.a())));
-      return $$0;
-   }
-
-   private void b(eij $$0, fjx $$1) {
-      Map<gu, Set<UUID>> $$2 = Maps.newHashMap();
-      this.C.values().stream().filter(fmy.a::c).forEach($$1x -> $$2.computeIfAbsent($$1x.f, $$0xx -> Sets.newHashSet()).add($$1x.a()));
-      $$2.entrySet().forEach($$2x -> {
-         gu $$3 = (gu)$$2x.getKey();
-         Set<UUID> $$4 = (Set<UUID>)$$2x.getValue();
-         Set<String> $$5 = $$4.stream().map(yz::a).collect(Collectors.toSet());
-         int $$6 = 1;
-         a($$0, $$1, $$5.toString(), $$3, $$6++, -256);
-         a($$0, $$1, "Flower", $$3, $$6++, -1);
-         float $$7 = 0.05F;
-         fnd.a($$0, $$1, $$3, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
-      });
-   }
-
-   private static String a(Collection<UUID> $$0) {
-      if ($$0.isEmpty()) {
-         return "-";
+      } else if ($$5 == ead.a) {
+         d = 0.6F;
+         e = 0.1F;
+         f = 0.0F;
+         i = -1L;
+      } else if ($$5 == ead.c) {
+         d = 0.623F;
+         e = 0.734F;
+         f = 0.785F;
+         i = -1L;
+         RenderSystem.clearColor(d, e, f, 0.0F);
       } else {
-         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(yz::a).collect(Collectors.toSet()).toString();
+         float $$19 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$19 = 1.0F - (float)Math.pow((double)$$19, 0.25);
+         ehf $$20 = $$2.a($$0.b(), $$1);
+         float $$21 = (float)$$20.c;
+         float $$22 = (float)$$20.d;
+         float $$23 = (float)$$20.e;
+         float $$24 = aro.a(aro.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         cqk $$25 = $$2.z_();
+         ehf $$26 = $$0.b().a(2.0, 2.0, 2.0).a(0.25);
+         ehf $$27 = aqq.a($$26, ($$3x, $$4x, $$5x) -> $$2.d().a(ehf.a($$25.a($$3x, $$4x, $$5x).a().e()), $$24));
+         d = (float)$$27.a();
+         e = (float)$$27.b();
+         f = (float)$$27.c();
+         if ($$3 >= 4) {
+            float $$28 = aro.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$29 = new Vector3f($$28, 0.0F, 0.0F);
+            float $$30 = $$0.l().dot($$29);
+            if ($$30 < 0.0F) {
+               $$30 = 0.0F;
+            }
+
+            if ($$30 > 0.0F) {
+               float[] $$31 = $$2.d().a($$2.f($$1), $$1);
+               if ($$31 != null) {
+                  $$30 *= $$31[3];
+                  d = d * (1.0F - $$30) + $$31[0] * $$30;
+                  e = e * (1.0F - $$30) + $$31[1] * $$30;
+                  f = f * (1.0F - $$30) + $$31[2] * $$30;
+               }
+            }
+         }
+
+         d = d + ($$21 - d) * $$19;
+         e = e + ($$22 - e) * $$19;
+         f = f + ($$23 - f) * $$19;
+         float $$32 = $$2.d($$1);
+         if ($$32 > 0.0F) {
+            float $$33 = 1.0F - $$32 * 0.5F;
+            float $$34 = 1.0F - $$32 * 0.4F;
+            d *= $$33;
+            e *= $$33;
+            f *= $$34;
+         }
+
+         float $$35 = $$2.b($$1);
+         if ($$35 > 0.0F) {
+            float $$36 = 1.0F - $$35 * 0.5F;
+            d *= $$36;
+            e *= $$36;
+            f *= $$36;
+         }
+
+         i = -1L;
       }
-   }
 
-   private static void a(eij $$0, fjx $$1, gu $$2) {
-      float $$3 = 0.05F;
-      fnd.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-   }
-
-   private void a(eij $$0, fjx $$1, gu $$2, List<String> $$3) {
-      float $$4 = 0.05F;
-      fnd.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-      a($$0, $$1, $$3 + "", $$2, 0, -256);
-      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
-   }
-
-   private void a(eij $$0, fjx $$1, fmy.b $$2, Collection<UUID> $$3) {
-      int $$4 = 0;
-      if (!$$3.isEmpty()) {
-         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
+      float $$37 = ((float)$$0.b().d - (float)$$2.C_()) * $$2.k().g();
+      fmy.e $$38 = a($$6, $$1);
+      if ($$38 != null) {
+         biw $$39 = (biw)$$6;
+         $$37 = $$38.a($$39, $$39.b($$38.a()), $$37, $$1);
       }
 
-      a($$0, $$1, "Out: " + a(this.a($$2.a)), $$2, $$4++, -3355444);
-      if ($$2.c == 0) {
-         a($$0, $$1, "In: -", $$2, $$4++, -256);
-      } else if ($$2.c == 1) {
-         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
+      if ($$37 < 1.0F && $$5 != ead.a && $$5 != ead.c) {
+         if ($$37 < 0.0F) {
+            $$37 = 0.0F;
+         }
+
+         $$37 *= $$37;
+         d *= $$37;
+         e *= $$37;
+         f *= $$37;
+      }
+
+      if ($$4 > 0.0F) {
+         d = d * (1.0F - $$4) + d * 0.7F * $$4;
+         e = e * (1.0F - $$4) + e * 0.6F * $$4;
+         f = f * (1.0F - $$4) + f * 0.6F * $$4;
+      }
+
+      float $$40;
+      if ($$5 == ead.b) {
+         if ($$6 instanceof fmi) {
+            $$40 = ((fmi)$$6).z();
+         } else {
+            $$40 = 1.0F;
+         }
       } else {
-         a($$0, $$1, "In: " + $$2.c + " bees", $$2, $$4++, -256);
-      }
+         label86: {
+            if ($$6 instanceof biw $$42 && $$42.a(bhv.p) && !$$42.a(bhv.G)) {
+               $$40 = fmz.a($$42, $$1);
+               break label86;
+            }
 
-      a($$0, $$1, "Honey: " + $$2.d, $$2, $$4++, -23296);
-      a($$0, $$1, $$2.b + ($$2.e ? " (sedated)" : ""), $$2, $$4++, -1);
-   }
-
-   private void a(eij $$0, fjx $$1, fmy.a $$2) {
-      if ($$2.d != null) {
-         fnl.a($$0, $$1, $$2.d, 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
-      }
-   }
-
-   private void b(eij $$0, fjx $$1, fmy.a $$2) {
-      boolean $$3 = this.b($$2);
-      int $$4 = 0;
-      a($$0, $$1, $$2.c, $$4++, $$2.toString(), -1, 0.03F);
-      if ($$2.e == null) {
-         a($$0, $$1, $$2.c, $$4++, "No hive", -98404, 0.02F);
-      } else {
-         a($$0, $$1, $$2.c, $$4++, "Hive: " + this.a($$2, $$2.e), -256, 0.02F);
-      }
-
-      if ($$2.f == null) {
-         a($$0, $$1, $$2.c, $$4++, "No flower", -98404, 0.02F);
-      } else {
-         a($$0, $$1, $$2.c, $$4++, "Flower: " + this.a($$2, $$2.f), -256, 0.02F);
-      }
-
-      for (String $$5 : $$2.h) {
-         a($$0, $$1, $$2.c, $$4++, $$5, -16711936, 0.02F);
-      }
-
-      if ($$3) {
-         this.a($$0, $$1, $$2);
-      }
-
-      if ($$2.g > 0) {
-         int $$6 = $$2.g < 600 ? -3355444 : -23296;
-         a($$0, $$1, $$2.c, $$4++, "Travelling: " + $$2.g + " ticks", $$6, 0.02F);
-      }
-   }
-
-   private static void a(eij $$0, fjx $$1, String $$2, fmy.b $$3, int $$4, int $$5) {
-      gu $$6 = $$3.a;
-      a($$0, $$1, $$2, $$6, $$4, $$5);
-   }
-
-   private static void a(eij $$0, fjx $$1, String $$2, gu $$3, int $$4, int $$5) {
-      double $$6 = 1.3;
-      double $$7 = 0.2;
-      double $$8 = (double)$$3.u() + 0.5;
-      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
-      double $$10 = (double)$$3.w() + 0.5;
-      fnd.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
-   }
-
-   private static void a(eij $$0, fjx $$1, ho $$2, int $$3, String $$4, int $$5, float $$6) {
-      double $$7 = 2.4;
-      double $$8 = 0.25;
-      gu $$9 = gu.a($$2);
-      double $$10 = (double)$$9.u() + 0.5;
-      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
-      double $$12 = (double)$$9.w() + 0.5;
-      float $$13 = 0.5F;
-      fnd.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
-   }
-
-   private emz e() {
-      return this.A.j.m();
-   }
-
-   private Set<String> b(fmy.b $$0) {
-      return this.a($$0.a).stream().map(yz::a).collect(Collectors.toSet());
-   }
-
-   private String a(fmy.a $$0, gu $$1) {
-      double $$2 = Math.sqrt($$1.b($$0.c));
-      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
-      return $$1.x() + " (dist " + $$3 + ")";
-   }
-
-   private boolean b(fmy.a $$0) {
-      return Objects.equals(this.D, $$0.a);
-   }
-
-   private boolean c(fmy.a $$0) {
-      byo $$1 = this.A.t;
-      gu $$2 = gu.a($$1.dn(), $$0.c.b(), $$1.dt());
-      gu $$3 = gu.a($$0.c);
-      return $$2.a($$3, 30.0);
-   }
-
-   private Collection<UUID> a(gu $$0) {
-      return this.C.values().stream().filter($$1 -> $$1.a($$0)).map(fmy.a::a).collect(Collectors.toSet());
-   }
-
-   private Map<gu, List<String>> f() {
-      Map<gu, List<String>> $$0 = Maps.newHashMap();
-
-      for (fmy.a $$1 : this.C.values()) {
-         if ($$1.e != null && !this.B.containsKey($$1.e)) {
-            $$0.computeIfAbsent($$1.e, $$0x -> Lists.newArrayList()).add($$1.b());
+            $$40 = 0.0F;
          }
       }
 
-      return $$0;
+      if (d != 0.0F && e != 0.0F && f != 0.0F) {
+         float $$45 = Math.min(1.0F / d, Math.min(1.0F / e, 1.0F / f));
+         d = d * (1.0F - $$40) + d * $$45 * $$40;
+         e = e * (1.0F - $$40) + e * $$45 * $$40;
+         f = f * (1.0F - $$40) + f * $$45 * $$40;
+      }
+
+      RenderSystem.clearColor(d, e, f, 0.0F);
    }
 
-   private void g() {
-      fnd.a(this.A.al(), 8).ifPresent($$0 -> this.D = $$0.ct());
+   public static void a() {
+      RenderSystem.setShaderFogStart(Float.MAX_VALUE);
    }
 
-   public static class a {
-      public final UUID a;
-      public final int b;
-      public final ho c;
-      @Nullable
-      public final dxt d;
-      @Nullable
-      public final gu e;
-      @Nullable
-      public final gu f;
-      public final int g;
-      public final List<String> h = Lists.newArrayList();
-      public final Set<gu> i = Sets.newHashSet();
+   @Nullable
+   private static fmy.e a(big $$0, float $$1) {
+      return $$0 instanceof biw $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
 
-      public a(UUID $$0, int $$1, ho $$2, @Nullable dxt $$3, @Nullable gu $$4, @Nullable gu $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public static void a(epy $$0, fmy.d $$1, float $$2, boolean $$3, float $$4) {
+      ead $$5 = $$0.k();
+      big $$6 = $$0.g();
+      fmy.c $$7 = new fmy.c($$1);
+      fmy.e $$8 = a($$6, $$4);
+      if ($$5 == ead.a) {
+         if ($$6.G_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else if ($$6 instanceof biw && ((biw)$$6).a(bhv.l)) {
+            $$7.b = 0.0F;
+            $$7.c = 3.0F;
+         } else {
+            $$7.b = 0.25F;
+            $$7.c = 1.0F;
+         }
+      } else if ($$5 == ead.c) {
+         if ($$6.G_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else {
+            $$7.b = 0.0F;
+            $$7.c = 2.0F;
+         }
+      } else if ($$8 != null) {
+         biw $$9 = (biw)$$6;
+         bht $$10 = $$9.b($$8.a());
+         if ($$10 != null) {
+            $$8.a($$7, $$9, $$10, $$2, $$4);
+         }
+      } else if ($$5 == ead.b) {
+         $$7.b = -8.0F;
+         $$7.c = 96.0F;
+         if ($$6 instanceof fmi $$11) {
+            $$7.c = $$7.c * Math.max(0.25F, $$11.z());
+            hf<cqi> $$12 = $$11.dK().s($$11.dk());
+            if ($$12.a(api.Z)) {
+               $$7.c *= 0.85F;
+            }
+         }
+
+         if ($$7.c > $$2) {
+            $$7.c = $$2;
+            $$7.d = eku.b;
+         }
+      } else if ($$3) {
+         $$7.b = $$2 * 0.05F;
+         $$7.c = Math.min($$2, 192.0F) * 0.5F;
+      } else if ($$1 == fmy.d.a) {
+         $$7.b = 0.0F;
+         $$7.c = $$2;
+         $$7.d = eku.b;
+      } else {
+         float $$13 = aro.a($$2 / 10.0F, 4.0F, 64.0F);
+         $$7.b = $$2 - $$13;
+         $$7.c = $$2;
+         $$7.d = eku.b;
       }
 
-      public boolean a(gu $$0) {
-         return this.e != null && this.e.equals($$0);
-      }
+      RenderSystem.setShaderFogStart($$7.b);
+      RenderSystem.setShaderFogEnd($$7.c);
+      RenderSystem.setShaderFogShape($$7.d);
+   }
 
-      public UUID a() {
-         return this.a;
-      }
+   public static void b() {
+      RenderSystem.setShaderFogColor(d, e, f);
+   }
 
-      public String b() {
-         return yz.a(this.a);
+   static class a implements fmy.e {
+      @Override
+      public bhr a() {
+         return bhv.o;
       }
 
       @Override
-      public String toString() {
-         return this.b();
-      }
-
-      public boolean c() {
-         return this.f != null;
+      public void a(fmy.c $$0, biw $$1, bht $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : aro.i(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == fmy.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
       }
    }
 
-   public static class b {
-      public final gu a;
-      public final String b;
-      public final int c;
-      public final int d;
-      public final boolean e;
-      public final long f;
+   static class b implements fmy.e {
+      @Override
+      public bhr a() {
+         return bhv.G;
+      }
 
-      public b(gu $$0, String $$1, int $$2, int $$3, boolean $$4, long $$5) {
+      @Override
+      public void a(fmy.c $$0, biw $$1, bht $$2, float $$3, float $$4) {
+         if (!$$2.a().isEmpty()) {
+            float $$5 = aro.i($$2.a().get().a($$1, $$4), $$3, 15.0F);
+            $$0.b = $$0.a == fmy.d.a ? 0.0F : $$5 * 0.75F;
+            $$0.c = $$5;
+         }
+      }
+
+      @Override
+      public float a(biw $$0, bht $$1, float $$2, float $$3) {
+         return $$1.a().isEmpty() ? 0.0F : 1.0F - $$1.a().get().a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final fmy.d a;
+      public float b;
+      public float c;
+      public eku d = eku.a;
+
+      public c(fmy.d $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      bhr a();
+
+      void a(fmy.c var1, biw var2, bht var3, float var4, float var5);
+
+      default boolean a(biw $$0, float $$1) {
+         return $$0.a(this.a());
+      }
+
+      default float a(biw $$0, bht $$1, float $$2, float $$3) {
+         bht $$4 = $$0.b(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
       }
    }
 }

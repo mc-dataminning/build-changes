@@ -1,43 +1,37 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class eqp implements esq {
-   private static final int a = 170;
-   private final sw b;
-   @Nullable
-   private List<aom> c;
-   @Nullable
-   private final sw d;
+public enum eqp {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   private eqp(sw $$0, @Nullable sw $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private static final IntFunction<eqp> e = aqi.a(eqp::a, values(), aqi.a.b);
+   private final int f;
+   private final te g;
+
+   private eqp(int $$0, String $$1) {
+      this.f = $$0;
+      this.g = te.c($$1);
    }
 
-   public static eqp a(sw $$0, @Nullable sw $$1) {
-      return new eqp($$0, $$1);
+   public int a() {
+      return this.f;
    }
 
-   public static eqp a(sw $$0) {
-      return new eqp($$0, $$0);
+   public te b() {
+      return this.g;
    }
 
-   @Override
-   public void b(esp $$0) {
-      if (this.d != null) {
-         $$0.a(eso.c, this.d);
-      }
+   public static eqp a(int $$0) {
+      return e.apply($$0);
    }
 
-   public List<aom> a(enn $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
+   public boolean c() {
+      return this == b || this == c;
    }
 
-   public static List<aom> a(enn $$0, sw $$1) {
-      return $$0.h.c($$1, 170);
+   public boolean d() {
+      return this == b || this == d;
    }
 }

@@ -1,23 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqm extends dqh {
+public record dqm(int b, int c, int d) implements dpp {
    public static final Codec<dqm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bch.b(dqh.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dqm::new)
+      $$0 -> $$0.group(
+               aqw.j.fieldOf("spread_width").forGetter(dqm::a), aqw.j.fieldOf("spread_height").forGetter(dqm::b), aqw.j.fieldOf("max_height").forGetter(dqm::c)
+            )
+            .apply($$0, dqm::new)
    );
-   private final bch<dqh> b;
 
-   public dqm(bch<dqh> $$0) {
-      this.b = $$0;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public int a(apf $$0, dih $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public dqi<?> a() {
-      return dqi.f;
+   public int c() {
+      return this.d;
    }
 }

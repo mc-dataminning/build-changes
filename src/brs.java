@@ -1,71 +1,127 @@
 import javax.annotation.Nullable;
 
-public class brs extends brl {
-   public brs(bfn<? extends brs> $$0, cmm $$1) {
-      super($$0, $$1);
+public abstract class brs extends bps {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final biy e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected biw g;
+   protected int h = 60;
+
+   public brs(biy $$0, boolean $$1) {
+      this($$0, $$1, false);
+   }
+
+   public brs(biy $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected void x() {
-      this.bO.a(0, new bmp(this));
-      this.bO.a(1, new bno(this, 2.0));
-      this.bO.a(2, new bmh(this, 1.0));
-      this.bO.a(3, new bod(this, 1.25, ciz.a(cgc.oI), false));
-      this.bO.a(4, new bmu(this, 1.25));
-      this.bO.a(5, new boi(this, 1.0));
-      this.bO.a(6, new bnd(this, byo.class, 6.0F));
-      this.bO.a(7, new bnq(this));
-   }
+   public boolean b() {
+      biw $$0 = this.e.j();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
 
-   public static bhf.a q() {
-      return bgb.y().a(bhg.a, 10.0).a(bhg.d, 0.2F);
-   }
-
-   @Override
-   protected amg s() {
-      return amh.eZ;
-   }
-
-   @Override
-   protected amg d(ben $$0) {
-      return amh.fb;
-   }
-
-   @Override
-   protected amg g_() {
-      return amh.fa;
-   }
-
-   @Override
-   protected void b(gu $$0, dcb $$1) {
-      this.a(amh.fd, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eR() {
-      return 0.4F;
-   }
-
-   @Override
-   public bdx b(byo $$0, bdw $$1) {
-      cfz $$2 = $$0.b($$1);
-      if ($$2.a(cgc.pK) && !this.h_()) {
-         $$0.a(amh.fc, 1.0F, 1.0F);
-         cfz $$3 = cgb.a($$2, $$0, cgc.pQ.ae_());
-         $$0.a($$1, $$3);
-         return bdx.a(this.dI().B);
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
       } else {
-         return super.b($$0, $$1);
+         eig $$1 = this.e.cf();
+         eig $$2 = $$0.cf();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.f($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.J().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
       }
    }
 
-   @Nullable
-   public brs b(aif $$0, bfe $$1) {
-      return bfn.t.a((cmm)$$0);
+   protected double l() {
+      return this.e.b(bkd.b);
    }
 
    @Override
-   protected float b(bgl $$0, bfk $$1) {
-      return this.h_() ? $$1.b * 0.95F : 1.3F;
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable biw $$0, btj $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dk())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(biw $$0) {
+      this.j = b(10 + this.e.ee().a(5));
+      eaq $$1 = this.e.H().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         eao $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.do();
+            int $$4 = $$2.c - $$0.du();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public brs c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

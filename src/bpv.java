@@ -1,18 +1,13 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bpv extends bqf<bfz> {
-   @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.W);
+public class bpv extends bqa {
+   public bpv(biy $$0, Class<? extends biw> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(bps.a.b, bps.a.a));
    }
 
-   @Override
-   protected void a(aif $$0, bfz $$1) {
-      if ($$1.aV()) {
-         $$1.dK().a(bpb.W, apz.a);
-      } else {
-         $$1.dK().b(bpb.W);
-      }
+   public bpv(biy $$0, Class<? extends biw> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(bps.a.b, bps.a.a));
    }
 }

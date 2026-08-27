@@ -1,57 +1,54 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
-public abstract class eqc<E extends eqc.a<E>> extends epc<E> {
-   private static final sw a = sw.c("narration.selection.usage");
+public class eqc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final aqf<String> e = new aqf<>(50);
 
-   public eqc(enn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public eou a(esv $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (this.aB_() && $$0 instanceof esv.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? eou.a(this, eou.a($$2)) : null;
-      } else if (!this.aB_()) {
-         E $$3 = this.f();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : eou.a(this, eou.a($$3));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void b(esp $$0) {
-      E $$1 = this.r();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.f();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
+   public eqc(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
          }
       }
+   }
 
-      if (this.aB_()) {
-         $$0.a(eso.d, a);
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
+
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   public abstract static class a<E extends eqc.a<E>> extends epc.a<E> implements esq {
-      public abstract sw a();
-
-      @Override
-      public void b(esp $$0) {
-         $$0.a(eso.a, this.a());
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
+   }
+
+   public Collection<String> a() {
+      return this.e;
    }
 }

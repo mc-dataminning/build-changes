@@ -1,55 +1,52 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public class xz implements uo<ur> {
-   private static final byte a = -128;
+public class xz implements uw<wo> {
+   private final int a;
    private final int b;
-   private final List<Pair<bfo, cfz>> c;
+   private final xy c;
+   private final yd d;
 
-   public xz(int $$0, List<Pair<bfo, cfz>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public xz(dhf $$0, dzq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cor $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new xy($$0);
+      this.d = new yd($$4, $$1, $$2, $$3);
    }
 
-   public xz(sf $$0) {
-      this.b = $$0.m();
-      bfo[] $$1 = bfo.values();
-      this.c = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bfo $$3 = $$1[$$2 & 127];
-         cfz $$4 = $$0.r();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+   public xz(sh $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new xy($$0, this.a, this.b);
+      this.d = new yd($$0, this.a, this.b);
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bfo, cfz> $$3 = this.c.get($$2);
-         bfo $$4 = (bfo)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.writeByte($$5 ? $$6 | -128 : $$6);
-         $$0.a((cfz)$$3.getSecond());
-      }
+   public void a(sh $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
    public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public List<Pair<bfo, cfz>> c() {
+   public xy e() {
       return this.c;
+   }
+
+   public yd f() {
+      return this.d;
    }
 }

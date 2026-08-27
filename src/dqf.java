@@ -1,52 +1,52 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dqf extends dqh {
+public class dqf implements dpp {
    public static final Codec<dqf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               die.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               die.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               dub.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               apy.b(jd.e).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               drq.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               drq.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               dlo.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
             )
             .apply($$0, dqf::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final die d;
-   private final die e;
-   private final int f;
+   public final hf<dub> b;
+   public final int c;
+   public final int d;
+   public final apy<csk> e;
+   public final drq f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final drq k;
+   public final int l;
+   public final int n;
+   public final dlo o;
 
-   private dqf(die $$0, die $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dqf a(die $$0, die $$1, int $$2) {
-      return new dqf($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(apf $$0, dih $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
-      }
-   }
-
-   @Override
-   public dqi<?> a() {
-      return dqi.c;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   public dqf(hf<dub> $$0, int $$1, int $$2, apy<csk> $$3, drq $$4, int $$5, int $$6, int $$7, int $$8, drq $$9, int $$10, int $$11, dlo $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

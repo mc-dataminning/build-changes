@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fep extends fdg<byu> {
+   public fep(fhj $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fep {
+   public boolean a(byu $$0) {
+      return false;
+   }
 }

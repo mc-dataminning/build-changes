@@ -1,3 +1,3 @@
 public interface bfw {
-   boolean a();
+   float a(art var1);
 }

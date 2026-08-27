@@ -1,398 +1,48 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidClassException;
-import java.io.Reader;
-import java.util.List;
-import java.util.Map;
-import java.util.function.IntSupplier;
-import javax.annotation.Nullable;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
 import org.slf4j.Logger;
 
-public class fjn implements ehu, AutoCloseable {
-   private static final String a = "shaders/program/";
-   private static final Logger b = LogUtils.getLogger();
-   private static final ehs c = new ehs();
-   private static final boolean d = true;
-   private static fjn e;
-   private static int f = -1;
-   private final Map<String, IntSupplier> g = Maps.newHashMap();
-   private final List<String> h = Lists.newArrayList();
-   private final List<Integer> i = Lists.newArrayList();
-   private final List<eia> j = Lists.newArrayList();
-   private final List<Integer> k = Lists.newArrayList();
-   private final Map<String, eia> l = Maps.newHashMap();
-   private final int m;
-   private final String n;
-   private boolean o;
-   private final eht p;
-   private final List<Integer> q;
-   private final List<String> r;
-   private final ehv s;
-   private final ehv t;
+@FunctionalInterface
+public interface fjn {
+   Logger a = LogUtils.getLogger();
+   fjn b = $$0 -> Optional.empty();
 
-   public fjn(akx $$0, String $$1) throws IOException {
-      acq $$2 = new acq("shaders/program/" + $$1 + ".json");
-      this.n = $$1;
-      akv $$3 = $$0.getResourceOrThrow($$2);
+   Optional<fjk> lookupRedirect(fjk var1);
 
-      try (Reader $$4 = $$3.e()) {
-         JsonObject $$5 = aor.a($$4);
-         String $$6 = aor.i($$5, "vertex");
-         String $$7 = aor.i($$5, "fragment");
-         JsonArray $$8 = aor.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var20) {
-                  act $$12 = act.a(var20);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = aor.a($$5, "attributes", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-            this.q = Lists.newArrayListWithCapacity($$13.size());
-            this.r = Lists.newArrayListWithCapacity($$13.size());
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.r.add(aor.a($$15, "attribute"));
-               } catch (Exception var19) {
-                  act $$17 = act.a(var19);
-                  $$17.a("attributes[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         } else {
-            this.q = null;
-            this.r = null;
-         }
-
-         JsonArray $$18 = aor.a($$5, "uniforms", null);
-         if ($$18 != null) {
-            int $$19 = 0;
-
-            for (JsonElement $$20 : $$18) {
-               try {
-                  this.b($$20);
-               } catch (Exception var18) {
-                  act $$22 = act.a(var18);
-                  $$22.a("uniforms[" + $$19 + "]");
-                  throw $$22;
-               }
-
-               $$19++;
-            }
-         }
-
-         this.p = a(aor.a($$5, "blend", null));
-         this.s = a($$0, ehx.a.a, $$6);
-         this.t = a($$0, ehx.a.b, $$7);
-         this.m = ehy.a();
-         ehy.b(this);
-         this.i();
-         if (this.r != null) {
-            for (String $$23 : this.r) {
-               int $$24 = eia.b(this.m, $$23);
-               this.q.add($$24);
-            }
-         }
-      } catch (Exception var22) {
-         act $$26 = act.a(var22);
-         $$26.b($$2.a() + " (" + $$3.b() + ")");
-         throw $$26;
+   static fjn createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      this.b();
-   }
-
-   public static ehv a(akx $$0, ehx.a $$1, String $$2) throws IOException {
-      ehx $$3 = $$1.c().get($$2);
-      if ($$3 != null && !($$3 instanceof ehv)) {
-         throw new InvalidClassException("Program is not of type EffectProgram");
-      } else {
-         ehv $$7;
-         if ($$3 == null) {
-            acq $$4 = new acq("shaders/program/" + $$2 + $$1.b());
-            akv $$5 = $$0.getResourceOrThrow($$4);
-
-            try (InputStream $$6 = $$5.d()) {
-               $$7 = ehv.a($$1, $$2, $$6, $$5.b());
-            }
-         } else {
-            $$7 = (ehv)$$3;
-         }
-
-         return $$7;
-      }
-   }
-
-   public static eht a(@Nullable JsonObject $$0) {
-      if ($$0 == null) {
-         return new eht();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (aor.a($$0, "func")) {
-            $$1 = eht.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
-         }
-
-         if (aor.a($$0, "srcrgb")) {
-            $$2 = eht.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (aor.a($$0, "dstrgb")) {
-            $$3 = eht.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (aor.a($$0, "srcalpha")) {
-            $$4 = eht.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (aor.a($$0, "dstalpha")) {
-            $$5 = eht.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new eht();
-         } else {
-            return $$7 ? new eht($$2, $$3, $$4, $$5, $$1) : new eht($$2, $$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (eia $$0 : this.j) {
-         $$0.close();
-      }
-
-      ehy.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ehy.a(0);
-      f = -1;
-      e = null;
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         if (this.g.get(this.h.get($$0)) != null) {
-            GlStateManager._activeTexture(33984 + $$0);
-            GlStateManager._bindTexture(0);
-         }
-      }
-   }
-
-   public void g() {
-      RenderSystem.assertOnGameThread();
-      this.o = false;
-      e = this;
-      this.p.a();
-      if (this.m != f) {
-         ehy.a(this.m);
-         f = this.m;
-      }
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         String $$1 = this.h.get($$0);
-         IntSupplier $$2 = this.g.get($$1);
-         if ($$2 != null) {
-            RenderSystem.activeTexture(33984 + $$0);
-            int $$3 = $$2.getAsInt();
-            if ($$3 != -1) {
-               RenderSystem.bindTexture($$3);
-               eia.b(this.i.get($$0), $$0);
-            }
-         }
-      }
-
-      for (eia $$4 : this.j) {
-         $$4.b();
-      }
-   }
-
-   @Override
-   public void b() {
-      this.o = true;
-   }
-
-   @Nullable
-   public eia a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.l.get($$0);
-   }
-
-   public ehs b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      eia $$1 = this.a($$0);
-      return (ehs)($$1 == null ? c : $$1);
-   }
-
-   private void i() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         String $$2 = this.h.get($$1);
-         int $$3 = eia.a(this.m, $$2);
-         if ($$3 == -1) {
-            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
-            this.g.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.i.add($$3);
-         }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         this.h.remove($$0.getInt($$4));
-      }
-
-      for (eia $$5 : this.j) {
-         String $$6 = $$5.a();
-         int $$7 = eia.a(this.m, $$6);
-         if ($$7 == -1) {
-            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
-         } else {
-            this.k.add($$7);
-            $$5.b($$7);
-            this.l.put($$6, $$5);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = aor.m($$0, "sampler");
-      String $$2 = aor.i($$1, "name");
-      if (!aor.a($$1, "file")) {
-         this.g.put($$2, null);
-         this.h.add($$2);
-      } else {
-         this.h.add($$2);
-      }
-   }
-
-   public void a(String $$0, IntSupplier $$1) {
-      if (this.g.containsKey($$0)) {
-         this.g.remove($$0);
-      }
-
-      this.g.put($$0, $$1);
-      this.b();
-   }
-
-   private void b(JsonElement $$0) throws act {
-      JsonObject $$1 = aor.m($$0, "uniform");
-      String $$2 = aor.i($$1, "name");
-      int $$3 = eia.a(aor.i($$1, "type"));
-      int $$4 = aor.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = aor.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new act("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
-
-         for (JsonElement $$8 : $$6) {
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
             try {
-               $$5[$$7] = aor.e($$8, "value");
-            } catch (Exception var13) {
-               act $$10 = act.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
-
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fjk($$4x[3], fjk.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
             }
          }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         eia $$12 = new eia($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a($$5);
-         }
-
-         this.j.add($$12);
-      }
-   }
-
-   @Override
-   public ehx c() {
-      return this.s;
-   }
-
-   @Override
-   public ehx d() {
-      return this.t;
-   }
-
-   @Override
-   public void e() {
-      this.t.a(this);
-      this.s.a(this);
-   }
-
-   public String h() {
-      return this.n;
-   }
-
-   @Override
-   public int a() {
-      return this.m;
+         return Optional.empty();
+      };
    }
 }

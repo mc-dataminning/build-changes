@@ -1,67 +1,67 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bnz extends bmv {
-   private final btk a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
-
-   public bnz(btk $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bmv.a.a));
+public class bnz {
+   public static bkp<cay> a(float $$0) {
+      return boa.a(
+         (Function<boa.b<cay>, ? extends App<boa.c<cay>, bod<cay>>>)($$1 -> $$1.group($$1.b(bry.d), $$1.c(bry.c), $$1.b(bry.g), $$1.a(bry.m), $$1.a(bry.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.i_()) {
+                           return false;
+                        } else if ($$7.gk().b() != cbb.b) {
+                           return false;
+                        } else {
+                           gv $$9 = $$1.<he>b($$2).b();
+                           Optional<hf<btz>> $$10 = $$6x.w().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<biw>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cay && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cay)$$0xxxx)
+                                 .filter(biw::bv)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dM().c(bry.c).isEmpty()) {
+                                       bkq.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dM().a(bry.d, he.a($$6x.ac(), $$9));
+                                       aau.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   @Override
-   public boolean a() {
-      if (!this.a.gn() && this.a.bN()) {
-         eei $$0 = bqq.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      } else {
+   private static boolean a(hf<btz> $$0, cay $$1, gv $$2) {
+      boolean $$3 = $$1.dM().c(bry.d).isPresent();
+      if ($$3) {
          return false;
+      } else {
+         Optional<he> $$4 = $$1.dM().c(bry.c);
+         cbb $$5 = $$1.gk().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
+         }
       }
    }
 
-   @Override
-   public void c() {
-      this.a.J().a(this.c, this.d, this.e, this.b);
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.gn() && !this.a.J().l() && this.a.bN();
-   }
-
-   @Override
-   public void e() {
-      if (!this.a.gn() && this.a.ec().a(this.a(50)) == 0) {
-         bfj $$0 = this.a.cN().get(0);
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof byo) {
-            int $$1 = this.a.gt();
-            int $$2 = this.a.gz();
-            if ($$2 > 0 && this.a.ec().a($$2) < $$1) {
-               this.a.h((byo)$$0);
-               return;
-            }
-
-            this.a.v(5);
-         }
-
-         this.a.bz();
-         this.a.gE();
-         this.a.dI().a(this.a, (byte)6);
-      }
+   private static boolean a(bjf $$0, gv $$1, btz $$2) {
+      eaq $$3 = $$0.H().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

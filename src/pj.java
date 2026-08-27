@@ -1,24 +1,5 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface pj {
-   int a() default 100;
-
-   String b() default "defaultBatch";
-
-   int c() default 0;
-
-   boolean d() default true;
-
-   String e() default "";
-
-   long f() default 0L;
-
-   int g() default 1;
-
-   int h() default 1;
+class pj extends Throwable {
+   public pj(int $$0, int $$1, ps $$2) {
+      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.z() + ". max attempts: " + $$2.y() + ".", $$2.n());
+   }
 }

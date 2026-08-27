@@ -1,40 +1,32 @@
-public class xm implements uo<ur> {
-   private final double a;
-   private final double b;
-   private final long c;
+public class xm implements uw<wo> {
+   private final cir a;
+   private final int b;
 
-   public xm(dds $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
+   public xm(cir $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public xm(sf $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.n();
+   public xm(sh $$0) {
+      this.a = $$0.a(jc.i);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeDouble(this.a);
-      $$0.writeDouble(this.b);
-      $$0.b(this.c);
+   public void a(sh $$0) {
+      $$0.a(jc.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public cir a() {
       return this.a;
    }
 
-   public double c() {
+   public int d() {
       return this.b;
-   }
-
-   public long d() {
-      return this.c;
    }
 }

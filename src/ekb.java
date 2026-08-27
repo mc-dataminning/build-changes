@@ -1,20 +1,40 @@
-import com.google.gson.JsonObject;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class ekb extends ekf {
-   public String a;
-   public long b;
-   public long c;
+public enum ekb {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static ekb a(JsonObject $$0) {
-      ekb $$1 = new ekb();
+   private final String[] c;
 
-      try {
-         $$1.a = emb.a("profileUuid", $$0, null);
-         $$1.b = emb.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = emb.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+   private ekb(String... $$0) {
+      this.c = $$0;
+   }
+
+   public List<anc<InputStream>> a(aly $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
+   }
+
+   public anc<InputStream> b(aly $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private anc<InputStream> a(aly $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      anc<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
       }
-
-      return $$1;
    }
 }

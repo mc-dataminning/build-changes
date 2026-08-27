@@ -1,78 +1,154 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cdo extends cej {
-   protected static final Map<cpn, cpn> a = new Builder()
-      .put(cpo.ao, cpo.aw)
-      .put(cpo.U, cpo.al)
-      .put(cpo.au, cpo.aC)
-      .put(cpo.aa, cpo.ak)
-      .put(cpo.as, cpo.aA)
-      .put(cpo.Y, cpo.ai)
-      .put(cpo.at, cpo.aB)
-      .put(cpo.Z, cpo.aj)
-      .put(cpo.aq, cpo.ay)
-      .put(cpo.W, cpo.ag)
-      .put(cpo.ar, cpo.az)
-      .put(cpo.X, cpo.ah)
-      .put(cpo.ap, cpo.ax)
-      .put(cpo.V, cpo.af)
-      .put(cpo.oj, cpo.ok)
-      .put(cpo.ol, cpo.om)
-      .put(cpo.os, cpo.ot)
-      .put(cpo.ou, cpo.ov)
-      .put(cpo.av, cpo.aD)
-      .put(cpo.ab, cpo.am)
-      .put(cpo.ae, cpo.an)
-      .build();
+public class cdo extends cdc {
+   private static final byte c = 10;
+   private int d = -1;
 
-   protected cdo(chm $$0, float $$1, float $$2, cfu.a $$3) {
-      super($$1, $$2, $$0, amw.bx, $$3);
+   public cdo(bik<? extends cdo> $$0, cpk $$1) {
+      super($$0, $$1);
+   }
+
+   public cdo(cpk $$0, double $$1, double $$2, double $$3) {
+      super(bik.aZ, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public bdx a(cij $$0) {
-      cmm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      byo $$3 = $$0.o();
-      dcb $$4 = $$1.a_($$2);
-      Optional<dcb> $$5 = this.b($$4);
-      Optional<dcb> $$6 = cyp.b($$4);
-      Optional<dcb> $$7 = Optional.ofNullable((cpn)cfo.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
-      cfz $$8 = $$0.n();
-      Optional<dcb> $$9 = Optional.empty();
-      if ($$5.isPresent()) {
-         $$1.a($$3, $$2, amh.as, ami.e, 1.0F, 1.0F);
-         $$9 = $$5;
-      } else if ($$6.isPresent()) {
-         $$1.a($$3, $$2, amh.at, ami.e, 1.0F, 1.0F);
-         $$1.a($$3, 3005, $$2, 0);
-         $$9 = $$6;
-      } else if ($$7.isPresent()) {
-         $$1.a($$3, $$2, amh.au, ami.e, 1.0F, 1.0F);
-         $$1.a($$3, 3004, $$2, 0);
-         $$9 = $$7;
+   public cdc.a t() {
+      return cdc.a.d;
+   }
+
+   @Override
+   public dey w() {
+      return csl.ck.n();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.d > 0) {
+         this.d--;
+         this.dK().a(iw.Z, this.dp(), this.dr() + 0.5, this.dv(), 0.0, 0.0, 0.0);
+      } else if (this.d == 0) {
+         this.h(this.dn().i());
       }
 
-      if ($$9.isPresent()) {
-         if ($$3 instanceof aig) {
-            ai.M.a((aig)$$3, $$2, $$8);
+      if (this.P) {
+         double $$0 = this.dn().i();
+         if ($$0 >= 0.01F) {
+            this.h($$0);
          }
-
-         $$1.a($$2, $$9.get(), 11);
-         $$1.a(dgl.c, $$2, dgl.a.a($$3, $$9.get()));
-         if ($$3 != null) {
-            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
-         }
-
-         return bdx.a($$1.B);
-      } else {
-         return bdx.d;
       }
    }
 
-   private Optional<dcb> b(dcb $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(cvy.g, $$0.c(cvy.g)));
+   @Override
+   public boolean a(bhe $$0, float $$1) {
+      if ($$0.c() instanceof cbr $$3 && $$3.bM()) {
+         bhe $$4 = this.dL().d(this, $$0.d());
+         this.a($$4, $$3.dn().g());
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(bhe $$0) {
+      double $$1 = this.dn().i();
+      if (!$$0.a(apl.i) && !$$0.a(apl.l) && !($$1 >= 0.01F)) {
+         super.a($$0);
+      } else {
+         if (this.d < 0) {
+            this.A();
+            this.d = this.ag.a(20) + this.ag.a(20);
+         }
+      }
+   }
+
+   @Override
+   protected cir j() {
+      return ciz.nd;
+   }
+
+   protected void h(double $$0) {
+      this.a(null, $$0);
+   }
+
+   protected void a(@Nullable bhe $$0, double $$1) {
+      if (!this.dK().B) {
+         double $$2 = Math.sqrt($$1);
+         if ($$2 > 5.0) {
+            $$2 = 5.0;
+         }
+
+         this.dK().a(this, $$0, null, this.dp(), this.dr(), this.dv(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, cpk.a.d);
+         this.ak();
+      }
+   }
+
+   @Override
+   public boolean a(float $$0, float $$1, bhe $$2) {
+      if ($$0 >= 3.0F) {
+         float $$3 = $$0 / 10.0F;
+         this.h((double)($$3 * $$3));
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.d < 0) {
+         this.A();
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.A();
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void A() {
+      this.d = 80;
+      if (!this.dK().B) {
+         this.dK().a(this, (byte)10);
+         if (!this.aS()) {
+            this.dK().a(null, this.dp(), this.dr(), this.dv(), aou.xG, aov.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public int B() {
+      return this.d;
+   }
+
+   public boolean D() {
+      return this.d > -1;
+   }
+
+   @Override
+   public float a(cpc $$0, coq $$1, gv $$2, dey $$3, eab $$4, float $$5) {
+      return !this.D() || !$$3.a(apj.N) && !$$1.a_($$2.c()).a(apj.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   }
+
+   @Override
+   public boolean a(cpc $$0, coq $$1, gv $$2, dey $$3, float $$4) {
+      return !this.D() || !$$3.a(apj.N) && !$$1.a_($$2.c()).a(apj.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected void a(qs $$0) {
+      super.a($$0);
+      if ($$0.b("TNTFuse", 99)) {
+         this.d = $$0.h("TNTFuse");
+      }
+   }
+
+   @Override
+   protected void b(qs $$0) {
+      super.b($$0);
+      $$0.a("TNTFuse", this.d);
    }
 }

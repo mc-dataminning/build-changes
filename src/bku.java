@@ -1,33 +1,37 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class bku {
-   private static final int a = 10;
-   private static final int b = 7;
+public class bku extends bko<biw> {
+   private final bry<Integer> c;
 
-   public static bjb<bgi> a(float $$0) {
-      return a($$0, 10, 7);
+   public bku(bry<Integer> $$0) {
+      super(ImmutableMap.of($$0, brz.a));
+      this.c = $$0;
    }
 
-   public static bjb<bgi> a(float $$0, int $$1, int $$2) {
-      return bld.a((Function<bld.b<bgi>, ? extends App<bld.c<bgi>, blg<bgi>>>)($$3 -> $$3.group($$3.c(bpb.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               gu $$7 = $$5.di();
-               eei $$8;
-               if ($$4.b($$7)) {
-                  $$8 = bqt.a($$5, $$1, $$2);
-               } else {
-                  hx $$9 = hx.a($$7);
-                  hx $$10 = bht.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = bqq.a($$5, $$1, $$2, eei.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = bqt.a($$5, $$1, $$2);
-                  }
-               }
+   private Optional<Integer> b(biw $$0) {
+      return $$0.dM().c(this.c);
+   }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bpe($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(aki $$0, biw $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(aki $$0, biw $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dM().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(aki $$0, biw $$1, long $$2) {
+      $$1.dM().b(this.c);
    }
 }

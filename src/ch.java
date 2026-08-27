@@ -13,11 +13,11 @@ public class ch {
    private final cj.c d;
    private final cj.c e;
    @Nullable
-   private final acp<cnk> f;
+   private final aeo<cqi> f;
    @Nullable
-   private final acp<dsa> g;
+   private final aeo<dux> g;
    @Nullable
-   private final acp<cmm> h;
+   private final aeo<cpk> h;
    @Nullable
    private final Boolean i;
    private final ce j;
@@ -25,7 +25,7 @@ public class ch {
    private final bv l;
 
    public ch(
-      cj.c $$0, cj.c $$1, cj.c $$2, @Nullable acp<cnk> $$3, @Nullable acp<dsa> $$4, @Nullable acp<cmm> $$5, @Nullable Boolean $$6, ce $$7, at $$8, bv $$9
+      cj.c $$0, cj.c $$1, cj.c $$2, @Nullable aeo<cqi> $$3, @Nullable aeo<dux> $$4, @Nullable aeo<cpk> $$5, @Nullable Boolean $$6, ce $$7, at $$8, bv $$9
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -39,15 +39,15 @@ public class ch {
       this.l = $$9;
    }
 
-   public static ch a(acp<cnk> $$0) {
+   public static ch a(aeo<cqi> $$0) {
       return new ch(cj.c.e, cj.c.e, cj.c.e, $$0, null, null, null, ce.a, at.a, bv.a);
    }
 
-   public static ch b(acp<cmm> $$0) {
+   public static ch b(aeo<cpk> $$0) {
       return new ch(cj.c.e, cj.c.e, cj.c.e, null, null, $$0, null, ce.a, at.a, bv.a);
    }
 
-   public static ch c(acp<dsa> $$0) {
+   public static ch c(aeo<dux> $$0) {
       return new ch(cj.c.e, cj.c.e, cj.c.e, null, $$0, null, null, ce.a, at.a, bv.a);
    }
 
@@ -55,7 +55,7 @@ public class ch {
       return new ch(cj.c.e, $$0, cj.c.e, null, null, null, null, ce.a, at.a, bv.a);
    }
 
-   public boolean a(aif $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aki $$0, double $$1, double $$2, double $$3) {
       if (!this.c.d($$1)) {
          return false;
       } else if (!this.d.d($$2)) {
@@ -65,11 +65,11 @@ public class ch {
       } else if (this.h != null && this.h != $$0.ac()) {
          return false;
       } else {
-         gu $$4 = gu.a($$1, $$2, $$3);
+         gv $$4 = gv.a($$1, $$2, $$3);
          boolean $$5 = $$0.o($$4);
          if (this.f == null || $$5 && $$0.s($$4).a(this.f)) {
             if (this.g == null || $$5 && $$0.a().a($$4, this.g).b()) {
-               if (this.i == null || $$5 && this.i == cqa.a($$0, $$4)) {
+               if (this.i == null || $$5 && this.i == csx.a($$0, $$4)) {
                   if (!this.j.a($$0, $$4)) {
                      return false;
                   } else {
@@ -101,7 +101,7 @@ public class ch {
          }
 
          if (this.h != null) {
-            cmm.g.encodeStart(JsonOps.INSTANCE, this.h).resultOrPartial(b::error).ifPresent($$1x -> $$0.add("dimension", $$1x));
+            cpk.g.encodeStart(JsonOps.INSTANCE, this.h).resultOrPartial(b::error).ifPresent($$1x -> $$0.add("dimension", $$1x));
          }
 
          if (this.g != null) {
@@ -125,21 +125,21 @@ public class ch {
 
    public static ch a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "location");
-         JsonObject $$2 = aor.a($$1, "position", new JsonObject());
+         JsonObject $$1 = arf.m($$0, "location");
+         JsonObject $$2 = arf.a($$1, "position", new JsonObject());
          cj.c $$3 = cj.c.a($$2.get("x"));
          cj.c $$4 = cj.c.a($$2.get("y"));
          cj.c $$5 = cj.c.a($$2.get("z"));
-         acp<cmm> $$6 = $$1.has("dimension")
-            ? acq.a.parse(JsonOps.INSTANCE, $$1.get("dimension")).resultOrPartial(b::error).map($$0x -> acp.a(jc.aH, $$0x)).orElse(null)
+         aeo<cpk> $$6 = $$1.has("dimension")
+            ? aep.a.parse(JsonOps.INSTANCE, $$1.get("dimension")).resultOrPartial(b::error).map($$0x -> aeo.a(jd.aH, $$0x)).orElse(null)
             : null;
-         acp<dsa> $$7 = $$1.has("structure")
-            ? acq.a.parse(JsonOps.INSTANCE, $$1.get("structure")).resultOrPartial(b::error).map($$0x -> acp.a(jc.az, $$0x)).orElse(null)
+         aeo<dux> $$7 = $$1.has("structure")
+            ? aep.a.parse(JsonOps.INSTANCE, $$1.get("structure")).resultOrPartial(b::error).map($$0x -> aeo.a(jd.az, $$0x)).orElse(null)
             : null;
-         acp<cnk> $$8 = null;
+         aeo<cqi> $$8 = null;
          if ($$1.has("biome")) {
-            acq $$9 = new acq(aor.i($$1, "biome"));
-            $$8 = acp.a(jc.ap, $$9);
+            aep $$9 = new aep(arf.i($$1, "biome"));
+            $$8 = aeo.a(jd.ap, $$9);
          }
 
          Boolean $$10 = $$1.has("smokey") ? $$1.get("smokey").getAsBoolean() : null;
@@ -157,11 +157,11 @@ public class ch {
       private cj.c b = cj.c.e;
       private cj.c c = cj.c.e;
       @Nullable
-      private acp<cnk> d;
+      private aeo<cqi> d;
       @Nullable
-      private acp<dsa> e;
+      private aeo<dux> e;
       @Nullable
-      private acp<cmm> f;
+      private aeo<cpk> f;
       @Nullable
       private Boolean g;
       private ce h = ce.a;
@@ -187,17 +187,17 @@ public class ch {
          return this;
       }
 
-      public ch.a a(@Nullable acp<cnk> $$0) {
+      public ch.a a(@Nullable aeo<cqi> $$0) {
          this.d = $$0;
          return this;
       }
 
-      public ch.a b(@Nullable acp<dsa> $$0) {
+      public ch.a b(@Nullable aeo<dux> $$0) {
          this.e = $$0;
          return this;
       }
 
-      public ch.a c(@Nullable acp<cmm> $$0) {
+      public ch.a c(@Nullable aeo<cpk> $$0) {
          this.f = $$0;
          return this;
       }

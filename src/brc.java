@@ -1,29 +1,30 @@
-import java.util.Set;
-import java.util.function.Predicate;
+public class brc extends bps {
+   private final bjf a;
 
-public record brc(Set<dcb> b, int c, int d) {
-   public static final Predicate<he<brc>> a = $$0 -> false;
-
-   public brc(Set<dcb> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public brc(bjf $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(dcb $$0) {
-      return this.b.contains($$0);
+   @Override
+   public boolean a() {
+      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apo.a);
    }
 
-   public Set<dcb> a() {
-      return this.b;
-   }
+   @Override
+   public void c() {
+      gv $$0 = null;
 
-   public int b() {
-      return this.c;
-   }
+      for (gv $$2 : gv.b(
+         aro.a(this.a.dp() - 2.0), aro.a(this.a.dr() - 2.0), aro.a(this.a.dv() - 2.0), aro.a(this.a.dp() + 2.0), this.a.dq(), aro.a(this.a.dv() + 2.0)
+      )) {
+         if (this.a.dK().b_($$2).a(apo.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   public int c() {
-      return this.d;
+      if ($$0 != null) {
+         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

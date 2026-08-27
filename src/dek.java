@@ -1,7 +1,11 @@
-import java.util.function.BiConsumer;
+public class dek extends ded {
+   @Override
+   protected aeo<dmy<?, ?>> a(art $$0, boolean $$1) {
+      return os.o;
+   }
 
-public interface dek extends cls {
-   void a(BiConsumer<gu, dcb> var1);
-
-   dwo B();
+   @Override
+   protected aeo<dmy<?, ?>> a(art $$0) {
+      return os.p;
+   }
 }

@@ -1,53 +1,19 @@
-public interface cjc<C extends bdq> {
-   boolean a(C var1, cmm var2);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   cfz a(C var1, hs var2);
-
-   boolean a(int var1, int var2);
-
-   cfz a(hs var1);
-
-   default hn<cfz> a(C $$0) {
-      hn<cfz> $$1 = hn.a($$0.b(), cfz.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cfu $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new cfz($$3.s()));
-         }
-      }
-
-      return $$1;
+public class cjc extends cki {
+   public cjc(cir.a $$0) {
+      super($$0);
    }
 
-   default hn<ciz> a() {
-      return hn.a();
+   @Override
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      ckv.a($$0, $$2, 0.25F);
    }
 
-   default boolean ai_() {
-      return false;
-   }
-
-   default boolean i() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cfz h() {
-      return new cfz(cpo.cA);
-   }
-
-   acq e();
-
-   cje<?> aj_();
-
-   cjf<?> f();
-
-   default boolean j() {
-      hn<ciz> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aou.mv, aov.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

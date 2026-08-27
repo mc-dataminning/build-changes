@@ -1,41 +1,57 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bps extends bqf<bfz> {
-   private static final int a = 200;
-   private static final int c = 600;
+public abstract class bps {
+   private final EnumSet<bps.a> a = EnumSet.noneOf(bps.a.class);
 
-   public bps() {
-      this(200);
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   public bps(int $$0) {
-      super($$0);
+   public boolean J_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean K_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bps.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   protected void a(aif $$0, bfz $$1) {
-      a($$1);
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.g);
+   public EnumSet<bps.a> j() {
+      return this.a;
    }
 
-   public static void a(bfz $$0) {
-      Optional<List<bfz>> $$1 = $$0.dK().c(bpb.g);
-      if ($$1.isPresent()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ae().equals(bfn.ac));
-         if ($$2) {
-            b($$0);
-         }
-      }
+   protected int a(int $$0) {
+      return this.K_() ? $$0 : b($$0);
    }
 
-   public static void b(bfz $$0) {
-      $$0.dK().a(bpb.F, true, 600L);
+   protected static int b(int $$0) {
+      return aro.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

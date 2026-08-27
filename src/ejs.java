@@ -1,36 +1,94 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class ejs extends ekf {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ejq> a;
+public class ejs {
+   private final List<ConcurrentLinkedQueue<ejr>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public static ejs a(String $$0) {
-      ejs $$1 = new ejs();
-      $$1.a = Lists.newArrayList();
+   public ejs() {
+      this.c = this.e = this.f + 1;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public boolean a() {
+      return !this.b && this.c == this.e;
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(ejq.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      return $$1;
+   public void a(ejr $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<ejr> $$1 = this.i();
+         $$1.add($$0);
+      }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<ejr> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<ejr> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<ejr> j() {
+      return this.a.get(this.e);
    }
 }

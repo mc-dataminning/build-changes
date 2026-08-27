@@ -5,30 +5,30 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class ba {
-   public static final ba a = new ba(new eck[0]);
-   private final eck[] b;
-   private final Predicate<dzk> c;
+   public static final ba a = new ba(new efh[0]);
+   private final efh[] b;
+   private final Predicate<ech> c;
 
-   ba(eck[] $$0) {
+   ba(efh[] $$0) {
       this.b = $$0;
-      this.c = ecm.a($$0);
+      this.c = efj.a($$0);
    }
 
-   public static ba a(eck... $$0) {
+   public static ba a(efh... $$0) {
       return new ba($$0);
    }
 
    @Nullable
-   public static ba a(String $$0, be $$1, @Nullable JsonElement $$2, ebu $$3) {
+   public static ba a(String $$0, be $$1, @Nullable JsonElement $$2, eer $$3) {
       if ($$2 != null && $$2.isJsonArray()) {
-         eck[] $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
+         efh[] $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
          return new ba($$4);
       } else {
          return null;
       }
    }
 
-   public boolean a(dzk $$0) {
+   public boolean a(ech $$0) {
       return this.c.test($$0);
    }
 

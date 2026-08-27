@@ -1,40 +1,17 @@
-import javax.annotation.Nullable;
-
-public abstract class eus extends eui {
-   protected final enq<?>[] c;
-   @Nullable
-   private epf l;
-   protected eqd k;
-
-   public eus(euq $$0, enr $$1, sw $$2, enq<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.c = $$3;
+public record eus(fno a, fno b, fno c) {
+   public static eus a(aep $$0) {
+      return new eus(fno.s($$0), fno.w($$0), fno.u($$0));
    }
 
-   @Override
-   protected void b() {
-      this.k = new eqd(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.k.a(this.c);
-      this.e(this.k);
-      this.e();
-      this.l = this.k.b(this.b.an());
-      if (this.l != null) {
-         this.l.r = this.f.aU().a();
-      }
+   public static eus b(aep $$0) {
+      return new eus(fno.r($$0), fno.v($$0), fno.t($$0));
    }
 
-   protected void e() {
-      this.d(epi.a(sv.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.k, $$1, $$2, $$3);
-   }
-
-   public void l() {
-      if (this.l instanceof epp) {
-         ((epp)this.l).a(this.b.an().c());
-      }
+   public fno a(erv.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

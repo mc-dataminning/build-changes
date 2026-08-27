@@ -1,57 +1,53 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
 
-public class eug extends eus {
-   @Nullable
-   private final enq<Unit> l;
+public class eug implements euj {
+   private static final aep d = new aep("toast/advancement");
+   public static final int a = 5000;
+   private final ae e;
+   private boolean f;
 
-   public static eug a(enn $$0, euq $$1, enr $$2) {
-      List<enq<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.O());
-      $$3.add($$2.P());
-      enq<Unit> $$4 = x.a(
-         $$0.s,
-         $$0x -> {
-            bdu $$1x = $$0x.ai();
-            return new enq<>(
-               "options.difficulty.online",
-               enq.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new enq.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new eug($$1, $$2, $$3.toArray(new enq[0]), $$4);
-   }
-
-   private eug(euq $$0, enr $$1, enq<?>[] $$2, @Nullable enq<Unit> $$3) {
-      super($$0, $$1, sw.c("options.online.title"), $$2);
-      this.l = $$3;
+   public eug(ae $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void b() {
-      super.b();
-      if (this.l != null) {
-         epf $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.r = false;
-         }
-      }
+   public euj.a a(erx $$0, euk $$1, long $$2) {
+      an $$3 = this.e.d();
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<ara> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == ao.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().c(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = aro.d(aro.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().c(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = aro.d(aro.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-      epf $$1 = this.k.b(this.b.ad());
-      if ($$1 != null) {
-         $$1.r = this.f.A();
+               for (ara $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == ao.b) {
+               $$1.b().ah().a(gbj.a(aou.yv, 1.0F, 1.0F));
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? euj.a.b : euj.a.a;
+      } else {
+         return euj.a.b;
       }
    }
 }

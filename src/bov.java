@@ -1,127 +1,152 @@
-import javax.annotation.Nullable;
+public class bov implements bor {
+   public static final float a = 5.0E-4F;
+   public static final float b = 2.5000003E-7F;
+   protected static final int c = 90;
+   protected final biy d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected float i;
+   protected float j;
+   protected bov.a k = bov.a.a;
 
-public abstract class bov extends bmv {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bgb e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bfz g;
-   protected int h = 60;
-
-   public bov(bgb $$0, boolean $$1) {
-      this($$0, $$1, false);
+   public bov(biy $$0) {
+      this.d = $$0;
    }
 
-   public bov(bgb $$0, boolean $$1, boolean $$2) {
+   public boolean b() {
+      return this.k == bov.a.b;
+   }
+
+   public double c() {
+      return this.h;
+   }
+
+   public void a(double $$0, double $$1, double $$2, double $$3) {
       this.e = $$0;
       this.f = $$1;
-      this.d = $$2;
+      this.g = $$2;
+      this.h = $$3;
+      if (this.k != bov.a.d) {
+         this.k = bov.a.b;
+      }
    }
 
-   @Override
-   public boolean b() {
-      bfz $$0 = this.e.j();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
+   public void a(float $$0, float $$1) {
+      this.k = bov.a.c;
+      this.i = $$0;
+      this.j = $$1;
+      this.h = 0.25;
+   }
 
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
+   public void a() {
+      if (this.k == bov.a.c) {
+         float $$0 = (float)this.d.b(bkd.d);
+         float $$1 = (float)this.h * $$0;
+         float $$2 = this.i;
+         float $$3 = this.j;
+         float $$4 = aro.c($$2 * $$2 + $$3 * $$3);
+         if ($$4 < 1.0F) {
+            $$4 = 1.0F;
+         }
+
+         $$4 = $$1 / $$4;
+         $$2 *= $$4;
+         $$3 *= $$4;
+         float $$5 = aro.a(this.d.dA() * (float) (Math.PI / 180.0));
+         float $$6 = aro.b(this.d.dA() * (float) (Math.PI / 180.0));
+         float $$7 = $$2 * $$6 - $$3 * $$5;
+         float $$8 = $$3 * $$6 + $$2 * $$5;
+         if (!this.b($$7, $$8)) {
+            this.i = 1.0F;
+            this.j = 0.0F;
+         }
+
+         this.d.w($$1);
+         this.d.A(this.i);
+         this.d.C(this.j);
+         this.k = bov.a.a;
+      } else if (this.k == bov.a.b) {
+         this.k = bov.a.a;
+         double $$9 = this.e - this.d.dp();
+         double $$10 = this.g - this.d.dv();
+         double $$11 = this.f - this.d.dr();
+         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
+         if ($$12 < 2.5000003E-7F) {
+            this.d.A(0.0F);
+            return;
+         }
+
+         float $$13 = (float)(aro.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dA(), $$13, 90.0F));
+         this.d.w((float)(this.h * this.d.b(bkd.d)));
+         gv $$14 = this.d.dk();
+         dey $$15 = this.d.dK().a_($$14);
+         ehy $$16 = $$15.k(this.d.dK(), $$14);
+         if ($$11 > (double)this.d.dE() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.df())
+            || !$$16.c() && this.d.dr() < $$16.c(hb.a.b) + (double)$$14.v() && !$$15.a(apj.p) && !$$15.a(apj.S)) {
+            this.d.F().a();
+            this.k = bov.a.d;
+         }
+      } else if (this.k == bov.a.d) {
+         this.d.w((float)(this.h * this.d.b(bkd.d)));
+         if (this.d.aA()) {
+            this.k = bov.a.a;
+         }
       } else {
-         efi $$1 = this.e.cd();
-         efi $$2 = $$0.cd();
-         if ($$1 != null && $$2 == $$1) {
+         this.d.A(0.0F);
+      }
+   }
+
+   private boolean b(float $$0, float $$1) {
+      bsg $$2 = this.d.H();
+      if ($$2 != null) {
+         eap $$3 = $$2.o();
+         if ($$3 != null && $$3.a(this.d.dK(), aro.a(this.d.dp() + (double)$$0), this.d.dq(), aro.a(this.d.dv() + (double)$$1)) != eam.c) {
             return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.f($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.K().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
          }
       }
+
+      return true;
    }
 
-   protected double l() {
-      return this.e.b(bhg.b);
-   }
-
-   @Override
-   public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bfz $$0, bqm $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.di())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = aro.g($$1 - $$0);
+      if ($$3 > $$2) {
+         $$3 = $$2;
       }
-   }
 
-   private boolean a(bfz $$0) {
-      this.j = b(10 + this.e.ec().a(5));
-      dxt $$1 = this.e.J().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         dxr $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dm();
-            int $$4 = $$2.c - $$0.ds();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
+      if ($$3 < -$$2) {
+         $$3 = -$$2;
       }
+
+      float $$4 = $$0 + $$3;
+      if ($$4 < 0.0F) {
+         $$4 += 360.0F;
+      } else if ($$4 > 360.0F) {
+         $$4 -= 360.0F;
+      }
+
+      return $$4;
    }
 
-   public bov c(int $$0) {
-      this.h = $$0;
-      return this;
+   public double d() {
+      return this.e;
+   }
+
+   public double e() {
+      return this.f;
+   }
+
+   public double f() {
+      return this.g;
+   }
+
+   protected static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

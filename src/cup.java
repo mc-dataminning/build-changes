@@ -1,107 +1,60 @@
-public class cup extends cpn {
-   public static final dcz<ha.a> a = dcr.H;
-   protected static final int b = 2;
-   protected static final efb c = cpn.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final efb d = cpn.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class cup extends cvc {
+   protected static final ehy a = csk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-   public cup(dca.d $$0) {
+   public cup(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.a.a));
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      switch ((ha.a)$$0.c(a)) {
-         case c:
-            return d;
-         case a:
-         default:
-            return c;
-      }
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return a;
    }
 
    @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$1.x_().j() && $$1.X().b(cmi.e) && $$3.a(2000) < $$1.ai().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      this.d($$0, $$1, $$2);
+      return bgo.a($$1.B);
+   }
 
-         if ($$1.a_($$2).a($$1, $$2, bfn.bs)) {
-            bfj $$4 = bfn.bs.a($$1, $$2.c(), bgd.d);
-            if ($$4 != null) {
-               $$4.aq();
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, cbl $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dey $$0, cpk $$1, gv $$2) {
+      dgp $$3 = $$1.w_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         gv $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = aro.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = aro.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = aro.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(iw.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
+
+            return;
          }
       }
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      ha.a $$6 = $$1.o();
-      ha.a $$7 = $$0.c(a);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new dyc($$3, $$4, $$7).c() ? cpo.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a() {
+      return 5;
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, bfj $$3) {
-      if ($$3.cq()) {
-         $$3.f($$2);
-      }
-   }
-
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, amh.sU, ami.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
-         } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
-         }
-
-         $$1.a(iv.X, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return cfz.b;
-   }
-
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ha.a)$$0.c(a)) {
-               case c:
-                  return $$0.a(a, ha.a.a);
-               case a:
-                  return $$0.a(a, ha.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

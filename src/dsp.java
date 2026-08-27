@@ -1,78 +1,77 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public record dsp(List<dse> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final acq c = new acq("jigsaw");
-   private static final Map<acq, acq> d = ImmutableMap.builder()
-      .put(new acq("nvi"), c)
-      .put(new acq("pcp"), c)
-      .put(new acq("bastionremnant"), c)
-      .put(new acq("runtime"), c)
-      .build();
+public class dsp extends dst {
+   public static final Codec<dsp> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsp::new));
 
-   public dsp(List<dse> a) {
-      this.a = List.copyOf(a);
+   public dsp(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   @Override
+   protected dsu<?> a() {
+      return dsu.b;
    }
 
-   public boolean a(gu $$0) {
-      for (dse $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
+   @Override
+   public List<drb.a> a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, int $$3, gv $$4, dql $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<drb.a> $$6 = Lists.newArrayList();
+      hb $$7 = hb.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      gv.a $$10 = new gv.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
          }
       }
 
-      return false;
-   }
-
-   public rk a(dsq $$0) {
-      qx $$1 = new qx();
-
-      for (dse $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      if ($$13.isPresent()) {
+         $$6.add(new drb.a(new gv($$11, $$13.getAsInt(), $$12), 1, false));
       }
 
-      return $$1;
-   }
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      hb $$16 = hb.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
 
-   public static dsp a(qx $$0, dsq $$1) {
-      List<dse> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         qr $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         acq $$6 = new acq($$5);
-         acq $$7 = d.getOrDefault($$6, $$6);
-         dsr $$8 = jb.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dse $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
             }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new drb.a(new gv($$11, $$13.getAsInt(), $$12), 0, false));
          }
       }
 
-      return new dsp($$2);
-   }
-
-   public drs b() {
-      return dse.a(this.a.stream());
-   }
-
-   public List<dse> c() {
-      return this.a;
+      return $$6;
    }
 }

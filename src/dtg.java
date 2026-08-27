@@ -1,120 +1,62 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class dtg extends dth {
-   private static final Codec<Either<acq, dvt>> a = Codec.of(dtg::a, acq.a.map(Either::left));
-   public static final Codec<dtg> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dtg::new));
-   protected final Either<acq, dvt> c;
-   protected final he<dvr> d;
+public class dtg extends dte {
+   public static final Codec<dtg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dlb.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dlb.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dtg::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dlb d;
+   private final dlb e;
+   private final int f;
 
-   private static <T> DataResult<T> a(Either<acq, dvt> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<acq> $$3 = $$0.left();
-      return !$$3.isPresent() ? DataResult.error(() -> "Can not serialize a runtime pool element") : acq.a.encode($$3.get(), $$1, $$2);
+   private dtg(dlb $$0, dlb $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected static <E extends dtg> RecordCodecBuilder<E, he<dvr>> b() {
-      return dvs.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public static dtg a(dlb $$0, dlb $$1, int $$2) {
+      return new dtg($$0, $$1, $$2);
    }
 
-   protected static <E extends dtg> RecordCodecBuilder<E, Either<acq, dvt>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected dtg(Either<acq, dvt> $$0, he<dvr> $$1, dtj.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public hz a(dvu $$0, cvz $$1) {
-      dvt $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
-
-   private dvt a(dvu $$0) {
-      return (dvt)this.c.map($$0::a, Function.identity());
-   }
-
-   public List<dvt.c> a(dvu $$0, gu $$1, cvz $$2, boolean $$3) {
-      dvt $$4 = this.a($$0);
-      List<dvt.c> $$5 = $$4.a($$1, new dvp().a($$2), cpo.pa, $$3);
-      List<dvt.c> $$6 = Lists.newArrayList();
-
-      for (dvt.c $$7 : $$5) {
-         qr $$8 = $$7.c();
-         if ($$8 != null) {
-            ddl $$9 = ddl.valueOf($$8.l("mode"));
-            if ($$9 == ddl.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
+   public static dtg a(dlb $$0, dlb $$1) {
+      return a($$0, $$1, 0);
    }
 
    @Override
-   public List<dvt.c> a(dvu $$0, gu $$1, cvz $$2, apf $$3) {
-      dvt $$4 = this.a($$0);
-      ObjectArrayList<dvt.c> $$5 = $$4.a($$1, new dvp().a($$2), cpo.pb, true);
-      ac.b($$5, $$3);
-      return $$5;
-   }
-
-   @Override
-   public drs a(dvu $$0, gu $$1, cvz $$2) {
-      dvt $$3 = this.a($$0);
-      return $$3.b(new dvp().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(dvu $$0, cng $$1, cne $$2, ddy $$3, gu $$4, gu $$5, cvz $$6, drs $$7, apf $$8, boolean $$9) {
-      dvt $$10 = this.a($$0);
-      dvp $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
+   public int a(art $$0, dle $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
       } else {
-         for (dvt.c $$13 : dvt.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return aro.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + aro.b($$0, 0, $$6) + aro.b($$0, 0, $$5);
          }
-
-         return true;
       }
-   }
-
-   protected dvp a(cvz $$0, drs $$1, boolean $$2) {
-      dvp $$3 = new dvp();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(duv.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(dvb.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
    }
 
    @Override
-   public dti<?> a() {
-      return dti.a;
+   public dtf<?> a() {
+      return dtf.e;
    }
 
    @Override
    public String toString() {
-      return "Single[" + this.c + "]";
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

@@ -1,37 +1,44 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public class iy extends iu<iy> implements it {
-   private static final it.a<iy> a = new it.a<iy>() {
-      public iy a(iu<iy> $$0, StringReader $$1) {
-         return (iy)$$0;
+public class iy implements iu {
+   public static final Codec<iy> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, iy::new));
+   public static final iu.a<iy> b = new iu.a<iy>() {
+      public iy a(iv<iy> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         int $$2 = $$1.readInt();
+         return new iy($$2);
       }
 
-      public iy a(iu<iy> $$0, sf $$1) {
-         return (iy)$$0;
+      public iy a(iv<iy> $$0, sh $$1) {
+         return new iy($$1.m());
       }
    };
-   private final Codec<iy> b = Codec.unit(this::f);
+   private final int c;
 
-   protected iy(boolean $$0) {
-      super($$0, a);
-   }
-
-   public iy f() {
-      return this;
+   public iy(int $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public Codec<iy> e() {
-      return this.b;
-   }
-
-   @Override
-   public void a(sf $$0) {
+   public void a(sh $$0) {
+      $$0.c(this.c);
    }
 
    @Override
    public String a() {
-      return jb.k.b(this).toString();
+      return String.format(Locale.ROOT, "%s %d", jc.k.b(this.b()), this.c);
+   }
+
+   @Override
+   public iv<iy> b() {
+      return iw.aP;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

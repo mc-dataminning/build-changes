@@ -1,101 +1,151 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fyr {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class fyr implements fyk {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<fyr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(aep.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               aep.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, aep.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, fyr::new)
+   );
+   private final List<aep> d;
+   private final Map<String, aep> e;
+   private final aep f;
 
-   public static class a extends Thread {
-      private final fyr.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
+   private fyr(List<aep> $$0, aep $$1, Map<String, aep> $$2) {
+      this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
+   }
 
-      public a(fyr.b $$0) throws IOException {
-         super("LanServerDetector #" + fyr.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(fyr.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
+   @Override
+   public void a(ank $$0, fyk.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
 
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
+      for (aep $$4 : this.d) {
+         aep $$5 = a.a($$4);
+         Optional<ani> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
+         } else {
+            fyq $$7 = new fyq($$5, $$6.get(), $$3.size());
 
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               fyr.b.error("Couldn't ping server", var6);
-               break;
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               aep $$9 = $$4.e("_" + $$8.getKey());
+               $$1.a($$9, new fyr.a($$7, $$8.getValue(), $$9));
             }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            fyr.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
          }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
       }
    }
 
-   public static class b {
-      private final List<fyq> a = Lists.newArrayList();
-      private boolean b;
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
 
-      @Nullable
-      public synchronized List<fyq> a() {
-         if (this.b) {
-            List<fyq> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (aqy.a.a($$4) != 0) {
+               $$2.put(aqy.a.e($$4), $$1[$$3]);
+            }
+         }
+
+         return $$1x -> {
+            int $$2x = aqy.a.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = aqy.a.e($$1x);
+               int $$4x = $$2.getOrDefault($$3x, aqy.a.f($$3x));
+               int $$5 = aqy.a.a($$4x);
+               return aqy.a.a($$2x * $$5 / 255, $$4x);
+            }
+         };
+      }
+   }
+
+   public static int[] a(ank $$0, aep $$1) {
+      Optional<ani> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
+      } else {
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               eki $$4 = eki.a($$3);
+            ) {
+               var5 = $$4.d();
+            }
+
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
          }
       }
+   }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = fys.a($$0);
-         String $$3 = fys.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
+   @Override
+   public fym a() {
+      return fyn.e;
+   }
 
-            for (fyq $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new fyq($$2, $$3));
-               this.b = true;
-            }
+   static record a(fyq a, Supplier<IntUnaryOperator> b, aep c) implements fyk.b {
+      @Nullable
+      public fya a(fyj $$0) {
+         Object var3;
+         try {
+            eki $$1 = this.a.a().a(this.b.get());
+            return new fya(this.c, new fzt($$1.a(), $$1.b()), $$1, anm.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            fyr.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
          }
+
+         return (fya)var3;
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
+
+      public fyq b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public aep d() {
+         return this.c;
       }
    }
 }

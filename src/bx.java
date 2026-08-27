@@ -5,15 +5,15 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 
 public class bx extends cv<bx.a> {
-   static final acq a = new acq("inventory_changed");
+   static final aep a = new aep("inventory_changed");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
    public bx.a a(JsonObject $$0, ba $$1, be $$2) {
-      JsonObject $$3 = aor.a($$0, "slots", new JsonObject());
+      JsonObject $$3 = arf.a($$0, "slots", new JsonObject());
       cj.d $$4 = cj.d.a($$3.get("occupied"));
       cj.d $$5 = cj.d.a($$3.get("full"));
       cj.d $$6 = cj.d.a($$3.get("empty"));
@@ -21,13 +21,13 @@ public class bx extends cv<bx.a> {
       return new bx.a($$1, $$4, $$5, $$6, $$7);
    }
 
-   public void a(aig $$0, byn $$1, cfz $$2) {
+   public void a(akj $$0, cbk $$1, ciw $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cfz $$7 = $$1.a($$6);
+         ciw $$7 = $$1.a($$6);
          if ($$7.b()) {
             $$4++;
          } else {
@@ -41,7 +41,7 @@ public class bx extends cv<bx.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(aig $$0, byn $$1, cfz $$2, int $$3, int $$4, int $$5) {
+   private void a(akj $$0, cbk $$1, ciw $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -63,7 +63,7 @@ public class bx extends cv<bx.a> {
          return new bx.a(ba.a, cj.d.e, cj.d.e, cj.d.e, $$0);
       }
 
-      public static bx.a a(cml... $$0) {
+      public static bx.a a(cpj... $$0) {
          bz[] $$1 = new bz[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -97,7 +97,7 @@ public class bx extends cv<bx.a> {
          return $$1;
       }
 
-      public boolean a(byn $$0, cfz $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cbk $$0, ciw $$1, int $$2, int $$3, int $$4) {
          if (!this.b.d($$2)) {
             return false;
          } else if (!this.c.d($$3)) {
@@ -117,7 +117,7 @@ public class bx extends cv<bx.a> {
                      return true;
                   }
 
-                  cfz $$9 = $$0.a($$8);
+                  ciw $$9 = $$0.a($$8);
                   if (!$$9.b()) {
                      $$6.removeIf($$1x -> $$1x.a($$9));
                   }

@@ -1,15 +1,33 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Collection;
 
 public class afw {
    public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("say").requires($$0x -> $$0x.c(2))).then(dt.a("message", eg.a()).executes($$0x -> {
-         eg.a($$0x, "message", $$1 -> {
-            ds $$2 = (ds)$$0x.getSource();
-            alk $$3 = $$2.l().ac();
-            $$3.a($$1, $$2, ss.a(ss.d, $$2));
-         });
-         return 1;
-      })));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     anx $$1 = ((ds)$$0x.getSource()).l().ac();
+                     return a((ds)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(dt.a("ips").executes($$0x -> a((ds)$$0x.getSource(), ((ds)$$0x.getSource()).l().ac().g().d()))))
+            .then(dt.a("players").executes($$0x -> a((ds)$$0x.getSource(), ((ds)$$0x.getSource()).l().ac().f().d())))
+      );
+   }
+
+   private static int a(ds $$0, Collection<? extends ans<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> te.c("commands.banlist.none"), false);
+      } else {
+         $$0.a(() -> te.a("commands.banlist.list", $$1.size()), false);
+
+         for (ans<?> $$2 : $$1) {
+            $$0.a(() -> te.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         }
+      }
+
+      return $$1.size();
    }
 }

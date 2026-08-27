@@ -1,151 +1,544 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
-import javax.annotation.Nullable;
-
 public class erh {
-   private static final int a = 5;
-   private static final int b = -1;
-   final enn c;
-   private final List<erh.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<erg> f = Queues.newArrayDeque();
-
-   public erh(enn $$0) {
-      this.c = $$0;
-   }
-
-   public void a(eox $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.e();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new erh.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends erg> T a(Class<? extends T> $$0, Object $$1) {
-      for (erh.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().d().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (erg $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.d().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(erg $$0) {
-      this.f.add($$0);
-   }
-
-   public enn b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.x().c();
-   }
-
-   class a<T extends erg> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private erg.a h = erg.a.a;
-
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = apa.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == erg.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, eox $$1) {
-         long $$2 = ac.b();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(erh.this.c.ah());
-         }
-
-         if (this.h == erg.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         erg.a $$3 = this.c.a($$1, erh.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(erh.this.c.ah());
-         }
-
-         return this.h == erg.a.b && $$2 - this.f > 600L;
-      }
-   }
+   public static final ere a = ere.a.a(1.5F)
+      .a()
+      .a(
+         "root",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 2.5F), erd.b.b),
+            new erf(1.0F, erg.b(0.0F, 0.0F, -2.5F), erd.b.b),
+            new erf(1.5F, erg.b(0.0F, 0.0F, 2.5F), erd.b.b)
+         )
+      )
+      .a(
+         "head",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(2.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(-2.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.b(2.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.125F, erg.b(-2.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.b(2.5F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.b(-22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.4583F, erg.a(0.0F, 4.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.b(-22.5F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.2083F, erg.a(0.0F, 4.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-20.4F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.375F, erg.b(-22.5F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-20.4F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, -0.21F, 0.0F), erd.b.b),
+            new erf(0.75F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.0833F, erg.a(0.0F, 4.0F, 0.0F), erd.b.b),
+            new erf(1.375F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.a(0.0F, -0.21F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.625F, erg.b(-22.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.b(22.5F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.a(0.0F, 4.0F, 0.0F), erd.b.b),
+            new erf(0.625F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.5F, erg.a(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(0.0F, 0.0F, -22.5F), erd.b.b),
+            new erf(0.75F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.125F, erg.b(0.0F, 0.0F, -22.5F), erd.b.b),
+            new erf(1.5F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(0.0F, 0.0F, 22.5F), erd.b.b),
+            new erf(0.75F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.125F, erg.b(0.0F, 0.0F, 22.5F), erd.b.b),
+            new erf(1.5F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(15.94102F, -8.42106F, 20.94102F), erd.b.b),
+            new erf(0.75F, erg.b(15.94102F, 8.42106F, -20.94102F), erd.b.b),
+            new erf(1.5F, erg.b(15.94102F, -8.42106F, 20.94102F), erd.b.b)
+         )
+      )
+      .b();
+   public static final ere b = ere.a.a(2.0F)
+      .a(
+         "body",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.3F, erg.b(30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.8F, erg.b(24.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "body",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.3F, erg.a(0.0F, 0.0F, 1.0F), erd.b.a),
+            new erf(1.8F, erg.a(0.0F, -6.0F, 1.0F), erd.b.a),
+            new erf(2.0F, erg.a(0.0F, -19.9F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.0F, erg.b(-30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(-90.0F, 10.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.0F, erg.a(0.0F, -2.0F, 11.0F), erd.b.a),
+            new erf(1.5F, erg.a(0.0F, -2.0F, 11.0F), erd.b.a),
+            new erf(1.7F, erg.a(0.0F, -8.4F, 11.4F), erd.b.a),
+            new erf(2.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.0F, erg.b(-30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(-90.0F, -10.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.0F, erg.a(0.0F, -2.0F, 11.0F), erd.b.a),
+            new erf(1.5F, erg.a(0.0F, -2.0F, 11.0F), erd.b.a),
+            new erf(1.7F, erg.a(0.0F, -8.4F, 11.4F), erd.b.a),
+            new erf(2.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-10.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.7F, erg.b(-15.0F, -3.0F, 0.0F), erd.b.a),
+            new erf(1.9F, erg.b(-65.0F, -9.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(-90.0F, -15.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.a(0.0F, 0.0F, 1.0F), erd.b.a),
+            new erf(1.7F, erg.a(1.0F, -0.62F, 0.25F), erd.b.a),
+            new erf(1.9F, erg.a(0.5F, -11.25F, 2.5F), erd.b.a),
+            new erf(2.0F, erg.a(1.0F, -20.5F, 5.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-10.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.7F, erg.b(-15.0F, 3.0F, 0.0F), erd.b.a),
+            new erf(1.9F, erg.b(-65.0F, 9.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(-90.0F, 15.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.a(0.0F, 0.0F, 1.0F), erd.b.a),
+            new erf(1.7F, erg.a(-1.0F, -0.62F, 0.25F), erd.b.a),
+            new erf(1.9F, erg.a(-0.5F, -11.25F, 2.5F), erd.b.a),
+            new erf(2.0F, erg.a(-1.0F, -20.5F, 5.0F), erd.b.a)
+         )
+      )
+      .a(
+         "head",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.7F, erg.b(-27.5F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(-21.25F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(5.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.7F, erg.b(5.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.9F, erg.b(80.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(50.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .b();
+   public static final ere c = ere.a.a(1.0F)
+      .a("body", new erd(erd.d.b, new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)))
+      .a("body", new erd(erd.d.a, new erf(0.0F, erg.a(0.0F, -19.9F, 0.0F), erd.b.a), new erf(1.0F, erg.a(0.0F, -19.9F, 0.0F), erd.b.a)))
+      .a("right_front_leg", new erd(erd.d.b, new erf(0.0F, erg.b(-90.0F, 10.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(-90.0F, 10.0F, 0.0F), erd.b.a)))
+      .a("right_front_leg", new erd(erd.d.a, new erf(0.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a), new erf(1.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a)))
+      .a("left_front_leg", new erd(erd.d.b, new erf(0.0F, erg.b(-90.0F, -10.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(-90.0F, -10.0F, 0.0F), erd.b.a)))
+      .a("left_front_leg", new erd(erd.d.a, new erf(0.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a), new erf(1.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a)))
+      .a("left_hind_leg", new erd(erd.d.b, new erf(0.0F, erg.b(-90.0F, -15.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(-90.0F, -15.0F, 0.0F), erd.b.a)))
+      .a("left_hind_leg", new erd(erd.d.a, new erf(0.0F, erg.a(1.0F, -20.5F, 5.0F), erd.b.a), new erf(1.0F, erg.a(1.0F, -20.5F, 5.0F), erd.b.a)))
+      .a("right_hind_leg", new erd(erd.d.b, new erf(0.0F, erg.b(-90.0F, 15.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(-90.0F, 15.0F, 0.0F), erd.b.a)))
+      .a("right_hind_leg", new erd(erd.d.a, new erf(0.0F, erg.a(-1.0F, -20.5F, 5.0F), erd.b.a), new erf(1.0F, erg.a(-1.0F, -20.5F, 5.0F), erd.b.a)))
+      .a("head", new erd(erd.d.b, new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)))
+      .a("tail", new erd(erd.d.b, new erf(0.0F, erg.b(50.0F, 0.0F, 0.0F), erd.b.a), new erf(1.0F, erg.b(50.0F, 0.0F, 0.0F), erd.b.a)))
+      .b();
+   public static final ere d = ere.a.a(2.6F)
+      .a(
+         "body",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.7F, erg.b(-17.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.8F, erg.b(-17.83F, 0.0F, 0.0F), erd.b.b),
+            new erf(2.3F, erg.b(-5.83F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "body",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, -19.9F, 0.0F), erd.b.a),
+            new erf(0.7F, erg.a(0.0F, -19.9F, -3.0F), erd.b.a),
+            new erf(1.4F, erg.a(0.0F, -12.76F, -4.0F), erd.b.b),
+            new erf(1.8F, erg.a(0.0F, -10.1F, -4.0F), erd.b.b),
+            new erf(2.3F, erg.a(0.0F, -2.9F, -2.0F), erd.b.a),
+            new erf(2.6F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-90.0F, 10.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.b(-90.0F, 10.0F, 0.0F), erd.b.a),
+            new erf(1.1F, erg.b(-49.06F, 10.0F, 0.0F), erd.b.a),
+            new erf(1.8F, erg.b(-22.5F, 10.0F, 0.0F), erd.b.a),
+            new erf(2.3F, erg.b(-25.0F, 10.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a),
+            new erf(0.5F, erg.a(0.0F, -20.6F, 8.0F), erd.b.a),
+            new erf(1.1F, erg.a(0.0F, -7.14F, 4.42F), erd.b.a),
+            new erf(1.8F, erg.a(0.0F, -1.27F, -1.33F), erd.b.a),
+            new erf(2.3F, erg.a(0.0F, -1.27F, -0.33F), erd.b.a),
+            new erf(2.6F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-90.0F, -10.0F, 0.0F), erd.b.a),
+            new erf(0.5F, erg.b(-90.0F, -10.0F, 0.0F), erd.b.a),
+            new erf(1.1F, erg.b(-49.06F, -10.0F, 0.0F), erd.b.a),
+            new erf(1.8F, erg.b(-22.5F, -10.0F, 0.0F), erd.b.a),
+            new erf(2.3F, erg.b(-25.0F, -10.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(0.0F, -20.6F, 12.0F), erd.b.a),
+            new erf(0.5F, erg.a(0.0F, -20.6F, 8.0F), erd.b.a),
+            new erf(1.1F, erg.a(0.0F, -7.14F, 4.42F), erd.b.a),
+            new erf(1.8F, erg.a(0.0F, -1.27F, -1.33F), erd.b.a),
+            new erf(2.3F, erg.a(0.0F, -1.27F, -0.33F), erd.b.a),
+            new erf(2.6F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-90.0F, -15.0F, 0.0F), erd.b.a),
+            new erf(0.3F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.6F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.1F, erg.b(-60.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.9F, erg.b(35.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.2F, erg.b(30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(1.0F, -20.5F, 5.0F), erd.b.a),
+            new erf(0.3F, erg.a(-2.0F, -20.5F, 3.0F), erd.b.a),
+            new erf(0.6F, erg.a(-2.0F, -20.5F, 3.0F), erd.b.a),
+            new erf(1.1F, erg.a(-2.0F, -10.5F, 2.0F), erd.b.a),
+            new erf(1.5F, erg.a(-2.0F, -0.4F, -3.9F), erd.b.a),
+            new erf(1.9F, erg.a(-2.0F, -4.3F, -9.8F), erd.b.a),
+            new erf(2.2F, erg.a(-1.0F, -2.5F, -5.0F), erd.b.a),
+            new erf(2.6F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-90.0F, 15.0F, 0.0F), erd.b.a),
+            new erf(0.3F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.6F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.1F, erg.b(-60.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.9F, erg.b(35.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.2F, erg.b(30.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.a,
+            new erf(0.0F, erg.a(-1.0F, -20.5F, 5.0F), erd.b.a),
+            new erf(0.3F, erg.a(2.0F, -20.5F, 3.0F), erd.b.a),
+            new erf(0.6F, erg.a(2.0F, -20.5F, 3.0F), erd.b.a),
+            new erf(1.1F, erg.a(2.0F, -10.5F, 2.0F), erd.b.a),
+            new erf(1.5F, erg.a(2.0F, -0.4F, -3.9F), erd.b.a),
+            new erf(1.9F, erg.a(2.0F, -4.3F, -9.8F), erd.b.a),
+            new erf(2.2F, erg.a(1.0F, -2.5F, -5.0F), erd.b.a),
+            new erf(2.6F, erg.a(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "head",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.3F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.8F, erg.b(55.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.0F, erg.b(65.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.4F, erg.b(0.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(50.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.4F, erg.b(55.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(0.9F, erg.b(55.0F, 0.0F, 0.0F), erd.b.a),
+            new erf(1.5F, erg.b(17.5F, 0.0F, 0.0F), erd.b.a),
+            new erf(2.6F, erg.b(5.0F, 0.0F, 0.0F), erd.b.a)
+         )
+      )
+      .b();
+   public static final ere e = ere.a.a(0.5F)
+      .a()
+      .a("body", new erd(erd.d.b, new erf(0.0F, erg.b(5.0F, 0.0F, 0.0F), erd.b.a), new erf(0.5F, erg.b(5.0F, 0.0F, 0.0F), erd.b.a)))
+      .a(
+         "tail",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(67.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.125F, erg.b(112.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.25F, erg.b(67.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(112.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.5F, erg.b(67.5F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "head",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(10.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.125F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.25F, erg.b(10.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.5F, erg.b(10.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(44.97272F, 1.76749F, -1.76833F), erd.b.b),
+            new erf(0.125F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.25F, erg.b(44.97272F, 1.76749F, -1.76833F), erd.b.b),
+            new erf(0.375F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.5F, erg.b(44.97272F, 1.76749F, -1.76833F), erd.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.125F, erg.b(44.97272F, -1.76749F, 1.76833F), erd.b.b),
+            new erf(0.25F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(44.97272F, -1.76749F, 1.76833F), erd.b.b),
+            new erf(0.5F, erg.b(-90.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.125F, erg.b(-45.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.25F, erg.b(90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(-45.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.5F, erg.b(90.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(-45.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.125F, erg.b(90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.25F, erg.b(-45.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.375F, erg.b(90.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(0.5F, erg.b(-45.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a("left_ear", new erd(erd.d.b, new erf(0.0F, erg.b(0.0F, -67.5F, 0.0F), erd.b.a), new erf(0.5F, erg.b(0.0F, -67.5F, 0.0F), erd.b.a)))
+      .a("right_ear", new erd(erd.d.b, new erf(0.0F, erg.b(0.0F, 67.5F, 0.0F), erd.b.a), new erf(0.5F, erg.b(0.0F, 67.5F, 0.0F), erd.b.a)))
+      .b();
+   public static final ere f = ere.a.a(4.0F)
+      .a(
+         "tail",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(5.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(1.0F, erg.b(4.98107F, 0.43523F, -4.98107F), erd.b.b),
+            new erf(3.0F, erg.b(4.9872F, -0.29424F, 3.36745F), erd.b.b),
+            new erf(4.0F, erg.b(5.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "head",
+         new erd(
+            erd.d.b,
+            new erf(0.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b),
+            new erf(2.0F, erg.b(-2.5F, 0.0F, 0.0F), erd.b.b),
+            new erf(4.0F, erg.b(0.0F, 0.0F, 0.0F), erd.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new erd(
+            erd.d.b,
+            new erf(2.5F, erg.b(0.0F, 0.0F, -45.0F), erd.b.b),
+            new erf(2.625F, erg.b(0.0F, 0.0F, 22.5F), erd.b.b),
+            new erf(2.75F, erg.b(0.0F, 0.0F, -45.0F), erd.b.b),
+            new erf(2.875F, erg.b(0.0F, 0.0F, 22.5F), erd.b.b),
+            new erf(3.0F, erg.b(0.0F, 0.0F, -45.0F), erd.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new erd(
+            erd.d.b,
+            new erf(2.5F, erg.b(0.0F, 0.0F, 45.0F), erd.b.b),
+            new erf(2.625F, erg.b(0.0F, 0.0F, -22.5F), erd.b.b),
+            new erf(2.75F, erg.b(0.0F, 0.0F, 45.0F), erd.b.b),
+            new erf(2.875F, erg.b(0.0F, 0.0F, -22.5F), erd.b.b),
+            new erf(3.0F, erg.b(0.0F, 0.0F, 45.0F), erd.b.b)
+         )
+      )
+      .b();
 }

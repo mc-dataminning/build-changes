@@ -1,15 +1,82 @@
-public class oq {
-   public static final acp<dkb<?, ?>> a = om.a("pile_hay");
-   public static final acp<dkb<?, ?>> b = om.a("pile_melon");
-   public static final acp<dkb<?, ?>> c = om.a("pile_snow");
-   public static final acp<dkb<?, ?>> d = om.a("pile_ice");
-   public static final acp<dkb<?, ?>> e = om.a("pile_pumpkin");
+import java.util.List;
 
-   public static void a(nm<dkb<?, ?>> $$0) {
-      om.a($$0, a, dko.j, new dmk(new dpa(cpo.ij)));
-      om.a($$0, b, dko.j, new dmk(dot.a(cpo.fa)));
-      om.a($$0, c, dko.j, new dmk(dot.a(cpo.dN)));
-      om.a($$0, d, dko.j, new dmk(new dpd(bch.<dcb>a().a(cpo.mW.n(), 1).a(cpo.iC.n(), 5))));
-      om.a($$0, e, dko.j, new dmk(new dpd(bch.<dcb>a().a(cpo.dV.n(), 19).a(cpo.eg.n(), 1))));
+public class oq {
+   public static final aeo<dmy<?, ?>> a = on.a("ore_magma");
+   public static final aeo<dmy<?, ?>> b = on.a("ore_soul_sand");
+   public static final aeo<dmy<?, ?>> c = on.a("ore_nether_gold");
+   public static final aeo<dmy<?, ?>> d = on.a("ore_quartz");
+   public static final aeo<dmy<?, ?>> e = on.a("ore_gravel_nether");
+   public static final aeo<dmy<?, ?>> f = on.a("ore_blackstone");
+   public static final aeo<dmy<?, ?>> g = on.a("ore_dirt");
+   public static final aeo<dmy<?, ?>> h = on.a("ore_gravel");
+   public static final aeo<dmy<?, ?>> i = on.a("ore_granite");
+   public static final aeo<dmy<?, ?>> j = on.a("ore_diorite");
+   public static final aeo<dmy<?, ?>> k = on.a("ore_andesite");
+   public static final aeo<dmy<?, ?>> l = on.a("ore_tuff");
+   public static final aeo<dmy<?, ?>> m = on.a("ore_coal");
+   public static final aeo<dmy<?, ?>> n = on.a("ore_coal_buried");
+   public static final aeo<dmy<?, ?>> o = on.a("ore_iron");
+   public static final aeo<dmy<?, ?>> p = on.a("ore_iron_small");
+   public static final aeo<dmy<?, ?>> q = on.a("ore_gold");
+   public static final aeo<dmy<?, ?>> r = on.a("ore_gold_buried");
+   public static final aeo<dmy<?, ?>> s = on.a("ore_redstone");
+   public static final aeo<dmy<?, ?>> t = on.a("ore_diamond_small");
+   public static final aeo<dmy<?, ?>> u = on.a("ore_diamond_medium");
+   public static final aeo<dmy<?, ?>> v = on.a("ore_diamond_large");
+   public static final aeo<dmy<?, ?>> w = on.a("ore_diamond_buried");
+   public static final aeo<dmy<?, ?>> x = on.a("ore_lapis");
+   public static final aeo<dmy<?, ?>> y = on.a("ore_lapis_buried");
+   public static final aeo<dmy<?, ?>> z = on.a("ore_infested");
+   public static final aeo<dmy<?, ?>> A = on.a("ore_emerald");
+   public static final aeo<dmy<?, ?>> B = on.a("ore_ancient_debris_large");
+   public static final aeo<dmy<?, ?>> C = on.a("ore_ancient_debris_small");
+   public static final aeo<dmy<?, ?>> D = on.a("ore_copper_small");
+   public static final aeo<dmy<?, ?>> E = on.a("ore_copper_large");
+   public static final aeo<dmy<?, ?>> F = on.a("ore_clay");
+
+   public static void a(nn<dmy<?, ?>> $$0) {
+      dyk $$1 = new dys(apj.bd);
+      dyk $$2 = new dys(apj.be);
+      dyk $$3 = new dys(apj.bf);
+      dyk $$4 = new dxt(csl.dW);
+      dyk $$5 = new dys(apj.bg);
+      List<dpx.a> $$6 = List.of(dpx.a($$2, csl.P.n()), dpx.a($$3, csl.Q.n()));
+      List<dpx.a> $$7 = List.of(dpx.a($$2, csl.N.n()), dpx.a($$3, csl.O.n()));
+      List<dpx.a> $$8 = List.of(dpx.a($$2, csl.cx.n()), dpx.a($$3, csl.cy.n()));
+      List<dpx.a> $$9 = List.of(dpx.a($$2, csl.aR.n()), dpx.a($$3, csl.aS.n()));
+      List<dpx.a> $$10 = List.of(dpx.a($$2, csl.qN.n()), dpx.a($$3, csl.qO.n()));
+      List<dpx.a> $$11 = List.of(dpx.a($$2, csl.R.n()), dpx.a($$3, csl.S.n()));
+      on.a($$0, a, dnl.I, new dpx($$4, csl.kJ.n(), 33));
+      on.a($$0, b, dnl.I, new dpx($$4, csl.dX.n(), 12));
+      on.a($$0, c, dnl.I, new dpx($$4, csl.T.n(), 10));
+      on.a($$0, d, dnl.I, new dpx($$4, csl.hb.n(), 14));
+      on.a($$0, e, dnl.I, new dpx($$4, csl.L.n(), 33));
+      on.a($$0, f, dnl.I, new dpx($$4, csl.pr.n(), 33));
+      on.a($$0, g, dnl.I, new dpx($$1, csl.j.n(), 33));
+      on.a($$0, h, dnl.I, new dpx($$1, csl.L.n(), 33));
+      on.a($$0, i, dnl.I, new dpx($$1, csl.c.n(), 64));
+      on.a($$0, j, dnl.I, new dpx($$1, csl.e.n(), 64));
+      on.a($$0, k, dnl.I, new dpx($$1, csl.g.n(), 64));
+      on.a($$0, l, dnl.I, new dpx($$1, csl.qz.n(), 64));
+      on.a($$0, m, dnl.I, new dpx($$11, 17));
+      on.a($$0, n, dnl.I, new dpx($$11, 17, 0.5F));
+      on.a($$0, o, dnl.I, new dpx($$6, 9));
+      on.a($$0, p, dnl.I, new dpx($$6, 4));
+      on.a($$0, q, dnl.I, new dpx($$7, 9));
+      on.a($$0, r, dnl.I, new dpx($$7, 9, 0.5F));
+      on.a($$0, s, dnl.I, new dpx(List.of(dpx.a($$2, csl.dI.n()), dpx.a($$3, csl.dJ.n())), 8));
+      on.a($$0, t, dnl.I, new dpx($$8, 4, 0.5F));
+      on.a($$0, v, dnl.I, new dpx($$8, 12, 0.7F));
+      on.a($$0, w, dnl.I, new dpx($$8, 8, 1.0F));
+      on.a($$0, u, dnl.I, new dpx($$8, 8, 0.5F));
+      on.a($$0, x, dnl.I, new dpx($$9, 7));
+      on.a($$0, y, dnl.I, new dpx($$9, 7, 1.0F));
+      on.a($$0, z, dnl.I, new dpx(List.of(dpx.a($$2, csl.eO.n()), dpx.a($$3, csl.sc.n())), 9));
+      on.a($$0, A, dnl.I, new dpx(List.of(dpx.a($$2, csl.fE.n()), dpx.a($$3, csl.fF.n())), 3));
+      on.a($$0, B, dnl.ae, new dpx($$5, csl.pj.n(), 3, 1.0F));
+      on.a($$0, C, dnl.ae, new dpx($$5, csl.pj.n(), 2, 1.0F));
+      on.a($$0, D, dnl.I, new dpx($$10, 10));
+      on.a($$0, E, dnl.I, new dpx($$10, 20));
+      on.a($$0, F, dnl.I, new dpx($$1, csl.dR.n(), 33));
    }
 }

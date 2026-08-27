@@ -1,26 +1,12 @@
-import java.util.function.Function;
+public class egl {
+   public static final egj a = a("fixed", new egi.a());
+   public static final egj b = a("context", new egh.b());
 
-public interface egl {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   private static egj a(String $$0, ecq<? extends egk> $$1) {
+      return hs.a(jc.L, new aep($$0), new egj($$1));
    }
 
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   err bake(Function<egn, err> var1);
-
-   public interface a extends egl {
-      @Override
-      default err bake(Function<egn, err> $$0) {
-         return ers.a;
-      }
+   public static Object a() {
+      return ecf.<egk, egj>a(jc.L, "provider", "type", egk::a).a(b, new egh.a()).a();
    }
 }

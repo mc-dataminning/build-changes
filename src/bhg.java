@@ -1,19 +1,51 @@
-public class bhg {
-   public static final bhb a = a("generic.max_health", new bhi("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final bhb b = a("generic.follow_range", new bhi("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final bhb c = a("generic.knockback_resistance", new bhi("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final bhb d = a("generic.movement_speed", new bhi("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final bhb e = a("generic.flying_speed", new bhi("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final bhb f = a("generic.attack_damage", new bhi("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final bhb g = a("generic.attack_knockback", new bhi("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final bhb h = a("generic.attack_speed", new bhi("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final bhb i = a("generic.armor", new bhi("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final bhb j = a("generic.armor_toughness", new bhi("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final bhb k = a("generic.luck", new bhi("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final bhb l = a("zombie.spawn_reinforcements", new bhi("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final bhb m = a("horse.jump_strength", new bhi("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static bhb a(String $$0, bhb $$1) {
-      return hr.a(jb.v, $$0, $$1);
+public record bhg(String b, bhd c, float d, bhc e, bhi f) {
+   public static final Codec<bhg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bhg::a),
+               bhd.d.fieldOf("scaling").forGetter(bhg::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bhg::c),
+               bhc.g.optionalFieldOf("effects", bhc.a).forGetter(bhg::d),
+               bhi.d.optionalFieldOf("death_message_type", bhi.a).forGetter(bhg::e)
+            )
+            .apply($$0, bhg::new)
+   );
+
+   public bhg(String $$0, bhd $$1, float $$2) {
+      this($$0, $$1, $$2, bhc.a, bhi.a);
+   }
+
+   public bhg(String $$0, bhd $$1, float $$2, bhc $$3) {
+      this($$0, $$1, $$2, $$3, bhi.a);
+   }
+
+   public bhg(String $$0, float $$1, bhc $$2) {
+      this($$0, bhd.b, $$1, $$2);
+   }
+
+   public bhg(String $$0, float $$1) {
+      this($$0, bhd.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public bhd b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bhc d() {
+      return this.e;
+   }
+
+   public bhi e() {
+      return this.f;
    }
 }

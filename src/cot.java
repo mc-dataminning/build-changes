@@ -1,53 +1,72 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.function.Predicate;
 
-public class cot extends cod {
-   public static final ddb a = dcr.ba;
-   private static final Map<cen, cpn> b = Maps.newHashMap();
-   private static final efb c = cpn.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class cot {
+   private final ehf a;
+   private final ehf b;
+   private final cot.a c;
+   private final cot.b d;
+   private final ehk e;
 
-   public cot(cen $$0, dca.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
-      b.put($$0, this);
+   public cot(ehf $$0, ehf $$1, cot.a $$2, cot.b $$3, big $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = ehk.a($$4);
    }
 
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return $$1.a_($$2.d()).e();
+   public ehf a() {
+      return this.b;
    }
 
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return c;
+   public ehf b() {
+      return this.a;
    }
 
-   @Override
-   public dcb a(cih $$0) {
-      return this.n().a(a, Integer.valueOf(ddh.a($$0.i() + 180.0F)));
+   public ehy a(dey $$0, coq $$1, gv $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? cpo.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ehy a(eab $$0, coq $$1, gv $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : ehv.a();
    }
 
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public static enum a implements cot.c {
+      a(dex.a::b),
+      b(dex.a::a),
+      c(dex.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(apj.aP) ? ehv.b() : ehv.a());
+
+      private final cot.c e;
+
+      private a(cot.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public ehy get(dey $$0, coq $$1, gv $$2, ehk $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
    }
 
-   @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public static enum b {
+      a($$0 -> false),
+      b(eab::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(apo.a));
+
+      private final Predicate<eab> e;
+
+      private b(Predicate<eab> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(eab $$0) {
+         return this.e.test($$0);
+      }
    }
 
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
-   }
-
-   public static cpn a(cen $$0) {
-      return b.getOrDefault($$0, cpo.iJ);
+   public interface c {
+      ehy get(dey var1, coq var2, gv var3, ehk var4);
    }
 }

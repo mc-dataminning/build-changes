@@ -1,96 +1,55 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class cib {
-   public static final Codec<cib> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cic.b.fieldOf("material").forGetter(cib::b), cie.b.fieldOf("pattern").forGetter(cib::a)).apply($$0, cib::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final sw d = sw.c(ac.a("item", new acq("smithing_template.upgrade"))).a(n.h);
-   private final he<cic> e;
-   private final he<cie> f;
-   private final Function<cdk, acq> g;
-   private final Function<cdk, acq> h;
-
-   public cib(he<cic> $$0, he<cie> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         acq $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         acq $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
-   }
-
-   private String c(cdk $$0) {
-      Map<cdl, String> $$1 = this.e.a().d();
-      return $$0 instanceof cdl && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
-   }
-
-   public boolean a(he<cie> $$0, he<cic> $$1) {
-      return $$0 == this.f && $$1 == this.e;
-   }
-
-   public he<cie> a() {
-      return this.f;
-   }
-
-   public he<cic> b() {
-      return this.e;
-   }
-
-   public acq a(cdk $$0) {
-      return this.g.apply($$0);
-   }
-
-   public acq b(cdk $$0) {
-      return this.h.apply($$0);
+public class cib extends cir {
+   public cib(cir.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof cib $$1) ? false : $$1.f == this.f && $$1.e == this.e;
-   }
-
-   public static boolean a(hs $$0, cfz $$1, cib $$2) {
-      if ($$1.a(ane.aH)) {
-         $$1.w().a("Trim", (rk)a.encodeStart(aco.a(rc.a, $$0), $$2).result().orElseThrow());
-         return true;
-      } else {
-         return false;
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      qs $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
    }
 
-   public static Optional<cib> a(hs $$0, cfz $$1) {
-      if ($$1.a(ane.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         qr $$2 = $$1.b("Trim");
-         cib $$3 = (cib)a.parse(aco.a(rc.a, $$0), $$2).resultOrPartial(c::error).orElse(null);
-         return Optional.ofNullable($$3);
-      } else {
-         return Optional.empty();
+   public static void a(qs $$0, List<te> $$1) {
+      cia.a $$2 = cia.a.a($$0.f("Type"));
+      $$1.add(te.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(te.h().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(te.c("item.minecraft.firework_star.fade_to").b(td.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(te.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(te.c("item.minecraft.firework_star.flicker").a(n.h));
       }
    }
 
-   public static void a(cfz $$0, hs $$1, List<sw> $$2) {
-      Optional<cib> $$3 = a($$1, $$0);
-      if ($$3.isPresent()) {
-         cib $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(sv.a().b($$4.a().a().a($$4.b())));
-         $$2.add(sv.a().b($$4.b().a().e()));
+   private static te a(tr $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
       }
+
+      return $$0;
+   }
+
+   private static te a(int $$0) {
+      chk $$1 = chk.b($$0);
+      return $$1 == null ? te.c("item.minecraft.firework_star.custom_color") : te.c("item.minecraft.firework_star." + $$1.b());
    }
 }

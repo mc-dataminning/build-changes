@@ -1,49 +1,167 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class eog {
-   public static void a(fbo<?> $$0, eoe $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+public class eog extends ged {
+   private static final aep a = new aep("icon/unseen_notification");
+   private static final aep b = new aep("icon/news");
+   private static final aep c = new aep("icon/invite");
+   private static final aep y = new aep("icon/trial_available");
+   private final CompletableFuture<Boolean> z = elr.a().thenApply($$0 -> $$0.a() == elr.b.a);
+   @Nullable
+   private eow.c A;
+   @Nullable
+   private eog.a B;
+   private volatile int C;
+   private static boolean D;
+   private static boolean E;
+   private static boolean F;
+   private final eog.a G = new eog.a() {
+      @Override
+      public eow.c a(eno $$0) {
+         eow.c $$1 = $$0.a.a();
+         eog.this.a($$0, $$1);
+         eog.this.b($$0, $$1);
+         return $$1;
+      }
 
-      for (Entry<String, List<eod>> $$6 : $$1.c().entrySet()) {
-         Optional<fee> $$7 = $$0.a($$6.getKey());
-         List<eod> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               eof[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, apa.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               eof $$8x = $$5x[$$6x];
-               eof $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = apa.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final eog.a H = new eog.a() {
+      @Override
+      public eow.c a(eno $$0) {
+         eow.c $$1 = $$0.a.a();
+         eog.this.b($$0, $$1);
+         return $$1;
+      }
 
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public eog() {
+      super(eqf.a);
+   }
+
+   @Override
+   public void aE_() {
+      if (this.A != null) {
+         this.A.a();
       }
    }
 
-   private static float a(eoe $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   @Override
+   public void av_() {
+      super.av_();
+      this.f.aX().b.a();
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
+   @Nullable
+   private eog.a B() {
+      boolean $$0 = this.D() && this.z.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.C() ? this.G : this.H;
+      }
    }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   @Override
+   public void c() {
+      eog.a $$0 = this.B();
+      if (!Objects.equals(this.B, $$0)) {
+         this.B = $$0;
+         if (this.B != null) {
+            this.A = this.B.a(this.f.aX());
+         } else {
+            this.A = null;
+         }
+      }
+
+      if (this.A != null) {
+         this.A.b();
+      }
    }
 
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   private boolean C() {
+      return this.f.m.O().c();
+   }
+
+   private boolean D() {
+      return this.f.z instanceof eya;
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.z.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(erx $$0) {
+      int $$1 = this.C;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (F) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.B != null && this.B.a()) {
+         if (E) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (D) {
+            $$0.a(y, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(eno $$0, eow.c $$1) {
+      $$1.a($$0.e, $$0x -> this.C = $$0x);
+      $$1.a($$0.f, $$0x -> D = $$0x);
+      $$1.a($$0.g, $$1x -> {
+         $$0.h.a($$1x);
+         E = $$0.h.a();
+      });
+   }
+
+   void b(eno $$0, eow.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         F = false;
+
+         for (emn $$1x : $$0x) {
+            if (!$$1x.a()) {
+               F = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      eow.c a(eno var1);
+
+      boolean a();
    }
 }

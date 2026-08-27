@@ -1,54 +1,118 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class bjd {
-   public static bhs<byb> a() {
-      return bld.a(
-         (Function<bld.b<byb>, ? extends App<bld.c<byb>, blg<byb>>>)($$0 -> $$0.group($$0.b(bpb.c), $$0.b(bpb.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        hd $$6 = $$0.b($$1);
-                        $$3.w()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bfz>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof byb && $$1xxx != $$4)
-                                    .map($$0xxxx -> (byb)$$0xxxx)
-                                    .filter(bfz::bs)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bjd::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
-   }
+public interface bjd {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   private static byb a(byb $$0, byb $$1) {
-      byb $$2;
-      byb $$3;
-      if ($$0.r() > $$1.r()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void c(qs $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
-
-      $$3.dK().b(bpb.c);
-      return $$2;
    }
 
-   private static boolean a(hd $$0, he<brc> $$1, byb $$2) {
-      Optional<hd> $$3 = $$2.dK().c(bpb.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gj().b());
+   default void a(cpk $$0, qs $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof aki) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            big $$3 = ((aki)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof biy) {
+                  this.a((biy)$$3);
+               }
+
+               if ($$3.ag() == bik.bt) {
+                  this.c((cbl)$$3);
+               }
+            }
+         }
+      }
    }
 
-   private static boolean a(he<brc> $$0, bye $$1) {
-      return $$1.b().test($$0);
+   default void a(aki $$0, boolean $$1) {
+      biw $$2 = this.j();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eu()) && $$3 != null && $$0.a($$3) instanceof biy) {
+         this.O_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
+            this.a($$2.cv());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.ag() != bik.bt || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.O_();
+            }
+         }
+      }
    }
+
+   default boolean a_(biw $$0) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.ag() == bik.bt && this.a_($$0.dK()) ? true : $$0.cv().equals(this.b());
+      }
+   }
+
+   default boolean a_(cpk $$0) {
+      return $$0.X().b(cpg.K) && this.S_() && this.b() == null;
+   }
+
+   default boolean S_() {
+      return this.a() > 0;
+   }
+
+   default void a_(cbl $$0) {
+      if ($$0.dK().X().b(cpg.J)) {
+         if ($$0.cv().equals(this.b())) {
+            this.O_();
+         }
+      }
+   }
+
+   default void T_() {
+      this.O_();
+      this.c();
+   }
+
+   default void O_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
+   }
+
+   @Nullable
+   biw ef();
+
+   void a(@Nullable biw var1);
+
+   void c(@Nullable cbl var1);
+
+   void h(@Nullable biw var1);
+
+   boolean c(biw var1);
+
+   @Nullable
+   biw j();
 }

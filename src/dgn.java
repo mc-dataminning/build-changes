@@ -1,20 +1,58 @@
 public interface dgn {
-   dgp a();
+   void a(dgp var1, double var2);
 
-   int b();
+   void a(dgp var1, double var2, double var4, long var6);
 
-   boolean a(aif var1, dgl var2, dgl.a var3, eei var4);
+   void a(dgp var1, double var2, double var4);
 
-   default dgn.a c() {
-      return dgn.a.a;
-   }
+   void a(dgp var1, int var2);
 
-   public static enum a {
-      a,
-      b;
-   }
+   void b(dgp var1, int var2);
 
-   public interface b<T extends dgn> {
-      T d();
+   void b(dgp var1, double var2);
+
+   void c(dgp var1, double var2);
+
+   public static class a implements dgn {
+      private final dgp a;
+
+      public a(dgp $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dgp $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dgp $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dgp $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dgp $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dgp $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dgp $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dgp $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

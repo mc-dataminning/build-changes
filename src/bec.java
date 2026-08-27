@@ -1,27 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public class bec {
-   public static final Codec<bec> a = RecordCodecBuilder.create($$0 -> $$0.group(dil.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bec::new));
-   private final dil b;
+public record bec(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   public bec(dil $$0) {
-      this.b = $$0;
+   public static bec a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bec($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public bec(long $$0, acq $$1) {
-      this(a($$0, $$1));
+   public static bec.a a(List<bec> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bec>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bec $$3 = (bec)$$2x.get(0);
+            bec $$4 = (bec)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
+         }
+      });
+      return new bec.a($$1);
    }
 
-   private static dil a(long $$0, acq $$1) {
-      return new dil(dhz.b($$0).a(a($$1)).a());
-   }
-
-   public static dhz.a a(acq $$0) {
-      return dhz.a($$0.toString());
-   }
-
-   public apf a() {
-      return this.b;
+   public static record a(Map<String, Double> a) {
    }
 }

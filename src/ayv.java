@@ -1,18 +1,19 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class ayv extends axd {
-   public ayv(int $$0, Schema $$1) {
-      super($$0, $$1);
+public abstract class ayv extends avp {
+   public ayv(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:glow_squid", () -> axe.a($$0));
-      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", avw.m.in($$0)));
-      return $$1;
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
+
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

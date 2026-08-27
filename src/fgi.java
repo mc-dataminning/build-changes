@@ -1,59 +1,33 @@
-public class fgi extends fim {
-   private final fih a;
+public class fgi<T extends big> extends fet<T> {
+   private final fhj a;
 
-   protected fgi(
-      few $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fih $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+   public fgi(fhj $$0) {
+      this.a = $$0;
+   }
+
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("cube", fho.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
+      return fhp.a($$0, 64, 32);
+   }
+
+   public static fhp c() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("cube", fho.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhl.a);
+      $$1.a("right_eye", fho.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fhl.a);
+      $$1.a("left_eye", fho.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fhl.a);
+      $$1.a("mouth", fho.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fhl.a);
+      return fhp.a($$0, 64, 32);
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public fhj a() {
+      return this.a;
    }
 }

@@ -1,15 +1,22 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+public enum aov {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-@Deprecated
-public class aov<T> {
-   private final Supplier<T> a;
+   private final String k;
 
-   public aov(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
+   private aov(String $$0) {
+      this.k = $$0;
    }
 
-   public T a() {
-      return this.a.get();
+   public String a() {
+      return this.k;
    }
 }

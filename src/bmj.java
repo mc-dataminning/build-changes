@@ -1,45 +1,26 @@
-public class bmj extends bni {
-   private final bro g;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bmj(bro $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
-   }
+public class bmj {
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   @Override
-   public boolean a() {
-      return this.g.q() && !this.g.fY() && super.a();
-   }
+   public static bkp<biw> a() {
+      return boa.a((Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$0 -> $$0.group($$0.b(bry.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  gv $$5 = $$0.<he>b($$1).b();
+                  if ($$5.a($$3.dk(), 3.0)) {
+                     dey $$6 = $$2.a_($$5);
+                     if ($$6.a(csl.od)) {
+                        csg $$7 = (csg)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
+                     }
+                  }
 
-   @Override
-   public void c() {
-      super.c();
-      this.g.y(false);
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(this.m());
-   }
-
-   @Override
-   protected boolean a(cmp $$0, gu $$1) {
-      if (!$$0.t($$1.c())) {
-         return false;
-      } else {
-         dcb $$2 = $$0.a_($$1);
-         if ($$2.a(cpo.cv)) {
-            return czu.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(cpo.cD) && $$2.c(csq.b) ? true : $$2.a(amw.R, $$0x -> $$0x.d(cpg.a).map($$0xx -> $$0xx != dco.a).orElse(true));
-         }
-      }
+                  return true;
+               }
+            })));
    }
 }

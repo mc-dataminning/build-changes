@@ -1,265 +1,212 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class elk extends gan {
-   static final Logger a = LogUtils.getLogger();
-   static final acq b = new acq("realms", "textures/gui/realms/accept_icon.png");
-   static final acq c = new acq("realms", "textures/gui/realms/reject_icon.png");
-   private static final sw G = sw.c("mco.invites.nopending");
-   static final sw H = sw.c("mco.invites.button.accept");
-   static final sw I = sw.c("mco.invites.button.reject");
-   private final euq J;
+public class elk implements AutoCloseable {
+   private final elk.a a;
+   private int b;
+   private int c;
+   private int d;
    @Nullable
-   sw K;
-   boolean L;
-   elk.b M;
-   int N = -1;
-   private epi O;
-   private epi P;
+   private elm e;
+   @Nullable
+   private RenderSystem.a f;
+   private elm.a g;
+   private int h;
+   private elm.b i;
 
-   public elk(euq $$0, sw $$1) {
-      super($$1);
-      this.J = $$0;
+   public elk(elk.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   @Override
-   public void b() {
-      this.M = new elk.b();
-      (new Thread("Realms-pending-invitations-fetcher") {
-         @Override
-         public void run() {
-            eiz $$0 = eiz.a();
+   public void a(elc.b $$0) {
+      if (!this.e()) {
+         RenderSystem.assertOnRenderThread();
 
-            try {
-               List<ejj> $$1 = $$0.l().a;
-               List<elk.a> $$2 = $$1.stream().map($$0x -> elk.this.new a($$0x)).collect(Collectors.toList());
-               elk.this.f.execute(() -> elk.this.M.a($$2));
-            } catch (ekm var7) {
-               elk.a.error("Couldn't list invites");
-            } finally {
-               elk.this.L = true;
-            }
+         try {
+            elc.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.i();
+            this.g = $$1.k();
+            this.i = $$1.j();
+         } finally {
+            $$0.e();
          }
-      }).start();
-      this.e(this.M);
-      this.O = this.d(epi.a(sw.c("mco.invites.button.accept"), $$0 -> {
-         this.c(this.N);
-         this.N = -1;
-         this.B();
-      }).a(this.g / 2 - 174, this.h - 32, 100, 20).a());
-      this.d(epi.a(sv.d, $$0 -> this.f.a(new eiu(this.J))).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
-      this.P = this.d(epi.a(sw.c("mco.invites.button.reject"), $$0 -> {
-         this.b(this.N);
-         this.N = -1;
-         this.B();
-      }).a(this.g / 2 + 74, this.h - 32, 100, 20).a());
-      this.B();
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(new eiu(this.J));
-         return true;
+   private elm a(elc.a $$0, ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.g().equals(this.e)) {
+         if (this.e != null) {
+            this.e.f();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.g().e();
+         $$2 = true;
+      }
+
+      if (!$$0.l()) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.g();
+   }
+
+   @Nullable
+   private RenderSystem.a b(elc.a $$0, ByteBuffer $$1) {
+      if (!$$0.m()) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
       } else {
-         return super.a($$0, $$1, $$2);
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
+         if ($$2 != this.f || !$$2.a($$0.i())) {
+            $$2.b($$0.i());
+         }
+
+         return $$2;
       }
    }
 
-   void a(int $$0) {
-      this.M.b($$0);
+   public void a() {
+      eld.b();
+      GlStateManager._glBindVertexArray(this.d);
    }
 
-   void b(final int $$0) {
-      if ($$0 < this.M.k()) {
-         (new Thread("Realms-reject-invitation") {
-            @Override
-            public void run() {
-               try {
-                  eiz $$0 = eiz.a();
-                  $$0.b(elk.this.M.i().get($$0).c.a);
-                  elk.this.f.execute(() -> elk.this.a($$0));
-               } catch (ekm var2) {
-                  elk.a.error("Couldn't reject invite");
-               }
-            }
-         }).start();
+   public static void b() {
+      eld.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private elm.a f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, fnt $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+      } else {
+         this.b($$0, $$1, $$2);
       }
    }
 
-   void c(final int $$0) {
-      if ($$0 < this.M.k()) {
-         (new Thread("Realms-accept-invitation") {
-            @Override
-            public void run() {
-               try {
-                  eiz $$0 = eiz.a();
-                  $$0.a(elk.this.M.i().get($$0).c.a);
-                  elk.this.f.execute(() -> elk.this.a($$0));
-               } catch (ekm var2) {
-                  elk.a.error("Couldn't accept invite");
-               }
-            }
-         }).start();
+   private void b(Matrix4f $$0, Matrix4f $$1, fnt $$2) {
+      for (int $$3 = 0; $$3 < 12; $$3++) {
+         int $$4 = RenderSystem.getShaderTexture($$3);
+         $$2.a("Sampler" + $$3, $$4);
       }
+
+      if ($$2.b != null) {
+         $$2.b.a($$0);
+      }
+
+      if ($$2.c != null) {
+         $$2.c.a($$1);
+      }
+
+      if ($$2.d != null) {
+         $$2.d.a(RenderSystem.getInverseViewRotationMatrix());
+      }
+
+      if ($$2.g != null) {
+         $$2.g.a(RenderSystem.getShaderColor());
+      }
+
+      if ($$2.j != null) {
+         $$2.j.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if ($$2.k != null) {
+         $$2.k.a(RenderSystem.getShaderFogStart());
+      }
+
+      if ($$2.l != null) {
+         $$2.l.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if ($$2.m != null) {
+         $$2.m.a(RenderSystem.getShaderFogColor());
+      }
+
+      if ($$2.n != null) {
+         $$2.n.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if ($$2.e != null) {
+         $$2.e.a(RenderSystem.getTextureMatrix());
+      }
+
+      if ($$2.p != null) {
+         $$2.p.a(RenderSystem.getShaderGameTime());
+      }
+
+      if ($$2.f != null) {
+         ekl $$5 = eqn.N().aM();
+         $$2.f.a((float)$$5.k(), (float)$$5.l());
+      }
+
+      if ($$2.o != null && (this.i == elm.b.a || this.i == elm.b.b)) {
+         $$2.o.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights($$2);
+      $$2.g();
+      this.c();
+      $$2.f();
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.K = null;
-      this.a($$0);
-      this.M.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 12, 16777215);
-      if (this.K != null) {
-         this.a($$0, this.K, $$1, $$2);
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
       }
 
-      if (this.M.k() == 0 && this.L) {
-         $$0.a(this.i, G, this.g / 2, this.h / 2 - 20, 16777215);
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(eox $$0, @Nullable sw $$1, int $$2, int $$3) {
-      if ($$1 != null) {
-         int $$4 = $$2 + 12;
-         int $$5 = $$3 - 12;
-         int $$6 = this.i.a($$1);
-         $$0.b($$4 - 3, $$5 - 3, $$4 + $$6 + 3, $$5 + 8 + 3, -1073741824, -1073741824);
-         $$0.b(this.i, $$1, $$4, $$5, 16777215);
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
       }
    }
 
-   @Override
-   void B() {
-      this.O.s = this.i(this.N);
-      this.P.s = this.i(this.N);
+   public elm d() {
+      return this.e;
    }
 
-   private boolean i(int $$0) {
-      return $$0 != -1;
+   public boolean e() {
+      return this.d == -1;
    }
 
-   class a extends eqc.a<elk.a> {
-      private static final int b = 38;
-      final ejj c;
-      private final List<eku> d;
+   public static enum a {
+      a(35044),
+      b(35048);
 
-      a(ejj $$0) {
+      final int c;
+
+      private a(int $$0) {
          this.c = $$0;
-         this.d = Arrays.asList(new elk.a.a(), new elk.a.b());
-      }
-
-      @Override
-      public void a(eox $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         eku.a(elk.this.M, this, this.d, $$2, $$0, $$1);
-         return true;
-      }
-
-      private void a(eox $$0, ejj $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.a(elk.this.i, $$1.b, $$2 + 38, $$3 + 1, 16777215, false);
-         $$0.a(elk.this.i, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
-         $$0.a(elk.this.i, emf.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
-         eku.a($$0, this.d, elk.this.M, $$2, $$3, $$4, $$5);
-         emf.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public sw a() {
-         sw $$0 = sv.b(sw.b(this.c.b), sw.b(this.c.c), emf.a(this.c.e));
-         return sw.a("narrator.select", $$0);
-      }
-
-      class a extends eku {
-         a() {
-            super(15, 15, 215, 5);
-         }
-
-         @Override
-         protected void a(eox $$0, int $$1, int $$2, boolean $$3) {
-            float $$4 = $$3 ? 19.0F : 0.0F;
-            $$0.a(elk.b, $$1, $$2, $$4, 0.0F, 18, 18, 37, 18);
-            if ($$3) {
-               elk.this.K = elk.H;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            elk.this.c($$0);
-         }
-      }
-
-      class b extends eku {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(eox $$0, int $$1, int $$2, boolean $$3) {
-            float $$4 = $$3 ? 19.0F : 0.0F;
-            $$0.a(elk.c, $$1, $$2, $$4, 0.0F, 18, 18, 37, 18);
-            if ($$3) {
-               elk.this.K = elk.I;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            elk.this.b($$0);
-         }
-      }
-   }
-
-   class b extends gam<elk.a> {
-      public b() {
-         super(elk.this.g, elk.this.h, 32, elk.this.h - 40, 36);
-      }
-
-      public void b(int $$0) {
-         this.i($$0);
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 36;
-      }
-
-      @Override
-      public int b() {
-         return 260;
-      }
-
-      @Override
-      public void a(eox $$0) {
-         elk.this.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.c($$0);
-      }
-
-      public void c(int $$0) {
-         elk.this.N = $$0;
-         elk.this.B();
-      }
-
-      public void a(@Nullable elk.a $$0) {
-         super.a($$0);
-         elk.this.N = this.i().indexOf($$0);
-         elk.this.B();
       }
    }
 }

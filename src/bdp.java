@@ -1,86 +1,44 @@
-public class bdp implements bdq {
-   private final bdq c;
-   private final bdq d;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-   public bdp(bdq $$0, bdq $$1) {
-      this.c = $$0;
-      this.d = $$1;
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bdp extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final int packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bdp(String $$0, int $$1, SocketAddress $$2, int $$3) {
+      this.protocolId = $$0;
+      this.packetId = $$1;
+      this.remoteAddress = $$2.toString();
+      this.bytes = $$3;
    }
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
-   }
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetId";
+      public static final String d = "bytes";
 
-   @Override
-   public boolean ab_() {
-      return this.c.ab_() && this.d.ab_();
-   }
-
-   public boolean a(bdq $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
-
-   @Override
-   public cfz a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public cfz a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cfz b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cfz $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+      private a() {
       }
-   }
-
-   @Override
-   public int ac_() {
-      return this.c.ac_();
-   }
-
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(byo $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(byo $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(byo $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cfz $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
    }
 }

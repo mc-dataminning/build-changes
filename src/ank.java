@@ -1,17 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public record ank(List<anj> b, boolean c) {
-   public static final Codec<ank> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(anj.a.listOf().fieldOf("values").forGetter(ank::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(ank::b)).apply($$0, ank::new)
-   );
+public interface ank extends ann {
+   Set<String> a();
 
-   public List<anj> a() {
-      return this.b;
-   }
+   List<ani> a(aep var1);
 
-   public boolean b() {
-      return this.c;
+   Map<aep, ani> b(String var1, Predicate<aep> var2);
+
+   Map<aep, List<ani>> c(String var1, Predicate<aep> var2);
+
+   Stream<aly> b();
+
+   public static enum a implements ank {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<ani> getResource(aep $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<ani> a(aep $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<aep, ani> b(String $$0, Predicate<aep> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aep, List<ani>> c(String $$0, Predicate<aep> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aly> b() {
+         return Stream.of();
+      }
    }
 }

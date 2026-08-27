@@ -1,62 +1,43 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dqj extends dqh {
+public class dqj implements dpp {
    public static final Codec<dqj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               die.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               die.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dov.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               gv.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, dqj::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final die d;
-   private final die e;
-   private final int f;
+   private final boolean b;
+   private final List<dov.a> c;
+   @Nullable
+   private final gv d;
 
-   private dqj(die $$0, die $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public dqj(boolean $$0, List<dov.a> $$1, @Nullable gv $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   public static dqj a(die $$0, die $$1, int $$2) {
-      return new dqj($$0, $$1, $$2);
+   private dqj(boolean $$0, List<dov.a> $$1, Optional<gv> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   public static dqj a(die $$0, die $$1) {
-      return a($$0, $$1, 0);
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(apf $$0, dih $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return apa.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + apa.b($$0, 0, $$6) + apa.b($$0, 0, $$5);
-         }
-      }
+   public List<dov.a> b() {
+      return this.c;
    }
 
-   @Override
-   public dqi<?> a() {
-      return dqi.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   @Nullable
+   public gv c() {
+      return this.d;
    }
 }

@@ -1,42 +1,73 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class fr implements fk {
-   private final fq a;
-   private final fq b;
-   private final fq c;
+public class fr {
+   private static final char c = '~';
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.pos.missing.double"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("argument.pos.missing.int"));
+   private final boolean d;
+   private final double e;
 
-   public fr(fq $$0, fq $$1, fq $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fr(boolean $$0, double $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public eei a(ds $$0) {
-      eei $$1 = $$0.d();
-      return new eei(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public double a(double $$0) {
+      return this.d ? this.e + $$0 : this.e;
    }
 
-   @Override
-   public eeh b(ds $$0) {
-      eeh $$1 = $$0.k();
-      return new eeh((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static fr a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw fq.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$2 = b($$0);
+         int $$3 = $$0.getCursor();
+         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
+         if ($$2 && $$5.isEmpty()) {
+            return new fr(true, 0.0);
+         } else {
+            if (!$$5.contains(".") && !$$2 && $$1) {
+               $$4 += 0.5;
+            }
+
+            return new fr($$2, $$4);
+         }
+      }
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static fr a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw fq.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
+      } else {
+         boolean $$1 = b($$0);
+         double $$2;
+         if ($$0.canRead() && $$0.peek() != ' ') {
+            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
+         } else {
+            $$2 = 0.0;
+         }
+
+         return new fr($$1, $$2);
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
+   public static boolean b(StringReader $$0) {
+      boolean $$1;
+      if ($$0.peek() == '~') {
+         $$1 = true;
+         $$0.skip();
+      } else {
+         $$1 = false;
+      }
 
-   @Override
-   public boolean c() {
-      return this.c.a();
+      return $$1;
    }
 
    @Override
@@ -45,69 +76,19 @@ public class fr implements fk {
          return true;
       } else if (!($$0 instanceof fr $$1)) {
          return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
       } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
+         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
       }
-   }
-
-   public static fr a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      fq $$2 = fq.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         fq $$3 = fq.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            fq $$4 = fq.a($$0);
-            return new fr($$2, $$3, $$4);
-         } else {
-            $$0.setCursor($$1);
-            throw fp.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$1);
-         throw fp.a.createWithContext($$0);
-      }
-   }
-
-   public static fr a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      fq $$3 = fq.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         fq $$4 = fq.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            fq $$5 = fq.a($$0, $$1);
-            return new fr($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw fp.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$2);
-         throw fp.a.createWithContext($$0);
-      }
-   }
-
-   public static fr a(double $$0, double $$1, double $$2) {
-      return new fr(new fq(false, $$0), new fq(false, $$1), new fq(false, $$2));
-   }
-
-   public static fr a(eeh $$0) {
-      return new fr(new fq(false, (double)$$0.i), new fq(false, (double)$$0.j), new fq(true, 0.0));
-   }
-
-   public static fr d() {
-      return new fr(new fq(true, 0.0), new fq(true, 0.0), new fq(true, 0.0));
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      int $$0 = this.d ? 1 : 0;
+      long $$1 = Double.doubleToLongBits(this.e);
+      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
+   }
+
+   public boolean a() {
+      return this.d;
    }
 }

@@ -1,69 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cym extends coj {
-   public static final dcv a = ctg.aC;
-   private static final Map<ha, efb> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         ha.c,
-         cpn.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         ha.d,
-         cpn.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         ha.f,
-         cpn.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         ha.e,
-         cpn.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class cym extends csk {
+   public static final dfp a = cyn.a;
 
-   protected cym(cwp.a $$0, dca.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, ha.c));
+   public cym(dex.d $$0) {
+      super($$0);
+      this.k(this.n().a(a, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dey a(cle $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().B($$0.a())));
    }
 
    @Override
-   public String f() {
-      return this.k().a();
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return b.get($$0.c(a));
-   }
-
-   @Override
-   public dcb a(cih $$0) {
-      dcb $$1 = this.n();
-      cls $$2 = $$0.q();
-      gu $$3 = $$0.a();
-      ha[] $$4 = $$0.f();
-
-      for (ha $$5 : $$4) {
-         if ($$5.o().d()) {
-            ha $$6 = $$5.g();
-            $$1 = $$1.a(a, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
+   public void a(dey $$0, cpk $$1, gv $$2, csk $$3, gv $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(a);
+         if ($$6 != $$1.B($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(a), 2);
             }
          }
       }
-
-      return null;
    }
 
    @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$0.c(a) && !$$1.B($$2)) {
+         $$1.a($$2, $$0.a(a), 2);
+      }
    }
 
    @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
+   protected void a(dez.a<csk, dey> $$0) {
       $$0.a(a);
    }
 }

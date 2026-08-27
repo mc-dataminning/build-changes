@@ -1,99 +1,40 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class boj extends bmv {
-   private final bmv a;
-   private final int b;
-   private boolean c;
+public class boj extends bko<cap> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public boj(int $$0, bmv $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public boj() {
+      super(ImmutableMap.of(bry.ax, brz.a, bry.o, brz.b, bry.aE, brz.c, bry.aC, brz.c), caq.b);
    }
 
-   public boolean a(boj $$0) {
-      return this.J_() && $$0.i() < this.i();
+   protected void a(aki $$0, cap $$1, long $$2) {
+      bjx<cap> $$3 = $$1.dM();
+      $$3.a(bry.aC, asn.a, 25L);
+      $$3.b(bry.m);
+      biw $$4 = $$1.dM().c(bry.ax).get();
+      bkq.a($$1, $$4);
+      $$1.b(bji.l);
+      $$1.a($$4, 20, false);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   protected boolean b(aki $$0, cap $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean J_() {
-      return this.a.J_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
+   protected void c(aki $$0, cap $$1, long $$2) {
+      if (!$$1.dM().a(bry.aC) && !$$1.dM().a(bry.aE)) {
+         $$1.dM().a(bry.aE, asn.a, (long)(caq.b - 25));
+         $$1.a(aou.zE, 3.0F, 1.0F);
       }
    }
 
-   @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
+   protected void d(aki $$0, cap $$1, long $$2) {
+      if ($$1.c(bji.l)) {
+         $$1.b(bji.a);
       }
-   }
 
-   @Override
-   public boolean K_() {
-      return this.a.K_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bmv.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bmv.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bmv k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((boj)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      $$1.dM().c(bry.ax).ifPresent($$1::l);
+      $$1.dM().b(bry.ax);
    }
 }

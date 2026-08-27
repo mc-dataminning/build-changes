@@ -1,51 +1,72 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ddw {
-   private final int a;
-   private final BitSet b;
-   private ddw.a c = ($$0x, $$1x, $$2) -> false;
+public class ddw extends dck {
+   private final col a = new col() {
+      @Override
+      public void a(cpk $$0, gv $$1, int $$2) {
+         $$0.a($$1, csl.ct, $$2, 0);
+      }
 
-   public ddw(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+      @Override
+      public void a(@Nullable cpk $$0, gv $$1, cqb $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dey $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
+         }
+      }
+   };
+
+   public ddw(gv $$0, dey $$1) {
+      super(dcm.j, $$0, $$1);
    }
 
-   public void a(ddw.a $$0) {
-      this.c = $$0;
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.a.a(this.o, this.p, $$0);
    }
 
-   public ddw(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   @Override
+   protected void b(qs $$0) {
+      super.b($$0);
+      this.a.a($$0);
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   public static void a(cpk $$0, gv $$1, dey $$2, ddw $$3) {
+      $$3.a.a($$0, $$1);
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   public static void b(cpk $$0, gv $$1, dey $$2, ddw $$3) {
+      $$3.a.a((aki)$$0, $$1);
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   public ww c() {
+      return ww.a(this);
    }
 
-   public Stream<gu> a(clt $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
+   @Override
+   public qs ao_() {
+      qs $$0 = this.o();
+      $$0.r("SpawnPotentials");
+      return $$0;
    }
 
-   public long[] a() {
-      return this.b.toLongArray();
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
    }
 
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   @Override
+   public boolean t() {
+      return true;
+   }
+
+   public void a(bik<?> $$0, art $$1) {
+      this.a.a($$0, this.o, $$1, this.p);
+   }
+
+   public col d() {
+      return this.a;
    }
 }

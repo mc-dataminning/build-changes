@@ -2,79 +2,123 @@ import com.google.gson.JsonObject;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class lv implements lp {
-   private final lq b;
-   private final cfu c;
-   private final ciz d;
-   private final int e;
-   private final ae.a f = ae.a.b();
+public class lv implements lq {
+   private final lr b;
+   private final clo c;
+   private final cir d;
+   private final clw e;
+   private final float f;
+   private final int g;
+   private final ae.a h = ae.a.b();
    @Nullable
-   private String g;
-   private final cje<?> h;
+   private String i;
+   private final cmb<? extends cli> j;
 
-   public lv(lq $$0, cje<?> $$1, ciz $$2, cml $$3, int $$4) {
+   private lv(lr $$0, clo $$1, cpj $$2, clw $$3, float $$4, int $$5, cmb<? extends cli> $$6) {
       this.b = $$0;
-      this.h = $$1;
-      this.c = $$3.k();
-      this.d = $$2;
-      this.e = $$4;
+      this.c = $$1;
+      this.d = $$2.k();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.j = $$6;
    }
 
-   public static lv a(ciz $$0, lq $$1, cml $$2) {
-      return new lv($$1, cje.t, $$0, $$2, 1);
+   public static lv a(clw $$0, lr $$1, cpj $$2, float $$3, int $$4, cmb<? extends cli> $$5) {
+      return new lv($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$5);
    }
 
-   public static lv a(ciz $$0, lq $$1, cml $$2, int $$3) {
-      return new lv($$1, cje.t, $$0, $$2, $$3);
+   public static lv a(clw $$0, lr $$1, cpj $$2, float $$3, int $$4) {
+      return new lv($$1, clo.a, $$2, $$0, $$3, $$4, cmb.s);
+   }
+
+   public static lv b(clw $$0, lr $$1, cpj $$2, float $$3, int $$4) {
+      return new lv($$1, c($$2), $$2, $$0, $$3, $$4, cmb.q);
+   }
+
+   public static lv c(clw $$0, lr $$1, cpj $$2, float $$3, int $$4) {
+      return new lv($$1, b($$2), $$2, $$0, $$3, $$4, cmb.p);
+   }
+
+   public static lv d(clw $$0, lr $$1, cpj $$2, float $$3, int $$4) {
+      return new lv($$1, clo.a, $$2, $$0, $$3, $$4, cmb.r);
    }
 
    public lv b(String $$0, am $$1) {
-      this.f.a($$0, $$1);
+      this.h.a($$0, $$1);
       return this;
    }
 
    public lv b(@Nullable String $$0) {
-      this.g = $$0;
+      this.i = $$0;
       return this;
    }
 
    @Override
-   public cfu a() {
-      return this.c;
+   public cir a() {
+      return this.d;
    }
 
    @Override
-   public void a(Consumer<lo> $$0, acq $$1) {
+   public void a(Consumer<lp> $$0, aep $$1) {
       this.a($$1);
-      this.f.a(a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
-      $$0.accept(new lv.a($$1, this.h, this.g == null ? "" : this.g, this.d, this.c, this.e, this.f, $$1.d("recipes/" + this.b.a() + "/")));
+      this.h.a(a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
+      $$0.accept(new lv.a($$1, this.i == null ? "" : this.i, this.c, this.e, this.d, this.f, this.g, this.h, $$1.d("recipes/" + this.b.a() + "/"), this.j));
    }
 
-   private void a(acq $$0) {
-      if (this.f.d().isEmpty()) {
+   private static clo b(cpj $$0) {
+      if ($$0.k().u()) {
+         return clo.a;
+      } else {
+         return $$0.k() instanceof cgp ? clo.b : clo.c;
+      }
+   }
+
+   private static clo c(cpj $$0) {
+      return $$0.k() instanceof cgp ? clo.b : clo.c;
+   }
+
+   private static clo a(cmb<? extends cli> $$0, cpj $$1) {
+      if ($$0 == cmb.p) {
+         return b($$1);
+      } else if ($$0 == cmb.q) {
+         return c($$1);
+      } else if ($$0 != cmb.r && $$0 != cmb.s) {
+         throw new IllegalStateException("Unknown cooking recipe type");
+      } else {
+         return clo.a;
+      }
+   }
+
+   private void a(aep $$0) {
+      if (this.h.d().isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static class a implements lo {
-      private final acq a;
+   static class a implements lp {
+      private final aep a;
       private final String b;
-      private final ciz c;
-      private final cfu d;
-      private final int e;
-      private final ae.a f;
-      private final acq g;
-      private final cje<?> h;
+      private final clo c;
+      private final clw d;
+      private final cir e;
+      private final float f;
+      private final int g;
+      private final ae.a h;
+      private final aep i;
+      private final cmb<? extends cli> j;
 
-      public a(acq $$0, cje<?> $$1, String $$2, ciz $$3, cfu $$4, int $$5, ae.a $$6, acq $$7) {
+      public a(aep $$0, String $$1, clo $$2, clw $$3, cir $$4, float $$5, int $$6, ae.a $$7, aep $$8, cmb<? extends cli> $$9) {
          this.a = $$0;
-         this.h = $$1;
-         this.b = $$2;
-         this.c = $$3;
-         this.d = $$4;
-         this.e = $$5;
-         this.f = $$6;
-         this.g = $$7;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
       }
 
       @Override
@@ -83,31 +127,33 @@ public class lv implements lp {
             $$0.addProperty("group", this.b);
          }
 
-         $$0.add("ingredient", this.c.c());
-         $$0.addProperty("result", jb.i.b(this.d).toString());
-         $$0.addProperty("count", this.e);
+         $$0.addProperty("category", this.c.c());
+         $$0.add("ingredient", this.d.c());
+         $$0.addProperty("result", jc.i.b(this.e).toString());
+         $$0.addProperty("experience", this.f);
+         $$0.addProperty("cookingtime", this.g);
       }
 
       @Override
-      public acq b() {
+      public cmb<?> c() {
+         return this.j;
+      }
+
+      @Override
+      public aep b() {
          return this.a;
-      }
-
-      @Override
-      public cje<?> c() {
-         return this.h;
       }
 
       @Nullable
       @Override
       public JsonObject d() {
-         return this.f.c();
+         return this.h.c();
       }
 
       @Nullable
       @Override
-      public acq e() {
-         return this.g;
+      public aep e() {
+         return this.i;
       }
    }
 }

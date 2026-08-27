@@ -1,17 +1,12 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+public class it {
+   private final int b;
+   public static final it a = new it(1000);
 
-public interface it {
-   iu<?> b();
+   public it(int $$0) {
+      this.b = $$0;
+   }
 
-   void a(sf var1);
-
-   String a();
-
-   @Deprecated
-   public interface a<T extends it> {
-      T b(iu<T> var1, StringReader var2) throws CommandSyntaxException;
-
-      T b(iu<T> var1, sf var2);
+   public int a() {
+      return this.b;
    }
 }

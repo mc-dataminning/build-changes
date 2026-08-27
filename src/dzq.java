@@ -1,136 +1,154 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dzq {
-   private final aif a;
-   private final Map<ebt<?>, Object> b;
-   private final Map<acq, dzq.b> c;
-   private final float d;
+public class dzq implements dzt {
+   public static final int b = 1;
+   protected final cpm c;
+   @Nullable
+   private final dzs<?, ?> a;
+   @Nullable
+   private final dzs<?, ?> d;
 
-   public dzq(aif $$0, Map<ebt<?>, Object> $$1, Map<acq, dzq.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public dzq(dhi $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new dzj($$0) : null;
+      this.d = $$2 ? new dzu($$0) : null;
    }
 
-   public aif a() {
-      return this.a;
+   @Override
+   public void a(gv $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
-   public boolean a(ebt<?> $$0) {
-      return this.b.containsKey($$0);
+   @Override
+   public boolean E_() {
+      return this.d != null && this.d.E_() ? true : this.a != null && this.a.E_();
    }
 
-   public <T> T b(ebt<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(hy $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(cor $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(cor $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public dzo a(cpt $$0) {
+      if ($$0 == cpt.b) {
+         return (dzo)(this.a == null ? dzo.a.a : this.a);
       } else {
-         return $$1;
+         return (dzo)(this.d == null ? dzo.a.a : this.d);
       }
    }
 
-   @Nullable
-   public <T> T c(ebt<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public <T> T d(ebt<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   public void a(acq $$0, Consumer<cfz> $$1) {
-      dzq.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public static class a {
-      private final aif a;
-      private final Map<ebt<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<acq, dzq.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(aif $$0) {
-         this.a = $$0;
-      }
-
-      public aif a() {
-         return this.a;
-      }
-
-      public <T> dzq.a a(ebt<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> dzq.a b(ebt<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
+   public String a(cpt $$0, hy $$1) {
+      if ($$0 == cpt.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
-
-         return this;
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
       }
 
-      public <T> T a(ebt<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
+      return "n/a";
+   }
+
+   public dzp.b b(cpt $$0, hy $$1) {
+      if ($$0 == cpt.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
 
-      @Nullable
-      public <T> T b(ebt<T> $$0) {
-         return (T)this.b.get($$0);
-      }
+      return dzp.b.a;
+   }
 
-      public dzq.a a(acq $$0, dzq.b $$1) {
-         dzq.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
+   public void a(cpt $$0, hy $$1, @Nullable dha $$2) {
+      if ($$0 == cpt.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
          }
-      }
-
-      public dzq.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public dzq a(ebu $$0) {
-         Set<ebt<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<ebt<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new dzq(this.a, this.b, this.c, this.d);
-            }
-         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cfz> var1);
+   public void b(cor $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(gv $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(hy $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.ak() + 2;
+   }
+
+   public int d() {
+      return this.c.al() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

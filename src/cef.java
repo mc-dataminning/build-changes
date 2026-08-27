@@ -1,285 +1,162 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cef {
-   private final sw a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final cef.f f;
-   private final int g;
-   private final cef.h h;
-   @Nullable
-   private cfz i;
-   private Collection<cfz> j = cga.a();
-   private Set<cfz> k = cga.a();
-   @Nullable
-   private Consumer<List<cfz>> l;
-   private final Supplier<cfz> m;
-   private final cef.b n;
-
-   cef(cef.f $$0, int $$1, cef.h $$2, sw $$3, Supplier<cfz> $$4, cef.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
-   }
-
-   public static cef.a a(cef.f $$0, int $$1) {
-      return new cef.a($$0, $$1);
-   }
-
-   public sw a() {
-      return this.a;
-   }
-
-   public cfz b() {
-      if (this.i == null) {
-         this.i = this.m.get();
-      }
-
-      return this.i;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public cef.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != cef.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public cef.h k() {
-      return this.h;
-   }
-
-   public void a(cef.d $$0) {
-      cef.c $$1 = new cef.c(this, $$0.a);
-      acp<cef> $$2 = jb.ao.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<cfz> l() {
-      return this.j;
-   }
-
-   public Collection<cfz> m() {
-      return this.k;
-   }
-
-   public boolean a(cfz $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<cfz>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final cef.b a = ($$0, $$1) -> {
-      };
-      private final cef.f b;
-      private final int c;
-      private sw d = sw.h();
-      private Supplier<cfz> e = () -> cfz.b;
-      private cef.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cef.h j = cef.h.a;
-      private String k = "items.png";
-
-      public a(cef.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cef.a a(sw $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cef.a a(Supplier<cfz> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cef.a a(cef.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cef.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cef.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cef.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cef.a a(cef.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cef.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cef d() {
-         if ((this.j == cef.h.c || this.j == cef.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cef $$0 = new cef(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(cef.d var1, cef.e var2);
-   }
-
-   static class c implements cef.e {
-      public final Collection<cfz> a = cga.a();
-      public final Set<cfz> b = cga.a();
-      private final cef c;
-      private final caw d;
-
-      public c(cef $$0, caw $$1) {
-         this.c = $$0;
-         this.d = $$1;
+public class cef extends cec {
+   private static final int k = 0;
+   private static final int l = 1;
+   private static final int m = 3;
+   private static final int n = 1;
+   private static final int o = 28;
+   private static final int p = 28;
+   private static final int q = 37;
+   private final bgh r = new bgv(1) {
+      @Override
+      public boolean b(int $$0, ciw $$1) {
+         return $$1.a(apr.aw);
       }
 
       @Override
-      public void a(cfz $$0, cef.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cef.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
-                  }
-               }
-            }
+      public int ac_() {
+         return 1;
+      }
+   };
+   private final cef.a s;
+   private final cen t;
+   private final cem u;
+
+   public cef(int $$0, bgh $$1) {
+      this($$0, $$1, new cft(3), cen.a);
+   }
+
+   public cef(int $$0, bgh $$1, cem $$2, cen $$3) {
+      super(cfh.i, $$0);
+      a($$2, 3);
+      this.u = $$2;
+      this.t = $$3;
+      this.s = new cef.a(this.r, 0, 136, 110);
+      this.a(this.s);
+      this.a($$2);
+      int $$4 = 36;
+      int $$5 = 137;
+
+      for (int $$6 = 0; $$6 < 3; $$6++) {
+         for (int $$7 = 0; $$7 < 9; $$7++) {
+            this.a(new cfu($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
+         }
+      }
+
+      for (int $$8 = 0; $$8 < 9; $$8++) {
+         this.a(new cfu($$1, $$8, 36 + $$8 * 18, 195));
+      }
+   }
+
+   @Override
+   public void b(cbl $$0) {
+      super.b($$0);
+      if (!$$0.dK().B) {
+         ciw $$1 = this.s.a(this.s.a());
+         if (!$$1.b()) {
+            $$0.a($$1, false);
          }
       }
    }
 
-   public static record d(caw a, boolean b, hg.b c) {
+   @Override
+   public boolean a(cbl $$0) {
+      return a(this.t, $$0, csl.fO);
+   }
 
-      public boolean a(caw $$0, boolean $$1, hg.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public ciw a(cbl $$0, int $$1) {
+      ciw $$2 = ciw.b;
+      cfu $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ciw $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return ciw.b;
+            }
+
+            $$3.a($$4, $$2);
+         } else if (!this.s.f() && this.s.a($$4) && $$4.L() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return ciw.b;
+            }
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return ciw.b;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return ciw.b;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return ciw.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(ciw.b);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return ciw.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   public int l() {
+      return this.u.a(0);
+   }
+
+   @Nullable
+   public bhr m() {
+      return bhr.a(this.u.a(1));
+   }
+
+   @Nullable
+   public bhr n() {
+      return bhr.a(this.u.a(2));
+   }
+
+   public void a(Optional<bhr> $$0, Optional<bhr> $$1) {
+      if (this.s.f()) {
+         this.u.a(1, $$0.<Integer>map(bhr::a).orElse(-1));
+         this.u.a(2, $$1.<Integer>map(bhr::a).orElse(-1));
+         this.s.a(1);
+         this.t.a(cpk::p);
       }
    }
 
-   public interface e {
-      void a(cfz var1, cef.g var2);
-
-      default void a(cfz $$0) {
-         this.a($$0, cef.g.a);
-      }
-
-      default void a(cml $$0, cef.g $$1) {
-         this.a(new cfz($$0), $$1);
-      }
-
-      default void a(cml $$0) {
-         this.a(new cfz($$0), cef.g.a);
-      }
-
-      default void a(Collection<cfz> $$0, cef.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cfz> $$0) {
-         this.a($$0, cef.g.a);
-      }
+   public boolean o() {
+      return !this.r.a(0).b();
    }
 
-   public static enum f {
-      a,
-      b;
-   }
+   class a extends cfu {
+      public a(bgh $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
 
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
+      @Override
+      public boolean a(ciw $$0) {
+         return $$0.a(apr.aw);
+      }
 
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

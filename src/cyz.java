@@ -1,68 +1,143 @@
-import javax.annotation.Nullable;
+public class cyz extends csk implements czl {
+   private static final int e = 1;
+   private static final ehy f;
+   private static final ehy g;
+   private static final ehy h = csk.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final ehy i = ehv.b().a(0.0, -1.0, 0.0);
+   public static final int a = 7;
+   public static final dfy b = dfo.aW;
+   public static final dfp c = dfo.C;
+   public static final dfp d = dfo.b;
 
-public class cyz extends cwp {
-   @Nullable
-   private static dcg e;
-   @Nullable
-   private static dcg f;
-
-   protected cyz(dca.d $$0) {
-      super(cwp.b.b, $$0);
+   protected cyz(dex.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, @Nullable bfz $$3, cfz $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      czn $$5 = $$0.c_($$1);
-      if ($$5 instanceof dax) {
-         a($$0, $$1, (dax)$$5);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      if (!$$3.a($$0.b().k())) {
+         return $$0.c(d) ? g : f;
+      } else {
+         return ehv.b();
       }
    }
 
-   public static void a(cmm $$0, gu $$1, dax $$2) {
-      if (!$$0.B) {
-         dcb $$3 = $$2.q();
-         boolean $$4 = $$3.a(cpo.gG) || $$3.a(cpo.gH);
-         if ($$4 && $$1.v() >= $$0.C_() && $$0.ai() != bdu.a) {
-            dcg.b $$5 = u().a($$0, $$1);
-            if ($$5 != null) {
-               buv $$6 = bfn.bk.a($$0);
-               if ($$6 != null) {
-                  cqg.a($$0, $$5);
-                  gu $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ha.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aV = $$5.b().o() == ha.a.a ? 0.0F : 90.0F;
-                  $$6.q();
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2) {
+      return ehv.b();
+   }
 
-                  for (aig $$8 : $$0.a(aig.class, $$6.cE().g(50.0))) {
-                     ai.n.a($$8, $$6);
-                  }
+   @Override
+   public boolean a(dey $$0, cle $$1) {
+      return $$1.n().a(this.k());
+   }
 
-                  $$0.b($$6);
-                  cqg.b($$0, $$5);
-               }
+   @Override
+   public dey a(cle $$0) {
+      gv $$1 = $$0.a();
+      cpk $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.n().a(c, Boolean.valueOf($$2.b_($$1).a() == eac.c)).a(b, Integer.valueOf($$3)).a(d, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
+      if (!$$1.B) {
+         $$1.a($$2, this, 1);
+      }
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
+      }
+
+      if (!$$3.r_()) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
+      int $$4 = a($$1, $$2);
+      dey $$5 = $$0.a(b, Integer.valueOf($$4)).a(d, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(b) == 7) {
+         if ($$0.c(b) == 7) {
+            byd.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   public ehy c(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      if ($$3.a(ehv.b(), $$2, true) && !$$3.b()) {
+         return f;
+      } else {
+         return $$0.c(b) != 0 && $$0.c(d) && $$3.a(i, $$2, true) ? h : ehv.a();
+      }
+   }
+
+   @Override
+   public eab c_(dey $$0) {
+      return $$0.c(c) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   private boolean a(coq $$0, gv $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
+   }
+
+   public static int a(coq $$0, gv $$1) {
+      gv.a $$2 = $$1.j().c(hb.a);
+      dey $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(csl.nS)) {
+         $$4 = $$3.c(b);
+      } else if ($$3.d($$0, $$2, hb.b)) {
+         return 0;
+      }
+
+      for (hb $$5 : hb.c.a) {
+         dey $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(csl.nS)) {
+            $$4 = Math.min($$4, $$6.c(b) + 1);
+            if ($$4 == 1) {
+               break;
             }
          }
       }
+
+      return $$4;
    }
 
-   public static boolean b(cmm $$0, gu $$1, cfz $$2) {
-      return $$2.a(cgc.ts) && $$1.v() >= $$0.C_() + 2 && $$0.ai() != bdu.a && !$$0.B ? v().a($$0, $$1) != null : false;
-   }
-
-   private static dcg u() {
-      if (e == null) {
-         e = dch.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(amw.aD)).a('^', dcf.a(dck.a(cpo.gG).or(dck.a(cpo.gH)))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return e;
-   }
-
-   private static dcg v() {
-      if (f == null) {
-         f = dch.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(amw.aD)).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return f;
+   static {
+      ehy $$0 = csk.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      ehy $$1 = csk.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      ehy $$2 = csk.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      ehy $$3 = csk.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      ehy $$4 = csk.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      f = ehv.a($$0, $$1, $$2, $$3, $$4);
+      ehy $$5 = csk.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      ehy $$6 = csk.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      ehy $$7 = csk.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      ehy $$8 = csk.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      g = ehv.a(cyz.h, f, $$6, $$5, $$8, $$7);
    }
 }

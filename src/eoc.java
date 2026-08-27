@@ -1,91 +1,57 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.util.UUIDTypeAdapter;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class eoc extends ged {
+   private final exv a;
+   private final eoc.a b;
+   private etb c = etb.a;
 
-public class eoc {
-   private final String a;
-   private final String b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final eoc.a f;
-
-   public eoc(String $$0, String $$1, String $$2, Optional<String> $$3, Optional<String> $$4, eoc.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public eoc(enk $$0, exv $$1) {
+      super(eqf.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + this.b;
+   public eoc(te $$0, exv $$1) {
+      super(eqf.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   public String b() {
-      return this.b;
+   public eoc(te $$0, te $$1, exv $$2) {
+      super(eqf.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
    }
 
-   public String c() {
-      return this.a;
+   private static eoc.a a(enk $$0) {
+      elz $$1 = $$0.a;
+      return a(te.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
    }
 
-   public String d() {
-      return this.c;
+   private static eoc.a a(te $$0) {
+      return a(te.c("mco.errorMessage.generic"), $$0);
    }
 
-   public Optional<String> e() {
-      return this.e;
+   private static eoc.a a(te $$0, te $$1) {
+      return new eoc.a($$0, $$1);
    }
 
-   public Optional<String> f() {
-      return this.d;
+   @Override
+   public void aE_() {
+      this.d(esi.a(td.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = etb.a(this.i, this.b.b, this.g * 3 / 4);
    }
 
-   @Nullable
-   public UUID g() {
-      try {
-         return UUIDTypeAdapter.fromString(this.b());
-      } catch (IllegalArgumentException var2) {
-         return null;
-      }
+   @Override
+   public te e() {
+      return te.h().b(this.b.a).f(": ").b(this.b.b);
    }
 
-   public GameProfile h() {
-      return new GameProfile(this.g(), this.c());
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -65536);
    }
 
-   public eoc.a i() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, eoc.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
-      }
-
-      @Nullable
-      public static eoc.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
-      }
-
-      public String a() {
-         return this.e;
-      }
+   static record a(te a, te b) {
    }
 }

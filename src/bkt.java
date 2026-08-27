@@ -3,31 +3,16 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bkt {
-   private static final int a = 16;
-
-   public static bhs<bfz> a(Predicate<he<brc>> $$0, bpb<hd> $$1) {
-      return bld.a((Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               hd $$6 = $$2.b($$2x);
-               gu $$7 = $$6.b();
-               if ($$3.ac() == $$6.a() && $$7.a($$4.dg(), 16.0)) {
-                  aif $$8 = $$3.n().a($$6.a());
-                  if ($$8 == null || !$$8.w().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.w().b($$7);
-                     za.c($$3, $$7);
+   public static <E extends biw, T> bkp<E> a(Predicate<E> $$0, bry<? extends T> $$1, bry<T> $$2, bfz $$3) {
+      return boa.a(
+         (Function<boa.b<E>, ? extends App<boa.c<E>, bod<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
                   }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(aif $$0, gu $$1, bfz $$2) {
-      dcb $$3 = $$0.a_($$1);
-      return $$3.a(amw.R) && $$3.c(cpg.b) && !$$2.fy();
+               }))
+      );
    }
 }

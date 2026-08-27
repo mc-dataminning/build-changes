@@ -1,140 +1,53 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eht {
-   @Nullable
-   private static eht a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private final boolean h;
+public class eht extends AbstractDoubleList implements ehr {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   private eht(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.g = $$0;
-      this.b = $$2;
-      this.d = $$3;
-      this.c = $$4;
-      this.e = $$5;
-      this.h = $$1;
-      this.f = $$6;
-   }
-
-   public eht() {
-      this(false, true, 1, 0, 1, 0, 32774);
-   }
-
-   public eht(int $$0, int $$1, int $$2) {
-      this(false, false, $$0, $$1, $$0, $$1, $$2);
-   }
-
-   public eht(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this(true, false, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void a() {
-      if (!this.equals(a)) {
-         if (a == null || this.h != a.b()) {
-            a = this;
-            if (this.h) {
-               RenderSystem.disableBlend();
-               return;
-            }
-
-            RenderSystem.enableBlend();
-         }
-
-         RenderSystem.blendEquation(this.f);
-         if (this.g) {
-            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
-         } else {
-            RenderSystem.blendFunc(this.b, this.d);
-         }
-      }
+   protected eht(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof eht $$1)) {
-         return false;
-      } else if (this.f != $$1.f) {
-         return false;
-      } else if (this.e != $$1.e) {
-         return false;
-      } else if (this.d != $$1.d) {
-         return false;
-      } else if (this.h != $$1.h) {
-         return false;
-      } else if (this.g != $$1.g) {
-         return false;
-      } else {
-         return this.c != $$1.c ? false : this.b == $$1.b;
-      }
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      $$0 = 31 * $$0 + this.e;
-      $$0 = 31 * $$0 + this.f;
-      $$0 = 31 * $$0 + (this.g ? 1 : 0);
-      return 31 * $$0 + (this.h ? 1 : 0);
+   public boolean a(ehr.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   public boolean b() {
-      return this.h;
-   }
+   private boolean b(ehr.a $$0) {
+      int $$1 = this.a.size();
 
-   public static int a(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      if ("add".equals($$1)) {
-         return 32774;
-      } else if ("subtract".equals($$1)) {
-         return 32778;
-      } else if ("reversesubtract".equals($$1)) {
-         return 32779;
-      } else if ("reverse_subtract".equals($$1)) {
-         return 32779;
-      } else if ("min".equals($$1)) {
-         return 32775;
-      } else {
-         return "max".equals($$1) ? 32776 : 32774;
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
       }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static int b(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      $$1 = $$1.replaceAll("_", "");
-      $$1 = $$1.replaceAll("one", "1");
-      $$1 = $$1.replaceAll("zero", "0");
-      $$1 = $$1.replaceAll("minus", "-");
-      if ("0".equals($$1)) {
-         return 0;
-      } else if ("1".equals($$1)) {
-         return 1;
-      } else if ("srccolor".equals($$1)) {
-         return 768;
-      } else if ("1-srccolor".equals($$1)) {
-         return 769;
-      } else if ("dstcolor".equals($$1)) {
-         return 774;
-      } else if ("1-dstcolor".equals($$1)) {
-         return 775;
-      } else if ("srcalpha".equals($$1)) {
-         return 770;
-      } else if ("1-srcalpha".equals($$1)) {
-         return 771;
-      } else if ("dstalpha".equals($$1)) {
-         return 772;
-      } else {
-         return "1-dstalpha".equals($$1) ? 773 : -1;
-      }
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

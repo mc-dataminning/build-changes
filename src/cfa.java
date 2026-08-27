@@ -1,44 +1,120 @@
-import javax.annotation.Nullable;
+public class cfa extends cec {
+   private final bgh k;
+   private final bwh l;
 
-public interface cfa extends cht {
-   bfo g();
-
-   default amg ak_() {
-      return amh.af;
-   }
-
-   default bdy<cfz> a(cfu $$0, cmm $$1, byo $$2, bdw $$3) {
-      cfz $$4 = $$2.b($$3);
-      bfo $$5 = bgb.h($$4);
-      cfz $$6 = $$2.c($$5);
-      if (!cki.d($$6) && !cfz.a($$4, $$6)) {
-         if (!$$1.r_()) {
-            $$2.b(amr.c.b($$0));
+   public cfa(int $$0, cbk $$1, bgh $$2, final bwh $$3) {
+      super(null, $$0);
+      this.k = $$2;
+      this.l = $$3;
+      int $$4 = 3;
+      $$2.d_($$1.m);
+      int $$5 = -18;
+      this.a(new cfu($$2, 0, 8, 18) {
+         @Override
+         public boolean a(ciw $$0) {
+            return $$0.a(ciz.mZ) && !this.f() && $$3.g();
          }
 
-         cfz $$7 = $$6.b() ? $$4 : $$6.c();
-         cfz $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bdy.a($$7, $$1.r_());
-      } else {
-         return bdy.d($$4);
-      }
-   }
+         @Override
+         public boolean c() {
+            return $$3.g();
+         }
+      });
+      this.a(new cfu($$2, 1, 8, 36) {
+         @Override
+         public boolean a(ciw $$0) {
+            return $$3.l($$0);
+         }
 
-   @Nullable
-   static cfa c_(cfz $$0) {
-      cfu $$3 = $$0.d();
-      if ($$3 instanceof cfa) {
-         return (cfa)$$3;
-      } else {
-         if ($$0.d() instanceof cds $$2) {
-            cpn var6 = $$2.e();
-            if (var6 instanceof cfa) {
-               return (cfa)var6;
+         @Override
+         public boolean c() {
+            return $$3.gI();
+         }
+
+         @Override
+         public int a() {
+            return 1;
+         }
+      });
+      if (this.a($$3)) {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            for (int $$7 = 0; $$7 < ((bwg)$$3).gh(); $$7++) {
+               this.a(new cfu($$2, 2 + $$7 + $$6 * ((bwg)$$3).gh(), 80 + $$7 * 18, 18 + $$6 * 18));
             }
          }
-
-         return null;
       }
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         for (int $$9 = 0; $$9 < 9; $$9++) {
+            this.a(new cfu($$1, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 102 + $$8 * 18 + -18));
+         }
+      }
+
+      for (int $$10 = 0; $$10 < 9; $$10++) {
+         this.a(new cfu($$1, $$10, 8 + $$10 * 18, 142));
+      }
+   }
+
+   @Override
+   public boolean a(cbl $$0) {
+      return !this.l.b(this.k) && this.k.a($$0) && this.l.bv() && this.l.e($$0) < 8.0F;
+   }
+
+   private boolean a(bwh $$0) {
+      return $$0 instanceof bwg && ((bwg)$$0).q();
+   }
+
+   @Override
+   public ciw a(cbl $$0, int $$1) {
+      ciw $$2 = ciw.b;
+      cfu $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ciw $$4 = $$3.e();
+         $$2 = $$4.p();
+         int $$5 = this.k.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.i.size(), true)) {
+               return ciw.b;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).f()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return ciw.b;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return ciw.b;
+            }
+         } else if ($$5 <= 2 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return ciw.b;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return ciw.b;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return ciw.b;
+            }
+
+            return ciw.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(ciw.b);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cbl $$0) {
+      super.b($$0);
+      this.k.c($$0);
    }
 }

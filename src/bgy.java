@@ -1,5 +1,3 @@
-public interface bgy<T> {
-   void a(T var1);
-
-   T c();
+public interface bgy {
+   bgx a(dey var1, cpl var2, gv var3);
 }

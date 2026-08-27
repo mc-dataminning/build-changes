@@ -1,95 +1,120 @@
-public class cxr extends cpv implements cpp {
-   private static final float c = 0.003F;
-   public static final int a = 3;
-   public static final ddb b = dcr.as;
-   private static final efb d = cpn.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-   private static final efb e = cpn.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import javax.annotation.Nullable;
 
-   public cxr(dca.d $$0) {
+public class cxr extends csk {
+   public static final dfw<dfz> a = dfo.bf;
+   public static final dfp b = dfo.w;
+   public static final dfy c = dfo.aR;
+   public static final int d = 3;
+
+   public cxr(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.C.b().a(a, dfz.a).a(c, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
    }
 
-   @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return new cfz(cgc.vv);
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      if ($$0.c(b) == 0) {
-         return d;
+   private dey b(cpl $$0, gv $$1, dey $$2) {
+      dfz $$3 = $$0.a_($$1.c()).A();
+      if ($$3.e()) {
+         return $$2.a(a, $$3);
       } else {
-         return $$0.c(b) < 3 ? e : super.a($$0, $$1, $$2, $$3);
+         dfz $$4 = $$0.a_($$1.d()).A();
+         dfz $$5 = $$4.e() ? dfz.a : $$4;
+         return $$2.a(a, $$5);
       }
    }
 
    @Override
-   public boolean e_(dcb $$0) {
-      return $$0.c(b) < 3;
+   public dey a(cle $$0) {
+      return this.b($$0.q(), $$0.a(), this.n());
    }
 
    @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      int $$4 = $$0.c(b);
-      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.c(), 0) >= 9) {
-         dcb $$5 = $$0.a(b, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$5, 2);
-         $$1.a(dgl.c, $$2, dgl.a.a($$5));
-      }
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      boolean $$6 = $$1.o() == hb.a.b;
+      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, bfj $$3) {
-      if ($$3 instanceof bfz && $$3.ae() != bfn.N && $$3.ae() != bfn.h) {
-         $$3.a($$0, new eei(0.8F, 0.75, 0.8F));
-         if (!$$1.B && $$0.c(b) > 0 && ($$3.ab != $$3.dn() || $$3.ad != $$3.dt())) {
-            double $$4 = Math.abs($$3.dn() - $$3.ab);
-            double $$5 = Math.abs($$3.dt() - $$3.ad);
-            if ($$4 >= 0.003F || $$5 >= 0.003F) {
-               $$3.a($$1.ag().s(), 1.0F);
-            }
+   public void a(dey $$0, cpk $$1, gv $$2, csk $$3, gv $$4, boolean $$5) {
+      boolean $$6 = $$1.B($$2);
+      if ($$6 != $$0.c(b)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
          }
+
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable big $$0, dey $$1, cpk $$2, gv $$3) {
+      if ($$1.c(a).e() || $$2.a_($$3.c()).i()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, dji.H, $$3);
       }
    }
 
    @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      int $$6 = $$0.c(b);
-      boolean $$7 = $$6 == 3;
-      if (!$$7 && $$3.b($$4).a(cgc.qK)) {
-         return bdx.d;
-      } else if ($$6 > 1) {
-         int $$8 = 1 + $$1.z.a(2);
-         a($$1, $$2, new cfz(cgc.vv, $$8 + ($$7 ? 1 : 0)));
-         $$1.a(null, $$2, amh.xz, ami.e, 1.0F, 0.8F + $$1.z.i() * 0.4F);
-         dcb $$9 = $$0.a(b, Integer.valueOf(1));
-         $$1.a($$2, $$9, 2);
-         $$1.a(dgl.c, $$2, dgl.a.a($$3, $$9));
-         return bdx.a($$1.B);
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      ciw $$6 = $$3.b($$4);
+      if ($$6.a(apr.aG) && $$5.b() == hb.b) {
+         return bgo.d;
+      } else if ($$1.B) {
+         return bgo.a;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$0 = $$0.a(c);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(ape.ag);
+         return bgo.b;
       }
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(b);
+   public void a(dey $$0, cpk $$1, gv $$2, cbl $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(ape.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
    }
 
    @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return $$2.c(b) < 3;
-   }
+   public boolean a(dey $$0, cpk $$1, gv $$2, int $$3, int $$4) {
+      dfz $$5 = $$0.c(a);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(c);
+         $$7 = b($$6);
+         $$1.a(iw.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
+      }
 
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
+      hf<aot> $$10;
+      if ($$5.d()) {
+         aep $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
+
+         $$10 = hf.a(aot.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, aov.c, 3.0F, $$7, $$1.z.g());
       return true;
    }
 
+   @Nullable
+   private aep a(cpk $$0, gv $$1) {
+      return $$0.c_($$1.c()) instanceof ddu $$2 ? $$2.f() : null;
+   }
+
    @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      int $$4 = Math.min(3, $$3.c(b) + 1);
-      $$0.a($$2, $$3.a(b, Integer.valueOf($$4)), 2);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a, b, c);
    }
 }

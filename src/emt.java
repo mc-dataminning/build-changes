@@ -1,62 +1,36 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class emt extends emo {
-   private static final Logger c = LogUtils.getLogger();
-   private final ejf d;
-   private final long e;
-   private final ela f;
+public class emt extends end {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ems> a;
 
-   public emt(ejf $$0, long $$1, ela $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   public static emt a(String $$0) {
+      emt $$1 = new emt();
+      $$1.a = Lists.newArrayList();
 
-   @Override
-   public void run() {
-      this.b(sw.c("mco.backup.restoring"));
-      eiz $$0 = eiz.a();
-      int $$1 = 0;
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-      while ($$1 < 25) {
-         try {
-            if (this.c()) {
-               return;
+            while ($$5.hasNext()) {
+               $$1.a.add(ems.a($$5.next().getAsJsonObject()));
             }
-
-            $$0.c(this.e, this.d.a);
-            a(1L);
-            if (this.c()) {
-               return;
-            }
-
-            a(this.f.d());
-            return;
-         } catch (ekn var4) {
-            if (this.c()) {
-               return;
-            }
-
-            a((long)var4.e);
-            $$1++;
-         } catch (ekm var5) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't restore backup", var5);
-            a(new ele(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't restore backup", var6);
-            this.a(var6.getLocalizedMessage());
-            return;
          }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
+
+      return $$1;
    }
 }

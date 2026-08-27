@@ -1,23 +1,85 @@
-public class fop extends fnv<bvq, fbb<bvq>> {
-   private static final acq a = new acq("textures/entity/zombie/drowned.png");
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public fop(foy.a $$0) {
-      super($$0, new fbb<>($$0.a(fed.L)), new fbb<>($$0.a(fed.M)), new fbb<>($$0.a(fed.N)));
-      this.a(new fso<>(this, $$0.f()));
+public class fop implements gas {
+   private final List<foq> a;
+
+   public fop(List<foq> $$0) {
+      this.a = $$0;
+   }
+
+   public List<foq> a() {
+      return this.a;
    }
 
    @Override
-   public acq a(bwv $$0) {
-      return a;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fop $$1 ? this.a.equals($$1.a) : false;
+      }
    }
 
-   protected void a(bvq $$0, eij $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.a($$4);
-      if ($$5 > 0.0F) {
-         float $$6 = -10.0F - $$0.dA();
-         float $$7 = apa.i($$5, 0.0F, $$6);
-         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.de() / 2.0F, 0.0F);
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<aep> f() {
+      return this.a().stream().map(foq::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<aep, gas> $$0) {
+      this.a().stream().map(foq::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gah a(gal $$0, Function<gak, fyg> $$1, gap $$2, aep $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         gat.a $$4 = new gat.a();
+
+         for (foq $$5 : this.a()) {
+            gah $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
+   }
+
+   public static class a implements JsonDeserializer<fop> {
+      public fop a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<foq> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((foq)$$2.deserialize($$5, foq.class));
+            }
+         } else {
+            $$3.add((foq)$$2.deserialize($$0, foq.class));
+         }
+
+         return new fop($$3);
       }
    }
 }

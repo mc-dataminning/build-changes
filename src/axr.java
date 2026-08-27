@@ -1,17 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class axr extends axd {
-   public axr(int $$0, Schema $$1) {
+public class axr extends DataFix {
+   public axr(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.remove("minecraft:flower_pot");
-      $$1.remove("minecraft:noteblock");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(aym.D);
+      return this.fixTypeEverywhereTyped(
+         "ObjectiveDisplayNameFix",
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.update(
+                     "DisplayName",
+                     $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxx -> te.a.a(te.b($$0xxxx))).map($$0xx::createString).result(), $$1)
+                  )
+            )
+      );
    }
 }

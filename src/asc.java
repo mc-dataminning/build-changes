@@ -1,65 +1,220 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import it.unimi.dsi.fastutil.objects.ObjectArrays;
+import java.util.AbstractSet;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import javax.annotation.Nullable;
 
-public class asc extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+public class asc<T> extends AbstractSet<T> {
+   private static final int a = 10;
+   private final Comparator<T> b;
+   T[] c;
+   int d;
 
-   public asc(Schema $$0) {
-      super($$0, false);
+   private asc(int $$0, Comparator<T> $$1) {
+      this.b = $$1;
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
+      } else {
+         this.c = (T[])a(new Object[$$0]);
+      }
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(avw.m);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(avw.s.typeName(), axd.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(avw.q), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(avw.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
-               if ($$3x.filter(a::contains).isPresent()) {
-                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
-                  if ($$4.isPresent()) {
-                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
-                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$6);
-                  }
-               }
+   public static <T extends Comparable<T>> asc<T> a() {
+      return a(10);
+   }
 
-               return $$2x;
-            })
+   public static <T extends Comparable<T>> asc<T> a(int $$0) {
+      return new asc<>($$0, Comparator.naturalOrder());
+   }
+
+   public static <T> asc<T> a(Comparator<T> $$0) {
+      return a($$0, 10);
+   }
+
+   public static <T> asc<T> a(Comparator<T> $$0, int $$1) {
+      return new asc<>($$1, $$0);
+   }
+
+   private static <T> T[] a(Object[] $$0) {
+      return (T[])$$0;
+   }
+
+   private int c(T $$0) {
+      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
+   }
+
+   private static int b(int $$0) {
+      return -$$0 - 1;
+   }
+
+   @Override
+   public boolean add(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         this.a($$0, $$2);
+         return true;
+      }
+   }
+
+   private void c(int $$0) {
+      if ($$0 > this.c.length) {
+         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
+            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
+         } else if ($$0 < 10) {
+            $$0 = 10;
          }
-      );
+
+         Object[] $$1 = new Object[$$0];
+         System.arraycopy(this.c, 0, $$1, 0, this.d);
+         this.c = (T[])a($$1);
+      }
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
+   private void a(T $$0, int $$1) {
+      this.c(this.d + 1);
+      if ($$1 != this.d) {
+         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
+      }
+
+      this.c[$$1] = $$0;
+      this.d++;
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
+   void d(int $$0) {
+      this.d--;
+      if ($$0 != this.d) {
+         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
+      }
+
+      this.c[this.d] = null;
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+   private T e(int $$0) {
+      return this.c[$$0];
+   }
+
+   public T a(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return this.e($$1);
+      } else {
+         this.a($$0, b($$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      if ($$1 >= 0) {
+         this.d($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public T b(T $$0) {
+      int $$1 = this.c($$0);
+      return $$1 >= 0 ? this.e($$1) : null;
+   }
+
+   public T b() {
+      return this.e(0);
+   }
+
+   public T c() {
+      return this.e(this.d - 1);
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      return $$1 >= 0;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return new asc.a();
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @Override
+   public Object[] toArray() {
+      return Arrays.copyOf(this.c, this.d, Object[].class);
+   }
+
+   @Override
+   public <U> U[] toArray(U[] $$0) {
+      if ($$0.length < this.d) {
+         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
+      } else {
+         System.arraycopy(this.c, 0, $$0, 0, this.d);
+         if ($$0.length > this.d) {
+            $$0[this.d] = null;
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public void clear() {
+      Arrays.fill(this.c, 0, this.d, null);
+      this.d = 0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof asc<?> $$1 && this.b.equals($$1.b)) {
+            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
+         }
+
+         return super.equals($$0);
+      }
+   }
+
+   class a implements Iterator<T> {
+      private int b;
+      private int c = -1;
+
+      @Override
+      public boolean hasNext() {
+         return this.b < asc.this.d;
+      }
+
+      @Override
+      public T next() {
+         if (this.b >= asc.this.d) {
+            throw new NoSuchElementException();
+         } else {
+            this.c = this.b++;
+            return asc.this.c[this.c];
+         }
+      }
+
+      @Override
+      public void remove() {
+         if (this.c == -1) {
+            throw new IllegalStateException();
+         } else {
+            asc.this.d(this.c);
+            this.b--;
+            this.c = -1;
+         }
+      }
    }
 }

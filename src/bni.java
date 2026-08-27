@@ -1,122 +1,97 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class bni extends bmv {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bgi a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected gu e = gu.b;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class bni extends bko<cay> {
+   private static final int c = 5;
+   private static final float d = 0.5F;
+   private Set<cir> e = ImmutableSet.of();
 
-   public bni(bgi $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
+   public bni() {
+      super(ImmutableMap.of(bry.q, brz.a, bry.h, brz.a));
    }
 
-   public bni(bgi $$0, double $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(bmv.a.a, bmv.a.c));
+   protected boolean a(aki $$0, cay $$1) {
+      return bkq.a($$1.dM(), bry.q, bik.bf);
    }
 
-   @Override
-   public boolean a() {
-      if (this.c > 0) {
-         this.c--;
-         return false;
-      } else {
-         this.c = this.a(this.a);
-         return this.n();
-      }
+   protected boolean a(aki $$0, cay $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   protected int a(bgi $$0) {
-      return b(200 + $$0.ec().a(200));
+   protected void b(aki $$0, cay $$1, long $$2) {
+      cay $$3 = (cay)$$1.dM().c(bry.q).get();
+      bkq.a($$1, $$3, 0.5F);
+      this.e = a($$1, $$3);
    }
 
-   @Override
-   public boolean b() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dI(), this.e);
-   }
-
-   @Override
-   public void c() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.ec().a(this.a.ec().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.J().a((double)((float)this.e.u()) + 0.5, (double)(this.e.v() + 1), (double)((float)this.e.w()) + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected gu k() {
-      return this.e.c();
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      gu $$0 = this.k();
-      if (!$$0.a(this.a.dg(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.J().a((double)((float)$$0.u()) + 0.5, (double)$$0.v(), (double)((float)$$0.w()) + 0.5, this.b);
+   protected void c(aki $$0, cay $$1, long $$2) {
+      cay $$3 = (cay)$$1.dM().c(bry.q).get();
+      if (!($$1.f($$3) > 5.0)) {
+         bkq.a($$1, $$3, 0.5F);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gr() && ($$1.gk().b() == cbb.g || $$3.gs())) {
+            a($$1, cay.bW.keySet(), $$3);
          }
-      } else {
-         this.k = true;
-         this.d--;
+
+         if ($$3.gk().b() == cbb.g && $$1.t().a_(ciz.oI) > ciz.oI.l() / 2) {
+            a($$1, ImmutableSet.of(ciz.oI), $$3);
+         }
+
+         if (!this.e.isEmpty() && $$1.t().a(this.e)) {
+            a($$1, this.e, $$3);
+         }
       }
    }
 
-   public boolean l() {
-      return this.d % 40 == 0;
+   protected void d(aki $$0, cay $$1, long $$2) {
+      $$1.dM().b(bry.q);
    }
 
-   protected boolean m() {
-      return this.k;
+   private static Set<cir> a(cay $$0, cay $$1) {
+      ImmutableSet<cir> $$2 = $$1.gk().b().d();
+      ImmutableSet<cir> $$3 = $$0.gk().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
    }
 
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      gu $$2 = this.a.di();
-      gu.a $$3 = new gu.a();
+   private static void a(cay $$0, Set<cir> $$1, biw $$2) {
+      bgv $$3 = $$0.t();
+      ciw $$4 = ciw.b;
+      int $$5 = 0;
 
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dI(), $$3)) {
-                     this.e = $$3;
-                     return true;
+      while ($$5 < $$3.b()) {
+         ciw $$6;
+         cir $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               $$7 = $$6.d();
+               if ($$1.contains($$7)) {
+                  if ($$6.L() > $$6.g() / 2) {
+                     $$8 = $$6.L() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.L() > 24) {
+                     $$8 = $$6.L() - 24;
+                     break label28;
                   }
                }
             }
+
+            $$5++;
+            continue;
          }
+
+         $$6.h($$8);
+         $$4 = new ciw($$7, $$8);
+         break;
       }
 
-      return false;
+      if (!$$4.b()) {
+         bkq.a($$0, $$4, $$2.di());
+      }
    }
-
-   protected abstract boolean a(cmp var1, gu var2);
 }

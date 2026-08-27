@@ -6,24 +6,24 @@ import javax.annotation.Nullable;
 public class bv {
    public static final bv a = new bv(null, null, cz.a);
    @Nullable
-   private final anl<dxd> b;
+   private final apy<eaa> b;
    @Nullable
-   private final dxd c;
+   private final eaa c;
    private final cz d;
 
-   public bv(@Nullable anl<dxd> $$0, @Nullable dxd $$1, cz $$2) {
+   public bv(@Nullable apy<eaa> $$0, @Nullable eaa $$1, cz $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   public boolean a(aif $$0, gu $$1) {
+   public boolean a(aki $$0, gv $$1) {
       if (this == a) {
          return true;
       } else if (!$$0.o($$1)) {
          return false;
       } else {
-         dxe $$2 = $$0.b_($$1);
+         eab $$2 = $$0.b_($$1);
          if (this.b != null && !$$2.a(this.b)) {
             return false;
          } else {
@@ -34,17 +34,17 @@ public class bv {
 
    public static bv a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "fluid");
-         dxd $$2 = null;
+         JsonObject $$1 = arf.m($$0, "fluid");
+         eaa $$2 = null;
          if ($$1.has("fluid")) {
-            acq $$3 = new acq(aor.i($$1, "fluid"));
-            $$2 = jb.d.a($$3);
+            aep $$3 = new aep(arf.i($$1, "fluid"));
+            $$2 = jc.d.a($$3);
          }
 
-         anl<dxd> $$4 = null;
+         apy<eaa> $$4 = null;
          if ($$1.has("tag")) {
-            acq $$5 = new acq(aor.i($$1, "tag"));
-            $$4 = anl.a(jc.w, $$5);
+            aep $$5 = new aep(arf.i($$1, "tag"));
+            $$4 = apy.a(jd.w, $$5);
          }
 
          cz $$6 = cz.a($$1.get("state"));
@@ -60,7 +60,7 @@ public class bv {
       } else {
          JsonObject $$0 = new JsonObject();
          if (this.c != null) {
-            $$0.addProperty("fluid", jb.d.b(this.c).toString());
+            $$0.addProperty("fluid", jc.d.b(this.c).toString());
          }
 
          if (this.b != null) {
@@ -74,9 +74,9 @@ public class bv {
 
    public static class a {
       @Nullable
-      private dxd a;
+      private eaa a;
       @Nullable
-      private anl<dxd> b;
+      private apy<eaa> b;
       private cz c = cz.a;
 
       private a() {
@@ -86,12 +86,12 @@ public class bv {
          return new bv.a();
       }
 
-      public bv.a a(dxd $$0) {
+      public bv.a a(eaa $$0) {
          this.a = $$0;
          return this;
       }
 
-      public bv.a a(anl<dxd> $$0) {
+      public bv.a a(apy<eaa> $$0) {
          this.b = $$0;
          return this;
       }

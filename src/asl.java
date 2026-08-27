@@ -1,14 +1,50 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public class asl extends auz {
-   public asl(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", avw.q, "minecraft:goat");
+public interface asl<C> {
+   asl<Float> a = a($$0 -> $$0);
+
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static asl<Float> a(final Float2FloatFunction $$0) {
+      return new asl<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
+   default <C2> asl<C2> a(final Function<C2, C> $$0) {
+      final asl<C> $$1 = this;
+      return new asl<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
+
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

@@ -1,43 +1,50 @@
-public class fps extends fpr<bwa> {
-   private static final acq a = new acq("textures/entity/illager/illusioner.png");
+public class fps implements fpg<deu> {
+   private final fnz a;
 
-   public fps(foy.a $$0) {
-      super($$0, new fbt<>($$0.a(fed.ao)), 0.5F);
-      this.a(new fsz<bwa, fbt<bwa>>(this, $$0.d()) {
-         public void a(eij $$0, fjx $$1, int $$2, bwa $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gi() || $$3.fS()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   public fps(fph.a $$0) {
+      this.a = $$0.b();
+   }
+
+   public void a(deu $$0, float $$1, elh $$2, fng $$3, int $$4, int $$5) {
+      cpk $$6 = $$0.k();
+      if ($$6 != null) {
+         gv $$7 = $$0.p().a($$0.g().g());
+         dey $$8 = $$0.i();
+         if (!$$8.i()) {
+            fob.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(csl.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(des.c, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dga $$9 = $$8.a(csl.br) ? dga.b : dga.a;
+               dey $$10 = csl.bz.n().a(des.b, $$9).a(des.a, $$8.c(der.a));
+               $$10 = $$10.a(des.c, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               gv $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(der.b, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
+
+            $$2.b();
+            fob.b();
          }
-      });
-      this.f.c().k = true;
-   }
-
-   public acq a(bwa $$0) {
-      return a;
-   }
-
-   public void a(bwa $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      if ($$0.cb()) {
-         eei[] $$6 = $$0.D($$2);
-         float $$7 = this.a($$0, $$2);
-
-         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
-            $$3.a();
-            $$3.a(
-               $$6[$$8].c + (double)apa.b((float)$$8 + $$7 * 0.5F) * 0.025,
-               $$6[$$8].d + (double)apa.b((float)$$8 + $$7 * 0.75F) * 0.0125,
-               $$6[$$8].e + (double)apa.b((float)$$8 + $$7 * 0.7F) * 0.025
-            );
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            $$3.b();
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   protected boolean b(bwa $$0) {
-      return true;
+   private void a(gv $$0, dey $$1, elh $$2, fng $$3, cpk $$4, boolean $$5, int $$6) {
+      fno $$7 = fnb.b($$1);
+      ell $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, art.a(), $$1.a($$0), $$6);
+   }
+
+   @Override
+   public int aH_() {
+      return 68;
    }
 }

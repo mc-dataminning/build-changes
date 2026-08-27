@@ -1,30 +1,28 @@
-import org.joml.Vector3f;
-
-public class ewl extends evr {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int k = 16;
-   private static final int l = 16;
-   private final acq m = new acq("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public ewl(dav $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, sw.c("hanging_sign.edit"));
-   }
-
-   @Override
-   protected void b(eox $$0, dcb $$1) {
-      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
-   }
-
-   @Override
-   protected void a(eox $$0, dcb $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f l() {
-      return c;
+public class ewl extends exx {
+   public ewl(exv $$0, eqr $$1) {
+      super(
+         $$0,
+         $$1,
+         te.c("options.chat.title"),
+         new eqq[]{
+            $$1.l(),
+            $$1.G(),
+            $$1.H(),
+            $$1.I(),
+            $$1.m(),
+            $$1.o(),
+            $$1.s(),
+            $$1.n(),
+            $$1.w(),
+            $$1.t(),
+            $$1.v(),
+            $$1.u(),
+            $$1.an(),
+            $$1.F(),
+            $$1.Z(),
+            $$1.Q(),
+            $$1.ab()
+         }
+      );
    }
 }

@@ -1,32 +1,32 @@
-public class aay implements uo<zb> {
-   private final bdw a;
-   private final int b;
+public class aay implements uw<aav> {
+   private final int a;
+   private final gv b;
 
-   public aay(bdw $$0, int $$1) {
+   public aay(int $$0, gv $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public aay(sf $$0) {
-      this.a = $$0.b(bdw.class);
-      this.b = $$0.m();
+   public aay(sh $$0) {
+      this.a = $$0.m();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      $$0.d(this.b);
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(zb $$0) {
+   public void a(aav $$0) {
       $$0.a(this);
    }
 
-   public bdw a() {
+   public int a() {
       return this.a;
    }
 
-   public int c() {
+   public gv d() {
       return this.b;
    }
 }

@@ -1,42 +1,37 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtz extends dsa {
-   public static final bcl<cnw.c> d = bcl.a(
-      new cnw.c(bfn.i, 10, 2, 3), new cnw.c(bfn.bs, 5, 4, 4), new cnw.c(bfn.bl, 8, 5, 5), new cnw.c(bfn.aJ, 2, 5, 5), new cnw.c(bfn.al, 3, 4, 4)
+public class dtz extends dui {
+   public static final Codec<dtz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dtz::new)
    );
-   public static final Codec<dtz> e = a(dtz::new);
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public dtz(dsa.c $$0) {
-      super($$0);
+   private dtz(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static dtz a(int $$0, double $$1, double $$2) {
+      return new dtz($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<dsa.b> a(dsa.a $$0) {
-      clt $$1 = $$0.h();
-      gu $$2 = new gu($$1.d(), 64, $$1.e());
-      return Optional.of(new dsa.b($$2, (Consumer<dss>)($$1x -> a($$1x, $$0))));
-   }
-
-   private static void a(dss $$0, dsa.a $$1) {
-      dty.q $$2 = new dty.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<dse> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         dse $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   protected int a(art $$0, gv $$1) {
+      double $$2 = cqi.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public dsj<?> e() {
-      return dsj.d;
+   public duf<?> b() {
+      return duf.g;
    }
 }

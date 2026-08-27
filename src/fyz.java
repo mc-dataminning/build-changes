@@ -1,467 +1,205 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
+import com.google.common.hash.Hashing;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import com.mojang.util.UndashedUuid;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.comparator.LastModifiedFileComparator;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.slf4j.Logger;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 
-public class fyz {
-   private static final Marker d = MarkerFactory.getMarker("SOUNDS");
-   private static final Logger e = LogUtils.getLogger();
-   private static final float f = 0.5F;
-   private static final float g = 2.0F;
-   private static final float h = 0.0F;
-   private static final float i = 1.0F;
-   private static final int j = 20;
-   private static final Set<acq> k = Sets.newHashSet();
-   private static final long l = 1000L;
-   public static final String a = "FOR THE DEBUG!";
-   public static final String b = "OpenAL Soft on ";
-   public static final int c = "OpenAL Soft on ".length();
-   private final fzc m;
-   private final enr n;
-   private boolean o;
-   private final egf p = new egf();
-   private final egg q = this.p.e();
-   private final fyy r;
-   private final fza s = new fza();
-   private final fyv t = new fyv(this.p, this.s);
-   private int u;
-   private long v;
-   private final AtomicReference<fyz.a> w = new AtomicReference<>(fyz.a.c);
-   private final Map<fxy, fyv.a> x = Maps.newHashMap();
-   private final Multimap<ami, fxy> y = HashMultimap.create();
-   private final List<fxz> z = Lists.newArrayList();
-   private final Map<fxy, Integer> A = Maps.newHashMap();
-   private final Map<fxy, Integer> B = Maps.newHashMap();
-   private final List<fzb> C = Lists.newArrayList();
-   private final List<fxz> D = Lists.newArrayList();
-   private final List<fxv> E = Lists.newArrayList();
+public class fyz implements amx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Pattern b = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final int c = 262144000;
+   private static final int d = 10;
+   private static final String e = "server";
+   private static final te f = te.c("resourcePack.server.name");
+   private static final te g = te.c("multiplayer.applyingPack");
+   private final File h;
+   private final ReentrantLock i = new ReentrantLock();
+   @Nullable
+   private CompletableFuture<?> j;
+   @Nullable
+   private ams k;
 
-   public fyz(fzc $$0, enr $$1, ala $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.r = new fyy($$2);
+   public fyz(File $$0) {
+      this.h = $$0;
    }
 
-   public void a() {
-      k.clear();
-
-      for (amg $$0 : jb.c) {
-         if ($$0 != amh.pp) {
-            acq $$1 = $$0.a();
-            if (this.m.a($$1) == null) {
-               e.warn("Missing sound for event: {}", jb.c.b($$0));
-               k.add($$1);
-            }
-         }
-      }
-
-      this.b();
-      this.h();
-   }
-
-   private synchronized void h() {
-      if (!this.o) {
-         try {
-            String $$0 = this.n.ao().c();
-            this.p.a("".equals($$0) ? null : $$0, this.n.S().c());
-            this.q.c();
-            this.q.a(this.n.a(ami.a));
-            this.r.a(this.E).thenRun(this.E::clear);
-            this.o = true;
-            e.info(d, "Sound engine started");
-         } catch (RuntimeException var2) {
-            e.error(d, "Error starting SoundSystem. Turning off sounds & music", var2);
-         }
+   @Override
+   public void a(Consumer<ams> $$0) {
+      if (this.k != null) {
+         $$0.accept(this.k);
       }
    }
 
-   private float a(@Nullable ami $$0) {
-      return $$0 != null && $$0 != ami.a ? this.n.a($$0) : 1.0F;
+   private static Map<String, String> b() {
+      return Map.of(
+         "X-Minecraft-Username",
+         eqn.N().U().c(),
+         "X-Minecraft-UUID",
+         UndashedUuid.toString(eqn.N().U().b()),
+         "X-Minecraft-Version",
+         aa.b().c(),
+         "X-Minecraft-Version-ID",
+         aa.b().b(),
+         "X-Minecraft-Pack-Format",
+         String.valueOf(aa.b().a(alz.a)),
+         "User-Agent",
+         "Minecraft Java/" + aa.b().c()
+      );
    }
 
-   public void a(ami $$0, float $$1) {
-      if (this.o) {
-         if ($$0 == ami.a) {
-            this.q.a($$1);
+   public CompletableFuture<?> a(URL $$0, String $$1, boolean $$2) {
+      String $$3 = Hashing.sha1().hashString($$0.toString(), StandardCharsets.UTF_8).toString();
+      String $$4 = b.matcher($$1).matches() ? $$1 : "";
+      this.i.lock();
+
+      CompletableFuture var14;
+      try {
+         eqn $$5 = eqn.N();
+         File $$6 = new File(this.h, $$3);
+         CompletableFuture<?> $$7;
+         if ($$6.exists()) {
+            $$7 = CompletableFuture.completedFuture("");
          } else {
-            this.x.forEach(($$0x, $$1x) -> {
-               float $$2 = this.h($$0x);
-               $$1x.a($$1xx -> {
-                  if ($$2 <= 0.0F) {
-                     $$1xx.f();
-                  } else {
-                     $$1xx.b($$2);
-                  }
-               });
-            });
+            ext $$8 = new ext($$2);
+            Map<String, String> $$9 = b();
+            $$5.h(() -> $$5.a($$8));
+            $$7 = arg.a($$6, $$0, $$9, 262144000, $$8, $$5.W());
          }
-      }
-   }
 
-   public void b() {
-      if (this.o) {
-         this.c();
-         this.r.a();
-         this.p.d();
-         this.o = false;
-      }
-   }
-
-   public void a(fxy $$0) {
-      if (this.o) {
-         fyv.a $$1 = this.x.get($$0);
-         if ($$1 != null) {
-            $$1.a(ege::f);
-         }
-      }
-   }
-
-   public void c() {
-      if (this.o) {
-         this.s.a();
-         this.x.values().forEach($$0 -> $$0.a(ege::f));
-         this.x.clear();
-         this.t.b();
-         this.A.clear();
-         this.z.clear();
-         this.y.clear();
-         this.B.clear();
-         this.D.clear();
-      }
-   }
-
-   public void a(fzb $$0) {
-      this.C.add($$0);
-   }
-
-   public void b(fzb $$0) {
-      this.C.remove($$0);
-   }
-
-   private boolean i() {
-      if (this.p.h()) {
-         e.info("Audio device was lost!");
-         return true;
-      } else {
-         long $$0 = ac.b();
-         boolean $$1 = $$0 - this.v >= 1000L;
-         if ($$1) {
-            this.v = $$0;
-            if (this.w.compareAndSet(fyz.a.c, fyz.a.a)) {
-               String $$2 = this.n.ao().c();
-               ac.g().execute(() -> {
-                  if ("".equals($$2)) {
-                     if (this.p.c()) {
-                        e.info("System default audio device has changed!");
-                        this.w.compareAndSet(fyz.a.a, fyz.a.b);
+         this.j = $$7.<Void>thenCompose($$4x -> {
+               if (!this.a($$4, $$6)) {
+                  return CompletableFuture.failedFuture(new RuntimeException("Hash check failure for file " + $$6 + ", see log"));
+               } else {
+                  $$5.execute(() -> {
+                     if (!$$2) {
+                        $$5.a(new exb(g));
                      }
-                  } else if (!this.p.b().equals($$2) && this.p.g().contains($$2)) {
-                     e.info("Preferred audio device has become available!");
-                     this.w.compareAndSet(fyz.a.a, fyz.a.b);
-                  }
-
-                  this.w.compareAndSet(fyz.a.a, fyz.a.c);
-               });
-            }
-         }
-
-         return this.w.compareAndSet(fyz.a.b, fyz.a.c);
-      }
-   }
-
-   public void a(boolean $$0) {
-      if (this.i()) {
-         this.a();
-      }
-
-      if (!$$0) {
-         this.j();
-      }
-
-      this.t.a();
-   }
-
-   private void j() {
-      this.u++;
-      this.D.stream().filter(fxy::s).forEach(this::c);
-      this.D.clear();
-
-      for (fxz $$0 : this.z) {
-         if (!$$0.s()) {
-            this.a((fxy)$$0);
-         }
-
-         $$0.q();
-         if ($$0.m()) {
-            this.a((fxy)$$0);
-         } else {
-            float $$1 = this.h($$0);
-            float $$2 = this.g($$0);
-            eei $$3 = new eei($$0.h(), $$0.i(), $$0.j());
-            fyv.a $$4 = this.x.get($$0);
-            if ($$4 != null) {
-               $$4.a($$3x -> {
-                  $$3x.b($$1);
-                  $$3x.a($$2);
-                  $$3x.a($$3);
-               });
-            }
-         }
-      }
-
-      Iterator<Entry<fxy, fyv.a>> $$5 = this.x.entrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<fxy, fyv.a> $$6 = $$5.next();
-         fyv.a $$7 = $$6.getValue();
-         fxy $$8 = $$6.getKey();
-         float $$9 = this.n.a($$8.c());
-         if ($$9 <= 0.0F) {
-            $$7.a(ege::f);
-            $$5.remove();
-         } else if ($$7.a()) {
-            int $$10 = this.B.get($$8);
-            if ($$10 <= this.u) {
-               if (e($$8)) {
-                  this.A.put($$8, this.u + $$8.e());
+                  });
+                  return this.a($$6, amw.f);
                }
-
-               $$5.remove();
-               e.debug(d, "Removed channel {} because it's not playing anymore", $$7);
-               this.B.remove($$8);
-
-               try {
-                  this.y.remove($$8.c(), $$8);
-               } catch (RuntimeException var8) {
-               }
-
-               if ($$8 instanceof fxz) {
-                  this.z.remove($$8);
-               }
-            }
-         }
-      }
-
-      Iterator<Entry<fxy, Integer>> $$11 = this.A.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<fxy, Integer> $$12 = $$11.next();
-         if (this.u >= $$12.getValue()) {
-            fxy $$13 = $$12.getKey();
-            if ($$13 instanceof fxz) {
-               ((fxz)$$13).q();
-            }
-
-            this.c($$13);
-            $$11.remove();
-         }
-      }
-   }
-
-   private static boolean d(fxy $$0) {
-      return $$0.e() > 0;
-   }
-
-   private static boolean e(fxy $$0) {
-      return $$0.d() && d($$0);
-   }
-
-   private static boolean f(fxy $$0) {
-      return $$0.d() && !d($$0);
-   }
-
-   public boolean b(fxy $$0) {
-      if (!this.o) {
-         return false;
-      } else {
-         return this.B.containsKey($$0) && this.B.get($$0) <= this.u ? true : this.x.containsKey($$0);
-      }
-   }
-
-   public void c(fxy $$0) {
-      if (this.o) {
-         if ($$0.s()) {
-            fzd $$1 = $$0.a(this.m);
-            acq $$2 = $$0.a();
-            if ($$1 == null) {
-               if (k.add($$2)) {
-                  e.warn(d, "Unable to play unknown soundEvent: {}", $$2);
-               }
-            } else {
-               fxv $$3 = $$0.b();
-               if ($$3 != fzc.d) {
-                  if ($$3 == fzc.a) {
-                     if (k.add($$2)) {
-                        e.warn(d, "Unable to play empty soundEvent: {}", $$2);
-                     }
-                  } else {
-                     float $$4 = $$0.f();
-                     float $$5 = Math.max($$4, 1.0F) * (float)$$3.i();
-                     ami $$6 = $$0.c();
-                     float $$7 = this.a($$4, $$6);
-                     float $$8 = this.g($$0);
-                     fxy.a $$9 = $$0.k();
-                     boolean $$10 = $$0.l();
-                     if ($$7 == 0.0F && !$$0.r()) {
-                        e.debug(d, "Skipped playing sound {}, volume was zero.", $$3.a());
+            })
+            .exceptionallyCompose($$2x -> this.a().thenAcceptAsync($$2xx -> {
+                  a.warn("Pack application failed: {}, deleting file {}", $$2x.getMessage(), $$6);
+                  a($$6);
+               }, ac.g()).thenAcceptAsync($$1xx -> $$5.a(new ewo($$1xxx -> {
+                     if ($$1xxx) {
+                        $$5.a(null);
                      } else {
-                        eei $$11 = new eei($$0.h(), $$0.i(), $$0.j());
-                        if (!this.C.isEmpty()) {
-                           boolean $$12 = $$10 || $$9 == fxy.a.a || this.q.a().g($$11) < (double)($$5 * $$5);
-                           if ($$12) {
-                              for (fzb $$13 : this.C) {
-                                 $$13.a($$0, $$1);
-                              }
-                           } else {
-                              e.debug(d, "Did not notify listeners of soundEvent: {}, it is too far away to hear", $$2);
-                           }
-                        }
-
-                        if (this.q.b() <= 0.0F) {
-                           e.debug(d, "Skipped playing soundEvent: {}, master volume was zero", $$2);
-                        } else {
-                           boolean $$14 = f($$0);
-                           boolean $$15 = $$3.g();
-                           CompletableFuture<fyv.a> $$16 = this.t.a($$3.g() ? egf.c.b : egf.c.a);
-                           fyv.a $$17 = $$16.join();
-                           if ($$17 == null) {
-                              if (aa.aS) {
-                                 e.warn("Failed to create new sound handle");
-                              }
-                           } else {
-                              e.debug(d, "Playing sound {} for event {}", $$3.a(), $$2);
-                              this.B.put($$0, this.u + 20);
-                              this.x.put($$0, $$17);
-                              this.y.put($$6, $$0);
-                              $$17.a($$8x -> {
-                                 $$8x.a($$8);
-                                 $$8x.b($$7);
-                                 if ($$9 == fxy.a.b) {
-                                    $$8x.c($$5);
-                                 } else {
-                                    $$8x.i();
-                                 }
-
-                                 $$8x.a($$14 && !$$15);
-                                 $$8x.a($$11);
-                                 $$8x.b($$10);
-                              });
-                              if (!$$15) {
-                                 this.r.a($$3.b()).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              } else {
-                                 this.r.a($$3.b(), $$14).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              }
-
-                              if ($$0 instanceof fxz) {
-                                 this.z.add((fxz)$$0);
-                              }
-                           }
+                        fif $$2xx = $$5.I();
+                        if ($$2xx != null) {
+                           $$2xx.l().a(te.c("connect.aborted"));
                         }
                      }
-                  }
+                  }, te.c("multiplayer.texturePrompt.failure.line1"), te.c("multiplayer.texturePrompt.failure.line2"), td.i, te.c("menu.disconnect"))), $$5))
+            .thenAcceptAsync($$0x -> this.c(), ac.g());
+         var14 = this.j;
+      } finally {
+         this.i.unlock();
+      }
+
+      return var14;
+   }
+
+   private static void a(File $$0) {
+      try {
+         Files.delete($$0.toPath());
+      } catch (IOException var2) {
+         a.warn("Failed to delete file {}: {}", $$0, var2.getMessage());
+      }
+   }
+
+   public CompletableFuture<Void> a() {
+      this.i.lock();
+
+      try {
+         if (this.j != null) {
+            this.j.cancel(true);
+         }
+
+         this.j = null;
+         if (this.k != null) {
+            this.k = null;
+            return eqn.N().O();
+         }
+      } finally {
+         this.i.unlock();
+      }
+
+      return CompletableFuture.completedFuture(null);
+   }
+
+   private boolean a(String $$0, File $$1) {
+      try {
+         String $$2 = com.google.common.io.Files.asByteSource($$1).hash(Hashing.sha1()).toString();
+         if ($$0.isEmpty()) {
+            a.info("Found file {} without verification hash", $$1);
+            return true;
+         }
+
+         if ($$2.toLowerCase(Locale.ROOT).equals($$0.toLowerCase(Locale.ROOT))) {
+            a.info("Found file {} matching requested hash {}", $$1, $$0);
+            return true;
+         }
+
+         a.warn("File {} had wrong hash (expected {}, found {}).", new Object[]{$$1, $$0, $$2});
+      } catch (IOException var4) {
+         a.warn("File {} couldn't be hashed.", $$1, var4);
+      }
+
+      return false;
+   }
+
+   private void c() {
+      if (this.h.isDirectory()) {
+         try {
+            List<File> $$0 = new ArrayList<>(FileUtils.listFiles(this.h, TrueFileFilter.TRUE, null));
+            $$0.sort(LastModifiedFileComparator.LASTMODIFIED_REVERSE);
+            int $$1 = 0;
+
+            for (File $$2 : $$0) {
+               if ($$1++ >= 10) {
+                  a.info("Deleting old server resource pack {}", $$2.getName());
+                  FileUtils.deleteQuietly($$2);
                }
             }
+         } catch (Exception var5) {
+            a.error("Error while deleting old server resource pack : {}", var5.getMessage());
          }
       }
    }
 
-   public void a(fxz $$0) {
-      this.D.add($$0);
-   }
-
-   public void a(fxv $$0) {
-      this.E.add($$0);
-   }
-
-   private float g(fxy $$0) {
-      return apa.a($$0.g(), 0.5F, 2.0F);
-   }
-
-   private float h(fxy $$0) {
-      return this.a($$0.f(), $$0.c());
-   }
-
-   private float a(float $$0, ami $$1) {
-      return apa.a($$0 * this.a($$1), 0.0F, 1.0F);
-   }
-
-   public void d() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(ege::d));
-      }
-   }
-
-   public void e() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(ege::e));
-      }
-   }
-
-   public void a(fxy $$0, int $$1) {
-      this.A.put($$0, this.u + $$1);
-   }
-
-   public void a(emz $$0) {
-      if (this.o && $$0.h()) {
-         eei $$1 = $$0.b();
-         Vector3f $$2 = $$0.l();
-         Vector3f $$3 = $$0.m();
-         this.s.execute(() -> {
-            this.q.a($$1);
-            this.q.a($$2, $$3);
-         });
-      }
-   }
-
-   public void a(@Nullable acq $$0, @Nullable ami $$1) {
-      if ($$1 != null) {
-         for (fxy $$2 : this.y.get($$1)) {
-            if ($$0 == null || $$2.a().equals($$0)) {
-               this.a($$2);
-            }
-         }
-      } else if ($$0 == null) {
-         this.c();
+   public CompletableFuture<Void> a(File $$0, amw $$1) {
+      ams.c $$2 = new alw.a($$0, false);
+      int $$3 = aa.b().a(alz.a);
+      ams.a $$4 = ams.a("server", $$2, $$3);
+      if ($$4 == null) {
+         return CompletableFuture.failedFuture(new IllegalArgumentException("Invalid pack metadata at " + $$0));
       } else {
-         for (fxy $$3 : this.x.keySet()) {
-            if ($$3.a().equals($$0)) {
-               this.a($$3);
-            }
-         }
+         a.info("Applying server pack {}", $$0);
+         this.k = ams.a("server", f, true, $$2, $$4, ams.b.a, true, $$1);
+         return eqn.N().O();
       }
    }
 
-   public String f() {
-      return this.p.f();
-   }
-
-   public List<String> g() {
-      return this.p.g();
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public CompletableFuture<Void> a(ebv.c $$0) {
+      Path $$1 = $$0.a(ebt.k);
+      return Files.exists($$1) && !Files.isDirectory($$1) ? this.a($$1.toFile(), amw.e) : CompletableFuture.completedFuture(null);
    }
 }

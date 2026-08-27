@@ -1,23 +1,24 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class chp extends cdn {
-   public chp(cfu.a $$0) {
+public class chp extends cir {
+   public chp(cir.a $$0) {
       super($$0);
    }
 
    @Override
-   public cfz ae_() {
-      return chy.a(super.ae_(), chz.E);
-   }
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      ciw $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aou.gG, aov.h, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ccl $$4 = new ccl($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public void a(cfz $$0, @Nullable cmm $$1, List<sw> $$2, chq $$3) {
-      chy.a($$0, $$2, 0.125F);
-   }
+      $$1.b(ape.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public String j(cfz $$0) {
-      return chy.d($$0).b(this.a() + ".effect.");
+      return bgp.a($$3, $$0.r_());
    }
 }

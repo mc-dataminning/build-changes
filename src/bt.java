@@ -18,7 +18,7 @@ public class bt implements bp {
 
    public static bt a(JsonObject $$0) {
       JsonElement $$1 = $$0.get("in_open_water");
-      return $$1 != null ? new bt(aor.c($$1, "in_open_water")) : b;
+      return $$1 != null ? new bt(arf.c($$1, "in_open_water")) : b;
    }
 
    @Override
@@ -38,11 +38,11 @@ public class bt implements bp {
    }
 
    @Override
-   public boolean a(bfj $$0, aif $$1, @Nullable eei $$2) {
+   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
       if (this == b) {
          return true;
       } else {
-         return !($$0 instanceof bzc $$3) ? false : this.d == $$3.j();
+         return !($$0 instanceof cbz $$3) ? false : this.d == $$3.j();
       }
    }
 }

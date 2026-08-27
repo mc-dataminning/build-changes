@@ -1,11 +1,11 @@
 public interface dr {
    dr a = new dr() {
       @Override
-      public void a(sw $$0) {
+      public void a(te $$0) {
       }
 
       @Override
-      public boolean e_() {
+      public boolean f_() {
          return false;
       }
 
@@ -20,15 +20,15 @@ public interface dr {
       }
    };
 
-   void a(sw var1);
+   void a(te var1);
 
-   boolean e_();
+   boolean f_();
 
    boolean q_();
 
    boolean N_();
 
-   default boolean f_() {
+   default boolean g_() {
       return false;
    }
 }

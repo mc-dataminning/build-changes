@@ -1,25 +1,24 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-class dip extends dit {
-   public static final Codec<dip> a = a(dip::new);
+public interface dip {
+   int ah();
 
-   public dip(List<dir> $$0) {
-      super($$0);
-   }
+   UUID cv();
 
-   public boolean a(cng $$0, gu $$1) {
-      for (dir $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
-      }
+   gv dk();
 
-      return true;
-   }
+   eha cG();
 
-   @Override
-   public dis<?> a() {
-      return dis.j;
-   }
+   void a(diq var1);
+
+   Stream<? extends dip> cR();
+
+   Stream<? extends dip> cS();
+
+   void b(big.c var1);
+
+   boolean dI();
+
+   boolean dJ();
 }

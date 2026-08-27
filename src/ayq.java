@@ -1,63 +1,27 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class ayq extends axd {
-   public ayq(int $$0, Schema $$1) {
-      super($$0, $$1);
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         avw.B,
-         () -> DSL.fields(
-               "dimensions",
-               DSL.compoundList(
-                  DSL.constType(a()),
-                  DSL.fields(
-                     "generator",
-                     DSL.taggedChoiceLazy(
-                        "type",
-                        DSL.string(),
-                        ImmutableMap.of(
-                           "minecraft:debug",
-                           DSL::remainder,
-                           "minecraft:flat",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "settings", DSL.optionalFields("biome", avw.z.in($$0), "layers", DSL.list(DSL.optionalFields("block", avw.r.in($$0))))
-                              ),
-                           "minecraft:noise",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "biome_source",
-                                 DSL.taggedChoiceLazy(
-                                    "type",
-                                    DSL.string(),
-                                    ImmutableMap.of(
-                                       "minecraft:fixed",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", avw.z.in($$0)),
-                                       "minecraft:multi_noise",
-                                       (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", avw.z.in($$0))),
-                                       "minecraft:checkerboard",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(avw.z.in($$0))),
-                                       "minecraft:vanilla_layered",
-                                       DSL::remainder,
-                                       "minecraft:the_end",
-                                       DSL::remainder
-                                    )
-                                 ),
-                                 "settings",
-                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", avw.r.in($$0), "default_fluid", avw.r.in($$0)))
-                              )
-                        )
-                     )
-                  )
-               )
-            )
-      );
-   }
+public class ayq {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
+      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
+      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
+      .put("minecraft:red_coral", "minecraft:fire_coral_block")
+      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
+      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
+      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
+      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
+      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
+      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
+      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
+      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
+      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
+      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
+      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
+      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
+      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
+      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
+      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
+      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
+      .build();
 }

@@ -1,19 +1,18 @@
-import java.util.Optional;
+public interface cmc<T extends clz<?>> {
+   cmc<clq> a = a("crafting");
+   cmc<cml> b = a("smelting");
+   cmc<cll> c = a("blasting");
+   cmc<cmp> d = a("smoking");
+   cmc<cln> e = a("campfire_cooking");
+   cmc<cmq> f = a("stonecutting");
+   cmc<cmm> g = a("smithing");
 
-public class cmc extends cmf {
-   private final bfj a;
-
-   public cmc(bfj $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public Optional<Float> a(cme $$0, cls $$1, gu $$2, dcb $$3, dxe $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
-   }
-
-   @Override
-   public boolean a(cme $$0, cls $$1, gu $$2, dcb $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   static <T extends clz<?>> cmc<T> a(final String $$0) {
+      return hs.a(jc.t, new aep($$0), new cmc<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

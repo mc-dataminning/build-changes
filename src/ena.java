@@ -1,26 +1,31 @@
-public enum ena {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-   private static final ena[] d = values();
-   private final boolean e;
-   private final boolean f;
+public class ena extends end {
+   public long a;
+   public List<emz> b = Lists.newArrayList();
 
-   private ena(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   public static ena a(String $$0) {
+      ena $$1 = new ena();
+      JsonParser $$2 = new JsonParser();
 
-   public boolean a() {
-      return this.e;
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = epa.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               emz $$8 = emz.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public ena c() {
-      return d[(this.ordinal() + 1) % d.length];
+      return $$1;
    }
 }

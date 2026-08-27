@@ -1,191 +1,194 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.local.LocalAddress;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.ServerSocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
 
 public class aix {
-   private static final Logger d = LogUtils.getLogger();
-   public static final aov<NioEventLoopGroup> a = new aov<>(
-      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
-   );
-   public static final aov<EpollEventLoopGroup> b = new aov<>(
-      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
-   );
-   final MinecraftServer e;
-   public volatile boolean c;
-   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
-   final List<sd> g = Collections.synchronizedList(Lists.newArrayList());
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(te.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(te.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(te.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(te.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(te.c("commands.worldborder.damage.amount.failed"));
 
-   public aix(MinecraftServer $$0) {
-      this.e = $$0;
-      this.c = true;
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                                 "worldborder"
+                              )
+                              .requires($$0x -> $$0x.c(2)))
+                           .then(
+                              dt.a("add")
+                                 .then(
+                                    ((RequiredArgumentBuilder)dt.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ds)$$0x.getSource(),
+                                                   ((ds)$$0x.getSource()).e().w_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
+                                       .then(
+                                          dt.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      ((ds)$$0x.getSource()).e().w_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ds)$$0x.getSource()).e().w_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           dt.a("set")
+                              .then(
+                                 ((RequiredArgumentBuilder)dt.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ds)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                    .then(
+                                       dt.a("time", IntegerArgumentType.integer(0))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ds)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                )
+                                          )
+                                    )
+                              )
+                        ))
+                     .then(dt.a("center").then(dt.a("pos", fp.a()).executes($$0x -> a((ds)$$0x.getSource(), fp.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)dt.a("damage")
+                           .then(
+                              dt.a("amount")
+                                 .then(
+                                    dt.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ds)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           dt.a("buffer")
+                              .then(
+                                 dt.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ds)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
+                        )
+                  ))
+               .then(dt.a("get").executes($$0x -> a((ds)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)dt.a("warning")
+                     .then(
+                        dt.a("distance")
+                           .then(
+                              dt.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     dt.a("time")
+                        .then(
+                           dt.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  )
+            )
+      );
    }
 
-   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
-      synchronized (this.f) {
-         Class<? extends ServerSocketChannel> $$2;
-         aov<? extends EventLoopGroup> $$3;
-         if (Epoll.isAvailable() && this.e.n()) {
-            $$2 = EpollServerSocketChannel.class;
-            $$3 = b;
-            d.info("Using epoll channel type");
+   private static int a(ds $$0, float $$1) throws CommandSyntaxException {
+      dgp $$2 = $$0.l().D().w_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
+      } else {
+         $$2.b((double)$$1);
+         $$0.a(() -> te.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
+   }
+
+   private static int b(ds $$0, float $$1) throws CommandSyntaxException {
+      dgp $$2 = $$0.l().D().w_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
+      } else {
+         $$2.c((double)$$1);
+         $$0.a(() -> te.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
+   }
+
+   private static int a(ds $$0, int $$1) throws CommandSyntaxException {
+      dgp $$2 = $$0.l().D().w_();
+      if ($$2.q() == $$1) {
+         throw f.create();
+      } else {
+         $$2.b($$1);
+         $$0.a(() -> te.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
+      }
+   }
+
+   private static int b(ds $$0, int $$1) throws CommandSyntaxException {
+      dgp $$2 = $$0.l().D().w_();
+      if ($$2.r() == $$1) {
+         throw g.create();
+      } else {
+         $$2.c($$1);
+         $$0.a(() -> te.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
+      }
+   }
+
+   private static int a(ds $$0) {
+      double $$1 = $$0.l().D().w_().i();
+      $$0.a(() -> te.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return aro.a($$1 + 0.5);
+   }
+
+   private static int a(ds $$0, ehe $$1) throws CommandSyntaxException {
+      dgp $$2 = $$0.l().D().w_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> te.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
+      } else {
+         throw e.create();
+      }
+   }
+
+   private static int a(ds $$0, double $$1, long $$2) throws CommandSyntaxException {
+      dgp $$3 = $$0.l().D().w_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
+      } else {
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> te.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            } else {
+               $$0.a(() -> te.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            }
          } else {
-            $$2 = NioServerSocketChannel.class;
-            $$3 = a;
-            d.info("Using default channel type");
+            $$3.a($$1);
+            $$0.a(() -> te.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
          }
 
-         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               try {
-                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-               } catch (ChannelException var5) {
-               }
-
-               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("legacy_query", new aiv(aix.this));
-               sd.a($$1, up.a);
-               int $$2 = aix.this.e.m();
-               sd $$3 = (sd)($$2 > 0 ? new sm($$2) : new sd(up.a));
-               aix.this.g.add($$3);
-               $$1.addLast("packet_handler", $$3);
-               $$3.a(new aiz(aix.this.e, $$3));
-            }
-         }).group($$3.a()).localAddress($$0, $$1)).bind().syncUninterruptibly());
-      }
-   }
-
-   public SocketAddress a() {
-      ChannelFuture $$0;
-      synchronized (this.f) {
-         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               sd $$1 = new sd(up.a);
-               $$1.a(new aiw(aix.this.e, $$1));
-               aix.this.g.add($$1);
-               ChannelPipeline $$2 = $$0.pipeline();
-               $$2.addLast("packet_handler", $$1);
-            }
-         }).group((EventLoopGroup)a.a()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
-         this.f.add($$0);
-      }
-
-      return $$0.channel().localAddress();
-   }
-
-   public void b() {
-      this.c = false;
-
-      for (ChannelFuture $$0 : this.f) {
-         try {
-            $$0.channel().close().sync();
-         } catch (InterruptedException var4) {
-            d.error("Interrupted whilst closing channel");
-         }
-      }
-   }
-
-   public void c() {
-      synchronized (this.g) {
-         Iterator<sd> $$0 = this.g.iterator();
-
-         while ($$0.hasNext()) {
-            sd $$1 = $$0.next();
-            if (!$$1.i()) {
-               if ($$1.h()) {
-                  try {
-                     $$1.a();
-                  } catch (Exception var7) {
-                     if ($$1.d()) {
-                        throw new y(o.a(var7, "Ticking memory connection"));
-                     }
-
-                     d.warn("Failed to handle packet for {}", $$1.c(), var7);
-                     sw $$3 = sw.b("Internal server error");
-                     $$1.a(new vs($$3), sl.a(() -> $$1.a($$3)));
-                     $$1.l();
-                  }
-               } else {
-                  $$0.remove();
-                  $$1.m();
-               }
-            }
-         }
-      }
-   }
-
-   public MinecraftServer d() {
-      return this.e;
-   }
-
-   public List<sd> e() {
-      return this.g;
-   }
-
-   static class a extends ChannelInboundHandlerAdapter {
-      private static final Timer a = new HashedWheelTimer();
-      private final int b;
-      private final int c;
-      private final List<aix.a.a> d = Lists.newArrayList();
-
-      public a(int $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         this.a($$0, $$1);
-      }
-
-      private void a(ChannelHandlerContext $$0, Object $$1) {
-         int $$2 = this.b + (int)(Math.random() * (double)this.c);
-         this.d.add(new aix.a.a($$0, $$1));
-         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
-      }
-
-      private void a(Timeout $$0) {
-         aix.a.a $$1 = this.d.remove(0);
-         $$1.a.fireChannelRead($$1.b);
-      }
-
-      static class a {
-         public final ChannelHandlerContext a;
-         public final Object b;
-
-         public a(ChannelHandlerContext $$0, Object $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
+         return (int)($$1 - $$4);
       }
    }
 }

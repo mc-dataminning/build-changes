@@ -1,35 +1,27 @@
-public class ftn<T extends bfz> extends ftg<T, fck<T>> {
-   public static final acq a = new acq("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fee c;
+public class ftn extends ftp<byy, ffa<byy>> {
+   private static final aep a = new aep("textures/entity/slime/magmacube.png");
 
-   public ftn(fqt<T, fck<T>> $$0, fea $$1) {
-      super($$0);
-      fee $$2 = $$1.a(fed.aT);
-      this.c = $$2.b("box");
+   public ftn(fsj.a $$0) {
+      super($$0, new ffa<>($$0.a(fhi.au)), 0.25F);
    }
 
-   public static fek a() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a("box", fej.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), feg.a);
-      return fek.a($$0, 64, 64);
+   protected int a(byy $$0, gv $$1) {
+      return 15;
    }
 
-   public void a(eij $$0, fjx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fe()) {
-         ein $$10 = $$1.getBuffer(fkf.d(a));
+   public aep a(byy $$0) {
+      return a;
+   }
 
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, fum.d);
-            $$0.b();
-         }
-      }
+   public void a(byy $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.ga();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(byy $$0, elh $$1, float $$2) {
+      int $$3 = $$0.ga();
+      float $$4 = aro.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }
 }

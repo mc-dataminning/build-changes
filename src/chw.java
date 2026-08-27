@@ -1,46 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class chw {
-   @Nullable
-   private final String a;
-   private final ImmutableList<bfa> b;
-
-   public static chw a(String $$0) {
-      return jb.j.a(acq.a($$0));
+public class chw extends cir {
+   public chw(cir.a $$0) {
+      super($$0);
    }
 
-   public chw(bfa... $$0) {
-      this(null, $$0);
-   }
-
-   public chw(@Nullable String $$0, bfa... $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-   }
-
-   public String b(String $$0) {
-      return $$0 + (this.a == null ? jb.j.b(this).a() : this.a);
-   }
-
-   public List<bfa> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         UnmodifiableIterator var1 = this.b.iterator();
-
-         while (var1.hasNext()) {
-            bfa $$0 = (bfa)var1.next();
-            if ($$0.c().a()) {
-               return true;
-            }
-         }
+   @Override
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      ciw $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aou.hm, aov.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      $$1.gl().a(this, 20);
+      if (!$$0.B) {
+         ccm $$4 = new ccm($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return false;
+      $$1.b(ape.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
+      }
+
+      return bgp.a($$3, $$0.r_());
    }
 }

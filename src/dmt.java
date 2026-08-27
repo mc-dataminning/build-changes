@@ -1,53 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmt implements dms {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<dmt> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dhh.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dhj.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dhi.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bdc.b(1, 20).fieldOf("outer_wall_distance").orElse(bdi.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bdc.b(1, 20).fieldOf("distribution_points").orElse(bdi.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bdc.b(0, 10).fieldOf("point_offset").orElse(bdi.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, dmt::new)
-   );
-   public final dhh c;
-   public final dhj d;
-   public final dhi e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bdc i;
-   public final bdc j;
-   public final bdc k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class dmt extends dnl<dpg> {
+   public dmt(Codec<dpg> $$0) {
+      super($$0);
+   }
 
-   public dmt(dhh $$0, dhj $$1, dhi $$2, double $$3, double $$4, boolean $$5, bdc $$6, bdc $$7, bdc $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   @Override
+   public boolean a(dnn<dpg> $$0) {
+      cqe $$1 = $$0.b();
+      dpg $$2 = $$0.f();
+      art $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
+         return false;
+      } else {
+         gv.a $$8 = $$0.e().j();
+         gv.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dpg.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

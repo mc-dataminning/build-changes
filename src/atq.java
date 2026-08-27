@@ -1,27 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class atq extends DataFix {
-   public atq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class atq extends asv {
+   public atq(Schema $$0) {
+      super($$0, aym.s);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(avw.j.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(avw.j))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(atq::a));
-      }
+      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.a), $$0 -> {
+         $$0 = this.a($$0, "minecraft:conduit", this::c);
+         return this.a($$0, "minecraft:skull", this::b);
+      });
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.get("Owner").get().map($$0x -> a($$0x, "Id", "Id").orElse($$0x)).map($$1 -> $$0.remove("Owner").set("SkullOwner", $$1)).result().orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return b($$0, "target_uuid", "Target").orElse($$0);
    }
 }

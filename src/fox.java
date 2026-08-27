@@ -1,86 +1,82 @@
-import org.joml.Matrix4f;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public abstract class fox<T extends bfj> {
-   protected static final float b = 0.025F;
-   protected final fow c;
-   private final eov a;
-   protected float d;
-   protected float e = 1.0F;
+public class fox {
+   private final fot a;
+   private final fop b;
 
-   protected fox(foy.a $$0) {
-      this.c = $$0.a();
-      this.a = $$0.h();
-   }
-
-   public final int b(T $$0, float $$1) {
-      gu $$2 = gu.a($$0.k($$1));
-      return fjw.a(this.a($$0, $$2), this.b($$0, $$2));
-   }
-
-   protected int b(T $$0, gu $$1) {
-      return $$0.dI().a(cmv.a, $$1);
-   }
-
-   protected int a(T $$0, gu $$1) {
-      return $$0.bL() ? 15 : $$0.dI().a(cmv.b, $$1);
-   }
-
-   public boolean a(T $$0, fmw $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if ($$0.as) {
-         return true;
+   public fox(fot $$0, fop $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
       } else {
-         eed $$5 = $$0.j_().g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new eed($$0.dn() - 2.0, $$0.dp() - 2.0, $$0.dt() - 2.0, $$0.dn() + 2.0, $$0.dp() + 2.0, $$0.dt() + 2.0);
-         }
-
-         return $$1.a($$5);
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public eei a(T $$0, float $$1) {
-      return eei.b;
+   public fop a() {
+      return this.b;
    }
 
-   public void a(T $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      if (this.b($$0)) {
-         this.a($$0, $$0.H_(), $$3, $$4, $$5);
+   public Predicate<dey> a(dez<csk, dey> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fox> {
+      public fox a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fox(this.b($$3), (fop)$$2.deserialize($$3.get("apply"), fop.class));
       }
-   }
 
-   protected boolean b(T $$0) {
-      return $$0.cz() && $$0.aa();
-   }
+      private fot b(JsonObject $$0) {
+         return $$0.has("when") ? a(arf.u($$0, "when")) : fot.b;
+      }
 
-   public abstract acq a(T var1);
-
-   public eov b() {
-      return this.a;
-   }
-
-   protected void a(T $$0, sw $$1, eij $$2, fjx $$3, int $$4) {
-      double $$5 = this.c.b($$0);
-      if (!($$5 > 4096.0)) {
-         boolean $$6 = !$$0.bS();
-         float $$7 = $$0.df();
-         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-         $$2.a();
-         $$2.a(0.0F, $$7, 0.0F);
-         $$2.a(this.c.b());
-         $$2.b(-0.025F, -0.025F, 0.025F);
-         Matrix4f $$9 = $$2.c().a();
-         float $$10 = enn.N().m.a(0.25F);
-         int $$11 = (int)($$10 * 255.0F) << 24;
-         eov $$12 = this.b();
-         float $$13 = (float)(-$$12.a($$1) / 2);
-         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? eov.a.b : eov.a.a, $$11, $$4);
-         if ($$6) {
-            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, eov.a.a, 0, $$4);
+      @VisibleForTesting
+      static fot a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fot> $$2 = Streams.stream(arf.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fow($$2);
+            } else if ($$0.has("AND")) {
+               List<fot> $$3 = Streams.stream(arf.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fos($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new fos($$1.stream().map(fox.a::a).collect(Collectors.toList()));
          }
+      }
 
-         $$2.b();
+      private static fot a(Entry<String, JsonElement> $$0) {
+         return new fou($$0.getKey(), $$0.getValue().getAsString());
       }
    }
 }

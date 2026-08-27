@@ -1,88 +1,51 @@
-public class cch extends cbf {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bdq q;
-   private final cbp r;
-
-   public cch(int $$0) {
-      this($$0, new bee(1), new ccw(1));
+public class cch extends ccj {
+   public cch(bik<? extends cch> $$0, cpk $$1) {
+      super($$0, $$1);
    }
 
-   public cch(int $$0, bdq $$1, cbp $$2) {
-      super(cck.q, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new ccx($$1, 0, 0, 0) {
-         @Override
-         public void d() {
-            super.d();
-            cch.this.a(this.d);
-         }
-      });
-      this.a($$2);
+   public cch(cpk $$0, biw $$1) {
+      super(bik.aP, $$1, $$0);
+   }
+
+   public cch(cpk $$0, double $$1, double $$2, double $$3) {
+      super(bik.aP, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean b(byo $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.fZ()) {
-                  return false;
-               }
+   protected cir m() {
+      return ciz.pO;
+   }
 
-               cfz $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fN().e($$5)) {
-                  $$0.a($$5, false);
-               }
+   private iu q() {
+      ciw $$0 = this.o();
+      return (iu)($$0.b() ? iw.R : new is(iw.O, $$0));
+   }
 
-               return true;
-            default:
-               return false;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         iu $$1 = this.q();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dK().a($$1, this.dp(), this.dr(), this.dv(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    @Override
-   public cfz a(byo $$0, int $$1) {
-      return cfz.b;
+   protected void a(ehc $$0) {
+      super.a($$0);
+      big $$1 = $$0.a();
+      int $$2 = $$1 instanceof byj ? 3 : 0;
+      $$1.a(this.dL().b(this, this.v()), (float)$$2);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public boolean a(byo $$0) {
-      return this.q.a($$0);
-   }
-
-   public cfz l() {
-      return this.q.a(0);
-   }
-
-   public int m() {
-      return this.r.a(0);
+   protected void a(ehd $$0) {
+      super.a($$0);
+      if (!this.dK().B) {
+         this.dK().a(this, (byte)3);
+         this.ak();
+      }
    }
 }

@@ -1,26 +1,86 @@
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class fbf<T extends bfj> extends fcb {
-   public float c;
-   public boolean d;
-   public boolean e = true;
+public class fbf {
+   @Nullable
+   private clz<?> a;
+   private final List<fbf.a> b = Lists.newArrayList();
+   float c;
 
-   protected fbf() {
-      this(fkf::d);
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   protected fbf(Function<acq, fkf> $$0) {
-      super($$0);
+   public void a(clw $$0, int $$1, int $$2) {
+      this.b.add(new fbf.a($$0, $$1, $$2));
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+   public fbf.a a(int $$0) {
+      return this.b.get($$0);
    }
 
-   public void a(fbf<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   public int b() {
+      return this.b.size();
+   }
+
+   @Nullable
+   public clz<?> c() {
+      return this.a;
+   }
+
+   public void a(clz<?> $$0) {
+      this.a = $$0;
+   }
+
+   public void a(erx $$0, eqn $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!exv.p()) {
+         this.c += $$5;
+      }
+
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         fbf.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+         }
+
+         ciw $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(fno.F(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
+         }
+      }
+   }
+
+   public class a {
+      private final clw b;
+      private final int c;
+      private final int d;
+
+      public a(clw $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public ciw c() {
+         ciw[] $$0 = this.b.a();
+         return $$0.length == 0 ? ciw.b : $$0[aro.d(fbf.this.c / 30.0F) % $$0.length];
+      }
    }
 }

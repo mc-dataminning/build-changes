@@ -1,75 +1,122 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class evk extends eui {
-   @Nullable
-   public enl c;
-   public long k;
-   private evj l;
-   private epi m;
+public class evk implements evl {
+   private static final int a = 36;
+   private static final int b = 30;
+   private final evi c = new evi();
+   private final evi d = new evi();
+   private final evi e = new evi();
+   private final exv f;
+   private int g;
+   private int h;
 
-   public evk(euq $$0, enr $$1) {
-      super($$0, $$1, sw.c("controls.keybinds.title"));
+   public evk(exv $$0) {
+      this($$0, 36);
+   }
+
+   public evk(exv $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public evk(exv $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void b() {
-      this.l = new evj(this, this.f);
-      this.e(this.l);
-      this.m = this.d(epi.a(sw.c("controls.resetAll"), $$0 -> {
-         for (enl $$1 : this.b.X) {
-            $$1.b($$1.i());
-         }
-
-         this.l.d();
-      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
-      this.d(epi.a(sv.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
+   public void e(int $$0) {
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null) {
-         this.b.a(this.c, ehe.b.c.a($$2));
-         this.c = null;
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public void f(int $$0) {
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.c != null) {
-         if ($$0 == 256) {
-            this.b.a(this.c, ehe.bv);
-         } else {
-            this.b.a(this.c, ehe.a($$0, $$1));
-         }
-
-         this.c = null;
-         this.k = ac.b();
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int p() {
+      return 0;
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      boolean $$4 = false;
+   public int r() {
+      return 0;
+   }
 
-      for (enl $$5 : this.b.X) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
+   @Override
+   public int k() {
+      return this.f.g;
+   }
 
-      this.m.r = $$4;
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public int h() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<evm> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.b(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.f(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.h();
+      this.e.b(0, Math.min($$2, $$3));
+   }
+
+   public <T extends evm> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends evm> T a(T $$0, Consumer<evn> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends evm> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends evm> T b(T $$0, Consumer<evn> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends evm> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends evm> T c(T $$0, Consumer<evn> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

@@ -1,11 +1,97 @@
-public interface ape {
-   void a(sw var1);
+public class ape {
+   public static final apd<csk> a = a("mined", jc.f);
+   public static final apd<cir> b = a("crafted", jc.i);
+   public static final apd<cir> c = a("used", jc.i);
+   public static final apd<cir> d = a("broken", jc.i);
+   public static final apd<cir> e = a("picked_up", jc.i);
+   public static final apd<cir> f = a("dropped", jc.i);
+   public static final apd<bik<?>> g = a("killed", jc.h);
+   public static final apd<bik<?>> h = a("killed_by", jc.h);
+   public static final apd<aep> i = a("custom", jc.n);
+   public static final aep j = a("leave_game", apc.b);
+   public static final aep k = a("play_time", apc.e);
+   public static final aep l = a("total_world_time", apc.e);
+   public static final aep m = a("time_since_death", apc.e);
+   public static final aep n = a("time_since_rest", apc.e);
+   public static final aep o = a("sneak_time", apc.e);
+   public static final aep p = a("walk_one_cm", apc.d);
+   public static final aep q = a("crouch_one_cm", apc.d);
+   public static final aep r = a("sprint_one_cm", apc.d);
+   public static final aep s = a("walk_on_water_one_cm", apc.d);
+   public static final aep t = a("fall_one_cm", apc.d);
+   public static final aep u = a("climb_one_cm", apc.d);
+   public static final aep v = a("fly_one_cm", apc.d);
+   public static final aep w = a("walk_under_water_one_cm", apc.d);
+   public static final aep x = a("minecart_one_cm", apc.d);
+   public static final aep y = a("boat_one_cm", apc.d);
+   public static final aep z = a("pig_one_cm", apc.d);
+   public static final aep A = a("horse_one_cm", apc.d);
+   public static final aep B = a("aviate_one_cm", apc.d);
+   public static final aep C = a("swim_one_cm", apc.d);
+   public static final aep D = a("strider_one_cm", apc.d);
+   public static final aep E = a("jump", apc.b);
+   public static final aep F = a("drop", apc.b);
+   public static final aep G = a("damage_dealt", apc.c);
+   public static final aep H = a("damage_dealt_absorbed", apc.c);
+   public static final aep I = a("damage_dealt_resisted", apc.c);
+   public static final aep J = a("damage_taken", apc.c);
+   public static final aep K = a("damage_blocked_by_shield", apc.c);
+   public static final aep L = a("damage_absorbed", apc.c);
+   public static final aep M = a("damage_resisted", apc.c);
+   public static final aep N = a("deaths", apc.b);
+   public static final aep O = a("mob_kills", apc.b);
+   public static final aep P = a("animals_bred", apc.b);
+   public static final aep Q = a("player_kills", apc.b);
+   public static final aep R = a("fish_caught", apc.b);
+   public static final aep S = a("talked_to_villager", apc.b);
+   public static final aep T = a("traded_with_villager", apc.b);
+   public static final aep U = a("eat_cake_slice", apc.b);
+   public static final aep V = a("fill_cauldron", apc.b);
+   public static final aep W = a("use_cauldron", apc.b);
+   public static final aep X = a("clean_armor", apc.b);
+   public static final aep Y = a("clean_banner", apc.b);
+   public static final aep Z = a("clean_shulker_box", apc.b);
+   public static final aep aa = a("interact_with_brewingstand", apc.b);
+   public static final aep ab = a("interact_with_beacon", apc.b);
+   public static final aep ac = a("inspect_dropper", apc.b);
+   public static final aep ad = a("inspect_hopper", apc.b);
+   public static final aep ae = a("inspect_dispenser", apc.b);
+   public static final aep af = a("play_noteblock", apc.b);
+   public static final aep ag = a("tune_noteblock", apc.b);
+   public static final aep ah = a("pot_flower", apc.b);
+   public static final aep ai = a("trigger_trapped_chest", apc.b);
+   public static final aep aj = a("open_enderchest", apc.b);
+   public static final aep ak = a("enchant_item", apc.b);
+   public static final aep al = a("play_record", apc.b);
+   public static final aep am = a("interact_with_furnace", apc.b);
+   public static final aep an = a("interact_with_crafting_table", apc.b);
+   public static final aep ao = a("open_chest", apc.b);
+   public static final aep ap = a("sleep_in_bed", apc.b);
+   public static final aep aq = a("open_shulker_box", apc.b);
+   public static final aep ar = a("open_barrel", apc.b);
+   public static final aep as = a("interact_with_blast_furnace", apc.b);
+   public static final aep at = a("interact_with_smoker", apc.b);
+   public static final aep au = a("interact_with_lectern", apc.b);
+   public static final aep av = a("interact_with_campfire", apc.b);
+   public static final aep aw = a("interact_with_cartography_table", apc.b);
+   public static final aep ax = a("interact_with_loom", apc.b);
+   public static final aep ay = a("interact_with_stonecutter", apc.b);
+   public static final aep az = a("bell_ring", apc.b);
+   public static final aep aA = a("raid_trigger", apc.b);
+   public static final aep aB = a("raid_win", apc.b);
+   public static final aep aC = a("interact_with_anvil", apc.b);
+   public static final aep aD = a("interact_with_grindstone", apc.b);
+   public static final aep aE = a("target_hit", apc.b);
+   public static final aep aF = a("interact_with_smithing_table", apc.b);
 
-   void b(sw var1);
+   private static aep a(String $$0, apc $$1) {
+      aep $$2 = new aep($$0);
+      hs.a(jc.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
 
-   void c(sw var1);
-
-   void a(int var1);
-
-   void a();
+   private static <T> apd<T> a(String $$0, hs<T> $$1) {
+      return hs.a(jc.y, $$0, new apd<>($$1));
+   }
 }

@@ -1,94 +1,112 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public interface dze {
-   int c = 19133;
-   int d = 19132;
+public class dze {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final dzf d;
+   private final dzf e;
+   private final double f;
+   private final dze.a g;
 
-   cnf F();
-
-   void a(cnf var1);
-
-   boolean H();
-
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
+   @Deprecated
+   public static dze a(art $$0, dze.a $$1) {
+      return new dze($$0, $$1, false);
    }
 
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public static dze a(art $$0, int $$1, double... $$2) {
+      return b($$0, new dze.a($$1, new DoubleArrayList($$2)));
+   }
+
+   public static dze b(art $$0, dze.a $$1) {
+      return new dze($$0, $$1, true);
+   }
+
+   private dze(art $$0, dze.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = dzf.b($$0, $$3, $$4);
+         this.e = dzf.b($$0, $$3, $$4);
+      } else {
+         this.d = dzf.a($$0, $$3, $$4);
+         this.e = dzf.a($$0, $$3, $$4);
       }
+
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   @Nullable
-   qr G();
+   public double a() {
+      return this.f;
+   }
 
-   void a(@Nullable qr var1);
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
 
-   dzd K();
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
 
-   cmq L();
+   public dze.a b() {
+      return this.g;
+   }
 
-   qr a(hs var1, @Nullable qr var2);
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
 
-   boolean n();
+   public static record a(int c, DoubleList d) {
+      public static final Codec<dze.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(dze.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(dze.a::b))
+               .apply($$0, dze.a::new)
+      );
+      public static final Codec<hf<dze.a>> b = ael.a(jd.ax, a);
 
-   int z();
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
+      }
 
-   String g();
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
 
-   cmj m();
+      public int a() {
+         return this.c;
+      }
 
-   void a(cmj var1);
-
-   boolean o();
-
-   bdu s();
-
-   void a(bdu var1);
-
-   boolean t();
-
-   void d(boolean var1);
-
-   cmi q();
-
-   @Nullable
-   qr y();
-
-   dfn.a E();
-
-   void a(dfn.a var1);
-
-   dii A();
-
-   boolean B();
-
-   boolean C();
-
-   Lifecycle D();
-
-   default caw M() {
-      return this.F().b();
+      public DoubleList b() {
+         return this.d;
+      }
    }
 }

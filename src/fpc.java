@@ -1,57 +1,136 @@
+import java.util.List;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class fpc extends fox<bfp> {
-   private static final acq a = new acq("textures/entity/experience_orb.png");
-   private static final fkf f = fkf.f(a);
+public class fpc implements fpg<dcf> {
+   public static final aep a = new aep("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
 
-   public fpc(foy.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+   public fpc(fph.a $$0) {
    }
 
-   protected int a(bfp $$0, gu $$1) {
-      return apa.a(super.a($$0, $$1) + 7, 0, 15);
+   public void a(dcf $$0, float $$1, elh $$2, fng $$3, int $$4, int $$5) {
+      long $$6 = $$0.k().V();
+      List<dcf.a> $$7 = $$0.c();
+      int $$8 = 0;
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dcf.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
+      }
    }
 
-   public void a(bfp $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.k();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ag + $$2) / 2.0F;
-      int $$16 = (int)((apa.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((apa.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      ein $$20 = $$4.getBuffer(f);
-      eij.a $$21 = $$3.c();
-      Matrix4f $$22 = $$21.a();
-      Matrix3f $$23 = $$21.b();
-      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static void a(elh $$0, fng $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   private static void a(ein $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
-      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(fum.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public static void a(elh $$0, fng $$1, aep $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = aro.h($$13 * 0.2F - (float)aro.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(fno.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(fno.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
    }
 
-   public acq a(bfp $$0) {
-      return a;
+   private static void a(
+      elh $$0,
+      ell $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      elh.a $$20 = $$0.c();
+      Matrix4f $$21 = $$20.a();
+      Matrix3f $$22 = $$20.b();
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      Matrix4f $$0,
+      Matrix3f $$1,
+      ell $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$10, $$14, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$9, $$10, $$14, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$11, $$12, $$13, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$11, $$12, $$13, $$15);
+   }
+
+   private static void a(Matrix4f $$0, Matrix3f $$1, ell $$2, float $$3, float $$4, float $$5, float $$6, int $$7, float $$8, float $$9, float $$10, float $$11) {
+      $$2.a($$0, $$8, (float)$$7, $$9).a($$3, $$4, $$5, $$6).a($$10, $$11).c(fxx.d).b(15728880).a($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dcf $$0) {
+      return true;
+   }
+
+   @Override
+   public int aH_() {
+      return 256;
+   }
+
+   public boolean a(dcf $$0, ehf $$1) {
+      return ehf.b($$0.p()).d(1.0, 0.0, 1.0).a((hp)$$1.d(1.0, 0.0, 1.0), (double)this.aH_());
    }
 }

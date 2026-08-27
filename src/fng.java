@@ -1,58 +1,94 @@
-import com.google.common.collect.Maps;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class fng implements fnd.a {
-   private static final int a = 160;
-   private final enn b;
-   private final Map<Integer, List<fng.a>> c = Maps.newHashMap();
-
-   @Override
-   public void a() {
-      this.c.clear();
+public interface fng {
+   static fng.a a(elc $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public void a(int $$0, List<fng.a> $$1) {
-      this.c.put($$0, $$1);
+   static fng.a a(Map<fno, elc> $$0, elc $$1) {
+      return new fng.a($$1, $$0);
    }
 
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
+   ell getBuffer(fno var1);
 
-   public fng(enn $$0) {
-      this.b = $$0;
-   }
+   public static class a implements fng {
+      protected final elc a;
+      protected final Map<fno, elc> b;
+      protected Optional<fno> c = Optional.empty();
+      protected final Set<elc> d = Sets.newHashSet();
 
-   @Override
-   public void a(eij $$0, fjx $$1, double $$2, double $$3, double $$4) {
-      emz $$5 = this.b.j.m();
-      gu $$6 = gu.a($$5.b().c, 0.0, $$5.b().e);
-      this.c.forEach(($$3x, $$4x) -> {
-         for (int $$5x = 0; $$5x < $$4x.size(); $$5x++) {
-            fng.a $$6x = (fng.a)$$4x.get($$5x);
-            if ($$6.a($$6x.a, 160.0)) {
-               double $$7 = (double)$$6x.a.u() + 0.5;
-               double $$8 = (double)$$6x.a.v() + 2.0 + (double)$$5x * 0.25;
-               double $$9 = (double)$$6x.a.w() + 0.5;
-               int $$10 = $$6x.d ? -16711936 : -3355444;
-               fnd.a($$0, $$1, $$6x.c, $$7, $$8, $$9, $$10);
-            }
-         }
-      });
-   }
-
-   public static class a {
-      public final gu a;
-      public final int b;
-      public final String c;
-      public final boolean d;
-
-      public a(gu $$0, int $$1, String $$2, boolean $$3) {
+      protected a(elc $$0, Map<fno, elc> $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      }
+
+      @Override
+      public ell getBuffer(fno $$0) {
+         Optional<fno> $$1 = $$0.O();
+         elc $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
+            if (this.c.isPresent()) {
+               fno $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.J(), $$0.I());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private elc b(fno $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fno $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            ell $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (fno $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(fno $$0) {
+         elc $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.O());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

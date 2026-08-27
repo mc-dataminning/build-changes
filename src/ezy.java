@@ -1,96 +1,305 @@
-import com.mojang.authlib.properties.PropertyMap;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class ezy {
-   public final ezy.d a;
-   public final eha b;
-   public final ezy.a c;
-   public final ezy.b d;
-   public final ezy.c e;
+public class ezy extends eyt<cfj> {
+   private static final aep x = new aep("container/villager/out_of_stock");
+   private static final aep y = new aep("container/villager/experience_bar_background");
+   private static final aep z = new aep("container/villager/experience_bar_current");
+   private static final aep A = new aep("container/villager/experience_bar_result");
+   private static final aep B = new aep("container/villager/scroller");
+   private static final aep C = new aep("container/villager/scroller_disabled");
+   private static final aep D = new aep("container/villager/trade_arrow_out_of_stock");
+   private static final aep E = new aep("container/villager/trade_arrow");
+   private static final aep F = new aep("container/villager/discount_strikethrough");
+   private static final aep G = new aep("textures/gui/container/villager.png");
+   private static final int H = 512;
+   private static final int I = 256;
+   private static final int J = 99;
+   private static final int K = 136;
+   private static final int L = 16;
+   private static final int M = 5;
+   private static final int N = 35;
+   private static final int O = 68;
+   private static final int P = 6;
+   private static final int Q = 7;
+   private static final int R = 5;
+   private static final int S = 20;
+   private static final int T = 88;
+   private static final int U = 27;
+   private static final int V = 6;
+   private static final int W = 139;
+   private static final int X = 18;
+   private static final int Y = 94;
+   private static final te Z = te.c("merchant.trades");
+   private static final te aa = te.b(" - ");
+   private static final te ab = te.c("merchant.deprecated");
+   private int ac;
+   private final ezy.a[] ad = new ezy.a[7];
+   int ae;
+   private boolean af;
 
-   public ezy(ezy.d $$0, eha $$1, ezy.a $$2, ezy.b $$3, ezy.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public ezy(cfj $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2);
+      this.c = 276;
+      this.n = 107;
    }
 
-   public static class a {
-      public final File a;
-      public final File b;
-      public final File c;
-      @Nullable
-      public final String d;
+   private void D() {
+      this.p.e(this.ac);
+      this.p.h(this.ac);
+      this.f.I().b(new ace(this.ac));
+   }
 
-      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   @Override
+   protected void aE_() {
+      super.aE_();
+      int $$0 = (this.g - this.c) / 2;
+      int $$1 = (this.h - this.k) / 2;
+      int $$2 = $$1 + 16 + 2;
 
-      public Path a() {
-         return this.d == null ? this.c.toPath() : fvq.a(this.c.toPath(), this.d);
+      for (int $$3 = 0; $$3 < 7; $$3++) {
+         this.ad[$$3] = this.d(new ezy.a($$0 + 5, $$2, $$3, $$0x -> {
+            if ($$0x instanceof ezy.a) {
+               this.ac = ((ezy.a)$$0x).a() + this.ae;
+               this.D();
+            }
+         }));
+         $$2 += 20;
       }
    }
 
-   public static class b {
-      public final boolean a;
-      public final String b;
-      public final String c;
-      public final boolean d;
-      public final boolean e;
+   @Override
+   protected void b(erx $$0, int $$1, int $$2) {
+      int $$3 = this.p.n();
+      if ($$3 > 0 && $$3 <= 5 && this.p.q()) {
+         te $$4 = this.e.e().b(aa).b(te.c("merchant.level." + $$3));
+         int $$5 = this.i.a($$4);
+         int $$6 = 49 + this.c / 2 - $$5 / 2;
+         $$0.a(this.i, $$4, $$6, 6, 4210752, false);
+      } else {
+         $$0.a(this.i, this.e, 49 + this.c / 2 - this.i.a(this.e) / 2, 6, 4210752, false);
+      }
 
-      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+      $$0.a(this.i, this.q, this.n, this.o, 4210752, false);
+      int $$7 = this.i.a(Z);
+      $$0.a(this.i, Z, 5 - $$7 / 2 + 48, 6, 4210752, false);
+   }
+
+   @Override
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(G, $$4, $$5, 0, 0.0F, 0.0F, this.c, this.k, 512, 256);
+      coi $$6 = this.p.p();
+      if (!$$6.isEmpty()) {
+         int $$7 = this.ac;
+         if ($$7 < 0 || $$7 >= $$6.size()) {
+            return;
+         }
+
+         coh $$8 = $$6.get($$7);
+         if ($$8.p()) {
+            $$0.a(x, this.t + 83 + 99, this.u + 35, 0, 28, 21);
+         }
       }
    }
 
-   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
-      public boolean a() {
-         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+   private void a(erx $$0, int $$1, int $$2, coh $$3) {
+      int $$4 = this.p.n();
+      int $$5 = this.p.l();
+      if ($$4 < 5) {
+         $$0.a(y, $$1 + 136, $$2 + 16, 0, 102, 5);
+         int $$6 = caz.b($$4);
+         if ($$5 >= $$6 && caz.d($$4)) {
+            int $$7 = 102;
+            float $$8 = 102.0F / (float)(caz.c($$4) - $$6);
+            int $$9 = Math.min(aro.d($$8 * (float)($$5 - $$6)), 102);
+            $$0.a(z, 102, 5, 0, 0, $$1 + 136, $$2 + 16, 0, $$9, 5);
+            int $$10 = this.p.m();
+            if ($$10 > 0) {
+               int $$11 = Math.min(aro.d((float)$$10 * $$8), 102 - $$9);
+               $$0.a(A, 102, 5, $$9, 0, $$1 + 136 + $$9, $$2 + 16, 0, $$11, 5);
+            }
+         }
+      }
+   }
+
+   private void a(erx $$0, int $$1, int $$2, coi $$3) {
+      int $$4 = $$3.size() + 1 - 7;
+      if ($$4 > 1) {
+         int $$5 = 139 - (27 + ($$4 - 1) * 139 / $$4);
+         int $$6 = 1 + $$5 / $$4 + 139 / $$4;
+         int $$7 = 113;
+         int $$8 = Math.min(113, this.ae * $$6);
+         if (this.ae == $$4 - 1) {
+            $$8 = 113;
+         }
+
+         $$0.a(B, $$1 + 94, $$2 + 18 + $$8, 0, 6, 27);
+      } else {
+         $$0.a(C, $$1 + 94, $$2 + 18, 0, 6, 27);
+      }
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      coi $$4 = this.p.p();
+      if (!$$4.isEmpty()) {
+         int $$5 = (this.g - this.c) / 2;
+         int $$6 = (this.h - this.k) / 2;
+         int $$7 = $$6 + 16 + 1;
+         int $$8 = $$5 + 5 + 5;
+         this.a($$0, $$5, $$6, $$4);
+         int $$9 = 0;
+
+         for (coh $$10 : $$4) {
+            if (!this.a($$4.size()) || $$9 >= this.ae && $$9 < 7 + this.ae) {
+               ciw $$11 = $$10.a();
+               ciw $$12 = $$10.b();
+               ciw $$13 = $$10.c();
+               ciw $$14 = $$10.d();
+               $$0.c().a();
+               $$0.c().a(0.0F, 0.0F, 100.0F);
+               int $$15 = $$7 + 2;
+               this.a($$0, $$12, $$11, $$8, $$15);
+               if (!$$13.b()) {
+                  $$0.b($$13, $$5 + 5 + 35, $$15);
+                  $$0.a(this.i, $$13, $$5 + 5 + 35, $$15);
+               }
+
+               this.a($$0, $$10, $$5, $$15);
+               $$0.b($$14, $$5 + 5 + 68, $$15);
+               $$0.a(this.i, $$14, $$5 + 5 + 68, $$15);
+               $$0.c().b();
+               $$7 += 20;
+               $$9++;
+            } else {
+               $$9++;
+            }
+         }
+
+         int $$16 = this.ac;
+         coh $$17 = $$4.get($$16);
+         if (this.p.q()) {
+            this.a($$0, $$5, $$6, $$17);
+         }
+
+         if ($$17.p() && this.a(186, 35, 22, 21, (double)$$1, (double)$$2) && this.p.o()) {
+            $$0.a(this.i, ab, $$1, $$2);
+         }
+
+         for (ezy.a $$18 : this.ad) {
+            if ($$18.n()) {
+               $$18.a($$0, $$1, $$2);
+            }
+
+            $$18.j = $$18.a < this.p.p().size();
+         }
+
+         RenderSystem.enableDepthTest();
       }
 
-      @Nullable
-      public String b() {
+      this.a($$0, $$1, $$2);
+   }
+
+   private void a(erx $$0, coh $$1, int $$2, int $$3) {
+      RenderSystem.enableBlend();
+      if ($$1.p()) {
+         $$0.a(D, $$2 + 5 + 35 + 20, $$3 + 3, 0, 10, 9);
+      } else {
+         $$0.a(E, $$2 + 5 + 35 + 20, $$3 + 3, 0, 10, 9);
+      }
+   }
+
+   private void a(erx $$0, ciw $$1, ciw $$2, int $$3, int $$4) {
+      $$0.b($$1, $$3, $$4);
+      if ($$2.L() == $$1.L()) {
+         $$0.a(this.i, $$1, $$3, $$4);
+      } else {
+         $$0.a(this.i, $$2, $$3, $$4, $$2.L() == 1 ? "1" : null);
+         $$0.a(this.i, $$1, $$3 + 14, $$4, $$1.L() == 1 ? "1" : null);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 300.0F);
+         $$0.a(F, $$3 + 7, $$4 + 12, 0, 9, 2);
+         $$0.c().b();
+      }
+   }
+
+   private boolean a(int $$0) {
+      return $$0 > 7;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      int $$4 = this.p.p().size();
+      if (this.a($$4)) {
+         int $$5 = $$4 - 7;
+         this.ae = aro.a((int)((double)this.ae - $$3), 0, $$5);
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      int $$5 = this.p.p().size();
+      if (this.af) {
+         int $$6 = this.u + 18;
+         int $$7 = $$6 + 139;
+         int $$8 = $$5 - 7;
+         float $$9 = ((float)$$1 - (float)$$6 - 13.5F) / ((float)($$7 - $$6) - 27.0F);
+         $$9 = $$9 * (float)$$8 + 0.5F;
+         this.ae = aro.a((int)$$9, 0, $$8);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.af = false;
+      int $$3 = (this.g - this.c) / 2;
+      int $$4 = (this.h - this.k) / 2;
+      if (this.a(this.p.p().size())
+         && $$0 > (double)($$3 + 94)
+         && $$0 < (double)($$3 + 94 + 6)
+         && $$1 > (double)($$4 + 18)
+         && $$1 <= (double)($$4 + 18 + 139 + 1)) {
+         this.af = true;
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   class a extends esi {
+      final int a;
+
+      public a(int $$0, int $$1, int $$2, esi.c $$3) {
+         super($$0, $$1, 88, 20, td.a, $$3, o);
+         this.a = $$2;
+         this.j = false;
+      }
+
+      public int a() {
          return this.a;
       }
 
-      @Nullable
-      public String c() {
-         return this.b;
-      }
-
-      @Nullable
-      public String d() {
-         return this.c;
-      }
-
-      @Nullable
-      public String e() {
-         return this.d;
-      }
-   }
-
-   public static class d {
-      public final eoc a;
-      public final PropertyMap b;
-      public final PropertyMap c;
-      public final Proxy d;
-
-      public d(eoc $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      public void a(erx $$0, int $$1, int $$2) {
+         if (this.h && ezy.this.p.p().size() > this.a + ezy.this.ae) {
+            if ($$1 < this.p() + 20) {
+               ciw $$3 = ezy.this.p.p().get(this.a + ezy.this.ae).b();
+               $$0.b(ezy.this.i, $$3, $$1, $$2);
+            } else if ($$1 < this.p() + 50 && $$1 > this.p() + 30) {
+               ciw $$4 = ezy.this.p.p().get(this.a + ezy.this.ae).c();
+               if (!$$4.b()) {
+                  $$0.b(ezy.this.i, $$4, $$1, $$2);
+               }
+            } else if ($$1 > this.p() + 65) {
+               ciw $$5 = ezy.this.p.p().get(this.a + ezy.this.ae).d();
+               $$0.b(ezy.this.i, $$5, $$1, $$2);
+            }
+         }
       }
    }
 }

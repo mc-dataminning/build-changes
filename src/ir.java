@@ -1,48 +1,51 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
+import java.util.Locale;
+import org.joml.Vector3f;
 
-public class ir implements it {
-   public static final it.a<ir> a = new it.a<ir>() {
-      public ir a(iu<ir> $$0, StringReader $$1) throws CommandSyntaxException {
-         $$1.expect(' ');
-         fw.a $$2 = fw.a(jb.i.p(), $$1);
-         cfz $$3 = new fv($$2.a(), $$2.b()).a(1, false);
-         return new ir($$0, $$3);
-      }
+public abstract class ir implements iu {
+   public static final float e = 0.01F;
+   public static final float f = 4.0F;
+   protected final Vector3f g;
+   protected final float h;
 
-      public ir a(iu<ir> $$0, sf $$1) {
-         return new ir($$0, $$1.r());
-      }
-   };
-   private final iu<ir> b;
-   private final cfz c;
-
-   public static Codec<ir> a(iu<ir> $$0) {
-      return cfz.a.xmap($$1 -> new ir($$0, $$1), $$0x -> $$0x.c);
+   public ir(Vector3f $$0, float $$1) {
+      this.g = $$0;
+      this.h = aro.a($$1, 0.01F, 4.0F);
    }
 
-   public ir(iu<ir> $$0, cfz $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
+   }
+
+   public static Vector3f b(sh $$0) {
+      return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.c);
+   public void a(sh $$0) {
+      $$0.a(this.g.x());
+      $$0.a(this.g.y());
+      $$0.a(this.g.z());
+      $$0.a(this.h);
    }
 
    @Override
    public String a() {
-      return jb.k.b(this.b()) + " " + new fv(this.c.e(), this.c.v()).b();
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", jc.k.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h);
    }
 
-   @Override
-   public iu<ir> b() {
-      return this.b;
+   public Vector3f e() {
+      return this.g;
    }
 
-   public cfz c() {
-      return this.c;
+   public float f() {
+      return this.h;
    }
 }

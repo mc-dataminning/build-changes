@@ -1,7 +1,11 @@
-public interface efv<T> {
-   void a(eft<T> var1);
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   boolean a(gu var1, T var2);
+public interface efv {
+   @Nullable
+   rl a(ech var1);
 
-   int a();
+   Set<eeq<?>> b();
+
+   efu a();
 }

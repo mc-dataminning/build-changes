@@ -1,3 +1,11 @@
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+
 public interface bdf {
-   float a(apf var1);
+   long a();
+
+   long b();
+
+   long c();
+
+   Object2LongMap<String> d();
 }

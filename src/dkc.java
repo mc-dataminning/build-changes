@@ -1,57 +1,111 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Stream;
 
-public class dkc extends dkd {
-   public dkc(Codec<dmz> $$0) {
-      super($$0);
+public class dkc extends dgv {
+   public static final Codec<dkc> c = RecordCodecBuilder.create($$0 -> $$0.group(dta.a.fieldOf("settings").forGetter(dkc::g)).apply($$0, $$0.stable(dkc::new)));
+   private final dta d;
+
+   public dkc(dta $$0) {
+      super(new cqt($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
    @Override
-   protected boolean a(cmn $$0, apf $$1, gu $$2, dcb $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         ha $$4 = ha.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ha> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   public dgw a(hh<dvd> $$0, dkv $$1, long $$2) {
+      Stream<hf<dvd>> $$3 = this.d.c().map(hj::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dgw.a($$1, $$2, this.b, $$3);
+   }
 
-         for (ha $$8 : $$6.subList(0, $$5)) {
-            gu.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ha $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ha.b);
-               ha[] $$13 = new ha[]{$$8, ha.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+   @Override
+   protected Codec<? extends dgv> a() {
+      return c;
+   }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+   public dta g() {
+      return this.d;
+   }
 
-            $$9.c($$11.g());
-            $$9.c(ha.b);
+   @Override
+   public void a(akp $$0, cqc $$1, dkv $$2, dgu $$3) {
+   }
 
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
+   @Override
+   public int a(cpm $$0) {
+      return $$0.C_() + Math.min($$0.D_(), this.d.f().size());
+   }
 
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ha.b);
+   @Override
+   public CompletableFuture<dgu> a(Executor $$0, dlj $$1, dkv $$2, cqc $$3, dgu $$4) {
+      List<dey> $$5 = this.d.f();
+      gv.a $$6 = new gv.a();
+      dkh $$7 = $$4.a(dkh.a.c);
+      dkh $$8 = $$4.a(dkh.a.a);
+
+      for (int $$9 = 0; $$9 < Math.min($$4.D_(), $$5.size()); $$9++) {
+         dey $$10 = $$5.get($$9);
+         if ($$10 != null) {
+            int $$11 = $$4.C_() + $$9;
+
+            for (int $$12 = 0; $$12 < 16; $$12++) {
+               for (int $$13 = 0; $$13 < 16; $$13++) {
+                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
+                  $$7.a($$12, $$11, $$13, $$10);
+                  $$8.a($$12, $$11, $$13, $$10);
                }
             }
          }
-
-         return true;
       }
+
+      return CompletableFuture.completedFuture($$4);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, dkh.a $$2, cpm $$3, dkv $$4) {
+      List<dey> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size(), $$3.aj()) - 1; $$6 >= 0; $$6--) {
+         dey $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.C_() + $$6 + 1;
+         }
+      }
+
+      return $$3.C_();
+   }
+
+   @Override
+   public cpw a(int $$0, int $$1, cpm $$2, dkv $$3) {
+      return new cpw($$2.C_(), this.d.f().stream().limit((long)$$2.D_()).map($$0x -> $$0x == null ? csl.a.n() : $$0x).toArray(dey[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, dkv $$1, gv $$2) {
+   }
+
+   @Override
+   public void a(akp $$0, long $$1, dkv $$2, cqk $$3, cqc $$4, dgu $$5, dkd.a $$6) {
+   }
+
+   @Override
+   public void a(akp $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return -63;
    }
 }

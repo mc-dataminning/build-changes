@@ -1,12 +1,18 @@
-public class dyx extends RuntimeException {
-   private final sw a;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   public dyx(sw $$0) {
-      super($$0.getString());
-      this.a = $$0;
+public class dyx implements dyy {
+   public static final dyx a = new dyx();
+   public static final Codec<dyx> b = Codec.unit(a);
+
+   @Nullable
+   @Override
+   public qs a(art $$0, @Nullable qs $$1) {
+      return $$1;
    }
 
-   public sw a() {
-      return this.a;
+   @Override
+   public dyz<?> a() {
+      return dyz.b;
    }
 }

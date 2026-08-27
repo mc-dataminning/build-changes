@@ -1,14 +1,64 @@
-public class edg {
-   public static final ede a = a("constant", new edd.b());
-   public static final ede b = a("uniform", new edi.a());
-   public static final ede c = a("binomial", new edc.a());
-   public static final ede d = a("score", new edh.a());
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   private static ede a(String $$0, dzt<? extends edf> $$1) {
-      return hr.a(jb.J, new acq($$0), new ede($$1));
+public class edg extends ecv {
+   edg(edc[] $$0, efh[] $$1) {
+      super($$0, $$1);
    }
 
-   public static Object a() {
-      return dzi.<edf, ede>a(jb.J, "provider", "type", edf::b).a(a, new edd.a()).a(b).a();
+   @Override
+   public edd a() {
+      return eda.g;
+   }
+
+   @Override
+   protected ecu a(ecu[] $$0) {
+      switch ($$0.length) {
+         case 0:
+            return b;
+         case 1:
+            return $$0[0];
+         case 2:
+            return $$0[0].and($$0[1]);
+         default:
+            return ($$1, $$2) -> {
+               for (ecu $$3 : $$0) {
+                  if (!$$3.expand($$1, $$2)) {
+                     return false;
+                  }
+               }
+
+               return true;
+            };
+      }
+   }
+
+   public static edg.a a(edc.a<?>... $$0) {
+      return new edg.a($$0);
+   }
+
+   public static class a extends edc.a<edg.a> {
+      private final List<edc> a = Lists.newArrayList();
+
+      public a(edc.a<?>... $$0) {
+         for (edc.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected edg.a a() {
+         return this;
+      }
+
+      @Override
+      public edg.a c(edc.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public edc b() {
+         return new edg(this.a.toArray(new edc[0]), this.f());
+      }
    }
 }

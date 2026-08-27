@@ -1,37 +1,72 @@
-public class uv implements uo<ur> {
-   public static final int a = 0;
-   public static final int b = 2;
-   public static final int c = 3;
-   public static final int d = 4;
-   public static final int e = 5;
-   private final int f;
-   private final int g;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public uv(bfj $$0, int $$1) {
-      this.f = $$0.af();
-      this.g = $$1;
+public interface uv {
+   int a = 4096;
+   uv b = new uv() {
+      @Override
+      public void a(uw<?> $$0, Consumer<uw<?>> $$1) {
+         $$1.accept($$0);
+      }
+
+      @Nullable
+      @Override
+      public uv.a a(uw<?> $$0) {
+         return null;
+      }
+   };
+
+   static <T extends sn, P extends uu<T>> uv a(final Class<P> $$0, final Function<Iterable<uw<T>>, P> $$1, final ut<T> $$2) {
+      return new uv() {
+         @Override
+         public void a(uw<?> $$0x, Consumer<uw<?>> $$1x) {
+            if ($$0.getClass() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.a().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public uv.a a(uw<?> $$0x) {
+            return $$0 == $$2 ? new uv.a() {
+               private final List<uw<T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public uw<?> a(uw<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((uw<T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   public uv(sf $$0) {
-      this.f = $$0.m();
-      this.g = $$0.readUnsignedByte();
+   void a(uw<?> var1, Consumer<uw<?>> var2);
+
+   @Nullable
+   uv.a a(uw<?> var1);
+
+   public interface a {
+      @Nullable
+      uw<?> a(uw<?> var1);
    }
 
-   @Override
-   public void a(sf $$0) {
-      $$0.d(this.f);
-      $$0.writeByte(this.g);
-   }
-
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.f;
-   }
-
-   public int c() {
-      return this.g;
+   public interface b {
+      uv c();
    }
 }

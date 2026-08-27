@@ -1,49 +1,45 @@
-public class bzl extends byu {
-   private int f = 200;
-
-   public bzl(bfn<? extends bzl> $$0, cmm $$1) {
+public class bzl extends byi {
+   public bzl(bik<? extends bzl> $$0, cpk $$1) {
       super($$0, $$1);
    }
 
-   public bzl(cmm $$0, bfz $$1) {
-      super(bfn.aR, $$1, $$0);
-   }
+   public static boolean a(bik<bzl> $$0, cpz $$1, bja $$2, gv $$3, art $$4) {
+      gv $$5 = $$3;
 
-   public bzl(cmm $$0, double $$1, double $$2, double $$3) {
-      super(bfn.aR, $$1, $$2, $$3, $$0);
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(csl.qC));
+
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bja.c || $$1.g($$5.d()));
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dI().B && !this.b) {
-         this.dI().a(iv.N, this.dn(), this.dp(), this.dt(), 0.0, 0.0, 0.0);
+   protected aot r() {
+      return aou.xu;
+   }
+
+   @Override
+   protected aot d(bhe $$0) {
+      return aou.xw;
+   }
+
+   @Override
+   protected aot h_() {
+      return aou.xv;
+   }
+
+   @Override
+   aot q() {
+      return aou.xx;
+   }
+
+   @Override
+   protected cbr b(ciw $$0, float $$1) {
+      cbr $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cbt) {
+         ((cbt)$$2).a(new bht(bhv.b, 600));
       }
-   }
 
-   @Override
-   protected cfz p() {
-      return new cfz(cgc.uv);
-   }
-
-   @Override
-   protected void a(bfz $$0) {
-      super.a($$0);
-      bfa $$1 = new bfa(bfc.x, this.f, 0);
-      $$0.b($$1, this.A());
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
-      }
-   }
-
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
+      return $$2;
    }
 }

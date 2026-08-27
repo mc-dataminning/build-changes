@@ -1,16 +1,32 @@
-import com.mojang.serialization.Codec;
+import java.nio.file.Path;
+import java.util.List;
 
-public interface bdd<P extends bdc> {
-   bdd<bcz> a = a("constant", bcz.b);
-   bdd<bdi> b = a("uniform", bdi.a);
-   bdd<bcu> c = a("biased_to_bottom", bcu.a);
-   bdd<bcv> d = a("clamped", bcv.a);
-   bdd<bdj> e = a("weighted_list", bdj.a);
-   bdd<bcx> f = a("clamped_normal", bcx.a);
+public interface bdd {
+   char d = '\u001e';
 
-   Codec<P> codec();
+   List<bdg> a(String var1);
 
-   static <P extends bdc> bdd<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.N, $$0, () -> $$1);
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
+   }
+
+   default int f() {
+      return this.d() - this.b();
+   }
+
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

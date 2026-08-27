@@ -1,141 +1,192 @@
-public class cao extends caf {
-   private static final aby<Boolean> e = acb.a(cao.class, aca.k);
-   private int f;
-   public double c;
-   public double d;
-   private static final ciz g = ciz.a(cgc.nI, cgc.nJ);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public cao(bfn<? extends cao> $$0, cmm $$1) {
-      super($$0, $$1);
+public class cao {
+   @VisibleForTesting
+   protected static final int a = 2;
+   @VisibleForTesting
+   protected static final int b = 150;
+   private static final int f = 1;
+   private int g = aro.b(art.a(), 0, 2);
+   int h;
+   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hz.a.fieldOf("uuid").forGetter(Pair::getFirst), aqw.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+   );
+   private final Predicate<big> j;
+   @VisibleForTesting
+   protected final ArrayList<big> c;
+   private final cao.a k;
+   @VisibleForTesting
+   protected final Object2IntMap<big> d;
+   @VisibleForTesting
+   protected final Object2IntMap<UUID> e;
+
+   public static Codec<cao> a(Predicate<big> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(cao::b)).apply($$1, $$1x -> new cao($$0, $$1x))
+      );
    }
 
-   public cao(cmm $$0, double $$1, double $$2, double $$3) {
-      super(bfn.P, $$0, $$1, $$2, $$3);
+   public cao(Predicate<big> $$0, List<Pair<UUID, Integer>> $$1) {
+      this.j = $$0;
+      this.c = new ArrayList<>();
+      this.k = new cao.a(this);
+      this.d = new Object2IntOpenHashMap();
+      this.e = new Object2IntOpenHashMap($$1.size());
+      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   @Override
-   public caf.a t() {
-      return caf.a.c;
+   private List<Pair<UUID, Integer>> b() {
+      return Streams.concat(
+            new Stream[]{
+               this.c.stream().map($$0 -> Pair.of($$0.cv(), this.d.getInt($$0))),
+               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
+            }
+         )
+         .collect(Collectors.toList());
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.am.a(e, false);
-   }
+   public void a(aki $$0, Predicate<big> $$1) {
+      this.g--;
+      if (this.g <= 0) {
+         this.a($$0);
+         this.g = 2;
+      }
 
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dI().r_()) {
-         if (this.f > 0) {
-            this.f--;
+      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
+         int $$4 = $$3.getIntValue();
+         if ($$4 <= 1) {
+            $$2.remove();
+         } else {
+            $$3.setValue($$4 - 1);
          }
+      }
 
-         if (this.f <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
+      ObjectIterator<Entry<big>> $$5 = this.d.object2IntEntrySet().iterator();
+
+      while ($$5.hasNext()) {
+         Entry<big> $$6 = (Entry<big>)$$5.next();
+         int $$7 = $$6.getIntValue();
+         big $$8 = (big)$$6.getKey();
+         big.c $$9 = $$8.dG();
+         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
+            $$6.setValue($$7 - 1);
+         } else {
+            this.c.remove($$8);
+            $$5.remove();
+            if ($$7 > 1 && $$9 != null) {
+               switch ($$9) {
+                  case e:
+                  case c:
+                  case d:
+                     this.e.put($$8.cv(), $$7 - 1);
+               }
+            }
          }
-
-         this.p(this.f > 0);
       }
 
-      if (this.A() && this.af.a(4) == 0) {
-         this.dI().a(iv.S, this.dn(), this.dp() + 0.8, this.dt(), 0.0, 0.0, 0.0);
-      }
+      this.c();
    }
 
-   @Override
-   protected double k() {
-      return (this.aV() ? 3.0 : 4.0) / 20.0;
-   }
-
-   @Override
-   protected cfu j() {
-      return cgc.nc;
-   }
-
-   @Override
-   protected void c(gu $$0, dcb $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      eei $$4 = this.dl();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
+   private void c() {
+      this.h = 0;
+      this.c.sort(this.k);
+      if (this.c.size() == 1) {
+         this.h = this.d.getInt(this.c.get(0));
       }
    }
 
-   @Override
-   protected void p() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         eei $$1 = this.dl().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.aV()) {
-            $$1 = $$1.a(0.1);
+   private void a(aki $$0) {
+      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
+
+      while ($$1.hasNext()) {
+         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
+         int $$3 = $$2.getIntValue();
+         big $$4 = $$0.a((UUID)$$2.getKey());
+         if ($$4 != null) {
+            this.d.put($$4, $$3);
+            this.c.add($$4);
+            $$1.remove();
          }
-
-         this.f($$1);
-      } else {
-         this.f(this.dl().d(0.98, 0.0, 0.98));
       }
-
-      super.p();
    }
 
-   @Override
-   public bdx a(byo $$0, bdw $$1) {
-      cfz $$2 = $$0.b($$1);
-      if (g.a($$2) && this.f + 3600 <= 32000) {
-         if (!$$0.fO().d) {
-            $$2.h(1);
+   public int a(big $$0, int $$1) {
+      boolean $$2 = !this.d.containsKey($$0);
+      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
+      if ($$2) {
+         int $$4 = this.e.removeInt($$0.cv());
+         $$3 += $$4;
+         this.d.put($$0, $$3);
+         this.c.add($$0);
+      }
+
+      this.c();
+      return $$3;
+   }
+
+   public void a(big $$0) {
+      this.d.removeInt($$0);
+      this.c.remove($$0);
+      this.c();
+   }
+
+   @Nullable
+   private big d() {
+      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   }
+
+   public int b(@Nullable big $$0) {
+      return $$0 == null ? this.h : this.d.getInt($$0);
+   }
+
+   public Optional<biw> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof biw).map($$0 -> (biw)$$0);
+   }
+
+   @VisibleForTesting
+   protected static record a(cao a) implements Comparator<big> {
+      public int a(big $$0, big $$1) {
+         if ($$0.equals($$1)) {
+            return 0;
+         } else {
+            int $$2 = this.a.d.getOrDefault($$0, 0);
+            int $$3 = this.a.d.getOrDefault($$1, 0);
+            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
+            boolean $$4 = can.a($$2).d();
+            boolean $$5 = can.a($$3).d();
+            if ($$4 != $$5) {
+               return $$4 ? -1 : 1;
+            } else {
+               boolean $$6 = $$0 instanceof cbl;
+               boolean $$7 = $$1 instanceof cbl;
+               if ($$6 != $$7) {
+                  return $$6 ? -1 : 1;
+               } else {
+                  return Integer.compare($$3, $$2);
+               }
+            }
          }
-
-         this.f += 3600;
       }
-
-      if (this.f > 0) {
-         this.c = this.dn() - $$0.dn();
-         this.d = this.dt() - $$0.dt();
-      }
-
-      return bdx.a(this.dI().B);
-   }
-
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.f);
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.f = $$0.g("Fuel");
-   }
-
-   protected boolean A() {
-      return this.am.b(e);
-   }
-
-   protected void p(boolean $$0) {
-      this.am.b(e, $$0);
-   }
-
-   @Override
-   public dcb w() {
-      return cpo.cD.n().a(csq.a, ha.c).a(csq.b, Boolean.valueOf(this.A()));
    }
 }

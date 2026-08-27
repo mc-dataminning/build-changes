@@ -1,71 +1,54 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public final class bfm {
-   public static final Predicate<bfj> a = bfj::bs;
-   public static final Predicate<bfj> b = $$0 -> $$0.bs() && $$0 instanceof bfz;
-   public static final Predicate<bfj> c = $$0 -> $$0.bs() && !$$0.bN() && !$$0.bM();
-   public static final Predicate<bfj> d = $$0 -> $$0 instanceof bdq && $$0.bs();
-   public static final Predicate<bfj> e = $$0 -> !($$0 instanceof byo) || !$$0.G_() && !((byo)$$0).f();
-   public static final Predicate<bfj> f = $$0 -> !$$0.G_();
-   public static final Predicate<bfj> g = f.and(bfj::bu);
+public class bfm extends bft {
+   public static final Codec<bfm> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bft.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bfm::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final bft b;
+   private final int f;
+   private final int g;
 
-   private bfm() {
+   public static bfm a(bft $$0, int $$1, int $$2) {
+      return new bfm($$0, $$1, $$2);
    }
 
-   public static Predicate<bfj> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   public bfm(bft $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static Predicate<bfj> a(bfj $$0) {
-      efi $$1 = $$0.cd();
-      efi.a $$2 = $$1 == null ? efi.a.a : $$1.l();
-      return (Predicate<bfj>)($$2 == efi.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bp()) {
-            return false;
-         } else if (!$$0.dI().B || $$3 instanceof byo && ((byo)$$3).g()) {
-            efi $$4 = $$3.cd();
-            efi.a $$5 = $$4 == null ? efi.a.a : $$4.l();
-            if ($$5 == efi.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == efi.a.d || $$5 == efi.a.d) && $$6 ? false : $$2 != efi.a.c && $$5 != efi.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
+   @Override
+   public int a(art $$0) {
+      return aro.a(this.b.a($$0), this.f, this.g);
    }
 
-   public static Predicate<bfj> b(bfj $$0) {
-      return $$1 -> {
-         while ($$1.bM()) {
-            $$1 = $$1.cW();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   @Override
+   public int a() {
+      return Math.max(this.f, this.b.a());
    }
 
-   public static class a implements Predicate<bfj> {
-      private final cfz a;
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
+   }
 
-      public a(cfz $$0) {
-         this.a = $$0;
-      }
-
-      public boolean a(@Nullable bfj $$0) {
-         if (!$$0.bs()) {
-            return false;
-         } else {
-            return !($$0 instanceof bfz $$1) ? false : $$1.f(this.a);
-         }
-      }
+   @Override
+   public bfu<?> c() {
+      return bfu.d;
    }
 }

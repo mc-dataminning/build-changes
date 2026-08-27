@@ -1,14 +1,68 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bdb<P extends bda> {
-   bdb<bcy> a = a("constant", bcy.b);
-   bdb<bdh> b = a("uniform", bdh.a);
-   bdb<bcw> c = a("clamped_normal", bcw.a);
-   bdb<bdg> d = a("trapezoid", bdg.a);
+public class bdb implements bdc {
+   public static final bdb a = new bdb();
 
-   Codec<P> codec();
+   private bdb() {
+   }
 
-   static <P extends bda> bdb<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.M, $$0, () -> $$1);
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(bei $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bdd d() {
+      return bcz.a;
+   }
+
+   @Nullable
+   @Override
+   public bcx.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, bei>> e() {
+      return ImmutableSet.of();
    }
 }

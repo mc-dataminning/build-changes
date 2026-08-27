@@ -1,69 +1,46 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import org.joml.Vector3f;
 
-public class io extends iq {
-   public static final Vector3f a = eei.a(3790560).j();
-   public static final io b = new io(a, ip.a, 1.0F);
-   public static final Codec<io> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aoi.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               aoi.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
-               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, io::new)
-   );
-   public static final it.a<io> d = new it.a<io>() {
-      public io a(iu<io> $$0, StringReader $$1) throws CommandSyntaxException {
-         Vector3f $$2 = iq.a($$1);
+public class io implements iu {
+   public static final iu.a<io> a = new iu.a<io>() {
+      public io a(iv<io> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$3 = $$1.readFloat();
-         Vector3f $$4 = iq.a($$1);
-         return new io($$2, $$4, $$3);
+         return new io($$0, fh.a(jc.f.p(), $$1, false).a());
       }
 
-      public io a(iu<io> $$0, sf $$1) {
-         Vector3f $$2 = iq.b($$1);
-         float $$3 = $$1.readFloat();
-         Vector3f $$4 = iq.b($$1);
-         return new io($$2, $$4, $$3);
+      public io a(iv<io> $$0, sh $$1) {
+         return new io($$0, $$1.a(csk.o));
       }
    };
-   private final Vector3f i;
+   private final iv<io> b;
+   private final dey c;
 
-   public io(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   public static Codec<io> a(iv<io> $$0) {
+      return dey.b.xmap($$1 -> new io($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public Vector3f c() {
-      return this.g;
-   }
-
-   public Vector3f d() {
-      return this.i;
+   public io(iv<io> $$0, dey $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(sf $$0) {
-      super.a($$0);
-      $$0.writeFloat(this.i.x());
-      $$0.writeFloat(this.i.y());
-      $$0.writeFloat(this.i.z());
+   public void a(sh $$0) {
+      $$0.a(csk.o, this.c);
    }
 
    @Override
    public String a() {
-      return String.format(
-         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", jb.k.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h, this.i.x(), this.i.y(), this.i.z()
-      );
+      return jc.k.b(this.b()) + " " + fh.a(this.c);
    }
 
    @Override
-   public iu<io> b() {
-      return iv.p;
+   public iv<io> b() {
+      return this.b;
+   }
+
+   public dey c() {
+      return this.c;
    }
 }

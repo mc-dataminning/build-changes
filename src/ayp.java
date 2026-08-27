@@ -1,16 +1,12 @@
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class ayp extends axd {
-   public ayp(int $$0, Schema $$1) {
-      super($$0, $$1);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:zoglin", () -> axe.a($$0));
-      return $$1;
-   }
+public class ayp {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
+      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
+      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
+      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
+      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
+      .build();
 }

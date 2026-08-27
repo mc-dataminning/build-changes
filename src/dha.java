@@ -1,181 +1,141 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public abstract class dha {
-   public static dha.b a(int $$0, int $$1) {
-      return new dha.b($$0 - 1, $$1 + 1);
+public class dha {
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
+
+   public dha() {
+      this(0);
    }
 
-   public static dha.b b(int $$0, int $$1) {
-      return new dha.b($$0, $$1);
+   public dha(int $$0) {
+      this.f = $$0;
    }
 
-   public static dha a(int $$0) {
-      return new dha.c($$0, false);
+   public dha(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+      }
    }
 
-   public static dha b(int $$0) {
-      return new dha.c($$0 + 1, false);
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   public static dha c(int $$0) {
-      return new dha.c($$0, true);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   public static dha d(int $$0) {
-      return new dha.c($$0 - 1, true);
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   public static dha a() {
-      return dha.a.a;
-   }
-
-   public static dha a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
       }
    }
 
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dha a(OptionalInt $$0) {
-      return a($$0, this.b());
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
    }
 
-   public dha b(OptionalInt $$0) {
-      return a(this.c(), $$0);
+   private static int e(int $$0) {
+      return $$0 & 1;
    }
 
-   public static Optional<dha> a(cms $$0, gu $$1, int $$2, Predicate<dcb> $$3, Predicate<dcb> $$4) {
-      gu.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.a);
-         return Optional.of(a($$8, $$7));
-      }
+   private static int f(int $$0) {
+      return $$0 >> 1;
    }
 
-   private static OptionalInt a(cms $$0, int $$1, Predicate<dcb> $$2, Predicate<dcb> $$3, gu.a $$4, int $$5, ha $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
    }
 
-   public static final class a extends dha {
-      static final dha.a a = new dha.a();
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
 
-      private a() {
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
       }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
+      return $$1;
    }
 
-   public static final class b extends dha {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
          }
       }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
+      return this.d;
    }
 
-   public static final class c extends dha {
-      private final int a;
-      private final boolean b;
+   public dha b() {
+      return this.d == null ? new dha(this.f) : new dha((byte[])this.d.clone());
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
+         }
       }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      return $$0.toString();
+   }
+
+   @aso
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
       }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
+      return $$1.toString();
+   }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
+   public boolean c() {
+      return this.d == null;
+   }
 
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

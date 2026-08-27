@@ -1,34 +1,80 @@
-import javax.annotation.Nullable;
+public class xx implements uw<wo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final long e;
+   private final int f;
+   private final int g;
+   private final int h;
 
-public class xx implements uo<ur> {
-   private final int a;
-   private final int b;
-
-   public xx(bfj $$0, @Nullable bfj $$1) {
-      this.a = $$0.af();
-      this.b = $$1 != null ? $$1.af() : 0;
+   public xx(sh $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.n();
+      this.f = $$0.m();
+      this.g = $$0.m();
+      this.h = $$0.m();
    }
 
-   public xx(sf $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   public xx(dgp $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
+      this.c = $$0.i();
+      this.d = $$0.k();
+      this.e = $$0.j();
+      this.f = $$0.m();
+      this.g = $$0.r();
+      this.h = $$0.q();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
-      $$0.writeInt(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 
-   public int c() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.d;
+   }
+
+   public double f() {
+      return this.c;
+   }
+
+   public long g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.g;
    }
 }

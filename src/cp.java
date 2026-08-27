@@ -16,10 +16,10 @@ public class cp implements bp {
    public static final int b = 100;
    private final cj.d c;
    @Nullable
-   private final cmj d;
-   private final Map<amo<?>, cj.d> e;
-   private final Object2BooleanMap<acq> f;
-   private final Map<acq, cp.c> g;
+   private final cph d;
+   private final Map<apb<?>, cj.d> e;
+   private final Object2BooleanMap<aep> f;
+   private final Map<aep, cp.c> g;
    private final bo h;
 
    private static cp.c b(JsonElement $$0) {
@@ -28,16 +28,16 @@ public class cp implements bp {
          return new cp.b($$1);
       } else {
          Object2BooleanMap<String> $$2 = new Object2BooleanOpenHashMap();
-         JsonObject $$3 = aor.m($$0, "criterion data");
+         JsonObject $$3 = arf.m($$0, "criterion data");
          $$3.entrySet().forEach($$1 -> {
-            boolean $$2x = aor.c((JsonElement)$$1.getValue(), "criterion test");
+            boolean $$2x = arf.c((JsonElement)$$1.getValue(), "criterion test");
             $$2.put((String)$$1.getKey(), $$2x);
          });
          return new cp.a($$2);
       }
    }
 
-   cp(cj.d $$0, @Nullable cmj $$1, Map<amo<?>, cj.d> $$2, Object2BooleanMap<acq> $$3, Map<acq, cp.c> $$4, bo $$5) {
+   cp(cj.d $$0, @Nullable cph $$1, Map<apb<?>, cj.d> $$2, Object2BooleanMap<aep> $$3, Map<aep, cp.c> $$4, bo $$5) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -47,38 +47,38 @@ public class cp implements bp {
    }
 
    @Override
-   public boolean a(bfj $$0, aif $$1, @Nullable eei $$2) {
-      if (!($$0 instanceof aig $$3)) {
+   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
+      if (!($$0 instanceof akj $$3)) {
          return false;
-      } else if (!this.c.d($$3.ce)) {
+      } else if (!this.c.d($$3.cd)) {
          return false;
       } else if (this.d != null && this.d != $$3.e.b()) {
          return false;
       } else {
-         ams $$4 = $$3.D();
+         apf $$4 = $$3.E();
 
-         for (Entry<amo<?>, cj.d> $$5 : this.e.entrySet()) {
+         for (Entry<apb<?>, cj.d> $$5 : this.e.entrySet()) {
             int $$6 = $$4.a($$5.getKey());
             if (!$$5.getValue().d($$6)) {
                return false;
             }
          }
 
-         amk $$7 = $$3.E();
+         aox $$7 = $$3.F();
          ObjectIterator var13 = this.f.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<acq> $$8 = (it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<acq>)var13.next();
-            if ($$7.b((acq)$$8.getKey()) != $$8.getBooleanValue()) {
+            it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<aep> $$8 = (it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<aep>)var13.next();
+            if ($$7.b((aep)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
 
          if (!this.g.isEmpty()) {
-            acy $$9 = $$3.M();
-            adc $$10 = $$3.cI().az();
+            aex $$9 = $$3.N();
+            afb $$10 = $$3.cK().az();
 
-            for (Entry<acq, cp.c> $$11 : this.g.entrySet()) {
+            for (Entry<aep, cp.c> $$11 : this.g.entrySet()) {
                ae $$12 = $$10.a($$11.getKey());
                if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
                   return false;
@@ -87,16 +87,16 @@ public class cp implements bp {
          }
 
          if (this.h != bo.a) {
-            eei $$13 = $$3.bm();
-            eei $$14 = $$3.f(1.0F);
-            eei $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            eef $$16 = bzh.a($$3.dI(), $$3, $$13, $$15, new eed($$13, $$15).g(1.0), $$0x -> !$$0x.G_(), 0.0F);
-            if ($$16 == null || $$16.c() != eeg.a.c) {
+            ehf $$13 = $$3.bp();
+            ehf $$14 = $$3.f(1.0F);
+            ehf $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            ehc $$16 = cce.a($$3.dK(), $$3, $$13, $$15, new eha($$13, $$15).g(1.0), $$0x -> !$$0x.G_(), 0.0F);
+            if ($$16 == null || $$16.c() != ehd.a.c) {
                return false;
             }
 
-            bfj $$17 = $$16.a();
-            if (!this.h.a($$3, $$17) || !$$3.B($$17)) {
+            big $$17 = $$16.a();
+            if (!this.h.a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
          }
@@ -107,40 +107,40 @@ public class cp implements bp {
 
    public static cp a(JsonObject $$0) {
       cj.d $$1 = cj.d.a($$0.get("level"));
-      String $$2 = aor.a($$0, "gamemode", "");
-      cmj $$3 = cmj.a($$2, null);
-      Map<amo<?>, cj.d> $$4 = Maps.newHashMap();
-      JsonArray $$5 = aor.a($$0, "stats", null);
+      String $$2 = arf.a($$0, "gamemode", "");
+      cph $$3 = cph.a($$2, null);
+      Map<apb<?>, cj.d> $$4 = Maps.newHashMap();
+      JsonArray $$5 = arf.a($$0, "stats", null);
       if ($$5 != null) {
          for (JsonElement $$6 : $$5) {
-            JsonObject $$7 = aor.m($$6, "stats entry");
-            acq $$8 = new acq(aor.i($$7, "type"));
-            amq<?> $$9 = jb.y.a($$8);
+            JsonObject $$7 = arf.m($$6, "stats entry");
+            aep $$8 = new aep(arf.i($$7, "type"));
+            apd<?> $$9 = jc.y.a($$8);
             if ($$9 == null) {
                throw new JsonParseException("Invalid stat type: " + $$8);
             }
 
-            acq $$10 = new acq(aor.i($$7, "stat"));
-            amo<?> $$11 = a($$9, $$10);
+            aep $$10 = new aep(arf.i($$7, "stat"));
+            apb<?> $$11 = a($$9, $$10);
             cj.d $$12 = cj.d.a($$7.get("value"));
             $$4.put($$11, $$12);
          }
       }
 
-      Object2BooleanMap<acq> $$13 = new Object2BooleanOpenHashMap();
-      JsonObject $$14 = aor.a($$0, "recipes", new JsonObject());
+      Object2BooleanMap<aep> $$13 = new Object2BooleanOpenHashMap();
+      JsonObject $$14 = arf.a($$0, "recipes", new JsonObject());
 
       for (Entry<String, JsonElement> $$15 : $$14.entrySet()) {
-         acq $$16 = new acq($$15.getKey());
-         boolean $$17 = aor.c($$15.getValue(), "recipe present");
+         aep $$16 = new aep($$15.getKey());
+         boolean $$17 = arf.c($$15.getValue(), "recipe present");
          $$13.put($$16, $$17);
       }
 
-      Map<acq, cp.c> $$18 = Maps.newHashMap();
-      JsonObject $$19 = aor.a($$0, "advancements", new JsonObject());
+      Map<aep, cp.c> $$18 = Maps.newHashMap();
+      JsonObject $$19 = arf.a($$0, "advancements", new JsonObject());
 
       for (Entry<String, JsonElement> $$20 : $$19.entrySet()) {
-         acq $$21 = new acq($$20.getKey());
+         aep $$21 = new aep($$20.getKey());
          cp.c $$22 = b($$20.getValue());
          $$18.put($$21, $$22);
       }
@@ -149,17 +149,17 @@ public class cp implements bp {
       return new cp($$1, $$3, $$4, $$13, $$18, $$23);
    }
 
-   private static <T> amo<T> a(amq<T> $$0, acq $$1) {
-      hr<T> $$2 = $$0.a();
+   private static <T> apb<T> a(apd<T> $$0, aep $$1) {
+      hs<T> $$2 = $$0.a();
       T $$3 = $$2.a($$1);
       if ($$3 == null) {
-         throw new JsonParseException("Unknown object " + $$1 + " for stat type " + jb.y.b($$0));
+         throw new JsonParseException("Unknown object " + $$1 + " for stat type " + jc.y.b($$0));
       } else {
          return $$0.b($$3);
       }
    }
 
-   private static <T> acq a(amo<T> $$0) {
+   private static <T> aep a(apb<T> $$0) {
       return $$0.a().a().b($$0.b());
    }
 
@@ -175,8 +175,8 @@ public class cp implements bp {
          JsonArray $$1 = new JsonArray();
          this.e.forEach(($$1x, $$2) -> {
             JsonObject $$3x = new JsonObject();
-            $$3x.addProperty("type", jb.y.b($$1x.a()).toString());
-            $$3x.addProperty("stat", a((amo<?>)$$1x).toString());
+            $$3x.addProperty("type", jc.y.b($$1x.a()).toString());
+            $$3x.addProperty("stat", a((apb<?>)$$1x).toString());
             $$3x.add("value", $$2.d());
             $$1.add($$3x);
          });
@@ -257,10 +257,10 @@ public class cp implements bp {
    public static class d {
       private cj.d a = cj.d.e;
       @Nullable
-      private cmj b;
-      private final Map<amo<?>, cj.d> c = Maps.newHashMap();
-      private final Object2BooleanMap<acq> d = new Object2BooleanOpenHashMap();
-      private final Map<acq, cp.c> e = Maps.newHashMap();
+      private cph b;
+      private final Map<apb<?>, cj.d> c = Maps.newHashMap();
+      private final Object2BooleanMap<aep> d = new Object2BooleanOpenHashMap();
+      private final Map<aep, cp.c> e = Maps.newHashMap();
       private bo f = bo.a;
 
       public static cp.d a() {
@@ -272,17 +272,17 @@ public class cp implements bp {
          return this;
       }
 
-      public cp.d a(amo<?> $$0, cj.d $$1) {
+      public cp.d a(apb<?> $$0, cj.d $$1) {
          this.c.put($$0, $$1);
          return this;
       }
 
-      public cp.d a(acq $$0, boolean $$1) {
+      public cp.d a(aep $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }
 
-      public cp.d a(cmj $$0) {
+      public cp.d a(cph $$0) {
          this.b = $$0;
          return this;
       }
@@ -292,12 +292,12 @@ public class cp implements bp {
          return this;
       }
 
-      public cp.d b(acq $$0, boolean $$1) {
+      public cp.d b(aep $$0, boolean $$1) {
          this.e.put($$0, new cp.b($$1));
          return this;
       }
 
-      public cp.d a(acq $$0, Map<String, Boolean> $$1) {
+      public cp.d a(aep $$0, Map<String, Boolean> $$1) {
          this.e.put($$0, new cp.a(new Object2BooleanOpenHashMap($$1)));
          return this;
       }

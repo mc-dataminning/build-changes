@@ -1,54 +1,25 @@
 import javax.annotation.Nullable;
 
-public class btl extends btj {
-   public btl(bfn<? extends btl> $$0, cmm $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected amg s() {
-      return amh.fZ;
-   }
-
-   @Override
-   protected amg gx() {
-      return amh.ga;
-   }
-
-   @Override
-   protected amg g_() {
-      return amh.gc;
+public class btl {
+   @Nullable
+   public static ehf a(bjf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = bto.a($$0, $$1);
+      return btr.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
    @Nullable
-   @Override
-   protected amg gf() {
-      return amh.gd;
-   }
-
-   @Override
-   protected amg d(ben $$0) {
-      return amh.ge;
-   }
-
-   @Override
-   public boolean a(brl $$0) {
-      if ($$0 == this) {
-         return false;
+   public static gv a(bjf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      gv $$8 = btr.a($$0.ee(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
       } else {
-         return !($$0 instanceof btl) && !($$0 instanceof btm) ? false : this.gG() && ((btk)$$0).gG();
+         gv $$9 = btr.a($$0, $$1, $$0.ee(), $$8);
+         if (!bto.a($$9, $$0) && !bto.a($$7, $$0, $$9)) {
+            $$9 = btr.a($$9, $$0.dK().aj(), $$1x -> bto.c($$0, $$1x));
+            return bto.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
       }
-   }
-
-   @Nullable
-   @Override
-   public bfe a(aif $$0, bfe $$1) {
-      bfn<? extends btk> $$2 = $$1 instanceof btm ? bfn.ap : bfn.w;
-      btk $$3 = $$2.a((cmm)$$0);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
    }
 }

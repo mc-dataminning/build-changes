@@ -1,22 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class diw extends djc {
-   final anl<cpn> a;
-   public static final Codec<diw> e = RecordCodecBuilder.create($$0 -> a($$0).and(anl.a(jc.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, diw::new));
+public interface diw<B, T extends B> {
+   static <B, T extends B> diw<B, T> a(final Class<T> $$0) {
+      return new diw<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   protected diw(hz $$0, anl<cpn> $$1) {
-      super($$0);
-      this.a = $$1;
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   @Override
-   protected boolean a(dcb $$0) {
-      return $$0.a(this.a);
-   }
+   @Nullable
+   T a(B var1);
 
-   @Override
-   public dis<?> a() {
-      return dis.b;
-   }
+   Class<? extends B> a();
 }

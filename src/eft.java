@@ -1,69 +1,116 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public record eft<T>(T d, gu e, long f, efx g, long h) {
-   public static final Comparator<eft<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<eft<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<eft<?>> c = new Strategy<eft<?>>() {
-      public int a(eft<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+public class eft implements efv {
+   private static final String b = "block_entity";
+   private static final eft.a c = new eft.a() {
+      @Override
+      public rl a(ech $$0) {
+         dck $$1 = $$0.c(eet.h);
+         return $$1 != null ? $$1.m() : null;
       }
 
-      public boolean a(@Nullable eft<?> $$0, @Nullable eft<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<eeq<?>> b() {
+         return ImmutableSet.of(eet.h);
+      }
+   };
+   public static final eft a = new eft(c);
+   final eft.a d;
+
+   private static eft.a b(final ech.b $$0) {
+      return new eft.a() {
+         @Nullable
+         @Override
+         public rl a(ech $$0x) {
+            big $$1 = $$0.c($$0.a());
+            return $$1 != null ? cl.b($$1) : null;
          }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<eeq<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
+   }
+
+   private eft(eft.a $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public efu a() {
+      return efw.b;
+   }
+
+   @Nullable
+   @Override
+   public rl a(ech $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public Set<eeq<?>> b() {
+      return this.d.b();
+   }
+
+   public static efv a(ech.b $$0) {
+      return new eft(b($$0));
+   }
+
+   static eft a(String $$0) {
+      if ($$0.equals("block_entity")) {
+         return new eft(c);
+      } else {
+         ech.b $$1 = ech.b.a($$0);
+         return new eft(b($$1));
       }
-   };
-
-   public eft(T $$0, gu $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, efx.d, $$3);
    }
 
-   public eft(T d, gu e, long f, efx g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   interface a {
+      @Nullable
+      rl a(ech var1);
+
+      String a();
+
+      Set<eeq<?>> b();
    }
 
-   public static <T> eft<T> a(T $$0, gu $$1) {
-      return new eft<>($$0, $$1, 0L, efx.d, 0L);
+   public static class b implements ecf.b<eft> {
+      public JsonElement a(eft $$0, JsonSerializationContext $$1) {
+         return new JsonPrimitive($$0.d.a());
+      }
+
+      public eft b(JsonElement $$0, JsonDeserializationContext $$1) {
+         String $$2 = $$0.getAsString();
+         return eft.a($$2);
+      }
    }
 
-   public T a() {
-      return this.d;
-   }
+   public static class c implements ecq<eft> {
+      public void a(JsonObject $$0, eft $$1, JsonSerializationContext $$2) {
+         $$0.addProperty("target", $$1.d.a());
+      }
 
-   public gu b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public efx d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+      public eft b(JsonObject $$0, JsonDeserializationContext $$1) {
+         String $$2 = arf.i($$0, "target");
+         return eft.a($$2);
+      }
    }
 }

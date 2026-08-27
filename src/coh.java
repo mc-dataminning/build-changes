@@ -1,90 +1,197 @@
-import javax.annotation.Nullable;
+public class coh {
+   private final ciw a;
+   private final ciw b;
+   private final ciw c;
+   private int d;
+   private final int e;
+   private boolean f = true;
+   private int g;
+   private int h;
+   private float i;
+   private int j = 1;
 
-public abstract class coh extends cpa {
-   public static final dcv a = ctg.aC;
-   public static final dcs b = dcr.r;
-
-   protected coh(dca.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if ($$1.B) {
-         return bdx.a;
+   public coh(qs $$0) {
+      this.a = ciw.a($$0.p("buy"));
+      this.b = ciw.a($$0.p("buyB"));
+      this.c = ciw.a($$0.p("sell"));
+      this.d = $$0.h("uses");
+      if ($$0.b("maxUses", 99)) {
+         this.e = $$0.h("maxUses");
       } else {
-         this.a($$1, $$2, $$3);
-         return bdx.b;
+         this.e = 4;
+      }
+
+      if ($$0.b("rewardExp", 1)) {
+         this.f = $$0.q("rewardExp");
+      }
+
+      if ($$0.b("xp", 3)) {
+         this.j = $$0.h("xp");
+      }
+
+      if ($$0.b("priceMultiplier", 5)) {
+         this.i = $$0.j("priceMultiplier");
+      }
+
+      this.g = $$0.h("specialPrice");
+      this.h = $$0.h("demand");
+   }
+
+   public coh(ciw $$0, ciw $$1, int $$2, int $$3, float $$4) {
+      this($$0, ciw.b, $$1, $$2, $$3, $$4);
+   }
+
+   public coh(ciw $$0, ciw $$1, ciw $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public coh(ciw $$0, ciw $$1, ciw $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public coh(ciw $$0, ciw $$1, ciw $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.j = $$5;
+      this.i = $$6;
+      this.h = $$7;
+   }
+
+   public ciw a() {
+      return this.a;
+   }
+
+   public ciw b() {
+      if (this.a.b()) {
+         return ciw.b;
+      } else {
+         int $$0 = this.a.L();
+         int $$1 = Math.max(0, aro.d((float)($$0 * this.h) * this.i));
+         return this.a.c(aro.a($$0 + $$1 + this.g, 1, this.a.d().l()));
       }
    }
 
-   protected abstract void a(cmm var1, gu var2, byo var3);
-
-   @Override
-   public dcb a(cih $$0) {
-      return this.n().a(a, $$0.g().g());
+   public ciw c() {
+      return this.b;
    }
 
-   @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, bfz $$3, cfz $$4) {
-      if ($$4.A()) {
-         czn $$5 = $$0.c_($$1);
-         if ($$5 instanceof czc) {
-            ((czc)$$5).a($$4.y());
+   public ciw d() {
+      return this.c;
+   }
+
+   public void e() {
+      this.h = this.h + this.d - (this.e - this.d);
+   }
+
+   public ciw f() {
+      return this.c.p();
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public void h() {
+      this.d = 0;
+   }
+
+   public int i() {
+      return this.e;
+   }
+
+   public void j() {
+      this.d++;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.g += $$0;
+   }
+
+   public void l() {
+      this.g = 0;
+   }
+
+   public int m() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public float n() {
+      return this.i;
+   }
+
+   public int o() {
+      return this.j;
+   }
+
+   public boolean p() {
+      return this.d >= this.e;
+   }
+
+   public void q() {
+      this.d = this.e;
+   }
+
+   public boolean r() {
+      return this.d > 0;
+   }
+
+   public boolean s() {
+      return this.f;
+   }
+
+   public qs t() {
+      qs $$0 = new qs();
+      $$0.a("buy", this.a.b(new qs()));
+      $$0.a("sell", this.c.b(new qs()));
+      $$0.a("buyB", this.b.b(new qs()));
+      $$0.a("uses", this.d);
+      $$0.a("maxUses", this.e);
+      $$0.a("rewardExp", this.f);
+      $$0.a("xp", this.j);
+      $$0.a("priceMultiplier", this.i);
+      $$0.a("specialPrice", this.g);
+      $$0.a("demand", this.h);
+      return $$0;
+   }
+
+   public boolean a(ciw $$0, ciw $$1) {
+      return this.c($$0, this.b()) && $$0.L() >= this.b().L() && this.c($$1, this.b) && $$1.L() >= this.b.L();
+   }
+
+   private boolean c(ciw $$0, ciw $$1) {
+      if ($$1.b() && $$0.b()) {
+         return true;
+      } else {
+         ciw $$2 = $$0.p();
+         if ($$2.d().o()) {
+            $$2.b($$2.k());
          }
+
+         return ciw.b($$2, $$1) && (!$$1.u() || $$2.u() && re.a($$1.v(), $$2.v(), false));
       }
    }
 
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         czn $$5 = $$1.c_($$2);
-         if ($$5 instanceof czc) {
-            if ($$1 instanceof aif) {
-               bdt.a($$1, $$2, (czc)$$5);
-               ((czc)$$5).a((aif)$$1, eei.b($$2));
-            }
-
-            $$1.c($$2, this);
+   public boolean b(ciw $$0, ciw $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().L());
+         if (!this.c().b()) {
+            $$1.h(this.c().L());
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return true;
       }
-   }
-
-   @Override
-   public boolean d_(dcb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dcb $$0, cmm $$1, gu $$2) {
-      return cbf.a($$1.c_($$2));
-   }
-
-   @Override
-   public cvs b_(dcb $$0) {
-      return cvs.c;
-   }
-
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends czn> czo<T> a(cmm $$0, czp<T> $$1, czp<? extends czc> $$2) {
-      return $$0.B ? null : a($$1, $$2, czc::a);
    }
 }

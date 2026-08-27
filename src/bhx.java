@@ -1,37 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-
-public class bhx extends bhr<bfz> {
-   private final bpb<Integer> c;
-
-   public bhx(bpb<Integer> $$0) {
-      super(ImmutableMap.of($$0, bpc.a));
-      this.c = $$0;
-   }
-
-   private Optional<Integer> b(bfz $$0) {
-      return $$0.dK().c(this.c);
+class bhx extends bhr {
+   protected bhx(bhs $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   public void a(biw $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0.et() < $$0.eK()) {
+         $$0.b(1.0F);
+      }
    }
 
    @Override
-   protected boolean a(aif $$0, bfz $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(aif $$0, bfz $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dK().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(aif $$0, bfz $$1, long $$2) {
-      $$1.dK().b(this.c);
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

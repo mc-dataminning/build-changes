@@ -1,94 +1,94 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import java.util.stream.Stream;
 
-public interface cmn extends cly, cmt {
-   @Override
-   default long ah() {
-      return this.u_().f();
+public class cmn implements cmm {
+   private final aep a;
+   final clw b;
+   final clw c;
+   final clw d;
+   final ciw e;
+
+   public cmn(aep $$0, clw $$1, clw $$2, clw $$3, ciw $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
-
-   long A_();
-
-   efp<cpn> L();
-
-   private <T> eft<T> a(gu $$0, T $$1, int $$2, efx $$3) {
-      return new eft<>($$1, $$0, this.u_().e() + (long)$$2, $$3, this.A_());
-   }
-
-   private <T> eft<T> a(gu $$0, T $$1, int $$2) {
-      return new eft<>($$1, $$0, this.u_().e() + (long)$$2, this.A_());
-   }
-
-   default void a(gu $$0, cpn $$1, int $$2, efx $$3) {
-      this.L().a(this.a($$0, $$1, $$2, $$3));
-   }
-
-   default void a(gu $$0, cpn $$1, int $$2) {
-      this.L().a(this.a($$0, $$1, $$2));
-   }
-
-   efp<dxd> K();
-
-   default void a(gu $$0, dxd $$1, int $$2, efx $$3) {
-      this.K().a(this.a($$0, $$1, $$2, $$3));
-   }
-
-   default void a(gu $$0, dxd $$1, int $$2) {
-      this.K().a(this.a($$0, $$1, $$2));
-   }
-
-   dyv u_();
-
-   bdv d_(gu var1);
-
-   @Nullable
-   MinecraftServer n();
-
-   default bdu ai() {
-      return this.u_().s();
-   }
-
-   deb J();
 
    @Override
-   default boolean b(int $$0, int $$1) {
-      return this.J().b($$0, $$1);
+   public boolean a(bgh $$0, cpk $$1) {
+      return this.b.a($$0.a(0)) && this.c.a($$0.a(1)) && this.d.a($$0.a(2));
    }
 
-   apf y_();
+   @Override
+   public ciw a(bgh $$0, ht $$1) {
+      ciw $$2 = this.e.p();
+      qs $$3 = $$0.a(1).v();
+      if ($$3 != null) {
+         $$2.c($$3.h());
+      }
 
-   default void b(gu $$0, cpn $$1) {
+      return $$2;
    }
 
-   default void a(ha $$0, dcb $$1, gu $$2, gu $$3, int $$4, int $$5) {
-      dyg.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   @Override
+   public ciw a(ht $$0) {
+      return this.e;
    }
 
-   default void a(@Nullable byo $$0, gu $$1, amg $$2, ami $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   @Override
+   public boolean a(ciw $$0) {
+      return this.b.a($$0);
    }
 
-   void a(@Nullable byo var1, gu var2, amg var3, ami var4, float var5, float var6);
-
-   void a(it var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable byo var1, int var2, gu var3, int var4);
-
-   default void c(int $$0, gu $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
+   @Override
+   public boolean b(ciw $$0) {
+      return this.c.a($$0);
    }
 
-   void a(dgl var1, eei var2, dgl.a var3);
-
-   default void a(@Nullable bfj $$0, dgl $$1, eei $$2) {
-      this.a($$1, $$2, new dgl.a($$0, null));
+   @Override
+   public boolean c(ciw $$0) {
+      return this.d.a($$0);
    }
 
-   default void a(@Nullable bfj $$0, dgl $$1, gu $$2) {
-      this.a($$1, $$2, new dgl.a($$0, null));
+   @Override
+   public aep e() {
+      return this.a;
    }
 
-   default void a(dgl $$0, gu $$1, dgl.a $$2) {
-      this.a($$0, eei.b($$1), $$2);
+   @Override
+   public cmb<?> aj_() {
+      return cmb.u;
+   }
+
+   @Override
+   public boolean j() {
+      return Stream.of(this.b, this.c, this.d).anyMatch(clw::d);
+   }
+
+   public static class a implements cmb<cmn> {
+      public cmn b(aep $$0, JsonObject $$1) {
+         clw $$2 = clw.a(arf.h($$1, "template"));
+         clw $$3 = clw.a(arf.h($$1, "base"));
+         clw $$4 = clw.a(arf.h($$1, "addition"));
+         ciw $$5 = cme.a(arf.u($$1, "result"));
+         return new cmn($$0, $$2, $$3, $$4, $$5);
+      }
+
+      public cmn b(aep $$0, sh $$1) {
+         clw $$2 = clw.b($$1);
+         clw $$3 = clw.b($$1);
+         clw $$4 = clw.b($$1);
+         ciw $$5 = $$1.q();
+         return new cmn($$0, $$2, $$3, $$4, $$5);
+      }
+
+      public void a(sh $$0, cmn $$1) {
+         $$1.b.a($$0);
+         $$1.c.a($$0);
+         $$1.d.a($$0);
+         $$0.a($$1.e);
+      }
    }
 }

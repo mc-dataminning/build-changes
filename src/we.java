@@ -1,48 +1,22 @@
-public class we implements uo<ur> {
-   private final int a;
-   private final gu b;
-   private final int c;
-   private final boolean d;
+public record we(gv b, float c, float d, float e, float f, float g) implements vo {
+   public static final aep a = new aep("debug/worldgen_attempt");
 
-   public we(int $$0, gu $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public we(sf $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.f();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+   public we(sh $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
+   public void a(sh $$0) {
       $$0.a(this.b);
-      $$0.writeInt(this.c);
-      $$0.writeBoolean(this.d);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public gu e() {
-      return this.b;
+   @Override
+   public aep a() {
+      return a;
    }
 }

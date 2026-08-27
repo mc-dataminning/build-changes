@@ -1,42 +1,44 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dnz extends doe {
-   public static final Codec<dnz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dnz::new));
-   protected final int b;
-
-   protected static <P extends dnz> P3<Mu<P>, bdc, bdc, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public dnz(bdc $$0, bdc $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+public class dnz extends dnl<dpw> {
+   public dnz(Codec<dpw> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dof<?> a() {
-      return dof.a;
-   }
+   public boolean a(dnn<dpw> $$0) {
+      int $$1 = 0;
+      cqe $$2 = $$0.b();
+      gv $$3 = $$0.e();
+      art $$4 = $$0.d();
+      int $$5 = $$2.a(dkh.a.d, $$3.u(), $$3.w());
+      gv $$6 = new gv($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(csl.G)) {
+         dey $$7 = csl.mc.n();
+         dey $$8 = csl.md.n();
+         int $$9 = 1 + $$4.a(10);
 
-   @Override
-   protected void a(cms $$0, doe.b $$1, apf $$2, dno $$3, int $$4, doe.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(csl.G) && $$2.a_($$6.c()).a(csl.G) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.a(cwl.d, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
+               }
+            } else if ($$10 > 0) {
+               gv $$11 = $$6.d();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(csl.mc)) {
+                  $$2.a($$11, $$7.a(cwl.d, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
+            }
+
+            $$6 = $$6.c();
+         }
       }
-   }
 
-   @Override
-   public int a(apf $$0, int $$1, dno $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(apf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+      return $$1 > 0;
    }
 }

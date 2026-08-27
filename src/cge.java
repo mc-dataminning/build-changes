@@ -1,51 +1,58 @@
-public class cge extends cfu {
-   public cge(cfu.a $$0) {
-      super($$0);
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Objects;
+import javax.annotation.Nullable;
+
+public class cge {
+   private final String a;
+   @Nullable
+   private dfc b;
+   private boolean c;
+   private boolean d;
+
+   public cge(String $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public bdx a(cij $$0) {
-      cmm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dcb $$3 = $$1.a_($$2);
-      if ($$3.a(amw.S)) {
-         byo $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bdx.a($$1.B);
+   private static boolean a(dfc $$0, @Nullable dfc $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
       } else {
-         return bdx.d;
+         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().n(), $$1.b().n()) : false;
       }
    }
 
-   public static bdx a(byo $$0, cmm $$1, gu $$2) {
-      bvb $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
+   public boolean a(ciw $$0, hs<csk> $$1, dfc $$2) {
+      if (a($$2, this.b, this.d)) {
+         return this.c;
+      } else {
+         this.b = $$2;
+         this.d = false;
+         qs $$3 = $$0.v();
+         if ($$3 != null && $$3.b(this.a, 9)) {
+            qy $$4 = $$3.c(this.a, 8);
 
-      for (bgb $$10 : $$1.a(
-         bgb.class, new eed((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fP() == $$0) {
-            if ($$3 == null) {
-               $$3 = bvb.b($$1, $$2);
-               $$3.x();
+            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+               String $$6 = $$4.j($$5);
+
+               try {
+                  ff.b $$7 = ff.a($$1.p(), new StringReader($$6));
+                  this.d = this.d | $$7.a();
+                  if ($$7.test($$2)) {
+                     this.c = true;
+                     return true;
+                  }
+               } catch (CommandSyntaxException var9) {
+               }
             }
-
-            $$10.b($$3, true);
-            $$4 = true;
          }
-      }
 
-      if ($$4) {
-         $$1.a(dgl.b, $$2, dgl.a.a($$0));
+         this.c = false;
+         return false;
       }
-
-      return $$4 ? bdx.a : bdx.d;
    }
 }

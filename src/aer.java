@@ -1,135 +1,118 @@
-import com.google.common.base.Joiner;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.logging.LogUtils;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
 public class aer {
-   private static final int a = 256;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> sw.a("commands.forceload.toobig", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> sw.a("commands.forceload.query.failure", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(sw.c("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(sw.c("commands.forceload.removed.failure"));
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("forceload").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dt.a("add")
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("from", fj.a())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "from"), fj.a($$0x, "from"), true)))
-                              .then(dt.a("to", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "from"), fj.a($$0x, "to"), true)))
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dt.a("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("from", fj.a())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "from"), fj.a($$0x, "from"), false)))
-                              .then(dt.a("to", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "from"), fj.a($$0x, "to"), false)))
-                        ))
-                     .then(dt.a("all").executes($$0x -> b((ds)$$0x.getSource())))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)dt.a("query").executes($$0x -> a((ds)$$0x.getSource())))
-                  .then(dt.a("pos", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.a($$0x, "pos"))))
-            )
-      );
-   }
-
-   private static int a(ds $$0, ahv $$1) throws CommandSyntaxException {
-      clt $$2 = $$1.a();
-      aif $$3 = $$0.e();
-      acp<cmm> $$4 = $$3.ac();
-      boolean $$5 = $$3.u().contains($$2.a());
-      if ($$5) {
-         $$0.a(() -> sw.a("commands.forceload.query.success", $$2, $$4.a()), false);
-         return 1;
-      } else {
-         throw c.create($$2, $$4.a());
-      }
-   }
-
-   private static int a(ds $$0) {
-      aif $$1 = $$0.e();
-      acp<cmm> $$2 = $$1.ac();
-      LongSet $$3 = $$1.u();
-      int $$4 = $$3.size();
-      if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(clt::new).map(clt::toString).iterator());
-         if ($$4 == 1) {
-            $$0.a(() -> sw.a("commands.forceload.list.single", $$2.a(), $$5), false);
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (jc.ap.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
          } else {
-            $$0.a(() -> sw.a("commands.forceload.list.multiple", $$4, $$2.a(), $$5), false);
-         }
-      } else {
-         $$0.b(sw.a("commands.forceload.added.none", $$2.a()));
-      }
-
-      return $$4;
-   }
-
-   private static int b(ds $$0) {
-      aif $$1 = $$0.e();
-      acp<cmm> $$2 = $$1.ac();
-      LongSet $$3 = $$1.u();
-      $$3.forEach($$1x -> $$1.a(clt.a($$1x), clt.b($$1x), false));
-      $$0.a(() -> sw.a("commands.forceload.removed.all", $$2.a()), true);
-      return 0;
-   }
-
-   private static int a(ds $$0, ahv $$1, ahv $$2, boolean $$3) throws CommandSyntaxException {
-      int $$4 = Math.min($$1.c(), $$2.c());
-      int $$5 = Math.min($$1.d(), $$2.d());
-      int $$6 = Math.max($$1.c(), $$2.c());
-      int $$7 = Math.max($$1.d(), $$2.d());
-      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
-         int $$8 = hx.a($$4);
-         int $$9 = hx.a($$5);
-         int $$10 = hx.a($$6);
-         int $$11 = hx.a($$7);
-         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
-         if ($$12 > 256L) {
-            throw b.create(256, $$12);
-         } else {
-            aif $$13 = $$0.e();
-            acp<cmm> $$14 = $$13.ac();
-            clt $$15 = null;
-            int $$16 = 0;
-
-            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
-               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
-                  boolean $$19 = $$13.a($$17, $$18, $$3);
-                  if ($$19) {
-                     $$16++;
-                     if ($$15 == null) {
-                        $$15 = new clt($$17, $$18);
-                     }
-                  }
-               }
-            }
-
-            clt $$20 = $$15;
-            if ($$16 == 0) {
-               throw ($$3 ? d : e).create();
+            cvg.a();
+            ctt.a();
+            if (bik.a(bik.bt) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
             } else {
-               if ($$16 == 1) {
-                  $$0.a(() -> sw.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", $$20, $$14.a()), true);
-               } else {
-                  clt $$21 = new clt($$8, $$9);
-                  clt $$22 = new clt($$10, $$11);
-                  $$0.a(() -> sw.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$20, $$14.a(), $$21, $$22), true);
-               }
-
-               return $$16;
+               cku.a();
+               gd.a();
+               ii.c();
+               ic.b();
+               jc.a();
+               chd.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
             }
          }
-      } else {
-         throw fi.b.create();
       }
+   }
+
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      qn $$3 = qn.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
+   }
+
+   private static void a(final Set<String> $$0) {
+      final qn $$1 = qn.a();
+      cpg.a(new cpg.c() {
+         @Override
+         public <T extends cpg.g<T>> void a(cpg.e<T> $$0x, cpg.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
+   }
+
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(jc.v, bjy::c, $$0);
+      a(jc.h, bik::g, $$0);
+      a(jc.e, bhr::d, $$0);
+      a(jc.i, cir::a, $$0);
+      a(jc.g, cnd::g, $$0);
+      a(jc.f, csk::f, $$0);
+      a(jc.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aS) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         dt.b();
+      }
+
+      bke.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new aeu("STDERR", System.err));
+         System.setOut(new aeu("STDOUT", a));
+      } else {
+         System.setErr(new aew("STDERR", System.err));
+         System.setOut(new aew("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

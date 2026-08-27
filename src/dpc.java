@@ -1,20 +1,43 @@
 import com.mojang.serialization.Codec;
 
-public class dpc extends dot {
-   public static final Codec<dpc> b = dcb.b.fieldOf("state").xmap(dpc::new, $$0 -> $$0.c).codec();
-   private final dcb c;
+public class dpc extends dnl<dpw> {
+   private static final gv a = new gv(8, 3, 8);
+   private static final cor b = new cor(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   protected dpc(dcb $$0) {
-      this.c = $$0;
+   public dpc(Codec<dpw> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
    @Override
-   protected dou<?> a() {
-      return dou.a;
-   }
+   public boolean a(dnn<dpw> $$0) {
+      cqe $$1 = $$0.b();
+      cor $$2 = new cor($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         gv $$3 = a.h($$0.e().v() + a.v());
+         gv.a $$4 = new gv.a();
 
-   @Override
-   public dcb a(apf $$0, gu $$1) {
-      return this.c;
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, csl.m.n(), 2);
+                  } else {
+                     $$1.a($$4, csl.b.n(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

@@ -1,84 +1,82 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+public class ezd extends eys {
+   private final dcu m;
+   private esp<dcu.a> n;
+   private esp<Boolean> o;
+   private esp<Boolean> p;
+   private dcu.a q = dcu.a.c;
+   private boolean s;
+   private boolean t;
 
-public class ezd extends euq {
-   private static final int a = 310;
-   private final esg b = new esg(this);
-   private final euq c;
-   private final aki k;
-   private final Consumer<aki> l;
-   private final Object2BooleanMap<akg> m = new Object2BooleanLinkedOpenHashMap();
-
-   protected ezd(euq $$0, aki $$1, Consumer<aki> $$2) {
-      super(sw.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
-
-      for (akg $$3 : $$1.c()) {
-         if ($$3.j() == akj.d) {
-            this.m.put($$3, $$1.f().contains($$3));
-         }
-      }
+   public ezd(dcu $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected void b() {
-      this.b.a(new eqk(sw.c("selectWorld.experiments"), this.i));
-      esf.b $$0 = this.b.c(new esf()).d(1);
-      $$0.a(new eqa(sw.c("selectWorld.experiments.info").a(n.m), this.i).i(310), $$0.b().e(15));
-      ezh.a $$1 = ezh.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      esf.b $$2 = this.b.b(new esf().a(10)).d(2);
-      $$2.a(epi.a(sv.d, $$0x -> this.l()).a());
-      $$2.a(epi.a(sv.e, $$0x -> this.aw_()).a());
-      this.b.a($$1x -> {
-         epf var10000 = this.d($$1x);
-      });
-      this.aG_();
-   }
-
-   private static sw a(akg $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (sw)(fvz.a($$1) ? sw.c($$1) : $$0.a());
+   cok l() {
+      return this.m.c();
    }
 
    @Override
-   public void aw_() {
-      this.f.a(this.c);
-   }
-
-   private void l() {
-      List<akg> $$0 = new ArrayList<>(this.k.f());
-      List<akg> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(akg::f).toList());
-      this.l.accept(this.k);
+   int B() {
+      return 135;
    }
 
    @Override
-   protected void aG_() {
-      this.b.c();
+   protected void aE_() {
+      super.aE_();
+      this.n = this.d(esp.<dcu.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> te.c("advMode.mode.sequence");
+            case b -> te.c("advMode.mode.auto");
+            case c -> te.c("advMode.mode.redstone");
+         };
+      }).a(dcu.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, te.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      this.o = this.d(
+         esp.a(te.c("advMode.mode.conditional"), te.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.s)
+            .a(this.g / 2 - 50, 165, 100, 20, te.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
+      );
+      this.p = this.d(
+         esp.a(te.c("advMode.mode.autoexec.bat"), te.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.t)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, te.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+      );
+      this.e(false);
+   }
+
+   private void e(boolean $$0) {
+      this.c.i = $$0;
+      this.l.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.p.i = $$0;
+   }
+
+   public void D() {
+      cok $$0 = this.m.c();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.o();
+      this.q = this.m.v();
+      this.s = this.m.w();
+      this.t = this.m.f();
+      this.l.a($$1);
+      this.n.a(this.q);
+      this.o.a(this.s);
+      this.p.a(this.t);
+      this.c($$1);
+      this.e(true);
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.b(), 0.0F, 0.0F, this.g, this.h - this.b.b() - this.b.a(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3);
+   public void a(eqn $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(cok $$0) {
+      this.f.I().b(new ach(gv.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
    }
 }

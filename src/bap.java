@@ -1,25 +1,17 @@
-public final class bap implements Comparable<bap> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bap(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bap extends azu {
+   public bap(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public int a(bap $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
-   }
-
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.put("minecraft:cod", $$1.remove("minecraft:cod_mob"));
+      $$1.put("minecraft:salmon", $$1.remove("minecraft:salmon_mob"));
+      return $$1;
    }
 }

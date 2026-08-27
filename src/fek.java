@@ -1,17 +1,26 @@
-public class fek {
-   private final fem a;
-   private final fel b;
+import java.util.function.Function;
 
-   private fek(fem $$0, fel $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public abstract class fek<T extends big> extends ffg {
+   public float c;
+   public boolean d;
+   public boolean e = true;
+
+   protected fek() {
+      this(fno::d);
    }
 
-   public fee a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   protected fek(Function<aep, fno> $$0) {
+      super($$0);
    }
 
-   public static fek a(fem $$0, int $$1, int $$2) {
-      return new fek($$0, new fel($$1, $$2));
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(fek<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
    }
 }

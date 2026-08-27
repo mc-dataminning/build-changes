@@ -1,15 +1,23 @@
-public interface dak extends bdq {
-   efb c = cpn.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   efb x_ = cpn.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   efb y_ = eey.a(c, x_);
+public class dak extends csk {
+   private static final double a = 5.0;
+   private static final ehy b = csk.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-   default efb aq_() {
-      return y_;
+   protected dak(dex.d $$0) {
+      super($$0);
    }
 
-   double G();
+   @Override
+   public cyp b_(dey $$0) {
+      return cyp.a;
+   }
 
-   double I();
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return b;
+   }
 
-   double J();
+   @Override
+   public float b(dey $$0, coq $$1, gv $$2) {
+      return 1.0F;
+   }
 }

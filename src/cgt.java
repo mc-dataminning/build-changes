@@ -1,60 +1,49 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cgt extends cds {
-   public cgt(cpn $$0, cfu.a $$1) {
-      super($$0, $$1);
+public class cgt extends cir {
+   public cgt(cir.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public cih b(cih $$0) {
-      gu $$1 = $$0.a();
-      cmm $$2 = $$0.q();
-      dcb $$3 = $$2.a_($$1);
-      cpn $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return cwc.a($$2, $$1) == 7 ? null : $$0;
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      List<bid> $$3 = $$0.a(bid.class, $$1.cG().g(2.0), $$0x -> $$0x != null && $$0x.bv() && $$0x.s() instanceof bwy);
+      ciw $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bid $$5 = $$3.get(0);
+         $$5.a($$5.h() - 0.5F);
+         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aou.cj, aov.g, 1.0F, 1.0F);
+         $$0.a($$1, dji.y, $$1.di());
+         if ($$1 instanceof akj $$6) {
+            ai.Q.a($$6, $$4, $$5);
+         }
+
+         return bgp.a(this.a($$4, $$1, new ciw(ciz.ut)), $$0.r_());
       } else {
-         ha $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         ehb $$7 = a($$0, $$1, cot.b.b);
+         if ($$7.c() == ehd.a.a) {
+            return bgp.c($$4);
          } else {
-            $$5 = $$0.k() == ha.b ? $$0.g() : ha.b;
-         }
-
-         int $$7 = 0;
-         gu.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               byo $$9 = $$0.o();
-               int $$10 = $$2.aj();
-               if ($$9 instanceof aig && $$8.v() >= $$10) {
-                  ((aig)$$9).b(sw.a("build.tooHigh", $$10 - 1).a(n.m), true);
+            if ($$7.c() == ehd.a.b) {
+               gv $$8 = $$7.a();
+               if (!$$0.a($$1, $$8)) {
+                  return bgp.c($$4);
                }
-               break;
-            }
 
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return cih.a($$0, $$8, $$5);
+               if ($$0.b_($$8).a(apo.a)) {
+                  $$0.a($$1, $$1.dp(), $$1.dr(), $$1.dv(), aou.ci, aov.g, 1.0F, 1.0F);
+                  $$0.a($$1, dji.y, $$8);
+                  return bgp.a(this.a($$4, $$1, ckv.a(new ciw(ciz.rv), ckw.c)), $$0.r_());
                }
-               break;
             }
 
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
+            return bgp.c($$4);
          }
-
-         return null;
       }
    }
 
-   @Override
-   protected boolean d() {
-      return false;
+   protected ciw a(ciw $$0, cbl $$1, ciw $$2) {
+      $$1.b(ape.c.b(this));
+      return ciy.a($$0, $$1, $$2);
    }
 }

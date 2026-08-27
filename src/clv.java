@@ -1,72 +1,115 @@
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-public class clv {
-   private final eei a;
-   private final eei b;
-   private final clv.a c;
-   private final clv.b d;
-   private final een e;
+public class clv extends clr {
+   private static final clw a = clw.a(ciz.tf, ciz.oF, ciz.rt, ciz.tr, ciz.ts, ciz.tv, ciz.tt, ciz.tw, ciz.tu, ciz.tx);
+   private static final clw b = clw.a(ciz.nK);
+   private static final clw c = clw.a(ciz.qk);
+   private static final Map<cir, cia.a> d = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(ciz.tf, cia.a.b);
+      $$0.put(ciz.oF, cia.a.e);
+      $$0.put(ciz.rt, cia.a.c);
+      $$0.put(ciz.tr, cia.a.d);
+      $$0.put(ciz.ts, cia.a.d);
+      $$0.put(ciz.tv, cia.a.d);
+      $$0.put(ciz.tt, cia.a.d);
+      $$0.put(ciz.tw, cia.a.d);
+      $$0.put(ciz.tu, cia.a.d);
+      $$0.put(ciz.tx, cia.a.d);
+   });
+   private static final clw e = clw.a(ciz.oG);
 
-   public clv(eei $$0, eei $$1, clv.a $$2, clv.b $$3, bfj $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = een.a($$4);
+   public clv(aep $$0, clp $$1) {
+      super($$0, $$1);
    }
 
-   public eei a() {
-      return this.b;
-   }
+   public boolean a(ceq $$0, cpk $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   public eei b() {
-      return this.a;
-   }
+      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
+         ciw $$8 = $$0.a($$7);
+         if (!$$8.b()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
 
-   public efb a(dcb $$0, cls $$1, gu $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   public efb a(dxe $$0, cls $$1, gu $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : eey.a();
-   }
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
 
-   public static enum a implements clv.c {
-      a(dca.a::b),
-      b(dca.a::a),
-      c(dca.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(amw.aO) ? eey.b() : eey.a());
+               $$5 = true;
+            } else if (e.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
 
-      private final clv.c e;
+               $$2 = true;
+            } else {
+               if (!($$8.d() instanceof chl)) {
+                  return false;
+               }
 
-      private a(clv.c $$0) {
-         this.e = $$0;
+               $$3 = true;
+            }
+         }
       }
 
-      @Override
-      public efb get(dcb $$0, cls $$1, gu $$2, een $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
-      }
+      return $$2 && $$3;
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(dxe::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(anb.a));
+   public ciw a(ceq $$0, ht $$1) {
+      ciw $$2 = new ciw(ciz.tB);
+      qs $$3 = $$2.a("Explosion");
+      cia.a $$4 = cia.a.a;
+      List<Integer> $$5 = Lists.newArrayList();
 
-      private final Predicate<dxe> e;
-
-      private b(Predicate<dxe> $$0) {
-         this.e = $$0;
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         ciw $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (a.a($$7)) {
+               $$4 = d.get($$7.d());
+            } else if (c.a($$7)) {
+               $$3.a("Flicker", true);
+            } else if (b.a($$7)) {
+               $$3.a("Trail", true);
+            } else if ($$7.d() instanceof chl) {
+               $$5.add(((chl)$$7.d()).d().f());
+            }
+         }
       }
 
-      public boolean a(dxe $$0) {
-         return this.e.test($$0);
-      }
+      $$3.b("Colors", $$5);
+      $$3.a("Type", (byte)$$4.a());
+      return $$2;
    }
 
-   public interface c {
-      efb get(dcb var1, cls var2, gu var3, een var4);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public ciw a(ht $$0) {
+      return new ciw(ciz.tB);
+   }
+
+   @Override
+   public cmb<?> aj_() {
+      return cmb.h;
    }
 }

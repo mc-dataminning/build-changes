@@ -35,32 +35,31 @@ public class Main {
          boolean $$16 = $$13 || $$11.has($$5);
          boolean $$17 = $$13 || $$11.has($$6);
          boolean $$18 = $$13 || $$11.has($$7);
-         jh $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, aa.b(), true);
+         ji $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, aa.b(), true);
          $$19.a();
       } else {
          $$1.printHelpOn(System.out);
       }
    }
 
-   private static <T extends ji> ji.a<T> a(BiFunction<jk, CompletableFuture<hg.b>, T> $$0, CompletableFuture<hg.b> $$1) {
+   private static <T extends jj> jj.a<T> a(BiFunction<jl, CompletableFuture<hh.b>, T> $$0, CompletableFuture<hh.b> $$1) {
       return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static jh a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
-      jh $$9 = new jh($$0, $$7, $$8);
-      jh.a $$10 = $$9.a($$2 || $$3);
-      $$10.a($$1x -> new mh($$1x, $$1).a(new mi()));
-      CompletableFuture<hg.b> $$11 = CompletableFuture.supplyAsync(me::a, ac.f());
-      jh.a $$12 = $$9.a($$2);
-      $$12.a(ks::new);
-      jh.a $$13 = $$9.a($$3);
-      $$13.a(a(md::new, $$11));
-      $$13.a(a(jo::a, $$11));
-      $$13.a(kl::a);
-      $$13.a(mb::new);
-      my<cpn> $$14 = $$13.a(a(mz::new, $$11));
-      my<cfu> $$15 = $$13.a($$2x -> new na($$2x, $$11, $$14.c()));
-      $$13.a(a(mk::new, $$11));
+   public static ji a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
+      ji $$9 = new ji($$0, $$7, $$8);
+      ji.a $$10 = $$9.a($$2 || $$3);
+      $$10.a($$1x -> new mi($$1x, $$1).a(new mj()));
+      CompletableFuture<hh.b> $$11 = CompletableFuture.supplyAsync(mf::a, ac.f());
+      ji.a $$12 = $$9.a($$2);
+      $$12.a(kt::new);
+      ji.a $$13 = $$9.a($$3);
+      $$13.a(a(me::new, $$11));
+      $$13.a(a(jp::a, $$11));
+      $$13.a(km::a);
+      $$13.a(mc::new);
+      mz<csk> $$14 = $$13.a(a(na::new, $$11));
+      mz<cir> $$15 = $$13.a($$2x -> new nb($$2x, $$11, $$14.c()));
       $$13.a(a(ml::new, $$11));
       $$13.a(a(mm::new, $$11));
       $$13.a(a(mn::new, $$11));
@@ -69,20 +68,23 @@ public class Main {
       $$13.a(a(mq::new, $$11));
       $$13.a(a(mr::new, $$11));
       $$13.a(a(ms::new, $$11));
-      $$13.a(a(mv::new, $$11));
+      $$13.a(a(mt::new, $$11));
       $$13.a(a(mw::new, $$11));
       $$13.a(a(mx::new, $$11));
-      $$13.a(a(nb::new, $$11));
+      $$13.a(a(my::new, $$11));
+      $$13.a(a(nc::new, $$11));
       $$13 = $$9.a($$4);
-      $$13.a($$1x -> new mg($$1x, $$1));
+      $$13.a($$1x -> new mh($$1x, $$1));
       $$13 = $$9.a($$5);
-      $$13.a(a(jv::new, $$11));
-      $$13.a(jw::new);
-      $$13.a(a(jx::new, $$11));
-      $$13.a(jy::new);
+      $$13.a(a(jw::new, $$11));
+      $$13.a(jx::new);
+      $$13.a(a(jy::new, $$11));
+      $$13.a(jz::new);
       $$13 = $$9.a($$3, "bundle");
-      $$13.a(ma::new);
-      $$13.a($$0x -> ko.a($$0x, sw.c("dataPack.bundle.description"), caw.a(cay.b)));
+      $$13.a(mb::new);
+      $$13.a($$0x -> kp.a($$0x, te.c("dataPack.bundle.description"), cdt.a(cdv.b)));
+      $$13 = $$9.a($$3, "trade_rebalance");
+      $$13.a($$0x -> kp.a($$0x, te.c("dataPack.trade_rebalance.description"), cdt.a(cdv.c)));
       return $$9;
    }
 }

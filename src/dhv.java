@@ -1,95 +1,432 @@
-public class dhv implements clz {
-   private int a;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   @Override
-   public int a(aif $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.X().b(cmi.G)) {
-         return 0;
-      } else {
-         apf $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.W() / 24000L;
-            if ($$4 < 5L || !$$0.N()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
+public class dhv {
+   private static final Codec<dhn<dey>> h = dhn.a(csk.o, dey.b, dhn.d.d, csl.a.n());
+   private static final Logger i = LogUtils.getLogger();
+   private static final String j = "UpgradeData";
+   private static final String k = "block_ticks";
+   private static final String l = "fluid_ticks";
+   public static final String a = "xPos";
+   public static final String b = "zPos";
+   public static final String c = "Heightmaps";
+   public static final String d = "isLightOn";
+   public static final String e = "sections";
+   public static final String f = "BlockLight";
+   public static final String g = "SkyLight";
+
+   public static dhp a(aki $$0, btw $$1, cor $$2, qs $$3) {
+      cor $$4 = new cor($$3.h("xPos"), $$3.h("zPos"));
+      if (!Objects.equals($$2, $$4)) {
+         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
+      }
+
+      dhs $$5 = $$3.b("UpgradeData", 10) ? new dhs($$3.p("UpgradeData"), $$0) : dhs.a;
+      boolean $$6 = $$3.q("isLightOn");
+      qy $$7 = $$3.c("sections", 10);
+      int $$8 = $$0.ak();
+      dhg[] $$9 = new dhg[$$8];
+      boolean $$10 = $$0.x_().g();
+      dgy $$11 = $$0.k();
+      dzq $$12 = $$11.p();
+      hs<cqi> $$13 = $$0.B_().d(jd.ap);
+      Codec<dho<hf<cqi>>> $$14 = a($$13);
+      boolean $$15 = false;
+
+      for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
+         qs $$17 = $$7.a($$16);
+         int $$18 = $$17.f("Y");
+         int $$19 = $$0.f($$18);
+         if ($$19 >= 0 && $$19 < $$9.length) {
+            dhn<dey> $$20;
+            if ($$17.b("block_states", 10)) {
+               $$20 = (dhn<dey>)h.parse(rd.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
             } else {
-               int $$5 = $$0.v().size();
-               if ($$5 < 1) {
-                  return 0;
+               $$20 = new dhn<>(csk.o, csl.a.n(), dhn.d.d);
+            }
+
+            dho<hf<cqi>> $$22;
+            if ($$17.b("biomes", 10)) {
+               $$22 = (dho<hf<cqi>>)$$14.parse(rd.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
+            } else {
+               $$22 = new dhn<>($$13.t(), $$13.f(cqp.b), dhn.d.e);
+            }
+
+            dhg $$24 = new dhg($$20, $$22);
+            $$9[$$19] = $$24;
+            hy $$25 = hy.a($$2, $$18);
+            $$1.a($$25, $$24);
+         }
+
+         boolean $$26 = $$17.b("BlockLight", 7);
+         boolean $$27 = $$10 && $$17.b("SkyLight", 7);
+         if ($$26 || $$27) {
+            if (!$$15) {
+               $$12.b($$2, true);
+               $$15 = true;
+            }
+
+            if ($$26) {
+               $$12.a(cpt.b, hy.a($$2, $$18), new dha($$17.m("BlockLight")));
+            }
+
+            if ($$27) {
+               $$12.a(cpt.a, hy.a($$2, $$18), new dha($$17.m("SkyLight")));
+            }
+         }
+      }
+
+      long $$28 = $$3.i("InhabitedTime");
+      dgz.a $$29 = a($$3);
+      dlk $$30;
+      if ($$3.b("blending_data", 10)) {
+         $$30 = (dlk)dlk.e.parse(new Dynamic(rd.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
+      } else {
+         $$30 = null;
+      }
+
+      dgu $$34;
+      if ($$29 == dgz.a.b) {
+         eim<csk> $$32 = eim.a($$3.c("block_ticks", 10), $$0x -> jc.f.b(aep.a($$0x)), $$2);
+         eim<eaa> $$33 = eim.a($$3.c("fluid_ticks", 10), $$0x -> jc.d.b(aep.a($$0x)), $$2);
+         $$34 = new dhf($$0.C(), $$2, $$5, $$32, $$33, $$28, $$9, a($$0, $$3), $$30);
+      } else {
+         eip<csk> $$35 = eip.a($$3.c("block_ticks", 10), $$0x -> jc.f.b(aep.a($$0x)), $$2);
+         eip<eaa> $$36 = eip.a($$3.c("fluid_ticks", 10), $$0x -> jc.d.b(aep.a($$0x)), $$2);
+         dhp $$37 = new dhp($$2, $$5, $$9, $$35, $$36, $$0, $$13, $$30);
+         $$34 = $$37;
+         $$37.b($$28);
+         if ($$3.b("below_zero_retrogen", 10)) {
+            djv.a.parse(new Dynamic(rd.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
+         }
+
+         dgz $$39 = dgz.a($$3.l("Status"));
+         $$37.a($$39);
+         if ($$39.b(dgz.k)) {
+            $$37.a($$12);
+         }
+      }
+
+      $$34.b($$6);
+      qs $$40 = $$3.p("Heightmaps");
+      EnumSet<dkh.a> $$41 = EnumSet.noneOf(dkh.a.class);
+
+      for (dkh.a $$42 : $$34.j().h()) {
+         String $$43 = $$42.a();
+         if ($$40.b($$43, 12)) {
+            $$34.a($$42, $$40.o($$43));
+         } else {
+            $$41.add($$42);
+         }
+      }
+
+      dkh.a($$34, $$41);
+      qs $$44 = $$3.p("structures");
+      $$34.a(a(dvn.a($$0), $$44, $$0.A()));
+      $$34.b(a($$0.B_(), $$2, $$44));
+      if ($$3.q("shouldSave")) {
+         $$34.a(true);
+      }
+
+      qy $$45 = $$3.c("PostProcessing", 9);
+
+      for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
+         qy $$47 = $$45.b($$46);
+
+         for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
+            $$34.a($$47.d($$48), $$46);
+         }
+      }
+
+      if ($$29 == dgz.a.b) {
+         return new dhe((dhf)$$34, false);
+      } else {
+         dhp $$49 = (dhp)$$34;
+         qy $$50 = $$3.c("entities", 10);
+
+         for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
+            $$49.b($$50.a($$51));
+         }
+
+         qy $$52 = $$3.c("block_entities", 10);
+
+         for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
+            qs $$54 = $$52.a($$53);
+            $$34.a($$54);
+         }
+
+         qs $$55 = $$3.p("CarvingMasks");
+
+         for (String $$56 : $$55.e()) {
+            dkd.a $$57 = dkd.a.valueOf($$56);
+            $$49.a($$57, new dgt($$55.o($$56), $$34.C_()));
+         }
+
+         return $$49;
+      }
+   }
+
+   private static void a(cor $$0, int $$1, String $$2) {
+      i.error("Recoverable errors when loading section [" + $$0.e + ", " + $$1 + ", " + $$0.f + "]: " + $$2);
+   }
+
+   private static Codec<dho<hf<cqi>>> a(hs<cqi> $$0) {
+      return dhn.b($$0.t(), $$0.r(), dhn.d.e, $$0.f(cqp.b));
+   }
+
+   public static qs a(aki $$0, dgu $$1) {
+      cor $$2 = $$1.f();
+      qs $$3 = re.g(new qs());
+      $$3.a("xPos", $$2.e);
+      $$3.a("yPos", $$1.al());
+      $$3.a("zPos", $$2.f);
+      $$3.a("LastUpdate", $$0.V());
+      $$3.a("InhabitedTime", $$1.u());
+      $$3.a("Status", jc.o.b($$1.j()).toString());
+      dlk $$4 = $$1.t();
+      if ($$4 != null) {
+         dlk.e.encodeStart(rd.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
+      }
+
+      djv $$5 = $$1.x();
+      if ($$5 != null) {
+         djv.a.encodeStart(rd.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
+      }
+
+      dhs $$6 = $$1.r();
+      if (!$$6.a()) {
+         $$3.a("UpgradeData", $$6.b());
+      }
+
+      dhg[] $$7 = $$1.d();
+      qy $$8 = new qy();
+      dzq $$9 = $$0.k().a();
+      hs<cqi> $$10 = $$0.B_().d(jd.ap);
+      Codec<dho<hf<cqi>>> $$11 = a($$10);
+      boolean $$12 = $$1.v();
+
+      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
+         int $$14 = $$1.f($$13);
+         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
+         dha $$16 = $$9.a(cpt.b).a(hy.a($$2, $$13));
+         dha $$17 = $$9.a(cpt.a).a(hy.a($$2, $$13));
+         if ($$15 || $$16 != null || $$17 != null) {
+            qs $$18 = new qs();
+            if ($$15) {
+               dhg $$19 = $$7[$$14];
+               $$18.a("block_states", (rl)h.encodeStart(rd.a, $$19.h()).getOrThrow(false, i::error));
+               $$18.a("biomes", (rl)$$11.encodeStart(rd.a, $$19.i()).getOrThrow(false, i::error));
+            }
+
+            if ($$16 != null && !$$16.d()) {
+               $$18.a("BlockLight", $$16.a());
+            }
+
+            if ($$17 != null && !$$17.d()) {
+               $$18.a("SkyLight", $$17.a());
+            }
+
+            if (!$$18.g()) {
+               $$18.a("Y", (byte)$$13);
+               $$8.add($$18);
+            }
+         }
+      }
+
+      $$3.a("sections", $$8);
+      if ($$12) {
+         $$3.a("isLightOn", true);
+      }
+
+      qy $$20 = new qy();
+
+      for (gv $$21 : $$1.c()) {
+         qs $$22 = $$1.g($$21);
+         if ($$22 != null) {
+            $$20.add($$22);
+         }
+      }
+
+      $$3.a("block_entities", $$20);
+      if ($$1.j().g() == dgz.a.a) {
+         dhp $$23 = (dhp)$$1;
+         qy $$24 = new qy();
+         $$24.addAll($$23.E());
+         $$3.a("entities", $$24);
+         qs $$25 = new qs();
+
+         for (dkd.a $$26 : dkd.a.values()) {
+            dgt $$27 = $$23.a($$26);
+            if ($$27 != null) {
+               $$25.a($$26.toString(), $$27.a());
+            }
+         }
+
+         $$3.a("CarvingMasks", $$25);
+      }
+
+      a($$0, $$3, $$1.q());
+      $$3.a("PostProcessing", a($$1.n()));
+      qs $$28 = new qs();
+
+      for (Entry<dkh.a, dkh> $$29 : $$1.e()) {
+         if ($$1.j().h().contains($$29.getKey())) {
+            $$28.a($$29.getKey().a(), new qz($$29.getValue().a()));
+         }
+      }
+
+      $$3.a("Heightmaps", $$28);
+      $$3.a("structures", a(dvn.a($$0), $$2, $$1.g(), $$1.h()));
+      return $$3;
+   }
+
+   private static void a(aki $$0, qs $$1, dgu.a $$2) {
+      long $$3 = $$0.u_().e();
+      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> jc.f.b($$0x).toString()));
+      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> jc.d.b($$0x).toString()));
+   }
+
+   public static dgz.a a(@Nullable qs $$0) {
+      return $$0 != null ? dgz.a($$0.l("Status")).g() : dgz.a.a;
+   }
+
+   @Nullable
+   private static dhf.c a(aki $$0, qs $$1) {
+      qy $$2 = a($$1, "entities");
+      qy $$3 = a($$1, "block_entities");
+      return $$2 == null && $$3 == null ? null : $$3x -> {
+         if ($$2 != null) {
+            $$0.a(bik.a($$2, $$0));
+         }
+
+         if ($$3 != null) {
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               qs $$5 = $$3.a($$4);
+               boolean $$6 = $$5.q("keepPacked");
+               if ($$6) {
+                  $$3x.a($$5);
                } else {
-                  byo $$6 = $$0.v().get($$3.a($$5));
-                  if ($$6.G_()) {
-                     return 0;
-                  } else if ($$0.a($$6.di(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     gu.a $$9 = $$6.di().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        he<cnk> $$11 = $$0.s($$9);
-                        if ($$11.a(amv.af)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dhk.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
+                  gv $$7 = dck.c($$5);
+                  dck $$8 = dck.a($$7, $$3x.a_($$7), $$5);
+                  if ($$8 != null) {
+                     $$3x.a($$8);
                   }
                }
             }
          }
-      }
+      };
    }
 
-   private boolean a(aif $$0, gu $$1, apf $$2, boolean $$3) {
-      dcb $$4 = $$0.a_($$1);
-      if (!cmx.a($$0, $$1, $$4, $$4.u(), bfn.ay)) {
-         return false;
-      } else if (!bwd.b(bfn.ay, $$0, bgd.p, $$1, $$2)) {
-         return false;
-      } else {
-         bwd $$5 = bfn.ay.a((cmm)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gg();
-            }
+   @Nullable
+   private static qy a(qs $$0, String $$1) {
+      qy $$2 = $$0.c($$1, 10);
+      return $$2.isEmpty() ? null : $$2;
+   }
 
-            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bgd.p, null, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
+   private static qs a(dvn $$0, cor $$1, Map<dux, dvf> $$2, Map<dux, LongSet> $$3) {
+      qs $$4 = new qs();
+      qs $$5 = new qs();
+      hs<dux> $$6 = $$0.b().d(jd.az);
+
+      for (Entry<dux, dvf> $$7 : $$2.entrySet()) {
+         aep $$8 = $$6.b($$7.getKey());
+         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
+      }
+
+      $$4.a("starts", $$5);
+      qs $$9 = new qs();
+
+      for (Entry<dux, LongSet> $$10 : $$3.entrySet()) {
+         if (!$$10.getValue().isEmpty()) {
+            aep $$11 = $$6.b($$10.getKey());
+            $$9.a($$11.toString(), new qz($$10.getValue()));
          }
       }
+
+      $$4.a("References", $$9);
+      return $$4;
+   }
+
+   private static Map<dux, dvf> a(dvn $$0, qs $$1, long $$2) {
+      Map<dux, dvf> $$3 = Maps.newHashMap();
+      hs<dux> $$4 = $$0.b().d(jd.az);
+      qs $$5 = $$1.p("starts");
+
+      for (String $$6 : $$5.e()) {
+         aep $$7 = aep.a($$6);
+         dux $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.error("Unknown structure start: {}", $$7);
+         } else {
+            dvf $$9 = dvf.a($$0, $$5.p($$6), $$2);
+            if ($$9 != null) {
+               $$3.put($$8, $$9);
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   private static Map<dux, LongSet> a(ht $$0, cor $$1, qs $$2) {
+      Map<dux, LongSet> $$3 = Maps.newHashMap();
+      hs<dux> $$4 = $$0.d(jd.az);
+      qs $$5 = $$2.p("References");
+
+      for (String $$6 : $$5.e()) {
+         aep $$7 = aep.a($$6);
+         dux $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
+         } else {
+            long[] $$9 = $$5.o($$6);
+            if ($$9.length != 0) {
+               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
+                  cor $$3x = new cor($$2x);
+                  if ($$3x.a($$1) > 8) {
+                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
+                     return false;
+                  } else {
+                     return true;
+                  }
+               }).toArray()));
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   public static qy a(ShortList[] $$0) {
+      qy $$1 = new qy();
+
+      for (ShortList $$2 : $$0) {
+         qy $$3 = new qy();
+         if ($$2 != null) {
+            ShortListIterator var7 = $$2.iterator();
+
+            while (var7.hasNext()) {
+               Short $$4 = (Short)var7.next();
+               $$3.add(rg.a($$4));
+            }
+         }
+
+         $$1.add($$3);
+      }
+
+      return $$1;
    }
 }

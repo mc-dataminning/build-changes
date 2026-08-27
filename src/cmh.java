@@ -1,30 +1,65 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-
-public class cmh extends dyj {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   private cmh(LongSet $$0) {
-      this.c = $$0;
+public class cmh extends clr {
+   public cmh(aep $$0, clp $$1) {
+      super($$0, $$1);
    }
 
-   public cmh() {
-      this(new LongOpenHashSet());
+   public boolean a(ceq $$0, cpk $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ciw $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (csk.a($$5.d()) instanceof czj) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof chl)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
    }
 
-   public static cmh b(qr $$0) {
-      return new cmh(new LongOpenHashSet($$0.o("Forced")));
+   public ciw a(ceq $$0, ht $$1) {
+      ciw $$2 = ciw.b;
+      chl $$3 = (chl)ciz.qu;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ciw $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cir $$6 = $$5.d();
+            if (csk.a($$6) instanceof czj) {
+               $$2 = $$5;
+            } else if ($$6 instanceof chl) {
+               $$3 = (chl)$$6;
+            }
+         }
+      }
+
+      ciw $$7 = czj.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
    }
 
    @Override
-   public qr a(qr $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   public LongSet a() {
-      return this.c;
+   @Override
+   public cmb<?> aj_() {
+      return cmb.m;
    }
 }

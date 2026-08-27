@@ -1,18 +1,38 @@
-public class eqe extends epi {
-   private final eov a;
-   private final sw b;
-   private final sw c;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public eqe(int $$0, int $$1, int $$2, int $$3, sw $$4, epi.c $$5, eov $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, x);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = sy.a($$4.e(), ts.a.c(true));
+public class eqe {
+   private final fif a;
+   private int b = -1;
+   @Nullable
+   private Consumer<qs> c;
+
+   public eqe(fif $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
-      sw $$4 = this.n() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.p(), this.r(), 16777215 | apa.f(this.t * 255.0F) << 24);
+   public boolean a(int $$0, @Nullable qs $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private int a(Consumer<qs> $$0) {
+      this.c = $$0;
+      return ++this.b;
+   }
+
+   public void a(int $$0, Consumer<qs> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new abn($$2, $$0));
+   }
+
+   public void a(gv $$0, Consumer<qs> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aay($$2, $$0));
    }
 }

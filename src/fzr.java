@@ -1,74 +1,58 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
 
 public class fzr {
-   public static final fzr a = new fzr(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<fzn<fzr.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   public static final fzs a = new fzs();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final fzr e = new fzr(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public fzt a(int $$0, int $$1) {
+         return new fzt($$0, $$1);
+      }
+   };
+   private final List<fzq> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
 
-   protected fzr(Ticker $$0) {
-      this.c = $$0;
+   public fzr(List<fzq> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   public synchronized void a(fzn<fzr.a> $$0) {
-      this.a($$0, (Function<fzn<fzr.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(fzn<fzr.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<fzn<fzr.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(fzn<fzr.a> $$0, Function<fzn<fzr.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(fzn<fzr.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+   public fzt a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new fzt(this.g, this.h) : new fzt(this.g, $$1);
+      } else if (this.h != -1) {
+         return new fzt($$0, this.h);
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+         int $$2 = Math.min($$0, $$1);
+         return new fzt($$2, $$2);
       }
    }
 
-   public void a(fzk $$0) {
-      $$0.send(fzl.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((fzn<fzr.a>)$$1, new fzr.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), fzl.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(fzn.B, new fzr.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   public int a() {
+      return this.i;
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   public boolean b() {
+      return this.j;
    }
 
-   public static record a(int b) {
-      public static final Codec<fzr.a> a = Codec.INT.xmap(fzr.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+   public void a(fzr.a $$0) {
+      for (fzq $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
       }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

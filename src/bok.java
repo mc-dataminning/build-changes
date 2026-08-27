@@ -1,32 +1,21 @@
-public class bok extends bnf {
-   private final bwv b;
-   private int c;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public bok(bwv $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+public class bok {
+   public static <E extends cap> bkp<E> a(Function<E, Optional<? extends biw>> $$0) {
+      return boa.a(
+         (Function<boa.b<E>, ? extends App<boa.c<E>, bod<E>>>)($$1 -> $$1.group($$1.c(bry.ax), $$1.c(bry.o), $$1.a(bry.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends biw> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::a).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

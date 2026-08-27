@@ -1,32 +1,80 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bxn {
-   public static bhs<bfz> a(int $$0, int $$1) {
-      return bld.a(
-         (Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$2 -> $$2.group($$2.b(bpb.ac), $$2.b(bpb.K), $$2.a(bpb.ad), $$2.a(bpb.ae))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eP().b()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
+public class bxn extends bxa {
+   private boolean b;
+   @Nullable
+   private eaq c;
+   @Nullable
+   private ehf d;
 
-                        return true;
-                     }
-                  }))
-      );
+   public bxn(bwy $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void c() {
+      if (!this.b && this.c != null) {
+         gv $$0 = this.a.dK().a(dkh.a.f, dnk.a(this.a.p()));
+         if (!$$0.a(this.a.di(), 10.0)) {
+            this.a.fW().a(bxo.a);
+         }
+      } else {
+         this.b = false;
+         this.j();
+      }
+   }
+
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void j() {
+      int $$0 = this.a.t();
+      ehf $$1 = this.a.D(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.fX() != null && this.a.fX().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
+   }
+
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            ia $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.ee().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new ehf((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public ehf g() {
+      return this.d;
+   }
+
+   @Override
+   public bxo<bxn> i() {
+      return bxo.e;
    }
 }

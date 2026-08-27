@@ -1,42 +1,29 @@
-public record ahv(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
-   public clt a() {
-      return new clt(hx.a(this.a), hx.a(this.b));
+public class ahv {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.save.failed"));
+
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ds)$$0x.getSource(), false)))
+            .then(dt.a("flush").executes($$0x -> a((ds)$$0x.getSource(), true)))
+      );
    }
 
-   public long b() {
-      return a(this.a, this.b);
-   }
-
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return clt.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   private static int a(ds $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> te.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
+      } else {
+         $$0.a(() -> te.c("commands.save.success"), true);
+         return 1;
+      }
    }
 }

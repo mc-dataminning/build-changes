@@ -1,37 +1,53 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public class axj extends axd {
-   public axj(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class axj extends asv {
+   private static final Logger b = LogUtils.getLogger();
+
+   public axj(Schema $$0) {
+      super($$0, aym.a);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:bed");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  $$0xx = this.d($$0xx);
+                  $$0xx = this.c($$0xx);
+                  return this.b($$0xx);
+               }))
+      );
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         avw.i,
-         () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(avw.z.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(avw.o.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(avw.o.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(avw.o.in($$0), DSL.constType(DSL.string())))
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
             )
       );
-      $$0.registerType(false, avw.z, () -> DSL.constType(a()));
-      $$0.registerType(false, avw.o, () -> DSL.constType(a()));
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update(
+         "CustomBossEvents",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
+                                 b.warn("CustomBossEvents contains invalid UUIDs.");
+                                 return $$0xxxxx;
+                              }))))
+                  )
+            )
+      );
    }
 }

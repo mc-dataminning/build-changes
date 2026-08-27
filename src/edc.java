@@ -1,63 +1,81 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
 
-public final class edc implements edf {
-   final edf a;
-   final edf b;
+public abstract class edc implements ecu {
+   protected final efh[] d;
+   private final Predicate<ech> c;
 
-   edc(edf $$0, edf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   protected edc(efh[] $$0) {
+      this.d = $$0;
+      this.c = efj.a($$0);
    }
 
-   @Override
-   public ede b() {
-      return edg.c;
+   public void a(ecs $$0) {
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].a($$0.b(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public int a(dzk $$0) {
-      int $$1 = this.a.a($$0);
-      float $$2 = this.b.b($$0);
-      apf $$3 = $$0.b();
-      int $$4 = 0;
+   protected final boolean a(ech $$0) {
+      return this.c.test($$0);
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
+   public abstract edd a();
+
+   public abstract static class a<T extends edc.a<T>> implements efa<T> {
+      private final List<efh> a = Lists.newArrayList();
+
+      protected abstract T at_();
+
+      public T a(efh.a $$0) {
+         this.a.add($$0.build());
+         return this.at_();
+      }
+
+      public final T e() {
+         return this.at_();
+      }
+
+      protected efh[] f() {
+         return this.a.toArray(new efh[0]);
+      }
+
+      public ect.a a(edc.a<?> $$0) {
+         return new ect.a(this, $$0);
+      }
+
+      public ecy.a b(edc.a<?> $$0) {
+         return new ecy.a(this, $$0);
+      }
+
+      public edg.a c(edc.a<?> $$0) {
+         return new edg.a(this, $$0);
+      }
+
+      public abstract edc b();
+   }
+
+   public abstract static class b<T extends edc> implements ecq<T> {
+      public final void b(JsonObject $$0, T $$1, JsonSerializationContext $$2) {
+         if (!ArrayUtils.isEmpty($$1.d)) {
+            $$0.add("conditions", $$2.serialize($$1.d));
          }
+
+         this.a($$0, $$1, $$2);
       }
 
-      return $$4;
-   }
-
-   @Override
-   public float b(dzk $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static edc a(int $$0, float $$1) {
-      return new edc(edd.a((float)$$0), edd.a($$1));
-   }
-
-   @Override
-   public Set<ebt<?>> a() {
-      return Sets.union(this.a.a(), this.b.a());
-   }
-
-   public static class a implements dzt<edc> {
-      public edc b(JsonObject $$0, JsonDeserializationContext $$1) {
-         edf $$2 = aor.a($$0, "n", $$1, edf.class);
-         edf $$3 = aor.a($$0, "p", $$1, edf.class);
-         return new edc($$2, $$3);
+      public final T b(JsonObject $$0, JsonDeserializationContext $$1) {
+         efh[] $$2 = arf.a($$0, "conditions", new efh[0], $$1, efh[].class);
+         return this.b($$0, $$1, $$2);
       }
 
-      public void a(JsonObject $$0, edc $$1, JsonSerializationContext $$2) {
-         $$0.add("n", $$2.serialize($$1.a));
-         $$0.add("p", $$2.serialize($$1.b));
-      }
+      public abstract void a(JsonObject var1, T var2, JsonSerializationContext var3);
+
+      public abstract T b(JsonObject var1, JsonDeserializationContext var2, efh[] var3);
    }
 }

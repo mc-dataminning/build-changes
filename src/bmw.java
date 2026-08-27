@@ -1,151 +1,98 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.EnumMap;
-import java.util.EnumSet;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.List;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class bmw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final boj b = new boj(Integer.MAX_VALUE, new bmv() {
+public class bmw<U> implements Iterable<U> {
+   protected final List<bmw.a<U>> a;
+   private final art b = art.a();
+
+   public bmw() {
+      this.a = Lists.newArrayList();
+   }
+
+   private bmw(List<bmw.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<bmw<U>> a(Codec<U> $$0) {
+      return bmw.a.a($$0).listOf().xmap(bmw::new, $$0x -> $$0x.a);
+   }
+
+   public bmw<U> a(U $$0, int $$1) {
+      this.a.add(new bmw.a<>($$0, $$1));
+      return this;
+   }
+
+   public bmw<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bmw.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(bmw.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bmw.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
       @Override
-      public boolean a() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bmv.a, boj> c = new EnumMap<>(bmv.a.class);
-   private final Set<boj> d = Sets.newLinkedHashSet();
-   private final Supplier<ban> e;
-   private final EnumSet<bmv.a> f = EnumSet.noneOf(bmv.a.class);
-   private int g;
-   private int h = 3;
-
-   public bmw(Supplier<ban> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0, bmv $$1) {
-      this.d.add(new boj($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<bmv> $$0) {
-      this.d.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(bmv $$0) {
-      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(boj::h).forEach(boj::d);
-      this.d.removeIf($$1 -> $$1.k() == $$0);
-   }
-
-   private static boolean a(boj $$0, EnumSet<bmv.a> $$1) {
-      for (bmv.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
+      public String toString() {
+         return this.b + ":" + this.a;
       }
 
-      return false;
-   }
-
-   private static boolean a(boj $$0, Map<bmv.a, boj> $$1) {
-      for (bmv.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, b).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      ban $$0 = this.e.get();
-      $$0.a("goalCleanup");
-
-      for (boj $$1 : this.d) {
-         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
-            $$1.d();
-         }
-      }
-
-      Iterator<Entry<bmv.a, boj>> $$2 = this.c.entrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<bmv.a, boj> $$3 = $$2.next();
-         if (!$$3.getValue().h()) {
-            $$2.remove();
-         }
-      }
-
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (boj $$4 : this.d) {
-         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
-            for (bmv.a $$5 : $$4.j()) {
-               boj $$6 = this.c.getOrDefault($$5, b);
-               $$6.d();
-               this.c.put($$5, $$4);
+      public static <E> Codec<bmw.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bmw.a<E>>() {
+            public <T> DataResult<Pair<bmw.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bmw.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
             }
 
-            $$4.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      ban $$1 = this.e.get();
-      $$1.a("goalTick");
-
-      for (boj $$2 : this.d) {
-         if ($$2.h() && ($$0 || $$2.K_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<boj> b() {
-      return this.d;
-   }
-
-   public Stream<boj> c() {
-      return this.d.stream().filter(boj::h);
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(bmv.a $$0) {
-      this.f.add($$0);
-   }
-
-   public void b(bmv.a $$0) {
-      this.f.remove($$0);
-   }
-
-   public void a(bmv.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
-         this.a($$0);
+            public <T> DataResult<T> a(bmw.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
       }
    }
 }

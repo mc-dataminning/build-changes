@@ -1,69 +1,32 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 
-public class dpo extends dpw {
+public class dpo implements dpp {
    public static final Codec<dpo> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aoi.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bdc.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dpo::new)
+      $$0 -> $$0.group(gv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dpo::new)
    );
-   private final int b;
-   private final bdc h;
+   private final Optional<gv> b;
+   private final boolean c;
 
-   public dpo(int $$0, int $$1, int $$2, int $$3, bdc $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   private dpo(Optional<gv> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected dpx<?> a() {
-      return dpx.g;
+   public static dpo a(gv $$0, boolean $$1) {
+      return new dpo(Optional.of($$0), $$1);
    }
 
-   @Override
-   public List<doe.a> a(cms $$0, BiConsumer<gu, dcb> $$1, apf $$2, int $$3, gu $$4, dno $$5) {
-      ha $$6 = ha.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      gu.a $$8 = $$4.j();
-      gu $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<doe.a> $$10 = Lists.newArrayList();
+   public static dpo a() {
+      return new dpo(Optional.empty(), false);
+   }
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
+   public Optional<gv> b() {
+      return this.b;
+   }
 
-         if (dma.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new doe.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ha.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dma.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new doe.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   public boolean c() {
+      return this.c;
    }
 }

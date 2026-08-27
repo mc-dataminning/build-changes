@@ -1,38 +1,27 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ene {
-   private final fex a;
-   private int b = -1;
-   @Nullable
-   private Consumer<qr> c;
+public class ene extends end {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public ene(fex $$0) {
-      this.a = $$0;
-   }
+   public static ene a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      ene $$3 = new ene();
 
-   public boolean a(int $$0, @Nullable qr $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+      try {
+         $$3.a = epa.a("downloadLink", $$2, "");
+         $$3.b = epa.a("resourcePackUrl", $$2, "");
+         $$3.c = epa.a("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
-   }
 
-   private int a(Consumer<qr> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<qr> $$1) {
-      int $$2 = this.a($$1);
-      this.a.a(new zs($$2, $$0));
-   }
-
-   public void a(gu $$0, Consumer<qr> $$1) {
-      int $$2 = this.a($$1);
-      this.a.a(new ze($$2, $$0));
+      return $$3;
    }
 }

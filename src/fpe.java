@@ -1,27 +1,41 @@
-public class fpe extends fox<bzb> {
-   private final fpw a;
+public class fpe implements fpg<dci> {
+   public static final gak a = new gak(fyf.e, new aep("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fhj c;
 
-   public fpe(foy.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public fpe(fph.a $$0) {
+      fhj $$1 = $$0.a(fhi.k);
+      this.c = $$1.b("bell_body");
    }
 
-   public void a(bzb $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.k()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhs $$2 = $$1.a("bell_body", fho.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fhl.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fho.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fhl.a(-8.0F, -12.0F, -8.0F));
+      return fhp.a($$0, 32, 32);
+   }
+
+   public void a(dci $$0, float $$1, elh $$2, fng $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = aro.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == hb.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == hb.d) {
+            $$7 = $$9;
+         } else if ($$0.c == hb.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == hb.e) {
+            $$8 = $$9;
+         }
       }
 
-      this.a.a($$0.j(), cfw.h, $$5, fum.d, $$3, $$4, $$0.dI(), $$0.af());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public acq a(bzb $$0) {
-      return fuu.e;
+      this.c.e = $$7;
+      this.c.g = $$8;
+      ell $$10 = a.a($$3, fno::b);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

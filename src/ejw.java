@@ -1,43 +1,48 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.system.MemoryUtil;
 
 public class ejw {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final Object[] d;
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   private ejw(String $$0, @Nullable Object[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public sw a(sw $$0) {
-      if (!fvz.a(this.c)) {
-         return $$0;
-      } else {
-         return this.d == null ? sw.c(this.c) : sw.a(this.c, this.d);
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? ase.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
       }
+
+      return $$3;
    }
 
-   public static ejw a(JsonObject $$0) {
-      String $$1 = emb.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
+   }
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
+      } else {
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
+
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
          }
-      } else {
-         $$5 = null;
       }
-
-      return new ejw($$1, $$5);
    }
 }

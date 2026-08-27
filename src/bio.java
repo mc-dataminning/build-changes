@@ -1,32 +1,83 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class bio extends bvh {
+   private static final adx<Integer> bX = aea.a(bio.class, adz.b);
 
-public class bio {
-   public static <T extends bfz> bhs<bfz> a(bfn<? extends T> $$0, int $$1, bpb<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   public bio(bik<? extends bio> $$0, cpk $$1) {
+      super($$0, $$1);
    }
 
-   public static <E extends bfz, T extends bfz> bhs<E> a(bfn<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bpb<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bfz> $$8 = $$2x -> $$0.equals($$2x.ae()) && $$3.test((T)$$2x);
-      return bld.a(
-         (Function<bld.b<E>, ? extends App<bld.c<E>, blg<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bpb.n), $$6x.c(bpb.m), $$6x.b(bpb.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     bpd $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bfz> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((bfj)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bic($$5xxxx, true));
-                           $$8x.a(new bpe(new bic($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   @Override
+   protected iu p() {
+      return iw.aJ;
+   }
+
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(bX, 0);
+   }
+
+   @Override
+   protected aot q() {
+      return aou.jC;
+   }
+
+   @Override
+   protected aot r() {
+      return aou.jz;
+   }
+
+   @Override
+   protected aot d(bhe $$0) {
+      return aou.jB;
+   }
+
+   @Override
+   protected aot h_() {
+      return aou.jA;
+   }
+
+   @Override
+   public void b(qs $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.t());
+   }
+
+   @Override
+   public void a(qs $$0) {
+      super.a($$0);
+      this.c($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      int $$0 = this.t();
+      if ($$0 > 0) {
+         this.c($$0 - 1);
+      }
+
+      this.dK().a(iw.aK, this.d(0.6), this.ds(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(bhe $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.c(100);
+      }
+
+      return $$2;
+   }
+
+   private void c(int $$0) {
+      this.an.b(bX, $$0);
+   }
+
+   public int t() {
+      return this.an.b(bX);
+   }
+
+   public static boolean a(bik<? extends biw> $$0, cpz $$1, bja $$2, gv $$3, art $$4) {
+      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csl.G);
    }
 }

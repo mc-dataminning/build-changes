@@ -1,32 +1,70 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eds implements edt<MinecraftServer> {
-   final acq a;
+public class eds extends edv {
+   private static final Logger a = LogUtils.getLogger();
+   final aep b;
 
-   public eds(acq $$0) {
-      this.a = $$0;
+   eds(efh[] $$0, aep $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public void a(MinecraftServer $$0, edv<MinecraftServer> $$1, long $$2) {
-      ade $$3 = $$0.aA();
+   @Override
+   public edx b() {
+      return edy.A;
+   }
 
-      for (dn $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.d());
+   @Override
+   public void a(ecs $$0) {
+      ecj<edw> $$1 = new ecj<>(ecm.b, this.b);
+      if ($$0.a($$1)) {
+         $$0.a("Function " + this.b + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown function table called " + this.b));
       }
    }
 
-   public static class a extends edt.a<MinecraftServer, eds> {
-      public a() {
-         super(new acq("function_tag"), eds.class);
+   @Override
+   protected ciw a(ciw $$0, ech $$1) {
+      edw $$2 = $$1.a().getElement(ecm.b, this.b);
+      if ($$2 == null) {
+         a.warn("Unknown function: {}", this.b);
+         return $$0;
+      } else {
+         ech.c<?> $$3 = ech.a($$2);
+         if ($$1.b($$3)) {
+            ciw var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            a.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
+   }
+
+   public static edv.a<?> a(aep $$0) {
+      return a($$1 -> new eds($$1, $$0));
+   }
+
+   public static class a extends edv.c<eds> {
+      public void a(JsonObject $$0, eds $$1, JsonSerializationContext $$2) {
+         $$0.addProperty("name", $$1.b.toString());
       }
 
-      public void a(qr $$0, eds $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public eds a(qr $$0) {
-         acq $$1 = new acq($$0.l("Name"));
-         return new eds($$1);
+      public eds a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
+         aep $$3 = new aep(arf.i($$0, "name"));
+         return new eds($$2, $$3);
       }
    }
 }

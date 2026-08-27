@@ -1,117 +1,60 @@
-import java.util.OptionalInt;
+public class ctu extends cvc {
+   private final dey a;
 
-public class ctu extends cpn implements cwo {
-   public static final int a = 7;
-   public static final ddb b = dcr.aC;
-   public static final dcs c = dcr.v;
-   public static final dcs d = dcr.C;
-   private static final int e = 1;
-
-   public ctu(dca.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   public ctu(csk $$0, dex.d $$1) {
+      super($$1);
+      this.a = $$0.n();
    }
 
    @Override
-   public efb b_(dcb $$0, cls $$1, gu $$2) {
-      return eey.a();
-   }
-
-   @Override
-   public boolean e_(dcb $$0) {
-      return $$0.c(b) == 7 && !$$0.c(c);
-   }
-
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean h(dcb $$0) {
-      return !$$0.c(c) && $$0.c(b) == 7;
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(dcb $$0, cls $$1, gu $$2) {
-      return 1;
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(b) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dcb a(dcb $$0, cmn $$1, gu $$2) {
-      int $$3 = 7;
-      gu.a $$4 = new gu.a();
-
-      for (ha $$5 : ha.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(b, Integer.valueOf($$3));
-   }
-
-   private static int o(dcb $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dcb $$0) {
-      if ($$0.a(amw.t)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+   public void a(cpk $$0, gv $$1, dey $$2, dey $$3, byd $$4) {
+      if (b($$0, $$1, $$3)) {
+         $$0.a($$1, this.a, 3);
       }
    }
 
    @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(d) ? dxf.c.a(false) : super.c_($$0);
+   public dey a(cle $$0) {
+      coq $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      dey $$3 = $$1.a_($$2);
+      return b($$1, $$2, $$3) ? this.a : super.a($$0);
    }
 
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$1.q($$2.c())) {
-         if ($$3.a(15) == 1) {
-            gu $$4 = $$2.d();
-            dcb $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ha.b)) {
-               apd.a($$1, $$2, $$3, iv.m);
+   private static boolean b(coq $$0, gv $$1, dey $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(coq $$0, gv $$1) {
+      boolean $$2 = false;
+      gv.a $$3 = $$1.j();
+
+      for (hb $$4 : hb.values()) {
+         dey $$5 = $$0.a_($$3);
+         if ($$4 != hb.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
             }
          }
       }
+
+      return $$2;
+   }
+
+   private static boolean n(dey $$0) {
+      return $$0.u().a(apo.a);
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(b, c, d);
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return a($$3, $$4) ? this.a : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dcb a(cih $$0) {
-      dxe $$1 = $$0.q().b_($$0.a());
-      dcb $$2 = this.n().a(c, Boolean.valueOf(true)).a(d, Boolean.valueOf($$1.a() == dxf.c));
-      return a($$2, $$0.q(), $$0.a());
+   public int d(dey $$0, coq $$1, gv $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

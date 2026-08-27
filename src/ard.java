@@ -1,28 +1,42 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class ard extends DataFix {
-   public ard(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class ard implements ash, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
+
+   public ard(Executor $$0) {
+      this.d = $$1 -> {
+         if (!this.e) {
+            $$0.execute($$1);
+         }
+      };
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.r);
-      Type<?> $$1 = this.getOutputSchema().getType(avw.r);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(avw.r.typeName(), DSL.or(DSL.intType(), axd.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(avw.r.typeName(), axd.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(arg::a, $$0xxxx -> arg.a(axd.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+   @Override
+   public void append(ash.a $$0) {
+      this.c = this.c.thenComposeAsync($$1 -> $$0.submit(this.d), this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1) {
+            $$0x = $$1.getCause();
+         }
+
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
+   }
+
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

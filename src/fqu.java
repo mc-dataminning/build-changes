@@ -1,29 +1,41 @@
-public class fqu extends fqe<bsg, fct<bsg>> {
-   private static final acq a = new acq("textures/entity/fish/salmon.png");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public fqu(foy.a $$0) {
-      super($$0, new fct<>($$0.a(fed.ba)), 0.4F);
+public class fqu implements fqp.a {
+   private final eqn a;
+   private static final int b = 10;
+
+   public fqu(eqn $$0) {
+      this.a = $$0;
    }
 
-   public acq a(bsg $$0) {
-      return a;
-   }
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      cpk $$5 = this.a.s;
+      gv $$6 = gv.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   protected void a(bsg $$0, eij $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = 1.0F;
-      float $$6 = 1.0F;
-      if (!$$0.aV()) {
-         $$5 = 1.3F;
-         $$6 = 1.7F;
-      }
+      for (gv $$8 : gv.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cpt.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = aro.h($$10, 0.9F, 0.9F);
+         long $$12 = hy.e($$8.a());
+         if ($$7.add($$12)) {
+            fqp.a(
+               $$0,
+               $$1,
+               $$5.J().p().a(cpt.a, hy.a($$12)),
+               (double)hy.a(hy.b($$12), 8),
+               (double)hy.a(hy.c($$12), 8),
+               (double)hy.a(hy.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-      float $$7 = $$5 * 4.3F * apa.a($$6 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$7));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.aV()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+         if ($$9 != 15) {
+            fqp.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

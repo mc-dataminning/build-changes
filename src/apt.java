@@ -1,22 +1,12 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+public class apt {
+   public static final apy<btz> a = a("acquirable_job_site");
+   public static final apy<btz> b = a("village");
+   public static final apy<btz> c = a("bee_home");
 
-@FunctionalInterface
-public interface apt {
-   Logger a = LogUtils.getLogger();
-
-   static apt immediate(Executor $$0) {
-      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
-            a.error("Task failed", $$0xx);
-            return null;
-         });
+   private apt() {
    }
 
-   void append(apt.a var1);
-
-   public interface a {
-      CompletableFuture<?> submit(Executor var1);
+   private static apy<btz> a(String $$0) {
+      return apy.a(jd.S, new aep($$0));
    }
 }

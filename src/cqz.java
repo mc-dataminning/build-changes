@@ -1,47 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class cqz extends cpn {
-   private final cpn a;
+public class cqz extends cqm {
+   public static final Codec<cqz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aen.d(cqp.ah), aen.d(cqp.ai), aen.d(cqp.aj), aen.d(cqp.ak), aen.d(cqp.al)).apply($$0, $$0.stable(cqz::new))
+   );
+   private final hf<cqi> c;
+   private final hf<cqi> d;
+   private final hf<cqi> e;
+   private final hf<cqi> f;
+   private final hf<cqi> g;
 
-   public cqz(cpn $$0, dca.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public static cqz a(hg<cqi> $$0) {
+      return new cqz($$0.b(cqp.ah), $$0.b(cqp.ai), $$0.b(cqp.aj), $$0.b(cqp.ak), $$0.b(cqp.al));
+   }
+
+   private cqz(hf<cqi> $$0, hf<cqi> $$1, hf<cqi> $$2, hf<cqi> $$3, hf<cqi> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.a.n(), 2);
-      }
+   protected Stream<hf<cqi>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.y_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected Codec<? extends cqm> a() {
+      return b;
    }
 
-   protected boolean a(cls $$0, gu $$1) {
-      for (ha $$2 : ha.values()) {
-         dxe $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(anb.a)) {
-            return true;
+   @Override
+   public hf<cqi> getNoiseBiome(int $$0, int $$1, int $$2, cqr.f $$3) {
+      int $$4 = hr.c($$0);
+      int $$5 = hr.c($$1);
+      int $$6 = hr.c($$2);
+      int $$7 = hy.a($$4);
+      int $$8 = hy.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (hy.a($$4) * 2 + 1) * 8;
+         int $$10 = (hy.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dka.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public dcb a(cih $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().y_().a(40));
-      }
-
-      return this.n();
    }
 }

@@ -1,8 +1,44 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public record dsq(akx a, hs b, dvu c) {
-   public static dsq a(aif $$0) {
-      MinecraftServer $$1 = $$0.n();
-      return new dsq($$1.aY(), $$1.aV(), $$1.aT());
+public class dsq extends dst {
+   public static final Codec<dsq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsq::new));
+
+   public dsq(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected dsu<?> a() {
+      return dsu.c;
+   }
+
+   @Override
+   public List<drb.a> a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, int $$3, gv $$4, dql $$5) {
+      gv $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      gv.a $$7 = new gv.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new drb.a($$4.b($$3), 0, true));
+   }
+
+   private void a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, gv.a $$3, dql $$4, gv $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

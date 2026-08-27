@@ -1,29 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bpy<T extends bfz> extends bqf<T> {
-   @Override
-   protected void a(aif $$0, T $$1) {
-      eed $$2 = $$1.cE().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bfz> $$3 = $$0.a(bfz.class, $$2, $$1x -> $$1x != $$1 && $$1x.bs());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bha<?> $$4 = $$1.dK();
-      $$4.a(bpb.g, $$3);
-      $$4.a(bpb.h, new bpd($$1, $$3));
-   }
+public class bpy extends bps {
+   private final biy a;
+   private biw b;
+   private final float c;
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public bpy(biy $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bps.a.c, bps.a.a));
    }
 
    @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.g, bpb.h);
+   public boolean a() {
+      if (this.a.cO()) {
+         return false;
+      } else {
+         this.b = this.a.j();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aA() ? false : this.a.ee().a(b(5)) == 0;
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.aA();
+   }
+
+   @Override
+   public void c() {
+      ehf $$0 = this.a.dn();
+      ehf $$1 = new ehf(this.b.dp() - this.a.dp(), 0.0, this.b.dv() - this.a.dv());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      }
+
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

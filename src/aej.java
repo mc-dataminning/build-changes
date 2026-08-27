@@ -1,34 +1,81 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class aej {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> sw.a("commands.difficulty.failure", $$0));
+public class aej<E> implements Codec<hj<E>> {
+   private final aeo<? extends hs<E>> a;
+   private final Codec<hf<E>> b;
+   private final Codec<List<hf<E>>> c;
+   private final Codec<Either<apy<E>, List<hf<E>>>> d;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralArgumentBuilder<ds> $$1 = dt.a("difficulty");
-
-      for (bdu $$2 : bdu.values()) {
-         $$1.then(dt.a($$2.e()).executes($$1x -> a((ds)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bdu $$1x = ((ds)$$0x.getSource()).e().ai();
-         ((ds)$$0x.getSource()).a(() -> sw.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+   private static <E> Codec<List<hf<E>>> a(Codec<hf<E>> $$0, boolean $$1) {
+      Codec<List<hf<E>>> $$2 = aqw.a($$0.listOf(), aqw.b(hf::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((hf)$$0x.get(0)) : Either.left($$0x));
    }
 
-   public static int a(ds $$0, bdu $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.aU().s() == $$1) {
-         throw a.create($$1.e());
-      } else {
-         $$2.a($$1, true);
-         $$0.a(() -> sw.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+   public static <E> Codec<hj<E>> a(aeo<? extends hs<E>> $$0, Codec<hf<E>> $$1, boolean $$2) {
+      return new aej<>($$0, $$1, $$2);
+   }
+
+   private aej(aeo<? extends hs<E>> $$0, Codec<hf<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(apy.b($$0), this.c);
+   }
+
+   public <T> DataResult<Pair<hj<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aen<T> $$2) {
+         Optional<hg<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            hg<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (hj)$$1xx.map($$4::b, hj::a)));
+         }
       }
+
+      return this.a($$0, $$1);
+   }
+
+   public <T> DataResult<T> a(hj<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aen<T> $$3) {
+         Optional<hi<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<hj<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<hf.a<E>> $$1x = new ArrayList<>();
+
+         for (hf<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof hf.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(hj.a($$1x), $$0x.getSecond()));
+      });
+   }
+
+   private <T> DataResult<T> b(hj<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

@@ -1,95 +1,34 @@
-public abstract class bmm extends bmv {
-   protected bgb d;
-   protected gu e = gu.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bmm(bgb $$0) {
-      this.d = $$0;
-      if (!bqr.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class bmm {
+   public static bkp<biw> a(biz $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dcb $$0 = this.d.dI().a_(this.e);
-         if (!($$0.b() instanceof crp)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(crp.b);
-         }
-      }
+   public static bly<biw> a(bik<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag()), $$1);
    }
 
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dcb $$1 = this.d.dI().a_(this.e);
-         if ($$1.b() instanceof crp) {
-            ((crp)$$1.b()).a(this.d, this.d.dI(), $$1, this.e, $$0);
-         }
-      }
+   public static bly<biw> a(float $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   @Override
-   public boolean a() {
-      if (!bqr.a(this.d)) {
-         return false;
-      } else if (!this.d.O) {
-         return false;
-      } else {
-         bpi $$0 = (bpi)this.d.J();
-         dxt $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               dxr $$3 = $$1.a($$2);
-               this.e = new gu($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dp(), (double)this.e.w()) > 2.25)) {
-                  this.f = crp.a(this.d.dI(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.di().c();
-            this.f = crp.a(this.d.dI(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a;
-   }
-
-   @Override
-   public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dn());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dt());
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dn());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dt());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
-      }
+   public static bly<biw> a(Predicate<biw> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$2x -> $$2x.group($$2x.c(bry.n), $$2x.b(bry.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<biw> $$8 = $$2x.<bsa>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((big)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
+                     } else {
+                        $$3.a(new bkz($$8.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

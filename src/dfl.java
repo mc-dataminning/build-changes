@@ -1,19 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public enum dfl implements asf {
+   a("head"),
+   b("foot");
 
-public record dfl(he<dfk> e, ddy f) {
-   public static final Codec<dfl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dfk.j.fieldOf("type").forGetter(dfl::a), ddy.a.fieldOf("generator").forGetter(dfl::b)).apply($$0, $$0.stable(dfl::new))
-   );
-   public static final acp<dfl> b = acp.a(jc.aI, new acq("overworld"));
-   public static final acp<dfl> c = acp.a(jc.aI, new acq("the_nether"));
-   public static final acp<dfl> d = acp.a(jc.aI, new acq("the_end"));
+   private final String c;
 
-   public he<dfk> a() {
-      return this.e;
+   private dfl(String $$0) {
+      this.c = $$0;
    }
 
-   public ddy b() {
-      return this.f;
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
    }
 }

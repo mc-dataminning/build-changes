@@ -1,212 +1,126 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public class eim implements AutoCloseable {
-   private final eim.a a;
-   private int b;
-   private int c;
-   private int d;
+public class eim<T> implements eis<T>, eiu<T> {
+   private final Queue<eir<T>> a = new PriorityQueue<>(eir.a);
    @Nullable
-   private eio e;
+   private List<eiq<T>> b;
+   private final Set<eir<?>> c = new ObjectOpenCustomHashSet(eir.c);
    @Nullable
-   private RenderSystem.a f;
-   private eio.a g;
-   private int h;
-   private eio.b i;
+   private BiConsumer<eim<T>, eir<T>> d;
 
-   public eim(eim.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
+   public eim() {
    }
 
-   public void a(eie.b $$0) {
-      if (!this.e()) {
-         RenderSystem.assertOnRenderThread();
+   public eim(List<eiq<T>> $$0) {
+      this.b = $$0;
 
-         try {
-            eie.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.i();
-            this.g = $$1.k();
-            this.i = $$1.j();
-         } finally {
-            $$0.e();
-         }
+      for (eiq<T> $$1 : $$0) {
+         this.c.add(eir.a($$1.a(), $$1.b()));
       }
    }
 
-   private eio a(eie.a $$0, ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.g().equals(this.e)) {
-         if (this.e != null) {
-            this.e.f();
-         }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.g().e();
-         $$2 = true;
-      }
-
-      if (!$$0.l()) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.g();
+   public void a(@Nullable BiConsumer<eim<T>, eir<T>> $$0) {
+      this.d = $$0;
    }
 
    @Nullable
-   private RenderSystem.a b(eie.a $$0, ByteBuffer $$1) {
-      if (!$$0.m()) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
-      } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
-         if ($$2 != this.f || !$$2.a($$0.i())) {
-            $$2.b($$0.i());
-         }
-
-         return $$2;
-      }
+   public eir<T> b() {
+      return this.a.peek();
    }
 
-   public void a() {
-      eif.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
-
-   public static void b() {
-      eif.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private eio.a f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, fki $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
-      } else {
-         this.b($$0, $$1, $$2);
-      }
-   }
-
-   private void b(Matrix4f $$0, Matrix4f $$1, fki $$2) {
-      for (int $$3 = 0; $$3 < 12; $$3++) {
-         int $$4 = RenderSystem.getShaderTexture($$3);
-         $$2.a("Sampler" + $$3, $$4);
+   @Nullable
+   public eir<T> c() {
+      eir<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      if ($$2.b != null) {
-         $$2.b.a($$0);
-      }
-
-      if ($$2.c != null) {
-         $$2.c.a($$1);
-      }
-
-      if ($$2.d != null) {
-         $$2.d.a(RenderSystem.getInverseViewRotationMatrix());
-      }
-
-      if ($$2.g != null) {
-         $$2.g.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$2.j != null) {
-         $$2.j.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$2.k != null) {
-         $$2.k.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$2.l != null) {
-         $$2.l.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$2.m != null) {
-         $$2.m.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$2.n != null) {
-         $$2.n.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$2.e != null) {
-         $$2.e.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$2.p != null) {
-         $$2.p.a(RenderSystem.getShaderGameTime());
-      }
-
-      if ($$2.f != null) {
-         ehn $$5 = enn.N().aM();
-         $$2.f.a((float)$$5.k(), (float)$$5.l());
-      }
-
-      if ($$2.o != null && (this.i == eio.b.a || this.i == eio.b.b)) {
-         $$2.o.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights($$2);
-      $$2.g();
-      this.c();
-      $$2.f();
+      return $$0;
    }
 
    @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
+   public void a(eir<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
       }
    }
 
-   public eio d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
-   }
-
-   public static enum a {
-      a(35044),
-      b(35048);
-
-      final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
+   private void b(eir<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
       }
+   }
+
+   @Override
+   public boolean a(gv $$0, T $$1) {
+      return this.c.contains(eir.a($$1, $$0));
+   }
+
+   public void a(Predicate<eir<T>> $$0) {
+      Iterator<eir<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         eir<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
+         }
+      }
+   }
+
+   public Stream<eir<T>> d() {
+      return this.a.stream();
+   }
+
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
+
+   public qy a(long $$0, Function<T, String> $$1) {
+      qy $$2 = new qy();
+      if (this.b != null) {
+         for (eiq<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
+      }
+
+      for (eir<T> $$4 : this.a) {
+         $$2.add(eiq.a($$4, $$1, $$0));
+      }
+
+      return $$2;
+   }
+
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (eiq<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
+   }
+
+   public static <T> eim<T> a(qy $$0, Function<String, Optional<T>> $$1, cor $$2) {
+      Builder<eiq<T>> $$3 = ImmutableList.builder();
+      eiq.a($$0, $$1, $$2, $$3::add);
+      return new eim<>($$3.build());
    }
 }

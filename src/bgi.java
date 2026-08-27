@@ -1,69 +1,76 @@
-public abstract class bgi extends bgb {
-   protected static final float bS = 0.0F;
+import java.util.List;
+import java.util.function.Predicate;
 
-   protected bgi(bfn<? extends bgi> $$0, cmm $$1) {
-      super($$0, $$1);
+public class bgi {
+   public static ciw a(List<ciw> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : ciw.b;
    }
 
-   public float h(gu $$0) {
-      return this.a($$0, this.dI());
+   public static ciw a(List<ciw> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, ciw.b) : ciw.b;
    }
 
-   public float a(gu $$0, cmp $$1) {
-      return 0.0F;
+   public static qs a(qs $$0, ho<ciw> $$1) {
+      return a($$0, $$1, true);
    }
 
-   @Override
-   public boolean a(cmn $$0, bgd $$1) {
-      return this.a(this.di(), $$0) >= 0.0F;
-   }
+   public static qs a(qs $$0, ho<ciw> $$1, boolean $$2) {
+      qy $$3 = new qy();
 
-   public boolean fV() {
-      return !this.J().l();
-   }
-
-   @Override
-   protected void fN() {
-      super.fN();
-      bfj $$0 = this.fP();
-      if ($$0 != null && $$0.dI() == this.dI()) {
-         this.a($$0.di(), 5);
-         float $$1 = this.e($$0);
-         if (this instanceof bgv && ((bgv)this).w()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
-
-            return;
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         ciw $$5 = $$1.get($$4);
+         if (!$$5.b()) {
+            qs $$6 = new qs();
+            $$6.a("Slot", (byte)$$4);
+            $$5.b($$6);
+            $$3.add($$6);
          }
+      }
 
-         this.C($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bO.a(bmv.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dn() - this.dn()) / (double)$$1;
-            double $$3 = ($$0.dp() - this.dp()) / (double)$$1;
-            double $$4 = ($$0.dt() - this.dt()) / (double)$$1;
-            this.f(this.dl().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.ck();
-         } else if (this.fW()) {
-            this.bO.b(bmv.a.a);
-            float $$5 = 2.0F;
-            eei $$6 = new eei($$0.dn() - this.dn(), $$0.dp() - this.dp(), $$0.dt() - this.dt()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.J().a(this.dn() + $$6.c, this.dp() + $$6.d, this.dt() + $$6.e, this.fX());
+      if (!$$3.isEmpty() || $$2) {
+         $$0.a("Items", $$3);
+      }
+
+      return $$0;
+   }
+
+   public static void b(qs $$0, ho<ciw> $$1) {
+      qy $$2 = $$0.c("Items", 10);
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         qs $$4 = $$2.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < $$1.size()) {
+            $$1.set($$5, ciw.a($$4));
          }
       }
    }
 
-   protected boolean fW() {
-      return true;
+   public static int a(bgh $$0, Predicate<ciw> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         ciw $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.b()) {
+            $$0.a($$5, ciw.b);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   protected double fX() {
-      return 1.0;
-   }
-
-   protected void C(float $$0) {
+   public static int a(ciw $$0, Predicate<ciw> $$1, int $$2, boolean $$3) {
+      if ($$0.b() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.L();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

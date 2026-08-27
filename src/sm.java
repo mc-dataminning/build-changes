@@ -1,24 +1,39 @@
 import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.ReferenceCountUtil;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class sm extends sd {
-   private static final Logger i = LogUtils.getLogger();
-   private static final sw j = sw.c("disconnect.exceeded_packet_rate");
-   private final int k;
+public class sm extends MessageToMessageCodec<uw<?>, uw<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<sg.a<?>> b;
+   private final AttributeKey<sg.a<?>> c;
 
-   public sm(int $$0) {
-      super(up.a);
-      this.k = $$0;
+   public sm(AttributeKey<sg.a<?>> $$0, AttributeKey<sg.a<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected void b() {
-      super.b();
-      float $$0 = this.n();
-      if ($$0 > (float)this.k) {
-         i.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new vs(j), sl.a(() -> this.a(j)));
-         this.l();
+   private static void a(ChannelHandlerContext $$0, uw<?> $$1, List<Object> $$2, AttributeKey<sg.a<?>> $$3) {
+      Attribute<sg.a<?>> $$4 = $$0.channel().attr($$3);
+      sg.a<?> $$5 = (sg.a<?>)$$4.get();
+      if (!$$5.b($$1)) {
+         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
       }
+
+      ReferenceCountUtil.retain($$1);
+      $$2.add($$1);
+      sp.a($$4, $$1);
+   }
+
+   protected void a(ChannelHandlerContext $$0, uw<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.b);
+   }
+
+   protected void b(ChannelHandlerContext $$0, uw<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.c);
    }
 }

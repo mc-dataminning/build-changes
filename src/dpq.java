@@ -1,72 +1,53 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dpq extends dpw {
-   public static final Codec<dpq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dpq::new));
+public class dpq implements dpp {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<dpq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dke.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dkg.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dkf.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bft.b(1, 20).fieldOf("outer_wall_distance").orElse(bfz.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bft.b(1, 20).fieldOf("distribution_points").orElse(bfz.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bft.b(0, 10).fieldOf("point_offset").orElse(bfz.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
+            )
+            .apply($$0, dpq::new)
+   );
+   public final dke c;
+   public final dkg d;
+   public final dkf e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bft i;
+   public final bft j;
+   public final bft k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public dpq(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dpx<?> a() {
-      return dpx.e;
-   }
-
-   @Override
-   public List<doe.a> a(cms $$0, BiConsumer<gu, dcb> $$1, apf $$2, int $$3, gu $$4, dno $$5) {
-      List<doe.a> $$6 = Lists.newArrayList();
-      gu $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      ha $$8 = ha.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         gu $$19 = new gu($$14, $$18, $$15);
-         if (dma.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
-      }
-
-      $$6.add(new doe.a(new gu($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new gu($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new doe.a(new gu($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
-         }
-      }
-
-      return $$6;
+   public dpq(dke $$0, dkg $$1, dkf $$2, double $$3, double $$4, boolean $$5, bft $$6, bft $$7, bft $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

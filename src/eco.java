@@ -1,39 +1,173 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import com.google.gson.JsonSerializer;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eco implements eck {
-   static final eco a = new eco();
+public class eco {
+   final edc[] a;
+   final efh[] b;
+   private final Predicate<ech> c;
+   final edw[] d;
+   private final BiFunction<ciw, ech, ciw> e;
+   final egc f;
+   final egc g;
 
-   private eco() {
+   eco(edc[] $$0, efh[] $$1, edw[] $$2, egc $$3, egc $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = efj.a($$1);
+      this.d = $$2;
+      this.e = edy.a($$2);
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public ecl b() {
-      return ecm.g;
-   }
+   private void b(Consumer<ciw> $$0, ech $$1) {
+      art $$2 = $$1.b();
+      List<edb> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(ebw.b);
-   }
-
-   public boolean a(dzk $$0) {
-      return $$0.a(ebw.b);
-   }
-
-   public static eck.a c() {
-      return () -> a;
-   }
-
-   public static class a implements dzt<eco> {
-      public void a(JsonObject $$0, eco $$1, JsonSerializationContext $$2) {
+      for (edc $$5 : this.a) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
       }
 
-      public eco b(JsonObject $$0, JsonDeserializationContext $$1) {
-         return eco.a;
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (edb $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
+   }
+
+   public void a(Consumer<ciw> $$0, ech $$1) {
+      if (this.c.test($$1)) {
+         Consumer<ciw> $$2 = edw.a(this.e, $$0, $$1);
+         int $$3 = this.f.a($$1) + aro.d(this.g.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
+   }
+
+   public void a(ecs $$0) {
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1].a($$0.b(".condition[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
+         this.d[$$2].a($$0.b(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         this.a[$$3].a($$0.b(".entries[" + $$3 + "]"));
+      }
+
+      this.f.a($$0.b(".rolls"));
+      this.g.a($$0.b(".bonusRolls"));
+   }
+
+   public static eco.a a() {
+      return new eco.a();
+   }
+
+   public static class a implements edt<eco.a>, efa<eco.a> {
+      private final List<edc> a = Lists.newArrayList();
+      private final List<efh> b = Lists.newArrayList();
+      private final List<edw> c = Lists.newArrayList();
+      private egc d = ega.a(1.0F);
+      private egc e = ega.a(0.0F);
+
+      public eco.a a(egc $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eco.a a() {
+         return this;
+      }
+
+      public eco.a b(egc $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eco.a a(edc.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public eco.a a(efh.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public eco.a a(edw.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public eco b() {
+         if (this.d == null) {
+            throw new IllegalArgumentException("Rolls not set");
+         } else {
+            return new eco(this.a.toArray(new edc[0]), this.b.toArray(new efh[0]), this.c.toArray(new edw[0]), this.d, this.e);
+         }
+      }
+   }
+
+   public static class b implements JsonDeserializer<eco>, JsonSerializer<eco> {
+      public eco a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = arf.m($$0, "loot pool");
+         edc[] $$4 = arf.a($$3, "entries", $$2, edc[].class);
+         efh[] $$5 = arf.a($$3, "conditions", new efh[0], $$2, efh[].class);
+         edw[] $$6 = arf.a($$3, "functions", new edw[0], $$2, edw[].class);
+         egc $$7 = arf.a($$3, "rolls", $$2, egc.class);
+         egc $$8 = arf.a($$3, "bonus_rolls", ega.a(0.0F), $$2, egc.class);
+         return new eco($$4, $$5, $$6, $$7, $$8);
+      }
+
+      public JsonElement a(eco $$0, Type $$1, JsonSerializationContext $$2) {
+         JsonObject $$3 = new JsonObject();
+         $$3.add("rolls", $$2.serialize($$0.f));
+         $$3.add("bonus_rolls", $$2.serialize($$0.g));
+         $$3.add("entries", $$2.serialize($$0.a));
+         if (!ArrayUtils.isEmpty($$0.b)) {
+            $$3.add("conditions", $$2.serialize($$0.b));
+         }
+
+         if (!ArrayUtils.isEmpty($$0.d)) {
+            $$3.add("functions", $$2.serialize($$0.d));
+         }
+
+         return $$3;
       }
    }
 }

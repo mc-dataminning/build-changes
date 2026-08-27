@@ -1,33 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dnj(int b, int c, int d, int e, int f, bdc g, float h) implements dms {
-   public static final Codec<dnj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dnj::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dnj::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dnj::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dnj::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dnj::f),
-               bdc.c.fieldOf("extra_rare_growths").forGetter(dnj::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dnj::h)
-            )
-            .apply($$0, dnj::new)
-   );
-
-   public int a() {
-      return this.b;
+public class dnj extends dnl<dpw> {
+   public dnj(Codec<dpw> $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dnn<dpw> $$0) {
+      cqe $$1 = $$0.b();
+      art $$2 = $$0.d();
+      gv $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public int c() {
-      return this.d;
-   }
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = aro.d(-$$4); $$6 <= aro.f($$4); $$6++) {
+            for (int $$7 = aro.d(-$$4); $$7 <= aro.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), csl.fz.n());
+               }
+            }
+         }
 
-   public int d() {
-      return this.e;
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
+
+      return true;
    }
 }

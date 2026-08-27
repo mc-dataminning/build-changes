@@ -1,71 +1,77 @@
-public class cwv extends cpn {
-   public static final int a = 2;
-   public static final ddb b = dcr.aE;
-   private static final int c = 24000;
-   private static final int d = 12000;
-   private static final int e = 300;
-   private static final efb f = cpn.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+import java.util.function.ToIntFunction;
 
-   public cwv(dca.d $$0) {
+public class cwv extends csk implements czl {
+   public static final int a = 15;
+   public static final dfy b = dfo.aP;
+   public static final dfp c = dfo.C;
+   public static final ToIntFunction<dey> d = $$0 -> $$0.c(b);
+
+   public cwv(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.C.b().a(b, Integer.valueOf(15)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(b);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return f;
-   }
-
-   public int h(dcb $$0) {
-      return $$0.c(b);
-   }
-
-   private boolean n(dcb $$0) {
-      return this.h($$0) == 2;
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, amh.wL, ami.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(b, Integer.valueOf(this.h($$0) + 1)), 2);
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if (!$$1.B && $$3.gn()) {
+         $$1.a($$2, $$0.a(b), 2);
+         return bgo.a;
       } else {
-         $$1.a(null, $$2, amh.wM, ami.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         btx $$4 = bfn.aN.a((cmm)$$1);
-         if ($$4 != null) {
-            eei $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), apa.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         return bgo.b;
       }
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.r_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dgl.i, $$2, dgl.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return $$3.a(ciz.hg) ? ehv.b() : ehv.a();
    }
 
    @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
+   public boolean c(dey $$0, coq $$1, gv $$2) {
+      return true;
    }
 
-   public static boolean a(cls $$0, gu $$1) {
-      return $$0.a_($$1.d()).a(amw.ci);
+   @Override
+   public cyp b_(dey $$0) {
+      return cyp.a;
+   }
+
+   @Override
+   public float b(dey $$0, coq $$1, gv $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eab c_(dey $$0) {
+      return $$0.c(c) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(b));
+   }
+
+   public static ciw a(ciw $$0, int $$1) {
+      if ($$1 != 15) {
+         qs $$2 = new qs();
+         $$2.a(b.f(), String.valueOf($$1));
+         $$0.a("BlockStateTag", $$2);
+      }
+
+      return $$0;
    }
 }

@@ -1,93 +1,13 @@
 public interface beq {
-   acp<bep> a = acp.a(jc.p, new acq("in_fire"));
-   acp<bep> b = acp.a(jc.p, new acq("lightning_bolt"));
-   acp<bep> c = acp.a(jc.p, new acq("on_fire"));
-   acp<bep> d = acp.a(jc.p, new acq("lava"));
-   acp<bep> e = acp.a(jc.p, new acq("hot_floor"));
-   acp<bep> f = acp.a(jc.p, new acq("in_wall"));
-   acp<bep> g = acp.a(jc.p, new acq("cramming"));
-   acp<bep> h = acp.a(jc.p, new acq("drown"));
-   acp<bep> i = acp.a(jc.p, new acq("starve"));
-   acp<bep> j = acp.a(jc.p, new acq("cactus"));
-   acp<bep> k = acp.a(jc.p, new acq("fall"));
-   acp<bep> l = acp.a(jc.p, new acq("fly_into_wall"));
-   acp<bep> m = acp.a(jc.p, new acq("out_of_world"));
-   acp<bep> n = acp.a(jc.p, new acq("generic"));
-   acp<bep> o = acp.a(jc.p, new acq("magic"));
-   acp<bep> p = acp.a(jc.p, new acq("wither"));
-   acp<bep> q = acp.a(jc.p, new acq("dragon_breath"));
-   acp<bep> r = acp.a(jc.p, new acq("dry_out"));
-   acp<bep> s = acp.a(jc.p, new acq("sweet_berry_bush"));
-   acp<bep> t = acp.a(jc.p, new acq("freeze"));
-   acp<bep> u = acp.a(jc.p, new acq("stalagmite"));
-   acp<bep> v = acp.a(jc.p, new acq("falling_block"));
-   acp<bep> w = acp.a(jc.p, new acq("falling_anvil"));
-   acp<bep> x = acp.a(jc.p, new acq("falling_stalactite"));
-   acp<bep> y = acp.a(jc.p, new acq("sting"));
-   acp<bep> z = acp.a(jc.p, new acq("mob_attack"));
-   acp<bep> A = acp.a(jc.p, new acq("mob_attack_no_aggro"));
-   acp<bep> B = acp.a(jc.p, new acq("player_attack"));
-   acp<bep> C = acp.a(jc.p, new acq("arrow"));
-   acp<bep> D = acp.a(jc.p, new acq("trident"));
-   acp<bep> E = acp.a(jc.p, new acq("mob_projectile"));
-   acp<bep> F = acp.a(jc.p, new acq("fireworks"));
-   acp<bep> G = acp.a(jc.p, new acq("fireball"));
-   acp<bep> H = acp.a(jc.p, new acq("unattributed_fireball"));
-   acp<bep> I = acp.a(jc.p, new acq("wither_skull"));
-   acp<bep> J = acp.a(jc.p, new acq("thrown"));
-   acp<bep> K = acp.a(jc.p, new acq("indirect_magic"));
-   acp<bep> L = acp.a(jc.p, new acq("thorns"));
-   acp<bep> M = acp.a(jc.p, new acq("explosion"));
-   acp<bep> N = acp.a(jc.p, new acq("player_explosion"));
-   acp<bep> O = acp.a(jc.p, new acq("sonic_boom"));
-   acp<bep> P = acp.a(jc.p, new acq("bad_respawn_point"));
-   acp<bep> Q = acp.a(jc.p, new acq("outside_border"));
-   acp<bep> R = acp.a(jc.p, new acq("generic_kill"));
+   void a();
 
-   static void a(nm<bep> $$0) {
-      $$0.a(a, new bep("inFire", 0.1F, bel.d));
-      $$0.a(b, new bep("lightningBolt", 0.1F));
-      $$0.a(c, new bep("onFire", 0.0F, bel.d));
-      $$0.a(d, new bep("lava", 0.1F, bel.d));
-      $$0.a(e, new bep("hotFloor", 0.1F, bel.d));
-      $$0.a(f, new bep("inWall", 0.0F));
-      $$0.a(g, new bep("cramming", 0.0F));
-      $$0.a(h, new bep("drown", 0.0F, bel.c));
-      $$0.a(i, new bep("starve", 0.0F));
-      $$0.a(j, new bep("cactus", 0.1F));
-      $$0.a(k, new bep("fall", bem.b, 0.0F, bel.a, ber.b));
-      $$0.a(l, new bep("flyIntoWall", 0.0F));
-      $$0.a(m, new bep("outOfWorld", 0.0F));
-      $$0.a(n, new bep("generic", 0.0F));
-      $$0.a(o, new bep("magic", 0.0F));
-      $$0.a(p, new bep("wither", 0.0F));
-      $$0.a(q, new bep("dragonBreath", 0.0F));
-      $$0.a(r, new bep("dryout", 0.1F));
-      $$0.a(s, new bep("sweetBerryBush", 0.1F, bel.e));
-      $$0.a(t, new bep("freeze", 0.0F, bel.f));
-      $$0.a(u, new bep("stalagmite", 0.0F));
-      $$0.a(v, new bep("fallingBlock", 0.1F));
-      $$0.a(w, new bep("anvil", 0.1F));
-      $$0.a(x, new bep("fallingStalactite", 0.1F));
-      $$0.a(y, new bep("sting", 0.1F));
-      $$0.a(z, new bep("mob", 0.1F));
-      $$0.a(A, new bep("mob", 0.1F));
-      $$0.a(B, new bep("player", 0.1F));
-      $$0.a(C, new bep("arrow", 0.1F));
-      $$0.a(D, new bep("trident", 0.1F));
-      $$0.a(E, new bep("mob", 0.1F));
-      $$0.a(F, new bep("fireworks", 0.1F));
-      $$0.a(H, new bep("onFire", 0.1F, bel.d));
-      $$0.a(G, new bep("fireball", 0.1F, bel.d));
-      $$0.a(I, new bep("witherSkull", 0.1F));
-      $$0.a(J, new bep("thrown", 0.1F));
-      $$0.a(K, new bep("indirectMagic", 0.0F));
-      $$0.a(L, new bep("thorns", 0.1F, bel.b));
-      $$0.a(M, new bep("explosion", bem.c, 0.1F));
-      $$0.a(N, new bep("explosion.player", bem.c, 0.1F));
-      $$0.a(O, new bep("sonic_boom", bem.c, 0.0F));
-      $$0.a(P, new bep("badRespawnPoint", bem.c, 0.1F, bel.a, ber.c));
-      $$0.a(Q, new bep("outsideBorder", 0.0F));
-      $$0.a(R, new bep("genericKill", 0.0F));
-   }
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bde f();
+
+   void d();
 }

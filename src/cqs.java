@@ -1,87 +1,109 @@
-public class cqs extends cuz {
-   protected cqs(dca.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-      );
-   }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-   @Override
-   public dcb a(cih $$0) {
-      return this.a($$0.q(), $$0.a());
-   }
+public class cqs {
+   public static <T> List<cqs.b> a(List<T> $$0, Function<T, List<hj<dub>>> $$1, boolean $$2) {
+      Object2IntMap<dub> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   public dcb a(cls $$0, gu $$1) {
-      dcb $$2 = $$0.a_($$1.d());
-      dcb $$3 = $$0.a_($$1.c());
-      dcb $$4 = $$0.a_($$1.e());
-      dcb $$5 = $$0.a_($$1.h());
-      dcb $$6 = $$0.a_($$1.f());
-      dcb $$7 = $$0.a_($$1.g());
-      return this.n()
-         .a(f, Boolean.valueOf($$2.a(this) || $$2.a(cpo.kv) || $$2.a(cpo.fz)))
-         .a(e, Boolean.valueOf($$3.a(this) || $$3.a(cpo.kv)))
-         .a(a, Boolean.valueOf($$4.a(this) || $$4.a(cpo.kv)))
-         .a(b, Boolean.valueOf($$5.a(this) || $$5.a(cpo.kv)))
-         .a(c, Boolean.valueOf($$6.a(this) || $$6.a(cpo.kv)))
-         .a(d, Boolean.valueOf($$7.a(this) || $$7.a(cpo.kv)));
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(cpo.kv) || $$1 == ha.a && $$2.a(cpo.fz);
-         return $$0.a(g.get($$1), Boolean.valueOf($$6));
+      record a(int a, int b, dub c) {
       }
-   }
 
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      dcb $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<hj<dub>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-      for (ha $$5 : ha.c.a) {
-         gu $$6 = $$2.a($$5);
-         dcb $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (hf<dub> $$12 : $$10.get($$11)) {
+               dub $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
             }
+         }
 
-            dcb $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(cpo.fz)) {
-               return true;
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
             }
          }
       }
 
-      return $$3.a(this) || $$3.a(cpo.fz);
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && are.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<cqs.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<dub> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new cqs.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a, b, c, d, e, f);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
+   public static record b(List<dub> a, ToIntFunction<dub> b) {
+      b(List<dub> $$0) {
+         this($$0, ac.a($$0, $$0x -> new Object2IntOpenCustomHashMap($$0x, ac.k())));
+      }
    }
 }

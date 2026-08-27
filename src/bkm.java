@@ -1,28 +1,21 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.function.Function;
 
 public class bkm {
-   public static <E extends bfz> bjb<E> a(List<Pair<? extends blg<? super E>, Integer>> $$0) {
-      return a($$0, bif.a.b, bif.b.a);
-   }
-
-   public static <E extends bfz> bjb<E> a(List<Pair<? extends blg<? super E>, Integer>> $$0, bif.a $$1, bif.b $$2) {
-      bjz<blg<? super E>> $$3 = new bjz<>();
-      $$0.forEach($$1x -> $$3.a((blg<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bld.a((Function<bld.b<E>, ? extends App<bld.c<E>, blg<E>>>)($$3x -> $$3x.a((blg<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bif.a.b) {
-               $$3.a();
-            }
-
-            for (blg<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bif.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bly<biy> a(int $$0, float $$1) {
+      return boa.a(
+         (Function<boa.b<biy>, ? extends App<boa.c<biy>, bod<biy>>>)($$2 -> $$2.group($$2.c(bry.m), $$2.a(bry.n), $$2.b(bry.o), $$2.b(bry.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     biw $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<bsa>b($$6).a($$9)) {
+                        $$4.a(new bkz($$9, true));
+                        $$7.E().a(-$$1, 0.0F);
+                        $$7.r(aro.c($$7.dA(), $$7.aW, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

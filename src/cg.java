@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class cg extends cv<cg.a> {
-   static final acq a = new acq("lightning_strike");
+   static final aep a = new aep("lightning_strike");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -16,9 +16,9 @@ public class cg extends cv<cg.a> {
       return new cg.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, bfy $$1, List<bfj> $$2) {
-      List<dzk> $$3 = $$2.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
-      dzk $$4 = bo.b($$0, $$1);
+   public void a(akj $$0, biv $$1, List<big> $$2) {
+      List<ech> $$3 = $$2.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
+      ech $$4 = bo.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -36,7 +36,7 @@ public class cg extends cv<cg.a> {
          return new cg.a(ba.a, bo.a($$0), bo.a($$1));
       }
 
-      public boolean a(dzk $$0, List<dzk> $$1) {
+      public boolean a(ech $$0, List<ech> $$1) {
          return !this.a.a($$0) ? false : this.b == ba.a || !$$1.stream().noneMatch(this.b::a);
       }
 

@@ -1,16 +1,37 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class axl extends Schema {
-   public axl(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class axl extends axo {
+   public axl(Schema $$0, String $$1) {
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", aym.x, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("TippedArrow");
-      return $$1;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Brain", this::b);
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("memories", this::c);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.updateMapValues(this::a);
+   }
+
+   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      return $$0.mapSecond(this::d);
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
    }
 }

@@ -1,26 +1,25 @@
-import java.util.Map;
+import java.nio.file.Path;
+import java.util.function.UnaryOperator;
 
 public class aji {
-   private static final aji a = new aji(Map.of());
-   private final Map<ajx<?>, ?> b;
+   private final Path a;
+   private ajh b;
 
-   private aji(Map<ajx<?>, ?> $$0) {
-      this.b = $$0;
+   public aji(Path $$0) {
+      this.a = $$0;
+      this.b = ajh.a($$0);
    }
 
-   public <T> T a(ajx<T> $$0) {
-      return (T)this.b.get($$0);
+   public ajh a() {
+      return this.b;
    }
 
-   public static aji a() {
-      return a;
+   public void b() {
+      this.b.c(this.a);
    }
 
-   public static <T> aji a(ajx<T> $$0, T $$1) {
-      return new aji(Map.of($$0, $$1));
-   }
-
-   public static <T1, T2> aji a(ajx<T1> $$0, T1 $$1, ajx<T2> $$2, T2 $$3) {
-      return new aji(Map.of($$0, $$1, $$2, (T1)$$3));
+   public aji a(UnaryOperator<ajh> $$0) {
+      (this.b = $$0.apply(this.b)).c(this.a);
+      return this;
    }
 }

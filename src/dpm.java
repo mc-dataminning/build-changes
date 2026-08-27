@@ -1,45 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpm extends dpk {
-   public static final Codec<dpm> a = Codec.unit(() -> dpm.b);
-   public static final dpm b = new dpm();
+public record dpm(dry b, dlo c, bft d, int e) implements dpp {
+   public static final Codec<dpm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dry.a.fieldOf("state_provider").forGetter(dpm::a),
+               dlo.b.fieldOf("target").forGetter(dpm::b),
+               bft.b(0, 8).fieldOf("radius").forGetter(dpm::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpm::d)
+            )
+            .apply($$0, dpm::new)
+   );
 
-   @Override
-   protected dpl<?> a() {
-      return dpl.a;
+   public dry a() {
+      return this.b;
    }
 
-   @Override
-   public void a(dpk.a $$0) {
-      apf $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            gu $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, cyh.c);
-            }
-         }
+   public dlo b() {
+      return this.c;
+   }
 
-         if ($$1.a(3) > 0) {
-            gu $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, cyh.e);
-            }
-         }
+   public bft c() {
+      return this.d;
+   }
 
-         if ($$1.a(3) > 0) {
-            gu $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, cyh.d);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            gu $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, cyh.b);
-            }
-         }
-      });
+   public int d() {
+      return this.e;
    }
 }

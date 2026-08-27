@@ -1,95 +1,85 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-public class ehs {
-   public void a(float $$0) {
+public class ehs implements ehr {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
+
+   public ehs(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
+
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
+         } else {
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
+         }
+      }
    }
 
-   public void a(float $$0, float $$1) {
+   @Override
+   public boolean a(ehr.a $$0) {
+      int $$1 = this.e - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
+   @Override
+   public int size() {
+      return this.e;
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(int $$0) {
-   }
-
-   public void a(int $$0, int $$1) {
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(float[] $$0) {
-   }
-
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void c(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
-
-   public void a(Matrix3f $$0) {
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

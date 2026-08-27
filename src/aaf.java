@@ -1,59 +1,64 @@
-public class aaf implements uo<zb> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private final float c;
+public class aaf implements uw<wo> {
+   private final hf<aot> a;
+   private final aov b;
+   private final int c;
    private final float d;
-   private final boolean e;
-   private final boolean f;
+   private final float e;
+   private final long f;
 
-   public aaf(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public aaf(hf<aot> $$0, aov $$1, big $$2, float $$3, float $$4, long $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.ah();
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public aaf(sf $$0) {
-      this.c = $$0.readFloat();
+   public aaf(sh $$0) {
+      this.a = $$0.a(jc.c.t(), aot::b);
+      this.b = $$0.b(aov.class);
+      this.c = $$0.m();
       this.d = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) > 0;
-      this.f = ($$1 & 2) > 0;
+      this.e = $$0.readFloat();
+      this.f = $$0.readLong();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeFloat(this.c);
-      $$0.writeFloat(this.d);
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.writeByte($$1);
+   public void a(sh $$0) {
+      $$0.a(jc.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.b(this.f);
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
+   public hf<aot> a() {
+      return this.a;
    }
 
-   public float a() {
+   public aov d() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public float c() {
+   public float f() {
       return this.d;
    }
 
-   public boolean d() {
+   public float g() {
       return this.e;
    }
 
-   public boolean e() {
+   public long h() {
       return this.f;
+   }
+
+   public void a(wo $$0) {
+      $$0.a(this);
    }
 }

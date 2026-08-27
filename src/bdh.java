@@ -1,57 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bdh extends bda {
-   public static final Codec<bdh> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bdh::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+public class bdh {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bdc f = bdb.a;
 
-   private bdh(float $$0, float $$1) {
+   public bdh(LongSupplier $$0, String $$1, long $$2) {
       this.b = $$0;
-      this.d = $$1;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public static bdh b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bdh($$0, $$1);
+   public bde a() {
+      this.f = new bcx(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
+
+   public void b() {
+      if (this.f != bdb.a) {
+         bdd $$0 = this.f.d();
+         this.f = bdb.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
       }
    }
 
-   @Override
-   public float a(apf $$0) {
-      return apa.b($$0, this.b, this.d);
+   @Nullable
+   public static bdh a(String $$0) {
+      return null;
    }
 
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bdb<?> c() {
-      return bdb.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+   public static bde a(bde $$0, @Nullable bdh $$1) {
+      return $$1 != null ? bde.a($$1.a(), $$0) : $$0;
    }
 }

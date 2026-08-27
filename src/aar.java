@@ -1,32 +1,40 @@
-public class aar implements uo<zb> {
-   private final int a;
-   private final cfz b;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-   public aar(int $$0, cfz $$1) {
-      this.a = $$0;
-      this.b = $$1.p();
+public class aar implements uw<wo> {
+   private final List<clz<?>> a;
+
+   public aar(Collection<clz<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   public aar(sf $$0) {
-      this.a = $$0.readShort();
-      this.b = $$0.r();
+   public aar(sh $$0) {
+      this.a = $$0.a(aar::b);
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeShort(this.a);
-      $$0.a(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.a, aar::a);
    }
 
-   public int a() {
+   public void a(wo $$0) {
+      $$0.a(this);
+   }
+
+   public List<clz<?>> a() {
       return this.a;
    }
 
-   public cfz c() {
-      return this.b;
+   public static clz<?> b(sh $$0) {
+      aep $$1 = $$0.s();
+      aep $$2 = $$0.s();
+      return jc.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$2, $$0);
+   }
+
+   public static <T extends clz<?>> void a(sh $$0, T $$1) {
+      $$0.a(jc.u.b($$1.aj_()));
+      $$0.a($$1.e());
+      ((cmb<T>)$$1.aj_()).a($$0, $$1);
    }
 }

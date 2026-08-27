@@ -1,38 +1,24 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class zi implements uw<wo> {
+   private final int a;
 
-public record zi(String a, Instant b, long c, @Nullable th d, tc.b e) implements uo<zb> {
-   public zi(sf $$0) {
-      this($$0.e(256), $$0.v(), $$0.readLong(), $$0.c(th::a), new tc.b($$0));
+   public zi(dgp $$0) {
+      this.a = $$0.q();
+   }
+
+   public zi(sh $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
-      $$0.writeLong(this.c);
-      $$0.a(this.d, th::a);
-      this.e.a($$0);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public Instant c() {
-      return this.b;
-   }
-
-   public long d() {
-      return this.c;
-   }
-
-   @Nullable
-   public th e() {
-      return this.d;
-   }
-
-   public tc.b f() {
-      return this.e;
+   public int a() {
+      return this.a;
    }
 }

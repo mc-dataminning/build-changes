@@ -1,61 +1,39 @@
-public class fao extends fcb {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fee e;
-   private final fee f;
-   private final fee g;
-   private final fee h;
-   private final fee i;
-   private final fee j;
-   private final fee k;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fao(fee $$0) {
-      super(fkf::b);
+public class fao implements fam {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final esg e;
+
+   public fao(esg $$0) {
       this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
-   }
-
-   public static fek a() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a("left_lid", fej.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), feg.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fej.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), feg.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fej.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), feg.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fej.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), feg.a);
-      $$1.a("right_pages", fej.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), feg.a);
-      fej $$2 = fej.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, feg.a);
-      $$1.a("flip_page2", $$2, feg.a);
-      return fek.a($$0, 64, 32);
    }
 
    @Override
-   public void a(eij $$0, ein $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
+      }
+
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.r() + this.e.h() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.r(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.r() + this.e.h(), this.e.h()));
+      }
+
+      return $$6;
    }
 
-   public void b(eij $$0, ein $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (apa.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = apa.a($$4);
-      this.i.b = apa.a($$4);
-      this.j.b = apa.a($$4);
-      this.k.b = apa.a($$4);
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(aro.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

@@ -1,30 +1,38 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+public class fgc<T extends big> extends fet<T> {
+   private static final String a = "main";
+   private final fhj b;
+   private final fhj f;
 
-public class fgc {
-   public static final fgc a = new fgc(fgb.b, fgd.createDnsSrvRedirectHandler(), ffy.a());
-   private final fgb b;
-   private final fgd c;
-   private final ffy d;
-
-   @VisibleForTesting
-   fgc(fgb $$0, fgd $$1, ffy $$2) {
+   public fgc(fhj $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      this.f = $$0.b("main");
    }
 
-   public Optional<ffz> a(fga $$0) {
-      Optional<ffz> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<fga> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a(
+         "main",
+         fho.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         fhl.a
+      );
+      return fhp.a($$0, 64, 32);
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
-      }
+   @Override
+   public fhj a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

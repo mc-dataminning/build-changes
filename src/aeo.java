@@ -1,147 +1,55 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class aeo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.experience.set.points.invalid"));
+public class aeo<T> {
+   private static final ConcurrentMap<aeo.a, aeo<?>> a = new MapMaker().weakValues().makeMap();
+   private final aep b;
+   private final aep c;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("experience").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dt.a("add")
-                        .then(
-                           dt.a("targets", ec.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.a)
-                                          ))
-                                       .then(
-                                          dt.a("points")
-                                             .executes(
-                                                $$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       dt.a("levels")
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.b)
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  dt.a("set")
-                     .then(
-                        dt.a("targets", ec.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("amount", IntegerArgumentType.integer(0))
-                                       .executes(
-                                          $$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.a)
-                                       ))
-                                    .then(
-                                       dt.a("points")
-                                          .executes(
-                                             $$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("levels")
-                                       .executes(
-                                          $$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aeo.a.b)
-                                       )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               dt.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ec.c())
-                           .then(dt.a("points").executes($$0x -> a((ds)$$0x.getSource(), ec.e($$0x, "targets"), aeo.a.a))))
-                        .then(dt.a("levels").executes($$0x -> a((ds)$$0x.getSource(), ec.e($$0x, "targets"), aeo.a.b)))
-                  )
-            )
-      );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
+   public static <T> Codec<aeo<T>> a(aeo<? extends hs<T>> $$0) {
+      return aep.a.xmap($$1 -> a($$0, $$1), aeo::a);
    }
 
-   private static int a(ds $$0, aig $$1, aeo.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> sw.a("commands.experience.query." + $$2.e, $$1.H_(), $$3), false);
-      return $$3;
+   public static <T> aeo<T> a(aeo<? extends hs<T>> $$0, aep $$1) {
+      return a($$0.c, $$1);
    }
 
-   private static int a(ds $$0, Collection<? extends aig> $$1, int $$2, aeo.a $$3) {
-      for (aig $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().H_()), true);
-      } else {
-         $$0.a(() -> sw.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
-
-      return $$1.size();
+   public static <T> aeo<hs<T>> a(aep $$0) {
+      return a(jc.a, $$0);
    }
 
-   private static int b(ds $$0, Collection<? extends aig> $$1, int $$2, aeo.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (aig $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> sw.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> sw.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
-      }
+   private static <T> aeo<T> a(aep $$0, aep $$1) {
+      return (aeo<T>)a.computeIfAbsent(new aeo.a($$0, $$1), $$0x -> new aeo($$0x.a, $$0x.b));
    }
 
-   static enum a {
-      a("points", byo::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.fW()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> apa.d($$0.cg * (float)$$0.fW())),
-      b("levels", aig::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.ce);
+   private aeo(aep $$0, aep $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      public final BiConsumer<aig, Integer> c;
-      public final BiPredicate<aig, Integer> d;
-      public final String e;
-      final ToIntFunction<aig> f;
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
 
-      private a(String $$0, BiConsumer<aig, Integer> $$1, BiPredicate<aig, Integer> $$2, ToIntFunction<aig> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
-      }
+   public boolean b(aeo<? extends hs<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<aeo<E>> c(aeo<? extends hs<E>> $$0) {
+      return this.b($$0) ? Optional.of((aeo<E>)this) : Optional.empty();
+   }
+
+   public aep a() {
+      return this.c;
+   }
+
+   public aep b() {
+      return this.b;
+   }
+
+   static record a(aep a, aep b) {
    }
 }

@@ -1,37 +1,32 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public class dlh extends dko<dmy> {
-   public dlh(Codec<dmy> $$0) {
-      super($$0);
+public class dlh {
+   private long b;
+   private long c;
+   public static final Codec<dlh> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dlh($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+
+   public dlh(dkw.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   @Override
-   public boolean a(dkq<dmy> $$0) {
-      cng $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      dcb $$3 = $$1.a_($$2.d());
-      dmy $$4 = $$0.f();
-      apf $$5 = $$0.d();
-      if (!$$3.a(amw.aJ)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.C_() + 1 && $$6 + 1 < $$1.aj()) {
-            int $$7 = 0;
-
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               gu $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dcb $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.C_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
-            }
-
-            return $$7 > 0;
-         } else {
-            return false;
-         }
+   public dlh(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
+   }
+
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

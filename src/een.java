@@ -1,17 +1,46 @@
-public interface een {
-   static een a() {
-      return ees.a;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import org.slf4j.Logger;
+
+public class een extends edv {
+   private static final Logger a = LogUtils.getLogger();
+
+   een(efh[] $$0) {
+      super($$0);
    }
 
-   static een a(bfj $$0) {
-      return new ees($$0);
+   @Override
+   public edx b() {
+      return edy.g;
    }
 
-   boolean b();
+   @Override
+   public ciw a(ciw $$0, ech $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<cml> $$2 = $$1.d().q().a(cmc.b, new bgv($$0), $$1.d());
+         if ($$2.isPresent()) {
+            ciw $$3 = $$2.get().a($$1.d().B_());
+            if (!$$3.b()) {
+               return $$3.c($$0.L());
+            }
+         }
 
-   boolean a(efb var1, gu var2, boolean var3);
+         a.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
+   }
 
-   boolean a(cfu var1);
+   public static edv.a<?> c() {
+      return a(een::new);
+   }
 
-   boolean a(dxe var1, dxe var2);
+   public static class a extends edv.c<een> {
+      public een a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
+         return new een($$2);
+      }
+   }
 }

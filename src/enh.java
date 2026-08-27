@@ -1,6 +1,7 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record enh(int a, sw b, @Nullable th c, @Nullable eni d) {
-   public static record a(int a, aom b, @Nullable eni c, boolean d) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+interface enh {
 }

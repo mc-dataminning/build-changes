@@ -1,69 +1,46 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class ano {
-   public static Map<acp<? extends hr<?>>, ano.a> a(hl<acz> $$0) {
-      return hv.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((ano.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public abstract class ano extends anp<Map<aep, JsonElement>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Gson b;
+   private final String c;
+
+   public ano(Gson $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static <T> ano.a a(hr<T> $$0) {
-      Map<acq, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         hi<T> $$3 = (hi<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
+   protected Map<aep, JsonElement> a(ank $$0, bde $$1) {
+      Map<aep, JsonElement> $$2 = new HashMap<>();
+      a($$0, this.c, this.b, $$2);
+      return $$2;
+   }
 
-         for (he<T> $$5 : $$3) {
-            if ($$5.f() != he.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
+   public static void a(ank $$0, String $$1, Gson $$2, Map<aep, JsonElement> $$3) {
+      aei $$4 = aei.a($$1);
+
+      for (Entry<aep, ani> $$5 : $$4.a($$0).entrySet()) {
+         aep $$6 = $$5.getKey();
+         aep $$7 = $$4.b($$6);
+
+         try (Reader $$8 = $$5.getValue().e()) {
+            JsonElement $$9 = arf.a($$2, $$8, JsonElement.class);
+            JsonElement $$10 = $$3.put($$7, $$9);
+            if ($$10 != null) {
+               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
             }
-
-            $$4.add($$0.a($$5.a()));
+         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
+            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
          }
-
-         $$1.put(((anl)$$2.getFirst()).b(), $$4);
-      });
-      return new ano.a($$1);
-   }
-
-   public static <T> void a(acp<? extends hr<T>> $$0, hr<T> $$1, ano.a $$2, ano.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         anl<T> $$5 = anl.a($$0, $$3x);
-         List<he<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<acq, IntList> a;
-
-      a(Map<acq, IntList> $$0) {
-         this.a = $$0;
       }
-
-      public void a(sf $$0) {
-         $$0.a(this.a, sf::a, sf::a);
-      }
-
-      public static ano.a b(sf $$0) {
-         return new ano.a($$0.a(sf::t, sf::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(anl<T> var1, List<he<T>> var2);
    }
 }

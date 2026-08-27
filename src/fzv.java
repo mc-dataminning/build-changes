@@ -1,37 +1,12 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.google.gson.JsonObject;
 
-public class fzv {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
-
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+public class fzv implements amk<fzu> {
+   public fzu b(JsonObject $$0) {
+      return new fzu(fzu.a.a(arf.a($$0, "hat", "none")));
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
-   }
-
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(fzk $$0) {
-      this.b.ifPresent($$1 -> $$0.send(fzl.e, $$1x -> {
-            $$1x.a(fzn.p, this.a($$1));
-            $$1x.a(fzn.q, (int)this.c);
-         }));
+   @Override
+   public String a() {
+      return "villager";
    }
 }

@@ -1,89 +1,102 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bra {
-   private final gu a;
-   private final he<brc> b;
-   private int c;
-   private final Runnable d;
+public class bra extends bps {
+   private static final btj c = btj.b().a(10.0).d();
+   private final btj d;
+   protected final bjf a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cbl b;
+   private int k;
+   private boolean l;
+   private final clw m;
+   private final boolean n;
 
-   public static Codec<bra> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  gu.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  acn.a(jc.S).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bra::new)
-      );
-   }
-
-   private bra(gu $$0, he<brc> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public bra(gu $$0, he<brc> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   @Deprecated
-   @aqa
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public gu f() {
-      return this.a;
-   }
-
-   public he<brc> g() {
-      return this.b;
+   public bra(bjf $$0, double $$1, clw $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(bps.a.a, bps.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public boolean a() {
+      if (this.k > 0) {
+         this.k--;
+         return false;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bra)$$0).a) : false;
+         this.b = this.a.dK().a(this.d, this.a);
+         return this.b != null;
       }
    }
 
+   private boolean a(biw $$0) {
+      return this.m.a($$0.eR()) || this.m.a($$0.eS());
+   }
+
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public boolean b() {
+      if (this.h()) {
+         if (this.a.f(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dC() - this.i) > 5.0 || Math.abs((double)this.b.dA() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dp();
+            this.g = this.b.dr();
+            this.h = this.b.dv();
+         }
+
+         this.i = (double)this.b.dC();
+         this.j = (double)this.b.dA();
+      }
+
+      return this.a();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void c() {
+      this.f = this.b.dp();
+      this.g = this.b.dr();
+      this.h = this.b.dv();
+      this.l = true;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.H().n();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void e() {
+      this.a.D().a(this.b, (float)(this.a.X() + 20), (float)this.a.W());
+      if (this.a.f(this.b) < 6.25) {
+         this.a.H().n();
+      } else {
+         this.a.H().a(this.b, this.e);
+      }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

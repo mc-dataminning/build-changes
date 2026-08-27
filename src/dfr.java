@@ -1,4 +1,20 @@
-@FunctionalInterface
-public interface dfr {
-   void onChunkStatusChange(clt var1, ahy var2);
+public enum dfr implements asf {
+   a("compare"),
+   b("subtract");
+
+   private final String c;
+
+   private dfr(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

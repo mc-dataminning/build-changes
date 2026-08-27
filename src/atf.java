@@ -1,57 +1,25 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class atf extends awf {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
-      .put("minecraft:ender_crystal", "minecraft:end_crystal")
-      .put("minecraft:snowman", "minecraft:snow_golem")
-      .put("minecraft:evocation_illager", "minecraft:evoker")
-      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
-      .put("minecraft:illusion_illager", "minecraft:illusioner")
-      .put("minecraft:vindication_illager", "minecraft:vindicator")
-      .put("minecraft:villager_golem", "minecraft:iron_golem")
-      .put("minecraft:xp_orb", "minecraft:experience_orb")
-      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
-      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
-      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:portal", "minecraft:nether_portal")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
-      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
-      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
-      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
-      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
-      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
-      .put("minecraft:mob_spawner", "minecraft:spawner")
-      .build();
-   public static final Map<String, String> c = ImmutableMap.builder()
-      .putAll(b)
-      .put("minecraft:clownfish", "minecraft:tropical_fish")
-      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
-      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
-      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
-      .build();
-   private static final String d = "minecraft:bred_";
-
-   public atf(Schema $$0, boolean $$1) {
-      super("EntityTheRenameningBlock", $$0, $$1);
+public class atf extends DataFix {
+   public atf(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected String a(String $$0) {
-      if ($$0.startsWith("minecraft:bred_")) {
-         $$0 = "minecraft:" + $$0.substring("minecraft:bred_".length());
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(aym.c);
+      return this.fixTypeEverywhereTyped(
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+      );
+   }
 
-      return a.getOrDefault($$0, $$0);
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

@@ -1,58 +1,129 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bqt {
-   @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+public class bqt<T extends byz & bzd & bym> extends bps {
+   public static final bfz a = ask.a(1, 2);
+   private final T b;
+   private bqt.a c = bqt.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
+
+   public bqt(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(bps.a.a, bps.a.b));
    }
 
-   @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2, ToDoubleFunction<gu> $$3) {
-      boolean $$4 = bqr.a($$0, $$1);
-      return bqu.a(() -> {
-         gu $$4x = bqu.a($$0.ec(), $$1, $$2);
-         gu $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   @Override
+   public boolean a() {
+      return this.i() && this.h();
    }
 
-   @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2, eei $$3) {
-      eei $$4 = $$3.a($$0.dn(), $$0.dp(), $$0.dt());
-      boolean $$5 = bqr.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   private boolean h() {
+      return this.b.b(ciz.uZ);
    }
 
-   @Nullable
-   public static eei b(bgi $$0, int $$1, int $$2, eei $$3) {
-      eei $$4 = $$0.dg().d($$3);
-      boolean $$5 = bqr.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   @Override
+   public boolean b() {
+      return this.i() && (this.a() || !this.b.H().l()) && this.h();
    }
 
-   @Nullable
-   private static eei a(bgi $$0, int $$1, int $$2, eei $$3, boolean $$4) {
-      return bqu.a($$0, () -> {
-         gu $$5 = bqu.a($$0.ec(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            gu $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+   private boolean i() {
+      return this.b.j() != null && this.b.j().bv();
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fl()) {
+         this.b.fr();
+         this.b.b(false);
+         che.a(this.b.fn(), false);
+      }
+   }
+
+   @Override
+   public boolean K_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      biw $$0 = this.b.j();
+      if ($$0 != null) {
+         boolean $$1 = this.b.J().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
          }
-      });
+
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.f($$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.H().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.ee());
+            }
+         } else {
+            this.h = 0;
+            this.b.H().n();
+         }
+
+         this.b.D().a($$0, 30.0F, 30.0F);
+         if (this.c == bqt.a.a) {
+            if (!$$4) {
+               this.b.c(cce.a(this.b, ciz.uZ));
+               this.c = bqt.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == bqt.a.b) {
+            if (!this.b.fl()) {
+               this.c = bqt.a.a;
+            }
+
+            int $$5 = this.b.fp();
+            ciw $$6 = this.b.fn();
+            if ($$5 >= che.k($$6)) {
+               this.b.fq();
+               this.c = bqt.a.c;
+               this.g = 20 + this.b.ee().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == bqt.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = bqt.a.d;
+            }
+         } else if (this.c == bqt.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            ciw $$7 = this.b.b(cce.a(this.b, ciz.uZ));
+            che.a($$7, false);
+            this.c = bqt.a.a;
+         }
+      }
    }
 
-   @Nullable
-   public static gu a(bgi $$0, gu $$1) {
-      $$1 = bqu.a($$1, $$0.dI().aj(), $$1x -> bqr.c($$0, $$1x));
-      return !bqr.a($$0, $$1) && !bqr.b($$0, $$1) ? $$1 : null;
+   private boolean k() {
+      return this.c == bqt.a.a;
    }
 
-   @Nullable
-   public static gu a(bgi $$0, int $$1, boolean $$2, gu $$3) {
-      gu $$4 = bqu.a($$0, $$1, $$0.ec(), $$3);
-      return !bqr.a($$4, $$0) && !bqr.a($$2, $$0, $$4) && !bqr.a($$0.J(), $$4) ? $$4 : null;
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

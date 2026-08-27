@@ -1,40 +1,24 @@
-public class aax implements uo<zb> {
-   private final eee a;
-   private final bdw b;
-   private final int c;
+public class aax implements uw<aav> {
+   private final int a;
 
-   public aax(bdw $$0, eee $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+   public aax(int $$0) {
+      this.a = $$0;
    }
 
-   public aax(sf $$0) {
-      this.b = $$0.b(bdw.class);
-      this.a = $$0.x();
-      this.c = $$0.m();
+   public aax(sh $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.a);
-      $$0.d(this.c);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(aav $$0) {
       $$0.a(this);
    }
 
-   public bdw a() {
-      return this.b;
-   }
-
-   public eee c() {
+   public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.c;
    }
 }

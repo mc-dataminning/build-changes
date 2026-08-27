@@ -1,77 +1,71 @@
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bmf extends bmm {
-   private static final int g = 240;
-   private final Predicate<bdu> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class bmf {
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
 
-   public bmf(bgb $$0, Predicate<bdu> $$1) {
-      super($$0);
-      this.h = $$1;
+   public static bly<bjf> a(float $$0) {
+      return a($$0, true);
    }
 
-   public bmf(bgb $$0, int $$1, Predicate<bdu> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
+   public static bly<bjf> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> btq.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
    }
 
-   protected int f() {
-      return Math.max(240, this.c);
+   public static bkp<bjf> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> btq.a($$2x, $$1, $$2), $$0x -> true);
    }
 
-   @Override
-   public boolean a() {
-      if (!super.a()) {
-         return false;
-      } else {
-         return !this.d.dI().X().b(cmi.c) ? false : this.a(this.d.dI().ai()) && !this.h();
-      }
+   public static bkp<bjf> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
+   public static bkp<bjf> c(float $$0) {
+      return a($$0, bmf::a, big::ba);
    }
 
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dg(), 2.0) && this.a(this.d.dI().ai());
+   private static bly<bjf> a(float $$0, Function<bjf, ehf> $$1, Predicate<bjf> $$2) {
+      return boa.a((Function<boa.b<bjf>, ? extends App<boa.c<bjf>, bod<bjf>>>)($$3 -> $$3.group($$3.c(bry.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<ehf> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new bsb($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.d.dI().a(this.d.af(), this.e, -1);
-   }
+   @Nullable
+   private static ehf a(bjf $$0) {
+      ehf $$1 = null;
+      ehf $$2 = null;
 
-   @Override
-   public void e() {
-      super.e();
-      if (this.d.ec().a(20) == 0) {
-         this.d.dI().c(1019, this.e, 0);
-         if (!this.d.aG) {
-            this.d.a(this.d.fj());
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bkq.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.di().e($$0.di().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
          }
+
+         if ($$2 == null || $$0.dK().b_(gv.a($$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dI().a(this.d.af(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dI().ai())) {
-         this.d.dI().a(this.e, false);
-         this.d.dI().c(1021, this.e, 0);
-         this.d.dI().c(2001, this.e, cpn.i(this.d.dI().a_(this.e)));
-      }
+      return $$2;
    }
 
-   private boolean a(bdu $$0) {
-      return this.h.test($$0);
+   @Nullable
+   private static ehf a(bjf $$0, int $$1, int $$2) {
+      ehf $$3 = $$0.f(0.0F);
+      return btl.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

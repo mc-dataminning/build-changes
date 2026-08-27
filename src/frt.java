@@ -1,18 +1,17 @@
-public class frt extends fpr<bwr> {
-   private static final acq a = new acq("textures/entity/illager/vindicator.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public frt(foy.a $$0) {
-      super($$0, new fbt<>($$0.a(fed.bK)), 0.5F);
-      this.a(new fsz<bwr, fbt<bwr>>(this, $$0.d()) {
-         public void a(eij $$0, fjx $$1, int $$2, bwr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fS()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+public class frt<T extends bwg> extends frg<T, fdy<T>> {
+   private static final Map<bik<?>, aep> a = Maps.newHashMap(
+      ImmutableMap.of(bik.w, new aep("textures/entity/horse/donkey.png"), bik.ap, new aep("textures/entity/horse/mule.png"))
+   );
+
+   public frt(fsj.a $$0, float $$1, fhh $$2) {
+      super($$0, new fdy<>($$0.a($$2)), $$1);
    }
 
-   public acq a(bwr $$0) {
-      return a;
+   public aep a(T $$0) {
+      return a.get($$0.ag());
    }
 }

@@ -1,12 +1,29 @@
-public class fqo extends fpr<bwf> {
-   private static final acq a = new acq("textures/entity/illager/pillager.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public fqo(foy.a $$0) {
-      super($$0, new fbt<>($$0.a(fed.aL)), 0.5F);
-      this.a(new fsz<>(this, $$0.d()));
+public class fqo implements fqp.a {
+   private final eqn a;
+   private double b = Double.MIN_VALUE;
+   private List<ehy> c = Collections.emptyList();
+
+   public fqo(eqn $$0) {
+      this.a = $$0;
    }
 
-   public acq a(bwf $$0) {
-      return a;
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         big $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dK().d($$6, $$6.cG().g(6.0)));
+      }
+
+      ell $$7 = $$1.getBuffer(fno.x());
+
+      for (ehy $$8 : this.c) {
+         fne.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

@@ -1,12 +1,25 @@
-public class cow extends coy {
-   private static final efb a = cpn.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   protected cow(dca.d $$0) {
-      super($$0);
+public interface cow extends cpb, cpn, cpp {
+   @Override
+   default <T extends dck> Optional<T> a(gv $$0, dcm<T> $$1) {
+      return cpn.super.a($$0, $$1);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return a;
+   default List<ehy> c(@Nullable big $$0, eha $$1) {
+      return cpb.super.c($$0, $$1);
+   }
+
+   @Override
+   default boolean a(@Nullable big $$0, ehy $$1) {
+      return cpb.super.a($$0, $$1);
+   }
+
+   @Override
+   default gv a(dkh.a $$0, gv $$1) {
+      return cpn.super.a($$0, $$1);
    }
 }

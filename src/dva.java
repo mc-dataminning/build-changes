@@ -1,44 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class dva extends dvq {
-   public static final Codec<dva> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhk.a.g.fieldOf("heightmap").orElse(dhk.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, dva::new)
-   );
-   private final dhk.a b;
-   private final int c;
+public class dva extends ebg {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public dva(dhk.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static ebg.a<dva> a() {
+      return new ebg.a<>(dva::new, dva::b, asq.o);
    }
 
-   @Nullable
-   @Override
-   public dvt.c a(cmp $$0, gu $$1, gu $$2, dvt.c $$3, dvt.c $$4, dvp $$5) {
-      dhk.a $$6;
-      if ($$0 instanceof aif) {
-         if (this.b == dhk.a.a) {
-            $$6 = dhk.a.b;
-         } else if (this.b == dhk.a.c) {
-            $$6 = dhk.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
-      }
+   private dva(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      gu $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new dvt.c(new gu($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   public dva() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dva b(qs $$0) {
+      return new dva(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   protected dvs<?> a() {
-      return dvs.g;
+   public qs a(qs $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

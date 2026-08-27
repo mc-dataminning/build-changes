@@ -11,48 +11,48 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class ah {
-   public static final ah a = new ah(0, new acq[0], new acq[0], dn.a.a);
+   public static final ah a = new ah(0, new aep[0], new aep[0], dn.a.a);
    private final int b;
-   private final acq[] c;
-   private final acq[] d;
+   private final aep[] c;
+   private final aep[] d;
    private final dn.a e;
 
-   public ah(int $$0, acq[] $$1, acq[] $$2, dn.a $$3) {
+   public ah(int $$0, aep[] $$1, aep[] $$2, dn.a $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
    }
 
-   public acq[] a() {
+   public aep[] a() {
       return this.d;
    }
 
-   public void a(aig $$0) {
+   public void a(akj $$0) {
       $$0.d(this.b);
-      dzq $$1 = new dzq.a($$0.x()).a(ebw.a, $$0).a(ebw.f, $$0.dg()).a(ebv.j);
+      ecn $$1 = new ecn.a($$0.x()).a(eet.a, $$0).a(eet.f, $$0.di()).a(ees.j);
       boolean $$2 = false;
 
-      for (acq $$3 : this.c) {
+      for (aep $$3 : this.c) {
          ObjectListIterator var8 = $$0.d.aH().getLootTable($$3).a($$1).iterator();
 
          while (var8.hasNext()) {
-            cfz $$4 = (cfz)var8.next();
+            ciw $$4 = (ciw)var8.next();
             if ($$0.i($$4)) {
-               $$0.dI().a(null, $$0.dn(), $$0.dp(), $$0.dt(), amh.ma, ami.h, 0.2F, (($$0.ec().i() - $$0.ec().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dK().a(null, $$0.dp(), $$0.dr(), $$0.dv(), aou.ma, aov.h, 0.2F, (($$0.ee().i() - $$0.ee().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               bvh $$5 = $$0.a($$4, false);
+               bye $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.p();
-                  $$5.b($$0.ct());
+                  $$5.b($$0.cv());
                }
             }
          }
       }
 
       if ($$2) {
-         $$0.bR.d();
+         $$0.bQ.d();
       }
 
       if (this.d.length > 0) {
@@ -60,7 +60,7 @@ public class ah {
       }
 
       MinecraftServer $$6 = $$0.d;
-      this.e.a($$6.aA()).ifPresent($$2x -> $$6.aA().a($$2x, $$0.da().a().a(2)));
+      this.e.a($$6.aA()).ifPresent($$2x -> $$6.aA().a($$2x, $$0.dc().a().a(2)));
    }
 
    @Override
@@ -88,7 +88,7 @@ public class ah {
          if (this.c.length > 0) {
             JsonArray $$1 = new JsonArray();
 
-            for (acq $$2 : this.c) {
+            for (aep $$2 : this.c) {
                $$1.add($$2.toString());
             }
 
@@ -98,7 +98,7 @@ public class ah {
          if (this.d.length > 0) {
             JsonArray $$3 = new JsonArray();
 
-            for (acq $$4 : this.d) {
+            for (aep $$4 : this.d) {
                $$3.add($$4.toString());
             }
 
@@ -114,24 +114,24 @@ public class ah {
    }
 
    public static ah a(JsonObject $$0) throws JsonParseException {
-      int $$1 = aor.a($$0, "experience", 0);
-      JsonArray $$2 = aor.a($$0, "loot", new JsonArray());
-      acq[] $$3 = new acq[$$2.size()];
+      int $$1 = arf.a($$0, "experience", 0);
+      JsonArray $$2 = arf.a($$0, "loot", new JsonArray());
+      aep[] $$3 = new aep[$$2.size()];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$3[$$4] = new acq(aor.a($$2.get($$4), "loot[" + $$4 + "]"));
+         $$3[$$4] = new aep(arf.a($$2.get($$4), "loot[" + $$4 + "]"));
       }
 
-      JsonArray $$5 = aor.a($$0, "recipes", new JsonArray());
-      acq[] $$6 = new acq[$$5.size()];
+      JsonArray $$5 = arf.a($$0, "recipes", new JsonArray());
+      aep[] $$6 = new aep[$$5.size()];
 
       for (int $$7 = 0; $$7 < $$6.length; $$7++) {
-         $$6[$$7] = new acq(aor.a($$5.get($$7), "recipes[" + $$7 + "]"));
+         $$6[$$7] = new aep(arf.a($$5.get($$7), "recipes[" + $$7 + "]"));
       }
 
       dn.a $$8;
       if ($$0.has("function")) {
-         $$8 = new dn.a(new acq(aor.i($$0, "function")));
+         $$8 = new dn.a(new aep(arf.i($$0, "function")));
       } else {
          $$8 = dn.a.a;
       }
@@ -141,10 +141,10 @@ public class ah {
 
    public static class a {
       private int a;
-      private final List<acq> b = Lists.newArrayList();
-      private final List<acq> c = Lists.newArrayList();
+      private final List<aep> b = Lists.newArrayList();
+      private final List<aep> c = Lists.newArrayList();
       @Nullable
-      private acq d;
+      private aep d;
 
       public static ah.a a(int $$0) {
          return new ah.a().b($$0);
@@ -155,35 +155,35 @@ public class ah {
          return this;
       }
 
-      public static ah.a a(acq $$0) {
+      public static ah.a a(aep $$0) {
          return new ah.a().b($$0);
       }
 
-      public ah.a b(acq $$0) {
+      public ah.a b(aep $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static ah.a c(acq $$0) {
+      public static ah.a c(aep $$0) {
          return new ah.a().d($$0);
       }
 
-      public ah.a d(acq $$0) {
+      public ah.a d(aep $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static ah.a e(acq $$0) {
+      public static ah.a e(aep $$0) {
          return new ah.a().f($$0);
       }
 
-      public ah.a f(acq $$0) {
+      public ah.a f(aep $$0) {
          this.d = $$0;
          return this;
       }
 
       public ah a() {
-         return new ah(this.a, this.b.toArray(new acq[0]), this.c.toArray(new acq[0]), this.d == null ? dn.a.a : new dn.a(this.d));
+         return new ah(this.a, this.b.toArray(new aep[0]), this.c.toArray(new aep[0]), this.d == null ? dn.a.a : new dn.a(this.d));
       }
    }
 }

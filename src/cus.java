@@ -1,49 +1,97 @@
-public class cus extends cpv {
-   public static final int a = 3;
-   public static final ddb b = dcr.as;
-   private static final efb[] c = new efb[]{
-      cpn.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      cpn.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cpn.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      cpn.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected cus(dca.d $$0) {
+public class cus extends crx {
+   protected static final ehy a = csk.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<gv> b = gv.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(gv::i).toList();
+
+   protected cus(dex.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+   }
+
+   public static boolean a(cpk $$0, gv $$1, gv $$2) {
+      return $$0.a_($$1.a((ia)$$2)).a(apj.cn) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(apj.co);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return c[$$0.c(b)];
+   public boolean g_(dey $$0) {
+      return true;
    }
 
    @Override
-   protected boolean d(dcb $$0, cls $$1, gu $$2) {
-      return $$0.a(cpo.dX);
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return a;
    }
 
    @Override
-   public boolean e_(dcb $$0) {
-      return $$0.c(b) < 3;
-   }
+   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      int $$4 = $$0.c(b);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.a(b, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
+      for (gv $$4 : b) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               iw.t,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
       }
    }
 
    @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return new cfz(cgc.ru);
+   public cyp b_(dey $$0) {
+      return cyp.c;
    }
 
    @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(b);
+   public dck a(gv $$0, dey $$1) {
+      return new ddd($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
+      return $$0.B ? a($$2, dcm.m, ddd::a) : null;
+   }
+
+   @Override
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if ($$1.B) {
+         return bgo.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         return bgo.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bgr b(dey $$0, cpk $$1, gv $$2) {
+      dck $$3 = $$1.c_($$2);
+      if ($$3 instanceof ddd) {
+         te $$4 = ((bgs)$$3).H_();
+         return new bgw(($$2x, $$3x, $$4x) -> new ceu($$2x, $$3x, cen.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
+      if ($$4.A()) {
+         dck $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddd) {
+            ((ddd)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Override
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 }

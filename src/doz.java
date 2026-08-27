@@ -1,62 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class doz extends dot {
-   public static final Codec<doz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dot.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bdc.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, doz::new)
-   );
-   private final dot c;
-   private final String d;
-   @Nullable
-   private ddb e;
-   private final bdc f;
+public class doz extends dnl<dqn> {
+   public doz(Codec<dqn> $$0) {
+      super($$0);
+   }
 
-   public doz(dot $$0, ddb $$1, bdc $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
+   @Override
+   public boolean a(dnn<dqn> $$0) {
+      cqe $$1 = $$0.b();
+      gv $$2 = $$0.e();
+      dqn $$3 = $$0.f();
+      art $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if (!$$5.isPresent()) {
+         return false;
+      } else {
+         gv $$6 = $$2.h($$5.getAsInt());
+         ia $$7 = new ia($$3.c, $$3.c, $$3.c);
+         eha $$8 = new eha($$6.b($$7), $$6.a($$7));
+         return gv.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, csl.kJ.n(), 2);
+            return 1;
+         }).sum() > 0;
+      }
+   }
 
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+   private static OptionalInt a(cqe $$0, gv $$1, dqn $$2) {
+      Predicate<dey> $$3 = $$0x -> $$0x.a(csl.G);
+      Predicate<dey> $$4 = $$0x -> !$$0x.a(csl.G);
+      Optional<djx> $$5 = djx.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(djx::c).orElseGet(OptionalInt::empty);
+   }
+
+   private boolean b(cqe $$0, gv $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (hb $$2 : hb.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public doz(dot $$0, String $$1, bdc $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   protected dou<?> a() {
-      return dou.g;
-   }
-
-   @Override
-   public dcb a(apf $$0, gu $$1) {
-      dcb $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   private static ddb a(dcb $$0, String $$1) {
-      Collection<dde<?>> $$2 = $$0.B();
-      Optional<ddb> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ddb).map($$0x -> (ddb)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   private boolean a(cpl $$0, gv $$1) {
+      dey $$2 = $$0.a_($$1);
+      return $$2.a(csl.G) || $$2.i();
    }
 }

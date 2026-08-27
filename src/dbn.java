@@ -1,11 +1,22 @@
-public class dbn extends dbg {
-   @Override
-   protected acp<dkb<?, ?>> a(apf $$0, boolean $$1) {
-      return or.o;
+public class dbn extends csk implements dbm {
+   private final dbm.a d;
+
+   public dbn(dbm.a $$0, dex.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected acp<dkb<?, ?>> a(apf $$0) {
-      return or.p;
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dey $$0) {
+      return dbm.c($$0.b()).isPresent();
+   }
+
+   public dbm.a g() {
+      return this.d;
    }
 }

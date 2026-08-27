@@ -1,12 +1,21 @@
-public abstract class fab<T extends bwc> extends fbs<T> {
-   protected fab(fee $$0) {
-      super($$0);
+public class fab extends eyt<cfr> {
+   private static final aep x = new aep("textures/gui/container/shulker_box.png");
+
+   public fab(cfr $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2);
+      this.k++;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      faf.a(this.o, this.n, this.a($$0), this.c, $$3);
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public abstract boolean a(T var1);
+   @Override
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   }
 }

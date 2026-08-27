@@ -1,34 +1,13 @@
-import com.google.common.collect.ImmutableMap;
-
-public class bhy extends bhr<bta> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bhy() {
-      super(ImmutableMap.of(bpb.m, bpc.b), 100);
+class bhy extends bhq {
+   protected bhy(bhs $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aif $$0, bta $$1) {
-      return $$1.al() == bgl.a;
-   }
-
-   protected boolean a(aif $$0, bta $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(aif $$0, bta $$1, long $$2) {
-      if (!$$1.aY() && !$$1.bi()) {
-         $$1.b(bgl.i);
-         this.e = 0;
+   @Override
+   public void a(biw $$0, int $$1) {
+      super.a($$0, $$1);
+      if (!$$0.dK().B && $$0 instanceof cbl $$2) {
+         $$2.ga().a($$1 + 1, 1.0F);
       }
-   }
-
-   protected void c(aif $$0, bta $$1, long $$2) {
-      $$1.b(bgl.a);
-   }
-
-   protected void d(aif $$0, bta $$1, long $$2) {
-      this.e++;
    }
 }

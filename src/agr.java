@@ -1,49 +1,85 @@
 import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class agr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.trigger.failed.invalid"));
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.fill.toobig", $$0, $$1));
+   static final fe b = new fe(csl.a.n(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("commands.fill.failed"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)dt.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("fill").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("objective", ej.a())
-                        .suggests(($$0x, $$1) -> a((ds)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ds)$$0x.getSource(), a(((ds)$$0x.getSource()).h(), ej.a($$0x, "objective")))))
-                     .then(
-                        dt.a("add")
-                           .then(
-                              dt.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ds)$$0x.getSource(),
-                                          a(((ds)$$0x.getSource()).h(), ej.a($$0x, "objective")),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
+               dt.a("from", fj.a())
                   .then(
-                     dt.a("set")
+                     dt.a("to", fj.a())
                         .then(
-                           dt.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ds)$$0x.getSource(),
-                                       a(((ds)$$0x.getSource()).h(), ej.a($$0x, "objective")),
-                                       IntegerArgumentType.getInteger($$0x, "value")
-                                    )
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
+                                                "block", fg.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((ds)$$0x.getSource(), dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")), fg.a($$0x, "block"), agr.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)dt.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ds)$$0x.getSource(),
+                                                            dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")),
+                                                            fg.a($$0x, "block"),
+                                                            agr.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dt.a("filter", ff.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")),
+                                                               fg.a($$0x, "block"),
+                                                               agr.a.a,
+                                                               ff.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          dt.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")),
+                                                      fg.a($$0x, "block"),
+                                                      agr.a.a,
+                                                      $$0xx -> $$0xx.c().t($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dt.a("outline")
+                                          .executes(
+                                             $$0x -> a((ds)$$0x.getSource(), dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")), fg.a($$0x, "block"), agr.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    dt.a("hollow")
+                                       .executes(
+                                          $$0x -> a((ds)$$0x.getSource(), dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")), fg.a($$0x, "block"), agr.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("destroy")
+                                    .executes($$0x -> a((ds)$$0x.getSource(), dup.a(fj.a($$0x, "from"), fj.a($$0x, "to")), fg.a($$0x, "block"), agr.a.d, null))
                               )
                         )
                   )
@@ -51,61 +87,76 @@ public class agr {
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ds $$0, SuggestionsBuilder $$1) {
-      bfj $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         efg $$4 = $$0.l().aF();
-         String $$5 = $$2.cv();
+   private static int a(ds $$0, dup $$1, fe $$2, agr.a $$3, @Nullable Predicate<dfc> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.c() * $$1.d() * $$1.e();
+      int $$6 = $$0.e().X().c(cpg.x);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
+      } else {
+         List<gv> $$7 = Lists.newArrayList();
+         aki $$8 = $$0.e();
+         int $$9 = 0;
 
-         for (efd $$6 : $$4.c()) {
-            if ($$6.c() == efj.b && $$4.b($$5, $$6)) {
-               eff $$7 = $$4.c($$5, $$6);
-               if (!$$7.g()) {
-                  $$3.add($$6.b());
+         for (gv $$10 : gv.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
+            if ($$4 == null || $$4.test(new dfc($$8, $$10, true))) {
+               fe $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dck $$12 = $$8.c_($$10);
+                  bgf.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
                }
             }
          }
-      }
 
-      return du.b($$3, $$1);
-   }
-
-   private static int a(ds $$0, eff $$1, int $$2) {
-      $$1.a($$2);
-      $$0.a(() -> sw.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
-      return $$1.b();
-   }
-
-   private static int b(ds $$0, eff $$1, int $$2) {
-      $$1.b($$2);
-      $$0.a(() -> sw.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
-      return $$2;
-   }
-
-   private static int a(ds $$0, eff $$1) {
-      $$1.a(1);
-      $$0.a(() -> sw.a("commands.trigger.simple.success", $$1.d().e()), true);
-      return $$1.b();
-   }
-
-   private static eff a(aig $$0, efd $$1) throws CommandSyntaxException {
-      if ($$1.c() != efj.b) {
-         throw b.create();
-      } else {
-         efg $$2 = $$0.gc();
-         String $$3 = $$0.cv();
-         if (!$$2.b($$3, $$1)) {
-            throw a.create();
-         } else {
-            eff $$4 = $$2.c($$3, $$1);
-            if ($$4.g()) {
-               throw a.create();
-            } else {
-               $$4.a(true);
-               return $$4;
-            }
+         for (gv $$13 : $$7) {
+            csk $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
          }
+
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> te.a("commands.fill.success", $$15), true);
+            return $$9;
+         }
+      }
+   }
+
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? agr.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
+
+      public final aic.a e;
+
+      private a(aic.a $$0) {
+         this.e = $$0;
       }
    }
 }

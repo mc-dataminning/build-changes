@@ -1,24 +1,46 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
+import java.util.List;
 
-public interface sx {
-   sx a = new sx() {
-      @Override
-      public String toString() {
-         return "empty";
+public class sx extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
+   }
+
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
+
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!sv.a($$3)) {
+            return true;
+         }
       }
-   };
 
-   default <T> Optional<T> a(ta.b<T> $$0, ts $$1) {
-      return Optional.empty();
+      throw new CorruptedFrameException("length wider than 21-bit");
    }
 
-   default <T> Optional<T> a(ta.a<T> $$0) {
-      return Optional.empty();
-   }
-
-   default tj a(@Nullable ds $$0, @Nullable bfj $$1, int $$2) throws CommandSyntaxException {
-      return tj.a(this);
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = sv.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            $$2.add($$1.readBytes($$3));
+         }
+      }
    }
 }

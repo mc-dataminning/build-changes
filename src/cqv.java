@@ -1,149 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class cqv extends crl implements csb {
-   public static final dcz<dcu> a = dcr.bd;
+public class cqv extends cqm {
+   private static final MapCodec<hf<cqi>> d = cqi.c.fieldOf("biome");
+   public static final MapCodec<cqr.c<hf<cqi>>> b = cqr.c.a(d).fieldOf("biomes");
+   private static final MapCodec<hf<cqw>> e = cqw.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<cqv> c = Codec.mapEither(b, e).xmap(cqv::new, $$0 -> $$0.f).codec();
+   private final Either<cqr.c<hf<cqi>>, hf<cqw>> f;
 
-   public cqv(dca.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(aC, ha.c).a(c, Boolean.valueOf(false)).a(a, dcu.a));
+   private cqv(Either<cqr.c<hf<cqi>>, hf<cqw>> $$0) {
+      this.f = $$0;
+   }
+
+   public static cqv a(cqr.c<hf<cqi>> $$0) {
+      return new cqv(Either.left($$0));
+   }
+
+   public static cqv a(hf<cqw> $$0) {
+      return new cqv(Either.right($$0));
+   }
+
+   private cqr.c<hf<cqi>> d() {
+      return (cqr.c<hf<cqi>>)this.f.map($$0 -> $$0, $$0 -> ((cqw)$$0.a()).a());
    }
 
    @Override
-   protected int g(dcb $$0) {
-      return 2;
+   protected Stream<hf<cqi>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   protected int b(cls $$0, gu $$1, dcb $$2) {
-      czn $$3 = $$0.c_($$1);
-      return $$3 instanceof czy ? ((czy)$$3).c() : 0;
+   protected Codec<? extends cqm> a() {
+      return c;
    }
 
-   private int e(cmm $$0, gu $$1, dcb $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return 0;
-      } else {
-         int $$4 = this.a((cnc)$$0, $$1, $$2);
-         if ($$4 > $$3) {
-            return 0;
-         } else {
-            return $$2.c(a) == dcu.b ? $$3 - $$4 : $$3;
-         }
-      }
+   public boolean a(aeo<cqw> $$0) {
+      Optional<hf<cqw>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   protected boolean a(cmm $$0, gu $$1, dcb $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return false;
-      } else {
-         int $$4 = this.a((cnc)$$0, $$1, $$2);
-         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(a) == dcu.a;
-      }
+   public hf<cqi> getNoiseBiome(int $$0, int $$1, int $$2, cqr.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @aso
+   public hf<cqi> a(cqr.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   protected int b(cmm $$0, gu $$1, dcb $$2) {
-      int $$3 = super.b($$0, $$1, $$2);
-      ha $$4 = $$2.c(aC);
-      gu $$5 = $$1.a($$4);
-      dcb $$6 = $$0.a_($$5);
-      if ($$6.n()) {
-         $$3 = $$6.a($$0, $$5);
-      } else if ($$3 < 15 && $$6.g($$0, $$5)) {
-         $$5 = $$5.a($$4);
-         $$6 = $$0.a_($$5);
-         bva $$7 = this.a($$0, $$4, $$5);
-         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.E(), $$6.n() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
-         if ($$8 != Integer.MIN_VALUE) {
-            $$3 = $$8;
-         }
-      }
-
-      return $$3;
-   }
-
-   @Nullable
-   private bva a(cmm $$0, ha $$1, gu $$2) {
-      List<bva> $$3 = $$0.a(
-         bva.class,
-         new eed((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cB() == $$1
+   public void a(List<String> $$0, gv $$1, cqr.f $$2) {
+      int $$3 = hr.a($$1.u());
+      int $$4 = hr.a($$1.v());
+      int $$5 = hr.a($$1.w());
+      cqr.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = cqr.a($$6.d());
+      float $$8 = cqr.a($$6.e());
+      float $$9 = cqr.a($$6.b());
+      float $$10 = cqr.a($$6.c());
+      float $$11 = cqr.a($$6.g());
+      double $$12 = (double)dko.a($$11);
+      cqy $$13 = new cqy();
+      $$0.add(
+         "Biome builder PV: "
+            + cqy.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
       );
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if (!$$3.fO().e) {
-         return bdx.d;
-      } else {
-         $$0 = $$0.a(a);
-         float $$6 = $$0.c(a) == dcu.b ? 0.55F : 0.5F;
-         $$1.a($$3, $$2, amh.eF, ami.e, 0.3F, $$6);
-         $$1.a($$2, $$0, 2);
-         this.f($$1, $$2, $$0);
-         return bdx.a($$1.B);
-      }
-   }
-
-   @Override
-   protected void c(cmm $$0, gu $$1, dcb $$2) {
-      if (!$$0.L().b($$1, this)) {
-         int $$3 = this.e($$0, $$1, $$2);
-         czn $$4 = $$0.c_($$1);
-         int $$5 = $$4 instanceof czy ? ((czy)$$4).c() : 0;
-         if ($$3 != $$5 || $$2.c(c) != this.a($$0, $$1, $$2)) {
-            efx $$6 = this.c($$0, $$1, $$2) ? efx.c : efx.d;
-            $$0.a($$1, this, 2, $$6);
-         }
-      }
-   }
-
-   private void f(cmm $$0, gu $$1, dcb $$2) {
-      int $$3 = this.e($$0, $$1, $$2);
-      czn $$4 = $$0.c_($$1);
-      int $$5 = 0;
-      if ($$4 instanceof czy $$6) {
-         $$5 = $$6.c();
-         $$6.a($$3);
-      }
-
-      if ($$5 != $$3 || $$2.c(a) == dcu.a) {
-         boolean $$7 = this.a($$0, $$1, $$2);
-         boolean $$8 = $$2.c(c);
-         if ($$8 && !$$7) {
-            $$0.a($$1, $$2.a(c, Boolean.valueOf(false)), 2);
-         } else if (!$$8 && $$7) {
-            $$0.a($$1, $$2.a(c, Boolean.valueOf(true)), 2);
-         }
-
-         this.d($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      this.f($$1, $$2, $$0);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cmm $$1, gu $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      czn $$5 = $$1.c_($$2);
-      return $$5 != null && $$5.a_($$3, $$4);
-   }
-
-   @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new czy($$0, $$1);
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(aC, a, c);
    }
 }

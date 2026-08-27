@@ -1,73 +1,52 @@
 import javax.annotation.Nullable;
 
-public class cwl extends cpv implements cpp, cub {
-   protected static final float a = 6.0F;
-   protected static final efb b = cpn.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+public class cwl extends cvx implements cwy {
+   protected static final ehy f = csk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double g = 0.14;
 
-   protected cwl(dca.d $$0) {
-      super($$0);
+   protected cwl(dex.d $$0) {
+      super($$0, hb.b, f, true, 0.14);
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return b;
+   protected boolean g(dey $$0) {
+      return $$0.a(csl.G);
    }
 
    @Override
-   protected boolean d(dcb $$0, cls $$1, gu $$2) {
-      return $$0.d($$1, $$2, ha.b) && !$$0.a(cpo.kJ);
+   protected csk a() {
+      return csl.md;
+   }
+
+   @Override
+   protected boolean h(dey $$0) {
+      return !$$0.a(csl.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cbl $$0, coq $$1, gv $$2, dey $$3, eaa $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cpl $$0, gv $$1, dey $$2, eab $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(art $$0) {
+      return 1;
    }
 
    @Nullable
    @Override
-   public dcb a(cih $$0) {
-      dxe $$1 = $$0.q().b_($$0.a());
-      return $$1.a(anb.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public dey a(cle $$0) {
+      eab $$1 = $$0.q().b_($$0.a());
+      return $$1.a(apo.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      dcb $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
-      }
-
-      return $$6;
-   }
-
-   @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return true;
-   }
-
-   @Override
-   public dxe c_(dcb $$0) {
-      return dxf.c.a(false);
-   }
-
-   @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      dcb $$4 = cpo.bx.n();
-      dcb $$5 = $$4.a(cxu.b, dcx.a);
-      gu $$6 = $$2.c();
-      if ($$0.a_($$6).a(cpo.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
-      }
-   }
-
-   @Override
-   public boolean a(cls $$0, gu $$1, dcb $$2, dxd $$3) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cmn $$0, gu $$1, dcb $$2, dxe $$3) {
-      return false;
+   public eab c_(dey $$0) {
+      return eac.c.a(false);
    }
 }

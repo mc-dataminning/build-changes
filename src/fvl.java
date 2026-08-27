@@ -1,68 +1,34 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class fvl extends ftp<bvl, fha<bvl>> {
+   private static final aep a = new aep("textures/entity/wolf/wolf.png");
+   private static final aep i = new aep("textures/entity/wolf/wolf_tame.png");
+   private static final aep j = new aep("textures/entity/wolf/wolf_angry.png");
 
-public class fvl extends ake {
-   private static final ajz c = new ajz(sw.c("resourcePack.vanilla.description"), aa.b().a(ajm.a));
-   private static final aji d = aji.a(ajz.a, c);
-   private static final sw e = sw.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, sw> f = Map.of(
-      "programmer_art", sw.c("resourcePack.programmer_art.name"), "high_contrast", sw.c("resourcePack.high_contrast.name")
-   );
-   private static final acq g = new acq("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
-
-   public fvl(Path $$0) {
-      super(ajm.a, b($$0), g);
-      this.h = this.a($$0);
+   public fvl(fsj.a $$0) {
+      super($$0, new fha<>($$0.a(fhi.bV)), 0.5F);
+      this.a(new fxg(this));
    }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aS && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
+   protected float a(bvl $$0, float $$1) {
+      return $$0.gh();
+   }
+
+   public void a(bvl $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
+      if ($$0.gg()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
       }
 
-      return null;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gg()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
    }
 
-   private static ajo b(Path $$0) {
-      ajp $$1 = new ajp().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(ajm.a, $$0).c();
-   }
-
-   @Override
-   protected sw a(String $$0) {
-      sw $$1 = f.get($$0);
-      return (sw)($$1 != null ? $$1 : sw.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected akg a(ajl $$0) {
-      return akg.a("vanilla", e, true, $$1 -> $$0, ajm.a, akg.b.b, akj.c);
-   }
-
-   @Nullable
-   @Override
-   protected akg a(String $$0, akg.c $$1, sw $$2) {
-      return akg.a($$0, $$2, false, $$1, ajm.a, akg.b.a, akj.c);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, akg>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
+   public aep a(bvl $$0) {
+      if ($$0.p()) {
+         return i;
+      } else {
+         return $$0.S_() ? j : a;
       }
    }
 }

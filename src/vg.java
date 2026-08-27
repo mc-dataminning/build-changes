@@ -1,24 +1,9 @@
-public class vg implements uo<ur> {
-   private final boolean a;
+public interface vg extends aaw {
+   void a(vi var1);
 
-   public vg(boolean $$0) {
-      this.a = $$0;
-   }
+   void a(vj var1);
 
-   public vg(sf $$0) {
-      this.a = $$0.readBoolean();
-   }
+   void a(vh var1);
 
-   @Override
-   public void a(sf $$0) {
-      $$0.writeBoolean(this.a);
-   }
-
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.a;
-   }
+   void a(vk var1);
 }

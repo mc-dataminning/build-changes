@@ -1,106 +1,143 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eao extends eay {
-   final cpn a;
-   final Set<dde<?>> b;
+public class eao {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eao h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eam l = eam.a;
 
-   eao(eck[] $$0, cpn $$1, Set<dde<?>> $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+   public eao(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
+   }
+
+   public eao a(int $$0, int $$1, int $$2) {
+      eao $$3 = new eao($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
+   }
+
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   }
+
+   public float a(eao $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return aro.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float b(eao $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return aro.c($$1 * $$1 + $$2 * $$2);
+   }
+
+   public float a(gv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return aro.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float c(eao $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float b(gv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(eao $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(gv $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public gv a() {
+      return new gv(this.a, this.b, this.c);
+   }
+
+   public ehf b() {
+      return new ehf((double)this.a, (double)this.b, (double)this.c);
    }
 
    @Override
-   public eba b() {
-      return ebb.w;
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eao $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
    @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(ebw.g);
+   public int hashCode() {
+      return this.m;
+   }
+
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
-   protected cfz a(cfz $$0, dzk $$1) {
-      dcb $$2 = $$1.c(ebw.g);
-      if ($$2 != null) {
-         qr $$3 = $$0.w();
-         qr $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
-         } else {
-            $$4 = new qr();
-            $$3.a("BlockStateTag", $$4);
-         }
-
-         this.b.stream().filter($$2::b).forEach($$2x -> $$4.a($$2x.f(), a($$2, $$2x)));
-      }
-
-      return $$0;
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   public static eao.a a(cpn $$0) {
-      return new eao.a($$0);
+   public void a(sh $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   private static <T extends Comparable<T>> String a(dcb $$0, dde<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
+   public static eao b(sh $$0) {
+      eao $$1 = new eao($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 
-   public static class a extends eay.a<eao.a> {
-      private final cpn a;
-      private final Set<dde<?>> b = Sets.newHashSet();
-
-      a(cpn $$0) {
-         this.a = $$0;
-      }
-
-      public eao.a a(dde<?> $$0) {
-         if (!this.a.l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      protected eao.a a() {
-         return this;
-      }
-
-      @Override
-      public eaz b() {
-         return new eao(this.g(), this.a, this.b);
-      }
-   }
-
-   public static class b extends eay.c<eao> {
-      public void a(JsonObject $$0, eao $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("block", jb.f.b($$1.a).toString());
-         JsonArray $$3 = new JsonArray();
-         $$1.b.forEach($$1x -> $$3.add($$1x.f()));
-         $$0.add("properties", $$3);
-      }
-
-      public eao a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         acq $$3 = new acq(aor.i($$0, "block"));
-         cpn $$4 = jb.f.b($$3).orElseThrow(() -> new IllegalArgumentException("Can't find block " + $$3));
-         dcc<cpn, dcb> $$5 = $$4.l();
-         Set<dde<?>> $$6 = Sets.newHashSet();
-         JsonArray $$7 = aor.a($$0, "properties", null);
-         if ($$7 != null) {
-            $$7.forEach($$2x -> $$6.add($$5.a(aor.a($$2x, "property"))));
-         }
-
-         return new eao($$2, $$4, $$6);
-      }
+   protected static void a(sh $$0, eao $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eam.class);
+      $$1.g = $$0.readFloat();
    }
 }

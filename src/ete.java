@@ -1,48 +1,57 @@
-public class ete extends euq {
-   private static final int a = 90;
-   private final sw b;
-   private epz c = epz.a;
-   private final Runnable k;
-   private final sw l;
-   private final boolean m;
+import javax.annotation.Nullable;
 
-   public ete(Runnable $$0, sw $$1, sw $$2) {
-      this($$0, $$1, $$2, sv.k, true);
+public abstract class ete<E extends ete.a<E>> extends esd<E> {
+   private static final te a = te.c("narration.selection.usage");
+
+   public ete(eqn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ete(Runnable $$0, sw $$1, sw $$2, sw $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   @Nullable
+   @Override
+   public eru a(evz $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (this.ax_() && $$0 instanceof evz.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? eru.a(this, eru.a($$2)) : null;
+      } else if (!this.ax_()) {
+         E $$3 = this.f();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : eru.a(this, eru.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public sw au_() {
-      return sv.a(super.au_(), this.b);
+   public void b(evt $$0) {
+      E $$1 = this.r();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.f();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.ax_()) {
+         $$0.a(evs.d, a);
+      }
    }
 
-   @Override
-   protected void b() {
-      super.b();
-      this.c = epz.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = apa.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(epi.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
-   }
+   public abstract static class a<E extends ete.a<E>> extends esd.a<E> implements evu {
+      public abstract te a();
 
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean av_() {
-      return this.m;
+      @Override
+      public void b(evt $$0) {
+         $$0.a(evs.a, this.a());
+      }
    }
 }

@@ -1,108 +1,14 @@
-public final class ane {
-   public static final anl<cfu> a = a("wool");
-   public static final anl<cfu> b = a("planks");
-   public static final anl<cfu> c = a("stone_bricks");
-   public static final anl<cfu> d = a("wooden_buttons");
-   public static final anl<cfu> e = a("stone_buttons");
-   public static final anl<cfu> f = a("buttons");
-   public static final anl<cfu> g = a("wool_carpets");
-   public static final anl<cfu> h = a("wooden_doors");
-   public static final anl<cfu> i = a("wooden_stairs");
-   public static final anl<cfu> j = a("wooden_slabs");
-   public static final anl<cfu> k = a("wooden_fences");
-   public static final anl<cfu> l = a("fence_gates");
-   public static final anl<cfu> m = a("wooden_pressure_plates");
-   public static final anl<cfu> n = a("wooden_trapdoors");
-   public static final anl<cfu> o = a("doors");
-   public static final anl<cfu> p = a("saplings");
-   public static final anl<cfu> q = a("logs_that_burn");
-   public static final anl<cfu> r = a("logs");
-   public static final anl<cfu> s = a("dark_oak_logs");
-   public static final anl<cfu> t = a("oak_logs");
-   public static final anl<cfu> u = a("birch_logs");
-   public static final anl<cfu> v = a("acacia_logs");
-   public static final anl<cfu> w = a("cherry_logs");
-   public static final anl<cfu> x = a("jungle_logs");
-   public static final anl<cfu> y = a("spruce_logs");
-   public static final anl<cfu> z = a("mangrove_logs");
-   public static final anl<cfu> A = a("crimson_stems");
-   public static final anl<cfu> B = a("warped_stems");
-   public static final anl<cfu> C = a("bamboo_blocks");
-   public static final anl<cfu> D = a("wart_blocks");
-   public static final anl<cfu> E = a("banners");
-   public static final anl<cfu> F = a("sand");
-   public static final anl<cfu> G = a("smelts_to_glass");
-   public static final anl<cfu> H = a("stairs");
-   public static final anl<cfu> I = a("slabs");
-   public static final anl<cfu> J = a("walls");
-   public static final anl<cfu> K = a("anvil");
-   public static final anl<cfu> L = a("rails");
-   public static final anl<cfu> M = a("leaves");
-   public static final anl<cfu> N = a("trapdoors");
-   public static final anl<cfu> O = a("small_flowers");
-   public static final anl<cfu> P = a("beds");
-   public static final anl<cfu> Q = a("fences");
-   public static final anl<cfu> R = a("tall_flowers");
-   public static final anl<cfu> S = a("flowers");
-   public static final anl<cfu> T = a("piglin_repellents");
-   public static final anl<cfu> U = a("piglin_loved");
-   public static final anl<cfu> V = a("ignored_by_piglin_babies");
-   public static final anl<cfu> W = a("piglin_food");
-   public static final anl<cfu> X = a("fox_food");
-   public static final anl<cfu> Y = a("gold_ores");
-   public static final anl<cfu> Z = a("iron_ores");
-   public static final anl<cfu> aa = a("diamond_ores");
-   public static final anl<cfu> ab = a("redstone_ores");
-   public static final anl<cfu> ac = a("lapis_ores");
-   public static final anl<cfu> ad = a("coal_ores");
-   public static final anl<cfu> ae = a("emerald_ores");
-   public static final anl<cfu> af = a("copper_ores");
-   public static final anl<cfu> ag = a("non_flammable_wood");
-   public static final anl<cfu> ah = a("soul_fire_base_blocks");
-   public static final anl<cfu> ai = a("candles");
-   public static final anl<cfu> aj = a("dirt");
-   public static final anl<cfu> ak = a("terracotta");
-   public static final anl<cfu> al = a("completes_find_tree_tutorial");
-   public static final anl<cfu> am = a("boats");
-   public static final anl<cfu> an = a("chest_boats");
-   public static final anl<cfu> ao = a("fishes");
-   public static final anl<cfu> ap = a("signs");
-   public static final anl<cfu> aq = a("music_discs");
-   public static final anl<cfu> ar = a("creeper_drop_music_discs");
-   public static final anl<cfu> as = a("coals");
-   public static final anl<cfu> at = a("arrows");
-   public static final anl<cfu> au = a("lectern_books");
-   public static final anl<cfu> av = a("bookshelf_books");
-   public static final anl<cfu> aw = a("beacon_payment_items");
-   public static final anl<cfu> ax = a("stone_tool_materials");
-   public static final anl<cfu> ay = a("stone_crafting_materials");
-   public static final anl<cfu> az = a("freeze_immune_wearables");
-   public static final anl<cfu> aA = a("axolotl_tempt_items");
-   public static final anl<cfu> aB = a("dampens_vibrations");
-   public static final anl<cfu> aC = a("cluster_max_harvestables");
-   public static final anl<cfu> aD = a("compasses");
-   public static final anl<cfu> aE = a("hanging_signs");
-   public static final anl<cfu> aF = a("creeper_igniters");
-   public static final anl<cfu> aG = a("noteblock_top_instruments");
-   public static final anl<cfu> aH = a("trimmable_armor");
-   public static final anl<cfu> aI = a("trim_materials");
-   public static final anl<cfu> aJ = a("trim_templates");
-   public static final anl<cfu> aK = a("sniffer_food");
-   public static final anl<cfu> aL = a("decorated_pot_sherds");
-   public static final anl<cfu> aM = a("decorated_pot_ingredients");
-   public static final anl<cfu> aN = a("swords");
-   public static final anl<cfu> aO = a("axes");
-   public static final anl<cfu> aP = a("hoes");
-   public static final anl<cfu> aQ = a("pickaxes");
-   public static final anl<cfu> aR = a("shovels");
-   public static final anl<cfu> aS = a("tools");
-   public static final anl<cfu> aT = a("breaks_decorated_pots");
-   public static final anl<cfu> aU = a("villager_plantable_seeds");
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-   private ane() {
+public interface ane {
+   CompletableFuture<Void> a(ane.a var1, ank var2, bde var3, bde var4, Executor var5, Executor var6);
+
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   private static anl<cfu> a(String $$0) {
-      return anl.a(jc.D, new acq($$0));
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
 }

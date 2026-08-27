@@ -1,86 +1,54 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.logging.LogUtils;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arx extends DataFix {
-   private static final int a = 16;
+public interface arx {
+   arx a = ($$0, $$1) -> true;
+   Logger b = LogUtils.getLogger();
 
-   public arx(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   boolean validate(arw var1, byte[] var2);
+
+   default boolean a(byte[] $$0, byte[] $$1) {
+      return this.validate($$1x -> $$1x.update($$0), $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(avw.c), this.getOutputSchema().getType(avw.c), $$0 -> $$0.update("Level", arx::a)
-      );
+   private static boolean a(arw $$0, byte[] $$1, Signature $$2) throws SignatureException {
+      $$0.update($$2::update);
+      return $$2.verify($$1);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
+   static arx a(PublicKey $$0, String $$1) {
+      return ($$2, $$3) -> {
+         try {
+            Signature $$4 = Signature.getInstance($$1);
+            $$4.initVerify($$0);
+            return a($$2, $$3, $$4);
+         } catch (Exception var5) {
+            b.error("Failed to verify signature", var5);
+            return false;
          }
-      } else {
-         $$3 = "carved";
-      }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
+      };
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
+   @Nullable
+   static arx a(ServicesKeySet $$0, ServicesKeyType $$1) {
+      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
+      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
+            Signature $$3 = $$2xx.signature();
 
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
+            try {
+               return a($$1x, $$2x, $$3);
+            } catch (SignatureException var5) {
+               b.error("Failed to verify Services signature", var5);
+               return false;
             }
-
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
+         });
    }
 }

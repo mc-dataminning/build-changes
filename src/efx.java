@@ -1,29 +1,41 @@
-public enum efx {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   private final int h;
+public class efx implements efv {
+   final aep a;
 
-   private efx(int $$0) {
-      this.h = $$0;
+   efx(aep $$0) {
+      this.a = $$0;
    }
 
-   public static efx a(int $$0) {
-      for (efx $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
+   @Override
+   public efu a() {
+      return efw.a;
+   }
+
+   @Nullable
+   @Override
+   public rl a(ech $$0) {
+      return $$0.d().n().aG().a(this.a);
+   }
+
+   @Override
+   public Set<eeq<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public static class a implements ecq<efx> {
+      public void a(JsonObject $$0, efx $$1, JsonSerializationContext $$2) {
+         $$0.addProperty("source", $$1.a.toString());
       }
 
-      return $$0 < a.h ? a : g;
-   }
-
-   public int a() {
-      return this.h;
+      public efx b(JsonObject $$0, JsonDeserializationContext $$1) {
+         String $$2 = arf.i($$0, "source");
+         return new efx(new aep($$2));
+      }
    }
 }

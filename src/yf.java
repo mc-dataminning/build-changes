@@ -1,64 +1,95 @@
-import java.util.Objects;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class yf implements uo<ur> {
-   private final String a;
+public class yf implements uw<wo> {
+   private final int a;
+   private final byte b;
+   private final boolean c;
    @Nullable
-   private final String b;
-   private final int c;
-   private final adg.a d;
+   private final List<ebi> d;
+   @Nullable
+   private final ebl.b e;
 
-   public yf(adg.a $$0, @Nullable String $$1, String $$2, int $$3) {
-      if ($$0 != adg.a.b && $$1 == null) {
-         throw new IllegalArgumentException("Need an objective name");
-      } else {
-         this.a = $$2;
-         this.b = $$1;
-         this.c = $$3;
-         this.d = $$0;
-      }
+   public yf(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebi> $$3, @Nullable ebl.b $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
+      this.e = $$4;
    }
 
-   public yf(sf $$0) {
-      this.a = $$0.s();
-      this.d = $$0.b(adg.a.class);
-      String $$1 = $$0.s();
-      this.b = Objects.equals($$1, "") ? null : $$1;
-      if (this.d != adg.a.b) {
-         this.c = $$0.m();
+   public yf(sh $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readByte();
+      this.c = $$0.readBoolean();
+      this.d = $$0.c($$0x -> $$0x.a((sh.a)($$0xx -> {
+            ebi.a $$1x = $$0xx.b(ebi.a.class);
+            byte $$2x = $$0xx.readByte();
+            byte $$3x = $$0xx.readByte();
+            byte $$4x = (byte)($$0xx.readByte() & 15);
+            te $$5x = $$0xx.c(sh::l);
+            return new ebi($$1x, $$2x, $$3x, $$4x, $$5x);
+         })));
+      int $$1 = $$0.readUnsignedByte();
+      if ($$1 > 0) {
+         int $$2 = $$0.readUnsignedByte();
+         int $$3 = $$0.readUnsignedByte();
+         int $$4 = $$0.readUnsignedByte();
+         byte[] $$5 = $$0.b();
+         this.e = new ebl.b($$3, $$4, $$1, $$2, $$5);
       } else {
-         this.c = 0;
+         this.e = null;
       }
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-      $$0.a(this.d);
-      $$0.a(this.b == null ? "" : this.b);
-      if (this.d != adg.a.b) {
-         $$0.d(this.c);
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.b());
+            $$0xx.k($$1x.c());
+            $$0xx.k($$1x.d());
+            $$0xx.k($$1x.e() & 15);
+            $$0xx.a($$1x.g(), sh::a);
+         }));
+      if (this.e != null) {
+         $$0.k(this.e.c);
+         $$0.k(this.e.d);
+         $$0.k(this.e.a);
+         $$0.k(this.e.b);
+         $$0.a(this.e.e);
+      } else {
+         $$0.k(0);
       }
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public int a() {
       return this.a;
    }
 
-   @Nullable
-   public String c() {
+   public void a(ebl $$0) {
+      if (this.d != null) {
+         $$0.a(this.d);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
+   }
+
+   public byte d() {
       return this.b;
    }
 
-   public int d() {
+   public boolean e() {
       return this.c;
-   }
-
-   public adg.a e() {
-      return this.d;
    }
 }

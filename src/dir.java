@@ -1,119 +1,61 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface dir extends BiPredicate<cng, gu> {
-   Codec<dir> b = jb.P.q().dispatch(dir::a, dis::codec);
-   dir c = a(cpo.a);
-   dir d = a(cpo.a, cpo.G);
+public class dir<T extends dip> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   dis<?> a();
+   public <U extends T> void a(diw<T, U> $$0, aqe<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   static dir a(List<dir> $$0) {
-      return new dip($$0);
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
+      }
    }
 
-   static dir a(dir... $$0) {
-      return a(List.of($$0));
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
-   static dir a(dir $$0, dir $$1) {
-      return a(List.of($$0, $$1));
+   public void a(T $$0) {
+      UUID $$1 = $$0.cv();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.ah(), $$0);
+      }
    }
 
-   static dir b(List<dir> $$0) {
-      return new diq($$0);
+   public void b(T $$0) {
+      this.c.remove($$0.cv());
+      this.b.remove($$0.ah());
    }
 
-   static dir b(dir... $$0) {
-      return b(List.of($$0));
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
    }
 
-   static dir b(dir $$0, dir $$1) {
-      return b(List.of($$0, $$1));
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   static dir a(hz $$0, List<cpn> $$1) {
-      return new dix($$0, hi.a(cpn::q, $$1));
-   }
-
-   static dir c(List<cpn> $$0) {
-      return a(hz.g, $$0);
-   }
-
-   static dir a(hz $$0, cpn... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static dir a(cpn... $$0) {
-      return a(hz.g, $$0);
-   }
-
-   static dir a(hz $$0, anl<cpn> $$1) {
-      return new diw($$0, $$1);
-   }
-
-   static dir a(anl<cpn> $$0) {
-      return a(hz.g, $$0);
-   }
-
-   static dir b(hz $$0, List<dxd> $$1) {
-      return new diy($$0, hi.a(dxd::k, $$1));
-   }
-
-   static dir a(hz $$0, dxd... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static dir a(dxd... $$0) {
-      return a(hz.g, $$0);
-   }
-
-   static dir a(dir $$0) {
-      return new diz($$0);
-   }
-
-   static dir a(hz $$0) {
-      return new dja($$0);
-   }
-
-   static dir b() {
-      return a(hz.g);
-   }
-
-   static dir a(dcb $$0, hz $$1) {
-      return new dje($$1, $$0);
-   }
-
-   static dir a(hz $$0, ha $$1) {
-      return new diu($$0, $$1);
-   }
-
-   static dir a(ha $$0) {
-      return a(hz.g, $$0);
-   }
-
-   static dir b(hz $$0) {
-      return new djb($$0);
-   }
-
-   static dir c() {
-      return b(hz.g);
-   }
-
-   static dir d() {
-      return c(hz.g);
-   }
-
-   static dir c(hz $$0) {
-      return a($$0, dxf.a);
-   }
-
-   static dir d(hz $$0) {
-      return new div($$0);
-   }
-
-   static dir e() {
-      return djd.a;
+   public int b() {
+      return this.c.size();
    }
 }

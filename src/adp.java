@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface adp extends sc {
+   @Override
+   default sg b() {
+      return sg.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adp {
+   void a(adr var1);
+
+   void a(adq var1);
 }

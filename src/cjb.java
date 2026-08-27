@@ -1,60 +1,51 @@
-public class cjb extends cjh {
-   public cjb(acq $$0, cis $$1) {
-      super(
-         $$0,
-         "",
-         $$1,
-         3,
-         3,
-         hn.a(ciz.a, ciz.a(cgc.qa), ciz.a(cgc.qa), ciz.a(cgc.qa), ciz.a(cgc.qa), ciz.a(cgc.rf), ciz.a(cgc.qa), ciz.a(cgc.qa), ciz.a(cgc.qa), ciz.a(cgc.qa)),
-         new cfz(cgc.tp)
-      );
+public class cjb extends cir {
+   public cjb(cir.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(cbt $$0, cmm $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
+   public bgo a(clg $$0) {
+      cpk $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      dey $$3 = $$1.a_($$2);
+      if ($$3.a(apj.S)) {
+         cbl $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bgo.a($$1.B);
       } else {
-         cfz $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            dyo $$3 = cgg.a($$2, $$1);
+         return bgo.d;
+      }
+   }
+
+   public static bgo a(cbl $$0, cpk $$1, gv $$2) {
+      bxy $$3 = null;
+      boolean $$4 = false;
+      double $$5 = 7.0;
+      int $$6 = $$2.u();
+      int $$7 = $$2.v();
+      int $$8 = $$2.w();
+
+      for (biy $$10 : $$1.a(
+         biy.class, new eha((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
+      )) {
+         if ($$10.fP() == $$0) {
             if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.e() ? false : $$3.f < 4;
+               $$3 = bxy.b($$1, $$2);
+               $$3.x();
             }
-         }
-      }
-   }
 
-   @Override
-   public cfz a(cbt $$0, hs $$1) {
-      cfz $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
-   }
-
-   private static cfz a(cbt $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cfz $$2 = $$0.a($$1);
-         if ($$2.a(cgc.rf)) {
-            return $$2;
+            $$10.b($$3, true);
+            $$4 = true;
          }
       }
 
-      return cfz.b;
-   }
+      if ($$4) {
+         $$1.a(dji.b, $$2, dji.a.a($$0));
+      }
 
-   @Override
-   public boolean ai_() {
-      return true;
-   }
-
-   @Override
-   public cje<?> aj_() {
-      return cje.f;
+      return $$4 ? bgo.a : bgo.d;
    }
 }

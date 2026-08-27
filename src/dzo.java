@@ -1,25 +1,49 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface dzo {
+public interface dzo extends dzt {
    @Nullable
-   <T> T getElement(dzm<T> var1);
+   dha a(hy var1);
 
-   @Nullable
-   default <T> T getElement(dzp<T> $$0, acq $$1) {
-      return this.getElement(new dzm<>($$0, $$1));
-   }
+   int b(gv var1);
 
-   default <T> Optional<T> getElementOptional(dzm<T> $$0) {
-      return Optional.ofNullable(this.getElement($$0));
-   }
+   public static enum a implements dzo {
+      a;
 
-   default <T> Optional<T> getElementOptional(dzp<T> $$0, acq $$1) {
-      return this.getElementOptional(new dzm<>($$0, $$1));
-   }
+      @Nullable
+      @Override
+      public dha a(hy $$0) {
+         return null;
+      }
 
-   default dzs getLootTable(acq $$0) {
-      return this.getElementOptional(dzp.c, $$0).orElse(dzs.a);
+      @Override
+      public int b(gv $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(gv $$0) {
+      }
+
+      @Override
+      public boolean E_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(hy $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(cor $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(cor $$0) {
+      }
    }
 }

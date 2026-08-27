@@ -1,55 +1,88 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cfe extends cec {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bgh q;
+   private final cem r;
 
-public class cfe extends cfu {
-   public cfe(cfu.a $$0) {
-      super($$0);
+   public cfe(int $$0) {
+      this($$0, new bgv(1), new cft(1));
+   }
+
+   public cfe(int $$0, bgh $$1, cem $$2) {
+      super(cfh.q, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cfu($$1, 0, 0, 0) {
+         @Override
+         public void d() {
+            super.d();
+            cfe.this.a(this.d);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public void a(cfz $$0, @Nullable cmm $$1, List<sw> $$2, chq $$3) {
-      qr $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
-   }
+   public boolean b(cbl $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gc()) {
+                  return false;
+               }
 
-   public static void a(qr $$0, List<sw> $$1) {
-      cfd.a $$2 = cfd.a.a($$0.f("Type"));
-      $$1.add(sw.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(sw.h().a(n.h), $$3));
-      }
+               ciw $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fQ().e($$5)) {
+                  $$0.a($$5, false);
+               }
 
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(sw.c("item.minecraft.firework_star.fade_to").b(sv.t).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(sw.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(sw.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static sw a(tj $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+               return true;
+            default:
+               return false;
          }
-
-         $$0.b(a($$1[$$2]));
       }
-
-      return $$0;
    }
 
-   private static sw a(int $$0) {
-      cen $$1 = cen.b($$0);
-      return $$1 == null ? sw.c("item.minecraft.firework_star.custom_color") : sw.c("item.minecraft.firework_star." + $$1.b());
+   @Override
+   public ciw a(cbl $$0, int $$1) {
+      return ciw.b;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean a(cbl $$0) {
+      return this.q.a($$0);
+   }
+
+   public ciw l() {
+      return this.q.a(0);
+   }
+
+   public int m() {
+      return this.r.a(0);
    }
 }

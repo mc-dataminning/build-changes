@@ -1,77 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fxd implements fwr {
-   private final int a;
-   private final List<bcj.b<fwr>> b;
-   private final fwr c;
+public class fxd<T extends cap, M extends fgw<T>> extends fwr<T, M> {
+   private final aep a;
+   private final fxd.a<T> b;
+   private final fxd.b<T, M> c;
 
-   public fxd(List<bcj.b<fwr>> $$0) {
-      this.b = $$0;
-      this.a = bck.a($$0);
-      this.c = $$0.get(0).b();
+   public fxd(fue<T, M> $$0, aep $$1, fxd.a<T> $$2, fxd.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public List<fkr> a(@Nullable dcb $$0, @Nullable ha $$1, apf $$2) {
-      return bck.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public fuv e() {
-      return this.c.e();
-   }
-
-   @Override
-   public fld f() {
-      return this.c.f();
-   }
-
-   @Override
-   public flb g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bcj.b<fwr>> a = Lists.newArrayList();
-
-      public fxd.a a(@Nullable fwr $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bcj.a($$0, $$1));
-         }
-
-         return this;
+   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         this.a();
+         ell $$10 = $$1.getBuffer(fno.i(this.a));
+         this.c().a($$0, $$10, $$2, ftk.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
+   }
 
-      @Nullable
-      public fwr a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (fwr)(this.a.size() == 1 ? this.a.get(0).b() : new fxd(this.a));
-         }
-      }
+   private void a() {
+      List<fhj> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
+   }
+
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<T extends cap> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends cap, M extends fek<T>> {
+      List<fhj> getPartsToDraw(M var1);
    }
 }

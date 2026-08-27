@@ -1,69 +1,94 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public abstract class csz extends csy implements cpp {
-   protected csz(dca.d $$0, ha $$1, efb $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+public class csz extends crc {
+   public static final dfp c = crc.b;
+   protected static final float d = 1.0F;
+   protected static final ehy e = csk.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final ehy f = csk.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final ehy g = ehv.a(e, f);
+   private static final Map<csk, csz> h = Maps.newHashMap();
+   private static final Iterable<ehf> i = ImmutableList.of(new ehf(0.5, 1.0, 0.5));
 
-   protected dcb a(dcb $$0, dcb $$1) {
-      return $$1;
+   protected csz(csk $$0, dex.d $$1) {
+      super($$1);
+      this.k(this.C.b().a(c, Boolean.valueOf(false)));
+      h.put($$0, this);
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected Iterable<ehf> b(dey $$0) {
+      return i;
+   }
 
-      cta $$6 = this.b();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
+   @Override
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return g;
+   }
+
+   @Override
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      ciw $$6 = $$3.b($$4);
+      if ($$6.a(ciz.nE) || $$6.a(ciz.tf)) {
+         return bgo.d;
+      } else if (a($$5) && $$3.b($$4).b() && $$0.c(c)) {
+         a($$3, $$0, $$1, $$2);
+         return bgo.a($$1.B);
       } else {
-         if (this.b) {
-            $$3.a($$4, dxf.c, dxf.c.a($$3));
+         bgo $$7 = csv.a($$1, $$2, csl.eh.n(), $$3);
+         if ($$7.a()) {
+            c($$0, $$1, $$2);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return $$7;
       }
    }
 
-   @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return new cfz(this.b());
+   private static boolean a(ehb $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      Optional<gu> $$4 = this.a($$0, $$1, $$2.b());
-      return $$4.isPresent() && this.b().g($$0.a_($$4.get().a(this.a)));
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      return new ciw(csl.eh);
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      return $$1 == hb.a && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dey $$0, cpn $$1, gv $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   public int a(dey $$0, cpk $$1, gv $$2) {
+      return csv.c;
+   }
+
+   @Override
+   public boolean d_(dey $$0) {
       return true;
    }
 
    @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      Optional<gu> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dcb $$5 = $$0.a_($$4.get());
-         ((cta)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
+   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+      return false;
    }
 
-   private Optional<gu> a(cls $$0, gu $$1, cpn $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.b());
+   public static dey a(csk $$0) {
+      return h.get($$0).n();
    }
 
-   @Override
-   public boolean a(dcb $$0, cih $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
-   }
-
-   @Override
-   protected cpn a() {
-      return this;
+   public static boolean g(dey $$0) {
+      return $$0.a(apj.bj, $$1 -> $$1.b(c) && !$$0.c(c));
    }
 }

@@ -1,24 +1,14 @@
-public class aaa implements uo<zb> {
-   private final int a;
-
-   public aaa(int $$0) {
-      this.a = $$0;
-   }
-
-   public aaa(sf $$0) {
-      this.a = $$0.m();
+public record aaa(int a) implements uw<wo> {
+   public aaa(sh $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
    }
 }

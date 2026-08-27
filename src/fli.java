@@ -1,61 +1,53 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class fli extends flw {
+   protected final flr a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-public class fli implements flh {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+   protected fli(fie $$0, double $$1, double $$2, double $$3, flr $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
 
-   public fli(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public Predicate<dcb> getPredicate(dcc<cpn, dcb> $$0) {
-      dde<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
+   public fla b() {
+      return fla.c;
+   }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dcb> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<dcb>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-            }
-
-            return $$3 ? $$5.negate() : $$5;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
          }
       }
    }
 
-   private Predicate<dcb> a(dcc<cpn, dcb> $$0, dde<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if (!$$3.isPresent()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
-      }
-   }
-
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+   public int a(float $$0) {
+      return 15728880;
    }
 }

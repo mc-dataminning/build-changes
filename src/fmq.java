@@ -1,71 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class fmq {
-   private final Map<gu, czn> a;
+public class fmq {
+   private static final fmq a = new fmq("") {
+      @Override
+      public void a(eqn $$0) {
+      }
+
+      @Override
+      public void a(fmq.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   private final List<deq<dcb>> b;
-   private final boolean c;
-   private final dei d;
+   private fmq.b e;
 
-   fmq(dei $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dee) {
-         this.b = null;
+   fmq(String $$0) {
+      this.d = eqn.N().p.toPath().resolve($$0);
+   }
+
+   public static fmq a(@Nullable String $$0) {
+      return $$0 == null ? a : new fmq($$0);
+   }
+
+   public void a(fmq.c $$0, String $$1, String $$2) {
+      this.e = new fmq.b($$0, $$1, $$2);
+   }
+
+   public void a(eqn $$0) {
+      if ($$0.r != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fmq.a $$2 = new fmq.a(this.e, Instant.now(), $$0.r.l());
+            Codec.list(fmq.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         dej[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dej $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   @Nullable
-   public czn a(gu $$0) {
-      return this.a.get($$0);
+   static record a(fmq.b b, Instant c, cph d) {
+      public static final Codec<fmq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fmq.b.a.forGetter(fmq.a::a), aqw.m.fieldOf("lastPlayedTime").forGetter(fmq.a::b), cph.f.fieldOf("gamemode").forGetter(fmq.a::c))
+               .apply($$0, fmq.a::new)
+      );
+
+      public fmq.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public cph c() {
+         return this.d;
+      }
    }
 
-   public dcb b(gu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dcb $$4 = null;
-         if ($$2 == 60) {
-            $$4 = cpo.hW.n();
-         }
+   static record b(fmq.c b, String c, String d) {
+      public static final MapCodec<fmq.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fmq.c.d.fieldOf("type").forGetter(fmq.b::a), Codec.STRING.fieldOf("id").forGetter(fmq.b::b), Codec.STRING.fieldOf("name").forGetter(fmq.b::c)
+               )
+               .apply($$0, fmq.b::new)
+      );
 
-         if ($$2 == 70) {
-            $$4 = dhb.a($$1, $$3);
-         }
+      public fmq.c a() {
+         return this.b;
+      }
 
-         return $$4 == null ? cpo.a.n() : $$4;
-      } else if (this.b == null) {
-         return cpo.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               deq<dcb> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+      public String b() {
+         return this.c;
+      }
 
-            return cpo.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements asf {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<fmq.c> d = asf.a(fmq.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

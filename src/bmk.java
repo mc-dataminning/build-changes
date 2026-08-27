@@ -1,34 +1,15 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class bmk extends bmv {
-   private final bgb a;
-   private final cmm b;
-
-   public bmk(bgb $$0, cmm $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bmv.a.c));
+public class bmk<E extends biw> extends blc<E> {
+   public bmk(List<Pair<? extends bkp<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
    }
 
-   @Override
-   public boolean a() {
-      boolean $$0 = this.a.aA || this.a.az;
-      if ($$0 && this.a.ae().a(amz.f)) {
-         gu $$1 = this.a.di().c();
-         dcb $$2 = this.b.a_($$1);
-         return $$2.a(cpo.qC) || $$2.k(this.b, $$1) == eey.a();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a();
+   public bmk(Map<bry<?>, brz> $$0, List<Pair<? extends bkp<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), blc.a.b, blc.b.a, $$1);
    }
 }

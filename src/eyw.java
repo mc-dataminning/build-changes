@@ -1,145 +1,117 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
+public class eyw extends ezt<cee> {
+   private static final aep x = new aep("container/anvil/text_field");
+   private static final aep y = new aep("container/anvil/text_field_disabled");
+   private static final aep z = new aep("container/anvil/error");
+   private static final aep A = new aep("textures/gui/container/anvil.png");
+   private static final te B = te.c("container.repair.expensive");
+   private esr C;
+   private final cbl D;
 
-public class eyw extends epb {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final sw d = sw.c("telemetry_info.property_title").a(n.t);
-   private final eov e;
-   private eyw.a f;
-   @Nullable
-   private DoubleConsumer g;
-
-   public eyw(int $$0, int $$1, int $$2, int $$3, eov $$4) {
-      super($$0, $$1, $$2, $$3, sw.h());
-      this.e = $$4;
-      this.f = this.c(enn.N().z());
+   public eyw(cee $$0, cbk $$1, te $$2) {
+      super($$0, $$1, $$2, A);
+      this.D = $$1.m;
+      this.l = 60;
    }
 
-   public void b(boolean $$0) {
-      this.f = this.c($$0);
-      this.a(this.c());
+   @Override
+   protected void D() {
+      int $$0 = (this.g - this.c) / 2;
+      int $$1 = (this.h - this.k) / 2;
+      this.C = new esr(this.i, $$0 + 62, $$1 + 24, 103, 12, te.c("container.repair"));
+      this.C.f(false);
+      this.C.l(-1);
+      this.C.m(-1);
+      this.C.d(false);
+      this.C.k(50);
+      this.C.b(this::a);
+      this.C.a("");
+      this.e(this.C);
+      this.c(this.C);
+      this.C.e(this.p.b(0).f());
    }
 
-   private eyw.a c(boolean $$0) {
-      eyw.b $$1 = new eyw.b(this.v());
-      List<fzl> $$2 = new ArrayList<>(fzl.g());
-      $$2.sort(Comparator.comparing(fzl::d));
-      if (!$$0) {
-         $$2.removeIf(fzl::d);
+   @Override
+   public void a(eqn $$0, int $$1, int $$2) {
+      String $$3 = this.C.a();
+      this.b($$0, $$1, $$2);
+      this.C.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.t.q();
       }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         fzl $$4 = $$2.get($$3);
-         this.a($$1, $$4);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+      return !this.C.a($$0, $$1, $$2) && !this.C.e() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cfu $$1 = this.p.b(0);
+      if ($$1.f()) {
+         String $$2 = $$0;
+         if (!$$1.e().A() && $$0.equals($$1.e().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.p.a($$2)) {
+            this.f.t.cl.b(new acc($$2));
          }
       }
-
-      return $$1.a();
-   }
-
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.g = $$0;
    }
 
    @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.g != null) {
-         this.g.accept(this.c());
+   protected void b(erx $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.p.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         te $$5;
+         if ($$3 >= 40 && !this.f.t.fR().d) {
+            $$5 = B;
+            $$4 = 16736352;
+         } else if (!this.p.b(2).f()) {
+            $$5 = null;
+         } else {
+            $$5 = te.a("container.repair.cost", $$3);
+            if (!this.p.b(2).a(this.D)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.i.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.i, $$5, $$8, 69, $$4);
+         }
       }
    }
 
    @Override
-   protected int f() {
-      return this.f.a().h();
+   protected void a(erx $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p.b(0).f() ? x : y, this.t + 59, this.u + 20, 110, 16);
    }
 
    @Override
-   protected double g() {
-      return 9.0;
+   public void d(erx $$0, int $$1, int $$2, float $$3) {
+      this.C.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void c(eox $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.a();
-      int $$5 = this.p() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.f.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
+   protected void c(erx $$0, int $$1, int $$2) {
+      if ((this.p.b(0).f() || this.p.b(1).f()) && !this.p.b(this.p.o()).f()) {
+         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
+      }
    }
 
    @Override
-   protected void a(esp $$0) {
-      $$0.a(eso.a, this.f.b());
-   }
-
-   private void a(eyw.b $$0, fzl $$1) {
-      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
-      $$0.b(this.e, sw.a($$2, $$1.e()));
-      $$0.b(this.e, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.e, d, 2);
-      this.a($$1, $$0);
-   }
-
-   private void a(fzl $$0, eyw.b $$1) {
-      for (fzn<?> $$2 : $$0.b()) {
-         $$1.a(this.e, $$2.a());
-      }
-   }
-
-   private int v() {
-      return this.o - this.b();
-   }
-
-   static record a(esf a, sw b) {
-   }
-
-   static class b {
-      private final int a;
-      private final esf b;
-      private final esf.b c;
-      private final esj d;
-      private final tj e = sw.h();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = new esf();
-         this.b.b().a();
-         this.c = this.b.d(1);
-         this.c.a(esl.a($$0));
-         this.d = this.c.b().b().f(32);
-      }
-
-      public void a(eov $$0, sw $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(eov $$0, sw $$1, int $$2) {
-         this.c.a(new eqa($$1, $$0).i(this.a), this.c.b().e($$2));
-         this.e.b($$1).f("\n");
-      }
-
-      public void b(eov $$0, sw $$1) {
-         this.c.a(new eqa($$1, $$0).i(this.a - 64).b(true), this.d);
-         this.e.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.c.a(esl.b($$0));
-      }
-
-      public eyw.a a() {
-         this.b.c();
-         return new eyw.a(this.b, this.e);
+   public void a(cec $$0, int $$1, ciw $$2) {
+      if ($$1 == 0) {
+         this.C.a($$2.b() ? "" : $$2.y().getString());
+         this.C.e(!$$2.b());
+         this.a(this.C);
       }
    }
 }

@@ -1,151 +1,271 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ListIterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bcq<T> implements bbv, bcp<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bcs<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public class bcq {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final String c = ".gz";
+   private final Path d;
+   private final String e;
 
-   public static bcq<Runnable> a(Executor $$0, String $$1) {
-      return new bcq<>(new bcs.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   private bcq(Path $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public bcq(bcs<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bbt.a.a(this);
+   public static bcq a(Path $$0, String $$1) throws IOException {
+      Files.createDirectories($$0);
+      return new bcq($$0, $$1);
    }
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
+   public bcq.d a() throws IOException {
+      bcq.d var2;
+      try (Stream<Path> $$0 = Files.list(this.d)) {
+         var2 = new bcq.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
+      }
 
-      return true;
+      return var2;
    }
 
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
-   }
-
-   @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
+   @Nullable
+   private bcq.b a(Path $$0) {
+      String $$1 = $$0.getFileName().toString();
+      int $$2 = $$1.indexOf(46);
+      if ($$2 == -1) {
+         return null;
       } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
+         bcq.c $$3 = bcq.c.a($$1.substring(0, $$2));
+         if ($$3 != null) {
+            String $$4 = $$1.substring($$2);
+            if ($$4.equals(this.e)) {
+               return new bcq.e($$0, $$3);
+            }
+
+            if ($$4.equals(this.e + ".gz")) {
+               return new bcq.a($$0, $$3);
+            }
+         }
+
+         return null;
+      }
+   }
+
+   static void a(Path $$0, Path $$1) throws IOException {
+      if (Files.exists($$1)) {
+         throw new IOException("Compressed target file already exists: " + $$1);
+      } else {
+         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
+            FileLock $$3 = $$2.tryLock();
+            if ($$3 == null) {
+               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
+            }
+
+            a($$2, $$1);
+            $$2.truncate(0L);
+         }
+
+         Files.delete($$0);
+      }
+   }
+
+   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
+      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
+         byte[] $$3 = new byte[4096];
+         ByteBuffer $$4 = ByteBuffer.wrap($$3);
+
+         while ($$0.read($$4) >= 0) {
+            $$4.flip();
+            $$2.write($$3, 0, $$4.limit());
+            $$4.clear();
          }
       }
    }
 
-   @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
+   public bcq.e a(LocalDate $$0) throws IOException {
+      int $$1 = 1;
+      Set<bcq.c> $$2 = this.a().c();
+
+      bcq.c $$3;
+      do {
+         $$3 = new bcq.c($$0, $$1++);
+      } while ($$2.contains($$3));
+
+      bcq.e $$4 = new bcq.e(this.d.resolve($$3.b(this.e)), $$3);
+      Files.createFile($$4.c());
+      return $$4;
+   }
+
+   public static record a(Path a, bcq.c b) implements bcq.b {
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
+      }
+
+      @Override
+      public bcq.a b() {
+         return this;
+      }
+
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bcq.c d() {
+         return this.b;
       }
    }
 
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
+   public interface b {
+      Path c();
+
+      bcq.c d();
+
+      @Nullable
+      Reader a() throws IOException;
+
+      bcq.a b() throws IOException;
    }
 
-   @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
+   public static record c(LocalDate a, int b) {
+      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
 
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
+      @Nullable
+      public static bcq.c a(String $$0) {
+         int $$1 = $$0.indexOf("-");
+         if ($$1 == -1) {
+            return null;
+         } else {
+            String $$2 = $$0.substring(0, $$1);
+            String $$3 = $$0.substring($$1 + 1);
+
             try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
+               return new bcq.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
+            } catch (DateTimeParseException | NumberFormatException var5) {
+               return null;
             }
          }
       }
-   }
 
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
+      @Override
+      public String toString() {
+         return c.format(this.a) + "-" + this.b;
       }
 
-      return $$1;
+      public String b(String $$0) {
+         return this + $$0;
+      }
    }
 
-   public int b() {
-      return this.e.c();
+   public static class d implements Iterable<bcq.b> {
+      private final List<bcq.b> a;
+
+      d(List<bcq.b> $$0) {
+         this.a = new ArrayList<>($$0);
+      }
+
+      public bcq.d a(LocalDate $$0, int $$1) {
+         this.a.removeIf($$2 -> {
+            bcq.c $$3 = $$2.d();
+            LocalDate $$4 = $$3.a().plusDays((long)$$1);
+            if (!$$0.isBefore($$4)) {
+               try {
+                  Files.delete($$2.c());
+                  return true;
+               } catch (IOException var6) {
+                  bcq.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
+               }
+            }
+
+            return false;
+         });
+         return this;
+      }
+
+      public bcq.d a() {
+         ListIterator<bcq.b> $$0 = this.a.listIterator();
+
+         while ($$0.hasNext()) {
+            bcq.b $$1 = $$0.next();
+
+            try {
+               $$0.set($$1.b());
+            } catch (IOException var4) {
+               bcq.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
+            }
+         }
+
+         return this;
+      }
+
+      @Override
+      public Iterator<bcq.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public Stream<bcq.b> b() {
+         return this.a.stream();
+      }
+
+      public Set<bcq.c> c() {
+         return this.a.stream().map(bcq.b::d).collect(Collectors.toSet());
+      }
    }
 
-   public boolean c() {
-      return this.g() && !this.e.b();
-   }
+   public static record e(Path a, bcq.c b) implements bcq.b {
+      public FileChannel e() throws IOException {
+         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
+      }
 
-   @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
+      }
 
-   @Override
-   public String bn() {
-      return this.g;
-   }
+      @Override
+      public bcq.a b() throws IOException {
+         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
+         bcq.a(this.a, $$0);
+         return new bcq.a($$0, this.b);
+      }
 
-   @Override
-   public List<bbs> bk() {
-      return ImmutableList.of(bbs.a(this.g + "-queue-size", bbr.c, this::b));
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bcq.c d() {
+         return this.b;
+      }
    }
 }

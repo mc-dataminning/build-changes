@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 public abstract class bq {
    public static final bq a = new bq() {
       @Override
-      public boolean a(bfn<?> $$0) {
+      public boolean a(bik<?> $$0) {
          return true;
       }
 
@@ -19,19 +19,19 @@ public abstract class bq {
    };
    private static final Joiner b = Joiner.on(", ");
 
-   public abstract boolean a(bfn<?> var1);
+   public abstract boolean a(bik<?> var1);
 
    public abstract JsonElement a();
 
    public static bq a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         String $$1 = aor.a($$0, "type");
+         String $$1 = arf.a($$0, "type");
          if ($$1.startsWith("#")) {
-            acq $$2 = new acq($$1.substring(1));
-            return new bq.a(anl.a(jc.s, $$2));
+            aep $$2 = new aep($$1.substring(1));
+            return new bq.a(apy.a(jd.s, $$2));
          } else {
-            acq $$3 = new acq($$1);
-            bfn<?> $$4 = jb.h.b($$3).orElseThrow(() -> new JsonSyntaxException("Unknown entity type '" + $$3 + "', valid types are: " + b.join(jb.h.e())));
+            aep $$3 = new aep($$1);
+            bik<?> $$4 = jc.h.b($$3).orElseThrow(() -> new JsonSyntaxException("Unknown entity type '" + $$3 + "', valid types are: " + b.join(jc.h.e())));
             return new bq.b($$4);
          }
       } else {
@@ -39,23 +39,23 @@ public abstract class bq {
       }
    }
 
-   public static bq b(bfn<?> $$0) {
+   public static bq b(bik<?> $$0) {
       return new bq.b($$0);
    }
 
-   public static bq a(anl<bfn<?>> $$0) {
+   public static bq a(apy<bik<?>> $$0) {
       return new bq.a($$0);
    }
 
    static class a extends bq {
-      private final anl<bfn<?>> b;
+      private final apy<bik<?>> b;
 
-      public a(anl<bfn<?>> $$0) {
+      public a(apy<bik<?>> $$0) {
          this.b = $$0;
       }
 
       @Override
-      public boolean a(bfn<?> $$0) {
+      public boolean a(bik<?> $$0) {
          return $$0.a(this.b);
       }
 
@@ -66,20 +66,20 @@ public abstract class bq {
    }
 
    static class b extends bq {
-      private final bfn<?> b;
+      private final bik<?> b;
 
-      public b(bfn<?> $$0) {
+      public b(bik<?> $$0) {
          this.b = $$0;
       }
 
       @Override
-      public boolean a(bfn<?> $$0) {
+      public boolean a(bik<?> $$0) {
          return this.b == $$0;
       }
 
       @Override
       public JsonElement a() {
-         return new JsonPrimitive(jb.h.b(this.b).toString());
+         return new JsonPrimitive(jc.h.b(this.b).toString());
       }
    }
 }

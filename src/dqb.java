@@ -1,17 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record dqb(he<cfu> c, dqd d) {
+public class dqb implements dpp {
    public static final Codec<dqb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(acn.a(jc.D).fieldOf("display").forGetter($$0x -> $$0x.c), dqd.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dqb::new)
+      $$0 -> $$0.apply2(dqb::new, dpf.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dub.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public static final Codec<he<dqb>> b = acm.a(jc.av, a);
+   public final List<dpf> b;
+   public final hf<dub> c;
 
-   public he<cfu> a() {
-      return this.c;
+   public dqb(List<dpf> $$0, hf<dub> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dqd b() {
-      return this.d;
+   @Override
+   public Stream<dmy<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

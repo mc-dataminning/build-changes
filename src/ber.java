@@ -1,19 +1,30 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public enum ber implements apr {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public class ber {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   public static final Codec<ber> d = apr.a(ber::values);
-   private final String e;
+   public Set<bej> a(Supplier<bdc> $$0) {
+      Set<bej> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bei)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-   private ber(String $$0) {
-      this.e = $$0;
+      for (bej $$2 : $$1) {
+         this.a.add($$2.d());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   private static bej a(Supplier<bdc> $$0, String $$1, bei $$2) {
+      return bej.a($$1, $$2, () -> {
+         bcx.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)ask.b;
+      });
    }
 }

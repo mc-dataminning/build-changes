@@ -1,78 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bmu extends bmv {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final brl d;
-   @Nullable
-   private brl e;
-   private final double f;
-   private int g;
-
-   public bmu(brl $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+public class bmu {
+   public static bly<biw> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
    }
 
-   @Override
-   public boolean a() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else {
-         List<? extends brl> $$0 = this.d.dI().a((Class<? extends brl>)this.d.getClass(), this.d.cE().c(8.0, 4.0, 8.0));
-         brl $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (brl $$3 : $$0) {
-            if ($$3.h() >= 0) {
-               double $$4 = this.d.f($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else if (!this.e.bs()) {
-         return false;
-      } else {
-         double $$0 = this.d.f(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.g = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e = null;
-   }
-
-   @Override
-   public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.J().a(this.e, this.f);
-      }
+   public static bly<biw> a(Predicate<biw> $$0, Function<biw, Float> $$1, int $$2) {
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$3 -> $$3.group($$3.c(bry.m), $$3.b(bry.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new bsb($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
+                  }
+               }))
+      );
    }
 }

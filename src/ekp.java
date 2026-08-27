@@ -1,7 +1,8 @@
-public interface ekp {
-   void a(sw var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default void a(String $$0) {
-      this.a(sw.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ejb
+@eja
+interface ekp {
 }

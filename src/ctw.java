@@ -1,68 +1,47 @@
-public class ctw {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1500;
-   public static final int P = 1501;
-   public static final int Q = 1502;
-   public static final int R = 1503;
-   public static final int S = 1504;
-   public static final int T = 1505;
-   public static final int U = 2000;
-   public static final int V = 2001;
-   public static final int W = 2002;
-   public static final int X = 2003;
-   public static final int Y = 2004;
-   public static final int Z = 2005;
-   public static final int aa = 2006;
-   public static final int ab = 2007;
-   public static final int ac = 2008;
-   public static final int ad = 2009;
-   public static final int ae = 3000;
-   public static final int af = 3001;
-   public static final int ag = 3002;
-   public static final int ah = 3003;
-   public static final int ai = 3004;
-   public static final int aj = 3005;
-   public static final int ak = 3006;
-   public static final int al = 3007;
-   public static final int am = 3008;
-   public static final int an = 3009;
+import javax.annotation.Nullable;
+
+public class ctw extends csk {
+   private final csk a;
+
+   public ctw(csk $$0, dex.d $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.a.n(), 2);
+      }
+   }
+
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.y_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(coq $$0, gv $$1) {
+      for (hb $$2 : hb.values()) {
+         eab $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(apo.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public dey a(cle $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().y_().a(40));
+      }
+
+      return this.n();
+   }
 }

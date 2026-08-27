@@ -1,161 +1,89 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class azv extends axd {
-   protected static final HookFunction b = new HookFunction() {
-      public <T> T apply(DynamicOps<T> $$0, T $$1) {
-         return azx.a(new Dynamic($$0, $$1), azu.a, "minecraft:armor_stand");
-      }
-   };
-
+public class azv extends Schema {
    public azv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> axe.a($$0));
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("ArmorItems", DSL.list(aym.t.in($$0)), "HandItems", DSL.list(aym.t.in($$0)));
    }
 
-   protected static void b(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("inTile", avw.r.in($$0)));
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> a($$0));
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
-      $$0.registerSimple($$1, "minecraft:area_effect_cloud");
-      a($$0, $$1, "minecraft:armor_stand");
-      $$0.register($$1, "minecraft:arrow", $$1x -> DSL.optionalFields("inTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:bat");
-      a($$0, $$1, "minecraft:blaze");
-      $$0.registerSimple($$1, "minecraft:boat");
-      a($$0, $$1, "minecraft:cave_spider");
-      $$0.register($$1, "minecraft:chest_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0), "Items", DSL.list(avw.m.in($$0))));
-      a($$0, $$1, "minecraft:chicken");
-      $$0.register($$1, "minecraft:commandblock_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:cow");
-      a($$0, $$1, "minecraft:creeper");
-      $$0.register($$1, "minecraft:donkey", $$1x -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0)), "SaddleItem", avw.m.in($$0), axe.a($$0)));
-      $$0.registerSimple($$1, "minecraft:dragon_fireball");
-      b($$0, $$1, "minecraft:egg");
-      a($$0, $$1, "minecraft:elder_guardian");
-      $$0.registerSimple($$1, "minecraft:ender_crystal");
-      a($$0, $$1, "minecraft:ender_dragon");
-      $$0.register($$1, "minecraft:enderman", $$1x -> DSL.optionalFields("carried", avw.r.in($$0), axe.a($$0)));
-      a($$0, $$1, "minecraft:endermite");
-      b($$0, $$1, "minecraft:ender_pearl");
-      $$0.registerSimple($$1, "minecraft:eye_of_ender_signal");
-      $$0.register($$1, "minecraft:falling_block", $$1x -> DSL.optionalFields("Block", avw.r.in($$0), "TileEntityData", avw.l.in($$0)));
-      b($$0, $$1, "minecraft:fireball");
-      $$0.register($$1, "minecraft:fireworks_rocket", $$1x -> DSL.optionalFields("FireworksItem", avw.m.in($$0)));
-      $$0.register($$1, "minecraft:furnace_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:ghast");
-      a($$0, $$1, "minecraft:giant");
-      a($$0, $$1, "minecraft:guardian");
-      $$0.register($$1, "minecraft:hopper_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0), "Items", DSL.list(avw.m.in($$0))));
-      $$0.register($$1, "minecraft:horse", $$1x -> DSL.optionalFields("ArmorItem", avw.m.in($$0), "SaddleItem", avw.m.in($$0), axe.a($$0)));
-      a($$0, $$1, "minecraft:husk");
-      $$0.register($$1, "minecraft:item", $$1x -> DSL.optionalFields("Item", avw.m.in($$0)));
-      $$0.register($$1, "minecraft:item_frame", $$1x -> DSL.optionalFields("Item", avw.m.in($$0)));
-      $$0.registerSimple($$1, "minecraft:leash_knot");
-      a($$0, $$1, "minecraft:magma_cube");
-      $$0.register($$1, "minecraft:minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:mooshroom");
-      $$0.register($$1, "minecraft:mule", $$1x -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0)), "SaddleItem", avw.m.in($$0), axe.a($$0)));
-      a($$0, $$1, "minecraft:ocelot");
-      $$0.registerSimple($$1, "minecraft:painting");
-      $$0.registerSimple($$1, "minecraft:parrot");
-      a($$0, $$1, "minecraft:pig");
-      a($$0, $$1, "minecraft:polar_bear");
-      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", avw.m.in($$0), "inTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:rabbit");
-      a($$0, $$1, "minecraft:sheep");
-      a($$0, $$1, "minecraft:shulker");
-      $$0.registerSimple($$1, "minecraft:shulker_bullet");
-      a($$0, $$1, "minecraft:silverfish");
-      a($$0, $$1, "minecraft:skeleton");
-      $$0.register($$1, "minecraft:skeleton_horse", $$1x -> DSL.optionalFields("SaddleItem", avw.m.in($$0), axe.a($$0)));
-      a($$0, $$1, "minecraft:slime");
-      b($$0, $$1, "minecraft:small_fireball");
-      b($$0, $$1, "minecraft:snowball");
-      a($$0, $$1, "minecraft:snowman");
-      $$0.register($$1, "minecraft:spawner_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0), avw.u.in($$0)));
-      $$0.register($$1, "minecraft:spectral_arrow", $$1x -> DSL.optionalFields("inTile", avw.r.in($$0)));
-      a($$0, $$1, "minecraft:spider");
-      a($$0, $$1, "minecraft:squid");
-      a($$0, $$1, "minecraft:stray");
-      $$0.registerSimple($$1, "minecraft:tnt");
-      $$0.register($$1, "minecraft:tnt_minecart", $$1x -> DSL.optionalFields("DisplayTile", avw.r.in($$0)));
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "ArmorStand");
+      a($$0, $$1, "Creeper");
+      a($$0, $$1, "Skeleton");
+      a($$0, $$1, "Spider");
+      a($$0, $$1, "Giant");
+      a($$0, $$1, "Zombie");
+      a($$0, $$1, "Slime");
+      a($$0, $$1, "Ghast");
+      a($$0, $$1, "PigZombie");
+      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", aym.y.in($$0), a($$0)));
+      a($$0, $$1, "CaveSpider");
+      a($$0, $$1, "Silverfish");
+      a($$0, $$1, "Blaze");
+      a($$0, $$1, "LavaSlime");
+      a($$0, $$1, "EnderDragon");
+      a($$0, $$1, "WitherBoss");
+      a($$0, $$1, "Bat");
+      a($$0, $$1, "Witch");
+      a($$0, $$1, "Endermite");
+      a($$0, $$1, "Guardian");
+      a($$0, $$1, "Pig");
+      a($$0, $$1, "Sheep");
+      a($$0, $$1, "Cow");
+      a($$0, $$1, "Chicken");
+      a($$0, $$1, "Squid");
+      a($$0, $$1, "Wolf");
+      a($$0, $$1, "MushroomCow");
+      a($$0, $$1, "SnowMan");
+      a($$0, $$1, "Ozelot");
+      a($$0, $$1, "VillagerGolem");
+      $$0.register(
+         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(aym.t.in($$0)), "ArmorItem", aym.t.in($$0), "SaddleItem", aym.t.in($$0), a($$0))
+      );
+      a($$0, $$1, "Rabbit");
       $$0.register(
          $$1,
-         "minecraft:villager",
+         "Villager",
          $$1x -> DSL.optionalFields(
                "Inventory",
-               DSL.list(avw.m.in($$0)),
+               DSL.list(aym.t.in($$0)),
                "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", avw.m.in($$0), "buyB", avw.m.in($$0), "sell", avw.m.in($$0)))),
-               axe.a($$0)
+               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", aym.t.in($$0), "buyB", aym.t.in($$0), "sell", aym.t.in($$0)))),
+               a($$0)
             )
       );
-      a($$0, $$1, "minecraft:villager_golem");
-      a($$0, $$1, "minecraft:witch");
-      a($$0, $$1, "minecraft:wither");
-      a($$0, $$1, "minecraft:wither_skeleton");
-      b($$0, $$1, "minecraft:wither_skull");
-      a($$0, $$1, "minecraft:wolf");
-      b($$0, $$1, "minecraft:xp_bottle");
-      $$0.registerSimple($$1, "minecraft:xp_orb");
-      a($$0, $$1, "minecraft:zombie");
-      $$0.register($$1, "minecraft:zombie_horse", $$1x -> DSL.optionalFields("SaddleItem", avw.m.in($$0), axe.a($$0)));
-      a($$0, $$1, "minecraft:zombie_pigman");
-      a($$0, $$1, "minecraft:zombie_villager");
-      $$0.registerSimple($$1, "minecraft:evocation_fangs");
-      a($$0, $$1, "minecraft:evocation_illager");
-      $$0.registerSimple($$1, "minecraft:illusion_illager");
-      $$0.register(
-         $$1,
-         "minecraft:llama",
-         $$1x -> DSL.optionalFields("Items", DSL.list(avw.m.in($$0)), "SaddleItem", avw.m.in($$0), "DecorItem", avw.m.in($$0), axe.a($$0))
-      );
-      $$0.registerSimple($$1, "minecraft:llama_spit");
-      a($$0, $$1, "minecraft:vex");
-      a($$0, $$1, "minecraft:vindication_illager");
+      a($$0, $$1, "Shulker");
+      $$0.registerSimple($$1, "AreaEffectCloud");
+      $$0.registerSimple($$1, "ShulkerBullet");
       return $$1;
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, avw.q, () -> DSL.taggedChoiceLazy("id", a(), $$1));
       $$0.registerType(
-         true,
-         avw.m,
-         () -> DSL.hook(
-               DSL.optionalFields(
-                  "id",
-                  avw.s.in($$0),
-                  "tag",
-                  DSL.optionalFields(
-                     "EntityTag",
-                     avw.p.in($$0),
-                     "BlockEntityTag",
-                     avw.l.in($$0),
-                     "CanDestroy",
-                     DSL.list(avw.r.in($$0)),
-                     "CanPlaceOn",
-                     DSL.list(avw.r.in($$0)),
-                     "Items",
-                     DSL.list(avw.m.in($$0))
-                  )
-               ),
-               b,
-               HookFunction.IDENTITY
+         false,
+         aym.f,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(DSL.optionalFields("nbt", aym.w.in($$0))),
+               "blocks",
+               DSL.list(DSL.optionalFields("nbt", aym.s.in($$0))),
+               "palette",
+               DSL.list(aym.u.in($$0))
             )
       );
+      $$0.registerType(false, aym.u, DSL::remainder);
    }
 }

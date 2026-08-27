@@ -1,52 +1,71 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class djg extends dji {
+public class djg implements djm {
    public static final Codec<djg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dji.d.forGetter($$0x -> $$0x), bda.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), djg.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, djg::new)
+      $$0 -> $$0.group(hz.a.fieldOf("source_entity").forGetter(djg::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
+            .apply($$0, ($$0x, $$1) -> new djg(Either.right(Either.left($$0x)), $$1))
    );
-   public final bda b;
-   public final djg.a c;
+   private Either<big, Either<UUID, Integer>> c;
+   final float d;
 
-   public djg(float $$0, dqh $$1, bda $$2, die $$3, djj $$4, hi<cpn> $$5, bda $$6, djg.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public djg(big $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public djg(dji $$0, bda $$1, djg.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   djg(Either<big, Either<UUID, Integer>> $$0, float $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static class a {
-      public static final Codec<djg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bda.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bda.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  aoi.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bda.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, djg.a::new)
-      );
-      public final bda b;
-      public final bda c;
-      public final int d;
-      public final bda e;
-      public final float f;
-      public final float g;
+   @Override
+   public Optional<ehf> a(cpk $$0) {
+      if (this.c.left().isEmpty()) {
+         this.b($$0);
+      }
 
-      public a(bda $$0, bda $$1, int $$2, bda $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+      return this.c.left().map($$0x -> $$0x.di().b(0.0, (double)this.d, 0.0));
+   }
+
+   private void b(cpk $$0) {
+      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((big)$$1.map($$1x -> $$0 instanceof aki $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.c = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.c.map(big::cv, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   int c() {
+      return (Integer)this.c.map(big::ah, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public djn<?> a() {
+      return djn.b;
+   }
+
+   public static class a implements djn<djg> {
+      public djg a(sh $$0) {
+         return new djg(Either.right(Either.right($$0.m())), $$0.readFloat());
+      }
+
+      public void a(sh $$0, djg $$1) {
+         $$0.c($$1.c());
+         $$0.a($$1.d);
+      }
+
+      @Override
+      public Codec<djg> a() {
+         return djg.a;
       }
    }
 }

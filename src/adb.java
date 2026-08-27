@@ -1,13 +1,24 @@
-public final class adb extends RuntimeException {
-   public static final adb a = new adb();
+public class adb implements uw<acx> {
+   private final int a;
 
-   private adb() {
-      this.setStackTrace(new StackTraceElement[0]);
+   public adb(int $$0) {
+      this.a = $$0;
+   }
+
+   public adb(sh $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   public void a(sh $$0) {
+      $$0.c(this.a);
+   }
+
+   public void a(acx $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

@@ -1,50 +1,17 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface apx<C> {
-   apx<Float> a = a($$0 -> $$0);
+public record apx(List<apw> b, boolean c) {
+   public static final Codec<apx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(apw.a.listOf().fieldOf("values").forGetter(apx::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(apx::b)).apply($$0, apx::new)
+   );
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static apx<Float> a(final Float2FloatFunction $$0) {
-      return new apx<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+   public List<apw> a() {
+      return this.b;
    }
 
-   default <C2> apx<C2> a(final Function<C2, C> $$0) {
-      final apx<C> $$1 = this;
-      return new apx<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
-
-         @Override
-         public float b() {
-            return $$1.b();
-         }
-
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+   public boolean b() {
+      return this.c;
    }
 }

@@ -1,207 +1,90 @@
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class eiq {
-   public static ein a() {
-      throw new IllegalArgumentException();
-   }
+public record eiq<T>(T b, gv c, int d, eiv e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<eiq<?>> a = new Strategy<eiq<?>>() {
+      public int a(eiq<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-   public static ein a(ein $$0) {
-      return $$0;
-   }
-
-   public static ein a(ein $$0, ein $$1) {
-      return new eiq.a($$0, $$1);
-   }
-
-   public static ein a(ein... $$0) {
-      return new eiq.b($$0);
-   }
-
-   static class a implements ein {
-      private final ein a;
-      private final ein b;
-
-      public a(ein $$0, ein $$1) {
+      public boolean a(@Nullable eiq<?> $$0, @Nullable eiq<?> $$1) {
          if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
+            return true;
          } else {
-            this.a = $$0;
-            this.b = $$1;
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
 
-      @Override
-      public ein a(double $$0, double $$1, double $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
+   public static <T> void a(qy $$0, Function<String, Optional<T>> $$1, cor $$2, Consumer<eiq<T>> $$3) {
+      long $$4 = $$2.a();
 
-      @Override
-      public ein a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public ein a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ein a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ein b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ein a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-
-      @Override
-      public void e() {
-         this.a.e();
-         this.b.e();
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a.b($$0, $$1, $$2, $$3);
-         this.b.b($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public void k() {
-         this.a.k();
-         this.b.k();
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         qs $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (cor.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
       }
    }
 
-   static class b implements ein {
-      private final ein[] a;
+   public static <T> Optional<eiq<T>> a(qs $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         gv $$2 = new gv($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new eiq<>((T)$$1x, $$2, $$0.h("t"), eiv.a($$0.h("p")));
+      });
+   }
 
-      public b(ein[] $$0) {
-         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
-               if ($$0[$$1] == $$0[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   private static qs a(String $$0, gv $$1, int $$2, eiv $$3) {
+      qs $$4 = new qs();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
 
-         this.a = $$0;
-      }
+   public static <T> qs a(eir<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
 
-      private void a(Consumer<ein> $$0) {
-         for (ein $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
+   public qs a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
 
-      @Override
-      public ein a(double $$0, double $$1, double $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
+   public eir<T> a(long $$0, long $$1) {
+      return new eir<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   }
 
-      @Override
-      public ein a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
+   public static <T> eiq<T> a(T $$0, gv $$1) {
+      return new eiq<>($$0, $$1, 0, eiv.d);
+   }
 
-      @Override
-      public ein a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
+   public T a() {
+      return this.b;
+   }
 
-      @Override
-      public ein a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
+   public gv b() {
+      return this.c;
+   }
 
-      @Override
-      public ein b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
+   public int c() {
+      return this.d;
+   }
 
-      @Override
-      public ein a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
-      }
-
-      @Override
-      public void e() {
-         this.a(ein::e);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
-      }
-
-      @Override
-      public void k() {
-         this.a(ein::k);
-      }
+   public eiv d() {
+      return this.e;
    }
 }

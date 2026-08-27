@@ -1,30 +1,251 @@
-public class ceu extends cee {
-   public ceu(cfu.a $$0) {
-      super($$0);
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class ceu extends cec {
+   static final aep n = new aep("item/empty_slot_lapis_lazuli");
+   private final bgh o = new bgv(2) {
+      @Override
+      public void e() {
+         super.e();
+         ceu.this.a(this);
+      }
+   };
+   private final cen p;
+   private final art q = art.a();
+   private final ces r = ces.a();
+   public final int[] k = new int[3];
+   public final int[] l = new int[]{-1, -1, -1};
+   public final int[] m = new int[]{-1, -1, -1};
+
+   public ceu(int $$0, cbk $$1) {
+      this($$0, $$1, cen.a);
+   }
+
+   public ceu(int $$0, cbk $$1, cen $$2) {
+      super(cfh.m, $$0);
+      this.p = $$2;
+      this.a(new cfu(this.o, 0, 15, 47) {
+         @Override
+         public int a() {
+            return 1;
+         }
+      });
+      this.a(new cfu(this.o, 1, 35, 47) {
+         @Override
+         public boolean a(ciw $$0) {
+            return $$0.a(ciz.nM);
+         }
+
+         @Override
+         public Pair<aep, aep> b() {
+            return Pair.of(cfb.v, ceu.n);
+         }
+      });
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cfu($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cfu($$1, $$5, 8 + $$5 * 18, 142));
+      }
+
+      this.a(ces.a(this.k, 0));
+      this.a(ces.a(this.k, 1));
+      this.a(ces.a(this.k, 2));
+      this.a(this.r).a($$1.m.fY());
+      this.a(ces.a(this.l, 0));
+      this.a(ces.a(this.l, 1));
+      this.a(ces.a(this.l, 2));
+      this.a(ces.a(this.m, 0));
+      this.a(ces.a(this.m, 1));
+      this.a(ces.a(this.m, 2));
    }
 
    @Override
-   public bdy<cfz> a(cmm $$0, byo $$1, bdw $$2) {
-      cfz $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bdy.a($$3);
-      } else {
-         if (!$$1.fO().d) {
-            $$3.h(1);
-         }
+   public void a(bgh $$0) {
+      if ($$0 == this.o) {
+         ciw $$1 = $$0.a(0);
+         if (!$$1.b() && $$1.D()) {
+            this.p.a(($$1x, $$2x) -> {
+               int $$3 = 0;
 
-         $$1.b(amr.c.b(this));
-         $$1.dI().a(null, $$1, amh.yr, $$1.cY(), 1.0F, 1.0F);
-         cfz $$4 = cgg.a($$0, $$1.dm(), $$1.ds(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bdy.b($$4);
+               for (gv $$4 : cus.b) {
+                  if (cus.a($$1x, $$2x, $$4)) {
+                     $$3++;
+                  }
+               }
+
+               this.q.b((long)this.r.b());
+
+               for (int $$5 = 0; $$5 < 3; $$5++) {
+                  this.k[$$5] = cnf.a(this.q, $$5, $$3, $$1);
+                  this.l[$$5] = -1;
+                  this.m[$$5] = -1;
+                  if (this.k[$$5] < $$5 + 1) {
+                     this.k[$$5] = 0;
+                  }
+               }
+
+               for (int $$6 = 0; $$6 < 3; $$6++) {
+                  if (this.k[$$6] > 0) {
+                     List<cng> $$7 = this.a($$1, $$6, this.k[$$6]);
+                     if ($$7 != null && !$$7.isEmpty()) {
+                        cng $$8 = $$7.get(this.q.a($$7.size()));
+                        this.l[$$6] = jc.g.a($$8.a);
+                        this.m[$$6] = $$8.b;
+                     }
+                  }
+               }
+
+               this.d();
+            });
          } else {
-            if (!$$1.fN().e($$4.p())) {
-               $$1.a($$4, false);
+            for (int $$2 = 0; $$2 < 3; $$2++) {
+               this.k[$$2] = 0;
+               this.l[$$2] = -1;
+               this.m[$$2] = -1;
             }
-
-            return bdy.b($$3);
          }
       }
+   }
+
+   @Override
+   public boolean b(cbl $$0, int $$1) {
+      if ($$1 >= 0 && $$1 < this.k.length) {
+         ciw $$2 = this.o.a(0);
+         ciw $$3 = this.o.a(1);
+         int $$4 = $$1 + 1;
+         if (($$3.b() || $$3.L() < $$4) && !$$0.fR().d) {
+            return false;
+         } else if (this.k[$$1] <= 0 || $$2.b() || ($$0.cd < $$4 || $$0.cd < this.k[$$1]) && !$$0.fR().d) {
+            return false;
+         } else {
+            this.p.a(($$5, $$6) -> {
+               ciw $$7 = $$2;
+               List<cng> $$8 = this.a($$2, $$1, this.k[$$1]);
+               if (!$$8.isEmpty()) {
+                  $$0.a($$2, $$4);
+                  boolean $$9 = $$2.a(ciz.qb);
+                  if ($$9) {
+                     $$7 = new ciw(ciz.tC);
+                     qs $$10 = $$2.v();
+                     if ($$10 != null) {
+                        $$7.c($$10.h());
+                     }
+
+                     this.o.a(0, $$7);
+                  }
+
+                  for (int $$11 = 0; $$11 < $$8.size(); $$11++) {
+                     cng $$12 = $$8.get($$11);
+                     if ($$9) {
+                        chs.a($$7, $$12);
+                     } else {
+                        $$7.a($$12.a, $$12.b);
+                     }
+                  }
+
+                  if (!$$0.fR().d) {
+                     $$3.h($$4);
+                     if ($$3.b()) {
+                        this.o.a(1, ciw.b);
+                     }
+                  }
+
+                  $$0.a(ape.ak);
+                  if ($$0 instanceof akj) {
+                     ai.i.a((akj)$$0, $$7, $$4);
+                  }
+
+                  this.o.e();
+                  this.r.a($$0.fY());
+                  this.a(this.o);
+                  $$5.a(null, $$6, aou.gQ, aov.e, 1.0F, $$5.z.i() * 0.1F + 0.9F);
+               }
+            });
+            return true;
+         }
+      } else {
+         ac.a($$0.ab() + " pressed invalid button id: " + $$1);
+         return false;
+      }
+   }
+
+   private List<cng> a(ciw $$0, int $$1, int $$2) {
+      this.q.b((long)(this.r.b() + $$1));
+      List<cng> $$3 = cnf.b(this.q, $$0, $$2, false);
+      if ($$0.a(ciz.qb) && $$3.size() > 1) {
+         $$3.remove(this.q.a($$3.size()));
+      }
+
+      return $$3;
+   }
+
+   public int l() {
+      ciw $$0 = this.o.a(1);
+      return $$0.b() ? 0 : $$0.L();
+   }
+
+   public int m() {
+      return this.r.b();
+   }
+
+   @Override
+   public void b(cbl $$0) {
+      super.b($$0);
+      this.p.a(($$1, $$2) -> this.a($$0, this.o));
+   }
+
+   @Override
+   public boolean a(cbl $$0) {
+      return a(this.p, $$0, csl.fr);
+   }
+
+   @Override
+   public ciw a(cbl $$0, int $$1) {
+      ciw $$2 = ciw.b;
+      cfu $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ciw $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 == 0) {
+            if (!this.a($$4, 2, 38, true)) {
+               return ciw.b;
+            }
+         } else if ($$1 == 1) {
+            if (!this.a($$4, 2, 38, true)) {
+               return ciw.b;
+            }
+         } else if ($$4.a(ciz.nM)) {
+            if (!this.a($$4, 1, 2, true)) {
+               return ciw.b;
+            }
+         } else {
+            if (this.i.get(0).f() || !this.i.get(0).a($$4)) {
+               return ciw.b;
+            }
+
+            ciw $$5 = $$4.c(1);
+            $$4.h(1);
+            this.i.get(0).d($$5);
+         }
+
+         if ($$4.b()) {
+            $$3.d(ciw.b);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return ciw.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 }

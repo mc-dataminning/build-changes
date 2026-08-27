@@ -1,77 +1,40 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fui extends fug implements fuh {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private ehk f;
+public class fui extends ftp<bzf, fgd<bzf>> {
+   private static final aep a = new aep("textures/" + fnu.i.b().a() + ".png");
+   private static final aep[] i = fnu.j.stream().map($$0 -> new aep("textures/" + $$0.b().a() + ".png")).toArray(aep[]::new);
 
-   public fui(ehk $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
+   public fui(fsj.a $$0) {
+      super($$0, new fgd<>($$0.a(fhi.be)), 0.0F);
+      this.a(new fwu(this));
    }
 
-   public fui(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new ehk($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   public ehf a(bzf $$0, float $$1) {
+      return $$0.F($$1).orElse(super.a($$0, $$1));
    }
 
-   @Override
-   public void a(akx $$0) {
+   public boolean a(bzf $$0, fqi $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.F(0.0F).filter($$2x -> {
+         bik<?> $$3x = $$0.ag();
+         float $$4x = $$3x.l() / 2.0F;
+         float $$5 = $$3x.k() / 2.0F;
+         ehf $$6 = ehf.c($$0.dk());
+         return $$1.a(new eha($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
+      }).isPresent();
    }
 
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
+   public aep a(bzf $$0) {
+      return a($$0.ga());
    }
 
-   @Nullable
-   public ehk e() {
-      return this.f;
+   public static aep a(@Nullable chk $$0) {
+      return $$0 == null ? a : i[$$0.a()];
    }
 
-   public void a(ehk $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(acq $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
+   protected void a(bzf $$0, elh $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4);
+      $$1.a(0.0, 0.5, 0.0);
+      $$1.a($$0.t().g().b());
+      $$1.a(0.0, -0.5, 0.0);
    }
 }

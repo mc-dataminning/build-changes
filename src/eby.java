@@ -1,37 +1,66 @@
-public class eby extends ecb {
-   eby(eck[] $$0) {
-      super($$0, ecm.a($$0));
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class eby {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+
+   public eby(ebv.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ebt.c).toFile();
+      this.c.mkdirs();
    }
 
-   @Override
-   public ecl b() {
-      return ecm.c;
-   }
-
-   public static eby.a a(eck.a... $$0) {
-      return new eby.a($$0);
-   }
-
-   public static class a extends ecb.a {
-      public a(eck.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eby.a and(eck.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected eck a(eck[] $$0) {
-         return new eby($$0);
+   public void a(cbl $$0) {
+      try {
+         qs $$1 = $$0.f(new qs());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         rc.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
       }
    }
 
-   public static class b extends ecb.b<eby> {
-      protected eby a(eck[] $$0) {
-         return new eby($$0);
+   @Nullable
+   public qs b(cbl $$0) {
+      qs $$1 = null;
+
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = rc.a($$2);
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
       }
+
+      if ($$1 != null) {
+         int $$4 = re.b($$1, -1);
+         $$0.g(asq.b.a(this.a, $$1, $$4));
+      }
+
+      return $$1;
+   }
+
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
+
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
+
+      return $$0;
    }
 }

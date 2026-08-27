@@ -1,92 +1,37 @@
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface brn {
-   boolean r();
+public class brn<T extends biw> extends brl<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   void w(boolean var1);
-
-   void l(cfz var1);
-
-   void c(qr var1);
-
-   cfz b();
-
-   amg w();
-
-   @Deprecated
-   static void a(bgb $$0, cfz $$1) {
-      qr $$2 = $$1.w();
-      if ($$0.aa()) {
-         $$1.a($$0.ab());
-      }
-
-      if ($$0.fQ()) {
-         $$2.a("NoAI", $$0.fQ());
-      }
-
-      if ($$0.aQ()) {
-         $$2.a("Silent", $$0.aQ());
-      }
-
-      if ($$0.aR()) {
-         $$2.a("NoGravity", $$0.aR());
-      }
-
-      if ($$0.bZ()) {
-         $$2.a("Glowing", $$0.bZ());
-      }
-
-      if ($$0.co()) {
-         $$2.a("Invulnerable", $$0.co());
-      }
-
-      $$2.a("Health", $$0.er());
+   public brn(cct $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<biw> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   @Deprecated
-   static void a(bgb $$0, qr $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.d($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.e($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.i($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.m($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.t($$1.j("Health"));
-      }
+   public int i() {
+      return this.j;
    }
 
-   static <T extends bfz & brn> Optional<bdx> a(byo $$0, bdw $$1, T $$2) {
-      cfz $$3 = $$0.b($$1);
-      if ($$3.d() == cgc.pL && $$2.bs()) {
-         $$2.a($$2.w(), 1.0F, 1.0F);
-         cfz $$4 = $$2.b();
-         $$2.l($$4);
-         cfz $$5 = cgb.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         cmm $$6 = $$2.dI();
-         if (!$$6.B) {
-            ai.j.a((aig)$$0, $$4);
-         }
+   public void k() {
+      this.j--;
+   }
 
-         $$2.ai();
-         return Optional.of(bdx.a($$6.B));
+   @Override
+   public boolean a() {
+      if (this.j > 0 || !this.e.ee().h()) {
+         return false;
+      } else if (!((cct)this.e).go()) {
+         return false;
       } else {
-         return Optional.empty();
+         this.h();
+         return this.c != null;
       }
+   }
+
+   @Override
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

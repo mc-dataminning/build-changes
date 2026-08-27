@@ -1,105 +1,111 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public interface dhd {
-   Codec<dhd> b = dhe.b;
-   Codec<he<dhd>> c = acm.a(jc.at, b);
-   Codec<dhd> d = c.xmap(dhe.j::new, $$0 -> (he)($$0 instanceof dhe.j $$1 ? $$1.j() : new he.a<>($$0)));
+public class dhd<T> implements dhl<T> {
+   private final hk<T> a;
+   private final aqm<T> b;
+   private final dhm<T> c;
+   private final int d;
 
-   double a(dhd.b var1);
-
-   void a(double[] var1, dhd.a var2);
-
-   dhd a(dhd.f var1);
-
-   double a();
-
-   double b();
-
-   aou<? extends dhd> c();
-
-   default dhd a(double $$0, double $$1) {
-      return new dhe.g(this, $$0, $$1);
+   public dhd(hk<T> $$0, int $$1, dhm<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::c);
    }
 
-   default dhd d() {
-      return dhe.a(this, dhe.k.a.a);
+   public dhd(hk<T> $$0, int $$1, dhm<T> $$2) {
+      this($$0, $$1, $$2, aqm.c(1 << $$1));
    }
 
-   default dhd e() {
-      return dhe.a(this, dhe.k.a.b);
+   private dhd(hk<T> $$0, int $$1, dhm<T> $$2, aqm<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   default dhd f() {
-      return dhe.a(this, dhe.k.a.c);
+   public static <A> dhl<A> a(int $$0, hk<A> $$1, dhm<A> $$2, List<A> $$3) {
+      return new dhd<>($$1, $$0, $$2, $$3);
    }
 
-   default dhd g() {
-      return dhe.a(this, dhe.k.a.d);
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.c($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
    }
 
-   default dhd h() {
-      return dhe.a(this, dhe.k.a.e);
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   default dhd i() {
-      return dhe.a(this, dhe.k.a.f);
-   }
-
-   public interface a {
-      dhd.b a(int var1);
-
-      void a(double[] var1, dhd var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dim d() {
-         return dim.a();
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dhk($$0);
+      } else {
+         return $$1;
       }
    }
 
-   public static record c(he<dwh.a> b, @Nullable dwh c) {
-      public static final Codec<dhd.c> a = dwh.a.b.xmap($$0 -> new dhd.c($$0, null), dhd.c::b);
+   @Override
+   public void a(sh $$0) {
+      this.b.a();
+      int $$1 = $$0.m();
 
-      public c(he<dwh.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.c(this.a.b($$0.m()));
       }
    }
 
-   public interface d extends dhd {
-      @Override
-      default void a(double[] $$0, dhd.a $$1) {
-         $$1.a($$0, this);
-      }
+   @Override
+   public void b(sh $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
 
-      @Override
-      default dhd a(dhd.f $$0) {
-         return $$0.apply(this);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
       }
    }
 
-   public static record e(int a, int b, int c) implements dhd.b {
+   @Override
+   public int a() {
+      int $$0 = sv.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += sv.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
    }
 
-   public interface f {
-      dhd apply(dhd var1);
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
 
-      default dhd.c a(dhd.c $$0) {
-         return $$0;
-      }
+   @Override
+   public int b() {
+      return this.b.b();
+   }
+
+   @Override
+   public dhl<T> c() {
+      return new dhd<>(this.a, this.d, this.c, this.b.c());
    }
 }

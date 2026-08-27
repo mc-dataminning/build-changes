@@ -1,239 +1,91 @@
-public class exw extends eqc<exw.a> {
-   static final acq a = new acq("textures/gui/resource_packs.png");
-   static final sw l = sw.c("pack.incompatible");
-   static final sw m = sw.c("pack.incompatible.confirm.title");
-   private final sw n;
-   final exv o;
+import javax.annotation.Nullable;
 
-   public exw(enn $$0, exv $$1, int $$2, int $$3, sw $$4) {
-      super($$0, $$2, $$3, 32, $$3 - 55 + 4, 36);
-      this.o = $$1;
-      this.n = $$4;
-      this.j = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class exw extends exv {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final te c = te.c("selectWorld.allowCommands");
+   private static final te k = te.c("selectWorld.gameMode");
+   private static final te l = te.c("lanServer.otherPlayers");
+   private static final te m = te.c("lanServer.port");
+   private static final te n = te.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final te o = te.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int p = 16733525;
+   private final exv q;
+   private cph s = cph.a;
+   private boolean t;
+   private int u = arg.a();
+   @Nullable
+   private esr v;
+
+   public exw(exv $$0) {
+      super(te.c("lanServer.title"));
+      this.q = $$0;
    }
 
    @Override
-   protected void a(eox $$0, int $$1, int $$2) {
-      sw $$3 = sw.h().b(this.n).a(n.t, n.r);
-      $$0.a(this.b.h, $$3, $$1 + this.d / 2 - this.b.h.a($$3) / 2, Math.min(this.f + 3, $$2), 16777215, false);
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   protected int c() {
-      return this.h - 6;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.f() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.f().d();
-               return true;
-            default:
-               if (euq.q()) {
-                  switch ($$0) {
-                     case 264:
-                        this.f().g();
-                        return true;
-                     case 265:
-                        this.f().f();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public static class a extends eqc.a<exw.a> {
-      private static final int b = 0;
-      private static final int c = 32;
-      private static final int d = 64;
-      private static final int e = 96;
-      private static final int f = 0;
-      private static final int g = 32;
-      private static final int h = 157;
-      private static final int i = 157;
-      private static final String j = "...";
-      private final exw k;
-      protected final enn a;
-      private final exu.a l;
-      private final aom m;
-      private final epz n;
-      private final aom o;
-      private final epz p;
-
-      public a(enn $$0, exw $$1, exu.a $$2) {
-         this.a = $$0;
-         this.l = $$2;
-         this.k = $$1;
-         this.m = a($$0, $$2.d());
-         this.n = b($$0, $$2.g());
-         this.o = a($$0, exw.l);
-         this.p = b($$0, $$2.b().b());
-      }
-
-      private static aom a(enn $$0, sw $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            ta $$3 = ta.a($$0.h.a($$1, 157 - $$0.h.b("...")), ta.e("..."));
-            return qm.a().a($$3);
+   protected void aE_() {
+      gcf $$0 = this.f.S();
+      this.s = $$0.o_();
+      this.t = $$0.aU().o();
+      this.d(esp.a(cph::e).a(cph.a, cph.d, cph.b, cph.c).a(this.s).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.s = $$1x));
+      this.d(esp.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
+      esi $$1 = esi.a(te.c("lanServer.start"), $$1x -> {
+         this.f.a(null);
+         te $$2;
+         if ($$0.a(this.s, this.t, this.u)) {
+            $$2 = ahn.a(this.u);
          } else {
-            return $$1.f();
-         }
-      }
-
-      private static epz b(enn $$0, sw $$1) {
-         return epz.a($$0.h, $$1, 157, 2);
-      }
-
-      @Override
-      public sw a() {
-         return sw.a("narrator.select", this.l.d());
-      }
-
-      @Override
-      public void a(eox $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         akh $$10 = this.l.b();
-         if (!$$10.a()) {
-            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 9, $$2 + $$5 + 1, -8978432);
+            $$2 = te.c("commands.publish.failed");
          }
 
-         $$0.a(this.l.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         aom $$11 = this.m;
-         epz $$12 = this.n;
-         if (this.e() && (this.a.m.U().c() || $$8 || this.k.f() == this && this.k.aB_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$13 = $$6 - $$3;
-            int $$14 = $$7 - $$2;
-            if (!this.l.b().a()) {
-               $$11 = this.o;
-               $$12 = this.p;
-            }
+         this.f.l.d().a($$2);
+         this.f.c();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
+      this.v = new esr(this.i, this.g / 2 - 75, 160, 150, 20, te.c("lanServer.port"));
+      this.v.b($$1x -> {
+         te $$2 = this.a($$1x);
+         this.v.c(te.b(this.u + "").a(n.i));
+         if ($$2 == null) {
+            this.v.l(14737632);
+            this.v.a(null);
+            $$1.i = true;
+         } else {
+            this.v.l(16733525);
+            this.v.a(etr.a($$2));
+            $$1.i = false;
+         }
+      });
+      this.v.c(te.b(this.u + "").a(n.i));
+      this.d(this.v);
+      this.d($$1);
+      this.d(esi.a(td.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+   }
 
-            if (this.l.o()) {
-               if ($$13 < 32) {
-                  $$0.a(exw.a, $$3, $$2, 0.0F, 32.0F, 32, 32, 256, 256);
-               } else {
-                  $$0.a(exw.a, $$3, $$2, 0.0F, 0.0F, 32, 32, 256, 256);
-               }
+   @Nullable
+   private te a(String $$0) {
+      if ($$0.isBlank()) {
+         this.u = arg.a();
+         return null;
+      } else {
+         try {
+            this.u = Integer.parseInt($$0);
+            if (this.u < 1024 || this.u > 65535) {
+               return o;
             } else {
-               if (this.l.p()) {
-                  if ($$13 < 16) {
-                     $$0.a(exw.a, $$3, $$2, 32.0F, 32.0F, 32, 32, 256, 256);
-                  } else {
-                     $$0.a(exw.a, $$3, $$2, 32.0F, 0.0F, 32, 32, 256, 256);
-                  }
-               }
-
-               if (this.l.q()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
-                     $$0.a(exw.a, $$3, $$2, 96.0F, 32.0F, 32, 32, 256, 256);
-                  } else {
-                     $$0.a(exw.a, $$3, $$2, 96.0F, 0.0F, 32, 32, 256, 256);
-                  }
-               }
-
-               if (this.l.r()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
-                     $$0.a(exw.a, $$3, $$2, 64.0F, 32.0F, 32, 32, 256, 256);
-                  } else {
-                     $$0.a(exw.a, $$3, $$2, 64.0F, 0.0F, 32, 32, 256, 256);
-                  }
-               }
+               return !arg.a(this.u) ? n : null;
             }
-         }
-
-         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, 8421504);
-      }
-
-      public String b() {
-         return this.l.c();
-      }
-
-      private boolean e() {
-         return !this.l.h() || !this.l.i();
-      }
-
-      public void d() {
-         if (this.l.o() && this.h()) {
-            this.k.o.a(this.k);
-         } else if (this.l.p()) {
-            this.l.k();
-            this.k.o.a(this.k);
+         } catch (NumberFormatException var3) {
+            this.u = arg.a();
+            return o;
          }
       }
+   }
 
-      void f() {
-         if (this.l.q()) {
-            this.l.l();
-         }
-      }
-
-      void g() {
-         if (this.l.r()) {
-            this.l.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.l.b().a()) {
-            this.l.j();
-            return true;
-         } else {
-            sw $$0 = this.l.b().c();
-            this.a.a(new etk($$0x -> {
-               this.a.a(this.k.o);
-               if ($$0x) {
-                  this.l.j();
-               }
-            }, exw.m, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if ($$2 != 0) {
-            return false;
-         } else {
-            double $$3 = $$0 - (double)this.k.o();
-            double $$4 = $$1 - (double)this.k.g(this.k.i().indexOf(this));
-            if (this.e() && $$3 <= 32.0) {
-               this.k.o.l();
-               if (this.l.o()) {
-                  this.h();
-                  return true;
-               }
-
-               if ($$3 < 16.0 && this.l.p()) {
-                  this.l.k();
-                  return true;
-               }
-
-               if ($$3 > 16.0 && $$4 < 16.0 && this.l.q()) {
-                  this.l.l();
-                  return true;
-               }
-
-               if ($$3 > 16.0 && $$4 > 16.0 && this.l.r()) {
-                  this.l.m();
-                  return true;
-               }
-            }
-
-            return false;
-         }
-      }
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      $$0.a(this.i, l, this.g / 2, 82, 16777215);
+      $$0.a(this.i, m, this.g / 2, 142, 16777215);
    }
 }

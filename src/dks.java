@@ -1,58 +1,95 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class dks extends dko<dkt> {
-   public dks(Codec<dkt> $$0) {
-      super($$0);
-   }
+public class dks implements cox {
+   private int a;
 
    @Override
-   public boolean a(dkq<dkt> $$0) {
-      apf $$1 = $$0.d();
-      cng $$2 = $$0.b();
-      gu $$3 = $$0.e();
-      cvz $$4 = cvz.a($$1);
-      dkt $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      dvu $$7 = $$2.C().n().aT();
-      dvt $$8 = $$7.a($$5.b.get($$6));
-      dvt $$9 = $$7.a($$5.c.get($$6));
-      clt $$10 = new clt($$3);
-      drs $$11 = new drs($$10.d() - 16, $$2.C_(), $$10.e() - 16, $$10.f() + 16, $$2.aj(), $$10.g() + 16);
-      dvp $$12 = new dvp().a($$4).a($$11).a($$1);
-      hz $$13 = $$8.a($$4);
-      gu $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dhk.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.C_() + 10);
-      gu $$19 = $$8.a($$14.h($$18), cui.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
+   public int a(aki $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpg.G)) {
+         return 0;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
+         art $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.W() / 24000L;
+            if ($$4 < 5L || !$$0.N()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.v().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cbl $$6 = $$0.v().get($$3.a($$5));
+                  if ($$6.G_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dk(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     gv.a $$9 = $$6.dk().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        hf<cqi> $$11 = $$0.s($$9);
+                        if ($$11.a(api.af)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dkh.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   private static int a(cng $$0, drs $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dcb $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(cpo.H) || $$3.a(cpo.G)) {
-            $$2.add(1);
+   private boolean a(aki $$0, gv $$1, art $$2, boolean $$3) {
+      dey $$4 = $$0.a_($$1);
+      if (!cpv.a($$0, $$1, $$4, $$4.u(), bik.ay)) {
+         return false;
+      } else if (!bza.b(bik.ay, $$0, bja.p, $$1, $$2)) {
+         return false;
+      } else {
+         bza $$5 = bik.ay.a((cpk)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gh();
+            }
+
+            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bja.p, null, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
          }
-      });
-      return $$2.getValue();
+      }
    }
 }

@@ -1,183 +1,134 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class cqu extends cpa implements csr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dcv a = crm.a;
-   public static final dcs b = dcr.c;
-   private final boolean d;
+public class cqu {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bfc<cqu.c> a = bfc.c();
+   public static final cqu b = new cqu.a().a();
+   public static final MapCodec<cqu> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(biz.i, bfc.c(cqu.c.a).promotePartial(ac.a("Spawn data: ", d::error)), asf.a(biz.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(jc.h.q(), cqu.b.a, jc.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cqu::new)
+   );
+   private final float f;
+   private final Map<biz, bfc<cqu.c>> g;
+   private final Map<bik<?>, cqu.b> h;
 
-   public cqu(dca.d $$0, boolean $$1) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
-      this.d = $$1;
+   cqu(float $$0, Map<biz, bfc<cqu.c>> $$1, Map<bik<?>, cqu.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   @Override
-   public czn a(gu $$0, dcb $$1) {
-      czx $$2 = new czx($$0, $$1);
-      $$2.b(this.d);
-      return $$2;
+   public bfc<cqu.c> a(biz $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, cpn $$3, gu $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof czx $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.d();
-            $$7.a($$8);
-            if (!$$9 && !$$7.f() && $$7.v() != czx.a.a) {
-               if ($$8) {
-                  $$7.j();
-                  $$1.a($$2, this, 1);
-               }
-            }
-         }
+   @Nullable
+   public cqu.b a(bik<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<biz, List<cqu.c>> a = Stream.of(biz.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bik<?>, cqu.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public cqu.a a(biz $$0, cqu.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public cqu.a a(bik<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new cqu.b($$2, $$1));
+         return this;
+      }
+
+      public cqu.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cqu a() {
+         return new cqu(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bfc.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$1.c_($$2) instanceof czx $$5) {
-         cln $$6 = $$5.c();
-         boolean $$7 = !aps.b($$6.m());
-         czx.a $$8 = $$5.v();
-         boolean $$9 = $$5.i();
-         if ($$8 == czx.a.b) {
-            $$5.j();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
+   public static record b(double b, double c) {
+      public static final Codec<cqu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, cqu.b::new)
+      );
 
-            if ($$5.d() || $$5.f()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == czx.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-         }
+      public double a() {
+         return this.b;
+      }
 
-         $$1.c($$2, this);
+      public double b() {
+         return this.c;
       }
    }
 
-   private void a(dcb $$0, cmm $$1, gu $$2, cln $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
+   public static class c extends bfa.a {
+      public static final Codec<cqu.c> a = aqw.a(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     jc.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bez.a.fieldOf("weight").forGetter(bfa.a::a),
+                     aqw.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     aqw.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, cqu.c::new)
+         ),
+         (Function<cqu.c, DataResult<cqu.c>>)($$0 -> $$0.c > $$0.d
+               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
+               : DataResult.success($$0))
+      );
+      public final bik<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bik<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bez.a($$1), $$2, $$3);
       }
 
-      a($$1, $$2, $$0.c(a));
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      czn $$6 = $$1.c_($$2);
-      if ($$6 instanceof czx && $$3.gk()) {
-         $$3.a((czx)$$6);
-         return bdx.a($$1.B);
-      } else {
-         return bdx.d;
-      }
-   }
-
-   @Override
-   public boolean d_(dcb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dcb $$0, cmm $$1, gu $$2) {
-      czn $$3 = $$1.c_($$2);
-      return $$3 instanceof czx ? ((czx)$$3).c().k() : 0;
-   }
-
-   @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, bfz $$3, cfz $$4) {
-      if ($$0.c_($$1) instanceof czx $$6) {
-         cln $$7 = $$6.c();
-         if ($$4.A()) {
-            $$7.b($$4.y());
-         }
-
-         if (!$$0.B) {
-            if (cds.a($$4) == null) {
-               $$7.a($$0.X().b(cmi.o));
-               $$6.b(this.d);
-            }
-
-            if ($$6.v() == czx.a.a) {
-               boolean $$8 = $$0.B($$1);
-               $$6.a($$8);
-            }
-         }
-      }
-   }
-
-   @Override
-   public cvs b_(dcb $$0) {
-      return cvs.c;
-   }
-
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public dcb a(cih $$0) {
-      return this.n().a(a, $$0.d().g());
-   }
-
-   private static void a(cmm $$0, gu $$1, ha $$2) {
-      gu.a $$3 = $$1.j();
-      cmi $$4 = $$0.X();
-      int $$5 = $$4.c(cmi.w);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dcb $$6 = $$0.a_($$3);
-         cpn $$7 = $$6.b();
-         if (!$$6.a(cpo.kH) || !($$0.c_($$3) instanceof czx $$9) || $$9.v() != czx.a.a) {
-            break;
-         }
-
-         if ($$9.d() || $$9.f()) {
-            cln $$10 = $$9.c();
-            if ($$9.j()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.w()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(a);
+      public c(bik<?> $$0, bez $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == biz.h ? bik.av : $$0;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(cmi.w), 0);
-         c.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      @Override
+      public String toString() {
+         return bik.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
    }
 }

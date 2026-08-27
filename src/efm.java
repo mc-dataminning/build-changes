@@ -1,45 +1,34 @@
-public class efm {
-   private static final efw<Object> a = new efw<Object>() {
-      @Override
-      public void a(eft<Object> $$0) {
-      }
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 
-      @Override
-      public boolean a(gu $$0, Object $$1) {
-         return false;
-      }
+public class efm implements efh {
+   final float a;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final efp<Object> b = new efp<Object>() {
-      @Override
-      public void a(eft<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(gu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(gu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> efw<T> a() {
-      return (efw<T>)a;
+   efm(float $$0) {
+      this.a = $$0;
    }
 
-   public static <T> efp<T> b() {
-      return (efp<T>)b;
+   @Override
+   public efi b() {
+      return efj.d;
+   }
+
+   public boolean a(ech $$0) {
+      return $$0.b().i() < this.a;
+   }
+
+   public static efh.a a(float $$0) {
+      return () -> new efm($$0);
+   }
+
+   public static class a implements ecq<efm> {
+      public void a(JsonObject $$0, efm $$1, JsonSerializationContext $$2) {
+         $$0.addProperty("chance", $$1.a);
+      }
+
+      public efm b(JsonObject $$0, JsonDeserializationContext $$1) {
+         return new efm(arf.m($$0, "chance"));
+      }
    }
 }

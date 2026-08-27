@@ -1,15 +1,10 @@
-public class cvh extends cpn {
-   public cvh(dca.d $$0) {
+public class cvh extends cua {
+   protected cvh(dex.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean f_(dcb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dcb $$0, cls $$1, gu $$2, ha $$3) {
-      return 15;
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      return bgo.d;
    }
 }

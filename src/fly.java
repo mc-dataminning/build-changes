@@ -1,58 +1,42 @@
-public class fly implements flu<czr> {
-   private final fpw a;
+public class fly extends fku {
+   private final big a;
+   private int b;
+   private final int D;
+   private final iu E;
 
-   public fly(flv.a $$0) {
-      this.a = $$0.d();
+   public fly(fie $$0, big $$1, iu $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public void a(czr $$0, float $$1, eij $$2, fjx $$3, int $$4, int $$5) {
-      if ($$0.k() != null) {
-         int $$6 = $$0.q().c(dcr.bv);
-         if ($$6 > 0) {
-            ha $$7 = $$0.f();
-            if ($$7 != null) {
-               cfz $$8 = $$0.g();
-               if (!$$8.b()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == ha.f || $$7 == ha.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = fjv.a($$0.k(), $$0.q(), $$0.p().a($$7));
-                  this.a.a($$8, cfw.i, $$11, fum.d, $$2, $$3, $$0.k(), 0);
-                  $$2.b();
-               }
-            }
+   public fly(fie $$0, big $$1, iu $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dn());
+   }
+
+   private fly(fie $$0, big $$1, iu $$2, int $$3, ehf $$4) {
+      super($$0, $$1.dp(), $$1.e(0.5), $$1.dv(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
+   }
+
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
       }
-   }
 
-   private float[] a(ha $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
-
-      return $$2;
    }
 }

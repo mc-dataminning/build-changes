@@ -1,57 +1,55 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public class gl implements gg<DoubleArgumentType, gl.a> {
-   public void a(gl.a $$0, sf $$1) {
-      boolean $$2 = $$0.b != -Double.MAX_VALUE;
-      boolean $$3 = $$0.c != Double.MAX_VALUE;
-      $$1.writeByte(gi.a($$2, $$3));
-      if ($$2) {
-         $$1.writeDouble($$0.b);
-      }
+public class gl {
+   private static final Map<aep, SuggestionProvider<dv>> e = Maps.newHashMap();
+   private static final aep f = new aep("ask_server");
+   public static final SuggestionProvider<dv> a = a(f, ($$0, $$1) -> ((dv)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<ds> b = a(new aep("all_recipes"), ($$0, $$1) -> dv.a(((dv)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<ds> c = a(new aep("available_sounds"), ($$0, $$1) -> dv.a(((dv)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ds> d = a(
+      new aep("summonable_entities"),
+      ($$0, $$1) -> dv.a(jc.h.s().filter($$1x -> $$1x.a(((dv)$$0.getSource()).w()) && $$1x.c()), $$1, bik::a, $$0x -> te.c(ac.a("entity", bik.a($$0x))))
+   );
 
-      if ($$3) {
-         $$1.writeDouble($$0.c);
-      }
-   }
-
-   public gl.a a(sf $$0) {
-      byte $$1 = $$0.readByte();
-      double $$2 = gi.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
-      double $$3 = gi.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
-      return new gl.a($$2, $$3);
-   }
-
-   public void a(gl.a $$0, JsonObject $$1) {
-      if ($$0.b != -Double.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Double.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
+   public static <S extends dv> SuggestionProvider<S> a(aep $$0, SuggestionProvider<dv> $$1) {
+      if (e.containsKey($$0)) {
+         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+      } else {
+         e.put($$0, $$1);
+         return new gl.a($$0, $$1);
       }
    }
 
-   public gl.a a(DoubleArgumentType $$0) {
-      return new gl.a($$0.getMinimum(), $$0.getMaximum());
+   public static SuggestionProvider<dv> a(aep $$0) {
+      return e.getOrDefault($$0, a);
    }
 
-   public final class a implements gg.a<DoubleArgumentType> {
-      final double b;
-      final double c;
+   public static aep a(SuggestionProvider<dv> $$0) {
+      return $$0 instanceof gl.a ? ((gl.a)$$0).b : f;
+   }
 
-      a(double $$1, double $$2) {
-         this.b = $$1;
-         this.c = $$2;
+   public static SuggestionProvider<dv> b(SuggestionProvider<dv> $$0) {
+      return $$0 instanceof gl.a ? $$0 : a;
+   }
+
+   protected static class a implements SuggestionProvider<dv> {
+      private final SuggestionProvider<dv> a;
+      final aep b;
+
+      public a(aep $$0, SuggestionProvider<dv> $$1) {
+         this.a = $$1;
+         this.b = $$0;
       }
 
-      public DoubleArgumentType a(dm $$0) {
-         return DoubleArgumentType.doubleArg(this.b, this.c);
-      }
-
-      @Override
-      public gg<DoubleArgumentType, ?> a() {
-         return gl.this;
+      public CompletableFuture<Suggestions> getSuggestions(CommandContext<dv> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
+         return this.a.getSuggestions($$0, $$1);
       }
    }
 }

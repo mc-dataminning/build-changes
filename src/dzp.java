@@ -1,87 +1,321 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class dzp<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final dzp<eck> a = new dzp<>(dzh.a().create(), a(eck.class, dzn::a), "predicates", d());
-   public static final dzp<eaz> b = new dzp<>(dzh.b().create(), a(eaz.class, dzn::a), "item_modifiers", d());
-   public static final dzp<dzs> c = new dzp<>(dzh.c().create(), a(dzs.class), "loot_tables", e());
-   private final Gson e;
-   private final BiFunction<acq, JsonElement, Optional<T>> f;
-   private final String g;
-   private final dzp.a<T> h;
+public abstract class dzp<M extends dzm<M>> {
+   private final cpt i;
+   protected final dhi a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<dha> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   private dzp(Gson $$0, BiFunction<Gson, String, BiFunction<acq, JsonElement, Optional<T>>> $$1, String $$2, dzp.a<T> $$3) {
-      this.e = $$0;
-      this.g = $$2;
-      this.h = $$3;
-      this.f = $$1.apply($$0, $$2);
+   protected dzp(cpt $$0, dhi $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   public Gson a() {
-      return this.e;
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
-   public String b() {
-      return this.g;
+   @Nullable
+   protected dha a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
    }
 
-   public void a(dzv $$0, dzm<T> $$1, T $$2) {
-      this.h.run($$0, $$1, $$2);
+   @Nullable
+   protected dha a(M $$0, long $$1) {
+      return $$0.c($$1);
    }
 
-   public Optional<T> a(acq $$0, JsonElement $$1) {
-      return this.f.apply($$0, $$1);
+   @Nullable
+   protected dha c(long $$0) {
+      dha $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
+      } else {
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
+      }
    }
 
-   public static Stream<dzp<?>> c() {
-      return Stream.of(a, b, c);
+   @Nullable
+   public dha d(long $$0) {
+      dha $$1 = (dha)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
    }
 
-   private static <T> BiFunction<Gson, String, BiFunction<acq, JsonElement, Optional<T>>> a(Class<T> $$0) {
-      return ($$1, $$2) -> ($$3, $$4) -> {
-            try {
-               return Optional.of((T)$$1.fromJson($$4, $$0));
-            } catch (Exception var6) {
-               d.error("Couldn't parse element {}:{}", new Object[]{$$2, $$3, var6});
-               return Optional.empty();
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = hy.e($$0);
+      dha $$2 = this.a($$1, true);
+      return $$2.a(hy.b(gv.a($$0)), hy.b(gv.b($$0)), hy.b(gv.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = hy.e($$0);
+      dha $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
+      }
+
+      $$3.a(hy.b(gv.a($$0)), hy.b(gv.b($$0)), hy.b(gv.c($$0)), $$1);
+      hy.a($$0, this.f::add);
+   }
+
+   protected void f(long $$0) {
+      int $$1 = hy.b($$0);
+      int $$2 = hy.c($$0);
+      int $$3 = hy.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(hy.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
             }
-         };
+         }
+      }
    }
 
-   private static <T> BiFunction<Gson, String, BiFunction<acq, JsonElement, Optional<T>>> a(Class<T> $$0, Function<T[], T> $$1) {
-      Class<T[]> $$2 = (Class<T[]>)$$0.arrayType();
-      return ($$3, $$4) -> ($$5, $$6) -> {
-            try {
-               if ($$6.isJsonArray()) {
-                  T[] $$7 = (T[])((Object[])$$3.fromJson($$6, $$2));
-                  return Optional.of($$1.apply((T)$$7));
-               } else {
-                  return Optional.of((T)$$3.fromJson($$6, $$0));
+   protected dha g(long $$0) {
+      dha $$1 = (dha)this.g.get($$0);
+      return $$1 != null ? $$1 : new dha();
+   }
+
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(dzs<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            dha $$2 = (dha)this.g.remove($$1);
+            dha $$3 = this.d.d($$1);
+            if (this.k.contains(hy.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
                }
-            } catch (Exception var8) {
-               d.error("Couldn't parse element {}:{}", new Object[]{$$4, $$5, var8});
-               return Optional.empty();
             }
-         };
+         }
+
+         this.d.c();
+         $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<dha>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<dha> $$6 = (Entry<dha>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               dha $$8 = (dha)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
    }
 
-   private static <T extends dzl> dzp.a<T> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().g + ":" + $$1.b() + "}", $$1));
+   protected void h(long $$0) {
    }
 
-   private static dzp.a<dzs> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().g + ":" + $$1.b() + "}", $$1));
+   protected void i(long $$0) {
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(dzv var1, dzm<T> var2, T var3);
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
+
+   protected boolean j(long $$0) {
+      long $$1 = hy.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable dha $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = dzp.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = hy.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, dzp.a.a($$9, dzp.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, hy.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public dzp.b k(long $$0) {
+      return dzp.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
+         }
+      }
+
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
+      }
+
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static dzp.b c(byte $$0) {
+         if ($$0 == 0) {
+            return dzp.b.a;
+         } else {
+            return a($$0) ? dzp.b.c : dzp.b.b;
+         }
+      }
+   }
+
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
    }
 }

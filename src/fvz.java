@@ -1,26 +1,13 @@
-import java.util.IllegalFormatException;
+public class fvz<T extends byn> extends fwr<T, feg<T>> {
+   private static final aep a = new aep("textures/entity/zombie/drowned_outer_layer.png");
+   private final feg<T> b;
 
-public class fvz {
-   private static volatile qm a = qm.a();
-
-   private fvz() {
+   public fvz(fue<T, feg<T>> $$0, fhf $$1) {
+      super($$0);
+      this.b = new feg<>($$1.a(fhi.O));
    }
 
-   static void a(qm $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

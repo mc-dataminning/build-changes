@@ -1,42 +1,62 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class awt extends auz {
+public class awt extends DataFix {
+   public static final String[] a = new String[]{
+      "minecraft:white_shulker_box",
+      "minecraft:orange_shulker_box",
+      "minecraft:magenta_shulker_box",
+      "minecraft:light_blue_shulker_box",
+      "minecraft:yellow_shulker_box",
+      "minecraft:lime_shulker_box",
+      "minecraft:pink_shulker_box",
+      "minecraft:gray_shulker_box",
+      "minecraft:silver_shulker_box",
+      "minecraft:cyan_shulker_box",
+      "minecraft:purple_shulker_box",
+      "minecraft:blue_shulker_box",
+      "minecraft:brown_shulker_box",
+      "minecraft:green_shulker_box",
+      "minecraft:red_shulker_box",
+      "minecraft:black_shulker_box"
+   };
+
    public awt(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Villager trade fix", avw.q, "minecraft:villager");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<?> $$1 = $$0.getType().findField("Offers");
-      OpticFinder<?> $$2 = $$1.type().findField("Recipes");
-      if (!($$2.type() instanceof ListType<?> $$4)) {
-         throw new IllegalStateException("Recipes are expected to be a list.");
-      } else {
-         Type<?> $$5 = $$4.getElement();
-         OpticFinder<?> $$6 = DSL.typeFinder($$5);
-         OpticFinder<?> $$7 = $$5.findField("buy");
-         OpticFinder<?> $$8 = $$5.findField("buyB");
-         OpticFinder<?> $$9 = $$5.findField("sell");
-         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(avw.s.typeName(), axd.a()));
-         Function<Typed<?>, Typed<?>> $$11 = $$1x -> this.a($$10, $$1x);
-         return $$0.updateTyped(
-            $$1,
-            $$6x -> $$6x.updateTyped(
-                  $$2, $$5xx -> $$5xx.updateTyped($$6, $$4xxx -> $$4xxx.updateTyped($$7, $$11).updateTyped($$8, $$11).updateTyped($$9, $$11))
-               )
-         );
-      }
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(aym.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(aym.z.typeName(), azu.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Typed<?> $$8 = (Typed<?>)$$7.get();
+                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
+                  int $$10 = $$9.get("Color").asInt(0);
+                  $$9.remove("Color");
+                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(aym.z.typeName(), a[$$10 % 16]));
+               }
+            }
+         }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+         return $$3x;
+      });
    }
 }

@@ -1,12 +1,39 @@
-public class cyg extends csz {
-   public static final efb d = cpn.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class cyg extends crz {
+   public static final dfp d = dfo.w;
+   private final cyg.a e;
 
-   public cyg(dca.d $$0) {
-      super($$0, ha.b, d, false);
+   protected cyg(cyg.a $$0, dex.d $$1, dfn $$2) {
+      super($$1, $$2);
+      this.k(this.C.b().a(d, Boolean.valueOf(false)));
+      this.e = $$0;
    }
 
    @Override
-   protected cta b() {
-      return (cta)cpo.oB;
+   protected int g(dey $$0) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   protected dey a(dey $$0, int $$1) {
+      return $$0.a(d, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(cpk $$0, gv $$1) {
+      Class $$2 = switch (this.e) {
+         case a -> big.class;
+         case b -> biw.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(d);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

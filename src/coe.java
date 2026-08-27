@@ -1,60 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class coe extends cpn {
-   public static final int a = 3;
-   public static final dcs b = dcr.r;
-
-   protected coe(dca.d $$0) {
-      super($$0);
-   }
-
-   protected abstract Iterable<eei> b(dcb var1);
-
-   public static boolean c(dcb $$0) {
-      return $$0.b(b) && ($$0.a(amw.ae) || $$0.a(amw.bi)) && $$0.c(b);
-   }
-
-   @Override
-   public void a(cmm $$0, dcb $$1, eee $$2, bzg $$3) {
-      if (!$$0.B && $$3.bL() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(dcb $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(cmm $$0, eei $$1, apf $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(iv.Z, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, amh.dc, ami.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
-      }
-
-      $$0.a(iv.aD, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable byo $$0, dcb $$1, cmn $$2, gu $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof coe) {
-         ((coe)$$1.b()).b($$1).forEach($$2x -> $$2.a(iv.Z, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, amh.de, ami.e, 1.0F, 1.0F);
-      $$2.a($$0, dgl.c, $$3);
-   }
-
-   private static void a(cmn $$0, dcb $$1, gu $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface coe {
 }

@@ -1,31 +1,20 @@
-import java.util.Optional;
-import java.util.function.Function;
+public interface djk {
+   djm a();
 
-public class djk extends dih {
-   private final hs a;
-   private final dho b;
-   private final dhy c;
-   private final dib.o d;
+   int b();
 
-   public djk(dhn $$0, hs $$1, cmo $$2, dho $$3, dhy $$4, dib.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   boolean a(aki var1, dji var2, dji.a var3, ehf var4);
+
+   default djk.a c() {
+      return djk.a.a;
    }
 
-   @Deprecated
-   public Optional<dcb> a(Function<gu, he<cnk>> $$0, ddx $$1, gu $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public static enum a {
+      a,
+      b;
    }
 
-   @Deprecated
-   public hs c() {
-      return this.a;
-   }
-
-   public dhy d() {
-      return this.c;
+   public interface b<T extends djk> {
+      T d();
    }
 }

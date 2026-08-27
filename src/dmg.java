@@ -1,52 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmg extends dmd {
-   public dmg(Codec<dnr> $$0) {
-      super($$0);
+public class dmg {
+   public static final dmg a = new dmg(false, csl.gz.n(), csl.pL.n(), csl.ek.n(), csl.aQ.n());
+   public static final Codec<dmg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dmg::a),
+               dey.b.optionalFieldOf("air_state", a.b()).forGetter(dmg::b),
+               dey.b.optionalFieldOf("water_state", a.b()).forGetter(dmg::c),
+               dey.b.optionalFieldOf("lava_state", a.b()).forGetter(dmg::d),
+               dey.b.optionalFieldOf("barrier_state", a.b()).forGetter(dmg::e)
+            )
+            .apply($$0, dmg::new)
+   );
+   private final boolean c;
+   private final dey d;
+   private final dey e;
+   private final dey f;
+   private final dey g;
+
+   public static dmg a(boolean $$0, dey $$1, dey $$2, dey $$3, dey $$4) {
+      return new dmg($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected Set<gu> a(cng $$0, dnr $$1, apf $$2, gu $$3, Predicate<dcb> $$4, int $$5, int $$6) {
-      Set<gu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<gu> $$8 = new HashSet<>();
-      gu.a $$9 = new gu.a();
-
-      for (gu $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
-
-      for (gu $$11 : $$8) {
-         $$0.a($$11, cpo.G.n(), 2);
-      }
-
-      return $$8;
+   public static dmg a(dey $$0, dey $$1, dey $$2, dey $$3) {
+      return new dmg(false, $$0, $$1, $$2, $$3);
    }
 
-   private static boolean a(cng $$0, Set<gu> $$1, gu $$2, gu.a $$3) {
-      return a($$0, $$2, $$3, ha.c) || a($$0, $$2, $$3, ha.f) || a($$0, $$2, $$3, ha.d) || a($$0, $$2, $$3, ha.e) || a($$0, $$2, $$3, ha.a);
+   public static dmg a(boolean $$0, dey $$1) {
+      return new dmg($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   private static boolean a(cng $$0, gu $$1, gu.a $$2, ha $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   private dmg(boolean $$0, dey $$1, dey $$2, dey $$3, dey $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   protected boolean a(cng $$0, dnr $$1, ddy $$2, apf $$3, gu $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dcb $$5 = $$0.a_($$4);
-         if ($$5.b(dcr.C) && !$$5.c(dcr.C)) {
-            $$0.a($$4, $$5.a(dcr.C, Boolean.valueOf(true)), 2);
-         }
+   public boolean a() {
+      return this.c;
+   }
 
-         return true;
-      } else {
-         return false;
-      }
+   public dey b() {
+      return this.d;
+   }
+
+   public dey c() {
+      return this.e;
+   }
+
+   public dey d() {
+      return this.f;
+   }
+
+   public dey e() {
+      return this.g;
    }
 }

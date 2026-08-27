@@ -1,170 +1,84 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogQueues;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.logging.LogUtils;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Collection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
-public class ahk extends JComponent {
-   private static final Font a = new Font("Monospaced", 0, 12);
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "Minecraft server";
-   private static final String d = "Minecraft server - shutting down!";
-   private final ahe e;
-   private Thread f;
-   private final Collection<Runnable> g = Lists.newArrayList();
-   final AtomicBoolean h = new AtomicBoolean();
+public class ahk {
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("commands.perf.alreadyRunning"));
 
-   public static ahk a(final ahe $$0) {
-      try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception var3) {
-      }
-
-      final JFrame $$1 = new JFrame("Minecraft server");
-      final ahk $$2 = new ahk($$0);
-      $$1.setDefaultCloseOperation(2);
-      $$1.add($$2);
-      $$1.pack();
-      $$1.setLocationRelativeTo(null);
-      $$1.setVisible(true);
-      $$1.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent $$0x) {
-            if (!$$2.h.getAndSet(true)) {
-               $$1.setTitle("Minecraft server - shutting down!");
-               $$0.a(true);
-               $$2.f();
-            }
-         }
-      });
-      $$2.a($$1::dispose);
-      $$2.a();
-      return $$2;
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
+            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
+      );
    }
 
-   private ahk(ahe $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(854, 480));
-      this.setLayout(new BorderLayout());
-
-      try {
-         this.add(this.e(), "Center");
-         this.add(this.c(), "West");
-      } catch (Exception var3) {
-         b.error("Couldn't build server GUI", var3);
-      }
-   }
-
-   public void a(Runnable $$0) {
-      this.g.add($$0);
-   }
-
-   private JComponent c() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      ahm $$1 = new ahm(this.e);
-      this.g.add($$1::a);
-      $$0.add($$1, "North");
-      $$0.add(this.d(), "Center");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
-      return $$0;
-   }
-
-   private JComponent d() {
-      JList<?> $$0 = new ahl(this.e);
-      JScrollPane $$1 = new JScrollPane($$0, 22, 30);
-      $$1.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
-      return $$1;
-   }
-
-   private JComponent e() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      JTextArea $$1 = new JTextArea();
-      JScrollPane $$2 = new JScrollPane($$1, 22, 30);
-      $$1.setEditable(false);
-      $$1.setFont(a);
-      JTextField $$3 = new JTextField();
-      $$3.addActionListener($$1x -> {
-         String $$2x = $$3.getText().trim();
-         if (!$$2x.isEmpty()) {
-            this.e.a($$2x, this.e.aD());
-         }
-
-         $$3.setText("");
-      });
-      $$1.addFocusListener(new FocusAdapter() {
-         @Override
-         public void focusGained(FocusEvent $$0) {
-         }
-      });
-      $$0.add($$2, "Center");
-      $$0.add($$3, "South");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
-      this.f = new Thread(() -> {
-         String $$2x;
-         while (($$2x = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
-            this.a($$1, $$2, $$2x);
-         }
-      });
-      this.f.setUncaughtExceptionHandler(new r(b));
-      this.f.setDaemon(true);
-      return $$0;
-   }
-
-   public void a() {
-      this.f.start();
-   }
-
-   public void b() {
-      if (!this.h.getAndSet(true)) {
-         this.f();
-      }
-   }
-
-   void f() {
-      this.g.forEach(Runnable::run);
-   }
-
-   public void a(JTextArea $$0, JScrollPane $$1, String $$2) {
-      if (!SwingUtilities.isEventDispatchThread()) {
-         SwingUtilities.invokeLater(() -> this.a($$0, $$1, $$2));
+   private static int a(ds $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aO()) {
+         throw c.create();
       } else {
-         Document $$3 = $$0.getDocument();
-         JScrollBar $$4 = $$1.getVerticalScrollBar();
-         boolean $$5 = false;
-         if ($$1.getViewport().getView() == $$0) {
-            $$5 = (double)$$4.getValue() + $$4.getSize().getHeight() + (double)(a.getSize() * 4) > (double)$$4.getMaximum();
-         }
+         Consumer<bdd> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> te.c("commands.perf.started"), false);
+         return 0;
+      }
+   }
 
-         try {
-            $$3.insertString($$3.getLength(), $$2, null);
-         } catch (BadLocationException var8) {
-         }
+   private static int b(ds $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aO()) {
+         throw b.create();
+      } else {
+         $$1.aQ();
+         return 0;
+      }
+   }
 
-         if ($$5) {
-            $$4.setValue(Integer.MAX_VALUE);
-         }
+   private static void a(ds $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aU().g(), aa.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(beu.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(te.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (aqz $$7 = new aqz(beu.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> te.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ds $$0, bdd $$1) {
+      if ($$1 != bcz.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)ask.a;
+         $$0.a(() -> te.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

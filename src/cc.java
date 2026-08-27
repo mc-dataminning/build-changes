@@ -1,14 +1,14 @@
 import com.google.gson.JsonObject;
 
 public class cc extends cv<cc.a> {
-   final acq a;
+   final aep a;
 
-   public cc(acq $$0) {
+   public cc(aep $$0) {
       this.a = $$0;
    }
 
    @Override
-   public acq a() {
+   public aep a() {
       return this.a;
    }
 
@@ -16,8 +16,8 @@ public class cc extends cv<cc.a> {
       return new cc.a(this.a, $$1, bo.a($$0, "entity", $$2), bd.a($$0.get("killing_blow")));
    }
 
-   public void a(aig $$0, bfj $$1, ben $$2) {
-      dzk $$3 = bo.b($$0, $$1);
+   public void a(akj $$0, big $$1, bhe $$2) {
+      ech $$3 = bo.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -25,7 +25,7 @@ public class cc extends cv<cc.a> {
       private final ba a;
       private final bd b;
 
-      public a(acq $$0, ba $$1, ba $$2, bd $$3) {
+      public a(aep $$0, ba $$1, ba $$2, bd $$3) {
          super($$0, $$1);
          this.a = $$2;
          this.b = $$3;
@@ -91,7 +91,7 @@ public class cc extends cv<cc.a> {
          return new cc.a(ai.c.a, ba.a, bo.a($$0.b()), $$1.b());
       }
 
-      public boolean a(aig $$0, dzk $$1, ben $$2) {
+      public boolean a(akj $$0, ech $$1, bhe $$2) {
          return !this.b.a($$0, $$2) ? false : this.a.a($$1);
       }
 

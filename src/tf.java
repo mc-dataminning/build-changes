@@ -1,13 +1,24 @@
-public record tf(th a, boolean b) {
-   public tf a() {
-      return this.b ? new tf(this.a, false) : this;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public interface tf {
+   tf a = new tf() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+
+   default <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
+      return Optional.empty();
    }
 
-   public th b() {
-      return this.a;
+   default <T> Optional<T> a(ti.a<T> $$0) {
+      return Optional.empty();
    }
 
-   public boolean c() {
-      return this.b;
+   default tr a(@Nullable ds $$0, @Nullable big $$1, int $$2) throws CommandSyntaxException {
+      return tr.a(this);
    }
 }

@@ -1,78 +1,78 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class yu implements uo<ur> {
-   private final int a;
-   private final List<yu.a> b;
+public class yu implements uw<wo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final int d;
+   private final ec.a e;
+   private final ec.a f;
+   private final boolean g;
 
-   public yu(int $$0, Collection<bhc> $$1) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bhc $$2 : $$1) {
-         this.b.add(new yu.a($$2.a(), $$2.b(), $$2.c()));
-      }
+   public yu(ec.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
    }
 
-   public yu(sf $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a((sf.a<yu.a>)($$0x -> {
-         acq $$1 = $$0x.t();
-         bhb $$2 = jb.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bhe> $$4 = $$0x.a((sf.a<bhe>)($$0xx -> new bhe($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bhe.a.a($$0xx.readByte()))));
-         return new yu.a($$2, $$3, $$4);
-      }));
+   public yu(ec.a $$0, big $$1, ec.a $$2) {
+      this.e = $$0;
+      this.d = $$1.ah();
+      this.f = $$2;
+      ehf $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
+   }
+
+   public yu(sh $$0) {
+      this.e = $$0.b(ec.a.class);
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.m();
+         this.f = $$0.b(ec.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
+      }
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jb.v.b($$1.a()));
-         $$0x.writeDouble($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.writeDouble($$1x.d());
-            $$0xx.writeByte($$1x.c().a());
-         });
-      });
+   public void a(sh $$0) {
+      $$0.a(this.e);
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
+      }
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public ec.a a() {
+      return this.e;
    }
 
-   public List<yu.a> c() {
-      return this.b;
-   }
-
-   public static class a {
-      private final bhb a;
-      private final double b;
-      private final Collection<bhe> c;
-
-      public a(bhb $$0, double $$1, Collection<bhe> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public bhb a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public Collection<bhe> c() {
-         return this.c;
+   @Nullable
+   public ehf a(cpk $$0) {
+      if (this.g) {
+         big $$1 = $$0.a(this.d);
+         return $$1 == null ? new ehf(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new ehf(this.a, this.b, this.c);
       }
    }
 }

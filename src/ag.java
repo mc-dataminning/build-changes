@@ -100,12 +100,12 @@ public class ag implements Comparable<ag> {
       return "AdvancementProgress{criteria=" + this.a + ", requirements=" + Arrays.deepToString(this.b) + "}";
    }
 
-   public void a(sf $$0) {
-      $$0.a(this.a, sf::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sh $$0) {
+      $$0.a(this.a, sh::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ag b(sf $$0) {
-      Map<String, ak> $$1 = $$0.a(sf::s, ak::b);
+   public static ag b(sh $$0) {
+      Map<String, ak> $$1 = $$0.a(sh::r, ak::b);
       return new ag($$1);
    }
 
@@ -231,13 +231,13 @@ public class ag implements Comparable<ag> {
       }
 
       public ag a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = aor.m($$0, "advancement");
-         JsonObject $$4 = aor.a($$3, "criteria", new JsonObject());
+         JsonObject $$3 = arf.m($$0, "advancement");
+         JsonObject $$4 = arf.a($$3, "criteria", new JsonObject());
          ag $$5 = new ag();
 
          for (Entry<String, JsonElement> $$6 : $$4.entrySet()) {
             String $$7 = $$6.getKey();
-            $$5.a.put($$7, ak.a(aor.a($$6.getValue(), $$7)));
+            $$5.a.put($$7, ak.a(arf.a($$6.getValue(), $$7)));
          }
 
          return $$5;

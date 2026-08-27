@@ -1,48 +1,106 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cjl<T extends cil> implements cje<T> {
-   private final int x;
-   private final cjl.a<T> y;
+public class cjl extends cir {
+   private static final int a = 32;
 
-   public cjl(cjl.a<T> $$0, int $$1) {
-      this.x = $$1;
-      this.y = $$0;
+   public cjl(cir.a $$0) {
+      super($$0);
    }
 
-   public T b(acq $$0, JsonObject $$1) {
-      String $$2 = aor.a($$1, "group", "");
-      cir $$3 = cir.d.a(aor.a($$1, "category", null), cir.c);
-      JsonElement $$4 = (JsonElement)(aor.d($$1, "ingredient") ? aor.v($$1, "ingredient") : aor.u($$1, "ingredient"));
-      ciz $$5 = ciz.a($$4, false);
-      String $$6 = aor.i($$1, "result");
-      acq $$7 = new acq($$6);
-      cfz $$8 = new cfz(jb.i.b($$7).orElseThrow(() -> new IllegalStateException("Item: " + $$6 + " does not exist")));
-      float $$9 = aor.a($$1, "experience", 0.0F);
-      int $$10 = aor.a($$1, "cookingtime", this.x);
-      return this.y.create($$0, $$2, $$3, $$5, $$8, $$9, $$10);
+   @Override
+   public ciw ae_() {
+      return ckv.a(super.ae_(), ckw.c);
    }
 
-   public T b(acq $$0, sf $$1) {
-      String $$2 = $$1.s();
-      cir $$3 = $$1.b(cir.class);
-      ciz $$4 = ciz.b($$1);
-      cfz $$5 = $$1.r();
-      float $$6 = $$1.readFloat();
-      int $$7 = $$1.m();
-      return this.y.create($$0, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public ciw a(ciw $$0, cpk $$1, biw $$2) {
+      cbl $$3 = $$2 instanceof cbl ? (cbl)$$2 : null;
+      if ($$3 instanceof akj) {
+         ai.z.a((akj)$$3, $$0);
+      }
+
+      if (!$$1.B) {
+         for (bht $$5 : ckv.a($$0)) {
+            if ($$5.c().a()) {
+               $$5.c().a($$3, $$3, $$2, $$5.e(), 1.0);
+            } else {
+               $$2.b(new bht($$5));
+            }
+         }
+      }
+
+      if ($$3 != null) {
+         $$3.b(ape.c.b(this));
+         if (!$$3.fR().d) {
+            $$0.h(1);
+         }
+      }
+
+      if ($$3 == null || !$$3.fR().d) {
+         if ($$0.b()) {
+            return new ciw(ciz.rw);
+         }
+
+         if ($$3 != null) {
+            $$3.fQ().e(new ciw(ciz.rw));
+         }
+      }
+
+      $$2.a(dji.l);
+      return $$0;
    }
 
-   public void a(sf $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.g());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.writeFloat($$1.f);
-      $$0.d($$1.g);
+   @Override
+   public bgo a(clg $$0) {
+      cpk $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      cbl $$3 = $$0.o();
+      ciw $$4 = $$0.n();
+      dey $$5 = $$1.a_($$2);
+      if ($$0.k() != hb.a && $$5.a(apj.ca) && ckv.d($$4) == ckw.c) {
+         $$1.a(null, $$2, aou.jb, aov.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), ciy.a($$4, $$3, new ciw(ciz.rw)));
+         $$3.b(ape.c.b($$4.d()));
+         if (!$$1.B) {
+            aki $$6 = (aki)$$1;
+
+            for (int $$7 = 0; $$7 < 5; $$7++) {
+               $$6.a(iw.ag, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
+         }
+
+         $$1.a(null, $$2, aou.ch, aov.e, 1.0F, 1.0F);
+         $$1.a(null, dji.z, $$2);
+         $$1.b($$2, csl.rH.n());
+         return bgo.a($$1.B);
+      } else {
+         return bgo.d;
+      }
    }
 
-   interface a<T extends cil> {
-      T create(acq var1, String var2, cir var3, ciz var4, cfz var5, float var6, int var7);
+   @Override
+   public int b(ciw $$0) {
+      return 32;
+   }
+
+   @Override
+   public ckp c(ciw $$0) {
+      return ckp.c;
+   }
+
+   @Override
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      return ciy.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public String j(ciw $$0) {
+      return ckv.d($$0).b(this.a() + ".effect.");
+   }
+
+   @Override
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      ckv.a($$0, $$2, 1.0F);
    }
 }

@@ -1,48 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dub extends dsa {
-   public static final Codec<dub> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dqh.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dub::new)
+public record dub(hf<dmy<?, ?>> e, List<due> f) {
+   public static final Codec<dub> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dmy.b.fieldOf("feature").forGetter($$0x -> $$0x.e), due.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dub::new)
    );
-   public final dqh e;
+   public static final Codec<hf<dub>> b = ael.a(jd.ay, a);
+   public static final Codec<hj<dub>> c = hu.a(jd.ay, a);
+   public static final Codec<List<hj<dub>>> d = hu.a(jd.ay, a, true).listOf();
 
-   public dub(dsa.c $$0, dqh $$1) {
-      super($$0);
-      this.e = $$1;
+   public boolean a(cqe $$0, dgv $$1, art $$2, gv $$3) {
+      return this.a(new duc($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   @Override
-   public Optional<dsa.b> a(dsa.a $$0) {
-      dij $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dih $$5 = new dih($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cmy $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      gu.a $$8 = new gu.a($$2, $$6, $$3);
+   public boolean b(cqe $$0, dgv $$1, art $$2, gv $$3) {
+      return this.a(new duc($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
 
-      while ($$6 > $$4) {
-         dcb $$9 = $$7.a($$6);
-         dcb $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(cpo.dX) || $$10.d(cmb.a, $$8.q($$6), ha.b))) {
-            break;
+   private boolean a(duc $$0, art $$1, gv $$2) {
+      Stream<gv> $$3 = Stream.of($$2);
+
+      for (due $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dmy<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
          }
-      }
+      });
+      return $$6.isTrue();
+   }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         gu $$11 = new gu($$2, $$6, $$3);
-         return Optional.of(new dsa.b($$11, (Consumer<dss>)($$3x -> dua.a($$0.e(), $$3x, $$1, $$11))));
-      }
+   public Stream<dmy<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   public dsj<?> e() {
-      return dsj.i;
+   public String toString() {
+      return "Placed " + this.e;
+   }
+
+   public hf<dmy<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<due> c() {
+      return this.f;
    }
 }

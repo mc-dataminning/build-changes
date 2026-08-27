@@ -1,45 +1,49 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class fvq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class fvq<T extends biw, M extends ffp<T>> extends fxa<T, M> {
+   private static final aep a = new aep("textures/entity/bee/bee_stinger.png");
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      aju.a $$3 = aju.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public fvq(ftk<T, M> $$0) {
+      super($$0);
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = aor.a($$5);
-         JsonObject $$7 = aor.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = aor.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eN();
+   }
+
+   @Override
+   protected void a(elh $$0, fng $$1, int $$2, big $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aro.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      ell $$16 = $$1.getBuffer(fno.d(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         elh.a $$18 = $$0.c();
+         Matrix4f $$19 = $$18.a();
+         Matrix3f $$20 = $$18.b();
+         a($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$19, $$20, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
+   }
 
-      return $$3.a("index-" + $$1).getPath("/");
+   private static void a(ell $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
+      $$0.a($$1, $$3, (float)$$4, 0.0F).a(255, 255, 255, 255).a($$5, $$6).c(fxx.d).b($$7).a($$2, 0.0F, 1.0F, 0.0F).e();
    }
 }

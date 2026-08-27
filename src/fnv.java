@@ -1,16 +1,61 @@
-public abstract class fnv<T extends bwv, M extends fdw<T>> extends fpp<T, M> {
-   private static final acq a = new acq("textures/entity/zombie/zombie.png");
+public class fnv implements ell {
+   private final ell a;
+   private final fyg b;
 
-   protected fnv(foy.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new fsw<>(this, $$2, $$3, $$0.g()));
+   public fnv(ell $$0, fyg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public acq a(bwv $$0) {
-      return a;
+   @Override
+   public ell a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gf();
+   @Override
+   public ell a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public ell a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public ell a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public ell b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public ell a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void k() {
+      this.a.k();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

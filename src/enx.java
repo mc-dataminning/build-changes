@@ -1,99 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class enx extends ged {
+   private static final te a = te.c("mco.client.incompatible.title");
+   private static final te[] b = new te[]{
+      te.c("mco.client.incompatible.msg.line1"), te.c("mco.client.incompatible.msg.line2"), te.c("mco.client.incompatible.msg.line3")
+   };
+   private static final te[] c = new te[]{te.c("mco.client.incompatible.msg.line1"), te.c("mco.client.incompatible.msg.line2")};
+   private final exv y;
 
-public class enx {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private enx.c b;
-   private int c;
-
-   public void a(enx.b $$0, List<ajl> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
-
-      this.b = new enx.c($$0, $$1.stream().map(ajl::a).collect(ImmutableList.toImmutableList()));
+   public enx(exv $$0) {
+      super(a);
+      this.y = $$0;
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new enx.c(enx.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new enx.a($$0);
+   @Override
+   public void aE_() {
+      this.d(esi.a(td.k, $$0 -> this.f.a(this.y)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, h(3), -65536);
+      te[] $$4 = this.B();
+
+      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+         $$0.a(this.i, $$4[$$5], this.g / 2, h(5) + $$5 * 12, -1);
+      }
+   }
+
+   private te[] B() {
+      return aa.b().g() ? c : b;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
+         return super.a($$0, $$1, $$2);
       } else {
-         this.b.d = true;
-      }
-   }
-
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
-
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final enx.b a;
-      private final List<String> b;
-      @Nullable
-      enx.a c;
-      boolean d;
-
-      c(enx.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
+         this.f.a(this.y);
+         return true;
       }
    }
 }

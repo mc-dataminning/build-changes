@@ -1,21 +1,29 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public enum djc {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public abstract class djc implements dir {
-   protected final hz f;
+   private final boolean d;
+   private final boolean e;
 
-   protected static <P extends djc> P1<Mu<P>, hz> a(Instance<P> $$0) {
-      return $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.f));
+   private djc(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected djc(hz $$0) {
-      this.f = $$0;
+   public boolean a() {
+      return this.e;
    }
 
-   public final boolean a(cng $$0, gu $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   public boolean b() {
+      return this.d;
    }
 
-   protected abstract boolean a(dcb var1);
+   public static djc a(akb $$0) {
+      if ($$0.a(akb.d)) {
+         return c;
+      } else {
+         return $$0.a(akb.b) ? b : a;
+      }
+   }
 }

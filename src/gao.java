@@ -1,29 +1,57 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class gao {
-   private final float a;
-   private final AtomicReference<gao.a> b = new AtomicReference<>();
+public class gao extends aep {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public gao(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   private gao(String $$0, String $$1, String $$2, @Nullable aep.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
    }
 
-   public void a(enf $$0, sw $$1) {
-      gao.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gao.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public gao(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public gao(aep $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gao c(String $$0, String $$1) {
+      return new gao("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gao && super.equals($$0)) {
+         gao $$1 = (gao)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
       }
    }
 
-   static class a {
-      final sw a;
-      final RateLimiter b;
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
 
-      a(sw $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

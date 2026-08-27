@@ -1,123 +1,73 @@
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cfd extends cfu {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final String b = "Fireworks";
-   public static final String c = "Explosion";
-   public static final String d = "Explosions";
-   public static final String e = "Flight";
-   public static final String f = "Type";
-   public static final String g = "Trail";
-   public static final String h = "Flicker";
-   public static final String i = "Colors";
-   public static final String j = "FadeColors";
-   public static final double k = 0.15;
+public class cfd {
+   private final List<cfd.b> a;
+   private final cfd.b b;
 
-   public cfd(cfu.a $$0) {
-      super($$0);
-   }
-
-   @Override
-   public bdx a(cij $$0) {
-      cmm $$1 = $$0.q();
-      if (!$$1.B) {
-         cfz $$2 = $$0.n();
-         eei $$3 = $$0.l();
-         ha $$4 = $$0.k();
-         bzb $$5 = new bzb($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bdx.a($$1.B);
-   }
-
-   @Override
-   public bdy<cfz> a(cmm $$0, byo $$1, bdw $$2) {
-      if ($$1.fr()) {
-         cfz $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            bzb $$4 = new bzb($$0, $$3, $$1);
-            $$0.b($$4);
-            if (!$$1.fO().d) {
-               $$3.h(1);
-            }
-
-            $$1.b(amr.c.b(this));
-         }
-
-         return bdy.a($$1.b($$2), $$0.r_());
+   cfd(List<cfd.b> $$0, cfd.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cfd.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         return bdy.c($$1.b($$2));
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   @Override
-   public void a(cfz $$0, @Nullable cmm $$1, List<sw> $$2, chq $$3) {
-      qr $$4 = $$0.b("Fireworks");
-      if ($$4 != null) {
-         if ($$4.b("Flight", 99)) {
-            $$2.add(sw.c("item.minecraft.firework_rocket.flight").b(sv.t).f(String.valueOf($$4.f("Flight"))).a(n.h));
-         }
+   public static cfd.a a() {
+      return new cfd.a();
+   }
 
-         qx $$5 = $$4.c("Explosions", 10);
-         if (!$$5.isEmpty()) {
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               qr $$7 = $$5.a($$6);
-               List<sw> $$8 = Lists.newArrayList();
-               cfe.a($$7, $$8);
-               if (!$$8.isEmpty()) {
-                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, sw.b("  ").b($$8.get($$9)).a(n.h));
-                  }
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
 
-                  $$2.addAll($$8);
-               }
-            }
-         }
+   public cfd.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cfd.b b() {
+      return this.b;
+   }
+
+   public List<cfd.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cfd.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cfd.b> a = new ArrayList<>();
+      private cfd.b b = cfd.b.e;
+
+      public cfd.a a(int $$0, int $$1, int $$2, Predicate<ciw> $$3) {
+         this.a.add(new cfd.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cfd.a a(int $$0, int $$1, int $$2) {
+         this.b = new cfd.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cfd a() {
+         return new cfd(this.a, this.b);
       }
    }
 
-   public static void a(cfz $$0, byte $$1) {
-      $$0.a("Fireworks").a("Flight", $$1);
-   }
-
-   @Override
-   public cfz ae_() {
-      cfz $$0 = new cfz(this);
-      a($$0, (byte)1);
-      return $$0;
-   }
-
-   public static enum a {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cfd.a> f = anu.a(cfd.a::a, values(), anu.a.a);
-      private final int g;
-      private final String h;
-
-      private a(int $$0, String $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public int a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static cfd.a a(int $$0) {
-         return f.apply($$0);
-      }
+   public static record b(int a, int b, int c, Predicate<ciw> d) {
+      static final cfd.b e = new cfd.b(0, 0, 0, $$0 -> true);
    }
 }

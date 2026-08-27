@@ -1,31 +1,28 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
-public class xv implements uo<ur> {
+public class xv implements uw<wo> {
    private final int a;
-   private final String b;
+   private final int b;
+   private final int c;
 
-   public xv(int $$0, @Nullable efd $$1) {
+   public xv(int $$0, int $$1, int $$2) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public xv(sf $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.s();
+   public xv(sh $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.m();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeByte(this.a);
-      $$0.a(this.b);
+   public void a(sh $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
@@ -33,8 +30,11 @@ public class xv implements uo<ur> {
       return this.a;
    }
 
-   @Nullable
-   public String c() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public int d() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

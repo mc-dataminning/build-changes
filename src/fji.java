@@ -1,21 +1,33 @@
-public class fji {
-   public static final clx a = cnk::a;
-   public static final clx b = ($$0, $$1, $$2) -> $$0.f();
-   public static final clx c = ($$0, $$1, $$2) -> $$0.i();
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   private static int a(clp $$0, gu $$1, clx $$2) {
-      return $$0.a($$1, $$2);
-   }
+public interface fji {
+   boolean a(fjj var1);
 
-   public static int a(clp $$0, gu $$1) {
-      return a($$0, $$1, a);
-   }
+   boolean a(fjk var1);
 
-   public static int b(clp $$0, gu $$1) {
-      return a($$0, $$1, b);
-   }
+   static fji a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fji() {
+         @Override
+         public boolean a(fjj $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-   public static int c(clp $$0, gu $$1) {
-      return a($$0, $$1, c);
+         @Override
+         public boolean a(fjk $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

@@ -1,38 +1,67 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fja extends ForwardingList<cfz> {
-   private final hn<cfz> a = hn.a(byn.g(), cfz.b);
+public record fja(String a, @Nullable fja.a b) {
+   public static fja a() {
+      return a(null);
+   }
 
-   protected List<cfz> delegate() {
+   public static fja a(String $$0) {
+      return a(new fja.a.b($$0));
+   }
+
+   public static fja a(emo $$0) {
+      return a(new fja.a.a($$0));
+   }
+
+   public static fja a(@Nullable fja.a $$0) {
+      return new fja(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fja.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fja.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("23w31a");
+      if (eqn.d().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
       return this.a;
    }
 
-   public qx a() {
-      qx $$0 = new qx();
-
-      for (cfz $$1 : this.delegate()) {
-         $$0.add($$1.b(new qr()));
-      }
-
-      return $$0;
+   @Nullable
+   public fja.a f() {
+      return this.b;
    }
 
-   public void a(qx $$0) {
-      List<cfz> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, cfz.a($$0.a($$2)));
-      }
-   }
-
-   public boolean isEmpty() {
-      for (cfz $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
+   public interface a {
+      public static record a(long a, int b) implements fja.a {
+         public a(emo $$0) {
+            this($$0.a, $$0.n);
          }
       }
 
-      return true;
+      public static record b(String a) implements fja.a {
+      }
    }
 }

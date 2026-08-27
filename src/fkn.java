@@ -1,61 +1,53 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class fkn {
-   private Map<dcb, fwr> a = Map.of();
-   private final fwx b;
-
-   public fkn(fwx $$0) {
-      this.b = $$0;
+public class fkn extends flw {
+   fkn(fie $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
-   public fuv a(dcb $$0) {
-      return this.b($$0).e();
+   @Override
+   public fla b() {
+      return fla.b;
    }
 
-   public fwr b(dcb $$0) {
-      fwr $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+   @Override
+   public float b(float $$0) {
+      return this.D * aro.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fkz<iz> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
       }
 
-      return $$1;
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fkn $$8 = new fkn($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   public fwx a() {
-      return this.b;
-   }
+   public static class b implements fkz<iz> {
+      private final flr a;
 
-   public void a(Map<dcb, fwr> $$0) {
-      this.a = $$0;
-   }
-
-   public static fwy c(dcb $$0) {
-      return a(jb.f.b($$0.b()), $$0);
-   }
-
-   public static fwy a(acq $$0, dcb $$1) {
-      return new fwy($$0, b($$1.C()));
-   }
-
-   public static String b(Map<dde<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dde<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dde<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+      public b(flr $$0) {
+         this.a = $$0;
       }
 
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dde<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fkn $$8 = new fkn($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

@@ -1,27 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class duv extends dvb {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class duv extends dvq {
-   public static final Codec<duv> a = dcb.b.xmap(dca.a::b, cpn::n).listOf().fieldOf("blocks").xmap(duv::new, $$0 -> $$0.e).codec();
-   public static final duv b = new duv(ImmutableList.of(cpo.pa));
-   public static final duv c = new duv(ImmutableList.of(cpo.a));
-   public static final duv d = new duv(ImmutableList.of(cpo.a, cpo.pa));
-   private final ImmutableList<cpn> e;
-
-   public duv(List<cpn> $$0) {
-      this.e = ImmutableList.copyOf($$0);
+   protected duv(dvo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, hb $$7) {
+      super($$0, 0, dvb.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   @Nullable
-   @Override
-   public dvt.c a(cmp $$0, gu $$1, gu $$2, dvt.c $$3, dvt.c $$4, dvp $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   protected duv(dvo $$0, qs $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   protected dvs<?> a() {
-      return dvs.e;
+   protected void a(dvn $$0, qs $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
+
+   protected boolean a(cpl $$0, dup $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         gv.a $$5 = new gv.a();
+
+         for (int $$6 = this.f.i(); $$6 <= this.f.l(); $$6++) {
+            for (int $$7 = this.f.g(); $$7 <= this.f.j(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dkh.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.h() + $$2, 0);
+            return true;
+         }
+      }
+   }
+
+   protected boolean a(cpl $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.aj();
+         boolean $$3 = false;
+         gv.a $$4 = new gv.a();
+
+         for (int $$5 = this.f.i(); $$5 <= this.f.l(); $$5++) {
+            for (int $$6 = this.f.g(); $$6 <= this.f.j(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dkh.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.h() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

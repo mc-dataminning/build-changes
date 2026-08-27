@@ -1,264 +1,139 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class bty {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<bqg<? extends bqf<? super btx>>> a = ImmutableList.of(bqg.c, bqg.f, bqg.d, bqg.w);
-   static final List<bpb<?>> b = ImmutableList.of(
-      bpb.n, bpb.m, bpb.E, bpb.t, bpb.Y, bpb.aQ, bpb.aR, bpb.aS, bpb.aF, bpb.aP, bpb.h, bpb.r, new bpb[]{bpb.N, bpb.O, bpb.Q}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<btx> b = new Short2ObjectOpenHashMap();
+   private final Map<hf<btz>, Set<btx>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public static ciz a() {
-      return ciz.a(cgc.uo);
-   }
-
-   protected static bha<?> a(bha<btx> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(bzz.a));
-      $$0.b(bzz.b);
-      $$0.f();
-      return $$0;
-   }
-
-   static btx b(btx $$0) {
-      $$0.dK().b(bpb.aR);
-      $$0.dK().b(bpb.aQ);
-      return $$0.a(btx.a.a);
-   }
-
-   private static void b(bha<btx> $$0) {
-      $$0.a(bzz.a, 0, ImmutableList.of(new bkk(0.8F), new bhm(2.0F) {
-         @Override
-         protected void b(aif $$0, bgi $$1, long $$2) {
-            bty.b((btx)$$1);
-            super.b($$0, $$1, $$2);
-         }
-      }, new bja(10000, 15000), new bhx(bpb.O)));
-   }
-
-   private static void c(bha<btx> $$0) {
-      $$0.a(bzz.v, ImmutableList.of(Pair.of(0, new bty.e())), Set.of(Pair.of(bpb.Y, bpc.b), Pair.of(bpb.aQ, bpc.a), Pair.of(bpb.m, bpc.a)));
-   }
-
-   private static void d(bha<btx> $$0) {
-      $$0.a(
-         bzz.z,
-         ImmutableList.of(Pair.of(0, new bty.a(160, 180)), Pair.of(0, new bty.c(40))),
-         Set.of(Pair.of(bpb.Y, bpc.b), Pair.of(bpb.m, bpc.b), Pair.of(bpb.aR, bpc.a))
-      );
-   }
-
-   private static void e(bha<btx> $$0) {
-      $$0.a(
-         bzz.b,
-         ImmutableList.of(
-            Pair.of(0, new bhl(bfn.aN, 1.0F) {
-               @Override
-               protected void a(aif $$0, brl $$1, long $$2) {
-                  bty.b((btx)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new bie($$0x -> 1.25F, $$0x -> $$0x.h_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(aif $$0, bgi $$1, long $$2) {
-                  bty.b((btx)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new biw(45, 90)),
-            Pair.of(3, new bty.b(40, 100)),
-            Pair.of(
-               4,
-               new bjn(
-                  ImmutableList.of(
-                     Pair.of(bjx.a(1.0F, 3), 2),
-                     Pair.of(new bty.d(40, 80), 1),
-                     Pair.of(new bty.f(40, 80), 1),
-                     Pair.of(bjp.a(bfn.bt, 6.0F), 1),
-                     Pair.of(bji.a(1.0F), 1),
-                     Pair.of(new bib(5, 20), 2)
+   public static Codec<bty> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     btx.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
                   )
-               )
-            )
-         ),
-         Set.of(Pair.of(bpb.aR, bpc.b))
-      );
+                  .apply($$1, bty::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new bty($$0, false, ImmutableList.of()));
    }
 
-   static void a(btx $$0) {
-      $$0.dK().a(ImmutableList.of(bzz.z, bzz.v, bzz.b));
+   public bty(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   static class a extends bhr<btx> {
-      a(int $$0, int $$1) {
-         super(Map.of(bpb.Y, bpc.b, bpb.m, bpc.b, bpb.aR, bpc.a, bpb.aF, bpc.b), $$0, $$1);
-      }
+   private bty(Runnable $$0, boolean $$1, List<btx> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
+   }
 
-      protected boolean a(aif $$0, btx $$1) {
-         return $$1.ge();
-      }
+   public Stream<btx> a(Predicate<hf<btz>> $$0, btw.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((hf<btz>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
 
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         return $$1.dK().c(bpb.aR).isPresent() && $$1.gh() && !$$1.gc();
-      }
-
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.f);
-      }
-
-      protected void c(aif $$0, btx $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.dK().a(bpb.aF, apz.a, 9600L);
-         } else {
-            bty.b($$1);
-         }
+   public void a(gv $$0, hf<btz> $$1) {
+      if (this.a(new btx($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
+         this.d.run();
       }
    }
 
-   static class b extends bhr<btx> {
-      b(int $$0, int $$1) {
-         super(Map.of(bpb.aS, bpc.a), $$0, $$1);
-      }
-
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.b);
-      }
-
-      protected void c(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.a);
-         $$1.dK().b(bpb.aS);
-      }
-   }
-
-   static class c extends bhr<btx> {
-      c(int $$0) {
-         super(Map.of(bpb.Y, bpc.b, bpb.m, bpc.b, bpb.aR, bpc.a, bpb.aF, bpc.a), $$0, $$0);
-      }
-
-      protected boolean a(aif $$0, btx $$1) {
-         return true;
-      }
-
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         return $$1.dK().c(bpb.aR).isPresent();
-      }
-
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.g);
-      }
-
-      protected void c(aif $$0, btx $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(btx.a.a).w($$3);
-         $$1.dK().b(bpb.aR);
-         $$1.dK().a(bpb.aS, true);
-      }
-   }
-
-   static class d extends bhr<btx> {
-      d(int $$0, int $$1) {
-         super(Map.of(bpb.Y, bpc.b, bpb.aR, bpc.b, bpb.aQ, bpc.b, bpb.aS, bpc.b, bpb.r, bpc.b), $$0, $$1);
-      }
-
-      protected boolean a(aif $$0, btx $$1) {
-         return !$$1.fY();
-      }
-
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.c);
-      }
-
-      protected void c(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.a);
-      }
-   }
-
-   static class e extends bhr<btx> {
-      e() {
-         super(Map.of(bpb.m, bpc.a, bpb.Y, bpc.b, bpb.aQ, bpc.a), 600);
-      }
-
-      protected boolean a(aif $$0, btx $$1) {
-         return $$1.ge();
-      }
-
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         if (!$$1.ge()) {
-            $$1.a(btx.a.a);
+   private boolean a(btx $$0) {
+      gv $$1 = $$0.f();
+      hf<btz> $$2 = $$0.g();
+      short $$3 = hy.b($$1);
+      btx $$4 = (btx)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
             return false;
-         } else {
-            Optional<gu> $$3 = $$1.dK().c(bpb.m).map(bpe::a).map(bje::b);
-            Optional<gu> $$4 = $$1.dK().c(bpb.aQ);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
-         }
-      }
-
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.e);
-      }
-
-      protected void c(aif $$0, btx $$1, long $$2) {
-         if ($$1.gh() && $$1.ge()) {
-            $$1.dK().a(bpb.aR, true);
          }
 
-         $$1.dK().b(bpb.m);
-         $$1.dK().b(bpb.aQ);
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
+   }
+
+   public void a(gv $$0) {
+      btx $$1 = (btx)this.b.remove(hy.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
       }
    }
 
-   static class f extends bhr<btx> {
-      f(int $$0, int $$1) {
-         super(Map.of(bpb.m, bpc.b, bpb.aQ, bpc.b, bpb.aF, bpc.b), $$0, $$1);
-      }
+   @Deprecated
+   @aso
+   public int b(gv $$0) {
+      return this.e($$0).map(btx::a).orElse(0);
+   }
 
-      protected boolean a(aif $$0, btx $$1) {
-         return !$$1.h_() && $$1.ge();
+   public boolean c(gv $$0) {
+      btx $$1 = (btx)this.b.get(hy.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
       }
+   }
 
-      protected boolean a(aif $$0, btx $$1, long $$2) {
-         return $$1.ge();
-      }
+   public boolean a(gv $$0, Predicate<hf<btz>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
 
-      protected void b(aif $$0, btx $$1, long $$2) {
-         $$1.a(btx.a.d);
-      }
+   public Optional<hf<btz>> d(gv $$0) {
+      return this.e($$0).map(btx::g);
+   }
 
-      protected void c(aif $$0, btx $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(btx.a.a);
-         if ($$3) {
-            $$1.gg().ifPresent($$1x -> {
-               $$1.dK().a(bpb.aQ, $$1x);
-               $$1.dK().a(bpb.m, new bpe($$1x, 1.25F, 0));
-            });
-         }
+   private Optional<btx> e(gv $$0) {
+      return Optional.ofNullable((btx)this.b.get(hy.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<gv, hf<btz>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<btx> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = hy.b($$1x);
+            btx $$4 = (btx)$$1.computeIfAbsent($$3, $$2x -> new btx($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
       }
+   }
+
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

@@ -1,20 +1,30 @@
-public class clb extends ckg {
-   public clb(ckg.a $$0, bfo... $$1) {
-      super($$0, ckh.i, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record clb(aep c, hf<cir> d, te e) {
+   public static final Codec<clb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aep.a.fieldOf("asset_id").forGetter(clb::a),
+               aem.a(jd.D).fieldOf("template_item").forGetter(clb::b),
+               aqw.b.fieldOf("description").forGetter(clb::c)
+            )
+            .apply($$0, clb::new)
+   );
+   public static final Codec<hf<clb>> b = ael.a(jd.aE, a);
+
+   public te a(hf<ckz> $$0) {
+      return this.e.e().c($$0.a().e().a());
    }
 
-   @Override
-   public int a(int $$0) {
-      return 5 + $$0 * 7;
+   public aep a() {
+      return this.c;
    }
 
-   @Override
-   public int b(int $$0) {
-      return 50;
+   public hf<cir> b() {
+      return this.d;
    }
 
-   @Override
-   public int a() {
-      return 3;
+   public te c() {
+      return this.e;
    }
 }

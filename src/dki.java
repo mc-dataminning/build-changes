@@ -1,48 +1,77 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dki extends dko<dmp> {
-   public dki(Codec<dmp> $$0) {
-      super($$0);
+public class dki implements djw {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dkj i = new dkj(this);
+
+   public dki(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public boolean a(dkq<dmp> $$0) {
-      dmp $$1 = $$0.f();
-      gu $$2 = $$0.e();
-      cng $$3 = $$0.b();
-      apf $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      gu.a $$10 = new gu.a();
-
-      for (gu $$11 : gu.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public art d() {
+      return new dki(this.g());
    }
 
-   protected boolean a(dmp $$0, cng $$1, apf $$2, int $$3, int $$4, gu.a $$5) {
-      boolean $$6 = false;
-      dcb $$7 = null;
+   @Override
+   public dku e() {
+      return new dki.a(this.g());
+   }
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dcb $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw asi.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw asi.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements dku {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
       }
 
-      return $$6;
+      @Override
+      public art a(int $$0, int $$1, int $$2) {
+         long $$3 = aro.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dki($$4);
+      }
+
+      @Override
+      public art a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dki((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

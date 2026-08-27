@@ -1,9 +1,16 @@
-public class fsc extends fnv<bwv, fdw<bwv>> {
-   public fsc(foy.a $$0) {
-      this($$0, fed.bX, fed.ca, fed.cb);
+public class fsc extends fsx {
+   public static final aep a = new aep("textures/entity/guardian_elder.png");
+
+   public fsc(fsj.a $$0) {
+      super($$0, 1.2F, fhi.P);
    }
 
-   public fsc(foy.a $$0, fec $$1, fec $$2, fec $$3) {
-      super($$0, new fdw<>($$0.a($$1)), new fdw<>($$0.a($$2)), new fdw<>($$0.a($$3)));
+   protected void a(byv $$0, elh $$1, float $$2) {
+      $$1.b(byo.b, byo.b, byo.b);
+   }
+
+   @Override
+   public aep a(byv $$0) {
+      return a;
    }
 }

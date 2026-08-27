@@ -1,50 +1,67 @@
-@FunctionalInterface
-public interface flv<T extends czn> {
-   flu<T> create(flv.a var1);
+public class flv extends flw {
+   private final gv a;
+   private final float b;
+   private final float F;
 
-   public static class a {
-      private final flt a;
-      private final fko b;
-      private final fpw c;
-      private final fow d;
-      private final fea e;
-      private final eov f;
+   public flv(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dey $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, gv.a($$1, $$2, $$3));
+   }
 
-      public a(flt $$0, fko $$1, fpw $$2, fow $$3, fea $$4, eov $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+   public flv(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dey $$7, gv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(eqn.N().am().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(csl.i)) {
+         int $$9 = eqn.N().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
 
-      public flt a() {
-         return this.a;
-      }
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
+   }
 
-      public fko b() {
-         return this.b;
-      }
+   @Override
+   public fla b() {
+      return fla.a;
+   }
 
-      public fow c() {
-         return this.d;
-      }
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
 
-      public fpw d() {
-         return this.c;
-      }
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
 
-      public fea e() {
-         return this.e;
-      }
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
 
-      public fee a(fec $$0) {
-         return this.e.a($$0);
-      }
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
 
-      public eov f() {
-         return this.f;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.A(this.a) ? fne.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements fkz<io> {
+      public fkw a(io $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dey $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(csl.bQ) && $$8.z() ? new flv($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

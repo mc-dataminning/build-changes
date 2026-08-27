@@ -1,16 +1,16 @@
 import com.google.gson.JsonObject;
 
 public abstract class ar implements am {
-   private final acq a;
+   private final aep a;
    private final ba b;
 
-   public ar(acq $$0, ba $$1) {
+   public ar(aep $$0, ba $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public acq a() {
+   public aep a() {
       return this.a;
    }
 

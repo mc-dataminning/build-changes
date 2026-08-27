@@ -1,108 +1,60 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class dop extends doq {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<dop> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(doo.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, dop::new)
-   );
-   private final doo h;
-
-   public dop(bdc $$0, dot $$1, Optional<don> $$2, doo $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+public class dop extends dnl<dqg> {
+   public dop(Codec<dqg> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(cms $$0, BiConsumer<gu, dcb> $$1, apf $$2, gu $$3, gu $$4, dno $$5) {
-      List<gu> $$6 = Lists.newArrayList();
-      gu.a $$7 = $$3.j();
+   public boolean a(dnn<dqg> $$0) {
+      cqe $$1 = $$0.b();
+      gv $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dqg $$3 = $$0.f();
+         art $$4 = $$0.d();
+         czf $$5 = czf.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
 
-         $$7.c(ha.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (ha $$8 : ha.c.a) {
-         gu $$9 = $$4.a($$8);
-         List<gu> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
+         gv $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, csl.qH.n(), 3);
          }
 
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
+         int $$12 = $$3.g().a($$4);
 
-      for (gu $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
-   }
-
-   private boolean a(cms $$0, apf $$1, gu $$2, ha $$3, gu $$4, List<gu> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (gu $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            gv $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), hb.b)) {
+               $$1.a($$14, csl.qI.n().a(cze.c, Boolean.valueOf(true)), 3);
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   protected List<gu> a(gu $$0, ha $$1, apf $$2, gu $$3) {
-      gu $$4 = $$0.d();
-      gu $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
+   private boolean a(cpl $$0, gv $$1) {
+      dey $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof cza) {
+         return true;
       } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
+         return !$$2.i() && (!$$2.a(csl.G) || !$$2.u().b()) ? false : hb.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
-   }
-
-   @Override
-   protected boolean a(cms $$0, gu $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(cms $$0, BiConsumer<gu, dcb> $$1, apf $$2, gu $$3, dno $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dcb $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected dor<?> a() {
-      return dor.a;
    }
 }

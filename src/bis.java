@@ -1,34 +1,61 @@
-import com.google.common.collect.ImmutableMap;
+public class bis {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final aea c;
+   private final adx<Integer> d;
+   private final adx<Boolean> e;
+   private boolean f;
+   private int g;
 
-public class bis extends bhr<bgb> {
-   public static final int c = 100;
-   private final bdi d;
-   private final amg e;
-
-   public bis(bdi $$0, amg $$1) {
-      super(ImmutableMap.of(bpb.n, bpc.c, bpb.S, bpc.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bis(aea $$0, adx<Integer> $$1, adx<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   protected boolean a(aif $$0, bgb $$1, long $$2) {
-      return !$$1.ay();
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   protected void b(aif $$0, bgb $$1, long $$2) {
-      $$1.p(true);
-      $$1.b(bgl.g);
-   }
-
-   protected void c(aif $$0, bgb $$1, long $$2) {
-      if ($$1.ay()) {
-         $$1.f($$1.dl().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, ami.g, 2.0F, 1.0F);
+   public boolean a(art $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.b(this.d, $$0.a(841) + 140);
+         return true;
       }
+   }
 
-      $$1.p(false);
-      $$1.b(bgl.a);
-      $$1.dK().b(bpb.S);
-      $$1.dK().a(bpb.R, this.d.a($$0.z));
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
+   }
+
+   public float c() {
+      return this.f ? 1.0F + 1.15F * aro.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.b(this.d);
+   }
+
+   public void a(qs $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(qs $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.b(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.b(this.e);
    }
 }

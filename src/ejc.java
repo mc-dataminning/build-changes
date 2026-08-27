@@ -1,288 +1,166 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public abstract class ejc<T extends ejc<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
+public class ejc {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private gck g;
 
-   public ejc(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = eja.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
+   @Nullable
+   static ejc a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return ejg.a("Allocate new source") ? null : new ejc($$0[0]);
+   }
+
+   private ejc(int $$0) {
+      this.d = $$0;
+   }
+
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         ejg.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
+
+            this.l();
+            this.g = null;
          }
 
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new ekl(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new ekl(var6.getMessage(), var6);
+         AL10.alDeleteSources(new int[]{this.d});
+         ejg.a("Cleanup");
       }
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
+   public void c() {
+      AL10.alSourcePlay(this.d);
    }
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
       }
    }
 
-   public T b(String $$0, String $$1) {
-      this.a.addRequestProperty($$0, $$1);
-      return (T)this;
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
       }
    }
 
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new ekl(var2.getMessage(), var2);
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         ejg.a("Stop");
       }
    }
 
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new ekl(var2.getMessage(), var2);
-      }
+   public boolean g() {
+      return this.k() == 4114;
    }
 
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
+   public boolean h() {
+      return this.k() == 4116;
    }
 
-   private void f() {
-      byte[] $$0 = new byte[1024];
+   public void a(ehf $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
+   }
 
-      try {
-         InputStream $$1 = this.a.getInputStream();
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
 
-         while ($$1.read($$0) > 0) {
-         }
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
 
-         $$1.close();
-         return;
-      } catch (Exception var9) {
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(ejh $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(gck $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
          try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new ejh($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
                }
-
-               $$3.close();
-               return;
             }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
       }
    }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
       }
    }
 
-   protected abstract T e();
-
-   public static ejc<?> a(String $$0) {
-      return new ejc.b($$0, 5000, 60000);
-   }
-
-   public static ejc<?> a(String $$0, int $$1, int $$2) {
-      return new ejc.b($$0, $$1, $$2);
-   }
-
-   public static ejc<?> c(String $$0, String $$1) {
-      return new ejc.c($$0, $$1, 5000, 60000);
-   }
-
-   public static ejc<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new ejc.c($$0, $$1, $$2, $$3);
-   }
-
-   public static ejc<?> b(String $$0) {
-      return new ejc.a($$0, 5000, 60000);
-   }
-
-   public static ejc<?> d(String $$0, String $$1) {
-      return new ejc.d($$0, $$1, 5000, 60000);
-   }
-
-   public static ejc<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new ejc.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends ejc<ejc.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         ejg.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         ejg.a("Remove processed buffers");
       }
 
-      public ejc.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new ekl(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends ejc<ejc.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public ejc.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new ekl(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends ejc<ejc.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public ejc.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new ekl(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends ejc<ejc.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public ejc.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new ekl(var3.getMessage(), var3);
-         }
-      }
+      return $$0;
    }
 }

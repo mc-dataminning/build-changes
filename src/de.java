@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class de extends cv<de.a> {
-   static final acq a = new acq("villager_trade");
+   static final aep a = new aep("villager_trade");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -14,8 +14,8 @@ public class de extends cv<de.a> {
       return new de.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, bxw $$1, cfz $$2) {
-      dzk $$3 = bo.b($$0, $$1);
+   public void a(akj $$0, cat $$1, ciw $$2) {
+      ech $$3 = bo.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -37,7 +37,7 @@ public class de extends cv<de.a> {
          return new de.a(bo.a($$0.b()), ba.a, bz.a);
       }
 
-      public boolean a(dzk $$0, cfz $$1) {
+      public boolean a(ech $$0, ciw $$1) {
          return !this.a.a($$0) ? false : this.b.a($$1);
       }
 

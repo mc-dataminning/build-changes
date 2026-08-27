@@ -1,64 +1,125 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.Optional;
 
-public class fnh implements fnd.a {
-   private final enn a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class fnh implements fng {
+   private final fng.a a;
+   private final fng.a b = fng.a(new elc(256));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fnh(enn $$0) {
+   public fnh(fng.a $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(eij $$0, fjx $$1, double $$2, double $$3, double $$4) {
-      cmn $$5 = this.a.s;
-      ein $$6 = $$1.getBuffer(fkf.z());
-      gu $$7 = gu.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            ddx $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dhk.a, dhk> $$11 : $$10.e()) {
-               dhk.a $$12 = $$11.getKey();
-               clt $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = hx.a($$13.e, $$15);
-                     int $$18 = hx.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fjv.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
+   public ell getBuffer(fno $$0) {
+      if ($$0.L()) {
+         ell $$1 = this.b.getBuffer($$0);
+         return new fnh.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ell $$2 = this.a.getBuffer($$0);
+         Optional<fno> $$3 = $$0.K();
+         if ($$3.isPresent()) {
+            ell $$4 = this.b.getBuffer($$3.get());
+            fnh.a $$5 = new fnh.a($$4, this.c, this.d, this.e, this.f);
+            return elo.a($$5, $$2);
+         } else {
+            return $$2;
          }
       }
    }
 
-   private Vector3f a(dhk.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends elg {
+      private final ell f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(ell $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public ell a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public ell a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public ell a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public ell a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ell b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ell a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

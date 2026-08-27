@@ -1,9 +1,8 @@
-import com.mojang.serialization.Codec;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class dvn {
-   public static final Codec<dvn> c = jb.p.q().dispatch("predicate_type", dvn::a, dvo::codec);
-
-   public abstract boolean a(dcb var1, apf var2);
-
-   protected abstract dvo<?> a();
+public record dvn(ank a, ht b, dyr c) {
+   public static dvn a(aki $$0) {
+      MinecraftServer $$1 = $$0.n();
+      return new dvn($$1.aY(), $$1.aV(), $$1.aT());
+   }
 }

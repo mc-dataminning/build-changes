@@ -61,7 +61,7 @@ public class bo {
    public static ba[] b(JsonObject $$0, String $$1, be $$2) {
       JsonElement $$3 = $$0.get($$1);
       if ($$3 != null && !$$3.isJsonNull()) {
-         JsonArray $$4 = aor.n($$3, $$1);
+         JsonArray $$4 = arf.n($$3, $$1);
          ba[] $$5 = new ba[$$4.size()];
 
          for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
@@ -75,7 +75,7 @@ public class bo {
    }
 
    private static ba a(String $$0, be $$1, @Nullable JsonElement $$2) {
-      ba $$3 = ba.a($$0, $$1, $$2, ebv.k);
+      ba $$3 = ba.a($$0, $$1, $$2, ees.k);
       if ($$3 != null) {
          return $$3;
       } else {
@@ -88,36 +88,36 @@ public class bo {
       if ($$0 == a) {
          return ba.a;
       } else {
-         eck $$1 = ecn.a(dzk.b.a, $$0).build();
-         return new ba(new eck[]{$$1});
+         efh $$1 = efk.a(ech.b.a, $$0).build();
+         return new ba(new efh[]{$$1});
       }
    }
 
-   public boolean a(aig $$0, @Nullable bfj $$1) {
-      return this.a($$0.x(), $$0.dg(), $$1);
+   public boolean a(akj $$0, @Nullable big $$1) {
+      return this.a($$0.x(), $$0.di(), $$1);
    }
 
-   public boolean a(aif $$0, @Nullable eei $$1, @Nullable bfj $$2) {
+   public boolean a(aki $$0, @Nullable ehf $$1, @Nullable big $$2) {
       if (this == a) {
          return true;
       } else if ($$2 == null) {
          return false;
-      } else if (!this.b.a($$2.ae())) {
+      } else if (!this.b.a($$2.ag())) {
          return false;
       } else {
          if ($$1 == null) {
             if (this.c != bf.a) {
                return false;
             }
-         } else if (!this.c.a($$1.c, $$1.d, $$1.e, $$2.dn(), $$2.dp(), $$2.dt())) {
+         } else if (!this.c.a($$1.c, $$1.d, $$1.e, $$2.dp(), $$2.dr(), $$2.dv())) {
             return false;
          }
 
-         if (!this.d.a($$0, $$2.dn(), $$2.dp(), $$2.dt())) {
+         if (!this.d.a($$0, $$2.dp(), $$2.dr(), $$2.dv())) {
             return false;
          } else {
             if (this.e != ch.a) {
-               eei $$3 = eei.b($$2.aF());
+               ehf $$3 = ehf.b($$2.aH());
                if (!this.e.a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -133,15 +133,15 @@ public class bo {
                return false;
             } else if (!this.j.a($$2, $$0, $$1)) {
                return false;
-            } else if (!this.k.a($$0, $$1, $$2.cW())) {
+            } else if (!this.k.a($$0, $$1, $$2.cY())) {
                return false;
-            } else if (this.l != a && $$2.cN().stream().noneMatch($$2x -> this.l.a($$0, $$1, $$2x))) {
+            } else if (this.l != a && $$2.cP().stream().noneMatch($$2x -> this.l.a($$0, $$1, $$2x))) {
                return false;
-            } else if (!this.m.a($$0, $$1, $$2 instanceof bgb ? ((bgb)$$2).j() : null)) {
+            } else if (!this.m.a($$0, $$1, $$2 instanceof biy ? ((biy)$$2).j() : null)) {
                return false;
             } else {
                if (this.n != null) {
-                  efi $$4 = $$2.cd();
+                  eig $$4 = $$2.cf();
                   if ($$4 == null || !this.n.equals($$4.b())) {
                      return false;
                   }
@@ -155,7 +155,7 @@ public class bo {
 
    public static bo a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "entity");
+         JsonObject $$1 = arf.m($$0, "entity");
          bq $$2 = bq.a($$1.get("type"));
          bf $$3 = bf.a($$1.get("distance"));
          ch $$4 = ch.a($$1.get("location"));
@@ -168,7 +168,7 @@ public class bo {
          bo $$11 = a($$1.get("vehicle"));
          bo $$12 = a($$1.get("passenger"));
          bo $$13 = a($$1.get("targeted_entity"));
-         String $$14 = aor.a($$1, "team", null);
+         String $$14 = arf.a($$1, "team", null);
          return new bo.a().a($$2).a($$3).a($$4).b($$5).a($$6).a($$7).a($$8).a($$9).a($$10).a($$14).a($$11).b($$12).c($$13).b();
       } else {
          return a;
@@ -197,9 +197,9 @@ public class bo {
       }
    }
 
-   public static dzk b(aig $$0, bfj $$1) {
-      dzq $$2 = new dzq.a($$0.x()).a(ebw.a, $$1).a(ebw.f, $$0.dg()).a(ebv.k);
-      return new dzk.a($$2).a(null);
+   public static ech b(akj $$0, big $$1) {
+      ecn $$2 = new ecn.a($$0.x()).a(eet.a, $$1).a(eet.f, $$0.di()).a(ees.k);
+      return new ech.a($$2).a(null);
    }
 
    public static class a {
@@ -237,12 +237,12 @@ public class bo {
          return new bo.a();
       }
 
-      public bo.a a(bfn<?> $$0) {
+      public bo.a a(bik<?> $$0) {
          this.a = bq.b($$0);
          return this;
       }
 
-      public bo.a a(anl<bfn<?>> $$0) {
+      public bo.a a(apy<bik<?>> $$0) {
          this.a = bq.a($$0);
          return this;
       }

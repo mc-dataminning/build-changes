@@ -2,10 +2,10 @@ import com.google.gson.JsonObject;
 import java.util.Collection;
 
 public class bu extends cv<bu.a> {
-   static final acq a = new acq("fishing_rod_hooked");
+   static final aep a = new aep("fishing_rod_hooked");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -16,8 +16,8 @@ public class bu extends cv<bu.a> {
       return new bu.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(aig $$0, cfz $$1, bzc $$2, Collection<cfz> $$3) {
-      dzk $$4 = bo.b($$0, (bfj)($$2.o() != null ? $$2.o() : $$2));
+   public void a(akj $$0, ciw $$1, cbz $$2, Collection<ciw> $$3) {
+      ech $$4 = bo.b($$0, (big)($$2.o() != null ? $$2.o() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
@@ -37,7 +37,7 @@ public class bu extends cv<bu.a> {
          return new bu.a(ba.a, $$0, bo.a($$1), $$2);
       }
 
-      public boolean a(cfz $$0, dzk $$1, Collection<cfz> $$2) {
+      public boolean a(ciw $$0, ech $$1, Collection<ciw> $$2) {
          if (!this.a.a($$0)) {
             return false;
          } else if (!this.b.a($$1)) {
@@ -45,12 +45,12 @@ public class bu extends cv<bu.a> {
          } else {
             if (this.c != bz.a) {
                boolean $$3 = false;
-               bfj $$4 = $$1.c(ebw.a);
-               if ($$4 instanceof bvh $$5 && this.c.a($$5.j())) {
+               big $$4 = $$1.c(eet.a);
+               if ($$4 instanceof bye $$5 && this.c.a($$5.j())) {
                   $$3 = true;
                }
 
-               for (cfz $$6 : $$2) {
+               for (ciw $$6 : $$2) {
                   if (this.c.a($$6)) {
                      $$3 = true;
                      break;

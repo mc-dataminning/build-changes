@@ -1,38 +1,26 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.util.Map;
 
-public class alt extends alo<GameProfile> {
-   public alt(GameProfile $$0) {
-      super($$0);
+public class alt {
+   private static final alt a = new alt(Map.of());
+   private final Map<amk<?>, ?> b;
+
+   private alt(Map<amk<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   public alt(JsonObject $$0) {
-      super(b($$0));
+   public <T> T a(amk<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-      }
+   public static alt a() {
+      return a;
    }
 
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public static <T> alt a(amk<T> $$0, T $$1) {
+      return new alt(Map.of($$0, $$1));
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   public static <T1, T2> alt a(amk<T1> $$0, T1 $$1, amk<T2> $$2, T2 $$3) {
+      return new alt(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

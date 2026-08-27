@@ -1,44 +1,136 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSyntaxException;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ebi extends eay {
-   final anl<cfr> a;
+public class ebi {
+   private final ebi.a a;
+   private final byte b;
+   private final byte c;
+   private final byte d;
+   @Nullable
+   private final te e;
 
-   ebi(eck[] $$0, anl<cfr> $$1) {
-      super($$0);
-      this.a = $$1;
+   public ebi(ebi.a $$0, byte $$1, byte $$2, byte $$3, @Nullable te $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public byte a() {
+      return this.a.a();
+   }
+
+   public ebi.a b() {
+      return this.a;
+   }
+
+   public byte c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public boolean f() {
+      return this.a.b();
+   }
+
+   @Nullable
+   public te g() {
+      return this.e;
    }
 
    @Override
-   public eba b() {
-      return ebb.z;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ebi $$1) ? false : this.a == $$1.a && this.d == $$1.d && this.b == $$1.b && this.c == $$1.c && Objects.equals(this.e, $$1.e);
+      }
    }
 
    @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      cfs.a($$0, this.a, $$1.b());
-      return $$0;
+   public int hashCode() {
+      int $$0 = this.a.a();
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + Objects.hashCode(this.e);
    }
 
-   public static eay.a<?> a(anl<cfr> $$0) {
-      return a($$1 -> new ebi($$1, $$0));
-   }
+   public static enum a {
+      a(false, true),
+      b(true, true),
+      c(false, true),
+      d(false, true),
+      e(true, false),
+      f(true, false),
+      g(false, true),
+      h(false, true),
+      i(true, 5393476, false),
+      j(true, 3830373, false),
+      k(true, true),
+      l(true, true),
+      m(true, true),
+      n(true, true),
+      o(true, true),
+      p(true, true),
+      q(true, true),
+      r(true, true),
+      s(true, true),
+      t(true, true),
+      u(true, true),
+      v(true, true),
+      w(true, true),
+      x(true, true),
+      y(true, true),
+      z(true, true),
+      A(true, false);
 
-   public static class a extends eay.c<ebi> {
-      public void a(JsonObject $$0, ebi $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("options", "#" + $$1.a.b());
+      private final byte B;
+      private final boolean C;
+      private final int D;
+      private final boolean E;
+
+      private a(boolean $$0, boolean $$1) {
+         this($$0, -1, $$1);
       }
 
-      public ebi a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         String $$3 = aor.i($$0, "options");
-         if (!$$3.startsWith("#")) {
-            throw new JsonSyntaxException("Inline tag value not supported: " + $$3);
-         } else {
-            return new ebi($$2, anl.a(jc.B, new acq($$3.substring(1))));
-         }
+      private a(boolean $$0, int $$1, boolean $$2) {
+         this.E = $$2;
+         this.B = (byte)this.ordinal();
+         this.C = $$0;
+         this.D = $$1;
+      }
+
+      public byte a() {
+         return this.B;
+      }
+
+      public boolean b() {
+         return this.C;
+      }
+
+      public boolean c() {
+         return this.D >= 0;
+      }
+
+      public int d() {
+         return this.D;
+      }
+
+      public static ebi.a a(byte $$0) {
+         return values()[aro.a($$0, 0, values().length - 1)];
+      }
+
+      public boolean e() {
+         return this.E;
       }
    }
 }

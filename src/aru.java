@@ -1,29 +1,37 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public class aru extends DataFix {
-   public aru(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class aru {
+   public static final Codec<aru> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqw.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), aqw.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, aru::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<aep> f;
+
+   private aru(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(avw.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(avw.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            if (Objects.equals($$2x, "postprocessed")) {
-               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
-            }
+   public Predicate<String> a() {
+      return this.c;
+   }
 
-            return $$0xx.set(DSL.remainderFinder(), $$1xx);
-         }));
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<aep> c() {
+      return this.f;
    }
 }

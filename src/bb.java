@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class bb extends cv<bb.a> {
-   static final acq a = new acq("cured_zombie_villager");
+   static final aep a = new aep("cured_zombie_villager");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -14,9 +14,9 @@ public class bb extends cv<bb.a> {
       return new bb.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, bwv $$1, byb $$2) {
-      dzk $$3 = bo.b($$0, $$1);
-      dzk $$4 = bo.b($$0, $$2);
+   public void a(akj $$0, bzs $$1, cay $$2) {
+      ech $$3 = bo.b($$0, $$1);
+      ech $$4 = bo.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -34,7 +34,7 @@ public class bb extends cv<bb.a> {
          return new bb.a(ba.a, ba.a, ba.a);
       }
 
-      public boolean a(dzk $$0, dzk $$1) {
+      public boolean a(ech $$0, ech $$1) {
          return !this.a.a($$0) ? false : this.b.a($$1);
       }
 

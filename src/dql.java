@@ -1,53 +1,97 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public class dql extends dqh {
+public class dql implements dpp {
    public static final Codec<dql> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               die.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               die.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               drq.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               dst.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               drq.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               drb.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               drn.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               drq.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               dqq.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               dsh.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
             )
             .apply($$0, dql::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final die d;
-   private final die e;
-   private final int f;
+   public final drq b;
+   public final drq c;
+   public final dst d;
+   public final drq e;
+   public final drb f;
+   public final Optional<drn> g;
+   public final dqq h;
+   public final List<dsh> i;
+   public final boolean j;
+   public final boolean k;
 
-   private dql(die $$0, die $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   protected dql(drq $$0, dst $$1, drq $$2, drb $$3, Optional<drn> $$4, drq $$5, dqq $$6, List<dsh> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   public static dql a(die $$0, die $$1, int $$2) {
-      return new dql($$0, $$1, $$2);
-   }
+   public static class a {
+      public final drq a;
+      private final dst c;
+      public final drq b;
+      private final drb d;
+      private final Optional<drn> e;
+      private drq f;
+      private final dqq g;
+      private List<dsh> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   @Override
-   public int a(apf $$0, dih $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = apa.a($$0, $$2 + this.f, $$3);
-         int $$5 = apa.a($$0, $$2, $$4 - 1);
-         return apa.a($$0, $$2, $$5 - 1 + this.f);
+      public a(drq $$0, dst $$1, drq $$2, drb $$3, Optional<drn> $$4, dqq $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = drq.a(csl.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
-   }
 
-   @Override
-   public dqi<?> a() {
-      return dqi.d;
-   }
+      public a(drq $$0, dst $$1, drq $$2, drb $$3, dqq $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
+      }
 
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      public dql.a a(drq $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public dql.a a(List<dsh> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public dql.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public dql.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public dql c() {
+         return new dql(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

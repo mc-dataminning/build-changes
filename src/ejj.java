@@ -1,29 +1,26 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class ejj extends ekf {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public String d;
-   public Date e;
+public interface ejj {
+   float getAdvance();
 
-   public static ejj a(JsonObject $$0) {
-      ejj $$1 = new ejj();
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
 
-      try {
-         $$1.a = emb.a("invitationId", $$0, "");
-         $$1.b = emb.a("worldName", $$0, "");
-         $$1.c = emb.a("worldOwnerName", $$0, "");
-         $$1.d = emb.a("worldOwnerUuid", $$0, "");
-         $$1.e = emb.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+   default float a() {
+      return 1.0F;
+   }
+
+   default float b() {
+      return 1.0F;
+   }
+
+   euu bake(Function<ejl, euu> var1);
+
+   public interface a extends ejj {
+      @Override
+      default euu bake(Function<ejl, euu> $$0) {
+         return euv.a;
       }
-
-      return $$1;
    }
 }

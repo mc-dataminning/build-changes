@@ -1,80 +1,60 @@
 import java.util.function.BiConsumer;
 
-public class kk implements kd {
+public class kk implements ke {
+   public static final efh.a a = eff.a(ch.a.a().a(cqp.x));
+   public static final efh.a b = eff.a(ch.a.a().a(cqp.y));
+   public static final efh.a c = eff.a(ch.a.a().a(cqp.z));
+
    @Override
-   public void generate(BiConsumer<acq, dzs.a> $$0) {
+   public void generate(BiConsumer<aep, ecp.a> $$0) {
       $$0.accept(
-         dzg.am,
-         dzs.b()
+         ecd.ai,
+         ecp.b()
             .a(
-               dzr.a()
-                  .a(edd.a(1.0F))
-                  .a(eac.a(cgc.tK).a(10))
-                  .a(eac.a(cgc.tJ).a(10))
-                  .a(eac.a(cgc.rn).a(10))
-                  .a(eac.a(cgc.oF).a(10))
-                  .a(eac.a(cgc.rp).a(10))
-                  .a(eac.a(cgc.oE).a(10))
-                  .a(eac.a(cgc.uW).a(2))
+               eco.a()
+                  .a(ega.a(1.0F))
+                  .a(edf.a(ecd.aj).a(10).b(-2))
+                  .a(edf.a(ecd.ak).a(5).b(2).a(efk.a(ech.b.a, bo.a.a().a(bt.a(true)))))
+                  .a(edf.a(ecd.al).a(85).b(-1))
             )
       );
-      $$0.accept(dzg.an, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.oO)).a(eac.a(cgc.oP)).a(eac.a(cgc.oQ)).a(eac.a(cgc.oR))));
-      $$0.accept(dzg.ao, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.tH)).a(eac.a(cgc.ro)).a(eac.a(cgc.pk)).a(eac.a(cgc.rm)).a(eac.a(cgc.tU))));
-      $$0.accept(dzg.ap, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.tp)).a(eac.a(cgc.qa))));
-      $$0.accept(dzg.aq, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.ll)).a(eac.a(cgc.nM))));
-      $$0.accept(dzg.ar, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.oJ)).a(eac.a(cgc.tz)).a(eac.a(cgc.re))));
-      $$0.accept(dzg.as, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.ql)).a(eac.a(cgc.qm))));
+      $$0.accept(ecd.al, a());
       $$0.accept(
-         dzg.at,
-         dzs.b()
+         ecd.aj,
+         ecp.b()
             .a(
-               dzr.a()
-                  .a(edd.a(1.0F))
-                  .a(eac.a(cgc.nH).a(26))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.p)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.s)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.K)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.A)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.C)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.k)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.H)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.n)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.y)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.i)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.g)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.N)))
-                  .a(eac.a(cgc.uw).a(ebj.a(edi.a(0.0F, 1.0F))).a(ebo.a(chz.E)))
+               eco.a()
+                  .a(ecz.a(csl.fm).a(17))
+                  .a(ecz.a(ciz.oN).a(10).a(eeh.a(egf.a(0.0F, 0.9F))))
+                  .a(ecz.a(ciz.pP).a(10))
+                  .a(ecz.a(ciz.qL).a(10))
+                  .a(ecz.a(ciz.rv).a(10).a(eel.a(ckw.c)))
+                  .a(ecz.a(ciz.oE).a(5))
+                  .a(ecz.a(ciz.qh).a(2).a(eeh.a(egf.a(0.0F, 0.9F))))
+                  .a(ecz.a(ciz.oC).a(10))
+                  .a(ecz.a(ciz.oB).a(5))
+                  .a(ecz.a(ciz.qr).a(1).a(eeg.a(ega.a(10.0F))))
+                  .a(ecz.a(csl.fH).a(10))
+                  .a(ecz.a(ciz.rp).a(10))
+                  .a(ecz.a(csl.mZ).a(a.or(b).or(c)).a(10))
             )
       );
-      $$0.accept(dzg.au, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.pP))));
-      $$0.accept(dzg.av, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.qb))));
-      $$0.accept(dzg.aw, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.eB))));
       $$0.accept(
-         dzg.ax,
-         dzs.b()
+         ecd.ak,
+         ecp.b()
             .a(
-               dzr.a()
-                  .a(edd.a(1.0F))
-                  .a(eac.a(cgc.cy))
-                  .a(eac.a(cgc.cz))
-                  .a(eac.a(cgc.cA))
-                  .a(eac.a(cgc.cB))
-                  .a(eac.a(cgc.cC))
-                  .a(eac.a(cgc.cD))
-                  .a(eac.a(cgc.cE))
-                  .a(eac.a(cgc.cF))
-                  .a(eac.a(cgc.cG))
-                  .a(eac.a(cgc.cH))
-                  .a(eac.a(cgc.cI))
-                  .a(eac.a(cgc.cJ))
-                  .a(eac.a(cgc.cK))
-                  .a(eac.a(cgc.cL))
-                  .a(eac.a(cgc.cM))
-                  .a(eac.a(cgc.cN))
+               eco.a()
+                  .a(ecz.a(ciz.tR))
+                  .a(ecz.a(ciz.mZ))
+                  .a(ecz.a(ciz.nG).a(eeh.a(egf.a(0.0F, 0.25F))).a(edp.a(ega.a(30.0F)).e()))
+                  .a(ecz.a(ciz.qh).a(eeh.a(egf.a(0.0F, 0.25F))).a(edp.a(ega.a(30.0F)).e()))
+                  .a(ecz.a(ciz.qb).a(edp.a(ega.a(30.0F)).e()))
+                  .a(ecz.a(ciz.uX))
             )
       );
-      $$0.accept(dzg.ay, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.oe)).a(eac.a(cgc.of)).a(eac.a(cgc.og)).a(eac.a(cgc.od))));
-      $$0.accept(dzg.az, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.of)).a(eac.a(cgc.ok)).a(eac.a(cgc.op))));
-      $$0.accept(dzg.aA, dzs.b().a(dzr.a().a(edd.a(1.0F)).a(eac.a(cgc.uo)).a(eac.a(cgc.up))));
+   }
+
+   public static ecp.a a() {
+      return ecp.b().a(eco.a().a(ecz.a(ciz.ql).a(60)).a(ecz.a(ciz.qm).a(25)).a(ecz.a(ciz.qn).a(2)).a(ecz.a(ciz.qo).a(13)));
    }
 }

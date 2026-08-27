@@ -1,52 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bcj {
-   bci a();
-
-   static <T> bcj.b<T> a(T $$0, int $$1) {
-      return new bcj.b<>($$0, bci.a($$1));
+public class bcj extends Schema {
+   public bcj(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static class a implements bcj {
-      private final bci a;
-
-      public a(int $$0) {
-         this.a = bci.a($$0);
-      }
-
-      public a(bci $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bci a() {
-         return this.a;
-      }
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> azv.a($$0));
    }
 
-   public static class b<T> implements bcj {
-      private final T a;
-      private final bci b;
-
-      b(T $$0, bci $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public T b() {
-         return this.a;
-      }
-
-      @Override
-      public bci a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bcj.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bcj.b::b), bci.a.fieldOf("weight").forGetter(bcj.b::a)).apply($$1, bcj.b::new)
-         );
-      }
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "ZombieVillager");
+      a($$0, $$1, "Husk");
+      return $$1;
    }
 }

@@ -1,98 +1,47 @@
-public class bwb extends bwl {
-   public bwb(bfn<? extends bwb> $$0, cmm $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+
+public class bwb {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
+
+   protected static bjx<?> a(bjx<bwa> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(ccw.a));
+      $$0.b(ccw.b);
+      $$0.f();
+      return $$0;
    }
 
-   public static bhf.a q() {
-      return bwc.ge().a(bhg.d, 0.2F);
+   private static void b(bjx<bwa> $$0) {
+      $$0.a(ccw.a, 0, ImmutableList.of(new bkj(2.0F), new blt(45, 90), new blx(), new bku(bry.O)));
    }
 
-   public static boolean b(bfn<bwb> $$0, cmn $$1, bgd $$2, gu $$3, apf $$4) {
-      return $$1.ai() != bdu.a;
+   private static void c(bjx<bwa> $$0) {
+      $$0.a(
+         ccw.b,
+         ImmutableList.of(
+            Pair.of(0, bmn.a(bik.bt, 6.0F, bfz.a(30, 60))),
+            Pair.of(1, new blb($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new blc(
+                  ImmutableMap.of(bry.m, brz.b),
+                  ImmutableSet.of(),
+                  blc.a.a,
+                  blc.b.b,
+                  ImmutableList.of(Pair.of(bmf.c(0.5F), 2), Pair.of(bmu.a(0.5F, 3), 3), Pair.of(boa.a(big::ba), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   public boolean a(cmp $$0) {
-      return $$0.f(this) && !$$0.d(this.cE());
-   }
-
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.a(bhg.i).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bj() {
-      return 1.0F;
-   }
-
-   @Override
-   protected it r() {
-      return iv.C;
-   }
-
-   @Override
-   public boolean bL() {
-      return false;
-   }
-
-   @Override
-   protected int w() {
-      return super.w() * 4;
-   }
-
-   @Override
-   protected void fV() {
-      this.d *= 0.9F;
-   }
-
-   @Override
-   protected void eW() {
-      eei $$0 = this.dl();
-      float $$1 = (float)this.ga() * 0.1F;
-      this.o($$0.c, (double)(this.eU() + $$1), $$0.e);
-      this.at = true;
-   }
-
-   @Override
-   protected void c(anl<dxd> $$0) {
-      if ($$0 == anb.b) {
-         eei $$1 = this.dl();
-         this.o($$1.c, (double)(0.22F + (float)this.ga() * 0.05F), $$1.e);
-         this.at = true;
-      } else {
-         super.c($$0);
-      }
-   }
-
-   @Override
-   protected boolean fW() {
-      return this.cV();
-   }
-
-   @Override
-   protected float fX() {
-      return super.fX() + 2.0F;
-   }
-
-   @Override
-   protected amg d(ben $$0) {
-      return this.gb() ? amh.mO : amh.mN;
-   }
-
-   @Override
-   protected amg g_() {
-      return this.gb() ? amh.mF : amh.mM;
-   }
-
-   @Override
-   protected amg fY() {
-      return this.gb() ? amh.mR : amh.mQ;
-   }
-
-   @Override
-   protected amg fZ() {
-      return amh.mP;
+   public static void a(bwa $$0) {
+      $$0.dM().a(ImmutableList.of(ccw.b));
    }
 }

@@ -1,9 +1,12 @@
-public interface dbd {
-   void a();
+public class dbd extends cvw {
+   public static final ehy d = csk.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
-   boolean b();
+   public dbd(dex.d $$0) {
+      super($$0, hb.b, d, false);
+   }
 
-   gu c();
-
-   String d();
+   @Override
+   protected cvx b() {
+      return (cvx)csl.oB;
+   }
 }

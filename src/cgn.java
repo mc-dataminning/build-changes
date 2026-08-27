@@ -1,40 +1,24 @@
-import com.mojang.authlib.GameProfile;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cgn extends chi {
-   public static final String c = "SkullOwner";
+public class cgn extends cir {
+   private final apy<dcb> a;
 
-   public cgn(cpn $$0, cpn $$1, cfu.a $$2) {
-      super($$0, $$1, $$2, ha.a);
+   public cgn(apy<dcb> $$0, cir.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public apy<dcb> b() {
+      return this.a;
    }
 
    @Override
-   public sw m(cfz $$0) {
-      if ($$0.a(cgc.tt) && $$0.u()) {
-         String $$1 = null;
-         qr $$2 = $$0.v();
-         if ($$2.b("SkullOwner", 8)) {
-            $$1 = $$2.l("SkullOwner");
-         } else if ($$2.b("SkullOwner", 10)) {
-            qr $$3 = $$2.p("SkullOwner");
-            if ($$3.b("Name", 8)) {
-               $$1 = $$3.l("Name");
-            }
-         }
-
-         if ($$1 != null) {
-            return sw.a(this.a() + ".named", $$1);
-         }
-      }
-
-      return super.m($$0);
+   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
+      $$2.add(this.d().a(n.h));
    }
 
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      if ($$0.b("SkullOwner", 8) && !ac.b($$0.l("SkullOwner"))) {
-         GameProfile $$1 = new GameProfile(null, $$0.l("SkullOwner"));
-         dax.a($$1, $$1x -> $$0.a("SkullOwner", rd.a(new qr(), $$1x)));
-      }
+   public tr d() {
+      return te.c(this.a() + ".desc");
    }
 }

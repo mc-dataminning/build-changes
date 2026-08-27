@@ -1,68 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cix extends ciu {
-   private static final ciz a = ciz.a(cgc.tB);
-
-   public cix(acq $$0, cis $$1) {
-      super($$0, $$1);
-   }
-
-   public boolean a(cbt $$0, cmm $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cfz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ceo) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
+public class cix {
+   private static final Strategy<? super ciw> a = new Strategy<ciw>() {
+      public int a(@Nullable ciw $$0) {
+         return cix.a($$0);
       }
 
-      return $$3 && $$2;
-   }
-
-   public cfz a(cbt $$0, hs $$1) {
-      List<Integer> $$2 = Lists.newArrayList();
-      cfz $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cfz $$5 = $$0.a($$4);
-         cfu $$6 = $$5.d();
-         if ($$6 instanceof ceo) {
-            $$2.add(((ceo)$$6).d().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
+      public boolean a(@Nullable ciw $$0, @Nullable ciw $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && ciw.c($$0, $$1);
       }
+   };
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a("Explosion").b("FadeColors", $$2);
-         return $$3;
+   static int a(@Nullable ciw $$0) {
+      if ($$0 != null) {
+         qs $$1 = $$0.v();
+         int $$2 = 31 + $$0.d().hashCode();
+         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
       } else {
-         return cfz.b;
+         return 0;
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cje<?> aj_() {
-      return cje.i;
+   public static Set<ciw> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

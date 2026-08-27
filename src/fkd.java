@@ -1,51 +1,43 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import org.joml.Vector3f;
 
-public class fkd {
-   private final fjk a = new fjk();
-   private final SortedMap<fkf, eie> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
-      $$0.put(fkj.i(), this.a.a(fkf.c()));
-      $$0.put(fkj.j(), this.a.a(fkf.e()));
-      $$0.put(fkj.a(), this.a.a(fkf.d()));
-      $$0.put(fkj.l(), this.a.a(fkf.f()));
-      a($$0, fkj.b());
-      a($$0, fkj.c());
-      a($$0, fkj.d());
-      a($$0, fkj.e());
-      a($$0, fkj.f());
-      a($$0, fkj.g());
-      a($$0, fkf.h());
-      a($$0, fkf.k());
-      a($$0, fkf.l());
-      a($$0, fkf.n());
-      a($$0, fkf.o());
-      a($$0, fkf.m());
-      a($$0, fkf.p());
-      a($$0, fkf.q());
-      a($$0, fkf.j());
-      fww.l.forEach($$1 -> a($$0, $$1));
-   });
-   private final fjx.a c = fjx.a(this.b, new eie(256));
-   private final fjx.a d = fjx.a(new eie(256));
-   private final fjy e = new fjy(this.c);
+public class fkd extends fkf<ip> {
+   private final Vector3f a;
+   private final Vector3f b;
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fkf, eie> $$0, fkf $$1) {
-      $$0.put($$1, new eie($$1.H()));
+   protected fkd(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ip $$7, flr $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
    }
 
-   public fjk a() {
-      return this.a;
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
    }
 
-   public fjx.a b() {
-      return this.c;
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
-   public fjx.a c() {
-      return this.d;
+   @Override
+   public void a(ell $$0, epy $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public fjy d() {
-      return this.e;
+   public static class a implements fkz<ip> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(ip $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

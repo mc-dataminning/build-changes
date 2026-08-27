@@ -1,19 +1,17 @@
-import com.google.gson.annotations.SerializedName;
+import java.util.OptionalInt;
 
-public class ejy extends ekf implements ejz {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
+public class ejy {
+   public final int a;
+   public final int b;
+   public final OptionalInt c;
+   public final OptionalInt d;
+   public final boolean e;
 
-   public ejy(String $$0, long $$1, int $$2, boolean $$3) {
+   public ejy(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
+      this.e = $$4;
    }
 }

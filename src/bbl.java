@@ -1,37 +1,16 @@
-import com.google.common.base.MoreObjects;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
+import java.util.function.Supplier;
 
-public record bbl(Instant a, String b, long c) {
-   private static final String d = "unknown";
-
-   public static bbl a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bbl($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+public class bbl extends azu {
+   public bbl(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static bbl.a a(List<bbl> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bbl>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bbl $$3 = (bbl)$$2x.get(0);
-            bbl $$4 = (bbl)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new bbl.a($$1);
-   }
-
-   public static record a(Map<String, Double> a) {
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:axolotl", () -> azv.a($$0));
+      return $$1;
    }
 }

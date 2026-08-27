@@ -1,15 +1,22 @@
-import javax.annotation.Nullable;
+public class dbo extends czn implements dbm {
+   private final dbm.a e;
 
-public class dbo extends dbh {
-   private final float a;
-
-   public dbo(float $$0) {
-      this.a = $$0;
+   public dbo(dbm.a $$0, dex.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
-   @Nullable
    @Override
-   protected acp<dkb<?, ?>> a(apf $$0, boolean $$1) {
-      return $$0.i() < this.a ? or.y : or.x;
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dey $$0) {
+      return dbm.c($$0.b()).isPresent();
+   }
+
+   public dbm.a g() {
+      return this.e;
    }
 }

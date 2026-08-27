@@ -1,9 +1,51 @@
-public interface edf extends dzl {
-   float b(dzk var1);
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import java.util.function.Consumer;
 
-   default int a(dzk $$0) {
-      return Math.round(this.b($$0));
+public class edf extends ede {
+   final aep i;
+
+   edf(aep $$0, int $$1, int $$2, efh[] $$3, edw[] $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.i = $$0;
    }
 
-   ede b();
+   @Override
+   public edd a() {
+      return eda.c;
+   }
+
+   @Override
+   public void a(Consumer<ciw> $$0, ech $$1) {
+      ecp $$2 = $$1.a().getLootTable(this.i);
+      $$2.a($$1, $$0);
+   }
+
+   @Override
+   public void a(ecs $$0) {
+      ecj<ecp> $$1 = new ecj<>(ecm.c, this.i);
+      if ($$0.a($$1)) {
+         $$0.a("Table " + this.i + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.i + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.i));
+      }
+   }
+
+   public static ede.a<?> a(aep $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edf($$0, $$1, $$2, $$3, $$4));
+   }
+
+   public static class a extends ede.e<edf> {
+      public void a(JsonObject $$0, edf $$1, JsonSerializationContext $$2) {
+         super.a($$0, $$1, $$2);
+         $$0.addProperty("name", $$1.i.toString());
+      }
+
+      protected edf a(JsonObject $$0, JsonDeserializationContext $$1, int $$2, int $$3, efh[] $$4, edw[] $$5) {
+         aep $$6 = new aep(arf.i($$0, "name"));
+         return new edf($$6, $$2, $$3, $$4, $$5);
+      }
+   }
 }

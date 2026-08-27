@@ -1,46 +1,59 @@
-import java.util.Optional;
+public class abz implements uw<aav> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private final float c;
+   private final float d;
+   private final boolean e;
+   private final boolean f;
 
-public interface abz<T> {
-   void a(sf var1, T var2);
-
-   T a(sf var1);
-
-   default aby<T> a(int $$0) {
-      return new aby<>($$0, this);
+   public abz(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   T a(T var1);
-
-   static <T> abz<T> a(final sf.b<T> $$0, final sf.a<T> $$1) {
-      return new abz.a<T>() {
-         @Override
-         public void a(sf $$0x, T $$1x) {
-            $$0.accept($$0, $$1);
-         }
-
-         @Override
-         public T a(sf $$0x) {
-            return $$1.apply($$0);
-         }
-      };
+   public abz(sh $$0) {
+      this.c = $$0.readFloat();
+      this.d = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) > 0;
+      this.f = ($$1 & 2) > 0;
    }
 
-   static <T> abz<Optional<T>> b(sf.b<T> $$0, sf.a<T> $$1) {
-      return a($$0.asOptional(), $$1.asOptional());
-   }
-
-   static <T extends Enum<T>> abz<T> a(Class<T> $$0) {
-      return a(sf::a, $$1 -> $$1.b($$0));
-   }
-
-   static <T> abz<T> a(hj<T> $$0) {
-      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
-   }
-
-   public interface a<T> extends abz<T> {
-      @Override
-      default T a(T $$0) {
-         return $$0;
+   @Override
+   public void a(sh $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
       }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
+   }
+
+   public void a(aav $$0) {
+      $$0.a(this);
+   }
+
+   public float a() {
+      return this.c;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

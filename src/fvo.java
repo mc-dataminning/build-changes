@@ -1,17 +1,17 @@
-import java.io.IOException;
+public class fvo extends fta<bzt, fhc<bzt>> {
+   private static final aep a = new aep("textures/entity/zombie_villager/zombie_villager.png");
 
-public class fvo extends alc<int[]> {
-   private static final acq a = new acq("textures/colormap/foliage.png");
-
-   protected int[] a(akx $$0, ban $$1) {
-      try {
-         return fvr.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   public fvo(fsj.a $$0) {
+      super($$0, new fhc<>($$0.a(fhi.cc)), 0.5F);
+      this.a(new fwh<>(this, new fhc($$0.a(fhi.cd)), new fhc($$0.a(fhi.ce)), $$0.g()));
+      this.a(new fxc<>(this, $$0.e(), "zombie_villager"));
    }
 
-   protected void a(int[] $$0, akx $$1, ban $$2) {
-      cmg.a($$0);
+   public aep a(bzt $$0) {
+      return a;
+   }
+
+   protected boolean b(bzt $$0) {
+      return super.a($$0) || $$0.gj();
    }
 }

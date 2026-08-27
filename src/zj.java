@@ -1,14 +1,24 @@
-public record zj(tm.a a) implements uo<zb> {
-   public zj(sf $$0) {
-      this(tm.a.a($$0));
+public class zj implements uw<wo> {
+   private final int a;
+
+   public zj(dgp $$0) {
+      this.a = $$0.r();
+   }
+
+   public zj(sh $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      tm.a.a($$0, this.a);
+   public void a(sh $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

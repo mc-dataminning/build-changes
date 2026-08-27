@@ -1,60 +1,61 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public abstract class fny<T extends byu> extends fox<T> {
-   public fny(foy.a $$0) {
-      super($$0);
+public class fny {
+   private Map<dey, gah> a = Map.of();
+   private final gan b;
+
+   public fny(gan $$0) {
+      this.b = $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(apa.i($$2, $$0.M, $$0.dy()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(apa.i($$2, $$0.N, $$0.dA())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -apa.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
-      }
-
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      ein $$18 = $$4.getBuffer(fkf.c(this.a($$0)));
-      eij.a $$19 = $$3.c();
-      Matrix4f $$20 = $$19.a();
-      Matrix3f $$21 = $$19.b();
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$22 = 0; $$22 < 4; $$22++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public fyg a(dey $$0) {
+      return this.b($$0).e();
    }
 
-   public void a(Matrix4f $$0, Matrix3f $$1, ein $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(fum.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
+   public gah b(dey $$0) {
+      gah $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public gan a() {
+      return this.b;
+   }
+
+   public void a(Map<dey, gah> $$0) {
+      this.a = $$0;
+   }
+
+   public static gao c(dey $$0) {
+      return a(jc.f.b($$0.b()), $$0);
+   }
+
+   public static gao a(aep $$0, dey $$1) {
+      return new gao($$0, b($$1.C()));
+   }
+
+   public static String b(Map<dgb<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dgb<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         dgb<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
+   }
+
+   private static <T extends Comparable<T>> String a(dgb<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

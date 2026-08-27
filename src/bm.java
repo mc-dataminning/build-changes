@@ -24,26 +24,26 @@ public class bm {
       this.f = $$4;
    }
 
-   public boolean a(bfj $$0) {
-      if (this.b != null && $$0.bL() != this.b) {
+   public boolean a(big $$0) {
+      if (this.b != null && $$0.bM() != this.b) {
          return false;
-      } else if (this.c != null && $$0.bU() != this.c) {
+      } else if (this.c != null && $$0.bW() != this.c) {
          return false;
-      } else if (this.d != null && $$0.bV() != this.d) {
+      } else if (this.d != null && $$0.bX() != this.d) {
          return false;
       } else {
-         return this.e != null && $$0.bW() != this.e ? false : this.f == null || !($$0 instanceof bfz) || ((bfz)$$0).h_() == this.f;
+         return this.e != null && $$0.bY() != this.e ? false : this.f == null || !($$0 instanceof biw) || ((biw)$$0).i_() == this.f;
       }
    }
 
    @Nullable
    private static Boolean a(JsonObject $$0, String $$1) {
-      return $$0.has($$1) ? aor.k($$0, $$1) : null;
+      return $$0.has($$1) ? arf.k($$0, $$1) : null;
    }
 
    public static bm a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "entity flags");
+         JsonObject $$1 = arf.m($$0, "entity flags");
          Boolean $$2 = a($$1, "is_on_fire");
          Boolean $$3 = a($$1, "is_sneaking");
          Boolean $$4 = a($$1, "is_sprinting");

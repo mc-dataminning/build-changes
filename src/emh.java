@@ -1,18 +1,30 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class emh {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class emh extends end {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
-   }
+   public static emh a(JsonObject $$0) {
+      emh $$1 = new emh();
 
-   public static void b(long $$0) {
-      a.remove($$0);
-   }
+      try {
+         $$1.a = epa.a("invitationId", $$0, "");
+         $$1.b = epa.a("worldName", $$0, "");
+         $$1.c = epa.a("worldOwnerName", $$0, "");
+         $$1.d = epa.a("worldOwnerUuid", $$0, ac.c);
+         $$1.e = epa.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+      }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+      return $$1;
    }
 }

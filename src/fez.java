@@ -1,162 +1,68 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class fez<T extends buu> extends fet<T> {
+   private final fhj a;
+   private final fhj b;
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
 
-public class fez implements du {
-   private final fex a;
-   private final enn b;
-   private int c = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
-
-   public fez(fex $$0, enn $$1) {
+   public fez(fhj $$0) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$0.b("head");
+      this.f = $$0.b("right_arm");
+      this.g = $$0.b("left_arm");
+      this.h = $$0.b("right_leg");
+      this.i = $$0.b("left_leg");
+   }
+
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("head", fho.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fhl.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         fho.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fhn(0.5F)),
+         fhl.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", fho.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fhl.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", fho.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fhl.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", fho.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fhl.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", fho.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fhl.a(5.0F, 11.0F, 0.0F));
+      return fhp.a($$0, 128, 128);
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (ffb $$1 : this.a.i()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
+   public fhj a() {
+      return this.a;
    }
 
-   @Override
-   public Collection<String> x() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.e = -1.5F * aro.e($$1, 13.0F) * $$2;
+      this.i.e = 1.5F * aro.e($$1, 13.0F) * $$2;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      int $$4 = $$0.t();
+      if ($$4 > 0) {
+         this.f.e = -2.0F + 1.5F * aro.e((float)$$4 - $$3, 10.0F);
+         this.g.e = -2.0F + 1.5F * aro.e((float)$$4 - $$3, 10.0F);
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         int $$5 = $$0.fZ();
+         if ($$5 > 0) {
+            this.f.e = -0.8F + 0.025F * aro.e((float)$$5, 70.0F);
+            this.g.e = 0.0F;
+         } else {
+            this.f.e = (-0.2F + 1.5F * aro.e($$1, 13.0F)) * $$2;
+            this.g.e = (-0.2F - 1.5F * aro.e($$1, 13.0F)) * $$2;
+         }
       }
    }
 
-   @Override
-   public Collection<String> y() {
-      return (Collection<String>)(this.b.w != null && this.b.w.c() == eeg.a.c ? Collections.singleton(((eef)this.b.w).a().cu()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.n().I().f();
-   }
-
-   @Override
-   public Stream<acq> s() {
-      return this.b.ah().b().stream();
-   }
-
-   @Override
-   public Stream<acq> t() {
-      return this.a.f().d();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      fiy $$1 = this.b.t;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(acp<? extends hr<?>> $$0, du.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.a(new zm($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<du.b> z() {
-      eeg $$0 = this.b.w;
-      if ($$0 != null && $$0.c() == eeg.a.b) {
-         gu $$1 = ((eee)$$0).a();
-         return Collections.singleton(new du.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return du.super.z();
-      }
-   }
-
-   @Override
-   public Collection<du.b> A() {
-      eeg $$0 = this.b.w;
-      if ($$0 != null && $$0.c() == eeg.a.b) {
-         eei $$1 = $$0.e();
-         return Collections.singleton(new du.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return du.super.A();
-      }
-   }
-
-   @Override
-   public Set<acp<cmm>> u() {
-      return this.a.q();
-   }
-
-   @Override
-   public hs v() {
-      return this.a.r();
-   }
-
-   @Override
-   public caw w() {
-      return this.a.t();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(vo.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
-      }
+   public fhj c() {
+      return this.f;
    }
 }

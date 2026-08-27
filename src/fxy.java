@@ -1,47 +1,39 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public interface fxy {
-   acq a();
-
+public class fxy extends fxz {
    @Nullable
-   fzd a(fzc var1);
+   private CompletableFuture<fxz.a> f;
 
-   fxv b();
-
-   ami c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   fxy.a k();
-
-   default boolean r() {
-      return false;
+   public fxy(ank $$0, aep $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> fxz.a.a($$0, $$1), $$2);
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   protected fxz.a b(ank $$0) {
+      if (this.f != null) {
+         fxz.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return fxz.a.a($$0, this.e);
+      }
    }
 
-   static apf t() {
-      return apf.a();
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void a(fyh $$0, ank $$1, aep $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> fxz.a.a($$1, this.e), ac.f());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

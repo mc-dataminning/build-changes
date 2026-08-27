@@ -1,15 +1,8 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface egm extends AutoCloseable {
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default egl a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egm {
 }

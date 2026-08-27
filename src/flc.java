@@ -1,96 +1,91 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class flc extends flw {
+   private final double a;
+   private final double b;
+   private final double F;
 
-public class flc {
-   public static final flc a = new flc(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
-
-   public flc(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
-   }
-
-   public void a(boolean $$0, eij $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
-         }
-
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
+   protected flc(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.a = this.g;
+      this.b = this.h;
+      this.F = this.i;
+      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$7 * 0.9F;
+      this.w = $$7 * 0.3F;
+      this.x = $$7;
+      this.t = (int)(Math.random() * 10.0) + 40;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
+   public fla b() {
+      return fla.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = 1.0F - $$1;
+      $$1 *= $$1;
+      $$1 = 1.0F - $$1;
+      return this.D * $$1;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         flc $$1 = (flc)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+         float $$0 = (float)this.s / (float)this.t;
+         float var3 = -$$0 + $$0 * $$0 * 2.0F;
+         float var4 = 1.0F - var3;
+         this.g = this.a + this.j * (double)var4;
+         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
+         this.i = this.F + this.l * (double)var4;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
+   public static class a implements fkz<iz> {
+      private final flr a;
 
-   protected static class a implements JsonDeserializer<flc> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public flc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(apa.a($$5.x, -5.0F, 5.0F), apa.a($$5.y, -5.0F, 5.0F), apa.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(apa.a($$6.x, -4.0F, 4.0F), apa.a($$6.y, -4.0F, 4.0F), apa.a($$6.z, -4.0F, 4.0F));
-         return new flc($$4, $$5, $$6);
+      public a(flr $$0) {
+         this.a = $$0;
       }
 
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
-         } else {
-            JsonArray $$3 = aor.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
-
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = aor.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
-
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
-            }
-         }
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flc $$8 = new flc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

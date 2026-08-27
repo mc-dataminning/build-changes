@@ -1,81 +1,18 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public interface apu {
+   apy<dux> a = a("eye_of_ender_located");
+   apy<dux> b = a("dolphin_located");
+   apy<dux> c = a("on_woodland_explorer_maps");
+   apy<dux> d = a("on_ocean_explorer_maps");
+   apy<dux> e = a("on_treasure_maps");
+   apy<dux> f = a("cats_spawn_in");
+   apy<dux> g = a("cats_spawn_as_black");
+   apy<dux> h = a("village");
+   apy<dux> i = a("mineshaft");
+   apy<dux> j = a("shipwreck");
+   apy<dux> k = a("ruined_portal");
+   apy<dux> l = a("ocean_ruin");
 
-public class apu {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile y f;
-
-   public apu(String $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
-      }
-   }
-
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            y $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
-      }
-   }
-
-   public static y a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(apu::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new y($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+   private static apy<dux> a(String $$0) {
+      return apy.a(jd.az, new aep($$0));
    }
 }

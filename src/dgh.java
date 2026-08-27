@@ -1,37 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public enum dgh implements asf {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-public class dgh implements dgp {
-   public static final Codec<dgh> a = RecordCodecBuilder.create($$0 -> $$0.group(gu.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dgh::new));
-   final gu c;
+   private final String f;
 
-   public dgh(gu $$0) {
-      this.c = $$0;
+   private dgh(String $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public Optional<eei> a(cmm $$0) {
-      return Optional.of(eei.b(this.c));
+   public String toString() {
+      return this.f;
    }
 
    @Override
-   public dgq<?> a() {
-      return dgq.a;
-   }
-
-   public static class a implements dgq<dgh> {
-      public dgh a(sf $$0) {
-         return new dgh($$0.f());
-      }
-
-      public void a(sf $$0, dgh $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<dgh> a() {
-         return dgh.a;
-      }
+   public String c() {
+      return this.f;
    }
 }

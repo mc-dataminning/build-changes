@@ -1,119 +1,125 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class bqu {
-   private static final int a = 10;
+public class bqu extends bqf {
+   private final csk g;
+   private final biy h;
+   private int i;
+   private static final int j = 20;
 
-   public static gu a(apf $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new gu($$3, $$4, $$5);
+   public bqu(csk $$0, bjf $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.h.dK().X().b(cpg.c)) {
+         return false;
+      } else if (this.c > 0) {
+         this.c--;
+         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
+      } else {
+         this.c = this.a(this.a);
+         return false;
+      }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.h.ab = 1.0F;
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.i = 0;
+   }
+
+   public void a(cpl $$0, gv $$1) {
+   }
+
+   public void a(cpk $$0, gv $$1) {
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      cpk $$0 = this.h.dK();
+      gv $$1 = this.h.dk();
+      gv $$2 = this.a($$1, $$0);
+      art $$3 = this.h.ee();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            ehf $$4 = this.h.dn();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.B) {
+               double $$5 = 0.08;
+               ((aki)$$0)
+                  .a(
+                     new is(iw.O, new ciw(ciz.qd)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
+            }
+         }
+
+         if (this.i % 2 == 0) {
+            ehf $$6 = this.h.dn();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((cpl)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.B) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((aki)$$0).a(iw.W, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
+      }
    }
 
    @Nullable
-   public static gu a(apf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = apa.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)apa.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return gu.a($$10, (double)$$12, $$11);
+   private gv a(gv $$0, coq $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
       } else {
+         gv[] $$2 = new gv[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (gv $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
          return null;
       }
    }
 
-   @VisibleForTesting
-   public static gu a(gu $$0, int $$1, Predicate<gu> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         gu $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public static gu a(gu $$0, int $$1, int $$2, Predicate<gu> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         gu $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         gu $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            gu $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
-   }
-
-   @Nullable
-   public static eei a(bgi $$0, Supplier<gu> $$1) {
-      return a($$1, $$0::h);
-   }
-
-   @Nullable
-   public static eei a(Supplier<gu> $$0, ToDoubleFunction<gu> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      gu $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         gu $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? eei.c($$3) : null;
-   }
-
-   public static gu a(bgi $$0, int $$1, apf $$2, gu $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fM() && $$1 > 1) {
-         gu $$6 = $$0.fJ();
-         if ($$0.dn() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dt() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return gu.a((double)$$4 + $$0.dn(), (double)$$3.v() + $$0.dp(), (double)$$5 + $$0.dt());
+   @Override
+   protected boolean a(cpn $$0, gv $$1) {
+      dgu $$2 = $$0.a(hy.a($$1.u()), hy.a($$1.w()), dgz.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

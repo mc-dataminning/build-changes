@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class cd extends cv<cd.a> {
-   static final acq a = new acq("levitation");
+   static final aep a = new aep("levitation");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -14,7 +14,7 @@ public class cd extends cv<cd.a> {
       return new cd.a($$1, $$3, $$4);
    }
 
-   public void a(aig $$0, eei $$1, int $$2) {
+   public void a(akj $$0, ehf $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -32,8 +32,8 @@ public class cd extends cv<cd.a> {
          return new cd.a(ba.a, $$0, cj.d.e);
       }
 
-      public boolean a(aig $$0, eei $$1, int $$2) {
-         return !this.a.a($$1.c, $$1.d, $$1.e, $$0.dn(), $$0.dp(), $$0.dt()) ? false : this.b.d($$2);
+      public boolean a(akj $$0, ehf $$1, int $$2) {
+         return !this.a.a($$1.c, $$1.d, $$1.e, $$0.dp(), $$0.dr(), $$0.dv()) ? false : this.b.d($$2);
       }
 
       @Override

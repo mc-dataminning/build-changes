@@ -1,168 +1,120 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import java.util.Set;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class eat extends eay {
-   static final Logger h = LogUtils.getLogger();
-   public static final anl<dsa> a = anh.e;
-   public static final String b = "mansion";
-   public static final dyl.a c = dyl.a.i;
-   public static final byte d = 2;
-   public static final int e = 50;
-   public static final boolean f = true;
-   final anl<dsa> i;
-   final dyl.a j;
-   final byte k;
-   final int l;
-   final boolean m;
+public class eat extends eap {
+   private final boolean k;
+   private final Long2ObjectMap<eam> l = new Long2ObjectOpenHashMap();
 
-   eat(eck[] $$0, anl<dsa> $$1, dyl.a $$2, byte $$3, int $$4, boolean $$5) {
-      super($$0);
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
-      this.l = $$4;
-      this.m = $$5;
+   public eat(boolean $$0) {
+      this.k = $$0;
    }
 
    @Override
-   public eba b() {
-      return ebb.l;
+   public void a(cpx $$0, biy $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
    @Override
-   public Set<ebt<?>> a() {
-      return ImmutableSet.of(ebw.f);
+   public void b() {
+      super.b();
+      this.l.clear();
    }
 
    @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      if (!$$0.a(cgc.tp)) {
-         return $$0;
-      } else {
-         eei $$2 = $$1.c(ebw.f);
-         if ($$2 != null) {
-            aif $$3 = $$1.d();
-            gu $$4 = $$3.a(this.i, gu.a($$2), this.l, this.m);
-            if ($$4 != null) {
-               cfz $$5 = cgg.a($$3, $$4.u(), $$4.w(), this.k, true, true);
-               cgg.a($$3, $$5);
-               dyo.a($$5, $$4, "+", this.j);
-               return $$5;
+   public eao a() {
+      return this.b(aro.a(this.b.cG().a), aro.a(this.b.cG().b + 0.5), aro.a(this.b.cG().c));
+   }
+
+   @Override
+   public eau a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(aro.a($$0), aro.a($$1), aro.a($$2)));
+   }
+
+   @Override
+   public int a(eao[] $$0, eao $$1) {
+      int $$2 = 0;
+      Map<hb, eao> $$3 = Maps.newEnumMap(hb.class);
+
+      for (hb $$4 : hb.values()) {
+         eao $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.b($$5)) {
+            $$0[$$2++] = $$5;
+         }
+      }
+
+      for (hb $$6 : hb.c.a) {
+         hb $$7 = $$6.h();
+         eao $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
+            $$0[$$2++] = $$8;
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean b(@Nullable eao $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   protected boolean a(@Nullable eao $$0, @Nullable eao $$1, @Nullable eao $$2) {
+      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
+   }
+
+   @Nullable
+   protected eao a(int $$0, int $$1, int $$2) {
+      eao $$3 = null;
+      eam $$4 = this.c($$0, $$1, $$2);
+      if (this.k && $$4 == eam.u || $$4 == eam.j) {
+         float $$5 = this.b.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.b($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.a.b_(new gv($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
             }
          }
-
-         return $$0;
       }
+
+      return $$3;
    }
 
-   public static eat.a c() {
-      return new eat.a();
+   protected eam c(int $$0, int $$1, int $$2) {
+      return (eam)this.l.computeIfAbsent(gv.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
    }
 
-   public static class a extends eay.a<eat.a> {
-      private anl<dsa> a;
-      private dyl.a b;
-      private byte c;
-      private int d;
-      private boolean e;
-
-      public a() {
-         this.a = eat.a;
-         this.b = eat.c;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
-
-      protected eat.a a() {
-         return this;
-      }
-
-      public eat.a a(anl<dsa> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eat.a a(dyl.a $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eat.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eat.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eat.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      @Override
-      public eaz b() {
-         return new eat(this.g(), this.a, this.b, this.c, this.d, this.e);
-      }
+   @Override
+   public eam a(coq $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.b);
    }
 
-   public static class b extends eay.c<eat> {
-      public void a(JsonObject $$0, eat $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         if (!$$1.i.equals(eat.a)) {
-            $$0.addProperty("destination", $$1.i.b().toString());
-         }
+   @Override
+   public eam a(coq $$0, int $$1, int $$2, int $$3, biy $$4) {
+      gv.a $$5 = new gv.a();
 
-         if ($$1.j != eat.c) {
-            $$0.add("decoration", $$2.serialize($$1.j.toString().toLowerCase(Locale.ROOT)));
-         }
+      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
+               eab $$9 = $$0.b_($$5.d($$6, $$7, $$8));
+               dey $$10 = $$0.a_($$5.d($$6, $$7, $$8));
+               if ($$9.c() && $$10.a($$0, $$5.d(), ear.b) && $$10.i()) {
+                  return eam.u;
+               }
 
-         if ($$1.k != 2) {
-            $$0.addProperty("zoom", $$1.k);
-         }
-
-         if ($$1.l != 50) {
-            $$0.addProperty("search_radius", $$1.l);
-         }
-
-         if (!$$1.m) {
-            $$0.addProperty("skip_existing_chunks", $$1.m);
+               if (!$$9.a(apo.a)) {
+                  return eam.a;
+               }
+            }
          }
       }
 
-      public eat a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         anl<dsa> $$3 = a($$0);
-         String $$4 = $$0.has("decoration") ? aor.i($$0, "decoration") : "mansion";
-         dyl.a $$5 = eat.c;
-
-         try {
-            $$5 = dyl.a.valueOf($$4.toUpperCase(Locale.ROOT));
-         } catch (IllegalArgumentException var10) {
-            eat.h.error("Error while parsing loot table decoration entry. Found {}. Defaulting to {}", $$4, eat.c);
-         }
-
-         byte $$7 = aor.a($$0, "zoom", (byte)2);
-         int $$8 = aor.a($$0, "search_radius", 50);
-         boolean $$9 = aor.a($$0, "skip_existing_chunks", true);
-         return new eat($$2, $$3, $$5, $$7, $$8, $$9);
-      }
-
-      private static anl<dsa> a(JsonObject $$0) {
-         if ($$0.has("destination")) {
-            String $$1 = aor.i($$0, "destination");
-            return anl.a(jc.az, new acq($$1));
-         } else {
-            return eat.a;
-         }
-      }
+      dey $$11 = $$0.a_($$5);
+      return $$11.a($$0, $$5, ear.b) ? eam.j : eam.a;
    }
 }

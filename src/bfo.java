@@ -1,69 +1,64 @@
-public enum bfo {
-   a(bfo.a.a, 0, 0, "mainhand"),
-   b(bfo.a.a, 1, 5, "offhand"),
-   c(bfo.a.b, 0, 1, "feet"),
-   d(bfo.a.b, 1, 2, "legs"),
-   e(bfo.a.b, 2, 3, "chest"),
-   f(bfo.a.b, 3, 4, "head");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private final bfo.a g;
+public class bfo extends bft {
+   public static final Codec<bfo> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bfo::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float f;
+   private final int g;
    private final int h;
-   private final int i;
-   private final String j;
 
-   private bfo(bfo.a $$0, int $$1, int $$2, String $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
+   public static bfo a(float $$0, float $$1, int $$2, int $$3) {
+      return new bfo($$0, $$1, $$2, $$3);
    }
 
-   public bfo.a a() {
+   private bfo(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+   }
+
+   @Override
+   public int a(art $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
+
+   public static int a(art $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)aro.a(aro.c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   @Override
+   public int a() {
       return this.g;
    }
 
+   @Override
    public int b() {
       return this.h;
    }
 
-   public int a(int $$0) {
-      return $$0 + this.h;
+   @Override
+   public bfu<?> c() {
+      return bfu.f;
    }
 
-   public int c() {
-      return this.i;
-   }
-
-   public String d() {
-      return this.j;
-   }
-
-   public boolean e() {
-      return this.g == bfo.a.b;
-   }
-
-   public static bfo a(String $$0) {
-      for (bfo $$1 : values()) {
-         if ($$1.d().equals($$0)) {
-            return $$1;
-         }
-      }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
-   }
-
-   public static bfo a(bfo.a $$0, int $$1) {
-      for (bfo $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
-         }
-      }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

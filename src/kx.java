@@ -1,339 +1,78 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Collections;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
-public abstract class kx {
-   private final Map<ky, List<kz>> a = Maps.newHashMap();
+public class kx implements ku {
+   private final csk a;
+   private final List<la> b;
+   private final Set<dgb<?>> c = Sets.newHashSet();
+   private final List<ky> d = Lists.newArrayList();
 
-   protected void a(ky $$0, List<kz> $$1) {
-      List<kz> $$2 = this.a.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Value " + $$0 + " is already defined");
-      }
+   private kx(csk $$0, List<la> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   Map<ky, List<kz>> a() {
-      this.c();
-      return ImmutableMap.copyOf(this.a);
+   public kx a(ky $$0) {
+      $$0.b().forEach($$0x -> {
+         if (this.a.l().a($$0x.f()) != $$0x) {
+            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
+         } else if (!this.c.add($$0x)) {
+            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
+         }
+      });
+      this.d.add($$0);
+      return this;
    }
 
-   private void c() {
-      List<dde<?>> $$0 = this.b();
-      Stream<ky> $$1 = Stream.of(ky.a());
+   public JsonElement b() {
+      Stream<Pair<kz, List<la>>> $$0 = Stream.of(Pair.of(kz.a(), this.b));
 
-      for (dde<?> $$2 : $$0) {
-         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
+      for (ky $$1 : this.d) {
+         Map<kz, List<la>> $$2 = $$1.a();
+         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
+               kz $$2x = ((kz)$$1.getFirst()).a((kz)$$1xx.getKey());
+               List<la> $$3 = a((List<la>)$$1.getSecond(), (List<la>)$$1xx.getValue());
+               return Pair.of($$2x, $$3);
+            }));
       }
 
-      List<ky> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         throw new IllegalStateException("Missing definition for properties: " + $$3);
-      }
+      Map<String, JsonElement> $$3 = new TreeMap<>();
+      $$0.forEach($$1 -> $$3.put(((kz)$$1.getFirst()).b(), la.a((List<la>)$$1.getSecond())));
+      JsonObject $$4 = new JsonObject();
+      $$4.add("variants", ac.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
+      return $$4;
    }
 
-   abstract List<dde<?>> b();
-
-   public static <T1 extends Comparable<T1>> kx.a<T1> a(dde<T1> $$0) {
-      return new kx.a<>($$0);
+   private static List<la> a(List<la> $$0, List<la> $$1) {
+      Builder<la> $$2 = ImmutableList.builder();
+      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(la.a($$2x, $$2xx))));
+      return $$2.build();
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> kx.b<T1, T2> a(dde<T1> $$0, dde<T2> $$1) {
-      return new kx.b<>($$0, $$1);
+   @Override
+   public csk a() {
+      return this.a;
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> kx.c<T1, T2, T3> a(dde<T1> $$0, dde<T2> $$1, dde<T3> $$2) {
-      return new kx.c<>($$0, $$1, $$2);
+   public static kx a(csk $$0) {
+      return new kx($$0, ImmutableList.of(la.a()));
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> kx.d<T1, T2, T3, T4> a(
-      dde<T1> $$0, dde<T2> $$1, dde<T3> $$2, dde<T4> $$3
-   ) {
-      return new kx.d<>($$0, $$1, $$2, $$3);
+   public static kx a(csk $$0, la $$1) {
+      return new kx($$0, ImmutableList.of($$1));
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> kx.e<T1, T2, T3, T4, T5> a(
-      dde<T1> $$0, dde<T2> $$1, dde<T3> $$2, dde<T4> $$3, dde<T5> $$4
-   ) {
-      return new kx.e<>($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static class a<T1 extends Comparable<T1>> extends kx {
-      private final dde<T1> a;
-
-      a(dde<T1> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public List<dde<?>> b() {
-         return ImmutableList.of(this.a);
-      }
-
-      public kx.a<T1> a(T1 $$0, List<kz> $$1) {
-         ky $$2 = ky.a(this.a.b($$0));
-         this.a($$2, $$1);
-         return this;
-      }
-
-      public kx.a<T1> a(T1 $$0, kz $$1) {
-         return this.a($$0, Collections.singletonList($$1));
-      }
-
-      public kx a(Function<T1, kz> $$0) {
-         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
-         return this;
-      }
-
-      public kx b(Function<T1, List<kz>> $$0) {
-         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
-         return this;
-      }
-   }
-
-   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends kx {
-      private final dde<T1> a;
-      private final dde<T2> b;
-
-      b(dde<T1> $$0, dde<T2> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public List<dde<?>> b() {
-         return ImmutableList.of(this.a, this.b);
-      }
-
-      public kx.b<T1, T2> a(T1 $$0, T2 $$1, List<kz> $$2) {
-         ky $$3 = ky.a(this.a.b($$0), this.b.b($$1));
-         this.a($$3, $$2);
-         return this;
-      }
-
-      public kx.b<T1, T2> a(T1 $$0, T2 $$1, kz $$2) {
-         return this.a($$0, $$1, Collections.singletonList($$2));
-      }
-
-      public kx a(BiFunction<T1, T2, kz> $$0) {
-         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
-         return this;
-      }
-
-      public kx b(BiFunction<T1, T2, List<kz>> $$0) {
-         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
-         return this;
-      }
-   }
-
-   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends kx {
-      private final dde<T1> a;
-      private final dde<T2> b;
-      private final dde<T3> c;
-
-      c(dde<T1> $$0, dde<T2> $$1, dde<T3> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public List<dde<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c);
-      }
-
-      public kx.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<kz> $$3) {
-         ky $$4 = ky.a(this.a.b($$0), this.b.b($$1), this.c.b($$2));
-         this.a($$4, $$3);
-         return this;
-      }
-
-      public kx.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, kz $$3) {
-         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
-      }
-
-      public kx a(kx.h<T1, T2, T3, kz> $$0) {
-         this.a
-            .a()
-            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
-         return this;
-      }
-
-      public kx b(kx.h<T1, T2, T3, List<kz>> $$0) {
-         this.a
-            .a()
-            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
-         return this;
-      }
-   }
-
-   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends kx {
-      private final dde<T1> a;
-      private final dde<T2> b;
-      private final dde<T3> c;
-      private final dde<T4> d;
-
-      d(dde<T1> $$0, dde<T2> $$1, dde<T3> $$2, dde<T4> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public List<dde<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c, this.d);
-      }
-
-      public kx.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<kz> $$4) {
-         ky $$5 = ky.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3));
-         this.a($$5, $$4);
-         return this;
-      }
-
-      public kx.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, kz $$4) {
-         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
-      }
-
-      public kx a(kx.g<T1, T2, T3, T4, kz> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
-                              )
-                     )
-            );
-         return this;
-      }
-
-      public kx b(kx.g<T1, T2, T3, T4, List<kz>> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
-                              )
-                     )
-            );
-         return this;
-      }
-   }
-
-   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
-      extends kx {
-      private final dde<T1> a;
-      private final dde<T2> b;
-      private final dde<T3> c;
-      private final dde<T4> d;
-      private final dde<T5> e;
-
-      e(dde<T1> $$0, dde<T2> $$1, dde<T3> $$2, dde<T4> $$3, dde<T5> $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      @Override
-      public List<dde<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
-      }
-
-      public kx.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<kz> $$5) {
-         ky $$6 = ky.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3), this.e.b($$4));
-         this.a($$6, $$5);
-         return this;
-      }
-
-      public kx.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, kz $$5) {
-         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
-      }
-
-      public kx a(kx.f<T1, T2, T3, T4, T5, kz> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d
-                                       .a()
-                                       .forEach(
-                                          $$4 -> this.e
-                                                .a()
-                                                .forEach(
-                                                   $$5 -> this.a(
-                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
-                                                      )
-                                                )
-                                       )
-                              )
-                     )
-            );
-         return this;
-      }
-
-      public kx b(kx.f<T1, T2, T3, T4, T5, List<kz>> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d
-                                       .a()
-                                       .forEach(
-                                          $$4 -> this.e
-                                                .a()
-                                                .forEach(
-                                                   $$5 -> this.a(
-                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
-                                                      )
-                                                )
-                                       )
-                              )
-                     )
-            );
-         return this;
-      }
-   }
-
-   @FunctionalInterface
-   public interface f<P1, P2, P3, P4, P5, R> {
-      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
-   }
-
-   @FunctionalInterface
-   public interface g<P1, P2, P3, P4, R> {
-      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
-   }
-
-   @FunctionalInterface
-   public interface h<P1, P2, P3, R> {
-      R apply(P1 var1, P2 var2, P3 var3);
+   public static kx a(csk $$0, la... $$1) {
+      return new kx($$0, ImmutableList.copyOf($$1));
    }
 }

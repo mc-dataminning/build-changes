@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlv extends dko<dnk> {
-   public dlv(Codec<dnk> $$0) {
+class dlv extends dlz {
+   private final hj<eaa> e;
+   public static final Codec<dlv> a = RecordCodecBuilder.create($$0 -> a($$0).and(hu.a(jd.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dlv::new));
+
+   public dlv(ia $$0, hj<eaa> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(dkq<dnk> $$0) {
-      dnk $$1 = $$0.f();
-      cng $$2 = $$0.b();
-      gu $$3 = $$0.e();
-      dcb $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof crr) {
-            if (!$$2.t($$3.c())) {
-               return false;
-            }
+   protected boolean a(dey $$0) {
+      return $$0.u().a(this.e);
+   }
 
-            crr.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public dlp<?> a() {
+      return dlp.c;
    }
 }

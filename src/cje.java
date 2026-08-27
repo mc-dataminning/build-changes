@@ -1,37 +1,40 @@
-import com.google.gson.JsonObject;
+public class cje extends cir {
+   private static final int a = 32;
 
-public interface cje<T extends cjc<?>> {
-   cje<cjh> a = a("crafting_shaped", new cjh.a());
-   cje<cji> b = a("crafting_shapeless", new cji.a());
-   cje<cim> c = a("crafting_special_armordye", new cjm<>(cim::new));
-   cje<cip> d = a("crafting_special_bookcloning", new cjm<>(cip::new));
-   cje<cja> e = a("crafting_special_mapcloning", new cjm<>(cja::new));
-   cje<cjb> f = a("crafting_special_mapextending", new cjm<>(cjb::new));
-   cje<ciw> g = a("crafting_special_firework_rocket", new cjm<>(ciw::new));
-   cje<ciy> h = a("crafting_special_firework_star", new cjm<>(ciy::new));
-   cje<cix> i = a("crafting_special_firework_star_fade", new cjm<>(cix::new));
-   cje<cjv> j = a("crafting_special_tippedarrow", new cjm<>(cjv::new));
-   cje<cin> k = a("crafting_special_bannerduplicate", new cjm<>(cin::new));
-   cje<cjj> l = a("crafting_special_shielddecoration", new cjm<>(cjj::new));
-   cje<cjk> m = a("crafting_special_shulkerboxcoloring", new cjm<>(cjk::new));
-   cje<cju> n = a("crafting_special_suspiciousstew", new cjm<>(cju::new));
-   cje<cjg> o = a("crafting_special_repairitem", new cjm<>(cjg::new));
-   cje<cjo> p = a("smelting", new cjl<>(cjo::new, 200));
-   cje<cio> q = a("blasting", new cjl<>(cio::new, 100));
-   cje<cjs> r = a("smoking", new cjl<>(cjs::new, 100));
-   cje<ciq> s = a("campfire_cooking", new cjl<>(ciq::new, 100));
-   cje<cjt> t = a("stonecutting", new cjn.a<>(cjt::new));
-   cje<cjq> u = a("smithing_transform", new cjq.a());
-   cje<cjr> v = a("smithing_trim", new cjr.a());
-   cje<civ> w = a("crafting_decorated_pot", new cjm<>(civ::new));
+   public cje(cir.a $$0) {
+      super($$0);
+   }
 
-   T a(acq var1, JsonObject var2);
+   @Override
+   public ciw a(ciw $$0, cpk $$1, biw $$2) {
+      if ($$2 instanceof akj $$3) {
+         ai.z.a($$3, $$0);
+         $$3.b(ape.c.b(this));
+      }
 
-   T a(acq var1, sf var2);
+      if ($$2 instanceof cbl && !((cbl)$$2).fR().d) {
+         $$0.h(1);
+      }
 
-   void a(sf var1, T var2);
+      if (!$$1.B) {
+         $$2.ep();
+      }
 
-   static <S extends cje<T>, T extends cjc<?>> S a(String $$0, S $$1) {
-      return hr.a(jb.u, $$0, $$1);
+      return $$0.b() ? new ciw(ciz.pK) : $$0;
+   }
+
+   @Override
+   public int b(ciw $$0) {
+      return 32;
+   }
+
+   @Override
+   public ckp c(ciw $$0) {
+      return ckp.c;
+   }
+
+   @Override
+   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
+      return ciy.a($$0, $$1, $$2);
    }
 }

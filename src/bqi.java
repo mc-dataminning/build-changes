@@ -1,28 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bqi extends bqf<bfz> {
-   @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.i);
+public class bqi extends bps {
+   private final biy a;
+   private biw b;
+   private int c;
+
+   public bqi(biy $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bps.a.a, bps.a.b));
    }
 
    @Override
-   protected void a(aif $$0, bfz $$1) {
-      $$1.dK().a(bpb.i, this.a($$1));
+   public boolean a() {
+      biw $$0 = this.a.j();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
-   private List<bfz> a(bfz $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   public boolean b() {
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.H().l() || this.a();
+      }
    }
 
-   private boolean b(bfz $$0) {
-      return $$0.ae() == bfn.bf && $$0.h_();
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.H().n();
    }
 
-   private bpd c(bfz $$0) {
-      return $$0.dK().c(bpb.h).orElse(bpd.a());
+   @Override
+   public boolean K_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.a.D().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
+      double $$1 = this.a.i(this.b.dp(), this.b.dr(), this.b.dv());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.H().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

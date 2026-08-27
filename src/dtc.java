@@ -1,102 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class dtc {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final dtj.a e;
+public class dtc extends dte {
+   public static final Codec<dtc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dlb.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dlb.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dtc::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dlb d;
+   private final dlb e;
+   private final int f;
 
-   public dtc(int $$0, int $$1, int $$2, int $$3, dtj.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private dtc(dlb $$0, dlb $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public dtj.a e() {
-      return this.e;
-   }
-
-   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      Builder<T, T> $$1 = ImmutableMap.builder();
-      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
-         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
-         .put($$0.createString("source_z"), $$0.createInt(this.c))
-         .put($$0.createString("delta_y"), $$0.createInt(this.d))
-         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
-      return new Dynamic($$0, $$0.createMap($$1.build()));
-   }
-
-   public static <T> dtc a(Dynamic<T> $$0) {
-      return new dtc(
-         $$0.get("source_x").asInt(0),
-         $$0.get("source_ground_y").asInt(0),
-         $$0.get("source_z").asInt(0),
-         $$0.get("delta_y").asInt(0),
-         dtj.a.a($$0.get("dest_proj").asString(""))
-      );
+   public static dtc a(dlb $$0, dlb $$1, int $$2) {
+      return new dtc($$0, $$1, $$2);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dtc $$1 = (dtc)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.d != $$1.d ? false : this.e == $$1.e;
-         }
+   public int a(art $$0, dle $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
       } else {
-         return false;
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.a;
-      $$0 = 31 * $$0 + this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      return 31 * $$0 + this.e.hashCode();
+   public dtf<?> a() {
+      return dtf.c;
    }
 
    @Override
    public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.a
-         + ", sourceGroundY="
-         + this.b
-         + ", sourceZ="
-         + this.c
-         + ", deltaY="
-         + this.d
-         + ", destProjection="
-         + this.e
-         + "}";
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

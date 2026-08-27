@@ -1,3 +1,29 @@
-public interface ewt<T extends cbf> {
-   T C();
+public class ewt extends exv {
+   private etb a;
+   private final Runnable b;
+
+   public ewt(Runnable $$0) {
+      super(te.c("datapackFailure.title"));
+      this.a = etb.a;
+      this.b = $$0;
+   }
+
+   @Override
+   protected void aE_() {
+      super.aE_();
+      this.a = etb.a(this.i, this.m(), this.g - 50);
+      this.d(esi.a(te.c("datapackFailure.safeMode"), $$0 -> this.b.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
+      this.d(esi.a(td.l, $$0 -> this.f.a(null)).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.g / 2, 70);
+   }
+
+   @Override
+   public boolean aA_() {
+      return false;
+   }
 }

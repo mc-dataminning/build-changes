@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@egb
+@eiz
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -30,7 +30,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(ehn $$0) {
+   public static int _getRefreshRate(ekl $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
       if ($$1 == 0L) {
@@ -48,7 +48,7 @@ public class GLX {
 
    public static LongSupplier _initGlfw() {
       RenderSystem.assertInInitPhase();
-      ehn.a(($$0x, $$1x) -> {
+      ekl.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -75,7 +75,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(ehn $$0) {
+   public static boolean _shouldClose(ekl $$0) {
       return GLFW.glfwWindowShouldClose($$0.i());
    }
 
@@ -88,7 +88,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      ehb.a($$0, $$1);
+      ejz.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -99,11 +99,11 @@ public class GLX {
       RenderSystem.assertOnRenderThread();
       GlStateManager._depthMask(false);
       GlStateManager._disableCull();
-      RenderSystem.setShader(fjq::aq);
-      eil $$4 = RenderSystem.renderThreadTesselator();
-      eie $$5 = $$4.c();
+      RenderSystem.setShader(fmz::aq);
+      elj $$4 = RenderSystem.renderThreadTesselator();
+      elc $$5 = $$4.c();
       RenderSystem.lineWidth(4.0F);
-      $$5.a(eio.b.a, eih.o);
+      $$5.a(elm.b.a, elf.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
@@ -121,7 +121,7 @@ public class GLX {
 
       $$4.b();
       RenderSystem.lineWidth(2.0F);
-      $$5.a(eio.b.a, eih.o);
+      $$5.a(elm.b.a, elf.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();

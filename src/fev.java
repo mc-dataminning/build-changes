@@ -1,144 +1,197 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
-public class fev implements abe {
-   private static final Logger a = LogUtils.getLogger();
-   private final enn b;
-   @Nullable
-   private final ffd c;
-   @Nullable
-   private final euq d;
-   private final Consumer<sw> e;
-   private final sd f;
-   private GameProfile g;
-   private final boolean h;
-   @Nullable
-   private final Duration i;
-   @Nullable
-   private String j;
+public class fev<T extends bwh> extends fdi<T> {
+   private static final float g = 2.1816616F;
+   private static final float h = (float) (Math.PI / 3);
+   private static final float i = (float) (Math.PI / 4);
+   private static final float j = (float) (Math.PI / 6);
+   private static final float k = (float) (Math.PI / 12);
+   protected static final String a = "head_parts";
+   private static final String l = "left_hind_baby_leg";
+   private static final String m = "right_hind_baby_leg";
+   private static final String n = "left_front_baby_leg";
+   private static final String o = "right_front_baby_leg";
+   private static final String p = "saddle";
+   private static final String q = "left_saddle_mouth";
+   private static final String r = "left_saddle_line";
+   private static final String s = "right_saddle_mouth";
+   private static final String t = "right_saddle_line";
+   private static final String u = "head_saddle";
+   private static final String w = "mouth_saddle_wrap";
+   protected final fhj b;
+   protected final fhj f;
+   private final fhj x;
+   private final fhj y;
+   private final fhj z;
+   private final fhj A;
+   private final fhj B;
+   private final fhj C;
+   private final fhj D;
+   private final fhj E;
+   private final fhj F;
+   private final fhj[] G;
+   private final fhj[] H;
 
-   public fev(sd $$0, enn $$1, @Nullable ffd $$2, @Nullable euq $$3, boolean $$4, @Nullable Duration $$5, Consumer<sw> $$6) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.h = $$4;
-      this.i = $$5;
+   public fev(fhj $$0) {
+      super(true, 16.2F, 1.36F, 2.7272F, 2.0F, 20.0F);
+      this.b = $$0.b("body");
+      this.f = $$0.b("head_parts");
+      this.x = $$0.b("right_hind_leg");
+      this.y = $$0.b("left_hind_leg");
+      this.z = $$0.b("right_front_leg");
+      this.A = $$0.b("left_front_leg");
+      this.B = $$0.b("right_hind_baby_leg");
+      this.C = $$0.b("left_hind_baby_leg");
+      this.D = $$0.b("right_front_baby_leg");
+      this.E = $$0.b("left_front_baby_leg");
+      this.F = this.b.b("tail");
+      fhj $$1 = this.b.b("saddle");
+      fhj $$2 = this.f.b("left_saddle_mouth");
+      fhj $$3 = this.f.b("right_saddle_mouth");
+      fhj $$4 = this.f.b("left_saddle_line");
+      fhj $$5 = this.f.b("right_saddle_line");
+      fhj $$6 = this.f.b("head_saddle");
+      fhj $$7 = this.f.b("mouth_saddle_wrap");
+      this.G = new fhj[]{$$1, $$2, $$3, $$6, $$7};
+      this.H = new fhj[]{$$4, $$5};
    }
 
-   @Override
-   public void a(abh $$0) {
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      abn $$7;
-      try {
-         SecretKey $$1 = anz.a();
-         PublicKey $$2 = $$0.c();
-         $$3 = new BigInteger(anz.a($$0.a(), $$2, $$1)).toString(16);
-         $$4 = anz.a(2, $$1);
-         $$5 = anz.a(1, $$1);
-         byte[] $$6 = $$0.d();
-         $$7 = new abn($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
+   public static fhr a(fhn $$0) {
+      fhr $$1 = new fhr();
+      fhs $$2 = $$1.a();
+      fhs $$3 = $$2.a("body", fho.c().a(0, 32).a(-5.0F, -8.0F, -17.0F, 10.0F, 10.0F, 22.0F, new fhn(0.05F)), fhl.a(0.0F, 11.0F, 5.0F));
+      fhs $$4 = $$2.a("head_parts", fho.c().a(0, 35).a(-2.05F, -6.0F, -2.0F, 4.0F, 12.0F, 7.0F), fhl.a(0.0F, 4.0F, -12.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
+      fhs $$5 = $$4.a("head", fho.c().a(0, 13).a(-3.0F, -11.0F, -2.0F, 6.0F, 5.0F, 7.0F, $$0), fhl.a);
+      $$4.a("mane", fho.c().a(56, 36).a(-1.0F, -11.0F, 5.01F, 2.0F, 16.0F, 2.0F, $$0), fhl.a);
+      $$4.a("upper_mouth", fho.c().a(0, 25).a(-2.0F, -11.0F, -7.0F, 4.0F, 5.0F, 5.0F, $$0), fhl.a);
+      $$2.a("left_hind_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(4.0F, 14.0F, 7.0F));
+      $$2.a("right_hind_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(-4.0F, 14.0F, 7.0F));
+      $$2.a("left_front_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(4.0F, 14.0F, -12.0F));
+      $$2.a("right_front_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(-4.0F, 14.0F, -12.0F));
+      fhn $$6 = $$0.a(0.0F, 5.5F, 0.0F);
+      $$2.a("left_hind_baby_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(4.0F, 14.0F, 7.0F));
+      $$2.a("right_hind_baby_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(-4.0F, 14.0F, 7.0F));
+      $$2.a("left_front_baby_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(4.0F, 14.0F, -12.0F));
+      $$2.a("right_front_baby_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(-4.0F, 14.0F, -12.0F));
+      $$3.a("tail", fho.c().a(42, 36).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 4.0F, $$0), fhl.a(0.0F, -5.0F, 2.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
+      $$3.a("saddle", fho.c().a(26, 0).a(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new fhn(0.5F)), fhl.a);
+      $$4.a("left_saddle_mouth", fho.c().a(29, 5).a(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), fhl.a);
+      $$4.a("right_saddle_mouth", fho.c().a(29, 5).a(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), fhl.a);
+      $$4.a("left_saddle_line", fho.c().a(32, 2).a(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), fhl.b((float) (-Math.PI / 6), 0.0F, 0.0F));
+      $$4.a("right_saddle_line", fho.c().a(32, 2).a(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), fhl.b((float) (-Math.PI / 6), 0.0F, 0.0F));
+      $$4.a("head_saddle", fho.c().a(1, 1).a(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new fhn(0.22F)), fhl.a);
+      $$4.a("mouth_saddle_wrap", fho.c().a(19, 0).a(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new fhn(0.2F)), fhl.a);
+      $$5.a("left_ear", fho.c().a(19, 16).a(0.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new fhn(-0.001F)), fhl.a);
+      $$5.a("right_ear", fho.c().a(19, 16).a(-2.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new fhn(-0.001F)), fhl.a);
+      return $$1;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      boolean $$6 = $$0.i();
+      boolean $$7 = $$0.bO();
+
+      for (fhj $$8 : this.G) {
+         $$8.k = $$6;
       }
 
-      this.e.accept(sw.c("connect.authorizing"));
-      aos.a.submit(() -> {
-         sw $$4x = this.b($$3);
-         if ($$4x != null) {
-            if (this.c == null || !this.c.d()) {
-               this.f.a($$4x);
-               return;
-            }
-
-            a.warn($$4x.getString());
-         }
-
-         this.e.accept(sw.c("connect.encrypting"));
-         this.f.a($$7, sl.a(() -> this.f.a($$4, $$5)));
-      });
-   }
-
-   @Nullable
-   private sw b(String $$0) {
-      try {
-         this.c().joinServer(this.b.U().h(), this.b.U().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return sw.a("disconnect.loginFailedInfo", sw.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return sw.a("disconnect.loginFailedInfo", sw.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return sw.a("disconnect.loginFailedInfo", sw.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (UserBannedException var6) {
-         return sw.a("disconnect.loginFailedInfo", sw.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return sw.a("disconnect.loginFailedInfo", var7.getMessage());
+      for (fhj $$9 : this.H) {
+         $$9.k = $$7 && $$6;
       }
-   }
 
-   private MinecraftSessionService c() {
-      return this.b.aj();
-   }
-
-   @Override
-   public void a(abg $$0) {
-      this.e.accept(sw.c("connect.joining"));
-      this.g = $$0.a();
-      this.f.a(se.b);
-      this.f.a(new fex(this.b, this.d, this.f, this.c, this.g, this.b.t().a(this.h, this.i, this.j)));
+      this.b.c = 11.0F;
    }
 
    @Override
-   public void a(sw $$0) {
-      if (this.d != null && this.d instanceof gan) {
-         this.b.a(new gaj(this.d, sv.p, $$0));
+   public Iterable<fhj> a() {
+      return ImmutableList.of(this.f);
+   }
+
+   @Override
+   protected Iterable<fhj> b() {
+      return ImmutableList.of(this.b, this.x, this.y, this.z, this.A, this.B, this.C, this.D, this.E);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = aro.j($$3, $$0.aV, $$0.aU);
+      float $$5 = aro.j($$3, $$0.aX, $$0.aW);
+      float $$6 = aro.i($$3, $$0.O, $$0.dC());
+      float $$7 = $$5 - $$4;
+      float $$8 = $$6 * (float) (Math.PI / 180.0);
+      if ($$7 > 20.0F) {
+         $$7 = 20.0F;
+      }
+
+      if ($$7 < -20.0F) {
+         $$7 = -20.0F;
+      }
+
+      if ($$2 > 0.2F) {
+         $$8 += aro.b($$1 * 0.8F) * 0.15F * $$2;
+      }
+
+      float $$9 = $$0.E($$3);
+      float $$10 = $$0.F($$3);
+      float $$11 = 1.0F - $$10;
+      float $$12 = $$0.G($$3);
+      boolean $$13 = $$0.cm != 0;
+      float $$14 = (float)$$0.ah + $$3;
+      this.f.c = 4.0F;
+      this.f.d = -12.0F;
+      this.b.e = 0.0F;
+      this.f.e = (float) (Math.PI / 6) + $$8;
+      this.f.f = $$7 * (float) (Math.PI / 180.0);
+      float $$15 = $$0.aX() ? 0.2F : 1.0F;
+      float $$16 = aro.b($$15 * $$1 * 0.6662F + (float) Math.PI);
+      float $$17 = $$16 * 0.8F * $$2;
+      float $$18 = (1.0F - Math.max($$10, $$9)) * ((float) (Math.PI / 6) + $$8 + $$12 * aro.a($$14) * 0.05F);
+      this.f.e = $$10 * ((float) (Math.PI / 12) + $$8) + $$9 * (2.1816616F + aro.a($$14) * 0.05F) + $$18;
+      this.f.f = $$10 * $$7 * (float) (Math.PI / 180.0) + (1.0F - Math.max($$10, $$9)) * this.f.f;
+      this.f.c = $$10 * -4.0F + $$9 * 11.0F + (1.0F - Math.max($$10, $$9)) * this.f.c;
+      this.f.d = $$10 * -4.0F + $$9 * -12.0F + (1.0F - Math.max($$10, $$9)) * this.f.d;
+      this.b.e = $$10 * (float) (-Math.PI / 4) + $$11 * this.b.e;
+      float $$19 = (float) (Math.PI / 12) * $$10;
+      float $$20 = aro.b($$14 * 0.6F + (float) Math.PI);
+      this.A.c = 2.0F * $$10 + 14.0F * $$11;
+      this.A.d = -6.0F * $$10 - 10.0F * $$11;
+      this.z.c = this.A.c;
+      this.z.d = this.A.d;
+      float $$21 = ((float) (-Math.PI / 3) + $$20) * $$10 + $$17 * $$11;
+      float $$22 = ((float) (-Math.PI / 3) - $$20) * $$10 - $$17 * $$11;
+      this.y.e = $$19 - $$16 * 0.5F * $$2 * $$11;
+      this.x.e = $$19 + $$16 * 0.5F * $$2 * $$11;
+      this.A.e = $$21;
+      this.z.e = $$22;
+      this.F.e = (float) (Math.PI / 6) + $$2 * 0.75F;
+      this.F.c = -5.0F + $$2;
+      this.F.d = 2.0F + $$2 * 2.0F;
+      if ($$13) {
+         this.F.f = aro.b($$14 * 0.7F);
       } else {
-         this.b.a(new ett(this.d, sv.p, $$0));
+         this.F.f = 0.0F;
       }
-   }
 
-   @Override
-   public boolean a() {
-      return this.f.h();
-   }
-
-   @Override
-   public void a(abj $$0) {
-      this.f.a($$0.a());
-   }
-
-   @Override
-   public void a(abi $$0) {
-      if (!this.f.d()) {
-         this.f.a($$0.a(), false);
-      }
-   }
-
-   @Override
-   public void a(abf $$0) {
-      this.e.accept(sw.c("connect.negotiating"));
-      this.f.a(new abl($$0.a(), null));
-   }
-
-   public void a(String $$0) {
-      this.j = $$0;
+      this.B.c = this.x.c;
+      this.B.d = this.x.d;
+      this.B.e = this.x.e;
+      this.C.c = this.y.c;
+      this.C.d = this.y.d;
+      this.C.e = this.y.e;
+      this.D.c = this.z.c;
+      this.D.d = this.z.d;
+      this.D.e = this.z.e;
+      this.E.c = this.A.c;
+      this.E.d = this.A.d;
+      this.E.e = this.A.e;
+      boolean $$23 = $$0.i_();
+      this.x.k = !$$23;
+      this.y.k = !$$23;
+      this.z.k = !$$23;
+      this.A.k = !$$23;
+      this.B.k = $$23;
+      this.C.k = $$23;
+      this.D.k = $$23;
+      this.E.k = $$23;
+      this.b.c = $$23 ? 10.8F : 0.0F;
    }
 }

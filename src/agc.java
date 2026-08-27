@@ -1,39 +1,89 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agc {
-   public static void a(CommandDispatcher<ds> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.damage.invulnerable"));
+
+   public static void a(CommandDispatcher<ds> $$0, dm $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), Collections.singleton(((ds)$$0x.getSource()).h()), gu.a(((ds)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("damage").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)dt.a("targets", ec.d())
-                     .executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), gu.a(((ds)$$0x.getSource()).d()), 0.0F)))
+               dt.a("target", ed.a())
                   .then(
-                     ((RequiredArgumentBuilder)dt.a("pos", fi.a()).executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), fi.c($$0x, "pos"), 0.0F)))
-                        .then(dt.a("angle", dv.a()).executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), fi.c($$0x, "pos"), dv.a($$0x, "angle"))))
+                     ((RequiredArgumentBuilder)dt.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (ds)$$0x.getSource(), ed.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((ds)$$0x.getSource()).e().ag().n()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("damageType", ep.a($$1, jd.p))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ds)$$0x.getSource(),
+                                             ed.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bhe(ep.a($$0x, "damageType", jd.p))
+                                          )
+                                    ))
+                                 .then(
+                                    dt.a("at")
+                                       .then(
+                                          dt.a("location", fq.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      ed.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bhe(ep.a($$0x, "damageType", jd.p), fq.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("entity", ed.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      ed.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bhe(ep.a($$0x, "damageType", jd.p), ed.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             dt.a("from")
+                                                .then(
+                                                   dt.a("cause", ed.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               ed.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bhe(ep.a($$0x, "damageType", jd.p), ed.a($$0x, "entity"), ed.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ds $$0, Collection<aig> $$1, gu $$2, float $$3) {
-      acp<cmm> $$4 = $$0.e().ac();
-
-      for (aig $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> sw.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().H_()), true);
+   private static int a(ds $$0, big $$1, float $$2, bhe $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> te.a("commands.damage.success", $$2, $$1.H_()), true);
+         return 1;
       } else {
-         $$0.a(() -> sw.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         throw a.create();
       }
-
-      return $$1.size();
    }
 }

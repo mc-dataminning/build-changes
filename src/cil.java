@@ -1,75 +1,72 @@
-public abstract class cil implements cjc<bdq> {
-   protected final cjf<?> a;
-   protected final acq b;
-   private final cir h;
-   protected final String c;
-   protected final ciz d;
-   protected final cfz e;
-   protected final float f;
-   protected final int g;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public cil(cjf<?> $$0, acq $$1, String $$2, cir $$3, ciz $$4, cfz $$5, float $$6, int $$7) {
-      this.a = $$0;
-      this.h = $$3;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
+public class cil extends cir implements cjv {
+   public static final Supplier<BiMap<csk, csk>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(csl.qM, csl.rb)
+            .put(csl.qL, csl.rd)
+            .put(csl.qK, csl.rc)
+            .put(csl.qJ, csl.re)
+            .put(csl.qS, csl.ri)
+            .put(csl.qR, csl.rh)
+            .put(csl.qQ, csl.rg)
+            .put(csl.qP, csl.rf)
+            .put(csl.ra, csl.rq)
+            .put(csl.qZ, csl.rp)
+            .put(csl.qY, csl.ro)
+            .put(csl.qX, csl.rn)
+            .put(csl.qW, csl.rm)
+            .put(csl.qV, csl.rl)
+            .put(csl.qU, csl.rk)
+            .put(csl.qT, csl.rj)
+            .build()
+   );
+   public static final Supplier<BiMap<csk, csk>> b = Suppliers.memoize(() -> a.get().inverse());
+
+   public cil(cir.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(bdq $$0, cmm $$1) {
-      return this.d.a($$0.a(0));
+   public bgo a(clg $$0) {
+      cpk $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      dey $$3 = $$1.a_($$2);
+      return b($$3).map($$3x -> {
+         cbl $$4 = $$0.o();
+         ciw $$5 = $$0.n();
+         if ($$4 instanceof akj) {
+            ai.M.a((akj)$$4, $$2, $$5);
+         }
+
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(dji.c, $$2, dji.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return bgo.a($$1.B);
+      }).orElse(bgo.d);
+   }
+
+   public static Optional<dey> b(dey $$0) {
+      return Optional.ofNullable((csk)a.get().get($$0.b())).map($$1 -> ((csk)$$1).l($$0));
    }
 
    @Override
-   public cfz a(bdq $$0, hs $$1) {
-      return this.e.p();
+   public boolean a(cpk $$0, dds $$1, boolean $$2, cbl $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.p(), 0);
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
+   public boolean a(ddt $$0, cbl $$1) {
       return true;
-   }
-
-   @Override
-   public hn<ciz> a() {
-      hn<ciz> $$0 = hn.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cfz a(hs $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public acq e() {
-      return this.b;
-   }
-
-   @Override
-   public cjf<?> f() {
-      return this.a;
-   }
-
-   public cir g() {
-      return this.h;
    }
 }

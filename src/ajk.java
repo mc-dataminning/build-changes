@@ -1,144 +1,205 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.base.MoreObjects;
 import com.mojang.logging.LogUtils;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class ajk extends ajh {
-   private static final Logger d = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/').omitEmptyStrings().limit(3);
-   private final File e;
-   @Nullable
-   private ZipFile f;
-   private boolean g;
+public abstract class ajk<T extends ajk<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties Z;
 
-   public ajk(String $$0, File $$1, boolean $$2) {
-      super($$0, $$2);
-      this.e = $$1;
+   public ajk(Properties $$0) {
+      this.Z = $$0;
+   }
+
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
+
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
+         }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
+      }
+   }
+
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.Z.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
+   }
+
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
+         }
+      };
+   }
+
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
+         }
+      };
    }
 
    @Nullable
-   private ZipFile c() {
-      if (this.g) {
+   private String c(String $$0) {
+      return (String)this.Z.get($$0);
+   }
+
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
          return null;
       } else {
-         if (this.f == null) {
-            try {
-               this.f = new ZipFile(this.e);
-            } catch (IOException var2) {
-               d.error("Failed to open pack {}", this.e, var2);
-               this.g = true;
-               return null;
-            }
-         }
-
-         return this.f;
+         this.Z.remove($$0);
+         return $$1.apply($$2);
       }
    }
 
-   private static String b(ajm $$0, acq $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.Z.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> ajk<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.Z.put($$0, $$2.apply($$5));
+      return new ajk.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> ajk<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
    }
 
    @Nullable
-   @Override
-   public akp<InputStream> a(String... $$0) {
-      return this.a(String.join("/", $$0));
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
    }
 
-   @Override
-   public akp<InputStream> a(ajm $$0, acq $$1) {
-      return this.a(b($$0, $$1));
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected ajk<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected ajk<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
    }
 
    @Nullable
-   private akp<InputStream> a(String $$0) {
-      ZipFile $$1 = this.c();
-      if ($$1 == null) {
-         return null;
-      } else {
-         ZipEntry $$2 = $$1.getEntry($$0);
-         return $$2 == null ? null : akp.create($$1, $$2);
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.Z);
+      return $$0;
+   }
+
+   protected abstract T b(ht var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(String $$1, V $$2, Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
-   }
 
-   @Override
-   public Set<String> a(ajm $$0) {
-      ZipFile $$1 = this.c();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$4 = $$2.nextElement();
-            String $$5 = $$4.getName();
-            if ($$5.startsWith($$0.a() + "/")) {
-               List<String> $$6 = Lists.newArrayList(a.split($$5));
-               if ($$6.size() > 1) {
-                  String $$7 = $$6.get(1);
-                  if ($$7.equals($$7.toLowerCase(Locale.ROOT))) {
-                     $$3.add($$7);
-                  } else {
-                     d.warn("Ignored non-lowercase namespace: {} in {}", $$7, this.e);
-                  }
-               }
-            }
-         }
-
-         return $$3;
+      @Override
+      public V get() {
+         return this.c;
       }
-   }
 
-   @Override
-   protected void finalize() throws Throwable {
-      this.close();
-      super.finalize();
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         IOUtils.closeQuietly(this.f);
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(ajm $$0, String $$1, String $$2, ajl.a $$3) {
-      ZipFile $$4 = this.c();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = $$0.a() + "/" + $$1 + "/";
-         String $$7 = $$6 + $$2 + "/";
-
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  acq $$11 = acq.a($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, akp.create($$4, $$8));
-                  } else {
-                     d.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
+      public T a(ht $$0, V $$1) {
+         Properties $$2 = ajk.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return ajk.this.b($$0, $$2);
       }
    }
 }

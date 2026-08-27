@@ -1,56 +1,17 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class fvv<T extends biw, M extends fek<T>> extends fwr<T, M> {
+   private final fnc a;
 
-public class fvv extends alc<List<String>> {
-   private static final acq a = new acq("texts/splashes.txt");
-   private static final apf b = apf.a();
-   private final List<String> c = Lists.newArrayList();
-   private final eoc d;
-
-   public fvv(eoc $$0) {
-      this.d = $$0;
+   public fvv(fue<T, M> $$0, fnc $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected List<String> a(akx $$0, ban $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = enn.N().Y().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
-   }
-
-   protected void a(List<String> $$0, akx $$1, ban $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
-
-   @Nullable
-   public eqi a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return eqi.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return eqi.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return eqi.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new eqi(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new eqi(this.c.get(b.a(this.c.size())));
-      }
+   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      ciw $$10 = $$3.c(bil.a);
+      this.a.a($$3, $$10, cit.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

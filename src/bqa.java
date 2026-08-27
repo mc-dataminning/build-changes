@@ -1,30 +1,86 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqa extends bqf<bfz> {
-   @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.h, bpb.L, bpb.am);
+public class bqa extends bps {
+   public static final float a = 0.02F;
+   protected final biy b;
+   @Nullable
+   protected big c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends biw> f;
+   protected final btj g;
+
+   public bqa(biy $$0, Class<? extends biw> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
+   }
+
+   public bqa(biy $$0, Class<? extends biw> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public bqa(biy $$0, Class<? extends biw> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(bps.a.b));
+      if ($$1 == cbl.class) {
+         this.g = btj.b().a((double)$$2).a($$1x -> bij.b($$0).test($$1x));
+      } else {
+         this.g = btj.b().a((double)$$2);
+      }
    }
 
    @Override
-   protected void a(aif $$0, bfz $$1) {
-      bha<?> $$2 = $$1.dK();
-      List<bxd> $$3 = Lists.newArrayList();
-      bpd $$4 = $$2.c(bpb.h).orElse(bpd.a());
-      Optional<bgb> $$5 = $$4.a($$0x -> $$0x instanceof bwt || $$0x instanceof buv).map(bgb.class::cast);
-
-      for (bfz $$7 : $$2.c(bpb.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof bxd && ((bxd)$$7).fZ()) {
-            $$3.add((bxd)$$7);
+   public boolean a() {
+      if (this.b.ee().i() >= this.e) {
+         return false;
+      } else {
+         if (this.b.j() != null) {
+            this.c = this.b.j();
          }
-      }
 
-      $$2.a(bpb.L, $$5);
-      $$2.a(bpb.am, $$3);
+         if (this.f == cbl.class) {
+            this.c = this.b.dK().a(this.g, this.b, this.b.dp(), this.b.dt(), this.b.dv());
+         } else {
+            this.c = this.b
+               .dK()
+               .a(this.b.dK().a(this.f, this.b.cG().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dp(), this.b.dt(), this.b.dv());
+         }
+
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public boolean b() {
+      if (!this.c.bv()) {
+         return false;
+      } else {
+         return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.h = this.a(40 + this.b.ee().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+   }
+
+   @Override
+   public void e() {
+      if (this.c.bv()) {
+         double $$0 = this.i ? this.b.dt() : this.c.dt();
+         this.b.D().a(this.c.dp(), $$0, this.c.dv());
+         this.h--;
+      }
    }
 }

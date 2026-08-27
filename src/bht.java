@@ -1,134 +1,365 @@
-import java.util.Comparator;
+import com.google.common.collect.ComparisonChain;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bht {
-   private bht() {
+public class bht implements Comparable<bht> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = -1;
+   private final bhr c;
+   private int d;
+   private int e;
+   private boolean f;
+   private boolean g;
+   private boolean h;
+   @Nullable
+   private bht i;
+   private final Optional<bht.a> j;
+
+   public bht(bhr $$0) {
+      this($$0, 0, 0);
    }
 
-   public static void a(bfz $$0, bfz $$1, float $$2) {
-      c($$0, $$1);
-      b($$0, $$1, $$2);
+   public bht(bhr $$0, int $$1) {
+      this($$0, $$1, 0);
    }
 
-   public static boolean a(bha<?> $$0, bfz $$1) {
-      Optional<bpd> $$2 = $$0.c(bpb.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   public bht(bhr $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, false, true);
    }
 
-   public static boolean a(bha<?> $$0, bpb<? extends bfz> $$1, bfn<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ae() == $$2);
+   public bht(bhr $$0, int $$1, int $$2, boolean $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$4);
    }
 
-   private static boolean a(bha<?> $$0, bpb<? extends bfz> $$1, Predicate<bfz> $$2) {
-      return $$0.c($$1).filter($$2).filter(bfz::bs).filter($$1x -> a($$0, $$1x)).isPresent();
+   public bht(bhr $$0, int $$1, int $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, null, $$0.b());
    }
 
-   private static void c(bfz $$0, bfz $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
+   public bht(bhr $$0, int $$1, int $$2, boolean $$3, boolean $$4, boolean $$5, @Nullable bht $$6, Optional<bht.a> $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   public static void a(bfz $$0, bfz $$1) {
-      $$0.dK().a(bpb.n, new bic($$1, true));
+   public bht(bht $$0) {
+      this.c = $$0.c;
+      this.j = this.c.b();
+      this.a($$0);
    }
 
-   private static void b(bfz $$0, bfz $$1, float $$2) {
-      int $$3 = 2;
-      a($$0, $$1, $$2, 2);
-      a($$1, $$0, $$2, 2);
+   public Optional<bht.a> a() {
+      return this.j;
    }
 
-   public static void a(bfz $$0, bfj $$1, float $$2, int $$3) {
-      a($$0, new bic($$1, true), $$2, $$3);
+   void a(bht $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
    }
 
-   public static void a(bfz $$0, gu $$1, float $$2, int $$3) {
-      a($$0, new bhu($$1), $$2, $$3);
-   }
-
-   public static void a(bfz $$0, bje $$1, float $$2, int $$3) {
-      bpe $$4 = new bpe($$1, $$2, $$3);
-      $$0.dK().a(bpb.n, $$1);
-      $$0.dK().a(bpb.m, $$4);
-   }
-
-   public static void a(bfz $$0, cfz $$1, eei $$2) {
-      eei $$3 = new eei(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bfz $$0, cfz $$1, eei $$2, eei $$3, float $$4) {
-      double $$5 = $$0.dr() - (double)$$4;
-      bvh $$6 = new bvh($$0.dI(), $$0.dn(), $$5, $$0.dt(), $$1);
-      $$6.c($$0.ct());
-      eei $$7 = $$2.d($$0.dg());
-      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
-      $$6.f($$7);
-      $$6.o();
-      $$0.dI().b($$6);
-   }
-
-   public static hx a(aif $$0, hx $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return hx.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bgb $$0, bfz $$1, int $$2) {
-      if ($$0.eO().d() instanceof cgp $$3 && $$0.a($$3)) {
-         int $$4 = $$3.d() - $$2;
-         return $$0.a($$1, (double)$$4);
+   public boolean b(bht $$0) {
+      if (this.c != $$0.c) {
+         b.warn("This method should only be called for matching effects!");
       }
 
-      return $$0.k($$1);
+      boolean $$1 = false;
+      if ($$0.e > this.e) {
+         if ($$0.d(this)) {
+            bht $$2 = this.i;
+            this.i = new bht(this);
+            this.i.i = $$2;
+         }
+
+         this.e = $$0.e;
+         this.d = $$0.d;
+         $$1 = true;
+      } else if (this.d($$0)) {
+         if ($$0.e == this.e) {
+            this.d = $$0.d;
+            $$1 = true;
+         } else if (this.i == null) {
+            this.i = new bht($$0);
+         } else {
+            this.i.b($$0);
+         }
+      }
+
+      if (!$$0.f && this.f || $$1) {
+         this.f = $$0.f;
+         $$1 = true;
+      }
+
+      if ($$0.g != this.g) {
+         this.g = $$0.g;
+         $$1 = true;
+      }
+
+      if ($$0.h != this.h) {
+         this.h = $$0.h;
+         $$1 = true;
+      }
+
+      return $$1;
    }
 
-   public static boolean a(bfz $$0, bfz $$1, double $$2) {
-      Optional<bfz> $$3 = $$0.dK().c(bpb.o);
-      if ($$3.isEmpty()) {
-         return false;
+   private boolean d(bht $$0) {
+      return !this.b() && (this.d < $$0.d || $$0.b());
+   }
+
+   public boolean b() {
+      return this.d == -1;
+   }
+
+   public boolean a(int $$0) {
+      return !this.b() && this.d <= $$0;
+   }
+
+   public int a(Int2IntFunction $$0) {
+      return !this.b() && this.d != 0 ? $$0.applyAsInt(this.d) : this.d;
+   }
+
+   public bhr c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public boolean a(biw $$0, Runnable $$1) {
+      if (this.j()) {
+         int $$2 = this.b() ? $$0.ah : this.d;
+         if (this.c.a($$2, this.e)) {
+            this.c.a($$0, this.e);
+         }
+
+         this.k();
+         if (this.d == 0 && this.i != null) {
+            this.a(this.i);
+            this.i = this.i.i;
+            $$1.run();
+         }
+      }
+
+      this.j.ifPresent($$0x -> $$0x.a(this));
+      return this.j();
+   }
+
+   private boolean j() {
+      return this.b() || this.d > 0;
+   }
+
+   private int k() {
+      if (this.i != null) {
+         this.i.k();
+      }
+
+      return this.d = this.a($$0 -> $$0 - 1);
+   }
+
+   public void a(biw $$0) {
+      this.c.b($$0, this.e);
+   }
+
+   public String i() {
+      return this.c.d();
+   }
+
+   @Override
+   public String toString() {
+      String $$0;
+      if (this.e > 0) {
+         $$0 = this.i() + " x " + (this.e + 1) + ", Duration: " + this.l();
       } else {
-         double $$4 = $$0.e($$3.get().dg());
-         double $$5 = $$0.e($$1.dg());
-         return $$5 > $$4 + $$2 * $$2;
+         $$0 = this.i() + ", Duration: " + this.l();
+      }
+
+      if (!this.g) {
+         $$0 = $$0 + ", Particles: false";
+      }
+
+      if (!this.h) {
+         $$0 = $$0 + ", Show Icon: false";
+      }
+
+      return $$0;
+   }
+
+   private String l() {
+      return this.b() ? "infinite" : Integer.toString(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof bht $$1) ? false : this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.c.equals($$1.c);
       }
    }
 
-   public static boolean b(bfz $$0, bfz $$1) {
-      bha<?> $$2 = $$0.dK();
-      return !$$2.a(bpb.h) ? false : $$2.c(bpb.h).get().a($$1);
+   @Override
+   public int hashCode() {
+      int $$0 = this.c.hashCode();
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      return 31 * $$0 + (this.f ? 1 : 0);
    }
 
-   public static bfz a(bfz $$0, Optional<bfz> $$1, bfz $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   public qs a(qs $$0) {
+      $$0.a("Id", bhr.a(this.c()));
+      this.c($$0);
+      return $$0;
    }
 
-   public static bfz a(bfz $$0, bfz $$1, bfz $$2) {
-      eei $$3 = $$1.dg();
-      eei $$4 = $$2.dg();
-      return $$0.e($$3) < $$0.e($$4) ? $$1 : $$2;
-   }
+   private void c(qs $$0) {
+      $$0.a("Amplifier", (byte)this.e());
+      $$0.a("Duration", this.d());
+      $$0.a("Ambient", this.f());
+      $$0.a("ShowParticles", this.g());
+      $$0.a("ShowIcon", this.h());
+      if (this.i != null) {
+         qs $$1 = new qs();
+         this.i.a($$1);
+         $$0.a("HiddenEffect", $$1);
+      }
 
-   public static Optional<bfz> a(bfz $$0, bpb<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.dK().c($$1);
-      return $$2.<bfj>map($$1x -> ((aif)$$0.dI()).a($$1x)).map($$0x -> $$0x instanceof bfz $$1x ? $$1x : null);
+      this.j.ifPresent($$1x -> bht.a.a.encodeStart(rd.a, $$1x).resultOrPartial(b::error).ifPresent($$1xx -> $$0.a("FactorCalculationData", $$1xx)));
    }
 
    @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2) {
-      eei $$3 = bqq.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dI().a_(gu.a($$3)).a($$0.dI(), gu.a($$3), dxu.b) && $$4++ < 10) {
-         $$3 = bqq.a($$0, $$1, $$2);
-      }
-
-      return $$3;
+   public static bht b(qs $$0) {
+      int $$1 = $$0.h("Id");
+      bhr $$2 = bhr.a($$1);
+      return $$2 == null ? null : a($$2, $$0);
    }
 
-   public static boolean a(bfz $$0) {
-      return $$0.dK().a(bpb.r);
+   private static bht a(bhr $$0, qs $$1) {
+      int $$2 = $$1.f("Amplifier");
+      int $$3 = $$1.h("Duration");
+      boolean $$4 = $$1.q("Ambient");
+      boolean $$5 = true;
+      if ($$1.b("ShowParticles", 1)) {
+         $$5 = $$1.q("ShowParticles");
+      }
+
+      boolean $$6 = $$5;
+      if ($$1.b("ShowIcon", 1)) {
+         $$6 = $$1.q("ShowIcon");
+      }
+
+      bht $$7 = null;
+      if ($$1.b("HiddenEffect", 10)) {
+         $$7 = a($$0, $$1.p("HiddenEffect"));
+      }
+
+      Optional<bht.a> $$8;
+      if ($$1.b("FactorCalculationData", 10)) {
+         $$8 = bht.a.a.parse(new Dynamic(rd.a, $$1.p("FactorCalculationData"))).resultOrPartial(b::error);
+      } else {
+         $$8 = Optional.empty();
+      }
+
+      return new bht($$0, $$3, Math.max($$2, 0), $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public int c(bht $$0) {
+      int $$1 = 32147;
+      return (this.d() <= 32147 || $$0.d() <= 32147) && (!this.f() || !$$0.f())
+         ? ComparisonChain.start()
+            .compareFalseFirst(this.f(), $$0.f())
+            .compareFalseFirst(this.b(), $$0.b())
+            .compare(this.d(), $$0.d())
+            .compare(this.c().g(), $$0.c().g())
+            .result()
+         : ComparisonChain.start().compare(this.f(), $$0.f()).compare(this.c().g(), $$0.c().g()).result();
+   }
+
+   public static class a {
+      public static final Codec<bht.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aqw.i.fieldOf("padding_duration").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("factor_start").orElse(0.0F).forGetter($$0x -> $$0x.c),
+                  Codec.FLOAT.fieldOf("factor_target").orElse(1.0F).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("factor_current").orElse(0.0F).forGetter($$0x -> $$0x.e),
+                  aqw.i.fieldOf("ticks_active").orElse(0).forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("factor_previous_frame").orElse(0.0F).forGetter($$0x -> $$0x.g),
+                  Codec.BOOL.fieldOf("had_effect_last_tick").orElse(false).forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bht.a::new)
+      );
+      private final int b;
+      private float c;
+      private float d;
+      private float e;
+      private int f;
+      private float g;
+      private boolean h;
+
+      public a(int $$0, float $$1, float $$2, float $$3, int $$4, float $$5, boolean $$6) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.h = $$6;
+      }
+
+      public a(int $$0) {
+         this($$0, 0.0F, 1.0F, 0.0F, 0, 0.0F, false);
+      }
+
+      public void a(bht $$0) {
+         this.g = this.e;
+         boolean $$1 = !$$0.a(this.b);
+         this.f++;
+         if (this.h != $$1) {
+            this.h = $$1;
+            this.f = 0;
+            this.c = this.e;
+            this.d = $$1 ? 1.0F : 0.0F;
+         }
+
+         float $$2 = aro.a((float)this.f / (float)this.b, 0.0F, 1.0F);
+         this.e = aro.i($$2, this.c, this.d);
+      }
+
+      public float a(biw $$0, float $$1) {
+         if ($$0.dF()) {
+            this.g = this.e;
+         }
+
+         return aro.i($$1, this.g, this.e);
+      }
    }
 }

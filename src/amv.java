@@ -1,78 +1,117 @@
-public class amv {
-   public static final anl<cnk> a = a("is_deep_ocean");
-   public static final anl<cnk> b = a("is_ocean");
-   public static final anl<cnk> c = a("is_beach");
-   public static final anl<cnk> d = a("is_river");
-   public static final anl<cnk> e = a("is_mountain");
-   public static final anl<cnk> f = a("is_badlands");
-   public static final anl<cnk> g = a("is_hill");
-   public static final anl<cnk> h = a("is_taiga");
-   public static final anl<cnk> i = a("is_jungle");
-   public static final anl<cnk> j = a("is_forest");
-   public static final anl<cnk> k = a("is_savanna");
-   public static final anl<cnk> l = a("is_overworld");
-   public static final anl<cnk> m = a("is_nether");
-   public static final anl<cnk> n = a("is_end");
-   public static final anl<cnk> o = a("stronghold_biased_to");
-   public static final anl<cnk> p = a("has_structure/buried_treasure");
-   public static final anl<cnk> q = a("has_structure/desert_pyramid");
-   public static final anl<cnk> r = a("has_structure/igloo");
-   public static final anl<cnk> s = a("has_structure/jungle_temple");
-   public static final anl<cnk> t = a("has_structure/mineshaft");
-   public static final anl<cnk> u = a("has_structure/mineshaft_mesa");
-   public static final anl<cnk> v = a("has_structure/ocean_monument");
-   public static final anl<cnk> w = a("has_structure/ocean_ruin_cold");
-   public static final anl<cnk> x = a("has_structure/ocean_ruin_warm");
-   public static final anl<cnk> y = a("has_structure/pillager_outpost");
-   public static final anl<cnk> z = a("has_structure/ruined_portal_desert");
-   public static final anl<cnk> A = a("has_structure/ruined_portal_jungle");
-   public static final anl<cnk> B = a("has_structure/ruined_portal_ocean");
-   public static final anl<cnk> C = a("has_structure/ruined_portal_swamp");
-   public static final anl<cnk> D = a("has_structure/ruined_portal_mountain");
-   public static final anl<cnk> E = a("has_structure/ruined_portal_standard");
-   public static final anl<cnk> F = a("has_structure/shipwreck_beached");
-   public static final anl<cnk> G = a("has_structure/shipwreck");
-   public static final anl<cnk> H = a("has_structure/stronghold");
-   public static final anl<cnk> I = a("has_structure/swamp_hut");
-   public static final anl<cnk> J = a("has_structure/village_desert");
-   public static final anl<cnk> K = a("has_structure/village_plains");
-   public static final anl<cnk> L = a("has_structure/village_savanna");
-   public static final anl<cnk> M = a("has_structure/village_snowy");
-   public static final anl<cnk> N = a("has_structure/village_taiga");
-   public static final anl<cnk> O = a("has_structure/trail_ruins");
-   public static final anl<cnk> P = a("has_structure/woodland_mansion");
-   public static final anl<cnk> Q = a("has_structure/nether_fortress");
-   public static final anl<cnk> R = a("has_structure/nether_fossil");
-   public static final anl<cnk> S = a("has_structure/bastion_remnant");
-   public static final anl<cnk> T = a("has_structure/ancient_city");
-   public static final anl<cnk> U = a("has_structure/ruined_portal_nether");
-   public static final anl<cnk> V = a("has_structure/end_city");
-   public static final anl<cnk> W = a("required_ocean_monument_surrounding");
-   public static final anl<cnk> X = a("mineshaft_blocking");
-   public static final anl<cnk> Y = a("plays_underwater_music");
-   public static final anl<cnk> Z = a("has_closer_water_fog");
-   public static final anl<cnk> aa = a("water_on_map_outlines");
-   public static final anl<cnk> ab = a("produces_corals_from_bonemeal");
-   public static final anl<cnk> ac = a("increased_fire_burnout");
-   public static final anl<cnk> ad = a("snow_golem_melts");
-   public static final anl<cnk> ae = a("without_zombie_sieges");
-   public static final anl<cnk> af = a("without_patrol_spawns");
-   public static final anl<cnk> ag = a("without_wandering_trader_spawns");
-   public static final anl<cnk> ah = a("spawns_cold_variant_frogs");
-   public static final anl<cnk> ai = a("spawns_warm_variant_frogs");
-   public static final anl<cnk> aj = a("spawns_gold_rabbits");
-   public static final anl<cnk> ak = a("spawns_white_rabbits");
-   public static final anl<cnk> al = a("reduce_water_ambient_spawns");
-   public static final anl<cnk> am = a("allows_tropical_fish_spawns_at_any_height");
-   public static final anl<cnk> an = a("polar_bears_spawn_on_alternate_blocks");
-   public static final anl<cnk> ao = a("more_frequent_drowned_spawns");
-   public static final anl<cnk> ap = a("allows_surface_slime_spawns");
-   public static final anl<cnk> aq = a("spawns_snow_foxes");
+import com.google.common.base.Functions;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private amv() {
+public class amv {
+   private final Set<amx> a;
+   private Map<String, ams> b = ImmutableMap.of();
+   private List<ams> c = ImmutableList.of();
+
+   public amv(amx... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private static anl<cnk> a(String $$0) {
-      return anl.a(jc.ap, new acq($$0));
+   public void a() {
+      List<String> $$0 = this.c.stream().map(ams::f).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
+   }
+
+   private Map<String, ams> h() {
+      Map<String, ams> $$0 = Maps.newTreeMap();
+
+      for (amx $$1 : this.a) {
+         $$1.a($$1x -> $$0.put($$1x.f(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
+   }
+
+   public boolean a(String $$0) {
+      ams $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<ams> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      ams $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<ams> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<ams> b(Collection<String> $$0) {
+      List<ams> $$1 = this.c($$0).collect(Collectors.toList());
+
+      for (ams $$2 : this.b.values()) {
+         if ($$2.g() && !$$1.contains($$2)) {
+            $$2.i().a($$1, $$2, Functions.identity(), false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<ams> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<ams> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(ams::f).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cdt e() {
+      return this.f().stream().map(ams::d).reduce(cdt::b).orElse(cdt.a());
+   }
+
+   public Collection<ams> f() {
+      return this.c;
+   }
+
+   @Nullable
+   public ams c(String $$0) {
+      return this.b.get($$0);
+   }
+
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public List<aly> g() {
+      return this.c.stream().map(ams::e).collect(ImmutableList.toImmutableList());
    }
 }

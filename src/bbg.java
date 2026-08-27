@@ -1,14 +1,16 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public record bbg(Duration a, clt b, ahv c, dec d, String e) implements bbo {
-   public static bbg a(RecordedEvent $$0) {
-      return new bbg(
-         $$0.getDuration(),
-         new clt($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new ahv($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         dec.a($$0.getString("status")),
-         $$0.getString("level")
-      );
+public class bbg extends azu {
+   public bbg(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:zoglin", () -> azv.a($$0));
+      return $$1;
    }
 }

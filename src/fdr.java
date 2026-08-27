@@ -1,147 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.Arrays;
 
-public class fdr<T extends bxs> extends fbo<T> {
-   private static final float o = 13.0F;
-   private static final float p = 1.0F;
-   private final fee q;
-   protected final fee a;
-   protected final fee b;
-   protected final fee f;
-   protected final fee g;
-   protected final fee h;
-   protected final fee i;
-   protected final fee j;
-   protected final fee k;
-   protected final fee l;
-   protected final fee m;
-   protected final fee n;
-   private final List<fee> r;
-   private final List<fee> s;
-   private final List<fee> t;
-   private final List<fee> u;
+public class fdr<T extends big> extends fet<T> {
+   private final fhj a;
+   private final fhj[] b;
+   private final fhj f;
 
-   public fdr(fee $$0) {
-      super(fkf::d);
-      this.q = $$0;
-      this.a = $$0.b("bone");
-      this.b = this.a.b("body");
-      this.f = this.b.b("head");
-      this.m = this.a.b("right_leg");
-      this.i = this.a.b("left_leg");
-      this.l = this.b.b("right_arm");
-      this.j = this.b.b("left_arm");
-      this.g = this.f.b("right_tendril");
-      this.h = this.f.b("left_tendril");
-      this.n = this.b.b("right_ribcage");
-      this.k = this.b.b("left_ribcage");
-      this.r = ImmutableList.of(this.h, this.g);
-      this.s = ImmutableList.of(this.b);
-      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
-      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
+   public fdr(fhj $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fhj[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      fen $$2 = $$1.a("bone", fej.c(), feg.a(0.0F, 24.0F, 0.0F));
-      fen $$3 = $$2.a("body", fej.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), feg.a(0.0F, -21.0F, 0.0F));
-      $$3.a("right_ribcage", fej.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), feg.a(-7.0F, -2.0F, -4.0F));
-      $$3.a("left_ribcage", fej.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), feg.a(7.0F, -2.0F, -4.0F));
-      fen $$4 = $$3.a("head", fej.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), feg.a(0.0F, -13.0F, 0.0F));
-      $$4.a("right_tendril", fej.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), feg.a(-8.0F, -12.0F, 0.0F));
-      $$4.a("left_tendril", fej.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), feg.a(8.0F, -12.0F, 0.0F));
-      $$3.a("right_arm", fej.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), feg.a(-13.0F, -13.0F, 1.0F));
-      $$3.a("left_arm", fej.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), feg.a(13.0F, -13.0F, 1.0F));
-      $$2.a("right_leg", fej.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), feg.a(-5.9F, -13.0F, 0.0F));
-      $$2.a("left_leg", fej.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), feg.a(5.9F, -13.0F, 0.0F));
-      return fek.a($$0, 128, 128);
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fee::c);
-      float $$6 = $$3 - (float)$$0.ag;
-      this.a($$4, $$5);
-      this.b($$1, $$2);
-      this.a($$3);
-      this.a($$0, $$3, $$6);
-      this.a($$0.bT, eok.e, $$3);
-      this.a($$0.bU, eok.f, $$3);
-      this.a($$0.e, eok.b, $$3);
-      this.a($$0.d, eok.a, $$3);
-      this.a($$0.b, eok.c, $$3);
-      this.a($$0.c, eok.d, $$3);
-   }
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      $$1.a("head", fho.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
+      float $$2 = 0.0F;
+      fho $$3 = fho.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
 
-   private void a(float $$0, float $$1) {
-      this.f.e = $$1 * (float) (Math.PI / 180.0);
-      this.f.f = $$0 * (float) (Math.PI / 180.0);
-   }
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = aro.b($$2) * 9.0F;
+         float $$6 = -2.0F + aro.b((float)($$4 * 2) * 0.25F);
+         float $$7 = aro.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fhl.a($$5, $$6, $$7));
+         $$2++;
+      }
 
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.1F;
-      float $$2 = apa.b($$1);
-      float $$3 = apa.a($$1);
-      this.f.g += 0.06F * $$2;
-      this.f.e += 0.06F * $$3;
-      this.b.g += 0.025F * $$3;
-      this.b.e += 0.025F * $$2;
-   }
+      $$2 = (float) (Math.PI / 4);
 
-   private void b(float $$0, float $$1) {
-      float $$2 = Math.min(0.5F, 3.0F * $$1);
-      float $$3 = $$0 * 0.8662F;
-      float $$4 = apa.b($$3);
-      float $$5 = apa.a($$3);
-      float $$6 = Math.min(0.35F, $$2);
-      this.f.g += 0.3F * $$5 * $$2;
-      this.f.e = this.f.e + 1.2F * apa.b($$3 + (float) (Math.PI / 2)) * $$6;
-      this.b.g = 0.1F * $$5 * $$2;
-      this.b.e = 1.0F * $$4 * $$6;
-      this.i.e = 1.0F * $$4 * $$2;
-      this.m.e = 1.0F * apa.b($$3 + (float) Math.PI) * $$2;
-      this.j.e = -(0.8F * $$4 * $$2);
-      this.j.g = 0.0F;
-      this.l.e = -(0.8F * $$5 * $$2);
-      this.l.g = 0.0F;
-      this.g();
-   }
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = aro.b($$2) * 7.0F;
+         float $$10 = 2.0F + aro.b((float)($$8 * 2) * 0.25F);
+         float $$11 = aro.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fhl.a($$9, $$10, $$11));
+         $$2++;
+      }
 
-   private void g() {
-      this.j.f = 0.0F;
-      this.j.d = 1.0F;
-      this.j.b = 13.0F;
-      this.j.c = -13.0F;
-      this.l.f = 0.0F;
-      this.l.d = 1.0F;
-      this.l.b = -13.0F;
-      this.l.c = -13.0F;
-   }
+      $$2 = 0.47123894F;
 
-   private void a(T $$0, float $$1, float $$2) {
-      float $$3 = $$0.D($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
-      this.h.e = $$3;
-      this.g.e = -$$3;
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = aro.b($$2) * 5.0F;
+         float $$14 = 11.0F + aro.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = aro.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fhl.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fhp.a($$0, 64, 32);
    }
 
    @Override
-   public fee a() {
-      return this.q;
+   public fhj a() {
+      return this.a;
    }
 
-   public List<fee> c() {
-      return this.r;
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-   public List<fee> d() {
-      return this.s;
-   }
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + aro.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = aro.b($$6) * 9.0F;
+         this.b[$$7].d = aro.a($$6) * 9.0F;
+         $$6++;
+      }
 
-   public List<fee> e() {
-      return this.t;
-   }
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
 
-   public List<fee> f() {
-      return this.u;
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + aro.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = aro.b($$6) * 7.0F;
+         this.b[$$8].d = aro.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + aro.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = aro.b($$6) * 5.0F;
+         this.b[$$9].d = aro.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

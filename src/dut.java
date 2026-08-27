@@ -1,65 +1,106 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class dut extends dvq {
-   public static final Codec<dut> a = Codec.unit(() -> dut.b);
-   public static final dut b = new dut();
-   private final Map<cpn, cpn> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cpo.m, cpo.pr);
-      $$0.put(cpo.cn, cpo.pr);
-      $$0.put(cpo.b, cpo.pv);
-      $$0.put(cpo.eI, cpo.pw);
-      $$0.put(cpo.eJ, cpo.pw);
-      $$0.put(cpo.cQ, cpo.ps);
-      $$0.put(cpo.ni, cpo.ps);
-      $$0.put(cpo.nk, cpo.pD);
-      $$0.put(cpo.fj, cpo.pA);
-      $$0.put(cpo.ng, cpo.pA);
-      $$0.put(cpo.jI, cpo.pu);
-      $$0.put(cpo.nw, cpo.pu);
-      $$0.put(cpo.jE, cpo.pE);
-      $$0.put(cpo.jD, cpo.pE);
-      $$0.put(cpo.jK, cpo.pz);
-      $$0.put(cpo.nu, cpo.pz);
-      $$0.put(cpo.nK, cpo.pB);
-      $$0.put(cpo.nI, cpo.pB);
-      $$0.put(cpo.fP, cpo.pt);
-      $$0.put(cpo.fQ, cpo.pt);
-      $$0.put(cpo.eL, cpo.py);
-      $$0.put(cpo.eK, cpo.px);
-      $$0.put(cpo.eX, cpo.eY);
-   });
+public class dut extends dvb {
+   private static final Logger d = LogUtils.getLogger();
+   protected final dwe a;
+   protected gv b;
+   private final int h;
+   protected final cyw c;
+   private final List<dvz> i = Lists.newArrayList();
+   private final dyr j;
 
-   private dut() {
+   public dut(dyr $$0, dwe $$1, gv $$2, int $$3, cyw $$4, dup $$5) {
+      super(dvo.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+   }
+
+   public dut(dvn $$0, qs $$1) {
+      super(dvo.ad, $$1);
+      this.j = $$0.c();
+      this.b = new gv($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<rl> $$2 = aen.a(rd.a, $$0.b());
+      this.a = (dwe)dwe.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = cyw.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      qy $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(dvz.a(new Dynamic($$2, $$1x))));
    }
 
    @Override
-   public dvt.c a(cmp $$0, gu $$1, gu $$2, dvt.c $$3, dvt.c $$4, dvp $$5) {
-      cpn $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         dcb $$7 = $$4.b();
-         dcb $$8 = $$6.n();
-         if ($$7.b(cxh.a)) {
-            $$8 = $$8.a(cxh.a, $$7.c(cxh.a));
-         }
+   protected void a(dvn $$0, qs $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<rl> $$2 = aen.a(rd.a, $$0.b());
+      dwe.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      qy $$3 = new qy();
 
-         if ($$7.b(cxh.b)) {
-            $$8 = $$8.a(cxh.b, $$7.c(cxh.b));
-         }
-
-         if ($$7.b(cwq.a)) {
-            $$8 = $$8.a(cwq.a, $$7.c(cwq.a));
-         }
-
-         return new dvt.c($$4.a(), $$8, $$4.c());
+      for (dvz $$4 : this.i) {
+         $$3.add((rl)$$4.a($$2).getValue());
       }
+
+      $$1.a("junctions", $$3);
    }
 
    @Override
-   protected dvs<?> a() {
-      return dvs.l;
+   public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, cor $$5, gv $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
+   }
+
+   public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, gv $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public cyw a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public dwe b() {
+      return this.a;
+   }
+
+   public gv c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(dvz $$0) {
+      this.i.add($$0);
+   }
+
+   public List<dvz> e() {
+      return this.i;
    }
 }

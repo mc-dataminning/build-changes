@@ -1,13 +1,87 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bqp {
+public class bqp extends bps {
+   public static final int a = 120;
+   protected final bjf b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
+
+   public bqp(bjf $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public bqp(bjf $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public bqp(bjf $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bps.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      if (this.b.cO()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.ej() >= 100) {
+               return false;
+            }
+
+            if (this.b.ee().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         ehf $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
+   }
+
    @Nullable
-   public static eei a(bgi $$0, int $$1, int $$2, int $$3, eei $$4, double $$5) {
-      eei $$6 = $$4.a($$0.dn(), $$0.dp(), $$0.dt());
-      boolean $$7 = bqr.a($$0, $$1);
-      return bqu.a($$0, () -> {
-         gu $$7x = bqo.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bqr.a($$0, $$7x) ? $$7x : null;
-      });
+   protected ehf h() {
+      return btn.a(this.b, 10, 7);
+   }
+
+   @Override
+   public boolean b() {
+      return !this.b.H().l() && !this.b.cO();
+   }
+
+   @Override
+   public void c() {
+      this.b.H().a(this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public void d() {
+      this.b.H().n();
+      super.d();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

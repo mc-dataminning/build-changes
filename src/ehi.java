@@ -1,93 +1,207 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.util.BitSet;
 
-public final class ehi {
-   private final long a;
-   private final List<ehm> b;
-   private ehm c;
-   private int d;
+public final class ehi extends eho {
+   private final BitSet d;
    private int e;
+   private int f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
 
-   public ehi(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+   public ehi(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+      this.d = new BitSet($$0 * $$1 * $$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+   public static ehi a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      ehi $$9 = new ehi($$0, $$1, $$2);
+      $$9.e = $$3;
+      $$9.f = $$4;
+      $$9.g = $$5;
+      $$9.h = $$6;
+      $$9.i = $$7;
+      $$9.j = $$8;
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         ehm $$2 = new ehm($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
-      }
-
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new ehm($$5);
-   }
-
-   public ehm a(Optional<ehm> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         ehm $$1 = $$0.get();
-
-         for (ehm $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
+      for (int $$10 = $$3; $$10 < $$6; $$10++) {
+         for (int $$11 = $$4; $$11 < $$7; $$11++) {
+            for (int $$12 = $$5; $$12 < $$8; $$12++) {
+               $$9.a($$10, $$11, $$12, false);
             }
          }
       }
 
-      return this.b();
+      return $$9;
    }
 
-   public int a(ehm $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
+   public ehi(eho $$0) {
+      super($$0.a, $$0.b, $$0.c);
+      if ($$0 instanceof ehi) {
+         this.d = (BitSet)((ehi)$$0).d.clone();
+      } else {
+         this.d = new BitSet(this.a * this.b * this.c);
+
+         for (int $$1 = 0; $$1 < this.a; $$1++) {
+            for (int $$2 = 0; $$2 < this.b; $$2++) {
+               for (int $$3 = 0; $$3 < this.c; $$3++) {
+                  if ($$0.b($$1, $$2, $$3)) {
+                     this.d.set(this.a($$1, $$2, $$3));
+                  }
+               }
+            }
+         }
+      }
+
+      this.e = $$0.a(hb.a.a);
+      this.f = $$0.a(hb.a.b);
+      this.g = $$0.a(hb.a.c);
+      this.h = $$0.b(hb.a.a);
+      this.i = $$0.b(hb.a.b);
+      this.j = $$0.b(hb.a.c);
    }
 
-   public ehm b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public ehm a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
+   protected int a(int $$0, int $$1, int $$2) {
+      return ($$0 * this.b + $$1) * this.c + $$2;
    }
 
    @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.get(this.a($$0, $$1, $$2));
+   }
+
+   private void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.set(this.a($$0, $$1, $$2));
+      if ($$3) {
+         this.e = Math.min(this.e, $$0);
+         this.f = Math.min(this.f, $$1);
+         this.g = Math.min(this.g, $$2);
+         this.h = Math.max(this.h, $$0 + 1);
+         this.i = Math.max(this.i, $$1 + 1);
+         this.j = Math.max(this.j, $$2 + 1);
+      }
+   }
+
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   @Override
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public int a(hb.a $$0) {
+      return $$0.a(this.e, this.f, this.g);
+   }
+
+   @Override
+   public int b(hb.a $$0) {
+      return $$0.a(this.h, this.i, this.j);
+   }
+
+   static ehi a(eho $$0, eho $$1, ehr $$2, ehr $$3, ehr $$4, ehj $$5) {
+      ehi $$6 = new ehi($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
+      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
+      $$2.a(($$7x, $$8, $$9) -> {
+         boolean[] $$10 = new boolean[]{false};
+         $$3.a(($$10x, $$11, $$12) -> {
+            boolean[] $$13 = new boolean[]{false};
+            $$4.a(($$12x, $$13x, $$14) -> {
+               if ($$5.apply($$0.d($$7x, $$10x, $$12x), $$1.d($$8, $$11, $$13x))) {
+                  $$6.d.set($$6.a($$9, $$12, $$14));
+                  $$7[2] = Math.min($$7[2], $$14);
+                  $$7[5] = Math.max($$7[5], $$14);
+                  $$13[0] = true;
+               }
+
+               return true;
+            });
+            if ($$13[0]) {
+               $$7[1] = Math.min($$7[1], $$12);
+               $$7[4] = Math.max($$7[4], $$12);
+               $$10[0] = true;
+            }
+
+            return true;
+         });
+         if ($$10[0]) {
+            $$7[0] = Math.min($$7[0], $$9);
+            $$7[3] = Math.max($$7[3], $$9);
+         }
+
+         return true;
+      });
+      $$6.e = $$7[0];
+      $$6.f = $$7[1];
+      $$6.g = $$7[2];
+      $$6.h = $$7[3] + 1;
+      $$6.i = $$7[4] + 1;
+      $$6.j = $$7[5] + 1;
+      return $$6;
+   }
+
+   protected static void a(eho $$0, eho.b $$1, boolean $$2) {
+      ehi $$3 = new ehi($$0);
+
+      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
+         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
+            int $$6 = -1;
+
+            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
+               if ($$3.d($$5, $$4, $$7)) {
+                  if ($$2) {
+                     if ($$6 == -1) {
+                        $$6 = $$7;
+                     }
+                  } else {
+                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
+                  }
+               } else if ($$6 != -1) {
+                  int $$8 = $$5;
+                  int $$9 = $$4;
+                  $$3.b($$6, $$7, $$5, $$4);
+
+                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
+                     $$3.b($$6, $$7, $$8 + 1, $$4);
+                     $$8++;
+                  }
+
+                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
+                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
+                        $$3.b($$6, $$7, $$10, $$9 + 1);
+                     }
+
+                     $$9++;
+                  }
+
+                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
+                  $$6 = -1;
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
+   }
+
+   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$0; $$5 < $$1; $$5++) {
+         if (!this.a($$2, $$3, $$5, $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
    }
 }

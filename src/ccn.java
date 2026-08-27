@@ -1,57 +1,34 @@
-public class ccn extends ccx {
-   private final ccl a;
-   private final byo b;
-   private int c;
-   private final clj h;
+public class ccn extends ccj {
+   public ccn(bik<? extends ccn> $$0, cpk $$1) {
+      super($$0, $$1);
+   }
 
-   public ccn(byo $$0, clj $$1, ccl $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public ccn(cpk $$0, biw $$1) {
+      super(bik.I, $$1, $$0);
+   }
+
+   public ccn(cpk $$0, double $$1, double $$2, double $$3) {
+      super(bik.I, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean a(cfz $$0) {
-      return false;
+   protected cir m() {
+      return ciz.te;
    }
 
    @Override
-   public cfz a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
-      }
-
-      return super.a($$0);
+   protected float p() {
+      return 0.07F;
    }
 
    @Override
-   protected void a(cfz $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cfz $$0) {
-      $$0.a(this.b.dI(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(byo $$0, cfz $$1) {
-      this.b_($$1);
-      clk $$2 = this.a.g();
-      if ($$2 != null) {
-         cfz $$3 = this.a.a(0);
-         cfz $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(amr.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
-
-         this.h.t(this.h.r() + $$2.o());
+   protected void a(ehd $$0) {
+      super.a($$0);
+      if (this.dK() instanceof aki) {
+         this.dK().c(2002, this.dk(), ckv.a(ckw.c));
+         int $$1 = 3 + this.dK().z.a(5) + this.dK().z.a(5);
+         bim.a((aki)this.dK(), this.di(), $$1);
+         this.ak();
       }
    }
 }

@@ -1,39 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dnw extends dnt {
-   public static final Codec<dnw> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, dnw::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-
-   public dnw(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public dnw(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class dnw extends dmo {
+   public dnw(Codec<dpr> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dnu<?> b() {
-      return dnu.a;
+   protected void a(cpl $$0, art $$1, gv $$2, int $$3, gv.a $$4, dpr $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
+
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dey $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(cwe.d) && $$17.b(cwe.b) && $$17.b(cwe.a) && $$17.b(cwe.c) && $$17.b(cwe.e)) {
+                        $$17 = $$17.a(cwe.e, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(cwe.d, Boolean.valueOf($$9 < -$$8))
+                           .a(cwe.b, Boolean.valueOf($$9 > $$8))
+                           .a(cwe.a, Boolean.valueOf($$10 < -$$8))
+                           .a(cwe.c, Boolean.valueOf($$10 > $$8));
+                     }
+
+                     this.a($$0, $$4, $$17);
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

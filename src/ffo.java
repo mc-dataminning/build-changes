@@ -1,168 +1,109 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+public class ffo<T extends biy> extends ffp<T> {
+   public final fhj a = this.k.b("right_ear");
+   private final fhj A = this.k.b("left_ear");
+   private final fhl B = this.m.a();
+   private final fhl C = this.k.a();
+   private final fhl D = this.o.a();
+   private final fhl E = this.n.a();
 
-public class ffo {
-   private final ffo.b a;
-   private final AbuseReportLimits b;
-
-   public ffo(ffo.b $$0, AbuseReportLimits $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ffo(fhj $$0) {
+      super($$0, false);
    }
 
-   public ffo(UUID $$0, AbuseReportLimits $$1) {
-      this.a = new ffo.b(UUID.randomUUID(), Instant.now(), $$0);
-      this.b = $$1;
+   public static fhr a(fhn $$0) {
+      fhr $$1 = ffp.a($$0, false);
+      fhs $$2 = $$1.a();
+      $$2.a("body", fho.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fhl.a);
+      a($$0, $$1);
+      $$2.a("hat", fho.c(), fhl.a);
+      return $$1;
    }
 
-   public ffo.b a() {
-      return this.a;
+   public static void a(fhn $$0, fhr $$1) {
+      fhs $$2 = $$1.a();
+      fhs $$3 = $$2.a(
+         "head",
+         fho.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         fhl.a
+      );
+      $$3.a("left_ear", fho.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fhl.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", fho.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fhl.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
    }
 
-   public UUID b() {
-      return this.a.d;
-   }
-
-   public IntSet c() {
-      return this.a.e;
-   }
-
-   public String d() {
-      return this.a.f;
-   }
-
-   public void a(String $$0) {
-      this.a.f = $$0;
-   }
-
-   @Nullable
-   public ffr e() {
-      return this.a.g;
-   }
-
-   public void a(ffr $$0) {
-      this.a.g = $$0;
-   }
-
-   public void a(int $$0) {
-      this.a.a($$0, this.b);
-   }
-
-   public boolean b(int $$0) {
-      return this.a.e.contains($$0);
-   }
-
-   public boolean f() {
-      return StringUtils.isNotEmpty(this.d()) || !this.c().isEmpty() || this.e() != null;
-   }
-
-   @Nullable
-   public ffo.a g() {
-      if (this.a.e.isEmpty()) {
-         return ffo.a.b;
-      } else if (this.a.e.size() > this.b.maxReportedMessageCount()) {
-         return ffo.a.c;
-      } else if (this.a.g == null) {
-         return ffo.a.a;
-      } else {
-         return this.a.f.length() > this.b.maxOpinionCommentsLength() ? ffo.a.d : null;
-      }
-   }
-
-   public Either<ffo.c, ffo.a> a(ffs $$0) {
-      ffo.a $$1 = this.g();
-      if ($$1 != null) {
-         return Either.right($$1);
-      } else {
-         String $$2 = Objects.requireNonNull(this.a.g).a();
-         ReportEvidence $$3 = this.a($$0.b());
-         ReportedEntity $$4 = new ReportedEntity(this.a.d);
-         AbuseReport $$5 = new AbuseReport(this.a.f, $$2, $$3, $$4, this.a.c);
-         return Either.left(new ffo.c(this.a.b, $$5));
-      }
-   }
-
-   private ReportEvidence a(ffh $$0) {
-      List<ReportChatMessage> $$1 = new ArrayList<>();
-      ffp $$2 = new ffp(this.b.leadingContextMessageCount());
-      $$2.a($$0, this.a.e, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-      return new ReportEvidence(Lists.reverse($$1));
-   }
-
-   private ReportChatMessage a(ffk.a $$0, boolean $$1) {
-      tq $$2 = $$0.g().j();
-      to $$3 = $$0.g().l();
-      List<ByteBuffer> $$4 = $$3.d().a().stream().map(th::a).toList();
-      ByteBuffer $$5 = x.a($$0.g().k(), th::a);
-      return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-   }
-
-   public ffo h() {
-      return new ffo(this.a.a(), this.b);
-   }
-
-   public static record a(sw e) {
-      public static final ffo.a a = new ffo.a(sw.c("gui.chatReport.send.no_reason"));
-      public static final ffo.a b = new ffo.a(sw.c("gui.chatReport.send.no_reported_messages"));
-      public static final ffo.a c = new ffo.a(sw.c("gui.chatReport.send.too_many_messages"));
-      public static final ffo.a d = new ffo.a(sw.c("gui.chatReport.send.comments_too_long"));
-
-      public sw a() {
-         return this.e;
-      }
-   }
-
-   public class b {
-      final UUID b;
-      final Instant c;
-      final UUID d;
-      final IntSet e = new IntOpenHashSet();
-      String f = "";
-      @Nullable
-      ffr g;
-
-      b(UUID $$1, Instant $$2, UUID $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public void a(int $$0, AbuseReportLimits $$1) {
-         if (this.e.contains($$0)) {
-            this.e.remove($$0);
-         } else if (this.e.size() < $$1.maxReportedMessageCount()) {
-            this.e.add($$0);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.m.b(this.B);
+      this.k.b(this.C);
+      this.o.b(this.D);
+      this.n.b(this.E);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = (float) (Math.PI / 6);
+      float $$7 = $$3 * 0.1F + $$1 * 0.5F;
+      float $$8 = 0.08F + $$2 * 0.4F;
+      this.A.g = (float) (-Math.PI / 6) - aro.b($$7 * 1.2F) * $$8;
+      this.a.g = (float) (Math.PI / 6) + aro.b($$7) * $$8;
+      if ($$0 instanceof caa $$9) {
+         cad $$10 = $$9.gb();
+         if ($$10 == cad.e) {
+            float $$11 = $$3 / 60.0F;
+            this.a.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * aro.a($$11 * 30.0F) * 10.0F;
+            this.A.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * aro.b($$11 * 30.0F) * 10.0F;
+            this.k.b = aro.a($$11 * 10.0F);
+            this.k.c = aro.a($$11 * 40.0F) + 0.4F;
+            this.n.g = (float) (Math.PI / 180.0) * (70.0F + aro.b($$11 * 40.0F) * 10.0F);
+            this.o.g = this.n.g * -1.0F;
+            this.n.c = aro.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.o.c = aro.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.m.c = aro.a($$11 * 40.0F) * 0.35F;
+         } else if ($$10 == cad.a && this.c == 0.0F) {
+            this.a($$0);
+         } else if ($$10 == cad.b) {
+            fdk.a(this.n, this.o, this.k, !$$0.fR());
+         } else if ($$10 == cad.c) {
+            fdk.a(this.n, this.o, $$0, !$$0.fR());
+         } else if ($$10 == cad.d) {
+            this.k.e = 0.5F;
+            this.k.f = 0.0F;
+            if ($$0.fR()) {
+               this.n.f = -0.5F;
+               this.n.e = -0.9F;
+            } else {
+               this.o.f = 0.5F;
+               this.o.e = -0.9F;
+            }
          }
+      } else if ($$0.ag() == bik.bs) {
+         fdk.a(this.o, this.n, $$0.fS(), this.c, $$3);
       }
 
-      public ffo.b a() {
-         ffo.b $$0 = ffo.this.new b(this.b, this.c, this.d);
-         $$0.e.addAll(this.e);
-         $$0.f = this.f;
-         $$0.g = this.g;
-         return $$0;
-      }
+      this.x.a(this.q);
+      this.y.a(this.p);
+      this.b.a(this.o);
+      this.w.a(this.n);
+      this.z.a(this.m);
+      this.l.a(this.k);
+   }
 
-      public boolean a(UUID $$0) {
-         return $$0.equals(this.d);
+   protected void a(T $$0, float $$1) {
+      if (this.c > 0.0F && $$0 instanceof cab && ((cab)$$0).gb() == cad.a) {
+         fdk.a(this.n, this.o, $$0, this.c, $$1);
+      } else {
+         super.a($$0, $$1);
       }
    }
 
-   public static record c(UUID a, AbuseReport b) {
+   private void a(T $$0) {
+      if ($$0.fR()) {
+         this.o.e = -1.8F;
+      } else {
+         this.n.e = -1.8F;
+      }
    }
 }

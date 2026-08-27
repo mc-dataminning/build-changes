@@ -1,24 +1,42 @@
-public class zd implements uo<zb> {
-   private final int a;
+import java.util.Optional;
 
-   public zd(int $$0) {
+public class zd implements uw<wo> {
+   private final te a;
+   private final Optional<byte[]> b;
+   private final boolean c;
+
+   public zd(te $$0, Optional<byte[]> $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zd(sf $$0) {
-      this.a = $$0.m();
+   public zd(sh $$0) {
+      this.a = $$0.l();
+      this.b = $$0.b(sh::b);
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, sh::a);
+      $$0.a(this.c);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public te a() {
       return this.a;
+   }
+
+   public Optional<byte[]> d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

@@ -1,23 +1,23 @@
 import com.google.gson.JsonObject;
 
 public class bw implements al<bw.a> {
-   static final acq a = new acq("impossible");
+   static final aep a = new aep("impossible");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
    @Override
-   public void a(acy $$0, al.a<bw.a> $$1) {
+   public void a(aex $$0, al.a<bw.a> $$1) {
    }
 
    @Override
-   public void b(acy $$0, al.a<bw.a> $$1) {
+   public void b(aex $$0, al.a<bw.a> $$1) {
    }
 
    @Override
-   public void a(acy $$0) {
+   public void a(aex $$0) {
    }
 
    public bw.a b(JsonObject $$0, be $$1) {
@@ -26,7 +26,7 @@ public class bw implements al<bw.a> {
 
    public static class a implements am {
       @Override
-      public acq a() {
+      public aep a() {
          return bw.a;
       }
 

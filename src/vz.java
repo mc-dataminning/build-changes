@@ -1,23 +1,17 @@
-public record vz(int a, float b) implements uo<ur> {
-   public vz(bfz $$0) {
-      this($$0.af(), $$0.eB());
-   }
+public record vz(gv b) implements vo {
+   public static final aep a = new aep("debug/poi_removed");
 
-   public vz(sf $$0) {
-      this($$0.m(), $$0.readFloat());
+   public vz(sh $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
-      $$0.writeFloat(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.b);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public float c() {
-      return this.b;
+   @Override
+   public aep a() {
+      return a;
    }
 }

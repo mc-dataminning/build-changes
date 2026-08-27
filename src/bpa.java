@@ -1,59 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bpa<T> {
-   private final T a;
-   private long b;
+public class bpa extends bps {
+   private final bvl a;
+   @Nullable
+   private cbl b;
+   private final cpk c;
+   private final float d;
+   private int e;
+   private final btj f;
 
-   public bpa(T $$0, long $$1) {
+   public bpa(bvl $$0, float $$1) {
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bpa<T> a(T $$0) {
-      return new bpa<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bpa<T> a(T $$0, long $$1) {
-      return new bpa<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.c = $$0.dK();
+      this.d = $$1;
+      this.f = btj.b().a((double)$$1);
+      this.a(EnumSet.of(bps.a.b));
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
-   @aqa
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean b() {
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f((big)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
-   public static <T> Codec<bpa<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bpa<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ee().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.a.A(false);
+      this.b = null;
+   }
+
+   @Override
+   public void e() {
+      this.a.D().a(this.b.dp(), this.b.dt(), this.b.dv(), 10.0F, (float)this.a.W());
+      this.e--;
+   }
+
+   private boolean a(cbl $$0) {
+      for (bgn $$1 : bgn.values()) {
+         ciw $$2 = $$0.b($$1);
+         if (this.a.p() && $$2.a(ciz.qL)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,46 +1,210 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ebq extends eay {
-   private static final Logger a = LogUtils.getLogger();
+public class ebq implements eca {
+   private final ecb a;
+   private final eca b;
 
-   ebq(eck[] $$0) {
-      super($$0);
+   public ebq(ecb $$0, eca $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public eba b() {
-      return ebb.g;
+   public int a() {
+      return this.b.a();
    }
 
    @Override
-   public cfz a(cfz $$0, dzk $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         Optional<cjo> $$2 = $$1.d().q().a(cjf.b, new bee($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cfz $$3 = $$2.get().a($$1.d().B_());
-            if (!$$3.b()) {
-               return $$3.c($$0.L());
-            }
-         }
-
-         a.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public int b() {
+      return this.b.b();
    }
 
-   public static eay.a<?> c() {
-      return a(ebq::new);
+   @Override
+   public int c() {
+      return this.b.c();
    }
 
-   public static class a extends eay.c<ebq> {
-      public ebq a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         return new ebq($$2);
-      }
+   @Override
+   public float d() {
+      return this.b.d();
+   }
+
+   @Override
+   public long e() {
+      return this.b.e();
+   }
+
+   @Override
+   public long f() {
+      return this.b.f();
+   }
+
+   @Override
+   public String g() {
+      return this.a.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
+
+   @Override
+   public int l() {
+      return this.b.l();
+   }
+
+   @Override
+   public cph m() {
+      return this.a.m();
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public void a(float $$0) {
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(gv $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(cph $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public cpg q() {
+      return this.a.q();
+   }
+
+   @Override
+   public dgp.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(dgp.c $$0) {
+   }
+
+   @Override
+   public bgl s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public egs<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, cpm $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

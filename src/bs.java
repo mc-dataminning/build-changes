@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
 public class bs extends cv<bs.a> {
-   static final acq a = new acq("filled_bucket");
+   static final aep a = new aep("filled_bucket");
 
    @Override
-   public acq a() {
+   public aep a() {
       return a;
    }
 
@@ -13,7 +13,7 @@ public class bs extends cv<bs.a> {
       return new bs.a($$1, $$3);
    }
 
-   public void a(aig $$0, cfz $$1) {
+   public void a(akj $$0, ciw $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -29,7 +29,7 @@ public class bs extends cv<bs.a> {
          return new bs.a(ba.a, $$0);
       }
 
-      public boolean a(cfz $$0) {
+      public boolean a(ciw $$0) {
          return this.a.a($$0);
       }
 

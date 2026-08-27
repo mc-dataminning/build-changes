@@ -1,36 +1,56 @@
-public class ajc implements abu {
-   private static final sw a = sw.c("multiplayer.status.request_handled");
-   private final abt b;
-   private final sd c;
-   private boolean d;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-   public ajc(abt $$0, sd $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ajc implements aiz {
+   static final SuggestionProvider<ds> b = ($$0, $$1) -> dv.a(a($$0).a(), $$1);
+   public static final Function<String, aja.c> a = $$0 -> new aja.c() {
+         @Override
+         public aiz a(CommandContext<ds> $$0x) {
+            return new ajc(ajc.a($$0), er.e($$0, $$0));
+         }
+
+         @Override
+         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
+            return $$0.then(dt.a("storage").then($$1.apply(dt.a($$0, er.a()).suggests(ajc.b))));
+         }
+      };
+   private final ebo c;
+   private final aep d;
+
+   static ebo a(CommandContext<ds> $$0) {
+      return ((ds)$$0.getSource()).l().aG();
+   }
+
+   ajc(ebo $$0, aep $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(sw $$0) {
+   public void a(qs $$0) {
+      this.c.a(this.d, $$0);
    }
 
    @Override
-   public boolean a() {
-      return this.c.h();
+   public qs a() {
+      return this.c.a(this.d);
    }
 
    @Override
-   public void a(abw $$0) {
-      if (this.d) {
-         this.c.a(a);
-      } else {
-         this.d = true;
-         this.c.a(new abs(this.b));
-      }
+   public te b() {
+      return te.a("commands.data.storage.modified", this.d);
    }
 
    @Override
-   public void a(abv $$0) {
-      this.c.a(new abr($$0.a()));
-      this.c.a(a);
+   public te a(rl $$0) {
+      return te.a("commands.data.storage.query", this.d, re.c($$0));
+   }
+
+   @Override
+   public te a(ei.g $$0, double $$1, int $$2) {
+      return te.a("commands.data.storage.get", $$0, this.d, String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

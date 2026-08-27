@@ -1,135 +1,117 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class eah extends eaf {
-   public static final int c = 1;
-   public static final int e = 0;
-   protected final int f;
-   protected final int g;
-   protected final eaz[] h;
-   final BiFunction<cfz, dzk, cfz> i;
-   private final eae j = new eah.c() {
+public abstract class eah extends dzz {
+   @Override
+   public eaa d() {
+      return eac.b;
+   }
+
+   @Override
+   public eaa e() {
+      return eac.c;
+   }
+
+   @Override
+   public cir a() {
+      return ciz.pL;
+   }
+
+   @Override
+   public void a(cpk $$0, gv $$1, eab $$2, art $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aou.zL, aov.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(iw.af, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Nullable
+   @Override
+   public iu h() {
+      return iw.m;
+   }
+
+   @Override
+   protected boolean a(cpk $$0) {
+      return $$0.X().b(cpg.Q);
+   }
+
+   @Override
+   protected void a(cpl $$0, gv $$1, dey $$2) {
+      dck $$3 = $$2.t() ? $$0.c_($$1) : null;
+      csk.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(cpn $$0) {
+      return 4;
+   }
+
+   @Override
+   public dey b(eab $$0) {
+      return csl.G.n().a(cwx.a, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eaa $$0) {
+      return $$0 == eac.c || $$0 == eac.b;
+   }
+
+   @Override
+   public int c(cpn $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(cpn $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(eab $$0, coq $$1, gv $$2, eaa $$3, hb $$4) {
+      return $$4 == hb.a && !$$3.a(apo.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<aot> j() {
+      return Optional.of(aou.cB);
+   }
+
+   public static class a extends eah {
       @Override
-      public void a(Consumer<cfz> $$0, dzk $$1) {
-         eah.this.a(eaz.a(eah.this.i, $$0, $$1), $$1);
+      protected void a(dez.a<eaa, eab> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
-   };
 
-   protected eah(int $$0, int $$1, eck[] $$2, eaz[] $$3) {
-      super($$2);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$3;
-      this.i = ebb.a($$3);
-   }
-
-   @Override
-   public void a(dzv $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.h.length; $$1++) {
-         this.h[$$1].a($$0.b(".functions[" + $$1 + "]"));
+      @Override
+      public int d(eab $$0) {
+         return $$0.c(b);
       }
-   }
 
-   protected abstract void a(Consumer<cfz> var1, dzk var2);
-
-   @Override
-   public boolean expand(dzk $$0, Consumer<eae> $$1) {
-      if (this.a($$0)) {
-         $$1.accept(this.j);
-         return true;
-      } else {
+      @Override
+      public boolean c(eab $$0) {
          return false;
       }
    }
 
-   public static eah.a<?> a(eah.d $$0) {
-      return new eah.b($$0);
-   }
-
-   public abstract static class a<T extends eah.a<T>> extends eaf.a<T> implements eaw<T> {
-      protected int a = 1;
-      protected int b = 0;
-      private final List<eaz> c = Lists.newArrayList();
-
-      public T a(eaz.a $$0) {
-         this.c.add($$0.b());
-         return this.at_();
-      }
-
-      protected eaz[] a() {
-         return this.c.toArray(new eaz[0]);
-      }
-
-      public T a(int $$0) {
-         this.a = $$0;
-         return this.at_();
-      }
-
-      public T b(int $$0) {
-         this.b = $$0;
-         return this.at_();
-      }
-   }
-
-   static class b extends eah.a<eah.b> {
-      private final eah.d c;
-
-      public b(eah.d $$0) {
-         this.c = $$0;
-      }
-
-      protected eah.b g() {
-         return this;
+   public static class b extends eah {
+      @Override
+      public int d(eab $$0) {
+         return 8;
       }
 
       @Override
-      public eaf b() {
-         return this.c.build(this.a, this.b, this.f(), this.a());
+      public boolean c(eab $$0) {
+         return true;
       }
-   }
-
-   protected abstract class c implements eae {
-      @Override
-      public int a(float $$0) {
-         return Math.max(apa.d((float)eah.this.f + (float)eah.this.g * $$0), 0);
-      }
-   }
-
-   @FunctionalInterface
-   protected interface d {
-      eah build(int var1, int var2, eck[] var3, eaz[] var4);
-   }
-
-   public abstract static class e<T extends eah> extends eaf.b<T> {
-      public void a(JsonObject $$0, T $$1, JsonSerializationContext $$2) {
-         if ($$1.f != 1) {
-            $$0.addProperty("weight", $$1.f);
-         }
-
-         if ($$1.g != 0) {
-            $$0.addProperty("quality", $$1.g);
-         }
-
-         if (!ArrayUtils.isEmpty($$1.h)) {
-            $$0.add("functions", $$2.serialize($$1.h));
-         }
-      }
-
-      public final T a(JsonObject $$0, JsonDeserializationContext $$1, eck[] $$2) {
-         int $$3 = aor.a($$0, "weight", 1);
-         int $$4 = aor.a($$0, "quality", 0);
-         eaz[] $$5 = aor.a($$0, "functions", new eaz[0], $$1, eaz[].class);
-         return this.b($$0, $$1, $$3, $$4, $$2, $$5);
-      }
-
-      protected abstract T b(JsonObject var1, JsonDeserializationContext var2, int var3, int var4, eck[] var5, eaz[] var6);
    }
 }

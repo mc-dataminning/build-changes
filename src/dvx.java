@@ -1,28 +1,42 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.List;
 
-public class dvx implements dwb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<dvx> a = RecordCodecBuilder.create($$0 -> $$0.group(acq.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, dvx::new));
-   private final acq d;
+public class dvx extends dwe {
+   public static final Codec<dvx> a = Codec.unit(() -> dvx.b);
+   public static final dvx b = new dvx();
 
-   public dvx(acq $$0) {
-      this.d = $$0;
+   private dvx() {
+      super(dwg.a.a);
    }
 
    @Override
-   public qr a(apf $$0, @Nullable qr $$1) {
-      qr $$2 = $$1 == null ? new qr() : $$1.h();
-      acq.a.encodeStart(rc.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public ia a(dyr $$0, cyw $$1) {
+      return ia.g;
    }
 
    @Override
-   public dwc<?> a() {
-      return dwc.d;
+   public List<dyq.c> a(dyr $$0, gv $$1, cyw $$2, art $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public dup a(dyr $$0, gv $$1, cyw $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(dyr $$0, cqe $$1, cqc $$2, dgv $$3, gv $$4, gv $$5, cyw $$6, dup $$7, art $$8, boolean $$9) {
+      return true;
+   }
+
+   @Override
+   public dwf<?> a() {
+      return dwf.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

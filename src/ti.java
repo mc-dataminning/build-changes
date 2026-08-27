@@ -1,64 +1,99 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class ti {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final th[] c;
+public interface ti {
+   Optional<asn> a = Optional.of(asn.a);
+   ti b = new ti() {
+      @Override
+      public <T> Optional<T> a(ti.a<T> $$0) {
+         return Optional.empty();
+      }
 
-   public ti(int $$0) {
-      this.c = new th[$$0];
-   }
+      @Override
+      public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
+         return Optional.empty();
+      }
+   };
 
-   public static ti a() {
-      return new ti(128);
-   }
+   <T> Optional<T> a(ti.a<T> var1);
 
-   public int a(th $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   <T> Optional<T> a(ti.b<T> var1, ua var2);
+
+   static ti e(final String $$0) {
+      return new ti() {
+         @Override
+         public <T> Optional<T> a(ti.a<T> $$0x) {
+            return $$0.accept($$0);
          }
-      }
 
-      return -1;
-   }
-
-   @Nullable
-   public th a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(tl $$0) {
-      List<th> $$1 = $$0.l().d().a();
-      ArrayDeque<th> $$2 = new ArrayDeque<>($$1.size() + 1);
-      $$2.addAll($$1);
-      th $$3 = $$0.k();
-      if ($$3 != null) {
-         $$2.add($$3);
-      }
-
-      this.a($$2);
-   }
-
-   @VisibleForTesting
-   void a(List<th> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<th> $$0) {
-      Set<th> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         th $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+         @Override
+         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1) {
+            return $$0.accept($$1, $$0);
          }
-      }
+      };
+   }
+
+   static ti a(final String $$0, final ua $$1) {
+      return new ti() {
+         @Override
+         public <T> Optional<T> a(ti.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static ti a(ti... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static ti a(final List<? extends ti> $$0) {
+      return new ti() {
+         @Override
+         public <T> Optional<T> a(ti.a<T> $$0x) {
+            for (ti $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1) {
+            for (ti $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(ua var1, String var2);
    }
 }

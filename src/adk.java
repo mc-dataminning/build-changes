@@ -1,6 +1,7 @@
-public record adk(akn a, ada b, hl<acz> c, dze d) implements AutoCloseable {
+public record adk() implements adi {
+   public static final adk a = new adk();
+
    @Override
-   public void close() {
-      this.a.close();
+   public void a(sh $$0) {
    }
 }

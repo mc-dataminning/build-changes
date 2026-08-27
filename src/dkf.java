@@ -1,44 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkf extends dkd {
-   public dkf(Codec<dmz> $$0) {
-      super($$0);
-   }
+public class dkf {
+   public static final Codec<dkf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dpq.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dkf::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-   @Override
-   protected boolean a(cmn $$0, apf $$1, gu $$2, dcb $$3) {
-      gu.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
-
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(ha.b);
-      }
-
-      gu $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ha> $$9 = ha.c.a.c($$1);
-
-      for (ha $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ha.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public dkf(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

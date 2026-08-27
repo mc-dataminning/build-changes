@@ -1,95 +1,99 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class flt implements aky {
-   private Map<czp<?>, flu<?>> d = ImmutableMap.of();
-   private final eov e;
-   private final fea f;
-   public cmm a;
-   public emz b;
-   public eeg c;
-   private final Supplier<fko> g;
-   private final Supplier<fpw> h;
-   private final Supplier<fow> i;
-
-   public flt(eov $$0, fea $$1, Supplier<fko> $$2, Supplier<fpw> $$3, Supplier<fow> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class flt extends flw {
+   flt(fie $$0, flr $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   @Nullable
-   public <E extends czn> flu<E> a(E $$0) {
-      return (flu<E>)this.d.get($$0.u());
-   }
-
-   public void a(cmm $$0, emz $$1, eeg $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends czn> void a(E $$0, float $$1, eij $$2, fjx $$3) {
-      flu<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.u().a($$0.q())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends czn> void a(flu<T> $$0, T $$1, float $$2, eij $$3, fjx $$4) {
-      cmm $$5 = $$1.k();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = fjv.a($$5, $$1.p());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, fum.d);
-   }
-
-   public <E extends czn> boolean a(E $$0, eij $$1, fjx $$2, int $$3, int $$4) {
-      flu<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(czn $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable cmm $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
+   flt(fie $$0, flr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public void a(akx $$0) {
-      flv.a $$1 = new flv.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = flw.a($$1);
+   public fla b() {
+      return fla.b;
+   }
+
+   public static class a implements fkz<iz> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         art $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         flt $$12 = new flt($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements fkz<iz> {
+      private final flr a;
+
+      public b(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flt $$8 = new flt($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<it> o() {
+               return Optional.of(it.a);
+            }
+         };
+         $$8.t = aro.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
+
+   public static class c implements fkz<iz> {
+      private final flr a;
+
+      public c(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flt $$8 = new flt($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fkz<iz> {
+      private final flr a;
+
+      public d(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         flt $$9 = new flt($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
+      }
    }
 }

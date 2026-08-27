@@ -1,45 +1,23 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public class esx extends esg {
+   private final erv a;
 
-public enum esx {
-   a,
-   b,
-   c,
-   d;
-
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public esw a() {
-      return switch (this) {
-         case a, b -> esw.b;
-         case c, d -> esw.a;
-      };
+   public esx(erv $$0, te $$1) {
+      super(0, 0, $$0.a($$1), 9 * 2, $$1);
+      this.a = $$0;
    }
 
-   public esx b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   @Override
+   protected void b(erx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p() + this.k() / 2;
+      int $$5 = this.r() + this.h() / 2;
+      te $$6 = this.l();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = exg.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5, -8355712, false);
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+   @Override
+   protected void a(evt $$0) {
+      $$0.a(evs.a, this.l());
    }
 }

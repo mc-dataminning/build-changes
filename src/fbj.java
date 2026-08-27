@@ -1,44 +1,89 @@
-public class fbj<T extends bfj> extends fbo<T> {
-   private final fee a;
-   private final fee[] b = new fee[9];
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-   public fbj(fee $$0) {
-      this.a = $$0;
+public class fbj extends etm {
+   private static final ett c = new ett(new aep("recipe_book/tab"), new aep("recipe_book/tab_selected"));
+   private final eqw d;
+   private static final float e = 15.0F;
+   private float l;
 
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+   public fbj(eqw $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a("body", fej.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), feg.a(0.0F, 17.6F, 0.0F));
-      apf $$2 = apf.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fej.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), feg.a($$4, 24.6F, $$5));
-      }
-
-      return fek.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * apa.a($$3 * 0.3F + (float)$$6) + 0.4F;
+   public void a(eqn $$0) {
+      eqa $$1 = $$0.t.m();
+      List<fbl> $$2 = $$1.a(this.d);
+      if ($$0.t.bQ instanceof cfm) {
+         for (fbl $$3 : $$2) {
+            for (clz<?> $$4 : $$3.a($$1.a((cfm<?>)$$0.t.bQ))) {
+               if ($$1.d($$4)) {
+                  this.l = 15.0F;
+                  return;
+               }
+            }
+         }
       }
    }
 
    @Override
-   public fee a() {
-      return this.a;
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.l > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
+         }
+
+         eqn $$5 = eqn.N();
+         RenderSystem.disableDepthTest();
+         aep $$6 = this.a.a(true, this.b);
+         int $$7 = this.p();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.ap());
+         if (this.l > 0.0F) {
+            $$0.c().b();
+            this.l -= $$3;
+         }
+      }
+   }
+
+   private void a(erx $$0, fth $$1) {
+      List<ciw> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.p() + 9 + $$3, this.r() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.p() + 3 + $$3, this.r() + 5);
+         $$0.b($$2.get(1), this.p() + 14 + $$3, this.r() + 5);
+      }
+   }
+
+   public eqw b() {
+      return this.d;
+   }
+
+   public boolean a(eqa $$0) {
+      List<fbl> $$1 = $$0.a(this.d);
+      this.j = false;
+      if ($$1 != null) {
+         for (fbl $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.j = true;
+               break;
+            }
+         }
+      }
+
+      return this.j;
    }
 }

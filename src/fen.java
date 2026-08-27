@@ -1,44 +1,74 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class fen<T extends bvx> extends fet<T> {
+   private static final float a = 1.5F;
+   private static final float b = 1.0F;
+   private static final float f = 2.5F;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
+   private final fhj j;
+   private final fhj k;
+   private final fhj l;
+   private final fhj m;
+   private final fhj n;
+   private final fhj o;
+   private final fhj p;
 
-public class fen {
-   private final List<feh> a;
-   private final feg b;
-   private final Map<String, fen> c = Maps.newHashMap();
-
-   fen(List<feh> $$0, feg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fen(fhj $$0) {
+      this.g = $$0.b("root");
+      this.h = this.g.b("body");
+      this.i = this.h.b("head");
+      this.j = this.i.b("eyes");
+      this.k = this.h.b("tongue");
+      this.l = this.h.b("left_arm");
+      this.m = this.h.b("right_arm");
+      this.n = this.g.b("left_leg");
+      this.o = this.g.b("right_leg");
+      this.p = this.h.b("croaking_body");
    }
 
-   public fen a(String $$0, fej $$1, feg $$2) {
-      fen $$3 = new fen($$1.b(), $$2);
-      fen $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
+   public static fhp b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      fhs $$2 = $$1.a("root", fho.c(), fhl.a(0.0F, 24.0F, 0.0F));
+      fhs $$3 = $$2.a(
+         "body", fho.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), fhl.a(0.0F, -2.0F, 4.0F)
+      );
+      fhs $$4 = $$3.a(
+         "head", fho.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), fhl.a(0.0F, -2.0F, -1.0F)
+      );
+      fhs $$5 = $$4.a("eyes", fho.c(), fhl.a(-0.5F, 0.0F, 2.0F));
+      $$5.a("right_eye", fho.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fhl.a(-1.5F, -3.0F, -6.5F));
+      $$5.a("left_eye", fho.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fhl.a(2.5F, -3.0F, -6.5F));
+      $$3.a("croaking_body", fho.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new fhn(-0.1F)), fhl.a(0.0F, -1.0F, -5.0F));
+      fhs $$6 = $$3.a("tongue", fho.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), fhl.a(0.0F, -1.01F, 1.0F));
+      fhs $$7 = $$3.a("left_arm", fho.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fhl.a(4.0F, -1.0F, -6.5F));
+      $$7.a("left_hand", fho.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fhl.a(0.0F, 3.0F, -1.0F));
+      fhs $$8 = $$3.a("right_arm", fho.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fhl.a(-4.0F, -1.0F, -6.5F));
+      $$8.a("right_hand", fho.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), fhl.a(0.0F, 3.0F, 0.0F));
+      fhs $$9 = $$2.a("left_leg", fho.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fhl.a(3.5F, -3.0F, 4.0F));
+      $$9.a("left_foot", fho.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fhl.a(2.0F, 3.0F, 0.0F));
+      fhs $$10 = $$2.a("right_leg", fho.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fhl.a(-3.5F, -3.0F, 4.0F));
+      $$10.a("right_foot", fho.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fhl.a(-2.0F, 3.0F, 0.0F));
+      return fhp.a($$0, 48, 48);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fhj::c);
+      this.a($$0.bY, eri.c, $$3);
+      this.a($$0.bZ, eri.a, $$3);
+      this.a($$0.ca, eri.d, $$3);
+      if ($$0.ba()) {
+         this.a(eri.e, $$1, $$2, 1.0F, 2.5F);
+      } else {
+         this.a(eri.b, $$1, $$2, 1.5F, 2.5F);
       }
 
-      return $$3;
+      this.a($$0.cb, eri.f, $$3);
+      this.p.k = $$0.bZ.c();
    }
 
-   public fee a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fee> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fen)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fee.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fee $$4 = new fee($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public fen a(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public fhj a() {
+      return this.g;
    }
 }

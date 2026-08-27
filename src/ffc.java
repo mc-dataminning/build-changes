@@ -1,26 +1,18 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public interface ffc {
-   ffc a = new ffc() {
-      @Override
-      public CompletableFuture<Optional<byq>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static ffc a(UserApiService $$0, eoc $$1, Path $$2) {
-      return (ffc)($$1.i() == eoc.a.c ? new fes($$0, $$1.h().getId(), $$2) : a);
+public abstract class ffc<E extends big> extends fek<E> {
+   public ffc() {
+      this(fno::d);
    }
 
-   CompletableFuture<Optional<byq>> a();
+   public ffc(Function<aep, fno> $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   public abstract Iterable<fhj> d();
 }

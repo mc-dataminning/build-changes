@@ -174,7 +174,7 @@ public class o {
          StackTraceElement $$6 = null;
          int $$7 = $$4.length - $$3;
          if ($$7 < 0) {
-            System.out.println("Negative index in crash report handler (" + $$4.length + "/" + $$3 + ")");
+            a.error("Negative index in crash report handler ({}/{})", new Object[]{$$4.length, $$3, ")"});
          }
 
          if ($$4 != null && 0 <= $$7 && $$7 < $$4.length) {
@@ -258,7 +258,7 @@ public class o {
    }
 
    public static void h() {
-      aoy.a();
+      arm.a();
       new o("Don't panic!", new Throwable()).e();
    }
 }

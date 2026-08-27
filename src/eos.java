@@ -1,65 +1,79 @@
-public class eos {
-   private static final int a = -1;
-   private final hk<eor> b = new hk<>(32);
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.locks.ReentrantLock;
+import org.slf4j.Logger;
 
-   public static eos a(eoo $$0) {
-      eos $$1 = new eos();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : ((cer)$$0x.d()).e_($$0x), cgc.oK, cgc.oL, cgc.oM, cgc.oN, cgc.tP);
-      $$1.a(($$0x, $$1x) -> cmk.a(0.5, 1.0), cpo.iH, cpo.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            qr $$2x = $$0x.b("Explosion");
-            int[] $$3 = $$2x != null && $$2x.b("Colors", 11) ? $$2x.n("Colors") : null;
-            if ($$3 != null && $$3.length != 0) {
-               if ($$3.length == 1) {
-                  return $$3[0];
-               } else {
-                  int $$4 = 0;
-                  int $$5 = 0;
-                  int $$6 = 0;
+public class eos extends ged {
+   private static final Logger a = LogUtils.getLogger();
+   private static final te b = te.c("mco.terms.title");
+   private static final te c = te.c("mco.terms.sentence.1");
+   private static final te y = td.a().b(te.c("mco.terms.sentence.2").c(ua.a.c(true)));
+   private final exv z;
+   private final els A;
+   private final emo B;
+   private boolean C;
 
-                  for (int $$7 : $$3) {
-                     $$4 += ($$7 & 0xFF0000) >> 16;
-                     $$5 += ($$7 & 0xFF00) >> 8;
-                     $$6 += ($$7 & 0xFF) >> 0;
-                  }
-
-                  $$4 /= $$3.length;
-                  $$5 /= $$3.length;
-                  $$6 /= $$3.length;
-                  return $$4 << 16 | $$5 << 8 | $$6;
-               }
-            } else {
-               return 9079434;
-            }
-         }
-      }, cgc.tB);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : chy.c($$0x), cgc.rv, cgc.uu, cgc.ux);
-
-      for (che $$2 : che.h()) {
-         $$1.a(($$1x, $$2x) -> $$2.a($$2x), $$2);
-      }
-
-      $$1.a(($$1x, $$2x) -> {
-         dcb $$3 = ((cds)$$1x.d()).e().n();
-         return $$0.a($$3, null, null, $$2x);
-      }, cpo.i, cpo.bt, cpo.bu, cpo.ff, cpo.aE, cpo.aF, cpo.aG, cpo.aH, cpo.aI, cpo.aK, cpo.fm);
-      $$1.a(($$0x, $$1x) -> cmg.d(), cpo.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? chy.c($$0x) : -1, cgc.uw);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : cgg.k($$0x), cgc.rf);
-      return $$1;
+   public eos(exv $$0, els $$1, emo $$2) {
+      super(b);
+      this.z = $$0;
+      this.A = $$1;
+      this.B = $$2;
    }
 
-   public int a(cfz $$0, int $$1) {
-      eor $$2 = this.b.a(jb.i.a($$0.d()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   @Override
+   public void aE_() {
+      int $$0 = this.g / 4 - 2;
+      this.d(esi.a(te.c("mco.terms.buttons.agree"), $$0x -> this.B()).a(this.g / 4, h(12), $$0, 20).a());
+      this.d(esi.a(te.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.z)).a(this.g / 2 + 4, h(12), $$0, 20).a());
    }
 
-   public void a(eor $$0, cml... $$1) {
-      for (cml $$2 : $$1) {
-         this.b.a($$0, cfu.a($$2.k()));
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.z);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
+   }
+
+   private void B() {
+      elx $$0 = elx.a();
+
+      try {
+         $$0.i();
+         this.f.a(new eof(this.z, new epm(this.A, this.z, this.B, new ReentrantLock())));
+      } catch (enk var3) {
+         a.error("Couldn't agree to TOS", var3);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.C) {
+         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
+         ac.i().a("https://aka.ms/MinecraftRealmsTerms");
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public te e() {
+      return td.a(super.e(), c).b(td.u).b(y);
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      $$0.a(this.i, c, this.g / 2 - 120, h(5), -1, false);
+      int $$4 = this.i.a(c);
+      int $$5 = this.g / 2 - 121 + $$4;
+      int $$6 = h(5);
+      int $$7 = $$5 + this.i.a(y) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.C = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.i, y, this.g / 2 - 120 + $$4, h(5), this.C ? 7107012 : 3368635, false);
    }
 }

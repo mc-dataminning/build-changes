@@ -1,32 +1,17 @@
-public class vn implements uo<ur> {
-   private final cfu a;
-   private final int b;
+public record vn(String b) implements vo {
+   public static final aep a = new aep("brand");
 
-   public vn(cfu $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public vn(sf $$0) {
-      this.a = $$0.a(jb.i);
-      this.b = $$0.m();
+   public vn(sh $$0) {
+      this($$0.r());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(jb.i, this.a);
-      $$0.d(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.b);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public cfu a() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
+   @Override
+   public aep a() {
+      return a;
    }
 }

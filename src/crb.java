@@ -1,41 +1,39 @@
-public class crb extends coy {
-   private final cpn d;
-   protected static final float a = 6.0F;
-   protected static final efb b = cpn.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+import javax.annotation.Nullable;
 
-   protected crb(cpn $$0, dca.d $$1) {
+public abstract class crb extends crx {
+   private final chk a;
+
+   protected crb(chk $$0, dex.d $$1) {
       super($$1);
-      this.d = $$0;
+      this.a = $$0;
    }
 
    @Override
-   public void b(dcb $$0, cmm $$1, gu $$2, dcb $$3, boolean $$4) {
-      this.a($$0, (cmn)$$1, $$2);
+   public boolean a(dey $$0) {
+      return true;
    }
 
    @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.d.n().a(c, Boolean.valueOf(false)), 2);
+   public dck a(gv $$0, dey $$1) {
+      return new dca($$0, $$1, this.a);
+   }
+
+   @Override
+   public void a(cpk $$0, gv $$1, dey $$2, @Nullable biw $$3, ciw $$4) {
+      if ($$0.B) {
+         $$0.a($$1, dcm.t).ifPresent($$1x -> $$1x.b($$4));
+      } else if ($$4.A()) {
+         $$0.a($$1, dcm.t).ifPresent($$1x -> $$1x.a($$4.y()));
       }
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if ($$1 == ha.a && !$$0.a($$3, $$4)) {
-         return cpo.a.n();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(c)) {
-            $$3.a($$4, dxf.c, dxf.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public ciw a(coq $$0, gv $$1, dey $$2) {
+      dck $$3 = $$0.c_($$1);
+      return $$3 instanceof dca ? ((dca)$$3).f() : super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return b;
+   public chk a() {
+      return this.a;
    }
 }

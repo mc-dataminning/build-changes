@@ -1,18 +1,8 @@
-public enum bgd {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o,
-   p;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgd {
 }

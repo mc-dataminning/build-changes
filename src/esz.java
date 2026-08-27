@@ -1,97 +1,35 @@
-import javax.annotation.Nullable;
+public class esz {
+   public static final aep a = new aep("textures/gui/title/minecraft.png");
+   public static final aep b = new aep("textures/gui/title/minceraft.png");
+   public static final aep c = new aep("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)art.a().i() < 1.0E-4;
+   private final boolean o;
 
-public record esz(esy a, int b, int c) {
-   private static final esz d = new esz(0, 0, 0, 0);
-
-   public esz(int $$0, int $$1, int $$2, int $$3) {
-      this(new esy($$0, $$1), $$2, $$3);
+   public esz(boolean $$0) {
+      this.o = $$0;
    }
 
-   public static esz a() {
-      return d;
+   public void a(erx $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   public static esz a(esw $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new esz($$1, $$2, $$3, $$4);
-         case b -> new esz($$2, $$1, $$4, $$3);
-      };
-   }
-
-   public esz a(esx $$0) {
-      return new esz(this.a.a($$0), this.b, this.c);
-   }
-
-   public int a(esw $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
-   }
-
-   public int b(esx $$0) {
-      esw $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
-   }
-
-   public esz c(esx $$0) {
-      int $$1 = this.b($$0);
-      esw $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
-
-   public boolean a(esz $$0) {
-      return this.a($$0, esw.a) && this.a($$0, esw.b);
-   }
-
-   public boolean a(esz $$0, esw $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(esw $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
-   @Nullable
-   public esz b(esz $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new esz($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
-   }
-
-   public int b() {
-      return this.a.b();
-   }
-
-   public int c() {
-      return this.a.b() + this.c;
-   }
-
-   public int d() {
-      return this.a.a();
-   }
-
-   public int e() {
-      return this.a.a() + this.b;
-   }
-
-   public esy f() {
-      return this.a;
-   }
-
-   public int g() {
-      return this.b;
-   }
-
-   public int h() {
-      return this.c;
+   public void a(erx $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

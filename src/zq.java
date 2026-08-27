@@ -1,40 +1,47 @@
-public class zq implements uo<zb> {
-   private static final int b = 32767;
-   public static final acq a = new acq("brand");
-   private final acq c;
-   private final sf d;
+import java.util.ArrayList;
+import java.util.List;
 
-   public zq(acq $$0, sf $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public record zq(int b, List<aea.b<?>> c) implements uw<wo> {
+   public static final int a = 255;
+
+   public zq(sh $$0) {
+      this($$0.m(), b($$0));
    }
 
-   public zq(sf $$0) {
-      this.c = $$0.t();
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 32767) {
-         this.d = new sf($$0.readBytes($$1));
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 32767 bytes");
+   private static void a(List<aea.b<?>> $$0, sh $$1) {
+      for (aea.b<?> $$2 : $$0) {
+         $$2.a($$1);
       }
+
+      $$1.k(255);
+   }
+
+   private static List<aea.b<?>> b(sh $$0) {
+      List<aea.b<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aea.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.c);
-      $$0.writeBytes(this.d);
+   public void a(sh $$0) {
+      $$0.c(this.b);
+      a(this.c, $$0);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
-      this.d.release();
    }
 
-   public acq a() {
+   public int a() {
+      return this.b;
+   }
+
+   public List<aea.b<?>> d() {
       return this.c;
-   }
-
-   public sf c() {
-      return this.d;
    }
 }

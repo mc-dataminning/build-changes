@@ -1,159 +1,81 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import java.util.stream.IntStream;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwe implements dhd.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<dwe> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, dwe::a)
-   );
-   public static final aou<dwe> a = aou.a(f);
-   private final dwi g;
-   private final dwi h;
-   private final dwi i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
+public abstract class dwe {
+   public static final Codec<dwe> e = jc.ai.q().dispatch("element_type", dwe::a, dwf::codec);
+   private static final hf<dyo> a = hf.a(new dyo(List.of()));
+   @Nullable
+   private volatile dwg.a b;
 
-   public static dwe a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new dwe(new dil(0L), $$0, $$1, $$2, $$3, $$4);
+   protected static <E extends dwe> RecordCodecBuilder<E, dwg.a> d() {
+      return dwg.a.c.fieldOf("projection").forGetter(dwe::e);
    }
 
-   private dwe(dwi $$0, dwi $$1, dwi $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
+   protected dwe(dwg.a $$0) {
+      this.b = $$0;
    }
 
-   @VisibleForTesting
-   public dwe(apf $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         dwi.a($$0, IntStream.rangeClosed(-15, 0)),
-         dwi.a($$0, IntStream.rangeClosed(-15, 0)),
-         dwi.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
+   public abstract ia a(dyr var1, cyw var2);
+
+   public abstract List<dyq.c> a(dyr var1, gv var2, cyw var3, art var4);
+
+   public abstract dup a(dyr var1, gv var2, cyw var3);
+
+   public abstract boolean a(dyr var1, cqe var2, cqc var3, dgv var4, gv var5, gv var6, cyw var7, dup var8, art var9, boolean var10);
+
+   public abstract dwf<?> a();
+
+   public void a(cpl $$0, dyq.c $$1, gv $$2, cyw $$3, art $$4, dup $$5) {
    }
 
-   public dwe a(apf $$0) {
-      return new dwe($$0, this.p, this.q, this.l, this.m, this.n);
+   public dwe a(dwg.a $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   public double a(dhd.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
-
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         dwf $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(dwi.b($$4 * $$13), dwi.b($$5 * $$13), dwi.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
-         }
-
-         $$13 /= 2.0;
+   public dwg.a e() {
+      dwg.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
       }
-
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
-
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = dwi.b($$1 * $$13);
-         double $$21 = dwi.b($$2 * $$13);
-         double $$22 = dwi.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            dwf $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         if (!$$18) {
-            dwf $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         $$13 /= 2.0;
-      }
-
-      return apa.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   @Override
-   public double a() {
-      return -this.b();
+   public int f() {
+      return 1;
    }
 
-   @Override
-   public double b() {
-      return this.o;
+   public static Function<dwg.a, dvx> g() {
+      return $$0 -> dvx.b;
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
+   public static Function<dwg.a, dwb> a(String $$0) {
+      return $$1 -> new dwb(Either.left(new aep($$0)), a, $$1);
    }
 
-   @Override
-   public aou<? extends dhd> c() {
-      return a;
+   public static Function<dwg.a, dwb> a(String $$0, hf<dyo> $$1) {
+      return $$2 -> new dwb(Either.left(new aep($$0)), $$1, $$2);
+   }
+
+   public static Function<dwg.a, dwd> b(String $$0) {
+      return $$1 -> new dwd(Either.left(new aep($$0)), a, $$1);
+   }
+
+   public static Function<dwg.a, dwd> b(String $$0, hf<dyo> $$1) {
+      return $$2 -> new dwd(Either.left(new aep($$0)), $$1, $$2);
+   }
+
+   public static Function<dwg.a, dvy> a(hf<dub> $$0) {
+      return $$1 -> new dvy($$0, $$1);
+   }
+
+   public static Function<dwg.a, dwc> a(List<Function<dwg.a, ? extends dwe>> $$0) {
+      return $$1 -> new dwc($$0.stream().map($$1x -> (dwe)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

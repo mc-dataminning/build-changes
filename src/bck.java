@@ -1,47 +1,22 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bck {
-   private bck() {
+public class bck extends Schema {
+   public bck(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static int a(List<? extends bcj> $$0) {
-      long $$1 = 0L;
-
-      for (bcj $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
-      }
-
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
-
-   public static <T extends bcj> Optional<T> a(apf $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends bcj> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static <T extends bcj> Optional<T> a(apf $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("EntityHorse");
+      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", aym.t.in($$0), "SaddleItem", aym.t.in($$0), azv.a($$0)));
+      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(aym.t.in($$0)), "SaddleItem", aym.t.in($$0), azv.a($$0)));
+      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(aym.t.in($$0)), "SaddleItem", aym.t.in($$0), azv.a($$0)));
+      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", aym.t.in($$0), azv.a($$0)));
+      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", aym.t.in($$0), azv.a($$0)));
+      return $$1;
    }
 }

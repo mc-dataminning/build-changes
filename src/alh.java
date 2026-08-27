@@ -1,43 +1,54 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class alh extends alp<String, ali> {
-   public alh(File $$0) {
-      super($$0);
+public class alh implements acv {
+   private static final te a = te.c("disconnect.ignoring_status_request");
+   private final MinecraftServer b;
+   private final sf c;
+
+   public alh(MinecraftServer $$0, sf $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected alo<String> a(JsonObject $$0) {
-      return new ali($$0);
-   }
+   public void a(acu $$0) {
+      switch ($$0.f()) {
+         case b:
+            this.c.a(act.b);
+            if ($$0.a() != aa.b().e()) {
+               te $$1;
+               if ($$0.a() < 754) {
+                  $$1 = te.a("multiplayer.disconnect.outdated_client", aa.b().c());
+               } else {
+                  $$1 = te.a("multiplayer.disconnect.incompatible", aa.b().c());
+               }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
-
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
-
-   @Nullable
-   public ali b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+               this.c.a(new adc($$1));
+               this.c.a($$1);
+            } else {
+               this.c.a(new ali(this.b, this.c));
+            }
+            break;
+         case a:
+            ads $$3 = this.b.aq();
+            if (this.b.ai() && $$3 != null) {
+               this.c.a(act.a);
+               this.c.a(new alk($$3, this.c));
+            } else {
+               this.c.a(a);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.f());
       }
+   }
 
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
+   @Override
+   public void a(te $$0) {
+   }
 
-      return $$1;
+   @Override
+   public boolean c() {
+      return this.c.k();
    }
 }

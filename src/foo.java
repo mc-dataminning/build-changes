@@ -1,40 +1,90 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class foo extends fox<byx> {
-   private static final acq a = new acq("textures/entity/enderdragon/dragon_fireball.png");
-   private static final fkf f = fkf.d(a);
+public class foo {
+   public static final foo a = new foo();
+   public final fon b;
+   public final fon c;
+   public final fon d;
+   public final fon e;
+   public final fon f;
+   public final fon g;
+   public final fon h;
+   public final fon i;
 
-   public foo(foy.a $$0) {
-      super($$0);
+   private foo() {
+      this(fon.a, fon.a, fon.a, fon.a, fon.a, fon.a, fon.a, fon.a);
    }
 
-   protected int a(byx $$0, gu $$1) {
-      return 15;
+   public foo(foo $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   public void a(byx $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      eij.a $$6 = $$3.c();
-      Matrix4f $$7 = $$6.a();
-      Matrix3f $$8 = $$6.b();
-      ein $$9 = $$4.getBuffer(f);
-      a($$9, $$7, $$8, $$5, 0.0F, 0, 0, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 0, 1, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 1, 1, 0);
-      a($$9, $$7, $$8, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public foo(fon $$0, fon $$1, fon $$2, fon $$3, fon $$4, fon $$5, fon $$6, fon $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private static void a(ein $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fum.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public fon a(cit $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fon.a;
+      };
    }
 
-   public acq a(byx $$0) {
-      return a;
+   public boolean b(cit $$0) {
+      return this.a($$0) != fon.a;
+   }
+
+   protected static class a implements JsonDeserializer<foo> {
+      public foo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fon $$4 = this.a($$2, $$3, cit.c);
+         fon $$5 = this.a($$2, $$3, cit.b);
+         if ($$5 == fon.a) {
+            $$5 = $$4;
+         }
+
+         fon $$6 = this.a($$2, $$3, cit.e);
+         fon $$7 = this.a($$2, $$3, cit.d);
+         if ($$7 == fon.a) {
+            $$7 = $$6;
+         }
+
+         fon $$8 = this.a($$2, $$3, cit.f);
+         fon $$9 = this.a($$2, $$3, cit.g);
+         fon $$10 = this.a($$2, $$3, cit.h);
+         fon $$11 = this.a($$2, $$3, cit.i);
+         return new foo($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private fon a(JsonDeserializationContext $$0, JsonObject $$1, cit $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fon)$$0.deserialize($$1.get($$3), fon.class) : fon.a;
+      }
    }
 }

@@ -1,27 +1,107 @@
-public class fra extends fqe<bwl, fdd<bwl>> {
-   private static final acq a = new acq("textures/entity/slime/slime.png");
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public fra(foy.a $$0) {
-      super($$0, new fdd<>($$0.a(fed.bm)), 0.25F);
-      this.a(new ftk<>(this, $$0.f()));
+public class fra implements fqp.a {
+   private final eqn a;
+   private final Map<aeo<cpk>, Map<String, dup>> b = Maps.newIdentityHashMap();
+   private final Map<aeo<cpk>, Map<String, wc.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public fra(eqn $$0) {
+      this.a = $$0;
    }
 
-   public void a(bwl $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.ga();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      epy $$5 = this.a.j.m();
+      aeo<cpk> $$6 = this.a.s.ac();
+      gv $$7 = gv.a($$5.b().c, 0.0, $$5.b().e);
+      ell $$8 = $$1.getBuffer(fno.x());
+      if (this.b.containsKey($$6)) {
+         for (dup $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.f(), 500.0)) {
+               fne.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.g() - $$2,
+                  (double)$$9.h() - $$3,
+                  (double)$$9.i() - $$4,
+                  (double)($$9.j() + 1) - $$2,
+                  (double)($$9.k() + 1) - $$3,
+                  (double)($$9.l() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, wc.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (wc.a $$11 : $$10.values()) {
+            dup $$12 = $$11.a();
+            if ($$7.a($$12.f(), 500.0)) {
+               if ($$11.b()) {
+                  fne.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  fne.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
    }
 
-   protected void a(bwl $$0, eij $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.ga();
-      float $$5 = apa.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   public void a(dup $$0, List<wc.a> $$1, aeo<cpk> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, wc.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (wc.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   public acq a(bwl $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

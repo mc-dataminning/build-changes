@@ -1,144 +1,166 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BiFunction;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public class dzn implements akr, dzo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final dzm<dzs> a = new dzm<>(dzp.c, dzg.a);
-   private Map<dzm<?>, ?> c = Map.of();
-   private Multimap<dzp<?>, acq> d = ImmutableMultimap.of();
+public abstract class dzn {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final dzr b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   @Override
-   public final CompletableFuture<Void> a(akr.a $$0, akx $$1, ban $$2, ban $$3, Executor $$4, Executor $$5) {
-      Map<dzp<?>, Map<acq, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = dzp.c().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
-   }
-
-   private static <T> CompletableFuture<?> a(dzp<T> $$0, akx $$1, Executor $$2, Map<dzp<?>, Map<acq, ?>> $$3) {
-      Map<acq, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<acq, JsonElement> $$3x = new HashMap<>();
-         alb.a($$1, $$0.b(), $$0.a(), $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
-   }
-
-   private void a(Map<dzp<?>, Map<acq, ?>> $$0) {
-      Object $$1 = $$0.get(dzp.c).remove(dzg.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", dzg.a);
+   protected dzn(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new dzr($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
       }
+   }
 
-      Builder<dzm<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<dzp<?>, acq> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new dzm($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, dzs.a);
-      final Map<dzm<?>, ?> $$4 = $$2.build();
-      dzv $$5 = new dzv(ebv.m, new dzo() {
-         @Nullable
-         @Override
-         public <T> T getElement(dzm<T> $$0) {
-            return (T)$$4.get($$0);
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
+   }
+
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
          }
       });
-      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
-      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.c = $$4;
-      this.d = $$3.build();
+      $$1.forEach(this::e);
    }
 
-   private static <T> void a(dzv $$0, dzm<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
    }
 
-   @Nullable
-   @Override
-   public <T> T getElement(dzm<T> $$0) {
-      return (T)this.c.get($$0);
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
    }
 
-   public Collection<acq> a(dzp<?> $$0) {
-      return this.d.get($$0);
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
    }
 
-   public static eck a(eck[] $$0) {
-      return new dzn.a($$0);
-   }
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = aro.a($$2, 0, this.f - 1);
+         $$3 = aro.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
 
-   public static eaz a(eaz[] $$0) {
-      return new dzn.b($$0);
-   }
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = aro.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
 
-   static class a implements eck {
-      private final eck[] a;
-      private final Predicate<dzk> b;
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
 
-      a(eck[] $$0) {
-         this.a = $$0;
-         this.b = ecm.a($$0);
-      }
-
-      public final boolean a(dzk $$0) {
-         return this.b.test($$0);
-      }
-
-      @Override
-      public void a(dzv $$0) {
-         eck.super.a($$0);
-
-         for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-            this.a[$$1].a($$0.b(".term[" + $$1 + "]"));
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
          }
       }
-
-      @Override
-      public ecl b() {
-         throw new UnsupportedOperationException();
-      }
    }
 
-   static class b implements eaz {
-      protected final eaz[] a;
-      private final BiFunction<cfz, dzk, cfz> b;
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = aro.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = aro.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
 
-      public b(eaz[] $$0) {
-         this.a = $$0;
-         this.b = ebb.a($$0);
-      }
-
-      public cfz a(cfz $$0, dzk $$1) {
-         return this.b.apply($$0, $$1);
-      }
-
-      @Override
-      public void a(dzv $$0) {
-         eaz.super.a($$0);
-
-         for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-            this.a[$$1].a($$0.b(".function[" + $$1 + "]"));
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
          }
       }
+   }
 
-      @Override
-      public eba b() {
-         throw new UnsupportedOperationException();
+   protected final boolean b() {
+      return this.d;
+   }
+
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = aro.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
+
+               this.a($$1, $$2, false);
+            }
+         }
+
+         this.d = !this.b.b();
+         return $$0;
       }
    }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

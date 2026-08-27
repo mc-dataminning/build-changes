@@ -1,5 +1,7 @@
-public class eag extends dzu<eaf> {
-   public eag(dzt<? extends eaf> $$0) {
-      super($$0);
-   }
+public enum eag {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

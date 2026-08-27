@@ -1,40 +1,45 @@
-public class frj<T extends bfj & bzd> extends fox<T> {
-   private static final float a = 12.25F;
-   private final fpw f;
-   private final float g;
-   private final boolean h;
+import javax.annotation.Nullable;
 
-   public frj(foy.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+public class frj extends ftk<bxu, fdm> {
+   public static final aep a = new aep("textures/entity/armorstand/wood.png");
+
+   public frj(fsj.a $$0) {
+      super($$0, new fdn($$0.a(fhi.b)), 0.0F);
+      this.a(new fwh<>(this, new fdm($$0.a(fhi.c)), new fdm($$0.a(fhi.d)), $$0.g()));
+      this.a(new fwk<>(this, $$0.d()));
+      this.a(new fwa<>(this, $$0.f()));
+      this.a(new fvw<>(this, $$0.f(), $$0.d()));
    }
 
-   public frj(foy.a $$0) {
-      this($$0, 1.0F, false);
+   public aep a(bxu $$0) {
+      return a;
    }
 
-   @Override
-   protected int a(T $$0, gu $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      if ($$0.ag >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.j(), cfw.h, $$5, fum.d, $$3, $$4, $$0.dI(), $$0.af());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(bxu $$0, elh $$1, float $$2, float $$3, float $$4) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$5 = (float)($$0.dK().V() - $$0.bJ) + $$4;
+      if ($$5 < 5.0F) {
+         $$1.a(a.d.rotationDegrees(aro.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
       }
    }
 
-   @Override
-   public acq a(bfj $$0) {
-      return fuu.e;
+   protected boolean b(bxu $$0) {
+      double $$1 = this.c.b($$0);
+      float $$2 = $$0.bW() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
+   }
+
+   @Nullable
+   protected fno a(bxu $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.t()) {
+         return super.a($$0, $$1, $$2, $$3);
+      } else {
+         aep $$4 = this.a($$0);
+         if ($$2) {
+            return fno.c($$4, false);
+         } else {
+            return $$1 ? fno.a($$4, false) : null;
+         }
+      }
    }
 }

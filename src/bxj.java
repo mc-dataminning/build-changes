@@ -1,18 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bxj extends bxb {
+   private static final int b = 40;
+   private int c;
 
-public class bxj {
-   public static bhs<bfz> a() {
-      return bld.a(
-         (Function<bld.b<bfz>, ? extends App<bld.c<bfz>, blg<bfz>>>)($$0 -> $$0.group($$0.b(bpb.o), $$0.a(bpb.ag))
-               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                     bfz $$6 = $$0.b($$1);
-                     if ($$6.ae() == bfn.W && $$6.es()) {
-                        $$2.a(true, (long)bxf.d.a($$4.dI().z));
-                     }
+   public bxj(bwy $$0) {
+      super($$0);
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   public void b() {
+      this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), aou.gX, this.a.da(), 2.5F, 0.8F + this.a.ee().i() * 0.3F, false);
+   }
+
+   @Override
+   public void c() {
+      if (this.c++ >= 40) {
+         this.a.fW().a(bxo.f);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c = 0;
+   }
+
+   @Override
+   public bxo<bxj> i() {
+      return bxo.h;
    }
 }

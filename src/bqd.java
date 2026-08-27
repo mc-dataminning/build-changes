@@ -1,42 +1,27 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bqd extends bqf<byb> {
-   private static final int a = 40;
+public class bqd extends bqp {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bqd() {
-      super(40);
-   }
-
-   protected void a(aif $$0, byb $$1) {
-      acp<cmm> $$2 = $$0.ac();
-      gu $$3 = $$1.di();
-      List<hd> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               gu $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gj().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(hd.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bha<?> $$10 = $$1.dK();
-      if (!$$4.isEmpty()) {
-         $$10.a(bpb.f, $$4);
-      } else {
-         $$10.b(bpb.f);
-      }
+   public bqd(bjf $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
-   public Set<bpb<?>> a() {
-      return ImmutableSet.of(bpb.f);
+   public boolean a() {
+      aki $$0 = (aki)this.b.dK();
+      gv $$1 = this.b.dk();
+      return $$0.b($$1) ? false : super.a();
+   }
+
+   @Nullable
+   @Override
+   protected ehf h() {
+      aki $$0 = (aki)this.b.dK();
+      gv $$1 = this.b.dk();
+      hy $$2 = hy.a($$1);
+      hy $$3 = bkq.a($$0, $$2, 2);
+      return $$3 != $$2 ? btn.a(this.b, 10, 7, ehf.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

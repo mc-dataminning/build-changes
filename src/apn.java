@@ -1,25 +1,10 @@
 public class apn {
-   private double a;
-   private double b;
-   private double c;
+   public static final apy<dsy> a = a("visible");
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = apa.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
-
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
+   private apn() {
    }
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
+   private static apy<dsy> a(String $$0) {
+      return apy.a(jd.av, new aep($$0));
    }
 }

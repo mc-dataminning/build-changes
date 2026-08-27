@@ -16,48 +16,48 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ds implements du {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("permissions.requires.entity"));
+public class ds implements dv {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("permissions.requires.entity"));
    private final dr c;
-   private final eei d;
-   private final aif e;
+   private final ehf d;
+   private final aki e;
    private final int f;
    private final String g;
-   private final sw h;
+   private final te h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bfj k;
+   private final big k;
    @Nullable
    private final ResultConsumer<ds> l;
-   private final eb.a m;
-   private final eeh n;
+   private final ec.a m;
+   private final ehe n;
    private final dq o;
-   private final apt p;
+   private final ash p;
    private final IntConsumer q;
 
-   public ds(dr $$0, eei $$1, eeh $$2, aif $$3, int $$4, String $$5, sw $$6, MinecraftServer $$7, @Nullable bfj $$8) {
+   public ds(dr $$0, ehf $$1, ehe $$2, aki $$3, int $$4, String $$5, te $$6, MinecraftServer $$7, @Nullable big $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ($$0x, $$1x, $$2x) -> {
-      }, eb.a.a, dq.a, apt.immediate($$7), $$0x -> {
+      }, ec.a.a, dq.a, ash.immediate($$7), $$0x -> {
       });
    }
 
    protected ds(
       dr $$0,
-      eei $$1,
-      eeh $$2,
-      aif $$3,
+      ehf $$1,
+      ehe $$2,
+      aki $$3,
       int $$4,
       String $$5,
-      sw $$6,
+      te $$6,
       MinecraftServer $$7,
-      @Nullable bfj $$8,
+      @Nullable big $$8,
       boolean $$9,
       @Nullable ResultConsumer<ds> $$10,
-      eb.a $$11,
+      ec.a $$11,
       dq $$12,
-      apt $$13,
+      ash $$13,
       IntConsumer $$14
    ) {
       this.c = $$0;
@@ -81,19 +81,19 @@ public class ds implements du {
       return this.c == $$0 ? this : new ds($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public ds a(bfj $$0) {
+   public ds a(big $$0) {
       return this.k == $$0
          ? this
-         : new ds(this.c, this.d, this.n, this.e, this.f, $$0.Z().getString(), $$0.H_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
+         : new ds(this.c, this.d, this.n, this.e, this.f, $$0.ab().getString(), $$0.H_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public ds a(eei $$0) {
+   public ds a(ehf $$0) {
       return this.d.equals($$0)
          ? this
          : new ds(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public ds a(eeh $$0) {
+   public ds a(ehe $$0) {
       return this.n.c($$0) ? this : new ds(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
@@ -109,7 +109,7 @@ public class ds implements du {
    }
 
    public ds a() {
-      return !this.j && !this.c.f_()
+      return !this.j && !this.c.g_()
          ? new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, true, this.l, this.m, this.o, this.p, this.q)
          : this;
    }
@@ -122,40 +122,40 @@ public class ds implements du {
       return $$0 <= this.f ? this : new ds(this.c, this.d, this.n, this.e, $$0, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public ds a(eb.a $$0) {
+   public ds a(ec.a $$0) {
       return $$0 == this.m ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p, this.q);
    }
 
-   public ds a(aif $$0) {
+   public ds a(aki $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dfk.a(this.e.x_(), $$0.x_());
-         eei $$2 = new eei(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dih.a(this.e.x_(), $$0.x_());
+         ehf $$2 = new ehf(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new ds(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
       }
    }
 
-   public ds a(bfj $$0, eb.a $$1) {
+   public ds a(big $$0, ec.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ds b(eei $$0) {
-      eei $$1 = this.m.a(this);
+   public ds b(ehf $$0) {
+      ehf $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = apa.g((float)(-(apa.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = apa.g((float)(apa.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new eeh($$6, $$7));
+      float $$6 = aro.g((float)(-(aro.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = aro.g((float)(aro.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new ehe($$6, $$7));
    }
 
    public ds a(dq $$0) {
       return $$0 == this.o ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, this.p, this.q);
    }
 
-   public ds a(apt $$0) {
+   public ds a(ash $$0) {
       return $$0 == this.p ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, $$0, this.q);
    }
 
@@ -163,7 +163,7 @@ public class ds implements du {
       return $$0 == this.q ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, $$0);
    }
 
-   public sw b() {
+   public te b() {
       return this.h;
    }
 
@@ -176,20 +176,20 @@ public class ds implements du {
       return this.f >= $$0;
    }
 
-   public eei d() {
+   public ehf d() {
       return this.d;
    }
 
-   public aif e() {
+   public aki e() {
       return this.e;
    }
 
    @Nullable
-   public bfj f() {
+   public big f() {
       return this.k;
    }
 
-   public bfj g() throws CommandSyntaxException {
+   public big g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -197,25 +197,25 @@ public class ds implements du {
       }
    }
 
-   public aig h() throws CommandSyntaxException {
-      bfj var2 = this.k;
-      if (var2 instanceof aig) {
-         return (aig)var2;
+   public akj h() throws CommandSyntaxException {
+      big var2 = this.k;
+      if (var2 instanceof akj) {
+         return (akj)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public aig i() {
-      return this.k instanceof aig $$0 ? $$0 : null;
+   public akj i() {
+      return this.k instanceof akj $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof aig;
+      return this.k instanceof akj;
    }
 
-   public eeh k() {
+   public ehe k() {
       return this.n;
    }
 
@@ -223,7 +223,7 @@ public class ds implements du {
       return this.i;
    }
 
-   public eb.a m() {
+   public ec.a m() {
       return this.m;
    }
 
@@ -231,7 +231,7 @@ public class ds implements du {
       return this.o;
    }
 
-   public apt o() {
+   public ash o() {
       return this.p;
    }
 
@@ -239,14 +239,14 @@ public class ds implements du {
       return this.q;
    }
 
-   public boolean a(aig $$0) {
-      aig $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.U() || $$0.U();
+   public boolean a(akj $$0) {
+      akj $$1 = this.i();
+      return $$0 == $$1 ? false : $$1 != null && $$1.W() || $$0.W();
    }
 
-   public void a(tk $$0, boolean $$1, ss.a $$2) {
+   public void a(ts $$0, boolean $$1, ta.a $$2) {
       if (!this.j) {
-         aig $$3 = this.i();
+         akj $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -255,9 +255,9 @@ public class ds implements du {
       }
    }
 
-   public void a(sw $$0) {
+   public void a(te $$0) {
       if (!this.j) {
-         aig $$1 = this.i();
+         akj $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -266,11 +266,11 @@ public class ds implements du {
       }
    }
 
-   public void a(Supplier<sw> $$0, boolean $$1) {
-      boolean $$2 = this.c.e_() && !this.j;
+   public void a(Supplier<te> $$0, boolean $$1) {
+      boolean $$2 = this.c.f_() && !this.j;
       boolean $$3 = $$1 && this.c.N_() && !this.j;
       if ($$2 || $$3) {
-         sw $$4 = $$0.get();
+         te $$4 = $$0.get();
          if ($$2) {
             this.c.a($$4);
          }
@@ -281,24 +281,24 @@ public class ds implements du {
       }
    }
 
-   private void c(sw $$0) {
-      sw $$1 = sw.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aI().b(cmi.o)) {
-         for (aig $$2 : this.i.ac().t()) {
-            if ($$2 != this.c && this.i.ac().f($$2.fM())) {
+   private void c(te $$0) {
+      te $$1 = te.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+      if (this.i.aI().b(cpg.o)) {
+         for (akj $$2 : this.i.ac().t()) {
+            if ($$2 != this.c && this.i.ac().g($$2.fP())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aI().b(cmi.l)) {
+      if (this.c != this.i && this.i.aI().b(cpg.l)) {
          this.i.a($$1);
       }
    }
 
-   public void b(sw $$0) {
+   public void b(te $$0) {
       if (this.c.q_() && !this.j) {
-         this.c.a(sw.h().b($$0).a(n.m));
+         this.c.a(te.h().b($$0).a(n.m));
       }
    }
 
@@ -319,12 +319,12 @@ public class ds implements du {
    }
 
    @Override
-   public Stream<acq> s() {
-      return jb.c.s().map(amg::a);
+   public Stream<aep> s() {
+      return jc.c.s().map(aot::a);
    }
 
    @Override
-   public Stream<acq> t() {
+   public Stream<aep> t() {
       return this.i.aE().d();
    }
 
@@ -334,7 +334,7 @@ public class ds implements du {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(acp<? extends hr<?>> $$0, du.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(aeo<? extends hs<?>> $$0, dv.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       return this.v().c($$0).map($$2x -> {
          this.a($$2x, $$1, $$2);
          return $$2.buildFuture();
@@ -342,17 +342,17 @@ public class ds implements du {
    }
 
    @Override
-   public Set<acp<cmm>> u() {
+   public Set<aeo<cpk>> u() {
       return this.i.E();
    }
 
    @Override
-   public hs v() {
+   public ht v() {
       return this.i.aV();
    }
 
    @Override
-   public caw w() {
+   public cdt w() {
       return this.e.G();
    }
 }

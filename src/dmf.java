@@ -1,43 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmf extends dko<dmz> {
-   private static final gu a = new gu(8, 3, 8);
-   private static final clt b = new clt(a);
-   private static final int c = 16;
-   private static final int d = 1;
+public class dmf extends dpz {
+   public static final MapCodec<dmf> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               dte.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bfr.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dlb.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dmg.b.optionalFieldOf("debug_settings", dmg.a).forGetter($$0x -> $$0x.h),
+               hu.a(jd.e).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dmf::new)
+   );
+   public final dte e;
+   public final bfr f;
+   public final dlb g;
+   public final dmg h;
+   public final hj<csk> i;
 
-   public dmf(Codec<dmz> $$0) {
+   public dmf(float $$0, dte $$1, bfr $$2, dlb $$3, dmg $$4, hj<csk> $$5) {
       super($$0);
-   }
-
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
-   @Override
-   public boolean a(dkq<dmz> $$0) {
-      cng $$1 = $$0.b();
-      clt $$2 = new clt($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         gu $$3 = a.h($$0.e().v() + a.v());
-         gu.a $$4 = new gu.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cpo.m.n(), 2);
-                  } else {
-                     $$1.a($$4, cpo.b.n(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

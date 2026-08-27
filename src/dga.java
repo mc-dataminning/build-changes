@@ -1,15 +1,20 @@
-public interface dga<T> {
-   void g(T var1);
+public enum dga implements asf {
+   a("normal"),
+   b("sticky");
 
-   void f(T var1);
+   private final String c;
 
-   void e(T var1);
+   private dga(String $$0) {
+      this.c = $$0;
+   }
 
-   void d(T var1);
+   @Override
+   public String toString() {
+      return this.c;
+   }
 
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

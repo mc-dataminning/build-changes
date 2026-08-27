@@ -1,67 +1,49 @@
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-public class fcz<T extends bfj> extends fbo<T> {
-   private static final int a = 7;
-   private final fee b;
-   private final fee[] f = new fee[7];
-   private final fee[] g = new fee[3];
-   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+public class fcz implements fcv, fcw {
+   private static final aep a = new aep("spectator/teleport_to_player");
+   private static final Comparator<fil> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final te c = te.c("spectatorMenu.teleport");
+   private static final te d = te.c("spectatorMenu.teleport.prompt");
+   private final List<fcw> e;
 
-   public fcz(fee $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
+   public fcz() {
+      this(eqn.N().I().m());
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
-   }
-
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            fej.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
-            feg.a(0.0F, (float)(24 - h[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), fej.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), feg.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), fej.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), feg.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), fej.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), feg.a(0.0F, 19.0F, $$2[1]));
-      return fek.a($$0, 64, 32);
+   public fcz(Collection<fil> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != cph.d).sorted(b).map($$0x -> new fcs($$0x.a())).toList();
    }
 
    @Override
-   public fee a() {
-      return this.b;
+   public List<fcw> a() {
+      return this.e;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         this.f[$$6].f = apa.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
-         this.f[$$6].b = apa.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
-      }
+   public te b() {
+      return d;
+   }
 
-      this.g[0].f = this.f[2].f;
-      this.g[1].f = this.f[4].f;
-      this.g[1].b = this.f[4].b;
-      this.g[2].f = this.f[1].f;
-      this.g[2].b = this.f[1].b;
+   @Override
+   public void a(fcu $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public te aF_() {
+      return c;
+   }
+
+   @Override
+   public void a(erx $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aG_() {
+      return !this.e.isEmpty();
    }
 }

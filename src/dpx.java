@@ -1,26 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dpx<P extends dpw> {
-   public static final dpx<dpv> a = a("straight_trunk_placer", dpv.a);
-   public static final dpx<dps> b = a("forking_trunk_placer", dps.a);
-   public static final dpx<dpt> c = a("giant_trunk_placer", dpt.a);
-   public static final dpx<dpu> d = a("mega_jungle_trunk_placer", dpu.b);
-   public static final dpx<dpq> e = a("dark_oak_trunk_placer", dpq.a);
-   public static final dpx<dpr> f = a("fancy_trunk_placer", dpr.a);
-   public static final dpx<dpo> g = a("bending_trunk_placer", dpo.a);
-   public static final dpx<dpy> h = a("upwards_branching_trunk_placer", dpy.a);
-   public static final dpx<dpp> i = a("cherry_trunk_placer", dpp.a);
-   private final Codec<P> j;
+public class dpx implements dpp {
+   public static final Codec<dpx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(dpx.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dpx::new)
+   );
+   public final List<dpx.a> b;
+   public final int c;
+   public final float d;
 
-   private static <P extends dpw> dpx<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.Y, $$0, new dpx<>($$1));
+   public dpx(List<dpx.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   private dpx(Codec<P> $$0) {
-      this.j = $$0;
+   public dpx(List<dpx.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   public Codec<P> a() {
-      return this.j;
+   public dpx(dyk $$0, dey $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dpx.a($$0, $$1)), $$2, $$3);
+   }
+
+   public dpx(dyk $$0, dey $$1, int $$2) {
+      this(ImmutableList.of(new dpx.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static dpx.a a(dyk $$0, dey $$1) {
+      return new dpx.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<dpx.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dyk.c.fieldOf("target").forGetter($$0x -> $$0x.b), dey.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dpx.a::new)
+      );
+      public final dyk b;
+      public final dey c;
+
+      a(dyk $$0, dey $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

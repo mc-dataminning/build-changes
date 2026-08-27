@@ -1,49 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class doh extends doe {
-   public static final Codec<doh> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bdc.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, doh::new)
-   );
-   private final bdc b;
-
-   public doh(bdc $$0, bdc $$1, bdc $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+public class doh extends dnl<dpy> {
+   public doh(Codec<dpy> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dof<?> a() {
-      return dof.h;
-   }
-
-   @Override
-   protected void a(cms $$0, doe.b $$1, apf $$2, dno $$3, int $$4, doe.a $$5, int $$6, int $$7, int $$8) {
-      gu $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + apa.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new gu($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+   public boolean a(dnn<dpy> $$0) {
+      cpl $$1 = $$0.b();
+      gv $$2 = $$0.e();
+      art $$3 = $$0.d();
+      dpy $$4 = $$0.f();
+      Optional<hb> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         gv $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && dnh.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         dnh.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
       }
    }
 
-   @Override
-   public int a(apf $$0, int $$1, dno $$2) {
-      return this.b.a($$0);
+   private static Optional<hb> a(cpl $$0, gv $$1, art $$2) {
+      boolean $$3 = dnh.b($$0.a_($$1.c()));
+      boolean $$4 = dnh.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? hb.a : hb.b);
+      } else if ($$3) {
+         return Optional.of(hb.a);
+      } else {
+         return $$4 ? Optional.of(hb.b) : Optional.empty();
+      }
    }
 
-   @Override
-   protected boolean a(apf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   private static void a(cpl $$0, art $$1, gv $$2, dpy $$3) {
+      dnh.c($$0, $$2);
+
+      for (hb $$4 : hb.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            gv $$5 = $$2.a($$4);
+            dnh.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               gv $$6 = $$5.a(hb.b($$1));
+               dnh.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  gv $$7 = $$6.a(hb.b($$1));
+                  dnh.c($$0, $$7);
+               }
+            }
+         }
+      }
    }
 }

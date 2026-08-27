@@ -1,17 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
-public class atm extends awf {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+public class atm extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
 
-   public atm(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+   private atm(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(aym.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(aym.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
+   }
+
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new atm($$0, $$1, $$2);
    }
 }

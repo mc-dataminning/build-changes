@@ -1,16 +1,59 @@
-public abstract class faw<E extends bfj> extends fad<E> {
-   private float a = 1.0F;
-   private float b = 1.0F;
-   private float f = 1.0F;
+import javax.annotation.Nullable;
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = $$0;
+public abstract class faw extends exv {
+   private final te b;
+   @Nullable
+   private final te c;
+   private final te k;
+   @Nullable
+   protected esk a;
+   private etb l = etb.a;
+
+   protected faw(te $$0, te $$1, te $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected faw(te $$0, te $$1, @Nullable te $$2, te $$3) {
+      super($$0);
       this.b = $$1;
-      this.f = $$2;
+      this.c = $$2;
+      this.k = $$3;
+   }
+
+   protected abstract void a(int var1);
+
+   @Override
+   protected void aE_() {
+      super.aE_();
+      this.l = etb.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.l();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = new esk(this.g / 2 - $$1 / 2 - 8, 76 + $$0, $$1 + 24, 20, this.c, false);
+         this.d(this.a);
+      }
+
+      this.a($$0);
    }
 
    @Override
-   public void a(eij $$0, ein $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
+   public te e() {
+      return this.k;
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.l(), 16777215);
+   }
+
+   protected void c(erx $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
+   }
+
+   protected int l() {
+      return 9 * 2;
    }
 }

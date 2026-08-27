@@ -1,61 +1,25 @@
-public class bfv {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final acb c;
-   private final aby<Integer> d;
-   private final aby<Boolean> e;
-   private boolean f;
-   private int g;
+import java.util.Arrays;
 
-   public bfv(acb $$0, aby<Integer> $$1, aby<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public class bfv implements bfw {
+   private final bfw[] a;
+
+   public bfv(bfw... $$0) {
+      this.a = $$0;
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
-   }
+   @Override
+   public float a(art $$0) {
+      float $$1 = 1.0F;
 
-   public boolean a(apf $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.b(this.d, $$0.a(841) + 140);
-         return true;
+      for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+         $$1 *= this.a[$$2].a($$0);
       }
+
+      return $$1;
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
-   }
-
-   public float c() {
-      return this.f ? 1.0F + 1.15F * apa.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
-   }
-
-   private int e() {
-      return this.c.b(this.d);
-   }
-
-   public void a(qr $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(qr $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.b(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.b(this.e);
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

@@ -1,60 +1,60 @@
-public class crs extends csf {
-   protected static final efb a = cpn.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import javax.annotation.Nullable;
 
-   public crs(dca.d $$0) {
+public class crs extends csk implements czl {
+   public static final dfp a = dfo.C;
+
+   protected crs(dex.d $$0) {
       super($$0);
+      this.k(this.n().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return a;
+   public boolean c(dey $$0, coq $$1, gv $$2) {
+      return true;
    }
 
    @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      this.d($$0, $$1, $$2);
-      return bdx.a($$1.B);
+   public cyp b_(dey $$0) {
+      return cyp.a;
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, byo $$3) {
-      this.d($$0, $$1, $$2);
+   public float b(dey $$0, coq $$1, gv $$2) {
+      return 1.0F;
    }
 
-   private void d(dcb $$0, cmm $$1, gu $$2) {
-      dds $$3 = $$1.w_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         gu $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = apa.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = apa.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = apa.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(iv.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
-               }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
-            }
-
-            return;
-         }
+   @Override
+   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
+      if ($$0.c(a)) {
+         $$3.a($$4, eac.c, eac.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a() {
-      return 5;
+   public eab c_(dey $$0) {
+      return $$0.c(a) ? eac.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dey a(cle $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().b_($$0.a()).a() == eac.c));
    }
 
    @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public ciw a(@Nullable cbl $$0, cpl $$1, gv $$2, dey $$3) {
+      return $$0 != null && $$0.f() ? czl.super.a($$0, $$1, $$2, $$3) : ciw.b;
+   }
+
+   @Override
+   public boolean a(@Nullable cbl $$0, coq $$1, gv $$2, dey $$3, eaa $$4) {
+      return $$0 != null && $$0.f() ? czl.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

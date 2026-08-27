@@ -1,35 +1,47 @@
-public class ept extends epi {
-   protected final acq b;
-   protected final int c;
-   protected final int d;
-   protected final int e;
-   protected final int f;
-   protected final int A;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public ept(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, acq $$6, epi.c $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$3, $$6, 256, 256, $$7);
-   }
+public class ept extends epn {
+   private static final Logger c = LogUtils.getLogger();
+   private final long d;
+   private final enf e;
+   private final eny f;
 
-   public ept(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, acq $$7, epi.c $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, 256, 256, $$8);
-   }
-
-   public ept(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, acq $$7, int $$8, int $$9, epi.c $$10) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, sv.a);
-   }
-
-   public ept(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, acq $$7, int $$8, int $$9, epi.c $$10, sw $$11) {
-      super($$0, $$1, $$2, $$3, $$11, $$10, x);
-      this.f = $$8;
-      this.A = $$9;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.b = $$7;
+   public ept(long $$0, enf $$1, eny $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.b, this.p(), this.r(), this.c, this.d, this.e, this.o, this.p, this.f, this.A);
+   public void run() {
+      elx $$0 = elx.a();
+      this.b(te.c("mco.minigame.world.starting.screen.title"));
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.c()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (enl var4) {
+            if (this.c()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 }

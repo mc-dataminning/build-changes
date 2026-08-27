@@ -1,136 +1,419 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eny {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public class eny extends ged {
+   private static final aep a = new aep("realm_status/expired");
+   private static final aep b = new aep("realm_status/expires_soon");
+   private static final aep c = new aep("realm_status/open");
+   private static final aep y = new aep("realm_status/closed");
+   private static final Logger z = LogUtils.getLogger();
+   private static final te A = te.c("mco.configure.worlds.title");
+   private static final te B = te.c("mco.configure.world.title");
+   private static final te C = te.c("mco.selectServer.expired");
+   private static final te D = te.c("mco.selectServer.expires.soon");
+   private static final te E = te.c("mco.selectServer.expires.day");
+   private static final te F = te.c("mco.selectServer.open");
+   private static final te G = te.c("mco.selectServer.closed");
+   private static final int H = 80;
+   private static final int I = 5;
+   @Nullable
+   private te J;
+   private final els K;
+   @Nullable
+   private emo L;
+   private final long M;
+   private int N;
+   private int O;
+   private esi P;
+   private esi Q;
+   private esi R;
+   private esi S;
+   private esi T;
+   private esi U;
+   private esi V;
+   private boolean W;
+   private int X;
+   private final List<enr> Y = Lists.newArrayList();
 
-   public static void a(File $$0, egv $$1, Consumer<sw> $$2) {
-      a($$0, null, $$1, $$2);
+   public eny(els $$0, long $$1) {
+      super(B);
+      this.K = $$0;
+      this.M = $$1;
    }
 
-   public static void a(File $$0, @Nullable String $$1, egv $$2, Consumer<sw> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+   @Override
+   public void aE_() {
+      if (this.L == null) {
+         this.a(this.M);
+      }
+
+      this.N = this.g / 2 - 187;
+      this.O = this.g / 2 + 190;
+      this.P = this.d(esi.a(te.c("mco.configure.world.buttons.players"), $$0x -> this.f.a(new eoj(this, this.L))).a(this.a(0, 3), h(0), 100, 20).a());
+      this.Q = this.d(esi.a(te.c("mco.configure.world.buttons.settings"), $$0x -> this.f.a(new eop(this, this.L.d()))).a(this.a(1, 3), h(0), 100, 20).a());
+      this.R = this.d(
+         esi.a(te.c("mco.configure.world.buttons.subscription"), $$0x -> this.f.a(new eor(this, this.L.d(), this.K))).a(this.a(2, 3), h(0), 100, 20).a()
+      );
+      this.Y.clear();
+
+      for (int $$0 = 1; $$0 < 5; $$0++) {
+         this.Y.add(this.a($$0));
+      }
+
+      this.V = this.d(
+         esi.a(te.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.f.a(new eoo(te.c("mco.template.title.minigame"), this::a, emo.c.b)))
+            .a(this.b(0), h(13) - 5, 100, 20)
+            .a()
+      );
+      this.S = this.d(
+         esi.a(te.c("mco.configure.world.buttons.options"), $$0x -> this.f.a(new eoq(this, this.L.i.get(this.L.n).d(), this.L.m, this.L.n)))
+            .a(this.b(0), h(13) - 5, 90, 20)
+            .a()
+      );
+      this.T = this.d(esi.a(te.c("mco.configure.world.backup"), $$0x -> this.f.a(new env(this, this.L.d(), this.L.n))).a(this.b(1), h(13) - 5, 90, 20).a());
+      this.U = this.d(
+         esi.a(
+               te.c("mco.configure.world.buttons.resetworld"),
+               $$0x -> this.f.a(new eom(this, this.L.d(), () -> this.f.execute(() -> this.f.a(this.f())), () -> this.f.a(this.f())))
+            )
+            .a(this.b(2), h(13) - 5, 90, 20)
+            .a()
+      );
+      this.d(esi.a(td.k, $$0x -> this.B()).a(this.O - 80 + 8, h(13) - 5, 70, 20).a());
+      this.T.i = true;
+      if (this.L == null) {
+         this.G();
+         this.F();
+         this.P.i = false;
+         this.Q.i = false;
+         this.R.i = false;
       } else {
-         b($$0, $$1, $$2, $$3);
+         this.C();
+         if (this.E()) {
+            this.F();
+         } else {
+            this.G();
+         }
       }
    }
 
-   private static void b(File $$0, @Nullable String $$1, egv $$2, Consumer<sw> $$3) {
-      ehk $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            sw $$3x = sw.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new su(su.a.b, $$6.getAbsolutePath())));
-            $$3.accept(sw.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(sw.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+   private enr a(int $$0) {
+      int $$1 = this.c($$0);
+      int $$2 = h(5) + 5;
+      enr $$3 = new enr($$1, $$2, 80, 80, () -> this.L, $$0x -> this.J = $$0x, $$0, $$1x -> {
+         enr.b $$2x = ((enr)$$1x).a();
+         if ($$2x != null) {
+            switch ($$2x.c) {
+               case a:
+                  break;
+               case c:
+                  this.a(this.L);
+                  break;
+               case b:
+                  if ($$2x.b) {
+                     this.D();
+                  } else if ($$2x.a) {
+                     this.b($$0, this.L);
+                  } else {
+                     this.a($$0, this.L);
+                  }
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown action " + $$2x.c);
+            }
          }
       });
+      return this.d($$3);
    }
 
-   public static ehk a(egv $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ehk $$3 = new ehk($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
+   private int b(int $$0) {
+      return this.N + $$0 * 95;
    }
 
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
+   private int a(int $$0, int $$1) {
+      return this.g / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+   }
 
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
+   @Override
+   public void c() {
+      super.c();
+      this.X--;
+      if (this.X < 0) {
+         this.X = 0;
+      }
+
+      this.Y.forEach(enr::b);
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.J = null;
+      $$0.a(this.i, A, this.g / 2, h(4), -1);
+      if (this.L == null) {
+         $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      } else {
+         String $$4 = this.L.b();
+         int $$5 = this.i.b($$4);
+         int $$6 = this.L.e == emo.b.a ? -6250336 : 8388479;
+         int $$7 = this.i.a(this.e);
+         $$0.a(this.i, this.e, this.g / 2, 12, -1);
+         $$0.a(this.i, $$4, this.g / 2, 24, $$6);
+         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.g / 2 + $$5 / 2 + $$7 / 2 + 10);
+         this.a($$0, $$8, 7, $$1, $$2);
+         if (this.E()) {
+            $$0.a(this.i, te.a("mco.configure.world.minigame", this.L.c()), this.N + 80 + 20 + 10, h(13), -1, false);
          }
 
-         $$2++;
+         if (this.J != null) {
+            $$0.a(this.i, this.J, $$1, $$2);
+         }
       }
    }
 
-   public eny(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
+   private int c(int $$0) {
+      return this.N + ($$0 - 1) * 98;
    }
 
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.B();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
+   private void B() {
+      if (this.W) {
+         this.K.d();
+      }
+
+      this.f.a(this.K);
    }
 
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   private void a(long $$0) {
+      new Thread(() -> {
+         elx $$1 = elx.a();
+
+         try {
+            emo $$2 = $$1.a($$0);
+            this.f.execute(() -> {
+               this.L = $$2;
+               this.C();
+               if (this.E()) {
+                  this.b(this.V);
+               } else {
+                  this.b(this.S);
+                  this.b(this.T);
+                  this.b(this.U);
+               }
+            });
+         } catch (enk var5) {
+            z.error("Couldn't get own world", var5);
+            this.f.execute(() -> this.f.a(new eoc(var5, this.K)));
+         }
+      }).start();
+   }
+
+   private void C() {
+      this.P.i = !this.L.j;
+      this.Q.i = !this.L.j;
+      this.R.i = true;
+      this.V.i = !this.L.j;
+      this.S.i = !this.L.j;
+      this.U.i = !this.L.j;
+   }
+
+   private void a(emo $$0) {
+      if (this.L.e == emo.b.b) {
+         this.K.a($$0, new eny(this.K.f(), this.M));
+      } else {
+         this.a(true, new eny(this.K.f(), this.M));
+      }
+   }
+
+   private void D() {
+      eoo $$0 = new eoo(te.c("mco.template.title.minigame"), this::a, emo.c.b);
+      $$0.a(te.c("mco.minigame.world.info.line1"), te.c("mco.minigame.world.info.line2"));
+      this.f.a($$0);
+   }
+
+   private void a(int $$0, emo $$1) {
+      te $$2 = te.c("mco.configure.world.slot.switch.question.line1");
+      te $$3 = te.c("mco.configure.world.slot.switch.question.line2");
+      this.f.a(new eoe($$2x -> {
+         if ($$2x) {
+            this.f.a(new eof(this.K, new epu($$1.a, $$0, () -> this.f.execute(() -> this.f.a(this.f())))));
+         } else {
+            this.f.a(this);
+         }
+      }, eoe.a.b, $$2, $$3, true));
+   }
+
+   private void b(int $$0, emo $$1) {
+      te $$2 = te.c("mco.configure.world.slot.switch.question.line1");
+      te $$3 = te.c("mco.configure.world.slot.switch.question.line2");
+      this.f
+         .a(
+            new eoe(
+               $$2x -> {
+                  if ($$2x) {
+                     eom $$3x = new eom(
+                        this,
+                        $$1,
+                        te.c("mco.configure.world.switch.slot"),
+                        te.c("mco.configure.world.switch.slot.subtitle"),
+                        -6250336,
+                        td.e,
+                        () -> this.f.execute(() -> this.f.a(this.f())),
+                        () -> this.f.a(this.f())
+                     );
+                     $$3x.a($$0);
+                     $$3x.a(te.c("mco.create.world.reset.title"));
+                     this.f.a($$3x);
+                  } else {
+                     this.f.a(this);
+                  }
+               },
+               eoe.a.b,
+               $$2,
+               $$3,
+               true
+            )
+         );
+   }
+
+   private void a(erx $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.L.j) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      } else if (this.L.e == emo.b.a) {
+         this.d($$0, $$1, $$2, $$3, $$4);
+      } else if (this.L.e == emo.b.b) {
+         if (this.L.l < 7) {
+            this.a($$0, $$1, $$2, $$3, $$4, this.L.l);
+         } else {
+            this.c($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   private void b(erx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(a, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.J = C;
+      }
+   }
+
+   private void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a(b, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         if ($$5 <= 0) {
+            this.J = D;
+         } else if ($$5 == 1) {
+            this.J = E;
+         } else {
+            this.J = te.a("mco.selectServer.expires.days", $$5);
+         }
+      }
+   }
+
+   private void c(erx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(c, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.J = F;
+      }
+   }
+
+   private void d(erx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(y, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.J = G;
+      }
+   }
+
+   private boolean E() {
+      return this.L != null && this.L.m == emo.c.b;
+   }
+
+   private void F() {
+      this.a(this.S);
+      this.a(this.T);
+      this.a(this.U);
+   }
+
+   private void a(esi $$0) {
+      $$0.j = false;
+   }
+
+   private void b(esi $$0) {
+      $$0.j = true;
+   }
+
+   private void G() {
+      this.a(this.V);
+   }
+
+   public void a(emv $$0) {
+      emv $$1 = this.L.i.get(this.L.n);
+      $$0.j = $$1.j;
+      $$0.k = $$1.k;
+      elx $$2 = elx.a();
+
+      try {
+         $$2.a(this.L.a, this.L.n, $$0);
+         this.L.i.put(this.L.n, $$0);
+      } catch (enk var5) {
+         z.error("Couldn't save slot settings", var5);
+         this.f.a(new eoc(var5, this));
+         return;
+      }
+
+      this.f.a(this);
+   }
+
+   public void a(String $$0, String $$1) {
+      String $$2 = ac.b($$1) ? null : $$1;
+      elx $$3 = elx.a();
+
+      try {
+         $$3.b(this.L.a, $$0, $$2);
+         this.L.a($$0);
+         this.L.b($$2);
+      } catch (enk var6) {
+         z.error("Couldn't save settings", var6);
+         this.f.a(new eoc(var6, this));
+         return;
+      }
+
+      this.f.a(this);
+   }
+
+   public void a(boolean $$0, exv $$1) {
+      this.f.a(new eof($$1, new epo(this.L, this, this.K, $$0, this.f)));
+   }
+
+   public void a(exv $$0) {
+      this.f.a(new eof($$0, new epj(this.L, this)));
+   }
+
+   public void d() {
+      this.W = true;
+   }
+
+   private void a(@Nullable enf $$0) {
+      if ($$0 != null && enf.a.b == $$0.i) {
+         this.f.a(new eof(this.K, new ept(this.L.a, $$0, this.f())));
+      } else {
+         this.f.a(this);
+      }
+   }
+
+   public eny f() {
+      return new eny(this.K, this.M);
    }
 }

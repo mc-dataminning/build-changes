@@ -1,23 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class axa extends auz {
-   public axa(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", avw.q, "minecraft:zombie_villager");
+public class axa extends asv {
+   public axa(Schema $$0) {
+      super($$0, aym.t);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if (!$$1.isPresent()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(aws.a($$2)));
-         } else {
-            return $$0x;
-         }
+   public TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(aym.z.typeName(), azu.a()));
+      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
+         OpticFinder<?> $$2 = $$1.getType().findField("tag");
+         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
+               $$2xx = this.b($$2xx);
+               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
+                  $$2xx = this.c($$2xx);
+               }
+
+               return $$2xx;
+            }));
       });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
    }
 }

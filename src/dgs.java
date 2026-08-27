@@ -1,70 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public record dgs(dgl b, float c, eei d, @Nullable UUID e, @Nullable UUID f, @Nullable bfj g) {
-   public static final Codec<dgs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jb.b.q().fieldOf("game_event").forGetter(dgs::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dgs::b),
-               eei.a.fieldOf("pos").forGetter(dgs::c),
-               hy.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               hy.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dgs($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dgs implements AutoCloseable {
+   private final cpl a;
+   private final Long2ObjectMap<dhg> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dhg c;
+   private long d;
 
-   public dgs(dgl $$0, float $$1, eei $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
-   }
-
-   public dgs(dgl $$0, float $$1, eei $$2, @Nullable bfj $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.ct(), a($$3), $$3);
+   public dgs(cpl $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   private static UUID a(@Nullable bfj $$0) {
-      if ($$0 instanceof bzg $$1 && $$1.v() != null) {
-         return $$1.v().ct();
+   public dhg a(gv $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ak()) {
+         long $$2 = hy.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dhg)this.b.computeIfAbsent($$2, $$2x -> {
+               dgu $$3 = this.a.a(hy.a($$0.u()), hy.a($$0.w()));
+               dhg $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
       }
-
-      return null;
    }
 
-   public Optional<bfj> a(aif $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   public dey b(gv $$0) {
+      dhg $$1 = this.a($$0);
+      if ($$1 == null) {
+         return csl.a.n();
+      } else {
+         int $$2 = hy.b($$0.u());
+         int $$3 = hy.b($$0.v());
+         int $$4 = hy.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
    }
 
-   public Optional<bfj> b(aif $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof bzg).map($$0x -> (bzg)$$0x).map(bzg::v).or(() -> Optional.ofNullable(this.f).map($$0::a));
-   }
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   public dgl a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public eei c() {
-      return this.d;
-   }
-
-   @Nullable
-   public UUID d() {
-      return this.e;
-   }
-
-   @Nullable
-   public UUID e() {
-      return this.f;
-   }
-
-   @Nullable
-   public bfj f() {
-      return this.g;
+      while (var1.hasNext()) {
+         dhg $$0 = (dhg)var1.next();
+         $$0.b();
+      }
    }
 }

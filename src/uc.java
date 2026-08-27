@@ -1,113 +1,91 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class uc implements sx {
-   private static final Logger c = LogUtils.getLogger();
-   private final boolean d;
-   private final Optional<sw> e;
+public final class uc {
+   private static final String b = "#";
+   public static final Codec<uc> a = Codec.STRING.comapFlatMap($$0 -> {
+      uc $$1 = a($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "String is not a valid color name or hex color code");
+   }, uc::b);
+   private static final Map<n, uc> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new uc($$0.f(), $$0.g())));
+   private static final Map<String, uc> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
+   @Nullable
    private final String f;
-   private final tx g;
-   @Nullable
-   protected final eh.g b;
 
-   public uc(String $$0, boolean $$1, Optional<sw> $$2, tx $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+   private uc(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private uc(String $$0, @Nullable eh.g $$1, boolean $$2, Optional<sw> $$3, tx $$4) {
-      this.f = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.g = $$4;
+   private uc(int $$0) {
+      this.e = $$0;
+      this.f = null;
    }
 
-   @Nullable
-   private static eh.g a(String $$0) {
-      try {
-         return new eh().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   public String a() {
-      return this.f;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public Optional<sw> c() {
+   public int a() {
       return this.e;
    }
 
-   public tx d() {
-      return this.g;
+   public String b() {
+      return this.f != null ? this.f : this.c();
+   }
+
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         uc $$1 = (uc)$$0;
+         return this.e == $$1.e;
       } else {
-         if ($$0 instanceof uc $$1 && this.g.equals($$1.g) && this.e.equals($$1.e) && this.d == $$1.d && this.f.equals($$1.f)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      $$0 = 31 * $$0 + this.e.hashCode();
-      $$0 = 31 * $$0 + this.f.hashCode();
-      return 31 * $$0 + this.g.hashCode();
+      return Objects.hash(this.e, this.f);
    }
 
    @Override
    public String toString() {
-      return "nbt{" + this.g + ", interpreting=" + this.d + ", separator=" + this.e + "}";
+      return this.f != null ? this.f : this.c();
    }
 
-   @Override
-   public tj a(@Nullable ds $$0, @Nullable bfj $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.b != null) {
-         Stream<String> $$3 = this.g.getData($$0).flatMap($$0x -> {
-            try {
-               return this.b.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(rk::m_);
-         if (this.d) {
-            sw $$4 = (sw)DataFixUtils.orElse(sy.a($$0, this.e, $$1, $$2), sy.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  tj $$4x = sw.a.a($$3x);
-                  return Stream.of(sy.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  c.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(sw::h);
-         } else {
-            return sy.a($$0, this.e, $$1, $$2)
-               .map($$1x -> $$3.map(sw::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(sw::h))
-               .orElseGet(() -> sw.b($$3.collect(Collectors.joining(", "))));
+   @Nullable
+   public static uc a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static uc a(int $$0) {
+      return new uc($$0);
+   }
+
+   @Nullable
+   public static uc a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return a($$1);
+         } catch (NumberFormatException var2) {
+            return null;
          }
       } else {
-         return sw.h();
+         return d.get($$0);
       }
    }
 }

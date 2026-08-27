@@ -1,88 +1,68 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+public class ess extends esc {
+   private final erv a;
+   private final etc b;
 
-public class ess {
-   int a;
-   final Map<ess.a, ess.b> b = Maps.newTreeMap(Comparator.<ess.a, eso>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
-
-   public void a(Consumer<esp> $$0) {
-      this.a++;
-      $$0.accept(new ess.c(0));
+   public ess(int $$0, int $$1, int $$2, int $$3, te $$4, erv $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new etc($$4, $$5).i(this.k() - this.b());
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
+   public ess a(int $$0) {
+      this.b.h($$0);
+      return this;
+   }
 
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
+   @Override
+   public void d(int $$0) {
+      super.d($$0);
+      this.b.i(this.k() - this.b());
+   }
 
-            this.c = false;
-            $$1.append($$0);
+   @Override
+   protected int f() {
+      return this.b.h();
+   }
+
+   @Override
+   protected double g() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(erx $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.ax_()) {
+         this.a($$0, this.p() - this.a(), this.r() - this.a(), this.k() + this.b(), this.h() + this.b());
+      }
+   }
+
+   @Override
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.p(), (float)this.r(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
          }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
-
-   static class a {
-      final eso a;
-      final int b;
-
-      a(eso $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
    }
 
-   static class b {
-      esr<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = esr.a;
-         this.b = -1;
-      }
-
-      public ess.b a(int $$0, esr<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   protected void c(erx $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.p() + this.a()), (float)(this.r() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
    }
 
-   class c implements esp {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(eso $$0, esr<?> $$1) {
-         ess.this.b.computeIfAbsent(new ess.a($$0, this.b), $$0x -> new ess.b()).a(ess.this.a, $$1);
-      }
-
-      @Override
-      public esp a() {
-         return ess.this.new c(this.b + 1);
-      }
+   @Override
+   protected void a(evt $$0) {
+      $$0.a(evs.a, this.l());
    }
 }

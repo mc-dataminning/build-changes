@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 
 public class af {
    private static final Logger a = LogUtils.getLogger();
-   private final Map<acq, ae> b = Maps.newHashMap();
+   private final Map<aep, ae> b = Maps.newHashMap();
    private final Set<ae> c = Sets.newLinkedHashSet();
    private final Set<ae> d = Sets.newLinkedHashSet();
    @Nullable
@@ -37,8 +37,8 @@ public class af {
       }
    }
 
-   public void a(Set<acq> $$0) {
-      for (acq $$1 : $$0) {
+   public void a(Set<aep> $$0) {
+      for (aep $$1 : $$0) {
          ae $$2 = this.b.get($$1);
          if ($$2 == null) {
             a.warn("Told to remove advancement {} but I don't know what that is", $$1);
@@ -48,16 +48,16 @@ public class af {
       }
    }
 
-   public void a(Map<acq, ae.a> $$0) {
-      Map<acq, ae.a> $$1 = Maps.newHashMap($$0);
+   public void a(Map<aep, ae.a> $$0) {
+      Map<aep, ae.a> $$1 = Maps.newHashMap($$0);
 
       while (!$$1.isEmpty()) {
          boolean $$2 = false;
-         Iterator<Entry<acq, ae.a>> $$3 = $$1.entrySet().iterator();
+         Iterator<Entry<aep, ae.a>> $$3 = $$1.entrySet().iterator();
 
          while ($$3.hasNext()) {
-            Entry<acq, ae.a> $$4 = $$3.next();
-            acq $$5 = $$4.getKey();
+            Entry<aep, ae.a> $$4 = $$3.next();
+            aep $$5 = $$4.getKey();
             ae.a $$6 = $$4.getValue();
             if ($$6.a(this.b::get)) {
                ae $$7 = $$6.b($$5);
@@ -79,7 +79,7 @@ public class af {
          }
 
          if (!$$2) {
-            for (Entry<acq, ae.a> $$8 : $$1.entrySet()) {
+            for (Entry<aep, ae.a> $$8 : $$1.entrySet()) {
                a.error("Couldn't load advancement {}: {}", $$8.getKey(), $$8.getValue());
             }
             break;
@@ -107,7 +107,7 @@ public class af {
    }
 
    @Nullable
-   public ae a(acq $$0) {
+   public ae a(aep $$0) {
       return this.b.get($$0);
    }
 

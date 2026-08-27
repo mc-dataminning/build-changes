@@ -1,53 +1,71 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public final class fzs extends fzq {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class fzs implements amk<fzr> {
+   public fzr b(JsonObject $$0) {
+      Builder<fzq> $$1 = ImmutableList.builder();
+      int $$2 = arf.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   @Override
-   public void a(fzk $$0) {
-      if (enn.N().z()) {
-         super.a($$0);
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = arf.v($$0, "frames");
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               fzq $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
+
+      int $$8 = arf.a($$0, "width", -1);
+      int $$9 = arf.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = arf.a($$0, "interpolate", false);
+      return new fzr($$1.build(), $$8, $$9, $$2, $$10);
+   }
+
+   @Nullable
+   private fzq a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new fzq(arf.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = arf.m($$1, "frames[" + $$0 + "]");
+         int $$3 = arf.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
+
+         int $$4 = arf.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new fzq($$4, $$3);
+      } else {
+         return null;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
    @Override
-   public void f() {
-      this.b.add((long)enn.N().m());
-      this.h();
-      this.c.add(enn.N().n());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(fzk $$0) {
-      $$0.send(fzl.c, $$0x -> {
-         $$0x.a(fzn.r, new LongArrayList(this.b));
-         $$0x.a(fzn.s, new LongArrayList(this.c));
-         $$0x.a(fzn.t, new LongArrayList(this.d));
-         $$0x.a(fzn.u, this.e());
-         $$0x.a(fzn.v, enn.N().m.ax());
-         $$0x.a(fzn.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public String a() {
+      return "animation";
    }
 }

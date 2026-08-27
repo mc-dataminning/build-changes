@@ -1,192 +1,182 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GlStateManager;
 
-public class eln extends gan {
-   static final Logger b = LogUtils.getLogger();
-   private final euq c;
-   private final ejq G;
-   private sw H = sw.c("mco.reset.world.warning");
-   private sw I = sv.e;
-   private int J = 16711680;
-   private static final acq K = new acq("realms", "textures/gui/realms/slot_frame.png");
-   private static final acq L = new acq("realms", "textures/gui/realms/upload.png");
-   private static final acq M = new acq("realms", "textures/gui/realms/adventure.png");
-   private static final acq N = new acq("realms", "textures/gui/realms/survival_spawn.png");
-   private static final acq O = new acq("realms", "textures/gui/realms/new_world.png");
-   private static final acq P = new acq("realms", "textures/gui/realms/experience.png");
-   private static final acq Q = new acq("realms", "textures/gui/realms/inspiration.png");
-   eki R;
-   eki S;
-   eki T;
-   eki U;
-   public int a = -1;
-   private sw V = sw.c("mco.reset.world.resetting.screen.title");
-   private final Runnable W;
-   private final Runnable X;
+public class eln {
+   private final eln.a a;
+   private final eln.b b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-   public eln(euq $$0, ejq $$1, sw $$2, Runnable $$3, Runnable $$4) {
-      super($$2);
-      this.c = $$0;
-      this.G = $$1;
-      this.W = $$3;
-      this.X = $$4;
+   public eln(int $$0, eln.a $$1, eln.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      }
    }
 
-   public eln(euq $$0, ejq $$1, Runnable $$2, Runnable $$3) {
-      this($$0, $$1, sw.c("mco.reset.world.title"), $$2, $$3);
+   private boolean a(int $$0, eln.b $$1) {
+      return $$0 == 0 || $$1 == eln.b.d;
    }
 
-   public eln(euq $$0, ejq $$1, sw $$2, sw $$3, int $$4, sw $$5, Runnable $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$6, $$7);
-      this.H = $$3;
-      this.J = $$4;
-      this.I = $$5;
+   public final eln.a a() {
+      return this.a;
+   }
+
+   public final eln.b b() {
+      return this.b;
+   }
+
+   public final int c() {
+      return this.d;
+   }
+
+   public final int d() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.d + "," + this.b.a() + "," + this.a.b();
+   }
+
+   public final int e() {
+      return this.e;
+   }
+
+   public final boolean f() {
+      return this.b == eln.b.a;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eln $$1 = (eln)$$0;
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.a != $$1.a ? false : this.b == $$1.b;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
    }
 
    public void a(int $$0) {
-      this.a = $$0;
+      this.b.a(this.c, $$0);
    }
 
-   public void a(sw $$0) {
-      this.V = $$0;
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(int $$0, String $$1, int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
+      }
    }
 
-   @Override
-   public void b() {
-      this.d(epi.a(this.I, $$0 -> this.f.a(this.c)).a(this.g / 2 - 40, h(14) - 10, 80, 20).a());
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            eiz $$0 = eiz.a();
-
-            try {
-               eki $$1 = $$0.a(1, 10, ejq.c.a);
-               eki $$2 = $$0.a(1, 10, ejq.c.c);
-               eki $$3 = $$0.a(1, 10, ejq.c.d);
-               eki $$4 = $$0.a(1, 10, ejq.c.e);
-               eln.this.f.execute(() -> {
-                  eln.this.R = $$1;
-                  eln.this.S = $$2;
-                  eln.this.T = $$3;
-                  eln.this.U = $$4;
-               });
-            } catch (ekm var6) {
-               eln.b.error("Couldn't fetch templates in reset world", var6);
-            }
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
          }
-      }).start();
-      this.a(new gal(this.H, this.g / 2, 22, this.J));
-      this.d(new eln.a(this.b(1), h(0) + 10, sw.c("mco.reset.world.generate"), O, $$0 -> this.f.a(new elm(this::a, this.e))));
-      this.d(
-         new eln.a(this.b(2), h(0) + 10, sw.c("mco.reset.world.upload"), L, $$0 -> this.f.a(new elo(this.G.a, this.a != -1 ? this.a : this.G.n, this, this.X)))
-      );
-      this.d(
-         new eln.a(
-            this.b(3), h(0) + 10, sw.c("mco.reset.world.template"), N, $$0 -> this.f.a(new elp(sw.c("mco.reset.world.template"), this::a, ejq.c.a, this.R))
-         )
-      );
-      this.d(
-         new eln.a(
-            this.b(1), h(6) + 20, sw.c("mco.reset.world.adventure"), M, $$0 -> this.f.a(new elp(sw.c("mco.reset.world.adventure"), this::a, ejq.c.c, this.S))
-         )
-      );
-      this.d(
-         new eln.a(
-            this.b(2), h(6) + 20, sw.c("mco.reset.world.experience"), P, $$0 -> this.f.a(new elp(sw.c("mco.reset.world.experience"), this::a, ejq.c.d, this.T))
-         )
-      );
-      this.d(
-         new eln.a(
-            this.b(3),
-            h(6) + 20,
-            sw.c("mco.reset.world.inspiration"),
-            Q,
-            $$0 -> this.f.a(new elp(sw.c("mco.reset.world.inspiration"), this::a, ejq.c.e, this.U))
-         )
-      );
-   }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-   @Override
-   public sw au_() {
-      return sv.a(this.m(), this.l());
-   }
+      private final String g;
+      private final eln.b.b h;
+      private final eln.b.a i;
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private int b(int $$0) {
-      return this.g / 2 - 130 + ($$0 - 1) * 100;
-   }
-
-   @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.e, this.g / 2, 7, 16777215);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   void a(eox $$0, int $$1, int $$2, sw $$3, acq $$4, boolean $$5, boolean $$6) {
-      if ($$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      private b(String $$0, eln.b.b $$1, eln.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      $$0.a($$4, $$1 + 2, $$2 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
-      $$0.a(K, $$1, $$2 + 12, 0.0F, 0.0F, 60, 60, 60, 60);
-      int $$7 = $$5 ? 10526880 : 16777215;
-      $$0.a(this.i, $$3, $$1 + 30, $$2, $$7);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void a(emo $$0) {
-      this.f.a(new elh(this.c, $$0));
-   }
-
-   @Override
-   public void a(Runnable $$0) {
-      this.a((emo)(new emv(this.G.a, this.a, () -> this.f.execute($$0))));
-   }
-
-   private void a(@Nullable ekh $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.b(() -> this.a((emo)(new emr($$0, this.G.a, this.V, this.W))));
-      }
-   }
-
-   private void a(@Nullable emi $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.b(() -> this.a((emo)(new emq($$0, this.G.a, this.V, this.W))));
-      }
-   }
-
-   private void b(Runnable $$0) {
-      if (this.a == -1) {
-         $$0.run();
-      } else {
-         this.a($$0);
-      }
-   }
-
-   class a extends epi {
-      private final acq b;
-
-      public a(int $$0, int $$1, sw $$2, acq $$3, epi.c $$4) {
-         super($$0, $$1, 60, 72, $$2, $$4, x);
-         this.b = $$3;
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      @Override
-      public void b(eox $$0, int $$1, int $$2, float $$3) {
-         eln.this.a($$0, this.p(), this.r(), this.l(), this.b, this.n(), this.a_((double)$$1, (double)$$2));
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
+      }
+
+      public String a() {
+         return this.g;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
+      }
+
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
       }
    }
 }

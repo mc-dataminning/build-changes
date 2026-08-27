@@ -1,27 +1,24 @@
-import javax.annotation.Nullable;
-
-public class xq implements uo<ur> {
-   private final int a;
-
-   public xq(bfj $$0) {
-      this.a = $$0.af();
-   }
-
-   public xq(sf $$0) {
-      this.a = $$0.m();
+public record xq(te a, ta.b b) implements uw<wo> {
+   public xq(sh $$0) {
+      this($$0.l(), new ta.b($$0));
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      this.b.a($$0);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bfj a(cmm $$0) {
-      return $$0.a(this.a);
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public ta.b d() {
+      return this.b;
    }
 }

@@ -1,97 +1,61 @@
-public interface zb extends zc {
-   void a(aav var1);
+import it.unimi.dsi.fastutil.shorts.ShortIterator;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.function.BiConsumer;
 
-   void a(zi var1);
+public class zb implements uw<wo> {
+   private static final int a = 12;
+   private final hy b;
+   private final short[] c;
+   private final dey[] d;
 
-   void a(zh var1);
+   public zb(hy $$0, ShortSet $$1, dhg $$2) {
+      this.b = $$0;
+      int $$3 = $$1.size();
+      this.c = new short[$$3];
+      this.d = new dey[$$3];
+      int $$4 = 0;
 
-   void a(zg var1);
+      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
+         short $$5 = (Short)var6.next();
+         this.c[$$4] = $$5;
+         this.d[$$4] = $$2.a(hy.a($$5), hy.b($$5), hy.c($$5));
+      }
+   }
 
-   void a(zk var1);
+   public zb(sh $$0) {
+      this.b = hy.a($$0.readLong());
+      int $$1 = $$0.m();
+      this.c = new short[$$1];
+      this.d = new dey[$$1];
 
-   void a(zl var1);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         long $$3 = $$0.n();
+         this.c[$$2] = (short)((int)($$3 & 4095L));
+         this.d[$$2] = csk.o.a((int)($$3 >>> 12));
+      }
+   }
 
-   void a(zn var1);
+   @Override
+   public void a(sh $$0) {
+      $$0.b(this.b.s());
+      $$0.c(this.c.length);
 
-   void a(zo var1);
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         $$0.a((long)csk.i(this.d[$$1]) << 12 | (long)this.c[$$1]);
+      }
+   }
 
-   void a(aab var1);
+   public void a(wo $$0) {
+      $$0.a(this);
+   }
 
-   void a(zp var1);
+   public void a(BiConsumer<gv, dey> $$0) {
+      gv.a $$1 = new gv.a();
 
-   void a(zq var1);
-
-   void a(zt var1);
-
-   void a(zv var1);
-
-   void a(zx var1);
-
-   void a(aag var1);
-
-   void a(aac var1);
-
-   void a(aad var1);
-
-   void a(aae var1);
-
-   void a(aaf var1);
-
-   void a(aao var1);
-
-   void a(aar var1);
-
-   void a(aau var1);
-
-   void a(aax var1);
-
-   void a(aay var1);
-
-   void a(aaw var1);
-
-   void a(aak var1);
-
-   void a(zz var1);
-
-   void a(zy var1);
-
-   void a(zd var1);
-
-   void a(aai var1);
-
-   void a(aah var1);
-
-   void a(aal var1);
-
-   void a(zm var1);
-
-   void a(aap var1);
-
-   void a(aaq var1);
-
-   void a(aaa var1);
-
-   void a(aaj var1);
-
-   void a(aan var1);
-
-   void a(aat var1);
-
-   void a(aam var1);
-
-   void a(zr var1);
-
-   void a(zs var1);
-
-   void a(ze var1);
-
-   void a(aas var1);
-
-   void a(zu var1);
-
-   void a(zf var1);
-
-   void a(zw var1);
-
-   void a(zj var1);
+      for (int $$2 = 0; $$2 < this.c.length; $$2++) {
+         short $$3 = this.c[$$2];
+         $$1.d(this.b.d($$3), this.b.e($$3), this.b.f($$3));
+         $$0.accept($$1, this.d[$$2]);
+      }
+   }
 }

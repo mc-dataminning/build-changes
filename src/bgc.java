@@ -1,57 +1,253 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2FloatMap;
+import it.unimi.dsi.fastutil.objects.Object2FloatMaps;
+import it.unimi.dsi.fastutil.objects.Object2FloatOpenCustomHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ThreadFactory;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public enum bgc implements apr {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public class bgc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ThreadFactory b = new ThreadFactoryBuilder().setDaemon(true).build();
+   private final hs<dii> c;
+   private final Set<aeo<cpk>> d;
+   private final boolean e;
+   private final ebv.c f;
+   private final Thread g;
+   private final DataFixer h;
+   private volatile boolean i = true;
+   private volatile boolean j;
+   private volatile float k;
+   private volatile int l;
+   private volatile int m;
+   private volatile int n;
+   private final Object2FloatMap<aeo<cpk>> o = Object2FloatMaps.synchronize(new Object2FloatOpenCustomHashMap(ac.k()));
+   private volatile te p = te.c("optimizeWorld.stage.counting");
+   private static final Pattern q = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
+   private final ebr r;
 
-   public static final Codec<bgc> i = apr.a(bgc::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bgc(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   public bgc(ebv.c $$0, DataFixer $$1, hs<dii> $$2, boolean $$3) {
+      this.c = $$2;
+      this.d = $$2.f().stream().map(jd::a).collect(Collectors.toUnmodifiableSet());
+      this.e = $$3;
+      this.h = $$1;
+      this.f = $$0;
+      this.r = new ebr(this.f.a(cpk.h).resolve("data").toFile(), $$1);
+      this.g = b.newThread(this::i);
+      this.g.setUncaughtExceptionHandler(($$0x, $$1x) -> {
+         a.error("Error upgrading world", $$1x);
+         this.p = te.c("optimizeWorld.stage.failed");
+         this.j = true;
+      });
+      this.g.start();
    }
 
-   public String a() {
-      return this.m;
+   public void a() {
+      this.i = false;
+
+      try {
+         this.g.join();
+      } catch (InterruptedException var2) {
+      }
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   private void i() {
+      this.l = 0;
+      Builder<aeo<cpk>, ListIterator<cor>> $$0 = ImmutableMap.builder();
+
+      for (aeo<cpk> $$1 : this.d) {
+         List<cor> $$2 = this.b($$1);
+         $$0.put($$1, $$2.listIterator());
+         this.l = this.l + $$2.size();
+      }
+
+      if (this.l == 0) {
+         this.j = true;
+      } else {
+         float $$3 = (float)this.l;
+         ImmutableMap<aeo<cpk>, ListIterator<cor>> $$4 = $$0.build();
+         Builder<aeo<cpk>, dhw> $$5 = ImmutableMap.builder();
+
+         for (aeo<cpk> $$6 : this.d) {
+            Path $$7 = this.f.a($$6);
+            $$5.put($$6, new dhw($$7.resolve("region"), this.h, true));
+         }
+
+         ImmutableMap<aeo<cpk>, dhw> $$8 = $$5.build();
+         long $$9 = ac.b();
+         this.p = te.c("optimizeWorld.stage.upgrading");
+
+         while (this.i) {
+            boolean $$10 = false;
+            float $$11 = 0.0F;
+
+            for (aeo<cpk> $$12 : this.d) {
+               ListIterator<cor> $$13 = (ListIterator<cor>)$$4.get($$12);
+               dhw $$14 = (dhw)$$8.get($$12);
+               if ($$13.hasNext()) {
+                  cor $$15 = $$13.next();
+                  boolean $$16 = false;
+
+                  try {
+                     qs $$17 = $$14.e($$15).join().orElse(null);
+                     if ($$17 != null) {
+                        int $$18 = dhw.a($$17);
+                        dgv $$19 = this.c.e(jd.b($$12)).b();
+                        qs $$20 = $$14.a($$12, () -> this.r, $$17, $$19.b());
+                        cor $$21 = new cor($$20.h("xPos"), $$20.h("zPos"));
+                        if (!$$21.equals($$15)) {
+                           a.warn("Chunk {} has invalid position {}", $$15, $$21);
+                        }
+
+                        boolean $$22 = $$18 < aa.b().d().c();
+                        if (this.e) {
+                           $$22 = $$22 || $$20.e("Heightmaps");
+                           $$20.r("Heightmaps");
+                           $$22 = $$22 || $$20.e("isLightOn");
+                           $$20.r("isLightOn");
+                           qy $$23 = $$20.c("sections", 10);
+
+                           for (int $$24 = 0; $$24 < $$23.size(); $$24++) {
+                              qs $$25 = $$23.a($$24);
+                              $$22 = $$22 || $$25.e("BlockLight");
+                              $$25.r("BlockLight");
+                              $$22 = $$22 || $$25.e("SkyLight");
+                              $$25.r("SkyLight");
+                           }
+                        }
+
+                        if ($$22) {
+                           $$14.a($$15, $$20);
+                           $$16 = true;
+                        }
+                     }
+                  } catch (CompletionException | y var26) {
+                     Throwable $$27 = var26.getCause();
+                     if (!($$27 instanceof IOException)) {
+                        throw var26;
+                     }
+
+                     a.error("Error upgrading chunk {}", $$15, $$27);
+                  }
+
+                  if ($$16) {
+                     this.m++;
+                  } else {
+                     this.n++;
+                  }
+
+                  $$10 = true;
+               }
+
+               float $$28 = (float)$$13.nextIndex() / $$3;
+               this.o.put($$12, $$28);
+               $$11 += $$28;
+            }
+
+            this.k = $$11;
+            if (!$$10) {
+               this.i = false;
+            }
+         }
+
+         this.p = te.c("optimizeWorld.stage.finished");
+         UnmodifiableIterator var33 = $$8.values().iterator();
+
+         while (var33.hasNext()) {
+            dhw $$29 = (dhw)var33.next();
+
+            try {
+               $$29.close();
+            } catch (IOException var25) {
+               a.error("Error upgrading chunk", var25);
+            }
+         }
+
+         this.r.a();
+         $$9 = ac.b() - $$9;
+         a.info("World optimizaton finished after {} ms", $$9);
+         this.j = true;
+      }
    }
 
-   public int b() {
+   private List<cor> b(aeo<cpk> $$0) {
+      File $$1 = this.f.a($$0).toFile();
+      File $$2 = new File($$1, "region");
+      File[] $$3 = $$2.listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
+      if ($$3 == null) {
+         return ImmutableList.of();
+      } else {
+         List<cor> $$4 = Lists.newArrayList();
+
+         for (File $$5 : $$3) {
+            Matcher $$6 = q.matcher($$5.getName());
+            if ($$6.matches()) {
+               int $$7 = Integer.parseInt($$6.group(1)) << 5;
+               int $$8 = Integer.parseInt($$6.group(2)) << 5;
+
+               try (dia $$9 = new dia($$5.toPath(), $$2.toPath(), true)) {
+                  for (int $$10 = 0; $$10 < 32; $$10++) {
+                     for (int $$11 = 0; $$11 < 32; $$11++) {
+                        cor $$12 = new cor($$10 + $$7, $$11 + $$8);
+                        if ($$9.b($$12)) {
+                           $$4.add($$12);
+                        }
+                     }
+                  }
+               } catch (Throwable var19) {
+               }
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public boolean b() {
       return this.j;
    }
 
-   public boolean d() {
+   public Set<aeo<cpk>> c() {
+      return this.d;
+   }
+
+   public float a(aeo<cpk> $$0) {
+      return this.o.getFloat($$0);
+   }
+
+   public float d() {
       return this.k;
    }
 
-   public boolean e() {
+   public int e() {
       return this.l;
    }
 
    public int f() {
-      return this.o;
+      return this.m;
    }
 
    public int g() {
-      return 32;
+      return this.n;
+   }
+
+   public te h() {
+      return this.p;
    }
 }

@@ -1,164 +1,111 @@
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
 
-public abstract class fom<T extends bfi, S> extends fox<T> {
-   private final fow a;
+public class fom {
+   public static final fom a = new fom();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final fom.a[] c;
+   private final aep[] d;
 
-   protected fom(foy.a $$0) {
-      super($$0);
-      this.a = $$0.a();
+   private fom() {
+      this.c = new fom.a[0];
+      this.d = new aep[0];
    }
 
-   public acq a(T $$0) {
-      return fuu.e;
-   }
+   public fom(gal $$0, foh $$1, List<fol> $$2) {
+      this.d = $$2.stream().flatMap(fol::b).map(fol.b::a).distinct().toArray(aep[]::new);
+      Object2IntMap<aep> $$3 = new Object2IntOpenHashMap();
 
-   public void a(T $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      bfi.j $$6 = $$0.k();
-      if ($$6 != null) {
-         S $$7 = this.b($$0);
-         if ($$7 != null) {
-            float $$8 = $$0.a($$2);
-            this.d = $$6.d().get($$8);
-            this.e = $$6.e().get($$8);
-            int $$9 = $$6.c();
-            int $$10 = $$9 != -1 ? $$9 : $$5;
-            super.a($$0, $$1, $$2, $$3, $$4, $$10);
-            $$3.a();
-            $$3.a(this.a($$6, $$0));
-            j $$11 = $$6.a().get($$8);
-            $$3.a($$11.c());
-            $$3.c().b().rotate($$11.e()).rotate($$11.g());
-            this.a($$0, $$7, $$3, $$4, $$10, $$8);
-            $$3.b();
-         }
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
-   }
 
-   private Quaternionf a(bfi.j $$0, T $$1) {
-      emz $$2 = this.a.b;
+      List<fom.a> $$5 = Lists.newArrayList();
 
-      return switch ($$0.b()) {
-         case a -> $$1.j();
-         case c -> new Quaternionf().rotationYXZ((float) (-Math.PI / 180.0) * $$1.dy(), (float) (-Math.PI / 180.0) * $$2.d(), 0.0F);
-         case b -> new Quaternionf().rotationYXZ((float) Math.PI - (float) (Math.PI / 180.0) * $$2.e(), (float) (Math.PI / 180.0) * $$1.dA(), 0.0F);
-         case d -> new Quaternionf().rotationYXZ((float) Math.PI - (float) (Math.PI / 180.0) * $$2.e(), (float) (-Math.PI / 180.0) * $$2.d(), 0.0F);
-      };
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         fol $$7 = $$2.get($$6);
+         gah $$8 = this.a($$0, $$1, $$7);
+         fom.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new fom.b($$2x, $$1x.b());
+         }).toArray(fom.b[]::new);
+         $$5.add(new fom.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new fom.a[0]);
    }
 
    @Nullable
-   protected abstract S b(T var1);
+   private gah a(gal $$0, foh $$1, fol $$2) {
+      gas $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gai.a);
+   }
 
-   protected abstract void a(T var1, S var2, eij var3, fjx var4, int var5, float var6);
+   @Nullable
+   public gah a(gah $$0, ciw $$1, @Nullable fie $$2, @Nullable biw $$3, int $$4) {
+      if (this.c.length != 0) {
+         cir $$5 = $$1.d();
+         int $$6 = this.d.length;
+         float[] $$7 = new float[$$6];
 
-   public static class a extends fom<bfi.b, bfi.b.a> {
-      private final fko a;
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            aep $$9 = this.d[$$8];
+            fxo $$10 = fxn.a($$5, $$9);
+            if ($$10 != null) {
+               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
+            } else {
+               $$7[$$8] = Float.NEGATIVE_INFINITY;
+            }
+         }
 
-      protected a(foy.a $$0) {
-         super($$0);
-         this.a = $$0.c();
+         for (fom.a $$11 : this.c) {
+            if ($$11.a($$7)) {
+               gah $$12 = $$11.b;
+               if ($$12 == null) {
+                  return $$0;
+               }
+
+               return $$12;
+            }
+         }
       }
 
+      return $$0;
+   }
+
+   static class a {
+      private final fom.b[] a;
       @Nullable
-      protected bfi.b.a a(bfi.b $$0) {
-         return $$0.o();
+      final gah b;
+
+      a(fom.b[] $$0, @Nullable gah $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public void a(bfi.b $$0, bfi.b.a $$1, eij $$2, fjx $$3, int $$4, float $$5) {
-         this.a.a($$1.a(), $$2, $$3, $$4, fum.d);
+      boolean a(float[] $$0) {
+         for (fom.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   public static class b extends fom<bfi.g, bfi.g.a> {
-      private final fpw a;
+   static class b {
+      public final int a;
+      public final float b;
 
-      protected b(foy.a $$0) {
-         super($$0);
-         this.a = $$0.b();
-      }
-
-      @Nullable
-      protected bfi.g.a a(bfi.g $$0) {
-         return $$0.o();
-      }
-
-      public void a(bfi.g $$0, bfi.g.a $$1, eij $$2, fjx $$3, int $$4, float $$5) {
-         $$2.a(a.d.rotation((float) Math.PI));
-         this.a.a($$1.a(), $$1.b(), $$4, fum.d, $$2, $$3, $$0.dI(), $$0.af());
-      }
-   }
-
-   public static class c extends fom<bfi.k, bfi.k.e> {
-      private final eov a;
-
-      protected c(foy.a $$0) {
-         super($$0);
-         this.a = $$0.h();
-      }
-
-      private bfi.k.b a(sw $$0, int $$1) {
-         List<aom> $$2 = this.a.c($$0, $$1);
-         List<bfi.k.c> $$3 = new ArrayList<>($$2.size());
-         int $$4 = 0;
-
-         for (aom $$5 : $$2) {
-            int $$6 = this.a.a($$5);
-            $$4 = Math.max($$4, $$6);
-            $$3.add(new bfi.k.c($$5, $$6));
-         }
-
-         return new bfi.k.b($$3, $$4);
-      }
-
-      @Nullable
-      protected bfi.k.e a(bfi.k $$0) {
-         return $$0.o();
-      }
-
-      public void a(bfi.k $$0, bfi.k.e $$1, eij $$2, fjx $$3, int $$4, float $$5) {
-         byte $$6 = $$1.e();
-         boolean $$7 = ($$6 & 2) != 0;
-         boolean $$8 = ($$6 & 4) != 0;
-         boolean $$9 = ($$6 & 1) != 0;
-         bfi.k.a $$10 = bfi.k.a($$6);
-         byte $$11 = (byte)$$1.c().get($$5);
-         int $$13;
-         if ($$8) {
-            float $$12 = enn.N().m.a(0.25F);
-            $$13 = (int)($$12 * 255.0F) << 24;
-         } else {
-            $$13 = $$1.d().get($$5);
-         }
-
-         float $$15 = 0.0F;
-         Matrix4f $$16 = $$2.c().a();
-         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
-         $$16.scale(-0.025F, -0.025F, -0.025F);
-         bfi.k.b $$17 = $$0.a(this::a);
-         int $$18 = 9 + 1;
-         int $$19 = $$17.b();
-         int $$20 = $$17.a().size() * $$18;
-         $$16.translate(1.0F - (float)$$19 / 2.0F, (float)(-$$20), 0.0F);
-         if ($$13 != 0) {
-            ein $$21 = $$3.getBuffer($$7 ? fkf.s() : fkf.r());
-            $$21.a($$16, -1.0F, -1.0F, 0.0F).a($$13).b($$4).e();
-            $$21.a($$16, -1.0F, (float)$$20, 0.0F).a($$13).b($$4).e();
-            $$21.a($$16, (float)$$19, (float)$$20, 0.0F).a($$13).b($$4).e();
-            $$21.a($$16, (float)$$19, -1.0F, 0.0F).a($$13).b($$4).e();
-         }
-
-         for (bfi.k.c $$22 : $$17.a()) {
-            float $$23 = switch ($$10) {
-               case b -> 0.0F;
-               case c -> (float)($$19 - $$22.b());
-               case a -> (float)$$19 / 2.0F - (float)$$22.b() / 2.0F;
-            };
-            this.a.a($$22.a(), $$23, $$15, $$11 << 24 | 16777215, $$9, $$16, $$3, $$7 ? eov.a.b : eov.a.c, 0, $$4);
-            $$15 += (float)$$18;
-         }
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

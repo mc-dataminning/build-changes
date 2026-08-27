@@ -1,69 +1,56 @@
-public abstract class ahu extends dwq {
-   protected ahu(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+
+public class ahu {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> te.a("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.wrong_dimension"));
+
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("target", ed.a())
+                     .then(dt.a("mount").then(dt.a("vehicle", ed.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"), ed.a($$0x, "vehicle"))))))
+                  .then(dt.a("dismount").executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"))))
+            )
+      );
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == clt.a;
-   }
-
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         clt $$3 = new clt($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = clt.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
+   private static int a(ds $$0, big $$1, big $$2) throws CommandSyntaxException {
+      big $$3 = $$1.cY();
+      if ($$3 != null) {
+         throw b.create($$1.H_(), $$3.H_());
+      } else if ($$2.ag() == bik.bt) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dK() != $$2.dK()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.H_(), $$2.H_());
+      } else {
+         $$0.a(() -> te.a("commands.ride.mount.success", $$1.H_(), $$2.H_()), true);
+         return 1;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      clt $$4 = new clt($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = clt.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = clt.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
+   private static int a(ds $$0, big $$1) throws CommandSyntaxException {
+      big $$2 = $$1.cY();
+      if ($$2 == null) {
+         throw a.create($$1.H_());
+      } else {
+         $$1.aa();
+         $$0.a(() -> te.a("commands.ride.dismount.success", $$1.H_(), $$2.H_()), true);
+         return 1;
       }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == clt.a ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(clt.a, $$0, $$1, $$2);
    }
 }

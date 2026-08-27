@@ -1,36 +1,42 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.stream.Stream;
 
-public class asu extends auz {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("donkeykong", "donkey_kong");
-      $$0.put("burningskull", "burning_skull");
-      $$0.put("skullandroses", "skull_and_roses");
-   });
+public abstract class asu extends DataFix {
+   private final String a;
 
-   public asu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", avw.q, "minecraft:painting");
+   public asu(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Motive").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(new acq(a.getOrDefault($$2, $$2)).toString()));
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(aym.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(aym.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
       } else {
-         return $$0;
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
       }
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
    }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Records", this::c);
+   }
+
+   private <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   }
+
+   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

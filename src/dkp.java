@@ -1,80 +1,70 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dkp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aif, dkp.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aif, dkp.b>() {
-         public dkp.b a(aif $$0) {
-            return new dkp.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
+public record dkp(int g, int h, int i, int j) {
+   public static final Codec<dkp> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dih.e, dih.d).fieldOf("min_y").forGetter(dkp::c),
+                  Codec.intRange(0, dih.c).fieldOf("height").forGetter(dkp::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dkp::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dkp::f)
+               )
+               .apply($$0, dkp::new)
+      )
+      .comapFlatMap(dkp::a, Function.identity());
+   protected static final dkp b = a(-64, 384, 1, 2);
+   protected static final dkp c = a(0, 128, 1, 2);
+   protected static final dkp d = a(0, 128, 2, 1);
+   protected static final dkp e = a(-64, 192, 1, 2);
+   protected static final dkp f = a(0, 256, 2, 1);
+
+   private static DataResult<dkp> a(dkp $$0) {
+      if ($$0.c() + $$0.d() > dih.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dih.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
+   }
+
+   public static dkp a(int $$0, int $$1, int $$2, int $$3) {
+      dkp $$4 = new dkp($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
       });
-
-   public static void a(aif $$0) {
-      try {
-         ((dkp.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+      return $$4;
    }
 
-   public static void a(aif $$0, dkb<?, ?> $$1, Optional<dre> $$2) {
-      try {
-         ((dkp.b)b.get($$0)).a().computeInt(new dkp.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
+   public int a() {
+      return hr.c(this.f());
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
+   public int b() {
+      return hr.c(this.e());
    }
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ac().a().toString();
-               boolean $$3 = $$0.n().v();
-               hr<dre> $$4 = $$0.B_().d(jc.ay);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<acq>map(acp::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
+   public dkp a(cpm $$0) {
+      int $$1 = Math.max(this.g, $$0.C_());
+      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
+      return new dkp($$1, $$2, this.i, this.j);
    }
 
-   static record a(dkb<?, ?> a, Optional<dre> b) {
+   public int c() {
+      return this.g;
    }
 
-   static record b(Object2IntMap<dkp.a> a, MutableInt b) {
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

@@ -1,41 +1,84 @@
-public class fgv<T extends iq> extends fim {
-   private final fih a;
+public class fgv<T extends big> extends fet<T> implements fes, fgu {
+   private final fhj b;
+   private final fhj f;
+   private final fhj g;
+   private final fhj h;
+   private final fhj i;
+   private final fhj j;
+   protected final fhj a;
 
-   protected fgv(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fih $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.e().x(), $$9);
-      this.w = this.a($$7.e().y(), $$9);
-      this.x = this.a($$7.e().z(), $$9);
-      this.D = this.D * 0.75F * $$7.f();
-      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
-      this.b($$8);
+   public fgv(fhj $$0) {
+      this.b = $$0;
+      this.f = $$0.b("head");
+      this.g = this.f.b("hat");
+      this.h = this.g.b("hat_rim");
+      this.a = this.f.b("nose");
+      this.i = $$0.b("right_leg");
+      this.j = $$0.b("left_leg");
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   public static fhr b() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      float $$2 = 0.5F;
+      fhs $$3 = $$1.a("head", fho.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fhl.a);
+      fhs $$4 = $$3.a("hat", fho.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fhn(0.51F)), fhl.a);
+      $$4.a("hat_rim", fho.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fhl.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$3.a("nose", fho.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fhl.a(0.0F, -2.0F, 0.0F));
+      fhs $$5 = $$1.a("body", fho.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), fhl.a);
+      $$5.a("jacket", fho.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fhn(0.5F)), fhl.a);
+      $$1.a(
+         "arms",
+         fho.c()
+            .a(44, 22)
+            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
+            .a(44, 22)
+            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
+            .a(40, 38)
+            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         fhl.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
+      );
+      $$1.a("right_leg", fho.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhl.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fho.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhl.a(2.0F, 12.0F, 0.0F));
+      return $$0;
    }
 
    @Override
-   public fhq b() {
-      return fhq.b;
+   public fhj a() {
+      return this.b;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * apa.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      boolean $$6 = false;
+      if ($$0 instanceof cat) {
+         $$6 = ((cat)$$0).p() > 0;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      if ($$6) {
+         this.f.g = 0.3F * aro.a(0.45F * $$3);
+         this.f.e = 0.4F;
+      } else {
+         this.f.g = 0.0F;
+      }
+
+      this.i.e = aro.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
+      this.j.e = aro.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
+      this.i.f = 0.0F;
+      this.j.f = 0.0F;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public fhj d() {
+      return this.f;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.f.k = $$0;
+      this.g.k = $$0;
+      this.h.k = $$0;
    }
 }

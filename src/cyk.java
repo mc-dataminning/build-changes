@@ -1,137 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cyk extends csk {
+   public static final dfp a = cyn.a;
 
-public class cyk extends cwn {
-   public static final dcv a = ctg.aC;
-   public static final efb b = cpn.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final efb c = cpn.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final efb d = eey.a(b, cpn.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final efb h = eey.a(c, cpn.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<ha, efb> i = Maps.newEnumMap(ImmutableMap.of(ha.c, d, ha.d, d, ha.f, h, ha.e, h));
-
-   public cyk(dca.d $$0, ddo $$1) {
-      super($$0.a($$1.e()), $$1);
-      this.k(this.C.b().a(a, ha.c).a(e, Boolean.valueOf(false)));
+   public cyk(dex.d $$0) {
+      super($$0);
+      this.k(this.n().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if ($$1.c_($$2) instanceof dav $$6) {
-         cfz $$7 = $$3.b($$4);
-         if (this.a($$0, $$3, $$5, $$6, $$7)) {
-            return bdx.d;
+   public void a(dey $$0, cpk $$1, gv $$2, cbl $$3) {
+      d($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cpk $$0, gv $$1, dey $$2, big $$3) {
+      if (!$$3.bS()) {
+         d($$2, $$0, $$1);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
+      if ($$1.B) {
+         a($$1, $$2);
+      } else {
+         d($$0, $$1, $$2);
+      }
+
+      ciw $$6 = $$3.b($$4);
+      return $$6.d() instanceof cgp && new cle($$3, $$4, $$6, $$5).b() ? bgo.d : bgo.a;
+   }
+
+   private static void d(dey $$0, cpk $$1, gv $$2) {
+      a($$1, $$2);
+      if (!$$0.c(a)) {
+         $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 3);
+      }
+   }
+
+   @Override
+   public boolean e_(dey $$0) {
+      return $$0.c(a);
+   }
+
+   @Override
+   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
+      if ($$0.c(a)) {
+         $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
+      }
+   }
+
+   @Override
+   public void a(dey $$0, aki $$1, gv $$2, ciw $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4 && cnf.a(cnh.v, $$3) == 0) {
+         int $$5 = 1 + $$1.z.a(5);
+         this.a($$1, $$2, $$5);
+      }
+   }
+
+   @Override
+   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
+      if ($$0.c(a)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(cpk $$0, gv $$1) {
+      double $$2 = 0.5625;
+      art $$3 = $$0.z;
+
+      for (hb $$4 : hb.values()) {
+         gv $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            hb.a $$6 = $$4.o();
+            double $$7 = $$6 == hb.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == hb.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == hb.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(iq.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
          }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dcb $$0, byo $$1, eee $$2, dav $$3, cfz $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.d() instanceof cfl && !this.a($$2, $$0);
-   }
-
-   private boolean a(eee $$0, dcb $$1) {
-      return $$0.b().o() == $$1.c(a).o();
    }
 
    @Override
-   public String f() {
-      return this.k().a();
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return i.get($$0.c(a));
-   }
-
-   @Override
-   public efb b_(dcb $$0, cls $$1, gu $$2) {
-      return this.a($$0, $$1, $$2, een.a());
-   }
-
-   @Override
-   public efb c(dcb $$0, cls $$1, gu $$2, een $$3) {
-      switch ((ha)$$0.c(a)) {
-         case f:
-         case e:
-            return c;
-         default:
-            return b;
-      }
-   }
-
-   public boolean b(dcb $$0, cmp $$1, gu $$2) {
-      ha $$3 = $$0.c(a).h();
-      ha $$4 = $$0.c(a).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
-   }
-
-   public boolean a(cmp $$0, dcb $$1, gu $$2, ha $$3) {
-      dcb $$4 = $$0.a_($$2);
-      return $$4.a(amw.ax) ? $$4.c(a).o().a($$1.c(a)) : $$4.a($$0, $$2, $$3, cxp.a);
-   }
-
-   @Nullable
-   @Override
-   public dcb a(cih $$0) {
-      dcb $$1 = this.n();
-      dxe $$2 = $$0.q().b_($$0.a());
-      cmp $$3 = $$0.q();
-      gu $$4 = $$0.a();
-
-      for (ha $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            ha $$6 = $$5.g();
-            $$1 = $$1.a(a, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(e, Boolean.valueOf($$2.a() == dxf.c));
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      return $$1.o() == $$0.c(a).h().o() && !$$0.a($$3, $$4) ? cpo.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(dcb $$0) {
-      return $$0.c(a).p();
-   }
-
-   @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a, e);
-   }
-
-   @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new daj($$0, $$1);
-   }
-
-   @Override
-   public boolean a(dcb $$0, cls $$1, gu $$2, dxu $$3) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public <T extends czn> czo<T> a(cmm $$0, dcb $$1, czp<T> $$2) {
-      return a($$2, czp.i, dav::a);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(a);
    }
 }

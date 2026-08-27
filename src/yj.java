@@ -1,24 +1,24 @@
-public class yj implements uo<ur> {
-   private final sw a;
+public class yj implements uw<wo> {
+   private final bgn a;
 
-   public yj(sw $$0) {
+   public yj(bgn $$0) {
       this.a = $$0;
    }
 
-   public yj(sf $$0) {
-      this.a = $$0.l();
+   public yj(sh $$0) {
+      this.a = $$0.b(bgn.class);
    }
 
    @Override
-   public void a(sf $$0) {
+   public void a(sh $$0) {
       $$0.a(this.a);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public sw a() {
+   public bgn a() {
       return this.a;
    }
 }

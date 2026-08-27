@@ -1,24 +1,24 @@
-public class zm implements uo<zb> {
+public class zm implements uw<wo> {
    private final int a;
-   private final String b;
+   private final int b;
 
-   public zm(int $$0, String $$1) {
+   public zm(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public zm(sf $$0) {
+   public zm(sh $$0) {
       this.a = $$0.m();
-      this.b = $$0.e(32500);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
-      $$0.a(this.b, 32500);
+   public void a(sh $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(zb $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
@@ -26,7 +26,7 @@ public class zm implements uo<zb> {
       return this.a;
    }
 
-   public String c() {
+   public int d() {
       return this.b;
    }
 }

@@ -1,40 +1,57 @@
-public class gaj extends gan {
-   private final sw a;
-   private epz b = epz.a;
-   private final euq c;
-   private int G;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gaj(euq $$0, sw $$1, sw $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class gaj implements gah {
+   private final foo a;
+   private final fom b;
+   private final fyg c;
+   private final boolean d;
+
+   public gaj(foo $$0, fom $$1, fyg $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public void b() {
-      enn $$0 = enn.N();
-      $$0.d(false);
-      $$0.ab().a();
-      this.b = epz.a(this.i, this.a, this.g - 50);
-      this.G = this.b.a() * 9;
-      this.d(epi.a(sv.k, $$1 -> $$0.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.G / 2 + 9, 200, 20).a());
+   public List<foc> a(@Nullable dey $$0, @Nullable hb $$1, art $$2) {
+      return Collections.emptyList();
    }
 
    @Override
-   public sw au_() {
-      return sw.h().b(this.e).f(": ").b(this.a);
+   public boolean a() {
+      return false;
    }
 
    @Override
-   public void aw_() {
-      enn.N().a(this.c);
+   public boolean b() {
+      return true;
    }
 
    @Override
-   public void a(eox $$0, int $$1, int $$2, float $$3) {
-      this.a($$0);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.G / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.G / 2);
-      super.a($$0, $$1, $$2, $$3);
+   public boolean c() {
+      return this.d;
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   @Override
+   public fyg e() {
+      return this.c;
+   }
+
+   @Override
+   public foo f() {
+      return this.a;
+   }
+
+   @Override
+   public fom g() {
+      return this.b;
    }
 }

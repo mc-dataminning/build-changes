@@ -1,40 +1,56 @@
-public class yi implements uo<ur> {
-   private final long a;
-   private final long b;
+public class yi implements uw<wo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public yi(long $$0, long $$1, boolean $$2) {
-      this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.b = $$3;
+   public yi(big $$0) {
+      this.a = $$0.dp();
+      this.b = $$0.dr();
+      this.c = $$0.dv();
+      this.d = $$0.dA();
+      this.e = $$0.dC();
    }
 
-   public yi(sf $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public yi(sh $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeLong(this.a);
-      $$0.writeLong(this.b);
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public double a() {
       return this.a;
    }
 
-   public long c() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

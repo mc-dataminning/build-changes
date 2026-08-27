@@ -1,87 +1,22 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bns extends bmv {
-   public static final int a = 120;
-   protected final bgi b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class bns {
+   private static final int a = 36;
 
-   public bns(bgi $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
+   public static bkp<biw> a() {
+      return boa.a(
+         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$0 -> $$0.group($$0.a(bry.x), $$0.a(bry.y), $$0.a(bry.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<biw>a($$2).filter($$1xx -> $$1xx.f((big)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dM().a($$4.W(), $$4.V());
+                     }
 
-   public bns(bgi $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public bns(bgi $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bmv.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.b.bN()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.eh() >= 100) {
-               return false;
-            }
-
-            if (this.b.ec().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         eei $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected eei h() {
-      return bqq.a(this.b, 10, 7);
-   }
-
-   @Override
-   public boolean b() {
-      return !this.b.J().l() && !this.b.bN();
-   }
-
-   @Override
-   public void c() {
-      this.b.J().a(this.c, this.d, this.e, this.f);
-   }
-
-   @Override
-   public void d() {
-      this.b.J().n();
-      super.d();
-   }
-
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,37 +1,48 @@
-public enum dxp {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final float z;
+public class dxp extends dyd {
+   public static final Codec<dxp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               hb.a.e.fieldOf("axis").orElse(hb.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dxp::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final hb.a g;
 
-   private dxp(float $$0) {
-      this.z = $$0;
+   public dxp(float $$0, float $$1, int $$2, int $$3, hb.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+      }
    }
 
-   public float a() {
-      return this.z;
+   @Override
+   public boolean a(gv $$0, gv $$1, gv $$2, art $$3) {
+      hb $$4 = hb.a(hb.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= aro.b(this.b, this.d, aro.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected dye<?> a() {
+      return dye.c;
    }
 }

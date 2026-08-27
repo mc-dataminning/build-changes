@@ -1,11 +1,19 @@
-public class anc {
-   public static final anl<dgl> a = a("vibrations");
-   public static final anl<dgl> b = a("warden_can_listen");
-   public static final anl<dgl> c = a("shrieker_can_listen");
-   public static final anl<dgl> d = a("ignore_vibrations_sneaking");
-   public static final anl<dgl> e = a("allay_can_listen");
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-   private static anl<dgl> a(String $$0) {
-      return anl.a(jc.z, new acq($$0));
+@FunctionalInterface
+public interface anc<T> {
+   static anc<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
+
+   static anc<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
+   }
+
+   T get() throws IOException;
 }

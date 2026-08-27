@@ -1,29 +1,21 @@
-public enum dgf {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+public enum dgf implements asf {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   private final boolean d;
-   private final boolean e;
+   private final String d;
 
-   private dgf(boolean $$0, boolean $$1) {
+   private dgf(String $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
+   @Override
+   public String toString() {
       return this.d;
    }
 
-   public static dgf a(ahy $$0) {
-      if ($$0.a(ahy.d)) {
-         return c;
-      } else {
-         return $$0.a(ahy.b) ? b : a;
-      }
+   @Override
+   public String c() {
+      return this.d;
    }
 }

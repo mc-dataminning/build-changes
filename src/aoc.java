@@ -1,44 +1,126 @@
-public class aoc {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private aoc() {
+public abstract class aoc<K, V extends aob<K>> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
+   private final File c;
+   private final Map<String, V> d = Maps.newHashMap();
+
+   public aoc(File $$0) {
+      this.c = $$0;
    }
 
-   public static eei a(eei $$0, aoc.a $$1) {
-      int $$2 = apa.a($$0.a());
-      int $$3 = apa.a($$0.b());
-      int $$4 = apa.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      eei $$9 = eei.b;
+   public File b() {
+      return this.c;
+   }
 
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = apa.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
+   public void a(V $$0) {
+      this.d.put(this.a($$0.g()), $$0);
 
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = apa.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
+      try {
+         this.e();
+      } catch (IOException var3) {
+         a.warn("Could not save the list after adding a user.", var3);
+      }
+   }
 
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = apa.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
-            }
+   @Nullable
+   public V b(K $$0) {
+      this.g();
+      return this.d.get(this.a($$0));
+   }
+
+   public void c(K $$0) {
+      this.d.remove(this.a($$0));
+
+      try {
+         this.e();
+      } catch (IOException var3) {
+         a.warn("Could not save the list after removing a user.", var3);
+      }
+   }
+
+   public void b(aob<K> $$0) {
+      this.c($$0.g());
+   }
+
+   public String[] a() {
+      return this.d.keySet().toArray(new String[0]);
+   }
+
+   public boolean c() {
+      return this.d.size() < 1;
+   }
+
+   protected String a(K $$0) {
+      return $$0.toString();
+   }
+
+   protected boolean d(K $$0) {
+      return this.d.containsKey(this.a($$0));
+   }
+
+   private void g() {
+      List<K> $$0 = Lists.newArrayList();
+
+      for (V $$1 : this.d.values()) {
+         if ($$1.f()) {
+            $$0.add($$1.g());
          }
       }
 
-      return $$9.a(1.0 / $$8);
+      for (K $$2 : $$0) {
+         this.d.remove(this.a($$2));
+      }
    }
 
-   @FunctionalInterface
-   public interface a {
-      eei fetch(int var1, int var2, int var3);
+   protected abstract aob<K> a(JsonObject var1);
+
+   public Collection<V> d() {
+      return this.d.values();
+   }
+
+   public void e() throws IOException {
+      JsonArray $$0 = new JsonArray();
+      this.d.values().stream().map($$0x -> ac.a(new JsonObject(), $$0x::a)).forEach($$0::add);
+
+      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
+         b.toJson($$0, $$1);
+      }
+   }
+
+   public void f() throws IOException {
+      if (this.c.exists()) {
+         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
+            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
+            this.d.clear();
+
+            for (JsonElement $$2 : $$1) {
+               JsonObject $$3 = arf.m($$2, "entry");
+               aob<K> $$4 = this.a($$3);
+               if ($$4.g() != null) {
+                  this.d.put(this.a($$4.g()), (V)$$4);
+               }
+            }
+         }
+      }
    }
 }

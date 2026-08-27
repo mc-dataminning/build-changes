@@ -1,41 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
+import javax.annotation.Nullable;
 
-public class ame {
-   public static final Codec<ame> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               amg.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ame::new)
-   );
-   private final he<amg> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+class ame extends FileStore {
+   private final String a;
 
-   public ame(he<amg> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public ame(String $$0) {
+      this.a = $$0;
    }
 
-   public he<amg> a() {
-      return this.b;
+   @Override
+   public String name() {
+      return this.a;
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   public String type() {
+      return "index";
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public boolean isReadOnly() {
+      return true;
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

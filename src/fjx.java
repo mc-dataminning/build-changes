@@ -1,94 +1,45 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class fjx extends flw {
+   private final flr a;
 
-public interface fjx {
-   static fjx.a a(eie $$0) {
-      return a(ImmutableMap.of(), $$0);
+   fjx(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flr $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
-   static fjx.a a(Map<fkf, eie> $$0, eie $$1) {
-      return new fjx.a($$1, $$0);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
    }
 
-   ein getBuffer(fkf var1);
+   @Override
+   public fla b() {
+      return fla.b;
+   }
 
-   public static class a implements fjx {
-      protected final eie a;
-      protected final Map<fkf, eie> b;
-      protected Optional<fkf> c = Optional.empty();
-      protected final Set<eie> d = Sets.newHashSet();
+   public static class a implements fkz<iz> {
+      private final flr a;
 
-      protected a(eie $$0, Map<fkf, eie> $$1) {
+      public a(flr $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      @Override
-      public ein getBuffer(fkf $$0) {
-         Optional<fkf> $$1 = $$0.O();
-         eie $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
-            if (this.c.isPresent()) {
-               fkf $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.J(), $$0.I());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private eie b(fkf $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fkf $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            ein $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fkf $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(fkf $$0) {
-         eie $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.O());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fjx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

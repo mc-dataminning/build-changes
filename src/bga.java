@@ -1,57 +1,49 @@
-public class bga extends bfj {
-   private static final String b = "data";
-   private qr c = new qr();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public bga(bfn<?> $$0, cmm $$1) {
-      super($$0, $$1);
-      this.ae = true;
+public class bga extends bft {
+   public static final Codec<bga> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bey.b(bft.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bga::new)
+   );
+   private final bey<bft> b;
+   private final int f;
+   private final int g;
+
+   public bga(bey<bft> $$0) {
+      this.b = $$0;
+      List<bfa.b<bft>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bfa.b<bft> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void l() {
+   public int a(art $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
    @Override
-   protected void a_() {
+   public int a() {
+      return this.f;
    }
 
    @Override
-   protected void a(qr $$0) {
-      this.c = $$0.p("data");
+   public int b() {
+      return this.g;
    }
 
    @Override
-   protected void b(qr $$0) {
-      $$0.a("data", this.c.h());
-   }
-
-   @Override
-   public uo<ur> S() {
-      throw new IllegalStateException("Markers should never be sent");
-   }
-
-   @Override
-   protected boolean o(bfj $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bB() {
-      return false;
-   }
-
-   @Override
-   protected void m(bfj $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public dxj l_() {
-      return dxj.d;
-   }
-
-   @Override
-   public boolean c_() {
-      return true;
+   public bfu<?> c() {
+      return bfu.e;
    }
 }

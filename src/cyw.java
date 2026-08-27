@@ -1,41 +1,105 @@
-public class cyw extends cpc {
-   public static final ddb d = dcr.aT;
-   private final int e;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   protected cyw(int $$0, dca.d $$1, dcq $$2) {
-      super($$1, $$2);
-      this.k(this.C.b().a(d, Integer.valueOf(0)));
-      this.e = $$0;
+public enum cyw implements asf {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
+
+   public static final Codec<cyw> e = asf.a(cyw::values);
+   private final String f;
+   private final h g;
+
+   private cyw(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   @Override
-   protected int b(cmm $$0, gu $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), bfj.class), this.e);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.e, $$2) / (float)this.e;
-         return apa.f($$3 * 15.0F);
-      } else {
-         return 0;
+   public cyw a(cyw $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Override
-   protected int g(dcb $$0) {
-      return $$0.c(d);
+   public h a() {
+      return this.g;
+   }
+
+   public hb a(hb $$0) {
+      if ($$0.o() == hb.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static cyw a(art $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<cyw> b(art $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   protected dcb a(dcb $$0, int $$1) {
-      return $$0.a(d, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int a() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(d);
+   public String c() {
+      return this.f;
    }
 }

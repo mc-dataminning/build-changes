@@ -1,41 +1,15 @@
-import javax.annotation.Nullable;
-
-public class yq implements uo<ur> {
-   private final int a;
-   @Nullable
-   private final qr b;
-
-   public yq(int $$0, @Nullable qr $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class yq implements uw<wo> {
+   public yq() {
    }
 
-   public yq(sf $$0) {
-      this.a = $$0.m();
-      this.b = $$0.p();
+   public yq(sh $$0) {
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.d(this.a);
-      $$0.a(this.b);
+   public void a(sh $$0) {
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   @Nullable
-   public qr c() {
-      return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

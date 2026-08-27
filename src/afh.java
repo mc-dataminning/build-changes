@@ -1,37 +1,39 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-public class afh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.pardonip.failed"));
+public record afh(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, ant d) {
+   private static final String e = "usercache.json";
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               dt.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> du.a(((ds)$$0x.getSource()).l().ac().g().a(), $$1))
-                  .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
-      );
+   public static afh a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      ant $$4 = new ant($$3, new File($$1, "usercache.json"));
+      return new afh($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   private static int a(ds $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
-         throw a.create();
-      } else {
-         alh $$2 = $$0.l().ac().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> sw.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
-      }
+   @Nullable
+   public arx a() {
+      return arx.a(this.b, ServicesKeyType.PROFILE_KEY);
+   }
+
+   public MinecraftSessionService b() {
+      return this.a;
+   }
+
+   public ServicesKeySet c() {
+      return this.b;
+   }
+
+   public GameProfileRepository d() {
+      return this.c;
+   }
+
+   public ant e() {
+      return this.d;
    }
 }

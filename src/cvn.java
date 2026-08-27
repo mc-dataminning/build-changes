@@ -1,91 +1,49 @@
-public class cvn extends cpn {
-   public static final dcs a = cvq.a;
+import javax.annotation.Nullable;
 
-   public cvn(dca.d $$0) {
+public class cvn extends crf {
+   protected cvn(dex.d $$0) {
       super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, byo $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
+   public dck a(gv $$0, dey $$1) {
+      return new ddf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
+      return a($$0, $$2, dcm.a);
    }
 
    @Override
-   public void a(cmm $$0, gu $$1, dcb $$2, bfj $$3) {
-      if (!$$3.bQ()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public bdx a(dcb $$0, cmm $$1, gu $$2, byo $$3, bdw $$4, eee $$5) {
-      if ($$1.B) {
-         a($$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
-
-      cfz $$6 = $$3.b($$4);
-      return $$6.d() instanceof cds && new cih($$3, $$4, $$6, $$5).b() ? bdx.d : bdx.a;
-   }
-
-   private static void d(dcb $$0, cmm $$1, gu $$2) {
-      a($$1, $$2);
-      if (!$$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 3);
+   protected void a(cpk $$0, gv $$1, cbl $$2) {
+      dck $$3 = $$0.c_($$1);
+      if ($$3 instanceof ddf) {
+         $$2.a((bgr)$$3);
+         $$2.a(ape.am);
       }
    }
 
    @Override
-   public boolean e_(dcb $$0) {
-      return $$0.c(a);
-   }
-
-   @Override
-   public void b(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if ($$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, cfz $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && cki.a(ckk.v, $$3) == 0) {
-         int $$5 = 1 + $$1.z.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dcb $$0, cmm $$1, gu $$2, apf $$3) {
-      if ($$0.c(a)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(cmm $$0, gu $$1) {
-      double $$2 = 0.5625;
-      apf $$3 = $$0.z;
-
-      for (ha $$4 : ha.values()) {
-         gu $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            ha.a $$6 = $$4.o();
-            double $$7 = $$6 == ha.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == ha.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == ha.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(ip.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aou.iR, aov.e, 1.0F, 1.0F, false);
          }
-      }
-   }
 
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
+         hb $$7 = $$0.c(a);
+         hb.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == hb.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == hb.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(iw.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(iw.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

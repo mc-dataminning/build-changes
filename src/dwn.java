@@ -1,24 +1,31 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dwn extends dws<dwn.a> {
-   protected dwn(del $$0) {
-      super(cmv.b, $$0, new dwn.a(new Long2ObjectOpenHashMap()));
+public class dwn extends dux {
+   public static final Codec<dwn> d = a(dwn::new);
+
+   public dwn(dux.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = hx.e($$0);
-      ded $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(hx.b(gu.a($$0)), hx.b(gu.b($$0)), hx.b(gu.c($$0)));
+   public Optional<dux.b> a(dux.a $$0) {
+      cyw $$1 = cyw.a($$0.f());
+      gv $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dux.b($$2, (Consumer<dvp>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   protected static final class a extends dwp<dwn.a> {
-      public a(Long2ObjectOpenHashMap<ded> $$0) {
-         super($$0);
-      }
+   private void a(dvp $$0, gv $$1, cyw $$2, dux.a $$3) {
+      List<dvb> $$4 = Lists.newArrayList();
+      dwm.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
+   }
 
-      public dwn.a a() {
-         return new dwn.a(this.a.clone());
-      }
+   @Override
+   public dvg<?> e() {
+      return dvg.c;
    }
 }

@@ -1,39 +1,33 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqg extends dqh {
-   public static final dqg a = new dqg(die.a(0));
-   public static final Codec<dqg> b = Codec.either(
-         die.a, RecordCodecBuilder.create($$0 -> $$0.group(die.a.fieldOf("value").forGetter($$0x -> $$0x.d)).apply($$0, dqg::new))
-      )
-      .xmap($$0 -> (dqg)$$0.map(dqg::a, $$0x -> $$0x), $$0 -> Either.left($$0.d));
-   private final die d;
+public record dqg(int b, int c, int d, int e, int f, bft g, float h) implements dpp {
+   public static final Codec<dqg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dqg::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dqg::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dqg::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dqg::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dqg::f),
+               bft.c.fieldOf("extra_rare_growths").forGetter(dqg::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dqg::h)
+            )
+            .apply($$0, dqg::new)
+   );
 
-   public static dqg a(die $$0) {
-      return new dqg($$0);
+   public int a() {
+      return this.b;
    }
 
-   private dqg(die $$0) {
-      this.d = $$0;
+   public int b() {
+      return this.c;
    }
 
-   public die b() {
+   public int c() {
       return this.d;
    }
 
-   @Override
-   public int a(apf $$0, dih $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dqi<?> a() {
-      return dqi.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   public int d() {
+      return this.e;
    }
 }

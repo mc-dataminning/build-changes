@@ -1,24 +1,32 @@
-public class zf implements uo<zb> {
-   private final bdu a;
+public class zf implements uw<wo> {
+   private final double a;
+   private final double b;
 
-   public zf(bdu $$0) {
-      this.a = $$0;
+   public zf(dgp $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   public zf(sf $$0) {
-      this.a = bdu.a($$0.readUnsignedByte());
+   public zf(sh $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeByte(this.a.a());
+   public void a(sh $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public bdu a() {
+   public void a(wo $$0) {
+      $$0.a(this);
+   }
+
+   public double a() {
+      return this.b;
+   }
+
+   public double d() {
       return this.a;
    }
 }

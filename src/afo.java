@@ -1,82 +1,60 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.collect.Maps;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class afo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(sw.c("commands.recipe.take.failed"));
+   private final Map<aep, afn> a = Maps.newHashMap();
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("targets", ec.d())
-                              .then(
-                                 dt.a("recipe", eq.a())
-                                    .suggests(gk.b)
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), Collections.singleton(eq.b($$0x, "recipe"))))
-                              ))
-                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ec.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aE().b())))
-                     )
-               ))
-            .then(
-               dt.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ec.d())
-                           .then(
-                              dt.a("recipe", eq.a())
-                                 .suggests(gk.b)
-                                 .executes($$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets"), Collections.singleton(eq.b($$0x, "recipe"))))
-                           ))
-                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ec.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aE().b())))
-                  )
-            )
-      );
+   @Nullable
+   public afn a(aep $$0) {
+      return this.a.get($$0);
    }
 
-   private static int a(ds $$0, Collection<aig> $$1, Collection<cjc<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   public afn a(aep $$0, te $$1) {
+      afn $$2 = new afn($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
 
-      for (aig $$4 : $$1) {
-         $$3 += $$4.a($$2);
+   public void a(afn $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<aep> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<afn> b() {
+      return this.a.values();
+   }
+
+   public qs c() {
+      qs $$0 = new qs();
+
+      for (afn $$1 : this.a.values()) {
+         $$0.a($$1.a().toString(), $$1.f());
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> sw.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> sw.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
+      return $$0;
+   }
 
-         return $$3;
+   public void a(qs $$0) {
+      for (String $$1 : $$0.e()) {
+         aep $$2 = new aep($$1);
+         this.a.put($$2, afn.a($$0.p($$1), $$2));
       }
    }
 
-   private static int b(ds $$0, Collection<aig> $$1, Collection<cjc<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (aig $$4 : $$1) {
-         $$3 += $$4.b($$2);
+   public void a(akj $$0) {
+      for (afn $$1 : this.a.values()) {
+         $$1.c($$0);
       }
+   }
 
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> sw.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> sw.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
+   public void b(akj $$0) {
+      for (afn $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

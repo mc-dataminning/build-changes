@@ -1,18 +1,24 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class asa extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
+public class asa<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   @Nullable
+   private V c;
 
-   public asa(Schema $$0) {
-      super($$0, true);
+   public asa(Function<K, V> $$0) {
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(avw.l, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(avw.l, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+   public V a(K $$0) {
+      if (this.c == null || !Objects.equals(this.b, $$0)) {
+         this.c = this.a.apply($$0);
+         this.b = $$0;
+      }
+
+      return this.c;
    }
 }

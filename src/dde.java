@@ -1,110 +1,69 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public abstract class dde<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dde.a<T>> e = this.d.xmap(this::b, dde.a::b);
-
-   protected dde(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
-   }
-
-   public dde.a<T> b(T $$0) {
-      return new dde.a<>(this, $$0);
-   }
-
-   public dde.a<T> a(dcd<?, ?> $$0) {
-      return new dde.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dde.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dde.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dde<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dcd<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dde<T> a, T b) {
-      public a(dde<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
+public class dde extends dck implements ddm {
+   private final dcs a = new dcs();
+   private final dcx b = new dcx() {
+      @Override
+      protected void a(cpk $$0, gv $$1, dey $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aou.gS, aov.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
 
       @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
+      protected void b(cpk $$0, gv $$1, dey $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aou.gR, aov.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
+
+      @Override
+      protected void a(cpk $$0, gv $$1, dey $$2, int $$3, int $$4) {
+         $$0.a(dde.this.p, csl.fG, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(cbl $$0) {
+         return $$0.gd().b(dde.this);
+      }
+   };
+
+   public dde(gv $$0, dey $$1) {
+      super(dcm.d, $$0, $$1);
+   }
+
+   public static void a(cpk $$0, gv $$1, dey $$2, dde $$3) {
+      $$3.a.a();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public void a(cbl $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.b.a($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   public void b(cbl $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.b.b($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   public boolean c(cbl $$0) {
+      return bgh.a(this, $$0);
+   }
+
+   public void c() {
+      if (!this.q) {
+         this.b.c(this.k(), this.p(), this.q());
+      }
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

@@ -1,67 +1,26 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.Optional;
 
-public class dsu extends dsx {
-   public static final Codec<dsu> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dsu::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final hi<cnk> f;
+public class dsu<P extends dst> {
+   public static final dsu<dss> a = a("straight_trunk_placer", dss.a);
+   public static final dsu<dsp> b = a("forking_trunk_placer", dsp.a);
+   public static final dsu<dsq> c = a("giant_trunk_placer", dsq.a);
+   public static final dsu<dsr> d = a("mega_jungle_trunk_placer", dsr.b);
+   public static final dsu<dsn> e = a("dark_oak_trunk_placer", dsn.a);
+   public static final dsu<dso> f = a("fancy_trunk_placer", dso.a);
+   public static final dsu<dsl> g = a("bending_trunk_placer", dsl.a);
+   public static final dsu<dsv> h = a("upwards_branching_trunk_placer", dsv.a);
+   public static final dsu<dsm> i = a("cherry_trunk_placer", dsm.a);
+   private final Codec<P> j;
 
-   private static P9<Mu<dsu>, hz, dsx.c, Float, Integer, Optional<dsx.a>, Integer, Integer, Integer, hi<cnk>> b(Instance<dsu> $$0) {
-      P5<Mu<dsu>, hz, dsx.c, Float, Integer, Optional<dsx.a>> $$1 = a($$0);
-      P4<Mu<dsu>, Integer, Integer, Integer, hi<cnk>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(dsu::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(dsu::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(dsu::c),
-         ht.a(jc.ap).fieldOf("preferred_biomes").forGetter(dsu::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   private static <P extends dst> dsu<P> a(String $$0, Codec<P> $$1) {
+      return hs.a(jc.Y, $$0, new dsu<>($$1));
    }
 
-   public dsu(hz $$0, dsx.c $$1, float $$2, int $$3, Optional<dsx.a> $$4, int $$5, int $$6, int $$7, hi<cnk> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   private dsu(Codec<P> $$0) {
+      this.j = $$0;
    }
 
-   public dsu(int $$0, int $$1, int $$2, hi<cnk> $$3) {
-      this(hz.g, dsx.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public hi<cnk> d() {
-      return this.f;
-   }
-
-   @Override
-   protected boolean a(ddz $$0, int $$1, int $$2) {
-      List<clt> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new clt($$1, $$2));
-   }
-
-   @Override
-   public dsy<?> e() {
-      return dsy.b;
+   public Codec<P> a() {
+      return this.j;
    }
 }

@@ -1,108 +1,95 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fpf extends fox<bzc> {
-   private static final acq a = new acq("textures/entity/fishing_hook.png");
-   private static final fkf f = fkf.c(a);
-   private static final double g = 960.0;
+public class fpf implements anl {
+   private Map<dcm<?>, fpg<?>> d = ImmutableMap.of();
+   private final erv e;
+   private final fhf f;
+   public cpk a;
+   public epy b;
+   public ehd c;
+   private final Supplier<fnz> g;
+   private final Supplier<fth> h;
+   private final Supplier<fsh> i;
 
-   public fpf(foy.a $$0) {
-      super($$0);
+   public fpf(erv $$0, fhf $$1, Supplier<fnz> $$2, Supplier<fth> $$3, Supplier<fsh> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(bzc $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      byo $$6 = $$0.k();
-      if ($$6 != null) {
-         $$3.a();
-         $$3.a();
-         $$3.b(0.5F, 0.5F, 0.5F);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         eij.a $$7 = $$3.c();
-         Matrix4f $$8 = $$7.a();
-         Matrix3f $$9 = $$7.b();
-         ein $$10 = $$4.getBuffer(f);
-         a($$10, $$8, $$9, $$5, 0.0F, 0, 0, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 0, 1, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 1, 1, 0);
-         a($$10, $$8, $$9, $$5, 0.0F, 1, 0, 0);
-         $$3.b();
-         int $$11 = $$6.fh() == bft.b ? 1 : -1;
-         cfz $$12 = $$6.eO();
-         if (!$$12.a(cgc.qh)) {
-            $$11 = -$$11;
+   @Nullable
+   public <E extends dck> fpg<E> a(E $$0) {
+      return (fpg<E>)this.d.get($$0.u());
+   }
+
+   public void a(cpk $$0, epy $$1, ehd $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dck> void a(E $$0, float $$1, elh $$2, fng $$3) {
+      fpg<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.u().a($$0.q())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
          }
-
-         float $$13 = $$6.x($$2);
-         float $$14 = apa.a(apa.c($$13) * (float) Math.PI);
-         float $$15 = apa.i($$2, $$6.aW, $$6.aV) * (float) (Math.PI / 180.0);
-         double $$16 = (double)apa.a($$15);
-         double $$17 = (double)apa.b($$15);
-         double $$18 = (double)$$11 * 0.35;
-         double $$19 = 0.8;
-         double $$26;
-         double $$27;
-         double $$28;
-         float $$29;
-         if ((this.c.d == null || this.c.d.au().a()) && $$6 == enn.N().t) {
-            double $$24 = 960.0 / (double)this.c.d.ac().c().intValue();
-            eei $$25 = this.c.b.j().a((float)$$11 * 0.525F, -0.1F);
-            $$25 = $$25.a($$24);
-            $$25 = $$25.b($$14 * 0.5F);
-            $$25 = $$25.a(-$$14 * 0.7F);
-            $$26 = apa.d((double)$$2, $$6.J, $$6.dn()) + $$25.c;
-            $$27 = apa.d((double)$$2, $$6.K, $$6.dp()) + $$25.d;
-            $$28 = apa.d((double)$$2, $$6.L, $$6.dt()) + $$25.e;
-            $$29 = $$6.cF();
-         } else {
-            $$26 = apa.d((double)$$2, $$6.J, $$6.dn()) - $$17 * $$18 - $$16 * 0.8;
-            $$27 = $$6.K + (double)$$6.cF() + ($$6.dp() - $$6.K) * (double)$$2 - 0.45;
-            $$28 = apa.d((double)$$2, $$6.L, $$6.dt()) - $$16 * $$18 + $$17 * 0.8;
-            $$29 = $$6.bU() ? -0.1875F : 0.0F;
-         }
-
-         double $$30 = apa.d((double)$$2, $$0.J, $$0.dn());
-         double $$31 = apa.d((double)$$2, $$0.K, $$0.dp()) + 0.25;
-         double $$32 = apa.d((double)$$2, $$0.L, $$0.dt());
-         float $$33 = (float)($$26 - $$30);
-         float $$34 = (float)($$27 - $$31) + $$29;
-         float $$35 = (float)($$28 - $$32);
-         ein $$36 = $$4.getBuffer(fkf.y());
-         eij.a $$37 = $$3.c();
-         int $$38 = 16;
-
-         for (int $$39 = 0; $$39 <= 16; $$39++) {
-            a($$33, $$34, $$35, $$36, $$37, a($$39, 16), a($$39 + 1, 16));
-         }
-
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   private static float a(int $$0, int $$1) {
-      return (float)$$0 / (float)$$1;
+   private static <T extends dck> void a(fpg<T> $$0, T $$1, float $$2, elh $$3, fng $$4) {
+      cpk $$5 = $$1.k();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fne.a($$5, $$1.p());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, fxx.d);
    }
 
-   private static void a(ein $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.5F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fum.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public <E extends dck> boolean a(E $$0, elh $$1, fng $$2, int $$3, int $$4) {
+      fpg<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
    }
 
-   private static void a(float $$0, float $$1, float $$2, ein $$3, eij.a $$4, float $$5, float $$6) {
-      float $$7 = $$0 * $$5;
-      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
-      float $$9 = $$2 * $$5;
-      float $$10 = $$0 * $$6 - $$7;
-      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
-      float $$12 = $$2 * $$6 - $$9;
-      float $$13 = apa.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-      $$10 /= $$13;
-      $$11 /= $$13;
-      $$12 /= $$13;
-      $$3.a($$4.a(), $$7, $$8, $$9).a(0, 0, 0, 255).a($$4.b(), $$10, $$11, $$12).e();
+   private static void a(dck $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
    }
 
-   public acq a(bzc $$0) {
-      return a;
+   public void a(@Nullable cpk $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(ank $$0) {
+      fph.a $$1 = new fph.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fpi.a($$1);
    }
 }

@@ -1,36 +1,15 @@
-public enum ddf implements apr {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
-
-   private final String k;
-
-   private ddf(String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
+public class ddf extends dbz {
+   public ddf(gv $$0, dey $$1) {
+      super(dcm.a, $$0, $$1, cmc.b);
    }
 
    @Override
-   public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+   protected te g() {
+      return te.c("container.furnace");
    }
 
    @Override
-   public String c() {
-      return this.k;
+   protected cec a(int $$0, cbk $$1) {
+      return new cew($$0, $$1, this, this.n);
    }
 }

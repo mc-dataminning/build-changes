@@ -1,41 +1,104 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fqn extends fpp<bgb, fcj<bgb>> {
-   private static final Map<bfn<?>, acq> a = ImmutableMap.of(
-      bfn.aw,
-      new acq("textures/entity/piglin/piglin.png"),
-      bfn.bs,
-      new acq("textures/entity/piglin/zombified_piglin.png"),
-      bfn.ax,
-      new acq("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
+public class fqn implements fqp.a {
+   final eqn a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private fqn.a d;
 
-   public fqn(foy.a $$0, fec $$1, fec $$2, fec $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new fsw<>(this, new fbr($$0.a($$2)), new fbr($$0.a($$3)), $$0.g()));
+   public fqn(eqn $$0) {
+      this.a = $$0;
    }
 
-   private static fcj<bgb> a(fea $$0, fec $$1, boolean $$2) {
-      fcj<bgb> $$3 = new fcj<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gcf $$6 = this.a.S();
+         if ($$6 != null) {
+            this.d = new fqn.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
       }
 
-      return $$3;
-   }
+      if (this.d != null) {
+         Map<cor, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
 
-   public acq b(bgb $$0) {
-      acq $$1 = a.get($$0.ae());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ae());
-      } else {
-         return $$1;
+         for (Entry<cor, String> $$9 : this.d.b.entrySet()) {
+            cor $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               fqp.a($$0, $$1, $$14, (double)hy.a($$10.e, 8), $$8 + (double)$$13, (double)hy.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
       }
    }
 
-   protected boolean c(bgb $$0) {
-      return super.a($$0) || $$0 instanceof bxd && ((bxd)$$0).fY();
+   final class a {
+      final Map<cor, String> b;
+      final CompletableFuture<Map<cor, String>> c;
+
+      a(gcf $$0, double $$1, double $$2) {
+         fie $$3 = fqn.this.a.s;
+         aeo<cpk> $$4 = $$3.ac();
+         int $$5 = hy.a($$1);
+         int $$6 = hy.a($$2);
+         Builder<cor, String> $$7 = ImmutableMap.builder();
+         fia $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               cor $$11 = new cor($$9, $$10);
+               String $$12 = "";
+               dhf $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            aki $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<cor, String> $$5x = ImmutableMap.builder();
+               akg $$6x = $$4x.k();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     cor $$9x = new cor($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
+      }
    }
 }

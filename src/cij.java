@@ -1,71 +1,73 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cij {
-   @Nullable
-   private final byo a;
-   private final bdw b;
-   private final eee c;
-   private final cmm d;
-   private final cfz e;
+public class cij extends chg {
+   protected static final Map<csk, Pair<Predicate<clg>, Consumer<clg>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         csl.i,
+         Pair.of(cij::b, b(csl.cC.n())),
+         csl.kE,
+         Pair.of(cij::b, b(csl.cC.n())),
+         csl.j,
+         Pair.of(cij::b, b(csl.cC.n())),
+         csl.k,
+         Pair.of(cij::b, b(csl.j.n())),
+         csl.rG,
+         Pair.of((Predicate<clg>)$$0 -> true, a(csl.j.n(), ciz.ds))
+      )
+   );
 
-   public cij(byo $$0, bdw $$1, eee $$2) {
-      this($$0.dI(), $$0, $$1, $$0.b($$1), $$2);
+   protected cij(ckj $$0, int $$1, float $$2, cir.a $$3) {
+      super((float)$$1, $$2, $$0, apj.bA, $$3);
    }
 
-   protected cij(cmm $$0, @Nullable byo $$1, bdw $$2, cfz $$3, eee $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public bgo a(clg $$0) {
+      cpk $$1 = $$0.q();
+      gv $$2 = $$0.a();
+      Pair<Predicate<clg>, Consumer<clg>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bgo.d;
+      } else {
+         Predicate<clg> $$4 = (Predicate<clg>)$$3.getFirst();
+         Consumer<clg> $$5 = (Consumer<clg>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cbl $$6 = $$0.o();
+            $$1.a($$6, $$2, aou.kL, aov.e, 1.0F, 1.0F);
+            if (!$$1.B) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
+               }
+            }
+
+            return bgo.a($$1.B);
+         } else {
+            return bgo.d;
+         }
+      }
    }
 
-   protected final eee j() {
-      return this.c;
+   public static Consumer<clg> b(dey $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(dji.c, $$1.a(), dji.a.a($$1.o(), $$0));
+      };
    }
 
-   public gu a() {
-      return this.c.a();
+   public static Consumer<clg> a(dey $$0, cpj $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(dji.c, $$2.a(), dji.a.a($$2.o(), $$0));
+         csk.a($$2.q(), $$2.a(), $$2.k(), new ciw($$1));
+      };
    }
 
-   public ha k() {
-      return this.c.b();
-   }
-
-   public eei l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cfz n() {
-      return this.e;
-   }
-
-   @Nullable
-   public byo o() {
-      return this.a;
-   }
-
-   public bdw p() {
-      return this.b;
-   }
-
-   public cmm q() {
-      return this.d;
-   }
-
-   public ha g() {
-      return this.a == null ? ha.c : this.a.cB();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fD();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dy();
+   public static boolean b(clg $$0) {
+      return $$0.k() != hb.a && $$0.q().a_($$0.a().c()).i();
    }
 }

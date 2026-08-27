@@ -1,41 +1,15 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
+import io.netty.util.Attribute;
 
-public class sp extends ByteToMessageDecoder {
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      byte[] $$3 = new byte[3];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         if (!$$1.isReadable()) {
-            $$1.resetReaderIndex();
-            return;
-         }
-
-         $$3[$$4] = $$1.readByte();
-         if ($$3[$$4] >= 0) {
-            sf $$5 = new sf(Unpooled.wrappedBuffer($$3));
-
-            try {
-               int $$6 = $$5.m();
-               if ($$1.readableBytes() >= $$6) {
-                  $$2.add($$1.readBytes($$6));
-                  return;
-               }
-
-               $$1.resetReaderIndex();
-            } finally {
-               $$5.release();
-            }
-
-            return;
+public interface sp {
+   static void a(Attribute<sg.a<?>> $$0, uw<?> $$1) {
+      sg $$2 = $$1.c();
+      if ($$2 != null) {
+         sg.a<?> $$3 = (sg.a<?>)$$0.get();
+         sg $$4 = $$3.a();
+         if ($$2 != $$4) {
+            sg.a<?> $$5 = $$2.b($$3.b());
+            $$0.set($$5);
          }
       }
-
-      throw new CorruptedFrameException("length wider than 21-bit");
    }
 }

@@ -1,107 +1,14 @@
-public abstract class fxg implements fxy {
-   protected fxv a;
-   protected final ami b;
-   protected final acq c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected fxy.a k = fxy.a.b;
-   protected boolean l;
-   protected apf m;
+public class fxg extends fwr<bvl, fha<bvl>> {
+   private static final aep a = new aep("textures/entity/wolf/wolf_collar.png");
 
-   protected fxg(amg $$0, ami $$1, apf $$2) {
-      this($$0.a(), $$1, $$2);
+   public fxg(fue<bvl, fha<bvl>> $$0) {
+      super($$0);
    }
 
-   protected fxg(acq $$0, ami $$1, apf $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
-   }
-
-   @Override
-   public acq a() {
-      return this.c;
-   }
-
-   @Override
-   public fzd a(fzc $$0) {
-      if (this.c.equals(fzc.b)) {
-         this.a = fzc.d;
-         return fzc.c;
-      } else {
-         fzd $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = fzc.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
-
-         return $$1;
+   public void a(elh $$0, fng $$1, int $$2, bvl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.p() && !$$3.cd()) {
+         float[] $$10 = $$3.gi().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
       }
-   }
-
-   @Override
-   public fxv b() {
-      return this.a;
-   }
-
-   @Override
-   public ami c() {
-      return this.b;
-   }
-
-   @Override
-   public boolean d() {
-      return this.i;
-   }
-
-   @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
-      return this.f;
-   }
-
-   @Override
-   public double i() {
-      return this.g;
-   }
-
-   @Override
-   public double j() {
-      return this.h;
-   }
-
-   @Override
-   public fxy.a k() {
-      return this.k;
-   }
-
-   @Override
-   public boolean l() {
-      return this.l;
-   }
-
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
    }
 }

@@ -1,35 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class vu implements uo<ur> {
-   private final int a;
-   private final byte b;
+public record vu(int b, gv c, List<vu.a> d) implements vo {
+   public static final aep a = new aep("debug/goal_selector");
 
-   public vu(bfj $$0, byte $$1) {
-      this.a = $$0.af();
-      this.b = $$1;
-   }
-
-   public vu(sf $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readByte();
+   public vu(sh $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(vu.a::new));
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeInt(this.a);
-      $$0.writeByte(this.b);
+   public void a(sh $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
+   @Override
+   public aep a() {
+      return a;
    }
 
-   @Nullable
-   public bfj a(cmm $$0) {
-      return $$0.a(this.a);
-   }
+   public static record a(int a, boolean b, String c) {
+      public a(sh $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
 
-   public byte a() {
-      return this.b;
+      public void a(sh $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

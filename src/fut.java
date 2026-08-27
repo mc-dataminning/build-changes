@@ -1,15 +1,11 @@
-import java.util.Collection;
-import java.util.Locale;
+public class fut extends ftp<bwa, fgo<bwa>> {
+   private static final aep a = new aep("textures/entity/tadpole/tadpole.png");
 
-public class fut extends RuntimeException {
-   private final Collection<fus.a> a;
-
-   public fut(fus.a $$0, Collection<fus.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   public fut(fsj.a $$0) {
+      super($$0, new fgo<>($$0.a(fhi.bz)), 0.14F);
    }
 
-   public Collection<fus.a> a() {
-      return this.a;
+   public aep a(bwa $$0) {
+      return a;
    }
 }

@@ -1,70 +1,12 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class ebu extends RuntimeException {
+   private final te a;
 
-public class ebu {
-   private final Set<ebt<?>> a;
-   private final Set<ebt<?>> b;
-
-   ebu(Set<ebt<?>> $$0, Set<ebt<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   public ebu(te $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   public boolean a(ebt<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<ebt<?>> a() {
+   public te a() {
       return this.a;
-   }
-
-   public Set<ebt<?>> b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
-
-   public void a(dzv $$0, dzl $$1) {
-      Set<ebt<?>> $$2 = $$1.a();
-      Set<ebt<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.a("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static ebu.a c() {
-      return new ebu.a();
-   }
-
-   public static class a {
-      private final Set<ebt<?>> a = Sets.newIdentityHashSet();
-      private final Set<ebt<?>> b = Sets.newIdentityHashSet();
-
-      public ebu.a a(ebt<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public ebu.a b(ebt<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public ebu a() {
-         return new ebu(this.a, this.b);
-      }
    }
 }

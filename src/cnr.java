@@ -1,70 +1,20 @@
-public abstract class cnr {
-   public static final acp<cnk> a = a("the_void");
-   public static final acp<cnk> b = a("plains");
-   public static final acp<cnk> c = a("sunflower_plains");
-   public static final acp<cnk> d = a("snowy_plains");
-   public static final acp<cnk> e = a("ice_spikes");
-   public static final acp<cnk> f = a("desert");
-   public static final acp<cnk> g = a("swamp");
-   public static final acp<cnk> h = a("mangrove_swamp");
-   public static final acp<cnk> i = a("forest");
-   public static final acp<cnk> j = a("flower_forest");
-   public static final acp<cnk> k = a("birch_forest");
-   public static final acp<cnk> l = a("dark_forest");
-   public static final acp<cnk> m = a("old_growth_birch_forest");
-   public static final acp<cnk> n = a("old_growth_pine_taiga");
-   public static final acp<cnk> o = a("old_growth_spruce_taiga");
-   public static final acp<cnk> p = a("taiga");
-   public static final acp<cnk> q = a("snowy_taiga");
-   public static final acp<cnk> r = a("savanna");
-   public static final acp<cnk> s = a("savanna_plateau");
-   public static final acp<cnk> t = a("windswept_hills");
-   public static final acp<cnk> u = a("windswept_gravelly_hills");
-   public static final acp<cnk> v = a("windswept_forest");
-   public static final acp<cnk> w = a("windswept_savanna");
-   public static final acp<cnk> x = a("jungle");
-   public static final acp<cnk> y = a("sparse_jungle");
-   public static final acp<cnk> z = a("bamboo_jungle");
-   public static final acp<cnk> A = a("badlands");
-   public static final acp<cnk> B = a("eroded_badlands");
-   public static final acp<cnk> C = a("wooded_badlands");
-   public static final acp<cnk> D = a("meadow");
-   public static final acp<cnk> E = a("cherry_grove");
-   public static final acp<cnk> F = a("grove");
-   public static final acp<cnk> G = a("snowy_slopes");
-   public static final acp<cnk> H = a("frozen_peaks");
-   public static final acp<cnk> I = a("jagged_peaks");
-   public static final acp<cnk> J = a("stony_peaks");
-   public static final acp<cnk> K = a("river");
-   public static final acp<cnk> L = a("frozen_river");
-   public static final acp<cnk> M = a("beach");
-   public static final acp<cnk> N = a("snowy_beach");
-   public static final acp<cnk> O = a("stony_shore");
-   public static final acp<cnk> P = a("warm_ocean");
-   public static final acp<cnk> Q = a("lukewarm_ocean");
-   public static final acp<cnk> R = a("deep_lukewarm_ocean");
-   public static final acp<cnk> S = a("ocean");
-   public static final acp<cnk> T = a("deep_ocean");
-   public static final acp<cnk> U = a("cold_ocean");
-   public static final acp<cnk> V = a("deep_cold_ocean");
-   public static final acp<cnk> W = a("frozen_ocean");
-   public static final acp<cnk> X = a("deep_frozen_ocean");
-   public static final acp<cnk> Y = a("mushroom_fields");
-   public static final acp<cnk> Z = a("dripstone_caves");
-   public static final acp<cnk> aa = a("lush_caves");
-   public static final acp<cnk> ab = a("deep_dark");
-   public static final acp<cnk> ac = a("nether_wastes");
-   public static final acp<cnk> ad = a("warped_forest");
-   public static final acp<cnk> ae = a("crimson_forest");
-   public static final acp<cnk> af = a("soul_sand_valley");
-   public static final acp<cnk> ag = a("basalt_deltas");
-   public static final acp<cnk> ah = a("the_end");
-   public static final acp<cnk> ai = a("end_highlands");
-   public static final acp<cnk> aj = a("end_midlands");
-   public static final acp<cnk> ak = a("small_end_islands");
-   public static final acp<cnk> al = a("end_barrens");
+public class cnr extends cnd {
+   public cnr(cnd.a $$0, bil... $$1) {
+      super($$0, cne.m, $$1);
+   }
 
-   private static acp<cnk> a(String $$0) {
-      return acp.a(jc.ap, new acq($$0));
+   @Override
+   public int a(int $$0) {
+      return 12 + ($$0 - 1) * 20;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

@@ -1,107 +1,94 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cpl extends ctg implements cpp, cwo {
-   private static final dcs e = dcr.C;
-   private static final int f = 6;
-   protected static final efb a = cpn.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final efb b = cpn.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final efb c = cpn.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final efb d = cpn.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
-
-   protected cpl(dca.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(aC, ha.c));
+public interface cpl extends cow, cpr {
+   @Override
+   default long ah() {
+      return this.u_().f();
    }
+
+   long A_();
+
+   ein<csk> L();
+
+   private <T> eir<T> a(gv $$0, T $$1, int $$2, eiv $$3) {
+      return new eir<>($$1, $$0, this.u_().e() + (long)$$2, $$3, this.A_());
+   }
+
+   private <T> eir<T> a(gv $$0, T $$1, int $$2) {
+      return new eir<>($$1, $$0, this.u_().e() + (long)$$2, this.A_());
+   }
+
+   default void a(gv $$0, csk $$1, int $$2, eiv $$3) {
+      this.L().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(gv $$0, csk $$1, int $$2) {
+      this.L().a(this.a($$0, $$1, $$2));
+   }
+
+   ein<eaa> K();
+
+   default void a(gv $$0, eaa $$1, int $$2, eiv $$3) {
+      this.K().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(gv $$0, eaa $$1, int $$2) {
+      this.K().a(this.a($$0, $$1, $$2));
+   }
+
+   ebs u_();
+
+   bgm d_(gv var1);
+
+   @Nullable
+   MinecraftServer n();
+
+   default bgl ai() {
+      return this.u_().s();
+   }
+
+   dgy J();
 
    @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      switch ((ha)$$0.c(aC)) {
-         case d:
-            return b;
-         case c:
-         default:
-            return a;
-         case e:
-            return d;
-         case f:
-            return c;
-      }
+   default boolean b(int $$0, int $$1) {
+      return this.J().b($$0, $$1);
    }
 
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(e, aC);
+   art y_();
+
+   default void b(gv $$0, csk $$1) {
    }
 
-   @Override
-   public dxe c_(dcb $$0) {
-      return $$0.c(e) ? dxf.c.a(false) : super.c_($$0);
+   default void a(hb $$0, dey $$1, gv $$2, gv $$3, int $$4, int $$5) {
+      ebd.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      gu $$3 = $$2.d();
-      dcb $$4 = $$1.a_($$3);
-      dcb $$5 = $$1.a_($$2.c());
-      return ($$4.a(this) || $$4.a(amw.bv)) && ($$5.a(this) || $$5.a(cpo.rC));
+   default void a(@Nullable cbl $$0, gv $$1, aot $$2, aov $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
    }
 
-   protected static boolean a(cmn $$0, gu $$1, dxe $$2, ha $$3) {
-      dcb $$4 = cpo.rD.n().a(e, Boolean.valueOf($$2.a(dxf.c))).a(aC, $$3);
-      return $$0.a($$1, $$4, 3);
+   void a(@Nullable cbl var1, gv var2, aot var3, aov var4, float var5, float var6);
+
+   void a(iu var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable cbl var1, int var2, gv var3, int var4);
+
+   default void c(int $$0, gv $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
    }
 
-   @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      if (($$1 == ha.a || $$1 == ha.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   void a(dji var1, ehf var2, dji.a var3);
 
-      if ($$0.c(e)) {
-         $$3.a($$4, dxf.c, dxf.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default void a(@Nullable big $$0, dji $$1, ehf $$2) {
+      this.a($$1, $$2, new dji.a($$0, null));
    }
 
-   @Override
-   public void a(dcb $$0, aif $$1, gu $$2, apf $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   default void a(@Nullable big $$0, dji $$1, gv $$2) {
+      this.a($$1, $$2, new dji.a($$0, null));
    }
 
-   @Override
-   public boolean a(cmp $$0, gu $$1, dcb $$2, boolean $$3) {
-      Optional<gu> $$4 = l.a($$0, $$1, $$2.b(), ha.b, cpo.rC);
-      if (!$$4.isPresent()) {
-         return false;
-      } else {
-         gu $$5 = $$4.get().c();
-         dcb $$6 = $$0.a_($$5);
-         return cpk.a($$0, $$5, $$6);
-      }
-   }
-
-   @Override
-   public boolean a(cmm $$0, apf $$1, gu $$2, dcb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aif $$0, apf $$1, gu $$2, dcb $$3) {
-      Optional<gu> $$4 = l.a($$0, $$2, $$3.b(), ha.b, cpo.rC);
-      if ($$4.isPresent()) {
-         gu $$5 = $$4.get();
-         gu $$6 = $$5.c();
-         ha $$7 = $$3.c(aC);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         cpk.a($$0, $$6, $$0.b_($$6), $$7);
-      }
-   }
-
-   @Override
-   public cfz a(cls $$0, gu $$1, dcb $$2) {
-      return new cfz(cpo.rC);
+   default void a(dji $$0, gv $$1, dji.a $$2) {
+      this.a($$0, ehf.b($$1), $$2);
    }
 }

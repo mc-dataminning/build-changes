@@ -1,54 +1,44 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fyj<T> {
-   static <T> fyj<T> a() {
-      return new fyj<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
+@FunctionalInterface
+public interface fyj {
+   Logger a = LogUtils.getLogger();
+
+   static fyj create(Collection<amk<?>> $$0) {
+      return ($$1, $$2) -> {
+         anm $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
+         eki $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = eki.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         fzr $$11 = $$3.a(fzr.a).orElse(fzr.e);
+         fzt $$12 = $$11.a($$7.a(), $$7.b());
+         if (aro.c($$7.a(), $$12.a()) && aro.c($$7.b(), $$12.b())) {
+            return new fya($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
          }
       };
    }
 
-   static <T> fyj<T> a(List<T> $$0, Function<T, Stream<acq>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final fym<T> $$2 = new fym<>();
-         final fym<T> $$3 = new fym<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new fyj<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
-   }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
+   @Nullable
+   fya loadSprite(aep var1, ani var2);
 }

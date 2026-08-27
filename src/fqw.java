@@ -1,38 +1,59 @@
-public class fqw extends fox<bzi> {
-   private static final acq a = new acq("textures/entity/shulker/spark.png");
-   private static final fkf f = fkf.h(a);
-   private final fcx<bzi> g;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public fqw(foy.a $$0) {
-      super($$0);
-      this.g = new fcx<>($$0.a(fed.bf));
+public class fqw implements fqp.a {
+   private final eqn a;
+   private final Map<Long, Map<gv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   fqw(eqn $$0) {
+      this.a = $$0;
    }
 
-   protected int a(bzi $$0, gu $$1) {
-      return 15;
+   public void a(long $$0, gv $$1) {
+      Map<gv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public void a(bzi $$0, float $$1, float $$2, eij $$3, fjx $$4, int $$5) {
-      $$3.a();
-      float $$6 = apa.j($$2, $$0.M, $$0.dy());
-      float $$7 = apa.i($$2, $$0.N, $$0.dA());
-      float $$8 = (float)$$0.ag + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(apa.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(apa.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(apa.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      ein $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, fum.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      ein $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, fum.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   @Override
+   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<gv> $$8 = Sets.newHashSet();
+      Map<gv, Integer> $$9 = Maps.newHashMap();
+      ell $$10 = $$1.getBuffer(fno.x());
+      Iterator<Entry<Long, Map<gv, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public acq a(bzi $$0) {
-      return a;
+      while ($$11.hasNext()) {
+         Entry<Long, Map<gv, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<gv, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<gv, Integer> $$16 : $$14.entrySet()) {
+               gv $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  eha $$19 = new eha(gv.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fne.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
+
+      for (Entry<gv, Integer> $$20 : $$9.entrySet()) {
+         gv $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         fqp.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

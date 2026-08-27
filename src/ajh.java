@@ -1,68 +1,197 @@
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class ajh implements ajl {
-   private static final Logger a = LogUtils.getLogger();
-   private final String d;
-   private final boolean e;
+public class ajh extends ajk<ajh> {
+   static final Logger aa = LogUtils.getLogger();
+   private static final Pattern ab = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final Splitter ac = Splitter.on(',').trimResults();
+   public final boolean a = this.a("online-mode", true);
+   public final boolean b = this.a("prevent-proxy-connections", false);
+   public final String c = this.a("server-ip", "");
+   public final boolean d = this.a("spawn-animals", true);
+   public final boolean e = this.a("spawn-npcs", true);
+   public final boolean f = this.a("pvp", true);
+   public final boolean g = this.a("allow-flight", false);
+   public final String h = this.a("motd", "A Minecraft Server");
+   public final boolean i = this.a("force-gamemode", false);
+   public final boolean j = this.a("enforce-whitelist", false);
+   public final bgl k = this.a("difficulty", a(bgl::a, bgl::a), bgl::e, bgl.b);
+   public final cph l = this.a("gamemode", a(cph::a, cph::a), cph::b, cph.a);
+   public final String m = this.a("level-name", "world");
+   public final int n = this.a("server-port", 25565);
+   @Nullable
+   public final Boolean o = this.b("announce-player-achievements");
+   public final boolean p = this.a("enable-query", false);
+   public final int q = this.a("query.port", 25565);
+   public final boolean r = this.a("enable-rcon", false);
+   public final int s = this.a("rcon.port", 25575);
+   public final String t = this.a("rcon.password", "");
+   public final boolean u = this.a("hardcore", false);
+   public final boolean v = this.a("allow-nether", true);
+   public final boolean w = this.a("spawn-monsters", true);
+   public final boolean x = this.a("use-native-transport", true);
+   public final boolean y = this.a("enable-command-block", false);
+   public final int z = this.a("spawn-protection", 16);
+   public final int A = this.a("op-permission-level", 4);
+   public final int B = this.a("function-permission-level", 2);
+   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final int D = this.a("max-chained-neighbor-updates", 1000000);
+   public final int E = this.a("rate-limit", 0);
+   public final int F = this.a("view-distance", 10);
+   public final int G = this.a("simulation-distance", 10);
+   public final int H = this.a("max-players", 20);
+   public final int I = this.a("network-compression-threshold", 256);
+   public final boolean J = this.a("broadcast-rcon-to-ops", true);
+   public final boolean K = this.a("broadcast-console-to-ops", true);
+   public final int L = this.a("max-world-size", $$0x -> aro.a($$0x, 1, 29999984), 29999984);
+   public final boolean M = this.a("sync-chunk-writes", true);
+   public final boolean N = this.a("enable-jmx-monitoring", false);
+   public final boolean O = this.a("enable-status", true);
+   public final boolean P = this.a("hide-online-players", false);
+   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> aro.a($$0x, 10, 1000), 100);
+   public final String R = this.a("text-filtering-config", "");
+   public final Optional<MinecraftServer.b> S;
+   public final coy T;
+   public final ajk<ajh>.a<Integer> U = this.b("player-idle-timeout", 0);
+   public final ajk<ajh>.a<Boolean> V = this.b("white-list", false);
+   public final boolean W = this.a("enforce-secure-profile", true);
+   public final boolean X = this.a("log-ips", true);
+   private final ajh.a ad;
+   public final dlf Y;
 
-   protected ajh(String $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ajh(Properties $$0) {
+      super($$0);
+      String $$1 = this.a("level-seed", "");
+      boolean $$2 = this.a("generate-structures", true);
+      long $$3 = dlf.a($$1).orElse(dlf.f());
+      this.Y = new dlf($$3, $$2, false);
+      this.ad = new ajh.a(
+         this.a("generator-settings", $$0x -> arf.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dun.a.a().toString())
+      );
+      this.S = a(
+         this.a("resource-pack", ""),
+         this.a("resource-pack-sha1", ""),
+         this.a("resource-pack-hash"),
+         this.a("require-resource-pack", false),
+         this.a("resource-pack-prompt", "")
+      );
+      this.T = b(this.a("initial-enabled-packs", String.join(",", cqd.c.a().a())), this.a("initial-disabled-packs", String.join(",", cqd.c.a().b())));
+   }
+
+   public static ajh a(Path $$0) {
+      return new ajh(b($$0));
+   }
+
+   protected ajh a(ht $$0, Properties $$1) {
+      return new ajh($$1);
    }
 
    @Nullable
-   @Override
-   public <T> T a(ajx<T> $$0) throws IOException {
-      akp<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
-      if ($$1 == null) {
-         return null;
-      } else {
-         Object var4;
-         try (InputStream $$2 = $$1.get()) {
-            var4 = a($$0, $$2);
-         }
-
-         return (T)var4;
-      }
-   }
-
-   @Nullable
-   public static <T> T a(ajx<T> $$0, InputStream $$1) {
-      JsonObject $$3;
-      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
-         $$3 = aor.a($$2);
-      } catch (Exception var9) {
-         a.error("Couldn't load {} metadata", $$0.a(), var9);
-         return null;
-      }
-
-      if (!$$3.has($$0.a())) {
-         return null;
-      } else {
+   private static te c(String $$0) {
+      if (!Strings.isNullOrEmpty($$0)) {
          try {
-            return $$0.a(aor.u($$3, $$0.a()));
-         } catch (Exception var7) {
-            a.error("Couldn't load {} metadata", $$0.a(), var7);
-            return null;
+            return te.a.a($$0);
+         } catch (Exception var2) {
+            aa.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
          }
+      }
+
+      return null;
+   }
+
+   private static Optional<MinecraftServer.b> a(String $$0, String $$1, @Nullable String $$2, boolean $$3, String $$4) {
+      if ($$0.isEmpty()) {
+         return Optional.empty();
+      } else {
+         String $$5;
+         if (!$$1.isEmpty()) {
+            $$5 = $$1;
+            if (!Strings.isNullOrEmpty($$2)) {
+               aa.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+            }
+         } else if (!Strings.isNullOrEmpty($$2)) {
+            aa.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+            $$5 = $$2;
+         } else {
+            $$5 = "";
+         }
+
+         if ($$5.isEmpty()) {
+            aa.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+         } else if (!ab.matcher($$5).matches()) {
+            aa.warn("Invalid sha1 for resource-pack-sha1");
+         }
+
+         te $$8 = c($$4);
+         return Optional.of(new MinecraftServer.b($$0, $$5, $$3, $$8));
       }
    }
 
-   @Override
-   public String a() {
-      return this.d;
+   private static coy b(String $$0, String $$1) {
+      List<String> $$2 = ac.splitToList($$0);
+      List<String> $$3 = ac.splitToList($$1);
+      return new coy($$2, $$3);
    }
 
-   @Override
-   public boolean b() {
-      return this.e;
+   private static cdt d(String $$0) {
+      return cdv.d.a(ac.splitToStream($$0).<aep>mapMulti(($$0x, $$1) -> {
+         aep $$2 = aep.a($$0x);
+         if ($$2 == null) {
+            aa.warn("Invalid resource location {}, ignoring", $$0x);
+         } else {
+            $$1.accept($$2);
+         }
+      }).collect(Collectors.toList()));
+   }
+
+   public dlc a(ht $$0) {
+      return this.ad.a($$0);
+   }
+
+   static record a(JsonObject a, String b) {
+      private static final Map<String, aeo<dum>> c = Map.of("default", dun.a, "largebiomes", dun.c);
+
+      public dlc a(ht $$0) {
+         hs<dum> $$1 = $$0.d(jd.aF);
+         hf.c<dum> $$2 = $$1.b(dun.a)
+            .or(() -> $$1.h().findAny())
+            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
+         hf<dum> $$3 = Optional.ofNullable(aep.a(this.b))
+            .map($$0x -> aeo.a(jd.aF, $$0x))
+            .or(() -> Optional.ofNullable(c.get(this.b)))
+            .flatMap($$1::b)
+            .orElseGet(() -> {
+               ajh.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.g().a());
+               return $$2;
+            });
+         dlc $$4 = $$3.a().a();
+         if ($$3.a(dun.b)) {
+            aen<JsonElement> $$5 = aen.a(JsonOps.INSTANCE, $$0);
+            Optional<dta> $$6 = dta.a.parse(new Dynamic($$5, this.a())).resultOrPartial(ajh.aa::error);
+            if ($$6.isPresent()) {
+               return $$4.a($$0, new dkc($$6.get()));
+            }
+         }
+
+         return $$4;
+      }
    }
 }

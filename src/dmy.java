@@ -1,21 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dmy extends dmk {
-   public static final Codec<dmy> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dot.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               aoi.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               aoi.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dmy::new)
-   );
-   public final int d;
-   public final int e;
+public record dmy<FC extends dpp, F extends dnl<FC>>(F d, FC e) {
+   public static final Codec<dmy<?, ?>> a = jc.R.q().dispatch($$0 -> $$0.d, dnl::a);
+   public static final Codec<hf<dmy<?, ?>>> b = ael.a(jd.as, a);
+   public static final Codec<hj<dmy<?, ?>>> c = hu.a(jd.as, a);
 
-   public dmy(dot $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public boolean a(cqe $$0, dgv $$1, art $$2, gv $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dmy<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
+   }
+
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
+
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

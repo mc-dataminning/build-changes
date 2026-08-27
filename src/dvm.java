@@ -1,36 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dvm extends dvq {
-   public static final Codec<dvm> a = dvi.b.listOf().fieldOf("rules").xmap(dvm::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<dvi> b;
+public record dvm(List<dvb> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final aep c = new aep("jigsaw");
+   private static final Map<aep, aep> d = ImmutableMap.builder()
+      .put(new aep("nvi"), c)
+      .put(new aep("pcp"), c)
+      .put(new aep("bastionremnant"), c)
+      .put(new aep("runtime"), c)
+      .build();
 
-   public dvm(List<? extends dvi> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public dvm(List<dvb> a) {
+      this.a = List.copyOf(a);
    }
 
-   @Nullable
-   @Override
-   public dvt.c a(cmp $$0, gu $$1, gu $$2, dvt.c $$3, dvt.c $$4, dvp $$5) {
-      apf $$6 = apf.a(apa.a($$4.a()));
-      dcb $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
+   public boolean a() {
+      return this.a.isEmpty();
+   }
 
-      while (var9.hasNext()) {
-         dvi $$8 = (dvi)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new dvt.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+   public boolean a(gv $$0) {
+      for (dvb $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
          }
       }
 
-      return $$4;
+      return false;
    }
 
-   @Override
-   protected dvs<?> a() {
-      return dvs.i;
+   public rl a(dvn $$0) {
+      qy $$1 = new qy();
+
+      for (dvb $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public static dvm a(qy $$0, dvn $$1) {
+      List<dvb> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         qs $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         aep $$6 = new aep($$5);
+         aep $$7 = d.getOrDefault($$6, $$6);
+         dvo $$8 = jc.T.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dvb $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dvm($$2);
+   }
+
+   public dup b() {
+      return dvb.a(this.a.stream());
+   }
+
+   public List<dvb> c() {
+      return this.a;
    }
 }

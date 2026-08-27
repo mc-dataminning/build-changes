@@ -1,26 +1,45 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.stream.Stream;
 
-public class awp extends auz {
-   private final Map<String, String> a;
-
-   public awp(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
+public class awp extends DataFix {
+   public awp(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(aym.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "Item Lore componentize",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "display",
+                           $$0xxxx -> $$0xxxx.update(
+                                 "Lore",
+                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(awp::a).map($$0xxxxx::createList).result(), $$0xxxxx)
+                              )
+                        )
+                  )
             )
       );
+   }
+
+   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> (Dynamic<T>)DataFixUtils.orElse($$0x.asString().map(awp::a).map($$0x::createString).result(), $$0x));
+   }
+
+   private static String a(String $$0) {
+      return te.a.a(te.b($$0));
    }
 }

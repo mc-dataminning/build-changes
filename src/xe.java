@@ -1,57 +1,74 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-public class xe implements uo<ur> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final sw e;
+public record xe(List<xe.a> a) implements uw<wo> {
+   private static final int b = 2097152;
 
-   public xe(String $$0, String $$1, boolean $$2, @Nullable sw $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public xe(sh $$0) {
+      this($$0.a(xe.a::new));
    }
 
-   public xe(sf $$0) {
-      this.b = $$0.s();
-      this.c = $$0.e(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(sf::l);
+   public static xe a(List<dhf> $$0) {
+      return new xe($$0.stream().map(xe.a::new).toList());
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.writeBoolean(this.d);
-      $$0.a(this.e, sf::a);
+   public void a(sh $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(ur $$0) {
+   public void a(wo $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.b;
-   }
+   public static record a(cor a, byte[] b) {
+      public a(dhf $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new sh(this.d()), $$0);
+      }
 
-   public String c() {
-      return this.c;
-   }
+      public a(sh $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public boolean d() {
-      return this.d;
-   }
+      private static int a(dhf $$0) {
+         int $$1 = 0;
 
-   @Nullable
-   public sw e() {
-      return this.e;
+         for (dhg $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public sh a() {
+         return new sh(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(sh $$0, dhf $$1) {
+         for (dhg $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(sh $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cor b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

@@ -1,13 +1,13 @@
-public class frg extends fqz {
-   private static final acq a = new acq("textures/entity/skeleton/stray.png");
+public abstract class frg<T extends bwh, M extends fev<T>> extends ftp<T, M> {
+   private final float a;
 
-   public frg(foy.a $$0) {
-      super($$0, fed.bt, fed.bu, fed.bv);
-      this.a(new fto<>(this, $$0.f()));
+   public frg(fsj.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   @Override
-   public acq a(bvl $$0) {
-      return a;
+   protected void a(T $$0, elh $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

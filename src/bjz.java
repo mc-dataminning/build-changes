@@ -1,98 +1,194 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class bjz<U> implements Iterable<U> {
-   protected final List<bjz.a<U>> a;
-   private final apf b = apf.a();
+public class bjz {
+   private final bjy a;
+   private final Map<bkb.a, Set<bkb>> b = Maps.newEnumMap(bkb.a.class);
+   private final Map<UUID, bkb> c = new Object2ObjectArrayMap();
+   private final Set<bkb> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bjz> h;
 
-   public bjz() {
-      this.a = Lists.newArrayList();
+   public bjz(bjy $$0, Consumer<bjz> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a();
    }
 
-   private bjz(List<bjz.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public bjy a() {
+      return this.a;
    }
 
-   public static <U> Codec<bjz<U>> a(Codec<U> $$0) {
-      return bjz.a.a($$0).listOf().xmap(bjz::new, $$0x -> $$0x.a);
+   public double b() {
+      return this.e;
    }
 
-   public bjz<U> a(U $$0, int $$1) {
-      this.a.add(new bjz.a<>($$0, $$1));
-      return this;
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
+      }
    }
 
-   public bjz<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bjz.a::c));
-      return this;
+   public Set<bkb> a(bkb.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
    }
 
-   public Stream<U> b() {
-      return this.a.stream().map(bjz.a::a);
+   public Set<bkb> c() {
+      return ImmutableSet.copyOf(this.c.values());
    }
 
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bjz.a::a);
+   @Nullable
+   public bkb a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
+   public boolean a(bkb $$0) {
+      return this.c.get($$0.a()) != null;
    }
 
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
+   private void d(bkb $$0) {
+      bkb $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.c()).add($$0);
+         this.d();
+      }
+   }
 
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
+   public void b(bkb $$0) {
+      this.d($$0);
+   }
+
+   public void c(bkb $$0) {
+      this.d($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   private void e(bkb $$0) {
+      this.a($$0.c()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bkb $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bkb $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void e() {
+      for (bkb $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
       }
 
-      private double c() {
-         return this.c;
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (bkb $$1 : this.b(bkb.a.a)) {
+         $$0 += $$1.d();
       }
 
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      double $$2 = $$0;
+
+      for (bkb $$3 : this.b(bkb.a.b)) {
+         $$2 += $$0 * $$3.d();
       }
 
-      public T a() {
-         return this.a;
+      for (bkb $$4 : this.b(bkb.a.c)) {
+         $$2 *= 1.0 + $$4.d();
       }
 
-      public int b() {
-         return this.b;
+      return this.a.a($$2);
+   }
+
+   private Collection<bkb> b(bkb.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
+   }
+
+   public void a(bjz $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
+   }
+
+   public qs g() {
+      qs $$0 = new qs();
+      $$0.a("Name", jc.v.b(this.a).toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         qy $$1 = new qy();
+
+         for (bkb $$2 : this.d) {
+            $$1.add($$2.e());
+         }
+
+         $$0.a("Modifiers", $$1);
       }
 
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
+      return $$0;
+   }
 
-      public static <E> Codec<bjz.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bjz.a<E>>() {
-            public <T> DataResult<Pair<bjz.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bjz.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+   public void a(qs $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         qy $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bkb $$3 = bkb.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.c()).add($$3);
+               this.d.add($$3);
             }
-
-            public <T> DataResult<T> a(bjz.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
+         }
       }
+
+      this.d();
    }
 }

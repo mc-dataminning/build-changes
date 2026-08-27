@@ -1,24 +1,16 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fsv extends fuq<bio> {
+   private static final aep a = new aep("textures/entity/squid/glow_squid.png");
 
-public class fsv extends ftg<btm, fbq<btm>> {
-   private static final Map<bto, acq> a = ac.a(Maps.newEnumMap(bto.class), $$0 -> {
-      $$0.put(bto.a, null);
-      $$0.put(bto.b, new acq("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(bto.c, new acq("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(bto.d, new acq("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(bto.e, new acq("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public fsv(fqt<btm, fbq<btm>> $$0) {
-      super($$0);
+   public fsv(fsj.a $$0, fgm<bio> $$1) {
+      super($$0, $$1);
    }
 
-   public void a(eij $$0, fjx $$1, int $$2, btm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      acq $$10 = a.get($$3.fY());
-      if ($$10 != null && !$$3.cb()) {
-         ein $$11 = $$1.getBuffer(fkf.h($$10));
-         this.c().a($$0, $$11, $$2, fpz.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public aep a(bio $$0) {
+      return a;
+   }
+
+   protected int a(bio $$0, gv $$1) {
+      int $$2 = (int)aro.b(0.0F, 15.0F, 1.0F - (float)$$0.t() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

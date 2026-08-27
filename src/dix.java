@@ -1,22 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dix<T> {
+   void g(T var1);
 
-class dix extends djc {
-   private final hi<cpn> e;
-   public static final Codec<dix> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dix::new));
+   void f(T var1);
 
-   public dix(hz $$0, hi<cpn> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   void e(T var1);
 
-   @Override
-   protected boolean a(dcb $$0) {
-      return $$0.a(this.e);
-   }
+   void d(T var1);
 
-   @Override
-   public dis<?> a() {
-      return dis.a;
-   }
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

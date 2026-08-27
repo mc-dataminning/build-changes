@@ -1,25 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class epn {
-   private static final aom a = aom.codepoint(32, ts.a);
+public abstract class epn implements enn, Runnable {
+   protected static final int a = 25;
+   private static final Logger c = LogUtils.getLogger();
+   protected eof b;
 
-   private static String a(String $$0) {
-      return enn.N().m.G().c() ? $$0 : n.a($$0);
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         c.error("", var3);
+      }
    }
 
-   public static List<aom> a(ta $$0, int $$1, eov $$2) {
-      end $$3 = new end();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(ta.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, ts.a);
-      List<aom> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, ts.a, ($$1x, $$2x) -> {
-         aom $$3x = qm.a().a($$1x);
-         $$4.add($$2x ? aom.composite(a, $$3x) : $$3x);
-      });
-      return (List<aom>)($$4.isEmpty() ? Lists.newArrayList(new aom[]{aom.a}) : $$4);
+   public static void a(exv $$0) {
+      eqn $$1 = eqn.N();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   public void a(eof $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(te $$0) {
+      this.b.a($$0);
+   }
+
+   public void b(te $$0) {
+      this.b.b($$0);
+   }
+
+   public boolean c() {
+      return this.b.f();
+   }
+
+   public void b() {
+   }
+
+   public void d() {
+   }
+
+   public void a() {
    }
 }

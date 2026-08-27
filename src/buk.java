@@ -1,69 +1,92 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class buk extends bud {
-   @Nullable
-   private eei b;
+public interface buk {
+   boolean q();
 
-   public buk(bub $$0) {
-      super($$0);
+   void w(boolean var1);
+
+   void l(ciw var1);
+
+   void c(qs var1);
+
+   ciw b();
+
+   aot t();
+
+   @Deprecated
+   static void a(biy $$0, ciw $$1) {
+      qs $$2 = $$1.w();
+      if ($$0.ac()) {
+         $$1.a($$0.ad());
+      }
+
+      if ($$0.fQ()) {
+         $$2.a("NoAI", $$0.fQ());
+      }
+
+      if ($$0.aS()) {
+         $$2.a("Silent", $$0.aS());
+      }
+
+      if ($$0.aT()) {
+         $$2.a("NoGravity", $$0.aT());
+      }
+
+      if ($$0.cb()) {
+         $$2.a("Glowing", $$0.cb());
+      }
+
+      if ($$0.cq()) {
+         $$2.a("Invulnerable", $$0.cq());
+      }
+
+      $$2.a("Health", $$0.et());
    }
 
-   @Override
-   public void b() {
-      eei $$0 = this.a.C(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dn();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dt();
+   @Deprecated
+   static void a(biy $$0, qs $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
 
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         apf $$5 = this.a.ec();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         eei $$9 = this.a.dl();
-         this.a.dI().a(iv.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
+      if ($$1.e("Silent")) {
+         $$0.d($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.e($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.i($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.c($$1.j("Health"));
       }
    }
 
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = eei.c(this.a.dI().a(dhk.a.f, dkn.a(this.a.q())));
+   static <T extends biw & buk> Optional<bgo> a(cbl $$0, bgn $$1, T $$2) {
+      ciw $$3 = $$0.b($$1);
+      if ($$3.d() == ciz.pL && $$2.bv()) {
+         $$2.a($$2.t(), 1.0F, 1.0F);
+         ciw $$4 = $$2.b();
+         $$2.l($$4);
+         ciw $$5 = ciy.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         cpk $$6 = $$2.dK();
+         if (!$$6.B) {
+            ai.j.a((akj)$$0, $$4);
+         }
+
+         $$2.ak();
+         return Optional.of(bgo.a($$6.B));
+      } else {
+         return Optional.empty();
       }
-
-      if (this.b.c(this.a.dn(), this.a.dp(), this.a.dt()) < 1.0) {
-         this.a.fW().b(bur.f).j();
-         this.a.fW().a(bur.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dl().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Nullable
-   @Override
-   public eei g() {
-      return this.b;
-   }
-
-   @Override
-   public bur<buk> i() {
-      return bur.d;
    }
 }

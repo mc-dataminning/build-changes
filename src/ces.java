@@ -1,24 +1,58 @@
-public class ces extends cfu {
-   public ces(cfu.a $$0) {
-      super($$0);
+public abstract class ces {
+   private int a;
+
+   public static ces a(final cem $$0, final int $$1) {
+      return new ces() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   @Override
-   public bdy<cfz> a(cmm $$0, byo $$1, bdw $$2) {
-      cfz $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dn(), $$1.dp(), $$1.dt(), amh.gG, ami.h, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         bzo $$4 = new bzo($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dA(), $$1.dy(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public static ces a(final int[] $$0, final int $$1) {
+      return new ces() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
 
-      $$1.b(amr.c.b(this));
-      if (!$$1.fO().d) {
-         $$3.h(1);
-      }
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
 
-      return bdy.a($$3, $$0.r_());
+   public static ces a() {
+      return new ces() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

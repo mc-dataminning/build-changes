@@ -1,13 +1,9 @@
-public abstract class fss<T extends bfj, M extends fbf<T>> extends ftg<T, M> {
-   public fss(fqt<T, M> $$0) {
-      super($$0);
+public class fss extends ftp<bvx, fen<bvx>> {
+   public fss(fsj.a $$0) {
+      super($$0, new fen<>($$0.a(fhi.Y)), 0.3F);
    }
 
-   @Override
-   public void a(eij $$0, fjx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ein $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, fum.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public aep a(bvx $$0) {
+      return $$0.t().a();
    }
-
-   public abstract fkf a();
 }

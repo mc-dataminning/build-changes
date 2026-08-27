@@ -2,156 +2,69 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class dvp {
-   private cui a;
-   private cvz b;
-   private gu c;
-   private boolean d;
+public class dvp implements dvc {
+   private final List<dvb> a = Lists.newArrayList();
+
+   @Override
+   public void a(dvb $$0) {
+      this.a.add($$0);
+   }
+
    @Nullable
-   private drs e;
-   private boolean f;
-   @Nullable
-   private apf g;
-   private int h;
-   private final List<dvq> i;
-   private boolean j;
-   private boolean k;
-
-   public dvp() {
-      this.a = cui.a;
-      this.b = cvz.a;
-      this.c = gu.b;
-      this.f = true;
-      this.i = Lists.newArrayList();
+   @Override
+   public dvb a(dup $$0) {
+      return dvb.a(this.a, $$0);
    }
 
-   public dvp a() {
-      dvp $$0 = new dvp();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
-   }
-
-   public dvp a(cui $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public dvp a(cvz $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public dvp a(gu $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public dvp a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public dvp a(drs $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public dvp a(@Nullable apf $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public dvp b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public dvp c(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public dvp b() {
-      this.i.clear();
-      return this;
-   }
-
-   public dvp a(dvq $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public dvp b(dvq $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public cui c() {
-      return this.a;
-   }
-
-   public cvz d() {
-      return this.b;
-   }
-
-   public gu e() {
-      return this.c;
-   }
-
-   public apf b(@Nullable gu $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? apf.a(ac.b()) : apf.a(apa.a($$0));
+   @Deprecated
+   public void a(int $$0) {
+      for (dvb $$1 : this.a) {
+         $$1.a(0, $$0, 0);
       }
    }
 
-   public boolean f() {
-      return this.d;
-   }
-
-   @Nullable
-   public drs g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<dvq> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public dvt.a a(List<dvt.a> $$0, @Nullable gu $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
+   @Deprecated
+   public int a(int $$0, int $$1, art $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      dup $$5 = this.d();
+      int $$6 = $$5.d() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
       }
+
+      int $$7 = $$6 - $$5.k();
+      this.a($$7);
+      return $$7;
    }
 
-   public dvp d(boolean $$0) {
-      this.k = $$0;
-      return this;
+   /** @deprecated */
+   public void a(art $$0, int $$1, int $$2) {
+      dup $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.d();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.h();
+      this.a($$7);
    }
 
-   public boolean k() {
-      return this.k;
+   public dvm a() {
+      return new dvm(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public dup d() {
+      return dvb.a(this.a.stream());
    }
 }

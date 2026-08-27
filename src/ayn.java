@@ -1,17 +1,34 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class ayn extends axd {
-   public ayn(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class ayn extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public ayn(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:zombie_pigman");
-      $$0.register($$1, "minecraft:zombified_piglin", () -> axe.a($$0));
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(aym.c),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
+            )
+      );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(azu::a).map(this.b).map($$0::createString);
+      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

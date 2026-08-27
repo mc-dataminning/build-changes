@@ -16,15 +16,15 @@ import javax.annotation.Nullable;
 public class bz {
    public static final bz a = new bz();
    @Nullable
-   private final anl<cfu> b;
+   private final apy<cir> b;
    @Nullable
-   private final Set<cfu> c;
+   private final Set<cir> c;
    private final cj.d d;
    private final cj.d e;
    private final bj[] f;
    private final bj[] g;
    @Nullable
-   private final chw h;
+   private final ckt h;
    private final cl i;
 
    public bz() {
@@ -38,7 +38,7 @@ public class bz {
       this.i = cl.a;
    }
 
-   public bz(@Nullable anl<cfu> $$0, @Nullable Set<cfu> $$1, cj.d $$2, cj.d $$3, bj[] $$4, bj[] $$5, @Nullable chw $$6, cl $$7) {
+   public bz(@Nullable apy<cir> $$0, @Nullable Set<cir> $$1, cj.d $$2, cj.d $$3, bj[] $$4, bj[] $$5, @Nullable ckt $$6, cl $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -49,7 +49,7 @@ public class bz {
       this.i = $$7;
    }
 
-   public boolean a(cfz $$0) {
+   public boolean a(ciw $$0) {
       if (this == a) {
          return true;
       } else if (this.b != null && !$$0.a(this.b)) {
@@ -66,7 +66,7 @@ public class bz {
          return false;
       } else {
          if (this.f.length > 0) {
-            Map<ckg, Integer> $$1 = cki.a($$0.x());
+            Map<cnd, Integer> $$1 = cnf.a($$0.x());
 
             for (bj $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -76,7 +76,7 @@ public class bz {
          }
 
          if (this.g.length > 0) {
-            Map<ckg, Integer> $$3 = cki.a(cev.d($$0));
+            Map<cnd, Integer> $$3 = cnf.a(chs.d($$0));
 
             for (bj $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -85,43 +85,43 @@ public class bz {
             }
          }
 
-         chw $$5 = chy.d($$0);
+         ckt $$5 = ckv.d($$0);
          return this.h == null || this.h == $$5;
       }
    }
 
    public static bz a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = aor.m($$0, "item");
+         JsonObject $$1 = arf.m($$0, "item");
          cj.d $$2 = cj.d.a($$1.get("count"));
          cj.d $$3 = cj.d.a($$1.get("durability"));
          if ($$1.has("data")) {
             throw new JsonParseException("Disallowed data tag found");
          } else {
             cl $$4 = cl.a($$1.get("nbt"));
-            Set<cfu> $$5 = null;
-            JsonArray $$6 = aor.a($$1, "items", null);
+            Set<cir> $$5 = null;
+            JsonArray $$6 = arf.a($$1, "items", null);
             if ($$6 != null) {
-               Builder<cfu> $$7 = ImmutableSet.builder();
+               Builder<cir> $$7 = ImmutableSet.builder();
 
                for (JsonElement $$8 : $$6) {
-                  acq $$9 = new acq(aor.a($$8, "item"));
-                  $$7.add(jb.i.b($$9).orElseThrow(() -> new JsonSyntaxException("Unknown item id '" + $$9 + "'")));
+                  aep $$9 = new aep(arf.a($$8, "item"));
+                  $$7.add(jc.i.b($$9).orElseThrow(() -> new JsonSyntaxException("Unknown item id '" + $$9 + "'")));
                }
 
                $$5 = $$7.build();
             }
 
-            anl<cfu> $$10 = null;
+            apy<cir> $$10 = null;
             if ($$1.has("tag")) {
-               acq $$11 = new acq(aor.i($$1, "tag"));
-               $$10 = anl.a(jc.D, $$11);
+               aep $$11 = new aep(arf.i($$1, "tag"));
+               $$10 = apy.a(jd.D, $$11);
             }
 
-            chw $$12 = null;
+            ckt $$12 = null;
             if ($$1.has("potion")) {
-               acq $$13 = new acq(aor.i($$1, "potion"));
-               $$12 = jb.j.b($$13).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$13 + "'"));
+               aep $$13 = new aep(arf.i($$1, "potion"));
+               $$12 = jc.j.b($$13).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$13 + "'"));
             }
 
             bj[] $$14 = bj.b($$1.get("enchantments"));
@@ -141,8 +141,8 @@ public class bz {
          if (this.c != null) {
             JsonArray $$1 = new JsonArray();
 
-            for (cfu $$2 : this.c) {
-               $$1.add(jb.i.b($$2).toString());
+            for (cir $$2 : this.c) {
+               $$1.add(jc.i.b($$2).toString());
             }
 
             $$0.add("items", $$1);
@@ -176,7 +176,7 @@ public class bz {
          }
 
          if (this.h != null) {
-            $$0.addProperty("potion", jb.j.b(this.h).toString());
+            $$0.addProperty("potion", jc.j.b(this.h).toString());
          }
 
          return $$0;
@@ -185,7 +185,7 @@ public class bz {
 
    public static bz[] b(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonArray $$1 = aor.n($$0, "items");
+         JsonArray $$1 = arf.n($$0, "items");
          bz[] $$2 = new bz[$$1.size()];
 
          for (int $$3 = 0; $$3 < $$2.length; $$3++) {
@@ -202,13 +202,13 @@ public class bz {
       private final List<bj> a = Lists.newArrayList();
       private final List<bj> b = Lists.newArrayList();
       @Nullable
-      private Set<cfu> c;
+      private Set<cir> c;
       @Nullable
-      private anl<cfu> d;
+      private apy<cir> d;
       private cj.d e;
       private cj.d f;
       @Nullable
-      private chw g;
+      private ckt g;
       private cl h;
 
       private a() {
@@ -221,12 +221,12 @@ public class bz {
          return new bz.a();
       }
 
-      public bz.a a(cml... $$0) {
-         this.c = Stream.of($$0).map(cml::k).collect(ImmutableSet.toImmutableSet());
+      public bz.a a(cpj... $$0) {
+         this.c = Stream.of($$0).map(cpj::k).collect(ImmutableSet.toImmutableSet());
          return this;
       }
 
-      public bz.a a(anl<cfu> $$0) {
+      public bz.a a(apy<cir> $$0) {
          this.d = $$0;
          return this;
       }
@@ -241,12 +241,12 @@ public class bz {
          return this;
       }
 
-      public bz.a a(chw $$0) {
+      public bz.a a(ckt $$0) {
          this.g = $$0;
          return this;
       }
 
-      public bz.a a(qr $$0) {
+      public bz.a a(qs $$0) {
          this.h = new cl($$0);
          return this;
       }

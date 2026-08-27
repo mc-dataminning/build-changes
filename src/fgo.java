@@ -1,70 +1,38 @@
-public class fgo extends fim {
-   fgo(few $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+import com.google.common.collect.ImmutableList;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+public class fgo<T extends bwa> extends fdi<T> {
+   private final fhj a;
+   private final fhj b;
+
+   public fgo(fhj $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
+   }
+
+   public static fhp c() {
+      fhr $$0 = new fhr();
+      fhs $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fho.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fhl.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fho.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fhl.a(0.0F, 22.0F, 0.0F));
+      return fhp.a($$0, 16, 16);
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
-         }
-      } else {
-         this.k();
-      }
+   protected Iterable<fhj> a() {
+      return ImmutableList.of(this.a);
    }
 
    @Override
-   public fhq b() {
-      return fhq.c;
+   protected Iterable<fhj> b() {
+      return ImmutableList.of(this.b);
    }
 
-   public static class a implements fhp<iy> {
-      private final fih a;
-
-      public a(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgo $$8 = new fgo($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fhp<iy> {
-      private final fih a;
-
-      public b(fih $$0) {
-         this.a = $$0;
-      }
-
-      public fhm a(iy $$0, few $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fgo $$8 = new fgo($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$0.aX() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * aro.a(0.3F * $$3);
    }
 }

@@ -1,93 +1,45 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-public class fet {
-   private static final Logger a = LogUtils.getLogger();
-   private final enn b;
-   private final fzp c;
-   private final af d = new af();
-   private final Map<ae, ag> e = Maps.newHashMap();
-   @Nullable
-   private fet.a f;
-   @Nullable
-   private ae g;
+public abstract class fet<E extends big> extends fek<E> {
+   private static final Vector3f a = new Vector3f();
 
-   public fet(enn $$0, fzp $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fet() {
+      this(fno::d);
    }
 
-   public void a(yt $$0) {
-      if ($$0.e()) {
-         this.d.a();
-         this.e.clear();
-      }
-
-      this.d.a($$0.c());
-      this.d.a($$0.a());
-
-      for (Entry<acq, ag> $$1 : $$0.d().entrySet()) {
-         ae $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ag $$3 = $$1.getValue();
-            $$3.a($$2.h(), $$2.k());
-            this.e.put($$2, $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.e() && $$3.a()) {
-               if (this.b.s != null) {
-                  this.c.a(this.b.s, $$2);
-               }
-
-               if ($$2.d() != null && $$2.d().h()) {
-                  this.b.az().a(new erd($$2));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
+   public fet(Function<aep, fno> $$0) {
+      super($$0);
    }
 
-   public af a() {
-      return this.d;
+   @Override
+   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public void a(@Nullable ae $$0, boolean $$1) {
-      fex $$2 = this.b.I();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.a(aal.a($$0));
-      }
+   public abstract fhj a();
 
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.e($$0);
-         }
-      }
+   public Optional<fhj> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
    }
 
-   public void a(@Nullable fet.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         for (Entry<ae, ag> $$1 : this.e.entrySet()) {
-            $$0.a($$1.getKey(), $$1.getValue());
-         }
-
-         $$0.e(this.g);
-      }
+   protected void a(bic $$0, ere $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
    }
 
-   public interface a extends af.a {
-      void a(ae var1, ag var2);
+   protected void a(ere $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      erg.a(this, $$0, $$5, $$6, a);
+   }
 
-      void e(@Nullable ae var1);
+   protected void a(bic $$0, ere $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> erg.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(ere $$0) {
+      erg.a(this, $$0, 0L, 1.0F, a);
    }
 }

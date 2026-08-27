@@ -1,23 +1,68 @@
-public class eqi {
-   public static final eqi a = new eqi("Merry X-mas!");
-   public static final eqi b = new eqi("Happy new year!");
-   public static final eqi c = new eqi("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import javax.annotation.Nullable;
 
-   public eqi(String $$0) {
-      this.f = $$0;
+public record eqi(int a, @Nullable eqi.a b, @Nullable te c, @Nullable String d) {
+   private static final te e = te.c("chat.tag.system");
+   private static final te f = te.c("chat.tag.system_single_player");
+   private static final te g = te.c("chat.tag.not_secure");
+   private static final te h = te.c("chat.tag.modified");
+   private static final int i = 13684944;
+   private static final int j = 6316128;
+   private static final eqi k = new eqi(13684944, null, e, "System");
+   private static final eqi l = new eqi(13684944, null, f, "System");
+   private static final eqi m = new eqi(13684944, null, g, "Not Secure");
+
+   public static eqi a() {
+      return k;
    }
 
-   public void a(eox $$0, int $$1, eov $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - apa.e(apa.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public static eqi b() {
+      return l;
+   }
+
+   public static eqi c() {
+      return m;
+   }
+
+   public static eqi a(String $$0) {
+      te $$1 = te.b($$0).a(n.h);
+      te $$2 = te.h().b(h).b(td.r).b($$1);
+      return new eqi(6316128, eqi.a.a, $$2, "Modified");
+   }
+
+   public int d() {
+      return this.a;
+   }
+
+   @Nullable
+   public eqi.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public te f() {
+      return this.c;
+   }
+
+   @Nullable
+   public String g() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new aep("icon/chat_modified"), 9, 9);
+
+      public final aep b;
+      public final int c;
+      public final int d;
+
+      private a(aep $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(erx $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

@@ -1,20 +1,30 @@
-public class day extends czc {
-   public day(gu $$0, dcb $$1) {
-      super(czp.B, $$0, $$1, cjf.d);
+public class day extends ctm {
+   public day(dex.d $$0) {
+      super($$0, () -> dcm.c);
    }
 
    @Override
-   protected sw g() {
-      return sw.c("container.smoker");
+   public dck a(gv $$0, dey $$1) {
+      return new deb($$0, $$1);
    }
 
    @Override
-   protected int a(cfz $$0) {
-      return super.a($$0) / 2;
+   protected apb<aep> b() {
+      return ape.i.b(ape.ai);
    }
 
    @Override
-   protected cbf a(int $$0, byn $$1) {
-      return new ccz($$0, $$1, this, this.n);
+   public boolean f_(dey $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dey $$0, coq $$1, gv $$2, hb $$3) {
+      return aro.a(dcr.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   public int b(dey $$0, coq $$1, gv $$2, hb $$3) {
+      return $$3 == hb.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

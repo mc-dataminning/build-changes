@@ -1,89 +1,56 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public class bqm {
-   public static final bqm a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<bfz> g;
+public class bqm<T extends cct> extends bps {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   private bqm(boolean $$0) {
+   public bqm(T $$0) {
       this.c = $$0;
+      this.a(EnumSet.of(bps.a.a));
    }
 
-   public static bqm a() {
-      return new bqm(true);
+   @Override
+   public boolean a() {
+      return this.c.j() == null && !this.c.cO() && this.c.go() && !this.c.gn().a() && !((aki)this.c.dK()).b(this.c.dk());
    }
 
-   public static bqm b() {
-      return new bqm(false);
+   @Override
+   public boolean b() {
+      return this.c.go() && !this.c.gn().a() && this.c.dK() instanceof aki && !((aki)this.c.dK()).b(this.c.dk());
    }
 
-   public bqm c() {
-      bqm $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public bqm a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public bqm d() {
-      this.e = false;
-      return this;
-   }
-
-   public bqm e() {
-      this.f = false;
-      return this;
-   }
-
-   public bqm a(@Nullable Predicate<bfz> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable bfz $$0, bfz $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.el()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
-      } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.ek() || $$1.dI().ai() == bdu.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ae()) || $$0.p($$1))) {
-               return false;
-            }
-
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.y($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.dn(), $$1.dp(), $$1.dt());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$0 instanceof bgb $$5 && !$$5.K().a($$1)) {
-               return false;
-            }
+   @Override
+   public void e() {
+      if (this.c.go()) {
+         ccs $$0 = this.c.gn();
+         if (this.c.ah > this.d) {
+            this.d = this.c.ah + 20;
+            this.a($$0);
          }
 
-         return true;
+         if (!this.c.fV()) {
+            ehf $$1 = btn.a(this.c, 15, 4, ehf.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.H().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(ccs $$0) {
+      if ($$0.v()) {
+         Set<cct> $$1 = Sets.newHashSet();
+         List<cct> $$2 = this.c.dK().a(cct.class, this.c.cG().g(16.0), $$1x -> !$$1x.go() && ccu.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (cct $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
       }
    }
 }

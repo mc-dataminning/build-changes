@@ -1,68 +1,167 @@
-public class fbu<T extends brx> extends fbo<T> {
-   private final fee a;
-   private final fee b;
-   private final fee f;
-   private final fee g;
-   private final fee h;
-   private final fee i;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fbu(fee $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
-   }
+public class fbu extends exv {
+   private static final te a = te.c("gui.abuseReport.reason.title");
+   private static final te b = te.c("gui.abuseReport.reason.description");
+   private static final te c = te.c("gui.chatReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
+   @Nullable
+   private final exv p;
+   @Nullable
+   private fbu.a q;
+   @Nullable
+   fjb s;
+   private final Consumer<fjb> t;
 
-   public static fek b() {
-      fem $$0 = new fem();
-      fen $$1 = $$0.a();
-      $$1.a("head", fej.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), feg.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         fej.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fei(0.5F)),
-         feg.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", fej.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), feg.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fej.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), feg.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fej.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), feg.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fej.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), feg.a(5.0F, 11.0F, 0.0F));
-      return fek.a($$0, 128, 128);
+   public fbu(@Nullable exv $$0, @Nullable fjb $$1, Consumer<fjb> $$2) {
+      super(a);
+      this.p = $$0;
+      this.s = $$1;
+      this.t = $$2;
    }
 
    @Override
-   public fee a() {
-      return this.a;
-   }
+   protected void aE_() {
+      this.q = new fbu.a(this.f);
+      this.e(this.q);
+      fbu.a.a $$0 = x.a(this.s, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(esi.a(c, $$0x -> this.f.a(new ewn($$0xx -> {
+            if ($$0xx) {
+               ac.i().a("https://aka.ms/aboutjavareporting");
+            }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * apa.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * apa.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.w();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * apa.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * apa.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.fY();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * apa.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * apa.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * apa.e($$1, 13.0F)) * $$2;
+            this.f.a(this);
+         }, "https://aka.ms/aboutjavareporting", true))).a($$1, this.l(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(esi.a(td.d, $$0x -> {
+         fbu.a.a $$1x = this.q.f();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
          }
+
+         this.f.a(this.p);
+      }).a($$2, this.l(), 150, 20).a());
+      super.aE_();
+   }
+
+   @Override
+   public void a(erx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.q.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.B(), this.D(), this.C(), this.E(), 2130706432);
+      $$0.b(this.i, b, this.B() + 4, this.D() + 4, -8421505);
+      fbu.a.a $$4 = this.q.f();
+      if ($$4 != null) {
+         int $$5 = this.B() + 4 + 16;
+         int $$6 = this.C() - 4;
+         int $$7 = this.D() + 4 + 9 + 2;
+         int $$8 = this.E() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
       }
    }
 
-   public fee c() {
-      return this.f;
+   @Override
+   public void b(erx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private int l() {
+      return this.h - 20 - 4;
+   }
+
+   private int B() {
+      return (this.g - 320) / 2;
+   }
+
+   private int C() {
+      return (this.g + 320) / 2;
+   }
+
+   private int D() {
+      return this.h - 95 + 4;
+   }
+
+   private int E() {
+      return this.l() - 4;
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.p);
+   }
+
+   public class a extends ete<fbu.a.a> {
+      public a(eqn $$1) {
+         super($$1, fbu.this.g, fbu.this.h, 40, fbu.this.h - 95, 18);
+
+         for (fjb $$2 : fjb.values()) {
+            this.b(new fbu.a.a($$2));
+         }
+      }
+
+      @Nullable
+      public fbu.a.a a(fjb $$0) {
+         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
+
+      @Override
+      public int b() {
+         return 320;
+      }
+
+      @Override
+      protected int c() {
+         return this.p() - 2;
+      }
+
+      public void a(@Nullable fbu.a.a $$0) {
+         super.a($$0);
+         fbu.this.s = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends ete.a<fbu.a.a> {
+         final fjb b;
+
+         public a(fjb $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fbu.this.i, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public te a() {
+            return te.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            if ($$2 == 0) {
+               a.this.a(this);
+               return true;
+            } else {
+               return false;
+            }
+         }
+
+         public fjb b() {
+            return this.b;
+         }
+      }
    }
 }

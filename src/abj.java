@@ -1,24 +1,32 @@
-public class abj implements uo<abe> {
-   private final sw a;
+public class abj implements uw<aav> {
+   private final int a;
+   private final int b;
 
-   public abj(sw $$0) {
+   public abj(int $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public abj(sf $$0) {
-      this.a = sw.a.b($$0.e(262144));
-   }
-
-   @Override
-   public void a(sf $$0) {
-      $$0.a(this.a);
-   }
-
-   public void a(abe $$0) {
+   public void a(aav $$0) {
       $$0.a(this);
    }
 
-   public sw a() {
+   public abj(sh $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.readByte();
+   }
+
+   @Override
+   public void a(sh $$0) {
+      $$0.k(this.a);
+      $$0.k(this.b);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

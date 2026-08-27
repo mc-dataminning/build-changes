@@ -1,30 +1,26 @@
-public class cyb extends cqp {
-   public cyb(dca.d $$0) {
-      super($$0, () -> czp.c);
+public class cyb extends cub {
+   private static final ehy[] a = new ehy[]{
+      csk.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
+
+   public cyb(dex.d $$0) {
+      super($$0);
    }
 
    @Override
-   public czn a(gu $$0, dcb $$1) {
-      return new dbe($$0, $$1);
+   protected cpj c() {
+      return ciz.tm;
    }
 
    @Override
-   protected amo<acq> b() {
-      return amr.i.b(amr.ai);
-   }
-
-   @Override
-   public boolean f_(dcb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dcb $$0, cls $$1, gu $$2, ha $$3) {
-      return apa.a(czu.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   public int b(dcb $$0, cls $$1, gu $$2, ha $$3) {
-      return $$3 == ha.b ? $$0.b($$1, $$2, $$3) : 0;
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return a[this.g($$0)];
    }
 }

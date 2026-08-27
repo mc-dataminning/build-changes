@@ -1,35 +1,19 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class aza extends axd {
-   public aza(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class aza extends axo {
+   public aza(Schema $$0, boolean $$1) {
+      super($$0, $$1, "StriderGravityFix", aym.x, "minecraft:strider");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         avw.c,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(avw.p.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(avw.l.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", avw.r.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(avw.z.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(avw.n.in($$0)))
-                  )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(avw.v.in($$0)))
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

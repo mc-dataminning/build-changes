@@ -1,40 +1,27 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class axu extends axd {
-   public axu(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class axu extends awy {
+   public axu(Schema $$0) {
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         avw.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(avw.p.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(avw.l.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", avw.r.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(avw.n.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(avw.v.in($$0)))
-               )
-            )
-      );
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
-      return $$1;
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
    }
 }

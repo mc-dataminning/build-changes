@@ -1,53 +1,63 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import org.slf4j.Logger;
 
-public class eqj extends epf {
-   protected acq a;
-   protected boolean b;
-   protected int c;
-   protected int d;
-   protected int e;
-   protected int f;
+public class eqj {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final File c;
+   private final DataFixer d;
+   private final fmk[] e = new fmk[9];
+   private boolean f;
 
-   public eqj(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, sv.a);
-      this.b = $$4;
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, acq $$4) {
-      this.c = $$0;
+   public eqj(File $$0, DataFixer $$1) {
+      this.c = new File($$0, "hotbar.nbt");
       this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.a = $$4;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new fmk();
+      }
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
+   private void b() {
+      try {
+         qs $$0 = rc.b(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = re.b($$0, 1343);
+         $$0 = asq.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   public boolean a() {
-      return this.b;
+   public void a() {
+      try {
+         qs $$0 = re.g(new qs());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            $$0.a(String.valueOf($$1), this.a($$1).a());
+         }
+
+         rc.b($$0, this.c);
+      } catch (Exception var3) {
+         b.error("Failed to save creative mode options", var3);
+      }
    }
 
-   @Override
-   public void a(esp $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.disableDepthTest();
-      int $$4 = this.c;
-      int $$5 = this.d;
-      if (this.b) {
-         $$4 += this.e;
+   public fmk a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
       }
 
-      if (this.n()) {
-         $$5 += this.f;
-      }
-
-      $$0.a(this.a, this.p(), this.r(), $$4, $$5, this.o, this.p);
-      RenderSystem.enableDepthTest();
+      return this.e[$$0];
    }
 }

@@ -1,24 +1,11 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class cdq extends cfu {
-   private final anl<cze> a;
+public interface cdq {
+   Set<aeo<? extends hs<? extends cdq>>> bv = Set.of(jd.D, jd.e, jd.s, jd.N);
 
-   public cdq(anl<cze> $$0, cfu.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
+   cdt m();
 
-   public anl<cze> b() {
-      return this.a;
-   }
-
-   @Override
-   public void a(cfz $$0, @Nullable cmm $$1, List<sw> $$2, chq $$3) {
-      $$2.add(this.d().a(n.h));
-   }
-
-   public tj d() {
-      return sw.c(this.a() + ".desc");
+   default boolean a(cdt $$0) {
+      return this.m().a($$0);
    }
 }

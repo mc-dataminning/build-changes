@@ -1,79 +1,143 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class cyi extends csa {
+   public static final dfw<dgc> d = dfo.ag;
 
-public class cyi extends cod {
-   public static final dcv a = ctg.aC;
-   private static final Map<ha, efb> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         ha.c,
-         cpn.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         ha.d,
-         cpn.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         ha.e,
-         cpn.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         ha.f,
-         cpn.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
-
-   public cyi(cen $$0, dca.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, ha.c));
+   protected cyi(dex.d $$0) {
+      super(false, $$0);
+      this.k(this.C.b().a(d, dgc.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public String f() {
-      return this.k().a();
+   protected void a(dey $$0, cpk $$1, gv $$2, csk $$3) {
+      if ($$3.n().m() && new cyj($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
    }
 
    @Override
-   public boolean a(dcb $$0, cmp $$1, gu $$2) {
-      return $$1.a_($$2.a($$0.c(a).g())).e();
+   public dgb<dgc> b() {
+      return d;
    }
 
    @Override
-   public dcb a(dcb $$0, ha $$1, dcb $$2, cmn $$3, gu $$4, gu $$5) {
-      return $$1 == $$0.c(a).g() && !$$0.a($$3, $$4) ? cpo.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public efb a(dcb $$0, cls $$1, gu $$2, een $$3) {
-      return b.get($$0.c(a));
-   }
-
-   @Override
-   public dcb a(cih $$0) {
-      dcb $$1 = this.n();
-      cmp $$2 = $$0.q();
-      gu $$3 = $$0.a();
-      ha[] $$4 = $$0.f();
-
-      for (ha $$5 : $$4) {
-         if ($$5.o().d()) {
-            ha $$6 = $$5.g();
-            $$1 = $$1.a(a, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
+   public dey a(dey $$0, cyw $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dgc)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgc.d);
+               case d:
+                  return $$0.a(d, dgc.c);
+               case e:
+                  return $$0.a(d, dgc.f);
+               case f:
+                  return $$0.a(d, dgc.e);
+               case g:
+                  return $$0.a(d, dgc.i);
+               case h:
+                  return $$0.a(d, dgc.j);
+               case i:
+                  return $$0.a(d, dgc.g);
+               case j:
+                  return $$0.a(d, dgc.h);
             }
-         }
+         case d:
+            switch ((dgc)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgc.e);
+               case d:
+                  return $$0.a(d, dgc.f);
+               case e:
+                  return $$0.a(d, dgc.d);
+               case f:
+                  return $$0.a(d, dgc.c);
+               case g:
+                  return $$0.a(d, dgc.j);
+               case h:
+                  return $$0.a(d, dgc.g);
+               case i:
+                  return $$0.a(d, dgc.h);
+               case j:
+                  return $$0.a(d, dgc.i);
+               case a:
+                  return $$0.a(d, dgc.b);
+               case b:
+                  return $$0.a(d, dgc.a);
+            }
+         case b:
+            switch ((dgc)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgc.f);
+               case d:
+                  return $$0.a(d, dgc.e);
+               case e:
+                  return $$0.a(d, dgc.c);
+               case f:
+                  return $$0.a(d, dgc.d);
+               case g:
+                  return $$0.a(d, dgc.h);
+               case h:
+                  return $$0.a(d, dgc.i);
+               case i:
+                  return $$0.a(d, dgc.j);
+               case j:
+                  return $$0.a(d, dgc.g);
+               case a:
+                  return $$0.a(d, dgc.b);
+               case b:
+                  return $$0.a(d, dgc.a);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dey a(dey $$0, cxf $$1) {
+      dgc $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, dgc.f);
+               case f:
+                  return $$0.a(d, dgc.e);
+               case g:
+                  return $$0.a(d, dgc.j);
+               case h:
+                  return $$0.a(d, dgc.i);
+               case i:
+                  return $$0.a(d, dgc.h);
+               case j:
+                  return $$0.a(d, dgc.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, dgc.d);
+               case d:
+                  return $$0.a(d, dgc.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, dgc.h);
+               case h:
+                  return $$0.a(d, dgc.g);
+               case i:
+                  return $$0.a(d, dgc.j);
+               case j:
+                  return $$0.a(d, dgc.i);
+            }
       }
 
-      return null;
+      return super.a($$0, $$1);
    }
 
    @Override
-   public dcb a(dcb $$0, cvz $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dcb a(dcb $$0, cui $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dcc.a<cpn, dcb> $$0) {
-      $$0.a(a);
+   protected void a(dez.a<csk, dey> $$0) {
+      $$0.a(d, c);
    }
 }

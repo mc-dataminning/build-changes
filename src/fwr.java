@@ -1,20 +1,48 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class fwr<T extends big, M extends fek<T>> {
+   private final fue<T, M> a;
 
-public interface fwr {
-   List<fkr> a(@Nullable dcb var1, @Nullable ha var2, apf var3);
+   public fwr(fue<T, M> $$0) {
+      this.a = $$0;
+   }
 
-   boolean a();
+   protected static <T extends biw> void a(
+      fek<T> $$0,
+      fek<T> $$1,
+      aep $$2,
+      elh $$3,
+      fng $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.cd()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+      }
+   }
 
-   boolean b();
+   protected static <T extends biw> void a(fek<T> $$0, aep $$1, elh $$2, fng $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      ell $$9 = $$3.getBuffer(fno.d($$1));
+      $$0.a($$2, $$9, $$4, ftk.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
 
-   boolean c();
+   public M c() {
+      return this.a.a();
+   }
 
-   boolean d();
+   protected aep a(T $$0) {
+      return this.a.a($$0);
+   }
 
-   fuv e();
-
-   fld f();
-
-   flb g();
+   public abstract void a(elh var1, fng var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

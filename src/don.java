@@ -1,20 +1,109 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
 
-public record don(dot b, float c) {
-   public static final Codec<don> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dot.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, don::new)
-   );
-
-   public dot a() {
-      return this.b;
+public class don extends dnl<dqf> {
+   public don(Codec<dqf> $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public boolean a(dnn<dqf> $$0) {
+      cqe $$1 = $$0.b();
+      gv $$2 = $$0.e();
+      if (!$$1.a_($$2).i()) {
+         return false;
+      } else {
+         art $$3 = $$0.d();
+         gv $$4 = $$0.e();
+         dqf $$5 = $$0.f();
+         gv.a $$6 = $$4.j();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(cqe $$0, dqf $$1, gv $$2) {
+      gv.a $$3 = $$2.j();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(hb.b);
+         dey $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dey $$0, int $$1, int $$2) {
+      if ($$0.i()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.u().a(apo.a);
+      }
+   }
+
+   private static boolean a(cqe $$0, dgv $$1, dqf $$2, art $$3, gv.a $$4, gv $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(hb.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            gv $$7 = $$4.d();
+            if ($$0.b_($$7).a(apo.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(gv $$0, int $$1, cqe $$2, dqf $$3, art $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      gv.a $$7 = $$0.j();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(cqe $$0, dqf $$1, art $$2, int $$3, int $$4, gv.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dey> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(cqe $$0, dqf $$1, art $$2, gv $$3, gv.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.t($$4)) {
+            dey $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, hb.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
+      }
    }
 }

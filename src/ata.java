@@ -1,4 +1,4 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
@@ -7,81 +7,72 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
 public class ata extends DataFix {
-   public ata(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("generic.maxHealth", "generic.max_health")
+      .put("Max Health", "generic.max_health")
+      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
+      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
+      .put("horse.jumpStrength", "horse.jump_strength")
+      .put("Jump Strength", "horse.jump_strength")
+      .put("generic.followRange", "generic.follow_range")
+      .put("Follow Range", "generic.follow_range")
+      .put("generic.knockbackResistance", "generic.knockback_resistance")
+      .put("Knockback Resistance", "generic.knockback_resistance")
+      .put("generic.movementSpeed", "generic.movement_speed")
+      .put("Movement Speed", "generic.movement_speed")
+      .put("generic.flyingSpeed", "generic.flying_speed")
+      .put("Flying Speed", "generic.flying_speed")
+      .put("generic.attackDamage", "generic.attack_damage")
+      .put("generic.attackKnockback", "generic.attack_knockback")
+      .put("generic.attackSpeed", "generic.attack_speed")
+      .put("generic.armorToughness", "generic.armor_toughness")
+      .build();
+
+   public ata(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(avw.p);
-      Type<?> $$3 = $$1.getTypeRaw(avw.p);
-      Type<?> $$4 = $$0.getTypeRaw(avw.q);
-      return this.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(avw.p.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         avw.p.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(aym.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, ata::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(aym.x), ata::b),
+            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(aym.b), ata::b)
+         }
       );
-      Type<?> $$7 = $$0.getType(avw.p);
-      Type<?> $$8 = $$1.getType(avw.p);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(avw.b);
-         Type<?> $$13 = $$1.getType(avw.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
+   }
 
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(avw.p.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if (!$$10x.isPresent()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   }
 
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
-      }
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", ata::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
+   }
+
+   private static Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", ata::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 }

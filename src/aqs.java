@@ -1,30 +1,43 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class aqs extends auz {
-   public aqs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", avw.l, "minecraft:banner");
+public class aqs<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
+
+   public aqs(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
-      return $$0.update(
-         "Patterns",
-         $$0x -> (Dynamic)DataFixUtils.orElse(
-               $$0x.asStreamOpt()
-                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
-                  .map($$0x::createList)
-                  .result(),
-               $$0x
-            )
-      );
+   public void a(T $$0) {
+      int $$1 = this.a.length();
+
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
+
+      this.a.set($$3, $$0);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
+         if ($$4 != null) {
+            $$1.add($$4);
+         }
+      }
+
+      return $$1.build();
    }
 }

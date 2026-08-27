@@ -1,13 +1,10 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class cng extends bfa.a {
+   public final cnd a;
+   public final int b;
 
-public interface cng extends cnb {
-   long A();
-
-   default boolean f_(gu $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
+   public cng(cnd $$0, int $$1) {
+      super($$0.d().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

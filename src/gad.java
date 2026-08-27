@@ -1,38 +1,20 @@
-public class gad implements gag {
-   private static final int a = 600;
-   private static final sw b = sw.c("tutorial.open_inventory.title");
-   private static final sw c = sw.a("tutorial.open_inventory.description", gaf.a("inventory"));
-   private final gaf d;
-   private eri e;
-   private int f;
+public class gad {
+   public static final gae a = new gae();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-   public gad(gaf $$0) {
+   public gad(boolean $$0, boolean $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gah.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new eri(eri.a.d, b, c, false);
-            this.d.e().az().a(this.e);
-         }
-      }
+   public boolean a() {
+      return this.d;
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gah.e);
+   public boolean b() {
+      return this.e;
    }
 }

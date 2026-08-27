@@ -1,89 +1,47 @@
-import com.mojang.serialization.Codec;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dla extends dko<dmz> {
-   public dla(Codec<dmz> $$0) {
-      super($$0);
+@Deprecated
+public class dla implements djw {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dkj i = new dkj(this);
+
+   public dla(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public boolean a(dkq<dmz> $$0) {
-      gu $$1 = $$0.e();
-      apf $$2 = $$0.d();
-      cng $$3 = $$0.b();
+   public art d() {
+      return new dla(this.g());
+   }
 
-      while ($$3.t($$1) && $$1.v() > $$3.C_() + 2) {
-         $$1 = $$1.d();
-      }
+   @Override
+   public dku e() {
+      return new dki.a(this.g());
+   }
 
-      if (!$$3.a_($$1).a(cpo.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = apa.f($$7);
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)apa.a($$9) - 0.25F;
+      return (int)($$2 >>> 48 - $$0);
+   }
 
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)apa.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dcb $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(cpo.dP) || $$13.a(cpo.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), cpo.iC.n());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(cpo.dP) || $$13.a(cpo.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), cpo.iC.n());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               gu $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dcb $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(cpo.dP) && !$$19.a(cpo.dO) && !$$19.a(cpo.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, cpo.iC.n());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

@@ -8,24 +8,24 @@ import javax.annotation.Nullable;
 
 public class aa {
    @Deprecated
-   public static final boolean a = false;
+   public static final boolean a = true;
    @Deprecated
-   public static final int b = 3465;
+   public static final int b = 3567;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.1";
+   public static final String d = "23w31a";
    @Deprecated
-   public static final int e = 763;
+   public static final int e = 764;
    @Deprecated
-   public static final int f = 142;
-   public static final int g = 3437;
-   private static final int bh = 30;
-   public static final boolean h = false;
+   public static final int f = 144;
+   public static final int g = 3563;
+   private static final int bi = 30;
+   public static final boolean h = true;
    @Deprecated
-   public static final int i = 15;
+   public static final int i = 16;
    @Deprecated
-   public static final int j = 15;
+   public static final int j = 16;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -122,14 +122,15 @@ public class aa {
    public static final int aY = 32;
    public static final char[] aZ = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
    public static final int ba = 20;
-   public static final int bb = 1200;
-   public static final int bc = 24000;
-   public static final float bd = 1365.3334F;
-   public static final float be = 0.87890625F;
-   public static final float bf = 17.578125F;
-   public static final int bg = 64;
+   public static final int bb = 50;
+   public static final int bc = 1200;
+   public static final int bd = 24000;
+   public static final float be = 1365.3334F;
+   public static final float bf = 0.87890625F;
+   public static final float bg = 17.578125F;
+   public static final int bh = 64;
    @Nullable
-   private static ad bi;
+   private static ad bj;
 
    public static boolean a(char $$0) {
       return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
@@ -154,39 +155,39 @@ public class aa {
    }
 
    public static void a(ad $$0) {
-      if (bi == null) {
-         bi = $$0;
-      } else if ($$0 != bi) {
+      if (bj == null) {
+         bj = $$0;
+      } else if ($$0 != bj) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bi == null) {
-         bi = t.a();
+      if (bj == null) {
+         bj = t.a();
       }
    }
 
    public static ad b() {
-      if (bi == null) {
+      if (bj == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bi;
+         return bj;
       }
    }
 
    public static int c() {
-      return 763;
+      return 1073741968;
    }
 
-   public static boolean a(clt $$0) {
+   public static boolean a(cor $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ap ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aT = aqc.m;
+      aT = asq.t;
    }
 
    static {

@@ -1,11 +1,14 @@
-public interface abe extends sk {
-   void a(abh var1);
+public record abe(float a) implements uw<aav> {
+   public abe(sh $$0) {
+      this($$0.readFloat());
+   }
 
-   void a(abg var1);
+   @Override
+   public void a(sh $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(abj var1);
-
-   void a(abi var1);
-
-   void a(abf var1);
+   public void a(aav $$0) {
+      $$0.a(this);
+   }
 }

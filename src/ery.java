@@ -1,28 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public enum ery implements apr {
-   a("bitmap", erw.a.a),
-   b("ttf", esa.a),
-   c("space", ego.a.a),
-   d("unihex", esb.b.a),
-   e("reference", erz.a);
+public class ery extends fzj {
+   private static final Set<amk<?>> a = Set.of(fzr.a, fzx.c);
 
-   public static final Codec<ery> f = apr.a(ery::values);
-   private final String g;
-   private final MapCodec<? extends erx> h;
-
-   private ery(String $$0, MapCodec<? extends erx> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public ery(fyh $$0) {
+      super($$0, new aep("textures/atlas/gui.png"), new aep("gui"), a);
    }
 
    @Override
-   public String c() {
-      return this.g;
+   public fyg a(aep $$0) {
+      return super.a($$0);
    }
 
-   public MapCodec<? extends erx> a() {
-      return this.h;
+   public fzy a(fyg $$0) {
+      return this.b($$0).a();
+   }
+
+   private fzx b(fyg $$0) {
+      return $$0.e().f().a(fzx.c).orElse(fzx.a);
    }
 }

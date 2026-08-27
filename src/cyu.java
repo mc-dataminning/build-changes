@@ -1,22 +1,18 @@
-public class cyu extends cta {
-   protected static final efb f = cpn.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class cyu extends css {
+   protected static final float a = 6.0F;
+   protected static final ehy b = csk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   public cyu(dca.d $$0) {
-      super($$0, ha.a, f, false, 0.1);
+   protected cyu(dex.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(apf $$0) {
-      return cur.a($$0);
+   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+      return b;
    }
 
    @Override
-   protected cpn a() {
-      return cpo.oA;
-   }
-
-   @Override
-   protected boolean g(dcb $$0) {
-      return cur.a($$0);
+   protected boolean d(dey $$0, coq $$1, gv $$2) {
+      return $$0.a(apj.aK) || $$0.a(csl.dY) || super.d($$0, $$1, $$2);
    }
 }

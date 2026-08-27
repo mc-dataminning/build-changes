@@ -1,28 +1,68 @@
-public class fol extends fqe<bvo, faz<bvo>> {
-   private static final acq a = new acq("textures/entity/creeper/creeper.png");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-   public fol(foy.a $$0) {
-      super($$0, new faz<>($$0.a(fed.B)), 0.5F);
-      this.a(new fsj(this, $$0.f()));
+public class fol {
+   private final aep a;
+   private final List<fol.b> b;
+
+   public fol(aep $$0, List<fol.b> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   protected void a(bvo $$0, eij $$1, float $$2) {
-      float $$3 = $$0.D($$2);
-      float $$4 = 1.0F + apa.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = apa.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
+   public aep a() {
+      return this.a;
    }
 
-   protected float a(bvo $$0, float $$1) {
-      float $$2 = $$0.D($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : apa.a($$2, 0.5F, 1.0F);
+   public Stream<fol.b> b() {
+      return this.b.stream();
    }
 
-   public acq a(bvo $$0) {
-      return a;
+   protected static class a implements JsonDeserializer<fol> {
+      public fol a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         aep $$4 = new aep(arf.i($$3, "model"));
+         List<fol.b> $$5 = this.a($$3);
+         return new fol($$4, $$5);
+      }
+
+      protected List<fol.b> a(JsonObject $$0) {
+         Map<aep, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = arf.u($$0, "predicate");
+
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(new aep($$3.getKey()), arf.e($$3.getValue(), $$3.getKey()));
+         }
+
+         return $$1.entrySet().stream().map($$0x -> new fol.b((aep)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+      }
+   }
+
+   public static class b {
+      private final aep a;
+      private final float b;
+
+      public b(aep $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public aep a() {
+         return this.a;
+      }
+
+      public float b() {
+         return this.b;
+      }
    }
 }

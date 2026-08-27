@@ -1,45 +1,82 @@
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
+
 public class ahq {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dec.b();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.recipe.take.failed"));
 
-   public static dec a(int $$0) {
-      return $$0 < 33 ? dec.n : dec.a($$0 - 33);
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dt.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)dt.a("targets", ed.d())
+                              .then(
+                                 dt.a("recipe", er.a())
+                                    .suggests(gl.b)
+                                    .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), Collections.singleton(er.b($$0x, "recipe"))))
+                              ))
+                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aE().b())))
+                     )
+               ))
+            .then(
+               dt.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("targets", ed.d())
+                           .then(
+                              dt.a("recipe", er.a())
+                                 .suggests(gl.b)
+                                 .executes($$0x -> b((ds)$$0x.getSource(), ed.f($$0x, "targets"), Collections.singleton(er.b($$0x, "recipe"))))
+                           ))
+                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ed.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aE().b())))
+                  )
+            )
+      );
    }
 
-   public static int a(dec $$0) {
-      return 33 + dec.a($$0);
-   }
+   private static int a(ds $$0, Collection<akj> $$1, Collection<clz<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   public static ahy b(int $$0) {
-      if ($$0 <= 31) {
-         return ahy.d;
-      } else if ($$0 <= 32) {
-         return ahy.c;
+      for (akj $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         return $$0 <= 33 ? ahy.b : ahy.a;
+         if ($$1.size() == 1) {
+            $$0.a(() -> te.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().H_()), true);
+         } else {
+            $$0.a(() -> te.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   public static int a(ahy $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
-   }
+   private static int b(ds $$0, Collection<akj> $$1, Collection<clz<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
+      for (akj $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
 
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> te.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().H_()), true);
+         } else {
+            $$0.a(() -> te.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
 
-   public static boolean e(int $$0) {
-      return $$0 <= a;
+         return $$3;
+      }
    }
 }

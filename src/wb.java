@@ -1,24 +1,19 @@
-public class wb implements uo<ur> {
-   private final long a;
+import java.util.List;
 
-   public wb(long $$0) {
-      this.a = $$0;
-   }
+public record wb(List<gv> b) implements vo {
+   public static final aep a = new aep("debug/raids");
 
-   public wb(sf $$0) {
-      this.a = $$0.readLong();
+   public wb(sh $$0) {
+      this($$0.a(sh::e));
    }
 
    @Override
-   public void a(sf $$0) {
-      $$0.writeLong(this.a);
+   public void a(sh $$0) {
+      $$0.a(this.b, sh::a);
    }
 
-   public void a(ur $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   @Override
+   public aep a() {
+      return a;
    }
 }

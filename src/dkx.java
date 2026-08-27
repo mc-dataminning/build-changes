@@ -1,31 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dkx implements djw {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dkj i = new dkj(this);
 
-public class dkx implements dms {
-   public static final Codec<dkx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dcb.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dcb.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dcb.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dcb.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dir.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dkx::new)
-   );
-   public final dcb b;
-   public final dcb c;
-   public final dcb d;
-   public final dcb e;
-   public final dir f;
-   public final boolean g;
+   public dkx(long $$0) {
+      this.b($$0);
+   }
 
-   public dkx(dcb $$0, dcb $$1, dcb $$2, dcb $$3, dir $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public art d() {
+      return new dkx(this.g());
+   }
+
+   @Override
+   public dku e() {
+      return new dki.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

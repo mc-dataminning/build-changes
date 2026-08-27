@@ -1,60 +1,99 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class chk extends chn implements cht {
-   private final float a;
-   private final Multimap<bhb, bhe> b;
+public enum chk implements asf {
+   a(0, "white", 16383998, eaf.i, 15790320, 16777215),
+   b(1, "orange", 16351261, eaf.p, 15435844, 16738335),
+   c(2, "magenta", 13061821, eaf.q, 12801229, 16711935),
+   d(3, "light_blue", 3847130, eaf.r, 6719955, 10141901),
+   e(4, "yellow", 16701501, eaf.s, 14602026, 16776960),
+   f(5, "lime", 8439583, eaf.t, 4312372, 12582656),
+   g(6, "pink", 15961002, eaf.u, 14188952, 16738740),
+   h(7, "gray", 4673362, eaf.v, 4408131, 8421504),
+   i(8, "light_gray", 10329495, eaf.w, 11250603, 13882323),
+   j(9, "cyan", 1481884, eaf.x, 2651799, 65535),
+   k(10, "purple", 8991416, eaf.y, 8073150, 10494192),
+   l(11, "blue", 3949738, eaf.z, 2437522, 255),
+   m(12, "brown", 8606770, eaf.A, 5320730, 9127187),
+   n(13, "green", 6192150, eaf.B, 3887386, 65280),
+   o(14, "red", 11546150, eaf.C, 11743532, 16711680),
+   p(15, "black", 1908001, eaf.D, 1973019, 0);
 
-   public chk(chm $$0, int $$1, float $$2, cfu.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<bhb, bhe> $$4 = ImmutableMultimap.builder();
-      $$4.put(bhg.f, new bhe(m, "Weapon modifier", (double)this.a, bhe.a.a));
-      $$4.put(bhg.h, new bhe(n, "Weapon modifier", (double)$$2, bhe.a.a));
-      this.b = $$4.build();
+   private static final IntFunction<chk> r = aqi.a(chk::a, values(), aqi.a.a);
+   private static final Int2ObjectOpenHashMap<chk> s = new Int2ObjectOpenHashMap(
+      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (chk)$$0))
+   );
+   public static final asf.a<chk> q = asf.a(chk::values);
+   private final int t;
+   private final String u;
+   private final eaf v;
+   private final float[] w;
+   private final int x;
+   private final int y;
+
+   private chk(int $$0, String $$1, int $$2, eaf $$3, int $$4, int $$5) {
+      this.t = $$0;
+      this.u = $$1;
+      this.v = $$3;
+      this.y = $$5;
+      int $$6 = ($$2 & 0xFF0000) >> 16;
+      int $$7 = ($$2 & 0xFF00) >> 8;
+      int $$8 = ($$2 & 0xFF) >> 0;
+      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
+      this.x = $$4;
    }
 
-   public float h() {
-      return this.a;
+   public int a() {
+      return this.t;
+   }
+
+   public String b() {
+      return this.u;
+   }
+
+   public float[] d() {
+      return this.w;
+   }
+
+   public eaf e() {
+      return this.v;
+   }
+
+   public int f() {
+      return this.x;
+   }
+
+   public int g() {
+      return this.y;
+   }
+
+   public static chk a(int $$0) {
+      return r.apply($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static chk a(String $$0, @Nullable chk $$1) {
+      chk $$2 = q.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   public static chk b(int $$0) {
+      return (chk)s.get($$0);
    }
 
    @Override
-   public boolean a(dcb $$0, cmm $$1, gu $$2, byo $$3) {
-      return !$$3.f();
+   public String toString() {
+      return this.u;
    }
 
    @Override
-   public float a(cfz $$0, dcb $$1) {
-      if ($$1.a(cpo.bs)) {
-         return 15.0F;
-      } else {
-         return $$1.a(amw.bB) ? 1.5F : 1.0F;
-      }
-   }
-
-   @Override
-   public boolean a(cfz $$0, bfz $$1, bfz $$2) {
-      $$0.a(1, $$2, $$0x -> $$0x.d(bfo.a));
-      return true;
-   }
-
-   @Override
-   public boolean a(cfz $$0, cmm $$1, dcb $$2, gu $$3, bfz $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, $$0x -> $$0x.d(bfo.a));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a_(dcb $$0) {
-      return $$0.a(cpo.bs);
-   }
-
-   @Override
-   public Multimap<bhb, bhe> a(bfo $$0) {
-      return $$0 == bfo.a ? this.b : super.a($$0);
+   public String c() {
+      return this.u;
    }
 }

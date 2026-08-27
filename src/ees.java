@@ -1,98 +1,46 @@
-import java.util.function.Predicate;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ees implements een {
-   protected static final een a = new ees(false, -Double.MAX_VALUE, cfz.b, $$0 -> false, null) {
-      @Override
-      public boolean a(efb $$0, gu $$1, boolean $$2) {
-         return $$2;
+public class ees {
+   private static final BiMap<aep, eer> o = HashBiMap.create();
+   public static final eer a = a("empty", $$0 -> {
+   });
+   public static final eer b = a("chest", $$0 -> $$0.a(eet.f).b(eet.a));
+   public static final eer c = a("command", $$0 -> $$0.a(eet.f).b(eet.a));
+   public static final eer d = a("selector", $$0 -> $$0.a(eet.f).a(eet.a));
+   public static final eer e = a("fishing", $$0 -> $$0.a(eet.f).a(eet.i).b(eet.a));
+   public static final eer f = a("entity", $$0 -> $$0.a(eet.a).a(eet.f).a(eet.c).b(eet.d).b(eet.e).b(eet.b));
+   public static final eer g = a("archaeology", $$0 -> $$0.a(eet.f).b(eet.a));
+   public static final eer h = a("gift", $$0 -> $$0.a(eet.f).a(eet.a));
+   public static final eer i = a("barter", $$0 -> $$0.a(eet.a));
+   public static final eer j = a("advancement_reward", $$0 -> $$0.a(eet.a).a(eet.f));
+   public static final eer k = a("advancement_entity", $$0 -> $$0.a(eet.a).a(eet.f));
+   public static final eer l = a("advancement_location", $$0 -> $$0.a(eet.a).a(eet.f).a(eet.i).a(eet.g));
+   public static final eer m = a("generic", $$0 -> $$0.a(eet.a).a(eet.b).a(eet.c).a(eet.d).a(eet.e).a(eet.f).a(eet.g).a(eet.h).a(eet.i).a(eet.j));
+   public static final eer n = a("block", $$0 -> $$0.a(eet.g).a(eet.f).a(eet.i).b(eet.a).b(eet.h).b(eet.j));
+
+   private static eer a(String $$0, Consumer<eer.a> $$1) {
+      eer.a $$2 = new eer.a();
+      $$1.accept($$2);
+      eer $$3 = $$2.a();
+      aep $$4 = new aep($$0);
+      eer $$5 = (eer)o.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
-   };
-   private final boolean b;
-   private final double c;
-   private final cfz d;
-   private final Predicate<dxe> e;
-   @Nullable
-   private final bfj f;
-
-   protected ees(boolean $$0, double $$1, cfz $$2, Predicate<dxe> $$3, @Nullable bfj $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-   }
-
-   @Deprecated
-   protected ees(bfj $$0) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual bfj.bT ()Z
-      // 05: aload 1
-      // 06: invokevirtual bfj.dp ()D
-      // 09: aload 1
-      // 0a: instanceof bfz
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast bfz
-      // 14: invokevirtual bfz.eO ()Lcfz;
-      // 17: goto 1d
-      // 1a: getstatic cfz.b Lcfz;
-      // 1d: aload 1
-      // 1e: instanceof bfz
-      // 21: ifeq 35
-      // 24: aload 1
-      // 25: checkcast bfz
-      // 28: dup
-      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 2c: pop
-      // 2d: invokedynamic test (Lbfz;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bfz.a (Ldxe;)Z, (Ldxe;)Z ]
-      // 32: goto 3a
-      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, ees.a (Ldxe;)Z, (Ldxe;)Z ]
-      // 3a: aload 1
-      // 3b: invokespecial ees.<init> (ZDLcfz;Ljava/util/function/Predicate;Lbfj;)V
-      // 3e: return
-   }
-
-   @Override
-   public boolean a(cfu $$0) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public boolean a(dxe $$0, dxe $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean a(efb $$0, gu $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(ha.a.b) - 1.0E-5F;
    }
 
    @Nullable
-   public bfj c() {
-      return this.f;
+   public static eer a(aep $$0) {
+      return (eer)o.get($$0);
+   }
+
+   @Nullable
+   public static aep a(eer $$0) {
+      return (aep)o.inverse().get($$0);
    }
 }

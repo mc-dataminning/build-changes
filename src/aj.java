@@ -18,21 +18,21 @@ public class aj {
       this.a = null;
    }
 
-   public void a(sf $$0) {
+   public void a(sh $$0) {
    }
 
    public static aj a(JsonObject $$0, be $$1) {
-      acq $$2 = new acq(aor.i($$0, "trigger"));
+      aep $$2 = new aep(arf.i($$0, "trigger"));
       al<?> $$3 = ai.a($$2);
       if ($$3 == null) {
          throw new JsonSyntaxException("Invalid criterion trigger: " + $$2);
       } else {
-         am $$4 = $$3.a(aor.a($$0, "conditions", new JsonObject()), $$1);
+         am $$4 = $$3.a(arf.a($$0, "conditions", new JsonObject()), $$1);
          return new aj($$4);
       }
    }
 
-   public static aj b(sf $$0) {
+   public static aj b(sh $$0) {
       return new aj();
    }
 
@@ -40,18 +40,18 @@ public class aj {
       Map<String, aj> $$2 = Maps.newHashMap();
 
       for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         $$2.put($$3.getKey(), a(aor.m($$3.getValue(), "criterion"), $$1));
+         $$2.put($$3.getKey(), a(arf.m($$3.getValue(), "criterion"), $$1));
       }
 
       return $$2;
    }
 
-   public static Map<String, aj> c(sf $$0) {
-      return $$0.a(sf::s, aj::b);
+   public static Map<String, aj> c(sh $$0) {
+      return $$0.a(sh::r, aj::b);
    }
 
-   public static void a(Map<String, aj> $$0, sf $$1) {
-      $$1.a($$0, sf::a, ($$0x, $$1x) -> $$1x.a($$0x));
+   public static void a(Map<String, aj> $$0, sh $$1) {
+      $$1.a($$0, sh::a, ($$0x, $$1x) -> $$1x.a($$0x));
    }
 
    @Nullable

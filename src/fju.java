@@ -1,47 +1,66 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class fju extends flw {
+   private final float a;
+   private final float b;
 
-public class fju {
-   public final Int2ObjectMap<fwy> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<fwr> b = new Int2ObjectOpenHashMap(256);
-   private final fwx c;
-
-   public fju(fwx $$0) {
-      this.c = $$0;
+   fju(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ciw $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
-   public fwr a(cfz $$0) {
-      fwr $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
+   @Override
+   public fla b() {
+      return fla.a;
    }
 
-   @Nullable
-   public fwr a(cfu $$0) {
-      return (fwr)this.b.get(b($$0));
+   protected fju(fie $$0, double $$1, double $$2, double $$3, ciw $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(eqn.N().ap().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
-   private static int b(cfu $$0) {
-      return cfu.a($$0);
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public void a(cfu $$0, fwy $$1) {
-      this.a.put(b($$0), $$1);
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
    }
 
-   public fwx a() {
-      return this.c;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
    }
 
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
 
-      while (var1.hasNext()) {
-         Entry<Integer, fwy> $$0 = (Entry<Integer, fwy>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+   public static class a implements fkz<is> {
+      public fkw a(is $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fju($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+      }
+   }
+
+   public static class b implements fkz<iz> {
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fju($$1, $$2, $$3, $$4, new ciw(ciz.qc));
+      }
+   }
+
+   public static class c implements fkz<iz> {
+      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fju($$1, $$2, $$3, $$4, new ciw(ciz.pO));
       }
    }
 }

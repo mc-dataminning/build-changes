@@ -1,108 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class bst {
-   private static final bdi a = bdi.a(5, 16);
-   private static final float b = 0.2F;
-   private static final float c = 0.15F;
-   private static final float d = 0.5F;
-   private static final float e = 0.6F;
-   private static final float f = 0.6F;
+public class bst extends btc<biy> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   protected static bha<?> a(bha<bss> $$0) {
-      d($$0);
-      e($$0);
-      c($$0);
-      b($$0);
-      $$0.a(ImmutableSet.of(bzz.a));
-      $$0.b(bzz.b);
-      $$0.f();
-      return $$0;
+   public bst() {
+      super(20);
    }
 
-   private static void b(bha<bss> $$0) {
-      $$0.a(bzz.p, ImmutableList.of(Pair.of(0, new bsu()), Pair.of(1, bid.a(bht::a, bpb.M))), ImmutableSet.of(Pair.of(bpb.M, bpc.a)), ImmutableSet.of(bpb.M));
+   @Override
+   public Set<bry<?>> a() {
+      return ImmutableSet.of(bry.w);
    }
 
-   private static void c(bha<bss> $$0) {
-      $$0.a(bzz.k, 0, ImmutableList.of(bkf.a(bss::a), bjv.a(bst::b), bix.a(20), bid.a(bht::a, bpb.o)), bpb.o);
-   }
-
-   private static void d(bha<bss> $$0) {
-      $$0.a(bzz.a, 0, ImmutableList.of(new biw(45, 90), new bja(), bsv.a(), new bhx(bpb.O)));
-   }
-
-   private static void e(bha<bss> $$0) {
-      $$0.a(
-         bzz.b,
-         ImmutableList.of(
-            Pair.of(0, bjq.a(bfn.bt, 6.0F, bdi.a(30, 60))),
-            Pair.of(1, new bhl(bfn.f, 0.2F)),
-            Pair.of(2, new bjn(ImmutableList.of(Pair.of(new bie(bst::d), 1), Pair.of(bho.a(a, bst::c), 1)))),
-            Pair.of(3, bkc.a(bst::b)),
-            Pair.of(3, bkp.a(6, 0.15F)),
-            Pair.of(
-               4,
-               new bif(
-                  ImmutableMap.of(bpb.m, bpc.b),
-                  ImmutableSet.of(),
-                  bif.a.a,
-                  bif.b.b,
-                  ImmutableList.of(
-                     Pair.of(bji.c(0.5F), 2),
-                     Pair.of(bji.a(0.15F, false), 2),
-                     Pair.of(bjx.a(bst::a, bst::d, 3), 3),
-                     Pair.of(bld.a(bfj::aY), 5),
-                     Pair.of(bld.a(bfj::ay), 5)
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   private static boolean a(bfz $$0) {
-      cmm $$1 = $$0.dI();
-      Optional<bje> $$2 = $$0.dK().c(bpb.n);
-      if ($$2.isPresent()) {
-         gu $$3 = $$2.get().b();
-         return $$1.y($$3) == $$0.aY();
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(bss $$0) {
-      bha<bss> $$1 = $$0.dK();
-      bzz $$2 = $$1.g().orElse(null);
-      if ($$2 != bzz.p) {
-         $$1.a(ImmutableList.of(bzz.p, bzz.k, bzz.b));
-         if ($$2 == bzz.k && $$1.g().orElse(null) != bzz.k) {
-            $$1.a(bpb.T, true, 2400L);
+   protected void a(aki $$0, biy $$1) {
+      if ($$1.i_()) {
+         this.f = 0;
+         this.g = $$0.V() + (long)$$0.y_().a(20);
+         btw $$2 = $$0.w();
+         Predicate<gv> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<hf<btz>, gv>> $$4 = $$2.b($$0x -> $$0x.a(bua.n), $$3, $$1.dk(), 48, btw.b.c).collect(Collectors.toSet());
+         eaq $$5 = bkh.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            gv $$6 = $$5.l();
+            Optional<hf<btz>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dM().a(bry.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
          }
       }
-   }
-
-   private static float b(bfz $$0) {
-      return $$0.aY() ? 0.6F : 0.15F;
-   }
-
-   private static float c(bfz $$0) {
-      return $$0.aY() ? 0.6F : 0.15F;
-   }
-
-   private static float d(bfz $$0) {
-      return $$0.aY() ? 0.5F : 0.15F;
-   }
-
-   private static Optional<? extends bfz> b(bss $$0) {
-      return bht.a($$0) ? Optional.empty() : $$0.dK().c(bpb.B);
-   }
-
-   public static ciz a() {
-      return ciz.a(ane.aA);
    }
 }

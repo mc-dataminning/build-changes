@@ -1,30 +1,122 @@
-public class flz implements flu<czt> {
-   private static final float a = 0.375F;
-   private final fpw b;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public flz(flv.a $$0) {
-      this.b = $$0.d();
+public class flz extends flw {
+   private final djm a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
+
+   flz(fie $$0, double $$1, double $$2, double $$3, djm $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<ehf> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         ehf $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)aro.d($$8, $$10);
+         this.H = this.G = (float)aro.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
-   public void a(czt $$0, float $$1, eij $$2, fjx $$3, int $$4, int $$5) {
-      ha $$6 = $$0.q().c(cqa.e);
-      hn<cfz> $$7 = $$0.c();
-      int $$8 = (int)$$0.p().a();
+   @Override
+   public void a(ell $$0, epy $$1, float $$2) {
+      float $$3 = aro.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = aro.i($$2, this.F, this.b);
+      float $$5 = aro.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cfz $$10 = $$7.get($$9);
-         if ($$10 != cfz.b) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            ha $$11 = ha.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cfw.i, $$4, $$5, $$2, $$3, $$0.k(), $$8 + $$9);
-            $$2.b();
+   private void a(ell $$0, epy $$1, float $$2, Consumer<Quaternionf> $$3) {
+      ehf $$4 = $$1.b();
+      float $$5 = (float)(aro.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aro.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aro.d((double)$$2, this.f, this.i) - $$4.c());
+      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
+      $$3.accept($$9);
+      Vector3f[] $$10 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$11 = this.b($$2);
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         Vector3f $$13 = $$10[$$12];
+         $$13.rotate($$9);
+         $$13.mul($$11);
+         $$13.add($$5, $$6, $$7);
+      }
+
+      float $$14 = this.c();
+      float $$15 = this.d();
+      float $$16 = this.e();
+      float $$17 = this.f();
+      int $$18 = this.a($$2);
+      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fla b() {
+      return fla.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         Optional<ehf> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            ehf $$3 = $$0.get();
+            this.g = aro.d($$2, this.g, $$3.a());
+            this.h = aro.d($$2, this.h, $$3.b());
+            this.i = aro.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)aro.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)aro.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
          }
+      }
+   }
+
+   public static class a implements fkz<ja> {
+      private final flr a;
+
+      public a(flr $$0) {
+         this.a = $$0;
+      }
+
+      public fkw a(ja $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flz $$8 = new flz($$1, $$2, $$3, $$4, $$0.c(), $$0.d());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

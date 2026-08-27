@@ -1,7 +1,15 @@
+import java.util.UUID;
+import javax.annotation.Nullable;
+
 public interface bje {
-   eei a();
+   @Nullable
+   UUID U_();
 
-   gu b();
+   cpb e();
 
-   boolean a(bfz var1);
+   @Nullable
+   default biw I_() {
+      UUID $$0 = this.U_();
+      return $$0 == null ? null : this.e().b($$0);
+   }
 }

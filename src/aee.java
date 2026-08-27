@@ -1,41 +1,53 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.Iterator;
 
-public class aee {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(sw.c("commands.deop.failed"));
+public interface aee<T> {
+   default void a(int $$0, int $$1, int $$2, clz<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3 instanceof cme $$8) {
+         $$6 = $$8.k();
+         $$7 = $$8.l();
+      }
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("deop").requires($$0x -> $$0x.c(3)))
-            .then(
-               dt.a("targets", ee.a())
-                  .suggests(($$0x, $$1) -> du.a(((ds)$$0x.getSource()).l().ac().l(), $$1))
-                  .executes($$0x -> a((ds)$$0x.getSource(), ee.a($$0x, "targets")))
-            )
-      );
-   }
+      int $$9 = 0;
 
-   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      alk $$2 = $$0.l().ac();
-      int $$3 = 0;
+      for (int $$10 = 0; $$10 < $$1; $$10++) {
+         if ($$9 == $$2) {
+            $$9++;
+         }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> sw.a("commands.deop.success", $$1.iterator().next().getName()), true);
+         boolean $$11 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$12 = aro.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$11 && $$12 > $$10) {
+            $$9 += $$0;
+            $$10++;
+         }
+
+         for (int $$13 = 0; $$13 < $$0; $$13++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$11 = (float)$$6 < (float)$$0 / 2.0F;
+            $$12 = aro.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$14 = $$6;
+            boolean $$15 = $$13 < $$6;
+            if ($$11) {
+               $$14 = $$12 + $$6;
+               $$15 = $$12 <= $$13 && $$13 < $$12 + $$6;
+            }
+
+            if ($$15) {
+               this.a($$4, $$9, $$5, $$10, $$13);
+            } else if ($$14 == $$13) {
+               $$9 += $$0 - $$13;
+               break;
+            }
+
+            $$9++;
          }
       }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
    }
+
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

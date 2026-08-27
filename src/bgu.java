@@ -1,128 +1,171 @@
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class bgu {
-   private static final Map<bfn<?>, bgu.a> a = Maps.newHashMap();
+public class bgu extends ebg {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<aep, bgt> f = new Object2ObjectOpenHashMap();
 
-   private static <T extends bgb> void a(bfn<T> $$0, bgu.c $$1, dhk.a $$2, bgu.b<T> $$3) {
-      bgu.a $$4 = a.put($$0, new bgu.a($$2, $$1, $$3));
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration for type " + jb.h.b($$0));
+   public static ebg.a<bgu> a(long $$0) {
+      return new ebg.a<>(() -> new bgu($$0), $$1 -> a($$0, $$1), asq.m);
+   }
+
+   public bgu(long $$0) {
+      this.b = $$0;
+   }
+
+   public art a(aep $$0) {
+      art $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bgu.a($$1);
+   }
+
+   private bgt c(aep $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
+
+   private bgt b(aep $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bgt($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
+
+   public void a(BiConsumer<aep, bgt> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public qs a(qs $$0) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      qs $$1 = new qs();
+      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (rl)bgt.a.encodeStart(rd.a, $$2).result().orElseThrow()));
+      $$0.a("sequences", $$1);
+      return $$0;
+   }
+
+   private static boolean a(qs $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bgu a(long $$0, qs $$1) {
+      bgu $$2 = new bgu($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      qs $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bgt $$6 = (bgt)((Pair)bgt.a.decode(rd.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(new aep($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
       }
+
+      return $$2;
    }
 
-   public static bgu.c a(bfn<?> $$0) {
-      bgu.a $$1 = a.get($$0);
-      return $$1 == null ? bgu.c.c : $$1.b;
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
    }
 
-   public static dhk.a b(@Nullable bfn<?> $$0) {
-      bgu.a $$1 = a.get($$0);
-      return $$1 == null ? dhk.a.f : $$1.a;
+   public void b(aep $$0) {
+      this.f.put($$0, this.c($$0));
    }
 
-   public static <T extends bfj> boolean a(bfn<T> $$0, cnb $$1, bgd $$2, gu $$3, apf $$4) {
-      bgu.a $$5 = a.get($$0);
-      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
+   public void a(aep $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
    }
 
-   static {
-      a(bfn.f, bgu.c.b, dhk.a.f, bss::a);
-      a(bfn.r, bgu.c.b, dhk.a.f, bsn::c);
-      a(bfn.v, bgu.c.b, dhk.a.f, bsn::c);
-      a(bfn.y, bgu.c.b, dhk.a.f, bvq::a);
-      a(bfn.V, bgu.c.b, dhk.a.f, bvy::b);
-      a(bfn.aB, bgu.c.b, dhk.a.f, bsn::c);
-      a(bfn.aE, bgu.c.b, dhk.a.f, bsn::c);
-      a(bfn.aT, bgu.c.b, dhk.a.f, bsn::c);
-      a(bfn.bc, bgu.c.b, dhk.a.f, bsl::b);
-      a(bfn.g, bgu.c.a, dhk.a.f, brg::b);
-      a(bfn.i, bgu.c.a, dhk.a.f, bwc::c);
-      a(bfn.n, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.q, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.t, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.u, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.w, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.E, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.F, bgu.c.a, dhk.a.f, bvt::b);
-      a(bfn.C, bgu.c.a, dhk.a.f, bgb::a);
-      a(bfn.O, bgu.c.a, dhk.a.f, bta::c);
-      a(bfn.Q, bgu.c.a, dhk.a.f, bvw::b);
-      a(bfn.R, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.T, bgu.c.b, dhk.a.f, bfr::a);
-      a(bfn.U, bgu.c.a, dhk.a.f, btg::c);
-      a(bfn.Y, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.Z, bgu.c.a, dhk.a.f, bvz::a);
-      a(bfn.ac, bgu.c.a, dhk.a.f, bgb::a);
-      a(bfn.aj, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.al, bgu.c.a, dhk.a.f, bwb::b);
-      a(bfn.ao, bgu.c.a, dhk.a.f, bry::c);
-      a(bfn.ap, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.aq, bgu.c.a, dhk.a.e, brz::c);
-      a(bfn.at, bgu.c.a, dhk.a.e, bsb::c);
-      a(bfn.av, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.W, bgu.c.a, dhk.a.f, bwy::c);
-      a(bfn.aw, bgu.c.a, dhk.a.f, bxe::b);
-      a(bfn.ay, bgu.c.a, dhk.a.f, bwd::b);
-      a(bfn.az, bgu.c.a, dhk.a.f, bsd::c);
-      a(bfn.aC, bgu.c.a, dhk.a.f, bsf::c);
-      a(bfn.aF, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.aI, bgu.c.a, dhk.a.f, bwj::b);
-      a(bfn.aJ, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.aK, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.aL, bgu.c.a, dhk.a.f, bwl::c);
-      a(bfn.aO, bgu.c.a, dhk.a.f, bgb::a);
-      a(bfn.aS, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.aU, bgu.c.a, dhk.a.f, bwo::a);
-      a(bfn.aV, bgu.c.d, dhk.a.f, bwp::c);
-      a(bfn.bd, bgu.c.a, dhk.a.f, bsm::c);
-      a(bfn.bf, bgu.c.a, dhk.a.f, bgb::a);
-      a(bfn.bj, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.bk, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.bl, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.bn, bgu.c.a, dhk.a.f, bso::c);
-      a(bfn.bp, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.bq, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.bs, bgu.c.a, dhk.a.f, bwx::b);
-      a(bfn.br, bgu.c.a, dhk.a.f, bwc::b);
-      a(bfn.m, bgu.c.a, dhk.a.f, brl::b);
-      a(bfn.A, bgu.c.b, dhk.a.f, bvy::b);
-      a(bfn.G, bgu.c.c, dhk.a.f, bwc::b);
-      a(bfn.N, bgu.c.c, dhk.a.f, brv::c);
-      a(bfn.aa, bgu.c.c, dhk.a.f, bwc::b);
-      a(bfn.as, bgu.c.c, dhk.a.f, brl::b);
-      a(bfn.au, bgu.c.c, dhk.a.f, bgb::a);
-      a(bfn.aD, bgu.c.c, dhk.a.f, bwc::b);
-      a(bfn.aG, bgu.c.c, dhk.a.f, bgb::a);
-      a(bfn.ba, bgu.c.c, dhk.a.f, brl::b);
-      a(bfn.be, bgu.c.c, dhk.a.f, bwc::b);
-      a(bfn.bg, bgu.c.c, dhk.a.f, bwc::b);
-      a(bfn.bh, bgu.c.c, dhk.a.f, bgb::a);
-      a(bfn.bi, bgu.c.c, dhk.a.f, bgb::a);
-   }
+   class a implements art {
+      private final art c;
 
-   static class a {
-      final dhk.a a;
-      final bgu.c b;
-      final bgu.b<?> c;
-
-      public a(dhk.a $$0, bgu.c $$1, bgu.b<?> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      a(art $$0) {
+         this.c = $$0;
       }
-   }
 
-   @FunctionalInterface
-   public interface b<T extends bfj> {
-      boolean test(bfn<T> var1, cnb var2, bgd var3, gu var4, apf var5);
-   }
+      @Override
+      public art d() {
+         bgu.this.c();
+         return this.c.d();
+      }
 
-   public static enum c {
-      a,
-      b,
-      c,
-      d;
+      @Override
+      public dku e() {
+         bgu.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bgu.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bgu.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bgu.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bgu.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bgu.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bgu.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bgu.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bgu.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return $$0 instanceof bgu.a $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
    }
 }

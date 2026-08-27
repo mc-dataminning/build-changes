@@ -1,66 +1,76 @@
-public class ccc extends cbf {
-   public static final int k = 5;
-   private final bdq l;
-
-   public ccc(int $$0, byn $$1) {
-      this($$0, $$1, new bee(5));
+public class ccc extends ccd {
+   public ccc(bik<? extends ccc> $$0, cpk $$1) {
+      super($$0, $$1);
    }
 
-   public ccc(int $$0, byn $$1, bdq $$2) {
-      super(cck.p, $$0);
-      this.l = $$2;
-      a($$2, 5);
-      $$2.d_($$1.m);
-      int $$3 = 51;
+   public ccc(cpk $$0, bwk $$1) {
+      this(bik.ak, $$0);
+      this.b($$1);
+      this.e(
+         $$1.dp() - (double)($$1.df() + 1.0F) * 0.5 * (double)aro.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dt() - 0.1F,
+         $$1.dv() + (double)($$1.df() + 1.0F) * 0.5 * (double)aro.b($$1.aU * (float) (Math.PI / 180.0))
+      );
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new ccx($$2, $$4, 44 + $$4 * 18, 20));
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new ccx($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+   @Override
+   public void l() {
+      super.l();
+      ehf $$0 = this.dn();
+      ehd $$1 = cce.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.dp() + $$0.c;
+      double $$3 = this.dr() + $$0.d;
+      double $$4 = this.dv() + $$0.e;
+      this.B();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dK().a(this.cG()).noneMatch(dex.a::i)) {
+         this.ak();
+      } else if (this.ba()) {
+         this.ak();
+      } else {
+         this.f($$0.a(0.99F));
+         if (!this.aT()) {
+            this.f(this.dn().b(0.0, -0.06F, 0.0));
          }
-      }
 
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new ccx($$1, $$7, 8 + $$7 * 18, 109));
+         this.e($$2, $$3, $$4);
       }
    }
 
    @Override
-   public boolean a(byo $$0) {
-      return this.l.a($$0);
+   protected void a(ehc $$0) {
+      super.a($$0);
+      if (this.v() instanceof biw $$1) {
+         $$0.a().a(this.dL().a(this, $$1), 1.0F);
+      }
    }
 
    @Override
-   public cfz a(byo $$0, int $$1) {
-      cfz $$2 = cfz.b;
-      ccx $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         cfz $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cfz.b;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cfz.b;
-         }
+   protected void a(ehb $$0) {
+      super.a($$0);
+      if (!this.dK().B) {
+         this.ak();
+      }
+   }
 
-         if ($$4.b()) {
-            $$3.d(cfz.b);
-         } else {
-            $$3.d();
-         }
+   @Override
+   protected void a_() {
+   }
+
+   @Override
+   public void a(wp $$0) {
+      super.a($$0);
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dK().a(iw.ab, this.dp(), this.dr(), this.dv(), $$1 * $$5, $$2, $$3 * $$5);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public void b(byo $$0) {
-      super.b($$0);
-      this.l.c($$0);
+      this.o($$1, $$2, $$3);
    }
 }
