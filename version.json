@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "b21782e8a4d5ad265254824f7a7031a7017ee754",
-      "size": 37388222,
-      "url": "https://piston-data.mojang.com/v1/objects/b21782e8a4d5ad265254824f7a7031a7017ee754/client.jar"
+      "sha1": "4c938df4f6ce3138ab38b488f3add8693918a7a0",
+      "size": 37474887,
+      "url": "https://piston-data.mojang.com/v1/objects/4c938df4f6ce3138ab38b488f3add8693918a7a0/client.jar"
     },
     "server": {
-      "sha1": "5b42d78a1619f4e1e537bbcd1f38b1b58c01bc56",
-      "size": 60101090,
-      "url": "https://piston-data.mojang.com/v1/objects/5b42d78a1619f4e1e537bbcd1f38b1b58c01bc56/server.jar"
+      "sha1": "4e79b5742a989ae384d9bb032ecfe30ee55f0c48",
+      "size": 60145486,
+      "url": "https://piston-data.mojang.com/v1/objects/4e79b5742a989ae384d9bb032ecfe30ee55f0c48/server.jar"
     }
   },
-  "id": "26.1-snapshot-4",
+  "id": "26.1-snapshot-5",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -350,13 +350,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/authlib/7.0.61/authlib-7.0.61.jar",
-          "sha1": "efee1e6b54e863108576eb3b3ae71144626aaefc",
-          "size": 116084,
-          "url": "https://libraries.minecraft.net/com/mojang/authlib/7.0.61/authlib-7.0.61.jar"
+          "path": "com/mojang/authlib/7.0.62/authlib-7.0.62.jar",
+          "sha1": "17e2759e9a92c1be617bbffc49fd89d101387e2a",
+          "size": 115707,
+          "url": "https://libraries.minecraft.net/com/mojang/authlib/7.0.62/authlib-7.0.62.jar"
         }
       },
-      "name": "com.mojang:authlib:7.0.61"
+      "name": "com.mojang:authlib:7.0.62"
     },
     {
       "downloads": {
@@ -1888,7 +1888,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-01-20T14:15:37+00:00",
-  "time": "2026-01-20T14:15:37+00:00",
+  "releaseTime": "2026-01-27T13:01:17+00:00",
+  "time": "2026-01-27T13:01:17+00:00",
   "type": "snapshot"
 }
