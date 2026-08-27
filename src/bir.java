@@ -135,7 +135,6 @@ public abstract class bir<R extends Runnable> implements bhz, bit<R>, Executor {
          $$0.run();
       } catch (Exception var3) {
          c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bs(), var3);
-         throw var3;
       }
    }
 

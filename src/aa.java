@@ -10,18 +10,18 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3696;
+   public static final int b = 3697;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.3-pre4";
+   public static final String d = "1.20.3-rc1";
    @Deprecated
    public static final int e = 765;
    @Deprecated
-   public static final int f = 167;
+   public static final int f = 168;
    public static final int g = 3678;
    private static final int bm = 30;
-   public static final boolean h = true;
+   public static final boolean h = false;
    @Deprecated
    public static final int i = 22;
    @Deprecated
@@ -181,7 +181,7 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741991;
+      return 1073741992;
    }
 
    public static boolean a(csw $$0) {

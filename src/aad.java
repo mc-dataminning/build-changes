@@ -56,12 +56,17 @@ public class aad implements xf<za> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.k = $$0.b(cth.a.class);
-      this.i = a($$0, $$0.a(kd.j));
-      this.j = a($$0, $$0.a(kd.j));
+      this.i = this.a($$0, $$0.a(kd.j));
+      this.j = this.a($$0, $$0.a(kd.j));
       this.l = arr.b($$0);
    }
 
-   private static <T extends jv> T a(ui $$0, jw<T> $$1) {
+   public void a(ui $$0, jv $$1) {
+      $$0.a(kd.j, $$1.b());
+      $$1.a($$0);
+   }
+
+   private <T extends jv> T a(ui $$0, jw<T> $$1) {
       return $$1.d().b($$1, $$0);
    }
 
@@ -86,8 +91,8 @@ public class aad implements xf<za> {
       $$0.a(this.g);
       $$0.a(this.h);
       $$0.a(this.k);
-      $$0.a(kd.j, this.i.b());
-      $$0.a(kd.j, this.j.b());
+      this.a($$0, this.i);
+      this.a($$0, this.j);
       this.l.a($$0);
    }
 
