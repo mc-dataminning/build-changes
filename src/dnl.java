@@ -1,47 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dnl extends dnr<dps> {
-   public dnl(Codec<dps> $$0) {
+public abstract class dnl extends dnw<dqh> {
+   public dnl(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dps> $$0) {
-      dps $$1 = $$0.f();
-      gw $$2 = $$0.e();
-      cqk $$3 = $$0.b();
-      arx $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      gw.a $$10 = new gw.a();
-
-      for (gw $$11 : gw.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public boolean a(dny<dqh> $$0) {
+      asc $$1 = $$0.d();
+      cqp $$2 = $$0.b();
+      gw $$3 = $$0.e();
+      Optional<csv> $$4 = jd.f.b(apt.ap).flatMap($$1x -> $$1x.a($$1)).map(hg::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
    }
 
-   protected boolean a(dps $$0, cqk $$1, arx $$2, int $$3, int $$4, gw.a $$5) {
-      boolean $$6 = false;
+   protected abstract boolean a(cpw var1, asc var2, gw var3, dfj var4);
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dfe $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
+   protected boolean b(cpw $$0, asc $$1, gw $$2, dfj $$3) {
+      gw $$4 = $$2.c();
+      dfj $$5 = $$0.a_($$2);
+      if (($$5.a(csw.G) || $$5.a(apt.as)) && $$0.a_($$4).a(csw.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            jd.f.b(apt.as).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, csw.mV.n().a(czs.b, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      return $$6;
+         for (hc $$6 : hc.c.a) {
+            if ($$1.i() < 0.2F) {
+               gw $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(csw.G)) {
+                  jd.f.b(apt.aq).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$3x -> {
+                     dfj $$4x = $$3x.n();
+                     if ($$4x.b(csh.a)) {
+                        $$4x = $$4x.a(csh.a, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

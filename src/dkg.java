@@ -1,105 +1,97 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public interface dkg {
-   Codec<dkg> b = dkh.b;
-   Codec<hg<dkg>> c = aeq.a(je.at, b);
-   Codec<dkg> d = c.xmap(dkh.j::new, $$0 -> (hg)($$0 instanceof dkh.j $$1 ? $$1.j() : new hg.a<>($$0)));
-
-   double a(dkg.b var1);
-
-   void a(double[] var1, dkg.a var2);
-
-   dkg a(dkg.f var1);
-
-   double a();
-
-   double b();
-
-   arm<? extends dkg> c();
-
-   default dkg a(double $$0, double $$1) {
-      return new dkh.g(this, $$0, $$1);
-   }
-
-   default dkg d() {
-      return dkh.a(this, dkh.k.a.a);
-   }
-
-   default dkg e() {
-      return dkh.a(this, dkh.k.a.b);
-   }
-
-   default dkg f() {
-      return dkh.a(this, dkh.k.a.c);
-   }
-
-   default dkg g() {
-      return dkh.a(this, dkh.k.a.d);
-   }
-
-   default dkg h() {
-      return dkh.a(this, dkh.k.a.e);
-   }
-
-   default dkg i() {
-      return dkh.a(this, dkh.k.a.f);
-   }
-
-   public interface a {
-      dkg.b a(int var1);
-
-      void a(double[] var1, dkg var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dlp d() {
-         return dlp.a();
-      }
-   }
-
-   public static record c(hg<dzk.a> b, @Nullable dzk c) {
-      public static final Codec<dkg.c> a = dzk.a.b.xmap($$0 -> new dkg.c($$0, null), dkg.c::b);
-
-      public c(hg<dzk.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends dkg {
+public final class dkg {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dhk> e = jd.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == dhk.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dkg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dkg::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dkg::new)
+   );
+   private static final Set<aew<cqt>> f = Set.of(cra.aa, cra.Z, cra.ab);
+   public static final cpx b = new cpx() {
       @Override
-      default void a(double[] $$0, dkg.a $$1) {
-         $$1.a($$0, this);
+      public int I_() {
+         return 64;
       }
 
       @Override
-      default dkg a(dkg.f $$0) {
-         return $$0.apply(this);
+      public int H_() {
+         return -64;
+      }
+   };
+   private final dhk g;
+   private final BitSet h;
+
+   private dkg(dhk $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
+
+   @Nullable
+   public static dkg a(qx $$0) {
+      dhk $$1 = dhk.a($$0.l("target_status"));
+      return $$1 == dhk.c ? null : new dkg($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dia $$0) {
+      int $$1 = 4;
+      gw.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(csw.F)) {
+            $$0.a($$1x, csw.rI.n(), false);
+         }
+      });
+   }
+
+   public void b(dia $$0) {
+      cpx $$1 = $$0.z();
+      int $$2 = $$1.H_();
+      int $$3 = $$1.aj() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               gw.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, csw.a.n(), false));
+            }
+         }
       }
    }
 
-   public static record e(int a, int b, int c) implements dkg.b {
+   public dhk a() {
+      return this.g;
    }
 
-   public interface f {
-      dkg apply(dkg var1);
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
 
-      default dkg.c a(dkg.c $$0) {
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static cqw a(cqw $$0, dhf $$1) {
+      if (!$$1.y()) {
          return $$0;
+      } else {
+         Predicate<aew<cqt>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            hg<cqt> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

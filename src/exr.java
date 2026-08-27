@@ -1,169 +1,82 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
 
-public class exr extends exz {
-   static final aeu c = new aeu("textures/gui/title/mojangstudios.png");
-   private static final int d = ard.b.a(255, 239, 50, 61);
-   private static final int e = ard.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> eqq.O().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final eqq m;
-   private final anl n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class exr extends eyk {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final tl k;
+   private final tl l;
+   private final Runnable m;
+   @Nullable
+   private etj n;
+   private esq o;
+   private int p;
 
-   public exr(eqq $$0, anl $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
+   public static exr a(tl $$0, tl $$1, Runnable $$2) {
+      return new exr($$0, null, $$1, $$2, 0);
    }
 
-   public static void a(eqq $$0) {
-      $$0.Y().a(c, new exr.a());
+   public static exr a(tl $$0, tl $$1, tl $$2, Runnable $$3) {
+      return new exr($$0, $$1, $$2, $$3, 20);
    }
 
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   protected exr(tl $$0, @Nullable tl $$1, tl $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.p = $$4;
    }
 
    @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
+   protected void aI_() {
+      super.aI_();
+      if (this.k != null) {
+         this.n = etj.a(this.i, this.k, 360);
       }
 
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.n != null ? this.n.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.h - 40);
+      this.o = this.d(esq.a(this.l, $$0x -> this.az_()).a((this.g - 150) / 2, $$4, 150, 20).a());
+   }
 
-         int $$9 = ars.f((1.0F - ars.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(foh.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - ars.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
+   @Override
+   public void c() {
+      if (this.p > 0) {
+         this.p--;
+      }
 
-         int $$11 = ars.c(ars.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(foh.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = ars.a($$8, 0.0F, 1.0F);
+      this.o.i = this.p == 0;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
+      if (this.n == null) {
+         String $$4 = exv.a(ac.b());
+         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
       } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, eqq.a);
-         $$10 = 1.0F;
+         this.n.a($$0, this.g / 2, 120);
       }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = ars.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - ars.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
-      }
-   }
-
-   private void a(esa $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = ars.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = ard.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public boolean ay_() {
+      return this.n != null && this.o.i;
    }
 
-   static class a extends fys {
-      public a() {
-         super(exr.c);
-      }
+   @Override
+   public void az_() {
+      this.m.run();
+   }
 
-      @Override
-      protected fys.a b(anp $$0) {
-         amg $$1 = eqq.O().ab();
-         anh<InputStream> $$2 = $$1.a(ame.a, exr.c);
-         if ($$2 == null) {
-            return new fys.a(new FileNotFoundException(exr.c.toString()));
-         } else {
-            try {
-               fys.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new fys.a(new gaw(true, true), ekl.a($$3));
-               }
-
-               return var5;
-            } catch (IOException var9) {
-               return new fys.a(var9);
-            }
-         }
-      }
+   @Override
+   public tl g() {
+      return tk.a(this.e, this.k != null ? this.k : tk.a);
    }
 }

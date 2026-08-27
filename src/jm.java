@@ -28,11 +28,11 @@ public class jm {
          this.b = $$2;
       }
 
-      public Path a(aeu $$0, String $$1) {
+      public Path a(aex $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(aeu $$0) {
+      public Path a(aex $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
    }

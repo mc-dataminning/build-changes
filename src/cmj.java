@@ -1,90 +1,51 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+public interface cmj<C extends bgr> {
+   boolean a(C var1, cpv var2);
 
-public class cmj extends clw {
-   public cmj(clt $$0) {
-      super($$0);
-   }
+   cjf a(C var1, hu var2);
 
-   public boolean a(ceu $$0, cpq $$1) {
-      List<cja> $$2 = Lists.newArrayList();
+   boolean a(int var1, int var2);
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cja $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cja $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return false;
-               }
-            }
+   cjf a(hu var1);
+
+   default hp<cjf> a(C $$0) {
+      hp<cjf> $$1 = hp.a($$0.b(), cjf.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cja $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new cjf($$3.s()));
          }
       }
 
-      return $$2.size() == 2;
+      return $$1;
    }
 
-   public cja a(ceu $$0, hu $$1) {
-      List<cja> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cja $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cja $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return cja.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         cja $$6 = $$2.get(0);
-         cja $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            civ $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cja $$13 = new cja($$6.d());
-            $$13.b($$12);
-            Map<cnj, Integer> $$14 = Maps.newHashMap();
-            Map<cnj, Integer> $$15 = cnl.a($$6);
-            Map<cnj, Integer> $$16 = cnl.a($$7);
-            jd.g.s().filter(cnj::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cnl.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return cja.b;
+   default hp<cmg> a() {
+      return hp.a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   default boolean am_() {
+      return false;
    }
 
-   @Override
-   public cmh<?> ai_() {
-      return cmh.o;
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cjf g() {
+      return new cjf(csw.cA);
+   }
+
+   cmm<?> an_();
+
+   cmn<?> e();
+
+   default boolean i() {
+      hp<cmg> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

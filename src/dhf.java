@@ -1,263 +1,428 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.shorts.ShortArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dhf {
-   public static final int a = 8;
-   private static final EnumSet<dkn.a> o = EnumSet.of(dkn.a.c, dkn.a.a);
-   public static final EnumSet<dkn.a> b = EnumSet.of(dkn.a.d, dkn.a.b, dkn.a.e, dkn.a.f);
-   private static final dhf.c p = ($$0, $$1, $$2, $$3, $$4, $$5) -> CompletableFuture.completedFuture(Either.left($$5));
-   public static final dhf c = a("empty", null, -1, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-   });
-   public static final dhf d = a("structure_starts", c, 0, false, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> {
-      if ($$2.n().aT().A().c()) {
-         $$3.a($$2.B_(), $$2.k().h(), $$2.a(), $$8, $$4);
-      }
+public abstract class dhf implements cpb, cqv.a, dhs, dic {
+   public static final int a = -1;
+   private static final Logger n = LogUtils.getLogger();
+   private static final LongSet o = new LongOpenHashSet();
+   protected final ShortList[] b;
+   protected volatile boolean c;
+   private volatile boolean p;
+   protected final cpc d;
+   private long q;
+   @Nullable
+   @Deprecated
+   private cqu r;
+   @Nullable
+   protected dkw e;
+   protected final did f;
+   @Nullable
+   protected dlv g;
+   protected final Map<dks.a, dks> h = Maps.newEnumMap(dks.a.class);
+   protected dzw i;
+   private final Map<dvi, dvq> s = Maps.newHashMap();
+   private final Map<dvi, LongSet> t = Maps.newHashMap();
+   protected final Map<gw, qx> j = Maps.newHashMap();
+   protected final Map<gw, dcv> k = Maps.newHashMap();
+   protected final cpx l;
+   protected final dhr[] m;
 
-      $$2.a($$8);
-      return CompletableFuture.completedFuture(Either.left($$8));
-   }, ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      $$1.a($$5);
-      return CompletableFuture.completedFuture(Either.left($$5));
-   });
-   public static final dhf e = a("structure_references", d, 8, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-      aku $$5 = new aku($$1, $$3, $$0, -1);
-      $$2.a($$5, $$1.a().a($$5), $$4);
-   });
-   public static final dhf f = a("biomes", e, 8, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> {
-      aku $$9 = new aku($$2, $$7, $$0, -1);
-      return $$3.a($$1, $$2.k().i(), dlp.a($$9), $$2.a().a($$9), $$8).thenApply($$0x -> Either.left($$0x));
-   });
-   public static final dhf g = a("noise", f, 8, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> {
-      aku $$9 = new aku($$2, $$7, $$0, 0);
-      return $$3.a($$1, dlp.a($$9), $$2.k().i(), $$2.a().a($$9), $$8).thenApply($$0x -> {
-         if ($$0x instanceof dhv $$1x) {
-            dkb $$2x = $$1x.x();
-            if ($$2x != null) {
-               dkb.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
+   public dhf(cpc $$0, did $$1, cpx $$2, ht<cqt> $$3, long $$4, @Nullable dhr[] $$5, @Nullable dlv $$6) {
+      this.d = $$0;
+      this.f = $$1;
+      this.l = $$2;
+      this.m = new dhr[$$2.ak()];
+      this.q = $$4;
+      this.b = new ShortList[$$2.ak()];
+      this.g = $$6;
+      this.i = new dzw($$2);
+      if ($$5 != null) {
+         if (this.m.length == $$5.length) {
+            System.arraycopy($$5, 0, this.m, 0, this.m.length);
+         } else {
+            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
          }
-
-         return Either.left($$0x);
-      });
-   });
-   public static final dhf h = a("surface", g, 8, o, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-      aku $$5 = new aku($$1, $$3, $$0, 0);
-      $$2.a($$5, $$1.a().a($$5), $$1.k().i(), $$4);
-   });
-   public static final dhf i = a("carvers", h, 8, b, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-      aku $$5 = new aku($$1, $$3, $$0, 0);
-      if ($$4 instanceof dhv $$6) {
-         dlp.a($$5, $$6);
       }
 
-      $$2.a($$5, $$1.A(), $$1.k().i(), $$1.z_(), $$1.a().a($$5), $$4, dkj.a.a);
-   });
-   public static final dhf j = a("features", i, 8, b, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-      dkn.a($$4, EnumSet.of(dkn.a.e, dkn.a.f, dkn.a.d, dkn.a.b));
-      aku $$5 = new aku($$1, $$3, $$0, 1);
-      $$2.a($$5, $$4, $$1.a().a($$5));
-      dlp.a($$5, $$4);
-   });
-   public static final dhf k = a(
-      "initialize_light", j, 0, false, b, dhf.a.a, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> a($$5, $$8), ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$3, $$5)
-   );
-   public static final dhf l = a(
-      "light", k, 1, true, b, dhf.a.a, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> b($$5, $$8), ($$0, $$1, $$2, $$3, $$4, $$5) -> b($$3, $$5)
-   );
-   public static final dhf m = a("spawn", l, 0, b, dhf.a.a, ($$0, $$1, $$2, $$3, $$4) -> {
-      if (!$$4.y()) {
-         $$2.a(new aku($$1, $$3, $$0, -1));
-      }
-   });
-   public static final dhf n = a(
-      "full", m, 0, false, b, dhf.a.b, ($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> $$6.apply($$8), ($$0, $$1, $$2, $$3, $$4, $$5) -> $$4.apply($$5)
-   );
-   private static final List<dhf> q = ImmutableList.of(n, k, i, f, d, d, d, d, d, d, d, d, new dhf[0]);
-   private static final IntList r = ac.a(new IntArrayList(a().size()), $$0 -> {
-      int $$1 = 0;
+      a($$3, this.m);
+   }
 
-      for (int $$2 = a().size() - 1; $$2 >= 0; $$2--) {
-         while ($$1 + 1 < q.size() && $$2 <= q.get($$1 + 1).c()) {
-            $$1++;
+   private static void a(ht<cqt> $$0, dhr[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$1[$$2] == null) {
+            $$1[$$2] = new dhr($$0);
          }
-
-         $$0.add(0, $$1);
       }
-   });
-   private final int s;
-   private final dhf t;
-   private final dhf.b u;
-   private final dhf.c v;
-   private final int w;
-   private final boolean x;
-   private final dhf.a y;
-   private final EnumSet<dkn.a> z;
-
-   private static CompletableFuture<Either<dha, ajw.a>> a(akq $$0, dha $$1) {
-      $$1.A();
-      ((dhv)$$1).a($$0);
-      boolean $$2 = a($$1);
-      return $$0.a($$1, $$2).thenApply(Either::left);
    }
 
-   private static CompletableFuture<Either<dha, ajw.a>> b(akq $$0, dha $$1) {
-      boolean $$2 = a($$1);
-      return $$0.b($$1, $$2).thenApply(Either::left);
+   public djw a(int $$0) {
+      return djw.a;
    }
 
-   private static dhf a(String $$0, @Nullable dhf $$1, int $$2, EnumSet<dkn.a> $$3, dhf.a $$4, dhf.d $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, (dhf.b)$$5);
-   }
+   @Nullable
+   public abstract dfj a(gw var1, dfj var2, boolean var3);
 
-   private static dhf a(String $$0, @Nullable dhf $$1, int $$2, EnumSet<dkn.a> $$3, dhf.a $$4, dhf.b $$5) {
-      return a($$0, $$1, $$2, false, $$3, $$4, $$5, p);
-   }
+   public abstract void a(dcv var1);
 
-   private static dhf a(String $$0, @Nullable dhf $$1, int $$2, boolean $$3, EnumSet<dkn.a> $$4, dhf.a $$5, dhf.b $$6, dhf.c $$7) {
-      return ht.a(jd.o, $$0, new dhf($$1, $$2, $$3, $$4, $$5, $$6, $$7));
-   }
+   public abstract void a(biq var1);
 
-   public static List<dhf> a() {
-      List<dhf> $$0 = Lists.newArrayList();
+   public int a() {
+      dhr[] $$0 = this.d();
 
-      dhf $$1;
-      for ($$1 = n; $$1.d() != $$1; $$1 = $$1.d()) {
-         $$0.add($$1);
+      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
+         dhr $$2 = $$0[$$1];
+         if (!$$2.c()) {
+            return $$1;
+         }
       }
 
-      $$0.add($$1);
-      Collections.reverse($$0);
+      return -1;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public int b() {
+      int $$0 = this.a();
+      return $$0 == -1 ? this.H_() : hz.c(this.g($$0));
+   }
+
+   public Set<gw> c() {
+      Set<gw> $$0 = Sets.newHashSet(this.j.keySet());
+      $$0.addAll(this.k.keySet());
       return $$0;
    }
 
-   private static boolean a(dha $$0) {
-      return $$0.j().b(l) && $$0.v();
+   public dhr[] d() {
+      return this.m;
    }
 
-   public static dhf a(int $$0) {
-      if ($$0 >= q.size()) {
-         return c;
-      } else {
-         return $$0 < 0 ? n : q.get($$0);
-      }
+   public dhr b(int $$0) {
+      return this.d()[$$0];
    }
 
-   public static int b() {
-      return q.size();
+   public Collection<Entry<dks.a, dks>> e() {
+      return Collections.unmodifiableSet(this.h.entrySet());
    }
 
-   public static int a(dhf $$0) {
-      return r.getInt($$0.c());
+   public void a(dks.a $$0, long[] $$1) {
+      this.a($$0).a(this, $$0, $$1);
    }
 
-   dhf(@Nullable dhf $$0, int $$1, boolean $$2, EnumSet<dkn.a> $$3, dhf.a $$4, dhf.b $$5, dhf.c $$6) {
-      this.t = $$0 == null ? this : $$0;
-      this.u = $$5;
-      this.v = $$6;
-      this.w = $$1;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$3;
-      this.s = $$0 == null ? 0 : $$0.c() + 1;
+   public dks a(dks.a $$0) {
+      return this.h.computeIfAbsent($$0, $$0x -> new dks(this, $$0x));
    }
 
-   public int c() {
-      return this.s;
+   public boolean b(dks.a $$0) {
+      return this.h.get($$0) != null;
    }
 
-   public dhf d() {
-      return this.t;
-   }
-
-   public CompletableFuture<Either<dha, ajw.a>> a(
-      Executor $$0, akn $$1, dhb $$2, dyx $$3, akq $$4, Function<dha, CompletableFuture<Either<dha, ajw.a>>> $$5, List<dha> $$6
-   ) {
-      dha $$7 = $$6.get($$6.size() / 2);
-      bdt $$8 = bdq.e.a($$7.f(), $$1.ac(), this.toString());
-      return this.u.doWork(this, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7).thenApply($$1x -> {
-         $$1x.ifLeft($$0xx -> {
-            if ($$0xx instanceof dhv $$1xx && !$$1xx.j().b(this)) {
-               $$1xx.a(this);
-            }
-         });
-         if ($$8 != null) {
-            $$8.finish();
+   public int a(dks.a $$0, int $$1, int $$2) {
+      dks $$3 = this.h.get($$0);
+      if ($$3 == null) {
+         if (aa.aT && this instanceof dhq) {
+            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
          }
 
-         return $$1x;
-      });
+         dks.a(this, EnumSet.of($$0));
+         $$3 = this.h.get($$0);
+      }
+
+      return $$3.a($$1 & 15, $$2 & 15) - 1;
    }
 
-   public CompletableFuture<Either<dha, ajw.a>> a(akn $$0, dyx $$1, akq $$2, Function<dha, CompletableFuture<Either<dha, ajw.a>>> $$3, dha $$4) {
-      return this.v.doWork(this, $$0, $$1, $$2, $$3, $$4);
+   public cpc f() {
+      return this.d;
    }
 
-   public int e() {
-      return this.w;
-   }
-
-   public boolean f() {
-      return this.x;
-   }
-
-   public dhf.a g() {
-      return this.y;
-   }
-
-   public static dhf a(String $$0) {
-      return jd.o.a(aeu.a($$0));
-   }
-
-   public EnumSet<dkn.a> h() {
-      return this.z;
-   }
-
-   public boolean b(dhf $$0) {
-      return this.c() >= $$0.c();
+   @Nullable
+   @Override
+   public dvq a(dvi $$0) {
+      return this.s.get($$0);
    }
 
    @Override
-   public String toString() {
-      return jd.o.b(this).toString();
+   public void a(dvi $$0, dvq $$1) {
+      this.s.put($$0, $$1);
+      this.c = true;
    }
 
-   public static enum a {
-      a,
-      b;
+   public Map<dvi, dvq> g() {
+      return Collections.unmodifiableMap(this.s);
    }
 
-   interface b {
-      CompletableFuture<Either<dha, ajw.a>> doWork(
-         dhf var1, Executor var2, akn var3, dhb var4, dyx var5, akq var6, Function<dha, CompletableFuture<Either<dha, ajw.a>>> var7, List<dha> var8, dha var9
-      );
+   public void a(Map<dvi, dvq> $$0) {
+      this.s.clear();
+      this.s.putAll($$0);
+      this.c = true;
    }
 
-   interface c {
-      CompletableFuture<Either<dha, ajw.a>> doWork(dhf var1, akn var2, dyx var3, akq var4, Function<dha, CompletableFuture<Either<dha, ajw.a>>> var5, dha var6);
+   @Override
+   public LongSet b(dvi $$0) {
+      return this.t.getOrDefault($$0, o);
    }
 
-   interface d extends dhf.b {
-      @Override
-      default CompletableFuture<Either<dha, ajw.a>> doWork(
-         dhf $$0, Executor $$1, akn $$2, dhb $$3, dyx $$4, akq $$5, Function<dha, CompletableFuture<Either<dha, ajw.a>>> $$6, List<dha> $$7, dha $$8
-      ) {
-         this.doWork($$0, $$2, $$3, $$7, $$8);
-         return CompletableFuture.completedFuture(Either.left($$8));
+   @Override
+   public void a(dvi $$0, long $$1) {
+      this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
+      this.c = true;
+   }
+
+   @Override
+   public Map<dvi, LongSet> h() {
+      return Collections.unmodifiableMap(this.t);
+   }
+
+   @Override
+   public void b(Map<dvi, LongSet> $$0) {
+      this.t.clear();
+      this.t.putAll($$0);
+      this.c = true;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      if ($$0 < this.H_()) {
+         $$0 = this.H_();
       }
 
-      void doWork(dhf var1, akn var2, dhb var3, List<dha> var4, dha var5);
+      if ($$1 >= this.aj()) {
+         $$1 = this.aj() - 1;
+      }
+
+      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
+         if (!this.b(this.e($$2)).c()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean i() {
+      return this.c;
+   }
+
+   public abstract dhk j();
+
+   public dhk k() {
+      dhk $$0 = this.j();
+      dkg $$1 = this.x();
+      if ($$1 != null) {
+         dhk $$2 = $$1.a();
+         return $$2.b($$0) ? $$2 : $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public abstract void d(gw var1);
+
+   public void e(gw $$0) {
+      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
+   }
+
+   public ShortList[] n() {
+      return this.b;
+   }
+
+   public void a(short $$0, int $$1) {
+      a(this.n(), $$1).add($$0);
+   }
+
+   public void a(qx $$0) {
+      this.j.put(dcv.c($$0), $$0);
+   }
+
+   @Nullable
+   public qx f(gw $$0) {
+      return this.j.get($$0);
+   }
+
+   @Nullable
+   public abstract qx g(gw var1);
+
+   @Override
+   public final void a(BiConsumer<gw, dfj> $$0) {
+      this.a($$0x -> $$0x.h() != 0, $$0);
+   }
+
+   public void a(Predicate<dfj> $$0, BiConsumer<gw, dfj> $$1) {
+      gw.a $$2 = new gw.a();
+
+      for (int $$3 = this.al(); $$3 < this.am(); $$3++) {
+         dhr $$4 = this.b(this.f($$3));
+         if ($$4.a($$0)) {
+            gw $$5 = hz.a(this.d, $$3).j();
+
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               for (int $$7 = 0; $$7 < 16; $$7++) {
+                  for (int $$8 = 0; $$8 < 16; $$8++) {
+                     dfj $$9 = $$4.a($$8, $$6, $$7);
+                     if ($$0.test($$9)) {
+                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public abstract ejc<csv> o();
+
+   public abstract ejc<eal> p();
+
+   public abstract dhf.a q();
+
+   public did r() {
+      return this.f;
+   }
+
+   public boolean s() {
+      return this.g != null;
+   }
+
+   @Nullable
+   public dlv t() {
+      return this.g;
+   }
+
+   public void a(dlv $$0) {
+      this.g = $$0;
+   }
+
+   public long u() {
+      return this.q;
+   }
+
+   public void a(long $$0) {
+      this.q += $$0;
+   }
+
+   public void b(long $$0) {
+      this.q = $$0;
+   }
+
+   public static ShortList a(ShortList[] $$0, int $$1) {
+      if ($$0[$$1] == null) {
+         $$0[$$1] = new ShortArrayList();
+      }
+
+      return $$0[$$1];
+   }
+
+   public boolean v() {
+      return this.p;
+   }
+
+   public void b(boolean $$0) {
+      this.p = $$0;
+      this.a(true);
+   }
+
+   @Override
+   public int H_() {
+      return this.l.H_();
+   }
+
+   @Override
+   public int I_() {
+      return this.l.I_();
+   }
+
+   public dkw a(Function<dhf, dkw> $$0) {
+      if (this.e == null) {
+         this.e = $$0.apply(this);
+      }
+
+      return this.e;
+   }
+
+   @Deprecated
+   public cqu a(Supplier<cqu> $$0) {
+      if (this.r == null) {
+         this.r = $$0.get();
+      }
+
+      return this.r;
+   }
+
+   @Override
+   public hg<cqt> getNoiseBiome(int $$0, int $$1, int $$2) {
+      try {
+         int $$3 = hs.a(this.H_());
+         int $$4 = $$3 + hs.a(this.I_()) - 1;
+         int $$5 = arx.a($$1, $$3, $$4);
+         int $$6 = this.e(hs.c($$5));
+         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
+      } catch (Throwable var8) {
+         o $$8 = o.a(var8, "Getting biome");
+         p $$9 = $$8.a("Biome being got");
+         $$9.a("Location", () -> p.a(this, $$0, $$1, $$2));
+         throw new y($$8);
+      }
+   }
+
+   public void a(cqw $$0, crc.f $$1) {
+      cpc $$2 = this.f();
+      int $$3 = hs.a($$2.d());
+      int $$4 = hs.a($$2.e());
+      cpx $$5 = this.z();
+
+      for (int $$6 = $$5.al(); $$6 < $$5.am(); $$6++) {
+         dhr $$7 = this.b(this.f($$6));
+         int $$8 = hs.d($$6);
+         $$7.a($$0, $$1, $$3, $$8, $$4);
+      }
+   }
+
+   public boolean w() {
+      return !this.h().isEmpty();
+   }
+
+   @Nullable
+   public dkg x() {
+      return null;
+   }
+
+   public boolean y() {
+      return this.x() != null;
+   }
+
+   public cpx z() {
+      return this;
+   }
+
+   public void A() {
+      this.i.a(this);
+   }
+
+   @Override
+   public dzw B() {
+      return this.i;
+   }
+
+   public static record a(eja<csv> a, eja<eal> b) {
    }
 }

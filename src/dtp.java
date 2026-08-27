@@ -1,23 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtp extends dtk {
-   public static final Codec<dtp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bfd.b(dtk.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dtp::new)
+public abstract class dtp {
+   private static final Codec<Either<dlm, dtp>> a = Codec.either(dlm.a, jd.O.q().dispatch(dtp::a, dtq::codec));
+   public static final Codec<dtp> c = a.xmap(
+      $$0 -> (dtp)$$0.map(dto::a, $$0x -> $$0x), $$0 -> $$0.a() == dtq.a ? Either.left(((dto)$$0).b()) : Either.right($$0)
    );
-   private final bfd<dtk> b;
 
-   public dtp(bfd<dtk> $$0) {
-      this.b = $$0;
-   }
+   public abstract int a(asc var1, dlp var2);
 
-   @Override
-   public int a(arx $$0, dlk $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public dtl<?> a() {
-      return dtl.f;
-   }
+   public abstract dtq<?> a();
 }

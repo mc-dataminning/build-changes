@@ -1,30 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bnk {
-   public static bkt<cbc> a(bsc<List<hf>> $$0, float $$1, int $$2, int $$3, bsc<hf> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return boe.a(
-         (Function<boe.b<cbc>, ? extends App<boe.c<cbc>, boh<cbc>>>)($$6 -> $$6.group($$6.a(bsc.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<hf> $$11 = $$6.b($$6x);
-                     hf $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        hf $$13 = $$11.get($$8.y_().a($$11.size()));
-                        if ($$13 != null && $$8.ac() == $$13.a() && $$12.b().a($$9.di(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new bsf($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
+   public static bky<bjg> a(Function<bjg, Optional<bmk>> $$0, Predicate<bjg> $$1, int $$2, int $$3, float $$4) {
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$5 -> $$5.group($$5.a(bsh.n), $$5.a(bsh.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bmk> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bmk $$11 = $$10.get();
+                        if ($$8.dj().a((hq)$$11.a(), (double)$$3)) {
                            return false;
+                        } else {
+                           bmk $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bsk($$12, $$4, $$2));
+                           return true;
                         }
+                     } else {
+                        return false;
                      }
                   }))
       );

@@ -1,44 +1,51 @@
-public record acz(int a, String b, int c, acy d) implements va<ada> {
-   private static final int e = 255;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   @Deprecated
-   public acz(int a, String b, int c, acy d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+public class acz {
+   private static final double a = 4096.0;
+   private ehn b;
+
+   public acz() {
+      this.b = ehn.b;
    }
 
-   public acz(sl $$0) {
-      this($$0.m(), $$0.d(255), $$0.readUnsignedShort(), acy.a($$0.m()));
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   public void a(ada $$0) {
-      $$0.a(this);
+   public ehn a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new ehn($$3, $$4, $$5);
+      }
    }
 
-   @Override
-   public sk c() {
-      return this.d.b();
+   public long a(ehn $$0) {
+      return a($$0.c) - a(this.b.c);
    }
 
-   public String d() {
-      return this.b;
+   public long b(ehn $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public int e() {
-      return this.c;
+   public long c(ehn $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public acy f() {
-      return this.d;
+   public ehn d(ehn $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(ehn $$0) {
+      this.b = $$0;
    }
 }

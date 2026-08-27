@@ -1,17 +1,24 @@
-public record vr(String b) implements vs {
-   public static final aeu a = new aeu("brand");
+public class vr implements vd<vn> {
+   private final int a;
 
-   public vr(sl $$0) {
-      this($$0.r());
+   public vr(int $$0) {
+      this.a = $$0;
+   }
+
+   public vr(so $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.p(this.a);
    }
 
-   @Override
-   public aeu a() {
-      return a;
+   public void a(vn $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

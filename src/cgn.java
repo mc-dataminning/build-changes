@@ -1,42 +1,58 @@
-import java.util.function.Consumer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class cgn extends civ {
-   public cgn(civ.a $$0) {
-      super($$0);
+public class cgn {
+   private final String a;
+   @Nullable
+   private dfn b;
+   private boolean c;
+   private boolean d;
+
+   public cgn(String $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public bgt a(clk $$0) {
-      hc $$1 = $$0.k();
-      if ($$1 == hc.a) {
-         return bgt.e;
+   private static boolean a(dfn $$0, @Nullable dfn $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
       } else {
-         cpq $$2 = $$0.q();
-         cli $$3 = new cli($$0);
-         gw $$4 = $$3.a();
-         cja $$5 = $$0.n();
-         ehi $$6 = ehi.c($$4);
-         ehd $$7 = bip.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof akn $$8) {
-               Consumer<bxy> $$9 = bip.a($$8, $$5, $$0.o());
-               bxy $$10 = bip.d.b($$8, $$5.v(), $$9, $$4, bjf.m, true, true);
-               if ($$10 == null) {
-                  return bgt.e;
+         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().n(), $$1.b().n()) : false;
+      }
+   }
+
+   public boolean a(cjf $$0, ht<csv> $$1, dfn $$2) {
+      if (a($$2, this.b, this.d)) {
+         return this.c;
+      } else {
+         this.b = $$2;
+         this.d = false;
+         qx $$3 = $$0.v();
+         if ($$3 != null && $$3.b(this.a, 9)) {
+            rd $$4 = $$3.c(this.a, 8);
+
+            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+               String $$6 = $$4.j($$5);
+
+               try {
+                  fg.b $$7 = fg.a($$1.p(), new StringReader($$6));
+                  this.d = this.d | $$7.a();
+                  if ($$7.test($$2)) {
+                     this.c = true;
+                     return true;
+                  }
+               } catch (CommandSyntaxException var9) {
                }
-
-               float $$11 = (float)ars.d((ars.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dp(), $$10.dr(), $$10.dv(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dp(), $$10.dr(), $$10.dv(), aoz.ao, apa.e, 0.75F, 0.8F);
-               $$10.a(djo.t, $$0.o());
             }
-
-            $$5.h(1);
-            return bgt.a($$2.B);
-         } else {
-            return bgt.e;
          }
+
+         this.c = false;
+         return false;
       }
    }
 }

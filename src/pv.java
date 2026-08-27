@@ -1,7 +1,9 @@
-public interface pv {
-   void a(pu var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   void b(pu var1);
-
-   void c(pu var1);
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface pv {
 }

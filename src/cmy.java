@@ -1,52 +1,95 @@
-public class cmy extends clw {
-   public cmy(clt $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   public boolean a(ceu $$0, cpq $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cja $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
-                  return false;
-               }
+public class cmy implements cmx {
+   final cmg a;
+   final cmg b;
+   final cmg c;
+   final cjf d;
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cjd.ux)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cjd.nH)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cja a(ceu $$0, hu $$1) {
-      cja $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cjd.ux)) {
-         return cja.b;
-      } else {
-         cja $$3 = new cja(cjd.uw, 8);
-         ckz.a($$3, ckz.d($$2));
-         ckz.a($$3, ckz.b($$2));
-         return $$3;
-      }
+   public cmy(cmg $$0, cmg $$1, cmg $$2, cjf $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public boolean a(bgr $$0, cpv $$1) {
+      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
    }
 
    @Override
-   public cmh<?> ai_() {
-      return cmh.j;
+   public cjf a(bgr $$0, hu $$1) {
+      cjf $$2 = this.d.p();
+      qx $$3 = $$0.a(1).v();
+      if ($$3 != null) {
+         $$2.c($$3.h());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cjf a(hu $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean a(cjf $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public boolean b(cjf $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public boolean c(cjf $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public cmm<?> an_() {
+      return cmm.u;
+   }
+
+   @Override
+   public boolean i() {
+      return Stream.of(this.a, this.b, this.c).anyMatch(cmg::c);
+   }
+
+   public static class a implements cmm<cmy> {
+      private static final Codec<cmy> x = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cmg.b.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  cmg.b.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  cmg.b.fieldOf("addition").forGetter($$0x -> $$0x.c),
+                  cma.a.fieldOf("result").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, cmy::new)
+      );
+
+      @Override
+      public Codec<cmy> a() {
+         return x;
+      }
+
+      public cmy b(so $$0) {
+         cmg $$1 = cmg.b($$0);
+         cmg $$2 = cmg.b($$0);
+         cmg $$3 = cmg.b($$0);
+         cjf $$4 = $$0.q();
+         return new cmy($$1, $$2, $$3, $$4);
+      }
+
+      public void a(so $$0, cmy $$1) {
+         $$1.a.a($$0);
+         $$1.b.a($$0);
+         $$1.c.a($$0);
+         $$0.a($$1.d);
+      }
    }
 }

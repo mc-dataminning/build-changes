@@ -1,23 +1,24 @@
-public class ftx extends fui<buy, ffn<buy>> {
-   private static final aeu a = new aeu("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ftx(ftc.a $$0) {
-      super($$0, new ffn<>($$0.a(fhw.ap)), 0.7F);
-      this.a(new fxb(this));
-      this.a(new fxc(this, $$0.c()));
+public final class ftx extends fse<bws, ffo<bws>> {
+   private static final Map<bwz, aex> a = ac.a(Maps.newEnumMap(bwz.class), $$0 -> {
+      $$0.put(bwz.a, new aex("textures/entity/horse/horse_white.png"));
+      $$0.put(bwz.b, new aex("textures/entity/horse/horse_creamy.png"));
+      $$0.put(bwz.c, new aex("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(bwz.d, new aex("textures/entity/horse/horse_brown.png"));
+      $$0.put(bwz.e, new aex("textures/entity/horse/horse_black.png"));
+      $$0.put(bwz.f, new aex("textures/entity/horse/horse_gray.png"));
+      $$0.put(bwz.g, new aex("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public ftx(fth.a $$0) {
+      super($$0, new ffo<>($$0.a(fib.aj)), 1.1F);
+      this.a(new fxe(this));
+      this.a(new fxd(this, $$0.f()));
    }
 
-   public aeu a(buy $$0) {
-      return a;
-   }
-
-   protected void a(buy $$0, elk $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
-      }
+   public aex a(bws $$0) {
+      return a.get($$0.t());
    }
 }

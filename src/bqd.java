@@ -1,119 +1,86 @@
-import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bqd extends bpw {
-   public final bwo a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class bqd extends bqy {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public bqd(bwo $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bpw.a.a));
+   public bqd(bjp $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (!this.a.fO() && !this.a.gO()) {
-         List<bil> $$0 = this.a.dK().a(this.a, this.a.cG().c(9.0, 4.0, 9.0), $$0x -> {
-            bip<?> $$1x = $$0x.ag();
-            return $$1x == bip.aj || $$1x == bip.ba;
-         });
-         bwo $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bil $$3 : $$0) {
-            bwo $$4 = (bwo)$$3;
-            if ($$4.gO() && !$$4.gN()) {
-               double $$5 = this.a.f($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
+   protected ehn h() {
+      float $$0 = this.b.dL().z.i();
+      if (this.b.dL().z.i() < 0.3F) {
+         return this.k();
+      } else {
+         ehn $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
             }
-         }
-
-         if ($$1 == null) {
-            for (bil $$6 : $$0) {
-               bwo $$7 = (bwo)$$6;
-               if ($$7.fO() && !$$7.gN()) {
-                  double $$8 = this.a.f($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fO() && !this.a($$1, 1)) {
-            return false;
          } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.gO() && this.a.gP().bv() && this.a(this.a, 0)) {
-         double $$0 = this.a.f(this.a.gP());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
 
-         if (this.d > 0) {
-            this.d--;
-         }
+         return $$1 == null ? this.k() : $$1;
+      }
+   }
 
-         return true;
+   @Nullable
+   private ehn k() {
+      return btz.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private ehn l() {
+      akr $$0 = (akr)this.b.dL();
+      List<cbh> $$1 = $$0.a(biu.bf, this.b.cH().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return false;
+         cbh $$2 = $$1.get(this.b.dL().z.a($$1.size()));
+         ehn $$3 = $$2.dj();
+         return btz.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void d() {
-      this.a.gM();
-      this.b = 2.1;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.gO()) {
-         if (!(this.a.fP() instanceof byc)) {
-            bwo $$0 = this.a.gP();
-            double $$1 = (double)this.a.e($$0);
-            float $$2 = 2.0F;
-            ehi $$3 = new ehi($$0.dp() - this.a.dp(), $$0.dr() - this.a.dr(), $$0.dv() - this.a.dv()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.H().a(this.a.dp() + $$3.c, this.a.dr() + $$3.d, this.a.dv() + $$3.e, this.b);
-         }
-      }
-   }
-
-   private boolean a(bwo $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gO()) {
-         return $$0.gP().fO() ? true : this.a($$0.gP(), ++$$1);
+   @Nullable
+   private ehn m() {
+      hz $$0 = this.n();
+      if ($$0 == null) {
+         return null;
       } else {
-         return false;
+         gw $$1 = this.a($$0);
+         return $$1 == null ? null : btz.a(this.b, 10, 7, ehn.c($$1));
       }
+   }
+
+   @Nullable
+   private hz n() {
+      akr $$0 = (akr)this.b.dL();
+      List<hz> $$1 = hz.a(hz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private gw a(hz $$0) {
+      akr $$1 = (akr)this.b.dL();
+      buf $$2 = $$1.w();
+      List<gw> $$3 = $$2.c($$0x -> true, $$0.q(), 8, buf.b.b).map(bug::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cbh $$0) {
+      return $$0.a(this.b.dL().V());
    }
 }

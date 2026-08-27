@@ -1,18 +1,24 @@
-public record aal() implements va<ws> {
-   public aal(sl $$0) {
-      this();
+public class aal implements vd<ww> {
+   private final tl a;
+
+   public aal(tl $$0) {
+      this.a = $$0;
+   }
+
+   public aal(so $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public sk c() {
-      return sk.e;
+   public tl a() {
+      return this.a;
    }
 }

@@ -1,31 +1,60 @@
 import javax.annotation.Nullable;
 
-public abstract class csd extends csq implements cve {
-   protected csd(dfd.d $$0) {
+public class csd extends csv implements czw {
+   public static final dga a = dfz.C;
+
+   protected csd(dfi.d $$0) {
       super($$0);
+      this.k(this.n().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public cyv b_(dfe $$0) {
-      return cyv.a;
+   public boolean c(dfj $$0, cpb $$1, gw $$2) {
+      return true;
    }
 
    @Override
-   public boolean a(dfe $$0, cpq $$1, gw $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dcq $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   public cza b_(dfj $$0) {
+      return cza.a;
+   }
+
+   @Override
+   public float b(dfj $$0, cpb $$1, gw $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(a)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eam c_(dfj $$0) {
+      return $$0.c(a) ? ean.c.a(false) : super.c_($$0);
    }
 
    @Nullable
    @Override
-   public bgw b(dfe $$0, cpq $$1, gw $$2) {
-      dcq $$3 = $$1.c_($$2);
-      return $$3 instanceof bgw ? (bgw)$$3 : null;
+   public dfj a(cln $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().b_($$0.a()).a() == ean.c));
    }
 
-   @Nullable
-   protected static <E extends dcq, A extends dcq> dcr<A> a(dcs<A> $$0, dcs<E> $$1, dcr<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public cjf a(@Nullable cbu $$0, cpw $$1, gw $$2, dfj $$3) {
+      return $$0 != null && $$0.f() ? czw.super.a($$0, $$1, $$2, $$3) : cjf.b;
+   }
+
+   @Override
+   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return $$0 != null && $$0.f() ? czw.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

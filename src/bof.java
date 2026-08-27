@@ -1,35 +1,15 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
 
-public final class bof<F extends K1, Value> {
-   private final bkb<?> a;
-   private final bsc<Value> b;
-   private final App<F, Value> c;
-
-   public bof(bkb<?> $$0, bsc<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public App<F, Value> a() {
-      return this.c;
-   }
-
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+public class bof {
+   public static bky<bjg> a() {
+      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$0 -> $$0.a((bom<bjg>)(($$0x, $$1, $$2) -> {
+            if (!$$1.dN().c(cdf.e) && $$1.fC()) {
+               $$1.fD();
+               return true;
+            } else {
+               return false;
+            }
+         }))));
    }
 }

@@ -1,22 +1,96 @@
-public class faa extends ezd<cfd> {
-   private static final aeu x = new aeu("textures/gui/container/hopper.png");
+public class faa {
+   private static final aex a = new aex("minecraft", "alt");
+   private static final uh b = uh.a.a(a);
+   private static final faa c = new faa();
+   private final asc d = asc.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public faa(cfd $$0, cbo $$1, ti $$2) {
-      super($$0, $$1, $$2);
-      this.k = 133;
-      this.o = this.k - 94;
+   private faa() {
    }
 
-   @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public static faa a() {
+      return c;
    }
 
-   @Override
-   protected void a(esa $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public tp a(esd $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ac.a(this.e, this.d));
+      }
+
+      return $$0.b().a(tl.b($$2.toString()).c(b), $$1, uh.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

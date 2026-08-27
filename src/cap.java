@@ -2,14 +2,17 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cap {
-   public static bkt<caf> a() {
-      return boe.a((Function<boe.b<caf>, ? extends App<boe.c<caf>, boh<caf>>>)($$0 -> $$0.group($$0.c(bsc.ac)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if (!$$1.eS().b() && !$$1.eS().a(cjd.uy)) {
-                  cag.a($$1, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bky<bjg> a() {
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$0 -> $$0.group($$0.b(bsh.o), $$0.a(bsh.ag))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bjg $$6 = $$0.b($$1);
+                     if ($$6.ah() == biu.W && $$6.ev()) {
+                        $$2.a(true, (long)cal.d.a($$4.dL().z));
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

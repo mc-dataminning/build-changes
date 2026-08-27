@@ -1,84 +1,120 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cyc extends csq {
-   private static final hc[] i = hc.values();
-   public static final dfv a = dfu.L;
-   public static final dfv b = dfu.M;
-   public static final dfv c = dfu.N;
-   public static final dfv d = dfu.O;
-   public static final dfv e = dfu.J;
-   public static final dfv f = dfu.K;
-   public static final Map<hc, dfv> g = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(hc.class), $$0 -> {
-      $$0.put(hc.c, a);
-      $$0.put(hc.f, b);
-      $$0.put(hc.d, c);
-      $$0.put(hc.e, d);
-      $$0.put(hc.b, e);
-      $$0.put(hc.a, f);
-   }));
-   protected final eib[] h;
+public class cyc extends csv {
+   public static final dgh<dgk> a = dfz.bf;
+   public static final dga b = dfz.w;
+   public static final dgj c = dfz.aR;
+   public static final int d = 3;
 
-   protected cyc(float $$0, dfd.d $$1) {
-      super($$1);
-      this.h = this.a($$0);
+   public cyc(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, dgk.a).a(c, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
    }
 
-   private eib[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      eib $$3 = csq.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      eib[] $$4 = new eib[i.length];
-
-      for (int $$5 = 0; $$5 < i.length; $$5++) {
-         hc $$6 = i[$$5];
-         $$4[$$5] = ehy.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   private dfj b(cpw $$0, gw $$1, dfj $$2) {
+      dgk $$3 = $$0.a_($$1.c()).A();
+      if ($$3.e()) {
+         return $$2.a(a, $$3);
+      } else {
+         dgk $$4 = $$0.a_($$1.d()).A();
+         dgk $$5 = $$4.e() ? dgk.a : $$4;
+         return $$2.a(a, $$5);
       }
-
-      eib[] $$7 = new eib[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         eib $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < i.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ehy.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
    }
 
    @Override
-   public boolean c(dfe $$0, cow $$1, gw $$2) {
-      return false;
+   public dfj a(cln $$0) {
+      return this.b($$0.q(), $$0.a(), this.n());
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return this.h[this.h($$0)];
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      boolean $$6 = $$1.o() == hc.a.b;
+      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected int h(dfe $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < i.length; $$2++) {
-         if ($$0.c(g.get(i[$$2]))) {
-            $$1 |= 1 << $$2;
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
+      boolean $$6 = $$1.B($$2);
+      if ($$6 != $$0.c(b)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
          }
+
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable biq $$0, dfj $$1, cpv $$2, gw $$3) {
+      if ($$1.c(a).e() || $$2.a_($$3.c()).i()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, djt.H, $$3);
+      }
+   }
+
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      cjf $$6 = $$3.b($$4);
+      if ($$6.a(aqb.aG) && $$5.b() == hc.b) {
+         return bgy.d;
+      } else if ($$1.B) {
+         return bgy.a;
+      } else {
+         $$0 = $$0.a(c);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(apo.ag);
+         return bgy.b;
+      }
+   }
+
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(apo.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpv $$1, gw $$2, int $$3, int $$4) {
+      dgk $$5 = $$0.c(a);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(c);
+         $$7 = b($$6);
+         $$1.a(ix.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
       }
 
-      return $$1;
+      hg<apd> $$10;
+      if ($$5.d()) {
+         aex $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
+
+         $$10 = hg.a(apd.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, apf.c, 3.0F, $$7, $$1.z.g());
+      return true;
+   }
+
+   @Nullable
+   private aex a(cpv $$0, gw $$1) {
+      return $$0.c_($$1.c()) instanceof def $$2 ? $$2.f() : null;
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b, c);
    }
 }

@@ -1,9 +1,44 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.Collection;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ps {
+public class ps {
+   public static final String a = "defaultBatch";
+   private final String b;
+   private final Collection<qo> c;
+   @Nullable
+   private final Consumer<akr> d;
+   @Nullable
+   private final Consumer<akr> e;
+
+   public ps(String $$0, Collection<qo> $$1, @Nullable Consumer<akr> $$2, @Nullable Consumer<akr> $$3) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+      }
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Collection<qo> b() {
+      return this.c;
+   }
+
+   public void a(akr $$0) {
+      if (this.d != null) {
+         this.d.accept($$0);
+      }
+   }
+
+   public void b(akr $$0) {
+      if (this.e != null) {
+         this.e.accept($$0);
+      }
+   }
 }

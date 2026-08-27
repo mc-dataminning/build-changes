@@ -3,7 +3,7 @@ import com.google.common.collect.HashBiMap;
 import javax.annotation.Nullable;
 
 public class al {
-   private static final BiMap<aeu, ao<?>> aa = HashBiMap.create();
+   private static final BiMap<aex, ao<?>> aa = HashBiMap.create();
    public static final by a = a("impossible", new by());
    public static final ce b = a("player_killed_entity", new ce());
    public static final ce c = a("entity_killed_player", new ce());
@@ -58,7 +58,7 @@ public class al {
    public static final ct Z = a("recipe_crafted", new ct());
 
    private static <T extends ao<?>> T a(String $$0, T $$1) {
-      aeu $$2 = new aeu($$0);
+      aex $$2 = new aex($$0);
       if (aa.putIfAbsent($$2, $$1) != null) {
          throw new IllegalArgumentException("Duplicate criterion id " + $$2);
       } else {
@@ -67,13 +67,13 @@ public class al {
    }
 
    @Nullable
-   public static <T extends ap> ao<T> a(aeu $$0) {
+   public static <T extends ap> ao<T> a(aex $$0) {
       return (ao<T>)aa.get($$0);
    }
 
    @Nullable
-   public static aeu a(ao<?> $$0) {
-      return (aeu)aa.inverse().get($$0);
+   public static aex a(ao<?> $$0) {
+      return (aex)aa.inverse().get($$0);
    }
 
    public static Iterable<? extends ao<?>> a() {

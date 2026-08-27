@@ -1,29 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class fzi implements fzd {
-   public static final Codec<fzi> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, fzi::new)
-   );
-   private final String c;
-   private final String d;
+public interface fzi {
+   aeq a = new aeq("textures", ".png");
 
-   public fzi(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   void a(anu var1, fzi.a var2);
+
+   fzk a();
+
+   public interface a {
+      default void a(aex $$0, ans $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(aex var1, fzi.b var2);
+
+      void a(Predicate<aex> var1);
    }
 
-   @Override
-   public void a(anp $$0, fzd.a $$1) {
-      aen $$2 = new aen("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         aeu $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public fzf a() {
-      return fzg.b;
+   public interface b extends Function<fzh, fyy> {
+      default void a() {
+      }
    }
 }

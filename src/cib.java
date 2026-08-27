@@ -1,44 +1,62 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface cib extends cku {
-   biq g();
+public class cib extends cja {
+   public static final String a = "StoredEnchantments";
 
-   default aoy aj_() {
-      return aoz.af;
+   public cib(cja.a $$0) {
+      super($$0);
    }
 
-   default bgu<cja> a(civ $$0, cpq $$1, cbp $$2, bgs $$3) {
-      cja $$4 = $$2.b($$3);
-      biq $$5 = bjd.h($$4);
-      cja $$6 = $$2.c($$5);
-      if ((!cnl.d($$6) || $$2.f()) && !cja.a($$4, $$6)) {
-         if (!$$1.r_()) {
-            $$2.b(apj.c.b($$0));
-         }
-
-         cja $$7 = $$6.b() ? $$4 : $$6.c();
-         cja $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bgu.a($$7, $$1.r_());
-      } else {
-         return bgu.d($$4);
-      }
+   @Override
+   public boolean i(cjf $$0) {
+      return true;
    }
 
-   @Nullable
-   static cib c_(cja $$0) {
-      civ $$3 = $$0.d();
-      if ($$3 instanceof cib) {
-         return (cib)$$3;
-      } else {
-         if ($$0.d() instanceof cgt $$2) {
-            csq var6 = $$2.e();
-            if (var6 instanceof cib) {
-               return (cib)var6;
+   @Override
+   public boolean d_(cjf $$0) {
+      return false;
+   }
+
+   public static rd d(cjf $$0) {
+      qx $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new rd();
+   }
+
+   @Override
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      cjf.a($$2, d($$0));
+   }
+
+   public static void a(cjf $$0, cnr $$1) {
+      rd $$2 = d($$0);
+      boolean $$3 = true;
+      aex $$4 = cnq.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         qx $$6 = $$2.a($$5);
+         aex $$7 = cnq.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cnq.a($$6) < $$1.b) {
+               cnq.a($$6, $$1.b);
             }
-         }
 
-         return null;
+            $$3 = false;
+            break;
+         }
       }
+
+      if ($$3) {
+         $$2.add(cnq.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
+   }
+
+   public static cjf a(cnr $$0) {
+      cjf $$1 = new cjf(cji.tC);
+      a($$1, $$0);
+      return $$1;
    }
 }

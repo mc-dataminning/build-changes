@@ -1,39 +1,89 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class crh extends csd {
-   private final cho a;
+public class crh {
+   public static final Codec<crh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(crh.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aev.c(je.ap)).apply($$0, crh::new)
+   );
+   public static final Codec<hg<crh>> b = aet.a(je.aG, a);
+   private final crh.a c;
+   private final crc.c<hg<cqt>> d;
 
-   protected crh(cho $$0, dfd.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public crh(crh.a $$0, hh<cqt> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   public boolean a(dfe $$0) {
-      return true;
+   public crc.c<hg<cqt>> a() {
+      return this.d;
    }
 
-   @Override
-   public dcq a(gw $$0, dfe $$1) {
-      return new dcg($$0, $$1, this.a);
+   public static Map<crh.a, crc.c<aew<cqt>>> b() {
+      return crh.a.f.values().stream().collect(Collectors.toMap($$0 -> (crh.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dcs.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.A()) {
-         $$0.a($$1, dcs.t).ifPresent($$1x -> $$1x.a($$4.y()));
+   public static record a(aex d, crh.a.a e) {
+      public static final crh.a a = new crh.a(
+         new aex("nether"),
+         new crh.a.a() {
+            @Override
+            public <T> crc.c<T> apply(Function<aew<cqt>, T> $$0) {
+               return new crc.c<>(
+                  List.of(
+                     Pair.of(crc.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.ac)),
+                     Pair.of(crc.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.af)),
+                     Pair.of(crc.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.ae)),
+                     Pair.of(crc.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cra.ad)),
+                     Pair.of(crc.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cra.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final crh.a b = new crh.a(new aex("overworld"), new crh.a.a() {
+         @Override
+         public <T> crc.c<T> apply(Function<aew<cqt>, T> $$0) {
+            return crh.a.a($$0);
+         }
+      });
+      static final Map<aex, crh.a> f = Stream.of(a, b).collect(Collectors.toMap(crh.a::b, $$0 -> (crh.a)$$0));
+      public static final Codec<crh.a> c = aex.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> crc.c<T> a(Function<aew<cqt>, T> $$0) {
+         Builder<Pair<crc.d, T>> $$1 = ImmutableList.builder();
+         new crj().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new crc.c<>($$1.build());
       }
-   }
 
-   @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      dcq $$3 = $$0.c_($$1);
-      return $$3 instanceof dcg ? ((dcg)$$3).f() : super.a($$0, $$1, $$2);
-   }
+      public Stream<aew<cqt>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<aew<cqt>>map(Pair::getSecond).distinct();
+      }
 
-   public cho a() {
-      return this.a;
+      public aex b() {
+         return this.d;
+      }
+
+      public crh.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> crc.c<T> apply(Function<aew<cqt>, T> var1);
+      }
    }
 }

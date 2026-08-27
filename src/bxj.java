@@ -1,43 +1,57 @@
 import javax.annotation.Nullable;
 
-public class bxj extends bxe {
-   @Nullable
-   private ehi b;
+public abstract class bxj implements bxr {
+   protected final bxh a;
 
-   public bxj(bxc $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = this.a.di();
-      }
+   public bxj(bxh $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return true;
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(bxg $$0, gw $$1, bho $$2, @Nullable cbu $$3) {
    }
 
    @Override
    public void d() {
-      this.b = null;
+   }
+
+   @Override
+   public void e() {
    }
 
    @Override
    public float f() {
-      return 1.0F;
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public ehi g() {
-      return this.b;
+   public ehn g() {
+      return null;
    }
 
    @Override
-   public bxs<bxj> i() {
-      return bxs.k;
+   public float a(bho $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.do().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

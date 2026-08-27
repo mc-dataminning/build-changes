@@ -1,72 +1,80 @@
-import java.util.function.Predicate;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public class coz {
+public class coz<T> extends AbstractIterator<T> {
    private final ehi a;
-   private final ehi b;
-   private final coz.a c;
-   private final coz.b d;
-   private final ehn e;
+   private final ehs b;
+   private final gz c;
+   private final gw.a d;
+   private final eig e;
+   private final cpf f;
+   private final boolean g;
+   @Nullable
+   private cpb h;
+   private long i;
+   private final BiFunction<gw.a, eig, T> j;
 
-   public coz(ehi $$0, ehi $$1, coz.a $$2, coz.b $$3, bil $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = ehn.a($$4);
+   public coz(cpf $$0, @Nullable biq $$1, ehi $$2, boolean $$3, BiFunction<gw.a, eig, T> $$4) {
+      this.b = $$1 == null ? ehs.a() : ehs.a($$1);
+      this.d = new gw.a();
+      this.e = eid.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = arx.a($$2.a - 1.0E-7) - 1;
+      int $$6 = arx.a($$2.d + 1.0E-7) + 1;
+      int $$7 = arx.a($$2.b - 1.0E-7) - 1;
+      int $$8 = arx.a($$2.e + 1.0E-7) + 1;
+      int $$9 = arx.a($$2.c - 1.0E-7) - 1;
+      int $$10 = arx.a($$2.f + 1.0E-7) + 1;
+      this.c = new gz($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public ehi a() {
-      return this.b;
-   }
-
-   public ehi b() {
-      return this.a;
-   }
-
-   public eib a(dfe $$0, cow $$1, gw $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
-   }
-
-   public eib a(eah $$0, cow $$1, gw $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : ehy.a();
-   }
-
-   public static enum a implements coz.c {
-      a(dfd.a::b),
-      b(dfd.a::a),
-      c(dfd.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(apo.aP) ? ehy.b() : ehy.a());
-
-      private final coz.c e;
-
-      private a(coz.c $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public eib get(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
+   @Nullable
+   private cpb a(int $$0, int $$1) {
+      int $$2 = hz.a($$0);
+      int $$3 = hz.a($$1);
+      long $$4 = cpc.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
+      } else {
+         cpb $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(eah::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(apt.a));
-
-      private final Predicate<eah> e;
-
-      private b(Predicate<eah> $$0) {
-         this.e = $$0;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cpb $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dfj $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(csw.bQ))) {
+                  eig $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == eid.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     eig $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && eid.c($$7, this.e, ehr.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      public boolean a(eah $$0) {
-         return this.e.test($$0);
-      }
-   }
-
-   public interface c {
-      eib get(dfe var1, cow var2, gw var3, ehn var4);
+      return (T)this.endOfData();
    }
 }

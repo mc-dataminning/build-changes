@@ -1,50 +1,160 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ckk extends civ {
-   public static final String a = "effects";
-   public static final int b = 160;
+public class ckk extends cja {
+   private static final Map<biu<? extends bji>, ckk> a = Maps.newIdentityHashMap();
+   private final int b;
+   private final int c;
+   private final biu<?> d;
 
-   public ckk(civ.a $$0) {
-      super($$0);
+   public ckk(biu<? extends bji> $$0, int $$1, int $$2, cja.a $$3) {
+      super($$3);
+      this.d = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      a.put($$0, this);
    }
 
-   public static void a(cja $$0, List<dat.a> $$1) {
-      qu $$2 = $$0.w();
-      dat.a.b.encodeStart(rf.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
+   @Override
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      if (!($$1 instanceof akr)) {
+         return bgy.a;
+      } else {
+         cjf $$2 = $$0.n();
+         gw $$3 = $$0.a();
+         hc $$4 = $$0.k();
+         dfj $$5 = $$1.a_($$3);
+         if ($$5.a(csw.ct)) {
+            dcv $$6 = $$1.c_($$3);
+            if ($$6 instanceof deh $$7) {
+               biu<?> $$8 = this.a($$2.v());
+               $$7.a($$8, $$1.D_());
+               $$6.e();
+               $$1.a($$3, $$5, $$5, 3);
+               $$1.a($$0.o(), djt.c, $$3);
+               $$2.h(1);
+               return bgy.b;
+            }
+         }
 
-   public static void b(cja $$0, List<dat.a> $$1) {
-      qu $$2 = $$0.w();
-      List<dat.a> $$3 = new ArrayList<>();
-      a($$0, $$3::add);
-      $$3.addAll($$1);
-      dat.a.b.encodeStart(rf.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
+         gw $$9;
+         if ($$5.k($$1, $$3).c()) {
+            $$9 = $$3;
+         } else {
+            $$9 = $$3.a($$4);
+         }
 
-   private static void a(cja $$0, Consumer<dat.a> $$1) {
-      qu $$2 = $$0.v();
-      if ($$2 != null && $$2.b("effects", 9)) {
-         dat.a.b.parse(rf.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+         biu<?> $$11 = this.a($$2.v());
+         if ($$11.a((akr)$$1, $$2, $$0.o(), $$9, bjk.m, true, !Objects.equals($$3, $$9) && $$4 == hc.b) != null) {
+            $$2.h(1);
+            $$1.a($$0.o(), djt.t, $$3);
+         }
+
+         return bgy.b;
       }
    }
 
    @Override
-   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bhy> $$4 = new ArrayList<>();
-         a($$0, $$1x -> $$4.add($$1x.a()));
-         ckz.a($$4, $$2, 1.0F);
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      cjf $$3 = $$1.b($$2);
+      ehj $$4 = a($$0, $$1, cpe.b.b);
+      if ($$4.c() != ehl.a.b) {
+         return bgz.c($$3);
+      } else if (!($$0 instanceof akr)) {
+         return bgz.a($$3);
+      } else {
+         gw $$6 = $$4.a();
+         if (!($$0.a_($$6).b() instanceof cxi)) {
+            return bgz.c($$3);
+         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
+            biu<?> $$7 = this.a($$3.v());
+            biq $$8 = $$7.a((akr)$$0, $$3, $$1, $$6, bjk.m, false, false);
+            if ($$8 == null) {
+               return bgz.c($$3);
+            } else {
+               if (!$$1.fS().d) {
+                  $$3.h(1);
+               }
+
+               $$1.b(apo.c.b(this));
+               $$0.a($$1, djt.t, $$8.dj());
+               return bgz.b($$3);
+            }
+         } else {
+            return bgz.d($$3);
+         }
       }
    }
 
+   public boolean a(@Nullable qx $$0, biu<?> $$1) {
+      return Objects.equals(this.a($$0), $$1);
+   }
+
+   public int a(int $$0) {
+      return $$0 == 0 ? this.b : this.c;
+   }
+
+   @Nullable
+   public static ckk a(@Nullable biu<?> $$0) {
+      return a.get($$0);
+   }
+
+   public static Iterable<ckk> h() {
+      return Iterables.unmodifiableIterable(a.values());
+   }
+
+   public biu<?> a(@Nullable qx $$0) {
+      if ($$0 != null && $$0.b("EntityTag", 10)) {
+         qx $$1 = $$0.p("EntityTag");
+         if ($$1.b("id", 8)) {
+            return biu.a($$1.l("id")).orElse(this.d);
+         }
+      }
+
+      return this.d;
+   }
+
    @Override
-   public cja a(cja $$0, cpq $$1, bjb $$2) {
-      cja $$3 = super.a($$0, $$1, $$2);
-      a($$3, $$1x -> $$2.b($$1x.a()));
-      return $$2 instanceof cbp && ((cbp)$$2).fR().d ? $$3 : new cja(cjd.oC);
+   public cec m() {
+      return this.d.m();
+   }
+
+   public Optional<bji> a(cbu $$0, bji $$1, biu<? extends bji> $$2, akr $$3, ehn $$4, cjf $$5) {
+      if (!this.a($$5.v(), $$2)) {
+         return Optional.empty();
+      } else {
+         bji $$6;
+         if ($$1 instanceof bil) {
+            $$6 = ((bil)$$1).a($$3, (bil)$$1);
+         } else {
+            $$6 = $$2.a((cpv)$$3);
+         }
+
+         if ($$6 == null) {
+            return Optional.empty();
+         } else {
+            $$6.a(true);
+            if (!$$6.m_()) {
+               return Optional.empty();
+            } else {
+               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
+               $$3.a_($$6);
+               if ($$5.A()) {
+                  $$6.b($$5.y());
+               }
+
+               if (!$$0.fS().d) {
+                  $$5.h(1);
+               }
+
+               return Optional.of($$6);
+            }
+         }
+      }
    }
 }

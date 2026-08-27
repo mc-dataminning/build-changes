@@ -1,13 +1,30 @@
-public record bux(aeu d) {
-   public static final bux a = a("temperate", "textures/entity/frog/temperate_frog.png");
-   public static final bux b = a("warm", "textures/entity/frog/warm_frog.png");
-   public static final bux c = a("cold", "textures/entity/frog/cold_frog.png");
-
-   private static bux a(String $$0, String $$1) {
-      return ht.a(jd.ak, $$0, new bux(new aeu($$1)));
+public class bux extends buq {
+   public bux(biu<? extends bux> $$0, cpv $$1) {
+      super($$0, $$1);
    }
 
-   public aeu a() {
-      return this.d;
+   @Override
+   public cjf b() {
+      return new cjf(cji.pT);
+   }
+
+   @Override
+   protected apd w() {
+      return ape.eB;
+   }
+
+   @Override
+   protected apd l_() {
+      return ape.eC;
+   }
+
+   @Override
+   protected apd d(bho $$0) {
+      return ape.eE;
+   }
+
+   @Override
+   protected apd ge() {
+      return ape.eD;
    }
 }

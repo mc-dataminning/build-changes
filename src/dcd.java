@@ -1,12 +1,12 @@
-import javax.annotation.Nullable;
+public class dcd extends cwh {
+   public static final eig d = csv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-public class dcd extends dbp {
-   protected dcd(dfd.d $$0) {
-      super(czs.b.b, $$0);
+   public dcd(dfi.d $$0) {
+      super($$0, hc.a, d, false);
    }
 
    @Override
-   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
-      csr.gG.a($$0, $$1, $$2, $$3, $$4);
+   protected cwi b() {
+      return (cwi)csw.oz;
    }
 }

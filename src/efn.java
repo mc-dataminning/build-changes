@@ -1,47 +1,45 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record efn(Optional<bq> b, ecl.b c) implements efk {
+public record efn(Optional<cj> b, gw c) implements efp {
+   private static final MapCodec<gw> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               arg.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(ib::u),
+               arg.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(ib::v),
+               arg.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(ib::w)
+            )
+            .apply($$0, gw::new)
+   );
    public static final Codec<efn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arb.a(bq.a, "predicate").forGetter(efn::c), ecl.b.e.fieldOf("entity").forGetter(efn::d)).apply($$0, efn::new)
+      $$0 -> $$0.group(arg.a(cj.a, "predicate").forGetter(efn::c), d.forGetter(efn::d)).apply($$0, efn::new)
    );
 
    @Override
-   public efl b() {
-      return efm.g;
+   public efq b() {
+      return efr.o;
    }
 
-   @Override
-   public Set<eet<?>> a() {
-      return ImmutableSet.of(eew.f, this.c.a());
+   public boolean a(ecq $$0) {
+      ehn $$1 = $$0.c(efb.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(ecl $$0) {
-      bil $$1 = $$0.c(this.c.a());
-      ehi $$2 = $$0.c(eew.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static efp.a a(cj.a $$0) {
+      return () -> new efn(Optional.of($$0.b()), gw.b);
    }
 
-   public static efk.a a(ecl.b $$0) {
-      return a($$0, bq.a.a());
+   public static efp.a a(cj.a $$0, gw $$1) {
+      return () -> new efn(Optional.of($$0.b()), $$1);
    }
 
-   public static efk.a a(ecl.b $$0, bq.a $$1) {
-      return () -> new efn(Optional.of($$1.b()), $$0);
-   }
-
-   public static efk.a a(ecl.b $$0, bq $$1) {
-      return () -> new efn(Optional.of($$1), $$0);
-   }
-
-   public Optional<bq> c() {
+   public Optional<cj> c() {
       return this.b;
    }
 
-   public ecl.b d() {
+   public gw d() {
       return this.c;
    }
 }

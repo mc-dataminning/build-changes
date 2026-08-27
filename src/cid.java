@@ -1,39 +1,49 @@
-public class cid extends civ {
-   public cid(civ.a $$0) {
+import java.util.List;
+
+public class cid extends cja {
+   public cid(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgt a(clk $$0) {
-      cpq $$1 = $$0.q();
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
       gw $$2 = $$0.a();
-      dfe $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!ctd.h($$3) && !cte.g($$3) && !ctf.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (cse.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, cse.a($$1, $$2));
-            $$1.a($$0.o(), djo.i, $$2);
-            $$4 = true;
-         }
+      dfj $$3 = $$1.a_($$2);
+      if (!$$3.a(csw.co) && !$$3.a(csw.F)) {
+         return bgy.e;
       } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dfu.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), djo.c, $$2);
-         $$4 = true;
-      }
+         gw $$4 = $$2.c();
+         if (!$$1.t($$4)) {
+            return bgy.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<biq> $$8 = $$1.a_(null, new ehi($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bgy.e;
+            } else {
+               if ($$1 instanceof akr) {
+                  bxg $$9 = new bxg($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), djt.t, $$4);
+                  div $$10 = ((akr)$$1).B();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bgt.a($$1.B);
-      } else {
-         return bgt.e;
+               $$0.n().h(1);
+               return bgy.a($$1.B);
+            }
+         }
       }
    }
 
-   private void a(cpq $$0, gw $$1) {
-      arx $$2 = $$0.y_();
-      $$0.a(null, $$1, aoz.hD, apa.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Override
+   public boolean i(cjf $$0) {
+      return true;
    }
 }

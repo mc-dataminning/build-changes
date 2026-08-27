@@ -1,29 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duq extends duj {
-   public static final Codec<duq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, duq::new)
-   );
-   private final int c;
+public interface duq<P extends dup> {
+   duq<dub> a = a("block_predicate_filter", dub.a);
+   duq<dus> b = a("rarity_filter", dus.a);
+   duq<duu> c = a("surface_relative_threshold_filter", duu.a);
+   duq<duv> d = a("surface_water_depth_filter", duv.a);
+   duq<dua> e = a("biome", dua.a);
+   duq<duf> f = a("count", duf.a);
+   duq<duk> g = a("noise_based_count", duk.a);
+   duq<dul> h = a("noise_threshold_count", dul.a);
+   duq<due> i = a("count_on_every_layer", due.a);
+   duq<dug> j = a("environment_scan", dug.a);
+   duq<dui> k = a("heightmap", dui.a);
+   duq<duh> l = a("height_range", duh.a);
+   duq<duj> m = a("in_square", duj.a);
+   duq<dur> n = a("random_offset", dur.a);
+   duq<duc> o = a("carving_mask", duc.a);
 
-   private duq(int $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   public static duq a(int $$0) {
-      return new duq($$0);
-   }
-
-   @Override
-   protected boolean a(dui $$0, arx $$1, gw $$2) {
-      int $$3 = $$0.a(dkn.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dkn.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
-   }
-
-   @Override
-   public dul<?> b() {
-      return dul.d;
+   private static <P extends dup> duq<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.V, $$0, () -> $$1);
    }
 }

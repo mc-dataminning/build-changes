@@ -1,18 +1,20 @@
-public record wa(long b, gw c) implements vs {
-   public static final aeu a = new aeu("debug/neighbors_update");
+public record wa(gw b, int c, String d, int e) implements vw {
+   public static final aex a = new aex("debug/game_test_add_marker");
 
-   public wa(sl $$0) {
-      this($$0.n(), $$0.e());
+   public wa(so $$0) {
+      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public aeu a() {
+   public aex a() {
       return a;
    }
 }

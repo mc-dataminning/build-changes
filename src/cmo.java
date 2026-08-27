@@ -1,50 +1,90 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-public class cmo<T extends clm> implements cmh<T> {
-   private final cmo.a<T> x;
-   private final Codec<T> y;
+public class cmo extends cmb {
+   public cmo(cly $$0) {
+      super($$0);
+   }
 
-   public cmo(cmo.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  arb.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cls.d.fieldOf("category").orElse(cls.c).forGetter($$0xx -> $$0xx.b),
-                  cmb.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  jd.i.q().xmap(cja::new, cja::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
+   public boolean a(cez $$0, cpv $$1) {
+      List<cjf> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cjf $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cjf $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return $$2.size() == 2;
+   }
+
+   public cjf a(cez $$0, hu $$1) {
+      List<cjf> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cjf $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cjf $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return cjf.b;
+               }
+            }
+         }
+      }
+
+      if ($$2.size() == 2) {
+         cjf $$6 = $$2.get(0);
+         cjf $$7 = $$2.get(1);
+         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
+            cja $$8 = $$6.d();
+            int $$9 = $$8.n() - $$6.k();
+            int $$10 = $$8.n() - $$7.k();
+            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
+            int $$12 = $$8.n() - $$11;
+            if ($$12 < 0) {
+               $$12 = 0;
+            }
+
+            cjf $$13 = new cjf($$6.d());
+            $$13.b($$12);
+            Map<cno, Integer> $$14 = Maps.newHashMap();
+            Map<cno, Integer> $$15 = cnq.a($$6);
+            Map<cno, Integer> $$16 = cnq.a($$7);
+            jd.g.s().filter(cno::c).forEach($$3x -> {
+               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
+               if ($$4 > 0) {
+                  $$14.put($$3x, $$4);
+               }
+            });
+            if (!$$14.isEmpty()) {
+               cnq.a($$14, $$13);
+            }
+
+            return $$13;
+         }
+      }
+
+      return cjf.b;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   public T b(sl $$0) {
-      String $$1 = $$0.r();
-      cls $$2 = $$0.b(cls.class);
-      cmb $$3 = cmb.b($$0);
-      cja $$4 = $$0.q();
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.m();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(sl $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   interface a<T extends clm> {
-      T create(String var1, cls var2, cmb var3, cja var4, float var5, int var6);
+   @Override
+   public cmm<?> an_() {
+      return cmm.o;
    }
 }

@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface dyk<P extends dyj> {
-   dyk<dyi> a = a("always_true", dyi.a);
-   dyk<dyg> b = a("linear_pos", dyg.a);
-   dyk<dxv> c = a("axis_aligned_linear_pos", dxv.a);
+public class dyk extends dyy {
+   public static final Codec<dyk> a = Codec.unit(() -> dyk.b);
+   public static final dyk b = new dyk();
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
+      gw $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(csw.H);
+      return $$7 && !csv.a($$4.b().j($$0, $$6)) ? new dzb.c($$6, csw.H.n(), $$4.c()) : $$4;
+   }
 
-   static <P extends dyj> dyk<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.r, $$0, () -> $$1);
+   @Override
+   protected dza<?> a() {
+      return dza.m;
    }
 }

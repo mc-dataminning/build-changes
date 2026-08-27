@@ -1,26 +1,49 @@
-import javax.annotation.concurrent.Immutable;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-@Immutable
-public class bgv {
-   public static final bgv a = new bgv("");
-   public static final String b = "Lock";
-   private final String c;
+public enum bgv implements asp {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   public bgv(String $$0) {
-      this.c = $$0;
+   public static final asp.a<bgv> e = asp.a(bgv::values);
+   private static final IntFunction<bgv> f = aqs.a(bgv::a, values(), aqs.a.b);
+   private final int g;
+   private final String h;
+
+   private bgv(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public boolean a(cja $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   public int a() {
+      return this.g;
    }
 
-   public void a(qu $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
-      }
+   public tl b() {
+      return tl.c("options.difficulty." + this.h);
    }
 
-   public static bgv b(qu $$0) {
-      return $$0.b("Lock", 8) ? new bgv($$0.l("Lock")) : a;
+   public tl d() {
+      return tl.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static bgv a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static bgv a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

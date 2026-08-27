@@ -1,77 +1,54 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
 
-public class dko implements dkc {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dkp i = new dkp(this);
+public class dko {
+   public static enum a implements asp {
+      a("air"),
+      b("liquid");
 
-   public dko(long $$0) {
-      this.b($$0);
-   }
+      public static final Codec<dko.a> c = asp.a(dko.a::values);
+      private final String d;
 
-   @Override
-   public arx d() {
-      return new dko(this.g());
-   }
-
-   @Override
-   public dla e() {
-      return new dko.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw asn.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
+      private a(String $$0) {
+         this.d = $$0;
       }
-   }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw asn.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dla {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
+      public String a() {
+         return this.d;
       }
 
       @Override
-      public arx a(int $$0, int $$1, int $$2) {
-         long $$3 = ars.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dko($$4);
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum b implements asp {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
+
+      public static final Codec<dko.b> l = asp.a(dko.b::values);
+      private final String m;
+
+      private b(String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
       }
 
       @Override
-      public arx a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dko((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public String c() {
+         return this.m;
       }
    }
 }

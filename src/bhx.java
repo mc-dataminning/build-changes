@@ -1,15 +1,25 @@
-public enum bhx {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private bhx(n $$0) {
-      this.d = $$0;
+class bhx extends bib {
+   protected bhx(bic $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public void a(bjg $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof aks $$2 && !$$0.M_()) {
+         akr $$3 = $$2.x();
+         if ($$3.ai() == bgv.a) {
+            return;
+         }
+
+         if ($$3.b($$0.dl())) {
+            $$3.x().a($$2);
+         }
+      }
    }
 }

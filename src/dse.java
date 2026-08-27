@@ -1,49 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public record dse(drw b, List<dse.a> c) {
-   public static final Codec<dse> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(drw.a.fieldOf("fallback").forGetter(dse::a), dse.a.a.listOf().fieldOf("rules").forGetter(dse::b)).apply($$0, dse::new)
-   );
+public abstract class dse extends dsb {
+   protected final long c;
+   protected final dzp.a d;
+   protected final float e;
+   protected final dzp f;
 
-   public static dse a(drw $$0) {
-      return new dse($$0, List.of());
-   }
-
-   public static dse a(csq $$0) {
-      return a(drw.a($$0));
-   }
-
-   public dfe a(cqk $$0, arx $$1, gw $$2) {
-      for (dse.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public drw a() {
-      return this.b;
-   }
-
-   public List<dse.a> b() {
-      return this.c;
-   }
-
-   public static record a(dlu b, drw c) {
-      public static final Codec<dse.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dlu.b.fieldOf("if_true").forGetter(dse.a::a), drw.a.fieldOf("then").forGetter(dse.a::b)).apply($$0, dse.a::new)
+   protected static <P extends dse> P3<Mu<P>, Long, dzp.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         dzp.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         arg.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
       );
+   }
 
-      public dlu a() {
-         return this.b;
-      }
+   protected dse(long $$0, dzp.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = dzp.b(new dlr(new dkt($$0)), $$1);
+   }
 
-      public drw b() {
-         return this.c;
-      }
+   protected double a(gw $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

@@ -1,53 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public class bge extends bfy {
-   public static final Codec<bge> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bge::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
+public interface bge<P extends bgd> {
+   bge<bga> a = a("constant", bga.b);
+   bge<bgj> b = a("uniform", bgj.a);
+   bge<bfv> c = a("biased_to_bottom", bfv.a);
+   bge<bfw> d = a("clamped", bfw.a);
+   bge<bgk> e = a("weighted_list", bgk.a);
+   bge<bfy> f = a("clamped_normal", bfy.a);
 
-   private bge(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
-   }
+   Codec<P> codec();
 
-   public static bge a(int $$0, int $$1) {
-      return new bge($$0, $$1);
-   }
-
-   @Override
-   public int a(arx $$0) {
-      return ars.b($$0, this.b, this.f);
-   }
-
-   @Override
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bfz<?> c() {
-      return bfz.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   static <P extends bgd> bge<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.N, $$0, () -> $$1);
    }
 }

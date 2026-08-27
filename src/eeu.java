@@ -1,39 +1,60 @@
-import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
-public class eeu {
-   private final Set<eet<?>> a;
-   private final Set<eet<?>> b;
+public class eeu extends eec {
+   private static final Codec<List<eeu.b>> b = arg.a(eeu.b.a.listOf(), (Function<List<eeu.b>, DataResult<List<eeu.b>>>)($$0 -> {
+      Set<hg<bib>> $$1 = new ObjectOpenHashSet();
 
-   eeu(Set<eet<?>> $$0, Set<eet<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
+      for (eeu.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
+         }
+      }
 
-   public boolean a(eet<?> $$0) {
-      return this.b.contains($$0);
-   }
+      return DataResult.success($$0);
+   }));
+   public static final Codec<eeu> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(arg.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, eeu::new)
+   );
+   private final List<eeu.b> c;
 
-   public Set<eet<?>> a() {
-      return this.a;
-   }
-
-   public Set<eet<?>> b() {
-      return this.b;
+   eeu(List<efp> $$0, List<eeu.b> $$1) {
+      super($$0);
+      this.c = $$1;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public eee b() {
+      return eef.n;
    }
 
-   public void a(ecu $$0, ecm $$1) {
-      Set<eet<?>> $$2 = $$1.a();
-      Set<eet<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.a("Parameters " + $$3 + " are not provided in this context");
+   @Override
+   public Set<eey<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cjf a(cjf $$0, ecq $$1) {
+      if ($$0.a(cji.va) && !this.c.isEmpty()) {
+         eeu.b $$2 = ac.a(this.c, $$1.b());
+         bib $$3 = $$2.a().a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a()) {
+            $$4 *= 20;
+         }
+
+         ckp.b($$0, List.of(new day.a($$3, $$4)));
+         return $$0;
+      } else {
+         return $$0;
       }
    }
 
@@ -41,30 +62,35 @@ public class eeu {
       return new eeu.a();
    }
 
-   public static class a {
-      private final Set<eet<?>> a = Sets.newIdentityHashSet();
-      private final Set<eet<?>> b = Sets.newIdentityHashSet();
+   public static class a extends eec.a<eeu.a> {
+      private final Builder<eeu.b> a = ImmutableList.builder();
 
-      public eeu.a a(eet<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+      protected eeu.a a() {
+         return this;
       }
 
-      public eeu.a b(eet<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      public eeu.a a(bib $$0, egk $$1) {
+         this.a.add(new eeu.b($$0.j(), $$1));
+         return this;
       }
 
-      public eeu a() {
-         return new eeu(this.a, this.b);
+      @Override
+      public eed b() {
+         return new eeu(this.g(), this.a.build());
+      }
+   }
+
+   static record b(hg<bib> b, egk c) {
+      public static final Codec<eeu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jd.e.r().fieldOf("type").forGetter(eeu.b::a), egl.a.fieldOf("duration").forGetter(eeu.b::b)).apply($$0, eeu.b::new)
+      );
+
+      public hg<bib> a() {
+         return this.b;
+      }
+
+      public egk b() {
+         return this.c;
       }
    }
 }

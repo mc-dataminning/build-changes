@@ -1,5 +1,3 @@
-import java.util.function.Function;
-
-public interface eiv<T> {
-   rn b(long var1, Function<T, String> var3);
+public interface eiv<T> extends ejb<T> {
+   boolean b(gw var1, T var2);
 }

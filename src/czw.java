@@ -1,23 +1,42 @@
-public class czw extends cug {
-   private static final ti a = ti.c("container.upgrade");
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   protected czw(dfd.d $$0) {
-      super($$0);
+public interface czw extends ctb, cxj {
+   @Override
+   default boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return $$4 == ean.c;
    }
 
    @Override
-   public bgw b(dfe $$0, cpq $$1, gw $$2) {
-      return new bhb(($$2x, $$3, $$4) -> new cfz($$2x, $$3, cer.a($$1, $$2)), a);
-   }
+   default boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
+      if (!$$2.c(dfz.C) && $$3.a() == ean.c) {
+         if (!$$0.w_()) {
+            $$0.a($$1, $$2.a(dfz.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      if ($$1.B) {
-         return bgt.a;
+         return true;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(apj.aF);
-         return bgt.b;
+         return false;
       }
+   }
+
+   @Override
+   default cjf a(@Nullable cbu $$0, cpw $$1, gw $$2, dfj $$3) {
+      if ($$3.c(dfz.C)) {
+         $$1.a($$2, $$3.a(dfz.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cjf(cji.pL);
+      } else {
+         return cjf.b;
+      }
+   }
+
+   @Override
+   default Optional<apd> aq_() {
+      return ean.c.j();
    }
 }

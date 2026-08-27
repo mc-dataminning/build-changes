@@ -1,51 +1,49 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dfn implements Predicate<dfe> {
-   public static final Predicate<dfe> a = $$0 -> true;
-   private final dff<csq, dfe> b;
-   private final Map<dgh<?>, Predicate<Object>> c = Maps.newHashMap();
+public class dfn {
+   private final cpy a;
+   private final gw b;
+   private final boolean c;
+   @Nullable
+   private dfj d;
+   @Nullable
+   private dcv e;
+   private boolean f;
 
-   private dfn(dff<csq, dfe> $$0) {
-      this.b = $$0;
+   public dfn(cpy $$0, gw $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
    }
 
-   public static dfn a(csq $$0) {
-      return new dfn($$0.l());
-   }
-
-   public boolean a(@Nullable dfe $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dgh<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
+   public dfj a() {
+      if (this.d == null && (this.c || this.a.A(this.b))) {
+         this.d = this.a.a_(this.b);
       }
+
+      return this.d;
    }
 
-   protected <T extends Comparable<T>> boolean a(dfe $$0, dgh<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> dfn a(dgh<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   @Nullable
+   public dcv b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
       }
+
+      return this.e;
+   }
+
+   public cpy c() {
+      return this.a;
+   }
+
+   public gw d() {
+      return this.b;
+   }
+
+   public static Predicate<dfn> a(Predicate<dfj> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

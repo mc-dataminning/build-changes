@@ -1,19 +1,30 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class cjg extends ckm {
-   public cjg(civ.a $$0) {
-      super($$0);
+public class cjg {
+   private static final Strategy<? super cjf> a = new Strategy<cjf>() {
+      public int a(@Nullable cjf $$0) {
+         return cjg.a($$0);
+      }
+
+      public boolean a(@Nullable cjf $$0, @Nullable cjf $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && cjf.c($$0, $$1);
+      }
+   };
+
+   static int a(@Nullable cjf $$0) {
+      if ($$0 != null) {
+         qx $$1 = $$0.v();
+         int $$2 = 31 + $$0.d().hashCode();
+         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
+      } else {
+         return 0;
+      }
    }
 
-   @Override
-   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
-      ckz.a($$0, $$2, 0.25F);
-   }
-
-   @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aoz.mv, apa.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static Set<cjf> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

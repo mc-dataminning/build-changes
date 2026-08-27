@@ -1,23 +1,11 @@
-public class ckm extends cjp {
-   public ckm(civ.a $$0) {
+public class ckm extends ckr {
+   public ckm(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      cja $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         ccs $$4 = new ccs($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dC(), $$1.dA(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(apj.c.b(this));
-      if (!$$1.fR().d) {
-         $$3.h(1);
-      }
-
-      return bgu.a($$3, $$0.r_());
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), ape.xd, apf.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

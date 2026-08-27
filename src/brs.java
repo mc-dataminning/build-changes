@@ -1,21 +1,42 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class brs<T extends bjb> extends brp<T> {
-   private final bjw i;
+public class brs extends bsb {
+   private final bvd a;
+   @Nullable
+   private bjg b;
+   private final bts c = bts.a().a(64.0);
 
-   public brs(bjw $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bjb> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public brs(bvd $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(bqb.a.d));
    }
 
    @Override
    public boolean a() {
-      return !this.i.p() && super.a();
+      ehi $$0 = this.a.cH().c(10.0, 8.0, 10.0);
+      List<? extends bjg> $$1 = this.a.dL().a(cbh.class, this.c, this.a, $$0);
+      List<cbu> $$2 = this.a.dL().a(this.c, this.a, $$0);
+
+      for (bjg $$3 : $$1) {
+         cbh $$4 = (cbh)$$3;
+
+         for (cbu $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
+            }
+         }
+      }
+
+      return this.b == null ? false : !(this.b instanceof cbu) || !this.b.M_() && !((cbu)this.b).f();
    }
 
    @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   public void c() {
+      this.a.h(this.b);
+      super.c();
    }
 }

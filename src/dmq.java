@@ -1,24 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dmq<WC extends dml>(dms<WC> d, WC e) {
-   public static final Codec<dmq<?>> a = jd.Q.q().dispatch($$0 -> $$0.d, dms::c);
-   public static final Codec<hg<dmq<?>>> b = aeq.a(je.ar, a);
-   public static final Codec<hk<dmq<?>>> c = hv.a(je.ar, a);
+public class dmq extends dqk {
+   public static final MapCodec<dmq> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               dtp.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bgb.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dlm.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dmr.b.optionalFieldOf("debug_settings", dmr.a).forGetter($$0x -> $$0x.h),
+               hv.a(je.e).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dmq::new)
+   );
+   public final dtp e;
+   public final bgb f;
+   public final dlm g;
+   public final dmr h;
+   public final hk<csv> i;
 
-   public boolean a(arx $$0) {
-      return this.d.a(this.e, $$0);
-   }
-
-   public boolean a(dmn $$0, dha $$1, Function<gw, hg<cqo>> $$2, arx $$3, djz $$4, cox $$5, dgz $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public dms<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   public dmq(float $$0, dtp $$1, bgb $$2, dlm $$3, dmr $$4, hk<csv> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

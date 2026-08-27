@@ -1,42 +1,52 @@
+import java.util.function.Consumer;
+
 public class bim {
-   public final float a;
-   public final float b;
-   public final boolean c;
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
 
-   public bim(float $$0, float $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   public ehd a(ehi $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   public ehd a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new ehd($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   public bim a(float $$0) {
-      return this.a($$0, $$0);
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   public bim a(float $$0, float $$1) {
-      return !this.c && ($$0 != 1.0F || $$1 != 1.0F) ? b(this.a * $$0, this.b * $$1) : this;
+   public void a(Consumer<bim> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
    }
 
-   public static bim b(float $$0, float $$1) {
-      return new bim($$0, $$1, false);
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = arx.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
    }
 
-   public static bim c(float $$0, float $$1) {
-      return new bim($$0, $$1, true);
+   public long b() {
+      return this.c;
    }
 
-   @Override
-   public String toString() {
-      return "EntityDimensions w=" + this.a + ", h=" + this.b + ", fixed=" + this.c;
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

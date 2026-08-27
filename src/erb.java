@@ -1,136 +1,158 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class erb {
+public class erb extends anz<Map<String, List<erb.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<erb.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(erb.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(erb.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(erb.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(erb.a::d)
+                  )
+                  .apply($$0, erb.a::new)
+         )
+         .listOf()
+   );
    private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+   private final aex c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private erb.b f;
 
-   public static void a(File $$0, ejw $$1, Consumer<ti> $$2) {
-      a($$0, null, $$1, $$2);
+   public erb(aex $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static void a(File $$0, @Nullable String $$1, ejw $$2, Consumer<ti> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static void b(File $$0, @Nullable String $$1, ejw $$2, Consumer<ti> $$3) {
-      ekl $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            ti $$3x = ti.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new tg(tg.a.b, $$6.getAbsolutePath())));
-            $$3.accept(ti.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(ti.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
-         }
-      });
-   }
-
-   public static ekl a(ejw $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ekl $$3 = new ekl($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
+   protected Map<String, List<erb.a>> a(anu $$0, bdp $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
          }
 
-         $$2++;
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
       }
    }
 
-   public erb(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
+   protected void a(Map<String, List<erb.a>> $$0, anu $$1, bdp $$2) {
+      List<erb.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
 
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
+         if (this.f == null) {
+            this.f = new erb.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
 
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
+   @Override
+   public void close() {
+      this.a();
    }
 
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<erb.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<erb.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(long a, long b, String c, String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final eqv a = eqv.O();
+      private final List<erb.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<erb.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public erb.b a(List<erb.a> $$0, long $$1) {
+         this.cancel();
+         return new erb.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (erb.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> euw.a(eqv.O().ay(), euw.a.g, tl.a($$2.c, $$3), tl.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

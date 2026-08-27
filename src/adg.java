@@ -1,24 +1,36 @@
-public class adg implements va<adc> {
-   private final int a;
+public record adg(int a, adr b) implements vd<adf> {
+   private static final int c = 1048576;
 
-   public adg(int $$0) {
-      this.a = $$0;
+   public adg(so $$0) {
+      this($$0.m(), a($$0.s(), $$0));
    }
 
-   public adg(sl $$0) {
-      this.a = $$0.m();
+   private static adr a(aex $$0, so $$1) {
+      return b($$0, $$1);
+   }
+
+   private static adt b(aex $$0, so $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new adt($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
+      $$0.a(this.b.a());
+      this.b.a($$0);
    }
 
-   public void a(adc $$0) {
+   public void a(adf $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public adr d() {
+      return this.b;
    }
 }

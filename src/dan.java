@@ -1,9 +1,13 @@
-public abstract class dan extends csq {
-   public dan(dfd.d $$0) {
-      super($$0);
+public class dan extends crr implements csm {
+   private final cht a;
+
+   public dan(cht $$0, dfi.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public abstract dam a();
-
-   public abstract crs b();
+   @Override
+   public cht a() {
+      return this.a;
+   }
 }

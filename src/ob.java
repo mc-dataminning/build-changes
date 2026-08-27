@@ -1,106 +1,271 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class ob {
-   private static dvd.c a(hk<cqo> $$0, Map<bje, dvk> $$1, dkj.b $$2, dvo $$3) {
-      return new dvd.c($$0, $$1, $$2, $$3);
-   }
+   public static final aew<dwr> a = nz.a("village/savanna/town_centers");
+   private static final aew<dwr> b = nz.a("village/savanna/terminators");
+   private static final aew<dwr> c = nz.a("village/savanna/zombie/terminators");
 
-   private static dvd.c a(hk<cqo> $$0, dkj.b $$1, dvo $$2) {
-      return a($$0, Map.of(), $$1, $$2);
-   }
-
-   private static dvd.c a(hk<cqo> $$0, dvo $$1) {
-      return a($$0, Map.of(), dkj.b.e, $$1);
-   }
-
-   public static void a(np<dvd> $$0) {
-      hh<cqo> $$1 = $$0.a(je.ap);
-      hh<dwm> $$2 = $$0.a(je.aC);
+   public static void a(ns<dwr> $$0) {
+      hh<dum> $$1 = $$0.a(je.ay);
+      hg<dum> $$2 = $$1.b(pk.g);
+      hg<dum> $$3 = $$1.b(pk.a);
+      hg<dum> $$4 = $$1.b(pk.b);
+      hh<dyz> $$5 = $$0.a(je.aA);
+      hg<dyz> $$6 = $$5.b(oa.b);
+      hg<dyz> $$7 = $$5.b(oa.j);
+      hg<dyz> $$8 = $$5.b(oa.m);
+      hh<dwr> $$9 = $$0.a(je.aC);
+      hg<dwr> $$10 = $$9.b(nz.a);
+      hg<dwr> $$11 = $$9.b(b);
+      hg<dwr> $$12 = $$9.b(c);
       $$0.a(
-         dux.a,
-         new dww(
-            a($$1.b(apn.y), Map.of(bje.a, new dvk(dvk.a.b, bfh.a(new cra.c(bip.ay, 1, 1, 1)))), dkj.b.e, dvo.c), $$2.b(nu.a), 7, dtj.a(dlh.a(0)), true, dkn.a.a
+         a,
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
+               Pair.of(dwp.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
+               Pair.of(dwp.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
+               Pair.of(dwp.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
+               Pair.of(dwp.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
+               Pair.of(dwp.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
+               Pair.of(dwp.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dux.b, new dxa(a($$1.b(apn.t), dkj.b.d, dvo.a), dxa.a.a));
-      $$0.a(dux.c, new dxa(a($$1.b(apn.u), dkj.b.d, dvo.a), dxa.a.b));
-      $$0.a(dux.d, new dxs(a($$1.b(apn.P), dvo.a)));
-      $$0.a(dux.e, new dwy(a($$1.b(apn.s), dvo.a)));
-      $$0.a(dux.f, new dwr(a($$1.b(apn.q), dvo.a)));
-      $$0.a(dux.g, new dwv(a($$1.b(apn.r), dvo.a)));
-      $$0.a(dux.h, new dxm(a($$1.b(apn.G), dvo.a), false));
-      $$0.a(dux.i, new dxm(a($$1.b(apn.F), dvo.a), true));
-      $$0.a(
-         dux.j,
-         new dxq(
-            a(
-               $$1.b(apn.I),
-               Map.of(bje.a, new dvk(dvk.a.a, bfh.a(new cra.c(bip.bj, 1, 1, 1))), bje.b, new dvk(dvk.a.a, bfh.a(new cra.c(bip.m, 1, 1, 1)))),
-               dkj.b.e,
-               dvo.a
-            )
+      nz.a(
+         $$0,
+         "village/savanna/streets",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/streets/corner_01", $$7), 2),
+               Pair.of(dwp.a("village/savanna/streets/corner_03", $$7), 2),
+               Pair.of(dwp.a("village/savanna/streets/straight_02", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/straight_04", $$7), 7),
+               Pair.of(dwp.a("village/savanna/streets/straight_05", $$7), 3),
+               Pair.of(dwp.a("village/savanna/streets/straight_06", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/straight_08", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/straight_09", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/straight_10", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/straight_11", $$7), 4),
+               Pair.of(dwp.a("village/savanna/streets/crossroad_02", $$7), 1),
+               Pair.of(dwp.a("village/savanna/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/savanna/streets/crossroad_04", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/crossroad_05", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/crossroad_06", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/crossroad_07", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/split_01", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/split_02", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/streets/turn_01", $$7), 3)
+               }
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dux.k, new dxo(a($$1.b(apn.H), dvo.b)));
-      $$0.a(
-         dux.l,
-         new dxg(
-            a(
-               $$1.b(apn.v),
-               Map.of(bje.a, new dvk(dvk.a.b, bfh.a(new cra.c(bip.V, 1, 2, 4))), bje.e, new dvk(dvk.a.b, cra.a), bje.d, new dvk(dvk.a.b, cra.a)),
-               dkj.b.e,
-               dvo.a
-            )
+      nz.a(
+         $$0,
+         "village/savanna/zombie/streets",
+         new dwr(
+            $$12,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/zombie/streets/corner_01", $$7), 2),
+               Pair.of(dwp.a("village/savanna/zombie/streets/corner_03", $$7), 2),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_02", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_04", $$7), 7),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_05", $$7), 3),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_06", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_08", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_09", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_10", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/straight_11", $$7), 4),
+               Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
+               Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/split_01", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/split_02", $$7), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/streets/turn_01", $$7), 3)
+               }
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dux.m, new dxi(a($$1.b(apn.w), dvo.a), dxi.a.b, 0.3F, 0.9F));
-      $$0.a(dux.n, new dxi(a($$1.b(apn.x), dvo.a), dxi.a.a, 0.3F, 0.9F));
-      $$0.a(dux.o, new dxc(a($$1.b(apn.Q), Map.of(bje.a, new dvk(dvk.a.a, dxc.d)), dkj.b.h, dvo.a)));
-      $$0.a(dux.p, new dxe(a($$1.b(apn.R), dkj.b.h, dvo.c), dtn.a(dlh.a(32), dlh.c(2))));
-      $$0.a(dux.q, new dwt(a($$1.b(apn.V), dvo.a)));
-      $$0.a(dux.r, new dwp(a($$1.b(apn.p), dkj.b.d, dvo.a)));
-      $$0.a(dux.s, new dww(a($$1.b(apn.S), dvo.a), $$2.b(nl.a), 6, dtj.a(dlh.a(33)), false));
-      $$0.a(dux.t, new dww(a($$1.b(apn.K), dvo.c), $$2.b(nv.a), 6, dtj.a(dlh.a(0)), true, dkn.a.a));
-      $$0.a(dux.u, new dww(a($$1.b(apn.J), dvo.c), $$2.b(nr.a), 6, dtj.a(dlh.a(0)), true, dkn.a.a));
-      $$0.a(dux.v, new dww(a($$1.b(apn.L), dvo.c), $$2.b(ny.a), 6, dtj.a(dlh.a(0)), true, dkn.a.a));
-      $$0.a(dux.w, new dww(a($$1.b(apn.M), dvo.c), $$2.b(nz.a), 6, dtj.a(dlh.a(0)), true, dkn.a.a));
-      $$0.a(dux.x, new dww(a($$1.b(apn.N), dvo.c), $$2.b(od.a), 6, dtj.a(dlh.a(0)), true, dkn.a.a));
-      $$0.a(
-         dux.y,
-         new dxk(
-            a($$1.b(apn.E), dvo.a),
-            List.of(new dxk.a(dxj.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new dxk.a(dxj.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      nz.a(
+         $$0,
+         "village/savanna/houses",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_1"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_2"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_3"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_4"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_5"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_6"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_7"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_small_house_8"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_medium_house_1"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_medium_house_2"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/savanna/houses/savanna_tool_smith_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_shepherd_1"), 7),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_armorer_1"), 1),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_tannery_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_cartographer_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_library_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_mason_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_temple_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_temple_2"), 3),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_small_farm", $$8), 4),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_animal_pen_1"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_animal_pen_2"), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_animal_pen_3"), 2),
+                  Pair.of(dwp.g(), 5)
+               }
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dux.z, new dxk(a($$1.b(apn.z), dvo.a), new dxk.a(dxj.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(dux.A, new dxk(a($$1.b(apn.A), dvo.a), new dxk.a(dxj.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(dux.B, new dxk(a($$1.b(apn.C), dvo.a), new dxk.a(dxj.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         dux.C,
-         new dxk(
-            a($$1.b(apn.D), dvo.a),
-            List.of(new dxk.a(dxj.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new dxk.a(dxj.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      nz.a(
+         $$0,
+         "village/savanna/zombie/houses",
+         new dwr(
+            $$12,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
+               Pair.of(dwp.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
+               Pair.of(dwp.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_library_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_mason_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_temple_1", $$6), 1),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_temple_2", $$6), 3),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
+                  Pair.of(dwp.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_small_farm", $$6), 4),
+                  Pair.of(dwp.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
+                  Pair.of(dwp.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
+                  Pair.of(dwp.g(), 5)
+               }
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dux.D, new dxk(a($$1.b(apn.B), dvo.a), new dxk.a(dxj.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(dux.E, new dxk(a($$1.b(apn.U), dvo.a), new dxk.a(dxj.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
       $$0.a(
-         dux.F,
-         new dww(
-            a($$1.b(apn.T), Arrays.stream(bje.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dvk(dvk.a.b, bfh.c()))), dkj.b.h, dvo.d),
-            $$2.b(ng.a),
-            Optional.of(new aeu("city_anchor")),
-            7,
-            dtj.a(dlh.a(-27)),
-            false,
-            Optional.empty(),
-            116
+         b,
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(dwp.a("village/savanna/terminators/terminator_05", $$7), 1)
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dux.G, new dww(a($$1.b(apn.O), Map.of(), dkj.b.d, dvo.b), $$2.b(of.a), 7, dtj.a(dlh.a(-15)), false, dkn.a.a));
+      $$0.a(
+         c,
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(dwp.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
+            ),
+            dwr.a.a
+         )
+      );
+      nz.a($$0, "village/savanna/trees", new dwr($$10, ImmutableList.of(Pair.of(dwp.a($$2), 1)), dwr.a.b));
+      nz.a(
+         $$0,
+         "village/savanna/decor",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/savanna_lamp_post_01"), 4),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 1),
+               Pair.of(dwp.g(), 4)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/savanna/zombie/decor",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/savanna_lamp_post_01", $$6), 4),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 1),
+               Pair.of(dwp.g(), 4)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/savanna/villagers",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/savanna/villagers/nitwit"), 1),
+               Pair.of(dwp.a("village/savanna/villagers/baby"), 1),
+               Pair.of(dwp.a("village/savanna/villagers/unemployed"), 10)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/savanna/zombie/villagers",
+         new dwr(
+            $$10,
+            ImmutableList.of(Pair.of(dwp.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(dwp.a("village/savanna/zombie/villagers/unemployed"), 10)),
+            dwr.a.b
+         )
+      );
    }
 }

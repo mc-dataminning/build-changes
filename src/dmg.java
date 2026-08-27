@@ -1,18 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dmg implements dlu {
-   public static dmg a = new dmg();
-   public static final Codec<dmg> e = Codec.unit(() -> a);
+class dmg extends dmk {
+   private final hk<eal> e;
+   public static final Codec<dmg> a = RecordCodecBuilder.create($$0 -> a($$0).and(hv.a(je.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dmg::new));
 
-   private dmg() {
-   }
-
-   public boolean a(cqk $$0, gw $$1) {
-      return true;
+   public dmg(ib $$0, hk<eal> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dlv<?> a() {
-      return dlv.l;
+   protected boolean a(dfj $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public dma<?> a() {
+      return dma.c;
    }
 }

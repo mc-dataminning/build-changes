@@ -1,44 +1,37 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cjc {
-   public static bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      $$1.c($$2);
-      return bgu.b($$1.b($$2));
+public enum cjc implements asp {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<cjc> j = asp.a(cjc::values);
+   public static final IntFunction<cjc> k = aqs.a(cjc::a, values(), aqs.a.a);
+   private final byte l;
+   private final String m;
+
+   private cjc(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
-   public static cja a(cja $$0, cbp $$1, cja $$2, boolean $$3) {
-      boolean $$4 = $$1.fR().d;
-      if ($$3 && $$4) {
-         if (!$$1.fQ().h($$2)) {
-            $$1.fQ().e($$2);
-         }
-
-         return $$0;
-      } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
-
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fQ().e($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   public static cja a(cja $$0, cbp $$1, cja $$2) {
-      return a($$0, $$1, $$2, true);
+   public byte a() {
+      return this.l;
    }
 
-   public static void a(byi $$0, Stream<cja> $$1) {
-      cpq $$2 = $$0.dK();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new byi($$2, $$0.dp(), $$0.dr(), $$0.dv(), $$2x)));
-      }
+   public boolean b() {
+      return this == d || this == e;
    }
 }

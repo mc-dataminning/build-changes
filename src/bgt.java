@@ -1,23 +1,3 @@
-public enum bgt {
-   a,
-   b,
-   c,
-   d,
-   e;
-
-   public boolean a() {
-      return this == a || this == b || this == c;
-   }
-
-   public boolean b() {
-      return this == a;
-   }
-
-   public boolean c() {
-      return this == a || this == b;
-   }
-
-   public static bgt a(boolean $$0) {
-      return $$0 ? a : b;
-   }
+public interface bgt {
+   void a(bgr var1);
 }

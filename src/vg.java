@@ -1,24 +1,13 @@
-public class vg implements va<vd> {
-   private final long a;
+public interface vg extends sj {
+   void a(vj var1);
 
-   public vg(long $$0) {
-      this.a = $$0;
-   }
+   void a(vk var1);
 
-   public vg(sl $$0) {
-      this.a = $$0.readLong();
-   }
+   void a(vh var1);
 
-   @Override
-   public void a(sl $$0) {
-      $$0.b(this.a);
-   }
+   void a(vi var1);
 
-   public void a(vd $$0) {
-      $$0.a(this);
-   }
+   void a(vl var1);
 
-   public long a() {
-      return this.a;
-   }
+   void a(vm var1);
 }

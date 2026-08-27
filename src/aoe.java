@@ -1,57 +1,43 @@
 import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.io.File;
+import java.net.SocketAddress;
 import javax.annotation.Nullable;
 
-public class aoe extends aog<GameProfile> {
-   private final int a;
-   private final boolean b;
-
-   public aoe(GameProfile $$0, int $$1, boolean $$2) {
+public class aoe extends aom<String, aof> {
+   public aoe(File $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   public aoe(JsonObject $$0) {
-      super(b($$0));
-      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
-      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         $$0.addProperty("level", this.a);
-         $$0.addProperty("bypassesPlayerLimit", this.b);
-      }
+   protected aol<String> a(JsonObject $$0) {
+      return new aof($$0);
+   }
+
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
+   }
+
+   public boolean a(String $$0) {
+      return this.d($$0);
    }
 
    @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public aof b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
       }
+
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
+      }
+
+      return $$1;
    }
 }

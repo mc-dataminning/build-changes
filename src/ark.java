@@ -1,176 +1,80 @@
-import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.ServerSocket;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public class ark {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ListeningExecutorService a = MoreExecutors.listeningDecorator(
-      Executors.newCachedThreadPool(new ThreadFactoryBuilder().setDaemon(true).setUncaughtExceptionHandler(new r(b)).setNameFormat("Downloader %d").build())
-   );
+@FunctionalInterface
+public interface ark {
+   ark a = $$0 -> true;
 
-   private ark() {
+   boolean accept(arl var1);
+
+   static ark codepoint(int $$0, uh $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   public static CompletableFuture<?> a(File $$0, URL $$1, Map<String, String> $$2, int $$3, @Nullable arw $$4, Proxy $$5) {
-      return CompletableFuture.supplyAsync(() -> {
-         HttpURLConnection $$6 = null;
-         InputStream $$7 = null;
-         OutputStream $$8 = null;
-         if ($$4 != null) {
-            $$4.b(ti.c("resourcepack.downloading"));
-            $$4.c(ti.c("resourcepack.requesting"));
-         }
-
-         try {
-            byte[] $$9 = new byte[4096];
-            $$6 = (HttpURLConnection)$$1.openConnection($$5);
-            $$6.setInstanceFollowRedirects(true);
-            float $$10 = 0.0F;
-            float $$11 = (float)$$2.entrySet().size();
-
-            for (Entry<String, String> $$12 : $$2.entrySet()) {
-               $$6.setRequestProperty($$12.getKey(), $$12.getValue());
-               if ($$4 != null) {
-                  $$4.a((int)(++$$10 / $$11 * 100.0F));
-               }
-            }
-
-            $$7 = $$6.getInputStream();
-            $$11 = (float)$$6.getContentLength();
-            int $$13 = $$6.getContentLength();
-            if ($$4 != null) {
-               $$4.c(ti.a("resourcepack.progress", String.format(Locale.ROOT, "%.2f", $$11 / 1000.0F / 1000.0F)));
-            }
-
-            if ($$0.exists()) {
-               long $$14 = $$0.length();
-               if ($$14 == (long)$$13) {
-                  if ($$4 != null) {
-                     $$4.a();
-                  }
-
-                  return null;
-               }
-
-               b.warn("Deleting {} as it does not match what we currently have ({} vs our {}).", new Object[]{$$0, $$13, $$14});
-               FileUtils.deleteQuietly($$0);
-            } else if ($$0.getParentFile() != null) {
-               $$0.getParentFile().mkdirs();
-            }
-
-            $$8 = new DataOutputStream(new FileOutputStream($$0));
-            if ($$3 > 0 && $$11 > (float)$$3) {
-               if ($$4 != null) {
-                  $$4.a();
-               }
-
-               throw new IOException("Filesize is bigger than maximum allowed (file is " + $$10 + ", limit is " + $$3 + ")");
-            } else {
-               int $$15;
-               while (($$15 = $$7.read($$9)) >= 0) {
-                  $$10 += (float)$$15;
-                  if ($$4 != null) {
-                     $$4.a((int)($$10 / $$11 * 100.0F));
-                  }
-
-                  if ($$3 > 0 && $$10 > (float)$$3) {
-                     if ($$4 != null) {
-                        $$4.a();
-                     }
-
-                     throw new IOException("Filesize was bigger than maximum allowed (got >= " + $$10 + ", limit was " + $$3 + ")");
-                  }
-
-                  if (Thread.interrupted()) {
-                     b.error("INTERRUPTED");
-                     if ($$4 != null) {
-                        $$4.a();
-                     }
-
-                     return null;
-                  }
-
-                  $$8.write($$9, 0, $$15);
-               }
-
-               if ($$4 != null) {
-                  $$4.a();
-               }
-
-               return null;
-            }
-         } catch (Throwable var21) {
-            b.error("Failed to download file", var21);
-            if ($$6 != null) {
-               InputStream $$17 = $$6.getErrorStream();
-
-               try {
-                  b.error("HTTP response error: {}", IOUtils.toString($$17, StandardCharsets.UTF_8));
-               } catch (IOException var20) {
-                  b.error("Failed to read response from server");
-               }
-            }
-
-            if ($$4 != null) {
-               $$4.a();
-            }
-
-            return null;
-         } finally {
-            IOUtils.closeQuietly($$7);
-            IOUtils.closeQuietly($$8);
-         }
-      }, a);
+   static ark forward(String $$0, uh $$1) {
+      return $$0.isEmpty() ? a : $$2 -> aso.a($$0, $$1, $$2);
    }
 
-   public static int a() {
-      try {
-         int var1;
-         try (ServerSocket $$0 = new ServerSocket(0)) {
-            var1 = $$0.getLocalPort();
-         }
+   static ark forward(String $$0, uh $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> aso.a($$0, $$1, decorateOutput($$3, $$2));
+   }
 
-         return var1;
-      } catch (IOException var5) {
-         return 25564;
+   static ark backward(String $$0, uh $$1) {
+      return $$0.isEmpty() ? a : $$2 -> aso.b($$0, $$1, $$2);
+   }
+
+   static ark backward(String $$0, uh $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> aso.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static arl decorateOutput(arl $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static ark composite() {
+      return a;
+   }
+
+   static ark composite(ark $$0) {
+      return $$0;
+   }
+
+   static ark composite(ark $$0, ark $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static ark composite(ark... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static ark composite(List<ark> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
       }
    }
 
-   public static boolean a(int $$0) {
-      if ($$0 >= 0 && $$0 <= 65535) {
-         try {
-            boolean var2;
-            try (ServerSocket $$1 = new ServerSocket($$0)) {
-               var2 = $$1.getLocalPort() == $$0;
-            }
+   static ark fromPair(ark $$0, ark $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
 
-            return var2;
-         } catch (IOException var6) {
-            return false;
+   static ark fromList(List<ark> $$0) {
+      return $$1 -> {
+         for (ark $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
+            }
          }
-      } else {
-         return false;
-      }
+
+         return true;
+      };
    }
 }

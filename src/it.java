@@ -7,28 +7,28 @@ public class it implements iv {
       public it a(iw<it> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
          fy.a $$2 = fy.a(jd.i.p(), $$1);
-         cja $$3 = new fx($$2.a(), $$2.b()).a(1, false);
+         cjf $$3 = new fx($$2.a(), $$2.b()).a(1, false);
          return new it($$0, $$3);
       }
 
-      public it a(iw<it> $$0, sl $$1) {
+      public it a(iw<it> $$0, so $$1) {
          return new it($$0, $$1.q());
       }
    };
    private final iw<it> b;
-   private final cja c;
+   private final cjf c;
 
    public static Codec<it> a(iw<it> $$0) {
-      return cja.a.xmap($$1 -> new it($$0, $$1), $$0x -> $$0x.c);
+      return cjf.a.xmap($$1 -> new it($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public it(iw<it> $$0, cja $$1) {
+   public it(iw<it> $$0, cjf $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.c);
    }
 
@@ -42,7 +42,7 @@ public class it implements iv {
       return this.b;
    }
 
-   public cja c() {
+   public cjf c() {
       return this.c;
    }
 }

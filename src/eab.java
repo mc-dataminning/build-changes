@@ -1,140 +1,154 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class eab extends dzv<eab.a> {
-   protected eab(dho $$0) {
-      super(cpz.a, $$0, new eab.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class eab implements eae {
+   public static final int b = 1;
+   protected final cpx c;
+   @Nullable
+   private final ead<?, ?> a;
+   @Nullable
+   private final ead<?, ?> d;
+
+   public eab(dht $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new dzu($$0) : null;
+      this.d = $$2 ? new eaf($$0) : null;
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public void a(gw $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = hz.e($$0);
-      int $$3 = hz.c($$2);
-      eab.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(hz.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dhg $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = gw.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   @Override
+   public boolean J_() {
+      return this.d != null && this.d.J_() ? true : this.a != null && this.a.J_();
+   }
 
-               $$2 = hz.a($$2, hc.b);
-            }
-         }
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
 
-         return $$6.a(hz.b(gw.a($$0)), hz.b(gw.b($$0)), hz.b(gw.c($$0)));
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(hz $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(cpc $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(cpc $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public dzz a(cqe $$0) {
+      if ($$0 == cqe.b) {
+         return (dzz)(this.a == null ? dzz.a.a : this.a);
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
+         return (dzz)(this.d == null ? dzz.a.a : this.d);
       }
    }
 
-   @Override
-   protected void h(long $$0) {
-      int $$1 = hz.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = hz.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = hz.f($$0);
-      int $$2 = hz.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = hz.a($$3, hc.a)) {
-            $$2--;
+   public String a(cqe $$0, hz $$1) {
+      if ($$0 == cqe.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
 
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
+      return "n/a";
+   }
+
+   public eaa.b b(cqe $$0, hz $$1) {
+      if ($$0 == cqe.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
+
+      return eaa.b.a;
    }
 
-   @Override
-   protected dhg g(long $$0) {
-      dhg $$1 = (dhg)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(hz.f($$0));
-         if ($$2 != this.d.b && hz.c($$0) < $$2) {
-            long $$3 = hz.a($$0, hc.b);
-
-            dhg $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = hz.a($$3, hc.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dhg(15) : new dhg();
+   public void a(cqe $$0, hz $$1, @Nullable dhl $$2) {
+      if ($$0 == cqe.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
          }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
       }
    }
 
-   private static dhg a(dhg $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
+   public void b(cpc $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
 
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new dhg($$2);
+      if (this.d != null) {
+         this.d.b($$0, $$1);
       }
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   public int a(gw $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
    }
 
-   protected boolean l(long $$0) {
-      long $$1 = hz.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || hz.c($$0) >= $$2;
+   public boolean a(hz $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
    }
 
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
+   public int c() {
+      return this.c.ak() + 2;
    }
 
-   protected int c() {
-      return this.d.b;
+   public int d() {
+      return this.c.al() - 1;
    }
 
-   protected static final class a extends dzs<eab.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<dhg> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public eab.a a() {
-         return new eab.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   public int e() {
+      return this.d() + this.c();
    }
 }

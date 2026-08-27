@@ -1,32 +1,96 @@
-public class abd implements va<aaz> {
-   private final int a;
-   private final gw b;
-
-   public abd(int $$0, gw $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public abd(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.e();
-   }
-
+public interface abd extends abf, vn {
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   default sn b() {
+      return sn.b;
    }
 
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
+   void a(acv var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(abl var1);
 
-   public gw d() {
-      return this.b;
-   }
+   void a(abk var1);
+
+   void a(abj var1);
+
+   void a(abo var1);
+
+   void a(abr var1);
+
+   void a(abs var1);
+
+   void a(acd var1);
+
+   void a(abt var1);
+
+   void a(abw var1);
+
+   void a(abz var1);
+
+   void a(ace var1);
+
+   void a(acf var1);
+
+   void a(acg var1);
+
+   void a(ach var1);
+
+   void a(aco var1);
+
+   void a(acr var1);
+
+   void a(acu var1);
+
+   void a(acx var1);
+
+   void a(acy var1);
+
+   void a(acw var1);
+
+   void a(acb var1);
+
+   void a(aca var1);
+
+   void a(abg var1);
+
+   void a(acj var1);
+
+   void a(aci var1);
+
+   void a(acl var1);
+
+   void a(abp var1);
+
+   void a(acp var1);
+
+   void a(acq var1);
+
+   void a(acc var1);
+
+   void a(ack var1);
+
+   void a(acn var1);
+
+   void a(act var1);
+
+   void a(acm var1);
+
+   void a(abu var1);
+
+   void a(abv var1);
+
+   void a(abh var1);
+
+   void a(acs var1);
+
+   void a(abx var1);
+
+   void a(abi var1);
+
+   void a(aby var1);
+
+   void a(abm var1);
+
+   void a(abq var1);
+
+   void a(abn var1);
 }

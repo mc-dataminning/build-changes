@@ -1,40 +1,17 @@
-public class fko extends fmp {
-   fko(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+public class fko extends fkq {
+   protected fko(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fmp $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(gw.a(this.g, this.h, this.i)).a(apt.a)) {
-         this.k();
-      }
-   }
+   public static class a implements flx<ja> {
+      private final fmp a;
 
-   @Override
-   public flt b() {
-      return flt.b;
-   }
-
-   public static class a implements fls<ja> {
-      private final fmk a;
-
-      public a(fmk $$0) {
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fko $$8 = new fko($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fko($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

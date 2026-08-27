@@ -1,192 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public class cdj extends cdi implements biu, cdk {
-   private static final int f = 27;
-   private hp<cja> g = hp.a(27, cja.b);
-   @Nullable
-   private aeu h;
-   private long i;
+public class cdj {
+   private final List<cdg> a = Lists.newArrayList();
+   private int b;
 
-   public cdj(bip<? extends cdi> $$0, cpq $$1) {
-      super($$0, $$1);
+   public ImmutableList<cdg> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cdj(cpq $$0, double $$1, double $$2, double $$3) {
-      this(bip.o, $$0);
-      this.e($$1, $$2, $$3);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
+   public cdj a(int $$0, float $$1) {
+      this.a.add(new cdg($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   protected float q() {
-      return 0.15F;
+   public cdj a(Collection<cdg> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   protected int w() {
-      return 1;
+   private void b() {
+      Int2ObjectSortedMap<cdg> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   protected void b(qu $$0) {
-      super.b($$0);
-      this.c($$0);
-   }
-
-   @Override
-   protected void a(qu $$0) {
-      super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public void a(bhj $$0) {
-      super.a($$0);
-      this.a($$0, this.dK(), this);
-   }
-
-   @Override
-   public void a(bil.c $$0) {
-      if (!this.dK().B && $$0.a()) {
-         bgp.a(this.dK(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public bgt a(cbp $$0, bgs $$1) {
-      if (this.r($$0) && !$$0.fG()) {
-         return super.a($$0, $$1);
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         bgt $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(djo.k, $$0);
-            cag.a($$0, true);
+         cdg $$1 = this.a.get(this.b);
+         cdg $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cdg $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         return $$2;
+         return $$5;
       }
-   }
-
-   @Override
-   public void b(cbp $$0) {
-      $$0.a((bgw)this);
-      if (!$$0.dK().B) {
-         this.a(djo.k, $$0);
-         cag.a($$0, true);
-      }
-   }
-
-   @Override
-   public civ j() {
-      return switch (this.v()) {
-         case b -> cjd.nl;
-         case c -> cjd.nn;
-         case d -> cjd.np;
-         case e -> cjd.nr;
-         case f -> cjd.nt;
-         case g -> cjd.nv;
-         case h -> cjd.nx;
-         case i -> cjd.nz;
-         default -> cjd.nj;
-      };
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cja a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cja a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cja b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cja $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bjt a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbp $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public ceg createMenu(int $$0, cbo $$1, cbp $$2) {
-      if (this.h != null && $$2.G_()) {
-         return null;
-      } else {
-         this.e($$1.m);
-         return cen.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable cbp $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public aeu A() {
-      return this.h;
-   }
-
-   @Override
-   public void a(@Nullable aeu $$0) {
-      this.h = $$0;
-   }
-
-   @Override
-   public long B() {
-      return this.i;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public hp<cja> D() {
-      return this.g;
-   }
-
-   @Override
-   public void E() {
-      this.g = hp.a(this.b(), cja.b);
-   }
-
-   @Override
-   public void c(cbp $$0) {
-      this.dK().a(djo.j, this.di(), djo.a.a($$0));
    }
 }

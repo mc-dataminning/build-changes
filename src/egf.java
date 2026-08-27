@@ -1,9 +1,29 @@
-public interface egf extends ecm {
-   float b(ecl var1);
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   default int a(ecl $$0) {
-      return Math.round(this.b($$0));
+public record egf(aex b) implements egd {
+   public static final Codec<egf> a = RecordCodecBuilder.create($$0 -> $$0.group(aex.a.fieldOf("source").forGetter(egf::c)).apply($$0, egf::new));
+
+   @Override
+   public egc a() {
+      return ege.b;
    }
 
-   ege b();
+   @Nullable
+   @Override
+   public rq a(ecq $$0) {
+      return $$0.d().n().aG().a(this.b);
+   }
+
+   @Override
+   public Set<eey<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public aex c() {
+      return this.b;
+   }
 }

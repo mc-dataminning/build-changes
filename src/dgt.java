@@ -1,58 +1,23 @@
-public interface dgt {
-   void a(dgv var1, double var2);
+public enum dgt implements asp {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   void a(dgv var1, double var2, double var4, long var6);
+   private final String e;
+   private final tl f;
 
-   void a(dgv var1, double var2, double var4);
+   private dgt(String $$0) {
+      this.e = $$0;
+      this.f = tl.c("structure_block.mode_info." + $$0);
+   }
 
-   void a(dgv var1, int var2);
+   @Override
+   public String c() {
+      return this.e;
+   }
 
-   void b(dgv var1, int var2);
-
-   void b(dgv var1, double var2);
-
-   void c(dgv var1, double var2);
-
-   public static class a implements dgt {
-      private final dgv a;
-
-      public a(dgv $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dgv $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dgv $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dgv $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dgv $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dgv $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dgv $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dgv $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public tl a() {
+      return this.f;
    }
 }

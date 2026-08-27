@@ -1,10 +1,10 @@
 public class apx {
-   public static final aqd<bye> a = a("placeable");
+   public static final aqi<dtj> a = a("visible");
 
    private apx() {
    }
 
-   private static aqd<bye> a(String $$0) {
-      return aqd.a(je.P, new aeu($$0));
+   private static aqi<dtj> a(String $$0) {
+      return aqi.a(je.av, new aex($$0));
    }
 }

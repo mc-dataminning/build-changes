@@ -1,9 +1,24 @@
-public interface vk extends aba {
-   void a(vm var1);
+public class vk implements vd<vg> {
+   private final int a;
 
-   void a(vn var1);
+   public vk(int $$0) {
+      this.a = $$0;
+   }
 
-   void a(vl var1);
+   public vk(so $$0) {
+      this.a = $$0.readInt();
+   }
 
-   void a(vo var1);
+   @Override
+   public void a(so $$0) {
+      $$0.p(this.a);
+   }
+
+   public void a(vg $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
+   }
 }

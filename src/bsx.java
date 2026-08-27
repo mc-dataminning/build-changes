@@ -1,56 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class bsx extends btg<bjd> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
+public class bsx extends btf {
+   public static final float a = 10.0F;
 
-   public bsx() {
-      super(20);
+   @Override
+   protected boolean a(bjg $$0, bjg $$1) {
+      return !$$0.dN().a(bsh.T) && btl.c($$0, $$1) && bwg.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(bjg $$0, bjg $$1) {
+      List<UUID> $$2 = $$0.dN().c(bsh.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cw());
    }
 
    @Override
-   public Set<bsc<?>> a() {
-      return ImmutableSet.of(bsc.w);
-   }
-
-   protected void a(akn $$0, bjd $$1) {
-      if ($$1.i_()) {
-         this.f = 0;
-         this.g = $$0.V() + (long)$$0.y_().a(20);
-         bua $$2 = $$0.w();
-         Predicate<gw> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<hg<bud>, gw>> $$4 = $$2.b($$0x -> $$0x.a(bue.n), $$3, $$1.dk(), 48, bua.b.c).collect(Collectors.toSet());
-         eaw $$5 = bkl.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            gw $$6 = $$5.l();
-            Optional<hg<bud>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dM().a(bsc.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
-         }
-      }
+   protected bsh<bjg> b() {
+      return bsh.B;
    }
 }

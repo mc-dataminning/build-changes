@@ -1,83 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.function.IntFunction;
 
-public record cbs(cbs.a d) {
-   public static final ti a = ti.c("multiplayer.disconnect.expired_public_key");
-   private static final ti e = ti.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cbs> c = cbs.a.a.xmap(cbs::new, cbs::b);
+public enum cbs implements arz {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public static cbs a(asc $$0, UUID $$1, cbs.a $$2) throws cbs.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cbs.b(e);
-      } else {
-         return new cbs($$2);
-      }
+   private static final IntFunction<cbs> d = aqs.a(cbs::a, values(), aqs.a.b);
+   private final int e;
+   private final String f;
+
+   private cbs(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public asc a() {
-      return asc.a(this.d.c, "SHA256withRSA");
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public cbs.a b() {
-      return this.d;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cbs.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  arb.m.fieldOf("expires_at").forGetter(cbs.a::b), aqs.f.fieldOf("key").forGetter(cbs.a::c), arb.n.fieldOf("signature_v2").forGetter(cbs.a::d)
-               )
-               .apply($$0, cbs.a::new)
-      );
-
-      public a(sl $$0) {
-         this($$0.v(), $$0.w(), $$0.a(4096));
-      }
-
-      public void a(sl $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(asc $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cbs.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends uh {
-      public b(ti $$0) {
-         super($$0);
-      }
+   public static cbs a(int $$0) {
+      return d.apply($$0);
    }
 }

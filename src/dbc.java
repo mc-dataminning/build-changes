@@ -1,53 +1,66 @@
-public class dbc extends cuh {
-   public static final int a = 2;
-   public static final dge b = dfu.aq;
-   private static final float e = 3.0F;
-   private static final eib[] f = new eib[]{csq.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), csq.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int g = 1;
+import javax.annotation.Nullable;
 
-   public dbc(dfd.d $$0) {
+public class dbc extends cuz implements cxj {
+   public static final dgh<dgf> b = cuz.a;
+   protected static final float c = 6.0F;
+   protected static final eig d = csv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+
+   public dbc(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(b);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return d;
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return f[this.g($$0)];
+   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
+      return $$0.d($$1, $$2, hc.b) && !$$0.a(csw.kJ);
    }
 
    @Override
-   protected dge a() {
-      return b;
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(csw.bw);
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      dfj $$1 = super.a($$0);
+      if ($$1 != null) {
+         eam $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(apy.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
    @Override
-   public int b() {
-      return 2;
-   }
-
-   @Override
-   protected cpp c() {
-      return cjd.uo;
-   }
-
-   @Override
-   public dfe b(int $$0) {
-      return $$0 == 2 ? csr.bS.n() : super.b($$0);
-   }
-
-   @Override
-   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      if ($$0.c(b) == dgf.a) {
+         dfj $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(b) == dgf.b;
+      } else {
+         eam $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(apy.a) && $$4.e() == 8;
       }
    }
 
    @Override
-   protected int a(cpq $$0) {
-      return 1;
+   public eam c_(dfj $$0) {
+      return ean.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
+      return false;
    }
 }

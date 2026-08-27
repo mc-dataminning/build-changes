@@ -1,24 +1,32 @@
-public class xj implements va<ws> {
-   private final boolean a;
+public class xj implements vd<ww> {
+   private final bgv a;
+   private final boolean b;
 
-   public xj(boolean $$0) {
+   public xj(bgv $$0, boolean $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public xj(sl $$0) {
-      this.a = $$0.readBoolean();
+   public xj(so $$0) {
+      this.a = bgv.a($$0.readUnsignedByte());
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.k(this.a.a());
+      $$0.a(this.b);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
    public boolean a() {
+      return this.b;
+   }
+
+   public bgv d() {
       return this.a;
    }
 }

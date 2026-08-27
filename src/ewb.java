@@ -1,17 +1,26 @@
-public interface ewb extends etu, ewe {
-   ewb.a q();
+import java.util.function.Consumer;
 
-   default boolean az_() {
-      return true;
+public interface ewb {
+   void f(int var1);
+
+   void g(int var1);
+
+   int r();
+
+   int t();
+
+   int l();
+
+   int i();
+
+   default ews s() {
+      return new ews(this.r(), this.t(), this.l(), this.i());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
+   default void b(int $$0, int $$1) {
+      this.f($$0);
+      this.g($$1);
    }
+
+   void a(Consumer<eso> var1);
 }

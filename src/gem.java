@@ -1,38 +1,50 @@
-public class gem implements gep {
-   private static final int a = 600;
-   private static final ti b = ti.c("tutorial.open_inventory.title");
-   private static final ti c = ti.a("tutorial.open_inventory.description", geo.a("inventory"));
-   private final geo d;
-   private euu e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gem(geo $$0) {
-      this.d = $$0;
+public class gem {
+   private final get a;
+   private final eqz b;
+   @Nullable
+   private euz c;
+
+   public gem(get $$0, eqz $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(geq.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new euu(euu.a.d, b, c, false);
-            this.d.e().ay().a(this.e);
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      tl $$0 = tl.c("tutorial.bundleInsert.title");
+      tl $$1 = tl.c("tutorial.bundleInsert.description");
+      this.c = new euz(euz.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.ar();
+      }
+   }
+
+   public void a(cjf $$0, cjf $$1, cet $$2) {
+      if (!this.b.t) {
+         if (!$$0.b() && $$1.a(cji.qg)) {
+            if ($$2 == cet.a) {
+               this.a();
+            } else if ($$2 == cet.b) {
+               this.b();
+            }
+         } else if ($$0.a(cji.qg) && !$$1.b() && $$2 == cet.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(geq.e);
    }
 }

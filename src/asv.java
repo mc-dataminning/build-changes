@@ -1,76 +1,50 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public enum asv {
-   a(ays.a),
-   b(ays.b),
-   c(ays.c),
-   d(ays.d),
-   e(ays.e),
-   f(ays.f),
-   g(ays.g),
-   h(ays.h),
-   i(ays.i),
-   j(ays.j),
-   k(ays.k),
-   l(ays.l),
-   m(ays.m),
-   n(ays.o),
-   o(ays.n),
-   p(ays.p),
-   q(ays.q),
-   r(ays.I),
-   s(ays.r);
+public interface asv<C> {
+   asv<Float> a = a($$0 -> $$0);
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
+   float a(C var1);
 
-   private asv(TypeReference $$0) {
-      this.u = $$0;
-   }
+   float b();
 
-   static int a() {
-      return aa.b().d().c();
-   }
+   float c();
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(asv.a())));
+   static asv<Float> a(final Float2FloatFunction $$0) {
+      return new asv<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
          }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = asv.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
          }
       };
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
+   default <C2> asv<C2> a(final Function<C2, C> $$0) {
+      final asv<C> $$1 = this;
+      return new asv<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   public qu a(DataFixer $$0, qu $$1, int $$2, int $$3) {
-      return (qu)this.a($$0, new Dynamic(rf.a, $$1), $$2, $$3).getValue();
-   }
-
-   public qu a(DataFixer $$0, qu $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

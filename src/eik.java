@@ -1,136 +1,177 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Collection;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eik {
-   private static final Map<String, eik> n = Maps.newHashMap();
-   private static final Map<String, eik> o = Maps.newHashMap();
-   public static final eik a = b("dummy");
-   public static final eik b = b("trigger");
-   public static final eik c = b("deathCount");
-   public static final eik d = b("playerKillCount");
-   public static final eik e = b("totalKillCount");
-   public static final eik f = a("health", true, eik.a.b);
-   public static final eik g = a("food", true, eik.a.a);
-   public static final eik h = a("air", true, eik.a.a);
-   public static final eik i = a("armor", true, eik.a.a);
-   public static final eik j = a("xp", true, eik.a.a);
-   public static final eik k = a("level", true, eik.a.a);
-   public static final eik[] l = new eik[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final eik[] m = new eik[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final eik.a r;
+public class eik extends eio {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final eim c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private tl f;
+   private tl g = tk.a;
+   private tl h = tk.a;
+   private boolean i = true;
+   private boolean j = true;
+   private eio.b k = eio.b.a;
+   private eio.b l = eio.b.a;
+   private n m = n.v;
+   private eio.a n = eio.a.a;
+   private final uh o;
 
-   private static eik a(String $$0, boolean $$1, eik.a $$2) {
-      eik $$3 = new eik($$0, $$1, $$2);
-      n.put($$0, $$3);
-      return $$3;
+   public eik(eim $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = tl.b($$1);
+      this.o = uh.a.a($$1).a(new tq(tq.a.a, tl.b($$1)));
    }
 
-   private static eik b(String $$0) {
-      return a($$0, false, eik.a.a);
+   public eim a() {
+      return this.c;
    }
 
-   protected eik(String $$0) {
-      this($$0, false, eik.a.a);
+   @Override
+   public String b() {
+      return this.d;
    }
 
-   protected eik(String $$0, boolean $$1, eik.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
+   public tl c() {
+      return this.f;
    }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(n.keySet());
+   public ty d() {
+      ty $$0 = tn.a((tl)this.f.e().c(this.o));
+      n $$1 = this.n();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
    }
 
-   public static Optional<eik> a(String $$0) {
-      eik $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
+   public void a(tl $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
       } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : jd.y.b(aeu.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, aeu.a($$0.substring($$2 + 1), '.')));
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   private static <T> Optional<eik> a(api<T> $$0, aeu $$1) {
-      return $$0.a().b($$1).map($$0::b);
+   public void b(@Nullable tl $$0) {
+      this.g = $$0 == null ? tk.a : $$0;
+      this.c.b(this);
    }
 
-   public String d() {
-      return this.p;
+   public tl e() {
+      return this.g;
    }
 
-   public boolean e() {
-      return this.q;
+   public void c(@Nullable tl $$0) {
+      this.h = $$0 == null ? tk.a : $$0;
+      this.c.b(this);
    }
 
-   public eik.a f() {
-      return this.r;
+   public tl f() {
+      return this.h;
    }
 
-   public static enum a implements ask {
-      a("integer"),
-      b("hearts");
+   @Override
+   public Collection<String> g() {
+      return this.e;
+   }
 
-      private final String d;
-      public static final ask.a<eik.a> c = ask.a(eik.a::values);
-
-      private a(String $$0) {
-         this.d = $$0;
+   @Override
+   public ty d(tl $$0) {
+      ty $$1 = tl.h().b(this.g).b($$0).b(this.h);
+      n $$2 = this.n();
+      if ($$2 != n.v) {
+         $$1.a($$2);
       }
 
-      public String a() {
-         return this.d;
+      return $$1;
+   }
+
+   public static ty a(@Nullable eio $$0, tl $$1) {
+      return $$0 == null ? $$1.e() : $$0.d($$1);
+   }
+
+   @Override
+   public boolean h() {
+      return this.i;
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public boolean i() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public eio.b j() {
+      return this.k;
+   }
+
+   @Override
+   public eio.b k() {
+      return this.l;
+   }
+
+   public void a(eio.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(eio.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public eio.a l() {
+      return this.n;
+   }
+
+   public void a(eio.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int m() {
+      int $$0 = 0;
+      if (this.h()) {
+         $$0 |= 1;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      if (this.i()) {
+         $$0 |= 2;
       }
 
-      public static eik.a a(String $$0) {
-         return c.a($$0, a);
-      }
+      return $$0;
+   }
+
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
+   }
+
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public n n() {
+      return this.m;
    }
 }

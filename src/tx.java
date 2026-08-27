@@ -1,129 +1,64 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public record tx(uc d, @Nullable tt e, ua f, @Nullable ti g, tl h) {
-   public static final MapCodec<tx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               uc.a.fieldOf("link").forGetter(tx::j),
-               tt.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               ua.a.forGetter(tx::l),
-               arb.b.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               tl.a.optionalFieldOf("filter_mask", tl.c).forGetter(tx::n)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new tx($$0x, (tt)$$1.orElse(null), $$2, (ti)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ac.d;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public class tx {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final tw[] c;
 
-   public static tx a(String $$0) {
-      return a(i, $$0);
+   public tx(int $$0) {
+      this.c = new tw[$$0];
    }
 
-   public static tx a(UUID $$0, String $$1) {
-      ua $$2 = ua.a($$1);
-      uc $$3 = uc.a($$0);
-      return new tx($$3, null, $$2, null, tl.c);
+   public static tx a() {
+      return new tx(128);
    }
 
-   public tx a(ti $$0) {
-      ti $$1 = !$$0.equals(ti.b(this.b())) ? $$0 : null;
-      return new tx(this.d, this.e, this.f, $$1, this.h);
-   }
+   public int a(tw $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
+      }
 
-   public tx a() {
-      return this.g != null ? new tx(this.d, this.e, this.f, null, this.h) : this;
-   }
-
-   public tx a(tl $$0) {
-      return this.h.equals($$0) ? this : new tx(this.d, this.e, this.f, this.g, $$0);
-   }
-
-   public tx a(boolean $$0) {
-      return this.a($$0 ? this.h : tl.c);
-   }
-
-   public static void a(asb.a $$0, uc $$1, ua $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(asc $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String b() {
-      return this.f.a();
-   }
-
-   public ti c() {
-      return Objects.requireNonNullElseGet(this.g, () -> ti.b(this.b()));
-   }
-
-   public Instant d() {
-      return this.f.b();
-   }
-
-   public long e() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.d().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.d().plus(c));
-   }
-
-   public UUID f() {
-      return this.d.c();
-   }
-
-   public boolean g() {
-      return this.f().equals(i);
-   }
-
-   public boolean h() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.h() && this.d.c().equals($$0);
-   }
-
-   public boolean i() {
-      return this.h.b();
-   }
-
-   public uc j() {
-      return this.d;
+      return -1;
    }
 
    @Nullable
-   public tt k() {
-      return this.e;
+   public tw a(int $$0) {
+      return this.c[$$0];
    }
 
-   public ua l() {
-      return this.f;
+   public void a(ua $$0) {
+      List<tw> $$1 = $$0.l().d().a();
+      ArrayDeque<tw> $$2 = new ArrayDeque<>($$1.size() + 1);
+      $$2.addAll($$1);
+      tw $$3 = $$0.k();
+      if ($$3 != null) {
+         $$2.add($$3);
+      }
+
+      this.a($$2);
    }
 
-   @Nullable
-   public ti m() {
-      return this.g;
+   @VisibleForTesting
+   void a(List<tw> $$0) {
+      this.a(new ArrayDeque<>($$0));
    }
 
-   public tl n() {
-      return this.h;
+   private void a(ArrayDeque<tw> $$0) {
+      Set<tw> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         tw $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
+      }
    }
 }

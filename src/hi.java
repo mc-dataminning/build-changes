@@ -8,20 +8,20 @@ import java.util.stream.Stream;
 public interface hi<T> extends hh<T> {
    Stream<hg.c<T>> b();
 
-   default Stream<aet<T>> c() {
+   default Stream<aew<T>> c() {
       return this.b().map(hg.c::g);
    }
 
    Stream<hk.c<T>> d();
 
-   default Stream<aqd<T>> e() {
+   default Stream<aqi<T>> e() {
       return this.d().map(hk.c::f);
    }
 
    default hi<T> a(final Predicate<T> $$0) {
       return new hi.a<T>(this) {
          @Override
-         public Optional<hg.c<T>> a(aet<T> $$0x) {
+         public Optional<hg.c<T>> a(aew<T> $$0x) {
             return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
          }
 
@@ -40,7 +40,7 @@ public interface hi<T> extends hh<T> {
       }
 
       @Override
-      public Optional<hg.c<T>> a(aet<T> $$0) {
+      public Optional<hg.c<T>> a(aew<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -50,7 +50,7 @@ public interface hi<T> extends hh<T> {
       }
 
       @Override
-      public Optional<hk.c<T>> a(aqd<T> $$0) {
+      public Optional<hk.c<T>> a(aqi<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -61,26 +61,26 @@ public interface hi<T> extends hh<T> {
    }
 
    public interface b {
-      <T> Optional<hi.c<T>> a(aet<? extends ht<? extends T>> var1);
+      <T> Optional<hi.c<T>> a(aew<? extends ht<? extends T>> var1);
 
-      default <T> hi.c<T> b(aet<? extends ht<? extends T>> $$0) {
+      default <T> hi.c<T> b(aew<? extends ht<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
       default hh.a a() {
          return new hh.a() {
             @Override
-            public <T> Optional<hh<T>> a(aet<? extends ht<? extends T>> $$0) {
+            public <T> Optional<hh<T>> a(aew<? extends ht<? extends T>> $$0) {
                return b.this.a($$0).map($$0x -> $$0x);
             }
          };
       }
 
       static hi.b a(Stream<hi.c<?>> $$0) {
-         final Map<aet<? extends ht<?>>, hi.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(hi.c::f, $$0x -> $$0x));
+         final Map<aew<? extends ht<?>>, hi.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(hi.c::f, $$0x -> $$0x));
          return new hi.b() {
             @Override
-            public <T> Optional<hi.c<T>> a(aet<? extends ht<? extends T>> $$0) {
+            public <T> Optional<hi.c<T>> a(aew<? extends ht<? extends T>> $$0) {
                return Optional.ofNullable((hi.c<T>)$$1.get($$0));
             }
          };
@@ -88,19 +88,19 @@ public interface hi<T> extends hh<T> {
    }
 
    public interface c<T> extends hi<T>, hj<T> {
-      aet<? extends ht<? extends T>> f();
+      aew<? extends ht<? extends T>> f();
 
       Lifecycle g();
 
-      default hi<T> a(cdx $$0) {
-         return (hi<T>)(cdu.bv.contains(this.f()) ? this.a($$1 -> ((cdu)$$1).a($$0)) : this);
+      default hi<T> a(cec $$0) {
+         return (hi<T>)(cdz.bv.contains(this.f()) ? this.a($$1 -> ((cdz)$$1).a($$0)) : this);
       }
 
       public abstract static class a<T> implements hi.c<T> {
          protected abstract hi.c<T> a();
 
          @Override
-         public aet<? extends ht<? extends T>> f() {
+         public aew<? extends ht<? extends T>> f() {
             return this.a().f();
          }
 
@@ -110,7 +110,7 @@ public interface hi<T> extends hh<T> {
          }
 
          @Override
-         public Optional<hg.c<T>> a(aet<T> $$0) {
+         public Optional<hg.c<T>> a(aew<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -120,7 +120,7 @@ public interface hi<T> extends hh<T> {
          }
 
          @Override
-         public Optional<hk.c<T>> a(aqd<T> $$0) {
+         public Optional<hk.c<T>> a(aqi<T> $$0) {
             return this.a().a($$0);
          }
 

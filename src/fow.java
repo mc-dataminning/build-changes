@@ -1,39 +1,20 @@
-public class fow {
-   protected final int[] a;
-   protected final int b;
-   protected final hc c;
-   protected final fyz d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public fow(int[] $$0, int $$1, hc $$2, fyz $$3, boolean $$4) {
+public final class fow implements AutoCloseable {
+   private final eqv a;
+   private final ekr b;
+
+   public fow(eqv $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.b = new ekr(eko::new);
    }
 
-   public fyz a() {
-      return this.d;
+   public ekt a(ekg $$0, @Nullable String $$1, String $$2) {
+      return new ekt(this.a, this.b, $$0, $$1, $$2);
    }
 
-   public int[] b() {
-      return this.a;
-   }
-
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public hc e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+   @Override
+   public void close() {
+      this.b.a();
    }
 }

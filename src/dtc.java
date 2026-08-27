@@ -1,8 +1,41 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dtc {
+public class dtc extends dtb {
+   public static final Codec<dtc> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtc::new));
+
+   public dtc(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected dtf<?> a() {
+      return dtf.d;
+   }
+
+   @Override
+   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
+      List<drm.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + arx.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + arx.a($$8) * (float)$$11);
+            gw $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new drm.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
+   }
 }

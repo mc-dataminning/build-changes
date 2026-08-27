@@ -1,15 +1,17 @@
-public class fzy extends gac {
-   private static final aeu a = new aeu("back");
+import java.io.IOException;
 
-   public fzy(fza $$0) {
-      super($$0, new aeu("textures/atlas/paintings.png"), new aeu("paintings"));
+public class fzy extends anz<int[]> {
+   private static final aex a = new aex("textures/colormap/foliage.png");
+
+   protected int[] a(anu $$0, bdp $$1) {
+      try {
+         return gab.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public fyz a(bye $$0) {
-      return this.a(jd.m.b($$0));
-   }
-
-   public fyz a() {
-      return this.a(a);
+   protected void a(int[] $$0, anu $$1, bdp $$2) {
+      cpp.a($$0);
    }
 }

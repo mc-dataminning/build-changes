@@ -1,37 +1,23 @@
 import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum cix implements ask {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
+public record cix(hg<apd> b, int c, float d) {
+   public static final Codec<cix> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               apd.b.fieldOf("sound_event").forGetter(cix::a), arg.j.fieldOf("use_duration").forGetter(cix::b), arg.k.fieldOf("range").forGetter(cix::c)
+            )
+            .apply($$0, cix::new)
+   );
 
-   public static final Codec<cix> j = ask.a(cix::values);
-   public static final IntFunction<cix> k = aqn.a(cix::a, values(), aqn.a.a);
-   private final byte l;
-   private final String m;
-
-   private cix(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   public hg<apd> a() {
+      return this.b;
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public int b() {
+      return this.c;
    }
 
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   public float c() {
+      return this.d;
    }
 }

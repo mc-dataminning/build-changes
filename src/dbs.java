@@ -1,68 +1,137 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dbs extends ctq<dbs.a> {
-   Supplier<BiMap<csq, csq>> u_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(csr.qM, csr.qL)
-            .put(csr.qL, csr.qK)
-            .put(csr.qK, csr.qJ)
-            .put(csr.qS, csr.qR)
-            .put(csr.qR, csr.qQ)
-            .put(csr.qQ, csr.qP)
-            .put(csr.ra, csr.qZ)
-            .put(csr.qZ, csr.qY)
-            .put(csr.qY, csr.qX)
-            .put(csr.qW, csr.qV)
-            .put(csr.qV, csr.qU)
-            .put(csr.qU, csr.qT)
-            .build()
-   );
-   Supplier<BiMap<csq, csq>> v_ = Suppliers.memoize(() -> u_.get().inverse());
+public class dbs extends czv {
+   public static final dgd a = cwo.aC;
+   public static final eig b = csv.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
+   public static final eig c = csv.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
+   public static final eig d = eid.a(b, csv.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
+   public static final eig h = eid.a(c, csv.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
+   private static final Map<hc, eig> i = Maps.newEnumMap(ImmutableMap.of(hc.c, d, hc.d, d, hc.f, h, hc.e, h));
 
-   static Optional<csq> a(csq $$0) {
-      return Optional.ofNullable((csq)v_.get().get($$0));
+   public dbs(dfi.d $$0, dgw $$1) {
+      super($$0.a($$1.e()), $$1);
+      this.k(this.C.b().a(a, hc.c).a(e, Boolean.valueOf(false)));
    }
 
-   static csq b(csq $$0) {
-      csq $$1 = $$0;
-
-      for (csq $$2 = (csq)v_.get().get($$0); $$2 != null; $$2 = (csq)v_.get().get($$2)) {
-         $$1 = $$2;
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.c_($$2) instanceof ded $$6) {
+         cjf $$7 = $$3.b($$4);
+         if (this.a($$0, $$3, $$5, $$6, $$7)) {
+            return bgy.d;
+         }
       }
 
-      return $$1;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   static Optional<dfe> b(dfe $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
+   private boolean a(dfj $$0, cbu $$1, ehj $$2, ded $$3, cjf $$4) {
+      return !$$3.a($$3.a($$1), $$1) && $$4.d() instanceof cir && !this.a($$2, $$0);
    }
 
-   static Optional<csq> c(csq $$0) {
-      return Optional.ofNullable((csq)u_.get().get($$0));
-   }
-
-   static dfe c(dfe $$0) {
-      return b($$0.b()).l($$0);
+   private boolean a(ehj $$0, dfj $$1) {
+      return $$0.b().o() == $$1.c(a).o();
    }
 
    @Override
-   default Optional<dfe> i_(dfe $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public String f() {
+      return this.k().a();
    }
 
    @Override
-   default float a() {
-      return this.b() == dbs.a.a ? 0.75F : 1.0F;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return i.get($$0.c(a));
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public eig b_(dfj $$0, cpb $$1, gw $$2) {
+      return this.a($$0, $$1, $$2, ehs.a());
+   }
+
+   @Override
+   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      switch ((hc)$$0.c(a)) {
+         case f:
+         case e:
+            return c;
+         default:
+            return b;
+      }
+   }
+
+   public boolean b(dfj $$0, cpy $$1, gw $$2) {
+      hc $$3 = $$0.c(a).h();
+      hc $$4 = $$0.c(a).i();
+      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   }
+
+   public boolean a(cpy $$0, dfj $$1, gw $$2, hc $$3) {
+      dfj $$4 = $$0.a_($$2);
+      return $$4.a(apt.ay) ? $$4.c(a).o().a($$1.c(a)) : $$4.a($$0, $$2, $$3, dax.a);
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      dfj $$1 = this.n();
+      eam $$2 = $$0.q().b_($$0.a());
+      cpy $$3 = $$0.q();
+      gw $$4 = $$0.a();
+
+      for (hc $$5 : $$0.f()) {
+         if ($$5.o().d() && !$$5.o().a($$0.k())) {
+            hc $$6 = $$5.g();
+            $$1 = $$1.a(a, $$6);
+            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
+               return $$1.a(e, Boolean.valueOf($$2.a() == ean.c));
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      return $$1.o() == $$0.c(a).h().o() && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(dfj $$0) {
+      return $$0.c(a).p();
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, e);
+   }
+
+   @Override
+   public dcv a(gw $$0, dfj $$1) {
+      return new ddr($$0, $$1);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      return a($$2, dcx.i, ded::a);
    }
 }

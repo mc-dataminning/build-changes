@@ -1,17 +1,10 @@
-public abstract class cwj extends csq {
-   public static final dfy aC = dfu.R;
-
-   protected cwj(dfd.d $$0) {
+public class cwj extends csv {
+   protected cwj(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(aC, $$1.a($$0.c(aC)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a($$1.a($$0.c(aC)));
+   public boolean a(dfj $$0, dfj $$1, hc $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 }

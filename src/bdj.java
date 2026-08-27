@@ -1,32 +1,33 @@
-import java.nio.file.Path;
-import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface bdj {
-   char d = '\u001e';
+public class bdj {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bdn c = bdm.a;
 
-   List<bdm> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   public bdj(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default int f() {
-      return this.d() - this.b();
+   public boolean a() {
+      return this.c != bdm.a;
    }
 
-   String e();
+   public void b() {
+      this.c = bdm.a;
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   public void c() {
+      this.c = new bdi(this.a, this.b, true);
+   }
+
+   public bdp d() {
+      return this.c;
+   }
+
+   public bdo e() {
+      return this.c.d();
    }
 }

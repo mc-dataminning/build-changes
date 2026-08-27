@@ -1,12 +1,22 @@
-public class dby extends cwc {
-   public static final eib d = csq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dby extends csv implements dbx {
+   private final dbx.a d;
 
-   public dby(dfd.d $$0) {
-      super($$0, hc.a, d, false);
+   public dby(dbx.a $$0, dfi.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected cwd b() {
-      return (cwd)csr.oz;
+   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dfj $$0) {
+      return dbx.c($$0.b()).isPresent();
+   }
+
+   public dbx.a g() {
+      return this.d;
    }
 }

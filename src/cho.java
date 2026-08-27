@@ -1,99 +1,87 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import java.util.Collection;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cho implements ask {
-   a(0, "white", 16383998, eal.i, 15790320, 16777215),
-   b(1, "orange", 16351261, eal.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, eal.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, eal.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, eal.s, 14602026, 16776960),
-   f(5, "lime", 8439583, eal.t, 4312372, 12582656),
-   g(6, "pink", 15961002, eal.u, 14188952, 16738740),
-   h(7, "gray", 4673362, eal.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, eal.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, eal.x, 2651799, 65535),
-   k(10, "purple", 8991416, eal.y, 8073150, 10494192),
-   l(11, "blue", 3949738, eal.z, 2437522, 255),
-   m(12, "brown", 8606770, eal.A, 5320730, 9127187),
-   n(13, "green", 6192150, eal.B, 3887386, 65280),
-   o(14, "red", 11546150, eal.C, 11743532, 16711680),
-   p(15, "black", 1908001, eal.D, 1973019, 0);
-
-   private static final IntFunction<cho> r = aqn.a(cho::a, values(), aqn.a.a);
-   private static final Int2ObjectOpenHashMap<cho> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cho)$$0))
-   );
-   public static final ask.a<cho> q = ask.a(cho::values);
-   private final int t;
-   private final String u;
-   private final eal v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cho(int $$0, String $$1, int $$2, eal $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public eal e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static cho a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cho a(String $$0, @Nullable cho $$1) {
-      cho $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cho b(int $$0) {
-      return (cho)s.get($$0);
+public class cho extends cja {
+   public cho(cja.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public boolean i(cjf $$0) {
+      return true;
    }
 
    @Override
-   public String c() {
-      return this.u;
+   public boolean a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bgx.a));
+      }
+
+      return false;
+   }
+
+   @Override
+   public bgy a(clp $$0) {
+      cbu $$1 = $$0.o();
+      cpv $$2 = $$0.q();
+      if (!$$2.B && $$1 != null) {
+         gw $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bgy.e;
+         }
+      }
+
+      return bgy.a($$2.B);
+   }
+
+   private boolean a(cbu $$0, dfj $$1, cpw $$2, gw $$3, boolean $$4, cjf $$5) {
+      if (!$$0.go()) {
+         return false;
+      } else {
+         csv $$6 = $$1.b();
+         dfk<csv, dfj> $$7 = $$6.l();
+         Collection<dgm<?>> $$8 = $$7.d();
+         String $$9 = jd.f.b($$6).toString();
+         if ($$8.isEmpty()) {
+            a($$0, tl.a(this.a() + ".empty", $$9));
+            return false;
+         } else {
+            qx $$10 = $$5.a("DebugProperty");
+            String $$11 = $$10.l($$9);
+            dgm<?> $$12 = $$7.a($$11);
+            if ($$4) {
+               if ($$12 == null) {
+                  $$12 = $$8.iterator().next();
+               }
+
+               dfj $$13 = a($$1, $$12, $$0.fH());
+               $$2.a($$3, $$13, 18);
+               a($$0, tl.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            } else {
+               $$12 = a($$8, $$12, $$0.fH());
+               String $$14 = $$12.f();
+               $$10.a($$9, $$14);
+               a($$0, tl.a(this.a() + ".select", $$14, a($$1, $$12)));
+            }
+
+            return true;
+         }
+      }
+   }
+
+   private static <T extends Comparable<T>> dfj a(dfj $$0, dgm<T> $$1, boolean $$2) {
+      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   }
+
+   private static void a(cbu $$0, tl $$1) {
+      ((aks)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dfj $$0, dgm<T> $$1) {
+      return $$1.a($$0.c($$1));
    }
 }

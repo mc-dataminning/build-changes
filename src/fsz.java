@@ -1,15 +1,23 @@
-public class fsz extends fui<byu, fex<byu>> {
-   private static final aeu a = new aeu("textures/entity/endermite.png");
+public class fsz extends fsf<byw, fez<byw>> {
+   private static final aex a = new aex("textures/entity/zombie/drowned.png");
 
-   public fsz(ftc.a $$0) {
-      super($$0, new fex<>($$0.a(fhw.S)), 0.3F);
+   public fsz(fth.a $$0) {
+      super($$0, new fez<>($$0.a(fib.L)), new fez<>($$0.a(fib.M)), new fez<>($$0.a(fib.N)));
+      this.a(new fwx<>(this, $$0.f()));
    }
 
-   protected float a(byu $$0) {
-      return 180.0F;
-   }
-
-   public aeu b(byu $$0) {
+   @Override
+   public aex a(cab $$0) {
       return a;
+   }
+
+   protected void a(byw $$0, elp $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.a($$4);
+      if ($$5 > 0.0F) {
+         float $$6 = -10.0F - $$0.dD();
+         float $$7 = arx.i($$5, 0.0F, $$6);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dh() / 2.0F, 0.0F);
+      }
    }
 }

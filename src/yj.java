@@ -1,95 +1,102 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import javax.annotation.Nullable;
+public class yj implements vd<ww> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final int h;
+   private final boolean i;
+   private final iv j;
 
-public class yj implements va<ws> {
-   private final int a;
-   private final byte b;
-   private final boolean c;
-   @Nullable
-   private final List<ebo> d;
-   @Nullable
-   private final ebr.b e;
-
-   public yj(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebo> $$3, @Nullable ebr.b $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
-      this.e = $$4;
+   public <T extends iv> yj(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.j = $$0;
+      this.i = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = $$6;
+      this.f = $$7;
+      this.g = $$8;
+      this.h = $$9;
    }
 
-   public yj(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
-      this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((sl.a)($$0xx -> {
-            ebo.a $$1x = $$0xx.b(ebo.a.class);
-            byte $$2x = $$0xx.readByte();
-            byte $$3x = $$0xx.readByte();
-            byte $$4x = (byte)($$0xx.readByte() & 15);
-            ti $$5x = $$0xx.c(sl::l);
-            return new ebo($$1x, $$2x, $$3x, $$4x, $$5x);
-         })));
-      int $$1 = $$0.readUnsignedByte();
-      if ($$1 > 0) {
-         int $$2 = $$0.readUnsignedByte();
-         int $$3 = $$0.readUnsignedByte();
-         int $$4 = $$0.readUnsignedByte();
-         byte[] $$5 = $$0.b();
-         this.e = new ebr.b($$3, $$4, $$1, $$2, $$5);
-      } else {
-         this.e = null;
-      }
+   public yj(so $$0) {
+      iw<?> $$1 = $$0.a(jd.k);
+      this.i = $$0.readBoolean();
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readInt();
+      this.j = this.a($$0, (iw<iv>)$$1);
+   }
+
+   private <T extends iv> T a(so $$0, iw<T> $$1) {
+      return $$1.d().b($$1, $$0);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(so $$0) {
+      $$0.a(jd.k, this.j.b());
+      $$0.a(this.i);
+      $$0.a(this.a);
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.d());
-            $$0xx.k($$1x.e());
-            $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), sl::a);
-         }));
-      if (this.e != null) {
-         $$0.k(this.e.c);
-         $$0.k(this.e.d);
-         $$0.k(this.e.a);
-         $$0.k(this.e.b);
-         $$0.a(this.e.e);
-      } else {
-         $$0.k(0);
-      }
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.p(this.h);
+      this.j.a($$0);
    }
 
-   public void a(ws $$0) {
-      $$0.a(this);
+   public boolean a() {
+      return this.i;
    }
 
-   public int a() {
+   public double d() {
       return this.a;
    }
 
-   public void a(ebr $$0) {
-      if (this.d != null) {
-         $$0.a(this.d);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   public byte d() {
+   public double e() {
       return this.b;
    }
 
-   public boolean e() {
+   public double f() {
       return this.c;
+   }
+
+   public float g() {
+      return this.d;
+   }
+
+   public float h() {
+      return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public iv l() {
+      return this.j;
+   }
+
+   public void a(ww $$0) {
+      $$0.a(this);
    }
 }

@@ -1,20 +1,17 @@
-public class fvz extends fui<cat, fhk<cat>> {
-   private static final aeu a = new aeu("textures/entity/warden/warden.png");
-   private static final aeu i = new aeu("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aeu j = new aeu("textures/entity/warden/warden_heart.png");
-   private static final aeu k = new aeu("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aeu l = new aeu("textures/entity/warden/warden_pulsating_spots_2.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fvz(ftc.a $$0) {
-      super($$0, new fhk<>($$0.a(fhw.bL)), 0.9F);
-      this.a(new fxw<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fhk::e));
-      this.a(new fxw<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ars.b($$2 * 0.045F) * 0.25F), fhk::f));
-      this.a(new fxw<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ars.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fhk::f));
-      this.a(new fxw<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fhk::c));
-      this.a(new fxw<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fhk::d));
+public class fvz extends fse<bwq, ffo<bwq>> {
+   private static final Map<biu<?>, aex> a = Maps.newHashMap(
+      ImmutableMap.of(biu.bq, new aex("textures/entity/horse/horse_zombie.png"), biu.aK, new aex("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public fvz(fth.a $$0, fia $$1) {
+      super($$0, new ffo<>($$0.a($$1)), 1.0F);
    }
 
-   public aeu a(cat $$0) {
-      return a;
+   public aex a(bwq $$0) {
+      return a.get($$0.ah());
    }
 }

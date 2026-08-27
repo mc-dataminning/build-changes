@@ -1,53 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public class epm extends epq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ti c = ti.c("mco.configure.world.closing");
-   private final emr d;
-   private final eoa e;
+public class epm {
+   private static final tl a = tl.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public epm(emr $$0, eoa $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void run() {
-      ema $$0 = ema.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.e();
-               this.d.e = emr.b.a;
-               a(this.e);
-               break;
-            }
-         } catch (eno var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
+   public static tl a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return tl.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return tl.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return tl.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return tl.a("mco.time.daysAgo", $$4);
          }
       }
    }
 
-   @Override
-   public ti a() {
-      return c;
+   public static tl a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
+   }
+
+   public static void a(esf $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      eqv $$5 = eqv.O();
+      ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
+      gae $$7 = $$6 != null ? $$5.al().b($$6.profile()) : fzw.a($$4);
+      etp.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

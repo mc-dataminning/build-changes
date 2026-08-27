@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dly implements dlu {
-   public static final Codec<dly> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ib.v(16).optionalFieldOf("offset", gw.b).forGetter($$0x -> $$0x.e)).apply($$0, dly::new)
-   );
-   private final ib e;
+class dly extends dmb {
+   public static final Codec<dly> a = a(dly::new);
 
-   public dly(ib $$0) {
-      this.e = $$0;
+   public dly(List<dlz> $$0) {
+      super($$0);
    }
 
-   public boolean a(cqk $$0, gw $$1) {
-      return !$$0.r($$1.a(this.e));
+   public boolean a(cqp $$0, gw $$1) {
+      for (dlz $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public dlv<?> a() {
-      return dlv.h;
+   public dma<?> a() {
+      return dma.i;
    }
 }

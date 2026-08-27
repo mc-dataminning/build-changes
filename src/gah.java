@@ -1,75 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gah implements anq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "en_us";
-   private static final gag c = new gag("US", "English", false);
-   private Map<String, gag> d = ImmutableMap.of("en_us", c);
-   private String e;
+public abstract class gah implements ano, AutoCloseable {
+   private final fzd a;
+   private final aex b;
+   private final Set<amu<?>> c;
 
-   public gah(String $$0) {
-      this.e = $$0;
+   public gah(fzf $$0, aex $$1, aex $$2) {
+      this($$0, $$1, $$2, fyz.a);
    }
 
-   private static Map<String, gag> a(Stream<amd> $$0) {
-      Map<String, gag> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gat $$2 = $$1x.a(gat.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            b.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
+   public gah(fzf $$0, aex $$1, aex $$2, Set<amu<?>> $$3) {
+      this.b = $$2;
+      this.a = new fzd($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected fze a(aex $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public void a(anp $$0) {
-      this.d = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = c.d();
-      $$1.add("en_us");
-      if (!this.e.equals("en_us")) {
-         gag $$3 = this.d.get(this.e);
-         if ($$3 != null) {
-            $$1.add(this.e);
-            $$2 = $$3.d();
-         }
-      }
-
-      gad $$4 = gad.a($$0, $$1, $$2);
-      gaf.a($$4);
-      qp.a($$4);
+   public final CompletableFuture<Void> a(ano.a $$0, anu $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
+      return fyz.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(fyz.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   public void a(String $$0) {
-      this.e = $$0;
+   private void a(fyz.a $$0, bdp $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
-   public String a() {
-      return this.e;
-   }
-
-   public SortedMap<String, gag> b() {
-      return new TreeMap<>(this.d);
-   }
-
-   @Nullable
-   public gag b(String $$0) {
-      return this.d.get($$0);
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

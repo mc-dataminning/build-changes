@@ -1,40 +1,28 @@
-public class zk implements va<ws> {
-   private final double a;
-   private final double b;
-   private final long c;
+import javax.annotation.Nullable;
 
-   public zk(dgv $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
+public class zk implements vd<ww> {
+   @Nullable
+   private final aex a;
+
+   public zk(@Nullable aex $$0) {
+      this.a = $$0;
    }
 
-   public zk(sl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.n();
-   }
-
-   @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public zk(so $$0) {
+      this.a = $$0.c(so::s);
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a, so::a);
+   }
+
+   @Nullable
+   public aex a() {
       return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
    }
 }

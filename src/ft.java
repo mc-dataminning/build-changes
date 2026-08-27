@@ -13,15 +13,15 @@ public class ft implements fm {
    }
 
    @Override
-   public ehi a(dt $$0) {
-      ehi $$1 = $$0.d();
-      return new ehi(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public ehn a(dt $$0) {
+      ehn $$1 = $$0.d();
+      return new ehn(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public ehh b(dt $$0) {
-      ehh $$1 = $$0.k();
-      return new ehh((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ehm b(dt $$0) {
+      ehm $$1 = $$0.k();
+      return new ehm((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class ft implements fm {
       return new ft(new fs(false, $$0), new fs(false, $$1), new fs(false, $$2));
    }
 
-   public static ft a(ehh $$0) {
+   public static ft a(ehm $$0) {
       return new ft(new fs(false, (double)$$0.i), new fs(false, (double)$$0.j), new fs(true, 0.0));
    }
 

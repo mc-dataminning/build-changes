@@ -1,19 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqx<P extends dqw> {
-   public static final dqx<dqz> a = a("two_layers_feature_size", dqz.d);
-   public static final dqx<dqy> b = a("three_layers_feature_size", dqy.d);
-   private final Codec<P> c;
+public record dqx(int b, int c, int d) implements dqa {
+   public static final Codec<dqx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arg.j.fieldOf("spread_width").forGetter(dqx::a), arg.j.fieldOf("spread_height").forGetter(dqx::b), arg.j.fieldOf("max_height").forGetter(dqx::c)
+            )
+            .apply($$0, dqx::new)
+   );
 
-   private static <P extends dqw> dqx<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.ab, $$0, new dqx<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private dqx(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

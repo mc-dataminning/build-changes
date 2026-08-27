@@ -1,58 +1,170 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class agl {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.disable.failed", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> tl.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
+   );
+   private static final SuggestionProvider<dt> e = ($$0, $$1) -> dw.b(
+         ((dt)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+      );
+   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
+      anf $$2 = ((dt)$$0.getSource()).l().aB();
+      Collection<String> $$3 = $$2.d();
+      cec $$4 = ((dt)$$0.getSource()).w();
+      return dw.b(
+         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(anc::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+      );
+   };
+
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(du.a("config").then(du.a("target", ee.c()).executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "target"))))))
-            .then(
-               du.a("unconfig")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("datapack").requires($$0x -> $$0x.c(2)))
                   .then(
-                     du.a("target", fe.a())
-                        .suggests(($$0x, $$1) -> dw.b(a(((dt)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((dt)$$0x.getSource(), fe.a($$0x, "target")))
-                  )
+                     du.a("enable")
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
+                                             "name", StringArgumentType.string()
+                                          )
+                                          .suggests(f)
+                                          .executes(
+                                             $$0x -> a(
+                                                   (dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
+                                                )
+                                          ))
+                                       .then(
+                                          du.a("after")
+                                             .then(
+                                                du.a("existing", StringArgumentType.string())
+                                                   .suggests(e)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dt)$$0x.getSource(),
+                                                            a($$0x, "name", true),
+                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       du.a("before")
+                                          .then(
+                                             du.a("existing", StringArgumentType.string())
+                                                .suggests(e)
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (dt)$$0x.getSource(),
+                                                         a($$0x, "name", true),
+                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(du.a("last").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(du.a("first").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                        )
+                  ))
+               .then(
+                  du.a("disable").then(du.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", false))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
+                     .then(du.a("available").executes($$0x -> b((dt)$$0x.getSource()))))
+                  .then(du.a("enabled").executes($$0x -> c((dt)$$0x.getSource())))
             )
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
+   private static int a(dt $$0, anc $$1, agl.a $$2) throws CommandSyntaxException {
+      anf $$3 = $$0.l().aB();
+      List<anc> $$4 = Lists.newArrayList($$3.f());
+      $$2.apply($$4, $$1);
+      $$0.a(() -> tl.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      ahz.a($$4.stream().map(anc::f).collect(Collectors.toList()), $$0);
+      return $$4.size();
+   }
 
-      for (sj $$2 : $$0.ad().e()) {
-         if ($$2.m() instanceof alj $$3) {
-            $$1.add($$3.k().getId().toString());
-         }
+   private static int a(dt $$0, anc $$1) {
+      anf $$2 = $$0.l().aB();
+      List<anc> $$3 = Lists.newArrayList($$2.f());
+      $$3.remove($$1);
+      $$0.a(() -> tl.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      ahz.a($$3.stream().map(anc::f).collect(Collectors.toList()), $$0);
+      return $$3.size();
+   }
+
+   private static int a(dt $$0) {
+      return c($$0) + b($$0);
+   }
+
+   private static int b(dt $$0) {
+      anf $$1 = $$0.l().aB();
+      $$1.a();
+      Collection<anc> $$2 = $$1.f();
+      Collection<anc> $$3 = $$1.c();
+      cec $$4 = $$0.w();
+      List<anc> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
+      if ($$5.isEmpty()) {
+         $$0.a(() -> tl.c("commands.datapack.list.available.none"), false);
+      } else {
+         $$0.a(() -> tl.a("commands.datapack.list.available.success", $$5.size(), tn.b($$5, $$0xx -> $$0xx.a(false))), false);
       }
 
-      return $$1;
+      return $$5.size();
    }
 
-   private static int a(dt $$0, ako $$1) {
-      GameProfile $$2 = $$1.fP();
-      $$1.c.o();
-      $$0.a(() -> ti.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
+   private static int c(dt $$0) {
+      anf $$1 = $$0.l().aB();
+      $$1.a();
+      Collection<? extends anc> $$2 = $$1.f();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> tl.c("commands.datapack.list.enabled.none"), false);
+      } else {
+         $$0.a(() -> tl.a("commands.datapack.list.enabled.success", $$2.size(), tn.b($$2, $$0xx -> $$0xx.a(true))), false);
+      }
+
+      return $$2.size();
    }
 
-   private static int a(dt $$0, UUID $$1) {
-      for (sj $$2 : $$0.l().ad().e()) {
-         sr var5 = $$2.m();
-         if (var5 instanceof alj) {
-            alj $$3 = (alj)var5;
-            if ($$3.k().getId().equals($$1)) {
-               $$3.n();
+   private static anc a(CommandContext<dt> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+      String $$3 = StringArgumentType.getString($$0, $$1);
+      anf $$4 = ((dt)$$0.getSource()).l().aB();
+      anc $$5 = $$4.c($$3);
+      if ($$5 == null) {
+         throw a.create($$3);
+      } else {
+         boolean $$6 = $$4.f().contains($$5);
+         if ($$2 && $$6) {
+            throw b.create($$3);
+         } else if (!$$2 && !$$6) {
+            throw c.create($$3);
+         } else {
+            cec $$7 = ((dt)$$0.getSource()).w();
+            cec $$8 = $$5.d();
+            if (!$$8.a($$7)) {
+               throw d.create($$3, cee.a($$7, $$8));
+            } else {
+               return $$5;
             }
          }
       }
+   }
 
-      $$0.b(ti.b("Can't find player to unconfig"));
-      return 0;
+   interface a {
+      void apply(List<anc> var1, anc var2) throws CommandSyntaxException;
    }
 }

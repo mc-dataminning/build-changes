@@ -1,194 +1,147 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class aml extends FileSystemProvider {
-   public static final String a = "x-mc-link";
+public class aml implements ami {
+   private static final Logger c = LogUtils.getLogger();
+   private final amd d;
+   private final Set<String> e;
+   private final List<Path> f;
+   private final Map<amj, List<Path>> g;
 
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
-   }
-
-   @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
-         } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final amn.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
-                  }
-               }).map($$0 -> (Path)$$0).iterator();
-            }
-
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof amk && $$1 instanceof amk && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
-      } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
-            }
-         }
-      }
+   aml(amd $$0, Set<String> $$1, List<Path> $$2, Map<amj, List<Path>> $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Nullable
    @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      amk $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
-   }
+   public anm<InputStream> a(String... $$0) {
+      v.a($$0);
+      List<String> $$1 = List.of($$0);
 
-   @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      amk $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
-      } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+      for (Path $$2 : this.f) {
+         Path $$3 = v.a($$2, $$1);
+         if (Files.exists($$3) && amk.a($$3)) {
+            return anm.create($$3);
+         }
       }
+
+      return null;
+   }
+
+   public void a(amj $$0, aex $$1, Consumer<Path> $$2) {
+      v.c($$1.a()).get().ifLeft($$3 -> {
+         String $$4 = $$1.b();
+
+         for (Path $$5 : this.g.get($$0)) {
+            Path $$6 = $$5.resolve($$4);
+            $$2.accept(v.a($$6, $$3));
+         }
+      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
    }
 
    @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
-      throw new UnsupportedOperationException();
+   public void a(amj $$0, String $$1, String $$2, ami.a $$3) {
+      v.c($$2).get().ifLeft($$3x -> {
+         List<Path> $$4 = this.g.get($$0);
+         int $$5 = $$4.size();
+         if ($$5 == 1) {
+            a($$3, $$1, $$4.get(0), $$3x);
+         } else if ($$5 > 1) {
+            Map<aex, anm<InputStream>> $$6 = new HashMap<>();
+
+            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
+               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
+            }
+
+            Path $$8 = $$4.get($$5 - 1);
+            if ($$6.isEmpty()) {
+               a($$3, $$1, $$8, $$3x);
+            } else {
+               a($$6::putIfAbsent, $$1, $$8, $$3x);
+               $$6.forEach($$3);
+            }
+         }
+      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   private static void a(ami.a $$0, String $$1, Path $$2, List<String> $$3) {
+      Path $$4 = $$2.resolve($$1);
+      amk.a($$1, $$4, $$3, $$0);
+   }
+
+   @Nullable
+   @Override
+   public anm<InputStream> a(amj $$0, aex $$1) {
+      return (anm<InputStream>)v.c($$1.a()).get().map($$2 -> {
+         String $$3 = $$1.b();
+
+         for (Path $$4 : this.g.get($$0)) {
+            Path $$5 = v.a($$4.resolve($$3), $$2);
+            if (Files.exists($$5) && amk.a($$5)) {
+               return anm.create($$5);
+            }
+         }
+
+         return null;
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         return null;
+      });
    }
 
    @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
+   public Set<String> a(amj $$0) {
+      return this.e;
    }
 
-   private static amk a(@Nullable Path $$0) {
-      if ($$0 == null) {
-         throw new NullPointerException();
-      } else if ($$0 instanceof amk) {
-         return (amk)$$0;
-      } else {
-         throw new ProviderMismatchException();
+   @Nullable
+   @Override
+   public <T> T a(amu<T> $$0) {
+      anm<InputStream> $$1 = this.a("pack.mcmeta");
+      if ($$1 != null) {
+         try (InputStream $$2 = $$1.get()) {
+            T $$3 = amc.a($$0, $$2);
+            if ($$3 != null) {
+               return $$3;
+            }
+
+            return this.d.a($$0);
+         } catch (IOException var8) {
+         }
       }
+
+      return this.d.a($$0);
+   }
+
+   @Override
+   public String a() {
+      return "vanilla";
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public void close() {
+   }
+
+   public anx c() {
+      return $$0 -> Optional.ofNullable(this.a(amj.a, $$0)).map($$0x -> new ans(this, $$0x));
    }
 }

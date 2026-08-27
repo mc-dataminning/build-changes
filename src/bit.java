@@ -1,83 +1,71 @@
-public class bit extends bvl {
-   private static final aec<Integer> bX = aef.a(bit.class, aee.b);
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bit(bip<? extends bit> $$0, cpq $$1) {
-      super($$0, $$1);
+public final class bit {
+   public static final Predicate<biq> a = biq::bw;
+   public static final Predicate<biq> b = $$0 -> $$0.bw() && $$0 instanceof bjg;
+   public static final Predicate<biq> c = $$0 -> $$0.bw() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<biq> d = $$0 -> $$0 instanceof bgr && $$0.bw();
+   public static final Predicate<biq> e = $$0 -> !($$0 instanceof cbu) || !$$0.M_() && !((cbu)$$0).f();
+   public static final Predicate<biq> f = $$0 -> !$$0.M_();
+   public static final Predicate<biq> g = f.and(biq::by);
+
+   private bit() {
    }
 
-   @Override
-   protected iv p() {
-      return ix.aJ;
+   public static Predicate<biq> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bX, 0);
+   public static Predicate<biq> a(biq $$0) {
+      eio $$1 = $$0.cg();
+      eio.a $$2 = $$1 == null ? eio.a.a : $$1.l();
+      return (Predicate<biq>)($$2 == eio.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bt()) {
+            return false;
+         } else if (!$$0.dL().B || $$3 instanceof cbu && ((cbu)$$3).g()) {
+            eio $$4 = $$3.cg();
+            eio.a $$5 = $$4 == null ? eio.a.a : $$4.l();
+            if ($$5 == eio.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == eio.a.d || $$5 == eio.a.d) && $$6 ? false : $$2 != eio.a.c && $$5 != eio.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   @Override
-   protected aoy q() {
-      return aoz.jC;
+   public static Predicate<biq> b(biq $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.cZ();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   @Override
-   protected aoy r() {
-      return aoz.jz;
-   }
+   public static class a implements Predicate<biq> {
+      private final cjf a;
 
-   @Override
-   protected aoy d(bhj $$0) {
-      return aoz.jB;
-   }
-
-   @Override
-   protected aoy h_() {
-      return aoz.jA;
-   }
-
-   @Override
-   public void b(qu $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.t());
-   }
-
-   @Override
-   public void a(qu $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      int $$0 = this.t();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+      public a(cjf $$0) {
+         this.a = $$0;
       }
 
-      this.dK().a(ix.aK, this.d(0.6), this.ds(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bhj $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
+      public boolean a(@Nullable biq $$0) {
+         if (!$$0.bw()) {
+            return false;
+         } else {
+            return !($$0 instanceof bjg $$1) ? false : $$1.f(this.a);
+         }
       }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int t() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(bip<? extends bjb> $$0, cqf $$1, bjf $$2, gw $$3, arx $$4) {
-      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csr.G);
    }
 }

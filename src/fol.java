@@ -1,411 +1,539 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
 
-public class fol {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hc[] b = hc.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private fop g;
-   private final AtomicReference<fol.b> h = new AtomicReference<>();
-   private final AtomicReference<fol.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
-
-   public void a(@Nullable fop $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
+public abstract class fol {
+   private static final float aS = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aT;
+   private final Runnable aU;
+   protected static final fol.p c = new fol.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final fol.p d = new fol.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final fol.p e = new fol.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final fol.p f = new fol.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new fol.b($$0.f.length));
-         this.a();
-      } else {
-         this.h.set(null);
+   );
+   protected static final fol.p g = new fol.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final fol.p h = new fol.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final fol.m i = new fol.m();
+   protected static final fol.m j = new fol.m(fnx::v);
+   protected static final fol.m k = new fol.m(fnx::p);
+   protected static final fol.m l = new fol.m(fnx::r);
+   protected static final fol.m m = new fol.m(fnx::s);
+   protected static final fol.m n = new fol.m(fnx::w);
+   protected static final fol.m o = new fol.m(fnx::q);
+   protected static final fol.m p = new fol.m(fnx::z);
+   protected static final fol.m q = new fol.m(fnx::A);
+   protected static final fol.m r = new fol.m(fnx::B);
+   protected static final fol.m s = new fol.m(fnx::C);
+   protected static final fol.m t = new fol.m(fnx::D);
+   protected static final fol.m u = new fol.m(fnx::E);
+   protected static final fol.m v = new fol.m(fnx::F);
+   protected static final fol.m w = new fol.m(fnx::G);
+   protected static final fol.m x = new fol.m(fnx::H);
+   protected static final fol.m y = new fol.m(fnx::I);
+   protected static final fol.m z = new fol.m(fnx::J);
+   protected static final fol.m A = new fol.m(fnx::K);
+   protected static final fol.m B = new fol.m(fnx::L);
+   protected static final fol.m C = new fol.m(fnx::M);
+   protected static final fol.m D = new fol.m(fnx::N);
+   protected static final fol.m E = new fol.m(fnx::O);
+   protected static final fol.m F = new fol.m(fnx::P);
+   protected static final fol.m G = new fol.m(fnx::Q);
+   protected static final fol.m H = new fol.m(fnx::R);
+   protected static final fol.m I = new fol.m(fnx::S);
+   protected static final fol.m J = new fol.m(fnx::T);
+   protected static final fol.m K = new fol.m(fnx::U);
+   protected static final fol.m L = new fol.m(fnx::V);
+   protected static final fol.m M = new fol.m(fnx::W);
+   protected static final fol.m N = new fol.m(fnx::X);
+   protected static final fol.m O = new fol.m(fnx::Y);
+   protected static final fol.m P = new fol.m(fnx::Z);
+   protected static final fol.m Q = new fol.m(fnx::aa);
+   protected static final fol.m R = new fol.m(fnx::ab);
+   protected static final fol.m S = new fol.m(fnx::ac);
+   protected static final fol.m T = new fol.m(fnx::ad);
+   protected static final fol.m U = new fol.m(fnx::ae);
+   protected static final fol.m V = new fol.m(fnx::af);
+   protected static final fol.m W = new fol.m(fnx::ar);
+   protected static final fol.m X = new fol.m(fnx::ag);
+   protected static final fol.m Y = new fol.m(fnx::ah);
+   protected static final fol.m Z = new fol.m(fnx::ai);
+   protected static final fol.m aa = new fol.m(fnx::aj);
+   protected static final fol.m ab = new fol.m(fnx::ak);
+   protected static final fol.m ac = new fol.m(fnx::al);
+   protected static final fol.m ad = new fol.m(fnx::am);
+   protected static final fol.m ae = new fol.m(fnx::an);
+   protected static final fol.m af = new fol.m(fnx::ao);
+   protected static final fol.m ag = new fol.m(fnx::ap);
+   protected static final fol.m ah = new fol.m(fnx::aq);
+   protected static final fol.m ai = new fol.m(fnx::as);
+   protected static final fol.m aj = new fol.m(fnx::at);
+   protected static final fol.m ak = new fol.m(fnx::au);
+   protected static final fol.m al = new fol.m(fnx::av);
+   protected static final fol.n am = new fol.n(fzd.e, false, true);
+   protected static final fol.n an = new fol.n(fzd.e, false, false);
+   protected static final fol.e ao = new fol.e();
+   protected static final fol.o ap = new fol.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final fol.o aq = new fol.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final fol.o ar = new fol.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final fol.g as = new fol.g(true);
+   protected static final fol.g at = new fol.g(false);
+   protected static final fol.l au = new fol.l(true);
+   protected static final fol.l av = new fol.l(false);
+   protected static final fol.c aw = new fol.c(true);
+   protected static final fol.c ax = new fol.c(false);
+   protected static final fol.d ay = new fol.d("always", 519);
+   protected static final fol.d az = new fol.d("==", 514);
+   protected static final fol.d aA = new fol.d("<=", 515);
+   protected static final fol.d aB = new fol.d(">", 516);
+   protected static final fol.q aC = new fol.q(true, true);
+   protected static final fol.q aD = new fol.q(true, false);
+   protected static final fol.q aE = new fol.q(false, true);
+   protected static final fol.f aF = new fol.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final fol.f aG = new fol.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final fol.f aH = new fol.f("view_offset_z_layering", () -> {
+      elp $$0 = RenderSystem.getModelViewStack();
+      $$0.a();
+      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      elp $$0 = RenderSystem.getModelViewStack();
+      $$0.b();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final fol.k aI = new fol.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final fol.k aJ = new fol.k("outline_target", () -> eqv.O().f.s().a(false), () -> eqv.O().g().a(false));
+   protected static final fol.k aK = new fol.k("translucent_target", () -> {
+      if (eqv.M()) {
+         eqv.O().f.t().a(false);
+      }
+   }, () -> {
+      if (eqv.M()) {
+         eqv.O().g().a(false);
+      }
+   });
+   protected static final fol.k aL = new fol.k("particles_target", () -> {
+      if (eqv.M()) {
+         eqv.O().f.v().a(false);
+      }
+   }, () -> {
+      if (eqv.M()) {
+         eqv.O().g().a(false);
+      }
+   });
+   protected static final fol.k aM = new fol.k("weather_target", () -> {
+      if (eqv.M()) {
+         eqv.O().f.w().a(false);
+      }
+   }, () -> {
+      if (eqv.M()) {
+         eqv.O().g().a(false);
+      }
+   });
+   protected static final fol.k aN = new fol.k("clouds_target", () -> {
+      if (eqv.M()) {
+         eqv.O().f.x().a(false);
+      }
+   }, () -> {
+      if (eqv.M()) {
+         eqv.O().g().a(false);
+      }
+   });
+   protected static final fol.k aO = new fol.k("item_entity_target", () -> {
+      if (eqv.M()) {
+         eqv.O().f.u().a(false);
+      }
+   }, () -> {
+      if (eqv.M()) {
+         eqv.O().g().a(false);
+      }
+   });
+   protected static final fol.h aP = new fol.h(OptionalDouble.of(1.0));
+   protected static final fol.b aQ = new fol.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final fol.b aR = new fol.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public fol(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aT = $$1;
+      this.aU = $$2;
    }
 
    public void a() {
-      this.e = true;
+      this.aT.run();
    }
 
-   public void a(frb $$0, List<fqx.b> $$1) {
-      for (fol.d $$2 : this.h.get().a().b) {
-         if ($$0.a($$2.a.b())) {
-            $$1.add($$2.a);
-         }
+   public void b() {
+      this.aU.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.b() * eqv.O().m.ai().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends fol {
+      private final boolean aS;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aS = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(cox $$0) {
-      fol.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      fol.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
+   protected static class b extends fol {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   public void a(fqx.b $$0) {
-      fol.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      fol.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
+   protected static class c extends fol.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
       }
    }
 
-   public void a(boolean $$0, eqb $$1, frb $$2, List<fqx.b> $$3) {
-      ehi $$4 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$4);
-      }
+   protected static class d extends fol {
+      private final String aS;
 
-      this.a($$0, $$2, $$3, $$4);
-   }
-
-   private void a(boolean $$0, eqb $$1, ehi $$2) {
-      this.e = false;
-      this.f = ac.f().submit(() -> {
-         fol.b $$3 = new fol.b(this.g.f.length);
-         this.i.set($$3.b);
-         Queue<fol.d> $$4 = Queues.newArrayDeque();
-         this.a($$1, $$4);
-         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
-         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
          });
-         this.h.set($$3);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
+         this.aS = $$0;
+      }
 
-   private void a(boolean $$0, frb $$1, List<fqx.b> $$2, ehi $$3) {
-      fol.b $$4 = this.h.get();
-      this.a($$4);
-      if (!$$4.b.b.isEmpty()) {
-         Queue<fol.d> $$5 = Queues.newArrayDeque();
-
-         while (!$$4.b.b.isEmpty()) {
-            fqx.b $$6 = $$4.b.b.poll();
-            fol.d $$7 = $$4.a.a.a($$6);
-            if ($$7 != null && $$7.a == $$6) {
-               $$5.add($$7);
-            }
-         }
-
-         frb $$8 = fnx.a($$1);
-         Consumer<fqx.b> $$9 = $$2x -> {
-            if ($$8.a($$2x.b())) {
-               $$2.add($$2x);
-            }
-         };
-         this.a($$4.a, $$3, $$5, $$0, $$9);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   private void a(fol.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<fqx.b> $$3 = (List<fqx.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
+   protected static class e extends fol {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
       }
 
-      $$0.b.a.clear();
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<aex> c() {
+         return Optional.empty();
+      }
    }
 
-   private void a(fol.a $$0, cox $$1) {
-      $$0.a.add(cox.c($$1.e - 1, $$1.f));
-      $$0.a.add(cox.c($$1.e, $$1.f - 1));
-      $$0.a.add(cox.c($$1.e + 1, $$1.f));
-      $$0.a.add(cox.c($$1.e, $$1.f + 1));
+   protected static class f extends fol {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 
-   private void a(eqb $$0, Queue<fol.d> $$1) {
-      int $$2 = 16;
-      ehi $$3 = $$0.b();
-      gw $$4 = $$0.c();
-      fqx.b $$5 = this.g.a($$4);
-      if ($$5 == null) {
-         cps $$6 = this.g.c();
-         boolean $$7 = $$4.v() > $$6.C_();
-         int $$8 = $$7 ? $$6.aj() - 8 : $$6.C_() + 8;
-         int $$9 = ars.a($$3.c / 16.0) * 16;
-         int $$10 = ars.a($$3.e / 16.0) * 16;
-         int $$11 = this.g.b();
-         List<fol.d> $$12 = Lists.newArrayList();
-
-         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
-               fqx.b $$15 = this.g.a(new gw($$9 + hz.a($$13, 8), $$8, $$10 + hz.a($$14, 8)));
-               if ($$15 != null && this.a($$4, $$15.f())) {
-                  hc $$16 = $$7 ? hc.a : hc.b;
-                  fol.d $$17 = new fol.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, hc.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, hc.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, hc.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, hc.c);
-                  }
-
-                  $$12.add($$17);
-               }
+   protected static class g extends fol.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               eqv.O().j.n().c();
             }
-         }
-
-         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$12);
-      } else {
-         $$1.add(new fol.d($$5, null, 0));
+         }, () -> {
+            if ($$0) {
+               eqv.O().j.n().b();
+            }
+         }, $$0);
       }
    }
 
-   private void a(fol.c $$0, ehi $$1, Queue<fol.d> $$2, boolean $$3, Consumer<fqx.b> $$4) {
-      int $$5 = 16;
-      gw $$6 = new gw(ars.a($$1.c / 16.0) * 16, ars.a($$1.d / 16.0) * 16, ars.a($$1.e / 16.0) * 16);
-      gw $$7 = $$6.b(8, 8, 8);
+   protected static class h extends fol {
+      private final OptionalDouble aS;
 
-      while (!$$2.isEmpty()) {
-         fol.d $$8 = $$2.poll();
-         fqx.b $$9 = $$8.a;
-         if ($$0.b.add($$8)) {
-            $$4.accept($$8.a);
-         }
-
-         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
-
-         for (hc $$11 : b) {
-            fqx.b $$12 = this.a($$6, $$9, $$11);
-            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
-               if ($$3 && $$8.a()) {
-                  fqx.a $$13 = $$9.d();
-                  boolean $$14 = false;
-
-                  for (int $$15 = 0; $$15 < b.length; $$15++) {
-                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
-                        $$14 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$14) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$10) {
-                  gw $$16 = $$12.f();
-                  gw $$17 = $$16.b(
-                     ($$11.o() == hc.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
-                     ($$11.o() == hc.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
-                     ($$11.o() == hc.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
-                  );
-                  ehi $$18 = new ehi((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
-                  ehi $$19 = $$1.d($$18).d().a(d);
-                  boolean $$20 = true;
-
-                  while ($$1.d($$18).g() > 3600.0) {
-                     $$18 = $$18.e($$19);
-                     cps $$21 = this.g.c();
-                     if ($$18.d > (double)$$21.aj() || $$18.d < (double)$$21.C_()) {
-                        break;
-                     }
-
-                     fqx.b $$22 = this.g.a(gw.a($$18.c, $$18.d, $$18.e));
-                     if ($$22 == null || $$0.a.a($$22) == null) {
-                        $$20 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$20) {
-                     continue;
-                  }
-               }
-
-               fol.d $$23 = $$0.a.a($$12);
-               if ($$23 != null) {
-                  $$23.b($$11);
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
                } else {
-                  fol.d $$24 = new fol.d($$12, $$11, $$8.b + 1);
-                  $$24.a($$8.d, $$11);
-                  if ($$12.a()) {
-                     $$2.add($$24);
-                     $$0.a.a($$12, $$24);
-                  } else if (this.a($$6, $$12.f())) {
-                     $$0.a.a($$12, $$24);
-                     ((List)$$0.c.computeIfAbsent(cox.a($$12.f()), $$0x -> new ArrayList())).add($$12);
-                  }
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)eqv.O().aM().k() / 1920.0F * 2.5F));
                }
             }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aS = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends fol.e {
+      private final Optional<aex> aS;
+
+      i(ImmutableList<Triple<aex, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<aex, Boolean, Boolean> $$2 = (Triple<aex, Boolean, Boolean>)var2.next();
+               fzf $$3 = eqv.O().Y();
+               $$3.b((aex)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (aex)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<aex> c() {
+         return this.aS;
+      }
+
+      public static fol.i.a d() {
+         return new fol.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<aex, Boolean, Boolean>> a = new Builder();
+
+         public fol.i.a a(aex $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public fol.i a() {
+            return new fol.i(this.a.build());
          }
       }
    }
 
-   private boolean a(gw $$0, gw $$1) {
-      int $$2 = hz.a($$0.u());
-      int $$3 = hz.a($$0.w());
-      int $$4 = hz.a($$1.u());
-      int $$5 = hz.a($$1.w());
-      return akc.a($$2, $$3, this.g.b(), $$4, $$5);
-   }
-
-   @Nullable
-   private fqx.b a(gw $$0, fqx.b $$1, hc $$2) {
-      gw $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
-      } else {
-         return ars.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+   protected static final class j extends fol.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
       }
    }
 
-   @Nullable
-   @ast
-   protected fol.d b(fqx.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
-
-   static record a(LongSet a, BlockingQueue<fqx.b> b) {
-
-      public a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+   protected static class k extends fol {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   static record b(fol.c a, fol.a b) {
-
-      public b(int $$0) {
-         this(new fol.c($$0), new fol.a());
+   protected static class l extends fol.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               eqv.O().j.o().a();
+            }
+         }, () -> {
+            if ($$0) {
+               eqv.O().j.o().b();
+            }
+         }, $$0);
       }
    }
 
-   static class c {
-      public final fol.e a;
-      public final LinkedHashSet<fol.d> b;
-      public final Long2ObjectMap<List<fqx.b>> c;
+   protected static class m extends fol {
+      private final Optional<Supplier<fos>> aS;
 
-      public c(int $$0) {
-         this.a = new fol.e($$0);
-         this.b = new LinkedHashSet<>($$0);
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @ast
-   protected static class d {
-      @ast
-      protected final fqx.b a;
-      private byte c;
-      byte d;
-      @ast
-      protected final int b;
-
-      d(fqx.b $$0, @Nullable hc $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
+      public m(Supplier<fos> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aS = Optional.of($$0);
       }
 
-      void a(byte $$0, hc $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(hc $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(hc $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @ast
-      protected boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aS = Optional.empty();
       }
 
       @Override
-      public int hashCode() {
-         return this.a.f().hashCode();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof fol.d $$1) ? false : this.a.f().equals($$1.a.f());
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   static class e {
-      private final fol.d[] a;
+   protected static class n extends fol.e {
+      private final Optional<aex> aS;
+      private final boolean aT;
+      private final boolean aU;
 
-      e(int $$0) {
-         this.a = new fol.d[$$0];
+      public n(aex $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            fzf $$3 = eqv.O().Y();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aS = Optional.of($$0);
+         this.aT = $$1;
+         this.aU = $$2;
       }
 
-      public void a(fqx.b $$0, fol.d $$1) {
-         this.a[$$0.b] = $$1;
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
       }
 
-      @Nullable
-      public fol.d a(fqx.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      @Override
+      protected Optional<aex> c() {
+         return this.aS;
+      }
+   }
+
+   protected static class o extends fol {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends fol {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends fol {
+      private final boolean aS;
+      private final boolean aT;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aS = $$0;
+         this.aT = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
       }
    }
 }

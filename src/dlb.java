@@ -1,127 +1,71 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class dlb {
+   public static final aew<dzp.a> a = a("temperature");
+   public static final aew<dzp.a> b = a("vegetation");
+   public static final aew<dzp.a> c = a("continentalness");
+   public static final aew<dzp.a> d = a("erosion");
+   public static final aew<dzp.a> e = a("temperature_large");
+   public static final aew<dzp.a> f = a("vegetation_large");
+   public static final aew<dzp.a> g = a("continentalness_large");
+   public static final aew<dzp.a> h = a("erosion_large");
+   public static final aew<dzp.a> i = a("ridge");
+   public static final aew<dzp.a> j = a("offset");
+   public static final aew<dzp.a> k = a("aquifer_barrier");
+   public static final aew<dzp.a> l = a("aquifer_fluid_level_floodedness");
+   public static final aew<dzp.a> m = a("aquifer_lava");
+   public static final aew<dzp.a> n = a("aquifer_fluid_level_spread");
+   public static final aew<dzp.a> o = a("pillar");
+   public static final aew<dzp.a> p = a("pillar_rareness");
+   public static final aew<dzp.a> q = a("pillar_thickness");
+   public static final aew<dzp.a> r = a("spaghetti_2d");
+   public static final aew<dzp.a> s = a("spaghetti_2d_elevation");
+   public static final aew<dzp.a> t = a("spaghetti_2d_modulator");
+   public static final aew<dzp.a> u = a("spaghetti_2d_thickness");
+   public static final aew<dzp.a> v = a("spaghetti_3d_1");
+   public static final aew<dzp.a> w = a("spaghetti_3d_2");
+   public static final aew<dzp.a> x = a("spaghetti_3d_rarity");
+   public static final aew<dzp.a> y = a("spaghetti_3d_thickness");
+   public static final aew<dzp.a> z = a("spaghetti_roughness");
+   public static final aew<dzp.a> A = a("spaghetti_roughness_modulator");
+   public static final aew<dzp.a> B = a("cave_entrance");
+   public static final aew<dzp.a> C = a("cave_layer");
+   public static final aew<dzp.a> D = a("cave_cheese");
+   public static final aew<dzp.a> E = a("ore_veininess");
+   public static final aew<dzp.a> F = a("ore_vein_a");
+   public static final aew<dzp.a> G = a("ore_vein_b");
+   public static final aew<dzp.a> H = a("ore_gap");
+   public static final aew<dzp.a> I = a("noodle");
+   public static final aew<dzp.a> J = a("noodle_thickness");
+   public static final aew<dzp.a> K = a("noodle_ridge_a");
+   public static final aew<dzp.a> L = a("noodle_ridge_b");
+   public static final aew<dzp.a> M = a("jagged");
+   public static final aew<dzp.a> N = a("surface");
+   public static final aew<dzp.a> O = a("surface_secondary");
+   public static final aew<dzp.a> P = a("clay_bands_offset");
+   public static final aew<dzp.a> Q = a("badlands_pillar");
+   public static final aew<dzp.a> R = a("badlands_pillar_roof");
+   public static final aew<dzp.a> S = a("badlands_surface");
+   public static final aew<dzp.a> T = a("iceberg_pillar");
+   public static final aew<dzp.a> U = a("iceberg_pillar_roof");
+   public static final aew<dzp.a> V = a("iceberg_surface");
+   public static final aew<dzp.a> W = a("surface_swamp");
+   public static final aew<dzp.a> X = a("calcite");
+   public static final aew<dzp.a> Y = a("gravel");
+   public static final aew<dzp.a> Z = a("powder_snow");
+   public static final aew<dzp.a> aa = a("packed_ice");
+   public static final aew<dzp.a> ab = a("ice");
+   public static final aew<dzp.a> ac = a("soul_sand_layer");
+   public static final aew<dzp.a> ad = a("gravel_layer");
+   public static final aew<dzp.a> ae = a("patch");
+   public static final aew<dzp.a> af = a("netherrack");
+   public static final aew<dzp.a> ag = a("nether_wart");
+   public static final aew<dzp.a> ah = a("nether_state_selector");
 
-public final class dlb {
-   final dla a;
-   private final hh<dzk.a> b;
-   private final dkt c;
-   private final cqx.f d;
-   private final dlf e;
-   private final dla f;
-   private final dla g;
-   private final Map<aet<dzk.a>, dzk> h;
-   private final Map<aeu, dla> i;
-
-   public static dlb a(hh.a $$0, aet<dks> $$1, long $$2) {
-      return a($$0.b(je.aw).b($$1).a(), $$0.b(je.ax), $$2);
+   private static aew<dzp.a> a(String $$0) {
+      return aew.a(je.ax, new aex($$0));
    }
 
-   public static dlb a(dks $$0, hh<dzk.a> $$1, long $$2) {
-      return new dlb($$0, $$1, $$2);
-   }
-
-   private dlb(dks $$0, hh<dzk.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new aeu("aquifer")).e();
-      this.g = this.a.a(new aeu("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dlf(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dkg.f {
-         private final Map<dkg, dkg> d = new HashMap<>();
-
-         private arx a(long $$0) {
-            return new dko($$2 + $$0);
-         }
-
-         @Override
-         public dkg.c a(dkg.c $$0) {
-            hg<dzk.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dkw.a)) {
-                  dzk $$2 = dzk.a(this.a(0L), new dzk.a(-7, 1.0, 1.0));
-                  return new dkg.c($$1, $$2);
-               }
-
-               if ($$1.a(dkw.b)) {
-                  dzk $$3 = dzk.a(this.a(1L), new dzk.a(-7, 1.0, 1.0));
-                  return new dkg.c($$1, $$3);
-               }
-
-               if ($$1.a(dkw.j)) {
-                  dzk $$4 = dzk.b(dlb.this.a.a(dkw.j.a()), new dzk.a(0, 0.0));
-                  return new dkg.c($$1, $$4);
-               }
-            }
-
-            dzk $$5 = dlb.this.a($$1.e().orElseThrow());
-            return new dkg.c($$1, $$5);
-         }
-
-         private dkg a(dkg $$0) {
-            if ($$0 instanceof dzh $$1) {
-               arx $$2 = $$3 ? this.a(0L) : dlb.this.a.a(new aeu("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dkg)($$0 instanceof dkh.i ? new dkh.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public dkg apply(dkg $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
-      }
-
-      this.c = $$0.i().a(new a());
-      dkg.f $$4 = new dkg.f() {
-         private final Map<dkg, dkg> b = new HashMap<>();
-
-         private dkg a(dkg $$0) {
-            if ($$0 instanceof dkh.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dkh.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dkg apply(dkg $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new cqx.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public dzk a(aet<dzk.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dkw.a(this.b, this.a, $$0));
-   }
-
-   public dla a(aeu $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dkt a() {
-      return this.c;
-   }
-
-   public cqx.f b() {
-      return this.d;
-   }
-
-   public dlf c() {
-      return this.e;
-   }
-
-   public dla d() {
-      return this.f;
-   }
-
-   public dla e() {
-      return this.g;
+   public static dzp a(hh<dzp.a> $$0, dlf $$1, aew<dzp.a> $$2) {
+      hg<dzp.a> $$3 = $$0.b($$2);
+      return dzp.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

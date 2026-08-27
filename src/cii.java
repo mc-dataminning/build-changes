@@ -1,33 +1,39 @@
-public class cii<T extends bil & biy> extends civ {
-   private final bip<T> a;
-   private final int b;
-
-   public cii(civ.a $$0, bip<T> $$1, int $$2) {
+public class cii extends cja {
+   public cii(cja.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      cja $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bgu.c($$3);
-      } else {
-         bil $$4 = $$1.cZ();
-         if ($$1.bN() && $$4 instanceof biy $$5 && $$4.ag() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               cja $$6 = new cja(cjd.qh);
-               $$6.c($$3.v());
-               return bgu.a($$6);
-            }
-
-            return bgu.a($$3);
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfj $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!cti.h($$3) && !ctj.g($$3) && !ctk.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (csj.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, csj.a($$1, $$2));
+            $$1.a($$0.o(), djt.i, $$2);
+            $$4 = true;
          }
-
-         $$1.b(apj.c.b(this));
-         return bgu.c($$3);
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dfz.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), djt.c, $$2);
+         $$4 = true;
       }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bgy.a($$1.B);
+      } else {
+         return bgy.e;
+      }
+   }
+
+   private void a(cpv $$0, gw $$1) {
+      asc $$2 = $$0.D_();
+      $$0.a(null, $$1, ape.hD, apf.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

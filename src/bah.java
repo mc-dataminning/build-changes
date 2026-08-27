@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -12,12 +13,29 @@ public class bah extends Schema {
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
-         false,
-         ays.b,
-         () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", ays.w.in($$0)), "Inventory", DSL.list(ays.t.in($$0)), "EnderItems", DSL.list(ays.t.in($$0))
+         true,
+         ayx.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  ayx.z.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     "EntityTag",
+                     ayx.w.in($$0),
+                     "BlockEntityTag",
+                     ayx.s.in($$0),
+                     "CanDestroy",
+                     DSL.list(ayx.y.in($$0)),
+                     "CanPlaceOn",
+                     DSL.list(ayx.y.in($$0)),
+                     "Items",
+                     DSL.list(ayx.t.in($$0))
+                  )
+               ),
+               bcz.a,
+               HookFunction.IDENTITY
             )
       );
-      $$0.registerType(true, ays.w, () -> DSL.optionalFields("Passengers", DSL.list(ays.w.in($$0)), ays.x.in($$0)));
    }
 }

@@ -1,35 +1,22 @@
-public class etc {
-   public static final aeu a = new aeu("textures/gui/title/minecraft.png");
-   public static final aeu b = new aeu("textures/gui/title/minceraft.png");
-   public static final aeu c = new aeu("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)arx.a().i() < 1.0E-4;
-   private final boolean o;
+public class etc extends esq {
+   protected final euc a;
 
-   public etc(boolean $$0) {
-      this.o = $$0;
+   public etc(int $$0, int $$1, int $$2, int $$3, euc $$4, esq.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, tk.a);
    }
 
-   public void a(esa $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public etc(int $$0, int $$1, int $$2, int $$3, euc $$4, esq.c $$5, tl $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
    }
 
-   public void a(esa $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public etc(int $$0, int $$1, euc $$2, esq.c $$3, tl $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      aex $$4 = this.a.a(this.aE_(), this.o());
+      $$0.a($$4, this.r(), this.t(), this.f, this.g);
    }
 }

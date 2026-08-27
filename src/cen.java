@@ -1,110 +1,291 @@
-public class cen extends ceg {
-   private static final int k = 9;
-   private final bgm l;
-   private final int m;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private cen(cfl<?> $$0, int $$1, cbo $$2, int $$3) {
-      this($$0, $$1, $$2, new bha(9 * $$3), $$3);
+public class cen extends cfl {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   private static final Logger s = LogUtils.getLogger();
+   private static final boolean t = false;
+   public static final int n = 50;
+   private int u;
+   @Nullable
+   private String v;
+   private final cfb w = cfb.a();
+   private static final int x = 0;
+   private static final int y = 1;
+   private static final int z = 1;
+   private static final int A = 1;
+   private static final int B = 2;
+   private static final int C = 1;
+   private static final int D = 1;
+   private static final int E = 27;
+   private static final int F = 76;
+   private static final int G = 134;
+   private static final int H = 47;
+
+   public cen(int $$0, cbt $$1) {
+      this($$0, $$1, cew.a);
    }
 
-   public static cen a(int $$0, cbo $$1) {
-      return new cen(cfl.a, $$0, $$1, 1);
-   }
-
-   public static cen b(int $$0, cbo $$1) {
-      return new cen(cfl.b, $$0, $$1, 2);
-   }
-
-   public static cen c(int $$0, cbo $$1) {
-      return new cen(cfl.c, $$0, $$1, 3);
-   }
-
-   public static cen d(int $$0, cbo $$1) {
-      return new cen(cfl.d, $$0, $$1, 4);
-   }
-
-   public static cen e(int $$0, cbo $$1) {
-      return new cen(cfl.e, $$0, $$1, 5);
-   }
-
-   public static cen f(int $$0, cbo $$1) {
-      return new cen(cfl.f, $$0, $$1, 6);
-   }
-
-   public static cen a(int $$0, cbo $$1, bgm $$2) {
-      return new cen(cfl.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cen b(int $$0, cbo $$1, bgm $$2) {
-      return new cen(cfl.f, $$0, $$1, $$2, 6);
-   }
-
-   public cen(cfl<?> $$0, int $$1, cbo $$2, bgm $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.m);
-      int $$5 = (this.m - 4) * 18;
-
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cfy($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cfy($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cfy($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
+   public cen(int $$0, cbt $$1, cew $$2) {
+      super(cfq.h, $$0, $$1, $$2);
+      this.a(this.w);
    }
 
    @Override
-   public boolean a(cbp $$0) {
-      return this.l.a($$0);
+   protected cfm l() {
+      return cfm.a().a(0, 27, 47, $$0 -> true).a(1, 76, 47, $$0 -> true).a(2, 134, 47).a();
    }
 
    @Override
-   public cja a(cbp $$0, int $$1) {
-      cja $$2 = cja.b;
-      cfy $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         cja $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cja.b;
-            }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cja.b;
-         }
+   protected boolean a(dfj $$0) {
+      return $$0.a(apt.M);
+   }
 
-         if ($$4.b()) {
-            $$3.d(cja.b);
+   @Override
+   protected boolean a(cbu $$0, boolean $$1) {
+      return ($$0.fS().d || $$0.cf >= this.w.b()) && this.w.b() > 0;
+   }
+
+   @Override
+   protected void a(cbu $$0, cjf $$1) {
+      if (!$$0.fS().d) {
+         $$0.c(-this.w.b());
+      }
+
+      this.q.a(0, cjf.b);
+      if (this.u > 0) {
+         cjf $$2 = this.q.a(1);
+         if (!$$2.b() && $$2.L() > this.u) {
+            $$2.h(this.u);
+            this.q.a(1, $$2);
          } else {
-            $$3.d();
+            this.q.a(1, cjf.b);
          }
+      } else {
+         this.q.a(1, cjf.b);
       }
 
-      return $$2;
+      this.w.a(0);
+      this.o.a(($$1x, $$2x) -> {
+         dfj $$3 = $$1x.a_($$2x);
+         if (!$$0.fS().d && $$3.a(apt.M) && $$0.ef().i() < 0.12F) {
+            dfj $$4 = crw.e($$3);
+            if ($$4 == null) {
+               $$1x.a($$2x, false);
+               $$1x.c(1029, $$2x, 0);
+            } else {
+               $$1x.a($$2x, $$4, 2);
+               $$1x.c(1030, $$2x, 0);
+            }
+         } else {
+            $$1x.c(1030, $$2x, 0);
+         }
+      });
    }
 
    @Override
-   public void b(cbp $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public void m() {
+      cjf $$0 = this.q.a(0);
+      this.w.a(1);
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      if ($$0.b()) {
+         this.r.a(0, cjf.b);
+         this.w.a(0);
+      } else {
+         cjf $$4 = $$0.p();
+         cjf $$5 = this.q.a(1);
+         Map<cno, Integer> $$6 = cnq.a($$4);
+         $$2 += $$0.I() + ($$5.b() ? 0 : $$5.I());
+         this.u = 0;
+         if (!$$5.b()) {
+            boolean $$7 = $$5.a(cji.tC) && !cib.d($$5).isEmpty();
+            if ($$4.i() && $$4.d().a($$0, $$5)) {
+               int $$8 = Math.min($$4.k(), $$4.l() / 4);
+               if ($$8 <= 0) {
+                  this.r.a(0, cjf.b);
+                  this.w.a(0);
+                  return;
+               }
+
+               int $$9;
+               for ($$9 = 0; $$8 > 0 && $$9 < $$5.L(); $$9++) {
+                  int $$10 = $$4.k() - $$8;
+                  $$4.b($$10);
+                  $$1++;
+                  $$8 = Math.min($$4.k(), $$4.l() / 4);
+               }
+
+               this.u = $$9;
+            } else {
+               if (!$$7 && (!$$4.a($$5.d()) || !$$4.i())) {
+                  this.r.a(0, cjf.b);
+                  this.w.a(0);
+                  return;
+               }
+
+               if ($$4.i() && !$$7) {
+                  int $$11 = $$0.l() - $$0.k();
+                  int $$12 = $$5.l() - $$5.k();
+                  int $$13 = $$12 + $$4.l() * 12 / 100;
+                  int $$14 = $$11 + $$13;
+                  int $$15 = $$4.l() - $$14;
+                  if ($$15 < 0) {
+                     $$15 = 0;
+                  }
+
+                  if ($$15 < $$4.k()) {
+                     $$4.b($$15);
+                     $$1 += 2;
+                  }
+               }
+
+               Map<cno, Integer> $$16 = cnq.a($$5);
+               boolean $$17 = false;
+               boolean $$18 = false;
+
+               for (cno $$19 : $$16.keySet()) {
+                  if ($$19 != null) {
+                     int $$20 = $$6.getOrDefault($$19, 0);
+                     int $$21 = $$16.get($$19);
+                     $$21 = $$20 == $$21 ? $$21 + 1 : Math.max($$21, $$20);
+                     boolean $$22 = $$19.a($$0);
+                     if (this.p.fS().d || $$0.a(cji.tC)) {
+                        $$22 = true;
+                     }
+
+                     for (cno $$23 : $$6.keySet()) {
+                        if ($$23 != $$19 && !$$19.b($$23)) {
+                           $$22 = false;
+                           $$1++;
+                        }
+                     }
+
+                     if (!$$22) {
+                        $$18 = true;
+                     } else {
+                        $$17 = true;
+                        if ($$21 > $$19.a()) {
+                           $$21 = $$19.a();
+                        }
+
+                        $$6.put($$19, $$21);
+                        int $$24 = 0;
+                        switch ($$19.d()) {
+                           case a:
+                              $$24 = 1;
+                              break;
+                           case b:
+                              $$24 = 2;
+                              break;
+                           case c:
+                              $$24 = 4;
+                              break;
+                           case d:
+                              $$24 = 8;
+                        }
+
+                        if ($$7) {
+                           $$24 = Math.max(1, $$24 / 2);
+                        }
+
+                        $$1 += $$24 * $$21;
+                        if ($$0.L() > 1) {
+                           $$1 = 40;
+                        }
+                     }
+                  }
+               }
+
+               if ($$18 && !$$17) {
+                  this.r.a(0, cjf.b);
+                  this.w.a(0);
+                  return;
+               }
+            }
+         }
+
+         if (this.v != null && !ac.b(this.v)) {
+            if (!this.v.equals($$0.y().getString())) {
+               $$3 = 1;
+               $$1 += $$3;
+               $$4.a(tl.b(this.v));
+            }
+         } else if ($$0.A()) {
+            $$3 = 1;
+            $$1 += $$3;
+            $$4.z();
+         }
+
+         this.w.a($$2 + $$1);
+         if ($$1 <= 0) {
+            $$4 = cjf.b;
+         }
+
+         if ($$3 == $$1 && $$3 > 0 && this.w.b() >= 40) {
+            this.w.a(39);
+         }
+
+         if (this.w.b() >= 40 && !this.p.fS().d) {
+            $$4 = cjf.b;
+         }
+
+         if (!$$4.b()) {
+            int $$25 = $$4.I();
+            if (!$$5.b() && $$25 < $$5.I()) {
+               $$25 = $$5.I();
+            }
+
+            if ($$3 != $$1 || $$3 == 0) {
+               $$25 = e($$25);
+            }
+
+            $$4.d($$25);
+            cnq.a($$6, $$4);
+         }
+
+         this.r.a(0, $$4);
+         this.d();
+      }
    }
 
-   public bgm l() {
-      return this.l;
+   public static int e(int $$0) {
+      return $$0 * 2 + 1;
    }
 
-   public int m() {
-      return this.m;
+   public boolean a(String $$0) {
+      String $$1 = b($$0);
+      if ($$1 != null && !$$1.equals(this.v)) {
+         this.v = $$1;
+         if (this.b(2).f()) {
+            cjf $$2 = this.b(2).e();
+            if (ac.b($$1)) {
+               $$2.z();
+            } else {
+               $$2.a(tl.b($$1));
+            }
+         }
+
+         this.m();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   private static String b(String $$0) {
+      String $$1 = aa.a($$0);
+      return $$1.length() <= 50 ? $$1 : null;
+   }
+
+   @Override
+   public int n() {
+      return this.w.b();
    }
 }

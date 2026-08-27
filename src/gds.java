@@ -1,3 +1,7 @@
-public interface gds {
-   void log(gdq var1);
+public interface gds<T> {
+   int e();
+
+   T b(asc var1);
+
+   void a(gdn var1);
 }

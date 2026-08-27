@@ -1,15 +1,28 @@
-import java.util.function.Function;
+public class ffu<T extends biq> extends ffm<T> {
+   private static final String a = "knot";
+   private final fic b;
+   private final fic f;
 
-public abstract class ffu {
-   protected final Function<aeu, foh> v;
-
-   public ffu(Function<aeu, foh> $$0) {
-      this.v = $$0;
+   public ffu(fic $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public final foh a(aeu $$0) {
-      return this.v.apply($$0);
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("knot", fih.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fie.a);
+      return fii.a($$0, 32, 32);
    }
 
-   public abstract void a(elk var1, elo var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   @Override
+   public fic a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   }
 }

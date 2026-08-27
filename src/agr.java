@@ -1,15 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import net.minecraft.server.MinecraftServer;
 
 public class agr {
    public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register((LiteralArgumentBuilder)du.a("me").then(du.a("action", ei.a()).executes($$0x -> {
-         ei.a($$0x, "action", $$1 -> {
-            dt $$2 = (dt)$$0x.getSource();
-            aoc $$3 = $$2.l().ac();
-            $$3.a($$1, $$2, te.a(te.i, $$2));
-         });
-         return 1;
-      })));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(du.a("gamemode", ef.a()).executes($$0x -> a((dt)$$0x.getSource(), ef.a($$0x, "gamemode"))))
+      );
+   }
+
+   private static int a(dt $$0, cps $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      $$3.a($$1);
+      cps $$4 = $$3.aW();
+      if ($$4 != null) {
+         for (aks $$5 : $$3.ac().t()) {
+            if ($$5.a($$4)) {
+               $$2++;
+            }
+         }
+      }
+
+      $$0.a(() -> tl.a("commands.defaultgamemode.success", $$1.d()), true);
+      return $$2;
    }
 }

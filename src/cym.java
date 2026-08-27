@@ -1,39 +1,26 @@
-public class cym extends csf {
-   public static final dfv d = dfu.w;
-   private final cym.a e;
+public class cym extends cum {
+   private static final eig[] a = new eig[]{
+      csv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-   protected cym(cym.a $$0, dfd.d $$1, dft $$2) {
-      super($$1, $$2);
-      this.k(this.C.b().a(d, Boolean.valueOf(false)));
-      this.e = $$0;
+   public cym(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int g(dfe $$0) {
-      return $$0.c(d) ? 15 : 0;
+   protected cpu c() {
+      return cji.tm;
    }
 
    @Override
-   protected dfe a(dfe $$0, int $$1) {
-      return $$0.a(d, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(cpq $$0, gw $$1) {
-      Class $$2 = switch (this.e) {
-         case a -> bil.class;
-         case b -> bjb.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(d);
-   }
-
-   public static enum a {
-      a,
-      b;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return a[this.g($$0)];
    }
 }

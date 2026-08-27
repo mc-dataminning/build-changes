@@ -1,53 +1,64 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
-public class eda extends ecx {
+public class eda extends edc {
    public static final Codec<eda> a = a(eda::new);
 
-   eda(List<ede> $$0, List<efk> $$1) {
+   eda(List<edj> $$0, List<efp> $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public edf a() {
-      return edc.i;
+   public edk a() {
+      return edh.g;
    }
 
    @Override
-   protected ecw a(List<? extends ecw> $$0) {
+   protected edb a(List<? extends edb> $$0) {
       return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ecw)$$0.get(0);
-         case 2 -> {
-            ecw $$1 = $$0.get(0);
-            ecw $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
+         case 0 -> b;
+         case 1 -> (edb)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (edb $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
                return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (ecw $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
+            }
          }
 
-         return true;
+         return false;
       };
       };
    }
 
-   public static eda.a a(ede.a<?>... $$0) {
+   @Override
+   public void a(ecz $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.a("Unreachable entry!");
+         }
+      }
+   }
+
+   public static eda.a a(edj.a<?>... $$0) {
       return new eda.a($$0);
    }
 
-   public static class a extends ede.a<eda.a> {
-      private final Builder<ede> a = ImmutableList.builder();
+   public static <E> eda.a a(Collection<E> $$0, Function<E, edj.a<?>> $$1) {
+      return new eda.a($$0.stream().map($$1::apply).toArray(edj.a[]::new));
+   }
 
-      public a(ede.a<?>... $$0) {
-         for (ede.a<?> $$1 : $$0) {
+   public static class a extends edj.a<eda.a> {
+      private final Builder<edj> a = ImmutableList.builder();
+
+      public a(edj.a<?>... $$0) {
+         for (edj.a<?> $$1 : $$0) {
             this.a.add($$1.b());
          }
       }
@@ -57,13 +68,13 @@ public class eda extends ecx {
       }
 
       @Override
-      public eda.a b(ede.a<?> $$0) {
+      public eda.a a(edj.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public ede b() {
+      public edj b() {
          return new eda(this.a.build(), this.f());
       }
    }

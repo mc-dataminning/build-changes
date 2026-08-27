@@ -1,12 +1,39 @@
-public class fuz extends fui<bvi, fgo<bvi>> {
-   private static final aeu a = new aeu("textures/entity/sheep/sheep.png");
+public class fuz extends fun<bvk, ffd<bvk>> {
+   private static final aex a = new aex("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final ffd<bvk> j;
+   private final ffd<bvk> k;
+   private final ffd<bvk> l = this.a();
 
-   public fuz(ftc.a $$0) {
-      super($$0, new fgo<>($$0.a(fhw.bb)), 0.7F);
-      this.a(new fxm(this, $$0.f()));
+   public fuz(fth.a $$0) {
+      super($$0, new fgk<>($$0.a(fib.aV)), 0.2F);
+      this.k = new fgl<>($$0.a(fib.aW));
+      this.j = new fgm<>($$0.a(fib.aX));
    }
 
-   public aeu a(bvi $$0) {
+   public aex a(bvk $$0) {
       return a;
+   }
+
+   public void a(bvk $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      int $$6 = $$0.gf();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
+      }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(bvk $$0, elp $$1, float $$2, float $$3, float $$4) {
+      $$1.a(0.0F, arx.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

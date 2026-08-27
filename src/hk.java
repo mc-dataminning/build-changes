@@ -15,9 +15,9 @@ public interface hk<T> extends Iterable<hg<T>> {
 
    int b();
 
-   Either<aqd<T>, List<hg<T>>> c();
+   Either<aqi<T>, List<hg<T>>> c();
 
-   Optional<hg<T>> a(arx var1);
+   Optional<hg<T>> a(asc var1);
 
    hg<T> a(int var1);
 
@@ -25,11 +25,11 @@ public interface hk<T> extends Iterable<hg<T>> {
 
    boolean a(hj<T> var1);
 
-   Optional<aqd<T>> d();
+   Optional<aqi<T>> d();
 
    @Deprecated
    @VisibleForTesting
-   static <T> hk.c<T> a(hj<T> $$0, aqd<T> $$1) {
+   static <T> hk.c<T> a(hj<T> $$0, aqi<T> $$1) {
       return new hk.c<>($$0, $$1);
    }
 
@@ -66,12 +66,12 @@ public interface hk<T> extends Iterable<hg<T>> {
       }
 
       @Override
-      public Either<aqd<T>, List<hg<T>>> c() {
+      public Either<aqi<T>, List<hg<T>>> c() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<aqd<T>> d() {
+      public Optional<aqi<T>> d() {
          return Optional.empty();
       }
 
@@ -114,7 +114,7 @@ public interface hk<T> extends Iterable<hg<T>> {
       }
 
       @Override
-      public Optional<hg<T>> a(arx $$0) {
+      public Optional<hg<T>> a(asc $$0) {
          return ac.b(this.e(), $$0);
       }
 
@@ -131,10 +131,10 @@ public interface hk<T> extends Iterable<hg<T>> {
 
    public static class c<T> extends hk.b<T> {
       private final hj<T> a;
-      private final aqd<T> b;
+      private final aqi<T> b;
       private List<hg<T>> c = List.of();
 
-      c(hj<T> $$0, aqd<T> $$1) {
+      c(hj<T> $$0, aqi<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -143,7 +143,7 @@ public interface hk<T> extends Iterable<hg<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public aqd<T> f() {
+      public aqi<T> f() {
          return this.b;
       }
 
@@ -153,12 +153,12 @@ public interface hk<T> extends Iterable<hg<T>> {
       }
 
       @Override
-      public Either<aqd<T>, List<hg<T>>> c() {
+      public Either<aqi<T>, List<hg<T>>> c() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<aqd<T>> d() {
+      public Optional<aqi<T>> d() {
          return Optional.of(this.b);
       }
 

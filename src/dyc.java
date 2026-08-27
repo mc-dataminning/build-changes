@@ -1,64 +1,92 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class dyc extends dyt {
-   public static final Codec<dyc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dyv.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bfy.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, dyc::new)
-   );
-   private final dyt b;
-   private final bfy c;
+public class dyc extends dyy {
+   public static final Codec<dyc> a = Codec.FLOAT.fieldOf("mossiness").xmap(dyc::new, $$0 -> $$0.f).codec();
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dfj[] e = new dfj[]{csw.jD.n(), csw.jK.n()};
+   private final float f;
 
-   public dyc(dyt $$0, bfy $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dyc(float $$0) {
+      this.f = $$0;
    }
 
+   @Nullable
    @Override
-   protected dyv<?> a() {
-      return dyv.o;
-   }
-
-   @Override
-   public final List<dyw.c> a(cqf $$0, gw $$1, gw $$2, List<dyw.c> $$3, List<dyw.c> $$4, dys $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            arx $$6 = arx.a($$0.C().A()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  dyw.c $$12 = $$3.get($$11);
-                  dyw.c $$13 = $$4.get($$11);
-                  dyw.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
+   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
+      asc $$6 = $$5.b($$4.a());
+      dfj $$7 = $$4.b();
+      gw $$8 = $$4.a();
+      dfj $$9 = null;
+      if ($$7.a(csw.eI) || $$7.a(csw.b) || $$7.a(csw.eL)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(apt.J)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(apt.K)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(apt.L)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(csw.co)) {
+         $$9 = this.d($$6);
       }
+
+      return $$9 != null ? new dzb.c($$8, $$9, $$4.c()) : $$4;
+   }
+
+   @Nullable
+   private dfj a(asc $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dfj[] $$1 = new dfj[]{csw.eK.n(), a($$0, csw.fj)};
+         dfj[] $$2 = new dfj[]{csw.eJ.n(), a($$0, csw.ng)};
+         return this.a($$0, $$1, $$2);
+      }
+   }
+
+   @Nullable
+   private dfj a(asc $$0, dfj $$1) {
+      hc $$2 = $$1.c(dap.a);
+      dgi $$3 = $$1.c(dap.b);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dfj[] $$4 = new dfj[]{csw.ng.n().a(dap.a, $$2).a(dap.b, $$3), csw.nu.n()};
+         return this.a($$0, e, $$4);
+      }
+   }
+
+   @Nullable
+   private dfj b(asc $$0) {
+      return $$0.i() < this.f ? csw.nu.n() : null;
+   }
+
+   @Nullable
+   private dfj c(asc $$0) {
+      return $$0.i() < this.f ? csw.nI.n() : null;
+   }
+
+   @Nullable
+   private dfj d(asc $$0) {
+      return $$0.i() < 0.15F ? csw.pk.n() : null;
+   }
+
+   private static dfj a(asc $$0, csv $$1) {
+      return $$1.n().a(dap.a, hc.c.a.a($$0)).a(dap.b, ac.a(dgi.values(), $$0));
+   }
+
+   private dfj a(asc $$0, dfj[] $$1, dfj[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dfj a(asc $$0, dfj[] $$1) {
+      return $$1[$$0.a($$1.length)];
+   }
+
+   @Override
+   protected dza<?> a() {
+      return dza.k;
    }
 }

@@ -25,6 +25,7 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 import net.minecraft.obfuscate.DontObfuscate;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.slf4j.Logger;
 
 public class Main {
@@ -34,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gea.a.a(gdw.z, $$1);
-      gea.a.a(gdw.A, $$2);
+      gef.a.a(geb.z, $$1);
+      gef.a.a(geb.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -70,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erf.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erk.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -90,7 +91,7 @@ public class Main {
 
       final String $$36 = a($$32, $$14);
       final String $$37 = a($$32, $$15);
-      if (!$$35.equals(Proxy.NO_PROXY) && b($$36) && b($$37)) {
+      if (!$$35.equals(Proxy.NO_PROXY) && c($$36) && c($$37)) {
          Authenticator.setDefault(new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -109,8 +110,8 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = arj.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = arj.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = aro.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = aro.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
@@ -120,38 +121,38 @@ public class Main {
       String $$56 = (String)$$32.valueOf($$18);
       String $$57 = (String)$$32.valueOf($$19);
       String $$58 = a($$32, $$5);
-      String $$59 = a($$32, $$6);
-      String $$60 = a($$32, $$7);
-      String $$61 = a($$32, $$8);
+      String $$59 = a(a($$32, $$6));
+      String $$60 = a(a($$32, $$7));
+      String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bdq.e.a(bdo.a);
+         bdv.e.a(bdt.a);
       }
 
       o.h();
-      aew.a();
-      gea.a.a(aew.b.get());
-      aew.c();
+      aez.a();
+      gef.a.a(aez.b.get());
+      aez.c();
       ac.l();
       String $$62 = (String)$$29.value($$32);
-      erf.a $$63 = erf.a.a($$62);
+      erk.a $$63 = erk.a.a($$62);
       if ($$63 == null) {
          a.warn("Unrecognized user type: {}", $$62);
       }
 
-      erf $$64 = new erf((String)$$16.value($$32), $$54, (String)$$20.value($$32), a($$56), a($$57), $$63);
-      fdr $$65 = new fdr(
-         new fdr.d($$64, $$48, $$49, $$35),
-         new ekb($$38, $$39, $$40, $$41, $$42),
-         new fdr.a($$51, $$53, $$52, $$55),
-         new fdr.b($$43, $$46, $$50, $$44, $$45),
-         new fdr.c($$58, $$59, $$60, $$61)
+      erk $$64 = new erk((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$63);
+      fdw $$65 = new fdw(
+         new fdw.d($$64, $$48, $$49, $$35),
+         new ekg($$38, $$39, $$40, $$41, $$42),
+         new fdw.a($$51, $$53, $$52, $$55),
+         new fdw.b($$43, $$46, $$50, $$44, $$45),
+         new fdw.c($$58, $$59, $$60, $$61)
       );
       Thread $$66 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            eqq $$0 = eqq.O();
+            eqv $$0 = eqv.O();
             if ($$0 != null) {
-               gcy $$1 = $$0.T();
+               gdd $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -161,22 +162,22 @@ public class Main {
       $$66.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$66);
 
-      final eqq $$67;
+      final eqv $$67;
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$67 = new eqq($$65);
+         $$67 = new eqv($$65);
          RenderSystem.finishInitialization();
-      } catch (fds var81) {
+      } catch (fdx var81) {
          a.warn("Failed to create window: ", var81);
          return;
       } catch (Throwable var82) {
          o $$70 = o.a(var82, "Initializing game");
          p $$71 = $$70.a("Initialization");
-         art.a($$71);
-         eqq.a(null, null, $$65.d.b, null, $$70);
-         eqq.c($$70);
+         ary.a($$71);
+         eqv.a(null, null, $$65.d.b, null, $$70);
+         eqv.c($$70);
          return;
       }
 
@@ -208,7 +209,7 @@ public class Main {
          }
       }
 
-      elg.a();
+      ell.a();
 
       try {
          $$67.q();
@@ -222,7 +223,12 @@ public class Main {
       }
    }
 
-   private static Optional<String> a(String $$0) {
+   @Nullable
+   private static String a(@Nullable String $$0) {
+      return $$0 == null ? null : StringEscapeUtils.unescapeJava($$0);
+   }
+
+   private static Optional<String> b(String $$0) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of($$0);
    }
 
@@ -246,7 +252,7 @@ public class Main {
       }
    }
 
-   private static boolean b(@Nullable String $$0) {
+   private static boolean c(@Nullable String $$0) {
       return $$0 != null && !$$0.isEmpty();
    }
 

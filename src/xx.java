@@ -1,14 +1,14 @@
-public record xx(cox a) implements va<ws> {
-   public xx(sl $$0) {
-      this($$0.f());
+public record xx(tw.a a) implements vd<ww> {
+   public xx(so $$0) {
+      this(tw.a.a($$0));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      tw.a.a($$0, this.a);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 }

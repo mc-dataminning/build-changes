@@ -1,39 +1,68 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import java.io.Reader;
 import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class fph {
-   public static final fph a = new fph(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+   private final Map<String, fpo> a = Maps.newLinkedHashMap();
+   private fpt b;
 
-   public fph(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
+   public static fph a(fph.a $$0, Reader $$1) {
+      return aro.a($$0.a, $$1, fph.class);
    }
 
-   public void a(boolean $$0, elk $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
+   public static fph a(fph.a $$0, JsonElement $$1) {
+      return (fph)$$0.a.fromJson($$1, fph.class);
+   }
+
+   public fph(Map<String, fpo> $$0, fpt $$1) {
+      this.b = $$1;
+      this.a.putAll($$0);
+   }
+
+   public fph(List<fph> $$0) {
+      fph $$1 = null;
+
+      for (fph $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
          }
 
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
+         this.a.putAll($$2.a);
+      }
+
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
+   }
+
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
+   }
+
+   @VisibleForTesting
+   public fpo b(String $$0) {
+      fpo $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new fph.c();
+      } else {
+         return $$1;
       }
    }
 
@@ -41,56 +70,97 @@ public class fph {
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
       } else {
-         fph $$1 = (fph)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+         if ($$0 instanceof fph $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
    }
 
-   protected static class a implements JsonDeserializer<fph> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
+   public Map<String, fpo> a() {
+      return this.a;
+   }
 
+   @VisibleForTesting
+   public Set<fpo> b() {
+      Set<fpo> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b != null;
+   }
+
+   public fpt d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(fph.class, new fph.b())
+         .registerTypeAdapter(fpp.class, new fpp.a())
+         .registerTypeAdapter(fpo.class, new fpo.a())
+         .registerTypeAdapter(fpt.class, new fpt.a(this))
+         .registerTypeAdapter(fpv.class, new fpv.a())
+         .create();
+      private dfk<csv, dfj> b;
+
+      public dfk<csv, dfj> a() {
+         return this.b;
+      }
+
+      public void a(dfk<csv, dfj> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<fph> {
       public fph a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(ars.a($$5.x, -5.0F, 5.0F), ars.a($$5.y, -5.0F, 5.0F), ars.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(ars.a($$6.x, -4.0F, 4.0F), ars.a($$6.y, -4.0F, 4.0F), ars.a($$6.z, -4.0F, 4.0F));
-         return new fph($$4, $$5, $$6);
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
+         Map<String, fpo> $$4 = this.a($$2, $$3);
+         fpt $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new fph($$4, $$5);
          } else {
-            JsonArray $$3 = arj.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
-
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = arj.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
-
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
-            }
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
       }
+
+      protected Map<String, fpo> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, fpo> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = aro.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (fpo)$$0.deserialize($$4.getValue(), fpo.class));
+            }
+         }
+
+         return $$2;
+      }
+
+      @Nullable
+      protected fpt b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = aro.v($$1, "multipart");
+            return (fpt)$$0.deserialize($$2, fpt.class);
+         }
+      }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

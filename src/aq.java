@@ -6,11 +6,11 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import javax.annotation.Nullable;
 
 public class aq {
-   private final ti a;
-   private final ti b;
-   private final cja c;
+   private final tl a;
+   private final tl b;
+   private final cjf c;
    @Nullable
-   private final aeu d;
+   private final aex d;
    private final ar e;
    private final boolean f;
    private final boolean g;
@@ -18,7 +18,7 @@ public class aq {
    private float i;
    private float j;
 
-   public aq(cja $$0, ti $$1, ti $$2, @Nullable aeu $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public aq(cjf $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$0;
@@ -34,20 +34,20 @@ public class aq {
       this.j = $$1;
    }
 
-   public ti a() {
+   public tl a() {
       return this.a;
    }
 
-   public ti b() {
+   public tl b() {
       return this.b;
    }
 
-   public cja c() {
+   public cjf c() {
       return this.c;
    }
 
    @Nullable
-   public aeu d() {
+   public aex d() {
       return this.d;
    }
 
@@ -76,33 +76,33 @@ public class aq {
    }
 
    public static aq a(JsonObject $$0) {
-      ti $$1 = ti.a.a($$0.get("title"));
-      ti $$2 = ti.a.a($$0.get("description"));
+      tl $$1 = tl.a.a($$0.get("title"));
+      tl $$2 = tl.a.a($$0.get("description"));
       if ($$1 != null && $$2 != null) {
-         cja $$3 = b(arj.u($$0, "icon"));
-         aeu $$4 = $$0.has("background") ? new aeu(arj.i($$0, "background")) : null;
-         ar $$5 = $$0.has("frame") ? ar.a(arj.i($$0, "frame")) : ar.a;
-         boolean $$6 = arj.a($$0, "show_toast", true);
-         boolean $$7 = arj.a($$0, "announce_to_chat", true);
-         boolean $$8 = arj.a($$0, "hidden", false);
+         cjf $$3 = b(aro.u($$0, "icon"));
+         aex $$4 = $$0.has("background") ? new aex(aro.i($$0, "background")) : null;
+         ar $$5 = $$0.has("frame") ? ar.a(aro.i($$0, "frame")) : ar.a;
+         boolean $$6 = aro.a($$0, "show_toast", true);
+         boolean $$7 = aro.a($$0, "announce_to_chat", true);
+         boolean $$8 = aro.a($$0, "hidden", false);
          return new aq($$3, $$1, $$2, $$4, $$5, $$6, $$7, $$8);
       } else {
          throw new JsonSyntaxException("Both title and description must be set");
       }
    }
 
-   private static cja b(JsonObject $$0) {
+   private static cjf b(JsonObject $$0) {
       if (!$$0.has("item")) {
          throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
       } else {
-         hg<civ> $$1 = arj.j($$0, "item");
+         hg<cja> $$1 = aro.j($$0, "item");
          if ($$0.has("data")) {
             throw new JsonParseException("Disallowed data tag found");
          } else {
-            cja $$2 = new cja($$1);
+            cjf $$2 = new cjf($$1);
             if ($$0.has("nbt")) {
                try {
-                  qu $$3 = ro.a(arj.a($$0.get("nbt"), "nbt"));
+                  qx $$3 = rr.a(aro.a($$0.get("nbt"), "nbt"));
                   $$2.c($$3);
                } catch (CommandSyntaxException var4) {
                   throw new JsonSyntaxException("Invalid nbt tag: " + var4.getMessage());
@@ -114,7 +114,7 @@ public class aq {
       }
    }
 
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -141,13 +141,13 @@ public class aq {
       $$0.a(this.j);
    }
 
-   public static aq b(sl $$0) {
-      ti $$1 = $$0.l();
-      ti $$2 = $$0.l();
-      cja $$3 = $$0.q();
+   public static aq b(so $$0) {
+      tl $$1 = $$0.l();
+      tl $$2 = $$0.l();
+      cjf $$3 = $$0.q();
       ar $$4 = $$0.b(ar.class);
       int $$5 = $$0.readInt();
-      aeu $$6 = ($$5 & 1) != 0 ? $$0.s() : null;
+      aex $$6 = ($$5 & 1) != 0 ? $$0.s() : null;
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       aq $$9 = new aq($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);
@@ -158,8 +158,8 @@ public class aq {
    public JsonElement k() {
       JsonObject $$0 = new JsonObject();
       $$0.add("icon", this.l());
-      $$0.add("title", ti.a.c(this.a));
-      $$0.add("description", ti.a.c(this.b));
+      $$0.add("title", tl.a.c(this.a));
+      $$0.add("description", tl.a.c(this.b));
       $$0.addProperty("frame", this.e.a());
       $$0.addProperty("show_toast", this.f);
       $$0.addProperty("announce_to_chat", this.g);

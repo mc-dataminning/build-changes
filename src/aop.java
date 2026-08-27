@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class aop implements ds {
-   private static final String b = "Rcon";
-   private static final ti c = ti.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
-
-   public aop(MinecraftServer $$0) {
-      this.e = $$0;
-   }
-
-   public void e() {
-      this.d.setLength(0);
-   }
-
-   public String f() {
-      return this.d.toString();
-   }
-
-   public dt g() {
-      akn $$0 = this.e.D();
-      return new dt(this, ehi.a($$0.R()), ehh.a, $$0, 4, "Rcon", c, this.e, null);
+public class aop extends aom<GameProfile, aoq> {
+   public aop(File $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(ti $$0) {
-      this.d.append($$0.getString());
+   protected aol<GameProfile> a(JsonObject $$0) {
+      return new aoq($$0);
+   }
+
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
    @Override
-   public boolean f_() {
-      return true;
+   public String[] a() {
+      return this.d().stream().map(aol::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   @Override
-   public boolean q_() {
-      return true;
-   }
-
-   @Override
-   public boolean N_() {
-      return this.e.k();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

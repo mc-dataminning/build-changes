@@ -1,17 +1,39 @@
-public class bye {
-   private final int a;
-   private final int b;
-
-   public bye(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bye extends byg {
+   public bye(biu<? extends byg> $$0, cpv $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public bye(cpv $$0, gw $$1, hc $$2) {
+      super(biu.S, $$0, $$1, $$2);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public apd q() {
+      return ape.jx;
+   }
+
+   @Override
+   public apd s() {
+      return ape.jv;
+   }
+
+   @Override
+   public apd t() {
+      return ape.jw;
+   }
+
+   @Override
+   public apd v() {
+      return ape.ju;
+   }
+
+   @Override
+   public apd w() {
+      return ape.jy;
+   }
+
+   @Override
+   protected cjf x() {
+      return new cjf(cji.tj);
    }
 }

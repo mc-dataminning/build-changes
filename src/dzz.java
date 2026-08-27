@@ -1,17 +1,49 @@
-public interface dzz {
-   void a(gw var1);
+import javax.annotation.Nullable;
 
-   boolean E_();
+public interface dzz extends eae {
+   @Nullable
+   dhl a(hz var1);
 
-   int a();
+   int b(gw var1);
 
-   default void a(gw $$0, boolean $$1) {
-      this.a(hz.a($$0), $$1);
+   public static enum a implements dzz {
+      a;
+
+      @Nullable
+      @Override
+      public dhl a(hz $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(gw $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(gw $$0) {
+      }
+
+      @Override
+      public boolean J_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(hz $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(cpc $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(cpc $$0) {
+      }
    }
-
-   void a(hz var1, boolean var2);
-
-   void a(cox var1, boolean var2);
-
-   void b(cox var1);
 }

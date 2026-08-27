@@ -1,35 +1,77 @@
-public class cxg extends csq {
-   private static final int a = 20;
+import java.util.function.ToIntFunction;
 
-   public cxg(dfd.d $$0) {
+public class cxg extends csv implements czw {
+   public static final int a = 15;
+   public static final dgj b = dfz.aP;
+   public static final dga c = dfz.C;
+   public static final ToIntFunction<dfj> d = $$0 -> $$0.c(b);
+
+   public cxg(dfi.d $$0) {
       super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(15)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cpq $$0, gw $$1, dfe $$2, bil $$3) {
-      if (!$$3.bS() && $$3 instanceof bjb && !cnl.j((bjb)$$3)) {
-         $$3.a($$0.ag().e(), 1.0F);
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if (!$$1.B && $$3.go()) {
+         $$1.a($$2, $$0.a(b), 2);
+         return bgy.a;
+      } else {
+         return bgy.b;
       }
-
-      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      csv.b($$1, $$2.c(), $$0);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return $$3.a(cji.hg) ? eid.b() : eid.a();
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$1 == hc.b && $$2.a(csr.G)) {
-         $$3.a($$4, this, 20);
+   public boolean c(dfj $$0, cpb $$1, gw $$2) {
+      return true;
+   }
+
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.a;
+   }
+
+   @Override
+   public float b(dfj $$0, cpb $$1, gw $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   public eam c_(dfj $$0) {
+      return $$0.c(c) ? ean.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(b));
+   }
+
+   public static cjf a(cjf $$0, int $$1) {
+      if ($$1 != 15) {
+         qx $$2 = new qx();
+         $$2.a(b.f(), String.valueOf($$1));
+         $$0.a("BlockStateTag", $$2);
+      }
+
+      return $$0;
    }
 }

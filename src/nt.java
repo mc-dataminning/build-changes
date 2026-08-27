@@ -1,72 +1,65 @@
 public class nt {
-   @Deprecated
-   public static final dzk.a a = new dzk.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final aew<dmv<?>> a = a("cave");
+   public static final aew<dmv<?>> b = a("cave_extra_underground");
+   public static final aew<dmv<?>> c = a("canyon");
+   public static final aew<dmv<?>> d = a("nether_cave");
 
-   public static void a(np<dzk.a> $$0) {
-      a($$0, 0, dkw.a, dkw.b, dkw.c, dkw.d);
-      a($$0, -2, dkw.e, dkw.f, dkw.g, dkw.h);
-      a($$0, dkw.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dkw.j, a);
-      a($$0, dkw.k, -3, 1.0);
-      a($$0, dkw.l, -7, 1.0);
-      a($$0, dkw.m, -1, 1.0);
-      a($$0, dkw.n, -5, 1.0);
-      a($$0, dkw.o, -7, 1.0, 1.0);
-      a($$0, dkw.p, -8, 1.0);
-      a($$0, dkw.q, -8, 1.0);
-      a($$0, dkw.r, -7, 1.0);
-      a($$0, dkw.s, -8, 1.0);
-      a($$0, dkw.t, -11, 1.0);
-      a($$0, dkw.u, -11, 1.0);
-      a($$0, dkw.v, -7, 1.0);
-      a($$0, dkw.w, -7, 1.0);
-      a($$0, dkw.x, -11, 1.0);
-      a($$0, dkw.y, -8, 1.0);
-      a($$0, dkw.z, -5, 1.0);
-      a($$0, dkw.A, -8, 1.0);
-      a($$0, dkw.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dkw.C, -8, 1.0);
-      a($$0, dkw.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dkw.E, -8, 1.0);
-      a($$0, dkw.F, -7, 1.0);
-      a($$0, dkw.G, -7, 1.0);
-      a($$0, dkw.H, -5, 1.0);
-      a($$0, dkw.I, -8, 1.0);
-      a($$0, dkw.J, -8, 1.0);
-      a($$0, dkw.K, -7, 1.0);
-      a($$0, dkw.L, -7, 1.0);
-      a($$0, dkw.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dkw.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dkw.P, -8, 1.0);
-      a($$0, dkw.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.R, -8, 1.0);
-      a($$0, dkw.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dkw.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.U, -3, 1.0);
-      a($$0, dkw.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dkw.W, -2, 1.0);
-      a($$0, dkw.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkw.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkw.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkw.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkw.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dkw.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dkw.ah, -4, 1.0);
+   private static aew<dmv<?>> a(String $$0) {
+      return aew.a(je.ar, new aex($$0));
    }
 
-   private static void a(np<dzk.a> $$0, int $$1, aet<dzk.a> $$2, aet<dzk.a> $$3, aet<dzk.a> $$4, aet<dzk.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(np<dzk.a> $$0, aet<dzk.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new dzk.a($$2, $$3, $$4));
+   public static void a(ns<dmv<?>> $$0) {
+      hh<csv> $$1 = $$0.a(je.e);
+      $$0.a(
+         a,
+         dmx.a
+            .a(
+               new dmt(
+                  0.15F,
+                  dts.a(dlm.b(8), dlm.a(180)),
+                  bgi.b(0.1F, 0.9F),
+                  dlm.b(8),
+                  dmr.a(false, csw.oS.n()),
+                  $$1.b(apt.bh),
+                  bgi.b(0.7F, 1.4F),
+                  bgi.b(0.8F, 1.3F),
+                  bgi.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         b,
+         dmx.a
+            .a(
+               new dmt(
+                  0.07F,
+                  dts.a(dlm.b(8), dlm.a(47)),
+                  bgi.b(0.1F, 0.9F),
+                  dlm.b(8),
+                  dmr.a(false, csw.gv.n()),
+                  $$1.b(apt.bh),
+                  bgi.b(0.7F, 1.4F),
+                  bgi.b(0.8F, 1.3F),
+                  bgi.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         dmx.c
+            .a(
+               new dmo(
+                  0.01F,
+                  dts.a(dlm.a(10), dlm.a(67)),
+                  bfz.a(3.0F),
+                  dlm.b(8),
+                  dmr.a(false, csw.oT.n()),
+                  $$1.b(apt.bh),
+                  bgi.b(-0.125F, 0.125F),
+                  new dmo.a(bgi.b(0.75F, 1.0F), bgh.a(0.0F, 6.0F, 2.0F), 3, bgi.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, dmx.b.a(new dmt(0.2F, dts.a(dlm.a(0), dlm.c(1)), bfz.a(0.5F), dlm.b(10), $$1.b(apt.bi), bfz.a(1.0F), bfz.a(1.0F), bfz.a(-0.7F))));
    }
 }

@@ -1,57 +1,35 @@
-import javax.annotation.Nullable;
+public class eth {
+   public static final aex a = new aex("textures/gui/title/minecraft.png");
+   public static final aex b = new aex("textures/gui/title/minceraft.png");
+   public static final aex c = new aex("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)asc.a().i() < 1.0E-4;
+   private final boolean o;
 
-public abstract class eth<E extends eth.a<E>> extends esg<E> {
-   private static final ti a = ti.c("narration.selection.usage");
-
-   public eth(eqq $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public eth(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Nullable
-   @Override
-   public erx a(ewj $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (this.ay_() && $$0 instanceof ewj.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? erx.a(this, erx.a($$2)) : null;
-      } else if (!this.ay_()) {
-         E $$3 = this.f();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : erx.a(this, erx.a($$3));
-      } else {
-         return null;
-      }
+   public void a(esf $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   public void b(ewd $$0) {
-      E $$1 = this.r();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.f();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.ay_()) {
-         $$0.a(ewc.d, a);
-      }
-   }
-
-   public abstract static class a<E extends eth.a<E>> extends esg.a<E> implements ewe {
-      public abstract ti a();
-
-      @Override
-      public void b(ewd $$0) {
-         $$0.a(ewc.a, this.a());
-      }
+   public void a(esf $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

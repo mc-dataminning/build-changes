@@ -1,20 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class dxz extends dyq {
-   public static final Codec<dxz> a = jd.f.q().fieldOf("block").xmap(dxz::new, $$0 -> $$0.b).codec();
-   private final csq b;
+public class dxz extends dyv {
+   public static final Codec<dxz> a = Codec.unit(() -> dxz.b);
+   public static final dxz b = new dxz();
 
-   public dxz(csq $$0) {
-      this.b = $$0;
+   private dxz() {
    }
 
    @Override
-   public boolean a(dfe $$0, arx $$1) {
-      return $$0.a(this.b);
+   public boolean a(dfj $$0, asc $$1) {
+      return true;
    }
 
    @Override
-   protected dyr<?> a() {
-      return dyr.b;
+   protected dyw<?> a() {
+      return dyw.a;
    }
 }

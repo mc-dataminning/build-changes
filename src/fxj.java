@@ -1,33 +1,46 @@
-public class fxj<T extends cbp, M extends fey<T> & fdz & ffg> extends fxd<T, M> {
-   private final fnv a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class fxj extends fxp<bwt, ffw<bwt>> {
+   private static final aex[] a = new aex[]{
+      new aex("textures/entity/llama/decor/white.png"),
+      new aex("textures/entity/llama/decor/orange.png"),
+      new aex("textures/entity/llama/decor/magenta.png"),
+      new aex("textures/entity/llama/decor/light_blue.png"),
+      new aex("textures/entity/llama/decor/yellow.png"),
+      new aex("textures/entity/llama/decor/lime.png"),
+      new aex("textures/entity/llama/decor/pink.png"),
+      new aex("textures/entity/llama/decor/gray.png"),
+      new aex("textures/entity/llama/decor/light_gray.png"),
+      new aex("textures/entity/llama/decor/cyan.png"),
+      new aex("textures/entity/llama/decor/purple.png"),
+      new aex("textures/entity/llama/decor/blue.png"),
+      new aex("textures/entity/llama/decor/brown.png"),
+      new aex("textures/entity/llama/decor/green.png"),
+      new aex("textures/entity/llama/decor/red.png"),
+      new aex("textures/entity/llama/decor/black.png")
+   };
+   private static final aex b = new aex("textures/entity/llama/decor/trader_llama.png");
+   private final ffw<bwt> c;
 
-   public fxj(fux<T, M> $$0, fnv $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public fxj(fvc<bwt, ffw<bwt>> $$0, fhy $$1) {
+      super($$0);
+      this.c = new ffw<>($$1.a(fib.as));
    }
 
-   @Override
-   protected void a(bjb $$0, cja $$1, cix $$2, biv $$3, elk $$4, fnz $$5, int $$6) {
-      if ($$1.a(cjd.qj) && $$0.fn() == $$1 && $$0.aH == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+   public void a(elp $$0, foe $$1, int $$2, bwt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cht $$10 = $$3.gq();
+      aex $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
+         if (!$$3.gm()) {
+            return;
+         }
 
-   private void a(bjb $$0, cja $$1, biv $$2, elk $$3, fnz $$4, int $$5) {
-      $$3.a();
-      fhx $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = ars.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      fwp.a($$3, false);
-      boolean $$8 = $$2 == biv.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cix.f, false, $$3, $$4, $$5);
-      $$3.b();
+         $$11 = b;
+      }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      elt $$14 = $$1.getBuffer(fom.e($$11));
+      this.c.a($$0, $$14, $$2, fyv.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

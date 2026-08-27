@@ -1,31 +1,53 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class dwt {
+   public static class a extends dvm {
+      public a(gw $$0) {
+         super(dvz.aa, 0, new dva($$0));
+      }
 
-public class dwt extends dvd {
-   public static final Codec<dwt> d = a(dwt::new);
+      public a(qx $$0) {
+         super(dvz.aa, $$0);
+      }
 
-   public dwt(dvd.c $$0) {
-      super($$0);
-   }
+      @Override
+      protected void a(dvy $$0, qx $$1) {
+      }
 
-   @Override
-   public Optional<dvd.b> a(dvd.a $$0) {
-      czc $$1 = czc.a($$0.f());
-      gw $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dvd.b($$2, (Consumer<dvv>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
+      @Override
+      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
+         int $$7 = $$0.a(dks.a.c, this.f.g(), this.f.i());
+         gw.a $$8 = new gw.a(this.f.g(), $$7, this.f.i());
 
-   private void a(dvv $$0, gw $$1, czc $$2, dvd.a $$3) {
-      List<dvh> $$4 = Lists.newArrayList();
-      dws.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
+         while ($$8.v() > $$0.H_()) {
+            dfj $$9 = $$0.a_($$8);
+            dfj $$10 = $$0.a_($$8.d());
+            if ($$10 == csw.aV.n() || $$10 == csw.b.n() || $$10 == csw.g.n() || $$10 == csw.c.n() || $$10 == csw.e.n()) {
+               dfj $$11 = !$$9.i() && !this.b($$9) ? $$9 : csw.I.n();
 
-   @Override
-   public dvm<?> e() {
-      return dvm.c;
+               for (hc $$12 : hc.values()) {
+                  gw $$13 = $$8.a($$12);
+                  dfj $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     gw $$15 = $$13.d();
+                     dfj $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != hc.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new dva($$8);
+               this.a($$0, $$4, $$3, $$8, eco.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
+      }
+
+      private boolean b(dfj $$0) {
+         return $$0 == csw.G.n() || $$0 == csw.H.n();
+      }
    }
 }

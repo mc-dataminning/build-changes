@@ -1,51 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import java.util.Optional;
 
-public class fof {
-   private final fok a = new fok();
-   private final SortedMap<foh, elf> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
-      $$0.put(fon.h(), this.a.a(foh.c()));
-      $$0.put(fon.i(), this.a.a(foh.e()));
-      $$0.put(fon.a(), this.a.a(foh.d()));
-      $$0.put(fon.k(), this.a.a(foh.f()));
-      a($$0, fon.b());
-      a($$0, fon.c());
-      a($$0, fon.d());
-      a($$0, fon.e());
-      a($$0, fon.f());
-      a($$0, fon.g());
-      a($$0, foh.h());
-      a($$0, foh.k());
-      a($$0, foh.l());
-      a($$0, foh.n());
-      a($$0, foh.o());
-      a($$0, foh.m());
-      a($$0, foh.p());
-      a($$0, foh.q());
-      a($$0, foh.j());
-      gbf.l.forEach($$1 -> a($$0, $$1));
-   });
-   private final fnz.a c = fnz.a(this.b, new elf(256));
-   private final fnz.a d = fnz.a(new elf(256));
-   private final foa e = new foa(this.c);
+public class fof implements foe {
+   private final foe.a a;
+   private final foe.a b = foe.a(new elk(256));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   private static void a(Object2ObjectLinkedOpenHashMap<foh, elf> $$0, foh $$1) {
-      $$0.put($$1, new elf($$1.H()));
+   public fof(foe.a $$0) {
+      this.a = $$0;
    }
 
-   public fok a() {
-      return this.a;
+   @Override
+   public elt getBuffer(fom $$0) {
+      if ($$0.L()) {
+         elt $$1 = this.b.getBuffer($$0);
+         return new fof.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         elt $$2 = this.a.getBuffer($$0);
+         Optional<fom> $$3 = $$0.K();
+         if ($$3.isPresent()) {
+            elt $$4 = this.b.getBuffer($$3.get());
+            fof.a $$5 = new fof.a($$4, this.c, this.d, this.e, this.f);
+            return elw.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   public fnz.a b() {
-      return this.c;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public fnz.a c() {
-      return this.d;
+   public void a() {
+      this.b.b();
    }
 
-   public foa d() {
-      return this.e;
+   static class a extends elo {
+      private final elt f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(elt $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public elt a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public elt b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

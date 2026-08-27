@@ -14,26 +14,26 @@ import java.util.concurrent.CompletableFuture;
 
 public class eq<T> implements ArgumentType<hg.c<T>> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> ti.a("entity.not_summonable", $$0));
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ti.a("argument.resource.not_found", $$0, $$1));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.resource.not_found", $$0, $$1));
    public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> ti.a("argument.resource.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tl.a("argument.resource.invalid_type", $$0, $$1, $$2)
    );
-   final aet<? extends ht<T>> e;
+   final aew<? extends ht<T>> e;
    private final hi<T> f;
 
-   public eq(dn $$0, aet<? extends ht<T>> $$1) {
+   public eq(dn $$0, aew<? extends ht<T>> $$1) {
       this.e = $$1;
       this.f = $$0.a($$1);
    }
 
-   public static <T> eq<T> a(dn $$0, aet<? extends ht<T>> $$1) {
+   public static <T> eq<T> a(dn $$0, aew<? extends ht<T>> $$1) {
       return new eq<>($$0, $$1);
    }
 
-   public static <T> hg.c<T> a(CommandContext<dt> $$0, String $$1, aet<ht<T>> $$2) throws CommandSyntaxException {
+   public static <T> hg.c<T> a(CommandContext<dt> $$0, String $$1, aew<ht<T>> $$2) throws CommandSyntaxException {
       hg.c<T> $$3 = (hg.c<T>)$$0.getArgument($$1, hg.c.class);
-      aet<?> $$4 = $$3.g();
+      aew<?> $$4 = $$3.g();
       if ($$4.b($$2)) {
          return $$3;
       } else {
@@ -41,24 +41,24 @@ public class eq<T> implements ArgumentType<hg.c<T>> {
       }
    }
 
-   public static hg.c<bkc> a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<bkh> a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.b);
    }
 
-   public static hg.c<dne<?, ?>> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<dnj<?, ?>> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.as);
    }
 
-   public static hg.c<dvd> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<dvi> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.az);
    }
 
-   public static hg.c<bip<?>> d(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<biu<?>> d(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.s);
    }
 
-   public static hg.c<bip<?>> e(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      hg.c<bip<?>> $$2 = a($$0, $$1, je.s);
+   public static hg.c<biu<?>> e(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      hg.c<biu<?>> $$2 = a($$0, $$1, je.s);
       if (!$$2.a().c()) {
          throw d.create($$2.g().a().toString());
       } else {
@@ -66,22 +66,22 @@ public class eq<T> implements ArgumentType<hg.c<T>> {
       }
    }
 
-   public static hg.c<bhw> f(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<bib> f(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.O);
    }
 
-   public static hg.c<cnj> g(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<cno> g(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, je.r);
    }
 
    public hg.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      aeu $$1 = aeu.a($$0);
-      aet<T> $$2 = aet.a(this.e, $$1);
+      aex $$1 = aex.a($$0);
+      aew<T> $$2 = aew.a(this.e, $$1);
       return this.f.a($$2).orElseThrow(() -> a.create($$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dw.a(this.f.c().map(aet::a), $$1);
+      return dw.a(this.f.c().map(aew::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -89,11 +89,11 @@ public class eq<T> implements ArgumentType<hg.c<T>> {
    }
 
    public static class a<T> implements gi<eq<T>, eq.a<T>.a> {
-      public void a(eq.a<T>.a $$0, sl $$1) {
+      public void a(eq.a<T>.a $$0, so $$1) {
          $$1.b($$0.b);
       }
 
-      public eq.a<T>.a a(sl $$0) {
+      public eq.a<T>.a a(so $$0) {
          return new eq.a.a($$0.t());
       }
 
@@ -106,9 +106,9 @@ public class eq<T> implements ArgumentType<hg.c<T>> {
       }
 
       public final class a implements gi.a<eq<T>> {
-         final aet<? extends ht<T>> b;
+         final aew<? extends ht<T>> b;
 
-         a(aet<? extends ht<T>> $$1) {
+         a(aew<? extends ht<T>> $$1) {
             this.b = $$1;
          }
 

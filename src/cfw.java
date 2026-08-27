@@ -1,10 +1,6 @@
-public class cfw extends cfy {
-   public cfw(bgm $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(cja $$0) {
-      return $$0.d().ag_();
-   }
+public enum cfw {
+   a,
+   b,
+   c,
+   d;
 }

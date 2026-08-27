@@ -1,42 +1,81 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public class bng {
-   private static final int a = 200;
+public class bng extends bkx<bjg> {
+   public static final int c = 100;
+   private long d;
 
-   public static <E extends bjd> bkt<E> a(BiConsumer<E, bjb> $$0) {
-      return a($$0x -> false, $$0, true);
+   public bng() {
+      super(ImmutableMap.of(bsh.b, bsi.a, bsh.H, bsi.c));
    }
 
-   public static <E extends bjd> bkt<E> a(Predicate<bjb> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
+   @Override
+   protected boolean a(akr $$0, bjg $$1) {
+      if ($$1.bO()) {
+         return false;
+      } else {
+         bkg<?> $$2 = $$1.dN();
+         hf $$3 = $$2.c(bsh.b).get();
+         if ($$0.ac() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(bsh.H);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.V() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dfj $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dj(), 2.0) && $$6.a(apt.R) && !$$6.c(cso.b);
+         }
+      }
    }
 
-   public static <E extends bjd> bkt<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
+   @Override
+   protected boolean a(akr $$0, bjg $$1, long $$2) {
+      Optional<hf> $$3 = $$1.dN().c(bsh.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         gw $$4 = $$3.get().b();
+         return $$1.dN().c(cdf.e) && $$1.ds() > (double)$$4.v() + 0.4 && $$4.a($$1.dj(), 1.14);
+      }
    }
 
-   public static <E extends bjd> bkt<E> a(Predicate<bjb> $$0, BiConsumer<E, bjb> $$1, boolean $$2) {
-      return boe.a(
-         (Function<boe.b<E>, ? extends App<boe.c<E>, boh<E>>>)($$3 -> $$3.group($$3.b(bsc.o), $$3.a(bsc.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bjb $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dK() == $$7.dK() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
-      );
+   @Override
+   protected void d(akr $$0, bjg $$1, long $$2) {
+      if ($$2 > this.d) {
+         bkg<?> $$3 = $$1.dN();
+         if ($$3.a(bsh.v)) {
+            Set<hf> $$4 = $$3.c(bsh.v).get();
+            Optional<List<bjg>> $$5;
+            if ($$3.a(bsh.g)) {
+               $$5 = $$3.c(bsh.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            blv.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dN().c(bsh.b).get().b());
+      }
    }
 
-   private static boolean a(bjb $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dK().V() - $$1.get() > 200L;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(akr $$0, bjg $$1, long $$2) {
+      if ($$1.fC()) {
+         $$1.fD();
+         this.d = $$2 + 40L;
+      }
    }
 }

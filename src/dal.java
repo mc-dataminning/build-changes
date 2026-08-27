@@ -1,44 +1,45 @@
-public class dal extends czq {
-   public static final dge a = dfu.ba;
+public class dal extends csv {
+   private static final eig a = csv.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int b = 14;
+   private static final int c = 10;
+   private static final int d = 10;
 
-   public dal(dfd.d $$0, dgr $$1) {
-      super($$0.a($$1.d()), $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)).a(e, Boolean.valueOf(false)));
+   public dal(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      return $$1.a_($$2.d()).e();
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      return csv.a($$1, $$2.c(), hc.a) && !$$1.y($$2);
    }
 
    @Override
-   public dfe a(cli $$0) {
-      eah $$1 = $$0.q().b_($$0.a());
-      return this.n().a(a, Integer.valueOf(dgk.a($$0.i() + 180.0F))).a(e, Boolean.valueOf($$1.a() == eai.c));
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      return $$1 == hc.b && !this.a($$0, $$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return $$1 == hc.a && !this.a($$0, $$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(ix.at, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      gw.a $$10 = new gw.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + arx.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + arx.a($$3, -10, 10));
+         dfj $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(ix.ax, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 
    @Override
-   public float g(dfe $$0) {
-      return dgk.b($$0.c(a));
-   }
-
-   @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, e);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return a;
    }
 }

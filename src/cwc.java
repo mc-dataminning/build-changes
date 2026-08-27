@@ -1,69 +1,65 @@
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public abstract class cwc extends cwb implements css {
-   protected cwc(dfd.d $$0, hc $$1, eib $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cwc extends cxt implements csx, czw {
+   private static final dga b = dfz.C;
+   private final cxu c = new cxu(this);
+
+   public cwc(dfi.d $$0) {
+      super($$0);
+      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
-   protected dfe a(dfe $$0, dfe $$1) {
-      return $$1;
+   public static ToIntFunction<dfj> b(int $$0) {
+      return $$1 -> cxt.n($$1) ? $$0 : 0;
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected void a(dfk.a<csv, dfj> $$0) {
+      super.a($$0);
+      $$0.a(b);
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
       }
 
-      cwd $$6 = this.b();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, eai.c, eai.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      return new cja(this.b());
+   public boolean a(dfj $$0, cln $$1) {
+      return !$$1.n().a(cji.fA) || super.a($$0, $$1);
    }
 
    @Override
-   public boolean a(cpt $$0, gw $$1, dfe $$2) {
-      Optional<gw> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return hc.a().anyMatch($$3 -> this.c.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
       return true;
    }
 
    @Override
-   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
-      Optional<gw> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dfe $$5 = $$0.a_($$4.get());
-         ((cwd)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<gw> a(cow $$0, gw $$1, csq $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.b());
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      this.c.a($$3, $$0, $$2, $$1);
    }
 
    @Override
-   public boolean a(dfe $$0, cli $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
+   public eam c_(dfj $$0) {
+      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected csq a() {
-      return this;
+   public boolean c(dfj $$0, cpb $$1, gw $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public cxu b() {
+      return this.c;
    }
 }

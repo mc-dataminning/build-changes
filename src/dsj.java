@@ -1,71 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class dsj extends dsn {
+public record dsj(dsb b, List<dsj.a> c) {
    public static final Codec<dsj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               drw.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               arb.a(hc.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dsj::new)
+      $$0 -> $$0.group(dsb.a.fieldOf("fallback").forGetter(dsj::a), dsj.a.a.listOf().fieldOf("rules").forGetter(dsj::b)).apply($$0, dsj::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final drw e;
-   protected final int f;
-   protected final List<hc> g;
 
-   public dsj(float $$0, int $$1, int $$2, drw $$3, int $$4, List<hc> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public static dsj a(dsb $$0) {
+      return new dsj($$0, List.of());
    }
 
-   @Override
-   public void a(dsn.a $$0) {
-      Set<gw> $$1 = new HashSet<>();
-      arx $$2 = $$0.b();
-
-      for (gw $$3 : ac.a($$0.d(), $$2)) {
-         hc $$4 = ac.a(this.g, $$2);
-         gw $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            gw $$6 = $$5.b(-this.c, -this.d, -this.c);
-            gw $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (gw $$8 : gw.a($$6, $$7)) {
-               $$1.add($$8.i());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
+   public static dsj a(csv $$0) {
+      return a(dsb.a($$0));
    }
 
-   private boolean a(dsn.a $$0, gw $$1, hc $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         gw $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
+   public dfj a(cqp $$0, asc $$1, gw $$2) {
+      for (dsj.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
       }
 
-      return true;
+      return this.b.a($$1, $$2);
    }
 
-   @Override
-   protected dso<?> a() {
-      return dso.f;
+   public dsb a() {
+      return this.b;
+   }
+
+   public List<dsj.a> b() {
+      return this.c;
+   }
+
+   public static record a(dlz b, dsb c) {
+      public static final Codec<dsj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dlz.b.fieldOf("if_true").forGetter(dsj.a::a), dsb.a.fieldOf("then").forGetter(dsj.a::b)).apply($$0, dsj.a::new)
+      );
+
+      public dlz a() {
+         return this.b;
+      }
+
+      public dsb b() {
+         return this.c;
+      }
    }
 }

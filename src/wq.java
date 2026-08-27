@@ -1,10 +1,10 @@
-public record wq() implements va<wp> {
-   public wq(sl $$0) {
+public record wq() implements vd<wp> {
+   public wq(so $$0) {
       this();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
    }
 
    public void a(wp $$0) {
@@ -12,7 +12,7 @@ public record wq() implements va<wp> {
    }
 
    @Override
-   public sk c() {
-      return sk.b;
+   public sn c() {
+      return sn.b;
    }
 }

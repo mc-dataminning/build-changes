@@ -1,19 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bos {
-   private static final bfy a = bge.a(100, 200);
+public class bos extends bkx<cay> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public static bkt<bjb> a() {
-      return boe.a(
-         (Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$0 -> $$0.group($$0.a(bsc.aA), $$0.a(bsc.m), $$0.c(bsc.aF), $$0.b(bsc.B), $$0.c(bsc.ay))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(ass.a);
-                     $$2.a(ass.a, (long)a.a($$3x.y_()));
-                     $$1.b();
-                     $$4x.b(bjn.m);
-                     return true;
-                  }))
-      );
+   public bos() {
+      super(ImmutableMap.of(bsh.ax, bsi.a, bsh.o, bsi.b, bsh.aE, bsi.c, bsh.aC, bsi.c), caz.b);
+   }
+
+   protected void a(akr $$0, cay $$1, long $$2) {
+      bkg<cay> $$3 = $$1.dN();
+      $$3.a(bsh.aC, asx.a, 25L);
+      $$3.b(bsh.m);
+      bjg $$4 = $$1.dN().c(bsh.ax).get();
+      bkz.a($$1, $$4);
+      $$1.b(bjs.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(akr $$0, cay $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(akr $$0, cay $$1, long $$2) {
+      if (!$$1.dN().a(bsh.aC) && !$$1.dN().a(bsh.aE)) {
+         $$1.dN().a(bsh.aE, asx.a, (long)(caz.b - 25));
+         $$1.a(ape.zJ, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(akr $$0, cay $$1, long $$2) {
+      if ($$1.c(bjs.l)) {
+         $$1.b(bjs.a);
+      }
+
+      $$1.dN().c(bsh.ax).ifPresent($$1::j);
+      $$1.dN().b(bsh.ax);
    }
 }

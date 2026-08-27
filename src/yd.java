@@ -1,36 +1,28 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class yd implements va<ws> {
+public class yd implements vd<ww> {
    private final int a;
    private final int b;
-   private final yc c;
-   private final yh d;
+   private final int c;
 
-   public yd(dhl $$0, dzw $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cox $$4 = $$0.f();
-      this.a = $$4.e;
-      this.b = $$4.f;
-      this.c = new yc($$0);
-      this.d = new yh($$4, $$1, $$2, $$3);
+   public yd(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public yd(sl $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = new yc($$0, this.a, this.b);
-      this.d = new yh($$0, this.a, this.b);
+   public yd(so $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.m();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      this.c.a($$0);
-      this.d.a($$0);
+   public void a(so $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
@@ -42,11 +34,7 @@ public class yd implements va<ws> {
       return this.b;
    }
 
-   public yc e() {
+   public int e() {
       return this.c;
-   }
-
-   public yh f() {
-      return this.d;
    }
 }

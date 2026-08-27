@@ -1,49 +1,84 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class foy implements anv {
+   private final fox a;
+   private final fpa b;
+   private final fnr c;
+   private final foz d;
+   private final asc e = asc.a();
+   private final erw f;
 
-public class foy {
-   public static final int a = -1;
-   public final hc b;
-   public final int c;
-   public final String d;
-   public final fpa e;
-
-   public foy(@Nullable hc $$0, int $$1, String $$2, fpa $$3) {
-      this.b = $$0;
+   public foy(fox $$0, fnr $$1, erw $$2) {
+      this.a = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.f = $$2;
+      this.b = new fpa(this.f);
+      this.d = new foz();
    }
 
-   protected static class a implements JsonDeserializer<foy> {
-      private static final int a = -1;
+   public fox a() {
+      return this.a;
+   }
 
-      public foy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         hc $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fpa $$7 = (fpa)$$2.deserialize($$3, fpa.class);
-         return new foy($$4, $$5, $$6, $$7);
+   public void a(dfj $$0, gw $$1, coy $$2, elp $$3, elt $$4) {
+      if ($$0.l() == cza.c) {
+         gbf $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, fyv.d);
       }
+   }
 
-      protected int a(JsonObject $$0) {
-         return arj.a($$0, "tintindex", -1);
+   public void a(dfj $$0, gw $$1, coy $$2, elp $$3, elt $$4, boolean $$5, asc $$6) {
+      try {
+         cza $$7 = $$0.l();
+         if ($$7 == cza.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), fyv.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
       }
+   }
 
-      private String b(JsonObject $$0) {
-         return arj.i($$0, "texture");
+   public void a(gw $$0, coy $$1, elt $$2, dfj $$3, eam $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
       }
+   }
 
-      @Nullable
-      private hc c(JsonObject $$0) {
-         String $$1 = arj.a($$0, "cullface", "");
-         return hc.a($$1);
+   public fpa b() {
+      return this.b;
+   }
+
+   public gbf a(dfj $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dfj $$0, elp $$1, foe $$2, int $$3, int $$4) {
+      cza $$5 = $$0.l();
+      if ($$5 != cza.a) {
+         switch ($$5) {
+            case c:
+               gbf $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(fnz.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cjf($$0.b()), cjc.a, $$1, $$2, $$3, $$4);
+         }
       }
+   }
+
+   @Override
+   public void a(anu $$0) {
+      this.d.a();
    }
 }

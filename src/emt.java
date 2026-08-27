@@ -1,36 +1,13 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
 
-public class emt extends eng {
-   private static final Logger b = LogUtils.getLogger();
-   public List<emr> a;
+public class emt extends enl implements enf {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
 
-   public static emt a(String $$0) {
-      emt $$1 = new emt();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(emr.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
-      }
-
-      return $$1;
+   public emt(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

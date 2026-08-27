@@ -1,67 +1,78 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dvx extends dwa {
-   public static final Codec<dvx> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dvx::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final hk<cqo> f;
+public record dvx(List<dvm> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final aex c = new aex("jigsaw");
+   private static final Map<aex, aex> d = ImmutableMap.builder()
+      .put(new aex("nvi"), c)
+      .put(new aex("pcp"), c)
+      .put(new aex("bastionremnant"), c)
+      .put(new aex("runtime"), c)
+      .build();
 
-   private static P9<Mu<dvx>, ib, dwa.c, Float, Integer, Optional<dwa.a>, Integer, Integer, Integer, hk<cqo>> b(Instance<dvx> $$0) {
-      P5<Mu<dvx>, ib, dwa.c, Float, Integer, Optional<dwa.a>> $$1 = a($$0);
-      P4<Mu<dvx>, Integer, Integer, Integer, hk<cqo>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(dvx::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(dvx::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(dvx::c),
-         hv.a(je.ap).fieldOf("preferred_biomes").forGetter(dvx::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   public dvx(List<dvm> a) {
+      this.a = List.copyOf(a);
    }
 
-   public dvx(ib $$0, dwa.c $$1, float $$2, int $$3, Optional<dwa.a> $$4, int $$5, int $$6, int $$7, hk<cqo> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public dvx(int $$0, int $$1, int $$2, hk<cqo> $$3) {
-      this(ib.g, dwa.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   public boolean a(gw $$0) {
+      for (dvm $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public rq a(dvy $$0) {
+      rd $$1 = new rd();
+
+      for (dvm $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static dvx a(rd $$0, dvy $$1) {
+      List<dvm> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         qx $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         aex $$6 = new aex($$5);
+         aex $$7 = d.getOrDefault($$6, $$6);
+         dvz $$8 = jd.T.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dvm $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dvx($$2);
    }
 
-   public int c() {
-      return this.e;
+   public dva b() {
+      return dvm.a(this.a.stream());
    }
 
-   public hk<cqo> d() {
-      return this.f;
-   }
-
-   @Override
-   protected boolean a(dhc $$0, int $$1, int $$2) {
-      List<cox> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new cox($$1, $$2));
-   }
-
-   @Override
-   public dwb<?> e() {
-      return dwb.b;
+   public List<dvm> c() {
+      return this.a;
    }
 }

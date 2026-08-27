@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class fz implements ArgumentType<fz.a> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final hi<civ> b;
+   private final hi<cja> b;
 
    public fz(dn $$0) {
       this.b = $$0.a(je.D);
@@ -28,8 +28,8 @@ public class fz implements ArgumentType<fz.a> {
       return (fz.a)$$1.map($$0x -> a($$1x -> $$1x == $$0x.a(), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
    }
 
-   public static Predicate<cja> a(CommandContext<dt> $$0, String $$1) {
-      return (Predicate<cja>)$$0.getArgument($$1, fz.a.class);
+   public static Predicate<cjf> a(CommandContext<dt> $$0, String $$1) {
+      return (Predicate<cjf>)$$0.getArgument($$1, fz.a.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -40,10 +40,10 @@ public class fz implements ArgumentType<fz.a> {
       return a;
    }
 
-   private static fz.a a(Predicate<hg<civ>> $$0, @Nullable qu $$1) {
-      return $$1 != null ? $$2 -> $$2.a($$0) && rg.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
+   private static fz.a a(Predicate<hg<cja>> $$0, @Nullable qx $$1) {
+      return $$1 != null ? $$2 -> $$2.a($$0) && rj.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
    }
 
-   public interface a extends Predicate<cja> {
+   public interface a extends Predicate<cjf> {
    }
 }

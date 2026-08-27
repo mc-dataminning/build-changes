@@ -1,19 +1,23 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class ayn extends asz {
-   private final Function<String, String> a;
-
-   public ayn(Schema $$0, String $$1, Function<String, String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+public class ayn extends DataFix {
+   public ayn(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsProgrammerArtFix",
+         this.getInputSchema().getType(ayx.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+      );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
    }
 }

@@ -1,36 +1,70 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class eez extends efb {
-   public static final Codec<eez> a = a(eez::new);
+public class eez {
+   private final Set<eey<?>> a;
+   private final Set<eey<?>> b;
 
-   eez(List<efk> $$0) {
-      super($$0, efm.b($$0));
+   eez(Set<eey<?>> $$0, Set<eey<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   }
+
+   public boolean a(eey<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eey<?>> a() {
+      return this.a;
+   }
+
+   public Set<eey<?>> b() {
+      return this.b;
    }
 
    @Override
-   public efl b() {
-      return efm.c;
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   public static eez.a a(efk.a... $$0) {
-      return new eez.a($$0);
+   public void a(ecz $$0, ecr $$1) {
+      Set<eey<?>> $$2 = $$1.a();
+      Set<eey<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.a("Parameters " + $$3 + " are not provided in this context");
+      }
    }
 
-   public static class a extends efb.a {
-      public a(efk.a... $$0) {
-         super($$0);
+   public static eez.a c() {
+      return new eez.a();
+   }
+
+   public static class a {
+      private final Set<eey<?>> a = Sets.newIdentityHashSet();
+      private final Set<eey<?>> b = Sets.newIdentityHashSet();
+
+      public eez.a a(eey<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      public eez.a or(efk.a $$0) {
-         this.a($$0);
-         return this;
+      public eez.a b(eey<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      protected efk a(List<efk> $$0) {
-         return new eez($$0);
+      public eez a() {
+         return new eez(this.a, this.b);
       }
    }
 }

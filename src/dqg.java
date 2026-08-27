@@ -1,21 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dqg implements dpv {
-   public static final Codec<dqg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duh.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), duh.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dqg::new)
+public class dqg extends dps {
+   public static final Codec<dqg> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsb.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               arg.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               arg.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dqg::new)
    );
-   public final hg<duh> b;
-   public final hg<duh> c;
+   public final int d;
+   public final int e;
 
-   public dqg(hg<duh> $$0, hg<duh> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<dne<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public dqg(dsb $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

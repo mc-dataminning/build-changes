@@ -1,226 +1,247 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Queues;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.IntConsumer;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class afl extends eih {
-   private final MinecraftServer a;
-   private final Set<eie> b = Sets.newHashSet();
-   private final List<Runnable> c = Lists.newArrayList();
+public class afl {
+   private static final tl a = tl.c("commands.debug.function.noRecursion");
+   private static final aex b = new aex("tick");
+   private static final aex c = new aex("load");
+   final MinecraftServer d;
+   @Nullable
+   private afl.a e;
+   private List<dp> f = ImmutableList.of();
+   private boolean g;
+   private afk h;
 
-   public afl(MinecraftServer $$0) {
-      this.a = $$0;
+   public afl(MinecraftServer $$0, afk $$1) {
+      this.d = $$0;
+      this.h = $$1;
+      this.b($$1);
    }
 
-   @Override
-   public void a(eig $$0) {
-      super.a($$0);
-      if (this.b.contains($$0.d())) {
-         this.a.ac().a(new aad(afl.a.a, $$0.d().b(), $$0.e(), $$0.b()));
+   public int a() {
+      return this.d.aI().c(cpr.w);
+   }
+
+   public CommandDispatcher<dt> b() {
+      return this.d.aC().a();
+   }
+
+   public void c() {
+      if (this.g) {
+         this.g = false;
+         Collection<dp> $$0 = this.h.b(c);
+         this.a($$0, c);
       }
 
-      this.a();
+      this.a(this.f, b);
    }
 
-   @Override
-   public void a(String $$0) {
-      super.a($$0);
-      this.a.ac().a(new aad(afl.a.b, null, $$0, 0));
-      this.a();
-   }
+   private void a(Collection<dp> $$0, aex $$1) {
+      this.d.aM().a($$1::toString);
 
-   @Override
-   public void a(String $$0, eie $$1) {
-      super.a($$0, $$1);
-      if (this.b.contains($$1)) {
-         this.a.ac().a(new aad(afl.a.b, $$1.b(), $$0, 0));
+      for (dp $$2 : $$0) {
+         this.a($$2, this.d());
       }
 
-      this.a();
+      this.d.aM().c();
    }
 
-   @Override
-   public void a(eid $$0, @Nullable eie $$1) {
-      eie $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.a.ac().a(new zt($$0, $$1));
+   public int a(dp $$0, dt $$1) {
+      try {
+         return this.a($$0, $$1, null, null);
+      } catch (dv var4) {
+         return 0;
+      }
+   }
+
+   public int a(dp $$0, dt $$1, @Nullable afl.c $$2, @Nullable qx $$3) throws dv {
+      dp $$4 = $$0.a($$3, this.b(), $$1);
+      if (this.e != null) {
+         if ($$2 != null) {
+            this.e.a(a.getString());
+            return 0;
          } else {
-            this.g($$2);
+            this.e.a($$4, $$1);
+            return 0;
          }
-      }
-
-      if ($$1 != null) {
-         if (this.b.contains($$1)) {
-            this.a.ac().a(new zt($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, eif $$1) {
-      if (super.a($$0, $$1)) {
-         this.a.ac().a(aac.a($$1, $$0, aac.a.a));
-         this.a();
-         return true;
       } else {
-         return false;
+         int var6;
+         try {
+            this.e = new afl.a($$2);
+            var6 = this.e.b($$4, $$1);
+         } finally {
+            this.e = null;
+         }
+
+         return var6;
       }
    }
 
-   @Override
-   public void b(String $$0, eif $$1) {
-      super.b($$0, $$1);
-      this.a.ac().a(aac.a($$1, $$0, aac.a.b));
-      this.a();
+   public void a(afk $$0) {
+      this.h = $$0;
+      this.b($$0);
    }
 
-   @Override
-   public void a(eie $$0) {
-      super.a($$0);
-      this.a();
+   private void b(afk $$0) {
+      this.f = ImmutableList.copyOf($$0.b(b));
+      this.g = true;
    }
 
-   @Override
-   public void b(eie $$0) {
-      super.b($$0);
-      if (this.b.contains($$0)) {
-         this.a.ac().a(new aaa($$0, 2));
+   public dt d() {
+      return this.d.aD().a(2).a();
+   }
+
+   public Optional<dp> a(aex $$0) {
+      return this.h.a($$0);
+   }
+
+   public Collection<dp> b(aex $$0) {
+      return this.h.b($$0);
+   }
+
+   public Iterable<aex> e() {
+      return this.h.a().keySet();
+   }
+
+   public Iterable<aex> f() {
+      return this.h.b();
+   }
+
+   class a {
+      private int b;
+      @Nullable
+      private final afl.c c;
+      private final Deque<afl.b> d = Queues.newArrayDeque();
+      private final List<afl.b> e = Lists.newArrayList();
+      boolean f = false;
+
+      a(@Nullable afl.c $$0) {
+         this.c = $$0;
       }
 
-      this.a();
-   }
-
-   @Override
-   public void c(eie $$0) {
-      super.c($$0);
-      if (this.b.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(eif $$0) {
-      super.a($$0);
-      this.a.ac().a(aac.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(eif $$0) {
-      super.b($$0);
-      this.a.ac().a(aac.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(eif $$0) {
-      super.c($$0);
-      this.a.ac().a(aac.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.c.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.c) {
-         $$0.run();
-      }
-   }
-
-   public List<va<?>> d(eie $$0) {
-      List<va<?>> $$1 = Lists.newArrayList();
-      $$1.add(new aaa($$0, 0));
-
-      for (eid $$2 : eid.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new zt($$2, $$0));
+      void a(dp $$0, dt $$1) {
+         int $$2 = afl.this.a();
+         dt $$3 = this.a($$1);
+         if (this.d.size() + this.e.size() < $$2) {
+            this.e.add(new afl.b($$3, this.b, new dp.e($$0)));
          }
       }
 
-      for (eig $$3 : this.i($$0)) {
-         $$1.add(new aad(afl.a.a, $$3.d().b(), $$3.e(), $$3.b()));
+      private dt a(dt $$0) {
+         IntConsumer $$1 = $$0.p();
+         return $$1 instanceof afl.a.a ? $$0 : $$0.a(new afl.a.a($$1));
       }
 
-      return $$1;
-   }
+      int b(dp $$0, dt $$1) {
+         int $$2 = afl.this.a();
+         dt $$3 = this.a($$1);
+         int $$4 = 0;
+         dp.d[] $$5 = $$0.b();
 
-   public void e(eie $$0) {
-      List<va<?>> $$1 = this.d($$0);
+         for (int $$6 = $$5.length - 1; $$6 >= 0; $$6--) {
+            this.d.push(new afl.b($$3, 0, $$5[$$6]));
+         }
 
-      for (ako $$2 : this.a.ac().t()) {
-         for (va<?> $$3 : $$1) {
-            $$2.c.b($$3);
+         while (!this.d.isEmpty()) {
+            try {
+               afl.b $$7 = this.d.removeFirst();
+               afl.this.d.aM().a($$7::toString);
+               this.b = $$7.b;
+               $$7.a(afl.this, this.d, $$2, this.c);
+               if (!this.f) {
+                  if (!this.e.isEmpty()) {
+                     Lists.reverse(this.e).forEach(this.d::addFirst);
+                  }
+               } else {
+                  while (!this.d.isEmpty() && this.d.peek().b >= this.b) {
+                     this.d.removeFirst();
+                  }
+
+                  this.f = false;
+               }
+
+               this.e.clear();
+            } finally {
+               afl.this.d.aM().c();
+            }
+
+            if (++$$4 >= $$2) {
+               return $$4;
+            }
+         }
+
+         return $$4;
+      }
+
+      public void a(String $$0) {
+         if (this.c != null) {
+            this.c.b(this.b, $$0);
          }
       }
 
-      this.b.add($$0);
+      class a implements IntConsumer {
+         private final IntConsumer b;
+
+         a(IntConsumer $$0) {
+            this.b = $$0;
+         }
+
+         @Override
+         public void accept(int $$0) {
+            this.b.accept($$0);
+            a.this.f = true;
+         }
+      }
    }
 
-   public List<va<?>> f(eie $$0) {
-      List<va<?>> $$1 = Lists.newArrayList();
-      $$1.add(new aaa($$0, 1));
+   public static class b {
+      private final dt a;
+      final int b;
+      private final dp.d c;
 
-      for (eid $$2 : eid.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new zt($$2, $$0));
+      public b(dt $$0, int $$1, dp.d $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public void a(afl $$0, Deque<afl.b> $$1, int $$2, @Nullable afl.c $$3) {
+         try {
+            this.c.execute($$0, this.a, $$1, $$2, this.b, $$3);
+         } catch (CommandSyntaxException var6) {
+            if ($$3 != null) {
+               $$3.b(this.b, var6.getRawMessage().getString());
+            }
+         } catch (Exception var7) {
+            if ($$3 != null) {
+               $$3.b(this.b, var7.getMessage());
+            }
          }
       }
 
-      return $$1;
-   }
-
-   public void g(eie $$0) {
-      List<va<?>> $$1 = this.f($$0);
-
-      for (ako $$2 : this.a.ac().t()) {
-         for (va<?> $$3 : $$1) {
-            $$2.c.b($$3);
-         }
+      @Override
+      public String toString() {
+         return this.c.toString();
       }
-
-      this.b.remove($$0);
    }
 
-   public int h(eie $$0) {
-      int $$1 = 0;
+   public interface c {
+      void a(int var1, String var2);
 
-      for (eid $$2 : eid.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
+      void a(int var1, String var2, int var3);
 
-      return $$1;
-   }
+      void b(int var1, String var2);
 
-   public ebm.a<eii> b() {
-      return new ebm.a<>(this::i, this::a, asv.n);
-   }
-
-   private eii i() {
-      eii $$0 = new eii(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private eii a(qu $$0) {
-      return this.i().b($$0);
-   }
-
-   public static enum a {
-      a,
-      b;
+      void a(int var1, aex var2, int var3);
    }
 }

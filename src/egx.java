@@ -1,25 +1,32 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
 
-public class egx extends Exception {
-   private final Path a;
-   private final List<egz> b;
+public class egx implements egy<MinecraftServer> {
+   final aex a;
 
-   public egx(Path $$0, List<egz> $$1) {
+   public egx(aex $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public void a(MinecraftServer $$0, eha<MinecraftServer> $$1, long $$2) {
+      afl $$3 = $$0.aA();
+
+      for (dp $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.d());
+      }
    }
 
-   public static String a(Path $$0, List<egz> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static class a extends egy.a<MinecraftServer, egx> {
+      public a() {
+         super(new aex("function_tag"), egx.class);
+      }
+
+      public void a(qx $$0, egx $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public egx a(qx $$0) {
+         aex $$1 = new aex($$0.l("Name"));
+         return new egx($$1);
+      }
    }
 }

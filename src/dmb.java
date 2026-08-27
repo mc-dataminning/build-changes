@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class dmb extends dmf {
-   private final hk<eag> e;
-   public static final Codec<dmb> a = RecordCodecBuilder.create($$0 -> a($$0).and(hv.a(je.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dmb::new));
+abstract class dmb implements dlz {
+   protected final List<dlz> e;
 
-   public dmb(ib $$0, hk<eag> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected dmb(List<dlz> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dfe $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dlv<?> a() {
-      return dlv.c;
+   public static <T extends dmb> Codec<T> a(Function<List<dlz>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dlz.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

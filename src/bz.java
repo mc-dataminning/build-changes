@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class bz extends cw<bz.a> {
    public bz.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      JsonObject $$3 = arj.a($$0, "slots", new JsonObject());
+      JsonObject $$3 = aro.a($$0, "slots", new JsonObject());
       cl.d $$4 = cl.d.a($$3.get("occupied"));
       cl.d $$5 = cl.d.a($$3.get("full"));
       cl.d $$6 = cl.d.a($$3.get("empty"));
@@ -14,13 +14,13 @@ public class bz extends cw<bz.a> {
       return new bz.a($$1, $$4, $$5, $$6, $$7);
    }
 
-   public void a(ako $$0, cbo $$1, cja $$2) {
+   public void a(aks $$0, cbt $$1, cjf $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cja $$7 = $$1.a($$6);
+         cjf $$7 = $$1.a($$6);
          if ($$7.b()) {
             $$4++;
          } else {
@@ -34,7 +34,7 @@ public class bz extends cw<bz.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(ako $$0, cbo $$1, cja $$2, int $$3, int $$4, int $$5) {
+   private void a(aks $$0, cbt $$1, cjf $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -60,7 +60,7 @@ public class bz extends cw<bz.a> {
          return al.e.a(new bz.a(Optional.empty(), cl.d.c, cl.d.c, cl.d.c, List.of($$0)));
       }
 
-      public static am<bz.a> a(cpp... $$0) {
+      public static am<bz.a> a(cpu... $$0) {
          cb[] $$1 = new cb[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -88,7 +88,7 @@ public class bz extends cw<bz.a> {
          return $$0;
       }
 
-      public boolean a(cbo $$0, cja $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cbt $$0, cjf $$1, int $$2, int $$3, int $$4) {
          if (!this.b.d($$2)) {
             return false;
          } else if (!this.c.d($$3)) {
@@ -106,7 +106,7 @@ public class bz extends cw<bz.a> {
                   return true;
                }
 
-               cja $$8 = $$0.a($$7);
+               cjf $$8 = $$0.a($$7);
                if (!$$8.b()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

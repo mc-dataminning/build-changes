@@ -1,53 +1,167 @@
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class eoo extends gew {
-   private static final ti b = ti.c("mco.reset.world.seed");
-   public static final ti a = ti.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int y = 210;
-   private final evu z = new evu(this);
-   private final Consumer<epk> A;
-   private esu B;
-   private epe C = epe.a;
-   private boolean D = true;
-   private final ti E;
+public class eoo extends gfb {
+   private static final aex a = new aex("icon/unseen_notification");
+   private static final aex b = new aex("icon/news");
+   private static final aex c = new aex("icon/invite");
+   private static final aex y = new aex("icon/trial_available");
+   private final CompletableFuture<Boolean> z = elz.a().thenApply($$0 -> $$0.a() == elz.b.a);
+   @Nullable
+   private epe.c A;
+   @Nullable
+   private eoo.a B;
+   private volatile int C;
+   private static boolean D;
+   private static boolean E;
+   private static boolean F;
+   private final eoo.a G = new eoo.a() {
+      @Override
+      public epe.c a(env $$0) {
+         epe.c $$1 = $$0.a.a();
+         eoo.this.a($$0, $$1);
+         eoo.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public eoo(Consumer<epk> $$0, ti $$1) {
-      super(a);
-      this.A = $$0;
-      this.E = $$1;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final eoo.a H = new eoo.a() {
+      @Override
+      public epe.c a(env $$0) {
+         epe.c $$1 = $$0.a.a();
+         eoo.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public eoo() {
+      super(eqn.a);
    }
 
    @Override
-   public void aD_() {
-      this.B = new esu(this.i, 210, 20, ti.c("mco.reset.world.seed"));
-      this.B.l(32);
-      this.c(this.B);
-      this.z.a(new etr(this.e, this.i));
-      evy $$0 = this.z.c(evy.d()).a(10);
-      $$0.a(evq.a(this.i, this.B, b));
-      $$0.a(ess.a(epe::a).a(epe.values()).a(this.C).a(0, 0, 210, 20, ti.c("selectWorld.mapType"), ($$0x, $$1x) -> this.C = $$1x));
-      $$0.a(ess.b(this.D).a(0, 0, 210, 20, ti.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.D = $$1x));
-      evy $$1 = this.z.b(evy.e().a(10));
-      $$1.a(esl.a(this.E, $$0x -> this.A.accept(this.C())).a());
-      $$1.a(esl.a(th.k, $$0x -> this.au_()).a());
-      this.z.a($$1x -> {
-         esj var10000 = this.d($$1x);
+   public void aI_() {
+      if (this.A != null) {
+         this.A.a();
+      }
+   }
+
+   @Override
+   public void aB_() {
+      super.aB_();
+      this.f.aY().b.a();
+   }
+
+   @Nullable
+   private eoo.a C() {
+      boolean $$0 = this.E() && this.z.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.D() ? this.G : this.H;
+      }
+   }
+
+   @Override
+   public void c() {
+      eoo.a $$0 = this.C();
+      if (!Objects.equals(this.B, $$0)) {
+         this.B = $$0;
+         if (this.B != null) {
+            this.A = this.B.a(this.f.aY());
+         } else {
+            this.A = null;
+         }
+      }
+
+      if (this.A != null) {
+         this.A.b();
+      }
+   }
+
+   private boolean D() {
+      return this.f.m.P().c();
+   }
+
+   private boolean E() {
+      return this.f.y instanceof eyp;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.z.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(esf $$0) {
+      int $$1 = this.C;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (F) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.B != null && this.B.a()) {
+         if (E) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (D) {
+            $$0.a(y, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(env $$0, epe.c $$1) {
+      $$1.a($$0.e, $$0x -> this.C = $$0x);
+      $$1.a($$0.f, $$0x -> D = $$0x);
+      $$1.a($$0.g, $$1x -> {
+         $$0.h.a($$1x);
+         E = $$0.h.a();
       });
-      this.b();
    }
 
-   private epk C() {
-      return new epk(this.B.a(), this.C, this.D);
+   void b(env $$0, epe.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         F = false;
+
+         for (emv $$1x : $$0x) {
+            if (!$$1x.a()) {
+               F = true;
+               break;
+            }
+         }
+      });
    }
 
-   @Override
-   protected void b() {
-      this.z.a();
-   }
+   interface a {
+      epe.c a(env var1);
 
-   @Override
-   public void au_() {
-      this.A.accept(null);
+      boolean a();
    }
 }

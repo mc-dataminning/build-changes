@@ -1,17 +1,12 @@
-public abstract class gbq extends gbp implements gci {
-   private boolean n;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   protected gbq(aoy $$0, apa $$1, arx $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface gbq {
+   Collection<aex> f();
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   void a(Function<aex, gbq> var1);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+   @Nullable
+   gbf a(gbj var1, Function<gbi, fze> var2, gbn var3, aex var4);
 }

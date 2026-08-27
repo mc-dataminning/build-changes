@@ -1,93 +1,28 @@
-public interface bhm {
-   aet<bhl> a = aet.a(je.p, new aeu("in_fire"));
-   aet<bhl> b = aet.a(je.p, new aeu("lightning_bolt"));
-   aet<bhl> c = aet.a(je.p, new aeu("on_fire"));
-   aet<bhl> d = aet.a(je.p, new aeu("lava"));
-   aet<bhl> e = aet.a(je.p, new aeu("hot_floor"));
-   aet<bhl> f = aet.a(je.p, new aeu("in_wall"));
-   aet<bhl> g = aet.a(je.p, new aeu("cramming"));
-   aet<bhl> h = aet.a(je.p, new aeu("drown"));
-   aet<bhl> i = aet.a(je.p, new aeu("starve"));
-   aet<bhl> j = aet.a(je.p, new aeu("cactus"));
-   aet<bhl> k = aet.a(je.p, new aeu("fall"));
-   aet<bhl> l = aet.a(je.p, new aeu("fly_into_wall"));
-   aet<bhl> m = aet.a(je.p, new aeu("out_of_world"));
-   aet<bhl> n = aet.a(je.p, new aeu("generic"));
-   aet<bhl> o = aet.a(je.p, new aeu("magic"));
-   aet<bhl> p = aet.a(je.p, new aeu("wither"));
-   aet<bhl> q = aet.a(je.p, new aeu("dragon_breath"));
-   aet<bhl> r = aet.a(je.p, new aeu("dry_out"));
-   aet<bhl> s = aet.a(je.p, new aeu("sweet_berry_bush"));
-   aet<bhl> t = aet.a(je.p, new aeu("freeze"));
-   aet<bhl> u = aet.a(je.p, new aeu("stalagmite"));
-   aet<bhl> v = aet.a(je.p, new aeu("falling_block"));
-   aet<bhl> w = aet.a(je.p, new aeu("falling_anvil"));
-   aet<bhl> x = aet.a(je.p, new aeu("falling_stalactite"));
-   aet<bhl> y = aet.a(je.p, new aeu("sting"));
-   aet<bhl> z = aet.a(je.p, new aeu("mob_attack"));
-   aet<bhl> A = aet.a(je.p, new aeu("mob_attack_no_aggro"));
-   aet<bhl> B = aet.a(je.p, new aeu("player_attack"));
-   aet<bhl> C = aet.a(je.p, new aeu("arrow"));
-   aet<bhl> D = aet.a(je.p, new aeu("trident"));
-   aet<bhl> E = aet.a(je.p, new aeu("mob_projectile"));
-   aet<bhl> F = aet.a(je.p, new aeu("fireworks"));
-   aet<bhl> G = aet.a(je.p, new aeu("fireball"));
-   aet<bhl> H = aet.a(je.p, new aeu("unattributed_fireball"));
-   aet<bhl> I = aet.a(je.p, new aeu("wither_skull"));
-   aet<bhl> J = aet.a(je.p, new aeu("thrown"));
-   aet<bhl> K = aet.a(je.p, new aeu("indirect_magic"));
-   aet<bhl> L = aet.a(je.p, new aeu("thorns"));
-   aet<bhl> M = aet.a(je.p, new aeu("explosion"));
-   aet<bhl> N = aet.a(je.p, new aeu("player_explosion"));
-   aet<bhl> O = aet.a(je.p, new aeu("sonic_boom"));
-   aet<bhl> P = aet.a(je.p, new aeu("bad_respawn_point"));
-   aet<bhl> Q = aet.a(je.p, new aeu("outside_border"));
-   aet<bhl> R = aet.a(je.p, new aeu("generic_kill"));
+import com.mojang.serialization.Codec;
 
-   static void a(np<bhl> $$0) {
-      $$0.a(a, new bhl("inFire", 0.1F, bhh.d));
-      $$0.a(b, new bhl("lightningBolt", 0.1F));
-      $$0.a(c, new bhl("onFire", 0.0F, bhh.d));
-      $$0.a(d, new bhl("lava", 0.1F, bhh.d));
-      $$0.a(e, new bhl("hotFloor", 0.1F, bhh.d));
-      $$0.a(f, new bhl("inWall", 0.0F));
-      $$0.a(g, new bhl("cramming", 0.0F));
-      $$0.a(h, new bhl("drown", 0.0F, bhh.c));
-      $$0.a(i, new bhl("starve", 0.0F));
-      $$0.a(j, new bhl("cactus", 0.1F));
-      $$0.a(k, new bhl("fall", bhi.b, 0.0F, bhh.a, bhn.b));
-      $$0.a(l, new bhl("flyIntoWall", 0.0F));
-      $$0.a(m, new bhl("outOfWorld", 0.0F));
-      $$0.a(n, new bhl("generic", 0.0F));
-      $$0.a(o, new bhl("magic", 0.0F));
-      $$0.a(p, new bhl("wither", 0.0F));
-      $$0.a(q, new bhl("dragonBreath", 0.0F));
-      $$0.a(r, new bhl("dryout", 0.1F));
-      $$0.a(s, new bhl("sweetBerryBush", 0.1F, bhh.e));
-      $$0.a(t, new bhl("freeze", 0.0F, bhh.f));
-      $$0.a(u, new bhl("stalagmite", 0.0F));
-      $$0.a(v, new bhl("fallingBlock", 0.1F));
-      $$0.a(w, new bhl("anvil", 0.1F));
-      $$0.a(x, new bhl("fallingStalactite", 0.1F));
-      $$0.a(y, new bhl("sting", 0.1F));
-      $$0.a(z, new bhl("mob", 0.1F));
-      $$0.a(A, new bhl("mob", 0.1F));
-      $$0.a(B, new bhl("player", 0.1F));
-      $$0.a(C, new bhl("arrow", 0.1F));
-      $$0.a(D, new bhl("trident", 0.1F));
-      $$0.a(E, new bhl("mob", 0.1F));
-      $$0.a(F, new bhl("fireworks", 0.1F));
-      $$0.a(H, new bhl("onFire", 0.1F, bhh.d));
-      $$0.a(G, new bhl("fireball", 0.1F, bhh.d));
-      $$0.a(I, new bhl("witherSkull", 0.1F));
-      $$0.a(J, new bhl("thrown", 0.1F));
-      $$0.a(K, new bhl("indirectMagic", 0.0F));
-      $$0.a(L, new bhl("thorns", 0.1F, bhh.b));
-      $$0.a(M, new bhl("explosion", bhi.c, 0.1F));
-      $$0.a(N, new bhl("explosion.player", bhi.c, 0.1F));
-      $$0.a(O, new bhl("sonic_boom", bhi.c, 0.0F));
-      $$0.a(P, new bhl("badRespawnPoint", bhi.c, 0.1F, bhh.a, bhn.c));
-      $$0.a(Q, new bhl("outsideBorder", 0.0F));
-      $$0.a(R, new bhl("genericKill", 0.0F));
+public enum bhm implements asp {
+   a("hurt", ape.sz),
+   b("thorns", ape.xK),
+   c("drowning", ape.sA),
+   d("burning", ape.sC),
+   e("poking", ape.sD),
+   f("freezing", ape.sB);
+
+   public static final Codec<bhm> g = asp.a(bhm::values);
+   private final String h;
+   private final apd i;
+
+   private bhm(String $$0, apd $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
+   }
+
+   public apd a() {
+      return this.i;
    }
 }

@@ -1,45 +1,44 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+public class ffh<T extends biq> extends ffm<T> {
+   private final fic a;
+   private final fic[] b = new fic[9];
 
-public abstract class ffh<E extends bil> extends fey<E> {
-   private static final Vector3f a = new Vector3f();
+   public ffh(fic $$0) {
+      this.a = $$0;
 
-   public ffh() {
-      this(foh::e);
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public ffh(Function<aeu, foh> $$0) {
-      super($$0);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("body", fih.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fie.a(0.0F, 17.6F, 0.0F));
+      asc $$2 = asc.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fih.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fie.a($$4, 24.6F, $$5));
+      }
+
+      return fii.a($$0, 64, 32);
    }
 
    @Override
-   public void a(elk $$0, elo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * arx.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
    }
 
-   public abstract fhx a();
-
-   public Optional<fhx> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bih $$0, erh $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(erh $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      erj.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bih $$0, erh $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> erj.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(erh $$0) {
-      erj.a(this, $$0, 0L, 1.0F, a);
+   @Override
+   public fic a() {
+      return this.a;
    }
 }

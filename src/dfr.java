@@ -1,20 +1,18 @@
-public enum dfr implements ask {
-   a("head"),
-   b("foot");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dfr implements Predicate<dfj> {
+   private final csv a;
 
-   private dfr(String $$0) {
-      this.c = $$0;
+   public dfr(csv $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dfr a(csv $$0) {
+      return new dfr($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dfj $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

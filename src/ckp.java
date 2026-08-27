@@ -1,56 +1,50 @@
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum ckp implements ckn {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cmb.a(apw.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cmb.a(apw.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cmb.a(cjd.nQ)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cmb.a(cjd.nK)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cmb.a(cjd.nU)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cmb.a(cjd.nV));
+public class ckp extends cja {
+   public static final String a = "effects";
+   public static final int b = 160;
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final arn<cmb> l;
+   public ckp(cja.a $$0) {
+      super($$0);
+   }
 
-   private ckp(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cmb> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new arn<>($$5);
+   public static void a(cjf $$0, List<day.a> $$1) {
+      qx $$2 = $$0.w();
+      day.a.b.encodeStart(ri.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   }
+
+   public static void b(cjf $$0, List<day.a> $$1) {
+      qx $$2 = $$0.w();
+      List<day.a> $$3 = new ArrayList<>();
+      a($$0, $$3::add);
+      $$3.addAll($$1);
+      day.a.b.encodeStart(ri.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   }
+
+   private static void a(cjf $$0, Consumer<day.a> $$1) {
+      qx $$2 = $$0.v();
+      if ($$2 != null && $$2.b("effects", 9)) {
+         day.a.b.parse(ri.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+      }
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bid> $$4 = new ArrayList<>();
+         a($$0, $$1x -> $$4.add($$1x.a()));
+         cle.a($$4, $$2, 1.0F);
+      }
    }
 
    @Override
-   public float b() {
-      return this.i;
-   }
-
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cmb f() {
-      return this.l.a();
+   public cjf a(cjf $$0, cpv $$1, bjg $$2) {
+      cjf $$3 = super.a($$0, $$1, $$2);
+      a($$3, $$1x -> $$2.b($$1x.a()));
+      return $$2 instanceof cbu && ((cbu)$$2).fS().d ? $$3 : new cjf(cji.oC);
    }
 }

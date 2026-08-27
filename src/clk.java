@@ -1,71 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class clk {
-   @Nullable
-   private final cbp a;
-   private final bgs b;
-   private final ehe c;
-   private final cpq d;
-   private final cja e;
+public record clk(aex c, hg<cja> d, tl e, boolean f) {
+   public static final Codec<clk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aex.a.fieldOf("asset_id").forGetter(clk::a),
+               aeu.a(je.D).fieldOf("template_item").forGetter(clk::b),
+               arg.b.fieldOf("description").forGetter(clk::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(clk::d)
+            )
+            .apply($$0, clk::new)
+   );
+   public static final Codec<hg<clk>> b = aet.a(je.aE, a);
 
-   public clk(cbp $$0, bgs $$1, ehe $$2) {
-      this($$0.dK(), $$0, $$1, $$0.b($$1), $$2);
+   public tl a(hg<cli> $$0) {
+      return this.e.e().c($$0.a().e().a());
    }
 
-   protected clk(cpq $$0, @Nullable cbp $$1, bgs $$2, cja $$3, ehe $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
-
-   protected final ehe j() {
+   public aex a() {
       return this.c;
    }
 
-   public gw a() {
-      return this.c.a();
-   }
-
-   public hc k() {
-      return this.c.b();
-   }
-
-   public ehi l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cja n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cbp o() {
-      return this.a;
-   }
-
-   public bgs p() {
-      return this.b;
-   }
-
-   public cpq q() {
+   public hg<cja> b() {
       return this.d;
    }
 
-   public hc g() {
-      return this.a == null ? hc.c : this.a.cD();
+   public tl c() {
+      return this.e;
    }
 
-   public boolean h() {
-      return this.a != null && this.a.fG();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dA();
+   public boolean d() {
+      return this.f;
    }
 }

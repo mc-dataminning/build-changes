@@ -1,20 +1,17 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class evq {
-   private static final int a = 4;
+public record evq(aex c) implements evo {
+   public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aex.a.fieldOf("id").forGetter(evq::c)).apply($$0, evq::new));
 
-   private evq() {
+   @Override
+   public evp a() {
+      return evp.e;
    }
 
-   public static evv a(ery $$0, evw $$1, ti $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
-
-   public static evv a(ery $$0, evw $$1, ti $$2, Consumer<evx> $$3) {
-      evy $$4 = evy.d().a(4);
-      $$4.a(new etr($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   @Override
+   public Either<evo.a, evo.b> b() {
+      return Either.right(new evo.b(this.c));
    }
 }

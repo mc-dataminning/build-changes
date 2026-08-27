@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dmc implements dlu {
-   public static final Codec<dmc> a = RecordCodecBuilder.create($$0 -> $$0.group(dlu.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dmc::new));
-   private final dlu e;
+public class dmc implements dlz {
+   private final ib e;
+   private final hc f;
+   public static final Codec<dmc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ib.v(16).optionalFieldOf("offset", ib.g).forGetter($$0x -> $$0x.e), hc.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dmc::new)
+   );
 
-   public dmc(dlu $$0) {
+   public dmc(ib $$0, hc $$1) {
       this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(cqk $$0, gw $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(cqp $$0, gw $$1) {
+      gw $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
    }
 
    @Override
-   public dlv<?> a() {
-      return dlv.k;
+   public dma<?> a() {
+      return dma.d;
    }
 }

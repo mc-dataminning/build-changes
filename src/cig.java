@@ -1,36 +1,44 @@
-public class cig extends civ implements cku {
-   public cig(civ.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cig extends ckz {
+   biv g();
+
+   default apd ao_() {
+      return ape.af;
    }
 
-   @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      cja $$3 = $$1.b($$2);
-      if ($$1.ci != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ci.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
+   default bgz<cjf> a(cja $$0, cpv $$1, cbu $$2, bgx $$3) {
+      cjf $$4 = $$2.b($$3);
+      biv $$5 = bji.h($$4);
+      cjf $$6 = $$2.c($$5);
+      if ((!cnq.d($$6) || $$2.f()) && !cjf.a($$4, $$6)) {
+         if (!$$1.w_()) {
+            $$2.b(apo.c.b($$0));
          }
 
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aoz.hP, apa.g, 1.0F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         $$1.a(djo.C);
+         cjf $$7 = $$6.b() ? $$4 : $$6.c();
+         cjf $$8 = $$4.c();
+         $$2.a($$5, $$8);
+         return bgz.a($$7, $$1.w_());
       } else {
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aoz.hR, apa.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cnl.c($$3);
-            int $$6 = cnl.b($$3);
-            $$0.b(new ccd($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(apj.c.b(this));
-         $$1.a(djo.D);
+         return bgz.d($$4);
       }
-
-      return bgu.a($$3, $$0.r_());
    }
 
-   @Override
-   public int c() {
-      return 1;
+   @Nullable
+   static cig c_(cjf $$0) {
+      cja $$3 = $$0.d();
+      if ($$3 instanceof cig) {
+         return (cig)$$3;
+      } else {
+         if ($$0.d() instanceof cgy $$2) {
+            csv var6 = $$2.e();
+            if (var6 instanceof cig) {
+               return (cig)var6;
+            }
+         }
+
+         return null;
+      }
    }
 }

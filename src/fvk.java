@@ -1,13 +1,11 @@
-public class fvk extends fvd {
-   private static final aeu a = new aeu("textures/entity/skeleton/stray.png");
+public class fvk extends fun<bxd, fhc<bxd>> {
+   private static final aex a = new aex("textures/entity/sniffer/sniffer.png");
 
-   public fvk(ftc.a $$0) {
-      super($$0, fhw.bt, fhw.bu, fhw.bv);
-      this.a(new fxs<>(this, $$0.f()));
+   public fvk(fth.a $$0) {
+      super($$0, new fhc<>($$0.a(fib.bo)), 1.1F);
    }
 
-   @Override
-   public aeu a(bym $$0) {
+   public aex a(bxd $$0) {
       return a;
    }
 }

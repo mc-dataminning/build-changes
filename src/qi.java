@@ -1,38 +1,109 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class qi implements qn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Escaper b = Escapers.builder()
-      .addEscape('\'', "|'")
-      .addEscape('\n', "|n")
-      .addEscape('\r', "|r")
-      .addEscape('|', "||")
-      .addEscape('[', "|[")
-      .addEscape(']', "|]")
-      .build();
+public class qi {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<px> f = Lists.newArrayList();
+   @Nullable
+   private final Collection<py> g = Lists.newArrayList();
 
-   @Override
-   public void a(pu $$0) {
-      String $$1 = b.escape($$0.c());
-      String $$2 = b.escape($$0.n().getMessage());
-      String $$3 = b.escape(ac.c($$0.n()));
-      a.info("##teamcity[testStarted name='{}']", $$1);
-      if ($$0.r()) {
-         a.info("##teamcity[testFailed name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
-      } else {
-         a.info("##teamcity[testIgnored name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
-      }
+   public qi() {
+   }
 
-      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
+   public qi(Collection<px> $$0) {
+      this.f.addAll($$0);
+   }
+
+   public void a(px $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
+   }
+
+   public void a(py $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
+   }
+
+   public void a(final Consumer<px> $$0) {
+      this.a(new py() {
+         @Override
+         public void a(px $$0x) {
+         }
+
+         @Override
+         public void b(px $$0x) {
+         }
+
+         @Override
+         public void c(px $$0x) {
+            $$0.accept($$0);
+         }
+      });
+   }
+
+   public int a() {
+      return (int)this.f.stream().filter(px::i).filter(px::r).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(px::i).filter(px::s).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(px::k).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<px> f() {
+      return this.f.stream().filter(px::i).filter(px::r).collect(Collectors.toList());
+   }
+
+   public Collection<px> g() {
+      return this.f.stream().filter(px::i).filter(px::s).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.j()) {
+            $$0.append(' ');
+         } else if ($$1.h()) {
+            $$0.append('+');
+         } else if ($$1.i()) {
+            $$0.append((char)($$1.r() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
+         }
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
-   public void b(pu $$0) {
-      String $$1 = b.escape($$0.c());
-      a.info("##teamcity[testStarted name='{}']", $$1);
-      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
+   public String toString() {
+      return this.j();
    }
 }

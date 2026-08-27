@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 
 public class go implements gi<FloatArgumentType, go.a> {
-   public void a(go.a $$0, sl $$1) {
+   public void a(go.a $$0, so $$1) {
       boolean $$2 = $$0.b != -Float.MAX_VALUE;
       boolean $$3 = $$0.c != Float.MAX_VALUE;
       $$1.k(gk.a($$2, $$3));
@@ -15,7 +15,7 @@ public class go implements gi<FloatArgumentType, go.a> {
       }
    }
 
-   public go.a a(sl $$0) {
+   public go.a a(so $$0) {
       byte $$1 = $$0.readByte();
       float $$2 = gk.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
       float $$3 = gk.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;

@@ -1,13 +1,6 @@
+import java.util.Set;
+import java.util.function.Supplier;
+
 public interface bev {
-   void a();
-
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bdk f();
-
-   void d();
+   Set<bet> a(Supplier<bdn> var1);
 }

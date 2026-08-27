@@ -1,23 +1,58 @@
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
+
 public class epk {
-   private final String a;
-   private final epe b;
-   private final boolean c;
+   private static final String a = "realms_persistence.json";
+   private static final emn b = new emn();
+   private static final Logger c = LogUtils.getLogger();
 
-   public epk(String $$0, epe $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public epk.a a() {
+      return b();
    }
 
-   public String a() {
-      return this.a;
+   public void a(epk.a $$0) {
+      b($$0);
    }
 
-   public epe b() {
-      return this.b;
+   public static epk.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         epk.a $$2 = b.a($$1, epk.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new epk.a();
    }
 
-   public boolean c() {
-      return this.c;
+   public static void b(epk.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return eqv.O().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements enf {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

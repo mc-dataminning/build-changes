@@ -1,20 +1,15 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dyy extends dyq {
-   public static final Codec<dyy> a = aqd.a(je.e).fieldOf("tag").xmap(dyy::new, $$0 -> $$0.b).codec();
-   private final aqd<csq> b;
-
-   public dyy(aqd<csq> $$0) {
-      this.b = $$0;
+public abstract class dyy {
+   @Nullable
+   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
+      return $$4;
    }
 
-   @Override
-   public boolean a(dfe $$0, arx $$1) {
-      return $$0.a(this.b);
-   }
+   protected abstract dza<?> a();
 
-   @Override
-   protected dyr<?> a() {
-      return dyr.d;
+   public List<dzb.c> a(cqk $$0, gw $$1, gw $$2, List<dzb.c> $$3, List<dzb.c> $$4, dyx $$5) {
+      return $$4;
    }
 }

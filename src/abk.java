@@ -1,29 +1,36 @@
-public class abk implements va<aaz> {
-   private final abk.a a;
+import java.time.Instant;
 
-   public abk(abk.a $$0) {
-      this.a = $$0;
-   }
-
-   public abk(sl $$0) {
-      this.a = $$0.b(abk.a.class);
+public record abk(String a, Instant b, long c, dy d, tr.b e) implements vd<abd> {
+   public abk(so $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), new dy($$0), new tr.b($$0));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public abk.a a() {
-      return this.a;
+   public Instant d() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public long e() {
+      return this.c;
+   }
+
+   public dy f() {
+      return this.d;
+   }
+
+   public tr.b g() {
+      return this.e;
    }
 }

@@ -1,55 +1,71 @@
+import com.google.common.collect.Maps;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cjx extends civ implements cib {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
+public class cjx extends cja {
+   private static final Map<apd, cjx> a = Maps.newHashMap();
+   private final int b;
+   private final apd c;
+   private final int d;
 
-   public cjx(civ.a $$0) {
-      super($$0);
-      cur.a(this, cgk.a);
+   protected cjx(int $$0, apd $$1, cja.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public String j(cja $$0) {
-      return cgt.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfj $$3 = $$1.a_($$2);
+      if ($$3.a(csw.dT) && !$$3.c(cwv.a)) {
+         cjf $$4 = $$0.n();
+         if (!$$1.B) {
+            cbu $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof ddv $$6) {
+               $$6.b($$4.p());
+               $$1.a(djt.c, $$2, djt.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(apo.al);
+            }
+         }
+
+         return bgy.a($$1.B);
+      } else {
+         return bgy.d;
+      }
+   }
+
+   public int h() {
+      return this.b;
    }
 
    @Override
-   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
-      cgq.a($$0, $$2);
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      $$2.add(this.i().a(n.h));
    }
 
-   @Override
-   public ckt c(cja $$0) {
-      return ckt.d;
+   public ty i() {
+      return tl.c(this.a() + ".desc");
    }
 
-   @Override
-   public int b(cja $$0) {
-      return 72000;
+   @Nullable
+   public static cjx a(apd $$0) {
+      return a.get($$0);
    }
 
-   @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      cja $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bgu.b($$3);
+   public apd x() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(cja $$0, cja $$1) {
-      return $$1.a(apw.b) || super.a($$0, $$1);
-   }
-
-   public static cho d(cja $$0) {
-      qu $$1 = cgt.a($$0);
-      return $$1 != null ? cho.a($$1.h("Base")) : cho.a;
-   }
-
-   @Override
-   public biq g() {
-      return biq.b;
+   public int y() {
+      return this.d;
    }
 }

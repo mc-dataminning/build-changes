@@ -1,27 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record amr(ti c, int d, Optional<arl<Integer>> e) {
-   public static final Codec<amr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arb.b.fieldOf("description").forGetter(amr::a),
-               Codec.INT.fieldOf("pack_format").forGetter(amr::b),
-               arl.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(amr::c)
-            )
-            .apply($$0, amr::new)
-   );
-   public static final amq<amr> b = amq.a("pack", a);
+public class amr extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new amq();
+   private final amp f;
 
-   public ti a() {
-      return this.c;
+   amr(String $$0, amr.b $$1) {
+      this.d = new amo($$0);
+      this.f = a($$1, this, "", null);
    }
 
-   public int b() {
+   private static amp a(amr.b $$0, amr $$1, String $$2, @Nullable amp $$3) {
+      Object2ObjectOpenHashMap<String, amp> $$4 = new Object2ObjectOpenHashMap();
+      amp $$5 = new amp($$1, $$2, $$3, new ams.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new amp($$1, $$3x, $$5, new ams.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
+   }
+
+   @Override
+   public FileSystemProvider provider() {
+      return this.e;
+   }
+
+   @Override
+   public void close() {
+   }
+
+   @Override
+   public boolean isOpen() {
+      return true;
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public String getSeparator() {
+      return "/";
+   }
+
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
+      }
+
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         amp $$4 = this.f;
+
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$4 = $$4.a($$5);
+         }
+
+         return $$4;
+      } else {
+         amp $$6 = null;
+
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$6 = new amp(this, $$7, $$6, ams.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
+         } else {
+            return $$6;
+         }
+      }
+   }
+
+   @Override
+   public PathMatcher getPathMatcher(String $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
       return this.d;
    }
 
-   public Optional<arl<Integer>> c() {
-      return this.e;
+   public amp b() {
+      return this.f;
+   }
+
+   public static amr.a c() {
+      return new amr.a();
+   }
+
+   public static class a {
+      private final amr.b a = new amr.b();
+
+      public amr.a a(List<String> $$0, String $$1, Path $$2) {
+         amr.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new amr.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public amr.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
+         }
+      }
+
+      public FileSystem a(String $$0) {
+         return new amr($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, amr.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
+      }
    }
 }

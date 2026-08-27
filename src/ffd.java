@@ -1,9 +1,26 @@
-public class ffd extends fdu<byy> {
-   public ffd(fhx $$0) {
+import java.util.function.Function;
+
+public abstract class ffd<T extends biq> extends ffz {
+   public float c;
+   public boolean d;
+   public boolean e = true;
+
+   protected ffd() {
+      this(fom::e);
+   }
+
+   protected ffd(Function<aex, fom> $$0) {
       super($$0);
    }
 
-   public boolean a(byy $$0) {
-      return false;
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(ffd<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
    }
 }

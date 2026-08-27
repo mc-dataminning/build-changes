@@ -1,107 +1,70 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
-
-public class cdw {
-   private static final Logger a = LogUtils.getLogger();
-   private final cdy b;
-   private final Map<aeu, cdv> c;
-   private final cdx d;
-
-   cdw(cdy $$0, cdx $$1, Map<aeu, cdv> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
-   }
-
-   public boolean a(cdx $$0) {
-      return $$0.a(this.d);
-   }
-
-   public cdx a() {
-      return this.d;
-   }
-
-   public cdx a(Iterable<aeu> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
-   }
-
-   public cdx a(cdv... $$0) {
-      return cdx.a(this.b, Arrays.asList($$0));
-   }
-
-   public cdx a(Iterable<aeu> $$0, Consumer<aeu> $$1) {
-      Set<cdv> $$2 = Sets.newIdentityHashSet();
-
-      for (aeu $$3 : $$0) {
-         cdv $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
-         }
+public class cdw extends cdl {
+   private final cox c = new cox() {
+      @Override
+      public void a(cpv $$0, gw $$1, int $$2) {
+         $$0.a(cdw.this, (byte)$$2);
       }
+   };
+   private final Runnable d;
 
-      return cdx.a(this.b, $$2);
+   public cdw(biu<? extends cdw> $$0, cpv $$1) {
+      super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public Set<aeu> b(cdx $$0) {
-      Set<aeu> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
-      return $$1;
+   public cdw(cpv $$0, double $$1, double $$2, double $$3) {
+      super(biu.aQ, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
-   public Codec<cdx> b() {
-      return aeu.a.listOf().comapFlatMap($$0 -> {
-         Set<aeu> $$1 = new HashSet<>();
-         cdx $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
+   @Override
+   protected cja q() {
+      return cji.na;
    }
 
-   public static class a {
-      private final cdy a;
-      private int b;
-      private final Map<aeu, cdv> c = new LinkedHashMap<>();
+   private Runnable b(cpv $$0) {
+      return $$0 instanceof akr ? () -> this.c.a((akr)$$0, this.dl()) : () -> this.c.a($$0, this.dl());
+   }
 
-      public a(String $$0) {
-         this.a = new cdy($$0);
-      }
+   @Override
+   public cdl.a z() {
+      return cdl.a.e;
+   }
 
-      public cdv a(String $$0) {
-         return this.a(new aeu("minecraft", $$0));
-      }
+   @Override
+   public dfj B() {
+      return csw.ct.n();
+   }
 
-      public cdv a(aeu $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            cdv $$1 = new cdv(this.a, this.b++);
-            cdv $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
-         }
-      }
+   @Override
+   protected void a(qx $$0) {
+      super.a($$0);
+      this.c.a(this.dL(), this.dl(), $$0);
+   }
 
-      public cdw a() {
-         cdx $$0 = cdx.a(this.a, this.c.values());
-         return new cdw(this.a, $$0, Map.copyOf(this.c));
-      }
+   @Override
+   protected void b(qx $$0) {
+      super.b($$0);
+      this.c.a($$0);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      this.c.a(this.dL(), $$0);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.d.run();
+   }
+
+   public cox G() {
+      return this.c;
+   }
+
+   @Override
+   public boolean cN() {
+      return true;
    }
 }

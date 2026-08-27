@@ -1,34 +1,19 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class cpl extends ebm {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public class cpl extends cpo {
+   private final biq a;
 
-   public static ebm.a<cpl> a() {
-      return new ebm.a<>(cpl::new, cpl::b, asv.i);
-   }
-
-   private cpl(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cpl() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cpl b(qu $$0) {
-      return new cpl(new LongOpenHashSet($$0.o("Forced")));
+   public cpl(biq $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public qu a(qu $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public Optional<Float> a(cpn $$0, cpb $$1, gw $$2, dfj $$3, eam $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public boolean a(cpn $$0, cpb $$1, gw $$2, dfj $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

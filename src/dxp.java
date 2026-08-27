@@ -1,98 +1,215 @@
-public class dxp extends dvb {
-   private boolean h;
-   private boolean i;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-   public dxp(arx $$0, int $$1, int $$2) {
-      super(dvu.K, $$1, 64, $$2, 7, 7, 9, a($$0));
+public class dxp extends dvi {
+   private static final String[] e = new String[]{
+      "ruined_portal/portal_1",
+      "ruined_portal/portal_2",
+      "ruined_portal/portal_3",
+      "ruined_portal/portal_4",
+      "ruined_portal/portal_5",
+      "ruined_portal/portal_6",
+      "ruined_portal/portal_7",
+      "ruined_portal/portal_8",
+      "ruined_portal/portal_9",
+      "ruined_portal/portal_10"
+   };
+   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
+   private static final float g = 0.05F;
+   private static final int h = 15;
+   private final List<dxp.a> i;
+   public static final Codec<dxp> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), arg.a(dxp.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, dxp::new)
+   );
+
+   public dxp(dvi.c $$0, List<dxp.a> $$1) {
+      super($$0);
+      this.i = $$1;
    }
 
-   public dxp(qu $$0) {
-      super(dvu.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
+   public dxp(dvi.c $$0, dxp.a $$1) {
+      this($$0, List.of($$1));
    }
 
    @Override
-   protected void a(dvt $$0, qu $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
-   }
+   public Optional<dvi.b> a(dvi.a $$0) {
+      dxo.a $$1 = new dxo.a();
+      dlr $$2 = $$0.f();
+      dxp.a $$3 = null;
+      if (this.i.size() > 1) {
+         float $$4 = 0.0F;
 
-   @Override
-   public void a(cqk $$0, cqi $$1, dhb $$2, arx $$3, duv $$4, cox $$5, gw $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, csr.o.n(), csr.o.n(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, csr.U.n(), csr.U.n(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, csr.U.n(), csr.U.n(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, csr.U.n(), csr.U.n(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, csr.U.n(), csr.U.n(), false);
-         this.a($$0, csr.dU.n(), 2, 3, 2, $$4);
-         this.a($$0, csr.dU.n(), 3, 3, 7, $$4);
-         this.a($$0, csr.a.n(), 1, 3, 4, $$4);
-         this.a($$0, csr.a.n(), 5, 3, 4, $$4);
-         this.a($$0, csr.a.n(), 5, 3, 5, $$4);
-         this.a($$0, csr.gp.n(), 1, 3, 5, $$4);
-         this.a($$0, csr.cA.n(), 3, 2, 6, $$4);
-         this.a($$0, csr.ft.n(), 4, 2, 6, $$4);
-         this.a($$0, csr.dU.n(), 1, 2, 1, $$4);
-         this.a($$0, csr.dU.n(), 5, 2, 1, $$4);
-         dfe $$7 = csr.fK.n().a(dak.a, hc.c);
-         dfe $$8 = csr.fK.n().a(dak.a, hc.f);
-         dfe $$9 = csr.fK.n().a(dak.a, hc.e);
-         dfe $$10 = csr.fK.n().a(dak.a, hc.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.a(dak.c, dgn.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.a(dak.c, dgn.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.a(dak.c, dgn.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.a(dak.c, dgn.e), 6, 4, 8, $$4);
-
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, csr.U.n(), $$12, -1, $$11, $$4);
-            }
+         for (dxp.a $$5 : this.i) {
+            $$4 += $$5.h();
          }
 
-         if (!this.h) {
-            gw $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               bzt $$14 = bip.bj.a((cpq)$$0.C());
-               if ($$14 != null) {
-                  $$14.fF();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), bjf.d, null, null);
-                  $$0.a_($$14);
-               }
+         float $$6 = $$2.i();
+
+         for (dxp.a $$7 : this.i) {
+            $$6 -= $$7.h() / $$4;
+            if ($$6 < 0.0F) {
+               $$3 = $$7;
+               break;
             }
          }
+      } else {
+         $$3 = this.i.get(0);
+      }
 
-         this.a($$0, $$4);
+      if ($$3 == null) {
+         throw new IllegalStateException();
+      } else {
+         dxp.a $$8 = $$3;
+         $$1.d = a($$2, $$8.b());
+         $$1.c = $$8.c();
+         $$1.e = $$8.d();
+         $$1.f = $$8.e();
+         $$1.g = $$8.g();
+         aex $$9;
+         if ($$2.i() < 0.05F) {
+            $$9 = new aex(f[$$2.a(f.length)]);
+         } else {
+            $$9 = new aex(e[$$2.a(e.length)]);
+         }
+
+         dzb $$11 = $$0.e().a($$9);
+         czh $$12 = ac.a(czh.values(), $$2);
+         cxq $$13 = $$2.i() < 0.5F ? cxq.a : cxq.c;
+         gw $$14 = new gw($$11.a().u() / 2, 0, $$11.a().w() / 2);
+         dhg $$15 = $$0.b();
+         cpx $$16 = $$0.i();
+         dlg $$17 = $$0.d();
+         gw $$18 = $$0.h().l();
+         dva $$19 = $$11.a($$18, $$12, $$14, $$13);
+         gw $$20 = $$19.f();
+         int $$21 = $$15.a($$20.u(), $$20.w(), dxo.a($$8.a()), $$16, $$17) - 1;
+         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.d(), $$19, $$16, $$17);
+         gw $$23 = new gw($$18.u(), $$22, $$18.w());
+         return Optional.of(new dvi.b($$23, (Consumer<dwa>)($$10 -> {
+            if ($$8.f()) {
+               $$1.b = a($$23, $$0.b().c().getNoiseBiome(hs.a($$23.u()), hs.a($$23.v()), hs.a($$23.w()), $$17.b()));
+            }
+
+            $$10.a(new dxo($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
+         })));
       }
    }
 
-   private void a(cqf $$0, duv $$1) {
-      if (!this.i) {
-         gw $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            bup $$3 = bip.m.a((cpq)$$0.C());
-            if ($$3 != null) {
-               $$3.fF();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), bjf.d, null, null);
-               $$0.a_($$3);
+   private static boolean a(dlr $$0, float $$1) {
+      if ($$1 == 0.0F) {
+         return false;
+      } else {
+         return $$1 == 1.0F ? true : $$0.i() < $$1;
+      }
+   }
+
+   private static boolean a(gw $$0, hg<cqt> $$1) {
+      return $$1.a().b($$0);
+   }
+
+   private static int a(asc $$0, dhg $$1, dxo.b $$2, boolean $$3, int $$4, int $$5, dva $$6, cpx $$7, dlg $$8) {
+      int $$9 = $$7.H_() + 15;
+      int $$10;
+      if ($$2 == dxo.b.f) {
+         if ($$3) {
+            $$10 = arx.b($$0, 32, 100);
+         } else if ($$0.i() < 0.5F) {
+            $$10 = arx.b($$0, 27, 29);
+         } else {
+            $$10 = arx.b($$0, 29, 100);
+         }
+      } else if ($$2 == dxo.b.d) {
+         int $$13 = $$4 - $$5;
+         $$10 = a($$0, 70, $$13);
+      } else if ($$2 == dxo.b.e) {
+         int $$15 = $$4 - $$5;
+         $$10 = a($$0, $$9, $$15);
+      } else if ($$2 == dxo.b.b) {
+         $$10 = $$4 - $$5 + arx.b($$0, 2, 8);
+      } else {
+         $$10 = $$4;
+      }
+
+      List<gw> $$19 = ImmutableList.of(new gw($$6.g(), 0, $$6.i()), new gw($$6.j(), 0, $$6.i()), new gw($$6.g(), 0, $$6.l()), new gw($$6.j(), 0, $$6.l()));
+      List<cqh> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
+      dks.a $$21 = $$2 == dxo.b.c ? dks.a.c : dks.a.a;
+
+      int $$22;
+      for ($$22 = $$10; $$22 > $$9; $$22--) {
+         int $$23 = 0;
+
+         for (cqh $$24 : $$20) {
+            dfj $$25 = $$24.a($$22);
+            if ($$21.e().test($$25)) {
+               if (++$$23 == 3) {
+                  return $$22;
+               }
             }
          }
+      }
+
+      return $$22;
+   }
+
+   private static int a(asc $$0, int $$1, int $$2) {
+      return $$1 < $$2 ? arx.b($$0, $$1, $$2) : $$2;
+   }
+
+   @Override
+   public dvr<?> e() {
+      return dvr.l;
+   }
+
+   public static record a(dxo.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
+      public static final Codec<dxp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dxo.b.g.fieldOf("placement").forGetter(dxp.a::a),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(dxp.a::b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(dxp.a::c),
+                  Codec.BOOL.fieldOf("overgrown").forGetter(dxp.a::d),
+                  Codec.BOOL.fieldOf("vines").forGetter(dxp.a::e),
+                  Codec.BOOL.fieldOf("can_be_cold").forGetter(dxp.a::f),
+                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(dxp.a::g),
+                  arg.k.fieldOf("weight").forGetter(dxp.a::h)
+               )
+               .apply($$0, dxp.a::new)
+      );
+
+      public dxo.b a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+
+      public boolean g() {
+         return this.h;
+      }
+
+      public float h() {
+         return this.i;
       }
    }
 }

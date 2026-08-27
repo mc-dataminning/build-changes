@@ -1,54 +1,65 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import io.netty.util.internal.ThreadLocalRandom;
 
 public interface asc {
-   asc a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+   @Deprecated
+   double a = 2.297;
 
-   boolean validate(asb var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   static asc a() {
+      return a(dlh.a());
    }
 
-   private static boolean a(asb $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   @Deprecated
+   static asc b() {
+      return new dll(dlh.a());
    }
 
-   static asc a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
+   static asc a(long $$0) {
+      return new dkt($$0);
    }
 
-   @Nullable
-   static asc a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+   static asc c() {
+      return new dli(ThreadLocalRandom.current().nextLong());
+   }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   asc d();
+
+   dlf e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
+      }
+   }
+
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

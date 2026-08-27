@@ -1,17 +1,41 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface efd<T extends efd<T>> {
-   T b(efk.a var1);
+public class efd extends efg {
+   public static final Codec<efd> a = a(efd::new);
+   public static final Codec<efd> b = b(efd::new);
 
-   default <E> T a_(Iterable<E> $$0, Function<E, efk.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   efd(List<efp> $$0) {
+      super($$0, efr.a($$0));
    }
 
-   T d();
+   public static efd a(List<efp> $$0) {
+      return new efd(List.copyOf($$0));
+   }
+
+   @Override
+   public efq b() {
+      return efr.d;
+   }
+
+   public static efd.a a(efp.a... $$0) {
+      return new efd.a($$0);
+   }
+
+   public static class a extends efg.a {
+      public a(efp.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public efd.a and(efp.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected efp a(List<efp> $$0) {
+         return new efd($$0);
+      }
+   }
 }

@@ -1,86 +1,89 @@
+import java.util.EnumSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bpy extends bqt {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class bpy extends bqb {
+   private final bji a;
+   private final Predicate<bji> b;
+   @Nullable
+   private bji c;
+   private final double d;
+   private final bsp e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public bpy(bjk $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bpy(bji $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.L();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
+      if (!($$0.L() instanceof bso) && !($$0.L() instanceof bsn)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
-   @Nullable
    @Override
-   protected ehi h() {
-      float $$0 = this.b.dK().z.i();
-      if (this.b.dK().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         ehi $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
+   public boolean a() {
+      List<bji> $$0 = this.a.dL().a(bji.class, this.a.cH().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bji $$1 : $$0) {
+            if (!$$1.ce()) {
+               this.c = $$1;
+               return true;
             }
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      return false;
    }
 
-   @Nullable
-   private ehi k() {
-      return btu.a(this.b, 10, 7);
+   @Override
+   public boolean b() {
+      return this.c != null && !this.e.l() && this.a.f(this.c) > (double)(this.g * this.g);
    }
 
-   @Nullable
-   private ehi l() {
-      akn $$0 = (akn)this.b.dK();
-      List<cbc> $$1 = $$0.a(bip.bf, this.b.cG().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cbc $$2 = $$1.get(this.b.dK().z.a($$1.size()));
-         ehi $$3 = $$2.di();
-         return btu.a(this.b, 10, 7, $$3);
+   @Override
+   public void c() {
+      this.f = 0;
+      this.h = this.a.a(eax.j);
+      this.a.a(eax.j, 0.0F);
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.e.n();
+      this.a.a(eax.j, this.h);
+   }
+
+   @Override
+   public void e() {
+      if (this.c != null && !this.a.fR()) {
+         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dq() - this.c.dq();
+            double $$1 = this.a.ds() - this.c.ds();
+            double $$2 = this.a.dw() - this.c.dw();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bpd $$4 = this.c.G();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dq() && $$4.f() == this.a.ds() && $$4.g() == this.a.dw()) {
+                  double $$5 = this.c.dq() - this.a.dq();
+                  double $$6 = this.c.dw() - this.a.dw();
+                  this.e.a(this.a.dq() - $$5, this.a.ds(), this.a.dw() - $$6, this.d);
+               }
+            }
+         }
       }
-   }
-
-   @Nullable
-   private ehi m() {
-      hz $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         gw $$1 = this.a($$0);
-         return $$1 == null ? null : btu.a(this.b, 10, 7, ehi.c($$1));
-      }
-   }
-
-   @Nullable
-   private hz n() {
-      akn $$0 = (akn)this.b.dK();
-      List<hz> $$1 = hz.a(hz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private gw a(hz $$0) {
-      akn $$1 = (akn)this.b.dK();
-      bua $$2 = $$1.w();
-      List<gw> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bua.b.b).map(bub::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cbc $$0) {
-      return $$0.a(this.b.dK().V());
    }
 }

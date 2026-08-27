@@ -1,41 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dya extends dyt {
+public class dya extends dyo {
    public static final Codec<dya> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               hv.a(je.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               hc.a.e.fieldOf("axis").orElse(hc.a.b).forGetter($$0x -> $$0x.g)
             )
             .apply($$0, dya::new)
    );
-   private final Optional<hk<csq>> b;
-   private final float c;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final hc.a g;
 
-   public dya(hk<csq> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public dya(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private dya(Optional<hk<csq>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dyw.c a(cpt $$0, gw $$1, gw $$2, dyw.c $$3, dyw.c $$4, dys $$5) {
-      arx $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public dya(float $$0, float $$1, int $$2, int $$3, hc.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+      }
    }
 
    @Override
-   protected dyv<?> a() {
-      return dyv.f;
+   public boolean a(gw $$0, gw $$1, gw $$2, asc $$3) {
+      hc $$4 = hc.a(hc.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= arx.b(this.b, this.d, arx.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected dyp<?> a() {
+      return dyp.c;
    }
 }

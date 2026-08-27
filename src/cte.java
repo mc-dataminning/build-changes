@@ -1,130 +1,156 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class cte extends cri implements czr {
-   public static final int c = 1;
-   public static final int d = 4;
-   public static final dge e = dfu.az;
-   public static final dfv f = cri.b;
-   public static final dfv g = dfu.C;
-   public static final ToIntFunction<dfe> h = $$0 -> $$0.c(f) ? 3 * $$0.c(e) : 0;
-   private static final Int2ObjectMap<List<ehi>> i = ac.a(() -> {
-      Int2ObjectMap<List<ehi>> $$0 = new Int2ObjectOpenHashMap();
-      $$0.defaultReturnValue(ImmutableList.of());
-      $$0.put(1, ImmutableList.of(new ehi(0.5, 0.5, 0.5)));
-      $$0.put(2, ImmutableList.of(new ehi(0.375, 0.44, 0.5), new ehi(0.625, 0.5, 0.44)));
-      $$0.put(3, ImmutableList.of(new ehi(0.5, 0.313, 0.625), new ehi(0.375, 0.44, 0.5), new ehi(0.56, 0.5, 0.44)));
-      $$0.put(4, ImmutableList.of(new ehi(0.44, 0.313, 0.56), new ehi(0.625, 0.44, 0.56), new ehi(0.375, 0.44, 0.375), new ehi(0.56, 0.5, 0.375)));
-      return Int2ObjectMaps.unmodifiable($$0);
-   });
-   private static final eib j = csq.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
-   private static final eib k = csq.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
-   private static final eib l = csq.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
-   private static final eib m = csq.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
+public class cte extends cvl {
+   public static final dga a = dfz.w;
+   private static final int J = 1;
+   private static final int K = 2;
+   protected static final int b = 2;
+   protected static final int c = 3;
+   protected static final eig d = csv.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eig e = csv.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eig f = csv.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final eig g = csv.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final eig h = csv.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final eig i = csv.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final eig j = csv.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eig k = csv.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final eig l = csv.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eig m = csv.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eig n = csv.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final eig D = csv.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final eig E = csv.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final eig F = csv.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final eig G = csv.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eig H = csv.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dfy L;
+   private final int M;
+   private final boolean N;
 
-   public cte(dfd.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(e, Integer.valueOf(1)).a(f, Boolean.valueOf(false)).a(g, Boolean.valueOf(false)));
+   protected cte(dfi.d $$0, dfy $$1, int $$2, boolean $$3) {
+      super($$0.a($$1.d()));
+      this.L = $$1;
+      this.k(this.C.b().a(aC, hc.c).a(a, Boolean.valueOf(false)).a(I, dfu.b));
+      this.M = $$2;
+      this.N = $$3;
    }
 
    @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      if ($$3.fR().e && $$3.b($$4).b() && $$0.c(f)) {
-         a($$3, $$0, $$1, $$2);
-         return bgt.a($$1.B);
-      } else {
-         return bgt.d;
-      }
-   }
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      hc $$4 = $$0.c(aC);
+      boolean $$5 = $$0.c(a);
+      switch ((dfu)$$0.c(I)) {
+         case a:
+            if ($$4.o() == hc.a.a) {
+               return $$5 ? n : f;
+            }
 
-   @Override
-   public boolean a(dfe $$0, cli $$1) {
-      return !$$1.h() && $$1.n().d() == this.k() && $$0.c(e) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public dfe a(cli $$0) {
-      dfe $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(e);
-      } else {
-         eah $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == eai.c;
-         return super.a($$0).a(g, Boolean.valueOf($$3));
-      }
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(g) ? eai.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      switch ($$0.c(e)) {
-         case 1:
+            return $$5 ? D : g;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? H : k;
+               case e -> $$5 ? G : j;
+               case d -> $$5 ? F : i;
+               case c, b, a -> $$5 ? E : h;
+            };
+         case c:
          default:
-            return j;
-         case 2:
-            return k;
-         case 3:
-            return l;
-         case 4:
-            return m;
+            if ($$4.o() == hc.a.a) {
+               return $$5 ? l : d;
+            } else {
+               return $$5 ? m : e;
+            }
       }
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(e, f, g);
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$0.c(a)) {
+         return bgy.b;
+      } else {
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, djt.a, $$2);
+         return bgy.a($$1.B);
+      }
+   }
+
+   public void d(dfj $$0, cpv $$1, gw $$2) {
+      $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.M);
+   }
+
+   protected void a(@Nullable cbu $$0, cpw $$1, gw $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), apf.e);
+   }
+
+   protected apd a(boolean $$0) {
+      return $$0 ? this.L.l() : this.L.k();
    }
 
    @Override
-   public boolean a(cpr $$0, gw $$1, dfe $$2, eah $$3) {
-      if (!$$2.c(g) && $$3.a() == eai.c) {
-         dfe $$4 = $$2.a(g, Boolean.valueOf(true));
-         if ($$2.c(f)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
+   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(a)) {
+            this.f($$0, $$1, $$2);
          }
 
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
-      } else {
-         return false;
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public static boolean g(dfe $$0) {
-      return $$0.a(apo.ae, $$0x -> $$0x.b(f) && $$0x.b(g)) && !$$0.c(f) && !$$0.c(g);
+   @Override
+   public int a(dfj $$0, cpb $$1, gw $$2, hc $$3) {
+      return $$0.c(a) ? 15 : 0;
    }
 
    @Override
-   protected Iterable<ehi> b(dfe $$0) {
-      return (Iterable<ehi>)i.get($$0.c(e));
+   public int b(dfj $$0, cpb $$1, gw $$2, hc $$3) {
+      return $$0.c(a) && h($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   protected boolean d(dfe $$0) {
-      return !$$0.c(g) && super.d($$0);
+   public boolean f_(dfj $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      return csq.a($$1, $$2.d(), hc.b);
+   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if ($$0.c(a)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
+      if (!$$1.B && this.N && !$$0.c(a)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dfj $$0, cpv $$1, gw $$2) {
+      cca $$3 = this.N ? $$1.a(cca.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(a);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(a, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? djt.a : djt.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new gw($$2), this, this.M);
+      }
+   }
+
+   private void f(dfj $$0, cpv $$1, gw $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(aC, a, I);
    }
 }

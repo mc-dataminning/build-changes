@@ -1,8 +1,15 @@
-public enum vb {
-   a,
-   b;
+public abstract class vb<T extends su> implements vd<T> {
+   private final Iterable<vd<T>> a;
 
-   public vb a() {
-      return this == b ? a : b;
+   protected vb(Iterable<vd<T>> $$0) {
+      this.a = $$0;
+   }
+
+   public final Iterable<vd<T>> a() {
+      return this.a;
+   }
+
+   @Override
+   public final void a(so $$0) {
    }
 }

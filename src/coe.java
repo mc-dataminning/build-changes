@@ -1,20 +1,24 @@
-public class coe extends cnj {
-   public coe(cnj.a $$0, biq... $$1) {
-      super($$0, cnk.i, $$1);
+public class coe extends cno {
+   public coe(cno.a $$0, biv... $$1) {
+      super($$0, cnp.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + $$0 * 7;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
    public int a() {
       return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

@@ -1,106 +1,69 @@
-public class cwh extends cwe {
-   private static final double b = 0.13;
-   private static final double c = 0.08;
-   private static final double d = 0.05;
-   private static final int e = 20;
-   protected static final eib a = csq.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+import java.util.Optional;
 
-   public cwh(dfd.d $$0) {
-      super($$0);
+public abstract class cwh extends cwg implements csx {
+   protected cwh(dfi.d $$0, hc $$1, eig $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   private static boolean c(bil $$0) {
-      return $$0 instanceof bjb || $$0 instanceof cdg || $$0 instanceof byj || $$0 instanceof cdi;
+   protected dfj a(dfj $$0, dfj $$1) {
+      return $$1;
    }
 
    @Override
-   public eib c(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return a;
-   }
-
-   @Override
-   public void a(cpq $$0, dfe $$1, gw $$2, bil $$3, float $$4) {
-      $$3.a(aoz.kY, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      if ($$3.a($$4, 0.2F, $$0.ag().k())) {
-         $$3.a(this.aH.g(), this.aH.a() * 0.5F, this.aH.b() * 0.75F);
-      }
-   }
-
-   @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, bil $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private boolean a(gw $$0, bil $$1) {
-      if ($$1.aA()) {
-         return false;
-      } else if ($$1.dr() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dn().d >= -0.08) {
-         return false;
+      cwi $$6 = this.b();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dp());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dv());
-         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
-   }
-
-   private void a(bil $$0, gw $$1) {
-      if ($$0 instanceof ako && $$0.dK().V() % 20L == 0L) {
-         al.J.a((ako)$$0, $$0.dK().a_($$1));
-      }
-   }
-
-   private void d(bil $$0) {
-      ehi $$1 = $$0.dn();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.f(new ehi($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.f(new ehi($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(cpq $$0, bil $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(aoz.kY, 1.0F, 1.0F);
+         if (this.b) {
+            $$3.a($$4, ean.c, ean.c.a($$3));
          }
 
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static void a(bil $$0) {
-      a($$0, 5);
+   @Override
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(this.b());
    }
 
-   public static void b(bil $$0) {
-      a($$0, 10);
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      Optional<gw> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
    }
 
-   private static void a(bil $$0, int $$1) {
-      if ($$0.dK().B) {
-         dfe $$2 = csr.pg.n();
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dK().a(new ip(ix.c, $$2), $$0.dp(), $$0.dr(), $$0.dv(), 0.0, 0.0, 0.0);
-         }
+   @Override
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      Optional<gw> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dfj $$5 = $$0.a_($$4.get());
+         ((cwi)$$5.b()).a($$0, $$1, $$4.get(), $$5);
       }
+   }
+
+   private Optional<gw> a(cpb $$0, gw $$1, csv $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.b());
+   }
+
+   @Override
+   public boolean a(dfj $$0, cln $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
+   }
+
+   @Override
+   protected csv a() {
+      return this;
    }
 }

@@ -1,163 +1,53 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.ListBuilder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.ListBuilder.Builder;
-import com.mojang.serialization.RecordBuilder.MapBuilder;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.Iterator;
 
-public abstract class aem<T> implements DynamicOps<T> {
-   protected final DynamicOps<T> a;
+public interface aem<T> {
+   default void a(int $$0, int $$1, int $$2, cmk<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cmp $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
 
-   protected aem(DynamicOps<T> $$0) {
-      this.a = $$0;
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = arx.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = arx.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
+         }
+      }
    }
 
-   public T empty() {
-      return (T)this.a.empty();
-   }
-
-   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
-      return (U)this.a.convertTo($$0, $$1);
-   }
-
-   public DataResult<Number> getNumberValue(T $$0) {
-      return this.a.getNumberValue($$0);
-   }
-
-   public T createNumeric(Number $$0) {
-      return (T)this.a.createNumeric($$0);
-   }
-
-   public T createByte(byte $$0) {
-      return (T)this.a.createByte($$0);
-   }
-
-   public T createShort(short $$0) {
-      return (T)this.a.createShort($$0);
-   }
-
-   public T createInt(int $$0) {
-      return (T)this.a.createInt($$0);
-   }
-
-   public T createLong(long $$0) {
-      return (T)this.a.createLong($$0);
-   }
-
-   public T createFloat(float $$0) {
-      return (T)this.a.createFloat($$0);
-   }
-
-   public T createDouble(double $$0) {
-      return (T)this.a.createDouble($$0);
-   }
-
-   public DataResult<Boolean> getBooleanValue(T $$0) {
-      return this.a.getBooleanValue($$0);
-   }
-
-   public T createBoolean(boolean $$0) {
-      return (T)this.a.createBoolean($$0);
-   }
-
-   public DataResult<String> getStringValue(T $$0) {
-      return this.a.getStringValue($$0);
-   }
-
-   public T createString(String $$0) {
-      return (T)this.a.createString($$0);
-   }
-
-   public DataResult<T> mergeToList(T $$0, T $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
-      return this.a.mergeToMap($$0, $$1, $$2);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
-      return this.a.mergeToMap($$0, $$1);
-   }
-
-   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
-      return this.a.getMapValues($$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
-      return this.a.getMapEntries($$0);
-   }
-
-   public T createMap(Stream<Pair<T, T>> $$0) {
-      return (T)this.a.createMap($$0);
-   }
-
-   public DataResult<MapLike<T>> getMap(T $$0) {
-      return this.a.getMap($$0);
-   }
-
-   public DataResult<Stream<T>> getStream(T $$0) {
-      return this.a.getStream($$0);
-   }
-
-   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
-      return this.a.getList($$0);
-   }
-
-   public T createList(Stream<T> $$0) {
-      return (T)this.a.createList($$0);
-   }
-
-   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
-      return this.a.getByteBuffer($$0);
-   }
-
-   public T createByteList(ByteBuffer $$0) {
-      return (T)this.a.createByteList($$0);
-   }
-
-   public DataResult<IntStream> getIntStream(T $$0) {
-      return this.a.getIntStream($$0);
-   }
-
-   public T createIntList(IntStream $$0) {
-      return (T)this.a.createIntList($$0);
-   }
-
-   public DataResult<LongStream> getLongStream(T $$0) {
-      return this.a.getLongStream($$0);
-   }
-
-   public T createLongList(LongStream $$0) {
-      return (T)this.a.createLongList($$0);
-   }
-
-   public T remove(T $$0, String $$1) {
-      return (T)this.a.remove($$0, $$1);
-   }
-
-   public boolean compressMaps() {
-      return this.a.compressMaps();
-   }
-
-   public ListBuilder<T> listBuilder() {
-      return new Builder(this);
-   }
-
-   public RecordBuilder<T> mapBuilder() {
-      return new MapBuilder(this);
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

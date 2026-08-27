@@ -5,22 +5,22 @@ public interface dr {
    dr a = new dr() {
       @Nullable
       @Override
-      public tx a(String $$0) {
+      public ua a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   tx a(String var1);
+   ua a(String var1);
 
-   public static record a(Map<String, tx> b) implements dr {
+   public static record a(Map<String, ua> b) implements dr {
       @Nullable
       @Override
-      public tx a(String $$0) {
+      public ua a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, tx> a() {
+      public Map<String, ua> a() {
          return this.b;
       }
    }

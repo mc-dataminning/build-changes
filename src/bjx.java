@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bjx {
-   @Nullable
-   bjb j();
+   void a(apf var1);
+
+   boolean a();
 }

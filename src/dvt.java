@@ -1,8 +1,20 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
 
-public record dvt(anp a, hu b, dyx c) {
-   public static dvt a(akn $$0) {
-      MinecraftServer $$1 = $$0.n();
-      return new dvt($$1.aX(), $$1.aU(), $$1.aS());
+public enum dvt implements asp {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<dvt> e = asp.a(dvt::values);
+   private final String f;
+
+   private dvt(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

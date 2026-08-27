@@ -1,75 +1,74 @@
-public class cfu extends cfy {
-   private final ceu a;
-   private final cbp b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cfu(cbp $$0, ceu $$1, bgm $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+public class cfu extends bhf {
+   @Nullable
+   private ddp c;
+
+   public cfu() {
+      super(27);
+   }
+
+   public void a(ddp $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(ddp $$0) {
+      return this.c == $$0;
    }
 
    @Override
-   public boolean a(cja $$0) {
-      return false;
-   }
-
-   @Override
-   public cja a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
+   public void a(rd $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, cjf.b);
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cja $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(cja $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dK(), this.b, this.c);
-      }
-
-      if (this.d instanceof cfs $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cbp $$0, cja $$1) {
-      this.b_($$1);
-      hp<cja> $$2 = $$0.dK().q().c(cmi.a, this.a, $$0.dK());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         cja $$4 = this.a.a($$3);
-         cja $$5 = $$2.get($$3);
-         if (!$$4.b()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
-         }
-
-         if (!$$5.b()) {
-            if ($$4.b()) {
-               this.a.a($$3, $$5);
-            } else if (cja.c($$4, $$5)) {
-               $$5.g($$4.L());
-               this.a.a($$3, $$5);
-            } else if (!this.b.fQ().e($$5)) {
-               this.b.a($$5, false);
-            }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         qx $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, cjf.a($$3));
          }
       }
+   }
+
+   @Override
+   public rd g() {
+      rd $$0 = new rd();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cjf $$2 = this.a($$1);
+         if (!$$2.b()) {
+            qx $$3 = new qx();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cbu $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cbu $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cbu $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

@@ -1,45 +1,34 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import java.util.Date;
+import javax.annotation.Nullable;
 
-public class aof {
-   private int a;
-   private int b;
-
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+public class aof extends aoc<String> {
+   public aof(String $$0) {
+      this($$0, null, null, null, null);
    }
 
-   public boolean a(int $$0, List<ako> $$1) {
-      int $$2 = (int)$$1.stream().filter(cbp::fT).count();
-      return $$2 >= this.b($$0);
+   public aof(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public int b(int $$0) {
-      return Math.max(1, ars.f((float)(this.a * $$0) / 100.0F));
+   @Override
+   public tl e() {
+      return tl.b(String.valueOf(this.g()));
    }
 
-   public void a() {
-      this.b = 0;
+   public aof(JsonObject $$0) {
+      super(b($$0), $$0);
    }
 
-   public int b() {
-      return this.b;
+   private static String b(JsonObject $$0) {
+      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
    }
 
-   public boolean a(List<ako> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (ako $$3 : $$0) {
-         if (!$$3.G_()) {
-            this.a++;
-            if ($$3.fB()) {
-               this.b++;
-            }
-         }
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("ip", this.g());
+         super.a($$0);
       }
-
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

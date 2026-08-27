@@ -1,125 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public abstract class ali implements vk {
-   private static final Logger d = LogUtils.getLogger();
-   public static final int a = 15000;
-   private static final ti e = ti.c("disconnect.timeout");
-   protected final MinecraftServer b;
-   protected final sj c;
-   private long f;
-   private boolean g;
-   private long h;
-   private int i;
-   private volatile boolean j = false;
+public record ali(String b, to c) {
+   public static final ali a = a("");
 
-   public ali(MinecraftServer $$0, sj $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.f = ac.b();
-      this.i = $$2;
+   public static ali a(String $$0) {
+      return new ali($$0, to.c);
    }
 
-   @Override
-   public void a(ti $$0) {
-      if (this.i()) {
-         d.info("Stopping singleplayer server as player logged out");
-         this.b.a(false);
-      }
+   public static ali b(String $$0) {
+      return new ali($$0, to.b);
    }
 
-   @Override
-   public void a(vm $$0) {
-      if (this.g && $$0.a() == this.h) {
-         int $$1 = (int)(ac.b() - this.f);
-         this.i = (this.i * 3 + $$1) / 4;
-         this.g = false;
-      } else if (!this.i()) {
-         this.b(e);
-      }
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
-   public void a(vn $$0) {
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
    }
 
-   @Override
-   public void a(vl $$0) {
+   public boolean c() {
+      return !this.c.a();
    }
 
-   @Override
-   public void a(vo $$0) {
-      vc.a($$0, this, this.b);
-      if ($$0.a() == vo.a.b && this.b.T()) {
-         d.info("Disconnecting {} due to resource pack rejection", this.j().getName());
-         this.b(ti.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
+   public String d() {
+      return this.b;
    }
 
-   protected void f() {
-      this.b.aM().a("keepAlive");
-      long $$0 = ac.b();
-      if ($$0 - this.f >= 15000L) {
-         if (this.g) {
-            this.b(e);
-         } else {
-            this.g = true;
-            this.f = $$0;
-            this.h = $$0;
-            this.b(new vg(this.h));
-         }
-      }
-
-      this.b.aM().c();
-   }
-
-   public void g() {
-      this.j = true;
-   }
-
-   public void h() {
-      this.j = false;
-      this.c.c();
-   }
-
-   public void b(va<?> $$0) {
-      this.a($$0, null);
-   }
-
-   public void a(va<?> $$0, @Nullable ss $$1) {
-      boolean $$2 = !this.j || !this.b.bl();
-
-      try {
-         this.c.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new y($$4);
-      }
-   }
-
-   public void b(ti $$0) {
-      this.c.a(new vf($$0), ss.a(() -> this.c.a($$0)));
-      this.c.o();
-      this.b.h(this.c::p);
-   }
-
-   protected boolean i() {
-      return this.b.a(this.j());
-   }
-
-   protected abstract GameProfile j();
-
-   @ast
-   public GameProfile k() {
-      return this.j();
-   }
-
-   public int l() {
-      return this.i;
+   public to e() {
+      return this.c;
    }
 }

@@ -1,28 +1,60 @@
-public class fth extends ftb<byh> {
-   private final fot a;
+@FunctionalInterface
+public interface fth<T extends biq> {
+   ftg<T> create(fth.a var1);
 
-   public fth(ftc.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
-   }
+   public static class a {
+      private final ftf a;
+      private final fuf b;
+      private final foy c;
+      private final foa d;
+      private final anu e;
+      private final fhy f;
+      private final esd g;
 
-   public void a(byh $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
-      dfe $$6 = $$0.o();
-      if ($$6.l() == cyv.c) {
-         cpq $$7 = $$0.dK();
-         if ($$6 != $$7.a_($$0.dk()) && $$6.l() != cyv.a) {
-            $$3.a();
-            gw $$8 = gw.a($$0.dp(), $$0.cG().e, $$0.dv());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fnu.b($$6)), false, arx.a(), $$6.a($$0.j()), fyq.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+      public a(ftf $$0, fuf $$1, foy $$2, foa $$3, anu $$4, fhy $$5, esd $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public aeu a(byh $$0) {
-      return fyy.e;
+      public ftf a() {
+         return this.a;
+      }
+
+      public fuf b() {
+         return this.b;
+      }
+
+      public foy c() {
+         return this.c;
+      }
+
+      public foa d() {
+         return this.d;
+      }
+
+      public anu e() {
+         return this.e;
+      }
+
+      public fhy f() {
+         return this.f;
+      }
+
+      public gbl g() {
+         return this.c.a().a();
+      }
+
+      public fic a(fia $$0) {
+         return this.f.a($$0);
+      }
+
+      public esd h() {
+         return this.g;
+      }
    }
 }

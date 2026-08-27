@@ -1,11 +1,11 @@
-public class fvm extends fui<bwe, fhc<bwe>> {
-   private static final aeu a = new aeu("textures/entity/tadpole/tadpole.png");
+public class fvm extends fsi<ccr> {
+   public static final aex a = new aex("textures/entity/projectiles/spectral_arrow.png");
 
-   public fvm(ftc.a $$0) {
-      super($$0, new fhc<>($$0.a(fhw.bz)), 0.14F);
+   public fvm(fth.a $$0) {
+      super($$0);
    }
 
-   public aeu a(bwe $$0) {
+   public aex a(ccr $$0) {
       return a;
    }
 }

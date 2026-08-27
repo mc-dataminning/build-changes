@@ -1,54 +1,21 @@
-import java.util.List;
-
 public class op {
-   public static void a(np<dne<?, ?>> $$0) {
-      om.a($$0);
-      on.a($$0);
-      oo.a($$0);
-      oq.a($$0);
-      or.a($$0);
-      os.a($$0);
-      ot.a($$0);
-      ou.a($$0);
-      ov.a($$0);
-   }
+   public static final aew<dnj<?, ?>> a = os.a("seagrass_short");
+   public static final aew<dnj<?, ?>> b = os.a("seagrass_slightly_less_short");
+   public static final aew<dnj<?, ?>> c = os.a("seagrass_mid");
+   public static final aew<dnj<?, ?>> d = os.a("seagrass_tall");
+   public static final aew<dnj<?, ?>> e = os.a("sea_pickle");
+   public static final aew<dnj<?, ?>> f = os.a("seagrass_simple");
+   public static final aew<dnj<?, ?>> g = os.a("kelp");
+   public static final aew<dnj<?, ?>> h = os.a("warm_ocean_vegetation");
 
-   private static dlu a(List<csq> $$0) {
-      dlu $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = dlu.a(dlu.c, dlu.a(hc.a.q(), $$0));
-      } else {
-         $$1 = dlu.c;
-      }
-
-      return $$1;
-   }
-
-   public static dqi a(int $$0, hg<duh> $$1) {
-      return new dqi($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends dpv, F extends dnr<FC>> dqi a(F $$0, FC $$1, List<csq> $$2, int $$3) {
-      return a($$3, pe.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends dpv, F extends dnr<FC>> dqi a(F $$0, FC $$1, List<csq> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends dpv, F extends dnr<FC>> dqi a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static aet<dne<?, ?>> a(String $$0) {
-      return aet.a(je.as, new aeu($$0));
-   }
-
-   public static void a(np<dne<?, ?>> $$0, aet<dne<?, ?>> $$1, dnr<dqc> $$2) {
-      a($$0, $$1, $$2, dpv.m);
-   }
-
-   public static <FC extends dpv, F extends dnr<FC>> void a(np<dne<?, ?>> $$0, aet<dne<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new dne($$2, $$3));
+   public static void a(ns<dnj<?, ?>> $$0) {
+      os.a($$0, a, dnw.M, new dqk(0.3F));
+      os.a($$0, b, dnw.M, new dqk(0.4F));
+      os.a($$0, c, dnw.M, new dqk(0.6F));
+      os.a($$0, d, dnw.M, new dqk(0.8F));
+      os.a($$0, e, dnw.R, new dpv(20));
+      os.a($$0, f, dnw.S, new dqs(dsb.a(csw.bw)));
+      os.a($$0, g, dnw.N);
+      os.a($$0, h, dnw.ag, new dqt(hk.a(ph.a(dnw.O, dqa.m), ph.a(dnw.Q, dqa.m), ph.a(dnw.P, dqa.m))));
    }
 }

@@ -1,24 +1,11 @@
-public class vn implements va<vk> {
-   private final int a;
+public interface vn extends abe {
+   void a(vq var1);
 
-   public vn(int $$0) {
-      this.a = $$0;
-   }
+   void a(vr var1);
 
-   public vn(sl $$0) {
-      this.a = $$0.readInt();
-   }
+   void a(vp var1);
 
-   @Override
-   public void a(sl $$0) {
-      $$0.p(this.a);
-   }
+   void a(vs var1);
 
-   public void a(vk $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
+   void a(vo var1);
 }

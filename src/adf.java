@@ -1,42 +1,16 @@
-import java.security.PublicKey;
-
-public class adf implements va<adc> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public adf(String $$0, byte[] $$1, byte[] $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public adf(sl $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
-   }
-
+public interface adf extends sj {
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   default sn b() {
+      return sn.d;
    }
 
-   public void a(adc $$0) {
-      $$0.a(this);
-   }
+   void a(adi var1);
 
-   public String a() {
-      return this.a;
-   }
+   void a(adh var1);
 
-   public PublicKey d() throws aqt {
-      return aqs.a(this.b);
-   }
+   void a(adk var1);
 
-   public byte[] e() {
-      return this.c;
-   }
+   void a(adj var1);
+
+   void a(adg var1);
 }

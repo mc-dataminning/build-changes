@@ -1,8 +1,8 @@
-public interface ada extends aba {
-   @Override
-   default sk b() {
-      return sk.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(acz var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ada {
 }

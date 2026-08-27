@@ -1,22 +1,41 @@
-public class cuj extends csq {
-   public cuj(dfd.d $$0) {
-      super($$0);
+public class cuj extends csg {
+   private final csv d;
+   protected static final float a = 6.0F;
+   protected static final eig b = csv.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+
+   protected cuj(csv $$0, dfi.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
-      if ($$3.a(5) == 0) {
-         hc $$4 = hc.b($$3);
-         if ($$4 != hc.b) {
-            gw $$5 = $$2.a($$4);
-            dfe $$6 = $$1.a_($$5);
-            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(ix.ay, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
+   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      this.a($$0, (cpw)$$1, $$2);
+   }
+
+   @Override
+   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.d.n().a(c, Boolean.valueOf(false)), 2);
       }
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == hc.a && !$$0.a($$3, $$4)) {
+         return csw.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(c)) {
+            $$3.a($$4, ean.c, ean.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return b;
    }
 }

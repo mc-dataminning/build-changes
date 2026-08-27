@@ -1,43 +1,39 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class etv implements ewe {
-   private static final int a = 170;
-   private final ti b;
+public class etv extends eso {
    @Nullable
-   private List<arf> c;
-   @Nullable
-   private final ti d;
+   protected euc a;
+   protected boolean b;
 
-   private etv(ti $$0, @Nullable ti $$1) {
+   public etv(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, tk.a);
+      this.b = $$4;
+   }
+
+   public void a(euc $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
-      this.d = $$1;
    }
 
-   public static etv a(ti $$0, @Nullable ti $$1) {
-      return new etv($$0, $$1);
-   }
-
-   public static etv a(ti $$0) {
-      return new etv($$0, $$0);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(ewd $$0) {
-      if (this.d != null) {
-         $$0.a(ewc.c, this.d);
-      }
+   public void a(ewi $$0) {
+      this.c($$0);
    }
 
-   public List<arf> a(eqq $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.o()), this.r(), this.t(), this.f, this.g);
+         RenderSystem.enableDepthTest();
       }
-
-      return this.c;
-   }
-
-   public static List<arf> a(eqq $$0, ti $$1) {
-      return $$0.h.c($$1, 170);
    }
 }

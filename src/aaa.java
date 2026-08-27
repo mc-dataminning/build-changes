@@ -1,58 +1,56 @@
-public class aaa implements va<ws> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final ti e;
-   private final eik.a f;
-   private final int g;
+public class aaa implements vd<ww> {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public aaa(eie $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.f();
-      this.g = $$1;
+   public aaa(biq $$0) {
+      this($$0.ai(), $$0.do());
    }
 
-   public aaa(sl $$0) {
-      this.d = $$0.r();
-      this.g = $$0.readByte();
-      if (this.g != 0 && this.g != 2) {
-         this.e = th.a;
-         this.f = eik.a.a;
-      } else {
-         this.e = $$0.l();
-         this.f = $$0.b(eik.a.class);
-      }
+   public aaa(int $$0, ehn $$1) {
+      this.a = $$0;
+      double $$2 = 3.9;
+      double $$3 = arx.a($$1.c, -3.9, 3.9);
+      double $$4 = arx.a($$1.d, -3.9, 3.9);
+      double $$5 = arx.a($$1.e, -3.9, 3.9);
+      this.b = (int)($$3 * 8000.0);
+      this.c = (int)($$4 * 8000.0);
+      this.d = (int)($$5 * 8000.0);
+   }
+
+   public aaa(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.d);
-      $$0.k(this.g);
-      if (this.g == 0 || this.g == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-      }
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   public int a() {
+      return this.a;
    }
 
-   public ti d() {
-      return this.e;
+   public int d() {
+      return this.b;
    }
 
    public int e() {
-      return this.g;
+      return this.c;
    }
 
-   public eik.a f() {
-      return this.f;
+   public int f() {
+      return this.d;
    }
 }

@@ -1,27 +1,48 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bqh extends bqt {
-   private static final int i = 10;
-   private static final int j = 7;
+public class bqh extends bqb {
+   private final bji a;
+   private bjg b;
+   private final float c;
 
-   public bqh(bjk $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public bqh(bji $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      akn $$0 = (akn)this.b.dK();
-      gw $$1 = this.b.dk();
-      return $$0.b($$1) ? false : super.a();
+      if (this.a.cP()) {
+         return false;
+      } else {
+         this.b = this.a.q();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aB() ? false : this.a.ef().a(b(5)) == 0;
+            }
+         }
+      }
    }
 
-   @Nullable
    @Override
-   protected ehi h() {
-      akn $$0 = (akn)this.b.dK();
-      gw $$1 = this.b.dk();
-      hz $$2 = hz.a($$1);
-      hz $$3 = bku.a($$0, $$2, 2);
-      return $$3 != $$2 ? btr.a(this.b, 10, 7, ehi.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean b() {
+      return !this.a.aB();
+   }
+
+   @Override
+   public void c() {
+      ehn $$0 = this.a.do();
+      ehn $$1 = new ehn(this.b.dq() - this.a.dq(), 0.0, this.b.dw() - this.a.dw());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      }
+
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

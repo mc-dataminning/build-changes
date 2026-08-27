@@ -1,33 +1,26 @@
-public class fvq extends fuh<cds> {
-   private final fot f;
+public class fvq extends fun<bzv, fhg<bzv>> {
+   private static final aex a = new aex("textures/entity/strider/strider.png");
+   private static final aex i = new aex("textures/entity/strider/strider_cold.png");
 
-   public fvq(ftc.a $$0) {
-      super($$0, fhw.bA);
-      this.f = $$0.c();
+   public fvq(fth.a $$0) {
+      super($$0, new fhg<>($$0.a(fib.bx)), 0.5F);
+      this.a(new fxq<>(this, new fhg<>($$0.a(fib.by)), new aex("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(cds $$0, float $$1, dfe $$2, elk $$3, fnz $$4, int $$5) {
-      int $$6 = $$0.B();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ars.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public aex a(bzv $$0) {
+      return $$0.s() ? i : a;
    }
 
-   public static void a(fot $$0, dfe $$1, elk $$2, fnz $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = fyq.a(fyq.a(1.0F), 10);
+   protected void a(bzv $$0, elp $$1, float $$2) {
+      if ($$0.m_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
       } else {
-         $$6 = fyq.d;
+         this.d = 0.5F;
       }
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean b(bzv $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

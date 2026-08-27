@@ -1,37 +1,35 @@
-public class bgu<T> {
-   private final bgt a;
-   private final T b;
-
-   public bgu(bgt $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bgu {
+   public static void a(cpv $$0, gw $$1, bgr $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public bgt a() {
-      return this.a;
+   public static void a(cpv $$0, biq $$1, bgr $$2) {
+      a($$0, $$1.dq(), $$1.ds(), $$1.dw(), $$2);
    }
 
-   public T b() {
-      return this.b;
+   private static void a(cpv $$0, double $$1, double $$2, double $$3, bgr $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      }
    }
 
-   public static <T> bgu<T> a(T $$0) {
-      return new bgu<>(bgt.a, $$0);
+   public static void a(cpv $$0, gw $$1, hp<cjf> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static <T> bgu<T> b(T $$0) {
-      return new bgu<>(bgt.b, $$0);
-   }
+   public static void a(cpv $$0, double $$1, double $$2, double $$3, cjf $$4) {
+      double $$5 = (double)biu.ad.k();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
 
-   public static <T> bgu<T> c(T $$0) {
-      return new bgu<>(bgt.d, $$0);
-   }
-
-   public static <T> bgu<T> d(T $$0) {
-      return new bgu<>(bgt.e, $$0);
-   }
-
-   public static <T> bgu<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+      while (!$$4.b()) {
+         byn $$11 = new byn($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 }

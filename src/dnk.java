@@ -1,99 +1,57 @@
 import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class dnk extends dnr<dqc> {
-   private static final dfn a = dfn.a(csr.I);
-   private final dfe b = csr.I.n();
-   private final dfe c = csr.jF.n();
-   private final dfe d = csr.aV.n();
-   private final dfe an = csr.G.n();
-
-   public dnk(Codec<dqc> $$0) {
+public class dnk extends dnl {
+   public dnk(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dqc> $$0) {
-      cqk $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.t($$2) && $$2.v() > $$1.C_() + 2) {
-         $$2 = $$2.d();
-      }
-
-      if (!a.a($$1.a_($$2))) {
+   protected boolean a(cpw $$0, asc $$1, gw $$2, dfj $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
-                  return false;
+         hc $$4 = hc.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<hc> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+
+         for (hc $$8 : $$6.subList(0, $$5)) {
+            gw.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            hc $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(hc.b);
+               hc[] $$13 = new hc[]{$$8, hc.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(hc.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(hc.b);
                }
             }
          }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (hc $$8 : hc.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         gw $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (hc $$10 : hc.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<gw> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         arx $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
-   }
-
-   private static void b(cqk $$0, gw $$1) {
-      $$0.a($$1, csr.J.n(), 3);
-      $$0.a($$1, dcs.N).ifPresent($$1x -> $$1x.a(ecj.aC, $$1.a()));
    }
 }

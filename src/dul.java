@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dul<P extends duk> {
-   dul<dtw> a = a("block_predicate_filter", dtw.a);
-   dul<dun> b = a("rarity_filter", dun.a);
-   dul<dup> c = a("surface_relative_threshold_filter", dup.a);
-   dul<duq> d = a("surface_water_depth_filter", duq.a);
-   dul<dtv> e = a("biome", dtv.a);
-   dul<dua> f = a("count", dua.a);
-   dul<duf> g = a("noise_based_count", duf.a);
-   dul<dug> h = a("noise_threshold_count", dug.a);
-   dul<dtz> i = a("count_on_every_layer", dtz.a);
-   dul<dub> j = a("environment_scan", dub.a);
-   dul<dud> k = a("heightmap", dud.a);
-   dul<duc> l = a("height_range", duc.a);
-   dul<due> m = a("in_square", due.a);
-   dul<dum> n = a("random_offset", dum.a);
-   dul<dtx> o = a("carving_mask", dtx.a);
+public class dul extends dut {
+   public static final Codec<dul> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dul::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   Codec<P> codec();
+   private dul(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends duk> dul<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.V, $$0, () -> $$1);
+   public static dul a(double $$0, int $$1, int $$2) {
+      return new dul($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(asc $$0, gw $$1) {
+      double $$2 = cqt.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public duq<?> b() {
+      return duq.h;
    }
 }

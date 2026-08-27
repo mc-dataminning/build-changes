@@ -1,34 +1,34 @@
 public interface ds {
    ds a = new ds() {
       @Override
-      public void a(ti $$0) {
+      public void a(tl $$0) {
       }
 
       @Override
-      public boolean f_() {
+      public boolean j_() {
          return false;
       }
 
       @Override
-      public boolean q_() {
+      public boolean v_() {
          return false;
       }
 
       @Override
-      public boolean N_() {
+      public boolean T_() {
          return false;
       }
    };
 
-   void a(ti var1);
+   void a(tl var1);
 
-   boolean f_();
+   boolean j_();
 
-   boolean q_();
+   boolean v_();
 
-   boolean N_();
+   boolean T_();
 
-   default boolean g_() {
+   default boolean k_() {
       return false;
    }
 }

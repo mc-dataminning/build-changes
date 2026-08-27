@@ -1,50 +1,60 @@
 import javax.annotation.Nullable;
 
 public class geh {
-   private final geo a;
-   private final equ b;
+   private boolean a;
    @Nullable
-   private euu c;
+   private geb.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public geh(geo $$0, equ $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public geh(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   private void a() {
+   public void a(gec.a $$0) {
       if (this.c != null) {
-         this.a.a(this.c);
+         $$0.a(geb.j, !this.c.equals("vanilla"));
       }
 
-      ti $$0 = ti.c("tutorial.bundleInsert.title");
-      ti $$1 = ti.c("tutorial.bundleInsert.description");
-      this.c = new euu(euu.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
+      $$0.a(geb.k, this.a());
    }
 
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.ar();
+   private geb.c a() {
+      fjh $$0 = eqv.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return geb.c.a;
+      } else {
+         return eqv.O().S() ? geb.c.b : geb.c.c;
       }
    }
 
-   public void a(cja $$0, cja $$1, ceo $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cjd.qg)) {
-            if ($$2 == ceo.a) {
-               this.a();
-            } else if ($$2 == ceo.b) {
-               this.b();
+   public boolean a(gdy $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gdz.b, $$0x -> {
+            $$0x.a(geb.n, this.b);
+            if (this.d != null) {
+               $$0x.a(geb.o, this.d);
             }
-         } else if ($$0.a(cjd.qg) && !$$1.b() && $$2 == ceo.b) {
-            this.b();
-         }
+         });
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   public void a(cps $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? geb.b.e : geb.b.a;
+         case b -> geb.b.b;
+         case c -> geb.b.c;
+         case d -> geb.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

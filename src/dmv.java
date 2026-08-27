@@ -1,59 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dmv extends dnr<dqf> {
-   private static final dfe a = csr.mZ.n().a(crv.g, Integer.valueOf(1)).a(crv.h, dfq.a).a(crv.i, Integer.valueOf(0));
-   private static final dfe b = a.a(crv.h, dfq.c).a(crv.i, Integer.valueOf(1));
-   private static final dfe c = a.a(crv.h, dfq.c);
-   private static final dfe d = a.a(crv.h, dfq.b);
+public record dmv<WC extends dmq>(dmx<WC> d, WC e) {
+   public static final Codec<dmv<?>> a = jd.Q.q().dispatch($$0 -> $$0.d, dmx::c);
+   public static final Codec<hg<dmv<?>>> b = aet.a(je.ar, a);
+   public static final Codec<hk<dmv<?>>> c = hv.a(je.ar, a);
 
-   public dmv(Codec<dqf> $$0) {
-      super($$0);
+   public boolean a(asc $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dnt<dqf> $$0) {
-      int $$1 = 0;
-      gw $$2 = $$0.e();
-      cqk $$3 = $$0.b();
-      arx $$4 = $$0.d();
-      dqf $$5 = $$0.f();
-      gw.a $$6 = $$2.j();
-      gw.a $$7 = $$2.j();
-      if ($$3.t($$6)) {
-         if (csr.mZ.n().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean a(dms $$0, dhf $$1, Function<gw, hg<cqt>> $$2, asc $$3, dke $$4, cpc $$5, dhe $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dkn.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, csr.l.n(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public dmx<WC> a() {
+      return this.d;
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(hc.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(hc.a, 1), c, 2);
-               $$3.a($$6.c(hc.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public WC b() {
+      return this.e;
    }
 }

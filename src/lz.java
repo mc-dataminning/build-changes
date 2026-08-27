@@ -1,91 +1,154 @@
 import com.google.gson.JsonObject;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class lz {
-   private final cmb a;
-   private final cmb b;
-   private final cmb c;
-   private final ls d;
-   private final civ e;
-   private final Map<String, am<?>> f = new LinkedHashMap<>();
-   private final cmh<?> g;
+public class lz implements lt {
+   private final lu b;
+   private final clx c;
+   private final cja d;
+   private final cmg e;
+   private final float f;
+   private final int g;
+   private final Map<String, am<?>> h = new LinkedHashMap<>();
+   @Nullable
+   private String i;
+   private final cmm<? extends clr> j;
 
-   public lz(cmh<?> $$0, cmb $$1, cmb $$2, cmb $$3, ls $$4, civ $$5) {
-      this.d = $$4;
-      this.g = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$5;
+   private lz(lu $$0, clx $$1, cpu $$2, cmg $$3, float $$4, int $$5, cmm<? extends clr> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.k();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.j = $$6;
    }
 
-   public static lz a(cmb $$0, cmb $$1, cmb $$2, ls $$3, civ $$4) {
-      return new lz(cmh.u, $$0, $$1, $$2, $$3, $$4);
+   public static lz a(cmg $$0, lu $$1, cpu $$2, float $$3, int $$4, cmm<? extends clr> $$5) {
+      return new lz($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$5);
    }
 
-   public lz a(String $$0, am<?> $$1) {
-      this.f.put($$0, $$1);
+   public static lz a(cmg $$0, lu $$1, cpu $$2, float $$3, int $$4) {
+      return new lz($$1, clx.a, $$2, $$0, $$3, $$4, cmm.s);
+   }
+
+   public static lz b(cmg $$0, lu $$1, cpu $$2, float $$3, int $$4) {
+      return new lz($$1, c($$2), $$2, $$0, $$3, $$4, cmm.q);
+   }
+
+   public static lz c(cmg $$0, lu $$1, cpu $$2, float $$3, int $$4) {
+      return new lz($$1, b($$2), $$2, $$0, $$3, $$4, cmm.p);
+   }
+
+   public static lz d(cmg $$0, lu $$1, cpu $$2, float $$3, int $$4) {
+      return new lz($$1, clx.a, $$2, $$0, $$3, $$4, cmm.r);
+   }
+
+   public lz b(String $$0, am<?> $$1) {
+      this.h.put($$0, $$1);
       return this;
    }
 
-   public void a(lt $$0, String $$1) {
-      this.a($$0, new aeu($$1));
+   public lz b(@Nullable String $$0) {
+      this.i = $$0;
+      return this;
    }
 
-   public void a(lt $$0, aeu $$1) {
+   @Override
+   public cja a() {
+      return this.d;
+   }
+
+   @Override
+   public void a(lv $$0, aex $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.f.forEach($$2::a);
-      $$0.a(new lz.a($$1, this.g, this.a, this.b, this.c, this.e, $$2.b($$1.d("recipes/" + this.d.a() + "/"))));
+      this.h.forEach($$2::a);
+      $$0.a(new lz.a($$1, this.i == null ? "" : this.i, this.c, this.e, this.d, this.f, this.g, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.j));
    }
 
-   private void a(aeu $$0) {
-      if (this.f.isEmpty()) {
+   private static clx b(cpu $$0) {
+      if ($$0.k().u()) {
+         return clx.a;
+      } else {
+         return $$0.k() instanceof cgy ? clx.b : clx.c;
+      }
+   }
+
+   private static clx c(cpu $$0) {
+      return $$0.k() instanceof cgy ? clx.b : clx.c;
+   }
+
+   private static clx a(cmm<? extends clr> $$0, cpu $$1) {
+      if ($$0 == cmm.p) {
+         return b($$1);
+      } else if ($$0 == cmm.q) {
+         return c($$1);
+      } else if ($$0 != cmm.r && $$0 != cmm.s) {
+         throw new IllegalStateException("Unknown cooking recipe type");
+      } else {
+         return clx.a;
+      }
+   }
+
+   private void a(aex $$0) {
+      if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(aeu a, cmh<?> b, cmb c, cmb d, cmb e, civ f, af g) implements lq {
+   static record a(aex a, String b, clx c, cmg d, cja e, float f, int g, af h, cmm<? extends clr> i) implements ls {
       @Override
       public void a(JsonObject $$0) {
-         $$0.add("template", this.c.a(true));
-         $$0.add("base", this.d.a(true));
-         $$0.add("addition", this.e.a(true));
-         JsonObject $$1 = new JsonObject();
-         $$1.addProperty("item", jd.i.b(this.f).toString());
-         $$0.add("result", $$1);
+         if (!this.b.isEmpty()) {
+            $$0.addProperty("group", this.b);
+         }
+
+         $$0.addProperty("category", this.c.c());
+         $$0.add("ingredient", this.d.a(false));
+         $$0.addProperty("result", jd.i.b(this.e).toString());
+         $$0.addProperty("experience", this.f);
+         $$0.addProperty("cookingtime", this.g);
       }
 
       @Override
-      public aeu b() {
+      public aex b() {
          return this.a;
       }
 
-      @Override
-      public cmh<?> c() {
+      public String e() {
          return this.b;
       }
 
-      public cmb e() {
+      public clx f() {
          return this.c;
       }
 
-      public cmb f() {
+      public cmg g() {
          return this.d;
       }
 
-      public cmb g() {
+      public cja h() {
          return this.e;
       }
 
-      public civ h() {
+      public float i() {
          return this.f;
+      }
+
+      public int j() {
+         return this.g;
       }
 
       @Override
       public af d() {
-         return this.g;
+         return this.h;
+      }
+
+      @Override
+      public cmm<? extends clr> c() {
+         return this.i;
       }
    }
 }

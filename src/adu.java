@@ -1,8 +1,8 @@
-public interface adu extends sf, sg {
-   @Override
-   default sk b() {
-      return sk.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(adw var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface adu {
 }

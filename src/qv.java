@@ -2,33 +2,32 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class qv extends rh {
-   private static final int c = 16;
-   public static final qv a = new qv(0.0);
-   public static final rp<qv> b = new rp.a<qv>() {
-      public qv a(DataInput $$0, int $$1, rd $$2) throws IOException {
-         $$2.a(16L);
-         return qv.a($$0.readDouble());
+public class qv extends rk {
+   private static final int w = 9;
+   public static final rs<qv> a = new rs.a<qv>() {
+      public qv a(DataInput $$0, int $$1, rg $$2) throws IOException {
+         $$2.a(9L);
+         return qv.a($$0.readByte());
       }
 
       @Override
-      public rk.b a(DataInput $$0, rk $$1) throws IOException {
-         return $$1.a($$0.readDouble());
+      public rn.b a(DataInput $$0, rn $$1) throws IOException {
+         return $$1.a($$0.readByte());
       }
 
       @Override
       public int c() {
-         return 8;
+         return 1;
       }
 
       @Override
       public String a() {
-         return "DOUBLE";
+         return "BYTE";
       }
 
       @Override
       public String b() {
-         return "TAG_Double";
+         return "TAG_Byte";
       }
 
       @Override
@@ -36,34 +35,40 @@ public class qv extends rh {
          return true;
       }
    };
-   private final double w;
+   public static final qv b = a((byte)0);
+   public static final qv c = a((byte)1);
+   private final byte x;
 
-   private qv(double $$0) {
-      this.w = $$0;
+   qv(byte $$0) {
+      this.x = $$0;
    }
 
-   public static qv a(double $$0) {
-      return $$0 == 0.0 ? a : new qv($$0);
+   public static qv a(byte $$0) {
+      return qv.a.a[128 + $$0];
+   }
+
+   public static qv a(boolean $$0) {
+      return $$0 ? c : b;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+      $$0.writeByte(this.x);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 9;
    }
 
    @Override
    public byte b() {
-      return 6;
+      return 1;
    }
 
    @Override
-   public rp<qv> c() {
-      return b;
+   public rs<qv> c() {
+      return a;
    }
 
    public qv e() {
@@ -72,57 +77,69 @@ public class qv extends rh {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof qv && this.w == ((qv)$$0).w;
+      return this == $$0 ? true : $$0 instanceof qv && this.x == ((qv)$$0).x;
    }
 
    @Override
    public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+      return this.x;
    }
 
    @Override
-   public void a(rr $$0) {
+   public void a(ru $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)Math.floor(this.w);
+      return (long)this.x;
    }
 
    @Override
    public int g() {
-      return ars.a(this.w);
+      return this.x;
    }
 
    @Override
    public short h() {
-      return (short)(ars.a(this.w) & 65535);
+      return (short)this.x;
    }
 
    @Override
    public byte i() {
-      return (byte)(ars.a(this.w) & 0xFF);
+      return this.x;
    }
 
    @Override
    public double j() {
-      return this.w;
+      return (double)this.x;
    }
 
    @Override
    public float k() {
-      return (float)this.w;
+      return (float)this.x;
    }
 
    @Override
    public Number l() {
-      return this.w;
+      return this.x;
    }
 
    @Override
-   public rk.b a(rk $$0) {
-      return $$0.a(this.w);
+   public rn.b a(rn $$0) {
+      return $$0.a(this.x);
+   }
+
+   static class a {
+      static final qv[] a = new qv[256];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new qv((byte)($$0 - 128));
+         }
+      }
    }
 }

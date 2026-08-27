@@ -1,22 +1,15 @@
-public abstract class clw implements clu {
-   private final clt a;
-
-   public clw(clt $$0) {
-      this.a = $$0;
+public class clw extends clr {
+   public clw(String $$0, clx $$1, cmg $$2, cjf $$3, float $$4, int $$5) {
+      super(cmn.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean ah_() {
-      return true;
+   public cjf g() {
+      return new cjf(csw.og);
    }
 
    @Override
-   public cja a(hu $$0) {
-      return cja.b;
-   }
-
-   @Override
-   public clt d() {
-      return this.a;
+   public cmm<?> an_() {
+      return cmm.s;
    }
 }

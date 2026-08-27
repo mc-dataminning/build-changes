@@ -1,85 +1,62 @@
-public class bpm extends bqa {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final buu b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
 
-   public bpm(buu $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class bpm extends bqb {
+   private final bjp a;
+
+   public bpm(bjp $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.b.ee().a(this.c) != 0) {
-         return false;
-      } else {
-         hc $$0 = this.b.cE();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         gw $$3 = this.b.dk();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(gw $$0, int $$1, int $$2, int $$3) {
-      gw $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dK().b_($$4).a(apt.a) && !this.b.dK().a_($$4).d();
-   }
-
-   private boolean b(gw $$0, int $$1, int $$2, int $$3) {
-      return this.b.dK().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dK().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
+      return this.a.ci() < 140;
    }
 
    @Override
    public boolean b() {
-      double $$0 = this.b.dn().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dC() == 0.0F || !(Math.abs(this.b.dC()) < 10.0F) || !this.b.aX()) && !this.b.aA();
+      return this.a();
    }
 
    @Override
-   public boolean J_() {
+   public boolean P_() {
       return false;
    }
 
    @Override
    public void c() {
-      hc $$0 = this.b.cE();
-      this.b.f(this.b.dn().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.H().n();
+      this.h();
    }
 
-   @Override
-   public void d() {
-      this.b.s(0.0F);
+   private void h() {
+      Iterable<gw> $$0 = gw.b(
+         arx.a(this.a.dq() - 1.0), this.a.dr(), arx.a(this.a.dw() - 1.0), arx.a(this.a.dq() + 1.0), arx.a(this.a.ds() + 8.0), arx.a(this.a.dw() + 1.0)
+      );
+      gw $$1 = null;
+
+      for (gw $$2 : $$0) {
+         if (this.a(this.a.dL(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = gw.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
+      }
+
+      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         eah $$1 = this.b.dK().b_(this.b.dk());
-         this.d = $$1.a(apt.a);
-      }
+      this.h();
+      this.a.a(0.02F, new ehn((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(bjm.a, this.a.do());
+   }
 
-      if (this.d && !$$0) {
-         this.b.a(aoz.fV, 1.0F, 1.0F);
-      }
-
-      ehi $$2 = this.b.dn();
-      if ($$2.d * $$2.d < 0.03F && this.b.dC() != 0.0F) {
-         this.b.s(ars.j(0.2F, this.b.dC(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+   private boolean a(cpy $$0, gw $$1) {
+      dfj $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(csw.nd)) && $$2.a($$0, $$1, ebc.a);
    }
 }

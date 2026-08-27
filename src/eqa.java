@@ -1,30 +1,67 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum eqa implements aru {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class eqa extends epv {
+   private static final Logger b = LogUtils.getLogger();
+   private static final tl c = tl.c("mco.backup.restoring");
+   private final eml d;
+   private final long e;
+   private final eof f;
 
-   private static final IntFunction<eqa> d = aqn.a(eqa::a, values(), aqn.a.b);
-   private final int e;
-   private final String f;
-
-   private eqa(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eqa(eml $$0, long $$1, eof $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      emf $$0 = emf.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (ent var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (ens var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new eoj(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static eqa a(int $$0) {
-      return d.apply($$0);
+   public tl a() {
+      return c;
    }
 }

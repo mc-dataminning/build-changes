@@ -1,18 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cyf extends dbp {
-   protected cyf(dfd.d $$0) {
-      super(czs.b.c, $$0);
+public class cyf extends dbu {
+   private static final Map<hc, eig> c = Maps.immutableEnumMap(
+      Map.of(
+         hc.c,
+         csv.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
+         hc.d,
+         csv.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
+         hc.f,
+         csv.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
+         hc.e,
+         csv.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
+      )
+   );
+
+   public cyf(dfi.d $$0) {
+      super(czx.b.f, $$0);
    }
 
    @Override
-   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
-      csr.gK.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public List<cja> a(dfe $$0, ecr.a $$1) {
-      return csr.gK.a($$0, $$1);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return c.get($$0.c(b));
    }
 }

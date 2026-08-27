@@ -1,59 +1,58 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+public interface dgy {
+   void a(dha var1, double var2);
 
-public class dgy implements AutoCloseable {
-   private final cpr a;
-   private final Long2ObjectMap<dhm> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dhm c;
-   private long d;
+   void a(dha var1, double var2, double var4, long var6);
 
-   public dgy(cpr $$0) {
-      this.a = $$0;
-   }
+   void a(dha var1, double var2, double var4);
 
-   @Nullable
-   public dhm a(gw $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.ak()) {
-         long $$2 = hz.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dhm)this.b.computeIfAbsent($$2, $$2x -> {
-               dha $$3 = this.a.a(hz.a($$0.u()), hz.a($$0.w()));
-               dhm $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
+   void a(dha var1, int var2);
 
-         return this.c;
-      } else {
-         return null;
+   void b(dha var1, int var2);
+
+   void b(dha var1, double var2);
+
+   void c(dha var1, double var2);
+
+   public static class a implements dgy {
+      private final dha a;
+
+      public a(dha $$0) {
+         this.a = $$0;
       }
-   }
 
-   public dfe b(gw $$0) {
-      dhm $$1 = this.a($$0);
-      if ($$1 == null) {
-         return csr.a.n();
-      } else {
-         int $$2 = hz.b($$0.u());
-         int $$3 = hz.b($$0.v());
-         int $$4 = hz.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
+      @Override
+      public void a(dha $$0, double $$1) {
+         this.a.a($$1);
       }
-   }
 
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+      @Override
+      public void a(dha $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-      while (var1.hasNext()) {
-         dhm $$0 = (dhm)var1.next();
-         $$0.b();
+      @Override
+      public void a(dha $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dha $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dha $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dha $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dha $$0, double $$1) {
+         this.a.b($$1);
       }
    }
 }

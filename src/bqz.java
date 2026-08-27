@@ -1,24 +1,13 @@
-public class bqz extends bpw {
-   private final bjk a;
+import javax.annotation.Nullable;
 
-   public bqz(bjk $$0) {
-      this.a = $$0;
+public class bqz extends bqy {
+   public bqz(bjp $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return this.a.dK().N() && this.a.c(biq.f).b() && bts.a(this.a);
-   }
-
-   @Override
-   public void c() {
-      ((bsj)this.a.H()).d(true);
-   }
-
-   @Override
-   public void d() {
-      if (bts.a(this.a)) {
-         ((bsj)this.a.H()).d(false);
-      }
+   protected ehn h() {
+      return bkz.a(this.b, 10, 7);
    }
 }

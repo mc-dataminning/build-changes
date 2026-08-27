@@ -1,39 +1,42 @@
-public interface dux {
-   aet<dvd> a = a("pillager_outpost");
-   aet<dvd> b = a("mineshaft");
-   aet<dvd> c = a("mineshaft_mesa");
-   aet<dvd> d = a("mansion");
-   aet<dvd> e = a("jungle_pyramid");
-   aet<dvd> f = a("desert_pyramid");
-   aet<dvd> g = a("igloo");
-   aet<dvd> h = a("shipwreck");
-   aet<dvd> i = a("shipwreck_beached");
-   aet<dvd> j = a("swamp_hut");
-   aet<dvd> k = a("stronghold");
-   aet<dvd> l = a("monument");
-   aet<dvd> m = a("ocean_ruin_cold");
-   aet<dvd> n = a("ocean_ruin_warm");
-   aet<dvd> o = a("fortress");
-   aet<dvd> p = a("nether_fossil");
-   aet<dvd> q = a("end_city");
-   aet<dvd> r = a("buried_treasure");
-   aet<dvd> s = a("bastion_remnant");
-   aet<dvd> t = a("village_plains");
-   aet<dvd> u = a("village_desert");
-   aet<dvd> v = a("village_savanna");
-   aet<dvd> w = a("village_snowy");
-   aet<dvd> x = a("village_taiga");
-   aet<dvd> y = a("ruined_portal");
-   aet<dvd> z = a("ruined_portal_desert");
-   aet<dvd> A = a("ruined_portal_jungle");
-   aet<dvd> B = a("ruined_portal_swamp");
-   aet<dvd> C = a("ruined_portal_mountain");
-   aet<dvd> D = a("ruined_portal_ocean");
-   aet<dvd> E = a("ruined_portal_nether");
-   aet<dvd> F = a("ancient_city");
-   aet<dvd> G = a("trail_ruins");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-   private static aet<dvd> a(String $$0) {
-      return aet.a(je.az, new aeu($$0));
+public class dux {
+   public static final Codec<dux> a = arg.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aew.a(je.aI), dit.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, dux::new)),
+      dux::a
+   );
+   public static final Codec<hg<dux>> b = aet.a(je.aF, a);
+   private final Map<aew<dit>, dit> c;
+
+   public dux(Map<aew<dit>, dit> $$0) {
+      this.c = $$0;
+   }
+
+   private ht<dit> c() {
+      ic<dit> $$0 = new ho<>(je.aI, Lifecycle.experimental());
+      dln.a(this.c.keySet().stream()).forEach($$1 -> {
+         dit $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.a((aew<dit>)$$1, $$2, Lifecycle.stable());
+         }
+      });
+      return $$0.l();
+   }
+
+   public dln a() {
+      return new dln(this.c());
+   }
+
+   public Optional<dit> b() {
+      return Optional.ofNullable(this.c.get(dit.b));
+   }
+
+   private static DataResult<dux> a(dux $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

@@ -1,9 +1,20 @@
-public interface deg {
-   void a();
+public class deg extends dck {
+   public deg(gw $$0, dfj $$1) {
+      super(dcx.B, $$0, $$1, cmn.d);
+   }
 
-   boolean b();
+   @Override
+   protected tl g() {
+      return tl.c("container.smoker");
+   }
 
-   gw c();
+   @Override
+   protected int a(cjf $$0) {
+      return super.a($$0) / 2;
+   }
 
-   String d();
+   @Override
+   protected cel a(int $$0, cbt $$1) {
+      return new cgf($$0, $$1, this, this.n);
+   }
 }

@@ -1,16 +1,10 @@
-import javax.annotation.Nullable;
-
-public interface va<T extends sr> {
-   void a(sl var1);
-
-   void a(T var1);
-
-   default boolean b() {
-      return false;
+public class va<T extends su> implements vd<T> {
+   @Override
+   public final void a(so $$0) {
    }
 
-   @Nullable
-   default sk c() {
-      return null;
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }

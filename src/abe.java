@@ -1,24 +1,6 @@
-public class abe implements va<aaz> {
-   private final bgq a;
-
-   public abe(bgq $$0) {
-      this.a = $$0;
-   }
-
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
-
-   public abe(sl $$0) {
-      this.a = bgq.a($$0.readUnsignedByte());
-   }
-
+public interface abe extends sy {
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a.a());
-   }
-
-   public bgq a() {
-      return this.a;
+   default boolean d() {
+      return false;
    }
 }

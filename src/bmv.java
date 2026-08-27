@@ -1,48 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bmv {
-   public static bkt<bjk> a(bsc<gw> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ehi::c);
+   public static bky<bjg> a(bjj $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ah().f()), $$1);
    }
 
-   public static bmc<bjk> b(bsc<? extends bil> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bil::di);
+   public static bmh<bjg> a(biu<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ah()), $$1);
    }
 
-   private static <T> bmc<bjk> a(bsc<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ehi> $$4) {
-      return boe.a(
-         (Function<boe.b<bjk>, ? extends App<boe.c<bjk>, boh<bjk>>>)($$5 -> $$5.group($$5.a(bsc.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<bsf> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ehi $$11 = $$8.di();
-                     ehi $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((hq)$$12, (double)$$2)) {
+   public static bmh<bjg> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bmh<bjg> a(Predicate<bjg> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$2x -> $$2x.group($$2x.c(bsh.n), $$2x.b(bsh.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bjg> $$8 = $$2x.<bsj>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((biq)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ehi $$13 = $$10.get().a().a().d($$11);
-                           ehi $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ehi $$16 = btu.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new bsf($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        $$3.a(new bli($$8.get(), true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

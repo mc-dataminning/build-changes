@@ -1,70 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class epo extends epq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ti c = ti.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final eyf f;
-   private final String g;
+public class epo {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public epo(long $$0, int $$1, String $$2, eyf $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public void run() {
-      ema $$0 = ema.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            enh $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new eod(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (eno var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (enn var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new eoe(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public ti a() {
-      return c;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

@@ -1,62 +1,51 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cjk extends chb {
-   private final bip<?> a;
-   private final aoy b;
-
-   public cjk(bip<?> $$0, eag $$1, aoy $$2, civ.a $$3) {
-      super($$1, $$3);
-      this.a = $$0;
-      this.b = $$2;
+public class cjk extends cja {
+   public cjk(cja.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(@Nullable cbp $$0, cpq $$1, cja $$2, gw $$3) {
-      if ($$1 instanceof akn) {
-         this.a((akn)$$1, $$2, $$3);
-         $$1.a($$0, djo.t, $$3);
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfj $$3 = $$1.a_($$2);
+      if ($$3.a(apt.S)) {
+         cbu $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bgy.a($$1.B);
+      } else {
+         return bgy.d;
       }
    }
 
-   @Override
-   protected void a(@Nullable cbp $$0, cpr $$1, gw $$2) {
-      $$1.a($$0, $$2, this.b, apa.g, 1.0F, 1.0F);
-   }
+   public static bgy a(cbu $$0, cpv $$1, gw $$2) {
+      byh $$3 = null;
+      boolean $$4 = false;
+      double $$5 = 7.0;
+      int $$6 = $$2.u();
+      int $$7 = $$2.v();
+      int $$8 = $$2.w();
 
-   private void a(akn $$0, cja $$1, gw $$2) {
-      if (this.a.a($$0, $$1, null, $$2, bjf.l, true, false) instanceof buo $$4) {
-         $$4.c($$1.w());
-         $$4.w(true);
-      }
-   }
-
-   @Override
-   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
-      if (this.a == bip.bc) {
-         qu $$4 = $$0.v();
-         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
-            int $$5 = $$4.h("BucketVariantTag");
-            n[] $$6 = new n[]{n.u, n.h};
-            String $$7 = "color.minecraft." + bvm.s($$5);
-            String $$8 = "color.minecraft." + bvm.t($$5);
-
-            for (int $$9 = 0; $$9 < bvm.c.size(); $$9++) {
-               if ($$5 == bvm.c.get($$9).a()) {
-                  $$2.add(ti.c(bvm.c($$9)).a($$6));
-                  return;
-               }
+      for (bji $$10 : $$1.a(
+         bji.class, new ehi((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
+      )) {
+         if ($$10.fS() == $$0) {
+            if ($$3 == null) {
+               $$3 = byh.b($$1, $$2);
+               $$3.C();
             }
 
-            $$2.add(bvm.u($$5).d().d().a($$6));
-            tv $$10 = ti.c($$7);
-            if (!$$7.equals($$8)) {
-               $$10.f(", ").b(ti.c($$8));
-            }
-
-            $$10.a($$6);
-            $$2.add($$10);
+            $$10.b($$3, true);
+            $$4 = true;
          }
       }
+
+      if ($$4) {
+         $$1.a(djt.b, $$2, djt.a.a($$0));
+      }
+
+      return $$4 ? bgy.a : bgy.d;
    }
 }

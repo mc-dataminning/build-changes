@@ -1,47 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dny extends dnr<dqc> {
-   public dny(Codec<dqc> $$0) {
-      super($$0);
+public class dny<FC extends dqa> {
+   private final Optional<dnj<?, ?>> a;
+   private final cqp b;
+   private final dhg c;
+   private final asc d;
+   private final gw e;
+   private final FC f;
+
+   public dny(Optional<dnj<?, ?>> $$0, cqp $$1, dhg $$2, asc $$3, gw $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(dnt<dqc> $$0) {
-      cqk $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      arx $$3 = $$0.d();
-      if (!$$1.t($$2)) {
-         return false;
-      } else {
-         dfe $$4 = $$1.a_($$2.c());
-         if (!$$4.a(csr.dW) && !$$4.a(csr.dZ) && !$$4.a(csr.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, csr.ed.n(), 2);
+   public Optional<dnj<?, ?>> a() {
+      return this.a;
+   }
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               gw $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
+   public cqp b() {
+      return this.b;
+   }
 
-                  for (hc $$8 : hc.values()) {
-                     if ($$1.a_($$6.a($$8)).a(csr.ed)) {
-                        $$7++;
-                     }
+   public dhg c() {
+      return this.c;
+   }
 
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
+   public asc d() {
+      return this.d;
+   }
 
-                  if ($$7 == 1) {
-                     $$1.a($$6, csr.ed.n(), 2);
-                  }
-               }
-            }
+   public gw e() {
+      return this.e;
+   }
 
-            return true;
-         }
-      }
+   public FC f() {
+      return this.f;
    }
 }

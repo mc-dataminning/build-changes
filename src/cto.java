@@ -1,124 +1,123 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cto extends czq {
-   public static final dge a = dfu.ba;
-   public static final dfv b = dfu.a;
-   protected static final float c = 5.0F;
-   protected static final eib d = csq.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, eib> h = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         csq.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         csq.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         csq.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         csq.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
-   );
-
-   public cto(dfd.d $$0, dgr $$1) {
-      super($$0.a($$1.e()), $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)).a(b, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      if ($$1.c_($$2) instanceof ddy $$6) {
-         cja $$7 = $$3.b($$4);
-         if (this.a($$3, $$5, $$6, $$7)) {
-            return bgt.d;
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cbp $$0, ehe $$1, ddy $$2, cja $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof cim && $$1.b().equals(hc.a);
-   }
-
-   @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      return $$1.a_($$2.c()).a($$1, $$2.c(), hc.a, das.b);
-   }
-
-   @Override
-   public dfe a(cli $$0) {
-      cpq $$1 = $$0.q();
-      eah $$2 = $$1.b_($$0.a());
-      gw $$3 = $$0.a().c();
-      dfe $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(apo.az);
-      hc $$6 = hc.a((double)$$0.i());
-      boolean $$7 = !csq.a($$4.k($$1, $$3), hc.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dbn.a)) {
-            hc $$8 = $$4.c(dbn.a);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(a)) {
-            Optional<hc> $$9 = dgk.a($$4.c(a));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
-         }
-      }
-
-      int $$10 = !$$7 ? dgk.a($$6.g()) : dgk.a($$0.i() + 180.0F);
-      return this.n().a(b, Boolean.valueOf($$7)).a(a, Integer.valueOf($$10)).a(e, Boolean.valueOf($$2.a() == eai.c));
-   }
-
-   @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      eib $$4 = h.get($$0.c(a));
-      return $$4 == null ? d : $$4;
-   }
-
-   @Override
-   public eib b_(dfe $$0, cow $$1, gw $$2) {
-      return this.a($$0, $$1, $$2, ehn.a());
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return $$1 == hc.b && !this.a($$0, $$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(dfe $$0) {
-      return dgk.b($$0.c(a));
-   }
-
-   @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, b, e);
-   }
-
-   @Override
-   public dcq a(gw $$0, dfe $$1) {
-      return new ddm($$0, $$1);
-   }
-
+public class cto extends cwo {
+   public static final dgd a = cwo.aC;
    @Nullable
+   private dfo b;
+   @Nullable
+   private dfo c;
+   @Nullable
+   private dfo d;
+   @Nullable
+   private dfo e;
+   private static final Predicate<dfj> f = $$0 -> $$0 != null && ($$0.a(csw.ef) || $$0.a(csw.eg));
+
+   protected cto(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c));
+   }
+
    @Override
-   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
-      return a($$2, dcs.i, ddy::a);
+   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public boolean a(cpy $$0, gw $$1) {
+      return this.a().a($$0, $$1) != null || this.u().a($$0, $$1) != null;
+   }
+
+   private void a(cpv $$0, gw $$1) {
+      dfo.b $$2 = this.g().a($$0, $$1);
+      if ($$2 != null) {
+         bvp $$3 = biu.aO.a($$0);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dfo.b $$4 = this.v().a($$0, $$1);
+         if ($$4 != null) {
+            bvd $$5 = biu.ac.a($$0);
+            if ($$5 != null) {
+               $$5.x(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+            }
+         }
+      }
+   }
+
+   private static void a(cpv $$0, dfo.b $$1, biq $$2, gw $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (aks $$4 : $$0.a(aks.class, $$2.cH().g(5.0))) {
+         al.n.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(cpv $$0, dfo.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dfn $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), csw.a.n(), 2);
+            $$0.c(2001, $$4.d(), csv.i($$4.a()));
+         }
+      }
+   }
+
+   public static void b(cpv $$0, dfo.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dfn $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), csw.a);
+         }
+      }
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
+   }
+
+   private dfo a() {
+      if (this.b == null) {
+         this.b = dfp.a().a(" ", "#", "#").a('#', dfn.a(dfs.a(csw.dP))).b();
+      }
+
+      return this.b;
+   }
+
+   private dfo g() {
+      if (this.c == null) {
+         this.c = dfp.a().a("^", "#", "#").a('^', dfn.a(f)).a('#', dfn.a(dfs.a(csw.dP))).b();
+      }
+
+      return this.c;
+   }
+
+   private dfo u() {
+      if (this.d == null) {
+         this.d = dfp.a().a("~ ~", "###", "~#~").a('#', dfn.a(dfs.a(csw.ci))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return this.d;
+   }
+
+   private dfo v() {
+      if (this.e == null) {
+         this.e = dfp.a().a("~^~", "###", "~#~").a('^', dfn.a(f)).a('#', dfn.a(dfs.a(csw.ci))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return this.e;
    }
 }

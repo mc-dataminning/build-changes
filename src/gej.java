@@ -1,65 +1,37 @@
-public class gej implements gep {
-   private static final int a = 1200;
-   private static final ti b = ti.c("tutorial.craft_planks.title");
-   private static final ti c = ti.c("tutorial.craft_planks.description");
-   private final geo d;
-   private euu e;
-   private int f;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-   public gej(geo $$0) {
+public class gej {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
+   }
+
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(geq.f);
-      } else {
-         if (this.f == 1) {
-            fnb $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fQ().a(apw.b)) {
-                  this.d.a(geq.f);
-                  return;
-               }
-
-               if (a($$0, apw.b)) {
-                  this.d.a(geq.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new euu(euu.a.e, b, c, false);
-            this.d.e().ay().a(this.e);
-         }
-      }
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(cja $$0) {
-      if ($$0.a(apw.b)) {
-         this.d.a(geq.f);
-      }
-   }
-
-   public static boolean a(fnb $$0, aqd<civ> $$1) {
-      for (hg<civ> $$2 : jd.i.c($$1)) {
-         if ($$0.j().a(apj.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(gdy $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gdz.e, $$1x -> {
+            $$1x.a(geb.p, this.a($$1));
+            $$1x.a(geb.q, (int)this.c);
+         }));
    }
 }

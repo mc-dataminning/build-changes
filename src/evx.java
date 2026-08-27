@@ -1,143 +1,111 @@
-public interface evx {
-   evx a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   evx a(int var1, int var2);
+public class evx extends evu {
+   private final List<evx.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final ewc f = ewc.i().a(0.5F, 0.5F);
 
-   evx a(int var1, int var2, int var3, int var4);
-
-   evx b(int var1);
-
-   evx c(int var1);
-
-   evx d(int var1);
-
-   evx e(int var1);
-
-   evx f(int var1);
-
-   evx g(int var1);
-
-   evx a(float var1, float var2);
-
-   evx a(float var1);
-
-   evx b(float var1);
-
-   default evx a() {
-      return this.a(0.0F);
+   public evx() {
+      this(0, 0, 0, 0);
    }
 
-   default evx b() {
-      return this.a(0.5F);
+   public evx(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default evx c() {
-      return this.a(1.0F);
+   public evx(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   default evx d() {
-      return this.b(0.0F);
+   public evx a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   default evx e() {
-      return this.b(0.5F);
+   public evx a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   default evx f() {
-      return this.b(1.0F);
+   public evx b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   evx g();
-
-   evx.a h();
-
-   static evx i() {
-      return new evx.a();
+   public ewc b() {
+      return this.f.g();
    }
 
-   public static class a implements evx {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public ewc c() {
+      return this.f;
+   }
 
-      public a() {
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (evx.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      public a(evx.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      for (evx.a $$3 : this.c) {
+         $$3.a(this.r(), $$0);
+         $$3.b(this.t(), $$1);
       }
 
-      public evx.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      public evx.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+   public <T extends ewb> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
 
-      public evx.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public <T extends ewb> T a(T $$0, ewc $$1) {
+      this.c.add(new evx.a($$0, $$1));
+      return $$0;
+   }
 
-      public evx.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public <T extends ewb> T a(T $$0, Consumer<ewc> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
 
-      public evx.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void b(Consumer<ewb> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-      public evx.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static void a(ewb $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
 
-      public evx.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public static void a(ewb $$0, ews $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
 
-      public evx.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
+   public static void a(ewb $$0, ews $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
 
-      public evx.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public static void a(ewb $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.l(), $$0::f, $$5);
+      a($$2, $$4, $$0.i(), $$0::g, $$6);
+   }
 
-      public evx.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)arx.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      public evx.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public evx.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public evx.a j() {
-         return new evx.a(this);
-      }
-
-      @Override
-      public evx.a h() {
-         return this;
+   static class a extends evu.a {
+      protected a(ewb $$0, ewc $$1) {
+         super($$0, $$1);
       }
    }
 }

@@ -1,55 +1,40 @@
-import javax.annotation.Nullable;
+public class aci implements vd<abd> {
+   private final cfw a;
+   private final boolean b;
+   private final boolean c;
 
-public class aci implements va<aaz> {
-   private final aci.a a;
-   @Nullable
-   private final aeu b;
-
-   public aci(aci.a $$0, @Nullable aeu $$1) {
+   public aci(cfw $$0, boolean $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public static aci a(af $$0) {
-      return new aci(aci.a.a, $$0.a());
-   }
-
-   public static aci a() {
-      return new aci(aci.a.b, null);
-   }
-
-   public aci(sl $$0) {
-      this.a = $$0.b(aci.a.class);
-      if (this.a == aci.a.a) {
-         this.b = $$0.s();
-      } else {
-         this.b = null;
-      }
+   public aci(so $$0) {
+      this.a = $$0.b(cfw.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      if (this.a == aci.a.a) {
-         $$0.a(this.b);
-      }
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public aci.a d() {
+   public cfw a() {
       return this.a;
    }
 
-   @Nullable
-   public aeu e() {
+   public boolean d() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean e() {
+      return this.c;
    }
 }

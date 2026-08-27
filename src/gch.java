@@ -1,47 +1,58 @@
-import javax.annotation.Nullable;
-
-public interface gch {
-   aeu a();
-
-   @Nullable
-   gdm a(gdl var1);
-
-   gce b();
-
-   apa c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gch.a k();
-
-   default boolean r() {
-      return false;
+public class gch extends gbu {
+   public gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, gw $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   default boolean s() {
-      return true;
+   public static gch a(apd $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   static arx t() {
-      return arx.a();
+   public static gch a(hg<apd> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   public static enum a {
-      a,
-      b;
+   public static gch a(apd $$0, float $$1, float $$2) {
+      return new gch($$0.a(), apf.a, $$2, $$1, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gch a(apd $$0) {
+      return new gch($$0.a(), apf.b, 1.0F, 1.0F, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gch a(apd $$0, ehn $$1) {
+      return new gch($$0, apf.c, 4.0F, 1.0F, gcm.t(), false, 0, gcm.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gch b(apd $$0, float $$1, float $$2) {
+      return new gch($$0.a(), apf.i, $$2, $$1, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gch b(apd $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gch a(apd $$0, asc $$1, double $$2, double $$3, double $$4) {
+      return new gch($$0, apf.i, 1.0F, 1.0F, $$1, false, 0, gcm.a.b, $$2, $$3, $$4);
+   }
+
+   public gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gcm.a.b, $$5, $$6, $$7);
+   }
+
+   private gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, boolean $$5, int $$6, gcm.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gch(aex $$0, apf $$1, float $$2, float $$3, asc $$4, boolean $$5, int $$6, gcm.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

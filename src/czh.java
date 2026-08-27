@@ -1,75 +1,105 @@
-public class czh extends cuw implements czg {
-   public czh(dfd.d $$0) {
-      super($$0, bfv.a(1));
+import com.mojang.serialization.Codec;
+import java.util.List;
+
+public enum czh implements asp {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
+
+   public static final Codec<czh> e = asp.a(czh::values);
+   private final String f;
+   private final h g;
+
+   private czh(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   public czh a(czh $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public hc a(hc $$0) {
+      if ($$0.o() == hc.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static czh a(asc $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<czh> b(asc $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public int a(czl.a $$0, cpr $$1, gw $$2, arx $$3, czl $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         gw $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               gw $$10 = $$7.c();
-               dfe $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), apa.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
-      } else {
-         return $$6;
-      }
-   }
-
-   private static int a(czl $$0, gw $$1, gw $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = ars.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = ars.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
-   }
-
-   private dfe a(cpr $$0, gw $$1, arx $$2, boolean $$3) {
-      dfe $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = csr.qI.n().a(czk.c, Boolean.valueOf($$3));
-      } else {
-         $$4 = csr.qD.n();
-      }
-
-      return $$4.b(dfu.C) && !$$0.b_($$1).c() ? $$4.a(dfu.C, Boolean.valueOf(true)) : $$4;
-   }
-
-   private static boolean a(cpr $$0, gw $$1) {
-      dfe $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(csr.G) && $$2.u().b(eai.c)) {
-         int $$3 = 0;
-
-         for (gw $$4 : gw.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dfe $$5 = $$0.a_($$4);
-            if ($$5.a(csr.qD) || $$5.a(csr.qI)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
+   public String c() {
+      return this.f;
    }
 }

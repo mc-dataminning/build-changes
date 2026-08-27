@@ -1,88 +1,66 @@
-public class cfi extends ceg {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bgm q;
-   private final ceq r;
+public class cfi extends cel {
+   public static final int k = 5;
+   private final bgr l;
 
-   public cfi(int $$0) {
-      this($$0, new bha(1), new cfx(1));
+   public cfi(int $$0, cbt $$1) {
+      this($$0, $$1, new bhf(5));
    }
 
-   public cfi(int $$0, bgm $$1, ceq $$2) {
-      super(cfl.q, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new cfy($$1, 0, 0, 0) {
-         @Override
-         public void d() {
-            super.d();
-            cfi.this.a(this.d);
+   public cfi(int $$0, cbt $$1, bgr $$2) {
+      super(cfq.p, $$0);
+      this.l = $$2;
+      a($$2, 5);
+      $$2.d_($$1.m);
+      int $$3 = 51;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         this.a(new cgd($$2, $$4, 44 + $$4 * 18, 20));
+      }
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cgd($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
          }
-      });
-      this.a($$2);
-   }
+      }
 
-   @Override
-   public boolean b(cbp $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gc()) {
-                  return false;
-               }
-
-               cja $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fQ().e($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
-         }
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cgd($$1, $$7, 8 + $$7 * 18, 109));
       }
    }
 
    @Override
-   public cja a(cbp $$0, int $$1) {
-      return cja.b;
+   public boolean a(cbu $$0) {
+      return this.l.a($$0);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
+   public cjf a(cbu $$0, int $$1) {
+      cjf $$2 = cjf.b;
+      cgd $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cjf $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cjf.b;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cjf.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(cjf.b);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean a(cbp $$0) {
-      return this.q.a($$0);
-   }
-
-   public cja l() {
-      return this.q.a(0);
-   }
-
-   public int m() {
-      return this.r.a(0);
+   public void b(cbu $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

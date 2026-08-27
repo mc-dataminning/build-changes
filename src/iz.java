@@ -13,7 +13,7 @@ public class iz implements iv {
          return new iz($$2);
       }
 
-      public iz a(iw<iz> $$0, sl $$1) {
+      public iz a(iw<iz> $$0, so $$1) {
          return new iz($$1.m());
       }
    };
@@ -24,7 +24,7 @@ public class iz implements iv {
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.c(this.c);
    }
 

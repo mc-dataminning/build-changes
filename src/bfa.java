@@ -1,13 +1,13 @@
-import java.time.Instant;
+public interface bfa {
+   void a();
 
-public final class bfa {
-   public final Instant a;
-   public final int b;
-   public final bdj c;
+   void b();
 
-   public bfa(Instant $$0, int $$1, bdj $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   void c();
+
+   boolean e();
+
+   bdp f();
+
+   void d();
 }

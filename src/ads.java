@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ads() implements adq {
+   public static final ads a = new ads();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ads {
+   @Override
+   public void a(so $$0) {
+   }
 }

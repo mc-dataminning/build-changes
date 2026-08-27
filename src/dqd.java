@@ -1,53 +1,40 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dqd implements dpv {
+public class dqd implements dqa {
    public static final Codec<dqd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.list(dqd.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bgd.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               bgb.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               bgb.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               bgb.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               bgb.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, dqd::new)
    );
-   public final List<dqd.a> b;
-   public final int c;
-   public final float d;
+   public final int b;
+   public final bgd c;
+   public final bgb d;
+   public final float e;
+   public final bgb f;
+   public final bgb g;
+   public final bgb h;
+   public final int i;
+   public final float j;
 
-   public dqd(List<dqd.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
+   public dqd(int $$0, bgd $$1, bgb $$2, float $$3, bgb $$4, bgb $$5, bgb $$6, int $$7, float $$8) {
       this.b = $$0;
+      this.c = $$1;
       this.d = $$2;
-   }
-
-   public dqd(List<dqd.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
-   }
-
-   public dqd(dyq $$0, dfe $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new dqd.a($$0, $$1)), $$2, $$3);
-   }
-
-   public dqd(dyq $$0, dfe $$1, int $$2) {
-      this(ImmutableList.of(new dqd.a($$0, $$1)), $$2, 0.0F);
-   }
-
-   public static dqd.a a(dyq $$0, dfe $$1) {
-      return new dqd.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<dqd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dyq.c.fieldOf("target").forGetter($$0x -> $$0x.b), dfe.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dqd.a::new)
-      );
-      public final dyq b;
-      public final dfe c;
-
-      a(dyq $$0, dfe $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 }

@@ -1,41 +1,67 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class brh<T extends bjd> extends bpw {
-   private final T a;
-   private final cja b;
-   private final Predicate<? super T> c;
+public class brh extends bqb {
+   private static final int a = 10;
+   private final bjp b;
+   private final int c;
    @Nullable
-   private final aoy d;
+   private gw d;
 
-   public brh(T $$0, cja $$1, @Nullable aoy $$2, Predicate<? super T> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+   public brh(bjp $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
+      if (this.b.cP()) {
+         return false;
+      } else if (this.b.dL().N()) {
+         return false;
+      } else if (this.b.ef().a(this.c) != 0) {
+         return false;
+      } else {
+         akr $$0 = (akr)this.b.dL();
+         gw $$1 = this.b.dl();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            ehn $$2 = btz.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(hz.a($$1x))));
+            this.d = $$2 == null ? null : gw.a($$2);
+            return this.d != null;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a.fl();
+      return this.d != null && !this.b.L().l() && this.b.L().h().equals(this.d);
    }
 
    @Override
-   public void c() {
-      this.a.a(biq.a, this.b.p());
-      this.a.c(bgs.a);
-   }
-
-   @Override
-   public void d() {
-      this.a.a(biq.a, cja.b);
+   public void e() {
       if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.ee().i() * 0.2F + 0.9F);
+         bsp $$0 = this.b.L();
+         if ($$0.l() && !this.d.a(this.b.dj(), 10.0)) {
+            ehn $$1 = ehn.c(this.d);
+            ehn $$2 = this.b.dj();
+            ehn $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            ehn $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            gw $$5 = gw.a($$4);
+            $$5 = this.b.dL().a(dks.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
       }
+   }
+
+   private void h() {
+      asc $$0 = this.b.ef();
+      gw $$1 = this.b.dL().a(dks.a.f, this.b.dl().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.L().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

@@ -1,124 +1,128 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class caj {
-   private static final int a = 600;
-   private static final int b = 20;
-   private static final double c = 0.0125;
-   private static final int d = 8;
-   private static final int e = 8;
-   private static final double f = 12.0;
-   private static final float g = 0.6F;
-   private static final int h = 2;
-   private static final int i = 100;
-   private static final int j = 5;
+public abstract class caj extends bzi {
+   protected static final aef<Boolean> b = aei.a(caj.class, aeh.k);
+   protected static final int c = 300;
+   protected static final float d = 1.79F;
+   protected int e;
 
-   protected static bkb<?> a(cai $$0, bkb<cai> $$1) {
-      b($$0, $$1);
-      c($$0, $$1);
-      d($$0, $$1);
-      $$1.a(ImmutableSet.of(cda.a));
-      $$1.b(cda.b);
-      $$1.f();
-      return $$1;
+   public caj(biu<? extends caj> $$0, cpv $$1) {
+      super($$0, $$1);
+      this.s(true);
+      this.y();
+      this.a(eax.n, 16.0F);
+      this.a(eax.o, -1.0F);
    }
 
-   protected static void a(cai $$0) {
-      hf $$1 = hf.a($$0.dK().ac(), $$0.dk());
-      $$0.dM().a(bsc.b, $$1);
+   private void y() {
+      if (btx.a(this)) {
+         ((bso)this.L()).b(true);
+      }
    }
 
-   private static void b(cai $$0, bkb<cai> $$1) {
-      $$1.a(cda.a, 0, ImmutableList.of(new blx(45, 90), new bmb(), blq.a(), bnh.a()));
+   @Override
+   protected float b(bjs $$0, bir $$1) {
+      return 1.79F;
    }
 
-   private static void c(cai $$0, bkb<cai> $$1) {
-      $$1.a(cda.b, 10, ImmutableList.of(bnd.a(caj::a), a(), b(), bmt.a(bip.bt, 4)));
+   @Override
+   protected float l(biq $$0) {
+      return -0.7F;
    }
 
-   private static void d(cai $$0, bkb<cai> $$1) {
-      $$1.a(cda.k, 10, ImmutableList.of(bng.a($$1x -> !a((cae)$$0, $$1x)), bmw.a(1.0F), bly.a(20)), bsc.o);
+   @Override
+   protected Vector3f a(biq $$0, bir $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.0625F * $$2, 0.0F);
    }
 
-   private static bmo<cai> a() {
-      return new bmo<>(
-         ImmutableList.of(
-            Pair.of(bmq.a(bip.bt, 8.0F), 1),
-            Pair.of(bmq.a(bip.aw, 8.0F), 1),
-            Pair.of(bmq.a(bip.ax, 8.0F), 1),
-            Pair.of(bmq.a(8.0F), 1),
-            Pair.of(new blc(30, 60), 1)
-         )
-      );
+   protected abstract boolean s();
+
+   public void w(boolean $$0) {
+      this.am().b(b, $$0);
    }
 
-   private static bmo<cai> b() {
-      return new bmo<>(
-         ImmutableList.of(
-            Pair.of(bmj.a(0.6F), 2),
-            Pair.of(blp.a(bip.aw, 8, bsc.q, 0.6F, 2), 2),
-            Pair.of(blp.a(bip.ax, 8, bsc.q, 0.6F, 2), 2),
-            Pair.of(bnj.a(bsc.b, 0.6F, 2, 100), 2),
-            Pair.of(bni.a(bsc.b, 0.6F, 5), 2),
-            Pair.of(new blc(30, 60), 1)
-         )
-      );
+   protected boolean t() {
+      return this.am().b(b);
    }
 
-   protected static void b(cai $$0) {
-      bkb<cai> $$1 = $$0.dM();
-      cda $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cda.k, cda.b));
-      cda $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         d($$0);
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(b, false);
+   }
+
+   @Override
+   public void b(qx $$0) {
+      super.b($$0);
+      if (this.t()) {
+         $$0.a("IsImmuneToZombification", true);
       }
 
-      $$0.v($$1.a(bsc.o));
+      $$0.a("TimeInOverworld", this.e);
    }
 
-   private static boolean a(cae $$0, bjb $$1) {
-      return a($$0).filter($$1x -> $$1x == $$1).isPresent();
+   @Override
+   public void a(qx $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.e = $$0.h("TimeInOverworld");
    }
 
-   private static Optional<? extends bjb> a(cae $$0) {
-      Optional<bjb> $$1 = bku.a($$0, bsc.aa);
-      if ($$1.isPresent() && btg.d($$0, $$1.get())) {
-         return $$1;
+   @Override
+   protected void Y() {
+      super.Y();
+      if (this.gd()) {
+         this.e++;
       } else {
-         Optional<? extends bjb> $$2 = a($$0, bsc.l);
-         return $$2.isPresent() ? $$2 : $$0.dM().c(bsc.L);
+         this.e = 0;
+      }
+
+      if (this.e > 300) {
+         this.gh();
+         this.c((akr)this.dL());
       }
    }
 
-   private static Optional<? extends bjb> a(cae $$0, bsc<? extends bjb> $$1) {
-      return $$0.dM().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
+   public boolean gd() {
+      return !this.dL().C_().b() && !this.t() && !this.fT();
    }
 
-   protected static void a(cai $$0, bjb $$1) {
-      if (!($$1 instanceof cae)) {
-         cag.a($$0, $$1);
+   protected void c(akr $$0) {
+      cad $$1 = this.a(biu.bs, true);
+      if ($$1 != null) {
+         $$1.b(new bid(bif.i, 200, 0));
       }
    }
 
-   protected static void b(cai $$0, bjb $$1) {
-      $$0.dM().b(bsc.E);
-      $$0.dM().a(bsc.aa, $$1.cv(), 600L);
+   public boolean ge() {
+      return !this.m_();
    }
 
-   protected static void c(cai $$0) {
-      if ((double)$$0.dK().z.i() < 0.0125) {
-         d($$0);
+   public abstract cam gf();
+
+   @Nullable
+   @Override
+   public bjg q() {
+      return this.bz.c(bsh.o).orElse(null);
+   }
+
+   protected boolean gg() {
+      return this.eS().d() instanceof ckt;
+   }
+
+   @Override
+   public void P() {
+      if (cal.d(this)) {
+         super.P();
       }
    }
 
-   private static void d(cai $$0) {
-      $$0.dM().g().ifPresent($$1 -> {
-         if ($$1 == cda.k) {
-            $$0.gh();
-         }
-      });
+   @Override
+   protected void X() {
+      super.X();
+      abc.a(this);
    }
+
+   protected abstract void gh();
 }

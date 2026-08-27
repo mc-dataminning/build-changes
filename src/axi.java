@@ -1,25 +1,39 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class axi extends axu {
-   public axi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "JigsawPropertiesFix", ays.s, "minecraft:jigsaw");
+public abstract class axi extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
+
+   public axi(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
-      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
-      return $$0.set("name", $$0.createString($$1))
-         .set("target", $$0.createString($$1))
-         .remove("attachement_type")
-         .set("pool", $$0.createString($$2))
-         .remove("target_pool");
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(ayx.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(ayx.z.typeName(), baf.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            return $$3.isPresent() && this.b.test((String)$$3.get().getSecond())
+               ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+               : $$2x;
+         }
+      );
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), axi::a);
-   }
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

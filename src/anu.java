@@ -1,13 +1,52 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public abstract class anu<T> implements anj {
-   @Override
-   public final CompletableFuture<Void> a(anj.a $$0, anp $$1, bdk $$2, bdk $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+public interface anu extends anx {
+   Set<String> a();
+
+   List<ans> a(aex var1);
+
+   Map<aex, ans> b(String var1, Predicate<aex> var2);
+
+   Map<aex, List<ans>> c(String var1, Predicate<aex> var2);
+
+   Stream<ami> b();
+
+   public static enum a implements anu {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<ans> getResource(aex $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<ans> a(aex $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<aex, ans> b(String $$0, Predicate<aex> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aex, List<ans>> c(String $$0, Predicate<aex> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<ami> b() {
+         return Stream.of();
+      }
    }
-
-   protected abstract T b(anp var1, bdk var2);
-
-   protected abstract void a(T var1, anp var2, bdk var3);
 }

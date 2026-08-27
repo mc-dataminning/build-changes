@@ -9,15 +9,15 @@ public class hy {
       this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public hy(ra $$0) {
+   public hy(rd $$0) {
       this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public ra a() {
-      ra $$0 = new ra();
-      $$0.add(qx.a(this.a));
-      $$0.add(qx.a(this.b));
-      $$0.add(qx.a(this.c));
+   public rd a() {
+      rd $$0 = new rd();
+      $$0.add(ra.a(this.a));
+      $$0.add(ra.a(this.b));
+      $$0.add(ra.a(this.c));
       return $$0;
    }
 
@@ -39,14 +39,14 @@ public class hy {
    }
 
    public float e() {
-      return ars.g(this.a);
+      return arx.g(this.a);
    }
 
    public float f() {
-      return ars.g(this.b);
+      return arx.g(this.b);
    }
 
    public float g() {
-      return ars.g(this.c);
+      return arx.g(this.c);
    }
 }

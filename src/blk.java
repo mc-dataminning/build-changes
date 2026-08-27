@@ -1,41 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class blk extends bks<cbc> {
-   private static final int d = 1200;
-   final float c;
+public class blk extends bkx<bjp> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bjg, Float> f;
+   private final Function<bjg, Double> g;
 
-   public blk(float $$0) {
-      super(ImmutableMap.of(bsc.d, bsd.a), 1200);
-      this.c = $$0;
+   public blk(Function<bjg, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   protected boolean a(akn $$0, cbc $$1) {
-      return $$1.dM().g().map($$0x -> $$0x == cda.b || $$0x == cda.c || $$0x == cda.d).orElse(true);
+   public blk(Function<bjg, Float> $$0, Function<bjg, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<bsh<?>, bsi> $$0x = ImmutableMap.builder();
+         $$0x.put(bsh.n, bsi.c);
+         $$0x.put(bsh.m, bsi.c);
+         $$0x.put(bsh.O, bsi.b);
+         $$0x.put(bsh.Q, bsi.c);
+         $$0x.put(bsh.N, bsi.a);
+         $$0x.put(bsh.r, bsi.b);
+         $$0x.put(bsh.Y, bsi.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected boolean a(akn $$0, cbc $$1, long $$2) {
-      return $$1.dM().a(bsc.d);
+   protected float a(bjp $$0) {
+      return this.f.apply($$0);
    }
 
-   protected void b(akn $$0, cbc $$1, long $$2) {
-      bku.a($$1, $$1.dM().c(bsc.d).get().b(), this.c, 1);
+   private Optional<cbu> b(bjp $$0) {
+      return $$0.dN().c(bsh.N);
    }
 
-   protected void c(akn $$0, cbc $$1, long $$2) {
-      Optional<hf> $$3 = $$1.dM().c(bsc.d);
-      $$3.ifPresent($$1x -> {
-         gw $$2x = $$1x.b();
-         akn $$3x = $$0.n().a($$1x.a());
-         if ($$3x != null) {
-            bua $$4 = $$3x.w();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-            aay.c($$0, $$2x);
-         }
-      });
-      $$1.dM().b(bsc.d);
+   protected boolean a(akr $$0, bjp $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dN().a(bsh.r) && !$$1.dN().a(bsh.Y);
+   }
+
+   protected void b(akr $$0, bjp $$1, long $$2) {
+      $$1.dN().a(bsh.Q, true);
+   }
+
+   protected void c(akr $$0, bjp $$1, long $$2) {
+      bkg<?> $$3 = $$1.dN();
+      $$3.a(bsh.O, 100);
+      $$3.a(bsh.Q, false);
+      $$3.b(bsh.m);
+      $$3.b(bsh.n);
+   }
+
+   protected void d(akr $$0, bjp $$1, long $$2) {
+      cbu $$3 = this.b($$1).get();
+      bkg<?> $$4 = $$1.dN();
+      $$4.a(bsh.n, new bli($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.f($$3) < arx.k($$5)) {
+         $$4.b(bsh.m);
+      } else {
+         $$4.a(bsh.m, new bsk(new bli($$3, false), this.a($$1), 2));
+      }
    }
 }

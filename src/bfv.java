@@ -1,30 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bfv extends bfy {
-   public static final bfv a = new bfv(0);
-   public static final Codec<bfv> b = arb.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bfv::new, bfv::d);
+public class bfv extends bgd {
+   public static final Codec<bfv> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bfv::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
    private final int f;
 
-   public static bfv a(int $$0) {
-      return $$0 == 0 ? a : new bfv($$0);
+   private bfv(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private bfv(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
+   public static bfv a(int $$0, int $$1) {
+      return new bfv($$0, $$1);
    }
 
    @Override
-   public int a(arx $$0) {
-      return this.f;
+   public int a(asc $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
    public int a() {
-      return this.f;
+      return this.b;
    }
 
    @Override
@@ -33,12 +42,12 @@ public class bfv extends bfy {
    }
 
    @Override
-   public bfz<?> c() {
-      return bfz.a;
+   public bge<?> c() {
+      return bge.c;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

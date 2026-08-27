@@ -1,22 +1,30 @@
-public class cfx implements ceq {
-   private final int[] a;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cfx(int $$0) {
-      this.a = new int[$$0];
+public interface cfx {
+   void a(@Nullable cmk<?> var1);
+
+   @Nullable
+   cmk<?> d();
+
+   default void a(cbu $$0, List<cjf> $$1) {
+      cmk<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().am_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
+      }
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
+   default boolean a(cpv $$0, aks $$1, cmk<?> $$2) {
+      if (!$$2.b().am_() && $$0.X().b(cpr.v) && !$$1.G().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
    }
 }

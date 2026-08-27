@@ -1,56 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class dpf extends dnr<dqt> {
-   public dpf(Codec<dqt> $$0) {
+public class dpf extends dnw<dqh> {
+   public dpf(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dqt> $$0) {
-      cqk $$1 = $$0.b();
+   public boolean a(dny<dqh> $$0) {
+      cqp $$1 = $$0.b();
       gw $$2 = $$0.e();
-      dqt $$3 = $$0.f();
-      arx $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         gw $$6 = $$2.h($$5.getAsInt());
-         ib $$7 = new ib($$3.c, $$3.c, $$3.c);
-         ehd $$8 = new ehd($$6.b($$7), $$6.a($$7));
-         return gw.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, csr.kJ.n(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+      gw.a $$3 = new gw.a();
+      gw.a $$4 = new gw.a();
 
-   private static OptionalInt a(cqk $$0, gw $$1, dqt $$2) {
-      Predicate<dfe> $$3 = $$0x -> $$0x.a(csr.G);
-      Predicate<dfe> $$4 = $$0x -> !$$0x.a(csr.G);
-      Optional<dkd> $$5 = dkd.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dkd::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dks.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(hc.a, 1);
+            cqt $$10 = $$1.s($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, csw.dO.n(), 2);
+            }
 
-   private boolean b(cqk $$0, gw $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (hc $$2 : hc.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, csw.dN.n(), 2);
+               dfj $$11 = $$1.a_($$4);
+               if ($$11.b(daf.a)) {
+                  $$1.a($$4, $$11.a(daf.a, Boolean.valueOf(true)), 2);
+               }
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(cpr $$0, gw $$1) {
-      dfe $$2 = $$0.a_($$1);
-      return $$2.a(csr.G) || $$2.i();
+      return true;
    }
 }

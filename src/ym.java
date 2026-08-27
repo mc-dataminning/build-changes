@@ -1,56 +1,73 @@
-public class ym implements va<ws> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public ym(bil $$0) {
-      this.a = $$0.dp();
-      this.b = $$0.dr();
-      this.c = $$0.dv();
-      this.d = $$0.dA();
-      this.e = $$0.dC();
-   }
-
-   public ym(sl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean g, boolean h, boolean i, aba j) implements vd<ww> {
+   public ym(so $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(je.aH)),
+         $$0.m(),
+         $$0.m(),
+         $$0.m(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aba($$0)
+      );
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.p(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.a(this.c, so::b);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      this.j.a($$0);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
+   public boolean d() {
       return this.b;
    }
 
-   public double e() {
+   public Set<aew<cpv>> e() {
       return this.c;
    }
 
-   public float f() {
+   public int f() {
       return this.d;
    }
 
-   public float g() {
+   public int g() {
       return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public aba l() {
+      return this.j;
    }
 }

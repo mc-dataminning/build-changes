@@ -1,108 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class drs extends drt {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<drs> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(drr.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, drs::new)
+public class drs extends drm {
+   public static final Codec<drs> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bgd.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, drs::new)
    );
-   private final drr h;
+   private final bgd b;
 
-   public drs(bfy $$0, drw $$1, Optional<drq> $$2, drr $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public drs(bgd $$0, bgd $$1, bgd $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, gw $$3, gw $$4, dqr $$5) {
-      List<gw> $$6 = Lists.newArrayList();
-      gw.a $$7 = $$3.j();
+   protected drn<?> a() {
+      return drn.b;
+   }
 
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
+   @Override
+   protected void a(cqb $$0, drm.b $$1, asc $$2, dqw $$3, int $$4, drm.a $$5, int $$6, int $$7, int $$8) {
+      gw $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
          }
-
-         $$7.c(hc.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (hc $$8 : hc.c.a) {
-         gw $$9 = $$4.a($$8);
-         List<gw> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (gw $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
-   }
-
-   private boolean a(cpw $$0, arx $$1, gw $$2, hc $$3, gw $$4, List<gw> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (gw $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<gw> a(gw $$0, hc $$1, arx $$2, gw $$3) {
-      gw $$4 = $$0.d();
-      gw $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
       }
    }
 
    @Override
-   protected boolean a(cpw $$0, gw $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public int a(asc $$0, int $$1, dqw $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
    }
 
    @Override
-   protected void a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, gw $$3, dqr $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dfe $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected dru<?> a() {
-      return dru.a;
+   protected boolean a(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

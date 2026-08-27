@@ -1,20 +1,46 @@
-public class erd {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public erd(float $$0, long $$1) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
+public class erd {
+   private static final Logger a = LogUtils.getLogger();
+   private final eqv b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
+
+   public erd(eqv $$0) {
+      this.b = $$0;
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.d;
-      this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+   public void a(eyk $$0) {
+      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fbh($$0));
+         this.d = true;
+      }
+   }
+
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+      }
+
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
+      }
+   }
+
+   private boolean b() {
+      try {
+         return emf.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (ens var2) {
+         return false;
+      }
    }
 }

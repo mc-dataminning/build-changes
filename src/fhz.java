@@ -1,30 +1,224 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class fhz {
-   public static final fhz a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
+   private static final fig a = new fig(0.008F);
+   private static final fig b = new fig(1.0F);
+   private static final fig c = new fig(0.5F);
 
-   private fhz(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-   }
+   public static Map<fia, fii> a() {
+      Builder<fia, fii> $$0 = ImmutableMap.builder();
+      fii $$1 = fii.a(ffq.a(fig.a, 0.0F), 64, 64);
+      fii $$2 = fii.a(ffp.a(b), 64, 32);
+      fii $$3 = fii.a(ffp.a(new fig(1.02F)), 64, 32);
+      fii $$4 = fii.a(ffp.a(c), 64, 32);
+      fii $$5 = ffy.b();
+      fii $$6 = fgz.c();
+      fii $$7 = fii.a(ffo.a(fig.a), 64, 64);
+      fii $$8 = ffr.b();
+      fii $$9 = few.c();
+      fii $$10 = fii.a(fgb.a(fig.a), 64, 32);
+      fii $$11 = fii.a(fgh.a(fig.a), 64, 64);
+      fii $$12 = fii.a(fgg.a(), 64, 64);
+      fii $$13 = fgz.b();
+      fii $$14 = ffw.a(fig.a);
+      fii $$15 = fhg.b();
+      fii $$16 = ffn.c();
+      fii $$17 = fgy.c();
+      fii $$18 = fii.a(fho.b(), 64, 64);
+      fii $$19 = fhe.b();
+      $$0.put(fib.a, fec.b());
+      $$0.put(fib.b, feg.c());
+      $$0.put(fib.c, fef.a(c));
+      $$0.put(fib.d, fef.a(b));
+      $$0.put(fib.e, feh.c());
+      $$0.put(fib.f, fpz.a());
+      $$0.put(fib.g, fei.b());
+      $$0.put(fib.h, fqb.c());
+      $$0.put(fib.i, fqb.b());
+      $$0.put(fib.j, fej.c());
+      $$0.put(fib.k, fqc.b());
+      $$0.put(fib.l, fek.b());
+      $$0.put(fib.m, fem.a());
+      $$0.put(fib.n, $$10);
+      $$0.put(fib.o, fii.a(fgb.a(new fig(0.01F)), 64, 32));
+      $$0.put(fib.p, fen.b());
+      $$0.put(fib.q, $$19);
+      $$0.put(fib.r, fqk.b());
+      $$0.put(fib.s, $$5);
+      $$0.put(fib.t, fes.c());
+      $$0.put(fib.u, fet.b());
+      $$0.put(fib.v, $$5);
+      $$0.put(fib.x, fql.b());
+      $$0.put(fib.z, fql.c());
+      $$0.put(fib.y, fql.d());
+      $$0.put(fib.w, fql.e());
+      $$0.put(fib.A, $$9);
+      $$0.put(fib.B, fex.a(fig.a));
+      $$0.put(fib.C, fex.a(new fig(2.0F)));
+      $$0.put(fib.D, $$6);
+      $$0.put(fib.E, fqm.b());
+      $$0.put(fib.F, fqm.c());
+      $$0.put(fib.G, fey.b());
+      $$0.put(fib.H, fer.c());
+      $$0.put(fib.I, fqk.d());
+      $$0.put(fib.J, fqk.c());
+      $$0.put(fib.K, fhw.a());
+      $$0.put(fib.L, fez.a(fig.a));
+      $$0.put(fib.M, $$4);
+      $$0.put(fib.N, $$4);
+      $$0.put(fib.O, fez.a(new fig(0.25F)));
+      $$0.put(fib.P, ffk.b());
+      $$0.put(fib.Q, ffa.c());
+      $$0.put(fib.R, ffb.c());
+      $$0.put(fib.S, ffc.b());
+      $$0.put(fib.T, ftc.a());
+      $$0.put(fib.U, ftb.a());
+      $$0.put(fib.V, $$8);
+      $$0.put(fib.W, ffe.b());
+      $$0.put(fib.X, fff.c());
+      $$0.put(fib.Y, ffg.b());
+      $$0.put(fib.Z, $$5);
+      $$0.put(fib.aa, ffh.b());
+      $$0.put(fib.ab, $$1);
+      $$0.put(fib.ac, $$4);
+      $$0.put(fib.ad, $$2);
+      $$0.put(fib.ae, fhf.b());
+      $$0.put(fib.af, ffj.c());
+      $$0.put(fib.ag, ffk.b());
+      $$0.put(fib.ah, $$16);
+      $$0.put(fib.ai, $$5);
+      $$0.put(fib.aj, $$7);
+      $$0.put(fib.ak, fii.a(ffo.a(new fig(0.1F)), 64, 64));
+      $$0.put(fib.al, $$1);
+      $$0.put(fib.am, $$4);
+      $$0.put(fib.an, $$2);
+      $$0.put(fib.ao, $$8);
+      $$0.put(fib.ap, ffs.b());
+      $$0.put(fib.aq, ffu.b());
+      $$0.put(fib.ar, $$14);
+      $$0.put(fib.as, ffw.a(new fig(0.5F)));
+      $$0.put(fib.at, ffx.b());
+      $$0.put(fib.au, fft.b());
+      $$0.put(fib.av, $$5);
+      $$0.put(fib.aw, $$9);
+      $$0.put(fib.ax, fer.c());
+      $$0.put(fib.ay, $$10);
+      $$0.put(fib.az, fgc.c());
+      $$0.put(fib.aA, fgd.b());
+      $$0.put(fib.aB, fge.b());
+      $$0.put(fib.aC, fgf.a(fig.a));
+      $$0.put(fib.aK, fgf.a(new fig(0.5F)));
+      $$0.put(fib.aD, $$11);
+      $$0.put(fib.aI, $$4);
+      $$0.put(fib.aJ, $$3);
+      $$0.put(fib.aE, $$11);
+      $$0.put(fib.aF, $$4);
+      $$0.put(fib.aG, $$3);
+      $$0.put(fib.aH, $$12);
+      $$0.put(fib.aL, $$8);
+      $$0.put(fib.aM, fii.a(fgi.a(fig.a, false), 64, 64));
+      $$0.put(fib.aN, $$13);
+      $$0.put(fib.aO, $$4);
+      $$0.put(fib.aP, $$2);
+      $$0.put(fib.aQ, fii.a(fgi.a(fig.a, true), 64, 64));
+      $$0.put(fib.aR, $$4);
+      $$0.put(fib.aS, $$2);
+      $$0.put(fib.aT, fxw.a());
+      $$0.put(fib.aU, fgj.c());
+      $$0.put(fib.aV, fgk.b());
+      $$0.put(fib.aW, fgl.b());
+      $$0.put(fib.aX, fgm.b());
+      $$0.put(fib.aY, fgo.a());
+      $$0.put(fib.aZ, fgq.b());
+      $$0.put(fib.ba, fgr.b());
+      $$0.put(fib.bb, fgt.c());
+      $$0.put(fib.bc, fgs.c());
+      $$0.put(fib.bd, fgu.a());
+      $$0.put(fib.be, fgw.a());
+      $$0.put(fib.bf, fgv.b());
+      $$0.put(fib.bg, fgx.b());
+      $$0.put(fib.bh, $$17);
+      $$0.put(fib.bj, $$4);
+      $$0.put(fib.bk, $$2);
+      $$0.put(fib.bi, $$7);
+      $$0.put(fib.bl, $$6);
+      $$0.put(fib.bm, fhb.c());
+      $$0.put(fib.bn, fhb.b());
+      $$0.put(fib.bo, fhc.b());
+      $$0.put(fib.bp, fhd.b());
+      $$0.put(fib.bq, $$5);
+      $$0.put(fib.br, $$19);
+      $$0.put(fib.bs, fhf.b());
+      $$0.put(fib.bt, $$17);
+      $$0.put(fib.bu, $$4);
+      $$0.put(fib.bv, $$2);
+      $$0.put(fib.bw, fii.a(ffq.a(new fig(0.25F), 0.0F), 64, 32));
+      $$0.put(fib.bx, $$15);
+      $$0.put(fib.by, $$15);
+      $$0.put(fib.bz, fhh.c());
+      $$0.put(fib.bA, $$5);
+      $$0.put(fib.bB, $$14);
+      $$0.put(fib.bC, fhi.a());
+      $$0.put(fib.bD, fhk.a(fig.a));
+      $$0.put(fib.bE, fhk.a(a));
+      $$0.put(fib.bF, fhj.a(fig.a));
+      $$0.put(fib.bG, fhj.a(a));
+      $$0.put(fib.bH, fhl.c());
+      $$0.put(fib.bI, fhm.b());
+      $$0.put(fib.bJ, $$18);
+      $$0.put(fib.bK, $$8);
+      $$0.put(fib.bL, fhp.b());
+      $$0.put(fib.bM, $$18);
+      $$0.put(fib.bN, fhr.c());
+      $$0.put(fib.bO, fhs.a(fig.a));
+      $$0.put(fib.bP, fhs.a(c));
+      $$0.put(fib.bU, fwi.a());
+      $$0.put(fib.bQ, $$17);
+      $$0.put(fib.bR, $$4);
+      $$0.put(fib.bS, $$2);
+      $$0.put(fib.bT, $$6);
+      $$0.put(fib.bV, fht.c());
+      $$0.put(fib.bW, $$16);
+      $$0.put(fib.bX, $$1);
+      $$0.put(fib.ca, $$4);
+      $$0.put(fib.cb, $$2);
+      $$0.put(fib.bY, $$13);
+      $$0.put(fib.bZ, $$7);
+      $$0.put(fib.cc, fhv.c());
+      $$0.put(fib.cd, fhv.a(c));
+      $$0.put(fib.ce, fhv.a(b));
+      $$0.put(fib.cf, $$11);
+      $$0.put(fib.cg, $$4);
+      $$0.put(fib.ch, $$3);
+      fii $$20 = fel.a();
+      fii $$21 = fep.e();
+      fii $$22 = fgp.b();
+      fii $$23 = feq.a();
 
-   public static fhz a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
-   }
+      for (cdn.b $$24 : cdn.b.values()) {
+         if ($$24 == cdn.b.i) {
+            $$0.put(fib.c($$24), $$22);
+            $$0.put(fib.d($$24), $$23);
+         } else {
+            $$0.put(fib.c($$24), $$20);
+            $$0.put(fib.d($$24), $$21);
+         }
+      }
 
-   public static fhz b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
-   }
-
-   public static fhz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fhz($$0, $$1, $$2, $$3, $$4, $$5);
+      fii $$25 = fqs.f();
+      dgw.a().forEach($$2x -> $$0.put(fib.a($$2x), $$25));
+      fii $$26 = fqo.e();
+      dgw.a().forEach($$2x -> $$0.put(fib.b($$2x), $$26));
+      ImmutableMap<fia, fii> $$27 = $$0.build();
+      List<fia> $$28 = fib.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
+      }
    }
 }

@@ -1,80 +1,241 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
-public class aex extends IOException {
-   private final List<aex.a> a = Lists.newArrayList();
-   private final String b;
+public class aex implements Comparable<aex> {
+   public static final Codec<aex> a = Codec.STRING.comapFlatMap(aex::b, aex::toString).stable();
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.id.invalid"));
+   public static final char b = ':';
+   public static final String c = "minecraft";
+   public static final String d = "realms";
+   private final String f;
+   private final String g;
+
+   protected aex(String $$0, String $$1, @Nullable aex.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   public aex(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
+   }
+
+   private aex(String[] $$0) {
+      this($$0[0], $$0[1]);
+   }
 
    public aex(String $$0) {
-      this.a.add(new aex.a());
-      this.b = $$0;
+      this(b($$0, ':'));
    }
 
-   public aex(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new aex.a());
-      this.b = $$0;
+   public static aex a(String $$0, char $$1) {
+      return new aex(b($$0, $$1));
    }
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
+   @Nullable
+   public static aex a(String $$0) {
+      try {
+         return new aex($$0);
+      } catch (z var2) {
+         return null;
+      }
    }
 
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new aex.a());
+   @Nullable
+   public static aex a(String $$0, String $$1) {
+      try {
+         return new aex($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
+   }
+
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static DataResult<aex> b(String $$0) {
+      try {
+         return DataResult.success(new aex($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.f;
+   }
+
+   public aex c(String $$0) {
+      return new aex(this.f, d(this.f, $$0), null);
+   }
+
+   public aex a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.g));
+   }
+
+   public aex d(String $$0) {
+      return this.c($$0 + this.g);
+   }
+
+   public aex e(String $$0) {
+      return this.c(this.g + $$0);
    }
 
    @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   public String toString() {
+      return this.f + ":" + this.g;
    }
 
-   public static aex a(Exception $$0) {
-      if ($$0 instanceof aex) {
-         return (aex)$$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new aex($$1, $$0);
+         return !($$0 instanceof aex $$1) ? false : this.f.equals($$1.f) && this.g.equals($$1.g);
       }
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   @Override
+   public int hashCode() {
+      return 31 * this.f.hashCode() + this.g.hashCode();
+   }
 
-      a() {
+   public int a(aex $$0) {
+      int $$1 = this.g.compareTo($$0.g);
+      if ($$1 == 0) {
+         $$1 = this.f.compareTo($$0.f);
       }
 
-      void a(String $$0) {
-         this.b.add(0, $$0);
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.f + "." + this.g;
+   }
+
+   public String e() {
+      return this.f.equals("minecraft") ? this.g : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   public static aex a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
       }
 
-      @Nullable
-      public String a() {
-         return this.a;
-      }
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
 
-      public String b() {
-         return StringUtils.join(this.b, "->");
+      try {
+         return new aex($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw e.createWithContext($$0);
       }
+   }
 
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<aex>, JsonSerializer<aex> {
+      public aex a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new aex(aro.a($$0, "location"));
+      }
+
+      public JsonElement a(aex $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
       }
    }
 }

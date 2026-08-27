@@ -1,62 +1,45 @@
-public class clj extends cli {
-   private final hc b;
+import java.util.Map;
+import java.util.Optional;
 
-   public clj(cpq $$0, gw $$1, hc $$2, cja $$3, hc $$4) {
-      super($$0, null, bgs.a, $$3, new ehe(ehi.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class clj {
+   public static final aew<cli> a = a("quartz");
+   public static final aew<cli> b = a("iron");
+   public static final aew<cli> c = a("netherite");
+   public static final aew<cli> d = a("redstone");
+   public static final aew<cli> e = a("copper");
+   public static final aew<cli> f = a("gold");
+   public static final aew<cli> g = a("emerald");
+   public static final aew<cli> h = a("diamond");
+   public static final aew<cli> i = a("lapis");
+   public static final aew<cli> j = a("amethyst");
+
+   public static void a(ns<cli> $$0) {
+      a($$0, a, cji.nN, uh.a.a(14931140), 0.1F);
+      a($$0, b, cji.nQ, uh.a.a(15527148), 0.2F, Map.of(cgr.c, "iron_darker"));
+      a($$0, c, cji.nV, uh.a.a(6445145), 0.3F, Map.of(cgr.g, "netherite_darker"));
+      a($$0, d, cji.ll, uh.a.a(9901575), 0.4F);
+      a($$0, e, cji.nS, uh.a.a(11823181), 0.5F);
+      a($$0, f, cji.nU, uh.a.a(14594349), 0.6F, Map.of(cgr.d, "gold_darker"));
+      a($$0, g, cji.nL, uh.a.a(1155126), 0.7F);
+      a($$0, h, cji.nK, uh.a.a(7269586), 0.8F, Map.of(cgr.e, "diamond_darker"));
+      a($$0, i, cji.nM, uh.a.a(4288151), 0.9F);
+      a($$0, j, cji.nO, uh.a.a(10116294), 1.0F);
    }
 
-   @Override
-   public gw a() {
-      return this.j().a();
+   public static Optional<hg.c<cli>> a(hu $$0, cjf $$1) {
+      return $$0.d(je.aD).h().filter($$1x -> $$1.a(((cli)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   private static void a(ns<cli> $$0, aew<cli> $$1, cja $$2, uh $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   private static void a(ns<cli> $$0, aew<cli> $$1, cja $$2, uh $$3, float $$4, Map<cgr, String> $$5) {
+      cli $$6 = cli.a($$1.a().a(), $$2, $$4, tl.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   @Override
-   public hc d() {
-      return hc.a;
-   }
-
-   @Override
-   public hc[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new hc[]{hc.a, hc.c, hc.f, hc.d, hc.e, hc.b};
-         case b:
-            return new hc[]{hc.a, hc.b, hc.c, hc.f, hc.d, hc.e};
-         case c:
-            return new hc[]{hc.a, hc.c, hc.f, hc.e, hc.b, hc.d};
-         case d:
-            return new hc[]{hc.a, hc.d, hc.f, hc.e, hc.b, hc.c};
-         case e:
-            return new hc[]{hc.a, hc.e, hc.d, hc.b, hc.c, hc.f};
-         case f:
-            return new hc[]{hc.a, hc.f, hc.d, hc.b, hc.c, hc.e};
-      }
-   }
-
-   @Override
-   public hc g() {
-      return this.b.o() == hc.a.b ? hc.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   private static aew<cli> a(String $$0) {
+      return aew.a(je.aD, new aex($$0));
    }
 }

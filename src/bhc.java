@@ -1,9 +1,18 @@
 import javax.annotation.Nullable;
 
-public interface bhc extends bgm {
-   int[] a(hc var1);
+public interface bhc {
+   tl ac();
 
-   boolean a(int var1, cja var2, @Nullable hc var3);
+   default boolean ad() {
+      return this.ae() != null;
+   }
 
-   boolean b(int var1, cja var2, hc var3);
+   default tl N_() {
+      return this.ac();
+   }
+
+   @Nullable
+   default tl ae() {
+      return null;
+   }
 }

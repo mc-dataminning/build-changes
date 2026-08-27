@@ -1,36 +1,78 @@
 import javax.annotation.Nullable;
 
-public class zc implements va<ws> {
-   private final int a;
-   private final bhw b;
+public class zc implements vd<ww> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final int d;
+   private final ed.a e;
+   private final ed.a f;
+   private final boolean g;
 
-   public zc(int $$0, bhw $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public zc(ed.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
    }
 
-   public zc(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a(jd.e);
+   public zc(ed.a $$0, biq $$1, ed.a $$2) {
+      this.e = $$0;
+      this.d = $$1.ai();
+      this.f = $$2;
+      ehn $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
+   }
+
+   public zc(so $$0) {
+      this.e = $$0.b(ed.a.class);
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.m();
+         this.f = $$0.b(ed.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
+      }
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(jd.e, this.b);
+   public void a(so $$0) {
+      $$0.a(this.e);
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
+      }
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bil a(cpq $$0) {
-      return $$0.a(this.a);
+   public ed.a a() {
+      return this.e;
    }
 
    @Nullable
-   public bhw a() {
-      return this.b;
+   public ehn a(cpv $$0) {
+      if (this.g) {
+         biq $$1 = $$0.a(this.d);
+         return $$1 == null ? new ehn(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new ehn(this.a, this.b, this.c);
+      }
    }
 }

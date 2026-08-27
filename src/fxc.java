@@ -1,24 +1,45 @@
-public class fxc extends fxk<buy, ffn<buy>> {
-   private final fot a;
+public class fxc extends fxp<bvb, fff<bvb>> {
+   private final foa a;
 
-   public fxc(fux<buy, ffn<buy>> $$0, fot $$1) {
+   public fxc(fvc<bvb, fff<bvb>> $$0, foa $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(elk $$0, fnz $$1, int $$2, buy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.ga() != 0) {
-         $$0.a();
-         fhx $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(csr.bT.n(), $$0, $$1, $$2, fyq.d);
-         $$0.b();
+   public void a(elp $$0, foe $$1, int $$2, bvb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fC();
+      boolean $$11 = $$3.m_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.m_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      cjf $$14 = $$3.c(biv.a);
+      this.a.a($$3, $$14, cjc.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

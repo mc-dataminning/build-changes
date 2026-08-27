@@ -1,52 +1,61 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class cwr extends cwd implements cxe {
-   protected static final eib f = csq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double g = 0.14;
+public class cwr extends csv {
+   private final csv a;
+   private static final Map<csv, csv> b = Maps.newIdentityHashMap();
+   private static final Map<dfj, dfj> c = Maps.newIdentityHashMap();
+   private static final Map<dfj, dfj> d = Maps.newIdentityHashMap();
 
-   protected cwr(dfd.d $$0) {
-      super($$0, hc.b, f, true, 0.14);
+   public cwr(csv $$0, dfi.d $$1) {
+      super($$1.e($$0.t() / 2.0F).f(0.75F));
+      this.a = $$0;
+      b.put($$0, this);
+   }
+
+   public csv a() {
+      return this.a;
+   }
+
+   public static boolean h(dfj $$0) {
+      return b.containsKey($$0.b());
+   }
+
+   private void a(akr $$0, gw $$1) {
+      bzp $$2 = biu.aI.a((cpv)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.Q();
+      }
    }
 
    @Override
-   protected boolean g(dfe $$0) {
-      return $$0.a(csr.G);
+   public void a(dfj $$0, akr $$1, gw $$2, cjf $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.X().b(cpr.g) && cnq.a(cns.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected csq a() {
-      return csr.md;
+   public static dfj n(dfj $$0) {
+      return a(c, $$0, () -> b.get($$0.b()).n());
    }
 
-   @Override
-   protected boolean h(dfe $$0) {
-      return !$$0.a(csr.kJ);
+   public dfj o(dfj $$0) {
+      return a(d, $$0, () -> this.a().n());
    }
 
-   @Override
-   public boolean a(@Nullable cbp $$0, cow $$1, gw $$2, dfe $$3, eag $$4) {
-      return false;
-   }
+   private static dfj a(Map<dfj, dfj> $$0, dfj $$1, Supplier<dfj> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dfj $$2x = $$2.get();
 
-   @Override
-   public boolean a(cpr $$0, gw $$1, dfe $$2, eah $$3) {
-      return false;
-   }
+         for (dgm $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
 
-   @Override
-   protected int a(arx $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dfe a(cli $$0) {
-      eah $$1 = $$0.q().b_($$0.a());
-      return $$1.a(apt.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   public eah c_(dfe $$0) {
-      return eai.c.a(false);
+         return $$2x;
+      });
    }
 }

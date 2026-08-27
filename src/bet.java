@@ -1,141 +1,209 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.function.DoubleSupplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class bet implements bev {
-   public static final int a = 10;
+public class bet {
+   private final String b;
+   private final bes c;
+   private final DoubleSupplier d;
+   private final ByteBuf e;
+   private final ByteBuf f;
+   private volatile boolean g;
    @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<beo, List<bfa>> c = new Object2ObjectOpenHashMap();
-   private final bde d;
-   private final Executor e;
-   private final bez f;
-   private final Consumer<bdj> g;
-   private final Consumer<Path> h;
-   private final beq i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bdi m;
-   private volatile boolean n;
-   private Set<beo> o = ImmutableSet.of();
+   private final Runnable h;
+   @Nullable
+   final bet.c a;
+   private double i;
 
-   private bet(beq $$0, LongSupplier $$1, Executor $$2, bez $$3, Consumer<bdj> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bde($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bdd(this.j, () -> this.l, false);
-      this.d.c();
+   protected bet(String $$0, bes $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable bet.c $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.h = $$3;
+      this.d = $$2;
+      this.a = $$4;
+      this.f = ByteBufAllocator.DEFAULT.buffer();
+      this.e = ByteBufAllocator.DEFAULT.buffer();
+      this.g = true;
    }
 
-   public static bet a(beq $$0, LongSupplier $$1, Executor $$2, bez $$3, Consumer<bdj> $$4, Consumer<Path> $$5) {
-      return new bet($$0, $$1, $$2, $$3, $$4, $$5);
+   public static bet a(String $$0, bes $$1, DoubleSupplier $$2) {
+      return new bet($$0, $$1, $$2, null, null);
    }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
+   public static <T> bet a(String $$0, bes $$1, T $$2, ToDoubleFunction<T> $$3) {
+      return a($$0, $$1, $$3, $$2).a();
+   }
+
+   public static <T> bet.a<T> a(String $$0, bes $$1, ToDoubleFunction<T> $$2, T $$3) {
+      return new bet.a<>($$0, $$1, $$2, $$3);
+   }
+
+   public void a() {
+      if (!this.g) {
+         throw new IllegalStateException("Not running");
+      } else {
+         if (this.h != null) {
+            this.h.run();
+         }
       }
    }
 
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bdh.a;
-         this.g.accept(bdf.a);
-         this.a(this.o);
+   public void a(int $$0) {
+      this.h();
+      this.i = this.d.getAsDouble();
+      this.f.writeDouble(this.i);
+      this.e.writeInt($$0);
+   }
+
+   public void b() {
+      this.h();
+      this.f.release();
+      this.e.release();
+      this.g = false;
+   }
+
+   private void h() {
+      if (!this.g) {
+         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
       }
    }
 
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (beo $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
+   DoubleSupplier c() {
+      return this.d;
    }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (beo $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               bfa $$1 = new bfa(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
+   public String d() {
+      return this.b;
+   }
+
+   public bes e() {
+      return this.c;
+   }
+
+   public bet.b f() {
+      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
+      int $$1 = Integer.MIN_VALUE;
+      int $$2 = Integer.MIN_VALUE;
+
+      while (this.f.isReadable(8)) {
+         int $$3 = this.e.readInt();
+         if ($$1 == Integer.MIN_VALUE) {
+            $$1 = $$3;
          }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bdd(this.j, () -> this.l, false);
+         $$0.put($$3, this.f.readDouble());
+         $$2 = $$3;
+      }
+
+      return new bet.b($$1, $$2, $$0);
+   }
+
+   public boolean g() {
+      return this.a != null && this.a.test(this.i);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bet $$1 = (bet)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> {
+      private final String a;
+      private final bes b;
+      private final DoubleSupplier c;
+      private final T d;
+      @Nullable
+      private Runnable e;
+      @Nullable
+      private bet.c f;
+
+      public a(String $$0, bes $$1, ToDoubleFunction<T> $$2, T $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = () -> $$2.applyAsDouble($$3);
+         this.d = $$3;
+      }
+
+      public bet.a<T> a(Consumer<T> $$0) {
+         this.e = () -> $$0.accept(this.d);
+         return this;
+      }
+
+      public bet.a<T> a(bet.c $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public bet a() {
+         return new bet(this.a, this.b, this.c, this.e, this.f);
+      }
+   }
+
+   public static class b {
+      private final Int2DoubleMap a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, Int2DoubleMap $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      public double a(int $$0) {
+         return this.a.get($$0);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public interface c {
+      boolean test(double var1);
+   }
+
+   public static class d implements bet.c {
+      private final float a;
+      private double b = Double.MIN_VALUE;
+
+      public d(float $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean test(double $$0) {
+         boolean $$2;
+         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
+            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
          } else {
-            this.n = false;
-            bdj $$2 = this.d.e();
-            this.m = bdh.a;
-            this.g.accept($$2);
-            this.a($$2);
+            $$2 = false;
          }
+
+         this.b = $$0;
+         return $$2;
       }
-   }
-
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
-
-   @Override
-   public bdk f() {
-      return bdk.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bdj $$0) {
-      HashSet<beo> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<beo> $$0) {
-      for (beo $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
    }
 }

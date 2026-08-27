@@ -1,59 +1,78 @@
-public class cmd extends cmk {
-   public cmd(clt $$0) {
-      super(
-         "",
-         $$0,
-         3,
-         3,
-         hp.a(cmb.a, cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.rf), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa)),
-         new cja(cjd.tp)
-      );
+public class cmd extends cmb {
+   private static final cmg a = cmg.a(cji.qa);
+   private static final cmg b = cmg.a(cji.oG);
+   private static final cmg c = cmg.a(cji.tB);
+
+   public cmd(cly $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(ceu $$0, cpq $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cja $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ebr $$3 = cjh.a($$2, $$1);
-            if ($$3 == null) {
+   public boolean a(cez $$0, cpv $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
                return false;
-            } else {
-               return $$3.f() ? false : $$3.f < 4;
             }
          }
       }
+
+      return $$2 && $$3 >= 1;
    }
 
-   @Override
-   public cja a(ceu $$0, hu $$1) {
-      cja $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
-   }
+   public cjf a(cez $$0, hu $$1) {
+      cjf $$2 = new cjf(cji.tA, 3);
+      qx $$3 = $$2.a("Fireworks");
+      rd $$4 = new rd();
+      int $$5 = 0;
 
-   private static cja a(ceu $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cja $$2 = $$0.a($$1);
-         if ($$2.a(cjd.rf)) {
-            return $$2;
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cjf $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               qx $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
          }
       }
 
-      return cja.b;
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean ah_() {
-      return true;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cmh<?> ai_() {
-      return cmh.f;
+   public cjf a(hu $$0) {
+      return new cjf(cji.tA);
+   }
+
+   @Override
+   public cmm<?> an_() {
+      return cmm.g;
    }
 }

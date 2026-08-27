@@ -1,8 +1,47 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ehj extends ehl {
+   private final hc b;
+   private final gw c;
+   private final boolean d;
+   private final boolean e;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ehj {
+   public static ehj a(ehn $$0, hc $$1, gw $$2) {
+      return new ehj(true, $$0, $$1, $$2, false);
+   }
+
+   public ehj(ehn $$0, hc $$1, gw $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
+   }
+
+   private ehj(boolean $$0, ehn $$1, hc $$2, gw $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+   }
+
+   public ehj a(hc $$0) {
+      return new ehj(this.d, this.a, $$0, this.c, this.e);
+   }
+
+   public ehj a(gw $$0) {
+      return new ehj(this.d, this.a, this.b, $$0, this.e);
+   }
+
+   public gw a() {
+      return this.c;
+   }
+
+   public hc b() {
+      return this.b;
+   }
+
+   @Override
+   public ehl.a c() {
+      return this.d ? ehl.a.a : ehl.a.b;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
 }

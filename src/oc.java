@@ -1,202 +1,248 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 
 public class oc {
-   private static final dle.o a = a(csr.a);
-   private static final dle.o b = a(csr.F);
-   private static final dle.o c = a(csr.hj);
-   private static final dle.o d = a(csr.hk);
-   private static final dle.o e = a(csr.iA);
-   private static final dle.o f = a(csr.K);
-   private static final dle.o g = a(csr.jp);
-   private static final dle.o h = a(csr.b);
-   private static final dle.o i = a(csr.rI);
-   private static final dle.o j = a(csr.j);
-   private static final dle.o k = a(csr.l);
-   private static final dle.o l = a(csr.k);
-   private static final dle.o m = a(csr.fl);
-   private static final dle.o n = a(csr.i);
-   private static final dle.o o = a(csr.qA);
-   private static final dle.o p = a(csr.L);
-   private static final dle.o q = a(csr.I);
-   private static final dle.o r = a(csr.aV);
-   private static final dle.o s = a(csr.iC);
-   private static final dle.o t = a(csr.dP);
-   private static final dle.o u = a(csr.rH);
-   private static final dle.o v = a(csr.qC);
-   private static final dle.o w = a(csr.dO);
-   private static final dle.o x = a(csr.G);
-   private static final dle.o y = a(csr.H);
-   private static final dle.o z = a(csr.dW);
-   private static final dle.o A = a(csr.dX);
-   private static final dle.o B = a(csr.dY);
-   private static final dle.o C = a(csr.dZ);
-   private static final dle.o D = a(csr.pr);
-   private static final dle.o E = a(csr.op);
-   private static final dle.o F = a(csr.on);
-   private static final dle.o G = a(csr.kK);
-   private static final dle.o H = a(csr.ow);
-   private static final dle.o I = a(csr.fz);
+   public static final aew<dwr> a = nz.a("village/snowy/town_centers");
+   private static final aew<dwr> b = nz.a("village/snowy/terminators");
 
-   private static dle.o a(csq $$0) {
-      return dle.a($$0.n());
-   }
-
-   public static dle.o a() {
-      return a(true, false, true);
-   }
-
-   public static dle.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dle.f $$3 = dle.a(dlh.a(97), 2);
-      dle.f $$4 = dle.a(dlh.a(256), 0);
-      dle.f $$5 = dle.b(dlh.a(63), -1);
-      dle.f $$6 = dle.b(dlh.a(74), 1);
-      dle.f $$7 = dle.a(dlh.a(60), 0);
-      dle.f $$8 = dle.a(dlh.a(62), 0);
-      dle.f $$9 = dle.a(dlh.a(63), 0);
-      dle.f $$10 = dle.a(-1, 0);
-      dle.f $$11 = dle.a(0, 0);
-      dle.f $$12 = dle.b(-6, -1);
-      dle.f $$13 = dle.b();
-      dle.f $$14 = dle.a(cqv.W, cqv.X);
-      dle.f $$15 = dle.a();
-      dle.o $$16 = dle.a(dle.a($$11, n), j);
-      dle.o $$17 = dle.a(dle.a(dle.e, r), q);
-      dle.o $$18 = dle.a(dle.a(dle.e, h), p);
-      dle.f $$19 = dle.a(cqv.P, cqv.M, cqv.N);
-      dle.f $$20 = dle.a(cqv.f);
-      dle.o $$21 = dle.a(
-         dle.a(dle.a(cqv.J), dle.a(dle.a(dle.a(dkw.X, -0.0125, 0.0125), o), h)),
-         dle.a(dle.a(cqv.O), dle.a(dle.a(dle.a(dkw.Y, -0.05, 0.05), $$18), h)),
-         dle.a(dle.a(cqv.t), dle.a(a(1.0), h)),
-         dle.a($$19, $$17),
-         dle.a($$20, $$17),
-         dle.a(dle.a(cqv.Z), h)
+   public static void a(ns<dwr> $$0) {
+      hh<dum> $$1 = $$0.a(je.ay);
+      hg<dum> $$2 = $$1.b(pk.h);
+      hg<dum> $$3 = $$1.b(pk.c);
+      hg<dum> $$4 = $$1.b(pk.d);
+      hh<dyz> $$5 = $$0.a(je.aA);
+      hg<dyz> $$6 = $$5.b(oa.k);
+      hg<dyz> $$7 = $$5.b(oa.n);
+      hg<dyz> $$8 = $$5.b(oa.c);
+      hh<dwr> $$9 = $$0.a(je.aC);
+      hg<dwr> $$10 = $$9.b(nz.a);
+      hg<dwr> $$11 = $$9.b(b);
+      $$0.a(
+         a,
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(dwp.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(dwp.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(dwp.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(dwp.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(dwp.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
+            ),
+            dwr.a.b
+         )
       );
-      dle.o $$22 = dle.a(dle.a(dkw.Z, 0.45, 0.58), dle.a($$11, v));
-      dle.o $$23 = dle.a(dle.a(dkw.Z, 0.35, 0.6), dle.a($$11, v));
-      dle.o $$24 = dle.a(
-         dle.a(dle.a(cqv.H), dle.a(dle.a($$15, s), dle.a(dle.a(dkw.aa, -0.5, 0.2), s), dle.a(dle.a(dkw.ab, -0.0625, 0.025), w), dle.a($$11, t))),
-         dle.a(dle.a(cqv.G), dle.a(dle.a($$15, h), $$22, dle.a($$11, t))),
-         dle.a(dle.a(cqv.I), h),
-         dle.a(dle.a(cqv.F), dle.a($$22, j)),
-         $$21,
-         dle.a(dle.a(cqv.w), dle.a(a(1.75), h)),
-         dle.a(dle.a(cqv.u), dle.a(dle.a(a(2.0), $$18), dle.a(a(1.0), h), dle.a(a(-1.0), j), $$18)),
-         dle.a(dle.a(cqv.h), u),
-         j
+      nz.a(
+         $$0,
+         "village/snowy/streets",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(dwp.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(dwp.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(dwp.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(dwp.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(dwp.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(dwp.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(dwp.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(dwp.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(dwp.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(dwp.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(dwp.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/streets/turn_01", $$6), 3)
+               }
+            ),
+            dwr.a.a
+         )
       );
-      dle.o $$25 = dle.a(
-         dle.a(dle.a(cqv.H), dle.a(dle.a($$15, s), dle.a(dle.a(dkw.aa, 0.0, 0.2), s), dle.a(dle.a(dkw.ab, 0.0, 0.025), w), dle.a($$11, t))),
-         dle.a(dle.a(cqv.G), dle.a(dle.a($$15, h), $$23, dle.a($$11, t))),
-         dle.a(dle.a(cqv.I), dle.a(dle.a($$15, h), dle.a($$11, t))),
-         dle.a(dle.a(cqv.F), dle.a($$23, dle.a($$11, t))),
-         $$21,
-         dle.a(dle.a(cqv.w), dle.a(dle.a(a(1.75), h), dle.a(a(-0.5), l))),
-         dle.a(dle.a(cqv.u), dle.a(dle.a(a(2.0), $$18), dle.a(a(1.0), h), dle.a(a(-1.0), $$16), $$18)),
-         dle.a(dle.a(cqv.n, cqv.o), dle.a(dle.a(a(1.75), l), dle.a(a(-0.95), k))),
-         dle.a(dle.a(cqv.e), dle.a($$11, t)),
-         dle.a(dle.a(cqv.h), u),
-         dle.a(dle.a(cqv.Y), m),
-         $$16
+      nz.a(
+         $$0,
+         "village/snowy/zombie/streets",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(dwp.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(dwp.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(dwp.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(dwp.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(dwp.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(dwp.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(dwp.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
+            ),
+            dwr.a.a
+         )
       );
-      dle.f $$26 = dle.a(dkw.N, -0.909, -0.5454);
-      dle.f $$27 = dle.a(dkw.N, -0.1818, 0.1818);
-      dle.f $$28 = dle.a(dkw.N, 0.5454, 0.909);
-      dle.o $$29 = dle.a(
-         dle.a(
-            dle.a,
-            dle.a(
-               dle.a(dle.a(cqv.C), dle.a($$3, dle.a(dle.a($$26, l), dle.a($$27, l), dle.a($$28, l), $$16))),
-               dle.a(dle.a(cqv.g), dle.a($$8, dle.a(dle.a($$9), dle.a(dle.a(dkw.W, 0.0), x)))),
-               dle.a(dle.a(cqv.h), dle.a($$7, dle.a(dle.a($$9), dle.a(dle.a(dkw.W, 0.0), x))))
-            )
-         ),
-         dle.a(
-            dle.a(cqv.A, cqv.B, cqv.C),
-            dle.a(
-               dle.a(
-                  dle.a,
-                  dle.a(
-                     dle.a($$4, d),
-                     dle.a($$6, dle.a(dle.a($$26, e), dle.a($$27, e), dle.a($$28, e), dle.e())),
-                     dle.a($$10, dle.a(dle.a(dle.e, g), f)),
-                     dle.a(dle.a($$13), d),
-                     dle.a($$12, c),
-                     $$18
-                  )
-               ),
-               dle.a($$5, dle.a(dle.a($$9, dle.a(dle.a($$6), d)), dle.e())),
-               dle.a(dle.b, dle.a($$12, c))
-            )
-         ),
-         dle.a(dle.a, dle.a($$10, dle.a(dle.a($$14, dle.a($$13, dle.a(dle.a($$11, a), dle.a(dle.d(), w), x))), $$25))),
-         dle.a($$12, dle.a(dle.a(dle.a, dle.a($$14, dle.a($$13, x))), dle.a(dle.b, $$24), dle.a($$19, dle.a(dle.c, r)), dle.a($$20, dle.a(dle.d, r)))),
-         dle.a(dle.a, dle.a(dle.a(dle.a(cqv.H, cqv.I), h), dle.a(dle.a(cqv.P, cqv.Q, cqv.R), $$17), $$18))
+      nz.a(
+         $$0,
+         "village/snowy/houses",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(dwp.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(dwp.g(), 6)
+               }
+            ),
+            dwr.a.b
+         )
       );
-      Builder<dle.o> $$30 = ImmutableList.builder();
-      if ($$1) {
-         $$30.add(dle.a(dle.a(dle.a("bedrock_roof", dlh.c(5), dlh.b())), b));
-      }
-
-      if ($$2) {
-         $$30.add(dle.a(dle.a("bedrock_floor", dlh.a(), dlh.b(5)), b));
-      }
-
-      dle.o $$31 = dle.a(dle.c(), $$29);
-      $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dle.a(dle.a("deepslate", dlh.a(0), dlh.a(8)), i));
-      return dle.a((dle.o[])$$30.build().toArray(dle.o[]::new));
-   }
-
-   public static dle.o b() {
-      dle.f $$0 = dle.a(dlh.a(31), 0);
-      dle.f $$1 = dle.a(dlh.a(32), 0);
-      dle.f $$2 = dle.b(dlh.a(30), 0);
-      dle.f $$3 = dle.a(dle.b(dlh.a(35), 0));
-      dle.f $$4 = dle.a(dlh.c(5), 0);
-      dle.f $$5 = dle.b();
-      dle.f $$6 = dle.a(dkw.ac, -0.012);
-      dle.f $$7 = dle.a(dkw.ad, -0.012);
-      dle.f $$8 = dle.a(dkw.ae, -0.012);
-      dle.f $$9 = dle.a(dkw.af, 0.54);
-      dle.f $$10 = dle.a(dkw.ag, 1.17);
-      dle.f $$11 = dle.a(dkw.ah, 0.0);
-      dle.o $$12 = dle.a($$8, dle.a($$2, dle.a($$3, p)));
-      return dle.a(
-         dle.a(dle.a("bedrock_floor", dlh.a(), dlh.b(5)), b),
-         dle.a(dle.a(dle.a("bedrock_roof", dlh.c(5), dlh.b())), b),
-         dle.a($$4, z),
-         dle.a(dle.a(cqv.ag), dle.a(dle.a(dle.f, C), dle.a(dle.b, dle.a($$12, dle.a($$11, C), D)))),
-         dle.a(dle.a(cqv.af), dle.a(dle.a(dle.f, dle.a(dle.a($$11, A), B)), dle.a(dle.b, dle.a($$12, dle.a($$11, A), B)))),
-         dle.a(
-            dle.a,
-            dle.a(
-               dle.a(dle.a($$1), dle.a($$5, y)),
-               dle.a(dle.a(cqv.ad), dle.a(dle.a($$9), dle.a($$0, dle.a(dle.a($$10, E), F)))),
-               dle.a(dle.a(cqv.ae), dle.a(dle.a($$9), dle.a($$0, dle.a(dle.a($$10, G), H))))
-            )
-         ),
-         dle.a(
-            dle.a(cqv.ac),
-            dle.a(
-               dle.a(dle.b, dle.a($$6, dle.a(dle.a(dle.a($$5), dle.a($$2, dle.a($$3, A))), z))),
-               dle.a(dle.a, dle.a($$0, dle.a($$3, dle.a($$7, dle.a(dle.a($$1, p), dle.a(dle.a($$5), p))))))
-            )
-         ),
-         z
+      nz.a(
+         $$0,
+         "village/snowy/zombie/houses",
+         new dwr(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(dwp.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(dwp.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(dwp.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(dwp.g(), 6)
+               }
+            ),
+            dwr.a.b
+         )
       );
-   }
-
-   public static dle.o c() {
-      return I;
-   }
-
-   public static dle.o d() {
-      return a;
-   }
-
-   private static dle.f a(double $$0) {
-      return dle.a(dkw.N, $$0 / 8.25, Double.MAX_VALUE);
+      $$0.a(
+         b,
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_04", $$6), 1)
+            ),
+            dwr.a.a
+         )
+      );
+      nz.a($$0, "village/snowy/trees", new dwr($$10, ImmutableList.of(Pair.of(dwp.a($$2), 1)), dwr.a.b));
+      nz.a(
+         $$0,
+         "village/snowy/decor",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 1),
+               Pair.of(dwp.g(), 9)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/snowy/zombie/decor",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(dwp.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 4),
+               Pair.of(dwp.g(), 7)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/snowy/villagers",
+         new dwr(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(dwp.a("village/snowy/villagers/baby"), 1),
+               Pair.of(dwp.a("village/snowy/villagers/unemployed"), 10)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0,
+         "village/snowy/zombie/villagers",
+         new dwr(
+            $$10,
+            ImmutableList.of(Pair.of(dwp.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(dwp.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            dwr.a.b
+         )
+      );
    }
 }

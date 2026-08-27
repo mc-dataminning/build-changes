@@ -1,99 +1,115 @@
-import java.util.Optional;
+public class fmm extends fmu {
+   private static final asc a = asc.a();
+   private final fmp b;
 
-public class fmm extends fmp {
-   fmm(fis $$0, fmk $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
+   fmm(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   fmm(fis $$0, fmk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
       this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public flt b() {
-      return flt.b;
+   public fly b() {
+      return fly.c;
    }
 
-   public static class a implements fls<ja> {
-      private final fmk a;
-
-      public a(fmk $$0) {
-         this.a = $$0;
-      }
-
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         arx $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         fmm $$12 = new fmm($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
+      } else {
+         this.e(arx.i(0.05F, this.y, 1.0F));
       }
    }
 
-   public static class b implements fls<ja> {
-      private final fmk a;
+   private boolean g() {
+      eqv $$0 = eqv.O();
+      fng $$1 = $$0.s;
+      return $$1 != null && $$1.bq().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aw().a() && $$1.gp();
+   }
 
-      public b(fmk $$0) {
+   public static class a implements flx<ja> {
+      private final fmp a;
+
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmm $$8 = new fmm($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<iu> o() {
-               return Optional.of(iu.a);
-            }
-         };
-         $$8.t = ars.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flu $$8 = new fmm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(0.15F);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
          return $$8;
       }
    }
 
-   public static class c implements fls<ja> {
-      private final fmk a;
+   public static class b implements flx<ja> {
+      private final fmp a;
 
-      public c(fmk $$0) {
+      public b(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmm $$8 = new fmm($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class c implements flx<ja> {
+      private final fmp a;
+
+      public c(fmp $$0) {
+         this.a = $$0;
+      }
+
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flu $$8 = new fmm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
          return $$8;
       }
    }
 
-   public static class d implements fls<ja> {
-      private final fmk a;
+   public static class d implements flx<ja> {
+      private final fmp a;
 
-      public d(fmk $$0) {
+      public d(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         fmm $$9 = new fmm($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class e implements flx<ja> {
+      private final fmp a;
+
+      public e(fmp $$0) {
+         this.a = $$0;
+      }
+
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmm $$8 = new fmm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
       }
    }
 }

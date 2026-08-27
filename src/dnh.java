@@ -1,34 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dnh extends dng {
-   public dnh(Codec<dqc> $$0) {
+public class dnh extends dnw<dqh> {
+   public dnh(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cpr $$0, arx $$1, gw $$2, dfe $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      gw.a $$8 = $$2.j();
+   public boolean a(dny<dqh> $$0) {
+      asc $$1 = $$0.d();
+      cqp $$2 = $$0.b();
+      cpc $$3 = new cpc($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      gw.a $$6 = new gw.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(hc.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            gw $$9 = $$2.a(dks.a.f, $$6);
+            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, csw.cv.n(), 2);
+               ddy.a($$2, $$1, $$9, eco.b);
+               dfj $$10 = csw.cp.n();
+
+               for (hc $$11 : hc.c.a) {
+                  gw $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
+
+               return true;
             }
          }
       }
 
-      return true;
+      return false;
    }
 }

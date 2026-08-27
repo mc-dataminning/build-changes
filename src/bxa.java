@@ -1,63 +1,56 @@
 import javax.annotation.Nullable;
 
-public class bxa extends bil {
-   public final bxc b;
-   public final String c;
-   private final bim d;
+public class bxa extends bwq {
+   public bxa(biu<? extends bxa> $$0, cpv $$1) {
+      super($$0, $$1);
+   }
 
-   public bxa(bxc $$0, String $$1, float $$2, float $$3) {
-      super($$0.ag(), $$0.dK());
-      this.d = bim.b($$2, $$3);
-      this.e_();
-      this.b = $$0;
-      this.c = $$1;
+   public static bkl.a s() {
+      return gD().a(bkm.a, 15.0).a(bkm.d, 0.2F);
    }
 
    @Override
-   protected void a_() {
+   protected void a(asc $$0) {
+      this.a(bkm.n).a(a($$0::j));
    }
 
    @Override
-   protected void a(qu $$0) {
+   public bjl eR() {
+      return bjl.b;
    }
 
    @Override
-   protected void b(qu $$0) {
+   protected apd w() {
+      return ape.Bh;
    }
 
    @Override
-   public boolean br() {
-      return true;
+   protected apd l_() {
+      return ape.Bi;
+   }
+
+   @Override
+   protected apd d(bho $$0) {
+      return ape.Bj;
    }
 
    @Nullable
    @Override
-   public cja dx() {
-      return this.b.dx();
+   public bil a(akr $$0, bil $$1) {
+      return biu.bq.a((cpv)$$0);
    }
 
    @Override
-   public boolean a(bhj $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   public bgy b(cbu $$0, bgx $$1) {
+      return !this.gs() ? bgy.d : super.b($$0, $$1);
    }
 
    @Override
-   public boolean t(bil $$0) {
-      return this == $$0 || this.b == $$0;
+   protected void gt() {
    }
 
    @Override
-   public va<ws> U() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bim a(bjn $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dI() {
-      return false;
+   protected float a(bir $$0, float $$1) {
+      return $$0.b - (this.m_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

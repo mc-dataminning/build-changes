@@ -1,59 +1,146 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class aoy {
-   public static final Codec<aoy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aeu.a.fieldOf("sound_id").forGetter(aoy::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aoy::b)).apply($$0, aoy::a)
-   );
-   public static final Codec<hg<aoy>> b = aeq.a(je.ad, a);
-   private static final float c = 16.0F;
-   private final aeu d;
-   private final float e;
-   private final boolean f;
+public class aoy extends aow {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final afn n;
 
-   private static aoy a(aeu $$0, Optional<Float> $$1) {
-      return $$1.<aoy>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   aoy(afn $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
+
+      try {
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
+      }
+
+      this.m = $$1;
    }
 
-   public static aoy a(aeu $$0) {
-      return new aoy($$0, 16.0F, false);
-   }
+   @Override
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
 
-   public static aoy a(aeu $$0, float $$1) {
-      return new aoy($$0, $$1, true);
-   }
+               int $$2 = 0;
+               int $$3 = aot.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
 
-   private aoy(aeu $$0, float $$1, boolean $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+               $$2 += 4;
+               int $$4 = aot.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = aot.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = aot.a(this.l, $$2, $$1);
 
-   public aeu a() {
-      return this.d;
-   }
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
 
-   public float a(float $$0) {
-      if (this.f) {
-         return this.e;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = aot.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
+               }
+            }
+
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
+         }
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
       }
    }
 
-   private Optional<Float> b() {
-      return this.f ? Optional.of(this.e) : Optional.empty();
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
    }
 
-   public void a(sl $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b(), sl::a);
+   private void d() throws IOException {
+      this.a(-1, 2, "");
    }
 
-   public static aoy b(sl $$0) {
-      aeu $$1 = $$0.s();
-      Optional<Float> $$2 = $$0.b(sl::readFloat);
-      return a($$1, $$2);
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
+
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
+   }
+
+   @Override
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
+   }
+
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
+      }
    }
 }

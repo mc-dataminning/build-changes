@@ -1,84 +1,52 @@
-import java.util.Map;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cww extends crj {
-   public static final int c = 1;
-   public static final int d = 3;
-   public static final dge e = dfu.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   public static final Predicate<cqo.c> f = $$0 -> $$0 == cqo.c.b;
-   public static final Predicate<cqo.c> g = $$0 -> $$0 == cqo.c.c;
-   private final Predicate<cqo.c> j;
+public class cww extends cwi implements cxj {
+   protected static final eig f = csv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double g = 0.14;
 
-   public cww(dfd.d $$0, Predicate<cqo.c> $$1, Map<civ, id> $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-      this.k(this.C.b().a(e, Integer.valueOf(1)));
+   protected cww(dfi.d $$0) {
+      super($$0, hc.b, f, true, 0.14);
    }
 
    @Override
-   public boolean d(dfe $$0) {
-      return $$0.c(e) == 3;
+   protected boolean g(dfj $$0) {
+      return $$0.a(csw.G);
    }
 
    @Override
-   protected boolean a(eag $$0) {
-      return $$0 == eai.c && this.j == f;
+   protected csv a() {
+      return csw.md;
    }
 
    @Override
-   protected double b(dfe $$0) {
-      return (6.0 + (double)$$0.c(e).intValue() * 3.0) / 16.0;
+   protected boolean h(dfj $$0) {
+      return !$$0.a(csw.kJ);
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, bil $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.d($$0, $$1, $$2);
-         }
-      }
-   }
-
-   protected void d(dfe $$0, cpq $$1, gw $$2) {
-      e($$0, $$1, $$2);
-   }
-
-   public static void e(dfe $$0, cpq $$1, gw $$2) {
-      int $$3 = $$0.c(e) - 1;
-      dfe $$4 = $$3 == 0 ? csr.ft.n() : $$0.a(e, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(djo.c, $$2, djo.a.a($$4));
+   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return false;
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, cqo.c $$3) {
-      if (ctk.a($$1, $$3) && $$0.c(e) != 3 && this.j.test($$3)) {
-         dfe $$4 = $$0.a(e);
-         $$1.b($$2, $$4);
-         $$1.a(djo.c, $$2, djo.a.a($$4));
-      }
+   public boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
+      return false;
    }
 
    @Override
-   public int a(dfe $$0, cpq $$1, gw $$2) {
-      return $$0.c(e);
+   protected int a(asc $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      eam $$1 = $$0.q().b_($$0.a());
+      return $$1.a(apy.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   protected void a(dfe $$0, cpq $$1, gw $$2, eag $$3) {
-      if (!this.d($$0)) {
-         dfe $$4 = $$0.a(e, Integer.valueOf($$0.c(e) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(djo.c, $$2, djo.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public eam c_(dfj $$0) {
+      return ean.c.a(false);
    }
 }

@@ -1,41 +1,73 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+public class aav implements vd<ww> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
 
-public class aav implements va<ws> {
-   private final List<cmf<?>> a;
-
-   public aav(Collection<cmf<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public aav(biq $$0) {
+      this.a = $$0.ai();
+      ehn $$1 = $$0.dk();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.g = $$0.aB();
    }
 
-   public aav(sl $$0) {
-      this.a = $$0.a(aav::b);
+   public aav(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a, aav::a);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public List<cmf<?>> a() {
+   public int a() {
       return this.a;
    }
 
-   private static cmf<?> b(sl $$0) {
-      aeu $$1 = $$0.s();
-      aeu $$2 = $$0.s();
-      cme<?> $$3 = jd.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cmf<>($$2, $$3);
+   public double d() {
+      return this.b;
    }
 
-   public static <T extends cme<?>> void a(sl $$0, cmf<?> $$1) {
-      $$0.a(jd.u.b($$1.b().ai_()));
-      $$0.a($$1.a());
-      ((cmh<cme<?>>)$$1.b().ai_()).a($$0, $$1.b());
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public byte g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

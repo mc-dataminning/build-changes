@@ -1,19 +1,19 @@
-import java.util.List;
+public record wf(int b, ebb c, float d) implements vw {
+   public static final aex a = new aex("debug/path");
 
-public record wf(List<gw> b) implements vs {
-   public static final aeu a = new aeu("debug/raids");
-
-   public wf(sl $$0) {
-      this($$0.a(sl::e));
+   public wf(so $$0) {
+      this($$0.readInt(), ebb.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.b, sl::a);
+   public void a(so $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public aeu a() {
+   public aex a() {
       return a;
    }
 }

@@ -1,4 +1,3 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -6,29 +5,29 @@ import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 
-public class rb extends qt<rc> {
+public class rb extends qw<rc> {
    private static final int b = 24;
-   public static final rp<rb> a = new rp.b<rb>() {
-      public rb a(DataInput $$0, int $$1, rd $$2) throws IOException {
+   public static final rs<rb> a = new rs.b<rb>() {
+      public rb a(DataInput $$0, int $$1, rg $$2) throws IOException {
          $$2.a(24L);
          int $$3 = $$0.readInt();
-         $$2.a(8L * (long)$$3);
-         long[] $$4 = new long[$$3];
+         $$2.a(4L * (long)$$3);
+         int[] $$4 = new int[$$3];
 
          for (int $$5 = 0; $$5 < $$3; $$5++) {
-            $$4[$$5] = $$0.readLong();
+            $$4[$$5] = $$0.readInt();
          }
 
          return new rb($$4);
       }
 
       @Override
-      public rk.b a(DataInput $$0, rk $$1) throws IOException {
+      public rn.b a(DataInput $$0, rn $$1) throws IOException {
          int $$2 = $$0.readInt();
-         long[] $$3 = new long[$$2];
+         int[] $$3 = new int[$$2];
 
          for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
+            $$3[$$4] = $$0.readInt();
          }
 
          return $$1.a($$3);
@@ -36,39 +35,35 @@ public class rb extends qt<rc> {
 
       @Override
       public void a(DataInput $$0) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
+         $$0.skipBytes($$0.readInt() * 4);
       }
 
       @Override
       public String a() {
-         return "LONG[]";
+         return "INT[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Long_Array";
+         return "TAG_Int_Array";
       }
    };
-   private long[] c;
+   private int[] c;
 
-   public rb(long[] $$0) {
+   public rb(int[] $$0) {
       this.c = $$0;
    }
 
-   public rb(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public rb(List<Long> $$0) {
+   public rb(List<Integer> $$0) {
       this(a($$0));
    }
 
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
+   private static int[] a(List<Integer> $$0) {
+      int[] $$1 = new int[$$0.size()];
 
       for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
+         Integer $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0 : $$3;
       }
 
       return $$1;
@@ -78,33 +73,33 @@ public class rb extends qt<rc> {
    public void a(DataOutput $$0) throws IOException {
       $$0.writeInt(this.c.length);
 
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
+      for (int $$1 : this.c) {
+         $$0.writeInt($$1);
       }
    }
 
    @Override
    public int a() {
-      return 24 + 8 * this.c.length;
+      return 24 + 4 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 12;
+      return 11;
    }
 
    @Override
-   public rp<rb> c() {
+   public rs<rb> c() {
       return a;
    }
 
    @Override
    public String toString() {
-      return this.m_();
+      return this.r_();
    }
 
    public rb e() {
-      long[] $$0 = new long[this.c.length];
+      int[] $$0 = new int[this.c.length];
       System.arraycopy(this.c, 0, $$0, 0, this.c.length);
       return new rb($$0);
    }
@@ -119,13 +114,13 @@ public class rb extends qt<rc> {
       return Arrays.hashCode(this.c);
    }
 
-   @Override
-   public void a(rr $$0) {
-      $$0.a(this);
+   public int[] g() {
+      return this.c;
    }
 
-   public long[] g() {
-      return this.c;
+   @Override
+   public void a(ru $$0) {
+      $$0.a(this);
    }
 
    @Override
@@ -138,19 +133,19 @@ public class rb extends qt<rc> {
    }
 
    public rc a(int $$0, rc $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
+      int $$2 = this.c[$$0];
+      this.c[$$0] = $$1.g();
       return rc.a($$2);
    }
 
    public void b(int $$0, rc $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
    }
 
    @Override
-   public boolean a(int $$0, rn $$1) {
-      if ($$1 instanceof rh) {
-         this.c[$$0] = ((rh)$$1).f();
+   public boolean a(int $$0, rq $$1) {
+      if ($$1 instanceof rk) {
+         this.c[$$0] = ((rk)$$1).g();
          return true;
       } else {
          return false;
@@ -158,9 +153,9 @@ public class rb extends qt<rc> {
    }
 
    @Override
-   public boolean b(int $$0, rn $$1) {
-      if ($$1 instanceof rh) {
-         this.c = ArrayUtils.add(this.c, $$0, ((rh)$$1).f());
+   public boolean b(int $$0, rq $$1) {
+      if ($$1 instanceof rk) {
+         this.c = ArrayUtils.add(this.c, $$0, ((rk)$$1).g());
          return true;
       } else {
          return false;
@@ -168,23 +163,23 @@ public class rb extends qt<rc> {
    }
 
    public rc b(int $$0) {
-      long $$1 = this.c[$$0];
+      int $$1 = this.c[$$0];
       this.c = ArrayUtils.remove(this.c, $$0);
       return rc.a($$1);
    }
 
    @Override
    public byte f() {
-      return 4;
+      return 3;
    }
 
    @Override
    public void clear() {
-      this.c = new long[0];
+      this.c = new int[0];
    }
 
    @Override
-   public rk.b a(rk $$0) {
+   public rn.b a(rn $$0) {
       return $$0.a(this.c);
    }
 }

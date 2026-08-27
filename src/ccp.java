@@ -1,69 +1,61 @@
-public class ccp extends ccn {
-   public ccp(bip<? extends ccp> $$0, cpq $$1) {
+public class ccp extends ccg {
+   public ccp(biu<? extends ccp> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public ccp(cpq $$0, bjb $$1) {
-      super(bip.z, $$1, $$0);
+   public ccp(cpv $$0, bjg $$1, double $$2, double $$3, double $$4) {
+      super(biu.aM, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public ccp(cpq $$0, double $$1, double $$2, double $$3) {
-      super(bip.z, $$1, $$2, $$3, $$0);
+   public ccp(cpv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(biu.aM, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dK()
-               .a(
-                  new it(ix.O, this.j()),
-                  this.dp(),
-                  this.dr(),
-                  this.dv(),
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08
-               );
+   protected void a(ehk $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         biq $$1 = $$0.a();
+         biq $$2 = this.v();
+         int $$3 = $$1.ay();
+         $$1.g(5);
+         if (!$$1.a(this.dM().a((ccg)this, $$2), 5.0F)) {
+            $$1.h($$3);
+         } else if ($$2 instanceof bjg) {
+            this.a((bjg)$$2, $$1);
          }
       }
    }
 
    @Override
-   protected void a(ehf $$0) {
+   protected void a(ehj $$0) {
       super.a($$0);
-      $$0.a().a(this.dL().b(this, this.v()), 0.0F);
-   }
-
-   @Override
-   protected void a(ehg $$0) {
-      super.a($$0);
-      if (!this.dK().B) {
-         if (this.ag.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ag.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               bur $$3 = bip.q.a(this.dK());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dp(), this.dr(), this.dv(), this.dA(), 0.0F);
-                  this.dK().b($$3);
-               }
+      if (!this.dL().B) {
+         biq $$1 = this.v();
+         if (!($$1 instanceof bji) || this.dL().X().b(cpr.c)) {
+            gw $$2 = $$0.a().a($$0.b());
+            if (this.dL().t($$2)) {
+               this.dL().b($$2, csj.a(this.dL(), $$2));
             }
          }
-
-         this.dK().a(this, (byte)3);
-         this.ak();
       }
    }
 
    @Override
-   protected civ m() {
-      return cjd.qd;
+   protected void a(ehl $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.al();
+      }
+   }
+
+   @Override
+   public boolean bs() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bho $$0, float $$1) {
+      return false;
    }
 }

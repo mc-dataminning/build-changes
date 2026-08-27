@@ -1,32 +1,64 @@
-public class ze implements va<ws> {
-   private final int a;
-   private final byte b;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-   public ze(bil $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
+public class ze implements vd<ww> {
+   private final ze.a a;
+   private final List<aex> b;
+   private final List<aex> c;
+   private final api d;
+
+   public ze(ze.a $$0, Collection<aex> $$1, Collection<aex> $$2, api $$3) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = ImmutableList.copyOf($$2);
+      this.d = $$3;
    }
 
-   public ze(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
+   public ze(so $$0) {
+      this.a = $$0.b(ze.a.class);
+      this.d = api.a($$0);
+      this.b = $$0.a(so::s);
+      if (this.a == ze.a.a) {
+         this.c = $$0.a(so::s);
+      } else {
+         this.c = ImmutableList.of();
+      }
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      this.d.b($$0);
+      $$0.a(this.b, so::a);
+      if (this.a == ze.a.a) {
+         $$0.a(this.c, so::a);
+      }
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public bil a(cpq $$0) {
-      return $$0.a(this.a);
+   public List<aex> a() {
+      return this.b;
    }
 
-   public byte a() {
-      return this.b;
+   public List<aex> d() {
+      return this.c;
+   }
+
+   public api e() {
+      return this.d;
+   }
+
+   public ze.a f() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

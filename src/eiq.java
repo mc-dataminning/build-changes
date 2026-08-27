@@ -1,3 +1,8 @@
-public interface eiq<T> extends eiw<T> {
-   boolean b(gw var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eiq {
 }

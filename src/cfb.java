@@ -1,45 +1,58 @@
-public class cfb extends cfy {
-   private final cbp a;
-   private int b;
+public abstract class cfb {
+   private int a;
 
-   public cfb(cbp $$0, bgm $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+   public static cfb a(final cev $$0, final int $$1) {
+      return new cfb() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
+   }
+
+   public static cfb a(final int[] $$0, final int $$1) {
+      return new cfb() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static cfb a() {
+      return new cfb() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
       this.a = $$0;
-   }
-
-   @Override
-   public boolean a(cja $$0) {
-      return false;
-   }
-
-   @Override
-   public cja a(int $$0) {
-      if (this.f()) {
-         this.b = this.b + Math.min($$0, this.e().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(cbp $$0, cja $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cja $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cja $$0) {
-      $$0.a(this.a.dK(), this.a, this.b);
-      if (this.a instanceof ako $$1 && this.d instanceof dcf $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+      return $$1;
    }
 }

@@ -1,158 +1,195 @@
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Function;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dom extends dnr<dqd> {
+public class dom extends dnw<dqd> {
    public dom(Codec<dqd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dqd> $$0) {
-      arx $$1 = $$0.d();
+   public boolean a(dny<dqd> $$0) {
+      cqp $$1 = $$0.b();
       gw $$2 = $$0.e();
-      cqk $$3 = $$0.b();
-      dqd $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = ars.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - ars.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - ars.f($$6) - $$7;
-      int $$18 = 2 * (ars.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
-
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(dkn.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean a(
-      cqk $$0, arx $$1, dqd $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      gw.a $$16 = new gw.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
-
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = ars.d((double)$$20, $$3, $$4);
-         double $$22 = ars.d((double)$$20, $$7, $$8);
-         double $$23 = ars.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(ars.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
-
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      try (dgy $$32 = new dgy($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(ars.a($$35 - $$34), $$9);
-               int $$39 = Math.max(ars.a($$36 - $$34), $$10);
-               int $$40 = Math.max(ars.a($$37 - $$34), $$11);
-               int $$41 = Math.max(ars.a($$35 + $$34), $$38);
-               int $$42 = Math.max(ars.a($$36 + $$34), $$39);
-               int $$43 = Math.max(ars.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dhm $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = hz.b($$44);
-                                          int $$53 = hz.b($$46);
-                                          int $$54 = hz.b($$48);
-                                          dfe $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (dqd.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$14 > 0;
-   }
-
-   public static boolean a(dfe $$0, Function<gw, dfe> $$1, arx $$2, dqd $$3, dqd.a $$4, gw.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
+      dqd $$3 = $$0.f();
+      asc $$4 = $$0.d();
+      if (!dns.a($$1, $$2)) {
          return false;
       } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
+         Optional<dki> $$5 = dki.a($$1, $$2, $$3.b, dns::c, dns::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dki.b) {
+            dki.b $$6 = (dki.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = arx.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = arx.b($$4, $$3.c.a(), $$8);
+               dom.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dom.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dom.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dom.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dom.b.a();
+               }
+
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
+               return true;
+            }
+         } else {
+            return false;
+         }
       }
    }
 
-   protected static boolean a(arx $$0, float $$1) {
-      if ($$1 <= 0.0F) {
-         return true;
-      } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+   private static dom.a a(gw $$0, boolean $$1, asc $$2, int $$3, bgb $$4, bgb $$5) {
+      return new dom.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(cqp $$0, gw $$1, dki.b $$2, dom.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), csw.cz.n(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), csw.ch.n(), 2);
+
+      for (gw.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(hc.b)) {
+         gw $$5 = $$3.a($$4);
+         if (dns.a($$0, $$5) || $$0.a_($$5).a(csw.rt)) {
+            $$0.a($$5, csw.gM.n(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private gw a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(gw $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(cqp $$0, dom.b $$1) {
+         while (this.c > 1) {
+            gw.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(csw.H)) {
+                  return false;
+               }
+
+               if (dns.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? hc.a : hc.b);
+            }
+
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dns.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(cqp $$0, asc $$1, dom.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = arx.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * arx.b($$1, 0.8F, 1.0F));
+                     }
+
+                     gw.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dks.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        gw $$11 = $$2.a($$7);
+                        if (dns.b($$0, $$11)) {
+                           $$8 = true;
+                           csv $$12 = csw.rt;
+                           $$0.a($$11, $$12.n(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(apt.bd)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? hc.b : hc.a);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      boolean a(dqd $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
+   }
+
+   static final class b {
+      private final int a;
+      @Nullable
+      private final ehn b;
+
+      b(int $$0, asc $$1, bgb $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = arx.b($$1, 0.0F, (float) Math.PI);
+         this.b = new ehn((double)(arx.b($$4) * $$3), 0.0, (double)(arx.a($$4) * $$3));
+      }
+
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static dom.b a() {
+         return new dom.b();
+      }
+
+      gw a(gw $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            ehn $$2 = this.b.a((double)$$1);
+            return $$0.b(arx.a($$2.c), 0, arx.a($$2.e));
+         }
       }
    }
 }

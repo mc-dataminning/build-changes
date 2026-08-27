@@ -1,25 +1,22 @@
-public class asr<A, B> {
-   private A a;
-   private B b;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-   public asr(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
+@FunctionalInterface
+public interface asr {
+   Logger a = LogUtils.getLogger();
+
+   static asr immediate(Executor $$0) {
+      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
+            a.error("Task failed", $$0xx);
+            return null;
+         });
    }
 
-   public A a() {
-      return this.a;
-   }
+   void append(asr.a var1);
 
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+   public interface a {
+      CompletableFuture<?> submit(Executor var1);
    }
 }

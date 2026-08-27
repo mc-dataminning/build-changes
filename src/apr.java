@@ -1,23 +1,16 @@
-public final class apr {
-   public static final aqd<bip<?>> a = a("skeletons");
-   public static final aqd<bip<?>> b = a("raiders");
-   public static final aqd<bip<?>> c = a("beehive_inhabitors");
-   public static final aqd<bip<?>> d = a("arrows");
-   public static final aqd<bip<?>> e = a("impact_projectiles");
-   public static final aqd<bip<?>> f = a("powder_snow_walkable_mobs");
-   public static final aqd<bip<?>> g = a("axolotl_always_hostiles");
-   public static final aqd<bip<?>> h = a("axolotl_hunt_targets");
-   public static final aqd<bip<?>> i = a("freeze_immune_entity_types");
-   public static final aqd<bip<?>> j = a("freeze_hurts_extra_types");
-   public static final aqd<bip<?>> k = a("frog_food");
-   public static final aqd<bip<?>> l = a("fall_damage_immune");
-   public static final aqd<bip<?>> m = a("dismounts_underwater");
-   public static final aqd<bip<?>> n = a("non_controlling_rider");
+public class apr {
+   public static final aqi<dcm> a = a("no_item_required");
+   public static final aqi<dcm> b = a("pattern_item/flower");
+   public static final aqi<dcm> c = a("pattern_item/creeper");
+   public static final aqi<dcm> d = a("pattern_item/skull");
+   public static final aqi<dcm> e = a("pattern_item/mojang");
+   public static final aqi<dcm> f = a("pattern_item/globe");
+   public static final aqi<dcm> g = a("pattern_item/piglin");
 
    private apr() {
    }
 
-   private static aqd<bip<?>> a(String $$0) {
-      return aqd.a(je.s, new aeu($$0));
+   private static aqi<dcm> a(String $$0) {
+      return aqi.a(je.c, new aex($$0));
    }
 }

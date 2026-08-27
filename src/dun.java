@@ -1,24 +1,42 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dun extends duj {
-   public static final Codec<dun> a = arb.j.fieldOf("chance").xmap(dun::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class dun extends dlp {
+   private final cqp a;
+   private final dhg b;
+   private final Optional<dum> c;
 
-   private dun(int $$0) {
-      this.c = $$0;
+   public dun(cqp $$0, dhg $$1, Optional<dum> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static dun a(int $$0) {
-      return new dun($$0);
+   public int a(dks.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(dui $$0, arx $$1, gw $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public dhe a(cpc $$0, dko.a $$1) {
+      return ((dia)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @Override
-   public dul<?> b() {
-      return dul.b;
+   public dfj a(gw $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.H_();
+   }
+
+   public cqp d() {
+      return this.a;
+   }
+
+   public Optional<dum> e() {
+      return this.c;
+   }
+
+   public dhg f() {
+      return this.b;
    }
 }

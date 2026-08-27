@@ -1,95 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class cmt implements cms {
-   final cmb a;
-   final cmb b;
-   final cmb c;
-   final cja d;
+public class cmt<T extends clr> implements cmm<T> {
+   private final cmt.a<T> x;
+   private final Codec<T> y;
 
-   public cmt(cmb $$0, cmb $$1, cmb $$2, cja $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public boolean a(bgm $$0, cpq $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
-
-   @Override
-   public cja a(bgm $$0, hu $$1) {
-      cja $$2 = this.d.p();
-      qu $$3 = $$0.a(1).v();
-      if ($$3 != null) {
-         $$2.c($$3.h());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cja a(hu $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(cja $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cja $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cja $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cmh<?> ai_() {
-      return cmh.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cmb::c);
-   }
-
-   public static class a implements cmh<cmt> {
-      private static final Codec<cmt> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cmb.b.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cmb.b.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cmb.b.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  clv.a.fieldOf("result").forGetter($$0x -> $$0x.d)
+   public cmt(cmt.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  arg.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  clx.d.fieldOf("category").orElse(clx.c).forGetter($$0xx -> $$0xx.b),
+                  cmg.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  jd.i.q().xmap(cjf::new, cjf::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
                )
-               .apply($$0, cmt::new)
+               .apply($$2, $$0::create)
       );
+   }
 
-      @Override
-      public Codec<cmt> a() {
-         return x;
-      }
+   @Override
+   public Codec<T> a() {
+      return this.y;
+   }
 
-      public cmt b(sl $$0) {
-         cmb $$1 = cmb.b($$0);
-         cmb $$2 = cmb.b($$0);
-         cmb $$3 = cmb.b($$0);
-         cja $$4 = $$0.q();
-         return new cmt($$1, $$2, $$3, $$4);
-      }
+   public T b(so $$0) {
+      String $$1 = $$0.r();
+      clx $$2 = $$0.b(clx.class);
+      cmg $$3 = cmg.b($$0);
+      cjf $$4 = $$0.q();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.m();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public void a(sl $$0, cmt $$1) {
-         $$1.a.a($$0);
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-         $$0.a($$1.d);
-      }
+   public void a(so $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   interface a<T extends clr> {
+      T create(String var1, clx var2, cmg var3, cjf var4, float var5, int var6);
    }
 }

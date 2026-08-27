@@ -1,69 +1,126 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record eiu<T>(T d, gw e, long f, eiy g, long h) {
-   public static final Comparator<eiu<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public class eiu<T> implements eja<T>, ejc<T> {
+   private final Queue<eiz<T>> a = new PriorityQueue<>(eiz.a);
+   @Nullable
+   private List<eiy<T>> b;
+   private final Set<eiz<?>> c = new ObjectOpenCustomHashSet(eiz.c);
+   @Nullable
+   private BiConsumer<eiu<T>, eiz<T>> d;
+
+   public eiu() {
+   }
+
+   public eiu(List<eiy<T>> $$0) {
+      this.b = $$0;
+
+      for (eiy<T> $$1 : $$0) {
+         this.c.add(eiz.a($$1.a(), $$1.b()));
       }
-   };
-   public static final Comparator<eiu<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<eiu<?>> c = new Strategy<eiu<?>>() {
-      public int a(eiu<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   }
+
+   public void a(@Nullable BiConsumer<eiu<T>, eiz<T>> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public eiz<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public eiz<T> c() {
+      eiz<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      public boolean a(@Nullable eiu<?> $$0, @Nullable eiu<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+      return $$0;
+   }
+
+   @Override
+   public void a(eiz<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(eiz<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(gw $$0, T $$1) {
+      return this.c.contains(eiz.a($$1, $$0));
+   }
+
+   public void a(Predicate<eiz<T>> $$0) {
+      Iterator<eiz<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         eiz<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
-   };
-
-   public eiu(T $$0, gw $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, eiy.d, $$3);
    }
 
-   public eiu(T d, gw e, long f, eiy g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public Stream<eiz<T>> d() {
+      return this.a.stream();
    }
 
-   public static <T> eiu<T> a(T $$0, gw $$1) {
-      return new eiu<>($$0, $$1, 0L, eiy.d, 0L);
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
    }
 
-   public T a() {
-      return this.d;
+   public rd a(long $$0, Function<T, String> $$1) {
+      rd $$2 = new rd();
+      if (this.b != null) {
+         for (eiy<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
+      }
+
+      for (eiz<T> $$4 : this.a) {
+         $$2.add(eiy.a($$4, $$1, $$0));
+      }
+
+      return $$2;
    }
 
-   public gw b() {
-      return this.e;
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (eiy<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
    }
 
-   public long c() {
-      return this.f;
-   }
-
-   public eiy d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   public static <T> eiu<T> a(rd $$0, Function<String, Optional<T>> $$1, cpc $$2) {
+      Builder<eiy<T>> $$3 = ImmutableList.builder();
+      eiy.a($$0, $$1, $$2, $$3::add);
+      return new eiu<>($$3.build());
    }
 }

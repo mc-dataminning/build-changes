@@ -1,6 +1,17 @@
-import javax.annotation.Nullable;
+class bij extends bib {
+   protected bij(bic $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public interface bij {
-   @Nullable
-   bjb M_();
+   @Override
+   public void a(bjg $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.a($$0.dM().p(), 1.0F);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 40 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   }
 }

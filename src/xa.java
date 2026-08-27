@@ -1,53 +1,37 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class xa implements vd<ww> {
+   public static final int a = 0;
+   public static final int b = 2;
+   public static final int c = 3;
+   public static final int d = 4;
+   public static final int e = 5;
+   private final int f;
+   private final int g;
 
-public class xa implements va<ws> {
-   private final gw a;
-   private final dcs<?> b;
-   @Nullable
-   private final qu c;
-
-   public static xa a(dcq $$0, Function<dcq, qu> $$1) {
-      return new xa($$0.p(), $$0.u(), $$1.apply($$0));
+   public xa(biq $$0, int $$1) {
+      this.f = $$0.ai();
+      this.g = $$1;
    }
 
-   public static xa a(dcq $$0) {
-      return a($$0, dcq::an_);
-   }
-
-   private xa(gw $$0, dcs<?> $$1, qu $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
-   }
-
-   public xa(sl $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(jd.l);
-      this.c = $$0.p();
+   public xa(so $$0) {
+      this.f = $$0.m();
+      this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(jd.l, this.b);
-      $$0.a((rn)this.c);
+   public void a(so $$0) {
+      $$0.c(this.f);
+      $$0.k(this.g);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
-      return this.a;
+   public int a() {
+      return this.f;
    }
 
-   public dcs<?> d() {
-      return this.b;
-   }
-
-   @Nullable
-   public qu e() {
-      return this.c;
+   public int d() {
+      return this.g;
    }
 }

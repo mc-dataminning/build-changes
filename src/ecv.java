@@ -1,81 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ecv extends ecx {
-   public static final Codec<ecv> a = a(ecv::new);
+public class ecv<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ecv<efp> a = new ecv<>(efr.a, "predicates", c());
+   public static final ecv<eed> b = new ecv<>(eef.b, "item_modifiers", c());
+   public static final ecv<ecy> c = new ecv<>(ecy.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final ecv.a<T> g;
 
-   ecv(List<ede> $$0, List<efk> $$1) {
-      super($$0, $$1);
+   private ecv(Codec<T> $$0, String $$1, ecv.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public edf a() {
-      return edc.g;
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   protected ecw a(List<? extends ecw> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ecw)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ecw $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
+   public void a(ecz $$0, ecs<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(ecu $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.a("Unreachable entry!");
-         }
-      }
+   public Optional<T> a(aex $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   public static ecv.a a(ede.a<?>... $$0) {
-      return new ecv.a($$0);
+   public static Stream<ecv<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   public static <E> ecv.a a(Collection<E> $$0, Function<E, ede.a<?>> $$1) {
-      return new ecv.a($$0.stream().map($$1::apply).toArray(ede.a[]::new));
+   private static <T extends ecr> ecv.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
    }
 
-   public static class a extends ede.a<ecv.a> {
-      private final Builder<ede> a = ImmutableList.builder();
+   private static ecv.a<ecy> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public a(ede.a<?>... $$0) {
-         for (ede.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ecv.a a() {
-         return this;
-      }
-
-      @Override
-      public ecv.a a(ede.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ede b() {
-         return new ecv(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(ecz var1, ecs<T> var2, T var3);
    }
 }

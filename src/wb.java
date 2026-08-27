@@ -1,19 +1,16 @@
-public record wb(int b, eaw c, float d) implements vs {
-   public static final aeu a = new aeu("debug/path");
+public record wb() implements vw {
+   public static final aex a = new aex("debug/game_test_clear");
 
-   public wb(sl $$0) {
-      this($$0.readInt(), eaw.b($$0), $$0.readFloat());
+   public wb(so $$0) {
+      this();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(so $$0) {
    }
 
    @Override
-   public aeu a() {
+   public aex a() {
       return a;
    }
 }

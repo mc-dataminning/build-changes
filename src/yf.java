@@ -1,102 +1,80 @@
-public class yf implements va<ws> {
+public class yf implements vd<ww> {
    private final double a;
    private final double b;
    private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
+   private final double d;
+   private final long e;
+   private final int f;
+   private final int g;
    private final int h;
-   private final boolean i;
-   private final iv j;
 
-   public <T extends iv> yf(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
-   }
-
-   public yf(sl $$0) {
-      iw<?> $$1 = $$0.a(jd.k);
-      this.i = $$0.readBoolean();
+   public yf(so $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (iw<iv>)$$1);
+      this.d = $$0.readDouble();
+      this.e = $$0.n();
+      this.f = $$0.m();
+      this.g = $$0.m();
+      this.h = $$0.m();
    }
 
-   private <T extends iv> T a(sl $$0, iw<T> $$1) {
-      return $$1.d().b($$1, $$0);
+   public yf(dha $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
+      this.c = $$0.i();
+      this.d = $$0.k();
+      this.e = $$0.j();
+      this.f = $$0.m();
+      this.g = $$0.r();
+      this.h = $$0.q();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(jd.k, this.j.b());
-      $$0.a(this.i);
+   public void a(so $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public boolean a() {
-      return this.i;
+   public void a(ww $$0) {
+      $$0.a(this);
    }
 
-   public double d() {
+   public double a() {
       return this.a;
    }
 
-   public double e() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.d;
    }
 
    public double f() {
       return this.c;
    }
 
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
+   public long g() {
       return this.e;
    }
 
-   public float i() {
+   public int h() {
       return this.f;
    }
 
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
+   public int i() {
       return this.h;
    }
 
-   public iv l() {
-      return this.j;
-   }
-
-   public void a(ws $$0) {
-      $$0.a(this);
+   public int j() {
+      return this.g;
    }
 }

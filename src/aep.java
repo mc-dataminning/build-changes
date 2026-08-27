@@ -1,143 +1,163 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.util.HashMap;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class aep {
-   private static final Logger c = LogUtils.getLogger();
-   public static final List<aep.b<?>> a = List.of(
-      new aep.b<>(je.au, din.h),
-      new aep.b<>(je.ap, cqo.a),
-      new aep.b<>(je.aq, te.a),
-      new aep.b<>(je.ar, dmq.a),
-      new aep.b<>(je.as, dne.a),
-      new aep.b<>(je.ay, duh.a),
-      new aep.b<>(je.az, dvd.a),
-      new aep.b<>(je.aB, dvj.a),
-      new aep.b<>(je.aA, dyv.c),
-      new aep.b<>(je.aC, dwm.a),
-      new aep.b<>(je.aw, dks.a),
-      new aep.b<>(je.ax, dzk.a.a),
-      new aep.b<>(je.at, dkg.b),
-      new aep.b<>(je.aF, dus.a),
-      new aep.b<>(je.av, dte.a),
-      new aep.b<>(je.aE, clf.a),
-      new aep.b<>(je.aD, cld.a),
-      new aep.b<>(je.p, bhl.a),
-      new aep.b<>(je.aG, crc.a)
-   );
-   public static final List<aep.b<?>> b = List.of(new aep.b<>(je.aI, dio.a));
+public abstract class aep<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public static hu.b a(anp $$0, hu $$1, List<aep.b<?>> $$2) {
-      Map<aet<?>, Exception> $$3 = new HashMap<>();
-      List<Pair<ic<?>, aep.a>> $$4 = $$2.stream().map($$1x -> $$1x.a(Lifecycle.stable(), $$3)).toList();
-      aes.b $$5 = a($$1, $$4);
-      $$4.forEach($$2x -> ((aep.a)$$2x.getSecond()).load($$0, $$5));
-      $$4.forEach($$1x -> {
-         ht<?> $$2x = (ht<?>)$$1x.getFirst();
-
-         try {
-            $$2x.l();
-         } catch (Exception var4x) {
-            $$3.put($$2x.c(), var4x);
-         }
-      });
-      if (!$$3.isEmpty()) {
-         a($$3);
-         throw new IllegalStateException("Failed to load registries due to above errors");
-      } else {
-         return new hu.c($$4.stream().map(Pair::getFirst).toList()).c();
-      }
+   protected aep(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   private static aes.b a(hu $$0, List<Pair<ic<?>, aep.a>> $$1) {
-      final Map<aet<? extends ht<?>>, aes.a<?>> $$2 = new HashMap<>();
-      $$0.b().forEach($$1x -> $$2.put($$1x.a(), a($$1x.b())));
-      $$1.forEach($$1x -> $$2.put(((ic)$$1x.getFirst()).c(), a((ic)$$1x.getFirst())));
-      return new aes.b() {
-         @Override
-         public <T> Optional<aes.a<T>> a(aet<? extends ht<? extends T>> $$0) {
-            return Optional.ofNullable((aes.a<T>)$$2.get($$0));
-         }
-      };
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   private static <T> aes.a<T> a(ic<T> $$0) {
-      return new aes.a<>($$0.p(), $$0.n(), $$0.d());
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   private static <T> aes.a<T> a(ht<T> $$0) {
-      return new aes.a<>($$0.p(), $$0.u(), $$0.d());
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
    }
 
-   private static void a(Map<aet<?>, Exception> $$0) {
-      StringWriter $$1 = new StringWriter();
-      PrintWriter $$2 = new PrintWriter($$1);
-      Map<aeu, Map<aeu, Exception>> $$3 = $$0.entrySet()
-         .stream()
-         .collect(Collectors.groupingBy($$0x -> ((aet)$$0x.getKey()).b(), Collectors.toMap($$0x -> ((aet)$$0x.getKey()).a(), Entry::getValue)));
-      $$3.entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1x -> {
-         $$2.printf("> Errors in registry %s:%n", $$1x.getKey());
-         ((Map)$$1x.getValue()).entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1xx -> {
-            $$2.printf(">> Errors in element %s:%n", $$1xx.getKey());
-            ((Exception)$$1xx.getValue()).printStackTrace($$2);
-         });
-      });
-      $$2.flush();
-      c.error("Registry loading errors:\n{}", $$1);
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
    }
 
-   private static String a(aeu $$0) {
-      return $$0.a();
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
    }
 
-   static <E> void a(aes.b $$0, anp $$1, aet<? extends ht<E>> $$2, ic<E> $$3, Decoder<E> $$4, Map<aet<?>, Exception> $$5) {
-      String $$6 = a($$2.a());
-      aen $$7 = aen.a($$6);
-      aes<JsonElement> $$8 = aes.a(JsonOps.INSTANCE, $$0);
-
-      for (Entry<aeu, ann> $$9 : $$7.a($$1).entrySet()) {
-         aeu $$10 = $$9.getKey();
-         aet<E> $$11 = aet.a($$2, $$7.b($$10));
-         ann $$12 = $$9.getValue();
-
-         try (Reader $$13 = $$12.e()) {
-            JsonElement $$14 = JsonParser.parseReader($$13);
-            DataResult<E> $$15 = $$4.parse($$8, $$14);
-            E $$16 = (E)$$15.getOrThrow(false, $$0x -> {
-            });
-            $$3.a($$11, $$16, $$12.c() ? Lifecycle.stable() : $$15.lifecycle());
-         } catch (Exception var20) {
-            $$5.put($$11, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", $$10, $$12.b()), var20));
-         }
-      }
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
    }
 
-   interface a {
-      void load(anp var1, aes.b var2);
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
    }
 
-   public static record b<T>(aet<? extends ht<T>> a, Codec<T> b) {
-      Pair<ic<?>, aep.a> a(Lifecycle $$0, Map<aet<?>, Exception> $$1) {
-         ic<T> $$2 = new ho<>(this.a, $$0);
-         aep.a $$3 = ($$2x, $$3x) -> aep.a($$3x, $$2x, this.a, $$2, this.b, $$1);
-         return Pair.of($$2, $$3);
-      }
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

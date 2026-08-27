@@ -77,7 +77,7 @@ public class ac {
    private static final ExecutorService k = n();
    private static final DateTimeFormatter l = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    public static final long a = 1000000L;
-   public static aso.a b = System::nanoTime;
+   public static ast.a b = System::nanoTime;
    public static final Ticker c = new Ticker() {
       public long read() {
          return ac.b.getAsLong();
@@ -96,11 +96,11 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dgh<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dgm<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable aeu $$1) {
+   public static String a(String $$0, @Nullable aex $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -121,7 +121,7 @@ public class ac {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = ars.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = arx.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -213,7 +213,7 @@ public class ac {
       }
 
       if ($$1 instanceof y) {
-         aew.a(((y)$$1).a().e());
+         aez.a(((y)$$1).a().e());
          System.exit(-1);
       }
 
@@ -222,7 +222,7 @@ public class ac {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !aa.aR ? null : b($$0, $$1);
+      return !aa.aS ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -230,10 +230,10 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = asw.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = atb.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          f.error("No data fixer registered for {}", $$1);
-         if (aa.aS) {
+         if (aa.aT) {
             throw var4;
          }
       }
@@ -242,7 +242,7 @@ public class ac {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return aa.aS ? () -> {
+      return aa.aT ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -256,7 +256,7 @@ public class ac {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return aa.aS ? () -> {
+      return aa.aT ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -414,20 +414,20 @@ public class ac {
 
    public static void a(String $$0) {
       f.error($$0);
-      if (aa.aS) {
+      if (aa.aT) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       f.error($$0, $$1);
-      if (aa.aS) {
+      if (aa.aT) {
          d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (aa.aS) {
+      if (aa.aT) {
          f.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }
@@ -456,19 +456,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, arx $$1) {
+   public static <T> T a(T[] $$0, asc $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, arx $$1) {
+   public static int a(int[] $$0, asc $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, arx $$1) {
+   public static <T> T a(List<T> $$0, asc $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, arx $$1) {
+   public static <T> Optional<T> b(List<T> $$0, asc $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -669,8 +669,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> asf<K, V> a(Function<K, V> $$0) {
-      return new asf<>($$0);
+   public static <K, V> ask<K, V> a(Function<K, V> $$0) {
+      return new ask<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -705,13 +705,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, arx $$1) {
+   public static <T> List<T> a(Stream<T> $$0, asc $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       b($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, arx $$1) {
+   public static IntArrayList a(IntStream $$0, asc $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -723,19 +723,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, arx $$1) {
+   public static <T> List<T> b(T[] $$0, asc $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, arx $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, asc $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> void b(ObjectArrayList<T> $$0, arx $$1) {
+   public static <T> void b(ObjectArrayList<T> $$0, asc $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

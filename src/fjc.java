@@ -1,140 +1,68 @@
-import com.mojang.logging.LogUtils;
-import java.util.Base64;
-import java.util.Collections;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fjc {
-   private static final Logger k = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public ti c;
-   public ti d;
-   @Nullable
-   public adx.b e;
-   public long f;
-   public int g = aa.b().e();
-   public ti h = ti.b(aa.b().c());
-   public boolean i;
-   public List<ti> j = Collections.emptyList();
-   private fjc.a l = fjc.a.c;
-   @Nullable
-   private byte[] m;
-   private fjc.b n;
-   private boolean o;
+public class fjc extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final fki b;
+   private final fjc.a c;
 
-   public fjc(String $$0, String $$1, fjc.b $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public fjc(fki $$0, fjc.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public qu a() {
-      qu $$0 = new qu();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         alj.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         alj.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
-
-      if (this.l == fjc.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fjc.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
    }
 
-   public fjc.a b() {
-      return this.l;
-   }
-
-   public void a(fjc.a $$0) {
-      this.l = $$0;
-   }
-
-   public static fjc a(qu $$0) {
-      fjc $$1 = new fjc($$0.l("name"), $$0.l("ip"), fjc.b.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            $$1.a(Base64.getDecoder().decode($$0.l("icon")));
-         } catch (IllegalArgumentException var3) {
-            k.warn("Malformed base64 server icon", var3);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = alj.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = arx.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = arx.a($$4.get(4), -1);
+            int $$9 = arx.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
 
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fjc.a.a);
-         } else {
-            $$1.a(fjc.a.b);
-         }
-      } else {
-         $$1.a(fjc.a.c);
-      }
-
-      return $$1;
+      $$0.close();
    }
 
-   @Nullable
-   public byte[] c() {
-      return this.m;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == fjc.b.a;
-   }
-
-   public boolean e() {
-      return this.n == fjc.b.b;
-   }
-
-   public void a(boolean $$0) {
-      this.o = $$0;
-   }
-
-   public boolean f() {
-      return this.o;
-   }
-
-   public void a(fjc $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(fjc $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-      this.o = $$0.o;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final ti d;
-
-      private a(String $$0) {
-         this.d = ti.c("addServer.resourcePack." + $$0);
-      }
-
-      public ti a() {
-         return this.d;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

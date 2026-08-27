@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public record av(Optional<aqd<csq>> b, Optional<hk<csq>> c, Optional<da> d, Optional<cn> e) {
-   private static final Codec<hk<csq>> f = jd.f.r().listOf().xmap(hk::a, $$0 -> $$0.a().toList());
+public record av(Optional<aqi<csv>> b, Optional<hk<csv>> c, Optional<da> d, Optional<cn> e) {
+   private static final Codec<hk<csv>> f = jd.f.r().listOf().xmap(hk::a, $$0 -> $$0.a().toList());
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arb.a(aqd.a(je.e), "tag").forGetter(av::a),
-               arb.a(f, "blocks").forGetter(av::b),
-               arb.a(da.a, "state").forGetter(av::c),
-               arb.a(cn.a, "nbt").forGetter(av::d)
+               arg.a(aqi.a(je.e), "tag").forGetter(av::a),
+               arg.a(f, "blocks").forGetter(av::b),
+               arg.a(da.a, "state").forGetter(av::c),
+               arg.a(cn.a, "nbt").forGetter(av::d)
             )
             .apply($$0, av::new)
    );
 
-   public boolean a(akn $$0, gw $$1) {
+   public boolean a(akr $$0, gw $$1) {
       if (!$$0.o($$1)) {
          return false;
       } else {
-         dfe $$2 = $$0.a_($$1);
+         dfj $$2 = $$0.a_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
@@ -28,7 +28,7 @@ public record av(Optional<aqd<csq>> b, Optional<hk<csq>> c, Optional<da> d, Opti
             return false;
          } else {
             if (this.e.isPresent()) {
-               dcq $$3 = $$0.c_($$1);
+               dcv $$3 = $$0.c_($$1);
                if ($$3 == null || !this.e.get().a($$3.m())) {
                   return false;
                }
@@ -39,11 +39,11 @@ public record av(Optional<aqd<csq>> b, Optional<hk<csq>> c, Optional<da> d, Opti
       }
    }
 
-   public Optional<aqd<csq>> a() {
+   public Optional<aqi<csv>> a() {
       return this.b;
    }
 
-   public Optional<hk<csq>> b() {
+   public Optional<hk<csv>> b() {
       return this.c;
    }
 
@@ -56,8 +56,8 @@ public record av(Optional<aqd<csq>> b, Optional<hk<csq>> c, Optional<da> d, Opti
    }
 
    public static class a {
-      private Optional<hk<csq>> a = Optional.empty();
-      private Optional<aqd<csq>> b = Optional.empty();
+      private Optional<hk<csv>> a = Optional.empty();
+      private Optional<aqi<csv>> b = Optional.empty();
       private Optional<da> c = Optional.empty();
       private Optional<cn> d = Optional.empty();
 
@@ -68,22 +68,22 @@ public record av(Optional<aqd<csq>> b, Optional<hk<csq>> c, Optional<da> d, Opti
          return new av.a();
       }
 
-      public av.a a(csq... $$0) {
-         this.a = Optional.of(hk.a(csq::q, $$0));
+      public av.a a(csv... $$0) {
+         this.a = Optional.of(hk.a(csv::q, $$0));
          return this;
       }
 
-      public av.a a(Collection<csq> $$0) {
-         this.a = Optional.of(hk.a(csq::q, $$0));
+      public av.a a(Collection<csv> $$0) {
+         this.a = Optional.of(hk.a(csv::q, $$0));
          return this;
       }
 
-      public av.a a(aqd<csq> $$0) {
+      public av.a a(aqi<csv> $$0) {
          this.b = Optional.of($$0);
          return this;
       }
 
-      public av.a a(qu $$0) {
+      public av.a a(qx $$0) {
          this.d = Optional.of(new cn($$0));
          return this;
       }

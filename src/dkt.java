@@ -1,110 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record dkt(dkg b, dkg c, dkg d, dkg e, dkg f, dkg g, dkg h, dkg i, dkg j, dkg k, dkg l, dkg m, dkg n, dkg o, dkg p) {
-   public static final Codec<dkt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dkt::a),
-               a("fluid_level_floodedness", dkt::b),
-               a("fluid_level_spread", dkt::c),
-               a("lava", dkt::d),
-               a("temperature", dkt::e),
-               a("vegetation", dkt::f),
-               a("continents", dkt::g),
-               a("erosion", dkt::h),
-               a("depth", dkt::i),
-               a("ridges", dkt::j),
-               a("initial_density_without_jaggedness", dkt::k),
-               a("final_density", dkt::l),
-               a("vein_toggle", dkt::m),
-               a("vein_ridged", dkt::n),
-               a("vein_gap", dkt::o)
-            )
-            .apply($$0, dkt::new)
-   );
+public class dkt implements dkh {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dku i = new dku(this);
 
-   private static RecordCodecBuilder<dkt, dkg> a(String $$0, Function<dkt, dkg> $$1) {
-      return dkg.d.fieldOf($$0).forGetter($$1);
+   public dkt(long $$0) {
+      this.b($$0);
    }
 
-   public dkt a(dkg.f $$0) {
-      return new dkt(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public asc d() {
+      return new dkt(this.g());
    }
 
-   public dkg a() {
-      return this.b;
+   @Override
+   public dlf e() {
+      return new dkt.a(this.g());
    }
 
-   public dkg b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw ass.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
-   public dkg c() {
-      return this.d;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw ass.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
-   public dkg d() {
-      return this.e;
+   @Override
+   public double k() {
+      return this.i.b();
    }
 
-   public dkg e() {
-      return this.f;
-   }
+   public static class a implements dlf {
+      private final long a;
 
-   public dkg f() {
-      return this.g;
-   }
+      public a(long $$0) {
+         this.a = $$0;
+      }
 
-   public dkg g() {
-      return this.h;
-   }
+      @Override
+      public asc a(int $$0, int $$1, int $$2) {
+         long $$3 = arx.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dkt($$4);
+      }
 
-   public dkg h() {
-      return this.i;
-   }
+      @Override
+      public asc a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dkt((long)$$1 ^ this.a);
+      }
 
-   public dkg i() {
-      return this.j;
-   }
-
-   public dkg j() {
-      return this.k;
-   }
-
-   public dkg k() {
-      return this.l;
-   }
-
-   public dkg l() {
-      return this.m;
-   }
-
-   public dkg m() {
-      return this.n;
-   }
-
-   public dkg n() {
-      return this.o;
-   }
-
-   public dkg o() {
-      return this.p;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

@@ -1,64 +1,24 @@
-public class aaj implements va<ws> {
-   private final hg<aoy> a;
-   private final apa b;
-   private final int c;
-   private final float d;
-   private final float e;
-   private final long f;
+public class aaj implements vd<ww> {
+   private final tl a;
 
-   public aaj(hg<aoy> $$0, apa $$1, bil $$2, float $$3, float $$4, long $$5) {
+   public aaj(tl $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.ah();
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
    }
 
-   public aaj(sl $$0) {
-      this.a = $$0.a(jd.c.t(), aoy::b);
-      this.b = $$0.b(apa.class);
-      this.c = $$0.m();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readLong();
+   public aaj(so $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(jd.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.b(this.f);
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public hg<aoy> a() {
-      return this.a;
-   }
-
-   public apa d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
+   }
+
+   public tl a() {
+      return this.a;
    }
 }

@@ -1,37 +1,62 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
+import org.apache.commons.lang3.Validate;
 
-public class atc extends DataFix {
-   private final String a;
-   private final TypeReference b;
+public class atc {
+   private static final int a = 6;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-   public atc(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
+   public atc(int $$0, int $$1) {
+      this($$0, $$1, new long[arx.d($$1 * $$0, 64) / 64]);
+   }
+
+   public atc(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
       this.b = $$2;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a(this.a, $$0, $$1);
-   }
-
-   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
-      if ($$1.getKeyType() != $$2.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
-               if (!$$2.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
-               } else {
-                  return $$1xx;
-               }
-            });
+      this.d = (1L << $$0) - 1L;
+      int $$3 = arx.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
       }
+   }
+
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
+   }
+
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
+      } else {
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+      }
+   }
+
+   public long[] a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
    }
 }

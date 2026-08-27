@@ -1,34 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public class duc extends duk {
-   public static final Codec<duc> a = RecordCodecBuilder.create($$0 -> $$0.group(dtk.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, duc::new));
-   private final dtk c;
+public class duc extends dup {
+   public static final Codec<duc> a = dko.a.c.fieldOf("step").xmap(duc::new, $$0 -> $$0.c).codec();
+   private final dko.a c;
 
-   private duc(dtk $$0) {
+   private duc(dko.a $$0) {
       this.c = $$0;
    }
 
-   public static duc a(dtk $$0) {
+   public static duc a(dko.a $$0) {
       return new duc($$0);
    }
 
-   public static duc a(dlh $$0, dlh $$1) {
-      return a(dtn.a($$0, $$1));
-   }
-
-   public static duc b(dlh $$0, dlh $$1) {
-      return a(dtm.a($$0, $$1));
+   @Override
+   public Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
+      cpc $$3 = new cpc($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   public Stream<gw> a_(dui $$0, arx $$1, gw $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
-
-   @Override
-   public dul<?> b() {
-      return dul.l;
+   public duq<?> b() {
+      return duq.o;
    }
 }

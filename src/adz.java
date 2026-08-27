@@ -1,24 +1,14 @@
-public class adz implements va<abb> {
-   private final long a;
-
-   public adz(long $$0) {
-      this.a = $$0;
-   }
-
-   public adz(sl $$0) {
-      this.a = $$0.readLong();
+public record adz(aea a) implements vd<adx> {
+   public adz(so $$0) {
+      this($$0.a(aea.a));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.b(this.a);
+   public void a(so $$0) {
+      $$0.a(aea.a, this.a);
    }
 
-   public void a(abb $$0) {
+   public void a(adx $$0) {
       $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
    }
 }

@@ -1,32 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class blo {
-   public static bkt<bjk> a(float $$0) {
-      return boe.a(
-         (Function<boe.b<bjk>, ? extends App<boe.c<bjk>, boh<bjk>>>)($$1 -> $$1.group($$1.c(bsc.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.g($$3.dk())) {
-                           return false;
-                        } else {
-                           gw $$5 = $$3.dk();
-                           List<gw> $$6 = gw.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(gw::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.g($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bsf($$2x, $$0, 0)));
-                           return true;
+   public static bky<cbh> a(float $$0, int $$1) {
+      return boj.a((Function<boj.b<cbh>, ? extends App<boj.c<cbh>, bom<cbh>>>)($$2 -> $$2.group($$2.c(bsh.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.b($$4.dl())) {
+                  return false;
+               } else {
+                  buf $$6 = $$3.w();
+                  int $$7 = $$6.a(hz.a($$4.dl()));
+                  ehn $$8 = null;
+
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     ehn $$10 = btz.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(hz.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(hz.a(gw.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
+
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
                         }
                      }
-               ))
-      );
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new bsk($$8, $$0, $$1));
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

@@ -1,18 +1,22 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+public enum epj {
+   a(0, duy.a),
+   b(1, duy.b),
+   c(2, duy.c),
+   d(3, duy.d);
 
-public class epj {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+   private final int e;
+   private final tl f;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   private epj(int $$0, aew<dux> $$1) {
+      this.e = $$0;
+      this.f = tl.c($$1.a().f("generator"));
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   public tl a() {
+      return this.f;
    }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   public int b() {
+      return this.e;
    }
 }

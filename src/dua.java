@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 
 public class dua extends duo {
-   public static final Codec<dua> a = bfy.b(0, 256).fieldOf("count").xmap(dua::new, $$0 -> $$0.c).codec();
-   private final bfy c;
+   private static final dua c = new dua();
+   public static Codec<dua> a = Codec.unit(() -> c);
 
-   private dua(bfy $$0) {
-      this.c = $$0;
+   private dua() {
    }
 
-   public static dua a(bfy $$0) {
-      return new dua($$0);
-   }
-
-   public static dua a(int $$0) {
-      return a(bfv.a($$0));
+   public static dua a() {
+      return c;
    }
 
    @Override
-   protected int a(arx $$0, gw $$1) {
-      return this.c.a($$0);
+   protected boolean a(dun $$0, asc $$1, gw $$2) {
+      dum $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      hg<cqt> $$4 = $$0.d().s($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dul<?> b() {
-      return dul.f;
+   public duq<?> b() {
+      return duq.e;
    }
 }

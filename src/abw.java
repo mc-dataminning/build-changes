@@ -1,141 +1,161 @@
-public abstract class abw implements va<aaz> {
-   protected final double a;
-   protected final double b;
-   protected final double c;
-   protected final float d;
-   protected final float e;
-   protected final boolean f;
-   protected final boolean g;
-   protected final boolean h;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   protected abw(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5, boolean $$6, boolean $$7) {
+public class abw implements vd<abd> {
+   private final int a;
+   private final abw.a b;
+   private final boolean c;
+   static final abw.a d = new abw.a() {
+      @Override
+      public abw.b a() {
+         return abw.b.b;
+      }
+
+      @Override
+      public void a(abw.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(so $$0) {
+      }
+   };
+
+   private abw(int $$0, boolean $$1, abw.a $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+      this.b = $$2;
+      this.c = $$1;
    }
 
-   public void a(aaz $$0) {
+   public static abw a(biq $$0, boolean $$1) {
+      return new abw($$0.ai(), $$1, d);
+   }
+
+   public static abw a(biq $$0, boolean $$1, bgx $$2) {
+      return new abw($$0.ai(), $$1, new abw.d($$2));
+   }
+
+   public static abw a(biq $$0, boolean $$1, bgx $$2, ehn $$3) {
+      return new abw($$0.ai(), $$1, new abw.e($$2, $$3));
+   }
+
+   public abw(so $$0) {
+      this.a = $$0.m();
+      abw.b $$1 = $$0.b(abw.b.class);
+      this.b = $$1.d.apply($$0);
+      this.c = $$0.readBoolean();
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b.a());
+      this.b.a($$0);
+      $$0.a(this.c);
+   }
+
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public double a(double $$0) {
-      return this.g ? this.a : $$0;
-   }
-
-   public double b(double $$0) {
-      return this.g ? this.b : $$0;
-   }
-
-   public double c(double $$0) {
-      return this.g ? this.c : $$0;
-   }
-
-   public float a(float $$0) {
-      return this.h ? this.d : $$0;
-   }
-
-   public float b(float $$0) {
-      return this.h ? this.e : $$0;
+   @Nullable
+   public biq a(akr $$0) {
+      return $$0.b(this.a);
    }
 
    public boolean a() {
-      return this.f;
+      return this.c;
    }
 
-   public boolean d() {
-      return this.g;
+   public void a(abw.c $$0) {
+      this.b.a($$0);
    }
 
-   public boolean e() {
-      return this.h;
+   interface a {
+      abw.b a();
+
+      void a(abw.c var1);
+
+      void a(so var1);
    }
 
-   public static class a extends abw {
-      public a(double $$0, double $$1, double $$2, boolean $$3) {
-         super($$0, $$1, $$2, 0.0F, 0.0F, $$3, true, false);
+   static enum b {
+      a(abw.d::new),
+      b($$0 -> abw.d),
+      c(abw.e::new);
+
+      final Function<so, abw.a> d;
+
+      private b(Function<so, abw.a> $$0) {
+         this.d = $$0;
+      }
+   }
+
+   public interface c {
+      void a(bgx var1);
+
+      void a(bgx var1, ehn var2);
+
+      void a();
+   }
+
+   static class d implements abw.a {
+      private final bgx a;
+
+      d(bgx $$0) {
+         this.a = $$0;
       }
 
-      public static abw.a b(sl $$0) {
-         double $$1 = $$0.readDouble();
-         double $$2 = $$0.readDouble();
-         double $$3 = $$0.readDouble();
-         boolean $$4 = $$0.readUnsignedByte() != 0;
-         return new abw.a($$1, $$2, $$3, $$4);
+      private d(so $$0) {
+         this.a = $$0.b(bgx.class);
       }
 
       @Override
-      public void a(sl $$0) {
+      public abw.b a() {
+         return abw.b.a;
+      }
+
+      @Override
+      public void a(abw.c $$0) {
          $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.k(this.f ? 1 : 0);
-      }
-   }
-
-   public static class b extends abw {
-      public b(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, true, true);
-      }
-
-      public static abw.b b(sl $$0) {
-         double $$1 = $$0.readDouble();
-         double $$2 = $$0.readDouble();
-         double $$3 = $$0.readDouble();
-         float $$4 = $$0.readFloat();
-         float $$5 = $$0.readFloat();
-         boolean $$6 = $$0.readUnsignedByte() != 0;
-         return new abw.b($$1, $$2, $$3, $$4, $$5, $$6);
       }
 
       @Override
-      public void a(sl $$0) {
+      public void a(so $$0) {
          $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.k(this.f ? 1 : 0);
       }
    }
 
-   public static class c extends abw {
-      public c(float $$0, float $$1, boolean $$2) {
-         super(0.0, 0.0, 0.0, $$0, $$1, $$2, false, true);
+   static class e implements abw.a {
+      private final bgx a;
+      private final ehn b;
+
+      e(bgx $$0, ehn $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public static abw.c b(sl $$0) {
-         float $$1 = $$0.readFloat();
-         float $$2 = $$0.readFloat();
-         boolean $$3 = $$0.readUnsignedByte() != 0;
-         return new abw.c($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(sl $$0) {
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.k(this.f ? 1 : 0);
-      }
-   }
-
-   public static class d extends abw {
-      public d(boolean $$0) {
-         super(0.0, 0.0, 0.0, 0.0F, 0.0F, $$0, false, false);
-      }
-
-      public static abw.d b(sl $$0) {
-         boolean $$1 = $$0.readUnsignedByte() != 0;
-         return new abw.d($$1);
+      private e(so $$0) {
+         this.b = new ehn((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bgx.class);
       }
 
       @Override
-      public void a(sl $$0) {
-         $$0.k(this.f ? 1 : 0);
+      public abw.b a() {
+         return abw.b.c;
+      }
+
+      @Override
+      public void a(abw.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.a((float)this.b.c);
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a(this.a);
       }
    }
 }

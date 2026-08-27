@@ -1,73 +1,24 @@
-public class aar implements va<ws> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final byte e;
-   private final byte f;
-   private final boolean g;
-
-   public aar(bil $$0) {
-      this.a = $$0.ah();
-      ehi $$1 = $$0.dj();
-      this.b = $$1.c;
-      this.c = $$1.d;
-      this.d = $$1.e;
-      this.e = (byte)((int)($$0.dA() * 256.0F / 360.0F));
-      this.f = (byte)((int)($$0.dC() * 256.0F / 360.0F));
-      this.g = $$0.aA();
-   }
-
-   public aar(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readByte();
-      this.f = $$0.readByte();
-      this.g = $$0.readBoolean();
+public record aar(tl a, boolean b) implements vd<ww> {
+   public aar(so $$0) {
+      this($$0.l(), $$0.readBoolean());
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.k(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public double d() {
+   public boolean d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public byte g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

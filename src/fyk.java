@@ -1,72 +1,100 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public abstract class fyk implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
+public class fyk implements fyj {
+   public static final int a = 0;
+   private final fyk.b c = new fyk.b();
+   private final fyk.b d = new fyk.b();
+   public final fyk.a b;
 
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
-   }
-
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
-      }
-   }
-
-   public abstract void a(anp var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
-      }
-   }
-
-   public void a(fza $$0, anp $$1, aeu $$2, Executor $$3) {
-      $$0.a($$2, this);
+   public fyk(fyk.a $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void close() {
+   public float unclampedCall(cjf $$0, @Nullable fix $$1, @Nullable bjg $$2, int $$3) {
+      biq $$4 = (biq)($$2 != null ? $$2 : $$0.H());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
+   }
+
+   private float a(cjf $$0, fix $$1, int $$2, biq $$3) {
+      hf $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.V();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return arx.b((float)$$2, 1.0F);
+   }
+
+   private float a(biq $$0, long $$1, gw $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cbu $$5 && $$5.g()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return arx.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return arx.b((float)$$7, 1.0F);
+   }
+
+   @Nullable
+   private fix a(biq $$0, @Nullable fix $$1) {
+      return $$1 == null && $$0.dL() instanceof fix ? (fix)$$0.dL() : $$1;
+   }
+
+   private boolean a(biq $$0, @Nullable hf $$1) {
+      return $$1 != null && $$1.a() == $$0.dL().ac() && !($$1.b().b($$0.dj()) < 1.0E-5F);
+   }
+
+   private double a(biq $$0, gw $$1) {
+      ehn $$2 = ehn.b($$1);
+      return Math.atan2($$2.c() - $$0.dw(), $$2.a() - $$0.dq()) / (float) (Math.PI * 2);
+   }
+
+   private double a(biq $$0) {
+      return arx.c((double)($$0.dC() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      hf getPos(fix var1, cjf var2, biq var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = arx.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = arx.c(this.a + this.b, 1.0);
+      }
    }
 }

@@ -1,52 +1,41 @@
-public class dac extends csq {
-   protected static final eib a = csq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int b = 20;
+import javax.annotation.Nullable;
 
-   public dac(dfd.d $$0) {
+public class dac extends crq {
+   protected dac(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public eib c(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return a;
+   public dcv a(gw $$0, dfj $$1) {
+      return new deg($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      return a($$0, $$2, dcx.B);
    }
 
    @Override
-   public eib b_(dfe $$0, cow $$1, gw $$2) {
-      return ehy.b();
-   }
-
-   @Override
-   public eib b(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return ehy.b();
-   }
-
-   @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      csv.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$1 == hc.b && $$2.a(csr.G)) {
-         $$3.a($$4, this, 20);
+   protected void a(cpv $$0, gw $$1, cbu $$2) {
+      dcv $$3 = $$0.c_($$1);
+      if ($$3 instanceof deg) {
+         $$2.a((bhb)$$3);
+         $$2.a(apo.at);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
+   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, ape.wx, apf.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
-      return false;
-   }
-
-   @Override
-   public float b(dfe $$0, cow $$1, gw $$2) {
-      return 0.2F;
+         $$1.a(ix.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

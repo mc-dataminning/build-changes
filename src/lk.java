@@ -1,76 +1,162 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public final class lk {
-   public static final lk a = a("all");
-   public static final lk b = a("texture", a);
-   public static final lk c = a("particle", b);
-   public static final lk d = a("end", a);
-   public static final lk e = a("bottom", d);
-   public static final lk f = a("top", d);
-   public static final lk g = a("front", a);
-   public static final lk h = a("back", a);
-   public static final lk i = a("side", a);
-   public static final lk j = a("north", i);
-   public static final lk k = a("south", i);
-   public static final lk l = a("east", i);
-   public static final lk m = a("west", i);
-   public static final lk n = a("up");
-   public static final lk o = a("down");
-   public static final lk p = a("cross");
-   public static final lk q = a("plant");
-   public static final lk r = a("wall", a);
-   public static final lk s = a("rail");
-   public static final lk t = a("wool");
-   public static final lk u = a("pattern");
-   public static final lk v = a("pane");
-   public static final lk w = a("edge");
-   public static final lk x = a("fan");
-   public static final lk y = a("stem");
-   public static final lk z = a("upperstem");
-   public static final lk A = a("crop");
-   public static final lk B = a("dirt");
-   public static final lk C = a("fire");
-   public static final lk D = a("lantern");
-   public static final lk E = a("platform");
-   public static final lk F = a("unsticky");
-   public static final lk G = a("torch");
-   public static final lk H = a("layer0");
-   public static final lk I = a("layer1");
-   public static final lk J = a("layer2");
-   public static final lk K = a("lit_log");
-   public static final lk L = a("candle");
-   public static final lk M = a("inside");
-   public static final lk N = a("content");
-   public static final lk O = a("inner_top");
-   public static final lk P = a("flowerbed");
-   private final String Q;
-   @Nullable
-   private final lk R;
+public class lk {
+   public static final lj a = a("cube", lm.c, lm.j, lm.k, lm.l, lm.m, lm.n, lm.o);
+   public static final lj b = a("cube_directional", lm.c, lm.j, lm.k, lm.l, lm.m, lm.n, lm.o);
+   public static final lj c = a("cube_all", lm.a);
+   public static final lj d = a("cube_mirrored_all", "_mirrored", lm.a);
+   public static final lj e = a("cube_north_west_mirrored_all", "_north_west_mirrored", lm.a);
+   public static final lj f = a("cube_column_uv_locked_x", "_x", lm.d, lm.i);
+   public static final lj g = a("cube_column_uv_locked_y", "_y", lm.d, lm.i);
+   public static final lj h = a("cube_column_uv_locked_z", "_z", lm.d, lm.i);
+   public static final lj i = a("cube_column", lm.d, lm.i);
+   public static final lj j = a("cube_column_horizontal", "_horizontal", lm.d, lm.i);
+   public static final lj k = a("cube_column_mirrored", "_mirrored", lm.d, lm.i);
+   public static final lj l = a("cube_top", lm.f, lm.i);
+   public static final lj m = a("cube_bottom_top", lm.f, lm.e, lm.i);
+   public static final lj n = a("orientable", lm.f, lm.g, lm.i);
+   public static final lj o = a("orientable_with_bottom", lm.f, lm.e, lm.i, lm.g);
+   public static final lj p = a("orientable_vertical", "_vertical", lm.g, lm.i);
+   public static final lj q = a("button", lm.b);
+   public static final lj r = a("button_pressed", "_pressed", lm.b);
+   public static final lj s = a("button_inventory", "_inventory", lm.b);
+   public static final lj t = a("door_bottom_left", "_bottom_left", lm.f, lm.e);
+   public static final lj u = a("door_bottom_left_open", "_bottom_left_open", lm.f, lm.e);
+   public static final lj v = a("door_bottom_right", "_bottom_right", lm.f, lm.e);
+   public static final lj w = a("door_bottom_right_open", "_bottom_right_open", lm.f, lm.e);
+   public static final lj x = a("door_top_left", "_top_left", lm.f, lm.e);
+   public static final lj y = a("door_top_left_open", "_top_left_open", lm.f, lm.e);
+   public static final lj z = a("door_top_right", "_top_right", lm.f, lm.e);
+   public static final lj A = a("door_top_right_open", "_top_right_open", lm.f, lm.e);
+   public static final lj B = a("custom_fence_post", "_post", lm.b, lm.c);
+   public static final lj C = a("custom_fence_side_north", "_side_north", lm.b);
+   public static final lj D = a("custom_fence_side_east", "_side_east", lm.b);
+   public static final lj E = a("custom_fence_side_south", "_side_south", lm.b);
+   public static final lj F = a("custom_fence_side_west", "_side_west", lm.b);
+   public static final lj G = a("custom_fence_inventory", "_inventory", lm.b);
+   public static final lj H = a("fence_post", "_post", lm.b);
+   public static final lj I = a("fence_side", "_side", lm.b);
+   public static final lj J = a("fence_inventory", "_inventory", lm.b);
+   public static final lj K = a("template_wall_post", "_post", lm.r);
+   public static final lj L = a("template_wall_side", "_side", lm.r);
+   public static final lj M = a("template_wall_side_tall", "_side_tall", lm.r);
+   public static final lj N = a("wall_inventory", "_inventory", lm.r);
+   public static final lj O = a("template_custom_fence_gate", lm.b, lm.c);
+   public static final lj P = a("template_custom_fence_gate_open", "_open", lm.b, lm.c);
+   public static final lj Q = a("template_custom_fence_gate_wall", "_wall", lm.b, lm.c);
+   public static final lj R = a("template_custom_fence_gate_wall_open", "_wall_open", lm.b, lm.c);
+   public static final lj S = a("template_fence_gate", lm.b);
+   public static final lj T = a("template_fence_gate_open", "_open", lm.b);
+   public static final lj U = a("template_fence_gate_wall", "_wall", lm.b);
+   public static final lj V = a("template_fence_gate_wall_open", "_wall_open", lm.b);
+   public static final lj W = a("pressure_plate_up", lm.b);
+   public static final lj X = a("pressure_plate_down", "_down", lm.b);
+   public static final lj Y = a(lm.c);
+   public static final lj Z = a("slab", lm.e, lm.f, lm.i);
+   public static final lj aa = a("slab_top", "_top", lm.e, lm.f, lm.i);
+   public static final lj ab = a("leaves", lm.a);
+   public static final lj ac = a("stairs", lm.e, lm.f, lm.i);
+   public static final lj ad = a("inner_stairs", "_inner", lm.e, lm.f, lm.i);
+   public static final lj ae = a("outer_stairs", "_outer", lm.e, lm.f, lm.i);
+   public static final lj af = a("template_trapdoor_top", "_top", lm.b);
+   public static final lj ag = a("template_trapdoor_bottom", "_bottom", lm.b);
+   public static final lj ah = a("template_trapdoor_open", "_open", lm.b);
+   public static final lj ai = a("template_orientable_trapdoor_top", "_top", lm.b);
+   public static final lj aj = a("template_orientable_trapdoor_bottom", "_bottom", lm.b);
+   public static final lj ak = a("template_orientable_trapdoor_open", "_open", lm.b);
+   public static final lj al = a("pointed_dripstone", lm.p);
+   public static final lj am = a("cross", lm.p);
+   public static final lj an = a("tinted_cross", lm.p);
+   public static final lj ao = a("flower_pot_cross", lm.q);
+   public static final lj ap = a("tinted_flower_pot_cross", lm.q);
+   public static final lj aq = a("rail_flat", lm.s);
+   public static final lj ar = a("rail_curved", "_corner", lm.s);
+   public static final lj as = a("template_rail_raised_ne", "_raised_ne", lm.s);
+   public static final lj at = a("template_rail_raised_sw", "_raised_sw", lm.s);
+   public static final lj au = a("carpet", lm.t);
+   public static final lj av = a("flowerbed_1", "_1", lm.P, lm.y);
+   public static final lj aw = a("flowerbed_2", "_2", lm.P, lm.y);
+   public static final lj ax = a("flowerbed_3", "_3", lm.P, lm.y);
+   public static final lj ay = a("flowerbed_4", "_4", lm.P, lm.y);
+   public static final lj az = a("coral_fan", lm.x);
+   public static final lj aA = a("coral_wall_fan", lm.x);
+   public static final lj aB = a("template_glazed_terracotta", lm.u);
+   public static final lj aC = a("template_chorus_flower", lm.b);
+   public static final lj aD = a("template_daylight_detector", lm.f, lm.i);
+   public static final lj aE = a("template_glass_pane_noside", "_noside", lm.v);
+   public static final lj aF = a("template_glass_pane_noside_alt", "_noside_alt", lm.v);
+   public static final lj aG = a("template_glass_pane_post", "_post", lm.v, lm.w);
+   public static final lj aH = a("template_glass_pane_side", "_side", lm.v, lm.w);
+   public static final lj aI = a("template_glass_pane_side_alt", "_side_alt", lm.v, lm.w);
+   public static final lj aJ = a("template_command_block", lm.g, lm.h, lm.i);
+   public static final lj aK = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", lm.b);
+   public static final lj aL = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", lm.b);
+   public static final lj aM = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", lm.b);
+   public static final lj aN = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", lm.b);
+   public static final lj aO = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", lm.b);
+   public static final lj aP = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", lm.b);
+   public static final lj aQ = a("template_anvil", lm.f);
+   public static final lj[] aR = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, lm.y)).toArray(lj[]::new);
+   public static final lj aS = a("stem_fruit", lm.y, lm.z);
+   public static final lj aT = a("crop", lm.A);
+   public static final lj aU = a("template_farmland", lm.B, lm.f);
+   public static final lj aV = a("template_fire_floor", lm.C);
+   public static final lj aW = a("template_fire_side", lm.C);
+   public static final lj aX = a("template_fire_side_alt", lm.C);
+   public static final lj aY = a("template_fire_up", lm.C);
+   public static final lj aZ = a("template_fire_up_alt", lm.C);
+   public static final lj ba = a("template_campfire", lm.C, lm.K);
+   public static final lj bb = a("template_lantern", lm.D);
+   public static final lj bc = a("template_hanging_lantern", "_hanging", lm.D);
+   public static final lj bd = a("template_torch", lm.G);
+   public static final lj be = a("template_torch_wall", lm.G);
+   public static final lj bf = a("template_piston", lm.E, lm.e, lm.i);
+   public static final lj bg = a("template_piston_head", lm.E, lm.i, lm.F);
+   public static final lj bh = a("template_piston_head_short", lm.E, lm.i, lm.F);
+   public static final lj bi = a("template_seagrass", lm.b);
+   public static final lj bj = a("template_turtle_egg", lm.a);
+   public static final lj bk = a("template_two_turtle_eggs", lm.a);
+   public static final lj bl = a("template_three_turtle_eggs", lm.a);
+   public static final lj bm = a("template_four_turtle_eggs", lm.a);
+   public static final lj bn = a("template_single_face", lm.b);
+   public static final lj bo = a("template_cauldron_level1", lm.N, lm.M, lm.c, lm.f, lm.e, lm.i);
+   public static final lj bp = a("template_cauldron_level2", lm.N, lm.M, lm.c, lm.f, lm.e, lm.i);
+   public static final lj bq = a("template_cauldron_full", lm.N, lm.M, lm.c, lm.f, lm.e, lm.i);
+   public static final lj br = a("template_azalea", lm.f, lm.i);
+   public static final lj bs = a("template_potted_azalea_bush", lm.q, lm.f, lm.i);
+   public static final lj bt = a("template_potted_azalea_bush", lm.q, lm.f, lm.i);
+   public static final lj bu = a("sniffer_egg", lm.f, lm.e, lm.j, lm.k, lm.l, lm.m);
+   public static final lj bv = b("generated", lm.H);
+   public static final lj bw = b("template_music_disc", lm.H);
+   public static final lj bx = b("handheld", lm.H);
+   public static final lj by = b("handheld_rod", lm.H);
+   public static final lj bz = b("generated", lm.H, lm.I);
+   public static final lj bA = b("generated", lm.H, lm.I, lm.J);
+   public static final lj bB = b("template_shulker_box", lm.c);
+   public static final lj bC = b("template_bed", lm.c);
+   public static final lj bD = b("template_banner");
+   public static final lj bE = b("template_skull");
+   public static final lj bF = a("template_candle", lm.a, lm.c);
+   public static final lj bG = a("template_two_candles", lm.a, lm.c);
+   public static final lj bH = a("template_three_candles", lm.a, lm.c);
+   public static final lj bI = a("template_four_candles", lm.a, lm.c);
+   public static final lj bJ = a("template_cake_with_candle", lm.L, lm.e, lm.i, lm.f, lm.c);
+   public static final lj bK = a("template_sculk_shrieker", lm.e, lm.i, lm.f, lm.c, lm.O);
 
-   private static lk a(String $$0) {
-      return new lk($$0, null);
+   private static lj a(lm... $$0) {
+      return new lj(Optional.empty(), Optional.empty(), $$0);
    }
 
-   private static lk a(String $$0, lk $$1) {
-      return new lk($$0, $$1);
+   private static lj a(String $$0, lm... $$1) {
+      return new lj(Optional.of(new aex("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
-   private lk(String $$0, @Nullable lk $$1) {
-      this.Q = $$0;
-      this.R = $$1;
+   private static lj b(String $$0, lm... $$1) {
+      return new lj(Optional.of(new aex("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public String a() {
-      return this.Q;
-   }
-
-   @Nullable
-   public lk b() {
-      return this.R;
-   }
-
-   @Override
-   public String toString() {
-      return "#" + this.Q;
+   private static lj a(String $$0, String $$1, lm... $$2) {
+      return new lj(Optional.of(new aex("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

@@ -1,494 +1,710 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-public class fom implements ela, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String r = "shaders/core/";
-   private static final String s = "shaders/include/";
-   static final Logger t = LogUtils.getLogger();
-   private static final ekt u = new ekt();
-   private static final boolean v = true;
-   private static fom w;
-   private static int x = -1;
-   private final Map<String, Object> y = Maps.newHashMap();
-   private final List<String> z = Lists.newArrayList();
-   private final List<Integer> A = Lists.newArrayList();
-   private final List<elb> B = Lists.newArrayList();
-   private final List<Integer> C = Lists.newArrayList();
-   private final Map<String, elb> D = Maps.newHashMap();
-   private final int E;
-   private final String F;
-   private boolean G;
-   private final eku H;
-   private final List<Integer> I;
-   private final List<String> J;
-   private final eky K;
-   private final eky L;
-   private final elp M;
-   @Nullable
-   public final elb b;
-   @Nullable
-   public final elb c;
-   @Nullable
-   public final elb d;
-   @Nullable
-   public final elb e;
-   @Nullable
-   public final elb f;
-   @Nullable
-   public final elb g;
-   @Nullable
-   public final elb h;
-   @Nullable
-   public final elb i;
-   @Nullable
-   public final elb j;
-   @Nullable
-   public final elb k;
-   @Nullable
-   public final elb l;
-   @Nullable
-   public final elb m;
-   @Nullable
-   public final elb n;
-   @Nullable
-   public final elb o;
-   @Nullable
-   public final elb p;
-   @Nullable
-   public final elb q;
+public abstract class fom extends fol {
+   private static final int aY = 4;
+   private static final int aZ = 1048576;
+   public static final int aS = 2097152;
+   public static final int aT = 262144;
+   public static final int aU = 131072;
+   public static final int aV = 256;
+   private static final fom ba = a("solid", eln.j, elu.b.h, 2097152, true, false, fom.b.a().a(as).a(p).a(am).a(true));
+   private static final fom bb = a("cutout_mipped", eln.j, elu.b.h, 131072, true, false, fom.b.a().a(as).a(q).a(am).a(true));
+   private static final fom bc = a("cutout", eln.j, elu.b.h, 131072, true, false, fom.b.a().a(as).a(r).a(an).a(true));
+   private static final fom bd = a("translucent", eln.j, elu.b.h, 2097152, true, true, a(s));
+   private static final fom be = a("translucent_moving_block", eln.j, elu.b.h, 262144, false, true, P());
+   private static final fom bf = a("translucent_no_crumbling", eln.j, elu.b.h, 262144, false, true, a(u));
+   private static final Function<aex, fom> bg = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
+   private static final Function<aex, fom> bh = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(w).a(new fol.n($$0, false, false)).a(c).a(as).a(au).a(true);
+      return a("entity_solid", eln.k, elu.b.h, 256, true, false, $$1);
+   });
+   private static final Function<aex, fom> bi = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(x).a(new fol.n($$0, false, false)).a(c).a(as).a(au).a(true);
+      return a("entity_cutout", eln.k, elu.b.h, 256, true, false, $$1);
+   });
+   private static final BiFunction<aex, Boolean, fom> bj = ac.a(($$0, $$1) -> {
+      fom.b $$2 = fom.b.a().a(y).a(new fol.n($$0, false, false)).a(c).a(ax).a(as).a(au).a($$1);
+      return a("entity_cutout_no_cull", eln.k, elu.b.h, 256, true, false, $$2);
+   });
+   private static final BiFunction<aex, Boolean, fom> bk = ac.a(($$0, $$1) -> {
+      fom.b $$2 = fom.b.a().a(z).a(new fol.n($$0, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$1);
+      return a("entity_cutout_no_cull_z_offset", eln.k, elu.b.h, 256, true, false, $$2);
+   });
+   private static final Function<aex, fom> bl = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(A).a(new fol.n($$0, false, false)).a(h).a(aO).a(as).a(au).a(fol.aC).a(true);
+      return a("item_entity_translucent_cull", eln.k, elu.b.h, 256, true, true, $$1);
+   });
+   private static final Function<aex, fom> bm = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(B).a(new fol.n($$0, false, false)).a(h).a(as).a(au).a(true);
+      return a("entity_translucent_cull", eln.k, elu.b.h, 256, true, true, $$1);
+   });
+   private static final BiFunction<aex, Boolean, fom> bn = ac.a(($$0, $$1) -> {
+      fom.b $$2 = fom.b.a().a(C).a(new fol.n($$0, false, false)).a(h).a(ax).a(as).a(au).a($$1);
+      return a("entity_translucent", eln.k, elu.b.h, 256, true, true, $$2);
+   });
+   private static final BiFunction<aex, Boolean, fom> bo = ac.a(($$0, $$1) -> {
+      fom.b $$2 = fom.b.a().a(D).a(new fol.n($$0, false, false)).a(h).a(ax).a(aD).a(au).a($$1);
+      return a("entity_translucent_emissive", eln.k, elu.b.h, 256, true, true, $$2);
+   });
+   private static final Function<aex, fom> bp = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(E).a(new fol.n($$0, false, false)).a(ax).a(as).a(true);
+      return a("entity_smooth_cutout", eln.k, elu.b.h, 256, $$1);
+   });
+   private static final BiFunction<aex, Boolean, fom> bq = ac.a(($$0, $$1) -> {
+      fom.b $$2 = fom.b.a().a(F).a(new fol.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aD : aC).a(false);
+      return a("beacon_beam", eln.j, elu.b.h, 256, false, true, $$2);
+   });
+   private static final Function<aex, fom> br = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(G).a(new fol.n($$0, false, false)).a(az).a(ax).a(as).a(au).a(false);
+      return a("entity_decal", eln.k, elu.b.h, 256, $$1);
+   });
+   private static final Function<aex, fom> bs = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(H).a(new fol.n($$0, false, false)).a(h).a(ax).a(as).a(au).a(aD).a(false);
+      return a("entity_no_outline", eln.k, elu.b.h, 256, false, true, $$1);
+   });
+   private static final Function<aex, fom> bt = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(I).a(new fol.n($$0, false, false)).a(h).a(aw).a(as).a(au).a(aD).a(aA).a(aH).a(false);
+      return a("entity_shadow", eln.k, elu.b.h, 256, false, false, $$1);
+   });
+   private static final Function<aex, fom> bu = ac.b($$0 -> {
+      fom.b $$1 = fom.b.a().a(J).a(new fol.n($$0, false, false)).a(ax).a(true);
+      return a("entity_alpha", eln.k, elu.b.h, 256, $$1);
+   });
+   private static final Function<aex, fom> bv = ac.b($$0 -> {
+      fol.n $$1 = new fol.n($$0, false, false);
+      return a("eyes", eln.k, elu.b.h, 256, false, true, fom.b.a().a(K).a($$1).a(d).a(aD).a(false));
+   });
+   private static final fom bw = a("leash", eln.p, elu.b.f, 256, fom.b.a().a(M).a(ao).a(ax).a(as).a(false));
+   private static final fom bx = a("water_mask", eln.m, elu.b.h, 256, fom.b.a().a(N).a(ao).a(aE).a(false));
+   private static final fom by = a(
+      "armor_glint", eln.q, elu.b.h, 256, fom.b.a().a(P).a(new fol.n(fuf.a, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aH).a(false)
+   );
+   private static final fom bz = a(
+      "armor_entity_glint", eln.q, elu.b.h, 256, fom.b.a().a(Q).a(new fol.n(fuf.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(aH).a(false)
+   );
+   private static final fom bA = a(
+      "glint_translucent", eln.q, elu.b.h, 256, fom.b.a().a(R).a(new fol.n(fuf.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aO).a(false)
+   );
+   private static final fom bB = a("glint", eln.q, elu.b.h, 256, fom.b.a().a(S).a(new fol.n(fuf.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
+   private static final fom bC = a("glint_direct", eln.q, elu.b.h, 256, fom.b.a().a(T).a(new fol.n(fuf.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
+   private static final fom bD = a(
+      "entity_glint", eln.q, elu.b.h, 256, fom.b.a().a(U).a(new fol.n(fuf.a, true, false)).a(aD).a(ax).a(az).a(f).a(aO).a(ar).a(false)
+   );
+   private static final fom bE = a(
+      "entity_glint_direct", eln.q, elu.b.h, 256, fom.b.a().a(V).a(new fol.n(fuf.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(false)
+   );
+   private static final Function<aex, fom> bF = ac.b($$0 -> {
+      fol.n $$1 = new fol.n($$0, false, false);
+      return a("crumbling", eln.j, elu.b.h, 256, false, true, fom.b.a().a(W).a($$1).a(g).a(aD).a(aG).a(false));
+   });
+   private static final Function<aex, fom> bG = ac.b(
+      $$0 -> a("text", eln.t, elu.b.h, 256, false, true, fom.b.a().a(X).a(new fol.n($$0, false, false)).a(h).a(as).a(false))
+   );
+   private static final fom bH = a("text_background", eln.p, elu.b.h, 256, false, true, fom.b.a().a(Y).a(ao).a(h).a(as).a(false));
+   private static final Function<aex, fom> bI = ac.b(
+      $$0 -> a("text_intensity", eln.t, elu.b.h, 256, false, true, fom.b.a().a(Z).a(new fol.n($$0, false, false)).a(h).a(as).a(false))
+   );
+   private static final Function<aex, fom> bJ = ac.b(
+      $$0 -> a("text_polygon_offset", eln.t, elu.b.h, 256, false, true, fom.b.a().a(X).a(new fol.n($$0, false, false)).a(h).a(as).a(aG).a(false))
+   );
+   private static final Function<aex, fom> bK = ac.b(
+      $$0 -> a("text_intensity_polygon_offset", eln.t, elu.b.h, 256, false, true, fom.b.a().a(Z).a(new fol.n($$0, false, false)).a(h).a(as).a(aG).a(false))
+   );
+   private static final Function<aex, fom> bL = ac.b(
+      $$0 -> a("text_see_through", eln.t, elu.b.h, 256, false, true, fom.b.a().a(aa).a(new fol.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
+   );
+   private static final fom bM = a("text_background_see_through", eln.p, elu.b.h, 256, false, true, fom.b.a().a(ab).a(ao).a(h).a(as).a(ay).a(aD).a(false));
+   private static final Function<aex, fom> bN = ac.b(
+      $$0 -> a("text_intensity_see_through", eln.t, elu.b.h, 256, false, true, fom.b.a().a(ac).a(new fol.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
+   );
+   private static final fom bO = a("lightning", eln.n, elu.b.h, 256, false, true, fom.b.a().a(ad).a(aC).a(e).a(aM).a(false));
+   private static final fom bP = a("tripwire", eln.j, elu.b.h, 262144, true, true, Q());
+   private static final fom bQ = a(
+      "end_portal", eln.m, elu.b.h, 256, false, false, fom.b.a().a(af).a(fol.i.d().a(fqx.a, false, false).a(fqx.b, false, false).a()).a(false)
+   );
+   private static final fom bR = a(
+      "end_gateway", eln.m, elu.b.h, 256, false, false, fom.b.a().a(ag).a(fol.i.d().a(fqx.a, false, false).a(fqx.b, false, false).a()).a(false)
+   );
+   public static final fom.a aW = a("lines", eln.o, elu.b.a, 256, fom.b.a().a(ah).a(new fol.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false));
+   public static final fom.a aX = a(
+      "line_strip", eln.o, elu.b.b, 256, fom.b.a().a(ah).a(new fol.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false)
+   );
+   private static final Function<Double, fom.a> bS = ac.b(
+      $$0 -> a("debug_line_strip", eln.n, elu.b.d, 256, fom.b.a().a(o).a(new fol.h(OptionalDouble.of($$0))).a(c).a(ax).a(false))
+   );
+   private static final fom.a bT = a("debug_filled_box", eln.n, elu.b.f, 131072, false, true, fom.b.a().a(o).a(aH).a(h).a(false));
+   private static final fom.a bU = a("debug_quads", eln.n, elu.b.h, 131072, false, true, fom.b.a().a(o).a(h).a(ax).a(false));
+   private static final fom.a bV = a("debug_section_quads", eln.n, elu.b.h, 131072, false, true, fom.b.a().a(o).a(aH).a(h).a(aw).a(false));
+   private static final fom.a bW = a("gui", eln.n, elu.b.h, 256, fom.b.a().a(ai).a(h).a(aA).a(false));
+   private static final fom.a bX = a("gui_overlay", eln.n, elu.b.h, 256, fom.b.a().a(aj).a(h).a(ay).a(aD).a(false));
+   private static final fom.a bY = a("gui_text_highlight", eln.n, elu.b.h, 256, fom.b.a().a(ak).a(h).a(ay).a(aR).a(false));
+   private static final fom.a bZ = a("gui_ghost_recipe_overlay", eln.n, elu.b.h, 256, fom.b.a().a(al).a(h).a(aB).a(aD).a(false));
+   private static final ImmutableList<fom> ca = ImmutableList.of(c(), d(), e(), f(), u());
+   private final elu cb;
+   private final elu.b cc;
+   private final int cd;
+   private final boolean ce;
+   private final boolean cf;
+   private final Optional<fom> cg;
 
-   public fom(ans $$0, String $$1, elp $$2) throws IOException {
-      this.F = $$1;
-      this.M = $$2;
-      aeu $$3 = new aeu("shaders/core/" + $$1 + ".json");
-
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = arj.a($$4);
-         String $$6 = arj.i($$5, "vertex");
-         String $$7 = arj.i($$5, "fragment");
-         JsonArray $$8 = arj.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var20) {
-                  aex $$12 = aex.a(var20);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = arj.a($$5, "attributes", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-            this.I = Lists.newArrayListWithCapacity($$13.size());
-            this.J = Lists.newArrayListWithCapacity($$13.size());
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.J.add(arj.a($$15, "attribute"));
-               } catch (Exception var19) {
-                  aex $$17 = aex.a(var19);
-                  $$17.a("attributes[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         } else {
-            this.I = null;
-            this.J = null;
-         }
-
-         JsonArray $$18 = arj.a($$5, "uniforms", null);
-         if ($$18 != null) {
-            int $$19 = 0;
-
-            for (JsonElement $$20 : $$18) {
-               try {
-                  this.b($$20);
-               } catch (Exception var18) {
-                  aex $$22 = aex.a(var18);
-                  $$22.a("uniforms[" + $$19 + "]");
-                  throw $$22;
-               }
-
-               $$19++;
-            }
-         }
-
-         this.H = a(arj.a($$5, "blend", null));
-         this.K = a($$0, eky.a.a, $$6);
-         this.L = a($$0, eky.a.b, $$7);
-         this.E = ekz.a();
-         if (this.J != null) {
-            int $$23 = 0;
-
-            for (UnmodifiableIterator var31 = $$2.d().iterator(); var31.hasNext(); $$23++) {
-               String $$24 = (String)var31.next();
-               elb.a(this.E, $$23, $$24);
-               this.I.add($$23);
-            }
-         }
-
-         ekz.b(this);
-         this.j();
-      } catch (Exception var22) {
-         aex $$27 = aex.a(var22);
-         $$27.b($$3.a());
-         throw $$27;
-      }
-
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("IViewRotMat");
-      this.e = this.a("TextureMat");
-      this.f = this.a("ScreenSize");
-      this.g = this.a("ColorModulator");
-      this.h = this.a("Light0_Direction");
-      this.i = this.a("Light1_Direction");
-      this.j = this.a("GlintAlpha");
-      this.k = this.a("FogStart");
-      this.l = this.a("FogEnd");
-      this.m = this.a("FogColor");
-      this.n = this.a("FogShape");
-      this.o = this.a("LineWidth");
-      this.p = this.a("GameTime");
-      this.q = this.a("ChunkOffset");
+   public static fom c() {
+      return ba;
    }
 
-   private static eky a(final ans $$0, eky.a $$1, String $$2) throws IOException {
-      eky $$3 = $$1.c().get($$2);
-      eky $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         ann $$5 = $$0.getResourceOrThrow(new aeu($$4));
-
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.a($$4);
-            $$8 = eky.a($$1, $$2, $$6, $$5.b(), new ekr() {
-               private final Set<String> c = Sets.newHashSet();
-
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     aeu $$2 = new aeu($$1);
-
-                     try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
-
-                        return var5;
-                     } catch (IOException var9) {
-                        fom.t.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
-                     }
-                  }
-               }
-            });
-         }
-      } else {
-         $$8 = $$3;
-      }
-
-      return $$8;
+   public static fom d() {
+      return bb;
    }
 
-   public static eku a(JsonObject $$0) {
-      if ($$0 == null) {
-         return new eku();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (arj.a($$0, "func")) {
-            $$1 = eku.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
+   public static fom e() {
+      return bc;
+   }
+
+   private static fom.b a(fol.m $$0) {
+      return fom.b.a().a(as).a($$0).a(am).a(h).a(aK).a(true);
+   }
+
+   public static fom f() {
+      return bd;
+   }
+
+   private static fom.b P() {
+      return fom.b.a().a(as).a(t).a(am).a(h).a(aO).a(true);
+   }
+
+   public static fom g() {
+      return be;
+   }
+
+   public static fom h() {
+      return bf;
+   }
+
+   private static fom.a a(String $$0, aex $$1, boolean $$2) {
+      fom.b $$3 = fom.b.a().a(v).a(new fol.n($$1, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$2 ? az : aA).a(true);
+      return a($$0, eln.k, elu.b.h, 256, true, false, $$3);
+   }
+
+   public static fom a(aex $$0) {
+      return bg.apply($$0);
+   }
+
+   public static fom b(aex $$0) {
+      return a("armor_decal_cutout_no_cull", $$0, true);
+   }
+
+   public static fom c(aex $$0) {
+      return bh.apply($$0);
+   }
+
+   public static fom d(aex $$0) {
+      return bi.apply($$0);
+   }
+
+   public static fom a(aex $$0, boolean $$1) {
+      return bj.apply($$0, $$1);
+   }
+
+   public static fom e(aex $$0) {
+      return a($$0, true);
+   }
+
+   public static fom b(aex $$0, boolean $$1) {
+      return bk.apply($$0, $$1);
+   }
+
+   public static fom f(aex $$0) {
+      return b($$0, true);
+   }
+
+   public static fom g(aex $$0) {
+      return bl.apply($$0);
+   }
+
+   public static fom h(aex $$0) {
+      return bm.apply($$0);
+   }
+
+   public static fom c(aex $$0, boolean $$1) {
+      return bn.apply($$0, $$1);
+   }
+
+   public static fom i(aex $$0) {
+      return c($$0, true);
+   }
+
+   public static fom d(aex $$0, boolean $$1) {
+      return bo.apply($$0, $$1);
+   }
+
+   public static fom j(aex $$0) {
+      return d($$0, true);
+   }
+
+   public static fom k(aex $$0) {
+      return bp.apply($$0);
+   }
+
+   public static fom e(aex $$0, boolean $$1) {
+      return bq.apply($$0, $$1);
+   }
+
+   public static fom l(aex $$0) {
+      return br.apply($$0);
+   }
+
+   public static fom m(aex $$0) {
+      return bs.apply($$0);
+   }
+
+   public static fom n(aex $$0) {
+      return bt.apply($$0);
+   }
+
+   public static fom o(aex $$0) {
+      return bu.apply($$0);
+   }
+
+   public static fom p(aex $$0) {
+      return bv.apply($$0);
+   }
+
+   public static fom a(aex $$0, float $$1, float $$2) {
+      return a(
+         "energy_swirl",
+         eln.k,
+         elu.b.h,
+         256,
+         false,
+         true,
+         fom.b.a().a(L).a(new fol.n($$0, false, false)).a(new fol.j($$1, $$2)).a(d).a(ax).a(as).a(au).a(false)
+      );
+   }
+
+   public static fom i() {
+      return bw;
+   }
+
+   public static fom j() {
+      return bx;
+   }
+
+   public static fom q(aex $$0) {
+      return fom.a.aY.apply($$0, ax);
+   }
+
+   public static fom k() {
+      return by;
+   }
+
+   public static fom l() {
+      return bz;
+   }
+
+   public static fom m() {
+      return bA;
+   }
+
+   public static fom n() {
+      return bB;
+   }
+
+   public static fom o() {
+      return bC;
+   }
+
+   public static fom p() {
+      return bD;
+   }
+
+   public static fom q() {
+      return bE;
+   }
+
+   public static fom r(aex $$0) {
+      return bF.apply($$0);
+   }
+
+   public static fom s(aex $$0) {
+      return bG.apply($$0);
+   }
+
+   public static fom r() {
+      return bH;
+   }
+
+   public static fom t(aex $$0) {
+      return bI.apply($$0);
+   }
+
+   public static fom u(aex $$0) {
+      return bJ.apply($$0);
+   }
+
+   public static fom v(aex $$0) {
+      return bK.apply($$0);
+   }
+
+   public static fom w(aex $$0) {
+      return bL.apply($$0);
+   }
+
+   public static fom s() {
+      return bM;
+   }
+
+   public static fom x(aex $$0) {
+      return bN.apply($$0);
+   }
+
+   public static fom t() {
+      return bO;
+   }
+
+   private static fom.b Q() {
+      return fom.b.a().a(as).a(ae).a(am).a(h).a(aM).a(true);
+   }
+
+   public static fom u() {
+      return bP;
+   }
+
+   public static fom v() {
+      return bQ;
+   }
+
+   public static fom w() {
+      return bR;
+   }
+
+   public static fom x() {
+      return aW;
+   }
+
+   public static fom y() {
+      return aX;
+   }
+
+   public static fom a(double $$0) {
+      return bS.apply($$0);
+   }
+
+   public static fom z() {
+      return bT;
+   }
+
+   public static fom A() {
+      return bU;
+   }
+
+   public static fom B() {
+      return bV;
+   }
+
+   public static fom C() {
+      return bW;
+   }
+
+   public static fom D() {
+      return bX;
+   }
+
+   public static fom E() {
+      return bY;
+   }
+
+   public static fom F() {
+      return bZ;
+   }
+
+   public fom(String $$0, elu $$1, elu.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
+      super($$0, $$6, $$7);
+      this.cb = $$1;
+      this.cc = $$2;
+      this.cd = $$3;
+      this.ce = $$4;
+      this.cf = $$5;
+      this.cg = Optional.of(this);
+   }
+
+   static fom.a a(String $$0, elu $$1, elu.b $$2, int $$3, fom.b $$4) {
+      return a($$0, $$1, $$2, $$3, false, false, $$4);
+   }
+
+   private static fom.a a(String $$0, elu $$1, elu.b $$2, int $$3, boolean $$4, boolean $$5, fom.b $$6) {
+      return new fom.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(elk $$0, elx $$1) {
+      if ($$0.j()) {
+         if (this.cf) {
+            $$0.a($$1);
          }
 
-         if (arj.a($$0, "srcrgb")) {
-            $$2 = eku.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (arj.a($$0, "dstrgb")) {
-            $$3 = eku.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (arj.a($$0, "srcalpha")) {
-            $$4 = eku.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (arj.a($$0, "dstalpha")) {
-            $$5 = eku.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new eku();
-         } else {
-            return $$7 ? new eku($$2, $$3, $$4, $$5, $$1) : new eku($$2, $$3, $$1);
-         }
+         elk.b $$2 = $$0.d();
+         this.a();
+         ell.a($$2);
+         this.b();
       }
    }
 
    @Override
-   public void close() {
-      for (elb $$0 : this.B) {
-         $$0.close();
-      }
-
-      ekz.a(this);
+   public String toString() {
+      return this.b;
    }
 
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ekz.a(0);
-      x = -1;
-      w = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.A.size(); $$1++) {
-         if (this.y.get(this.z.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
+   public static List<fom> G() {
+      return ca;
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.G = false;
-      w = this;
-      this.H.a();
-      if (this.E != x) {
-         ekz.a(this.E);
-         x = this.E;
-      }
-
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.A.size(); $$1++) {
-         String $$2 = this.z.get($$1);
-         if (this.y.get($$2) != null) {
-            int $$3 = elb.a(this.E, $$2);
-            elb.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.y.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof ejw) {
-               $$5 = ((ejw)$$4).f();
-            } else if ($$4 instanceof fyk) {
-               $$5 = ((fyk)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
-            }
-
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
-            }
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (elb $$6 : this.B) {
-         $$6.b();
-      }
+   public int H() {
+      return this.cd;
    }
 
-   @Override
-   public void b() {
-      this.G = true;
+   public elu I() {
+      return this.cb;
    }
 
-   @Nullable
-   public elb a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.D.get($$0);
+   public elu.b J() {
+      return this.cc;
    }
 
-   public ekt b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      elb $$1 = this.a($$0);
-      return (ekt)($$1 == null ? u : $$1);
+   public Optional<fom> K() {
+      return Optional.empty();
    }
 
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
+   public boolean L() {
+      return false;
+   }
 
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.z.get($$1);
-         int $$3 = elb.a(this.E, $$2);
-         if ($$3 == -1) {
-            t.warn("Shader {} could not find sampler named {} in the specified shader program.", this.F, $$2);
-            this.y.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.A.add($$3);
-         }
+   public boolean M() {
+      return this.ce;
+   }
+
+   public boolean N() {
+      return !this.cc.l;
+   }
+
+   public Optional<fom> O() {
+      return this.cg;
+   }
+
+   static final class a extends fom {
+      static final BiFunction<aex, fol.c, fom> aY = ac.a(
+         ($$0, $$1) -> fom.a("outline", eln.r, elu.b.h, 256, fom.b.a().a(O).a(new fol.n($$0, false, false)).a($$1).a(ay).a(aJ).a(fom.c.b))
+      );
+      private final fom.b aZ;
+      private final Optional<fom> ba;
+      private final boolean bb;
+
+      a(String $$0, elu $$1, elu.b $$2, int $$3, boolean $$4, boolean $$5, fom.b $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(fol::a), () -> $$6.o.forEach(fol::b));
+         this.aZ = $$6;
+         this.ba = $$6.n == fom.c.c ? $$6.a.c().map($$1x -> aY.apply($$1x, $$6.e)) : Optional.empty();
+         this.bb = $$6.n == fom.c.b;
       }
 
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.z.remove($$5);
+      @Override
+      public Optional<fom> K() {
+         return this.ba;
       }
 
-      for (elb $$6 : this.B) {
-         String $$7 = $$6.a();
-         int $$8 = elb.a(this.E, $$7);
-         if ($$8 == -1) {
-            t.warn("Shader {} could not find uniform named {} in the specified shader program.", this.F, $$7);
-         } else {
-            this.C.add($$8);
-            $$6.b($$8);
-            this.D.put($$7, $$6);
-         }
+      @Override
+      public boolean L() {
+         return this.bb;
+      }
+
+      protected final fom.b P() {
+         return this.aZ;
+      }
+
+      @Override
+      public String toString() {
+         return "RenderType[" + this.b + ":" + this.aZ + "]";
       }
    }
 
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = arj.m($$0, "sampler");
-      String $$2 = arj.i($$1, "name");
-      if (!arj.a($$1, "file")) {
-         this.y.put($$2, null);
-         this.z.add($$2);
-      } else {
-         this.z.add($$2);
+   protected static final class b {
+      final fol.e a;
+      private final fol.m b;
+      private final fol.p c;
+      private final fol.d d;
+      final fol.c e;
+      private final fol.g f;
+      private final fol.l g;
+      private final fol.f h;
+      private final fol.k i;
+      private final fol.o j;
+      private final fol.q k;
+      private final fol.h l;
+      private final fol.b m;
+      final fom.c n;
+      final ImmutableList<fol> o;
+
+      b(
+         fol.e $$0,
+         fol.m $$1,
+         fol.p $$2,
+         fol.d $$3,
+         fol.c $$4,
+         fol.g $$5,
+         fol.l $$6,
+         fol.f $$7,
+         fol.k $$8,
+         fol.o $$9,
+         fol.q $$10,
+         fol.h $$11,
+         fol.b $$12,
+         fom.c $$13
+      ) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
+         this.k = $$10;
+         this.l = $$11;
+         this.m = $$12;
+         this.n = $$13;
+         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new fol[]{this.l});
       }
-   }
 
-   public void a(String $$0, Object $$1) {
-      this.y.put($$0, $$1);
-      this.b();
-   }
+      @Override
+      public String toString() {
+         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
+      }
 
-   private void b(JsonElement $$0) throws aex {
-      JsonObject $$1 = arj.m($$0, "uniform");
-      String $$2 = arj.i($$1, "name");
-      int $$3 = elb.a(arj.i($$1, "type"));
-      int $$4 = arj.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = arj.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new aex("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+      public static fom.b.a a() {
+         return new fom.b.a();
+      }
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = arj.e($$8, "value");
-            } catch (Exception var13) {
-               aex $$10 = aex.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
+      public static class a {
+         private fol.e a = fol.ao;
+         private fol.m b = fol.i;
+         private fol.p c;
+         private fol.d d;
+         private fol.c e;
+         private fol.g f;
+         private fol.l g;
+         private fol.f h;
+         private fol.k i;
+         private fol.o j;
+         private fol.q k;
+         private fol.h l;
+         private fol.b m;
 
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
-
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         elb $$12 = new elb($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         a() {
+            this.c = fol.c;
+            this.d = fol.aA;
+            this.e = fol.aw;
+            this.f = fol.at;
+            this.g = fol.av;
+            this.h = fol.aF;
+            this.i = fol.aI;
+            this.j = fol.ap;
+            this.k = fol.aC;
+            this.l = fol.aP;
+            this.m = fol.aQ;
          }
 
-         this.B.add($$12);
+         public fom.b.a a(fol.e $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.m $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.p $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.d $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.c $$0) {
+            this.e = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.g $$0) {
+            this.f = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.l $$0) {
+            this.g = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.f $$0) {
+            this.h = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.k $$0) {
+            this.i = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.o $$0) {
+            this.j = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.q $$0) {
+            this.k = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.h $$0) {
+            this.l = $$0;
+            return this;
+         }
+
+         public fom.b.a a(fol.b $$0) {
+            this.m = $$0;
+            return this;
+         }
+
+         public fom.b a(boolean $$0) {
+            return this.a($$0 ? fom.c.c : fom.c.a);
+         }
+
+         public fom.b a(fom.c $$0) {
+            return new fom.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
+         }
       }
    }
 
-   @Override
-   public eky c() {
-      return this.K;
-   }
+   static enum c {
+      a("none"),
+      b("is_outline"),
+      c("affects_outline");
 
-   @Override
-   public eky d() {
-      return this.L;
-   }
+      private final String d;
 
-   @Override
-   public void e() {
-      this.L.a(this);
-      this.K.a(this);
-   }
+      private c(String $$0) {
+         this.d = $$0;
+      }
 
-   public elp h() {
-      return this.M;
-   }
-
-   public String i() {
-      return this.F;
-   }
-
-   @Override
-   public int a() {
-      return this.E;
+      @Override
+      public String toString() {
+         return this.d;
+      }
    }
 }

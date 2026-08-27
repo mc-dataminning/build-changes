@@ -1,28 +1,34 @@
 import java.util.EnumSet;
 
-public class bpq extends bpw {
-   private final bjd a;
+public class bpq extends bqb {
+   private final bji a;
+   private final cpv b;
 
-   public bpq(bjd $$0) {
+   public bpq(bji $$0, cpv $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bpw.a.c));
-      $$0.H().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(bqb.a.c));
    }
 
    @Override
    public boolean a() {
-      return this.a.aX() && this.a.b(apt.a) > this.a.de() || this.a.bl();
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ah().a(apw.f)) {
+         gw $$1 = this.a.dl().c();
+         dfj $$2 = this.b.a_($$1);
+         return $$2.a(csw.qC) || $$2.k(this.b, $$1) == eid.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean K_() {
+   public boolean Q_() {
       return true;
    }
 
    @Override
    public void e() {
-      if (this.a.ee().i() < 0.8F) {
-         this.a.F().a();
-      }
+      this.a.K().a();
    }
 }

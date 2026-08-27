@@ -1,94 +1,204 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface ech {
-   int c = 19133;
-   int d = 19132;
+public class ech implements Comparable<ech> {
+   private final cpz a;
+   private final eci b;
+   private final String c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
+   private final Path g;
+   @Nullable
+   private tl h;
 
-   cqj F();
-
-   void a(cqj var1);
-
-   boolean H();
-
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
+   public ech(cpz $$0, eci $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.d = $$3;
    }
 
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public String a() {
+      return this.c;
+   }
+
+   public String b() {
+      return StringUtils.isEmpty(this.a.a()) ? this.c : this.a.a();
+   }
+
+   public Path c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public long f() {
+      return this.b.b();
+   }
+
+   public int a(ech $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.c.compareTo($$0.c);
       }
    }
 
-   @Nullable
-   qu G();
+   public cpz g() {
+      return this.a;
+   }
 
-   void a(@Nullable qu var1);
+   public cps h() {
+      return this.a.b();
+   }
 
-   ecg K();
+   public boolean i() {
+      return this.a.c();
+   }
 
-   cpu L();
+   public boolean j() {
+      return this.a.e();
+   }
 
-   qu a(hu var1, @Nullable qu var2);
+   public ty k() {
+      return asq.b(this.b.c()) ? tl.c("selectWorld.versionUnknown") : tl.b(this.b.c());
+   }
 
-   boolean n();
+   public eci l() {
+      return this.b;
+   }
 
-   int z();
+   public boolean m() {
+      return this.n() || !aa.b().g() && !this.b.e() || this.o().a();
+   }
 
-   String g();
+   public boolean n() {
+      return this.b.d().c() > aa.b().d().c();
+   }
 
-   cpn m();
+   public ech.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.b.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return ech.a.c;
+      } else {
+         return $$2 > $$1 ? ech.a.b : ech.a.a;
+      }
+   }
 
-   void a(cpn var1);
+   public boolean p() {
+      return this.e;
+   }
 
-   boolean o();
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
 
-   bgq s();
+   public boolean r() {
+      return aa.b().d().a(this.b.d());
+   }
 
-   void a(bgq var1);
+   public tl s() {
+      if (this.h == null) {
+         this.h = this.t();
+      }
 
-   boolean t();
+      return this.h;
+   }
 
-   void d(boolean var1);
+   private tl t() {
+      if (this.p()) {
+         return tl.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return tl.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return tl.c("selectWorld.incompatible_series").a(n.m);
+      } else {
+         ty $$0 = this.i() ? tl.h().b(tl.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tl.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(tl.c("selectWorld.cheats"));
+         }
 
-   cpm q();
+         if (this.e()) {
+            $$0.f(", ").b(tl.c("selectWorld.experimental").a(n.o));
+         }
 
-   @Nullable
-   qu y();
+         ty $$1 = this.k();
+         ty $$2 = tl.b(", ").b(tl.c("selectWorld.version")).b(tk.u);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
 
-   diq.a E();
+         $$0.b($$2);
+         return $$0;
+      }
+   }
 
-   void a(diq.a var1);
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
 
-   dll A();
+      private final boolean d;
+      private final boolean e;
+      private final String f;
 
-   boolean B();
+      private a(boolean $$0, boolean $$1, String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
 
-   boolean C();
+      public boolean a() {
+         return this.d;
+      }
 
-   Lifecycle D();
+      public boolean b() {
+         return this.e;
+      }
 
-   default cdx M() {
-      return this.F().b();
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends ech {
+      public b(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public tl s() {
+         return tl.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
    }
 }

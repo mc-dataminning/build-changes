@@ -1,13 +1,26 @@
-import java.util.Map;
-import java.util.function.Predicate;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class cyj extends cww {
-   public cyj(dfd.d $$0, Predicate<cqo.c> $$1, Map<civ, id> $$2) {
-      super($$0, $$1, $$2);
+public class cyj extends czx {
+   protected cyj(dfi.d $$0) {
+      super(czx.b.c, $$0);
    }
 
    @Override
-   protected void d(dfe $$0, cpq $$1, gw $$2) {
-      e(csr.fu.n().a(e, $$0.c(e)), $$1, $$2);
+   public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.c_($$1) instanceof def $$6) {
+         GameProfile $$7 = null;
+         if ($$4.u()) {
+            qx $$8 = $$4.v();
+            if ($$8.b("SkullOwner", 10)) {
+               $$7 = rj.a($$8.p("SkullOwner"));
+            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
+               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
+            }
+         }
+
+         $$6.a($$7);
+      }
    }
 }

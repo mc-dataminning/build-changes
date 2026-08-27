@@ -1,125 +1,102 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class eds extends edx {
-   public static final aqd<dvd> a = apz.e;
-   public static final ebo.a b = ebo.a.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final Codec<eds> f = RecordCodecBuilder.create(
+public class eds extends eec {
+   public static final Codec<eds> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  arb.a(aqd.a(je.az), "destination", a).forGetter($$0x -> $$0x.h),
-                  ebo.a.B.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  arb.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
-                  arb.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
-                  arb.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  jd.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dgm::f).toList())
                )
             )
             .apply($$0, eds::new)
    );
-   private final aqd<dvd> h;
-   private final ebo.a i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final hg<csv> b;
+   private final Set<dgm<?>> c;
 
-   eds(List<efk> $$0, aqd<dvd> $$1, ebo.a $$2, byte $$3, int $$4, boolean $$5) {
+   eds(List<efp> $$0, hg<csv> $$1, Set<dgm<?>> $$2) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private eds(List<efp> $$0, hg<csv> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public edz b() {
-      return eea.m;
+   public eee b() {
+      return eef.x;
    }
 
    @Override
-   public Set<eet<?>> a() {
-      return ImmutableSet.of(eew.f);
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(efb.g);
    }
 
    @Override
-   public cja a(cja $$0, ecl $$1) {
-      if (!$$0.a(cjd.tp)) {
-         return $$0;
-      } else {
-         ehi $$2 = $$1.c(eew.f);
-         if ($$2 != null) {
-            akn $$3 = $$1.d();
-            gw $$4 = $$3.a(this.h, gw.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               cja $$5 = cjh.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cjh.a($$3, $$5);
-               ebr.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   protected cjf a(cjf $$0, ecq $$1) {
+      dfj $$2 = $$1.c(efb.g);
+      if ($$2 != null) {
+         qx $$3 = $$0.w();
+         qx $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new qx();
+            $$3.a("BlockStateTag", $$4);
          }
 
-         return $$0;
+         for (dgm<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
       }
+
+      return $$0;
    }
 
-   public static eds.a c() {
-      return new eds.a();
+   public static eds.a a(csv $$0) {
+      return new eds.a($$0);
    }
 
-   public static class a extends edx.a<eds.a> {
-      private aqd<dvd> a;
-      private ebo.a b;
-      private byte c;
-      private int d;
-      private boolean e;
+   private static <T extends Comparable<T>> String a(dfj $$0, dgm<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
+   }
 
-      public a() {
-         this.a = eds.a;
-         this.b = eds.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+   public static class a extends eec.a<eds.a> {
+      private final hg<csv> a;
+      private final Builder<dgm<?>> b = ImmutableSet.builder();
+
+      a(csv $$0) {
+         this.a = $$0.q();
+      }
+
+      public eds.a a(dgm<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected eds.a a() {
          return this;
       }
 
-      public eds.a a(aqd<dvd> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eds.a a(ebo.a $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eds.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eds.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eds.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public edy b() {
-         return new eds(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public eed b() {
+         return new eds(this.g(), this.a, this.b.build());
       }
    }
 }

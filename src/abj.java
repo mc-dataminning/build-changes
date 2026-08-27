@@ -1,14 +1,14 @@
-public record abj(float a) implements va<aaz> {
-   public abj(sl $$0) {
-      this($$0.readFloat());
+public record abj(int a) implements vd<abd> {
+   public abj(so $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 }

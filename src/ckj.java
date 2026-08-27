@@ -1,44 +1,47 @@
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ckj extends cgt {
-   protected final csq d;
-   private final hc c;
+public class ckj extends cgy implements chr {
+   private final apd c;
 
-   public ckj(csq $$0, csq $$1, civ.a $$2, hc $$3) {
+   public ckj(csv $$0, apd $$1, cja.a $$2) {
       super($$0, $$2);
-      this.d = $$1;
-      this.c = $$3;
+      this.c = $$1;
    }
 
-   protected boolean a(cpt $$0, dfe $$1, gw $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dfe c(cli $$0) {
-      dfe $$1 = this.d.a($$0);
-      dfe $$2 = null;
-      cpt $$3 = $$0.q();
-      gw $$4 = $$0.a();
-
-      for (hc $$5 : $$0.f()) {
-         if ($$5 != this.c.g()) {
-            dfe $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bgy a(clp $$0) {
+      bgy $$1 = super.a($$0);
+      cbu $$2 = $$0.o();
+      if ($$1.a() && $$2 != null && !$$2.f()) {
+         bgx $$3 = $$0.p();
+         $$2.a($$3, cji.pK.ai_());
       }
 
-      return $$2 != null && $$3.a($$2, $$4, ehn.a()) ? $$2 : null;
+      return $$1;
    }
 
    @Override
-   public void a(Map<csq, civ> $$0, civ $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.d, $$1);
+   public String a() {
+      return this.q();
+   }
+
+   @Override
+   protected apd a(dfj $$0) {
+      return this.c;
+   }
+
+   @Override
+   public boolean a(@Nullable cbu $$0, cpv $$1, gw $$2, @Nullable ehj $$3) {
+      if ($$1.j($$2) && $$1.t($$2)) {
+         if (!$$1.B) {
+            $$1.a($$2, this.e().n(), 3);
+         }
+
+         $$1.a($$0, djt.z, $$2);
+         $$1.a($$0, $$2, this.c, apf.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

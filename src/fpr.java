@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Predicate;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fpr {
+@FunctionalInterface
+public interface fpr {
+   fpr b = $$0 -> $$0x -> true;
+   fpr c = $$0 -> $$0x -> false;
+
+   Predicate<dfj> getPredicate(dfk<csv, dfj> var1);
 }

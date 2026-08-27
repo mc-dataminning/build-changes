@@ -1,66 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class dmz extends dnr<dpm> {
-   public dmz(Codec<dpm> $$0) {
+public abstract class dmz extends dnw<dqc> {
+   public dmz(Codec<dqc> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dnt<dpm> $$0) {
-      cqk $$1 = $$0.b();
-      dpm $$2 = $$0.f();
-      arx $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
+   protected void a(cpw $$0, asc $$1, gw $$2, dqc $$3, int $$4, gw.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(hc.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
 
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
+   protected int a(asc $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
       }
 
-      if ($$6 == 0) {
-         return false;
-      } else {
-         gw.a $$8 = $$0.e().j();
-         gw.a $$9 = $$8.j().c($$2.b());
+      return $$1;
+   }
 
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
+   protected boolean a(cpw $$0, gw $$1, int $$2, gw.a $$3, dqc $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.H_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
+         dfj $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(apt.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
 
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dpm.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dfj $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(apt.O)) {
+                        return false;
+                     }
+                  }
                }
             }
-         }
 
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dny<dqc> $$0) {
+      cqp $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      asc $$3 = $$0.d();
+      dqc $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      gw.a $$6 = new gw.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
          return true;
       }
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
-   }
+   protected abstract void a(cpw var1, asc var2, gw var3, int var4, gw.a var5, dqc var6);
 }

@@ -1,32 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dpu implements dpv {
+public class dpu implements dqa {
    public static final Codec<dpu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gw.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dpu::new)
+      $$0 -> $$0.group(bgd.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bgd.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dpu::new)
    );
-   private final Optional<gw> b;
-   private final boolean c;
+   private final bgd b;
+   private final bgd c;
 
-   private dpu(Optional<gw> $$0, boolean $$1) {
+   public dpu(bgd $$0, bgd $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static dpu a(gw $$0, boolean $$1) {
-      return new dpu(Optional.of($$0), $$1);
-   }
-
-   public static dpu a() {
-      return new dpu(Optional.empty(), false);
-   }
-
-   public Optional<gw> b() {
+   public bgd a() {
       return this.b;
    }
 
-   public boolean c() {
+   public bgd b() {
       return this.c;
    }
 }

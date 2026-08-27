@@ -1,77 +1,84 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bpi extends bpw {
-   private static final btn d = btn.b().a(8.0).d();
-   protected final bum a;
-   private final Class<? extends bum> e;
-   protected final cpq b;
+public class bpi<T extends bjg> extends bqb {
+   protected final bjp a;
+   private final double i;
+   private final double j;
    @Nullable
-   protected bum c;
-   private int f;
-   private final double g;
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected ebb d;
+   protected final bsp e;
+   protected final Class<T> f;
+   protected final Predicate<bjg> g;
+   protected final Predicate<bjg> h;
+   private final bts k;
 
-   public bpi(bum $$0, double $$1) {
-      this($$0, $$1, (Class<? extends bum>)$$0.getClass());
+   public bpi(bjp $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bit.e::test);
    }
 
-   public bpi(bum $$0, double $$1, Class<? extends bum> $$2) {
+   public bpi(bjp $$0, Class<T> $$1, Predicate<bjg> $$2, float $$3, double $$4, double $$5, Predicate<bjg> $$6) {
       this.a = $$0;
-      this.b = $$0.dK();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bpw.a.a, bpw.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.L();
+      this.a(EnumSet.of(bqb.a.a));
+      this.k = bts.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bpi(bjp $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bjg> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (!this.a.ge()) {
+      this.b = this.a
+         .dL()
+         .a(this.a.dL().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dq(), this.a.ds(), this.a.dw());
+      if (this.b == null) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         ehn $$0 = btw.a(this.a, 16, 7, this.b.dj());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.c.bv() && this.c.ge() && this.f < 60 && !this.c.fX();
+      return !this.e.l();
+   }
+
+   @Override
+   public void c() {
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.f = 0;
+      this.b = null;
    }
 
    @Override
    public void e() {
-      this.a.D().a(this.c, 10.0F, (float)this.a.W());
-      this.a.H().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
+      if (this.a.f((biq)this.b) < 49.0) {
+         this.a.L().a(this.j);
+      } else {
+         this.a.L().a(this.i);
       }
-   }
-
-   @Nullable
-   private bum h() {
-      List<? extends bum> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      bum $$2 = null;
-
-      for (bum $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.fX() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((akn)this.b, this.c);
    }
 }

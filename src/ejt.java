@@ -1,140 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+public interface ejt {
+   int a();
 
-public class ejt extends ejw {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final ejt.b l = new ejt.b(854, 480);
+   int b();
 
-   public ejt(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
-      } else {
-         this.b($$0, $$1);
-      }
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      ejt.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   private ejt.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      ejt.a $$2 = ejt.a.a;
-
-      for (ejt.b $$3 : ejt.b.a($$0, $$1)) {
-         $$2 = ejt.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(ejt.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(ejt.a.c);
-         }
-
-         if ($$2 == ejt.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   default float g() {
+      return this.j();
    }
 
-   private boolean a(ejt.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
    }
 
-   private boolean b(ejt.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
+   default float i() {
+      return 0.0F;
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final ejt.a[] e = values();
-
-      ejt.a a(ejt.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      static List<ejt.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new ejt.b($$0, $$1), ejt.l) : ImmutableList.of(ejt.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            ejt.b $$1 = (ejt.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
-      }
-
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
-      }
+   default float j() {
+      return 3.0F;
    }
 }

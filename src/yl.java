@@ -1,145 +1,86 @@
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class yl implements va<ws> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public class yl {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
 
-   protected yl(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public yl(cpc $$0, eab $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cqe.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cqe.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   public void a(ws $$0) {
-      $$0.a(this);
+   public yl(so $$0, int $$1, int $$2) {
+      this.a = $$0.y();
+      this.b = $$0.y();
+      this.c = $$0.y();
+      this.d = $$0.y();
+      this.e = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, so::a);
+      $$0.a(this.f, so::a);
    }
 
-   @Nullable
-   public bil a(cpq $$0) {
-      return $$0.a(this.a);
+   private void a(cpc $$0, eab $$1, cqe $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dhl $$7 = $$1.a($$2).a(hz.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public short a() {
-      return this.b;
+   public BitSet a() {
+      return this.a;
    }
 
-   public short d() {
+   public BitSet b() {
       return this.c;
    }
 
-   public short e() {
-      return this.d;
-   }
-
-   public byte f() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public byte g() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public boolean i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.g;
-   }
-
-   public static class a extends yl {
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      public static yl.a b(sl $$0) {
-         int $$1 = $$0.m();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new yl.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      public void a(sl $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
-      }
-   }
-
-   public static class b extends yl {
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      public static yl.b b(sl $$0) {
-         int $$1 = $$0.m();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new yl.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void a(sl $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-   }
-
-   public static class c extends yl {
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
-
-      public static yl.c b(sl $$0) {
-         int $$1 = $$0.m();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new yl.c($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void a(sl $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
    }
 }

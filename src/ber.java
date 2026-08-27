@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ber {
-   List<beo> bk();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ber {
 }

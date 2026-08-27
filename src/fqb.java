@@ -1,49 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public class fqb implements fqe<dcr> {
+   private final fic a;
+   private final fic b;
 
-public class fqb {
-   private static final Map<dcs<?>, fqa<?>> a = Maps.newHashMap();
-
-   private static <T extends dcq> void a(dcs<? extends T> $$0, fqa<T> $$1) {
-      a.put($$0, $$1);
+   public fqb(fqf.a $$0) {
+      this.a = $$0.a(fib.i);
+      this.b = $$0.a(fib.h);
    }
 
-   public static Map<dcs<?>, fpz<?>> a(fqa.a $$0) {
-      Builder<dcs<?>, fpz<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + jd.l.b((dcs<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("main", fih.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fie.a);
+      $$1.a("left_leg", fih.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fie.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fih.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fie.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fii.a($$0, 64, 64);
    }
 
-   static {
-      a(dcs.h, fqn::new);
-      a(dcs.i, fqj::new);
-      a(dcs.j, fqp::new);
-      a(dcs.k, fql::new);
-      a(dcs.b, fqf::new);
-      a(dcs.d, fqf::new);
-      a(dcs.c, fqf::new);
-      a(dcs.m, fqi::new);
-      a(dcs.D, fqk::new);
-      a(dcs.n, fqs::new);
-      a(dcs.v, fqr::new);
-      a(dcs.o, fpv::new);
-      a(dcs.p, fqo::new);
-      a(dcs.t, fpu::new);
-      a(dcs.u, fqq::new);
-      a(dcs.x, fqm::new);
-      a(dcs.y, fpw::new);
-      a(dcs.z, fqg::new);
-      a(dcs.E, fpx::new);
-      a(dcs.G, fqe::new);
-      a(dcs.N, fqd::new);
-      a(dcs.O, fqh::new);
+   public static fii c() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("main", fih.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fie.a);
+      $$1.a("left_leg", fih.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fie.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fih.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fie.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fii.a($$0, 64, 64);
+   }
+
+   public void a(dcr $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
+      gbi $$6 = fot.p[$$0.d().a()];
+      cpv $$7 = $$0.k();
+      if ($$7 != null) {
+         dfj $$8 = $$0.q();
+         cuy.c<? extends dcr> $$9 = cuy.a(dcx.y, cso::h, cso::g, ctx.b, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fqh<>()).get($$4);
+         this.a($$2, $$3, $$8.c(cso.a) == dfw.a ? this.a : this.b, $$8.c(cso.aC), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, hc.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, hc.d, $$6, $$4, $$5, true);
+      }
+   }
+
+   private void a(elp $$0, foe $$1, fic $$2, hc $$3, gbi $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      elt $$8 = $$4.a($$1, fom::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

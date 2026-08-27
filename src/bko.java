@@ -1,38 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+public class bko extends bkh {
+   private final double b;
+   private final double c;
 
-public class bko {
-   public static bkt<cbc> a() {
-      return boe.a(
-         (Function<boe.b<cbc>, ? extends App<boe.c<cbc>, boh<cbc>>>)($$0 -> $$0.group($$0.b(bsc.d), $$0.a(bsc.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        hf $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.di(), 2.0) && !$$4.gk()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gl().b() != cbf.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.n();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
-                                 .flatMap($$0xxx -> jd.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gl().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   public bko(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : arx.a($$0, this.b, this.c);
    }
 }

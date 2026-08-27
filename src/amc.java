@@ -1,34 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.regex.Pattern;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record amc(List<amc.a> b) {
-   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
-   private static final Codec<amc> d = RecordCodecBuilder.create($$0 -> $$0.group(amc.a.c.listOf().fieldOf("entries").forGetter(amc::a)).apply($$0, amc::new));
-   public static final amq<amc> a = amq.a("overlays", d);
+public abstract class amc implements ami {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-   private static DataResult<String> a(String $$0) {
-      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
+   protected amc(String $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public List<String> a(int $$0) {
-      return this.b.stream().filter($$1 -> $$1.a($$0)).map(amc.a::b).toList();
-   }
+   @Nullable
+   @Override
+   public <T> T a(amu<T> $$0) throws IOException {
+      anm<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
 
-   public List<amc.a> a() {
-      return this.b;
-   }
-
-   public static record a(arl<Integer> a, String b) {
-      static final Codec<amc.a> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(arl.a(Codec.INT).fieldOf("formats").forGetter(amc.a::a), arb.<String>a(Codec.STRING, amc::a).fieldOf("directory").forGetter(amc.a::b))
-               .apply($$0, amc.a::new)
-      );
-
-      public boolean a(int $$0) {
-         return this.a.a($$0);
+         return (T)var4;
       }
+   }
+
+   @Nullable
+   public static <T> T a(amu<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = aro.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(aro.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public String a() {
+      return this.d;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e;
    }
 }

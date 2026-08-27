@@ -1,24 +1,23 @@
-public class dab extends cse {
-   public dab(dfd.d $$0) {
-      super($$0, 2.0F);
+public class dab extends cul {
+   private static final tl a = tl.c("container.upgrade");
+
+   protected dab(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return this.a($$0, $$3, $$4) ? this.n() : csr.a.n();
+   public bhb b(dfj $$0, cpv $$1, gw $$2) {
+      return new bhg(($$2x, $$3, $$4) -> new cge($$2x, $$3, cew.a($$1, $$2)), a);
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(dfe $$0) {
-      return $$0.a(apo.aS);
-   }
-
-   @Override
-   protected boolean f(dfe $$0) {
-      return true;
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apo.aF);
+         return bgy.b;
+      }
    }
 }

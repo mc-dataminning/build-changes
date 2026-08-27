@@ -1,57 +1,35 @@
-import com.mojang.serialization.Codec;
+public class cxl extends csv {
+   private static final int a = 20;
 
-public enum cxl implements ask {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
-
-   public static final Codec<cxl> d = ask.a(cxl::values);
-   private final String e;
-   private final ti f;
-   private final h g;
-
-   private cxl(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = ti.c("mirror." + $$0);
-      this.g = $$1;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public czc a(hc $$0) {
-      hc.a $$1 = $$0.o();
-      return (this != b || $$1 != hc.a.c) && (this != c || $$1 != hc.a.a) ? czc.a : czc.c;
-   }
-
-   public hc b(hc $$0) {
-      if (this == c && $$0.o() == hc.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == hc.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ti b() {
-      return this.f;
+   public cxl(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
+      if (!$$3.bT() && $$3 instanceof bjg && !cnq.j((bjg)$$3)) {
+         $$3.a($$0.ag().e(), 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      cta.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == hc.b && $$2.a(csw.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

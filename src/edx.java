@@ -1,77 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class edx implements edy {
-   protected final List<efk> g;
-   private final Predicate<ecl> a;
+public class edx extends eec {
+   public static final aqi<dvi> a = aqe.l;
+   public static final ebt.a b = ebt.a.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final Codec<edx> f = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  arg.a(aqi.a(je.az), "destination", a).forGetter($$0x -> $$0x.h),
+                  ebt.a.I.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  arg.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
+                  arg.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
+                  arg.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, edx::new)
+   );
+   private final aqi<dvi> h;
+   private final ebt.a i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   protected edx(List<efk> $$0) {
-      this.g = $$0;
-      this.a = efm.a($$0);
+   edx(List<efp> $$0, aqi<dvi> $$1, ebt.a $$2, byte $$3, int $$4, boolean $$5) {
+      super($$0);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
-
-   protected static <T extends edx> P1<Mu<T>, List<efk>> a(Instance<T> $$0) {
-      return $$0.group(arb.a(efm.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final cja b(cja $$0, ecl $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cja a(cja var1, ecl var2);
 
    @Override
-   public void a(ecu $$0) {
-      edy.super.a($$0);
+   public eee b() {
+      return eef.m;
+   }
 
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.b(".conditions[" + $$1 + "]"));
+   @Override
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(efb.f);
+   }
+
+   @Override
+   public cjf a(cjf $$0, ecq $$1) {
+      if (!$$0.a(cji.tp)) {
+         return $$0;
+      } else {
+         ehn $$2 = $$1.c(efb.f);
+         if ($$2 != null) {
+            akr $$3 = $$1.d();
+            gw $$4 = $$3.a(this.h, gw.a($$2), this.k, this.l);
+            if ($$4 != null) {
+               cjf $$5 = cjm.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cjm.a($$3, $$5);
+               ebw.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
+
+         return $$0;
       }
    }
 
-   protected static edx.a<?> a(Function<List<efk>, edy> $$0) {
-      return new edx.b($$0);
+   public static edx.a c() {
+      return new edx.a();
    }
 
-   public abstract static class a<T extends edx.a<T>> implements edy.a, efd<T> {
-      private final Builder<efk> a = ImmutableList.builder();
+   public static class a extends eec.a<edx.a> {
+      private aqi<dvi> a;
+      private ebt.a b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-      public T a(efk.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+      public a() {
+         this.a = edx.a;
+         this.b = edx.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
-      public final T f() {
-         return this.c();
+      protected edx.a a() {
+         return this;
       }
 
-      protected abstract T c();
-
-      protected List<efk> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends edx.a<edx.b> {
-      private final Function<List<efk>, edy> a;
-
-      public b(Function<List<efk>, edy> $$0) {
+      public edx.a a(aqi<dvi> $$0) {
          this.a = $$0;
+         return this;
       }
 
-      protected edx.b a() {
+      public edx.a a(ebt.a $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public edx.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public edx.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public edx.a a(boolean $$0) {
+         this.e = $$0;
          return this;
       }
 
       @Override
-      public edy b() {
-         return this.a.apply(this.g());
+      public eed b() {
+         return new edx(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

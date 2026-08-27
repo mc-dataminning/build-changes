@@ -1,358 +1,398 @@
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.Reader;
+import java.util.List;
 import java.util.Map;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fnu {
-   private static final Map<csq, foh> a = ac.a(Maps.newHashMap(), $$0 -> {
-      foh $$1 = foh.u();
-      $$0.put(csr.fI, $$1);
-      foh $$2 = foh.d();
-      $$0.put(csr.i, $$2);
-      $$0.put(csr.eX, $$2);
-      $$0.put(csr.eZ, $$2);
-      $$0.put(csr.fH, $$2);
-      $$0.put(csr.hc, $$2);
-      $$0.put(csr.eY, $$2);
-      $$0.put(csr.aH, $$2);
-      $$0.put(csr.aE, $$2);
-      $$0.put(csr.aF, $$2);
-      $$0.put(csr.aI, $$2);
-      $$0.put(csr.aJ, $$2);
-      $$0.put(csr.aG, $$2);
-      $$0.put(csr.aK, $$2);
-      $$0.put(csr.aM, $$2);
-      $$0.put(csr.aN, $$2);
-      $$0.put(csr.ac, $$2);
-      $$0.put(csr.aL, $$2);
-      foh $$3 = foh.e();
-      $$0.put(csr.x, $$3);
-      $$0.put(csr.y, $$3);
-      $$0.put(csr.z, $$3);
-      $$0.put(csr.A, $$3);
-      $$0.put(csr.B, $$3);
-      $$0.put(csr.C, $$3);
-      $$0.put(csr.D, $$3);
-      $$0.put(csr.aQ, $$3);
-      $$0.put(csr.aZ, $$3);
-      $$0.put(csr.ba, $$3);
-      $$0.put(csr.bb, $$3);
-      $$0.put(csr.bc, $$3);
-      $$0.put(csr.bd, $$3);
-      $$0.put(csr.be, $$3);
-      $$0.put(csr.bf, $$3);
-      $$0.put(csr.bg, $$3);
-      $$0.put(csr.bh, $$3);
-      $$0.put(csr.bi, $$3);
-      $$0.put(csr.bj, $$3);
-      $$0.put(csr.bk, $$3);
-      $$0.put(csr.bl, $$3);
-      $$0.put(csr.bm, $$3);
-      $$0.put(csr.bn, $$3);
-      $$0.put(csr.bo, $$3);
-      $$0.put(csr.bp, $$3);
-      $$0.put(csr.bq, $$3);
-      $$0.put(csr.bs, $$3);
-      $$0.put(csr.bt, $$3);
-      $$0.put(csr.bu, $$3);
-      $$0.put(csr.bv, $$3);
-      $$0.put(csr.bw, $$3);
-      $$0.put(csr.bx, $$3);
-      $$0.put(csr.bR, $$3);
-      $$0.put(csr.bT, $$3);
-      $$0.put(csr.bU, $$3);
-      $$0.put(csr.bV, $$3);
-      $$0.put(csr.bW, $$3);
-      $$0.put(csr.bX, $$3);
-      $$0.put(csr.bY, $$3);
-      $$0.put(csr.bZ, $$3);
-      $$0.put(csr.ca, $$3);
-      $$0.put(csr.cb, $$3);
-      $$0.put(csr.cc, $$3);
-      $$0.put(csr.cd, $$3);
-      $$0.put(csr.ce, $$3);
-      $$0.put(csr.cf, $$3);
-      $$0.put(csr.cg, $$3);
-      $$0.put(csr.cp, $$3);
-      $$0.put(csr.cq, $$3);
-      $$0.put(csr.eb, $$3);
-      $$0.put(csr.ec, $$3);
-      $$0.put(csr.cr, $$3);
-      $$0.put(csr.cs, $$3);
-      $$0.put(csr.ct, $$3);
-      $$0.put(csr.cw, $$3);
-      $$0.put(csr.cB, $$3);
-      $$0.put(csr.cN, $$3);
-      $$0.put(csr.cO, $$3);
-      $$0.put(csr.cP, $$3);
-      $$0.put(csr.dy, $$3);
-      $$0.put(csr.dK, $$3);
-      $$0.put(csr.dL, $$3);
-      $$0.put(csr.dQ, $$3);
-      $$0.put(csr.dS, $$3);
-      $$0.put(csr.ei, $$3);
-      $$0.put(csr.ez, $$3);
-      $$0.put(csr.eA, $$3);
-      $$0.put(csr.eB, $$3);
-      $$0.put(csr.eC, $$3);
-      $$0.put(csr.eD, $$3);
-      $$0.put(csr.eE, $$3);
-      $$0.put(csr.eF, $$3);
-      $$0.put(csr.oM, $$3);
-      $$0.put(csr.oN, $$3);
-      $$0.put(csr.eG, $$3);
-      $$0.put(csr.eH, $$3);
-      $$0.put(csr.fb, $$3);
-      $$0.put(csr.fc, $$3);
-      $$0.put(csr.fd, $$3);
-      $$0.put(csr.fe, $$3);
-      $$0.put(csr.ff, $$3);
-      $$0.put(csr.fg, $$3);
-      $$0.put(csr.fm, $$3);
-      $$0.put(csr.fq, $$3);
-      $$0.put(csr.fs, $$3);
-      $$0.put(csr.fC, $$3);
-      $$0.put(csr.fO, $$3);
-      $$0.put(csr.fR, $$3);
-      $$0.put(csr.fT, $$3);
-      $$0.put(csr.fU, $$3);
-      $$0.put(csr.fV, $$3);
-      $$0.put(csr.fW, $$3);
-      $$0.put(csr.fX, $$3);
-      $$0.put(csr.fY, $$3);
-      $$0.put(csr.fZ, $$3);
-      $$0.put(csr.ga, $$3);
-      $$0.put(csr.gb, $$3);
-      $$0.put(csr.gc, $$3);
-      $$0.put(csr.gd, $$3);
-      $$0.put(csr.ge, $$3);
-      $$0.put(csr.gf, $$3);
-      $$0.put(csr.gg, $$3);
-      $$0.put(csr.gh, $$3);
-      $$0.put(csr.gi, $$3);
-      $$0.put(csr.gj, $$3);
-      $$0.put(csr.gk, $$3);
-      $$0.put(csr.gl, $$3);
-      $$0.put(csr.gm, $$3);
-      $$0.put(csr.gn, $$3);
-      $$0.put(csr.go, $$3);
-      $$0.put(csr.gp, $$3);
-      $$0.put(csr.gq, $$3);
-      $$0.put(csr.gr, $$3);
-      $$0.put(csr.gs, $$3);
-      $$0.put(csr.sh, $$3);
-      $$0.put(csr.si, $$3);
-      $$0.put(csr.fS, $$3);
-      $$0.put(csr.gt, $$3);
-      $$0.put(csr.gu, $$3);
-      $$0.put(csr.gY, $$3);
-      $$0.put(csr.hh, $$3);
-      $$0.put(csr.hY, $$3);
-      $$0.put(csr.iD, $$3);
-      $$0.put(csr.iE, $$3);
-      $$0.put(csr.iF, $$3);
-      $$0.put(csr.iG, $$3);
-      $$0.put(csr.iH, $$3);
-      $$0.put(csr.iI, $$3);
-      $$0.put(csr.kl, $$3);
-      $$0.put(csr.km, $$3);
-      $$0.put(csr.kn, $$3);
-      $$0.put(csr.ko, $$3);
-      $$0.put(csr.kp, $$3);
-      $$0.put(csr.kq, $$3);
-      $$0.put(csr.kr, $$3);
-      $$0.put(csr.ks, $$3);
-      $$0.put(csr.kt, $$3);
-      $$0.put(csr.ku, $$3);
-      $$0.put(csr.kv, $$3);
-      $$0.put(csr.bS, $$3);
-      $$0.put(csr.kA, $$3);
-      $$0.put(csr.kC, $$3);
-      $$0.put(csr.kB, $$3);
-      $$0.put(csr.kD, $$3);
-      $$0.put(csr.mc, $$3);
-      $$0.put(csr.md, $$3);
-      $$0.put(csr.mf, $$3);
-      $$0.put(csr.mr, $$3);
-      $$0.put(csr.ms, $$3);
-      $$0.put(csr.mt, $$3);
-      $$0.put(csr.mu, $$3);
-      $$0.put(csr.mv, $$3);
-      $$0.put(csr.mw, $$3);
-      $$0.put(csr.mx, $$3);
-      $$0.put(csr.my, $$3);
-      $$0.put(csr.mz, $$3);
-      $$0.put(csr.mA, $$3);
-      $$0.put(csr.mB, $$3);
-      $$0.put(csr.mC, $$3);
-      $$0.put(csr.mD, $$3);
-      $$0.put(csr.mE, $$3);
-      $$0.put(csr.mF, $$3);
-      $$0.put(csr.mG, $$3);
-      $$0.put(csr.mH, $$3);
-      $$0.put(csr.mI, $$3);
-      $$0.put(csr.mJ, $$3);
-      $$0.put(csr.mK, $$3);
-      $$0.put(csr.mL, $$3);
-      $$0.put(csr.mM, $$3);
-      $$0.put(csr.mN, $$3);
-      $$0.put(csr.mO, $$3);
-      $$0.put(csr.mP, $$3);
-      $$0.put(csr.mQ, $$3);
-      $$0.put(csr.mR, $$3);
-      $$0.put(csr.mS, $$3);
-      $$0.put(csr.mT, $$3);
-      $$0.put(csr.mU, $$3);
-      $$0.put(csr.mV, $$3);
-      $$0.put(csr.mX, $$3);
-      $$0.put(csr.mY, $$3);
-      $$0.put(csr.mZ, $$3);
-      $$0.put(csr.na, $$3);
-      $$0.put(csr.nS, $$3);
-      $$0.put(csr.oc, $$3);
-      $$0.put(csr.oe, $$3);
-      $$0.put(csr.of, $$3);
-      $$0.put(csr.og, $$3);
-      $$0.put(csr.oh, $$3);
-      $$0.put(csr.oi, $$3);
-      $$0.put(csr.oz, $$3);
-      $$0.put(csr.oA, $$3);
-      $$0.put(csr.oB, $$3);
-      $$0.put(csr.oC, $$3);
-      $$0.put(csr.or, $$3);
-      $$0.put(csr.ox, $$3);
-      $$0.put(csr.oo, $$3);
-      $$0.put(csr.oD, $$3);
-      $$0.put(csr.oq, $$3);
-      $$0.put(csr.pm, $$3);
-      $$0.put(csr.pn, $$3);
-      $$0.put(csr.po, $$3);
-      $$0.put(csr.pp, $$3);
-      $$0.put(csr.oU, $$3);
-      $$0.put(csr.oV, $$3);
-      $$0.put(csr.rs, $$3);
-      $$0.put(csr.qy, $$3);
-      $$0.put(csr.qx, $$3);
-      $$0.put(csr.qw, $$3);
-      $$0.put(csr.qv, $$3);
-      $$0.put(csr.rr, $$3);
-      $$0.put(csr.ru, $$3);
-      $$0.put(csr.rv, $$3);
-      $$0.put(csr.rw, $$3);
-      $$0.put(csr.ry, $$3);
-      $$0.put(csr.rx, $$3);
-      $$0.put(csr.rz, $$3);
-      $$0.put(csr.rA, $$3);
-      $$0.put(csr.rC, $$3);
-      $$0.put(csr.rD, $$3);
-      $$0.put(csr.rE, $$3);
-      $$0.put(csr.rF, $$3);
-      $$0.put(csr.qD, $$3);
-      $$0.put(csr.qE, $$3);
-      $$0.put(csr.qG, $$3);
-      $$0.put(csr.qI, $$3);
-      $$0.put(csr.E, $$3);
-      $$0.put(csr.ab, $$3);
-      $$0.put(csr.sm, $$3);
-      foh $$4 = foh.f();
-      $$0.put(csr.dO, $$4);
-      $$0.put(csr.ee, $$4);
-      $$0.put(csr.ej, $$4);
-      $$0.put(csr.ek, $$4);
-      $$0.put(csr.el, $$4);
-      $$0.put(csr.em, $$4);
-      $$0.put(csr.en, $$4);
-      $$0.put(csr.eo, $$4);
-      $$0.put(csr.ep, $$4);
-      $$0.put(csr.eq, $$4);
-      $$0.put(csr.er, $$4);
-      $$0.put(csr.es, $$4);
-      $$0.put(csr.et, $$4);
-      $$0.put(csr.eu, $$4);
-      $$0.put(csr.ev, $$4);
-      $$0.put(csr.ew, $$4);
-      $$0.put(csr.ex, $$4);
-      $$0.put(csr.ey, $$4);
-      $$0.put(csr.hz, $$4);
-      $$0.put(csr.hA, $$4);
-      $$0.put(csr.hB, $$4);
-      $$0.put(csr.hC, $$4);
-      $$0.put(csr.hD, $$4);
-      $$0.put(csr.hE, $$4);
-      $$0.put(csr.hF, $$4);
-      $$0.put(csr.hG, $$4);
-      $$0.put(csr.hH, $$4);
-      $$0.put(csr.hI, $$4);
-      $$0.put(csr.hJ, $$4);
-      $$0.put(csr.hK, $$4);
-      $$0.put(csr.hL, $$4);
-      $$0.put(csr.hM, $$4);
-      $$0.put(csr.hN, $$4);
-      $$0.put(csr.hO, $$4);
-      $$0.put(csr.hV, $$4);
-      $$0.put(csr.pg, $$4);
-      $$0.put(csr.kI, $$4);
-      $$0.put(csr.nd, $$4);
-      $$0.put(csr.qB, $$4);
-   });
-   private static final Map<eag, foh> b = ac.a(Maps.newHashMap(), $$0 -> {
-      foh $$1 = foh.f();
-      $$0.put(eai.b, $$1);
-      $$0.put(eai.c, $$1);
-   });
-   private static boolean c;
+public class fnu implements ela, AutoCloseable {
+   private static final String a = "shaders/program/";
+   private static final Logger b = LogUtils.getLogger();
+   private static final eky c = new eky();
+   private static final boolean d = true;
+   private static fnu e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<elg> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, elg> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final ekz p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final elb s;
+   private final elb t;
 
-   public static foh a(dfe $$0) {
-      csq $$1 = $$0.b();
-      if ($$1 instanceof cwx) {
-         return c ? foh.d() : foh.c();
+   public fnu(anu $$0, String $$1) throws IOException {
+      aex $$2 = new aex("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      ans $$3 = $$0.getResourceOrThrow($$2);
+
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = aro.a($$4);
+         String $$6 = aro.i($$5, "vertex");
+         String $$7 = aro.i($$5, "fragment");
+         JsonArray $$8 = aro.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  afa $$12 = afa.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = aro.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(aro.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  afa $$17 = afa.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = aro.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  afa $$22 = afa.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(aro.a($$5, "blend", null));
+         this.s = a($$0, eld.a.a, $$6);
+         this.t = a($$0, eld.a.b, $$7);
+         this.m = ele.a();
+         ele.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = elg.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         afa $$26 = afa.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
+      }
+
+      this.b();
+   }
+
+   public static elb a(anu $$0, eld.a $$1, String $$2) throws IOException {
+      eld $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof elb)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
       } else {
-         foh $$2 = a.get($$1);
-         return $$2 != null ? $$2 : foh.c();
+         elb $$7;
+         if ($$3 == null) {
+            aex $$4 = new aex("shaders/program/" + $$2 + $$1.b());
+            ans $$5 = $$0.getResourceOrThrow($$4);
+
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = elb.a($$1, $$2, $$6, $$5.b());
+            }
+         } else {
+            $$7 = (elb)$$3;
+         }
+
+         return $$7;
       }
    }
 
-   public static foh b(dfe $$0) {
-      csq $$1 = $$0.b();
-      if ($$1 instanceof cwx) {
-         return c ? foh.d() : foh.c();
+   public static ekz a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new ekz();
       } else {
-         foh $$2 = a.get($$1);
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (aro.a($$0, "func")) {
+            $$1 = ekz.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (aro.a($$0, "srcrgb")) {
+            $$2 = ekz.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (aro.a($$0, "dstrgb")) {
+            $$3 = ekz.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (aro.a($$0, "srcalpha")) {
+            $$4 = ekz.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (aro.a($$0, "dstalpha")) {
+            $$5 = ekz.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new ekz();
+         } else {
+            return $$7 ? new ekz($$2, $$3, $$4, $$5, $$1) : new ekz($$2, $$3, $$1);
+         }
+      }
+   }
+
+   @Override
+   public void close() {
+      for (elg $$0 : this.j) {
+         $$0.close();
+      }
+
+      ele.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      ele.a(0);
+      f = -1;
+      e = null;
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
+         }
+      }
+   }
+
+   public void g() {
+      RenderSystem.assertOnGameThread();
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         ele.a(this.m);
+         f = this.m;
+      }
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
          if ($$2 != null) {
-            return $$2 == foh.f() ? foh.g() : $$2;
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               elg.b(this.i.get($$0), $$0);
+            }
+         }
+      }
+
+      for (elg $$4 : this.j) {
+         $$4.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.o = true;
+   }
+
+   @Nullable
+   public elg a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public eky b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      elg $$1 = this.a($$0);
+      return (eky)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = elg.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
          } else {
-            return foh.c();
+            this.i.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
+      }
+
+      for (elg $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = elg.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
          }
       }
    }
 
-   public static foh a(dfe $$0, boolean $$1) {
-      foh $$2 = a($$0);
-      if ($$2 == foh.f()) {
-         if (!eqq.M()) {
-            return fon.k();
-         } else {
-            return $$1 ? fon.k() : fon.j();
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = aro.m($$0, "sampler");
+      String $$2 = aro.i($$1, "name");
+      if (!aro.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
+      }
+   }
+
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws afa {
+      JsonObject $$1 = aro.m($$0, "uniform");
+      String $$2 = aro.i($$1, "name");
+      int $$3 = elg.a(aro.i($$1, "type"));
+      int $$4 = aro.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = aro.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new afa("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = aro.e($$8, "value");
+            } catch (Exception var13) {
+               afa $$10 = afa.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
          }
-      } else {
-         return fon.i();
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         elg $$12 = new elg($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
       }
    }
 
-   public static foh a(cja $$0, boolean $$1) {
-      civ $$2 = $$0.d();
-      if ($$2 instanceof cgt) {
-         csq $$3 = ((cgt)$$2).e();
-         return a($$3.n(), $$1);
-      } else {
-         return $$1 ? fon.k() : fon.j();
-      }
+   @Override
+   public eld c() {
+      return this.s;
    }
 
-   public static foh a(eah $$0) {
-      foh $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : foh.c();
+   @Override
+   public eld d() {
+      return this.t;
    }
 
-   public static void a(boolean $$0) {
-      c = $$0;
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
+
+   public String h() {
+      return this.n;
+   }
+
+   @Override
+   public int a() {
+      return this.m;
    }
 }

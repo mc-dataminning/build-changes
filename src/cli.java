@@ -1,77 +1,41 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cli extends clk {
-   private final gw b;
-   protected boolean a = true;
+public record cli(String c, hg<cja> d, float e, Map<cgr, String> f, tl g) {
+   public static final Codec<cli> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arg.x.fieldOf("asset_name").forGetter(cli::a),
+               aeu.a(je.D).fieldOf("ingredient").forGetter(cli::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cli::c),
+               Codec.unboundedMap(cgr.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cli::d),
+               arg.b.fieldOf("description").forGetter(cli::e)
+            )
+            .apply($$0, cli::new)
+   );
+   public static final Codec<hg<cli>> b = aet.a(je.aD, a);
 
-   public cli(cbp $$0, bgs $$1, cja $$2, ehe $$3) {
-      this($$0.dK(), $$0, $$1, $$2, $$3);
+   public static cli a(String $$0, cja $$1, float $$2, tl $$3, Map<cgr, String> $$4) {
+      return new cli($$0, jd.i.d($$1), $$2, $$4, $$3);
    }
 
-   public cli(clk $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public String a() {
+      return this.c;
    }
 
-   protected cli(cpq $$0, @Nullable cbp $$1, bgs $$2, cja $$3, ehe $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   public hg<cja> b() {
+      return this.d;
    }
 
-   public static cli a(cli $$0, gw $$1, hc $$2) {
-      return new cli(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ehe(
-            new ehi((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public gw a() {
-      return this.a ? super.a() : this.b;
+   public Map<cgr, String> d() {
+      return this.f;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public hc d() {
-      return hc.a(this.o())[0];
-   }
-
-   public hc e() {
-      return hc.a(this.o(), hc.a.b);
-   }
-
-   public hc[] f() {
-      hc[] $$0 = hc.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         hc $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public tl e() {
+      return this.g;
    }
 }

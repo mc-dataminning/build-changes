@@ -1,69 +1,109 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class aqg {
-   public static Map<aet<? extends ht<?>>, aqg.a> a(hn<afd> $$0) {
-      return hx.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aqg.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private static final Codec<aqg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arg.p.fieldOf("id").forGetter(aqg::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aqg::new)
+   );
+   public static final Codec<aqg> a = Codec.either(arg.p, b)
+      .xmap($$0 -> (aqg)$$0.map($$0x -> new aqg($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final aex c;
+   private final boolean d;
+   private final boolean e;
+
+   private aqg(aex $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static <T> aqg.a a(ht<T> $$0) {
-      Map<aeu, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         hk<T> $$3 = (hk<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
+   private aqg(arg.f $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
+   }
 
-         for (hg<T> $$5 : $$3) {
-            if ($$5.f() != hg.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
+   private arg.f a() {
+      return new arg.f(this.c, this.d);
+   }
 
-            $$4.add($$0.a($$5.a()));
+   public static aqg a(aex $$0) {
+      return new aqg($$0, false, true);
+   }
+
+   public static aqg b(aex $$0) {
+      return new aqg($$0, false, false);
+   }
+
+   public static aqg c(aex $$0) {
+      return new aqg($$0, true, true);
+   }
+
+   public static aqg d(aex $$0) {
+      return new aqg($$0, true, false);
+   }
+
+   public <T> boolean a(aqg.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.b(this.c);
+         if ($$2 == null) {
+            return !this.e;
          }
 
-         $$1.put(((aqd)$$2.getFirst()).b(), $$4);
-      });
-      return new aqg.a($$1);
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c);
+         if ($$3 == null) {
+            return !this.e;
+         }
+
+         $$1.accept($$3);
+      }
+
+      return true;
    }
 
-   public static <T> void a(aet<? extends ht<T>> $$0, ht<T> $$1, aqg.a $$2, aqg.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         aqd<T> $$5 = aqd.a($$0, $$3x);
-         List<hg<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<aeu, IntList> a;
-
-      a(Map<aeu, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(sl $$0) {
-         $$0.a(this.a, sl::a, sl::a);
-      }
-
-      public static aqg.a b(sl $$0) {
-         return new aqg.a($$0.a(sl::s, sl::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
+   public void a(Consumer<aex> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(aqd<T> var1, List<hg<T>> var2);
+   public void b(Consumer<aex> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public boolean a(Predicate<aex> $$0, Predicate<aex> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(aex var1);
+
+      @Nullable
+      Collection<T> b(aex var1);
    }
 }

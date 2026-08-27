@@ -1,35 +1,47 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class btl extends bsz<cat> {
-   @Override
-   public Set<bsc<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bsc.B)));
+public abstract class btl<E extends bjg> {
+   private static final asc a = asc.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final bts d = bts.b().a(16.0);
+   private static final bts e = bts.b().a(16.0).e();
+   private static final bts f = bts.a().a(16.0);
+   private static final bts g = bts.a().a(16.0).e();
+   private static final bts h = bts.a().a(16.0).d();
+   private static final bts i = bts.a().a(16.0).d().e();
+   private final int j;
+   private long k;
+
+   public btl(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   protected void a(akn $$0, cat $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ag() == bip.bt)
-         .or(() -> a($$1, $$0xx -> $$0xx.ag() != bip.bt))
-         .ifPresentOrElse($$1x -> $$1.dM().a(bsc.B, $$1x), () -> $$1.dM().b(bsc.B));
+   public btl() {
+      this(20);
    }
 
-   private static Optional<bjb> a(cat $$0, Predicate<bjb> $$1) {
-      return $$0.dM().c(bsc.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   public final void b(akr $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   @Override
-   protected int b() {
-      return 24;
+   protected abstract void a(akr var1, E var2);
+
+   public abstract Set<bsh<?>> a();
+
+   public static boolean b(bjg $$0, bjg $$1) {
+      return $$0.dN().b(bsh.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   @Override
-   protected int c() {
-      return 24;
+   public static boolean c(bjg $$0, bjg $$1) {
+      return $$0.dN().b(bsh.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bjg $$0, bjg $$1) {
+      return $$0.dN().b(bsh.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

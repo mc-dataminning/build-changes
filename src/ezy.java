@@ -1,24 +1,26 @@
-public class ezy extends ezd<cfc> {
-   private static final aeu x = new aeu("container/grindstone/error");
-   private static final aeu y = new aeu("textures/gui/container/grindstone.png");
+public class ezy extends ezi<cfc> {
+   private static final aex x = new aex("textures/gui/container/dispenser.png");
 
-   public ezy(cfc $$0, cbo $$1, ti $$2) {
+   public ezy(cfc $$0, cbt $$1, tl $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
+   protected void aI_() {
+      super.aI_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(esa $$0, float $$1, int $$2, int $$3) {
+   protected void a(esf $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.g - this.c) / 2;
       int $$5 = (this.h - this.k) / 2;
-      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
-      if ((this.p.b(0).f() || this.p.b(1).f()) && !this.p.b(2).f()) {
-         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
-      }
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

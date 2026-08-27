@@ -15,27 +15,27 @@ public class fn implements fm {
    }
 
    @Override
-   public ehi a(dt $$0) {
-      ehh $$1 = $$0.k();
-      ehi $$2 = $$0.m().a($$0);
-      float $$3 = ars.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = ars.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = ars.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = ars.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = ars.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = ars.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ehi $$9 = new ehi((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ehi $$10 = new ehi((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ehi $$11 = $$9.c($$10).a(-1.0);
+   public ehn a(dt $$0) {
+      ehm $$1 = $$0.k();
+      ehn $$2 = $$0.m().a($$0);
+      float $$3 = arx.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = arx.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = arx.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = arx.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = arx.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = arx.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      ehn $$9 = new ehn((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ehn $$10 = new ehn((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ehn $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ehi($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new ehn($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ehh b(dt $$0) {
-      return ehh.a;
+   public ehm b(dt $$0) {
+      return ehm.a;
    }
 
    @Override

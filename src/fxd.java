@@ -1,39 +1,34 @@
-public class fxd<T extends bjb, M extends fey<T> & fdz> extends fxk<T, M> {
-   private final fnv a;
+public class fxd extends fxp<bws, ffo<bws>> {
+   private final ffo<bws> a;
 
-   public fxd(fux<T, M> $$0, fnv $$1) {
+   public fxd(fvc<bws, ffo<bws>> $$0, fhy $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new ffo<>($$1.a(fib.ak));
    }
 
-   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fk() == biv.b;
-      cja $$11 = $$10 ? $$3.eS() : $$3.eR();
-      cja $$12 = $$10 ? $$3.eR() : $$3.eS();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
+   public void a(elp $$0, foe $$1, int $$2, bws $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cjf $$10 = $$3.s();
+      if ($$10.d() instanceof civ) {
+         civ $$11 = (civ)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof chw) {
+            int $$12 = ((chw)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
          }
 
-         this.a($$3, $$12, cix.c, biv.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cix.b, biv.a, $$0, $$1, $$2);
-         $$0.b();
-      }
-   }
-
-   protected void a(bjb $$0, cja $$1, cix $$2, biv $$3, elk $$4, fnz $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == biv.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
+         elt $$19 = $$1.getBuffer(fom.e($$11.h()));
+         this.a.a($$0, $$19, $$2, fyv.d, $$13, $$14, $$15, 1.0F);
       }
    }
 }

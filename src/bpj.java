@@ -1,50 +1,68 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bpj extends bqj {
-   private final bup g;
+public class bpj extends bqb {
+   private final bvu a;
+   @Nullable
+   private cbu b;
+   private final cpv c;
+   private final float d;
+   private int e;
+   private final bts f;
 
-   public bpj(bup $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bpw.a.c, bpw.a.a));
+   public bpj(bvu $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$0.dL();
+      this.d = $$1;
+      this.f = bts.b().a((double)$$1);
+      this.a(EnumSet.of(bqb.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.p() && !this.g.ga() && !this.g.gi() && super.a();
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
-   public void c() {
-      super.c();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bjk $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.A(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gi()) {
-         this.g.A(true);
+   public boolean b() {
+      if (!this.b.bw()) {
+         return false;
+      } else {
+         return this.a.f((biq)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
    }
 
    @Override
-   protected boolean a(cpt $$0, gw $$1) {
-      return $$0.t($$1.c()) && $$0.a_($$1).a(apo.R);
+   public void c() {
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ef().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.a.A(false);
+      this.b = null;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Z());
+      this.e--;
+   }
+
+   private boolean a(cbu $$0) {
+      for (bgx $$1 : bgx.values()) {
+         cjf $$2 = $$0.b($$1);
+         if (this.a.s() && $$2.a(cji.qL)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

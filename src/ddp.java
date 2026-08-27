@@ -1,119 +1,69 @@
-import java.util.Arrays;
-import java.util.Optional;
-
-public class ddp extends dcq {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "name";
-   public static final String e = "final_state";
-   private aeu f = new aeu("empty");
-   private aeu g = new aeu("empty");
-   private aet<dwm> h = aet.a(je.aC, new aeu("empty"));
-   private ddp.a i = ddp.a.a;
-   private String j = "minecraft:air";
-
-   public ddp(gw $$0, dfe $$1) {
-      super(dcs.F, $$0, $$1);
-   }
-
-   public aeu c() {
-      return this.f;
-   }
-
-   public aeu d() {
-      return this.g;
-   }
-
-   public aet<dwm> f() {
-      return this.h;
-   }
-
-   public String g() {
-      return this.j;
-   }
-
-   public ddp.a i() {
-      return this.i;
-   }
-
-   public void a(aeu $$0) {
-      this.f = $$0;
-   }
-
-   public void b(aeu $$0) {
-      this.g = $$0;
-   }
-
-   public void a(aet<dwm> $$0) {
-      this.h = $$0;
-   }
-
-   public void a(String $$0) {
-      this.j = $$0;
-   }
-
-   public void a(ddp.a $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   protected void b(qu $$0) {
-      super.b($$0);
-      $$0.a("name", this.f.toString());
-      $$0.a("target", this.g.toString());
-      $$0.a("pool", this.h.a().toString());
-      $$0.a("final_state", this.j);
-      $$0.a("joint", this.i.c());
-   }
-
-   @Override
-   public void a(qu $$0) {
-      super.a($$0);
-      this.f = new aeu($$0.l("name"));
-      this.g = new aeu($$0.l("target"));
-      this.h = aet.a(je.aC, new aeu($$0.l("pool")));
-      this.j = $$0.l("final_state");
-      this.i = ddp.a.a($$0.l("joint")).orElseGet(() -> cwp.h(this.q()).o().d() ? ddp.a.b : ddp.a.a);
-   }
-
-   public xa j() {
-      return xa.a(this);
-   }
-
-   @Override
-   public qu an_() {
-      return this.o();
-   }
-
-   public void a(akn $$0, int $$1, boolean $$2) {
-      gw $$3 = this.p().a(this.q().c(cwp.a).a());
-      ht<dwm> $$4 = $$0.B_().d(je.aC);
-      hg<dwm> $$5 = $$4.f(this.h);
-      dwg.a($$0, $$5, this.g, $$1, $$3, $$2);
-   }
-
-   public static enum a implements ask {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
+public class ddp extends dcv implements ddx {
+   private final ddd a = new ddd();
+   private final ddi b = new ddi() {
+      @Override
+      protected void a(cpv $$0, gw $$1, dfj $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, ape.gS, apf.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
 
       @Override
-      public String c() {
-         return this.c;
+      protected void b(cpv $$0, gw $$1, dfj $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, ape.gR, apf.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
 
-      public static Optional<ddp.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      @Override
+      protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
+         $$0.a(ddp.this.p, csw.fG, 1, $$4);
       }
 
-      public ti a() {
-         return ti.c("jigsaw_block.joint." + this.c);
+      @Override
+      protected boolean a(cbu $$0) {
+         return $$0.ge().b(ddp.this);
       }
+   };
+
+   public ddp(gw $$0, dfj $$1) {
+      super(dcx.d, $$0, $$1);
+   }
+
+   public static void a(cpv $$0, gw $$1, dfj $$2, ddp $$3) {
+      $$3.a.a();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public void a(cbu $$0) {
+      if (!this.q && !$$0.M_()) {
+         this.b.a($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   public void b(cbu $$0) {
+      if (!this.q && !$$0.M_()) {
+         this.b.b($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   public boolean c(cbu $$0) {
+      return bgr.a(this, $$0);
+   }
+
+   public void c() {
+      if (!this.q) {
+         this.b.c(this.k(), this.p(), this.q());
+      }
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

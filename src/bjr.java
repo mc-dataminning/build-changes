@@ -1,13 +1,13 @@
-import javax.annotation.Nullable;
+public interface bjr extends bjq {
+   void b(int var1);
 
-public interface bjr {
-   boolean g();
+   boolean a();
 
-   void a(@Nullable apa var1);
+   void c(int var1);
 
-   default aoy R_() {
-      return aoz.lo;
+   void b();
+
+   default int aa_() {
+      return 0;
    }
-
-   boolean i();
 }

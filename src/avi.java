@@ -1,35 +1,29 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
 
-public class avi extends axu {
+public class avi extends DataFix {
    public avi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", ays.x, "EntityHorse");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(ays.z.typeName(), baa.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(ays.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(ays.z.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
-      } else {
-         return $$0;
-      }
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", baf.a());
+      return this.fixTypeEverywhereTyped(
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(ayx.x), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
+            })
+      );
+   }
+
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", $$0.createString(tl.a.a(tl.b($$1))));
    }
 }

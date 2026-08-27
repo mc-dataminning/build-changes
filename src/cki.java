@@ -1,40 +1,24 @@
-public class cki extends civ {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
-
-   public cki(civ.a $$0) {
+public class cki extends cja {
+   public cki(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public int b(cja $$0) {
-      return 1200;
-   }
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      cjf $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), ape.wN, apf.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ccq $$4 = new ccq($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public ckt c(cja $$0) {
-      return ckt.h;
-   }
+      $$1.b(apo.c.b(this));
+      if (!$$1.fS().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      $$1.a(aoz.xk, 1.0F, 1.0F);
-      $$1.b(apj.c.b(this));
-      return cjc.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public cja a(cja $$0, cpq $$1, bjb $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(cja $$0, cpq $$1, bjb $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bjb $$0) {
-      $$0.a(aoz.xl, 1.0F, 1.0F);
+      return bgz.a($$3, $$0.w_());
    }
 }

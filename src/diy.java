@@ -1,14 +1,24 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface diy<T> extends AutoCloseable {
-   CompletableFuture<dit<T>> a(cox var1);
+public class diy<T> {
+   private final cpc a;
+   private final List<T> b;
 
-   void a(dit<T> var1);
+   public diy(cpc $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(boolean var1);
+   public cpc a() {
+      return this.a;
+   }
 
-   @Override
-   default void close() throws IOException {
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

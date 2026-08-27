@@ -1,56 +1,40 @@
-public class abx implements va<aaz> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public class abx implements vd<abd> {
+   private final gw a;
+   private final int b;
+   private final boolean c;
 
-   public abx(bil $$0) {
-      this.a = $$0.dp();
-      this.b = $$0.dr();
-      this.c = $$0.dv();
-      this.d = $$0.dA();
-      this.e = $$0.dC();
+   public abx(gw $$0, int $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abx(sl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public abx(so $$0) {
+      this.a = $$0.e();
+      this.b = $$0.m();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public gw a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

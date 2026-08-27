@@ -1,17 +1,13 @@
-public class fiz {
-   private final fit a;
-   private final arz b;
+import java.util.List;
 
-   public fiz(fit $$0, arz $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public enum fiz {
+   a,
+   b;
 
-   public void a() {
-      this.a.b(new adz(ac.b()));
-   }
+   private static final List<fiz> c = List.of(values());
+   private static final hu.b d = hu.a(jd.ap);
 
-   public void a(adv $$0) {
-      this.b.a(ac.b() - $$0.a());
+   public static hn<fiz> a() {
+      return new hn<>(c).a(a, d);
    }
 }

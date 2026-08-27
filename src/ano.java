@@ -1,23 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class ano {
-   private static final Codec<ano> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ary.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, ano::new)
-   );
-   public static final amq<ano> a = amq.a("filter", b);
-   private final List<ary> c;
+public interface ano {
+   CompletableFuture<Void> a(ano.a var1, anu var2, bdp var3, bdp var4, Executor var5, Executor var6);
 
-   public ano(List<ary> $$0) {
-      this.c = List.copyOf($$0);
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
-   }
-
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
 }

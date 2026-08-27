@@ -1,66 +1,30 @@
-public abstract class bvo extends bjk {
-   protected bvo(bip<? extends bvo> $$0, cpq $$1) {
+public abstract class bvo extends bkb {
+   private static final int bW = 100;
+   private int bX;
+
+   protected bvo(biu<? extends bvo> $$0, cpv $$1) {
       super($$0, $$1);
-      this.a(eas.j, 0.0F);
    }
 
-   @Override
-   public boolean dP() {
-      return true;
-   }
-
-   @Override
-   public bjg eQ() {
-      return bjg.e;
-   }
-
-   @Override
-   public boolean a(cpt $$0) {
-      return $$0.f(this);
-   }
-
-   @Override
-   public int L() {
-      return 120;
-   }
-
-   @Override
-   public int ec() {
-      return 1 + this.dK().z.a(3);
-   }
-
-   protected void b(int $$0) {
-      if (this.bv() && !this.ba()) {
-         this.j($$0 - 1);
-         if (this.ch() == -20) {
-            this.j(0);
-            this.a(this.dL().h(), 2.0F);
-         }
+   public boolean b(aks $$0) {
+      qx $$1 = new qx();
+      $$1.a("id", this.bv());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.al();
+         return true;
       } else {
-         this.j(300);
+         return false;
       }
    }
 
    @Override
-   public void aq() {
-      int $$0 = this.ch();
-      super.aq();
-      this.b($$0);
+   public void l() {
+      this.bX++;
+      super.l();
    }
 
-   @Override
-   public boolean cy() {
-      return false;
-   }
-
-   @Override
-   public boolean a(cbp $$0) {
-      return false;
-   }
-
-   public static boolean c(bip<? extends bvo> $$0, cpr $$1, bjf $$2, gw $$3, arx $$4) {
-      int $$5 = $$1.t_();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(apt.a) && $$1.a_($$3.c()).a(csr.G);
+   public boolean gm() {
+      return this.bX > 100;
    }
 }

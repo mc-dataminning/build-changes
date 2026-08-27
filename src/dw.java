@@ -28,9 +28,9 @@ public interface dw {
 
    Collection<String> r();
 
-   Stream<aeu> s();
+   Stream<aex> s();
 
-   Stream<aeu> t();
+   Stream<aex> t();
 
    CompletableFuture<Suggestions> a(CommandContext<?> var1);
 
@@ -42,15 +42,15 @@ public interface dw {
       return Collections.singleton(dw.b.b);
    }
 
-   Set<aet<cpq>> u();
+   Set<aew<cpv>> u();
 
    hu v();
 
-   cdx w();
+   cec w();
 
    default void a(ht<?> $$0, dw.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {
-         a($$0.j().map(aqd::b), $$2, "#");
+         a($$0.j().map(aqi::b), $$2, "#");
       }
 
       if ($$1.b()) {
@@ -58,15 +58,15 @@ public interface dw {
       }
    }
 
-   CompletableFuture<Suggestions> a(aet<? extends ht<?>> var1, dw.a var2, SuggestionsBuilder var3, CommandContext<?> var4);
+   CompletableFuture<Suggestions> a(aew<? extends ht<?>> var1, dw.a var2, SuggestionsBuilder var3, CommandContext<?> var4);
 
    boolean c(int var1);
 
-   static <T> void a(Iterable<T> $$0, String $$1, Function<T, aeu> $$2, Consumer<T> $$3) {
+   static <T> void a(Iterable<T> $$0, String $$1, Function<T, aex> $$2, Consumer<T> $$3) {
       boolean $$4 = $$1.indexOf(58) > -1;
 
       for (T $$5 : $$0) {
-         aeu $$6 = $$2.apply($$5);
+         aex $$6 = $$2.apply($$5);
          if ($$4) {
             String $$7 = $$6.toString();
             if (a($$1, $$7)) {
@@ -78,7 +78,7 @@ public interface dw {
       }
    }
 
-   static <T> void a(Iterable<T> $$0, String $$1, String $$2, Function<T, aeu> $$3, Consumer<T> $$4) {
+   static <T> void a(Iterable<T> $$0, String $$1, String $$2, Function<T, aex> $$3, Consumer<T> $$4) {
       if ($$1.isEmpty()) {
          $$0.forEach($$4);
       } else {
@@ -90,33 +90,33 @@ public interface dw {
       }
    }
 
-   static CompletableFuture<Suggestions> a(Iterable<aeu> $$0, SuggestionsBuilder $$1, String $$2) {
+   static CompletableFuture<Suggestions> a(Iterable<aex> $$0, SuggestionsBuilder $$1, String $$2) {
       String $$3 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$3, $$2, $$0x -> $$0x, $$2x -> $$1.suggest($$2 + $$2x));
       return $$1.buildFuture();
    }
 
-   static CompletableFuture<Suggestions> a(Stream<aeu> $$0, SuggestionsBuilder $$1, String $$2) {
+   static CompletableFuture<Suggestions> a(Stream<aex> $$0, SuggestionsBuilder $$1, String $$2) {
       return a($$0::iterator, $$1, $$2);
    }
 
-   static CompletableFuture<Suggestions> a(Iterable<aeu> $$0, SuggestionsBuilder $$1) {
+   static CompletableFuture<Suggestions> a(Iterable<aex> $$0, SuggestionsBuilder $$1) {
       String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$2, $$0x -> $$0x, $$1x -> $$1.suggest($$1x.toString()));
       return $$1.buildFuture();
    }
 
-   static <T> CompletableFuture<Suggestions> a(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, aeu> $$2, Function<T, Message> $$3) {
+   static <T> CompletableFuture<Suggestions> a(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, aex> $$2, Function<T, Message> $$3) {
       String $$4 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$4, $$2, $$3x -> $$1.suggest($$2.apply((T)$$3x).toString(), $$3.apply((T)$$3x)));
       return $$1.buildFuture();
    }
 
-   static CompletableFuture<Suggestions> a(Stream<aeu> $$0, SuggestionsBuilder $$1) {
+   static CompletableFuture<Suggestions> a(Stream<aex> $$0, SuggestionsBuilder $$1) {
       return a($$0::iterator, $$1);
    }
 
-   static <T> CompletableFuture<Suggestions> a(Stream<T> $$0, SuggestionsBuilder $$1, Function<T, aeu> $$2, Function<T, Message> $$3) {
+   static <T> CompletableFuture<Suggestions> a(Stream<T> $$0, SuggestionsBuilder $$1, Function<T, aex> $$2, Function<T, Message> $$3) {
       return a($$0::iterator, $$1, $$2, $$3);
    }
 

@@ -1,32 +1,21 @@
-import javax.annotation.Nullable;
-
-public class cws extends cwc implements cxe {
-   protected cws(dfd.d $$0) {
-      super($$0, hc.b, ehy.b(), true);
+public class cws extends cwr {
+   public cws(csv $$0, dfi.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(czg.g, hc.a.b));
    }
 
    @Override
-   protected cwd b() {
-      return (cwd)csr.mc;
+   public dfj a(dfj $$0, czh $$1) {
+      return czg.b($$0, $$1);
    }
 
    @Override
-   public eah c_(dfe $$0) {
-      return eai.c.a(false);
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(czg.g);
    }
 
    @Override
-   protected boolean h(dfe $$0) {
-      return this.b().h($$0);
-   }
-
-   @Override
-   public boolean a(@Nullable cbp $$0, cow $$1, gw $$2, dfe $$3, eag $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cpr $$0, gw $$1, dfe $$2, eah $$3) {
-      return false;
+   public dfj a(cln $$0) {
+      return this.n().a(czg.g, $$0.k().o());
    }
 }

@@ -1,31 +1,14 @@
-public class vo implements va<vk> {
-   private final vo.a a;
-
-   public vo(vo.a $$0) {
-      this.a = $$0;
-   }
-
-   public vo(sl $$0) {
-      this.a = $$0.b(vo.a.class);
+public record vo(akg a) implements vd<vn> {
+   public vo(so $$0) {
+      this(new akg($$0));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      this.a.a($$0);
    }
 
-   public void a(vk $$0) {
+   public void a(vn $$0) {
       $$0.a(this);
-   }
-
-   public vo.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

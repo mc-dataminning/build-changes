@@ -1,52 +1,112 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dwr extends dvc {
-   public static final Codec<dwr> d = a(dwr::new);
+public class dwr {
+   private static final int c = Integer.MIN_VALUE;
+   private static final MutableObject<Codec<hg<dwr>>> d = new MutableObject();
+   public static final Codec<dwr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arg.a(d::getValue).fieldOf("fallback").forGetter(dwr::a),
+               Codec.mapPair(dwp.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dwr::new)
+   );
+   public static final Codec<hg<dwr>> b = ac.a(aet.a(je.aC, a), d::setValue);
+   private final List<Pair<dwp, Integer>> e;
+   private final ObjectArrayList<dwp> f;
+   private final hg<dwr> g;
+   private int h = Integer.MIN_VALUE;
 
-   public dwr(dvd.c $$0) {
-      super(dwq::new, 21, 21, $$0);
-   }
+   public dwr(hg<dwr> $$0, List<Pair<dwp, Integer>> $$1) {
+      this.e = $$1;
+      this.f = new ObjectArrayList();
 
-   @Override
-   public void a(cqk $$0, cqi $$1, dhb $$2, arx $$3, duv $$4, cox $$5, dvs $$6) {
-      Set<gw> $$7 = ash.a(ib::i);
+      for (Pair<dwp, Integer> $$2 : $$1) {
+         dwp $$3 = (dwp)$$2.getFirst();
 
-      for (dvh $$8 : $$6.c()) {
-         if ($$8 instanceof dwq $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
+         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
+            this.f.add($$3);
          }
       }
 
-      ObjectArrayList<gw> $$10 = new ObjectArrayList($$7.stream().toList());
-      arx $$11 = arx.a($$0.A()).e().a($$6.b().f());
-      ac.b($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
+      this.g = $$0;
+   }
 
-      while (var12.hasNext()) {
-         gw $$13 = (gw)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, csr.I.n(), 2);
+   public dwr(hg<dwr> $$0, List<Pair<Function<dwr.a, ? extends dwp>, Integer>> $$1, dwr.a $$2) {
+      this.e = Lists.newArrayList();
+      this.f = new ObjectArrayList();
+
+      for (Pair<Function<dwr.a, ? extends dwp>, Integer> $$3 : $$1) {
+         dwp $$4 = (dwp)((Function)$$3.getFirst()).apply($$2);
+         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+
+         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
+            this.f.add($$4);
          }
       }
+
+      this.g = $$0;
    }
 
-   private static void a(duv $$0, cqk $$1, gw $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, csr.J.n(), 2);
-         $$1.a($$2, dcs.N).ifPresent($$1x -> $$1x.a(ecj.aD, $$2.a()));
+   public int a(dzc $$0) {
+      if (this.h == Integer.MIN_VALUE) {
+         this.h = this.f.stream().filter($$0x -> $$0x != dwi.b).mapToInt($$1 -> $$1.a($$0, gw.b, czh.a).d()).max().orElse(0);
       }
+
+      return this.h;
    }
 
-   @Override
-   public dvm<?> e() {
-      return dvm.b;
+   public hg<dwr> a() {
+      return this.g;
+   }
+
+   public dwp a(asc $$0) {
+      return (dwp)this.f.get($$0.a(this.f.size()));
+   }
+
+   public List<dwp> b(asc $$0) {
+      return ac.a(this.f, $$0);
+   }
+
+   public int b() {
+      return this.f.size();
+   }
+
+   public static enum a implements asp {
+      a("terrain_matching", ImmutableList.of(new dyi(dks.a.a, -1))),
+      b("rigid", ImmutableList.of());
+
+      public static final asp.a<dwr.a> c = asp.a(dwr.a::values);
+      private final String d;
+      private final ImmutableList<dyy> e;
+
+      private a(String $$0, ImmutableList<dyy> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public static dwr.a a(String $$0) {
+         return c.a($$0);
+      }
+
+      public ImmutableList<dyy> b() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

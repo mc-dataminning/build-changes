@@ -1,8 +1,19 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface djj {
+public interface djj<T extends dja> {
+   @Nullable
+   T a(int var1);
+
+   @Nullable
+   T a(UUID var1);
+
+   Iterable<T> a();
+
+   <U extends T> void a(djh<T, U> var1, aqo<U> var2);
+
+   void a(ehi var1, Consumer<T> var2);
+
+   <U extends T> void a(djh<T, U> var1, ehi var2, aqo<U> var3);
 }

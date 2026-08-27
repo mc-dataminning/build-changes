@@ -1,28 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class dop extends dnr<dqi> {
-   public dop(Codec<dqi> $$0) {
+public class dop extends dnw<dqg> {
+   public dop(Codec<dqg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dqi> $$0) {
-      dqi $$1 = $$0.f();
-      arx $$2 = $$0.d();
-      gw $$3 = $$0.e();
-      cqk $$4 = $$0.b();
-      int $$5 = 0;
-      gw.a $$6 = new gw.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(dny<dqg> $$0) {
+      cqp $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      dfj $$3 = $$1.a_($$2.d());
+      dqg $$4 = $$0.f();
+      asc $$5 = $$0.d();
+      if (!$$3.a(apt.aK)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.H_() + 1 && $$6 + 1 < $$1.aj()) {
+            int $$7 = 0;
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               gw $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dfj $$10 = $$4.b.a($$5, $$9);
+               if ($$1.t($$9) && $$9.v() > $$1.H_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
-
-      return $$5 > 0;
    }
 }

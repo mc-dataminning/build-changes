@@ -1,20 +1,20 @@
-public class zr implements va<ws> {
+public class zr implements vd<ww> {
    private final int a;
 
-   public zr(int $$0) {
-      this.a = $$0;
+   public zr(dha $$0) {
+      this.a = $$0.r();
    }
 
-   public zr(sl $$0) {
+   public zr(so $$0) {
       this.a = $$0.m();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 

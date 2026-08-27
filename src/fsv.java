@@ -1,16 +1,28 @@
-public class fsv extends ftq {
-   public static final aeu a = new aeu("textures/entity/guardian_elder.png");
+public class fsv extends fun<byu, fex<byu>> {
+   private static final aex a = new aex("textures/entity/creeper/creeper.png");
 
-   public fsv(ftc.a $$0) {
-      super($$0, 1.2F, fhw.P);
+   public fsv(fth.a $$0) {
+      super($$0, new fex<>($$0.a(fib.B)), 0.5F);
+      this.a(new fws(this, $$0.f()));
    }
 
-   protected void a(byz $$0, elk $$1, float $$2) {
-      $$1.b(bys.b, bys.b, bys.b);
+   protected void a(byu $$0, elp $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + arx.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = arx.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   @Override
-   public aeu a(byz $$0) {
+   protected float a(byu $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : arx.a($$2, 0.5F, 1.0F);
+   }
+
+   public aex a(byu $$0) {
       return a;
    }
 }

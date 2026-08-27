@@ -1,25 +1,24 @@
-public class fxh<T extends cbp> extends fxk<T, fgd<T>> {
-   private final ffy a;
+public class fxh extends fxp<bvd, ffs<bvd>> {
+   private final foy a;
 
-   public fxh(fux<T, fgd<T>> $$0, fht $$1) {
+   public fxh(fvc<bvd, ffs<bvd>> $$0, foy $$1) {
       super($$0);
-      this.a = new ffy($$1.a(fhw.aA));
+      this.a = $$1;
    }
 
-   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qu $$9 = $$8 ? $$3.gh() : $$3.gi();
-      bip.a($$9.l("id")).filter($$0x -> $$0x == bip.at).ifPresent($$10 -> {
+   public void a(elp $$0, foe $$1, int $$2, bvd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gd() != 0) {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
-         bvc.b $$11 = bvc.b.a($$9.h("Variant"));
-         elo $$12 = $$1.getBuffer(this.a.a(fuo.a($$11)));
-         this.a.a($$0, $$12, $$2, fyq.d, $$4, $$5, $$6, $$7, $$3.ah);
+         fic $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(csw.bT.n(), $$0, $$1, $$2, fyv.d);
          $$0.b();
-      });
+      }
    }
 }

@@ -1,32 +1,14 @@
-public class abm implements va<aaz> {
-   private final int a;
-   private final String b;
-
-   public abm(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public abm(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.d(32500);
+public record abm(ub.a a) implements vd<abd> {
+   public abm(so $$0) {
+      this(ub.a.a($$0));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(so $$0) {
+      ub.a.a($$0, this.a);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.b;
    }
 }

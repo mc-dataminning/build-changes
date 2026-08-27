@@ -1,33 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record dqm(int b, int c, int d, int e, int f, bfy g, float h) implements dpv {
+public class dqm implements dqa {
    public static final Codec<dqm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dqm::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dqm::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dqm::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dqm::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dqm::f),
-               bfy.c.fieldOf("extra_rare_growths").forGetter(dqm::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dqm::h)
-            )
-            .apply($$0, dqm::new)
+      $$0 -> $$0.apply2(dqm::new, dpq.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dum.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<dpq> b;
+   public final hg<dum> c;
 
-   public int a() {
-      return this.b;
+   public dqm(List<dpq> $$0, hg<dum> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   @Override
+   public Stream<dnj<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

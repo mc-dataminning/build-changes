@@ -1,97 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
-public class afh implements anj {
+public class afh {
    private static final Logger a = LogUtils.getLogger();
-   private static final aen b = new aen("functions", ".mcfunction");
-   private volatile Map<aeu, dp> c = ImmutableMap.of();
-   private final aqe<dp> d = new aqe<>(this::a, "tags/functions");
-   private volatile Map<aeu, Collection<dp>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<dt> g;
+   private static final CompletableFuture<asx> b = CompletableFuture.completedFuture(asx.a);
+   private final dn.a c;
+   private final du d;
+   private final cml e = new cml();
+   private final aqk f;
+   private final ect g = new ect();
+   private final afj h = new afj(this.g);
+   private final afk i;
 
-   public Optional<dp> a(aeu $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   public afh(hu.b $$0, cec $$1, du.a $$2, int $$3) {
+      this.f = new aqk($$0);
+      this.c = dn.a((hu)$$0, $$1);
+      this.d = new du($$2, this.c);
+      this.c.a(dn.b.a);
+      this.i = new afk($$3, this.d.a());
    }
 
-   public Map<aeu, dp> a() {
-      return this.c;
+   public afk a() {
+      return this.i;
    }
 
-   public Collection<dp> b(aeu $$0) {
-      return this.e.getOrDefault($$0, List.of());
+   public ect b() {
+      return this.g;
    }
 
-   public Iterable<aeu> b() {
-      return this.e.keySet();
+   public cml c() {
+      return this.e;
    }
 
-   public afh(int $$0, CommandDispatcher<dt> $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   public du d() {
+      return this.d;
    }
 
-   @Override
-   public CompletableFuture<Void> a(anj.a $$0, anp $$1, bdk $$2, bdk $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<aeu, List<aqe.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<aeu, CompletableFuture<dp>>> $$7 = CompletableFuture.<Map<aeu, ann>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<aeu, CompletableFuture<dp>> $$2x = Maps.newHashMap();
-         dt $$3x = new dt(ds.a, ehi.b, ehh.a, null, this.f, "", th.a, null, null);
-
-         for (Entry<aeu, ann> $$4x : $$1x.entrySet()) {
-            aeu $$5x = $$4x.getKey();
-            aeu $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return dp.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
-         }
-
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<aeu, CompletableFuture<dp>> $$1x = (Map<aeu, CompletableFuture<dp>>)$$0x.getSecond();
-         Builder<aeu, dp> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<aeu, List<aqe.a>>)$$0x.getFirst());
-      }, $$5);
+   public afj e() {
+      return this.h;
    }
 
-   private static List<String> a(ann $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
+   public List<ano> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
+   }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
-      }
+   public static CompletableFuture<afh> a(anu $$0, hu.b $$1, cec $$2, du.a $$3, int $$4, Executor $$5, Executor $$6) {
+      afh $$7 = new afh($$1, $$2, $$3, $$4);
+      return aoa.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dn.b.b)).thenApply($$1x -> $$7);
+   }
+
+   public void a(hu $$0) {
+      this.f.a().forEach($$1 -> a($$0, (aqk.a<?>)$$1));
+      csw.a();
+   }
+
+   private static <T> void a(hu $$0, aqk.a<T> $$1) {
+      aew<? extends ht<T>> $$2 = $$1.a();
+      Map<aqi<T>, List<hg<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> aqi.a($$2, (aex)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends hg<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
    }
 }

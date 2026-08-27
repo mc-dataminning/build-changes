@@ -1,27 +1,55 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface ans {
-   Optional<ann> getResource(aeu var1);
+public class ans {
+   private final ami a;
+   private final anm<InputStream> b;
+   private final anm<anw> c;
+   @Nullable
+   private anw d;
 
-   default ann getResourceOrThrow(aeu $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   public ans(ami $$0, anm<InputStream> $$1, anm<anw> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default InputStream open(aeu $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
+   public ans(ami $$0, anm<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = anw.b;
+      this.d = anw.a;
    }
 
-   default BufferedReader openAsReader(aeu $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
+   public ami a() {
+      return this.a;
    }
 
-   static ans fromMap(Map<aeu, ann> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public String b() {
+      return this.a.a();
+   }
+
+   public boolean c() {
+      return this.a.b();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public anw f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

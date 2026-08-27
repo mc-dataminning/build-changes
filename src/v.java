@@ -20,7 +20,7 @@ public class v {
    private static final Pattern d = Pattern.compile("[-._a-z0-9]+");
 
    public static String a(Path $$0, String $$1, String $$2) throws IOException {
-      for (char $$3 : aa.aZ) {
+      for (char $$3 : aa.ba) {
          $$1 = $$1.replace($$3, '_');
       }
 

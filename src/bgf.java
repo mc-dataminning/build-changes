@@ -1,49 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Arrays;
 
-public class bgf extends bfy {
-   public static final Codec<bgf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bfd.b(bfy.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bgf::new)
-   );
-   private final bfd<bfy> b;
-   private final int f;
-   private final int g;
+public class bgf implements bgg {
+   private final bgg[] a;
 
-   public bgf(bfd<bfy> $$0) {
-      this.b = $$0;
-      List<bff.b<bfy>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   public bgf(bgg... $$0) {
+      this.a = $$0;
+   }
 
-      for (bff.b<bfy> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
+   @Override
+   public float a(asc $$0) {
+      float $$1 = 1.0F;
+
+      for (bgg $$2 : this.a) {
+         $$1 *= $$2.a($$0);
       }
 
-      this.f = $$2;
-      this.g = $$3;
+      return $$1;
    }
 
    @Override
-   public int a(arx $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bfz<?> c() {
-      return bfz.e;
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

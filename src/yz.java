@@ -1,74 +1,37 @@
-import java.util.Set;
+public class yz implements vd<ww> {
+   private final int a;
+   private final tl b;
 
-public class yz implements va<ws> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final Set<bjp> f;
-   private final int g;
-
-   public yz(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bjp> $$5, int $$6) {
+   public yz(int $$0, tl $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
    }
 
-   public yz(sl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = bjp.a($$0.readUnsignedByte());
-      this.g = $$0.m();
+   public yz(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.l();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(bjp.a(this.f));
-      $$0.c(this.g);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public tl d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public Set<bjp> i() {
-      return this.f;
    }
 }

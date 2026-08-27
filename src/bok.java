@@ -1,31 +1,35 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-public class bok<E extends cat> extends bks<E> {
-   public bok(int $$0) {
-      super(ImmutableMap.of(bsc.o, bsd.b, bsc.m, bsd.b), $$0);
+public final class bok<F extends K1, Value> {
+   private final bkg<?> a;
+   private final bsh<Value> b;
+   private final App<F, Value> c;
+
+   public bok(bkg<?> $$0, bsh<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   protected boolean a(akn $$0, E $$1, long $$2) {
-      return $$1.dG() == null;
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   protected boolean a(akn $$0, E $$1) {
-      return $$1.aA() || $$1.aX() || $$1.bl();
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
    }
 
-   protected void b(akn $$0, E $$1, long $$2) {
-      if ($$1.aA()) {
-         $$1.b(bjn.o);
-         $$1.a(aoz.zA, 5.0F, 1.0F);
-      } else {
-         $$1.a(aoz.zv, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
-      }
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
    }
 
-   protected void c(akn $$0, E $$1, long $$2) {
-      if ($$1.dG() == null) {
-         $$1.a(bil.c.b);
-      }
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

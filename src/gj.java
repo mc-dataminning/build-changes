@@ -66,9 +66,9 @@ public class gj {
       a($$0, "template_mirror", fb.class, gl.a(fb::a));
       a($$0, "template_rotation", fc.class, gl.a(fc::a));
       a($$0, "heightmap", eh.class, gl.a(eh::a));
-      if (aa.aS) {
-         a($$0, "test_argument", qm.class, gl.a(qm::a));
-         a($$0, "test_class", qj.class, gl.a(qj::a));
+      if (aa.aT) {
+         a($$0, "test_argument", qp.class, gl.a(qp::a));
+         a($$0, "test_class", qm.class, gl.a(qm::a));
       }
 
       return a($$0, "uuid", fe.class, gl.a(fe::a));

@@ -1,92 +1,41 @@
-import java.util.function.Supplier;
+public abstract class dam extends daf {
+   protected dam(dfi.d $$0) {
+      super($$0);
+   }
 
-public class dam extends csy implements css {
-   public static final int a = 7;
-   public static final dge b = dfu.av;
-   protected static final float c = 1.0F;
-   protected static final eib[] d = new eib[]{
-      csq.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      csq.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final dan e;
-   private final Supplier<civ> f;
+   private static boolean b(dfj $$0, cpy $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      dfj $$4 = $$1.a_($$3);
+      if ($$4.a(csw.dN) && $$4.c(dae.b) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = ead.a($$1, $$0, $$2, $$4, $$3, hc.b, $$4.b($$1, $$3));
+         return $$5 < $$1.M();
+      }
+   }
 
-   protected dam(dan $$0, Supplier<civ> $$1, dfd.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.f = $$1;
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+   private static boolean c(dfj $$0, cpy $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(apy.a);
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return d[$$0.c(b)];
-   }
+   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, csw.j.n());
+      } else {
+         if ($$1.z($$2.c()) >= 9) {
+            dfj $$4 = this.n();
 
-   @Override
-   protected boolean d(dfe $$0, cow $$1, gw $$2) {
-      return $$0.a(csr.cC);
-   }
-
-   @Override
-   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = cuh.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(b);
-            if ($$5 < 7) {
-               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               hc $$6 = hc.c.a.a($$3);
-               gw $$7 = $$2.a($$6);
-               dfe $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(csr.cC) || $$8.a(apo.af))) {
-                  $$1.b($$7, this.e.n());
-                  $$1.b($$2, this.e.b().n().a(cwj.aC, $$6));
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               gw $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(csw.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(a, Boolean.valueOf($$1.a_($$6.c()).a(csw.dN))));
                }
             }
          }
       }
-   }
-
-   @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      return new cja(this.f.get());
-   }
-
-   @Override
-   public boolean a(cpt $$0, gw $$1, dfe $$2) {
-      return $$2.c(b) != 7;
-   }
-
-   @Override
-   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
-      int $$4 = Math.min(7, $$3.c(b) + ars.a($$0.z, 2, 5));
-      dfe $$5 = $$3.a(b, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
-      }
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(b);
-   }
-
-   public dan a() {
-      return this.e;
    }
 }

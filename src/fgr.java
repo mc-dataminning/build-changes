@@ -1,58 +1,43 @@
-import com.google.common.collect.ImmutableList;
+public class fgr<T extends biq> extends ffm<T> {
+   private static final String a = "body_front";
+   private static final String b = "body_back";
+   private final fic f;
+   private final fic g;
 
-public class fgr<T extends bzj> extends ffq<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fhx f;
-   private final fhx g;
-   private final fhx h;
-
-   public fgr(fhx $$0) {
-      super(foh::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fgr(fic $$0) {
+      this.f = $$0;
+      this.g = $$0.b("body_back");
    }
 
-   public static fid a() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("lid", fic.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fhz.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fic.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fhz.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fic.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhz.a(0.0F, 12.0F, 0.0F));
-      return fid.a($$0, 64, 64);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + ars.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = ars.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + ars.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      int $$2 = 20;
+      fil $$3 = $$1.a("body_front", fih.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fie.a(0.0F, 20.0F, 0.0F));
+      fil $$4 = $$1.a("body_back", fih.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fie.a(0.0F, 20.0F, 8.0F));
+      $$1.a("head", fih.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fie.a(0.0F, 20.0F, 0.0F));
+      $$4.a("back_fin", fih.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fie.a(0.0F, 0.0F, 8.0F));
+      $$3.a("top_front_fin", fih.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fie.a(0.0F, -4.5F, 5.0F));
+      $$4.a("top_back_fin", fih.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fie.a(0.0F, -4.5F, -1.0F));
+      $$1.a("right_fin", fih.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fie.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fih.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fie.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      return fii.a($$0, 32, 32);
    }
 
    @Override
-   public Iterable<fhx> d() {
-      return ImmutableList.of(this.f, this.g);
+   public fic a() {
+      return this.f;
    }
 
-   public fhx b() {
-      return this.g;
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.aY()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
 
-   public fhx c() {
-      return this.h;
+      this.g.f = -$$6 * 0.25F * arx.a($$7 * 0.6F * $$3);
    }
 }

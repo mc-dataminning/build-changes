@@ -1,8 +1,24 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fyd extends fxa<byb, fhs<byb>> {
+   private static final aex a = new aex("textures/entity/wither/wither_armor.png");
+   private final fhs<byb> b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyd {
+   public fyd(fvc<byb, fhs<byb>> $$0, fhy $$1) {
+      super($$0);
+      this.b = new fhs<>($$1.a(fib.bP));
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return arx.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected aex a() {
+      return a;
+   }
+
+   @Override
+   protected ffd<byb> b() {
+      return this.b;
+   }
 }

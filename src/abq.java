@@ -1,24 +1,18 @@
-public class abq implements va<aaz> {
-   private final int a;
-
-   public abq(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
-
-   public abq(sl $$0) {
-      this.a = $$0.readByte();
+public record abq() implements vd<abd> {
+   public abq(so $$0) {
+      this();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a);
+   public void a(so $$0) {
    }
 
-   public int a() {
-      return this.a;
+   public void a(abd $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public sn c() {
+      return sn.e;
    }
 }

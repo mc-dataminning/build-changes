@@ -1,33 +1,18 @@
-import java.util.List;
+public record vy(aew<djt> b, ehn c) implements vw {
+   public static final aex a = new aex("debug/game_event");
 
-public record vy(int b, gw c, List<vy.a> d) implements vs {
-   public static final aeu a = new aeu("debug/goal_selector");
-
-   public vy(sl $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(vy.a::new));
+   public vy(so $$0) {
+      this($$0.a(je.z), $$0.k());
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.p(this.b);
+   public void a(so $$0) {
+      $$0.b(this.b);
       $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aeu a() {
+   public aex a() {
       return a;
-   }
-
-   public static record a(int a, boolean b, String c) {
-      public a(sl $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(sl $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
    }
 }

@@ -1,63 +1,78 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 
-public class cgu extends civ {
-   private static final Predicate<bil> a = bio.f.and(bil::br);
-   private final cdi.b b;
-   private final boolean c;
+public class cgu extends chp {
+   protected static final Map<csv, csv> a = new Builder()
+      .put(csw.ao, csw.aw)
+      .put(csw.U, csw.al)
+      .put(csw.au, csw.aC)
+      .put(csw.aa, csw.ak)
+      .put(csw.as, csw.aA)
+      .put(csw.Y, csw.ai)
+      .put(csw.at, csw.aB)
+      .put(csw.Z, csw.aj)
+      .put(csw.aq, csw.ay)
+      .put(csw.W, csw.ag)
+      .put(csw.ar, csw.az)
+      .put(csw.X, csw.ah)
+      .put(csw.ap, csw.ax)
+      .put(csw.V, csw.af)
+      .put(csw.oj, csw.ok)
+      .put(csw.ol, csw.om)
+      .put(csw.os, csw.ot)
+      .put(csw.ou, csw.ov)
+      .put(csw.av, csw.aD)
+      .put(csw.ab, csw.am)
+      .put(csw.ae, csw.an)
+      .build();
 
-   public cgu(boolean $$0, cdi.b $$1, civ.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
+   protected cgu(cks $$0, float $$1, float $$2, cja.a $$3) {
+      super($$1, $$2, $$0, apt.bz, $$3);
    }
 
    @Override
-   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
-      cja $$3 = $$1.b($$2);
-      ehg $$4 = a($$0, $$1, coz.b.c);
-      if ($$4.c() == ehg.a.a) {
-         return bgu.c($$3);
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      cbu $$3 = $$0.o();
+      dfj $$4 = $$1.a_($$2);
+      Optional<dfj> $$5 = this.b($$4);
+      Optional<dfj> $$6 = dbx.b($$4);
+      Optional<dfj> $$7 = Optional.ofNullable((csv)ciu.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
+      cjf $$8 = $$0.n();
+      Optional<dfj> $$9 = Optional.empty();
+      if ($$5.isPresent()) {
+         $$1.a($$3, $$2, ape.as, apf.e, 1.0F, 1.0F);
+         $$9 = $$5;
+      } else if ($$6.isPresent()) {
+         $$1.a($$3, $$2, ape.at, apf.e, 1.0F, 1.0F);
+         $$1.a($$3, 3005, $$2, 0);
+         $$9 = $$6;
+      } else if ($$7.isPresent()) {
+         $$1.a($$3, $$2, ape.au, apf.e, 1.0F, 1.0F);
+         $$1.a($$3, 3004, $$2, 0);
+         $$9 = $$7;
+      }
+
+      if ($$9.isPresent()) {
+         if ($$3 instanceof aks) {
+            al.M.a((aks)$$3, $$2, $$8);
+         }
+
+         $$1.a($$2, $$9.get(), 11);
+         $$1.a(djt.c, $$2, djt.a.a($$3, $$9.get()));
+         if ($$3 != null) {
+            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bgy.a($$1.B);
       } else {
-         ehi $$5 = $$1.f(1.0F);
-         double $$6 = 5.0;
-         List<bil> $$7 = $$0.a($$1, $$1.cG().b($$5.a(5.0)).g(1.0), a);
-         if (!$$7.isEmpty()) {
-            ehi $$8 = $$1.bp();
-
-            for (bil $$9 : $$7) {
-               ehd $$10 = $$9.cG().g((double)$$9.bD());
-               if ($$10.d($$8)) {
-                  return bgu.c($$3);
-               }
-            }
-         }
-
-         if ($$4.c() == ehg.a.b) {
-            cdi $$11 = this.a($$0, $$4);
-            $$11.a(this.b);
-            $$11.r($$1.dA());
-            if (!$$0.a($$11, $$11.cG())) {
-               return bgu.d($$3);
-            } else {
-               if (!$$0.B) {
-                  $$0.b($$11);
-                  $$0.a($$1, djo.t, $$4.e());
-                  if (!$$1.fR().d) {
-                     $$3.h(1);
-                  }
-               }
-
-               $$1.b(apj.c.b(this));
-               return bgu.a($$3, $$0.r_());
-            }
-         } else {
-            return bgu.c($$3);
-         }
+         return bgy.d;
       }
    }
 
-   private cdi a(cpq $$0, ehg $$1) {
-      return (cdi)(this.c ? new cdj($$0, $$1.e().c, $$1.e().d, $$1.e().e) : new cdi($$0, $$1.e().c, $$1.e().d, $$1.e().e));
+   private Optional<dfj> b(dfj $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(czg.g, $$0.c(czg.g)));
    }
 }

@@ -1,29 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bly {
-   public static bmc<bjd> a(int $$0) {
-      return boe.a(
-         (Function<boe.b<bjd>, ? extends App<boe.c<bjd>, boh<bjd>>>)($$1 -> $$1.group($$1.a(bsc.n), $$1.b(bsc.o), $$1.c(bsc.p), $$1.b(bsc.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bjb $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<bse>b($$5).a($$9)) {
-                        $$2.a(new bld($$9, true));
-                        $$7.a(bgs.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bly extends bkx<bji> {
+   public static final int c = 100;
+   private final bgj d;
+   private final apd e;
+
+   public bly(bgj $$0, apd $$1) {
+      super(ImmutableMap.of(bsh.n, bsi.c, bsh.S, bsi.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static boolean a(bjd $$0) {
-      return $$0.b($$1 -> {
-         civ $$2 = $$1.d();
-         return $$2 instanceof cjq && $$0.a((cjq)$$2);
-      });
+   protected boolean a(akr $$0, bji $$1, long $$2) {
+      return !$$1.aB();
+   }
+
+   protected void b(akr $$0, bji $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bjs.g);
+   }
+
+   protected void c(akr $$0, bji $$1, long $$2) {
+      if ($$1.aB()) {
+         $$1.f($$1.do().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, apf.g, 2.0F, 1.0F);
+      }
+
+      $$1.p(false);
+      $$1.b(bjs.a);
+      $$1.dN().b(bsh.S);
+      $$1.dN().a(bsh.R, this.d.a($$0.z));
    }
 }

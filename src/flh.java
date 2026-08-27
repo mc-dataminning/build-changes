@@ -1,21 +1,32 @@
-public class flh extends fmp {
-   private final fmk a;
+import javax.annotation.Nullable;
 
-   protected flh(fis $$0, double $$1, double $$2, double $$3, double $$4, fmk $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
+public class flh extends fmu {
+   private final float a;
+   private final fmp b;
+
+   flh(fix $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fmp $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
       this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public fly b() {
+      return fly.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * arx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -26,24 +37,43 @@ public class flh extends fmp {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   @Override
-   public flt b() {
-      return flt.d;
-   }
+   public static class a implements flx<ip> {
+      private final fmp a;
 
-   public static class a implements fls<ja> {
-      private final fmk a;
-
-      public a(fmk $$0) {
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flh($$1, $$2, $$3, $$4, $$5, this.a);
+      @Nullable
+      public flu a(ip $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dfj $$8 = $$0.c();
+         if (!$$8.i() && $$8.l() == cza.a) {
+            return null;
+         } else {
+            gw $$9 = gw.a($$2, $$3, $$4);
+            int $$10 = eqv.O().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof cvn) {
+               $$10 = ((cvn)$$8.b()).d($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new flh($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

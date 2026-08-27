@@ -1,71 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fqu implements fqe<deh> {
+   private final ftf a;
 
-class fqu {
-   private final Map<gw, dcq> a;
-   @Nullable
-   private final List<dht<dfe>> b;
-   private final boolean c;
-   private final dhl d;
-
-   fqu(dhl $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dhh) {
-         this.b = null;
-      } else {
-         dhm[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dhm $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public fqu(fqf.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Nullable
-   public dcq a(gw $$0) {
-      return this.a.get($$0);
-   }
-
-   public dfe b(gw $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dfe $$4 = null;
-         if ($$2 == 60) {
-            $$4 = csr.hW.n();
+   public void a(deh $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.0F, 0.5F);
+      cox $$6 = $$0.d();
+      biq $$7 = $$6.a($$0.k(), $$0.k().D_(), $$0.p());
+      if ($$7 != null) {
+         float $$8 = 0.53125F;
+         float $$9 = Math.max($$7.dg(), $$7.dh());
+         if ((double)$$9 > 1.0) {
+            $$8 /= $$9;
          }
 
-         if ($$2 == 70) {
-            $$4 = dke.a($$1, $$3);
-         }
-
-         return $$4 == null ? csr.a.n() : $$4;
-      } else if (this.b == null) {
-         return csr.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dht<dfe> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return csr.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+         $$2.a(0.0F, 0.4F, 0.0F);
+         $$2.a(a.d.rotationDegrees((float)arx.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
+         $$2.a(0.0F, -0.2F, 0.0F);
+         $$2.a(a.b.rotationDegrees(-30.0F));
+         $$2.b($$8, $$8, $$8);
+         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
       }
+
+      $$2.b();
    }
 }

@@ -1,59 +1,60 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class edo extends edx {
-   public static final Codec<edo> a = RecordCodecBuilder.create($$0 -> a($$0).and(edo.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, edo::new));
-   private final edo.a b;
+public class edo extends edl {
+   public static final Codec<edo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqi.a(je.D).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, edo::new)
+   );
+   private final aqi<cja> j;
+   private final boolean k;
 
-   private edo(List<efk> $$0, edo.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private edo(aqi<cja> $$0, boolean $$1, int $$2, int $$3, List<efp> $$4, List<eed> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public edz b() {
-      return eea.o;
+   public edk a() {
+      return edh.f;
    }
 
    @Override
-   public Set<eet<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<cjf> $$0, ecq $$1) {
+      jd.i.c(this.j).forEach($$1x -> $$0.accept(new cjf($$1x)));
+   }
+
+   private boolean a(ecq $$0, Consumer<edi> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final hg<cja> $$2 : jd.i.c(this.j)) {
+            $$1.accept(new edl.c() {
+               @Override
+               public void a(Consumer<cjf> $$0, ecq $$1) {
+                  $$0.accept(new cjf($$2));
+               }
+            });
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public cja a(cja $$0, ecl $$1) {
-      if ($$1.c(this.b.g) instanceof bgx $$3 && $$3.ac()) {
-         $$0.a($$3.H_());
-      }
-
-      return $$0;
+   public boolean expand(ecq $$0, Consumer<edi> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static edx.a<?> a(edo.a $$0) {
-      return a($$1 -> new edo($$1, $$0));
+   public static edl.a<?> a(aqi<cja> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edo($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static enum a implements ask {
-      a("this", eew.a),
-      b("killer", eew.d),
-      c("killer_player", eew.b),
-      d("block_entity", eew.h);
-
-      public static final Codec<edo.a> e = ask.a(edo.a::values);
-      private final String f;
-      final eet<?> g;
-
-      private a(String $$0, eet<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static edl.a<?> b(aqi<cja> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edo($$0, true, $$1, $$2, $$3, $$4));
    }
 }

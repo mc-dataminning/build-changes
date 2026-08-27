@@ -1,71 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface anr {
-   anr a = new anr() {
-      @Override
-      public <T> Optional<T> a(amp<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   anh<anr> b = () -> a;
+public class anr implements anu, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private ank b;
+   private final List<ano> c = Lists.newArrayList();
+   private final amj d;
 
-   static anr a(InputStream $$0) throws IOException {
-      anr var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = arj.a($$1);
-         var3 = new anr() {
-            @Override
-            public <T> Optional<T> a(amp<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(arj.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public anr(amj $$0) {
+      this.d = $$0;
+      this.b = new ann($$0, List.of());
    }
 
-   <T> Optional<T> a(amp<T> var1);
-
-   default anr a(Collection<amp<?>> $$0) {
-      anr.a $$1 = new anr.a();
-
-      for (amp<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   @Override
+   public void close() {
+      this.b.close();
    }
 
-   private <T> void a(anr.a $$0, amp<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   public void a(ano $$0) {
+      this.c.add($$0);
    }
 
-   public static class a {
-      private final Builder<amp<?>, Object> a = ImmutableMap.builder();
+   public anq a(Executor $$0, Executor $$1, CompletableFuture<asx> $$2, List<ami> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(ami::a).collect(Collectors.joining(", "))));
+      this.b.close();
+      this.b = new ann(this.d, $$3);
+      return aoa.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-      public <T> anr.a a(amp<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+   @Override
+   public Optional<ans> getResource(aex $$0) {
+      return this.b.getResource($$0);
+   }
 
-      public anr a() {
-         final ImmutableMap<amp<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? anr.a : new anr() {
-            @Override
-            public <T> Optional<T> a(amp<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   @Override
+   public Set<String> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public List<ans> a(aex $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public Map<aex, ans> b(String $$0, Predicate<aex> $$1) {
+      return this.b.b($$0, $$1);
+   }
+
+   @Override
+   public Map<aex, List<ans>> c(String $$0, Predicate<aex> $$1) {
+      return this.b.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<ami> b() {
+      return this.b.b();
    }
 }

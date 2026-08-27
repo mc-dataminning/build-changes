@@ -1,24 +1,24 @@
-public class zp implements va<ws> {
-   private final int a;
+public class zp implements vd<ww> {
+   private final double a;
 
-   public zp(int $$0) {
-      this.a = $$0;
+   public zp(dha $$0) {
+      this.a = $$0.k();
    }
 
-   public zp(sl $$0) {
-      this.a = $$0.readByte();
+   public zp(so $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 }

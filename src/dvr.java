@@ -1,26 +1,26 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-@FunctionalInterface
-public interface dvr<C extends dpv> {
-   Optional<dvq<C>> createGenerator(dvr.a<C> var1);
+public interface dvr<S extends dvi> {
+   dvr<dwu> a = a("buried_treasure", dwu.d);
+   dvr<dww> b = a("desert_pyramid", dww.d);
+   dvr<dwy> c = a("end_city", dwy.d);
+   dvr<dxh> d = a("fortress", dxh.e);
+   dvr<dxa> e = a("igloo", dxa.d);
+   dvr<dxb> f = a("jigsaw", dxb.e);
+   dvr<dxd> g = a("jungle_temple", dxd.d);
+   dvr<dxf> h = a("mineshaft", dxf.d);
+   dvr<dxj> i = a("nether_fossil", dxj.d);
+   dvr<dxl> j = a("ocean_monument", dxl.d);
+   dvr<dxn> k = a("ocean_ruin", dxn.d);
+   dvr<dxp> l = a("ruined_portal", dxp.d);
+   dvr<dxr> m = a("shipwreck", dxr.d);
+   dvr<dxt> n = a("stronghold", dxt.d);
+   dvr<dxv> o = a("swamp_hut", dxv.d);
+   dvr<dxx> p = a("woodland_mansion", dxx.d);
 
-   static <C extends dpv> dvr<C> simple(Predicate<dvr.a<C>> $$0, dvq<C> $$1) {
-      Optional<dvq<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
-   }
+   Codec<S> codec();
 
-   static <C extends dpv> Predicate<dvr.a<C>> checkForBiomeOnTop(dkn.a $$0) {
-      return $$1 -> $$1.a($$0);
-   }
-
-   public static record a<C extends dpv>(dhb a, cqs b, dlb c, long d, cox e, C f, cps g, Predicate<hg<cqo>> h, dyx i, hu j) {
-      public boolean a(dkn.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         hg<cqo> $$4 = this.a.c().getNoiseBiome(hs.a($$1), hs.a($$3), hs.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   private static <S extends dvi> dvr<S> a(String $$0, Codec<S> $$1) {
+      return ht.a(jd.U, $$0, () -> $$1);
    }
 }

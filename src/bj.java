@@ -9,8 +9,8 @@ public class bj extends cw<bj.a> {
       return new bj.a($$1, $$3, $$4);
    }
 
-   public void a(ako $$0, @Nullable bil $$1) {
-      ecl $$2 = $$1 != null ? bq.b($$0, $$1) : null;
+   public void a(aks $$0, @Nullable biq $$1) {
+      ecq $$2 = $$1 != null ? bq.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bj extends cw<bj.a> {
          return al.A.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of(bq.a($$0.b()))));
       }
 
-      public boolean a(ako $$0, @Nullable ecl $$1) {
-         return this.a.isPresent() && !this.a.get().a((bjb)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
+      public boolean a(aks $$0, @Nullable ecq $$1) {
+         return this.a.isPresent() && !this.a.get().a((bjg)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
       }
 
       @Override

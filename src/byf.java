@@ -1,69 +1,254 @@
-public class byf {
-   public static final aet<bye> a = a("kebab");
-   public static final aet<bye> b = a("aztec");
-   public static final aet<bye> c = a("alban");
-   public static final aet<bye> d = a("aztec2");
-   public static final aet<bye> e = a("bomb");
-   public static final aet<bye> f = a("plant");
-   public static final aet<bye> g = a("wasteland");
-   public static final aet<bye> h = a("pool");
-   public static final aet<bye> i = a("courbet");
-   public static final aet<bye> j = a("sea");
-   public static final aet<bye> k = a("sunset");
-   public static final aet<bye> l = a("creebet");
-   public static final aet<bye> m = a("wanderer");
-   public static final aet<bye> n = a("graham");
-   public static final aet<bye> o = a("match");
-   public static final aet<bye> p = a("bust");
-   public static final aet<bye> q = a("stage");
-   public static final aet<bye> r = a("void");
-   public static final aet<bye> s = a("skull_and_roses");
-   public static final aet<bye> t = a("wither");
-   public static final aet<bye> u = a("fighters");
-   public static final aet<bye> v = a("pointer");
-   public static final aet<bye> w = a("pigscene");
-   public static final aet<bye> x = a("burning_skull");
-   public static final aet<bye> y = a("skeleton");
-   public static final aet<bye> z = a("donkey_kong");
-   public static final aet<bye> A = a("earth");
-   public static final aet<bye> B = a("wind");
-   public static final aet<bye> C = a("water");
-   public static final aet<bye> D = a("fire");
+import com.mojang.logging.LogUtils;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-   public static bye a(ht<bye> $$0) {
-      ht.a($$0, a, new bye(16, 16));
-      ht.a($$0, b, new bye(16, 16));
-      ht.a($$0, c, new bye(16, 16));
-      ht.a($$0, d, new bye(16, 16));
-      ht.a($$0, e, new bye(16, 16));
-      ht.a($$0, f, new bye(16, 16));
-      ht.a($$0, g, new bye(16, 16));
-      ht.a($$0, h, new bye(32, 16));
-      ht.a($$0, i, new bye(32, 16));
-      ht.a($$0, j, new bye(32, 16));
-      ht.a($$0, k, new bye(32, 16));
-      ht.a($$0, l, new bye(32, 16));
-      ht.a($$0, m, new bye(16, 32));
-      ht.a($$0, n, new bye(16, 32));
-      ht.a($$0, o, new bye(32, 32));
-      ht.a($$0, p, new bye(32, 32));
-      ht.a($$0, q, new bye(32, 32));
-      ht.a($$0, r, new bye(32, 32));
-      ht.a($$0, s, new bye(32, 32));
-      ht.a($$0, t, new bye(32, 32));
-      ht.a($$0, u, new bye(64, 32));
-      ht.a($$0, v, new bye(64, 64));
-      ht.a($$0, w, new bye(64, 64));
-      ht.a($$0, x, new bye(64, 64));
-      ht.a($$0, y, new bye(64, 48));
-      ht.a($$0, A, new bye(32, 32));
-      ht.a($$0, B, new bye(32, 32));
-      ht.a($$0, C, new bye(32, 32));
-      ht.a($$0, D, new bye(32, 32));
-      return ht.a($$0, z, new bye(64, 48));
+public abstract class byf extends biq {
+   private static final Logger e = LogUtils.getLogger();
+   protected static final Predicate<biq> b = $$0 -> $$0 instanceof byf;
+   private int f;
+   protected gw c;
+   protected hc d;
+
+   protected byf(biu<? extends byf> $$0, cpv $$1) {
+      super($$0, $$1);
+      this.d = hc.d;
    }
 
-   private static aet<bye> a(String $$0) {
-      return aet.a(je.P, new aeu($$0));
+   protected byf(biu<? extends byf> $$0, cpv $$1, gw $$2) {
+      this($$0, $$1);
+      this.c = $$2;
+   }
+
+   @Override
+   protected void a_() {
+   }
+
+   protected void a(hc $$0) {
+      Validate.notNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.r((float)(this.d.e() * 90));
+      this.N = this.dB();
+      this.y();
+   }
+
+   protected void y() {
+      if (this.d != null) {
+         double $$0 = (double)this.c.u() + 0.5;
+         double $$1 = (double)this.c.v() + 0.5;
+         double $$2 = (double)this.c.w() + 0.5;
+         double $$3 = 0.46875;
+         double $$4 = this.b(this.A());
+         double $$5 = this.b(this.B());
+         $$0 -= (double)this.d.j() * 0.46875;
+         $$2 -= (double)this.d.l() * 0.46875;
+         $$1 += $$5;
+         hc $$6 = this.d.i();
+         $$0 += $$4 * (double)$$6.j();
+         $$2 += $$4 * (double)$$6.l();
+         this.p($$0, $$1, $$2);
+         double $$7 = (double)this.A();
+         double $$8 = (double)this.B();
+         double $$9 = (double)this.A();
+         if (this.d.o() == hc.a.c) {
+            $$9 = 1.0;
+         } else {
+            $$7 = 1.0;
+         }
+
+         $$7 /= 32.0;
+         $$8 /= 32.0;
+         $$9 /= 32.0;
+         this.a(new ehi($$0 - $$7, $$1 - $$8, $$2 - $$9, $$0 + $$7, $$1 + $$8, $$2 + $$9));
+      }
+   }
+
+   private double b(int $$0) {
+      return $$0 % 32 == 0 ? 0.5 : 0.0;
+   }
+
+   @Override
+   public void l() {
+      if (!this.dL().B) {
+         this.as();
+         if (this.f++ == 100) {
+            this.f = 0;
+            if (!this.dG() && !this.z()) {
+               this.al();
+               this.a(null);
+            }
+         }
+      }
+   }
+
+   public boolean z() {
+      if (!this.dL().g(this)) {
+         return false;
+      } else {
+         int $$0 = Math.max(1, this.A() / 16);
+         int $$1 = Math.max(1, this.B() / 16);
+         gw $$2 = this.c.a(this.d.g());
+         hc $$3 = this.d.i();
+         gw.a $$4 = new gw.a();
+
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               int $$7 = ($$0 - 1) / -2;
+               int $$8 = ($$1 - 1) / -2;
+               $$4.g($$2).c($$3, $$5 + $$7).c(hc.b, $$6 + $$8);
+               dfj $$9 = this.dL().a_($$4);
+               if (!$$9.e() && !cut.h($$9)) {
+                  return false;
+               }
+            }
+         }
+
+         return this.dL().a(this, this.cH(), b).isEmpty();
+      }
+   }
+
+   @Override
+   public boolean bs() {
+      return true;
+   }
+
+   @Override
+   public boolean u(biq $$0) {
+      if ($$0 instanceof cbu $$1) {
+         return !this.dL().a($$1, this.c) ? true : this.a(this.dM().a($$1), 0.0F);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public hc cE() {
+      return this.d;
+   }
+
+   @Override
+   public boolean a(bho $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else {
+         if (!this.dG() && !this.dL().B) {
+            this.ak();
+            this.bp();
+            this.a($$0.d());
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void a(bjm $$0, ehn $$1) {
+      if (!this.dL().B && !this.dG() && $$1.g() > 0.0) {
+         this.ak();
+         this.a(null);
+      }
+   }
+
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.dL().B && !this.dG() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.ak();
+         this.a(null);
+      }
+   }
+
+   @Override
+   public void b(qx $$0) {
+      gw $$1 = this.E();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(qx $$0) {
+      gw $$1 = new gw($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dl(), 16.0)) {
+         e.error("Hanging entity at invalid position: {}", $$1);
+      } else {
+         this.c = $$1;
+      }
+   }
+
+   public abstract int A();
+
+   public abstract int B();
+
+   public abstract void a(@Nullable biq var1);
+
+   public abstract void C();
+
+   @Override
+   public byn a(cjf $$0, float $$1) {
+      byn $$2 = new byn(
+         this.dL(), this.dq() + (double)((float)this.d.j() * 0.15F), this.ds() + (double)$$1, this.dw() + (double)((float)this.d.l() * 0.15F), $$0
+      );
+      $$2.t();
+      this.dL().b($$2);
+      return $$2;
+   }
+
+   @Override
+   protected boolean bu() {
+      return false;
+   }
+
+   @Override
+   public void e(double $$0, double $$1, double $$2) {
+      this.c = gw.a($$0, $$1, $$2);
+      this.y();
+      this.au = true;
+   }
+
+   public gw E() {
+      return this.c;
+   }
+
+   @Override
+   public float a(czh $$0) {
+      if (this.d.o() != hc.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
+         }
+      }
+
+      float $$1 = arx.g(this.dB());
+      switch ($$0) {
+         case c:
+            return $$1 + 180.0F;
+         case d:
+            return $$1 + 90.0F;
+         case b:
+            return $$1 + 270.0F;
+         default:
+            return $$1;
+      }
+   }
+
+   @Override
+   public float a(cxq $$0) {
+      return this.a($$0.a(this.d));
+   }
+
+   @Override
+   public void a(akr $$0, bjf $$1) {
+   }
+
+   @Override
+   public void i_() {
    }
 }

@@ -1,136 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fno {
-   private static final Object2ObjectMap<aeu, fno> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fno.c $$1 = new fno.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dil.e, $$1);
-      $$0.put(dil.f, new fno.b());
-      $$0.put(dil.g, new fno.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fno.d e;
-   private final boolean f;
-   private final boolean g;
+public class fno {
+   private static final fno a = new fno("") {
+      @Override
+      public void a(eqv $$0) {
+      }
 
-   public fno(float $$0, boolean $$1, fno.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public static fno a(din $$0) {
-      return (fno)a.get($$0.r());
-   }
-
+      @Override
+      public void a(fno.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = ars.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - ars.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   private fno.b e;
+
+   fno(String $$0) {
+      this.d = eqv.O().p.toPath().resolve($$0);
+   }
+
+   public static fno a(@Nullable String $$0) {
+      return $$0 == null ? a : new fno($$0);
+   }
+
+   public void a(fno.c $$0, String $$1, String $$2) {
+      this.e = new fno.b($$0, $$1, $$2);
+   }
+
+   public void a(eqv $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fno.a $$2 = new fno.a(this.e, Instant.now(), $$0.q.l());
+            Codec.list(fno.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         return null;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   public float a() {
-      return this.c;
+   static record a(fno.b b, Instant c, cps d) {
+      public static final Codec<fno.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fno.b.a.forGetter(fno.a::a), arg.m.fieldOf("lastPlayedTime").forGetter(fno.a::b), cps.f.fieldOf("gamemode").forGetter(fno.a::c))
+               .apply($$0, fno.a::new)
+      );
+
+      public fno.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public cps c() {
+         return this.d;
+      }
    }
 
-   public boolean b() {
-      return this.d;
+   static record b(fno.c b, String c, String d) {
+      public static final MapCodec<fno.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fno.c.d.fieldOf("type").forGetter(fno.b::a), arg.o.fieldOf("id").forGetter(fno.b::b), Codec.STRING.fieldOf("name").forGetter(fno.b::c)
+               )
+               .apply($$0, fno.b::new)
+      );
+
+      public fno.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
    }
 
-   public abstract ehi a(ehi var1, float var2);
+   public static enum c implements asp {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
 
-   public abstract boolean a(int var1, int var2);
+      static final Codec<fno.c> d = asp.a(fno.c::values);
+      private final String e;
 
-   public fno.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fno {
-      public a() {
-         super(Float.NaN, false, fno.d.c, true, false);
+      private c(String $$0) {
+         this.e = $$0;
       }
 
       @Override
-      public ehi a(ehi $$0, float $$1) {
-         return $$0.a(0.15F);
+      public String c() {
+         return this.e;
       }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fno {
-      public b() {
-         super(Float.NaN, true, fno.d.a, false, true);
-      }
-
-      @Override
-      public ehi a(ehi $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fno {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fno.d.b, false, false);
-      }
-
-      @Override
-      public ehi a(ehi $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

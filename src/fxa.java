@@ -1,101 +1,24 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
-
-public class fxa<T extends bjb, M extends ffl<T>, A extends ffl<T>> extends fxk<T, M> {
-   private static final Map<String, aeu> a = Maps.newHashMap();
-   private final A b;
-   private final A c;
-   private final fyy d;
-
-   public fxa(fux<T, M> $$0, A $$1, A $$2, gbg $$3) {
+public abstract class fxa<T extends biq & bjt, M extends ffd<T>> extends fxp<T, M> {
+   public fxa(fvc<T, M> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3.a(fon.g);
    }
 
-   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$3, biq.e, $$2, this.a(biq.e));
-      this.a($$0, $$1, $$3, biq.d, $$2, this.a(biq.d));
-      this.a($$0, $$1, $$3, biq.c, $$2, this.a(biq.c));
-      this.a($$0, $$1, $$3, biq.f, $$2, this.a(biq.f));
-   }
-
-   private void a(elk $$0, fnz $$1, T $$2, biq $$3, int $$4, A $$5) {
-      cja $$6 = $$2.c($$3);
-      if ($$6.d() instanceof cgk $$7) {
-         if ($$7.g() == $$3) {
-            this.c().a($$5);
-            this.a($$5, $$3);
-            boolean $$9 = this.b($$3);
-            if ($$7 instanceof chq $$10) {
-               int $$11 = $$10.e_($$6);
-               float $$12 = (float)($$11 >> 16 & 0xFF) / 255.0F;
-               float $$13 = (float)($$11 >> 8 & 0xFF) / 255.0F;
-               float $$14 = (float)($$11 & 0xFF) / 255.0F;
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, $$12, $$13, $$14, null);
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, "overlay");
-            } else {
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, null);
-            }
-
-            clc.a($$2.dK().B_(), $$6, true).ifPresent($$6x -> this.a($$7.d(), $$0, $$1, $$4, $$6x, $$5, $$9));
-            if ($$6.B()) {
-               this.a($$0, $$1, $$4, $$5);
-            }
-         }
+   @Override
+   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ah + $$6;
+         ffd<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         elt $$12 = $$1.getBuffer(fom.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, fyv.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
    }
 
-   protected void a(A $$0, biq $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.k.k = true;
-            $$0.l.k = true;
-            break;
-         case e:
-            $$0.m.k = true;
-            $$0.n.k = true;
-            $$0.o.k = true;
-            break;
-         case d:
-            $$0.m.k = true;
-            $$0.p.k = true;
-            $$0.q.k = true;
-            break;
-         case c:
-            $$0.p.k = true;
-            $$0.q.k = true;
-      }
-   }
+   protected abstract float a(float var1);
 
-   private void a(elk $$0, fnz $$1, int $$2, cgk $$3, A $$4, boolean $$5, float $$6, float $$7, float $$8, @Nullable String $$9) {
-      elo $$10 = $$1.getBuffer(foh.a(this.a($$3, $$5, $$9)));
-      $$4.a($$0, $$10, $$2, fyq.d, $$6, $$7, $$8, 1.0F);
-   }
+   protected abstract aex a();
 
-   private void a(cgl $$0, elk $$1, fnz $$2, int $$3, clc $$4, A $$5, boolean $$6) {
-      fyz $$7 = this.d.a($$6 ? $$4.a($$0) : $$4.b($$0));
-      elo $$8 = $$7.a($$2.getBuffer(fon.a($$4.a().a().d())));
-      $$5.a($$1, $$8, $$3, fyq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void a(elk $$0, fnz $$1, int $$2, A $$3) {
-      $$3.a($$0, $$1.getBuffer(foh.l()), $$2, fyq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private A a(biq $$0) {
-      return this.b($$0) ? this.b : this.c;
-   }
-
-   private boolean b(biq $$0) {
-      return $$0 == biq.d;
-   }
-
-   private aeu a(cgk $$0, boolean $$1, @Nullable String $$2) {
-      String $$3 = "textures/models/armor/" + $$0.d().e() + "_layer_" + ($$1 ? 2 : 1) + ($$2 == null ? "" : "_" + $$2) + ".png";
-      return a.computeIfAbsent($$3, aeu::new);
-   }
+   protected abstract ffd<T> b();
 }

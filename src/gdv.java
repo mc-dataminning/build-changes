@@ -1,59 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gdv implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bcw d;
-   @Nullable
-   private CompletableFuture<Optional<gdr>> e;
+public record gdv(gdz b, gec c) {
+   public static final Codec<gdv> a = gdz.a.dispatchStable(gdv::a, gdz::c);
 
-   private gdv(bcw $$0) {
-      this.d = $$0;
-   }
-
-   public static CompletableFuture<Optional<gdv>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bcw $$1 = bcw.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gdv($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+   public gdv(gdz b, gec c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-      }, ac.f());
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public CompletableFuture<Optional<gds>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bcw.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gdr($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gdr::a));
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gdr::close));
-      }
+   public gdz a() {
+      return this.b;
+   }
+
+   public gec b() {
+      return this.c;
    }
 }

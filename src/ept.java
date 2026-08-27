@@ -1,13 +1,70 @@
-public class ept extends epu {
-   private final eni b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public ept(eni $$0, long $$1, ti $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class ept extends epv {
+   private static final Logger b = LogUtils.getLogger();
+   private static final tl c = tl.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final eyk f;
+   private final String g;
+
+   public ept(long $$0, int $$1, String $$2, eyk $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
-   protected void a(ema $$0, long $$1) throws enn {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      emf $$0 = emf.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            enm $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new eoi(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (ent var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (ens var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new eoj(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
+      }
+   }
+
+   @Override
+   public tl a() {
+      return c;
    }
 }

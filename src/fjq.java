@@ -1,89 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public abstract class fjq {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected fjs e;
-
-   public fjq(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public interface fjq {
+   static fjq a(fjw $$0, UserApiService $$1) {
+      return new fjq.b($$0, $$1);
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   CompletableFuture<Unit> a(UUID var1, fjy var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public abstract fjq b();
+   public static class a extends uk {
+      public a(tl $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
 
-   public abstract eyf a(eyf var1, fju var2);
+   public static record b(fjw a, UserApiService b) implements fjq {
+      private static final tl c = tl.c("gui.abuseReport.send.service_unavailable");
+      private static final tl d = tl.c("gui.abuseReport.send.http_error");
+      private static final tl e = tl.c("gui.abuseReport.send.json_error");
 
-   public abstract static class a<R extends fjq> {
-      protected final R a;
-      protected final AbuseReportLimits b;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fjy $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               tl $$5 = this.a(var7);
+               throw new CompletionException(new fjq.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               tl $$7 = this.a(var8);
+               throw new CompletionException(new fjq.a($$7, var8));
+            }
+         }, ac.g());
       }
 
-      public R e() {
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private tl a(MinecraftClientHttpException $$0) {
+         return tl.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private tl a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fjw c() {
          return this.a;
       }
 
-      public UUID f() {
-         return this.a.c;
+      public UserApiService d() {
+         return this.b;
       }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public fjs h() {
-         return this.a.e;
-      }
-
-      public void a(fjs $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fjq.b c();
-
-      public abstract Either<fjq.c, fjq.b> a(fju var1);
-   }
-
-   public static record b(ti e) {
-      public static final fjq.b a = new fjq.b(ti.c("gui.abuseReport.send.no_reason"));
-      public static final fjq.b b = new fjq.b(ti.c("gui.chatReport.send.no_reported_messages"));
-      public static final fjq.b c = new fjq.b(ti.c("gui.chatReport.send.too_many_messages"));
-      public static final fjq.b d = new fjq.b(ti.c("gui.abuseReport.send.comment_too_long"));
-
-      public etv a() {
-         return etv.a(this.e);
-      }
-
-      public ti b() {
-         return this.e;
-      }
-   }
-
-   public static record c(UUID a, fjt b, AbuseReport c) {
    }
 }

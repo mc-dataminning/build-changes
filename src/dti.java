@@ -1,52 +1,29 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dti extends dtk {
+public class dti {
    public static final Codec<dti> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlh.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dlh.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dis.c).fieldOf("height").forGetter(dti::a), jd.f.q().fieldOf("block").orElse(csw.a).forGetter($$0x -> $$0x.b().b()))
             .apply($$0, dti::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dlh d;
-   private final dlh e;
-   private final int f;
+   private final csv b;
+   private final int c;
 
-   private dti(dlh $$0, dlh $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public dti(int $$0, csv $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   public static dti a(dlh $$0, dlh $$1, int $$2) {
-      return new dti($$0, $$1, $$2);
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public int a(arx $$0, dlk $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
-      }
-   }
-
-   @Override
-   public dtl<?> a() {
-      return dtl.c;
+   public dfj b() {
+      return this.b.n();
    }
 
    @Override
    public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      return (this.c != 1 ? this.c + "*" : "") + jd.f.b(this.b);
    }
 }

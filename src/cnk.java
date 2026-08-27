@@ -1,104 +1,30 @@
-public enum cnk {
-   a {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cgk;
-      }
-   },
-   b {
-      @Override
-      public boolean a(civ $$0) {
-         if ($$0 instanceof cgk $$1 && $$1.g() == biq.c) {
-            return true;
-         }
+public class cnk extends cno {
+   public cnk(cno.a $$0, biv... $$1) {
+      super($$0, cnp.l, $$1);
+   }
 
-         return false;
-      }
-   },
-   c {
-      @Override
-      public boolean a(civ $$0) {
-         if ($$0 instanceof cgk $$1 && $$1.g() == biq.d) {
-            return true;
-         }
+   @Override
+   public int a(int $$0) {
+      return 25;
+   }
 
-         return false;
-      }
-   },
-   d {
-      @Override
-      public boolean a(civ $$0) {
-         if ($$0 instanceof cgk $$1 && $$1.g() == biq.e) {
-            return true;
-         }
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
 
-         return false;
-      }
-   },
-   e {
-      @Override
-      public boolean a(civ $$0) {
-         if ($$0 instanceof cgk $$1 && $$1.g() == biq.f) {
-            return true;
-         }
+   @Override
+   public boolean b() {
+      return true;
+   }
 
-         return false;
-      }
-   },
-   f {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof ckl;
-      }
-   },
-   g {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof chk;
-      }
-   },
-   h {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cig;
-      }
-   },
-   i {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cks;
-      }
-   },
-   j {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0.o();
-      }
-   },
-   k {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cgy;
-      }
-   },
-   l {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cib || csq.a($$0) instanceof cib;
-      }
-   },
-   m {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof chi;
-      }
-   },
-   n {
-      @Override
-      public boolean a(civ $$0) {
-         return $$0 instanceof cku || csq.a($$0) instanceof cku || j.a($$0);
-      }
-   };
+   @Override
+   public boolean c() {
+      return true;
+   }
 
-   public abstract boolean a(civ var1);
+   @Override
+   public boolean a(cjf $$0) {
+      return !$$0.a(cji.uy) && super.a($$0);
+   }
 }

@@ -1,59 +1,37 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class djp {
-   private final akn a;
+public class djp implements djx {
+   public static final Codec<djp> a = RecordCodecBuilder.create($$0 -> $$0.group(gw.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, djp::new));
+   final gw c;
 
-   public djp(akn $$0) {
-      this.a = $$0;
+   public djp(gw $$0) {
+      this.c = $$0;
    }
 
-   public void a(djo $$0, ehi $$1, djo.a $$2) {
-      int $$3 = $$0.a();
-      gw $$4 = gw.a($$1);
-      int $$5 = hz.a($$4.u() - $$3);
-      int $$6 = hz.a($$4.v() - $$3);
-      int $$7 = hz.a($$4.w() - $$3);
-      int $$8 = hz.a($$4.u() + $$3);
-      int $$9 = hz.a($$4.v() + $$3);
-      int $$10 = hz.a($$4.w() + $$3);
-      List<djo.b> $$11 = new ArrayList<>();
-      djr.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == djq.a.b) {
-            $$11.add(new djo.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dha $$16 = this.a.k().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         aay.a(this.a, $$0, $$1);
-      }
+   @Override
+   public Optional<ehn> a(cpv $$0) {
+      return Optional.of(ehn.b(this.c));
    }
 
-   private void a(List<djo.b> $$0) {
-      Collections.sort($$0);
+   @Override
+   public djy<?> a() {
+      return djy.a;
+   }
 
-      for (djo.b $$1 : $$0) {
-         djq $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   public static class a implements djy<djp> {
+      public djp a(so $$0) {
+         return new djp($$0.e());
+      }
+
+      public void a(so $$0, djp $$1) {
+         $$0.a($$1.c);
+      }
+
+      @Override
+      public Codec<djp> a() {
+         return djp.a;
       }
    }
 }

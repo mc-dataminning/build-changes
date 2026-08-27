@@ -1,24 +1,27 @@
-public class fbc extends fbg {
-   private static final ti b = ti.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final ti c = ti.c("title.32bit.deprecation.realms");
-   private static final ti k = ti.c("title.32bit.deprecation.realms.check");
-   private static final ti l = b.e().f("\n").b(c);
-   private final eyf m;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fbc(eyf $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class fbc implements fbb {
+   public static final fbb a = new fbc();
+
+   private fbc() {
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(esl.a(th.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.ar();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

@@ -1,24 +1,32 @@
-public class abv implements va<aaz> {
-   private final boolean a;
+public class abv implements vd<abd> {
+   private final int a;
+   private final int b;
 
-   public abv(boolean $$0) {
+   public abv(int $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
-
-   public abv(sl $$0) {
-      this.a = $$0.readBoolean();
+   public abv(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public boolean a() {
+   public void a(abd $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

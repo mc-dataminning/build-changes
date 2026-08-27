@@ -1,4 +1,25 @@
-@FunctionalInterface
-public interface dcr<T extends dcq> {
-   void tick(cpq var1, gw var2, dfe var3, T var4);
+public class dcr extends dcv {
+   private cht a;
+
+   public dcr(gw $$0, dfj $$1) {
+      super(dcx.y, $$0, $$1);
+      this.a = ((cso)$$1.b()).a();
+   }
+
+   public dcr(gw $$0, dfj $$1, cht $$2) {
+      super(dcx.y, $$0, $$1);
+      this.a = $$2;
+   }
+
+   public xe c() {
+      return xe.a(this);
+   }
+
+   public cht d() {
+      return this.a;
+   }
+
+   public void a(cht $$0) {
+      this.a = $$0;
+   }
 }

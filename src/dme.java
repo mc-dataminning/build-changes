@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dme extends dmf {
-   public static final Codec<dme> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dme::new));
+public class dme extends dmk {
+   final aqi<csv> a;
+   public static final Codec<dme> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqi.a(je.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dme::new));
 
-   public dme(ib $$0) {
+   protected dme(ib $$0, aqi<csv> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dfe $$0) {
-      return $$0.e();
+   protected boolean a(dfj $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dlv<?> a() {
-      return dlv.e;
+   public dma<?> a() {
+      return dma.b;
    }
 }

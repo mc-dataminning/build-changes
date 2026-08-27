@@ -1,11 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.Comparator;
 
-public interface akw {
-   void a(cox var1);
+public class akw<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final akw<asx> a = a("start", ($$0, $$1) -> 0);
+   public static final akw<asx> b = a("dragon", ($$0, $$1) -> 0);
+   public static final akw<cpc> c = a("player", Comparator.comparingLong(cpc::a));
+   public static final akw<cpc> d = a("forced", Comparator.comparingLong(cpc::a));
+   public static final akw<cpc> e = a("light", Comparator.comparingLong(cpc::a));
+   public static final akw<gw> f = a("portal", ib::i, 300);
+   public static final akw<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final akw<cpc> h = a("unknown", Comparator.comparingLong(cpc::a), 1);
 
-   void a(cox var1, @Nullable dhf var2);
+   public static <T> akw<T> a(String $$0, Comparator<T> $$1) {
+      return new akw<>($$0, $$1, 0L);
+   }
 
-   void a();
+   public static <T> akw<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new akw<>($$0, $$1, (long)$$2);
+   }
 
-   void b();
+   protected akw(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+   }
+
+   @Override
+   public String toString() {
+      return this.i;
+   }
+
+   public Comparator<T> a() {
+      return this.j;
+   }
+
+   public long b() {
+      return this.k;
+   }
 }

@@ -1,8 +1,24 @@
-public interface ady extends aba, abb {
-   @Override
-   default sk b() {
-      return sk.c;
+public class ady implements vd<si> {
+   private final long a;
+
+   public ady(long $$0) {
+      this.a = $$0;
    }
 
-   void a(aea var1);
+   public ady(so $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.b(this.a);
+   }
+
+   public void a(si $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
+      return this.a;
+   }
 }

@@ -1,35 +1,38 @@
-import java.util.Objects;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public record ald(String b, tl c) {
-   public static final ald a = a("");
+public class ald implements ala {
+   private final ala a;
+   private final bfr<Runnable> b;
 
-   public static ald a(String $$0) {
-      return new ald($$0, tl.c);
+   private ald(ala $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = bfr.a($$1, "progressListener");
    }
 
-   public static ald b(String $$0) {
-      return new ald($$0, tl.b);
+   public static ald a(ala $$0, Executor $$1) {
+      ald $$2 = new ald($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   @Override
+   public void a(cpc $$0) {
+      this.b.a(() -> this.a.a($$0));
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   @Override
+   public void a(cpc $$0, @Nullable dhk $$1) {
+      this.b.a(() -> this.a.a($$0, $$1));
    }
 
-   public boolean c() {
-      return !this.c.a();
+   @Override
+   public void a() {
+      this.b.a(this.a::a);
    }
 
-   public String d() {
-      return this.b;
-   }
-
-   public tl e() {
-      return this.c;
+   @Override
+   public void b() {
+      this.b.a(this.a::b);
    }
 }

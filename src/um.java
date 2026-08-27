@@ -1,10 +1,7 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class um {
-   static Function<String, Supplier<ti>> a = $$0 -> () -> ti.b($$0);
-
-   public static void a(Function<String, Supplier<ti>> $$0) {
-      a = $$0;
-   }
+@FunctionalInterface
+public interface um {
+   Stream<qx> getData(dt var1) throws CommandSyntaxException;
 }

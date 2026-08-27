@@ -1,14 +1,12 @@
-public class crp extends csq {
-   public crp(dfd.d $$0) {
+import java.util.function.Supplier;
+
+public abstract class crp<E extends dcv> extends csi {
+   protected final Supplier<dcx<? extends E>> a;
+
+   protected crp(dfi.d $$0, Supplier<dcx<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(cpq $$0, dfe $$1, ehe $$2, cch $$3) {
-      if (!$$0.B) {
-         gw $$4 = $$2.a();
-         $$0.a(null, $$4, aoz.G, apa.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, aoz.E, apa.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-      }
-   }
+   public abstract cuy.c<? extends ddc> a(dfj var1, cpv var2, gw var3, boolean var4);
 }

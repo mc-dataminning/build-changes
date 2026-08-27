@@ -1,83 +1,98 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class eav {
-   protected cqd a;
-   protected bjd b;
-   protected final Int2ObjectMap<eau> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class eav extends ebg {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public void a(cqd $$0, bjd $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c.clear();
-      this.d = ars.d($$1.df() + 1.0F);
-      this.e = ars.d($$1.dg() + 1.0F);
-      this.f = ars.d($$1.df() + 1.0F);
+   public eav(boolean $$0) {
+      this.l = $$0;
    }
 
+   @Override
+   public void a(cqi $$0, bji $$1) {
+      super.a($$0, $$1);
+      $$1.a(eax.j, 0.0F);
+      this.m = $$1.a(eax.c);
+      $$1.a(eax.c, 6.0F);
+      this.n = $$1.a(eax.k);
+      $$1.a(eax.k, 4.0F);
+   }
+
+   @Override
    public void b() {
-      this.a = null;
-      this.b = null;
+      this.b.a(eax.c, this.m);
+      this.b.a(eax.k, this.n);
+      super.b();
    }
 
-   protected eau b(gw $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
+   @Override
+   public eaz a() {
+      return !this.b.aY() ? super.a() : this.c(new gw(arx.a(this.b.cH().a), arx.a(this.b.cH().b + 0.5), arx.a(this.b.cH().c)));
    }
 
-   protected eau b(int $$0, int $$1, int $$2) {
-      return (eau)this.c.computeIfAbsent(eau.b($$0, $$1, $$2), $$3 -> new eau($$0, $$1, $$2));
+   @Override
+   public ebf a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(arx.a($$0), arx.a($$1 + 0.5), arx.a($$2)));
    }
 
-   public abstract eau a();
+   @Override
+   public int a(eaz[] $$0, eaz $$1) {
+      int $$2 = super.a($$0, $$1);
+      eax $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      eax $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != eax.w) {
+         $$5 = arx.d(Math.max(1.0F, this.b.dF()));
+      } else {
+         $$5 = 0;
+      }
 
-   public abstract eba a(double var1, double var3, double var5);
+      double $$7 = this.d(new gw($$1.a, $$1.b, $$1.c));
+      eaz $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, hc.b, $$4);
+      eaz $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, hc.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
 
-   protected eba a(eau $$0) {
-      return new eba($$0);
+      if (this.b($$9, $$1) && $$4 != eax.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eaz $$11 = $$0[$$10];
+         if ($$11.l == eax.j && this.l && $$11.b < this.b.dL().y_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   public abstract int a(eau[] var1, eau var2);
-
-   public abstract eas a(cow var1, int var2, int var3, int var4, bjd var5);
-
-   public abstract eas a(cow var1, int var2, int var3, int var4);
-
-   public void a(boolean $$0) {
-      this.g = $$0;
+   private boolean b(@Nullable eaz $$0, eaz $$1) {
+      return this.a($$0, $$1) && $$0.l == eax.j;
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   @Override
+   protected boolean c() {
+      return true;
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
+   @Override
+   public eax a(cpb $$0, int $$1, int $$2, int $$3) {
+      gw.a $$4 = new gw.a();
+      eax $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == eax.j) {
+         for (hc $$6 : hc.values()) {
+            eax $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == eax.a) {
+               return eax.k;
+            }
+         }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public boolean d() {
-      return this.g;
-   }
-
-   public boolean e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
+         return eax.j;
+      } else {
+         return a($$0, $$4);
+      }
    }
 }

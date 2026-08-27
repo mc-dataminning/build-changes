@@ -1,167 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dob extends dnr<doa> {
-   private static final float a = 0.06F;
+public class dob implements dqa {
+   public static final Codec<dob> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aex.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               aex.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               dza.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               dza.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dob::new)
+   );
+   public final List<aex> b;
+   public final List<aex> c;
+   public final hg<dyz> d;
+   public final hg<dyz> e;
+   public final int f;
 
-   public dob(Codec<doa> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dnt<doa> $$0) {
-      cqk $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      arx $$3 = $$0.d();
-      dhb $$4 = $$0.c();
-      doa $$5 = $$0.f();
-      csq $$6 = $$5.b.b();
-      gw $$7 = null;
-      dfe $$8 = $$1.a_($$2.d());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
-      }
-
-      if ($$7 == null) {
-         return false;
+   public dob(List<aex> $$0, List<aex> $$1, hg<dyz> $$2, hg<dyz> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         int $$9 = ars.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
-         }
-
-         if (!$$5.g) {
-            int $$10 = $$4.d();
-            if ($$7.v() + $$9 + 1 >= $$10) {
-               return false;
-            }
-         }
-
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, csr.a.n(), 4);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
-         return true;
-      }
-   }
-
-   private static boolean a(cqk $$0, gw $$1, doa $$2, boolean $$3) {
-      if ($$0.a($$1, dfd.a::r)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
-      }
-   }
-
-   private void a(cqk $$0, arx $$1, doa $$2, gw $$3, int $$4, boolean $$5) {
-      gw.a $$6 = new gw.a();
-      dfe $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && ars.a($$9) == $$8 && ars.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.d()).i()) {
-                        $$0.b($$6, true);
-                     }
-
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
-                     }
-                  } else {
-                     this.a($$0, $$6, $$7);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void b(cqk $$0, arx $$1, doa $$2, gw $$3, int $$4, boolean $$5) {
-      gw.a $$6 = new gw.a();
-      boolean $$7 = $$2.d.a(csr.kK);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
-
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.d()).i()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(cpr $$0, arx $$1, doa $$2, gw.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
-      }
-   }
-
-   private void a(cpr $$0, arx $$1, gw $$2, dfe $$3, boolean $$4) {
-      if ($$0.a_($$2.d()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
-      }
-   }
-
-   private static void a(gw $$0, cpr $$1, arx $$2) {
-      gw.a $$3 = $$0.j().c(hc.a);
-      if ($$1.t($$3)) {
-         int $$4 = ars.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
-         }
-
-         int $$5 = 23;
-         int $$6 = 25;
-         dpk.a($$1, $$2, $$3, $$4, 23, 25);
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

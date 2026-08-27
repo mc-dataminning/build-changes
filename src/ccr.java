@@ -1,34 +1,49 @@
-public class ccr extends ccn {
-   public ccr(bip<? extends ccr> $$0, cpq $$1) {
+public class ccr extends cca {
+   private int f = 200;
+
+   public ccr(biu<? extends ccr> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public ccr(cpq $$0, bjb $$1) {
-      super(bip.I, $$1, $$0);
+   public ccr(cpv $$0, bjg $$1) {
+      super(biu.aR, $$1, $$0);
    }
 
-   public ccr(cpq $$0, double $$1, double $$2, double $$3) {
-      super(bip.I, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected civ m() {
-      return cjd.te;
+   public ccr(cpv $$0, double $$1, double $$2, double $$3) {
+      super(biu.aR, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected float p() {
-      return 0.07F;
-   }
-
-   @Override
-   protected void a(ehg $$0) {
-      super.a($$0);
-      if (this.dK() instanceof akn) {
-         this.dK().c(2002, this.dk(), ckz.a(cla.c));
-         int $$1 = 3 + this.dK().z.a(5) + this.dK().z.a(5);
-         bir.a((akn)this.dK(), this.di(), $$1);
-         this.ak();
+   public void l() {
+      super.l();
+      if (this.dL().B && !this.b) {
+         this.dL().a(ix.N, this.dq(), this.ds(), this.dw(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected cjf w() {
+      return new cjf(cji.uv);
+   }
+
+   @Override
+   protected void a(bjg $$0) {
+      super.a($$0);
+      bid $$1 = new bid(bif.x, this.f, 0);
+      $$0.b($$1, this.G());
+   }
+
+   @Override
+   public void a(qx $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(qx $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
    }
 }

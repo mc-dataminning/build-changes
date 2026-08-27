@@ -1,23 +1,19 @@
-public class cjl extends civ {
-   public cjl(civ.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cjl extends ckr {
+   public cjl(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgt a(cja $$0, cbp $$1, bjb $$2, bgs $$3) {
-      if ($$0.A() && !($$2 instanceof cbp)) {
-         if (!$$1.dK().B && $$2.bv()) {
-            $$2.b($$0.y());
-            if ($$2 instanceof bjd) {
-               ((bjd)$$2).fF();
-            }
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      cle.a($$0, $$2, 0.25F);
+   }
 
-            $$0.h(1);
-         }
-
-         return bgt.a($$1.dK().B);
-      } else {
-         return bgt.d;
-      }
+   @Override
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), ape.mv, apf.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

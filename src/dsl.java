@@ -1,36 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.DataResult;
 
-public class dsl extends dsn {
-   public static final Codec<dsl> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsl::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class dsl extends dsb {
+   public static final Codec<dsl> b = bfi.b(dfj.b).comapFlatMap(dsl::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bfi<dfj> c;
 
-   public dsl(float $$0) {
-      this.b = $$0;
+   private static DataResult<dsl> a(bfi<dfj> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dsl($$0));
+   }
+
+   public dsl(bfi<dfj> $$0) {
+      this.c = $$0;
+   }
+
+   public dsl(bfi.a<dfj> $$0) {
+      this($$0.a());
    }
 
    @Override
-   protected dso<?> a() {
-      return dso.c;
+   protected dsc<?> a() {
+      return dsc.b;
    }
 
    @Override
-   public void a(dsn.a $$0) {
-      arx $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<gw> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (hc $$3x : hc.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  hc $$4 = $$3x.g();
-                  gw $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, csr.fC.n().a(ctw.b, Integer.valueOf($$1.a(3))).a(ctw.aC, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public dfj a(asc $$0, gw $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

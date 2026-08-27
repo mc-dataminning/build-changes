@@ -1,135 +1,147 @@
-import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class agx {
-   private static final int a = 256;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> ti.a("commands.forceload.toobig", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> ti.a("commands.forceload.query.failure", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ti.c("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ti.c("commands.forceload.removed.failure"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.experience.set.points.invalid"));
 
    public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("forceload").requires($$0x -> $$0x.c(2)))
+      LiteralCommandNode<dt> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("experience").requires($$0x -> $$0x.c(2)))
                   .then(
                      du.a("add")
                         .then(
-                           ((RequiredArgumentBuilder)du.a("from", fl.a())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fl.a($$0x, "from"), fl.a($$0x, "from"), true)))
-                              .then(du.a("to", fl.a()).executes($$0x -> a((dt)$$0x.getSource(), fl.a($$0x, "from"), fl.a($$0x, "to"), true)))
+                           du.a("targets", ee.d())
+                              .then(
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.a)
+                                          ))
+                                       .then(
+                                          du.a("points")
+                                             .executes(
+                                                $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       du.a("levels")
+                                          .executes(
+                                             $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.b)
+                                          )
+                                    )
+                              )
                         )
                   ))
                .then(
-                  ((LiteralArgumentBuilder)du.a("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)du.a("from", fl.a())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fl.a($$0x, "from"), fl.a($$0x, "from"), false)))
-                              .then(du.a("to", fl.a()).executes($$0x -> a((dt)$$0x.getSource(), fl.a($$0x, "from"), fl.a($$0x, "to"), false)))
-                        ))
-                     .then(du.a("all").executes($$0x -> b((dt)$$0x.getSource())))
+                  du.a("set")
+                     .then(
+                        du.a("targets", ee.d())
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("amount", IntegerArgumentType.integer(0))
+                                       .executes(
+                                          $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.a)
+                                       ))
+                                    .then(
+                                       du.a("points")
+                                          .executes(
+                                             $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.a)
+                                          )
+                                    ))
+                                 .then(
+                                    du.a("levels")
+                                       .executes(
+                                          $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agx.a.b)
+                                       )
+                                 )
+                           )
+                     )
                ))
             .then(
-               ((LiteralArgumentBuilder)du.a("query").executes($$0x -> a((dt)$$0x.getSource())))
-                  .then(du.a("pos", fl.a()).executes($$0x -> a((dt)$$0x.getSource(), fl.a($$0x, "pos"))))
+               du.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("targets", ee.c())
+                           .then(du.a("points").executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "targets"), agx.a.a))))
+                        .then(du.a("levels").executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "targets"), agx.a.b)))
+                  )
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dt $$0, akd $$1) throws CommandSyntaxException {
-      cox $$2 = $$1.a();
-      akn $$3 = $$0.e();
-      aet<cpq> $$4 = $$3.ac();
-      boolean $$5 = $$3.u().contains($$2.a());
-      if ($$5) {
-         $$0.a(() -> ti.a("commands.forceload.query.success", $$2, $$4.a()), false);
-         return 1;
+   private static int a(dt $$0, aks $$1, agx.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> tl.a("commands.experience.query." + $$2.e, $$1.N_(), $$3), false);
+      return $$3;
+   }
+
+   private static int a(dt $$0, Collection<? extends aks> $$1, int $$2, agx.a $$3) {
+      for (aks $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
       } else {
-         throw c.create($$2, $$4.a());
+         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int b(dt $$0, Collection<? extends aks> $$1, int $$2, agx.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (aks $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
+         }
+      }
+
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$1.size();
       }
    }
 
-   private static int a(dt $$0) {
-      akn $$1 = $$0.e();
-      aet<cpq> $$2 = $$1.ac();
-      LongSet $$3 = $$1.u();
-      int $$4 = $$3.size();
-      if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cox::new).map(cox::toString).iterator());
-         if ($$4 == 1) {
-            $$0.a(() -> ti.a("commands.forceload.list.single", $$2.a(), $$5), false);
+   static enum a {
+      a("points", cbu::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.ga()) {
+            return false;
          } else {
-            $$0.a(() -> ti.a("commands.forceload.list.multiple", $$4, $$2.a(), $$5), false);
+            $$0.a($$1);
+            return true;
          }
-      } else {
-         $$0.b(ti.a("commands.forceload.added.none", $$2.a()));
-      }
+      }, $$0 -> arx.d($$0.ch * (float)$$0.ga())),
+      b("levels", aks::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cf);
 
-      return $$4;
-   }
+      public final BiConsumer<aks, Integer> c;
+      public final BiPredicate<aks, Integer> d;
+      public final String e;
+      final ToIntFunction<aks> f;
 
-   private static int b(dt $$0) {
-      akn $$1 = $$0.e();
-      aet<cpq> $$2 = $$1.ac();
-      LongSet $$3 = $$1.u();
-      $$3.forEach($$1x -> $$1.a(cox.a($$1x), cox.b($$1x), false));
-      $$0.a(() -> ti.a("commands.forceload.removed.all", $$2.a()), true);
-      return 0;
-   }
-
-   private static int a(dt $$0, akd $$1, akd $$2, boolean $$3) throws CommandSyntaxException {
-      int $$4 = Math.min($$1.c(), $$2.c());
-      int $$5 = Math.min($$1.d(), $$2.d());
-      int $$6 = Math.max($$1.c(), $$2.c());
-      int $$7 = Math.max($$1.d(), $$2.d());
-      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
-         int $$8 = hz.a($$4);
-         int $$9 = hz.a($$5);
-         int $$10 = hz.a($$6);
-         int $$11 = hz.a($$7);
-         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
-         if ($$12 > 256L) {
-            throw b.create(256, $$12);
-         } else {
-            akn $$13 = $$0.e();
-            aet<cpq> $$14 = $$13.ac();
-            cox $$15 = null;
-            int $$16 = 0;
-
-            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
-               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
-                  boolean $$19 = $$13.a($$17, $$18, $$3);
-                  if ($$19) {
-                     $$16++;
-                     if ($$15 == null) {
-                        $$15 = new cox($$17, $$18);
-                     }
-                  }
-               }
-            }
-
-            cox $$20 = $$15;
-            if ($$16 == 0) {
-               throw ($$3 ? d : e).create();
-            } else {
-               if ($$16 == 1) {
-                  $$0.a(() -> ti.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", $$20, $$14.a()), true);
-               } else {
-                  cox $$21 = new cox($$8, $$9);
-                  cox $$22 = new cox($$10, $$11);
-                  $$0.a(() -> ti.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$20, $$14.a(), $$21, $$22), true);
-               }
-
-               return $$16;
-            }
-         }
-      } else {
-         throw fk.b.create();
+      private a(String $$0, BiConsumer<aks, Integer> $$1, BiPredicate<aks, Integer> $$2, ToIntFunction<aks> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

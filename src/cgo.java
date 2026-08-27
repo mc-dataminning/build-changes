@@ -1,11 +1,22 @@
-public class cgo extends civ {
-   public cgo(civ.a $$0) {
-      super($$0);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cgo extends cja {
+   private final csv a;
+
+   public cgo(csv $$0, cja.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public cbv a(cpq $$0, cja $$1, bjb $$2) {
-      cbx $$3 = new cbx($$0, $$2);
-      $$3.a($$1);
-      return $$3;
+   @Override
+   public String a() {
+      return this.a.f();
+   }
+
+   @Override
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

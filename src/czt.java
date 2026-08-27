@@ -1,104 +1,73 @@
 import javax.annotation.Nullable;
 
-public class czt extends csq implements czr {
-   public static final dgc<dgm> a = dfu.bh;
-   public static final dfv b = dfu.C;
-   protected static final eib c = csq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final eib d = csq.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class czt extends ctd implements csx, cxj {
+   protected static final float a = 6.0F;
+   protected static final eig b = csv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
-   public czt(dfd.d $$0) {
+   protected czt(dfi.d $$0) {
       super($$0);
-      this.k(this.n().a(a, dgm.b).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(dfe $$0) {
-      return $$0.c(a) != dgm.c;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      dgm $$4 = $$0.c(a);
-      switch ($$4) {
-         case c:
-            return ehy.b();
-         case a:
-            return d;
-         default:
-            return c;
-      }
+   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
+      return $$0.d($$1, $$2, hc.b) && !$$0.a(csw.kJ);
    }
 
    @Nullable
    @Override
-   public dfe a(cli $$0) {
-      gw $$1 = $$0.a();
-      dfe $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(a, dgm.c).a(b, Boolean.valueOf(false));
-      } else {
-         eah $$3 = $$0.q().b_($$1);
-         dfe $$4 = this.n().a(a, dgm.b).a(b, Boolean.valueOf($$3.a() == eai.c));
-         hc $$5 = $$0.k();
-         return $$5 != hc.a && ($$5 == hc.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(a, dgm.a);
+   public dfj a(cln $$0) {
+      eam $$1 = $$0.q().b_($$0.a());
+      return $$1.a(apy.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      dfj $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
+
+   @Override
+   public eam c_(dfj $$0) {
+      return ean.c.a(false);
+   }
+
+   @Override
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      dfj $$4 = csw.bx.n();
+      dfj $$5 = $$4.a(dbc.b, dgf.a);
+      gw $$6 = $$2.c();
+      if ($$0.a_($$6).a(csw.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   public boolean a(dfe $$0, cli $$1) {
-      cja $$2 = $$1.n();
-      dgm $$3 = $$0.c(a);
-      if ($$3 == dgm.c || !$$2.a(this.k())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         hc $$5 = $$1.k();
-         return $$3 == dgm.b ? $$5 == hc.b || $$4 && $$5.o().d() : $$5 == hc.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return false;
    }
 
    @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(b) ? eai.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(cpr $$0, gw $$1, dfe $$2, eah $$3) {
-      return $$2.c(a) != dgm.c ? czr.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cbp $$0, cow $$1, gw $$2, dfe $$3, eag $$4) {
-      return $$3.c(a) != dgm.c ? czr.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
-      switch ($$3) {
-         case a:
-            return false;
-         case b:
-            return $$1.b_($$2).a(apt.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   public boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
+      return false;
    }
 }

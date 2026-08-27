@@ -1,75 +1,89 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fjv extends fjq {
-   final Supplier<fzz> f;
+public abstract class fjv {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected fjx e;
 
-   fjv(UUID $$0, Instant $$1, UUID $$2, Supplier<fzz> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fjv(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Supplier<fzz> a() {
-      return this.f;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public fjv c() {
-      fjv $$0 = new fjv(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
+   public abstract fjv b();
 
-   @Override
-   public eyf a(eyf $$0, fju $$1) {
-      return new fci($$0, $$1, this);
-   }
+   public abstract eyk a(eyk var1, fjz var2);
 
-   public static class a extends fjq.a<fjv> {
-      public a(fjv $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public abstract static class a<R extends fjv> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public a(UUID $$0, Supplier<fzz> $$1, AbuseReportLimits $$2) {
-         super(new fjv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public R e() {
+         return this.a;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      @Override
-      public fjq.b c() {
-         if (this.a.e == null) {
-            return fjq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjq.b.d : null;
-         }
+      public fjx h() {
+         return this.a.e;
       }
 
-      @Override
-      public Either<fjq.c, fjq.b> a(fju $$0) {
-         fjq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            fzz $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fjq.c(this.a.a, fjt.b, $$6));
-         }
+      public void a(fjx $$0) {
+         this.a.e = $$0;
       }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract fjv.b c();
+
+      public abstract Either<fjv.c, fjv.b> a(fjz var1);
+   }
+
+   public static record b(tl e) {
+      public static final fjv.b a = new fjv.b(tl.c("gui.abuseReport.send.no_reason"));
+      public static final fjv.b b = new fjv.b(tl.c("gui.chatReport.send.no_reported_messages"));
+      public static final fjv.b c = new fjv.b(tl.c("gui.chatReport.send.too_many_messages"));
+      public static final fjv.b d = new fjv.b(tl.c("gui.abuseReport.send.comment_too_long"));
+
+      public eua a() {
+         return eua.a(this.e);
+      }
+
+      public tl b() {
+         return this.e;
+      }
+   }
+
+   public static record c(UUID a, fjy b, AbuseReport c) {
    }
 }

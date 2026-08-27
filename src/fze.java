@@ -1,75 +1,121 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class fze {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aen b = new aen("atlases", ".json");
-   private final List<fzd> c;
+   private final aex a;
+   private final fyy b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   private fze(List<fzd> $$0) {
-      this.c = $$0;
+   protected fze(aex $$0, fyy $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   public List<Function<fzc, fyt>> a(anp $$0) {
-      final Map<aeu, fzd.b> $$1 = new HashMap<>();
-      fzd.a $$2 = new fzd.a() {
-         @Override
-         public void a(aeu $$0, fzd.b $$1x) {
-            fzd.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<aeu> $$0) {
-            Iterator<Entry<aeu, fzd.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<aeu, fzd.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<fzc, fyt>> $$3 = ImmutableList.builder();
-      $$3.add((Function<fzc, fyt>)$$0x -> fyp.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
+   public int a() {
+      return this.c;
    }
 
-   public static fze a(anp $$0, aeu $$1) {
-      aeu $$2 = b.a($$1);
-      List<fzd> $$3 = new ArrayList<>();
+   public int b() {
+      return this.d;
+   }
 
-      for (ann $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends fzd>)fzg.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public fyy e() {
+      return this.b;
+   }
+
+   @Nullable
+   public fze.a f() {
+      final fza $$0 = this.b.e();
+      return $$0 != null ? new fze.a() {
+         @Override
+         public void a() {
+            $$0.a(fze.this.c, fze.this.d);
          }
-      }
 
-      return new fze($$3);
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public aex i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void j() {
+      this.b.a(this.c, this.d);
+   }
+
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public elt a(elt $$0) {
+      return new fou($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

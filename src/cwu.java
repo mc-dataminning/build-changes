@@ -1,69 +1,70 @@
-import javax.annotation.Nullable;
+public class cwu extends csv implements cvj, cvz {
+   public static final dgh<he> a = dfz.T;
 
-public class cwu extends csq implements czr {
-   public static final dfv a = dfu.j;
-   public static final dfv b = dfu.C;
-   protected static final eib c = ehy.a(csq.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csq.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final eib d = ehy.a(csq.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csq.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
-
-   public cwu(dfd.d $$0) {
+   protected cwu(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.C.b().a(a, he.k));
    }
 
-   @Nullable
    @Override
-   public dfe a(cli $$0) {
-      eah $$1 = $$0.q().b_($$0.a());
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
+   }
 
-      for (hc $$2 : $$0.f()) {
-         if ($$2.o() == hc.a.b) {
-            dfe $$3 = this.n().a(a, Boolean.valueOf($$2 == hc.b));
-            if ($$3.a((cpt)$$0.q(), $$0.a())) {
-               return $$3.a(b, Boolean.valueOf($$1.a() == eai.c));
-            }
-         }
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      hc $$1 = $$0.k();
+      hc $$2;
+      if ($$1.o() == hc.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = hc.b;
       }
 
-      return null;
+      return this.n().a(a, he.a($$1, $$2));
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return $$0.c(a) ? d : c;
+   public dcv a(gw $$0, dfj $$1) {
+      return new ddu($$0, $$1);
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      hc $$3 = h($$0).g();
-      return csq.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static hc h(dfe $$0) {
-      return $$0.c(a) ? hc.a : hc.b;
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      dcv $$6 = $$1.c_($$2);
+      if ($$6 instanceof ddu && $$3.go()) {
+         $$3.a((ddu)$$6);
+         return bgy.a($$1.B);
+      } else {
+         return bgy.d;
       }
-
-      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(b) ? eai.c.a(false) : super.c_($$0);
+   public static boolean a(dzb.c $$0, dzb.c $$1) {
+      hc $$2 = h($$0.b());
+      hc $$3 = h($$1.b());
+      hc $$4 = n($$0.b());
+      hc $$5 = n($$1.b());
+      ddu.a $$6 = ddu.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? ddu.a.b : ddu.a.a);
+      boolean $$7 = $$6 == ddu.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
-      return false;
+   public static hc h(dfj $$0) {
+      return $$0.c(a).a();
+   }
+
+   public static hc n(dfj $$0) {
+      return $$0.c(a).b();
    }
 }

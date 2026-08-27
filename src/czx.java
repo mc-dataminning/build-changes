@@ -1,41 +1,56 @@
-import javax.annotation.Nullable;
+public class czx extends crs {
+   public static final int b = dgp.a();
+   private static final int f = b + 1;
+   public static final dgj c = dfz.ba;
+   protected static final eig d = csv.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final eig e = csv.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
-public class czx extends crl {
-   protected czx(dfd.d $$0) {
-      super($$0);
+   protected czx(czx.a $$0, dfi.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dcq a(gw $$0, dfe $$1) {
-      return new deb($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
-      return a($$0, $$2, dcs.B);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return this.a() == czx.b.f ? e : d;
    }
 
    @Override
-   protected void a(cpq $$0, gw $$1, cbp $$2) {
-      dcq $$3 = $$0.c_($$1);
-      if ($$3 instanceof deb) {
-         $$2.a((bgw)$$3);
-         $$2.a(apj.at);
-      }
+   public eig f(dfj $$0, cpb $$1, gw $$2) {
+      return eid.a();
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aoz.wx, apa.e, 1.0F, 1.0F, false);
-         }
+   public dfj a(cln $$0) {
+      return super.a($$0).a(c, Integer.valueOf(dgp.a($$0.i())));
+   }
 
-         $$1.a(ix.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(c, Integer.valueOf($$1.a($$0.c(c), f)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a(c, Integer.valueOf($$1.a($$0.c(c), f)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      super.a($$0);
+      $$0.a(c);
+   }
+
+   public interface a {
+   }
+
+   public static enum b implements czx.a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

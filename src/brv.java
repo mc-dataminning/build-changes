@@ -1,39 +1,19 @@
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class brv<T extends bjd & bji> extends bpw {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class brv<T extends bjg> extends bru<T> {
+   private boolean i = true;
 
-   public brv(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public brv(cdc $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bjg> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.b.dK().X().b(cpm.K) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ef() != null && this.b.ef().ag() == bip.bt && this.b.eg() > this.d;
-   }
-
-   @Override
-   public void c() {
-      this.d = this.b.eg();
-      this.b.T_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bji)$$0).forEach(bji::T_);
-      }
-
-      super.c();
-   }
-
-   private List<? extends bjd> i() {
-      double $$0 = this.b.b(bkh.b);
-      ehd $$1 = ehd.a(this.b.di()).c($$0, 10.0, $$0);
-      return this.b.dK().a((Class<? extends bjd>)this.b.getClass(), $$1, bio.f);
+      return this.i && super.a();
    }
 }

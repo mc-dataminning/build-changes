@@ -1,40 +1,62 @@
-public class acf implements va<aaz> {
-   private final cfr a;
-   private final boolean b;
-   private final boolean c;
+public class acf implements vd<abd> {
+   private final gw a;
+   private final hc b;
+   private final acf.a c;
+   private final int d;
 
-   public acf(cfr $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public acf(acf.a $$0, gw $$1, hc $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public acf(sl $$0) {
-      this.a = $$0.b(cfr.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public acf(acf.a $$0, gw $$1, hc $$2) {
+      this($$0, $$1, $$2, 0);
+   }
+
+   public acf(so $$0) {
+      this.c = $$0.b(acf.a.class);
+      this.a = $$0.e();
+      this.b = hc.a($$0.readUnsignedByte());
+      this.d = $$0.m();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
       $$0.a(this.c);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public cfr a() {
+   public gw a() {
       return this.a;
    }
 
-   public boolean d() {
+   public hc d() {
       return this.b;
    }
 
-   public boolean e() {
+   public acf.a e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

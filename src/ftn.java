@@ -1,19 +1,27 @@
-public class ftn extends fui<byy, ffl<byy>> {
-   private static final aeu a = new aeu("textures/entity/zombie/zombie.png");
-   private final float i;
+public class ftn extends ftg<cch> {
+   private final fuf a;
 
-   public ftn(ftc.a $$0, float $$1) {
-      super($$0, new ffd($$0.a(fhw.ab)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new fxd<>(this, $$0.d()));
-      this.a(new fxa<>(this, new ffd($$0.a(fhw.ac)), new ffd($$0.a(fhw.ad)), $$0.g()));
+   public ftn(fth.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected void a(byy $$0, elk $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public void a(cch $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.s()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ai());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public aeu a(byy $$0) {
-      return a;
+   public aex a(cch $$0) {
+      return fzd.e;
    }
 }

@@ -1,12 +1,16 @@
-public abstract class ftt<T extends bjd, M extends ffl<T>> extends fui<T, M> {
-   public ftt(ftc.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class ftt extends fvo<biy> {
+   private static final aex a = new aex("textures/entity/squid/glow_squid.png");
+
+   public ftt(fth.a $$0, fhf<biy> $$1) {
+      super($$0, $$1);
    }
 
-   public ftt(ftc.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new fwp<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new fwt<>(this, $$0.f()));
-      this.a(new fxd<>(this, $$0.d()));
+   public aex a(biy $$0) {
+      return a;
+   }
+
+   protected int a(biy $$0, gw $$1) {
+      int $$2 = (int)arx.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -1,12 +1,13 @@
-public class fvp extends fsd<cbx> {
-   public static final aeu a = new aeu("textures/entity/projectiles/arrow.png");
-   public static final aeu f = new aeu("textures/entity/projectiles/tipped_arrow.png");
+public class fvp extends fvi {
+   private static final aex a = new aex("textures/entity/skeleton/stray.png");
 
-   public fvp(ftc.a $$0) {
-      super($$0);
+   public fvp(fth.a $$0) {
+      super($$0, fib.bt, fib.bu, fib.bv);
+      this.a(new fxx<>(this, $$0.f()));
    }
 
-   public aeu a(cbx $$0) {
-      return $$0.z() > 0 ? f : a;
+   @Override
+   public aex a(byr $$0) {
+      return a;
    }
 }

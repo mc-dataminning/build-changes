@@ -1,21 +1,22 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dmf implements dlu {
-   protected final ib f;
+class dmf extends dmk {
+   private final hk<csv> e;
+   public static final Codec<dmf> a = RecordCodecBuilder.create($$0 -> a($$0).and(hv.a(je.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dmf::new));
 
-   protected static <P extends dmf> P1<Mu<P>, ib> a(Instance<P> $$0) {
-      return $$0.group(ib.v(16).optionalFieldOf("offset", ib.g).forGetter($$0x -> $$0x.f));
+   public dmf(ib $$0, hk<csv> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   protected dmf(ib $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dfj $$0) {
+      return $$0.a(this.e);
    }
 
-   public final boolean a(cqk $$0, gw $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dma<?> a() {
+      return dma.a;
    }
-
-   protected abstract boolean a(dfe var1);
 }

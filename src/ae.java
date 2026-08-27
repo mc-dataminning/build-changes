@@ -9,21 +9,21 @@ import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record ae(Optional<aeu> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai e, boolean f, Optional<ti> g) {
-   public ae(Optional<aeu> $$0, Optional<aq> $$1, aj $$2, Map<String, am<?>> $$3, ai $$4, boolean $$5) {
+public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai e, boolean f, Optional<tl> g) {
+   public ae(Optional<aex> $$0, Optional<aq> $$1, aj $$2, Map<String, am<?>> $$3, ai $$4, boolean $$5) {
       this($$0, $$1, $$2, Map.copyOf($$3), $$4, $$5, $$1.map(ae::a));
    }
 
-   private static ti a(aq $$0) {
-      ti $$1 = $$0.a();
+   private static tl a(aq $$0) {
+      tl $$1 = $$0.a();
       n $$2 = $$0.e().b();
-      ti $$3 = tk.a($$1.e(), ue.a.a($$2)).f("\n").b($$0.b());
-      ti $$4 = $$1.e().a($$1x -> $$1x.a(new tn(tn.a.a, $$3)));
-      return tk.a($$4).a($$2);
+      tl $$3 = tn.a($$1.e(), uh.a.a($$2)).f("\n").b($$0.b());
+      tl $$4 = $$1.e().a($$1x -> $$1x.a(new tq(tq.a.a, $$3)));
+      return tn.a($$4).a($$2);
    }
 
-   public static ti a(af $$0) {
-      return $$0.b().i().orElseGet(() -> ti.b($$0.a().toString()));
+   public static tl a(af $$0) {
+      return $$0.b().i().orElseGet(() -> tl.b($$0.a().toString()));
    }
 
    public JsonObject a() {
@@ -44,39 +44,42 @@ public record ae(Optional<aeu> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
    }
 
    public static ae a(JsonObject $$0, bg $$1) {
-      Optional<aeu> $$2 = $$0.has("parent") ? Optional.of(new aeu(arj.i($$0, "parent"))) : Optional.empty();
-      Optional<aq> $$3 = $$0.has("display") ? Optional.of(aq.a(arj.u($$0, "display"))) : Optional.empty();
-      aj $$4 = $$0.has("rewards") ? aj.a(arj.u($$0, "rewards")) : aj.a;
-      Map<String, am<?>> $$5 = am.b(arj.u($$0, "criteria"), $$1);
+      Optional<aex> $$2 = $$0.has("parent") ? Optional.of(new aex(aro.i($$0, "parent"))) : Optional.empty();
+      Optional<aq> $$3 = $$0.has("display") ? Optional.of(aq.a(aro.u($$0, "display"))) : Optional.empty();
+      aj $$4 = $$0.has("rewards") ? aj.a(aro.u($$0, "rewards")) : aj.a;
+      Map<String, am<?>> $$5 = am.b(aro.u($$0, "criteria"), $$1);
       if ($$5.isEmpty()) {
          throw new JsonSyntaxException("Advancement criteria cannot be empty");
       } else {
-         ai $$6 = ai.a(arj.a($$0, "requirements", new JsonArray()), $$5.keySet());
-         if ($$6.c()) {
-            $$6 = ai.a($$5.keySet());
+         JsonArray $$6 = aro.a($$0, "requirements", new JsonArray());
+         ai $$7;
+         if ($$6.isEmpty()) {
+            $$7 = ai.a($$5.keySet());
+         } else {
+            $$7 = ai.a($$6, $$5.keySet());
          }
 
-         boolean $$7 = arj.a($$0, "sends_telemetry_event", false);
-         return new ae($$2, $$3, $$4, $$5, $$6, $$7);
+         boolean $$9 = aro.a($$0, "sends_telemetry_event", false);
+         return new ae($$2, $$3, $$4, $$5, $$7, $$9);
       }
    }
 
-   public void a(sl $$0) {
-      $$0.a(this.a, sl::a);
+   public void a(so $$0) {
+      $$0.a(this.a, so::a);
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
       this.e.a($$0);
       $$0.a(this.f);
    }
 
-   public static ae b(sl $$0) {
-      return new ae($$0.b(sl::s), $$0.b(aq::b), aj.a, Map.of(), new ai($$0), $$0.readBoolean());
+   public static ae b(so $$0) {
+      return new ae($$0.b(so::s), $$0.b(aq::b), aj.a, Map.of(), new ai($$0), $$0.readBoolean());
    }
 
    public boolean b() {
       return this.a.isEmpty();
    }
 
-   public Optional<aeu> c() {
+   public Optional<aex> c() {
       return this.a;
    }
 
@@ -100,12 +103,12 @@ public record ae(Optional<aeu> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
       return this.f;
    }
 
-   public Optional<ti> i() {
+   public Optional<tl> i() {
       return this.g;
    }
 
    public static class a {
-      private Optional<aeu> a = Optional.empty();
+      private Optional<aex> a = Optional.empty();
       private Optional<aq> b = Optional.empty();
       private aj c = aj.a;
       private final Builder<String, am<?>> d = ImmutableMap.builder();
@@ -129,17 +132,17 @@ public record ae(Optional<aeu> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
       @Deprecated(
          forRemoval = true
       )
-      public ae.a a(aeu $$0) {
+      public ae.a a(aex $$0) {
          this.a = Optional.of($$0);
          return this;
       }
 
-      public ae.a a(cja $$0, ti $$1, ti $$2, @Nullable aeu $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cjf $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new aq($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(cpp $$0, ti $$1, ti $$2, @Nullable aeu $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new aq(new cja($$0.k()), $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+      public ae.a a(cpu $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new aq(new cjf($$0.k()), $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(aq $$0) {
@@ -176,14 +179,14 @@ public record ae(Optional<aeu> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
          return this;
       }
 
-      public af b(aeu $$0) {
+      public af b(aex $$0) {
          Map<String, am<?>> $$1 = this.d.buildOrThrow();
          ai $$2 = this.e.orElseGet(() -> this.f.create($$1.keySet()));
          return new af($$0, new ae(this.a, this.b, this.c, $$1, $$2, this.g));
       }
 
       public af a(Consumer<af> $$0, String $$1) {
-         af $$2 = this.b(new aeu($$1));
+         af $$2 = this.b(new aex($$1));
          $$0.accept($$2);
          return $$2;
       }

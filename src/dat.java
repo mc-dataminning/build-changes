@@ -1,46 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface dat {
-   List<dat.a> a();
+public class dat extends csv {
+   private static final tl c = tl.c("container.stonecutter");
+   public static final dgd a = cwo.aC;
+   protected static final eig b = csv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
-   static List<dat> b() {
-      return jd.i.s().map(dat::a).filter(Objects::nonNull).collect(Collectors.toList());
+   public dat(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c));
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apo.ay);
+         return bgy.b;
+      }
    }
 
    @Nullable
-   static dat a(cpp $$0) {
-      if ($$0.k() instanceof cgt $$1) {
-         csq var6 = $$1.e();
-         if (var6 instanceof dat) {
-            return (dat)var6;
-         }
-      }
-
-      civ $$2 = $$0.k();
-      return $$2 instanceof dat ? (dat)$$2 : null;
+   @Override
+   public bhb b(dfj $$0, cpv $$1, gw $$2) {
+      return new bhg(($$2x, $$3, $$4) -> new cgh($$2x, $$3, cew.a($$1, $$2)), c);
    }
 
-   public static record a(bhw c, int d) {
-      public static final Codec<dat.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jd.e.q().fieldOf("id").forGetter(dat.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dat.a::c)).apply($$0, dat.a::new)
-      );
-      public static final Codec<List<dat.a>> b = a.listOf();
+   @Override
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return b;
+   }
 
-      public bhy a() {
-         return new bhy(this.c, this.d);
-      }
+   @Override
+   public boolean g_(dfj $$0) {
+      return true;
+   }
 
-      public bhw b() {
-         return this.c;
-      }
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
 
-      public int c() {
-         return this.d;
-      }
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      return false;
    }
 }

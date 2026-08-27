@@ -1,3 +1,8 @@
-public interface eru {
-   int getColor(cja var1, int var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eru {
 }

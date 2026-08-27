@@ -1,82 +1,54 @@
 import java.util.List;
 
 public class os {
-   public static final aet<dne<?, ?>> a = op.a("ore_magma");
-   public static final aet<dne<?, ?>> b = op.a("ore_soul_sand");
-   public static final aet<dne<?, ?>> c = op.a("ore_nether_gold");
-   public static final aet<dne<?, ?>> d = op.a("ore_quartz");
-   public static final aet<dne<?, ?>> e = op.a("ore_gravel_nether");
-   public static final aet<dne<?, ?>> f = op.a("ore_blackstone");
-   public static final aet<dne<?, ?>> g = op.a("ore_dirt");
-   public static final aet<dne<?, ?>> h = op.a("ore_gravel");
-   public static final aet<dne<?, ?>> i = op.a("ore_granite");
-   public static final aet<dne<?, ?>> j = op.a("ore_diorite");
-   public static final aet<dne<?, ?>> k = op.a("ore_andesite");
-   public static final aet<dne<?, ?>> l = op.a("ore_tuff");
-   public static final aet<dne<?, ?>> m = op.a("ore_coal");
-   public static final aet<dne<?, ?>> n = op.a("ore_coal_buried");
-   public static final aet<dne<?, ?>> o = op.a("ore_iron");
-   public static final aet<dne<?, ?>> p = op.a("ore_iron_small");
-   public static final aet<dne<?, ?>> q = op.a("ore_gold");
-   public static final aet<dne<?, ?>> r = op.a("ore_gold_buried");
-   public static final aet<dne<?, ?>> s = op.a("ore_redstone");
-   public static final aet<dne<?, ?>> t = op.a("ore_diamond_small");
-   public static final aet<dne<?, ?>> u = op.a("ore_diamond_medium");
-   public static final aet<dne<?, ?>> v = op.a("ore_diamond_large");
-   public static final aet<dne<?, ?>> w = op.a("ore_diamond_buried");
-   public static final aet<dne<?, ?>> x = op.a("ore_lapis");
-   public static final aet<dne<?, ?>> y = op.a("ore_lapis_buried");
-   public static final aet<dne<?, ?>> z = op.a("ore_infested");
-   public static final aet<dne<?, ?>> A = op.a("ore_emerald");
-   public static final aet<dne<?, ?>> B = op.a("ore_ancient_debris_large");
-   public static final aet<dne<?, ?>> C = op.a("ore_ancient_debris_small");
-   public static final aet<dne<?, ?>> D = op.a("ore_copper_small");
-   public static final aet<dne<?, ?>> E = op.a("ore_copper_large");
-   public static final aet<dne<?, ?>> F = op.a("ore_clay");
+   public static void a(ns<dnj<?, ?>> $$0) {
+      op.a($$0);
+      oq.a($$0);
+      or.a($$0);
+      ot.a($$0);
+      ou.a($$0);
+      ov.a($$0);
+      ow.a($$0);
+      ox.a($$0);
+      oy.a($$0);
+   }
 
-   public static void a(np<dne<?, ?>> $$0) {
-      dyq $$1 = new dyy(apo.bd);
-      dyq $$2 = new dyy(apo.be);
-      dyq $$3 = new dyy(apo.bf);
-      dyq $$4 = new dxz(csr.dW);
-      dyq $$5 = new dyy(apo.bg);
-      List<dqd.a> $$6 = List.of(dqd.a($$2, csr.P.n()), dqd.a($$3, csr.Q.n()));
-      List<dqd.a> $$7 = List.of(dqd.a($$2, csr.N.n()), dqd.a($$3, csr.O.n()));
-      List<dqd.a> $$8 = List.of(dqd.a($$2, csr.cx.n()), dqd.a($$3, csr.cy.n()));
-      List<dqd.a> $$9 = List.of(dqd.a($$2, csr.aR.n()), dqd.a($$3, csr.aS.n()));
-      List<dqd.a> $$10 = List.of(dqd.a($$2, csr.qN.n()), dqd.a($$3, csr.qO.n()));
-      List<dqd.a> $$11 = List.of(dqd.a($$2, csr.R.n()), dqd.a($$3, csr.S.n()));
-      op.a($$0, a, dnr.I, new dqd($$4, csr.kJ.n(), 33));
-      op.a($$0, b, dnr.I, new dqd($$4, csr.dX.n(), 12));
-      op.a($$0, c, dnr.I, new dqd($$4, csr.T.n(), 10));
-      op.a($$0, d, dnr.I, new dqd($$4, csr.hb.n(), 14));
-      op.a($$0, e, dnr.I, new dqd($$4, csr.L.n(), 33));
-      op.a($$0, f, dnr.I, new dqd($$4, csr.pr.n(), 33));
-      op.a($$0, g, dnr.I, new dqd($$1, csr.j.n(), 33));
-      op.a($$0, h, dnr.I, new dqd($$1, csr.L.n(), 33));
-      op.a($$0, i, dnr.I, new dqd($$1, csr.c.n(), 64));
-      op.a($$0, j, dnr.I, new dqd($$1, csr.e.n(), 64));
-      op.a($$0, k, dnr.I, new dqd($$1, csr.g.n(), 64));
-      op.a($$0, l, dnr.I, new dqd($$1, csr.qz.n(), 64));
-      op.a($$0, m, dnr.I, new dqd($$11, 17));
-      op.a($$0, n, dnr.I, new dqd($$11, 17, 0.5F));
-      op.a($$0, o, dnr.I, new dqd($$6, 9));
-      op.a($$0, p, dnr.I, new dqd($$6, 4));
-      op.a($$0, q, dnr.I, new dqd($$7, 9));
-      op.a($$0, r, dnr.I, new dqd($$7, 9, 0.5F));
-      op.a($$0, s, dnr.I, new dqd(List.of(dqd.a($$2, csr.dI.n()), dqd.a($$3, csr.dJ.n())), 8));
-      op.a($$0, t, dnr.I, new dqd($$8, 4, 0.5F));
-      op.a($$0, v, dnr.I, new dqd($$8, 12, 0.7F));
-      op.a($$0, w, dnr.I, new dqd($$8, 8, 1.0F));
-      op.a($$0, u, dnr.I, new dqd($$8, 8, 0.5F));
-      op.a($$0, x, dnr.I, new dqd($$9, 7));
-      op.a($$0, y, dnr.I, new dqd($$9, 7, 1.0F));
-      op.a($$0, z, dnr.I, new dqd(List.of(dqd.a($$2, csr.eO.n()), dqd.a($$3, csr.sc.n())), 9));
-      op.a($$0, A, dnr.I, new dqd(List.of(dqd.a($$2, csr.fE.n()), dqd.a($$3, csr.fF.n())), 3));
-      op.a($$0, B, dnr.ae, new dqd($$5, csr.pj.n(), 3, 1.0F));
-      op.a($$0, C, dnr.ae, new dqd($$5, csr.pj.n(), 2, 1.0F));
-      op.a($$0, D, dnr.I, new dqd($$10, 10));
-      op.a($$0, E, dnr.I, new dqd($$10, 20));
-      op.a($$0, F, dnr.I, new dqd($$1, csr.dR.n(), 33));
+   private static dlz a(List<csv> $$0) {
+      dlz $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = dlz.a(dlz.c, dlz.a(hc.a.q(), $$0));
+      } else {
+         $$1 = dlz.c;
+      }
+
+      return $$1;
+   }
+
+   public static dqn a(int $$0, hg<dum> $$1) {
+      return new dqn($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> dqn a(F $$0, FC $$1, List<csv> $$2, int $$3) {
+      return a($$3, ph.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> dqn a(F $$0, FC $$1, List<csv> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> dqn a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static aew<dnj<?, ?>> a(String $$0) {
+      return aew.a(je.as, new aex($$0));
+   }
+
+   public static void a(ns<dnj<?, ?>> $$0, aew<dnj<?, ?>> $$1, dnw<dqh> $$2) {
+      a($$0, $$1, $$2, dqa.m);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> void a(ns<dnj<?, ?>> $$0, aew<dnj<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new dnj($$2, $$3));
    }
 }

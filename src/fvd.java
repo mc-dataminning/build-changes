@@ -1,20 +1,29 @@
-public class fvd extends ftt<bym, fgt<bym>> {
-   private static final aeu a = new aeu("textures/entity/skeleton/skeleton.png");
+public class fvd extends fun<bvm, fgr<bvm>> {
+   private static final aex a = new aex("textures/entity/fish/salmon.png");
 
-   public fvd(ftc.a $$0) {
-      this($$0, fhw.bh, fhw.bj, fhw.bk);
+   public fvd(fth.a $$0) {
+      super($$0, new fgr<>($$0.a(fib.ba)), 0.4F);
    }
 
-   public fvd(ftc.a $$0, fhv $$1, fhv $$2, fhv $$3) {
-      super($$0, new fgt<>($$0.a($$1)), 0.5F);
-      this.a(new fxa<>(this, new fgt($$0.a($$2)), new fgt($$0.a($$3)), $$0.g()));
-   }
-
-   public aeu a(bym $$0) {
+   public aex a(bvm $$0) {
       return a;
    }
 
-   protected boolean b(bym $$0) {
-      return $$0.ga();
+   protected void a(bvm $$0, elp $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aY()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
+      }
+
+      float $$7 = $$5 * 4.3F * arx.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aY()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

@@ -1,44 +1,34 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class acn implements va<aaz> {
-   private final int a;
-   private final String b;
-   private final boolean c;
+public class acn implements vd<abd> {
+   private final Optional<bib> a;
+   private final Optional<bib> b;
 
-   public acn(int $$0, String $$1, boolean $$2) {
+   public acn(Optional<bib> $$0, Optional<bib> $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public acn(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.r();
-      this.c = $$0.readBoolean();
+   public acn(so $$0) {
+      this.a = $$0.b((so.a<bib>)($$0x -> $$0x.a(jd.e)));
+      this.b = $$0.b((so.a<bib>)($$0x -> $$0x.a(jd.e)));
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(so $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public cor a(cpq $$0) {
-      bil $$1 = $$0.a(this.a);
-      return $$1 instanceof cdo ? ((cdo)$$1).A() : null;
+   public Optional<bib> a() {
+      return this.a;
    }
 
-   public String a() {
+   public Optional<bib> d() {
       return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
    }
 }

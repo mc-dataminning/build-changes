@@ -7,8 +7,8 @@ public class dd extends cw<dd.a> {
       return new dd.a($$1, $$3);
    }
 
-   public void a(ako $$0, bum $$1) {
-      ecl $$2 = bq.b($$0, $$1);
+   public void a(aks $$0, bur $$1) {
+      ecq $$2 = bq.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -28,7 +28,7 @@ public class dd extends cw<dd.a> {
          return al.x.a(new dd.a(Optional.empty(), Optional.of(bq.a($$0))));
       }
 
-      public boolean a(ecl $$0) {
+      public boolean a(ecq $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

@@ -1,22 +1,25 @@
-public class geu implements etn {
-   private final ti a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public geu(ti $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface geu {
+   default void b() {
    }
 
-   @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      $$0.a(eqq.O().h, this.a, this.b, this.c, this.d);
+   default void a() {
    }
 
-   public ti a() {
-      return this.a;
+   default void a(fne $$0) {
+   }
+
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(fix $$0, ehl $$1) {
+   }
+
+   default void a(fix $$0, gw $$1, dfj $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cjf $$0) {
    }
 }

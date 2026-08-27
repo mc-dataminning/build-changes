@@ -1,39 +1,24 @@
-public class aec<T> {
-   private final int a;
-   private final aed<T> b;
+public class aec implements vd<abf> {
+   private final long a;
 
-   public aec(int $$0, aed<T> $$1) {
+   public aec(long $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public int a() {
+   public aec(so $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.b(this.a);
+   }
+
+   public void a(abf $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
       return this.a;
-   }
-
-   public aed<T> b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aec<?> $$1 = (aec<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
    }
 }

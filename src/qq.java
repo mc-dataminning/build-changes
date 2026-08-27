@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface qq {
+   void a(px var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface qq {
+   void b(px var1);
+
+   default void a() {
+   }
 }

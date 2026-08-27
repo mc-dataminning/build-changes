@@ -1,39 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.OptionalInt;
 
-public class etk {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class etk extends esn {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final ask<etk.a, etj> c;
+   private boolean d = false;
 
-   public static void a(esa $$0, fzz $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public etk(tl $$0, esd $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static void a(esa $$0, aeu $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
+   public etk(int $$0, int $$1, tl $$2, esd $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? etj.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : etj.a($$3, $$1x.a, $$1x.b));
+      this.i = false;
    }
 
-   public static void a(esa $$0, aeu $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
+   public etk i(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public etk j(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public etk k(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public etk b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   @Override
+   public int l() {
+      return this.c.a(this.e()).b();
+   }
+
+   @Override
+   public int i() {
+      return this.c.a(this.e()).a() * 9;
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      etj $$4 = this.c.a(this.e());
+      int $$5 = this.r();
+      int $$6 = this.t();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.l() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   private static void a(esa $$0, aeu $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   private etk.a e() {
+      return new etk.a(this.m(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(tl a, int b, OptionalInt c) {
    }
 }

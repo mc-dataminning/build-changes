@@ -1,51 +1,68 @@
-public interface cme<C extends bgm> {
-   boolean a(C var1, cpq var2);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   cja a(C var1, hu var2);
+public class cme extends cmb {
+   private static final cmg a = cmg.a(cji.tB);
 
-   boolean a(int var1, int var2);
+   public cme(cly $$0) {
+      super($$0);
+   }
 
-   cja a(hu var1);
+   public boolean a(cez $$0, cpv $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
 
-   default hp<cja> a(C $$0) {
-      hp<cja> $$1 = hp.a($$0.b(), cja.b);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof chu) {
+               $$2 = true;
+            } else {
+               if (!a.a($$5)) {
+                  return false;
+               }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         civ $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new cja($$3.s()));
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
+            }
          }
       }
 
-      return $$1;
+      return $$3 && $$2;
    }
 
-   default hp<cmb> a() {
-      return hp.a();
+   public cjf a(cez $$0, hu $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      cjf $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         cja $$6 = $$5.d();
+         if ($$6 instanceof chu) {
+            $$2.add(((chu)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return cjf.b;
+      }
    }
 
-   default boolean ah_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cja g() {
-      return new cja(csr.cA);
-   }
-
-   cmh<?> ai_();
-
-   cmi<?> e();
-
-   default boolean i() {
-      hp<cmb> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cmm<?> an_() {
+      return cmm.i;
    }
 }

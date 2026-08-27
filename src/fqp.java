@@ -1,30 +1,23 @@
-public class fqp implements fpz<dec> {
-   private final fta a;
+public class fqp implements fqe<ddw> {
+   private final fem a;
 
-   public fqp(fqa.a $$0) {
-      this.a = $$0.c();
+   public fqp(fqf.a $$0) {
+      this.a = new fem($$0.a(fib.m));
    }
 
-   public void a(dec $$0, float $$1, elk $$2, fnz $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      cos $$6 = $$0.d();
-      bil $$7 = $$6.a($$0.k(), $$0.k().y_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.df(), $$7.dg());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
-         }
-
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)ars.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
+   public void a(ddw $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
+      dfj $$6 = $$0.q();
+      if ($$6.c(cxd.c)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(cxd.a).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         elt $$8 = fqn.a.a($$3, fom::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
       }
-
-      $$2.b();
    }
 }

@@ -1,96 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eep extends edx {
-   private static final Codec<List<eep.b>> b = arb.a(eep.b.a.listOf(), (Function<List<eep.b>, DataResult<List<eep.b>>>)($$0 -> {
-      Set<hg<bhw>> $$1 = new ObjectOpenHashSet();
-
-      for (eep.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   }));
+public class eep extends eec {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<eep> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(arb.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, eep::new)
+      $$0 -> a($$0)
+            .and($$0.group(egl.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eep::new)
    );
-   private final List<eep.b> c;
+   private final egk c;
+   private final boolean d;
 
-   eep(List<efk> $$0, List<eep.b> $$1) {
+   private eep(List<efp> $$0, egk $$1, boolean $$2) {
       super($$0);
       this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public edz b() {
-      return eea.n;
+   public eee b() {
+      return eef.j;
    }
 
    @Override
-   public Set<eet<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<eey<?>> a() {
+      return this.c.a();
    }
 
    @Override
-   public cja a(cja $$0, ecl $$1) {
-      if ($$0.a(cjd.va) && !this.c.isEmpty()) {
-         eep.b $$2 = ac.a(this.c, $$1.b());
-         bhw $$3 = $$2.a().a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a()) {
-            $$4 *= 20;
-         }
-
-         ckk.b($$0, List.of(new dat.a($$3, $$4)));
-         return $$0;
+   public cjf a(cjf $$0, ecq $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - arx.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(arx.d($$4 * (float)$$2));
       } else {
-         return $$0;
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
+
+      return $$0;
    }
 
-   public static eep.a c() {
-      return new eep.a();
+   public static eec.a<?> a(egk $$0) {
+      return a($$1 -> new eep($$1, $$0, false));
    }
 
-   public static class a extends edx.a<eep.a> {
-      private final Builder<eep.b> a = ImmutableList.builder();
-
-      protected eep.a a() {
-         return this;
-      }
-
-      public eep.a a(bhw $$0, egf $$1) {
-         this.a.add(new eep.b($$0.j(), $$1));
-         return this;
-      }
-
-      @Override
-      public edy b() {
-         return new eep(this.g(), this.a.build());
-      }
-   }
-
-   static record b(hg<bhw> b, egf c) {
-      public static final Codec<eep.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jd.e.r().fieldOf("type").forGetter(eep.b::a), egg.a.fieldOf("duration").forGetter(eep.b::b)).apply($$0, eep.b::new)
-      );
-
-      public hg<bhw> a() {
-         return this.b;
-      }
-
-      public egf b() {
-         return this.c;
-      }
+   public static eec.a<?> a(egk $$0, boolean $$1) {
+      return a($$2 -> new eep($$2, $$0, $$1));
    }
 }

@@ -1,48 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dxv extends dyj {
-   public static final Codec<dxv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               hc.a.e.fieldOf("axis").orElse(hc.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dxv::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final hc.a g;
+public class dxv extends dvi {
+   public static final Codec<dxv> d = a(dxv::new);
 
-   public dxv(float $$0, float $$1, int $$2, int $$3, hc.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public dxv(dvi.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(gw $$0, gw $$1, gw $$2, arx $$3) {
-      hc $$4 = hc.a(hc.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= ars.b(this.b, this.d, ars.g((float)$$8, (float)this.e, (float)this.f));
+   public Optional<dvi.b> a(dvi.a $$0) {
+      return a($$0, dks.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(dwa $$0, dvi.a $$1) {
+      $$0.a(new dxu($$1.f(), $$1.h().d(), $$1.h().e()));
    }
 
    @Override
-   protected dyk<?> a() {
-      return dyk.c;
+   public dvr<?> e() {
+      return dvr.o;
    }
 }

@@ -1,60 +1,32 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class bse {
-   private static final bse a = new bse();
-   private final List<bjb> b;
-   private final Predicate<bjb> c;
+public enum bse implements asp {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
 
-   private bse() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<bse> n = asp.a(bse::values);
+
+   private bse(String $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   public bse(bjb $$0, List<bjb> $$1) {
-      this.b = $$1;
-      Object2BooleanOpenHashMap<bjb> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bjb> $$3 = $$1x -> btg.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
-   }
-
-   public static bse a() {
-      return a;
-   }
-
-   public Optional<bjb> a(Predicate<bjb> $$0) {
-      for (bjb $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public Iterable<bjb> b(Predicate<bjb> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bjb> c(Predicate<bjb> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bjb $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bjb> $$0) {
-      for (bjb $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public String c() {
+      return this.i;
    }
 }

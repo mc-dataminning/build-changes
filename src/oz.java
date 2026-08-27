@@ -1,65 +1,8 @@
-public class oz {
-   public static final aet<duh> a = pe.a("monster_room");
-   public static final aet<duh> b = pe.a("monster_room_deep");
-   public static final aet<duh> c = pe.a("fossil_upper");
-   public static final aet<duh> d = pe.a("fossil_lower");
-   public static final aet<duh> e = pe.a("dripstone_cluster");
-   public static final aet<duh> f = pe.a("large_dripstone");
-   public static final aet<duh> g = pe.a("pointed_dripstone");
-   public static final aet<duh> h = pe.a("underwater_magma");
-   public static final aet<duh> i = pe.a("glow_lichen");
-   public static final aet<duh> j = pe.a("rooted_azalea_tree");
-   public static final aet<duh> k = pe.a("cave_vines");
-   public static final aet<duh> l = pe.a("lush_caves_vegetation");
-   public static final aet<duh> m = pe.a("lush_caves_clay");
-   public static final aet<duh> n = pe.a("lush_caves_ceiling_vegetation");
-   public static final aet<duh> o = pe.a("spore_blossom");
-   public static final aet<duh> p = pe.a("classic_vines_cave_feature");
-   public static final aet<duh> q = pe.a("amethyst_geode");
-   public static final aet<duh> r = pe.a("sculk_patch_deep_dark");
-   public static final aet<duh> s = pe.a("sculk_patch_ancient_city");
-   public static final aet<duh> t = pe.a("sculk_vein");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static void a(np<duh> $$0) {
-      hh<dne<?, ?>> $$1 = $$0.a(je.as);
-      hg<dne<?, ?>> $$2 = $$1.b(on.a);
-      hg<dne<?, ?>> $$3 = $$1.b(on.b);
-      hg<dne<?, ?>> $$4 = $$1.b(on.c);
-      hg<dne<?, ?>> $$5 = $$1.b(on.d);
-      hg<dne<?, ?>> $$6 = $$1.b(on.e);
-      hg<dne<?, ?>> $$7 = $$1.b(on.f);
-      hg<dne<?, ?>> $$8 = $$1.b(on.g);
-      hg<dne<?, ?>> $$9 = $$1.b(on.h);
-      hg<dne<?, ?>> $$10 = $$1.b(on.i);
-      hg<dne<?, ?>> $$11 = $$1.b(on.j);
-      hg<dne<?, ?>> $$12 = $$1.b(on.m);
-      hg<dne<?, ?>> $$13 = $$1.b(on.r);
-      hg<dne<?, ?>> $$14 = $$1.b(on.s);
-      hg<dne<?, ?>> $$15 = $$1.b(on.t);
-      hg<dne<?, ?>> $$16 = $$1.b(ov.c);
-      hg<dne<?, ?>> $$17 = $$1.b(on.u);
-      hg<dne<?, ?>> $$18 = $$1.b(on.v);
-      hg<dne<?, ?>> $$19 = $$1.b(on.w);
-      hg<dne<?, ?>> $$20 = $$1.b(on.x);
-      pe.a($$0, a, $$2, dua.a(10), due.a(), duc.a(dlh.a(0), dlh.b()), dtv.a());
-      pe.a($$0, b, $$2, dua.a(4), due.a(), duc.a(dlh.b(6), dlh.a(-1)), dtv.a());
-      pe.a($$0, c, $$3, dun.a(64), due.a(), duc.a(dlh.a(0), dlh.b()), dtv.a());
-      pe.a($$0, d, $$4, dun.a(64), due.a(), duc.a(dlh.a(), dlh.a(-8)), dtv.a());
-      pe.a($$0, e, $$5, dua.a(bge.a(48, 96)), due.a(), pe.i, dtv.a());
-      pe.a($$0, f, $$6, dua.a(bge.a(10, 48)), due.a(), pe.i, dtv.a());
-      pe.a($$0, g, $$7, dua.a(bge.a(192, 256)), due.a(), pe.i, dua.a(bge.a(1, 5)), dum.a(bft.a(0.0F, 3.0F, -10, 10), bft.a(0.0F, 0.6F, -2, 2)), dtv.a());
-      pe.a($$0, h, $$8, dua.a(bge.a(44, 52)), due.a(), pe.i, dup.a(dkn.a.c, Integer.MIN_VALUE, -2), dtv.a());
-      pe.a($$0, i, $$9, dua.a(bge.a(104, 157)), pe.i, due.a(), dup.a(dkn.a.c, Integer.MIN_VALUE, -13), dtv.a());
-      pe.a($$0, j, $$10, dua.a(bge.a(1, 2)), due.a(), pe.i, dub.a(hc.b, dlu.c(), dlu.c, 12), dum.a(bfv.a(-1)), dtv.a());
-      pe.a($$0, k, $$11, dua.a(188), due.a(), pe.i, dub.a(hc.b, dlu.a(hc.a), dlu.c, 12), dum.a(bfv.a(-1)), dtv.a());
-      pe.a($$0, l, $$12, dua.a(125), due.a(), pe.i, dub.a(hc.a, dlu.c(), dlu.c, 12), dum.a(bfv.a(1)), dtv.a());
-      pe.a($$0, m, $$13, dua.a(62), due.a(), pe.i, dub.a(hc.a, dlu.c(), dlu.c, 12), dum.a(bfv.a(1)), dtv.a());
-      pe.a($$0, n, $$14, dua.a(125), due.a(), pe.i, dub.a(hc.b, dlu.c(), dlu.c, 12), dum.a(bfv.a(-1)), dtv.a());
-      pe.a($$0, o, $$15, dua.a(25), due.a(), pe.i, dub.a(hc.b, dlu.c(), dlu.c, 12), dum.a(bfv.a(-1)), dtv.a());
-      pe.a($$0, p, $$16, dua.a(256), due.a(), pe.i, dtv.a());
-      pe.a($$0, q, $$17, dun.a(24), due.a(), duc.a(dlh.b(6), dlh.a(30)), dtv.a());
-      pe.a($$0, r, $$18, dua.a(bfv.a(256)), due.a(), pe.i, dtv.a());
-      pe.a($$0, s, $$19);
-      pe.a($$0, t, $$20, dua.a(bge.a(204, 250)), due.a(), pe.i, dtv.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface oz {
 }

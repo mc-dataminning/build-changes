@@ -1,147 +1,45 @@
-public class ffm<T extends byl> extends ffh<T> implements fdz, ffg {
-   private final fhx a;
-   private final fhx b;
-   private final fhx f;
-   private final fhx g;
-   private final fhx h;
-   private final fhx i;
-   private final fhx j;
-   private final fhx k;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public ffm(fhx $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = this.b.b("hat");
-      this.f.k = false;
-      this.g = $$0.b("arms");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_leg");
-      this.k = $$0.b("left_arm");
-      this.j = $$0.b("right_arm");
+public abstract class ffm<E extends biq> extends ffd<E> {
+   private static final Vector3f a = new Vector3f();
+
+   public ffm() {
+      this(fom::e);
    }
 
-   public static fid b() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a("head", fic.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fhz.a(0.0F, 0.0F, 0.0F));
-      $$2.a("hat", fic.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 12.0F, 8.0F, new fib(0.45F)), fhz.a);
-      $$2.a("nose", fic.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fhz.a(0.0F, -2.0F, 0.0F));
-      $$1.a(
-         "body",
-         fic.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fib(0.5F)),
-         fhz.a(0.0F, 0.0F, 0.0F)
-      );
-      fig $$3 = $$1.a(
-         "arms",
-         fic.c().a(44, 22).a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F).a(40, 38).a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
-         fhz.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
-      );
-      $$3.a("left_shoulder", fic.c().a(44, 22).a().a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F), fhz.a);
-      $$1.a("right_leg", fic.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fic.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(2.0F, 12.0F, 0.0F));
-      $$1.a("right_arm", fic.c().a(40, 46).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fic.c().a(40, 46).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(5.0F, 2.0F, 0.0F));
-      return fid.a($$0, 64, 64);
+   public ffm(Function<aex, fom> $$0) {
+      super($$0);
    }
 
    @Override
-   public fhx a() {
-      return this.a;
+   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      if (this.d) {
-         this.j.e = (float) (-Math.PI / 5);
-         this.j.f = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = (float) (-Math.PI / 5);
-         this.k.f = 0.0F;
-         this.k.g = 0.0F;
-         this.i.e = -1.4137167F;
-         this.i.f = (float) (Math.PI / 10);
-         this.i.g = 0.07853982F;
-         this.h.e = -1.4137167F;
-         this.h.f = (float) (-Math.PI / 10);
-         this.h.g = -0.07853982F;
-      } else {
-         this.j.e = ars.b($$1 * 0.6662F + (float) Math.PI) * 2.0F * $$2 * 0.5F;
-         this.j.f = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = ars.b($$1 * 0.6662F) * 2.0F * $$2 * 0.5F;
-         this.k.f = 0.0F;
-         this.k.g = 0.0F;
-         this.i.e = ars.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
-         this.i.f = 0.0F;
-         this.i.g = 0.0F;
-         this.h.e = ars.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
-         this.h.f = 0.0F;
-         this.h.g = 0.0F;
-      }
+   public abstract fic a();
 
-      byl.a $$6 = $$0.p();
-      if ($$6 == byl.a.b) {
-         if ($$0.eR().b()) {
-            fdy.a(this.k, this.j, true, this.c, $$3);
-         } else {
-            fdy.a(this.j, this.k, $$0, this.c, $$3);
-         }
-      } else if ($$6 == byl.a.c) {
-         this.j.d = 0.0F;
-         this.j.b = -5.0F;
-         this.k.d = 0.0F;
-         this.k.b = 5.0F;
-         this.j.e = ars.b($$3 * 0.6662F) * 0.25F;
-         this.k.e = ars.b($$3 * 0.6662F) * 0.25F;
-         this.j.g = (float) (Math.PI * 3.0 / 4.0);
-         this.k.g = (float) (-Math.PI * 3.0 / 4.0);
-         this.j.f = 0.0F;
-         this.k.f = 0.0F;
-      } else if ($$6 == byl.a.d) {
-         this.j.f = -0.1F + this.b.f;
-         this.j.e = (float) (-Math.PI / 2) + this.b.e;
-         this.k.e = -0.9424779F + this.b.e;
-         this.k.f = this.b.f - 0.4F;
-         this.k.g = (float) (Math.PI / 2);
-      } else if ($$6 == byl.a.e) {
-         fdy.a(this.j, this.k, this.b, true);
-      } else if ($$6 == byl.a.f) {
-         fdy.a(this.j, this.k, $$0, true);
-      } else if ($$6 == byl.a.g) {
-         this.j.d = 0.0F;
-         this.j.b = -5.0F;
-         this.j.e = ars.b($$3 * 0.6662F) * 0.05F;
-         this.j.g = 2.670354F;
-         this.j.f = 0.0F;
-         this.k.d = 0.0F;
-         this.k.b = 5.0F;
-         this.k.e = ars.b($$3 * 0.6662F) * 0.05F;
-         this.k.g = (float) (-Math.PI * 3.0 / 4.0);
-         this.k.f = 0.0F;
-      }
-
-      boolean $$7 = $$6 == byl.a.a;
-      this.g.k = $$7;
-      this.k.k = !$$7;
-      this.j.k = !$$7;
+   public Optional<fic> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
    }
 
-   private fhx a(biv $$0) {
-      return $$0 == biv.a ? this.k : this.j;
+   protected void a(bim $$0, erm $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
    }
 
-   public fhx c() {
-      return this.f;
+   protected void a(erm $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      ero.a(this, $$0, $$5, $$6, a);
    }
 
-   @Override
-   public fhx d() {
-      return this.b;
+   protected void a(bim $$0, erm $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> ero.a(this, $$1, $$1x.b(), 1.0F, a));
    }
 
-   @Override
-   public void a(biv $$0, elk $$1) {
-      this.a($$0).a($$1);
+   protected void a(erm $$0) {
+      ero.a(this, $$0, 0L, 1.0F, a);
    }
 }

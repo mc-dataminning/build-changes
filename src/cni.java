@@ -1,25 +1,20 @@
-public class cni extends cnj {
-   protected cni(cnj.a $$0, biq... $$1) {
-      super($$0, cnk.g, $$1);
+public class cni extends cno {
+   public cni(cno.a $$0, biv... $$1) {
+      super($$0, cnp.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 25;
    }
 
    @Override
    public int a() {
-      return 5;
-   }
-
-   @Override
-   public boolean a(cja $$0) {
-      return $$0.a(cjd.rg) ? true : super.a($$0);
+      return 2;
    }
 }

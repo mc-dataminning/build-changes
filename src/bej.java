@@ -1,9 +1,7 @@
-import java.time.Duration;
-import java.time.Instant;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bej(Instant a, Duration b) {
+public record bej(double a, double b, double c) {
    public static bej a(RecordedEvent $$0) {
-      return new bej($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+      return new bej((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

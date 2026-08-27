@@ -1,30 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum dty implements ask {
-   a(hc.b, 1, "ceiling"),
-   b(hc.a, -1, "floor");
-
-   public static final Codec<dty> c = ask.a(dty::values);
-   private final hc d;
-   private final int e;
-   private final String f;
-
-   private dty(hc $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public hc a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dty {
 }

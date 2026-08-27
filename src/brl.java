@@ -1,32 +1,30 @@
-public class brl extends bqg {
-   private final bzw b;
-   private int c;
+public class brl extends bqb {
+   private final bjp a;
 
-   public brl(bzw $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public brl(bjp $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.aB() && !this.a.dL().b_(this.a.dl()).a(apy.a);
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
-   }
+      gw $$0 = null;
 
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
+      for (gw $$2 : gw.b(
+         arx.a(this.a.dq() - 2.0), arx.a(this.a.ds() - 2.0), arx.a(this.a.dw() - 2.0), arx.a(this.a.dq() + 2.0), this.a.dr(), arx.a(this.a.dw() + 2.0)
+      )) {
+         if (this.a.dL().b_($$2).a(apy.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if ($$0 != null) {
+         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

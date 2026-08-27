@@ -1,117 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class flt extends fmu {
+   flt(fix $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, arx.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, arx.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, arx.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
+   }
 
-public interface flt {
-   flt a = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyy.e);
-         $$0.a(elp.b.h, eli.l);
-      }
+   @Override
+   public fly b() {
+      return fly.b;
+   }
 
-      @Override
-      public void a(elm $$0) {
-         $$0.b();
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * arx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   flt b = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(fns::u);
-         RenderSystem.setShaderTexture(0, fyy.f);
-         $$0.a(elp.b.h, eli.l);
-      }
+   public static class a implements flx<ja> {
+      private final fmp a;
 
-      @Override
-      public void a(elm $$0) {
-         $$0.b();
+      public a(fmp $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flt $$8 = new flt($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
-   };
-   flt c = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyy.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(elp.b.h, eli.l);
-      }
-
-      @Override
-      public void a(elm $$0) {
-         $$0.b();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   flt d = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyy.f);
-         $$0.a(elp.b.h, eli.l);
-      }
-
-      @Override
-      public void a(elm $$0) {
-         $$0.b();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   flt e = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(elm $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   flt f = new flt() {
-      @Override
-      public void a(elf $$0, fza $$1) {
-      }
-
-      @Override
-      public void a(elm $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(elf var1, fza var2);
-
-   void a(elm var1);
+   }
 }

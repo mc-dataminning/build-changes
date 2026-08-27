@@ -1,26 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class dta<P extends dsz> {
-   public static final dta<dsy> a = a("straight_trunk_placer", dsy.a);
-   public static final dta<dsv> b = a("forking_trunk_placer", dsv.a);
-   public static final dta<dsw> c = a("giant_trunk_placer", dsw.a);
-   public static final dta<dsx> d = a("mega_jungle_trunk_placer", dsx.b);
-   public static final dta<dst> e = a("dark_oak_trunk_placer", dst.a);
-   public static final dta<dsu> f = a("fancy_trunk_placer", dsu.a);
-   public static final dta<dsr> g = a("bending_trunk_placer", dsr.a);
-   public static final dta<dtb> h = a("upwards_branching_trunk_placer", dtb.a);
-   public static final dta<dss> i = a("cherry_trunk_placer", dss.a);
-   private final Codec<P> j;
+public class dta extends dte {
+   public static final Codec<dta> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dta::new));
 
-   private static <P extends dsz> dta<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.Y, $$0, new dta<>($$1));
+   public dta(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private dta(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dtf<?> a() {
+      return dtf.b;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<drm.a> $$6 = Lists.newArrayList();
+      hc $$7 = hc.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      gw.a $$10 = new gw.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new drm.a(new gw($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      hc $$16 = hc.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new drm.a(new gw($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

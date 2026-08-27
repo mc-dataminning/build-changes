@@ -1,8 +1,40 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class acx implements vd<abd> {
+   private final ehj a;
+   private final bgx b;
+   private final int c;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface acx {
+   public acx(bgx $$0, ehj $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
+   }
+
+   public acx(so $$0) {
+      this.b = $$0.b(bgx.class);
+      this.a = $$0.x();
+      this.c = $$0.m();
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.b);
+      $$0.a(this.a);
+      $$0.c(this.c);
+   }
+
+   public void a(abd $$0) {
+      $$0.a(this);
+   }
+
+   public bgx a() {
+      return this.b;
+   }
+
+   public ehj d() {
+      return this.a;
+   }
+
+   public int e() {
+      return this.c;
+   }
 }

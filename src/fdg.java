@@ -1,36 +1,59 @@
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fdg implements fdk {
-   private final GameProfile a;
-   private final Supplier<fzz> b;
-   private final ti c;
-
-   public fdg(GameProfile $$0) {
-      this.a = $$0;
-      this.b = eqq.O().al().a($$0);
-      this.c = ti.b($$0.getName());
+public record fdg(dlq a, ht<dit> b, dln c, hn<afg> d, afh e, cqo f) {
+   public fdg(dlo $$0, hn<afg> $$1, afh $$2, cqo $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public void a(fdi $$0) {
-      eqq.O().J().b(new act(this.a.getId()));
+   public fdg(dlq $$0, dln $$1, hn<afg> $$2, afh $$3, cqo $$4) {
+      this($$0, $$2.a(afg.c).d(je.aI), $$1, $$2.a(afg.c), $$3, $$4);
    }
 
-   @Override
-   public ti aE_() {
+   public fdg a(dlq $$0, dln $$1) {
+      return new fdg($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fdg a(fdg.b $$0) {
+      return new fdg($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fdg a(fdg.a $$0) {
+      return new fdg(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public hu.b a() {
+      return this.d.a();
+   }
+
+   public dlq b() {
+      return this.a;
+   }
+
+   public ht<dit> c() {
+      return this.b;
+   }
+
+   public dln d() {
       return this.c;
    }
 
-   @Override
-   public void a(esa $$0, float $$1, int $$2) {
-      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
-      etk.a($$0, this.b.get(), 2, 2, 12);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public hn<afg> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean aF_() {
-      return true;
+   public afh f() {
+      return this.e;
+   }
+
+   public cqo g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<hu.b, dln, dln> {
+   }
+
+   public interface b extends UnaryOperator<dlq> {
    }
 }

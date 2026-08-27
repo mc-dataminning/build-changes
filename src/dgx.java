@@ -1,5 +1,8 @@
-public interface dgx {
-   dfe a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dfe var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dgx {
 }

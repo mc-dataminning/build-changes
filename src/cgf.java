@@ -1,17 +1,9 @@
-public class cgf implements cgg {
-   private final hp<cja> a;
-   private final int b;
-
-   public cgf(hp<cja> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cgf extends cem {
+   public cgf(int $$0, cbt $$1) {
+      super(cfq.v, cmn.d, cfw.d, $$0, $$1);
    }
 
-   public hp<cja> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
+   public cgf(int $$0, cbt $$1, bgr $$2, cev $$3) {
+      super(cfq.v, cmn.d, cfw.d, $$0, $$1, $$2, $$3);
    }
 }

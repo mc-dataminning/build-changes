@@ -1,36 +1,77 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public record rx(int a, Map<String, rp<?>> b, Map<String, rx> c) {
-   private rx(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+public class rx extends ry {
+   private int a;
+   private final Set<rs<?>> b;
+   private final Deque<sa> c = new ArrayDeque<>();
+
+   public rx(rz... $$0) {
+      this.a = $$0.length;
+      Builder<rs<?>> $$1 = ImmutableSet.builder();
+      sa $$2 = sa.a();
+
+      for (rz $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
+      }
+
+      this.c.push($$2);
+      $$1.add(qx.b);
+      this.b = $$1.build();
    }
 
-   public static rx a() {
-      return new rx(1);
+   @Override
+   public rn.b b(rs<?> $$0) {
+      return $$0 != qx.b ? rn.b.c : super.b($$0);
    }
 
-   public void a(rw $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new rx(this.a + 1)).a($$0);
+   @Override
+   public rn.a a(rs<?> $$0) {
+      sa $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return rn.a.d;
       } else {
-         this.b.put($$0.c(), $$0.b());
+         return !this.b.contains($$0) ? rn.a.b : super.a($$0);
       }
    }
 
-   public boolean a(rp<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
+   @Override
+   public rn.a a(rs<?> $$0, String $$1) {
+      sa $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == qx.b) {
+            sa $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return rn.a.b;
+      }
    }
 
-   public int b() {
+   @Override
+   public rn.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
+      }
+
+      return super.b();
+   }
+
+   public int c() {
       return this.a;
-   }
-
-   public Map<String, rp<?>> c() {
-      return this.b;
-   }
-
-   public Map<String, rx> d() {
-      return this.c;
    }
 }

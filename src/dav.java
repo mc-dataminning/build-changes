@@ -1,20 +1,23 @@
-public class dav extends cuu implements css {
-   public dav(dfd.d $$0) {
+public class dav extends csv {
+   private static final double a = 5.0;
+   private static final eig b = csv.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+
+   protected dav(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cpt $$0, gw $$1, dfe $$2) {
-      return true;
+   public cza b_(dfj $$0) {
+      return cza.a;
    }
 
    @Override
-   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
-      return true;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return b;
    }
 
    @Override
-   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
-      a($$0, $$2, new cja(this));
+   public float b(dfj $$0, cpb $$1, gw $$2) {
+      return 1.0F;
    }
 }

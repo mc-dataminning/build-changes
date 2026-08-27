@@ -15,14 +15,14 @@ public class jy implements jk {
    public CompletableFuture<?> a(ji $$0) {
       JsonObject $$1 = new JsonObject();
 
-      for (csq $$2 : jd.f) {
-         aeu $$3 = jd.f.b($$2);
+      for (csv $$2 : jd.f) {
+         aex $$3 = jd.f.b($$2);
          JsonObject $$4 = new JsonObject();
-         dff<csq, dfe> $$5 = $$2.l();
+         dfk<csv, dfj> $$5 = $$2.l();
          if (!$$5.d().isEmpty()) {
             JsonObject $$6 = new JsonObject();
 
-            for (dgh<?> $$7 : $$5.d()) {
+            for (dgm<?> $$7 : $$5.d()) {
                JsonArray $$8 = new JsonArray();
 
                for (Comparable<?> $$9 : $$7.a()) {
@@ -39,11 +39,11 @@ public class jy implements jk {
          UnmodifiableIterator var17 = $$5.a().iterator();
 
          while (var17.hasNext()) {
-            dfe $$11 = (dfe)var17.next();
+            dfj $$11 = (dfj)var17.next();
             JsonObject $$12 = new JsonObject();
             JsonObject $$13 = new JsonObject();
 
-            for (dgh<?> $$14 : $$5.d()) {
+            for (dgm<?> $$14 : $$5.d()) {
                $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
             }
 
@@ -51,7 +51,7 @@ public class jy implements jk {
                $$12.add("properties", $$13);
             }
 
-            $$12.addProperty("id", csq.i($$11));
+            $$12.addProperty("id", csv.i($$11));
             if ($$11 == $$2.n()) {
                $$12.addProperty("default", true);
             }

@@ -1,65 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqm extends bpw {
-   private final bjd a;
-   private bjb b;
-   private int c;
+public class bqm extends bqy {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bqm(bjd $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bpw.a.a, bpw.a.b));
+   public bqm(bjp $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      bjb $$0 = this.a.j();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      akr $$0 = (akr)this.b.dL();
+      gw $$1 = this.b.dl();
+      return $$0.b($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      if (!this.b.bv()) {
-         return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.H().l() || this.a();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-      this.a.H().n();
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.D().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
-      double $$1 = this.a.i(this.b.dp(), this.b.dr(), this.b.dv());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.H().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
-         }
-      }
+   protected ehn h() {
+      akr $$0 = (akr)this.b.dL();
+      gw $$1 = this.b.dl();
+      hz $$2 = hz.a($$1);
+      hz $$3 = bkz.a($$0, $$2, 2);
+      return $$3 != $$2 ? btw.a(this.b, 10, 7, ehn.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

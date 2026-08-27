@@ -7,6 +7,7 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
 
 public class axg extends DataFix {
@@ -15,32 +16,20 @@ public class axg extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ays.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(ays.z.typeName(), baa.a()));
+      Type<?> $$0 = this.getInputSchema().getType(ayx.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(ayx.z.typeName(), baf.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWaterPotionFix",
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            if ($$3.isPresent()) {
-               String $$4 = (String)$$3.get().getSecond();
-               if ("minecraft:potion".equals($$4)
-                  || "minecraft:splash_potion".equals($$4)
-                  || "minecraft:lingering_potion".equals($$4)
-                  || "minecraft:tipped_arrow".equals($$4)) {
-                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-                  if ($$6.get("Potion").asString().result().isEmpty()) {
-                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
-                  }
-
-                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-               }
-            }
-
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
             return $$2x;
          }
-      );
+      });
    }
 }

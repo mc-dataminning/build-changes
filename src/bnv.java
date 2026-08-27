@@ -1,33 +1,53 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnv {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static bky<bjp> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return boj.a(
+         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.o), $$3.c(bsh.m), $$3.a(bsh.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dl()).a(apy.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        gw $$8 = null;
+                        gw $$9 = null;
+                        gw $$10 = $$6.dl();
 
-   public static bmc<bjk> a(float $$0) {
-      return a($$0, 10, 7);
-   }
+                        for (gw $$12 : gw.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dfj $$13 = $$6.dL().a_($$12.c());
+                              dfj $$14 = $$6.dL().a_($$12);
+                              if ($$14.a(csw.G)) {
+                                 if ($$13.i()) {
+                                    $$8 = $$12.i();
+                                    break;
+                                 }
 
-   public static bmc<bjk> a(float $$0, int $$1, int $$2) {
-      return boe.a((Function<boe.b<bjk>, ? extends App<boe.c<bjk>, boh<bjk>>>)($$3 -> $$3.group($$3.c(bsc.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               gw $$7 = $$5.dk();
-               ehi $$8;
-               if ($$4.b($$7)) {
-                  $$8 = btu.a($$5, $$1, $$2);
-               } else {
-                  hz $$9 = hz.a($$7);
-                  hz $$10 = bku.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = btr.a($$5, $$1, $$2, ehi.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = btu.a($$5, $$1, $$2);
-                  }
-               }
+                                 if ($$9 == null && !$$12.a($$6.dj(), 1.5)) {
+                                    $$9 = $$12.i();
+                                 }
+                              }
+                           }
+                        }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bsf($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
+
+                        if ($$8 != null) {
+                           $$5.a(new bla($$8));
+                           $$4.a(new bsk(new bla($$8), $$1, 0));
+                        }
+
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

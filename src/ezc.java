@@ -1,126 +1,184 @@
-public abstract class ezc extends eyf {
-   private static final ti m = ti.c("advMode.setCommand");
-   private static final ti n = ti.c("advMode.command");
-   private static final ti o = ti.c("advMode.previousOutput");
-   protected esu a;
-   protected esu b;
-   protected esl c;
-   protected esl k;
-   protected ess<Boolean> l;
-   eso p;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-   public ezc() {
-      super(eqi.a);
-   }
+public class ezc extends esw<ezc.b> {
+   final ezd a;
+   int m;
 
-   @Override
-   public void c() {
-      if (!this.l().j()) {
-         this.au_();
-      }
-   }
+   public ezc(ezd $$0, eqv $$1) {
+      super($$1, $$0.g + 45, $$0.h, 20, $$0.h - 32, 20);
+      this.a = $$0;
+      eqt[] $$2 = (eqt[])ArrayUtils.clone($$1.m.X);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
 
-   abstract cor l();
-
-   abstract int C();
-
-   @Override
-   protected void aD_() {
-      this.c = this.d(esl.a(th.d, $$0x -> this.D()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(esl.a(th.e, $$0x -> this.au_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().o();
-      this.l = this.d(ess.a(ti.b("O"), ti.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.C(), 20, 20, ti.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         cor $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new esu(this.i, this.g / 2 - 150, 50, 300, 20, ti.c("advMode.command")) {
-         @Override
-         protected tv aA_() {
-            return super.aA_().b(ezc.this.p.c());
+      for (eqt $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new ezc.a(tl.c($$5)));
          }
-      };
-      this.a.l(32500);
-      this.a.b(this::a);
-      this.e(this.a);
-      this.b = new esu(this.i, this.g / 2 - 150, this.C(), 276, 20, ti.c("advMode.previousOutput"));
-      this.b.l(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.e(this.b);
-      this.c(this.a);
-      this.p = new eso(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.b();
-      this.c($$0);
-   }
 
-   @Override
-   public void a(eqq $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.b();
-   }
+         tl $$6 = tl.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.m) {
+            this.m = $$7;
+         }
 
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void D() {
-      cor $$0 = this.l();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
-      }
-
-      this.f.a(null);
-   }
-
-   protected abstract void a(cor var1);
-
-   private void a(String $$0) {
-      this.p.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.D();
-         return true;
+         this.b(new ezc.c($$4, $$6));
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   public void d() {
+      eqt.d();
+      this.e();
+   }
+
+   public void e() {
+      this.i().forEach(ezc.b::d);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   protected int c() {
+      return super.c() + 15;
    }
 
    @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.C() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+   public int b() {
+      return super.b() + 32;
+   }
+
+   public class a extends ezc.b {
+      final tl b;
+      private final int c;
+
+      public a(tl $$1) {
+         this.b = $$1;
+         this.c = ezc.this.c.h.a(this.b);
       }
 
-      this.p.a($$0, $$1, $$2);
+      @Override
+      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(ezc.this.c.h, this.b, ezc.this.c.y.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, 16777215, false);
+      }
+
+      @Nullable
+      @Override
+      public esc a(ewo $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends euk> i() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends ewg> b() {
+         return ImmutableList.of(new ewg() {
+            @Override
+            public ewg.a q() {
+               return ewg.a.b;
+            }
+
+            @Override
+            public void b(ewi $$0) {
+               $$0.a(ewh.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void d() {
+      }
+   }
+
+   public abstract static class b extends esw.a<ezc.b> {
+      abstract void d();
+   }
+
+   public class c extends ezc.b {
+      private final eqt b;
+      private final tl c;
+      private final esq d;
+      private final esq e;
+      private boolean f = false;
+
+      c(eqt $$1, tl $$2) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = esq.a($$2, $$1x -> {
+            ezc.this.a.c = $$1;
+            ezc.this.d();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? tl.a("narrator.controls.unbound", $$2) : tl.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.e = esq.a(tl.c("controls.reset"), $$1x -> {
+            ezc.this.c.m.a($$1, $$1.i());
+            ezc.this.d();
+         }).a(0, 0, 50, 20).a($$1x -> tl.a("narrator.controls.reset", $$2)).a();
+         this.d();
+      }
+
+      @Override
+      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int var10003 = $$3 + 90 - ezc.this.m;
+         $$0.a(ezc.this.c.h, this.c, var10003, $$2 + $$5 / 2 - 9 / 2, 16777215, false);
+         this.e.f($$3 + 190);
+         this.e.g($$2);
+         this.e.a($$0, $$6, $$7, $$9);
+         this.d.f($$3 + 105);
+         this.d.g($$2);
+         if (this.f) {
+            int $$10 = 3;
+            int $$11 = this.d.r() - 6;
+            $$0.a($$11, $$2 + 2, $$11 + 3, $$2 + $$5 + 2, n.m.f() | 0xFF000000);
+         }
+
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends euk> i() {
+         return ImmutableList.of(this.d, this.e);
+      }
+
+      @Override
+      public List<? extends ewg> b() {
+         return ImmutableList.of(this.d, this.e);
+      }
+
+      @Override
+      protected void d() {
+         this.d.b(this.b.k());
+         this.e.i = !this.b.l();
+         this.f = false;
+         ty $$0 = tl.h();
+         if (!this.b.j()) {
+            for (eqt $$1 : ezc.this.c.m.X) {
+               if ($$1 != this.b && this.b.b($$1)) {
+                  if (this.f) {
+                     $$0.f(", ");
+                  }
+
+                  this.f = true;
+                  $$0.b(tl.c($$1.h()));
+               }
+            }
+         }
+
+         if (this.f) {
+            this.d.b(tl.b("[ ").b(this.d.m().e().a(n.p)).f(" ]").a(n.m));
+            this.d.a(eua.a(tl.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.d.a(null);
+         }
+
+         if (ezc.this.a.c == this.b) {
+            this.d.b(tl.b("> ").b(this.d.m().e().a(n.p, n.t)).f(" <").a(n.o));
+         }
+      }
    }
 }

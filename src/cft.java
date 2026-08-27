@@ -1,68 +1,57 @@
-import javax.annotation.Nullable;
+public class cft extends cgd {
+   private final cfr a;
+   private final cbu b;
+   private int c;
+   private final cos h;
 
-public class cft implements bgm, cfs {
-   private final hp<cja> c = hp.a(1, cja.b);
-   @Nullable
-   private cmf<?> d;
-
-   @Override
-   public int b() {
-      return 1;
+   public cft(cbu $$0, cos $$1, cfr $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean aa_() {
-      for (cja $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
-         }
+   public boolean a(cjf $$0) {
+      return false;
+   }
+
+   @Override
+   public cjf a(int $$0) {
+      if (this.f()) {
+         this.c = this.c + Math.min($$0, this.e().L());
       }
 
-      return true;
+      return super.a($$0);
    }
 
    @Override
-   public cja a(int $$0) {
-      return this.c.get(0);
+   protected void a(cjf $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public cja a(int $$0, int $$1) {
-      return bgn.a(this.c, 0);
+   protected void b_(cjf $$0) {
+      $$0.a(this.b.dL(), this.b, this.c);
+      this.c = 0;
    }
 
    @Override
-   public cja b(int $$0) {
-      return bgn.a(this.c, 0);
-   }
+   public void a(cbu $$0, cjf $$1) {
+      this.b_($$1);
+      cot $$2 = this.a.g();
+      if ($$2 != null) {
+         cjf $$3 = this.a.a(0);
+         cjf $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(apo.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
 
-   @Override
-   public void a(int $$0, cja $$1) {
-      this.c.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbp $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   @Override
-   public void a(@Nullable cmf<?> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cmf<?> d() {
-      return this.d;
+         this.h.t(this.h.t() + $$2.o());
+      }
    }
 }

@@ -1,201 +1,145 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class eaw {
-   private final List<eau> a;
-   @Nullable
-   private eaw.a b;
-   private int c;
-   private final gw d;
-   private final float e;
-   private final boolean f;
+   private eaz[] a = new eaz[128];
+   private int b;
 
-   public eaw(List<eau> $$0, gw $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
+   public eaz a(eaz $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            eaz[] $$1 = new eaz[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
    public void a() {
-      this.c++;
+      this.b = 0;
    }
 
-   public boolean b() {
-      return this.c <= 0;
+   public eaz b() {
+      return this.a[0];
    }
 
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public eau d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public eau a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, eau $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public ehi a(bil $$0, int $$1) {
-      eau $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
-      return new ehi($$3, $$4, $$5);
-   }
-
-   public gw d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public ehi a(bil $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public gw g() {
-      return this.a.get(this.c).a();
-   }
-
-   public eau h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public eau i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable eaw $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            eau $$2 = this.a.get($$1);
-            eau $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @ast
-   void a(eau[] $$0, eau[] $$1, Set<eba> $$2) {
-      this.b = new eaw.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public eaw.a k() {
-      return this.b;
-   }
-
-   public void a(sl $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static eaw b(sl $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      gw $$3 = $$0.e();
-      List<eau> $$4 = $$0.a(eau::b);
-      eaw.a $$5 = eaw.a.b($$0);
-      eaw $$6 = new eaw($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public gw l() {
-      return this.d;
-   }
-
-   public float m() {
-      return this.e;
-   }
-
-   static eau[] c(sl $$0) {
-      eau[] $$1 = new eau[$$0.m()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = eau.b($$0);
+   public eaz c() {
+      eaz $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
       }
 
-      return $$1;
-   }
-
-   static void a(sl $$0, eau[] $$1) {
-      $$0.c($$1.length);
-
-      for (eau $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public eaw n() {
-      eaw $$0 = new eaw(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
+      $$0.d = -1;
       return $$0;
    }
 
-   public static record a(eau[] a, eau[] b, Set<eba> c) {
-
-      public void a(sl $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         eaw.a($$0, this.a);
-         eaw.a($$0, this.b);
+   public void b(eaz $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
       }
 
-      public static eaw.a b(sl $$0) {
-         HashSet<eba> $$1 = $$0.a(HashSet::new, eba::c);
-         eau[] $$2 = eaw.c($$0);
-         eau[] $$3 = eaw.c($$0);
-         return new eaw.a($$2, $$3, $$1);
+      $$0.d = -1;
+   }
+
+   public void a(eaz $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
       }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eaz $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eaz $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      eaz $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         eaz $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eaz $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public eaz[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

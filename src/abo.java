@@ -1,32 +1,29 @@
-public class abo implements va<aaz> {
-   private final int a;
-   private final int b;
+public class abo implements vd<abd> {
+   private final abo.a a;
 
-   public abo(int $$0, int $$1) {
+   public abo(abo.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
-
-   public abo(sl $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+   public abo(so $$0) {
+      this.a = $$0.b(abo.a.class);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public int a() {
+   public void a(abd $$0) {
+      $$0.a(this);
+   }
+
+   public abo.a a() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public static enum a {
+      a,
+      b;
    }
 }

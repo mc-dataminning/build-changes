@@ -1,32 +1,48 @@
-public class xf implements va<ws> {
-   private final bgq a;
-   private final boolean b;
+public class xf implements vd<ww> {
+   private final gw a;
+   private final int b;
+   private final int c;
+   private final csv d;
 
-   public xf(bgq $$0, boolean $$1) {
+   public xf(gw $$0, csv $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.b = $$1;
+      this.d = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public xf(sl $$0) {
-      this.a = bgq.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+   public xf(so $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.a(jd.f);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.k(this.b);
+      $$0.k(this.c);
+      $$0.a(jd.f, this.d);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public gw a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public bgq d() {
-      return this.a;
+   public int e() {
+      return this.c;
+   }
+
+   public csv f() {
+      return this.d;
    }
 }

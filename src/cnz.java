@@ -1,24 +1,20 @@
-public class cnz extends cnj {
-   public cnz(cnj.a $$0, biq... $$1) {
-      super($$0, cnk.f, $$1);
+public class cnz extends cno {
+   public cnz(cno.a $$0, biv... $$1) {
+      super($$0, cnp.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + ($$0 - 1) * 9;
+      return 20;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return 50;
    }
 
    @Override
-   public int a() {
-      return 3;
-   }
-
-   public static float e(int $$0) {
-      return 1.0F - 1.0F / (float)($$0 + 1);
+   public boolean a(cno $$0) {
+      return super.a($$0) && $$0 != cns.K;
    }
 }

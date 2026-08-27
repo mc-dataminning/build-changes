@@ -1,64 +1,79 @@
-public class acp implements va<aaz> {
-   private final gw a;
-   private final aeu b;
-   private final aeu c;
-   private final aeu d;
+public class acp implements vd<abd> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final gw d;
    private final String e;
-   private final ddp.a f;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final ddf.a i;
 
-   public acp(gw $$0, aeu $$1, aeu $$2, aeu $$3, String $$4, ddp.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public acp(gw $$0, String $$1, ddf.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$2;
    }
 
-   public acp(sl $$0) {
-      this.a = $$0.e();
-      this.b = $$0.s();
-      this.c = $$0.s();
-      this.d = $$0.s();
+   public acp(so $$0) {
+      this.d = $$0.e();
       this.e = $$0.r();
-      this.f = ddp.a.a($$0.r()).orElse(ddp.a.b);
+      this.i = $$0.b(ddf.a.class);
+      int $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(so $$0) {
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f.c());
+      $$0.a(this.i);
+      int $$1 = 0;
+      if (this.f) {
+         $$1 |= 1;
+      }
+
+      if (this.g) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
    public gw a() {
-      return this.a;
-   }
-
-   public aeu d() {
-      return this.b;
-   }
-
-   public aeu e() {
-      return this.c;
-   }
-
-   public aeu f() {
       return this.d;
    }
 
-   public String g() {
+   public String d() {
       return this.e;
    }
 
-   public ddp.a h() {
+   public boolean e() {
       return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public ddf.a h() {
+      return this.i;
    }
 }

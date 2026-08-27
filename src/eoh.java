@@ -1,72 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class eoh extends gfb {
+   private static final tl a = tl.c("mco.configure.world.name");
+   private static final tl b = tl.c("mco.configure.world.description");
+   private static final int c = 10;
+   private static final int y = 210;
+   private final emw z;
+   private final ema A;
+   private final evz B = new evz(this);
+   private esz C;
+   private esz D;
 
-public class eoh extends gew {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gex b = new gex(Duration.ofSeconds(5L));
-   private epq c;
-   private final eyf y;
-   private volatile ti z = th.a;
-   private final evy A = evy.d();
-   @Nullable
-   private eta B;
-
-   public eoh(eyf $$0, epq $$1) {
-      super(eqi.a);
-      this.y = $$0;
-      this.c = $$1;
-      this.a($$1.a());
-      Thread $$2 = new Thread($$1, "Realms-long-running-task");
-      $$2.setUncaughtExceptionHandler(new enl(a));
-      $$2.start();
+   public eoh(emw $$0, ema $$1) {
+      super(tl.c("mco.selectServer.create"));
+      this.z = $$0;
+      this.A = $$1;
    }
 
    @Override
-   public void c() {
-      super.c();
-      b.a(this.f.aV(), this.B.m());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.e();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void aD_() {
-      this.A.c().b();
-      this.B = new eta(this.i, this.z);
-      this.A.a(this.B, $$0 -> $$0.e(30));
-      this.A.a(esl.a(th.e, $$0 -> this.e()).a());
-      this.A.a($$1 -> {
-         esj var10000 = this.d($$1);
+   public void aI_() {
+      this.B.a(new etw(this.e, this.i));
+      ewd $$0 = this.B.c(ewd.d()).a(10);
+      esq $$1 = esq.a(tl.c("mco.create.world"), $$0x -> this.C()).a();
+      $$1.i = false;
+      this.C = new esz(this.i, 210, 20, tl.c("mco.configure.world.name"));
+      this.C.b($$1x -> $$1.i = !ac.b($$1x));
+      this.D = new esz(this.i, 210, 20, tl.c("mco.configure.world.description"));
+      $$0.a(evv.a(this.i, this.C, a));
+      $$0.a(evv.a(this.i, this.D, b));
+      ewd $$2 = this.B.b(ewd.e().a(10));
+      $$2.a($$1);
+      $$2.a(esq.a(tk.e, $$0x -> this.az_()).a());
+      this.B.a($$1x -> {
+         eso var10000 = this.d($$1x);
       });
       this.b();
+      this.c(this.C);
    }
 
    @Override
    protected void b() {
-      this.A.a();
-      evs.a(this.A, this.s());
+      this.B.a();
    }
 
-   protected void e() {
-      this.c.b();
-      this.f.a(this.y);
+   private void C() {
+      eou $$0 = eou.a(this.A, this.z, () -> this.f.execute(() -> {
+            this.A.e();
+            this.f.a(this.A.h());
+         }));
+      this.f.a(new eom(this.A, new eqd(this.z.a, this.C.a(), this.D.a(), $$0)));
    }
 
-   public void a(ti $$0) {
-      if (this.B != null) {
-         this.B.b($$0);
-      }
-
-      this.z = $$0;
+   @Override
+   public void az_() {
+      this.f.a(this.A);
    }
 }

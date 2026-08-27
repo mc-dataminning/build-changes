@@ -1,47 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+public class zu implements vd<ww> {
+   private final int a;
+   private final int b;
 
-public record zu(int b, List<aef.b<?>> c) implements va<ws> {
-   public static final int a = 255;
-
-   public zu(sl $$0) {
-      this($$0.m(), b($$0));
+   public zu(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static void a(List<aef.b<?>> $$0, sl $$1) {
-      for (aef.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<aef.b<?>> b(sl $$0) {
-      List<aef.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aef.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public zu(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
+      $$0.c(this.a);
       $$0.c(this.b);
-      a(this.c, $$0);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.b;
+      return this.a;
    }
 
-   public List<aef.b<?>> d() {
-      return this.c;
+   public int d() {
+      return this.b;
    }
 }

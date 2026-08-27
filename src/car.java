@@ -1,44 +1,27 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
 
-public enum car {
-   a(0, aoz.zw, aoz.zE),
-   b(40, aoz.zv, aoz.zF),
-   c(80, aoz.zx, aoz.zF);
-
-   private static final car[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final aoy f;
-   private final aoy g;
-
-   private car(int $$0, aoy $$1, aoy $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class car {
+   public static bmh<cak> a() {
+      return boj.a(
+         (Function<boj.b<cak>, ? extends App<boj.c<cak>, bom<cak>>>)($$0 -> $$0.group($$0.b(bsh.aj), $$0.c(bsh.aa), $$0.c(bsh.ag), $$0.a(bsh.an))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.m_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(car::a)).isPresent()) {
+                        cae $$6 = $$0.b($$1);
+                        cal.c($$4x, $$6);
+                        cal.c((caj)$$4x);
+                        cal.b($$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cal::c));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public aoy b() {
-      return this.f;
-   }
-
-   public aoy c() {
-      return this.g;
-   }
-
-   public static car a(int $$0) {
-      for (car $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+   private static boolean a(caj $$0) {
+      return $$0.dN().a(bsh.ag);
    }
 }

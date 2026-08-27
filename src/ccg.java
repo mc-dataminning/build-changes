@@ -1,76 +1,52 @@
-public class ccg extends cch {
-   public ccg(bip<? extends ccg> $$0, cpq $$1) {
+public abstract class ccg extends ccb implements ccj {
+   private static final aef<cjf> e = aei.a(ccg.class, aeh.h);
+
+   public ccg(biu<? extends ccg> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public ccg(cpq $$0, bwo $$1) {
-      this(bip.ak, $$0);
-      this.b($$1);
-      this.e(
-         $$1.dp() - (double)($$1.df() + 1.0F) * 0.5 * (double)ars.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.dt() - 0.1F,
-         $$1.dv() + (double)($$1.df() + 1.0F) * 0.5 * (double)ars.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+   public ccg(biu<? extends ccg> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cpv $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public void l() {
-      super.l();
-      ehi $$0 = this.dn();
-      ehg $$1 = cci.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dp() + $$0.c;
-      double $$3 = this.dr() + $$0.d;
-      double $$4 = this.dv() + $$0.e;
-      this.B();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dK().a(this.cG()).noneMatch(dfd.a::i)) {
-         this.ak();
-      } else if (this.ba()) {
-         this.ak();
-      } else {
-         this.f($$0.a(0.99F));
-         if (!this.aT()) {
-            this.f(this.dn().b(0.0, -0.06F, 0.0));
-         }
+   public ccg(biu<? extends ccg> $$0, bjg $$1, double $$2, double $$3, double $$4, cpv $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         this.e($$2, $$3, $$4);
+   public void a(cjf $$0) {
+      if (!$$0.a(cji.tf) || $$0.u()) {
+         this.am().b(e, $$0.c(1));
       }
    }
 
-   @Override
-   protected void a(ehf $$0) {
-      super.a($$0);
-      if (this.v() instanceof bjb $$1) {
-         $$0.a().a(this.dL().a(this, $$1), 1.0F);
-      }
+   protected cjf w() {
+      return this.am().b(e);
    }
 
    @Override
-   protected void a(ehe $$0) {
-      super.a($$0);
-      if (!this.dK().B) {
-         this.ak();
-      }
+   public cjf q() {
+      cjf $$0 = this.w();
+      return $$0.b() ? new cjf(cji.tf) : $$0;
    }
 
    @Override
    protected void a_() {
+      this.am().a(e, cjf.b);
    }
 
    @Override
-   public void a(wt $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dK().a(ix.ab, this.dp(), this.dr(), this.dv(), $$1 * $$5, $$2, $$3 * $$5);
+   public void b(qx $$0) {
+      super.b($$0);
+      cjf $$1 = this.w();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new qx()));
       }
+   }
 
-      this.o($$1, $$2, $$3);
+   @Override
+   public void a(qx $$0) {
+      super.a($$0);
+      cjf $$1 = cjf.a($$0.p("Item"));
+      this.a($$1);
    }
 }

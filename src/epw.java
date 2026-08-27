@@ -1,34 +1,50 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class epw extends epq {
+public class epw extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final ti c = ti.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final eni e;
-   private final eoa f;
+   private static final tl c = tl.c("mco.configure.world.opening");
+   private final emw d;
+   private final eyk e;
+   private final boolean f;
+   private final ema g;
+   private final eqv h;
 
-   public epw(long $$0, eni $$1, eoa $$2) {
+   public epw(emw $$0, eyk $$1, ema $$2, boolean $$3, eqv $$4) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
+      this.f = $$3;
+      this.g = $$2;
+      this.h = $$4;
    }
 
    @Override
    public void run() {
-      ema $$0 = ema.a();
+      emf $$0 = emf.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+         if (this.d()) {
+            return;
+         }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.h.execute(() -> {
+                  if (this.e instanceof eof) {
+                     ((eof)this.e).e();
+                  }
+
+                  this.d.e = emw.b.b;
+                  if (this.f) {
+                     this.g.a(this.d, this.e);
+                  } else {
+                     this.h.a(this.e);
+                  }
+               });
                break;
             }
-         } catch (eno var4) {
+         } catch (ent var4) {
             if (this.d()) {
                return;
             }
@@ -39,14 +55,14 @@ public class epw extends epq {
                return;
             }
 
-            b.error("Couldn't start mini game!");
+            b.error("Failed to open server", var5);
             this.a(var5);
          }
       }
    }
 
    @Override
-   public ti a() {
+   public tl a() {
       return c;
    }
 }

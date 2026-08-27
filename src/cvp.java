@@ -1,80 +1,88 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class cvp extends cun {
+   private final eig[] i;
 
-public class cvp extends csq {
-   private static final Map<csq, csq> c = Maps.newHashMap();
-   public static final float a = 3.0F;
-   protected static final eib b = csq.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final csq d;
-
-   public cvp(csq $$0, dfd.d $$1) {
-      super($$1);
-      this.d = $$0;
-      c.put($$0, this);
+   public cvp(dfi.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.i = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return b;
+   public eig f(dfj $$0, cpb $$1, gw $$2) {
+      return this.i[this.g($$0)];
    }
 
    @Override
-   public cyv b_(dfe $$0) {
-      return cyv.c;
+   public eig b(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      cja $$6 = $$3.b($$4);
-      civ $$7 = $$6.d();
-      dfe $$8 = ($$7 instanceof cgt ? c.getOrDefault(((cgt)$$7).e(), csr.a) : csr.a).n();
-      boolean $$9 = $$8.a(csr.a);
-      boolean $$10 = this.g();
-      if ($$9 != $$10) {
-         if ($$10) {
-            $$1.a($$2, $$8, 3);
-            $$3.a(apj.ah);
-            if (!$$3.fR().d) {
-               $$6.h(1);
-            }
-         } else {
-            cja $$11 = new cja(this.d);
-            if ($$6.b()) {
-               $$3.a($$4, $$11);
-            } else if (!$$3.i($$11)) {
-               $$3.a($$11, false);
-            }
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      return false;
+   }
 
-            $$1.a($$2, csr.fR.n(), 3);
-         }
+   public boolean a(dfj $$0, boolean $$1, hc $$2) {
+      csv $$3 = $$0.b();
+      boolean $$4 = this.h($$0);
+      boolean $$5 = $$3 instanceof cvq && cvq.a($$0, $$2);
+      return !j($$0) && $$1 || $$4 || $$5;
+   }
 
-         $$1.a($$3, djo.c, $$2);
-         return bgt.a($$1.B);
+   private boolean h(dfj $$0) {
+      return $$0.a(apt.S) && $$0.a(apt.k) == this.n().a(apt.k);
+   }
+
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         cjf $$6 = $$3.b($$4);
+         return $$6.a(cji.tQ) ? bgy.a : bgy.d;
       } else {
-         return bgt.b;
+         return cjk.a($$3, $$1, $$2);
       }
    }
 
    @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      return this.g() ? super.a($$0, $$1, $$2) : new cja(this.d);
-   }
-
-   private boolean g() {
-      return this.d == csr.a;
+   public dfj a(cln $$0) {
+      cpb $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      eam $$3 = $$0.q().b_($$0.a());
+      gw $$4 = $$2.e();
+      gw $$5 = $$2.h();
+      gw $$6 = $$2.f();
+      gw $$7 = $$2.g();
+      dfj $$8 = $$1.a_($$4);
+      dfj $$9 = $$1.a_($$5);
+      dfj $$10 = $$1.a_($$6);
+      dfj $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, hc.d), hc.d)))
+         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, hc.e), hc.e)))
+         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, hc.c), hc.c)))
+         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, hc.f), hc.f)))
+         .a(e, Boolean.valueOf($$3.a() == ean.c));
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return $$1 == hc.a && !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
+      }
 
-   public csq a() {
-      return this.d;
+      return $$1.o().e() == hc.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
-      return false;
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

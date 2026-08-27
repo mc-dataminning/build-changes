@@ -1,42 +1,31 @@
-import java.util.Optional;
+public record zh(aba d, byte e) implements vd<ww> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-public class zh implements va<ws> {
-   private final ti a;
-   private final Optional<byte[]> b;
-   private final boolean c;
-
-   public zh(ti $$0, Optional<byte[]> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public zh(sl $$0) {
-      this.a = $$0.l();
-      this.b = $$0.b(sl::b);
-      this.c = $$0.readBoolean();
+   public zh(so $$0) {
+      this(new aba($$0), $$0.readByte());
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, sl::a);
-      $$0.a(this.c);
+   public void a(so $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public ti a() {
-      return this.a;
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public Optional<byte[]> d() {
-      return this.b;
+   public aba a() {
+      return this.d;
    }
 
-   public boolean e() {
-      return this.c;
+   public byte d() {
+      return this.e;
    }
 }

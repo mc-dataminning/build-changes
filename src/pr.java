@@ -1,20 +1,35 @@
 import javax.annotation.Nullable;
 
-class pr {
+public class pr extends pq {
+   private final gw a;
+   private final gw b;
+   private final long c;
+
+   public pr(String $$0, gw $$1, gw $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
    @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private pr(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public String a() {
+      return super.getMessage();
    }
 
-   static pr a(Runnable $$0) {
-      return new pr(null, $$0);
+   @Nullable
+   public gw b() {
+      return this.b;
    }
 
-   static pr a(long $$0, Runnable $$1) {
-      return new pr($$0, $$1);
+   @Nullable
+   public gw c() {
+      return this.a;
    }
 }

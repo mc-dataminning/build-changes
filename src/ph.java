@@ -1,45 +1,71 @@
-public class ph {
-   public static final aet<duh> a = pe.a("pile_hay");
-   public static final aet<duh> b = pe.a("pile_melon");
-   public static final aet<duh> c = pe.a("pile_snow");
-   public static final aet<duh> d = pe.a("pile_ice");
-   public static final aet<duh> e = pe.a("pile_pumpkin");
-   public static final aet<duh> f = pe.a("oak");
-   public static final aet<duh> g = pe.a("acacia");
-   public static final aet<duh> h = pe.a("spruce");
-   public static final aet<duh> i = pe.a("pine");
-   public static final aet<duh> j = pe.a("patch_cactus");
-   public static final aet<duh> k = pe.a("flower_plain");
-   public static final aet<duh> l = pe.a("patch_taiga_grass");
-   public static final aet<duh> m = pe.a("patch_berry_bush");
+import java.util.List;
 
-   public static void a(np<duh> $$0) {
-      hh<dne<?, ?>> $$1 = $$0.a(je.as);
-      hg<dne<?, ?>> $$2 = $$1.b(ot.a);
-      hg<dne<?, ?>> $$3 = $$1.b(ot.b);
-      hg<dne<?, ?>> $$4 = $$1.b(ot.c);
-      hg<dne<?, ?>> $$5 = $$1.b(ot.d);
-      hg<dne<?, ?>> $$6 = $$1.b(ot.e);
-      hg<dne<?, ?>> $$7 = $$1.b(ou.g);
-      hg<dne<?, ?>> $$8 = $$1.b(ou.j);
-      hg<dne<?, ?>> $$9 = $$1.b(ou.k);
-      hg<dne<?, ?>> $$10 = $$1.b(ou.l);
-      hg<dne<?, ?>> $$11 = $$1.b(ov.r);
-      hg<dne<?, ?>> $$12 = $$1.b(ov.w);
-      hg<dne<?, ?>> $$13 = $$1.b(ov.i);
-      hg<dne<?, ?>> $$14 = $$1.b(ov.h);
-      pe.a($$0, a, $$2);
-      pe.a($$0, b, $$3);
-      pe.a($$0, c, $$4);
-      pe.a($$0, d, $$5);
-      pe.a($$0, e, $$6);
-      pe.a($$0, f, $$7, pe.a(csr.x));
-      pe.a($$0, g, $$8, pe.a(csr.B));
-      pe.a($$0, h, $$9, pe.a(csr.y));
-      pe.a($$0, i, $$10, pe.a(csr.y));
-      pe.a($$0, j, $$11);
-      pe.a($$0, k, $$12);
-      pe.a($$0, l, $$13);
-      pe.a($$0, m, $$14);
+public class ph {
+   public static final dup a = dui.a(dks.a.e);
+   public static final dup b = dui.a(dks.a.c);
+   public static final dup c = dui.a(dks.a.a);
+   public static final dup d = dui.a(dks.a.d);
+   public static final dup e = duh.a(dlm.a(), dlm.b());
+   public static final dup f = duh.a(dlm.b(10), dlm.c(10));
+   public static final dup g = duh.a(dlm.b(8), dlm.c(8));
+   public static final dup h = duh.a(dlm.b(4), dlm.c(4));
+   public static final dup i = duh.a(dlm.a(), dlm.a(256));
+
+   public static void a(ns<dum> $$0) {
+      pb.a($$0);
+      pc.a($$0);
+      pd.a($$0);
+      pe.a($$0);
+      pf.a($$0);
+      pg.a($$0);
+      pi.a($$0);
+      pj.a($$0);
+      pk.a($$0);
+   }
+
+   public static aew<dum> a(String $$0) {
+      return aew.a(je.ay, new aex($$0));
+   }
+
+   public static void a(ns<dum> $$0, aew<dum> $$1, hg<dnj<?, ?>> $$2, List<dup> $$3) {
+      $$0.a($$1, new dum($$2, List.copyOf($$3)));
+   }
+
+   public static void a(ns<dum> $$0, aew<dum> $$1, hg<dnj<?, ?>> $$2, dup... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static dup a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bfi<bgd> $$4 = bfi.<bgd>a().a(bga.a($$0), (int)$$3 - 1).a(bga.a($$0 + $$2), 1).a();
+         return duf.a(new bgk($$4));
+      }
+   }
+
+   public static duo a() {
+      return dub.a(dlz.c);
+   }
+
+   public static dub a(csv $$0) {
+      return dub.a(dlz.a($$0.n(), gw.b));
+   }
+
+   public static hg<dum> a(hg<dnj<?, ?>> $$0, dup... $$1) {
+      return hg.a(new dum($$0, List.of($$1)));
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1, dup... $$2) {
+      return a(hg.a(new dnj($$0, $$1)), $$2);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1) {
+      return a($$0, $$1, dlz.c);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1, dlz $$2) {
+      return a($$0, $$1, dub.a($$2));
    }
 }

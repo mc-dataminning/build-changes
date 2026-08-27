@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
+public interface coy extends cpb {
+   float a(hc var1, boolean var2);
 
-public class coy {
-   private final ehi a;
-   private final ehi b;
-   private final Predicate<dfe> c;
+   eab x_();
 
-   public coy(ehi $$0, ehi $$1, Predicate<dfe> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   int a(gw var1, cpg var2);
+
+   default int a(cqe $$0, gw $$1) {
+      return this.x_().a($$0).b($$1);
    }
 
-   public ehi a() {
-      return this.b;
+   default int b(gw $$0, int $$1) {
+      return this.x_().a($$0, $$1);
    }
 
-   public ehi b() {
-      return this.a;
-   }
-
-   public Predicate<dfe> c() {
-      return this.c;
+   default boolean g(gw $$0) {
+      return this.a(cqe.a, $$0) >= this.M();
    }
 }

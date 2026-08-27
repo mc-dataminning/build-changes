@@ -1,36 +1,57 @@
-public class bqb extends bpw {
-   private final bvj a;
-   private ako b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bqb(bvj $$0) {
-      this.a = $$0;
+public abstract class bqb {
+   private final EnumSet<bqb.a> a = EnumSet.noneOf(bqb.a.class);
+
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   @Override
-   public boolean a() {
-      ako $$0 = (ako)this.a.I_();
-      boolean $$1 = $$0 != null && !$$0.G_() && !$$0.fR().b && !$$0.aX() && !$$0.aA;
-      return !this.a.ga() && $$1 && this.a.gj();
+   public boolean P_() {
+      return true;
    }
 
-   @Override
-   public boolean J_() {
-      return !this.c;
-   }
-
-   @Override
    public void c() {
-      this.b = (ako)this.a.I_();
-      this.c = false;
+   }
+
+   public void d() {
+   }
+
+   public boolean Q_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bqb.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void e() {
-      if (!this.c && !this.a.t() && !this.a.fO()) {
-         if (this.a.cG().c(this.b.cG())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bqb.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.Q_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return arx.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

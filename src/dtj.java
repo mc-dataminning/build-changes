@@ -1,34 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtj extends dtk {
-   public static final dtj a = new dtj(dlh.a(0));
-   public static final Codec<dtj> b = arb.e(dlh.a, dlh.a.fieldOf("value").codec()).xmap(dtj::new, dtj::b);
-   private final dlh d;
+public record dtj(hg<cja> c, dtl d) {
+   public static final Codec<dtj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aeu.a(je.D).fieldOf("display").forGetter($$0x -> $$0x.c), dtl.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dtj::new)
+   );
+   public static final Codec<hg<dtj>> b = aet.a(je.av, a);
 
-   public static dtj a(dlh $$0) {
-      return new dtj($$0);
+   public hg<cja> a() {
+      return this.c;
    }
 
-   private dtj(dlh $$0) {
-      this.d = $$0;
-   }
-
-   public dlh b() {
+   public dtl b() {
       return this.d;
-   }
-
-   @Override
-   public int a(arx $$0, dlk $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dtl<?> a() {
-      return dtl.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
    }
 }

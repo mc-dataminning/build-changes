@@ -1,52 +1,28 @@
+import java.util.List;
+import javax.annotation.Nullable;
+
 public class gck {
-   public static class a extends gbq {
-      private final fnb n;
+   private final List<gcj> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-      protected a(fnb $$0, aoy $$1) {
-         super($$1, apa.i, gch.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dF() || !this.n.bc()) {
-            this.n();
-         }
-      }
+   public gck(List<gcj> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static class b extends gbq {
-      public static final int n = 40;
-      private final fnb o;
-      private int p;
+   public List<gcj> a() {
+      return this.a;
+   }
 
-      public b(fnb $$0) {
-         super(aoz.z, apa.i, gch.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   public boolean b() {
+      return this.b;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dF() && this.p >= 0) {
-            if (this.o.bc()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

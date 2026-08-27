@@ -1,13 +1,20 @@
-public class cxr extends dah {
-   public cxr(dfd.d $$0) {
+public class cxr extends csv implements csx {
+   public cxr(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(ix.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      $$0.G_().c(je.as).flatMap($$0x -> $$0x.b(oq.n)).ifPresent($$3x -> ((dnj)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
    }
 }

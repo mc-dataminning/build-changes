@@ -1,84 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
-
 public class ebu {
-   private static final String a = "command_storage_";
-   private final Map<String, ebu.a> b = Maps.newHashMap();
-   private final ebx c;
+   private final gw a;
+   private final int b;
+   private final int c;
 
-   public ebu(ebx $$0) {
-      this.c = $$0;
+   public ebu(gw $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private ebu.a a(String $$0) {
-      ebu.a $$1 = new ebu.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public static ebu a(qx $$0) {
+      gw $$1 = rj.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new ebu($$1, $$2, $$3);
    }
 
-   private ebm.a<ebu.a> b(String $$0) {
-      return new ebm.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), asv.h);
+   public qx a() {
+      qx $$0 = new qx();
+      $$0.a("Pos", rj.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
+      return $$0;
    }
 
-   public qu a(aeu $$0) {
-      String $$1 = $$0.b();
-      ebu.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new qu();
+   public gw b() {
+      return this.a;
    }
 
-   public void a(aeu $$0, qu $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   public int c() {
+      return this.b;
    }
 
-   public Stream<aeu> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   public int d() {
+      return this.c;
    }
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
+   public String e() {
+      return a(this.a);
    }
 
-   static class a extends ebm {
-      private static final String a = "contents";
-      private final Map<String, qu> b = Maps.newHashMap();
-
-      ebu.a b(qu $$0) {
-         qu $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
-      }
-
-      @Override
-      public qu a(qu $$0) {
-         qu $$1 = new qu();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
-
-      public qu a(String $$0) {
-         qu $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new qu();
-      }
-
-      public void a(String $$0, qu $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<aeu> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new aeu($$0, $$1));
-      }
+   public static String a(gw $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

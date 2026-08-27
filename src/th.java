@@ -1,75 +1,98 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class th {
-   public static final ti a = ti.h();
-   public static final ti b = ti.c("options.on");
-   public static final ti c = ti.c("options.off");
-   public static final ti d = ti.c("gui.done");
-   public static final ti e = ti.c("gui.cancel");
-   public static final ti f = ti.c("gui.yes");
-   public static final ti g = ti.c("gui.no");
-   public static final ti h = ti.c("gui.ok");
-   public static final ti i = ti.c("gui.proceed");
-   public static final ti j = ti.c("gui.continue");
-   public static final ti k = ti.c("gui.back");
-   public static final ti l = ti.c("gui.toTitle");
-   public static final ti m = ti.c("gui.acknowledge");
-   public static final ti n = ti.c("chat.link.open");
-   public static final ti o = ti.c("gui.copy_link_to_clipboard");
-   public static final ti p = ti.c("menu.disconnect");
-   public static final ti q = ti.c("connect.failed");
-   public static final ti r = ti.b("\n");
-   public static final ti s = ti.b(". ");
-   public static final ti t = ti.b("...");
-   public static final ti u = a();
+public record th(ti j, ti k) {
+   public static final Codec<th> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ti.a.fieldOf("chat").forGetter(th::a), ti.a.fieldOf("narration").forGetter(th::b)).apply($$0, th::new)
+   );
+   public static final ti b = ti.a("chat.type.text");
+   public static final aew<th> c = a("chat");
+   public static final aew<th> d = a("say_command");
+   public static final aew<th> e = a("msg_command_incoming");
+   public static final aew<th> f = a("msg_command_outgoing");
+   public static final aew<th> g = a("team_msg_command_incoming");
+   public static final aew<th> h = a("team_msg_command_outgoing");
+   public static final aew<th> i = a("emote_command");
 
-   public static tv a() {
-      return ti.b(" ");
+   private static aew<th> a(String $$0) {
+      return aew.a(je.aq, new aex($$0));
    }
 
-   public static tv a(long $$0) {
-      return ti.a("gui.days", $$0);
+   public static void a(ns<th> $$0) {
+      $$0.a(c, new th(b, ti.a("chat.type.text.narrate")));
+      $$0.a(d, new th(ti.a("chat.type.announcement"), ti.a("chat.type.text.narrate")));
+      $$0.a(e, new th(ti.b("commands.message.display.incoming"), ti.a("chat.type.text.narrate")));
+      $$0.a(f, new th(ti.c("commands.message.display.outgoing"), ti.a("chat.type.text.narrate")));
+      $$0.a(g, new th(ti.d("chat.type.team.text"), ti.a("chat.type.text.narrate")));
+      $$0.a(h, new th(ti.d("chat.type.team.sent"), ti.a("chat.type.text.narrate")));
+      $$0.a(i, new th(ti.a("chat.type.emote"), ti.a("chat.type.emote")));
    }
 
-   public static tv b(long $$0) {
-      return ti.a("gui.hours", $$0);
+   public static th.a a(aew<th> $$0, biq $$1) {
+      return a($$0, $$1.dL().G_(), $$1.N_());
    }
 
-   public static tv c(long $$0) {
-      return ti.a("gui.minutes", $$0);
+   public static th.a a(aew<th> $$0, dt $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public static ti a(boolean $$0) {
-      return $$0 ? b : c;
+   public static th.a a(aew<th> $$0, hu $$1, tl $$2) {
+      ht<th> $$3 = $$1.d(je.aq);
+      return $$3.e($$0).a($$2);
    }
 
-   public static tv a(ti $$0, boolean $$1) {
-      return ti.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   public th.a a(tl $$0) {
+      return new th.a(this, $$0);
    }
 
-   public static tv a(ti $$0, ti $$1) {
-      return ti.a("options.generic_value", $$0, $$1);
+   public ti a() {
+      return this.j;
    }
 
-   public static tv a(ti... $$0) {
-      tv $$1 = ti.h();
+   public ti b() {
+      return this.k;
+   }
 
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
-         }
+   public static record a(th a, tl b, @Nullable tl c) {
+      a(th $$0, tl $$1) {
+         this($$0, $$1, null);
       }
 
-      return $$1;
+      public tl a(tl $$0) {
+         return this.a.a().a($$0, this);
+      }
+
+      public tl b(tl $$0) {
+         return this.a.b().a($$0, this);
+      }
+
+      public th.a c(tl $$0) {
+         return new th.a(this.a, this.b, $$0);
+      }
+
+      public th.b a(hu $$0) {
+         ht<th> $$1 = $$0.d(je.aq);
+         return new th.b($$1.a(this.a), this.b, this.c);
+      }
    }
 
-   public static ti b(ti... $$0) {
-      return a(Arrays.asList($$0));
-   }
+   public static record b(int a, tl b, @Nullable tl c) {
+      public b(so $$0) {
+         this($$0.m(), $$0.l(), $$0.c(so::l));
+      }
 
-   public static ti a(Collection<? extends ti> $$0) {
-      return tk.a($$0, r);
+      public void a(so $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c, so::a);
+      }
+
+      public Optional<th.a> a(hu $$0) {
+         ht<th> $$1 = $$0.d(je.aq);
+         th $$2 = $$1.a(this.a);
+         return Optional.ofNullable($$2).map($$0x -> new th.a($$0x, this.b, this.c));
+      }
    }
 }

@@ -1,324 +1,131 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.brigadier.Message;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class tn {
-   static final Logger a = LogUtils.getLogger();
-   private final tn.a<?> b;
-   private final Object c;
+   public static final String a = ", ";
+   public static final tl b = tl.b(", ").a(n.h);
+   public static final tl c = tl.b(", ");
 
-   public <T> tn(tn.a<T> $$0, T $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static ty a(ty $$0, uh $$1) {
+      if ($$1.g()) {
+         return $$0;
+      } else {
+         uh $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
+      }
    }
 
-   public tn.a<?> a() {
-      return this.b;
+   public static Optional<ty> a(@Nullable dt $$0, Optional<tl> $$1, @Nullable biq $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   @Nullable
-   public <T> T a(tn.a<T> $$0) {
-      return this.b == $$0 ? $$0.b(this.c) : null;
+   public static ty a(@Nullable dt $$0, tl $$1, @Nullable biq $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.e();
+      } else {
+         ty $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (tl $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
+
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   private static uh a(@Nullable dt $$0, uh $$1, @Nullable biq $$2, int $$3) throws CommandSyntaxException {
+      tq $$4 = $$1.i();
+      if ($$4 != null) {
+         tl $$5 = $$4.a(tq.a.a);
+         if ($$5 != null) {
+            tq $$6 = new tq(tq.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static tl a(Collection<String> $$0) {
+      return a($$0, $$0x -> tl.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> tl a(Collection<T> $$0, Function<T, tl> $$1) {
+      if ($$0.isEmpty()) {
+         return tk.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
+      }
+   }
+
+   public static <T> tl b(Collection<? extends T> $$0, Function<T, tl> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> ty a(Collection<? extends T> $$0, Optional<? extends tl> $$1, Function<T, tl> $$2) {
+      return a($$0, (tl)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static tl a(Collection<? extends tl> $$0, tl $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> ty a(Collection<? extends T> $$0, tl $$1, Function<T, tl> $$2) {
+      if ($$0.isEmpty()) {
+         return tl.h();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).e();
+      } else {
+         ty $$3 = tl.h();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static ty a(tl $$0) {
+      return tl.a("chat.square_brackets", $$0);
+   }
+
+   public static tl a(Message $$0) {
+      return (tl)($$0 instanceof tl ? (tl)$$0 : tl.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable tl $$0) {
+      if ($$0 != null && $$0.b() instanceof uv $$1) {
+         String $$2 = $$1.a();
+         String $$3 = $$1.b();
+         return $$3 != null || qs.a().b($$2);
+      } else {
          return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         tn $$1 = (tn)$$0;
-         return this.b == $$1.b && Objects.equals(this.c, $$1.c);
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public String toString() {
-      return "HoverEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
-   }
-
-   @Nullable
-   public static tn a(JsonObject $$0) {
-      String $$1 = arj.a($$0, "action", null);
-      if ($$1 == null) {
-         return null;
-      } else {
-         tn.a<?> $$2 = tn.a.a($$1);
-         if ($$2 == null) {
-            return null;
-         } else {
-            JsonElement $$3 = $$0.get("contents");
-            if ($$3 != null) {
-               return $$2.a($$3);
-            } else {
-               ti $$4 = ti.a.a($$0.get("value"));
-               return $$4 != null ? $$2.a($$4) : null;
-            }
-         }
-      }
-   }
-
-   public JsonObject b() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("action", this.b.b());
-      $$0.add("contents", this.b.a(this.c));
-      return $$0;
-   }
-
-   public static class a<T> {
-      public static final tn.a<ti> a = new tn.a<>("show_text", true, ti.a::a, ti.a::c, Function.identity());
-      public static final tn.a<tn.c> b = new tn.a<>("show_item", true, tn.c::a, tn.c::b, tn.c::a);
-      public static final tn.a<tn.b> c = new tn.a<>("show_entity", true, tn.b::a, tn.b::a, tn.b::a);
-      private static final Map<String, tn.a<?>> d = Stream.of(a, b, c).collect(ImmutableMap.toImmutableMap(tn.a::b, $$0 -> $$0));
-      private final String e;
-      private final boolean f;
-      private final Function<JsonElement, T> g;
-      private final Function<T, JsonElement> h;
-      private final Function<ti, T> i;
-
-      public a(String $$0, boolean $$1, Function<JsonElement, T> $$2, Function<T, JsonElement> $$3, Function<ti, T> $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-      }
-
-      public boolean a() {
-         return this.f;
-      }
-
-      public String b() {
-         return this.e;
-      }
-
-      @Nullable
-      public static tn.a<?> a(String $$0) {
-         return d.get($$0);
-      }
-
-      T b(Object $$0) {
-         return (T)$$0;
-      }
-
-      @Nullable
-      public tn a(JsonElement $$0) {
-         T $$1 = this.g.apply($$0);
-         return $$1 == null ? null : new tn(this, $$1);
-      }
-
-      @Nullable
-      public tn a(ti $$0) {
-         T $$1 = this.i.apply($$0);
-         return $$1 == null ? null : new tn(this, $$1);
-      }
-
-      public JsonElement a(Object $$0) {
-         return this.h.apply(this.b($$0));
-      }
-
-      @Override
-      public String toString() {
-         return "<action " + this.e + ">";
-      }
-   }
-
-   public static class b {
-      public final bip<?> a;
-      public final UUID b;
-      @Nullable
-      public final ti c;
-      @Nullable
-      private List<ti> d;
-
-      public b(bip<?> $$0, UUID $$1, @Nullable ti $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Nullable
-      public static tn.b a(JsonElement $$0) {
-         if (!$$0.isJsonObject()) {
-            return null;
-         } else {
-            JsonObject $$1 = $$0.getAsJsonObject();
-            bip<?> $$2 = jd.h.a(new aeu(arj.i($$1, "type")));
-            UUID $$3 = UUID.fromString(arj.i($$1, "id"));
-            ti $$4 = ti.a.a($$1.get("name"));
-            return new tn.b($$2, $$3, $$4);
-         }
-      }
-
-      @Nullable
-      public static tn.b a(ti $$0) {
-         try {
-            qu $$1 = ro.a($$0.getString());
-            ti $$2 = ti.a.a($$1.l("name"));
-            bip<?> $$3 = jd.h.a(new aeu($$1.l("type")));
-            UUID $$4 = UUID.fromString($$1.l("id"));
-            return new tn.b($$3, $$4, $$2);
-         } catch (Exception var5) {
-            return null;
-         }
-      }
-
-      public JsonElement a() {
-         JsonObject $$0 = new JsonObject();
-         $$0.addProperty("type", jd.h.b(this.a).toString());
-         $$0.addProperty("id", this.b.toString());
-         if (this.c != null) {
-            $$0.add("name", ti.a.c(this.c));
-         }
-
-         return $$0;
-      }
-
-      public List<ti> b() {
-         if (this.d == null) {
-            this.d = Lists.newArrayList();
-            if (this.c != null) {
-               this.d.add(this.c);
-            }
-
-            this.d.add(ti.a("gui.entity_tooltip.type", this.a.h()));
-            this.d.add(ti.b(this.b.toString()));
-         }
-
-         return this.d;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            tn.b $$1 = (tn.b)$$0;
-            return this.a.equals($$1.a) && this.b.equals($$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.a.hashCode();
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
-      }
-   }
-
-   public static class c {
-      private final civ a;
-      private final int b;
-      @Nullable
-      private final qu c;
-      @Nullable
-      private cja d;
-
-      c(civ $$0, int $$1, @Nullable qu $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public c(cja $$0) {
-         this($$0.d(), $$0.L(), $$0.v() != null ? $$0.v().h() : null);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            tn.c $$1 = (tn.c)$$0;
-            return this.b == $$1.b && this.a.equals($$1.a) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.a.hashCode();
-         $$0 = 31 * $$0 + this.b;
-         return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
-      }
-
-      public cja a() {
-         if (this.d == null) {
-            this.d = new cja(this.a, this.b);
-            if (this.c != null) {
-               this.d.c(this.c);
-            }
-         }
-
-         return this.d;
-      }
-
-      private static tn.c a(JsonElement $$0) {
-         if ($$0.isJsonPrimitive()) {
-            return new tn.c(jd.i.a(new aeu($$0.getAsString())), 1, null);
-         } else {
-            JsonObject $$1 = arj.m($$0, "item");
-            civ $$2 = jd.i.a(new aeu(arj.i($$1, "id")));
-            int $$3 = arj.a($$1, "count", 1);
-            if ($$1.has("tag")) {
-               String $$4 = arj.i($$1, "tag");
-
-               try {
-                  qu $$5 = ro.a($$4);
-                  return new tn.c($$2, $$3, $$5);
-               } catch (CommandSyntaxException var6) {
-                  tn.a.warn("Failed to parse tag: {}", $$4, var6);
-               }
-            }
-
-            return new tn.c($$2, $$3, null);
-         }
-      }
-
-      @Nullable
-      private static tn.c a(ti $$0) {
-         try {
-            qu $$1 = ro.a($$0.getString());
-            return new tn.c(cja.a($$1));
-         } catch (CommandSyntaxException var2) {
-            tn.a.warn("Failed to parse item tag: {}", $$0, var2);
-            return null;
-         }
-      }
-
-      private JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         $$0.addProperty("id", jd.i.b(this.a).toString());
-         if (this.b != 1) {
-            $$0.addProperty("count", this.b);
-         }
-
-         if (this.c != null) {
-            $$0.addProperty("tag", this.c.toString());
-         }
-
-         return $$0;
-      }
+   public static ty a(String $$0) {
+      return a((tl)tl.b($$0).a($$1 -> $$1.a(n.k).a(new tj(tj.a.f, $$0)).a(new tq(tq.a.a, tl.c("chat.copy.click"))).a($$0)));
    }
 }

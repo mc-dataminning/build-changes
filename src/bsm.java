@@ -1,40 +1,38 @@
-public class bsm extends bsk {
-   private boolean p;
-
-   public bsm(bjd $$0, cpq $$1) {
+public class bsm extends bsp {
+   public bsm(bji $$0, cpv $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eay a(int $$0) {
-      this.p = this.a.ag() == bip.v;
-      this.o = new eaz(this.p);
-      return new eay(this.o, $$0);
+   protected ebd a(int $$0) {
+      this.o = new eav(false);
+      this.o.a(true);
+      return new ebd(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bb();
+      return true;
    }
 
    @Override
-   protected ehi b() {
-      return new ehi(this.a.dp(), this.a.e(0.5), this.a.dv());
+   protected ehn b() {
+      return new ehn(this.a.dq(), this.a.e(0.5), this.a.dw());
    }
 
    @Override
-   protected double a(ehi $$0) {
+   protected double a(ehn $$0) {
       return $$0.d;
    }
 
    @Override
-   protected boolean a(ehi $$0, ehi $$1) {
-      return a(this.a, $$0, $$1, false);
+   protected boolean a(ehn $$0, ehn $$1) {
+      return this.a.bc() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(gw $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
+      return !this.b.a_($$0.d()).i();
    }
 
    @Override

@@ -1,261 +1,144 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.UnmodifiableIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class cun extends csg {
-   public static final dgc<dgi> d = dfu.ah;
-   public static final dfv e = dfu.w;
-   private static final int f = 20;
+public class cun extends csv implements czw {
+   public static final dga a = cyh.a;
+   public static final dga b = cyh.b;
+   public static final dga c = cyh.c;
+   public static final dga d = cyh.d;
+   public static final dga e = dfz.C;
+   protected static final Map<hc, dga> f = cyh.g.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final eig[] g;
+   protected final eig[] h;
+   private final Object2IntMap<dfj> i = new Object2IntOpenHashMap();
 
-   public cun(dfd.d $$0) {
-      super(true, $$0);
-      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(d, dgi.a).a(c, Boolean.valueOf(false)));
-   }
+   protected cun(float $$0, float $$1, float $$2, float $$3, float $$4, dfi.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.C.a().iterator();
 
-   @Override
-   public boolean f_(dfe $$0) {
-      return true;
-   }
-
-   @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, bil $$3) {
-      if (!$$1.B) {
-         if (!$$0.c(e)) {
-            this.a($$1, $$2, $$0);
-         }
+      while (var7.hasNext()) {
+         dfj $$6 = (dfj)var7.next();
+         this.g($$6);
       }
    }
 
-   @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if ($$0.c(e)) {
-         this.a($$1, $$2, $$0);
-      }
-   }
+   protected eig[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      eig $$9 = csv.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      eig $$10 = csv.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      eig $$11 = csv.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      eig $$12 = csv.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      eig $$13 = csv.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      eig $$14 = eid.a($$10, $$13);
+      eig $$15 = eid.a($$11, $$12);
+      eig[] $$16 = new eig[]{
+         eid.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         eid.a($$11, $$10),
+         eid.a($$12, $$10),
+         eid.a($$15, $$10),
+         $$13,
+         eid.a($$11, $$13),
+         eid.a($$12, $$13),
+         eid.a($$15, $$13),
+         $$14,
+         eid.a($$11, $$14),
+         eid.a($$12, $$14),
+         eid.a($$15, $$14)
+      };
 
-   @Override
-   public int a(dfe $$0, cow $$1, gw $$2, hc $$3) {
-      return $$0.c(e) ? 15 : 0;
-   }
-
-   @Override
-   public int b(dfe $$0, cow $$1, gw $$2, hc $$3) {
-      if (!$$0.c(e)) {
-         return 0;
-      } else {
-         return $$3 == hc.b ? 15 : 0;
-      }
-   }
-
-   private void a(cpq $$0, gw $$1, dfe $$2) {
-      if (this.a($$2, (cpt)$$0, $$1)) {
-         boolean $$3 = $$2.c(e);
-         boolean $$4 = false;
-         List<cdg> $$5 = this.a($$0, $$1, cdg.class, $$0x -> true);
-         if (!$$5.isEmpty()) {
-            $$4 = true;
-         }
-
-         if ($$4 && !$$3) {
-            dfe $$6 = $$2.a(e, Boolean.valueOf(true));
-            $$0.a($$1, $$6, 3);
-            this.b($$0, $$1, $$6, true);
-            $$0.a($$1, this);
-            $$0.a($$1.d(), this);
-            $$0.b($$1, $$2, $$6);
-         }
-
-         if (!$$4 && $$3) {
-            dfe $$7 = $$2.a(e, Boolean.valueOf(false));
-            $$0.a($$1, $$7, 3);
-            this.b($$0, $$1, $$7, false);
-            $$0.a($$1, this);
-            $$0.a($$1.d(), this);
-            $$0.b($$1, $$2, $$7);
-         }
-
-         if ($$4) {
-            $$0.a($$1, this, 20);
-         }
-
-         $$0.c($$1, this);
-      }
-   }
-
-   protected void b(cpq $$0, gw $$1, dfe $$2, boolean $$3) {
-      cyp $$4 = new cyp($$0, $$1, $$2);
-
-      for (gw $$6 : $$4.a()) {
-         dfe $$7 = $$0.a_($$6);
-         $$0.a($$7, $$6, $$7.b(), $$1, false);
-      }
-   }
-
-   @Override
-   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         dfe $$5 = this.a($$0, $$1, $$2, $$4);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public dgh<dgi> b() {
-      return d;
-   }
-
-   @Override
-   public boolean d_(dfe $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfe $$0, cpq $$1, gw $$2) {
-      if ($$0.c(e)) {
-         List<cdo> $$3 = this.a($$1, $$2, cdo.class, $$0x -> true);
-         if (!$$3.isEmpty()) {
-            return $$3.get(0).A().k();
-         }
-
-         List<cdg> $$4 = this.a($$1, $$2, cdg.class, bio.d);
-         if (!$$4.isEmpty()) {
-            return ceg.b((bgm)$$4.get(0));
-         }
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = eid.a($$9, $$16[$$17]);
       }
 
-      return 0;
-   }
-
-   private <T extends cdg> List<T> a(cpq $$0, gw $$1, Class<T> $$2, Predicate<bil> $$3) {
-      return $$0.a($$2, this.a($$1), $$3);
-   }
-
-   private ehd a(gw $$0) {
-      double $$1 = 0.2;
-      return new ehd(
-         (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
-      );
+      return $$16;
    }
 
    @Override
-   public dfe a(dfe $$0, czc $$1) {
+   public boolean c(dfj $$0, cpb $$1, gw $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(hc $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dfj $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(hc.c);
+         }
+
+         if ($$0x.c(b)) {
+            $$1 |= a(hc.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(hc.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(hc.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   public eam c_(dfj $$0) {
+      return $$0.c(e) ? ean.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      return false;
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
       switch ($$1) {
          case c:
-            switch ((dgi)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgi.d);
-               case d:
-                  return $$0.a(d, dgi.c);
-               case e:
-                  return $$0.a(d, dgi.f);
-               case f:
-                  return $$0.a(d, dgi.e);
-               case g:
-                  return $$0.a(d, dgi.i);
-               case h:
-                  return $$0.a(d, dgi.j);
-               case i:
-                  return $$0.a(d, dgi.g);
-               case j:
-                  return $$0.a(d, dgi.h);
-            }
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
          case d:
-            switch ((dgi)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgi.e);
-               case d:
-                  return $$0.a(d, dgi.f);
-               case e:
-                  return $$0.a(d, dgi.d);
-               case f:
-                  return $$0.a(d, dgi.c);
-               case g:
-                  return $$0.a(d, dgi.j);
-               case h:
-                  return $$0.a(d, dgi.g);
-               case i:
-                  return $$0.a(d, dgi.h);
-               case j:
-                  return $$0.a(d, dgi.i);
-               case a:
-                  return $$0.a(d, dgi.b);
-               case b:
-                  return $$0.a(d, dgi.a);
-            }
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
          case b:
-            switch ((dgi)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgi.f);
-               case d:
-                  return $$0.a(d, dgi.e);
-               case e:
-                  return $$0.a(d, dgi.c);
-               case f:
-                  return $$0.a(d, dgi.d);
-               case g:
-                  return $$0.a(d, dgi.h);
-               case h:
-                  return $$0.a(d, dgi.i);
-               case i:
-                  return $$0.a(d, dgi.j);
-               case j:
-                  return $$0.a(d, dgi.g);
-               case a:
-                  return $$0.a(d, dgi.b);
-               case b:
-                  return $$0.a(d, dgi.a);
-            }
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
          default:
             return $$0;
       }
    }
 
    @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      dgi $$2 = $$0.c(d);
+   public dfj a(dfj $$0, cxq $$1) {
       switch ($$1) {
          case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(d, dgi.f);
-               case f:
-                  return $$0.a(d, dgi.e);
-               case g:
-                  return $$0.a(d, dgi.j);
-               case h:
-                  return $$0.a(d, dgi.i);
-               case i:
-                  return $$0.a(d, dgi.h);
-               case j:
-                  return $$0.a(d, dgi.g);
-               default:
-                  return super.a($$0, $$1);
-            }
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
          case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(d, dgi.d);
-               case d:
-                  return $$0.a(d, dgi.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(d, dgi.h);
-               case h:
-                  return $$0.a(d, dgi.g);
-               case i:
-                  return $$0.a(d, dgi.j);
-               case j:
-                  return $$0.a(d, dgi.i);
-            }
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(d, e, c);
    }
 }

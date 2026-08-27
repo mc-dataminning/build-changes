@@ -1,50 +1,52 @@
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
 import org.slf4j.Logger;
 
-public class dtn extends dtk {
+public class dtn extends dtp {
    public static final Codec<dtn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dlh.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dlh.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dtn::new)
+      $$0 -> $$0.group(
+               dlm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dlm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dtn::new)
    );
    private static final Logger b = LogUtils.getLogger();
-   private final dlh d;
-   private final dlh e;
-   private final LongSet f = new LongOpenHashSet();
+   private final dlm d;
+   private final dlm e;
+   private final int f;
 
-   private dtn(dlh $$0, dlh $$1) {
+   private dtn(dlm $$0, dlm $$1, int $$2) {
       this.d = $$0;
       this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dtn a(dlh $$0, dlh $$1) {
-      return new dtn($$0, $$1);
+   public static dtn a(dlm $$0, dlm $$1, int $$2) {
+      return new dtn($$0, $$1, $$2);
    }
 
    @Override
-   public int a(arx $$0, dlk $$1) {
+   public int a(asc $$0, dlp $$1) {
       int $$2 = this.d.a($$1);
       int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
-         }
-
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
          return $$2;
       } else {
-         return ars.b($$0, $$2, $$3);
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
       }
    }
 
    @Override
-   public dtl<?> a() {
-      return dtl.b;
+   public dtq<?> a() {
+      return dtq.c;
    }
 
    @Override
    public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

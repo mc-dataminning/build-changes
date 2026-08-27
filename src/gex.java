@@ -1,29 +1,37 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gex extends gfb {
+   private final tl a;
+   private etj b = etj.a;
+   private final eyk c;
+   private int y;
 
-public class gex {
-   private final float a;
-   private final AtomicReference<gex.a> b = new AtomicReference<>();
-
-   public gex(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gex(eyk $$0, tl $$1, tl $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   public void a(eqi $$0, ti $$1) {
-      gex.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gex.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   public void aI_() {
+      this.f.ac().a();
+      this.b = etj.a(this.i, this.a, this.g - 50);
+      this.y = this.b.a() * 9;
+      this.d(esq.a(tk.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
    }
 
-   static class a {
-      final ti a;
-      final RateLimiter b;
+   @Override
+   public tl g() {
+      return tl.h().b(this.e).f(": ").b(this.a);
+   }
 
-      a(ti $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void az_() {
+      eqv.O().a(this.c);
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
    }
 }

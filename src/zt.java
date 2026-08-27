@@ -1,40 +1,24 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class zt implements vd<ww> {
+   private final int a;
 
-public class zt implements va<ws> {
-   private final eid a;
-   private final String b;
-
-   public zt(eid $$0, @Nullable eie $$1) {
+   public zt(int $$0) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
    }
 
-   public zt(sl $$0) {
-      this.a = $$0.a(eid.u);
-      this.b = $$0.r();
+   public zt(so $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(eid::a, this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public eid a() {
+   public int a() {
       return this.a;
-   }
-
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

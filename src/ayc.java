@@ -3,6 +3,7 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
 public class ayc extends DataFix {
@@ -10,25 +11,18 @@ public class ayc extends DataFix {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(ayx.D);
       return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(ays.e),
-         $$0 -> $$0.update(
+         "ObjectiveDisplayNameFix",
+         $$0,
+         $$0x -> $$0x.update(
                DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+               $$0xx -> $$0xx.update(
+                     "DisplayName",
+                     $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxx -> tl.a.a(tl.b($$0xxxx))).map($$0xx::createString).result(), $$1)
                   )
             )
       );
-   }
-
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
    }
 }

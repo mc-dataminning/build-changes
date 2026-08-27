@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dyz {
+public class dyz {
+   private final List<dyy> a;
+
+   public dyz(List<dyy> $$0) {
+      this.a = $$0;
+   }
+
+   public List<dyy> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
+   }
 }

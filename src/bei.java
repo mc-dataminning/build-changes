@@ -1,37 +1,14 @@
-import com.google.common.base.MoreObjects;
 import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
 
-public record bei(Instant a, String b, long c) {
-   private static final String d = "unknown";
-
+public record bei(Duration a, cpc b, akh c, dhk d, String e) implements bep {
    public static bei a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bei($$0.getStartTime(), $$2, $$0.getLong("allocated"));
-   }
-
-   public static bei.a a(List<bei> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bei>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bei $$3 = (bei)$$2x.get(0);
-            bei $$4 = (bei)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new bei.a($$1);
-   }
-
-   public static record a(Map<String, Double> a) {
+      return new bei(
+         $$0.getDuration(),
+         new cpc($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new akh($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dhk.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

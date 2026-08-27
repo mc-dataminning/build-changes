@@ -1,17 +1,12 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fvu extends fsi<ccc> {
+   public static final aex a = new aex("textures/entity/projectiles/arrow.png");
+   public static final aex f = new aex("textures/entity/projectiles/tipped_arrow.png");
 
-public class fvu extends frz<bwl, ffj<bwl>> {
-   private static final Map<bip<?>, aeu> a = Maps.newHashMap(
-      ImmutableMap.of(bip.bq, new aeu("textures/entity/horse/horse_zombie.png"), bip.aK, new aeu("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public fvu(ftc.a $$0, fhv $$1) {
-      super($$0, new ffj<>($$0.a($$1)), 1.0F);
+   public fvu(fth.a $$0) {
+      super($$0);
    }
 
-   public aeu a(bwl $$0) {
-      return a.get($$0.ag());
+   public aex a(ccc $$0) {
+      return $$0.F() > 0 ? f : a;
    }
 }

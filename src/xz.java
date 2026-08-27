@@ -1,40 +1,35 @@
-public class xz implements va<ws> {
-   private final int a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public xz(int $$0, int $$1, int $$2) {
-      this.a = $$0;
+public class xz implements vd<ww> {
+   private final int a;
+   private final byte b;
+
+   public xz(biq $$0, byte $$1) {
+      this.a = $$0.ai();
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public xz(sl $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.m();
-      this.c = $$0.readInt();
+   public xz(so $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.k(this.a);
-      $$0.c(this.b);
-      $$0.p(this.c);
+   public void a(so $$0) {
+      $$0.p(this.a);
+      $$0.k(this.b);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public biq a(cpv $$0) {
+      return $$0.a(this.a);
    }
 
-   public int d() {
+   public byte a() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

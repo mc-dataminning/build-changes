@@ -1,11 +1,10 @@
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public abstract class duo extends duk {
-   protected abstract int a(arx var1, gw var2);
-
+public abstract class duo extends dup {
    @Override
-   public Stream<gw> a_(dui $$0, arx $$1, gw $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   public final Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
+
+   protected abstract boolean a(dun var1, asc var2, gw var3);
 }

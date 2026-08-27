@@ -1,12 +1,11 @@
-public class apy {
-   public static final aqd<bud> a = a("acquirable_job_site");
-   public static final aqd<bud> b = a("village");
-   public static final aqd<bud> c = a("bee_home");
+public final class apy {
+   public static final aqi<eal> a = a("water");
+   public static final aqi<eal> b = a("lava");
 
    private apy() {
    }
 
-   private static aqd<bud> a(String $$0) {
-      return aqd.a(je.S, new aeu($$0));
+   private static aqi<eal> a(String $$0) {
+      return aqi.a(je.w, new aex($$0));
    }
 }

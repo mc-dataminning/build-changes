@@ -1,91 +1,12 @@
-public class dci {
-   public static final aet<dch> a = a("base");
-   public static final aet<dch> b = a("square_bottom_left");
-   public static final aet<dch> c = a("square_bottom_right");
-   public static final aet<dch> d = a("square_top_left");
-   public static final aet<dch> e = a("square_top_right");
-   public static final aet<dch> f = a("stripe_bottom");
-   public static final aet<dch> g = a("stripe_top");
-   public static final aet<dch> h = a("stripe_left");
-   public static final aet<dch> i = a("stripe_right");
-   public static final aet<dch> j = a("stripe_center");
-   public static final aet<dch> k = a("stripe_middle");
-   public static final aet<dch> l = a("stripe_downright");
-   public static final aet<dch> m = a("stripe_downleft");
-   public static final aet<dch> n = a("small_stripes");
-   public static final aet<dch> o = a("cross");
-   public static final aet<dch> p = a("straight_cross");
-   public static final aet<dch> q = a("triangle_bottom");
-   public static final aet<dch> r = a("triangle_top");
-   public static final aet<dch> s = a("triangles_bottom");
-   public static final aet<dch> t = a("triangles_top");
-   public static final aet<dch> u = a("diagonal_left");
-   public static final aet<dch> v = a("diagonal_up_right");
-   public static final aet<dch> w = a("diagonal_up_left");
-   public static final aet<dch> x = a("diagonal_right");
-   public static final aet<dch> y = a("circle");
-   public static final aet<dch> z = a("rhombus");
-   public static final aet<dch> A = a("half_vertical");
-   public static final aet<dch> B = a("half_horizontal");
-   public static final aet<dch> C = a("half_vertical_right");
-   public static final aet<dch> D = a("half_horizontal_bottom");
-   public static final aet<dch> E = a("border");
-   public static final aet<dch> F = a("curly_border");
-   public static final aet<dch> G = a("gradient");
-   public static final aet<dch> H = a("gradient_up");
-   public static final aet<dch> I = a("bricks");
-   public static final aet<dch> J = a("globe");
-   public static final aet<dch> K = a("creeper");
-   public static final aet<dch> L = a("skull");
-   public static final aet<dch> M = a("flower");
-   public static final aet<dch> N = a("mojang");
-   public static final aet<dch> O = a("piglin");
+import javax.annotation.Nullable;
 
-   private static aet<dch> a(String $$0) {
-      return aet.a(je.c, new aeu($$0));
+public class dci extends dbu {
+   protected dci(dfi.d $$0) {
+      super(czx.b.b, $$0);
    }
 
-   public static dch a(ht<dch> $$0) {
-      ht.a($$0, a, new dch("b"));
-      ht.a($$0, b, new dch("bl"));
-      ht.a($$0, c, new dch("br"));
-      ht.a($$0, d, new dch("tl"));
-      ht.a($$0, e, new dch("tr"));
-      ht.a($$0, f, new dch("bs"));
-      ht.a($$0, g, new dch("ts"));
-      ht.a($$0, h, new dch("ls"));
-      ht.a($$0, i, new dch("rs"));
-      ht.a($$0, j, new dch("cs"));
-      ht.a($$0, k, new dch("ms"));
-      ht.a($$0, l, new dch("drs"));
-      ht.a($$0, m, new dch("dls"));
-      ht.a($$0, n, new dch("ss"));
-      ht.a($$0, o, new dch("cr"));
-      ht.a($$0, p, new dch("sc"));
-      ht.a($$0, q, new dch("bt"));
-      ht.a($$0, r, new dch("tt"));
-      ht.a($$0, s, new dch("bts"));
-      ht.a($$0, t, new dch("tts"));
-      ht.a($$0, u, new dch("ld"));
-      ht.a($$0, v, new dch("rd"));
-      ht.a($$0, w, new dch("lud"));
-      ht.a($$0, x, new dch("rud"));
-      ht.a($$0, y, new dch("mc"));
-      ht.a($$0, z, new dch("mr"));
-      ht.a($$0, A, new dch("vh"));
-      ht.a($$0, B, new dch("hh"));
-      ht.a($$0, C, new dch("vhr"));
-      ht.a($$0, D, new dch("hhb"));
-      ht.a($$0, E, new dch("bo"));
-      ht.a($$0, F, new dch("cbo"));
-      ht.a($$0, G, new dch("gra"));
-      ht.a($$0, H, new dch("gru"));
-      ht.a($$0, I, new dch("bri"));
-      ht.a($$0, J, new dch("glb"));
-      ht.a($$0, K, new dch("cre"));
-      ht.a($$0, L, new dch("sku"));
-      ht.a($$0, M, new dch("flo"));
-      ht.a($$0, N, new dch("moj"));
-      return ht.a($$0, O, new dch("pig"));
+   @Override
+   public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
+      csw.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

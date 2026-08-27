@@ -1,42 +1,71 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cqm {
-   public static final Codec<cqm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aoy.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
+public record cqm(qx d, Optional<cqm.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cqm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(qx.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cqm.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
             .apply($$0, cqm::new)
    );
-   public static final cqm b = new cqm(aoz.h, 6000, 8, 2.0);
-   private final hg<aoy> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   public static final Codec<bfi<cqm>> c = bfi.a(b);
 
-   public cqm(hg<aoy> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public cqm() {
+      this(new qx(), Optional.empty());
    }
 
-   public hg<aoy> a() {
-      return this.c;
+   public cqm(qx d, Optional<cqm.a> e) {
+      if (d.e("id")) {
+         aex $$2 = aex.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
+         } else {
+            d.r("id");
+         }
+      }
+
+      this.d = d;
+      this.e = e;
    }
 
-   public int b() {
+   public qx a() {
       return this.d;
    }
 
-   public int c() {
+   public Optional<cqm.a> b() {
       return this.e;
    }
 
-   public double d() {
-      return this.f;
+   public qx c() {
+      return this.d;
+   }
+
+   public Optional<cqm.a> d() {
+      return this.e;
+   }
+
+   public static record a(arq<Integer> b, arq<Integer> c) {
+      private static final arq<Integer> d = new arq<>(0, 15);
+      public static final Codec<cqm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cqm.a::new)
+      );
+
+      private static DataResult<arq<Integer>> a(arq<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<arq<Integer>> a(String $$0) {
+         return arg.a(arq.a.optionalFieldOf($$0, d), cqm.a::a);
+      }
+
+      public arq<Integer> a() {
+         return this.b;
+      }
+
+      public arq<Integer> b() {
+         return this.c;
+      }
    }
 }

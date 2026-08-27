@@ -1,17 +1,16 @@
-public class fwh extends ftt<bzx, fhq<bzx>> {
-   private static final aeu a = new aeu("textures/entity/zombie_villager/zombie_villager.png");
+public class fwh extends fvi {
+   private static final aex a = new aex("textures/entity/skeleton/wither_skeleton.png");
 
-   public fwh(ftc.a $$0) {
-      super($$0, new fhq<>($$0.a(fhw.cc)), 0.5F);
-      this.a(new fxa<>(this, new fhq($$0.a(fhw.cd)), new fhq($$0.a(fhw.ce)), $$0.g()));
-      this.a(new fxv<>(this, $$0.e(), "zombie_villager"));
+   public fwh(fth.a $$0) {
+      super($$0, fib.bQ, fib.bR, fib.bS);
    }
 
-   public aeu a(bzx $$0) {
+   @Override
+   public aex a(byr $$0) {
       return a;
    }
 
-   protected boolean b(bzx $$0) {
-      return super.a($$0) || $$0.gk();
+   protected void a(byr $$0, elp $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

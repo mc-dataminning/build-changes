@@ -1,38 +1,32 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class abh implements vd<abd> {
+   private final int a;
+   private final gw b;
 
-public record abh(String a, Instant b, long c, @Nullable tt d, to.b e) implements va<aaz> {
-   public abh(sl $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(tt::a), new to.b($$0));
+   public abh(int $$0, gw $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public abh(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a, 256);
+   public void a(so $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
-      $$0.b(this.c);
-      $$0.a(this.d, tt::a);
-      this.e.a($$0);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public Instant d() {
+   public int a() {
+      return this.a;
+   }
+
+   public gw d() {
       return this.b;
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   @Nullable
-   public tt f() {
-      return this.d;
-   }
-
-   public to.b g() {
-      return this.e;
    }
 }

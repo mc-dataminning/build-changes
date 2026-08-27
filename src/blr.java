@@ -1,101 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class blr extends bks<bjd> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private gw h;
-   private int i;
-   private int j;
-   private int k;
-
-   public blr(float $$0) {
-      super(ImmutableMap.of(bsc.w, bsd.a, bsc.m, bsd.b));
-      this.g = $$0;
+public class blr {
+   public static bky<bjg> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   protected boolean a(akn $$0, bjd $$1) {
-      return $$1.i_() && this.b($$0, $$1);
-   }
-
-   protected void a(akn $$0, bjd $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
-
-   protected void b(akn $$0, bjd $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(akn $$0, bjd $$1, long $$2) {
-      return $$1.i_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(akn $$0, bjd $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.F().a();
-            this.j--;
-            this.k = 5;
-         }
-      }
-   }
-
-   private void a(bjd $$0, gw $$1) {
-      $$0.dM().a(bsc.m, new bsf($$1, this.g, 0));
-   }
-
-   private boolean b(akn $$0, bjd $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
-   }
-
-   private boolean c(akn $$0, bjd $$1) {
-      gw $$2 = $$1.dk();
-      gw $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
-   }
-
-   private boolean d(akn $$0, bjd $$1) {
-      return this.a($$0, $$1.dk());
-   }
-
-   private boolean a(akn $$0, gw $$1) {
-      return $$0.a_($$1).a(apo.R);
-   }
-
-   private Optional<gw> a(bjd $$0) {
-      return $$0.dM().c(bsc.w);
-   }
-
-   private boolean e(akn $$0, bjd $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(akn $$0, bjd $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   public static <E extends bjg> bky<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return boj.a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$4 -> {
+         boj<E, ? extends bok<? extends K1, bsk>> $$5 = $$2 ? $$4.a(bsh.m) : $$4.c(bsh.m);
+         return $$4.group($$4.a(bsh.n), $$5, $$4.b(bsh.K), $$4.a(bsh.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               byn $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dL().B_().a($$11.dl())) {
+                  bsk $$12 = new bsk(new bli($$11, false), $$1, 0);
+                  $$4x.a(new bli($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

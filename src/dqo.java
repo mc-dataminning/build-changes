@@ -1,16 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dqo implements dpv {
-   public static final Codec<dqo> a = arb.b(duh.c).fieldOf("features").xmap(dqo::new, $$0 -> $$0.b).codec();
-   public final hk<duh> b;
+public class dqo implements dqa {
+   public static final Codec<dqo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(dqi.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dqo::new)
+   );
+   public final List<dqi.a> b;
 
-   public dqo(hk<duh> $$0) {
-      this.b = $$0;
+   public dqo(dfj $$0, dfj $$1) {
+      this(ImmutableList.of(dqi.a(new dyg($$0), $$1)));
    }
 
-   @Override
-   public Stream<dne<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public dqo(List<dqi.a> $$0) {
+      this.b = $$0;
    }
 }

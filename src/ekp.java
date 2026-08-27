@@ -1,7 +1,3 @@
 public interface ekp {
-   void a(boolean var1);
-
-   void a();
-
-   void b();
+   eko createMonitor(long var1);
 }

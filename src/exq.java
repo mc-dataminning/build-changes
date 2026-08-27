@@ -1,9 +1,21 @@
-public class exq {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+public class exq extends eyk {
+   public exq(tl $$0) {
+      super($$0);
+   }
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+   @Override
+   public boolean ay_() {
+      return false;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

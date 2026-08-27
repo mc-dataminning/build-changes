@@ -1,87 +1,91 @@
 import javax.annotation.Nullable;
 
-public class crq extends crp implements czr {
-   public static final dfv a = dfu.C;
-   public static final dfy b = dfu.P;
-   protected final eib c;
-   protected final eib d;
-   protected final eib e;
-   protected final eib f;
-   protected final eib g;
-   protected final eib h;
+public abstract class crq extends csi {
+   public static final dgd a = cwo.aC;
+   public static final dga b = dfz.r;
 
-   public crq(int $$0, int $$1, dfd.d $$2) {
-      super($$2);
-      this.k(this.n().a(a, Boolean.valueOf(false)).a(b, hc.b));
-      this.g = csq.a((double)$$1, 0.0, (double)$$1, (double)(16 - $$1), (double)$$0, (double)(16 - $$1));
-      this.h = csq.a((double)$$1, (double)(16 - $$0), (double)$$1, (double)(16 - $$1), 16.0, (double)(16 - $$1));
-      this.c = csq.a((double)$$1, (double)$$1, (double)(16 - $$0), (double)(16 - $$1), (double)(16 - $$1), 16.0);
-      this.d = csq.a((double)$$1, (double)$$1, 0.0, (double)(16 - $$1), (double)(16 - $$1), (double)$$0);
-      this.e = csq.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16 - $$1), (double)(16 - $$1));
-      this.f = csq.a((double)(16 - $$0), (double)$$1, (double)$$1, 16.0, (double)(16 - $$1), (double)(16 - $$1));
+   protected crq(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      hc $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return this.c;
-         case d:
-            return this.d;
-         case f:
-            return this.e;
-         case e:
-            return this.f;
-         case a:
-            return this.h;
-         case b:
-         default:
-            return this.g;
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bgy.b;
+      }
+   }
+
+   protected abstract void a(cpv var1, gw var2, cbu var3);
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
+      if ($$4.A()) {
+         dcv $$5 = $$0.c_($$1);
+         if ($$5 instanceof dck) {
+            ((dck)$$5).a($$4.y());
+         }
       }
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      hc $$3 = $$0.c(b);
-      gw $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
+   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcv $$5 = $$1.c_($$2);
+         if ($$5 instanceof dck) {
+            if ($$1 instanceof akr) {
+               bgu.a($$1, $$2, (dck)$$5);
+               ((dck)$$5).a((akr)$$1, ehn.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
-      }
+   public boolean d_(dfj $$0) {
+      return true;
+   }
 
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public int a(dfj $$0, cpv $$1, gw $$2) {
+      return cel.a($$1.c_($$2));
+   }
+
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   public dfe a(cli $$0) {
-      cpr $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      return this.n().a(a, Boolean.valueOf($$1.b_($$2).a() == eai.c)).a(b, $$0.k());
-   }
-
-   @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(a) ? eai.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, b);
+   protected static <T extends dcv> dcw<T> a(cpv $$0, dcx<T> $$1, dcx<? extends dck> $$2) {
+      return $$0.B ? null : a($$1, $$2, dck::a);
    }
 }

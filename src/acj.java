@@ -1,24 +1,24 @@
-public class acj implements va<aaz> {
-   private final int a;
+public class acj implements vd<abd> {
+   private final aex a;
 
-   public acj(int $$0) {
-      this.a = $$0;
+   public acj(cmk<?> $$0) {
+      this.a = $$0.a();
    }
 
-   public acj(sl $$0) {
-      this.a = $$0.m();
+   public acj(so $$0) {
+      this.a = $$0.s();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public aex a() {
       return this.a;
    }
 }

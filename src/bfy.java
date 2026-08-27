@@ -1,40 +1,64 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public abstract class bfy {
-   private static final Codec<Either<Integer, bfy>> a = Codec.either(Codec.INT, jd.N.q().dispatch(bfy::c, bfz::codec));
-   public static final Codec<bfy> c = a.xmap(
-      $$0 -> (bfy)$$0.map(bfv::a, $$0x -> $$0x), $$0 -> $$0.c() == bfz.a ? Either.left(((bfv)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bfy> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bfy> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bfy> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
-   }
-
-   public static <T extends bfy> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return arb.a(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
+public class bfy extends bgd {
+   public static final Codec<bfy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bfy::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
+         Function.identity()
       );
+   private final float b;
+   private final float f;
+   private final int g;
+   private final int h;
+
+   public static bfy a(float $$0, float $$1, int $$2, int $$3) {
+      return new bfy($$0, $$1, $$2, $$3);
    }
 
-   public abstract int a(arx var1);
+   private bfy(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+   }
 
-   public abstract int a();
+   @Override
+   public int a(asc $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
 
-   public abstract int b();
+   public static int a(asc $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)arx.a(arx.c($$0, $$1, $$2), $$3, $$4);
+   }
 
-   public abstract bfz<?> c();
+   @Override
+   public int a() {
+      return this.g;
+   }
+
+   @Override
+   public int b() {
+      return this.h;
+   }
+
+   @Override
+   public bge<?> c() {
+      return bge.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   }
 }

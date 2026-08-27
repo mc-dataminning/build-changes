@@ -1,139 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class mo extends nb<cqo> {
-   public mo(jm $$0, CompletableFuture<hi.b> $$1) {
-      super($$0, je.ap, $$1);
-   }
+public class mo implements mn.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(hi.b $$0) {
-      this.b(apn.a).a(cqv.X).a(cqv.V).a(cqv.T).a(cqv.R);
-      this.b(apn.b).b(apn.a).a(cqv.W).a(cqv.S).a(cqv.U).a(cqv.Q).a(cqv.P);
-      this.b(apn.c).a(cqv.M).a(cqv.N);
-      this.b(apn.d).a(cqv.K).a(cqv.L);
-      this.b(apn.e).a(cqv.D).a(cqv.H).a(cqv.I).a(cqv.J).a(cqv.G).a(cqv.E);
-      this.b(apn.f).a(cqv.A).a(cqv.B).a(cqv.C);
-      this.b(apn.g).a(cqv.t).a(cqv.v).a(cqv.u);
-      this.b(apn.h).a(cqv.p).a(cqv.q).a(cqv.n).a(cqv.o);
-      this.b(apn.i).a(cqv.z).a(cqv.x).a(cqv.y);
-      this.b(apn.j).a(cqv.i).a(cqv.j).a(cqv.k).a(cqv.m).a(cqv.l).a(cqv.F);
-      this.b(apn.k).a(cqv.r).a(cqv.s).a(cqv.w);
-      nb.b<cqo> $$1 = this.b(apn.m);
-      crc.a.a.a().forEach($$1::a);
-      nb.b<cqo> $$2 = this.b(apn.l);
-      crc.a.b.a().forEach($$2::a);
-      this.b(apn.n).a(cqv.ah).a(cqv.ai).a(cqv.aj).a(cqv.ak).a(cqv.al);
-      this.b(apn.p).b(apn.c);
-      this.b(apn.q).a(cqv.f);
-      this.b(apn.r).a(cqv.q).a(cqv.d).a(cqv.G);
-      this.b(apn.s).a(cqv.z).a(cqv.x);
-      this.b(apn.t)
-         .b(apn.b)
-         .b(apn.d)
-         .b(apn.c)
-         .b(apn.e)
-         .b(apn.g)
-         .b(apn.h)
-         .b(apn.i)
-         .b(apn.j)
-         .a(cqv.O)
-         .a(cqv.Y)
-         .a(cqv.e)
-         .a(cqv.w)
-         .a(cqv.f)
-         .a(cqv.r)
-         .a(cqv.d)
-         .a(cqv.b)
-         .a(cqv.c)
-         .a(cqv.g)
-         .a(cqv.h)
-         .a(cqv.s)
-         .a(cqv.Z)
-         .a(cqv.aa);
-      this.b(apn.u).b(apn.f);
-      this.b(apn.X).a(cqv.ab);
-      this.b(apn.v).b(apn.a);
-      this.b(apn.W).b(apn.b).b(apn.d);
-      this.b(apn.w).a(cqv.W).a(cqv.U).a(cqv.S).a(cqv.X).a(cqv.V).a(cqv.T);
-      this.b(apn.x).a(cqv.Q).a(cqv.P).a(cqv.R);
-      this.b(apn.y).a(cqv.f).a(cqv.b).a(cqv.r).a(cqv.d).a(cqv.p).b(apn.e).a(cqv.F);
-      this.b(apn.z).a(cqv.f);
-      this.b(apn.A).b(apn.i);
-      this.b(apn.B).b(apn.b);
-      this.b(apn.C).a(cqv.g).a(cqv.h);
-      this.b(apn.D).b(apn.f).b(apn.g).a(cqv.s).a(cqv.w).a(cqv.O).b(apn.e);
-      this.b(apn.E).b(apn.c).b(apn.d).b(apn.h).b(apn.j).a(cqv.Y).a(cqv.e).a(cqv.Z).a(cqv.aa).a(cqv.r).a(cqv.d).a(cqv.b).a(cqv.c);
-      this.b(apn.F).b(apn.c);
-      this.b(apn.G).b(apn.b);
-      this.b(apn.I).a(cqv.g);
-      this.b(apn.J).a(cqv.f);
-      this.b(apn.K).a(cqv.b).a(cqv.D);
-      this.b(apn.L).a(cqv.r);
-      this.b(apn.M).a(cqv.d);
-      this.b(apn.N).a(cqv.p);
-      this.b(apn.O).a(cqv.p).a(cqv.q).a(cqv.n).a(cqv.o).a(cqv.m).a(cqv.x);
-      this.b(apn.P).a(cqv.l);
-      this.b(apn.o)
-         .a(cqv.b)
-         .a(cqv.c)
-         .a(cqv.d)
-         .a(cqv.e)
-         .a(cqv.f)
-         .a(cqv.i)
-         .a(cqv.j)
-         .a(cqv.k)
-         .a(cqv.l)
-         .a(cqv.m)
-         .a(cqv.n)
-         .a(cqv.o)
-         .a(cqv.p)
-         .a(cqv.q)
-         .a(cqv.r)
-         .a(cqv.s)
-         .a(cqv.t)
-         .a(cqv.u)
-         .a(cqv.v)
-         .a(cqv.w)
-         .a(cqv.x)
-         .a(cqv.y)
-         .a(cqv.z)
-         .a(cqv.A)
-         .a(cqv.B)
-         .a(cqv.C)
-         .a(cqv.D)
-         .a(cqv.F)
-         .a(cqv.G)
-         .a(cqv.H)
-         .a(cqv.I)
-         .a(cqv.J)
-         .a(cqv.Y)
-         .a(cqv.Z)
-         .a(cqv.aa);
-      this.b(apn.H).b(apn.l);
-      this.b(apn.Q).b(apn.m);
-      this.b(apn.R).a(cqv.af);
-      this.b(apn.S).a(cqv.ae).a(cqv.ac).a(cqv.af).a(cqv.ad);
-      this.b(apn.T).a(cqv.ab);
-      this.b(apn.U).b(apn.m);
-      this.b(apn.V).a(cqv.ai).a(cqv.aj);
-      this.b(apn.ab).a(cqv.P);
-      this.b(apn.Y).b(apn.b).b(apn.d);
-      this.b(apn.Z).a(cqv.g).a(cqv.h);
-      this.b(apn.aa).b(apn.b).b(apn.d).a(cqv.g).a(cqv.h);
-      this.b(apn.ae).a(cqv.Y);
-      this.b(apn.af).a(cqv.Y);
-      this.b(apn.ag).a(cqv.a);
-      this.b(apn.ah).a(cqv.d).a(cqv.e).a(cqv.H).a(cqv.I).a(cqv.G).a(cqv.W).a(cqv.X).a(cqv.F).a(cqv.ab).a(cqv.L).a(cqv.q).a(cqv.N).b(apn.n);
-      this.b(apn.ai).a(cqv.f).a(cqv.P).b(apn.i).b(apn.k).b(apn.m).b(apn.f).a(cqv.h);
-      this.b(apn.aj).a(cqv.f);
-      this.b(apn.ak).a(cqv.d).a(cqv.e).a(cqv.W).a(cqv.q).a(cqv.L).a(cqv.N).a(cqv.H).a(cqv.I).a(cqv.G).a(cqv.F);
-      this.b(apn.al).b(apn.d);
-      this.b(apn.am).a(cqv.aa);
-      this.b(apn.an).a(cqv.W).a(cqv.X);
-      this.b(apn.ao).b(apn.d);
-      this.b(apn.ap).a(cqv.g).a(cqv.h);
-      this.b(apn.aq).a(cqv.d).a(cqv.e).a(cqv.W).a(cqv.q).a(cqv.L).a(cqv.N).a(cqv.H).a(cqv.I).a(cqv.G).a(cqv.F);
-      this.b(apn.ac).a(cqv.z).a(cqv.Y).a(cqv.h).a(cqv.G).a(cqv.H).a(cqv.I).a(cqv.g).a(cqv.x);
-      this.b(apn.ad).a(cqv.A).a(cqv.ag).a(cqv.ae).a(cqv.f).a(cqv.B).a(cqv.ac).a(cqv.r).a(cqv.s).a(cqv.af).a(cqv.ad).a(cqv.w).a(cqv.C);
+   public qx apply(String $$0, qx $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static qx a(String $$0, qx $$1) {
+      dzb $$2 = new dzb();
+      int $$3 = rj.b($$1, 500);
+      int $$4 = 3563;
+      if ($$3 < 3563) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3563, $$0});
+      }
+
+      qx $$5 = ata.f.a(atb.a(), $$1, $$3);
+      $$2.a(jd.f.p(), $$5);
+      return $$2.a(new qx());
    }
 }

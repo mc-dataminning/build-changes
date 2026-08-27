@@ -1,39 +1,24 @@
-public class fuu extends fui<bvf, fey<bvf>> {
-   private static final aeu a = new aeu("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fey<bvf> j;
-   private final fey<bvf> k;
-   private final fey<bvf> l = this.a();
+public class fuu extends fun<bzk, fge<bzk>> {
+   private static final aex a = new aex("textures/entity/phantom.png");
 
-   public fuu(ftc.a $$0) {
-      super($$0, new fgf<>($$0.a(fhw.aV)), 0.2F);
-      this.k = new fgg<>($$0.a(fhw.aW));
-      this.j = new fgh<>($$0.a(fhw.aX));
+   public fuu(fth.a $$0) {
+      super($$0, new fge<>($$0.a(fib.aB)), 0.75F);
+      this.a(new fxn<>(this));
    }
 
-   public aeu a(bvf $$0) {
+   public aex a(bzk $$0) {
       return a;
    }
 
-   public void a(bvf $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
-      int $$6 = $$0.gc();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
-         }
-      }
-
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(bzk $$0, elp $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
    }
 
-   protected void a(bvf $$0, elk $$1, float $$2, float $$3, float $$4) {
-      $$1.a(0.0F, ars.b($$2 * 0.05F) * 0.08F, 0.0F);
+   protected void a(bzk $$0, elp $$1, float $$2, float $$3, float $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
+      $$1.a(a.b.rotationDegrees($$0.dD()));
    }
 }

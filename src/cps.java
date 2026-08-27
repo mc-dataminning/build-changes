@@ -1,55 +1,103 @@
-public interface cps {
-   int D_();
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-   int C_();
+public enum cps implements asp {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   default int aj() {
-      return this.C_() + this.D_();
+   public static final cps e = a;
+   public static final asp.a<cps> f = asp.a(cps::values);
+   private static final IntFunction<cps> g = aqs.a(cps::a, values(), aqs.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final tl k;
+   private final tl l;
+
+   private cps(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = tl.c("selectWorld.gameMode." + $$1);
+      this.l = tl.c("gameMode." + $$1);
    }
 
-   default int ak() {
-      return this.am() - this.al();
+   public int a() {
+      return this.i;
    }
 
-   default int al() {
-      return hz.a(this.C_());
+   public String b() {
+      return this.j;
    }
 
-   default int am() {
-      return hz.a(this.aj() - 1) + 1;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   default boolean r(gw $$0) {
-      return this.d($$0.v());
+   public tl d() {
+      return this.l;
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.C_() || $$0 >= this.aj();
+   public tl e() {
+      return this.k;
    }
 
-   default int e(int $$0) {
-      return this.f(hz.a($$0));
+   public void a(cbr $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   default int f(int $$0) {
-      return $$0 - this.al();
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   default int g(int $$0) {
-      return $$0 + this.al();
+   public boolean g() {
+      return this == b;
    }
 
-   static cps e(final int $$0, final int $$1) {
-      return new cps() {
-         @Override
-         public int D_() {
-            return $$1;
-         }
+   public boolean h() {
+      return this == a || this == c;
+   }
 
-         @Override
-         public int C_() {
-            return $$0;
-         }
-      };
+   public static cps a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static cps a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cps a(String $$0, @Nullable cps $$1) {
+      cps $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable cps $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static cps b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

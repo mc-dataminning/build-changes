@@ -1,12 +1,5 @@
-public enum cjr {
-   a(n.p),
-   b(n.o),
-   c(n.l),
-   d(n.n);
-
-   public final n e;
-
-   private cjr(n $$0) {
-      this.e = $$0;
+public class cjr extends chp {
+   protected cjr(cks $$0, int $$1, float $$2, cja.a $$3) {
+      super((float)$$1, $$2, $$0, apt.bB, $$3);
    }
 }

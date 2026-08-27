@@ -1,84 +1,100 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
+import com.google.common.base.Charsets;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.nio.file.StandardOpenOption;
 
-public class are implements Closeable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final Path c;
-   private final FileSystem d;
+public class are implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-   public are(Path $$0) {
-      this.b = $$0;
-      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
+   public static are a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
       try {
-         this.d = ac.e.newFileSystem(this.c, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
-      }
-   }
-
-   public void a(Path $$0, String $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0, File $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.copy($$1.toPath(), $$3);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0) {
-      try {
-         Path $$1 = this.d.getPath(File.separator);
-         if (Files.isRegularFile($$0)) {
-            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
-            Files.copy($$2, $$0);
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw are.a.a($$1);
          } else {
-            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-               for (Path $$4 : $$3.collect(Collectors.toList())) {
-                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
-                  Files.createDirectories($$5.getParent());
-                  Files.copy($$4, $$5);
-               }
-            }
+            return new are($$2, $$3);
          }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
+
+         throw var6;
       }
+   }
+
+   private are(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void close() {
+   public void close() throws IOException {
       try {
-         this.d.close();
-         Files.move(this.c, this.b);
-         a.info("Compressed to {}", this.b);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
+   }
+
+   public boolean a() {
+      return this.c.isValid();
+   }
+
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
+         }
+
+         return var4;
+      } catch (AccessDeniedException var10) {
+         return true;
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
+   }
+
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
+   }
+
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
+      }
+
+      public static are.a a(Path $$0) {
+         return new are.a($$0, "already locked (possibly by other Minecraft instance?)");
       }
    }
 }

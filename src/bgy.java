@@ -1,37 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public enum bgy {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-public class bgy {
-   public static final Codec<bgy> a = RecordCodecBuilder.create($$0 -> $$0.group(dlo.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bgy::new));
-   private final dlo b;
-
-   public bgy(dlo $$0) {
-      this.b = $$0;
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   public bgy(long $$0, aeu $$1) {
-      this(a($$0, Optional.of($$1)));
+   public boolean b() {
+      return this == a;
    }
 
-   public bgy(long $$0, Optional<aeu> $$1) {
-      this(a($$0, $$1));
+   public boolean c() {
+      return this == a || this == b;
    }
 
-   private static dlo a(long $$0, Optional<aeu> $$1) {
-      dlc.a $$2 = dlc.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
-      }
-
-      return new dlo($$2.a());
-   }
-
-   public static dlc.a a(aeu $$0) {
-      return dlc.a($$0.toString());
-   }
-
-   public arx a() {
-      return this.b;
+   public static bgy a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

@@ -1,77 +1,68 @@
-import java.util.function.Predicate;
+public class bpg extends bpe {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class bpg extends bpn {
-   private static final int g = 240;
-   private final Predicate<bgq> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public bpg(bjd $$0, Predicate<bgq> $$1) {
+   public bpg(bji $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
       super($$0);
-      this.h = $$1;
-   }
-
-   public bpg(bjd $$0, int $$1, Predicate<bgq> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      if (!super.a()) {
-         return false;
-      } else {
-         return !this.d.dK().X().b(cpm.c) ? false : this.a(this.d.dK().ai()) && !this.h();
+   public void a() {
+      if (this.r && this.d.aY()) {
+         this.d.f(this.d.do().b(0.0, 0.005, 0.0));
       }
-   }
 
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
-   }
+      if (this.k == bpe.a.b && !this.d.L().l()) {
+         double $$0 = this.e - this.d.dq();
+         double $$1 = this.f - this.d.ds();
+         double $$2 = this.g - this.d.dw();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.A(0.0F);
+         } else {
+            float $$4 = (float)(arx.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dB(), $$4, (float)this.o));
+            this.d.aU = this.d.dB();
+            this.d.aW = this.d.dB();
+            float $$5 = (float)(this.h * this.d.b(bkm.d));
+            if (this.d.aY()) {
+               this.d.w($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(arx.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = arx.a(arx.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dD(), $$7, 5.0F));
+               }
 
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.di(), 2.0) && this.a(this.d.dK().ai());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.d.dK().a(this.d.ah(), this.e, -1);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.d.ee().a(20) == 0) {
-         this.d.dK().c(1019, this.e, 0);
-         if (!this.d.aF) {
-            this.d.a(this.d.fm());
+               float $$8 = arx.b(this.d.dD() * (float) (Math.PI / 180.0));
+               float $$9 = arx.a(this.d.dD() * (float) (Math.PI / 180.0));
+               this.d.bm = $$8 * $$5;
+               this.d.bl = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(arx.g(this.d.dB() - $$4));
+               float $$11 = a($$10);
+               this.d.w($$5 * this.q * $$11);
+            }
          }
-      }
-
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dK().a(this.d.ah(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dK().ai())) {
-         this.d.dK().a(this.e, false);
-         this.d.dK().c(1021, this.e, 0);
-         this.d.dK().c(2001, this.e, csq.i(this.d.dK().a_(this.e)));
+      } else {
+         this.d.w(0.0F);
+         this.d.C(0.0F);
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
    }
 
-   private boolean a(bgq $$0) {
-      return this.h.test($$0);
+   private static float a(float $$0) {
+      return 1.0F - arx.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

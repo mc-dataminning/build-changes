@@ -1,12 +1,21 @@
-public interface wl extends vd {
-   @Override
-   default sk b() {
-      return sk.e;
+import java.util.HashSet;
+import java.util.Set;
+
+public record wl(Set<hz> b, Set<hz> c) implements vw {
+   public static final aex a = new aex("debug/village_sections");
+
+   public wl(so $$0) {
+      this($$0.a(HashSet::new, so::g), $$0.a(HashSet::new, so::g));
    }
 
-   void a(wm var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.b, so::a);
+      $$0.a(this.c, so::a);
+   }
 
-   void a(wn var1);
-
-   void a(wo var1);
+   @Override
+   public aex a() {
+      return a;
+   }
 }

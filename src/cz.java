@@ -6,7 +6,7 @@ public class cz extends cw<cz.a> {
       return new cz.a($$1);
    }
 
-   public void a(ako $$0) {
+   public void a(aks $$0) {
       this.a($$0, $$0x -> true);
    }
 

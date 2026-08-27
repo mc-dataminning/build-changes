@@ -1,25 +1,25 @@
-public class coi extends cnj {
-   public coi(cnj.a $$0, biq... $$1) {
-      super($$0, cnk.b, $$1);
+public class coi extends cno {
+   public coi(cno.a $$0, biv... $$1) {
+      super($$0, cnp.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 1 + ($$0 - 1) * 8;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return this.a($$0) + 20;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public boolean a(cnj $$0) {
-      return super.a($$0) && $$0 != cnn.j;
+   public float a(int $$0, bjl $$1) {
+      return $$1 == bjl.e ? (float)$$0 * 2.5F : 0.0F;
    }
 }

@@ -1,26 +1,42 @@
-public class fmw extends fkl {
-   private static final int a = 12235202;
+public class fmw extends fls {
+   private final biq a;
+   private int b;
+   private final int D;
+   private final iv E;
 
-   protected fmw(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fmk $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   public fmw(fix $$0, biq $$1, iv $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public static class a implements fls<ja> {
-      private final fmk a;
+   public fmw(fix $$0, biq $$1, iv $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.do());
+   }
 
-      public a(fmk $$0) {
-         this.a = $$0;
+   private fmw(fix $$0, biq $$1, iv $$2, int $$3, ehn $$4) {
+      super($$0, $$1.dq(), $$1.e(0.5), $$1.dw(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
+   }
+
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         arx $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fmw($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

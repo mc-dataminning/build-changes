@@ -1,31 +1,23 @@
-import java.util.function.Predicate;
-
-public abstract class cjq extends civ {
-   public static final Predicate<cja> c = $$0 -> $$0.a(apw.at);
-   public static final Predicate<cja> d = c.or($$0 -> $$0.a(cjd.tA));
-
-   public cjq(civ.a $$0) {
+public class cjq extends cja {
+   public cjq(cja.a $$0) {
       super($$0);
    }
 
-   public Predicate<cja> e() {
-      return this.b();
-   }
+   @Override
+   public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
+      if ($$0.A() && !($$2 instanceof cbu)) {
+         if (!$$1.dL().B && $$2.bw()) {
+            $$2.b($$0.y());
+            if ($$2 instanceof bji) {
+               ((bji)$$2).fI();
+            }
 
-   public abstract Predicate<cja> b();
+            $$0.h(1);
+         }
 
-   public static cja a(bjb $$0, Predicate<cja> $$1) {
-      if ($$1.test($$0.b(bgs.b))) {
-         return $$0.b(bgs.b);
+         return bgy.a($$1.dL().B);
       } else {
-         return $$1.test($$0.b(bgs.a)) ? $$0.b(bgs.a) : cja.b;
+         return bgy.d;
       }
    }
-
-   @Override
-   public int c() {
-      return 1;
-   }
-
-   public abstract int d();
 }

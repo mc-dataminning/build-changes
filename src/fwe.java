@@ -1,34 +1,20 @@
-public class fwe extends fui<bvp, fho<bvp>> {
-   private static final aeu a = new aeu("textures/entity/wolf/wolf.png");
-   private static final aeu i = new aeu("textures/entity/wolf/wolf_tame.png");
-   private static final aeu j = new aeu("textures/entity/wolf/wolf_angry.png");
+public class fwe extends fun<cay, fhp<cay>> {
+   private static final aex a = new aex("textures/entity/warden/warden.png");
+   private static final aex i = new aex("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final aex j = new aex("textures/entity/warden/warden_heart.png");
+   private static final aex k = new aex("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final aex l = new aex("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public fwe(ftc.a $$0) {
-      super($$0, new fho<>($$0.a(fhw.bV)), 0.5F);
-      this.a(new fxz(this));
+   public fwe(fth.a $$0) {
+      super($$0, new fhp<>($$0.a(fib.bL)), 0.9F);
+      this.a(new fyb<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fhp::e));
+      this.a(new fyb<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, arx.b($$2 * 0.045F) * 0.25F), fhp::f));
+      this.a(new fyb<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, arx.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fhp::f));
+      this.a(new fyb<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fhp::c));
+      this.a(new fyb<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fhp::d));
    }
 
-   protected float a(bvp $$0, float $$1) {
-      return $$0.gi();
-   }
-
-   public void a(bvp $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
-      if ($$0.gh()) {
-         float $$6 = $$0.E($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gh()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public aeu a(bvp $$0) {
-      if ($$0.p()) {
-         return i;
-      } else {
-         return $$0.S_() ? j : a;
-      }
+   public aex a(cay $$0) {
+      return a;
    }
 }

@@ -1,35 +1,104 @@
-public interface tw {
-   ti a();
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   void a(ako var1, boolean var2, te.a var3);
+public record tw(byte[] c) {
+   public static final Codec<tw> a = arg.n.xmap(tw::new, tw::b);
+   public static final int b = 256;
 
-   static tw a(tx $$0) {
-      return (tw)($$0.g() ? new tw.a($$0.c()) : new tw.b($$0));
+   public tw(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static record a(ti a) implements tw {
-      @Override
-      public void a(ako $$0, boolean $$1, te.a $$2) {
-         $$0.c.a(this.a, $$2);
+   public static tw a(so $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new tw($$1);
+   }
+
+   public static void a(so $$0, tw $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(ash $$0, asg $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof tw $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public static record b(tx a) implements tw {
-      @Override
-      public ti a() {
-         return this.a.c();
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public tw.a a(tx $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new tw.a($$1) : new tw.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable tw c) {
+      public static final int a = -1;
+
+      public a(tw $$0) {
+         this(-1, $$0);
       }
 
-      @Override
-      public void a(ako $$0, boolean $$1, te.a $$2) {
-         tx $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static tw.a a(so $$0) {
+         int $$1 = $$0.m() - 1;
+         return $$1 == -1 ? new tw.a(tw.a($$0)) : new tw.a($$1);
+      }
+
+      public static void a(so $$0, tw.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            tw.a($$0, $$1.b());
          }
       }
 
-      public tx b() {
-         return this.a;
+      public Optional<tw> a(tx $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public tw b() {
+         return this.c;
       }
    }
 }

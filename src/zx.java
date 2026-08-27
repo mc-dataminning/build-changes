@@ -1,55 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class zx implements va<ws> {
-   private static final byte a = -128;
-   private final int b;
-   private final List<Pair<biq, cja>> c;
+public class zx implements vd<ww> {
+   private final eii a;
+   private final String b;
 
-   public zx(int $$0, List<Pair<biq, cja>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public zx(sl $$0) {
-      this.b = $$0.m();
-      biq[] $$1 = biq.values();
-      this.c = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         biq $$3 = $$1[$$2 & 127];
-         cja $$4 = $$0.q();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
-   }
-
-   @Override
-   public void a(sl $$0) {
-      $$0.c(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<biq, cja> $$3 = this.c.get($$2);
-         biq $$4 = (biq)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         $$0.a((cja)$$3.getSecond());
+   public zx(eii $$0, @Nullable eij $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
       }
    }
 
-   public void a(ws $$0) {
+   public zx(so $$0) {
+      this.a = $$0.a(eii.u);
+      this.b = $$0.r();
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.a(eii::a, this.a);
+      $$0.a(this.b);
+   }
+
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public eii a() {
+      return this.a;
    }
 
-   public List<Pair<biq, cja>> d() {
-      return this.c;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

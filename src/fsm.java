@@ -1,17 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fsm extends fun<bys, fek<bys>> {
+   private static final aex a = new aex("textures/entity/blaze.png");
 
-public class fsm<T extends bwk> extends frz<T, fem<T>> {
-   private static final Map<bip<?>, aeu> a = Maps.newHashMap(
-      ImmutableMap.of(bip.w, new aeu("textures/entity/horse/donkey.png"), bip.ap, new aeu("textures/entity/horse/mule.png"))
-   );
-
-   public fsm(ftc.a $$0, float $$1, fhv $$2) {
-      super($$0, new fem<>($$0.a($$2)), $$1);
+   public fsm(fth.a $$0) {
+      super($$0, new fek<>($$0.a(fib.l)), 0.5F);
    }
 
-   public aeu a(T $$0) {
-      return a.get($$0.ag());
+   protected int a(bys $$0, gw $$1) {
+      return 15;
+   }
+
+   public aex a(bys $$0) {
+      return a;
    }
 }

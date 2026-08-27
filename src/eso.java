@@ -1,509 +1,312 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.SuggestionContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class eso {
-   private static final Pattern a = Pattern.compile("(\\s+)");
-   private static final ue b = ue.a.a(n.m);
-   private static final ue c = ue.a.a(n.h);
-   private static final List<ue> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(ue.a::a).collect(ImmutableList.toImmutableList());
-   final eqq e;
-   private final eyf f;
-   final esu g;
-   final ery h;
-   private final boolean i;
-   private final boolean j;
-   final int k;
-   final int l;
-   final boolean m;
-   final int n;
-   private final List<arf> o = Lists.newArrayList();
-   private int p;
-   private int q;
+public abstract class eso implements ets, euk, ewb, ewg {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int f;
+   protected int g;
+   private int c;
+   private int d;
+   private tl e;
+   protected boolean h;
+   public boolean i = true;
+   public boolean j = true;
+   protected float k = 1.0F;
+   private int l;
+   private boolean m;
    @Nullable
-   private ParseResults<dw> r;
-   @Nullable
-   private CompletableFuture<Suggestions> s;
-   @Nullable
-   private eso.a t;
-   private boolean u;
-   boolean v;
+   private eua n;
+   private int o;
+   private long p;
+   private boolean q;
 
-   public eso(eqq $$0, eyf $$1, esu $$2, ery $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      $$2.a(this::a);
+   public eso(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.e = $$4;
    }
 
-   public void a(boolean $$0) {
-      this.u = $$0;
-      if (!$$0) {
-         this.t = null;
+   @Override
+   public int i() {
+      return this.g;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         this.h = $$1 >= this.r() && $$2 >= this.t() && $$1 < this.r() + this.f && $$2 < this.t() + this.g;
+         this.b($$0, $$1, $$2, $$3);
+         this.a();
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.t != null && this.t.b($$0, $$1, $$2)) {
-         return true;
-      } else if (this.f.t() == this.g && $$0 == 258) {
-         this.b(true);
-         return true;
+   private void a() {
+      if (this.n != null) {
+         boolean $$0 = this.h || this.aD_() && eqv.O().aU().b();
+         if ($$0 != this.q) {
+            if ($$0) {
+               this.p = ac.b();
+            }
+
+            this.q = $$0;
+         }
+
+         if ($$0 && ac.b() - this.p > (long)this.o) {
+            eyk $$1 = eqv.O().y;
+            if ($$1 != null) {
+               $$1.a(this.n, this.j(), this.aD_());
+            }
+         }
+      }
+   }
+
+   protected fbb j() {
+      return (fbb)(!this.h && this.aD_() && eqv.O().aU().b() ? new fax(this) : new fbd(this));
+   }
+
+   public void a(@Nullable eua $$0) {
+      this.n = $$0;
+   }
+
+   @Nullable
+   public eua k() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      this.o = $$0;
+   }
+
+   protected ty aF_() {
+      return a(this.m());
+   }
+
+   public static ty a(tl $$0) {
+      return tl.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(esf var1, int var2, int var3, float var4);
+
+   protected static void a(esf $$0, esd $$1, tl $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(esf $$0, esd $$1, tl $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ac.b() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = arx.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.f();
       } else {
-         return false;
+         int $$17 = arx.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
       }
    }
 
-   public boolean a(double $$0) {
-      return this.t != null && this.t.a(ars.a($$0, -1.0, 1.0));
+   protected void a(esf $$0, esd $$1, int $$2, int $$3) {
+      int $$4 = this.r() + $$2;
+      int $$5 = this.r() + this.l() - $$2;
+      a($$0, $$1, this.m(), $$4, this.t(), $$5, this.t() + this.i(), $$3);
    }
 
+   public void a(double $$0, double $$1) {
+   }
+
+   public void b(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
-   }
-
-   public void b(boolean $$0) {
-      if (this.s != null && this.s.isDone()) {
-         Suggestions $$1 = this.s.join();
-         if (!$$1.isEmpty()) {
-            int $$2 = 0;
-
-            for (Suggestion $$3 : $$1.getList()) {
-               $$2 = Math.max($$2, this.h.b($$3.getText()));
+      if (this.i && this.j) {
+         if (this.c($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(eqv.O().ai());
+               this.a($$0, $$1);
+               return true;
             }
-
-            int $$4 = ars.a(this.g.p($$1.getRange().getStart()), 0, this.g.p(0) + this.g.h() - $$2);
-            int $$5 = this.m ? this.f.h - 12 : 72;
-            this.t = new eso.a($$4, $$5, $$2, this.a($$1), $$0);
-         }
-      }
-   }
-
-   public void a() {
-      this.t = null;
-   }
-
-   private List<Suggestion> a(Suggestions $$0) {
-      String $$1 = this.g.a().substring(0, this.g.f());
-      int $$2 = a($$1);
-      String $$3 = $$1.substring($$2).toLowerCase(Locale.ROOT);
-      List<Suggestion> $$4 = Lists.newArrayList();
-      List<Suggestion> $$5 = Lists.newArrayList();
-
-      for (Suggestion $$6 : $$0.getList()) {
-         if (!$$6.getText().startsWith($$3) && !$$6.getText().startsWith("minecraft:" + $$3)) {
-            $$5.add($$6);
-         } else {
-            $$4.add($$6);
-         }
-      }
-
-      $$4.addAll($$5);
-      return $$4;
-   }
-
-   public void b() {
-      String $$0 = this.g.a();
-      if (this.r != null && !this.r.getReader().getString().equals($$0)) {
-         this.r = null;
-      }
-
-      if (!this.v) {
-         this.g.c(null);
-         this.t = null;
-      }
-
-      this.o.clear();
-      StringReader $$1 = new StringReader($$0);
-      boolean $$2 = $$1.canRead() && $$1.peek() == '/';
-      if ($$2) {
-         $$1.skip();
-      }
-
-      boolean $$3 = this.i || $$2;
-      int $$4 = this.g.f();
-      if ($$3) {
-         CommandDispatcher<dw> $$5 = this.e.s.cl.r();
-         if (this.r == null) {
-            this.r = $$5.parse($$1, this.e.s.cl.i());
          }
 
-         int $$6 = this.j ? $$1.getCursor() : 1;
-         if ($$4 >= $$6 && (this.t == null || !this.v)) {
-            this.s = $$5.getCompletionSuggestions(this.r, $$4);
-            this.s.thenRun(() -> {
-               if (this.s.isDone()) {
-                  this.d();
-               }
-            });
-         }
+         return false;
       } else {
-         String $$7 = $$0.substring(0, $$4);
-         int $$8 = a($$7);
-         Collection<String> $$9 = this.e.s.cl.i().x();
-         this.s = dw.b($$9, new SuggestionsBuilder($$7, $$8));
+         return false;
       }
    }
 
-   private static int a(String $$0) {
-      if (Strings.isNullOrEmpty($$0)) {
-         return 0;
-      } else {
-         int $$1 = 0;
-         Matcher $$2 = a.matcher($$0);
-
-         while ($$2.find()) {
-            $$1 = $$2.end();
-         }
-
-         return $$1;
-      }
-   }
-
-   private static arf a(CommandSyntaxException $$0) {
-      ti $$1 = tk.a($$0.getRawMessage());
-      String $$2 = $$0.getContext();
-      return $$2 == null ? $$1.f() : ti.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).f();
-   }
-
-   private void d() {
-      boolean $$0 = false;
-      if (this.g.f() == this.g.a().length()) {
-         if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
-            int $$1 = 0;
-
-            for (Entry<CommandNode<dw>, CommandSyntaxException> $$2 : this.r.getExceptions().entrySet()) {
-               CommandSyntaxException $$3 = $$2.getValue();
-               if ($$3.getType() == CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect()) {
-                  $$1++;
-               } else {
-                  this.o.add(a($$3));
-               }
-            }
-
-            if ($$1 > 0) {
-               this.o.add(a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().create()));
-            }
-         } else if (this.r.getReader().canRead()) {
-            $$0 = true;
-         }
-      }
-
-      this.p = 0;
-      this.q = this.f.g;
-      if (this.o.isEmpty() && !this.a(n.h) && $$0) {
-         this.o.add(a(du.a(this.r)));
-      }
-
-      this.t = null;
-      if (this.u && this.e.m.G().c()) {
-         this.b(false);
-      }
-   }
-
-   private boolean a(n $$0) {
-      CommandContextBuilder<dw> $$1 = this.r.getContext();
-      SuggestionContext<dw> $$2 = $$1.findSuggestionContext(this.g.f());
-      Map<CommandNode<dw>, String> $$3 = this.e.s.cl.r().getSmartUsage($$2.parent, this.e.s.cl.i());
-      List<arf> $$4 = Lists.newArrayList();
-      int $$5 = 0;
-      ue $$6 = ue.a.a($$0);
-
-      for (Entry<CommandNode<dw>, String> $$7 : $$3.entrySet()) {
-         if (!($$7.getKey() instanceof LiteralCommandNode)) {
-            $$4.add(arf.forward($$7.getValue(), $$6));
-            $$5 = Math.max($$5, this.h.b($$7.getValue()));
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         this.o.addAll($$4);
-         this.p = ars.a(this.g.p($$2.startPos), 0, this.g.p(0) + this.g.h() - $$5);
-         this.q = $$5;
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.c($$2)) {
+         this.b($$0, $$1);
          return true;
       } else {
          return false;
       }
    }
 
-   private arf a(String $$0, int $$1) {
-      return this.r != null ? a(this.r, $$0, $$1) : arf.forward($$0, ue.a);
+   protected boolean c(int $$0) {
+      return $$0 == 0;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.c($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean d(double $$0, double $$1) {
+      return this.i && this.j && $$0 >= (double)this.r() && $$1 >= (double)this.t() && $$0 < (double)(this.r() + this.f) && $$1 < (double)(this.t() + this.g);
    }
 
    @Nullable
-   static String a(String $$0, String $$1) {
-      return $$1.startsWith($$0) ? $$1.substring($$0.length()) : null;
-   }
-
-   private static arf a(ParseResults<dw> $$0, String $$1, int $$2) {
-      List<arf> $$3 = Lists.newArrayList();
-      int $$4 = 0;
-      int $$5 = -1;
-      CommandContextBuilder<dw> $$6 = $$0.getContext().getLastChild();
-
-      for (ParsedArgument<dw, ?> $$7 : $$6.getArguments().values()) {
-         if (++$$5 >= d.size()) {
-            $$5 = 0;
-         }
-
-         int $$8 = Math.max($$7.getRange().getStart() - $$2, 0);
-         if ($$8 >= $$1.length()) {
-            break;
-         }
-
-         int $$9 = Math.min($$7.getRange().getEnd() - $$2, $$1.length());
-         if ($$9 > 0) {
-            $$3.add(arf.forward($$1.substring($$4, $$8), c));
-            $$3.add(arf.forward($$1.substring($$8, $$9), d.get($$5)));
-            $$4 = $$9;
-         }
-      }
-
-      if ($$0.getReader().canRead()) {
-         int $$10 = Math.max($$0.getReader().getCursor() - $$2, 0);
-         if ($$10 < $$1.length()) {
-            int $$11 = Math.min($$10 + $$0.getReader().getRemainingLength(), $$1.length());
-            $$3.add(arf.forward($$1.substring($$4, $$10), c));
-            $$3.add(arf.forward($$1.substring($$10, $$11), b));
-            $$4 = $$11;
-         }
-      }
-
-      $$3.add(arf.forward($$1.substring($$4), c));
-      return arf.composite($$3);
-   }
-
-   public void a(esa $$0, int $$1, int $$2) {
-      if (!this.b($$0, $$1, $$2)) {
-         this.a($$0);
-      }
-   }
-
-   public boolean b(esa $$0, int $$1, int $$2) {
-      if (this.t != null) {
-         this.t.a($$0, $$1, $$2);
-         return true;
+   @Override
+   public esc a(ewo $$0) {
+      if (!this.i || !this.j) {
+         return null;
       } else {
-         return false;
+         return !this.aD_() ? esc.a(this) : null;
       }
    }
 
-   public void a(esa $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.i && this.j && $$0 >= (double)this.r() && $$1 >= (double)this.t() && $$0 < (double)(this.r() + this.f) && $$1 < (double)(this.t() + this.g);
+   }
 
-      for (arf $$2 : this.o) {
-         int $$3 = this.m ? this.f.h - 14 - 13 - 12 * $$1 : 72 + 12 * $$1;
-         $$0.a(this.p - 1, $$3, this.p + this.q + 1, $$3 + 12, this.n);
-         $$0.b(this.h, $$2, this.p, $$3 + 2, -1);
-         $$1++;
+   public void a(gdq $$0) {
+      $$0.a(gch.a(ape.yu, 1.0F));
+   }
+
+   @Override
+   public int l() {
+      return this.f;
+   }
+
+   public void d(int $$0) {
+      this.f = $$0;
+   }
+
+   public void e(int $$0) {
+      this.g = $$0;
+   }
+
+   public void a(float $$0) {
+      this.k = $$0;
+   }
+
+   public void b(tl $$0) {
+      this.e = $$0;
+   }
+
+   public tl m() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aD_() {
+      return this.m;
+   }
+
+   public boolean n() {
+      return this.h;
+   }
+
+   public boolean o() {
+      return this.n() || this.aD_();
+   }
+
+   @Override
+   public boolean aE_() {
+      return this.j && this.i;
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public ewg.a q() {
+      if (this.aD_()) {
+         return ewg.a.c;
+      } else {
+         return this.h ? ewg.a.b : ewg.a.a;
       }
    }
 
-   public ti c() {
-      return (ti)(this.t != null ? th.r.e().b(this.t.b()) : th.a);
+   @Override
+   public final void b(ewi $$0) {
+      this.a($$0);
+      if (this.n != null) {
+         this.n.b($$0);
+      }
    }
 
-   public class a {
-      private final foe b;
-      private final String c;
-      private final List<Suggestion> d;
-      private int e;
-      private int f;
-      private ehh g = ehh.a;
-      private boolean h;
-      private int i;
+   protected abstract void a(ewi var1);
 
-      a(int $$1, int $$2, int $$3, List<Suggestion> $$4, boolean $$5) {
-         int $$6 = $$1 - (eso.this.g.g() ? 0 : 1);
-         int $$7 = eso.this.m ? $$2 - 3 - Math.min($$4.size(), eso.this.l) * 12 : $$2 - (eso.this.g.g() ? 1 : 0);
-         this.b = new foe($$6, $$7, $$3 + 1, Math.min($$4.size(), eso.this.l) * 12);
-         this.c = eso.this.g.a();
-         this.i = $$5 ? -1 : 0;
-         this.d = $$4;
-         this.b(0);
-      }
-
-      public void a(esa $$0, int $$1, int $$2) {
-         int $$3 = Math.min(this.d.size(), eso.this.l);
-         int $$4 = -5592406;
-         boolean $$5 = this.e > 0;
-         boolean $$6 = this.d.size() > this.e + $$3;
-         boolean $$7 = $$5 || $$6;
-         boolean $$8 = this.g.i != (float)$$1 || this.g.j != (float)$$2;
-         if ($$8) {
-            this.g = new ehh((float)$$1, (float)$$2);
-         }
-
-         if ($$7) {
-            $$0.a(this.b.a(), this.b.b() - 1, this.b.a() + this.b.c(), this.b.b(), eso.this.n);
-            $$0.a(this.b.a(), this.b.b() + this.b.d(), this.b.a() + this.b.c(), this.b.b() + this.b.d() + 1, eso.this.n);
-            if ($$5) {
-               for (int $$9 = 0; $$9 < this.b.c(); $$9++) {
-                  if ($$9 % 2 == 0) {
-                     $$0.a(this.b.a() + $$9, this.b.b() - 1, this.b.a() + $$9 + 1, this.b.b(), -1);
-                  }
-               }
-            }
-
-            if ($$6) {
-               for (int $$10 = 0; $$10 < this.b.c(); $$10++) {
-                  if ($$10 % 2 == 0) {
-                     $$0.a(this.b.a() + $$10, this.b.b() + this.b.d(), this.b.a() + $$10 + 1, this.b.b() + this.b.d() + 1, -1);
-                  }
-               }
-            }
-         }
-
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$3; $$12++) {
-            Suggestion $$13 = this.d.get($$12 + this.e);
-            $$0.a(this.b.a(), this.b.b() + 12 * $$12, this.b.a() + this.b.c(), this.b.b() + 12 * $$12 + 12, eso.this.n);
-            if ($$1 > this.b.a() && $$1 < this.b.a() + this.b.c() && $$2 > this.b.b() + 12 * $$12 && $$2 < this.b.b() + 12 * $$12 + 12) {
-               if ($$8) {
-                  this.b($$12 + this.e);
-               }
-
-               $$11 = true;
-            }
-
-            $$0.b(eso.this.h, $$13.getText(), this.b.a() + 1, this.b.b() + 2 + 12 * $$12, $$12 + this.e == this.f ? -256 : -5592406);
-         }
-
-         if ($$11) {
-            Message $$14 = this.d.get(this.f).getTooltip();
-            if ($$14 != null) {
-               $$0.a(eso.this.h, tk.a($$14), $$1, $$2);
-            }
-         }
-      }
-
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (!this.b.b($$0, $$1)) {
-            return false;
+   protected void c(ewi $$0) {
+      $$0.a(ewh.a, this.aF_());
+      if (this.i) {
+         if (this.aD_()) {
+            $$0.a(ewh.d, tl.c("narration.button.usage.focused"));
          } else {
-            int $$3 = ($$1 - this.b.b()) / 12 + this.e;
-            if ($$3 >= 0 && $$3 < this.d.size()) {
-               this.b($$3);
-               this.a();
-            }
-
-            return true;
+            $$0.a(ewh.d, tl.c("narration.button.usage.hovered"));
          }
       }
+   }
 
-      public boolean a(double $$0) {
-         int $$1 = (int)(eso.this.e.n.e() * (double)eso.this.e.aM().o() / (double)eso.this.e.aM().m());
-         int $$2 = (int)(eso.this.e.n.f() * (double)eso.this.e.aM().p() / (double)eso.this.e.aM().n());
-         if (this.b.b($$1, $$2)) {
-            this.e = ars.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - eso.this.l, 0));
-            return true;
-         } else {
-            return false;
-         }
-      }
+   @Override
+   public int r() {
+      return this.c;
+   }
 
-      public boolean b(int $$0, int $$1, int $$2) {
-         if ($$0 == 265) {
-            this.a(-1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 264) {
-            this.a(1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 258) {
-            if (this.h) {
-               this.a(eyf.q() ? -1 : 1);
-            }
+   @Override
+   public void f(int $$0) {
+      this.c = $$0;
+   }
 
-            this.a();
-            return true;
-         } else if ($$0 == 256) {
-            eso.this.a();
-            return true;
-         } else {
-            return false;
-         }
-      }
+   @Override
+   public int t() {
+      return this.d;
+   }
 
-      public void a(int $$0) {
-         this.b(this.f + $$0);
-         int $$1 = this.e;
-         int $$2 = this.e + eso.this.l - 1;
-         if (this.f < $$1) {
-            this.e = ars.a(this.f, 0, Math.max(this.d.size() - eso.this.l, 0));
-         } else if (this.f > $$2) {
-            this.e = ars.a(this.f + eso.this.k - eso.this.l, 0, Math.max(this.d.size() - eso.this.l, 0));
-         }
-      }
+   @Override
+   public void g(int $$0) {
+      this.d = $$0;
+   }
 
-      public void b(int $$0) {
-         this.f = $$0;
-         if (this.f < 0) {
-            this.f = this.f + this.d.size();
-         }
+   @Override
+   public void a(Consumer<eso> $$0) {
+      $$0.accept(this);
+   }
 
-         if (this.f >= this.d.size()) {
-            this.f = this.f - this.d.size();
-         }
+   @Override
+   public ews s() {
+      return ewb.super.s();
+   }
 
-         Suggestion $$1 = this.d.get(this.f);
-         eso.this.g.c(eso.a(eso.this.g.a(), $$1.apply(this.c)));
-         if (this.i != this.f) {
-            eso.this.e.aV().c(this.b());
-         }
-      }
+   @Override
+   public int u() {
+      return this.l;
+   }
 
-      public void a() {
-         Suggestion $$0 = this.d.get(this.f);
-         eso.this.v = true;
-         eso.this.g.a($$0.apply(this.c));
-         int $$1 = $$0.getRange().getStart() + $$0.getText().length();
-         eso.this.g.k($$1);
-         eso.this.g.o($$1);
-         this.b(this.f);
-         eso.this.v = false;
-         this.h = true;
-      }
-
-      ti b() {
-         this.i = this.f;
-         Suggestion $$0 = this.d.get(this.f);
-         Message $$1 = $$0.getTooltip();
-         return $$1 != null
-            ? ti.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), $$1)
-            : ti.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
-      }
+   public void h(int $$0) {
+      this.l = $$0;
    }
 }

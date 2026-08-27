@@ -1,53 +1,35 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
 
-public class axo extends ata {
-   private static final Logger b = LogUtils.getLogger();
+public class axo extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
 
-   public axo(Schema $$0) {
-      super($$0, ays.a);
+   public axo(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
+         String $$1x = $$0x.get("facing").asString("north");
+         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
+      }) : $$0;
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  $$0xx = this.d($$0xx);
-                  $$0xx = this.c($$0xx);
-                  return this.b($$0xx);
-               }))
-      );
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update(
-         "DimensionData",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
-            )
-      );
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update(
-         "CustomBossEvents",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond(
-                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
-                                 b.warn("CustomBossEvents contains invalid UUIDs.");
-                                 return $$0xxxxx;
-                              }))))
-                  )
-            )
-      );
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(ayx.u), $$0 -> $$0.update(DSL.remainderFinder(), axo::a));
    }
 }

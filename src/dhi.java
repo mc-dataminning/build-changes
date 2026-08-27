@@ -1,58 +1,9 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-public class dhi<T> implements dhr<T> {
-   private final hl<T> a;
-
-   public dhi(hl<T> $$0) {
-      this.a = $$0;
-   }
-
-   public static <A> dhr<A> a(int $$0, hl<A> $$1, dhs<A> $$2, List<A> $$3) {
-      return new dhi<>($$1);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dhq($$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(sl $$0) {
-   }
-
-   @Override
-   public void b(sl $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dhr<T> c() {
-      return this;
+public class dhi {
+   public static Codec<? extends dhg> a(ht<Codec<? extends dhg>> $$0) {
+      ht.a($$0, "noise", dkv.c);
+      ht.a($$0, "flat", dkn.c);
+      return ht.a($$0, "debug", dkj.c);
    }
 }

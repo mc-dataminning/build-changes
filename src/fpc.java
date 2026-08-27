@@ -1,166 +1,174 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
 public class fpc {
-   private final Map<String, fpj> a = Maps.newLinkedHashMap();
-   private fpo b;
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<hc, fpd> c;
+   public final fpe d;
+   public final boolean e;
 
-   public static fpc a(fpc.a $$0, Reader $$1) {
-      return arj.a($$0.a, $$1, fpc.class);
-   }
-
-   public static fpc a(fpc.a $$0, JsonElement $$1) {
-      return (fpc)$$0.a.fromJson($$1, fpc.class);
-   }
-
-   public fpc(Map<String, fpj> $$0, fpo $$1) {
+   public fpc(Vector3f $$0, Vector3f $$1, Map<hc, fpd> $$2, @Nullable fpe $$3, boolean $$4) {
+      this.a = $$0;
       this.b = $$1;
-      this.a.putAll($$0);
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   public fpc(List<fpc> $$0) {
-      fpc $$1 = null;
-
-      for (fpc $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
-      }
-
-      if ($$1 != null) {
-         this.b = $$1.b;
+   private void a() {
+      for (Entry<hc, fpd> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
       }
    }
 
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public fpj b(String $$0) {
-      fpj $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fpc.c();
-      } else {
-         return $$1;
+   private float[] a(hc $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fpc $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
+   protected static class a implements JsonDeserializer<fpc> {
+      private static final boolean a = true;
 
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fpj> a() {
-      return this.a;
-   }
-
-   @VisibleForTesting
-   public Set<fpj> b() {
-      Set<fpj> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
-      }
-
-      return $$0;
-   }
-
-   public boolean c() {
-      return this.b != null;
-   }
-
-   public fpo d() {
-      return this.b;
-   }
-
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fpc.class, new fpc.b())
-         .registerTypeAdapter(fpk.class, new fpk.a())
-         .registerTypeAdapter(fpj.class, new fpj.a())
-         .registerTypeAdapter(fpo.class, new fpo.a(this))
-         .registerTypeAdapter(fpq.class, new fpq.a())
-         .create();
-      private dff<csq, dfe> b;
-
-      public dff<csq, dfe> a() {
-         return this.b;
-      }
-
-      public void a(dff<csq, dfe> $$0) {
-         this.b = $$0;
-      }
-   }
-
-   public static class b implements JsonDeserializer<fpc> {
       public fpc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fpj> $$4 = this.a($$2, $$3);
-         fpo $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fpc($$4, $$5);
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         fpe $$6 = this.a($$3);
+         Map<hc, fpd> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !aro.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
          } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
+            boolean $$8 = aro.a($$3, "shade", true);
+            return new fpc($$4, $$5, $$7, $$6, $$8);
          }
       }
 
-      protected Map<String, fpj> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fpj> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = arj.u($$1, "variants");
+      @Nullable
+      private fpe a(JsonObject $$0) {
+         fpe $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = aro.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            hc.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = aro.a($$2, "rescale", false);
+            $$1 = new fpe($$3, $$4, $$5, $$6);
+         }
 
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fpj)$$0.deserialize($$4.getValue(), fpj.class));
-            }
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = aro.m($$0, "angle");
+         if ($$1 != 0.0F && arx.e($$1) != 22.5F && arx.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private hc.a c(JsonObject $$0) {
+         String $$1 = aro.i($$0, "axis");
+         hc.a $$2 = hc.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hc, fpd> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hc, fpd> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hc, fpd> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hc, fpd> $$2 = Maps.newEnumMap(hc.class);
+         JsonObject $$3 = aro.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            hc $$5 = this.a($$4.getKey());
+            $$2.put($$5, (fpd)$$0.deserialize($$4.getValue(), fpd.class));
          }
 
          return $$2;
       }
 
-      @Nullable
-      protected fpo b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
+      private hc a(String $$0) {
+         hc $$1 = hc.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
          } else {
-            JsonArray $$2 = arj.v($$1, "multipart");
-            return (fpo)$$0.deserialize($$2, fpo.class);
+            return $$1;
          }
       }
-   }
 
-   protected class c extends RuntimeException {
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = aro.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = aro.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
+      }
    }
 }

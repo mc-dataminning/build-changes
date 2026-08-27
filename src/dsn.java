@@ -1,66 +1,75 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import java.util.List;
 
-public abstract class dsn {
-   public static final Codec<dsn> h = jd.aa.q().dispatch(dsn::a, dso::a);
+public class dsn extends dss {
+   public static final Codec<dsn> a = dsb.a.fieldOf("provider").xmap(dsn::new, $$0 -> $$0.b).codec();
+   private final dsb b;
 
-   protected abstract dso<?> a();
+   public dsn(dsb $$0) {
+      this.b = $$0;
+   }
 
-   public abstract void a(dsn.a var1);
+   @Override
+   protected dst<?> a() {
+      return dst.e;
+   }
 
-   public static final class a {
-      private final cpw a;
-      private final BiConsumer<gw, dfe> b;
-      private final arx c;
-      private final ObjectArrayList<gw> d;
-      private final ObjectArrayList<gw> e;
-      private final ObjectArrayList<gw> f;
-
-      public a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, Set<gw> $$3, Set<gw> $$4, Set<gw> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(ib::v));
-         this.e.sort(Comparator.comparingInt(ib::v));
-         this.f.sort(Comparator.comparingInt(ib::v));
+   @Override
+   public void a(dss.a $$0) {
+      List<gw> $$1 = Lists.newArrayList();
+      List<gw> $$2 = $$0.e();
+      List<gw> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
       }
 
-      public void a(gw $$0, dfv $$1) {
-         this.a($$0, csr.ff.n().a($$1, Boolean.valueOf(true)));
-      }
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      public void a(gw $$0, dfe $$1) {
-         this.b.accept($$0, $$1);
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
       }
+   }
 
-      public boolean a(gw $$0) {
-         return this.a.a($$0, dfd.a::i);
+   private void a(dss.a $$0, gw $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
       }
+   }
 
-      public cpw a() {
-         return this.a;
-      }
+   private void b(dss.a $$0, gw $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         gw $$3 = $$1.b($$2);
+         if (dnw.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
 
-      public arx b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<gw> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<gw> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<gw> e() {
-         return this.f;
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

@@ -1,137 +1,106 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
-public class fcv extends eyf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ti b = ti.c("selectWorld.enterName");
-   private esl c;
-   private final BooleanConsumer k;
-   private esu l;
-   private final ecb.c m;
+public class fcv extends eyk {
+   private static final int a = 8;
+   private static final tl b = tl.c("telemetry_info.screen.title");
+   private static final tl c = tl.c("telemetry_info.screen.description").a(n.h);
+   private static final tl k = tl.c("telemetry_info.button.privacy_statement");
+   private static final tl l = tl.c("telemetry_info.button.give_feedback");
+   private static final tl m = tl.c("telemetry_info.button.show_data");
+   private final eyk n;
+   private final eqz o;
+   private fcu p;
+   private double q;
 
-   public fcv(BooleanConsumer $$0, ecb.c $$1) {
-      super(ti.c("selectWorld.edit.title"));
-      this.k = $$0;
-      this.m = $$1;
+   public fcv(eyk $$0, eqz $$1) {
+      super(b);
+      this.n = $$0;
+      this.o = $$1;
    }
 
    @Override
-   protected void aD_() {
-      this.c = esl.a(ti.c("selectWorld.edit.save"), $$0x -> this.l()).a(this.g / 2 - 100, this.h / 4 + 144 + 5, 98, 20).a();
-      this.l = new esu(this.i, this.g / 2 - 100, 38, 200, 20, ti.c("selectWorld.enterName"));
-      ecc $$0 = this.m.d();
-      String $$1 = $$0 == null ? "" : $$0.b();
-      this.l.a($$1);
-      this.l.b($$0x -> this.c.i = !ac.b($$0x));
-      this.e(this.l);
-      esl $$2 = this.d(esl.a(ti.c("selectWorld.edit.resetIcon"), $$0x -> {
-         this.m.f().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$0x.i = false;
-      }).a(this.g / 2 - 100, this.h / 4 + 0 + 5, 200, 20).a());
-      this.d(esl.a(ti.c("selectWorld.edit.openFolder"), $$0x -> ac.i().a(this.m.a(ebz.l).toFile())).a(this.g / 2 - 100, this.h / 4 + 24 + 5, 200, 20).a());
-      this.d(esl.a(ti.c("selectWorld.edit.backup"), $$0x -> {
-         boolean $$1x = a(this.m);
-         this.k.accept(!$$1x);
-      }).a(this.g / 2 - 100, this.h / 4 + 48 + 5, 200, 20).a());
-      this.d(esl.a(ti.c("selectWorld.edit.backupFolder"), $$0x -> {
-         ecb $$1x = this.f.l();
-         Path $$2x = $$1x.d();
+   public tl g() {
+      return tk.a(super.g(), c);
+   }
 
-         try {
-            v.c($$2x);
-         } catch (IOException var5) {
-            throw new RuntimeException(var5);
+   @Override
+   protected void aI_() {
+      evx $$0 = new evx();
+      $$0.c().a(8);
+      $$0.a(this.h);
+      ewd $$1 = $$0.a(ewd.d(), $$0.b().a(0.5F, 0.0F));
+      $$1.c().b().e(8);
+      $$1.a(new etw(this.m(), this.i));
+      $$1.a(new etk(c, this.i).j(this.g - 16).b(true));
+      esq $$2 = esq.a(k, this::b).a();
+      $$1.a($$2);
+      evy $$3 = this.a(esq.a(l, this::c).a(), esq.a(m, this::d).a());
+      $$1.a($$3);
+      evy $$4 = this.a(this.l(), esq.a(tk.d, this::a).a());
+      $$0.a($$4, $$0.b().a(0.5F, 1.0F));
+      $$0.a();
+      this.p = new fcu(0, 0, this.g - 40, $$4.t() - ($$3.t() + $$3.i()) - 16, this.f.h);
+      this.p.a(this.q);
+      this.p.a($$0x -> this.q = $$0x);
+      this.c(this.p);
+      $$1.a(this.p);
+      $$0.a();
+      evx.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
+      $$0.a($$1x -> {
+         eso var10000 = this.d($$1x);
+      });
+   }
+
+   private eso l() {
+      eso $$0 = this.o.ae().a(this.o, 0, 0, 150, $$0x -> this.p.b($$0x));
+      $$0.i = this.f.B();
+      return $$0;
+   }
+
+   private void a(esq $$0) {
+      this.f.a(this.n);
+   }
+
+   private void b(esq $$0) {
+      this.f.a(new exc($$0x -> {
+         if ($$0x) {
+            ac.i().a("http://go.microsoft.com/fwlink/?LinkId=521839");
          }
 
-         ac.i().a($$2x.toFile());
-      }).a(this.g / 2 - 100, this.h / 4 + 72 + 5, 200, 20).a());
-      this.d(esl.a(ti.c("selectWorld.edit.optimize"), $$0x -> this.f.a(new ewt(this, ($$0xx, $$1x) -> {
-            if ($$0xx) {
-               a(this.m);
-            }
-
-            this.f.a(fcx.a(this.f, this.k, this.f.ar(), this.m, $$1x));
-         }, ti.c("optimizeWorld.confirm.title"), ti.c("optimizeWorld.confirm.description"), true))).a(this.g / 2 - 100, this.h / 4 + 96 + 5, 200, 20).a());
-      this.d(this.c);
-      this.d(esl.a(th.e, $$0x -> this.k.accept(false)).a(this.g / 2 + 2, this.h / 4 + 144 + 5, 98, 20).a());
-      $$2.i = this.m.f().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.c(this.l);
+         this.f.a(this);
+      }, "http://go.microsoft.com/fwlink/?LinkId=521839", true));
    }
 
-   @Override
-   public void a(eqq $$0, int $$1, int $$2) {
-      String $$3 = this.l.a();
-      this.b($$0, $$1, $$2);
-      this.l.a($$3);
-   }
-
-   @Override
-   public void au_() {
-      this.k.accept(false);
-   }
-
-   private void l() {
-      try {
-         this.m.a(this.l.a().trim());
-         this.k.accept(true);
-      } catch (IOException var2) {
-         a.error("Failed to access world '{}'", this.m.b(), var2);
-         eur.a(this.f, this.m.b());
-         this.k.accept(true);
-      }
-   }
-
-   public static void a(ecb $$0, String $$1) {
-      boolean $$2 = false;
-
-      try (ecb.c $$3 = $$0.c($$1)) {
-         $$2 = true;
-         a($$3);
-      } catch (IOException var8) {
-         if (!$$2) {
-            eur.a(eqq.O(), $$1);
+   private void c(esq $$0) {
+      this.f.a(new exc($$0x -> {
+         if ($$0x) {
+            ac.i().a("https://aka.ms/javafeedback?ref=game");
          }
 
-         a.warn("Failed to create backup of level {}", $$1, var8);
-      } catch (egx var9) {
-         a.warn("{}", var9.getMessage());
-         eur.a(eqq.O(), $$1);
-      }
+         this.f.a(this);
+      }, "https://aka.ms/javafeedback?ref=game", true));
    }
 
-   public static boolean a(ecb.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.h();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         ti $$4 = ti.c("selectWorld.edit.backupFailed");
-         ti $$5 = ti.b($$2.getMessage());
-         eqq.O().ay().a(new eur(eur.a.c, $$4, $$5));
-         return false;
-      } else {
-         ti $$6 = ti.a("selectWorld.edit.backupCreated", $$0.b());
-         ti $$7 = ti.a("selectWorld.edit.backupSize", ars.c((double)$$1 / 1048576.0));
-         eqq.O().ay().a(new eur(eur.a.c, $$6, $$7));
-         return true;
-      }
+   private void d(esq $$0) {
+      Path $$1 = this.f.u().b();
+      ac.i().a($$1.toUri());
    }
 
    @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 24, 10526880);
-      this.l.a($$0, $$1, $$2, $$3);
+   public void az_() {
+      this.f.a(this.n);
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private evy a(eso $$0, eso $$1) {
+      evy $$2 = new evy();
+      $$2.c().b().f(4);
+      $$2.a($$0, 0, 0);
+      $$2.a($$1, 0, 1);
+      return $$2;
    }
 }

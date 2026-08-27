@@ -1,37 +1,93 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public interface aph {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   aph b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   aph c = $$0 -> a.format((double)$$0 * 0.1);
-   aph d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   aph e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
+public class aph {
+   protected final Set<aex> a = Sets.newHashSet();
+   protected final Set<aex> b = Sets.newHashSet();
+   private final api c = new api();
 
-   String format(int var1);
+   public void a(aph $$0) {
+      this.a.clear();
+      this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
+   }
+
+   public void a(cmk<?> $$0) {
+      if (!$$0.b().am_()) {
+         this.a($$0.a());
+      }
+   }
+
+   protected void a(aex $$0) {
+      this.a.add($$0);
+   }
+
+   public boolean b(@Nullable cmk<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
+   }
+
+   public boolean b(aex $$0) {
+      return this.a.contains($$0);
+   }
+
+   public void c(cmk<?> $$0) {
+      this.c($$0.a());
+   }
+
+   protected void c(aex $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
+   }
+
+   public boolean d(cmk<?> $$0) {
+      return this.b.contains($$0.a());
+   }
+
+   public void e(cmk<?> $$0) {
+      this.b.remove($$0.a());
+   }
+
+   public void f(cmk<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(aex $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(cfw $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(cfw $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(cfv<?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(cfw $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(cfw $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(api $$0) {
+      this.c.a($$0);
+   }
+
+   public api a() {
+      return this.c.a();
+   }
+
+   public void a(cfw $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
+   }
 }

@@ -1,41 +1,47 @@
-public class ffe<T extends bwh> extends fgi<T> {
-   public ffe(fhx $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+public class ffe<T extends biq> extends ffm<T> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String f = "lower_jaw";
+   private final fic g;
+   private final fic h;
+   private final fic i;
+   private final fic j;
+
+   public ffe(fic $$0) {
+      this.g = $$0;
+      this.h = $$0.b("base");
+      this.i = $$0.b("upper_jaw");
+      this.j = $$0.b("lower_jaw");
    }
 
-   public static fid c() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a(
-         "head",
-         fic.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fhz.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fic.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fhz.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fic.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fhz.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fic.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fhz.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fic.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fhz.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fic.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fhz.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fic.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fhz.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fic.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fhz.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fic.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fhz.a(-3.0F, 14.0F, -6.0F));
-      return fid.a($$0, 64, 64);
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("base", fih.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fie.a(-5.0F, 24.0F, -5.0F));
+      fih $$2 = fih.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$1.a("upper_jaw", $$2, fie.a(1.5F, 24.0F, -4.0F));
+      $$1.a("lower_jaw", $$2, fie.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
+      return fii.a($$0, 64, 32);
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.ga();
-      this.a.b("right_horn").k = $$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gl();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
+      float $$6 = $$1 * 2.0F;
+      if ($$6 > 1.0F) {
+         $$6 = 1.0F;
       }
+
+      $$6 = 1.0F - $$6 * $$6 * $$6;
+      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
+      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
+      float $$7 = ($$1 + arx.a($$1 * 2.7F)) * 0.6F * 12.0F;
+      this.i.c = 24.0F - $$7;
+      this.j.c = this.i.c;
+      this.h.c = this.i.c;
+   }
+
+   @Override
+   public fic a() {
+      return this.g;
    }
 }

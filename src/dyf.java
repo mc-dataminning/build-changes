@@ -1,20 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dyf extends dyt {
-   public static final Codec<dyf> a = Codec.unit(() -> dyf.b);
-   public static final dyf b = new dyf();
+public class dyf extends dyy {
+   public static final Codec<dyf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               hv.a(je.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dyf::new)
+   );
+   private final Optional<hk<csv>> b;
+   private final float c;
+
+   public dyf(hk<csv> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public dyf(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private dyf(Optional<hk<csv>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
 
    @Nullable
    @Override
-   public dyw.c a(cpt $$0, gw $$1, gw $$2, dyw.c $$3, dyw.c $$4, dys $$5) {
-      gw $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(csr.H);
-      return $$7 && !csq.a($$4.b().j($$0, $$6)) ? new dyw.c($$6, csr.H.n(), $$4.c()) : $$4;
+   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
+      asc $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected dyv<?> a() {
-      return dyv.m;
+   protected dza<?> a() {
+      return dza.f;
    }
 }

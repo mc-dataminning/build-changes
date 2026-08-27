@@ -1,89 +1,47 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class btn {
-   public static final btn a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<bjb> g;
+public class btn extends btl<bjp> {
+   public static final int a = 10;
+   private static final bts c = bts.b().a(10.0).d();
+   private final cmg d;
 
-   private btn(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public static btn a() {
-      return new btn(true);
-   }
-
-   public static btn b() {
-      return new btn(false);
-   }
-
-   public btn c() {
-      btn $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public btn a(double $$0) {
+   public btn(cmg $$0) {
       this.d = $$0;
-      return this;
    }
 
-   public btn d() {
-      this.e = false;
-      return this;
-   }
-
-   public btn e() {
-      this.f = false;
-      return this;
-   }
-
-   public btn a(@Nullable Predicate<bjb> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable bjb $$0, bjb $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.en()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
+   protected void a(akr $$0, bjp $$1) {
+      bkg<?> $$2 = $$1.dN();
+      List<cbu> $$3 = $$0.v()
+         .stream()
+         .filter(bit.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::f))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cbu $$4 = $$3.get(0);
+         $$2.a(bsh.N, $$4);
       } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.em() || $$1.dK().ai() == bgq.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ag()) || $$0.s($$1))) {
-               return false;
-            }
-
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.B($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.dp(), $$1.dr(), $$1.dv());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$0 instanceof bjd $$5 && !$$5.J().a($$1)) {
-               return false;
-            }
-         }
-
-         return true;
+         $$2.b(bsh.N);
       }
+   }
+
+   private boolean a(cbu $$0) {
+      return this.a($$0.eS()) || this.a($$0.eT());
+   }
+
+   private boolean a(cjf $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public Set<bsh<?>> a() {
+      return ImmutableSet.of(bsh.N);
    }
 }

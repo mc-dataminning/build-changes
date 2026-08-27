@@ -1,55 +1,100 @@
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class byo extends bzo {
-   public byo(bip<? extends byo> $$0, cpq $$1) {
+public class byo extends biq implements bkd {
+   private static final aef<Integer> b = aei.a(byo.class, aeh.b);
+   private static final int c = 80;
+   @Nullable
+   private bjg d;
+
+   public byo(biu<? extends byo> $$0, cpv $$1) {
       super($$0, $$1);
+      this.I = true;
    }
 
-   public static bkg.a p() {
-      return bzo.q().a(bkh.a, 12.0);
+   public byo(cpv $$0, double $$1, double $$2, double $$3, @Nullable bjg $$4) {
+      this(biu.aY, $$0);
+      this.e($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.d = $$4;
    }
 
    @Override
-   public boolean C(bil $$0) {
-      if (super.C($$0)) {
-         if ($$0 instanceof bjb) {
-            int $$1 = 0;
-            if (this.dK().ai() == bgq.c) {
-               $$1 = 7;
-            } else if (this.dK().ai() == bgq.d) {
-               $$1 = 15;
-            }
+   protected void a_() {
+      this.an.a(b, 80);
+   }
 
-            if ($$1 > 0) {
-               ((bjb)$$0).b(new bhy(bia.s, $$1 * 20, 0), this);
-            }
+   @Override
+   protected biq.b aV() {
+      return biq.b.a;
+   }
+
+   @Override
+   public boolean bs() {
+      return !this.dG();
+   }
+
+   @Override
+   public void l() {
+      if (!this.aU()) {
+         this.f(this.do().b(0.0, -0.04, 0.0));
+      }
+
+      this.a(bjm.a, this.do());
+      this.f(this.do().a(0.98));
+      if (this.aB()) {
+         this.f(this.do().d(0.7, -0.5, 0.7));
+      }
+
+      int $$0 = this.s() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.al();
+         if (!this.dL().B) {
+            this.t();
          }
-
-         return true;
       } else {
-         return false;
+         this.bf();
+         if (this.dL().B) {
+            this.dL().a(ix.Z, this.dq(), this.ds() + 0.5, this.dw(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
+   private void t() {
+      float $$0 = 4.0F;
+      this.dL().a(this, this.dq(), this.e(0.0625), this.dw(), 4.0F, cpv.a.d);
+   }
+
+   @Override
+   protected void b(qx $$0) {
+      $$0.a("Fuse", (short)this.s());
+   }
+
+   @Override
+   protected void a(qx $$0) {
+      this.b($$0.g("Fuse"));
+   }
+
    @Nullable
-   @Override
-   public bju a(cqf $$0, bgr $$1, bjf $$2, @Nullable bju $$3, @Nullable qu $$4) {
-      return $$3;
+   public bjg q() {
+      return this.d;
    }
 
    @Override
-   protected float b(bjn $$0, bim $$1) {
-      return 0.45F;
+   protected float a(bjs $$0, bir $$1) {
+      return 0.15F;
    }
 
-   @Override
-   protected Vector3f a(bil $$0, bim $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b, 0.0F);
+   public void b(int $$0) {
+      this.an.b(b, $$0);
    }
 
-   @Override
-   protected float l(bil $$0) {
-      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
+   public int s() {
+      return this.an.b(b);
    }
 }

@@ -1,65 +1,15 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class ciw {
-   private final Map<civ, ciw.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(civ $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class ciw extends cja implements cke {
+   public ciw(cja.a $$0) {
+      super($$0);
    }
 
-   public float a(civ $$0, float $$1) {
-      ciw.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return ars.a($$4 / $$3, 0.0F, 1.0F);
+   @Override
+   public boolean a(cpv $$0, ded $$1, boolean $$2, cbu $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.p(), ape.lJ, apf.e, 1.0F, 1.0F);
+         return true;
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<civ, ciw.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<civ, ciw.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(civ $$0, int $$1) {
-      this.a.put($$0, new ciw.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(civ $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(civ $$0, int $$1) {
-   }
-
-   protected void c(civ $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return false;
       }
    }
 }

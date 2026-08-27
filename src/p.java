@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(cps $$0, double $$1, double $$2, double $$3) {
+   public static String a(cpx $$0, double $$1, double $$2, double $$3) {
       return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, gw.a($$1, $$2, $$3)));
    }
 
-   public static String a(cps $$0, gw $$1) {
+   public static String a(cpx $$0, gw $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(cps $$0, int $$1, int $$2, int $$3) {
+   public static String a(cpx $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -39,7 +39,7 @@ public class p {
          int $$10 = $$2 & 15;
          int $$11 = $$3 & 15;
          int $$12 = hz.c($$6);
-         int $$13 = $$0.C_();
+         int $$13 = $$0.H_();
          int $$14 = hz.c($$8);
          int $$15 = hz.c($$6 + 1) - 1;
          int $$16 = $$0.aj() - 1;
@@ -76,7 +76,7 @@ public class p {
          int $$23 = ($$19 + 1 << 5) - 1;
          int $$24 = ($$20 + 1 << 5) - 1;
          int $$25 = $$19 << 9;
-         int $$26 = $$0.C_();
+         int $$26 = $$0.H_();
          int $$27 = $$20 << 9;
          int $$28 = ($$19 + 1 << 9) - 1;
          int $$29 = $$0.aj() - 1;
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, cps $$1, gw $$2, @Nullable dfe $$3) {
+   public static void a(p $$0, cpx $$1, gw $$2, @Nullable dfj $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

@@ -1,20 +1,60 @@
-public interface ehm {
-   ehm a = ($$0, $$1) -> false;
-   ehm b = ($$0, $$1) -> !$$0 && !$$1;
-   ehm c = ($$0, $$1) -> $$1 && !$$0;
-   ehm d = ($$0, $$1) -> !$$0;
-   ehm e = ($$0, $$1) -> $$0 && !$$1;
-   ehm f = ($$0, $$1) -> !$$1;
-   ehm g = ($$0, $$1) -> $$0 != $$1;
-   ehm h = ($$0, $$1) -> !$$0 || !$$1;
-   ehm i = ($$0, $$1) -> $$0 && $$1;
-   ehm j = ($$0, $$1) -> $$0 == $$1;
-   ehm k = ($$0, $$1) -> $$1;
-   ehm l = ($$0, $$1) -> !$$0 || $$1;
-   ehm m = ($$0, $$1) -> $$0;
-   ehm n = ($$0, $$1) -> $$0 || !$$1;
-   ehm o = ($$0, $$1) -> $$0 || $$1;
-   ehm p = ($$0, $$1) -> true;
+public class ehm {
+   public static final ehm a = new ehm(0.0F, 0.0F);
+   public static final ehm b = new ehm(1.0F, 1.0F);
+   public static final ehm c = new ehm(1.0F, 0.0F);
+   public static final ehm d = new ehm(-1.0F, 0.0F);
+   public static final ehm e = new ehm(0.0F, 1.0F);
+   public static final ehm f = new ehm(0.0F, -1.0F);
+   public static final ehm g = new ehm(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final ehm h = new ehm(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-   boolean apply(boolean var1, boolean var2);
+   public ehm(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   public ehm a(float $$0) {
+      return new ehm(this.i * $$0, this.j * $$0);
+   }
+
+   public float a(ehm $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
+   }
+
+   public ehm b(ehm $$0) {
+      return new ehm(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public ehm b(float $$0) {
+      return new ehm(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(ehm $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public ehm a() {
+      float $$0 = arx.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new ehm(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return arx.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(ehm $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public ehm d() {
+      return new ehm(-this.i, -this.j);
+   }
 }

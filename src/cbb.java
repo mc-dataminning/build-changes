@@ -1,2 +1,8 @@
-public interface cbb {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cbb {
 }

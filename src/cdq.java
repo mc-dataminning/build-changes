@@ -1,106 +1,89 @@
-public class cdq extends cdh implements ddn {
-   private boolean f = true;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cdq(bip<? extends cdq> $$0, cpq $$1) {
-      super($$0, $$1);
+public class cdq {
+   public static int[][] a(hc $$0) {
+      hc $$1 = $$0.h();
+      hc $$2 = $$1.g();
+      hc $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cdq(cpq $$0, double $$1, double $$2, double $$3) {
-      super(bip.X, $$1, $$2, $$3, $$0);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public cdg.a t() {
-      return cdg.a.f;
-   }
-
-   @Override
-   public dfe w() {
-      return csr.hc.n();
-   }
-
-   @Override
-   public int y() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.F()) {
-         this.p($$4);
+   public static boolean a(cpf $$0, bjg $$1, ehi $$2) {
+      for (eig $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
+
+      return $$0.B_().a($$2);
    }
 
-   public boolean F() {
-      return this.f;
+   public static boolean a(cpf $$0, ehn $$1, bjg $$2, bjs $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
    }
 
-   public void p(boolean $$0) {
-      this.f = $$0;
+   public static eig a(cpb $$0, gw $$1) {
+      dfj $$2 = $$0.a_($$1);
+      return !$$2.a(apt.aO) && (!($$2.b() instanceof dbi) || !$$2.c(dbi.a)) ? $$2.k($$0, $$1) : eid.a();
    }
 
-   @Override
-   public double G() {
-      return this.dp();
-   }
+   public static double a(gw $$0, int $$1, Function<gw, eig> $$2) {
+      gw.a $$3 = $$0.j();
+      int $$4 = 0;
 
-   @Override
-   public double H() {
-      return this.dr() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dv();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dK().B && this.bv() && this.F() && this.K()) {
-         this.e();
-      }
-   }
-
-   public boolean K() {
-      if (ddo.a(this.dK(), this)) {
-         return true;
-      } else {
-         for (byi $$1 : this.dK().a(byi.class, this.cG().c(0.25, 0.0, 0.25), bio.a)) {
-            if (ddo.a(this, $$1)) {
-               return true;
-            }
+      while ($$4 < $$1) {
+         eig $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(hc.a.b);
          }
 
-         return false;
+         $$4++;
+         $$3.c(hc.b);
       }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   protected civ j() {
-      return cjd.ne;
-   }
+   @Nullable
+   public static ehn a(biu<?> $$0, cpf $$1, gw $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((cpb)$$1, $$2), () -> a((cpb)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ehn $$5 = ehn.a($$2, $$4);
+            ehi $$6 = $$0.n().a($$5);
 
-   @Override
-   protected void b(qu $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.f);
-   }
+            for (eig $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   protected void a(qu $$0) {
-      super.a($$0);
-      this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public ceg a(int $$0, cbo $$1) {
-      return new cfd($$0, $$1, this);
+            if ($$0 != biu.bt || !$$1.a_($$2).a(apt.ci) && !$$1.a_($$2.c()).a(apt.ci)) {
+               return !$$1.B_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

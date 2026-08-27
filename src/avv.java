@@ -1,87 +1,75 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Arrays;
+import java.util.function.Function;
 
 public class avv extends DataFix {
-   public avv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public avv(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
+   protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(ays.w);
-      Type<?> $$3 = $$1.getTypeRaw(ays.w);
-      Type<?> $$4 = $$0.getTypeRaw(ays.x);
-      return this.a($$0, $$1, $$2, $$3, $$4);
+      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(ayx.x), this::a);
    }
 
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(ays.w.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         ays.w.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
-      );
-      Type<?> $$7 = $$0.getType(ays.w);
-      Type<?> $$8 = $$1.getType(ays.w);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(ays.b);
-         Type<?> $$13 = $$1.getType(ays.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:egg", this::d);
+      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
+      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
+      $$0 = this.a($$0, "minecraft:snowball", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::c);
+      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
+      $$0 = this.a($$0, "minecraft:arrow", this::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
+      return this.a($$0, "minecraft:trident", this::a);
+   }
 
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(ays.w.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if ($$10x.isEmpty()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
+      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
+   }
 
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
-      }
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Owner");
+      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
+      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$2, $$3).remove("Owner");
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Potion");
+      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      String $$1 = "owner";
+      OptionalDynamic<?> $$2 = $$0.get("owner");
+      long $$3 = $$2.get("M").asLong(0L);
+      long $$4 = $$2.get("L").asLong(0L);
+      return this.a($$0, $$3, $$4).remove("owner");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
+      String $$3 = "OwnerUUID";
+      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
+   }
+
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(ayx.x, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(ayx.x, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

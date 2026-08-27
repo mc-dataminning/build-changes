@@ -1,83 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class eef extends edx {
-   public static final Codec<eef> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(jd.l.r().fieldOf("type").forGetter($$0x -> $$0x.b), edc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eef::new)
-   );
-   private final hg<dcs<?>> b;
-   private final List<ede> c;
+public class eef {
+   public static final BiFunction<cjf, ecq, cjf> a = ($$0, $$1) -> $$0;
+   private static final Codec<eed> D = jd.H.q().dispatch("function", eed::b, eee::a);
+   public static final Codec<eed> b = arg.a((Supplier<Codec<eed>>)(() -> arg.e(D, eeh.b)));
+   public static final eee c = a("set_count", eeo.a);
+   public static final eee d = a("enchant_with_levels", edw.a);
+   public static final eee e = a("enchant_randomly", edv.a);
+   public static final eee f = a("set_enchantments", eem.a);
+   public static final eee g = a("set_nbt", ees.a);
+   public static final eee h = a("furnace_smelt", eev.a);
+   public static final eee i = a("looting_enchant", eeg.b);
+   public static final eee j = a("set_damage", eep.a);
+   public static final eee k = a("set_attributes", eei.a);
+   public static final eee l = a("set_name", eer.a);
+   public static final eee m = a("exploration_map", edx.f);
+   public static final eee n = a("set_stew_effect", eeu.a);
+   public static final eee o = a("copy_name", edt.a);
+   public static final eee p = a("set_contents", eek.a);
+   public static final eee q = a("limit_count", eeb.a);
+   public static final eee r = a("apply_bonus", edq.a);
+   public static final eee s = a("set_loot_table", eel.a);
+   public static final eee t = a("explosion_decay", edr.a);
+   public static final eee u = a("set_lore", eeq.a);
+   public static final eee v = a("fill_player_head", edy.a);
+   public static final eee w = a("copy_nbt", edu.a);
+   public static final eee x = a("copy_state", eds.a);
+   public static final eee y = a("set_banner_pattern", eej.a);
+   public static final eee z = a("set_potion", eet.a);
+   public static final eee A = a("set_instrument", een.a);
+   public static final eee B = a("reference", edz.a);
+   public static final eee C = a("sequence", eeh.a);
 
-   eef(List<efk> $$0, hg<dcs<?>> $$1, List<ede> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   private static eee a(String $$0, Codec<? extends eed> $$1) {
+      return ht.a(jd.H, new aex($$0), new eee($$1));
    }
 
-   @Override
-   public edz b() {
-      return eea.p;
-   }
+   public static BiFunction<cjf, ecq, cjf> a(List<? extends BiFunction<cjf, ecq, cjf>> $$0) {
+      List<BiFunction<cjf, ecq, cjf>> $$1 = List.copyOf($$0);
 
-   @Override
-   public cja a(cja $$0, ecl $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         hp<cja> $$2 = hp.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ect.a($$1.d(), $$2::add), $$1)));
-         qu $$3 = new qu();
-         bgn.a($$3, $$2);
-         qu $$4 = cgt.a($$0);
-         if ($$4 == null) {
-            $$4 = $$3;
-         } else {
-            $$4.a($$3);
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cjf, ecq, cjf> $$2 = $$1.get(0);
+            BiFunction<cjf, ecq, cjf> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+         }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cjf, ecq, cjf> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
          }
 
-         cgt.a($$0, this.b.a(), $$4);
-         return $$0;
-      }
-   }
-
-   @Override
-   public void a(ecu $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".entry[" + $$1 + "]"));
-      }
-   }
-
-   public static eef.a a(dcs<?> $$0) {
-      return new eef.a($$0);
-   }
-
-   public static class a extends edx.a<eef.a> {
-      private final Builder<ede> a = ImmutableList.builder();
-      private final dcs<?> b;
-
-      public a(dcs<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected eef.a a() {
-         return this;
-      }
-
-      public eef.a a(ede.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public edy b() {
-         return new eef(this.g(), this.b.a(), this.a.build());
-      }
+         return $$1x;
+      };
+      };
    }
 }

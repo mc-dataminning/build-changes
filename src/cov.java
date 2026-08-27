@@ -1,2 +1,8 @@
-public record cov(gw a, csq b, int c, int d) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cov {
 }

@@ -1,24 +1,42 @@
-public class zl implements va<ws> {
-   private final double a;
+import java.util.Optional;
 
-   public zl(dgv $$0) {
-      this.a = $$0.k();
+public class zl implements vd<ww> {
+   private final tl a;
+   private final Optional<byte[]> b;
+   private final boolean c;
+
+   public zl(tl $$0, Optional<byte[]> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zl(sl $$0) {
-      this.a = $$0.readDouble();
+   public zl(so $$0) {
+      this.a = $$0.l();
+      this.b = $$0.b(so::b);
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
+      $$0.a(this.b, so::a);
+      $$0.a(this.c);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public tl a() {
       return this.a;
+   }
+
+   public Optional<byte[]> d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

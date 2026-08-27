@@ -1,86 +1,46 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-
-public class fwp<T extends bjb, M extends fey<T> & ffg> extends fxk<T, M> {
-   private final float a;
-   private final float b;
-   private final float c;
-   private final Map<czs.a, fgv> d;
-   private final fnv e;
-
-   public fwp(fux<T, M> $$0, fht $$1, fnv $$2) {
-      this($$0, $$1, 1.0F, 1.0F, 1.0F, $$2);
-   }
-
-   public fwp(fux<T, M> $$0, fht $$1, float $$2, float $$3, float $$4, fnv $$5) {
+public class fwp extends fxp<fnd, fgi<fnd>> {
+   public fwp(fvc<fnd, fgi<fnd>> $$0) {
       super($$0);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = fqo.a($$1);
-      this.e = $$5;
    }
 
-   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cja $$10 = $$3.c(biq.f);
-      if (!$$10.b()) {
-         civ $$11 = $$10.d();
-         $$0.a();
-         $$0.b(this.a, this.b, this.c);
-         boolean $$12 = $$3 instanceof cbc || $$3 instanceof bzx;
-         if ($$3.i_() && !($$3 instanceof cbc)) {
-            float $$13 = 2.0F;
-            float $$14 = 1.4F;
-            $$0.a(0.0F, 0.03125F, 0.0F);
-            $$0.b(0.7F, 0.7F, 0.7F);
-            $$0.a(0.0F, 1.0F, 0.0F);
-         }
-
-         this.c().d().a($$0);
-         if ($$11 instanceof cgt && ((cgt)$$11).e() instanceof crn) {
-            float $$15 = 1.1875F;
-            $$0.b(1.1875F, -1.1875F, -1.1875F);
-            if ($$12) {
-               $$0.a(0.0F, 0.0625F, 0.0F);
-            }
-
-            GameProfile $$16 = null;
-            if ($$10.u()) {
-               qu $$17 = $$10.v();
-               if ($$17.b("SkullOwner", 10)) {
-                  $$16 = rg.a($$17.p("SkullOwner"));
+   public void a(elp $$0, foe $$1, int $$2, fnd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce() && $$3.a(cbv.a)) {
+         gae $$10 = $$3.b();
+         if ($$10.c() != null) {
+            cjf $$11 = $$3.c(biv.e);
+            if (!$$11.a(cji.nh)) {
+               $$0.a();
+               $$0.a(0.0F, 0.0F, 0.125F);
+               double $$12 = arx.d((double)$$6, $$3.bY, $$3.cb) - arx.d((double)$$6, $$3.K, $$3.dq());
+               double $$13 = arx.d((double)$$6, $$3.bZ, $$3.cc) - arx.d((double)$$6, $$3.L, $$3.ds());
+               double $$14 = arx.d((double)$$6, $$3.ca, $$3.cd) - arx.d((double)$$6, $$3.M, $$3.dw());
+               float $$15 = arx.j($$6, $$3.aV, $$3.aU);
+               double $$16 = (double)arx.a($$15 * (float) (Math.PI / 180.0));
+               double $$17 = (double)(-arx.b($$15 * (float) (Math.PI / 180.0)));
+               float $$18 = (float)$$13 * 10.0F;
+               $$18 = arx.a($$18, -6.0F, 32.0F);
+               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
+               $$19 = arx.a($$19, 0.0F, 150.0F);
+               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
+               $$20 = arx.a($$20, -20.0F, 20.0F);
+               if ($$19 < 0.0F) {
+                  $$19 = 0.0F;
                }
-            }
 
-            $$0.a(-0.5, 0.0, -0.5);
-            czs.a $$18 = ((crn)((cgt)$$11).e()).a();
-            fgv $$19 = this.d.get($$18);
-            foh $$20 = fqo.a($$18, $$16);
-            bka $$22;
-            if ($$3.cY() instanceof bjb $$21) {
-               $$22 = $$21.aQ;
-            } else {
-               $$22 = $$3.aQ;
-            }
+               float $$21 = arx.i($$6, $$3.bV, $$3.bW);
+               $$18 += arx.a(arx.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
+               if ($$3.bX()) {
+                  $$18 += 25.0F;
+               }
 
-            float $$24 = $$22.c($$6);
-            fqo.a(null, 180.0F, $$24, $$0, $$1, $$2, $$19, $$20);
-         } else if (!($$11 instanceof cgk $$25) || $$25.g() != biq.f) {
-            a($$0, $$12);
-            this.e.a($$3, $$10, cix.f, false, $$0, $$1, $$2);
+               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
+               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
+               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
+               elt $$22 = $$1.getBuffer(fom.c($$10.c()));
+               this.c().b($$0, $$22, $$2, fyv.d);
+               $$0.b();
+            }
          }
-
-         $$0.b();
-      }
-   }
-
-   public static void a(elk $$0, boolean $$1) {
-      float $$2 = 0.625F;
-      $$0.a(0.0F, -0.25F, 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
-      if ($$1) {
-         $$0.a(0.0F, 0.1875F, 0.0F);
       }
    }
 }

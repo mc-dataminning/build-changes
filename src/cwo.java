@@ -1,73 +1,17 @@
-public class cwo extends cui {
-   protected cwo(dfd.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+public abstract class cwo extends csv {
+   public static final dgd aC = dfz.R;
+
+   protected cwo(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dfe a(cli $$0) {
-      cow $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      eah $$3 = $$0.q().b_($$0.a());
-      gw $$4 = $$2.e();
-      gw $$5 = $$2.f();
-      gw $$6 = $$2.g();
-      gw $$7 = $$2.h();
-      dfe $$8 = $$1.a_($$4);
-      dfe $$9 = $$1.a_($$5);
-      dfe $$10 = $$1.a_($$6);
-      dfe $$11 = $$1.a_($$7);
-      return this.n()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, hc.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, hc.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, hc.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, hc.e))))
-         .a(e, Boolean.valueOf($$3.a() == eai.c));
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(aC, $$1.a($$0.c(aC)));
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
-      }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eib b(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return ehy.a();
-   }
-
-   @Override
-   public boolean a(dfe $$0, dfe $$1, hc $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dfe $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof cwo || $$0.a(apo.L);
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, b, d, c, e);
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(aC)));
    }
 }

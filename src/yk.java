@@ -1,40 +1,31 @@
-public class yk implements va<ws> {
-   private final int a;
-   private final cop b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-   private final boolean f;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public yk(int $$0, cop $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class yk implements vd<ww> {
+   private final int a;
+   private final int b;
+   private final yl c;
+
+   public yk(cpc $$0, eab $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = $$0.e;
+      this.b = $$0.f;
+      this.c = new yl($$0, $$1, $$2, $$3);
    }
 
-   public yk(sl $$0) {
+   public yk(so $$0) {
       this.a = $$0.m();
-      this.b = cop.b($$0);
-      this.c = $$0.m();
-      this.d = $$0.m();
-      this.e = $$0.readBoolean();
-      this.f = $$0.readBoolean();
+      this.b = $$0.m();
+      this.c = new yl($$0, this.a, this.b);
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
-      this.b.a($$0);
-      $$0.c(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.c(this.b);
+      this.c.a($$0);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
@@ -42,23 +33,11 @@ public class yk implements va<ws> {
       return this.a;
    }
 
-   public cop d() {
+   public int d() {
       return this.b;
    }
 
-   public int e() {
+   public yl e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
    }
 }

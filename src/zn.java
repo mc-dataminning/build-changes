@@ -1,24 +1,32 @@
-public class zn implements va<ws> {
-   private final int a;
+public class zn implements vd<ww> {
+   private final double a;
+   private final double b;
 
-   public zn(dgv $$0) {
-      this.a = $$0.r();
+   public zn(dha $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public zn(sl $$0) {
-      this.a = $$0.m();
+   public zn(so $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
+      return this.b;
+   }
+
+   public double d() {
       return this.a;
    }
 }

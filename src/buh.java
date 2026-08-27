@@ -1,218 +1,139 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class buh extends bug {
-   public static final float b = 74.48451F;
-   public static final int c = ars.f(2.4166098F);
-   private static final aec<Byte> d = aef.a(buh.class, aee.a);
-   private static final int e = 1;
-   private static final btn bS = btn.b().a(4.0);
-   @Nullable
-   private gw bT;
+public class buh {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<bug> b = new Short2ObjectOpenHashMap();
+   private final Map<hg<bui>, Set<bug>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public buh(bip<? extends buh> $$0, cpq $$1) {
-      super($$0, $$1);
-      if (!$$1.B) {
-         this.w(true);
+   public static Codec<buh> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     bug.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, buh::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new buh($$0, false, ImmutableList.of()));
+   }
+
+   public buh(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
+   }
+
+   private buh(Runnable $$0, boolean $$1, List<bug> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
+   }
+
+   public Stream<bug> a(Predicate<hg<bui>> $$0, buf.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((hg<bui>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(gw $$0, hg<bui> $$1) {
+      if (this.a(new bug($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
+         this.d.run();
       }
    }
 
-   @Override
-   public boolean aR() {
-      return !this.q() && this.ah % c == 0;
-   }
-
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(d, (byte)0);
-   }
-
-   @Override
-   protected float eU() {
-      return 0.1F;
-   }
-
-   @Override
-   public float eV() {
-      return super.eV() * 0.95F;
-   }
-
-   @Nullable
-   @Override
-   public aoy r() {
-      return this.q() && this.ag.a(4) != 0 ? null : aoz.bq;
-   }
-
-   @Override
-   protected aoy d(bhj $$0) {
-      return aoz.bs;
-   }
-
-   @Override
-   protected aoy h_() {
-      return aoz.br;
-   }
-
-   @Override
-   public boolean bs() {
-      return false;
-   }
-
-   @Override
-   protected void D(bil $$0) {
-   }
-
-   @Override
-   protected void fg() {
-   }
-
-   public static bkg.a p() {
-      return bjd.x().a(bkh.a, 6.0);
-   }
-
-   public boolean q() {
-      return (this.an.b(d) & 1) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.an.b(d);
-      if ($$0) {
-         this.an.b(d, (byte)($$1 | 1));
-      } else {
-         this.an.b(d, (byte)($$1 & -2));
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.q()) {
-         this.f(ehi.b);
-         this.p(this.dp(), (double)ars.a(this.dr()) + 1.0 - (double)this.dg(), this.dv());
-      } else {
-         this.f(this.dn().d(1.0, 0.6, 1.0));
-      }
-   }
-
-   @Override
-   protected void V() {
-      super.V();
-      gw $$0 = this.dk();
-      gw $$1 = $$0.c();
-      if (this.q()) {
-         boolean $$2 = this.aS();
-         if (this.dK().a_($$1).g(this.dK(), $$0)) {
-            if (this.ag.a(200) == 0) {
-               this.aW = (float)this.ag.a(360);
-            }
-
-            if (this.dK().a(bS, this) != null) {
-               this.w(false);
-               if (!$$2) {
-                  this.dK().a(null, 1025, $$0, 0);
-               }
-            }
-         } else {
-            this.w(false);
-            if (!$$2) {
-               this.dK().a(null, 1025, $$0, 0);
-            }
-         }
-      } else {
-         if (this.bT != null && (!this.dK().t(this.bT) || this.bT.v() <= this.dK().C_())) {
-            this.bT = null;
-         }
-
-         if (this.bT == null || this.ag.a(30) == 0 || this.bT.a(this.di(), 2.0)) {
-            this.bT = gw.a(
-               this.dp() + (double)this.ag.a(7) - (double)this.ag.a(7),
-               this.dr() + (double)this.ag.a(6) - 2.0,
-               this.dv() + (double)this.ag.a(7) - (double)this.ag.a(7)
-            );
-         }
-
-         double $$3 = (double)this.bT.u() + 0.5 - this.dp();
-         double $$4 = (double)this.bT.v() + 0.1 - this.dr();
-         double $$5 = (double)this.bT.w() + 0.5 - this.dv();
-         ehi $$6 = this.dn();
-         ehi $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
-         this.f($$7);
-         float $$8 = (float)(ars.d($$7.e, $$7.c) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$9 = ars.g($$8 - this.dA());
-         this.bm = 0.5F;
-         this.r(this.dA() + $$9);
-         if (this.ag.a(100) == 0 && this.dK().a_($$1).g(this.dK(), $$1)) {
-            this.w(true);
-         }
-      }
-   }
-
-   @Override
-   protected bil.b aU() {
-      return bil.b.c;
-   }
-
-   @Override
-   protected void a(double $$0, boolean $$1, dfe $$2, gw $$3) {
-   }
-
-   @Override
-   public boolean d_() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bhj $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else {
-         if (!this.dK().B && this.q()) {
-            this.w(false);
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(qu $$0) {
-      super.a($$0);
-      this.an.b(d, $$0.f("BatFlags"));
-   }
-
-   @Override
-   public void b(qu $$0) {
-      super.b($$0);
-      $$0.a("BatFlags", this.an.b(d));
-   }
-
-   public static boolean b(bip<buh> $$0, cpr $$1, bjf $$2, gw $$3, arx $$4) {
-      if ($$3.v() >= $$1.t_()) {
-         return false;
-      } else {
-         int $$5 = $$1.z($$3);
-         int $$6 = 4;
-         if (t()) {
-            $$6 = 7;
-         } else if ($$4.h()) {
+   private boolean a(bug $$0) {
+      gw $$1 = $$0.f();
+      hg<bui> $$2 = $$0.g();
+      short $$3 = hz.b($$1);
+      bug $$4 = (bug)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
             return false;
          }
 
-         return $$5 > $$4.a($$6) ? false : a($$0, $$1, $$2, $$3, $$4);
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
+   }
+
+   public void a(gw $$0) {
+      bug $$1 = (bug)this.b.remove(hz.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
       }
    }
 
-   private static boolean t() {
-      LocalDate $$0 = LocalDate.now();
-      int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
-      int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
-      return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
+   @Deprecated
+   @asy
+   public int b(gw $$0) {
+      return this.e($$0).map(bug::a).orElse(0);
    }
 
-   @Override
-   protected float b(bjn $$0, bim $$1) {
-      return $$1.b / 2.0F;
+   public boolean c(gw $$0) {
+      bug $$1 = (bug)this.b.get(hz.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
+      }
+   }
+
+   public boolean a(gw $$0, Predicate<hg<bui>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
+
+   public Optional<hg<bui>> d(gw $$0) {
+      return this.e($$0).map(bug::g);
+   }
+
+   private Optional<bug> e(gw $$0) {
+      return Optional.ofNullable((bug)this.b.get(hz.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<gw, hg<bui>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<bug> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = hz.b($$1x);
+            bug $$4 = (bug)$$1.computeIfAbsent($$3, $$2x -> new bug($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

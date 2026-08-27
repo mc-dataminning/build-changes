@@ -1,18 +1,18 @@
-public record we(gw b, int c) implements vs {
-   public static final aeu a = new aeu("debug/poi_ticket_count");
+public record we(long b, gw c) implements vw {
+   public static final aex a = new aex("debug/neighbors_update");
 
-   public we(sl $$0) {
-      this($$0.e(), $$0.readInt());
+   public we(so $$0) {
+      this($$0.n(), $$0.e());
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.b);
-      $$0.p(this.c);
+      $$0.a(this.c);
    }
 
    @Override
-   public aeu a() {
+   public aex a() {
       return a;
    }
 }

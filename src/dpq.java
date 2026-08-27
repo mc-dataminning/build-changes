@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpq implements dpv {
-   public static final Codec<dpq> a = bfy.b(0, 256).fieldOf("count").xmap(dpq::new, dpq::a).codec();
-   private final bfy b;
+public class dpq {
+   public static final Codec<dpq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dum.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dpq::new)
+   );
+   public final hg<dum> b;
+   public final float c;
 
-   public dpq(int $$0) {
-      this.b = bfv.a($$0);
-   }
-
-   public dpq(bfy $$0) {
+   public dpq(hg<dum> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public bfy a() {
-      return this.b;
+   public boolean a(cqp $$0, dhg $$1, asc $$2, gw $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

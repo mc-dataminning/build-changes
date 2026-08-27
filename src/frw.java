@@ -1,44 +1,45 @@
-public class frw implements fri.a {
-   private final eqq a;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public frw(eqq $$0) {
-      this.a = $$0;
+public class frw implements frn.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final eqv c;
+   private Collection<gw> d = Lists.newArrayList();
+
+   public frw(eqv $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<gw> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = this.a.s.dk();
-      cpt $$6 = this.a.s.dK();
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      gw $$5 = this.b().c();
 
-      for (gw $$7 : gw.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eah $$8 = $$6.b_($$7);
-         if ($$8.a(apt.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            fri.a(
-               $$0,
-               $$1,
-               new ehd(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
+      for (gw $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
       }
+   }
 
-      for (gw $$10 : gw.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eah $$11 = $$6.b_($$10);
-         if ($$11.a(apt.a)) {
-            fri.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+   private static void a(elp $$0, foe $$1, gw $$2) {
+      frn.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(elp $$0, foe $$1, String $$2, gw $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      frn.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private eqg b() {
+      return this.c.j.m();
    }
 }

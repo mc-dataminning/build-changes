@@ -1,65 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class crs extends csy {
-   public static final dfy a = cwj.aC;
-   protected static final float b = 2.0F;
-   private static final Map<hc, eib> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         hc.d,
-         csq.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         hc.e,
-         csq.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         hc.c,
-         csq.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         hc.f,
-         csq.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final dan d;
-   private final Supplier<civ> e;
+public abstract class crs extends csi implements cig {
+   public static final dga a = dfz.w;
+   private final czx.a b;
 
-   protected crs(dan $$0, Supplier<civ> $$1, dfd.d $$2) {
-      super($$2);
-      this.k(this.C.b().a(a, hc.c));
-      this.d = $$0;
-      this.e = $$1;
+   public crs(czx.a $$0, dfi.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.C.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return c.get($$0.c(a));
+   public dcv a(gw $$0, dfj $$1) {
+      return new def($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(csw.gO) || $$1.a(csw.gP) || $$1.a(csw.gQ) || $$1.a(csw.gR);
+         if ($$3) {
+            return a($$2, dcx.p, def::a);
+         }
+      }
+
+      return null;
+   }
+
+   public czx.a a() {
+      return this.b;
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return !$$2.a(this.d) && $$1 == $$0.c(a) ? this.d.a().n().a(dam.b, Integer.valueOf(7)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      return false;
    }
 
    @Override
-   protected boolean d(dfe $$0, cow $$1, gw $$2) {
-      return $$0.a(csr.cC);
+   public biv g() {
+      return biv.f;
    }
 
    @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      return new cja(this.e.get());
-   }
-
-   @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
+   protected void a(dfk.a<csv, dfj> $$0) {
       $$0.a(a);
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().B($$0.a())));
+   }
+
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.B($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

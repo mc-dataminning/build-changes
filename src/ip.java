@@ -9,25 +9,25 @@ public class ip implements iv {
          return new ip($$0, fi.a(jd.f.p(), $$1, false).a());
       }
 
-      public ip a(iw<ip> $$0, sl $$1) {
-         return new ip($$0, $$1.a(csq.o));
+      public ip a(iw<ip> $$0, so $$1) {
+         return new ip($$0, $$1.a(csv.o));
       }
    };
    private final iw<ip> b;
-   private final dfe c;
+   private final dfj c;
 
    public static Codec<ip> a(iw<ip> $$0) {
-      return dfe.b.xmap($$1 -> new ip($$0, $$1), $$0x -> $$0x.c);
+      return dfj.b.xmap($$1 -> new ip($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public ip(iw<ip> $$0, dfe $$1) {
+   public ip(iw<ip> $$0, dfj $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(csq.o, this.c);
+   public void a(so $$0) {
+      $$0.a(csv.o, this.c);
    }
 
    @Override
@@ -40,7 +40,7 @@ public class ip implements iv {
       return this.b;
    }
 
-   public dfe c() {
+   public dfj c() {
       return this.c;
    }
 }

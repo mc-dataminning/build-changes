@@ -1,7 +1,7 @@
-public enum dgq implements ask {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dgq implements asp {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum dgq implements ask {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

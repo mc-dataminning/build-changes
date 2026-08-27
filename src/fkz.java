@@ -1,56 +1,30 @@
-public class fkz extends fmp {
-   private final double a;
-   private final double b;
-   private final double F;
+public class fkz extends fmu {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final fmp M;
 
-   fkz(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   fkz(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
       super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$7;
-      this.w = 0.9F * $$7;
-      this.x = $$7;
+      this.v = arx.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = arx.a(this.r, 0.0F, 0.0F);
+      this.x = arx.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
       this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
-   }
-
-   @Override
-   public flt b() {
-      return flt.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
@@ -61,42 +35,49 @@ public class fkz extends fmp {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
       }
    }
 
-   public static class a implements fls<ja> {
-      private final fmk a;
-
-      public a(fmk $$0) {
-         this.a = $$0;
-      }
-
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkz $$8 = new fkz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public fly b() {
+      return fly.b;
    }
 
-   public static class b implements fls<ja> {
-      private final fmk a;
+   @Override
+   public float b(float $$0) {
+      return this.D * arx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public b(fmk $$0) {
+   public static class a implements flx<ja> {
+      private final fmp a;
+
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkz $$8 = new fkz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

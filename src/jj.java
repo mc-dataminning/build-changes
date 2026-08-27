@@ -55,7 +55,7 @@ public class jj {
    }
 
    static {
-      aew.a();
+      aez.a();
    }
 
    public class a {

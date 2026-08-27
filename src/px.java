@@ -1,62 +1,258 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Streams;
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
 public class px {
-   private static final int e = 100;
-   public static final int a = 2;
-   public static final int b = 5;
-   public static final int c = 6;
-   public static final int d = 8;
+   private final qo a;
+   @Nullable
+   private gw b;
+   private final akr c;
+   private final Collection<py> d = Lists.newArrayList();
+   private final int e;
+   private final Collection<qb> f = Lists.newCopyOnWriteArrayList();
+   private final Object2LongMap<Runnable> g = new Object2LongOpenHashMap();
+   private long h;
+   private long i;
+   private boolean j;
+   private final Stopwatch k = Stopwatch.createUnstarted();
+   private boolean l;
+   private final czh m;
+   @Nullable
+   private Throwable n;
+   @Nullable
+   private dei o;
 
-   public static void a(pu $$0, gw $$1, qa $$2) {
-      $$0.a();
-      $$2.a($$0);
-      $$0.a(new qg($$0, $$2, $$1));
-      $$0.a($$1, 2);
+   public px(qo $$0, czh $$1, akr $$2) {
+      this.a = $$0;
+      this.c = $$2;
+      this.e = $$0.c();
+      this.m = $$0.g().a($$1);
    }
 
-   public static Collection<pu> a(Collection<pp> $$0, gw $$1, czc $$2, akn $$3, qa $$4, int $$5) {
-      pq $$6 = new pq($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.b();
-      return $$6.a();
+   void a(gw $$0) {
+      this.b = $$0;
    }
 
-   public static Collection<pu> b(Collection<ql> $$0, gw $$1, czc $$2, akn $$3, qa $$4, int $$5) {
-      return a(a($$0), $$1, $$2, $$3, $$4, $$5);
+   void a() {
+      this.h = this.c.V() + 1L + this.a.f();
+      this.k.start();
    }
 
-   public static Collection<pp> a(Collection<ql> $$0) {
-      Map<String, List<ql>> $$1 = $$0.stream().collect(Collectors.groupingBy(ql::e));
-      return $$1.entrySet().stream().flatMap($$0x -> {
-         String $$1x = (String)$$0x.getKey();
-         Consumer<akn> $$2 = pw.c($$1x);
-         Consumer<akn> $$3 = pw.d($$1x);
-         MutableInt $$4 = new MutableInt();
-         Collection<ql> $$5 = (Collection<ql>)$$0x.getValue();
-         return Streams.stream(Iterables.partition($$5, 100)).map($$4x -> new pp($$1x + ":" + $$4.incrementAndGet(), ImmutableList.copyOf($$4x), $$2, $$3));
-      }).collect(ImmutableList.toImmutableList());
+   public void b() {
+      if (!this.k()) {
+         this.A();
+         if (this.k()) {
+            if (this.n != null) {
+               this.d.forEach($$0 -> $$0.c(this));
+            } else {
+               this.d.forEach($$0 -> $$0.b(this));
+            }
+         }
+      }
    }
 
-   public static void a(akn $$0, gw $$1, qa $$2, int $$3) {
-      $$2.a();
-      gw $$4 = $$1.b(-$$3, 0, -$$3);
-      gw $$5 = $$1.b($$3, 0, $$3);
-      gw.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(csr.pa)).forEach($$1x -> {
-         ded $$2x = (ded)$$0.c_($$1x);
-         gw $$3x = $$2x.p();
-         duv $$4x = qh.b($$2x);
-         qh.a($$4x, $$3x.v(), $$0);
-      });
+   private void A() {
+      this.i = this.c.V() - this.h;
+      if (this.i >= 0L) {
+         if (this.i == 0L) {
+            this.B();
+         }
+
+         ObjectIterator<Entry<Runnable>> $$0 = this.g.object2LongEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
+            if ($$1.getLongValue() <= this.i) {
+               try {
+                  ((Runnable)$$1.getKey()).run();
+               } catch (Exception var4) {
+                  this.a(var4);
+               }
+
+               $$0.remove();
+            }
+         }
+
+         if (this.i > (long)this.e) {
+            if (this.f.isEmpty()) {
+               this.a(new qe("Didn't succeed or fail within " + this.a.c() + " ticks"));
+            } else {
+               this.f.forEach($$0x -> $$0x.b(this.i));
+               if (this.n == null) {
+                  this.a(new qe("No sequences finished"));
+               }
+            }
+         } else {
+            this.f.forEach($$0x -> $$0x.a(this.i));
+         }
+      }
    }
 
-   public static void a(akn $$0) {
-      aay.a($$0);
+   private void B() {
+      if (this.j) {
+         throw new IllegalStateException("Test already started");
+      } else {
+         this.j = true;
+
+         try {
+            this.a.a(new pw(this));
+         } catch (Exception var2) {
+            this.a(var2);
+         }
+      }
+   }
+
+   public void a(long $$0, Runnable $$1) {
+      this.g.put($$1, $$0);
+   }
+
+   public String c() {
+      return this.a.a();
+   }
+
+   public gw d() {
+      return this.b;
+   }
+
+   @Nullable
+   public ib e() {
+      dei $$0 = this.C();
+      return $$0 == null ? null : $$0.j();
+   }
+
+   @Nullable
+   public ehi f() {
+      dei $$0 = this.C();
+      return $$0 == null ? null : qk.a($$0);
+   }
+
+   @Nullable
+   private dei C() {
+      return (dei)this.c.c_(this.b);
+   }
+
+   public akr g() {
+      return this.c;
+   }
+
+   public boolean h() {
+      return this.l && this.n == null;
+   }
+
+   public boolean i() {
+      return this.n != null;
+   }
+
+   public boolean j() {
+      return this.j;
+   }
+
+   public boolean k() {
+      return this.l;
+   }
+
+   public long l() {
+      return this.k.elapsed(TimeUnit.MILLISECONDS);
+   }
+
+   private void D() {
+      if (!this.l) {
+         this.l = true;
+         this.k.stop();
+      }
+   }
+
+   public void m() {
+      if (this.n == null) {
+         this.D();
+      }
+   }
+
+   public void a(Throwable $$0) {
+      this.n = $$0;
+      this.D();
+   }
+
+   @Nullable
+   public Throwable n() {
+      return this.n;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   public void a(py $$0) {
+      this.d.add($$0);
+   }
+
+   public void a(gw $$0, int $$1) {
+      this.o = qk.a(this.t(), $$0, this.u(), $$1, this.c, false);
+      this.b = this.o.p();
+      this.o.a(this.c());
+      qk.a(this.b, new gw(1, 0, -1), this.u(), this.c);
+      this.d.forEach($$0x -> $$0x.a(this));
+   }
+
+   public void o() {
+      if (this.o == null) {
+         throw new IllegalStateException("Expected structure to be initialized, but it was null");
+      } else {
+         dva $$0 = qk.b(this.o);
+         qk.a($$0, this.b.v(), this.c);
+      }
+   }
+
+   long p() {
+      return this.i;
+   }
+
+   qb q() {
+      qb $$0 = new qb(this);
+      this.f.add($$0);
+      return $$0;
+   }
+
+   public boolean r() {
+      return this.a.d();
+   }
+
+   public boolean s() {
+      return !this.a.d();
+   }
+
+   public String t() {
+      return this.a.b();
+   }
+
+   public czh u() {
+      return this.m;
+   }
+
+   public qo v() {
+      return this.a;
+   }
+
+   public int w() {
+      return this.e;
+   }
+
+   public boolean x() {
+      return this.a.h();
+   }
+
+   public int y() {
+      return this.a.i();
+   }
+
+   public int z() {
+      return this.a.j();
    }
 }

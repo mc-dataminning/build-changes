@@ -1,84 +1,25 @@
-public abstract class dvb extends dvh {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+public interface dvb {
+   aew<dvo> a = a("villages");
+   aew<dvo> b = a("desert_pyramids");
+   aew<dvo> c = a("igloos");
+   aew<dvo> d = a("jungle_temples");
+   aew<dvo> e = a("swamp_huts");
+   aew<dvo> f = a("pillager_outposts");
+   aew<dvo> g = a("ocean_monuments");
+   aew<dvo> h = a("woodland_mansions");
+   aew<dvo> i = a("buried_treasures");
+   aew<dvo> j = a("mineshafts");
+   aew<dvo> k = a("ruined_portals");
+   aew<dvo> l = a("shipwrecks");
+   aew<dvo> m = a("ocean_ruins");
+   aew<dvo> n = a("nether_complexes");
+   aew<dvo> o = a("nether_fossils");
+   aew<dvo> p = a("end_cities");
+   aew<dvo> q = a("ancient_cities");
+   aew<dvo> r = a("strongholds");
+   aew<dvo> s = a("trail_ruins");
 
-   protected dvb(dvu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, hc $$7) {
-      super($$0, 0, dvh.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
-   }
-
-   protected dvb(dvu $$0, qu $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
-   }
-
-   @Override
-   protected void a(dvt $$0, qu $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
-   }
-
-   protected boolean a(cpr $$0, duv $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         gw.a $$5 = new gw.a();
-
-         for (int $$6 = this.f.i(); $$6 <= this.f.l(); $$6++) {
-            for (int $$7 = this.f.g(); $$7 <= this.f.j(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dkn.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.h() + $$2, 0);
-            return true;
-         }
-      }
-   }
-
-   protected boolean a(cpr $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.aj();
-         boolean $$3 = false;
-         gw.a $$4 = new gw.a();
-
-         for (int $$5 = this.f.i(); $$5 <= this.f.l(); $$5++) {
-            for (int $$6 = this.f.g(); $$6 <= this.f.j(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dkn.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.h() + $$1, 0);
-            return true;
-         }
-      }
+   private static aew<dvo> a(String $$0) {
+      return aew.a(je.aB, new aex($$0));
    }
 }

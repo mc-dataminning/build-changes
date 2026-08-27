@@ -1,219 +1,473 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class nr {
-   public static final aet<dwm> a = nw.a("village/desert/town_centers");
-   private static final aet<dwm> b = nw.a("village/desert/terminators");
-   private static final aet<dwm> c = nw.a("village/desert/zombie/terminators");
+   public static void a(cqu.a $$0) {
+      $$0.a(dko.a.a, nt.a);
+      $$0.a(dko.a.a, nt.b);
+      $$0.a(dko.a.a, nt.c);
+      $$0.a(dko.b.b, pe.g);
+      $$0.a(dko.b.b, pe.h);
+   }
 
-   public static void a(np<dwm> $$0) {
-      hh<duh> $$1 = $$0.a(je.ay);
-      hg<duh> $$2 = $$1.b(ph.j);
-      hg<duh> $$3 = $$1.b(ph.a);
-      hh<dyu> $$4 = $$0.a(je.aA);
-      hg<dyu> $$5 = $$4.b(nx.e);
-      hg<dyu> $$6 = $$4.b(nx.p);
-      hh<dwm> $$7 = $$0.a(je.aC);
-      hg<dwm> $$8 = $$7.b(nw.a);
-      hg<dwm> $$9 = $$7.b(b);
-      hg<dwm> $$10 = $$7.b(c);
-      $$0.a(
-         a,
-         new dwm(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/town_centers/desert_meeting_point_1"), 98),
-               Pair.of(dwk.a("village/desert/town_centers/desert_meeting_point_2"), 98),
-               Pair.of(dwk.a("village/desert/town_centers/desert_meeting_point_3"), 49),
-               Pair.of(dwk.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
-            ),
-            dwm.a.b
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/streets",
-         new dwm(
-            $$9,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/streets/corner_01"), 3),
-               Pair.of(dwk.a("village/desert/streets/corner_02"), 3),
-               Pair.of(dwk.a("village/desert/streets/straight_01"), 4),
-               Pair.of(dwk.a("village/desert/streets/straight_02"), 4),
-               Pair.of(dwk.a("village/desert/streets/straight_03"), 3),
-               Pair.of(dwk.a("village/desert/streets/crossroad_01"), 3),
-               Pair.of(dwk.a("village/desert/streets/crossroad_02"), 3),
-               Pair.of(dwk.a("village/desert/streets/crossroad_03"), 3),
-               Pair.of(dwk.a("village/desert/streets/square_01"), 3),
-               Pair.of(dwk.a("village/desert/streets/square_02"), 3),
-               Pair.of(dwk.a("village/desert/streets/turn_01"), 3)
-            ),
-            dwm.a.a
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/zombie/streets",
-         new dwm(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/zombie/streets/corner_01"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/corner_02"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/straight_01"), 4),
-               Pair.of(dwk.a("village/desert/zombie/streets/straight_02"), 4),
-               Pair.of(dwk.a("village/desert/zombie/streets/straight_03"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/crossroad_01"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/crossroad_02"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/crossroad_03"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/square_01"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/square_02"), 3),
-               Pair.of(dwk.a("village/desert/zombie/streets/turn_01"), 3)
-            ),
-            dwm.a.a
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/houses",
-         new dwm(
-            $$9,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_1"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_2"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_3"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_4"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_5"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_6"), 1),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_7"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_small_house_8"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_medium_house_1"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_medium_house_2"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_butcher_shop_1"), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_tool_smith_1"), 2),
-               new Pair[]{
-                  Pair.of(dwk.a("village/desert/houses/desert_fletcher_house_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_shepherd_house_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_armorer_1"), 1),
-                  Pair.of(dwk.a("village/desert/houses/desert_fisher_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_tannery_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_cartographer_house_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_library_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_mason_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_weaponsmith_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_temple_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_temple_2"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_large_farm_1", $$6), 11),
-                  Pair.of(dwk.a("village/desert/houses/desert_farm_1", $$6), 4),
-                  Pair.of(dwk.a("village/desert/houses/desert_farm_2", $$6), 4),
-                  Pair.of(dwk.a("village/desert/houses/desert_animal_pen_1"), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_animal_pen_2"), 2),
-                  Pair.of(dwk.g(), 5)
-               }
-            ),
-            dwm.a.b
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/zombie/houses",
-         new dwm(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
-               Pair.of(dwk.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
-               Pair.of(dwk.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
-               new Pair[]{
-                  Pair.of(dwk.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_armorer_1", $$5), 1),
-                  Pair.of(dwk.a("village/desert/houses/desert_fisher_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_tannery_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_library_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_mason_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_temple_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_temple_2", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_large_farm_1", $$5), 7),
-                  Pair.of(dwk.a("village/desert/houses/desert_farm_1", $$5), 4),
-                  Pair.of(dwk.a("village/desert/houses/desert_farm_2", $$5), 4),
-                  Pair.of(dwk.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
-                  Pair.of(dwk.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
-                  Pair.of(dwk.g(), 5)
-               }
-            ),
-            dwm.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new dwm(
-            $$8,
-            ImmutableList.of(Pair.of(dwk.a("village/desert/terminators/terminator_01"), 1), Pair.of(dwk.a("village/desert/terminators/terminator_02"), 1)),
-            dwm.a.a
-         )
-      );
-      $$0.a(
-         c,
-         new dwm(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/terminators/terminator_01"), 1), Pair.of(dwk.a("village/desert/zombie/terminators/terminator_02"), 1)
-            ),
-            dwm.a.a
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/decor",
-         new dwm(
-            $$8,
-            ImmutableList.of(Pair.of(dwk.a("village/desert/desert_lamp_1"), 10), Pair.of(dwk.a($$2), 4), Pair.of(dwk.a($$3), 4), Pair.of(dwk.g(), 10)),
-            dwm.a.b
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/zombie/decor",
-         new dwm(
-            $$8,
-            ImmutableList.of(Pair.of(dwk.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(dwk.a($$2), 4), Pair.of(dwk.a($$3), 4), Pair.of(dwk.g(), 10)),
-            dwm.a.b
-         )
-      );
-      nw.a(
-         $$0,
-         "village/desert/villagers",
-         new dwm(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwk.a("village/desert/villagers/nitwit"), 1),
-               Pair.of(dwk.a("village/desert/villagers/baby"), 1),
-               Pair.of(dwk.a("village/desert/villagers/unemployed"), 10)
-            ),
-            dwm.a.b
-         )
-      );
-      nw.a($$0, "village/desert/camel", new dwm($$8, ImmutableList.of(Pair.of(dwk.a("village/desert/camel_spawn"), 1)), dwm.a.b));
-      nw.a(
-         $$0,
-         "village/desert/zombie/villagers",
-         new dwm(
-            $$8,
-            ImmutableList.of(Pair.of(dwk.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(dwk.a("village/desert/zombie/villagers/unemployed"), 10)),
-            dwm.a.b
-         )
-      );
+   public static void b(cqu.a $$0) {
+      $$0.a(dko.b.d, pc.a);
+      $$0.a(dko.b.d, pc.b);
+   }
+
+   public static void c(cqu.a $$0) {
+      $$0.a(dko.b.g, pg.i);
+      $$0.a(dko.b.g, pg.j);
+      $$0.a(dko.b.g, pg.k);
+      $$0.a(dko.b.g, pg.l);
+      $$0.a(dko.b.g, pg.m);
+      $$0.a(dko.b.g, pg.n);
+      $$0.a(dko.b.g, pg.o);
+      $$0.a(dko.b.g, pg.p);
+      $$0.a(dko.b.g, pg.q);
+      $$0.a(dko.b.j, pc.i);
+   }
+
+   public static void d(cqu.a $$0) {
+      $$0.a(dko.b.c, pc.f);
+      $$0.a(dko.b.h, pc.e);
+      $$0.a(dko.b.h, pc.g);
+   }
+
+   public static void e(cqu.a $$0) {
+      $$0.a(dko.b.h, pc.t);
+      $$0.a(dko.b.h, pc.r);
+   }
+
+   public static void f(cqu.a $$0) {
+      a($$0, false);
+   }
+
+   public static void a(cqu.a $$0, boolean $$1) {
+      $$0.a(dko.b.g, pg.r);
+      $$0.a(dko.b.g, pg.s);
+      $$0.a(dko.b.g, pg.t);
+      $$0.a(dko.b.g, pg.u);
+      $$0.a(dko.b.g, pg.v);
+      $$0.a(dko.b.g, pg.x);
+      $$0.a(dko.b.g, pg.y);
+      $$0.a(dko.b.g, pg.z);
+      $$0.a(dko.b.g, pg.A);
+      $$0.a(dko.b.g, pg.B);
+      $$0.a(dko.b.g, pg.C);
+      $$0.a(dko.b.g, pg.D);
+      $$0.a(dko.b.g, pg.E);
+      $$0.a(dko.b.g, pg.F);
+      $$0.a(dko.b.g, pg.G);
+      $$0.a(dko.b.g, $$1 ? pg.M : pg.L);
+      $$0.a(dko.b.g, pc.h);
+   }
+
+   public static void g(cqu.a $$0) {
+      $$0.a(dko.b.g, pg.w);
+   }
+
+   public static void h(cqu.a $$0) {
+      $$0.a(dko.b.g, pg.I);
+   }
+
+   public static void i(cqu.a $$0) {
+      $$0.a(dko.b.h, pg.H);
+   }
+
+   public static void j(cqu.a $$0) {
+      $$0.a(dko.b.g, pe.k);
+      $$0.a(dko.b.g, pe.i);
+      $$0.a(dko.b.g, pe.j);
+   }
+
+   public static void k(cqu.a $$0) {
+      $$0.a(dko.b.g, pe.i);
+   }
+
+   public static void l(cqu.a $$0) {
+      $$0.a(dko.b.g, pe.l);
+      $$0.a(dko.b.g, pe.i);
+   }
+
+   public static void m(cqu.a $$0) {
+      $$0.a(dko.b.c, pe.c);
+   }
+
+   public static void n(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.y);
+   }
+
+   public static void o(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.u);
+   }
+
+   public static void p(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.t);
+   }
+
+   public static void q(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.a);
+   }
+
+   public static void r(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.b);
+      $$0.a(dko.b.j, pj.au);
+   }
+
+   public static void s(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ad);
+   }
+
+   public static void t(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ae);
+   }
+
+   public static void u(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ao);
+   }
+
+   public static void v(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.al);
+   }
+
+   public static void w(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ap);
+   }
+
+   public static void x(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ak);
+   }
+
+   public static void y(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.aj);
+   }
+
+   public static void z(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ai);
+   }
+
+   public static void A(cqu.a $$0) {
+      $$0.a(dko.b.j, pc.n);
+      $$0.a(dko.b.j, pc.k);
+      $$0.a(dko.b.j, pc.m);
+      $$0.a(dko.b.j, pc.l);
+      $$0.a(dko.b.j, pc.j);
+      $$0.a(dko.b.j, pc.o);
+      $$0.a(dko.b.j, pc.p);
+   }
+
+   public static void B(cqu.a $$0) {
+      $$0.a(dko.b.g, pg.N);
+   }
+
+   public static void C(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.an);
+   }
+
+   public static void D(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.am);
+   }
+
+   public static void E(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.at);
+   }
+
+   public static void F(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.aq);
+   }
+
+   public static void G(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.af);
+   }
+
+   public static void H(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ag);
+   }
+
+   public static void I(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.m);
+   }
+
+   public static void J(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.x);
+   }
+
+   public static void K(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.j);
+   }
+
+   public static void L(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.i);
+   }
+
+   public static void M(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.h);
+      $$0.a(dko.b.j, pj.q);
+   }
+
+   public static void N(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.Z);
+   }
+
+   public static void O(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.g);
+   }
+
+   public static void P(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.ah);
+      $$0.a(dko.b.j, pj.S);
+      $$0.a(dko.b.j, pj.j);
+      $$0.a(dko.b.j, pj.p);
+      $$0.a(dko.b.j, pj.v);
+      $$0.a(dko.b.j, pj.N);
+      $$0.a(dko.b.j, pj.O);
+   }
+
+   public static void Q(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.aw);
+      $$0.a(dko.b.j, pj.j);
+      $$0.a(dko.b.j, pj.p);
+      $$0.a(dko.b.j, pj.v);
+   }
+
+   public static void R(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.av);
+      $$0.a(dko.b.j, pj.J);
+      $$0.a(dko.b.j, pj.K);
+   }
+
+   public static void S(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.W);
+      $$0.a(dko.b.j, pj.T);
+      $$0.a(dko.b.j, pj.f);
+   }
+
+   public static void T(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.o);
+   }
+
+   public static void U(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.l);
+      $$0.a(dko.b.j, pj.p);
+      $$0.a(dko.b.j, pj.L);
+      $$0.a(dko.b.j, pj.M);
+   }
+
+   public static void V(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.Q);
+   }
+
+   public static void W(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.f);
+      $$0.a(dko.b.j, pj.V);
+      $$0.a(dko.b.j, pj.ac);
+   }
+
+   public static void X(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.f);
+      $$0.a(dko.b.j, pj.U);
+      $$0.a(dko.b.j, pj.ab);
+   }
+
+   public static void Y(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.P);
+   }
+
+   public static void Z(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.h);
+   }
+
+   public static void aa(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.k);
+      $$0.a(dko.b.j, pj.J);
+      $$0.a(dko.b.j, pj.K);
+   }
+
+   public static void ab(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.w);
+   }
+
+   public static void ac(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.H);
+      $$0.a(dko.b.j, pj.I);
+   }
+
+   public static void ad(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.E);
+      $$0.a(dko.b.j, pj.e);
+   }
+
+   public static void ae(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.D);
+      $$0.a(dko.b.j, pj.e);
+      $$0.a(dko.b.j, pj.A);
+   }
+
+   public static void af(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.r);
+   }
+
+   public static void ag(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.s);
+   }
+
+   public static void ah(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.c);
+   }
+
+   public static void ai(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.C);
+      $$0.a(dko.b.j, pj.e);
+      $$0.a(dko.b.j, pj.z);
+   }
+
+   public static void aj(cqu.a $$0) {
+      $$0.a(dko.b.j, pj.B);
+      $$0.a(dko.b.j, pj.e);
+   }
+
+   public static void ak(cqu.a $$0) {
+      $$0.a(dko.b.e, pe.o);
+   }
+
+   public static void al(cqu.a $$0) {
+      $$0.a(dko.b.d, pc.c);
+      $$0.a(dko.b.d, pc.d);
+   }
+
+   public static void am(cqu.a $$0) {
+      $$0.a(dko.b.j, pb.k);
+   }
+
+   public static void an(cqu.a $$0) {
+      $$0.a(dko.b.j, pb.i);
+   }
+
+   public static void ao(cqu.a $$0) {
+      $$0.a(dko.b.j, pb.l);
+   }
+
+   public static void ap(cqu.a $$0) {
+      $$0.a(dko.b.i, pe.r);
+      $$0.a(dko.b.i, pe.p);
+   }
+
+   public static void aq(cqu.a $$0) {
+      $$0.a(dko.b.i, pe.q);
+   }
+
+   public static void ar(cqu.a $$0) {
+      $$0.a(dko.b.c, pe.d);
+      $$0.a(dko.b.c, pe.e);
+   }
+
+   public static void as(cqu.a $$0) {
+      $$0.a(dko.b.e, pe.f);
+   }
+
+   public static void at(cqu.a $$0) {
+      $$0.a(dko.b.k, pe.m);
+   }
+
+   public static void au(cqu.a $$0) {
+      $$0.a(dko.b.h, pg.g);
+      $$0.a(dko.b.h, pg.h);
+      $$0.a(dko.b.h, pg.e);
+      $$0.a(dko.b.h, pg.f);
+      av($$0);
+   }
+
+   public static void av(cqu.a $$0) {
+      $$0.a(dko.b.h, pg.J);
+      $$0.a(dko.b.h, pg.K);
+   }
+
+   public static void aw(cqu.a $$0) {
+      $$0.a(dko.b.c, pc.q);
+   }
+
+   public static void a(crf.a $$0) {
+      $$0.a(bjj.b, new crf.c(biu.aF, 12, 4, 4));
+      $$0.a(bjj.b, new crf.c(biu.av, 10, 4, 4));
+      $$0.a(bjj.b, new crf.c(biu.q, 10, 4, 4));
+      $$0.a(bjj.b, new crf.c(biu.t, 8, 4, 4));
+   }
+
+   public static void b(crf.a $$0) {
+      $$0.a(bjj.c, new crf.c(biu.g, 10, 8, 8));
+      $$0.a(bjj.e, new crf.c(biu.T, 10, 4, 6));
+   }
+
+   public static void c(crf.a $$0) {
+      b($$0);
+      a($$0, 95, 5, 100, false);
+   }
+
+   public static void a(crf.a $$0, int $$1, int $$2, int $$3) {
+      $$0.a(bjj.f, new crf.c(biu.aT, $$1, 1, $$2));
+      $$0.a(bjj.g, new crf.c(biu.r, $$3, 3, 6));
+      c($$0);
+      $$0.a(bjj.a, new crf.c(biu.y, 5, 1, 1));
+   }
+
+   public static void a(crf.a $$0, int $$1, int $$2) {
+      $$0.a(bjj.f, new crf.c(biu.aT, $$1, $$2, 4));
+      $$0.a(bjj.g, new crf.c(biu.bc, 25, 8, 8));
+      $$0.a(bjj.f, new crf.c(biu.v, 2, 1, 2));
+      $$0.a(bjj.a, new crf.c(biu.y, 5, 1, 1));
+      c($$0);
+   }
+
+   public static void d(crf.a $$0) {
+      a($$0);
+      $$0.a(bjj.b, new crf.c(biu.Y, 5, 2, 6));
+      $$0.a(bjj.b, new crf.c(biu.w, 1, 1, 3));
+      c($$0);
+   }
+
+   public static void e(crf.a $$0) {
+      $$0.a(bjj.b, new crf.c(biu.aC, 10, 2, 3));
+      $$0.a(bjj.b, new crf.c(biu.az, 1, 1, 2));
+      b($$0);
+      a($$0, 95, 5, 20, false);
+      $$0.a(bjj.a, new crf.c(biu.aU, 80, 4, 4));
+   }
+
+   public static void f(crf.a $$0) {
+      $$0.a(bjj.b, new crf.c(biu.aC, 4, 2, 3));
+      b($$0);
+      a($$0, 19, 1, 100, false);
+      $$0.a(bjj.a, new crf.c(biu.Z, 80, 4, 4));
+   }
+
+   public static void g(crf.a $$0) {
+      b($$0);
+      int $$1 = 95;
+      a($$0, 95, 5, 100, false);
+      $$0.a(bjj.a, new crf.c(biu.y, 95, 4, 4));
+   }
+
+   public static void a(crf.a $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(bjj.a, new crf.c(biu.aS, 100, 4, 4));
+      $$0.a(bjj.a, new crf.c($$4 ? biu.y : biu.bp, $$1, 4, 4));
+      $$0.a(bjj.a, new crf.c(biu.br, $$2, 1, 1));
+      $$0.a(bjj.a, new crf.c(biu.aJ, $$3, 4, 4));
+      $$0.a(bjj.a, new crf.c(biu.u, 100, 4, 4));
+      $$0.a(bjj.a, new crf.c(biu.aL, 100, 4, 4));
+      $$0.a(bjj.a, new crf.c(biu.E, 10, 1, 4));
+      $$0.a(bjj.a, new crf.c(biu.bj, 5, 1, 1));
+   }
+
+   public static void h(crf.a $$0) {
+      $$0.a(bjj.b, new crf.c(biu.ao, 8, 4, 8));
+      b($$0);
+   }
+
+   public static void i(crf.a $$0) {
+      a($$0);
+      $$0.a(bjj.b, new crf.c(biu.q, 10, 4, 4));
+      c($$0);
+   }
+
+   public static void j(crf.a $$0) {
+      $$0.a(bjj.a, new crf.c(biu.E, 10, 4, 4));
    }
 }

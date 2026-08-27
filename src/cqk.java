@@ -1,13 +1,7 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface cqk extends cpw {
+   akr C();
 
-public interface cqk extends cqf {
-   long A();
-
-   default boolean f_(gw $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
+   default void a_(biq $$0) {
+      $$0.cS().forEach(this::b);
    }
 }

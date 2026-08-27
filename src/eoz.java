@@ -1,167 +1,145 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eoz {
+public class eoz extends gfb {
    static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final aso d;
+   private static final tl b = tl.c("mco.configure.world.subscription.title");
+   private static final tl c = tl.c("mco.configure.world.subscription.start");
+   private static final tl y = tl.c("mco.configure.world.subscription.timeleft");
+   private static final tl z = tl.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final tl A = tl.c("mco.configure.world.subscription.expired");
+   private static final tl B = tl.c("mco.configure.world.subscription.less_than_a_day");
+   private static final tl C = tl.c("mco.configure.world.subscription.unknown");
+   private static final tl D = tl.c("mco.configure.world.subscription.recurring.info");
+   private final eyk E;
+   final emw F;
+   final eyk G;
+   private tl H = C;
+   private tl I = C;
+   @Nullable
+   private enj.a J;
 
-   public eoz(Executor $$0, TimeUnit $$1, aso $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public eoz(eyk $$0, emw $$1, eyk $$2) {
+      super(eqn.a);
+      this.E = $$0;
+      this.F = $$1;
+      this.G = $$2;
    }
 
-   public <T> eoz.e<T> a(String $$0, Callable<T> $$1, Duration $$2, epa $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aI_() {
+      this.a(this.F.a);
+      this.d(esq.a(tl.c("mco.configure.world.subscription.extend"), $$0 -> {
+         String $$1 = aqv.a(this.F.b, this.f.V().b());
+         this.f.o.a($$1);
+         ac.i().a($$1);
+      }).a(this.g / 2 - 100, h(6), 200, 20).a());
+      if (this.F.j) {
+         this.d(esq.a(tl.c("mco.configure.world.delete.button"), $$0 -> {
+            tl $$1 = tl.c("mco.configure.world.delete.question.line1");
+            tl $$2 = tl.c("mco.configure.world.delete.question.line2");
+            this.f.a(new eol(this::c, eol.a.a, $$1, $$2, true));
+         }).a(this.g / 2 - 100, h(10), 200, 20).a());
       } else {
-         return new eoz.e<>($$0, $$1, $$4, $$3);
+         this.d(new eta(this.g / 2 - 100, h(8), 200, 46, D, this.i).a(-6250336));
       }
+
+      this.d(esq.a(tk.k, $$0 -> this.f.a(this.E)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
-   public eoz.c a() {
-      return new eoz.c();
+   @Override
+   public tl g() {
+      return tk.b(b, c, this.I, y, this.H);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final eoz.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(eoz.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
-      }
-
-      void a() {
-         eoz.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void b() {
-         eoz.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
-      }
-   }
-
-   public class c {
-      private final List<eoz.b<?>> b = new ArrayList<>();
-
-      public <T> void a(eoz.e<T> $$0, Consumer<T> $$1) {
-         eoz.b<T> $$2 = eoz.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (eoz.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (eoz.b<?> $$0 : this.b) {
-            $$0.a(eoz.this.d.get(eoz.this.c));
-         }
-      }
-
-      public void c() {
-         for (eoz.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final epa e;
-      @Nullable
-      private CompletableFuture<eoz.a<T>> f;
-      @Nullable
-      eoz.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, epa $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            eoz.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new eoz.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               eoz.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
+   private void c(boolean $$0) {
+      if ($$0) {
+         (new Thread("Realms-delete-realm") {
+            @Override
+            public void run() {
                try {
-                  T $$0x = this.c.call();
-                  long $$1x = eoz.this.d.get(eoz.this.c);
-                  return new eoz.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = eoz.this.d.get(eoz.this.c);
-                  return new eoz.a<>(Either.right(var4x), $$3);
+                  emf $$0 = emf.a();
+                  $$0.i(eoz.this.F.a);
+               } catch (ens var2) {
+                  eoz.a.error("Couldn't delete world", var2);
                }
-            }, eoz.this.b);
-         }
+
+               eoz.this.f.execute(() -> eoz.this.f.a(eoz.this.G));
+            }
+         }).start();
       }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      this.f.a(this);
+   }
+
+   private void a(long $$0) {
+      emf $$1 = emf.a();
+
+      try {
+         enj $$2 = $$1.h($$0);
+         this.H = this.a($$2.b);
+         this.I = b($$2.a);
+         this.J = $$2.c;
+      } catch (ens var5) {
+         a.error("Couldn't get subscription", var5);
+         this.f.a(new eoj(var5, this.E));
+      }
+   }
+
+   private static tl b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return tl.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.E);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 100;
+      $$0.a(this.i, b, this.g / 2, 17, -1);
+      $$0.a(this.i, c, $$4, h(0), -6250336, false);
+      $$0.a(this.i, this.I, $$4, h(1), -1, false);
+      if (this.J == enj.a.a) {
+         $$0.a(this.i, y, $$4, h(3), -6250336, false);
+      } else if (this.J == enj.a.b) {
+         $$0.a(this.i, z, $$4, h(3), -6250336, false);
+      }
+
+      $$0.a(this.i, this.H, $$4, h(4), -1, false);
+   }
+
+   private tl a(int $$0) {
+      if ($$0 < 0 && this.F.j) {
+         return A;
+      } else if ($$0 <= 1) {
+         return B;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return tl.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return tl.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? tl.a("mco.configure.world.subscription.remaining.days", $$2) : tl.h();
+         }
       }
    }
 }

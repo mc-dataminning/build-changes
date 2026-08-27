@@ -1,69 +1,53 @@
-public class ard {
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
+public class ard<K, V extends ard.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
+   public ard<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
+   }
 
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
+         }
       }
    }
 
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   }
 
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
       }
+   }
 
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
 
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
+   public interface a<K> {
+      void a(Consumer<K> var1);
 
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
-
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = ars.a($$0, a($$1), a($$2));
-         int $$4 = ars.a($$0, b($$1), b($$2));
-         int $$5 = ars.a($$0, c($$1), c($$2));
-         int $$6 = ars.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
-      }
+      void b(Consumer<K> var1);
    }
 }

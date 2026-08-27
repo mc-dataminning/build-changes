@@ -1,74 +1,76 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
 public class frb {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+   private final Long2ObjectMap<frb.a> a = new Long2ObjectOpenHashMap();
 
-   public frb(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
-   }
+   @Nullable
+   public fra a(cpv $$0, gw $$1, gw $$2, int $$3) {
+      int $$4 = hz.a($$1.u() - $$3);
+      int $$5 = hz.a($$1.w() - $$3);
+      int $$6 = hz.a($$2.u() + $$3);
+      int $$7 = hz.a($$2.w() + $$3);
+      frb.a[][] $$8 = new frb.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   public frb(frb $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
-   }
-
-   public frb a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
-
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (frb.a)this.a.computeIfAbsent(cpc.c($$9, $$10), $$1x -> new frb.a($$0.d(cpc.a($$1x), cpc.b($$1x))));
+         }
       }
 
-      return this;
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fqz[][] $$11 = new fqz[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new fra($$0, $$4, $$5, $$11);
+      }
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private static boolean a(gw $$0, gw $$1, int $$2, int $$3, frb.a[][] $$4) {
+      int $$5 = hz.a($$0.u());
+      int $$6 = hz.a($$0.w());
+      int $$7 = hz.a($$1.u());
+      int $$8 = hz.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dhq $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-   }
+   static final class a {
+      private final dhq a;
+      @Nullable
+      private fqz b;
 
-   public boolean a(ehd $$0) {
-      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
+      a(dhq $$0) {
+         this.a = $$0;
+      }
 
-   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
+      public dhq a() {
+         return this.a;
+      }
+
+      public fqz b() {
+         if (this.b == null) {
+            this.b = new fqz(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

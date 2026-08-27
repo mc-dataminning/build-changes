@@ -1,79 +1,42 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqp extends bpw {
-   public static final int a = 1;
-   protected final bjk b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bqp extends bqb {
+   private final bjp a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public bqp(bjk $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bpw.a.a));
+   public bqp(bjp $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (this.a.fL()) {
          return false;
       } else {
-         if (this.b.bM()) {
-            gw $$0 = this.a(this.b.dK(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
+         ehn $$0 = btw.a(this.a, 16, 7, ehn.c(this.a.fM()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
          }
-
-         return this.i();
       }
-   }
-
-   protected boolean h() {
-      return this.b.ef() != null || this.b.dz() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehi $$0 = btr.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.H().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.H().l();
+      return !this.a.L().l();
    }
 
-   @Nullable
-   protected gw a(cow $$0, bil $$1, int $$2) {
-      gw $$3 = $$1.dk();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gw.a($$1.dk(), $$2, 1, $$1x -> $$0.b_($$1x).a(apt.a)).orElse(null);
+   @Override
+   public void c() {
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 }

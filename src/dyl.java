@@ -1,51 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dyl {
-   public static final dzd a = dzd.a;
-   public static final Codec<dyl> b = RecordCodecBuilder.create(
+public class dyl extends dyo {
+   public static final Codec<dyl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dyq.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               dyq.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               dyj.c.optionalFieldOf("position_predicate", dyi.b).forGetter($$0x -> $$0x.e),
-               dfe.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               dze.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dyl::new)
    );
-   private final dyq c;
-   private final dyq d;
-   private final dyj e;
-   private final dfe f;
-   private final dze g;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public dyl(dyq $$0, dyq $$1, dfe $$2) {
-      this($$0, $$1, dyi.b, $$2);
+   public dyl(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
-   public dyl(dyq $$0, dyq $$1, dyj $$2, dfe $$3) {
-      this($$0, $$1, $$2, $$3, a);
+   @Override
+   public boolean a(gw $$0, gw $$1, gw $$2, asc $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= arx.b(this.b, this.d, arx.g((float)$$4, (float)this.e, (float)this.f));
    }
 
-   public dyl(dyq $$0, dyq $$1, dyj $$2, dfe $$3, dze $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(dfe $$0, dfe $$1, gw $$2, gw $$3, gw $$4, arx $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public dfe a() {
-      return this.f;
-   }
-
-   @Nullable
-   public qu a(arx $$0, @Nullable qu $$1) {
-      return this.g.a($$0, $$1);
+   @Override
+   protected dyp<?> a() {
+      return dyp.b;
    }
 }

@@ -1,37 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gcm<T> extends gcn<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gcq<T> e = gcq.a();
+public interface gcm {
+   aex a();
 
-   public gcm(Function<T, Stream<String>> $$0, Function<T, Stream<aeu>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   @Nullable
+   gdr a(gdq var1);
+
+   gcj b();
+
+   apf c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gcm.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.e = gcq.a(this.c, this.d);
+   default boolean s() {
+      return true;
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
+   static asc t() {
+      return asc.a();
    }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new gcp<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gco<T>($$2.iterator(), $$5, this.a));
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,25 +1,16 @@
-public class fsf extends fui<buh, fed> {
-   private static final aeu a = new aeu("textures/entity/bat.png");
+public abstract class fsf<T extends cab, M extends fhu<T>> extends fty<T, M> {
+   private static final aex a = new aex("textures/entity/zombie/zombie.png");
 
-   public fsf(ftc.a $$0) {
-      super($$0, new fed($$0.a(fhw.g)), 0.25F);
+   protected fsf(fth.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new fxf<>(this, $$2, $$3, $$0.g()));
    }
 
-   public aeu a(buh $$0) {
+   public aex a(cab $$0) {
       return a;
    }
 
-   protected void a(buh $$0, elk $$1, float $$2) {
-      $$1.b(0.35F, 0.35F, 0.35F);
-   }
-
-   protected void a(buh $$0, elk $$1, float $$2, float $$3, float $$4) {
-      if ($$0.q()) {
-         $$1.a(0.0F, -0.1F, 0.0F);
-      } else {
-         $$1.a(0.0F, ars.b($$2 * 0.3F) * 0.1F, 0.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gk();
    }
 }

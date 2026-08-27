@@ -1,14 +1,42 @@
-public interface adi extends aba {
-   @Override
-   default sk b() {
-      return sk.d;
+import java.security.PublicKey;
+
+public class adi implements vd<adf> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public adi(String $$0, byte[] $$1, byte[] $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   void a(adk var1);
+   public adi(so $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
+   }
 
-   void a(adl var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
 
-   void a(adj var1);
+   public void a(adf $$0) {
+      $$0.a(this);
+   }
 
-   void a(adm var1);
+   public String a() {
+      return this.a;
+   }
+
+   public PublicKey d() throws aqy {
+      return aqx.a(this.b);
+   }
+
+   public byte[] e() {
+      return this.c;
+   }
 }

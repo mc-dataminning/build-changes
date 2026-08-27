@@ -1,390 +1,371 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import java.util.EnumSet;
-import java.util.IdentityHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class dhy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final dhy a = new dhy(cpf.a);
-   private static final String c = "Indices";
-   private static final hd[] d = hd.values();
-   private final EnumSet<hd> e = EnumSet.noneOf(hd.class);
-   private final List<eit<csq>> f = Lists.newArrayList();
-   private final List<eit<eag>> g = Lists.newArrayList();
-   private final int[][] h;
-   static final Map<csq, dhy.a> i = new IdentityHashMap<>();
-   static final Set<dhy.a> j = Sets.newHashSet();
+public class dhy<T> implements dhx<T>, dhz<T> {
+   private static final int a = 0;
+   private final dhx<T> b = ($$0x, $$1x) -> 0;
+   private final hl<T> c;
+   private volatile dhy.c<T> d;
+   private final dhy.d e;
+   private final ass f = new ass("PalettedContainer");
 
-   private dhy(cps $$0) {
-      this.h = new int[$$0.ak()][];
+   public void a() {
+      this.f.a();
    }
 
-   public dhy(qu $$0, cps $$1) {
-      this($$1);
-      if ($$0.b("Indices", 10)) {
-         qu $$2 = $$0.p("Indices");
+   public void b() {
+      this.f.b();
+   }
 
-         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
-            String $$4 = String.valueOf($$3);
-            if ($$2.b($$4, 11)) {
-               this.h[$$3] = $$2.n($$4);
+   public static <T> Codec<dhy<T>> a(hl<T> $$0, Codec<T> $$1, dhy.d $$2, T $$3) {
+      dhz.b<T, dhy<T>> $$4 = dhy::a;
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static <T> Codec<dhz<T>> b(hl<T> $$0, Codec<T> $$1, dhy.d $$2, T $$3) {
+      dhz.b<T, dhz<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private static <T, C extends dhz<T>> Codec<C> a(hl<T> $$0, Codec<T> $$1, dhy.d $$2, T $$3, dhz.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(arg.a($$3)).listOf().fieldOf("palette").forGetter(dhz.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dhz.a::b)
+                  )
+                  .apply($$2x, dhz.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public dhy(hl<T> $$0, dhy.d $$1, dhy.a<T> $$2, aqq $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new dhy.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
+
+   private dhy(hl<T> $$0, dhy.d $$1, dhy.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   public dhy(hl<T> $$0, T $$1, dhy.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private dhy.c<T> a(@Nullable dhy.c<T> $$0, int $$1) {
+      dhy.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   }
+
+   @Override
+   public int onResize(int $$0, T $$1) {
+      dhy.c<T> $$2 = this.d;
+      dhy.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
+   }
+
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
+   }
+
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
+   }
+
+   @Override
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      dhy.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
+   }
+
+   @Override
+   public void a(Consumer<T> $$0) {
+      dhw<T> $$1 = this.d.e();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(so $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         dhy.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
+      }
+   }
+
+   @Override
+   public void b(so $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
+   }
+
+   private static <T> DataResult<dhy<T>> a(hl<T> $$0, dhy.d $$1, dhz.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dhy.a<T> $$6 = $$1.a($$0, $$5);
+      aqq $$7;
+      if ($$5 == 0) {
+         $$7 = new asz($$4);
+      } else {
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == dhy.d.f) {
+               dhw<T> $$10 = new dho<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               asj $$11 = new asj($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new asj($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new asj($$6.b(), $$4, $$9);
             }
+         } catch (asj.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
          }
       }
 
-      int $$5 = $$0.h("Sides");
+      return DataResult.success(new dhy<>($$0, $$1, $$6, $$7, $$3));
+   }
 
-      for (hd $$6 : hd.values()) {
-         if (($$5 & 1 << $$6.ordinal()) != 0) {
-            this.e.add($$6);
+   @Override
+   public dhz.a<T> a(hl<T> $$0, dhy.d $$1) {
+      this.a();
+
+      dhz.a var12;
+      try {
+         dho<T> $$2 = new dho<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            asj $$6 = new asj($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
+         } else {
+            $$7 = Optional.empty();
+         }
+
+         var12 = new dhz.a<>($$2.d(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   public dhy<T> d() {
+      return new dhy<>(this.c, this.e, this.d.b());
+   }
+
+   @Override
+   public dhy<T> e() {
+      return new dhy<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dhy.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
+      } else {
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      }
+   }
+
+   static record a<T>(dhw.a a, int b) {
+      public dhy.c<T> a(hl<T> $$0, dhx<T> $$1, int $$2) {
+         aqq $$3 = (aqq)(this.b == 0 ? new asz($$2) : new asj(this.b, $$2));
+         dhw<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dhy.c<>(this, $$3, $$4);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
+
+   static record c<T>(dhy.a<T> a, aqq b, dhw<T> c) {
+
+      public void a(dhw<T> $$0, aqq $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
          }
       }
 
-      a($$0, "neighbor_block_ticks", $$0x -> jd.f.b(aeu.a($$0x)).or(() -> Optional.of(csr.a)), this.f);
-      a($$0, "neighbor_fluid_ticks", $$0x -> jd.d.b(aeu.a($$0x)).or(() -> Optional.of(eai.a)), this.g);
-   }
+      public int a() {
+         return 1 + this.c.a() + tc.a(this.b.a().length) + this.b.a().length * 8;
+      }
 
-   private static <T> void a(qu $$0, String $$1, Function<String, Optional<T>> $$2, List<eit<T>> $$3) {
-      if ($$0.b($$1, 9)) {
-         for (rn $$5 : $$0.c($$1, 10)) {
-            eit.a((qu)$$5, $$2).ifPresent($$3::add);
-         }
+      public void a(so $$0) {
+         $$0.k(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
+
+      public dhy.c<T> b() {
+         return new dhy.c<>(this.a, this.b.d(), this.c.c());
+      }
+
+      public dhy.a<T> c() {
+         return this.a;
+      }
+
+      public aqq d() {
+         return this.b;
+      }
+
+      public dhw<T> e() {
+         return this.c;
       }
    }
 
-   public void a(dhl $$0) {
-      this.b($$0);
-
-      for (hd $$1 : d) {
-         a($$0, $$1);
-      }
-
-      cpq $$2 = $$0.F();
-      this.f.forEach($$1x -> {
-         csq $$2x = $$1x.a() == csr.a ? $$2.a_($$1x.b()).b() : (csq)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      this.g.forEach($$1x -> {
-         eag $$2x = $$1x.a() == eai.a ? $$2.b_($$1x.b()).a() : (eag)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      j.forEach($$1x -> $$1x.a($$2));
-   }
-
-   private static void a(dhl $$0, hd $$1) {
-      cpq $$2 = $$0.F();
-      if ($$0.r().e.remove($$1)) {
-         Set<hc> $$3 = $$1.a();
-         int $$4 = 0;
-         int $$5 = 15;
-         boolean $$6 = $$3.contains(hc.f);
-         boolean $$7 = $$3.contains(hc.e);
-         boolean $$8 = $$3.contains(hc.d);
-         boolean $$9 = $$3.contains(hc.c);
-         boolean $$10 = $$3.size() == 1;
-         cox $$11 = $$0.f();
-         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
-         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
-         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
-         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
-         hc[] $$16 = hc.values();
-         gw.a $$17 = new gw.a();
-
-         for (gw $$18 : gw.b($$12, $$2.C_(), $$14, $$13, $$2.aj() - 1, $$15)) {
-            dfe $$19 = $$2.a_($$18);
-            dfe $$20 = $$19;
-
-            for (hc $$21 : $$16) {
-               $$17.a($$18, $$21);
-               $$20 = a($$20, $$21, $$2, $$18, $$17);
-            }
-
-            csq.a($$19, $$20, $$2, $$18, 18);
-         }
-      }
-   }
-
-   private static dfe a(dfe $$0, hc $$1, cpr $$2, gw $$3, gw $$4) {
-      return i.getOrDefault($$0.b(), dhy.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
-   }
-
-   private void b(dhl $$0) {
-      gw.a $$1 = new gw.a();
-      gw.a $$2 = new gw.a();
-      cox $$3 = $$0.f();
-      cpr $$4 = $$0.F();
-
-      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
-         dhm $$6 = $$0.b($$5);
-         int[] $$7 = this.h[$$5];
-         this.h[$$5] = null;
-         if ($$7 != null && $$7.length > 0) {
-            hc[] $$8 = hc.values();
-            dht<dfe> $$9 = $$6.h();
-            int $$10 = $$0.g($$5);
-            int $$11 = hz.c($$10);
-
-            for (int $$12 : $$7) {
-               int $$13 = $$12 & 15;
-               int $$14 = $$12 >> 8 & 15;
-               int $$15 = $$12 >> 4 & 15;
-               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
-               dfe $$16 = $$9.a($$12);
-               dfe $$17 = $$16;
-
-               for (hc $$18 : $$8) {
-                  $$2.a($$1, $$18);
-                  if (hz.a($$1.u()) == $$3.e && hz.a($$1.w()) == $$3.f) {
-                     $$17 = a($$17, $$18, $$4, $$1, $$2);
-                  }
-               }
-
-               csq.a($$16, $$17, $$4, $$1, 18);
-            }
-         }
-      }
-
-      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
-         if (this.h[$$19] != null) {
-            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
-         }
-
-         this.h[$$19] = null;
-      }
-   }
-
-   public boolean a() {
-      for (int[] $$0 : this.h) {
-         if ($$0 != null) {
-            return false;
-         }
-      }
-
-      return this.e.isEmpty();
-   }
-
-   public qu b() {
-      qu $$0 = new qu();
-      qu $$1 = new qu();
-
-      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
-         String $$3 = String.valueOf($$2);
-         if (this.h[$$2] != null && this.h[$$2].length != 0) {
-            $$1.a($$3, this.h[$$2]);
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("Indices", $$1);
-      }
-
-      int $$4 = 0;
-
-      for (hd $$5 : this.e) {
-         $$4 |= 1 << $$5.ordinal();
-      }
-
-      $$0.a("Sides", (byte)$$4);
-      if (!this.f.isEmpty()) {
-         ra $$6 = new ra();
-         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> jd.f.b($$0xx).toString())));
-         $$0.a("neighbor_block_ticks", $$6);
-      }
-
-      if (!this.g.isEmpty()) {
-         ra $$7 = new ra();
-         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> jd.d.b($$0xx).toString())));
-         $$0.a("neighbor_fluid_ticks", $$7);
-      }
-
-      return $$0;
-   }
-
-   public interface a {
-      dfe a(dfe var1, hc var2, dfe var3, cpr var4, gw var5, gw var6);
-
-      default void a(cpr $$0) {
-      }
-   }
-
-   static enum b implements dhy.a {
-      a(
-         csr.kO,
-         csr.ee,
-         csr.lM,
-         csr.lN,
-         csr.lO,
-         csr.lP,
-         csr.lQ,
-         csr.lR,
-         csr.lS,
-         csr.lT,
-         csr.lU,
-         csr.lV,
-         csr.lW,
-         csr.lX,
-         csr.lY,
-         csr.lZ,
-         csr.ma,
-         csr.mb,
-         csr.gS,
-         csr.gT,
-         csr.gU,
-         csr.fA,
-         csr.L,
-         csr.I,
-         csr.K,
-         csr.cE,
-         csr.cF,
-         csr.cG,
-         csr.cH,
-         csr.cI,
-         csr.cJ,
-         csr.cK,
-         csr.cR,
-         csr.cS,
-         csr.cT,
-         csr.cU,
-         csr.cW,
-         csr.cX,
-         csr.da,
-         csr.db,
-         csr.dc,
-         csr.dd,
-         csr.df,
-         csr.dg,
-         csr.dl,
-         csr.dm,
-         csr.dn,
-         csr.do,
-         csr.dq,
-         csr.dr
-      ) {
+   public abstract static class d {
+      public static final dhw.a a = dib::a;
+      public static final dhw.a b = dhu::a;
+      public static final dhw.a c = dho::a;
+      static final dhw.a f = dhn::a;
+      public static final dhy.d d = new dhy.d(4) {
          @Override
-         public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-            return $$0;
-         }
-      },
-      b {
-         @Override
-         public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
-         }
-      },
-      c(csr.cv, csr.gV) {
-         @Override
-         public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(cts.c) == dfw.a && $$2.c(cts.c) == dfw.a) {
-               hc $$6 = $$0.c(cts.b);
-               if ($$1.o() != $$6.o() && $$6 == $$2.c(cts.b)) {
-                  dfw $$7 = $$1 == $$6.h() ? dfw.b : dfw.c;
-                  $$3.a($$5, $$2.a(cts.c, $$7.a()), 18);
-                  if ($$6 == hc.c || $$6 == hc.f) {
-                     dcq $$8 = $$3.c_($$4);
-                     dcq $$9 = $$3.c_($$5);
-                     if ($$8 instanceof dcx && $$9 instanceof dcx) {
-                        dcx.a((dcx)$$8, (dcx)$$9);
-                     }
-                  }
-
-                  return $$0.a(cts.c, $$7);
-               }
-            }
-
-            return $$0;
-         }
-      },
-      d(true, csr.aI, csr.aJ, csr.aG, csr.aK, csr.aH, csr.aE, csr.aF) {
-         private final ThreadLocal<List<ObjectSet<gw>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
-
-         @Override
-         public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-            dfe $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
-            if ($$0 != $$6) {
-               int $$7 = $$6.c(dfu.aC);
-               List<ObjectSet<gw>> $$8 = this.g.get();
-               if ($$8.isEmpty()) {
-                  for (int $$9 = 0; $$9 < 7; $$9++) {
-                     $$8.add(new ObjectOpenHashSet());
-                  }
-               }
-
-               $$8.get($$7).add($$4.i());
-            }
-
-            return $$0;
-         }
-
-         @Override
-         public void a(cpr $$0) {
-            gw.a $$1 = new gw.a();
-            List<ObjectSet<gw>> $$2 = this.g.get();
-
-            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
-               int $$4 = $$3 - 1;
-               ObjectSet<gw> $$5 = $$2.get($$4);
-               ObjectSet<gw> $$6 = $$2.get($$3);
-               ObjectIterator var8 = $$5.iterator();
-
-               while (var8.hasNext()) {
-                  gw $$7 = (gw)var8.next();
-                  dfe $$8 = $$0.a_($$7);
-                  if ($$8.c(dfu.aC) >= $$4) {
-                     $$0.a($$7, $$8.a(dfu.aC, Integer.valueOf($$4)), 18);
-                     if ($$3 != 7) {
-                        for (hc $$9 : f) {
-                           $$1.a($$7, $$9);
-                           dfe $$10 = $$0.a_($$1);
-                           if ($$10.b(dfu.aC) && $$8.c(dfu.aC) > $$3) {
-                              $$6.add($$1.i());
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-
-            $$2.clear();
-         }
-      },
-      e(csr.fe, csr.fd) {
-         @Override
-         public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-            if ($$0.c(dam.b) == 7) {
-               dan $$6 = ((dam)$$0.b()).a();
-               if ($$2.a($$6)) {
-                  return $$6.b().n().a(cwj.aC, $$1);
-               }
-            }
-
-            return $$0;
+         public <A> dhy.a<A> a(hl<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhy.a(a, $$1);
+               case 1, 2, 3, 4 -> new dhy.a(b, 4);
+               case 5, 6, 7, 8 -> new dhy.a(c, $$1);
+               default -> new dhy.a(dhy.d.f, arx.e($$0.b()));
+            };
          }
       };
+      public static final dhy.d e = new dhy.d(2) {
+         @Override
+         public <A> dhy.a<A> a(hl<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhy.a(a, $$1);
+               case 1, 2, 3 -> new dhy.a(b, $$1);
+               default -> new dhy.a(dhy.d.f, arx.e($$0.b()));
+            };
+         }
+      };
+      private final int g;
 
-      public static final hc[] f = hc.values();
-
-      b(csq... $$0) {
-         this(false, $$0);
+      d(int $$0) {
+         this.g = $$0;
       }
 
-      b(boolean $$0, csq... $$1) {
-         for (csq $$2 : $$1) {
-            dhy.i.put($$2, this);
-         }
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-         if ($$0) {
-            dhy.j.add(this);
-         }
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
+
+      public abstract <A> dhy.a<A> a(hl<A> var1, int var2);
+
+      <A> int b(hl<A> $$0, int $$1) {
+         int $$2 = arx.e($$1);
+         dhy.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
       }
    }
 }

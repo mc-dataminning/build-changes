@@ -1,20 +1,20 @@
-public class fvi<T extends bzo> extends fui<T, fgz<T>> {
-   private static final aeu a = new aeu("textures/entity/spider/spider.png");
+public class fvi extends fty<byr, fgy<byr>> {
+   private static final aex a = new aex("textures/entity/skeleton/skeleton.png");
 
-   public fvi(ftc.a $$0) {
-      this($$0, fhw.br);
+   public fvi(fth.a $$0) {
+      this($$0, fib.bh, fib.bj, fib.bk);
    }
 
-   public fvi(ftc.a $$0, fhv $$1) {
-      super($$0, new fgz<>($$0.a($$1)), 0.8F);
-      this.a(new fxq<>(this));
+   public fvi(fth.a $$0, fia $$1, fia $$2, fia $$3) {
+      super($$0, new fgy<>($$0.a($$1)), 0.5F);
+      this.a(new fxf<>(this, new fgy($$0.a($$2)), new fgy($$0.a($$3)), $$0.g()));
    }
 
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public aeu a(T $$0) {
+   public aex a(byr $$0) {
       return a;
+   }
+
+   protected boolean b(byr $$0) {
+      return $$0.gd();
    }
 }

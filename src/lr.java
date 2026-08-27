@@ -1,31 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface lr {
-   aeu a = new aeu("recipes/root");
-
-   lr a(String var1, am<?> var2);
-
-   lr a(@Nullable String var1);
-
-   civ a();
-
-   void a(lt var1, aeu var2);
-
-   default void a(lt $$0) {
-      this.a($$0, a(this.a()));
+public abstract class lr {
+   protected static cly a(lu $$0) {
+      return switch ($$0) {
+         case a -> cly.a;
+         case e, f -> cly.c;
+         case c -> cly.b;
+         default -> cly.d;
+      };
    }
 
-   default void a(lt $$0, String $$1) {
-      aeu $$2 = a(this.a());
-      aeu $$3 = new aeu($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, $$3);
+   protected abstract static class a implements ls {
+      private final cly a;
+
+      protected a(cly $$0) {
+         this.a = $$0;
       }
-   }
 
-   static aeu a(cpp $$0) {
-      return jd.i.b($$0.k());
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.addProperty("category", this.a.c());
+      }
    }
 }

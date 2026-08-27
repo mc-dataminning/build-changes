@@ -1,12 +1,17 @@
-public class fss extends fui<buu, fet<buu>> {
-   private static final aeu a = new aeu("textures/entity/dolphin.png");
+public class fss extends fun<buw, fes<buw>> {
+   private static final aex a = new aex("textures/entity/chicken.png");
 
-   public fss(ftc.a $$0) {
-      super($$0, new fet<>($$0.a(fhw.G)), 0.7F);
-      this.a(new fwr(this, $$0.d()));
+   public fss(fth.a $$0) {
+      super($$0, new fes<>($$0.a(fib.t)), 0.3F);
    }
 
-   public aeu a(buu $$0) {
+   public aex a(buw $$0) {
       return a;
+   }
+
+   protected float a(buw $$0, float $$1) {
+      float $$2 = arx.i($$1, $$0.bX, $$0.bT);
+      float $$3 = arx.i($$1, $$0.bW, $$0.bU);
+      return (arx.a($$2) + 1.0F) * $$3;
    }
 }

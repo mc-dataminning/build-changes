@@ -1,205 +1,259 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cox {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final cox b = new cox(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+public abstract class cox {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bfi<cqm> e = bfi.b();
+   @Nullable
+   private cqm f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private biq l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
 
-   public cox(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(biu<?> $$0, @Nullable cpv $$1, asc $$2, gw $$3) {
+      this.b($$1, $$2, $$3).a().a("id", jd.h.b($$0).toString());
    }
 
-   public cox(gw $$0) {
-      this.e = hz.a($$0.u());
-      this.f = hz.a($$0.w());
+   private boolean b(cpv $$0, gw $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
    }
 
-   public cox(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
-   }
+   public void a(cpv $$0, gw $$1) {
+      if (!this.b($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         asc $$2 = $$0.D_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(ix.Z, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(ix.C, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
 
-   public static cox a(int $$0, int $$1) {
-      return new cox($$0 << 5, $$1 << 5);
-   }
-
-   public static cox b(int $$0, int $$1) {
-      return new cox(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.e, this.f);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(gw $$0) {
-      return c(hz.a($$0.u()), hz.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cox $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
       }
    }
 
-   public int b() {
-      return this.a(8);
-   }
+   public void a(akr $$0, gw $$1) {
+      if (this.b($$0, $$1)) {
+         if (this.d == -1) {
+            this.c($$0, $$1);
+         }
 
-   public int c() {
-      return this.b(8);
-   }
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            asc $$3 = $$0.D_();
+            cqm $$4 = this.b($$0, $$3, $$1);
 
-   public int d() {
-      return hz.c(this.e);
-   }
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               qx $$6 = $$4.a();
+               Optional<biu<?>> $$7 = biu.a($$6);
+               if ($$7.isEmpty()) {
+                  this.c($$0, $$1);
+                  return;
+               }
 
-   public int e() {
-      return hz.c(this.f);
-   }
+               rd $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  gw $$13 = gw.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.ai() == bgv.a) {
+                        continue;
+                     }
 
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public gw a(int $$0, int $$1, int $$2) {
-      return new gw(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return hz.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return hz.a(this.f, $$0);
-   }
-
-   public gw c(int $$0) {
-      return new gw(this.b(), $$0, this.c());
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
-   }
-
-   public gw l() {
-      return new gw(this.d(), 0, this.e());
-   }
-
-   public int a(cox $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
-   }
-
-   public int b(cox $$0) {
-      return this.e($$0.e, $$0.f);
-   }
-
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
-   }
-
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<cox> a(cox $$0, int $$1) {
-      return a(new cox($$0.e - $$1, $$0.f - $$1), new cox($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<cox> a(final cox $$0, final cox $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<cox>((long)($$2 * $$3), 64) {
-         @Nullable
-         private cox e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super cox> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
+                     cqm.a $$14 = $$4.b().get();
+                     if (!$$14.a().a($$0.a(cqe.b, $$13)) || !$$14.b().a($$0.a(cqe.a, $$13))) {
+                        continue;
+                     }
+                  } else if (!bka.a($$7.get(), $$0, bjk.c, $$13, $$0.D_())) {
+                     continue;
                   }
 
-                  this.e = new cox($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new cox($$1 + $$4, $$2);
+                  biq $$15 = biu.a($$6, $$0, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dB(), $$3x.dD());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        $$15.getClass(),
+                        new ehi((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o)
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dq(), $$15.ds(), $$15.dw(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bji $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, bjk.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     if ($$4.a().f() == 1 && $$4.a().b("id", 8)) {
+                        ((bji)$$15).a($$0, $$0.d_($$15.dl()), bjk.c, null, null);
+                     }
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, djt.t, $$13);
+                  if ($$15 instanceof bji) {
+                     ((bji)$$15).Q();
+                  }
+
+                  $$2 = true;
                }
             }
 
-            $$0.accept(this.e);
-            return true;
+            if ($$2) {
+               this.c($$0, $$1);
+            }
          }
-      }, false);
+      }
+   }
+
+   private void c(cpv $$0, gw $$1) {
+      asc $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (cqm)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable cpv $$0, gw $$1, qx $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         cqm $$4 = cqm.b.parse(ri.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cqm::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         rd $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = cqm.c.parse(ri.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bfi::b);
+      } else {
+         this.e = bfi.a(this.f != null ? this.f : new cqm());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
+   }
+
+   public qx a(qx $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (rq)cqm.b.encodeStart(ri.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
+      }
+
+      $$0.a("SpawnPotentials", (rq)cqm.c.encodeStart(ri.a, this.e).result().orElseThrow());
+      return $$0;
+   }
+
+   @Nullable
+   public biq a(cpv $$0, asc $$1, gw $$2) {
+      if (this.l == null) {
+         qx $$3 = this.b($$0, $$1, $$2).a();
+         if (!$$3.b("id", 8)) {
+            return null;
+         }
+
+         this.l = biu.a($$3, $$0, Function.identity());
+         if ($$3.f() == 1 && this.l instanceof bji) {
+         }
+      }
+
+      return this.l;
+   }
+
+   public boolean a(cpv $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(@Nullable cpv $$0, gw $$1, cqm $$2) {
+      this.f = $$2;
+   }
+
+   private cqm b(@Nullable cpv $$0, asc $$1, gw $$2) {
+      if (this.f != null) {
+         return this.f;
+      } else {
+         this.a($$0, $$2, this.e.b($$1).map(bfk.b::b).orElseGet(cqm::new));
+         return this.f;
+      }
+   }
+
+   public abstract void a(cpv var1, gw var2, int var3);
+
+   public double a() {
+      return this.g;
+   }
+
+   public double b() {
+      return this.h;
    }
 }

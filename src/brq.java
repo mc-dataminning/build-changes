@@ -1,19 +1,32 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class brq extends bql {
+   private final cab b;
+   private int c;
 
-public class brq<T extends bjb> extends brp<T> {
-   private boolean i = true;
-
-   public brq(ccx $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bjb> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public brq(cab $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
-   public boolean a() {
-      return this.i && super.a();
+   public void c() {
+      super.c();
+      this.c = 0;
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

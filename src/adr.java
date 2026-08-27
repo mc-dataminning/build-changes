@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface adr {
+   aex a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adr {
+   void a(so var1);
 }

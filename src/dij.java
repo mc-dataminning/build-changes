@@ -1,212 +1,231 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dij<R> implements AutoCloseable {
+public class dij implements dif, AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final die d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final DataFixer i;
-   private final asv j;
-   private final hu k;
-   protected final cps c;
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bfr<bft.b> c;
+   private final dim d;
+   private final Map<cpc, dij.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   public dij(Path $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, DataFixer $$3, asv $$4, boolean $$5, hu $$6, cps $$7) {
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$6;
-      this.c = $$7;
-      this.d = new die($$0, $$5, $$0.getFileName().toString());
+   protected dij(Path $$0, boolean $$1, String $$2) {
+      this.d = new dim($$0, $$1);
+      this.c = new bfr<>(new bft.a(dij.b.values().length), ac.g(), "IOWorker-" + $$2);
    }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         cox $$1 = hz.a(this.f.firstLong()).r();
-         this.d($$1);
-      }
-   }
+   public boolean a(cpc $$0, int $$1) {
+      cpc $$2 = new cpc($$0.e - $$1, $$0.f - $$1);
+      cpc $$3 = new cpc($$0.e + $$1, $$0.f + $$1);
 
-   public boolean a() {
-      return !this.f.isEmpty();
-   }
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               cpc $$7 = cpc.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
 
-   @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
-   }
-
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
-      } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(hz.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ac.b(new IllegalStateException());
-            } else {
-               return $$1;
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
             }
          }
       }
+
+      return false;
    }
 
-   protected boolean e(long $$0) {
-      int $$1 = hz.c(hz.c($$0));
-      return this.c.d($$1);
-   }
-
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = cpc.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
          }
+
+         return $$3;
       }
    }
 
-   private void b(cox $$0) {
-      Optional<qu> $$1 = this.c($$0).join();
-      aes<rn> $$2 = aes.a(rf.a, this.k);
-      this.a($$0, $$2, $$1.orElse(null));
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         cpc $$2 = cpc.a($$0, $$1);
+         cpc $$3 = cpc.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         cpc.a($$2, $$3).forEach($$1xx -> {
+            rx $$2x = new rx(new rz(rc.a, "DataVersion"), new rz(qx.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof qx $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ac.f());
    }
 
-   private CompletableFuture<Optional<qu>> c(cox $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
+   private boolean a(qx $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(cpc $$0, @Nullable qx $$1) {
+      return this.a(() -> {
+         dij.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dij.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<qx>> a(cpc $$0) {
+      return this.a(() -> {
+         dij.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
          } else {
-            throw new CompletionException($$1);
+            try {
+               qx $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
          }
       });
    }
 
-   private <T> void a(cox $$0, DynamicOps<T> $$1, @Nullable T $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<T> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = aa.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<T> $$8 = this.j.a(this.i, $$4, $$5, $$6);
-         OptionalDynamic<T> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.al(); $$10 < this.c.am(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
-               }
-            });
-         }
-      }
-   }
-
-   private void d(cox $$0) {
-      aes<rn> $$1 = aes.a(rf.a, this.k);
-      Dynamic<rn> $$2 = this.a($$0, $$1);
-      rn $$3 = (rn)$$2.getValue();
-      if ($$3 instanceof qu) {
-         this.d.a($$0, (qu)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(cox $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
-      );
-   }
-
-   private static long a(cox $$0, int $$1) {
-      return hz.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", hz.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(cox $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.al(); $$1 < this.c.am(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
             }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(cpc $$0, rn $$1) {
+      return this.a(() -> {
+         try {
+            dij.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
          }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bft.b(dij.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<cpc, dij.a>> $$0 = this.e.entrySet().iterator();
+         Entry<cpc, dij.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new bft.b(dij.b.b.ordinal(), this::a));
+   }
+
+   private void a(cpc $$0, dij.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
       }
    }
 
    @Override
    public void close() throws IOException {
-      this.d.close();
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bft.b(dij.b.c.ordinal(), () -> $$0.a(asx.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
+   }
+
+   static class a {
+      @Nullable
+      qx a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable qx $$0) {
+         this.a = $$0;
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

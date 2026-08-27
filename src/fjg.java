@@ -1,67 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class fjg {
-   private final fji[] a;
-   private int b;
-
-   public static Codec<fjg> a(int $$0) {
-      return Codec.list(fji.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new fjg($$0, $$1));
-            },
-            fjg::c
-         );
-   }
-
-   public fjg(int $$0) {
-      this.a = new fji[$$0];
-   }
-
-   private fjg(int $$0, List<fji> $$1) {
-      this.a = $$1.toArray(fji[]::new);
-      this.b = $$1.size();
-   }
-
-   private List<fji> c() {
-      List<fji> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+public interface fjg {
+   fjg a = new fjg() {
+      @Override
+      public CompletableFuture<Optional<cbw>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
-      return $$0;
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static fjg a(UserApiService $$0, erk $$1, Path $$2) {
+      return (fjg)($$1.g() == erk.a.c ? new fiq($$0, $$1.b(), $$2) : a);
    }
 
-   public void a(fji $$0) {
-      this.a[this.c(this.b++)] = $$0;
-   }
+   CompletableFuture<Optional<cbw>> a();
 
-   @Nullable
-   public fji b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
-   }
-
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
-   }
+   boolean b();
 }

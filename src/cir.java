@@ -1,15 +1,14 @@
-public class cir extends civ implements cjz {
-   public cir(civ.a $$0) {
-      super($$0);
+public class cir extends ckf {
+   public cir(csv $$0, csv $$1, cja.a $$2) {
+      super($$2, $$0, $$1, hc.b);
    }
 
    @Override
-   public boolean a(cpq $$0, ddy $$1, boolean $$2, cbp $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.p(), aoz.lJ, apa.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   protected boolean a(cpy $$0, dfj $$1, gw $$2) {
+      if ($$1.b() instanceof dbs $$3 && !$$3.b($$1, $$0, $$2)) {
          return false;
       }
+
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,79 +1,92 @@
-public class dar extends csq {
-   public static final dge a = dfu.aw;
-   protected static final float b = 6.0F;
-   protected static final eib c = csq.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+import java.util.function.Supplier;
 
-   protected dar(dfd.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+public class dar extends ctd implements csx {
+   public static final int a = 7;
+   public static final dgj b = dfz.av;
+   protected static final float c = 1.0F;
+   protected static final eig[] d = new eig[]{
+      csv.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      csv.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final das e;
+   private final Supplier<cja> f;
+
+   protected dar(das $$0, Supplier<cja> $$1, dfi.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return c;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return d[$$0.c(b)];
    }
 
    @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
+      return $$0.a(csw.cC);
    }
 
    @Override
-   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if ($$1.t($$2.c())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(a);
-            if ($$5 == 15) {
-               $$1.b($$2.c(), this.n());
-               $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 4);
+   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = cum.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(b);
+            if ($$5 < 7) {
+               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
             } else {
-               $$1.a($$2, $$0.a(a, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
-      }
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      dfe $$3 = $$1.a_($$2.d());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(apo.af) || $$3.a(apo.H)) {
-            gw $$4 = $$2.d();
-
-            for (hc $$5 : hc.c.a) {
-               dfe $$6 = $$1.a_($$4.a($$5));
-               eah $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(apt.a) || $$6.a(csr.kI)) {
-                  return true;
+               hc $$6 = hc.c.a.a($$3);
+               gw $$7 = $$2.a($$6);
+               dfj $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(csw.cC) || $$8.a(apt.af))) {
+                  $$1.b($$7, this.e.n());
+                  $$1.b($$2, this.e.b().n().a(cwo.aC, $$6));
                }
             }
          }
-
-         return false;
       }
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a);
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(this.f.get());
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return $$2.c(b) != 7;
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      int $$4 = Math.min(7, $$3.c(b) + arx.a($$0.z, 2, 5));
+      dfj $$5 = $$3.a(b, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(b);
+   }
+
+   public das a() {
+      return this.e;
    }
 }

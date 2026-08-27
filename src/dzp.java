@@ -1,113 +1,112 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public final class dzp extends dzy<dzq.a, dzq> {
-   private final gw.a g = new gw.a();
+public class dzp {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final dzq d;
+   private final dzq e;
+   private final double f;
+   private final dzp.a g;
 
-   public dzp(dho $$0) {
-      this($$0, new dzq($$0));
+   @Deprecated
+   public static dzp a(asc $$0, dzp.a $$1) {
+      return new dzp($$0, $$1, false);
+   }
+
+   public static dzp a(asc $$0, int $$1, double... $$2) {
+      return b($$0, new dzp.a($$1, new DoubleArrayList($$2)));
+   }
+
+   public static dzp b(asc $$0, dzp.a $$1) {
+      return new dzp($$0, $$1, true);
+   }
+
+   private dzp(asc $$0, dzp.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = dzq.b($$0, $$3, $$4);
+         this.e = dzq.b($$0, $$3, $$4);
+      } else {
+         this.d = dzq.a($$0, $$3, $$4);
+         this.e = dzq.a($$0, $$3, $$4);
+      }
+
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
+   }
+
+   public double a() {
+      return this.f;
+   }
+
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public dzp.a b() {
+      return this.g;
    }
 
    @VisibleForTesting
-   public dzp(dho $$0, dzq $$1) {
-      super($$0, $$1);
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
    }
 
-   @Override
-   protected void a(long $$0) {
-      long $$1 = hz.e($$0);
-      if (this.f.b($$1)) {
-         dfe $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, dzy.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
+   public static record a(int c, DoubleList d) {
+      public static final Codec<dzp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(dzp.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(dzp.a::b))
+               .apply($$0, dzp.a::new)
+      );
+      public static final Codec<hg<dzp.a>> b = aet.a(je.ax, a);
 
-         if ($$3 > 0) {
-            this.c($$0, dzy.a.a($$3, a($$2)));
-         }
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
       }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dfe $$3 = null;
-
-      for (hc $$4 : d) {
-         if (dzy.a.a($$1, $$4)) {
-            long $$5 = gw.a($$0, $$4);
-            if (this.f.b(hz.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dfe $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = dzy.a.b($$1) ? csr.a.n() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, dzy.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
       }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = dzy.a.a($$1);
-
-      for (hc $$3 : d) {
-         if (dzy.a.a($$1, $$3)) {
-            long $$4 = gw.a($$0, $$3);
-            if (this.f.b(hz.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dfe $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, dzy.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, dzy.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, dzy.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
+      public int a() {
+         return this.c;
       }
-   }
 
-   private int a(long $$0, dfe $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(hz.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(cox $$0) {
-      this.a($$0, true);
-      dhn $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), dzy.a.a($$2, a($$1x)));
-         });
+      public DoubleList b() {
+         return this.d;
       }
    }
 }

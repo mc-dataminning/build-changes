@@ -1,56 +1,8 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class epq implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
-   }
-
-   public static void a(eyf $$0) {
-      eqq $$1 = eqq.O();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(ti $$0) {
-      this.b();
-      eqq $$1 = eqq.O();
-      $$1.execute(() -> $$1.a(new eoe($$0, new elv(new eyk()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof enn $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(ti.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(enn $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract ti a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface epq {
 }

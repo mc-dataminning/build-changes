@@ -1,77 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class gbm implements gba {
-   private final int a;
-   private final List<bff.b<gba>> b;
-   private final gba c;
+public class gbm extends aex {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public gbm(List<bff.b<gba>> $$0) {
-      this.b = $$0;
-      this.a = bfg.a($$0);
-      this.c = $$0.get(0).b();
+   private gbm(String $$0, String $$1, String $$2, @Nullable aex.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public gbm(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public gbm(aex $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gbm c(String $$0, String $$1) {
+      return new gbm("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public List<fow> a(@Nullable dfe $$0, @Nullable hc $$1, arx $$2) {
-      return bfg.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public fyz e() {
-      return this.c.e();
-   }
-
-   @Override
-   public fpi f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fpg g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bff.b<gba>> a = Lists.newArrayList();
-
-      public gbm.a a(@Nullable gba $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bff.a($$0, $$1));
-         }
-
-         return this;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gbm && super.equals($$0)) {
+         gbm $$1 = (gbm)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
       }
+   }
 
-      @Nullable
-      public gba a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gba)(this.a.size() == 1 ? this.a.get(0).b() : new gbm(this.a));
-         }
-      }
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

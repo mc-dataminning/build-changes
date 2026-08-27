@@ -1,11 +1,17 @@
-public class aqh {
-   public static final aqd<dus> a = a("normal");
-   public static final aqd<dus> b = a("extended");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private aqh() {
+public record aqh(List<aqg> b, boolean c) {
+   public static final Codec<aqh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqg.a.listOf().fieldOf("values").forGetter(aqh::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(aqh::b)).apply($$0, aqh::new)
+   );
+
+   public List<aqg> a() {
+      return this.b;
    }
 
-   private static aqd<dus> a(String $$0) {
-      return aqd.a(je.aF, new aeu($$0));
+   public boolean b() {
+      return this.c;
    }
 }

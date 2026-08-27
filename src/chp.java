@@ -1,46 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class chp extends civ implements cjz {
-   private static final Map<cho, chp> a = Maps.newEnumMap(cho.class);
-   private final cho b;
+public class chp extends ckt implements ckz {
+   private final aqi<csv> a;
+   protected final float b;
+   private final float c;
+   private final Multimap<bkh, bkk> d;
 
-   public chp(cho $$0, civ.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   protected chp(float $$0, float $$1, cks $$2, aqi<csv> $$3, cja.a $$4) {
+      super($$2, $$4);
+      this.a = $$3;
+      this.b = $$2.b();
+      this.c = $$0 + $$2.c();
+      Builder<bkh, bkk> $$5 = ImmutableMultimap.builder();
+      $$5.put(bkm.f, new bkk(m, "Tool modifier", (double)this.c, bkk.a.a));
+      $$5.put(bkm.h, new bkk(n, "Tool modifier", (double)$$1, bkk.a.a));
+      this.d = $$5.build();
    }
 
    @Override
-   public bgt a(cja $$0, cbp $$1, bjb $$2, bgs $$3) {
-      if ($$2 instanceof bvi $$4 && $$4.bv() && !$$4.t() && $$4.q() != this.b) {
-         $$4.dK().a($$1, $$4, aoz.gF, apa.h, 1.0F, 1.0F);
-         if (!$$1.dK().B) {
-            $$4.b(this.b);
-            $$0.h(1);
-         }
+   public float a(cjf $$0, dfj $$1) {
+      return $$1.a(this.a) ? this.b : 1.0F;
+   }
 
-         return bgt.a($$1.dK().B);
+   @Override
+   public boolean a(cjf $$0, bjg $$1, bjg $$2) {
+      $$0.a(2, $$2, $$0x -> $$0x.d(biv.a));
+      return true;
+   }
+
+   @Override
+   public boolean a(cjf $$0, cpv $$1, dfj $$2, gw $$3, bjg $$4) {
+      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(biv.a));
       }
 
-      return bgt.d;
-   }
-
-   public cho d() {
-      return this.b;
-   }
-
-   public static chp a(cho $$0) {
-      return a.get($$0);
+      return true;
    }
 
    @Override
-   public boolean a(cpq $$0, ddy $$1, boolean $$2, cbp $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
-         $$0.a(null, $$1.p(), aoz.gF, apa.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   public Multimap<bkh, bkk> a(biv $$0) {
+      return $$0 == biv.a ? this.d : super.a($$0);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a_(dfj $$0) {
+      int $$1 = this.i().d();
+      if ($$1 < 3 && $$0.a(apt.bE)) {
          return false;
+      } else if ($$1 < 2 && $$0.a(apt.bF)) {
+         return false;
+      } else {
+         return $$1 < 1 && $$0.a(apt.bG) ? false : $$0.a(this.a);
       }
    }
 }

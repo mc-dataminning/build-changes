@@ -1,21 +1,19 @@
-import javax.annotation.Nullable;
+public class cka extends cjb {
+   private final aks a;
 
-public class cka extends ckj {
-   public cka(civ.a $$0, csq $$1, csq $$2) {
-      super($$1, $$2, $$0, hc.a);
-   }
-
-   public cka(civ.a $$0, csq $$1, csq $$2, hc $$3) {
-      super($$1, $$2, $$0, $$3);
+   public cka(aks $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected boolean a(gw $$0, cpq $$1, @Nullable cbp $$2, cja $$3, dfe $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof ddy $$6 && $$1.a_($$0).b() instanceof czq $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   protected void b(cja $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new xu($$0, $$1));
+   }
 
-      return $$5;
+   @Override
+   protected void c(cja $$0) {
+      super.c($$0);
+      this.a.c.b(new xu($$0, 0));
    }
 }

@@ -1,56 +1,44 @@
 import javax.annotation.Nullable;
 
-public class bwv extends bwl {
-   public bwv(bip<? extends bwv> $$0, cpq $$1) {
+public class bwv extends bwp {
+   public bwv(biu<? extends bwv> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public static bkg.a p() {
-      return gA().a(bkh.a, 15.0).a(bkh.d, 0.2F);
+   @Override
+   protected apd w() {
+      return ape.nS;
    }
 
    @Override
-   protected void a(arx $$0) {
-      this.a(bkh.n).a(a($$0::j));
+   protected apd gC() {
+      return ape.nT;
    }
 
    @Override
-   public bjg eQ() {
-      return bjg.b;
-   }
-
-   @Override
-   protected aoy r() {
-      return aoz.Bh;
-   }
-
-   @Override
-   protected aoy h_() {
-      return aoz.Bi;
-   }
-
-   @Override
-   protected aoy d(bhj $$0) {
-      return aoz.Bj;
+   protected apd l_() {
+      return ape.nV;
    }
 
    @Nullable
    @Override
-   public big a(akn $$0, big $$1) {
-      return bip.bq.a((cpq)$$0);
+   protected apd gk() {
+      return ape.nW;
    }
 
    @Override
-   public bgt b(cbp $$0, bgs $$1) {
-      return !this.gp() ? bgt.d : super.b($$0, $$1);
+   protected apd d(bho $$0) {
+      return ape.nX;
    }
 
    @Override
-   protected void gq() {
+   protected void gd() {
+      this.a(ape.nU, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
    }
 
+   @Nullable
    @Override
-   protected float a(bim $$0, float $$1) {
-      return $$0.b - (this.i_() ? 0.03125F : 0.28125F) * $$1;
+   public bil a(akr $$0, bil $$1) {
+      return biu.ap.a((cpv)$$0);
    }
 }

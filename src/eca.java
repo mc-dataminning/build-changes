@@ -1,12 +1,30 @@
-public class eca extends RuntimeException {
-   private final ti a;
+public class eca {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-   public eca(ti $$0) {
-      super($$0.getString());
-      this.a = $$0;
+   public eca(int $$0) {
+      this($$0, a);
    }
 
-   public ti a() {
-      return this.a;
+   public eca(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(eca $$0) {
+      return this.b().equals($$0.b());
    }
 }

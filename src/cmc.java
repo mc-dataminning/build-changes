@@ -1,67 +1,49 @@
-public class cmc extends clw {
-   public cmc(clt $$0) {
+public class cmc extends cmb {
+   public cmc(cly $$0) {
       super($$0);
    }
 
-   public boolean a(ceu $$0, cpq $$1) {
-      int $$2 = 0;
-      cja $$3 = cja.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cja $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjd.rf)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjd.tp)) {
-                  return false;
-               }
-
-               $$2++;
+   public boolean a(cez $$0, cpv $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cjf $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(aqb.aM)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cji.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return !$$3.b() && $$2 > 0;
+         return true;
+      }
    }
 
-   public cja a(ceu $$0, hu $$1) {
-      int $$2 = 0;
-      cja $$3 = cja.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cja $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjd.rf)) {
-               if (!$$3.b()) {
-                  return cja.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjd.tp)) {
-                  return cja.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cja.b;
+   public cjf a(cez $$0, hu $$1) {
+      ddk.a $$2 = new ddk.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
+      return ddk.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cmh<?> ai_() {
-      return cmh.e;
+   public cmm<?> an_() {
+      return cmm.w;
    }
 }

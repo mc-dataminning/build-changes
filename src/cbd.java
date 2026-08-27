@@ -1,61 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cbd {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] d = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cbd> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jd.z.q().fieldOf("type").orElseGet(() -> cbh.c).forGetter($$0x -> $$0x.e),
-               jd.A.q().fieldOf("profession").orElseGet(() -> cbf.b).forGetter($$0x -> $$0x.f),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, cbd::new)
-   );
-   private final cbh e;
-   private final cbf f;
-   private final int g;
+public class cbd implements cpi {
+   private static final int a = 1200;
+   private int b;
 
-   public cbd(cbh $$0, cbf $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = Math.max(1, $$2);
+   @Override
+   public int a(akr $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.X().b(cpr.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            cbu $$3 = $$0.i();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               asc $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               gw $$7 = $$3.dl().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (cqg.a(bka.c.a, $$0, $$7, biu.m)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, aqe.m).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   public cbh a() {
-      return this.e;
+   private int a(akr $$0, gw $$1) {
+      int $$2 = 48;
+      if ($$0.w().a($$0x -> $$0x.a(buj.n), $$1, 48, buf.b.b) > 4L) {
+         List<buu> $$3 = $$0.a(buu.class, new ehi($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   public cbf b() {
-      return this.f;
+   private int b(akr $$0, gw $$1) {
+      int $$2 = 16;
+      List<buu> $$3 = $$0.a(buu.class, new ehi($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   public int c() {
-      return this.g;
-   }
-
-   public cbd a(cbh $$0) {
-      return new cbd($$0, this.f, this.g);
-   }
-
-   public cbd a(cbf $$0) {
-      return new cbd(this.e, $$0, this.g);
-   }
-
-   public cbd a(int $$0) {
-      return new cbd(this.e, this.f, $$0);
-   }
-
-   public static int b(int $$0) {
-      return d($$0) ? d[$$0 - 1] : 0;
-   }
-
-   public static int c(int $$0) {
-      return d($$0) ? d[$$0] : 0;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   private int a(gw $$0, akr $$1) {
+      buu $$2 = biu.m.a((cpv)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bjk.a, null, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

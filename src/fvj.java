@@ -1,25 +1,27 @@
-public class fvj<T extends bvl> extends fui<T, fha<T>> {
-   private static final aeu a = new aeu("textures/entity/squid/squid.png");
+public class fvj extends fun<bzr, fhb<bzr>> {
+   private static final aex a = new aex("textures/entity/slime/slime.png");
 
-   public fvj(ftc.a $$0, fha<T> $$1) {
-      super($$0, $$1, 0.7F);
+   public fvj(fth.a $$0) {
+      super($$0, new fhb<>($$0.a(fib.bm)), 0.25F);
+      this.a(new fxt<>(this, $$0.f()));
    }
 
-   public aeu a(T $$0) {
+   public void a(bzr $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.ge();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(bzr $$0, elp $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.ge();
+      float $$5 = arx.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   }
+
+   public aex a(bzr $$0) {
       return a;
-   }
-
-   protected void a(T $$0, elk $$1, float $$2, float $$3, float $$4) {
-      float $$5 = ars.i($$4, $$0.c, $$0.b);
-      float $$6 = ars.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$5));
-      $$1.a(a.d.rotationDegrees($$6));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return ars.i($$1, $$0.bW, $$0.bV);
    }
 }

@@ -1,84 +1,38 @@
-import java.util.function.Consumer;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ql {
-   private final String a;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   private final int e;
-   private final int f;
-   private final Consumer<pt> g;
-   private final int h;
-   private final long i;
-   private final czc j;
+public class ql implements qq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Escaper b = Escapers.builder()
+      .addEscape('\'', "|'")
+      .addEscape('\n', "|n")
+      .addEscape('\r', "|r")
+      .addEscape('|', "||")
+      .addEscape('[', "|[")
+      .addEscape(']', "|]")
+      .build();
 
-   public ql(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<pt> $$6) {
-      this($$0, $$1, $$2, czc.a, $$3, $$4, $$5, 1, 1, $$6);
-   }
+   @Override
+   public void a(px $$0) {
+      String $$1 = b.escape($$0.c());
+      String $$2 = b.escape($$0.n().getMessage());
+      String $$3 = b.escape(ac.c($$0.n()));
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      if ($$0.r()) {
+         a.info("##teamcity[testFailed name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
+      } else {
+         a.info("##teamcity[testIgnored name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
+      }
 
-   public ql(String $$0, String $$1, String $$2, czc $$3, int $$4, long $$5, boolean $$6, Consumer<pt> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
-   }
-
-   public ql(String $$0, String $$1, String $$2, czc $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<pt> $$9) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.j = $$3;
-      this.h = $$4;
-      this.d = $$6;
-      this.f = $$7;
-      this.e = $$8;
-      this.g = $$9;
-      this.i = $$5;
-   }
-
-   public void a(pt $$0) {
-      this.g.accept($$0);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 
    @Override
-   public String toString() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   public long f() {
-      return this.i;
-   }
-
-   public czc g() {
-      return this.j;
-   }
-
-   public boolean h() {
-      return this.e > 1;
-   }
-
-   public int i() {
-      return this.e;
-   }
-
-   public int j() {
-      return this.f;
+   public void b(px $$0) {
+      String $$1 = b.escape($$0.c());
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 }

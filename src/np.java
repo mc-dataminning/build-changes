@@ -1,11 +1,42 @@
-import com.mojang.serialization.Lifecycle;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public interface np<T> {
-   hg.c<T> a(aet<T> var1, T var2, Lifecycle var3);
-
-   default hg.c<T> a(aet<T> $$0, T $$1) {
-      return this.a($$0, $$1, Lifecycle.stable());
+public class np {
+   public static void a(ns<dwr> $$0) {
+      hh<dwr> $$1 = $$0.a(je.aC);
+      hg<dwr> $$2 = $$1.b(nz.a);
+      nz.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new dwr(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dwp.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(dwp.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(dwp.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(dwp.b("bastion/mobs/empty"), 1)
+            ),
+            dwr.a.b
+         )
+      );
+      nz.a(
+         $$0, "bastion/mobs/hoglin", new dwr($$2, ImmutableList.of(Pair.of(dwp.b("bastion/mobs/hoglin"), 2), Pair.of(dwp.b("bastion/mobs/empty"), 1)), dwr.a.b)
+      );
+      nz.a(
+         $$0, "bastion/blocks/gold", new dwr($$2, ImmutableList.of(Pair.of(dwp.b("bastion/blocks/air"), 3), Pair.of(dwp.b("bastion/blocks/gold"), 1)), dwr.a.b)
+      );
+      nz.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new dwr(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dwp.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(dwp.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(dwp.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            dwr.a.b
+         )
+      );
    }
-
-   <S> hh<S> a(aet<? extends ht<? extends S>> var1);
 }

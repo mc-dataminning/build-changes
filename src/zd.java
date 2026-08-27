@@ -1,31 +1,74 @@
-public record zd(aaw d, byte e) implements va<ws> {
-   public static final byte a = 1;
-   public static final byte b = 2;
-   public static final byte c = 3;
+import java.util.Set;
 
-   public zd(sl $$0) {
-      this(new aaw($$0), $$0.readByte());
+public class zd implements vd<ww> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final Set<bju> f;
+   private final int g;
+
+   public zd(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bju> $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+   }
+
+   public zd(so $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = bju.a($$0.readUnsignedByte());
+      this.g = $$0.m();
    }
 
    @Override
-   public void a(sl $$0) {
-      this.d.a($$0);
-      $$0.k(this.e);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(bju.a(this.f));
+      $$0.c(this.g);
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.e & $$0) != 0;
+   public double a() {
+      return this.a;
    }
 
-   public aaw a() {
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
       return this.d;
    }
 
-   public byte d() {
+   public float g() {
       return this.e;
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public Set<bju> i() {
+      return this.f;
    }
 }

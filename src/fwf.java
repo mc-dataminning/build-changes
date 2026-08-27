@@ -1,11 +1,22 @@
-public class fwf extends fui<bzv, ffi<bzv>> {
-   private static final aeu a = new aeu("textures/entity/hoglin/zoglin.png");
+public class fwf extends fun<bzy, fhr<bzy>> {
+   private static final aex a = new aex("textures/entity/witch.png");
 
-   public fwf(ftc.a $$0) {
-      super($$0, new ffi<>($$0.a(fhw.bW)), 0.7F);
+   public fwf(fth.a $$0) {
+      super($$0, new fhr<>($$0.a(fib.bN)), 0.5F);
+      this.a(new fyc<>(this, $$0.d()));
    }
 
-   public aeu a(bzv $$0) {
+   public void a(bzy $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      this.f.b(!$$0.eS().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aex a(bzy $$0) {
       return a;
+   }
+
+   protected void a(bzy $$0, elp $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

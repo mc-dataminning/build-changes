@@ -1,14 +1,47 @@
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class mz extends nb<bud> {
-   public mz(jm $$0, CompletableFuture<hi.b> $$1) {
-      super($$0, je.S, $$1);
+public abstract class mz<T> extends ne<T> {
+   private final Function<T, aew<T>> d;
+
+   public mz(jm $$0, aew<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2, Function<T, aew<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(hi.b $$0) {
-      this.b(apy.a).a(bue.a, bue.b, bue.c, bue.d, bue.e, bue.f, bue.g, bue.h, bue.i, bue.j, bue.k, bue.l, bue.m);
-      this.b(apy.b).b(apy.a).a(bue.n, bue.o);
-      this.b(apy.c).a(bue.p, bue.q);
+   public mz(jm $$0, aew<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2, CompletableFuture<ne.c<T>> $$3, Function<T, aew<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected mz.a<T> a(aqi<T> $$0) {
+      aqf $$1 = this.c($$0);
+      return new mz.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends ne.b<T> {
+      private final Function<T, aew<T>> a;
+
+      a(aqf $$0, Function<T, aew<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public mz.a<T> a(aqi<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final mz.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final mz.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

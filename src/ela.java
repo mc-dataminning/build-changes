@@ -1,11 +1,2 @@
-public interface ela {
-   int a();
-
-   void b();
-
-   eky c();
-
-   eky d();
-
-   void e();
+public interface ela extends elf {
 }

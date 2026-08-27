@@ -1,20 +1,35 @@
-public class cjt extends civ {
-   public cjt(civ.a $$0) {
-      super($$0);
+public class cjt extends cko {
+   public static final String c = "SkullOwner";
+
+   public cjt(csv $$0, csv $$1, cja.a $$2) {
+      super($$0, $$1, $$2, hc.a);
    }
 
    @Override
-   public bgt a(cja $$0, cbp $$1, bjb $$2, bgs $$3) {
-      if ($$2 instanceof bjr $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
-         if (!$$1.dK().B) {
-            $$4.a(apa.g);
-            $$2.dK().a($$2, djo.v, $$2.di());
-            $$0.h(1);
+   public tl m(cjf $$0) {
+      if ($$0.a(cji.tt) && $$0.u()) {
+         String $$1 = null;
+         qx $$2 = $$0.v();
+         if ($$2.b("SkullOwner", 8)) {
+            $$1 = $$2.l("SkullOwner");
+         } else if ($$2.b("SkullOwner", 10)) {
+            qx $$3 = $$2.p("SkullOwner");
+            if ($$3.b("Name", 8)) {
+               $$1 = $$3.l("Name");
+            }
          }
 
-         return bgt.a($$1.dK().B);
+         if ($$1 != null) {
+            return tl.a(this.a() + ".named", $$1);
+         }
       }
 
-      return bgt.d;
+      return super.m($$0);
+   }
+
+   @Override
+   public void b(qx $$0) {
+      super.b($$0);
+      def.e($$0);
    }
 }

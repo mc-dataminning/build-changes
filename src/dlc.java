@@ -1,63 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
-
 public final class dlc {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   private dlc() {
    }
 
-   public static dlc.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dlc.a($$1, $$2);
+   protected static dkw.c a(dkl $$0, dkl $$1, dkl $$2, dlf $$3) {
+      dfj $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dlc.a $$8 = $$6 > 0.0 ? dlc.a.a : dlc.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = arx.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               asc $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = arx.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   public static dlc.a c(long $$0) {
-      return b($$0).a();
-   }
+   protected static enum a {
+      a(csw.qN.n(), csw.sf.n(), csw.c.n(), 0, 50),
+      b(csw.Q.n(), csw.se.n(), csw.qz.n(), -60, -8);
 
-   public static dlc.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dlc.a($$2, $$3);
-   }
+      final dfj e;
+      final dfj f;
+      final dfj g;
+      protected final int c;
+      protected final int d;
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public static record a(long a, long b) {
-      public dlc.a a(long $$0, long $$1) {
-         return new dlc.a(this.a ^ $$0, this.b ^ $$1);
-      }
-
-      public dlc.a a(dlc.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
-
-      public dlc.a a() {
-         return new dlc.a(dlc.a(this.a), dlc.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
+      private a(dfj $$0, dfj $$1, dfj $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

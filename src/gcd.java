@@ -1,31 +1,29 @@
-public class gcd extends gbq {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final bwy p;
+public class gcd extends gbv {
+   private final biq n;
 
-   public gcd(bwy $$0) {
-      super(aoz.wH, apa.g, gch.t());
-      this.p = $$0;
-      this.k = gch.a.b;
-      this.i = false;
-      this.j = 0;
+   public gcd(apd $$0, apf $$1, float $$2, float $$3, biq $$4, long $$5) {
+      super($$0, $$1, asc.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dq());
+      this.g = (double)((float)this.n.ds());
+      this.h = (double)((float)this.n.dw());
    }
 
    @Override
    public boolean s() {
-      return !this.p.aS();
+      return !this.n.aT();
    }
 
    @Override
    public void q() {
-      if (!this.p.dF() && this.p.j() == null && this.p.gg()) {
-         this.f = (double)((float)this.p.dp());
-         this.g = (double)((float)this.p.dr());
-         this.h = (double)((float)this.p.dv());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dG()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dq());
+         this.g = (double)((float)this.n.ds());
+         this.h = (double)((float)this.n.dw());
       }
    }
 }

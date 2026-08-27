@@ -1,34 +1,49 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class blw extends bks<cbc> {
-   private final float c;
+public class blw extends bkx<bji> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private gw h;
+   private int i;
+   private int j;
+   private int k;
 
    public blw(float $$0) {
-      super(ImmutableMap.of(bsc.m, bsd.c, bsc.n, bsd.c), Integer.MAX_VALUE);
-      this.c = $$0;
+      super(ImmutableMap.of(bsh.w, bsi.a, bsh.m, bsi.b));
+      this.g = $$0;
    }
 
-   protected boolean a(akn $$0, cbc $$1) {
-      cbp $$2 = $$1.ga();
-      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bQ != null;
+   protected boolean a(akr $$0, bji $$1) {
+      return $$1.m_() && this.b($$0, $$1);
    }
 
-   protected boolean a(akn $$0, cbc $$1, long $$2) {
-      return this.a($$0, $$1);
+   protected void a(akr $$0, bji $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
    }
 
-   protected void b(akn $$0, cbc $$1, long $$2) {
-      this.a($$1);
+   protected void b(akr $$0, bji $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
    }
 
-   protected void c(akn $$0, cbc $$1, long $$2) {
-      bkb<?> $$3 = $$1.dM();
-      $$3.b(bsc.m);
-      $$3.b(bsc.n);
-   }
-
-   protected void d(akn $$0, cbc $$1, long $$2) {
-      this.a($$1);
+   protected boolean c(akr $$0, bji $$1, long $$2) {
+      return $$1.m_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
    }
 
    @Override
@@ -36,9 +51,51 @@ public class blw extends bks<cbc> {
       return false;
    }
 
-   private void a(cbc $$0) {
-      bkb<?> $$1 = $$0.dM();
-      $$1.a(bsc.m, new bsf(new bld($$0.ga(), false), this.c, 2));
-      $$1.a(bsc.n, new bld($$0.ga(), true));
+   protected void d(akr $$0, bji $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.K().a();
+            this.j--;
+            this.k = 5;
+         }
+      }
+   }
+
+   private void a(bji $$0, gw $$1) {
+      $$0.dN().a(bsh.m, new bsk($$1, this.g, 0));
+   }
+
+   private boolean b(akr $$0, bji $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(akr $$0, bji $$1) {
+      gw $$2 = $$1.dl();
+      gw $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(akr $$0, bji $$1) {
+      return this.a($$0, $$1.dl());
+   }
+
+   private boolean a(akr $$0, gw $$1) {
+      return $$0.a_($$1).a(apt.R);
+   }
+
+   private Optional<gw> a(bji $$0) {
+      return $$0.dN().c(bsh.w);
+   }
+
+   private boolean e(akr $$0, bji $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(akr $$0, bji $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

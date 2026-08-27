@@ -1,26 +1,12 @@
-public class fvl extends fui<bzq, fhb<bzq>> {
-   private static final aeu a = new aeu("textures/entity/strider/strider.png");
-   private static final aeu i = new aeu("textures/entity/strider/strider_cold.png");
+public class fvl extends fun<bvp, fhd<bvp>> {
+   private static final aex a = new aex("textures/entity/snow_golem.png");
 
-   public fvl(ftc.a $$0) {
-      super($$0, new fhb<>($$0.a(fhw.bx)), 0.5F);
-      this.a(new fxl<>(this, new fhb<>($$0.a(fhw.by)), new aeu("textures/entity/strider/strider_saddle.png")));
+   public fvl(fth.a $$0) {
+      super($$0, new fhd<>($$0.a(fib.bp)), 0.5F);
+      this.a(new fxu(this, $$0.c(), $$0.b()));
    }
 
-   public aeu a(bzq $$0) {
-      return $$0.p() ? i : a;
-   }
-
-   protected void a(bzq $$0, elk $$1, float $$2) {
-      if ($$0.i_()) {
-         $$1.b(0.5F, 0.5F, 0.5F);
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
-      }
-   }
-
-   protected boolean b(bzq $$0) {
-      return super.a($$0) || $$0.p();
+   public aex a(bvp $$0) {
+      return a;
    }
 }

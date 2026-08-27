@@ -1,39 +1,55 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
-public class aab implements va<ws> {
-   private final int a;
-   private final int[] b;
+public class aab implements vd<ww> {
+   private static final byte a = -128;
+   private final int b;
+   private final List<Pair<biv, cjf>> c;
 
-   public aab(bil $$0) {
-      this.a = $$0.ah();
-      List<bil> $$1 = $$0.cP();
-      this.b = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).ah();
-      }
+   public aab(int $$0, List<Pair<biv, cjf>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public aab(sl $$0) {
-      this.a = $$0.m();
-      this.b = $$0.c();
+   public aab(so $$0) {
+      this.b = $$0.m();
+      biv[] $$1 = biv.values();
+      this.c = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         biv $$3 = $$1[$$2 & 127];
+         cjf $$4 = $$0.q();
+         this.c.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.c(this.b);
+      int $$1 = this.c.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<biv, cjf> $$3 = this.c.get($$2);
+         biv $$4 = (biv)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         $$0.a((cjf)$$3.getSecond());
+      }
    }
 
-   public void a(ws $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int[] a() {
+   public int a() {
       return this.b;
    }
 
-   public int d() {
-      return this.a;
+   public List<Pair<biv, cjf>> d() {
+      return this.c;
    }
 }

@@ -1,16 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public class dfe extends dfd.a {
-   public static final Codec<dfe> b = a(jd.f.q(), csq::n).stable();
-
-   public dfe(csq $$0, ImmutableMap<dgh<?>, Comparable<?>> $$1, MapCodec<dfe> $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dfe x() {
-      return this;
+public class dfe {
+   public static ehi a(ehi $$0, hc $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new ehi($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new ehi($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new ehi($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new ehi($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new ehi($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new ehi($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
+      }
    }
 }

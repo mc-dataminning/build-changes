@@ -1,71 +1,104 @@
-public class czy extends csq {
-   public static final int a = 2;
-   public static final dge b = dfu.aE;
-   private static final int c = 24000;
-   private static final int d = 12000;
-   private static final int e = 300;
-   private static final eib f = csq.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+import javax.annotation.Nullable;
 
-   public czy(dfd.d $$0) {
+public class czy extends csv implements czw {
+   public static final dgh<dgr> a = dfz.bh;
+   public static final dga b = dfz.C;
+   protected static final eig c = csv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final eig d = csv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+
+   public czy(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.n().a(a, dgr.b).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(b);
+   public boolean g_(dfj $$0) {
+      return $$0.c(a) != dgr.c;
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return f;
-   }
-
-   public int h(dfe $$0) {
-      return $$0.c(b);
-   }
-
-   private boolean n(dfe $$0) {
-      return this.h($$0) == 2;
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
    }
 
    @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, aoz.wL, apa.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(b, Integer.valueOf(this.h($$0) + 1)), 2);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      dgr $$4 = $$0.c(a);
+      switch ($$4) {
+         case c:
+            return eid.b();
+         case a:
+            return d;
+         default:
+            return c;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      gw $$1 = $$0.a();
+      dfj $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(a, dgr.c).a(b, Boolean.valueOf(false));
       } else {
-         $$1.a(null, $$2, aoz.wM, apa.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         bwy $$4 = bip.aN.a((cpq)$$1);
-         if ($$4 != null) {
-            ehi $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), ars.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         eam $$3 = $$0.q().b_($$1);
+         dfj $$4 = this.n().a(a, dgr.b).a(b, Boolean.valueOf($$3.a() == ean.c));
+         hc $$5 = $$0.k();
+         return $$5 != hc.a && ($$5 == hc.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(a, dgr.a);
       }
    }
 
    @Override
-   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.r_() && $$5) {
-         $$1.c(3009, $$2, 0);
+   public boolean a(dfj $$0, cln $$1) {
+      cjf $$2 = $$1.n();
+      dgr $$3 = $$0.c(a);
+      if ($$3 == dgr.c || !$$2.a(this.k())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         hc $$5 = $$1.k();
+         return $$3 == dgr.b ? $$5 == hc.b || $$4 && $$5.o().d() : $$5 == hc.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
       }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(djo.i, $$2, djo.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
    }
 
    @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
-      return false;
+   public eam c_(dfj $$0) {
+      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
    }
 
-   public static boolean a(cow $$0, gw $$1) {
-      return $$0.a_($$1.d()).a(apo.ck);
+   @Override
+   public boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
+      return $$2.c(a) != dgr.c ? czw.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
+      return $$3.c(a) != dgr.c ? czw.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(apy.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

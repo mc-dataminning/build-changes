@@ -19,18 +19,18 @@ public class hw {
    static <T> hh<T> a(final hi.c<T> $$0) {
       return new hw.c<T>($$0) {
          @Override
-         public Optional<hg.c<T>> a(aet<T> $$0x) {
+         public Optional<hg.c<T>> a(aew<T> $$0x) {
             return $$0.a($$0);
          }
       };
    }
 
-   public <T> hw a(aet<? extends ht<T>> $$0, Lifecycle $$1, hw.e<T> $$2) {
+   public <T> hw a(aew<? extends ht<T>> $$0, Lifecycle $$1, hw.e<T> $$2) {
       this.a.add(new hw.g<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> hw a(aet<? extends ht<T>> $$0, hw.e<T> $$1) {
+   public <T> hw a(aew<? extends ht<T>> $$0, hw.e<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
@@ -52,7 +52,7 @@ public class hw {
 
    public hi.b a(hu $$0, hi.b $$1) {
       hw.a $$2 = this.b($$0);
-      Map<aet<? extends ht<?>>, hw.f<?>> $$3 = new HashMap<>();
+      Map<aew<? extends ht<?>>, hw.f<?>> $$3 = new HashMap<>();
       $$2.d().forEach($$1x -> $$3.put($$1x.a, $$1x));
       this.a.stream().map($$1x -> $$1x.a($$2)).forEach($$1x -> $$3.put($$1x.a, $$1x));
       Stream<hi.c<?>> $$4 = $$0.b().map($$0x -> $$0x.b().p());
@@ -63,22 +63,22 @@ public class hw {
       return $$5;
    }
 
-   static record a(hw.b a, hw.h b, Map<aeu, hh<?>> c, Map<aet<?>, hw.d<?>> d, List<RuntimeException> e) {
+   static record a(hw.b a, hw.h b, Map<aex, hh<?>> c, Map<aew<?>, hw.d<?>> d, List<RuntimeException> e) {
 
-      public static hw.a a(hu $$0, Stream<aet<? extends ht<?>>> $$1) {
+      public static hw.a a(hu $$0, Stream<aew<? extends ht<?>>> $$1) {
          hw.b $$2 = new hw.b();
          List<RuntimeException> $$3 = new ArrayList<>();
          hw.h $$4 = new hw.h($$2);
-         Builder<aeu, hh<?>> $$5 = ImmutableMap.builder();
+         Builder<aex, hh<?>> $$5 = ImmutableMap.builder();
          $$0.b().forEach($$1x -> $$5.put($$1x.a().a(), hw.a($$1x.b().p())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
          return new hw.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
-      public <T> np<T> a() {
-         return new np<T>() {
+      public <T> ns<T> a() {
+         return new ns<T>() {
             @Override
-            public hg.c<T> a(aet<T> $$0, T $$1, Lifecycle $$2) {
+            public hg.c<T> a(aew<T> $$0, T $$1, Lifecycle $$2) {
                hw.d<?> $$3 = a.this.d.put($$0, new hw.d($$1, $$2));
                if ($$3 != null) {
                   a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
@@ -88,14 +88,14 @@ public class hw {
             }
 
             @Override
-            public <S> hh<S> a(aet<? extends ht<? extends S>> $$0) {
+            public <S> hh<S> a(aew<? extends ht<? extends S>> $$0) {
                return (hh<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
             }
          };
       }
 
       public void b() {
-         for (aet<Object> $$0 : this.b.a.keySet()) {
+         for (aew<Object> $$0 : this.b.a.keySet()) {
             this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
          }
 
@@ -119,14 +119,14 @@ public class hw {
       }
 
       public void a(hi.b $$0) {
-         Map<aeu, Optional<? extends hi<Object>>> $$1 = new HashMap<>();
-         Iterator<Entry<aet<Object>, hg.c<Object>>> $$2 = this.b.a.entrySet().iterator();
+         Map<aex, Optional<? extends hi<Object>>> $$1 = new HashMap<>();
+         Iterator<Entry<aew<Object>, hg.c<Object>>> $$2 = this.b.a.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<aet<Object>, hg.c<Object>> $$3 = $$2.next();
-            aet<Object> $$4 = $$3.getKey();
+            Entry<aew<Object>, hg.c<Object>> $$3 = $$2.next();
+            aew<Object> $$4 = $$3.getKey();
             hg.c<Object> $$5 = $$3.getValue();
-            $$1.computeIfAbsent($$4.b(), $$1x -> $$0.a(aet.a($$1x))).flatMap($$1x -> $$1x.a($$4)).ifPresent($$2x -> {
+            $$1.computeIfAbsent($$4.b(), $$1x -> $$0.a(aew.a($$1x))).flatMap($$1x -> $$1x.a($$4)).ifPresent($$2x -> {
                $$5.b($$2x.a());
                $$2.remove();
             });
@@ -134,7 +134,7 @@ public class hw {
       }
 
       public Stream<hw.f<?>> d() {
-         return this.b.a.keySet().stream().map(aet::b).distinct().map($$0 -> new hw.f(aet.a($$0), Lifecycle.stable(), Map.of()));
+         return this.b.a.keySet().stream().map(aew::b).distinct().map($$0 -> new hw.f(aew.a($$0), Lifecycle.stable(), Map.of()));
       }
 
       public hw.b e() {
@@ -145,11 +145,11 @@ public class hw {
          return this.b;
       }
 
-      public Map<aeu, hh<?>> g() {
+      public Map<aex, hh<?>> g() {
          return this.c;
       }
 
-      public Map<aet<?>, hw.d<?>> h() {
+      public Map<aew<?>, hw.d<?>> h() {
          return this.d;
       }
 
@@ -179,7 +179,7 @@ public class hw {
       }
 
       @Override
-      public Optional<hk.c<T>> a(aqd<T> $$0) {
+      public Optional<hk.c<T>> a(aqi<T> $$0) {
          return Optional.of(hk.a(this.b, $$0));
       }
    }
@@ -189,22 +189,22 @@ public class hw {
 
    @FunctionalInterface
    public interface e<T> {
-      void run(np<T> var1);
+      void run(ns<T> var1);
    }
 
-   static record f<T>(aet<? extends ht<? extends T>> a, Lifecycle b, Map<aet<T>, hw.i<T>> c) {
+   static record f<T>(aew<? extends ht<? extends T>> a, Lifecycle b, Map<aew<T>, hw.i<T>> c) {
 
       public hi.c<T> a() {
          return new hi.c<T>() {
-            private final Map<aet<T>, hg.c<T>> b = f.this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$0x -> {
+            private final Map<aew<T>, hg.c<T>> b = f.this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$0x -> {
                hw.i<T> $$1 = (hw.i<T>)$$0x.getValue();
-               hg.c<T> $$2 = $$1.b().orElseGet(() -> hg.c.a(this, (aet<T>)$$0x.getKey()));
+               hg.c<T> $$2 = $$1.b().orElseGet(() -> hg.c.a(this, (aew<T>)$$0x.getKey()));
                $$2.b($$1.a().a());
                return $$2;
             }));
 
             @Override
-            public aet<? extends ht<? extends T>> f() {
+            public aew<? extends ht<? extends T>> f() {
                return f.this.a;
             }
 
@@ -214,7 +214,7 @@ public class hw {
             }
 
             @Override
-            public Optional<hg.c<T>> a(aet<T> $$0) {
+            public Optional<hg.c<T>> a(aew<T> $$0) {
                return Optional.ofNullable(this.b.get($$0));
             }
 
@@ -224,7 +224,7 @@ public class hw {
             }
 
             @Override
-            public Optional<hk.c<T>> a(aqd<T> $$0) {
+            public Optional<hk.c<T>> a(aqi<T> $$0) {
                return Optional.empty();
             }
 
@@ -235,7 +235,7 @@ public class hw {
          };
       }
 
-      public aet<? extends ht<? extends T>> b() {
+      public aew<? extends ht<? extends T>> b() {
          return this.a;
       }
 
@@ -243,27 +243,27 @@ public class hw {
          return this.b;
       }
 
-      public Map<aet<T>, hw.i<T>> d() {
+      public Map<aew<T>, hw.i<T>> d() {
          return this.c;
       }
    }
 
-   static record g<T>(aet<? extends ht<T>> a, Lifecycle b, hw.e<T> c) {
+   static record g<T>(aew<? extends ht<T>> a, Lifecycle b, hw.e<T> c) {
       void b(hw.a $$0) {
          this.c.run($$0.a());
       }
 
       public hw.f<T> a(hw.a $$0) {
-         Map<aet<T>, hw.i<T>> $$1 = new HashMap<>();
-         Iterator<Entry<aet<?>, hw.d<?>>> $$2 = $$0.d.entrySet().iterator();
+         Map<aew<T>, hw.i<T>> $$1 = new HashMap<>();
+         Iterator<Entry<aew<?>, hw.d<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<aet<?>, hw.d<?>> $$3 = $$2.next();
-            aet<?> $$4 = $$3.getKey();
+            Entry<aew<?>, hw.d<?>> $$3 = $$2.next();
+            aew<?> $$4 = $$3.getKey();
             if ($$4.b(this.a)) {
                hw.d<T> $$6 = (hw.d<T>)$$3.getValue();
                hg.c<T> $$7 = (hg.c<T>)$$0.b.a.remove($$4);
-               $$1.put((aet<T>)$$4, new hw.i<>($$6, Optional.ofNullable($$7)));
+               $$1.put((aew<T>)$$4, new hw.i<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
@@ -273,18 +273,18 @@ public class hw {
    }
 
    static class h extends hw.c<Object> {
-      final Map<aet<Object>, hg.c<Object>> a = new HashMap<>();
+      final Map<aew<Object>, hg.c<Object>> a = new HashMap<>();
 
       public h(hj<Object> $$0) {
          super($$0);
       }
 
       @Override
-      public Optional<hg.c<Object>> a(aet<Object> $$0) {
+      public Optional<hg.c<Object>> a(aew<Object> $$0) {
          return Optional.of(this.c($$0));
       }
 
-      <T> hg.c<T> c(aet<T> $$0) {
+      <T> hg.c<T> c(aew<T> $$0) {
          return (hg.c<T>)this.a.computeIfAbsent($$0, $$0x -> hg.c.a(this.b, $$0x));
       }
    }

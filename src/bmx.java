@@ -1,41 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bmx {
-   public static bmc<cbc> a(bsc<hf> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return boe.a(
-         (Function<boe.b<cbc>, ? extends App<boe.c<cbc>, boh<cbc>>>)($$5 -> $$5.group($$5.a(bsc.E), $$5.c(bsc.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     hf $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dk()) > $$3) {
-                           ehi $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final int a = 300;
 
-                           while ($$14 == null || gw.a($$14).k($$10.dk()) > $$3) {
-                              $$14 = btr.a($$10, 15, 7, ehi.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new bsf($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dk()) > $$2) {
-                           $$7.a(new bsf($$12.b(), $$1, $$2));
+   public static bky<bjg> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$3x -> $$3x.group($$3x.b(bsh.C), $$3x.b(bsh.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        gw $$11 = $$3x.<hf>b($$4).b();
+                        if ($$11.a($$7.dl(), (double)$$1)) {
+                           $$3.increment();
                         }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
 
-                     return true;
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dN().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
+                        return true;
+                     }
                   }))
       );
    }

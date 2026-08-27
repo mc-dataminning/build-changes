@@ -1,35 +1,60 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class mx extends mw<civ> {
-   private final CompletableFuture<nb.c<csq>> d;
-   private final Map<aqd<csq>, aqd<civ>> g = new HashMap<>();
+public class mx extends mz<djt> {
+   @VisibleForTesting
+   static final djt[] d = new djt[]{
+      djt.b,
+      djt.c,
+      djt.d,
+      djt.f,
+      djt.g,
+      djt.h,
+      djt.i,
+      djt.a,
+      djt.e,
+      djt.j,
+      djt.k,
+      djt.l,
+      djt.m,
+      djt.n,
+      djt.o,
+      djt.p,
+      djt.q,
+      djt.r,
+      djt.s,
+      djt.t,
+      djt.u,
+      djt.v,
+      djt.w,
+      djt.y,
+      djt.z,
+      djt.A,
+      djt.B,
+      djt.C,
+      djt.G,
+      djt.H,
+      djt.I,
+      djt.J,
+      djt.K,
+      djt.M,
+      djt.O,
+      djt.P,
+      djt.Q,
+      djt.R,
+      djt.S
+   };
 
-   public mx(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<nb.c<csq>> $$2) {
-      super($$0, je.D, $$1, $$0x -> $$0x.j().g());
-      this.d = $$2;
-   }
-
-   public mx(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<nb.c<civ>> $$2, CompletableFuture<nb.c<csq>> $$3) {
-      super($$0, je.D, $$1, $$2, $$0x -> $$0x.j().g());
-      this.d = $$3;
-   }
-
-   protected void a(aqd<csq> $$0, aqd<civ> $$1) {
-      this.g.put($$0, $$1);
+   public mx(jm $$0, CompletableFuture<hi.b> $$1) {
+      super($$0, je.z, $$1, $$0x -> $$0x.b().g());
    }
 
    @Override
-   protected CompletableFuture<hi.b> b() {
-      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            aqa $$3 = this.c((aqd<civ>)$$2);
-            Optional<aqa> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (hi.b)$$0;
-      });
+   protected void a(hi.b $$0) {
+      this.a(apz.a).a(d).a(dkc.d_).a(djt.x);
+      this.a(apz.c).a(djt.L);
+      this.a(apz.b).a(d).a(dkc.d_).a(djt.N).a(apz.c);
+      this.a(apz.d).a(djt.A, djt.K, djt.P, djt.Q, djt.D, djt.C);
+      this.a(apz.e).a(djt.H);
    }
 }

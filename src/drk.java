@@ -1,49 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drk extends drh {
-   public static final Codec<drk> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bfy.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, drk::new)
-   );
-   private final bfy b;
+public class drk extends drm {
+   public static final Codec<drk> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, drk::new));
 
-   public drk(bfy $$0, bfy $$1, bfy $$2) {
+   public drk(bgd $$0, bgd $$1) {
       super($$0, $$1);
-      this.b = $$2;
    }
 
    @Override
-   protected dri<?> a() {
-      return dri.h;
+   protected drn<?> a() {
+      return drn.i;
    }
 
    @Override
-   protected void a(cpw $$0, drh.b $$1, arx $$2, dqr $$3, int $$4, drh.a $$5, int $$6, int $$7, int $$8) {
-      gw $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + ars.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
+   protected void a(cqb $$0, drm.b $$1, asc $$2, dqw $$3, int $$4, drm.a $$5, int $$6, int $$7, int $$8) {
+      gw $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
          }
-
-         this.a($$0, $$1, $$2, $$3, new gw($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(arx $$0, int $$1, dqr $$2) {
-      return this.b.a($$0);
+   public int a(asc $$0, int $$1, dqw $$2) {
+      return 4;
    }
 
    @Override
-   protected boolean a(arx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   protected boolean b(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

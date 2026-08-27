@@ -1,61 +1,90 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.Matrix4f;
 
-public class frk implements fri.a {
-   private static final float a = 0.02F;
-   private final Map<gw, frk.a> b = Maps.newHashMap();
+public class frk implements frn.a {
+   private final eqv a;
+   private static final int b = ari.b.a(255, 0, 155, 155);
+   private static final int c = ari.b.a(255, 255, 255, 0);
 
-   public void a(gw $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new frk.a($$1, $$2, ac.b() + (long)$$3));
+   public frk(eqv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      biq $$5 = this.a.j.m().g();
+      float $$6 = (float)((double)this.a.r.H_() - $$3);
+      float $$7 = (float)((double)this.a.r.aj() - $$3);
+      cpc $$8 = $$5.dn();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      elt $$11 = $$1.getBuffer(fom.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-   @Override
-   public void a(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((frk.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(elk $$0, fnz $$1, gw $$2, frk.a $$3) {
-      fri.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         fri.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
-   }
-
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+         }
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
       }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
       }
 
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
+      for (int $$19 = this.a.r.H_(); $$19 <= this.a.r.aj(); $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
       }
 
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      $$11 = $$1.getBuffer(fom.a(2.0));
+
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         }
+      }
+
+      for (int $$24 = this.a.r.H_(); $$24 <= this.a.r.aj(); $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
       }
    }
 }

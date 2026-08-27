@@ -1,82 +1,99 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class csc extends crz {
-   public static final dfy a = cwj.aC;
-   private static final Map<hc, eib> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         hc.c,
-         csq.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         hc.d,
-         csq.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         hc.e,
-         csq.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         hc.f,
-         csq.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
-   );
+public class csc extends csi {
+   public static final dgd a = dfz.P;
+   public static final dga b = dfz.u;
 
-   protected csc(dfd.d $$0) {
+   public csc(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, hc.c).a(c, Boolean.valueOf(true)));
+      this.k(this.C.b().a(a, hc.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return b.get($$0.c(a));
-   }
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         dcv $$6 = $$1.c_($$2);
+         if ($$6 instanceof dco) {
+            $$3.a((dco)$$6);
+            $$3.a(apo.ar);
+            cal.a($$3, true);
+         }
 
-   @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a, c);
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
+         return bgy.b;
       }
-
-      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csr.a.n() : $$0;
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      hc $$3 = $$0.c(a);
-      gw $$4 = $$2.a($$3.g());
-      dfe $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
+   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcv $$5 = $$1.c_($$2);
+         if ($$5 instanceof bgr) {
+            bgu.a($$1, $$2, (bgr)$$5);
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      dcv $$4 = $$1.c_($$2);
+      if ($$4 instanceof dco) {
+         ((dco)$$4).i();
+      }
    }
 
    @Nullable
    @Override
-   public dfe a(cli $$0) {
-      dfe $$1 = super.a($$0);
-      cpt $$2 = $$0.q();
-      gw $$3 = $$0.a();
-      hc[] $$4 = $$0.f();
+   public dcv a(gw $$0, dfj $$1) {
+      return new dco($$0, $$1);
+   }
 
-      for (hc $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.a(a, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
+
+   @Override
+   public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
+      if ($$4.A()) {
+         dcv $$5 = $$0.c_($$1);
+         if ($$5 instanceof dco) {
+            ((dco)$$5).a($$4.y());
          }
       }
+   }
 
-      return null;
+   @Override
+   public boolean d_(dfj $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfj $$0, cpv $$1, gw $$2) {
+      return cel.a($$1.c_($$2));
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.d().g());
    }
 }

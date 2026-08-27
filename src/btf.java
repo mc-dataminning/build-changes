@@ -1,37 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class btf {
-   private final bjd a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class btf extends btl<bjg> {
+   protected abstract boolean a(bjg var1, bjg var2);
 
-   public btf(bjd $$0) {
-      this.a = $$0;
+   protected abstract bsh<bjg> b();
+
+   @Override
+   public Set<bsh<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(akr $$0, bjg $$1) {
+      $$1.dN().a(this.b(), this.b($$1));
    }
 
-   public boolean a(bil $$0) {
-      int $$1 = $$0.ah();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dK().ad().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dK().ad().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private Optional<bjg> b(bjg $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-         return $$2;
-      }
+   protected Optional<bsj> a(bjg $$0) {
+      return $$0.dN().c(bsh.h);
    }
 }

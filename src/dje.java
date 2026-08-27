@@ -1,19 +1,72 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface dje<T extends div> {
-   @Nullable
-   T a(int var1);
+public class dje<T extends dja> {
+   private static final Logger a = LogUtils.getLogger();
+   private final aqt<T> b;
+   private djn c;
 
-   @Nullable
-   T a(UUID var1);
+   public dje(Class<T> $$0, djn $$1) {
+      this.c = $$1;
+      this.b = new aqt<>($$0);
+   }
 
-   Iterable<T> a();
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-   <U extends T> void a(djc<T, U> var1, aqj<U> var2);
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-   void a(ehd var1, Consumer<T> var2);
+   public aqo.a a(ehi $$0, aqo<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+            return aqo.a.b;
+         }
+      }
 
-   <U extends T> void a(djc<T, U> var1, ehd var2, aqj<U> var3);
+      return aqo.a.a;
+   }
+
+   public <U extends T> aqo.a a(djh<T, U> $$0, ehi $$1, aqo<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return aqo.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+               return aqo.a.b;
+            }
+         }
+
+         return aqo.a.a;
+      }
+   }
+
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public djn c() {
+      return this.c;
+   }
+
+   public djn a(djn $$0) {
+      djn $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @asy
+   public int d() {
+      return this.b.size();
+   }
 }

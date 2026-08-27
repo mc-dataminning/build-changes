@@ -1,37 +1,19 @@
-public abstract class bmc<E extends bjb> implements bkt<E>, boh<E> {
-   private bks.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public bmc() {
-      this.a = bks.a.a;
+public class bmc extends bkx<bji> {
+   public bmc(int $$0, int $$1) {
+      super(ImmutableMap.of(bsh.n, bsi.a), $$0, $$1);
    }
 
-   @Override
-   public final bks.a a() {
-      return this.a;
+   protected boolean a(akr $$0, bji $$1, long $$2) {
+      return $$1.dN().c(bsh.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(akn $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bks.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(akr $$0, bji $$1, long $$2) {
+      $$1.dN().b(bsh.n);
    }
 
-   @Override
-   public final void f(akn $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(akn $$0, E $$1, long $$2) {
-      this.a = bks.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(akr $$0, bji $$1, long $$2) {
+      $$1.dN().c(bsh.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

@@ -24,7 +24,7 @@ public class gw extends ib {
       .stable();
    private static final Logger d = LogUtils.getLogger();
    public static final gw b = new gw(0, 0, 0);
-   private static final int e = 1 + ars.f(ars.c(30000000));
+   private static final int e = 1 + arx.f(arx.c(30000000));
    private static final int h = e;
    public static final int c = 64 - e - h;
    private static final long i = (1L << e) - 1L;
@@ -67,7 +67,7 @@ public class gw extends ib {
    }
 
    public static gw a(double $$0, double $$1, double $$2) {
-      return new gw(ars.a($$0), ars.a($$1), ars.a($$2));
+      return new gw(arx.a($$0), arx.a($$1), arx.a($$2));
    }
 
    public static gw a(hq $$0) {
@@ -93,8 +93,8 @@ public class gw extends ib {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new gw(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ehi b() {
-      return ehi.b(this);
+   public ehn b() {
+      return ehn.b(this);
    }
 
    public gw a(ib $$0) {
@@ -180,7 +180,7 @@ public class gw extends ib {
       }
    }
 
-   public gw a(czc $$0) {
+   public gw a(czh $$0) {
       switch ($$0) {
          case a:
          default:
@@ -210,7 +210,7 @@ public class gw extends ib {
       return new gw.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<gw> a(arx $$0, int $$1, gw $$2, int $$3) {
+   public static Iterable<gw> a(asc $$0, int $$1, gw $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -219,7 +219,7 @@ public class gw extends ib {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<gw> a(arx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<gw> a(asc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -321,7 +321,7 @@ public class gw extends ib {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<gw> a(duv $$0) {
+   public static Stream<gw> a(dva $$0) {
       return a(
          Math.min($$0.g(), $$0.j()),
          Math.min($$0.h(), $$0.k()),
@@ -332,8 +332,8 @@ public class gw extends ib {
       );
    }
 
-   public static Stream<gw> a(ehd $$0) {
-      return a(ars.a($$0.a), ars.a($$0.b), ars.a($$0.c), ars.a($$0.d), ars.a($$0.e), ars.a($$0.f));
+   public static Stream<gw> a(ehi $$0) {
+      return a(arx.a($$0.a), arx.a($$0.b), arx.a($$0.c), arx.a($$0.d), arx.a($$0.e), arx.a($$0.f));
    }
 
    public static Stream<gw> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -433,7 +433,7 @@ public class gw extends ib {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(ars.a($$0), ars.a($$1), ars.a($$2));
+         this(arx.a($$0), arx.a($$1), arx.a($$2));
       }
 
       @Override
@@ -457,7 +457,7 @@ public class gw extends ib {
       }
 
       @Override
-      public gw a(czc $$0) {
+      public gw a(czh $$0) {
          return super.a($$0).i();
       }
 
@@ -469,7 +469,7 @@ public class gw extends ib {
       }
 
       public gw.a b(double $$0, double $$1, double $$2) {
-         return this.d(ars.a($$0), ars.a($$1), ars.a($$2));
+         return this.d(arx.a($$0), arx.a($$1), arx.a($$2));
       }
 
       public gw.a g(ib $$0) {
@@ -515,11 +515,11 @@ public class gw extends ib {
       public gw.a a(hc.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(ars.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(arx.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), ars.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), arx.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), ars.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), arx.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

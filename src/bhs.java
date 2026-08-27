@@ -1,25 +1,19 @@
-class bhs extends bhw {
-   protected bhs(bhx $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bhs implements asp {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bhs> d = asp.a(bhs::values);
+   private final String e;
+
+   private bhs(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bjb $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof ako $$2 && !$$0.G_()) {
-         akn $$3 = $$2.x();
-         if ($$3.ai() == bgq.a) {
-            return;
-         }
-
-         if ($$3.b($$0.dk())) {
-            $$3.x().a($$2);
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

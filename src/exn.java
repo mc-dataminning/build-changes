@@ -1,71 +1,76 @@
-public class exn extends eww {
-   private esl c;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public exn() {
-      super("");
+public class exn extends eyk {
+   private static final tl a = tl.c("addServer.enterName");
+   private static final tl b = tl.c("addServer.enterIp");
+   private esq c;
+   private final BooleanConsumer k;
+   private final fjh l;
+   private esz m;
+   private esz n;
+   private final eyk o;
+
+   public exn(eyk $$0, BooleanConsumer $$1, fjh $$2) {
+      super(tl.c("addServer.title"));
+      this.o = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 
    @Override
-   protected void aD_() {
-      super.aD_();
-      this.c = esl.a(ti.c("multiplayer.stopSleeping"), $$0 -> this.l()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
-      this.d(this.c);
+   protected void aI_() {
+      this.n = new esz(this.i, this.g / 2 - 100, 66, 200, 20, tl.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.C());
+      this.e(this.n);
+      this.m = new esz(this.i, this.g / 2 - 100, 106, 200, 20, tl.c("addServer.enterIp"));
+      this.m.l(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.C());
+      this.e(this.m);
+      this.d(
+         esx.a(fjh.a::a)
+            .a(fjh.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, tl.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.d(esq.a(tl.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(esq.a(tk.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c(this.n);
+      this.C();
    }
 
    @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      if (!this.f.H().a(this.f.R())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void b(esa $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public void au_() {
-      this.l();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.f.H().a(this.f.R()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l();
-      }
-
-      if (!this.f.H().a(this.f.R())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         if (this.b(this.b.a(), true)) {
-            this.f.a(null);
-            this.b.a("");
-            this.f.l.d().d();
-         }
-
-         return true;
-      }
+   public void a(eqv $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
    }
 
    private void l() {
-      fit $$0 = this.f.s.cl;
-      $$0.b(new acd(this.f.s, acd.a.c));
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
    }
 
-   public void k() {
-      if (this.b.a().isEmpty()) {
-         this.f.a(null);
-      } else {
-         this.f.a(new eww(this.b.a()));
-      }
+   @Override
+   public void az_() {
+      this.f.a(this.o);
+   }
+
+   private void C() {
+      this.c.i = fki.b(this.m.a()) && !this.n.a().isEmpty();
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

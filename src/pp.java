@@ -1,44 +1,24 @@
-import java.util.Collection;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class pp {
-   public static final String a = "defaultBatch";
-   private final String b;
-   private final Collection<ql> c;
-   @Nullable
-   private final Consumer<akn> d;
-   @Nullable
-   private final Consumer<akn> e;
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface pp {
+   int a() default 100;
 
-   public pp(String $$0, Collection<ql> $$1, @Nullable Consumer<akn> $$2, @Nullable Consumer<akn> $$3) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-   }
+   String b() default "defaultBatch";
 
-   public String a() {
-      return this.b;
-   }
+   int c() default 0;
 
-   public Collection<ql> b() {
-      return this.c;
-   }
+   boolean d() default true;
 
-   public void a(akn $$0) {
-      if (this.d != null) {
-         this.d.accept($$0);
-      }
-   }
+   String e() default "";
 
-   public void b(akn $$0) {
-      if (this.e != null) {
-         this.e.accept($$0);
-      }
-   }
+   long f() default 0L;
+
+   int g() default 1;
+
+   int h() default 1;
 }

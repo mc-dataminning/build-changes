@@ -1,42 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dum extends duk {
+public record dum(hg<dnj<?, ?>> e, List<dup> f) {
    public static final Codec<dum> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bfy.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bfy.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, dum::new)
+      $$0 -> $$0.group(dnj.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dup.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dum::new)
    );
-   private final bfy c;
-   private final bfy d;
+   public static final Codec<hg<dum>> b = aet.a(je.ay, a);
+   public static final Codec<hk<dum>> c = hv.a(je.ay, a);
+   public static final Codec<List<hk<dum>>> d = hv.a(je.ay, a, true).listOf();
 
-   public static dum a(bfy $$0, bfy $$1) {
-      return new dum($$0, $$1);
+   public boolean a(cqp $$0, dhg $$1, asc $$2, gw $$3) {
+      return this.a(new dun($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static dum a(bfy $$0) {
-      return new dum(bfv.a(0), $$0);
+   public boolean b(cqp $$0, dhg $$1, asc $$2, gw $$3) {
+      return this.a(new dun($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public static dum b(bfy $$0) {
-      return new dum($$0, bfv.a(0));
+   private boolean a(dun $$0, asc $$1, gw $$2) {
+      Stream<gw> $$3 = Stream.of($$2);
+
+      for (dup $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dnj<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
    }
 
-   private dum(bfy $$0, bfy $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public Stream<dnj<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   public Stream<gw> a_(dui $$0, arx $$1, gw $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new gw($$3, $$4, $$5));
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public dul<?> b() {
-      return dul.n;
+   public hg<dnj<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<dup> c() {
+      return this.f;
    }
 }

@@ -1,11 +1,11 @@
-import java.security.SignatureException;
-
-@FunctionalInterface
 public interface asb {
-   void update(asb.a var1) throws SignatureException;
+   void a(tl var1);
 
-   @FunctionalInterface
-   public interface a {
-      void update(byte[] var1) throws SignatureException;
-   }
+   void b(tl var1);
+
+   void c(tl var1);
+
+   void a(int var1);
+
+   void a();
 }

@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class eu<T> implements ArgumentType<eu.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final aet<? extends ht<T>> b;
+   final aew<? extends ht<T>> b;
 
-   public eu(aet<? extends ht<T>> $$0) {
+   public eu(aew<? extends ht<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> eu<T> a(aet<? extends ht<T>> $$0) {
+   public static <T> eu<T> a(aew<? extends ht<T>> $$0) {
       return new eu<>($$0);
    }
 
-   public static <T> eu.c<T> a(CommandContext<dt> $$0, String $$1, aet<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> eu.c<T> a(CommandContext<dt> $$0, String $$1, aew<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       eu.c<?> $$4 = (eu.c<?>)$$0.getArgument($$1, eu.c.class);
       Optional<eu.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
 
          try {
             $$0.skip();
-            aeu $$2 = aeu.a($$0);
-            return new eu.d<>(aqd.a(this.b, $$2));
+            aex $$2 = aex.a($$0);
+            return new eu.d<>(aqi.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         aeu $$4 = aeu.a($$0);
-         return new eu.b<>(aet.a(this.b, $$4));
+         aex $$4 = aex.a($$0);
+         return new eu.b<>(aew.a(this.b, $$4));
       }
    }
 
@@ -58,11 +58,11 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
    }
 
    public static class a<T> implements gi<eu<T>, eu.a<T>.a> {
-      public void a(eu.a<T>.a $$0, sl $$1) {
+      public void a(eu.a<T>.a $$0, so $$1) {
          $$1.b($$0.b);
       }
 
-      public eu.a<T>.a a(sl $$0) {
+      public eu.a<T>.a a(so $$0) {
          return new eu.a.a($$0.t());
       }
 
@@ -75,9 +75,9 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
       }
 
       public final class a implements gi.a<eu<T>> {
-         final aet<? extends ht<T>> b;
+         final aew<? extends ht<T>> b;
 
-         a(aet<? extends ht<T>> $$1) {
+         a(aew<? extends ht<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
       }
    }
 
-   static record b<T>(aet<T> a) implements eu.c<T> {
+   static record b<T>(aew<T> a) implements eu.c<T> {
       @Override
-      public Either<aet<T>, aqd<T>> a() {
+      public Either<aew<T>, aqi<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<eu.c<E>> a(aet<? extends ht<E>> $$0) {
+      public <E> Optional<eu.c<E>> a(aew<? extends ht<E>> $$0) {
          return this.a.c($$0).map(eu.b::new);
       }
 
@@ -112,27 +112,27 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
          return this.a.a().toString();
       }
 
-      public aet<T> c() {
+      public aew<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<hg<T>> {
-      Either<aet<T>, aqd<T>> a();
+      Either<aew<T>, aqi<T>> a();
 
-      <E> Optional<eu.c<E>> a(aet<? extends ht<E>> var1);
+      <E> Optional<eu.c<E>> a(aew<? extends ht<E>> var1);
 
       String b();
    }
 
-   static record d<T>(aqd<T> a) implements eu.c<T> {
+   static record d<T>(aqi<T> a) implements eu.c<T> {
       @Override
-      public Either<aet<T>, aqd<T>> a() {
+      public Either<aew<T>, aqi<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<eu.c<E>> a(aet<? extends ht<E>> $$0) {
+      public <E> Optional<eu.c<E>> a(aew<? extends ht<E>> $$0) {
          return this.a.d($$0).map(eu.d::new);
       }
 
@@ -145,7 +145,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
          return "#" + this.a.b();
       }
 
-      public aqd<T> c() {
+      public aqi<T> c() {
          return this.a;
       }
    }

@@ -1,17 +1,24 @@
-import java.util.function.IntFunction;
+import com.mojang.serialization.Codec;
 
-public enum eqj implements aru {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public enum eqj implements arz, asp {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   private static final IntFunction<eqj> d = aqn.a(eqj::a, values(), aqn.a.b);
+   public static final Codec<eqj> d = asp.a(eqj::values);
    private final int e;
    private final String f;
+   private final String g;
 
-   private eqj(int $$0, String $$1) {
+   private eqj(int $$0, String $$1, String $$2) {
       this.e = $$0;
       this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 
    @Override
@@ -21,19 +28,6 @@ public enum eqj implements aru {
 
    @Override
    public String b() {
-      return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static eqj a(int $$0) {
-      return d.apply($$0);
+      return this.g;
    }
 }

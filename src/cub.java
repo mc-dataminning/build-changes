@@ -1,74 +1,118 @@
 import javax.annotation.Nullable;
 
-public class cub extends csd implements czr {
-   public static final dfv a = dfu.C;
-   private static final int c = 3;
-   protected static final eib b = csq.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class cub extends cwo implements csx {
+   public static final int a = 2;
+   public static final dgj b = dfz.ar;
+   protected static final int c = 4;
+   protected static final int d = 5;
+   protected static final int e = 2;
+   protected static final int f = 6;
+   protected static final int g = 7;
+   protected static final int h = 3;
+   protected static final int i = 8;
+   protected static final int j = 9;
+   protected static final int k = 4;
+   protected static final eig[] l = new eig[]{
+      csv.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), csv.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), csv.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eig[] m = new eig[]{
+      csv.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), csv.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), csv.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eig[] n = new eig[]{
+      csv.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), csv.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), csv.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eig[] D = new eig[]{
+      csv.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), csv.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), csv.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
-   public cub(dfd.d $$0) {
+   public cub(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(true)));
+      this.k(this.C.b().a(aC, hc.c).a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(a);
+   public boolean e_(dfj $$0) {
+      return $$0.c(b) < 2;
    }
 
    @Override
-   public dcq a(gw $$0, dfe $$1) {
-      return new ddc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
-      return a($$2, dcs.z, $$0.B ? ddc::a : ddc::b);
-   }
-
-   @Override
-   public cyv b_(dfe $$0) {
-      return cyv.b;
-   }
-
-   @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(a) ? eai.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
-      if ($$4.A()) {
-         dcq $$5 = $$0.c_($$1);
-         if ($$5 instanceof dcl) {
-            ((dcl)$$5).a($$4.y());
+   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(b);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 + 1)), 2);
          }
       }
    }
 
-   @Nullable
    @Override
-   public dfe a(cli $$0) {
-      eah $$1 = $$0.q().b_($$0.a());
-      return this.n().a(a, Boolean.valueOf($$1.a(apt.a) && $$1.e() == 8));
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      dfj $$3 = $$1.a_($$2.a($$0.c(aC)));
+      return $$3.a(apt.z);
    }
 
    @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      int $$4 = $$0.c(b);
+      switch ((hc)$$0.c(aC)) {
+         case d:
+            return D[$$4];
+         case c:
+         default:
+            return n[$$4];
+         case e:
+            return m[$$4];
+         case f:
+            return l[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      dfj $$1 = this.n();
+      cpy $$2 = $$0.q();
+      gw $$3 = $$0.a();
+
+      for (hc $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aC, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      return $$1 == $$0.c(aC) && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return $$2.c(b) < 2;
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
+      $$0.a($$2, $$3.a(b, Integer.valueOf($$3.c(b) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(aC, b);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
       return false;
    }
 }

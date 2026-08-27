@@ -1,145 +1,175 @@
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eou extends gew {
-   static final Logger a = LogUtils.getLogger();
-   private static final ti b = ti.c("mco.configure.world.subscription.title");
-   private static final ti c = ti.c("mco.configure.world.subscription.start");
-   private static final ti y = ti.c("mco.configure.world.subscription.timeleft");
-   private static final ti z = ti.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final ti A = ti.c("mco.configure.world.subscription.expired");
-   private static final ti B = ti.c("mco.configure.world.subscription.less_than_a_day");
-   private static final ti C = ti.c("mco.configure.world.subscription.unknown");
-   private static final ti D = ti.c("mco.configure.world.subscription.recurring.info");
-   private final eyf E;
-   final emr F;
-   final eyf G;
-   private ti H = C;
-   private ti I = C;
-   @Nullable
-   private ene.a J;
+public class eou extends gfb {
+   static final Logger c = LogUtils.getLogger();
+   static final aex y = new aex("widget/slot_frame");
+   private static final tl z = tl.c("mco.selectServer.create");
+   private static final tl A = tl.c("mco.selectServer.create.subtitle");
+   private static final tl B = tl.c("mco.configure.world.switch.slot");
+   private static final tl C = tl.c("mco.configure.world.switch.slot.subtitle");
+   private static final tl D = tl.c("mco.reset.world.title");
+   private static final tl E = tl.c("mco.reset.world.warning");
+   public static final tl a = tl.c("mco.create.world.reset.title");
+   private static final tl F = tl.c("mco.reset.world.resetting.screen.title");
+   private static final tl G = tl.c("mco.reset.world.template");
+   private static final tl H = tl.c("mco.reset.world.adventure");
+   private static final tl I = tl.c("mco.reset.world.experience");
+   private static final tl J = tl.c("mco.reset.world.inspiration");
+   private final eyk K;
+   private final emw L;
+   private final tl M;
+   private final int N;
+   private final tl O;
+   private static final aex P = new aex("textures/gui/realms/upload.png");
+   private static final aex Q = new aex("textures/gui/realms/adventure.png");
+   private static final aex R = new aex("textures/gui/realms/survival_spawn.png");
+   private static final aex S = new aex("textures/gui/realms/new_world.png");
+   private static final aex T = new aex("textures/gui/realms/experience.png");
+   private static final aex U = new aex("textures/gui/realms/inspiration.png");
+   eno V;
+   eno W;
+   eno X;
+   eno Y;
+   public final int b;
+   private final Runnable Z;
+   private final evz aa = new evz(this);
 
-   public eou(eyf $$0, emr $$1, eyf $$2) {
-      super(eqi.a);
-      this.E = $$0;
-      this.F = $$1;
-      this.G = $$2;
+   private eou(eyk $$0, emw $$1, int $$2, tl $$3, tl $$4, int $$5, tl $$6, Runnable $$7) {
+      super($$3);
+      this.K = $$0;
+      this.L = $$1;
+      this.b = $$2;
+      this.M = $$4;
+      this.N = $$5;
+      this.O = $$6;
+      this.Z = $$7;
+   }
+
+   public static eou a(eyk $$0, emw $$1, Runnable $$2) {
+      return new eou($$0, $$1, $$1.n, z, A, -6250336, a, $$2);
+   }
+
+   public static eou a(eyk $$0, int $$1, emw $$2, Runnable $$3) {
+      return new eou($$0, $$2, $$1, B, C, -6250336, a, $$3);
+   }
+
+   public static eou b(eyk $$0, emw $$1, Runnable $$2) {
+      return new eou($$0, $$1, $$1.n, D, E, -65536, F, $$2);
    }
 
    @Override
-   public void aD_() {
-      this.a(this.F.a);
-      this.d(esl.a(ti.c("mco.configure.world.subscription.extend"), $$0 -> {
-         String $$1 = aqq.a(this.F.b, this.f.V().b());
-         this.f.o.a($$1);
-         ac.i().a($$1);
-      }).a(this.g / 2 - 100, h(6), 200, 20).a());
-      if (this.F.j) {
-         this.d(esl.a(ti.c("mco.configure.world.delete.button"), $$0 -> {
-            ti $$1 = ti.c("mco.configure.world.delete.question.line1");
-            ti $$2 = ti.c("mco.configure.world.delete.question.line2");
-            this.f.a(new eog(this::c, eog.a.a, $$1, $$2, true));
-         }).a(this.g / 2 - 100, h(10), 200, 20).a());
-      } else {
-         this.d(new esv(this.g / 2 - 100, h(8), 200, 46, D, this.i).a(-6250336));
-      }
+   public void aI_() {
+      ewd $$0 = ewd.d();
+      $$0.a(new etw(this.e, this.i), ewc::b);
+      $$0.a(ewe.b(3));
+      $$0.a(new etw(this.M, this.i).i(this.N), ewc::b);
+      this.aa.a($$0);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            emf $$0 = emf.a();
 
-      this.d(esl.a(th.k, $$0 -> this.f.a(this.E)).a(this.g / 2 - 100, h(12), 200, 20).a());
-   }
-
-   @Override
-   public ti g() {
-      return th.b(b, c, this.I, y, this.H);
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  ema $$0 = ema.a();
-                  $$0.i(eou.this.F.a);
-               } catch (enn var2) {
-                  eou.a.error("Couldn't delete world", var2);
-               }
-
-               eou.this.f.execute(() -> eou.this.f.a(eou.this.G));
+            try {
+               eno $$1 = $$0.a(1, 10, emw.c.a);
+               eno $$2 = $$0.a(1, 10, emw.c.c);
+               eno $$3 = $$0.a(1, 10, emw.c.d);
+               eno $$4 = $$0.a(1, 10, emw.c.e);
+               eou.this.f.execute(() -> {
+                  eou.this.V = $$1;
+                  eou.this.W = $$2;
+                  eou.this.X = $$3;
+                  eou.this.Y = $$4;
+               });
+            } catch (ens var6) {
+               eou.c.error("Couldn't fetch templates in reset world", var6);
             }
-         }).start();
-      }
-
-      this.f.a(this);
-   }
-
-   private void a(long $$0) {
-      ema $$1 = ema.a();
-
-      try {
-         ene $$2 = $$1.h($$0);
-         this.H = this.a($$2.b);
-         this.I = b($$2.a);
-         this.J = $$2.c;
-      } catch (enn var5) {
-         a.error("Couldn't get subscription", var5);
-         this.f.a(new eoe(var5, this.E));
-      }
-   }
-
-   private static ti b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return ti.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.E);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(esa $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 100;
-      $$0.a(this.i, b, this.g / 2, 17, -1);
-      $$0.a(this.i, c, $$4, h(0), -6250336, false);
-      $$0.a(this.i, this.I, $$4, h(1), -1, false);
-      if (this.J == ene.a.a) {
-         $$0.a(this.i, y, $$4, h(3), -6250336, false);
-      } else if (this.J == ene.a.b) {
-         $$0.a(this.i, z, $$4, h(3), -6250336, false);
-      }
-
-      $$0.a(this.i, this.H, $$4, h(4), -1, false);
-   }
-
-   private ti a(int $$0) {
-      if ($$0 < 0 && this.F.j) {
-         return A;
-      } else if ($$0 <= 1) {
-         return B;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return ti.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return ti.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? ti.a("mco.configure.world.subscription.remaining.days", $$2) : ti.h();
          }
+      }).start();
+      this.d(new eou.a(this.a(1), h(0) + 10, eot.a, S, $$0x -> this.f.a(new eot(this::a, this.e))));
+      this.d(new eou.a(this.a(2), h(0) + 10, eov.a, P, $$0x -> this.f.a(new eov(this.L.a, this.b, this))));
+      this.d(new eou.a(this.a(3), h(0) + 10, G, R, $$0x -> this.f.a(new eow(G, this::a, emw.c.a, this.V))));
+      this.d(new eou.a(this.a(1), h(6) + 20, H, Q, $$0x -> this.f.a(new eow(H, this::a, emw.c.c, this.W))));
+      this.d(new eou.a(this.a(2), h(6) + 20, I, T, $$0x -> this.f.a(new eow(I, this::a, emw.c.d, this.X))));
+      this.d(new eou.a(this.a(3), h(6) + 20, J, U, $$0x -> this.f.a(new eow(J, this::a, emw.c.e, this.Y))));
+      this.aa.b(esq.a(tk.k, $$0x -> this.az_()).a());
+      this.aa.a($$1 -> {
+         eso var10000 = this.d($$1);
+      });
+      this.aa.a();
+   }
+
+   @Override
+   public tl g() {
+      return tk.a(this.m(), this.M);
+   }
+
+   @Override
+   public void az_() {
+      this.f.a(this.K);
+   }
+
+   private int a(int $$0) {
+      return this.g / 2 - 130 + ($$0 - 1) * 100;
+   }
+
+   private void a(epv $$0) {
+      this.f.a(new eom(this.K, $$0));
+   }
+
+   @Override
+   public void a(Runnable $$0) {
+      this.a((epv)(new eqc(this.L.a, this.b, () -> this.f.execute($$0))));
+   }
+
+   private void a(@Nullable enn $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.b(() -> this.a((epv)(new epy($$0, this.L.a, this.O, this.Z))));
+      }
+   }
+
+   private void a(@Nullable epp $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.b(() -> this.a((epv)(new epx($$0, this.L.a, this.O, this.Z))));
+      }
+   }
+
+   private void b(Runnable $$0) {
+      if (this.b == -1) {
+         $$0.run();
+      } else {
+         this.a($$0);
+      }
+   }
+
+   class a extends esq {
+      private static final int b = 60;
+      private static final int c = 72;
+      private static final int d = 56;
+      private final aex s;
+
+      a(int $$0, int $$1, tl $$2, aex $$3, esq.c $$4) {
+         super($$0, $$1, 60, 72, $$2, $$4, o);
+         this.s = $$3;
+      }
+
+      @Override
+      public void b(esf $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.o();
+         if ($$4) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         int $$5 = this.r();
+         int $$6 = this.t();
+         $$0.a(this.s, $$5 + 2, $$6 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
+         $$0.a(eou.y, $$5, $$6 + 12, 60, 60);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         int $$7 = $$4 ? -6250336 : -1;
+         $$0.a(eou.this.i, this.m(), $$5 + 30, $$6, $$7);
       }
    }
 }

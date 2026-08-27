@@ -1,94 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ctf extends csv {
+   public static final dgj a = dfz.aw;
+   public static final int b = 15;
+   protected static final int c = 1;
+   protected static final eig d = csv.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final eig e = csv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-public class ctf extends cri {
-   public static final dfv c = cri.b;
-   protected static final float d = 1.0F;
-   protected static final eib e = csq.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final eib f = csq.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final eib g = ehy.a(e, f);
-   private static final Map<csq, ctf> h = Maps.newHashMap();
-   private static final Iterable<ehi> i = ImmutableList.of(new ehi(0.5, 1.0, 0.5));
-
-   protected ctf(csq $$0, dfd.d $$1) {
-      super($$1);
-      this.k(this.C.b().a(c, Boolean.valueOf(false)));
-      h.put($$0, this);
+   protected ctf(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
    }
 
    @Override
-   protected Iterable<ehi> b(dfe $$0) {
-      return i;
-   }
-
-   @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return g;
-   }
-
-   @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      cja $$6 = $$3.b($$4);
-      if ($$6.a(cjd.nE) || $$6.a(cjd.tf)) {
-         return bgt.d;
-      } else if (a($$5) && $$3.b($$4).b() && $$0.c(c)) {
-         a($$3, $$0, $$1, $$2);
-         return bgt.a($$1.B);
-      } else {
-         bgt $$7 = ctb.a($$1, $$2, csr.eh.n(), $$3);
-         if ($$7.a()) {
-            c($$0, $$1, $$2);
-         }
-
-         return $$7;
+   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   private static boolean a(ehe $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
+   @Override
+   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
+      gw $$4 = $$2.c();
+      if ($$1.t($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(a);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               dfj $$7 = $$0.a(a, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(a, Integer.valueOf($$6 + 1)), 4);
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(c);
+   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return d;
    }
 
    @Override
-   public cja a(cow $$0, gw $$1, dfe $$2) {
-      return new cja(csr.eh);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return e;
    }
 
    @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      return $$1 == hc.a && !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfe $$0, cpt $$1, gw $$2) {
-      return $$1.a_($$2.d()).e();
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      for (hc $$3 : hc.c.a) {
+         dfj $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(apy.b)) {
+            return false;
+         }
+      }
+
+      dfj $$5 = $$1.a_($$2.d());
+      return ($$5.a(csw.dQ) || $$5.a(apt.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   public int a(dfe $$0, cpq $$1, gw $$2) {
-      return ctb.c;
+   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
+      $$3.a($$1.ag().j(), 1.0F);
    }
 
    @Override
-   public boolean d_(dfe $$0) {
-      return true;
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
       return false;
-   }
-
-   public static dfe a(csq $$0) {
-      return h.get($$0).n();
-   }
-
-   public static boolean g(dfe $$0) {
-      return $$0.a(apo.bj, $$1 -> $$1.b(c) && !$$0.c(c));
    }
 }

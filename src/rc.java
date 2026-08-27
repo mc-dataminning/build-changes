@@ -2,32 +2,32 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class rc extends rh {
-   private static final int b = 16;
-   public static final rp<rc> a = new rp.a<rc>() {
-      public rc a(DataInput $$0, int $$1, rd $$2) throws IOException {
-         $$2.a(16L);
-         return rc.a($$0.readLong());
+public class rc extends rk {
+   private static final int b = 12;
+   public static final rs<rc> a = new rs.a<rc>() {
+      public rc a(DataInput $$0, int $$1, rg $$2) throws IOException {
+         $$2.a(12L);
+         return rc.a($$0.readInt());
       }
 
       @Override
-      public rk.b a(DataInput $$0, rk $$1) throws IOException {
-         return $$1.a($$0.readLong());
+      public rn.b a(DataInput $$0, rn $$1) throws IOException {
+         return $$1.a($$0.readInt());
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_Int";
       }
 
       @Override
@@ -35,33 +35,33 @@ public class rc extends rh {
          return true;
       }
    };
-   private final long c;
+   private final int c;
 
-   rc(long $$0) {
+   rc(int $$0) {
       this.c = $$0;
    }
 
-   public static rc a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? rc.a.a[(int)$$0 - -128] : new rc($$0);
+   public static rc a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? rc.a.a[$$0 - -128] : new rc($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 3;
    }
 
    @Override
-   public rp<rc> c() {
+   public rs<rc> c() {
       return a;
    }
 
@@ -76,32 +76,32 @@ public class rc extends rh {
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return this.c;
    }
 
    @Override
-   public void a(rr $$0) {
+   public void a(ru $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return this.c;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return (int)(this.c & -1L);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)((int)(this.c & 65535L));
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)((int)(this.c & 255L));
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
@@ -120,7 +120,7 @@ public class rc extends rh {
    }
 
    @Override
-   public rk.b a(rk $$0) {
+   public rn.b a(rn $$0) {
       return $$0.a(this.c);
    }
 
@@ -134,7 +134,7 @@ public class rc extends rh {
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new rc((long)(-128 + $$0));
+            a[$$0] = new rc(-128 + $$0);
          }
       }
    }

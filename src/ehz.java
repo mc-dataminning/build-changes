@@ -1,24 +1,13 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ehz extends eib {
-   private final eib b;
-   private final hc.a c;
-   private static final DoubleList d = new eho(1);
+interface ehz {
+   DoubleList a();
 
-   public ehz(eib $$0, hc.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
-   }
+   boolean a(ehz.a var1);
 
-   private static ehr a(ehr $$0, hc.a $$1, int $$2) {
-      return new eia(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
-   }
+   int size();
 
-   @Override
-   protected DoubleList a(hc.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

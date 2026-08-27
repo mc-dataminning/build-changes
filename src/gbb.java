@@ -1,63 +1,20 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+public class gbb {
+   public static final gbc a = new gbc();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public enum gbb implements gbi {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
-
-   private static final int q = 360;
-   private static final Map<Integer, gbb> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gbb)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public gbb(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private gbb(int $$0, int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
-
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
-      }
-
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
+   public boolean a() {
+      return this.d;
    }
 
-   @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static gbb a(int $$0, int $$1) {
-      return r.get(b(ars.b($$0, 360), ars.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
+   public boolean b() {
+      return this.e;
    }
 }

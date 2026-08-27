@@ -1,125 +1,97 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cvd extends crk<ddk> implements czr {
-   public static final dfy b = cwj.aC;
-   public static final dfv c = dfu.C;
-   protected static final eib d = csq.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final ti e = ti.c("container.enderchest");
+public class cvd extends csi {
+   protected static final eig a = csv.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<gw> b = gw.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(gw::i).toList();
 
-   protected cvd(dfd.d $$0) {
-      super($$0, () -> dcs.d);
-      this.k(this.C.b().a(b, hc.c).a(c, Boolean.valueOf(false)));
+   protected cvd(dfi.d $$0) {
+      super($$0);
+   }
+
+   public static boolean a(cpv $$0, gw $$1, gw $$2) {
+      return $$0.a_($$1.a((ib)$$2)).a(apt.cn) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(apt.co);
    }
 
    @Override
-   public cut.c<? extends dcx> a(dfe $$0, cpq $$1, gw $$2, boolean $$3) {
-      return cut.b::b;
+   public boolean g_(dfj $$0) {
+      return true;
    }
 
    @Override
-   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
-      return d;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return a;
    }
 
    @Override
-   public cyv b_(dfe $$0) {
-      return cyv.b;
-   }
+   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-   @Override
-   public dfe a(cli $$0) {
-      eah $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, $$0.g().g()).a(c, Boolean.valueOf($$1.a() == eai.c));
-   }
-
-   @Override
-   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
-      cfp $$6 = $$3.gd();
-      dcq $$7 = $$1.c_($$2);
-      if ($$6 != null && $$7 instanceof ddk) {
-         gw $$8 = $$2.c();
-         if ($$1.a_($$8).g($$1, $$8)) {
-            return bgt.a($$1.B);
-         } else if ($$1.B) {
-            return bgt.a;
-         } else {
-            ddk $$9 = (ddk)$$7;
-            $$6.a($$9);
-            $$3.a(new bhb(($$1x, $$2x, $$3x) -> cen.a($$1x, $$2x, $$6), e));
-            $$3.a(apj.aj);
-            cag.a($$3, true);
-            return bgt.b;
+      for (gw $$4 : b) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               ix.t,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
-      } else {
-         return bgt.a($$1.B);
       }
    }
 
    @Override
-   public dcq a(gw $$0, dfe $$1) {
-      return new ddk($$0, $$1);
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
+
+   @Override
+   public dcv a(gw $$0, dfj $$1) {
+      return new ddo($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
-      return $$0.B ? a($$2, dcs.d, ddk::a) : null;
+   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      return $$0.B ? a($$2, dcx.m, ddo::a) : null;
    }
 
    @Override
-   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(ix.X, $$7, $$8, $$9, $$10, $$11, $$12);
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         return bgy.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bhb b(dfj $$0, cpv $$1, gw $$2) {
+      dcv $$3 = $$1.c_($$2);
+      if ($$3 instanceof ddo) {
+         tl $$4 = ((bhc)$$3).N_();
+         return new bhg(($$2x, $$3x, $$4x) -> new cfd($$2x, $$3x, cew.a($$1, $$2)), $$4);
+      } else {
+         return null;
       }
    }
 
    @Override
-   public dfe a(dfe $$0, czc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dfe a(dfe $$0, cxl $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dff.a<csq, dfe> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public eah c_(dfe $$0) {
-      return $$0.c(c) ? eai.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eai.c, eai.c.a($$3));
+   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
+      if ($$4.A()) {
+         dcv $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddo) {
+            ((ddo)$$5).a($$4.y());
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
       return false;
-   }
-
-   @Override
-   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
-      dcq $$4 = $$1.c_($$2);
-      if ($$4 instanceof ddk) {
-         ((ddk)$$4).c();
-      }
    }
 }

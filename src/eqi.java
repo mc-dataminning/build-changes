@@ -1,104 +1,113 @@
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 
-public class eqi {
-   public static final ti a = th.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final eqq c;
-   private final Narrator d = Narrator.getNarrator();
+public class eqi extends aph {
+   private static final Logger c = LogUtils.getLogger();
+   private Map<ere, List<fca>> d = ImmutableMap.of();
+   private List<fca> e = ImmutableList.of();
 
-   public eqi(eqq $$0) {
-      this.c = $$0;
+   public void a(Iterable<cmk<?>> $$0, hu $$1) {
+      Map<ere, List<List<cmk<?>>>> $$2 = a($$0);
+      Map<ere, List<fca>> $$3 = Maps.newHashMap();
+      Builder<fca> $$4 = ImmutableList.builder();
+      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fca($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
+      ere.w
+         .forEach(
+            ($$1x, $$2x) -> $$3.put(
+                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
+               )
+         );
+      this.d = ImmutableMap.copyOf($$3);
+      this.e = $$4.build();
    }
 
-   public void a(ti $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
+   private static Map<ere, List<List<cmk<?>>>> a(Iterable<cmk<?>> $$0) {
+      Map<ere, List<List<cmk<?>>>> $$1 = Maps.newHashMap();
+      Table<ere, String, List<cmk<?>>> $$2 = HashBasedTable.create();
 
-   public void b(ti $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
+      for (cmk<?> $$3 : $$0) {
+         cmj<?> $$4 = $$3.b();
+         if (!$$4.am_() && !$$4.i()) {
+            ere $$5 = g($$3);
+            String $$6 = $$4.c();
+            if ($$6.isEmpty()) {
+               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
+            } else {
+               List<cmk<?>> $$7 = (List<cmk<?>>)$$2.get($$5, $$6);
+               if ($$7 == null) {
+                  $$7 = Lists.newArrayList();
+                  $$2.put($$5, $$6, $$7);
+                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
+               }
 
-   public void c(ti $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
+               $$7.add($$3);
+            }
          }
       }
+
+      return $$1;
    }
 
-   private eqs d() {
-      return this.c.m.ao().c();
-   }
-
-   private void b(String $$0) {
-      if (aa.aS) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(eqs $$0) {
-      this.b();
-      this.d.say(ti.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      eut $$1 = eqq.O().ay();
-      if (this.d.active()) {
-         if ($$0 == eqs.a) {
-            eur.b($$1, eur.a.b, ti.c("narrator.toast.disabled"), null);
-         } else {
-            eur.b($$1, eur.a.b, ti.c("narrator.toast.enabled"), $$0.b());
-         }
+   private static ere g(cmk<?> $$0) {
+      cmj<?> $$1 = $$0.b();
+      if ($$1 instanceof clz $$2) {
+         return switch ($$2.d()) {
+            case a -> ere.b;
+            case c -> ere.d;
+            case b -> ere.c;
+            case d -> ere.e;
+         };
       } else {
-         eur.b($$1, eur.a.b, ti.c("narrator.toast.disabled"), ti.c("options.narrator.notavailable"));
+         cmn<?> $$3 = $$1.e();
+         if ($$1 instanceof clr $$4) {
+            clx $$5 = $$4.f();
+            if ($$3 == cmn.b) {
+               return switch ($$5) {
+                  case b -> ere.h;
+                  case a -> ere.g;
+                  case c -> ere.i;
+               };
+            }
+
+            if ($$3 == cmn.c) {
+               return $$5 == clx.b ? ere.k : ere.l;
+            }
+
+            if ($$3 == cmn.d) {
+               return ere.n;
+            }
+
+            if ($$3 == cmn.e) {
+               return ere.q;
+            }
+         }
+
+         if ($$3 == cmn.f) {
+            return ere.o;
+         } else if ($$3 == cmn.g) {
+            return ere.p;
+         } else {
+            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> jd.t.b($$1.e())), LogUtils.defer($$0::a));
+            return ere.r;
+         }
       }
    }
 
-   public boolean a() {
-      return this.d.active();
+   public List<fca> b() {
+      return this.e;
    }
 
-   public void b() {
-      if (this.d() != eqs.a && this.d.active()) {
-         this.d.clear();
-      }
-   }
-
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new eqi.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fds {
-      public a(String $$0) {
-         super($$0);
-      }
+   public List<fca> a(ere $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

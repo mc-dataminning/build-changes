@@ -1,45 +1,64 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class frr implements fri.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eqq c;
-   private Collection<gw> d = Lists.newArrayList();
+public class frr implements frn.a {
+   private final eqv a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public frr(eqq $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<gw> $$0) {
-      this.d = $$0;
+   public frr(eqv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = this.b().c();
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      cpw $$5 = this.a.r;
+      elt $$6 = $$1.getBuffer(fom.z());
+      gw $$7 = gw.a($$2, 0.0, $$4);
 
-      for (gw $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dhf $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<dks.a, dks> $$11 : $$10.e()) {
+               dks.a $$12 = $$11.getKey();
+               cpc $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = hz.a($$13.e, $$15);
+                     int $$18 = hz.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     foc.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
       }
    }
 
-   private static void a(elk $$0, fnz $$1, gw $$2) {
-      fri.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(elk $$0, fnz $$1, String $$2, gw $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fri.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private eqb b() {
-      return this.c.j.m();
+   private Vector3f a(dks.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

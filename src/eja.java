@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eja {
+public interface eja<T> {
+   rq b(long var1, Function<T, String> var3);
 }

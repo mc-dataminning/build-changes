@@ -1,52 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class dng extends dnr<dqc> {
-   public dng(Codec<dqc> $$0) {
+public class dng extends dnw<dqh> {
+   public dng(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnt<dqc> $$0) {
-      arx $$1 = $$0.d();
-      cqk $$2 = $$0.b();
-      gw $$3 = $$0.e();
-      Optional<csq> $$4 = jd.f.b(apo.ap).flatMap($$1x -> $$1x.a($$1)).map(hg::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
-   }
+   public boolean a(dny<dqh> $$0) {
+      gw $$1 = $$0.e();
+      cqp $$2 = $$0.b();
+      asc $$3 = $$0.d();
+      if ($$1.v() > $$2.y_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(csw.G) && !$$2.a_($$1.d()).a(csw.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-   protected abstract boolean a(cpr var1, arx var2, gw var3, dfe var4);
-
-   protected boolean b(cpr $$0, arx $$1, gw $$2, dfe $$3) {
-      gw $$4 = $$2.c();
-      dfe $$5 = $$0.a_($$2);
-      if (($$5.a(csr.G) || $$5.a(apo.as)) && $$0.a_($$4).a(csr.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            jd.f.b(apo.as).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, csr.mV.n().a(czn.b, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (hc $$6 : hc.c.a) {
-            if ($$1.i() < 0.2F) {
-               gw $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(csr.G)) {
-                  jd.f.b(apo.aq).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$3x -> {
-                     dfe $$4x = $$3x.n();
-                     if ($$4x.b(csc.a)) {
-                        $$4x = $$4x.a(csc.a, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+         for (hc $$5 : hc.values()) {
+            if ($$5 != hc.a && $$2.a_($$1.a($$5)).a(csw.iC)) {
+               $$4 = true;
+               break;
             }
          }
 
-         return true;
-      } else {
-         return false;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, csw.mW.n(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  gw $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dfj $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(csw.G) || $$10.a(csw.iC) || $$10.a(csw.dO)) {
+                     for (hc $$11 : hc.values()) {
+                        dfj $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(csw.mW)) {
+                           $$2.a($$9, csw.mW.n(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

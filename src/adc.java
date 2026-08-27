@@ -1,16 +1,44 @@
-public interface adc extends sg {
-   @Override
-   default sk b() {
-      return sk.d;
+public record adc(int a, String b, int c, adb d) implements vd<add> {
+   private static final int e = 255;
+
+   @Deprecated
+   public adc(int a, String b, int c, adb d) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   void a(adf var1);
+   public adc(so $$0) {
+      this($$0.m(), $$0.d(255), $$0.readUnsignedShort(), adb.a($$0.m()));
+   }
 
-   void a(ade var1);
+   @Override
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.c(this.d.a());
+   }
 
-   void a(adh var1);
+   public void a(add $$0) {
+      $$0.a(this);
+   }
 
-   void a(adg var1);
+   @Override
+   public sn c() {
+      return this.d.b();
+   }
 
-   void a(add var1);
+   public String d() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public adb f() {
+      return this.d;
+   }
 }

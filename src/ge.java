@@ -14,16 +14,16 @@ import java.util.function.Predicate;
 
 public class ge {
    private static final Map<String, ge.b> i = Maps.newHashMap();
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ti.a("argument.entity.options.unknown", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ti.a("argument.entity.options.inapplicable", $$0));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ti.c("argument.entity.options.distance.negative"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ti.c("argument.entity.options.level.negative"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ti.c("argument.entity.options.limit.toosmall"));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> ti.a("argument.entity.options.sort.irreversible", $$0));
-   public static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> ti.a("argument.entity.options.mode.invalid", $$0));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> ti.a("argument.entity.options.type.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.unknown", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.inapplicable", $$0));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.entity.options.distance.negative"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("argument.entity.options.level.negative"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.entity.options.limit.toosmall"));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.sort.irreversible", $$0));
+   public static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.mode.invalid", $$0));
+   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.type.invalid", $$0));
 
-   private static void a(String $$0, ge.a $$1, Predicate<gd> $$2, ti $$3) {
+   private static void a(String $$0, ge.a $$1, Predicate<gd> $$2, tl $$3) {
       i.put($$0, new ge.b($$1, $$2, $$3));
    }
 
@@ -43,9 +43,9 @@ public class ge {
                   $$0.b(true);
                }
 
-               $$0.a($$2x -> $$2x.ab().getString().equals($$3) != $$2);
+               $$0.a($$2x -> $$2x.ac().getString().equals($$3) != $$2);
             }
-         }, $$0 -> !$$0.v(), ti.c("argument.entity.options.name.description"));
+         }, $$0 -> !$$0.v(), tl.c("argument.entity.options.name.description"));
          a("distance", $$0 -> {
             int $$1 = $$0.g().getCursor();
             cl.c $$2 = cl.c.a($$0.g());
@@ -56,7 +56,7 @@ public class ge {
                $$0.g().setCursor($$1);
                throw c.createWithContext($$0.g());
             }
-         }, $$0 -> $$0.i().c(), ti.c("argument.entity.options.distance.description"));
+         }, $$0 -> $$0.i().c(), tl.c("argument.entity.options.distance.description"));
          a("level", $$0 -> {
             int $$1 = $$0.g().getCursor();
             cl.d $$2 = cl.d.a($$0.g());
@@ -67,33 +67,33 @@ public class ge {
                $$0.g().setCursor($$1);
                throw d.createWithContext($$0.g());
             }
-         }, $$0 -> $$0.j().c(), ti.c("argument.entity.options.level.description"));
+         }, $$0 -> $$0.j().c(), tl.c("argument.entity.options.level.description"));
          a("x", $$0 -> {
             $$0.h();
             $$0.a($$0.g().readDouble());
-         }, $$0 -> $$0.m() == null, ti.c("argument.entity.options.x.description"));
+         }, $$0 -> $$0.m() == null, tl.c("argument.entity.options.x.description"));
          a("y", $$0 -> {
             $$0.h();
             $$0.b($$0.g().readDouble());
-         }, $$0 -> $$0.n() == null, ti.c("argument.entity.options.y.description"));
+         }, $$0 -> $$0.n() == null, tl.c("argument.entity.options.y.description"));
          a("z", $$0 -> {
             $$0.h();
             $$0.c($$0.g().readDouble());
-         }, $$0 -> $$0.o() == null, ti.c("argument.entity.options.z.description"));
+         }, $$0 -> $$0.o() == null, tl.c("argument.entity.options.z.description"));
          a("dx", $$0 -> {
             $$0.h();
             $$0.d($$0.g().readDouble());
-         }, $$0 -> $$0.p() == null, ti.c("argument.entity.options.dx.description"));
+         }, $$0 -> $$0.p() == null, tl.c("argument.entity.options.dx.description"));
          a("dy", $$0 -> {
             $$0.h();
             $$0.e($$0.g().readDouble());
-         }, $$0 -> $$0.q() == null, ti.c("argument.entity.options.dy.description"));
+         }, $$0 -> $$0.q() == null, tl.c("argument.entity.options.dy.description"));
          a("dz", $$0 -> {
             $$0.h();
             $$0.f($$0.g().readDouble());
-         }, $$0 -> $$0.r() == null, ti.c("argument.entity.options.dz.description"));
-         a("x_rotation", $$0 -> $$0.a(dj.a($$0.g(), true, ars::g)), $$0 -> $$0.k() == dj.a, ti.c("argument.entity.options.x_rotation.description"));
-         a("y_rotation", $$0 -> $$0.b(dj.a($$0.g(), true, ars::g)), $$0 -> $$0.l() == dj.a, ti.c("argument.entity.options.y_rotation.description"));
+         }, $$0 -> $$0.r() == null, tl.c("argument.entity.options.dz.description"));
+         a("x_rotation", $$0 -> $$0.a(dj.a($$0.g(), true, arx::g)), $$0 -> $$0.k() == dj.a, tl.c("argument.entity.options.x_rotation.description"));
+         a("y_rotation", $$0 -> $$0.b(dj.a($$0.g(), true, arx::g)), $$0 -> $$0.l() == dj.a, tl.c("argument.entity.options.y_rotation.description"));
          a("limit", $$0 -> {
             int $$1 = $$0.g().getCursor();
             int $$2 = $$0.g().readInt();
@@ -104,7 +104,7 @@ public class ge {
                $$0.a($$2);
                $$0.d(true);
             }
-         }, $$0 -> !$$0.u() && !$$0.x(), ti.c("argument.entity.options.limit.description"));
+         }, $$0 -> !$$0.u() && !$$0.x(), tl.c("argument.entity.options.limit.description"));
          a("sort", $$0 -> {
             int $$1 = $$0.g().getCursor();
             String $$2 = $$0.g().readUnquotedString();
@@ -121,7 +121,7 @@ public class ge {
                }
             });
             $$0.e(true);
-         }, $$0 -> !$$0.u() && !$$0.y(), ti.c("argument.entity.options.sort.description"));
+         }, $$0 -> !$$0.u() && !$$0.y(), tl.c("argument.entity.options.sort.description"));
          a("gamemode", $$0 -> {
             $$0.a(($$1x, $$2x) -> {
                String $$3x = $$1x.getRemaining().toLowerCase(Locale.ROOT);
@@ -136,7 +136,7 @@ public class ge {
                   }
                }
 
-               for (cpn $$6 : cpn.values()) {
+               for (cps $$6 : cps.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,17 +157,17 @@ public class ge {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               cpn $$4 = cpn.a($$3, null);
+               cps $$4 = cps.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
                } else {
                   $$0.a(false);
                   $$0.a($$2x -> {
-                     if (!($$2x instanceof ako)) {
+                     if (!($$2x instanceof aks)) {
                         return false;
                      } else {
-                        cpn $$3x = ((ako)$$2x).e.b();
+                        cps $$3x = ((aks)$$2x).e.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -178,15 +178,15 @@ public class ge {
                   }
                }
             }
-         }, $$0 -> !$$0.z(), ti.c("argument.entity.options.gamemode.description"));
+         }, $$0 -> !$$0.z(), tl.c("argument.entity.options.gamemode.description"));
          a("team", $$0 -> {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof bjb)) {
+               if (!($$2x instanceof bjg)) {
                   return false;
                } else {
-                  eij $$3 = $$2x.cf();
+                  eio $$3 = $$2x.cg();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -196,14 +196,14 @@ public class ge {
             } else {
                $$0.h(true);
             }
-         }, $$0 -> !$$0.B(), ti.c("argument.entity.options.team.description"));
+         }, $$0 -> !$$0.B(), tl.c("argument.entity.options.team.description"));
          a("type", $$0 -> {
             $$0.a(($$1x, $$2x) -> {
                dw.a(jd.h.e(), $$1x, String.valueOf('!'));
-               dw.a(jd.h.j().map(aqd::b), $$1x, "!#");
+               dw.a(jd.h.j().map(aqi::b), $$1x, "!#");
                if (!$$0.F()) {
                   dw.a(jd.h.e(), $$1x);
-                  dw.a(jd.h.j().map(aqd::b), $$1x, String.valueOf('#'));
+                  dw.a(jd.h.j().map(aqi::b), $$1x, String.valueOf('#'));
                }
 
                return $$1x.buildFuture();
@@ -219,45 +219,45 @@ public class ge {
                }
 
                if ($$0.f()) {
-                  aqd<bip<?>> $$3 = aqd.a(je.s, aeu.a($$0.g()));
-                  $$0.a($$2x -> $$2x.ag().a($$3) != $$2);
+                  aqi<biu<?>> $$3 = aqi.a(je.s, aex.a($$0.g()));
+                  $$0.a($$2x -> $$2x.ah().a($$3) != $$2);
                } else {
-                  aeu $$4 = aeu.a($$0.g());
-                  bip<?> $$5 = jd.h.b($$4).orElseThrow(() -> {
+                  aex $$4 = aex.a($$0.g());
+                  biu<?> $$5 = jd.h.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bip.bt, $$5) && !$$2) {
+                  if (Objects.equals(biu.bt, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
-                  $$0.a($$2x -> Objects.equals($$5, $$2x.ag()) != $$2);
+                  $$0.a($$2x -> Objects.equals($$5, $$2x.ah()) != $$2);
                   if (!$$2) {
                      $$0.a($$5);
                   }
                }
             }
-         }, $$0 -> !$$0.E(), ti.c("argument.entity.options.type.description"));
+         }, $$0 -> !$$0.E(), tl.c("argument.entity.options.type.description"));
          a("tag", $$0 -> {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> "".equals($$2) ? $$2x.ai().isEmpty() != $$1 : $$2x.ai().contains($$2) != $$1);
-         }, $$0 -> true, ti.c("argument.entity.options.tag.description"));
+            $$0.a($$2x -> "".equals($$2) ? $$2x.aj().isEmpty() != $$1 : $$2x.aj().contains($$2) != $$1);
+         }, $$0 -> true, tl.c("argument.entity.options.tag.description"));
          a("nbt", $$0 -> {
             boolean $$1 = $$0.e();
-            qu $$2 = new ro($$0.g()).f();
+            qx $$2 = new rr($$0.g()).f();
             $$0.a($$2x -> {
-               qu $$3 = $$2x.f(new qu());
-               if ($$2x instanceof ako) {
-                  cja $$4 = ((ako)$$2x).fQ().f();
+               qx $$3 = $$2x.f(new qx());
+               if ($$2x instanceof aks) {
+                  cjf $$4 = ((aks)$$2x).fR().f();
                   if (!$$4.b()) {
-                     $$3.a("SelectedItem", $$4.b(new qu()));
+                     $$3.a("SelectedItem", $$4.b(new qx()));
                   }
                }
 
-               return rg.a($$2, $$3, true) != $$1;
+               return rj.a($$2, $$3, true) != $$1;
             });
-         }, $$0 -> true, ti.c("argument.entity.options.nbt.description"));
+         }, $$0 -> true, tl.c("argument.entity.options.nbt.description"));
          a("scores", $$0 -> {
             StringReader $$1 = $$0.g();
             Map<String, cl.d> $$2 = Maps.newHashMap();
@@ -281,11 +281,11 @@ public class ge {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  eih $$2x = $$1x.cK().aF();
-                  String $$3x = $$1x.cx();
+                  eim $$2x = $$1x.cL().aF();
+                  String $$3x = $$1x.cy();
 
                   for (Entry<String, cl.d> $$4x : $$2.entrySet()) {
-                     eie $$5 = $$2x.b($$4x.getKey());
+                     eij $$5 = $$2x.b($$4x.getKey());
                      if ($$5 == null) {
                         return false;
                      }
@@ -294,7 +294,7 @@ public class ge {
                         return false;
                      }
 
-                     eig $$6 = $$2x.c($$3x, $$5);
+                     eil $$6 = $$2x.c($$3x, $$5);
                      int $$7 = $$6.b();
                      if (!$$4x.getValue().d($$7)) {
                         return false;
@@ -306,16 +306,16 @@ public class ge {
             }
 
             $$0.j(true);
-         }, $$0 -> !$$0.G(), ti.c("argument.entity.options.scores.description"));
+         }, $$0 -> !$$0.G(), tl.c("argument.entity.options.scores.description"));
          a("advancements", $$0 -> {
             StringReader $$1 = $$0.g();
-            Map<aeu, Predicate<ah>> $$2 = Maps.newHashMap();
+            Map<aex, Predicate<ah>> $$2 = Maps.newHashMap();
             $$1.expect('{');
             $$1.skipWhitespace();
 
             while ($$1.canRead() && $$1.peek() != '}') {
                $$1.skipWhitespace();
-               aeu $$3 = aeu.a($$1);
+               aex $$3 = aex.a($$1);
                $$1.skipWhitespace();
                $$1.expect('=');
                $$1.skipWhitespace();
@@ -366,13 +366,13 @@ public class ge {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  if (!($$1x instanceof ako $$2x)) {
+                  if (!($$1x instanceof aks $$2x)) {
                      return false;
                   } else {
-                     afc $$4 = $$2x.N();
-                     afg $$5x = $$2x.cK().az();
+                     aff $$4 = $$2x.O();
+                     afj $$5x = $$2x.cL().az();
 
-                     for (Entry<aeu, Predicate<ah>> $$6x : $$2.entrySet()) {
+                     for (Entry<aex, Predicate<ah>> $$6x : $$2.entrySet()) {
                         af $$7x = $$5x.a($$6x.getKey());
                         if ($$7x == null || !$$6x.getValue().test($$4.b($$7x))) {
                            return false;
@@ -386,27 +386,27 @@ public class ge {
             }
 
             $$0.k(true);
-         }, $$0 -> !$$0.H(), ti.c("argument.entity.options.advancements.description"));
+         }, $$0 -> !$$0.H(), tl.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            aeu $$2 = aeu.a($$0.g());
+            aex $$2 = aex.a($$0.g());
             $$0.a($$2x -> {
-               if (!($$2x.dK() instanceof akn)) {
+               if (!($$2x.dL() instanceof akr)) {
                   return false;
                } else {
-                  akn $$3 = (akn)$$2x.dK();
-                  efk $$4 = $$3.n().aH().getElement(ecq.a, $$2);
+                  akr $$3 = (akr)$$2x.dL();
+                  efp $$4 = $$3.n().aH().getElement(ecv.a, $$2);
                   if ($$4 == null) {
                      return false;
                   } else {
-                     ecr $$5 = new ecr.a($$3).a(eew.a, $$2x).a(eew.f, $$2x.di()).a(eev.e);
-                     ecl $$6 = new ecl.a($$5).a(Optional.empty());
-                     $$6.b(ecl.a($$4));
+                     ecw $$5 = new ecw.a($$3).a(efb.a, $$2x).a(efb.f, $$2x.dj()).a(efa.e);
+                     ecq $$6 = new ecq.a($$5).a(Optional.empty());
+                     $$6.b(ecq.a($$4));
                      return $$1 ^ $$4.test($$6);
                   }
                }
             });
-         }, $$0 -> true, ti.c("argument.entity.options.predicate.description"));
+         }, $$0 -> true, tl.c("argument.entity.options.predicate.description"));
       }
    }
 
@@ -438,6 +438,6 @@ public class ge {
       void handle(gd var1) throws CommandSyntaxException;
    }
 
-   static record b(ge.a a, Predicate<gd> b, ti c) {
+   static record b(ge.a a, Predicate<gd> b, tl c) {
    }
 }

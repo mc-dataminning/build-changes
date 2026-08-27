@@ -1,28 +1,36 @@
 import javax.annotation.Nullable;
 
-public class zg implements va<ws> {
-   @Nullable
-   private final aeu a;
+public class zg implements vd<ww> {
+   private final int a;
+   private final bib b;
 
-   public zg(@Nullable aeu $$0) {
+   public zg(int $$0, bib $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(ws $$0) {
-      $$0.a(this);
-   }
-
-   public zg(sl $$0) {
-      this.a = $$0.c(sl::s);
+   public zg(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jd.e);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.a(this.a, sl::a);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(jd.e, this.b);
+   }
+
+   public void a(ww $$0) {
+      $$0.a(this);
    }
 
    @Nullable
-   public aeu a() {
-      return this.a;
+   public biq a(cpv $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Nullable
+   public bib a() {
+      return this.b;
    }
 }

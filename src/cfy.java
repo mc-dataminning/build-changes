@@ -1,152 +1,68 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cfy {
-   private final int a;
-   public final bgm d;
-   public int e;
-   public final int f;
-   public final int g;
+public class cfy implements bgr, cfx {
+   private final hp<cjf> c = hp.a(1, cjf.b);
+   @Nullable
+   private cmk<?> d;
 
-   public cfy(bgm $$0, int $$1, int $$2, int $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Override
+   public int b() {
+      return 1;
    }
 
-   public void b(cja $$0, cja $$1) {
-      int $$2 = $$1.L() - $$0.L();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
+   @Override
+   public boolean af_() {
+      for (cjf $$0 : this.c) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
-   }
 
-   protected void a(cja $$0, int $$1) {
-   }
-
-   protected void b(int $$0) {
-   }
-
-   protected void b_(cja $$0) {
-   }
-
-   public void a(cbp $$0, cja $$1) {
-      this.d();
-   }
-
-   public boolean a(cja $$0) {
       return true;
    }
 
-   public cja e() {
-      return this.d.a(this.a);
+   @Override
+   public cjf a(int $$0) {
+      return this.c.get(0);
    }
 
-   public boolean f() {
-      return !this.e().b();
+   @Override
+   public cjf a(int $$0, int $$1) {
+      return bgs.a(this.c, 0);
    }
 
-   public void d(cja $$0) {
-      this.a($$0, this.e());
+   @Override
+   public cjf b(int $$0) {
+      return bgs.a(this.c, 0);
    }
 
-   public void a(cja $$0, cja $$1) {
-      this.e($$0);
+   @Override
+   public void a(int $$0, cjf $$1) {
+      this.c.set(0, $$1);
    }
 
-   public void e(cja $$0) {
-      this.d.a(this.a, $$0);
-      this.d();
+   @Override
+   public void e() {
    }
 
-   public void d() {
-      this.d.e();
+   @Override
+   public boolean a(cbu $$0) {
+      return true;
    }
 
-   public int a() {
-      return this.d.ab_();
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public int a_(cja $$0) {
-      return Math.min(this.a(), $$0.g());
+   @Override
+   public void a(@Nullable cmk<?> $$0) {
+      this.d = $$0;
    }
 
    @Nullable
-   public Pair<aeu, aeu> b() {
-      return null;
-   }
-
-   public cja a(int $$0) {
-      return this.d.a(this.a, $$0);
-   }
-
-   public boolean a(cbp $$0) {
-      return true;
-   }
-
-   public boolean c() {
-      return true;
-   }
-
-   public Optional<cja> a(int $$0, int $$1, cbp $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.e().L()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         cja $$3 = this.a($$0);
-         if ($$3.b()) {
-            return Optional.empty();
-         } else {
-            if (this.e().b()) {
-               this.a(cja.b, $$3);
-            }
-
-            return Optional.of($$3);
-         }
-      }
-   }
-
-   public cja b(int $$0, int $$1, cbp $$2) {
-      Optional<cja> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cja.b);
-   }
-
-   public cja f(cja $$0) {
-      return this.b($$0, $$0.L());
-   }
-
-   public cja b(cja $$0, int $$1) {
-      if (!$$0.b() && this.a($$0)) {
-         cja $$2 = this.e();
-         int $$3 = Math.min(Math.min($$1, $$0.L()), this.a_($$0) - $$2.L());
-         if ($$2.b()) {
-            this.d($$0.a($$3));
-         } else if (cja.c($$2, $$0)) {
-            $$0.h($$3);
-            $$2.g($$3);
-            this.d($$2);
-         }
-
-         return $$0;
-      } else {
-         return $$0;
-      }
-   }
-
-   public boolean b(cbp $$0) {
-      return this.a($$0) && this.a(this.e());
-   }
-
-   public int g() {
-      return this.a;
-   }
-
-   public boolean h() {
-      return true;
+   @Override
+   public cmk<?> d() {
+      return this.d;
    }
 }

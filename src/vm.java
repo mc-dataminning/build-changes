@@ -1,24 +1,26 @@
-public class vm implements va<vk> {
-   private final long a;
+import java.util.Map;
 
-   public vm(long $$0) {
+public class vm implements vd<vg> {
+   private final Map<aew<? extends ht<?>>, aql.a> a;
+
+   public vm(Map<aew<? extends ht<?>>, aql.a> $$0) {
       this.a = $$0;
    }
 
-   public void a(vk $$0) {
-      $$0.a(this);
-   }
-
-   public vm(sl $$0) {
-      this.a = $$0.readLong();
+   public vm(so $$0) {
+      this.a = $$0.a(so::t, aql.a::b);
    }
 
    @Override
-   public void a(sl $$0) {
-      $$0.b(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a, so::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public long a() {
+   public void a(vg $$0) {
+      $$0.a(this);
+   }
+
+   public Map<aew<? extends ht<?>>, aql.a> a() {
       return this.a;
    }
 }

@@ -1,32 +1,24 @@
-public class acv implements va<aaz> {
-   private final bgs a;
-   private final int b;
+public class acv implements vd<abd> {
+   private final bgx a;
 
-   public acv(bgs $$0, int $$1) {
+   public acv(bgx $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public acv(sl $$0) {
-      this.a = $$0.b(bgs.class);
-      this.b = $$0.m();
+   public acv(so $$0) {
+      this.a = $$0.b(bgx.class);
    }
 
    @Override
-   public void a(sl $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
    }
 
-   public void a(aaz $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public bgs a() {
+   public bgx a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

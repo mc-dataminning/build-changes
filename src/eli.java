@@ -1,30 +1,90 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class eli {
-   public static final elq a = new elq(0, elq.a.a, elq.b.a, 3);
-   public static final elq b = new elq(0, elq.a.b, elq.b.c, 4);
-   public static final elq c = new elq(0, elq.a.a, elq.b.d, 2);
-   public static final elq d = new elq(1, elq.a.e, elq.b.d, 2);
-   public static final elq e = new elq(2, elq.a.e, elq.b.d, 2);
-   public static final elq f = new elq(0, elq.a.c, elq.b.b, 3);
-   public static final elq g = new elq(0, elq.a.c, elq.b.e, 1);
-   public static final elq h = c;
-   public static final elp i = new elp(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final elp j = new elp(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final elp k = new elp(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final elp l = new elp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final elp m = new elp(ImmutableMap.builder().put("Position", a).build());
-   public static final elp n = new elp(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final elp o = new elp(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final elp p = new elp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final elp q = new elp(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final elp r = new elp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final elp s = new elp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final elp t = new elp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final elp u = new elp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final elp v = new elp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   private int a;
+
+   public static Optional<eli> a() {
+      return eli.b.a;
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
+   }
+
+   public eli.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         eli.a $$0 = new eli.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
+   }
+
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<eli> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static eli a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new eli();
+      }
+   }
 }
