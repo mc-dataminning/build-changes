@@ -1,60 +1,260 @@
-public class ehe {
-   public static final ehe a = new ehe(0.0F, 0.0F);
-   public static final ehe b = new ehe(1.0F, 1.0F);
-   public static final ehe c = new ehe(1.0F, 0.0F);
-   public static final ehe d = new ehe(-1.0F, 0.0F);
-   public static final ehe e = new ehe(0.0F, 1.0F);
-   public static final ehe f = new ehe(0.0F, -1.0F);
-   public static final ehe g = new ehe(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final ehe h = new ehe(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public ehe(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public class ehe implements ho {
+   public static final Codec<ehe> a = Codec.DOUBLE
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 3).map($$0x -> new ehe((Double)$$0x.get(0), (Double)$$0x.get(1), (Double)$$0x.get(2))), $$0 -> List.of($$0.a(), $$0.b(), $$0.c())
+      );
+   public static final ehe b = new ehe(0.0, 0.0, 0.0);
+   public final double c;
+   public final double d;
+   public final double e;
+
+   public static ehe a(int $$0) {
+      double $$1 = (double)($$0 >> 16 & 0xFF) / 255.0;
+      double $$2 = (double)($$0 >> 8 & 0xFF) / 255.0;
+      double $$3 = (double)($$0 & 0xFF) / 255.0;
+      return new ehe($$1, $$2, $$3);
    }
 
-   public ehe a(float $$0) {
-      return new ehe(this.i * $$0, this.j * $$0);
+   public static ehe a(hz $$0) {
+      return new ehe((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
    }
 
-   public float a(ehe $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   public static ehe a(hz $$0, double $$1, double $$2, double $$3) {
+      return new ehe((double)$$0.u() + $$1, (double)$$0.v() + $$2, (double)$$0.w() + $$3);
    }
 
-   public ehe b(ehe $$0) {
-      return new ehe(this.i + $$0.i, this.j + $$0.j);
+   public static ehe b(hz $$0) {
+      return a($$0, 0.5, 0.5, 0.5);
    }
 
-   public ehe b(float $$0) {
-      return new ehe(this.i + $$0, this.j + $$0);
+   public static ehe c(hz $$0) {
+      return a($$0, 0.5, 0.0, 0.5);
    }
 
-   public boolean c(ehe $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
+   public static ehe a(hz $$0, double $$1) {
+      return a($$0, 0.5, $$1, 0.5);
    }
 
-   public ehe a() {
-      float $$0 = aro.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new ehe(this.i / $$0, this.j / $$0);
+   public ehe(double $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public float b() {
-      return aro.c(this.i * this.i + this.j * this.j);
+   public ehe(Vector3f $$0) {
+      this((double)$$0.x(), (double)$$0.y(), (double)$$0.z());
    }
 
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(ehe $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
+   public ehe a(ehe $$0) {
+      return new ehe($$0.c - this.c, $$0.d - this.d, $$0.e - this.e);
    }
 
    public ehe d() {
-      return new ehe(-this.i, -this.j);
+      double $$0 = Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+      return $$0 < 1.0E-4 ? b : new ehe(this.c / $$0, this.d / $$0, this.e / $$0);
+   }
+
+   public double b(ehe $$0) {
+      return this.c * $$0.c + this.d * $$0.d + this.e * $$0.e;
+   }
+
+   public ehe c(ehe $$0) {
+      return new ehe(this.d * $$0.e - this.e * $$0.d, this.e * $$0.c - this.c * $$0.e, this.c * $$0.d - this.d * $$0.c);
+   }
+
+   public ehe d(ehe $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public ehe a(double $$0, double $$1, double $$2) {
+      return this.b(-$$0, -$$1, -$$2);
+   }
+
+   public ehe e(ehe $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public ehe b(double $$0, double $$1, double $$2) {
+      return new ehe(this.c + $$0, this.d + $$1, this.e + $$2);
+   }
+
+   public boolean a(ho $$0, double $$1) {
+      return this.c($$0.a(), $$0.b(), $$0.c()) < $$1 * $$1;
+   }
+
+   public double f(ehe $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public double g(ehe $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public double c(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 - this.c;
+      double $$4 = $$1 - this.d;
+      double $$5 = $$2 - this.e;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public ehe a(double $$0) {
+      return this.d($$0, $$0, $$0);
+   }
+
+   public ehe e() {
+      return this.a(-1.0);
+   }
+
+   public ehe h(ehe $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public ehe d(double $$0, double $$1, double $$2) {
+      return new ehe(this.c * $$0, this.d * $$1, this.e * $$2);
+   }
+
+   public ehe a(aru $$0, float $$1) {
+      return this.b((double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1));
+   }
+
+   public double f() {
+      return Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+   }
+
+   public double g() {
+      return this.c * this.c + this.d * this.d + this.e * this.e;
+   }
+
+   public double h() {
+      return Math.sqrt(this.c * this.c + this.e * this.e);
+   }
+
+   public double i() {
+      return this.c * this.c + this.e * this.e;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof ehe $$1)) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else {
+         return Double.compare($$1.d, this.d) != 0 ? false : Double.compare($$1.e, this.e) == 0;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.c);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.c + ", " + this.d + ", " + this.e + ")";
+   }
+
+   public ehe a(ehe $$0, double $$1) {
+      return new ehe(arp.d($$1, this.c, $$0.c), arp.d($$1, this.d, $$0.d), arp.d($$1, this.e, $$0.e));
+   }
+
+   public ehe a(float $$0) {
+      float $$1 = arp.b($$0);
+      float $$2 = arp.a($$0);
+      double $$3 = this.c;
+      double $$4 = this.d * (double)$$1 + this.e * (double)$$2;
+      double $$5 = this.e * (double)$$1 - this.d * (double)$$2;
+      return new ehe($$3, $$4, $$5);
+   }
+
+   public ehe b(float $$0) {
+      float $$1 = arp.b($$0);
+      float $$2 = arp.a($$0);
+      double $$3 = this.c * (double)$$1 + this.e * (double)$$2;
+      double $$4 = this.d;
+      double $$5 = this.e * (double)$$1 - this.c * (double)$$2;
+      return new ehe($$3, $$4, $$5);
+   }
+
+   public ehe c(float $$0) {
+      float $$1 = arp.b($$0);
+      float $$2 = arp.a($$0);
+      double $$3 = this.c * (double)$$1 + this.d * (double)$$2;
+      double $$4 = this.d * (double)$$1 - this.c * (double)$$2;
+      double $$5 = this.e;
+      return new ehe($$3, $$4, $$5);
+   }
+
+   public static ehe a(ehd $$0) {
+      return a($$0.i, $$0.j);
+   }
+
+   public static ehe a(float $$0, float $$1) {
+      float $$2 = arp.b(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$3 = arp.a(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$4 = -arp.b(-$$0 * (float) (Math.PI / 180.0));
+      float $$5 = arp.a(-$$0 * (float) (Math.PI / 180.0));
+      return new ehe((double)($$3 * $$4), (double)$$5, (double)($$2 * $$4));
+   }
+
+   public ehe a(EnumSet<ha.a> $$0) {
+      double $$1 = $$0.contains(ha.a.a) ? (double)arp.a(this.c) : this.c;
+      double $$2 = $$0.contains(ha.a.b) ? (double)arp.a(this.d) : this.d;
+      double $$3 = $$0.contains(ha.a.c) ? (double)arp.a(this.e) : this.e;
+      return new ehe($$1, $$2, $$3);
+   }
+
+   public double a(ha.a $$0) {
+      return $$0.a(this.c, this.d, this.e);
+   }
+
+   public ehe a(ha.a $$0, double $$1) {
+      double $$2 = $$0 == ha.a.a ? $$1 : this.c;
+      double $$3 = $$0 == ha.a.b ? $$1 : this.d;
+      double $$4 = $$0 == ha.a.c ? $$1 : this.e;
+      return new ehe($$2, $$3, $$4);
+   }
+
+   public ehe a(ha $$0, double $$1) {
+      hz $$2 = $$0.q();
+      return new ehe(this.c + $$1 * (double)$$2.u(), this.d + $$1 * (double)$$2.v(), this.e + $$1 * (double)$$2.w());
+   }
+
+   @Override
+   public final double a() {
+      return this.c;
+   }
+
+   @Override
+   public final double b() {
+      return this.d;
+   }
+
+   @Override
+   public final double c() {
+      return this.e;
+   }
+
+   public Vector3f j() {
+      return new Vector3f((float)this.c, (float)this.d, (float)this.e);
    }
 }

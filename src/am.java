@@ -1,7 +1,7 @@
 import com.google.gson.JsonObject;
 
 public interface am {
-   aep a();
+   aer a();
 
-   JsonObject a(ct var1);
+   JsonObject b();
 }

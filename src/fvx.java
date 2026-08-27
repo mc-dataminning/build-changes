@@ -1,28 +1,24 @@
-public class fvx extends fwr<fmf, ffp<fmf>> {
-   public fvx(fue<fmf, ffp<fmf>> $$0) {
+public class fvx extends fww<byr, fem<byr>> {
+   private final foe a;
+
+   public fvx(fuj<byr, fem<byr>> $$0, foe $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(elh $$0, fng $$1, int $$2, fmf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ab().getString()) && !$$3.cd()) {
-         ell $$10 = $$1.getBuffer(fno.b($$3.b().a()));
-         int $$11 = ftk.c($$3, 0.0F);
-
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = aro.i($$6, $$3.N, $$3.dA()) - aro.i($$6, $$3.aV, $$3.aU);
-            float $$14 = aro.i($$6, $$3.O, $$3.dC());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
+   public void a(elg $$0, fnl $$1, int $$2, byr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dfa $$10 = $$3.fZ();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, fyc.d);
+         $$0.b();
       }
    }
 }

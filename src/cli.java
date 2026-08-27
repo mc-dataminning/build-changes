@@ -1,75 +1,71 @@
-public abstract class cli implements clz<bgh> {
-   protected final cmc<?> a;
-   protected final aep b;
-   private final clo h;
-   protected final String c;
-   protected final clw d;
-   protected final ciw e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public cli(cmc<?> $$0, aep $$1, String $$2, clo $$3, clw $$4, ciw $$5, float $$6, int $$7) {
-      this.a = $$0;
-      this.h = $$3;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
+public class cli {
+   @Nullable
+   private final cbn a;
+   private final bgp b;
+   private final eha c;
+   private final cpm d;
+   private final ciy e;
+
+   public cli(cbn $$0, bgp $$1, eha $$2) {
+      this($$0.dK(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   @Override
-   public boolean a(bgh $$0, cpk $$1) {
-      return this.d.a($$0.a(0));
+   protected cli(cpm $$0, @Nullable cbn $$1, bgp $$2, ciy $$3, eha $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   @Override
-   public ciw a(bgh $$0, ht $$1) {
-      return this.e.p();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public ho<clw> a() {
-      ho<clw> $$0 = ho.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public ciw a(ht $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
+   protected final eha j() {
       return this.c;
    }
 
-   public int d() {
-      return this.g;
+   public gu a() {
+      return this.c.a();
    }
 
-   @Override
-   public aep e() {
-      return this.b;
+   public ha k() {
+      return this.c.b();
    }
 
-   @Override
-   public cmc<?> f() {
+   public ehe l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public ciy n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cbn o() {
       return this.a;
    }
 
-   public clo g() {
-      return this.h;
+   public bgp p() {
+      return this.b;
+   }
+
+   public cpm q() {
+      return this.d;
+   }
+
+   public ha g() {
+      return this.a == null ? ha.c : this.a.cD();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fG();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dA();
    }
 }

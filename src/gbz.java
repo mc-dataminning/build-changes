@@ -1,54 +1,33 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
-public interface gbz<T> {
-   static <T> gbz<T> a() {
-      return new gbz<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public class gbz<T> implements gcd<T> {
+   protected final Comparator<T> a;
+   protected final gce<T> b;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gbz(Function<T, Stream<aer>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ac.e($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = gce.a($$1, $$0);
    }
 
-   static <T> gbz<T> a(List<T> $$0, Function<T, Stream<aep>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gcc<T> $$2 = new gcc<>();
-         final gcc<T> $$3 = new gcc<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gbz<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   @Override
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   List<T> a(String var1);
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
+   }
 
-   List<T> b(String var1);
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new gca<T>($$2.iterator(), $$3.iterator(), this.a));
+   }
 }

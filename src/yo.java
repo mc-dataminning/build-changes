@@ -1,54 +1,83 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class yo implements ux<wp> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 8;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final float i;
+   private final float j;
 
-public record yo(UUID a, int b, @Nullable tp c, tw.a d, @Nullable te e, th f, ta.b g) implements uw<wo> {
-   public yo(sh $$0) {
-      this($$0.o(), $$0.m(), $$0.c(tp::a), new tw.a($$0), $$0.c(sh::l), th.a($$0), new ta.b($$0));
+   public yo(cbk $$0) {
+      this.e = $$0.a;
+      this.f = $$0.b;
+      this.g = $$0.c;
+      this.h = $$0.d;
+      this.i = $$0.a();
+      this.j = $$0.b();
+   }
+
+   public yo(si $$0) {
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) != 0;
+      this.f = ($$1 & 2) != 0;
+      this.g = ($$1 & 4) != 0;
+      this.h = ($$1 & 8) != 0;
+      this.i = $$0.readFloat();
+      this.j = $$0.readFloat();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, tp::a);
-      this.d.a($$0);
-      $$0.a(this.e, sh::a);
-      th.a($$0, this.f);
-      this.g.a($$0);
+   public void a(si $$0) {
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   @Nullable
-   public tp e() {
-      return this.c;
-   }
-
-   public tw.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public te g() {
+   public boolean a() {
       return this.e;
    }
 
-   public th h() {
+   public boolean d() {
       return this.f;
    }
 
-   public ta.b i() {
+   public boolean e() {
       return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public float g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
    }
 }

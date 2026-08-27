@@ -1,9 +1,26 @@
-public interface vg extends aaw {
-   void a(vi var1);
+import java.util.Map;
 
-   void a(vj var1);
+public class vg implements ux<va> {
+   private final Map<aeq<? extends hr<?>>, aqd.a> a;
 
-   void a(vh var1);
+   public vg(Map<aeq<? extends hr<?>>, aqd.a> $$0) {
+      this.a = $$0;
+   }
 
-   void a(vk var1);
+   public vg(si $$0) {
+      this.a = $$0.a(si::t, aqd.a::b);
+   }
+
+   @Override
+   public void a(si $$0) {
+      $$0.a(this.a, si::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public void a(va $$0) {
+      $$0.a(this);
+   }
+
+   public Map<aeq<? extends hr<?>>, aqd.a> a() {
+      return this.a;
+   }
 }

@@ -1,69 +1,35 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fyx extends amq {
-   private static final amm c = new amm(te.c("resourcePack.vanilla.description"), aa.b().a(alz.a), Optional.empty());
-   private static final alt d = alt.a(amm.b, c);
-   private static final te e = te.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, te> f = Map.of(
-      "programmer_art", te.c("resourcePack.programmer_art.name"), "high_contrast", te.c("resourcePack.high_contrast.name")
+public class fyx implements fyp {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<fyx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aer.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aer.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, fyx::new)
    );
-   private static final aep g = new aep("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+   private final aer d;
+   private final Optional<aer> e;
 
-   public fyx(Path $$0, egv $$1) {
-      super(alz.a, b($$0), g, $$1);
-      this.h = this.a($$0);
+   public fyx(aer $$0, Optional<aer> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aS && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
+   @Override
+   public void a(anm $$0, fyp.a $$1) {
+      aer $$2 = a.a(this.d);
+      Optional<ank> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
-
-      return null;
-   }
-
-   private static amb b(Path $$0) {
-      amc $$1 = new amc().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(alz.a, $$0).c();
    }
 
    @Override
-   protected te a(String $$0) {
-      te $$1 = f.get($$0);
-      return (te)($$1 != null ? $$1 : te.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected ams a(aly $$0) {
-      return ams.a("vanilla", e, true, b($$0), alz.a, ams.b.b, amw.c);
-   }
-
-   @Nullable
-   @Override
-   protected ams a(String $$0, ams.c $$1, te $$2) {
-      return ams.a($$0, $$2, false, $$1, alz.a, ams.b.a, amw.c);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, ams>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
+   public fyr a() {
+      return fys.a;
    }
 }

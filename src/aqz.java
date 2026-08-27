@@ -1,84 +1,97 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.io.InputStream;
 
-public class aqz implements Closeable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final Path c;
-   private final FileSystem d;
+public class aqz extends InputStream {
+   private static final int a = 8192;
+   private final InputStream b;
+   private final byte[] c;
+   private int d;
+   private int e;
 
-   public aqz(Path $$0) {
+   public aqz(InputStream $$0) {
+      this($$0, 8192);
+   }
+
+   public aqz(InputStream $$0, int $$1) {
       this.b = $$0;
-      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
-
-      try {
-         this.d = ac.d.newFileSystem(this.c, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
-      }
+      this.c = new byte[$$1];
    }
 
-   public void a(Path $$0, String $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0, File $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.copy($$1.toPath(), $$3);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0) {
-      try {
-         Path $$1 = this.d.getPath(File.separator);
-         if (Files.isRegularFile($$0)) {
-            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
-            Files.copy($$2, $$0);
-         } else {
-            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-               for (Path $$4 : $$3.collect(Collectors.toList())) {
-                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
-                  Files.createDirectories($$5.getParent());
-                  Files.copy($$4, $$5);
-               }
-            }
+   @Override
+   public int read() throws IOException {
+      if (this.e >= this.d) {
+         this.b();
+         if (this.e >= this.d) {
+            return -1;
          }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
+      }
+
+      return Byte.toUnsignedInt(this.c[this.e++]);
+   }
+
+   @Override
+   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
+      int $$3 = this.a();
+      if ($$3 <= 0) {
+         if ($$2 >= this.c.length) {
+            return this.b.read($$0, $$1, $$2);
+         }
+
+         this.b();
+         $$3 = this.a();
+         if ($$3 <= 0) {
+            return -1;
+         }
+      }
+
+      if ($$2 > $$3) {
+         $$2 = $$3;
+      }
+
+      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
+      this.e += $$2;
+      return $$2;
+   }
+
+   @Override
+   public long skip(long $$0) throws IOException {
+      if ($$0 <= 0L) {
+         return 0L;
+      } else {
+         long $$1 = (long)this.a();
+         if ($$1 <= 0L) {
+            return this.b.skip($$0);
+         } else {
+            if ($$0 > $$1) {
+               $$0 = $$1;
+            }
+
+            this.e = (int)((long)this.e + $$0);
+            return $$0;
+         }
       }
    }
 
    @Override
-   public void close() {
-      try {
-         this.d.close();
-         Files.move(this.c, this.b);
-         a.info("Compressed to {}", this.b);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
+   public int available() throws IOException {
+      return this.a() + this.b.available();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+   }
+
+   private int a() {
+      return this.d - this.e;
+   }
+
+   private void b() throws IOException {
+      this.d = 0;
+      this.e = 0;
+      int $$0 = this.b.read(this.c, 0, this.c.length);
+      if ($$0 > 0) {
+         this.d = $$0;
       }
    }
 }

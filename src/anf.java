@@ -1,73 +1,119 @@
-import com.google.common.base.Stopwatch;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class anf extends anq<anf.a> {
-   private static final Logger c = LogUtils.getLogger();
-   private final Stopwatch d = Stopwatch.createUnstarted();
+public class anf implements anc {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, and> b;
+   private final List<ama> c;
 
-   public anf(ank $$0, List<ane> $$1, Executor $$2, Executor $$3, CompletableFuture<asn> $$4) {
-      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
-         AtomicLong $$6 = new AtomicLong();
-         AtomicLong $$7 = new AtomicLong();
-         bcx $$8 = new bcx(ac.a, () -> 0, false);
-         bcx $$9 = new bcx(ac.a, () -> 0, false);
-         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
-               long $$2xxx = ac.c();
-               $$2xx.run();
-               $$6.addAndGet(ac.c() - $$2xxx);
-            }), $$2xx -> $$5.execute(() -> {
-               long $$2xxx = ac.c();
-               $$2xx.run();
-               $$7.addAndGet(ac.c() - $$2xxx);
-            }));
-         return $$10.thenApplyAsync($$5x -> {
-            c.debug("Finished reloading " + $$3x.c());
-            return new anf.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
-         }, $$3);
-      }, $$4);
-      this.d.start();
-      this.b = this.b.thenApplyAsync(this::a, $$3);
-   }
+   public anf(amb $$0, List<ama> $$1) {
+      this.c = List.copyOf($$1);
+      Map<String, and> $$2 = new HashMap<>();
+      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
 
-   private List<anf.a> a(List<anf.a> $$0) {
-      this.d.stop();
-      long $$1 = 0L;
-      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+      for (ama $$4 : $$1) {
+         anl $$5 = this.a($$4);
+         Set<String> $$6 = $$4.a($$0);
+         Predicate<aer> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
 
-      for (anf.a $$2 : $$0) {
-         bdd $$3 = $$2.b;
-         bdd $$4 = $$2.c;
-         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
-         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
-         long $$7 = $$5 + $$6;
-         String $$8 = $$2.a;
-         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
-         $$1 += $$6;
+         for (String $$8 : $$3) {
+            boolean $$9 = $$6.contains($$8);
+            boolean $$10 = $$5 != null && $$5.a($$8);
+            if ($$9 || $$10) {
+               and $$11 = $$2.get($$8);
+               if ($$11 == null) {
+                  $$11 = new and($$0, $$8);
+                  $$2.put($$8, $$11);
+               }
+
+               if ($$9 && $$10) {
+                  $$11.a($$4, $$7);
+               } else if ($$9) {
+                  $$11.a($$4);
+               } else {
+                  $$11.a($$4.a(), $$7);
+               }
+            }
+         }
       }
 
-      c.info("Total blocking time: {} ms", $$1);
-      return $$0;
+      this.b = $$2;
    }
 
-   public static class a {
-      final String a;
-      final bdd b;
-      final bdd c;
-      final AtomicLong d;
-      final AtomicLong e;
-
-      a(String $$0, bdd $$1, bdd $$2, AtomicLong $$3, AtomicLong $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+   @Nullable
+   private anl a(ama $$0) {
+      try {
+         return $$0.a(anl.a);
+      } catch (IOException var3) {
+         a.error("Failed to get filter section from pack {}", $$0.a());
+         return null;
       }
+   }
+
+   @Override
+   public Set<String> a() {
+      return this.b.keySet();
+   }
+
+   @Override
+   public Optional<ank> getResource(aer $$0) {
+      anm $$1 = this.b.get($$0.b());
+      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
+   }
+
+   @Override
+   public List<ank> a(aer $$0) {
+      anm $$1 = this.b.get($$0.b());
+      return $$1 != null ? $$1.a($$0) : List.of();
+   }
+
+   @Override
+   public Map<aer, ank> b(String $$0, Predicate<aer> $$1) {
+      a($$0);
+      Map<aer, ank> $$2 = new TreeMap<>();
+
+      for (and $$3 : this.b.values()) {
+         $$2.putAll($$3.b($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public Map<aer, List<ank>> c(String $$0, Predicate<aer> $$1) {
+      a($$0);
+      Map<aer, List<ank>> $$2 = new TreeMap<>();
+
+      for (and $$3 : this.b.values()) {
+         $$2.putAll($$3.c($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   private static void a(String $$0) {
+      if ($$0.endsWith("/")) {
+         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      }
+   }
+
+   @Override
+   public Stream<ama> b() {
+      return this.c.stream();
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(ama::close);
    }
 }

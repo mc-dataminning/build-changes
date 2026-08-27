@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dtu extends dui {
-   public static final Codec<dtu> a = bft.b(0, 256).fieldOf("count").xmap(dtu::new, $$0 -> $$0.c).codec();
-   private final bft c;
+public enum dtu implements ash {
+   a(ha.b, 1, "ceiling"),
+   b(ha.a, -1, "floor");
 
-   private dtu(bft $$0) {
-      this.c = $$0;
+   public static final Codec<dtu> c = ash.a(dtu::values);
+   private final ha d;
+   private final int e;
+   private final String f;
+
+   private dtu(ha $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dtu a(bft $$0) {
-      return new dtu($$0);
+   public ha a() {
+      return this.d;
    }
 
-   public static dtu a(int $$0) {
-      return a(bfq.a($$0));
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected int a(art $$0, gv $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public duf<?> b() {
-      return duf.f;
+   public String c() {
+      return this.f;
    }
 }

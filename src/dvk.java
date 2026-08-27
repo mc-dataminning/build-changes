@@ -1,7 +1,20 @@
-@FunctionalInterface
-public interface dvk<C extends dpp> {
-   void generatePieces(dvp var1, dvk.a<C> var2);
+import com.mojang.serialization.Codec;
 
-   public static record a<C extends dpp>(C a, dgv b, dyr c, cor d, cpm e, dlg f, long g) {
+public enum dvk implements ash {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<dvk> e = ash.a(dvk::values);
+   private final String f;
+
+   private dvk(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

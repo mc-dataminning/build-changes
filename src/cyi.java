@@ -1,143 +1,39 @@
-public class cyi extends csa {
-   public static final dfw<dgc> d = dfo.ag;
+public class cyi extends csb {
+   public static final dfr d = dfq.w;
+   private final cyi.a e;
 
-   protected cyi(dex.d $$0) {
-      super(false, $$0);
-      this.k(this.C.b().a(d, dgc.a).a(c, Boolean.valueOf(false)));
+   protected cyi(cyi.a $$0, dez.d $$1, dfp $$2) {
+      super($$1, $$2);
+      this.k(this.C.b().a(d, Boolean.valueOf(false)));
+      this.e = $$0;
    }
 
    @Override
-   protected void a(dey $$0, cpk $$1, gv $$2, csk $$3) {
-      if ($$3.n().m() && new cyj($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
-      }
+   protected int g(dfa $$0) {
+      return $$0.c(d) ? 15 : 0;
    }
 
    @Override
-   public dgb<dgc> b() {
-      return d;
+   protected dfa a(dfa $$0, int $$1) {
+      return $$0.a(d, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   public dey a(dey $$0, cyw $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dgc)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgc.d);
-               case d:
-                  return $$0.a(d, dgc.c);
-               case e:
-                  return $$0.a(d, dgc.f);
-               case f:
-                  return $$0.a(d, dgc.e);
-               case g:
-                  return $$0.a(d, dgc.i);
-               case h:
-                  return $$0.a(d, dgc.j);
-               case i:
-                  return $$0.a(d, dgc.g);
-               case j:
-                  return $$0.a(d, dgc.h);
-            }
-         case d:
-            switch ((dgc)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgc.e);
-               case d:
-                  return $$0.a(d, dgc.f);
-               case e:
-                  return $$0.a(d, dgc.d);
-               case f:
-                  return $$0.a(d, dgc.c);
-               case g:
-                  return $$0.a(d, dgc.j);
-               case h:
-                  return $$0.a(d, dgc.g);
-               case i:
-                  return $$0.a(d, dgc.h);
-               case j:
-                  return $$0.a(d, dgc.i);
-               case a:
-                  return $$0.a(d, dgc.b);
-               case b:
-                  return $$0.a(d, dgc.a);
-            }
-         case b:
-            switch ((dgc)$$0.c(d)) {
-               case c:
-                  return $$0.a(d, dgc.f);
-               case d:
-                  return $$0.a(d, dgc.e);
-               case e:
-                  return $$0.a(d, dgc.c);
-               case f:
-                  return $$0.a(d, dgc.d);
-               case g:
-                  return $$0.a(d, dgc.h);
-               case h:
-                  return $$0.a(d, dgc.i);
-               case i:
-                  return $$0.a(d, dgc.j);
-               case j:
-                  return $$0.a(d, dgc.g);
-               case a:
-                  return $$0.a(d, dgc.b);
-               case b:
-                  return $$0.a(d, dgc.a);
-            }
-         default:
-            return $$0;
-      }
+   protected int b(cpm $$0, gu $$1) {
+      Class $$2 = switch (this.e) {
+         case a -> bii.class;
+         case b -> biy.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
    }
 
    @Override
-   public dey a(dey $$0, cxf $$1) {
-      dgc $$2 = $$0.c(d);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(d, dgc.f);
-               case f:
-                  return $$0.a(d, dgc.e);
-               case g:
-                  return $$0.a(d, dgc.j);
-               case h:
-                  return $$0.a(d, dgc.i);
-               case i:
-                  return $$0.a(d, dgc.h);
-               case j:
-                  return $$0.a(d, dgc.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(d, dgc.d);
-               case d:
-                  return $$0.a(d, dgc.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(d, dgc.h);
-               case h:
-                  return $$0.a(d, dgc.g);
-               case i:
-                  return $$0.a(d, dgc.j);
-               case j:
-                  return $$0.a(d, dgc.i);
-            }
-      }
-
-      return super.a($$0, $$1);
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(d);
    }
 
-   @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(d, c);
+   public static enum a {
+      a,
+      b;
    }
 }

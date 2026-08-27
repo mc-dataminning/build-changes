@@ -1,17 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
-public record apx(List<apw> b, boolean c) {
-   public static final Codec<apx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(apw.a.listOf().fieldOf("values").forGetter(apx::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(apx::b)).apply($$0, apx::new)
-   );
+public class apx {
+   private final List<apy> a = new ArrayList<>();
 
-   public List<apw> a() {
-      return this.b;
+   public static apx a() {
+      return new apx();
    }
 
-   public boolean b() {
-      return this.c;
+   public List<apy> b() {
+      return List.copyOf(this.a);
+   }
+
+   public apx a(apy $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public apx a(aer $$0) {
+      return this.a(apy.a($$0));
+   }
+
+   public apx b(aer $$0) {
+      return this.a(apy.b($$0));
+   }
+
+   public apx c(aer $$0) {
+      return this.a(apy.c($$0));
+   }
+
+   public apx d(aer $$0) {
+      return this.a(apy.d($$0));
    }
 }

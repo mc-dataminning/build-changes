@@ -1,21 +1,23 @@
-public enum dgk implements asf {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dgk implements ash {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String d;
+   private final String e;
+   private final tf f;
 
    private dgk(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+      this.e = $$0;
+      this.f = tf.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
+   }
+
+   public tf a() {
+      return this.f;
    }
 }

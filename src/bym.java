@@ -1,45 +1,55 @@
 import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public interface bym extends bzd {
-   void b(boolean var1);
+public class bym extends bzm {
+   public bym(bim<? extends bym> $$0, cpm $$1) {
+      super($$0, $$1);
+   }
 
-   void a(biw var1, ciw var2, ccd var3, float var4);
+   public static bke.a p() {
+      return bzm.q().a(bkf.a, 12.0);
+   }
+
+   @Override
+   public boolean C(bii $$0) {
+      if (super.C($$0)) {
+         if ($$0 instanceof biy) {
+            int $$1 = 0;
+            if (this.dK().ai() == bgn.c) {
+               $$1 = 7;
+            } else if (this.dK().ai() == bgn.d) {
+               $$1 = 15;
+            }
+
+            if ($$1 > 0) {
+               ((biy)$$0).b(new bhv(bhx.s, $$1 * 20, 0), this);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
 
    @Nullable
-   biw j();
-
-   void a();
-
-   default void b(biw $$0, float $$1) {
-      bgn $$2 = cce.a($$0, ciz.uZ);
-      ciw $$3 = $$0.b($$2);
-      if ($$0.b(ciz.uZ)) {
-         che.a($$0.dK(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dK().ai().a() * 4));
-      }
-
-      this.a();
+   @Override
+   public bjs a(cqb $$0, bgo $$1, bjc $$2, @Nullable bjs $$3, @Nullable qr $$4) {
+      return $$3;
    }
 
-   default void a(biw $$0, biw $$1, ccd $$2, float $$3, float $$4) {
-      double $$5 = $$1.dp() - $$0.dp();
-      double $$6 = $$1.dv() - $$0.dv();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = $$1.e(0.3333333333333333) - $$2.dr() + $$7 * 0.2F;
-      Vector3f $$9 = this.a($$0, new ehf($$5, $$8, $$6), $$3);
-      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dK().ai().a() * 4));
-      $$0.a(aou.fq, 1.0F, 1.0F / ($$0.ee().i() * 0.4F + 0.8F));
+   @Override
+   protected float b(bjk $$0, bij $$1) {
+      return 0.45F;
    }
 
-   default Vector3f a(biw $$0, ehf $$1, float $$2) {
-      Vector3f $$3 = $$1.j().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         ehf $$5 = $$0.i(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.j());
-      }
+   @Override
+   protected Vector3f a(bii $$0, bij $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b, 0.0F);
+   }
 
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
+   @Override
+   protected float l(bii $$0) {
+      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
    }
 }

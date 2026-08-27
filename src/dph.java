@@ -1,10 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dph implements dpp {
-   public static final Codec<dph> a = drq.a.fieldOf("state_provider").xmap(dph::new, $$0 -> $$0.b).codec();
-   public final drq b;
+public class dph {
+   public static final Codec<dph> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dud.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dph::new)
+   );
+   public final he<dud> b;
+   public final float c;
 
-   public dph(drq $$0) {
+   public dph(he<dud> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a(cqg $$0, dgx $$1, aru $$2, gu $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

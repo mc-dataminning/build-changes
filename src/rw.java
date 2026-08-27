@@ -1,89 +1,42 @@
-public interface rw extends ri {
-   rw a = new rw() {
-   };
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-   @Override
-   default ri.b a() {
-      return ri.b.a;
+public class rw extends rs {
+   private final Deque<ru> a = new ArrayDeque<>();
+
+   public rw(rt... $$0) {
+      ru $$1 = ru.a();
+
+      for (rt $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
    @Override
-   default ri.b a(String $$0) {
-      return ri.b.a;
+   public rh.a a(rm<?> $$0, String $$1) {
+      ru $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return rh.a.b;
+      } else {
+         if ($$0 == qr.b) {
+            ru $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
+      }
    }
 
    @Override
-   default ri.b a(byte $$0) {
-      return ri.b.a;
-   }
+   public rh.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
 
-   @Override
-   default ri.b a(short $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(int $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(long $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(float $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(double $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(byte[] $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(int[] $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(long[] $$0) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b a(rn<?> $$0, int $$1) {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.a b(rn<?> $$0, int $$1) {
-      return ri.a.b;
-   }
-
-   @Override
-   default ri.a a(rn<?> $$0) {
-      return ri.a.b;
-   }
-
-   @Override
-   default ri.a a(rn<?> $$0, String $$1) {
-      return ri.a.b;
-   }
-
-   @Override
-   default ri.b b() {
-      return ri.b.a;
-   }
-
-   @Override
-   default ri.b b(rn<?> $$0) {
-      return ri.b.a;
+      return super.b();
    }
 }

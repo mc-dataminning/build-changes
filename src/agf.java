@@ -1,195 +1,170 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class agf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("commands.debug.alreadyRunning"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tf.a("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tf.a("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tf.a("commands.datapack.disable.failed", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> tf.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
+   );
+   private static final SuggestionProvider<dr> e = ($$0, $$1) -> du.b(
+         ((dr)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+      );
+   private static final SuggestionProvider<dr> f = ($$0, $$1) -> {
+      amx $$2 = ((dr)$$0.getSource()).l().aB();
+      Collection<String> $$3 = $$2.d();
+      cdv $$4 = ((dr)$$0.getSource()).w();
+      return du.b(
+         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(amu::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+      );
+   };
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
-               .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource()))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("datapack").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ds.a("enable")
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a(
+                                             "name", StringArgumentType.string()
+                                          )
+                                          .suggests(f)
+                                          .executes(
+                                             $$0x -> a(
+                                                   (dr)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
+                                                )
+                                          ))
+                                       .then(
+                                          ds.a("after")
+                                             .then(
+                                                ds.a("existing", StringArgumentType.string())
+                                                   .suggests(e)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dr)$$0x.getSource(),
+                                                            a($$0x, "name", true),
+                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ds.a("before")
+                                          .then(
+                                             ds.a("existing", StringArgumentType.string())
+                                                .suggests(e)
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (dr)$$0x.getSource(),
+                                                         a($$0x, "name", true),
+                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(ds.a("last").executes($$0x -> a((dr)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(ds.a("first").executes($$0x -> a((dr)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                        )
+                  ))
+               .then(
+                  ds.a("disable").then(ds.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((dr)$$0x.getSource(), a($$0x, "name", false))))
+               ))
             .then(
-               ((LiteralArgumentBuilder)dt.a("function").requires($$0x -> $$0x.c(3)))
-                  .then(dt.a("name", fu.a()).suggests(agt.a).executes($$0x -> a((ds)$$0x.getSource(), fu.a($$0x, "name"))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("list").executes($$0x -> a((dr)$$0x.getSource())))
+                     .then(ds.a("available").executes($$0x -> b((dr)$$0x.getSource()))))
+                  .then(ds.a("enabled").executes($$0x -> c((dr)$$0x.getSource())))
             )
       );
    }
 
-   private static int a(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.ba()) {
-         throw c.create();
-      } else {
-         $$1.bb();
-         $$0.a(() -> te.c("commands.debug.started"), true);
-         return 0;
-      }
+   private static int a(dr $$0, amu $$1, agf.a $$2) throws CommandSyntaxException {
+      amx $$3 = $$0.l().aB();
+      List<amu> $$4 = Lists.newArrayList($$3.f());
+      $$2.apply($$4, $$1);
+      $$0.a(() -> tf.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      aht.a($$4.stream().map(amu::f).collect(Collectors.toList()), $$0);
+      return $$4.size();
    }
 
-   private static int b(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.ba()) {
-         throw b.create();
-      } else {
-         bdd $$2 = $$1.bc();
-         double $$3 = (double)$$2.g() / (double)ask.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> te.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
-      }
+   private static int a(dr $$0, amu $$1) {
+      amx $$2 = $$0.l().aB();
+      List<amu> $$3 = Lists.newArrayList($$2.f());
+      $$3.remove($$1);
+      $$0.a(() -> tf.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      aht.a($$3.stream().map(amu::f).collect(Collectors.toList()), $$0);
+      return $$3.size();
    }
 
-   private static int a(ds $$0, Collection<dn> $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      String $$4 = "debug-trace-" + ac.e() + ".txt";
+   private static int a(dr $$0) {
+      return c($$0) + b($$0);
+   }
 
-      try {
-         Path $$5 = $$3.c("debug").toPath();
-         Files.createDirectories($$5);
+   private static int b(dr $$0) {
+      amx $$1 = $$0.l().aB();
+      $$1.a();
+      Collection<amu> $$2 = $$1.f();
+      Collection<amu> $$3 = $$1.c();
+      cdv $$4 = $$0.w();
+      List<amu> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
+      if ($$5.isEmpty()) {
+         $$0.a(() -> tf.c("commands.datapack.list.available.none"), false);
+      } else {
+         $$0.a(() -> tf.a("commands.datapack.list.available.success", $$5.size(), th.b($$5, $$0xx -> $$0xx.a(false))), false);
+      }
 
-         try (Writer $$6 = Files.newBufferedWriter($$5.resolve($$4), StandardCharsets.UTF_8)) {
-            PrintWriter $$7 = new PrintWriter($$6);
+      return $$5.size();
+   }
 
-            for (dn $$8 : $$1) {
-               $$7.println($$8.a());
-               agf.a $$9 = new agf.a($$7);
+   private static int c(dr $$0) {
+      amx $$1 = $$0.l().aB();
+      $$1.a();
+      Collection<? extends amu> $$2 = $$1.f();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> tf.c("commands.datapack.list.enabled.none"), false);
+      } else {
+         $$0.a(() -> tf.a("commands.datapack.list.enabled.success", $$2.size(), th.b($$2, $$0xx -> $$0xx.a(true))), false);
+      }
 
-               try {
-                  $$2 += $$0.l().aA().a($$8, $$0.a($$9).b(2), $$9, null);
-               } catch (du var13) {
-                  $$0.b(var13.a());
-               }
+      return $$2.size();
+   }
+
+   private static amu a(CommandContext<dr> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+      String $$3 = StringArgumentType.getString($$0, $$1);
+      amx $$4 = ((dr)$$0.getSource()).l().aB();
+      amu $$5 = $$4.c($$3);
+      if ($$5 == null) {
+         throw a.create($$3);
+      } else {
+         boolean $$6 = $$4.f().contains($$5);
+         if ($$2 && $$6) {
+            throw b.create($$3);
+         } else if (!$$2 && !$$6) {
+            throw c.create($$3);
+         } else {
+            cdv $$7 = ((dr)$$0.getSource()).w();
+            cdv $$8 = $$5.d();
+            if (!$$8.a($$7)) {
+               throw d.create($$3, cdx.a($$7, $$8));
+            } else {
+               return $$5;
             }
          }
-      } catch (IOException | UncheckedIOException var15) {
-         a.warn("Tracing failed", var15);
-         $$0.b(te.c("commands.debug.function.traceFailed"));
       }
-
-      int $$12 = $$2;
-      if ($$1.size() == 1) {
-         $$0.a(() -> te.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
-      } else {
-         $$0.a(() -> te.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
-      }
-
-      return $$2;
    }
 
-   static class a implements afd.c, dr {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
-
-      a(PrintWriter $$0) {
-         this.c = $$0;
-      }
-
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
-      }
-
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
-         }
-      }
-
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
-         }
-      }
-
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
-         }
-      }
-
-      @Override
-      public void a(int $$0, aep $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
-
-      @Override
-      public void b(int $$0, String $$1) {
-         this.e();
-         this.a($$0 + 1);
-         this.c.print("[E] ");
-         this.c.print($$1);
-      }
-
-      @Override
-      public void a(te $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
-
-      @Override
-      public boolean f_() {
-         return true;
-      }
-
-      @Override
-      public boolean q_() {
-         return true;
-      }
-
-      @Override
-      public boolean N_() {
-         return false;
-      }
-
-      @Override
-      public boolean g_() {
-         return true;
-      }
+   interface a {
+      void apply(List<amu> var1, amu var2) throws CommandSyntaxException;
    }
 }

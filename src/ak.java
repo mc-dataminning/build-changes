@@ -35,17 +35,17 @@ public class ak {
       return "CriterionProgress{obtained=" + (this.b == null ? "false" : this.b) + "}";
    }
 
-   public void a(sh $$0) {
-      $$0.a(this.b, sh::a);
+   public void a(si $$0) {
+      $$0.a(this.b, si::a);
    }
 
    public JsonElement e() {
       return (JsonElement)(this.b != null ? new JsonPrimitive(a.format(this.b)) : JsonNull.INSTANCE);
    }
 
-   public static ak b(sh $$0) {
+   public static ak b(si $$0) {
       ak $$1 = new ak();
-      $$1.b = $$0.c(sh::u);
+      $$1.b = $$0.c(si::u);
       return $$1;
    }
 

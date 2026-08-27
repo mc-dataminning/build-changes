@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class doq extends dnl<dpk> {
-   public doq(Codec<dpk> $$0) {
+public class doq extends dnn<dpz> {
+   private static final int a = 7;
+
+   doq(Codec<dpz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnn<dpk> $$0) {
-      int $$1 = 0;
-      art $$2 = $$0.d();
-      cqe $$3 = $$0.b();
-      gv $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dnp<dpz> $$0) {
+      cqg $$1 = $$0.b();
+      aru $$2 = $$0.d();
+      dpz $$3 = $$0.f();
+      gu $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      gu.a $$6 = new gu.a();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dkh.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         gv $$10 = new gv($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dey $$11 = csl.mV.n().a(czh.b, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(csl.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dfa $$8 = $$1.a_($$6);
+
+         for (dpz.a $$9 : $$3.b) {
+            if (doi.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
          }
       }
 
-      return $$1 > 0;
+      return true;
+   }
+
+   private void a(gu.a $$0, aru $$1, gu $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(aru $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

@@ -1,49 +1,30 @@
-public class fjr extends flw {
-   private final flr a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   fjr(fie $$0, double $$1, double $$2, double $$3, double $$4, flr $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class fjr {
+   public static final fjr a = new fjr(fjq.b, fjs.createDnsSrvRedirectHandler(), fjn.a());
+   private final fjq b;
+   private final fjs c;
+   private final fjn d;
+
+   @VisibleForTesting
+   fjr(fjq $$0, fjs $$1, fjn $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public Optional<fjo> a(fjp $$0) {
+      Optional<fjo> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fjp> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+         return $$1;
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public fla b() {
-      return fla.d;
-   }
-
-   public static class a implements fkz<iz> {
-      private final flr a;
-
-      public a(flr $$0) {
-         this.a = $$0;
-      }
-
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fjr($$1, $$2, $$3, $$4, $$5, this.a);
+         return Optional.empty();
       }
    }
 }

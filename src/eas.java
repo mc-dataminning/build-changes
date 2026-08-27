@@ -1,133 +1,201 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class eas {
-   private static final float a = 1.5F;
-   private final eao[] b = new eao[32];
-   private final int c;
-   private final eap d;
-   private static final boolean e = false;
-   private final eal f = new eal();
+   private final List<eaq> a;
+   @Nullable
+   private eas.a b;
+   private int c;
+   private final gu d;
+   private final float e;
+   private final boolean f;
 
-   public eas(eap $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public eas(List<eaq> $$0, gu $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
    @Nullable
-   public eaq a(cpx $$0, biy $$1, Set<gv> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eao $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   public eaq d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public eaq a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, eaq $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ehe a(bii $$0, int $$1) {
+      eaq $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      return new ehe($$3, $$4, $$5);
+   }
+
+   public gu d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ehe a(bii $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public gu g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eaq h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eaq i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eas $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
       } else {
-         Map<eau, gv> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         eaq $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eaq $$2 = this.a.get($$1);
+            eaq $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
       }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @asq
+   void a(eaq[] $$0, eaq[] $$1, Set<eaw> $$2) {
+      this.b = new eas.a($$0, $$1, $$2);
    }
 
    @Nullable
-   private eaq a(bde $$0, eao $$1, Map<eau, gv> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bei.a);
-      Set<eau> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<eao> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<eau> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         eao $$11 = this.f.c();
-         $$11.i = true;
-
-         for (eau $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eao $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
-            }
-         }
-      }
-
-      Optional<eaq> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eaq::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eaq::m).thenComparingInt(eaq::e));
-      $$0.c();
-      return !$$18.isPresent() ? null : $$18.get();
+   public eas.a k() {
+      return this.b;
    }
 
-   protected float a(eao $$0, eao $$1) {
-      return $$0.a($$1);
+   public void a(si $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
    }
 
-   private float a(eao $$0, Set<eau> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (eau $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
+   public static eas b(si $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      gu $$3 = $$0.e();
+      List<eaq> $$4 = $$0.a(eaq::b);
+      eas.a $$5 = eas.a.b($$0);
+      eas $$6 = new eas($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
    }
 
-   private eaq a(eao $$0, gv $$1, boolean $$2) {
-      List<eao> $$3 = Lists.newArrayList();
-      eao $$4 = $$0;
-      $$3.add(0, $$0);
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   public gu l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eaq[] c(si $$0) {
+      eaq[] $$1 = new eaq[$$0.m()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eaq.b($$0);
       }
 
-      return new eaq($$3, $$1, $$2);
+      return $$1;
+   }
+
+   static void a(si $$0, eaq[] $$1) {
+      $$0.c($$1.length);
+
+      for (eaq $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eas n() {
+      eas $$0 = new eas(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eaq[] a, eaq[] b, Set<eaw> c) {
+
+      public void a(si $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eas.a($$0, this.a);
+         eas.a($$0, this.b);
+      }
+
+      public static eas.a b(si $$0) {
+         HashSet<eaw> $$1 = $$0.a(HashSet::new, eaw::c);
+         eaq[] $$2 = eas.c($$0);
+         eaq[] $$3 = eas.c($$0);
+         return new eas.a($$2, $$3, $$1);
+      }
    }
 }

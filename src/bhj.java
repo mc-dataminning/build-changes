@@ -1,46 +1,93 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface bhj {
+   aeq<bhi> a = aeq.a(jc.p, new aer("in_fire"));
+   aeq<bhi> b = aeq.a(jc.p, new aer("lightning_bolt"));
+   aeq<bhi> c = aeq.a(jc.p, new aer("on_fire"));
+   aeq<bhi> d = aeq.a(jc.p, new aer("lava"));
+   aeq<bhi> e = aeq.a(jc.p, new aer("hot_floor"));
+   aeq<bhi> f = aeq.a(jc.p, new aer("in_wall"));
+   aeq<bhi> g = aeq.a(jc.p, new aer("cramming"));
+   aeq<bhi> h = aeq.a(jc.p, new aer("drown"));
+   aeq<bhi> i = aeq.a(jc.p, new aer("starve"));
+   aeq<bhi> j = aeq.a(jc.p, new aer("cactus"));
+   aeq<bhi> k = aeq.a(jc.p, new aer("fall"));
+   aeq<bhi> l = aeq.a(jc.p, new aer("fly_into_wall"));
+   aeq<bhi> m = aeq.a(jc.p, new aer("out_of_world"));
+   aeq<bhi> n = aeq.a(jc.p, new aer("generic"));
+   aeq<bhi> o = aeq.a(jc.p, new aer("magic"));
+   aeq<bhi> p = aeq.a(jc.p, new aer("wither"));
+   aeq<bhi> q = aeq.a(jc.p, new aer("dragon_breath"));
+   aeq<bhi> r = aeq.a(jc.p, new aer("dry_out"));
+   aeq<bhi> s = aeq.a(jc.p, new aer("sweet_berry_bush"));
+   aeq<bhi> t = aeq.a(jc.p, new aer("freeze"));
+   aeq<bhi> u = aeq.a(jc.p, new aer("stalagmite"));
+   aeq<bhi> v = aeq.a(jc.p, new aer("falling_block"));
+   aeq<bhi> w = aeq.a(jc.p, new aer("falling_anvil"));
+   aeq<bhi> x = aeq.a(jc.p, new aer("falling_stalactite"));
+   aeq<bhi> y = aeq.a(jc.p, new aer("sting"));
+   aeq<bhi> z = aeq.a(jc.p, new aer("mob_attack"));
+   aeq<bhi> A = aeq.a(jc.p, new aer("mob_attack_no_aggro"));
+   aeq<bhi> B = aeq.a(jc.p, new aer("player_attack"));
+   aeq<bhi> C = aeq.a(jc.p, new aer("arrow"));
+   aeq<bhi> D = aeq.a(jc.p, new aer("trident"));
+   aeq<bhi> E = aeq.a(jc.p, new aer("mob_projectile"));
+   aeq<bhi> F = aeq.a(jc.p, new aer("fireworks"));
+   aeq<bhi> G = aeq.a(jc.p, new aer("fireball"));
+   aeq<bhi> H = aeq.a(jc.p, new aer("unattributed_fireball"));
+   aeq<bhi> I = aeq.a(jc.p, new aer("wither_skull"));
+   aeq<bhi> J = aeq.a(jc.p, new aer("thrown"));
+   aeq<bhi> K = aeq.a(jc.p, new aer("indirect_magic"));
+   aeq<bhi> L = aeq.a(jc.p, new aer("thorns"));
+   aeq<bhi> M = aeq.a(jc.p, new aer("explosion"));
+   aeq<bhi> N = aeq.a(jc.p, new aer("player_explosion"));
+   aeq<bhi> O = aeq.a(jc.p, new aer("sonic_boom"));
+   aeq<bhi> P = aeq.a(jc.p, new aer("bad_respawn_point"));
+   aeq<bhi> Q = aeq.a(jc.p, new aer("outside_border"));
+   aeq<bhi> R = aeq.a(jc.p, new aer("generic_kill"));
 
-public record bhj(String i) {
-   public static final bhj a = new bhj("generic");
-   public static final bhj b = new bhj("ladder");
-   public static final bhj c = new bhj("vines");
-   public static final bhj d = new bhj("weeping_vines");
-   public static final bhj e = new bhj("twisting_vines");
-   public static final bhj f = new bhj("scaffolding");
-   public static final bhj g = new bhj("other_climbable");
-   public static final bhj h = new bhj("water");
-
-   public static bhj a(dey $$0) {
-      if ($$0.a(csl.cO) || $$0.a(apj.P)) {
-         return b;
-      } else if ($$0.a(csl.ff)) {
-         return c;
-      } else if ($$0.a(csl.oz) || $$0.a(csl.oA)) {
-         return d;
-      } else if ($$0.a(csl.oB) || $$0.a(csl.oC)) {
-         return e;
-      } else {
-         return $$0.a(csl.nS) ? f : g;
-      }
-   }
-
-   @Nullable
-   public static bhj a(biw $$0) {
-      Optional<gv> $$1 = $$0.eF();
-      if ($$1.isPresent()) {
-         dey $$2 = $$0.dK().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aX() ? h : null;
-      }
-   }
-
-   public String a() {
-      return "death.fell.accident." + this.i;
-   }
-
-   public String b() {
-      return this.i;
+   static void a(nm<bhi> $$0) {
+      $$0.a(a, new bhi("inFire", 0.1F, bhe.d));
+      $$0.a(b, new bhi("lightningBolt", 0.1F));
+      $$0.a(c, new bhi("onFire", 0.0F, bhe.d));
+      $$0.a(d, new bhi("lava", 0.1F, bhe.d));
+      $$0.a(e, new bhi("hotFloor", 0.1F, bhe.d));
+      $$0.a(f, new bhi("inWall", 0.0F));
+      $$0.a(g, new bhi("cramming", 0.0F));
+      $$0.a(h, new bhi("drown", 0.0F, bhe.c));
+      $$0.a(i, new bhi("starve", 0.0F));
+      $$0.a(j, new bhi("cactus", 0.1F));
+      $$0.a(k, new bhi("fall", bhf.b, 0.0F, bhe.a, bhk.b));
+      $$0.a(l, new bhi("flyIntoWall", 0.0F));
+      $$0.a(m, new bhi("outOfWorld", 0.0F));
+      $$0.a(n, new bhi("generic", 0.0F));
+      $$0.a(o, new bhi("magic", 0.0F));
+      $$0.a(p, new bhi("wither", 0.0F));
+      $$0.a(q, new bhi("dragonBreath", 0.0F));
+      $$0.a(r, new bhi("dryout", 0.1F));
+      $$0.a(s, new bhi("sweetBerryBush", 0.1F, bhe.e));
+      $$0.a(t, new bhi("freeze", 0.0F, bhe.f));
+      $$0.a(u, new bhi("stalagmite", 0.0F));
+      $$0.a(v, new bhi("fallingBlock", 0.1F));
+      $$0.a(w, new bhi("anvil", 0.1F));
+      $$0.a(x, new bhi("fallingStalactite", 0.1F));
+      $$0.a(y, new bhi("sting", 0.1F));
+      $$0.a(z, new bhi("mob", 0.1F));
+      $$0.a(A, new bhi("mob", 0.1F));
+      $$0.a(B, new bhi("player", 0.1F));
+      $$0.a(C, new bhi("arrow", 0.1F));
+      $$0.a(D, new bhi("trident", 0.1F));
+      $$0.a(E, new bhi("mob", 0.1F));
+      $$0.a(F, new bhi("fireworks", 0.1F));
+      $$0.a(H, new bhi("onFire", 0.1F, bhe.d));
+      $$0.a(G, new bhi("fireball", 0.1F, bhe.d));
+      $$0.a(I, new bhi("witherSkull", 0.1F));
+      $$0.a(J, new bhi("thrown", 0.1F));
+      $$0.a(K, new bhi("indirectMagic", 0.0F));
+      $$0.a(L, new bhi("thorns", 0.1F, bhe.b));
+      $$0.a(M, new bhi("explosion", bhf.c, 0.1F));
+      $$0.a(N, new bhi("explosion.player", bhf.c, 0.1F));
+      $$0.a(O, new bhi("sonic_boom", bhf.c, 0.0F));
+      $$0.a(P, new bhi("badRespawnPoint", bhf.c, 0.1F, bhe.a, bhk.c));
+      $$0.a(Q, new bhi("outsideBorder", 0.0F));
+      $$0.a(R, new bhi("genericKill", 0.0F));
    }
 }

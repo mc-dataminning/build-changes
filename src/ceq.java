@@ -1,9 +1,5 @@
-import java.util.List;
+public interface ceq {
+   void a(cee var1, int var2, ciy var3);
 
-public interface ceq extends bgh, cfx {
-   int f();
-
-   int g();
-
-   List<ciw> h();
+   void a(cee var1, int var2, int var3);
 }

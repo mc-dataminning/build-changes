@@ -1,30 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dqc(int b, int c, int d, hf<dub> e) implements dpp {
+public class dqc implements dpr {
    public static final Codec<dqc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqw.j.fieldOf("tries").orElse(128).forGetter(dqc::a),
-               aqw.i.fieldOf("xz_spread").orElse(7).forGetter(dqc::b),
-               aqw.i.fieldOf("y_spread").orElse(3).forGetter(dqc::c),
-               dub.b.fieldOf("feature").forGetter(dqc::d)
-            )
-            .apply($$0, dqc::new)
+      $$0 -> $$0.group(dud.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), dud.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dqc::new)
    );
+   public final he<dud> b;
+   public final he<dud> c;
 
-   public int a() {
-      return this.b;
+   public dqc(he<dud> $$0, he<dud> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public hf<dub> d() {
-      return this.e;
+   @Override
+   public Stream<dna<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

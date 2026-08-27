@@ -1,39 +1,24 @@
-import javax.annotation.Nullable;
+public class ade implements ux<acz> {
+   private final tf a;
 
-public record ade(int a, @Nullable adi b) implements uw<add> {
-   private static final int c = 1048576;
-
-   public static ade b(sh $$0) {
-      int $$1 = $$0.m();
-      return new ade($$1, a($$1, $$0));
+   public ade(tf $$0) {
+      this.a = $$0;
    }
 
-   private static adi a(int $$0, sh $$1) {
-      return c($$1);
-   }
-
-   private static adi c(sh $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return adk.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public ade(si $$0) {
+      this.a = tf.a.b($$0.d(262144));
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(add $$0) {
+   public void a(acz $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public adi d() {
-      return this.b;
+   public tf a() {
+      return this.a;
    }
 }

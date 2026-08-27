@@ -1,23 +1,41 @@
-public class cua extends csk {
-   private static final te a = te.c("container.crafting");
+public class cua extends crx {
+   private final csm d;
+   protected static final float a = 6.0F;
+   protected static final ehx b = csm.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
-   protected cua(dex.d $$0) {
-      super($$0);
+   protected cua(csm $$0, dez.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      if ($$1.B) {
-         return bgo.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(ape.an);
-         return bgo.b;
+   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      this.a($$0, (cpn)$$1, $$2);
+   }
+
+   @Override
+   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.d.n().a(c, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   public bgr b(dey $$0, cpk $$1, gv $$2) {
-      return new bgw(($$2x, $$3, $$4) -> new cer($$2x, $$3, cen.a($$1, $$2)), a);
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$1 == ha.a && !$$0.a($$3, $$4)) {
+         return csn.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(c)) {
+            $$3.a($$4, eae.c, eae.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b;
    }
 }

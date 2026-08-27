@@ -1,35 +1,47 @@
-public interface ejl {
-   int a();
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   int b();
+public class ejl implements ejj {
+   private final Int2ObjectMap<eji.a> a;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   public ejl(Map<Integer, Float> $$0) {
+      this.a = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (eji.a)() -> $$1));
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   @Nullable
+   @Override
+   public eji a(int $$0) {
+      return (eji)this.a.get($$0);
    }
 
-   default float g() {
-      return this.j();
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.a.keySet());
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
+   public static record a(Map<Integer, Float> c) implements eve {
+      public static final MapCodec<ejl.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(aqy.v, Codec.FLOAT).fieldOf("advances").forGetter(ejl.a::c)).apply($$0, ejl.a::new)
+      );
 
-   default float i() {
-      return 0.0F;
-   }
+      @Override
+      public evf a() {
+         return evf.c;
+      }
 
-   default float j() {
-      return 3.0F;
+      @Override
+      public Either<eve.a, eve.b> b() {
+         eve.a $$0 = $$0x -> new ejl(this.c);
+         return Either.left($$0);
+      }
    }
 }

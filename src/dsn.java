@@ -4,69 +4,66 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class dsn extends dst {
-   public static final Codec<dsn> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsn::new));
+public class dsn extends dsv {
+   public static final Codec<dsn> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aqy.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bfv.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, dsn::new)
+   );
+   private final int b;
+   private final bfv h;
 
-   public dsn(int $$0, int $$1, int $$2) {
+   public dsn(int $$0, int $$1, int $$2, int $$3, bfv $$4) {
       super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected dsu<?> a() {
-      return dsu.e;
+   protected dsw<?> a() {
+      return dsw.g;
    }
 
    @Override
-   public List<drb.a> a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, int $$3, gv $$4, dql $$5) {
-      List<drb.a> $$6 = Lists.newArrayList();
-      gv $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      hb $$8 = hb.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
+   public List<drd.a> a(cps $$0, BiConsumer<gu, dfa> $$1, aru $$2, int $$3, gu $$4, dqn $$5) {
+      ha $$6 = ha.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      gu.a $$8 = $$4.j();
+      gu $$9 = $$8.d();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<drd.a> $$10 = Lists.newArrayList();
 
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
 
-         int $$18 = $$12 + $$17;
-         gv $$19 = new gv($$14, $$18, $$15);
-         if (dox.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         if (doz.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
          }
+
+         if ($$11 >= this.b) {
+            $$10.add(new drd.a($$8.i(), 0, false));
+         }
+
+         $$8.c(ha.b);
       }
 
-      $$6.add(new drb.a(new gv($$14, $$16, $$15), 0, true));
+      int $$12 = this.h.a($$2);
 
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new gv($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new drb.a(new gv($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (doz.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
          }
+
+         $$10.add(new drd.a($$8.i(), 0, false));
+         $$8.c($$6);
       }
 
-      return $$6;
+      return $$10;
    }
 }

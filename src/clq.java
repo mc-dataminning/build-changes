@@ -1,8 +1,17 @@
-public interface clq extends clz<ceq> {
-   @Override
-   default cmc<?> f() {
-      return cmc.a;
+public enum clq implements ash {
+   a("food"),
+   b("blocks"),
+   c("misc");
+
+   public static final ash.a<clq> d = ash.a(clq::values);
+   private final String e;
+
+   private clq(String $$0) {
+      this.e = $$0;
    }
 
-   clp d();
+   @Override
+   public String c() {
+      return this.e;
+   }
 }

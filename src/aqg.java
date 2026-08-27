@@ -1,21 +1,22 @@
-import java.util.function.IntConsumer;
+import java.util.function.Consumer;
 
-public interface aqg {
-   int a(int var1, int var2);
+@FunctionalInterface
+public interface aqg<T> {
+   aqg.a accept(T var1);
 
-   void b(int var1, int var2);
+   static <T> aqg<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return aqg.a.a;
+      };
+   }
 
-   int a(int var1);
+   public static enum a {
+      a,
+      b;
 
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   aqg d();
+      public boolean a() {
+         return this == b;
+      }
+   }
 }

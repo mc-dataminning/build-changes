@@ -1,82 +1,76 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class exc extends exv {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final te k;
-   private final te l;
-   private final Runnable m;
-   @Nullable
-   private etb n;
-   private esi o;
-   private int p;
+public class exc extends exz {
+   private static final tf a = tf.c("addServer.enterName");
+   private static final tf b = tf.c("addServer.enterIp");
+   private esh c;
+   private final BooleanConsumer k;
+   private final fis l;
+   private esq m;
+   private esq n;
+   private final exz o;
 
-   public static exc a(te $$0, te $$1, Runnable $$2) {
-      return new exc($$0, null, $$1, $$2, 0);
-   }
-
-   public static exc a(te $$0, te $$1, te $$2, Runnable $$3) {
-      return new exc($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected exc(te $$0, @Nullable te $$1, te $$2, Runnable $$3, int $$4) {
-      super($$0);
+   public exc(exz $$0, BooleanConsumer $$1, fis $$2) {
+      super(tf.c("addServer.title"));
+      this.o = $$0;
       this.k = $$1;
       this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
    }
 
    @Override
    protected void aE_() {
-      super.aE_();
-      if (this.k != null) {
-         this.n = etb.a(this.i, this.k, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(esi.a(this.l, $$0x -> this.au_()).a((this.g - 150) / 2, $$4, 150, 20).a());
+      this.n = new esq(this.i, this.g / 2 - 100, 66, 200, 20, tf.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.B());
+      this.e(this.n);
+      this.m = new esq(this.i, this.g / 2 - 100, 106, 200, 20, tf.c("addServer.enterIp"));
+      this.m.k(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.B());
+      this.e(this.m);
+      this.d(
+         eso.a(fis.a::a)
+            .a(fis.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, tf.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.d(esh.a(tf.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(esh.a(te.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c(this.n);
+      this.B();
    }
 
    @Override
-   public void c() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.i = this.p == 0;
+   public void a(eqm $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
    }
 
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = exg.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
-      } else {
-         this.n.a($$0, this.g / 2, 120);
-      }
-   }
-
-   @Override
-   public boolean aA_() {
-      return this.n != null && this.o.i;
+   private void l() {
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
    }
 
    @Override
    public void au_() {
-      this.m.run();
+      this.f.a(this.o);
+   }
+
+   private void B() {
+      this.c.i = fjp.b(this.m.a()) && !this.n.a().isEmpty();
    }
 
    @Override
-   public te e() {
-      return td.a(this.e, this.k != null ? this.k : td.a);
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

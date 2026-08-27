@@ -1,24 +1,24 @@
-public class aaz implements uw<aav> {
-   private final bgl a;
+public class aaz implements ux<aaw> {
+   private final int a;
 
-   public aaz(bgl $$0) {
+   public aaz(int $$0) {
       this.a = $$0;
    }
 
-   public void a(aav $$0) {
-      $$0.a(this);
-   }
-
-   public aaz(sh $$0) {
-      this.a = bgl.a($$0.readUnsignedByte());
+   public aaz(si $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.k(this.a.a());
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public bgl a() {
+   public void a(aaw $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 }

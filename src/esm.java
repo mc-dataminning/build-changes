@@ -1,9 +1,25 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+
 public class esm {
-   public static etl a(int $$0, esi.c $$1, boolean $$2) {
-      return etl.a(te.c("options.language"), $$1, $$2).a($$0).a(new aep("icon/language"), 15, 15).a();
+   private static final arc a = arc.codepoint(32, ub.a);
+
+   private static String a(String $$0) {
+      return eqm.O().m.G().c() ? $$0 : n.a($$0);
    }
 
-   public static etl b(int $$0, esi.c $$1, boolean $$2) {
-      return etl.a(te.c("options.accessibility.title"), $$1, $$2).a($$0).a(new aep("icon/accessibility"), 15, 15).a();
+   public static List<arc> a(tj $$0, int $$1, eru $$2) {
+      eqc $$3 = new eqc();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(tj.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, ub.a);
+      List<arc> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, ub.a, ($$1x, $$2x) -> {
+         arc $$3x = qm.a().a($$1x);
+         $$4.add($$2x ? arc.composite(a, $$3x) : $$3x);
+      });
+      return (List<arc>)($$4.isEmpty() ? Lists.newArrayList(new arc[]{arc.a}) : $$4);
    }
 }

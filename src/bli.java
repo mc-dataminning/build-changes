@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bli {
-   public static bkp<biw> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+public class bli extends bkq<cba> {
+   private static final int d = 1200;
+   final float c;
+
+   public bli(float $$0) {
+      super(ImmutableMap.of(bsa.d, bsb.a), 1200);
+      this.c = $$0;
    }
 
-   public static <E extends biw> bkp<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return boa.a((Function<boa.b<E>, ? extends App<boa.c<E>, bod<E>>>)($$4 -> {
-         boa<E, ? extends bob<? extends K1, bsb>> $$5 = $$2 ? $$4.a(bry.m) : $$4.c(bry.m);
-         return $$4.group($$4.a(bry.n), $$5, $$4.b(bry.K), $$4.a(bry.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               bye $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dK().w_().a($$11.dk())) {
-                  bsb $$12 = new bsb(new bkz($$11, false), $$1, 0);
-                  $$4x.a(new bkz($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   protected boolean a(akk $$0, cba $$1) {
+      return $$1.dM().g().map($$0x -> $$0x == ccy.b || $$0x == ccy.c || $$0x == ccy.d).orElse(true);
+   }
+
+   protected boolean a(akk $$0, cba $$1, long $$2) {
+      return $$1.dM().a(bsa.d);
+   }
+
+   protected void b(akk $$0, cba $$1, long $$2) {
+      bks.a($$1, $$1.dM().c(bsa.d).get().b(), this.c, 1);
+   }
+
+   protected void c(akk $$0, cba $$1, long $$2) {
+      Optional<hd> $$3 = $$1.dM().c(bsa.d);
+      $$3.ifPresent($$1x -> {
+         gu $$2x = $$1x.b();
+         akk $$3x = $$0.n().a($$1x.a());
+         if ($$3x != null) {
+            bty $$4 = $$3x.w();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            aav.c($$0, $$2x);
+         }
+      });
+      $$1.dM().b(bsa.d);
    }
 }

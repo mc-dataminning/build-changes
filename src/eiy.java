@@ -1,21 +1,9 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public class eiy {
-   public static void a(ejs $$0, float $$1) {
-      ConcurrentLinkedQueue<ejr> $$2 = $$0.i();
-   }
-
-   public static void b(ejs $$0, float $$1) {
-      ConcurrentLinkedQueue<ejr> $$2 = $$0.j();
-   }
-
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface eiy {
 }

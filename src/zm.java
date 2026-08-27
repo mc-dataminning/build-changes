@@ -1,32 +1,24 @@
-public class zm implements uw<wo> {
+public class zm implements ux<wp> {
    private final int a;
-   private final int b;
 
-   public zm(int $$0, int $$1) {
+   public zm(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public zm(sh $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+   public zm(si $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(si $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

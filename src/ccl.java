@@ -1,69 +1,54 @@
-public class ccl extends ccj {
-   public ccl(bik<? extends ccl> $$0, cpk $$1) {
+public abstract class ccl extends ccm implements ccc {
+   private static final adz<ciy> b = aec.a(ccl.class, aeb.h);
+
+   public ccl(bim<? extends ccl> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   public ccl(cpk $$0, biw $$1) {
-      super(bik.z, $$1, $$0);
+   public ccl(bim<? extends ccl> $$0, double $$1, double $$2, double $$3, cpm $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public ccl(cpk $$0, double $$1, double $$2, double $$3) {
-      super(bik.z, $$1, $$2, $$3, $$0);
+   public ccl(bim<? extends ccl> $$0, biy $$1, cpm $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(ciy $$0) {
+      if (!$$0.a(this.m()) || $$0.u()) {
+         this.al().b(b, $$0.c(1));
+      }
+   }
+
+   protected abstract cit m();
+
+   protected ciy o() {
+      return this.al().b(b);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
+   public ciy j() {
+      ciy $$0 = this.o();
+      return $$0.b() ? new ciy(this.m()) : $$0;
+   }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dK()
-               .a(
-                  new is(iw.O, this.j()),
-                  this.dp(),
-                  this.dr(),
-                  this.dv(),
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08
-               );
-         }
+   @Override
+   protected void a_() {
+      this.al().a(b, ciy.b);
+   }
+
+   @Override
+   public void b(qr $$0) {
+      super.b($$0);
+      ciy $$1 = this.o();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new qr()));
       }
    }
 
    @Override
-   protected void a(ehc $$0) {
+   public void a(qr $$0) {
       super.a($$0);
-      $$0.a().a(this.dL().b(this, this.v()), 0.0F);
-   }
-
-   @Override
-   protected void a(ehd $$0) {
-      super.a($$0);
-      if (!this.dK().B) {
-         if (this.ag.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ag.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               bun $$3 = bik.q.a(this.dK());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dp(), this.dr(), this.dv(), this.dA(), 0.0F);
-                  this.dK().b($$3);
-               }
-            }
-         }
-
-         this.dK().a(this, (byte)3);
-         this.ak();
-      }
-   }
-
-   @Override
-   protected cir m() {
-      return ciz.qd;
+      ciy $$1 = ciy.a($$0.p("Item"));
+      this.a($$1);
    }
 }

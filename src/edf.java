@@ -1,51 +1,60 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class edf extends ede {
-   final aep i;
+public class edf extends edc {
+   public static final Codec<edf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqa.a(jc.D).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, edf::new)
+   );
+   private final aqa<cit> j;
+   private final boolean k;
 
-   edf(aep $$0, int $$1, int $$2, efh[] $$3, edw[] $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.i = $$0;
+   private edf(aqa<cit> $$0, boolean $$1, int $$2, int $$3, List<efg> $$4, List<edu> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public edd a() {
-      return eda.c;
+   public edb a() {
+      return ecy.f;
    }
 
    @Override
-   public void a(Consumer<ciw> $$0, ech $$1) {
-      ecp $$2 = $$1.a().getLootTable(this.i);
-      $$2.a($$1, $$0);
+   public void a(Consumer<ciy> $$0, ech $$1) {
+      jb.i.c(this.j).forEach($$1x -> $$0.accept(new ciy($$1x)));
    }
 
-   @Override
-   public void a(ecs $$0) {
-      ecj<ecp> $$1 = new ecj<>(ecm.c, this.i);
-      if ($$0.a($$1)) {
-         $$0.a("Table " + this.i + " is recursively called");
+   private boolean a(ech $$0, Consumer<ecz> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         super.a($$0);
-         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.i + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.i));
+         for (final he<cit> $$2 : jb.i.c(this.j)) {
+            $$1.accept(new edc.c() {
+               @Override
+               public void a(Consumer<ciy> $$0, ech $$1) {
+                  $$0.accept(new ciy($$2));
+               }
+            });
+         }
+
+         return true;
       }
    }
 
-   public static ede.a<?> a(aep $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edf($$0, $$1, $$2, $$3, $$4));
+   @Override
+   public boolean expand(ech $$0, Consumer<ecz> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static class a extends ede.e<edf> {
-      public void a(JsonObject $$0, edf $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("name", $$1.i.toString());
-      }
+   public static edc.a<?> a(aqa<cit> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edf($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      protected edf a(JsonObject $$0, JsonDeserializationContext $$1, int $$2, int $$3, efh[] $$4, edw[] $$5) {
-         aep $$6 = new aep(arf.i($$0, "name"));
-         return new edf($$6, $$2, $$3, $$4, $$5);
-      }
+   public static edc.a<?> b(aqa<cit> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edf($$0, true, $$1, $$2, $$3, $$4));
    }
 }

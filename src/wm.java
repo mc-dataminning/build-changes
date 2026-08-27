@@ -1,18 +1,8 @@
-public record wm() implements uw<wl> {
-   public wm(sh $$0) {
-      this();
-   }
-
+public interface wm extends vh {
    @Override
-   public void a(sh $$0) {
+   default sh b() {
+      return sh.e;
    }
 
-   public void a(wl $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public sg c() {
-      return sg.b;
-   }
+   void a(wn var1);
 }

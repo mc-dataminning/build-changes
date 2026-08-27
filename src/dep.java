@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class dep extends def {
+   @Override
+   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
+      return or.k;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dep {
+   @Override
+   protected aeq<dna<?, ?>> a(aru $$0) {
+      return $$0.h() ? or.q : or.r;
+   }
 }

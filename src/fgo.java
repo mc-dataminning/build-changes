@@ -1,38 +1,54 @@
-import com.google.common.collect.ImmutableList;
+public class fgo<T extends bii> extends fex<T> {
+   private static final String a = "upper_body";
+   private final fhn b;
+   private final fhn f;
+   private final fhn g;
+   private final fhn h;
+   private final fhn i;
 
-public class fgo<T extends bwa> extends fdi<T> {
-   private final fhj a;
-   private final fhj b;
-
-   public fgo(fhj $$0) {
-      super(true, 8.0F, 3.35F);
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fgo(fhn $$0) {
+      this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   public static fhp c() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      float $$2 = 0.0F;
-      float $$3 = 22.0F;
-      float $$4 = -3.0F;
-      $$1.a("body", fho.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fhl.a(0.0F, 22.0F, -3.0F));
-      $$1.a("tail", fho.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fhl.a(0.0F, 22.0F, 0.0F));
-      return fhp.a($$0, 16, 16);
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fhr $$3 = new fhr(-0.5F);
+      $$1.a("head", fhs.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fhp.a(0.0F, 4.0F, 0.0F));
+      fhs $$4 = fhs.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fhp.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fhp.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fhs.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fhp.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fhs.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fhp.a(0.0F, 24.0F, 0.0F));
+      return fht.a($$0, 64, 64);
    }
 
    @Override
-   protected Iterable<fhj> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fhj> b() {
-      return ImmutableList.of(this.b);
-   }
-
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$0.aX() ? 1.0F : 1.5F;
-      this.b.f = -$$6 * 0.25F * aro.a(0.3F * $$3);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = arp.a(this.f.f);
+      float $$7 = arp.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
+   }
+
+   @Override
+   public fhn a() {
+      return this.b;
+   }
+
+   public fhn c() {
+      return this.g;
    }
 }

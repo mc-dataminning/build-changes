@@ -1,17 +1,21 @@
-public interface ehk {
-   static ehk a() {
-      return ehp.a;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+
+public class ehk extends AbstractDoubleList {
+   private final int a;
+
+   ehk(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   static ehk a(big $$0) {
-      return new ehp($$0);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   boolean b();
-
-   boolean a(ehy var1, gv var2, boolean var3);
-
-   boolean a(cir var1);
-
-   boolean a(eab var1, eab var2);
+   public int size() {
+      return this.a + 1;
+   }
 }

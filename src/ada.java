@@ -1,42 +1,36 @@
-import java.security.PublicKey;
+public record ada(int a, adl b) implements ux<acz> {
+   private static final int c = 1048576;
 
-public class ada implements uw<acx> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public ada(String $$0, byte[] $$1, byte[] $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ada(si $$0) {
+      this($$0.m(), a($$0.s(), $$0));
    }
 
-   public ada(sh $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   private static adl a(aer $$0, si $$1) {
+      return b($$0, $$1);
+   }
+
+   private static adn b(aer $$0, si $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new adn($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b.a());
+      this.b.a($$0);
    }
 
-   public void a(acx $$0) {
+   public void a(acz $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   public PublicKey d() throws aqo {
-      return aqn.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
+   public adl d() {
+      return this.b;
    }
 }

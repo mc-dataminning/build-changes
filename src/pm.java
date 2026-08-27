@@ -1,35 +1,44 @@
+import java.util.Collection;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class pm extends pl {
-   private final gv a;
-   private final gv b;
-   private final long c;
-
-   public pm(String $$0, gv $$1, gv $$2, long $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public String getMessage() {
-      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
-      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
-   }
-
+public class pm {
+   public static final String a = "defaultBatch";
+   private final String b;
+   private final Collection<qi> c;
    @Nullable
+   private final Consumer<akk> d;
+   @Nullable
+   private final Consumer<akk> e;
+
+   public pm(String $$0, Collection<qi> $$1, @Nullable Consumer<akk> $$2, @Nullable Consumer<akk> $$3) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+      }
+   }
+
    public String a() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public gv b() {
       return this.b;
    }
 
-   @Nullable
-   public gv c() {
-      return this.a;
+   public Collection<qi> b() {
+      return this.c;
+   }
+
+   public void a(akk $$0) {
+      if (this.d != null) {
+         this.d.accept($$0);
+      }
+   }
+
+   public void b(akk $$0) {
+      if (this.e != null) {
+         this.e.accept($$0);
+      }
    }
 }

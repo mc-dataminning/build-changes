@@ -1,20 +1,17 @@
-public class fvg extends ftp<cap, fgw<cap>> {
-   private static final aep a = new aep("textures/entity/warden/warden.png");
-   private static final aep i = new aep("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aep j = new aep("textures/entity/warden/warden_heart.png");
-   private static final aep k = new aep("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aep l = new aep("textures/entity/warden/warden_pulsating_spots_2.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fvg(fsj.a $$0) {
-      super($$0, new fgw<>($$0.a(fhi.bL)), 0.9F);
-      this.a(new fxd<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fgw::e));
-      this.a(new fxd<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aro.b($$2 * 0.045F) * 0.25F), fgw::f));
-      this.a(new fxd<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aro.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fgw::f));
-      this.a(new fxd<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fgw::c));
-      this.a(new fxd<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fgw::d));
+public class fvg extends frl<bwj, fez<bwj>> {
+   private static final Map<bim<?>, aer> a = Maps.newHashMap(
+      ImmutableMap.of(bim.bq, new aer("textures/entity/horse/horse_zombie.png"), bim.aK, new aer("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public fvg(fso.a $$0, fhl $$1) {
+      super($$0, new fez<>($$0.a($$1)), 1.0F);
    }
 
-   public aep a(cap $$0) {
-      return a;
+   public aer a(bwj $$0) {
+      return a.get($$0.ag());
    }
 }

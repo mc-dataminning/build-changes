@@ -1,56 +1,135 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bwr extends bwh {
-   public bwr(bik<? extends bwr> $$0, cpk $$1) {
+public class bwr extends bwm {
+   private int bU = 47999;
+
+   public bwr(bim<? extends bwr> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   public static bkc.a p() {
-      return gz().a(bkd.a, 15.0).a(bkd.d, 0.2F);
-   }
-
    @Override
-   protected void a(art $$0) {
-      this.a(bkd.n).a(a($$0::j));
-   }
-
-   @Override
-   public bjb eQ() {
-      return bjb.b;
-   }
-
-   @Override
-   protected aot r() {
-      return aou.AX;
-   }
-
-   @Override
-   protected aot h_() {
-      return aou.AY;
-   }
-
-   @Override
-   protected aot d(bhe $$0) {
-      return aou.AZ;
+   public boolean gi() {
+      return true;
    }
 
    @Nullable
    @Override
-   public bib a(aki $$0, bib $$1) {
-      return bik.bq.a((cpk)$$0);
+   protected bwm gn() {
+      return bim.ba.a(this.dK());
    }
 
    @Override
-   public bgo b(cbl $$0, bgn $$1) {
-      return !this.go() ? bgo.d : super.b($$0, $$1);
+   public void b(qr $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bU);
    }
 
    @Override
-   protected void gp() {
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bU = $$0.h("DespawnDelay");
+      }
    }
 
    @Override
-   protected float a(bih $$0, float $$1) {
-      return $$0.b - (this.i_() ? 0.03125F : 0.28125F) * $$1;
+   protected void w() {
+      super.w();
+      this.bO.a(1, new bqn(this, 2.0));
+      this.bP.a(1, new bwr.a(this));
+   }
+
+   @Override
+   public void w(int $$0) {
+      this.bU = $$0;
+   }
+
+   @Override
+   protected void f(cbn $$0) {
+      bii $$1 = this.fP();
+      if (!($$1 instanceof cbg)) {
+         super.f($$0);
+      }
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      if (!this.dK().B) {
+         this.gP();
+      }
+   }
+
+   private void gP() {
+      if (this.gQ()) {
+         this.bU = this.gR() ? ((cbg)this.fP()).gi() - 1 : this.bU - 1;
+         if (this.bU <= 0) {
+            this.a(true, false);
+            this.ak();
+         }
+      }
+   }
+
+   private boolean gQ() {
+      return !this.go() && !this.gS() && !this.cU();
+   }
+
+   private boolean gR() {
+      return this.fP() instanceof cbg;
+   }
+
+   private boolean gS() {
+      return this.fO() && !this.gR();
+   }
+
+   @Nullable
+   @Override
+   public bjs a(cqb $$0, bgo $$1, bjc $$2, @Nullable bjs $$3, @Nullable qr $$4) {
+      if ($$2 == bjc.h) {
+         this.c_(0);
+      }
+
+      if ($$3 == null) {
+         $$3 = new bid.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   protected static class a extends bru {
+      private final bwm a;
+      private biy b;
+      private int c;
+
+      public a(bwm $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(bpu.a.d));
+      }
+
+      @Override
+      public boolean a() {
+         if (!this.a.fO()) {
+            return false;
+         } else if (!(this.a.fP() instanceof cbg $$1)) {
+            return false;
+         } else {
+            this.b = $$1.ef();
+            int $$2 = $$1.eg();
+            return $$2 != this.c && this.a(this.b, btl.a);
+         }
+      }
+
+      @Override
+      public void c() {
+         this.e.h(this.b);
+         bii $$0 = this.a.fP();
+         if ($$0 instanceof cbg) {
+            this.c = ((cbg)$$0).eg();
+         }
+
+         super.c();
+      }
    }
 }

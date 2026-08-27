@@ -1,16 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public interface dtf<P extends dte> {
-   dtf<dtd> a = a("constant", dtd.b);
-   dtf<dth> b = a("uniform", dth.a);
-   dtf<dtc> c = a("biased_to_bottom", dtc.a);
-   dtf<dti> d = a("very_biased_to_bottom", dti.a);
-   dtf<dtg> e = a("trapezoid", dtg.a);
-   dtf<dtj> f = a("weighted_list", dtj.a);
+public class dtf extends dtg {
+   public static final dtf a = new dtf(dld.a(0));
+   public static final Codec<dtf> b = aqy.c(dld.a, dld.a.fieldOf("value").codec()).xmap(dtf::new, dtf::b);
+   private final dld d;
 
-   Codec<P> codec();
+   public static dtf a(dld $$0) {
+      return new dtf($$0);
+   }
 
-   private static <P extends dte> dtf<P> a(String $$0, Codec<P> $$1) {
-      return hs.a(jc.O, $$0, () -> $$1);
+   private dtf(dld $$0) {
+      this.d = $$0;
+   }
+
+   public dld b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(aru $$0, dlg $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public dth<?> a() {
+      return dth.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

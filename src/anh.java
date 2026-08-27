@@ -1,70 +1,73 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Stopwatch;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
 
-public class anh implements ank, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private ana b;
-   private final List<ane> c = Lists.newArrayList();
-   private final alz d;
+public class anh extends ans<anh.a> {
+   private static final Logger c = LogUtils.getLogger();
+   private final Stopwatch d = Stopwatch.createUnstarted();
 
-   public anh(alz $$0) {
-      this.d = $$0;
-      this.b = new and($$0, List.of());
+   public anh(anm $$0, List<ang> $$1, Executor $$2, Executor $$3, CompletableFuture<asp> $$4) {
+      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         bda $$8 = new bda(ac.b, () -> 0, false);
+         bda $$9 = new bda(ac.b, () -> 0, false);
+         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$6.addAndGet(ac.c() - $$2xxx);
+            }), $$2xx -> $$5.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$7.addAndGet(ac.c() - $$2xxx);
+            }));
+         return $$10.thenApplyAsync($$5x -> {
+            c.debug("Finished reloading " + $$3x.c());
+            return new anh.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
+         }, $$3);
+      }, $$4);
+      this.d.start();
+      this.b = this.b.thenApplyAsync(this::a, $$3);
    }
 
-   @Override
-   public void close() {
-      this.b.close();
+   private List<anh.a> a(List<anh.a> $$0) {
+      this.d.stop();
+      long $$1 = 0L;
+      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+
+      for (anh.a $$2 : $$0) {
+         bdg $$3 = $$2.b;
+         bdg $$4 = $$2.c;
+         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
+         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
+         long $$7 = $$5 + $$6;
+         String $$8 = $$2.a;
+         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
+         $$1 += $$6;
+      }
+
+      c.info("Total blocking time: {} ms", $$1);
+      return $$0;
    }
 
-   public void a(ane $$0) {
-      this.c.add($$0);
-   }
+   public static class a {
+      final String a;
+      final bdg b;
+      final bdg c;
+      final AtomicLong d;
+      final AtomicLong e;
 
-   public ang a(Executor $$0, Executor $$1, CompletableFuture<asn> $$2, List<aly> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aly::a).collect(Collectors.joining(", "))));
-      this.b.close();
-      this.b = new and(this.d, $$3);
-      return anq.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
-   }
-
-   @Override
-   public Optional<ani> getResource(aep $$0) {
-      return this.b.getResource($$0);
-   }
-
-   @Override
-   public Set<String> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public List<ani> a(aep $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public Map<aep, ani> b(String $$0, Predicate<aep> $$1) {
-      return this.b.b($$0, $$1);
-   }
-
-   @Override
-   public Map<aep, List<ani>> c(String $$0, Predicate<aep> $$1) {
-      return this.b.c($$0, $$1);
-   }
-
-   @Override
-   public Stream<aly> b() {
-      return this.b.b();
+      a(String $$0, bdg $$1, bdg $$2, AtomicLong $$3, AtomicLong $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 }

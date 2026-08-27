@@ -1,20 +1,20 @@
-public class cnp extends cnd {
-   public cnp(cnd.a $$0, bil... $$1) {
-      super($$0, cne.e, $$1);
+public class cnp extends cnf {
+   public cnp(cnf.a $$0, bin... $$1) {
+      super($$0, cng.j, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 * $$0;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 30;
+      return this.a($$0) + 50;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean b() {
+      return true;
    }
 }

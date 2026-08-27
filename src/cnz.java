@@ -1,25 +1,25 @@
-public class cnz extends cnd {
-   public cnz(cnd.a $$0, bil... $$1) {
-      super($$0, cne.i, $$1);
+public class cnz extends cnf {
+   public cnz(cnf.a $$0, bin... $$1) {
+      super($$0, cng.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 1 + ($$0 - 1) * 8;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 20;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public boolean a(cnd $$0) {
-      return super.a($$0) && $$0 != cnh.E && $$0 != cnh.H;
+   public float a(int $$0, bjd $$1) {
+      return $$1 == bjd.e ? (float)$$0 * 2.5F : 0.0F;
    }
 }

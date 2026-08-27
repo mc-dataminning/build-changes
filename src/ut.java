@@ -1,10 +1,8 @@
-public class ut<T extends sn> implements uw<T> {
-   @Override
-   public final void a(sh $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ut {
 }

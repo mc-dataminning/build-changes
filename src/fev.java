@@ -1,197 +1,138 @@
-import com.google.common.collect.ImmutableList;
+public class fev extends fex<byx> {
+   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String j = "eye";
+   private static final String k = "tail0";
+   private static final String l = "tail1";
+   private static final String m = "tail2";
+   private final fhn n;
+   private final fhn o;
+   private final fhn p;
+   private final fhn[] q;
+   private final fhn[] r;
 
-public class fev<T extends bwh> extends fdi<T> {
-   private static final float g = 2.1816616F;
-   private static final float h = (float) (Math.PI / 3);
-   private static final float i = (float) (Math.PI / 4);
-   private static final float j = (float) (Math.PI / 6);
-   private static final float k = (float) (Math.PI / 12);
-   protected static final String a = "head_parts";
-   private static final String l = "left_hind_baby_leg";
-   private static final String m = "right_hind_baby_leg";
-   private static final String n = "left_front_baby_leg";
-   private static final String o = "right_front_baby_leg";
-   private static final String p = "saddle";
-   private static final String q = "left_saddle_mouth";
-   private static final String r = "left_saddle_line";
-   private static final String s = "right_saddle_mouth";
-   private static final String t = "right_saddle_line";
-   private static final String u = "head_saddle";
-   private static final String w = "mouth_saddle_wrap";
-   protected final fhj b;
-   protected final fhj f;
-   private final fhj x;
-   private final fhj y;
-   private final fhj z;
-   private final fhj A;
-   private final fhj B;
-   private final fhj C;
-   private final fhj D;
-   private final fhj E;
-   private final fhj F;
-   private final fhj[] G;
-   private final fhj[] H;
+   public fev(fhn $$0) {
+      this.n = $$0;
+      this.q = new fhn[12];
+      this.o = $$0.b("head");
 
-   public fev(fhj $$0) {
-      super(true, 16.2F, 1.36F, 2.7272F, 2.0F, 20.0F);
-      this.b = $$0.b("body");
-      this.f = $$0.b("head_parts");
-      this.x = $$0.b("right_hind_leg");
-      this.y = $$0.b("left_hind_leg");
-      this.z = $$0.b("right_front_leg");
-      this.A = $$0.b("left_front_leg");
-      this.B = $$0.b("right_hind_baby_leg");
-      this.C = $$0.b("left_hind_baby_leg");
-      this.D = $$0.b("right_front_baby_leg");
-      this.E = $$0.b("left_front_baby_leg");
-      this.F = this.b.b("tail");
-      fhj $$1 = this.b.b("saddle");
-      fhj $$2 = this.f.b("left_saddle_mouth");
-      fhj $$3 = this.f.b("right_saddle_mouth");
-      fhj $$4 = this.f.b("left_saddle_line");
-      fhj $$5 = this.f.b("right_saddle_line");
-      fhj $$6 = this.f.b("head_saddle");
-      fhj $$7 = this.f.b("mouth_saddle_wrap");
-      this.G = new fhj[]{$$1, $$2, $$3, $$6, $$7};
-      this.H = new fhj[]{$$4, $$5};
-   }
-
-   public static fhr a(fhn $$0) {
-      fhr $$1 = new fhr();
-      fhs $$2 = $$1.a();
-      fhs $$3 = $$2.a("body", fho.c().a(0, 32).a(-5.0F, -8.0F, -17.0F, 10.0F, 10.0F, 22.0F, new fhn(0.05F)), fhl.a(0.0F, 11.0F, 5.0F));
-      fhs $$4 = $$2.a("head_parts", fho.c().a(0, 35).a(-2.05F, -6.0F, -2.0F, 4.0F, 12.0F, 7.0F), fhl.a(0.0F, 4.0F, -12.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      fhs $$5 = $$4.a("head", fho.c().a(0, 13).a(-3.0F, -11.0F, -2.0F, 6.0F, 5.0F, 7.0F, $$0), fhl.a);
-      $$4.a("mane", fho.c().a(56, 36).a(-1.0F, -11.0F, 5.01F, 2.0F, 16.0F, 2.0F, $$0), fhl.a);
-      $$4.a("upper_mouth", fho.c().a(0, 25).a(-2.0F, -11.0F, -7.0F, 4.0F, 5.0F, 5.0F, $$0), fhl.a);
-      $$2.a("left_hind_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(4.0F, 14.0F, -12.0F));
-      $$2.a("right_front_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), fhl.a(-4.0F, 14.0F, -12.0F));
-      fhn $$6 = $$0.a(0.0F, 5.5F, 0.0F);
-      $$2.a("left_hind_baby_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_baby_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_baby_leg", fho.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(4.0F, 14.0F, -12.0F));
-      $$2.a("right_front_baby_leg", fho.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$6), fhl.a(-4.0F, 14.0F, -12.0F));
-      $$3.a("tail", fho.c().a(42, 36).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 4.0F, $$0), fhl.a(0.0F, -5.0F, 2.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      $$3.a("saddle", fho.c().a(26, 0).a(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new fhn(0.5F)), fhl.a);
-      $$4.a("left_saddle_mouth", fho.c().a(29, 5).a(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), fhl.a);
-      $$4.a("right_saddle_mouth", fho.c().a(29, 5).a(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), fhl.a);
-      $$4.a("left_saddle_line", fho.c().a(32, 2).a(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), fhl.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("right_saddle_line", fho.c().a(32, 2).a(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), fhl.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("head_saddle", fho.c().a(1, 1).a(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new fhn(0.22F)), fhl.a);
-      $$4.a("mouth_saddle_wrap", fho.c().a(19, 0).a(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new fhn(0.2F)), fhl.a);
-      $$5.a("left_ear", fho.c().a(19, 16).a(0.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new fhn(-0.001F)), fhl.a);
-      $$5.a("right_ear", fho.c().a(19, 16).a(-2.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new fhn(-0.001F)), fhl.a);
-      return $$1;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      boolean $$6 = $$0.i();
-      boolean $$7 = $$0.bO();
-
-      for (fhj $$8 : this.G) {
-         $$8.k = $$6;
+      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
+         this.q[$$1] = this.o.b(a($$1));
       }
 
-      for (fhj $$9 : this.H) {
-         $$9.k = $$7 && $$6;
+      this.p = this.o.b("eye");
+      this.r = new fhn[3];
+      this.r[0] = this.o.b("tail0");
+      this.r[1] = this.r[0].b("tail1");
+      this.r[2] = this.r[1].b("tail2");
+   }
+
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      fhw $$2 = $$1.a(
+         "head",
+         fhs.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         fhp.a
+      );
+      fhs $$3 = fhs.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * a[$$4];
+         float $$9 = (float) Math.PI * b[$$4];
+         float $$10 = (float) Math.PI * f[$$4];
+         $$2.a(a($$4), $$3, fhp.a($$5, $$6, $$7, $$8, $$9, $$10));
       }
 
-      this.b.c = 11.0F;
+      $$2.a("eye", fhs.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fhp.a(0.0F, 0.0F, -8.25F));
+      fhw $$11 = $$2.a("tail0", fhs.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fhp.a);
+      fhw $$12 = $$11.a("tail1", fhs.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fhp.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", fhs.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fhp.a(0.5F, 0.5F, 6.0F));
+      return fht.a($$0, 64, 64);
    }
 
    @Override
-   public Iterable<fhj> a() {
-      return ImmutableList.of(this.f);
+   public fhn a() {
+      return this.n;
    }
 
-   @Override
-   protected Iterable<fhj> b() {
-      return ImmutableList.of(this.b, this.x, this.y, this.z, this.A, this.B, this.C, this.D, this.E);
+   public void a(byx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      float $$7 = (1.0F - $$0.F($$6)) * 0.55F;
+      this.a($$3, $$7);
+      bii $$8 = eqm.O().am();
+      if ($$0.gb()) {
+         $$8 = $$0.gc();
+      }
+
+      if ($$8 != null) {
+         ehe $$9 = $$8.j(0.0F);
+         ehe $$10 = $$0.j(0.0F);
+         double $$11 = $$9.d - $$10.d;
+         if ($$11 > 0.0) {
+            this.p.c = 0.0F;
+         } else {
+            this.p.c = 1.0F;
+         }
+
+         ehe $$12 = $$0.f(0.0F);
+         $$12 = new ehe($$12.c, 0.0, $$12.e);
+         ehe $$13 = new ehe($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
+         double $$14 = $$12.b($$13);
+         this.p.b = arp.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      }
+
+      this.p.k = true;
+      float $$15 = $$0.E($$6);
+      this.r[0].f = arp.a($$15) * (float) Math.PI * 0.05F;
+      this.r[1].f = arp.a($$15) * (float) Math.PI * 0.1F;
+      this.r[2].f = arp.a($$15) * (float) Math.PI * 0.15F;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = aro.j($$3, $$0.aV, $$0.aU);
-      float $$5 = aro.j($$3, $$0.aX, $$0.aW);
-      float $$6 = aro.i($$3, $$0.O, $$0.dC());
-      float $$7 = $$5 - $$4;
-      float $$8 = $$6 * (float) (Math.PI / 180.0);
-      if ($$7 > 20.0F) {
-         $$7 = 20.0F;
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.q[$$2].b = b($$2, $$0, $$1);
+         this.q[$$2].c = c($$2, $$0, $$1);
+         this.q[$$2].d = d($$2, $$0, $$1);
       }
+   }
 
-      if ($$7 < -20.0F) {
-         $$7 = -20.0F;
-      }
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + arp.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
 
-      if ($$2 > 0.2F) {
-         $$8 += aro.b($$1 * 0.8F) * 0.15F * $$2;
-      }
+   private static float b(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
+   }
 
-      float $$9 = $$0.E($$3);
-      float $$10 = $$0.F($$3);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.G($$3);
-      boolean $$13 = $$0.cm != 0;
-      float $$14 = (float)$$0.ah + $$3;
-      this.f.c = 4.0F;
-      this.f.d = -12.0F;
-      this.b.e = 0.0F;
-      this.f.e = (float) (Math.PI / 6) + $$8;
-      this.f.f = $$7 * (float) (Math.PI / 180.0);
-      float $$15 = $$0.aX() ? 0.2F : 1.0F;
-      float $$16 = aro.b($$15 * $$1 * 0.6662F + (float) Math.PI);
-      float $$17 = $$16 * 0.8F * $$2;
-      float $$18 = (1.0F - Math.max($$10, $$9)) * ((float) (Math.PI / 6) + $$8 + $$12 * aro.a($$14) * 0.05F);
-      this.f.e = $$10 * ((float) (Math.PI / 12) + $$8) + $$9 * (2.1816616F + aro.a($$14) * 0.05F) + $$18;
-      this.f.f = $$10 * $$7 * (float) (Math.PI / 180.0) + (1.0F - Math.max($$10, $$9)) * this.f.f;
-      this.f.c = $$10 * -4.0F + $$9 * 11.0F + (1.0F - Math.max($$10, $$9)) * this.f.c;
-      this.f.d = $$10 * -4.0F + $$9 * -12.0F + (1.0F - Math.max($$10, $$9)) * this.f.d;
-      this.b.e = $$10 * (float) (-Math.PI / 4) + $$11 * this.b.e;
-      float $$19 = (float) (Math.PI / 12) * $$10;
-      float $$20 = aro.b($$14 * 0.6F + (float) Math.PI);
-      this.A.c = 2.0F * $$10 + 14.0F * $$11;
-      this.A.d = -6.0F * $$10 - 10.0F * $$11;
-      this.z.c = this.A.c;
-      this.z.d = this.A.d;
-      float $$21 = ((float) (-Math.PI / 3) + $$20) * $$10 + $$17 * $$11;
-      float $$22 = ((float) (-Math.PI / 3) - $$20) * $$10 - $$17 * $$11;
-      this.y.e = $$19 - $$16 * 0.5F * $$2 * $$11;
-      this.x.e = $$19 + $$16 * 0.5F * $$2 * $$11;
-      this.A.e = $$21;
-      this.z.e = $$22;
-      this.F.e = (float) (Math.PI / 6) + $$2 * 0.75F;
-      this.F.c = -5.0F + $$2;
-      this.F.d = 2.0F + $$2 * 2.0F;
-      if ($$13) {
-         this.F.f = aro.b($$14 * 0.7F);
-      } else {
-         this.F.f = 0.0F;
-      }
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + h[$$0] * a($$0, $$1, $$2);
+   }
 
-      this.B.c = this.x.c;
-      this.B.d = this.x.d;
-      this.B.e = this.x.e;
-      this.C.c = this.y.c;
-      this.C.d = this.y.d;
-      this.C.e = this.y.e;
-      this.D.c = this.z.c;
-      this.D.d = this.z.d;
-      this.D.e = this.z.e;
-      this.E.c = this.A.c;
-      this.E.d = this.A.d;
-      this.E.e = this.A.e;
-      boolean $$23 = $$0.i_();
-      this.x.k = !$$23;
-      this.y.k = !$$23;
-      this.z.k = !$$23;
-      this.A.k = !$$23;
-      this.B.k = $$23;
-      this.C.k = $$23;
-      this.D.k = $$23;
-      this.E.k = $$23;
-      this.b.c = $$23 ? 10.8F : 0.0F;
+   private static float d(int $$0, float $$1, float $$2) {
+      return i[$$0] * a($$0, $$1, $$2);
    }
 }

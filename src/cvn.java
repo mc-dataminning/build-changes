@@ -1,49 +1,79 @@
-import javax.annotation.Nullable;
+public class cvn extends cwh {
+   public static final int a = 3;
+   public static final dga b = dfq.as;
+   private static final int c = 4;
+   private static final int d = 2;
 
-public class cvn extends crf {
-   protected cvn(dex.d $$0) {
+   public cvn(dez.d $$0) {
       super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dck a(gv $$0, dey $$1) {
-      return new ddf($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
-      return a($$0, $$2, dcm.a);
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(cpk $$0, gv $$1, cbl $$2) {
-      dck $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddf) {
-         $$2.a((bgr)$$3);
-         $$2.a(ape.am);
-      }
-   }
+   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(b) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         gu.a $$4 = new gu.a();
 
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aou.iR, aov.e, 1.0F, 1.0F, false);
+         for (ha $$5 : ha.values()) {
+            $$4.a($$2, $$5);
+            dfa $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, arp.a($$3, 20, 40));
+            }
          }
-
-         hb $$7 = $$0.c(a);
-         hb.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == hb.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == hb.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(iw.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(iw.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      } else {
+         $$1.a($$2, this, arp.a($$3, 20, 40));
       }
+   }
+
+   private boolean e(dfa $$0, cpm $$1, gu $$2) {
+      int $$3 = $$0.c(b);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   public void a(dfa $$0, cpm $$1, gu $$2, csm $$3, gu $$4, boolean $$5) {
+      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(cos $$0, gu $$1, int $$2) {
+      int $$3 = 0;
+      gu.a $$4 = new gu.a();
+
+      for (ha $$5 : ha.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public ciy a(cos $$0, gu $$1, dfa $$2) {
+      return ciy.b;
    }
 }

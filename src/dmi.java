@@ -1,32 +1,61 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmi extends dmf {
-   public static final Codec<dmi> a = RecordCodecBuilder.create(
+public class dmi {
+   public static final dmi a = new dmi(false, csn.gz.n(), csn.pL.n(), csn.ek.n(), csn.aQ.n());
+   public static final Codec<dmi> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dmf.d.forGetter($$0x -> $$0x),
-               bfr.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bfr.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bfr.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dmi::a),
+               dfa.b.optionalFieldOf("air_state", a.b()).forGetter(dmi::b),
+               dfa.b.optionalFieldOf("water_state", a.b()).forGetter(dmi::c),
+               dfa.b.optionalFieldOf("lava_state", a.b()).forGetter(dmi::d),
+               dfa.b.optionalFieldOf("barrier_state", a.b()).forGetter(dmi::e)
             )
             .apply($$0, dmi::new)
    );
-   public final bfr b;
-   public final bfr c;
-   final bfr j;
+   private final boolean c;
+   private final dfa d;
+   private final dfa e;
+   private final dfa f;
+   private final dfa g;
 
-   public dmi(float $$0, dte $$1, bfr $$2, dlb $$3, dmg $$4, hj<csk> $$5, bfr $$6, bfr $$7, bfr $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public static dmi a(boolean $$0, dfa $$1, dfa $$2, dfa $$3, dfa $$4) {
+      return new dmi($$0, $$1, $$2, $$3, $$4);
    }
 
-   public dmi(float $$0, dte $$1, bfr $$2, dlb $$3, hj<csk> $$4, bfr $$5, bfr $$6, bfr $$7) {
-      this($$0, $$1, $$2, $$3, dmg.a, $$4, $$5, $$6, $$7);
+   public static dmi a(dfa $$0, dfa $$1, dfa $$2, dfa $$3) {
+      return new dmi(false, $$0, $$1, $$2, $$3);
    }
 
-   public dmi(dmf $$0, bfr $$1, bfr $$2, bfr $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public static dmi a(boolean $$0, dfa $$1) {
+      return new dmi($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private dmi(boolean $$0, dfa $$1, dfa $$2, dfa $$3, dfa $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dfa b() {
+      return this.d;
+   }
+
+   public dfa c() {
+      return this.e;
+   }
+
+   public dfa d() {
+      return this.f;
+   }
+
+   public dfa e() {
+      return this.g;
    }
 }

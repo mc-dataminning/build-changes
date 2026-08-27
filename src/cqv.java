@@ -1,84 +1,57 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cqv extends cqm {
-   private static final MapCodec<hf<cqi>> d = cqi.c.fieldOf("biome");
-   public static final MapCodec<cqr.c<hf<cqi>>> b = cqr.c.a(d).fieldOf("biomes");
-   private static final MapCodec<hf<cqw>> e = cqw.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<cqv> c = Codec.mapEither(b, e).xmap(cqv::new, $$0 -> $$0.f).codec();
-   private final Either<cqr.c<hf<cqi>>, hf<cqw>> f;
+public class cqv extends cqo implements cqm.a {
+   public static final Codec<cqv> b = cqk.c.fieldOf("biome").xmap(cqv::new, $$0 -> $$0.c).stable().codec();
+   private final he<cqk> c;
 
-   private cqv(Either<cqr.c<hf<cqi>>, hf<cqw>> $$0) {
-      this.f = $$0;
-   }
-
-   public static cqv a(cqr.c<hf<cqi>> $$0) {
-      return new cqv(Either.left($$0));
-   }
-
-   public static cqv a(hf<cqw> $$0) {
-      return new cqv(Either.right($$0));
-   }
-
-   private cqr.c<hf<cqi>> d() {
-      return (cqr.c<hf<cqi>>)this.f.map($$0 -> $$0, $$0 -> ((cqw)$$0.a()).a());
+   public cqv(he<cqk> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected Stream<hf<cqi>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   protected Stream<he<cqk>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected Codec<? extends cqm> a() {
-      return c;
-   }
-
-   public boolean a(aeo<cqw> $$0) {
-      Optional<hf<cqw>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   protected Codec<? extends cqo> a() {
+      return b;
    }
 
    @Override
-   public hf<cqi> getNoiseBiome(int $$0, int $$1, int $$2, cqr.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @aso
-   public hf<cqi> a(cqr.h $$0) {
-      return this.d().a($$0);
+   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2, cqt.f $$3) {
+      return this.c;
    }
 
    @Override
-   public void a(List<String> $$0, gv $$1, cqr.f $$2) {
-      int $$3 = hr.a($$1.u());
-      int $$4 = hr.a($$1.v());
-      int $$5 = hr.a($$1.w());
-      cqr.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cqr.a($$6.d());
-      float $$8 = cqr.a($$6.e());
-      float $$9 = cqr.a($$6.b());
-      float $$10 = cqr.a($$6.c());
-      float $$11 = cqr.a($$6.g());
-      double $$12 = (double)dko.a($$11);
-      cqy $$13 = new cqy();
-      $$0.add(
-         "Biome builder PV: "
-            + cqy.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<gu, he<cqk>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<he<cqk>> $$5, aru $$6, boolean $$7, cqt.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new gu($$0, $$1, $$2), this.c) : Pair.of(new gu($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<gu, he<cqk>> a(gu $$0, int $$1, int $$2, int $$3, Predicate<he<cqk>> $$4, cqt.f $$5, cpp $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<he<cqk>> a(int $$0, int $$1, int $$2, int $$3, cqt.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

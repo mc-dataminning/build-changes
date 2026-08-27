@@ -1,62 +1,66 @@
-public class fjz extends flw {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+public class fjz extends fmb {
+   private final float a;
+   private final float b;
 
-   protected fjz(fie $$0, double $$1, double $$2, double $$3, flr $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+   fjz(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ciy $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public fla b() {
-      return fla.b;
+   public flf b() {
+      return flf.a;
+   }
+
+   protected fjz(fii $$0, double $$1, double $$2, double $$3, ciy $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(eqm.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements fle<ir> {
+      public flb a(ir $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fjz($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
+   }
 
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
+   public static class b implements fle<iy> {
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fjz($$1, $$2, $$3, $$4, new ciy(cjb.qc));
+      }
+   }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
+   public static class c implements fle<iy> {
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fjz($$1, $$2, $$3, $$4, new ciy(cjb.pO));
       }
    }
 }

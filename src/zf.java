@@ -1,32 +1,24 @@
-public class zf implements uw<wo> {
-   private final double a;
-   private final double b;
+public class zf implements ux<wp> {
+   private final tf a;
 
-   public zf(dgp $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+   public zf(tf $$0) {
+      this.a = $$0;
    }
 
-   public zf(sh $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
+   public zf(si $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
-   }
-
-   public double d() {
+   public tf a() {
       return this.a;
    }
 }

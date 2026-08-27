@@ -1,49 +1,25 @@
-public class fwt extends fwr<bve, fga<bve>> {
-   private static final aep a = new aep("textures/entity/sheep/sheep_fur.png");
-   private final ffz<bve> b;
+public class fwt<T extends cbn> extends fww<T, fft<T>> {
+   private final ffo a;
 
-   public fwt(fue<bve, fga<bve>> $$0, fhf $$1) {
+   public fwt(fuj<T, fft<T>> $$0, fhj $$1) {
       super($$0);
-      this.b = new ffz<>($$1.a(fhi.bc));
+      this.a = new ffo($$1.a(fhm.aA));
    }
 
-   public void a(elh $$0, fng $$1, int $$2, bve $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.t()) {
-         if ($$3.cd()) {
-            eqn $$10 = eqn.N();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               ell $$12 = $$1.getBuffer(fno.p(a));
-               this.b.a($$0, $$12, $$2, ftk.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ac() && "jeb_".equals($$3.ab().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ah / 25 + $$3.ah();
-               int $$15 = chk.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
-               float[] $$19 = bve.a(chk.a($$16));
-               float[] $$20 = bve.a(chk.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = bve.a($$3.q());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
+   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
 
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
-         }
-      }
+   private void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      qr $$9 = $$8 ? $$3.gh() : $$3.gi();
+      bim.a($$9.l("id")).filter($$0x -> $$0x == bim.at).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
+         bva.b $$11 = bva.b.a($$9.h("Variant"));
+         elk $$12 = $$1.getBuffer(this.a.a(fua.a($$11)));
+         this.a.a($$0, $$12, $$2, fyc.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.b();
+      });
    }
 }

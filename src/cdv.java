@@ -1,38 +1,93 @@
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class cdv {
-   public static final cdr a;
-   public static final cdr b;
-   public static final cdr c;
-   public static final cds d;
-   public static final Codec<cdt> e;
-   public static final cdt f;
-   public static final cdt g;
+public final class cdv {
+   private static final cdv b = new cdv(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cdw c;
+   private final long d;
 
-   public static String a(cdt $$0, cdt $$1) {
-      return a(d, $$0, $$1);
+   private cdv(@Nullable cdw $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static String a(cds $$0, cdt $$1, cdt $$2) {
-      Set<aep> $$3 = $$0.b($$2);
-      Set<aep> $$4 = $$0.b($$1);
-      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(aep::toString).collect(Collectors.joining(", "));
+   static cdv a(cdw $$0, Collection<cdt> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cdv($$0, $$2);
+      }
    }
 
-   public static boolean a(cdt $$0) {
-      return !$$0.a(f);
+   public static cdv a() {
+      return b;
    }
 
-   static {
-      cds.a $$0 = new cds.a("main");
-      a = $$0.a("vanilla");
-      b = $$0.a("bundle");
-      c = $$0.a("trade_rebalance");
-      d = $$0.a();
-      e = d.b();
-      f = cdt.a(a);
-      g = f;
+   public static cdv a(cdt $$0) {
+      return new cdv($$0.a, $$0.b);
+   }
+
+   public static cdv a(cdt $$0, cdt... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cdv($$0.a, $$2);
+   }
+
+   private static long a(cdw $$0, long $$1, Iterable<cdt> $$2) {
+      for (cdt $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(cdt $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean a(cdv $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public cdv b(cdv $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cdv(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cdv $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

@@ -1,33 +1,13 @@
+import javax.annotation.Nullable;
+
 public class bto {
-   public static boolean a(biy $$0) {
-      return $$0.H() instanceof bsf;
-   }
-
-   public static boolean a(bjf $$0, int $$1) {
-      return $$0.fM() && $$0.fJ().a($$0.di(), (double)($$0.fK() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(gv $$0, bjf $$1) {
-      return $$0.v() < $$1.dK().C_() || $$0.v() > $$1.dK().aj();
-   }
-
-   public static boolean a(boolean $$0, bjf $$1, gv $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bsg $$0, gv $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bjf $$0, gv $$1) {
-      return $$0.dK().b_($$1).a(apo.a);
-   }
-
-   public static boolean b(bjf $$0, gv $$1) {
-      return $$0.a(eav.a($$0.dK(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bjf $$0, gv $$1) {
-      return $$0.dK().a_($$1).e();
+   @Nullable
+   public static ehe a(bjh $$0, int $$1, int $$2, int $$3, ehe $$4, double $$5) {
+      ehe $$6 = $$4.a($$0.dp(), $$0.dr(), $$0.dv());
+      boolean $$7 = btq.a($$0, $$1);
+      return btt.a($$0, () -> {
+         gu $$7x = btn.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
+         return $$7x != null && !btq.a($$0, $$7x) ? $$7x : null;
+      });
    }
 }

@@ -1,102 +1,66 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class ewo extends exv {
-   private static final int k = 20;
-   private final te l;
-   private etb m = etb.a;
-   protected te a;
-   protected te b;
-   private int n;
-   protected final BooleanConsumer c;
-   private final List<esi> o = Lists.newArrayList();
+public class ewo {
+   private static final tf a = tf.c("gui.banned.title.temporary").a(n.r);
+   private static final tf b = tf.c("gui.banned.title.permanent").a(n.r);
 
-   public ewo(BooleanConsumer $$0, te $$1, te $$2) {
-      this($$0, $$1, $$2, td.f, td.g);
+   public static ewr a(BooleanConsumer $$0, BanDetails $$1) {
+      return new ewr($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", te.m, true);
    }
 
-   public ewo(BooleanConsumer $$0, te $$1, te $$2, te $$3, te $$4) {
-      super($$1);
-      this.c = $$0;
-      this.l = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   private static tf a(BanDetails $$0) {
+      return f($$0) ? a : b;
    }
 
-   @Override
-   public te e() {
-      return td.a(super.e(), this.l);
+   private static tf b(BanDetails $$0) {
+      return tf.a("gui.banned.description", c($$0), d($$0), tf.b("https://aka.ms/mcjavamoderation"));
    }
 
-   @Override
-   protected void aE_() {
-      super.aE_();
-      this.m = etb.a(this.i, this.l, this.g - 50);
-      int $$0 = aro.a(this.B() + this.C() + 20, this.h / 6 + 96, this.h - 24);
-      this.o.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(esi.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
-      this.a(esi.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(esi $$0) {
-      this.o.add(this.d($$0));
-   }
-
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.l(), 16777215);
-      this.m.a($$0, this.g / 2, this.B());
-   }
-
-   private int l() {
-      int $$0 = (this.h - this.C()) / 2;
-      return aro.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int B() {
-      return this.l() + 20;
-   }
-
-   private int C() {
-      return this.m.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-
-      for (esi $$1 : this.o) {
-         $$1.i = false;
-      }
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      if (--this.n == 0) {
-         for (esi $$0 : this.o) {
-            $$0.i = true;
+   private static tf c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fjc $$4 = fjc.a($$3);
+         tf $$5;
+         if ($$4 != null) {
+            $$5 = th.a($$4.a().e(), ub.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = tf.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = tf.a("gui.banned.description.reason_id", $$3).a(n.r);
          }
-      }
-   }
 
-   @Override
-   public boolean aA_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
+         return tf.a("gui.banned.description.reason", $$5);
       } else {
-         return super.a($$0, $$1, $$2);
+         return tf.c("gui.banned.description.unknownreason");
       }
+   }
+
+   private static tf d(BanDetails $$0) {
+      if (f($$0)) {
+         tf $$1 = e($$0);
+         return tf.a("gui.banned.description.temporary", tf.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return tf.c("gui.banned.description.permanent").a(n.r);
+      }
+   }
+
+   private static tf e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return te.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? te.c($$1.toMinutes()) : te.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

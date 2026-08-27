@@ -1,14 +1,8 @@
-import com.google.gson.JsonObject;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gae implements amk<gad> {
-   public gad b(JsonObject $$0) {
-      boolean $$1 = arf.a($$0, "blur", false);
-      boolean $$2 = arf.a($$0, "clamp", false);
-      return new gad($$1, $$2);
-   }
-
-   @Override
-   public String a() {
-      return "texture";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gae {
 }

@@ -1,65 +1,42 @@
 import java.util.EnumSet;
 
-public class bqi extends bps {
-   private final biy a;
-   private biw b;
-   private int c;
+public class bqi extends bpu {
+   private final bjh a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public bqi(biy $$0) {
+   public bqi(bjh $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bps.a.a, bps.a.b));
+      this.e = $$1;
+      this.a(EnumSet.of(bpu.a.a));
    }
 
    @Override
    public boolean a() {
-      biw $$0 = this.a.j();
-      if ($$0 == null) {
+      if (this.a.fI()) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         ehe $$0 = btp.a(this.a, 16, 7, ehe.c(this.a.fJ()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bv()) {
-         return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.H().l() || this.a();
-      }
+      return !this.a.H().l();
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.a.H().n();
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.D().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
-      double $$1 = this.a.i(this.b.dp(), this.b.dr(), this.b.dv());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.H().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
-         }
-      }
+   public void c() {
+      this.a.H().a(this.b, this.c, this.d, this.e);
    }
 }

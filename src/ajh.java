@@ -1,197 +1,127 @@
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.io.IOException;
 import org.slf4j.Logger;
 
-public class ajh extends ajk<ajh> {
-   static final Logger aa = LogUtils.getLogger();
-   private static final Pattern ab = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter ac = Splitter.on(',').trimResults();
-   public final boolean a = this.a("online-mode", true);
-   public final boolean b = this.a("prevent-proxy-connections", false);
-   public final String c = this.a("server-ip", "");
-   public final boolean d = this.a("spawn-animals", true);
-   public final boolean e = this.a("spawn-npcs", true);
-   public final boolean f = this.a("pvp", true);
-   public final boolean g = this.a("allow-flight", false);
-   public final String h = this.a("motd", "A Minecraft Server");
-   public final boolean i = this.a("force-gamemode", false);
-   public final boolean j = this.a("enforce-whitelist", false);
-   public final bgl k = this.a("difficulty", a(bgl::a, bgl::a), bgl::e, bgl.b);
-   public final cph l = this.a("gamemode", a(cph::a, cph::a), cph::b, cph.a);
-   public final String m = this.a("level-name", "world");
-   public final int n = this.a("server-port", 25565);
-   @Nullable
-   public final Boolean o = this.b("announce-player-achievements");
-   public final boolean p = this.a("enable-query", false);
-   public final int q = this.a("query.port", 25565);
-   public final boolean r = this.a("enable-rcon", false);
-   public final int s = this.a("rcon.port", 25575);
-   public final String t = this.a("rcon.password", "");
-   public final boolean u = this.a("hardcore", false);
-   public final boolean v = this.a("allow-nether", true);
-   public final boolean w = this.a("spawn-monsters", true);
-   public final boolean x = this.a("use-native-transport", true);
-   public final boolean y = this.a("enable-command-block", false);
-   public final int z = this.a("spawn-protection", 16);
-   public final int A = this.a("op-permission-level", 4);
-   public final int B = this.a("function-permission-level", 2);
-   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
-   public final int D = this.a("max-chained-neighbor-updates", 1000000);
-   public final int E = this.a("rate-limit", 0);
-   public final int F = this.a("view-distance", 10);
-   public final int G = this.a("simulation-distance", 10);
-   public final int H = this.a("max-players", 20);
-   public final int I = this.a("network-compression-threshold", 256);
-   public final boolean J = this.a("broadcast-rcon-to-ops", true);
-   public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> aro.a($$0x, 1, 29999984), 29999984);
-   public final boolean M = this.a("sync-chunk-writes", true);
-   public final boolean N = this.a("enable-jmx-monitoring", false);
-   public final boolean O = this.a("enable-status", true);
-   public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> aro.a($$0x, 10, 1000), 100);
-   public final String R = this.a("text-filtering-config", "");
-   public final Optional<MinecraftServer.b> S;
-   public final coy T;
-   public final ajk<ajh>.a<Integer> U = this.b("player-idle-timeout", 0);
-   public final ajk<ajh>.a<Boolean> V = this.b("white-list", false);
-   public final boolean W = this.a("enforce-secure-profile", true);
-   public final boolean X = this.a("log-ips", true);
-   private final ajh.a ad;
-   public final dlf Y;
+public class ajh extends anz {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ajh(Properties $$0) {
-      super($$0);
-      String $$1 = this.a("level-seed", "");
-      boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dlf.a($$1).orElse(dlf.f());
-      this.Y = new dlf($$3, $$2, false);
-      this.ad = new ajh.a(
-         this.a("generator-settings", $$0x -> arf.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dun.a.a().toString())
-      );
-      this.S = a(
-         this.a("resource-pack", ""),
-         this.a("resource-pack-sha1", ""),
-         this.a("resource-pack-hash"),
-         this.a("require-resource-pack", false),
-         this.a("resource-pack-prompt", "")
-      );
-      this.T = b(this.a("initial-enabled-packs", String.join(",", cqd.c.a().a())), this.a("initial-disabled-packs", String.join(",", cqd.c.a().b())));
-   }
-
-   public static ajh a(Path $$0) {
-      return new ajh(b($$0));
-   }
-
-   protected ajh a(ht $$0, Properties $$1) {
-      return new ajh($$1);
-   }
-
-   @Nullable
-   private static te c(String $$0) {
-      if (!Strings.isNullOrEmpty($$0)) {
-         try {
-            return te.a.a($$0);
-         } catch (Exception var2) {
-            aa.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
-         }
-      }
-
-      return null;
-   }
-
-   private static Optional<MinecraftServer.b> a(String $$0, String $$1, @Nullable String $$2, boolean $$3, String $$4) {
-      if ($$0.isEmpty()) {
-         return Optional.empty();
-      } else {
-         String $$5;
-         if (!$$1.isEmpty()) {
-            $$5 = $$1;
-            if (!Strings.isNullOrEmpty($$2)) {
-               aa.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-            }
-         } else if (!Strings.isNullOrEmpty($$2)) {
-            aa.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            $$5 = $$2;
-         } else {
-            $$5 = "";
-         }
-
-         if ($$5.isEmpty()) {
-            aa.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-         } else if (!ab.matcher($$5).matches()) {
-            aa.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         te $$8 = c($$4);
-         return Optional.of(new MinecraftServer.b($$0, $$5, $$3, $$8));
+   public ajh(aji $$0, hl<afa> $$1, eca $$2) {
+      super($$0, $$1, $$2, $$0.a().H);
+      ajj $$3 = $$0.a();
+      this.a($$3.F);
+      this.b($$3.G);
+      super.a($$3.V.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
       }
    }
 
-   private static coy b(String $$0, String $$1) {
-      List<String> $$2 = ac.splitToList($$0);
-      List<String> $$3 = ac.splitToList($$1);
-      return new coy($$2, $$3);
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
    }
 
-   private static cdt d(String $$0) {
-      return cdv.d.a(ac.splitToStream($$0).<aep>mapMulti(($$0x, $$1) -> {
-         aep $$2 = aep.a($$0x);
-         if ($$2 == null) {
-            aa.warn("Invalid resource location {}, ignoring", $$0x);
-         } else {
-            $$1.accept($$2);
-         }
-      }).collect(Collectors.toList()));
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
    }
 
-   public dlc a(ht $$0) {
-      return this.ad.a($$0);
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
    }
 
-   static record a(JsonObject a, String b) {
-      private static final Map<String, aeo<dum>> c = Map.of("default", dun.a, "largebiomes", dun.c);
+   @Override
+   public void a() {
+      this.C();
+   }
 
-      public dlc a(ht $$0) {
-         hs<dum> $$1 = $$0.d(jd.aF);
-         hf.c<dum> $$2 = $$1.b(dun.a)
-            .or(() -> $$1.h().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         hf<dum> $$3 = Optional.ofNullable(aep.a(this.b))
-            .map($$0x -> aeo.a(jd.aF, $$0x))
-            .or(() -> Optional.ofNullable(c.get(this.b)))
-            .flatMap($$1::b)
-            .orElseGet(() -> {
-               ajh.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.g().a());
-               return $$2;
-            });
-         dlc $$4 = $$3.a().a();
-         if ($$3.a(dun.b)) {
-            aen<JsonElement> $$5 = aen.a(JsonOps.INSTANCE, $$0);
-            Optional<dta> $$6 = dta.a.parse(new Dynamic($$5, this.a())).resultOrPartial(ajh.aa::error);
-            if ($$6.isPresent()) {
-               return $$4.a($$0, new dkc($$6.get()));
-            }
-         }
-
-         return $$4;
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         a.warn("Failed to save ip banlist: ", var2);
       }
+   }
+
+   private void x() {
+      try {
+         this.f().e();
+      } catch (IOException var2) {
+         a.warn("Failed to save user banlist: ", var2);
+      }
+   }
+
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         a.warn("Failed to load ip banlist: ", var2);
+      }
+   }
+
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         a.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         a.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         a.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         a.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         a.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.g($$0) || this.i().a($$0);
+   }
+
+   public aji b() {
+      return (aji)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

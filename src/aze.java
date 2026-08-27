@@ -1,12 +1,9 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
 public class aze extends DataFix {
    public aze(Schema $$0, boolean $$1) {
@@ -14,20 +11,11 @@ public class aze extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(aym.E.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(aym.E))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(
-            "TeamDisplayNameFix",
-            $$0,
-            $$0x -> $$0xx -> $$0xx.mapSecond(
-                     $$0xxx -> $$0xxx.update(
-                           "DisplayName",
-                           $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxxx -> te.a.a(te.b($$0xxxxx))).map($$0xxx::createString).result(), $$1)
-                        )
-                  )
-         );
-      }
+      Type<?> $$0 = this.getInputSchema().getType(ayp.C);
+      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), aze::a));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
    }
 }

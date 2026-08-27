@@ -1,47 +1,60 @@
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum fix {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
+public enum fix implements ash {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   private final te n;
+   public static final Codec<fix> d = ash.a(fix::values);
+   private final String e;
 
    private fix(String $$0) {
-      this.n = te.c("gui.banned.reason." + $$0);
+      this.e = $$0;
    }
 
-   public te a() {
-      return this.n;
+   public static fix a(tu $$0, tf $$1, Instant $$2) {
+      if (!$$0.h() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(tu $$0, tf $$1) {
+      if (!$$1.getString().contains($$0.b())) {
+         return true;
+      } else {
+         tf $$2 = $$0.m();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(tf $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ub.a).orElse(false);
+   }
+
+   private static boolean a(ub $$0) {
+      return !$$0.k().equals(ub.c);
+   }
+
+   public boolean a() {
+      return this == c;
    }
 
    @Nullable
-   public static fix a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
+   public eqh a(tu $$0) {
+      return switch (this) {
+         case b -> eqh.a($$0.b());
+         case c -> eqh.c();
          default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
       };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

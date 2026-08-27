@@ -1,62 +1,57 @@
-import org.apache.commons.lang3.Validate;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.serialization.Dynamic;
+import java.util.Set;
 
-public class ass {
-   private static final int a = 6;
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
+public enum ass {
+   a(ayp.a),
+   b(ayp.b),
+   c(ayp.c),
+   d(ayp.d),
+   e(ayp.e),
+   f(ayp.f),
+   g(ayp.g),
+   h(ayp.h),
+   i(ayp.i),
+   j(ayp.j),
+   k(ayp.k),
+   l(ayp.l),
+   m(ayp.m),
+   n(ayp.o),
+   o(ayp.n),
+   p(ayp.p),
+   q(ayp.q),
+   r(ayp.I),
+   s(ayp.r);
 
-   public ass(int $$0, int $$1) {
-      this($$0, $$1, new long[aro.d($$1 * $$0, 64) / 64]);
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private ass(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   public ass(int $$0, int $$1, long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.b = $$2;
-      this.d = (1L << $$0) - 1L;
-      int $$3 = aro.d($$1 * $$0, 64) / 64;
-      if ($$2.length != $$3) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
-      }
+   private static int a() {
+      return aa.b().d().c();
    }
 
-   public void a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = $$0 * this.c;
-      int $$3 = $$2 >> 6;
-      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$5 = $$2 ^ $$3 << 6;
-      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
-      if ($$3 != $$4) {
-         int $$6 = 64 - $$5;
-         int $$7 = this.c - $$6;
-         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
-      }
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = $$0 * this.c;
-      int $$2 = $$1 >> 6;
-      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$4 = $$1 ^ $$2 << 6;
-      if ($$2 == $$3) {
-         return (int)(this.b[$$2] >>> $$4 & this.d);
-      } else {
-         int $$5 = 64 - $$4;
-         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
-      }
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   public long[] a() {
-      return this.b;
+   public qr a(DataFixer $$0, qr $$1, int $$2, int $$3) {
+      return (qr)this.a($$0, new Dynamic(rc.a, $$1), $$2, $$3).getValue();
    }
 
-   public int b() {
-      return this.c;
+   public qr a(DataFixer $$0, qr $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

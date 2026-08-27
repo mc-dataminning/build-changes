@@ -1,36 +1,89 @@
-import java.util.HashMap;
-import java.util.Map;
+public interface rv extends rh {
+   rv a = new rv() {
+   };
 
-public record rv(int a, Map<String, rn<?>> b, Map<String, rv> c) {
-   private rv(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+   @Override
+   default rh.b a() {
+      return rh.b.a;
    }
 
-   public static rv a() {
-      return new rv(1);
+   @Override
+   default rh.b a(String $$0) {
+      return rh.b.a;
    }
 
-   public void a(ru $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new rv(this.a + 1)).a($$0);
-      } else {
-         this.b.put($$0.c(), $$0.b());
-      }
+   @Override
+   default rh.b a(byte $$0) {
+      return rh.b.a;
    }
 
-   public boolean a(rn<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
+   @Override
+   default rh.b a(short $$0) {
+      return rh.b.a;
    }
 
-   public int b() {
-      return this.a;
+   @Override
+   default rh.b a(int $$0) {
+      return rh.b.a;
    }
 
-   public Map<String, rn<?>> c() {
-      return this.b;
+   @Override
+   default rh.b a(long $$0) {
+      return rh.b.a;
    }
 
-   public Map<String, rv> d() {
-      return this.c;
+   @Override
+   default rh.b a(float $$0) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b a(double $$0) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b a(byte[] $$0) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b a(int[] $$0) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b a(long[] $$0) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b a(rm<?> $$0, int $$1) {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.a b(rm<?> $$0, int $$1) {
+      return rh.a.b;
+   }
+
+   @Override
+   default rh.a a(rm<?> $$0) {
+      return rh.a.b;
+   }
+
+   @Override
+   default rh.a a(rm<?> $$0, String $$1) {
+      return rh.a.b;
+   }
+
+   @Override
+   default rh.b b() {
+      return rh.b.a;
+   }
+
+   @Override
+   default rh.b b(rm<?> $$0) {
+      return rh.b.a;
    }
 }

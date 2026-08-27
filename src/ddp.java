@@ -1,117 +1,135 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ddp extends dck implements djk.b<djr.b>, djr {
-   private static final Logger b = LogUtils.getLogger();
-   private djr.a c;
-   private final djr.b d;
-   private final djr.d e = this.c();
-   private int g;
+public abstract class ddp extends dcg {
+   public static final String d = "LootTable";
+   public static final String e = "LootTableSeed";
+   @Nullable
+   protected aer h;
+   protected long i;
 
-   protected ddp(dcm<?> $$0, gv $$1, dey $$2) {
+   protected ddp(dco<?> $$0, gu $$1, dfa $$2) {
       super($$0, $$1, $$2);
-      this.c = new djr.a();
-      this.d = new djr.b(this);
    }
 
-   public ddp(gv $$0, dey $$1) {
-      this(dcm.I, $$0, $$1);
-   }
-
-   public djr.d c() {
-      return new ddp.a(this.p());
-   }
-
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         djr.a.a.parse(new Dynamic(rd.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+   public static void a(cos $$0, aru $$1, gu $$2, aer $$3) {
+      dcm $$4 = $$0.c_($$2);
+      if ($$4 instanceof ddp) {
+         ((ddp)$$4).a($$3, $$1.g());
       }
    }
 
-   @Override
-   protected void b(qs $$0) {
-      super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      djr.a.a.encodeStart(rd.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
-   }
-
-   @Override
-   public djr.a gb() {
-      return this.c;
-   }
-
-   @Override
-   public djr.d gc() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public djr.b g() {
-      return this.d;
-   }
-
-   protected class a implements djr.d {
-      public static final int b = 8;
-      protected final gv c;
-      private final djm a;
-
-      public a(gv $$1) {
-         this.c = $$1;
-         this.a = new dje($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public djm b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
+   protected boolean d(qr $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.h = new aer($$0.l("LootTable"));
+         this.i = $$0.i("LootTableSeed");
          return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public boolean a(aki $$0, gv $$1, dji $$2, @Nullable dji.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dji.f && $$2 != dji.i ? czd.n(ddp.this.q()) : false;
-      }
-
-      @Override
-      public void a(aki $$0, gv $$1, dji $$2, @Nullable big $$3, @Nullable big $$4, float $$5) {
-         dey $$6 = ddp.this.q();
-         if (czd.n($$6)) {
-            ddp.this.a(djr.a_($$2));
-            int $$7 = djr.a_($$5, this.a());
-            if ($$6.b() instanceof czd $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, ddp.this.f());
-            }
+   protected boolean e(qr $$0) {
+      if (this.h == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.h.toString());
+         if (this.i != 0L) {
+            $$0.a("LootTableSeed", this.i);
          }
-      }
 
-      @Override
-      public void e() {
-         ddp.this.e();
-      }
-
-      @Override
-      public boolean f() {
          return true;
+      }
+   }
+
+   public void e(@Nullable cbn $$0) {
+      if (this.h != null && this.o.n() != null) {
+         ecp $$1 = this.o.n().aH().getLootTable(this.h);
+         if ($$0 instanceof akl) {
+            ai.N.a((akl)$$0, this.h);
+         }
+
+         this.h = null;
+         ecn.a $$2 = new ecn.a((akk)this.o).a(ees.f, ehe.b(this.p));
+         if ($$0 != null) {
+            $$2.a($$0.gm()).a(ees.a, $$0);
+         }
+
+         $$1.a(this, $$2.a(eer.c), this.i);
+      }
+   }
+
+   public void a(aer $$0, long $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public boolean ab_() {
+      this.e(null);
+      return this.f().stream().allMatch(ciy::b);
+   }
+
+   @Override
+   public ciy a(int $$0) {
+      this.e(null);
+      return this.f().get($$0);
+   }
+
+   @Override
+   public ciy a(int $$0, int $$1) {
+      this.e(null);
+      ciy $$2 = bgk.a(this.f(), $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public ciy b(int $$0) {
+      this.e(null);
+      return bgk.a(this.f(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, ciy $$1) {
+      this.e(null);
+      this.f().set($$0, $$1);
+      if ($$1.L() > this.ac_()) {
+         $$1.f(this.ac_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public boolean a(cbn $$0) {
+      return bgj.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.f().clear();
+   }
+
+   protected abstract hn<ciy> f();
+
+   protected abstract void a(hn<ciy> var1);
+
+   @Override
+   public boolean d(cbn $$0) {
+      return super.d($$0) && (this.h == null || !$$0.G_());
+   }
+
+   @Nullable
+   @Override
+   public cee createMenu(int $$0, cbm $$1, cbn $$2) {
+      if (this.d($$2)) {
+         this.e($$1.m);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
    }
 }

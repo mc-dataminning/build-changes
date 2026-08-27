@@ -1,43 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public class efo implements efh {
-   final bz a;
+public record efo(Optional<Long> b, ecg c) implements efg {
+   public static final Codec<efo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(Codec.LONG, "period").forGetter(efo::c), ecg.a.fieldOf("value").forGetter(efo::d)).apply($$0, efo::new)
+   );
 
-   public efo(bz $$0) {
-      this.a = $$0;
+   @Override
+   public efh b() {
+      return efi.r;
    }
 
    @Override
-   public efi b() {
-      return efj.j;
-   }
-
-   @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.i);
+   public Set<eep<?>> a() {
+      return this.c.a();
    }
 
    public boolean a(ech $$0) {
-      ciw $$1 = $$0.c(eet.i);
-      return $$1 != null && this.a.a($$1);
-   }
-
-   public static efh.a a(bz.a $$0) {
-      return () -> new efo($$0.b());
-   }
-
-   public static class a implements ecq<efo> {
-      public void a(JsonObject $$0, efo $$1, JsonSerializationContext $$2) {
-         $$0.add("predicate", $$1.a.a());
+      akk $$1 = $$0.d();
+      long $$2 = $$1.W();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
 
-      public efo b(JsonObject $$0, JsonDeserializationContext $$1) {
-         bz $$2 = bz.a($$0.get("predicate"));
-         return new efo($$2);
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static efo.a a(ecg $$0) {
+      return new efo.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ecg d() {
+      return this.c;
+   }
+
+   public static class a implements efg.a {
+      private Optional<Long> a = Optional.empty();
+      private final ecg b;
+
+      public a(ecg $$0) {
+         this.b = $$0;
+      }
+
+      public efo.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public efo a() {
+         return new efo(this.a, this.b);
       }
    }
 }

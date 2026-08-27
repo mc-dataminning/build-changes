@@ -1,53 +1,97 @@
-public class ewh extends exx {
-   private static eqq<?>[] a(eqr $$0) {
-      return new eqq[]{
-         $$0.an(),
-         $$0.R(),
-         $$0.q(),
-         $$0.D(),
-         $$0.o(),
-         $$0.T(),
-         $$0.m(),
-         $$0.n(),
-         $$0.w(),
-         $$0.x(),
-         $$0.X(),
-         $$0.Y(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.aj(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.b(),
-         $$0.a(),
-         $$0.p()
+import javax.annotation.Nullable;
+
+public record ewh(ewg a, int b, int c) {
+   private static final ewh d = new ewh(0, 0, 0, 0);
+
+   public ewh(int $$0, int $$1, int $$2, int $$3) {
+      this(new ewg($$0, $$1), $$2, $$3);
+   }
+
+   public static ewh a() {
+      return d;
+   }
+
+   public static ewh a(ewe $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new ewh($$1, $$2, $$3, $$4);
+         case b -> new ewh($$2, $$1, $$4, $$3);
       };
    }
 
-   public ewh(exv $$0, eqr $$1) {
-      super($$0, $$1, te.c("options.accessibility.title"), a($$1));
+   public ewh a(ewf $$0) {
+      return new ewh(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   protected void aE_() {
-      super.aE_();
-      esg $$0 = this.k.b(this.b.q());
-      if ($$0 != null && !this.f.Z().b().contains("high_contrast")) {
-         $$0.i = false;
-         $$0.a(etr.a(te.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+   public int a(ewe $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   protected void g() {
-      this.d(esi.a(te.c("options.accessibility.link"), $$0 -> this.f.a(new ewn($$0x -> {
-            if ($$0x) {
-               ac.i().a("https://aka.ms/MinecraftJavaAccessibility");
-            }
+   public int b(ewf $$0) {
+      ewe $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
 
-            this.f.a(this);
-         }, "https://aka.ms/MinecraftJavaAccessibility", true))).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(esi.a(td.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public ewh c(ewf $$0) {
+      int $$1 = this.b($$0);
+      ewe $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(ewh $$0) {
+      return this.a($$0, ewe.a) && this.a($$0, ewe.b);
+   }
+
+   public boolean a(ewh $$0, ewe $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(ewe $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public ewh b(ewh $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new ewh($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public ewg f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

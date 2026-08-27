@@ -1,21 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dly extends dlz {
-   public static final Codec<dly> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dly::new));
+class dly implements dlq {
+   public static final Codec<dly> a = RecordCodecBuilder.create($$0 -> $$0.group(dlq.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dly::new));
+   private final dlq e;
 
-   public dly(ia $$0) {
-      super($$0);
+   public dly(dlq $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cqg $$0, gu $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   protected boolean a(dey $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public dlp<?> a() {
-      return dlp.e;
+   public dlr<?> a() {
+      return dlr.k;
    }
 }

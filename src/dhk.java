@@ -1,5 +1,11 @@
-public class dhk extends RuntimeException {
-   public dhk(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
+import javax.annotation.Nullable;
+
+public interface dhk {
+   @Nullable
+   dhj c(int var1, int var2);
+
+   default void a(cpv $$0, hx $$1) {
    }
+
+   cos q();
 }

@@ -1,191 +1,178 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eom extends ged {
-   private static final aep b = new aep("widget/slot_frame");
-   static final Logger c = LogUtils.getLogger();
-   private final exv y;
-   private final emo z;
-   private te A = te.c("mco.reset.world.warning");
-   private te B = td.e;
-   private int C = -65536;
-   private static final aep D = new aep("textures/gui/realms/upload.png");
-   private static final aep E = new aep("textures/gui/realms/adventure.png");
-   private static final aep F = new aep("textures/gui/realms/survival_spawn.png");
-   private static final aep G = new aep("textures/gui/realms/new_world.png");
-   private static final aep H = new aep("textures/gui/realms/experience.png");
-   private static final aep I = new aep("textures/gui/realms/inspiration.png");
-   eng J;
-   eng K;
-   eng L;
-   eng M;
-   public int a = -1;
-   private te N = te.c("mco.reset.world.resetting.screen.title");
-   private final Runnable O;
-   private final Runnable P;
+public class eom extends gei {
+   private static final Logger a = LogUtils.getLogger();
+   private static final tf b = tf.c("selectWorld.unable_to_load");
+   static final tf c = tf.c("selectWorld.world");
+   static final tf y = tf.c("mco.upload.hardcore").a($$0 -> $$0.a(-65536));
+   static final tf z = tf.c("selectWorld.cheats");
+   private static final DateFormat A = new SimpleDateFormat();
+   private final eol B;
+   private final long C;
+   private final int D;
+   esh E;
+   List<eby> F = Lists.newArrayList();
+   int G = -1;
+   eom.b H;
+   private final Runnable I;
 
-   public eom(exv $$0, emo $$1, te $$2, Runnable $$3, Runnable $$4) {
-      super($$2);
-      this.y = $$0;
-      this.z = $$1;
-      this.O = $$3;
-      this.P = $$4;
+   public eom(long $$0, int $$1, eol $$2, Runnable $$3) {
+      super(tf.c("mco.upload.select.world.title"));
+      this.B = $$2;
+      this.C = $$0;
+      this.D = $$1;
+      this.I = $$3;
    }
 
-   public eom(exv $$0, emo $$1, Runnable $$2, Runnable $$3) {
-      this($$0, $$1, te.c("mco.reset.world.title"), $$2, $$3);
-   }
+   private void B() throws Exception {
+      ebx.a $$0 = this.f.l().b();
+      this.F = this.f.l().a($$0).join().stream().filter($$0x -> !$$0x.d() && !$$0x.p()).collect(Collectors.toList());
 
-   public eom(exv $$0, emo $$1, te $$2, te $$3, int $$4, te $$5, Runnable $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$6, $$7);
-      this.A = $$3;
-      this.C = $$4;
-      this.B = $$5;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(te $$0) {
-      this.N = $$0;
+      for (eby $$1 : this.F) {
+         this.H.a($$1);
+      }
    }
 
    @Override
    public void aE_() {
-      this.d(esi.a(this.B, $$0 -> this.f.a(this.y)).a(this.g / 2 - 40, h(14) - 10, 80, 20).a());
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            elx $$0 = elx.a();
+      this.H = new eom.b();
 
-            try {
-               eng $$1 = $$0.a(1, 10, emo.c.a);
-               eng $$2 = $$0.a(1, 10, emo.c.c);
-               eng $$3 = $$0.a(1, 10, emo.c.d);
-               eng $$4 = $$0.a(1, 10, emo.c.e);
-               eom.this.f.execute(() -> {
-                  eom.this.J = $$1;
-                  eom.this.K = $$2;
-                  eom.this.L = $$3;
-                  eom.this.M = $$4;
-               });
-            } catch (enk var6) {
-               eom.c.error("Couldn't fetch templates in reset world", var6);
-            }
-         }
-      }).start();
-      this.a(new geb(this.A, this.g / 2, 22, this.C));
-      this.d(new eom.a(this.b(1), h(0) + 10, te.c("mco.reset.world.generate"), G, $$0 -> this.f.a(new eol(this::a, this.e))));
-      this.d(
-         new eom.a(this.b(2), h(0) + 10, te.c("mco.reset.world.upload"), D, $$0 -> this.f.a(new eon(this.z.a, this.a != -1 ? this.a : this.z.n, this, this.P)))
-      );
-      this.d(
-         new eom.a(
-            this.b(3), h(0) + 10, te.c("mco.reset.world.template"), F, $$0 -> this.f.a(new eoo(te.c("mco.reset.world.template"), this::a, emo.c.a, this.J))
-         )
-      );
-      this.d(
-         new eom.a(
-            this.b(1), h(6) + 20, te.c("mco.reset.world.adventure"), E, $$0 -> this.f.a(new eoo(te.c("mco.reset.world.adventure"), this::a, emo.c.c, this.K))
-         )
-      );
-      this.d(
-         new eom.a(
-            this.b(2), h(6) + 20, te.c("mco.reset.world.experience"), H, $$0 -> this.f.a(new eoo(te.c("mco.reset.world.experience"), this::a, emo.c.d, this.L))
-         )
-      );
-      this.d(
-         new eom.a(
-            this.b(3),
-            h(6) + 20,
-            te.c("mco.reset.world.inspiration"),
-            I,
-            $$0 -> this.f.a(new eoo(te.c("mco.reset.world.inspiration"), this::a, emo.c.e, this.M))
-         )
-      );
+      try {
+         this.B();
+      } catch (Exception var2) {
+         a.error("Couldn't load level list", var2);
+         this.f.a(new eob(b, tf.a(var2.getMessage()), this.B));
+         return;
+      }
+
+      this.e(this.H);
+      this.E = this.d(esh.a(tf.c("mco.upload.button.name"), $$0 -> this.C()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
+      this.E.i = this.G >= 0 && this.G < this.F.size();
+      this.d(esh.a(te.k, $$0 -> this.f.a(this.B)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
+      this.a(new geg(tf.c("mco.upload.select.world.subtitle"), this.g / 2, h(-1), -6250336));
+      if (this.F.isEmpty()) {
+         this.a(new geg(tf.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
+      }
    }
 
    @Override
-   public te e() {
-      return td.a(this.m(), this.l());
+   public tf e() {
+      return te.a(this.m(), this.l());
+   }
+
+   private void C() {
+      if (this.G != -1 && !this.F.get(this.G).i()) {
+         eby $$0 = this.F.get(this.G);
+         this.f.a(new eos(this.C, this.D, this.B, $$0, this.I));
+      }
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.H.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 13, -1);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f.a(this.y);
+         this.f.a(this.B);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private int b(int $$0) {
-      return this.g / 2 - 130 + ($$0 - 1) * 100;
+   static tf a(eby $$0) {
+      return $$0.h().d();
    }
 
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 7, -1);
+   static String b(eby $$0) {
+      return A.format(new Date($$0.f()));
    }
 
-   void a(erx $$0, int $$1, int $$2, te $$3, aep $$4, boolean $$5, boolean $$6) {
-      if ($$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      }
+   class a extends etd.a<eom.a> {
+      private final eby b;
+      private final String c;
+      private final tf d;
+      private final tf e;
 
-      $$0.a($$4, $$1 + 2, $$2 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
-      $$0.a(b, $$1, $$2 + 12, 60, 60);
-      int $$7 = $$5 ? -6250336 : -1;
-      $$0.a(this.i, $$3, $$1 + 30, $$2, $$7);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
+      public a(eby $$0) {
+         this.b = $$0;
+         this.c = $$0.b();
+         this.d = tf.a("mco.upload.entry.id", $$0.a(), eom.b($$0));
+         tf $$1;
+         if ($$0.i()) {
+            $$1 = eom.y;
+         } else {
+            $$1 = eom.a($$0);
+         }
 
-   private void a(epn $$0) {
-      this.f.a(new eof(this.y, $$0));
-   }
+         if ($$0.j()) {
+            $$1 = tf.a("mco.upload.entry.cheats", $$1.getString(), eom.z);
+         }
 
-   @Override
-   public void a(Runnable $$0) {
-      this.a((epn)(new epu(this.z.a, this.a, () -> this.f.execute($$0))));
-   }
-
-   private void a(@Nullable enf $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.b(() -> this.a((epn)(new epq($$0, this.z.a, this.N, this.O))));
-      }
-   }
-
-   private void a(@Nullable eph $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.b(() -> this.a((epn)(new epp($$0, this.z.a, this.N, this.O))));
-      }
-   }
-
-   private void b(Runnable $$0) {
-      if (this.a == -1) {
-         $$0.run();
-      } else {
-         this.a($$0);
-      }
-   }
-
-   class a extends esi {
-      private final aep b;
-
-      public a(int $$0, int $$1, te $$2, aep $$3, esi.c $$4) {
-         super($$0, $$1, 60, 72, $$2, $$4, o);
-         this.b = $$3;
+         this.e = $$1;
       }
 
       @Override
-      public void b(erx $$0, int $$1, int $$2, float $$3) {
-         eom.this.a($$0, this.p(), this.r(), this.l(), this.b, this.n(), this.a_((double)$$1, (double)$$2));
+      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         eom.this.H.a(eom.this.F.indexOf(this.b));
+         return true;
+      }
+
+      protected void a(erw $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = eom.c + " " + ($$1 + 1);
+         } else {
+            $$4 = this.c;
+         }
+
+         $$0.a(eom.this.i, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(eom.this.i, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(eom.this.i, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
+      }
+
+      @Override
+      public tf a() {
+         tf $$0 = te.b(tf.b(this.b.b()), tf.b(eom.b(this.b)), eom.a(this.b));
+         return tf.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends geh<eom.a> {
+      public b() {
+         super(eom.this.g, eom.this.h, eom.h(0), eom.this.h - 40, 36);
+      }
+
+      public void a(eby $$0) {
+         this.a((eom.a)(eom.this.new a($$0)));
+      }
+
+      @Override
+      public int a() {
+         return eom.this.F.size() * 36;
+      }
+
+      public void a(@Nullable eom.a $$0) {
+         super.a($$0);
+         eom.this.G = this.i().indexOf($$0);
+         eom.this.E.i = eom.this.G >= 0 && eom.this.G < this.k() && !eom.this.F.get(eom.this.G).i();
       }
    }
 }

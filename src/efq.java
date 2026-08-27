@@ -1,46 +1,50 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class efq implements efh {
-   final egc a;
-   final ecg b;
-
-   efq(egc $$0, ecg $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public record efq(Optional<Boolean> b, Optional<Boolean> c) implements efg {
+   public static final Codec<efq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(Codec.BOOL, "raining").forGetter(efq::d), aqy.a(Codec.BOOL, "thundering").forGetter(efq::e)).apply($$0, efq::new)
+   );
 
    @Override
-   public efi b() {
-      return efj.r;
-   }
-
-   @Override
-   public Set<eeq<?>> a() {
-      return Sets.union(this.a.a(), this.b.a());
+   public efh b() {
+      return efi.p;
    }
 
    public boolean a(ech $$0) {
-      return this.b.b($$0, this.a.a($$0));
+      akk $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
    }
 
-   public static efh.a a(egc $$0, ecg $$1) {
-      return () -> new efq($$0, $$1);
+   public static efq.a c() {
+      return new efq.a();
    }
 
-   public static class a implements ecq<efq> {
-      public void a(JsonObject $$0, efq $$1, JsonSerializationContext $$2) {
-         $$0.add("value", $$2.serialize($$1.a));
-         $$0.add("range", $$2.serialize($$1.b));
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements efg.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public efq.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
 
-      public efq b(JsonObject $$0, JsonDeserializationContext $$1) {
-         egc $$2 = arf.a($$0, "value", $$1, egc.class);
-         ecg $$3 = arf.a($$0, "range", $$1, ecg.class);
-         return new efq($$2, $$3);
+      public efq.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public efq a() {
+         return new efq(this.a, this.b);
       }
    }
 }

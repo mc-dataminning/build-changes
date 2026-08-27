@@ -1,358 +1,323 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.context.CommandContext;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Objects;
+import com.mojang.brigadier.tree.CommandNode;
+import com.mojang.brigadier.tree.RootCommandNode;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BinaryOperator;
-import java.util.function.IntConsumer;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ds implements dv {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("permissions.requires.entity"));
-   private final dr c;
-   private final ehf d;
-   private final aki e;
-   private final int f;
-   private final String g;
-   private final te h;
-   private final MinecraftServer i;
-   private final boolean j;
-   @Nullable
-   private final big k;
-   @Nullable
-   private final ResultConsumer<ds> l;
-   private final ec.a m;
-   private final ehe n;
-   private final dq o;
-   private final ash p;
-   private final IntConsumer q;
+public class ds {
+   private static final Logger f = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   private final CommandDispatcher<dr> g = new CommandDispatcher();
 
-   public ds(dr $$0, ehf $$1, ehe $$2, aki $$3, int $$4, String $$5, te $$6, MinecraftServer $$7, @Nullable big $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ($$0x, $$1x, $$2x) -> {
-      }, ec.a.a, dq.a, ash.immediate($$7), $$0x -> {
-      });
-   }
-
-   protected ds(
-      dr $$0,
-      ehf $$1,
-      ehe $$2,
-      aki $$3,
-      int $$4,
-      String $$5,
-      te $$6,
-      MinecraftServer $$7,
-      @Nullable big $$8,
-      boolean $$9,
-      @Nullable ResultConsumer<ds> $$10,
-      ec.a $$11,
-      dq $$12,
-      ash $$13,
-      IntConsumer $$14
-   ) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$3;
-      this.j = $$9;
-      this.k = $$8;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.l = $$10;
-      this.m = $$11;
-      this.n = $$2;
-      this.o = $$12;
-      this.p = $$13;
-      this.q = $$14;
-   }
-
-   public ds a(dr $$0) {
-      return this.c == $$0 ? this : new ds($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(big $$0) {
-      return this.k == $$0
-         ? this
-         : new ds(this.c, this.d, this.n, this.e, this.f, $$0.ab().getString(), $$0.H_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(ehf $$0) {
-      return this.d.equals($$0)
-         ? this
-         : new ds(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(ehe $$0) {
-      return this.n.c($$0) ? this : new ds(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(ResultConsumer<ds> $$0) {
-      return Objects.equals(this.l, $$0)
-         ? this
-         : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, $$0, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(ResultConsumer<ds> $$0, BinaryOperator<ResultConsumer<ds>> $$1) {
-      ResultConsumer<ds> $$2 = $$1.apply(this.l, $$0);
-      return this.a($$2);
-   }
-
-   public ds a() {
-      return !this.j && !this.c.g_()
-         ? new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, true, this.l, this.m, this.o, this.p, this.q)
-         : this;
-   }
-
-   public ds a(int $$0) {
-      return $$0 == this.f ? this : new ds(this.c, this.d, this.n, this.e, $$0, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds b(int $$0) {
-      return $$0 <= this.f ? this : new ds(this.c, this.d, this.n, this.e, $$0, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
-   }
-
-   public ds a(ec.a $$0) {
-      return $$0 == this.m ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p, this.q);
-   }
-
-   public ds a(aki $$0) {
-      if ($$0 == this.e) {
-         return this;
-      } else {
-         double $$1 = dih.a(this.e.x_(), $$0.x_());
-         ehf $$2 = new ehf(this.d.c * $$1, this.d.d, this.d.e * $$1);
-         return new ds(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
+   public ds(ds.a $$0, dl $$1) {
+      afv.a(this.g);
+      afw.a(this.g, $$1);
+      agq.a(this.g, $$1);
+      aga.a(this.g);
+      agc.a(this.g, $$1);
+      agd.a(this.g, $$1);
+      age.a(this.g, $$1);
+      ajc.a(this.g);
+      agf.a(this.g);
+      agh.a(this.g);
+      agl.a(this.g);
+      agm.a(this.g);
+      agn.a(this.g, $$1);
+      ago.a(this.g);
+      agp.a(this.g, $$1);
+      agr.a(this.g);
+      agt.a(this.g, $$1);
+      ags.a(this.g, $$1);
+      agu.a(this.g);
+      agv.a(this.g);
+      agw.a(this.g);
+      agx.a(this.g);
+      agy.a(this.g, $$1);
+      agz.a(this.g);
+      aha.a(this.g, $$1);
+      ahc.a(this.g);
+      ahd.a(this.g);
+      ahe.a(this.g);
+      ahf.a(this.g, $$1);
+      ahg.a(this.g, $$1);
+      ahh.a(this.g);
+      ahl.a(this.g, $$1);
+      ahn.a(this.g);
+      aho.a(this.g);
+      ahr.a(this.g);
+      aht.a(this.g);
+      ahs.a(this.g);
+      ahv.a(this.g);
+      ahw.a(this.g);
+      aia.a(this.g);
+      aib.a(this.g);
+      aic.a(this.g);
+      aid.a(this.g, $$0 != ds.a.c);
+      aie.a(this.g, $$1);
+      aig.a(this.g);
+      aih.a(this.g);
+      aij.a(this.g);
+      aik.a(this.g);
+      aim.a(this.g);
+      ain.a(this.g, $$1);
+      aio.a(this.g);
+      aip.a(this.g);
+      aiq.a(this.g);
+      air.a(this.g);
+      ais.a(this.g);
+      ait.a(this.g);
+      aiu.a(this.g);
+      aiv.a(this.g);
+      aix.a(this.g);
+      aiz.a(this.g);
+      if (bdn.e.d()) {
+         ahb.a(this.g);
       }
-   }
 
-   public ds a(big $$0, ec.a $$1) {
-      return this.b($$1.a($$0));
-   }
-
-   public ds b(ehf $$0) {
-      ehf $$1 = this.m.a(this);
-      double $$2 = $$0.c - $$1.c;
-      double $$3 = $$0.d - $$1.d;
-      double $$4 = $$0.e - $$1.e;
-      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = aro.g((float)(-(aro.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = aro.g((float)(aro.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ehe($$6, $$7));
-   }
-
-   public ds a(dq $$0) {
-      return $$0 == this.o ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, this.p, this.q);
-   }
-
-   public ds a(ash $$0) {
-      return $$0 == this.p ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, $$0, this.q);
-   }
-
-   public ds a(IntConsumer $$0) {
-      return $$0 == this.q ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, $$0);
-   }
-
-   public te b() {
-      return this.h;
-   }
-
-   public String c() {
-      return this.g;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return this.f >= $$0;
-   }
-
-   public ehf d() {
-      return this.d;
-   }
-
-   public aki e() {
-      return this.e;
-   }
-
-   @Nullable
-   public big f() {
-      return this.k;
-   }
-
-   public big g() throws CommandSyntaxException {
-      if (this.k == null) {
-         throw b.create();
-      } else {
-         return this.k;
-      }
-   }
-
-   public akj h() throws CommandSyntaxException {
-      big var2 = this.k;
-      if (var2 instanceof akj) {
-         return (akj)var2;
-      } else {
-         throw a.create();
-      }
-   }
-
-   @Nullable
-   public akj i() {
-      return this.k instanceof akj $$0 ? $$0 : null;
-   }
-
-   public boolean j() {
-      return this.k instanceof akj;
-   }
-
-   public ehe k() {
-      return this.n;
-   }
-
-   public MinecraftServer l() {
-      return this.i;
-   }
-
-   public ec.a m() {
-      return this.m;
-   }
-
-   public dq n() {
-      return this.o;
-   }
-
-   public ash o() {
-      return this.p;
-   }
-
-   public IntConsumer p() {
-      return this.q;
-   }
-
-   public boolean a(akj $$0) {
-      akj $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.W() || $$0.W();
-   }
-
-   public void a(ts $$0, boolean $$1, ta.a $$2) {
-      if (!this.j) {
-         akj $$3 = this.i();
-         if ($$3 != null) {
-            $$3.a($$0, $$1, $$2);
-         } else {
-            this.c.a($$2.a($$0.a()));
+      if (aa.aS) {
+         qh.a(this.g);
+         aii.a(this.g);
+         if ($$0.e) {
+            agi.a(this.g);
          }
       }
-   }
 
-   public void a(te $$0) {
-      if (!this.j) {
-         akj $$1 = this.i();
-         if ($$1 != null) {
-            $$1.a($$0);
-         } else {
-            this.c.a($$0);
-         }
+      if ($$0.e) {
+         afx.a(this.g);
+         afy.a(this.g);
+         afz.a(this.g);
+         agg.a(this.g);
+         ahi.a(this.g);
+         ahj.a(this.g);
+         ahk.a(this.g);
+         ahm.a(this.g);
+         ahx.a(this.g);
+         ahy.a(this.g);
+         ahz.a(this.g);
+         aif.a(this.g);
+         ail.a(this.g);
+         aiy.a(this.g);
       }
-   }
 
-   public void a(Supplier<te> $$0, boolean $$1) {
-      boolean $$2 = this.c.f_() && !this.j;
-      boolean $$3 = $$1 && this.c.N_() && !this.j;
-      if ($$2 || $$3) {
-         te $$4 = $$0.get();
-         if ($$2) {
-            this.c.a($$4);
-         }
-
-         if ($$3) {
-            this.c($$4);
-         }
+      if ($$0.d) {
+         ahp.a(this.g);
       }
+
+      this.g.setConsumer(($$0x, $$1x, $$2) -> ((dr)$$0x.getSource()).a($$0x, $$1x, $$2));
    }
 
-   private void c(te $$0) {
-      te $$1 = te.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aI().b(cpg.o)) {
-         for (akj $$2 : this.i.ac().t()) {
-            if ($$2 != this.c && this.i.ac().g($$2.fP())) {
-               $$2.a($$1);
+   public static <S> ParseResults<S> a(ParseResults<S> $$0, UnaryOperator<S> $$1) {
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2.withSource($$1.apply((S)$$2.getSource()));
+      return new ParseResults($$3, $$0.getReader(), $$0.getExceptions());
+   }
+
+   public int a(dr $$0, String $$1) {
+      $$1 = $$1.startsWith("/") ? $$1.substring(1) : $$1;
+      return this.a(this.g.parse($$1, $$0), $$1);
+   }
+
+   public int a(ParseResults<dr> $$0, String $$1) {
+      dr $$2 = (dr)$$0.getContext().getSource();
+      $$2.l().aN().a(() -> "/" + $$1);
+
+      byte var20;
+      try {
+         return this.g.execute($$0);
+      } catch (dn var13) {
+         $$2.b(var13.a());
+         return 0;
+      } catch (CommandSyntaxException var14) {
+         $$2.b(th.a(var14.getRawMessage()));
+         if (var14.getInput() != null && var14.getCursor() >= 0) {
+            int $$5 = Math.min(var14.getInput().length(), var14.getCursor());
+            ts $$6 = tf.h().a(n.h).a($$1x -> $$1x.a(new td(td.a.d, "/" + $$1)));
+            if ($$5 > 10) {
+               $$6.b(te.t);
+            }
+
+            $$6.f(var14.getInput().substring(Math.max(0, $$5 - 10), $$5));
+            if ($$5 < var14.getInput().length()) {
+               tf $$7 = tf.b(var14.getInput().substring($$5)).a(n.m, n.t);
+               $$6.b($$7);
+            }
+
+            $$6.b(tf.c("command.context.here").a(n.m, n.u));
+            $$2.b($$6);
+         }
+
+         return 0;
+      } catch (Exception var15) {
+         ts $$9 = tf.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
+         if (f.isDebugEnabled()) {
+            f.error("Command exception: /{}", $$1, var15);
+            StackTraceElement[] $$10 = var15.getStackTrace();
+
+            for (int $$11 = 0; $$11 < Math.min($$10.length, 3); $$11++) {
+               $$9.f("\n\n").f($$10[$$11].getMethodName()).f("\n ").f($$10[$$11].getFileName()).f(":").f(String.valueOf($$10[$$11].getLineNumber()));
+            }
+         }
+
+         $$2.b(tf.c("command.failed").a($$1x -> $$1x.a(new tk(tk.a.a, $$9))));
+         if (aa.aS) {
+            $$2.b(tf.b(ac.c(var15)));
+            f.error("'/{}' threw an exception", $$1, var15);
+         }
+
+         var20 = 0;
+      } finally {
+         $$2.l().aN().c();
+      }
+
+      return var20;
+   }
+
+   public void a(akl $$0) {
+      Map<CommandNode<dr>, CommandNode<du>> $$1 = Maps.newHashMap();
+      RootCommandNode<du> $$2 = new RootCommandNode();
+      $$1.put(this.g.getRoot(), $$2);
+      this.a(this.g.getRoot(), $$2, $$0.dc(), $$1);
+      $$0.c.b(new xi($$2));
+   }
+
+   private void a(CommandNode<dr> $$0, CommandNode<du> $$1, dr $$2, Map<CommandNode<dr>, CommandNode<du>> $$3) {
+      for (CommandNode<dr> $$4 : $$0.getChildren()) {
+         if ($$4.canUse($$2)) {
+            ArgumentBuilder<du, ?> $$5 = $$4.createBuilder();
+            $$5.requires($$0x -> true);
+            if ($$5.getCommand() != null) {
+               $$5.executes($$0x -> 0);
+            }
+
+            if ($$5 instanceof RequiredArgumentBuilder) {
+               RequiredArgumentBuilder<du, ?> $$6 = (RequiredArgumentBuilder<du, ?>)$$5;
+               if ($$6.getSuggestionsProvider() != null) {
+                  $$6.suggests(gk.b($$6.getSuggestionsProvider()));
+               }
+            }
+
+            if ($$5.getRedirect() != null) {
+               $$5.redirect($$3.get($$5.getRedirect()));
+            }
+
+            CommandNode<du> $$7 = $$5.build();
+            $$3.put($$4, $$7);
+            $$1.addChild($$7);
+            if (!$$4.getChildren().isEmpty()) {
+               this.a($$4, $$7, $$2, $$3);
             }
          }
       }
+   }
 
-      if (this.c != this.i && this.i.aI().b(cpg.l)) {
-         this.i.a($$1);
+   public static LiteralArgumentBuilder<dr> a(String $$0) {
+      return LiteralArgumentBuilder.literal($$0);
+   }
+
+   public static <T> RequiredArgumentBuilder<dr, T> a(String $$0, ArgumentType<T> $$1) {
+      return RequiredArgumentBuilder.argument($$0, $$1);
+   }
+
+   public static Predicate<String> a(ds.b $$0) {
+      return $$1 -> {
+         try {
+            $$0.parse(new StringReader($$1));
+            return true;
+         } catch (CommandSyntaxException var3) {
+            return false;
+         }
+      };
+   }
+
+   public CommandDispatcher<dr> a() {
+      return this.g;
+   }
+
+   @Nullable
+   public static <S> CommandSyntaxException a(ParseResults<S> $$0) {
+      if (!$$0.getReader().canRead()) {
+         return null;
+      } else if ($$0.getExceptions().size() == 1) {
+         return (CommandSyntaxException)$$0.getExceptions().values().iterator().next();
+      } else {
+         return $$0.getContext().getRange().isEmpty()
+            ? CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader())
+            : CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext($$0.getReader());
       }
    }
 
-   public void b(te $$0) {
-      if (this.c.q_() && !this.j) {
-         this.c.a(te.h().b($$0).a(n.m));
+   public static dl a(final hg.b $$0) {
+      return new dl() {
+         @Override
+         public <T> hg<T> a(aeq<? extends hr<T>> $$0x) {
+            final hg.c<T> $$1 = $$0.b($$0);
+            return new hg.a<T>($$1) {
+               @Override
+               public Optional<hi.c<T>> a(aqa<T> $$0x) {
+                  return Optional.of(this.b($$0));
+               }
+
+               @Override
+               public hi.c<T> b(aqa<T> $$0x) {
+                  Optional<hi.c<T>> $$1 = $$1.a($$0);
+                  return $$1.orElseGet(() -> hi.a($$1, $$0));
+               }
+            };
+         }
+      };
+   }
+
+   public static void b() {
+      dl $$0 = a(me.a());
+      CommandDispatcher<dr> $$1 = new ds(ds.a.a, $$0).a();
+      RootCommandNode<dr> $$2 = $$1.getRoot();
+      $$1.findAmbiguities(
+         ($$1x, $$2x, $$3x, $$4x) -> f.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
+      );
+      Set<ArgumentType<?>> $$3 = gi.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !gh.a($$0x.getClass())).collect(Collectors.toSet());
+      if (!$$4.isEmpty()) {
+         f.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
+         throw new IllegalStateException("Unregistered argument types");
       }
    }
 
-   public void a(CommandContext<ds> $$0, boolean $$1, int $$2) {
-      if (this.l != null) {
-         this.l.onCommandComplete($$0, $$1, $$2);
+   public static enum a {
+      a(true, true),
+      b(false, true),
+      c(true, false);
+
+      final boolean d;
+      final boolean e;
+
+      private a(boolean $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
    }
 
-   @Override
-   public Collection<String> q() {
-      return Lists.newArrayList(this.i.J());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.i.aF().f();
-   }
-
-   @Override
-   public Stream<aep> s() {
-      return jc.c.s().map(aot::a);
-   }
-
-   @Override
-   public Stream<aep> t() {
-      return this.i.aE().d();
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      return Suggestions.empty();
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(aeo<? extends hs<?>> $$0, dv.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(Suggestions::empty);
-   }
-
-   @Override
-   public Set<aeo<cpk>> u() {
-      return this.i.E();
-   }
-
-   @Override
-   public ht v() {
-      return this.i.aV();
-   }
-
-   @Override
-   public cdt w() {
-      return this.e.G();
+   @FunctionalInterface
+   public interface b {
+      void parse(StringReader var1) throws CommandSyntaxException;
    }
 }

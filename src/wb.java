@@ -1,19 +1,18 @@
-import java.util.List;
+public record wb(gu b, int c) implements vp {
+   public static final aer a = new aer("debug/poi_ticket_count");
 
-public record wb(List<gv> b) implements vo {
-   public static final aep a = new aep("debug/raids");
-
-   public wb(sh $$0) {
-      this($$0.a(sh::e));
+   public wb(si $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.b, sh::a);
+   public void a(si $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

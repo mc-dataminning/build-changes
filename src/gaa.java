@@ -1,12 +1,12 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
-public record gaa(Map<String, fzn> d) {
-   public static final Codec<String> a = aqw.b(1, 16);
-   public static final Codec<gaa> b = Codec.unboundedMap(a, fzn.a).xmap(gaa::new, gaa::a);
-   public static final aml<gaa> c = aml.a("language", b);
+public class gaa implements amm<fzz> {
+   public fzz b(JsonObject $$0) {
+      return new fzz(fzz.a.a(arg.a($$0, "hat", "none")));
+   }
 
-   public Map<String, fzn> a() {
-      return this.d;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

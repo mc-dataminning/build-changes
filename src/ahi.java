@@ -1,37 +1,38 @@
-import com.google.common.net.InetAddresses;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class ahi {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("commands.pardonip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               dt.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> dv.a(((ds)$$0x.getSource()).l().ac().g().a(), $$1))
-                  .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("op").requires($$0x -> $$0x.c(3))).then(ds.a("targets", ee.a()).suggests(($$0x, $$1) -> {
+            anz $$2 = ((dr)$$0x.getSource()).l().ac();
+            return du.b($$2.t().stream().filter($$1x -> !$$2.g($$1x.fP())).map($$0xx -> $$0xx.fP().getName()), $$1);
+         }).executes($$0x -> a((dr)$$0x.getSource(), ee.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ds $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
+   private static int a(dr $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      anz $$2 = $$0.l().ac();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.g($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> tf.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         anu $$2 = $$0.l().ac().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> te.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+         return $$3;
       }
    }
 }

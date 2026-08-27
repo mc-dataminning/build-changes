@@ -1,80 +1,37 @@
-public class fka extends flw {
-   fka(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aro.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+public class fka extends fmb {
+   fka(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
       super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+      if (!this.o && !this.c.b_(gu.a(this.g, this.h, this.i)).a(apq.a)) {
+         this.k();
+      }
    }
 
    @Override
-   public fla b() {
-      return fla.b;
+   public flf b() {
+      return flf.b;
    }
 
-   public static class a implements fkz<iz> {
-      private final flr a;
+   public static class a implements fle<iy> {
+      private final flw a;
 
-      public a(flr $$0) {
+      public a(flw $$0) {
          this.a = $$0;
       }
 
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fka $$8 = new fka($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fkz<iz> {
-      private final flr a;
-
-      public b(flr $$0) {
-         this.a = $$0;
-      }
-
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fka $$8 = new fka($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements fkz<iz> {
-      private final flr a;
-
-      public c(flr $$0) {
-         this.a = $$0;
-      }
-
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fka $$8 = new fka($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;

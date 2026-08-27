@@ -1,72 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public final class dwq extends dux {
-   public static final int d = 128;
-   public static final Codec<dwq> e = aqw.<dwq>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     a($$0),
-                     dwg.b.fieldOf("start_pool").forGetter($$0x -> $$0x.f),
-                     aep.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.g),
-                     Codec.intRange(0, 7).fieldOf("size").forGetter($$0x -> $$0x.h),
-                     dte.c.fieldOf("start_height").forGetter($$0x -> $$0x.i),
-                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.j),
-                     dkh.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.k),
-                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.l)
-                  )
-                  .apply($$0, dwq::new)
-         ),
-         dwq::a
-      )
-      .codec();
-   private final hf<dwg> f;
-   private final Optional<aep> g;
-   private final int h;
-   private final dte i;
-   private final boolean j;
-   private final Optional<dkh.a> k;
-   private final int l;
+public class dwq {
+   public static final int a = 90;
+   static final aer b = new aer("igloo/top");
+   private static final aer c = new aer("igloo/middle");
+   private static final aer d = new aer("igloo/bottom");
+   static final Map<aer, gu> e = ImmutableMap.of(b, new gu(3, 5, 5), c, new gu(1, 3, 1), d, new gu(3, 6, 7));
+   static final Map<aer, gu> f = ImmutableMap.of(b, gu.b, c, new gu(2, -3, 4), d, new gu(0, -3, -2));
 
-   private static DataResult<dwq> a(dwq $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d -> 12;
-      };
-      return $$0.l + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   public static void a(dyt $$0, gu $$1, cyy $$2, dve $$3, aru $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new dwq.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new dwq.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new dwq.a($$0, b, $$1, $$2, 0));
    }
 
-   public dwq(dux.c $$0, hf<dwg> $$1, Optional<aep> $$2, int $$3, dte $$4, boolean $$5, Optional<dkh.a> $$6, int $$7) {
-      super($$0);
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-   }
+   public static class a extends dvj {
+      public a(dyt $$0, aer $$1, gu $$2, cyy $$3, int $$4) {
+         super(dvq.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
 
-   public dwq(dux.c $$0, hf<dwg> $$1, int $$2, dte $$3, boolean $$4, dkh.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80);
-   }
+      public a(dyt $$0, qr $$1) {
+         super(dvq.I, $$1, $$0, $$1x -> a(cyy.valueOf($$1.l("Rot")), $$1x));
+      }
 
-   public dwq(dux.c $$0, hf<dwg> $$1, int $$2, dte $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80);
-   }
+      private static dyo a(cyy $$0, aer $$1) {
+         return new dyo().a($$0).a(cxh.a).a(dwq.e.get($$1)).a(dxu.b);
+      }
 
-   @Override
-   public Optional<dux.b> a(dux.a $$0) {
-      cor $$1 = $$0.h();
-      int $$2 = this.i.a($$0.f(), new dle($$0.b(), $$0.i()));
-      gv $$3 = new gv($$1.d(), $$2, $$1.e());
-      return dwa.a($$0, this.f, this.g, this.h, $$3, this.j, this.k, this.l);
-   }
+      private static gu a(aer $$0, gu $$1, int $$2) {
+         return $$1.a(dwq.f.get($$0)).c($$2);
+      }
 
-   @Override
-   public dvg<?> e() {
-      return dvg.f;
+      @Override
+      protected void a(dvp $$0, qr $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, gu $$1, cqb $$2, aru $$3, dur $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, csn.a.n(), 3);
+            dcm $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dct) {
+               ((dct)$$5).a(ecf.C, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, gu $$6) {
+         aer $$7 = new aer(this.a);
+         dyo $$8 = a(this.c.d(), $$7);
+         gu $$9 = dwq.f.get($$7);
+         gu $$10 = this.d.a((hz)dys.a($$8, new gu(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dkj.a.a, $$10.u(), $$10.w());
+         gu $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(dwq.b)) {
+            gu $$13 = this.d.a((hz)dys.a($$8, new gu(3, 0, 5)));
+            dfa $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(csn.cO)) {
+               $$0.a($$13, csn.dP.n(), 3);
+            }
+         }
+
+         this.d = $$12;
+      }
    }
 }

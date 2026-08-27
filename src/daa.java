@@ -1,45 +1,60 @@
-public class daa extends csk {
-   private static final ehy a = csk.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int b = 14;
-   private static final int c = 10;
-   private static final int d = 10;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public daa(dex.d $$0) {
+public class daa extends crz {
+   protected daa(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dey $$0, cpn $$1, gv $$2) {
-      return csk.a($$1, $$2.c(), hb.a) && !$$1.y($$2);
+   public dcm a(gu $$0, dfa $$1) {
+      return new ddy($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
+      return a($$2, dco.j, $$0.B ? ddy::a : ddy::b);
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      return $$1 == hb.b && !this.a($$0, $$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(iw.at, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      gv.a $$10 = new gv.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aro.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aro.a($$3, -10, 10));
-         dey $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(iw.ax, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   public void a(dfa $$0, akk $$1, gu $$2, ciy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a;
+   public cyr b_(dfa $$0) {
+      return cyr.c;
+   }
+
+   @Override
+   public void a(ciy $$0, @Nullable cos $$1, List<tf> $$2, ckp $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Optional<tf> $$4 = this.a($$0);
+      if ($$4.isPresent()) {
+         $$2.add($$4.get());
+      } else {
+         $$2.add(te.a);
+         $$2.add(tf.c("block.minecraft.spawner.desc1").a(n.h));
+         $$2.add(te.a().b(tf.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
+   }
+
+   private Optional<tf> a(ciy $$0) {
+      qr $$1 = cgr.a($$0);
+      if ($$1 != null && $$1.b("SpawnData", 10)) {
+         String $$2 = $$1.p("SpawnData").p("entity").l("id");
+         aer $$3 = aer.a($$2);
+         if ($$3 != null) {
+            return jb.h.b($$3).map($$0x -> tf.c($$0x.g()).a(n.h));
+         }
+      }
+
+      return Optional.empty();
    }
 }

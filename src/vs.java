@@ -1,20 +1,18 @@
-public record vs(gv b, int c, String d, int e) implements vo {
-   public static final aep a = new aep("debug/game_test_add_marker");
+public record vs(djo b, int c) implements vp {
+   public static final aer a = new aer("debug/game_event_listeners");
 
-   public vs(sh $$0) {
-      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
+   public vs(si $$0) {
+      this(djp.c($$0), $$0.m());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   public void a(si $$0) {
+      djp.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

@@ -1,31 +1,40 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class eka {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+public enum eka {
+   a("icons"),
+   b("icons", "snapshot");
+
+   private final String[] c;
+
+   private eka(String... $$0) {
+      this.c = $$0;
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   public List<ane<InputStream>> a(ama $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   public ane<InputStream> b(ama $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
-
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   private ane<InputStream> a(ama $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      ane<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
+      }
    }
 }

@@ -1,103 +1,61 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import java.util.ArrayList;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bd {
-   public static final bd a = bd.a.a().b();
-   private final List<db<bhg>> b;
-   private final bo c;
-   private final bo d;
+public record bd(List<da<bhi>> b, Optional<bo> c, Optional<bo> d) {
+   public static final Codec<bd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqy.a(da.a(jc.p).listOf(), "tags", List.of()).forGetter(bd::b),
+               aqy.a(bo.a, "direct_entity").forGetter(bd::c),
+               aqy.a(bo.a, "source_entity").forGetter(bd::d)
+            )
+            .apply($$0, bd::new)
+   );
 
-   public bd(List<db<bhg>> $$0, bo $$1, bo $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   static Optional<bd> a(List<da<bhi>> $$0, Optional<bo> $$1, Optional<bo> $$2) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() ? Optional.empty() : Optional.of(new bd($$0, $$1, $$2));
    }
 
-   public boolean a(akj $$0, bhe $$1) {
+   public boolean a(akl $$0, bhg $$1) {
       return this.a($$0.x(), $$0.di(), $$1);
    }
 
-   public boolean a(aki $$0, ehf $$1, bhe $$2) {
-      if (this == a) {
-         return true;
-      } else {
-         for (db<bhg> $$3 : this.b) {
-            if (!$$3.a($$2.k())) {
-               return false;
-            }
+   public boolean a(akk $$0, ehe $$1, bhg $$2) {
+      for (da<bhi> $$3 : this.b) {
+         if (!$$3.a($$2.k())) {
+            return false;
          }
-
-         return !this.c.a($$0, $$1, $$2.c()) ? false : this.d.a($$0, $$1, $$2.d());
       }
+
+      return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public static bd a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "damage type");
-         JsonArray $$2 = arf.a($$1, "tags", null);
-         List<db<bhg>> $$3;
-         if ($$2 != null) {
-            $$3 = new ArrayList<>($$2.size());
-
-            for (JsonElement $$4 : $$2) {
-               $$3.add(db.a($$4, jd.p));
-            }
-         } else {
-            $$3 = List.of();
-         }
-
-         bo $$6 = bo.a($$1.get("direct_entity"));
-         bo $$7 = bo.a($$1.get("source_entity"));
-         return new bd($$3, $$6, $$7);
-      } else {
-         return a;
-      }
+   public static Optional<bd> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
    }
 
    public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (!this.b.isEmpty()) {
-            JsonArray $$1 = new JsonArray(this.b.size());
-
-            for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
-               $$1.add(this.b.get($$2).a());
-            }
-
-            $$0.add("tags", $$1);
-         }
-
-         $$0.add("direct_entity", this.c.a());
-         $$0.add("source_entity", this.d.a());
-         return $$0;
-      }
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 
    public static class a {
-      private final Builder<db<bhg>> a = ImmutableList.builder();
-      private bo b = bo.a;
-      private bo c = bo.a;
+      private final Builder<da<bhi>> a = ImmutableList.builder();
+      private Optional<bo> b = Optional.empty();
+      private Optional<bo> c = Optional.empty();
 
       public static bd.a a() {
          return new bd.a();
       }
 
-      public bd.a a(db<bhg> $$0) {
+      public bd.a a(da<bhi> $$0) {
          this.a.add($$0);
-         return this;
-      }
-
-      public bd.a a(bo $$0) {
-         this.b = $$0;
          return this;
       }
 
@@ -106,18 +64,13 @@ public class bd {
          return this;
       }
 
-      public bd.a b(bo $$0) {
-         this.c = $$0;
-         return this;
-      }
-
       public bd.a b(bo.a $$0) {
          this.c = $$0.b();
          return this;
       }
 
-      public bd b() {
-         return new bd(this.a.build(), this.b, this.c);
+      public Optional<bd> b() {
+         return bd.a(this.a.build(), this.b, this.c);
       }
    }
 }

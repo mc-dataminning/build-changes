@@ -1,15 +1,8 @@
-public class adv implements uw<adt> {
-   public adv() {
-   }
-
-   public adv(sh $$0) {
-   }
-
+public interface adv extends aax, aay {
    @Override
-   public void a(sh $$0) {
+   default sh b() {
+      return sh.c;
    }
 
-   public void a(adt $$0) {
-      $$0.a(this);
-   }
+   void a(adx var1);
 }

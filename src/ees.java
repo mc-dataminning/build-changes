@@ -1,46 +1,16 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
 public class ees {
-   private static final BiMap<aep, eer> o = HashBiMap.create();
-   public static final eer a = a("empty", $$0 -> {
-   });
-   public static final eer b = a("chest", $$0 -> $$0.a(eet.f).b(eet.a));
-   public static final eer c = a("command", $$0 -> $$0.a(eet.f).b(eet.a));
-   public static final eer d = a("selector", $$0 -> $$0.a(eet.f).a(eet.a));
-   public static final eer e = a("fishing", $$0 -> $$0.a(eet.f).a(eet.i).b(eet.a));
-   public static final eer f = a("entity", $$0 -> $$0.a(eet.a).a(eet.f).a(eet.c).b(eet.d).b(eet.e).b(eet.b));
-   public static final eer g = a("archaeology", $$0 -> $$0.a(eet.f).b(eet.a));
-   public static final eer h = a("gift", $$0 -> $$0.a(eet.f).a(eet.a));
-   public static final eer i = a("barter", $$0 -> $$0.a(eet.a));
-   public static final eer j = a("advancement_reward", $$0 -> $$0.a(eet.a).a(eet.f));
-   public static final eer k = a("advancement_entity", $$0 -> $$0.a(eet.a).a(eet.f));
-   public static final eer l = a("advancement_location", $$0 -> $$0.a(eet.a).a(eet.f).a(eet.i).a(eet.g));
-   public static final eer m = a("generic", $$0 -> $$0.a(eet.a).a(eet.b).a(eet.c).a(eet.d).a(eet.e).a(eet.f).a(eet.g).a(eet.h).a(eet.i).a(eet.j));
-   public static final eer n = a("block", $$0 -> $$0.a(eet.g).a(eet.f).a(eet.i).b(eet.a).b(eet.h).b(eet.j));
+   public static final eep<bii> a = a("this_entity");
+   public static final eep<cbn> b = a("last_damage_player");
+   public static final eep<bhg> c = a("damage_source");
+   public static final eep<bii> d = a("killer_entity");
+   public static final eep<bii> e = a("direct_killer_entity");
+   public static final eep<ehe> f = a("origin");
+   public static final eep<dfa> g = a("block_state");
+   public static final eep<dcm> h = a("block_entity");
+   public static final eep<ciy> i = a("tool");
+   public static final eep<Float> j = a("explosion_radius");
 
-   private static eer a(String $$0, Consumer<eer.a> $$1) {
-      eer.a $$2 = new eer.a();
-      $$1.accept($$2);
-      eer $$3 = $$2.a();
-      aep $$4 = new aep($$0);
-      eer $$5 = (eer)o.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
-      }
-   }
-
-   @Nullable
-   public static eer a(aep $$0) {
-      return (eer)o.get($$0);
-   }
-
-   @Nullable
-   public static aep a(eer $$0) {
-      return (aep)o.inverse().get($$0);
+   private static <T> eep<T> a(String $$0) {
+      return new eep<>(new aer($$0));
    }
 }

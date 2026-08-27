@@ -1,5 +1,5 @@
-public record adl(aep a) implements adj {
-   @Override
-   public void a(sh $$0) {
-   }
+public interface adl {
+   aer a();
+
+   void a(si var1);
 }

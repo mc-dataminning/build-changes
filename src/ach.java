@@ -1,79 +1,34 @@
-public class ach implements uw<aav> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final gv d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final dcu.a i;
+import java.util.Optional;
 
-   public ach(gv $$0, String $$1, dcu.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+public class ach implements ux<aaw> {
+   private final Optional<bht> a;
+   private final Optional<bht> b;
+
+   public ach(Optional<bht> $$0, Optional<bht> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ach(sh $$0) {
-      this.d = $$0.e();
-      this.e = $$0.r();
-      this.i = $$0.b(dcu.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+   public ach(si $$0) {
+      this.a = $$0.b((si.a<bht>)($$0x -> $$0x.a(jb.e)));
+      this.b = $$0.b((si.a<bht>)($$0x -> $$0x.a(jb.e)));
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
-      }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   public void a(si $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jb.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jb.e, $$1));
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
-      return this.d;
+   public Optional<bht> a() {
+      return this.a;
    }
 
-   public String d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public dcu.a h() {
-      return this.i;
+   public Optional<bht> d() {
+      return this.b;
    }
 }

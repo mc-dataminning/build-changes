@@ -1,22 +1,21 @@
-public record we(gv b, float c, float d, float e, float f, float g) implements vo {
-   public static final aep a = new aep("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
 
-   public we(sh $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record we(Set<hx> b, Set<hx> c) implements vp {
+   public static final aer a = new aer("debug/village_sections");
+
+   public we(si $$0) {
+      this($$0.a(HashSet::new, si::g), $$0.a(HashSet::new, si::g));
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(si $$0) {
+      $$0.a(this.b, si::a);
+      $$0.a(this.c, si::a);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

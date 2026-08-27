@@ -1,99 +1,159 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface ti {
-   Optional<asn> a = Optional.of(asn.a);
-   ti b = new ti() {
-      @Override
-      public <T> Optional<T> a(ti.a<T> $$0) {
-         return Optional.empty();
-      }
+public class ti {
+   public static final Codec<ti> a = ash.a(ti.a::values).dispatch(ti::c, ti.a::a);
+   public static final ti b = new ti(new BitSet(0), ti.a.b);
+   public static final ti c = new ti(new BitSet(0), ti.a.a);
+   public static final ub d = ub.a.a(n.i).a(new tk(tk.a.a, tf.c("chat.filtered")));
+   static final Codec<ti> e = Codec.unit(c);
+   static final Codec<ti> f = Codec.unit(b);
+   static final Codec<ti> g = aqy.r.xmap(ti::new, ti::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final ti.a j;
 
-      @Override
-      public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
-         return Optional.empty();
-      }
-   };
+   private ti(BitSet $$0, ti.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   <T> Optional<T> a(ti.a<T> var1);
+   private ti(BitSet $$0) {
+      this.i = $$0;
+      this.j = ti.a.c;
+   }
 
-   <T> Optional<T> a(ti.b<T> var1, ua var2);
+   public ti(int $$0) {
+      this(new BitSet($$0), ti.a.c);
+   }
 
-   static ti e(final String $$0) {
-      return new ti() {
-         @Override
-         public <T> Optional<T> a(ti.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
+   private ti.a c() {
+      return this.j;
+   }
 
-         @Override
-         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1) {
-            return $$0.accept($$1, $$0);
-         }
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static ti a(si $$0) {
+      ti.a $$1 = $$0.b(ti.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new ti($$0.y(), ti.a.c);
       };
    }
 
-   static ti a(final String $$0, final ua $$1) {
-      return new ti() {
-         @Override
-         public <T> Optional<T> a(ti.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static void a(si $$0, ti $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == ti.a.c) {
+         $$0.a($$1.i);
+      }
    }
 
-   static ti a(ti... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   static ti a(final List<? extends ti> $$0) {
-      return new ti() {
-         @Override
-         public <T> Optional<T> a(ti.a<T> $$0x) {
-            for (ti $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
                }
             }
 
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(ti.b<T> $$0x, ua $$1) {
-            for (ti $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
+            yield new String($$1);
          }
       };
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   @Nullable
+   public tf b(String $$0) {
+      return switch (this.j) {
+         case a -> tf.b($$0);
+         case b -> null;
+         case c -> {
+            ts $$1 = tf.h();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(tf.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public boolean a() {
+      return this.j == ti.a.a;
    }
 
-   public interface b<T> {
-      Optional<T> accept(ua var1, String var2);
+   public boolean b() {
+      return this.j == ti.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ti $$1 = (ti)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements ash {
+      a("pass_through", () -> ti.e),
+      b("fully_filtered", () -> ti.f),
+      c("partially_filtered", () -> ti.g);
+
+      private final String d;
+      private final Supplier<Codec<ti>> e;
+
+      private a(String $$0, Supplier<Codec<ti>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private Codec<ti> a() {
+         return this.e.get();
+      }
    }
 }

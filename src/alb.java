@@ -1,30 +1,24 @@
-import net.minecraft.server.MinecraftServer;
+import io.netty.buffer.ByteBuf;
+import java.nio.charset.StandardCharsets;
 
-public class alb implements acv {
-   private final MinecraftServer a;
-   private final sf b;
+public class alb {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   public alb(MinecraftServer $$0, sf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   @Override
-   public void a(acu $$0) {
-      if ($$0.f() != act.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(act.b);
-         this.b.a(new ali(this.a, this.b));
-      }
-   }
-
-   @Override
-   public void a(te $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.k();
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
    }
 }

@@ -1,61 +1,69 @@
-public class fdt extends ffg {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fhj e;
-   private final fhj f;
-   private final fhj g;
-   private final fhj h;
-   private final fhj i;
-   private final fhj j;
-   private final fhj k;
+public class fdt extends fex<buf> {
+   private final fhn a;
+   private final fhn b;
+   private final fhn f;
+   private final fhn g;
+   private final fhn h;
+   private final fhn i;
+   private final fhn j;
 
-   public fdt(fhj $$0) {
-      super(fno::b);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+   public fdt(fhn $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.f = $$0.b("body");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
    }
 
-   public static fhp a() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("left_lid", fho.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fhl.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fho.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fhl.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fho.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fhl.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fho.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fhl.a);
-      $$1.a("right_pages", fho.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fhl.a);
-      fho $$2 = fho.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fhl.a);
-      $$1.a("flip_page2", $$2, fhl.a);
-      return fhp.a($$0, 64, 32);
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      fhw $$2 = $$1.a("head", fhs.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhp.a);
+      $$2.a("right_ear", fhs.c().a(24, 0).a(-4.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fhp.a);
+      $$2.a("left_ear", fhs.c().a(24, 0).a().a(1.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fhp.a);
+      fhw $$3 = $$1.a("body", fhs.c().a(0, 16).a(-3.0F, 4.0F, -3.0F, 6.0F, 12.0F, 6.0F).a(0, 34).a(-5.0F, 16.0F, 0.0F, 10.0F, 6.0F, 1.0F), fhp.a);
+      fhw $$4 = $$3.a("right_wing", fhs.c().a(42, 0).a(-12.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fhp.a);
+      $$4.a("right_wing_tip", fhs.c().a(24, 16).a(-8.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fhp.a(-12.0F, 1.0F, 1.5F));
+      fhw $$5 = $$3.a("left_wing", fhs.c().a(42, 0).a().a(2.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fhp.a);
+      $$5.a("left_wing_tip", fhs.c().a(24, 16).a().a(0.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fhp.a(12.0F, 1.0F, 1.5F));
+      return fht.a($$0, 64, 64);
    }
 
    @Override
-   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fhn a() {
+      return this.a;
    }
 
-   public void b(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (aro.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = aro.a($$4);
-      this.i.b = aro.a($$4);
-      this.j.b = aro.a($$4);
-      this.k.b = aro.a($$4);
+   public void a(buf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      if ($$0.q()) {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = (float) Math.PI - $$4 * (float) (Math.PI / 180.0);
+         this.b.g = (float) Math.PI;
+         this.b.a(0.0F, -2.0F, 0.0F);
+         this.g.a(-3.0F, 0.0F, 3.0F);
+         this.h.a(3.0F, 0.0F, 3.0F);
+         this.f.e = (float) Math.PI;
+         this.g.e = (float) (-Math.PI / 20);
+         this.g.f = (float) (-Math.PI * 2.0 / 5.0);
+         this.i.f = -1.7278761F;
+         this.h.e = this.g.e;
+         this.h.f = -this.g.f;
+         this.j.f = -this.i.f;
+      } else {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = $$4 * (float) (Math.PI / 180.0);
+         this.b.g = 0.0F;
+         this.b.a(0.0F, 0.0F, 0.0F);
+         this.g.a(0.0F, 0.0F, 0.0F);
+         this.h.a(0.0F, 0.0F, 0.0F);
+         this.f.e = (float) (Math.PI / 4) + arp.b($$3 * 0.1F) * 0.15F;
+         this.f.f = 0.0F;
+         this.g.f = arp.b($$3 * 74.48451F * (float) (Math.PI / 180.0)) * (float) Math.PI * 0.25F;
+         this.h.f = -this.g.f;
+         this.i.f = this.g.f * 0.5F;
+         this.j.f = -this.g.f * 0.5F;
+      }
    }
 }

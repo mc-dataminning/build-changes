@@ -1,7 +1,4 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public interface edb {
-   int a(float var1);
-
-   void a(Consumer<ciw> var1, ech var2);
+public record edb(Codec<? extends eda> a) {
 }

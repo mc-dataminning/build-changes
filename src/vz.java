@@ -1,17 +1,19 @@
-public record vz(gv b) implements vo {
-   public static final aep a = new aep("debug/poi_removed");
+public record vz(gu b, String c, int d) implements vp {
+   public static final aer a = new aer("debug/poi_added");
 
-   public vz(sh $$0) {
-      this($$0.e());
+   public vz(si $$0) {
+      this($$0.e(), $$0.r(), $$0.readInt());
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

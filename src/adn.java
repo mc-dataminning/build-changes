@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adn {
+public record adn(aer a) implements adl {
+   @Override
+   public void a(si $$0) {
+   }
 }

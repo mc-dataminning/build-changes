@@ -1,283 +1,371 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Collections;
-import java.util.EnumSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public class dhp extends dgu {
-   @Nullable
-   private volatile dzq n;
-   private volatile dgz o = dgz.c;
-   private final List<qs> p = Lists.newArrayList();
-   private final Map<dkd.a, dgt> q = new Object2ObjectArrayMap();
-   @Nullable
-   private djv r;
-   private final eip<csk> s;
-   private final eip<eaa> t;
+public class dhp<T> implements dho<T>, dhq<T> {
+   private static final int a = 0;
+   private final dho<T> b = ($$0x, $$1x) -> 0;
+   private final hj<T> c;
+   private volatile dhp.c<T> d;
+   private final dhp.d e;
+   private final ask f = new ask("PalettedContainer");
 
-   public dhp(cor $$0, dhs $$1, cpm $$2, hs<cqi> $$3, @Nullable dlk $$4) {
-      this($$0, $$1, null, new eip<>(), new eip<>(), $$2, $$3, $$4);
+   public void a() {
+      this.f.a();
    }
 
-   public dhp(cor $$0, dhs $$1, @Nullable dhg[] $$2, eip<csk> $$3, eip<eaa> $$4, cpm $$5, hs<cqi> $$6, @Nullable dlk $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
+   public void b() {
+      this.f.b();
+   }
+
+   public static <T> Codec<dhp<T>> a(hj<T> $$0, Codec<T> $$1, dhp.d $$2, T $$3) {
+      dhq.b<T, dhp<T>> $$4 = dhp::a;
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static <T> Codec<dhq<T>> b(hj<T> $$0, Codec<T> $$1, dhp.d $$2, T $$3) {
+      dhq.b<T, dhq<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private static <T, C extends dhq<T>> Codec<C> a(hj<T> $$0, Codec<T> $$1, dhp.d $$2, T $$3, dhq.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(aqy.a($$3)).listOf().fieldOf("palette").forGetter(dhq.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dhq.a::b)
+                  )
+                  .apply($$2x, dhq.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public dhp(hj<T> $$0, dhp.d $$1, dhp.a<T> $$2, aqi $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new dhp.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
+
+   private dhp(hj<T> $$0, dhp.d $$1, dhp.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   public dhp(hj<T> $$0, T $$1, dhp.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private dhp.c<T> a(@Nullable dhp.c<T> $$0, int $$1) {
+      dhp.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
    }
 
    @Override
-   public eiu<csk> o() {
-      return this.s;
+   public int onResize(int $$0, T $$1) {
+      dhp.c<T> $$2 = this.d;
+      dhp.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
+   }
+
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
+   }
+
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
    }
 
    @Override
-   public eiu<eaa> p() {
-      return this.t;
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      dhp.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
    }
 
    @Override
-   public dgu.a q() {
-      return new dgu.a(this.s, this.t);
+   public void a(Consumer<T> $$0) {
+      dhn<T> $$1 = this.d.e();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
    }
 
-   @Override
-   public dey a_(gv $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return csl.nb.n();
-      } else {
-         dhg $$2 = this.b(this.e($$1));
-         return $$2.c() ? csl.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   public void a(si $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         dhp.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
       }
    }
 
    @Override
-   public eab b_(gv $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return eac.a.g();
-      } else {
-         dhg $$2 = this.b(this.e($$1));
-         return $$2.c() ? eac.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   public void b(si $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
       }
    }
 
-   @Nullable
+   private static <T> DataResult<dhp<T>> a(hj<T> $$0, dhp.d $$1, dhq.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dhp.a<T> $$6 = $$1.a($$0, $$5);
+      aqi $$7;
+      if ($$5 == 0) {
+         $$7 = new asr($$4);
+      } else {
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == dhp.d.f) {
+               dhn<T> $$10 = new dhf<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               asb $$11 = new asb($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new asb($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new asb($$6.b(), $$4, $$9);
+            }
+         } catch (asb.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
+         }
+      }
+
+      return DataResult.success(new dhp<>($$0, $$1, $$6, $$7, $$3));
+   }
+
    @Override
-   public dey a(gv $$0, dey $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.C_() && $$4 < this.aj()) {
-         int $$6 = this.e($$4);
-         dhg $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(csl.a)) {
-            return $$1;
+   public dhq.a<T> a(hj<T> $$0, dhp.d $$1) {
+      this.a();
+
+      dhq.a var12;
+      try {
+         dhf<T> $$2 = new dhf<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            asb $$6 = new asb($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
          } else {
-            int $$9 = hy.b($$3);
-            int $$10 = hy.b($$4);
-            int $$11 = hy.b($$5);
-            dey $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dgz.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (dzs.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<dkh.a> $$14 = this.j().h();
-            EnumSet<dkh.a> $$15 = null;
-
-            for (dkh.a $$16 : $$14) {
-               dkh $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dkh.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               dkh.a(this, $$15);
-            }
-
-            for (dkh.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
+            $$7 = Optional.empty();
          }
+
+         var12 = new dhq.a<>($$2.d(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   public dhp<T> d() {
+      return new dhp<>(this.c, this.e, this.d.b());
+   }
+
+   @Override
+   public dhp<T> e() {
+      return new dhp<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dhp.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
       } else {
-         return csl.nb.n();
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
       }
    }
 
-   @Override
-   public void a(dck $$0) {
-      this.k.put($$0.p(), $$0);
-   }
-
-   @Nullable
-   @Override
-   public dck c_(gv $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<gv, dck> D() {
-      return this.k;
-   }
-
-   public void b(qs $$0) {
-      this.p.add($$0);
-   }
-
-   @Override
-   public void a(big $$0) {
-      if (!$$0.bN()) {
-         qs $$1 = new qs();
-         $$0.e($$1);
-         this.b($$1);
+   static record a<T>(dhn.a a, int b) {
+      public dhp.c<T> a(hj<T> $$0, dho<T> $$1, int $$2) {
+         aqi $$3 = (aqi)(this.b == 0 ? new asr($$2) : new asb(this.b, $$2));
+         dhn<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dhp.c<>(this, $$3, $$4);
       }
    }
 
-   @Override
-   public void a(dux $$0, dvf $$1) {
-      djv $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         dup $$3 = $$1.a();
-         cpm $$4 = this.z();
-         if ($$3.h() < $$4.C_() || $$3.k() >= $$4.aj()) {
-            return;
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
+
+   static record c<T>(dhp.a<T> a, aqi b, dhn<T> c) {
+
+      public void a(dhn<T> $$0, aqi $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
          }
       }
 
-      super.a($$0, $$1);
-   }
-
-   public List<qs> E() {
-      return this.p;
-   }
-
-   @Override
-   public dgz j() {
-      return this.o;
-   }
-
-   public void a(dgz $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
+      public int a() {
+         return 1 + this.c.a() + sw.a(this.b.b()) + this.b.a().length * 8;
       }
 
-      this.a(true);
-   }
+      public void a(si $$0) {
+         $$0.k(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
 
-   @Override
-   public hf<cqi> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dgz.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
+      public dhp.c<T> b() {
+         return new dhp.c<>(this.a, this.b.d(), this.c.c());
+      }
+
+      public dhp.a<T> c() {
+         return this.a;
+      }
+
+      public aqi d() {
+         return this.b;
+      }
+
+      public dhn<T> e() {
+         return this.c;
       }
    }
 
-   public static short j(gv $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
+   public abstract static class d {
+      public static final dhn.a a = dhs::a;
+      public static final dhn.a b = dhl::a;
+      public static final dhn.a c = dhf::a;
+      static final dhn.a f = dhe::a;
+      public static final dhp.d d = new dhp.d(4) {
+         @Override
+         public <A> dhp.a<A> a(hj<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhp.a(a, $$1);
+               case 1, 2, 3, 4 -> new dhp.a(b, 4);
+               case 5, 6, 7, 8 -> new dhp.a(c, $$1);
+               default -> new dhp.a(dhp.d.f, arp.e($$0.b()));
+            };
+         }
+      };
+      public static final dhp.d e = new dhp.d(2) {
+         @Override
+         public <A> dhp.a<A> a(hj<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dhp.a(a, $$1);
+               case 1, 2, 3 -> new dhp.a(b, $$1);
+               default -> new dhp.a(dhp.d.f, arp.e($$0.b()));
+            };
+         }
+      };
+      private final int g;
 
-   public static gv a(short $$0, int $$1, cor $$2) {
-      int $$3 = hy.a($$2.e, $$0 & 15);
-      int $$4 = hy.a($$1, $$0 >>> 4 & 15);
-      int $$5 = hy.a($$2.f, $$0 >>> 8 & 15);
-      return new gv($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(gv $$0) {
-      if (!this.r($$0)) {
-         dgu.a(this.b, this.e($$0.v())).add(j($$0));
+      d(int $$0) {
+         this.g = $$0;
       }
-   }
 
-   @Override
-   public void a(short $$0, int $$1) {
-      dgu.a(this.b, $$1).add($$0);
-   }
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-   public Map<gv, qs> F() {
-      return Collections.unmodifiableMap(this.j);
-   }
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
 
-   @Nullable
-   @Override
-   public qs g(gv $$0) {
-      dck $$1 = this.c_($$0);
-      return $$1 != null ? $$1.m() : this.j.get($$0);
-   }
+      public abstract <A> dhp.a<A> a(hj<A> var1, int var2);
 
-   @Override
-   public void d(gv $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public dgt a(dkd.a $$0) {
-      return this.q.get($$0);
-   }
-
-   public dgt b(dkd.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new dgt(this.D_(), this.C_()));
-   }
-
-   public void a(dkd.a $$0, dgt $$1) {
-      this.q.put($$0, $$1);
-   }
-
-   public void a(dzq $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable djv $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public djv x() {
-      return this.r;
-   }
-
-   private static <T> eim<T> a(eip<T> $$0) {
-      return new eim<>($$0.b());
-   }
-
-   public eim<csk> G() {
-      return a(this.s);
-   }
-
-   public eim<eaa> H() {
-      return a(this.t);
-   }
-
-   @Override
-   public cpm z() {
-      return (cpm)(this.y() ? djv.b : this);
+      <A> int b(hj<A> $$0, int $$1) {
+         int $$2 = arp.e($$1);
+         dhp.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
+      }
    }
 }

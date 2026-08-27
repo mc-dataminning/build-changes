@@ -1,108 +1,80 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ftk extends fsn<byg> {
+   private static final float a = 0.15F;
+   private static final int f = 48;
+   private static final int g = 32;
+   private static final int h = 16;
+   private static final int i = 1;
+   private static final float j = 0.0F;
+   private static final float k = 0.0F;
+   private static final float l = 0.09375F;
+   private final ftm m;
+   private final aru n = aru.a();
 
-public abstract class ftk<T extends biw, M extends fek<T>> extends fsi<T> implements fue<T, M> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final float h = 0.1F;
-   protected M f;
-   protected final List<fwr<T, M>> g = Lists.newArrayList();
-
-   public ftk(fsj.a $$0, M $$1, float $$2) {
+   public ftk(fso.a $$0) {
       super($$0);
-      this.f = $$1;
-      this.d = $$2;
+      this.m = $$0.b();
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   protected final boolean a(fwr<T, M> $$0) {
-      return this.g.add($$0);
+   private int a(ciy $$0) {
+      int $$1 = 1;
+      if ($$0.L() > 48) {
+         $$1 = 5;
+      } else if ($$0.L() > 32) {
+         $$1 = 4;
+      } else if ($$0.L() > 16) {
+         $$1 = 3;
+      } else if ($$0.L() > 1) {
+         $$1 = 2;
+      }
+
+      return $$1;
    }
 
-   @Override
-   public M a() {
-      return this.f;
-   }
-
-   public void a(T $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
+   public void a(byg $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
       $$3.a();
-      this.f.c = this.d($$0, $$2);
-      this.f.d = $$0.bN();
-      this.f.e = $$0.i_();
-      float $$6 = aro.j($$2, $$0.aV, $$0.aU);
-      float $$7 = aro.j($$2, $$0.aX, $$0.aW);
-      float $$8 = $$7 - $$6;
-      if ($$0.bN() && $$0.cY() instanceof biw) {
-         biw $$9 = (biw)$$0.cY();
-         $$6 = aro.j($$2, $$9.aV, $$9.aU);
-         $$8 = $$7 - $$6;
-         float $$10 = aro.g($$8);
-         if ($$10 < -85.0F) {
-            $$10 = -85.0F;
-         }
-
-         if ($$10 >= 85.0F) {
-            $$10 = 85.0F;
-         }
-
-         $$6 = $$7 - $$10;
-         if ($$10 * $$10 > 2500.0F) {
-            $$6 += $$10 * 0.2F;
-         }
-
-         $$8 = $$7 - $$6;
+      ciy $$6 = $$0.j();
+      int $$7 = $$6.b() ? 187 : cit.a($$6.d()) + $$6.k();
+      this.n.b((long)$$7);
+      gam $$8 = this.m.a($$6, $$0.dK(), null, $$0.ah());
+      boolean $$9 = $$8.b();
+      int $$10 = this.a($$6);
+      float $$11 = 0.25F;
+      float $$12 = arp.a(((float)$$0.m() + $$2) / 10.0F + $$0.b) * 0.1F + 0.1F;
+      float $$13 = $$8.f().a(civ.h).d.y();
+      $$3.a(0.0F, $$12 + 0.25F * $$13, 0.0F);
+      float $$14 = $$0.a($$2);
+      $$3.a(a.d.rotation($$14));
+      float $$15 = $$8.f().h.d.x();
+      float $$16 = $$8.f().h.d.y();
+      float $$17 = $$8.f().h.d.z();
+      if (!$$9) {
+         float $$18 = -0.0F * (float)($$10 - 1) * 0.5F * $$15;
+         float $$19 = -0.0F * (float)($$10 - 1) * 0.5F * $$16;
+         float $$20 = -0.09375F * (float)($$10 - 1) * 0.5F * $$17;
+         $$3.a($$18, $$19, $$20);
       }
 
-      float $$11 = aro.i($$2, $$0.O, $$0.dC());
-      if (e($$0)) {
-         $$11 *= -1.0F;
-         $$8 *= -1.0F;
-      }
-
-      if ($$0.c(bji.c)) {
-         hb $$12 = $$0.fD();
-         if ($$12 != null) {
-            float $$13 = $$0.d(bji.a) - 0.1F;
-            $$3.a((float)(-$$12.j()) * $$13, 0.0F, (float)(-$$12.l()) * $$13);
-         }
-      }
-
-      float $$14 = this.a($$0, $$2);
-      this.a($$0, $$3, $$14, $$6, $$2);
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a($$0, $$3, $$2);
-      $$3.a(0.0F, -1.501F, 0.0F);
-      float $$15 = 0.0F;
-      float $$16 = 0.0F;
-      if (!$$0.bN() && $$0.bv()) {
-         $$15 = $$0.aQ.b($$2);
-         $$16 = $$0.aQ.c($$2);
-         if ($$0.i_()) {
-            $$16 *= 3.0F;
+      for (int $$21 = 0; $$21 < $$10; $$21++) {
+         $$3.a();
+         if ($$21 > 0) {
+            if ($$9) {
+               float $$22 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
+               float $$23 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
+               float $$24 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
+               $$3.a($$22, $$23, $$24);
+            } else {
+               float $$25 = (this.n.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$26 = (this.n.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$3.a($$25, $$26, 0.0F);
+            }
          }
 
-         if ($$15 > 1.0F) {
-            $$15 = 1.0F;
-         }
-      }
-
-      this.f.a($$0, $$16, $$15, $$2);
-      this.f.a($$0, $$16, $$15, $$14, $$8, $$11);
-      eqn $$17 = eqn.N();
-      boolean $$18 = this.d($$0);
-      boolean $$19 = !$$18 && !$$0.d($$17.t);
-      boolean $$20 = $$17.b($$0);
-      fno $$21 = this.a($$0, $$18, $$19, $$20);
-      if ($$21 != null) {
-         ell $$22 = $$4.getBuffer($$21);
-         int $$23 = c($$0, this.b($$0, $$2));
-         this.f.a($$3, $$22, $$5, $$23, 1.0F, 1.0F, 1.0F, $$19 ? 0.15F : 1.0F);
-      }
-
-      if (!$$0.G_()) {
-         for (fwr<T, M> $$24 : this.g) {
-            $$24.a($$3, $$4, $$5, $$0, $$16, $$15, $$2, $$14, $$8, $$11);
+         this.m.a($$6, civ.h, false, $$3, $$4, $$5, fyc.d, $$8);
+         $$3.b();
+         if (!$$9) {
+            $$3.a(0.0F * $$15, 0.0F * $$16, 0.09375F * $$17);
          }
       }
 
@@ -110,137 +82,7 @@ public abstract class ftk<T extends biw, M extends fek<T>> extends fsi<T> implem
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Nullable
-   protected fno a(T $$0, boolean $$1, boolean $$2, boolean $$3) {
-      aep $$4 = this.a($$0);
-      if ($$2) {
-         return fno.f($$4);
-      } else if ($$1) {
-         return this.f.a($$4);
-      } else {
-         return $$3 ? fno.p($$4) : null;
-      }
-   }
-
-   public static int c(biw $$0, float $$1) {
-      return fxx.a(fxx.a($$1), fxx.a($$0.aK > 0 || $$0.aM > 0));
-   }
-
-   protected boolean d(T $$0) {
-      return !$$0.cd();
-   }
-
-   private static float a(hb $$0) {
-      switch ($$0) {
-         case d:
-            return 90.0F;
-         case e:
-            return 0.0F;
-         case c:
-            return 270.0F;
-         case f:
-            return 180.0F;
-         default:
-            return 0.0F;
-      }
-   }
-
-   protected boolean a(T $$0) {
-      return $$0.ck();
-   }
-
-   protected void a(T $$0, elh $$1, float $$2, float $$3, float $$4) {
-      if (this.a($$0)) {
-         $$3 += (float)(Math.cos((double)$$0.ah * 3.25) * Math.PI * 0.4F);
-      }
-
-      if (!$$0.c(bji.c)) {
-         $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      }
-
-      if ($$0.aM > 0) {
-         float $$5 = ((float)$$0.aM + $$4 - 1.0F) / 20.0F * 1.6F;
-         $$5 = aro.c($$5);
-         if ($$5 > 1.0F) {
-            $$5 = 1.0F;
-         }
-
-         $$1.a(a.f.rotationDegrees($$5 * this.c($$0)));
-      } else if ($$0.fh()) {
-         $$1.a(a.b.rotationDegrees(-90.0F - $$0.dC()));
-         $$1.a(a.d.rotationDegrees(((float)$$0.ah + $$4) * -75.0F));
-      } else if ($$0.c(bji.c)) {
-         hb $$6 = $$0.fD();
-         float $$7 = $$6 != null ? a($$6) : $$3;
-         $$1.a(a.d.rotationDegrees($$7));
-         $$1.a(a.f.rotationDegrees(this.c($$0)));
-         $$1.a(a.d.rotationDegrees(270.0F));
-      } else if (e($$0)) {
-         $$1.a(0.0F, $$0.dg() + 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-      }
-   }
-
-   protected float d(T $$0, float $$1) {
-      return $$0.x($$1);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return (float)$$0.ah + $$1;
-   }
-
-   protected float c(T $$0) {
-      return 90.0F;
-   }
-
-   protected float b(T $$0, float $$1) {
-      return 0.0F;
-   }
-
-   protected void a(T $$0, elh $$1, float $$2) {
-   }
-
-   protected boolean b(T $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bU() ? 32.0F : 64.0F;
-      if ($$1 >= (double)($$2 * $$2)) {
-         return false;
-      } else {
-         eqn $$3 = eqn.N();
-         fmi $$4 = $$3.t;
-         boolean $$5 = !$$0.d($$4);
-         if ($$0 != $$4) {
-            eig $$6 = $$0.cf();
-            eig $$7 = $$4.cf();
-            if ($$6 != null) {
-               eig.b $$8 = $$6.j();
-               switch ($$8) {
-                  case a:
-                     return $$5;
-                  case b:
-                     return false;
-                  case c:
-                     return $$7 == null ? $$5 : $$6.a($$7) && ($$6.i() || $$5);
-                  case d:
-                     return $$7 == null ? $$5 : !$$6.a($$7) && $$5;
-                  default:
-                     return true;
-               }
-            }
-         }
-
-         return eqn.J() && $$0 != $$3.al() && $$5 && !$$0.bO();
-      }
-   }
-
-   public static boolean e(biw $$0) {
-      if ($$0 instanceof cbl || $$0.ac()) {
-         String $$1 = n.a($$0.ab().getString());
-         if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
-            return !($$0 instanceof cbl) || ((cbl)$$0).a(cbm.a);
-         }
-      }
-
-      return false;
+   public aer a(byg $$0) {
+      return fyk.e;
    }
 }

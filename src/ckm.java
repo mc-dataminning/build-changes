@@ -1,23 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ckm extends cit {
+   private final ckl a;
 
-public class ckm extends cgk {
-   public ckm(cir.a $$0) {
-      super($$0);
+   public ckm(ckl $$0, cit.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
+
+   public ckl i() {
+      return this.a;
    }
 
    @Override
-   public ciw ae_() {
-      return ckv.a(super.ae_(), ckw.E);
+   public int c() {
+      return this.a.e();
    }
 
    @Override
-   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
-      ckv.a($$0, $$2, 0.125F);
-   }
-
-   @Override
-   public String j(ciw $$0) {
-      return ckv.d($$0).b(this.a() + ".effect.");
+   public boolean a(ciy $$0, ciy $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

@@ -1,57 +1,42 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum cxf implements asf {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class cxf extends csm implements czn {
+   public static final dfr a = dfq.C;
 
-   public static final Codec<cxf> d = asf.a(cxf::values);
-   private final String e;
-   private final te f;
-   private final h g;
-
-   private cxf(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = te.c("mirror." + $$0);
-      this.g = $$1;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public cyw a(hb $$0) {
-      hb.a $$1 = $$0.o();
-      return (this != b || $$1 != hb.a.c) && (this != c || $$1 != hb.a.a) ? cyw.a : cyw.c;
-   }
-
-   public hb b(hb $$0) {
-      if (this == c && $$0.o() == hb.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == hb.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public te b() {
-      return this.f;
+   protected cxf(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public boolean a(dfa $$0, dfa $$1, ha $$2) {
+      return $$1.a(csn.ac) && $$2.o() == ha.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dfa a(clg $$0) {
+      ead $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eae.c;
+      return super.a($$0).a(a, Boolean.valueOf($$2));
+   }
+
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$0.c(a)) {
+         $$3.a($$4, eae.c, eae.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ead c_(dfa $$0) {
+      return $$0.c(a) ? eae.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 }

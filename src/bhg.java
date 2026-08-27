@@ -1,51 +1,120 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record bhg(String b, bhd c, float d, bhc e, bhi f) {
-   public static final Codec<bhg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bhg::a),
-               bhd.d.fieldOf("scaling").forGetter(bhg::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bhg::c),
-               bhc.g.optionalFieldOf("effects", bhc.a).forGetter(bhg::d),
-               bhi.d.optionalFieldOf("death_message_type", bhi.a).forGetter(bhg::e)
-            )
-            .apply($$0, bhg::new)
-   );
+public class bhg {
+   private final he<bhi> a;
+   @Nullable
+   private final bii b;
+   @Nullable
+   private final bii c;
+   @Nullable
+   private final ehe d;
 
-   public bhg(String $$0, bhd $$1, float $$2) {
-      this($$0, $$1, $$2, bhc.a, bhi.a);
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
    }
 
-   public bhg(String $$0, bhd $$1, float $$2, bhc $$3) {
-      this($$0, $$1, $$2, $$3, bhi.a);
+   public float a() {
+      return this.j().c();
    }
 
-   public bhg(String $$0, float $$1, bhc $$2) {
-      this($$0, bhd.b, $$1, $$2);
+   public boolean b() {
+      return this.b != this.c;
    }
 
-   public bhg(String $$0, float $$1) {
-      this($$0, bhd.b, $$1);
+   private bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2, @Nullable ehe $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
-   public String a() {
-      return this.b;
+   public bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2) {
+      this($$0, $$1, $$2, null);
    }
 
-   public bhd b() {
+   public bhg(he<bhi> $$0, ehe $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bhg(he<bhi> $$0, @Nullable bii $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bhg(he<bhi> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bii c() {
       return this.c;
    }
 
-   public float c() {
+   @Nullable
+   public bii d() {
+      return this.b;
+   }
+
+   public tf a(biy $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         biy $$5 = $$0.eJ();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? tf.a($$6, $$0.H_(), $$5.H_()) : tf.a($$1, $$0.H_());
+      } else {
+         tf $$2 = this.b == null ? this.c.H_() : this.b.H_();
+         ciy $$4 = this.b instanceof biy $$3 ? $$3.eR() : ciy.b;
+         return !$$4.b() && $$4.A() ? tf.a($$1 + ".item", $$0.H_(), $$2, $$4.J()) : tf.a($$1, $$0.H_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof biy && !(this.b instanceof cbn);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cbn $$0 && $$0.fR().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ehe h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.di() : null;
+      }
+   }
+
+   @Nullable
+   public ehe i() {
       return this.d;
    }
 
-   public bhc d() {
-      return this.e;
+   public boolean a(aqa<bhi> $$0) {
+      return this.a.a($$0);
    }
 
-   public bhi e() {
-      return this.f;
+   public boolean a(aeq<bhi> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bhi j() {
+      return this.a.a();
+   }
+
+   public he<bhi> k() {
+      return this.a;
    }
 }

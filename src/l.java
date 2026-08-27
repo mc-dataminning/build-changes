@@ -6,12 +6,12 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class l {
-   public static l.a a(gv $$0, hb.a $$1, int $$2, hb.a $$3, int $$4, Predicate<gv> $$5) {
-      gv.a $$6 = $$0.j();
-      hb $$7 = hb.a(hb.b.b, $$1);
-      hb $$8 = $$7.g();
-      hb $$9 = hb.a(hb.b.b, $$3);
-      hb $$10 = $$9.g();
+   public static l.a a(gu $$0, ha.a $$1, int $$2, ha.a $$3, int $$4, Predicate<gu> $$5) {
+      gu.a $$6 = $$0.j();
+      ha $$7 = ha.a(ha.b.b, $$1);
+      ha $$8 = $$7.g();
+      ha $$9 = ha.a(ha.b.b, $$3);
+      ha $$10 = $$9.g();
       int $$11 = a($$5, $$6.g($$0), $$7, $$2);
       int $$12 = a($$5, $$6.g($$0), $$8, $$2);
       int $$13 = $$11;
@@ -58,7 +58,7 @@ public class l {
       return new l.a($$0.a($$1, $$20 - $$13).a($$3, $$21 - $$15), $$22, $$23);
    }
 
-   private static int a(Predicate<gv> $$0, gv.a $$1, hb $$2, int $$3) {
+   private static int a(Predicate<gu> $$0, gu.a $$1, ha $$2, int $$3) {
       int $$4 = 0;
 
       while ($$4 < $$3 && $$0.test($$1.c($$2))) {
@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<gv> a(coq $$0, gv $$1, csk $$2, hb $$3, csk $$4) {
-      gv.a $$5 = $$1.j();
+   public static Optional<gu> a(cos $$0, gu $$1, csm $$2, ha $$3, csm $$4) {
+      gu.a $$5 = $$1.j();
 
-      dey $$6;
+      dfa $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);
@@ -116,11 +116,11 @@ public class l {
    }
 
    public static class a {
-      public final gv a;
+      public final gu a;
       public final int b;
       public final int c;
 
-      public a(gv $$0, int $$1, int $$2) {
+      public a(gu $$0, int $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

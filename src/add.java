@@ -1,14 +1,24 @@
-public interface add extends aaw {
-   @Override
-   default sg b() {
-      return sg.d;
+public class add implements ux<acz> {
+   private final int a;
+
+   public add(int $$0) {
+      this.a = $$0;
    }
 
-   void a(adf var1);
+   public add(si $$0) {
+      this.a = $$0.m();
+   }
 
-   void a(adg var1);
+   @Override
+   public void a(si $$0) {
+      $$0.c(this.a);
+   }
 
-   void a(ade var1);
+   public void a(acz $$0) {
+      $$0.a(this);
+   }
 
-   void a(adh var1);
+   public int a() {
+      return this.a;
+   }
 }

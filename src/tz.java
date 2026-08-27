@@ -1,35 +1,36 @@
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface tz {
-   tz a = $$0 -> !$$0.h();
-   tz b = $$0 -> false;
+public record tz(int b, UUID c, UUID d) {
+   public static final Codec<tz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.i.fieldOf("index").forGetter(tz::b), hy.a.fieldOf("sender").forGetter(tz::c), hy.a.fieldOf("session_id").forGetter(tz::d))
+            .apply($$0, tz::new)
+   );
 
-   boolean updateAndValidate(tt var1);
+   public static tz a(UUID $$0) {
+      return a($$0, ac.d);
+   }
 
-   public static class a implements tz {
-      private final arx c;
-      @Nullable
-      private tt d;
-      private boolean e = true;
+   public static tz a(UUID $$0, UUID $$1) {
+      return new tz(0, $$0, $$1);
+   }
 
-      public a(arx $$0) {
-         this.c = $$0;
-      }
+   public void a(ary.a $$0) throws SignatureException {
+      $$0.update(hy.b(this.c));
+      $$0.update(hy.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
 
-      private boolean a(tt $$0) {
-         return $$0.equals(this.d) ? true : this.d == null || $$0.j().a(this.d.j());
-      }
+   public boolean a(tz $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   }
 
-      @Override
-      public boolean updateAndValidate(tt $$0) {
-         this.e = this.e && $$0.a(this.c) && this.a($$0);
-         if (!this.e) {
-            return false;
-         } else {
-            this.d = $$0;
-            return true;
-         }
-      }
+   @Nullable
+   public tz a() {
+      return this.b == Integer.MAX_VALUE ? null : new tz(this.b + 1, this.c, this.d);
    }
 }

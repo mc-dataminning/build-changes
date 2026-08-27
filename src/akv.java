@@ -1,70 +1,49 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class akv implements akr {
-   private final akt a;
-   private final Long2ObjectOpenHashMap<dgz> b;
-   private cor c = new cor(0, 0);
-   private final int d;
-   private final int e;
-   private final int f;
-   private boolean g;
+public class akv implements akt {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
    public akv(int $$0) {
-      this.a = new akt($$0);
-      this.d = $$0 * 2 + 1;
-      this.e = $$0 + dgz.b();
-      this.f = this.e * 2 + 1;
-      this.b = new Long2ObjectOpenHashMap();
+      int $$1 = $$0 * 2 + 1;
+      this.b = $$1 * $$1;
    }
 
    @Override
-   public void a(cor $$0) {
-      if (this.g) {
-         this.a.a($$0);
-         this.c = $$0;
+   public void a(cot $$0) {
+      this.e = ac.b();
+      this.d = this.e;
+   }
+
+   @Override
+   public void a(cot $$0, @Nullable dhb $$1) {
+      if ($$1 == dhb.n) {
+         this.c++;
       }
-   }
 
-   @Override
-   public void a(cor $$0, @Nullable dgz $$1) {
-      if (this.g) {
-         this.a.a($$0, $$1);
-         if ($$1 == null) {
-            this.b.remove($$0.a());
-         } else {
-            this.b.put($$0.a(), $$1);
-         }
+      int $$2 = this.c();
+      if (ac.b() > this.e) {
+         this.e += 500L;
+         a.info(tf.a("menu.preparingSpawn", arp.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
    public void a() {
-      this.g = true;
-      this.b.clear();
-      this.a.a();
    }
 
    @Override
    public void b() {
-      this.g = false;
-      this.a.b();
+      a.info("Time elapsed: {} ms", ac.b() - this.d);
+      this.e = Long.MAX_VALUE;
    }
 
    public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public int e() {
-      return this.a.c();
-   }
-
-   @Nullable
-   public dgz a(int $$0, int $$1) {
-      return (dgz)this.b.get(cor.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+      return arp.d((float)this.c * 100.0F / (float)this.b);
    }
 }

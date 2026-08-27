@@ -1,175 +1,145 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
 
-public class qp extends qr<qq> {
-   private static final int b = 24;
-   public static final rn<qp> a = new rn.b<qp>() {
-      public qp a(DataInput $$0, int $$1, rb $$2) throws IOException {
-         $$2.a(24L);
-         int $$3 = $$0.readInt();
-         $$2.a(1L * (long)$$3);
-         byte[] $$4 = new byte[$$3];
-         $$0.readFully($$4);
-         return new qp($$4);
+public class qp extends re {
+   private static final int w = 9;
+   public static final rm<qp> a = new rm.a<qp>() {
+      public qp a(DataInput $$0, int $$1, ra $$2) throws IOException {
+         $$2.a(9L);
+         return qp.a($$0.readByte());
       }
 
       @Override
-      public ri.b a(DataInput $$0, ri $$1) throws IOException {
-         int $$2 = $$0.readInt();
-         byte[] $$3 = new byte[$$2];
-         $$0.readFully($$3);
-         return $$1.a($$3);
+      public rh.b a(DataInput $$0, rh $$1) throws IOException {
+         return $$1.a($$0.readByte());
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
-         $$0.skipBytes($$0.readInt() * 1);
+      public int c() {
+         return 1;
       }
 
       @Override
       public String a() {
-         return "BYTE[]";
+         return "BYTE";
       }
 
       @Override
       public String b() {
-         return "TAG_Byte_Array";
+         return "TAG_Byte";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
       }
    };
-   private byte[] c;
+   public static final qp b = a((byte)0);
+   public static final qp c = a((byte)1);
+   private final byte x;
 
-   public qp(byte[] $$0) {
-      this.c = $$0;
+   qp(byte $$0) {
+      this.x = $$0;
    }
 
-   public qp(List<Byte> $$0) {
-      this(a($$0));
+   public static qp a(byte $$0) {
+      return qp.a.a[128 + $$0];
    }
 
-   private static byte[] a(List<Byte> $$0) {
-      byte[] $$1 = new byte[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Byte $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
+   public static qp a(boolean $$0) {
+      return $$0 ? c : b;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-      $$0.write(this.c);
+      $$0.writeByte(this.x);
    }
 
    @Override
    public int a() {
-      return 24 + 1 * this.c.length;
+      return 9;
    }
 
    @Override
    public byte b() {
-      return 7;
-   }
-
-   @Override
-   public rn<qp> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.m_();
-   }
-
-   @Override
-   public rl d() {
-      byte[] $$0 = new byte[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new qp($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof qp && Arrays.equals(this.c, ((qp)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public void a(rp $$0) {
-      $$0.a(this);
-   }
-
-   public byte[] e() {
-      return this.c;
-   }
-
-   @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public qq a(int $$0) {
-      return qq.a(this.c[$$0]);
-   }
-
-   public qq a(int $$0, qq $$1) {
-      byte $$2 = this.c[$$0];
-      this.c[$$0] = $$1.i();
-      return qq.a($$2);
-   }
-
-   public void b(int $$0, qq $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
-   }
-
-   @Override
-   public boolean a(int $$0, rl $$1) {
-      if ($$1 instanceof rf) {
-         this.c[$$0] = ((rf)$$1).i();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(int $$0, rl $$1) {
-      if ($$1 instanceof rf) {
-         this.c = ArrayUtils.add(this.c, $$0, ((rf)$$1).i());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public qq b(int $$0) {
-      byte $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return qq.a($$1);
-   }
-
-   @Override
-   public byte f() {
       return 1;
    }
 
    @Override
-   public void clear() {
-      this.c = new byte[0];
+   public rm<qp> c() {
+      return a;
+   }
+
+   public qp e() {
+      return this;
    }
 
    @Override
-   public ri.b a(ri $$0) {
-      return $$0.a(this.c);
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof qp && this.x == ((qp)$$0).x;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.x;
+   }
+
+   @Override
+   public void a(ro $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.x;
+   }
+
+   @Override
+   public int g() {
+      return this.x;
+   }
+
+   @Override
+   public short h() {
+      return (short)this.x;
+   }
+
+   @Override
+   public byte i() {
+      return this.x;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.x;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.x;
+   }
+
+   @Override
+   public Number l() {
+      return this.x;
+   }
+
+   @Override
+   public rh.b a(rh $$0) {
+      return $$0.a(this.x);
+   }
+
+   static class a {
+      static final qp[] a = new qp[256];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new qp((byte)($$0 - 128));
+         }
+      }
    }
 }

@@ -1,60 +1,88 @@
-public class cup extends cvc {
-   protected static final ehy a = csk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-   public cup(dex.d $$0) {
-      super($$0);
-   }
+public class cup {
+   public static <S extends dcm> cup.c<S> a(
+      dco<S> $$0, Function<dfa, cup.a> $$1, Function<dfa, ha> $$2, dfu $$3, dfa $$4, cpn $$5, gu $$6, BiPredicate<cpn, gu> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return cup.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return cup.b::b;
+      } else {
+         cup.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == cup.a.a;
+         boolean $$11 = $$9 == cup.a.b;
+         if ($$10) {
+            return new cup.c.b<>($$8);
+         } else {
+            gu $$12 = $$6.a($$2.apply($$4));
+            dfa $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               cup.a $$14 = $$1.apply($$13);
+               if ($$14 != cup.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return cup.b::b;
+                  }
 
-   @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a;
-   }
-
-   @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      this.d($$0, $$1, $$2);
-      return bgo.a($$1.B);
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, cbl $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(dey $$0, cpk $$1, gv $$2) {
-      dgp $$3 = $$1.w_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         gv $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = aro.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = aro.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = aro.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(iw.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new cup.c.a<>($$16, $$17);
+                  }
                }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
             }
 
-            return;
+            return new cup.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   protected int a() {
-      return 5;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
-      return false;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(cup.b<? super S, T> var1);
+
+      public static final class a<S> implements cup.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(cup.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements cup.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(cup.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

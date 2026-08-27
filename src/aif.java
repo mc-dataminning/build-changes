@@ -1,22 +1,18 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aif {
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), gv.a(((ds)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("pos", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.c($$0x, "pos"), 0.0F)))
-                  .then(dt.a("angle", dw.a()).executes($$0x -> a((ds)$$0x.getSource(), fj.c($$0x, "pos"), dw.a($$0x, "angle"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("setidletimeout").requires($$0x -> $$0x.c(3)))
+            .then(ds.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
       );
    }
 
-   private static int a(ds $$0, gv $$1, float $$2) {
-      $$0.e().a($$1, $$2);
-      $$0.a(() -> te.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-      return 1;
+   private static int a(dr $$0, int $$1) {
+      $$0.l().c($$1);
+      $$0.a(() -> tf.a("commands.setidletimeout.success", $$1), true);
+      return $$1;
    }
 }

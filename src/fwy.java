@@ -1,34 +1,48 @@
-public class fwy<T extends biw> extends fwr<T, ffp<T>> {
-   public static final aep a = new aep("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fhj c;
+public class fwy extends fww<bvg, fge<bvg>> {
+   private static final aer a = new aer("textures/entity/sheep/sheep_fur.png");
+   private final fgd<bvg> b;
 
-   public fwy(fue<T, ffp<T>> $$0, fhf $$1) {
+   public fwy(fuj<bvg, fge<bvg>> $$0, fhj $$1) {
       super($$0);
-      fhj $$2 = $$1.a(fhi.aT);
-      this.c = $$2.b("box");
+      this.b = new fgd<>($$1.a(fhm.bc));
    }
 
-   public static fhp a() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("box", fho.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fhl.a);
-      return fhp.a($$0, 64, 64);
-   }
+   public void a(elg $$0, fnl $$1, int $$2, bvg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.t()) {
+         if ($$3.cd()) {
+            eqm $$10 = eqm.O();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               elk $$12 = $$1.getBuffer(fnt.q(a));
+               this.b.a($$0, $$12, $$2, ftp.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
+            }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ac() && "jeb_".equals($$3.ab().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ah / 25 + $$3.ah();
+               int $$15 = chm.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
+               float[] $$19 = bvg.a(chm.a($$16));
+               float[] $$20 = bvg.a(chm.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
+            } else {
+               float[] $$24 = bvg.a($$3.q());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
+            }
 
-   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fh()) {
-         ell $$10 = $$1.getBuffer(fno.d(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, fxx.d);
-            $$0.b();
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
          }
       }
    }

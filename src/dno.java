@@ -1,29 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class dno extends dnl<dpt> {
-   public dno(Codec<dpt> $$0) {
-      super($$0);
+public class dno {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<akk, dno.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<akk, dno.b>() {
+         public dno.b a(akk $$0) {
+            return new dno.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+         }
+      });
+
+   public static void a(akk $$0) {
+      try {
+         ((dno.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
+      }
    }
 
-   @Override
-   public boolean a(dnn<dpt> $$0) {
-      gv $$1 = $$0.e();
-      dpt $$2 = $$0.f();
-      cqe $$3 = $$0.b();
-      gv.a $$4 = new gv.a();
-
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.C_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
+   public static void a(akk $$0, dna<?, ?> $$1, Optional<dud> $$2) {
+      try {
+         ((dno.b)b.get($$0)).a().computeInt(new dno.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
       }
+   }
 
-      return true;
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ac().a().toString();
+               boolean $$3 = $$0.n().v();
+               hr<dud> $$4 = $$0.B_().d(jc.ay);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::c).<aer>map(aeq::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(dna<?, ?> a, Optional<dud> b) {
+   }
+
+   static record b(Object2IntMap<dno.a> a, MutableInt b) {
    }
 }

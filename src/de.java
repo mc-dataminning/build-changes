@@ -1,52 +1,36 @@
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
-public class de extends cv<de.a> {
-   static final aep a = new aep("villager_trade");
+public class de extends cu<de.a> {
+   static final aer a = new aer("used_ender_eye");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public de.a a(JsonObject $$0, ba $$1, be $$2) {
-      ba $$3 = bo.a($$0, "villager", $$2);
-      bz $$4 = bz.a($$0.get("item"));
-      return new de.a($$1, $$3, $$4);
+   public de.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      cj.c $$3 = cj.c.a($$0.get("distance"));
+      return new de.a($$1, $$3);
    }
 
-   public void a(akj $$0, cat $$1, ciw $$2) {
-      ech $$3 = bo.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   public void a(akl $$0, gu $$1) {
+      double $$2 = $$0.dp() - (double)$$1.u();
+      double $$3 = $$0.dv() - (double)$$1.w();
+      double $$4 = $$2 * $$2 + $$3 * $$3;
+      this.a($$0, $$1x -> $$1x.a($$4));
    }
 
    public static class a extends ar {
-      private final ba a;
-      private final bz b;
+      private final cj.c a;
 
-      public a(ba $$0, ba $$1, bz $$2) {
+      public a(Optional<ba> $$0, cj.c $$1) {
          super(de.a, $$0);
          this.a = $$1;
-         this.b = $$2;
       }
 
-      public static de.a c() {
-         return new de.a(ba.a, ba.a, bz.a);
-      }
-
-      public static de.a a(bo.a $$0) {
-         return new de.a(bo.a($$0.b()), ba.a, bz.a);
-      }
-
-      public boolean a(ech $$0, ciw $$1) {
-         return !this.a.a($$0) ? false : this.b.a($$1);
-      }
-
-      @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("item", this.b.a());
-         $$1.add("villager", this.a.a($$0));
-         return $$1;
+      public boolean a(double $$0) {
+         return this.a.e($$0);
       }
    }
 }

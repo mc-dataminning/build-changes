@@ -1,145 +1,93 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fid implements acx {
+public class fid {
    private static final Logger a = LogUtils.getLogger();
-   private final eqn b;
+   private final eqm b;
+   private final gdk c;
+   private final af d = new af();
+   private final Map<ae, ag> e = Maps.newHashMap();
    @Nullable
-   private final fin c;
+   private fid.a f;
    @Nullable
-   private final exv d;
-   private final Consumer<te> e;
-   private final sf f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
+   private ae g;
 
-   public fid(sf $$0, eqn $$1, @Nullable fin $$2, @Nullable exv $$3, boolean $$4, @Nullable Duration $$5, Consumer<te> $$6) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
+   public fid(eqm $$0, gdk $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a(ada $$0) {
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      adg $$7;
-      try {
-         SecretKey $$1 = aqn.a();
-         PublicKey $$2 = $$0.d();
-         $$3 = new BigInteger(aqn.a($$0.a(), $$2, $$1)).toString(16);
-         $$4 = aqn.a(2, $$1);
-         $$5 = aqn.a(1, $$1);
-         byte[] $$6 = $$0.e();
-         $$7 = new adg($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
+   public void a(aap $$0) {
+      if ($$0.f()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      this.e.accept(te.c("connect.authorizing"));
-      arg.a.submit(() -> {
-         te $$4x = this.b($$3);
-         if ($$4x != null) {
-            if (this.c == null || !this.c.d()) {
-               this.f.a($$4x);
-               return;
+      this.d.a($$0.d());
+      this.d.a($$0.a());
+
+      for (Entry<aer, ag> $$1 : $$0.e().entrySet()) {
+         ae $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ag $$3 = $$1.getValue();
+            $$3.a($$2.h(), $$2.k());
+            this.e.put($$2, $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
             }
 
-            a.warn($$4x.getString());
+            if (!$$0.f() && $$3.a()) {
+               if (this.b.u != null) {
+                  this.c.a(this.b.u, $$2);
+               }
+
+               if ($$2.d() != null && $$2.d().h()) {
+                  this.b.az().a(new euk($$2));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
+   }
+
+   public af a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ae $$0, boolean $$1) {
+      fij $$2 = this.b.J();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(acf.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.e($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable fid.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         for (Entry<ae, ag> $$1 : this.e.entrySet()) {
+            $$0.a($$1.getKey(), $$1.getValue());
          }
 
-         this.e.accept(te.c("connect.encrypting"));
-         this.f.a($$7, so.a(() -> this.f.a($$4, $$5)));
-      });
-   }
-
-   @Nullable
-   private te b(String $$0) {
-      try {
-         this.e().joinServer(this.b.U().b(), this.b.U().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return te.a("disconnect.loginFailedInfo", te.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return te.a("disconnect.loginFailedInfo", te.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return te.a("disconnect.loginFailedInfo", te.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (UserBannedException var6) {
-         return te.a("disconnect.loginFailedInfo", te.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return te.a("disconnect.loginFailedInfo", var7.getMessage());
+         $$0.e(this.g);
       }
    }
 
-   private MinecraftSessionService e() {
-      return this.b.aj();
-   }
+   public interface a extends af.a {
+      void a(ae var1, ag var2);
 
-   @Override
-   public void a(acz $$0) {
-      this.e.accept(te.c("connect.joining"));
-      GameProfile $$1 = $$0.a();
-      this.f.a(new adh());
-      this.f.a(new fic(this.b, this.f, new fii($$1, this.b.t().a(this.g, this.h, this.i), fig.a().a(), cdv.g, null, this.c, this.d)));
-      this.f.a(new vh(new vn(ClientBrandRetriever.getClientModName())));
-   }
-
-   @Override
-   public void a(te $$0) {
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gdz(this.d, td.q, $$0));
-      } else {
-         this.b.a(new ewx(this.d, td.q, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.k();
-   }
-
-   @Override
-   public void a(adc $$0) {
-      this.f.a($$0.a());
-   }
-
-   @Override
-   public void a(adb $$0) {
-      if (!this.f.g()) {
-         this.f.a($$0.a(), false);
-      }
-   }
-
-   @Override
-   public void a(acy $$0) {
-      this.e.accept(te.c("connect.negotiating"));
-      this.f.a(new ade($$0.a(), null));
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
+      void e(@Nullable ae var1);
    }
 }

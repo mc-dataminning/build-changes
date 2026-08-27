@@ -1,39 +1,20 @@
-public class foc {
-   protected final int[] a;
-   protected final int b;
-   protected final hb c;
-   protected final fyg d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public foc(int[] $$0, int $$1, hb $$2, fyg $$3, boolean $$4) {
+public final class foc implements AutoCloseable {
+   private final eqm a;
+   private final eki b;
+
+   public foc(eqm $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.b = new eki(ekf::new);
    }
 
-   public fyg a() {
-      return this.d;
+   public ekk a(ejx $$0, @Nullable String $$1, String $$2) {
+      return new ekk(this.a, this.b, $$0, $$1, $$2);
    }
 
-   public int[] b() {
-      return this.a;
-   }
-
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public hb e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+   @Override
+   public void close() {
+      this.b.a();
    }
 }

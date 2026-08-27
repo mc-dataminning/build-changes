@@ -1,215 +1,146 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public class eta extends esc {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int l = 300;
-   private final erv m;
-   private final te n;
-   private final etd o;
-   private long p = ac.b();
-
-   public eta(erv $$0, int $$1, int $$2, int $$3, int $$4, te $$5, te $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new etd($$0, $$3 - this.b());
-      this.o.a(this::v);
-   }
-
-   public void a(int $$0) {
-      this.o.a($$0);
-   }
-
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String u() {
-      return this.o.c();
-   }
-
-   @Override
-   public void a(evt $$0) {
-      $$0.a(evs.a, te.a("gui.narrate.editBox", this.l(), this.u()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (this.c($$0, $$1) && $$2 == 0) {
-         this.o.a(exv.q());
-         this.f($$0, $$1);
-         return true;
-      } else {
-         return false;
+public interface eta {
+   eta a = new eta() {
+      @Override
+      public int a(erw $$0, int $$1, int $$2) {
+         return $$2;
       }
-   }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.c($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.f($$0, $$1);
-         this.o.a(exv.q());
-         return true;
-      } else {
-         return false;
+      @Override
+      public int a(erw $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
       }
-   }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.j && this.ax_() && aa.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
+      @Override
+      public int b(erw $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
       }
+
+      @Override
+      public int c(erw $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static eta a(eru $$0, tj $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void c(erx $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.ax_()) {
-         $$0.a(this.m, this.n, this.p() + this.a(), this.r() + this.a(), this.f - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.ax_() && (ac.b() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.r() + this.a();
+   static eta a(eru $$0, tj $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
 
-         for (etd.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.p() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.p() + this.a(), $$10, -2039584) - 1;
-               }
+   static eta a(eru $$0, tf... $$1) {
+      return b($$0, Arrays.stream($$1).map(tf::f).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
 
-               $$9 = $$10;
+   static eta a(eru $$0, List<tf> $$1) {
+      return b($$0, $$1.stream().map(tf::f).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static eta b(final eru $$0, final List<eta.a> $$1) {
+      return $$1.isEmpty() ? a : new eta() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(erw $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (eta.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
             }
 
-            $$10 += 9;
+            return $$5;
          }
 
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         @Override
+         public int b(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (eta.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
          }
 
-         if (this.o.i()) {
-            etd.a $$13 = this.o.e();
-            int $$14 = this.p() + this.a();
-            $$10 = this.r() + this.a();
+         @Override
+         public int c(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
 
-            for (etd.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
+            for (eta.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
 
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.f - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
+            return $$5;
+         }
 
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
-
-                  $$10 += 9;
-               }
+         @Override
+         public void a(erw $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
             }
          }
-      }
-   }
 
-   @Override
-   protected void a(erx $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         te $$2 = te.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.p() + this.f - this.m.a($$2), this.r() + this.g + 4, 10526880);
-      }
-   }
-
-   @Override
-   public int f() {
-      return 9 * this.o.f();
-   }
-
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.w();
-   }
-
-   @Override
-   protected double g() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(erx $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(fno.E(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void v() {
-      double $$0 = this.c();
-      etd.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         etd.a $$2 = this.o.c((int)(($$0 + (double)this.g) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.g + 9 + this.b());
+         @Override
+         public int a() {
+            return $$1.size();
          }
-      }
 
-      this.a($$0);
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
    }
 
-   private double w() {
-      return (double)(this.g - this.b()) / 9.0;
-   }
+   int a(erw var1, int var2, int var3);
 
-   private void f(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.p() - (double)this.a();
-      double $$3 = $$1 - (double)this.r() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
-   }
+   int a(erw var1, int var2, int var3, int var4, int var5);
 
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      if ($$0) {
-         this.p = ac.b();
+   int b(erw var1, int var2, int var3, int var4, int var5);
+
+   int c(erw var1, int var2, int var3, int var4, int var5);
+
+   void a(erw var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final arc a;
+      final int b;
+
+      a(arc $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

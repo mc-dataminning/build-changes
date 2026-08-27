@@ -1,33 +1,26 @@
-public class fux extends fto<cdo> {
-   private final fnz f;
+public class fux extends ftu<bzo, fgr<bzo>> {
+   private static final aer a = new aer("textures/entity/strider/strider.png");
+   private static final aer i = new aer("textures/entity/strider/strider_cold.png");
 
-   public fux(fsj.a $$0) {
-      super($$0, fhi.bA);
-      this.f = $$0.c();
+   public fux(fso.a $$0) {
+      super($$0, new fgr<>($$0.a(fhm.bx)), 0.5F);
+      this.a(new fwx<>(this, new fgr<>($$0.a(fhm.by)), new aer("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(cdo $$0, float $$1, dey $$2, elh $$3, fng $$4, int $$5) {
-      int $$6 = $$0.B();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = aro.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public aer a(bzo $$0) {
+      return $$0.p() ? i : a;
    }
 
-   public static void a(fnz $$0, dey $$1, elh $$2, fng $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = fxx.a(fxx.a(1.0F), 10);
+   protected void a(bzo $$0, elg $$1, float $$2) {
+      if ($$0.i_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
       } else {
-         $$6 = fxx.d;
+         this.d = 0.5F;
       }
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean b(bzo $$0) {
+      return super.a($$0) || $$0.p();
    }
 }

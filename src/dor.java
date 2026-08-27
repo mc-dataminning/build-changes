@@ -1,40 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class dor extends dnl<dpz> {
-   public dor(Codec<dpz> $$0) {
+public class dor extends dnn<dqi> {
+   public dor(Codec<dqi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnn<dpz> $$0) {
-      boolean $$1 = false;
-      art $$2 = $$0.d();
-      cqe $$3 = $$0.b();
-      gv $$4 = $$0.e();
-      dpz $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dkh.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      gv $$9 = new gv($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(csl.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dey $$11 = $$10 ? csl.bx.n() : csl.bw.n();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dey $$12 = $$11.a(dar.b, dfu.a);
-               gv $$13 = $$9.c();
-               if ($$3.a_($$13).a(csl.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
+   public boolean a(dnp<dqi> $$0) {
+      cqg $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dqi $$3 = $$0.f();
+         aru $$4 = $$0.d();
+         czh $$5 = czh.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            $$1 = true;
-         }
-      }
+            boolean $$9 = $$7 < $$3.f();
 
-      return $$1;
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         gu $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, csn.qH.n(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            gu $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ha.b)) {
+               $$1.a($$14, csn.qI.n().a(czg.c, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cpn $$0, gu $$1) {
+      dfa $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof czc) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(csn.G) || !$$2.u().b()) ? false : ha.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

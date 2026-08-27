@@ -1,36 +1,48 @@
-public class fww extends fwr<bvg, fgk<bvg>> {
-   private final fnz a;
-   private final fth b;
+public abstract class fww<T extends bii, M extends feo<T>> {
+   private final fuj<T, M> a;
 
-   public fww(fue<bvg, fgk<bvg>> $$0, fnz $$1, fth $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+   public fww(fuj<T, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(elh $$0, fng $$1, int $$2, bvg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.q()) {
-         boolean $$10 = eqn.N().b($$3) && $$3.cd();
-         if (!$$3.cd() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            ciw $$12 = new ciw(csl.ef);
-            if ($$10) {
-               dey $$13 = csl.ef.n();
-               gah $$14 = this.a.a($$13);
-               int $$15 = ftk.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(fno.p(fyf.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cit.f, false, $$0, $$1, $$3.dK(), $$2, ftk.c($$3, 0.0F), $$3.ah());
-            }
-
-            $$0.b();
-         }
+   protected static <T extends biy> void a(
+      feo<T> $$0,
+      feo<T> $$1,
+      aer $$2,
+      elg $$3,
+      fnl $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.cd()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
+
+   protected static <T extends biy> void a(feo<T> $$0, aer $$1, elg $$2, fnl $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      elk $$9 = $$3.getBuffer(fnt.e($$1));
+      $$0.a($$2, $$9, $$4, ftp.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected aer a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(elg var1, fnl var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

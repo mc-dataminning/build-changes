@@ -1,55 +1,191 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eol extends ged {
-   private static final te a = te.c("mco.reset.world.seed");
-   private static final int b = 10;
-   private static final int c = 210;
-   private final evk y = new evk(this);
-   private final Consumer<eph> z;
-   private esr A;
-   private epb B = epb.a;
-   private boolean C = true;
-   private final te D;
+public class eol extends gei {
+   private static final aer b = new aer("widget/slot_frame");
+   static final Logger c = LogUtils.getLogger();
+   private final exz y;
+   private final emn z;
+   private tf A = tf.c("mco.reset.world.warning");
+   private tf B = te.e;
+   private int C = -65536;
+   private static final aer D = new aer("textures/gui/realms/upload.png");
+   private static final aer E = new aer("textures/gui/realms/adventure.png");
+   private static final aer F = new aer("textures/gui/realms/survival_spawn.png");
+   private static final aer G = new aer("textures/gui/realms/new_world.png");
+   private static final aer H = new aer("textures/gui/realms/experience.png");
+   private static final aer I = new aer("textures/gui/realms/inspiration.png");
+   enf J;
+   enf K;
+   enf L;
+   enf M;
+   public int a = -1;
+   private tf N = tf.c("mco.reset.world.resetting.screen.title");
+   private final Runnable O;
+   private final Runnable P;
 
-   public eol(Consumer<eph> $$0, te $$1) {
-      super(te.c("mco.reset.world.generate"));
-      this.z = $$0;
-      this.D = $$1;
+   public eol(exz $$0, emn $$1, tf $$2, Runnable $$3, Runnable $$4) {
+      super($$2);
+      this.y = $$0;
+      this.z = $$1;
+      this.O = $$3;
+      this.P = $$4;
+   }
+
+   public eol(exz $$0, emn $$1, Runnable $$2, Runnable $$3) {
+      this($$0, $$1, tf.c("mco.reset.world.title"), $$2, $$3);
+   }
+
+   public eol(exz $$0, emn $$1, tf $$2, tf $$3, int $$4, tf $$5, Runnable $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$6, $$7);
+      this.A = $$3;
+      this.C = $$4;
+      this.B = $$5;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void a(tf $$0) {
+      this.N = $$0;
    }
 
    @Override
    public void aE_() {
-      this.A = new esr(this.i, 208, 20, te.c("mco.reset.world.seed"));
-      this.A.k(32);
-      this.c(this.A);
-      this.y.a(new etn(this.e, this.i));
-      evo $$0 = this.y.c(evo.d()).a(10);
-      $$0.c().b();
-      evo $$1 = $$0.a(evo.d().a(4));
-      $$1.a(new etn(a, this.i), evn::a);
-      $$1.a(this.A, $$0x -> $$0x.a(1));
-      $$0.a(esp.a(epb::a).a(epb.values()).a(this.B).a(0, 0, 210, 20, te.c("selectWorld.mapType"), ($$0x, $$1x) -> this.B = $$1x));
-      $$0.a(esp.b(this.C).a(0, 0, 210, 20, te.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.C = $$1x));
-      evo $$2 = this.y.b(evo.e().a(10));
-      $$2.a(esi.a(this.D, $$0x -> this.z.accept(this.B())).a());
-      $$2.a(esi.a(td.k, $$0x -> this.au_()).a());
-      this.y.a($$1x -> {
-         esg var10000 = this.d($$1x);
-      });
-      this.b();
-   }
+      this.d(esh.a(this.B, $$0 -> this.f.a(this.y)).a(this.g / 2 - 40, h(14) - 10, 80, 20).a());
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            elw $$0 = elw.a();
 
-   private eph B() {
-      return new eph(this.A.a(), this.B, this.C);
+            try {
+               enf $$1 = $$0.a(1, 10, emn.c.a);
+               enf $$2 = $$0.a(1, 10, emn.c.c);
+               enf $$3 = $$0.a(1, 10, emn.c.d);
+               enf $$4 = $$0.a(1, 10, emn.c.e);
+               eol.this.f.execute(() -> {
+                  eol.this.J = $$1;
+                  eol.this.K = $$2;
+                  eol.this.L = $$3;
+                  eol.this.M = $$4;
+               });
+            } catch (enj var6) {
+               eol.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      this.a(new geg(this.A, this.g / 2, 22, this.C));
+      this.d(new eol.a(this.b(1), h(0) + 10, tf.c("mco.reset.world.generate"), G, $$0 -> this.f.a(new eok(this::a, this.e))));
+      this.d(
+         new eol.a(this.b(2), h(0) + 10, tf.c("mco.reset.world.upload"), D, $$0 -> this.f.a(new eom(this.z.a, this.a != -1 ? this.a : this.z.n, this, this.P)))
+      );
+      this.d(
+         new eol.a(
+            this.b(3), h(0) + 10, tf.c("mco.reset.world.template"), F, $$0 -> this.f.a(new eon(tf.c("mco.reset.world.template"), this::a, emn.c.a, this.J))
+         )
+      );
+      this.d(
+         new eol.a(
+            this.b(1), h(6) + 20, tf.c("mco.reset.world.adventure"), E, $$0 -> this.f.a(new eon(tf.c("mco.reset.world.adventure"), this::a, emn.c.c, this.K))
+         )
+      );
+      this.d(
+         new eol.a(
+            this.b(2), h(6) + 20, tf.c("mco.reset.world.experience"), H, $$0 -> this.f.a(new eon(tf.c("mco.reset.world.experience"), this::a, emn.c.d, this.L))
+         )
+      );
+      this.d(
+         new eol.a(
+            this.b(3),
+            h(6) + 20,
+            tf.c("mco.reset.world.inspiration"),
+            I,
+            $$0 -> this.f.a(new eon(tf.c("mco.reset.world.inspiration"), this::a, emn.c.e, this.M))
+         )
+      );
    }
 
    @Override
-   protected void b() {
-      this.y.a();
+   public tf e() {
+      return te.a(this.m(), this.l());
    }
 
    @Override
-   public void au_() {
-      this.z.accept(null);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.y);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   private int b(int $$0) {
+      return this.g / 2 - 130 + ($$0 - 1) * 100;
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 7, -1);
+   }
+
+   void a(erw $$0, int $$1, int $$2, tf $$3, aer $$4, boolean $$5, boolean $$6) {
+      if ($$5) {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      }
+
+      $$0.a($$4, $$1 + 2, $$2 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
+      $$0.a(b, $$1, $$2 + 12, 60, 60);
+      int $$7 = $$5 ? -6250336 : -1;
+      $$0.a(this.i, $$3, $$1 + 30, $$2, $$7);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private void a(epm $$0) {
+      this.f.a(new eoe(this.y, $$0));
+   }
+
+   @Override
+   public void a(Runnable $$0) {
+      this.a((epm)(new ept(this.z.a, this.a, () -> this.f.execute($$0))));
+   }
+
+   private void a(@Nullable ene $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.b(() -> this.a((epm)(new epp($$0, this.z.a, this.N, this.O))));
+      }
+   }
+
+   private void a(@Nullable epg $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.b(() -> this.a((epm)(new epo($$0, this.z.a, this.N, this.O))));
+      }
+   }
+
+   private void b(Runnable $$0) {
+      if (this.a == -1) {
+         $$0.run();
+      } else {
+         this.a($$0);
+      }
+   }
+
+   class a extends esh {
+      private final aer b;
+
+      public a(int $$0, int $$1, tf $$2, aer $$3, esh.c $$4) {
+         super($$0, $$1, 60, 72, $$2, $$4, o);
+         this.b = $$3;
+      }
+
+      @Override
+      public void b(erw $$0, int $$1, int $$2, float $$3) {
+         eol.this.a($$0, this.p(), this.r(), this.l(), this.b, this.n(), this.a_((double)$$1, (double)$$2));
+      }
    }
 }

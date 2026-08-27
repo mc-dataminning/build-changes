@@ -1,12 +1,16 @@
-public abstract class fta<T extends biy, M extends fex<T>> extends ftp<T, M> {
-   public fta(fsj.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class fta extends fuv<biq> {
+   private static final aer a = new aer("textures/entity/squid/glow_squid.png");
+
+   public fta(fso.a $$0, fgq<biq> $$1) {
+      super($$0, $$1);
    }
 
-   public fta(fsj.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new fvw<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new fwa<>(this, $$0.f()));
-      this.a(new fwk<>(this, $$0.d()));
+   public aer a(biq $$0) {
+      return a;
+   }
+
+   protected int a(biq $$0, gu $$1) {
+      int $$2 = (int)arp.b(0.0F, 15.0F, 1.0F - (float)$$0.t() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

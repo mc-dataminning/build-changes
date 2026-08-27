@@ -1,60 +1,44 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ckh extends ckk implements ckq {
-   private final float a;
-   private final Multimap<bjy, bkb> b;
+public class ckh extends cgr {
+   protected final csm d;
+   private final ha c;
 
-   public ckh(ckj $$0, int $$1, float $$2, cir.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<bjy, bkb> $$4 = ImmutableMultimap.builder();
-      $$4.put(bkd.f, new bkb(m, "Weapon modifier", (double)this.a, bkb.a.a));
-      $$4.put(bkd.h, new bkb(n, "Weapon modifier", (double)$$2, bkb.a.a));
-      this.b = $$4.build();
+   public ckh(csm $$0, csm $$1, cit.a $$2, ha $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.c = $$3;
    }
 
-   public float h() {
-      return this.a;
+   protected boolean a(cpp $$0, dfa $$1, gu $$2) {
+      return $$1.a($$0, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean a(dey $$0, cpk $$1, gv $$2, cbl $$3) {
-      return !$$3.f();
-   }
+   protected dfa c(clg $$0) {
+      dfa $$1 = this.d.a($$0);
+      dfa $$2 = null;
+      cpp $$3 = $$0.q();
+      gu $$4 = $$0.a();
 
-   @Override
-   public float a(ciw $$0, dey $$1) {
-      if ($$1.a(csl.bs)) {
-         return 15.0F;
-      } else {
-         return $$1.a(apj.bD) ? 1.5F : 1.0F;
-      }
-   }
-
-   @Override
-   public boolean a(ciw $$0, biw $$1, biw $$2) {
-      $$0.a(1, $$2, $$0x -> $$0x.d(bil.a));
-      return true;
-   }
-
-   @Override
-   public boolean a(ciw $$0, cpk $$1, dey $$2, gv $$3, biw $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, $$0x -> $$0x.d(bil.a));
+      for (ha $$5 : $$0.f()) {
+         if ($$5 != this.c.g()) {
+            dfa $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
       }
 
-      return true;
+      return $$2 != null && $$3.a($$2, $$4, ehj.a()) ? $$2 : null;
    }
 
    @Override
-   public boolean a_(dey $$0) {
-      return $$0.a(csl.bs);
-   }
-
-   @Override
-   public Multimap<bjy, bkb> a(bil $$0) {
-      return $$0 == bil.a ? this.b : super.a($$0);
+   public void a(Map<csm, cit> $$0, cit $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.d, $$1);
    }
 }

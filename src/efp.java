@@ -1,72 +1,36 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class efp implements efh {
-   @Nullable
-   final Long a;
-   final ecg b;
+public record efp(egb b, ecg c) implements efg {
+   public static final Codec<efp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egc.a.fieldOf("value").forGetter(efp::c), ecg.a.fieldOf("range").forGetter(efp::d)).apply($$0, efp::new)
+   );
 
-   efp(@Nullable Long $$0, ecg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public efh b() {
+      return efi.s;
    }
 
    @Override
-   public efi b() {
-      return efj.q;
-   }
-
-   @Override
-   public Set<eeq<?>> a() {
-      return this.b.a();
+   public Set<eep<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
    public boolean a(ech $$0) {
-      aki $$1 = $$0.d();
-      long $$2 = $$1.W();
-      if (this.a != null) {
-         $$2 %= this.a;
-      }
-
-      return this.b.b($$0, (int)$$2);
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public static efp.a a(ecg $$0) {
-      return new efp.a($$0);
+   public static efg.a a(egb $$0, ecg $$1) {
+      return () -> new efp($$0, $$1);
    }
 
-   public static class a implements efh.a {
-      @Nullable
-      private Long a;
-      private final ecg b;
-
-      public a(ecg $$0) {
-         this.b = $$0;
-      }
-
-      public efp.a a(long $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public efp a() {
-         return new efp(this.a, this.b);
-      }
+   public egb c() {
+      return this.b;
    }
 
-   public static class b implements ecq<efp> {
-      public void a(JsonObject $$0, efp $$1, JsonSerializationContext $$2) {
-         $$0.addProperty("period", $$1.a);
-         $$0.add("value", $$2.serialize($$1.b));
-      }
-
-      public efp b(JsonObject $$0, JsonDeserializationContext $$1) {
-         Long $$2 = $$0.has("period") ? arf.n($$0, "period") : null;
-         ecg $$3 = arf.a($$0, "value", $$1, ecg.class);
-         return new efp($$2, $$3);
-      }
+   public ecg d() {
+      return this.c;
    }
 }

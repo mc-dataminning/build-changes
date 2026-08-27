@@ -1,146 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.OptionalInt;
 
-public interface etb {
-   etb a = new etb() {
-      @Override
-      public int a(erx $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class etb extends ese {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final asc<etb.a, eta> c;
+   private boolean d = false;
 
-      @Override
-      public int a(erx $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(erx $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(erx $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static etb a(erv $$0, ti $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new etb.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public etb(tf $$0, eru $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   static etb a(erv $$0, ti $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new etb.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public etb(int $$0, int $$1, tf $$2, eru $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? eta.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : eta.a($$3, $$1x.a, $$1x.b));
+      this.i = false;
    }
 
-   static etb a(erv $$0, te... $$1) {
-      return b($$0, Arrays.stream($$1).map(te::f).map($$1x -> new etb.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public etb h(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   static etb a(erv $$0, List<te> $$1) {
-      return b($$0, $$1.stream().map(te::f).map($$1x -> new etb.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public etb i(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
    }
 
-   static etb b(final erv $$0, final List<etb.a> $$1) {
-      return $$1.isEmpty() ? a : new etb() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(erx $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(erx $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etb.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(erx $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etb.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(erx $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etb.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(erx $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
+   public etb j(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
    }
 
-   int a(erx var1, int var2, int var3);
+   public etb b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
 
-   int a(erx var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int k() {
+      return this.c.a(this.e()).b();
+   }
 
-   int b(erx var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int h() {
+      return this.c.a(this.e()).a() * 9;
+   }
 
-   int c(erx var1, int var2, int var3, int var4, int var5);
-
-   void a(erx var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final ara a;
-      final int b;
-
-      a(ara $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      eta $$4 = this.c.a(this.e());
+      int $$5 = this.p();
+      int $$6 = this.r();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.k() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
+   }
+
+   private etb.a e() {
+      return new etb.a(this.l(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(tf a, int b, OptionalInt c) {
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import java.util.function.Supplier;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ben {
+public interface ben {
+   Set<bel> a(Supplier<bdf> var1);
 }

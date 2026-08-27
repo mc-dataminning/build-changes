@@ -1,100 +1,63 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+public class clv extends clt {
+   private static final cly a = cly.a(cjb.qa);
+   private static final cly b = cly.a(cjb.oG);
+   private static final cly c = cly.a(cjb.tB);
 
-public class clv extends clr {
-   private static final clw a = clw.a(ciz.tf, ciz.oF, ciz.rt, ciz.tr, ciz.ts, ciz.tv, ciz.tt, ciz.tw, ciz.tu, ciz.tx);
-   private static final clw b = clw.a(ciz.nK);
-   private static final clw c = clw.a(ciz.qk);
-   private static final Map<cir, cia.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ciz.tf, cia.a.b);
-      $$0.put(ciz.oF, cia.a.e);
-      $$0.put(ciz.rt, cia.a.c);
-      $$0.put(ciz.tr, cia.a.d);
-      $$0.put(ciz.ts, cia.a.d);
-      $$0.put(ciz.tv, cia.a.d);
-      $$0.put(ciz.tt, cia.a.d);
-      $$0.put(ciz.tw, cia.a.d);
-      $$0.put(ciz.tu, cia.a.d);
-      $$0.put(ciz.tx, cia.a.d);
-   });
-   private static final clw e = clw.a(ciz.oG);
-
-   public clv(aep $$0, clp $$1) {
+   public clv(aer $$0, clr $$1) {
       super($$0, $$1);
    }
 
-   public boolean a(ceq $$0, cpk $$1) {
+   public boolean a(ces $$0, cpm $$1) {
       boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
+      int $$3 = 0;
 
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         ciw $$8 = $$0.a($$7);
-         if (!$$8.b()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ciy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
                if ($$2) {
                   return false;
                }
 
                $$2 = true;
-            } else {
-               if (!($$8.d() instanceof chl)) {
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               $$3 = true;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return $$2 && $$3;
+      return $$2 && $$3 >= 1;
    }
 
-   public ciw a(ceq $$0, ht $$1) {
-      ciw $$2 = new ciw(ciz.tB);
-      qs $$3 = $$2.a("Explosion");
-      cia.a $$4 = cia.a.a;
-      List<Integer> $$5 = Lists.newArrayList();
+   public ciy a(ces $$0, hs $$1) {
+      ciy $$2 = new ciy(cjb.tA, 3);
+      qr $$3 = $$2.a("Fireworks");
+      qx $$4 = new qx();
+      int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         ciw $$7 = $$0.a($$6);
+         ciy $$7 = $$0.a($$6);
          if (!$$7.b()) {
-            if (a.a($$7)) {
-               $$4 = d.get($$7.d());
+            if (b.a($$7)) {
+               $$5++;
             } else if (c.a($$7)) {
-               $$3.a("Flicker", true);
-            } else if (b.a($$7)) {
-               $$3.a("Trail", true);
-            } else if ($$7.d() instanceof chl) {
-               $$5.add(((chl)$$7.d()).d().f());
+               qr $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
             }
          }
       }
 
-      $$3.b("Colors", $$5);
-      $$3.a("Type", (byte)$$4.a());
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
       return $$2;
    }
 
@@ -104,12 +67,12 @@ public class clv extends clr {
    }
 
    @Override
-   public ciw a(ht $$0) {
-      return new ciw(ciz.tB);
+   public ciy a(hs $$0) {
+      return new ciy(cjb.tA);
    }
 
    @Override
-   public cmb<?> aj_() {
-      return cmb.h;
+   public cmd<?> aj_() {
+      return cmd.g;
    }
 }

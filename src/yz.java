@@ -1,31 +1,36 @@
-public record yz(aas d, byte e) implements uw<wo> {
-   public static final byte a = 1;
-   public static final byte b = 2;
-   public static final byte c = 3;
+import javax.annotation.Nullable;
 
-   public yz(sh $$0) {
-      this(new aas($$0), $$0.readByte());
+public class yz implements ux<wp> {
+   private final int a;
+   private final bht b;
+
+   public yz(int $$0, bht $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public yz(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jb.e);
    }
 
    @Override
-   public void a(sh $$0) {
-      this.d.a($$0);
-      $$0.k(this.e);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(jb.e, this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.e & $$0) != 0;
+   @Nullable
+   public bii a(cpm $$0) {
+      return $$0.a(this.a);
    }
 
-   public aas a() {
-      return this.d;
-   }
-
-   public byte d() {
-      return this.e;
+   @Nullable
+   public bht a() {
+      return this.b;
    }
 }

@@ -1,28 +1,17 @@
-public class frx extends ftp<byl, fee<byl>> {
-   private static final aep a = new aep("textures/entity/creeper/creeper.png");
+public class frx extends fuu<bym> {
+   private static final aer a = new aer("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public frx(fsj.a $$0) {
-      super($$0, new fee<>($$0.a(fhi.B)), 0.5F);
-      this.a(new fvu(this, $$0.f()));
+   public frx(fso.a $$0) {
+      super($$0, fhm.q);
+      this.d *= 0.7F;
    }
 
-   protected void a(byl $$0, elh $$1, float $$2) {
-      float $$3 = $$0.E($$2);
-      float $$4 = 1.0F + aro.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = aro.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
+   protected void a(bym $$0, elg $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
    }
 
-   protected float a(byl $$0, float $$1) {
-      float $$2 = $$0.E($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : aro.a($$2, 0.5F, 1.0F);
-   }
-
-   public aep a(byl $$0) {
+   public aer a(bym $$0) {
       return a;
    }
 }

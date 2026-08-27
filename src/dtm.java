@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dtm {
-   @Nullable
-   dey a(dkl var1, int var2, int var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dtm {
 }

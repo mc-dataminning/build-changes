@@ -1,16 +1,30 @@
-import javax.annotation.Nullable;
+public class bre extends bpu {
+   private final bjh a;
 
-public class bre extends brf {
-   public bre(bjf $$0, double $$1) {
-      super($$0, $$1);
+   public bre(bjh $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
    @Override
-   protected ehf h() {
-      ehf $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      ehf $$2 = btp.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : btl.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apq.a);
+   }
+
+   @Override
+   public void c() {
+      gu $$0 = null;
+
+      for (gu $$2 : gu.b(
+         arp.a(this.a.dp() - 2.0), arp.a(this.a.dr() - 2.0), arp.a(this.a.dv() - 2.0), arp.a(this.a.dp() + 2.0), this.a.dq(), arp.a(this.a.dv() + 2.0)
+      )) {
+         if (this.a.dK().b_($$2).a(apq.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

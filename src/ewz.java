@@ -1,31 +1,49 @@
-public class ewz extends exv {
-   private final te a;
+public class ewz extends exz {
+   private static final aer a = new aer("textures/gui/demo_background.png");
+   private eta b = eta.a;
+   private eta c = eta.a;
 
-   public ewz(te $$0, te $$1) {
-      super($$0);
-      this.a = $$1;
+   public ewz() {
+      super(tf.c("demo.help.title"));
    }
 
    @Override
    protected void aE_() {
-      super.aE_();
-      this.d(esi.a(td.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+      int $$0 = -16;
+      this.d(esh.a(tf.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(esh.a(tf.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      eqq $$1 = this.f.m;
+      this.b = eta.a(
+         this.i,
+         tf.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         tf.c("demo.help.movementMouse"),
+         tf.a("demo.help.jump", $$1.B.k()),
+         tf.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = eta.a(this.i, tf.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
-   }
-
-   @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean aA_() {
-      return false;
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

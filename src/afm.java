@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afm {
+public record afm(anc a, afb b, hl<afa> c, ecd d) implements AutoCloseable {
+   @Override
+   public void close() {
+      this.a.close();
+   }
 }

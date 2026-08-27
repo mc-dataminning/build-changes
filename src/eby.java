@@ -1,66 +1,204 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class eby {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-
-   public eby(ebv.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(ebt.c).toFile();
-      this.c.mkdirs();
-   }
-
-   public void a(cbl $$0) {
-      try {
-         qs $$1 = $$0.f(new qs());
-         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
-         rc.a($$1, $$2);
-         File $$3 = new File(this.c, $$0.cw() + ".dat");
-         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
-         ac.a($$3, $$2, $$4);
-      } catch (Exception var6) {
-         b.warn("Failed to save player data for {}", $$0.ab().getString());
-      }
-   }
-
+public class eby implements Comparable<eby> {
+   private final cpq a;
+   private final ebz b;
+   private final String c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
+   private final Path g;
    @Nullable
-   public qs b(cbl $$0) {
-      qs $$1 = null;
+   private tf h;
 
-      try {
-         File $$2 = new File(this.c, $$0.cw() + ".dat");
-         if ($$2.exists() && $$2.isFile()) {
-            $$1 = rc.a($$2);
-         }
-      } catch (Exception var4) {
-         b.warn("Failed to load player data for {}", $$0.ab().getString());
-      }
-
-      if ($$1 != null) {
-         int $$4 = re.b($$1, -1);
-         $$0.g(asq.b.a(this.a, $$1, $$4));
-      }
-
-      return $$1;
+   public eby(cpq $$0, ebz $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.d = $$3;
    }
 
-   public String[] a() {
-      String[] $$0 = this.c.list();
-      if ($$0 == null) {
-         $$0 = new String[0];
+   public String a() {
+      return this.c;
+   }
+
+   public String b() {
+      return StringUtils.isEmpty(this.a.a()) ? this.c : this.a.a();
+   }
+
+   public Path c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public long f() {
+      return this.b.b();
+   }
+
+   public int a(eby $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.c.compareTo($$0.c);
+      }
+   }
+
+   public cpq g() {
+      return this.a;
+   }
+
+   public cpj h() {
+      return this.a.b();
+   }
+
+   public boolean i() {
+      return this.a.c();
+   }
+
+   public boolean j() {
+      return this.a.e();
+   }
+
+   public ts k() {
+      return asi.b(this.b.c()) ? tf.c("selectWorld.versionUnknown") : tf.b(this.b.c());
+   }
+
+   public ebz l() {
+      return this.b;
+   }
+
+   public boolean m() {
+      return this.n() || !aa.b().g() && !this.b.e() || this.o().a();
+   }
+
+   public boolean n() {
+      return this.b.d().c() > aa.b().d().c();
+   }
+
+   public eby.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.b.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return eby.a.c;
+      } else {
+         return $$2 > $$1 ? eby.a.b : eby.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.e;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return aa.b().d().a(this.b.d());
+   }
+
+   public tf s() {
+      if (this.h == null) {
+         this.h = this.t();
       }
 
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         if ($$0[$$1].endsWith(".dat")) {
-            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+      return this.h;
+   }
+
+   private tf t() {
+      if (this.p()) {
+         return tf.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return tf.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return tf.c("selectWorld.incompatible_series").a(n.m);
+      } else {
+         ts $$0 = this.i() ? tf.h().b(tf.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tf.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(tf.c("selectWorld.cheats"));
          }
+
+         if (this.e()) {
+            $$0.f(", ").b(tf.c("selectWorld.experimental").a(n.o));
+         }
+
+         ts $$1 = this.k();
+         ts $$2 = tf.b(", ").b(tf.c("selectWorld.version")).b(te.u);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(boolean $$0, boolean $$1, String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      return $$0;
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends eby {
+      public b(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public tf s() {
+         return tf.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
    }
 }

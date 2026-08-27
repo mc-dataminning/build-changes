@@ -1,21 +1,14 @@
-import java.util.UUID;
-
-public record adf(String a, UUID b) implements uw<add> {
-   public adf(sh $$0) {
-      this($$0.d(16), $$0.o());
-   }
-
+public interface adf extends aax {
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a, 16);
-      $$0.a(this.b);
+   default sh b() {
+      return sh.d;
    }
 
-   public void a(add $$0) {
-      $$0.a(this);
-   }
+   void a(adh var1);
 
-   public UUID d() {
-      return this.b;
-   }
+   void a(adi var1);
+
+   void a(adg var1);
+
+   void a(adj var1);
 }

@@ -1,39 +1,23 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efl implements efh {
-   static final efl a = new efl();
-
-   private efl() {
-   }
+public record efl(float b) implements efg {
+   public static final Codec<efl> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efl::c)).apply($$0, efl::new));
 
    @Override
-   public efi b() {
-      return efj.g;
-   }
-
-   @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.b);
+   public efh b() {
+      return efi.e;
    }
 
    public boolean a(ech $$0) {
-      return $$0.a(eet.b);
+      return $$0.b().i() < this.b;
    }
 
-   public static efh.a c() {
-      return () -> a;
+   public static efg.a a(float $$0) {
+      return () -> new efl($$0);
    }
 
-   public static class a implements ecq<efl> {
-      public void a(JsonObject $$0, efl $$1, JsonSerializationContext $$2) {
-      }
-
-      public efl b(JsonObject $$0, JsonDeserializationContext $$1) {
-         return efl.a;
-      }
+   public float c() {
+      return this.b;
    }
 }

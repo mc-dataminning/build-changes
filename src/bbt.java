@@ -1,30 +1,88 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bbt extends azu {
+public class bbt extends azx {
    public bbt(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> azv.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:frog");
-      a($$0, $$1, "minecraft:tadpole");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", aym.A.in($$0))))
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         ayp.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(ayp.w.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(ayp.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", ayp.y.in($$0))),
+                  "Sections",
+                  DSL.list(
+                     DSL.optionalFields(
+                        "biomes",
+                        DSL.optionalFields("palette", DSL.list(ayp.G.in($$0))),
+                        "block_states",
+                        DSL.optionalFields("palette", DSL.list(ayp.u.in($$0)))
+                     )
+                  ),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(ayp.C.in($$0)))
+               )
+            )
       );
-      return $$1;
+      $$0.registerType(false, ayp.H, () -> DSL.constType(a()));
+      $$0.registerType(
+         false,
+         ayp.I,
+         () -> DSL.fields(
+               "dimensions",
+               DSL.compoundList(
+                  DSL.constType(a()),
+                  DSL.fields(
+                     "generator",
+                     DSL.taggedChoiceLazy(
+                        "type",
+                        DSL.string(),
+                        ImmutableMap.of(
+                           "minecraft:debug",
+                           DSL::remainder,
+                           "minecraft:flat",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "settings", DSL.optionalFields("biome", ayp.G.in($$0), "layers", DSL.list(DSL.optionalFields("block", ayp.y.in($$0))))
+                              ),
+                           "minecraft:noise",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "biome_source",
+                                 DSL.taggedChoiceLazy(
+                                    "type",
+                                    DSL.string(),
+                                    ImmutableMap.of(
+                                       "minecraft:fixed",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", ayp.G.in($$0)),
+                                       "minecraft:multi_noise",
+                                       (Supplier<TypeTemplate>)() -> DSL.or(DSL.fields("preset", ayp.H.in($$0)), DSL.list(DSL.fields("biome", ayp.G.in($$0)))),
+                                       "minecraft:checkerboard",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(ayp.G.in($$0))),
+                                       "minecraft:the_end",
+                                       DSL::remainder
+                                    )
+                                 ),
+                                 "settings",
+                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", ayp.y.in($$0), "default_fluid", ayp.y.in($$0)))
+                              )
+                        )
+                     )
+                  )
+               )
+            )
+      );
    }
 }

@@ -1,73 +1,91 @@
-import javax.annotation.Nullable;
+public class dce {
+   public static final aeq<dcd> a = a("base");
+   public static final aeq<dcd> b = a("square_bottom_left");
+   public static final aeq<dcd> c = a("square_bottom_right");
+   public static final aeq<dcd> d = a("square_top_left");
+   public static final aeq<dcd> e = a("square_top_right");
+   public static final aeq<dcd> f = a("stripe_bottom");
+   public static final aeq<dcd> g = a("stripe_top");
+   public static final aeq<dcd> h = a("stripe_left");
+   public static final aeq<dcd> i = a("stripe_right");
+   public static final aeq<dcd> j = a("stripe_center");
+   public static final aeq<dcd> k = a("stripe_middle");
+   public static final aeq<dcd> l = a("stripe_downright");
+   public static final aeq<dcd> m = a("stripe_downleft");
+   public static final aeq<dcd> n = a("small_stripes");
+   public static final aeq<dcd> o = a("cross");
+   public static final aeq<dcd> p = a("straight_cross");
+   public static final aeq<dcd> q = a("triangle_bottom");
+   public static final aeq<dcd> r = a("triangle_top");
+   public static final aeq<dcd> s = a("triangles_bottom");
+   public static final aeq<dcd> t = a("triangles_top");
+   public static final aeq<dcd> u = a("diagonal_left");
+   public static final aeq<dcd> v = a("diagonal_up_right");
+   public static final aeq<dcd> w = a("diagonal_up_left");
+   public static final aeq<dcd> x = a("diagonal_right");
+   public static final aeq<dcd> y = a("circle");
+   public static final aeq<dcd> z = a("rhombus");
+   public static final aeq<dcd> A = a("half_vertical");
+   public static final aeq<dcd> B = a("half_horizontal");
+   public static final aeq<dcd> C = a("half_vertical_right");
+   public static final aeq<dcd> D = a("half_horizontal_bottom");
+   public static final aeq<dcd> E = a("border");
+   public static final aeq<dcd> F = a("curly_border");
+   public static final aeq<dcd> G = a("gradient");
+   public static final aeq<dcd> H = a("gradient_up");
+   public static final aeq<dcd> I = a("bricks");
+   public static final aeq<dcd> J = a("globe");
+   public static final aeq<dcd> K = a("creeper");
+   public static final aeq<dcd> L = a("skull");
+   public static final aeq<dcd> M = a("flower");
+   public static final aeq<dcd> N = a("mojang");
+   public static final aeq<dcd> O = a("piglin");
 
-public abstract class dce extends dck implements bgh, bgr, bgs {
-   private bgq c = bgq.a;
-   @Nullable
-   private te d;
-
-   protected dce(dcm<?> $$0, gv $$1, dey $$2) {
-      super($$0, $$1, $$2);
+   private static aeq<dcd> a(String $$0) {
+      return aeq.a(jc.c, new aer($$0));
    }
 
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      this.c = bgq.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.d = te.a.a($$0.l("CustomName"));
-      }
+   public static dcd a(hr<dcd> $$0) {
+      hr.a($$0, a, new dcd("b"));
+      hr.a($$0, b, new dcd("bl"));
+      hr.a($$0, c, new dcd("br"));
+      hr.a($$0, d, new dcd("tl"));
+      hr.a($$0, e, new dcd("tr"));
+      hr.a($$0, f, new dcd("bs"));
+      hr.a($$0, g, new dcd("ts"));
+      hr.a($$0, h, new dcd("ls"));
+      hr.a($$0, i, new dcd("rs"));
+      hr.a($$0, j, new dcd("cs"));
+      hr.a($$0, k, new dcd("ms"));
+      hr.a($$0, l, new dcd("drs"));
+      hr.a($$0, m, new dcd("dls"));
+      hr.a($$0, n, new dcd("ss"));
+      hr.a($$0, o, new dcd("cr"));
+      hr.a($$0, p, new dcd("sc"));
+      hr.a($$0, q, new dcd("bt"));
+      hr.a($$0, r, new dcd("tt"));
+      hr.a($$0, s, new dcd("bts"));
+      hr.a($$0, t, new dcd("tts"));
+      hr.a($$0, u, new dcd("ld"));
+      hr.a($$0, v, new dcd("rd"));
+      hr.a($$0, w, new dcd("lud"));
+      hr.a($$0, x, new dcd("rud"));
+      hr.a($$0, y, new dcd("mc"));
+      hr.a($$0, z, new dcd("mr"));
+      hr.a($$0, A, new dcd("vh"));
+      hr.a($$0, B, new dcd("hh"));
+      hr.a($$0, C, new dcd("vhr"));
+      hr.a($$0, D, new dcd("hhb"));
+      hr.a($$0, E, new dcd("bo"));
+      hr.a($$0, F, new dcd("cbo"));
+      hr.a($$0, G, new dcd("gra"));
+      hr.a($$0, H, new dcd("gru"));
+      hr.a($$0, I, new dcd("bri"));
+      hr.a($$0, J, new dcd("glb"));
+      hr.a($$0, K, new dcd("cre"));
+      hr.a($$0, L, new dcd("sku"));
+      hr.a($$0, M, new dcd("flo"));
+      hr.a($$0, N, new dcd("moj"));
+      return hr.a($$0, O, new dcd("pig"));
    }
-
-   @Override
-   protected void b(qs $$0) {
-      super.b($$0);
-      this.c.a($$0);
-      if (this.d != null) {
-         $$0.a("CustomName", te.a.a(this.d));
-      }
-   }
-
-   public void a(te $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public te ab() {
-      return this.d != null ? this.d : this.g();
-   }
-
-   @Override
-   public te H_() {
-      return this.ab();
-   }
-
-   @Nullable
-   @Override
-   public te ad() {
-      return this.d;
-   }
-
-   protected abstract te g();
-
-   public boolean d(cbl $$0) {
-      return a($$0, this.c, this.H_());
-   }
-
-   public static boolean a(cbl $$0, bgq $$1, te $$2) {
-      if (!$$0.G_() && !$$1.a($$0.eR())) {
-         $$0.a(te.a("container.isLocked", $$2), true);
-         $$0.a(aou.ei, aov.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public cec createMenu(int $$0, cbk $$1, cbl $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cec a(int var1, cbk var2);
 }

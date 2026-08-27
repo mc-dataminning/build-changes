@@ -1,135 +1,142 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bwp extends bwk {
-   private int bU = 47999;
+public class bwp extends bwj {
+   private final bwq bT = new bwq(this);
+   private static final int bU = 18000;
+   private boolean bW;
+   private int bX;
 
-   public bwp(bik<? extends bwp> $$0, cpk $$1) {
+   public bwp(bim<? extends bwp> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean gi() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   protected bwk gn() {
-      return bik.ba.a(this.dK());
+   public static bke.a p() {
+      return gz().a(bkf.a, 15.0).a(bkf.d, 0.2F);
    }
 
    @Override
-   public void b(qs $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bU);
+   protected void a(aru $$0) {
+      this.a(bkf.n).a(a($$0::j));
    }
 
    @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bU = $$0.h("DespawnDelay");
+   protected void gp() {
+   }
+
+   @Override
+   protected aov r() {
+      return this.a(apq.a) ? aow.vv : aow.vr;
+   }
+
+   @Override
+   protected aov h_() {
+      return aow.vs;
+   }
+
+   @Override
+   protected aov d(bhg $$0) {
+      return aow.vt;
+   }
+
+   @Override
+   protected aov aL() {
+      if (this.aA()) {
+         if (!this.bO()) {
+            return aow.vy;
+         }
+
+         this.cu++;
+         if (this.cu > 5 && this.cu % 3 == 0) {
+            return aow.vw;
+         }
+
+         if (this.cu <= 5) {
+            return aow.vy;
+         }
+      }
+
+      return aow.vu;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aA()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
    @Override
-   protected void w() {
-      super.w();
-      this.bO.a(1, new bql(this, 2.0));
-      this.bP.a(1, new bwp.a(this));
-   }
-
-   @Override
-   public void w(int $$0) {
-      this.bU = $$0;
-   }
-
-   @Override
-   protected void f(cbl $$0) {
-      big $$1 = this.fP();
-      if (!($$1 instanceof cbe)) {
-         super.f($$0);
+   protected void gG() {
+      if (this.aX()) {
+         this.a(aow.vx, 0.4F, 1.0F);
+      } else {
+         super.gG();
       }
+   }
+
+   @Override
+   public bjd eQ() {
+      return bjd.b;
+   }
+
+   @Override
+   protected Vector3f a(bii $$0, bij $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - (this.i_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
    }
 
    @Override
    public void b_() {
       super.b_();
-      if (!this.dK().B) {
-         this.gP();
+      if (this.q() && this.bX++ >= 18000) {
+         this.ak();
       }
    }
 
-   private void gP() {
-      if (this.gQ()) {
-         this.bU = this.gR() ? ((cbe)this.fP()).gi() - 1 : this.bU - 1;
-         if (this.bU <= 0) {
-            this.a(true, false);
-            this.ak();
+   @Override
+   public void b(qr $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.q());
+      $$0.a("SkeletonTrapTime", this.bX);
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.bX = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fb() {
+      return 0.96F;
+   }
+
+   public boolean q() {
+      return this.bW;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.bW) {
+         this.bW = $$0;
+         if ($$0) {
+            this.bO.a(1, this.bT);
+         } else {
+            this.bO.a(this.bT);
          }
       }
-   }
-
-   private boolean gQ() {
-      return !this.go() && !this.gS() && !this.cU();
-   }
-
-   private boolean gR() {
-      return this.fP() instanceof cbe;
-   }
-
-   private boolean gS() {
-      return this.fO() && !this.gR();
    }
 
    @Nullable
    @Override
-   public bjq a(cpz $$0, bgm $$1, bja $$2, @Nullable bjq $$3, @Nullable qs $$4) {
-      if ($$2 == bja.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new bib.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4);
+   public bid a(akk $$0, bid $$1) {
+      return bim.aK.a((cpm)$$0);
    }
 
-   protected static class a extends brs {
-      private final bwk a;
-      private biw b;
-      private int c;
-
-      public a(bwk $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(bps.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.fO()) {
-            return false;
-         } else if (!(this.a.fP() instanceof cbe $$1)) {
-            return false;
-         } else {
-            this.b = $$1.ef();
-            int $$2 = $$1.eg();
-            return $$2 != this.c && this.a(this.b, btj.a);
-         }
-      }
-
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         big $$0 = this.a.fP();
-         if ($$0 instanceof cbe) {
-            this.c = ((cbe)$$0).eg();
-         }
-
-         super.c();
-      }
+   @Override
+   public bgq b(cbn $$0, bgp $$1) {
+      return !this.go() ? bgq.d : super.b($$0, $$1);
    }
 }

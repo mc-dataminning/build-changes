@@ -1,26 +1,33 @@
-public class fwv<T extends biw> extends fwr<T, fgi<T>> {
-   private final fek<T> a;
+public class fwv<T extends cbn, M extends feo<T> & fdp & few> extends fwp<T, M> {
+   private final fnh a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-   public fwv(fue<T, fgi<T>> $$0, fhf $$1) {
-      super($$0);
-      this.a = new fgi<>($$1.a(fhi.bn));
+   public fwv(fuj<T, M> $$0, fnh $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eqn $$10 = eqn.N();
-      boolean $$11 = $$10.b($$3) && $$3.cd();
-      if (!$$3.cd() || $$11) {
-         ell $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fno.p(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fno.h(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, ftk.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   protected void a(biy $$0, ciy $$1, civ $$2, bis $$3, elg $$4, fnl $$5, int $$6) {
+      if ($$1.a(cjb.qj) && $$0.fn() == $$1 && $$0.aH == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
+   }
+
+   private void a(biy $$0, ciy $$1, bis $$2, elg $$3, fnl $$4, int $$5) {
+      $$3.a();
+      fhn $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = arp.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      fwb.a($$3, false);
+      boolean $$8 = $$2 == bis.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, civ.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

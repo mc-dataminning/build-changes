@@ -1,57 +1,90 @@
-public class eoc extends ged {
-   private final exv a;
-   private final eoc.a b;
-   private etb c = etb.a;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public eoc(enk $$0, exv $$1) {
-      super(eqf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+public class eoc extends gei {
+   private static final Logger a = LogUtils.getLogger();
+   private static final tf b = tf.c("mco.configure.world.invite.profile.name").a($$0 -> $$0.a(-6250336));
+   private static final tf c = tf.c("mco.configure.world.players.inviting").a($$0 -> $$0.a(-6250336));
+   private static final tf y = tf.c("mco.configure.world.players.error").a($$0 -> $$0.a(-65536));
+   private esq z;
+   private esh A;
+   private final emn B;
+   private final enx C;
+   private final exz D;
+   @Nullable
+   private tf E;
 
-   public eoc(te $$0, exv $$1) {
-      super(eqf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eoc(te $$0, te $$1, exv $$2) {
-      super(eqf.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static eoc.a a(enk $$0) {
-      elz $$1 = $$0.a;
-      return a(te.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static eoc.a a(te $$0) {
-      return a(te.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static eoc.a a(te $$0, te $$1) {
-      return new eoc.a($$0, $$1);
+   public eoc(enx $$0, exz $$1, emn $$2) {
+      super(eqe.a);
+      this.C = $$0;
+      this.D = $$1;
+      this.B = $$2;
    }
 
    @Override
    public void aE_() {
-      this.d(esi.a(td.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = etb.a(this.i, this.b.b, this.g * 3 / 4);
+      this.z = new esq(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, tf.c("mco.configure.world.invite.profile.name"));
+      this.e(this.z);
+      this.c(this.z);
+      this.A = this.d(esh.a(tf.c("mco.configure.world.buttons.invite"), $$0 -> this.B()).a(this.g / 2 - 100, h(10), 200, 20).a());
+      this.d(esh.a(te.e, $$0 -> this.f.a(this.D)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   }
+
+   private void B() {
+      if (ac.b(this.z.a())) {
+         this.a(y);
+      } else {
+         long $$0 = this.B.a;
+         String $$1 = this.z.a().trim();
+         this.A.i = false;
+         this.z.e(false);
+         this.a(c);
+         CompletableFuture.<emn>supplyAsync(() -> {
+            try {
+               return elw.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.B.h = $$0x.h;
+               this.f.a(new eoi(this.C, this.B));
+            } else {
+               this.a(y);
+            }
+
+            this.z.e(true);
+            this.A.i = true;
+         }, this.j);
+      }
+   }
+
+   private void a(tf $$0) {
+      this.E = $$0;
+      this.f.aV().c($$0);
    }
 
    @Override
-   public te e() {
-      return te.h().b(this.b.a).f(": ").b(this.b.b);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.D);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -65536);
-   }
+      $$0.a(this.i, b, this.g / 2 - 100, h(1), -1, false);
+      if (this.E != null) {
+         $$0.a(this.i, this.E, this.g / 2, h(5), -1);
+      }
 
-   static record a(te a, te b) {
+      this.z.a($$0, $$1, $$2, $$3);
    }
 }

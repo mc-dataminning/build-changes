@@ -1,294 +1,46 @@
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class aea {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<Class<? extends big>> b = new Object2IntOpenHashMap();
-   private static final int c = 254;
-   private final big d;
-   private final Int2ObjectMap<aea.a<?>> e = new Int2ObjectOpenHashMap();
-   private final ReadWriteLock f = new ReentrantReadWriteLock();
-   private boolean g;
+public interface aea<T> {
+   void a(si var1, T var2);
 
-   public aea(big $$0) {
-      this.d = $$0;
+   T a(si var1);
+
+   default adz<T> a(int $$0) {
+      return new adz<>($$0, this);
    }
 
-   public static <T> adx<T> a(Class<? extends big> $$0, ady<T> $$1) {
-      if (a.isDebugEnabled()) {
-         try {
-            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!$$2.equals($$0)) {
-               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var5) {
-         }
-      }
+   T a(T var1);
 
-      int $$3;
-      if (b.containsKey($$0)) {
-         $$3 = b.getInt($$0) + 1;
-      } else {
-         int $$4 = 0;
-         Class<?> $$5 = $$0;
-
-         while ($$5 != big.class) {
-            $$5 = $$5.getSuperclass();
-            if (b.containsKey($$5)) {
-               $$4 = b.getInt($$5) + 1;
-               break;
-            }
+   static <T> aea<T> a(final si.b<T> $$0, final si.a<T> $$1) {
+      return new aea.a<T>() {
+         @Override
+         public void a(si $$0x, T $$1x) {
+            $$0.accept($$0, $$1);
          }
 
-         $$3 = $$4;
-      }
-
-      if ($$3 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
-      } else {
-         b.put($$0, $$3);
-         return $$1.a($$3);
-      }
-   }
-
-   public <T> void a(adx<T> $$0, T $$1) {
-      int $$2 = $$0.a();
-      if ($$2 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is 254)");
-      } else if (this.e.containsKey($$2)) {
-         throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
-      } else if (adz.b($$0.b()) < 0) {
-         throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
-      } else {
-         this.c($$0, $$1);
-      }
-   }
-
-   private <T> void c(adx<T> $$0, T $$1) {
-      aea.a<T> $$2 = new aea.a<>($$0, $$1);
-      this.f.writeLock().lock();
-      this.e.put($$0.a(), $$2);
-      this.f.writeLock().unlock();
-   }
-
-   public <T> boolean a(adx<T> $$0) {
-      return this.e.containsKey($$0.a());
-   }
-
-   private <T> aea.a<T> c(adx<T> $$0) {
-      this.f.readLock().lock();
-
-      aea.a<T> $$1;
-      try {
-         $$1 = (aea.a<T>)this.e.get($$0.a());
-      } catch (Throwable var9) {
-         o $$3 = o.a(var9, "Getting synched entity data");
-         p $$4 = $$3.a("Synched entity data");
-         $$4.a("Data ID", $$0);
-         throw new y($$3);
-      } finally {
-         this.f.readLock().unlock();
-      }
-
-      return $$1;
-   }
-
-   public <T> T b(adx<T> $$0) {
-      return this.c($$0).b();
-   }
-
-   public <T> void b(adx<T> $$0, T $$1) {
-      this.a($$0, $$1, false);
-   }
-
-   public <T> void a(adx<T> $$0, T $$1, boolean $$2) {
-      aea.a<T> $$3 = this.c($$0);
-      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
-         $$3.a($$1);
-         this.d.a($$0);
-         $$3.a(true);
-         this.g = true;
-      }
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   @Nullable
-   public List<aea.b<?>> b() {
-      List<aea.b<?>> $$0 = null;
-      if (this.g) {
-         this.f.readLock().lock();
-         ObjectIterator var2 = this.e.values().iterator();
-
-         while (var2.hasNext()) {
-            aea.a<?> $$1 = (aea.a<?>)var2.next();
-            if ($$1.c()) {
-               $$1.a(false);
-               if ($$0 == null) {
-                  $$0 = new ArrayList<>();
-               }
-
-               $$0.add($$1.e());
-            }
+         @Override
+         public T a(si $$0x) {
+            return $$1.apply($$0);
          }
-
-         this.f.readLock().unlock();
-      }
-
-      this.g = false;
-      return $$0;
+      };
    }
 
-   @Nullable
-   public List<aea.b<?>> c() {
-      List<aea.b<?>> $$0 = null;
-      this.f.readLock().lock();
-      ObjectIterator var2 = this.e.values().iterator();
-
-      while (var2.hasNext()) {
-         aea.a<?> $$1 = (aea.a<?>)var2.next();
-         if (!$$1.d()) {
-            if ($$0 == null) {
-               $$0 = new ArrayList<>();
-            }
-
-            $$0.add($$1.e());
-         }
-      }
-
-      this.f.readLock().unlock();
-      return $$0;
+   static <T> aea<Optional<T>> b(si.b<T> $$0, si.a<T> $$1) {
+      return a($$0.asOptional(), $$1.asOptional());
    }
 
-   public void a(List<aea.b<?>> $$0) {
-      this.f.writeLock().lock();
-
-      try {
-         for (aea.b<?> $$1 : $$0) {
-            aea.a<?> $$2 = (aea.a<?>)this.e.get($$1.a);
-            if ($$2 != null) {
-               this.a($$2, $$1);
-               this.d.a($$2.a());
-            }
-         }
-      } finally {
-         this.f.writeLock().unlock();
-      }
-
-      this.d.a($$0);
+   static <T extends Enum<T>> aea<T> a(Class<T> $$0) {
+      return a(si::a, $$1 -> $$1.b($$0));
    }
 
-   private <T> void a(aea.a<T> $$0, aea.b<?> $$1) {
-      if (!Objects.equals($$1.b(), $$0.a.b())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               $$0.a.a(),
-               this.d,
-               $$0.b,
-               $$0.b.getClass(),
-               $$1.c,
-               $$1.c.getClass()
-            )
-         );
-      } else {
-         $$0.a((T)$$1.c);
-      }
+   static <T> aea<T> a(hj<T> $$0) {
+      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
    }
 
-   public boolean d() {
-      return this.e.isEmpty();
-   }
-
-   public static class a<T> {
-      final adx<T> a;
-      T b;
-      private final T c;
-      private boolean d;
-
-      public a(adx<T> $$0, T $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$1;
-      }
-
-      public adx<T> a() {
-         return this.a;
-      }
-
-      public void a(T $$0) {
-         this.b = $$0;
-      }
-
-      public T b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-
-      public void a(boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean d() {
-         return this.c.equals(this.b);
-      }
-
-      public aea.b<T> e() {
-         return aea.b.a(this.a, this.b);
-      }
-   }
-
-   public static record b<T>(int a, ady<T> b, T c) {
-
-      public static <T> aea.b<T> a(adx<T> $$0, T $$1) {
-         ady<T> $$2 = $$0.b();
-         return new aea.b<>($$0.a(), $$2, $$2.a($$1));
-      }
-
-      public void a(sh $$0) {
-         int $$1 = adz.b(this.b);
-         if ($$1 < 0) {
-            throw new EncoderException("Unknown serializer type " + this.b);
-         } else {
-            $$0.k(this.a);
-            $$0.c($$1);
-            this.b.a($$0, this.c);
-         }
-      }
-
-      public static aea.b<?> a(sh $$0, int $$1) {
-         int $$2 = $$0.m();
-         ady<?> $$3 = adz.a($$2);
-         if ($$3 == null) {
-            throw new DecoderException("Unknown serializer type " + $$2);
-         } else {
-            return a($$0, $$1, $$3);
-         }
-      }
-
-      private static <T> aea.b<T> a(sh $$0, int $$1, ady<T> $$2) {
-         return new aea.b<>($$1, $$2, $$2.a($$0));
+   public interface a<T> extends aea<T> {
+      @Override
+      default T a(T $$0) {
+         return $$0;
       }
    }
 }

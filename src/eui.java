@@ -1,153 +1,206 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eui implements euj {
-   private static final aep a = new aep("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final eui.a g;
-   private te h;
-   private List<ara> i;
-   private long j;
-   private boolean k;
-   private final int l;
+public class eui extends ety implements eti, eua, evv {
+   private static final int a = -1;
+   private static final int b = 400;
+   private static final int c = 24;
+   private static final int d = 14;
+   private static final tf e = tf.c("narration.tab_navigation.usage");
+   private final evn f;
+   private int g;
+   private final euh h;
+   private final ImmutableList<eug> i;
+   private final ImmutableList<eto> j;
 
-   public eui(eui.a $$0, te $$1, @Nullable te $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(eqn.N().h.a($$1), $$2 == null ? 0 : eqn.N().h.a($$2))));
-   }
-
-   public static eui a(eqn $$0, eui.a $$1, te $$2, te $$3) {
-      erv $$4 = $$0.h;
-      List<ara> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new eui($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private eui(eui.a $$0, te $$1, List<ara> $$2, int $$3) {
+   eui(int $$0, euh $$1, Iterable<eug> $$2) {
       this.g = $$0;
       this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
+      this.i = ImmutableList.copyOf($$2);
+      this.f = new evn(0, 0);
+      this.f.c().b();
+      Builder<eto> $$3 = ImmutableList.builder();
+      int $$4 = 0;
 
-   private static ImmutableList<ara> a(@Nullable te $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.f());
-   }
-
-   @Override
-   public int a() {
-      return this.l;
-   }
-
-   @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   @Override
-   public euj.a a(erx $$0, euk $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
+      for (eug $$5 : $$2) {
+         $$3.add(this.f.a(new eto($$1, $$5, 0, 24), 0, $$4++));
       }
 
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
+      this.j = $$3.build();
+   }
 
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
+   public static eui.a a(euh $$0, int $$1) {
+      return new eui.a($$0, $$1);
+   }
 
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+   public void a(int $$0) {
+      this.g = $$0;
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      if (this.t() != null) {
+         this.t().c_($$0);
       }
+   }
 
-      if (this.i == null) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+   @Override
+   public void a(@Nullable eua $$0) {
+      super.a($$0);
+      if ($$0 instanceof eto $$1) {
+         this.h.a($$1.a(), true);
+      }
+   }
 
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+   @Nullable
+   @Override
+   public ert a(ewd $$0) {
+      if (!this.ax_()) {
+         eto $$1 = this.e();
+         if ($$1 != null) {
+            return ert.a(this, ert.a($$1));
          }
       }
 
-      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? euj.a.a : euj.a.b;
+      return $$0 instanceof ewd.c ? null : super.a($$0);
    }
 
-   private void a(erx $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      aep $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+   @Override
+   public List<? extends eua> i() {
+      return this.j;
+   }
 
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+   @Override
+   public evv.a q() {
+      return this.j.stream().map(esf::q).max(Comparator.naturalOrder()).orElse(evv.a.a);
+   }
+
+   @Override
+   public void b(evx $$0) {
+      Optional<eto> $$1 = this.j.stream().filter(esf::m).findFirst().or(() -> Optional.ofNullable(this.e()));
+      $$1.ifPresent($$1x -> {
+         this.a($$0.a(), $$1x);
+         $$1x.b($$0);
+      });
+      if (this.ax_()) {
+         $$0.a(evw.d, e);
+      }
+   }
+
+   protected void a(evx $$0, eto $$1) {
+      if (this.i.size() > 1) {
+         int $$2 = this.j.indexOf($$1);
+         if ($$2 != -1) {
+            $$0.a(evw.b, tf.a("narrator.position.tab", $$2 + 1, this.i.size()));
+         }
+      }
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      $$0.a(0, 0, this.g, 24, -16777216);
+      $$0.a(fcj.a, 0, this.f.r() + this.f.h() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      UnmodifiableIterator var5 = this.j.iterator();
+
+      while (var5.hasNext()) {
+         eto $$4 = (eto)var5.next();
+         $$4.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public ewh s() {
+      return this.f.s();
+   }
+
+   public void b() {
+      int $$0 = Math.min(400, this.g) - 28;
+      int $$1 = arp.d($$0 / this.i.size(), 2);
+      UnmodifiableIterator var3 = this.j.iterator();
+
+      while (var3.hasNext()) {
+         eto $$2 = (eto)var3.next();
+         $$2.d($$1);
       }
 
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+      this.f.a();
+      this.f.e(arp.d((this.g - $$0) / 2, 2));
+      this.f.f(0);
    }
 
-   public void a(te $$0, @Nullable te $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
-   }
-
-   public eui.a c() {
-      return this.g;
-   }
-
-   public static void a(euk $$0, eui.a $$1, te $$2, @Nullable te $$3) {
-      $$0.a(new eui($$1, $$2, $$3));
-   }
-
-   public static void b(euk $$0, eui.a $$1, te $$2, @Nullable te $$3) {
-      eui $$4 = $$0.a(eui.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
+   public void a(int $$0, boolean $$1) {
+      if (this.ax_()) {
+         this.a((eua)this.j.get($$0));
       } else {
-         $$4.a($$2, $$3);
+         this.h.a((eug)this.i.get($$0), $$1);
       }
    }
 
-   public static void a(eqn $$0, String $$1) {
-      a($$0.ay(), eui.a.e, te.c("selectWorld.access_failure"), te.b($$1));
-   }
-
-   public static void b(eqn $$0, String $$1) {
-      a($$0.ay(), eui.a.e, te.c("selectWorld.delete_failure"), te.b($$1));
-   }
-
-   public static void c(eqn $$0, String $$1) {
-      a($$0.ay(), eui.a.f, te.c("pack.copyFailure"), te.b($$1));
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h(10000L);
-
-      final long i;
-
-      private a(long $$0) {
-         this.i = $$0;
+   public boolean b(int $$0) {
+      if (exz.p()) {
+         int $$1 = this.c($$0);
+         if ($$1 != -1) {
+            this.a(arp.a($$1, 0, this.i.size() - 1), true);
+            return true;
+         }
       }
 
-      private a() {
-         this(5000L);
+      return false;
+   }
+
+   private int c(int $$0) {
+      if ($$0 >= 49 && $$0 <= 57) {
+         return $$0 - 49;
+      } else {
+         if ($$0 == 258) {
+            int $$1 = this.d();
+            if ($$1 != -1) {
+               int $$2 = exz.q() ? $$1 - 1 : $$1 + 1;
+               return Math.floorMod($$2, this.i.size());
+            }
+         }
+
+         return -1;
+      }
+   }
+
+   private int d() {
+      eug $$0 = this.h.a();
+      int $$1 = this.i.indexOf($$0);
+      return $$1 != -1 ? $$1 : -1;
+   }
+
+   @Nullable
+   private eto e() {
+      int $$0 = this.d();
+      return $$0 != -1 ? (eto)this.j.get($$0) : null;
+   }
+
+   public static class a {
+      private final int a;
+      private final euh b;
+      private final List<eug> c = new ArrayList<>();
+
+      a(euh $$0, int $$1) {
+         this.b = $$0;
+         this.a = $$1;
+      }
+
+      public eui.a a(eug... $$0) {
+         Collections.addAll(this.c, $$0);
+         return this;
+      }
+
+      public eui a() {
+         return new eui(this.a, this.b, this.c);
       }
    }
 }

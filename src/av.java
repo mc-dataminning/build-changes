@@ -1,54 +1,55 @@
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class av extends cv<av.a> {
-   static final aep a = new aep("brewed_potion");
+public class av extends cu<av.a> {
+   static final aer a = new aer("brewed_potion");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public av.a a(JsonObject $$0, ba $$1, be $$2) {
-      ckt $$3 = null;
+   public av.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      ckv $$3 = null;
       if ($$0.has("potion")) {
-         aep $$4 = new aep(arf.i($$0, "potion"));
-         $$3 = jc.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
+         aer $$4 = new aer(arg.i($$0, "potion"));
+         $$3 = jb.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
       }
 
       return new av.a($$1, $$3);
    }
 
-   public void a(akj $$0, ckt $$1) {
+   public void a(akl $$0, ckv $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends ar {
       @Nullable
-      private final ckt a;
+      private final ckv a;
 
-      public a(ba $$0, @Nullable ckt $$1) {
+      public a(Optional<ba> $$0, @Nullable ckv $$1) {
          super(av.a, $$0);
          this.a = $$1;
       }
 
-      public static av.a c() {
-         return new av.a(ba.a, null);
+      public static av.a d() {
+         return new av.a(Optional.empty(), null);
       }
 
-      public boolean a(ckt $$0) {
+      public boolean a(ckv $$0) {
          return this.a == null || this.a == $$0;
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
          if (this.a != null) {
-            $$1.addProperty("potion", jc.j.b(this.a).toString());
+            $$0.addProperty("potion", jb.j.b(this.a).toString());
          }
 
-         return $$1;
+         return $$0;
       }
    }
 }

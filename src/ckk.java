@@ -1,22 +1,23 @@
-public class ckk extends cir {
-   private final ckj a;
-
-   public ckk(ckj $$0, cir.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
-
-   public ckj i() {
-      return this.a;
+public class ckk extends cjn {
+   public ckk(cit.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int c() {
-      return this.a.e();
-   }
+   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      ciy $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         ccq $$4 = new ccq($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public boolean a(ciw $$0, ciw $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+      $$1.b(apg.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
+      }
+
+      return bgr.a($$3, $$0.r_());
    }
 }

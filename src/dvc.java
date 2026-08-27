@@ -1,8 +1,54 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface dvc {
-   void a(dvb var1);
+public class dvc extends ebi {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   @Nullable
-   dvb a(dup var1);
+   public static ebi.a<dvc> a() {
+      return new ebi.a<>(dvc::new, dvc::b, ass.o);
+   }
+
+   private dvc(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public dvc() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dvc b(qr $$0) {
+      return new dvc(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public qr a(qr $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
+   }
 }

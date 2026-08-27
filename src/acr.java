@@ -1,51 +1,40 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class acr implements ux<aaw> {
+   private final eha a;
+   private final bgp b;
+   private final int c;
 
-public class acr {
-   private static final double a = 4096.0;
-   private ehf b;
-
-   public acr() {
-      this.b = ehf.b;
-   }
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public ehf a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new ehf($$3, $$4, $$5);
-      }
-   }
-
-   public long a(ehf $$0) {
-      return a($$0.c) - a(this.b.c);
-   }
-
-   public long b(ehf $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long c(ehf $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public ehf d(ehf $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ehf $$0) {
+   public acr(bgp $$0, eha $$1, int $$2) {
       this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
+   }
+
+   public acr(si $$0) {
+      this.b = $$0.b(bgp.class);
+      this.a = $$0.x();
+      this.c = $$0.m();
+   }
+
+   @Override
+   public void a(si $$0) {
+      $$0.a(this.b);
+      $$0.a(this.a);
+      $$0.c(this.c);
+   }
+
+   public void a(aaw $$0) {
+      $$0.a(this);
+   }
+
+   public bgp a() {
+      return this.b;
+   }
+
+   public eha d() {
+      return this.a;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

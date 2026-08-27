@@ -1,47 +1,34 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class epu extends epn {
+public class epu extends epm {
    private static final Logger c = LogUtils.getLogger();
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private final String d;
+   private final String e;
+   private final long f;
+   private final exz g;
 
-   public epu(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public epu(long $$0, String $$1, String $$2, exz $$3) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.g = $$3;
    }
 
    @Override
    public void run() {
-      elx $$0 = elx.a();
-      this.b(te.c("mco.minigame.world.slot.screen.title"));
+      this.b(tf.c("mco.create.world.wait"));
+      elw $$0 = elw.a();
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.c()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (enl var4) {
-            if (this.c()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't switch world!");
-            this.a(var5);
-         }
+      try {
+         $$0.a(this.f, this.d, this.e);
+         a(this.g);
+      } catch (enj var3) {
+         c.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         c.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 }

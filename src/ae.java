@@ -19,14 +19,14 @@ public class ae {
    @Nullable
    private final an b;
    private final ah c;
-   private final aep d;
+   private final aer d;
    private final Map<String, aj> e;
    private final String[][] f;
    private final Set<ae> g = Sets.newLinkedHashSet();
-   private final te h;
+   private final tf h;
    private final boolean i;
 
-   public ae(aep $$0, @Nullable ae $$1, @Nullable an $$2, ah $$3, Map<String, aj> $$4, String[][] $$5, boolean $$6) {
+   public ae(aer $$0, @Nullable ae $$1, @Nullable an $$2, ah $$3, Map<String, aj> $$4, String[][] $$5, boolean $$6) {
       this.d = $$0;
       this.b = $$2;
       this.e = ImmutableMap.copyOf($$4);
@@ -39,13 +39,13 @@ public class ae {
       }
 
       if ($$2 == null) {
-         this.h = te.b($$0.toString());
+         this.h = tf.b($$0.toString());
       } else {
-         te $$7 = $$2.a();
+         tf $$7 = $$2.a();
          n $$8 = $$2.e().b();
-         te $$9 = tg.a($$7.e(), ua.a.a($$8)).f("\n").b($$2.b());
-         te $$10 = $$7.e().a($$1x -> $$1x.a(new tj(tj.a.a, $$9)));
-         this.h = tg.a($$10).a($$8);
+         tf $$9 = th.a($$7.e(), ub.a.a($$8)).f("\n").b($$2.b());
+         tf $$10 = $$7.e().a($$1x -> $$1x.a(new tk(tk.a.a, $$9)));
+         this.h = th.a($$10).a($$8);
       }
    }
 
@@ -123,7 +123,7 @@ public class ae {
       this.g.add($$0);
    }
 
-   public aep j() {
+   public aer j() {
       return this.d;
    }
 
@@ -145,13 +145,13 @@ public class ae {
       return this.f;
    }
 
-   public te l() {
+   public tf l() {
       return this.h;
    }
 
    public static class a {
       @Nullable
-      private aep a;
+      private aer a;
       @Nullable
       private ae b;
       @Nullable
@@ -163,7 +163,7 @@ public class ae {
       private ap g = ap.a;
       private final boolean h;
 
-      a(@Nullable aep $$0, @Nullable an $$1, ah $$2, Map<String, aj> $$3, String[][] $$4, boolean $$5) {
+      a(@Nullable aer $$0, @Nullable an $$1, ah $$2, Map<String, aj> $$3, String[][] $$4, boolean $$5) {
          this.a = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -189,17 +189,17 @@ public class ae {
          return this;
       }
 
-      public ae.a a(aep $$0) {
+      public ae.a a(aer $$0) {
          this.a = $$0;
          return this;
       }
 
-      public ae.a a(ciw $$0, te $$1, te $$2, @Nullable aep $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(ciy $$0, tf $$1, tf $$2, @Nullable aer $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new an($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(cpj $$0, te $$1, te $$2, @Nullable aep $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new an(new ciw($$0.k()), $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+      public ae.a a(cpl $$0, tf $$1, tf $$2, @Nullable aer $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new an(new ciy($$0.k()), $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(an $$0) {
@@ -239,7 +239,7 @@ public class ae {
          return this;
       }
 
-      public boolean a(Function<aep, ae> $$0) {
+      public boolean a(Function<aer, ae> $$0) {
          if (this.a == null) {
             return true;
          } else {
@@ -251,7 +251,7 @@ public class ae {
          }
       }
 
-      public ae b(aep $$0) {
+      public ae b(aer $$0) {
          if (!this.a($$0x -> null)) {
             throw new IllegalStateException("Tried to build incomplete advancement!");
          } else {
@@ -264,7 +264,7 @@ public class ae {
       }
 
       public ae a(Consumer<ae> $$0, String $$1) {
-         ae $$2 = this.b(new aep($$1));
+         ae $$2 = this.b(new aer($$1));
          $$0.accept($$2);
          return $$2;
       }
@@ -310,12 +310,12 @@ public class ae {
          return $$0;
       }
 
-      public void a(sh $$0) {
+      public void a(si $$0) {
          if (this.f == null) {
             this.f = this.g.createRequirements(this.e.keySet());
          }
 
-         $$0.a(this.a, sh::a);
+         $$0.a(this.a, si::a);
          $$0.a(this.c, ($$0x, $$1x) -> $$1x.a($$0x));
          aj.a(this.e, $$0);
          $$0.c(this.f.length);
@@ -349,22 +349,22 @@ public class ae {
       }
 
       public static ae.a a(JsonObject $$0, be $$1) {
-         aep $$2 = $$0.has("parent") ? new aep(arf.i($$0, "parent")) : null;
-         an $$3 = $$0.has("display") ? an.a(arf.u($$0, "display")) : null;
-         ah $$4 = $$0.has("rewards") ? ah.a(arf.u($$0, "rewards")) : ah.a;
-         Map<String, aj> $$5 = aj.b(arf.u($$0, "criteria"), $$1);
+         aer $$2 = $$0.has("parent") ? new aer(arg.i($$0, "parent")) : null;
+         an $$3 = $$0.has("display") ? an.a(arg.u($$0, "display")) : null;
+         ah $$4 = $$0.has("rewards") ? ah.a(arg.u($$0, "rewards")) : ah.a;
+         Map<String, aj> $$5 = aj.b(arg.u($$0, "criteria"), $$1);
          if ($$5.isEmpty()) {
             throw new JsonSyntaxException("Advancement criteria cannot be empty");
          } else {
-            JsonArray $$6 = arf.a($$0, "requirements", new JsonArray());
+            JsonArray $$6 = arg.a($$0, "requirements", new JsonArray());
             String[][] $$7 = new String[$$6.size()][];
 
             for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
-               JsonArray $$9 = arf.n($$6.get($$8), "requirements[" + $$8 + "]");
+               JsonArray $$9 = arg.n($$6.get($$8), "requirements[" + $$8 + "]");
                $$7[$$8] = new String[$$9.size()];
 
                for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-                  $$7[$$8][$$10] = arf.a($$9.get($$10), "requirements[" + $$8 + "][" + $$10 + "]");
+                  $$7[$$8][$$10] = arg.a($$9.get($$10), "requirements[" + $$8 + "][" + $$10 + "]");
                }
             }
 
@@ -406,13 +406,13 @@ public class ae {
                }
             }
 
-            boolean $$18 = arf.a($$0, "sends_telemetry_event", false);
+            boolean $$18 = arg.a($$0, "sends_telemetry_event", false);
             return new ae.a($$2, $$3, $$4, $$5, $$7, $$18);
          }
       }
 
-      public static ae.a b(sh $$0) {
-         aep $$1 = $$0.c(sh::s);
+      public static ae.a b(si $$0) {
+         aer $$1 = $$0.c(si::s);
          an $$2 = $$0.c(an::b);
          Map<String, aj> $$3 = aj.c($$0);
          String[][] $$4 = new String[$$0.m()][];

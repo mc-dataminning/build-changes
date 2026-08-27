@@ -1,64 +1,40 @@
-public class aaf implements uw<wo> {
-   private final hf<aot> a;
-   private final aov b;
+public class aaf implements ux<wp> {
+   private final int a;
+   private final int b;
    private final int c;
-   private final float d;
-   private final float e;
-   private final long f;
 
-   public aaf(hf<aot> $$0, aov $$1, big $$2, float $$3, float $$4, long $$5) {
+   public aaf(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.ah();
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+      this.c = $$2;
    }
 
-   public aaf(sh $$0) {
-      this.a = $$0.a(jc.c.t(), aot::b);
-      this.b = $$0.b(aov.class);
-      this.c = $$0.m();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readLong();
+   public aaf(si $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(jc.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.b(this.f);
+   public void a(si $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public hf<aot> a() {
+   public void a(wp $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public aov d() {
+   public int d() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public void a(wo $$0) {
-      $$0.a(this);
    }
 }

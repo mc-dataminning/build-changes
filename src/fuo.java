@@ -1,11 +1,15 @@
-public class fuo extends frk<cci> {
-   public static final aep a = new aep("textures/entity/projectiles/spectral_arrow.png");
+public class fuo extends ftu<bzi, fgi<bzi>> {
+   private static final aer a = new aer("textures/entity/silverfish.png");
 
-   public fuo(fsj.a $$0) {
-      super($$0);
+   public fuo(fso.a $$0) {
+      super($$0, new fgi<>($$0.a(fhm.bg)), 0.3F);
    }
 
-   public aep a(cci $$0) {
+   protected float a(bzi $$0) {
+      return 180.0F;
+   }
+
+   public aer b(bzi $$0) {
       return a;
    }
 }

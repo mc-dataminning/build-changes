@@ -1,28 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Supplier;
 
-public class btf extends btc<biw> {
-   @Override
-   public Set<bry<?>> a() {
-      return ImmutableSet.of(bry.i);
+public class btf<U extends bte<?>> {
+   public static final btf<bsp> a = a("dummy", bsp::new);
+   public static final btf<bsw> b = a("nearest_items", bsw::new);
+   public static final btf<bsx<biy>> c = a("nearest_living_entities", bsx::new);
+   public static final btf<btb> d = a("nearest_players", btb::new);
+   public static final btf<bsv> e = a("nearest_bed", bsv::new);
+   public static final btf<bst> f = a("hurt_by", bst::new);
+   public static final btf<bti> g = a("villager_hostiles", bti::new);
+   public static final btf<bth> h = a("villager_babies", bth::new);
+   public static final btf<btc> i = a("secondary_pois", btc::new);
+   public static final btf<bsr> j = a("golem_detected", bsr::new);
+   public static final btf<bta> k = a("piglin_specific_sensor", bta::new);
+   public static final btf<bsz> l = a("piglin_brute_specific_sensor", bsz::new);
+   public static final btf<bss> m = a("hoglin_specific_sensor", bss::new);
+   public static final btf<bsn> n = a("nearest_adult", bsn::new);
+   public static final btf<bso> o = a("axolotl_attackables", bso::new);
+   public static final btf<btg> p = a("axolotl_temptations", () -> new btg(bvs.a()));
+   public static final btf<btg> q = a("goat_temptations", () -> new btg(bwg.a()));
+   public static final btf<btg> r = a("frog_temptations", () -> new btg(bwa.a()));
+   public static final btf<btg> s = a("camel_temptations", () -> new btg(bvx.b()));
+   public static final btf<bsq> t = a("frog_attackables", bsq::new);
+   public static final btf<bsu> u = a("is_in_water", bsu::new);
+   public static final btf<btj> v = a("warden_entity_sensor", btj::new);
+   public static final btf<btg> w = a("sniffer_temptations", () -> new btg(bwx.a()));
+   private final Supplier<U> x;
+
+   private btf(Supplier<U> $$0) {
+      this.x = $$0;
    }
 
-   @Override
-   protected void a(aki $$0, biw $$1) {
-      $$1.dM().a(bry.i, this.a($$1));
+   public U a() {
+      return this.x.get();
    }
 
-   private List<biw> a(biw $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(biw $$0) {
-      return $$0.ag() == bik.bf && $$0.i_();
-   }
-
-   private bsa c(biw $$0) {
-      return $$0.dM().c(bry.h).orElse(bsa.a());
+   private static <U extends bte<?>> btf<U> a(String $$0, Supplier<U> $$1) {
+      return hr.a(jb.D, new aer($$0), new btf<>($$1));
    }
 }

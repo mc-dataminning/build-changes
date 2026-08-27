@@ -1,24 +1,14 @@
-public class aab implements uw<wo> {
-   private final te a;
-
-   public aab(te $$0) {
-      this.a = $$0;
-   }
-
-   public aab(sh $$0) {
-      this.a = $$0.l();
+public record aab(int a) implements ux<wp> {
+   public aab(si $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
-   }
-
-   public te a() {
-      return this.a;
    }
 }

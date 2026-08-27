@@ -1,184 +1,218 @@
-public abstract class buf extends bvk implements buk {
-   private static final adx<Boolean> b = aea.a(buf.class, adz.k);
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
+import javax.annotation.Nullable;
 
-   public buf(bik<? extends buf> $$0, cpk $$1) {
+public class buf extends bue {
+   public static final float b = 74.48451F;
+   public static final int c = arp.f(2.4166098F);
+   private static final adz<Byte> d = aec.a(buf.class, aeb.a);
+   private static final int e = 1;
+   private static final btl bS = btl.b().a(4.0);
+   @Nullable
+   private gu bT;
+
+   public buf(bim<? extends buf> $$0, cpm $$1) {
       super($$0, $$1);
-      this.bL = new buf.a(this);
+      if (!$$1.B) {
+         this.w(true);
+      }
    }
 
    @Override
-   protected float b(bji $$0, bih $$1) {
-      return $$1.b * 0.65F;
-   }
-
-   public static bkc.a p() {
-      return biy.x().a(bkd.a, 3.0);
-   }
-
-   @Override
-   public boolean R() {
-      return super.R() || this.q();
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return !this.q() && !this.ac();
-   }
-
-   @Override
-   public int Z() {
-      return 8;
+   public boolean aR() {
+      return !this.q() && this.ah % c == 0;
    }
 
    @Override
    protected void a_() {
       super.a_();
-      this.an.a(b, false);
+      this.an.a(d, (byte)0);
    }
 
    @Override
+   protected float eU() {
+      return 0.1F;
+   }
+
+   @Override
+   public float eV() {
+      return super.eV() * 0.95F;
+   }
+
+   @Nullable
+   @Override
+   public aov r() {
+      return this.q() && this.ag.a(4) != 0 ? null : aow.bq;
+   }
+
+   @Override
+   protected aov d(bhg $$0) {
+      return aow.bs;
+   }
+
+   @Override
+   protected aov h_() {
+      return aow.br;
+   }
+
+   @Override
+   public boolean bs() {
+      return false;
+   }
+
+   @Override
+   protected void D(bii $$0) {
+   }
+
+   @Override
+   protected void fg() {
+   }
+
+   public static bke.a p() {
+      return bja.x().a(bkf.a, 6.0);
+   }
+
    public boolean q() {
-      return this.an.b(b);
+      return (this.an.b(d) & 1) != 0;
    }
 
-   @Override
    public void w(boolean $$0) {
-      this.an.b(b, $$0);
+      byte $$1 = this.an.b(d);
+      if ($$0) {
+         this.an.b(d, (byte)($$1 | 1));
+      } else {
+         this.an.b(d, (byte)($$1 & -2));
+      }
    }
 
    @Override
-   public void b(qs $$0) {
-      super.b($$0);
-      $$0.a("FromBucket", this.q());
+   public void l() {
+      super.l();
+      if (this.q()) {
+         this.f(ehe.b);
+         this.p(this.dp(), (double)arp.a(this.dr()) + 1.0 - (double)this.dg(), this.dv());
+      } else {
+         this.f(this.dn().d(1.0, 0.6, 1.0));
+      }
    }
 
    @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      this.w($$0.q("FromBucket"));
-   }
+   protected void V() {
+      super.V();
+      gu $$0 = this.dk();
+      gu $$1 = $$0.c();
+      if (this.q()) {
+         boolean $$2 = this.aS();
+         if (this.dK().a_($$1).g(this.dK(), $$0)) {
+            if (this.ag.a(200) == 0) {
+               this.aW = (float)this.ag.a(360);
+            }
 
-   @Override
-   protected void w() {
-      super.w();
-      this.bO.a(0, new bql(this, 1.25));
-      this.bO.a(2, new boz<>(this, cbl.class, 8.0F, 1.6, 1.4, bij.f::test));
-      this.bO.a(4, new buf.b(this));
-   }
-
-   @Override
-   protected bsg b(cpk $$0) {
-      return new bsi(this, $$0);
-   }
-
-   @Override
-   public void h(ehf $$0) {
-      if (this.cX() && this.aX()) {
-         this.a(0.01F, $$0);
-         this.a(bjc.a, this.dn());
-         this.f(this.dn().a(0.9));
-         if (this.j() == null) {
-            this.f(this.dn().b(0.0, -0.005, 0.0));
+            if (this.dK().a(bS, this) != null) {
+               this.w(false);
+               if (!$$2) {
+                  this.dK().a(null, 1025, $$0, 0);
+               }
+            }
+         } else {
+            this.w(false);
+            if (!$$2) {
+               this.dK().a(null, 1025, $$0, 0);
+            }
          }
       } else {
-         super.h($$0);
+         if (this.bT != null && (!this.dK().t(this.bT) || this.bT.v() <= this.dK().C_())) {
+            this.bT = null;
+         }
+
+         if (this.bT == null || this.ag.a(30) == 0 || this.bT.a(this.di(), 2.0)) {
+            this.bT = gu.a(
+               this.dp() + (double)this.ag.a(7) - (double)this.ag.a(7),
+               this.dr() + (double)this.ag.a(6) - 2.0,
+               this.dv() + (double)this.ag.a(7) - (double)this.ag.a(7)
+            );
+         }
+
+         double $$3 = (double)this.bT.u() + 0.5 - this.dp();
+         double $$4 = (double)this.bT.v() + 0.1 - this.dr();
+         double $$5 = (double)this.bT.w() + 0.5 - this.dv();
+         ehe $$6 = this.dn();
+         ehe $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
+         this.f($$7);
+         float $$8 = (float)(arp.d($$7.e, $$7.c) * 180.0F / (float)Math.PI) - 90.0F;
+         float $$9 = arp.g($$8 - this.dA());
+         this.bm = 0.5F;
+         this.r(this.dA() + $$9);
+         if (this.ag.a(100) == 0 && this.dK().a_($$1).g(this.dK(), $$1)) {
+            this.w(true);
+         }
       }
    }
 
    @Override
-   public void b_() {
-      if (!this.aX() && this.aA() && this.Q) {
-         this.f(this.dn().b((double)((this.ag.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ag.i() * 2.0F - 1.0F) * 0.05F)));
-         this.c(false);
-         this.au = true;
-         this.a(this.ga(), this.eU(), this.eV());
-      }
-
-      super.b_();
+   protected bii.b aU() {
+      return bii.b.c;
    }
 
    @Override
-   protected bgo b(cbl $$0, bgn $$1) {
-      return buk.a($$0, $$1, this).orElse(super.b($$0, $$1));
+   protected void a(double $$0, boolean $$1, dfa $$2, gu $$3) {
    }
 
    @Override
-   public void l(ciw $$0) {
-      buk.a(this, $$0);
-   }
-
-   @Override
-   public void c(qs $$0) {
-      buk.a(this, $$0);
-   }
-
-   @Override
-   public aot t() {
-      return aou.cD;
-   }
-
-   protected boolean fZ() {
+   public boolean d_() {
       return true;
    }
 
-   protected abstract aot ga();
-
    @Override
-   protected aot aL() {
-      return aou.hO;
-   }
-
-   @Override
-   protected void b(gv $$0, dey $$1) {
-   }
-
-   static class a extends bov {
-      private final buf l;
-
-      a(buf $$0) {
-         super($$0);
-         this.l = $$0;
-      }
-
-      @Override
-      public void a() {
-         if (this.l.a(apo.a)) {
-            this.l.f(this.l.dn().b(0.0, 0.005, 0.0));
+   public boolean a(bhg $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else {
+         if (!this.dK().B && this.q()) {
+            this.w(false);
          }
 
-         if (this.k == bov.a.b && !this.l.H().l()) {
-            float $$0 = (float)(this.h * this.l.b(bkd.d));
-            this.l.w(aro.i(0.125F, this.l.fd(), $$0));
-            double $$1 = this.e - this.l.dp();
-            double $$2 = this.f - this.l.dr();
-            double $$3 = this.g - this.l.dv();
-            if ($$2 != 0.0) {
-               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.f(this.l.dn().b(0.0, (double)this.l.fd() * ($$2 / $$4) * 0.1, 0.0));
-            }
-
-            if ($$1 != 0.0 || $$3 != 0.0) {
-               float $$5 = (float)(aro.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.r(this.a(this.l.dA(), $$5, 90.0F));
-               this.l.aU = this.l.dA();
-            }
-         } else {
-            this.l.w(0.0F);
-         }
+         return super.a($$0, $$1);
       }
    }
 
-   static class b extends bqq {
-      private final buf i;
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      this.an.b(d, $$0.f("BatFlags"));
+   }
 
-      public b(buf $$0) {
-         super($$0, 1.0, 40);
-         this.i = $$0;
-      }
+   @Override
+   public void b(qr $$0) {
+      super.b($$0);
+      $$0.a("BatFlags", this.an.b(d));
+   }
 
-      @Override
-      public boolean a() {
-         return this.i.fZ() && super.a();
+   public static boolean b(bim<buf> $$0, cpn $$1, bjc $$2, gu $$3, aru $$4) {
+      if ($$3.v() >= $$1.t_()) {
+         return false;
+      } else {
+         int $$5 = $$1.z($$3);
+         int $$6 = 4;
+         if (t()) {
+            $$6 = 7;
+         } else if ($$4.h()) {
+            return false;
+         }
+
+         return $$5 > $$4.a($$6) ? false : a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   private static boolean t() {
+      LocalDate $$0 = LocalDate.now();
+      int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
+      int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
+      return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
+   }
+
+   @Override
+   protected float b(bjk $$0, bij $$1) {
+      return $$1.b / 2.0F;
    }
 }

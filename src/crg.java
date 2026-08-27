@@ -1,20 +1,12 @@
-public abstract class crg extends cvy {
-   protected crg(dex.d $$0) {
+import java.util.function.Supplier;
+
+public abstract class crg<E extends dcm> extends crz {
+   protected final Supplier<dco<? extends E>> a;
+
+   protected crg(dez.d $$0, Supplier<dco<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public ehy b(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return ehv.a();
-   }
-
-   @Override
-   public float b(dey $$0, coq $$1, gv $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean c(dey $$0, coq $$1, gv $$2) {
-      return true;
-   }
+   public abstract cup.c<? extends dct> a(dfa var1, cpm var2, gu var3, boolean var4);
 }

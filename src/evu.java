@@ -1,3 +1,8 @@
-public interface evu {
-   void b(evt var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evu {
 }

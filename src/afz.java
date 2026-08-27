@@ -1,132 +1,46 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class afz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, aeo<cpk>> a = ImmutableBiMap.of("o", cpk.h, "n", cpk.i, "e", cpk.j);
-   @Nullable
-   private static afr g;
-   @Nullable
-   private static afq h;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("commands.ban.failed"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)dt.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)dt.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    dt.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ds)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dt.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 dt.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ds)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ds)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(dt.a("stop").executes($$0x -> a((ds)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("ban").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ds.a("targets", ee.a()).executes($$0x -> a((dr)$$0x.getSource(), ee.a($$0x, "targets"), null)))
+                  .then(ds.a("reason", eg.a()).executes($$0x -> a((dr)$$0x.getSource(), ee.a($$0x, "targets"), eg.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ds $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> te.b("You have now stopped chasing"), false);
-         h = null;
-      }
+   private static int a(dr $$0, Collection<GameProfile> $$1, @Nullable tf $$2) throws CommandSyntaxException {
+      aof $$3 = $$0.l().ac().f();
+      int $$4 = 0;
 
-      if (g != null) {
-         g.b();
-         $$0.a(() -> te.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(ds $$0) {
-      if (g != null) {
-         $$0.b(te.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(te.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static int a(ds $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new afr($$1, $$2, $$0.l().ac(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> te.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(te.b("Failed to start chase server on port " + $$2));
-            g = null;
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            aog $$6 = new aog($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> tf.a("commands.ban.success", tf.b($$5.getName()), $$6.d()), true);
+            akl $$7 = $$0.l().ac().a($$5.getId());
+            if ($$7 != null) {
+               $$7.c.b(tf.c("multiplayer.disconnect.banned"));
+            }
          }
-
-         return 0;
       }
-   }
 
-   private static int b(ds $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+      if ($$4 == 0) {
+         throw a.create();
       } else {
-         h = new afq($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> te.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+         return $$4;
       }
    }
 }

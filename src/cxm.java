@@ -1,107 +1,89 @@
-public class cxm extends csk {
-   public static final dfw<hb.a> a = dfo.H;
-   protected static final int b = 2;
-   protected static final ehy c = csk.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final ehy d = csk.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+import java.util.Optional;
 
-   public cxm(dex.d $$0) {
+public class cxm extends csu implements cso {
+   protected static final float a = 3.0F;
+   protected static final ehx b = csm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aeq<dna<?, ?>> c;
+
+   public cxm(dez.d $$0, aeq<dna<?, ?>> $$1) {
       super($$0);
-      this.k(this.C.b().a(a, hb.a.a));
+      this.c = $$1;
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      switch ((hb.a)$$0.c(a)) {
-         case c:
-            return d;
-         case a:
-         default:
-            return c;
-      }
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b;
    }
 
    @Override
-   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
-      if ($$1.x_().j() && $$1.X().b(cpg.e) && $$3.a(2000) < $$1.ai().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-         if ($$1.a_($$2).a($$1, $$2, bik.bs)) {
-            big $$4 = bik.bs.a($$1, $$2.c(), bja.d);
-            if ($$4 != null) {
-               $$4.as();
+         for (gu $$6 : gu.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
             }
          }
+
+         gu $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      hb.a $$6 = $$1.o();
-      hb.a $$7 = $$0.c(a);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new eaz($$3, $$4, $$7).c() ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d(dfa $$0, cos $$1, gu $$2) {
+      return $$0.i($$1, $$2);
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      if ($$3.cs()) {
-         $$3.f($$2);
-      }
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      gu $$3 = $$2.d();
+      dfa $$4 = $$1.a_($$3);
+      return $$4.a(apl.aZ) ? true : $$1.b($$2, 0) < 13 && this.d($$4, $$1, $$3);
    }
 
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aou.sU, aov.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+   public boolean a(akk $$0, gu $$1, dfa $$2, aru $$3) {
+      Optional<? extends he<dna<?, ?>>> $$4 = $$0.B_().d(jc.as).b(this.c);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
          } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+            $$0.a($$1, $$2, 3);
+            return false;
          }
-
-         $$1.a(iw.X, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
    @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      return ciw.b;
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
+      return true;
    }
 
    @Override
-   public dey a(dey $$0, cyw $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((hb.a)$$0.c(a)) {
-               case c:
-                  return $$0.a(a, hb.a.a);
-               case a:
-                  return $$0.a(a, hb.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a);
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

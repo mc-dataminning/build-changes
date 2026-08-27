@@ -1,127 +1,60 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class dkv implements coz {
+   private int a;
 
-public final class dkv {
-   final dku a;
-   private final hg<dze.a> b;
-   private final dkn c;
-   private final cqr.f d;
-   private final dkz e;
-   private final dku f;
-   private final dku g;
-   private final Map<aeo<dze.a>, dze> h;
-   private final Map<aep, dku> i;
-
-   public static dkv a(hg.a $$0, aeo<dkm> $$1, long $$2) {
-      return a($$0.b(jd.aw).b($$1).a(), $$0.b(jd.ax), $$2);
-   }
-
-   public static dkv a(dkm $$0, hg<dze.a> $$1, long $$2) {
-      return new dkv($$0, $$1, $$2);
-   }
-
-   private dkv(dkm $$0, hg<dze.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new aep("aquifer")).e();
-      this.g = this.a.a(new aep("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dkz(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dka.f {
-         private final Map<dka, dka> d = new HashMap<>();
-
-         private art a(long $$0) {
-            return new dki($$2 + $$0);
-         }
-
-         @Override
-         public dka.c a(dka.c $$0) {
-            hf<dze.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dkq.a)) {
-                  dze $$2 = dze.a(this.a(0L), new dze.a(-7, 1.0, 1.0));
-                  return new dka.c($$1, $$2);
-               }
-
-               if ($$1.a(dkq.b)) {
-                  dze $$3 = dze.a(this.a(1L), new dze.a(-7, 1.0, 1.0));
-                  return new dka.c($$1, $$3);
-               }
-
-               if ($$1.a(dkq.j)) {
-                  dze $$4 = dze.b(dkv.this.a.a(dkq.j.a()), new dze.a(0, 0.0));
-                  return new dka.c($$1, $$4);
-               }
-            }
-
-            dze $$5 = dkv.this.a($$1.e().orElseThrow());
-            return new dka.c($$1, $$5);
-         }
-
-         private dka a(dka $$0) {
-            if ($$0 instanceof dzb $$1) {
-               art $$2 = $$3 ? this.a(0L) : dkv.this.a.a(new aep("terrain"));
-               return $$1.a($$2);
+   @Override
+   public int a(akk $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpi.A)) {
+         return 0;
+      } else {
+         aru $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.v_() < 5 && $$0.x_().g()) {
+               return 0;
             } else {
-               return (dka)($$0 instanceof dkb.i ? new dkb.i($$2) : $$0);
-            }
-         }
+               int $$4 = 0;
 
-         @Override
-         public dka apply(dka $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+               for (akl $$5 : $$0.v()) {
+                  if (!$$5.G_()) {
+                     gu $$6 = $$5.dk();
+                     if (!$$0.x_().g() || $$6.v() >= $$0.t_() && $$0.g($$6)) {
+                        bgo $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           apc $$8 = $$5.E();
+                           int $$9 = arp.a($$8.a(apg.i.b(apg.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              gu $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dfa $$12 = $$0.a_($$11);
+                              ead $$13 = $$0.b_($$11);
+                              if (cpx.a($$0, $$11, $$12, $$13, bim.au)) {
+                                 bjs $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    bzd $$17 = bim.au.a((cpm)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bjc.a, $$14, null);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$4;
+            }
          }
       }
-
-      this.c = $$0.i().a(new a());
-      dka.f $$4 = new dka.f() {
-         private final Map<dka, dka> b = new HashMap<>();
-
-         private dka a(dka $$0) {
-            if ($$0 instanceof dkb.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dkb.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dka apply(dka $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new cqr.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public dze a(aeo<dze.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dkq.a(this.b, this.a, $$0));
-   }
-
-   public dku a(aep $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dkn a() {
-      return this.c;
-   }
-
-   public cqr.f b() {
-      return this.d;
-   }
-
-   public dkz c() {
-      return this.e;
-   }
-
-   public dku d() {
-      return this.f;
-   }
-
-   public dku e() {
-      return this.g;
    }
 }

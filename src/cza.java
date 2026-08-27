@@ -1,52 +1,52 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class cza extends csu implements cso {
+   public static final dga d = dfq.aU;
+   protected static final float e = 6.0F;
+   protected static final ehx f = csm.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   private final deg a;
 
-public interface cza {
-   cza t_ = new cza() {
-      @Override
-      public boolean a(cpl $$0, gv $$1, dey $$2, @Nullable Collection<hb> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((czg)csl.qG).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(eac.c) ? false : czg.a($$0, $$1, $$2, $$3);
-         } else {
-            return cza.super.a($$0, $$1, $$2, $$3, $$4);
-         }
+   protected cza(deg $$0, dez.d $$1) {
+      super($$1);
+      this.a = $$0;
+      this.k(this.C.b().a(d, Integer.valueOf(0)));
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return f;
+   }
+
+   @Override
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.z($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
+   }
 
-      @Override
-      public int a(czf.a $$0, cpl $$1, gv $$2, art $$3, czf $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
+   public void a(akk $$0, gu $$1, dfa $$2, aru $$3) {
+      if ($$2.c(d) == 0) {
+         $$0.a($$1, $$2.a(d), 4);
+      } else {
+         this.a.a($$0, $$0.k().g(), $$1, $$2, $$3);
       }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte a() {
-      return 1;
    }
 
-   default void a(cpl $$0, dey $$1, gv $$2, art $$3) {
-   }
-
-   default boolean a(cpl $$0, gv $$1, art $$2) {
-      return false;
-   }
-
-   default boolean a(cpl $$0, gv $$1, dey $$2, @Nullable Collection<hb> $$3, boolean $$4) {
-      return ((cxi)csl.qG).b().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean c() {
+   @Override
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
       return true;
    }
 
-   default int i_(int $$0) {
-      return 1;
+   @Override
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
-   int a(czf.a var1, cpl var2, gv var3, art var4, czf var5, boolean var6);
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(d);
+   }
 }

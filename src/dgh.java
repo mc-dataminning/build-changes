@@ -1,23 +1,21 @@
-public enum dgh implements asf {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dgh implements ash {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   private final String f;
+   private final String d;
 
    private dgh(String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

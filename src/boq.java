@@ -1,59 +1,19 @@
-public class boq implements bor {
-   private final biy a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public boq(biy $$0) {
-      this.a = $$0;
-   }
+public class boq {
+   private static final bfv a = bgb.a(100, 200);
 
-   public void a() {
-      if (this.f()) {
-         this.a.aU = this.a.dA();
-         this.c();
-         this.f = this.a.aW;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aW - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aW;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
-      }
-   }
-
-   private void b() {
-      this.a.aU = aro.c(this.a.aU, this.a.aW, (float)this.a.X());
-   }
-
-   private void c() {
-      this.a.aW = aro.c(this.a.aW, this.a.aU, (float)this.a.X());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = aro.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.X() * (1.0F - $$1);
-      this.a.aU = aro.c(this.a.aU, this.a.aW, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cQ() instanceof biy);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dp() - this.a.K;
-      double $$1 = this.a.dv() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   public static bkr<biy> a() {
+      return boc.a(
+         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.a(bsa.aA), $$0.a(bsa.m), $$0.c(bsa.aF), $$0.b(bsa.B), $$0.c(bsa.ay))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(asp.a);
+                     $$2.a(asp.a, (long)a.a($$3x.y_()));
+                     $$1.b();
+                     $$4x.b(bjk.m);
+                     return true;
+                  }))
+      );
    }
 }

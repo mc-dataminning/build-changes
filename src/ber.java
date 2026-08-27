@@ -1,30 +1,29 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+public class ber implements bes {
+   public static final bes a = new ber();
 
-public class ber {
-   private final Set<String> a = new ObjectOpenHashSet();
-
-   public Set<bej> a(Supplier<bdc> $$0) {
-      Set<bej> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bei)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bej $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   @Override
+   public void a() {
    }
 
-   private static bej a(Supplier<bdc> $$0, String $$1, bei $$2) {
-      return bej.a($$1, $$2, () -> {
-         bcx.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)ask.b;
-      });
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bdh f() {
+      return bde.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

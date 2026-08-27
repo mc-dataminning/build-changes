@@ -1,16 +1,8 @@
-public class gaz extends gbb {
-   public gaz(buj $$0) {
-      super($$0, aou.bB, aov.g);
-      this.j = 0;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected gax o() {
-      return new gba(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.S_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gaz {
 }

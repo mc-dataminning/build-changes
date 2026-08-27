@@ -1,42 +1,65 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eoe extends ged {
-   static final te b = te.c("mco.warning");
-   static final te c = te.c("mco.info");
-   private final eoe.a y;
-   private final te z;
-   private final te A;
-   protected final BooleanConsumer a;
-   private final boolean B;
+public class eoe extends gei implements enm {
+   private static final gej b = new gej(Duration.ofSeconds(5L));
+   private static final Logger c = LogUtils.getLogger();
+   private final exz y;
+   private volatile tf z = te.a;
+   @Nullable
+   private volatile tf A;
+   private volatile boolean B;
+   private int C;
+   private final epm D;
+   private final int E = 212;
+   private esh F;
+   public static final String[] a = new String[]{
+      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
+      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
+      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
+      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
+      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
+      "_ _ _ _ _ ▃ ▄ ▅ ▆ ▇ █",
+      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
+      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
+      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
+      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
+      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
+      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _",
+      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
+      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
+      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
+      "█ ▇ ▆ ▅ ▄ ▃ _ _ _ _ _",
+      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
+      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
+      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
+      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _"
+   };
 
-   public eoe(BooleanConsumer $$0, eoe.a $$1, te $$2, te $$3, boolean $$4) {
-      super(eqf.a);
-      this.a = $$0;
-      this.y = $$1;
-      this.z = $$2;
-      this.A = $$3;
-      this.B = $$4;
+   public eoe(exz $$0, epm $$1) {
+      super(eqe.a);
+      this.y = $$0;
+      this.D = $$1;
+      $$1.a(this);
+      Thread $$2 = new Thread($$1, "Realms-long-running-task");
+      $$2.setUncaughtExceptionHandler(new enh(c));
+      $$2.start();
    }
 
    @Override
-   public void aE_() {
-      if (this.B) {
-         this.d(esi.a(td.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(esi.a(td.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(esi.a(td.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
-      }
-   }
-
-   @Override
-   public te e() {
-      return td.b(this.y.d, this.z, this.A);
+   public void c() {
+      super.c();
+      b.a(this.f.aV(), this.z);
+      this.C++;
+      this.D.b();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.a.accept(false);
+         this.B();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -44,23 +67,44 @@ public class eoe extends ged {
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.y.d, this.g / 2, h(2), this.y.c);
-      $$0.a(this.i, this.z, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.A, this.g / 2, h(6), -1);
+   public void aE_() {
+      this.D.d();
+      this.F = this.d(esh.a(te.e, $$0 -> this.B()).a(this.g / 2 - 106, h(12), 212, 20).a());
    }
 
-   public static enum a {
-      a(eoe.b, -65536),
-      b(eoe.c, 8226750);
+   private void B() {
+      this.B = true;
+      this.D.a();
+      this.f.a(this.y);
+   }
 
-      public final int c;
-      public final te d;
-
-      private a(te $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.z, this.g / 2, h(3), 16777215);
+      tf $$4 = this.A;
+      if ($$4 == null) {
+         $$0.a(this.i, a[this.C % a.length], this.g / 2, h(8), -8355712);
+      } else {
+         $$0.a(this.i, $$4, this.g / 2, h(8), 16711680);
       }
+   }
+
+   @Override
+   public void a(tf $$0) {
+      this.A = $$0;
+      this.f.aV().c($$0);
+      this.f.execute(() -> {
+         this.f(this.F);
+         this.F = this.d(esh.a(te.k, $$0x -> this.B()).a(this.g / 2 - 106, this.h / 4 + 120 + 12, 200, 20).a());
+      });
+   }
+
+   public void b(tf $$0) {
+      this.z = $$0;
+   }
+
+   public boolean f() {
+      return this.B;
    }
 }

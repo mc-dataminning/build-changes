@@ -1,9 +1,107 @@
-public class eyy extends eyu<ceg> {
-   private static final aep y = new aep("container/blast_furnace/lit_progress");
-   private static final aep z = new aep("container/blast_furnace/burn_progress");
-   private static final aep A = new aep("textures/gui/container/blast_furnace.png");
+public abstract class eyy<T extends cef> extends eyx<T> implements fbr {
+   public final fbh x;
+   private boolean y;
+   private final aer z;
+   private final aer A;
+   private final aer B;
 
-   public eyy(ceg $$0, cbk $$1, te $$2) {
-      super($$0, new fbe(), $$1, $$2, A, y, z);
+   public eyy(T $$0, fbh $$1, cbm $$2, tf $$3, aer $$4, aer $$5, aer $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
+   }
+
+   @Override
+   public void aE_() {
+      super.aE_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.d(new est(this.t + 20, this.h / 2 - 49, 20, 18, fbl.a, $$0 -> {
+         this.x.f();
+         this.t = this.x.a(this.g, this.c);
+         $$0.b(this.t + 20, this.h / 2 - 49);
+      }));
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   public void B() {
+      super.B();
+      this.x.h();
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      if (this.x.g() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.x.a($$0, this.t, this.u, $$1, $$2);
+   }
+
+   @Override
+   protected void a(erw $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = arp.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = arp.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(cfw $$0, int $$1, int $$2, cen $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.x.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void D() {
+      this.x.i();
+   }
+
+   @Override
+   public fbl E() {
+      return this.x;
    }
 }

@@ -1,28 +1,27 @@
-public class aam implements uw<wo> {
-   private final int a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public aam(int $$0, int $$1, int $$2) {
+public class aam implements ux<wp> {
+   private final int a;
+   @Nullable
+   private final qr b;
+
+   public aam(int $$0, @Nullable qr $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public aam(sh $$0) {
+   public aam(si $$0) {
       this.a = $$0.m();
-      this.b = $$0.m();
-      this.c = $$0.m();
+      this.b = $$0.p();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.a((rk)this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +29,13 @@ public class aam implements uw<wo> {
       return this.a;
    }
 
-   public int d() {
+   @Nullable
+   public qr d() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean b() {
+      return true;
    }
 }

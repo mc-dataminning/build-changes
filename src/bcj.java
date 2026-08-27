@@ -8,14 +8,9 @@ public class bcj extends Schema {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> azv.a($$0));
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ZombieVillager");
-      a($$0, $$1, "Husk");
+      $$0.register($$1, "PolarBear", () -> azy.a($$0));
       return $$1;
    }
 }

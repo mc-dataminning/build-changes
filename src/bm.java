@@ -1,123 +1,101 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class bm {
-   public static final bm a = new bm.a().b();
-   @Nullable
-   private final Boolean b;
-   @Nullable
-   private final Boolean c;
-   @Nullable
-   private final Boolean d;
-   @Nullable
-   private final Boolean e;
-   @Nullable
-   private final Boolean f;
+public record bm(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
+   public static final Codec<bm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqy.a(Codec.BOOL, "is_on_fire").forGetter(bm::a),
+               aqy.a(Codec.BOOL, "is_sneaking").forGetter(bm::b),
+               aqy.a(Codec.BOOL, "is_sprinting").forGetter(bm::c),
+               aqy.a(Codec.BOOL, "is_swimming").forGetter(bm::d),
+               aqy.a(Codec.BOOL, "is_baby").forGetter(bm::e)
+            )
+            .apply($$0, bm::new)
+   );
 
-   public bm(@Nullable Boolean $$0, @Nullable Boolean $$1, @Nullable Boolean $$2, @Nullable Boolean $$3, @Nullable Boolean $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   static Optional<bm> a(Optional<Boolean> $$0, Optional<Boolean> $$1, Optional<Boolean> $$2, Optional<Boolean> $$3, Optional<Boolean> $$4) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty()
+         ? Optional.empty()
+         : Optional.of(new bm($$0, $$1, $$2, $$3, $$4));
    }
 
-   public boolean a(big $$0) {
-      if (this.b != null && $$0.bM() != this.b) {
+   public boolean a(bii $$0) {
+      if (this.b.isPresent() && $$0.bM() != this.b.get()) {
          return false;
-      } else if (this.c != null && $$0.bW() != this.c) {
+      } else if (this.c.isPresent() && $$0.bW() != this.c.get()) {
          return false;
-      } else if (this.d != null && $$0.bX() != this.d) {
+      } else if (this.d.isPresent() && $$0.bX() != this.d.get()) {
+         return false;
+      } else if (this.e.isPresent() && $$0.bY() != this.e.get()) {
          return false;
       } else {
-         return this.e != null && $$0.bY() != this.e ? false : this.f == null || !($$0 instanceof biw) || ((biw)$$0).i_() == this.f;
+         if (this.f.isPresent() && $$0 instanceof biy $$1 && $$1.i_() != this.f.get()) {
+            return false;
+         }
+
+         return true;
       }
    }
 
-   @Nullable
-   private static Boolean a(JsonObject $$0, String $$1) {
-      return $$0.has($$1) ? arf.k($$0, $$1) : null;
+   public Optional<Boolean> a() {
+      return this.b;
    }
 
-   public static bm a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "entity flags");
-         Boolean $$2 = a($$1, "is_on_fire");
-         Boolean $$3 = a($$1, "is_sneaking");
-         Boolean $$4 = a($$1, "is_sprinting");
-         Boolean $$5 = a($$1, "is_swimming");
-         Boolean $$6 = a($$1, "is_baby");
-         return new bm($$2, $$3, $$4, $$5, $$6);
-      } else {
-         return a;
-      }
+   public Optional<Boolean> b() {
+      return this.c;
    }
 
-   private void a(JsonObject $$0, String $$1, @Nullable Boolean $$2) {
-      if ($$2 != null) {
-         $$0.addProperty($$1, $$2);
-      }
+   public Optional<Boolean> c() {
+      return this.d;
    }
 
-   public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         this.a($$0, "is_on_fire", this.b);
-         this.a($$0, "is_sneaking", this.c);
-         this.a($$0, "is_sprinting", this.d);
-         this.a($$0, "is_swimming", this.e);
-         this.a($$0, "is_baby", this.f);
-         return $$0;
-      }
+   public Optional<Boolean> d() {
+      return this.e;
+   }
+
+   public Optional<Boolean> e() {
+      return this.f;
    }
 
    public static class a {
-      @Nullable
-      private Boolean a;
-      @Nullable
-      private Boolean b;
-      @Nullable
-      private Boolean c;
-      @Nullable
-      private Boolean d;
-      @Nullable
-      private Boolean e;
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+      private Optional<Boolean> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<Boolean> e = Optional.empty();
 
       public static bm.a a() {
          return new bm.a();
       }
 
-      public bm.a a(@Nullable Boolean $$0) {
-         this.a = $$0;
+      public bm.a a(Boolean $$0) {
+         this.a = Optional.of($$0);
          return this;
       }
 
-      public bm.a b(@Nullable Boolean $$0) {
-         this.b = $$0;
+      public bm.a b(Boolean $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 
-      public bm.a c(@Nullable Boolean $$0) {
-         this.c = $$0;
+      public bm.a c(Boolean $$0) {
+         this.c = Optional.of($$0);
          return this;
       }
 
-      public bm.a d(@Nullable Boolean $$0) {
-         this.d = $$0;
+      public bm.a d(Boolean $$0) {
+         this.d = Optional.of($$0);
          return this;
       }
 
-      public bm.a e(@Nullable Boolean $$0) {
-         this.e = $$0;
+      public bm.a e(Boolean $$0) {
+         this.e = Optional.of($$0);
          return this;
       }
 
-      public bm b() {
-         return new bm(this.a, this.b, this.c, this.d, this.e);
+      public Optional<bm> b() {
+         return bm.a(this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

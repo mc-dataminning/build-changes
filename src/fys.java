@@ -1,35 +1,34 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.DataResult;
+import java.util.List;
 
-public class fys implements fyk {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<fys> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aep.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aep.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, fys::new)
-   );
-   private final aep d;
-   private final Optional<aep> e;
+public class fys {
+   private static final BiMap<aer, fyr> i = HashBiMap.create();
+   public static final fyr a = a("single", fyx.b);
+   public static final fyr b = a("directory", fyu.b);
+   public static final fyr c = a("filter", fyy.b);
+   public static final fyr d = a("unstitch", fyz.b);
+   public static final fyr e = a("paletted_permutations", fyw.b);
+   public static Codec<fyr> f = aer.a.flatXmap($$0 -> {
+      fyr $$1 = (fyr)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      aer $$1 = (aer)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<fyp> g = f.dispatch(fyp::a, fyr::a);
+   public static Codec<List<fyp>> h = g.listOf().fieldOf("sources").codec();
 
-   public fys(aep $$0, Optional<aep> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void a(ank $$0, fyk.a $$1) {
-      aep $$2 = a.a(this.d);
-      Optional<ani> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
+   private static fyr a(String $$0, Codec<? extends fyp> $$1) {
+      fyr $$2 = new fyr($$1);
+      aer $$3 = new aer($$0);
+      fyr $$4 = (fyr)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         return $$2;
       }
-   }
-
-   @Override
-   public fym a() {
-      return fyn.a;
    }
 }

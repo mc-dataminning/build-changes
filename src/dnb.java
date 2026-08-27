@@ -1,34 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dnb extends dna {
-   public dnb(Codec<dpw> $$0) {
+public class dnb extends dnc {
+   public dnb(Codec<dpy> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cpl $$0, art $$1, gv $$2, dey $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      gv.a $$8 = $$2.j();
+   protected boolean a(cpn $$0, aru $$1, gu $$2, dfa $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ha $$4 = ha.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ha> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(hb.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+         for (ha $$8 : $$6.subList(0, $$5)) {
+            gu.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ha $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ha.b);
+               ha[] $$13 = new ha[]{$$8, ha.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ha.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ha.b);
                }
             }
          }
-      }
 
-      return true;
+         return true;
+      }
    }
 }

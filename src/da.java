@@ -1,44 +1,22 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class da extends cv<da.a> {
-   static final aep a = new aep("summoned_entity");
-
-   @Override
-   public aep a() {
-      return a;
+public record da<T>(aqa<T> a, boolean b) {
+   public static <T> Codec<da<T>> a(aeq<? extends hr<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(aqa.a($$0).fieldOf("id").forGetter(da::a), Codec.BOOL.fieldOf("expected").forGetter(da::b)).apply($$1, da::new)
+      );
    }
 
-   public da.a a(JsonObject $$0, ba $$1, be $$2) {
-      ba $$3 = bo.a($$0, "entity", $$2);
-      return new da.a($$1, $$3);
+   public static <T> da<T> a(aqa<T> $$0) {
+      return new da<>($$0, true);
    }
 
-   public void a(akj $$0, big $$1) {
-      ech $$2 = bo.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public static <T> da<T> b(aqa<T> $$0) {
+      return new da<>($$0, false);
    }
 
-   public static class a extends ar {
-      private final ba a;
-
-      public a(ba $$0, ba $$1) {
-         super(da.a, $$0);
-         this.a = $$1;
-      }
-
-      public static da.a a(bo.a $$0) {
-         return new da.a(ba.a, bo.a($$0.b()));
-      }
-
-      public boolean a(ech $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("entity", this.a.a($$0));
-         return $$1;
-      }
+   public boolean a(he<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

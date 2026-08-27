@@ -1,96 +1,133 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bkc {
-   private final Map<bjy, bjz> a;
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<bka, bkb> b = Maps.newHashMap();
+   private final Set<bkb> c = Sets.newHashSet();
+   private final bke d;
 
-   public bkc(Map<bjy, bjz> $$0) {
-      this.a = ImmutableMap.copyOf($$0);
+   public bkc(bke $$0) {
+      this.d = $$0;
    }
 
-   private bjz d(bjy $$0) {
-      bjz $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + jc.v.b($$0));
-      } else {
-         return $$1;
+   private void a(bkb $$0) {
+      if ($$0.a().b()) {
+         this.c.add($$0);
       }
    }
 
-   public double a(bjy $$0) {
-      return this.d($$0).f();
+   public Set<bkb> a() {
+      return this.c;
    }
 
-   public double b(bjy $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(bjy $$0, UUID $$1) {
-      bkb $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + jc.v.b($$0));
-      } else {
-         return $$2.d();
-      }
+   public Collection<bkb> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public bjz a(Consumer<bjz> $$0, bjy $$1) {
-      bjz $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bjz $$3 = new bjz($$1, $$0);
-         $$3.a($$2);
-         return $$3;
+   public bkb a(bka $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   }
+
+   @Nullable
+   public bkb a(he<bka> $$0) {
+      return this.a($$0.a());
+   }
+
+   public boolean b(bka $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
+   }
+
+   public boolean b(he<bka> $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean a(bka $$0, UUID $$1) {
+      bkb $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
+
+   public boolean a(he<bka> $$0, UUID $$1) {
+      return this.a($$0.a(), $$1);
+   }
+
+   public double c(bka $$0) {
+      bkb $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
+   }
+
+   public double d(bka $$0) {
+      bkb $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(bka $$0, UUID $$1) {
+      bkb $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).d() : this.d.a($$0, $$1);
+   }
+
+   public double b(he<bka> $$0, UUID $$1) {
+      return this.b($$0.a(), $$1);
+   }
+
+   public void a(Multimap<bka, bkd> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bkb $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.a()));
+         }
+      });
+   }
+
+   public void b(Multimap<bka, bkd> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bkb $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.a());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void a(bkc $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bkb $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public qx c() {
+      qx $$0 = new qx();
+
+      for (bkb $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
+
+      return $$0;
    }
 
-   public static bkc.a a() {
-      return new bkc.a();
-   }
-
-   public boolean c(bjy $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(bjy $$0, UUID $$1) {
-      bjz $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Map<bjy, bjz> a = Maps.newHashMap();
-      private boolean b;
-
-      private bjz b(bjy $$0) {
-         bjz $$1 = new bjz($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + jc.v.b($$0));
+   public void a(qx $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         qr $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         ac.a(jb.v.b(aer.a($$3)), $$1x -> {
+            bkb $$2x = this.a($$1x);
+            if ($$2x != null) {
+               $$2x.a($$2);
             }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
-      }
-
-      public bkc.a a(bjy $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public bkc.a a(bjy $$0, double $$1) {
-         bjz $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bkc a() {
-         this.b = true;
-         return new bkc(this.a);
+         }, () -> a.warn("Ignoring unknown attribute '{}'", $$3));
       }
    }
 }

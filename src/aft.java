@@ -1,306 +1,138 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class aft {
-   private static final SuggestionProvider<ds> a = ($$0, $$1) -> {
-      Collection<ae> $$2 = ((ds)$$0.getSource()).l().az().a();
-      return dv.a($$2.stream().map(ae::j), $$1);
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final anz d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("advancement").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("grant")
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("targets", ed.d())
-                                       .then(
-                                          dt.a("only")
-                                             .then(
-                                                ((RequiredArgumentBuilder)dt.a("advancement", er.a())
-                                                      .suggests(a)
-                                                      .executes(
-                                                         $$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.a, a(er.a($$0x, "advancement"), aft.b.a))
-                                                      ))
-                                                   .then(
-                                                      dt.a("criterion", StringArgumentType.greedyString())
-                                                         .suggests(($$0x, $$1) -> dv.b(er.a($$0x, "advancement").h().keySet(), $$1))
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ds)$$0x.getSource(),
-                                                                  ed.f($$0x, "targets"),
-                                                                  aft.a.a,
-                                                                  er.a($$0x, "advancement"),
-                                                                  StringArgumentType.getString($$0x, "criterion")
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       dt.a("from")
-                                          .then(
-                                             dt.a("advancement", er.a())
-                                                .suggests(a)
-                                                .executes(
-                                                   $$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.a, a(er.a($$0x, "advancement"), aft.b.c))
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("until")
-                                       .then(
-                                          dt.a("advancement", er.a())
-                                             .suggests(a)
-                                             .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.a, a(er.a($$0x, "advancement"), aft.b.d)))
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("through")
-                                    .then(
-                                       dt.a("advancement", er.a())
-                                          .suggests(a)
-                                          .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.a, a(er.a($$0x, "advancement"), aft.b.b)))
-                                    )
-                              ))
-                           .then(
-                              dt.a("everything").executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.a, ((ds)$$0x.getSource()).l().az().a()))
-                           )
-                     )
-               ))
-            .then(
-               dt.a("revoke")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("targets", ed.d())
-                                    .then(
-                                       dt.a("only")
-                                          .then(
-                                             ((RequiredArgumentBuilder)dt.a("advancement", er.a())
-                                                   .suggests(a)
-                                                   .executes(
-                                                      $$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.b, a(er.a($$0x, "advancement"), aft.b.a))
-                                                   ))
-                                                .then(
-                                                   dt.a("criterion", StringArgumentType.greedyString())
-                                                      .suggests(($$0x, $$1) -> dv.b(er.a($$0x, "advancement").h().keySet(), $$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               ed.f($$0x, "targets"),
-                                                               aft.a.b,
-                                                               er.a($$0x, "advancement"),
-                                                               StringArgumentType.getString($$0x, "criterion")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("from")
-                                       .then(
-                                          dt.a("advancement", er.a())
-                                             .suggests(a)
-                                             .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.b, a(er.a($$0x, "advancement"), aft.b.c)))
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("until")
-                                    .then(
-                                       dt.a("advancement", er.a())
-                                          .suggests(a)
-                                          .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.b, a(er.a($$0x, "advancement"), aft.b.d)))
-                                    )
-                              ))
-                           .then(
-                              dt.a("through")
-                                 .then(
-                                    dt.a("advancement", er.a())
-                                       .suggests(a)
-                                       .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.b, a(er.a($$0x, "advancement"), aft.b.b)))
-                                 )
-                           ))
-                        .then(dt.a("everything").executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), aft.a.b, ((ds)$$0x.getSource()).l().az().a())))
-                  )
-            )
-      );
+   public aft(String $$0, int $$1, anz $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static int a(ds $$0, Collection<akj> $$1, aft.a $$2, Collection<ae> $$3) {
-      int $$4 = 0;
-
-      for (akj $$5 : $$1) {
-         $$4 += $$2.a($$5, $$3);
-      }
-
-      if ($$4 == 0) {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               throw new dp(te.a($$2.a() + ".one.to.one.failure", $$3.iterator().next().l(), $$1.iterator().next().H_()));
-            } else {
-               throw new dp(te.a($$2.a() + ".one.to.many.failure", $$3.iterator().next().l(), $$1.size()));
-            }
-         } else if ($$1.size() == 1) {
-            throw new dp(te.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().H_()));
-         } else {
-            throw new dp(te.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
-         }
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
       } else {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> te.a($$2.a() + ".one.to.one.success", $$3.iterator().next().l(), $$1.iterator().next().H_()), true);
-            } else {
-               $$0.a(() -> te.a($$2.a() + ".one.to.many.success", $$3.iterator().next().l(), $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> te.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> te.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
-         }
-
-         return $$4;
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
    }
 
-   private static int a(ds $$0, Collection<akj> $$1, aft.a $$2, ae $$3, String $$4) {
-      int $$5 = 0;
-      if (!$$3.h().containsKey($$4)) {
-         throw new dp(te.a("commands.advancement.criterionNotFound", $$3.l(), $$4));
+   private void c() {
+      aft.a $$0 = null;
+
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            aft.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     ac.g().submit(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
+         }
+      }
+   }
+
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
+
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
+         }
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
+         }
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
+         }
+      } finally {
+         IOUtils.closeQuietly(this.g);
+      }
+
+      a.info("Remote control server is now stopped");
+      this.f = false;
+   }
+
+   @Nullable
+   private aft.a e() {
+      List<akl> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
       } else {
-         for (akj $$6 : $$1) {
-            if ($$2.a($$6, $$3, $$4)) {
-               $$5++;
-            }
-         }
-
-         if ($$5 == 0) {
-            if ($$1.size() == 1) {
-               throw new dp(te.a($$2.a() + ".criterion.to.one.failure", $$4, $$3.l(), $$1.iterator().next().H_()));
-            } else {
-               throw new dp(te.a($$2.a() + ".criterion.to.many.failure", $$4, $$3.l(), $$1.size()));
-            }
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> te.a($$2.a() + ".criterion.to.one.success", $$4, $$3.l(), $$1.iterator().next().H_()), true);
-            } else {
-               $$0.a(() -> te.a($$2.a() + ".criterion.to.many.success", $$4, $$3.l(), $$1.size()), true);
-            }
-
-            return $$5;
-         }
+         akl $$1 = $$0.get(0);
+         String $$2 = (String)agb.a.inverse().get($$1.dK().ac());
+         return $$2 == null ? null : new aft.a($$2, $$1.dp(), $$1.dr(), $$1.dv(), $$1.dA(), $$1.dC());
       }
    }
 
-   private static List<ae> a(ae $$0, aft.b $$1) {
-      List<ae> $$2 = Lists.newArrayList();
-      if ($$1.f) {
-         for (ae $$3 = $$0.b(); $$3 != null; $$3 = $$3.b()) {
-            $$2.add($$3);
-         }
-      }
-
-      $$2.add($$0);
-      if ($$1.g) {
-         a($$0, $$2);
-      }
-
-      return $$2;
-   }
-
-   private static void a(ae $$0, List<ae> $$1) {
-      for (ae $$2 : $$0.g()) {
-         $$1.add($$2);
-         a($$2, $$1);
-      }
-   }
-
-   static enum a {
-      a("grant") {
-         @Override
-         protected boolean a(akj $$0, ae $$1) {
-            ag $$2 = $$0.N().b($$1);
-            if ($$2.a()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.e()) {
-                  $$0.N().a($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(akj $$0, ae $$1, String $$2) {
-            return $$0.N().a($$1, $$2);
-         }
-      },
-      b("revoke") {
-         @Override
-         protected boolean a(akj $$0, ae $$1) {
-            ag $$2 = $$0.N().b($$1);
-            if (!$$2.b()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.f()) {
-                  $$0.N().b($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(akj $$0, ae $$1, String $$2) {
-            return $$0.N().b($$1, $$2);
-         }
-      };
-
-      private final String c;
-
-      a(String $$0) {
-         this.c = "commands.advancement." + $$0;
-      }
-
-      public int a(akj $$0, Iterable<ae> $$1) {
-         int $$2 = 0;
-
-         for (ae $$3 : $$1) {
-            if (this.a($$0, $$3)) {
-               $$2++;
-            }
-         }
-
-         return $$2;
-      }
-
-      protected abstract boolean a(akj var1, ae var2);
-
-      protected abstract boolean a(akj var1, ae var2, String var3);
-
-      protected String a() {
-         return this.c;
-      }
-   }
-
-   static enum b {
-      a(false, false),
-      b(true, true),
-      c(false, true),
-      d(true, false),
-      e(true, true);
-
-      final boolean f;
-      final boolean g;
-
-      private b(boolean $$0, boolean $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

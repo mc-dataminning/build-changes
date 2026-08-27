@@ -1,70 +1,110 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record dkp(int g, int h, int i, int j) {
+public record dkp(dkc b, dkc c, dkc d, dkc e, dkc f, dkc g, dkc h, dkc i, dkc j, dkc k, dkc l, dkc m, dkc n, dkc o, dkc p) {
    public static final Codec<dkp> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dih.e, dih.d).fieldOf("min_y").forGetter(dkp::c),
-                  Codec.intRange(0, dih.c).fieldOf("height").forGetter(dkp::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dkp::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dkp::f)
-               )
-               .apply($$0, dkp::new)
-      )
-      .comapFlatMap(dkp::a, Function.identity());
-   protected static final dkp b = a(-64, 384, 1, 2);
-   protected static final dkp c = a(0, 128, 1, 2);
-   protected static final dkp d = a(0, 128, 2, 1);
-   protected static final dkp e = a(-64, 192, 1, 2);
-   protected static final dkp f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               a("barrier", dkp::a),
+               a("fluid_level_floodedness", dkp::b),
+               a("fluid_level_spread", dkp::c),
+               a("lava", dkp::d),
+               a("temperature", dkp::e),
+               a("vegetation", dkp::f),
+               a("continents", dkp::g),
+               a("erosion", dkp::h),
+               a("depth", dkp::i),
+               a("ridges", dkp::j),
+               a("initial_density_without_jaggedness", dkp::k),
+               a("final_density", dkp::l),
+               a("vein_toggle", dkp::m),
+               a("vein_ridged", dkp::n),
+               a("vein_gap", dkp::o)
+            )
+            .apply($$0, dkp::new)
+   );
 
-   private static DataResult<dkp> a(dkp $$0) {
-      if ($$0.c() + $$0.d() > dih.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dih.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   private static RecordCodecBuilder<dkp, dkc> a(String $$0, Function<dkp, dkc> $$1) {
+      return dkc.d.fieldOf($$0).forGetter($$1);
    }
 
-   public static dkp a(int $$0, int $$1, int $$2, int $$3) {
-      dkp $$4 = new dkp($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public dkp a(dkc.f $$0) {
+      return new dkp(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public int a() {
-      return hr.c(this.f());
+   public dkc a() {
+      return this.b;
    }
 
-   public int b() {
-      return hr.c(this.e());
+   public dkc b() {
+      return this.c;
    }
 
-   public dkp a(cpm $$0) {
-      int $$1 = Math.max(this.g, $$0.C_());
-      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
-      return new dkp($$1, $$2, this.i, this.j);
+   public dkc c() {
+      return this.d;
    }
 
-   public int c() {
+   public dkc d() {
+      return this.e;
+   }
+
+   public dkc e() {
+      return this.f;
+   }
+
+   public dkc f() {
       return this.g;
    }
 
-   public int d() {
+   public dkc g() {
       return this.h;
    }
 
-   public int e() {
+   public dkc h() {
       return this.i;
    }
 
-   public int f() {
+   public dkc i() {
       return this.j;
+   }
+
+   public dkc j() {
+      return this.k;
+   }
+
+   public dkc k() {
+      return this.l;
+   }
+
+   public dkc l() {
+      return this.m;
+   }
+
+   public dkc m() {
+      return this.n;
+   }
+
+   public dkc n() {
+      return this.o;
+   }
+
+   public dkc o() {
+      return this.p;
    }
 }

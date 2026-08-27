@@ -1,59 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
 public class aot {
    public static final Codec<aot> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aep.a.fieldOf("sound_id").forGetter(aot::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aot::b)).apply($$0, aot::a)
+      $$0 -> $$0.group(
+               aov.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, aot::new)
    );
-   public static final Codec<hf<aot>> b = ael.a(jd.ad, a);
-   private static final float c = 16.0F;
-   private final aep d;
-   private final float e;
-   private final boolean f;
+   private final he<aov> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   private static aot a(aep $$0, Optional<Float> $$1) {
-      return $$1.<aot>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   public aot(he<aov> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static aot a(aep $$0) {
-      return new aot($$0, 16.0F, false);
+   public he<aov> a() {
+      return this.b;
    }
 
-   public static aot a(aep $$0, float $$1) {
-      return new aot($$0, $$1, true);
+   public int b() {
+      return this.c;
    }
 
-   private aot(aep $$0, float $$1, boolean $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public aep a() {
+   public int c() {
       return this.d;
    }
 
-   public float a(float $$0) {
-      if (this.f) {
-         return this.e;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.f ? Optional.of(this.e) : Optional.empty();
-   }
-
-   public void a(sh $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b(), sh::a);
-   }
-
-   public static aot b(sh $$0) {
-      aep $$1 = $$0.s();
-      Optional<Float> $$2 = $$0.b(sh::readFloat);
-      return a($$1, $$2);
+   public boolean d() {
+      return this.e;
    }
 }

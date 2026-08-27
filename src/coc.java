@@ -1,25 +1,20 @@
-public class coc extends cnd {
-   public coc(cnd.a $$0, bil... $$1) {
-      super($$0, cne.b, $$1);
+public class coc extends cnf {
+   protected coc(cnf.a $$0, bin... $$1) {
+      super($$0, cng.g, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 15;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cnd $$0) {
-      return super.a($$0) && $$0 != cnh.j;
+   public boolean a(cnf $$0) {
+      return super.a($$0) && $$0 != cnj.x;
    }
 }

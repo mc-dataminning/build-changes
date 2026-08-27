@@ -1,224 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fhg<T extends bzu> extends ffb<T> implements fgy {
+   private final fhn a = this.l.b("hat_rim");
 
-public class fhg {
-   private static final fhn a = new fhn(0.008F);
-   private static final fhn b = new fhn(1.0F);
-   private static final fhn c = new fhn(0.5F);
+   public fhg(fhn $$0) {
+      super($$0);
+   }
 
-   public static Map<fhh, fhp> a() {
-      Builder<fhh, fhp> $$0 = ImmutableMap.builder();
-      fhp $$1 = fhp.a(fex.a(fhn.a, 0.0F), 64, 64);
-      fhp $$2 = fhp.a(few.a(b), 64, 32);
-      fhp $$3 = fhp.a(few.a(new fhn(1.02F)), 64, 32);
-      fhp $$4 = fhp.a(few.a(c), 64, 32);
-      fhp $$5 = fff.b();
-      fhp $$6 = fgg.c();
-      fhp $$7 = fhp.a(fev.a(fhn.a), 64, 64);
-      fhp $$8 = fey.b();
-      fhp $$9 = fed.c();
-      fhp $$10 = fhp.a(ffi.a(fhn.a), 64, 32);
-      fhp $$11 = fhp.a(ffo.a(fhn.a), 64, 64);
-      fhp $$12 = fhp.a(ffn.a(), 64, 64);
-      fhp $$13 = fgg.b();
-      fhp $$14 = ffd.a(fhn.a);
-      fhp $$15 = fgn.b();
-      fhp $$16 = feu.c();
-      fhp $$17 = fgf.c();
-      fhp $$18 = fhp.a(fgv.b(), 64, 64);
-      fhp $$19 = fgl.b();
-      $$0.put(fhi.a, fdj.b());
-      $$0.put(fhi.b, fdn.c());
-      $$0.put(fhi.c, fdm.a(c));
-      $$0.put(fhi.d, fdm.a(b));
-      $$0.put(fhi.e, fdo.c());
-      $$0.put(fhi.f, fpb.a());
-      $$0.put(fhi.g, fdp.b());
-      $$0.put(fhi.h, fpd.c());
-      $$0.put(fhi.i, fpd.b());
-      $$0.put(fhi.j, fdq.c());
-      $$0.put(fhi.k, fpe.b());
-      $$0.put(fhi.l, fdr.b());
-      $$0.put(fhi.m, fdt.a());
-      $$0.put(fhi.n, $$10);
-      $$0.put(fhi.o, fhp.a(ffi.a(new fhn(0.01F)), 64, 32));
-      $$0.put(fhi.p, fdu.b());
-      $$0.put(fhi.q, $$19);
-      $$0.put(fhi.r, fpm.b());
-      $$0.put(fhi.s, $$5);
-      $$0.put(fhi.t, fdz.c());
-      $$0.put(fhi.u, fea.b());
-      $$0.put(fhi.v, $$5);
-      $$0.put(fhi.x, fpn.b());
-      $$0.put(fhi.z, fpn.c());
-      $$0.put(fhi.y, fpn.d());
-      $$0.put(fhi.w, fpn.e());
-      $$0.put(fhi.A, $$9);
-      $$0.put(fhi.B, fee.a(fhn.a));
-      $$0.put(fhi.C, fee.a(new fhn(2.0F)));
-      $$0.put(fhi.D, $$6);
-      $$0.put(fhi.E, fpo.b());
-      $$0.put(fhi.F, fpo.c());
-      $$0.put(fhi.G, fef.b());
-      $$0.put(fhi.H, fdy.c());
-      $$0.put(fhi.I, fpm.d());
-      $$0.put(fhi.J, fpm.c());
-      $$0.put(fhi.K, fhd.a());
-      $$0.put(fhi.L, feg.a(fhn.a));
-      $$0.put(fhi.M, $$4);
-      $$0.put(fhi.N, $$4);
-      $$0.put(fhi.O, feg.a(new fhn(0.25F)));
-      $$0.put(fhi.P, fer.b());
-      $$0.put(fhi.Q, feh.c());
-      $$0.put(fhi.R, fei.c());
-      $$0.put(fhi.S, fej.b());
-      $$0.put(fhi.T, fse.a());
-      $$0.put(fhi.U, fsd.a());
-      $$0.put(fhi.V, $$8);
-      $$0.put(fhi.W, fel.b());
-      $$0.put(fhi.X, fem.c());
-      $$0.put(fhi.Y, fen.b());
-      $$0.put(fhi.Z, $$5);
-      $$0.put(fhi.aa, feo.b());
-      $$0.put(fhi.ab, $$1);
-      $$0.put(fhi.ac, $$4);
-      $$0.put(fhi.ad, $$2);
-      $$0.put(fhi.ae, fgm.b());
-      $$0.put(fhi.af, feq.c());
-      $$0.put(fhi.ag, fer.b());
-      $$0.put(fhi.ah, $$16);
-      $$0.put(fhi.ai, $$5);
-      $$0.put(fhi.aj, $$7);
-      $$0.put(fhi.ak, fhp.a(fev.a(new fhn(0.1F)), 64, 64));
-      $$0.put(fhi.al, $$1);
-      $$0.put(fhi.am, $$4);
-      $$0.put(fhi.an, $$2);
-      $$0.put(fhi.ao, $$8);
-      $$0.put(fhi.ap, fez.b());
-      $$0.put(fhi.aq, ffb.b());
-      $$0.put(fhi.ar, $$14);
-      $$0.put(fhi.as, ffd.a(new fhn(0.5F)));
-      $$0.put(fhi.at, ffe.b());
-      $$0.put(fhi.au, ffa.b());
-      $$0.put(fhi.av, $$5);
-      $$0.put(fhi.aw, $$9);
-      $$0.put(fhi.ax, fdy.c());
-      $$0.put(fhi.ay, $$10);
-      $$0.put(fhi.az, ffj.c());
-      $$0.put(fhi.aA, ffk.b());
-      $$0.put(fhi.aB, ffl.b());
-      $$0.put(fhi.aC, ffm.a(fhn.a));
-      $$0.put(fhi.aK, ffm.a(new fhn(0.5F)));
-      $$0.put(fhi.aD, $$11);
-      $$0.put(fhi.aI, $$4);
-      $$0.put(fhi.aJ, $$3);
-      $$0.put(fhi.aE, $$11);
-      $$0.put(fhi.aF, $$4);
-      $$0.put(fhi.aG, $$3);
-      $$0.put(fhi.aH, $$12);
-      $$0.put(fhi.aL, $$8);
-      $$0.put(fhi.aM, fhp.a(ffp.a(fhn.a, false), 64, 64));
-      $$0.put(fhi.aN, $$13);
-      $$0.put(fhi.aO, $$4);
-      $$0.put(fhi.aP, $$2);
-      $$0.put(fhi.aQ, fhp.a(ffp.a(fhn.a, true), 64, 64));
-      $$0.put(fhi.aR, $$4);
-      $$0.put(fhi.aS, $$2);
-      $$0.put(fhi.aT, fwy.a());
-      $$0.put(fhi.aU, ffq.c());
-      $$0.put(fhi.aV, ffr.b());
-      $$0.put(fhi.aW, ffs.b());
-      $$0.put(fhi.aX, fft.b());
-      $$0.put(fhi.aY, ffv.a());
-      $$0.put(fhi.aZ, ffx.b());
-      $$0.put(fhi.ba, ffy.b());
-      $$0.put(fhi.bb, fga.c());
-      $$0.put(fhi.bc, ffz.c());
-      $$0.put(fhi.bd, fgb.a());
-      $$0.put(fhi.be, fgd.a());
-      $$0.put(fhi.bf, fgc.b());
-      $$0.put(fhi.bg, fge.b());
-      $$0.put(fhi.bh, $$17);
-      $$0.put(fhi.bj, $$4);
-      $$0.put(fhi.bk, $$2);
-      $$0.put(fhi.bi, $$7);
-      $$0.put(fhi.bl, $$6);
-      $$0.put(fhi.bm, fgi.c());
-      $$0.put(fhi.bn, fgi.b());
-      $$0.put(fhi.bo, fgj.b());
-      $$0.put(fhi.bp, fgk.b());
-      $$0.put(fhi.bq, $$5);
-      $$0.put(fhi.br, $$19);
-      $$0.put(fhi.bs, fgm.b());
-      $$0.put(fhi.bt, $$17);
-      $$0.put(fhi.bu, $$4);
-      $$0.put(fhi.bv, $$2);
-      $$0.put(fhi.bw, fhp.a(fex.a(new fhn(0.25F), 0.0F), 64, 32));
-      $$0.put(fhi.bx, $$15);
-      $$0.put(fhi.by, $$15);
-      $$0.put(fhi.bz, fgo.c());
-      $$0.put(fhi.bA, $$5);
-      $$0.put(fhi.bB, $$14);
-      $$0.put(fhi.bC, fgp.a());
-      $$0.put(fhi.bD, fgr.a(fhn.a));
-      $$0.put(fhi.bE, fgr.a(a));
-      $$0.put(fhi.bF, fgq.a(fhn.a));
-      $$0.put(fhi.bG, fgq.a(a));
-      $$0.put(fhi.bH, fgs.c());
-      $$0.put(fhi.bI, fgt.b());
-      $$0.put(fhi.bJ, $$18);
-      $$0.put(fhi.bK, $$8);
-      $$0.put(fhi.bL, fgw.b());
-      $$0.put(fhi.bM, $$18);
-      $$0.put(fhi.bN, fgy.c());
-      $$0.put(fhi.bO, fgz.a(fhn.a));
-      $$0.put(fhi.bP, fgz.a(c));
-      $$0.put(fhi.bU, fvk.a());
-      $$0.put(fhi.bQ, $$17);
-      $$0.put(fhi.bR, $$4);
-      $$0.put(fhi.bS, $$2);
-      $$0.put(fhi.bT, $$6);
-      $$0.put(fhi.bV, fha.c());
-      $$0.put(fhi.bW, $$16);
-      $$0.put(fhi.bX, $$1);
-      $$0.put(fhi.ca, $$4);
-      $$0.put(fhi.cb, $$2);
-      $$0.put(fhi.bY, $$13);
-      $$0.put(fhi.bZ, $$7);
-      $$0.put(fhi.cc, fhc.c());
-      $$0.put(fhi.cd, fhc.a(c));
-      $$0.put(fhi.ce, fhc.a(b));
-      $$0.put(fhi.cf, $$11);
-      $$0.put(fhi.cg, $$4);
-      $$0.put(fhi.ch, $$3);
-      fhp $$20 = fds.a();
-      fhp $$21 = fdw.e();
-      fhp $$22 = ffw.b();
-      fhp $$23 = fdx.a();
+   public static fht c() {
+      fhv $$0 = ffb.a(fhr.a, 0.0F);
+      fhw $$1 = $$0.a();
+      $$1.a("head", new fhs().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fhp.a);
+      fhw $$2 = $$1.a("hat", fhs.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fhr(0.5F)), fhp.a);
+      $$2.a("hat_rim", fhs.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fhp.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", fhs.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fhr(0.05F)), fhp.a);
+      $$1.a("right_arm", fhs.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhp.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fhs.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhp.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fhs.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhp.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fhs.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhp.a(2.0F, 12.0F, 0.0F));
+      return fht.a($$0, 64, 64);
+   }
 
-      for (cde.b $$24 : cde.b.values()) {
-         if ($$24 == cde.b.i) {
-            $$0.put(fhi.c($$24), $$22);
-            $$0.put(fhi.d($$24), $$23);
-         } else {
-            $$0.put(fhi.c($$24), $$20);
-            $$0.put(fhi.d($$24), $$21);
-         }
-      }
+   public static fht a(fhr $$0) {
+      fhv $$1 = ffb.a($$0, 0.0F);
+      fhw $$2 = $$1.a();
+      $$2.a("head", fhs.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fhp.a);
+      $$2.a("body", fhs.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhp.a);
+      $$2.a("right_leg", fhs.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhp.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", fhs.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhp.a(2.0F, 12.0F, 0.0F));
+      $$2.a("hat").a("hat_rim", fhs.c(), fhp.a);
+      return fht.a($$1, 64, 32);
+   }
 
-      fhp $$25 = fpu.f();
-      dgl.a().forEach($$2x -> $$0.put(fhi.a($$2x), $$25));
-      fhp $$26 = fpq.e();
-      dgl.a().forEach($$2x -> $$0.put(fhi.b($$2x), $$26));
-      ImmutableMap<fhh, fhp> $$27 = $$0.build();
-      List<fhh> $$28 = fhi.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$28.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$28);
-      } else {
-         return $$27;
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fdo.a(this.o, this.n, $$0.fS(), this.c, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.a.k = $$0;
    }
 }

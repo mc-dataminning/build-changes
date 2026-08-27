@@ -1,20 +1,30 @@
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Consumer;
 
-@FunctionalInterface
-interface ecu {
-   ecu a = ($$0, $$1) -> false;
-   ecu b = ($$0, $$1) -> true;
+public class ecu extends edc {
+   public static final Codec<ecu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aer.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ecu::new)
+   );
+   private final aer j;
 
-   boolean expand(ech var1, Consumer<edb> var2);
-
-   default ecu and(ecu $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   private ecu(aer $$0, int $$1, int $$2, List<efg> $$3, List<edu> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   default ecu or(ecu $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   @Override
+   public edb a() {
+      return ecy.e;
+   }
+
+   @Override
+   public void a(Consumer<ciy> $$0, ech $$1) {
+      $$1.a(this.j, $$0);
+   }
+
+   public static edc.a<?> a(aer $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ecu($$0, $$1, $$2, $$3, $$4));
    }
 }

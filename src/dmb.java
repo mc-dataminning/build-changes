@@ -1,25 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dmb implements dlo {
-   public static final Codec<dmb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ia.v(16).optionalFieldOf("offset", ia.g).forGetter($$0x -> $$0x.e), dey.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dmb::new)
-   );
-   private final ia e;
-   private final dey f;
+public abstract class dmb implements dlq {
+   protected final hz f;
 
-   protected dmb(ia $$0, dey $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static <P extends dmb> P1<Mu<P>, hz> a(Instance<P> $$0) {
+      return $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(cqe $$0, gv $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   protected dmb(hz $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public dlp<?> a() {
-      return dlp.g;
+   public final boolean a(cqg $$0, gu $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dfa var1);
 }

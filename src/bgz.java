@@ -1,4 +1,9 @@
 import javax.annotation.Nullable;
 
-public record bgz(bhe a, float b, @Nullable bhj c, float d) {
+public interface bgz extends bgj {
+   int[] a(ha var1);
+
+   boolean a(int var1, ciy var2, @Nullable ha var3);
+
+   boolean b(int var1, ciy var2, ha var3);
 }

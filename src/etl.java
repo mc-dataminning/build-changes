@@ -1,104 +1,39 @@
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public abstract class etl extends esi {
-   protected final aep a;
-   protected final int b;
-   protected final int c;
+public class etl extends esf {
+   @Nullable
+   protected ets a;
+   protected boolean b;
 
-   etl(int $$0, int $$1, te $$2, int $$3, int $$4, aep $$5, esi.c $$6) {
-      super(0, 0, $$0, $$1, $$2, $$6, o);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public etl(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, te.a);
+      this.b = $$4;
    }
 
-   public static etl.a a(te $$0, esi.c $$1, boolean $$2) {
-      return new etl.a($$0, $$1, $$2);
+   public void a(ets $$0) {
+      this.a = $$0;
    }
 
-   public static class a {
-      private final te a;
-      private final esi.c b;
-      private final boolean c;
-      private int d = 150;
-      private int e = 20;
-      @Nullable
-      private aep f;
-      private int g;
-      private int h;
-
-      public a(te $$0, esi.c $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public etl.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public etl.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public etl.a a(aep $$0, int $$1, int $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-         return this;
-      }
-
-      public etl a() {
-         if (this.f == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (etl)(this.c
-               ? new etl.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
-               : new etl.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
-         }
-      }
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 
-   public static class b extends etl {
-      protected b(int $$0, int $$1, te $$2, int $$3, int $$4, aep $$5, esi.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-
-      @Override
-      public void b(erx $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() / 2 - this.b / 2;
-         int $$5 = this.r() + this.h() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(erx $$0, erv $$1, int $$2) {
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   public static class c extends etl {
-      protected c(int $$0, int $$1, te $$2, int $$3, int $$4, aep $$5, esi.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public void a(evx $$0) {
+      this.c($$0);
+   }
 
-      @Override
-      public void b(erx $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() - this.b - 2;
-         int $$5 = this.r() + this.h() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(erx $$0, erv $$1, int $$2) {
-         int $$3 = this.p() + 2;
-         int $$4 = this.p() + this.k() - this.b - 4;
-         int $$5 = this.p() + this.k() / 2;
-         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.h(), $$2);
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.n()), this.p(), this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
       }
    }
 }

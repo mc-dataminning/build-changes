@@ -1,18 +1,38 @@
+import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public final class ehm extends ehy {
-   protected ehm(eho $$0) {
-      super($$0);
+public final class ehm implements ehq {
+   private final ehk a;
+   private final int b;
+   private final int c;
+
+   ehm(int $$0, int $$1) {
+      this.a = new ehk((int)ehu.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   protected DoubleList a(hb.a $$0) {
-      return new ehl(this.a.c($$0));
+   public boolean a(ehq.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected int a(hb.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return aro.a(aro.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

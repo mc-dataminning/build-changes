@@ -1,169 +1,82 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class cry extends csk {
-   private static final int c = 8;
-   private final float d;
-   protected static final float a = 1.0F;
-   protected static final ehy b = csk.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+public class cry extends crv {
+   public static final dfu a = cwf.aC;
+   private static final Map<ha, ehx> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         csm.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ha.d,
+         csm.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ha.e,
+         csm.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ha.f,
+         csm.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
-   public cry(dex.d $$0, float $$1) {
+   protected cry(dez.d $$0) {
       super($$0);
-      this.d = $$1;
+      this.k(this.C.b().a(a, ha.c).a(c, Boolean.valueOf(true)));
    }
 
    @Override
-   public dey a(cle $$0) {
-      return a($$0.q(), $$0.a());
-   }
-
-   public static dey a(coq $$0, gv $$1) {
-      gv $$2 = $$1.d();
-      dey $$3 = $$0.a_($$2);
-      return czv.h($$3) ? csl.cs.n() : ((cvg)csl.cr).b($$0, $$1);
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b.get($$0.c(a));
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return b;
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      if ($$3.a(24) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aou.hM, aov.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a, c);
+   }
+
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eae.c, eae.c.a($$3));
       }
 
-      gv $$4 = $$2.d();
-      dey $$5 = $$1.a_($$4);
-      if (!this.f($$5) && !$$5.d($$1, $$4, hb.b)) {
-         if (this.f($$1.a_($$2.g()))) {
-            for (int $$10 = 0; $$10 < 2; $$10++) {
-               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
-               double $$12 = (double)$$2.v() + $$3.j();
-               double $$13 = (double)$$2.w() + $$3.j();
-               $$1.a(iw.S, $$11, $$12, $$13, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.h()))) {
-            for (int $$14 = 0; $$14 < 2; $$14++) {
-               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
-               double $$16 = (double)$$2.v() + $$3.j();
-               double $$17 = (double)$$2.w() + $$3.j();
-               $$1.a(iw.S, $$15, $$16, $$17, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.e()))) {
-            for (int $$18 = 0; $$18 < 2; $$18++) {
-               double $$19 = (double)$$2.u() + $$3.j();
-               double $$20 = (double)$$2.v() + $$3.j();
-               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
-               $$1.a(iw.S, $$19, $$20, $$21, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.f()))) {
-            for (int $$22 = 0; $$22 < 2; $$22++) {
-               double $$23 = (double)$$2.u() + $$3.j();
-               double $$24 = (double)$$2.v() + $$3.j();
-               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
-               $$1.a(iw.S, $$23, $$24, $$25, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.c()))) {
-            for (int $$26 = 0; $$26 < 2; $$26++) {
-               double $$27 = (double)$$2.u() + $$3.j();
-               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
-               double $$29 = (double)$$2.w() + $$3.j();
-               $$1.a(iw.S, $$27, $$28, $$29, 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
-            double $$9 = (double)$$2.w() + $$3.j();
-            $$1.a(iw.S, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csn.a.n() : $$0;
    }
 
-   protected abstract boolean f(dey var1);
-
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      if (!$$3.aW()) {
-         $$3.h($$3.ax() + 1);
-         if ($$3.ax() == 0) {
-            $$3.g(8);
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      ha $$3 = $$0.c(a);
+      gu $$4 = $$2.a($$3.g());
+      dfa $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dfa a(clg $$0) {
+      dfa $$1 = super.a($$0);
+      cpp $$2 = $$0.q();
+      gu $$3 = $$0.a();
+      ha[] $$4 = $$0.f();
+
+      for (ha $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(a, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
 
-      $$3.a($$1.ag().a(), this.d);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if (a($$1)) {
-            Optional<eaz> $$5 = eaz.a($$1, $$2, hb.a.a);
-            if ($$5.isPresent()) {
-               $$5.get().b();
-               return;
-            }
-         }
-
-         if (!$$0.a((cpn)$$1, $$2)) {
-            $$1.a($$2, false);
-         }
-      }
-   }
-
-   private static boolean a(cpk $$0) {
-      return $$0.ac() == cpk.h || $$0.ac() == cpk.i;
-   }
-
-   @Override
-   protected void a(cpk $$0, cbl $$1, gv $$2, dey $$3) {
-   }
-
-   @Override
-   public void a(cpk $$0, gv $$1, dey $$2, cbl $$3) {
-      if (!$$0.r_()) {
-         $$0.a(null, 1009, $$1, 0);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static boolean a(cpk $$0, gv $$1, hb $$2) {
-      dey $$3 = $$0.a_($$1);
-      return !$$3.i() ? false : a($$0, $$1).a((cpn)$$0, $$1) || b($$0, $$1, $$2);
-   }
-
-   private static boolean b(cpk $$0, gv $$1, hb $$2) {
-      if (!a($$0)) {
-         return false;
-      } else {
-         gv.a $$3 = $$1.j();
-         boolean $$4 = false;
-
-         for (hb $$5 : hb.values()) {
-            if ($$0.a_($$3.g($$1).c($$5)).a(csl.co)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            hb.a $$6 = $$2.o().d() ? $$2.i().o() : hb.c.a.b($$0.z);
-            return eaz.a($$0, $$1, $$6).isPresent();
-         }
-      }
+      return null;
    }
 }

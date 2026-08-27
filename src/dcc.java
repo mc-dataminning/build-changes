@@ -1,91 +1,162 @@
-public class dcc {
-   public static final aeo<dcb> a = a("base");
-   public static final aeo<dcb> b = a("square_bottom_left");
-   public static final aeo<dcb> c = a("square_bottom_right");
-   public static final aeo<dcb> d = a("square_top_left");
-   public static final aeo<dcb> e = a("square_top_right");
-   public static final aeo<dcb> f = a("stripe_bottom");
-   public static final aeo<dcb> g = a("stripe_top");
-   public static final aeo<dcb> h = a("stripe_left");
-   public static final aeo<dcb> i = a("stripe_right");
-   public static final aeo<dcb> j = a("stripe_center");
-   public static final aeo<dcb> k = a("stripe_middle");
-   public static final aeo<dcb> l = a("stripe_downright");
-   public static final aeo<dcb> m = a("stripe_downleft");
-   public static final aeo<dcb> n = a("small_stripes");
-   public static final aeo<dcb> o = a("cross");
-   public static final aeo<dcb> p = a("straight_cross");
-   public static final aeo<dcb> q = a("triangle_bottom");
-   public static final aeo<dcb> r = a("triangle_top");
-   public static final aeo<dcb> s = a("triangles_bottom");
-   public static final aeo<dcb> t = a("triangles_top");
-   public static final aeo<dcb> u = a("diagonal_left");
-   public static final aeo<dcb> v = a("diagonal_up_right");
-   public static final aeo<dcb> w = a("diagonal_up_left");
-   public static final aeo<dcb> x = a("diagonal_right");
-   public static final aeo<dcb> y = a("circle");
-   public static final aeo<dcb> z = a("rhombus");
-   public static final aeo<dcb> A = a("half_vertical");
-   public static final aeo<dcb> B = a("half_horizontal");
-   public static final aeo<dcb> C = a("half_vertical_right");
-   public static final aeo<dcb> D = a("half_horizontal_bottom");
-   public static final aeo<dcb> E = a("border");
-   public static final aeo<dcb> F = a("curly_border");
-   public static final aeo<dcb> G = a("gradient");
-   public static final aeo<dcb> H = a("gradient_up");
-   public static final aeo<dcb> I = a("bricks");
-   public static final aeo<dcb> J = a("globe");
-   public static final aeo<dcb> K = a("creeper");
-   public static final aeo<dcb> L = a("skull");
-   public static final aeo<dcb> M = a("flower");
-   public static final aeo<dcb> N = a("mojang");
-   public static final aeo<dcb> O = a("piglin");
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static aeo<dcb> a(String $$0) {
-      return aeo.a(jd.c, new aep($$0));
+public class dcc extends dcm implements bgu {
+   public static final int a = 6;
+   public static final String b = "Patterns";
+   public static final String c = "Pattern";
+   public static final String d = "Color";
+   @Nullable
+   private tf e;
+   private chm f;
+   @Nullable
+   private qx g;
+   @Nullable
+   private List<Pair<he<dcd>, chm>> h;
+
+   public dcc(gu $$0, dfa $$1) {
+      super(dco.t, $$0, $$1);
+      this.f = ((crd)$$1.b()).a();
    }
 
-   public static dcb a(hs<dcb> $$0) {
-      hs.a($$0, a, new dcb("b"));
-      hs.a($$0, b, new dcb("bl"));
-      hs.a($$0, c, new dcb("br"));
-      hs.a($$0, d, new dcb("tl"));
-      hs.a($$0, e, new dcb("tr"));
-      hs.a($$0, f, new dcb("bs"));
-      hs.a($$0, g, new dcb("ts"));
-      hs.a($$0, h, new dcb("ls"));
-      hs.a($$0, i, new dcb("rs"));
-      hs.a($$0, j, new dcb("cs"));
-      hs.a($$0, k, new dcb("ms"));
-      hs.a($$0, l, new dcb("drs"));
-      hs.a($$0, m, new dcb("dls"));
-      hs.a($$0, n, new dcb("ss"));
-      hs.a($$0, o, new dcb("cr"));
-      hs.a($$0, p, new dcb("sc"));
-      hs.a($$0, q, new dcb("bt"));
-      hs.a($$0, r, new dcb("tt"));
-      hs.a($$0, s, new dcb("bts"));
-      hs.a($$0, t, new dcb("tts"));
-      hs.a($$0, u, new dcb("ld"));
-      hs.a($$0, v, new dcb("rd"));
-      hs.a($$0, w, new dcb("lud"));
-      hs.a($$0, x, new dcb("rud"));
-      hs.a($$0, y, new dcb("mc"));
-      hs.a($$0, z, new dcb("mr"));
-      hs.a($$0, A, new dcb("vh"));
-      hs.a($$0, B, new dcb("hh"));
-      hs.a($$0, C, new dcb("vhr"));
-      hs.a($$0, D, new dcb("hhb"));
-      hs.a($$0, E, new dcb("bo"));
-      hs.a($$0, F, new dcb("cbo"));
-      hs.a($$0, G, new dcb("gra"));
-      hs.a($$0, H, new dcb("gru"));
-      hs.a($$0, I, new dcb("bri"));
-      hs.a($$0, J, new dcb("glb"));
-      hs.a($$0, K, new dcb("cre"));
-      hs.a($$0, L, new dcb("sku"));
-      hs.a($$0, M, new dcb("flo"));
-      hs.a($$0, N, new dcb("moj"));
-      return hs.a($$0, O, new dcb("pig"));
+   public dcc(gu $$0, dfa $$1, chm $$2) {
+      this($$0, $$1);
+      this.f = $$2;
+   }
+
+   @Nullable
+   public static qx a(ciy $$0) {
+      qx $$1 = null;
+      qr $$2 = cgr.a($$0);
+      if ($$2 != null && $$2.b("Patterns", 9)) {
+         $$1 = $$2.c("Patterns", 10).e();
+      }
+
+      return $$1;
+   }
+
+   public void a(ciy $$0, chm $$1) {
+      this.f = $$1;
+      this.b($$0);
+   }
+
+   public void b(ciy $$0) {
+      this.g = a($$0);
+      this.h = null;
+      this.e = $$0.A() ? $$0.y() : null;
+   }
+
+   @Override
+   public tf ab() {
+      return (tf)(this.e != null ? this.e : tf.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public tf ad() {
+      return this.e;
+   }
+
+   public void a(tf $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (this.g != null) {
+         $$0.a("Patterns", this.g);
+      }
+
+      if (this.e != null) {
+         $$0.a("CustomName", tf.a.a(this.e));
+      }
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = tf.a.a($$0.l("CustomName"));
+      }
+
+      this.g = $$0.c("Patterns", 10);
+      this.h = null;
+   }
+
+   public wx a() {
+      return wx.a(this);
+   }
+
+   @Override
+   public qr ao_() {
+      return this.o();
+   }
+
+   public static int c(ciy $$0) {
+      qr $$1 = cgr.a($$0);
+      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
+   }
+
+   public List<Pair<he<dcd>, chm>> c() {
+      if (this.h == null) {
+         this.h = a(this.f, this.g);
+      }
+
+      return this.h;
+   }
+
+   public static List<Pair<he<dcd>, chm>> a(chm $$0, @Nullable qx $$1) {
+      List<Pair<he<dcd>, chm>> $$2 = Lists.newArrayList();
+      $$2.add(Pair.of(jb.al.f(dce.a), $$0));
+      if ($$1 != null) {
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            qr $$4 = $$1.a($$3);
+            he<dcd> $$5 = dcd.a($$4.l("Pattern"));
+            if ($$5 != null) {
+               int $$6 = $$4.h("Color");
+               $$2.add(Pair.of($$5, chm.a($$6)));
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void d(ciy $$0) {
+      qr $$1 = cgr.a($$0);
+      if ($$1 != null && $$1.b("Patterns", 9)) {
+         qx $$2 = $$1.c("Patterns", 10);
+         if (!$$2.isEmpty()) {
+            $$2.c($$2.size() - 1);
+            if ($$2.isEmpty()) {
+               $$1.r("Patterns");
+            }
+         }
+
+         $$1.r("id");
+         cgr.a($$0, dco.t, $$1);
+      }
+   }
+
+   public ciy f() {
+      ciy $$0 = new ciy(crs.a(this.f));
+      if (this.g != null && !this.g.isEmpty()) {
+         qr $$1 = new qr();
+         $$1.a("Patterns", this.g.e());
+         cgr.a($$0, this.u(), $$1);
+      }
+
+      if (this.e != null) {
+         $$0.a(this.e);
+      }
+
+      return $$0;
+   }
+
+   public chm g() {
+      return this.f;
    }
 }

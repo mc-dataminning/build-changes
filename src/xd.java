@@ -1,13 +1,14 @@
-public record xd() implements uw<wo> {
-   public xd(sh $$0) {
-      this();
+public record xd(int a) implements ux<wp> {
+   public xd(si $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 }

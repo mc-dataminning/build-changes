@@ -1,96 +1,94 @@
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record vm(vm.a b) implements vo {
-   public static final aep a = new aep("debug/brain");
+public record vm(vm.a b) implements vp {
+   public static final aer a = new aer("debug/bee");
 
-   public vm(sh $$0) {
+   public vm(si $$0) {
       this(new vm.a($$0));
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       this.b.a($$0);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public static record a(
-      UUID a,
-      int b,
-      String c,
-      String d,
-      int e,
-      float f,
-      float g,
-      ehf h,
-      String i,
-      @Nullable eaq j,
-      boolean k,
-      int l,
-      List<String> m,
-      List<String> n,
-      List<String> o,
-      List<String> p,
-      Set<gv> q,
-      Set<gv> r
-   ) {
-      public a(sh $$0) {
-         this(
-            $$0.o(),
-            $$0.readInt(),
-            $$0.r(),
-            $$0.r(),
-            $$0.readInt(),
-            $$0.readFloat(),
-            $$0.readFloat(),
-            $$0.k(),
-            $$0.r(),
-            $$0.c(eaq::b),
-            $$0.readBoolean(),
-            $$0.readInt(),
-            $$0.a(sh::r),
-            $$0.a(sh::r),
-            $$0.a(sh::r),
-            $$0.a(sh::r),
-            $$0.a(HashSet::new, sh::e),
-            $$0.a(HashSet::new, sh::e)
-         );
+   public static record a(UUID a, int b, ehe c, @Nullable eas d, @Nullable gu e, @Nullable gu f, int g, Set<String> h, List<gu> i) {
+      public a(si $$0) {
+         this($$0.o(), $$0.readInt(), $$0.k(), $$0.c(eas::b), $$0.c(si::e), $$0.c(si::e), $$0.readInt(), $$0.a(HashSet::new, si::r), $$0.a(si::e));
       }
 
-      public void a(sh $$0) {
+      public void a(si $$0) {
          $$0.a(this.a);
          $$0.p(this.b);
          $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.p(this.e);
-         $$0.a(this.f);
-         $$0.a(this.g);
-         $$0.a(this.h);
-         $$0.a(this.i);
-         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.k);
-         $$0.p(this.l);
-         $$0.a(this.m, sh::a);
-         $$0.a(this.n, sh::a);
-         $$0.a(this.o, sh::a);
-         $$0.a(this.p, sh::a);
-         $$0.a(this.q, sh::a);
-         $$0.a(this.r, sh::a);
+         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.e, si::a);
+         $$0.a(this.f, si::a);
+         $$0.p(this.g);
+         $$0.a(this.h, si::a);
+         $$0.a(this.i, si::a);
       }
 
-      public boolean a(gv $$0) {
-         return this.q.contains($$0);
+      public boolean a(gu $$0) {
+         return Objects.equals($$0, this.e);
       }
 
-      public boolean b(gv $$0) {
-         return this.r.contains($$0);
+      public String a() {
+         return aau.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public ehe d() {
+         return this.c;
+      }
+
+      @Nullable
+      public eas e() {
+         return this.d;
+      }
+
+      @Nullable
+      public gu f() {
+         return this.e;
+      }
+
+      @Nullable
+      public gu g() {
+         return this.f;
+      }
+
+      public int h() {
+         return this.g;
+      }
+
+      public Set<String> i() {
+         return this.h;
+      }
+
+      public List<gu> j() {
+         return this.i;
       }
    }
 }

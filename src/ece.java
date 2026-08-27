@@ -1,23 +1,16 @@
-import com.google.gson.GsonBuilder;
+public interface ece extends ebu {
+   void b(int var1);
 
-public class ece {
-   public static GsonBuilder a() {
-      return new GsonBuilder()
-         .registerTypeAdapter(ecg.class, new ecg.c())
-         .registerTypeHierarchyAdapter(egc.class, egd.a())
-         .registerTypeHierarchyAdapter(efh.class, efj.a())
-         .registerTypeHierarchyAdapter(egk.class, egl.a())
-         .registerTypeHierarchyAdapter(ech.b.class, new ech.b.a());
-   }
+   void c(int var1);
 
-   public static GsonBuilder b() {
-      return a()
-         .registerTypeHierarchyAdapter(edc.class, eda.a())
-         .registerTypeHierarchyAdapter(edw.class, edy.a())
-         .registerTypeHierarchyAdapter(efv.class, efw.a());
-   }
+   void d(int var1);
 
-   public static GsonBuilder c() {
-      return b().registerTypeAdapter(eco.class, new eco.b()).registerTypeAdapter(ecp.class, new ecp.b());
+   void a(float var1);
+
+   default void a(gu $$0, float $$1) {
+      this.b($$0.u());
+      this.c($$0.v());
+      this.d($$0.w());
+      this.a($$1);
    }
 }

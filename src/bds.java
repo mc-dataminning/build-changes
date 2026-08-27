@@ -1,167 +1,44 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordingFile;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public class bds {
-   private Instant a = Instant.EPOCH;
-   private Instant b = Instant.EPOCH;
-   private final List<bdx> c = Lists.newArrayList();
-   private final List<bdy> d = Lists.newArrayList();
-   private final Map<beb.b, bds.a> e = Maps.newHashMap();
-   private final Map<beb.b, bds.a> f = Maps.newHashMap();
-   private final List<bdz> g = Lists.newArrayList();
-   private final List<bdz> h = Lists.newArrayList();
-   private int i;
-   private Duration j = Duration.ZERO;
-   private final List<bea> k = Lists.newArrayList();
-   private final List<bec> l = Lists.newArrayList();
-   private final List<bed> m = Lists.newArrayList();
-   @Nullable
-   private Duration n = null;
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bds extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final int packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
 
-   private bds(Stream<RecordedEvent> $$0) {
-      this.a($$0);
-   }
-
-   public static bdt a(Path $$0) {
-      try {
-         bdt var4;
-         try (final RecordingFile $$1 = new RecordingFile($$0)) {
-            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
-               @Override
-               public boolean hasNext() {
-                  return $$1.hasMoreEvents();
-               }
-
-               public RecordedEvent a() {
-                  if (!this.hasNext()) {
-                     throw new NoSuchElementException();
-                  } else {
-                     try {
-                        return $$1.readEvent();
-                     } catch (IOException var2) {
-                        throw new UncheckedIOException(var2);
-                     }
-                  }
-               }
-            };
-            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
-            var4 = new bds($$3).a();
-         }
-
-         return var4;
-      } catch (IOException var7) {
-         throw new UncheckedIOException(var7);
-      }
-   }
-
-   private bdt a() {
-      Duration $$0 = Duration.between(this.a, this.b);
-      return new bdt(
-         this.a,
-         this.b,
-         $$0,
-         this.n,
-         this.m,
-         this.d,
-         bea.a($$0, this.k, this.j, this.i),
-         bec.a(this.l),
-         a($$0, this.e),
-         a($$0, this.f),
-         bdz.a($$0, this.g),
-         bdz.a($$0, this.h),
-         this.c
-      );
-   }
-
-   private void a(Stream<RecordedEvent> $$0) {
-      $$0.forEach($$0x -> {
-         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
-            this.b = $$0x.getEndTime();
-         }
-
-         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
-            this.a = $$0x.getStartTime();
-         }
-
-         String var2 = $$0x.getEventType().getName();
-         switch (var2) {
-            case "minecraft.ChunkGeneration":
-               this.c.add(bdx.a($$0x));
-               break;
-            case "minecraft.LoadWorld":
-               this.n = $$0x.getDuration();
-               break;
-            case "minecraft.ServerTickTime":
-               this.m.add(bed.a($$0x));
-               break;
-            case "minecraft.PacketReceived":
-               this.a($$0x, $$0x.getInt("bytes"), this.e);
-               break;
-            case "minecraft.PacketSent":
-               this.a($$0x, $$0x.getInt("bytes"), this.f);
-               break;
-            case "jdk.ThreadAllocationStatistics":
-               this.l.add(bec.a($$0x));
-               break;
-            case "jdk.GCHeapSummary":
-               this.k.add(bea.a($$0x));
-               break;
-            case "jdk.CPULoad":
-               this.d.add(bdy.a($$0x));
-               break;
-            case "jdk.FileWrite":
-               this.a($$0x, this.g, "bytesWritten");
-               break;
-            case "jdk.FileRead":
-               this.a($$0x, this.h, "bytesRead");
-               break;
-            case "jdk.GarbageCollection":
-               this.i++;
-               this.j = this.j.plus($$0x.getDuration());
-         }
-      });
-   }
-
-   private void a(RecordedEvent $$0, int $$1, Map<beb.b, bds.a> $$2) {
-      $$2.computeIfAbsent(beb.b.a($$0), $$0x -> new bds.a()).a($$1);
-   }
-
-   private void a(RecordedEvent $$0, List<bdz> $$1, String $$2) {
-      $$1.add(new bdz($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
-   }
-
-   private static beb a(Duration $$0, Map<beb.b, bds.a> $$1) {
-      List<Pair<beb.b, beb.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of((beb.b)$$0x.getKey(), ((bds.a)$$0x.getValue()).a())).toList();
-      return new beb($$0, $$2);
+   public bds(String $$0, int $$1, SocketAddress $$2, int $$3) {
+      this.protocolId = $$0;
+      this.packetId = $$1;
+      this.remoteAddress = $$2.toString();
+      this.bytes = $$3;
    }
 
    public static final class a {
-      private long a;
-      private long b;
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetId";
+      public static final String d = "bytes";
 
-      public void a(int $$0) {
-         this.b += (long)$$0;
-         this.a++;
-      }
-
-      public beb.a a() {
-         return new beb.a(this.a, this.b);
+      private a() {
       }
    }
 }

@@ -1,92 +1,80 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class dcz {
+   private static final int a = 5;
+   private int b;
 
-public class dcz extends dck {
-   public static final String a = "sherds";
-   private dcz.a b = dcz.a.a;
+   protected abstract void a(cpm var1, gu var2, dfa var3);
 
-   public dcz(gv $$0, dey $$1) {
-      super(dcm.O, $$0, $$1);
+   protected abstract void b(cpm var1, gu var2, dfa var3);
+
+   protected abstract void a(cpm var1, gu var2, dfa var3, int var4, int var5);
+
+   protected abstract boolean a(cbn var1);
+
+   public void a(cbn $$0, cpm $$1, gu $$2, dfa $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, djk.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   protected void b(qs $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public void b(cbn $$0, cpm $$1, gu $$2, dfa $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, djk.j, $$2);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      this.b = dcz.a.b($$0);
+   private int a(cpm $$0, gu $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+      float $$5 = 5.0F;
+      egz $$6 = new egz(
+         (double)((float)$$2 - 5.0F),
+         (double)((float)$$3 - 5.0F),
+         (double)((float)$$4 - 5.0F),
+         (double)((float)($$2 + 1) + 5.0F),
+         (double)((float)($$3 + 1) + 5.0F),
+         (double)((float)($$4 + 1) + 5.0F)
+      );
+      return $$0.a(diy.a(cbn.class), $$6, this::a).size();
    }
 
-   public ww c() {
-      return ww.a(this);
+   public void c(cpm $$0, gu $$1, dfa $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b;
+      if ($$4 != $$3) {
+         boolean $$5 = $$3 != 0;
+         boolean $$6 = $$4 != 0;
+         if ($$5 && !$$6) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, djk.k, $$1);
+         } else if (!$$5) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, djk.j, $$1);
+         }
+
+         this.b = $$3;
+      }
+
+      this.a($$0, $$1, $$2, $$4, $$3);
+      if ($$3 > 0) {
+         d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public qs ao_() {
-      return this.o();
-   }
-
-   public hb d() {
-      return this.q().c(dfo.R);
-   }
-
-   public dcz.a f() {
+   public int a() {
       return this.b;
    }
 
-   public void a(ciw $$0) {
-      this.b = dcz.a.b(cgp.a($$0));
-   }
-
-   public ciw g() {
-      return a(this.b);
-   }
-
-   public static ciw a(dcz.a $$0) {
-      ciw $$1 = ciz.eg.ae_();
-      qs $$2 = $$0.a(new qs());
-      cgp.a($$1, dcm.O, $$2);
-      return $$1;
-   }
-
-   public static record a(cir b, cir c, cir d, cir e) {
-      public static final dcz.a a = new dcz.a(ciz.pX, ciz.pX, ciz.pX, ciz.pX);
-
-      public qs a(qs $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            qy $$1 = new qy();
-            this.a().forEach($$1x -> $$1.add(rj.a(jc.i.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
-      }
-
-      public Stream<cir> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static dcz.a b(@Nullable qs $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            qy $$1 = $$0.c("sherds", 8);
-            return new dcz.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cir a(qy $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return ciz.pX;
-         } else {
-            rl $$2 = $$0.k($$1);
-            return jc.i.a(aep.a($$2.m_()));
-         }
-      }
+   private static void d(cpm $$0, gu $$1, dfa $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

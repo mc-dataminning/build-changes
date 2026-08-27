@@ -1,52 +1,55 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-public interface ank extends ann {
-   Set<String> a();
+public class ank {
+   private final ama a;
+   private final ane<InputStream> b;
+   private final ane<ano> c;
+   @Nullable
+   private ano d;
 
-   List<ani> a(aep var1);
+   public ank(ama $$0, ane<InputStream> $$1, ane<ano> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   Map<aep, ani> b(String var1, Predicate<aep> var2);
+   public ank(ama $$0, ane<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ano.b;
+      this.d = ano.a;
+   }
 
-   Map<aep, List<ani>> c(String var1, Predicate<aep> var2);
+   public ama a() {
+      return this.a;
+   }
 
-   Stream<aly> b();
+   public String b() {
+      return this.a.a();
+   }
 
-   public static enum a implements ank {
-      a;
+   public boolean c() {
+      return this.a.b();
+   }
 
-      @Override
-      public Set<String> a() {
-         return Set.of();
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public ano f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
       }
 
-      @Override
-      public Optional<ani> getResource(aep $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<ani> a(aep $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<aep, ani> b(String $$0, Predicate<aep> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<aep, List<ani>> c(String $$0, Predicate<aep> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<aly> b() {
-         return Stream.of();
-      }
+      return this.d;
    }
 }

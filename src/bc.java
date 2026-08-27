@@ -1,85 +1,75 @@
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bc {
-   public static final bc a = bc.a.a().b();
-   private final cj.c b;
-   private final cj.c c;
-   private final bo d;
-   @Nullable
-   private final Boolean e;
-   private final bd f;
-
-   public bc() {
-      this.b = cj.c.e;
-      this.c = cj.c.e;
-      this.d = bo.a;
-      this.e = null;
-      this.f = bd.a;
+public record bc(cj.c a, cj.c b, Optional<bo> c, Optional<Boolean> d, Optional<bd> e) {
+   static Optional<bc> a(cj.c $$0, cj.c $$1, Optional<bo> $$2, Optional<Boolean> $$3, Optional<bd> $$4) {
+      return $$0.c() && $$1.c() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty() ? Optional.empty() : Optional.of(new bc($$0, $$1, $$2, $$3, $$4));
    }
 
-   public bc(cj.c $$0, cj.c $$1, bo $$2, @Nullable Boolean $$3, bd $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-   }
-
-   public boolean a(akj $$0, bhe $$1, float $$2, float $$3, boolean $$4) {
-      if (this == a) {
-         return true;
-      } else if (!this.b.d((double)$$2)) {
+   public boolean a(akl $$0, bhg $$1, float $$2, float $$3, boolean $$4) {
+      if (!this.a.d((double)$$2)) {
          return false;
-      } else if (!this.c.d((double)$$3)) {
+      } else if (!this.b.d((double)$$3)) {
          return false;
-      } else if (!this.d.a($$0, $$1.d())) {
+      } else if (this.c.isPresent() && !this.c.get().a($$0, $$1.d())) {
          return false;
       } else {
-         return this.e != null && this.e != $$4 ? false : this.f.a($$0, $$1);
+         return this.d.isPresent() && this.d.get() != $$4 ? false : !this.e.isPresent() || this.e.get().a($$0, $$1);
       }
    }
 
-   public static bc a(@Nullable JsonElement $$0) {
+   public static Optional<bc> a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "damage");
+         JsonObject $$1 = arg.m($$0, "damage");
          cj.c $$2 = cj.c.a($$1.get("dealt"));
          cj.c $$3 = cj.c.a($$1.get("taken"));
-         Boolean $$4 = $$1.has("blocked") ? arf.k($$1, "blocked") : null;
-         bo $$5 = bo.a($$1.get("source_entity"));
-         bd $$6 = bd.a($$1.get("type"));
-         return new bc($$2, $$3, $$5, $$4, $$6);
+         Optional<Boolean> $$4 = $$1.has("blocked") ? Optional.of(arg.k($$1, "blocked")) : Optional.empty();
+         Optional<bo> $$5 = bo.a($$1.get("source_entity"));
+         Optional<bd> $$6 = bd.a($$1.get("type"));
+         return a($$2, $$3, $$5, $$4, $$6);
       } else {
-         return a;
+         return Optional.empty();
       }
    }
 
    public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         $$0.add("dealt", this.b.d());
-         $$0.add("taken", this.c.d());
-         $$0.add("source_entity", this.d.a());
-         $$0.add("type", this.f.a());
-         if (this.e != null) {
-            $$0.addProperty("blocked", this.e);
-         }
+      JsonObject $$0 = new JsonObject();
+      $$0.add("dealt", this.a.e());
+      $$0.add("taken", this.b.e());
+      this.c.ifPresent($$1 -> $$0.add("source_entity", $$1.a()));
+      this.e.ifPresent($$1 -> $$0.add("type", $$1.a()));
+      this.d.ifPresent($$1 -> $$0.addProperty("blocked", $$1));
+      return $$0;
+   }
 
-         return $$0;
-      }
+   public cj.c b() {
+      return this.a;
+   }
+
+   public cj.c c() {
+      return this.b;
+   }
+
+   public Optional<bo> d() {
+      return this.c;
+   }
+
+   public Optional<Boolean> e() {
+      return this.d;
+   }
+
+   public Optional<bd> f() {
+      return this.e;
    }
 
    public static class a {
-      private cj.c a = cj.c.e;
-      private cj.c b = cj.c.e;
-      private bo c = bo.a;
-      @Nullable
-      private Boolean d;
-      private bd e = bd.a;
+      private cj.c a = cj.c.c;
+      private cj.c b = cj.c.c;
+      private Optional<bo> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<bd> e = Optional.empty();
 
       public static bc.a a() {
          return new bc.a();
@@ -96,17 +86,17 @@ public class bc {
       }
 
       public bc.a a(bo $$0) {
-         this.c = $$0;
+         this.c = Optional.of($$0);
          return this;
       }
 
       public bc.a a(Boolean $$0) {
-         this.d = $$0;
+         this.d = Optional.of($$0);
          return this;
       }
 
       public bc.a a(bd $$0) {
-         this.e = $$0;
+         this.e = Optional.of($$0);
          return this;
       }
 
@@ -115,8 +105,8 @@ public class bc {
          return this;
       }
 
-      public bc b() {
-         return new bc(this.a, this.b, this.c, this.d, this.e);
+      public Optional<bc> b() {
+         return bc.a(this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

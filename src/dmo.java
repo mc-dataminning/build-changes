@@ -1,73 +1,173 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class dmo extends dnl<dpr> {
-   public dmo(Codec<dpr> $$0) {
-      super($$0);
+public abstract class dmo<C extends dmh> {
+   public static final dmo<dmk> a = a("cave", new dml(dmk.a));
+   public static final dmo<dmk> b = a("nether_cave", new dmn(dmk.a));
+   public static final dmo<dmf> c = a("canyon", new dmg(dmf.a));
+   protected static final dfa d = csn.a.n();
+   protected static final dfa e = csn.nc.n();
+   protected static final ead f = eae.c.g();
+   protected static final ead g = eae.e.g();
+   protected Set<eac> h = ImmutableSet.of(eae.c);
+   private final Codec<dmm<C>> i;
+
+   private static <C extends dmh, F extends dmo<C>> F a(String $$0, F $$1) {
+      return hr.a(jb.Q, $$0, $$1);
    }
 
-   protected void a(cpl $$0, art $$1, gv $$2, dpr $$3, int $$4, gv.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(hb.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
+   public dmo(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, dmm::b).codec();
    }
 
-   protected int a(art $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
+   public dmm<C> a(C $$0) {
+      return new dmm<>(this, $$0);
    }
 
-   protected boolean a(cpl $$0, gv $$1, int $$2, gv.a $$3, dpr $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.C_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
-         dey $$6 = $$0.a_($$1.d());
-         if (!b($$6) && !$$6.a(apj.aZ)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
+   public Codec<dmm<C>> c() {
+      return this.i;
+   }
 
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dey $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(apj.O)) {
-                        return false;
+   public int d() {
+      return 4;
+   }
+
+   protected boolean a(
+      dmj $$0, C $$1, dgw $$2, Function<gu, he<cqk>> $$3, djv $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dgv $$10, dmo.a $$11
+   ) {
+      cot $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(arp.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(arp.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(arp.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.y() ? 0 : 7;
+         int $$22 = Math.min(arp.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(arp.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(arp.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         gu.a $$26 = new gu.a();
+         gu.a $$27 = new gu.a();
+
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
                      }
                   }
+               }
+            }
+         }
+
+         return $$25;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(dmj $$0, C $$1, dgw $$2, Function<gu, he<cqk>> $$3, dgv $$4, gu.a $$5, gu.a $$6, djv $$7, MutableBoolean $$8) {
+      dfa $$9 = $$2.a_($$5);
+      if ($$9.a(csn.i) || $$9.a(csn.fl)) {
+         $$8.setTrue();
+      }
+
+      if (!this.a($$1, $$9) && !b($$1)) {
+         return false;
+      } else {
+         dfa $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10, false);
+            if ($$7.a() && !$$10.u().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, ha.a);
+               if ($$2.a_($$6).a(csn.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.u().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x, false);
+                     if (!$$2x.u().c()) {
+                        $$2.e($$6);
+                     }
+                  });
                }
             }
 
             return true;
          }
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public boolean a(dnn<dpr> $$0) {
-      cqe $$1 = $$0.b();
-      gv $$2 = $$0.e();
-      art $$3 = $$0.d();
-      dpr $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      gv.a $$6 = new gv.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
+   @Nullable
+   private dfa a(dmj $$0, C $$1, gu $$2, djv $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
       } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
+         dfa $$4 = $$3.a(new dkc.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
+         }
       }
    }
 
-   protected abstract int a(int var1, int var2, int var3, int var4);
+   private static dfa b(dmh $$0, dfa $$1) {
+      if ($$1.a(csn.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(csn.G)) {
+         dfa $$2 = $$0.h.c();
+         return $$2.b(dfq.C) ? $$2.a(dfq.C, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(csn.H) ? $$0.h.d() : $$1;
+      }
+   }
 
-   protected abstract void a(cpl var1, art var2, gv var3, int var4, gv.a var5, dpr var6);
+   public abstract boolean a(dmj var1, C var2, dgw var3, Function<gu, he<cqk>> var4, aru var5, djv var6, cot var7, dgv var8);
+
+   public abstract boolean a(C var1, aru var2);
+
+   protected boolean a(C $$0, dfa $$1) {
+      return $$1.a($$0.i);
+   }
+
+   protected static boolean a(cot $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
+   }
+
+   private static boolean b(dmh $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(dmj var1, double var2, double var4, double var6, int var8);
+   }
 }

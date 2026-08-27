@@ -1,27 +1,62 @@
-public class exo extends exv {
-   private etb a;
+import javax.annotation.Nullable;
 
-   public exo() {
-      super(te.c("outOfMemory.title"));
-      this.a = etb.a;
+public class exo extends exz {
+   private static final tf a = tf.c("symlink_warning.title.world").a(n.r);
+   private static final tf b = tf.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final tf c = tf.c("symlink_warning.title.pack").a(n.r);
+   private static final tf k = tf.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final tf l;
+   private final String m;
+   @Nullable
+   private final exz n;
+   private final evn o = new evn().b(10);
+
+   public exo(tf $$0, tf $$1, String $$2, @Nullable exz $$3) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
+
+   public static exz a(@Nullable exz $$0) {
+      return new exo(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static exz b(@Nullable exz $$0) {
+      return new exo(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
    protected void aE_() {
-      this.d(esi.a(td.l, $$0 -> this.f.a(new eya())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(esi.a(te.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = etb.a(this.i, te.c("outOfMemory.message"), 295);
+      super.aE_();
+      this.o.c().b();
+      evn.b $$0 = this.o.d(1);
+      $$0.a(new etm(this.e, this.i));
+      $$0.a(new etb(this.l, this.i).i(this.g - 50).b(true));
+      int $$1 = 120;
+      evn $$2 = new evn().a(5);
+      evn.b $$3 = $$2.d(3);
+      $$3.a(esh.a(te.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
+      $$3.a(esh.a(te.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
+      $$3.a(esh.a(te.k, $$0x -> this.au_()).b(120, 20).a());
+      $$0.a($$2);
+      this.b();
+      this.o.a(this::d);
    }
 
    @Override
-   public boolean aA_() {
-      return false;
+   protected void b() {
+      this.o.a();
+      evm.a(this.o, this.s());
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+   public tf e() {
+      return te.a(super.e(), this.l);
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.n);
    }
 }

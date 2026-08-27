@@ -1,58 +1,101 @@
-import javax.annotation.Nullable;
+public abstract class cvz extends cvx implements cso {
+   public static final dga d = dfq.ax;
+   public static final int e = 25;
+   private final double f;
 
-public class cvz extends csk implements czl {
-   private static final dfp b = dfo.C;
-   protected static final ehy a = csk.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
-
-   protected cvz(dex.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(b, Boolean.valueOf(false)));
+   protected cvz(dez.d $$0, ha $$1, ehx $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.f = $$4;
+      this.k(this.C.b().a(d, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(b);
+   public dfa a(cpn $$0) {
+      return this.n().a(d, Integer.valueOf($$0.y_().a(25)));
    }
 
    @Override
-   public eab c_(dey $$0) {
-      return $$0.c(b) ? eac.c.a(false) : super.c_($$0);
+   public boolean e_(dfa $$0) {
+      return $$0.c(d) < 25;
    }
 
-   @Nullable
    @Override
-   public dey a(cle $$0) {
-      dey $$1 = super.a($$0);
-      if ($$1 != null) {
-         eab $$2 = $$0.q().b_($$0.a());
-         return $$1.a(b, Boolean.valueOf($$2.a() == eac.c));
-      } else {
-         return null;
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$0.c(d) < 25 && $$3.j() < this.f) {
+         gu $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   public boolean a(dey $$0, cpn $$1, gv $$2) {
-      gv $$3 = $$2.c();
-      dey $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, hb.a);
+   protected dfa a(dfa $$0, aru $$1) {
+      return $$0.a(d);
+   }
+
+   public dfa n(dfa $$0) {
+      return $$0.a(d, Integer.valueOf(25));
+   }
+
+   public boolean o(dfa $$0) {
+      return $$0.c(d) == 25;
+   }
+
+   protected dfa a(dfa $$0, dfa $$1) {
+      return $$1;
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a;
-   }
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if ($$1 == hb.b && !this.a($$0, $$3, $$4)) {
-         return csl.a.n();
-      } else {
-         if ($$0.c(b)) {
-            $$3.a($$4, eac.c, eac.c.a($$3));
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.a())) {
+         if (this.b) {
+            $$3.a($$4, eae.c, eae.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.a().n());
       }
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      gu $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(d) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(d, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(aru var1);
+
+   protected abstract boolean g(dfa var1);
+
+   @Override
+   protected cvz b() {
+      return this;
    }
 }

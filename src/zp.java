@@ -1,40 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class zp implements ux<wp> {
+   private final gu a;
+   private final float b;
 
-public class zp implements uw<wo> {
-   private final eia a;
-   private final String b;
-
-   public zp(eia $$0, @Nullable eib $$1) {
+   public zp(gu $$0, float $$1) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+      this.b = $$1;
    }
 
-   public zp(sh $$0) {
-      this.a = $$0.a(eia.u);
-      this.b = $$0.r();
+   public zp(si $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(eia::a, this.a);
+   public void a(si $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public eia a() {
+   public gu a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public float d() {
+      return this.b;
    }
 }

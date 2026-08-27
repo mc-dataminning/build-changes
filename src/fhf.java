@@ -1,20 +1,9 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class fhf implements anl {
-   private Map<fhh, fhp> a = ImmutableMap.of();
-
-   public fhj a(fhh $$0) {
-      fhp $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
-      } else {
-         return $$1.a();
-      }
+public class fhf<T extends bzu> extends fdk<T> {
+   public fhf(fhn $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(ank $$0) {
-      this.a = ImmutableMap.copyOf(fhg.a());
+   public boolean a(T $$0) {
+      return $$0.fS();
    }
 }

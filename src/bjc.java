@@ -3,5 +3,16 @@ public enum bjc {
    b,
    c,
    d,
-   e;
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o,
+   p;
 }

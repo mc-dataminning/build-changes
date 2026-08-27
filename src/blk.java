@@ -1,32 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class blk {
-   public static bkp<bjf> a(float $$0) {
-      return boa.a(
-         (Function<boa.b<bjf>, ? extends App<boa.c<bjf>, bod<bjf>>>)($$1 -> $$1.group($$1.c(bry.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.g($$3.dk())) {
-                           return false;
-                        } else {
-                           gv $$5 = $$3.dk();
-                           List<gv> $$6 = gv.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(gv::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.g($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bsb($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
-      );
+   public static bkr<biy> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
+   }
+
+   public static <E extends biy> bkr<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return boc.a((Function<boc.b<E>, ? extends App<boc.c<E>, bof<E>>>)($$4 -> {
+         boc<E, ? extends bod<? extends K1, bsd>> $$5 = $$2 ? $$4.a(bsa.m) : $$4.c(bsa.m);
+         return $$4.group($$4.a(bsa.n), $$5, $$4.b(bsa.K), $$4.a(bsa.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               byg $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dK().w_().a($$11.dk())) {
+                  bsd $$12 = new bsd(new blb($$11, false), $$1, 0);
+                  $$4x.a(new blb($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

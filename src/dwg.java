@@ -1,112 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwg {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<hf<dwg>>> d = new MutableObject();
-   public static final Codec<dwg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqw.a(d::getValue).fieldOf("fallback").forGetter(dwg::a),
-               Codec.mapPair(dwe.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwg::new)
-   );
-   public static final Codec<hf<dwg>> b = ac.a(ael.a(jd.aC, a), d::setValue);
-   private final List<Pair<dwe, Integer>> e;
-   private final ObjectArrayList<dwe> f;
-   private final hf<dwg> g;
-   private int h = Integer.MIN_VALUE;
+public abstract class dwg {
+   public static final Codec<dwg> e = jb.ai.q().dispatch("element_type", dwg::a, dwh::codec);
+   private static final he<dyq> a = he.a(new dyq(List.of()));
+   @Nullable
+   private volatile dwi.a b;
 
-   public dwg(hf<dwg> $$0, List<Pair<dwe, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<dwe, Integer> $$2 : $$1) {
-         dwe $$3 = (dwe)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   protected static <E extends dwg> RecordCodecBuilder<E, dwi.a> d() {
+      return dwi.a.c.fieldOf("projection").forGetter(dwg::e);
    }
 
-   public dwg(hf<dwg> $$0, List<Pair<Function<dwg.a, ? extends dwe>, Integer>> $$1, dwg.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<dwg.a, ? extends dwe>, Integer> $$3 : $$1) {
-         dwe $$4 = (dwe)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   protected dwg(dwi.a $$0) {
+      this.b = $$0;
    }
 
-   public int a(dyr $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != dvx.b).mapToInt($$1 -> $$1.a($$0, gv.b, cyw.a).d()).max().orElse(0);
-      }
+   public abstract hz a(dyt var1, cyy var2);
 
-      return this.h;
+   public abstract List<dys.c> a(dyt var1, gu var2, cyy var3, aru var4);
+
+   public abstract dur a(dyt var1, gu var2, cyy var3);
+
+   public abstract boolean a(dyt var1, cqg var2, cqe var3, dgx var4, gu var5, gu var6, cyy var7, dur var8, aru var9, boolean var10);
+
+   public abstract dwh<?> a();
+
+   public void a(cpn $$0, dys.c $$1, gu $$2, cyy $$3, aru $$4, dur $$5) {
    }
 
-   public hf<dwg> a() {
-      return this.g;
+   public dwg a(dwi.a $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   public dwe a(art $$0) {
-      return (dwe)this.f.get($$0.a(this.f.size()));
+   public dwi.a e() {
+      dwi.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
    }
 
-   public List<dwe> b(art $$0) {
-      return ac.a(this.f, $$0);
+   public int f() {
+      return 1;
    }
 
-   public int b() {
-      return this.f.size();
+   public static Function<dwi.a, dvz> g() {
+      return $$0 -> dvz.b;
    }
 
-   public static enum a implements asf {
-      a("terrain_matching", ImmutableList.of(new dxx(dkh.a.a, -1))),
-      b("rigid", ImmutableList.of());
+   public static Function<dwi.a, dwd> a(String $$0) {
+      return $$1 -> new dwd(Either.left(new aer($$0)), a, $$1);
+   }
 
-      public static final asf.a<dwg.a> c = asf.a(dwg.a::values);
-      private final String d;
-      private final ImmutableList<dyn> e;
+   public static Function<dwi.a, dwd> a(String $$0, he<dyq> $$1) {
+      return $$2 -> new dwd(Either.left(new aer($$0)), $$1, $$2);
+   }
 
-      private a(String $$0, ImmutableList<dyn> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public static Function<dwi.a, dwf> b(String $$0) {
+      return $$1 -> new dwf(Either.left(new aer($$0)), a, $$1);
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public static Function<dwi.a, dwf> b(String $$0, he<dyq> $$1) {
+      return $$2 -> new dwf(Either.left(new aer($$0)), $$1, $$2);
+   }
 
-      public static dwg.a a(String $$0) {
-         return c.a($$0);
-      }
+   public static Function<dwi.a, dwa> a(he<dud> $$0) {
+      return $$1 -> new dwa($$0, $$1);
+   }
 
-      public ImmutableList<dyn> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public static Function<dwi.a, dwe> a(List<Function<dwi.a, ? extends dwg>> $$0) {
+      return $$1 -> new dwe($$0.stream().map($$1x -> (dwg)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

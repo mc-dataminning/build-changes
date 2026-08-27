@@ -1,46 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class efd implements efh {
-   static final efd a = new efd();
-
-   private efd() {
-   }
+public record efd(efg b) implements efg {
+   public static final Codec<efd> a = RecordCodecBuilder.create($$0 -> $$0.group(efi.a.fieldOf("term").forGetter(efd::c)).apply($$0, efd::new));
 
    @Override
-   public efi b() {
-      return efj.l;
-   }
-
-   @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.j);
+   public efh b() {
+      return efi.b;
    }
 
    public boolean a(ech $$0) {
-      Float $$1 = $$0.c(eet.j);
-      if ($$1 != null) {
-         art $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+      return !this.b.test($$0);
    }
 
-   public static efh.a c() {
-      return () -> a;
+   @Override
+   public Set<eep<?>> a() {
+      return this.b.a();
    }
 
-   public static class a implements ecq<efd> {
-      public void a(JsonObject $$0, efd $$1, JsonSerializationContext $$2) {
-      }
+   @Override
+   public void a(ecq $$0) {
+      efg.super.a($$0);
+      this.b.a($$0);
+   }
 
-      public efd b(JsonObject $$0, JsonDeserializationContext $$1) {
-         return efd.a;
-      }
+   public static efg.a a(efg.a $$0) {
+      efd $$1 = new efd($$0.build());
+      return () -> $$1;
+   }
+
+   public efg c() {
+      return this.b;
    }
 }

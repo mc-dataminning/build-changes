@@ -1,54 +1,199 @@
-public class ckw {
-   public static aeo<ckt> a = aeo.a(jd.V, new aep("empty"));
-   public static final ckt b = a(a, new ckt());
-   public static final ckt c = a("water", new ckt());
-   public static final ckt d = a("mundane", new ckt());
-   public static final ckt e = a("thick", new ckt());
-   public static final ckt f = a("awkward", new ckt());
-   public static final ckt g = a("night_vision", new ckt(new bht(bhv.p, 3600)));
-   public static final ckt h = a("long_night_vision", new ckt("night_vision", new bht(bhv.p, 9600)));
-   public static final ckt i = a("invisibility", new ckt(new bht(bhv.n, 3600)));
-   public static final ckt j = a("long_invisibility", new ckt("invisibility", new bht(bhv.n, 9600)));
-   public static final ckt k = a("leaping", new ckt(new bht(bhv.h, 3600)));
-   public static final ckt l = a("long_leaping", new ckt("leaping", new bht(bhv.h, 9600)));
-   public static final ckt m = a("strong_leaping", new ckt("leaping", new bht(bhv.h, 1800, 1)));
-   public static final ckt n = a("fire_resistance", new ckt(new bht(bhv.l, 3600)));
-   public static final ckt o = a("long_fire_resistance", new ckt("fire_resistance", new bht(bhv.l, 9600)));
-   public static final ckt p = a("swiftness", new ckt(new bht(bhv.a, 3600)));
-   public static final ckt q = a("long_swiftness", new ckt("swiftness", new bht(bhv.a, 9600)));
-   public static final ckt r = a("strong_swiftness", new ckt("swiftness", new bht(bhv.a, 1800, 1)));
-   public static final ckt s = a("slowness", new ckt(new bht(bhv.b, 1800)));
-   public static final ckt t = a("long_slowness", new ckt("slowness", new bht(bhv.b, 4800)));
-   public static final ckt u = a("strong_slowness", new ckt("slowness", new bht(bhv.b, 400, 3)));
-   public static final ckt v = a("turtle_master", new ckt("turtle_master", new bht(bhv.b, 400, 3), new bht(bhv.k, 400, 2)));
-   public static final ckt w = a("long_turtle_master", new ckt("turtle_master", new bht(bhv.b, 800, 3), new bht(bhv.k, 800, 2)));
-   public static final ckt x = a("strong_turtle_master", new ckt("turtle_master", new bht(bhv.b, 400, 5), new bht(bhv.k, 400, 3)));
-   public static final ckt y = a("water_breathing", new ckt(new bht(bhv.m, 3600)));
-   public static final ckt z = a("long_water_breathing", new ckt("water_breathing", new bht(bhv.m, 9600)));
-   public static final ckt A = a("healing", new ckt(new bht(bhv.f, 1)));
-   public static final ckt B = a("strong_healing", new ckt("healing", new bht(bhv.f, 1, 1)));
-   public static final ckt C = a("harming", new ckt(new bht(bhv.g, 1)));
-   public static final ckt D = a("strong_harming", new ckt("harming", new bht(bhv.g, 1, 1)));
-   public static final ckt E = a("poison", new ckt(new bht(bhv.s, 900)));
-   public static final ckt F = a("long_poison", new ckt("poison", new bht(bhv.s, 1800)));
-   public static final ckt G = a("strong_poison", new ckt("poison", new bht(bhv.s, 432, 1)));
-   public static final ckt H = a("regeneration", new ckt(new bht(bhv.j, 900)));
-   public static final ckt I = a("long_regeneration", new ckt("regeneration", new bht(bhv.j, 1800)));
-   public static final ckt J = a("strong_regeneration", new ckt("regeneration", new bht(bhv.j, 450, 1)));
-   public static final ckt K = a("strength", new ckt(new bht(bhv.e, 3600)));
-   public static final ckt L = a("long_strength", new ckt("strength", new bht(bhv.e, 9600)));
-   public static final ckt M = a("strong_strength", new ckt("strength", new bht(bhv.e, 1800, 1)));
-   public static final ckt N = a("weakness", new ckt(new bht(bhv.r, 1800)));
-   public static final ckt O = a("long_weakness", new ckt("weakness", new bht(bhv.r, 4800)));
-   public static final ckt P = a("luck", new ckt("luck", new bht(bhv.z, 6000)));
-   public static final ckt Q = a("slow_falling", new ckt(new bht(bhv.B, 1800)));
-   public static final ckt R = a("long_slow_falling", new ckt("slow_falling", new bht(bhv.B, 4800)));
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Predicate;
 
-   private static ckt a(String $$0, ckt $$1) {
-      return hs.a(jc.j, $$0, $$1);
+public class ckw {
+   public static final int a = 20;
+   private static final List<ckw.a<ckv>> b = Lists.newArrayList();
+   private static final List<ckw.a<cit>> c = Lists.newArrayList();
+   private static final List<cly> d = Lists.newArrayList();
+   private static final Predicate<ciy> e = $$0 -> {
+      for (cly $$1 : d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   };
+
+   public static boolean a(ciy $$0) {
+      return b($$0) || c($$0);
    }
 
-   private static ckt a(aeo<ckt> $$0, ckt $$1) {
-      return hs.a(jc.j, $$0, $$1);
+   protected static boolean b(ciy $$0) {
+      for (ckw.a<cit> $$1 : c) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(ciy $$0) {
+      for (ckw.a<ckv> $$1 : b) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(ckv $$0) {
+      for (ckw.a<ckv> $$1 : b) {
+         if ($$1.c == $$0) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(ciy $$0, ciy $$1) {
+      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
+   }
+
+   protected static boolean b(ciy $$0, ciy $$1) {
+      cit $$2 = $$0.d();
+
+      for (ckw.a<cit> $$3 : c) {
+         if ($$3.a == $$2 && $$3.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(ciy $$0, ciy $$1) {
+      ckv $$2 = ckx.d($$0);
+
+      for (ckw.a<ckv> $$3 : b) {
+         if ($$3.a == $$2 && $$3.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static ciy d(ciy $$0, ciy $$1) {
+      if (!$$1.b()) {
+         ckv $$2 = ckx.d($$1);
+         cit $$3 = $$1.d();
+
+         for (ckw.a<cit> $$4 : c) {
+            if ($$4.a == $$3 && $$4.b.a($$0)) {
+               return ckx.a(new ciy($$4.c), $$2);
+            }
+         }
+
+         for (ckw.a<ckv> $$5 : b) {
+            if ($$5.a == $$2 && $$5.b.a($$0)) {
+               return ckx.a(new ciy($$3), $$5.c);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public static void a() {
+      a(cjb.rv);
+      a(cjb.uu);
+      a(cjb.ux);
+      a(cjb.rv, cjb.oG, cjb.uu);
+      a(cjb.uu, cjb.ut, cjb.ux);
+      a(cky.c, cjb.rE, cky.d);
+      a(cky.c, cjb.rs, cky.d);
+      a(cky.c, cjb.tJ, cky.d);
+      a(cky.c, cjb.rz, cky.d);
+      a(cky.c, cjb.rx, cky.d);
+      a(cky.c, cjb.qM, cky.d);
+      a(cky.c, cjb.rA, cky.d);
+      a(cky.c, cjb.qk, cky.e);
+      a(cky.c, cjb.ll, cky.d);
+      a(cky.c, cjb.ru, cky.f);
+      a(cky.f, cjb.tq, cky.g);
+      a(cky.g, cjb.ll, cky.h);
+      a(cky.g, cjb.ry, cky.i);
+      a(cky.h, cjb.ry, cky.j);
+      a(cky.i, cjb.ll, cky.j);
+      a(cky.f, cjb.rA, cky.n);
+      a(cky.n, cjb.ll, cky.o);
+      a(cky.f, cjb.tJ, cky.k);
+      a(cky.k, cjb.ll, cky.l);
+      a(cky.k, cjb.qk, cky.m);
+      a(cky.k, cjb.ry, cky.s);
+      a(cky.l, cjb.ry, cky.t);
+      a(cky.s, cjb.ll, cky.t);
+      a(cky.s, cjb.qk, cky.u);
+      a(cky.f, cjb.nC, cky.v);
+      a(cky.v, cjb.ll, cky.w);
+      a(cky.v, cjb.qk, cky.x);
+      a(cky.p, cjb.ry, cky.s);
+      a(cky.q, cjb.ry, cky.t);
+      a(cky.f, cjb.qM, cky.p);
+      a(cky.p, cjb.ll, cky.q);
+      a(cky.p, cjb.qk, cky.r);
+      a(cky.f, cjb.qo, cky.y);
+      a(cky.y, cjb.ll, cky.z);
+      a(cky.f, cjb.rE, cky.A);
+      a(cky.A, cjb.qk, cky.B);
+      a(cky.A, cjb.ry, cky.C);
+      a(cky.B, cjb.ry, cky.D);
+      a(cky.C, cjb.qk, cky.D);
+      a(cky.E, cjb.ry, cky.C);
+      a(cky.F, cjb.ry, cky.C);
+      a(cky.G, cjb.ry, cky.D);
+      a(cky.f, cjb.rx, cky.E);
+      a(cky.E, cjb.ll, cky.F);
+      a(cky.E, cjb.qk, cky.G);
+      a(cky.f, cjb.rs, cky.H);
+      a(cky.H, cjb.ll, cky.I);
+      a(cky.H, cjb.qk, cky.J);
+      a(cky.f, cjb.rz, cky.K);
+      a(cky.K, cjb.ll, cky.L);
+      a(cky.K, cjb.qk, cky.M);
+      a(cky.c, cjb.ry, cky.N);
+      a(cky.N, cjb.ll, cky.O);
+      a(cky.f, cjb.uW, cky.Q);
+      a(cky.Q, cjb.ll, cky.R);
+   }
+
+   private static void a(cit $$0, cit $$1, cit $$2) {
+      if (!($$0 instanceof cjn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$0));
+      } else if (!($$2 instanceof cjn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$2));
+      } else {
+         c.add(new ckw.a<>($$0, cly.a($$1), $$2));
+      }
+   }
+
+   private static void a(cit $$0) {
+      if (!($$0 instanceof cjn)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$0));
+      } else {
+         d.add(cly.a($$0));
+      }
+   }
+
+   private static void a(ckv $$0, cit $$1, ckv $$2) {
+      b.add(new ckw.a<>($$0, cly.a($$1), $$2));
+   }
+
+   static class a<T> {
+      final T a;
+      final cly b;
+      final T c;
+
+      public a(T $$0, cly $$1, T $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

@@ -1,66 +1,70 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.gson.JsonSyntaxException;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class cv<T extends ar> implements al<T> {
-   private final Map<aex, Set<al.a<T>>> a = Maps.newIdentityHashMap();
+public class cv extends cu<cv.a> {
+   static final aer a = new aer("slide_down_block");
 
    @Override
-   public final void a(aex $$0, al.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public aer a() {
+      return a;
    }
 
-   @Override
-   public final void b(aex $$0, al.a<T> $$1) {
-      Set<al.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
-         }
+   public cv.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      csm $$3 = a($$0);
+      Optional<cy> $$4 = cy.a($$0.get("state"));
+      if ($$3 != null) {
+         $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
+               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
+            }));
+      }
+
+      return new cv.a($$1, $$3, $$4);
+   }
+
+   @Nullable
+   private static csm a(JsonObject $$0) {
+      if ($$0.has("block")) {
+         aer $$1 = new aer(arg.i($$0, "block"));
+         return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
+      } else {
+         return null;
       }
    }
 
-   @Override
-   public final void a(aex $$0) {
-      this.a.remove($$0);
+   public void a(akl $$0, dfa $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   protected abstract T b(JsonObject var1, ba var2, be var3);
+   public static class a extends ar {
+      @Nullable
+      private final csm a;
+      private final Optional<cy> b;
 
-   public final T b(JsonObject $$0, be $$1) {
-      ba $$2 = bo.a($$0, "player", $$1);
-      return this.b($$0, $$2, $$1);
-   }
+      public a(Optional<ba> $$0, @Nullable csm $$1, Optional<cy> $$2) {
+         super(cv.a, $$0);
+         this.a = $$1;
+         this.b = $$2;
+      }
 
-   protected void a(akj $$0, Predicate<T> $$1) {
-      aex $$2 = $$0.N();
-      Set<al.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         ech $$4 = bo.b($$0, $$0);
-         List<al.a<T>> $$5 = null;
+      public static cv.a a(csm $$0) {
+         return new cv.a(Optional.empty(), $$0, Optional.empty());
+      }
 
-         for (al.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7) && $$7.b().a($$4)) {
-               if ($$5 == null) {
-                  $$5 = Lists.newArrayList();
-               }
-
-               $$5.add($$6);
-            }
+      @Override
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         if (this.a != null) {
+            $$0.addProperty("block", jb.f.b(this.a).toString());
          }
 
-         if ($$5 != null) {
-            for (al.a<T> $$8 : $$5) {
-               $$8.a($$2);
-            }
-         }
+         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
+         return $$0;
+      }
+
+      public boolean a(dfa $$0) {
+         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }
 }

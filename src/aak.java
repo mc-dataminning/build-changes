@@ -1,32 +1,24 @@
-public class aak implements uw<wo> {
-   private final te a;
-   private final te b;
-
-   public aak(te $$0, te $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public aak(sh $$0) {
-      this.a = $$0.l();
-      this.b = $$0.l();
+public record aak(tf a, boolean b) implements ux<wp> {
+   public aak(si $$0) {
+      this($$0.l(), $$0.readBoolean());
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public te a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public te d() {
+   public boolean d() {
       return this.b;
    }
 }

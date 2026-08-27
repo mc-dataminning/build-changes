@@ -1,5 +1,9 @@
-public class egb extends ecr<egc> {
-   public egb(ecq<? extends egc> $$0) {
-      super($$0);
+public interface egb extends eci {
+   float b(ech var1);
+
+   default int a(ech $$0) {
+      return Math.round(this.b($$0));
    }
+
+   ega b();
 }

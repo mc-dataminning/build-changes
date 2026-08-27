@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3567;
+   public static final int b = 3569;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "23w31a";
+   public static final String d = "23w32a";
    @Deprecated
    public static final int e = 764;
    @Deprecated
-   public static final int f = 144;
+   public static final int f = 145;
    public static final int g = 3563;
    private static final int bi = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 16;
+   public static final int i = 17;
    @Deprecated
-   public static final int j = 16;
+   public static final int j = 17;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -177,22 +177,22 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741968;
+      return 1073741969;
    }
 
-   public static boolean a(cor $$0) {
+   public static boolean a(cot $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ap ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aT = asq.t;
+      aT = ass.t;
    }
 
    static {
       ResourceLeakDetector.setLevel(aG);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dl();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dk();
    }
 }

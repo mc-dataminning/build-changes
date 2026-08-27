@@ -1,78 +1,38 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 
-public class fgs<T extends bvj> extends ffu<T> {
-   private static final String j = "egg_belly";
-   private final fhj k;
+public class fgs<T extends bwc> extends fdm<T> {
+   private final fhn a;
+   private final fhn b;
 
-   public fgs(fhj $$0) {
-      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
-      this.k = $$0.b("egg_belly");
+   public fgs(fhn $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fhp c() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("head", fho.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fhl.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         fho.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         fhl.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("egg_belly", fho.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fhl.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", fho.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fhl.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", fho.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fhl.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", fho.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fhl.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fho.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fhl.a(5.0F, 21.0F, -4.0F));
-      return fhp.a($$0, 128, 64);
+   public static fht c() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fhs.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fhp.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fhs.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fhp.a(0.0F, 22.0F, 0.0F));
+      return fht.a($$0, 16, 16);
    }
 
    @Override
-   protected Iterable<fhj> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   protected Iterable<fhn> a() {
+      return ImmutableList.of(this.a);
+   }
+
+   @Override
+   protected Iterable<fhn> b() {
+      return ImmutableList.of(this.b);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.f.e = aro.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.g.e = aro.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.h.g = aro.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.i.g = aro.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.h.e = 0.0F;
-      this.i.e = 0.0F;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-      this.f.f = 0.0F;
-      this.g.f = 0.0F;
-      if (!$$0.aX() && $$0.aA()) {
-         float $$6 = $$0.q() ? 4.0F : 1.0F;
-         float $$7 = $$0.q() ? 2.0F : 1.0F;
-         float $$8 = 5.0F;
-         this.h.f = aro.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
-         this.h.g = 0.0F;
-         this.i.f = aro.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
-         this.i.g = 0.0F;
-         this.f.f = aro.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
-         this.f.e = 0.0F;
-         this.g.f = aro.b($$1 * 5.0F) * 3.0F * $$2;
-         this.g.e = 0.0F;
-      }
-
-      this.k.k = !this.e && $$0.p();
-   }
-
-   @Override
-   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      boolean $$8 = this.k.k;
-      if ($$8) {
-         $$0.a();
-         $$0.a(0.0F, -0.08F, 0.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$8) {
-         $$0.b();
-      }
+      float $$6 = $$0.aX() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * arp.a(0.3F * $$3);
    }
 }

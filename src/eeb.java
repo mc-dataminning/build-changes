@@ -1,61 +1,68 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class eeb extends edv {
-   final List<Pair<hf<dcb>, chk>> a;
-   final boolean b;
+public class eeb extends edt {
+   public static final Codec<eeb> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.b), ecy.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eeb::new)
+   );
+   private final he<dco<?>> b;
+   private final List<eda> c;
 
-   eeb(efh[] $$0, List<Pair<hf<dcb>, chk>> $$1, boolean $$2) {
+   eeb(List<efg> $$0, he<dco<?>> $$1, List<eda> $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   protected ciw a(ciw $$0, ech $$1) {
-      qs $$2 = cgp.a($$0);
-      if ($$2 == null) {
-         $$2 = new qs();
-      }
+   public edv b() {
+      return edw.p;
+   }
 
-      dcb.a $$3 = new dcb.a();
-      this.a.forEach($$3::a);
-      qy $$4 = $$3.a();
-      qy $$5;
-      if (this.b) {
-         $$5 = $$2.c("Patterns", 10).e();
-         $$5.addAll($$4);
+   @Override
+   public ciy a(ciy $$0, ech $$1) {
+      if ($$0.b()) {
+         return $$0;
       } else {
-         $$5 = $$4;
-      }
+         hn<ciy> $$2 = hn.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ecp.a($$1.d(), $$2::add), $$1)));
+         qr $$3 = new qr();
+         bgk.a($$3, $$2);
+         qr $$4 = cgr.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
+         } else {
+            $$4.a($$3);
+         }
 
-      $$2.a("Patterns", $$5);
-      cgp.a($$0, dcm.t, $$2);
-      return $$0;
+         cgr.a($$0, this.b.a(), $$4);
+         return $$0;
+      }
    }
 
    @Override
-   public edx b() {
-      return edy.x;
+   public void a(ecq $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".entry[" + $$1 + "]"));
+      }
    }
 
-   public static eeb.a a(boolean $$0) {
+   public static eeb.a a(dco<?> $$0) {
       return new eeb.a($$0);
    }
 
-   public static class a extends edv.a<eeb.a> {
-      private final Builder<Pair<hf<dcb>, chk>> a = ImmutableList.builder();
-      private final boolean b;
+   public static class a extends edt.a<eeb.a> {
+      private final Builder<eda> a = ImmutableList.builder();
+      private final dco<?> b;
 
-      a(boolean $$0) {
+      public a(dco<?> $$0) {
          this.b = $$0;
       }
 
@@ -63,64 +70,14 @@ public class eeb extends edv {
          return this;
       }
 
-      @Override
-      public edw b() {
-         return new eeb(this.g(), this.a.build(), this.b);
-      }
-
-      public eeb.a a(aeo<dcb> $$0, chk $$1) {
-         return this.a(jc.al.f($$0), $$1);
-      }
-
-      public eeb.a a(hf<dcb> $$0, chk $$1) {
-         this.a.add(Pair.of($$0, $$1));
+      public eeb.a a(eda.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
-   }
 
-   public static class b extends edv.c<eeb> {
-      public void a(JsonObject $$0, eeb $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         JsonArray $$3 = new JsonArray();
-         $$1.a
-            .forEach(
-               $$1x -> {
-                  JsonObject $$2x = new JsonObject();
-                  $$2x.addProperty(
-                     "pattern",
-                     ((aeo)((hf)$$1x.getFirst()).e().orElseThrow(() -> new JsonSyntaxException("Unknown pattern: " + $$1x.getFirst()))).a().toString()
-                  );
-                  $$2x.addProperty("color", ((chk)$$1x.getSecond()).b());
-                  $$3.add($$2x);
-               }
-            );
-         $$0.add("patterns", $$3);
-         $$0.addProperty("append", $$1.b);
-      }
-
-      public eeb a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         Builder<Pair<hf<dcb>, chk>> $$3 = ImmutableList.builder();
-         JsonArray $$4 = arf.v($$0, "patterns");
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            JsonObject $$6 = arf.m($$4.get($$5), "pattern[" + $$5 + "]");
-            String $$7 = arf.i($$6, "pattern");
-            Optional<? extends hf<dcb>> $$8 = jc.al.b(aeo.a(jd.c, new aep($$7)));
-            if ($$8.isEmpty()) {
-               throw new JsonSyntaxException("Unknown pattern: " + $$7);
-            }
-
-            String $$9 = arf.i($$6, "color");
-            chk $$10 = chk.a($$9, null);
-            if ($$10 == null) {
-               throw new JsonSyntaxException("Unknown color: " + $$9);
-            }
-
-            $$3.add(Pair.of($$8.get(), $$10));
-         }
-
-         boolean $$11 = arf.k($$0, "append");
-         return new eeb($$2, $$3.build(), $$11);
+      @Override
+      public edu b() {
+         return new eeb(this.g(), this.b.a(), this.a.build());
       }
    }
 }

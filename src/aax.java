@@ -1,24 +1,6 @@
-public class aax implements uw<aav> {
-   private final int a;
-
-   public aax(int $$0) {
-      this.a = $$0;
-   }
-
-   public aax(sh $$0) {
-      this.a = $$0.m();
-   }
-
+public interface aax extends ss {
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-   }
-
-   public void a(aav $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
+   default boolean d() {
+      return false;
    }
 }

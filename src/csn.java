@@ -1,97 +1,1124 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.ToIntFunction;
 
-public class csn extends crx {
-   public static final dfp[] a = new dfp[]{dfo.k, dfo.l, dfo.m};
-   protected static final ehy b = ehv.a(csk.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), csk.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public class csn {
+   public static final csm a = a("air", new crk(dez.d.a().o().b().g().l()));
+   public static final csm b = a("stone", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm c = a("granite", new csm(dez.d.a().a(eah.k).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm d = a("polished_granite", new csm(dez.d.a().a(eah.k).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm e = a("diorite", new csm(dez.d.a().a(eah.o).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm f = a("polished_diorite", new csm(dez.d.a().a(eah.o).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm g = a("andesite", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm h = a("polished_andesite", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm i = a("grass_block", new cvu(dez.d.a().a(eah.b).e().d(0.6F).a(czz.d)));
+   public static final csm j = a("dirt", new csm(dez.d.a().a(eah.k).d(0.5F).a(czz.c)));
+   public static final csm k = a("coarse_dirt", new csm(dez.d.a().a(eah.k).d(0.5F).a(czz.c)));
+   public static final csm l = a("podzol", new czw(dez.d.a().a(eah.I).d(0.5F).a(czz.c)));
+   public static final csm m = a("cobblestone", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm n = a("oak_planks", new csm(dez.d.a().a(eah.n).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm o = a("spruce_planks", new csm(dez.d.a().a(eah.I).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm p = a("birch_planks", new csm(dez.d.a().a(eah.c).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm q = a("jungle_planks", new csm(dez.d.a().a(eah.k).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm r = a("acacia_planks", new csm(dez.d.a().a(eah.p).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm s = a("cherry_planks", new csm(dez.d.a().a(eah.K).a(dgb.e).a(2.0F, 3.0F).a(czz.aQ).h()));
+   public static final csm t = a("dark_oak_planks", new csm(dez.d.a().a(eah.A).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm u = a("mangrove_planks", new csm(dez.d.a().a(eah.C).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm v = a("bamboo_planks", new csm(dez.d.a().a(eah.s).a(dgb.e).a(2.0F, 3.0F).a(czz.aO).h()));
+   public static final csm w = a("bamboo_mosaic", new csm(dez.d.a().a(eah.s).a(dgb.e).a(2.0F, 3.0F).a(czz.aO).h()));
+   public static final csm x = a("oak_sapling", new cza(new deo(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm y = a("spruce_sapling", new cza(new dep(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm z = a("birch_sapling", new cza(new dej(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm A = a("jungle_sapling", new cza(new dem(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm B = a("acacia_sapling", new cza(new deh(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm C = a("cherry_sapling", new cza(new dek(), dez.d.a().a(eah.u).b().e().d().a(czz.aR).a(eai.b)));
+   public static final csm D = a("dark_oak_sapling", new cza(new del(), dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm E = a("mangrove_propagule", new cxe(dez.d.a().a(eah.h).b().e().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm F = a("bedrock", new csm(dez.d.a().a(eah.l).a(dgb.b).a(-1.0F, 3600000.0F).g().a(csn::a)));
+   public static final csm G = a("water", new cwz(eae.c, dez.d.a().a(eah.m).o().b().d(100.0F).a(eai.b).g().i().a(czz.a)));
+   public static final csm H = a("lava", new cwz(eae.e, dez.d.a().a(eah.e).o().b().e().d(100.0F).a($$0x -> 15).a(eai.b).g().i().a(czz.a)));
+   public static final csm I = a("sand", new cyz(14406560, dez.d.a().a(eah.c).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm J = a("suspicious_sand", new csq(I, dez.d.a().a(eah.c).a(dgb.c).d(0.25F).a(czz.aV).a(eai.b), aow.cm, aow.co));
+   public static final csm K = a("red_sand", new cyz(11098145, dez.d.a().a(eah.p).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm L = a("gravel", new cvv(dez.d.a().a(eah.l).a(dgb.c).d(0.6F).a(czz.c)));
+   public static final csm M = a("suspicious_gravel", new csq(L, dez.d.a().a(eah.l).a(dgb.c).d(0.25F).a(czz.aW).a(eai.b), aow.cn, aow.cp));
+   public static final csm N = a("gold_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F)));
+   public static final csm O = a("deepslate_gold_ore", new cus(dez.d.a((dez)N).a(eah.ah).a(4.5F, 3.0F).a(czz.aA)));
+   public static final csm P = a("iron_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F)));
+   public static final csm Q = a("deepslate_iron_ore", new cus(dez.d.a((dez)P).a(eah.ah).a(4.5F, 3.0F).a(czz.aA)));
+   public static final csm R = a("coal_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F), bgb.a(0, 2)));
+   public static final csm S = a("deepslate_coal_ore", new cus(dez.d.a((dez)R).a(eah.ah).a(4.5F, 3.0F).a(czz.aA), bgb.a(0, 2)));
+   public static final csm T = a("nether_gold_ore", new cus(dez.d.a().a(eah.J).a(dgb.b).m().a(3.0F, 3.0F).a(czz.V), bgb.a(0, 1)));
+   public static final csm U = a("oak_log", a(eah.n, eah.I));
+   public static final csm V = a("spruce_log", a(eah.I, eah.A));
+   public static final csm W = a("birch_log", a(eah.c, eah.o));
+   public static final csm X = a("jungle_log", a(eah.k, eah.I));
+   public static final csm Y = a("acacia_log", a(eah.p, eah.l));
+   public static final csm Z = a("cherry_log", a(eah.K, eah.R, czz.aQ));
+   public static final csm aa = a("dark_oak_log", a(eah.A, eah.A));
+   public static final csm ab = a("mangrove_log", a(eah.C, eah.I));
+   public static final csm ac = a("mangrove_roots", new cxf(dez.d.a().a(eah.I).a(dgb.e).d(0.7F).e().a(czz.aG).c().b(csn::b).c(csn::b).c().h()));
+   public static final csm ad = a("muddy_mangrove_roots", new cyx(dez.d.a().a(eah.I).d(0.7F).a(czz.aH)));
+   public static final csm ae = a("bamboo_block", a(eah.s, eah.h, czz.aO));
+   public static final csm af = a("stripped_spruce_log", a(eah.I, eah.I));
+   public static final csm ag = a("stripped_birch_log", a(eah.c, eah.c));
+   public static final csm ah = a("stripped_jungle_log", a(eah.k, eah.k));
+   public static final csm ai = a("stripped_acacia_log", a(eah.p, eah.p));
+   public static final csm aj = a("stripped_cherry_log", a(eah.K, eah.Q, czz.aQ));
+   public static final csm ak = a("stripped_dark_oak_log", a(eah.A, eah.A));
+   public static final csm al = a("stripped_oak_log", a(eah.n, eah.n));
+   public static final csm am = a("stripped_mangrove_log", a(eah.C, eah.C));
+   public static final csm an = a("stripped_bamboo_block", a(eah.s, eah.s, czz.aO));
+   public static final csm ao = a("oak_wood", new cyx(dez.d.a().a(eah.n).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm ap = a("spruce_wood", new cyx(dez.d.a().a(eah.I).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm aq = a("birch_wood", new cyx(dez.d.a().a(eah.c).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm ar = a("jungle_wood", new cyx(dez.d.a().a(eah.k).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm as = a("acacia_wood", new cyx(dez.d.a().a(eah.v).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm at = a("cherry_wood", new cyx(dez.d.a().a(eah.R).a(dgb.e).d(2.0F).a(czz.aQ).h()));
+   public static final csm au = a("dark_oak_wood", new cyx(dez.d.a().a(eah.A).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm av = a("mangrove_wood", new cyx(dez.d.a().a(eah.C).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm aw = a("stripped_oak_wood", new cyx(dez.d.a().a(eah.n).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm ax = a("stripped_spruce_wood", new cyx(dez.d.a().a(eah.I).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm ay = a("stripped_birch_wood", new cyx(dez.d.a().a(eah.c).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm az = a("stripped_jungle_wood", new cyx(dez.d.a().a(eah.k).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm aA = a("stripped_acacia_wood", new cyx(dez.d.a().a(eah.p).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm aB = a("stripped_cherry_wood", new cyx(dez.d.a().a(eah.Q).a(dgb.e).d(2.0F).a(czz.aQ).h()));
+   public static final csm aC = a("stripped_dark_oak_wood", new cyx(dez.d.a().a(eah.A).a(dgb.e).d(2.0F).a(czz.b).h()));
+   public static final csm aD = a("stripped_mangrove_wood", a(eah.C, eah.C));
+   public static final csm aE = a("oak_leaves", a(czz.d));
+   public static final csm aF = a("spruce_leaves", a(czz.d));
+   public static final csm aG = a("birch_leaves", a(czz.d));
+   public static final csm aH = a("jungle_leaves", a(czz.d));
+   public static final csm aI = a("acacia_leaves", a(czz.d));
+   public static final csm aJ = a("cherry_leaves", new ctn(dez.d.a().a(eah.u).d(0.2F).e().a(czz.aS).c().a(csn::c).b(csn::b).c(csn::b).h().a(eai.b).a(csn::b)));
+   public static final csm aK = a("dark_oak_leaves", a(czz.d));
+   public static final csm aL = a("mangrove_leaves", new cxd(dez.d.a().a(eah.h).d(0.2F).e().a(czz.d).c().a(csn::c).b(csn::b).c(csn::b).h().a(eai.b).a(csn::b)));
+   public static final csm aM = a("azalea_leaves", a(czz.at));
+   public static final csm aN = a("flowering_azalea_leaves", a(czz.at));
+   public static final csm aO = a("sponge", new dab(dez.d.a().a(eah.s).d(0.6F).a(czz.d)));
+   public static final csm aP = a("wet_sponge", new dbw(dez.d.a().a(eah.s).d(0.6F).a(czz.d)));
+   public static final csm aQ = a("glass", new cvr(dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c().a(csn::a).a(csn::b).b(csn::b).c(csn::b)));
+   public static final csm aR = a("lapis_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F), bgb.a(2, 5)));
+   public static final csm aS = a("deepslate_lapis_ore", new cus(dez.d.a((dez)aR).a(eah.ah).a(4.5F, 3.0F).a(czz.aA), bgb.a(2, 5)));
+   public static final csm aT = a("lapis_block", new csm(dez.d.a().a(eah.G).m().a(3.0F, 3.0F)));
+   public static final csm aU = a("dispenser", new cun(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F)));
+   public static final csm aV = a("sandstone", new csm(dez.d.a().a(eah.c).a(dgb.b).m().d(0.8F)));
+   public static final csm aW = a("chiseled_sandstone", new csm(dez.d.a().a(eah.c).a(dgb.b).m().d(0.8F)));
+   public static final csm aX = a("cut_sandstone", new csm(dez.d.a().a(eah.c).a(dgb.b).m().d(0.8F)));
+   public static final csm aY = a("note_block", new cxt(dez.d.a().a(eah.n).a(dgb.e).a(czz.b).d(0.8F).h()));
+   public static final csm aZ = a("white_bed", a(chm.a));
+   public static final csm ba = a("orange_bed", a(chm.b));
+   public static final csm bb = a("magenta_bed", a(chm.c));
+   public static final csm bc = a("light_blue_bed", a(chm.d));
+   public static final csm bd = a("yellow_bed", a(chm.e));
+   public static final csm be = a("lime_bed", a(chm.f));
+   public static final csm bf = a("pink_bed", a(chm.g));
+   public static final csm bg = a("gray_bed", a(chm.h));
+   public static final csm bh = a("light_gray_bed", a(chm.i));
+   public static final csm bi = a("cyan_bed", a(chm.j));
+   public static final csm bj = a("purple_bed", a(chm.k));
+   public static final csm bk = a("blue_bed", a(chm.l));
+   public static final csm bl = a("brown_bed", a(chm.m));
+   public static final csm bm = a("green_bed", a(chm.n));
+   public static final csm bn = a("red_bed", a(chm.o));
+   public static final csm bo = a("black_bed", a(chm.p));
+   public static final csm bp = a("powered_rail", new cyh(dez.d.a().b().d(0.7F).a(czz.g)));
+   public static final csm bq = a("detector_rail", new cuj(dez.d.a().b().d(0.7F).a(czz.g)));
+   public static final csm br = a("sticky_piston", a(true));
+   public static final csm bs = a("cobweb", new dbs(dez.d.a().a(eah.d).j().b().m().d(4.0F).a(eai.b)));
+   public static final csm bt = a("grass", new das(dez.d.a().a(eah.h).o().b().d().a(czz.d).a(dez.c.c).h().a(eai.b)));
+   public static final csm bu = a("fern", new das(dez.d.a().a(eah.h).o().b().d().a(czz.d).a(dez.c.c).h().a(eai.b)));
+   public static final csm bv = a("dead_bush", new cuh(dez.d.a().a(eah.n).o().b().d().a(czz.d).h().a(eai.b)));
+   public static final csm bw = a("seagrass", new czk(dez.d.a().a(eah.m).o().b().d().a(czz.q).a(eai.b)));
+   public static final csm bx = a("tall_seagrass", new dat(dez.d.a().a(eah.m).o().b().d().a(czz.q).a(dez.c.b).a(eai.b)));
+   public static final csm by = a("piston", a(false));
+   public static final csm bz = a("piston_head", new deu(dez.d.a().a(eah.l).d(1.5F).g().a(eai.c)));
+   public static final csm bA = a("white_wool", new csm(dez.d.a().a(eah.i).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bB = a("orange_wool", new csm(dez.d.a().a(eah.p).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bC = a("magenta_wool", new csm(dez.d.a().a(eah.q).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bD = a("light_blue_wool", new csm(dez.d.a().a(eah.r).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bE = a("yellow_wool", new csm(dez.d.a().a(eah.s).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bF = a("lime_wool", new csm(dez.d.a().a(eah.t).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bG = a("pink_wool", new csm(dez.d.a().a(eah.u).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bH = a("gray_wool", new csm(dez.d.a().a(eah.v).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bI = a("light_gray_wool", new csm(dez.d.a().a(eah.w).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bJ = a("cyan_wool", new csm(dez.d.a().a(eah.x).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bK = a("purple_wool", new csm(dez.d.a().a(eah.y).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bL = a("blue_wool", new csm(dez.d.a().a(eah.z).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bM = a("brown_wool", new csm(dez.d.a().a(eah.A).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bN = a("green_wool", new csm(dez.d.a().a(eah.B).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bO = a("red_wool", new csm(dez.d.a().a(eah.C).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bP = a("black_wool", new csm(dez.d.a().a(eah.D).a(dgb.h).d(0.8F).a(czz.i).h()));
+   public static final csm bQ = a("moving_piston", new des(dez.d.a().a(eah.l).j().d(-1.0F).f().g().c().a(csn::b).b(csn::b).c(csn::b).a(eai.c)));
+   public static final csm bR = a("dandelion", new cvk(bhx.w, 7, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bS = a("torchflower", new cvk(bhx.p, 5, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bT = a("poppy", new cvk(bhx.p, 5, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bU = a("blue_orchid", new cvk(bhx.w, 7, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bV = a("allium", new cvk(bhx.l, 4, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bW = a("azure_bluet", new cvk(bhx.o, 8, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bX = a("red_tulip", new cvk(bhx.r, 9, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bY = a("orange_tulip", new cvk(bhx.r, 9, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm bZ = a("white_tulip", new cvk(bhx.r, 9, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm ca = a("pink_tulip", new cvk(bhx.r, 9, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm cb = a("oxeye_daisy", new cvk(bhx.j, 8, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm cc = a("cornflower", new cvk(bhx.h, 6, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm cd = a("wither_rose", new dbx(bhx.t, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm ce = a("lily_of_the_valley", new cvk(bhx.s, 12, dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).a(eai.b)));
+   public static final csm cf = a("brown_mushroom", new cxm(dez.d.a().a(eah.A).b().e().d().a(czz.d).a($$0x -> 1).d(csn::a).a(eai.b), or.e));
+   public static final csm cg = a("red_mushroom", new cxm(dez.d.a().a(eah.C).b().e().d().a(czz.d).d(csn::a).a(eai.b), or.f));
+   public static final csm ch = a("gold_block", new csm(dez.d.a().a(eah.E).a(dgb.g).m().a(3.0F, 6.0F).a(czz.g)));
+   public static final csm ci = a("iron_block", new csm(dez.d.a().a(eah.g).a(dgb.k).m().a(5.0F, 6.0F).a(czz.g)));
+   public static final csm cj = a("bricks", new csm(dez.d.a().a(eah.C).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm ck = a("tnt", new daw(dez.d.a().a(eah.e).d().a(czz.d).h().a(csn::b)));
+   public static final csm cl = a("bookshelf", new csm(dez.d.a().a(eah.n).a(dgb.e).d(1.5F).a(czz.b).h()));
+   public static final csm cm = a("chiseled_bookshelf", new ctp(dez.d.a().a(eah.n).a(dgb.e).d(1.5F).a(czz.aU).h()));
+   public static final csm cn = a("mossy_cobblestone", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm co = a("obsidian", new csm(dez.d.a().a(eah.D).a(dgb.b).m().a(50.0F, 1200.0F)));
+   public static final csm cp = a("torch", new dax(dez.d.a().b().d().a($$0x -> 14).a(czz.b).a(eai.b), iv.C));
+   public static final csm cq = a("wall_torch", new dbm(dez.d.a().b().d().a($$0x -> 14).a(czz.b).a(cp).a(eai.b), iv.C));
+   public static final csm cr = a("fire", new cvi(dez.d.a().a(eah.e).o().b().d().a($$0x -> 15).a(czz.i).a(eai.b)));
+   public static final csm cs = a("soul_fire", new czx(dez.d.a().a(eah.r).o().b().d().a($$0x -> 10).a(czz.i).a(eai.b)));
+   public static final csm ct = a("spawner", new daa(dez.d.a().a(eah.l).a(dgb.b).m().d(5.0F).a(czz.g).c()));
+   public static final csm cu = a("oak_stairs", new dag(n.n(), dez.d.a((dez)n)));
+   public static final csm cv = a("chest", new cto(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h(), () -> dco.b));
+   public static final csm cw = a("redstone_wire", new cyn(dez.d.a().b().d().a(eai.b)));
+   public static final csm cx = a("diamond_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F), bgb.a(3, 7)));
+   public static final csm cy = a("deepslate_diamond_ore", new cus(dez.d.a((dez)cx).a(eah.ah).a(4.5F, 3.0F).a(czz.aA), bgb.a(3, 7)));
+   public static final csm cz = a("diamond_block", new csm(dez.d.a().a(eah.F).m().a(5.0F, 6.0F).a(czz.g)));
+   public static final csm cA = a("crafting_table", new cuc(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm cB = a("wheat", new cud(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm cC = a("farmland", new cvf(dez.d.a().a(eah.k).e().d(0.6F).a(czz.c).c(csn::a).b(csn::a)));
+   public static final csm cD = a("furnace", new cvp(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F).a(a(13))));
+   public static final csm cE = a("oak_sign", new dah(dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).h(), dgn.a));
+   public static final csm cF = a("spruce_sign", new dah(dez.d.a().a(V.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.b));
+   public static final csm cG = a("birch_sign", new dah(dez.d.a().a(eah.c).j().a(dgb.e).b().d(1.0F).h(), dgn.c));
+   public static final csm cH = a("acacia_sign", new dah(dez.d.a().a(eah.p).j().a(dgb.e).b().d(1.0F).h(), dgn.d));
+   public static final csm cI = a("cherry_sign", new dah(dez.d.a().a(s.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.e));
+   public static final csm cJ = a("jungle_sign", new dah(dez.d.a().a(X.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.f));
+   public static final csm cK = a("dark_oak_sign", new dah(dez.d.a().a(aa.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.g));
+   public static final csm cL = a("mangrove_sign", new dah(dez.d.a().a(ab.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.j));
+   public static final csm cM = a("bamboo_sign", new dah(dez.d.a().a(v.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.k));
+   public static final csm cN = a("oak_door", new cuo(dez.d.a().a(n.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.e));
+   public static final csm cO = a("ladder", new cwp(dez.d.a().k().d(0.4F).a(czz.m).c().a(eai.b)));
+   public static final csm cP = a("rail", new cyk(dez.d.a().b().d(0.7F).a(czz.g)));
+   public static final csm cQ = a("cobblestone_stairs", new dag(m.n(), dez.d.a((dez)m)));
+   public static final csm cR = a("oak_wall_sign", new dbk(dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(cE).h(), dgn.a));
+   public static final csm cS = a("spruce_wall_sign", new dbk(dez.d.a().a(V.s()).j().a(dgb.e).b().d(1.0F).a(cF).h(), dgn.b));
+   public static final csm cT = a("birch_wall_sign", new dbk(dez.d.a().a(eah.c).j().a(dgb.e).b().d(1.0F).a(cG).h(), dgn.c));
+   public static final csm cU = a("acacia_wall_sign", new dbk(dez.d.a().a(eah.p).j().a(dgb.e).b().d(1.0F).a(cH).h(), dgn.d));
+   public static final csm cV = a("cherry_wall_sign", new dbk(dez.d.a().a(Z.s()).j().a(dgb.e).b().d(1.0F).a(cI).h(), dgn.e));
+   public static final csm cW = a("jungle_wall_sign", new dbk(dez.d.a().a(X.s()).j().a(dgb.e).b().d(1.0F).a(cJ).h(), dgn.f));
+   public static final csm cX = a("dark_oak_wall_sign", new dbk(dez.d.a().a(aa.s()).j().a(dgb.e).b().d(1.0F).a(cK).h(), dgn.g));
+   public static final csm cY = a("mangrove_wall_sign", new dbk(dez.d.a().a(ab.s()).j().a(dgb.e).b().d(1.0F).a(cL).h(), dgn.j));
+   public static final csm cZ = a("bamboo_wall_sign", new dbk(dez.d.a().a(v.s()).j().a(dgb.e).b().d(1.0F).h().a(cM), dgn.k));
+   public static final csm da = a("oak_hanging_sign", new ctk(dez.d.a().a(U.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.a));
+   public static final csm db = a("spruce_hanging_sign", new ctk(dez.d.a().a(V.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.b));
+   public static final csm dc = a("birch_hanging_sign", new ctk(dez.d.a().a(eah.c).j().a(dgb.e).b().d(1.0F).h(), dgn.c));
+   public static final csm dd = a("acacia_hanging_sign", new ctk(dez.d.a().a(eah.p).j().a(dgb.e).b().d(1.0F).h(), dgn.d));
+   public static final csm de = a("cherry_hanging_sign", new ctk(dez.d.a().a(eah.Q).j().a(dgb.e).b().d(1.0F).h(), dgn.e));
+   public static final csm df = a("jungle_hanging_sign", new ctk(dez.d.a().a(X.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.f));
+   public static final csm dg = a("dark_oak_hanging_sign", new ctk(dez.d.a().a(aa.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.g));
+   public static final csm dh = a("crimson_hanging_sign", new ctk(dez.d.a().a(eah.ab).j().a(dgb.e).b().d(1.0F), dgn.h));
+   public static final csm di = a("warped_hanging_sign", new ctk(dez.d.a().a(eah.ae).j().a(dgb.e).b().d(1.0F), dgn.i));
+   public static final csm dj = a("mangrove_hanging_sign", new ctk(dez.d.a().a(ab.s()).j().a(dgb.e).b().d(1.0F).h(), dgn.j));
+   public static final csm dk = a("bamboo_hanging_sign", new ctk(dez.d.a().a(eah.s).j().a(dgb.e).b().d(1.0F).h(), dgn.k));
+   public static final csm dl = a("oak_wall_hanging_sign", new dbj(dez.d.a().a(U.s()).j().a(dgb.e).b().d(1.0F).h().a(da), dgn.a));
+   public static final csm dm = a("spruce_wall_hanging_sign", new dbj(dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(db).h(), dgn.b));
+   public static final csm dn = a("birch_wall_hanging_sign", new dbj(dez.d.a().a(eah.c).j().a(dgb.e).b().d(1.0F).a(dc).h(), dgn.c));
+   public static final csm do = a("acacia_wall_hanging_sign", new dbj(dez.d.a().a(eah.p).j().a(dgb.e).b().d(1.0F).h().a(dd), dgn.d));
+   public static final csm dp = a("cherry_wall_hanging_sign", new dbj(dez.d.a().a(eah.Q).j().a(dgb.e).b().d(1.0F).h().a(de), dgn.e));
+   public static final csm dq = a("jungle_wall_hanging_sign", new dbj(dez.d.a().a(X.s()).j().a(dgb.e).b().d(1.0F).h().a(df), dgn.f));
+   public static final csm dr = a("dark_oak_wall_hanging_sign", new dbj(dez.d.a().a(aa.s()).j().a(dgb.e).b().d(1.0F).h().a(dg), dgn.g));
+   public static final csm ds = a("mangrove_wall_hanging_sign", new dbj(dez.d.a().a(ab.s()).j().a(dgb.e).b().d(1.0F).h().a(dj), dgn.j));
+   public static final csm dt = a("crimson_wall_hanging_sign", new dbj(dez.d.a().a(eah.ab).j().a(dgb.e).b().d(1.0F).a(dh), dgn.h));
+   public static final csm du = a("warped_wall_hanging_sign", new dbj(dez.d.a().a(eah.ae).j().a(dgb.e).b().d(1.0F).a(di), dgn.i));
+   public static final csm dv = a("bamboo_wall_hanging_sign", new dbj(dez.d.a().a(eah.s).j().a(dgb.e).b().d(1.0F).h().a(dk), dgn.k));
+   public static final csm dw = a("lever", new cww(dez.d.a().b().d(0.5F).a(czz.b).a(eai.b)));
+   public static final csm dx = a("stone_pressure_plate", new cyi(cyi.a.b, dez.d.a().a(eah.l).j().a(dgb.b).m().b().d(0.5F).a(eai.b), dfp.c));
+   public static final csm dy = a("iron_door", new cuo(dez.d.a().a(eah.g).m().d(5.0F).c().a(eai.b), dfp.a));
+   public static final csm dz = a("oak_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(n.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.e));
+   public static final csm dA = a("spruce_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(o.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.f));
+   public static final csm dB = a("birch_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(p.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.g));
+   public static final csm dC = a("jungle_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(q.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.j));
+   public static final csm dD = a("acacia_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(r.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.h));
+   public static final csm dE = a("cherry_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(s.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.i));
+   public static final csm dF = a("dark_oak_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(t.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.k));
+   public static final csm dG = a("mangrove_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(u.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.n));
+   public static final csm dH = a("bamboo_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(v.s()).j().a(dgb.e).b().d(0.5F).h().a(eai.b), dfp.o));
+   public static final csm dI = a("redstone_ore", new cym(dez.d.a().a(eah.l).a(dgb.b).m().e().a(a(9)).a(3.0F, 3.0F)));
+   public static final csm dJ = a("deepslate_redstone_ore", new cym(dez.d.a((dez)dI).a(eah.ah).a(4.5F, 3.0F).a(czz.aA)));
+   public static final csm dK = a("redstone_torch", new cyp(dez.d.a().b().d().a(a(7)).a(czz.b).a(eai.b)));
+   public static final csm dL = a("redstone_wall_torch", new cyq(dez.d.a().b().d().a(a(7)).a(czz.b).a(dK).a(eai.b)));
+   public static final csm dM = a("stone_button", b());
+   public static final csm dN = a("snow", new czv(dez.d.a().a(eah.i).o().k().e().d(0.1F).m().a(czz.k).c(($$0x, $$1x, $$2) -> $$0x.c(czv.b) >= 8).a(eai.b)));
+   public static final csm dO = a("ice", new cwh(dez.d.a().a(eah.f).a(0.98F).e().d(0.5F).a(czz.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bim.az).a(csn::b)));
+   public static final csm dP = a("snow_block", new csm(dez.d.a().a(eah.i).m().d(0.2F).a(czz.k)));
+   public static final csm dQ = a("cactus", new csw(dez.d.a().a(eah.h).e().d(0.4F).a(czz.i).a(eai.b)));
+   public static final csm dR = a("clay", new csm(dez.d.a().a(eah.j).a(dgb.f).d(0.6F).a(czz.c)));
+   public static final csm dS = a("sugar_cane", new dan(dez.d.a().a(eah.h).b().e().d().a(czz.d).a(eai.b)));
+   public static final csm dT = a("jukebox", new cwm(dez.d.a().a(eah.k).a(dgb.e).a(2.0F, 6.0F).h()));
+   public static final csm dU = a("oak_fence", new cvg(dez.d.a().a(n.s()).j().a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm dV = a("pumpkin", new cyj(dez.d.a().a(eah.p).a(dgb.m).d(1.0F).a(czz.b).a(eai.b)));
+   public static final csm dW = a("netherrack", new cxs(dez.d.a().a(eah.J).a(dgb.b).m().d(0.4F).a(czz.M)));
+   public static final csm dX = a("soul_sand", new czy(dez.d.a().a(eah.A).a(dgb.l).d(0.5F).b(0.4F).a(czz.I).a(csn::b).a(csn::a).c(csn::a).b(csn::a)));
+   public static final csm dY = a("soul_soil", new csm(dez.d.a().a(eah.A).d(0.5F).a(czz.J)));
+   public static final csm dZ = a("basalt", new cyx(dez.d.a().a(eah.D).a(dgb.b).m().a(1.25F, 4.2F).a(czz.K)));
+   public static final csm ea = a("polished_basalt", new cyx(dez.d.a().a(eah.D).a(dgb.b).m().a(1.25F, 4.2F).a(czz.K)));
+   public static final csm eb = a("soul_torch", new dax(dez.d.a().b().d().a($$0x -> 10).a(czz.b).a(eai.b), iv.H));
+   public static final csm ec = a("soul_wall_torch", new dbm(dez.d.a().b().d().a($$0x -> 10).a(czz.b).a(eb).a(eai.b), iv.H));
+   public static final csm ed = a("glowstone", new csm(dez.d.a().a(eah.c).a(dgb.p).d(0.3F).a(czz.h).a($$0x -> 15).a(csn::b)));
+   public static final csm ee = a("nether_portal", new cxo(dez.d.a().b().e().d(-1.0F).a(czz.h).a($$0x -> 11).a(eai.c)));
+   public static final csm ef = a("carved_pumpkin", new cvb(dez.d.a().a(eah.p).d(1.0F).a(czz.b).a(csn::b).a(eai.b)));
+   public static final csm eg = a("jack_o_lantern", new ctf(dez.d.a().a(eah.p).d(1.0F).a(czz.b).a($$0x -> 15).a(csn::b).a(eai.b)));
+   public static final csm eh = a("cake", new csx(dez.d.a().j().d(0.5F).a(czz.i).a(eai.b)));
+   public static final csm ei = a("repeater", new cys(dez.d.a().d().a(czz.b).a(eai.b)));
+   public static final csm ej = a("white_stained_glass", b(chm.a));
+   public static final csm ek = a("orange_stained_glass", b(chm.b));
+   public static final csm el = a("magenta_stained_glass", b(chm.c));
+   public static final csm em = a("light_blue_stained_glass", b(chm.d));
+   public static final csm en = a("yellow_stained_glass", b(chm.e));
+   public static final csm eo = a("lime_stained_glass", b(chm.f));
+   public static final csm ep = a("pink_stained_glass", b(chm.g));
+   public static final csm eq = a("gray_stained_glass", b(chm.h));
+   public static final csm er = a("light_gray_stained_glass", b(chm.i));
+   public static final csm es = a("cyan_stained_glass", b(chm.j));
+   public static final csm et = a("purple_stained_glass", b(chm.k));
+   public static final csm eu = a("blue_stained_glass", b(chm.l));
+   public static final csm ev = a("brown_stained_glass", b(chm.m));
+   public static final csm ew = a("green_stained_glass", b(chm.n));
+   public static final csm ex = a("red_stained_glass", b(chm.o));
+   public static final csm ey = a("black_stained_glass", b(chm.p));
+   public static final csm ez = a("oak_trapdoor", new daz(dez.d.a().a(eah.n).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.e));
+   public static final csm eA = a("spruce_trapdoor", new daz(dez.d.a().a(eah.I).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.f));
+   public static final csm eB = a("birch_trapdoor", new daz(dez.d.a().a(eah.c).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.g));
+   public static final csm eC = a("jungle_trapdoor", new daz(dez.d.a().a(eah.k).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.j));
+   public static final csm eD = a("acacia_trapdoor", new daz(dez.d.a().a(eah.p).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.h));
+   public static final csm eE = a("cherry_trapdoor", new daz(dez.d.a().a(eah.K).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.i));
+   public static final csm eF = a("dark_oak_trapdoor", new daz(dez.d.a().a(eah.A).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.k));
+   public static final csm eG = a("mangrove_trapdoor", new daz(dez.d.a().a(eah.C).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.n));
+   public static final csm eH = a("bamboo_trapdoor", new daz(dez.d.a().a(eah.s).a(dgb.e).d(3.0F).c().a(csn::a).h(), dfp.o));
+   public static final csm eI = a("stone_bricks", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm eJ = a("mossy_stone_bricks", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm eK = a("cracked_stone_bricks", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm eL = a("chiseled_stone_bricks", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm eM = a("packed_mud", new csm(dez.d.a((dez)j).a(1.0F, 3.0F).a(czz.aK)));
+   public static final csm eN = a("mud_bricks", new csm(dez.d.a().a(eah.S).a(dgb.b).m().a(1.5F, 3.0F).a(czz.aJ)));
+   public static final csm eO = a("infested_stone", new cwi(b, dez.d.a().a(eah.j)));
+   public static final csm eP = a("infested_cobblestone", new cwi(m, dez.d.a().a(eah.j)));
+   public static final csm eQ = a("infested_stone_bricks", new cwi(eI, dez.d.a().a(eah.j)));
+   public static final csm eR = a("infested_mossy_stone_bricks", new cwi(eJ, dez.d.a().a(eah.j)));
+   public static final csm eS = a("infested_cracked_stone_bricks", new cwi(eK, dez.d.a().a(eah.j)));
+   public static final csm eT = a("infested_chiseled_stone_bricks", new cwi(eL, dez.d.a().a(eah.j)));
+   public static final csm eU = a("brown_mushroom_block", new cwg(dez.d.a().a(eah.k).a(dgb.e).d(0.2F).a(czz.b).h()));
+   public static final csm eV = a("red_mushroom_block", new cwg(dez.d.a().a(eah.C).a(dgb.e).d(0.2F).a(czz.b).h()));
+   public static final csm eW = a("mushroom_stem", new cwg(dez.d.a().a(eah.d).a(dgb.e).d(0.2F).a(czz.b).h()));
+   public static final csm eX = a("iron_bars", new cwk(dez.d.a().m().a(5.0F, 6.0F).a(czz.g).c()));
+   public static final csm eY = a("chain", new ctl(dez.d.a().j().m().a(5.0F, 6.0F).a(czz.U).c()));
+   public static final csm eZ = a("glass_pane", new cwk(dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm fa = a("melon", new cxg(dez.d.a().a(eah.t).d(1.0F).a(czz.b).a(eai.b)));
+   public static final csm fb = a("attached_pumpkin_stem", new cro((daj)dV, () -> cjb.rj, dez.d.a().a(eah.h).b().d().a(czz.b).a(eai.b)));
+   public static final csm fc = a("attached_melon_stem", new cro((daj)fa, () -> cjb.rk, dez.d.a().a(eah.h).b().d().a(czz.b).a(eai.b)));
+   public static final csm fd = a("pumpkin_stem", new dai((daj)dV, () -> cjb.rj, dez.d.a().a(eah.h).b().e().d().a(czz.x).a(eai.b)));
+   public static final csm fe = a("melon_stem", new dai((daj)fa, () -> cjb.rk, dez.d.a().a(eah.h).b().e().d().a(czz.x).a(eai.b)));
+   public static final csm ff = a("vine", new dbg(dez.d.a().a(eah.h).o().b().e().d(0.2F).a(czz.y).h().a(eai.b)));
+   public static final csm fg = a("glow_lichen", new cvt(dez.d.a().a(eah.aj).o().b().d(0.2F).a(czz.az).a(cvt.b(7)).h().a(eai.b)));
+   public static final csm fh = a("oak_fence_gate", new cvh(dez.d.a().a(n.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.a));
+   public static final csm fi = a("brick_stairs", new dag(cj.n(), dez.d.a((dez)cj)));
+   public static final csm fj = a("stone_brick_stairs", new dag(eI.n(), dez.d.a((dez)eI)));
+   public static final csm fk = a("mud_brick_stairs", new dag(eN.n(), dez.d.a((dez)eN)));
+   public static final csm fl = a("mycelium", new cxn(dez.d.a().a(eah.y).e().d(0.6F).a(czz.d)));
+   public static final csm fm = a("lily_pad", new dbn(dez.d.a().a(eah.h).d().a(czz.e).c().a(eai.b)));
+   public static final csm fn = a("nether_bricks", new csm(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm fo = a("nether_brick_fence", new cvg(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm fp = a("nether_brick_stairs", new dag(fn.n(), dez.d.a((dez)fn)));
+   public static final csm fq = a("nether_wart", new cxr(dez.d.a().a(eah.C).b().e().a(czz.z).a(eai.b)));
+   public static final csm fr = a("enchanting_table", new cuu(dez.d.a().a(eah.C).a(dgb.b).m().a($$0x -> 7).a(5.0F, 1200.0F)));
+   public static final csm fs = a("brewing_stand", new csp(dez.d.a().a(eah.g).m().d(0.5F).a($$0x -> 1).c()));
+   public static final csm ft = a("cauldron", new ctg(dez.d.a().a(eah.l).m().d(2.0F).c()));
+   public static final csm fu = a("water_cauldron", new cws(dez.d.a((dez)ft), cws.f, ib.b));
+   public static final csm fv = a("lava_cauldron", new cwr(dez.d.a((dez)ft).a($$0x -> 15)));
+   public static final csm fw = a("powder_snow_cauldron", new cyf(dez.d.a((dez)ft), cws.g, ib.d));
+   public static final csm fx = a("end_portal", new cuw(dez.d.a().a(eah.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eai.c)));
+   public static final csm fy = a("end_portal_frame", new cux(dez.d.a().a(eah.B).a(dgb.b).a(czz.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g()));
+   public static final csm fz = a("end_stone", new csm(dez.d.a().a(eah.c).a(dgb.b).m().a(3.0F, 9.0F)));
+   public static final csm fA = a("dragon_egg", new cur(dez.d.a().a(eah.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(eai.b)));
+   public static final csm fB = a("redstone_lamp", new cyo(dez.d.a().a(a(15)).d(0.3F).a(czz.h).a(csn::b)));
+   public static final csm fC = a("cocoa", new cts(dez.d.a().a(eah.h).e().a(0.2F, 3.0F).a(czz.b).c().a(eai.b)));
+   public static final csm fD = a("sandstone_stairs", new dag(aV.n(), dez.d.a((dez)aV)));
+   public static final csm fE = a("emerald_ore", new cus(dez.d.a().a(eah.l).a(dgb.b).m().a(3.0F, 3.0F), bgb.a(3, 7)));
+   public static final csm fF = a("deepslate_emerald_ore", new cus(dez.d.a((dez)fE).a(eah.ah).a(4.5F, 3.0F).a(czz.aA), bgb.a(3, 7)));
+   public static final csm fG = a("ender_chest", new cuz(dez.d.a().a(eah.l).a(dgb.b).m().a(22.5F, 600.0F).a($$0x -> 7)));
+   public static final csm fH = a("tripwire_hook", new dbc(dez.d.a().b().a(eai.b)));
+   public static final csm fI = a("tripwire", new dbb((dbc)fH, dez.d.a().b().a(eai.b)));
+   public static final csm fJ = a("emerald_block", new csm(dez.d.a().a(eah.H).a(dgb.n).m().a(5.0F, 6.0F).a(czz.g)));
+   public static final csm fK = a("spruce_stairs", new dag(o.n(), dez.d.a((dez)o)));
+   public static final csm fL = a("birch_stairs", new dag(p.n(), dez.d.a((dez)p)));
+   public static final csm fM = a("jungle_stairs", new dag(q.n(), dez.d.a((dez)q)));
+   public static final csm fN = a("command_block", new ctt(dez.d.a().a(eah.A).m().a(-1.0F, 3600000.0F).g(), false));
+   public static final csm fO = a("beacon", new cse(dez.d.a().a(eah.F).a(dgb.d).d(3.0F).a($$0x -> 15).c().a(csn::b)));
+   public static final csm fP = a("cobblestone_wall", new dbi(dez.d.a((dez)m).j()));
+   public static final csm fQ = a("mossy_cobblestone_wall", new dbi(dez.d.a((dez)m).j()));
+   public static final csm fR = a("flower_pot", a(a));
+   public static final csm fS = a("potted_torchflower", a(bS));
+   public static final csm fT = a("potted_oak_sapling", a(x));
+   public static final csm fU = a("potted_spruce_sapling", a(y));
+   public static final csm fV = a("potted_birch_sapling", a(z));
+   public static final csm fW = a("potted_jungle_sapling", a(A));
+   public static final csm fX = a("potted_acacia_sapling", a(B));
+   public static final csm fY = a("potted_cherry_sapling", a(C));
+   public static final csm fZ = a("potted_dark_oak_sapling", a(D));
+   public static final csm ga = a("potted_mangrove_propagule", a(E));
+   public static final csm gb = a("potted_fern", a(bu));
+   public static final csm gc = a("potted_dandelion", a(bR));
+   public static final csm gd = a("potted_poppy", a(bT));
+   public static final csm ge = a("potted_blue_orchid", a(bU));
+   public static final csm gf = a("potted_allium", a(bV));
+   public static final csm gg = a("potted_azure_bluet", a(bW));
+   public static final csm gh = a("potted_red_tulip", a(bX));
+   public static final csm gi = a("potted_orange_tulip", a(bY));
+   public static final csm gj = a("potted_white_tulip", a(bZ));
+   public static final csm gk = a("potted_pink_tulip", a(ca));
+   public static final csm gl = a("potted_oxeye_daisy", a(cb));
+   public static final csm gm = a("potted_cornflower", a(cc));
+   public static final csm gn = a("potted_lily_of_the_valley", a(ce));
+   public static final csm go = a("potted_wither_rose", a(cd));
+   public static final csm gp = a("potted_red_mushroom", a(cg));
+   public static final csm gq = a("potted_brown_mushroom", a(cf));
+   public static final csm gr = a("potted_dead_bush", a(bv));
+   public static final csm gs = a("potted_cactus", a(dQ));
+   public static final csm gt = a("carrots", new ctd(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm gu = a("potatoes", new cyd(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm gv = a("oak_button", a(dfp.e));
+   public static final csm gw = a("spruce_button", a(dfp.f));
+   public static final csm gx = a("birch_button", a(dfp.g));
+   public static final csm gy = a("jungle_button", a(dfp.j));
+   public static final csm gz = a("acacia_button", a(dfp.h));
+   public static final csm gA = a("cherry_button", a(dfp.i));
+   public static final csm gB = a("dark_oak_button", a(dfp.k));
+   public static final csm gC = a("mangrove_button", a(dfp.n));
+   public static final csm gD = a("bamboo_button", a(dfp.o));
+   public static final csm gE = a("skeleton_skull", new czo(czo.b.a, dez.d.a().a(dgb.r).d(1.0F).a(eai.b)));
+   public static final csm gF = a("skeleton_wall_skull", new dbl(czo.b.a, dez.d.a().d(1.0F).a(gE).a(eai.b)));
+   public static final csm gG = a("wither_skeleton_skull", new dby(dez.d.a().a(dgb.u).d(1.0F).a(eai.b)));
+   public static final csm gH = a("wither_skeleton_wall_skull", new dbz(dez.d.a().d(1.0F).a(gG).a(eai.b)));
+   public static final csm gI = a("zombie_head", new czo(czo.b.d, dez.d.a().a(dgb.q).d(1.0F).a(eai.b)));
+   public static final csm gJ = a("zombie_wall_head", new dbl(czo.b.d, dez.d.a().d(1.0F).a(gI).a(eai.b)));
+   public static final csm gK = a("player_head", new cya(dez.d.a().a(dgb.w).d(1.0F).a(eai.b)));
+   public static final csm gL = a("player_wall_head", new cyb(dez.d.a().d(1.0F).a(gK).a(eai.b)));
+   public static final csm gM = a("creeper_head", new czo(czo.b.e, dez.d.a().a(dgb.s).d(1.0F).a(eai.b)));
+   public static final csm gN = a("creeper_wall_head", new dbl(czo.b.e, dez.d.a().d(1.0F).a(gM).a(eai.b)));
+   public static final csm gO = a("dragon_head", new czo(czo.b.g, dez.d.a().a(dgb.t).d(1.0F).a(eai.b)));
+   public static final csm gP = a("dragon_wall_head", new dbl(czo.b.g, dez.d.a().d(1.0F).a(gO).a(eai.b)));
+   public static final csm gQ = a("piglin_head", new czo(czo.b.f, dez.d.a().a(dgb.v).d(1.0F).a(eai.b)));
+   public static final csm gR = a("piglin_wall_head", new cxw(dez.d.a().d(1.0F).a(gQ).a(eai.b)));
+   public static final csm gS = a("anvil", new crn(dez.d.a().a(eah.g).m().a(5.0F, 1200.0F).a(czz.n).a(eai.c)));
+   public static final csm gT = a("chipped_anvil", new crn(dez.d.a().a(eah.g).m().a(5.0F, 1200.0F).a(czz.n).a(eai.c)));
+   public static final csm gU = a("damaged_anvil", new crn(dez.d.a().a(eah.g).m().a(5.0F, 1200.0F).a(czz.n).a(eai.c)));
+   public static final csm gV = a("trapped_chest", new dba(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm gW = a("light_weighted_pressure_plate", new dbv(15, dez.d.a().a(eah.E).j().m().b().d(0.5F).a(eai.b), dfp.b));
+   public static final csm gX = a("heavy_weighted_pressure_plate", new dbv(150, dez.d.a().a(eah.g).j().m().b().d(0.5F).a(eai.b), dfp.a));
+   public static final csm gY = a("comparator", new ctu(dez.d.a().d().a(czz.b).a(eai.b)));
+   public static final csm gZ = a("daylight_detector", new cug(dez.d.a().a(eah.n).a(dgb.e).d(0.2F).a(czz.b).h()));
+   public static final csm ha = a("redstone_block", new cyg(dez.d.a().a(eah.e).m().a(5.0F, 6.0F).a(czz.g).a(csn::b)));
+   public static final csm hb = a("nether_quartz_ore", new cus(dez.d.a().a(eah.J).a(dgb.b).m().a(3.0F, 3.0F).a(czz.P), bgb.a(2, 5)));
+   public static final csm hc = a("hopper", new cwe(dez.d.a().a(eah.l).m().a(3.0F, 4.8F).a(czz.g).c()));
+   public static final csm hd = a("quartz_block", new csm(dez.d.a().a(eah.o).a(dgb.b).m().d(0.8F)));
+   public static final csm he = a("chiseled_quartz_block", new csm(dez.d.a().a(eah.o).a(dgb.b).m().d(0.8F)));
+   public static final csm hf = a("quartz_pillar", new cyx(dez.d.a().a(eah.o).a(dgb.b).m().d(0.8F)));
+   public static final csm hg = a("quartz_stairs", new dag(hd.n(), dez.d.a((dez)hd)));
+   public static final csm hh = a("activator_rail", new cyh(dez.d.a().b().d(0.7F).a(czz.g)));
+   public static final csm hi = a("dropper", new cut(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F)));
+   public static final csm hj = a("white_terracotta", new csm(dez.d.a().a(eah.K).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hk = a("orange_terracotta", new csm(dez.d.a().a(eah.L).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hl = a("magenta_terracotta", new csm(dez.d.a().a(eah.M).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hm = a("light_blue_terracotta", new csm(dez.d.a().a(eah.N).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hn = a("yellow_terracotta", new csm(dez.d.a().a(eah.O).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm ho = a("lime_terracotta", new csm(dez.d.a().a(eah.P).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hp = a("pink_terracotta", new csm(dez.d.a().a(eah.Q).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hq = a("gray_terracotta", new csm(dez.d.a().a(eah.R).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hr = a("light_gray_terracotta", new csm(dez.d.a().a(eah.S).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hs = a("cyan_terracotta", new csm(dez.d.a().a(eah.T).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm ht = a("purple_terracotta", new csm(dez.d.a().a(eah.U).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hu = a("blue_terracotta", new csm(dez.d.a().a(eah.V).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hv = a("brown_terracotta", new csm(dez.d.a().a(eah.W).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hw = a("green_terracotta", new csm(dez.d.a().a(eah.X).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hx = a("red_terracotta", new csm(dez.d.a().a(eah.Y).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hy = a("black_terracotta", new csm(dez.d.a().a(eah.Z).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm hz = a("white_stained_glass_pane", new daf(chm.a, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hA = a("orange_stained_glass_pane", new daf(chm.b, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hB = a("magenta_stained_glass_pane", new daf(chm.c, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hC = a("light_blue_stained_glass_pane", new daf(chm.d, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hD = a("yellow_stained_glass_pane", new daf(chm.e, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hE = a("lime_stained_glass_pane", new daf(chm.f, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hF = a("pink_stained_glass_pane", new daf(chm.g, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hG = a("gray_stained_glass_pane", new daf(chm.h, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hH = a("light_gray_stained_glass_pane", new daf(chm.i, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hI = a("cyan_stained_glass_pane", new daf(chm.j, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hJ = a("purple_stained_glass_pane", new daf(chm.k, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hK = a("blue_stained_glass_pane", new daf(chm.l, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hL = a("brown_stained_glass_pane", new daf(chm.m, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hM = a("green_stained_glass_pane", new daf(chm.n, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hN = a("red_stained_glass_pane", new daf(chm.o, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hO = a("black_stained_glass_pane", new daf(chm.p, dez.d.a().a(dgb.d).d(0.3F).a(czz.h).c()));
+   public static final csm hP = a("acacia_stairs", new dag(r.n(), dez.d.a((dez)r)));
+   public static final csm hQ = a("cherry_stairs", new dag(s.n(), dez.d.a((dez)s)));
+   public static final csm hR = a("dark_oak_stairs", new dag(t.n(), dez.d.a((dez)t)));
+   public static final csm hS = a("mangrove_stairs", new dag(u.n(), dez.d.a((dez)u)));
+   public static final csm hT = a("bamboo_stairs", new dag(v.n(), dez.d.a((dez)v)));
+   public static final csm hU = a("bamboo_mosaic_stairs", new dag(w.n(), dez.d.a((dez)w)));
+   public static final csm hV = a("slime_block", new czq(dez.d.a().a(eah.b).a(0.8F).a(czz.o).c()));
+   public static final csm hW = a("barrier", new cru(dez.d.a().a(-1.0F, 3600000.8F).g().c().a(csn::a).n().a(eai.c)));
+   public static final csm hX = a("light", new cwx(dez.d.a().o().a(-1.0F, 3600000.8F).g().c().a(cwx.d)));
+   public static final csm hY = a("iron_trapdoor", new daz(dez.d.a().a(eah.g).m().d(5.0F).c().a(csn::a), dfp.a));
+   public static final csm hZ = a("prismarine", new csm(dez.d.a().a(eah.x).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ia = a("prismarine_bricks", new csm(dez.d.a().a(eah.F).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ib = a("dark_prismarine", new csm(dez.d.a().a(eah.F).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ic = a("prismarine_stairs", new dag(hZ.n(), dez.d.a((dez)hZ)));
+   public static final csm id = a("prismarine_brick_stairs", new dag(ia.n(), dez.d.a((dez)ia)));
+   public static final csm ie = a("dark_prismarine_stairs", new dag(ib.n(), dez.d.a((dez)ib)));
+   public static final csm if = a("prismarine_slab", new czp(dez.d.a().a(eah.x).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ig = a("prismarine_brick_slab", new czp(dez.d.a().a(eah.F).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ih = a("dark_prismarine_slab", new czp(dez.d.a().a(eah.F).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ii = a("sea_lantern", new csm(dez.d.a().a(eah.o).a(dgb.d).d(0.3F).a(czz.h).a($$0x -> 15).a(csn::b)));
+   public static final csm ij = a("hay_block", new cwc(dez.d.a().a(eah.s).a(dgb.o).d(0.5F).a(czz.d)));
+   public static final csm ik = a("white_carpet", new dca(chm.a, dez.d.a().a(eah.i).d(0.1F).a(czz.i).h()));
+   public static final csm il = a("orange_carpet", new dca(chm.b, dez.d.a().a(eah.p).d(0.1F).a(czz.i).h()));
+   public static final csm im = a("magenta_carpet", new dca(chm.c, dez.d.a().a(eah.q).d(0.1F).a(czz.i).h()));
+   public static final csm in = a("light_blue_carpet", new dca(chm.d, dez.d.a().a(eah.r).d(0.1F).a(czz.i).h()));
+   public static final csm io = a("yellow_carpet", new dca(chm.e, dez.d.a().a(eah.s).d(0.1F).a(czz.i).h()));
+   public static final csm ip = a("lime_carpet", new dca(chm.f, dez.d.a().a(eah.t).d(0.1F).a(czz.i).h()));
+   public static final csm iq = a("pink_carpet", new dca(chm.g, dez.d.a().a(eah.u).d(0.1F).a(czz.i).h()));
+   public static final csm ir = a("gray_carpet", new dca(chm.h, dez.d.a().a(eah.v).d(0.1F).a(czz.i).h()));
+   public static final csm is = a("light_gray_carpet", new dca(chm.i, dez.d.a().a(eah.w).d(0.1F).a(czz.i).h()));
+   public static final csm it = a("cyan_carpet", new dca(chm.j, dez.d.a().a(eah.x).d(0.1F).a(czz.i).h()));
+   public static final csm iu = a("purple_carpet", new dca(chm.k, dez.d.a().a(eah.y).d(0.1F).a(czz.i).h()));
+   public static final csm iv = a("blue_carpet", new dca(chm.l, dez.d.a().a(eah.z).d(0.1F).a(czz.i).h()));
+   public static final csm iw = a("brown_carpet", new dca(chm.m, dez.d.a().a(eah.A).d(0.1F).a(czz.i).h()));
+   public static final csm ix = a("green_carpet", new dca(chm.n, dez.d.a().a(eah.B).d(0.1F).a(czz.i).h()));
+   public static final csm iy = a("red_carpet", new dca(chm.o, dez.d.a().a(eah.C).d(0.1F).a(czz.i).h()));
+   public static final csm iz = a("black_carpet", new dca(chm.p, dez.d.a().a(eah.D).d(0.1F).a(czz.i).h()));
+   public static final csm iA = a("terracotta", new csm(dez.d.a().a(eah.p).a(dgb.b).m().a(1.25F, 4.2F)));
+   public static final csm iB = a("coal_block", new csm(dez.d.a().a(eah.D).a(dgb.b).m().a(5.0F, 6.0F)));
+   public static final csm iC = a("packed_ice", new csm(dez.d.a().a(eah.f).a(dgb.i).a(0.98F).d(0.5F).a(czz.h)));
+   public static final csm iD = a("sunflower", new dar(dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iE = a("lilac", new dar(dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iF = a("rose_bush", new dar(dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iG = a("peony", new dar(dez.d.a().a(eah.h).b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iH = a("tall_grass", new cuq(dez.d.a().a(eah.h).o().b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iI = a("large_fern", new cuq(dez.d.a().a(eah.h).o().b().d().a(czz.d).a(dez.c.b).h().a(eai.b)));
+   public static final csm iJ = a("white_banner", new crs(chm.a, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iK = a("orange_banner", new crs(chm.b, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iL = a("magenta_banner", new crs(chm.c, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iM = a("light_blue_banner", new crs(chm.d, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iN = a("yellow_banner", new crs(chm.e, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iO = a("lime_banner", new crs(chm.f, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iP = a("pink_banner", new crs(chm.g, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iQ = a("gray_banner", new crs(chm.h, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iR = a("light_gray_banner", new crs(chm.i, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iS = a("cyan_banner", new crs(chm.j, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iT = a("purple_banner", new crs(chm.k, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iU = a("blue_banner", new crs(chm.l, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iV = a("brown_banner", new crs(chm.m, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iW = a("green_banner", new crs(chm.n, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iX = a("red_banner", new crs(chm.o, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iY = a("black_banner", new crs(chm.p, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).h()));
+   public static final csm iZ = a("white_wall_banner", new dbh(chm.a, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iJ).h()));
+   public static final csm ja = a("orange_wall_banner", new dbh(chm.b, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iK).h()));
+   public static final csm jb = a("magenta_wall_banner", new dbh(chm.c, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iL).h()));
+   public static final csm jc = a("light_blue_wall_banner", new dbh(chm.d, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iM).h()));
+   public static final csm jd = a("yellow_wall_banner", new dbh(chm.e, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iN).h()));
+   public static final csm je = a("lime_wall_banner", new dbh(chm.f, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iO).h()));
+   public static final csm jf = a("pink_wall_banner", new dbh(chm.g, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iP).h()));
+   public static final csm jg = a("gray_wall_banner", new dbh(chm.h, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iQ).h()));
+   public static final csm jh = a("light_gray_wall_banner", new dbh(chm.i, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iR).h()));
+   public static final csm ji = a("cyan_wall_banner", new dbh(chm.j, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iS).h()));
+   public static final csm jj = a("purple_wall_banner", new dbh(chm.k, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iT).h()));
+   public static final csm jk = a("blue_wall_banner", new dbh(chm.l, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iU).h()));
+   public static final csm jl = a("brown_wall_banner", new dbh(chm.m, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iV).h()));
+   public static final csm jm = a("green_wall_banner", new dbh(chm.n, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iW).h()));
+   public static final csm jn = a("red_wall_banner", new dbh(chm.o, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iX).h()));
+   public static final csm jo = a("black_wall_banner", new dbh(chm.p, dez.d.a().a(eah.n).j().a(dgb.e).b().d(1.0F).a(czz.b).a(iY).h()));
+   public static final csm jp = a("red_sandstone", new csm(dez.d.a().a(eah.p).a(dgb.b).m().d(0.8F)));
+   public static final csm jq = a("chiseled_red_sandstone", new csm(dez.d.a().a(eah.p).a(dgb.b).m().d(0.8F)));
+   public static final csm jr = a("cut_red_sandstone", new csm(dez.d.a().a(eah.p).a(dgb.b).m().d(0.8F)));
+   public static final csm js = a("red_sandstone_stairs", new dag(jp.n(), dez.d.a((dez)jp)));
+   public static final csm jt = a("oak_slab", new czp(dez.d.a().a(eah.n).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm ju = a("spruce_slab", new czp(dez.d.a().a(eah.I).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jv = a("birch_slab", new czp(dez.d.a().a(eah.c).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jw = a("jungle_slab", new czp(dez.d.a().a(eah.k).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jx = a("acacia_slab", new czp(dez.d.a().a(eah.p).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jy = a("cherry_slab", new czp(dez.d.a().a(eah.K).a(dgb.e).a(2.0F, 3.0F).a(czz.aQ).h()));
+   public static final csm jz = a("dark_oak_slab", new czp(dez.d.a().a(eah.A).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jA = a("mangrove_slab", new czp(dez.d.a().a(eah.C).a(dgb.e).a(2.0F, 3.0F).a(czz.b).h()));
+   public static final csm jB = a("bamboo_slab", new czp(dez.d.a().a(eah.s).a(dgb.e).a(2.0F, 3.0F).a(czz.aO).h()));
+   public static final csm jC = a("bamboo_mosaic_slab", new czp(dez.d.a().a(eah.s).a(dgb.e).a(2.0F, 3.0F).a(czz.aO).h()));
+   public static final csm jD = a("stone_slab", new czp(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jE = a("smooth_stone_slab", new czp(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jF = a("sandstone_slab", new czp(dez.d.a().a(eah.c).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jG = a("cut_sandstone_slab", new czp(dez.d.a().a(eah.c).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jH = a("petrified_oak_slab", new czp(dez.d.a().a(eah.n).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jI = a("cobblestone_slab", new czp(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jJ = a("brick_slab", new czp(dez.d.a().a(eah.C).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jK = a("stone_brick_slab", new czp(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jL = a("mud_brick_slab", new czp(dez.d.a().a(eah.S).a(dgb.b).m().a(1.5F, 3.0F).a(czz.aJ)));
+   public static final csm jM = a("nether_brick_slab", new czp(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm jN = a("quartz_slab", new czp(dez.d.a().a(eah.o).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jO = a("red_sandstone_slab", new czp(dez.d.a().a(eah.p).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jP = a("cut_red_sandstone_slab", new czp(dez.d.a().a(eah.p).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jQ = a("purpur_slab", new czp(dez.d.a().a(eah.q).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jR = a("smooth_stone", new csm(dez.d.a().a(eah.l).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jS = a("smooth_sandstone", new csm(dez.d.a().a(eah.c).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jT = a("smooth_quartz", new csm(dez.d.a().a(eah.o).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jU = a("smooth_red_sandstone", new csm(dez.d.a().a(eah.p).a(dgb.b).m().a(2.0F, 6.0F)));
+   public static final csm jV = a("spruce_fence_gate", new cvh(dez.d.a().a(o.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.b));
+   public static final csm jW = a("birch_fence_gate", new cvh(dez.d.a().a(p.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.c));
+   public static final csm jX = a("jungle_fence_gate", new cvh(dez.d.a().a(q.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.f));
+   public static final csm jY = a("acacia_fence_gate", new cvh(dez.d.a().a(r.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.d));
+   public static final csm jZ = a("cherry_fence_gate", new cvh(dez.d.a().a(s.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.e));
+   public static final csm ka = a("dark_oak_fence_gate", new cvh(dez.d.a().a(t.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.g));
+   public static final csm kb = a("mangrove_fence_gate", new cvh(dez.d.a().a(u.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.j));
+   public static final csm kc = a("bamboo_fence_gate", new cvh(dez.d.a().a(v.s()).j().a(dgb.e).a(2.0F, 3.0F).h(), dgn.k));
+   public static final csm kd = a("spruce_fence", new cvg(dez.d.a().a(o.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm ke = a("birch_fence", new cvg(dez.d.a().a(p.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm kf = a("jungle_fence", new cvg(dez.d.a().a(q.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm kg = a("acacia_fence", new cvg(dez.d.a().a(r.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm kh = a("cherry_fence", new cvg(dez.d.a().a(s.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.aQ)));
+   public static final csm ki = a("dark_oak_fence", new cvg(dez.d.a().a(t.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm kj = a("mangrove_fence", new cvg(dez.d.a().a(u.s()).a(dgb.e).a(2.0F, 3.0F).h().a(czz.b)));
+   public static final csm kk = a("bamboo_fence", new cvg(dez.d.a().a(v.s()).a(dgb.e).a(2.0F, 3.0F).a(czz.aO).h()));
+   public static final csm kl = a("spruce_door", new cuo(dez.d.a().a(o.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.f));
+   public static final csm km = a("birch_door", new cuo(dez.d.a().a(p.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.g));
+   public static final csm kn = a("jungle_door", new cuo(dez.d.a().a(q.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.j));
+   public static final csm ko = a("acacia_door", new cuo(dez.d.a().a(r.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.h));
+   public static final csm kp = a("cherry_door", new cuo(dez.d.a().a(s.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.i));
+   public static final csm kq = a("dark_oak_door", new cuo(dez.d.a().a(t.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.k));
+   public static final csm kr = a("mangrove_door", new cuo(dez.d.a().a(u.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.n));
+   public static final csm ks = a("bamboo_door", new cuo(dez.d.a().a(v.s()).a(dgb.e).d(3.0F).c().h().a(eai.b), dfp.o));
+   public static final csm kt = a("end_rod", new cuy(dez.d.a().k().d().a($$0x -> 14).a(czz.b).c()));
+   public static final csm ku = a("chorus_plant", new ctr(dez.d.a().a(eah.y).k().d(0.4F).a(czz.b).c().a(eai.b)));
+   public static final csm kv = a("chorus_flower", new ctq((ctr)ku, dez.d.a().a(eah.y).k().e().d(0.4F).a(czz.b).c().a(csn::a).a(eai.b).a(csn::b)));
+   public static final csm kw = a("purpur_block", new csm(dez.d.a().a(eah.q).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm kx = a("purpur_pillar", new cyx(dez.d.a().a(eah.q).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ky = a("purpur_stairs", new dag(kw.n(), dez.d.a((dez)kw)));
+   public static final csm kz = a("end_stone_bricks", new csm(dez.d.a().a(eah.c).a(dgb.b).m().a(3.0F, 9.0F)));
+   public static final csm kA = a("torchflower_crop", new day(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm kB = a("pitcher_crop", new cxz(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm kC = a("pitcher_plant", new cuq(dez.d.a().a(eah.h).b().d().a(czz.w).a(dez.c.b).h().a(eai.b)));
+   public static final csm kD = a("beetroots", new csh(dez.d.a().a(eah.h).b().e().d().a(czz.w).a(eai.b)));
+   public static final csm kE = a("dirt_path", new cum(dez.d.a().a(eah.k).d(0.65F).a(czz.d).c(csn::a).b(csn::a)));
+   public static final csm kF = a("end_gateway", new cuv(dez.d.a().a(eah.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eai.c)));
+   public static final csm kG = a("repeating_command_block", new ctt(dez.d.a().a(eah.y).m().a(-1.0F, 3600000.0F).g(), false));
+   public static final csm kH = a("chain_command_block", new ctt(dez.d.a().a(eah.B).m().a(-1.0F, 3600000.0F).g(), true));
+   public static final csm kI = a(
+      "frosted_ice", new cvn(dez.d.a().a(eah.f).a(0.98F).e().d(0.5F).a(czz.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bim.az).a(csn::b))
+   );
+   public static final csm kJ = a(
+      "magma_block", new cxc(dez.d.a().a(eah.J).a(dgb.b).m().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(csn::a).e(csn::a))
+   );
+   public static final csm kK = a("nether_wart_block", new csm(dez.d.a().a(eah.C).d(1.0F).a(czz.L)));
+   public static final csm kL = a("red_nether_bricks", new csm(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm kM = a("bone_block", new cyx(dez.d.a().a(eah.c).a(dgb.j).m().d(2.0F).a(czz.Q)));
+   public static final csm kN = a("structure_void", new dam(dez.d.a().o().b().g().n().a(eai.b)));
+   public static final csm kO = a("observer", new cxv(dez.d.a().a(eah.l).a(dgb.b).d(3.0F).m().a(csn::b)));
+   public static final csm kP = a("shulker_box", a(null, dez.d.a().a(eah.y)));
+   public static final csm kQ = a("white_shulker_box", a(chm.a, dez.d.a().a(eah.i)));
+   public static final csm kR = a("orange_shulker_box", a(chm.b, dez.d.a().a(eah.p)));
+   public static final csm kS = a("magenta_shulker_box", a(chm.c, dez.d.a().a(eah.q)));
+   public static final csm kT = a("light_blue_shulker_box", a(chm.d, dez.d.a().a(eah.r)));
+   public static final csm kU = a("yellow_shulker_box", a(chm.e, dez.d.a().a(eah.s)));
+   public static final csm kV = a("lime_shulker_box", a(chm.f, dez.d.a().a(eah.t)));
+   public static final csm kW = a("pink_shulker_box", a(chm.g, dez.d.a().a(eah.u)));
+   public static final csm kX = a("gray_shulker_box", a(chm.h, dez.d.a().a(eah.v)));
+   public static final csm kY = a("light_gray_shulker_box", a(chm.i, dez.d.a().a(eah.w)));
+   public static final csm kZ = a("cyan_shulker_box", a(chm.j, dez.d.a().a(eah.x)));
+   public static final csm la = a("purple_shulker_box", a(chm.k, dez.d.a().a(eah.U)));
+   public static final csm lb = a("blue_shulker_box", a(chm.l, dez.d.a().a(eah.z)));
+   public static final csm lc = a("brown_shulker_box", a(chm.m, dez.d.a().a(eah.A)));
+   public static final csm ld = a("green_shulker_box", a(chm.n, dez.d.a().a(eah.B)));
+   public static final csm le = a("red_shulker_box", a(chm.o, dez.d.a().a(eah.C)));
+   public static final csm lf = a("black_shulker_box", a(chm.p, dez.d.a().a(eah.D)));
+   public static final csm lg = a("white_glazed_terracotta", new cvs(dez.d.a().a(chm.a).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lh = a("orange_glazed_terracotta", new cvs(dez.d.a().a(chm.b).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm li = a("magenta_glazed_terracotta", new cvs(dez.d.a().a(chm.c).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lj = a("light_blue_glazed_terracotta", new cvs(dez.d.a().a(chm.d).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lk = a("yellow_glazed_terracotta", new cvs(dez.d.a().a(chm.e).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm ll = a("lime_glazed_terracotta", new cvs(dez.d.a().a(chm.f).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lm = a("pink_glazed_terracotta", new cvs(dez.d.a().a(chm.g).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm ln = a("gray_glazed_terracotta", new cvs(dez.d.a().a(chm.h).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lo = a("light_gray_glazed_terracotta", new cvs(dez.d.a().a(chm.i).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lp = a("cyan_glazed_terracotta", new cvs(dez.d.a().a(chm.j).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lq = a("purple_glazed_terracotta", new cvs(dez.d.a().a(chm.k).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lr = a("blue_glazed_terracotta", new cvs(dez.d.a().a(chm.l).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm ls = a("brown_glazed_terracotta", new cvs(dez.d.a().a(chm.m).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lt = a("green_glazed_terracotta", new cvs(dez.d.a().a(chm.n).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lu = a("red_glazed_terracotta", new cvs(dez.d.a().a(chm.o).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lv = a("black_glazed_terracotta", new cvs(dez.d.a().a(chm.p).a(dgb.b).m().d(1.4F).a(eai.e)));
+   public static final csm lw = a("white_concrete", new csm(dez.d.a().a(chm.a).a(dgb.b).m().d(1.8F)));
+   public static final csm lx = a("orange_concrete", new csm(dez.d.a().a(chm.b).a(dgb.b).m().d(1.8F)));
+   public static final csm ly = a("magenta_concrete", new csm(dez.d.a().a(chm.c).a(dgb.b).m().d(1.8F)));
+   public static final csm lz = a("light_blue_concrete", new csm(dez.d.a().a(chm.d).a(dgb.b).m().d(1.8F)));
+   public static final csm lA = a("yellow_concrete", new csm(dez.d.a().a(chm.e).a(dgb.b).m().d(1.8F)));
+   public static final csm lB = a("lime_concrete", new csm(dez.d.a().a(chm.f).a(dgb.b).m().d(1.8F)));
+   public static final csm lC = a("pink_concrete", new csm(dez.d.a().a(chm.g).a(dgb.b).m().d(1.8F)));
+   public static final csm lD = a("gray_concrete", new csm(dez.d.a().a(chm.h).a(dgb.b).m().d(1.8F)));
+   public static final csm lE = a("light_gray_concrete", new csm(dez.d.a().a(chm.i).a(dgb.b).m().d(1.8F)));
+   public static final csm lF = a("cyan_concrete", new csm(dez.d.a().a(chm.j).a(dgb.b).m().d(1.8F)));
+   public static final csm lG = a("purple_concrete", new csm(dez.d.a().a(chm.k).a(dgb.b).m().d(1.8F)));
+   public static final csm lH = a("blue_concrete", new csm(dez.d.a().a(chm.l).a(dgb.b).m().d(1.8F)));
+   public static final csm lI = a("brown_concrete", new csm(dez.d.a().a(chm.m).a(dgb.b).m().d(1.8F)));
+   public static final csm lJ = a("green_concrete", new csm(dez.d.a().a(chm.n).a(dgb.b).m().d(1.8F)));
+   public static final csm lK = a("red_concrete", new csm(dez.d.a().a(chm.o).a(dgb.b).m().d(1.8F)));
+   public static final csm lL = a("black_concrete", new csm(dez.d.a().a(chm.p).a(dgb.b).m().d(1.8F)));
+   public static final csm lM = a("white_concrete_powder", new ctw(lw, dez.d.a().a(chm.a).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lN = a("orange_concrete_powder", new ctw(lx, dez.d.a().a(chm.b).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lO = a("magenta_concrete_powder", new ctw(ly, dez.d.a().a(chm.c).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lP = a("light_blue_concrete_powder", new ctw(lz, dez.d.a().a(chm.d).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lQ = a("yellow_concrete_powder", new ctw(lA, dez.d.a().a(chm.e).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lR = a("lime_concrete_powder", new ctw(lB, dez.d.a().a(chm.f).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lS = a("pink_concrete_powder", new ctw(lC, dez.d.a().a(chm.g).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lT = a("gray_concrete_powder", new ctw(lD, dez.d.a().a(chm.h).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lU = a("light_gray_concrete_powder", new ctw(lE, dez.d.a().a(chm.i).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lV = a("cyan_concrete_powder", new ctw(lF, dez.d.a().a(chm.j).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lW = a("purple_concrete_powder", new ctw(lG, dez.d.a().a(chm.k).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lX = a("blue_concrete_powder", new ctw(lH, dez.d.a().a(chm.l).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lY = a("brown_concrete_powder", new ctw(lI, dez.d.a().a(chm.m).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm lZ = a("green_concrete_powder", new ctw(lJ, dez.d.a().a(chm.n).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm ma = a("red_concrete_powder", new ctw(lK, dez.d.a().a(chm.o).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm mb = a("black_concrete_powder", new ctw(lL, dez.d.a().a(chm.p).a(dgb.c).d(0.5F).a(czz.j)));
+   public static final csm mc = a("kelp", new cwn(dez.d.a().a(eah.m).b().e().d().a(czz.q).a(eai.b)));
+   public static final csm md = a("kelp_plant", new cwo(dez.d.a().a(eah.m).b().d().a(czz.q).a(eai.b)));
+   public static final csm me = a("dried_kelp_block", new csm(dez.d.a().a(eah.B).a(0.5F, 2.5F).a(czz.d)));
+   public static final csm mf = a("turtle_egg", new dbd(dez.d.a().a(eah.c).j().d(0.5F).a(czz.g).e().c().a(eai.b)));
+   public static final csm mg = a("sniffer_egg", new czu(dez.d.a().a(eah.C).d(0.5F).a(czz.g).c()));
+   public static final csm mh = a("dead_tube_coral_block", new csm(dez.d.a().a(eah.v).j().a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm mi = a("dead_brain_coral_block", new csm(dez.d.a().a(eah.v).j().a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm mj = a("dead_bubble_coral_block", new csm(dez.d.a().a(eah.v).j().a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm mk = a("dead_fire_coral_block", new csm(dez.d.a().a(eah.v).j().a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ml = a("dead_horn_coral_block", new csm(dez.d.a().a(eah.v).j().a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm mm = a("tube_coral_block", new cty(mh, dez.d.a().a(eah.z).a(dgb.b).m().a(1.5F, 6.0F).a(czz.r)));
+   public static final csm mn = a("brain_coral_block", new cty(mi, dez.d.a().a(eah.u).a(dgb.b).m().a(1.5F, 6.0F).a(czz.r)));
+   public static final csm mo = a("bubble_coral_block", new cty(mj, dez.d.a().a(eah.y).a(dgb.b).m().a(1.5F, 6.0F).a(czz.r)));
+   public static final csm mp = a("fire_coral_block", new cty(mk, dez.d.a().a(eah.C).a(dgb.b).m().a(1.5F, 6.0F).a(czz.r)));
+   public static final csm mq = a("horn_coral_block", new cty(ml, dez.d.a().a(eah.s).a(dgb.b).m().a(1.5F, 6.0F).a(czz.r)));
+   public static final csm mr = a("dead_tube_coral", new crw(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm ms = a("dead_brain_coral", new crw(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mt = a("dead_bubble_coral", new crw(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mu = a("dead_fire_coral", new crw(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mv = a("dead_horn_coral", new crw(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mw = a("tube_coral", new cua(mr, dez.d.a().a(eah.z).b().d().a(czz.q).a(eai.b)));
+   public static final csm mx = a("brain_coral", new cua(ms, dez.d.a().a(eah.u).b().d().a(czz.q).a(eai.b)));
+   public static final csm my = a("bubble_coral", new cua(mt, dez.d.a().a(eah.y).b().d().a(czz.q).a(eai.b)));
+   public static final csm mz = a("fire_coral", new cua(mu, dez.d.a().a(eah.C).b().d().a(czz.q).a(eai.b)));
+   public static final csm mA = a("horn_coral", new cua(mv, dez.d.a().a(eah.s).b().d().a(czz.q).a(eai.b)));
+   public static final csm mB = a("dead_tube_coral_fan", new crv(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mC = a("dead_brain_coral_fan", new crv(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mD = a("dead_bubble_coral_fan", new crv(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mE = a("dead_fire_coral_fan", new crv(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mF = a("dead_horn_coral_fan", new crv(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d()));
+   public static final csm mG = a("tube_coral_fan", new ctz(mB, dez.d.a().a(eah.z).b().d().a(czz.q).a(eai.b)));
+   public static final csm mH = a("brain_coral_fan", new ctz(mC, dez.d.a().a(eah.u).b().d().a(czz.q).a(eai.b)));
+   public static final csm mI = a("bubble_coral_fan", new ctz(mD, dez.d.a().a(eah.y).b().d().a(czz.q).a(eai.b)));
+   public static final csm mJ = a("fire_coral_fan", new ctz(mE, dez.d.a().a(eah.C).b().d().a(czz.q).a(eai.b)));
+   public static final csm mK = a("horn_coral_fan", new ctz(mF, dez.d.a().a(eah.s).b().d().a(czz.q).a(eai.b)));
+   public static final csm mL = a("dead_tube_coral_wall_fan", new cry(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d().a(mB)));
+   public static final csm mM = a("dead_brain_coral_wall_fan", new cry(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d().a(mC)));
+   public static final csm mN = a("dead_bubble_coral_wall_fan", new cry(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d().a(mD)));
+   public static final csm mO = a("dead_fire_coral_wall_fan", new cry(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d().a(mE)));
+   public static final csm mP = a("dead_horn_coral_wall_fan", new cry(dez.d.a().a(eah.v).j().a(dgb.b).m().b().d().a(mF)));
+   public static final csm mQ = a("tube_coral_wall_fan", new cub(mL, dez.d.a().a(eah.z).b().d().a(czz.q).a(mG).a(eai.b)));
+   public static final csm mR = a("brain_coral_wall_fan", new cub(mM, dez.d.a().a(eah.u).b().d().a(czz.q).a(mH).a(eai.b)));
+   public static final csm mS = a("bubble_coral_wall_fan", new cub(mN, dez.d.a().a(eah.y).b().d().a(czz.q).a(mI).a(eai.b)));
+   public static final csm mT = a("fire_coral_wall_fan", new cub(mO, dez.d.a().a(eah.C).b().d().a(czz.q).a(mJ).a(eai.b)));
+   public static final csm mU = a("horn_coral_wall_fan", new cub(mP, dez.d.a().a(eah.s).b().d().a(czz.q).a(mK).a(eai.b)));
+   public static final csm mV = a("sea_pickle", new czj(dez.d.a().a(eah.B).a($$0x -> czj.h($$0x) ? 0 : 3 + 3 * $$0x.c(czj.b)).a(czz.o).c().a(eai.b)));
+   public static final csm mW = a("blue_ice", new cwa(dez.d.a().a(eah.f).d(2.8F).a(0.989F).a(czz.h)));
+   public static final csm mX = a("conduit", new ctx(dez.d.a().a(eah.F).j().a(dgb.d).d(3.0F).a($$0x -> 15).c()));
+   public static final csm mY = a("bamboo_sapling", new crq(dez.d.a().a(eah.n).j().e().d().b().d(1.0F).a(czz.t).a(dez.c.b).h().a(eai.b)));
+   public static final csm mZ = a("bamboo", new crr(dez.d.a().a(eah.h).j().e().d().d(1.0F).a(czz.s).c().f().a(dez.c.b).h().a(eai.b).a(csn::b)));
+   public static final csm na = a("potted_bamboo", a(mZ));
+   public static final csm nb = a("void_air", new crk(dez.d.a().o().b().g().l()));
+   public static final csm nc = a("cave_air", new crk(dez.d.a().o().b().g().l()));
+   public static final csm nd = a("bubble_column", new csr(dez.d.a().a(eah.m).o().b().g().a(eai.b).i().a(czz.a)));
+   public static final csm ne = a("polished_granite_stairs", new dag(d.n(), dez.d.a((dez)d)));
+   public static final csm nf = a("smooth_red_sandstone_stairs", new dag(jU.n(), dez.d.a((dez)jU)));
+   public static final csm ng = a("mossy_stone_brick_stairs", new dag(eJ.n(), dez.d.a((dez)eJ)));
+   public static final csm nh = a("polished_diorite_stairs", new dag(f.n(), dez.d.a((dez)f)));
+   public static final csm ni = a("mossy_cobblestone_stairs", new dag(cn.n(), dez.d.a((dez)cn)));
+   public static final csm nj = a("end_stone_brick_stairs", new dag(kz.n(), dez.d.a((dez)kz)));
+   public static final csm nk = a("stone_stairs", new dag(b.n(), dez.d.a((dez)b)));
+   public static final csm nl = a("smooth_sandstone_stairs", new dag(jS.n(), dez.d.a((dez)jS)));
+   public static final csm nm = a("smooth_quartz_stairs", new dag(jT.n(), dez.d.a((dez)jT)));
+   public static final csm nn = a("granite_stairs", new dag(c.n(), dez.d.a((dez)c)));
+   public static final csm no = a("andesite_stairs", new dag(g.n(), dez.d.a((dez)g)));
+   public static final csm np = a("red_nether_brick_stairs", new dag(kL.n(), dez.d.a((dez)kL)));
+   public static final csm nq = a("polished_andesite_stairs", new dag(h.n(), dez.d.a((dez)h)));
+   public static final csm nr = a("diorite_stairs", new dag(e.n(), dez.d.a((dez)e)));
+   public static final csm ns = a("polished_granite_slab", new czp(dez.d.a((dez)d)));
+   public static final csm nt = a("smooth_red_sandstone_slab", new czp(dez.d.a((dez)jU)));
+   public static final csm nu = a("mossy_stone_brick_slab", new czp(dez.d.a((dez)eJ)));
+   public static final csm nv = a("polished_diorite_slab", new czp(dez.d.a((dez)f)));
+   public static final csm nw = a("mossy_cobblestone_slab", new czp(dez.d.a((dez)cn)));
+   public static final csm nx = a("end_stone_brick_slab", new czp(dez.d.a((dez)kz)));
+   public static final csm ny = a("smooth_sandstone_slab", new czp(dez.d.a((dez)jS)));
+   public static final csm nz = a("smooth_quartz_slab", new czp(dez.d.a((dez)jT)));
+   public static final csm nA = a("granite_slab", new czp(dez.d.a((dez)c)));
+   public static final csm nB = a("andesite_slab", new czp(dez.d.a((dez)g)));
+   public static final csm nC = a("red_nether_brick_slab", new czp(dez.d.a((dez)kL)));
+   public static final csm nD = a("polished_andesite_slab", new czp(dez.d.a((dez)h)));
+   public static final csm nE = a("diorite_slab", new czp(dez.d.a((dez)e)));
+   public static final csm nF = a("brick_wall", new dbi(dez.d.a((dez)cj).j()));
+   public static final csm nG = a("prismarine_wall", new dbi(dez.d.a((dez)hZ).j()));
+   public static final csm nH = a("red_sandstone_wall", new dbi(dez.d.a((dez)jp).j()));
+   public static final csm nI = a("mossy_stone_brick_wall", new dbi(dez.d.a((dez)eJ).j()));
+   public static final csm nJ = a("granite_wall", new dbi(dez.d.a((dez)c).j()));
+   public static final csm nK = a("stone_brick_wall", new dbi(dez.d.a((dez)eI).j()));
+   public static final csm nL = a("mud_brick_wall", new dbi(dez.d.a((dez)eN).j()));
+   public static final csm nM = a("nether_brick_wall", new dbi(dez.d.a((dez)fn).j()));
+   public static final csm nN = a("andesite_wall", new dbi(dez.d.a((dez)g).j()));
+   public static final csm nO = a("red_nether_brick_wall", new dbi(dez.d.a((dez)kL).j()));
+   public static final csm nP = a("sandstone_wall", new dbi(dez.d.a((dez)aV).j()));
+   public static final csm nQ = a("end_stone_brick_wall", new dbi(dez.d.a((dez)kz).j()));
+   public static final csm nR = a("diorite_wall", new dbi(dez.d.a((dez)e).j()));
+   public static final csm nS = a("scaffolding", new czb(dez.d.a().a(eah.c).b().a(czz.u).f().a(csn::a).a(eai.b).a(csn::b)));
+   public static final csm nT = a("loom", new cxb(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm nU = a("barrel", new crt(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm nV = a("smoker", new czt(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F).a(a(13))));
+   public static final csm nW = a("blast_furnace", new csl(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F).a(a(13))));
+   public static final csm nX = a("cartography_table", new cte(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm nY = a("fletching_table", new cvj(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm nZ = a("grindstone", new cvw(dez.d.a().a(eah.g).m().a(2.0F, 6.0F).a(czz.f).a(eai.c)));
+   public static final csm oa = a("lectern", new cwu(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm ob = a("smithing_table", new czs(dez.d.a().a(eah.n).a(dgb.e).d(2.5F).a(czz.b).h()));
+   public static final csm oc = a("stonecutter", new dak(dez.d.a().a(eah.l).a(dgb.b).m().d(3.5F)));
+   public static final csm od = a("bell", new csi(dez.d.a().a(eah.E).j().m().d(5.0F).a(czz.n).a(eai.b)));
+   public static final csm oe = a("lantern", new cwq(dez.d.a().a(eah.g).j().m().d(3.5F).a(czz.A).a($$0x -> 15).c().a(eai.b)));
+   public static final csm of = a("soul_lantern", new cwq(dez.d.a().a(eah.g).j().m().d(3.5F).a(czz.A).a($$0x -> 10).c().a(eai.b)));
+   public static final csm og = a("campfire", new csz(true, 1, dez.d.a().a(eah.I).a(dgb.e).d(2.0F).a(czz.b).a(a(15)).c().h()));
+   public static final csm oh = a("soul_campfire", new csz(false, 2, dez.d.a().a(eah.I).a(dgb.e).d(2.0F).a(czz.b).a(a(10)).c().h()));
+   public static final csm oi = a("sweet_berry_bush", new daq(dez.d.a().a(eah.h).e().b().a(czz.v).a(eai.b)));
+   public static final csm oj = a("warped_stem", a(eah.ae));
+   public static final csm ok = a("stripped_warped_stem", a(eah.ae));
+   public static final csm ol = a("warped_hyphae", new cyx(dez.d.a().a(eah.af).a(dgb.e).d(2.0F).a(czz.B)));
+   public static final csm om = a("stripped_warped_hyphae", new cyx(dez.d.a().a(eah.af).a(dgb.e).d(2.0F).a(czz.B)));
+   public static final csm on = a("warped_nylium", new cxu(dez.d.a().a(eah.ad).a(dgb.b).m().d(0.4F).a(czz.C).e()));
+   public static final csm oo = a("warped_fungus", new cvo(dez.d.a().a(eah.x).d().b().a(czz.D).a(eai.b), or.d, on));
+   public static final csm op = a("warped_wart_block", new csm(dez.d.a().a(eah.ag).d(1.0F).a(czz.L)));
+   public static final csm oq = a("warped_roots", new cyw(dez.d.a().a(eah.x).o().b().d().a(czz.E).a(dez.c.b).a(eai.b)));
+   public static final csm or = a("nether_sprouts", new cxp(dez.d.a().a(eah.x).o().b().d().a(czz.O).a(dez.c.b).a(eai.b)));
+   public static final csm os = a("crimson_stem", a(eah.ab));
+   public static final csm ot = a("stripped_crimson_stem", a(eah.ab));
+   public static final csm ou = a("crimson_hyphae", new cyx(dez.d.a().a(eah.ac).a(dgb.e).d(2.0F).a(czz.B)));
+   public static final csm ov = a("stripped_crimson_hyphae", new cyx(dez.d.a().a(eah.ac).a(dgb.e).d(2.0F).a(czz.B)));
+   public static final csm ow = a("crimson_nylium", new cxu(dez.d.a().a(eah.aa).a(dgb.b).m().d(0.4F).a(czz.C).e()));
+   public static final csm ox = a("crimson_fungus", new cvo(dez.d.a().a(eah.J).d().b().a(czz.D).a(eai.b), or.b, ow));
+   public static final csm oy = a("shroomlight", new csm(dez.d.a().a(eah.C).d(1.0F).a(czz.F).a($$0x -> 15)));
+   public static final csm oz = a("weeping_vines", new dbt(dez.d.a().a(eah.J).e().b().d().a(czz.G).a(eai.b)));
+   public static final csm oA = a("weeping_vines_plant", new dbu(dez.d.a().a(eah.J).b().d().a(czz.G).a(eai.b)));
+   public static final csm oB = a("twisting_vines", new dbe(dez.d.a().a(eah.x).e().b().d().a(czz.G).a(eai.b)));
+   public static final csm oC = a("twisting_vines_plant", new dbf(dez.d.a().a(eah.x).b().d().a(czz.G).a(eai.b)));
+   public static final csm oD = a("crimson_roots", new cyw(dez.d.a().a(eah.J).o().b().d().a(czz.E).a(dez.c.b).a(eai.b)));
+   public static final csm oE = a("crimson_planks", new csm(dez.d.a().a(eah.ab).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oF = a("warped_planks", new csm(dez.d.a().a(eah.ae).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oG = a("crimson_slab", new czp(dez.d.a().a(oE.s()).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oH = a("warped_slab", new czp(dez.d.a().a(oF.s()).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oI = a("crimson_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(oE.s()).j().a(dgb.e).b().d(0.5F).a(eai.b), dfp.l));
+   public static final csm oJ = a("warped_pressure_plate", new cyi(cyi.a.a, dez.d.a().a(oF.s()).j().a(dgb.e).b().d(0.5F).a(eai.b), dfp.m));
+   public static final csm oK = a("crimson_fence", new cvg(dez.d.a().a(oE.s()).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oL = a("warped_fence", new cvg(dez.d.a().a(oF.s()).a(dgb.e).a(2.0F, 3.0F).a(czz.aP)));
+   public static final csm oM = a("crimson_trapdoor", new daz(dez.d.a().a(oE.s()).a(dgb.e).d(3.0F).c().a(csn::a), dfp.l));
+   public static final csm oN = a("warped_trapdoor", new daz(dez.d.a().a(oF.s()).a(dgb.e).d(3.0F).c().a(csn::a), dfp.m));
+   public static final csm oO = a("crimson_fence_gate", new cvh(dez.d.a().a(oE.s()).j().a(dgb.e).a(2.0F, 3.0F), dgn.h));
+   public static final csm oP = a("warped_fence_gate", new cvh(dez.d.a().a(oF.s()).j().a(dgb.e).a(2.0F, 3.0F), dgn.i));
+   public static final csm oQ = a("crimson_stairs", new dag(oE.n(), dez.d.a((dez)oE)));
+   public static final csm oR = a("warped_stairs", new dag(oF.n(), dez.d.a((dez)oF)));
+   public static final csm oS = a("crimson_button", a(dfp.l));
+   public static final csm oT = a("warped_button", a(dfp.m));
+   public static final csm oU = a("crimson_door", new cuo(dez.d.a().a(oE.s()).a(dgb.e).d(3.0F).c().a(eai.b), dfp.l));
+   public static final csm oV = a("warped_door", new cuo(dez.d.a().a(oF.s()).a(dgb.e).d(3.0F).c().a(eai.b), dfp.m));
+   public static final csm oW = a("crimson_sign", new dah(dez.d.a().a(oE.s()).a(dgb.e).j().b().d(1.0F), dgn.h));
+   public static final csm oX = a("warped_sign", new dah(dez.d.a().a(oF.s()).a(dgb.e).j().b().d(1.0F), dgn.i));
+   public static final csm oY = a("crimson_wall_sign", new dbk(dez.d.a().a(oE.s()).a(dgb.e).j().b().d(1.0F).a(oW), dgn.h));
+   public static final csm oZ = a("warped_wall_sign", new dbk(dez.d.a().a(oF.s()).a(dgb.e).j().b().d(1.0F).a(oX), dgn.i));
+   public static final csm pa = a("structure_block", new dal(dez.d.a().a(eah.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final csm pb = a("jigsaw", new cwl(dez.d.a().a(eah.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final csm pc = a("composter", new ctv(dez.d.a().a(eah.n).a(dgb.e).d(0.6F).a(czz.b).h()));
+   public static final csm pd = a("target", new dau(dez.d.a().a(eah.o).d(0.5F).a(czz.d)));
+   public static final csm pe = a("bee_nest", new csg(dez.d.a().a(eah.s).a(dgb.e).d(0.3F).a(czz.b).h()));
+   public static final csm pf = a("beehive", new csg(dez.d.a().a(eah.n).a(dgb.e).d(0.6F).a(czz.b).h()));
+   public static final csm pg = a("honey_block", new cwd(dez.d.a().a(eah.p).b(0.4F).c(0.5F).c().a(czz.p)));
+   public static final csm ph = a("honeycomb_block", new csm(dez.d.a().a(eah.p).d(0.6F).a(czz.r)));
+   public static final csm pi = a("netherite_block", new csm(dez.d.a().a(eah.D).m().a(50.0F, 1200.0F).a(czz.R)));
+   public static final csm pj = a("ancient_debris", new csm(dez.d.a().a(eah.D).m().a(30.0F, 1200.0F).a(czz.S)));
+   public static final csm pk = a("crying_obsidian", new cuf(dez.d.a().a(eah.D).a(dgb.b).m().a(50.0F, 1200.0F).a($$0x -> 10)));
+   public static final csm pl = a("respawn_anchor", new cyt(dez.d.a().a(eah.D).a(dgb.b).m().a(50.0F, 1200.0F).a($$0x -> cyt.a($$0x, 15))));
+   public static final csm pm = a("potted_crimson_fungus", a(ox));
+   public static final csm pn = a("potted_warped_fungus", a(oo));
+   public static final csm po = a("potted_crimson_roots", a(oD));
+   public static final csm pp = a("potted_warped_roots", a(oq));
+   public static final csm pq = a("lodestone", new csm(dez.d.a().a(eah.g).m().d(3.5F).a(czz.T).a(eai.c)));
+   public static final csm pr = a("blackstone", new csm(dez.d.a().a(eah.D).a(dgb.b).m().a(1.5F, 6.0F)));
+   public static final csm ps = a("blackstone_stairs", new dag(pr.n(), dez.d.a((dez)pr)));
+   public static final csm pt = a("blackstone_wall", new dbi(dez.d.a((dez)pr).j()));
+   public static final csm pu = a("blackstone_slab", new czp(dez.d.a((dez)pr).a(2.0F, 6.0F)));
+   public static final csm pv = a("polished_blackstone", new csm(dez.d.a((dez)pr).a(2.0F, 6.0F)));
+   public static final csm pw = a("polished_blackstone_bricks", new csm(dez.d.a((dez)pv).a(1.5F, 6.0F)));
+   public static final csm px = a("cracked_polished_blackstone_bricks", new csm(dez.d.a((dez)pw)));
+   public static final csm py = a("chiseled_polished_blackstone", new csm(dez.d.a((dez)pv).a(1.5F, 6.0F)));
+   public static final csm pz = a("polished_blackstone_brick_slab", new czp(dez.d.a((dez)pw).a(2.0F, 6.0F)));
+   public static final csm pA = a("polished_blackstone_brick_stairs", new dag(pw.n(), dez.d.a((dez)pw)));
+   public static final csm pB = a("polished_blackstone_brick_wall", new dbi(dez.d.a((dez)pw).j()));
+   public static final csm pC = a("gilded_blackstone", new csm(dez.d.a((dez)pr).a(czz.W)));
+   public static final csm pD = a("polished_blackstone_stairs", new dag(pv.n(), dez.d.a((dez)pv)));
+   public static final csm pE = a("polished_blackstone_slab", new czp(dez.d.a((dez)pv)));
+   public static final csm pF = a("polished_blackstone_pressure_plate", new cyi(cyi.a.b, dez.d.a().a(eah.D).j().a(dgb.b).m().b().d(0.5F).a(eai.b), dfp.d));
+   public static final csm pG = a("polished_blackstone_button", b());
+   public static final csm pH = a("polished_blackstone_wall", new dbi(dez.d.a((dez)pv).j()));
+   public static final csm pI = a("chiseled_nether_bricks", new csm(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm pJ = a("cracked_nether_bricks", new csm(dez.d.a().a(eah.J).a(dgb.b).m().a(2.0F, 6.0F).a(czz.N)));
+   public static final csm pK = a("quartz_bricks", new csm(dez.d.a((dez)hd)));
+   public static final csm pL = a("candle", b(eah.c));
+   public static final csm pM = a("white_candle", b(eah.d));
+   public static final csm pN = a("orange_candle", b(eah.p));
+   public static final csm pO = a("magenta_candle", b(eah.q));
+   public static final csm pP = a("light_blue_candle", b(eah.r));
+   public static final csm pQ = a("yellow_candle", b(eah.s));
+   public static final csm pR = a("lime_candle", b(eah.t));
+   public static final csm pS = a("pink_candle", b(eah.u));
+   public static final csm pT = a("gray_candle", b(eah.v));
+   public static final csm pU = a("light_gray_candle", b(eah.w));
+   public static final csm pV = a("cyan_candle", b(eah.x));
+   public static final csm pW = a("purple_candle", b(eah.y));
+   public static final csm pX = a("blue_candle", b(eah.z));
+   public static final csm pY = a("brown_candle", b(eah.A));
+   public static final csm pZ = a("green_candle", b(eah.B));
+   public static final csm qa = a("red_candle", b(eah.C));
+   public static final csm qb = a("black_candle", b(eah.D));
+   public static final csm qc = a("candle_cake", new ctb(pL, dez.d.a((dez)eh).a(a(3))));
+   public static final csm qd = a("white_candle_cake", new ctb(pM, dez.d.a((dez)qc)));
+   public static final csm qe = a("orange_candle_cake", new ctb(pN, dez.d.a((dez)qc)));
+   public static final csm qf = a("magenta_candle_cake", new ctb(pO, dez.d.a((dez)qc)));
+   public static final csm qg = a("light_blue_candle_cake", new ctb(pP, dez.d.a((dez)qc)));
+   public static final csm qh = a("yellow_candle_cake", new ctb(pQ, dez.d.a((dez)qc)));
+   public static final csm qi = a("lime_candle_cake", new ctb(pR, dez.d.a((dez)qc)));
+   public static final csm qj = a("pink_candle_cake", new ctb(pS, dez.d.a((dez)qc)));
+   public static final csm qk = a("gray_candle_cake", new ctb(pT, dez.d.a((dez)qc)));
+   public static final csm ql = a("light_gray_candle_cake", new ctb(pU, dez.d.a((dez)qc)));
+   public static final csm qm = a("cyan_candle_cake", new ctb(pV, dez.d.a((dez)qc)));
+   public static final csm qn = a("purple_candle_cake", new ctb(pW, dez.d.a((dez)qc)));
+   public static final csm qo = a("blue_candle_cake", new ctb(pX, dez.d.a((dez)qc)));
+   public static final csm qp = a("brown_candle_cake", new ctb(pY, dez.d.a((dez)qc)));
+   public static final csm qq = a("green_candle_cake", new ctb(pZ, dez.d.a((dez)qc)));
+   public static final csm qr = a("red_candle_cake", new ctb(qa, dez.d.a((dez)qc)));
+   public static final csm qs = a("black_candle_cake", new ctb(qb, dez.d.a((dez)qc)));
+   public static final csm qt = a("amethyst_block", new crl(dez.d.a().a(eah.y).d(1.5F).a(czz.Y).m()));
+   public static final csm qu = a("budding_amethyst", new cst(dez.d.a().a(eah.y).e().d(1.5F).a(czz.Y).m().a(eai.b)));
+   public static final csm qv = a("amethyst_cluster", new crm(7, 3, dez.d.a().a(eah.y).j().c().e().a(czz.Z).d(1.5F).a($$0x -> 5).a(eai.b)));
+   public static final csm qw = a("large_amethyst_bud", new crm(5, 3, dez.d.a((dez)qv).a(czz.ab).j().a($$0x -> 4).a(eai.b)));
+   public static final csm qx = a("medium_amethyst_bud", new crm(4, 3, dez.d.a((dez)qv).a(czz.ac).j().a($$0x -> 2).a(eai.b)));
+   public static final csm qy = a("small_amethyst_bud", new crm(3, 4, dez.d.a((dez)qv).a(czz.aa).j().a($$0x -> 1).a(eai.b)));
+   public static final csm qz = a("tuff", new csm(dez.d.a().a(eah.R).a(dgb.b).a(czz.ad).m().a(1.5F, 6.0F)));
+   public static final csm qA = a("calcite", new csm(dez.d.a().a(eah.K).a(dgb.b).a(czz.ae).m().d(0.75F)));
+   public static final csm qB = a("tinted_glass", new dav(dez.d.a((dez)aQ).a(eah.v).c().a(csn::a).a(csn::b).b(csn::b).c(csn::b)));
+   public static final csm qC = a("powder_snow", new cye(dez.d.a().a(eah.i).d(0.25F).a(czz.l).f().a(csn::b)));
+   public static final csm qD = a("sculk_sensor", new czf(dez.d.a().a(eah.x).d(1.5F).a(czz.au).a($$0x -> 1).e(($$0x, $$1x, $$2) -> czf.h($$0x) == dgh.b)));
+   public static final csm qE = a("calibrated_sculk_sensor", new csy(dez.d.a((dez)qD)));
+   public static final csm qF = a("sculk", new czd(dez.d.a().a(eah.D).d(0.2F).a(czz.aw)));
+   public static final csm qG = a("sculk_vein", new czi(dez.d.a().a(eah.D).j().b().d(0.2F).a(czz.ax).a(eai.b)));
+   public static final csm qH = a("sculk_catalyst", new cze(dez.d.a().a(eah.D).a(3.0F, 3.0F).a(czz.av).a($$0x -> 6)));
+   public static final csm qI = a("sculk_shrieker", new czg(dez.d.a().a(eah.D).a(3.0F, 3.0F).a(czz.ay)));
+   public static final csm qJ = a("oxidized_copper", new dbp(dbo.a.d, dez.d.a().a(eah.ad).m().a(3.0F, 6.0F).a(czz.ah)));
+   public static final csm qK = a("weathered_copper", new dbp(dbo.a.c, dez.d.a().a(eah.ae).m().a(3.0F, 6.0F).a(czz.ah)));
+   public static final csm qL = a("exposed_copper", new dbp(dbo.a.b, dez.d.a().a(eah.S).m().a(3.0F, 6.0F).a(czz.ah)));
+   public static final csm qM = a("copper_block", new dbp(dbo.a.a, dez.d.a().a(eah.p).m().a(3.0F, 6.0F).a(czz.ah)));
+   public static final csm qN = a("copper_ore", new cus(dez.d.a((dez)P)));
+   public static final csm qO = a("deepslate_copper_ore", new cus(dez.d.a((dez)qN).a(eah.ah).a(4.5F, 3.0F).a(czz.aA)));
+   public static final csm qP = a("oxidized_cut_copper", new dbp(dbo.a.d, dez.d.a((dez)qJ)));
+   public static final csm qQ = a("weathered_cut_copper", new dbp(dbo.a.c, dez.d.a((dez)qK)));
+   public static final csm qR = a("exposed_cut_copper", new dbp(dbo.a.b, dez.d.a((dez)qL)));
+   public static final csm qS = a("cut_copper", new dbp(dbo.a.a, dez.d.a((dez)qM)));
+   public static final csm qT = a("oxidized_cut_copper_stairs", new dbr(dbo.a.d, qP.n(), dez.d.a((dez)qP)));
+   public static final csm qU = a("weathered_cut_copper_stairs", new dbr(dbo.a.c, qQ.n(), dez.d.a((dez)qK)));
+   public static final csm qV = a("exposed_cut_copper_stairs", new dbr(dbo.a.b, qR.n(), dez.d.a((dez)qL)));
+   public static final csm qW = a("cut_copper_stairs", new dbr(dbo.a.a, qS.n(), dez.d.a((dez)qM)));
+   public static final csm qX = a("oxidized_cut_copper_slab", new dbq(dbo.a.d, dez.d.a((dez)qP).m()));
+   public static final csm qY = a("weathered_cut_copper_slab", new dbq(dbo.a.c, dez.d.a((dez)qQ).m()));
+   public static final csm qZ = a("exposed_cut_copper_slab", new dbq(dbo.a.b, dez.d.a((dez)qR).m()));
+   public static final csm ra = a("cut_copper_slab", new dbq(dbo.a.a, dez.d.a((dez)qS).m()));
+   public static final csm rb = a("waxed_copper_block", new csm(dez.d.a((dez)qM)));
+   public static final csm rc = a("waxed_weathered_copper", new csm(dez.d.a((dez)qK)));
+   public static final csm rd = a("waxed_exposed_copper", new csm(dez.d.a((dez)qL)));
+   public static final csm re = a("waxed_oxidized_copper", new csm(dez.d.a((dez)qJ)));
+   public static final csm rf = a("waxed_oxidized_cut_copper", new csm(dez.d.a((dez)qJ)));
+   public static final csm rg = a("waxed_weathered_cut_copper", new csm(dez.d.a((dez)qK)));
+   public static final csm rh = a("waxed_exposed_cut_copper", new csm(dez.d.a((dez)qL)));
+   public static final csm ri = a("waxed_cut_copper", new csm(dez.d.a((dez)qM)));
+   public static final csm rj = a("waxed_oxidized_cut_copper_stairs", new dag(rf.n(), dez.d.a((dez)qJ)));
+   public static final csm rk = a("waxed_weathered_cut_copper_stairs", new dag(rg.n(), dez.d.a((dez)qK)));
+   public static final csm rl = a("waxed_exposed_cut_copper_stairs", new dag(rh.n(), dez.d.a((dez)qL)));
+   public static final csm rm = a("waxed_cut_copper_stairs", new dag(ri.n(), dez.d.a((dez)qM)));
+   public static final csm rn = a("waxed_oxidized_cut_copper_slab", new czp(dez.d.a((dez)rf).m()));
+   public static final csm ro = a("waxed_weathered_cut_copper_slab", new czp(dez.d.a((dez)rg).m()));
+   public static final csm rp = a("waxed_exposed_cut_copper_slab", new czp(dez.d.a((dez)rh).m()));
+   public static final csm rq = a("waxed_cut_copper_slab", new czp(dez.d.a((dez)ri).m()));
+   public static final csm rr = a("lightning_rod", new cwy(dez.d.a().a(eah.p).j().m().a(3.0F, 6.0F).a(czz.ah).c()));
+   public static final csm rs = a(
+      "pointed_dripstone", new cyc(dez.d.a().a(eah.W).j().a(dgb.b).c().a(czz.ag).e().a(1.5F, 3.0F).f().a(dez.c.b).a(eai.b).a(csn::b))
+   );
+   public static final csm rt = a("dripstone_block", new csm(dez.d.a().a(eah.W).a(dgb.b).a(czz.af).m().a(1.5F, 1.0F)));
+   public static final csm ru = a("cave_vines", new cti(dez.d.a().a(eah.h).e().b().a(cth.h_(14)).d().a(czz.ai).a(eai.b)));
+   public static final csm rv = a("cave_vines_plant", new ctj(dez.d.a().a(eah.h).b().a(cth.h_(14)).d().a(czz.ai).a(eai.b)));
+   public static final csm rw = a("spore_blossom", new dac(dez.d.a().a(eah.h).d().b().a(czz.aj).a(eai.b)));
+   public static final csm rx = a("azalea", new crp(dez.d.a().a(eah.h).k().d().a(czz.ak).c().a(eai.b)));
+   public static final csm ry = a("flowering_azalea", new crp(dez.d.a().a(eah.h).k().d().a(czz.al).c().a(eai.b)));
+   public static final csm rz = a("moss_carpet", new ctc(dez.d.a().a(eah.B).d(0.1F).a(czz.am).a(eai.b)));
+   public static final csm rA = a("pink_petals", new cxx(dez.d.a().a(eah.h).b().a(czz.an).a(eai.b)));
+   public static final csm rB = a("moss_block", new cxi(dez.d.a().a(eah.B).d(0.1F).a(czz.ao).a(eai.b)));
+   public static final csm rC = a("big_dripleaf", new csj(dez.d.a().a(eah.h).k().d(0.1F).a(czz.ap).a(eai.b)));
+   public static final csm rD = a("big_dripleaf_stem", new csk(dez.d.a().a(eah.h).b().d(0.1F).a(czz.ap).a(eai.b)));
+   public static final csm rE = a("small_dripleaf", new czr(dez.d.a().a(eah.h).b().d().a(czz.aq).a(dez.c.c).a(eai.b)));
+   public static final csm rF = a("hanging_roots", new cwb(dez.d.a().a(eah.k).o().b().d().a(czz.as).a(dez.c.b).h().a(eai.b)));
+   public static final csm rG = a("rooted_dirt", new cyv(dez.d.a().a(eah.k).d(0.5F).a(czz.ar)));
+   public static final csm rH = a("mud", new cxj(dez.d.a((dez)j).a(eah.T).a(csn::b).a(csn::a).c(csn::a).b(csn::a).a(czz.aI)));
+   public static final csm rI = a("deepslate", new cyx(dez.d.a().a(eah.ah).a(dgb.b).m().a(3.0F, 6.0F).a(czz.aA)));
+   public static final csm rJ = a("cobbled_deepslate", new csm(dez.d.a((dez)rI).a(3.5F, 6.0F)));
+   public static final csm rK = a("cobbled_deepslate_stairs", new dag(rJ.n(), dez.d.a((dez)rJ)));
+   public static final csm rL = a("cobbled_deepslate_slab", new czp(dez.d.a((dez)rJ)));
+   public static final csm rM = a("cobbled_deepslate_wall", new dbi(dez.d.a((dez)rJ).j()));
+   public static final csm rN = a("polished_deepslate", new csm(dez.d.a((dez)rJ).a(czz.aD)));
+   public static final csm rO = a("polished_deepslate_stairs", new dag(rN.n(), dez.d.a((dez)rN)));
+   public static final csm rP = a("polished_deepslate_slab", new czp(dez.d.a((dez)rN)));
+   public static final csm rQ = a("polished_deepslate_wall", new dbi(dez.d.a((dez)rN).j()));
+   public static final csm rR = a("deepslate_tiles", new csm(dez.d.a((dez)rJ).a(czz.aC)));
+   public static final csm rS = a("deepslate_tile_stairs", new dag(rR.n(), dez.d.a((dez)rR)));
+   public static final csm rT = a("deepslate_tile_slab", new czp(dez.d.a((dez)rR)));
+   public static final csm rU = a("deepslate_tile_wall", new dbi(dez.d.a((dez)rR).j()));
+   public static final csm rV = a("deepslate_bricks", new csm(dez.d.a((dez)rJ).a(czz.aB)));
+   public static final csm rW = a("deepslate_brick_stairs", new dag(rV.n(), dez.d.a((dez)rV)));
+   public static final csm rX = a("deepslate_brick_slab", new czp(dez.d.a((dez)rV)));
+   public static final csm rY = a("deepslate_brick_wall", new dbi(dez.d.a((dez)rV).j()));
+   public static final csm rZ = a("chiseled_deepslate", new csm(dez.d.a((dez)rJ).a(czz.aB)));
+   public static final csm sa = a("cracked_deepslate_bricks", new csm(dez.d.a((dez)rV)));
+   public static final csm sb = a("cracked_deepslate_tiles", new csm(dez.d.a((dez)rR)));
+   public static final csm sc = a("infested_deepslate", new cwj(rI, dez.d.a().a(eah.ah).a(czz.aA)));
+   public static final csm sd = a("smooth_basalt", new csm(dez.d.a((dez)dZ)));
+   public static final csm se = a("raw_iron_block", new csm(dez.d.a().a(eah.ai).a(dgb.b).m().a(5.0F, 6.0F)));
+   public static final csm sf = a("raw_copper_block", new csm(dez.d.a().a(eah.p).a(dgb.b).m().a(5.0F, 6.0F)));
+   public static final csm sg = a("raw_gold_block", new csm(dez.d.a().a(eah.E).a(dgb.b).m().a(5.0F, 6.0F)));
+   public static final csm sh = a("potted_azalea_bush", a(rx));
+   public static final csm si = a("potted_flowering_azalea_bush", a(ry));
+   public static final csm sj = a("ochre_froglight", new cyx(dez.d.a().a(eah.c).d(0.3F).a($$0x -> 15).a(czz.aE)));
+   public static final csm sk = a("verdant_froglight", new cyx(dez.d.a().a(eah.aj).d(0.3F).a($$0x -> 15).a(czz.aE)));
+   public static final csm sl = a("pearlescent_froglight", new cyx(dez.d.a().a(eah.u).d(0.3F).a($$0x -> 15).a(czz.aE)));
+   public static final csm sm = a("frogspawn", new cvm(dez.d.a().a(eah.m).d().c().b().a(czz.aF).a(eai.b)));
+   public static final csm sn = a("reinforced_deepslate", new csm(dez.d.a().a(eah.ah).a(dgb.b).a(czz.aA).a(55.0F, 1200.0F)));
+   public static final csm so = a("decorated_pot", new cui(dez.d.a().a(eah.Y).a(0.0F, 0.0F).a(eai.b).c()));
 
-   public csn(dex.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a[0], Boolean.valueOf(false)).a(a[1], Boolean.valueOf(false)).a(a[2], Boolean.valueOf(false)));
+   private static ToIntFunction<dfa> a(int $$0) {
+      return $$1 -> $$1.c(dfq.r) ? $$0 : 0;
    }
 
-   @Override
-   public cyp b_(dey $$0) {
-      return cyp.c;
+   private static Boolean a(dfa $$0, cos $$1, gu $$2, bim<?> $$3) {
+      return false;
    }
 
-   @Override
-   public dck a(gv $$0, dey $$1) {
-      return new dcn($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
-      return $$0.B ? null : a($$2, dcm.l, dcn::a);
-   }
-
-   @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return b;
-   }
-
-   @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      if ($$1.B) {
-         return bgo.a;
-      } else {
-         dck $$6 = $$1.c_($$2);
-         if ($$6 instanceof dcn) {
-            $$3.a((dcn)$$6);
-            $$3.a(ape.aa);
-         }
-
-         return bgo.b;
-      }
-   }
-
-   @Override
-   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
-      if ($$4.A()) {
-         dck $$5 = $$0.c_($$1);
-         if ($$5 instanceof dcn) {
-            ((dcn)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(iw.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dck $$5 = $$1.c_($$2);
-         if ($$5 instanceof dcn) {
-            bgk.a($$1, $$2, (dcn)$$5);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean d_(dey $$0) {
+   private static Boolean b(dfa $$0, cos $$1, gu $$2, bim<?> $$3) {
       return true;
    }
 
-   @Override
-   public int a(dey $$0, cpk $$1, gv $$2) {
-      return cec.a($$1.c_($$2));
+   private static Boolean c(dfa $$0, cos $$1, gu $$2, bim<?> $$3) {
+      return $$3 == bim.aq || $$3 == bim.at;
    }
 
-   @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a[0], a[1], a[2]);
+   private static csf a(chm $$0) {
+      return new csf($$0, dez.d.a().a($$1 -> $$1.c(csf.a) == dfn.b ? $$0.e() : eah.d).a(czz.b).d(0.2F).c().h().a(eai.b));
    }
 
-   @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
+   private static cyx a(eah $$0, eah $$1) {
+      return new cyx(dez.d.a().a($$2 -> $$2.c(cyx.g) == ha.a.b ? $$0 : $$1).a(dgb.e).d(2.0F).a(czz.b).h());
+   }
+
+   private static cyx a(eah $$0, eah $$1, czz $$2) {
+      return new cyx(dez.d.a().a($$2x -> $$2x.c(cyx.g) == ha.a.b ? $$0 : $$1).a(dgb.e).d(2.0F).a($$2).h());
+   }
+
+   private static csm a(eah $$0) {
+      return new cyx(dez.d.a().a($$1 -> $$0).a(dgb.e).d(2.0F).a(czz.B));
+   }
+
+   private static boolean a(dfa $$0, cos $$1, gu $$2) {
+      return true;
+   }
+
+   private static boolean b(dfa $$0, cos $$1, gu $$2) {
       return false;
+   }
+
+   private static dae b(chm $$0) {
+      return new dae($$0, dez.d.a().a($$0).a(dgb.d).d(0.3F).a(czz.h).c().a(csn::a).a(csn::b).b(csn::b).c(csn::b));
+   }
+
+   private static cwt a(czz $$0) {
+      return new cwt(dez.d.a().a(eah.h).d(0.2F).e().a($$0).c().a(csn::c).b(csn::b).c(csn::b).h().a(eai.b).a(csn::b));
+   }
+
+   private static czl a(chm $$0, dez.d $$1) {
+      dez.f $$2 = ($$0x, $$1x, $$2x) -> $$1x.c_($$2x) instanceof ddt $$4 ? $$4.v() : true;
+      return new czl($$0, $$1.j().d(2.0F).f().c().b($$2).c($$2).a(eai.b));
+   }
+
+   private static det a(boolean $$0) {
+      dez.f $$1 = ($$0x, $$1x, $$2) -> !$$0x.c(det.b);
+      return new det($$0, dez.d.a().a(eah.l).d(1.5F).a(csn::b).b($$1).c($$1).a(eai.c));
+   }
+
+   private static csv a(dfp $$0, cdt... $$1) {
+      dez.d $$2 = dez.d.a().b().d(0.5F).a(eai.b);
+      if ($$1.length > 0) {
+         $$2 = $$2.a($$1);
+      }
+
+      return new csv($$2, $$0, 30, true);
+   }
+
+   private static csv b() {
+      return new csv(dez.d.a().b().d(0.5F).a(eai.b), dfp.c, 20, false);
+   }
+
+   private static cvl a(csm $$0, cdt... $$1) {
+      dez.d $$2 = dez.d.a().d().c().a(eai.b);
+      if ($$1.length > 0) {
+         $$2 = $$2.a($$1);
+      }
+
+      return new cvl($$0, $$2);
+   }
+
+   private static cta b(eah $$0) {
+      return new cta(dez.d.a().a($$0).c().d(0.1F).a(czz.X).a(cta.h).a(eai.b));
+   }
+
+   public static csm a(String $$0, csm $$1) {
+      return hr.a(jb.f, $$0, $$1);
+   }
+
+   public static csm a(aer $$0, csm $$1) {
+      return hr.a(jb.f, $$0, $$1);
+   }
+
+   public static void a() {
+      csm.o.forEach(dez.a::a);
+   }
+
+   static {
+      for (csm $$0 : jb.f) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            dfa $$1 = (dfa)var2.next();
+            csm.o.b($$1);
+            $$1.a();
+         }
+
+         $$0.r();
+      }
    }
 }

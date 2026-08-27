@@ -1,109 +1,148 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.base.MoreObjects;
+import java.util.Arrays;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
-public class qd {
-   private static final char a = ' ';
-   private static final char b = '_';
-   private static final char c = '+';
-   private static final char d = 'x';
-   private static final char e = 'X';
-   private final Collection<ps> f = Lists.newArrayList();
-   @Nullable
-   private final Collection<pt> g = Lists.newArrayList();
+class qd implements ps {
+   private final pr c;
+   private final px d;
+   private final gu e;
+   int a;
+   int b;
 
-   public qd() {
-   }
-
-   public qd(Collection<ps> $$0) {
-      this.f.addAll($$0);
-   }
-
-   public void a(ps $$0) {
-      this.f.add($$0);
-      this.g.forEach($$0::a);
-   }
-
-   public void a(pt $$0) {
-      this.g.add($$0);
-      this.f.forEach($$1 -> $$1.a($$0));
-   }
-
-   public void a(final Consumer<ps> $$0) {
-      this.a(new pt() {
-         @Override
-         public void a(ps $$0x) {
-         }
-
-         @Override
-         public void b(ps $$0x) {
-         }
-
-         @Override
-         public void c(ps $$0x) {
-            $$0.accept($$0);
-         }
-      });
-   }
-
-   public int a() {
-      return (int)this.f.stream().filter(ps::i).filter(ps::r).count();
-   }
-
-   public int b() {
-      return (int)this.f.stream().filter(ps::i).filter(ps::s).count();
-   }
-
-   public int c() {
-      return (int)this.f.stream().filter(ps::k).count();
-   }
-
-   public boolean d() {
-      return this.a() > 0;
-   }
-
-   public boolean e() {
-      return this.b() > 0;
-   }
-
-   public Collection<ps> f() {
-      return this.f.stream().filter(ps::i).filter(ps::r).collect(Collectors.toList());
-   }
-
-   public Collection<ps> g() {
-      return this.f.stream().filter(ps::i).filter(ps::s).collect(Collectors.toList());
-   }
-
-   public int h() {
-      return this.f.size();
-   }
-
-   public boolean i() {
-      return this.c() == this.h();
-   }
-
-   public String j() {
-      StringBuffer $$0 = new StringBuffer();
-      $$0.append('[');
-      this.f.forEach($$1 -> {
-         if (!$$1.j()) {
-            $$0.append(' ');
-         } else if ($$1.h()) {
-            $$0.append('+');
-         } else if ($$1.i()) {
-            $$0.append((char)($$1.r() ? 'X' : 'x'));
-         } else {
-            $$0.append('_');
-         }
-      });
-      $$0.append(']');
-      return $$0.toString();
+   public qd(pr $$0, px $$1, gu $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.a = 0;
+      this.b = 0;
    }
 
    @Override
-   public String toString() {
-      return this.j();
+   public void a(pr $$0) {
+      a(this.c, csn.er);
+      this.a++;
+   }
+
+   @Override
+   public void b(pr $$0) {
+      this.b++;
+      if (!$$0.x()) {
+         a($$0, $$0.c() + " passed! (" + $$0.l() + "ms)");
+      } else {
+         if (this.b >= $$0.z()) {
+            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+         } else {
+            a(this.c.g(), n.k, "Flaky test " + this.c + " succeeded, attempt: " + this.a + " successes: " + this.b);
+            this.a();
+         }
+      }
+   }
+
+   @Override
+   public void c(pr $$0) {
+      if (!$$0.x()) {
+         a($$0, $$0.n());
+      } else {
+         qi $$1 = this.c.v();
+         String $$2 = "Flaky test " + this.c + " failed, attempt: " + this.a + "/" + $$1.i();
+         if ($$1.j() > 1) {
+            $$2 = $$2 + ", successes: " + this.b + " (" + $$1.j() + " required)";
+         }
+
+         a(this.c.g(), n.o, $$2);
+         if ($$0.y() - this.a + this.b >= $$0.z()) {
+            this.a();
+         } else {
+            a($$0, new pi(this.a, this.b, $$0));
+         }
+      }
+   }
+
+   public static void a(pr $$0, String $$1) {
+      a($$0, csn.eo);
+      b($$0, $$1);
+   }
+
+   private static void b(pr $$0, String $$1) {
+      a($$0.g(), n.k, $$1);
+      pz.b($$0);
+   }
+
+   protected static void a(pr $$0, Throwable $$1) {
+      a($$0, $$0.r() ? csn.ex : csn.ek);
+      c($$0, ac.c($$1));
+      b($$0, $$1);
+   }
+
+   protected static void b(pr $$0, Throwable $$1) {
+      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ac.c($$1.getCause()));
+      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.c() + " failed! " + $$2;
+      a($$0.g(), $$0.r() ? n.m : n.o, $$3);
+      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
+      if ($$4 instanceof pl $$5) {
+         a($$0.g(), $$5.c(), $$5.a());
+      }
+
+      pz.a($$0);
+   }
+
+   private void a() {
+      this.c.o();
+      pr $$0 = new pr(this.c.v(), this.c.u(), this.c.g());
+      $$0.a();
+      this.d.a($$0);
+      $$0.a(this);
+      $$0.a(this.e, 2);
+   }
+
+   protected static void a(pr $$0, csm $$1) {
+      akk $$2 = $$0.g();
+      gu $$3 = $$0.d();
+      gu $$4 = new gu(-1, -1, -1);
+      gu $$5 = dys.a($$3.a((hz)$$4), cxh.a, $$0.u(), $$3);
+      $$2.b($$5, csn.fO.n().a($$0.u()));
+      gu $$6 = $$5.b(0, 1, 0);
+      $$2.b($$6, $$1.n());
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            gu $$9 = $$5.b($$7, -1, $$8);
+            $$2.b($$9, csn.ci.n());
+         }
+      }
+   }
+
+   private static void c(pr $$0, String $$1) {
+      akk $$2 = $$0.g();
+      gu $$3 = $$0.d();
+      gu $$4 = new gu(-1, 1, -1);
+      gu $$5 = dys.a($$3.a((hz)$$4), cxh.a, $$0.u(), $$3);
+      $$2.b($$5, csn.oa.n().a($$0.u()));
+      dfa $$6 = $$2.a_($$5);
+      ciy $$7 = a($$0.c(), $$0.r(), $$1);
+      cwu.a(null, $$2, $$5, $$6, $$7);
+   }
+
+   private static ciy a(String $$0, boolean $$1, String $$2) {
+      ciy $$3 = new ciy(cjb.tg);
+      qx $$4 = new qx();
+      StringBuffer $$5 = new StringBuffer();
+      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$5.append($$1x).append('\n'));
+      if (!$$1) {
+         $$5.append("(optional)\n");
+      }
+
+      $$5.append("-------------------\n");
+      $$4.add(ri.a($$5 + $$2));
+      $$3.a("pages", $$4);
+      return $$3;
+   }
+
+   protected static void a(akk $$0, n $$1, String $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(tf.b($$2).a($$1)));
+   }
+
+   private static void a(akk $$0, gu $$1, String $$2) {
+      aav.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
    }
 }

@@ -1,54 +1,28 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dol extends dnl<dqe> {
+public class dol extends dnn<dqe> {
    public dol(Codec<dqe> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnn<dqe> $$0) {
+   public boolean a(dnp<dqe> $$0) {
       dqe $$1 = $$0.f();
-      cqe $$2 = $$0.b();
-      art $$3 = $$0.d();
-      csk $$4 = $$1.b.b();
-      gv $$5 = a($$2, $$0.e().j().a(hb.a.b, $$2.C_() + 1, $$2.aj() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+      aru $$2 = $$0.d();
+      gu $$3 = $$0.e();
+      cqg $$4 = $$0.b();
+      int $$5 = 0;
+      gu.a $$6 = new gu.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-         for (gv $$11 : gv.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dey $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
-
-         return $$10;
-      }
-   }
-
-   @Nullable
-   private static gv a(cpl $$0, gv.a $$1, csk $$2) {
-      while ($$1.v() > $$0.C_() + 1) {
-         dey $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(hb.a);
       }
 
-      return null;
+      return $$5 > 0;
    }
 }

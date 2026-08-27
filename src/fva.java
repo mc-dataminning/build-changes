@@ -1,19 +1,23 @@
-public class fva extends ftp<bvj, fgs<bvj>> {
-   private static final aep a = new aep("textures/entity/turtle/big_sea_turtle.png");
+public class fva extends fsn<ccr> {
+   public static final aer a = new aer("textures/entity/trident.png");
+   private final fgt f;
 
-   public fva(fsj.a $$0) {
-      super($$0, new fgs<>($$0.a(fhi.bH)), 0.7F);
+   public fva(fso.a $$0) {
+      super($$0);
+      this.f = new fgt($$0.a(fhm.bC));
    }
 
-   public void a(bvj $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      if ($$0.i_()) {
-         this.d *= 0.5F;
-      }
-
+   public void a(ccr $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(arp.i($$2, $$0.N, $$0.dA()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(arp.i($$2, $$0.O, $$0.dC()) + 90.0F));
+      elk $$6 = ftm.c($$4, this.f.a(this.a($$0)), false, $$0.z());
+      this.f.a($$3, $$6, $$5, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public aep a(bvj $$0) {
+   public aer a(ccr $$0) {
       return a;
    }
 }

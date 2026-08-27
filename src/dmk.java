@@ -1,24 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dmk<WC extends dmf>(dmm<WC> d, WC e) {
-   public static final Codec<dmk<?>> a = jc.Q.q().dispatch($$0 -> $$0.d, dmm::c);
-   public static final Codec<hf<dmk<?>>> b = ael.a(jd.ar, a);
-   public static final Codec<hj<dmk<?>>> c = hu.a(jd.ar, a);
+public class dmk extends dmh {
+   public static final Codec<dmk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dmh.d.forGetter($$0x -> $$0x),
+               bft.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bft.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bft.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dmk::new)
+   );
+   public final bft b;
+   public final bft c;
+   final bft j;
 
-   public boolean a(art $$0) {
-      return this.d.a(this.e, $$0);
+   public dmk(float $$0, dtg $$1, bft $$2, dld $$3, dmi $$4, hi<csm> $$5, bft $$6, bft $$7, bft $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public boolean a(dmh $$0, dgu $$1, Function<gv, hf<cqi>> $$2, art $$3, djt $$4, cor $$5, dgt $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public dmk(float $$0, dtg $$1, bft $$2, dld $$3, hi<csm> $$4, bft $$5, bft $$6, bft $$7) {
+      this($$0, $$1, $$2, $$3, dmi.a, $$4, $$5, $$6, $$7);
    }
 
-   public dmm<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   public dmk(dmh $$0, bft $$1, bft $$2, bft $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

@@ -1,35 +1,24 @@
-import javax.annotation.Nullable;
-
-public class xr implements uw<wo> {
-   private final int a;
-   private final byte b;
-
-   public xr(big $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
-   }
-
-   public xr(sh $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readByte();
+public record xr(tf a, tb.b b) implements ux<wp> {
+   public xr(si $$0) {
+      this($$0.l(), new tb.b($$0));
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
-      $$0.k(this.b);
+   public void a(si $$0) {
+      $$0.a(this.a);
+      this.b.a($$0);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public big a(cpk $$0) {
-      return $$0.a(this.a);
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public byte a() {
+   public tb.b d() {
       return this.b;
    }
 }

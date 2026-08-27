@@ -1,46 +1,24 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ce {
-   public static final ce a = new ce(cj.d.e);
-   private final cj.d b;
+public record ce(cj.d b) {
+   public static final Codec<ce> a = RecordCodecBuilder.create($$0 -> $$0.group(aqy.a(cj.d.d, "light", cj.d.c).forGetter(ce::a)).apply($$0, ce::new));
 
-   ce(cj.d $$0) {
-      this.b = $$0;
+   static Optional<ce> a(cj.d $$0) {
+      return $$0.c() ? Optional.empty() : Optional.of(new ce($$0));
    }
 
-   public boolean a(aki $$0, gv $$1) {
-      if (this == a) {
-         return true;
-      } else {
-         return !$$0.o($$1) ? false : this.b.d($$0.z($$1));
-      }
+   public boolean a(akk $$0, gu $$1) {
+      return !$$0.o($$1) ? false : this.b.d($$0.z($$1));
    }
 
-   public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         $$0.add("light", this.b.d());
-         return $$0;
-      }
-   }
-
-   public static ce a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "light");
-         cj.d $$2 = cj.d.a($$1.get("light"));
-         return new ce($$2);
-      } else {
-         return a;
-      }
+   public cj.d a() {
+      return this.b;
    }
 
    public static class a {
-      private cj.d a = cj.d.e;
+      private cj.d a = cj.d.c;
 
       public static ce.a a() {
          return new ce.a();
@@ -51,8 +29,8 @@ public class ce {
          return this;
       }
 
-      public ce b() {
-         return new ce(this.a);
+      public Optional<ce> b() {
+         return ce.a(this.a);
       }
    }
 }

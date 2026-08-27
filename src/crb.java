@@ -1,39 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class crb extends crx {
-   private final chk a;
+public class crb extends cqo {
+   public static final Codec<crb> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aep.d(cqr.ah), aep.d(cqr.ai), aep.d(cqr.aj), aep.d(cqr.ak), aep.d(cqr.al)).apply($$0, $$0.stable(crb::new))
+   );
+   private final he<cqk> c;
+   private final he<cqk> d;
+   private final he<cqk> e;
+   private final he<cqk> f;
+   private final he<cqk> g;
 
-   protected crb(chk $$0, dex.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public static crb a(hf<cqk> $$0) {
+      return new crb($$0.b(cqr.ah), $$0.b(cqr.ai), $$0.b(cqr.aj), $$0.b(cqr.ak), $$0.b(cqr.al));
+   }
+
+   private crb(he<cqk> $$0, he<cqk> $$1, he<cqk> $$2, he<cqk> $$3, he<cqk> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public boolean a(dey $$0) {
-      return true;
+   protected Stream<he<cqk>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   public dck a(gv $$0, dey $$1) {
-      return new dca($$0, $$1, this.a);
+   protected Codec<? extends cqo> a() {
+      return b;
    }
 
    @Override
-   public void a(cpk $$0, gv $$1, dey $$2, @Nullable biw $$3, ciw $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dcm.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.A()) {
-         $$0.a($$1, dcm.t).ifPresent($$1x -> $$1x.a($$4.y()));
+   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2, cqt.f $$3) {
+      int $$4 = hq.c($$0);
+      int $$5 = hq.c($$1);
+      int $$6 = hq.c($$2);
+      int $$7 = hx.a($$4);
+      int $$8 = hx.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (hx.a($$4) * 2 + 1) * 8;
+         int $$10 = (hx.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dkc.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-   }
-
-   @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      dck $$3 = $$0.c_($$1);
-      return $$3 instanceof dca ? ((dca)$$3).f() : super.a($$0, $$1, $$2);
-   }
-
-   public chk a() {
-      return this.a;
    }
 }

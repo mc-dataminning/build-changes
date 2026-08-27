@@ -1,30 +1,53 @@
-public class day extends ctm {
-   public day(dex.d $$0) {
-      super($$0, () -> dcm.c);
+public class day extends cud {
+   public static final int a = 2;
+   public static final dga b = dfq.aq;
+   private static final float e = 3.0F;
+   private static final ehx[] f = new ehx[]{csm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), csm.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final int g = 1;
+
+   public day(dez.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dck a(gv $$0, dey $$1) {
-      return new deb($$0, $$1);
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected apb<aep> b() {
-      return ape.i.b(ape.ai);
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return f[this.g($$0)];
    }
 
    @Override
-   public boolean f_(dey $$0) {
-      return true;
+   protected dga a() {
+      return b;
    }
 
    @Override
-   public int a(dey $$0, coq $$1, gv $$2, hb $$3) {
-      return aro.a(dcr.a($$1, $$2), 0, 15);
+   public int b() {
+      return 2;
    }
 
    @Override
-   public int b(dey $$0, coq $$1, gv $$2, hb $$3) {
-      return $$3 == hb.b ? $$0.b($$1, $$2, $$3) : 0;
+   protected cpl c() {
+      return cjb.uo;
+   }
+
+   @Override
+   public dfa b(int $$0) {
+      return $$0 == 2 ? csn.bS.n() : super.b($$0);
+   }
+
+   @Override
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected int a(cpm $$0) {
+      return 1;
    }
 }

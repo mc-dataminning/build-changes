@@ -1,79 +1,176 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Iterables;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
 
-public class ec implements ArgumentType<ec.a> {
-   private static final Collection<String> a = Arrays.asList("eyes", "feet");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("argument.anchor.invalid", $$0));
+public class ec implements ArgumentType<ga> {
+   private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tf.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tf.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tf.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tf.c("argument.entity.selector.not_allowed"));
+   final boolean h;
+   final boolean i;
 
-   public static ec.a a(CommandContext<ds> $$0, String $$1) {
-      return (ec.a)$$0.getArgument($$1, ec.a.class);
+   protected ec(boolean $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    public static ec a() {
-      return new ec();
+      return new ec(true, false);
    }
 
-   public ec.a a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = $$0.readUnquotedString();
-      ec.a $$3 = ec.a.a($$2);
-      if ($$3 == null) {
-         $$0.setCursor($$1);
-         throw b.createWithContext($$0, $$2);
+   public static bii a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return ((ga)$$0.getArgument($$1, ga.class)).a((dr)$$0.getSource());
+   }
+
+   public static ec b() {
+      return new ec(false, false);
+   }
+
+   public static Collection<? extends bii> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bii> $$2 = c($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw d.create();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static Collection<? extends bii> c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return ((ga)$$0.getArgument($$1, ga.class)).b((dr)$$0.getSource());
+   }
+
+   public static Collection<akl> d(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return ((ga)$$0.getArgument($$1, ga.class)).d((dr)$$0.getSource());
+   }
+
+   public static ec c() {
+      return new ec(true, true);
+   }
+
+   public static akl e(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return ((ga)$$0.getArgument($$1, ga.class)).c((dr)$$0.getSource());
+   }
+
+   public static ec d() {
+      return new ec(false, true);
+   }
+
+   public static Collection<akl> f(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      List<akl> $$2 = ((ga)$$0.getArgument($$1, ga.class)).d((dr)$$0.getSource());
+      if ($$2.isEmpty()) {
+         throw e.create();
+      } else {
+         return $$2;
+      }
+   }
+
+   public ga a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = 0;
+      gb $$2 = new gb($$0);
+      ga $$3 = $$2.t();
+      if ($$3.a() > 1 && this.h) {
+         if (this.i) {
+            $$0.setCursor(0);
+            throw b.createWithContext($$0);
+         } else {
+            $$0.setCursor(0);
+            throw a.createWithContext($$0);
+         }
+      } else if ($$3.b() && this.i && !$$3.c()) {
+         $$0.setCursor(0);
+         throw c.createWithContext($$0);
       } else {
          return $$3;
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dv.b(ec.a.c.keySet(), $$1);
+      if ($$0.getSource() instanceof du $$2) {
+         StringReader $$3 = new StringReader($$1.getInput());
+         $$3.setCursor($$1.getStart());
+         gb $$4 = new gb($$3, $$2.c(2));
+
+         try {
+            $$4.t();
+         } catch (CommandSyntaxException var7) {
+         }
+
+         return $$4.a($$1, $$1x -> {
+            Collection<String> $$2x = $$2.q();
+            Iterable<String> $$3x = (Iterable<String>)(this.i ? $$2x : Iterables.concat($$2x, $$2.y()));
+            du.b($$3x, $$1x);
+         });
+      } else {
+         return Suggestions.empty();
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return g;
    }
 
-   public static enum a {
-      a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new ehf($$0.c, $$0.d + (double)$$1.cH(), $$0.e));
+   public static class a implements gg<ec, ec.a.a> {
+      private static final byte a = 1;
+      private static final byte b = 2;
 
-      static final Map<String, ec.a> c = ac.a(Maps.newHashMap(), $$0 -> {
-         for (ec.a $$1 : values()) {
-            $$0.put($$1.d, $$1);
+      public void a(ec.a.a $$0, si $$1) {
+         int $$2 = 0;
+         if ($$0.b) {
+            $$2 |= 1;
          }
-      });
-      private final String d;
-      private final BiFunction<ehf, big, ehf> e;
 
-      private a(String $$0, BiFunction<ehf, big, ehf> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         if ($$0.c) {
+            $$2 |= 2;
+         }
+
+         $$1.k($$2);
       }
 
-      @Nullable
-      public static ec.a a(String $$0) {
-         return c.get($$0);
+      public ec.a.a a(si $$0) {
+         byte $$1 = $$0.readByte();
+         return new ec.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
       }
 
-      public ehf a(big $$0) {
-         return this.e.apply($$0.di(), $$0);
+      public void a(ec.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("amount", $$0.b ? "single" : "multiple");
+         $$1.addProperty("type", $$0.c ? "players" : "entities");
       }
 
-      public ehf a(ds $$0) {
-         big $$1 = $$0.f();
-         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
+      public ec.a.a a(ec $$0) {
+         return new ec.a.a($$0.h, $$0.i);
+      }
+
+      public final class a implements gg.a<ec> {
+         final boolean b;
+         final boolean c;
+
+         a(boolean $$1, boolean $$2) {
+            this.b = $$1;
+            this.c = $$2;
+         }
+
+         public ec a(dl $$0) {
+            return new ec(this.b, this.c);
+         }
+
+         @Override
+         public gg<ec, ?> a() {
+            return a.this;
+         }
       }
    }
 }

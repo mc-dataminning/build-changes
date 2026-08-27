@@ -1,34 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dtw extends due {
-   public static final Codec<dtw> a = RecordCodecBuilder.create($$0 -> $$0.group(dte.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dtw::new));
-   private final dte c;
+public class dtw extends duk {
+   public static final Codec<dtw> a = bfv.b(0, 256).fieldOf("count").xmap(dtw::new, $$0 -> $$0.c).codec();
+   private final bfv c;
 
-   private dtw(dte $$0) {
+   private dtw(bfv $$0) {
       this.c = $$0;
    }
 
-   public static dtw a(dte $$0) {
+   public static dtw a(bfv $$0) {
       return new dtw($$0);
    }
 
-   public static dtw a(dlb $$0, dlb $$1) {
-      return a(dth.a($$0, $$1));
-   }
-
-   public static dtw b(dlb $$0, dlb $$1) {
-      return a(dtg.a($$0, $$1));
+   public static dtw a(int $$0) {
+      return a(bfs.a($$0));
    }
 
    @Override
-   public Stream<gv> a_(duc $$0, art $$1, gv $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected int a(aru $$0, gu $$1) {
+      return this.c.a($$0);
    }
 
    @Override
-   public duf<?> b() {
-      return duf.l;
+   public duh<?> b() {
+      return duh.f;
    }
 }

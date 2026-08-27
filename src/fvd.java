@@ -1,26 +1,34 @@
-public class fvd extends ftp<cay, fgv<cay>> {
-   private static final aep a = new aep("textures/entity/villager/villager.png");
+public class fvd extends fsn<byh> {
+   private final foe a;
 
-   public fvd(fsj.a $$0) {
-      super($$0, new fgv<>($$0.a(fhi.bJ)), 0.5F);
-      this.a(new fvw<>(this, $$0.f(), $$0.d()));
-      this.a(new fxc<>(this, $$0.e(), "villager"));
-      this.a(new fvv<>(this, $$0.d()));
+   public fvd(fso.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public aep a(cay $$0) {
-      return a;
-   }
-
-   protected void a(cay $$0, elh $$1, float $$2) {
-      float $$3 = 0.9375F;
-      if ($$0.i_()) {
-         $$3 *= 0.5F;
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
+   public void a(byh $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.m();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = arp.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
 
-      $$1.b($$3, $$3, $$3);
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      fvc.a(this.a, csn.ck.n(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aer a(byh $$0) {
+      return fyk.e;
    }
 }

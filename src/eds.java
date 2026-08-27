@@ -1,70 +1,35 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class eds extends edv {
-   private static final Logger a = LogUtils.getLogger();
-   final aep b;
+public class eds extends edt {
+   public static final Codec<eds> a = RecordCodecBuilder.create($$0 -> a($$0).and(ecg.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eds::new));
+   private final ecg b;
 
-   eds(efh[] $$0, aep $$1) {
+   private eds(List<efg> $$0, ecg $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public edx b() {
-      return edy.A;
+   public edv b() {
+      return edw.q;
    }
 
    @Override
-   public void a(ecs $$0) {
-      ecj<edw> $$1 = new ecj<>(ecm.b, this.b);
-      if ($$0.a($$1)) {
-         $$0.a("Function " + this.b + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown function table called " + this.b));
-      }
+   public Set<eep<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   protected ciw a(ciw $$0, ech $$1) {
-      edw $$2 = $$1.a().getElement(ecm.b, this.b);
-      if ($$2 == null) {
-         a.warn("Unknown function: {}", this.b);
-         return $$0;
-      } else {
-         ech.c<?> $$3 = ech.a($$2);
-         if ($$1.b($$3)) {
-            ciw var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            a.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
+   public ciy a(ciy $$0, ech $$1) {
+      int $$2 = this.b.a($$1, $$0.L());
+      $$0.f($$2);
+      return $$0;
    }
 
-   public static edv.a<?> a(aep $$0) {
+   public static edt.a<?> a(ecg $$0) {
       return a($$1 -> new eds($$1, $$0));
-   }
-
-   public static class a extends edv.c<eds> {
-      public void a(JsonObject $$0, eds $$1, JsonSerializationContext $$2) {
-         $$0.addProperty("name", $$1.b.toString());
-      }
-
-      public eds a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         aep $$3 = new aep(arf.i($$0, "name"));
-         return new eds($$2, $$3);
-      }
    }
 }

@@ -1,45 +1,43 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
 
-public class aqa implements ane {
-   private static final Map<aeo<? extends hs<?>>, String> a = Map.of(
-      jd.e, "tags/blocks", jd.s, "tags/entity_types", jd.w, "tags/fluids", jd.z, "tags/game_events", jd.D, "tags/items"
-   );
-   private final ht b;
-   private List<aqa.a<?>> c = List.of();
+public record aqa<T>(aeq<? extends hr<T>> a, aer b) {
+   private static final Interner<aqa<?>> c = Interners.newWeakInterner();
 
-   public aqa(ht $$0) {
-      this.b = $$0;
+   @Deprecated
+   public aqa(aeq<? extends hr<T>> a, aer b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public List<aqa.a<?>> a() {
-      return this.c;
+   public static <T> Codec<aqa<T>> a(aeq<? extends hr<T>> $$0) {
+      return aer.a.xmap($$1 -> a($$0, $$1), aqa::b);
    }
 
-   public static String a(aeo<? extends hs<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
+   public static <T> Codec<aqa<T>> b(aeq<? extends hr<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? aer.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
+   }
+
+   public static <T> aqa<T> a(aeq<? extends hr<T>> $$0, aer $$1) {
+      return (aqa<T>)c.intern(new aqa<>($$0, $$1));
+   }
+
+   public boolean c(aeq<? extends hr<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<aqa<E>> d(aeq<? extends hr<E>> $$0) {
+      return this.c($$0) ? Optional.of((aqa<E>)this) : Optional.empty();
    }
 
    @Override
-   public CompletableFuture<Void> a(ane.a $$0, ank $$1, bde $$2, bde $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends aqa.a<?>>> $$6 = this.b.b().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
-   }
-
-   private <T> CompletableFuture<aqa.a<T>> a(ank $$0, Executor $$1, ht.d<T> $$2) {
-      aeo<? extends hs<T>> $$3 = $$2.a();
-      hs<T> $$4 = $$2.b();
-      apz<hf<T>> $$5 = new apz<>($$2x -> $$4.b(aeo.a($$3, $$2x)), a($$3));
-      return CompletableFuture.supplyAsync(() -> new aqa.a<>($$3, $$5.b($$0)), $$1);
-   }
-
-   public static record a<T>(aeo<? extends hs<T>> a, Map<aep, Collection<hf<T>>> b) {
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

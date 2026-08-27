@@ -1,34 +1,11 @@
-public class fuy extends fsi<byf> {
-   private final fnz a;
+public class fuy extends ftu<bwc, fgs<bwc>> {
+   private static final aer a = new aer("textures/entity/tadpole/tadpole.png");
 
-   public fuy(fsj.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fuy(fso.a $$0) {
+      super($$0, new fgs<>($$0.a(fhm.bz)), 0.14F);
    }
 
-   public void a(byf $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.m();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = aro.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fux.a(this.a, csl.ck.n(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aep a(byf $$0) {
-      return fyf.e;
+   public aer a(bwc $$0) {
+      return a;
    }
 }

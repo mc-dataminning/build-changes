@@ -1,60 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dxa extends dux {
-   public static final Codec<dxa> d = a(dxa::new);
+public class dxa extends duz {
+   public static final Codec<dxa> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dtg.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dxa::new)
+   );
+   public final dtg e;
 
-   public dxa(dux.c $$0) {
+   public dxa(duz.c $$0, dtg $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<dux.b> a(dux.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<duz.b> a(duz.a $$0) {
+      dli $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dlg $$5 = new dlg($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cpy $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      gu.a $$8 = new gu.a($$2, $$6, $$3);
 
-      for (hf<cqi> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(api.W)) {
-            return Optional.empty();
+      while ($$6 > $$4) {
+         dfa $$9 = $$7.a($$6);
+         dfa $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(csn.dX) || $$10.d(cpb.a, $$8.q($$6), ha.b))) {
+            break;
          }
       }
 
-      return a($$0, dkh.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static dvb a(cor $$0, dlg $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      hb $$4 = hb.c.a.a($$1);
-      return new dwz.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(dvp $$0, dux.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static dvm a(cor $$0, long $$1, dvm $$2) {
-      if ($$2.a()) {
-         return $$2;
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         dlg $$3 = new dlg(new dki(dkw.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         dvb $$4 = $$2.c().get(0);
-         dup $$5 = $$4.f();
-         int $$6 = $$5.g();
-         int $$7 = $$5.i();
-         hb $$8 = hb.c.a.a($$3);
-         hb $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         dvb $$10 = new dwz.h($$3, $$6, $$7, $$9);
-         dvp $$11 = new dvp();
-         $$11.a($$10);
-         return $$11.a();
+         gu $$11 = new gu($$2, $$6, $$3);
+         return Optional.of(new duz.b($$11, (Consumer<dvr>)($$3x -> dwz.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public dvg<?> e() {
-      return dvg.j;
+   public dvi<?> e() {
+      return dvi.i;
    }
 }

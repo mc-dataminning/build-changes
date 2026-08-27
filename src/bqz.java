@@ -1,48 +1,44 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqz extends bps {
-   private final byl a;
-   @Nullable
-   private biw b;
+public class bqz extends bpu {
+   private final bju a;
 
-   public bqz(byl $$0) {
+   public bqz(bju $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bps.a.a));
+      this.a(EnumSet.of(bpu.a.c, bpu.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fZ();
    }
 
    @Override
    public boolean a() {
-      biw $$0 = this.a.j();
-      return this.a.q() > 0 || $$0 != null && this.a.f((big)$$0) < 9.0;
+      if (!this.a.p()) {
+         return false;
+      } else if (this.a.ba()) {
+         return false;
+      } else if (!this.a.aA()) {
+         return false;
+      } else {
+         biy $$0 = this.a.I_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.f($$0) < 144.0 && $$0.ef() != null ? false : this.a.fZ();
+         }
+      }
    }
 
    @Override
    public void c() {
       this.a.H().n();
-      this.b = this.a.j();
+      this.a.y(true);
    }
 
    @Override
    public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.f((big)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.J().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
-      }
+      this.a.y(false);
    }
 }

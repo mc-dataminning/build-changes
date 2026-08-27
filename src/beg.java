@@ -1,22 +1,9 @@
 import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.time.Instant;
+import jdk.jfr.consumer.RecordedEvent;
 
-public record beg<T extends bef>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends bef> beg<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bef::a)).toList();
-         Duration $$2 = $$1.stream().map(bef::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bdl.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new beg<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record beg(Instant a, Duration b) {
+   public static beg a(RecordedEvent $$0) {
+      return new beg($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
    }
 }

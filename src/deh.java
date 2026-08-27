@@ -1,6 +1,6 @@
-public class deh extends dee {
+public class deh extends deg {
    @Override
-   protected aeo<dmy<?, ?>> a(art $$0, boolean $$1) {
-      return $$1 ? os.F : os.i;
+   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
+      return or.j;
    }
 }

@@ -1,44 +1,49 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 public class eco {
-   final edc[] a;
-   final efh[] b;
-   private final Predicate<ech> c;
-   final edw[] d;
-   private final BiFunction<ciw, ech, ciw> e;
-   final egc f;
-   final egc g;
+   public static final Codec<eco> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecy.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               aqy.a(efi.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
+               aqy.a(edw.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
+               egc.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               egc.a.fieldOf("bonus_rolls").orElse(efz.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eco::new)
+   );
+   private final List<eda> b;
+   private final List<efg> c;
+   private final Predicate<ech> d;
+   private final List<edu> e;
+   private final BiFunction<ciy, ech, ciy> f;
+   private final egb g;
+   private final egb h;
 
-   eco(edc[] $$0, efh[] $$1, edw[] $$2, egc $$3, egc $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = efj.a($$1);
-      this.d = $$2;
-      this.e = edy.a($$2);
-      this.f = $$3;
-      this.g = $$4;
+   eco(List<eda> $$0, List<efg> $$1, List<edu> $$2, egb $$3, egb $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = efi.a($$1);
+      this.e = $$2;
+      this.f = edw.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   private void b(Consumer<ciw> $$0, ech $$1) {
-      art $$2 = $$1.b();
-      List<edb> $$3 = Lists.newArrayList();
+   private void b(Consumer<ciy> $$0, ech $$1) {
+      aru $$2 = $$1.b();
+      List<ecz> $$3 = Lists.newArrayList();
       MutableInt $$4 = new MutableInt();
 
-      for (edc $$5 : this.a) {
+      for (eda $$5 : this.b) {
          $$5.expand($$1, $$3x -> {
             int $$4x = $$3x.a($$1.c());
             if ($$4x > 0) {
@@ -55,7 +60,7 @@ public class eco {
          } else {
             int $$7 = $$2.a($$4.intValue());
 
-            for (edb $$8 : $$3) {
+            for (ecz $$8 : $$3) {
                $$7 -= $$8.a($$1.c());
                if ($$7 < 0) {
                   $$8.a($$0, $$1);
@@ -66,10 +71,10 @@ public class eco {
       }
    }
 
-   public void a(Consumer<ciw> $$0, ech $$1) {
-      if (this.c.test($$1)) {
-         Consumer<ciw> $$2 = edw.a(this.e, $$0, $$1);
-         int $$3 = this.f.a($$1) + aro.d(this.g.b($$1) * $$1.c());
+   public void a(Consumer<ciy> $$0, ech $$1) {
+      if (this.d.test($$1)) {
+         Consumer<ciy> $$2 = edu.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + arp.d(this.h.b($$1) * $$1.c());
 
          for (int $$4 = 0; $$4 < $$3; $$4++) {
             this.b($$2, $$1);
@@ -77,35 +82,35 @@ public class eco {
       }
    }
 
-   public void a(ecs $$0) {
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1].a($$0.b(".condition[" + $$1 + "]"));
+   public void a(ecq $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".condition[" + $$1 + "]"));
       }
 
-      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
-         this.d[$$2].a($$0.b(".functions[" + $$2 + "]"));
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.b(".functions[" + $$2 + "]"));
       }
 
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         this.a[$$3].a($$0.b(".entries[" + $$3 + "]"));
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.b(".entries[" + $$3 + "]"));
       }
 
-      this.f.a($$0.b(".rolls"));
-      this.g.a($$0.b(".bonusRolls"));
+      this.g.a($$0.b(".rolls"));
+      this.h.a($$0.b(".bonusRolls"));
    }
 
    public static eco.a a() {
       return new eco.a();
    }
 
-   public static class a implements edt<eco.a>, efa<eco.a> {
-      private final List<edc> a = Lists.newArrayList();
-      private final List<efh> b = Lists.newArrayList();
-      private final List<edw> c = Lists.newArrayList();
-      private egc d = ega.a(1.0F);
-      private egc e = ega.a(0.0F);
+   public static class a implements edr<eco.a>, eez<eco.a> {
+      private final Builder<eda> a = ImmutableList.builder();
+      private final Builder<efg> b = ImmutableList.builder();
+      private final Builder<edu> c = ImmutableList.builder();
+      private egb d = efz.a(1.0F);
+      private egb e = efz.a(0.0F);
 
-      public eco.a a(egc $$0) {
+      public eco.a a(egb $$0) {
          this.d = $$0;
          return this;
       }
@@ -114,60 +119,28 @@ public class eco {
          return this;
       }
 
-      public eco.a b(egc $$0) {
+      public eco.a b(egb $$0) {
          this.e = $$0;
          return this;
       }
 
-      public eco.a a(edc.a<?> $$0) {
+      public eco.a a(eda.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
-      public eco.a a(efh.a $$0) {
+      public eco.a a(efg.a $$0) {
          this.b.add($$0.build());
          return this;
       }
 
-      public eco.a a(edw.a $$0) {
+      public eco.a a(edu.a $$0) {
          this.c.add($$0.b());
          return this;
       }
 
       public eco b() {
-         if (this.d == null) {
-            throw new IllegalArgumentException("Rolls not set");
-         } else {
-            return new eco(this.a.toArray(new edc[0]), this.b.toArray(new efh[0]), this.c.toArray(new edw[0]), this.d, this.e);
-         }
-      }
-   }
-
-   public static class b implements JsonDeserializer<eco>, JsonSerializer<eco> {
-      public eco a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = arf.m($$0, "loot pool");
-         edc[] $$4 = arf.a($$3, "entries", $$2, edc[].class);
-         efh[] $$5 = arf.a($$3, "conditions", new efh[0], $$2, efh[].class);
-         edw[] $$6 = arf.a($$3, "functions", new edw[0], $$2, edw[].class);
-         egc $$7 = arf.a($$3, "rolls", $$2, egc.class);
-         egc $$8 = arf.a($$3, "bonus_rolls", ega.a(0.0F), $$2, egc.class);
-         return new eco($$4, $$5, $$6, $$7, $$8);
-      }
-
-      public JsonElement a(eco $$0, Type $$1, JsonSerializationContext $$2) {
-         JsonObject $$3 = new JsonObject();
-         $$3.add("rolls", $$2.serialize($$0.f));
-         $$3.add("bonus_rolls", $$2.serialize($$0.g));
-         $$3.add("entries", $$2.serialize($$0.a));
-         if (!ArrayUtils.isEmpty($$0.b)) {
-            $$3.add("conditions", $$2.serialize($$0.b));
-         }
-
-         if (!ArrayUtils.isEmpty($$0.d)) {
-            $$3.add("functions", $$2.serialize($$0.d));
-         }
-
-         return $$3;
+         return new eco(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

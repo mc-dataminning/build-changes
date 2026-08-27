@@ -1,18 +1,12 @@
-public record wi() implements uw<wh> {
-   public wi(sh $$0) {
-      this();
-   }
-
+public interface wi extends va {
    @Override
-   public void a(sh $$0) {
+   default sh b() {
+      return sh.e;
    }
 
-   public void a(wh $$0) {
-      $$0.a(this);
-   }
+   void a(wj var1);
 
-   @Override
-   public sg c() {
-      return sg.b;
-   }
+   void a(wk var1);
+
+   void a(wl var1);
 }

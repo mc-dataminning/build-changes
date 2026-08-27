@@ -1,41 +1,21 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fyy {
-   private static final fzg[] a = new fzg[]{
-      a("textures/entity/player/slim/alex.png", fzg.a.a),
-      a("textures/entity/player/slim/ari.png", fzg.a.a),
-      a("textures/entity/player/slim/efe.png", fzg.a.a),
-      a("textures/entity/player/slim/kai.png", fzg.a.a),
-      a("textures/entity/player/slim/makena.png", fzg.a.a),
-      a("textures/entity/player/slim/noor.png", fzg.a.a),
-      a("textures/entity/player/slim/steve.png", fzg.a.a),
-      a("textures/entity/player/slim/sunny.png", fzg.a.a),
-      a("textures/entity/player/slim/zuri.png", fzg.a.a),
-      a("textures/entity/player/wide/alex.png", fzg.a.b),
-      a("textures/entity/player/wide/ari.png", fzg.a.b),
-      a("textures/entity/player/wide/efe.png", fzg.a.b),
-      a("textures/entity/player/wide/kai.png", fzg.a.b),
-      a("textures/entity/player/wide/makena.png", fzg.a.b),
-      a("textures/entity/player/wide/noor.png", fzg.a.b),
-      a("textures/entity/player/wide/steve.png", fzg.a.b),
-      a("textures/entity/player/wide/sunny.png", fzg.a.b),
-      a("textures/entity/player/wide/zuri.png", fzg.a.b)
-   };
+public class fyy implements fyp {
+   public static final Codec<fyy> b = RecordCodecBuilder.create($$0 -> $$0.group(arv.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, fyy::new));
+   private final arv c;
 
-   public static aep a() {
-      return a[6].a();
+   public fyy(arv $$0) {
+      this.c = $$0;
    }
 
-   public static fzg a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(anm $$0, fyp.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public static fzg a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static fzg a(String $$0, fzg.a $$1) {
-      return new fzg(new aep($$0), null, null, $$1, true);
+   @Override
+   public fyr a() {
+      return fys.c;
    }
 }

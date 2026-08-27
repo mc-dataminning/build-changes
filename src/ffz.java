@@ -1,31 +1,103 @@
-public class ffz<T extends bve> extends ffu<T> {
-   private float j;
+import com.google.common.collect.ImmutableList;
 
-   public ffz(fhj $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+public class ffz<T extends bve> extends feo<T> {
+   private static final float a = 50.0F;
+   private static final float b = -40.0F;
+   private static final String f = "left_haunch";
+   private static final String g = "right_haunch";
+   private final fhn h;
+   private final fhn i;
+   private final fhn j;
+   private final fhn k;
+   private final fhn l;
+   private final fhn m;
+   private final fhn n;
+   private final fhn o;
+   private final fhn p;
+   private final fhn q;
+   private final fhn r;
+   private final fhn s;
+   private float t;
+   private static final float u = 0.6F;
+
+   public ffz(fhn $$0) {
+      this.h = $$0.b("left_hind_foot");
+      this.i = $$0.b("right_hind_foot");
+      this.j = $$0.b("left_haunch");
+      this.k = $$0.b("right_haunch");
+      this.l = $$0.b("body");
+      this.m = $$0.b("left_front_leg");
+      this.n = $$0.b("right_front_leg");
+      this.o = $$0.b("head");
+      this.p = $$0.b("right_ear");
+      this.q = $$0.b("left_ear");
+      this.r = $$0.b("tail");
+      this.s = $$0.b("nose");
    }
 
-   public static fhp c() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("head", fho.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fhn(0.6F)), fhl.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fho.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fhn(1.75F)), fhl.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fho $$2 = fho.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fhn(0.5F));
-      $$1.a("right_hind_leg", $$2, fhl.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, fhl.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, fhl.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, fhl.a(3.0F, 12.0F, -5.0F));
-      return fhp.a($$0, 64, 32);
+   public static fht a() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      $$1.a("left_hind_foot", fhs.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), fhp.a(3.0F, 17.5F, 3.7F));
+      $$1.a("right_hind_foot", fhs.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), fhp.a(-3.0F, 17.5F, 3.7F));
+      $$1.a("left_haunch", fhs.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), fhp.a(3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("right_haunch", fhs.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), fhp.a(-3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("body", fhs.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), fhp.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("left_front_leg", fhs.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), fhp.a(3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$1.a("right_front_leg", fhs.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), fhp.a(-3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$1.a("head", fhs.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), fhp.a(0.0F, 16.0F, -1.0F));
+      $$1.a("right_ear", fhs.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), fhp.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
+      $$1.a("left_ear", fhs.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), fhp.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
+      $$1.a("tail", fhs.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), fhp.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
+      $$1.a("nose", fhs.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), fhp.a(0.0F, 16.0F, -1.0F));
+      return fht.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         float $$8 = 1.5F;
+         $$0.a();
+         $$0.b(0.56666666F, 0.56666666F, 0.56666666F);
+         $$0.a(0.0F, 1.375F, 0.125F);
+         ImmutableList.of(this.o, this.q, this.p, this.s).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         $$0.b(0.4F, 0.4F, 0.4F);
+         $$0.a(0.0F, 2.25F, 0.0F);
+         ImmutableList.of(this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.r).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         $$0.a();
+         $$0.b(0.6F, 0.6F, 0.6F);
+         $$0.a(0.0F, 1.0F, 0.0F);
+         ImmutableList.of(this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, this.q, this.r, this.s, new fhn[0])
+            .forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      }
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      this.s.e = $$5 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      this.p.e = $$5 * (float) (Math.PI / 180.0);
+      this.q.e = $$5 * (float) (Math.PI / 180.0);
+      this.s.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.p.f = this.s.f - (float) (Math.PI / 12);
+      this.q.f = this.s.f + (float) (Math.PI / 12);
+      this.t = arp.a($$0.E($$6) * (float) Math.PI);
+      this.j.e = (this.t * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.k.e = (this.t * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.h.e = this.t * 50.0F * (float) (Math.PI / 180.0);
+      this.i.e = this.t * 50.0F * (float) (Math.PI / 180.0);
+      this.m.e = (this.t * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
+      this.n.e = (this.t * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
-      this.j = $$0.F($$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      this.t = arp.a($$0.E($$3) * (float) Math.PI);
    }
 }

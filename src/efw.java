@@ -1,12 +1,29 @@
-public class efw {
-   public static final efu a = a("storage", new efx.a());
-   public static final efu b = a("context", new eft.c());
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   private static efu a(String $$0, ecq<? extends efv> $$1) {
-      return hs.a(jc.K, new aep($$0), new efu($$1));
+public record efw(aer b) implements efu {
+   public static final Codec<efw> a = RecordCodecBuilder.create($$0 -> $$0.group(aer.a.fieldOf("source").forGetter(efw::c)).apply($$0, efw::new));
+
+   @Override
+   public eft a() {
+      return efv.b;
    }
 
-   public static Object a() {
-      return ecf.<efv, efu>a(jc.K, "provider", "type", efv::a).a(b, new eft.b()).a();
+   @Nullable
+   @Override
+   public rk a(ech $$0) {
+      return $$0.d().n().aG().a(this.b);
+   }
+
+   @Override
+   public Set<eep<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public aer c() {
+      return this.b;
    }
 }

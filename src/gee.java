@@ -1,29 +1,37 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gee extends gei {
+   private final tf a;
+   private eta b = eta.a;
+   private final exz c;
+   private int y;
 
-public class gee {
-   private final float a;
-   private final AtomicReference<gee.a> b = new AtomicReference<>();
-
-   public gee(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gee(exz $$0, tf $$1, tf $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   public void a(eqf $$0, te $$1) {
-      gee.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gee.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   public void aE_() {
+      this.f.ac().a();
+      this.b = eta.a(this.i, this.a, this.g - 50);
+      this.y = this.b.a() * 9;
+      this.d(esh.a(te.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
    }
 
-   static class a {
-      final te a;
-      final RateLimiter b;
+   @Override
+   public tf e() {
+      return tf.h().b(this.e).f(": ").b(this.a);
+   }
 
-      a(te $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void au_() {
+      eqm.O().a(this.c);
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
    }
 }

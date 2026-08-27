@@ -1,64 +1,44 @@
-public class ack implements uw<aav> {
-   private final gv a;
-   private final aep b;
-   private final aep c;
-   private final aep d;
-   private final String e;
-   private final ddj.a f;
+import javax.annotation.Nullable;
 
-   public ack(gv $$0, aep $$1, aep $$2, aep $$3, String $$4, ddj.a $$5) {
+public class ack implements ux<aaw> {
+   private final int a;
+   private final String b;
+   private final boolean c;
+
+   public ack(int $$0, String $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
    }
 
-   public ack(sh $$0) {
-      this.a = $$0.e();
-      this.b = $$0.s();
-      this.c = $$0.s();
-      this.d = $$0.s();
-      this.e = $$0.r();
-      this.f = ddj.a.a($$0.r()).orElse(ddj.a.b);
+   public ack(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.r();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
+   public void a(si $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f.c());
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
-      return this.a;
+   @Nullable
+   public com a(cpm $$0) {
+      bii $$1 = $$0.a(this.a);
+      return $$1 instanceof cdm ? ((cdm)$$1).A() : null;
    }
 
-   public aep d() {
+   public String a() {
       return this.b;
    }
 
-   public aep e() {
+   public boolean d() {
       return this.c;
-   }
-
-   public aep f() {
-      return this.d;
-   }
-
-   public String g() {
-      return this.e;
-   }
-
-   public ddj.a h() {
-      return this.f;
    }
 }

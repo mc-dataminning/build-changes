@@ -1,32 +1,43 @@
-public class yl implements uw<wo> {
-   private final gv a;
-   private final boolean b;
+import javax.annotation.Nullable;
 
-   public yl(gv $$0, boolean $$1) {
+public class yl implements ux<wp> {
+   private final int a;
+   private final cfj<?> b;
+   private final tf c;
+
+   public yl(int $$0, cfj<?> $$1, tf $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public yl(sh $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public yl(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jb.s);
+      this.c = $$0.l();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(jb.s, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
+   public int a() {
       return this.a;
    }
 
-   public boolean d() {
+   @Nullable
+   public cfj<?> d() {
       return this.b;
+   }
+
+   public tf e() {
+      return this.c;
    }
 }

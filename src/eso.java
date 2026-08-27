@@ -1,193 +1,274 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class eso<E extends eso.a<E>> extends esd<E> {
-   public eso(eqn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class eso<T> extends erz {
+   public static final BooleanSupplier a = exz::r;
+   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
+   private final tf c;
+   private int d;
+   private T l;
+   private final eso.c<T> m;
+   private final Function<T, tf> n;
+   private final Function<eso<T>, ts> o;
+   private final eso.b<T> p;
+   private final boolean q;
+   private final eqp.l<T> s;
+
+   eso(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      tf $$4,
+      tf $$5,
+      int $$6,
+      T $$7,
+      eso.c<T> $$8,
+      Function<T, tf> $$9,
+      Function<eso<T>, ts> $$10,
+      eso.b<T> $$11,
+      eqp.l<T> $$12,
+      boolean $$13
+   ) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.l = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$13;
+      this.s = $$12;
+      this.f();
    }
 
-   @Nullable
+   private void f() {
+      this.a(this.s.apply(this.l));
+   }
+
    @Override
-   public eru a(evz $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (!($$0 instanceof evz.a $$1)) {
-         return super.a($$0);
+   public void c() {
+      if (exz.q()) {
+         this.a(-1);
       } else {
-         E $$2 = this.h();
-         if ($$1.b().a() == ewa.a && $$2 != null) {
-            return eru.a(this, $$2.a($$0));
+         this.a(1);
+      }
+   }
+
+   private void a(int $$0) {
+      List<T> $$1 = this.m.a();
+      this.d = arp.b(this.d + $$0, $$1.size());
+      T $$2 = $$1.get(this.d);
+      this.b($$2);
+      this.p.onValueChange(this, $$2);
+   }
+
+   private T h(int $$0) {
+      List<T> $$1 = this.m.a();
+      return $$1.get(arp.b(this.d + $$0, $$1.size()));
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$3 > 0.0) {
+         this.a(-1);
+      } else if ($$3 < 0.0) {
+         this.a(1);
+      }
+
+      return true;
+   }
+
+   public void a(T $$0) {
+      List<T> $$1 = this.m.a();
+      int $$2 = $$1.indexOf($$0);
+      if ($$2 != -1) {
+         this.d = $$2;
+      }
+
+      this.b($$0);
+   }
+
+   private void b(T $$0) {
+      tf $$1 = this.c($$0);
+      this.b($$1);
+      this.l = $$0;
+      this.f();
+   }
+
+   private tf c(T $$0) {
+      return (tf)(this.q ? this.n.apply($$0) : this.d($$0));
+   }
+
+   private ts d(T $$0) {
+      return te.a(this.c, this.n.apply($$0));
+   }
+
+   public T a() {
+      return this.l;
+   }
+
+   @Override
+   protected ts aB_() {
+      return this.o.apply(this);
+   }
+
+   @Override
+   public void a(evx $$0) {
+      $$0.a(evw.a, this.aB_());
+      if (this.i) {
+         T $$1 = this.h(1);
+         tf $$2 = this.c($$1);
+         if (this.ax_()) {
+            $$0.a(evw.d, tf.a("narration.cycle_button.usage.focused", $$2));
          } else {
-            int $$3 = -1;
-            ewb $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.i().indexOf($$2.t());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = ewb.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = ewb.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            eru $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.i().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return eru.a(this, $$6);
+            $$0.a(evw.d, tf.a("narration.cycle_button.usage.hovered", $$2));
          }
       }
    }
 
-   @Override
-   public void a(@Nullable etw $$0) {
-      super.a($$0);
-      if ($$0 == null) {
-         this.a(null);
-      }
+   public ts b() {
+      return a((tf)(this.q ? this.d(this.l) : this.l()));
    }
 
-   @Override
-   public evr.a q() {
-      return this.ax_() ? evr.a.c : super.q();
+   public static <T> eso.a<T> a(Function<T, tf> $$0) {
+      return new eso.a<>($$0);
    }
 
-   @Override
-   protected boolean e(int $$0) {
-      return false;
+   public static eso.a<Boolean> a(tf $$0, tf $$1) {
+      return new eso.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
    }
 
-   @Override
-   public void b(evt $$0) {
-      E $$1 = this.r();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
-      }
-
-      $$0.a(evs.d, te.c("narration.component_list.usage"));
+   public static eso.a<Boolean> e() {
+      return new eso.a<Boolean>($$0 -> $$0 ? te.b : te.c).a(b);
    }
 
-   public abstract static class a<E extends eso.a<E>> extends esd.a<E> implements etv {
+   public static eso.a<Boolean> b(boolean $$0) {
+      return e().a($$0);
+   }
+
+   public static class a<T> {
+      private int a;
       @Nullable
-      private etw a;
-      @Nullable
-      private evr b;
-      private boolean c;
+      private T b;
+      private final Function<T, tf> c;
+      private eqp.l<T> d = $$0x -> null;
+      private Function<eso<T>, ts> e = eso::b;
+      private eso.c<T> f = eso.c.a(ImmutableList.of());
+      private boolean g;
 
-      @Override
-      public boolean aw_() {
-         return this.c;
-      }
-
-      @Override
-      public void b_(boolean $$0) {
+      public a(Function<T, tf> $$0) {
          this.c = $$0;
       }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return etv.super.a($$0, $$1, $$2);
+      public eso.a<T> a(Collection<T> $$0) {
+         return this.a(eso.c.a($$0));
       }
 
-      @Override
-      public void a(@Nullable etw $$0) {
-         if (this.a != null) {
-            this.a.c_(false);
+      @SafeVarargs
+      public final eso.a<T> a(T... $$0) {
+         return this.a(ImmutableList.copyOf($$0));
+      }
+
+      public eso.a<T> a(List<T> $$0, List<T> $$1) {
+         return this.a(eso.c.a(eso.a, $$0, $$1));
+      }
+
+      public eso.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         return this.a(eso.c.a($$0, $$1, $$2));
+      }
+
+      public eso.a<T> a(eso.c<T> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public eso.a<T> a(eqp.l<T> $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eso.a<T> a(T $$0) {
+         this.b = $$0;
+         int $$1 = this.f.b().indexOf($$0);
+         if ($$1 != -1) {
+            this.a = $$1;
          }
 
-         if ($$0 != null) {
-            $$0.c_(true);
-         }
-
-         this.a = $$0;
+         return this;
       }
 
-      @Nullable
-      @Override
-      public etw t() {
-         return this.a;
+      public eso.a<T> a(Function<eso<T>, ts> $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      @Nullable
-      public eru a(evz $$0, int $$1) {
-         if (this.i().isEmpty()) {
-            return null;
+      public eso.a<T> a() {
+         this.g = true;
+         return this;
+      }
+
+      public eso<T> a(int $$0, int $$1, int $$2, int $$3, tf $$4) {
+         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
+         });
+      }
+
+      public eso<T> a(int $$0, int $$1, int $$2, int $$3, tf $$4, eso.b<T> $$5) {
+         List<T> $$6 = this.f.b();
+         if ($$6.isEmpty()) {
+            throw new IllegalStateException("No values for cycle button");
          } else {
-            eru $$2 = this.i().get(Math.min($$1, this.i().size() - 1)).a($$0);
-            return eru.a(this, $$2);
+            T $$7 = this.b != null ? this.b : $$6.get(this.a);
+            tf $$8 = this.c.apply($$7);
+            tf $$9 = (tf)(this.g ? $$8 : te.a($$4, $$8));
+            return new eso<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
          }
       }
+   }
 
-      @Nullable
-      @Override
-      public eru a(evz $$0) {
-         if ($$0 instanceof evz.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
+   public interface b<T> {
+      void onValueChange(eso<T> var1, T var2);
+   }
+
+   public interface c<T> {
+      List<T> a();
+
+      List<T> b();
+
+      static <T> eso.c<T> a(Collection<T> $$0) {
+         final List<T> $$1 = ImmutableList.copyOf($$0);
+         return new eso.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$1;
             }
 
-            int $$3 = aro.a($$2 + this.i().indexOf(this.t()), 0, this.i().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.i().size(); $$4 += $$2) {
-               etw $$5 = this.i().get($$4);
-               eru $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return eru.a(this, $$6);
-               }
+            @Override
+            public List<T> b() {
+               return $$1;
             }
-         }
-
-         return etv.super.a($$0);
+         };
       }
 
-      public abstract List<? extends evr> b();
-
-      void a(evt $$0) {
-         List<? extends evr> $$1 = this.b();
-         exv.b $$2 = exv.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
+      static <T> eso.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         final List<T> $$3 = ImmutableList.copyOf($$1);
+         final List<T> $$4 = ImmutableList.copyOf($$2);
+         return new eso.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$0.getAsBoolean() ? $$4 : $$3;
             }
 
-            if ($$1.size() > 1) {
-               $$0.a(evs.b, te.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == evr.a.c) {
-                  $$0.a(evs.d, te.c("narration.component_list.usage"));
-               }
+            @Override
+            public List<T> b() {
+               return $$3;
             }
-
-            $$2.a.b($$0.a());
-         }
+         };
       }
    }
 }

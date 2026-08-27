@@ -1,5 +1,5 @@
-public record vp(aep a) implements vo {
-   @Override
-   public void a(sh $$0) {
-   }
+public interface vp {
+   void a(si var1);
+
+   aer a();
 }

@@ -1,47 +1,45 @@
-public class ig extends ih {
-   private final ih c = new ih();
-   private final cde.b d;
-   private final boolean e;
-
-   public ig(cde.b $$0) {
-      this($$0, false);
-   }
-
-   public ig(cde.b $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
+public class ig implements ih {
    @Override
-   public ciw a(gw $$0, ciw $$1) {
-      hb $$2 = $$0.e().c(cul.a);
-      cpk $$3 = $$0.g();
-      double $$4 = 0.5625 + (double)bik.k.k() / 2.0;
-      double $$5 = $$0.a() + (double)$$2.j() * $$4;
-      double $$6 = $$0.b() + (double)((float)$$2.k() * 1.125F);
-      double $$7 = $$0.c() + (double)$$2.l() * $$4;
-      gv $$8 = $$0.d().a($$2);
-      double $$9;
-      if ($$3.b_($$8).a(apo.a)) {
-         $$9 = 1.0;
-      } else {
-         if (!$$3.a_($$8).i() || !$$3.b_($$8.d()).a(apo.a)) {
-            return this.c.dispense($$0, $$1);
-         }
+   public final ciy dispense(gv $$0, ciy $$1) {
+      ciy $$2 = this.a($$0, $$1);
+      this.a($$0);
+      this.a($$0, $$0.e().c(cun.a));
+      return $$2;
+   }
 
-         $$9 = 0.0;
-      }
-
-      cde $$12 = (cde)(this.e ? new cdf($$3, $$5, $$6 + $$9, $$7) : new cde($$3, $$5, $$6 + $$9, $$7));
-      $$12.a(this.d);
-      $$12.r($$2.p());
-      $$3.b($$12);
-      $$1.h(1);
+   protected ciy a(gv $$0, ciy $$1) {
+      ha $$2 = $$0.e().c(cun.a);
+      ho $$3 = cun.a($$0);
+      ciy $$4 = $$1.a(1);
+      a($$0.g(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   @Override
-   protected void a(gw $$0) {
+   public static void a(cpm $$0, ciy $$1, int $$2, ha $$3, ho $$4) {
+      double $$5 = $$4.a();
+      double $$6 = $$4.b();
+      double $$7 = $$4.c();
+      if ($$3.o() == ha.a.b) {
+         $$6 -= 0.125;
+      } else {
+         $$6 -= 0.15625;
+      }
+
+      byg $$8 = new byg($$0, $$5, $$6, $$7, $$1);
+      double $$9 = $$0.z.j() * 0.1 + 0.2;
+      $$8.o(
+         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
+         $$0.z.a(0.2, 0.0172275 * (double)$$2),
+         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
+      );
+      $$0.b($$8);
+   }
+
+   protected void a(gv $$0) {
       $$0.g().c(1000, $$0.d(), 0);
+   }
+
+   protected void a(gv $$0, ha $$1) {
+      $$0.g().c(2000, $$0.d(), $$1.d());
    }
 }

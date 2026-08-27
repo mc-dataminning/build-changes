@@ -1,47 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class bdh {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bdc f = bdb.a;
+public interface bdh {
+   String b = "root";
 
-   public bdh(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   void a(bek var1);
+
+   default void d(String $$0) {
+      this.a($$0, 1);
    }
 
-   public bde a() {
-      this.f = new bcx(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   void a(String var1, int var2);
+
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
    }
 
-   public void b() {
-      if (this.f != bdb.a) {
-         bdd $$0 = this.f.d();
-         this.f = bdb.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
+   void a(Supplier<String> var1, int var2);
+
+   static bdh a(final bdh $$0, final bdh $$1) {
+      if ($$0 == bde.a) {
+         return $$1;
+      } else {
+         return $$1 == bde.a ? $$0 : new bdh() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
+
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
+
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(bek $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
+
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
       }
-   }
-
-   @Nullable
-   public static bdh a(String $$0) {
-      return null;
-   }
-
-   public static bde a(bde $$0, @Nullable bdh $$1) {
-      return $$1 != null ? bde.a($$1.a(), $$0) : $$0;
    }
 }

@@ -1,25 +1,27 @@
-public class fuq<T extends bvh> extends ftp<T, fgm<T>> {
-   private static final aep a = new aep("textures/entity/squid/squid.png");
+public class fuq extends ftu<bzk, fgm<bzk>> {
+   private static final aer a = new aer("textures/entity/slime/slime.png");
 
-   public fuq(fsj.a $$0, fgm<T> $$1) {
-      super($$0, $$1, 0.7F);
+   public fuq(fso.a $$0) {
+      super($$0, new fgm<>($$0.a(fhm.bm)), 0.25F);
+      this.a(new fxa<>(this, $$0.f()));
    }
 
-   public aep a(T $$0) {
+   public void a(bzk $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.ga();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(bzk $$0, elg $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.ga();
+      float $$5 = arp.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   }
+
+   public aer a(bzk $$0) {
       return a;
-   }
-
-   protected void a(T $$0, elh $$1, float $$2, float $$3, float $$4) {
-      float $$5 = aro.i($$4, $$0.c, $$0.b);
-      float $$6 = aro.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$5));
-      $$1.a(a.d.rotationDegrees($$6));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return aro.i($$1, $$0.bW, $$0.bV);
    }
 }

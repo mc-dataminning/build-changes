@@ -1,72 +1,42 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class nr {
-   @Deprecated
-   public static final dze.a a = new dze.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final aeq<dwi> a = nt.a("pillager_outpost/base_plates");
 
-   public static void a(nn<dze.a> $$0) {
-      a($$0, 0, dkq.a, dkq.b, dkq.c, dkq.d);
-      a($$0, -2, dkq.e, dkq.f, dkq.g, dkq.h);
-      a($$0, dkq.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dkq.j, a);
-      a($$0, dkq.k, -3, 1.0);
-      a($$0, dkq.l, -7, 1.0);
-      a($$0, dkq.m, -1, 1.0);
-      a($$0, dkq.n, -5, 1.0);
-      a($$0, dkq.o, -7, 1.0, 1.0);
-      a($$0, dkq.p, -8, 1.0);
-      a($$0, dkq.q, -8, 1.0);
-      a($$0, dkq.r, -7, 1.0);
-      a($$0, dkq.s, -8, 1.0);
-      a($$0, dkq.t, -11, 1.0);
-      a($$0, dkq.u, -11, 1.0);
-      a($$0, dkq.v, -7, 1.0);
-      a($$0, dkq.w, -7, 1.0);
-      a($$0, dkq.x, -11, 1.0);
-      a($$0, dkq.y, -8, 1.0);
-      a($$0, dkq.z, -5, 1.0);
-      a($$0, dkq.A, -8, 1.0);
-      a($$0, dkq.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dkq.C, -8, 1.0);
-      a($$0, dkq.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dkq.E, -8, 1.0);
-      a($$0, dkq.F, -7, 1.0);
-      a($$0, dkq.G, -7, 1.0);
-      a($$0, dkq.H, -5, 1.0);
-      a($$0, dkq.I, -8, 1.0);
-      a($$0, dkq.J, -8, 1.0);
-      a($$0, dkq.K, -7, 1.0);
-      a($$0, dkq.L, -7, 1.0);
-      a($$0, dkq.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dkq.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dkq.P, -8, 1.0);
-      a($$0, dkq.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.R, -8, 1.0);
-      a($$0, dkq.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dkq.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.U, -3, 1.0);
-      a($$0, dkq.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dkq.W, -2, 1.0);
-      a($$0, dkq.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkq.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkq.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkq.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkq.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dkq.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dkq.ah, -4, 1.0);
-   }
-
-   private static void a(nn<dze.a> $$0, int $$1, aeo<dze.a> $$2, aeo<dze.a> $$3, aeo<dze.a> $$4, aeo<dze.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(nn<dze.a> $$0, aeo<dze.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new dze.a($$2, $$3, $$4));
+   public static void a(nm<dwi> $$0) {
+      hf<dyq> $$1 = $$0.a(jc.aA);
+      he<dyq> $$2 = $$1.b(nu.q);
+      hf<dwi> $$3 = $$0.a(jc.aC);
+      he<dwi> $$4 = $$3.b(nt.a);
+      $$0.a(a, new dwi($$4, ImmutableList.of(Pair.of(dwg.a("pillager_outpost/base_plate"), 1)), dwi.a.b));
+      nt.a(
+         $$0,
+         "pillager_outpost/towers",
+         new dwi(
+            $$4,
+            ImmutableList.of(Pair.of(dwg.a(ImmutableList.of(dwg.a("pillager_outpost/watchtower"), dwg.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            dwi.a.b
+         )
+      );
+      nt.a($$0, "pillager_outpost/feature_plates", new dwi($$4, ImmutableList.of(Pair.of(dwg.a("pillager_outpost/feature_plate"), 1)), dwi.a.a));
+      nt.a(
+         $$0,
+         "pillager_outpost/features",
+         new dwi(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dwg.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(dwg.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(dwg.g(), 6)
+            ),
+            dwi.a.b
+         )
+      );
    }
 }

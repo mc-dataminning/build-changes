@@ -1,57 +1,58 @@
 import com.google.gson.JsonObject;
 import java.util.Collection;
+import java.util.Optional;
 
-public class bu extends cv<bu.a> {
-   static final aep a = new aep("fishing_rod_hooked");
+public class bu extends cu<bu.a> {
+   static final aer a = new aer("fishing_rod_hooked");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public bu.a a(JsonObject $$0, ba $$1, be $$2) {
-      bz $$3 = bz.a($$0.get("rod"));
-      ba $$4 = bo.a($$0, "entity", $$2);
-      bz $$5 = bz.a($$0.get("item"));
+   public bu.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      Optional<bz> $$3 = bz.a($$0.get("rod"));
+      Optional<ba> $$4 = bo.a($$0, "entity", $$2);
+      Optional<bz> $$5 = bz.a($$0.get("item"));
       return new bu.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(akj $$0, ciw $$1, cbz $$2, Collection<ciw> $$3) {
-      ech $$4 = bo.b($$0, (big)($$2.o() != null ? $$2.o() : $$2));
+   public void a(akl $$0, ciy $$1, ccb $$2, Collection<ciy> $$3) {
+      ech $$4 = bo.b($$0, (bii)($$2.o() != null ? $$2.o() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
    public static class a extends ar {
-      private final bz a;
-      private final ba b;
-      private final bz c;
+      private final Optional<bz> a;
+      private final Optional<ba> b;
+      private final Optional<bz> c;
 
-      public a(ba $$0, bz $$1, ba $$2, bz $$3) {
+      public a(Optional<ba> $$0, Optional<bz> $$1, Optional<ba> $$2, Optional<bz> $$3) {
          super(bu.a, $$0);
          this.a = $$1;
          this.b = $$2;
          this.c = $$3;
       }
 
-      public static bu.a a(bz $$0, bo $$1, bz $$2) {
-         return new bu.a(ba.a, $$0, bo.a($$1), $$2);
+      public static bu.a a(Optional<bz> $$0, Optional<bo> $$1, Optional<bz> $$2) {
+         return new bu.a(Optional.empty(), $$0, bo.a($$1), $$2);
       }
 
-      public boolean a(ciw $$0, ech $$1, Collection<ciw> $$2) {
-         if (!this.a.a($$0)) {
+      public boolean a(ciy $$0, ech $$1, Collection<ciy> $$2) {
+         if (this.a.isPresent() && !this.a.get().a($$0)) {
             return false;
-         } else if (!this.b.a($$1)) {
+         } else if (this.b.isPresent() && !this.b.get().a($$1)) {
             return false;
          } else {
-            if (this.c != bz.a) {
+            if (this.c.isPresent()) {
                boolean $$3 = false;
-               big $$4 = $$1.c(eet.a);
-               if ($$4 instanceof bye $$5 && this.c.a($$5.j())) {
+               bii $$4 = $$1.c(ees.a);
+               if ($$4 instanceof byg $$5 && this.c.get().a($$5.j())) {
                   $$3 = true;
                }
 
-               for (ciw $$6 : $$2) {
-                  if (this.c.a($$6)) {
+               for (ciy $$6 : $$2) {
+                  if (this.c.get().a($$6)) {
                      $$3 = true;
                      break;
                   }
@@ -67,12 +68,12 @@ public class bu extends cv<bu.a> {
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("rod", this.a.a());
-         $$1.add("entity", this.b.a($$0));
-         $$1.add("item", this.c.a());
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         this.a.ifPresent($$1 -> $$0.add("rod", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         this.c.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         return $$0;
       }
    }
 }

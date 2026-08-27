@@ -1,106 +1,160 @@
-import java.nio.file.Path;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fcc extends exv {
-   private static final int a = 8;
-   private static final te b = te.c("telemetry_info.screen.title");
-   private static final te c = te.c("telemetry_info.screen.description").a(n.h);
-   private static final te k = te.c("telemetry_info.button.privacy_statement");
-   private static final te l = te.c("telemetry_info.button.give_feedback");
-   private static final te m = te.c("telemetry_info.button.show_data");
-   private final exv n;
-   private final eqr o;
-   private fcb p;
-   private double q;
+public class fcc extends esn<fca> {
+   private final fcd a;
+   private final List<fca> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public fcc(exv $$0, eqr $$1) {
-      super(b);
+   public fcc(fcd $$0, eqm $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$0;
+      this.b(false);
+   }
+
+   @Override
+   protected void a(erw $$0) {
+      $$0.c(this.j, this.g + 4, this.i, this.h);
+   }
+
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fca> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
+   }
+
+   private void a(Collection<UUID> $$0, Map<UUID, fca> $$1) {
+      fij $$2 = this.c.v.cl;
+
+      for (UUID $$3 : $$0) {
+         fiq $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fca(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
+      }
+   }
+
+   private void a(Map<UUID, fca> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aX().b())) {
+         fca $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fca $$2 = new fca(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fiw $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fiy $$3 = $$0.b($$2);
+         if ($$3 instanceof fiz.a) {
+            fiz.a $$4 = (fiz.a)$$3;
+            if ($$4.g().h()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void e() {
+      this.m.sort(Comparator.<fca, Integer>comparing($$0 -> {
+         if (this.c.b($$0.e())) {
+            return 0;
+         } else if ($$0.e().version() == 2) {
+            return 4;
+         } else if (this.c.aX().a($$0.e())) {
+            return 1;
+         } else {
+            return $$0.g() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.d().isBlank()) {
+            int $$1 = $$0.d().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fca::d, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fca> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.e();
+      this.v();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void v() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.d().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
       this.n = $$0;
-      this.o = $$1;
    }
 
-   @Override
-   public te e() {
-      return td.a(super.e(), c);
+   public boolean d() {
+      return this.m.isEmpty();
    }
 
-   @Override
-   protected void aE_() {
-      evi $$0 = new evi();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      evo $$1 = $$0.a(evo.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new etn(this.m(), this.i));
-      $$1.a(new etc(c, this.i).i(this.g - 16).b(true));
-      esi $$2 = esi.a(k, this::b).a();
-      $$1.a($$2);
-      evj $$3 = this.a(esi.a(l, this::c).a(), esi.a(m, this::d).a());
-      $$1.a($$3);
-      evj $$4 = this.a(this.l(), esi.a(td.d, this::a).a());
-      $$0.a($$4, $$0.b().a(0.5F, 1.0F));
-      $$0.a();
-      this.p = new fcb(0, 0, this.g - 40, $$4.r() - ($$3.r() + $$3.h()) - 16, this.f.h);
-      this.p.a(this.q);
-      this.p.a($$0x -> this.q = $$0x);
-      this.c(this.p);
-      $$1.a(this.p);
-      $$0.a();
-      evi.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         esg var10000 = this.d($$1x);
-      });
-   }
+   public void a(fiq $$0, fcd.a $$1) {
+      UUID $$2 = $$0.a().getId();
 
-   private esg l() {
-      esg $$0 = this.o.ad().a(this.o, 0, 0, 150, $$0x -> this.p.b($$0x));
-      $$0.i = this.f.A();
-      return $$0;
-   }
-
-   private void a(esi $$0) {
-      this.f.a(this.n);
-   }
-
-   private void b(esi $$0) {
-      this.f.a(new ewn($$0x -> {
-         if ($$0x) {
-            ac.i().a("http://go.microsoft.com/fwlink/?LinkId=521839");
+      for (fca $$3 : this.m) {
+         if ($$3.e().equals($$2)) {
+            $$3.c(false);
+            return;
          }
+      }
 
-         this.f.a(this);
-      }, "http://go.microsoft.com/fwlink/?LinkId=521839", true));
+      if (($$1 == fcd.a.a || this.c.aL().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fca $$5 = new fca(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
    }
 
-   private void c(esi $$0) {
-      this.f.a(new ewn($$0x -> {
-         if ($$0x) {
-            ac.i().a("https://aka.ms/javafeedback?ref=game");
+   public void a(UUID $$0) {
+      for (fca $$1 : this.m) {
+         if ($$1.e().equals($$0)) {
+            $$1.c(true);
+            return;
          }
-
-         this.f.a(this);
-      }, "https://aka.ms/javafeedback?ref=game", true));
-   }
-
-   private void d(esi $$0) {
-      Path $$1 = this.f.t().b();
-      ac.i().a($$1.toUri());
-   }
-
-   @Override
-   public void au_() {
-      this.f.a(this.n);
-   }
-
-   @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private evj a(esg $$0, esg $$1) {
-      evj $$2 = new evj();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
+      }
    }
 }

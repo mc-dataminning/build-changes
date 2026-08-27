@@ -1,40 +1,55 @@
-public class cid extends cir {
-   public cid(cir.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cid extends cit {
+   public cid(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgo a(clg $$0) {
-      cbl $$1 = $$0.o();
-      cpk $$2 = $$0.q();
-      gv $$3 = $$0.a();
-      dey $$4 = $$2.a_($$3);
-      if (!csx.h($$4) && !csy.g($$4) && !csz.g($$4)) {
-         gv $$5 = $$3.a($$0.k());
-         if (cry.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, aou.hS, aov.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
-            dey $$6 = cry.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dji.i, $$3);
-            ciw $$7 = $$0.n();
-            if ($$1 instanceof akj) {
-               ai.y.a((akj)$$1, $$5, $$7);
-               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
-            }
-
-            return bgo.a($$2.r_());
-         } else {
-            return bgo.e;
-         }
-      } else {
-         $$2.a($$1, $$3, aou.hS, aov.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dfo.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dji.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
-         }
-
-         return bgo.a($$2.r_());
+   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
+      qr $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
+   }
+
+   public static void a(qr $$0, List<tf> $$1) {
+      cic.a $$2 = cic.a.a($$0.f("Type"));
+      $$1.add(tf.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(tf.h().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(tf.c("item.minecraft.firework_star.fade_to").b(te.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(tf.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(tf.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static tf a(ts $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
+   }
+
+   private static tf a(int $$0) {
+      chm $$1 = chm.b($$0);
+      return $$1 == null ? tf.c("item.minecraft.firework_star.custom_color") : tf.c("item.minecraft.firework_star." + $$1.b());
    }
 }

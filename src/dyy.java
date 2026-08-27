@@ -1,11 +1,17 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public interface dyy {
-   Codec<dyy> c = jc.q.q().dispatch(dyy::a, dyz::codec);
+public class dyy implements dza {
+   private static final dyy b = new dyy();
+   public static final Codec<dyy> a = Codec.unit(b);
 
-   @Nullable
-   qs a(art var1, @Nullable qs var2);
+   @Override
+   public qr a(aru $$0, @Nullable qr $$1) {
+      return new qr();
+   }
 
-   dyz<?> a();
+   @Override
+   public dzb<?> a() {
+      return dzb.a;
+   }
 }

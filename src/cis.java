@@ -1,65 +1,27 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public interface cis {
+   int a = 256;
+   int b = 140;
+   aeq<ciq> c = a("ponder_goat_horn");
+   aeq<ciq> d = a("sing_goat_horn");
+   aeq<ciq> e = a("seek_goat_horn");
+   aeq<ciq> f = a("feel_goat_horn");
+   aeq<ciq> g = a("admire_goat_horn");
+   aeq<ciq> h = a("call_goat_horn");
+   aeq<ciq> i = a("yearn_goat_horn");
+   aeq<ciq> j = a("dream_goat_horn");
 
-public class cis {
-   private final Map<cir, cis.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cir $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   private static aeq<ciq> a(String $$0) {
+      return aeq.a(jc.B, new aer($$0));
    }
 
-   public float a(cir $$0, float $$1) {
-      cis.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return aro.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cir, cis.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cir, cis.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(cir $$0, int $$1) {
-      this.a.put($$0, new cis.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cir $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cir $$0, int $$1) {
-   }
-
-   protected void c(cir $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   static ciq a(hr<ciq> $$0) {
+      hr.a($$0, c, new ciq((he<aov>)aow.ld.get(0), 140, 256.0F));
+      hr.a($$0, d, new ciq((he<aov>)aow.ld.get(1), 140, 256.0F));
+      hr.a($$0, e, new ciq((he<aov>)aow.ld.get(2), 140, 256.0F));
+      hr.a($$0, f, new ciq((he<aov>)aow.ld.get(3), 140, 256.0F));
+      hr.a($$0, g, new ciq((he<aov>)aow.ld.get(4), 140, 256.0F));
+      hr.a($$0, h, new ciq((he<aov>)aow.ld.get(5), 140, 256.0F));
+      hr.a($$0, i, new ciq((he<aov>)aow.ld.get(6), 140, 256.0F));
+      return hr.a($$0, j, new ciq((he<aov>)aow.ld.get(7), 140, 256.0F));
    }
 }

@@ -1,53 +1,67 @@
-public interface clz<C extends bgh> {
-   boolean a(C var1, cpk var2);
+public class clz extends clt {
+   public clz(aer $$0, clr $$1) {
+      super($$0, $$1);
+   }
 
-   ciw a(C var1, ht var2);
+   public boolean a(ces $$0, cpm $$1) {
+      int $$2 = 0;
+      ciy $$3 = ciy.b;
 
-   boolean a(int var1, int var2);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ciy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cjb.rf)) {
+               if (!$$3.b()) {
+                  return false;
+               }
 
-   ciw a(ht var1);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cjb.tp)) {
+                  return false;
+               }
 
-   default ho<ciw> a(C $$0) {
-      ho<ciw> $$1 = ho.a($$0.b(), ciw.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cir $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new ciw($$3.s()));
+               $$2++;
+            }
          }
       }
 
-      return $$1;
+      return !$$3.b() && $$2 > 0;
    }
 
-   default ho<clw> a() {
-      return ho.a();
+   public ciy a(ces $$0, hs $$1) {
+      int $$2 = 0;
+      ciy $$3 = ciy.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ciy $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cjb.rf)) {
+               if (!$$3.b()) {
+                  return ciy.b;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cjb.tp)) {
+                  return ciy.b;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : ciy.b;
    }
 
-   default boolean ai_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   default boolean i() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default ciw h() {
-      return new ciw(csl.cA);
-   }
-
-   aep e();
-
-   cmb<?> aj_();
-
-   cmc<?> f();
-
-   default boolean j() {
-      ho<clw> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cmd<?> aj_() {
+      return cmd.e;
    }
 }

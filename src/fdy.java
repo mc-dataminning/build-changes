@@ -1,33 +1,142 @@
-public class fdy<T extends bwg> extends fev<T> {
-   private final fhj g = this.b.b("left_chest");
-   private final fhj h = this.b.b("right_chest");
+public class fdy<T extends bvw> extends fex<T> {
+   private static final float a = 2.0F;
+   private static final float b = 2.5F;
+   private static final float f = 0.45F;
+   private static final float g = 29.35F;
+   private static final String h = "saddle";
+   private static final String i = "bridle";
+   private static final String j = "reins";
+   private final fhn k;
+   private final fhn l;
+   private final fhn[] m;
+   private final fhn[] n;
 
-   public fdy(fhj $$0) {
-      super($$0);
+   public fdy(fhn $$0) {
+      this.k = $$0;
+      fhn $$1 = $$0.b("body");
+      this.l = $$1.b("head");
+      this.m = new fhn[]{$$1.b("saddle"), this.l.b("bridle")};
+      this.n = new fhn[]{this.l.b("reins")};
    }
 
-   public static fhp c() {
-      fhr $$0 = fev.a(fhn.a);
-      fhs $$1 = $$0.a();
-      fhs $$2 = $$1.a("body");
-      fho $$3 = fho.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fhl.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fhl.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fhs $$4 = $$1.a("head_parts").a("head");
-      fho $$5 = fho.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fhl.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fhl.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fhp.a($$0, 64, 64);
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      fhr $$2 = new fhr(0.05F);
+      fhw $$3 = $$1.a("body", fhs.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fhp.a(0.0F, 4.0F, 9.5F));
+      $$3.a("hump", fhs.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fhp.a(0.0F, -12.0F, -10.0F));
+      $$3.a("tail", fhs.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fhp.a(0.0F, -9.0F, 3.5F));
+      fhw $$4 = $$3.a(
+         "head",
+         fhs.c()
+            .a(60, 24)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
+            .a(21, 0)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
+            .a(50, 0)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
+         fhp.a(0.0F, -3.0F, -19.5F)
+      );
+      $$4.a("left_ear", fhs.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fhp.a(2.5F, -21.0F, -9.5F));
+      $$4.a("right_ear", fhs.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fhp.a(-2.5F, -21.0F, -9.5F));
+      $$1.a("left_hind_leg", fhs.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fhp.a(4.9F, 1.0F, 9.5F));
+      $$1.a("right_hind_leg", fhs.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fhp.a(-4.9F, 1.0F, 9.5F));
+      $$1.a("left_front_leg", fhs.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fhp.a(4.9F, 1.0F, -10.5F));
+      $$1.a("right_front_leg", fhs.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fhp.a(-4.9F, 1.0F, -10.5F));
+      $$3.a(
+         "saddle",
+         fhs.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
+         fhp.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "reins",
+         fhs.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         fhp.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "bridle",
+         fhs.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         fhp.a(0.0F, 0.0F, 0.0F)
+      );
+      return fht.a($$0, 128, 128);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.q()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
+      this.a().e().forEach(fhn::c);
+      this.a($$0, $$4, $$5, $$3);
+      this.a($$0);
+      this.a(erg.a, $$1, $$2, 2.0F, 2.5F);
+      this.a($$0.ca, erg.b, $$3, 1.0F);
+      this.a($$0.cb, erg.c, $$3, 1.0F);
+      this.a($$0.cc, erg.d, $$3, 1.0F);
+      this.a($$0.cd, erg.f, $$3, 1.0F);
+      this.a($$0.ce, erg.e, $$3, 1.0F);
+   }
+
+   private void a(T $$0, float $$1, float $$2, float $$3) {
+      $$1 = arp.a($$1, -30.0F, 30.0F);
+      $$2 = arp.a($$2, -25.0F, 45.0F);
+      if ($$0.W_() > 0) {
+         float $$4 = $$3 - (float)$$0.ah;
+         float $$5 = 45.0F * ((float)$$0.W_() - $$4) / 55.0F;
+         $$2 = arp.a($$2 + $$5, -25.0F, 70.0F);
       }
+
+      this.l.f = $$1 * (float) (Math.PI / 180.0);
+      this.l.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   private void a(T $$0) {
+      boolean $$1 = $$0.i();
+      boolean $$2 = $$0.bO();
+
+      for (fhn $$3 : this.m) {
+         $$3.k = $$1;
+      }
+
+      for (fhn $$4 : this.n) {
+         $$4.k = $$2 && $$1;
+      }
+   }
+
+   @Override
+   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(0.45F, 0.45F, 0.45F);
+         $$0.a(0.0F, 1.834375F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public fhn a() {
+      return this.k;
    }
 }

@@ -1,98 +1,70 @@
-public class byy extends bzi {
-   public byy(bik<? extends byy> $$0, cpk $$1) {
+import org.joml.Vector3f;
+
+public class byy extends bzu {
+   public byy(bim<? extends byy> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   public static bkc.a p() {
-      return byz.gf().a(bkd.d, 0.2F);
-   }
-
-   public static boolean b(bik<byy> $$0, cpl $$1, bja $$2, gv $$3, art $$4) {
-      return $$1.ai() != bgl.a;
+   public static boolean a(bim<byy> $$0, cqb $$1, bjc $$2, gu $$3, aru $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bjc.c || $$1.g($$3));
    }
 
    @Override
-   public boolean a(cpn $$0) {
-      return $$0.f(this) && !$$0.d(this.cG());
-   }
-
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.a(bkd.i).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bm() {
-      return 1.0F;
-   }
-
-   @Override
-   protected iu q() {
-      return iw.C;
-   }
-
-   @Override
-   public boolean bM() {
+   protected boolean X_() {
       return false;
    }
 
    @Override
-   protected int t() {
-      return super.t() * 4;
+   protected aov r() {
+      return aow.lx;
    }
 
    @Override
-   protected void fV() {
-      this.d *= 0.9F;
+   protected aov d(bhg $$0) {
+      return aow.lA;
    }
 
    @Override
-   protected void eZ() {
-      ehf $$0 = this.dn();
-      float $$1 = (float)this.ga() * 0.1F;
-      this.o($$0.c, (double)(this.eX() + $$1), $$0.e);
-      this.au = true;
+   protected aov h_() {
+      return aow.lz;
    }
 
    @Override
-   protected void c(apy<eaa> $$0) {
-      if ($$0 == apo.b) {
-         ehf $$1 = this.dn();
-         this.o($$1.c, (double)(0.22F + (float)this.ga() * 0.05F), $$1.e);
-         this.au = true;
-      } else {
-         super.c($$0);
+   protected aov t() {
+      return aow.lB;
+   }
+
+   @Override
+   public boolean C(bii $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eR().b() && $$0 instanceof biy) {
+         float $$2 = this.dK().d_(this.dk()).b();
+         ((biy)$$0).b(new bhv(bhx.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean ga() {
+      return true;
+   }
+
+   @Override
+   protected void gc() {
+      this.b(bim.bp);
+      if (!this.aS()) {
+         this.dK().a(null, 1041, this.dk(), 0);
       }
    }
 
    @Override
-   protected boolean fW() {
-      return this.cX();
+   protected ciy fZ() {
+      return ciy.b;
    }
 
    @Override
-   protected float fX() {
-      return super.fX() + 2.0F;
-   }
-
-   @Override
-   protected aot d(bhe $$0) {
-      return this.gb() ? aou.mO : aou.mN;
-   }
-
-   @Override
-   protected aot h_() {
-      return this.gb() ? aou.mF : aou.mM;
-   }
-
-   @Override
-   protected aot fY() {
-      return this.gb() ? aou.mR : aou.mQ;
-   }
-
-   @Override
-   protected aot fZ() {
-      return aou.mP;
+   protected Vector3f a(bii $$0, bij $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
    }
 }

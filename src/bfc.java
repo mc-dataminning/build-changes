@@ -1,48 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bfc<E extends bfa> {
-   private final int a;
-   private final ImmutableList<E> b;
+public interface bfc {
+   bfb a();
 
-   bfc(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bfb.a($$0);
+   static <T> bfc.b<T> a(T $$0, int $$1) {
+      return new bfc.b<>($$0, bfb.a($$1));
    }
 
-   public static <E extends bfa> bfc<E> c() {
-      return new bfc<>(ImmutableList.of());
-   }
+   public static class a implements bfc {
+      private final bfb a;
 
-   @SafeVarargs
-   public static <E extends bfa> bfc<E> a(E... $$0) {
-      return new bfc<>(ImmutableList.copyOf($$0));
-   }
+      public a(int $$0) {
+         this.a = bfb.a($$0);
+      }
 
-   public static <E extends bfa> bfc<E> a(List<E> $$0) {
-      return new bfc<>($$0);
-   }
+      public a(bfb $$0) {
+         this.a = $$0;
+      }
 
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(art $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bfb.a(this.b, $$1);
+      @Override
+      public bfb a() {
+         return this.a;
       }
    }
 
-   public List<E> e() {
-      return this.b;
-   }
+   public static class b<T> implements bfc {
+      private final T a;
+      private final bfb b;
 
-   public static <E extends bfa> Codec<bfc<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bfc::a, bfc::e);
+      b(T $$0, bfb $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public T b() {
+         return this.a;
+      }
+
+      @Override
+      public bfb a() {
+         return this.b;
+      }
+
+      public static <E> Codec<bfc.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bfc.b::b), bfb.a.fieldOf("weight").forGetter(bfc.b::a)).apply($$1, bfc.b::new)
+         );
+      }
    }
 }

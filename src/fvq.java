@@ -1,49 +1,34 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+public class fvq extends ftu<bvn, fhe<bvn>> {
+   private static final aer a = new aer("textures/entity/wolf/wolf.png");
+   private static final aer i = new aer("textures/entity/wolf/wolf_tame.png");
+   private static final aer j = new aer("textures/entity/wolf/wolf_angry.png");
 
-public class fvq<T extends biw, M extends ffp<T>> extends fxa<T, M> {
-   private static final aep a = new aep("textures/entity/bee/bee_stinger.png");
-
-   public fvq(ftk<T, M> $$0) {
-      super($$0);
+   public fvq(fso.a $$0) {
+      super($$0, new fhe<>($$0.a(fhm.bV)), 0.5F);
+      this.a(new fxl(this));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eN();
+   protected float a(bvn $$0, float $$1) {
+      return $$0.gh();
    }
 
-   @Override
-   protected void a(elh $$0, fng $$1, int $$2, big $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = aro.c($$4 * $$4 + $$6 * $$6);
-      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
-      $$0.a(0.0F, 0.0F, 0.0F);
-      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$10));
-      float $$11 = 0.0F;
-      float $$12 = 0.125F;
-      float $$13 = 0.0F;
-      float $$14 = 0.0625F;
-      float $$15 = 0.03125F;
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.b(0.03125F, 0.03125F, 0.03125F);
-      $$0.a(2.5F, 0.0F, 0.0F);
-      ell $$16 = $$1.getBuffer(fno.d(a));
+   public void a(bvn $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      if ($$0.gg()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
 
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         $$0.a(a.b.rotationDegrees(90.0F));
-         elh.a $$18 = $$0.c();
-         Matrix4f $$19 = $$18.a();
-         Matrix3f $$20 = $$18.b();
-         a($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
-         a($$16, $$19, $$20, -4.5F, 1, 0.0F, 0.0625F, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gg()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
       }
    }
 
-   private static void a(ell $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
-      $$0.a($$1, $$3, (float)$$4, 0.0F).a(255, 255, 255, 255).a($$5, $$6).c(fxx.d).b($$7).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public aer a(bvn $$0) {
+      if ($$0.p()) {
+         return i;
+      } else {
+         return $$0.S_() ? j : a;
+      }
    }
 }

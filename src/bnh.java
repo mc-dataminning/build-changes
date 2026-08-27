@@ -1,24 +1,23 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bnh extends bko<biy> {
-   private final float c;
-
-   public bnh(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   protected boolean a(aki $$0, biy $$1) {
-      return $$1.aX() && $$1.b(apo.a) > $$1.de() || $$1.bl();
-   }
-
-   protected boolean a(aki $$0, biy $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aki $$0, biy $$1, long $$2) {
-      if ($$1.ee().i() < this.c) {
-         $$1.F().a();
-      }
+public class bnh {
+   public static bkr<bjh> a(bsa<hd> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return boc.a(
+         (Function<boc.b<bjh>, ? extends App<boc.c<bjh>, bof<bjh>>>)($$5 -> $$5.group($$5.a(bsa.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  hd $$10 = $$5.b($$6);
+                  if ($$7.ac() != $$10.a() || !$$10.b().a($$8.di(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new bsd($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

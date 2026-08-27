@@ -1,18 +1,26 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public interface bgs {
-   te ab();
+@Immutable
+public class bgs {
+   public static final bgs a = new bgs("");
+   public static final String b = "Lock";
+   private final String c;
 
-   default boolean ac() {
-      return this.ad() != null;
+   public bgs(String $$0) {
+      this.c = $$0;
    }
 
-   default te H_() {
-      return this.ab();
+   public boolean a(ciy $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
    }
 
-   @Nullable
-   default te ad() {
-      return null;
+   public void a(qr $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
+
+   public static bgs b(qr $$0) {
+      return $$0.b("Lock", 8) ? new bgs($$0.l("Lock")) : a;
    }
 }

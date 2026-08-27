@@ -1,23 +1,24 @@
-public class fte extends ftp<buu, fez<buu>> {
-   private static final aep a = new aep("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fte(fsj.a $$0) {
-      super($$0, new fez<>($$0.a(fhi.ap)), 0.7F);
-      this.a(new fwi(this));
-      this.a(new fwj(this, $$0.c()));
+public final class fte extends frl<bwl, fez<bwl>> {
+   private static final Map<bws, aer> a = ac.a(Maps.newEnumMap(bws.class), $$0 -> {
+      $$0.put(bws.a, new aer("textures/entity/horse/horse_white.png"));
+      $$0.put(bws.b, new aer("textures/entity/horse/horse_creamy.png"));
+      $$0.put(bws.c, new aer("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(bws.d, new aer("textures/entity/horse/horse_brown.png"));
+      $$0.put(bws.e, new aer("textures/entity/horse/horse_black.png"));
+      $$0.put(bws.f, new aer("textures/entity/horse/horse_gray.png"));
+      $$0.put(bws.g, new aer("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public fte(fso.a $$0) {
+      super($$0, new fez<>($$0.a(fhm.aj)), 1.1F);
+      this.a(new fwl(this));
+      this.a(new fwk(this, $$0.f()));
    }
 
-   public aep a(buu $$0) {
-      return a;
-   }
-
-   protected void a(buu $$0, elh $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
-      }
+   public aer a(bwl $$0) {
+      return a.get($$0.q());
    }
 }

@@ -1,25 +1,47 @@
-public class fat extends faw {
-   private static final te b = te.c("multiplayerWarning.header").a(n.r);
-   private static final te c = te.c("multiplayerWarning.message");
-   private static final te k = te.c("multiplayerWarning.check");
-   private static final te l = b.e().f("\n").b(c);
-   private final exv m;
+public class fat {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-   public fat(exv $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public static void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.d(esi.a(td.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.aq();
-         }
+   private static void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   }
 
-         this.f.a(new far(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(esi.a(td.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+   private static void b(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   }
+
+   private static void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   }
+
+   private static void c(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   }
+
+   private static void b(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

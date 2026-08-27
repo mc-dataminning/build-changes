@@ -1,19 +1,27 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cpa extends cpd {
-   private final big a;
+public class cpa {
+   public static final cpa a = new cpa(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<cpa> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, cpa::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   public cpa(big $$0) {
-      this.a = $$0;
+   public cpa(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public Optional<Float> a(cpc $$0, coq $$1, gv $$2, dey $$3, eab $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(cpc $$0, coq $$1, gv $$2, dey $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public List<String> b() {
+      return this.d;
    }
 }

@@ -1,29 +1,29 @@
-public enum eiv {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import java.util.function.Function;
 
-   private final int h;
+public class eiv<T> implements eim<T> {
+   private final Function<gu, eit<T>> a;
 
-   private eiv(int $$0) {
-      this.h = $$0;
+   public eiv(Function<gu, eit<T>> $$0) {
+      this.a = $$0;
    }
 
-   public static eiv a(int $$0) {
-      for (eiv $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
+   @Override
+   public boolean a(gu $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
+   @Override
+   public void a(eiq<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
+
+   @Override
+   public boolean b(gu $$0, T $$1) {
+      return false;
+   }
+
+   @Override
    public int a() {
-      return this.h;
+      return 0;
    }
 }

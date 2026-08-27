@@ -1,113 +1,60 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
-public class ako extends ajw {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<asc<akm<?>>> d = new Long2ObjectOpenHashMap();
+public final class ako<T> implements Comparable<ako<?>> {
+   private final akp<T> a;
+   private final int b;
+   private final T c;
+   private long d;
 
-   public ako() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   protected ako(akp<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private asc<akm<?>> g(long $$0) {
-      return (asc<akm<?>>)this.d.computeIfAbsent($$0, $$0x -> asc.a(4));
-   }
-
-   private int a(asc<akm<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, akm<?> $$1) {
-      asc<akm<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, akm<?> $$1) {
-      asc<akm<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(akn<T> $$0, cor $$1, int $$2, T $$3) {
-      this.a($$1.a(), new akm<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(akn<T> $$0, cor $$1, int $$2, T $$3) {
-      akm<T> $$4 = new akm<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<akm<cor>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<asc<akm<?>>> $$2 = (Entry<asc<akm<?>>>)var3.next();
-
-         for (akm<?> $$3 : (asc)$$2.getValue()) {
-            if ($$3.a() == akn.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<akm<cor>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         akm<cor> $$6 = (akm<cor>)$$4.getFirst();
-         this.b($$5, $$6);
-         cor $$7 = new cor($$5);
-         akn<cor> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      asc<akm<?>> $$1 = (asc<akm<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(cor $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
+   public int a(ako<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
       } else {
-         this.b.put($$0, (byte)$$1);
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
-   public void a() {
-      this.b(Integer.MAX_VALUE);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ako<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+      }
    }
 
-   public String d(long $$0) {
-      asc<akm<?>> $$1 = (asc<akm<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
+
+   public akp<T> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

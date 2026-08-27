@@ -1,124 +1,61 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
+public class eto extends esf {
+   private static final ets a = new ets(
+      new aer("widget/tab_selected"), new aer("widget/tab"), new aer("widget/tab_selected_highlighted"), new aer("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int l = 2;
+   private final euh m;
+   private final eug n;
 
-public class eto implements gcr {
-   private static final long a = 3000L;
-   private final eqn b;
-   private final List<eto.a> c = Lists.newArrayList();
-   private boolean d;
-
-   public eto(eqn $$0) {
-      this.b = $$0;
-   }
-
-   public void a(erx $$0) {
-      if (!this.d && this.b.m.R().c()) {
-         this.b.ah().a(this);
-         this.d = true;
-      } else if (this.d && !this.b.m.R().c()) {
-         this.b.ah().b(this);
-         this.d = false;
-      }
-
-      if (this.d && !this.c.isEmpty()) {
-         ehf $$1 = new ehf(this.b.t.dp(), this.b.t.dt(), this.b.t.dv());
-         ehf $$2 = new ehf(0.0, 0.0, -1.0).a(-this.b.t.dC() * (float) (Math.PI / 180.0)).b(-this.b.t.dA() * (float) (Math.PI / 180.0));
-         ehf $$3 = new ehf(0.0, 1.0, 0.0).a(-this.b.t.dC() * (float) (Math.PI / 180.0)).b(-this.b.t.dA() * (float) (Math.PI / 180.0));
-         ehf $$4 = $$2.c($$3);
-         int $$5 = 0;
-         int $$6 = 0;
-         double $$7 = this.b.m.x().c();
-         Iterator<eto.a> $$8 = this.c.iterator();
-
-         while ($$8.hasNext()) {
-            eto.a $$9 = $$8.next();
-            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
-               $$8.remove();
-            } else {
-               $$6 = Math.max($$6, this.b.h.a($$9.a()));
-            }
-         }
-
-         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
-
-         for (eto.a $$10 : this.c) {
-            int $$11 = 255;
-            te $$12 = $$10.a();
-            ehf $$13 = $$10.c().d($$1).d();
-            double $$14 = -$$4.b($$13);
-            double $$15 = -$$2.b($$13);
-            boolean $$16 = $$15 > 0.5;
-            int $$17 = $$6 / 2;
-            int $$18 = 9;
-            int $$19 = $$18 / 2;
-            float $$20 = 1.0F;
-            int $$21 = this.b.h.a($$12);
-            int $$22 = aro.d(aro.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
-            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
-            $$0.c().a();
-            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
-            $$0.c().b(1.0F, 1.0F, 1.0F);
-            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
-            int $$24 = $$23 + -16777216;
-            if (!$$16) {
-               if ($$14 > 0.0) {
-                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
-               } else if ($$14 < 0.0) {
-                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
-               }
-            }
-
-            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
-            $$0.c().b();
-            $$5++;
-         }
-      }
+   public eto(euh $$0, eug $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public void a(gbo $$0, gct $$1) {
-      if ($$1.a() != null) {
-         te $$2 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (eto.a $$3 : this.c) {
-               if ($$3.a().equals($$2)) {
-                  $$3.a(new ehf($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
-         }
-
-         this.c.add(new eto.a($$2, new ehf($$0.h(), $$0.i(), $$0.j())));
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      $$0.a(a.a(this.b(), this.m()), this.p(), this.r(), this.f, this.g);
+      eru $$4 = eqm.O().h;
+      int $$5 = this.i ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.b($$0, $$4, $$5);
       }
    }
 
-   public static class a {
-      private final te a;
-      private long b;
-      private ehf c;
+   public void a(erw $$0, eru $$1, int $$2) {
+      int $$3 = this.p() + 1;
+      int $$4 = this.r() + (this.b() ? 0 : 3);
+      int $$5 = this.p() + this.k() - 1;
+      int $$6 = this.r() + this.h();
+      a($$0, $$1, this.l(), $$3, $$4, $$5, $$6, $$2);
+   }
 
-      public a(te $$0, ehf $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = ac.b();
-      }
+   private void b(erw $$0, eru $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.l()), this.k() - 4);
+      int $$4 = this.p() + (this.k() - $$3) / 2;
+      int $$5 = this.r() + this.h() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
+   }
 
-      public te a() {
-         return this.a;
-      }
+   @Override
+   protected void a(evx $$0) {
+      $$0.a(evw.a, tf.a("gui.narrate.tab", this.n.a()));
+   }
 
-      public long b() {
-         return this.b;
-      }
+   @Override
+   public void a(gcx $$0) {
+   }
 
-      public ehf c() {
-         return this.c;
-      }
+   public eug a() {
+      return this.n;
+   }
 
-      public void a(ehf $$0) {
-         this.c = $$0;
-         this.b = ac.b();
-      }
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

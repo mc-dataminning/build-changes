@@ -1,60 +1,80 @@
 import java.util.function.BiConsumer;
 
-public class kk implements ke {
-   public static final efh.a a = eff.a(ch.a.a().a(cqp.x));
-   public static final efh.a b = eff.a(ch.a.a().a(cqp.y));
-   public static final efh.a c = eff.a(ch.a.a().a(cqp.z));
-
+public class kk implements kd {
    @Override
-   public void generate(BiConsumer<aep, ecp.a> $$0) {
+   public void generate(BiConsumer<aer, ecp.a> $$0) {
       $$0.accept(
-         ecd.ai,
+         ecf.am,
          ecp.b()
             .a(
                eco.a()
-                  .a(ega.a(1.0F))
-                  .a(edf.a(ecd.aj).a(10).b(-2))
-                  .a(edf.a(ecd.ak).a(5).b(2).a(efk.a(ech.b.a, bo.a.a().a(bt.a(true)))))
-                  .a(edf.a(ecd.al).a(85).b(-1))
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.tK).a(10))
+                  .a(ecx.a(cjb.tJ).a(10))
+                  .a(ecx.a(cjb.rn).a(10))
+                  .a(ecx.a(cjb.oF).a(10))
+                  .a(ecx.a(cjb.rp).a(10))
+                  .a(ecx.a(cjb.oE).a(10))
+                  .a(ecx.a(cjb.uW).a(2))
             )
       );
-      $$0.accept(ecd.al, a());
+      $$0.accept(ecf.an, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.oO)).a(ecx.a(cjb.oP)).a(ecx.a(cjb.oQ)).a(ecx.a(cjb.oR))));
+      $$0.accept(ecf.ao, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.tH)).a(ecx.a(cjb.ro)).a(ecx.a(cjb.pk)).a(ecx.a(cjb.rm)).a(ecx.a(cjb.tU))));
+      $$0.accept(ecf.ap, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.tp)).a(ecx.a(cjb.qa))));
+      $$0.accept(ecf.aq, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.ll)).a(ecx.a(cjb.nM))));
+      $$0.accept(ecf.ar, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.oJ)).a(ecx.a(cjb.tz)).a(ecx.a(cjb.re))));
+      $$0.accept(ecf.as, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.ql)).a(ecx.a(cjb.qm))));
       $$0.accept(
-         ecd.aj,
+         ecf.at,
          ecp.b()
             .a(
                eco.a()
-                  .a(ecz.a(csl.fm).a(17))
-                  .a(ecz.a(ciz.oN).a(10).a(eeh.a(egf.a(0.0F, 0.9F))))
-                  .a(ecz.a(ciz.pP).a(10))
-                  .a(ecz.a(ciz.qL).a(10))
-                  .a(ecz.a(ciz.rv).a(10).a(eel.a(ckw.c)))
-                  .a(ecz.a(ciz.oE).a(5))
-                  .a(ecz.a(ciz.qh).a(2).a(eeh.a(egf.a(0.0F, 0.9F))))
-                  .a(ecz.a(ciz.oC).a(10))
-                  .a(ecz.a(ciz.oB).a(5))
-                  .a(ecz.a(ciz.qr).a(1).a(eeg.a(ega.a(10.0F))))
-                  .a(ecz.a(csl.fH).a(10))
-                  .a(ecz.a(ciz.rp).a(10))
-                  .a(ecz.a(csl.mZ).a(a.or(b).or(c)).a(10))
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.nH).a(26))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.p)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.s)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.K)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.A)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.C)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.k)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.H)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.n)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.y)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.i)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.g)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.N)))
+                  .a(ecx.a(cjb.uw).a(eef.a(ege.a(0.0F, 1.0F))).a(eek.a(cky.E)))
             )
       );
+      $$0.accept(ecf.au, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.pP))));
+      $$0.accept(ecf.av, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.qb))));
+      $$0.accept(ecf.aw, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.eB))));
       $$0.accept(
-         ecd.ak,
+         ecf.ax,
          ecp.b()
             .a(
                eco.a()
-                  .a(ecz.a(ciz.tR))
-                  .a(ecz.a(ciz.mZ))
-                  .a(ecz.a(ciz.nG).a(eeh.a(egf.a(0.0F, 0.25F))).a(edp.a(ega.a(30.0F)).e()))
-                  .a(ecz.a(ciz.qh).a(eeh.a(egf.a(0.0F, 0.25F))).a(edp.a(ega.a(30.0F)).e()))
-                  .a(ecz.a(ciz.qb).a(edp.a(ega.a(30.0F)).e()))
-                  .a(ecz.a(ciz.uX))
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.cy))
+                  .a(ecx.a(cjb.cz))
+                  .a(ecx.a(cjb.cA))
+                  .a(ecx.a(cjb.cB))
+                  .a(ecx.a(cjb.cC))
+                  .a(ecx.a(cjb.cD))
+                  .a(ecx.a(cjb.cE))
+                  .a(ecx.a(cjb.cF))
+                  .a(ecx.a(cjb.cG))
+                  .a(ecx.a(cjb.cH))
+                  .a(ecx.a(cjb.cI))
+                  .a(ecx.a(cjb.cJ))
+                  .a(ecx.a(cjb.cK))
+                  .a(ecx.a(cjb.cL))
+                  .a(ecx.a(cjb.cM))
+                  .a(ecx.a(cjb.cN))
             )
       );
-   }
-
-   public static ecp.a a() {
-      return ecp.b().a(eco.a().a(ecz.a(ciz.ql).a(60)).a(ecz.a(ciz.qm).a(25)).a(ecz.a(ciz.qn).a(2)).a(ecz.a(ciz.qo).a(13)));
+      $$0.accept(ecf.ay, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.oe)).a(ecx.a(cjb.of)).a(ecx.a(cjb.og)).a(ecx.a(cjb.od))));
+      $$0.accept(ecf.az, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.of)).a(ecx.a(cjb.ok)).a(ecx.a(cjb.op))));
+      $$0.accept(ecf.aA, ecp.b().a(eco.a().a(efz.a(1.0F)).a(ecx.a(cjb.uo)).a(ecx.a(cjb.up))));
    }
 }

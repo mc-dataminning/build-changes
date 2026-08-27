@@ -1,57 +1,41 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
 
 public class epd {
-   private static final Map<String, epd.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final aep c = new aep("textures/gui/presets/isles.png");
+   private static final tf a = tf.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public static aep a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static aep b(String $$0, String $$1) {
-      epd.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
+   public static tf a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
       } else {
-         eki $$3 = a($$1);
-         if ($$3 == null) {
-            aep $$4 = fxw.b();
-            a.put($$0, new epd.a($$1, $$4));
-            return $$4;
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return tf.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return tf.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return tf.a("mco.time.hoursAgo", $$3);
          } else {
-            aep $$5 = new aep("realms", "dynamic/" + $$0);
-            eqn.N().X().a($$5, new fxt($$3));
-            a.put($$0, new epd.a($$1, $$5));
-            return $$5;
+            long $$4 = $$1 / 86400L;
+            return tf.a("mco.time.daysAgo", $$4);
          }
       }
    }
 
-   @Nullable
-   private static eki a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return eki.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   public static tf a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   public static record a(String a, aep b) {
+   public static void a(erw $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      eqm $$5 = eqm.O();
+      GameProfile $$6 = $$5.ak().fetchProfile($$4, false);
+      fzl $$7 = $$6 != null ? $$5.al().b($$6) : fzd.a($$4);
+      etg.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

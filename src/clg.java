@@ -1,71 +1,77 @@
 import javax.annotation.Nullable;
 
-public class clg {
-   @Nullable
-   private final cbl a;
-   private final bgn b;
-   private final ehb c;
-   private final cpk d;
-   private final ciw e;
+public class clg extends cli {
+   private final gu b;
+   protected boolean a = true;
 
-   public clg(cbl $$0, bgn $$1, ehb $$2) {
-      this($$0.dK(), $$0, $$1, $$0.b($$1), $$2);
+   public clg(cbn $$0, bgp $$1, ciy $$2, eha $$3) {
+      this($$0.dK(), $$0, $$1, $$2, $$3);
    }
 
-   protected clg(cpk $$0, @Nullable cbl $$1, bgn $$2, ciw $$3, ehb $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public clg(cli $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   protected final ehb j() {
-      return this.c;
+   protected clg(cpm $$0, @Nullable cbn $$1, bgp $$2, ciy $$3, eha $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
    }
 
-   public gv a() {
-      return this.c.a();
+   public static clg a(clg $$0, gu $$1, ha $$2) {
+      return new clg(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new eha(
+            new ehe((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
-   public hb k() {
-      return this.c.b();
+   @Override
+   public gu a() {
+      return this.a ? super.a() : this.b;
    }
 
-   public ehf l() {
-      return this.c.e();
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public ciw n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cbl o() {
+   public boolean c() {
       return this.a;
    }
 
-   public bgn p() {
-      return this.b;
+   public ha d() {
+      return ha.a(this.o())[0];
    }
 
-   public cpk q() {
-      return this.d;
+   public ha e() {
+      return ha.a(this.o(), ha.a.b);
    }
 
-   public hb g() {
-      return this.a == null ? hb.c : this.a.cD();
-   }
+   public ha[] f() {
+      ha[] $$0 = ha.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         ha $$1 = this.k();
+         int $$2 = 0;
 
-   public boolean h() {
-      return this.a != null && this.a.fG();
-   }
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
 
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dA();
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

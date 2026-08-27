@@ -1,39 +1,50 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class fv implements ArgumentType<fw> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final hh<cir> b;
+public class fv implements Predicate<ciy> {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tf.a("arguments.item.overstacked", $$0, $$1));
+   private final he<cit> b;
+   @Nullable
+   private final qr c;
 
-   public fv(dm $$0) {
-      this.b = $$0.a(jd.D);
+   public fv(he<cit> $$0, @Nullable qr $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fv a(dm $$0) {
-      return new fv($$0);
+   public cit a() {
+      return this.b.a();
    }
 
-   public fw a(StringReader $$0) throws CommandSyntaxException {
-      fx.a $$1 = fx.a(this.b, $$0);
-      return new fw($$1.a(), $$1.b());
+   public boolean a(ciy $$0) {
+      return $$0.a(this.b) && rd.a(this.c, $$0.v(), true);
    }
 
-   public static <S> fw a(CommandContext<S> $$0, String $$1) {
-      return (fw)$$0.getArgument($$1, fw.class);
+   public ciy a(int $$0, boolean $$1) throws CommandSyntaxException {
+      ciy $$2 = new ciy(this.b, $$0);
+      if (this.c != null) {
+         $$2.c(this.c);
+      }
+
+      if ($$1 && $$0 > $$2.g()) {
+         throw a.create(this.c(), $$2.g());
+      } else {
+         return $$2;
+      }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fx.a(this.b, $$1, false);
+   public String b() {
+      StringBuilder $$0 = new StringBuilder(this.c());
+      if (this.c != null) {
+         $$0.append(this.c);
+      }
+
+      return $$0.toString();
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   private String c() {
+      return this.b.e().map(aeq::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

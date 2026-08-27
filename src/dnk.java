@@ -1,54 +1,40 @@
-public class dnk extends dnl<dpw> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final gv an = gv.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static gv a(gv $$0) {
-      return an.a((ia)$$0);
-   }
-
-   public dnk(boolean $$0) {
-      super(dpw.a);
-      this.ao = $$0;
+public class dnk extends dnn<dpq> {
+   public dnk(Codec<dpq> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dnn<dpw> $$0) {
-      gv $$1 = $$0.e();
-      cqe $$2 = $$0.b();
+   public boolean a(dnp<dpq> $$0) {
+      gu $$1 = $$0.e();
+      cqg $$2 = $$0.b();
+      dpq $$3 = $$0.f();
 
-      for (gv $$3 : gv.a(new gv($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new gv($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, csl.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, csl.fz.n());
+      for (gu $$4 : gu.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            gu $$9 = $$4.i();
+            this.a($$2, $$9, csn.kF.n());
+            $$3.b().ifPresent($$3x -> {
+               dcm $$4x = $$2.c_($$9);
+               if ($$4x instanceof dea $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, csl.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, csl.F.n());
-            } else if (this.ao) {
-               this.a($$2, new gv($$3), csl.fx.n());
-            } else {
-               this.a($$2, new gv($$3), csl.a.n());
-            }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, csn.a.n());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, csn.F.n());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, csn.F.n());
+         } else {
+            this.a($$2, $$4, csn.a.n());
          }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), csl.F.n());
-      }
-
-      gv $$6 = $$1.b(2);
-
-      for (hb $$7 : hb.c.a) {
-         this.a($$2, $$6.a($$7), csl.cq.n().a(dbk.a, $$7));
       }
 
       return true;

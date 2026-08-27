@@ -1,8 +1,5 @@
 import com.google.common.collect.Sets;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
@@ -10,30 +7,30 @@ import net.minecraft.server.MinecraftServer;
 
 public class ech {
    private final ecn a;
-   private final art b;
+   private final aru b;
    private final ecl c;
    private final Set<ech.c<?>> d = Sets.newLinkedHashSet();
 
-   ech(ecn $$0, art $$1, ecl $$2) {
+   ech(ecn $$0, aru $$1, ecl $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public boolean a(eeq<?> $$0) {
+   public boolean a(eep<?> $$0) {
       return this.a.a($$0);
    }
 
-   public <T> T b(eeq<T> $$0) {
+   public <T> T b(eep<T> $$0) {
       return this.a.b($$0);
    }
 
-   public void a(aep $$0, Consumer<ciw> $$1) {
+   public void a(aer $$0, Consumer<ciy> $$1) {
       this.a.a($$0, $$1);
    }
 
    @Nullable
-   public <T> T c(eeq<T> $$0) {
+   public <T> T c(eep<T> $$0) {
       return this.a.d($$0);
    }
 
@@ -53,7 +50,7 @@ public class ech {
       return this.c;
    }
 
-   public art b() {
+   public aru b() {
       return this.b;
    }
 
@@ -61,7 +58,7 @@ public class ech {
       return this.a.b();
    }
 
-   public aki d() {
+   public akk d() {
       return this.a.a();
    }
 
@@ -69,18 +66,18 @@ public class ech {
       return new ech.c<>(ecm.c, $$0);
    }
 
-   public static ech.c<efh> a(efh $$0) {
+   public static ech.c<efg> a(efg $$0) {
       return new ech.c<>(ecm.a, $$0);
    }
 
-   public static ech.c<edw> a(edw $$0) {
+   public static ech.c<edu> a(edu $$0) {
       return new ech.c<>(ecm.b, $$0);
    }
 
    public static class a {
       private final ecn a;
       @Nullable
-      private art b;
+      private aru b;
 
       public a(ecn $$0) {
          this.a = $$0;
@@ -88,68 +85,55 @@ public class ech {
 
       public ech.a a(long $$0) {
          if ($$0 != 0L) {
-            this.b = art.a($$0);
+            this.b = aru.a($$0);
          }
 
          return this;
       }
 
-      public aki a() {
+      public akk a() {
          return this.a.a();
       }
 
-      public ech a(@Nullable aep $$0) {
-         aki $$1 = this.a();
+      public ech a(Optional<aer> $$0) {
+         akk $$1 = this.a();
          MinecraftServer $$2 = $$1.n();
-         art $$3;
-         if (this.b != null) {
-            $$3 = this.b;
-         } else if ($$0 != null) {
-            $$3 = $$1.a($$0);
-         } else {
-            $$3 = $$1.y_();
-         }
-
+         aru $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::y_);
          return new ech(this.a, $$3, $$2.aH());
       }
    }
 
-   public static enum b {
-      a("this", eet.a),
-      b("killer", eet.d),
-      c("direct_killer", eet.e),
-      d("killer_player", eet.b);
+   public static enum b implements ash {
+      a("this", ees.a),
+      b("killer", ees.d),
+      c("direct_killer", ees.e),
+      d("killer_player", ees.b);
 
-      final String e;
-      private final eeq<? extends big> f;
+      public static final ash.a<ech.b> e = ash.a(ech.b::values);
+      private final String f;
+      private final eep<? extends bii> g;
 
-      private b(String $$0, eeq<? extends big> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      private b(String $$0, eep<? extends bii> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public eeq<? extends big> a() {
-         return this.f;
+      public eep<? extends bii> a() {
+         return this.g;
       }
 
       public static ech.b a(String $$0) {
-         for (ech.b $$1 : values()) {
-            if ($$1.e.equals($$0)) {
-               return $$1;
-            }
+         ech.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
-
-         throw new IllegalArgumentException("Invalid entity target " + $$0);
       }
 
-      public static class a extends TypeAdapter<ech.b> {
-         public void a(JsonWriter $$0, ech.b $$1) throws IOException {
-            $$0.value($$1.e);
-         }
-
-         public ech.b a(JsonReader $$0) throws IOException {
-            return ech.b.a($$0.nextString());
-         }
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 

@@ -1,26 +1,28 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class emg extends end {
-   public Set<String> a = Sets.newHashSet();
+public class emg extends enc {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static emg a(String $$0) {
+   public static emg a(JsonObject $$0) {
       emg $$1 = new emg();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
+         $$1.a = eoz.a("invitationId", $$0, "");
+         $$1.b = eoz.a("worldName", $$0, "");
+         $$1.c = eoz.a("worldOwnerName", $$0, "");
+         $$1.d = eoz.a("worldOwnerUuid", $$0, ac.d);
+         $$1.e = eoz.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

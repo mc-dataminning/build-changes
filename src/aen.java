@@ -1,79 +1,71 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class aen<T> extends aeh<T> {
-   private final aen.b b;
+public final class aen<E> implements Codec<he<E>> {
+   private final aeq<? extends hr<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   private static aen.b a(final aen.b $$0) {
-      return new aen.b() {
-         private final Map<aeo<? extends hs<?>>, Optional<? extends aen.a<?>>> b = new HashMap<>();
-
-         @Override
-         public <T> Optional<aen.a<T>> a(aeo<? extends hs<? extends T>> $$0x) {
-            return (Optional<aen.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
-         }
-      };
+   public static <E> aen<E> a(aeq<? extends hr<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <T> aen<T> a(DynamicOps<T> $$0, final hh.b $$1) {
-      return a($$0, a(new aen.b() {
-         @Override
-         public <E> Optional<aen.a<E>> a(aeo<? extends hs<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (aen.a<E>)(new aen.a<>($$0x, $$0x, $$0x.g())));
-         }
-      }));
+   public static <E> aen<E> a(aeq<? extends hr<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new aen<>($$0, $$1, $$2);
    }
 
-   public static <T> aen<T> a(DynamicOps<T> $$0, aen.b $$1) {
-      return new aen<>($$0, $$1);
-   }
-
-   private aen(DynamicOps<T> $$0, aen.b $$1) {
-      super($$0);
+   private aen(aeq<? extends hr<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public <E> Optional<hi<E>> a(aeo<? extends hs<? extends E>> $$0) {
-      return this.b.a($$0).map(aen.a::a);
+   public <T> DataResult<T> a(he<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aep<?> $$3) {
+         Optional<hh<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> aer.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   public <E> Optional<hg<E>> b(aeo<? extends hs<? extends E>> $$0) {
-      return this.b.a($$0).map(aen.a::b);
+   public <T> DataResult<Pair<he<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aep<?> $$2) {
+         Optional<hf<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            hf<E> $$4 = $$3.get();
+            DataResult<Pair<aer, T>> $$5 = aer.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(he::a));
+            } else {
+               Pair<aer, T> $$6 = (Pair<aer, T>)$$5.result().get();
+               aeq<E> $$7 = aeq.a(this.a, (aer)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(he::a));
+      }
    }
 
-   public static <E, O> RecordCodecBuilder<O, hg<E>> c(aeo<? extends hs<? extends E>> $$0) {
-      return aqw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aen<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, hf.c<E>> d(aeo<E> $$0) {
-      aeo<? extends hs<E>> $$1 = aeo.a($$0.b());
-      return aqw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aen<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(hi<T> a, hg<T> b, Lifecycle c) {
-   }
-
-   public interface b {
-      <T> Optional<aen.a<T>> a(aeo<? extends hs<? extends T>> var1);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

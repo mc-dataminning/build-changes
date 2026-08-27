@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class eep<T> {
+   private final aer a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eep {
+   public eep(aer $$0) {
+      this.a = $$0;
+   }
+
+   public aer a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<parameter " + this.a + ">";
+   }
 }

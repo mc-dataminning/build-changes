@@ -1,10 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface djm {
-   Codec<djm> b = jc.w.q().dispatch(djm::a, djn::a);
+   djo a();
 
-   Optional<ehf> a(cpk var1);
+   int b();
 
-   djn<?> a();
+   boolean a(akk var1, djk var2, djk.a var3, ehe var4);
+
+   default djm.a c() {
+      return djm.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends djm> {
+      T d();
+   }
 }

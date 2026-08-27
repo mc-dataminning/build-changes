@@ -1,26 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dld(dlf b, dlc c) {
-   public static final Codec<dld> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dlf.a.forGetter(dld::a), dlc.a.forGetter(dld::b)).apply($$0, $$0.stable(dld::new))
-   );
+public interface dld {
+   Codec<dld> a = aqy.a(dld.b.d, aqy.a(dld.a.d, dld.c.d)).xmap(dld::a, dld::a);
+   dld b = b(0);
+   dld c = c(0);
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dlf $$1, dlc $$2) {
-      return a.encodeStart($$0, new dld($$1, $$2));
+   static dld a(int $$0) {
+      return new dld.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dlf $$1, ht $$2) {
-      return a($$0, $$1, new dlc($$2.d(jd.aI)));
+   static dld b(int $$0) {
+      return new dld.a($$0);
    }
 
-   public dlf a() {
-      return this.b;
+   static dld c(int $$0) {
+      return new dld.c($$0);
    }
 
-   public dlc b() {
-      return this.c;
+   static dld a() {
+      return b;
+   }
+
+   static dld b() {
+      return c;
+   }
+
+   private static dld a(Either<dld.b, Either<dld.a, dld.c>> $$0) {
+      return (dld)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dld.b, Either<dld.a, dld.c>> a(dld $$0) {
+      return $$0 instanceof dld.b ? Either.left((dld.b)$$0) : Either.right($$0 instanceof dld.a ? Either.left((dld.a)$$0) : Either.right((dld.c)$$0));
+   }
+
+   int a(dlg var1);
+
+   public static record a(int e) implements dld {
+      public static final Codec<dld.a> d = Codec.intRange(dij.e, dij.d).fieldOf("above_bottom").xmap(dld.a::new, dld.a::c).codec();
+
+      @Override
+      public int a(dlg $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements dld {
+      public static final Codec<dld.b> d = Codec.intRange(dij.e, dij.d).fieldOf("absolute").xmap(dld.b::new, dld.b::c).codec();
+
+      @Override
+      public int a(dlg $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dld {
+      public static final Codec<dld.c> d = Codec.intRange(dij.e, dij.d).fieldOf("below_top").xmap(dld.c::new, dld.c::c).codec();
+
+      @Override
+      public int a(dlg $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

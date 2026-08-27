@@ -1,5 +1,49 @@
-public class cvp extends crg {
-   public cvp(dex.d $$0) {
+import javax.annotation.Nullable;
+
+public class cvp extends crh {
+   protected cvp(dez.d $$0) {
       super($$0);
+   }
+
+   @Override
+   public dcm a(gu $$0, dfa $$1) {
+      return new ddh($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
+      return a($$0, $$2, dco.a);
+   }
+
+   @Override
+   protected void a(cpm $$0, gu $$1, cbn $$2) {
+      dcm $$3 = $$0.c_($$1);
+      if ($$3 instanceof ddh) {
+         $$2.a((bgt)$$3);
+         $$2.a(apg.am);
+      }
+   }
+
+   @Override
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aow.iR, aox.e, 1.0F, 1.0F, false);
+         }
+
+         ha $$7 = $$0.c(a);
+         ha.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(iv.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

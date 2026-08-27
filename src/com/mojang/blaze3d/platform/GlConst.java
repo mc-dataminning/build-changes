@@ -1,6 +1,6 @@
 package com.mojang.blaze3d.platform;
 
-@eiz
+@eiy
 public class GlConst {
    public static final int GL_READ_FRAMEBUFFER = 36008;
    public static final int GL_DRAW_FRAMEBUFFER = 36009;

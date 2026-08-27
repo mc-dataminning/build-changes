@@ -1,6 +1,24 @@
-public interface sr extends sn {
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class sr extends sg {
+   private static final Logger j = LogUtils.getLogger();
+   private static final tf k = tf.c("disconnect.exceeded_packet_rate");
+   private final int l;
+
+   public sr(int $$0) {
+      super(uy.a);
+      this.l = $$0;
+   }
+
    @Override
-   default ux a() {
-      return ux.a;
+   protected void e() {
+      super.e();
+      float $$0 = this.q();
+      if ($$0 > (float)this.l) {
+         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new vc(k), sp.a(() -> this.a(k)));
+         this.o();
+      }
    }
 }

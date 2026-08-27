@@ -1,24 +1,14 @@
-public record xq(te a, ta.b b) implements uw<wo> {
-   public xq(sh $$0) {
-      this($$0.l(), new ta.b($$0));
+public record xq(tq.a a) implements ux<wp> {
+   public xq(si $$0) {
+      this(tq.a.a($$0));
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
+   public void a(si $$0) {
+      tq.a.a($$0, this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public ta.b d() {
-      return this.b;
    }
 }

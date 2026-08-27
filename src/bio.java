@@ -1,83 +1,294 @@
-public class bio extends bvh {
-   private static final adx<Integer> bX = aea.a(bio.class, adz.b);
+import java.util.List;
+import java.util.Map.Entry;
 
-   public bio(bik<? extends bio> $$0, cpk $$1) {
+public class bio extends bii {
+   private static final int b = 6000;
+   private static final int c = 20;
+   private static final int d = 8;
+   private static final int e = 40;
+   private static final double f = 0.5;
+   private int g;
+   private int h = 5;
+   private int i;
+   private int j = 1;
+   private cbn k;
+
+   public bio(cpm $$0, double $$1, double $$2, double $$3, int $$4) {
+      this(bim.J, $$0);
+      this.e($$1, $$2, $$3);
+      this.r((float)(this.ag.j() * 360.0));
+      this.o((this.ag.j() * 0.2F - 0.1F) * 2.0, this.ag.j() * 0.2 * 2.0, (this.ag.j() * 0.2F - 0.1F) * 2.0);
+      this.i = $$4;
+   }
+
+   public bio(bim<? extends bio> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected iu p() {
-      return iw.aJ;
+   protected bii.b aU() {
+      return bii.b.a;
    }
 
    @Override
    protected void a_() {
-      super.a_();
-      this.an.a(bX, 0);
    }
 
    @Override
-   protected aot q() {
-      return aou.jC;
-   }
-
-   @Override
-   protected aot r() {
-      return aou.jz;
-   }
-
-   @Override
-   protected aot d(bhe $$0) {
-      return aou.jB;
-   }
-
-   @Override
-   protected aot h_() {
-      return aou.jA;
-   }
-
-   @Override
-   public void b(qs $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.t());
-   }
-
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      int $$0 = this.t();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+   public void l() {
+      super.l();
+      this.K = this.dp();
+      this.L = this.dr();
+      this.M = this.dv();
+      if (this.a(apq.a)) {
+         this.p();
+      } else if (!this.aT()) {
+         this.f(this.dn().b(0.0, -0.03, 0.0));
       }
 
-      this.dK().a(iw.aK, this.d(0.6), this.ds(), this.g(0.6), 0.0, 0.0, 0.0);
+      if (this.dK().b_(this.dk()).a(apq.b)) {
+         this.o((double)((this.ag.i() - this.ag.i()) * 0.2F), 0.2F, (double)((this.ag.i() - this.ag.i()) * 0.2F));
+      }
+
+      if (!this.dK().b(this.cG())) {
+         this.m(this.dp(), (this.cG().b + this.cG().e) / 2.0, this.dv());
+      }
+
+      if (this.ah % 20 == 1) {
+         this.o();
+      }
+
+      if (this.k != null && (this.k.G_() || this.k.eu())) {
+         this.k = null;
+      }
+
+      if (this.k != null) {
+         ehe $$0 = new ehe(this.k.dp() - this.dp(), this.k.dr() + (double)this.k.cH() / 2.0 - this.dr(), this.k.dv() - this.dv());
+         double $$1 = $$0.g();
+         if ($$1 < 64.0) {
+            double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
+            this.f(this.dn().e($$0.d().a($$2 * $$2 * 0.1)));
+         }
+      }
+
+      this.a(bje.a, this.dn());
+      float $$3 = 0.98F;
+      if (this.aA()) {
+         $$3 = this.dK().a_(this.aG()).b().h() * 0.98F;
+      }
+
+      this.f(this.dn().d((double)$$3, 0.98, (double)$$3));
+      if (this.aA()) {
+         this.f(this.dn().d(1.0, -0.9, 1.0));
+      }
+
+      this.g++;
+      if (this.g >= 6000) {
+         this.ak();
+      }
    }
 
    @Override
-   public boolean a(bhe $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
+   protected gu aG() {
+      return this.d(0.999999F);
+   }
+
+   private void o() {
+      if (this.k == null || this.k.f(this) > 64.0) {
+         this.k = this.dK().a(this, 8.0);
       }
 
-      return $$2;
+      if (this.dK() instanceof akk) {
+         for (bio $$1 : this.dK().a(diy.a(bio.class), this.cG().g(0.5), this::a)) {
+            this.b($$1);
+         }
+      }
    }
 
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
+   public static void a(akk $$0, ehe $$1, int $$2) {
+      while ($$2 > 0) {
+         int $$3 = b($$2);
+         $$2 -= $$3;
+         if (!b($$0, $$1, $$3)) {
+            $$0.b(new bio($$0, $$1.a(), $$1.b(), $$1.c(), $$3));
+         }
+      }
    }
 
-   public int t() {
-      return this.an.b(bX);
+   private static boolean b(akk $$0, ehe $$1, int $$2) {
+      egz $$3 = egz.a($$1, 1.0, 1.0, 1.0);
+      int $$4 = $$0.y_().a(40);
+      List<bio> $$5 = $$0.a(diy.a(bio.class), $$3, $$2x -> a($$2x, $$4, $$2));
+      if (!$$5.isEmpty()) {
+         bio $$6 = $$5.get(0);
+         $$6.j++;
+         $$6.g = 0;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public static boolean a(bik<? extends biw> $$0, cpz $$1, bja $$2, gv $$3, art $$4) {
-      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csl.G);
+   private boolean a(bio $$0) {
+      return $$0 != this && a($$0, this.ah(), this.i);
+   }
+
+   private static boolean a(bio $$0, int $$1, int $$2) {
+      return !$$0.dF() && ($$0.ah() - $$1) % 40 == 0 && $$0.i == $$2;
+   }
+
+   private void b(bio $$0) {
+      this.j = this.j + $$0.j;
+      this.g = Math.min(this.g, $$0.g);
+      $$0.ak();
+   }
+
+   private void p() {
+      ehe $$0 = this.dn();
+      this.o($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
+   }
+
+   @Override
+   protected void bg() {
+   }
+
+   @Override
+   public boolean a(bhg $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if (this.dK().B) {
+         return true;
+      } else {
+         this.bo();
+         this.h = (int)((float)this.h - $$1);
+         if (this.h <= 0) {
+            this.ak();
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void b(qr $$0) {
+      $$0.a("Health", (short)this.h);
+      $$0.a("Age", (short)this.g);
+      $$0.a("Value", (short)this.i);
+      $$0.a("Count", this.j);
+   }
+
+   @Override
+   public void a(qr $$0) {
+      this.h = $$0.g("Health");
+      this.g = $$0.g("Age");
+      this.i = $$0.g("Value");
+      this.j = Math.max($$0.h("Count"), 1);
+   }
+
+   @Override
+   public void b_(cbn $$0) {
+      if (!this.dK().B) {
+         if ($$0.bV == 0) {
+            $$0.bV = 2;
+            $$0.a(this, 1);
+            int $$1 = this.a($$0, this.i);
+            if ($$1 > 0) {
+               $$0.d($$1);
+            }
+
+            this.j--;
+            if (this.j == 0) {
+               this.ak();
+            }
+         }
+      }
+   }
+
+   private int a(cbn $$0, int $$1) {
+      Entry<bin, ciy> $$2 = cnh.a(cnj.L, $$0, ciy::j);
+      if ($$2 != null) {
+         ciy $$3 = $$2.getValue();
+         int $$4 = Math.min(this.d(this.i), $$3.k());
+         $$3.b($$3.k() - $$4);
+         int $$5 = $$1 - this.c($$4);
+         return $$5 > 0 ? this.a($$0, $$5) : 0;
+      } else {
+         return $$1;
+      }
+   }
+
+   private int c(int $$0) {
+      return $$0 / 2;
+   }
+
+   private int d(int $$0) {
+      return $$0 * 2;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int m() {
+      if (this.i >= 2477) {
+         return 10;
+      } else if (this.i >= 1237) {
+         return 9;
+      } else if (this.i >= 617) {
+         return 8;
+      } else if (this.i >= 307) {
+         return 7;
+      } else if (this.i >= 149) {
+         return 6;
+      } else if (this.i >= 73) {
+         return 5;
+      } else if (this.i >= 37) {
+         return 4;
+      } else if (this.i >= 17) {
+         return 3;
+      } else if (this.i >= 7) {
+         return 2;
+      } else {
+         return this.i >= 3 ? 1 : 0;
+      }
+   }
+
+   public static int b(int $$0) {
+      if ($$0 >= 2477) {
+         return 2477;
+      } else if ($$0 >= 1237) {
+         return 1237;
+      } else if ($$0 >= 617) {
+         return 617;
+      } else if ($$0 >= 307) {
+         return 307;
+      } else if ($$0 >= 149) {
+         return 149;
+      } else if ($$0 >= 73) {
+         return 73;
+      } else if ($$0 >= 37) {
+         return 37;
+      } else if ($$0 >= 17) {
+         return 17;
+      } else if ($$0 >= 7) {
+         return 7;
+      } else {
+         return $$0 >= 3 ? 3 : 1;
+      }
+   }
+
+   @Override
+   public boolean cp() {
+      return false;
+   }
+
+   @Override
+   public ux<wp> U() {
+      return new wr(this);
+   }
+
+   @Override
+   public aox da() {
+      return aox.i;
    }
 }

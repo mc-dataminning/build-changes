@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fhu {
+   final int a;
+   final int b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fhu {
+   public fhu(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

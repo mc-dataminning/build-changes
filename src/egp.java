@@ -1,32 +1,26 @@
-import net.minecraft.server.MinecraftServer;
+@FunctionalInterface
+public interface egp<T> {
+   void handle(T var1, egr<T> var2, long var3);
 
-public class egp implements egq<MinecraftServer> {
-   final aep a;
+   public abstract static class a<T, C extends egp<T>> {
+      private final aer a;
+      private final Class<?> b;
 
-   public egp(aep $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, egs<MinecraftServer> $$1, long $$2) {
-      afd $$3 = $$0.aA();
-
-      for (dn $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.d());
-      }
-   }
-
-   public static class a extends egq.a<MinecraftServer, egp> {
-      public a() {
-         super(new aep("function_tag"), egp.class);
+      public a(aer $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public void a(qs $$0, egp $$1) {
-         $$0.a("Name", $$1.a.toString());
+      public aer a() {
+         return this.a;
       }
 
-      public egp a(qs $$0) {
-         aep $$1 = new aep($$0.l("Name"));
-         return new egp($$1);
+      public Class<?> b() {
+         return this.b;
       }
+
+      public abstract void a(qr var1, C var2);
+
+      public abstract C b(qr var1);
    }
 }

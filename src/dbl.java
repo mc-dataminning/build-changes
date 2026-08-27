@@ -1,27 +1,69 @@
-public class dbl extends css {
-   protected static final ehy a = csk.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   protected dbl(dex.d $$0) {
-      super($$0);
+public class dbl extends crj {
+   public static final dfu a = cwf.aC;
+   private static final Map<ha, ehx> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         csm.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ha.d,
+         csm.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         ha.f,
+         csm.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ha.e,
+         csm.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
+
+   protected dbl(czo.a $$0, dez.d $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(a, ha.c));
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof aki && $$3 instanceof cde) {
-         $$1.a(new gv($$2), true, $$3);
+   public String f() {
+      return this.k().a();
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b.get($$0.c(a));
+   }
+
+   @Override
+   public dfa a(clg $$0) {
+      dfa $$1 = this.n();
+      cos $$2 = $$0.q();
+      gu $$3 = $$0.a();
+      ha[] $$4 = $$0.f();
+
+      for (ha $$5 : $$4) {
+         if ($$5.o().d()) {
+            ha $$6 = $$5.g();
+            $$1 = $$1.a(a, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
+
+      return null;
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a;
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected boolean d(dey $$0, coq $$1, gv $$2) {
-      eab $$3 = $$1.b_($$2);
-      eab $$4 = $$1.b_($$2.c());
-      return ($$3.a() == eac.c || $$0.b() instanceof cwf) && $$4.a() == eac.a;
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 }

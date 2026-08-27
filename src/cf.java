@@ -1,40 +1,32 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cf implements bp {
-   private static final String b = "blocks_set_on_fire";
-   private static final String c = "entity_struck";
-   private final cj.d d;
-   private final bo e;
-
-   private cf(cj.d $$0, bo $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record cf(cj.d c, Optional<bo> d) implements bp {
+   public static final MapCodec<cf> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aqy.a(cj.d.d, "blocks_set_on_fire", cj.d.c).forGetter(cf::b), aqy.a(bo.a, "entity_struck").forGetter(cf::c)).apply($$0, cf::new)
+   );
 
    public static cf a(cj.d $$0) {
-      return new cf($$0, bo.a);
-   }
-
-   public static cf a(JsonObject $$0) {
-      return new cf(cj.d.a($$0.get("blocks_set_on_fire")), bo.a($$0.get("entity_struck")));
+      return new cf($$0, Optional.empty());
    }
 
    @Override
-   public JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.add("blocks_set_on_fire", this.d.d());
-      $$0.add("entity_struck", this.e.a());
-      return $$0;
-   }
-
-   @Override
-   public bp.a c() {
+   public bp.a a() {
       return bp.b.b;
    }
 
    @Override
-   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
-      return !($$0 instanceof biv $$3) ? false : this.d.d($$3.m()) && (this.e == bo.a || $$3.o().anyMatch($$2x -> this.e.a($$1, $$2, $$2x)));
+   public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
+      return !($$0 instanceof bix $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.o().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   }
+
+   public cj.d b() {
+      return this.c;
+   }
+
+   public Optional<bo> c() {
+      return this.d;
    }
 }

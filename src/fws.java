@@ -1,21 +1,25 @@
-public class fws<T extends big & bjn, M extends fek<T>> extends fwr<T, M> {
-   private final aep a;
-   private final M b;
+public class fws extends fww<buz, ffn<buz>> {
+   private final fnh a;
 
-   public fws(fue<T, M> $$0, M $$1, aep $$2) {
+   public fws(fuj<buz, ffn<buz>> $$0, fnh $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         ell $$10 = $$1.getBuffer(fno.d(this.a));
-         this.b.a($$0, $$10, $$2, fxx.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(elg $$0, fnl $$1, int $$2, buz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ciy $$10 = $$3.c(bin.a);
+      if ($$3.t() && !$$3.gr()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gf()) {
+            $$11 -= 0.2F * arp.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * arp.a($$7 * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, civ.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

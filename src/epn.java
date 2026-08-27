@@ -1,48 +1,63 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class epn implements enn, Runnable {
-   protected static final int a = 25;
+public class epn extends epm {
    private static final Logger c = LogUtils.getLogger();
-   protected eof b;
+   private final emn d;
+   private final exz e;
+   private final boolean f;
+   private final elr g;
+   private final eqm h;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         c.error("", var3);
-      }
-   }
-
-   public static void a(exv $$0) {
-      eqn $$1 = eqn.N();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   public void a(eof $$0) {
-      this.b = $$0;
+   public epn(emn $$0, exz $$1, elr $$2, boolean $$3, eqm $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
+      this.h = $$4;
    }
 
    @Override
-   public void a(te $$0) {
-      this.b.a($$0);
-   }
+   public void run() {
+      this.b(tf.c("mco.configure.world.opening"));
+      elw $$0 = elw.a();
 
-   public void b(te $$0) {
-      this.b.b($$0);
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.c()) {
+            return;
+         }
 
-   public boolean c() {
-      return this.b.f();
-   }
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.h.execute(() -> {
+                  if (this.e instanceof enx) {
+                     ((enx)this.e).d();
+                  }
 
-   public void b() {
-   }
+                  this.d.e = emn.b.b;
+                  if (this.f) {
+                     this.g.a(this.d, this.e);
+                  } else {
+                     this.h.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (enk var4) {
+            if (this.c()) {
+               return;
+            }
 
-   public void d() {
-   }
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.c()) {
+               return;
+            }
 
-   public void a() {
+            c.error("Failed to open server", var5);
+            this.a(var5);
+         }
+      }
    }
 }

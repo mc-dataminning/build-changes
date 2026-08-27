@@ -1,66 +1,90 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-public class ewk {
-   private static final te a = te.c("gui.banned.title.temporary").a(n.r);
-   private static final te b = te.c("gui.banned.title.permanent").a(n.r);
+public class ewk extends exz {
+   private static final tf a = tf.c("accessibility.onboarding.screen.narrator");
+   private static final int b = 4;
+   private static final int c = 16;
+   private final fnn k = new fnn(eye.b);
+   private final esy l;
+   private final eqq m;
+   private final boolean n;
+   private boolean o;
+   private float p;
+   @Nullable
+   private ess q;
 
-   public static ewn a(BooleanConsumer $$0, BanDetails $$1) {
-      return new ewn($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", td.m, true);
+   public ewk(eqq $$0) {
+      super(tf.c("accessibility.onboarding.screen.title"));
+      this.m = $$0;
+      this.l = new esy(true);
+      this.n = eqm.O().aV().a();
    }
 
-   private static te a(BanDetails $$0) {
-      return f($$0) ? a : b;
+   @Override
+   public void aE_() {
+      int $$0 = this.l();
+      evm $$1 = new evm(this.g, this.h - $$0);
+      $$1.c().d().a(4);
+      evs $$2 = $$1.a(evs.d());
+      $$2.c().b().a(2);
+      this.q = new ess(this.g - 16, this.e, this.i);
+      $$2.a(this.q, $$0x -> $$0x.e(16));
+      esf $$3 = this.m.an().a(this.m, 0, 0, 150);
+      $$3.i = this.n;
+      $$2.a($$3);
+      if (this.n) {
+         this.c($$3);
+      }
+
+      $$2.a(esl.b(150, $$0x -> this.a(new ewl(this, this.f.m)), false));
+      $$2.a(esl.a(150, $$0x -> this.a(new exi(this, this.f.m, this.f.ae())), false));
+      $$1.a(esh.a(te.j, $$0x -> this.au_()).a(), $$1.b().f().a(8));
+      $$1.a();
+      evm.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
+      $$1.a(this::d);
    }
 
-   private static te b(BanDetails $$0) {
-      return te.a("gui.banned.description", c($$0), d($$0), te.b("https://aka.ms/mcjavamoderation"));
+   private int l() {
+      return 90;
    }
 
-   private static te c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fix $$4 = fix.a($$3);
-         te $$5;
-         if ($$4 != null) {
-            $$5 = tg.a($$4.a().e(), ua.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = te.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = te.a("gui.banned.description.reason_id", $$3).a(n.r);
+   @Override
+   public void au_() {
+      this.a(new eye(true, this.l));
+   }
+
+   private void a(exz $$0) {
+      this.m.ai = false;
+      this.m.aq();
+      Narrator.getNarrator().clear();
+      this.f.a($$0);
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.B();
+      this.l.a($$0, this.g, 1.0F);
+      if (this.q != null) {
+         this.q.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      this.k.a(0.0F, 1.0F);
+      $$0.a(0, 0, this.g, this.h, -1877995504);
+   }
+
+   private void B() {
+      if (!this.o && this.n) {
+         if (this.p < 40.0F) {
+            this.p++;
+         } else if (this.f.aB()) {
+            Narrator.getNarrator().say(a.getString(), true);
+            this.o = true;
          }
-
-         return te.a("gui.banned.description.reason", $$5);
-      } else {
-         return te.c("gui.banned.description.unknownreason");
       }
-   }
-
-   private static te d(BanDetails $$0) {
-      if (f($$0)) {
-         te $$1 = e($$0);
-         return te.a("gui.banned.description.temporary", te.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return te.c("gui.banned.description.permanent").a(n.r);
-      }
-   }
-
-   private static te e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return td.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? td.c($$1.toMinutes()) : td.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
    }
 }

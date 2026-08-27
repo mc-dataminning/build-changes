@@ -1,77 +1,52 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cle extends clg {
-   private final gv b;
-   protected boolean a = true;
+public class cle {
+   public static final aeq<cld> a = a("sentry");
+   public static final aeq<cld> b = a("dune");
+   public static final aeq<cld> c = a("coast");
+   public static final aeq<cld> d = a("wild");
+   public static final aeq<cld> e = a("ward");
+   public static final aeq<cld> f = a("eye");
+   public static final aeq<cld> g = a("vex");
+   public static final aeq<cld> h = a("tide");
+   public static final aeq<cld> i = a("snout");
+   public static final aeq<cld> j = a("rib");
+   public static final aeq<cld> k = a("spire");
+   public static final aeq<cld> l = a("wayfinder");
+   public static final aeq<cld> m = a("shaper");
+   public static final aeq<cld> n = a("silence");
+   public static final aeq<cld> o = a("raiser");
+   public static final aeq<cld> p = a("host");
 
-   public cle(cbl $$0, bgn $$1, ciw $$2, ehb $$3) {
-      this($$0.dK(), $$0, $$1, $$2, $$3);
+   public static void a(nm<cld> $$0) {
+      a($$0, cjb.wx, a);
+      a($$0, cjb.wy, b);
+      a($$0, cjb.wz, c);
+      a($$0, cjb.wA, d);
+      a($$0, cjb.wB, e);
+      a($$0, cjb.wC, f);
+      a($$0, cjb.wD, g);
+      a($$0, cjb.wE, h);
+      a($$0, cjb.wF, i);
+      a($$0, cjb.wG, j);
+      a($$0, cjb.wH, k);
+      a($$0, cjb.wI, l);
+      a($$0, cjb.wJ, m);
+      a($$0, cjb.wK, n);
+      a($$0, cjb.wL, o);
+      a($$0, cjb.wM, p);
    }
 
-   public cle(clg $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public static Optional<he.c<cld>> a(hs $$0, ciy $$1) {
+      return $$0.d(jc.aE).h().filter($$1x -> $$1.a(((cld)$$1x.a()).b())).findFirst();
    }
 
-   protected cle(cpk $$0, @Nullable cbl $$1, bgn $$2, ciw $$3, ehb $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   private static void a(nm<cld> $$0, cit $$1, aeq<cld> $$2) {
+      cld $$3 = new cld($$2.a(), jb.i.d($$1), tf.c(ac.a("trim_pattern", $$2.a())));
+      $$0.a($$2, $$3);
    }
 
-   public static cle a(cle $$0, gv $$1, hb $$2) {
-      return new cle(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ehb(
-            new ehf((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
-   }
-
-   @Override
-   public gv a() {
-      return this.a ? super.a() : this.b;
-   }
-
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public hb d() {
-      return hb.a(this.o())[0];
-   }
-
-   public hb e() {
-      return hb.a(this.o(), hb.a.b);
-   }
-
-   public hb[] f() {
-      hb[] $$0 = hb.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         hb $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   private static aeq<cld> a(String $$0) {
+      return aeq.a(jc.aE, new aer($$0));
    }
 }

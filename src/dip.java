@@ -1,24 +1,24 @@
-import java.util.UUID;
+import java.util.List;
 import java.util.stream.Stream;
 
-public interface dip {
-   int ah();
+public class dip<T> {
+   private final cot a;
+   private final List<T> b;
 
-   UUID cv();
+   public dip(cot $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   gv dk();
+   public cot a() {
+      return this.a;
+   }
 
-   eha cG();
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(diq var1);
-
-   Stream<? extends dip> cR();
-
-   Stream<? extends dip> cS();
-
-   void b(big.c var1);
-
-   boolean dI();
-
-   boolean dJ();
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

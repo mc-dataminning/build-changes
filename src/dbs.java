@@ -1,12 +1,10 @@
-public class dbs extends cvw {
-   public static final ehy d = csk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-
-   public dbs(dex.d $$0) {
-      super($$0, hb.a, d, false);
+public class dbs extends csm {
+   public dbs(dez.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected cvx b() {
-      return (cvx)csl.oz;
+   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
+      $$3.a($$0, new ehe(0.25, 0.05F, 0.25));
    }
 }

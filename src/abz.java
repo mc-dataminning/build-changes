@@ -1,59 +1,62 @@
-public class abz implements uw<aav> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private final float c;
-   private final float d;
-   private final boolean e;
-   private final boolean f;
+public class abz implements ux<aaw> {
+   private final gu a;
+   private final ha b;
+   private final abz.a c;
+   private final int d;
 
-   public abz(float $$0, float $$1, boolean $$2, boolean $$3) {
+   public abz(abz.a $$0, gu $$1, ha $$2, int $$3) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public abz(sh $$0) {
-      this.c = $$0.readFloat();
-      this.d = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) > 0;
-      this.f = ($$1 & 2) > 0;
+   public abz(abz.a $$0, gu $$1, ha $$2) {
+      this($$0, $$1, $$2, 0);
+   }
+
+   public abz(si $$0) {
+      this.c = $$0.b(abz.a.class);
+      this.a = $$0.e();
+      this.b = ha.a($$0.readUnsignedByte());
+      this.d = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public gu a() {
+      return this.a;
+   }
+
+   public ha d() {
+      return this.b;
+   }
+
+   public abz.a e() {
       return this.c;
    }
 
-   public float d() {
+   public int f() {
       return this.d;
    }
 
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

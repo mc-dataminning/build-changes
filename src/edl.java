@@ -1,74 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
-public class edl extends edv {
-   final csk a;
-   final Set<dgb<?>> b;
+public class edl extends edt {
+   public static final Codec<edl> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(efv.a.fieldOf("source").forGetter($$0x -> $$0x.b), edl.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .apply($$0, edl::new)
+   );
+   private final efu b;
+   private final List<edl.b> c;
 
-   edl(efh[] $$0, csk $$1, Set<dgb<?>> $$2) {
+   edl(List<efg> $$0, efu $$1, List<edl.b> $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public edx b() {
-      return edy.w;
+   public edv b() {
+      return edw.w;
    }
 
    @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.g);
+   public Set<eep<?>> a() {
+      return this.b.b();
    }
 
    @Override
-   protected ciw a(ciw $$0, ech $$1) {
-      dey $$2 = $$1.c(eet.g);
+   public ciy a(ciy $$0, ech $$1) {
+      rk $$2 = this.b.a($$1);
       if ($$2 != null) {
-         qs $$3 = $$0.w();
-         qs $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
-         } else {
-            $$4 = new qs();
-            $$3.a("BlockStateTag", $$4);
-         }
-
-         this.b.stream().filter($$2::b).forEach($$2x -> $$4.a($$2x.f(), a($$2, $$2x)));
+         this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
       }
 
       return $$0;
    }
 
-   public static edl.a a(csk $$0) {
+   public static edl.a a(efu $$0) {
       return new edl.a($$0);
    }
 
-   private static <T extends Comparable<T>> String a(dey $$0, dgb<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
+   public static edl.a a(ech.b $$0) {
+      return new edl.a(efs.a($$0));
    }
 
-   public static class a extends edv.a<edl.a> {
-      private final csk a;
-      private final Set<dgb<?>> b = Sets.newHashSet();
+   public static class a extends edt.a<edl.a> {
+      private final efu a;
+      private final List<edl.b> b = Lists.newArrayList();
 
-      a(csk $$0) {
+      a(efu $$0) {
          this.a = $$0;
       }
 
-      public edl.a a(dgb<?> $$0) {
-         if (!this.a.l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
+      public edl.a a(String $$0, String $$1, edl.c $$2) {
+         try {
+            this.b.add(new edl.b(edl.d.a($$0), edl.d.a($$1), $$2));
             return this;
+         } catch (CommandSyntaxException var5) {
+            throw new IllegalArgumentException(var5);
          }
+      }
+
+      public edl.a a(String $$0, String $$1) {
+         return this.a($$0, $$1, edl.c.a);
       }
 
       protected edl.a a() {
@@ -76,31 +78,111 @@ public class edl extends edv {
       }
 
       @Override
-      public edw b() {
+      public edu b() {
          return new edl(this.g(), this.a, this.b);
       }
    }
 
-   public static class b extends edv.c<edl> {
-      public void a(JsonObject $$0, edl $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("block", jc.f.b($$1.a).toString());
-         JsonArray $$3 = new JsonArray();
-         $$1.b.forEach($$1x -> $$3.add($$1x.f()));
-         $$0.add("properties", $$3);
+   static record b(edl.d b, edl.d c, edl.c d) {
+      public static final Codec<edl.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  edl.d.a.fieldOf("source").forGetter(edl.b::a), edl.d.a.fieldOf("target").forGetter(edl.b::b), edl.c.d.fieldOf("op").forGetter(edl.b::c)
+               )
+               .apply($$0, edl.b::new)
+      );
+
+      public void a(Supplier<rk> $$0, rk $$1) {
+         try {
+            List<rk> $$2 = this.b.b().a($$1);
+            if (!$$2.isEmpty()) {
+               this.d.a($$0.get(), this.c.b(), $$2);
+            }
+         } catch (CommandSyntaxException var4) {
+         }
       }
 
-      public edl a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         aep $$3 = new aep(arf.i($$0, "block"));
-         csk $$4 = jc.f.b($$3).orElseThrow(() -> new IllegalArgumentException("Can't find block " + $$3));
-         dez<csk, dey> $$5 = $$4.l();
-         Set<dgb<?>> $$6 = Sets.newHashSet();
-         JsonArray $$7 = arf.a($$0, "properties", null);
-         if ($$7 != null) {
-            $$7.forEach($$2x -> $$6.add($$5.a(arf.a($$2x, "property"))));
-         }
+      public edl.d a() {
+         return this.b;
+      }
 
-         return new edl($$2, $$4, $$6);
+      public edl.d b() {
+         return this.c;
+      }
+
+      public edl.c c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements ash {
+      a("replace") {
+         @Override
+         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
+            $$1.a($$0, (rk)Iterables.getLast($$2));
+         }
+      },
+      b("append") {
+         @Override
+         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
+            List<rk> $$3 = $$1.a($$0, qx::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof qx) {
+                  $$2.forEach($$1xx -> ((qx)$$1x).add($$1xx.d()));
+               }
+            });
+         }
+      },
+      c("merge") {
+         @Override
+         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
+            List<rk> $$3 = $$1.a($$0, qr::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof qr) {
+                  $$2.forEach($$1xx -> {
+                     if ($$1xx instanceof qr) {
+                        ((qr)$$1x).a((qr)$$1xx);
+                     }
+                  });
+               }
+            });
+         }
+      };
+
+      public static final Codec<edl.c> d = ash.a(edl.c::values);
+      private final String e;
+
+      public abstract void a(rk var1, eh.g var2, List<rk> var3) throws CommandSyntaxException;
+
+      c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   static record d(String b, eh.g c) {
+      public static final Codec<edl.d> a = Codec.STRING.comapFlatMap($$0 -> {
+         try {
+            return DataResult.success(a($$0));
+         } catch (CommandSyntaxException var2) {
+            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
+         }
+      }, edl.d::a);
+
+      public static edl.d a(String $$0) throws CommandSyntaxException {
+         eh.g $$1 = new eh().a(new StringReader($$0));
+         return new edl.d($$0, $$1);
+      }
+
+      public String a() {
+         return this.b;
+      }
+
+      public eh.g b() {
+         return this.c;
       }
    }
 }

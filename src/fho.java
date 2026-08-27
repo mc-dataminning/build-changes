@@ -1,83 +1,75 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
 public class fho {
-   private static final Set<hb> a = EnumSet.allOf(hb.class);
-   private final List<fhm> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fho a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
-   }
-
-   public fho a() {
-      return this.a(true);
-   }
-
-   public fho a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fho a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fhn $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fhm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fhm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fhn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fhm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fhn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<hb> $$6) {
-      this.b.add(new fhm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fhn.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fho a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fhm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fhn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fhn $$7) {
-      this.b.add(new fhm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fhm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fhn.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fho a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fhn $$6, float $$7, float $$8) {
-      this.b.add(new fhm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fho a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fhn $$6) {
-      this.b.add(new fhm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fhm> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fho c() {
-      return new fho();
-   }
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "left_hind_leg_tip";
+   public static final String E = "right_hind_leg_tip";
+   public static final String F = "left_front_leg_tip";
+   public static final String G = "right_front_leg_tip";
+   public static final String H = "left_lid";
+   public static final String I = "right_lid";
+   public static final String J = "left_chest";
+   public static final String K = "right_chest";
+   public static final String L = "left_horn";
+   public static final String M = "right_horn";
+   public static final String N = "left_eye";
+   public static final String O = "right_eye";
+   public static final String P = "jaw";
+   public static final String Q = "nose";
+   public static final String R = "arms";
+   public static final String S = "tail";
+   public static final String T = "cube";
+   public static final String U = "beak";
+   public static final String V = "back_fin";
+   public static final String W = "mane";
+   public static final String X = "neck";
+   public static final String Y = "mouth";
+   public static final String Z = "head";
+   public static final String aa = "hat";
+   public static final String ab = "body";
+   public static final String ac = "hat_rim";
+   public static final String ad = "jacket";
+   public static final String ae = "top_gills";
+   public static final String af = "left_gills";
+   public static final String ag = "right_gills";
+   public static final String ah = "root";
+   public static final String ai = "croaking_body";
+   public static final String aj = "tongue";
+   public static final String ak = "tongue_r1";
+   public static final String al = "left_hand";
+   public static final String am = "right_hand";
+   public static final String an = "left_foot";
+   public static final String ao = "right_foot";
+   public static final String ap = "eyes";
+   public static final String aq = "right_tendril";
+   public static final String ar = "left_tendril";
+   public static final String as = "right_ribcage";
+   public static final String at = "left_ribcage";
+   public static final String au = "bone";
 }

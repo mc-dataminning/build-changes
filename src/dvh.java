@@ -1,101 +1,128 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.function.Function;
+import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class dvh extends dvb {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected dyq b;
-   protected dym c;
-   protected gv d;
+public final class dvh {
+   public static final String a = "INVALID";
+   public static final dvh b = new dvh(null, new cot(0, 0), 0, new dvo(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final duz d;
+   private final dvo e;
+   private final cot f;
+   private int g;
+   @Nullable
+   private volatile dur h;
 
-   public dvh(dvo $$0, int $$1, dyr $$2, aep $$3, String $$4, dym $$5, gv $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(hb.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   public dvh(duz $$0, cot $$1, int $$2, dvo $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public dvh(dvo $$0, qs $$1, dyr $$2, Function<aep, dym> $$3) {
-      super($$0, $$1);
-      this.a(hb.c);
-      this.a = $$1.l("Template");
-      this.d = new gv($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      aep $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
-   }
+   @Nullable
+   public static dvh a(dvp $$0, qr $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         hr<duz> $$4 = $$0.b().d(jc.az);
+         duz $$5 = $$4.a(new aer($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            cot $$6 = new cot($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            qx $$8 = $$1.c("Children", 10);
 
-   protected aep b() {
-      return new aep(this.a);
-   }
-
-   @Override
-   protected void a(dvn $$0, qs $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
-   }
-
-   @Override
-   public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, cor $$5, gv $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (dyq.c $$8 : this.b.a(this.d, this.c, csl.pa)) {
-            if ($$8.c() != null) {
-               dgi $$9 = dgi.valueOf($$8.c().l("mode"));
-               if ($$9 == dgi.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
-         }
-
-         for (dyq.c $$11 : this.b.a(this.d, this.c, csl.pb)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dey $$13 = csl.a.n();
-
-               try {
-                  $$13 = fh.a($$0.a(jd.e), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+            try {
+               dvo $$9 = dvo.a($$8, $$0);
+               if ($$5 instanceof dxc) {
+                  $$9 = dxc.a($$6, $$2, $$9);
                }
 
-               $$0.a($$11.a(), $$13, 3);
+               return new dvh($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
    }
 
-   protected abstract void a(String var1, gv var2, cpz var3, art var4, dup var5);
+   public dur a() {
+      dur $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
 
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
+      return $$0;
    }
 
-   @Override
-   public cyw a() {
-      return this.c.d();
+   public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5) {
+      List<dvd> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         dur $$7 = $$6.get(0).f;
+         gu $$8 = $$7.f();
+         gu $$9 = new gu($$8.u(), $$7.h(), $$8.w());
+
+         for (dvd $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
    }
 
-   public dyq c() {
-      return this.b;
+   public qr a(dvp $$0, cot $$1) {
+      qr $$2 = new qr();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(jc.az).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
    }
 
-   public gv d() {
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public cot c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public duz h() {
       return this.d;
    }
 
-   public dym e() {
-      return this.c;
+   public List<dvd> i() {
+      return this.e.c();
    }
 }

@@ -1,31 +1,16 @@
-import com.mojang.authlib.GameProfile;
-
-public class acz implements uw<acx> {
-   private final GameProfile a;
-
-   public acz(GameProfile $$0) {
-      this.a = $$0;
-   }
-
-   public acz(sh $$0) {
-      this.a = $$0.z();
-   }
-
+public interface acz extends sd {
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
+   default sh b() {
+      return sh.d;
    }
 
-   public void a(acx $$0) {
-      $$0.a(this);
-   }
+   void a(adc var1);
 
-   public GameProfile a() {
-      return this.a;
-   }
+   void a(adb var1);
 
-   @Override
-   public sg c() {
-      return sg.e;
-   }
+   void a(ade var1);
+
+   void a(add var1);
+
+   void a(ada var1);
 }

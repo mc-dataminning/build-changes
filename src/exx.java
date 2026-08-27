@@ -1,45 +1,71 @@
 import javax.annotation.Nullable;
 
-public abstract class exx extends exn {
-   protected final eqq<?>[] c;
+public class exx extends exz implements art {
    @Nullable
-   private esg l;
-   protected etf k;
+   private tf a;
+   @Nullable
+   private tf b;
+   private int c;
+   private boolean k;
+   private final boolean l;
 
-   public exx(exv $$0, eqr $$1, te $$2, eqq<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.c = $$3;
+   public exx(boolean $$0) {
+      super(eqe.a);
+      this.l = $$0;
    }
 
    @Override
-   protected void aE_() {
-      this.k = new etf(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.k.a(this.c);
-      this.e(this.k);
-      this.g();
-      this.l = this.k.b(this.b.an());
-      if (this.l != null) {
-         this.l.i = this.f.aU().a();
-      }
-   }
-
-   protected void g() {
-      this.d(esi.a(td.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   public boolean aA_() {
+      return false;
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.k, $$1, $$2, $$3);
+   protected boolean aD_() {
+      return false;
    }
 
    @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
+   public void a(tf $$0) {
       this.b($$0);
    }
 
-   public void l() {
-      if (this.l instanceof esp) {
-         ((esp)this.l).a(this.b.an().c());
+   @Override
+   public void b(tf $$0) {
+      this.a = $$0;
+      this.c(tf.c("progress.working"));
+   }
+
+   @Override
+   public void c(tf $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, tf.h().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
       }
    }
 }

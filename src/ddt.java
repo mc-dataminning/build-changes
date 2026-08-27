@@ -1,127 +1,228 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class ddt {
-   private static final Codec<te[]> c = aqw.c
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new te[]{(te)$$0x.get(0), (te)$$0x.get(1), (te)$$0x.get(2), (te)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<ddt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(ddt::d),
-               chk.q.fieldOf("color").orElse(chk.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ddt::a)
-   );
-   public static final int b = 4;
-   private final te[] d;
-   private final te[] e;
-   private final chk f;
-   private final boolean g;
+public class ddt extends ddp implements bgz {
+   public static final int c = 9;
+   public static final int f = 3;
+   public static final int g = 27;
+   public static final int j = 1;
+   public static final int k = 10;
+   public static final float l = 0.5F;
+   public static final float m = 270.0F;
+   public static final String n = "Items";
+   private static final int[] r = IntStream.range(0, 27).toArray();
+   private hn<ciy> s = hn.a(27, ciy.b);
+   private int t;
+   private ddt.a u = ddt.a.a;
+   private float v;
+   private float w;
    @Nullable
-   private ara[] h;
-   private boolean i;
+   private final chm x;
 
-   public ddt() {
-      this(c(), c(), chk.p, false);
+   public ddt(@Nullable chm $$0, gu $$1, dfa $$2) {
+      super(dco.x, $$1, $$2);
+      this.x = $$0;
    }
 
-   public ddt(te[] $$0, te[] $$1, chk $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ddt(gu $$0, dfa $$1) {
+      super(dco.x, $$0, $$1);
+      this.x = czl.a($$1.b());
    }
 
-   private static te[] c() {
-      return new te[]{td.a, td.a, td.a, td.a};
+   public static void a(cpm $$0, gu $$1, dfa $$2, ddt $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   private static ddt a(te[] $$0, Optional<te[]> $$1, chk $$2, boolean $$3) {
-      return new ddt($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   private void b(cpm $$0, gu $$1, dfa $$2) {
+      this.w = this.v;
+      switch (this.u) {
+         case a:
+            this.v = 0.0F;
+            break;
+         case b:
+            this.v += 0.1F;
+            if (this.w == 0.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v >= 1.0F) {
+               this.u = ddt.a.c;
+               this.v = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case d:
+            this.v -= 0.1F;
+            if (this.w == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v <= 0.0F) {
+               this.u = ddt.a.a;
+               this.v = 0.0F;
+               d($$0, $$1, $$2);
+            }
+            break;
+         case c:
+            this.v = 1.0F;
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public ddt.a i() {
+      return this.u;
    }
 
-   public ddt a(boolean $$0) {
-      return $$0 == this.g ? this : new ddt(this.d, this.e, this.f, $$0);
+   public egz a(dfa $$0) {
+      return bzh.a($$0.c(czl.a), 0.5F * this.a(1.0F));
    }
 
-   public chk b() {
-      return this.f;
-   }
-
-   public ddt a(chk $$0) {
-      return $$0 == this.b() ? this : new ddt(this.d, this.e, $$0, this.g);
-   }
-
-   public te a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public ddt a(int $$0, te $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public ddt a(int $$0, te $$1, te $$2) {
-      te[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      te[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new ddt($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cbl $$0) {
-      return Arrays.stream(this.b($$0.W())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public te[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ara[] a(boolean $$0, Function<te, ara> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ara[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   private void c(cpm $$0, gu $$1, dfa $$2) {
+      if ($$2.b() instanceof czl) {
+         ha $$3 = $$2.c(czl.a);
+         egz $$4 = bzh.a($$3, this.w, this.v).a($$1);
+         List<bii> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (bii $$6 : $$5) {
+               if ($$6.l_() != eai.d) {
+                  $$6.a(bje.d, new ehe(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               }
+            }
          }
       }
-
-      return this.h;
    }
 
-   private Optional<te[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int b() {
+      return this.s.size();
    }
 
-   public boolean b(cbl $$0) {
-      for (te $$1 : this.b($$0.W())) {
-         ua $$2 = $$1.a();
-         tc $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == tc.a.c) {
-            return true;
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.t = $$1;
+         if ($$1 == 0) {
+            this.u = ddt.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.u = ddt.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void d(cpm $$0, gu $$1, dfa $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
+   }
+
+   @Override
+   public void d_(cbn $$0) {
+      if (!this.q && !$$0.G_()) {
+         if (this.t < 0) {
+            this.t = 0;
+         }
+
+         this.t++;
+         this.o.a(this.p, this.q().b(), 1, this.t);
+         if (this.t == 1) {
+            this.o.a($$0, djk.k, this.p);
+            this.o.a(null, this.p, aow.va, aox.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
          }
       }
+   }
 
-      return false;
+   @Override
+   public void c(cbn $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.t--;
+         this.o.a(this.p, this.q().b(), 1, this.t);
+         if (this.t <= 0) {
+            this.o.a($$0, djk.j, this.p);
+            this.o.a(null, this.p, aow.uZ, aox.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected tf g() {
+      return tf.c("container.shulkerBox");
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      this.f($$0);
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgk.a($$0, this.s, false);
+      }
+   }
+
+   public void f(qr $$0) {
+      this.s = hn.a(this.b(), ciy.b);
+      if (!this.d($$0) && $$0.b("Items", 9)) {
+         bgk.b($$0, this.s);
+      }
+   }
+
+   @Override
+   protected hn<ciy> f() {
+      return this.s;
+   }
+
+   @Override
+   protected void a(hn<ciy> $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public int[] a(ha $$0) {
+      return r;
+   }
+
+   @Override
+   public boolean a(int $$0, ciy $$1, @Nullable ha $$2) {
+      return !(csm.a($$1.d()) instanceof czl);
+   }
+
+   @Override
+   public boolean b(int $$0, ciy $$1, ha $$2) {
+      return true;
+   }
+
+   public float a(float $$0) {
+      return arp.i($$0, this.w, this.v);
+   }
+
+   @Nullable
+   public chm j() {
+      return this.x;
+   }
+
+   @Override
+   protected cee a(int $$0, cbm $$1) {
+      return new cft($$0, $$1, this);
+   }
+
+   public boolean v() {
+      return this.u == ddt.a.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,93 +1,29 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class eli extends elg {
-   private final ell f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class eli {
+   private static final int a = 8388608;
+   private static final int b = 2097152;
+   private final elb c;
+   private static final eli d = new eli();
 
-   public eli(ell $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1).invert();
-      this.h = new Matrix3f($$2).invert();
-      this.i = $$3;
-      this.a();
+   public static eli a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      return d;
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   public eli(int $$0) {
+      this.c = new elb($$0);
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      hb $$1 = hb.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public eli() {
+      this(2097152);
    }
 
-   @Override
-   public ell a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   public void b() {
+      elc.a(this.c.d());
    }
 
-   @Override
-   public ell a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
-   }
-
-   @Override
-   public ell a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public ell a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
-
-   @Override
-   public ell b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
-
-   @Override
-   public ell a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public elb c() {
+      return this.c;
    }
 }

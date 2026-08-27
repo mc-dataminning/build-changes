@@ -1,56 +1,31 @@
-public class aby implements uw<aav> {
-   private final int a;
-   private final aby.a b;
-   private final int c;
+public class aby implements ux<aaw> {
+   private static final int a = 2;
+   private final boolean b;
 
-   public aby(big $$0, aby.a $$1) {
-      this($$0, $$1, 0);
+   public aby(cbk $$0) {
+      this.b = $$0.b;
    }
 
-   public aby(big $$0, aby.a $$1, int $$2) {
-      this.a = $$0.ah();
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public aby(sh $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(aby.a.class);
-      this.c = $$0.m();
+   public aby(si $$0) {
+      byte $$1 = $$0.readByte();
+      this.b = ($$1 & 2) != 0;
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.c(this.c);
+   public void a(si $$0) {
+      byte $$1 = 0;
+      if (this.b) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public aby.a d() {
+   public boolean a() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

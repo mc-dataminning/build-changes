@@ -1,7 +1,4 @@
-public interface cem {
-   int a(int var1);
-
-   void a(int var1, int var2);
-
-   int a();
+public enum cem {
+   a,
+   b;
 }

@@ -1,34 +1,55 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class acf implements uw<aav> {
-   private final Optional<bhr> a;
-   private final Optional<bhr> b;
+public class acf implements ux<aaw> {
+   private final acf.a a;
+   @Nullable
+   private final aer b;
 
-   public acf(Optional<bhr> $$0, Optional<bhr> $$1) {
+   public acf(acf.a $$0, @Nullable aer $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public acf(sh $$0) {
-      this.a = $$0.b((sh.a<bhr>)($$0x -> $$0x.a(jc.e)));
-      this.b = $$0.b((sh.a<bhr>)($$0x -> $$0x.a(jc.e)));
+   public static acf a(ae $$0) {
+      return new acf(acf.a.a, $$0.j());
+   }
+
+   public static acf a() {
+      return new acf(acf.a.b, null);
+   }
+
+   public acf(si $$0) {
+      this.a = $$0.b(acf.a.class);
+      if (this.a == acf.a.a) {
+         this.b = $$0.s();
+      } else {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jc.e, $$1));
-      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jc.e, $$1));
+   public void a(si $$0) {
+      $$0.a(this.a);
+      if (this.a == acf.a.a) {
+         $$0.a(this.b);
+      }
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public Optional<bhr> a() {
+   public acf.a d() {
       return this.a;
    }
 
-   public Optional<bhr> d() {
+   @Nullable
+   public aer e() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

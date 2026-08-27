@@ -1,56 +1,124 @@
-public class etn extends esf {
-   private float a = 0.5F;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
 
-   public etn(te $$0, erv $$1) {
-      this(0, 0, $$1.a($$0.f()), 9, $$0, $$1);
+public class etn implements gcw {
+   private static final long a = 3000L;
+   private final eqm b;
+   private final List<etn.a> c = Lists.newArrayList();
+   private boolean d;
+
+   public etn(eqm $$0) {
+      this.b = $$0;
    }
 
-   public etn(int $$0, int $$1, te $$2, erv $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
+   public void a(erw $$0) {
+      if (!this.d && this.b.m.R().c()) {
+         this.b.ai().a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.R().c()) {
+         this.b.ai().b(this);
+         this.d = false;
+      }
 
-   public etn(int $$0, int $$1, int $$2, int $$3, te $$4, erv $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.i = false;
-   }
+      if (this.d && !this.c.isEmpty()) {
+         ehe $$1 = new ehe(this.b.v.dp(), this.b.v.dt(), this.b.v.dv());
+         ehe $$2 = new ehe(0.0, 0.0, -1.0).a(-this.b.v.dC() * (float) (Math.PI / 180.0)).b(-this.b.v.dA() * (float) (Math.PI / 180.0));
+         ehe $$3 = new ehe(0.0, 1.0, 0.0).a(-this.b.v.dC() * (float) (Math.PI / 180.0)).b(-this.b.v.dA() * (float) (Math.PI / 180.0));
+         ehe $$4 = $$2.c($$3);
+         int $$5 = 0;
+         int $$6 = 0;
+         double $$7 = this.b.m.x().c();
+         Iterator<etn.a> $$8 = this.c.iterator();
 
-   public etn h(int $$0) {
-      super.a($$0);
-      return this;
-   }
+         while ($$8.hasNext()) {
+            etn.a $$9 = $$8.next();
+            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
+               $$8.remove();
+            } else {
+               $$6 = Math.max($$6, this.b.h.a($$9.a()));
+            }
+         }
 
-   private etn b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
+         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
 
-   public etn e() {
-      return this.b(0.0F);
-   }
+         for (etn.a $$10 : this.c) {
+            int $$11 = 255;
+            tf $$12 = $$10.a();
+            ehe $$13 = $$10.c().d($$1).d();
+            double $$14 = -$$4.b($$13);
+            double $$15 = -$$2.b($$13);
+            boolean $$16 = $$15 > 0.5;
+            int $$17 = $$6 / 2;
+            int $$18 = 9;
+            int $$19 = $$18 / 2;
+            float $$20 = 1.0F;
+            int $$21 = this.b.h.a($$12);
+            int $$22 = arp.d(arp.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
+            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
+            $$0.c().a();
+            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
+            $$0.c().b(1.0F, 1.0F, 1.0F);
+            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
+            int $$24 = $$23 + -16777216;
+            if (!$$16) {
+               if ($$14 > 0.0) {
+                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
+               } else if ($$14 < 0.0) {
+                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
+               }
+            }
 
-   public etn f() {
-      return this.b(0.5F);
-   }
-
-   public etn g() {
-      return this.b(1.0F);
+            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
+            $$0.c().b();
+            $$5++;
+         }
+      }
    }
 
    @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      te $$4 = this.l();
-      erv $$5 = this.a();
-      int $$6 = this.k();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.p() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.r() + (this.h() - 9) / 2;
-      ara $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.f();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(gbt $$0, gcy $$1) {
+      if ($$1.a() != null) {
+         tf $$2 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (etn.a $$3 : this.c) {
+               if ($$3.a().equals($$2)) {
+                  $$3.a(new ehe($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new etn.a($$2, new ehe($$0.h(), $$0.i(), $$0.j())));
+      }
    }
 
-   private ara a(te $$0, int $$1) {
-      erv $$2 = this.a();
-      ti $$3 = $$2.a($$0, $$1 - $$2.a(td.t));
-      return qn.a().a(ti.a($$3, td.t));
+   public static class a {
+      private final tf a;
+      private long b;
+      private ehe c;
+
+      public a(tf $$0, ehe $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = ac.b();
+      }
+
+      public tf a() {
+         return this.a;
+      }
+
+      public long b() {
+         return this.b;
+      }
+
+      public ehe c() {
+         return this.c;
+      }
+
+      public void a(ehe $$0) {
+         this.c = $$0;
+         this.b = ac.b();
+      }
    }
 }

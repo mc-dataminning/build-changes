@@ -1,22 +1,17 @@
-public class fvh extends ftp<bzp, fgy<bzp>> {
-   private static final aep a = new aep("textures/entity/witch.png");
+public class fvh extends ftu<bzp, fgx> {
+   private static final aer a = new aer("textures/entity/illager/vex.png");
+   private static final aer i = new aer("textures/entity/illager/vex_charging.png");
 
-   public fvh(fsj.a $$0) {
-      super($$0, new fgy<>($$0.a(fhi.bN)), 0.5F);
-      this.a(new fxe<>(this, $$0.d()));
+   public fvh(fso.a $$0) {
+      super($$0, new fgx($$0.a(fhm.bI)), 0.3F);
+      this.a(new fwp<>(this, $$0.d()));
    }
 
-   public void a(bzp $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      this.f.b(!$$0.eR().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(bzp $$0, gu $$1) {
+      return 15;
    }
 
-   public aep a(bzp $$0) {
-      return a;
-   }
-
-   protected void a(bzp $$0, elh $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public aer a(bzp $$0) {
+      return $$0.fZ() ? i : a;
    }
 }

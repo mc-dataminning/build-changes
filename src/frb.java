@@ -1,74 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class frb implements fqp.a {
-   private final eqn a;
-   private double b = Double.MIN_VALUE;
-   private List<big> c = Collections.emptyList();
+public class frb implements fqu.a {
+   private final eqm a;
+   private final Map<Long, Map<gu, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public frb(eqn $$0) {
+   frb(eqm $$0) {
       this.a = $$0;
    }
 
+   public void a(long $$0, gu $$1) {
+      Map<gu, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
+   }
+
    @Override
-   public void a(elh $$0, fng $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         big $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dK().a_($$6, $$6.cG().g(16.0)));
-      }
+   public void a(elg $$0, fnl $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.u.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<gu> $$8 = Sets.newHashSet();
+      Map<gu, Integer> $$9 = Maps.newHashMap();
+      elk $$10 = $$1.getBuffer(fnt.x());
+      Iterator<Entry<Long, Map<gu, Integer>>> $$11 = this.b.entrySet().iterator();
 
-      cbl $$7 = this.a.t;
-      if ($$7 != null && $$7.aD.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (big $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<gu, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<gu, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<gu, Integer> $$16 : $$14.entrySet()) {
+               gu $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  egz $$19 = new egz(gu.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fnj.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
          }
       }
-   }
 
-   private void a(elh $$0, fng $$1, double $$2, double $$3, double $$4, big $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aD.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         gv $$12 = $$5.aH();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         gv $$13 = $$5.aF();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(big $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ah() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(gv $$0, elh $$1, double $$2, double $$3, double $$4, fng $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fne.a($$1, $$5.getBuffer(fno.x()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fne.a(
-         $$1,
-         $$5.getBuffer(fno.x()),
-         this.a.s.a_($$0).b(this.a.s, $$0, ehk.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+      for (Entry<gu, Integer> $$20 : $$9.entrySet()) {
+         gu $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         fqu.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

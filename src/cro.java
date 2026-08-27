@@ -1,68 +1,65 @@
-public class cro extends csk implements csm {
-   protected static final float a = 4.0F;
-   protected static final ehy b = csk.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public cro(dex.d $$0) {
-      super($$0);
+public class cro extends csu {
+   public static final dfu a = cwf.aC;
+   protected static final float b = 2.0F;
+   private static final Map<ha, ehx> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.d,
+         csm.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         ha.e,
+         csm.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         ha.c,
+         csm.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         ha.f,
+         csm.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final daj d;
+   private final Supplier<cit> e;
+
+   protected cro(daj $$0, Supplier<cit> $$1, dez.d $$2) {
+      super($$2);
+      this.k(this.C.b().a(a, ha.c));
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      ehf $$4 = $$0.n($$1, $$2);
-      return b.a($$4.c, $$4.d, $$4.e);
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return c.get($$0.c(a));
    }
 
    @Override
-   public void b(dey $$0, aki $$1, gv $$2, art $$3) {
-      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return !$$2.a(this.d) && $$1 == $$0.c(a) ? this.d.a().n().a(dai.b, Integer.valueOf(7)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dey $$0, cpn $$1, gv $$2) {
-      return $$1.a_($$2.d()).a(apj.at);
+   protected boolean d(dfa $$0, cos $$1, gu $$2) {
+      return $$0.a(csn.cC);
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return csl.a.n();
-      } else {
-         if ($$1 == hb.b && $$2.a(csl.mZ)) {
-            $$3.a($$4, csl.mZ.n(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public ciy a(cos $$0, gu $$1, dfa $$2) {
+      return new ciy(this.e.get());
    }
 
    @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      return new ciw(ciz.dv);
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(cpn $$0, gv $$1, dey $$2) {
-      return $$0.a_($$1.c()).i();
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   public float a(dey $$0, cbl $$1, coq $$2, gv $$3) {
-      return $$1.eR().d() instanceof ckh ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(cpk $$0, gv $$1) {
-      $$0.a($$1.c(), csl.mZ.n().a(crp.h, dfk.b), 3);
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 }

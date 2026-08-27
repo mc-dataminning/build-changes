@@ -1,101 +1,48 @@
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-public abstract class cmk implements clz<bgh> {
-   protected final clw a;
-   protected final ciw b;
-   private final cmc<?> e;
-   private final cmb<?> f;
-   protected final aep c;
-   protected final String d;
+public class cmk<T extends clk> implements cmd<T> {
+   private final int x;
+   private final cmk.a<T> y;
 
-   public cmk(cmc<?> $$0, cmb<?> $$1, aep $$2, String $$3, clw $$4, ciw $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.a = $$4;
-      this.b = $$5;
+   public cmk(cmk.a<T> $$0, int $$1) {
+      this.x = $$1;
+      this.y = $$0;
    }
 
-   @Override
-   public cmc<?> f() {
-      return this.e;
+   public T b(aer $$0, JsonObject $$1) {
+      String $$2 = arg.a($$1, "group", "");
+      clq $$3 = clq.d.a(arg.a($$1, "category", null), clq.c);
+      JsonElement $$4 = (JsonElement)(arg.d($$1, "ingredient") ? arg.v($$1, "ingredient") : arg.u($$1, "ingredient"));
+      cly $$5 = cly.a($$4, false);
+      String $$6 = arg.i($$1, "result");
+      aer $$7 = new aer($$6);
+      ciy $$8 = new ciy(jb.i.b($$7).orElseThrow(() -> new IllegalStateException("Item: " + $$6 + " does not exist")));
+      float $$9 = arg.a($$1, "experience", 0.0F);
+      int $$10 = arg.a($$1, "cookingtime", this.x);
+      return this.y.create($$0, $$2, $$3, $$5, $$8, $$9, $$10);
    }
 
-   @Override
-   public cmb<?> aj_() {
-      return this.f;
+   public T b(aer $$0, si $$1) {
+      String $$2 = $$1.r();
+      clq $$3 = $$1.b(clq.class);
+      cly $$4 = cly.b($$1);
+      ciy $$5 = $$1.q();
+      float $$6 = $$1.readFloat();
+      int $$7 = $$1.m();
+      return this.y.create($$0, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public aep e() {
-      return this.c;
+   public void a(si $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.g());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
    }
 
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   @Override
-   public ciw a(ht $$0) {
-      return this.b;
-   }
-
-   @Override
-   public ho<clw> a() {
-      ho<clw> $$0 = ho.a();
-      $$0.add(this.a);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public ciw a(bgh $$0, ht $$1) {
-      return this.b.p();
-   }
-
-   public static class a<T extends cmk> implements cmb<T> {
-      final cmk.a.a<T> x;
-
-      protected a(cmk.a.a<T> $$0) {
-         this.x = $$0;
-      }
-
-      public T b(aep $$0, JsonObject $$1) {
-         String $$2 = arf.a($$1, "group", "");
-         clw $$3;
-         if (arf.d($$1, "ingredient")) {
-            $$3 = clw.a(arf.v($$1, "ingredient"), false);
-         } else {
-            $$3 = clw.a(arf.u($$1, "ingredient"), false);
-         }
-
-         String $$5 = arf.i($$1, "result");
-         int $$6 = arf.o($$1, "count");
-         ciw $$7 = new ciw(jc.i.a(new aep($$5)), $$6);
-         return this.x.create($$0, $$2, $$3, $$7);
-      }
-
-      public T b(aep $$0, sh $$1) {
-         String $$2 = $$1.r();
-         clw $$3 = clw.b($$1);
-         ciw $$4 = $$1.q();
-         return this.x.create($$0, $$2, $$3, $$4);
-      }
-
-      public void a(sh $$0, T $$1) {
-         $$0.a($$1.d);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-      }
-
-      interface a<T extends cmk> {
-         T create(aep var1, String var2, clw var3, ciw var4);
-      }
+   interface a<T extends clk> {
+      T create(aer var1, String var2, clq var3, cly var4, ciy var5, float var6, int var7);
    }
 }

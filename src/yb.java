@@ -1,102 +1,48 @@
-public class yb implements uw<wo> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final int h;
-   private final boolean i;
-   private final iu j;
+public class yb implements ux<wp> {
+   private final int a;
+   private final gu b;
+   private final int c;
+   private final boolean d;
 
-   public <T extends iu> yb(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+   public yb(int $$0, gu $$1, int $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public yb(sh $$0) {
-      iv<?> $$1 = $$0.a(jc.k);
-      this.i = $$0.readBoolean();
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (iv<iu>)$$1);
-   }
-
-   private <T extends iu> T a(sh $$0, iv<T> $$1) {
-      return $$1.d().b($$1, $$0);
+   public yb(si $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.e();
+      this.c = $$0.readInt();
+      this.d = $$0.readBoolean();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(jc.k, this.j.b());
-      $$0.a(this.i);
-      $$0.a(this.a);
+   public void a(si $$0) {
+      $$0.p(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.p(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+   }
+
+   public void a(wp $$0) {
+      $$0.a(this);
    }
 
    public boolean a() {
-      return this.i;
-   }
-
-   public double d() {
-      return this.a;
-   }
-
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public float g() {
       return this.d;
    }
 
-   public float h() {
-      return this.e;
+   public int d() {
+      return this.a;
    }
 
-   public float i() {
-      return this.f;
+   public int e() {
+      return this.c;
    }
 
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public iu l() {
-      return this.j;
-   }
-
-   public void a(wo $$0) {
-      $$0.a(this);
+   public gu f() {
+      return this.b;
    }
 }

@@ -1,47 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record zq(int b, List<aea.b<?>> c) implements uw<wo> {
-   public static final int a = 255;
+public class zq implements ux<wp> {
+   private final ehz a;
+   private final String b;
 
-   public zq(sh $$0) {
-      this($$0.m(), b($$0));
+   public zq(ehz $$0, @Nullable eia $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   private static void a(List<aea.b<?>> $$0, sh $$1) {
-      for (aea.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<aea.b<?>> b(sh $$0) {
-      List<aea.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aea.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public zq(si $$0) {
+      this.a = $$0.a(ehz.u);
+      this.b = $$0.r();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+   public void a(si $$0) {
+      $$0.a(ehz::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public ehz a() {
+      return this.a;
    }
 
-   public List<aea.b<?>> d() {
-      return this.c;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

@@ -1,70 +1,45 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class eer {
-   private final Set<eeq<?>> a;
-   private final Set<eeq<?>> b;
+   private static final BiMap<aer, eeq> p = HashBiMap.create();
+   public static final Codec<eeq> a = aer.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((eeq)p.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         p.inverse()::get
+      );
+   public static final eeq b = a("empty", $$0 -> {
+   });
+   public static final eeq c = a("chest", $$0 -> $$0.a(ees.f).b(ees.a));
+   public static final eeq d = a("command", $$0 -> $$0.a(ees.f).b(ees.a));
+   public static final eeq e = a("selector", $$0 -> $$0.a(ees.f).a(ees.a));
+   public static final eeq f = a("fishing", $$0 -> $$0.a(ees.f).a(ees.i).b(ees.a));
+   public static final eeq g = a("entity", $$0 -> $$0.a(ees.a).a(ees.f).a(ees.c).b(ees.d).b(ees.e).b(ees.b));
+   public static final eeq h = a("archaeology", $$0 -> $$0.a(ees.f).b(ees.a));
+   public static final eeq i = a("gift", $$0 -> $$0.a(ees.f).a(ees.a));
+   public static final eeq j = a("barter", $$0 -> $$0.a(ees.a));
+   public static final eeq k = a("advancement_reward", $$0 -> $$0.a(ees.a).a(ees.f));
+   public static final eeq l = a("advancement_entity", $$0 -> $$0.a(ees.a).a(ees.f));
+   public static final eeq m = a("advancement_location", $$0 -> $$0.a(ees.a).a(ees.f).a(ees.i).a(ees.g));
+   public static final eeq n = a("generic", $$0 -> $$0.a(ees.a).a(ees.b).a(ees.c).a(ees.d).a(ees.e).a(ees.f).a(ees.g).a(ees.h).a(ees.i).a(ees.j));
+   public static final eeq o = a("block", $$0 -> $$0.a(ees.g).a(ees.f).a(ees.i).b(ees.a).b(ees.h).b(ees.j));
 
-   eer(Set<eeq<?>> $$0, Set<eeq<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(eeq<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<eeq<?>> a() {
-      return this.a;
-   }
-
-   public Set<eeq<?>> b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
-
-   public void a(ecs $$0, eci $$1) {
-      Set<eeq<?>> $$2 = $$1.a();
-      Set<eeq<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.a("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static eer.a c() {
-      return new eer.a();
-   }
-
-   public static class a {
-      private final Set<eeq<?>> a = Sets.newIdentityHashSet();
-      private final Set<eeq<?>> b = Sets.newIdentityHashSet();
-
-      public eer.a a(eeq<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public eer.a b(eeq<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eer a() {
-         return new eer(this.a, this.b);
+   private static eeq a(String $$0, Consumer<eeq.a> $$1) {
+      eeq.a $$2 = new eeq.a();
+      $$1.accept($$2);
+      eeq $$3 = $$2.a();
+      aer $$4 = new aer($$0);
+      eeq $$5 = (eeq)p.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
    }
 }

@@ -1,108 +1,11 @@
-public final class apr {
-   public static final apy<cir> a = a("wool");
-   public static final apy<cir> b = a("planks");
-   public static final apy<cir> c = a("stone_bricks");
-   public static final apy<cir> d = a("wooden_buttons");
-   public static final apy<cir> e = a("stone_buttons");
-   public static final apy<cir> f = a("buttons");
-   public static final apy<cir> g = a("wool_carpets");
-   public static final apy<cir> h = a("wooden_doors");
-   public static final apy<cir> i = a("wooden_stairs");
-   public static final apy<cir> j = a("wooden_slabs");
-   public static final apy<cir> k = a("wooden_fences");
-   public static final apy<cir> l = a("fence_gates");
-   public static final apy<cir> m = a("wooden_pressure_plates");
-   public static final apy<cir> n = a("wooden_trapdoors");
-   public static final apy<cir> o = a("doors");
-   public static final apy<cir> p = a("saplings");
-   public static final apy<cir> q = a("logs_that_burn");
-   public static final apy<cir> r = a("logs");
-   public static final apy<cir> s = a("dark_oak_logs");
-   public static final apy<cir> t = a("oak_logs");
-   public static final apy<cir> u = a("birch_logs");
-   public static final apy<cir> v = a("acacia_logs");
-   public static final apy<cir> w = a("cherry_logs");
-   public static final apy<cir> x = a("jungle_logs");
-   public static final apy<cir> y = a("spruce_logs");
-   public static final apy<cir> z = a("mangrove_logs");
-   public static final apy<cir> A = a("crimson_stems");
-   public static final apy<cir> B = a("warped_stems");
-   public static final apy<cir> C = a("bamboo_blocks");
-   public static final apy<cir> D = a("wart_blocks");
-   public static final apy<cir> E = a("banners");
-   public static final apy<cir> F = a("sand");
-   public static final apy<cir> G = a("smelts_to_glass");
-   public static final apy<cir> H = a("stairs");
-   public static final apy<cir> I = a("slabs");
-   public static final apy<cir> J = a("walls");
-   public static final apy<cir> K = a("anvil");
-   public static final apy<cir> L = a("rails");
-   public static final apy<cir> M = a("leaves");
-   public static final apy<cir> N = a("trapdoors");
-   public static final apy<cir> O = a("small_flowers");
-   public static final apy<cir> P = a("beds");
-   public static final apy<cir> Q = a("fences");
-   public static final apy<cir> R = a("tall_flowers");
-   public static final apy<cir> S = a("flowers");
-   public static final apy<cir> T = a("piglin_repellents");
-   public static final apy<cir> U = a("piglin_loved");
-   public static final apy<cir> V = a("ignored_by_piglin_babies");
-   public static final apy<cir> W = a("piglin_food");
-   public static final apy<cir> X = a("fox_food");
-   public static final apy<cir> Y = a("gold_ores");
-   public static final apy<cir> Z = a("iron_ores");
-   public static final apy<cir> aa = a("diamond_ores");
-   public static final apy<cir> ab = a("redstone_ores");
-   public static final apy<cir> ac = a("lapis_ores");
-   public static final apy<cir> ad = a("coal_ores");
-   public static final apy<cir> ae = a("emerald_ores");
-   public static final apy<cir> af = a("copper_ores");
-   public static final apy<cir> ag = a("non_flammable_wood");
-   public static final apy<cir> ah = a("soul_fire_base_blocks");
-   public static final apy<cir> ai = a("candles");
-   public static final apy<cir> aj = a("dirt");
-   public static final apy<cir> ak = a("terracotta");
-   public static final apy<cir> al = a("completes_find_tree_tutorial");
-   public static final apy<cir> am = a("boats");
-   public static final apy<cir> an = a("chest_boats");
-   public static final apy<cir> ao = a("fishes");
-   public static final apy<cir> ap = a("signs");
-   public static final apy<cir> aq = a("music_discs");
-   public static final apy<cir> ar = a("creeper_drop_music_discs");
-   public static final apy<cir> as = a("coals");
-   public static final apy<cir> at = a("arrows");
-   public static final apy<cir> au = a("lectern_books");
-   public static final apy<cir> av = a("bookshelf_books");
-   public static final apy<cir> aw = a("beacon_payment_items");
-   public static final apy<cir> ax = a("stone_tool_materials");
-   public static final apy<cir> ay = a("stone_crafting_materials");
-   public static final apy<cir> az = a("freeze_immune_wearables");
-   public static final apy<cir> aA = a("axolotl_tempt_items");
-   public static final apy<cir> aB = a("dampens_vibrations");
-   public static final apy<cir> aC = a("cluster_max_harvestables");
-   public static final apy<cir> aD = a("compasses");
-   public static final apy<cir> aE = a("hanging_signs");
-   public static final apy<cir> aF = a("creeper_igniters");
-   public static final apy<cir> aG = a("noteblock_top_instruments");
-   public static final apy<cir> aH = a("trimmable_armor");
-   public static final apy<cir> aI = a("trim_materials");
-   public static final apy<cir> aJ = a("trim_templates");
-   public static final apy<cir> aK = a("sniffer_food");
-   public static final apy<cir> aL = a("decorated_pot_sherds");
-   public static final apy<cir> aM = a("decorated_pot_ingredients");
-   public static final apy<cir> aN = a("swords");
-   public static final apy<cir> aO = a("axes");
-   public static final apy<cir> aP = a("hoes");
-   public static final apy<cir> aQ = a("pickaxes");
-   public static final apy<cir> aR = a("shovels");
-   public static final apy<cir> aS = a("tools");
-   public static final apy<cir> aT = a("breaks_decorated_pots");
-   public static final apy<cir> aU = a("villager_plantable_seeds");
+public class apr {
+   public static final aqa<djk> a = a("vibrations");
+   public static final aqa<djk> b = a("warden_can_listen");
+   public static final aqa<djk> c = a("shrieker_can_listen");
+   public static final aqa<djk> d = a("ignore_vibrations_sneaking");
+   public static final aqa<djk> e = a("allay_can_listen");
 
-   private apr() {
-   }
-
-   private static apy<cir> a(String $$0) {
-      return apy.a(jd.D, new aep($$0));
+   private static aqa<djk> a(String $$0) {
+      return aqa.a(jc.z, new aer($$0));
    }
 }

@@ -1,9 +1,8 @@
-public class cdr {
-   final cdu a;
-   final long b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   cdr(cdu $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cdr {
 }

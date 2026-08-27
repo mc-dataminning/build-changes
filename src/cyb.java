@@ -1,26 +1,18 @@
-public class cyb extends cub {
-   private static final ehy[] a = new ehy[]{
-      csk.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      csk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cyb(dex.d $$0) {
-      super($$0);
+public class cyb extends dbl {
+   protected cyb(dez.d $$0) {
+      super(czo.b.c, $$0);
    }
 
    @Override
-   protected cpj c() {
-      return ciz.tm;
+   public void a(cpm $$0, gu $$1, dfa $$2, @Nullable biy $$3, ciy $$4) {
+      csn.gK.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a[this.g($$0)];
+   public List<ciy> a(dfa $$0, ecn.a $$1) {
+      return csn.gK.a($$0, $$1);
    }
 }

@@ -1,52 +1,48 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface bfa {
-   bez a();
-
-   static <T> bfa.b<T> a(T $$0, int $$1) {
-      return new bfa.b<>($$0, bez.a($$1));
+public class bfa<E> extends bfe<bfc.b<E>> {
+   public static <E> Codec<bfa<E>> a(Codec<E> $$0) {
+      return bfc.b.a($$0).listOf().xmap(bfa::new, bfe::e);
    }
 
-   public static class a implements bfa {
-      private final bez a;
-
-      public a(int $$0) {
-         this.a = bez.a($$0);
-      }
-
-      public a(bez $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bez a() {
-         return this.a;
-      }
+   public static <E> Codec<bfa<E>> b(Codec<E> $$0) {
+      return aqy.a(bfc.b.a($$0).listOf()).xmap(bfa::new, bfe::e);
    }
 
-   public static class b<T> implements bfa {
-      private final T a;
-      private final bez b;
+   bfa(List<? extends bfc.b<E>> $$0) {
+      super($$0);
+   }
 
-      b(T $$0, bez $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static <E> bfa.a<E> a() {
+      return new bfa.a<>();
+   }
+
+   public static <E> bfa<E> b() {
+      return new bfa<>(List.of());
+   }
+
+   public static <E> bfa<E> a(E $$0) {
+      return new bfa<>(List.of(bfc.a($$0, 1)));
+   }
+
+   public Optional<E> a(aru $$0) {
+      return this.b($$0).map(bfc.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bfc.b<E>> a = ImmutableList.builder();
+
+      public bfa.a<E> a(E $$0, int $$1) {
+         this.a.add(bfc.a($$0, $$1));
+         return this;
       }
 
-      public T b() {
-         return this.a;
-      }
-
-      @Override
-      public bez a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bfa.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bfa.b::b), bez.a.fieldOf("weight").forGetter(bfa.b::a)).apply($$1, bfa.b::new)
-         );
+      public bfa<E> a() {
+         return new bfa<>(this.a.build());
       }
    }
 }

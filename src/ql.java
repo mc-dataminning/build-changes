@@ -1,8 +1,8 @@
-public interface ql {
-   void a(ps var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b(ps var1);
-
-   default void a() {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ql {
 }

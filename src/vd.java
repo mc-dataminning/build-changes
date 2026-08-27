@@ -1,24 +1,24 @@
-public class vd implements uw<uz> {
-   private final int a;
+public class vd implements ux<va> {
+   private final long a;
 
-   public vd(int $$0) {
+   public vd(long $$0) {
       this.a = $$0;
    }
 
-   public vd(sh $$0) {
-      this.a = $$0.readInt();
+   public vd(si $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
+   public void a(si $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(uz $$0) {
+   public void a(va $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 }

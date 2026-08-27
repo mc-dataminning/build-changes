@@ -1,118 +1,73 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dmq extends dnl<dpj> {
-   private static final ImmutableList<csk> a = ImmutableList.of(csl.H, csl.F, csl.kJ, csl.dX, csl.fn, csl.fo, csl.fp, csl.fq, csl.cv, csl.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
-
-   public dmq(Codec<dpj> $$0) {
+public abstract class dmq extends dnn<dpt> {
+   public dmq(Codec<dpt> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dnn<dpj> $$0) {
-      int $$1 = $$0.c().e();
-      gv $$2 = $$0.e();
-      cqe $$3 = $$0.b();
-      art $$4 = $$0.d();
-      dpj $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (gv $$11 : gv.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
+   protected void a(cpn $$0, aru $$1, gu $$2, dpt $$3, int $$4, gu.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ha.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
-
-         return $$10;
       }
    }
 
-   private boolean a(cpl $$0, int $$1, gv $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   protected int a(aru $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
 
-      for (gv $$6 : gv.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         gv $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
+      return $$1;
+   }
 
-            for (gv.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (gv)$$10)) {
-                  this.a($$0, $$10, csl.dZ.n());
-                  $$10.c(hb.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(csl.dZ)) {
-                     break;
+   protected boolean a(cpn $$0, gu $$1, int $$2, gu.a $$3, dpt $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.C_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
+         dfa $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(apl.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dfa $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(apl.O)) {
+                        return false;
+                     }
                   }
-
-                  $$10.c(hb.b);
                }
             }
-         }
-      }
 
-      return $$5;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
-   private static gv a(cpl $$0, int $$1, gv.a $$2, int $$3) {
-      while ($$2.v() > $$0.C_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(hb.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cpl $$0, int $$1, gv.a $$2) {
-      if (!a($$0, $$1, (gv)$$2)) {
+   @Override
+   public boolean a(dnp<dpt> $$0) {
+      cqg $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      aru $$3 = $$0.d();
+      dpt $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      gu.a $$6 = new gu.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         dey $$3 = $$0.a_($$2.c(hb.a));
-         $$2.c(hb.b);
-         return !$$3.i() && !a.contains($$3.b());
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
       }
    }
 
-   @Nullable
-   private static gv a(cpl $$0, gv.a $$1, int $$2) {
-      while ($$1.v() < $$0.aj() && $$2 > 0) {
-         $$2--;
-         dey $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(hb.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cpl $$0, int $$1, gv $$2) {
-      dey $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(csl.H) && $$2.v() <= $$1;
-   }
+   protected abstract void a(cpn var1, aru var2, gu var3, int var4, gu.a var5, dpt var6);
 }

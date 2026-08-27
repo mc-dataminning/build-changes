@@ -1,22 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlt extends dlz {
-   final apy<csk> a;
-   public static final Codec<dlt> e = RecordCodecBuilder.create($$0 -> a($$0).and(apy.a(jd.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlt::new));
+public class dlt implements dlq {
+   private final hz e;
+   private final ha f;
+   public static final Codec<dlt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.e), ha.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dlt::new)
+   );
 
-   protected dlt(ia $$0, apy<csk> $$1) {
-      super($$0);
-      this.a = $$1;
+   public dlt(hz $$0, ha $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(cqg $$0, gu $$1) {
+      gu $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
    }
 
    @Override
-   protected boolean a(dey $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dlp<?> a() {
-      return dlp.b;
+   public dlr<?> a() {
+      return dlr.d;
    }
 }

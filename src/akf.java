@@ -1,127 +1,52 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class akf extends bge {
-   private final Set<akj> h = Sets.newHashSet();
-   private final Set<akj> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
+public class akf {
+   @Nullable
+   protected static gu a(akk $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.x_().h();
+      dhh $$4 = $$0.d(hx.a($$1), hx.a($$2));
+      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dkj.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.C_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(dkj.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dkj.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            gu.a $$7 = new gu.a();
 
-   public akf(te $$0, bge.a $$1, bge.b $$2) {
-      super(aro.a(), $$0, $$1, $$2);
-   }
+            for (int $$8 = $$5 + 1; $$8 >= $$0.C_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dfa $$9 = $$0.a_($$7);
+               if (!$$9.u().c()) {
+                  break;
+               }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(wz::b);
-      }
-   }
+               if (csm.a($$9.k($$0, $$7), ha.b)) {
+                  return $$7.c().i();
+               }
+            }
 
-   @Override
-   public void a(bge.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(wz::d);
-      }
-   }
-
-   @Override
-   public void a(bge.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(wz::d);
-      }
-   }
-
-   @Override
-   public bge a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(wz::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bge b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(wz::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bge c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(wz::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void a(te $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(wz::c);
-      }
-   }
-
-   private void a(Function<bge, wz> $$0) {
-      if (this.j) {
-         wz $$1 = $$0.apply(this);
-
-         for (akj $$2 : this.h) {
-            $$2.c.b($$1);
+            return null;
          }
       }
    }
 
-   public void a(akj $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.c.b(wz.a(this));
-      }
-   }
-
-   public void b(akj $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.c.b(wz.a(this.i()));
-      }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (akj $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
+   @Nullable
+   public static gu a(akk $$0, cot $$1) {
+      if (aa.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               gu $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
          }
+
+         return null;
       }
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (akj $$1 : this.h) {
-            $$1.c.b($$0 ? wz.a(this) : wz.a(this.i()));
-         }
-      }
-   }
-
-   public Collection<akj> h() {
-      return this.i;
    }
 }

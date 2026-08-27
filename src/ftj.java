@@ -1,103 +1,23 @@
-import org.joml.Matrix4f;
+public class ftj extends ftu<buw, ffd<buw>> {
+   private static final aer a = new aer("textures/entity/iron_golem/iron_golem.png");
 
-public class ftj extends fsi<biv> {
-   public ftj(fsj.a $$0) {
-      super($$0);
+   public ftj(fso.a $$0) {
+      super($$0, new ffd<>($$0.a(fhm.ap)), 0.7F);
+      this.a(new fwn(this));
+      this.a(new fwo(this, $$0.c()));
    }
 
-   public void a(biv $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      art $$10 = art.a($$0.b);
+   public aer a(buw $$0) {
+      return a;
+   }
 
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
+   protected void a(buw $$0, elg $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!((double)$$0.aQ.a() < 0.01)) {
+         float $$5 = 13.0F;
+         float $$6 = $$0.aQ.c($$4) + 6.0F;
+         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$7));
       }
-
-      ell $$12 = $$4.getBuffer(fno.t());
-      Matrix4f $$13 = $$3.c().a();
-
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         art $$15 = art.a($$0.b);
-
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
-            }
-
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
-            }
-         }
-      }
-   }
-
-   private static void a(
-      Matrix4f $$0,
-      ell $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-   }
-
-   public aep a(biv $$0) {
-      return fyf.e;
    }
 }

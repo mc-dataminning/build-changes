@@ -1,55 +1,47 @@
-import javax.annotation.Nullable;
+public class cut extends cun {
+   private static final ih c = new ig();
 
-public class cut extends crx {
-   protected cut(dex.d $$0) {
+   public cut(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public dck a(gv $$0, dey $$1) {
-      return new ddy($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dck> dcl<T> a(cpk $$0, dey $$1, dcm<T> $$2) {
-      return a($$2, dcm.v, $$0.B ? ddy::a : ddy::b);
+   protected ih a(ciy $$0) {
+      return c;
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      dck $$4 = $$1.c_($$2);
-      if ($$4 instanceof ddy) {
-         int $$5 = ((ddy)$$4).g();
+   public dcm a(gu $$0, dfa $$1) {
+      return new dde($$0, $$1);
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+   @Override
+   protected void a(akk $$0, gu $$1) {
+      gw $$2 = new gw($$0, $$1);
+      ddd $$3 = $$2.f();
+      int $$4 = $$3.a($$0.z);
+      if ($$4 < 0) {
+         $$0.c(1001, $$1, 0);
+      } else {
+         ciy $$5 = $$3.a($$4);
+         if (!$$5.b()) {
+            ha $$6 = $$0.a_($$1).c(a);
+            bgj $$7 = ddk.a($$0, $$1.a($$6));
+            ciy $$8;
+            if ($$7 == null) {
+               $$8 = c.dispense($$2, $$5);
             } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+               $$8 = ddk.a($$3, $$7, $$5.p().a(1), $$6.g());
+               if ($$8.b()) {
+                  $$8 = $$5.p();
+                  $$8.h(1);
+               } else {
+                  $$8 = $$5.p();
+               }
             }
 
-            $$1.a(iw.X, $$7, $$8, $$9, $$10, $$11, $$12);
+            $$3.a($$4, $$8);
          }
       }
-   }
-
-   @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      return ciw.b;
-   }
-
-   @Override
-   public boolean a(dey $$0, eaa $$1) {
-      return false;
    }
 }

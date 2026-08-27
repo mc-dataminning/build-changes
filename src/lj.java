@@ -1,76 +1,86 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public final class lj {
-   public static final lj a = a("all");
-   public static final lj b = a("texture", a);
-   public static final lj c = a("particle", b);
-   public static final lj d = a("end", a);
-   public static final lj e = a("bottom", d);
-   public static final lj f = a("top", d);
-   public static final lj g = a("front", a);
-   public static final lj h = a("back", a);
-   public static final lj i = a("side", a);
-   public static final lj j = a("north", i);
-   public static final lj k = a("south", i);
-   public static final lj l = a("east", i);
-   public static final lj m = a("west", i);
-   public static final lj n = a("up");
-   public static final lj o = a("down");
-   public static final lj p = a("cross");
-   public static final lj q = a("plant");
-   public static final lj r = a("wall", a);
-   public static final lj s = a("rail");
-   public static final lj t = a("wool");
-   public static final lj u = a("pattern");
-   public static final lj v = a("pane");
-   public static final lj w = a("edge");
-   public static final lj x = a("fan");
-   public static final lj y = a("stem");
-   public static final lj z = a("upperstem");
-   public static final lj A = a("crop");
-   public static final lj B = a("dirt");
-   public static final lj C = a("fire");
-   public static final lj D = a("lantern");
-   public static final lj E = a("platform");
-   public static final lj F = a("unsticky");
-   public static final lj G = a("torch");
-   public static final lj H = a("layer0");
-   public static final lj I = a("layer1");
-   public static final lj J = a("layer2");
-   public static final lj K = a("lit_log");
-   public static final lj L = a("candle");
-   public static final lj M = a("inside");
-   public static final lj N = a("content");
-   public static final lj O = a("inner_top");
-   public static final lj P = a("flowerbed");
-   private final String Q;
-   @Nullable
-   private final lj R;
+public class lj {
+   public static final lj.a a = a(lh::a, lg.c);
+   public static final lj.a b = a(lh::a, lg.d);
+   public static final lj.a c = a(lh::k, lg.i);
+   public static final lj.a d = a(lh::k, lg.j);
+   public static final lj.a e = a(lh::q, lg.m);
+   public static final lj.a f = a(lh::l, lg.l);
+   public static final lj.a g = a(lh::B, lg.n);
+   public static final lj.a h = a(lh::A, lg.o);
+   public static final lj.a i = a(lh::f, lg.au);
+   public static final lj.a j = a(lh::g, lg.av);
+   public static final lj.a k = a(lh::g, lg.aw);
+   public static final lj.a l = a(lh::g, lg.ax);
+   public static final lj.a m = a(lh::g, lg.ay);
+   public static final lj.a n = a(lh::i, lg.aB);
+   public static final lj.a o = a(lh::j, lg.az);
+   public static final lj.a p = a(lh::u, lg.Y);
+   public static final lj.a q = a(lh::D, lg.aQ);
+   public static final lj.a r = a(lh::a, lg.ab);
+   public static final lj.a s = a(lh::x, lg.bb);
+   public static final lj.a t = a(lh::x, lg.bc);
+   public static final lj.a u = a(lh::b, lg.bi);
+   public static final lj.a v = a(lh::n, lg.i);
+   public static final lj.a w = a(lh::n, lg.j);
+   public static final lj.a x = a(lh::r, lg.m);
+   public static final lj.a y = a(lh::s, lg.i);
+   private final lh z;
+   private final lf A;
 
-   private static lj a(String $$0) {
-      return new lj($$0, null);
+   private lj(lh $$0, lf $$1) {
+      this.z = $$0;
+      this.A = $$1;
    }
 
-   private static lj a(String $$0, lj $$1) {
-      return new lj($$0, $$1);
+   public lf a() {
+      return this.A;
    }
 
-   private lj(String $$0, @Nullable lj $$1) {
-      this.Q = $$0;
-      this.R = $$1;
+   public lh b() {
+      return this.z;
    }
 
-   public String a() {
-      return this.Q;
+   public lj a(Consumer<lh> $$0) {
+      $$0.accept(this.z);
+      return this;
    }
 
-   @Nullable
-   public lj b() {
-      return this.R;
+   public aer a(csm $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
+      return this.A.a($$0, this.z, $$1);
    }
 
-   @Override
-   public String toString() {
-      return "#" + this.Q;
+   public aer a(csm $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+      return this.A.a($$0, $$1, this.z, $$2);
+   }
+
+   private static lj.a a(Function<csm, lh> $$0, lf $$1) {
+      return $$2 -> new lj($$0.apply($$2), $$1);
+   }
+
+   public static lj a(aer $$0) {
+      return new lj(lh.b($$0), lg.c);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      lj get(csm var1);
+
+      default aer create(csm $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
+         return this.get($$0).a($$0, $$1);
+      }
+
+      default aer createWithSuffix(csm $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+         return this.get($$0).a($$0, $$1, $$2);
+      }
+
+      default lj.a updateTexture(Consumer<lh> $$0) {
+         return $$1 -> this.get($$1).a($$0);
+      }
    }
 }

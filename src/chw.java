@@ -1,25 +1,49 @@
-public class chw extends cir {
-   public chw(cir.a $$0) {
+import java.util.List;
+
+public class chw extends cit {
+   public chw(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
-      ciw $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aou.hm, aov.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      $$1.gl().a(this, 20);
-      if (!$$0.B) {
-         ccm $$4 = new ccm($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public bgq a(cli $$0) {
+      cpm $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      dfa $$3 = $$1.a_($$2);
+      if (!$$3.a(csn.co) && !$$3.a(csn.F)) {
+         return bgq.e;
+      } else {
+         gu $$4 = $$2.c();
+         if (!$$1.t($$4)) {
+            return bgq.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bii> $$8 = $$1.a_(null, new egz($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bgq.e;
+            } else {
+               if ($$1 instanceof akk) {
+                  bwz $$9 = new bwz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), djk.t, $$4);
+                  dim $$10 = ((akk)$$1).B();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-      $$1.b(ape.c.b(this));
-      if (!$$1.fR().d) {
-         $$3.h(1);
+               $$0.n().h(1);
+               return bgq.a($$1.B);
+            }
+         }
       }
+   }
 
-      return bgp.a($$3, $$0.r_());
+   @Override
+   public boolean i(ciy $$0) {
+      return true;
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dto {
+public interface dto {
+   @Nullable
+   dfa a(dkn var1, int var2, int var3, int var4);
 }

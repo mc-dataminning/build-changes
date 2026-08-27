@@ -1,48 +1,49 @@
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
-public class dc extends cv<dc.a> {
-   static final aep a = new aep("tame_animal");
+public class dc extends cu<dc.a> {
+   static final aer a = new aer("target_hit");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public dc.a a(JsonObject $$0, ba $$1, be $$2) {
-      ba $$3 = bo.a($$0, "entity", $$2);
-      return new dc.a($$1, $$3);
+   public dc.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      cj.d $$3 = cj.d.a($$0.get("signal_strength"));
+      Optional<ba> $$4 = bo.a($$0, "projectile", $$2);
+      return new dc.a($$1, $$3, $$4);
    }
 
-   public void a(akj $$0, bui $$1) {
-      ech $$2 = bo.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(akl $$0, bii $$1, ehe $$2, int $$3) {
+      ech $$4 = bo.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
    public static class a extends ar {
-      private final ba a;
+      private final cj.d a;
+      private final Optional<ba> b;
 
-      public a(ba $$0, ba $$1) {
+      public a(Optional<ba> $$0, cj.d $$1, Optional<ba> $$2) {
          super(dc.a, $$0);
          this.a = $$1;
+         this.b = $$2;
       }
 
-      public static dc.a c() {
-         return new dc.a(ba.a, ba.a);
-      }
-
-      public static dc.a a(bo $$0) {
-         return new dc.a(ba.a, bo.a($$0));
-      }
-
-      public boolean a(ech $$0) {
-         return this.a.a($$0);
+      public static dc.a a(cj.d $$0, Optional<ba> $$1) {
+         return new dc.a(Optional.empty(), $$0, $$1);
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("entity", this.a.a($$0));
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         $$0.add("signal_strength", this.a.e());
+         this.b.ifPresent($$1 -> $$0.add("projectile", $$1.a()));
+         return $$0;
+      }
+
+      public boolean a(ech $$0, ehe $$1, int $$2) {
+         return !this.a.d($$2) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }
 }

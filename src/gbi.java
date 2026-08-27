@@ -1,44 +1,31 @@
-public class gbi extends gax {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cbl p;
-   private final cdc q;
-   private final boolean r;
+public class gbi implements gbd {
+   private final fmn a;
+   private boolean b;
+   private boolean c = true;
 
-   public gbi(cbl $$0, cdc $$1, boolean $$2) {
-      super($$2 ? aou.ng : aou.nh, aov.g, gbo.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gbo.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public gbi(fmn $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.aS();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dF() || !this.p.bN() || this.p.cY() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bc()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dn().h();
-         if ($$0 >= 0.01F) {
-            this.d = aro.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      cpm $$0 = this.a.dK();
+      dfa $$1 = $$0.c(this.a.cG().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(csn.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(csn.nd) && !this.a.G_()) {
+            boolean $$2 = $$1.c(csr.a);
+            if ($$2) {
+               this.a.a(aow.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(aow.cs, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

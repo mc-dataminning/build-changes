@@ -1,66 +1,56 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class eia {
+   private final eid a;
+   private final String b;
+   private final eig c;
+   private tf d;
+   private tf e;
+   private eig.a f;
 
-public enum eia implements asf {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final asf.a<eia> t = asf.a(eia::values);
-   public static final IntFunction<eia> u = aqi.a(eia::a, values(), aqi.a.a);
-   private final int v;
-   private final String w;
-
-   private eia(int $$0, String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+   public eia(eid $$0, String $$1, eig $$2, tf $$3, eig.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.g();
+      this.f = $$4;
    }
 
-   public int a() {
-      return this.v;
+   public eid a() {
+      return this.a;
    }
 
-   @Override
-   public String c() {
-      return this.w;
+   public String b() {
+      return this.b;
    }
 
-   @Nullable
-   public static eia a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public eig c() {
+      return this.c;
+   }
+
+   public tf d() {
+      return this.d;
+   }
+
+   private tf g() {
+      return th.a((tf)this.d.e().a($$0 -> $$0.a(new tk(tk.a.a, tf.b(this.b)))));
+   }
+
+   public tf e() {
+      return this.e;
+   }
+
+   public void a(tf $$0) {
+      this.d = $$0;
+      this.e = this.g();
+      this.a.b(this);
+   }
+
+   public eig.a f() {
+      return this.f;
+   }
+
+   public void a(eig.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
    }
 }

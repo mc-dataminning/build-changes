@@ -1,31 +1,23 @@
-import java.util.UUID;
+public class esw extends esf {
+   private final eru a;
 
-public class esw extends bge {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
-
-   public esw(UUID $$0, te $$1, float $$2, bge.a $$3, bge.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public esw(eru $$0, tf $$1) {
+      super(0, 0, $$0.a($$1), 9 * 2, $$1);
+      this.a = $$0;
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
+   protected void b(erw $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p() + this.k() / 2;
+      int $$5 = this.r() + this.h() / 2;
+      tf $$6 = this.l();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = exk.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5, -8355712, false);
    }
 
    @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = aro.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return aro.i($$1, this.b, this.h);
+   protected void a(evx $$0) {
+      $$0.a(evw.a, this.l());
    }
 }

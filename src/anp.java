@@ -1,13 +1,27 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class anp<T> implements ane {
-   @Override
-   public final CompletableFuture<Void> a(ane.a $$0, ank $$1, bde $$2, bde $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+@FunctionalInterface
+public interface anp {
+   Optional<ank> getResource(aer var1);
+
+   default ank getResourceOrThrow(aer $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(ank var1, bde var2);
+   default InputStream open(aer $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, ank var2, bde var3);
+   default BufferedReader openAsReader(aer $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static anp fromMap(Map<aer, ank> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

@@ -1,42 +1,69 @@
-public record ajy(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
-
-   public cor a() {
-      return new cor(hy.a(this.a), hy.a(this.b));
-   }
-
-   public long b() {
-      return a(this.a, this.b);
-   }
-
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+public abstract class ajy extends dzp {
+   protected ajy(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
+   protected boolean a(long $$0) {
+      return $$0 == cot.a;
    }
 
    @Override
-   public int hashCode() {
-      return cor.d(this.a, this.b);
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         cot $$3 = new cot($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = cot.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
+            }
+         }
+      }
    }
 
-   public int c() {
-      return this.a;
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      cot $$4 = new cot($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = cot.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = cot.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
+         }
+      }
+
+      return $$3;
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == cot.a ? this.b($$1) : $$2 + 1;
+   }
+
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(cot.a, $$0, $$1, $$2);
    }
 }

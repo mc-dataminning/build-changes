@@ -1,62 +1,73 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+public class aao implements ux<wp> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
 
-public class aao implements uw<wo> {
-   private final boolean a;
-   private final Map<aep, ae.a> b;
-   private final Set<aep> c;
-   private final Map<aep, ag> d;
-
-   public aao(boolean $$0, Collection<ae> $$1, Set<aep> $$2, Map<aep, ag> $$3) {
-      this.a = $$0;
-      Builder<aep, ae.a> $$4 = ImmutableMap.builder();
-
-      for (ae $$5 : $$1) {
-         $$4.put($$5.j(), $$5.a());
-      }
-
-      this.b = $$4.build();
-      this.c = ImmutableSet.copyOf($$2);
-      this.d = ImmutableMap.copyOf($$3);
+   public aao(bii $$0) {
+      this.a = $$0.ah();
+      ehe $$1 = $$0.dj();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dA() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.g = $$0.aA();
    }
 
-   public aao(sh $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(sh::s, ae.a::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, sh::s);
-      this.d = $$0.a(sh::s, ag::b);
+   public aao(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, sh::a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, sh::a);
-      $$0.a(this.d, sh::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public Map<aep, ae.a> a() {
+   public int a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
    }
 
-   public Set<aep> d() {
+   public double e() {
       return this.c;
    }
 
-   public Map<aep, ag> e() {
+   public double f() {
       return this.d;
    }
 
-   public boolean f() {
-      return this.a;
+   public byte g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

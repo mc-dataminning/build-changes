@@ -1,152 +1,213 @@
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cgr extends cir {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cgr extends cit {
+   public static final String a = "BlockEntityTag";
+   public static final String b = "BlockStateTag";
+   @Deprecated
+   private final csm c;
 
-   public cgr(cir.a $$0) {
-      super($$0);
+   public cgr(csm $$0, cit.a $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public bgo a(clg $$0) {
-      cpk $$1 = $$0.q();
-      gv $$2 = $$0.a();
-      gv $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$1.c(1505, $$2, 0);
-         }
-
-         return bgo.a($$1.B);
+   public bgq a(cli $$0) {
+      bgq $$1 = this.a(new clg($$0));
+      if (!$$1.a() && this.u()) {
+         bgq $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
+         return $$2 == bgq.b ? bgq.c : $$2;
       } else {
-         dey $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$1.c(1505, $$3, 0);
-            }
+         return $$1;
+      }
+   }
 
-            return bgo.a($$1.B);
+   public bgq a(clg $$0) {
+      if (!this.e().a($$0.q().G())) {
+         return bgq.e;
+      } else if (!$$0.b()) {
+         return bgq.e;
+      } else {
+         clg $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bgq.e;
          } else {
-            return bgo.d;
+            dfa $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bgq.e;
+            } else if (!this.a($$1, $$2)) {
+               return bgq.e;
+            } else {
+               gu $$3 = $$1.a();
+               cpm $$4 = $$1.q();
+               cbn $$5 = $$1.o();
+               ciy $$6 = $$1.n();
+               dfa $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof akl) {
+                     ai.y.a((akl)$$5, $$3, $$6);
+                  }
+               }
+
+               czz $$8 = $$7.w();
+               $$4.a($$5, $$3, this.a($$7), aox.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(djk.i, $$3, djk.a.a($$5, $$7));
+               if ($$5 == null || !$$5.fR().d) {
+                  $$6.h(1);
+               }
+
+               return bgq.a($$4.B);
+            }
          }
       }
    }
 
-   public static boolean a(ciw $$0, cpk $$1, gv $$2) {
-      dey $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof csm) {
-         csm $$4 = (csm)$$3.b();
-         if ($$4.a($$1, $$2, $$3)) {
-            if ($$1 instanceof aki) {
-               if ($$4.a($$1, $$1.z, $$2, $$3)) {
-                  $$4.a((aki)$$1, $$1.z, $$2, $$3);
-               }
+   protected aov a(dfa $$0) {
+      return $$0.w().e();
+   }
 
-               $$0.h(1);
+   @Nullable
+   public clg b(clg $$0) {
+      return $$0;
+   }
+
+   protected boolean a(gu $$0, cpm $$1, @Nullable cbn $$2, ciy $$3, dfa $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected dfa c(clg $$0) {
+      dfa $$1 = this.e().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dfa a(gu $$0, cpm $$1, ciy $$2, dfa $$3) {
+      dfa $$4 = $$3;
+      qr $$5 = $$2.v();
+      if ($$5 != null) {
+         qr $$6 = $$5.p("BlockStateTag");
+         dfb<csm, dfa> $$7 = $$3.b().l();
+
+         for (String $$8 : $$6.e()) {
+            dgd<?> $$9 = $$7.a($$8);
+            if ($$9 != null) {
+               String $$10 = $$6.c($$8).m_();
+               $$4 = a($$4, $$9, $$10);
             }
-
-            return true;
          }
       }
 
-      return false;
+      if ($$4 != $$3) {
+         $$1.a($$0, $$4, 2);
+      }
+
+      return $$4;
    }
 
-   public static boolean a(ciw $$0, cpk $$1, gv $$2, @Nullable hb $$3) {
-      if ($$1.a_($$2).a(csl.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof aki)) {
-            return true;
-         } else {
-            art $$4 = $$1.y_();
+   private static <T extends Comparable<T>> dfa a(dfa $$0, dgd<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
 
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               gv $$6 = $$2;
-               dey $$7 = csl.bw.n();
+   protected boolean b(clg $$0, dfa $$1) {
+      cbn $$2 = $$0.o();
+      ehj $$3 = $$2 == null ? ehj.a() : ehj.a($$2);
+      return (!this.d() || $$1.a((cpp)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
 
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
+   protected boolean d() {
+      return true;
+   }
+
+   protected boolean a(clg $$0, dfa $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(cpm $$0, @Nullable cbn $$1, gu $$2, ciy $$3) {
+      MinecraftServer $$4 = $$0.n();
+      if ($$4 == null) {
+         return false;
+      } else {
+         qr $$5 = a($$3);
+         if ($$5 != null) {
+            dcm $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if (!$$0.B && $$6.t() && ($$1 == null || !$$1.gn())) {
+                  return false;
                }
 
-               hf<cqi> $$9 = $$1.s($$6);
-               if ($$9.a(api.ab)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = jc.f.b(apj.aq).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((csk)$$0x.a()).n()).orElse($$7);
-                     if ($$7.b(crw.a)) {
-                        $$7 = $$7.a(crw.a, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = jc.f.b(apj.ao).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((csk)$$0x.a()).n()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(apj.aq, $$0x -> $$0x.b(crw.a))) {
-                  for (int $$10 = 0; !$$7.a((cpn)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(crw.a, hb.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((cpn)$$1, $$6)) {
-                  dey $$11 = $$1.a_($$6);
-                  if ($$11.a(csl.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(csl.bw) && $$4.a(10) == 0) {
-                     ((csm)csl.bw).a((aki)$$1, $$4, $$6, $$11);
-                  }
+               qr $$7 = $$6.o();
+               qr $$8 = $$7.h();
+               $$7.a($$5);
+               if (!$$7.equals($$8)) {
+                  $$6.a($$7);
+                  $$6.e();
+                  return true;
                }
             }
-
-            $$0.h(1);
-            return true;
          }
-      } else {
+
          return false;
       }
    }
 
-   public static void a(cpl $$0, gv $$1, int $$2) {
-      if ($$2 == 0) {
-         $$2 = 15;
-      }
+   @Override
+   public String a() {
+      return this.e().f();
+   }
 
-      dey $$3 = $$0.a_($$1);
-      if (!$$3.i()) {
-         double $$4 = 0.5;
-         double $$5;
-         if ($$3.a(csl.G)) {
-            $$2 *= 3;
-            $$5 = 1.0;
-            $$4 = 3.0;
-         } else if ($$3.i($$0, $$1)) {
-            $$1 = $$1.c();
-            $$2 *= 3;
-            $$4 = 3.0;
-            $$5 = 1.0;
-         } else {
-            $$5 = $$3.j($$0, $$1).c(hb.a.b);
-         }
+   @Override
+   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.e().a($$0, $$1, $$2, $$3);
+   }
 
-         $$0.a(iw.K, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-         art $$8 = $$0.y_();
+   public csm e() {
+      return this.c;
+   }
 
-         for (int $$9 = 0; $$9 < $$2; $$9++) {
-            double $$10 = $$8.k() * 0.02;
-            double $$11 = $$8.k() * 0.02;
-            double $$12 = $$8.k() * 0.02;
-            double $$13 = 0.5 - $$4;
-            double $$14 = (double)$$1.u() + $$13 + $$8.j() * $$4 * 2.0;
-            double $$15 = (double)$$1.v() + $$8.j() * $$5;
-            double $$16 = (double)$$1.w() + $$13 + $$8.j() * $$4 * 2.0;
-            if (!$$0.a_(gv.a($$14, $$15, $$16).d()).i()) {
-               $$0.a(iw.K, $$14, $$15, $$16, $$10, $$11, $$12);
-            }
+   public void a(Map<csm, cit> $$0, cit $$1) {
+      $$0.put(this.e(), $$1);
+   }
+
+   @Override
+   public boolean ah_() {
+      return !(this.c instanceof czl);
+   }
+
+   @Override
+   public void a(byg $$0) {
+      if (this.c instanceof czl) {
+         ciy $$1 = $$0.j();
+         qr $$2 = a($$1);
+         if ($$2 != null && $$2.b("Items", 9)) {
+            qx $$3 = $$2.c("Items", 10);
+            cja.a($$0, $$3.stream().map(qr.class::cast).map(ciy::a));
          }
       }
+   }
+
+   @Nullable
+   public static qr a(ciy $$0) {
+      return $$0.b("BlockEntityTag");
+   }
+
+   public static void a(ciy $$0, dco<?> $$1, qr $$2) {
+      if ($$2.g()) {
+         $$0.c("BlockEntityTag");
+      } else {
+         dcm.a($$2, $$1);
+         $$0.a("BlockEntityTag", $$2);
+      }
+   }
+
+   @Override
+   public cdv m() {
+      return this.e().m();
    }
 }

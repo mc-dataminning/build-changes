@@ -1,32 +1,35 @@
 public class bjy {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+   private float a;
+   private float b;
+   private float c;
 
-   protected bjy(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public double a() {
+   public void a(float $$0, float $$1) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+   }
+
+   public float a() {
       return this.b;
    }
 
-   public boolean b() {
+   public float b(float $$0) {
+      return arp.i($$0, this.a, this.b);
+   }
+
+   public float b() {
       return this.c;
    }
 
-   public bjy a(boolean $$0) {
-      this.c = $$0;
-      return this;
+   public float c(float $$0) {
+      return this.c - this.b * (1.0F - $$0);
    }
 
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.d;
+   public boolean c() {
+      return this.b > 1.0E-5F;
    }
 }

@@ -1,17 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public abstract class drq {
-   public static final Codec<drq> a = jc.W.q().dispatch(drq::a, drr::a);
+public class drq<P extends drp> {
+   public static final drq<dro> a = a("mangrove_root_placer", dro.c);
+   private final Codec<P> b;
 
-   public static drz a(dey $$0) {
-      return new drz($$0);
+   private static <P extends drp> drq<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.Z, $$0, new drq<>($$1));
    }
 
-   public static drz a(csk $$0) {
-      return new drz($$0.n());
+   private drq(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   protected abstract drr<?> a();
-
-   public abstract dey a(art var1, gv var2);
+   public Codec<P> a() {
+      return this.b;
+   }
 }

@@ -1,94 +1,75 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-public class fdr<T extends big> extends fet<T> {
-   private final fhj a;
-   private final fhj[] b;
-   private final fhj f;
+public class fdr extends fdq {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String w = "shoulder_stick";
+   private static final String x = "base_plate";
+   private final fhn y;
+   private final fhn z;
+   private final fhn A;
+   private final fhn B;
 
-   public fdr(fhj $$0) {
-      this.a = $$0;
-      this.f = $$0.b("head");
-      this.b = new fhj[12];
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   public fdr(fhn $$0) {
+      super($$0);
+      this.y = $$0.b("right_body_stick");
+      this.z = $$0.b("left_body_stick");
+      this.A = $$0.b("shoulder_stick");
+      this.B = $$0.b("base_plate");
+      this.l.k = false;
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public static fht c() {
+      fhv $$0 = ffb.a(fhr.a, 0.0F);
+      fhw $$1 = $$0.a();
+      $$1.a("head", fhs.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fhp.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", fhs.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fhp.a);
+      $$1.a("right_arm", fhs.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhp.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fhs.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhp.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fhs.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fhp.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", fhs.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fhp.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", fhs.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fhp.a);
+      $$1.a("left_body_stick", fhs.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fhp.a);
+      $$1.a("shoulder_stick", fhs.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fhp.a);
+      $$1.a("base_plate", fhs.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fhp.a(0.0F, 12.0F, 0.0F));
+      return fht.a($$0, 64, 64);
    }
 
-   public static fhp b() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("head", fho.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
-      float $$2 = 0.0F;
-      fho $$3 = fho.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = aro.b($$2) * 9.0F;
-         float $$6 = -2.0F + aro.b((float)($$4 * 2) * 0.25F);
-         float $$7 = aro.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, fhl.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = aro.b($$2) * 7.0F;
-         float $$10 = 2.0F + aro.b((float)($$8 * 2) * 0.25F);
-         float $$11 = aro.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, fhl.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = aro.b($$2) * 5.0F;
-         float $$14 = 11.0F + aro.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = aro.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, fhl.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return fhp.a($$0, 64, 32);
+   public void a(bxw $$0, float $$1, float $$2, float $$3) {
+      this.B.e = 0.0F;
+      this.B.f = (float) (Math.PI / 180.0) * -arp.j($$3, $$0.N, $$0.dA());
+      this.B.g = 0.0F;
    }
 
    @Override
-   public fhj a() {
-      return this.a;
+   public void a(bxw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.o.k = $$0.q();
+      this.n.k = $$0.q();
+      this.B.k = !$$0.r();
+      this.y.e = (float) (Math.PI / 180.0) * $$0.x().b();
+      this.y.f = (float) (Math.PI / 180.0) * $$0.x().c();
+      this.y.g = (float) (Math.PI / 180.0) * $$0.x().d();
+      this.z.e = (float) (Math.PI / 180.0) * $$0.x().b();
+      this.z.f = (float) (Math.PI / 180.0) * $$0.x().c();
+      this.z.g = (float) (Math.PI / 180.0) * $$0.x().d();
+      this.A.e = (float) (Math.PI / 180.0) * $$0.x().b();
+      this.A.f = (float) (Math.PI / 180.0) * $$0.x().c();
+      this.A.g = (float) (Math.PI / 180.0) * $$0.x().d();
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
+   protected Iterable<fhn> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.b[$$7].c = -2.0F + aro.b(((float)($$7 * 2) + $$3) * 0.25F);
-         this.b[$$7].b = aro.b($$6) * 9.0F;
-         this.b[$$7].d = aro.a($$6) * 9.0F;
-         $$6++;
-      }
-
-      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         this.b[$$8].c = 2.0F + aro.b(((float)($$8 * 2) + $$3) * 0.25F);
-         this.b[$$8].b = aro.b($$6) * 7.0F;
-         this.b[$$8].d = aro.a($$6) * 7.0F;
-         $$6++;
-      }
-
-      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
-
-      for (int $$9 = 8; $$9 < 12; $$9++) {
-         this.b[$$9].c = 11.0F + aro.b(((float)$$9 * 1.5F + $$3) * 0.5F);
-         this.b[$$9].b = aro.b($$6) * 5.0F;
-         this.b[$$9].d = aro.a($$6) * 5.0F;
-         $$6++;
-      }
-
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   @Override
+   public void a(bis $$0, elg $$1) {
+      fhn $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

@@ -1,5 +1,11 @@
-public class efu extends ecr<efv> {
-   public efu(ecq<? extends efv> $$0) {
-      super($$0);
-   }
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public interface efu {
+   @Nullable
+   rk a(ech var1);
+
+   Set<eep<?>> b();
+
+   eft a();
 }

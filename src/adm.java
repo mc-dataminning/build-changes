@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record adm() implements adk {
+   public static final adm a = new adm();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adm {
+   @Override
+   public void a(si $$0) {
+   }
 }

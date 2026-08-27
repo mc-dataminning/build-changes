@@ -1,50 +1,106 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class apb<T> extends eih {
-   private final apc n;
-   private final T o;
-   private final apd<T> p;
+public class apb extends aoz {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   protected apb(apd<T> $$0, T $$1, apc $$2) {
-      super(a($$0, $$1));
-      this.p = $$0;
-      this.n = $$2;
-      this.o = $$1;
+   public int a(Collection<cmb<?>> $$0, akl $$1) {
+      List<aer> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cmb<?> $$4 : $$0) {
+         aer $$5 = $$4.e();
+         if (!this.a.contains($$5) && !$$4.ai_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            ai.f.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(yx.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public static <T> String a(apd<T> $$0, T $$1) {
-      return a(jc.y.b($$0)) + ":" + a($$0.a().b($$1));
+   public int b(Collection<cmb<?>> $$0, akl $$1) {
+      List<aer> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cmb<?> $$4 : $$0) {
+         aer $$5 = $$4.e();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(yx.a.c, $$1, $$2);
+      return $$3;
    }
 
-   private static <T> String a(@Nullable aep $$0) {
-      return $$0.toString().replace(':', '.');
+   private void a(yx.a $$0, akl $$1, List<aer> $$2) {
+      $$1.c.b(new yx($$0, $$2, Collections.emptyList(), this.a()));
    }
 
-   public apd<T> a() {
-      return this.p;
+   public qr b() {
+      qr $$0 = new qr();
+      this.a().b($$0);
+      qx $$1 = new qx();
+
+      for (aer $$2 : this.a) {
+         $$1.add(ri.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      qx $$3 = new qx();
+
+      for (aer $$4 : this.b) {
+         $$3.add(ri.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
    }
 
-   public T b() {
-      return this.o;
+   public void a(qr $$0, cmc $$1) {
+      this.a(apa.a($$0));
+      qx $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      qx $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   public String a(int $$0) {
-      return this.n.format($$0);
+   private void a(qx $$0, Consumer<cmb<?>> $$1, cmc $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            aer $$5 = new aer($$4);
+            Optional<? extends cmb<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept((cmb<?>)$$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof apb && Objects.equals(this.d(), ((apb)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
+   public void a(akl $$0) {
+      $$0.c.b(new yx(yx.a.a, this.a, this.b, this.a()));
    }
 }

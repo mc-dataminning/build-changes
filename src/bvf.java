@@ -1,30 +1,35 @@
-public abstract class bvf extends bjs {
-   private static final int bW = 100;
-   private int bX;
-
-   protected bvf(bik<? extends bvf> $$0, cpk $$1) {
+public class bvf extends buj {
+   public bvf(bim<? extends bvf> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(akj $$0) {
-      qs $$1 = new qs();
-      $$1.a("id", this.bu());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.ak();
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int gb() {
+      return 5;
    }
 
    @Override
-   public void l() {
-      this.bX++;
-      super.l();
+   public ciy b() {
+      return new ciy(cjb.pS);
    }
 
-   public boolean gi() {
-      return this.bX > 100;
+   @Override
+   protected aov r() {
+      return aow.tS;
+   }
+
+   @Override
+   protected aov h_() {
+      return aow.tT;
+   }
+
+   @Override
+   protected aov d(bhg $$0) {
+      return aow.tV;
+   }
+
+   @Override
+   protected aov ga() {
+      return aow.tU;
    }
 }

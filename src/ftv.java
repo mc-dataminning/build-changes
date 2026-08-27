@@ -1,31 +1,18 @@
-public class ftv extends ftp<buy, ffk> {
-   private static final aep a = new aep("textures/entity/parrot/parrot_red_blue.png");
-   private static final aep i = new aep("textures/entity/parrot/parrot_blue.png");
-   private static final aep j = new aep("textures/entity/parrot/parrot_green.png");
-   private static final aep k = new aep("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aep l = new aep("textures/entity/parrot/parrot_grey.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ftv(fsj.a $$0) {
-      super($$0, new ffk($$0.a(fhi.aA)), 0.3F);
+public class ftv extends ftu<bux, feh<bux>> {
+   private static final Map<bux.a, aer> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(bux.a.b, new aer("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(bux.a.a, new aer("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public ftv(fso.a $$0) {
+      super($$0, new feh<>($$0.a(fhm.aw)), 0.7F);
+      this.a(new fwr<>(this, $$0.c()));
    }
 
-   public aep a(buy $$0) {
-      return a($$0.gh());
-   }
-
-   public static aep a(buy.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(buy $$0, float $$1) {
-      float $$2 = aro.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = aro.i($$1, $$0.bY, $$0.bX);
-      return (aro.a($$2) + 1.0F) * $$3;
+   public aer a(bux $$0) {
+      return a.get($$0.q());
    }
 }

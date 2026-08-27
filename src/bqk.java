@@ -1,32 +1,65 @@
-public class bqk extends bpj {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
 
-   public bqk(biy $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class bqk extends bpu {
+   private final bja a;
+   private biy b;
+   private int c;
+
+   public bqk(bja $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
+   }
+
+   @Override
+   public boolean a() {
+      biy $$0 = this.a.j();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a && this.b > 0 && super.b();
-   }
-
-   @Override
-   public void c() {
-      this.b = 20;
-      this.a(true);
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.H().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.a(false);
+      this.b = null;
+      this.a.H().n();
+   }
+
+   @Override
+   public boolean K_() {
+      return true;
    }
 
    @Override
    public void e() {
-      this.b--;
-      super.e();
+      this.a.D().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
+      double $$1 = this.a.i(this.b.dp(), this.b.dr(), this.b.dv());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.H().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

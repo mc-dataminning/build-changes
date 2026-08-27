@@ -1,20 +1,20 @@
-public class zj implements uw<wo> {
+public class zj implements ux<wp> {
    private final int a;
 
-   public zj(dgp $$0) {
-      this.a = $$0.r();
+   public zj(dgr $$0) {
+      this.a = $$0.q();
    }
 
-   public zj(sh $$0) {
+   public zj(si $$0) {
       this.a = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.c(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 

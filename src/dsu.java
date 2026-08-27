@@ -1,26 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class dsu<P extends dst> {
-   public static final dsu<dss> a = a("straight_trunk_placer", dss.a);
-   public static final dsu<dsp> b = a("forking_trunk_placer", dsp.a);
-   public static final dsu<dsq> c = a("giant_trunk_placer", dsq.a);
-   public static final dsu<dsr> d = a("mega_jungle_trunk_placer", dsr.b);
-   public static final dsu<dsn> e = a("dark_oak_trunk_placer", dsn.a);
-   public static final dsu<dso> f = a("fancy_trunk_placer", dso.a);
-   public static final dsu<dsl> g = a("bending_trunk_placer", dsl.a);
-   public static final dsu<dsv> h = a("upwards_branching_trunk_placer", dsv.a);
-   public static final dsu<dsm> i = a("cherry_trunk_placer", dsm.a);
-   private final Codec<P> j;
+public class dsu extends dsv {
+   public static final Codec<dsu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsu::new));
 
-   private static <P extends dst> dsu<P> a(String $$0, Codec<P> $$1) {
-      return hs.a(jc.Y, $$0, new dsu<>($$1));
+   public dsu(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private dsu(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dsw<?> a() {
+      return dsw.a;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public List<drd.a> a(cps $$0, BiConsumer<gu, dfa> $$1, aru $$2, int $$3, gu $$4, dqn $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new drd.a($$4.b($$3), 0, false));
    }
 }

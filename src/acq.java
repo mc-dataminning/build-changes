@@ -1,32 +1,28 @@
-public class acq implements uw<aav> {
-   private final bgn a;
-   private final int b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public acq(bgn $$0, int $$1) {
+public class acq implements ux<aaw> {
+   private final UUID a;
+
+   public acq(UUID $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public acq(sh $$0) {
-      this.a = $$0.b(bgn.class);
-      this.b = $$0.m();
+   public acq(si $$0) {
+      this.a = $$0.o();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public bgn a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   @Nullable
+   public bii a(akk $$0) {
+      return $$0.a(this.a);
    }
 }

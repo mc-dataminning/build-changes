@@ -1,17 +1,23 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface anl extends ane {
-   @Override
-   default CompletableFuture<Void> a(ane.a $$0, ank $$1, bde $$2, bde $$3, Executor $$4, Executor $$5) {
-      return $$0.a(asn.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public class anl {
+   private static final Codec<anl> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(arv.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, anl::new)
+   );
+   public static final amn<anl> a = amn.a("filter", b);
+   private final List<arv> c;
+
+   public anl(List<arv> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   void a(ank var1);
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   }
+
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   }
 }

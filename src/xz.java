@@ -1,52 +1,143 @@
-import java.util.BitSet;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class xz implements uw<wo> {
-   private final int a;
-   private final int b;
-   private final xy c;
-   private final yd d;
+public class xz {
+   private static final int a = 2097152;
+   private final qr b;
+   private final byte[] c;
+   private final List<xz.a> d;
 
-   public xz(dhf $$0, dzq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cor $$4 = $$0.f();
-      this.a = $$4.e;
-      this.b = $$4.f;
-      this.c = new xy($$0);
-      this.d = new yd($$4, $$1, $$2, $$3);
+   public xz(dhh $$0) {
+      this.b = new qr();
+
+      for (Entry<dkj.a, dkj> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new qy($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new si(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<gu, dcm> $$2 : $$0.G().entrySet()) {
+         this.d.add(xz.a.a($$2.getValue()));
+      }
    }
 
-   public xz(sh $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = new xy($$0, this.a, this.b);
-      this.d = new yd($$0, this.a, this.b);
+   public xz(si $$0, int $$1, int $$2) {
+      this.b = $$0.p();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
+      } else {
+         int $$3 = $$0.m();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = $$0.a(xz.a::new);
+         }
+      }
    }
 
-   @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      this.c.a($$0);
-      this.d.a($$0);
+   public void a(si $$0) {
+      $$0.a((rk)this.b);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wo $$0) {
-      $$0.a(this);
+   private static int a(dhh $$0) {
+      int $$1 = 0;
+
+      for (dhi $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
    }
 
-   public int a() {
-      return this.a;
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
    }
 
-   public int d() {
+   public static void a(si $$0, dhh $$1) {
+      for (dhi $$2 : $$1.d()) {
+         $$2.c($$0);
+      }
+   }
+
+   public Consumer<xz.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
+   }
+
+   private void a(xz.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      gu.a $$5 = new gu.a();
+
+      for (xz.a $$6 : this.d) {
+         int $$7 = $$3 + hx.b($$6.a >> 4);
+         int $$8 = $$4 + hx.b($$6.a);
+         $$5.d($$7, $$6.b, $$8);
+         $$0.accept($$5, $$6.c, $$6.d);
+      }
+   }
+
+   public si a() {
+      return new si(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public qr b() {
       return this.b;
    }
 
-   public xy e() {
-      return this.c;
+   static class a {
+      final int a;
+      final int b;
+      final dco<?> c;
+      @Nullable
+      final qr d;
+
+      private a(int $$0, int $$1, dco<?> $$2, @Nullable qr $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      private a(si $$0) {
+         this.a = $$0.readByte();
+         this.b = $$0.readShort();
+         this.c = $$0.a(jb.l);
+         this.d = $$0.p();
+      }
+
+      void a(si $$0) {
+         $$0.k(this.a);
+         $$0.l(this.b);
+         $$0.a(jb.l, this.c);
+         $$0.a((rk)this.d);
+      }
+
+      static xz.a a(dcm $$0) {
+         qr $$1 = $$0.ao_();
+         gu $$2 = $$0.p();
+         int $$3 = hx.b($$2.u()) << 4 | hx.b($$2.w());
+         return new xz.a($$3, $$2.v(), $$0.u(), $$1.g() ? null : $$1);
+      }
    }
 
-   public yd f() {
-      return this.d;
+   @FunctionalInterface
+   public interface b {
+      void accept(gu var1, dco<?> var2, @Nullable qr var3);
    }
 }

@@ -1,79 +1,21 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public enum bek {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public class bek {
-   public static final bek a = new bek();
-   private final WeakHashMap<bem, Void> b = new WeakHashMap<>();
+   private final String j;
 
-   private bek() {
+   private bek(String $$0) {
+      this.j = $$0;
    }
 
-   public void a(bem $$0) {
-      this.b.put($$0, null);
-   }
-
-   public List<bej> a() {
-      Map<String, List<bej>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bl().stream()).collect(Collectors.groupingBy(bej::d));
-      return a($$0);
-   }
-
-   private static List<bej> a(Map<String, List<bej>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bej> $$2 = (List<bej>)$$0x.getValue();
-         return (bej)($$2.size() > 1 ? new bek.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bej {
-      private final List<bej> b;
-
-      a(String $$0, List<bej> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bej.c a(List<bej> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bej> $$0) {
-         for (bej $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bej> $$0) {
-         double $$1 = 0.0;
-
-         for (bej $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bek.a $$1 = (bek.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
-      }
+   public String a() {
+      return this.j;
    }
 }

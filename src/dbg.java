@@ -1,248 +1,322 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dbg extends csk implements czl {
-   public static final dfp a = dfo.J;
-   public static final dfw<dgk> b = dfo.W;
-   public static final dfw<dgk> c = dfo.X;
-   public static final dfw<dgk> d = dfo.Y;
-   public static final dfw<dgk> e = dfo.Z;
-   public static final dfp f = dfo.C;
-   private final Map<dey, ehy> g;
-   private final Map<dey, ehy> h;
-   private static final int i = 3;
-   private static final int j = 14;
-   private static final int k = 4;
-   private static final int l = 1;
-   private static final int m = 7;
-   private static final int n = 9;
-   private static final ehy D = csk.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
-   private static final ehy E = csk.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
-   private static final ehy F = csk.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
-   private static final ehy G = csk.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
-   private static final ehy H = csk.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
+public class dbg extends csm {
+   public static final dfr a = cxy.e;
+   public static final dfr b = cxy.a;
+   public static final dfr c = cxy.b;
+   public static final dfr d = cxy.c;
+   public static final dfr e = cxy.d;
+   public static final Map<ha, dfr> f = cxy.g.entrySet().stream().filter($$0 -> $$0.getKey() != ha.a).collect(ac.a());
+   protected static final float g = 1.0F;
+   private static final ehx h = csm.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final ehx i = csm.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final ehx j = csm.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final ehx k = csm.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final ehx l = csm.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private final Map<dfa, ehx> m;
 
-   public dbg(dex.d $$0) {
+   public dbg(dez.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(true)).a(c, dgk.a).a(b, dgk.a).a(d, dgk.a).a(e, dgk.a).a(f, Boolean.valueOf(false)));
-      this.g = this.a(4.0F, 3.0F, 16.0F, 0.0F, 14.0F, 16.0F);
-      this.h = this.a(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, 24.0F);
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.m = ImmutableMap.copyOf(this.C.a().stream().collect(Collectors.toMap(Function.identity(), dbg::h)));
    }
 
-   private static ehy a(ehy $$0, dgk $$1, ehy $$2, ehy $$3) {
-      if ($$1 == dgk.c) {
-         return ehv.a($$0, $$3);
+   private static ehx h(dfa $$0) {
+      ehx $$1 = ehu.a();
+      if ($$0.c(a)) {
+         $$1 = h;
+      }
+
+      if ($$0.c(b)) {
+         $$1 = ehu.a($$1, k);
+      }
+
+      if ($$0.c(d)) {
+         $$1 = ehu.a($$1, l);
+      }
+
+      if ($$0.c(c)) {
+         $$1 = ehu.a($$1, j);
+      }
+
+      if ($$0.c(e)) {
+         $$1 = ehu.a($$1, i);
+      }
+
+      return $$1.c() ? ehu.b() : $$1;
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return this.m.get($$0);
+   }
+
+   @Override
+   public boolean c(dfa $$0, cos $$1, gu $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      return this.n(this.i($$0, $$1, $$2));
+   }
+
+   private boolean n(dfa $$0) {
+      return this.o($$0) > 0;
+   }
+
+   private int o(dfa $$0) {
+      int $$1 = 0;
+
+      for (dfr $$2 : f.values()) {
+         if ($$0.c($$2)) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   private boolean b(cos $$0, gu $$1, ha $$2) {
+      if ($$2 == ha.a) {
+         return false;
       } else {
-         return $$1 == dgk.b ? ehv.a($$0, $$2) : $$0;
+         gu $$3 = $$1.a($$2);
+         if (a($$0, $$3, $$2)) {
+            return true;
+         } else if ($$2.o() == ha.a.b) {
+            return false;
+         } else {
+            dfr $$4 = f.get($$2);
+            dfa $$5 = $$0.a_($$1.c());
+            return $$5.a(this) && $$5.c($$4);
+         }
       }
    }
 
-   private Map<dey, ehy> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 8.0F - $$0;
-      float $$7 = 8.0F + $$0;
-      float $$8 = 8.0F - $$1;
-      float $$9 = 8.0F + $$1;
-      ehy $$10 = csk.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
-      ehy $$11 = csk.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
-      ehy $$12 = csk.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
-      ehy $$13 = csk.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
-      ehy $$14 = csk.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
-      ehy $$15 = csk.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
-      ehy $$16 = csk.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
-      ehy $$17 = csk.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
-      ehy $$18 = csk.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
-      Builder<dey, ehy> $$19 = ImmutableMap.builder();
+   public static boolean a(cos $$0, gu $$1, ha $$2) {
+      return cxk.a($$0, $$2, $$1, $$0.a_($$1));
+   }
 
-      for (Boolean $$20 : a.a()) {
-         for (dgk $$21 : b.a()) {
-            for (dgk $$22 : c.a()) {
-               for (dgk $$23 : e.a()) {
-                  for (dgk $$24 : d.a()) {
-                     ehy $$25 = ehv.a();
-                     $$25 = a($$25, $$21, $$14, $$18);
-                     $$25 = a($$25, $$23, $$13, $$17);
-                     $$25 = a($$25, $$22, $$11, $$15);
-                     $$25 = a($$25, $$24, $$12, $$16);
-                     if ($$20) {
-                        $$25 = ehv.a($$25, $$10);
+   private dfa i(dfa $$0, cos $$1, gu $$2) {
+      gu $$3 = $$2.c();
+      if ($$0.c(a)) {
+         $$0 = $$0.a(a, Boolean.valueOf(a($$1, $$3, ha.a)));
+      }
+
+      dfa $$4 = null;
+
+      for (ha $$5 : ha.c.a) {
+         dfr $$6 = a($$5);
+         if ($$0.c($$6)) {
+            boolean $$7 = this.b($$1, $$2, $$5);
+            if (!$$7) {
+               if ($$4 == null) {
+                  $$4 = $$1.a_($$3);
+               }
+
+               $$7 = $$4.a(this) && $$4.c($$6);
+            }
+
+            $$0 = $$0.a($$6, Boolean.valueOf($$7));
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$1 == ha.a) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         dfa $$6 = this.i($$0, $$3, $$4);
+         return !this.n($$6) ? csn.a.n() : $$6;
+      }
+   }
+
+   @Override
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.X().b(cpi.T)) {
+         if ($$3.a(4) == 0) {
+            ha $$4 = ha.b($$3);
+            gu $$5 = $$2.c();
+            if ($$4.o().d() && !$$0.c(a($$4))) {
+               if (this.a($$1, $$2)) {
+                  gu $$6 = $$2.a($$4);
+                  dfa $$7 = $$1.a_($$6);
+                  if ($$7.i()) {
+                     ha $$8 = $$4.h();
+                     ha $$9 = $$4.i();
+                     boolean $$10 = $$0.c(a($$8));
+                     boolean $$11 = $$0.c(a($$9));
+                     gu $$12 = $$6.a($$8);
+                     gu $$13 = $$6.a($$9);
+                     if ($$10 && a($$1, $$12, $$8)) {
+                        $$1.a($$6, this.n().a(a($$8), Boolean.valueOf(true)), 2);
+                     } else if ($$11 && a($$1, $$13, $$9)) {
+                        $$1.a($$6, this.n().a(a($$9), Boolean.valueOf(true)), 2);
+                     } else {
+                        ha $$14 = $$4.g();
+                        if ($$10 && $$1.t($$12) && a($$1, $$2.a($$8), $$14)) {
+                           $$1.a($$12, this.n().a(a($$14), Boolean.valueOf(true)), 2);
+                        } else if ($$11 && $$1.t($$13) && a($$1, $$2.a($$9), $$14)) {
+                           $$1.a($$13, this.n().a(a($$14), Boolean.valueOf(true)), 2);
+                        } else if ((double)$$3.i() < 0.05 && a($$1, $$6.c(), ha.b)) {
+                           $$1.a($$6, this.n().a(a, Boolean.valueOf(true)), 2);
+                        }
+                     }
+                  } else if (a($$1, $$6, $$4)) {
+                     $$1.a($$2, $$0.a(a($$4), Boolean.valueOf(true)), 2);
+                  }
+               }
+            } else {
+               if ($$4 == ha.b && $$2.v() < $$1.aj() - 1) {
+                  if (this.b($$1, $$2, $$4)) {
+                     $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 2);
+                     return;
+                  }
+
+                  if ($$1.t($$5)) {
+                     if (!this.a($$1, $$2)) {
+                        return;
                      }
 
-                     dey $$26 = this.n().a(a, $$20).a(b, $$21).a(e, $$23).a(c, $$22).a(d, $$24);
-                     $$19.put($$26.a(f, Boolean.valueOf(false)), $$25);
-                     $$19.put($$26.a(f, Boolean.valueOf(true)), $$25);
+                     dfa $$15 = $$0;
+
+                     for (ha $$16 : ha.c.a) {
+                        if ($$3.h() || !a($$1, $$5.a($$16), $$16)) {
+                           $$15 = $$15.a(a($$16), Boolean.valueOf(false));
+                        }
+                     }
+
+                     if (this.p($$15)) {
+                        $$1.a($$5, $$15, 2);
+                     }
+
+                     return;
+                  }
+               }
+
+               if ($$2.v() > $$1.C_()) {
+                  gu $$17 = $$2.d();
+                  dfa $$18 = $$1.a_($$17);
+                  if ($$18.i() || $$18.a(this)) {
+                     dfa $$19 = $$18.i() ? this.n() : $$18;
+                     dfa $$20 = this.a($$0, $$19, $$3);
+                     if ($$19 != $$20 && this.p($$20)) {
+                        $$1.a($$17, $$20, 2);
+                     }
                   }
                }
             }
          }
       }
-
-      return $$19.build();
    }
 
-   @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return this.g.get($$0);
-   }
-
-   @Override
-   public ehy c(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return this.h.get($$0);
-   }
-
-   @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
-      return false;
-   }
-
-   private boolean a(dey $$0, boolean $$1, hb $$2) {
-      csk $$3 = $$0.b();
-      boolean $$4 = $$3 instanceof cvf && cvf.a($$0, $$2);
-      return $$0.a(apj.L) || !j($$0) && $$1 || $$3 instanceof cwi || $$4;
-   }
-
-   @Override
-   public dey a(cle $$0) {
-      cpn $$1 = $$0.q();
-      gv $$2 = $$0.a();
-      eab $$3 = $$0.q().b_($$0.a());
-      gv $$4 = $$2.e();
-      gv $$5 = $$2.h();
-      gv $$6 = $$2.f();
-      gv $$7 = $$2.g();
-      gv $$8 = $$2.c();
-      dey $$9 = $$1.a_($$4);
-      dey $$10 = $$1.a_($$5);
-      dey $$11 = $$1.a_($$6);
-      dey $$12 = $$1.a_($$7);
-      dey $$13 = $$1.a_($$8);
-      boolean $$14 = this.a($$9, $$9.d($$1, $$4, hb.d), hb.d);
-      boolean $$15 = this.a($$10, $$10.d($$1, $$5, hb.e), hb.e);
-      boolean $$16 = this.a($$11, $$11.d($$1, $$6, hb.c), hb.c);
-      boolean $$17 = this.a($$12, $$12.d($$1, $$7, hb.f), hb.f);
-      dey $$18 = this.n().a(f, Boolean.valueOf($$3.a() == eac.c));
-      return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
-   }
-
-   @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, eac.c, eac.c.a($$3));
-      }
-
-      if ($$1 == hb.a) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$1 == hb.b ? this.a($$3, $$0, $$5, $$2) : this.a($$3, $$4, $$0, $$5, $$2, $$1);
-      }
-   }
-
-   private static boolean a(dey $$0, dgb<dgk> $$1) {
-      return $$0.c($$1) != dgk.a;
-   }
-
-   private static boolean a(ehy $$0, ehy $$1) {
-      return !ehv.c($$1, $$0, ehj.e);
-   }
-
-   private dey a(cpn $$0, dey $$1, gv $$2, dey $$3) {
-      boolean $$4 = a($$1, c);
-      boolean $$5 = a($$1, b);
-      boolean $$6 = a($$1, d);
-      boolean $$7 = a($$1, e);
-      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private dey a(cpn $$0, gv $$1, dey $$2, gv $$3, dey $$4, hb $$5) {
-      hb $$6 = $$5.g();
-      boolean $$7 = $$5 == hb.c ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, c);
-      boolean $$8 = $$5 == hb.f ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, b);
-      boolean $$9 = $$5 == hb.d ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, d);
-      boolean $$10 = $$5 == hb.e ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, e);
-      gv $$11 = $$1.c();
-      dey $$12 = $$0.a_($$11);
-      return this.a($$0, $$2, $$11, $$12, $$7, $$8, $$9, $$10);
-   }
-
-   private dey a(cpn $$0, dey $$1, gv $$2, dey $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
-      ehy $$8 = $$3.k($$0, $$2).a(hb.a);
-      dey $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
-      return $$9.a(a, Boolean.valueOf(this.a($$9, $$3, $$8)));
-   }
-
-   private boolean a(dey $$0, dey $$1, ehy $$2) {
-      boolean $$3 = $$1.b() instanceof dbg && $$1.c(a);
-      if ($$3) {
-         return true;
-      } else {
-         dgk $$4 = $$0.c(c);
-         dgk $$5 = $$0.c(d);
-         dgk $$6 = $$0.c(b);
-         dgk $$7 = $$0.c(e);
-         boolean $$8 = $$5 == dgk.a;
-         boolean $$9 = $$7 == dgk.a;
-         boolean $$10 = $$6 == dgk.a;
-         boolean $$11 = $$4 == dgk.a;
-         boolean $$12 = $$11 && $$8 && $$9 && $$10 || $$11 != $$8 || $$9 != $$10;
-         if ($$12) {
-            return true;
-         } else {
-            boolean $$13 = $$4 == dgk.c && $$5 == dgk.c || $$6 == dgk.c && $$7 == dgk.c;
-            return $$13 ? false : $$1.a(apj.aN) || a($$2, D);
+   private dfa a(dfa $$0, dfa $$1, aru $$2) {
+      for (ha $$3 : ha.c.a) {
+         if ($$2.h()) {
+            dfr $$4 = a($$3);
+            if ($$0.c($$4)) {
+               $$1 = $$1.a($$4, Boolean.valueOf(true));
+            }
          }
       }
+
+      return $$1;
    }
 
-   private dey a(dey $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, ehy $$5) {
-      return $$0.a(c, this.a($$1, $$5, E)).a(b, this.a($$2, $$5, H)).a(d, this.a($$3, $$5, F)).a(e, this.a($$4, $$5, G));
+   private boolean p(dfa $$0) {
+      return $$0.c(b) || $$0.c(c) || $$0.c(d) || $$0.c(e);
    }
 
-   private dgk a(boolean $$0, ehy $$1, ehy $$2) {
-      if ($$0) {
-         return a($$1, $$2) ? dgk.c : dgk.b;
-      } else {
-         return dgk.a;
+   private boolean a(cos $$0, gu $$1) {
+      int $$2 = 4;
+      Iterable<gu> $$3 = gu.b($$1.u() - 4, $$1.v() - 1, $$1.w() - 4, $$1.u() + 4, $$1.v() + 1, $$1.w() + 4);
+      int $$4 = 5;
+
+      for (gu $$5 : $$3) {
+         if ($$0.a_($$5).a(this)) {
+            if (--$$4 <= 0) {
+               return false;
+            }
+         }
       }
+
+      return true;
    }
 
    @Override
-   public eab c_(dey $$0) {
-      return $$0.c(f) ? eac.c.a(false) : super.c_($$0);
+   public boolean a(dfa $$0, clg $$1) {
+      dfa $$2 = $$1.q().a_($$1.a());
+      return $$2.a(this) ? this.o($$2) < f.size() : super.a($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public dfa a(clg $$0) {
+      dfa $$1 = $$0.q().a_($$0.a());
+      boolean $$2 = $$1.a(this);
+      dfa $$3 = $$2 ? $$1 : this.n();
+
+      for (ha $$4 : $$0.f()) {
+         if ($$4 != ha.a) {
+            dfr $$5 = a($$4);
+            boolean $$6 = $$2 && $$1.c($$5);
+            if (!$$6 && this.b($$0.q(), $$0.a(), $$4)) {
+               return $$3.a($$5, Boolean.valueOf(true));
+            }
+         }
+      }
+
+      return $$2 ? $$3 : null;
    }
 
    @Override
-   public boolean c(dey $$0, coq $$1, gv $$2) {
-      return !$$0.c(f);
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a, b, c, d, e);
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a, c, b, e, d, f);
-   }
-
-   @Override
-   public dey a(dey $$0, cyw $$1) {
+   public dfa a(dfa $$0, cyy $$1) {
       switch ($$1) {
          case c:
-            return $$0.a(c, $$0.c(d)).a(b, $$0.c(e)).a(d, $$0.c(c)).a(e, $$0.c(b));
+            return $$0.a(b, $$0.c(d)).a(c, $$0.c(e)).a(d, $$0.c(b)).a(e, $$0.c(c));
          case d:
-            return $$0.a(c, $$0.c(b)).a(b, $$0.c(d)).a(d, $$0.c(e)).a(e, $$0.c(c));
+            return $$0.a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(e)).a(e, $$0.c(b));
          case b:
-            return $$0.a(c, $$0.c(e)).a(b, $$0.c(c)).a(d, $$0.c(b)).a(e, $$0.c(d));
+            return $$0.a(b, $$0.c(e)).a(c, $$0.c(b)).a(d, $$0.c(c)).a(e, $$0.c(d));
          default:
             return $$0;
       }
    }
 
    @Override
-   public dey a(dey $$0, cxf $$1) {
+   public dfa a(dfa $$0, cxh $$1) {
       switch ($$1) {
          case b:
-            return $$0.a(c, $$0.c(d)).a(d, $$0.c(c));
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
          case c:
-            return $$0.a(b, $$0.c(e)).a(e, $$0.c(b));
+            return $$0.a(c, $$0.c(e)).a(e, $$0.c(c));
          default:
             return super.a($$0, $$1);
       }
+   }
+
+   public static dfr a(ha $$0) {
+      return f.get($$0);
    }
 }

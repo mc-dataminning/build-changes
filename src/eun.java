@@ -1,16 +1,37 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
+public interface eun {
+   Object b = new Object();
+   int c = 32;
 
-public class eun implements ejk {
-   @Nullable
-   @Override
-   public ejj a(int $$0) {
-      return euw.b;
+   eun.a a(erw var1, euo var2, long var3);
+
+   default Object d() {
+      return b;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
+   default int a() {
+      return 160;
+   }
+
+   default int b() {
+      return 32;
+   }
+
+   default int e() {
+      return arp.e(this.b(), 32);
+   }
+
+   public static enum a {
+      a(aow.yw),
+      b(aow.yx);
+
+      private final aov c;
+
+      private a(aov $$0) {
+         this.c = $$0;
+      }
+
+      public void a(gcx $$0) {
+         $$0.a(gbo.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

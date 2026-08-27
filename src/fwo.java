@@ -1,25 +1,24 @@
-public class fwo<T extends cbl> extends fwr<T, ffp<T>> {
-   private final ffk a;
+public class fwo extends fww<buw, ffd<buw>> {
+   private final foe a;
 
-   public fwo(fue<T, ffp<T>> $$0, fhf $$1) {
+   public fwo(fuj<buw, ffd<buw>> $$0, foe $$1) {
       super($$0);
-      this.a = new ffk($$1.a(fhi.aA));
+      this.a = $$1;
    }
 
-   public void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(elh $$0, fng $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qs $$9 = $$8 ? $$3.gh() : $$3.gi();
-      bik.a($$9.l("id")).filter($$0x -> $$0x == bik.at).ifPresent($$10 -> {
+   public void a(elg $$0, fnl $$1, int $$2, buw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fZ() != 0) {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
-         buy.b $$11 = buy.b.a($$9.h("Variant"));
-         ell $$12 = $$1.getBuffer(this.a.a(ftv.a($$11)));
-         this.a.a($$0, $$12, $$2, fxx.d, $$4, $$5, $$6, $$7, $$3.ah);
+         fhn $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(csn.bT.n(), $$0, $$1, $$2, fyc.d);
          $$0.b();
-      });
+      }
    }
 }

@@ -1,80 +1,264 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.List;
 
 public class dwo {
-   public static final int a = 90;
-   static final aep b = new aep("igloo/top");
-   private static final aep c = new aep("igloo/middle");
-   private static final aep d = new aep("igloo/bottom");
-   static final Map<aep, gv> e = ImmutableMap.of(b, new gv(3, 5, 5), c, new gv(1, 3, 1), d, new gv(3, 6, 7));
-   static final Map<aep, gv> f = ImmutableMap.of(b, gv.b, c, new gv(2, -3, 4), d, new gv(0, -3, -2));
-
-   public static void a(dyr $$0, gv $$1, cyw $$2, dvc $$3, art $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new dwo.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new dwo.a($$0, c, $$1, $$2, $$6 * 3));
-         }
+   private static final int a = 8;
+   static final dwo.b b = new dwo.b() {
+      @Override
+      public void a() {
       }
 
-      $$3.a(new dwo.a($$0, b, $$1, $$2, 0));
+      @Override
+      public boolean a(dyt $$0, int $$1, dwo.a $$2, gu $$3, List<dvd> $$4, aru $$5) {
+         if ($$1 > 8) {
+            return false;
+         } else {
+            cyy $$6 = $$2.e().d();
+            dwo.a $$7 = dwo.a($$4, dwo.a($$0, $$2, $$3, "base_floor", $$6, true));
+            int $$8 = $$5.a(3);
+            if ($$8 == 0) {
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 4, -1), "base_roof", $$6, true));
+            } else if ($$8 == 1) {
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 8, -1), "second_roof", $$6, false));
+               dwo.a($$0, dwo.d, $$1 + 1, $$7, null, $$4, $$5);
+            } else if ($$8 == 2) {
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 4, -1), "third_floor_2", $$6, false));
+               $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 8, -1), "third_roof", $$6, true));
+               dwo.a($$0, dwo.d, $$1 + 1, $$7, null, $$4, $$5);
+            }
+
+            return true;
+         }
+      }
+   };
+   static final List<aso<cyy, gu>> c = Lists.newArrayList(
+      new aso[]{new aso<>(cyy.a, new gu(1, -1, 0)), new aso<>(cyy.b, new gu(6, -1, 1)), new aso<>(cyy.d, new gu(0, -1, 5)), new aso<>(cyy.c, new gu(5, -1, 6))}
+   );
+   static final dwo.b d = new dwo.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(dyt $$0, int $$1, dwo.a $$2, gu $$3, List<dvd> $$4, aru $$5) {
+         cyy $$6 = $$2.e().d();
+         dwo.a $$7 = dwo.a($$4, dwo.a($$0, $$2, new gu(3 + $$5.a(2), -3, 3 + $$5.a(2)), "tower_base", $$6, true));
+         $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(0, 7, 0), "tower_piece", $$6, true));
+         dwo.a $$8 = $$5.a(3) == 0 ? $$7 : null;
+         int $$9 = 1 + $$5.a(3);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(0, 4, 0), "tower_piece", $$6, true));
+            if ($$10 < $$9 - 1 && $$5.h()) {
+               $$8 = $$7;
+            }
+         }
+
+         if ($$8 != null) {
+            for (aso<cyy, gu> $$11 : dwo.c) {
+               if ($$5.h()) {
+                  dwo.a $$12 = dwo.a($$4, dwo.a($$0, $$8, $$11.b(), "bridge_end", $$6.a($$11.a()), true));
+                  dwo.a($$0, dwo.e, $$1 + 1, $$12, null, $$4, $$5);
+               }
+            }
+
+            $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 4, -1), "tower_top", $$6, true));
+         } else {
+            if ($$1 != 7) {
+               return dwo.a($$0, dwo.g, $$1 + 1, $$7, null, $$4, $$5);
+            }
+
+            $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-1, 4, -1), "tower_top", $$6, true));
+         }
+
+         return true;
+      }
+   };
+   static final dwo.b e = new dwo.b() {
+      public boolean a;
+
+      @Override
+      public void a() {
+         this.a = false;
+      }
+
+      @Override
+      public boolean a(dyt $$0, int $$1, dwo.a $$2, gu $$3, List<dvd> $$4, aru $$5) {
+         cyy $$6 = $$2.e().d();
+         int $$7 = $$5.a(4) + 1;
+         dwo.a $$8 = dwo.a($$4, dwo.a($$0, $$2, new gu(0, 0, -4), "bridge_piece", $$6, true));
+         $$8.a(-1);
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < $$7; $$10++) {
+            if ($$5.h()) {
+               $$8 = dwo.a($$4, dwo.a($$0, $$8, new gu(0, $$9, -4), "bridge_piece", $$6, true));
+               $$9 = 0;
+            } else {
+               if ($$5.h()) {
+                  $$8 = dwo.a($$4, dwo.a($$0, $$8, new gu(0, $$9, -4), "bridge_steep_stairs", $$6, true));
+               } else {
+                  $$8 = dwo.a($$4, dwo.a($$0, $$8, new gu(0, $$9, -8), "bridge_gentle_stairs", $$6, true));
+               }
+
+               $$9 = 4;
+            }
+         }
+
+         if (!this.a && $$5.a(10 - $$1) == 0) {
+            dwo.a($$4, dwo.a($$0, $$8, new gu(-8 + $$5.a(8), $$9, -70 + $$5.a(10)), "ship", $$6, true));
+            this.a = true;
+         } else if (!dwo.a($$0, dwo.b, $$1 + 1, $$8, new gu(-3, $$9 + 1, -11), $$4, $$5)) {
+            return false;
+         }
+
+         $$8 = dwo.a($$4, dwo.a($$0, $$8, new gu(4, $$9, 0), "bridge_end", $$6.a(cyy.c), true));
+         $$8.a(-1);
+         return true;
+      }
+   };
+   static final List<aso<cyy, gu>> f = Lists.newArrayList(
+      new aso[]{
+         new aso<>(cyy.a, new gu(4, -1, 0)), new aso<>(cyy.b, new gu(12, -1, 4)), new aso<>(cyy.d, new gu(0, -1, 8)), new aso<>(cyy.c, new gu(8, -1, 12))
+      }
+   );
+   static final dwo.b g = new dwo.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(dyt $$0, int $$1, dwo.a $$2, gu $$3, List<dvd> $$4, aru $$5) {
+         cyy $$6 = $$2.e().d();
+         dwo.a $$7 = dwo.a($$4, dwo.a($$0, $$2, new gu(-3, 4, -3), "fat_tower_base", $$6, true));
+         $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(0, 4, 0), "fat_tower_middle", $$6, true));
+
+         for (int $$8 = 0; $$8 < 2 && $$5.a(3) != 0; $$8++) {
+            $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(0, 8, 0), "fat_tower_middle", $$6, true));
+
+            for (aso<cyy, gu> $$9 : dwo.f) {
+               if ($$5.h()) {
+                  dwo.a $$10 = dwo.a($$4, dwo.a($$0, $$7, $$9.b(), "bridge_end", $$6.a($$9.a()), true));
+                  dwo.a($$0, dwo.e, $$1 + 1, $$10, null, $$4, $$5);
+               }
+            }
+         }
+
+         $$7 = dwo.a($$4, dwo.a($$0, $$7, new gu(-2, 8, -2), "fat_tower_top", $$6, true));
+         return true;
+      }
+   };
+
+   static dwo.a a(dyt $$0, dwo.a $$1, gu $$2, String $$3, cyy $$4, boolean $$5) {
+      dwo.a $$6 = new dwo.a($$0, $$3, $$1.d(), $$4, $$5);
+      gu $$7 = $$1.c().a($$1.e(), $$2, $$6.e(), gu.b);
+      $$6.a($$7.u(), $$7.v(), $$7.w());
+      return $$6;
    }
 
-   public static class a extends dvh {
-      public a(dyr $$0, aep $$1, gv $$2, cyw $$3, int $$4) {
-         super(dvo.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+   public static void a(dyt $$0, gu $$1, cyy $$2, List<dvd> $$3, aru $$4) {
+      g.a();
+      b.a();
+      e.a();
+      d.a();
+      dwo.a $$5 = a($$3, new dwo.a($$0, "base_floor", $$1, $$2, true));
+      $$5 = a($$3, a($$0, $$5, new gu(-1, 0, -1), "second_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new gu(-1, 4, -1), "third_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new gu(-1, 8, -1), "third_roof", $$2, true));
+      a($$0, d, 1, $$5, null, $$3, $$4);
+   }
+
+   static dwo.a a(List<dvd> $$0, dwo.a $$1) {
+      $$0.add($$1);
+      return $$1;
+   }
+
+   static boolean a(dyt $$0, dwo.b $$1, int $$2, dwo.a $$3, gu $$4, List<dvd> $$5, aru $$6) {
+      if ($$2 > 8) {
+         return false;
+      } else {
+         List<dvd> $$7 = Lists.newArrayList();
+         if ($$1.a($$0, $$2, $$3, $$4, $$7, $$6)) {
+            boolean $$8 = false;
+            int $$9 = $$6.f();
+
+            for (dvd $$10 : $$7) {
+               $$10.a($$9);
+               dvd $$11 = dvd.a($$5, $$10.f());
+               if ($$11 != null && $$11.g() != $$3.g()) {
+                  $$8 = true;
+                  break;
+               }
+            }
+
+            if (!$$8) {
+               $$5.addAll($$7);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public static class a extends dvj {
+      public a(dyt $$0, String $$1, gu $$2, cyy $$3, boolean $$4) {
+         super(dvq.Y, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
       }
 
-      public a(dyr $$0, qs $$1) {
-         super(dvo.I, $$1, $$0, $$1x -> a(cyw.valueOf($$1.l("Rot")), $$1x));
+      public a(dyt $$0, qr $$1) {
+         super(dvq.Y, $$1, $$0, $$1x -> a($$1.q("OW"), cyy.valueOf($$1.l("Rot"))));
       }
 
-      private static dym a(cyw $$0, aep $$1) {
-         return new dym().a($$0).a(cxf.a).a(dwo.e.get($$1)).a(dxs.b);
-      }
-
-      private static gv a(aep $$0, gv $$1, int $$2) {
-         return $$1.a(dwo.f.get($$0)).c($$2);
+      private static dyo a(boolean $$0, cyy $$1) {
+         dxu $$2 = $$0 ? dxu.b : dxu.d;
+         return new dyo().a(true).a($$2).a($$1);
       }
 
       @Override
-      protected void a(dvn $$0, qs $$1) {
+      protected aer b() {
+         return a(this.a);
+      }
+
+      private static aer a(String $$0) {
+         return new aer("end_city/" + $$0);
+      }
+
+      @Override
+      protected void a(dvp $$0, qr $$1) {
          super.a($$0, $$1);
          $$1.a("Rot", this.c.d().name());
+         $$1.a("OW", this.c.i().get(0) == dxu.b);
       }
 
       @Override
-      protected void a(String $$0, gv $$1, cpz $$2, art $$3, dup $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, csl.a.n(), 3);
-            dck $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dcr) {
-               ((dcr)$$5).a(ecd.C, $$3.g());
+      protected void a(String $$0, gu $$1, cqb $$2, aru $$3, dur $$4) {
+         if ($$0.startsWith("Chest")) {
+            gu $$5 = $$1.d();
+            if ($$4.b($$5)) {
+               ddp.a($$2, $$3, $$5, ecf.c);
+            }
+         } else if ($$4.b($$1) && cpm.k($$1)) {
+            if ($$0.startsWith("Sentry")) {
+               bzh $$6 = bim.aG.a((cpm)$$2.C());
+               if ($$6 != null) {
+                  $$6.e((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5);
+                  $$2.b($$6);
+               }
+            } else if ($$0.startsWith("Elytra")) {
+               bxz $$7 = new bxz($$2.C(), $$1, this.c.d().a(ha.d));
+               $$7.a(new ciy(cjb.nh), false);
+               $$2.b($$7);
             }
          }
       }
+   }
 
-      @Override
-      public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, cor $$5, gv $$6) {
-         aep $$7 = new aep(this.a);
-         dym $$8 = a(this.c.d(), $$7);
-         gv $$9 = dwo.f.get($$7);
-         gv $$10 = this.d.a((ia)dyq.a($$8, new gv(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(dkh.a.a, $$10.u(), $$10.w());
-         gv $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(dwo.b)) {
-            gv $$13 = this.d.a((ia)dyq.a($$8, new gv(3, 0, 5)));
-            dey $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(csl.cO)) {
-               $$0.a($$13, csl.dP.n(), 3);
-            }
-         }
+   interface b {
+      void a();
 
-         this.d = $$12;
-      }
+      boolean a(dyt var1, int var2, dwo.a var3, gu var4, List<dvd> var5, aru var6);
    }
 }

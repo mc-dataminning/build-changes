@@ -1,31 +1,29 @@
-public class gbk extends gax {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final bwu p;
+public class gbk extends gbc {
+   private final bii n;
 
-   public gbk(bwu $$0) {
-      super(aou.wH, aov.g, gbo.t());
-      this.p = $$0;
-      this.k = gbo.a.b;
-      this.i = false;
-      this.j = 0;
+   public gbk(aov $$0, aox $$1, float $$2, float $$3, bii $$4, long $$5) {
+      super($$0, $$1, aru.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dp());
+      this.g = (double)((float)this.n.dr());
+      this.h = (double)((float)this.n.dv());
    }
 
    @Override
    public boolean s() {
-      return !this.p.aS();
+      return !this.n.aS();
    }
 
    @Override
    public void q() {
-      if (!this.p.dF() && this.p.j() == null && this.p.gf()) {
-         this.f = (double)((float)this.p.dp());
-         this.g = (double)((float)this.p.dr());
-         this.h = (double)((float)this.p.dv());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dF()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dp());
+         this.g = (double)((float)this.n.dr());
+         this.h = (double)((float)this.n.dv());
       }
    }
 }

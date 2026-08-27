@@ -1,95 +1,162 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
-import java.util.function.IntConsumer;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
 public class agt {
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("commands.function.error.argument_not_compound", $$0));
-   public static final SuggestionProvider<ds> a = ($$0, $$1) -> {
-      afd $$2 = ((ds)$$0.getSource()).l().aA();
-      dv.a($$2.f(), $$1, "#");
-      return dv.a($$2.e(), $$1);
-   };
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tf.a("commands.fill.toobig", $$0, $$1));
+   static final fd b = new fd(csn.a.n(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tf.c("commands.fill.failed"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralArgumentBuilder<ds> $$1 = dt.a("with");
-
-      for (aja.c $$2 : aja.c) {
-         $$2.a(
-            $$1,
-            $$1x -> $$1x.executes($$1xx -> a((ds)$$1xx.getSource(), fu.a($$1xx, "name"), $$2.a($$1xx).a()))
-                  .then(dt.a("path", ei.a()).executes($$1xx -> a((ds)$$1xx.getSource(), fu.a($$1xx, "name"), a(ei.a($$1xx, "path"), $$2.a($$1xx)))))
-         );
-      }
-
+   public static void a(CommandDispatcher<dr> $$0, dl $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("function").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("fill").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("name", fu.a())
-                        .suggests(a)
-                        .executes($$0x -> a((ds)$$0x.getSource(), fu.a($$0x, "name"), null)))
-                     .then(dt.a("arguments", ea.a()).executes($$0x -> a((ds)$$0x.getSource(), fu.a($$0x, "name"), ea.a($$0x, "arguments")))))
-                  .then($$1)
+               ds.a("from", fi.a())
+                  .then(
+                     ds.a("to", fi.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a(
+                                                "block", ff.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ds.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dr)$$0x.getSource(),
+                                                            dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                            ff.a($$0x, "block"),
+                                                            agt.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ds.a("filter", fe.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dr)$$0x.getSource(),
+                                                               dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                               ff.a($$0x, "block"),
+                                                               agt.a.a,
+                                                               fe.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          ds.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dr)$$0x.getSource(),
+                                                      dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                      ff.a($$0x, "block"),
+                                                      agt.a.a,
+                                                      $$0xx -> $$0xx.c().t($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ds.a("outline")
+                                          .executes(
+                                             $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    ds.a("hollow")
+                                       .executes(
+                                          $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 ds.a("destroy")
+                                    .executes($$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.d, null))
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static qs a(ei.g $$0, aiz $$1) throws CommandSyntaxException {
-      rl $$2 = aja.a($$0, $$1);
-      if ($$2 instanceof qs) {
-         return (qs)$$2;
+   private static int a(dr $$0, dur $$1, fd $$2, agt.a $$3, @Nullable Predicate<dfe> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.c() * $$1.d() * $$1.e();
+      int $$6 = $$0.e().X().c(cpi.x);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         throw b.create($$2.c().a());
-      }
-   }
+         List<gu> $$7 = Lists.newArrayList();
+         akk $$8 = $$0.e();
+         int $$9 = 0;
 
-   private static int a(ds $$0, Collection<dn> $$1, @Nullable qs $$2) {
-      int $$3 = 0;
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (dn $$6 : $$1) {
-         try {
-            agt.a $$7 = a($$0, $$6, $$2);
-            $$3 += $$7.a();
-            $$4 |= $$7.b();
-            $$5 = true;
-         } catch (du var9) {
-            $$0.b(var9.a());
-         }
-      }
-
-      if ($$5) {
-         int $$9 = $$3;
-         if ($$1.size() == 1) {
-            if ($$4) {
-               $$0.a(() -> te.a("commands.function.success.single.result", $$9, $$1.iterator().next().a()), true);
-            } else {
-               $$0.a(() -> te.a("commands.function.success.single", $$9, $$1.iterator().next().a()), true);
+         for (gu $$10 : gu.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
+            if ($$4 == null || $$4.test(new dfe($$8, $$10, true))) {
+               fd $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dcm $$12 = $$8.c_($$10);
+                  bgh.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
             }
-         } else if ($$4) {
-            $$0.a(() -> te.a("commands.function.success.multiple.result", $$1.size()), true);
+         }
+
+         for (gu $$13 : $$7) {
+            csm $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
          } else {
-            $$0.a(() -> te.a("commands.function.success.multiple", $$9, $$1.size()), true);
+            int $$15 = $$9;
+            $$0.a(() -> tf.a("commands.fill.success", $$15), true);
+            return $$9;
          }
       }
-
-      return $$3;
    }
 
-   public static agt.a a(ds $$0, dn $$1, @Nullable qs $$2) throws du {
-      MutableObject<agt.a> $$3 = new MutableObject();
-      int $$4 = $$0.l().aA().a($$1, $$0.a().b(2).a((IntConsumer)($$1x -> $$3.setValue(new agt.a($$1x, true)))), null, $$2);
-      agt.a $$5 = (agt.a)$$3.getValue();
-      return $$5 != null ? $$5 : new agt.a($$4, false);
-   }
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? agt.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
 
-   public static record a(int a, boolean b) {
+      public final aie.a e;
+
+      private a(aie.a $$0) {
+         this.e = $$0;
+      }
    }
 }

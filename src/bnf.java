@@ -1,23 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnf {
-   public static bkp<bjf> a(bry<he> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return boa.a(
-         (Function<boa.b<bjf>, ? extends App<boa.c<bjf>, bod<bjf>>>)($$5 -> $$5.group($$5.a(bry.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  he $$10 = $$5.b($$6);
-                  if ($$7.ac() != $$10.a() || !$$10.b().a($$8.di(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new bsb($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
+   public static bkr<biy> a() {
+      return boc.a(
+         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.b(bsa.aa))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof biy $$1xx ? $$1xx : null)
+                           .filter(biy::eu)
+                           .filter($$1xx -> $$1xx.ag() != bim.bt || $$2.X().b(cpi.J))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
       );
    }
 }

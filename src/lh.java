@@ -1,162 +1,346 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class lh {
-   public static final lg a = a("cube", lj.c, lj.j, lj.k, lj.l, lj.m, lj.n, lj.o);
-   public static final lg b = a("cube_directional", lj.c, lj.j, lj.k, lj.l, lj.m, lj.n, lj.o);
-   public static final lg c = a("cube_all", lj.a);
-   public static final lg d = a("cube_mirrored_all", "_mirrored", lj.a);
-   public static final lg e = a("cube_north_west_mirrored_all", "_north_west_mirrored", lj.a);
-   public static final lg f = a("cube_column_uv_locked_x", "_x", lj.d, lj.i);
-   public static final lg g = a("cube_column_uv_locked_y", "_y", lj.d, lj.i);
-   public static final lg h = a("cube_column_uv_locked_z", "_z", lj.d, lj.i);
-   public static final lg i = a("cube_column", lj.d, lj.i);
-   public static final lg j = a("cube_column_horizontal", "_horizontal", lj.d, lj.i);
-   public static final lg k = a("cube_column_mirrored", "_mirrored", lj.d, lj.i);
-   public static final lg l = a("cube_top", lj.f, lj.i);
-   public static final lg m = a("cube_bottom_top", lj.f, lj.e, lj.i);
-   public static final lg n = a("orientable", lj.f, lj.g, lj.i);
-   public static final lg o = a("orientable_with_bottom", lj.f, lj.e, lj.i, lj.g);
-   public static final lg p = a("orientable_vertical", "_vertical", lj.g, lj.i);
-   public static final lg q = a("button", lj.b);
-   public static final lg r = a("button_pressed", "_pressed", lj.b);
-   public static final lg s = a("button_inventory", "_inventory", lj.b);
-   public static final lg t = a("door_bottom_left", "_bottom_left", lj.f, lj.e);
-   public static final lg u = a("door_bottom_left_open", "_bottom_left_open", lj.f, lj.e);
-   public static final lg v = a("door_bottom_right", "_bottom_right", lj.f, lj.e);
-   public static final lg w = a("door_bottom_right_open", "_bottom_right_open", lj.f, lj.e);
-   public static final lg x = a("door_top_left", "_top_left", lj.f, lj.e);
-   public static final lg y = a("door_top_left_open", "_top_left_open", lj.f, lj.e);
-   public static final lg z = a("door_top_right", "_top_right", lj.f, lj.e);
-   public static final lg A = a("door_top_right_open", "_top_right_open", lj.f, lj.e);
-   public static final lg B = a("custom_fence_post", "_post", lj.b, lj.c);
-   public static final lg C = a("custom_fence_side_north", "_side_north", lj.b);
-   public static final lg D = a("custom_fence_side_east", "_side_east", lj.b);
-   public static final lg E = a("custom_fence_side_south", "_side_south", lj.b);
-   public static final lg F = a("custom_fence_side_west", "_side_west", lj.b);
-   public static final lg G = a("custom_fence_inventory", "_inventory", lj.b);
-   public static final lg H = a("fence_post", "_post", lj.b);
-   public static final lg I = a("fence_side", "_side", lj.b);
-   public static final lg J = a("fence_inventory", "_inventory", lj.b);
-   public static final lg K = a("template_wall_post", "_post", lj.r);
-   public static final lg L = a("template_wall_side", "_side", lj.r);
-   public static final lg M = a("template_wall_side_tall", "_side_tall", lj.r);
-   public static final lg N = a("wall_inventory", "_inventory", lj.r);
-   public static final lg O = a("template_custom_fence_gate", lj.b, lj.c);
-   public static final lg P = a("template_custom_fence_gate_open", "_open", lj.b, lj.c);
-   public static final lg Q = a("template_custom_fence_gate_wall", "_wall", lj.b, lj.c);
-   public static final lg R = a("template_custom_fence_gate_wall_open", "_wall_open", lj.b, lj.c);
-   public static final lg S = a("template_fence_gate", lj.b);
-   public static final lg T = a("template_fence_gate_open", "_open", lj.b);
-   public static final lg U = a("template_fence_gate_wall", "_wall", lj.b);
-   public static final lg V = a("template_fence_gate_wall_open", "_wall_open", lj.b);
-   public static final lg W = a("pressure_plate_up", lj.b);
-   public static final lg X = a("pressure_plate_down", "_down", lj.b);
-   public static final lg Y = a(lj.c);
-   public static final lg Z = a("slab", lj.e, lj.f, lj.i);
-   public static final lg aa = a("slab_top", "_top", lj.e, lj.f, lj.i);
-   public static final lg ab = a("leaves", lj.a);
-   public static final lg ac = a("stairs", lj.e, lj.f, lj.i);
-   public static final lg ad = a("inner_stairs", "_inner", lj.e, lj.f, lj.i);
-   public static final lg ae = a("outer_stairs", "_outer", lj.e, lj.f, lj.i);
-   public static final lg af = a("template_trapdoor_top", "_top", lj.b);
-   public static final lg ag = a("template_trapdoor_bottom", "_bottom", lj.b);
-   public static final lg ah = a("template_trapdoor_open", "_open", lj.b);
-   public static final lg ai = a("template_orientable_trapdoor_top", "_top", lj.b);
-   public static final lg aj = a("template_orientable_trapdoor_bottom", "_bottom", lj.b);
-   public static final lg ak = a("template_orientable_trapdoor_open", "_open", lj.b);
-   public static final lg al = a("pointed_dripstone", lj.p);
-   public static final lg am = a("cross", lj.p);
-   public static final lg an = a("tinted_cross", lj.p);
-   public static final lg ao = a("flower_pot_cross", lj.q);
-   public static final lg ap = a("tinted_flower_pot_cross", lj.q);
-   public static final lg aq = a("rail_flat", lj.s);
-   public static final lg ar = a("rail_curved", "_corner", lj.s);
-   public static final lg as = a("template_rail_raised_ne", "_raised_ne", lj.s);
-   public static final lg at = a("template_rail_raised_sw", "_raised_sw", lj.s);
-   public static final lg au = a("carpet", lj.t);
-   public static final lg av = a("flowerbed_1", "_1", lj.P, lj.y);
-   public static final lg aw = a("flowerbed_2", "_2", lj.P, lj.y);
-   public static final lg ax = a("flowerbed_3", "_3", lj.P, lj.y);
-   public static final lg ay = a("flowerbed_4", "_4", lj.P, lj.y);
-   public static final lg az = a("coral_fan", lj.x);
-   public static final lg aA = a("coral_wall_fan", lj.x);
-   public static final lg aB = a("template_glazed_terracotta", lj.u);
-   public static final lg aC = a("template_chorus_flower", lj.b);
-   public static final lg aD = a("template_daylight_detector", lj.f, lj.i);
-   public static final lg aE = a("template_glass_pane_noside", "_noside", lj.v);
-   public static final lg aF = a("template_glass_pane_noside_alt", "_noside_alt", lj.v);
-   public static final lg aG = a("template_glass_pane_post", "_post", lj.v, lj.w);
-   public static final lg aH = a("template_glass_pane_side", "_side", lj.v, lj.w);
-   public static final lg aI = a("template_glass_pane_side_alt", "_side_alt", lj.v, lj.w);
-   public static final lg aJ = a("template_command_block", lj.g, lj.h, lj.i);
-   public static final lg aK = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", lj.b);
-   public static final lg aL = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", lj.b);
-   public static final lg aM = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", lj.b);
-   public static final lg aN = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", lj.b);
-   public static final lg aO = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", lj.b);
-   public static final lg aP = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", lj.b);
-   public static final lg aQ = a("template_anvil", lj.f);
-   public static final lg[] aR = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, lj.y)).toArray(lg[]::new);
-   public static final lg aS = a("stem_fruit", lj.y, lj.z);
-   public static final lg aT = a("crop", lj.A);
-   public static final lg aU = a("template_farmland", lj.B, lj.f);
-   public static final lg aV = a("template_fire_floor", lj.C);
-   public static final lg aW = a("template_fire_side", lj.C);
-   public static final lg aX = a("template_fire_side_alt", lj.C);
-   public static final lg aY = a("template_fire_up", lj.C);
-   public static final lg aZ = a("template_fire_up_alt", lj.C);
-   public static final lg ba = a("template_campfire", lj.C, lj.K);
-   public static final lg bb = a("template_lantern", lj.D);
-   public static final lg bc = a("template_hanging_lantern", "_hanging", lj.D);
-   public static final lg bd = a("template_torch", lj.G);
-   public static final lg be = a("template_torch_wall", lj.G);
-   public static final lg bf = a("template_piston", lj.E, lj.e, lj.i);
-   public static final lg bg = a("template_piston_head", lj.E, lj.i, lj.F);
-   public static final lg bh = a("template_piston_head_short", lj.E, lj.i, lj.F);
-   public static final lg bi = a("template_seagrass", lj.b);
-   public static final lg bj = a("template_turtle_egg", lj.a);
-   public static final lg bk = a("template_two_turtle_eggs", lj.a);
-   public static final lg bl = a("template_three_turtle_eggs", lj.a);
-   public static final lg bm = a("template_four_turtle_eggs", lj.a);
-   public static final lg bn = a("template_single_face", lj.b);
-   public static final lg bo = a("template_cauldron_level1", lj.N, lj.M, lj.c, lj.f, lj.e, lj.i);
-   public static final lg bp = a("template_cauldron_level2", lj.N, lj.M, lj.c, lj.f, lj.e, lj.i);
-   public static final lg bq = a("template_cauldron_full", lj.N, lj.M, lj.c, lj.f, lj.e, lj.i);
-   public static final lg br = a("template_azalea", lj.f, lj.i);
-   public static final lg bs = a("template_potted_azalea_bush", lj.q, lj.f, lj.i);
-   public static final lg bt = a("template_potted_azalea_bush", lj.q, lj.f, lj.i);
-   public static final lg bu = a("sniffer_egg", lj.f, lj.e, lj.j, lj.k, lj.l, lj.m);
-   public static final lg bv = b("generated", lj.H);
-   public static final lg bw = b("template_music_disc", lj.H);
-   public static final lg bx = b("handheld", lj.H);
-   public static final lg by = b("handheld_rod", lj.H);
-   public static final lg bz = b("generated", lj.H, lj.I);
-   public static final lg bA = b("generated", lj.H, lj.I, lj.J);
-   public static final lg bB = b("template_shulker_box", lj.c);
-   public static final lg bC = b("template_bed", lj.c);
-   public static final lg bD = b("template_banner");
-   public static final lg bE = b("template_skull");
-   public static final lg bF = a("template_candle", lj.a, lj.c);
-   public static final lg bG = a("template_two_candles", lj.a, lj.c);
-   public static final lg bH = a("template_three_candles", lj.a, lj.c);
-   public static final lg bI = a("template_four_candles", lj.a, lj.c);
-   public static final lg bJ = a("template_cake_with_candle", lj.L, lj.e, lj.i, lj.f, lj.c);
-   public static final lg bK = a("template_sculk_shrieker", lj.e, lj.i, lj.f, lj.c, lj.O);
+   private final Map<li, aer> a = Maps.newHashMap();
+   private final Set<li> b = Sets.newHashSet();
 
-   private static lg a(lj... $$0) {
-      return new lg(Optional.empty(), Optional.empty(), $$0);
+   public lh a(li $$0, aer $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   private static lg a(String $$0, lj... $$1) {
-      return new lg(Optional.of(new aep("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   public lh b(li $$0, aer $$1) {
+      this.a.put($$0, $$1);
+      this.b.add($$0);
+      return this;
    }
 
-   private static lg b(String $$0, lj... $$1) {
-      return new lg(Optional.of(new aep("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   public Stream<li> a() {
+      return this.b.stream();
    }
 
-   private static lg a(String $$0, String $$1, lj... $$2) {
-      return new lg(Optional.of(new aep("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public lh a(li $$0, li $$1) {
+      this.a.put($$1, this.a.get($$0));
+      return this;
+   }
+
+   public lh b(li $$0, li $$1) {
+      this.a.put($$1, this.a.get($$0));
+      this.b.add($$1);
+      return this;
+   }
+
+   public aer a(li $$0) {
+      for (li $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
+         aer $$2 = this.a.get($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      throw new IllegalStateException("Can't find texture for slot " + $$0);
+   }
+
+   public lh c(li $$0, aer $$1) {
+      lh $$2 = new lh();
+      $$2.a.putAll(this.a);
+      $$2.b.addAll(this.b);
+      $$2.a($$0, $$1);
+      return $$2;
+   }
+
+   public static lh a(csm $$0) {
+      aer $$1 = G($$0);
+      return b($$1);
+   }
+
+   public static lh b(csm $$0) {
+      aer $$1 = G($$0);
+      return a($$1);
+   }
+
+   public static lh a(aer $$0) {
+      return new lh().a(li.b, $$0);
+   }
+
+   public static lh b(aer $$0) {
+      return new lh().a(li.a, $$0);
+   }
+
+   public static lh c(csm $$0) {
+      return d(li.p, G($$0));
+   }
+
+   public static lh c(aer $$0) {
+      return d(li.p, $$0);
+   }
+
+   public static lh d(csm $$0) {
+      return d(li.q, G($$0));
+   }
+
+   public static lh d(aer $$0) {
+      return d(li.q, $$0);
+   }
+
+   public static lh e(csm $$0) {
+      return d(li.s, G($$0));
+   }
+
+   public static lh e(aer $$0) {
+      return d(li.s, $$0);
+   }
+
+   public static lh f(csm $$0) {
+      return d(li.t, G($$0));
+   }
+
+   public static lh g(csm $$0) {
+      return new lh().a(li.P, G($$0)).a(li.y, a($$0, "_stem"));
+   }
+
+   public static lh f(aer $$0) {
+      return d(li.t, $$0);
+   }
+
+   public static lh h(csm $$0) {
+      return d(li.y, G($$0));
+   }
+
+   public static lh a(csm $$0, csm $$1) {
+      return new lh().a(li.y, G($$0)).a(li.z, G($$1));
+   }
+
+   public static lh i(csm $$0) {
+      return d(li.u, G($$0));
+   }
+
+   public static lh j(csm $$0) {
+      return d(li.x, G($$0));
+   }
+
+   public static lh g(aer $$0) {
+      return d(li.A, $$0);
+   }
+
+   public static lh b(csm $$0, csm $$1) {
+      return new lh().a(li.v, G($$0)).a(li.w, a($$1, "_top"));
+   }
+
+   public static lh d(li $$0, aer $$1) {
+      return new lh().a($$0, $$1);
+   }
+
+   public static lh k(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.d, a($$0, "_top"));
+   }
+
+   public static lh l(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
+   }
+
+   public static lh m(csm $$0) {
+      return new lh().a(li.q, a($$0, "_plant")).a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
+   }
+
+   public static lh n(csm $$0) {
+      return new lh().a(li.i, G($$0)).a(li.d, a($$0, "_top")).a(li.c, G($$0));
+   }
+
+   public static lh a(aer $$0, aer $$1) {
+      return new lh().a(li.i, $$0).a(li.d, $$1);
+   }
+
+   public static lh o(csm $$0) {
+      return new lh().a(li.b, G($$0)).a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
+   }
+
+   public static lh p(csm $$0) {
+      return new lh().a(li.b, G($$0)).a(li.c, a($$0, "_particle"));
+   }
+
+   public static lh q(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
+   }
+
+   public static lh r(csm $$0) {
+      aer $$1 = G($$0);
+      return new lh().a(li.r, $$1).a(li.i, $$1).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
+   }
+
+   public static lh s(csm $$0) {
+      aer $$1 = G($$0);
+      return new lh().a(li.b, $$1).a(li.r, $$1).a(li.i, $$1).a(li.d, a($$0, "_top"));
+   }
+
+   public static lh b(aer $$0, aer $$1) {
+      return new lh().a(li.f, $$0).a(li.e, $$1);
+   }
+
+   public static lh t(csm $$0) {
+      return new lh().a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
+   }
+
+   public static lh u(csm $$0) {
+      return new lh().a(li.c, G($$0));
+   }
+
+   public static lh h(aer $$0) {
+      return new lh().a(li.c, $$0);
+   }
+
+   public static lh v(csm $$0) {
+      return new lh().a(li.C, a($$0, "_0"));
+   }
+
+   public static lh w(csm $$0) {
+      return new lh().a(li.C, a($$0, "_1"));
+   }
+
+   public static lh x(csm $$0) {
+      return new lh().a(li.D, G($$0));
+   }
+
+   public static lh y(csm $$0) {
+      return new lh().a(li.G, G($$0));
+   }
+
+   public static lh i(aer $$0) {
+      return new lh().a(li.G, $$0);
+   }
+
+   public static lh a(cit $$0) {
+      return new lh().a(li.c, c($$0));
+   }
+
+   public static lh z(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.h, a($$0, "_back"));
+   }
+
+   public static lh A(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
+   }
+
+   public static lh B(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.f, a($$0, "_top"));
+   }
+
+   public static lh C(csm $$0) {
+      return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.d, a($$0, "_end"));
+   }
+
+   public static lh D(csm $$0) {
+      return new lh().a(li.f, a($$0, "_top"));
+   }
+
+   public static lh c(csm $$0, csm $$1) {
+      return new lh()
+         .a(li.c, a($$0, "_front"))
+         .a(li.o, G($$1))
+         .a(li.n, a($$0, "_top"))
+         .a(li.j, a($$0, "_front"))
+         .a(li.l, a($$0, "_side"))
+         .a(li.k, a($$0, "_side"))
+         .a(li.m, a($$0, "_front"));
+   }
+
+   public static lh d(csm $$0, csm $$1) {
+      return new lh()
+         .a(li.c, a($$0, "_front"))
+         .a(li.o, G($$1))
+         .a(li.n, a($$0, "_top"))
+         .a(li.j, a($$0, "_front"))
+         .a(li.k, a($$0, "_front"))
+         .a(li.l, a($$0, "_side"))
+         .a(li.m, a($$0, "_side"));
+   }
+
+   public static lh a(String $$0) {
+      return new lh()
+         .a(li.c, a(csn.mg, $$0 + "_north"))
+         .a(li.e, a(csn.mg, $$0 + "_bottom"))
+         .a(li.f, a(csn.mg, $$0 + "_top"))
+         .a(li.j, a(csn.mg, $$0 + "_north"))
+         .a(li.k, a(csn.mg, $$0 + "_south"))
+         .a(li.l, a(csn.mg, $$0 + "_east"))
+         .a(li.m, a(csn.mg, $$0 + "_west"));
+   }
+
+   public static lh E(csm $$0) {
+      return new lh().a(li.K, a($$0, "_log_lit")).a(li.C, a($$0, "_fire"));
+   }
+
+   public static lh a(csm $$0, boolean $$1) {
+      return new lh()
+         .a(li.c, a(csn.eh, "_side"))
+         .a(li.e, a(csn.eh, "_bottom"))
+         .a(li.f, a(csn.eh, "_top"))
+         .a(li.i, a(csn.eh, "_side"))
+         .a(li.L, a($$0, $$1 ? "_lit" : ""));
+   }
+
+   public static lh j(aer $$0) {
+      return new lh()
+         .a(li.c, a(csn.ft, "_side"))
+         .a(li.i, a(csn.ft, "_side"))
+         .a(li.f, a(csn.ft, "_top"))
+         .a(li.e, a(csn.ft, "_bottom"))
+         .a(li.M, a(csn.ft, "_inner"))
+         .a(li.N, $$0);
+   }
+
+   public static lh a(boolean $$0) {
+      String $$1 = $$0 ? "_can_summon" : "";
+      return new lh()
+         .a(li.c, a(csn.qI, "_bottom"))
+         .a(li.i, a(csn.qI, "_side"))
+         .a(li.f, a(csn.qI, "_top"))
+         .a(li.O, a(csn.qI, $$1 + "_inner_top"))
+         .a(li.e, a(csn.qI, "_bottom"));
+   }
+
+   public static lh b(cit $$0) {
+      return new lh().a(li.H, c($$0));
+   }
+
+   public static lh F(csm $$0) {
+      return new lh().a(li.H, G($$0));
+   }
+
+   public static lh k(aer $$0) {
+      return new lh().a(li.H, $$0);
+   }
+
+   public static lh c(aer $$0, aer $$1) {
+      return new lh().a(li.H, $$0).a(li.I, $$1);
+   }
+
+   public static lh a(aer $$0, aer $$1, aer $$2) {
+      return new lh().a(li.H, $$0).a(li.I, $$1).a(li.J, $$2);
+   }
+
+   public static aer G(csm $$0) {
+      aer $$1 = jb.f.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static aer a(csm $$0, String $$1) {
+      aer $$2 = jb.f.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   }
+
+   public static aer c(cit $$0) {
+      aer $$1 = jb.i.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static aer a(cit $$0, String $$1) {
+      aer $$2 = jb.i.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

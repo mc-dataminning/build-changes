@@ -5,12 +5,12 @@ public enum ao {
 
    private final String d;
    private final n e;
-   private final te f;
+   private final tf f;
 
    private ao(String $$0, n $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = te.c("advancements.toast." + $$0);
+      this.f = tf.c("advancements.toast." + $$0);
    }
 
    public String a() {
@@ -31,7 +31,7 @@ public enum ao {
       return this.e;
    }
 
-   public te c() {
+   public tf c() {
       return this.f;
    }
 }

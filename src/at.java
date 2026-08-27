@@ -1,46 +1,39 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
 
-public class at {
-   public static final at a = new at(null, null, cz.a, cl.a);
-   @Nullable
-   private final apy<csk> b;
-   @Nullable
-   private final Set<csk> c;
-   private final cz d;
-   private final cl e;
+public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Optional<cl> e) {
+   private static final Codec<hi<csm>> f = jb.f.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
+   public static final Codec<at> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqy.a(aqa.a(jc.e), "tag").forGetter(at::a),
+               aqy.a(f, "blocks").forGetter(at::b),
+               aqy.a(cy.a, "state").forGetter(at::c),
+               aqy.a(cl.a, "nbt").forGetter(at::d)
+            )
+            .apply($$0, at::new)
+   );
 
-   public at(@Nullable apy<csk> $$0, @Nullable Set<csk> $$1, cz $$2, cl $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   static Optional<at> a(Optional<aqa<csm>> $$0, Optional<hi<csm>> $$1, Optional<cy> $$2, Optional<cl> $$3) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() ? Optional.empty() : Optional.of(new at($$0, $$1, $$2, $$3));
    }
 
-   public boolean a(aki $$0, gv $$1) {
-      if (this == a) {
-         return true;
-      } else if (!$$0.o($$1)) {
+   public boolean a(akk $$0, gu $$1) {
+      if (!$$0.o($$1)) {
          return false;
       } else {
-         dey $$2 = $$0.a_($$1);
-         if (this.b != null && !$$2.a(this.b)) {
+         dfa $$2 = $$0.a_($$1);
+         if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
-         } else if (this.c != null && !this.c.contains($$2.b())) {
+         } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
             return false;
-         } else if (!this.d.a($$2)) {
+         } else if (this.d.isPresent() && !this.d.get().a($$2)) {
             return false;
          } else {
-            if (this.e != cl.a) {
-               dck $$3 = $$0.c_($$1);
-               if ($$3 == null || !this.e.a($$3.m())) {
+            if (this.e.isPresent()) {
+               dcm $$3 = $$0.c_($$1);
+               if ($$3 == null || !this.e.get().a($$3.m())) {
                   return false;
                }
             }
@@ -50,68 +43,27 @@ public class at {
       }
    }
 
-   public static at a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "block");
-         cl $$2 = cl.a($$1.get("nbt"));
-         Set<csk> $$3 = null;
-         JsonArray $$4 = arf.a($$1, "blocks", null);
-         if ($$4 != null) {
-            Builder<csk> $$5 = ImmutableSet.builder();
-
-            for (JsonElement $$6 : $$4) {
-               aep $$7 = new aep(arf.a($$6, "block"));
-               $$5.add(jc.f.b($$7).orElseThrow(() -> new JsonSyntaxException("Unknown block id '" + $$7 + "'")));
-            }
-
-            $$3 = $$5.build();
-         }
-
-         apy<csk> $$8 = null;
-         if ($$1.has("tag")) {
-            aep $$9 = new aep(arf.i($$1, "tag"));
-            $$8 = apy.a(jd.e, $$9);
-         }
-
-         cz $$10 = cz.a($$1.get("state"));
-         return new at($$8, $$3, $$10, $$2);
-      } else {
-         return a;
-      }
+   public Optional<aqa<csm>> a() {
+      return this.b;
    }
 
-   public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.c != null) {
-            JsonArray $$1 = new JsonArray();
+   public Optional<hi<csm>> b() {
+      return this.c;
+   }
 
-            for (csk $$2 : this.c) {
-               $$1.add(jc.f.b($$2).toString());
-            }
+   public Optional<cy> c() {
+      return this.d;
+   }
 
-            $$0.add("blocks", $$1);
-         }
-
-         if (this.b != null) {
-            $$0.addProperty("tag", this.b.b().toString());
-         }
-
-         $$0.add("nbt", this.e.a());
-         $$0.add("state", this.d.a());
-         return $$0;
-      }
+   public Optional<cl> d() {
+      return this.e;
    }
 
    public static class a {
-      @Nullable
-      private Set<csk> a;
-      @Nullable
-      private apy<csk> b;
-      private cz c = cz.a;
-      private cl d = cl.a;
+      private Optional<hi<csm>> a = Optional.empty();
+      private Optional<aqa<csm>> b = Optional.empty();
+      private Optional<cy> c = Optional.empty();
+      private Optional<cl> d = Optional.empty();
 
       private a() {
       }
@@ -120,33 +72,33 @@ public class at {
          return new at.a();
       }
 
-      public at.a a(csk... $$0) {
-         this.a = ImmutableSet.copyOf($$0);
+      public at.a a(csm... $$0) {
+         this.a = Optional.of(hi.a(csm::q, $$0));
          return this;
       }
 
-      public at.a a(Iterable<csk> $$0) {
-         this.a = ImmutableSet.copyOf($$0);
+      public at.a a(Collection<csm> $$0) {
+         this.a = Optional.of(hi.a(csm::q, $$0));
          return this;
       }
 
-      public at.a a(apy<csk> $$0) {
-         this.b = $$0;
+      public at.a a(aqa<csm> $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 
-      public at.a a(qs $$0) {
-         this.d = new cl($$0);
+      public at.a a(qr $$0) {
+         this.d = Optional.of(new cl($$0));
          return this;
       }
 
-      public at.a a(cz $$0) {
-         this.c = $$0;
+      public at.a a(cy.a $$0) {
+         this.c = $$0.b();
          return this;
       }
 
-      public at b() {
-         return new at(this.b, this.a, this.c, this.d);
+      public Optional<at> b() {
+         return at.a(this.b, this.a, this.c, this.d);
       }
    }
 }

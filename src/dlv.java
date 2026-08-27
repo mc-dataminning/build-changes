@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dlv extends dlz {
-   private final hj<eaa> e;
-   public static final Codec<dlv> a = RecordCodecBuilder.create($$0 -> a($$0).and(hu.a(jd.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dlv::new));
+public class dlv extends dmb {
+   final aqa<csm> a;
+   public static final Codec<dlv> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqa.a(jc.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlv::new));
 
-   public dlv(ia $$0, hj<eaa> $$1) {
+   protected dlv(hz $$0, aqa<csm> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dey $$0) {
-      return $$0.u().a(this.e);
+   protected boolean a(dfa $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dlp<?> a() {
-      return dlp.c;
+   public dlr<?> a() {
+      return dlr.b;
    }
 }

@@ -1,31 +1,24 @@
-public class abw implements uw<aav> {
-   private static final int a = 2;
-   private final boolean b;
+public class abw implements ux<aaw> {
+   private final int a;
 
-   public abw(cbi $$0) {
-      this.b = $$0.b;
+   public abw(int $$0) {
+      this.a = $$0;
    }
 
-   public abw(sh $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public abw(si $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.b;
+   public int a() {
+      return this.a;
    }
 }

@@ -1,26 +1,22 @@
-import javax.annotation.Nullable;
+public class ctc extends csm {
+   protected static final ehx a = csm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-public class ctc extends csk {
-   private static final te a = te.c("container.cartography_table");
-
-   protected ctc(dex.d $$0) {
+   public ctc(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      if ($$1.B) {
-         return bgo.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(ape.aw);
-         return bgo.b;
-      }
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return a;
    }
 
-   @Nullable
    @Override
-   public bgr b(dey $$0, cpk $$1, gv $$2) {
-      return new bgw(($$2x, $$3, $$4) -> new cei($$2x, $$3, cen.a($$1, $$2)), a);
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      return !$$1.t($$2.d());
    }
 }

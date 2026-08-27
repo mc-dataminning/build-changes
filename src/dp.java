@@ -1,14 +1,27 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dp extends RuntimeException {
-   private final te a;
+public interface dp {
+   dp a = new dp() {
+      @Nullable
+      @Override
+      public tu a(String $$0) {
+         return null;
+      }
+   };
 
-   public dp(te $$0) {
-      super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
-      this.a = $$0;
-   }
+   @Nullable
+   tu a(String var1);
 
-   public te a() {
-      return this.a;
+   public static record a(Map<String, tu> b) implements dp {
+      @Nullable
+      @Override
+      public tu a(String $$0) {
+         return this.b.get($$0);
+      }
+
+      public Map<String, tu> a() {
+         return this.b;
+      }
    }
 }

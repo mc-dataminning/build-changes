@@ -1,35 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dnq implements dpp {
-   public static final Codec<dnq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aep.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               aep.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               dyp.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               dyp.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dnq::new)
-   );
-   public final List<aep> b;
-   public final List<aep> c;
-   public final hf<dyo> d;
-   public final hf<dyo> e;
-   public final int f;
+public class dnq extends dnn<dpv> {
+   public dnq(Codec<dpv> $$0) {
+      super($$0);
+   }
 
-   public dnq(List<aep> $$0, List<aep> $$1, hf<dyo> $$2, hf<dyo> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   public boolean a(dnp<dpv> $$0) {
+      gu $$1 = $$0.e();
+      dpv $$2 = $$0.f();
+      cqg $$3 = $$0.b();
+      gu.a $$4 = new gu.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.C_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
+         }
       }
+
+      return true;
    }
 }

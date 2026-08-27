@@ -1,7 +1,3 @@
-public record adk() implements adi {
-   public static final adk a = new adk();
-
-   @Override
-   public void a(sh $$0) {
-   }
+public interface adk {
+   void a(si var1);
 }

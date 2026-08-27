@@ -1,60 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bz {
-   public static final bz a = new bz();
-   @Nullable
-   private final apy<cir> b;
-   @Nullable
-   private final Set<cir> c;
-   private final cj.d d;
-   private final cj.d e;
-   private final bj[] f;
-   private final bj[] g;
-   @Nullable
-   private final ckt h;
-   private final cl i;
+public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List<bj> f, List<bj> g, Optional<he<ckv>> h, Optional<cl> i) {
+   private static final Codec<hi<cit>> j = jb.i.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
+   public static final Codec<bz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqy.a(aqa.a(jc.D), "tag").forGetter(bz::b),
+               aqy.a(j, "items").forGetter(bz::c),
+               aqy.a(cj.d.d, "count", cj.d.c).forGetter(bz::d),
+               aqy.a(cj.d.d, "durability", cj.d.c).forGetter(bz::e),
+               aqy.a(bj.a.listOf(), "enchantments", List.of()).forGetter(bz::f),
+               aqy.a(bj.a.listOf(), "stored_enchantments", List.of()).forGetter(bz::g),
+               aqy.a(jb.j.r(), "potion").forGetter(bz::h),
+               aqy.a(cl.a, "nbt").forGetter(bz::i)
+            )
+            .apply($$0, bz::new)
+   );
 
-   public bz() {
-      this.b = null;
-      this.c = null;
-      this.h = null;
-      this.d = cj.d.e;
-      this.e = cj.d.e;
-      this.f = bj.b;
-      this.g = bj.b;
-      this.i = cl.a;
+   static Optional<bz> a(Optional<aqa<cit>> $$0, Optional<hi<cit>> $$1, cj.d $$2, cj.d $$3, List<bj> $$4, List<bj> $$5, Optional<he<ckv>> $$6, Optional<cl> $$7) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.c() && $$3.c() && $$4.isEmpty() && $$5.isEmpty() && $$6.isEmpty() && $$7.isEmpty()
+         ? Optional.empty()
+         : Optional.of(new bz($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public bz(@Nullable apy<cir> $$0, @Nullable Set<cir> $$1, cj.d $$2, cj.d $$3, bj[] $$4, bj[] $$5, @Nullable ckt $$6, cl $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public boolean a(ciw $$0) {
-      if (this == a) {
-         return true;
-      } else if (this.b != null && !$$0.a(this.b)) {
+   public boolean a(ciy $$0) {
+      if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
-      } else if (this.c != null && !this.c.contains($$0.d())) {
+      } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
          return false;
       } else if (!this.d.d($$0.L())) {
          return false;
@@ -62,11 +43,11 @@ public class bz {
          return false;
       } else if (!this.e.d($$0.l() - $$0.k())) {
          return false;
-      } else if (!this.i.a($$0)) {
+      } else if (this.i.isPresent() && !this.i.get().a($$0)) {
          return false;
       } else {
-         if (this.f.length > 0) {
-            Map<cnd, Integer> $$1 = cnf.a($$0.x());
+         if (!this.f.isEmpty()) {
+            Map<cnf, Integer> $$1 = cnh.a($$0.x());
 
             for (bj $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -75,8 +56,8 @@ public class bz {
             }
          }
 
-         if (this.g.length > 0) {
-            Map<cnd, Integer> $$3 = cnf.a(chs.d($$0));
+         if (!this.g.isEmpty()) {
+            Map<cnf, Integer> $$3 = cnh.a(chu.d($$0));
 
             for (bj $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -85,149 +66,50 @@ public class bz {
             }
          }
 
-         ckt $$5 = ckv.d($$0);
-         return this.h == null || this.h == $$5;
+         return !this.h.isPresent() || this.h.get().a() == ckx.d($$0);
       }
    }
 
-   public static bz a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "item");
-         cj.d $$2 = cj.d.a($$1.get("count"));
-         cj.d $$3 = cj.d.a($$1.get("durability"));
-         if ($$1.has("data")) {
-            throw new JsonParseException("Disallowed data tag found");
-         } else {
-            cl $$4 = cl.a($$1.get("nbt"));
-            Set<cir> $$5 = null;
-            JsonArray $$6 = arf.a($$1, "items", null);
-            if ($$6 != null) {
-               Builder<cir> $$7 = ImmutableSet.builder();
-
-               for (JsonElement $$8 : $$6) {
-                  aep $$9 = new aep(arf.a($$8, "item"));
-                  $$7.add(jc.i.b($$9).orElseThrow(() -> new JsonSyntaxException("Unknown item id '" + $$9 + "'")));
-               }
-
-               $$5 = $$7.build();
-            }
-
-            apy<cir> $$10 = null;
-            if ($$1.has("tag")) {
-               aep $$11 = new aep(arf.i($$1, "tag"));
-               $$10 = apy.a(jd.D, $$11);
-            }
-
-            ckt $$12 = null;
-            if ($$1.has("potion")) {
-               aep $$13 = new aep(arf.i($$1, "potion"));
-               $$12 = jc.j.b($$13).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$13 + "'"));
-            }
-
-            bj[] $$14 = bj.b($$1.get("enchantments"));
-            bj[] $$15 = bj.b($$1.get("stored_enchantments"));
-            return new bz($$10, $$5, $$2, $$3, $$14, $$15, $$12, $$4);
-         }
-      } else {
-         return a;
-      }
+   public static Optional<bz> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
    }
 
    public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.c != null) {
-            JsonArray $$1 = new JsonArray();
-
-            for (cir $$2 : this.c) {
-               $$1.add(jc.i.b($$2).toString());
-            }
-
-            $$0.add("items", $$1);
-         }
-
-         if (this.b != null) {
-            $$0.addProperty("tag", this.b.b().toString());
-         }
-
-         $$0.add("count", this.d.d());
-         $$0.add("durability", this.e.d());
-         $$0.add("nbt", this.i.a());
-         if (this.f.length > 0) {
-            JsonArray $$3 = new JsonArray();
-
-            for (bj $$4 : this.f) {
-               $$3.add($$4.a());
-            }
-
-            $$0.add("enchantments", $$3);
-         }
-
-         if (this.g.length > 0) {
-            JsonArray $$5 = new JsonArray();
-
-            for (bj $$6 : this.g) {
-               $$5.add($$6.a());
-            }
-
-            $$0.add("stored_enchantments", $$5);
-         }
-
-         if (this.h != null) {
-            $$0.addProperty("potion", jc.j.b(this.h).toString());
-         }
-
-         return $$0;
-      }
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 
-   public static bz[] b(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonArray $$1 = arf.n($$0, "items");
-         bz[] $$2 = new bz[$$1.size()];
+   public static JsonElement a(List<bz> $$0) {
+      return ac.a(a.listOf().encodeStart(JsonOps.INSTANCE, $$0), IllegalStateException::new);
+   }
 
-         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-            $$2[$$3] = a($$1.get($$3));
-         }
-
-         return $$2;
-      } else {
-         return new bz[0];
-      }
+   public static List<bz> b(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? ac.a(a.listOf().parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : List.of();
    }
 
    public static class a {
-      private final List<bj> a = Lists.newArrayList();
-      private final List<bj> b = Lists.newArrayList();
-      @Nullable
-      private Set<cir> c;
-      @Nullable
-      private apy<cir> d;
-      private cj.d e;
-      private cj.d f;
-      @Nullable
-      private ckt g;
-      private cl h;
+      private final Builder<bj> a = ImmutableList.builder();
+      private final Builder<bj> b = ImmutableList.builder();
+      private Optional<hi<cit>> c = Optional.empty();
+      private Optional<aqa<cit>> d = Optional.empty();
+      private cj.d e = cj.d.c;
+      private cj.d f = cj.d.c;
+      private Optional<he<ckv>> g = Optional.empty();
+      private Optional<cl> h = Optional.empty();
 
       private a() {
-         this.e = cj.d.e;
-         this.f = cj.d.e;
-         this.h = cl.a;
       }
 
       public static bz.a a() {
          return new bz.a();
       }
 
-      public bz.a a(cpj... $$0) {
-         this.c = Stream.of($$0).map(cpj::k).collect(ImmutableSet.toImmutableSet());
+      public bz.a a(cpl... $$0) {
+         this.c = Optional.of(hi.a($$0x -> $$0x.k().j(), $$0));
          return this;
       }
 
-      public bz.a a(apy<cir> $$0) {
-         this.d = $$0;
+      public bz.a a(aqa<cit> $$0) {
+         this.d = Optional.of($$0);
          return this;
       }
 
@@ -241,13 +123,13 @@ public class bz {
          return this;
       }
 
-      public bz.a a(ckt $$0) {
-         this.g = $$0;
+      public bz.a a(ckv $$0) {
+         this.g = Optional.of($$0.c());
          return this;
       }
 
-      public bz.a a(qs $$0) {
-         this.h = new cl($$0);
+      public bz.a a(qr $$0) {
+         this.h = Optional.of(new cl($$0));
          return this;
       }
 
@@ -261,8 +143,8 @@ public class bz {
          return this;
       }
 
-      public bz b() {
-         return new bz(this.d, this.c, this.e, this.f, this.a.toArray(bj.b), this.b.toArray(bj.b), this.g, this.h);
+      public Optional<bz> b() {
+         return bz.a(this.d, this.c, this.e, this.f, this.a.build(), this.b.build(), this.g, this.h);
       }
    }
 }

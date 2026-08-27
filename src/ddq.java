@@ -1,193 +1,96 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class ddq extends dck implements djk.b<djr.b>, djr {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int g = 6;
-   private static final int h = 40;
-   private static final int i = 90;
-   private static final Int2ObjectMap<aot> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, aou.zB);
-      $$0.put(2, aou.zC);
-      $$0.put(3, aou.zD);
-      $$0.put(4, aou.zA);
-   });
-   private int k;
-   private final djr.d l = new ddq.a();
-   private djr.a m = new djr.a();
-   private final djr.b n = new djr.b(this);
+public class ddq extends dcm implements djm.b<ddq.a> {
+   private final ddq.a a;
 
-   public ddq(gv $$0, dey $$1) {
-      super(dcm.L, $$0, $$1);
+   public ddq(gu $$0, dfa $$1) {
+      super(dco.K, $$0, $$1);
+      this.a = new ddq.a($$1, new djg($$0));
+   }
+
+   public static void a(cpm $$0, gu $$1, dfa $$2, ddq $$3) {
+      $$3.a.d().a($$0, $$1, $$0.y_(), true);
    }
 
    @Override
-   public djr.a gb() {
-      return this.m;
+   public void a(qr $$0) {
+      this.a.b.a($$0);
    }
 
    @Override
-   public djr.d gc() {
-      return this.l;
-   }
-
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      if ($$0.b("warning_level", 99)) {
-         this.k = $$0.h("warning_level");
-      }
-
-      if ($$0.b("listener", 10)) {
-         djr.a.a.parse(new Dynamic(rd.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(qs $$0) {
+   protected void b(qr $$0) {
+      this.a.b.b($$0);
       super.b($$0);
-      $$0.a("warning_level", this.k);
-      djr.a.a.encodeStart(rd.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   @Nullable
-   public static akj a(@Nullable big $$0) {
-      if ($$0 instanceof akj) {
-         return (akj)$$0;
-      } else {
-         if ($$0 != null) {
-            biw $$6 = $$0.cN();
-            if ($$6 instanceof akj) {
-               return (akj)$$6;
-            }
-         }
-
-         if ($$0 instanceof ccd $$3) {
-            big var3 = $$3.v();
-            if (var3 instanceof akj) {
-               return (akj)var3;
-            }
-         }
-
-         if ($$0 instanceof bye $$5) {
-            big var9 = $$5.v();
-            if (var9 instanceof akj) {
-               return (akj)var9;
-            }
-         }
-
-         return null;
-      }
+   public ddq.a c() {
+      return this.a;
    }
 
-   public void a(aki $$0, @Nullable akj $$1) {
-      if ($$1 != null) {
-         dey $$2 = this.q();
-         if (!$$2.c(cze.a)) {
-            this.k = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (big)$$1);
-            }
-         }
-      }
-   }
+   public static class a implements djm {
+      public static final int a = 8;
+      final czh b;
+      private final dfa c;
+      private final djo d;
 
-   private boolean b(aki $$0, akj $$1) {
-      OptionalInt $$2 = car.a($$0, this.p(), $$1);
-      $$2.ifPresent($$0x -> this.k = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(aki $$0, @Nullable big $$1) {
-      gv $$2 = this.p();
-      dey $$3 = this.q();
-      $$0.a($$2, $$3.a(cze.a, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(dji.N, $$2, dji.a.a($$1));
-   }
-
-   private boolean b(aki $$0) {
-      return this.q().c(cze.c) && $$0.ai() != bgl.a && $$0.X().b(cpg.I);
-   }
-
-   public void a(aki $$0) {
-      if (this.b($$0) && this.k > 0) {
-         if (!this.c($$0)) {
-            this.b((cpk)$$0);
-         }
-
-         cap.a($$0, ehf.b(this.p()), null, 40);
-      }
-   }
-
-   private void b(cpk $$0) {
-      aot $$1 = (aot)j.get(this.k);
-      if ($$1 != null) {
-         gv $$2 = this.p();
-         int $$3 = $$2.u() + aro.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + aro.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + aro.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, aov.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(aki $$0) {
-      return this.k < 4 ? false : asd.a(bik.bi, bja.k, $$0, this.p(), 20, 5, 6, asd.a.b).isPresent();
-   }
-
-   public djr.b c() {
-      return this.n;
-   }
-
-   class a implements djr.d {
-      private static final int b = 8;
-      private final djm c = new dje(ddq.this.p);
-
-      public a() {
+      public a(dfa $$0, djo $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = czh.a();
       }
 
       @Override
-      public int a() {
+      public djo a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public djm b() {
-         return this.c;
+      public djm.a c() {
+         return djm.a.b;
       }
 
       @Override
-      public apy<dji> c() {
-         return app.c;
+      public boolean a(akk $$0, djk $$1, djk.a $$2, ehe $$3) {
+         if ($$1 == djk.p && $$2.a() instanceof biy $$4) {
+            if (!$$4.eB()) {
+               int $$5 = $$4.ec();
+               if ($$4.ea() && $$5 > 0) {
+                  this.b.a(gu.a($$3.a(ha.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eA();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, gu.a($$1x), this.c, $$0.y_()));
+            }
+
+            return true;
+         } else {
+            return false;
+         }
       }
 
-      @Override
-      public boolean a(aki $$0, gv $$1, dji $$2, dji.a $$3) {
-         return !ddq.this.q().c(cze.a) && ddq.a($$3.a()) != null;
+      @VisibleForTesting
+      public czh d() {
+         return this.b;
       }
 
-      @Override
-      public void a(aki $$0, gv $$1, dji $$2, @Nullable big $$3, @Nullable big $$4, float $$5) {
-         ddq.this.a($$0, ddq.a($$4 != null ? $$4 : $$3));
+      private void a(akk $$0, gu $$1, dfa $$2, aru $$3) {
+         $$0.a($$1, $$2.a(cze.a, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(iv.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, aow.un, aox.e, 2.0F, 0.6F + $$3.i() * 0.4F);
       }
 
-      @Override
-      public void e() {
-         ddq.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      private void a(cpm $$0, biy $$1) {
+         if ($$1.ef() instanceof akl $$3) {
+            bhg $$4 = $$1.ev() == null ? $$0.ag().a((cbn)$$3) : $$1.ev();
+            ai.W.a($$3, $$1, $$4);
+         }
       }
    }
 }

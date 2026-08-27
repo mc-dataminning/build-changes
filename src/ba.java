@@ -1,52 +1,57 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
+import com.mojang.serialization.JsonOps;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class ba {
-   public static final ba a = new ba(new efh[0]);
-   private final efh[] b;
-   private final Predicate<ech> c;
+   private final List<efg> a;
+   private final Predicate<ech> b;
 
-   ba(efh[] $$0) {
-      this.b = $$0;
-      this.c = efj.a($$0);
-   }
-
-   public static ba a(efh... $$0) {
-      return new ba($$0);
-   }
-
-   @Nullable
-   public static ba a(String $$0, be $$1, @Nullable JsonElement $$2, eer $$3) {
-      if ($$2 != null && $$2.isJsonArray()) {
-         efh[] $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
-         return new ba($$4);
+   ba(List<efg> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("ContextAwarePredicate must have at least one condition");
       } else {
-         return null;
+         this.a = $$0;
+         this.b = efi.a($$0);
+      }
+   }
+
+   public static ba a(efg... $$0) {
+      return new ba(List.of($$0));
+   }
+
+   public static Optional<Optional<ba>> a(String $$0, be $$1, @Nullable JsonElement $$2, eeq $$3) {
+      if ($$2 != null && $$2.isJsonArray()) {
+         List<efg> $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
+         return $$4.isEmpty() ? Optional.of(Optional.empty()) : Optional.of(Optional.of(new ba($$4)));
+      } else {
+         return Optional.empty();
       }
    }
 
    public boolean a(ech $$0) {
-      return this.c.test($$0);
+      return this.b.test($$0);
    }
 
-   public JsonElement a(ct $$0) {
-      return (JsonElement)(this.b.length == 0 ? JsonNull.INSTANCE : $$0.a(this.b));
+   public JsonElement a() {
+      return ac.a(efi.a.listOf().encodeStart(JsonOps.INSTANCE, this.a), IllegalStateException::new);
    }
 
-   public static JsonElement a(ba[] $$0, ct $$1) {
-      if ($$0.length == 0) {
+   public static JsonElement a(List<ba> $$0) {
+      if ($$0.isEmpty()) {
          return JsonNull.INSTANCE;
       } else {
-         JsonArray $$2 = new JsonArray();
+         JsonArray $$1 = new JsonArray();
 
-         for (ba $$3 : $$0) {
-            $$2.add($$3.a($$1));
+         for (ba $$2 : $$0) {
+            $$1.add($$2.a());
          }
 
-         return $$2;
+         return $$1;
       }
    }
 }

@@ -1,22 +1,11 @@
-import java.util.function.Consumer;
+public class aqe {
+   public static final aqa<duo> a = a("normal");
+   public static final aqa<duo> b = a("extended");
 
-@FunctionalInterface
-public interface aqe<T> {
-   aqe.a accept(T var1);
-
-   static <T> aqe<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return aqe.a.a;
-      };
+   private aqe() {
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static aqa<duo> a(String $$0) {
+      return aqa.a(jc.aF, new aer($$0));
    }
 }

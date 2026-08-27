@@ -1,24 +1,24 @@
-public class vc implements uw<uz> {
-   private final long a;
+public class vc implements ux<va> {
+   private final tf a;
 
-   public vc(long $$0) {
+   public vc(tf $$0) {
       this.a = $$0;
    }
 
-   public vc(sh $$0) {
-      this.a = $$0.readLong();
+   public vc(si $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.b(this.a);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(uz $$0) {
+   public void a(va $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public tf a() {
       return this.a;
    }
 }

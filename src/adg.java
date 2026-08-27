@@ -1,41 +1,39 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+import javax.annotation.Nullable;
 
-public class adg implements uw<add> {
-   private final byte[] a;
-   private final byte[] b;
+public record adg(int a, @Nullable adk b) implements ux<adf> {
+   private static final int c = 1048576;
 
-   public adg(SecretKey $$0, PublicKey $$1, byte[] $$2) throws aqo {
-      this.a = aqn.a($$1, $$0.getEncoded());
-      this.b = aqn.a($$1, $$2);
+   public static adg b(si $$0) {
+      int $$1 = $$0.m();
+      return new adg($$1, a($$1, $$0));
    }
 
-   public adg(sh $$0) {
-      this.a = $$0.b();
-      this.b = $$0.b();
+   private static adk a(int $$0, si $$1) {
+      return c($$1);
+   }
+
+   private static adk c(si $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.j($$1);
+         return adm.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(add $$0) {
+   public void a(adf $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws aqo {
-      return aqn.a($$0, this.a);
-   }
-
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, aqn.b($$1, this.b));
-      } catch (aqo var4) {
-         return false;
-      }
+   @Nullable
+   public adk d() {
+      return this.b;
    }
 }

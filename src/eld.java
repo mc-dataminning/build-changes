@@ -1,66 +1,104 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public interface eld extends elk {
+   elm i();
 
-public class eld {
-   @Nullable
-   private static elk a;
+   void f();
 
-   public static void a() {
-      if (a != null) {
-         b();
-         elk.b();
-      }
-   }
+   void a(int var1, byte var2);
 
-   public static void b() {
-      a = null;
-   }
+   void a(int var1, short var2);
 
-   public static void a(elc.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
+   void a(int var1, float var2);
+
+   @Override
+   default elk a(double $$0, double $$1, double $$2) {
+      if (this.i().b() != elm.b.a) {
+         return this;
+      } else if (this.i().a() == elm.a.a && this.i().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
       } else {
-         c($$0);
+         throw new IllegalStateException();
       }
    }
 
-   private static void c(elc.b $$0) {
-      elk $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(elc.b $$0) {
-      elk $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static elk d(elc.b $$0) {
-      RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
+   @Override
+   default elk a(int $$0, int $$1, int $$2, int $$3) {
+      elm $$4 = this.i();
+      if ($$4.b() != elm.b.c) {
+         return this;
+      } else if ($$4.a() == elm.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
       } else {
-         elk $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
+         throw new IllegalStateException();
       }
    }
 
-   private static elk a(elm $$0) {
-      elk $$1 = $$0.g();
-      a($$1);
-      return $$1;
+   @Override
+   default elk a(float $$0, float $$1) {
+      elm $$2 = this.i();
+      if ($$2.b() == elm.b.d && $$2.d() == 0) {
+         if ($$2.a() == elm.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
+         }
+      } else {
+         return this;
+      }
    }
 
-   private static void a(elk $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+   @Override
+   default elk a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
+   }
+
+   @Override
+   default elk b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
+   }
+
+   default elk a(short $$0, short $$1, int $$2) {
+      elm $$3 = this.i();
+      if ($$3.b() != elm.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == elm.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
       }
+   }
+
+   @Override
+   default elk a(float $$0, float $$1, float $$2) {
+      elm $$3 = this.i();
+      if ($$3.b() != elm.b.b) {
+         return this;
+      } else if ($$3.a() == elm.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   static byte a(float $$0) {
+      return (byte)((int)(arp.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

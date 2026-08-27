@@ -1,15 +1,10 @@
-public abstract class uu<T extends sn> implements uw<T> {
-   private final Iterable<uw<T>> a;
-
-   protected uu(Iterable<uw<T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<uw<T>> a() {
-      return this.a;
+public class uu<T extends so> implements ux<T> {
+   @Override
+   public final void a(si $$0) {
    }
 
    @Override
-   public final void a(sh $$0) {
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }

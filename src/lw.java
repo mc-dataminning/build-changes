@@ -2,112 +2,112 @@ import com.google.gson.JsonObject;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class lw implements lq {
-   private final lr b;
-   private final cir c;
-   private final clw d;
-   private final int e;
+public class lw {
+   private final cly a;
+   private final cly b;
+   private final cly c;
+   private final lq d;
+   private final cit e;
    private final ae.a f = ae.a.b();
-   @Nullable
-   private String g;
-   private final cmb<?> h;
+   private final cmd<?> g;
 
-   public lw(lr $$0, cmb<?> $$1, clw $$2, cpj $$3, int $$4) {
-      this.b = $$0;
-      this.h = $$1;
-      this.c = $$3.k();
-      this.d = $$2;
-      this.e = $$4;
+   public lw(cmd<?> $$0, cly $$1, cly $$2, cly $$3, lq $$4, cit $$5) {
+      this.d = $$4;
+      this.g = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$5;
    }
 
-   public static lw a(clw $$0, lr $$1, cpj $$2) {
-      return new lw($$1, cmb.t, $$0, $$2, 1);
+   public static lw a(cly $$0, cly $$1, cly $$2, lq $$3, cit $$4) {
+      return new lw(cmd.u, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public static lw a(clw $$0, lr $$1, cpj $$2, int $$3) {
-      return new lw($$1, cmb.t, $$0, $$2, $$3);
-   }
-
-   public lw b(String $$0, am $$1) {
+   public lw a(String $$0, am $$1) {
       this.f.a($$0, $$1);
       return this;
    }
 
-   public lw b(@Nullable String $$0) {
-      this.g = $$0;
-      return this;
+   public void a(Consumer<lo> $$0, String $$1) {
+      this.a($$0, new aer($$1));
    }
 
-   @Override
-   public cir a() {
-      return this.c;
-   }
-
-   @Override
-   public void a(Consumer<lp> $$0, aep $$1) {
+   public void a(Consumer<lo> $$0, aer $$1) {
       this.a($$1);
-      this.f.a(a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
-      $$0.accept(new lw.a($$1, this.h, this.g == null ? "" : this.g, this.d, this.c, this.e, this.f, $$1.d("recipes/" + this.b.a() + "/")));
+      this.f.a(lp.a).a("has_the_recipe", cs.a($$1)).a(ah.a.c($$1)).a(ap.b);
+      $$0.accept(new lw.a($$1, this.g, this.a, this.b, this.c, this.e, this.f, $$1.d("recipes/" + this.d.a() + "/")));
    }
 
-   private void a(aep $$0) {
+   private void a(aer $$0) {
       if (this.f.d().isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static class a implements lp {
-      private final aep a;
-      private final String b;
-      private final clw c;
-      private final cir d;
-      private final int e;
-      private final ae.a f;
-      private final aep g;
-      private final cmb<?> h;
-
-      public a(aep $$0, cmb<?> $$1, String $$2, clw $$3, cir $$4, int $$5, ae.a $$6, aep $$7) {
-         this.a = $$0;
-         this.h = $$1;
-         this.b = $$2;
-         this.c = $$3;
-         this.d = $$4;
-         this.e = $$5;
-         this.f = $$6;
-         this.g = $$7;
-      }
-
+   public static record a(aer a, cmd<?> b, cly c, cly d, cly e, cit f, ae.a g, aer h) implements lo {
       @Override
       public void a(JsonObject $$0) {
-         if (!this.b.isEmpty()) {
-            $$0.addProperty("group", this.b);
-         }
-
-         $$0.add("ingredient", this.c.c());
-         $$0.addProperty("result", jc.i.b(this.d).toString());
-         $$0.addProperty("count", this.e);
+         $$0.add("template", this.c.c());
+         $$0.add("base", this.d.c());
+         $$0.add("addition", this.e.c());
+         JsonObject $$1 = new JsonObject();
+         $$1.addProperty("item", jb.i.b(this.f).toString());
+         $$0.add("result", $$1);
       }
 
       @Override
-      public aep b() {
+      public aer b() {
          return this.a;
       }
 
       @Override
-      public cmb<?> c() {
-         return this.h;
+      public cmd<?> c() {
+         return this.b;
       }
 
       @Nullable
       @Override
       public JsonObject d() {
-         return this.f.c();
+         return this.g.c();
       }
 
       @Nullable
       @Override
-      public aep e() {
+      public aer e() {
+         return this.h;
+      }
+
+      public aer f() {
+         return this.a;
+      }
+
+      public cmd<?> g() {
+         return this.b;
+      }
+
+      public cly h() {
+         return this.c;
+      }
+
+      public cly i() {
+         return this.d;
+      }
+
+      public cly j() {
+         return this.e;
+      }
+
+      public cit k() {
+         return this.f;
+      }
+
+      public ae.a l() {
          return this.g;
+      }
+
+      public aer m() {
+         return this.h;
       }
    }
 }

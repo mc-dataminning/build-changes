@@ -1,92 +1,98 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record tb(String b, List<tb.a> c, ua d) {
+public record tb(tc j, tc k) {
    public static final Codec<tb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(tb::a),
-               tb.a.d.listOf().fieldOf("parameters").forGetter(tb::b),
-               ua.b.optionalFieldOf("style", ua.a).forGetter(tb::c)
-            )
-            .apply($$0, tb::new)
+      $$0 -> $$0.group(tc.a.fieldOf("chat").forGetter(tb::a), tc.a.fieldOf("narration").forGetter(tb::b)).apply($$0, tb::new)
    );
+   public static final tc b = tc.a("chat.type.text");
+   public static final aeq<tb> c = a("chat");
+   public static final aeq<tb> d = a("say_command");
+   public static final aeq<tb> e = a("msg_command_incoming");
+   public static final aeq<tb> f = a("msg_command_outgoing");
+   public static final aeq<tb> g = a("team_msg_command_incoming");
+   public static final aeq<tb> h = a("team_msg_command_outgoing");
+   public static final aeq<tb> i = a("emote_command");
 
-   public static tb a(String $$0) {
-      return new tb($$0, List.of(tb.a.a, tb.a.c), ua.a);
+   private static aeq<tb> a(String $$0) {
+      return aeq.a(jc.aq, new aer($$0));
    }
 
-   public static tb b(String $$0) {
-      ua $$1 = ua.a.a(n.h).b(true);
-      return new tb($$0, List.of(tb.a.a, tb.a.c), $$1);
+   public static void a(nm<tb> $$0) {
+      $$0.a(c, new tb(b, tc.a("chat.type.text.narrate")));
+      $$0.a(d, new tb(tc.a("chat.type.announcement"), tc.a("chat.type.text.narrate")));
+      $$0.a(e, new tb(tc.b("commands.message.display.incoming"), tc.a("chat.type.text.narrate")));
+      $$0.a(f, new tb(tc.c("commands.message.display.outgoing"), tc.a("chat.type.text.narrate")));
+      $$0.a(g, new tb(tc.d("chat.type.team.text"), tc.a("chat.type.text.narrate")));
+      $$0.a(h, new tb(tc.d("chat.type.team.sent"), tc.a("chat.type.text.narrate")));
+      $$0.a(i, new tb(tc.a("chat.type.emote"), tc.a("chat.type.emote")));
    }
 
-   public static tb c(String $$0) {
-      ua $$1 = ua.a.a(n.h).b(true);
-      return new tb($$0, List.of(tb.a.b, tb.a.c), $$1);
+   public static tb.a a(aeq<tb> $$0, bii $$1) {
+      return a($$0, $$1.dK().B_(), $$1.H_());
    }
 
-   public static tb d(String $$0) {
-      return new tb($$0, List.of(tb.a.b, tb.a.a, tb.a.c), ua.a);
+   public static tb.a a(aeq<tb> $$0, dr $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public te a(te $$0, ta.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return te.a(this.b, $$2).c(this.d);
+   public static tb.a a(aeq<tb> $$0, hs $$1, tf $$2) {
+      hr<tb> $$3 = $$1.d(jc.aq);
+      return $$3.e($$0).a($$2);
    }
 
-   private te[] b(te $$0, ta.a $$1) {
-      te[] $$2 = new te[this.c.size()];
+   public tb.a a(tf $$0) {
+      return new tb.a(this, $$0);
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         tb.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public tc a() {
+      return this.j;
+   }
+
+   public tc b() {
+      return this.k;
+   }
+
+   public static record a(tb a, tf b, @Nullable tf c) {
+      a(tb $$0, tf $$1) {
+         this($$0, $$1, null);
       }
 
-      return $$2;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public List<tb.a> b() {
-      return this.c;
-   }
-
-   public ua c() {
-      return this.d;
-   }
-
-   public static enum a implements asf {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c()),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<tb.a> d = asf.a(tb.a::values);
-      private final String e;
-      private final tb.a.a f;
-
-      private a(String $$0, tb.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      public tf a(tf $$0) {
+         return this.a.a().a($$0, this);
       }
 
-      public te a(te $$0, ta.a $$1) {
-         te $$2 = this.f.select($$0, $$1);
-         return Objects.requireNonNullElse($$2, td.a);
+      public tf b(tf $$0) {
+         return this.a.b().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public tb.a c(tf $$0) {
+         return new tb.a(this.a, this.b, $$0);
       }
 
-      public interface a {
-         @Nullable
-         te select(te var1, ta.a var2);
+      public tb.b a(hs $$0) {
+         hr<tb> $$1 = $$0.d(jc.aq);
+         return new tb.b($$1.a(this.a), this.b, this.c);
+      }
+   }
+
+   public static record b(int a, tf b, @Nullable tf c) {
+      public b(si $$0) {
+         this($$0.m(), $$0.l(), $$0.c(si::l));
+      }
+
+      public void a(si $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c, si::a);
+      }
+
+      public Optional<tb.a> a(hs $$0) {
+         hr<tb> $$1 = $$0.d(jc.aq);
+         tb $$2 = $$1.a(this.a);
+         return Optional.ofNullable($$2).map($$0x -> new tb.a($$0x, this.b, this.c));
       }
    }
 }

@@ -1,15 +1,38 @@
-import io.netty.util.Attribute;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public interface sp {
-   static void a(Attribute<sg.a<?>> $$0, uw<?> $$1) {
-      sg $$2 = $$1.c();
-      if ($$2 != null) {
-         sg.a<?> $$3 = (sg.a<?>)$$0.get();
-         sg $$4 = $$3.a();
-         if ($$2 != $$4) {
-            sg.a<?> $$5 = $$2.b($$3.b());
-            $$0.set($$5);
+   static sp a(final Runnable $$0) {
+      return new sp() {
+         @Override
+         public void a() {
+            $$0.run();
          }
-      }
+
+         @Nullable
+         @Override
+         public ux<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
+   }
+
+   static sp a(final Supplier<ux<?>> $$0) {
+      return new sp() {
+         @Nullable
+         @Override
+         public ux<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
+
+   @Nullable
+   default ux<?> b() {
+      return null;
    }
 }

@@ -1,18 +1,18 @@
-public record vr(djm b, int c) implements vo {
-   public static final aep a = new aep("debug/game_event_listeners");
+public record vr(aeq<djk> b, ehe c) implements vp {
+   public static final aer a = new aer("debug/game_event");
 
-   public vr(sh $$0) {
-      this(djn.c($$0), $$0.m());
+   public vr(si $$0) {
+      this($$0.a(jc.z), $$0.k());
    }
 
    @Override
-   public void a(sh $$0) {
-      djn.a(this.b, $$0);
-      $$0.c(this.c);
+   public void a(si $$0) {
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

@@ -1,28 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dqk implements dpp {
-   public static final Codec<dqk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eab.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               hu.a(jd.e).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dqk::new)
-   );
-   public final eab b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final hj<csk> f;
+public class dqk implements dpr {
+   public static final Codec<dqk> a = aqy.b(dud.c).fieldOf("features").xmap(dqk::new, $$0 -> $$0.b).codec();
+   public final hi<dud> b;
 
-   public dqk(eab $$0, boolean $$1, int $$2, int $$3, hj<csk> $$4) {
+   public dqk(hi<dud> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   }
+
+   @Override
+   public Stream<dna<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

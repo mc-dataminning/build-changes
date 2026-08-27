@@ -1,18 +1,13 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aid {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(dt.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
-      );
-   }
-
-   private static int a(ds $$0, int $$1) {
-      $$0.l().c($$1);
-      $$0.a(() -> te.a("commands.setidletimeout.success", $$1), true);
-      return $$1;
+   public static void a(CommandDispatcher<dr> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((dr)$$0x.getSource()).e().A();
+         tf $$2 = th.a(String.valueOf($$1x));
+         ((dr)$$0x.getSource()).a(() -> tf.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

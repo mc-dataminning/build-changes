@@ -1,25 +1,27 @@
-public class fwn extends fwr<bux, ffj<bux>> {
-   private final fnc a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fwn(fue<bux, ffj<bux>> $$0, fnc $$1) {
+public class fwn extends fww<buw, ffd<buw>> {
+   private static final Map<buw.a, aer> a = ImmutableMap.of(
+      buw.a.b,
+      new aer("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      buw.a.c,
+      new aer("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      buw.a.d,
+      new aer("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public fwn(fuj<buw, ffd<buw>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(elh $$0, fng $$1, int $$2, bux $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ciw $$10 = $$3.c(bil.a);
-      if ($$3.t() && !$$3.gr()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gf()) {
-            $$11 -= 0.2F * aro.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * aro.a($$7 * 0.6F);
+   public void a(elg $$0, fnl $$1, int $$2, buw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         buw.a $$10 = $$3.q();
+         if ($$10 != buw.a.a) {
+            aer $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cit.h, false, $$0, $$1, $$2);
-         $$0.b();
       }
    }
 }

@@ -1,54 +1,26 @@
-public class cte extends crd {
-   private static final float c = 0.05F;
-   private static final float d = 0.1F;
+import javax.annotation.Nullable;
 
-   public cte(dex.d $$0) {
-      super($$0, ic.a);
+public class cte extends csm {
+   private static final tf a = tf.c("container.cartography_table");
+
+   protected cte(dez.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean d(dey $$0) {
-      return false;
-   }
-
-   protected static boolean a(cpk $$0, cqi.c $$1) {
-      if ($$1 == cqi.c.b) {
-         return $$0.y_().i() < 0.05F;
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      if ($$1.B) {
+         return bgq.a;
       } else {
-         return $$1 == cqi.c.c ? $$0.y_().i() < 0.1F : false;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apg.aw);
+         return bgq.b;
       }
    }
 
+   @Nullable
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, cqi.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cqi.c.b) {
-            $$1.b($$2, csl.fu.n());
-            $$1.a(null, dji.c, $$2);
-         } else if ($$3 == cqi.c.c) {
-            $$1.b($$2, csl.fw.n());
-            $$1.a(null, dji.c, $$2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(eaa $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dey $$0, cpk $$1, gv $$2, eaa $$3) {
-      if ($$3 == eac.c) {
-         dey $$4 = csl.fu.n();
-         $$1.b($$2, $$4);
-         $$1.a(dji.c, $$2, dji.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eac.e) {
-         dey $$5 = csl.fv.n();
-         $$1.b($$2, $$5);
-         $$1.a(dji.c, $$2, dji.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   public bgt b(dfa $$0, cpm $$1, gu $$2) {
+      return new bgy(($$2x, $$3, $$4) -> new cek($$2x, $$3, cep.a($$1, $$2)), a);
    }
 }

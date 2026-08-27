@@ -1,141 +1,78 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fcb extends esc {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final te d = te.c("telemetry_info.property_title").a(n.t);
-   private final erv e;
-   private fcb.a l;
-   @Nullable
-   private DoubleConsumer m;
+public class fcb {
+   private final eqm a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fcb(int $$0, int $$1, int $$2, int $$3, erv $$4) {
-      super($$0, $$1, $$2, $$3, te.h());
-      this.e = $$4;
-      this.l = this.c(eqn.N().z());
+   public fcb(eqm $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public void b(boolean $$0) {
-      this.l = this.c($$0);
-      this.a(this.c());
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   private fcb.a c(boolean $$0) {
-      fcb.b $$1 = new fcb.b(this.v());
-      List<gdb> $$2 = new ArrayList<>(gdb.g());
-      $$2.sort(Comparator.comparing(gdb::d));
-      if (!$$0) {
-         $$2.removeIf(gdb::d);
-      }
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         gdb $$4 = $$2.get($$3);
-         this.a($$1, $$4);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
-         }
-      }
-
-      return $$1.a();
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.m = $$0;
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
    }
 
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.m != null) {
-         this.m.accept(this.c());
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   @Override
-   protected int f() {
-      return this.l.a().h();
+   public Set<UUID> c() {
+      return this.b;
    }
 
-   @Override
-   protected double g() {
-      return 9.0;
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ac.d);
    }
 
-   @Override
-   protected void c(erx $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.a();
-      int $$5 = this.p() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.l.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(evt $$0) {
-      $$0.a(evs.a, this.l.b());
-   }
-
-   private void a(fcb.b $$0, gdb $$1) {
-      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
-      $$0.b(this.e, te.a($$2, $$1.e()));
-      $$0.b(this.e, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.e, d, 2);
-      this.a($$1, $$0);
-   }
-
-   private void a(gdb $$0, fcb.b $$1) {
-      for (gdd<?> $$2 : $$0.b()) {
-         $$1.a(this.e, $$2.a());
+   public void a(fiq $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.B instanceof fcd $$2) {
+         $$2.a($$0);
       }
    }
 
-   private int v() {
-      return this.f - this.b();
-   }
-
-   static record a(evl a, te b) {
-   }
-
-   static class b {
-      private final int a;
-      private final evo b;
-      private final tr c = te.h();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = evo.d();
-         this.b.c().a();
-         this.b.a(evp.a($$0));
-      }
-
-      public void a(erv $$0, te $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(erv $$0, te $$1, int $$2) {
-         this.b.a(new etc($$1, $$0).i(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(erv $$0, te $$1) {
-         this.b.a(new etc($$1, $$0).i(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(evp.b($$0));
-      }
-
-      public fcb.a a() {
-         this.b.a();
-         return new fcb.a(this.b, this.c);
+   public void f(UUID $$0) {
+      if (this.a.B instanceof fcd $$1) {
+         $$1.a($$0);
       }
    }
 }

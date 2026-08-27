@@ -1,27 +1,34 @@
-import java.util.Map;
-import javax.annotation.Nullable;
-
 public interface dq {
    dq a = new dq() {
-      @Nullable
       @Override
-      public tt a(String $$0) {
-         return null;
+      public void a(tf $$0) {
+      }
+
+      @Override
+      public boolean f_() {
+         return false;
+      }
+
+      @Override
+      public boolean q_() {
+         return false;
+      }
+
+      @Override
+      public boolean N_() {
+         return false;
       }
    };
 
-   @Nullable
-   tt a(String var1);
+   void a(tf var1);
 
-   public static record a(Map<String, tt> b) implements dq {
-      @Nullable
-      @Override
-      public tt a(String $$0) {
-         return this.b.get($$0);
-      }
+   boolean f_();
 
-      public Map<String, tt> a() {
-         return this.b;
-      }
+   boolean q_();
+
+   boolean N_();
+
+   default boolean g_() {
+      return false;
    }
 }

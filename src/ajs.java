@@ -1,45 +1,60 @@
-public class ajs {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dgz.b();
+public class ajs implements Comparable<ajs> {
+   private final int a;
+   private final gu b;
+   private int c;
+   private int d;
 
-   public static dgz a(int $$0) {
-      return $$0 < 33 ? dgz.n : dgz.a($$0 - 33);
+   public ajs(int $$0, gu $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static int a(dgz $$0) {
-      return 33 + dgz.a($$0);
+   public int a() {
+      return this.a;
    }
 
-   public static akb b(int $$0) {
-      if ($$0 <= 31) {
-         return akb.d;
-      } else if ($$0 <= 32) {
-         return akb.c;
+   public gu b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ajs $$1 = (ajs)$$0;
+         return this.a == $$1.a;
       } else {
-         return $$0 <= 33 ? akb.b : akb.a;
+         return false;
       }
    }
 
-   public static int a(akb $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
    }
 
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= a;
+   public int a(ajs $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

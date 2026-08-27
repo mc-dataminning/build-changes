@@ -1,69 +1,160 @@
-import java.util.Optional;
+public class cvw extends cvc {
+   public static final ehx a = csm.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final ehx b = csm.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final ehx c = csm.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final ehx d = csm.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final ehx e = ehu.a(a, c);
+   public static final ehx f = ehu.a(b, d);
+   public static final ehx g = ehu.a(e, f);
+   public static final ehx h = ehu.a(g, csm.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final ehx i = csm.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final ehx j = csm.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final ehx k = csm.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final ehx l = csm.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final ehx m = ehu.a(i, k);
+   public static final ehx n = ehu.a(j, l);
+   public static final ehx D = ehu.a(m, n);
+   public static final ehx E = ehu.a(D, csm.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final ehx F = csm.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final ehx G = csm.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final ehx H = csm.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final ehx J = csm.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final ehx K = ehu.a(F, H);
+   public static final ehx L = ehu.a(G, J);
+   public static final ehx M = ehu.a(K, L);
+   public static final ehx N = ehu.a(M, csm.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final ehx O = csm.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final ehx P = csm.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final ehx Q = csm.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final ehx R = csm.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final ehx S = ehu.a(O, Q);
+   public static final ehx T = ehu.a(P, R);
+   public static final ehx U = ehu.a(S, T);
+   public static final ehx V = ehu.a(U, csm.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final ehx W = csm.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final ehx X = csm.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final ehx Y = csm.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final ehx Z = csm.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final ehx aa = ehu.a(W, Y);
+   public static final ehx ab = ehu.a(X, Z);
+   public static final ehx ac = ehu.a(aa, ab);
+   public static final ehx ad = ehu.a(ac, csm.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final ehx ae = csm.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final ehx af = csm.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final ehx ag = csm.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final ehx ah = csm.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final ehx ai = ehu.a(ae, ag);
+   public static final ehx aj = ehu.a(af, ah);
+   public static final ehx ak = ehu.a(ai, aj);
+   public static final ehx al = ehu.a(ak, csm.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final ehx am = csm.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final ehx an = csm.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final ehx ao = csm.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final ehx ap = csm.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final ehx aq = ehu.a(am, ao);
+   public static final ehx ar = ehu.a(an, ap);
+   public static final ehx as = ehu.a(aq, ar);
+   public static final ehx at = ehu.a(as, csm.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final ehx au = csm.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final ehx av = csm.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final ehx aw = csm.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final ehx ax = csm.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final ehx ay = ehu.a(au, aw);
+   public static final ehx az = ehu.a(av, ax);
+   public static final ehx aA = ehu.a(ay, az);
+   public static final ehx aB = ehu.a(aA, csm.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   private static final tf aP = tf.c("container.grindstone_title");
 
-public abstract class cvw extends cvv implements csm {
-   protected cvw(dex.d $$0, hb $$1, ehy $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected dey a(dey $$0, dey $$1) {
-      return $$1;
+   protected cvw(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(aC, ha.c).a(I, dfl.b));
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   public cyr b_(dfa $$0) {
+      return cyr.c;
+   }
+
+   private ehx n(dfa $$0) {
+      ha $$1 = $$0.c(aC);
+      switch ((dfl)$$0.c(I)) {
+         case a:
+            if ($$1 != ha.c && $$1 != ha.d) {
+               return E;
+            }
+
+            return h;
+         case b:
+            if ($$1 == ha.c) {
+               return V;
+            } else if ($$1 == ha.d) {
+               return N;
+            } else {
+               if ($$1 == ha.f) {
+                  return al;
+               }
+
+               return ad;
+            }
+         case c:
+            if ($$1 != ha.c && $$1 != ha.d) {
+               return aB;
+            }
+
+            return at;
+         default:
+            return E;
       }
-
-      cvx $$6 = this.b();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, eac.c, eac.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
    }
 
    @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      return new ciw(this.b());
+   public ehx c(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public boolean a(cpn $$0, gv $$1, dey $$2) {
-      Optional<gv> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public boolean a(cpk $$0, art $$1, gv $$2, dey $$3) {
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
       return true;
    }
 
    @Override
-   public void a(aki $$0, art $$1, gv $$2, dey $$3) {
-      Optional<gv> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dey $$5 = $$0.a_($$4.get());
-         ((cvx)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      if ($$1.B) {
+         return bgq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apg.aD);
+         return bgq.b;
       }
    }
 
-   private Optional<gv> a(coq $$0, gv $$1, csk $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.b());
+   @Override
+   public bgt b(dfa $$0, cpm $$1, gu $$2) {
+      return new bgy(($$2x, $$3, $$4) -> new cfa($$2x, $$3, cep.a($$1, $$2)), aP);
    }
 
    @Override
-   public boolean a(dey $$0, cle $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(aC, $$1.a($$0.c(aC)));
    }
 
    @Override
-   protected csk a() {
-      return this;
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a($$1.a($$0.c(aC)));
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(aC, I);
+   }
+
+   @Override
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
    }
 }

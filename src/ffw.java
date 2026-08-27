@@ -1,70 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+public class ffw<T extends bii> extends fex<T> {
+   private final fhn a;
+   private final fhn b;
+   private final fhn f;
 
-public class ffw extends ffc<cde> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fhj g;
-   private final fhj h;
-   private final ImmutableList<fhj> i;
-
-   public ffw(fhj $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+   public ffw(fhn $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   protected Builder<fhj> a(fhj $$0) {
-      Builder<fhj> $$1 = new Builder();
-      $$1.add(new fhj[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fhs.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fhp.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fhs.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fhp.a(-2.5F, 17.0F, -1.5F));
+      $$1.a("left_blue_fin", fhs.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fhp.a(2.5F, 17.0F, -1.5F));
+      $$1.a("top_front_fin", fhs.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fhp.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", fhs.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fhp.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fhs.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhp.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", fhs.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhp.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fhs.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhp.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fhs.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhp.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", fhs.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fhp.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", fhs.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fhp.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return fht.a($$0, 32, 32);
    }
 
-   public static void a(fhs $$0) {
-      $$0.a(
-         "bottom",
-         fho.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fhl.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fho.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fhl.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fho.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fhl.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   @Override
+   public fhn a() {
+      return this.a;
    }
 
-   public static fhp b() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      a($$1);
-      return fhp.a($$0, 128, 64);
-   }
-
-   public void a(cde $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fhj> c() {
-      return this.i;
-   }
-
-   private static void a(cde $$0, int $$1, fhj $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = aro.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aro.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = aro.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aro.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * arp.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * arp.a($$3 * 0.2F);
    }
 }

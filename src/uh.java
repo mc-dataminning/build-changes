@@ -1,32 +1,37 @@
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class uh implements tf {
-   private final String b;
-   @Nullable
-   private Supplier<te> c;
-
+public record uh(String a, @Nullable ga b) implements ug {
    public uh(String $$0) {
-      this.b = $$0;
+      this($$0, a($$0));
    }
 
-   private te b() {
-      if (this.c == null) {
-         this.c = ui.a.apply(this.b);
+   @Nullable
+   private static ga a(String $$0) {
+      try {
+         gb $$1 = new gb(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return this.c.get();
    }
 
    @Override
-   public <T> Optional<T> a(ti.a<T> $$0) {
-      return this.b().a($$0);
+   public Stream<qr> getData(dr $$0) throws CommandSyntaxException {
+      if (this.b != null) {
+         List<? extends bii> $$1 = this.b.b($$0);
+         return $$1.stream().map(cl::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
-      return this.b().a($$0, $$1);
+   public String toString() {
+      return "entity=" + this.a;
    }
 
    @Override
@@ -34,7 +39,7 @@ public class uh implements tf {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof uh $$1 && this.b.equals($$1.b)) {
+         if ($$0 instanceof uh $$1 && this.a.equals($$1.a)) {
             return true;
          }
 
@@ -44,15 +49,6 @@ public class uh implements tf {
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
+      return this.a.hashCode();
    }
 }

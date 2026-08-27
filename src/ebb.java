@@ -1,141 +1,210 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebb implements ebd {
-   private static final Logger b = LogUtils.getLogger();
-   private final cpk c;
-   private final int d;
-   private final ArrayDeque<ebb.c> e = new ArrayDeque<>();
-   private final List<ebb.c> f = new ArrayList<>();
-   private int g = 0;
+public class ebb {
+   private static final int c = 2;
+   public static final int a = 21;
+   private static final int d = 3;
+   public static final int b = 21;
+   private static final dez.f e = ($$0, $$1, $$2) -> $$0.a(csn.co);
+   private static final float f = 4.0F;
+   private static final double g = 1.0;
+   private final cpn h;
+   private final ha.a i;
+   private final ha j;
+   private int k;
+   @Nullable
+   private gu l;
+   private int m;
+   private final int n;
 
-   public ebb(cpk $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static Optional<ebb> a(cpn $$0, gu $$1, ha.a $$2) {
+      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
    }
 
-   @Override
-   public void a(hb $$0, dey $$1, gv $$2, gv $$3, int $$4, int $$5) {
-      this.a($$2, new ebb.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public static Optional<ebb> a(cpn $$0, gu $$1, Predicate<ebb> $$2, ha.a $$3) {
+      Optional<ebb> $$4 = Optional.of(new ebb($$0, $$1, $$3)).filter($$2);
+      if ($$4.isPresent()) {
+         return $$4;
+      } else {
+         ha.a $$5 = $$3 == ha.a.a ? ha.a.c : ha.a.a;
+         return Optional.of(new ebb($$0, $$1, $$5)).filter($$2);
+      }
    }
 
-   @Override
-   public void a(gv $$0, csk $$1, gv $$2) {
-      this.a($$0, new ebb.e($$0, $$1, $$2.i()));
-   }
-
-   @Override
-   public void a(dey $$0, gv $$1, csk $$2, gv $$3, boolean $$4) {
-      this.a($$1, new ebb.a($$0, $$1.i(), $$2, $$3.i(), $$4));
-   }
-
-   @Override
-   public void a(gv $$0, csk $$1, @Nullable hb $$2) {
-      this.a($$0, new ebb.b($$0.i(), $$1, $$2));
-   }
-
-   private void a(gv $$0, ebb.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
+   public ebb(cpn $$0, gu $$1, ha.a $$2) {
+      this.h = $$0;
+      this.i = $$2;
+      this.j = $$2 == ha.a.a ? ha.e : ha.d;
+      this.l = this.a($$1);
+      if (this.l == null) {
+         this.l = $$1;
+         this.n = 1;
+         this.m = 1;
+      } else {
+         this.n = this.d();
+         if (this.n > 0) {
+            this.m = this.e();
          }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
+   @Nullable
+   private gu a(gu $$0) {
+      int $$1 = Math.max(this.h.C_(), $$0.v() - 21);
+
+      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
+         $$0 = $$0.d();
+      }
+
+      ha $$2 = this.j.g();
+      int $$3 = this.a($$0, $$2) - 1;
+      return $$3 < 0 ? null : $$0.a($$2, $$3);
+   }
+
+   private int d() {
+      int $$0 = this.a(this.l, this.j);
+      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
+   }
+
+   private int a(gu $$0, ha $$1) {
+      gu.a $$2 = new gu.a();
+
+      for (int $$3 = 0; $$3 <= 21; $$3++) {
+         $$2.g($$0).c($$1, $$3);
+         dfa $$4 = this.h.a_($$2);
+         if (!a($$4)) {
+            if (e.test($$4, this.h, $$2)) {
+               return $$3;
+            }
+            break;
+         }
+
+         dfa $$5 = this.h.a_($$2.c(ha.a));
+         if (!e.test($$5, this.h, $$2)) {
+            break;
+         }
+      }
+
+      return 0;
+   }
+
+   private int e() {
+      gu.a $$0 = new gu.a();
+      int $$1 = this.a($$0);
+      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   }
+
+   private boolean a(gu.a $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.n; $$2++) {
+         gu.a $$3 = $$0.g(this.l).c(ha.b, $$1).c(this.j, $$2);
+         if (!e.test(this.h.a_($$3), this.h, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private int a(gu.a $$0) {
+      for (int $$1 = 0; $$1 < 21; $$1++) {
+         $$0.g(this.l).c(ha.b, $$1).c(this.j, -1);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
+
+         $$0.g(this.l).c(ha.b, $$1).c(this.j, this.n);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
+
+         for (int $$2 = 0; $$2 < this.n; $$2++) {
+            $$0.g(this.l).c(ha.b, $$1).c(this.j, $$2);
+            dfa $$3 = this.h.a_($$0);
+            if (!a($$3)) {
+               return $$1;
             }
 
-            this.f.clear();
-            ebb.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
+            if ($$3.a(csn.ee)) {
+               this.k++;
             }
          }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
-   }
-
-   static record a(dey a, gv b, csk c, gv d, boolean e) implements ebb.c {
-      @Override
-      public boolean a(cpk $$0) {
-         ebd.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
-
-   static final class b implements ebb.c {
-      private final gv a;
-      private final csk b;
-      @Nullable
-      private final hb c;
-      private int d = 0;
-
-      b(gv $$0, csk $$1, @Nullable hb $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (ebd.a[this.d] == $$2) {
-            this.d++;
-         }
       }
 
-      @Override
-      public boolean a(cpk $$0) {
-         gv $$1 = this.a.a(ebd.a[this.d++]);
-         dey $$2 = $$0.a_($$1);
-         $$2.a($$0, $$1, this.b, this.a, false);
-         if (this.d < ebd.a.length && ebd.a[this.d] == this.c) {
-            this.d++;
-         }
+      return 21;
+   }
 
-         return this.d < ebd.a.length;
+   private static boolean a(dfa $$0) {
+      return $$0.i() || $$0.a(apl.aJ) || $$0.a(csn.ee);
+   }
+
+   public boolean a() {
+      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
+   }
+
+   public void b() {
+      dfa $$0 = csn.ee.n().a(cxo.a, this.i);
+      gu.a(this.l, this.l.a(ha.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
+   }
+
+   public boolean c() {
+      return this.a() && this.k == this.n * this.m;
+   }
+
+   public static ehe a(l.a $$0, ha.a $$1, ehe $$2, bij $$3) {
+      double $$4 = (double)$$0.b - (double)$$3.a;
+      double $$5 = (double)$$0.c - (double)$$3.b;
+      gu $$6 = $$0.a;
+      double $$8;
+      if ($$4 > 0.0) {
+         float $$7 = (float)$$6.a($$1) + $$3.a / 2.0F;
+         $$8 = arp.a(arp.c($$2.a($$1) - (double)$$7, 0.0, $$4), 0.0, 1.0);
+      } else {
+         $$8 = 0.5;
       }
-   }
 
-   interface c {
-      boolean a(cpk var1);
-   }
-
-   static record d(hb a, dey b, gv c, gv d, int e, int f) implements ebb.c {
-      @Override
-      public boolean a(cpk $$0) {
-         ebd.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
+      double $$11;
+      if ($$5 > 0.0) {
+         ha.a $$10 = ha.a.b;
+         $$11 = arp.a(arp.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
+      } else {
+         $$11 = 0.0;
       }
+
+      ha.a $$13 = $$1 == ha.a.a ? ha.a.c : ha.a.a;
+      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
+      return new ehe($$8, $$11, $$14);
    }
 
-   static record e(gv a, csk b, gv c) implements ebb.c {
-      @Override
-      public boolean a(cpk $$0) {
-         dey $$1 = $$0.a_(this.a);
-         ebd.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   public static eba a(akk $$0, l.a $$1, ha.a $$2, ehe $$3, bii $$4, ehe $$5, float $$6, float $$7) {
+      gu $$8 = $$1.a;
+      dfa $$9 = $$0.a_($$8);
+      ha.a $$10 = $$9.d(dfq.H).orElse(ha.a.a);
+      double $$11 = (double)$$1.b;
+      double $$12 = (double)$$1.c;
+      bij $$13 = $$4.a($$4.an());
+      int $$14 = $$2 == $$10 ? 0 : 90;
+      ehe $$15 = $$2 == $$10 ? $$5 : new ehe($$5.e, $$5.d, -$$5.c);
+      double $$16 = (double)$$13.a / 2.0 + ($$11 - (double)$$13.a) * $$3.a();
+      double $$17 = ($$12 - (double)$$13.b) * $$3.b();
+      double $$18 = 0.5 + $$3.c();
+      boolean $$19 = $$10 == ha.a.a;
+      ehe $$20 = new ehe((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
+      ehe $$21 = a($$20, $$0, $$4, $$13);
+      return new eba($$21, $$15, $$6 + (float)$$14, $$7);
+   }
+
+   private static ehe a(ehe $$0, akk $$1, bii $$2, bij $$3) {
+      if (!($$3.a > 4.0F) && !($$3.b > 4.0F)) {
+         double $$4 = (double)$$3.b / 2.0;
+         ehe $$5 = $$0.b(0.0, $$4, 0.0);
+         ehx $$6 = ehu.a(egz.a($$5, (double)$$3.a, 0.0, (double)$$3.a).b(0.0, 1.0, 0.0).g(1.0E-6));
+         Optional<ehe> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a, (double)$$3.b, (double)$$3.a);
+         Optional<ehe> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
+         return $$8.orElse($$0);
+      } else {
+         return $$0;
       }
    }
 }

@@ -1,30 +1,12 @@
-public class fkb extends flw {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final flr M;
-
-   fkb(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flr $$7) {
+public class fkb extends fmb {
+   fkb(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = aro.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = aro.a(this.r, 0.0F, 0.0F);
-      this.x = aro.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
@@ -32,52 +14,36 @@ public class fkb extends flw {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
+         this.k += 0.002;
          this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(gu.a(this.g, this.h, this.i)).a(apq.a)) {
+            this.k();
          }
       }
    }
 
    @Override
-   public fla b() {
-      return fla.b;
+   public flf b() {
+      return flf.b;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aro.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements fle<iy> {
+      private final flw a;
 
-   public static class a implements fkz<iz> {
-      private final flr a;
-
-      public a(flr $$0) {
+      public a(flw $$0) {
          this.a = $$0;
       }
 
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fkb $$8 = new fkb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

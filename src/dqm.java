@@ -1,23 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dqm(int b, int c, int d) implements dpp {
+public class dqm implements dpr {
    public static final Codec<dqm> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aqw.j.fieldOf("spread_width").forGetter(dqm::a), aqw.j.fieldOf("spread_height").forGetter(dqm::b), aqw.j.fieldOf("max_height").forGetter(dqm::c)
+               ead.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               ht.a(jc.e).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dqm::new)
    );
+   public final ead b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final hi<csm> f;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public dqm(ead $$0, boolean $$1, int $$2, int $$3, hi<csm> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

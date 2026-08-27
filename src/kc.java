@@ -1,99 +1,76 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
-import java.util.HashMap;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class kc implements ke {
-   protected static final bo.a a = bo.a.a().a(bm.a.a().a(true).b());
-   private static final Set<bik<?>> b = ImmutableSet.of(bik.bt, bik.d, bik.ac, bik.aO, bik.bf);
-   private final cdt c;
-   private final cdt d;
-   private final Map<bik<?>, Map<aep, ecp.a>> e = Maps.newHashMap();
+public class kc implements ji {
+   private static final Logger d = LogUtils.getLogger();
+   private final jk.a e;
+   private final Set<aer> f;
+   private final List<kc.a> g;
 
-   protected kc(cdt $$0) {
-      this($$0, $$0);
+   public kc(jk $$0, Set<aer> $$1, List<kc.a> $$2) {
+      this.e = $$0.a(jk.b.a, "loot_tables");
+      this.g = $$2;
+      this.f = $$1;
    }
-
-   protected kc(cdt $$0, cdt $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected static ecp.a a(cpj $$0) {
-      return ecp.b().a(eco.a().a(ega.a(1.0F)).a(ecz.a($$0))).a(eco.a().a(ega.a(1.0F)).a(edf.a(bik.aF.j())));
-   }
-
-   public abstract void a();
 
    @Override
-   public void generate(BiConsumer<aep, ecp.a> $$0) {
-      this.a();
-      Set<aep> $$1 = Sets.newHashSet();
-      jc.h
-         .h()
-         .forEach(
-            $$2 -> {
-               bik<?> $$3 = $$2.a();
-               if ($$3.a(this.c)) {
-                  if (a($$3)) {
-                     Map<aep, ecp.a> $$4 = this.e.remove($$3);
-                     aep $$5 = $$3.j();
-                     if (!$$5.equals(ecd.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
-                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.g().a()));
-                     }
-
-                     if ($$4 != null) {
-                        $$4.forEach(($$3x, $$4x) -> {
-                           if (!$$1.add($$3x)) {
-                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2.g().a()));
-                           } else {
-                              $$0.accept($$3x, $$4x);
-                           }
-                        });
-                     }
-                  } else {
-                     Map<aep, ecp.a> $$6 = this.e.remove($$3);
-                     if ($$6 != null) {
-                        throw new IllegalStateException(
-                           String.format(
-                              Locale.ROOT,
-                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              $$6.keySet().stream().map(aep::toString).collect(Collectors.joining(",")),
-                              $$2.g().a()
-                           )
-                        );
-                     }
-                  }
-               }
+   public CompletableFuture<?> a(jg $$0) {
+      final Map<aer, ecp> $$1 = Maps.newHashMap();
+      Map<dky.a, aer> $$2 = new Object2ObjectOpenHashMap();
+      this.g.forEach($$2x -> $$2x.a().get().generate(($$3x, $$4) -> {
+            aer $$5x = $$2.put(bgv.a($$3x), $$3x);
+            if ($$5x != null) {
+               ac.a("Loot table random sequence seed collision on " + $$5x + " and " + $$3x);
             }
-         );
-      if (!this.e.isEmpty()) {
-         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
+
+            $$4.a($$3x);
+            if ($$1.put($$3x, $$4.a($$2x.b).b()) != null) {
+               throw new IllegalStateException("Duplicate loot table " + $$3x);
+            }
+         }));
+      ecq $$3 = new ecq(eer.n, new ecl() {
+         @Nullable
+         @Override
+         public <T> T getElement(ecj<T> $$0) {
+            return (T)($$0.a() == ecm.c ? $$1.get($$0.b()) : null);
+         }
+      });
+
+      for (aer $$5 : Sets.difference(this.f, $$1.keySet())) {
+         $$3.a("Missing built-in table: " + $$5);
+      }
+
+      $$1.forEach(($$1x, $$2x) -> $$2x.a($$3.a($$2x.a()).a("{" + $$1x + "}", new ecj<>(ecm.c, $$1x))));
+      Multimap<String, String> $$6 = $$3.a();
+      if (!$$6.isEmpty()) {
+         $$6.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
+         throw new IllegalStateException("Failed to validate loot tables, see logs");
+      } else {
+         return CompletableFuture.allOf($$1.entrySet().stream().map($$1x -> {
+            aer $$2x = (aer)$$1x.getKey();
+            ecp $$3x = (ecp)$$1x.getValue();
+            Path $$4 = this.e.a($$2x);
+            return ji.a($$0, ecp.c, $$3x, $$4);
+         }).toArray(CompletableFuture[]::new));
       }
    }
 
-   private static boolean a(bik<?> $$0) {
-      return b.contains($$0) || $$0.f() != biz.h;
+   @Override
+   public final String a() {
+      return "Loot Tables";
    }
 
-   protected efh.a b() {
-      return efb.a(bd.a.a().b(bo.a.a().a(bik.O)));
-   }
-
-   protected efh.a a(but $$0) {
-      return efb.a(bd.a.a().b(bo.a.a().a(bik.O).a(bp.a($$0))));
-   }
-
-   protected void a(bik<?> $$0, ecp.a $$1) {
-      this.a($$0, $$0.j(), $$1);
-   }
-
-   protected void a(bik<?> $$0, aep $$1, ecp.a $$2) {
-      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
+   public static record a(Supplier<kd> a, eeq b) {
    }
 }

@@ -1,207 +1,102 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class edj extends edv {
-   static final Map<aep, edj.c> a = Maps.newHashMap();
-   final cnd b;
-   final edj.b c;
+public class edj extends edt {
+   public static final Codec<edj> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  jb.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dgd::f).toList())
+               )
+            )
+            .apply($$0, edj::new)
+   );
+   private final he<csm> b;
+   private final Set<dgd<?>> c;
 
-   edj(efh[] $$0, cnd $$1, edj.b $$2) {
+   edj(List<efg> $$0, he<csm> $$1, Set<dgd<?>> $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
    }
 
-   @Override
-   public edx b() {
-      return edy.q;
+   private edj(List<efg> $$0, he<csm> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.i);
+   public edv b() {
+      return edw.x;
    }
 
    @Override
-   public ciw a(ciw $$0, ech $$1) {
-      ciw $$2 = $$1.c(eet.i);
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(ees.g);
+   }
+
+   @Override
+   protected ciy a(ciy $$0, ech $$1) {
+      dfa $$2 = $$1.c(ees.g);
       if ($$2 != null) {
-         int $$3 = cnf.a(this.b, $$2);
-         int $$4 = this.c.a($$1.b(), $$0.L(), $$3);
-         $$0.f($$4);
+         qr $$3 = $$0.w();
+         qr $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new qr();
+            $$3.a("BlockStateTag", $$4);
+         }
+
+         for (dgd<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
       }
 
       return $$0;
    }
 
-   public static edv.a<?> a(cnd $$0, float $$1, int $$2) {
-      return a($$3 -> new edj($$3, $$0, new edj.a($$2, $$1)));
+   public static edj.a a(csm $$0) {
+      return new edj.a($$0);
    }
 
-   public static edv.a<?> a(cnd $$0) {
-      return a($$1 -> new edj($$1, $$0, new edj.d()));
+   private static <T extends Comparable<T>> String a(dfa $$0, dgd<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
    }
 
-   public static edv.a<?> b(cnd $$0) {
-      return a($$1 -> new edj($$1, $$0, new edj.f(1)));
-   }
+   public static class a extends edt.a<edj.a> {
+      private final he<csm> a;
+      private final Builder<dgd<?>> b = ImmutableSet.builder();
 
-   public static edv.a<?> a(cnd $$0, int $$1) {
-      return a($$2 -> new edj($$2, $$0, new edj.f($$1)));
-   }
-
-   static {
-      a.put(edj.a.a, edj.a::a);
-      a.put(edj.d.a, edj.d::a);
-      a.put(edj.f.a, edj.f::a);
-   }
-
-   static final class a implements edj.b {
-      public static final aep a = new aep("binomial_with_bonus_count");
-      private final int b;
-      private final float c;
-
-      public a(int $$0, float $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      a(csm $$0) {
+         this.a = $$0.q();
       }
 
-      @Override
-      public int a(art $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
-         }
-
-         return $$1;
-      }
-
-      @Override
-      public void a(JsonObject $$0, JsonSerializationContext $$1) {
-         $$0.addProperty("extra", this.b);
-         $$0.addProperty("probability", this.c);
-      }
-
-      public static edj.b a(JsonObject $$0, JsonDeserializationContext $$1) {
-         int $$2 = arf.o($$0, "extra");
-         float $$3 = arf.m($$0, "probability");
-         return new edj.a($$2, $$3);
-      }
-
-      @Override
-      public aep a() {
-         return a;
-      }
-   }
-
-   interface b {
-      int a(art var1, int var2, int var3);
-
-      void a(JsonObject var1, JsonSerializationContext var2);
-
-      aep a();
-   }
-
-   interface c {
-      edj.b deserialize(JsonObject var1, JsonDeserializationContext var2);
-   }
-
-   static final class d implements edj.b {
-      public static final aep a = new aep("ore_drops");
-
-      @Override
-      public int a(art $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
-
-            return $$1 * ($$3 + 1);
+      public edj.a a(dgd<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
          } else {
-            return $$1;
+            this.b.add($$0);
+            return this;
          }
       }
 
-      @Override
-      public void a(JsonObject $$0, JsonSerializationContext $$1) {
-      }
-
-      public static edj.b a(JsonObject $$0, JsonDeserializationContext $$1) {
-         return new edj.d();
+      protected edj.a a() {
+         return this;
       }
 
       @Override
-      public aep a() {
-         return a;
-      }
-   }
-
-   public static class e extends edv.c<edj> {
-      public void a(JsonObject $$0, edj $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("enchantment", jc.g.b($$1.b).toString());
-         $$0.addProperty("formula", $$1.c.a().toString());
-         JsonObject $$3 = new JsonObject();
-         $$1.c.a($$3, $$2);
-         if ($$3.size() > 0) {
-            $$0.add("parameters", $$3);
-         }
-      }
-
-      public edj a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         aep $$3 = new aep(arf.i($$0, "enchantment"));
-         cnd $$4 = jc.g.b($$3).orElseThrow(() -> new JsonParseException("Invalid enchantment id: " + $$3));
-         aep $$5 = new aep(arf.i($$0, "formula"));
-         edj.c $$6 = edj.a.get($$5);
-         if ($$6 == null) {
-            throw new JsonParseException("Invalid formula id: " + $$5);
-         } else {
-            edj.b $$7;
-            if ($$0.has("parameters")) {
-               $$7 = $$6.deserialize(arf.u($$0, "parameters"), $$1);
-            } else {
-               $$7 = $$6.deserialize(new JsonObject(), $$1);
-            }
-
-            return new edj($$2, $$4, $$7);
-         }
-      }
-   }
-
-   static final class f implements edj.b {
-      public static final aep a = new aep("uniform_bonus_count");
-      private final int b;
-
-      public f(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public int a(art $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.b * $$2 + 1);
-      }
-
-      @Override
-      public void a(JsonObject $$0, JsonSerializationContext $$1) {
-         $$0.addProperty("bonusMultiplier", this.b);
-      }
-
-      public static edj.b a(JsonObject $$0, JsonDeserializationContext $$1) {
-         int $$2 = arf.o($$0, "bonusMultiplier");
-         return new edj.f($$2);
-      }
-
-      @Override
-      public aep a() {
-         return a;
+      public edu b() {
+         return new edj(this.g(), this.a, this.b.build());
       }
    }
 }

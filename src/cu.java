@@ -1,47 +1,70 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cu extends cv<cu.a> {
-   static final aep a = new aep("shot_crossbow");
+public abstract class cu<T extends ar> implements al<T> {
+   private final Map<aez, Set<al.a<T>>> a = Maps.newIdentityHashMap();
 
    @Override
-   public aep a() {
-      return a;
+   public final void a(aez $$0, al.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
-   public cu.a a(JsonObject $$0, ba $$1, be $$2) {
-      bz $$3 = bz.a($$0.get("item"));
-      return new cu.a($$1, $$3);
+   @Override
+   public final void b(aez $$0, al.a<T> $$1) {
+      Set<al.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
-   public void a(akj $$0, ciw $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public final void a(aez $$0) {
+      this.a.remove($$0);
    }
 
-   public static class a extends ar {
-      private final bz a;
+   protected abstract T b(JsonObject var1, Optional<ba> var2, be var3);
 
-      public a(ba $$0, bz $$1) {
-         super(cu.a, $$0);
-         this.a = $$1;
-      }
+   public final T b(JsonObject $$0, be $$1) {
+      Optional<ba> $$2 = bo.a($$0, "player", $$1);
+      return this.b($$0, $$2, $$1);
+   }
 
-      public static cu.a a(bz $$0) {
-         return new cu.a(ba.a, $$0);
-      }
+   protected void a(akl $$0, Predicate<T> $$1) {
+      aez $$2 = $$0.N();
+      Set<al.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         ech $$4 = bo.b($$0, $$0);
+         List<al.a<T>> $$5 = null;
 
-      public static cu.a a(cpj $$0) {
-         return new cu.a(ba.a, bz.a.a().a($$0).b());
-      }
+         for (al.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<ba> $$8 = $$7.c();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
 
-      public boolean a(ciw $$0) {
-         return this.a.a($$0);
-      }
+                  $$5.add($$6);
+               }
+            }
+         }
 
-      @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("item", this.a.a());
-         return $$1;
+         if ($$5 != null) {
+            for (al.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
       }
    }
 }

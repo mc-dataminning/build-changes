@@ -1,50 +1,62 @@
 import java.util.EnumSet;
 
-public class bpf extends bqf {
-   private final bul g;
+public class bpf extends bpu {
+   private final bjh a;
 
-   public bpf(bul $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bps.a.c, bps.a.a));
+   public bpf(bjh $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.p() && !this.g.fZ() && !this.g.gh() && super.a();
+      return this.a.ch() < 140;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a();
+   }
+
+   @Override
+   public boolean J_() {
+      return false;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.g.y(false);
+      this.h();
    }
 
-   @Override
-   protected int a(bjf $$0) {
-      return 40;
-   }
+   private void h() {
+      Iterable<gu> $$0 = gu.b(
+         arp.a(this.a.dp() - 1.0), this.a.dq(), arp.a(this.a.dv() - 1.0), arp.a(this.a.dp() + 1.0), arp.a(this.a.dr() + 8.0), arp.a(this.a.dv() + 1.0)
+      );
+      gu $$1 = null;
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.A(false);
+      for (gu $$2 : $$0) {
+         if (this.a(this.a.dK(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = gu.a(this.a.dp(), this.a.dr() + 8.0, this.a.dv());
+      }
+
+      this.a.H().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gh()) {
-         this.g.A(true);
-      }
+      this.h();
+      this.a.a(0.02F, new ehe((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(bje.a, this.a.dn());
    }
 
-   @Override
-   protected boolean a(cpn $$0, gv $$1) {
-      return $$0.t($$1.c()) && $$0.a_($$1).a(apj.R);
+   private boolean a(cpp $$0, gu $$1) {
+      dfa $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(csn.nd)) && $$2.a($$0, $$1, eat.a);
    }
 }

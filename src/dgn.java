@@ -1,58 +1,55 @@
-public interface dgn {
-   void a(dgp var1, double var2);
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Set;
+import java.util.stream.Stream;
 
-   void a(dgp var1, double var2, double var4, long var6);
+public record dgn(String l, dfp m, czz n, czz o, aov p, aov q) {
+   private static final Set<dgn> r = new ObjectArraySet();
+   public static final dgn a = a(new dgn("oak", dfp.e));
+   public static final dgn b = a(new dgn("spruce", dfp.f));
+   public static final dgn c = a(new dgn("birch", dfp.g));
+   public static final dgn d = a(new dgn("acacia", dfp.h));
+   public static final dgn e = a(new dgn("cherry", dfp.i, czz.aQ, czz.aT, aow.ef, aow.eg));
+   public static final dgn f = a(new dgn("jungle", dfp.j));
+   public static final dgn g = a(new dgn("dark_oak", dfp.k));
+   public static final dgn h = a(new dgn("crimson", dfp.l, czz.aP, czz.aM, aow.pn, aow.po));
+   public static final dgn i = a(new dgn("warped", dfp.m, czz.aP, czz.aM, aow.pn, aow.po));
+   public static final dgn j = a(new dgn("mangrove", dfp.n));
+   public static final dgn k = a(new dgn("bamboo", dfp.o, czz.aO, czz.aN, aow.bh, aow.bi));
 
-   void a(dgp var1, double var2, double var4);
+   public dgn(String $$0, dfp $$1) {
+      this($$0, $$1, czz.b, czz.aL, aow.hB, aow.hC);
+   }
 
-   void a(dgp var1, int var2);
+   private static dgn a(dgn $$0) {
+      r.add($$0);
+      return $$0;
+   }
 
-   void b(dgp var1, int var2);
+   public static Stream<dgn> a() {
+      return r.stream();
+   }
 
-   void b(dgp var1, double var2);
+   public String b() {
+      return this.l;
+   }
 
-   void c(dgp var1, double var2);
+   public dfp c() {
+      return this.m;
+   }
 
-   public static class a implements dgn {
-      private final dgp a;
+   public czz d() {
+      return this.n;
+   }
 
-      public a(dgp $$0) {
-         this.a = $$0;
-      }
+   public czz e() {
+      return this.o;
+   }
 
-      @Override
-      public void a(dgp $$0, double $$1) {
-         this.a.a($$1);
-      }
+   public aov f() {
+      return this.p;
+   }
 
-      @Override
-      public void a(dgp $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dgp $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dgp $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dgp $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dgp $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dgp $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public aov g() {
+      return this.q;
    }
 }

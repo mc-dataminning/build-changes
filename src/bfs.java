@@ -1,14 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bfs<P extends bfr> {
-   bfs<bfp> a = a("constant", bfp.b);
-   bfs<bfy> b = a("uniform", bfy.a);
-   bfs<bfn> c = a("clamped_normal", bfn.a);
-   bfs<bfx> d = a("trapezoid", bfx.a);
+public class bfs extends bfv {
+   public static final bfs a = new bfs(0);
+   public static final Codec<bfs> b = aqy.c(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bfs::new, bfs::d);
+   private final int f;
 
-   Codec<P> codec();
+   public static bfs a(int $$0) {
+      return $$0 == 0 ? a : new bfs($$0);
+   }
 
-   static <P extends bfr> bfs<P> a(String $$0, Codec<P> $$1) {
-      return hs.a(jc.M, $$0, () -> $$1);
+   private bfs(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(aru $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bfw<?> c() {
+      return bfw.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

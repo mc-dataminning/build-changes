@@ -1,55 +1,39 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cib extends cir {
-   public cib(cir.a $$0) {
+public class cib extends cit {
+   public cib(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(ciw $$0, @Nullable cpk $$1, List<te> $$2, ckn $$3) {
-      qs $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
-   }
-
-   public static void a(qs $$0, List<te> $$1) {
-      cia.a $$2 = cia.a.a($$0.f("Type"));
-      $$1.add(te.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(te.h().a(n.h), $$3));
-      }
-
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(te.c("item.minecraft.firework_star.fade_to").b(td.u).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(te.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(te.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static te a(tr $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public bgq a(cli $$0) {
+      cpm $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      dfa $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!csz.h($$3) && !cta.g($$3) && !ctb.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (csa.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, csa.a($$1, $$2));
+            $$1.a($$0.o(), djk.i, $$2);
+            $$4 = true;
          }
-
-         $$0.b(a($$1[$$2]));
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dfq.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), djk.c, $$2);
+         $$4 = true;
       }
 
-      return $$0;
+      if ($$4) {
+         $$0.n().h(1);
+         return bgq.a($$1.B);
+      } else {
+         return bgq.e;
+      }
    }
 
-   private static te a(int $$0) {
-      chk $$1 = chk.b($$0);
-      return $$1 == null ? te.c("item.minecraft.firework_star.custom_color") : te.c("item.minecraft.firework_star." + $$1.b());
+   private void a(cpm $$0, gu $$1) {
+      aru $$2 = $$0.y_();
+      $$0.a(null, $$1, aow.hD, aox.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

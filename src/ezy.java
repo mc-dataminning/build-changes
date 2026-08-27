@@ -1,305 +1,151 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class ezy extends exz {
+   private static final int a = 7;
+   private static final tf b = tf.c("jigsaw_block.joint_label");
+   private static final tf c = tf.c("jigsaw_block.pool");
+   private static final tf k = tf.c("jigsaw_block.name");
+   private static final tf l = tf.c("jigsaw_block.target");
+   private static final tf m = tf.c("jigsaw_block.final_state");
+   private final ddl n;
+   private esq o;
+   private esq p;
+   private esq q;
+   private esq s;
+   int t;
+   private boolean u = true;
+   private eso<ddl.a> v;
+   private esh w;
+   private esh x;
+   private ddl.a y;
 
-public class ezy extends eyt<cfj> {
-   private static final aep x = new aep("container/villager/out_of_stock");
-   private static final aep y = new aep("container/villager/experience_bar_background");
-   private static final aep z = new aep("container/villager/experience_bar_current");
-   private static final aep A = new aep("container/villager/experience_bar_result");
-   private static final aep B = new aep("container/villager/scroller");
-   private static final aep C = new aep("container/villager/scroller_disabled");
-   private static final aep D = new aep("container/villager/trade_arrow_out_of_stock");
-   private static final aep E = new aep("container/villager/trade_arrow");
-   private static final aep F = new aep("container/villager/discount_strikethrough");
-   private static final aep G = new aep("textures/gui/container/villager.png");
-   private static final int H = 512;
-   private static final int I = 256;
-   private static final int J = 99;
-   private static final int K = 136;
-   private static final int L = 16;
-   private static final int M = 5;
-   private static final int N = 35;
-   private static final int O = 68;
-   private static final int P = 6;
-   private static final int Q = 7;
-   private static final int R = 5;
-   private static final int S = 20;
-   private static final int T = 88;
-   private static final int U = 27;
-   private static final int V = 6;
-   private static final int W = 139;
-   private static final int X = 18;
-   private static final int Y = 94;
-   private static final te Z = te.c("merchant.trades");
-   private static final te aa = te.b(" - ");
-   private static final te ab = te.c("merchant.deprecated");
-   private int ac;
-   private final ezy.a[] ad = new ezy.a[7];
-   int ae;
-   private boolean af;
+   public ezy(ddl $$0) {
+      super(eqe.a);
+      this.n = $$0;
+   }
 
-   public ezy(cfj $$0, cbk $$1, te $$2) {
-      super($$0, $$1, $$2);
-      this.c = 276;
-      this.n = 107;
+   private void l() {
+      this.C();
+      this.f.a(null);
+   }
+
+   private void B() {
+      this.f.a(null);
+   }
+
+   private void C() {
+      this.f.J().b(new acm(this.n.p(), new aer(this.o.a()), new aer(this.p.a()), new aer(this.q.a()), this.s.a(), this.y));
    }
 
    private void D() {
-      this.p.e(this.ac);
-      this.p.h(this.ac);
-      this.f.I().b(new ace(this.ac));
+      this.f.J().b(new abr(this.n.p(), this.t, this.u));
+   }
+
+   @Override
+   public void au_() {
+      this.B();
    }
 
    @Override
    protected void aE_() {
-      super.aE_();
-      int $$0 = (this.g - this.c) / 2;
-      int $$1 = (this.h - this.k) / 2;
-      int $$2 = $$1 + 16 + 2;
+      this.q = new esq(this.i, this.g / 2 - 153, 20, 300, 20, tf.c("jigsaw_block.pool"));
+      this.q.k(128);
+      this.q.a(this.n.f().a().toString());
+      this.q.b($$0x -> this.E());
+      this.e(this.q);
+      this.o = new esq(this.i, this.g / 2 - 153, 55, 300, 20, tf.c("jigsaw_block.name"));
+      this.o.k(128);
+      this.o.a(this.n.c().toString());
+      this.o.b($$0x -> this.E());
+      this.e(this.o);
+      this.p = new esq(this.i, this.g / 2 - 153, 90, 300, 20, tf.c("jigsaw_block.target"));
+      this.p.k(128);
+      this.p.a(this.n.d().toString());
+      this.p.b($$0x -> this.E());
+      this.e(this.p);
+      this.s = new esq(this.i, this.g / 2 - 153, 125, 300, 20, tf.c("jigsaw_block.final_state"));
+      this.s.k(256);
+      this.s.a(this.n.g());
+      this.e(this.s);
+      this.y = this.n.i();
+      int $$0 = this.i.a(b) + 10;
+      this.v = this.d(eso.<ddl.a>a(ddl.a::a).a(ddl.a.values()).a(this.y).a().a(this.g / 2 - 152 + $$0, 150, 300 - $$0, 20, b, ($$0x, $$1x) -> this.y = $$1x));
+      boolean $$1 = cwl.h(this.n.q()).o().b();
+      this.v.i = $$1;
+      this.v.j = $$1;
+      this.d(new esd(this.g / 2 - 154, 180, 100, 20, te.a, 0.0) {
+         {
+            this.b();
+         }
 
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         this.ad[$$3] = this.d(new ezy.a($$0 + 5, $$2, $$3, $$0x -> {
-            if ($$0x instanceof ezy.a) {
-               this.ac = ((ezy.a)$$0x).a() + this.ae;
-               this.D();
-            }
-         }));
-         $$2 += 20;
-      }
+         @Override
+         protected void b() {
+            this.b(tf.a("jigsaw_block.levels", ezy.this.t));
+         }
+
+         @Override
+         protected void a() {
+            ezy.this.t = arp.a(arp.b(0.0, 7.0, this.c));
+         }
+      });
+      this.d(eso.b(this.u).a(this.g / 2 - 50, 180, 100, 20, tf.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1x) -> this.u = $$1x));
+      this.x = this.d(esh.a(tf.c("jigsaw_block.generate"), $$0x -> {
+         this.l();
+         this.D();
+      }).a(this.g / 2 + 54, 180, 100, 20).a());
+      this.w = this.d(esh.a(te.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
+      this.d(esh.a(te.e, $$0x -> this.B()).a(this.g / 2 + 4, 210, 150, 20).a());
+      this.c(this.q);
+      this.E();
+   }
+
+   private void E() {
+      boolean $$0 = aer.i(this.o.a()) && aer.i(this.p.a()) && aer.i(this.q.a());
+      this.w.i = $$0;
+      this.x.i = $$0;
    }
 
    @Override
-   protected void b(erx $$0, int $$1, int $$2) {
-      int $$3 = this.p.n();
-      if ($$3 > 0 && $$3 <= 5 && this.p.q()) {
-         te $$4 = this.e.e().b(aa).b(te.c("merchant.level." + $$3));
-         int $$5 = this.i.a($$4);
-         int $$6 = 49 + this.c / 2 - $$5 / 2;
-         $$0.a(this.i, $$4, $$6, 6, 4210752, false);
-      } else {
-         $$0.a(this.i, this.e, 49 + this.c / 2 - this.i.a(this.e) / 2, 6, 4210752, false);
-      }
-
-      $$0.a(this.i, this.q, this.n, this.o, 4210752, false);
-      int $$7 = this.i.a(Z);
-      $$0.a(this.i, Z, 5 - $$7 / 2 + 48, 6, 4210752, false);
+   public void a(eqm $$0, int $$1, int $$2) {
+      String $$3 = this.o.a();
+      String $$4 = this.p.a();
+      String $$5 = this.q.a();
+      String $$6 = this.s.a();
+      int $$7 = this.t;
+      ddl.a $$8 = this.y;
+      this.b($$0, $$1, $$2);
+      this.o.a($$3);
+      this.p.a($$4);
+      this.q.a($$5);
+      this.s.a($$6);
+      this.t = $$7;
+      this.y = $$8;
+      this.v.a($$8);
    }
 
    @Override
-   protected void a(erx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(G, $$4, $$5, 0, 0.0F, 0.0F, this.c, this.k, 512, 256);
-      coi $$6 = this.p.p();
-      if (!$$6.isEmpty()) {
-         int $$7 = this.ac;
-         if ($$7 < 0 || $$7 >= $$6.size()) {
-            return;
-         }
-
-         coh $$8 = $$6.get($$7);
-         if ($$8.p()) {
-            $$0.a(x, this.t + 83 + 99, this.u + 35, 0, 28, 21);
-         }
-      }
-   }
-
-   private void a(erx $$0, int $$1, int $$2, coh $$3) {
-      int $$4 = this.p.n();
-      int $$5 = this.p.l();
-      if ($$4 < 5) {
-         $$0.a(y, $$1 + 136, $$2 + 16, 0, 102, 5);
-         int $$6 = caz.b($$4);
-         if ($$5 >= $$6 && caz.d($$4)) {
-            int $$7 = 102;
-            float $$8 = 102.0F / (float)(caz.c($$4) - $$6);
-            int $$9 = Math.min(aro.d($$8 * (float)($$5 - $$6)), 102);
-            $$0.a(z, 102, 5, 0, 0, $$1 + 136, $$2 + 16, 0, $$9, 5);
-            int $$10 = this.p.m();
-            if ($$10 > 0) {
-               int $$11 = Math.min(aro.d((float)$$10 * $$8), 102 - $$9);
-               $$0.a(A, 102, 5, $$9, 0, $$1 + 136 + $$9, $$2 + 16, 0, $$11, 5);
-            }
-         }
-      }
-   }
-
-   private void a(erx $$0, int $$1, int $$2, coi $$3) {
-      int $$4 = $$3.size() + 1 - 7;
-      if ($$4 > 1) {
-         int $$5 = 139 - (27 + ($$4 - 1) * 139 / $$4);
-         int $$6 = 1 + $$5 / $$4 + 139 / $$4;
-         int $$7 = 113;
-         int $$8 = Math.min(113, this.ae * $$6);
-         if (this.ae == $$4 - 1) {
-            $$8 = 113;
-         }
-
-         $$0.a(B, $$1 + 94, $$2 + 18 + $$8, 0, 6, 27);
-      } else {
-         $$0.a(C, $$1 + 94, $$2 + 18, 0, 6, 27);
-      }
-   }
-
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      coi $$4 = this.p.p();
-      if (!$$4.isEmpty()) {
-         int $$5 = (this.g - this.c) / 2;
-         int $$6 = (this.h - this.k) / 2;
-         int $$7 = $$6 + 16 + 1;
-         int $$8 = $$5 + 5 + 5;
-         this.a($$0, $$5, $$6, $$4);
-         int $$9 = 0;
-
-         for (coh $$10 : $$4) {
-            if (!this.a($$4.size()) || $$9 >= this.ae && $$9 < 7 + this.ae) {
-               ciw $$11 = $$10.a();
-               ciw $$12 = $$10.b();
-               ciw $$13 = $$10.c();
-               ciw $$14 = $$10.d();
-               $$0.c().a();
-               $$0.c().a(0.0F, 0.0F, 100.0F);
-               int $$15 = $$7 + 2;
-               this.a($$0, $$12, $$11, $$8, $$15);
-               if (!$$13.b()) {
-                  $$0.b($$13, $$5 + 5 + 35, $$15);
-                  $$0.a(this.i, $$13, $$5 + 5 + 35, $$15);
-               }
-
-               this.a($$0, $$10, $$5, $$15);
-               $$0.b($$14, $$5 + 5 + 68, $$15);
-               $$0.a(this.i, $$14, $$5 + 5 + 68, $$15);
-               $$0.c().b();
-               $$7 += 20;
-               $$9++;
-            } else {
-               $$9++;
-            }
-         }
-
-         int $$16 = this.ac;
-         coh $$17 = $$4.get($$16);
-         if (this.p.q()) {
-            this.a($$0, $$5, $$6, $$17);
-         }
-
-         if ($$17.p() && this.a(186, 35, 22, 21, (double)$$1, (double)$$2) && this.p.o()) {
-            $$0.a(this.i, ab, $$1, $$2);
-         }
-
-         for (ezy.a $$18 : this.ad) {
-            if ($$18.n()) {
-               $$18.a($$0, $$1, $$2);
-            }
-
-            $$18.j = $$18.a < this.p.p().size();
-         }
-
-         RenderSystem.enableDepthTest();
-      }
-
-      this.a($$0, $$1, $$2);
-   }
-
-   private void a(erx $$0, coh $$1, int $$2, int $$3) {
-      RenderSystem.enableBlend();
-      if ($$1.p()) {
-         $$0.a(D, $$2 + 5 + 35 + 20, $$3 + 3, 0, 10, 9);
-      } else {
-         $$0.a(E, $$2 + 5 + 35 + 20, $$3 + 3, 0, 10, 9);
-      }
-   }
-
-   private void a(erx $$0, ciw $$1, ciw $$2, int $$3, int $$4) {
-      $$0.b($$1, $$3, $$4);
-      if ($$2.L() == $$1.L()) {
-         $$0.a(this.i, $$1, $$3, $$4);
-      } else {
-         $$0.a(this.i, $$2, $$3, $$4, $$2.L() == 1 ? "1" : null);
-         $$0.a(this.i, $$1, $$3 + 14, $$4, $$1.L() == 1 ? "1" : null);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 300.0F);
-         $$0.a(F, $$3 + 7, $$4 + 12, 0, 9, 2);
-         $$0.c().b();
-      }
-   }
-
-   private boolean a(int $$0) {
-      return $$0 > 7;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      int $$4 = this.p.p().size();
-      if (this.a($$4)) {
-         int $$5 = $$4 - 7;
-         this.ae = aro.a((int)((double)this.ae - $$3), 0, $$5);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      int $$5 = this.p.p().size();
-      if (this.af) {
-         int $$6 = this.u + 18;
-         int $$7 = $$6 + 139;
-         int $$8 = $$5 - 7;
-         float $$9 = ((float)$$1 - (float)$$6 - 13.5F) / ((float)($$7 - $$6) - 27.0F);
-         $$9 = $$9 * (float)$$8 + 0.5F;
-         this.ae = aro.a((int)$$9, 0, $$8);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
          return true;
+      } else if (!this.w.i || $$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+         this.l();
+         return true;
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      this.af = false;
-      int $$3 = (this.g - this.c) / 2;
-      int $$4 = (this.h - this.k) / 2;
-      if (this.a(this.p.p().size())
-         && $$0 > (double)($$3 + 94)
-         && $$0 < (double)($$3 + 94 + 6)
-         && $$1 > (double)($$4 + 18)
-         && $$1 <= (double)($$4 + 18 + 139 + 1)) {
-         this.af = true;
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   class a extends esi {
-      final int a;
-
-      public a(int $$0, int $$1, int $$2, esi.c $$3) {
-         super($$0, $$1, 88, 20, td.a, $$3, o);
-         this.a = $$2;
-         this.j = false;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public void a(erx $$0, int $$1, int $$2) {
-         if (this.h && ezy.this.p.p().size() > this.a + ezy.this.ae) {
-            if ($$1 < this.p() + 20) {
-               ciw $$3 = ezy.this.p.p().get(this.a + ezy.this.ae).b();
-               $$0.b(ezy.this.i, $$3, $$1, $$2);
-            } else if ($$1 < this.p() + 50 && $$1 > this.p() + 30) {
-               ciw $$4 = ezy.this.p.p().get(this.a + ezy.this.ae).c();
-               if (!$$4.b()) {
-                  $$0.b(ezy.this.i, $$4, $$1, $$2);
-               }
-            } else if ($$1 > this.p() + 65) {
-               ciw $$5 = ezy.this.p.p().get(this.a + ezy.this.ae).d();
-               $$0.b(ezy.this.i, $$5, $$1, $$2);
-            }
-         }
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, c, this.g / 2 - 153, 10, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, k, this.g / 2 - 153, 45, 10526880);
+      this.o.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, l, this.g / 2 - 153, 80, 10526880);
+      this.p.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, m, this.g / 2 - 153, 115, 10526880);
+      this.s.a($$0, $$1, $$2, $$3);
+      if (cwl.h(this.n.q()).o().b()) {
+         $$0.b(this.i, b, this.g / 2 - 153, 156, 16777215);
       }
    }
 }

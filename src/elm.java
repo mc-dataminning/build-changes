@@ -1,55 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
 
 public class elm {
-   private final ImmutableList<eln> a;
-   private final ImmutableMap<String, eln> b;
-   private final IntList c = new IntArrayList();
+   private final elm.a a;
+   private final elm.b b;
+   private final int c;
    private final int d;
-   @Nullable
-   private elk e;
+   private final int e;
 
-   public elm(ImmutableMap<String, eln> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         eln $$2 = (eln)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
+   public elm(int $$0, elm.a $$1, elm.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
       }
+   }
 
-      this.d = $$1;
+   private boolean a(int $$0, elm.b $$1) {
+      return $$0 == 0 || $$1 == elm.b.d;
+   }
+
+   public final elm.a a() {
+      return this.a;
+   }
+
+   public final elm.b b() {
+      return this.b;
+   }
+
+   public final int c() {
+      return this.d;
+   }
+
+   public final int d() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+      return this.d + "," + this.b.a() + "," + this.a.b();
    }
 
-   public int a() {
-      return this.b() / 4;
+   public final int e() {
+      return this.e;
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<eln> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
+   public final boolean f() {
+      return this.b == elm.b.a;
    }
 
    @Override
@@ -58,7 +58,13 @@ public class elm {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          elm $$1 = (elm)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.a != $$1.a ? false : this.b == $$1.b;
+         }
       } else {
          return false;
       }
@@ -66,97 +72,111 @@ public class elm {
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
    }
 
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<eln> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<eln> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         eln $$2 = (eln)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public elk g() {
-      elk $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new elk(elk.a.b);
-      }
-
-      return $$0;
+   public void a(int $$0) {
+      this.b.a(this.c, $$0);
    }
 
    public static enum a {
-      a(5123, 2),
-      b(5125, 4);
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
 
-      public final int c;
-      public final int d;
+      private final int h;
+      private final String i;
+      private final int j;
 
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
+      private a(int $$0, String $$1, int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      public static elm.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
       }
    }
 
    public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
+         }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
+      private final String g;
+      private final elm.b.b h;
+      private final elm.b.a i;
 
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+      private b(String $$0, elm.b.b $$1, elm.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
+      }
+
+      public String a() {
+         return this.g;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
+      }
+
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
       }
    }
 }

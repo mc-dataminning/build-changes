@@ -2,10 +2,9 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.function.BiConsumer;
 
-public class dsp extends dst {
+public class dsp extends dsv {
    public static final Codec<dsp> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsp::new));
 
    public dsp(int $$0, int $$1, int $$2) {
@@ -13,62 +12,58 @@ public class dsp extends dst {
    }
 
    @Override
-   protected dsu<?> a() {
-      return dsu.b;
+   protected dsw<?> a() {
+      return dsw.e;
    }
 
    @Override
-   public List<drb.a> a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, int $$3, gv $$4, dql $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<drb.a> $$6 = Lists.newArrayList();
-      hb $$7 = hb.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      gv.a $$10 = new gv.a();
+   public List<drd.a> a(cps $$0, BiConsumer<gu, dfa> $$1, aru $$2, int $$3, gu $$4, dqn $$5) {
+      List<drd.a> $$6 = Lists.newArrayList();
+      gu $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      ha $$8 = ha.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
       int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
+         int $$18 = $$12 + $$17;
+         gu $$19 = new gu($$14, $$18, $$15);
+         if (doz.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
          }
       }
 
-      if ($$13.isPresent()) {
-         $$6.add(new drb.a(new gv($$11, $$13.getAsInt(), $$12), 1, false));
-      }
+      $$6.add(new drd.a(new gu($$14, $$16, $$15), 0, true));
 
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      hb $$16 = hb.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
 
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new gu($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
                }
+
+               $$6.add(new drd.a(new gu($$14 + $$20, $$16, $$15 + $$21), 0, false));
             }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new drb.a(new gv($$11, $$13.getAsInt(), $$12), 0, false));
          }
       }
 

@@ -1,50 +1,30 @@
-public abstract class ezt<T extends cfc> extends eyt<T> implements ceo {
-   private final aep x;
+import org.joml.Vector3f;
 
-   public ezt(T $$0, cbk $$1, te $$2, aep $$3) {
-      super($$0, $$1, $$2);
-      this.x = $$3;
-   }
+public class ezt extends eyz {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int k = 16;
+   private static final int l = 16;
+   private final aer m = new aer("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-   protected void D() {
-   }
-
-   @Override
-   protected void aE_() {
-      super.aE_();
-      this.D();
-      this.p.a(this);
+   public ezt(ddu $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, tf.c("hanging_sign.edit"));
    }
 
    @Override
-   public void h() {
-      super.h();
-      this.p.b(this);
+   protected void b(erw $$0, dfa $$1) {
+      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(erx $$0, int $$1, int $$2, float $$3) {
+   protected void a(erw $$0, dfa $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   protected void a(erx $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(erx var1, int var2, int var3);
-
-   @Override
-   public void a(cec $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cec $$0, int $$1, ciw $$2) {
+   protected Vector3f l() {
+      return c;
    }
 }

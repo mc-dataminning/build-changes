@@ -1,12 +1,13 @@
-public class fuw extends frk<cbt> {
-   public static final aep a = new aep("textures/entity/projectiles/arrow.png");
-   public static final aep f = new aep("textures/entity/projectiles/tipped_arrow.png");
+public class fuw extends fup {
+   private static final aer a = new aer("textures/entity/skeleton/stray.png");
 
-   public fuw(fsj.a $$0) {
-      super($$0);
+   public fuw(fso.a $$0) {
+      super($$0, fhm.bt, fhm.bu, fhm.bv);
+      this.a(new fxe<>(this, $$0.f()));
    }
 
-   public aep a(cbt $$0) {
-      return $$0.z() > 0 ? f : a;
+   @Override
+   public aer a(byk $$0) {
+      return a;
    }
 }

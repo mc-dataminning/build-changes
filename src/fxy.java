@@ -1,39 +1,77 @@
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fxy extends fxz {
+public class fxy extends fxw implements fxx {
+   private static final Logger e = LogUtils.getLogger();
    @Nullable
-   private CompletableFuture<fxz.a> f;
+   private ekh f;
 
-   public fxy(ank $$0, aep $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> fxz.a.a($$0, $$1), $$2);
-   }
-
-   @Override
-   protected fxz.a b(ank $$0) {
-      if (this.f != null) {
-         fxz.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
+   public fxy(ekh $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
       } else {
-         return fxz.a.a($$0, this.e);
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
       }
    }
 
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   public fxy(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new ekh($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
    @Override
-   public void a(fyh $$0, ank $$1, aep $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> fxz.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   public void a(anm $$0) {
    }
 
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public ekh e() {
+      return this.f;
+   }
+
+   public void a(ekh $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
+   }
+
+   @Override
+   public void a(aer $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

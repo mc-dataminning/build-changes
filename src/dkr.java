@@ -1,68 +1,70 @@
-public final class dkr {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private dkr() {
-   }
+public record dkr(int g, int h, int i, int j) {
+   public static final Codec<dkr> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dij.e, dij.d).fieldOf("min_y").forGetter(dkr::c),
+                  Codec.intRange(0, dij.c).fieldOf("height").forGetter(dkr::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dkr::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dkr::f)
+               )
+               .apply($$0, dkr::new)
+      )
+      .comapFlatMap(dkr::a, Function.identity());
+   protected static final dkr b = a(-64, 384, 1, 2);
+   protected static final dkr c = a(0, 128, 1, 2);
+   protected static final dkr d = a(0, 128, 2, 1);
+   protected static final dkr e = a(-64, 192, 1, 2);
+   protected static final dkr f = a(0, 256, 2, 1);
 
-   protected static dkl.c a(dka $$0, dka $$1, dka $$2, dku $$3) {
-      dey $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dkr.a $$8 = $$6 > 0.0 ? dkr.a.a : dkr.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = aro.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               art $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = aro.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(csl.qN.n(), csl.sf.n(), csl.c.n(), 0, 50),
-      b(csl.Q.n(), csl.se.n(), csl.qz.n(), -60, -8);
-
-      final dey e;
-      final dey f;
-      final dey g;
-      protected final int c;
-      protected final int d;
-
-      private a(dey $$0, dey $$1, dey $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   private static DataResult<dkr> a(dkr $$0) {
+      if ($$0.c() + $$0.d() > dij.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dij.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
+
+   public static dkr a(int $$0, int $$1, int $$2, int $$3) {
+      dkr $$4 = new dkr($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return hq.c(this.f());
+   }
+
+   public int b() {
+      return hq.c(this.e());
+   }
+
+   public dkr a(cpo $$0) {
+      int $$1 = Math.max(this.g, $$0.C_());
+      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
+      return new dkr($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

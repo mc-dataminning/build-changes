@@ -1,19 +1,22 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class dqd implements dpp {
+public class dqd implements dpr {
    public static final Codec<dqd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(dpx.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dqd::new)
+      $$0 -> $$0.apply2(dqd::new, dph.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dud.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public final List<dpx.a> b;
+   public final List<dph> b;
+   public final he<dud> c;
 
-   public dqd(dey $$0, dey $$1) {
-      this(ImmutableList.of(dpx.a(new dxv($$0), $$1)));
+   public dqd(List<dph> $$0, he<dud> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dqd(List<dpx.a> $$0) {
-      this.b = $$0;
+   @Override
+   public Stream<dna<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

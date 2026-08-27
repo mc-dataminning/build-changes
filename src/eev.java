@@ -1,36 +1,35 @@
-public class eev extends eey {
-   eev(efh[] $$0) {
-      super($$0, efj.a($$0));
+import com.mojang.serialization.Codec;
+import java.util.List;
+
+public class eev extends eex {
+   public static final Codec<eev> a = a(eev::new);
+
+   eev(List<efg> $$0) {
+      super($$0, efi.b($$0));
    }
 
    @Override
-   public efi b() {
-      return efj.c;
+   public efh b() {
+      return efi.c;
    }
 
-   public static eev.a a(efh.a... $$0) {
+   public static eev.a a(efg.a... $$0) {
       return new eev.a($$0);
    }
 
-   public static class a extends eey.a {
-      public a(efh.a... $$0) {
+   public static class a extends eex.a {
+      public a(efg.a... $$0) {
          super($$0);
       }
 
       @Override
-      public eev.a and(efh.a $$0) {
+      public eev.a or(efg.a $$0) {
          this.a($$0);
          return this;
       }
 
       @Override
-      protected efh a(efh[] $$0) {
-         return new eev($$0);
-      }
-   }
-
-   public static class b extends eey.b<eev> {
-      protected eev a(efh[] $$0) {
+      protected efg a(List<efg> $$0) {
          return new eev($$0);
       }
    }

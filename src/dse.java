@@ -1,48 +1,74 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class dse extends dsh {
-   public static final Codec<dse> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dse::new, $$0 -> $$0.d).codec();
-   private static final hb b = hb.d;
-   private static final hb[] c = hb.c.a.a().filter($$0 -> $$0 != b.g()).toArray(hb[]::new);
-   private final float d;
+public class dse extends dsj {
+   public static final Codec<dse> a = drs.a.fieldOf("provider").xmap(dse::new, $$0 -> $$0.b).codec();
+   private final drs b;
 
-   public dse(float $$0) {
-      this.d = $$0;
+   public dse(drs $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dsi<?> a() {
-      return dsi.d;
+   protected dsk<?> a() {
+      return dsk.e;
    }
 
    @Override
-   public void a(dsh.a $$0) {
-      art $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<gv> $$2 = $$0.d();
-         List<gv> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<gv> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<gv> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), csl.pe.n().a(cse.a, b));
-               $$0.a().a($$6.get(), dcm.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   public void a(dsj.a $$0) {
+      List<gu> $$1 = Lists.newArrayList();
+      List<gu> $$2 = $$0.e();
+      List<gu> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     qs $$4x = new qs();
-                     $$4x.a("id", jc.h.b(bik.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
             }
+         });
+      }
+   }
+
+   private void a(dsj.a $$0, gu $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(dsj.a $$0, gu $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         gu $$3 = $$1.b($$2);
+         if (dnn.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
          }
       }
    }

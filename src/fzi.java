@@ -1,56 +1,17 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.io.InputStream;
 
-public class fzi extends anp<List<String>> {
-   private static final aep a = new aep("texts/splashes.txt");
-   private static final art b = art.a();
-   private final List<String> c = Lists.newArrayList();
-   private final erc d;
-
-   public fzi(erc $$0) {
-      this.d = $$0;
-   }
-
-   protected List<String> a(ank $$0, bde $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = eqn.N().Y().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+public class fzi {
+   @Deprecated
+   public static int[] a(anm $$0, aer $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ekh $$3 = ekh.a($$2);
+      ) {
+         var4 = $$3.e();
       }
-   }
 
-   protected void a(List<String> $$0, ank $$1, bde $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
-
-   @Nullable
-   public etk a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return etk.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return etk.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return etk.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new etk(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new etk(this.c.get(b.a(this.c.size())));
-      }
+      return var4;
    }
 }

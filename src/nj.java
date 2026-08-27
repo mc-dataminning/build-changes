@@ -2,30 +2,41 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class nj {
-   public static final aeo<dwg> a = nu.a("bastion/starts");
-
-   public static void a(nn<dwg> $$0) {
-      hg<dyo> $$1 = $$0.a(jd.aA);
-      hf<dyo> $$2 = $$1.b(nv.w);
-      hg<dwg> $$3 = $$0.a(jd.aC);
-      hf<dwg> $$4 = $$3.b(nu.a);
-      $$0.a(
-         a,
-         new dwg(
-            $$4,
+   public static void a(nm<dwi> $$0) {
+      hf<dwi> $$1 = $$0.a(jc.aC);
+      he<dwi> $$2 = $$1.b(nt.a);
+      nt.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new dwi(
+            $$2,
             ImmutableList.of(
-               Pair.of(dwe.b("bastion/units/air_base", $$2), 1),
-               Pair.of(dwe.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(dwe.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(dwe.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(dwg.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(dwg.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(dwg.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(dwg.b("bastion/mobs/empty"), 1)
             ),
-            dwg.a.b
+            dwi.a.b
          )
       );
-      ni.a($$0);
-      nh.a($$0);
-      nl.a($$0);
-      ng.a($$0);
-      nk.a($$0);
+      nt.a(
+         $$0, "bastion/mobs/hoglin", new dwi($$2, ImmutableList.of(Pair.of(dwg.b("bastion/mobs/hoglin"), 2), Pair.of(dwg.b("bastion/mobs/empty"), 1)), dwi.a.b)
+      );
+      nt.a(
+         $$0, "bastion/blocks/gold", new dwi($$2, ImmutableList.of(Pair.of(dwg.b("bastion/blocks/air"), 3), Pair.of(dwg.b("bastion/blocks/gold"), 1)), dwi.a.b)
+      );
+      nt.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new dwi(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dwg.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(dwg.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(dwg.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            dwi.a.b
+         )
+      );
    }
 }

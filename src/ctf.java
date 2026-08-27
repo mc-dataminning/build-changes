@@ -1,29 +1,123 @@
-import java.util.function.ToIntFunction;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public interface ctf {
-   ehy r_ = csk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dfp s_ = dfo.D;
+public class ctf extends cwf {
+   public static final dfu a = cwf.aC;
+   @Nullable
+   private dff b;
+   @Nullable
+   private dff c;
+   @Nullable
+   private dff d;
+   @Nullable
+   private dff e;
+   private static final Predicate<dfa> f = $$0 -> $$0 != null && ($$0.a(csn.ef) || $$0.a(csn.eg));
 
-   static bgo a(@Nullable big $$0, dey $$1, cpk $$2, gv $$3) {
-      if ($$1.c(s_)) {
-         csk.a($$2, $$3, new ciw(ciz.vw, 1));
-         float $$4 = aro.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, aou.dx, aov.e, 1.0F, $$4);
-         dey $$5 = $$1.a(s_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dji.c, $$3, dji.a.a($$0, $$5));
-         return bgo.a($$2.B);
-      } else {
-         return bgo.d;
+   protected ctf(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, ha.c));
+   }
+
+   @Override
+   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   static boolean h_(dey $$0) {
-      return $$0.b(s_) && $$0.c(s_);
+   public boolean a(cpp $$0, gu $$1) {
+      return this.a().a($$0, $$1) != null || this.u().a($$0, $$1) != null;
    }
 
-   static ToIntFunction<dey> h_(int $$0) {
-      return $$1 -> $$1.c(dfo.D) ? $$0 : 0;
+   private void a(cpm $$0, gu $$1) {
+      dff.b $$2 = this.g().a($$0, $$1);
+      if ($$2 != null) {
+         bvi $$3 = bim.aO.a($$0);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dff.b $$4 = this.v().a($$0, $$1);
+         if ($$4 != null) {
+            buw $$5 = bim.ac.a($$0);
+            if ($$5 != null) {
+               $$5.x(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+            }
+         }
+      }
+   }
+
+   private static void a(cpm $$0, dff.b $$1, bii $$2, gu $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (akl $$4 : $$0.a(akl.class, $$2.cG().g(5.0))) {
+         ai.n.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(cpm $$0, dff.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dfe $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), csn.a.n(), 2);
+            $$0.c(2001, $$4.d(), csm.i($$4.a()));
+         }
+      }
+   }
+
+   public static void b(cpm $$0, dff.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dfe $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), csn.a);
+         }
+      }
+   }
+
+   @Override
+   public dfa a(clg $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
+   }
+
+   private dff a() {
+      if (this.b == null) {
+         this.b = dfg.a().a(" ", "#", "#").a('#', dfe.a(dfj.a(csn.dP))).b();
+      }
+
+      return this.b;
+   }
+
+   private dff g() {
+      if (this.c == null) {
+         this.c = dfg.a().a("^", "#", "#").a('^', dfe.a(f)).a('#', dfe.a(dfj.a(csn.dP))).b();
+      }
+
+      return this.c;
+   }
+
+   private dff u() {
+      if (this.d == null) {
+         this.d = dfg.a().a("~ ~", "###", "~#~").a('#', dfe.a(dfj.a(csn.ci))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return this.d;
+   }
+
+   private dff v() {
+      if (this.e == null) {
+         this.e = dfg.a().a("~^~", "###", "~#~").a('^', dfe.a(f)).a('#', dfe.a(dfj.a(csn.ci))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return this.e;
    }
 }

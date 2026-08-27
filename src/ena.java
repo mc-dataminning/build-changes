@@ -1,31 +1,40 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ena extends end {
+public class ena extends enc {
+   private static final Logger d = LogUtils.getLogger();
    public long a;
-   public List<emz> b = Lists.newArrayList();
+   public int b;
+   public ena.a c = ena.a.a;
 
    public static ena a(String $$0) {
       ena $$1 = new ena();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = epa.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               emz $$8 = emz.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = eoz.a("startDate", $$3, 0L);
+         $$1.b = eoz.a("daysLeft", $$3, 0);
+         $$1.c = b(eoz.a("subscriptionType", $$3, ena.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
       }
 
       return $$1;
+   }
+
+   private static ena.a b(String $$0) {
+      try {
+         return ena.a.valueOf($$0);
+      } catch (Exception var2) {
+         return ena.a.a;
+      }
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

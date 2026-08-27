@@ -1,10 +1,7 @@
-public class cjx extends cir {
-   public cjx(cir.a $$0) {
-      super($$0);
-   }
+public interface cjx {
+   boolean a(cpm var1, ddu var2, boolean var3, cbn var4);
 
-   @Override
-   public boolean i(ciw $$0) {
-      return true;
+   default boolean a(ddv $$0, cbn $$1) {
+      return $$0.a($$1);
    }
 }

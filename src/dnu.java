@@ -1,31 +1,47 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnu implements dpp {
-   public static final Codec<dnu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dey.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dey.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dey.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dey.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dlo.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dnu::new)
-   );
-   public final dey b;
-   public final dey c;
-   public final dey d;
-   public final dey e;
-   public final dlo f;
-   public final boolean g;
+public class dnu extends dnn<dpy> {
+   public dnu(Codec<dpy> $$0) {
+      super($$0);
+   }
 
-   public dnu(dey $$0, dey $$1, dey $$2, dey $$3, dlo $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(dnp<dpy> $$0) {
+      cqg $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      aru $$3 = $$0.d();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         dfa $$4 = $$1.a_($$2.c());
+         if (!$$4.a(csn.dW) && !$$4.a(csn.dZ) && !$$4.a(csn.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, csn.ed.n(), 2);
+
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               gu $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
+
+                  for (ha $$8 : ha.values()) {
+                     if ($$1.a_($$6.a($$8)).a(csn.ed)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, csn.ed.n(), 2);
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

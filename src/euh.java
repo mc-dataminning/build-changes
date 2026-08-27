@@ -1,54 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class euh implements euj {
-   private static final aep a = new aep("toast/recipe");
-   private static final long d = 5000L;
-   private static final te e = te.c("recipe.toast.title");
-   private static final te f = te.c("recipe.toast.description");
-   private final List<clz<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public class euh {
+   private final Consumer<esf> a;
+   private final Consumer<esf> b;
+   @Nullable
+   private eug c;
+   @Nullable
+   private ewh d;
 
-   public euh(clz<?> $$0) {
-      this.g.add($$0);
+   public euh(Consumer<esf> $$0, Consumer<esf> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public euj.a a(erx $$0, euk $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
-      }
-
-      if (this.g.isEmpty()) {
-         return euj.a.b;
-      } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         clz<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         ciw $$4 = $$3.h();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.a($$1.b().s.B_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? euj.a.b : euj.a.a;
+   public void a(ewh $$0) {
+      this.d = $$0;
+      eug $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
    }
 
-   private void a(clz<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
+   public void a(eug $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            eqm.O().ai().a(gbo.a(aow.yp, 1.0F));
+         }
+      }
    }
 
-   public static void a(euk $$0, clz<?> $$1) {
-      euh $$2 = $$0.a(euh.class, b);
-      if ($$2 == null) {
-         $$0.a(new euh($$1));
-      } else {
-         $$2.a($$1);
-      }
+   @Nullable
+   public eug a() {
+      return this.c;
    }
 }

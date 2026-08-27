@@ -1,68 +1,152 @@
-public class box extends bov {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+public class box implements bot {
+   public static final float a = 5.0E-4F;
+   public static final float b = 2.5000003E-7F;
+   protected static final int c = 90;
+   protected final bja d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected float i;
+   protected float j;
+   protected box.a k = box.a.a;
 
-   public box(biy $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+   public box(bja $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.aX()) {
-         this.d.f(this.d.dn().b(0.0, 0.005, 0.0));
+   public boolean b() {
+      return this.k == box.a.b;
+   }
+
+   public double c() {
+      return this.h;
+   }
+
+   public void a(double $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      if (this.k != box.a.d) {
+         this.k = box.a.b;
       }
+   }
 
-      if (this.k == bov.a.b && !this.d.H().l()) {
-         double $$0 = this.e - this.d.dp();
-         double $$1 = this.f - this.d.dr();
-         double $$2 = this.g - this.d.dv();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
+   public void a(float $$0, float $$1) {
+      this.k = box.a.c;
+      this.i = $$0;
+      this.j = $$1;
+      this.h = 0.25;
+   }
+
+   public void a() {
+      if (this.k == box.a.c) {
+         float $$0 = (float)this.d.b(bkf.d);
+         float $$1 = (float)this.h * $$0;
+         float $$2 = this.i;
+         float $$3 = this.j;
+         float $$4 = arp.c($$2 * $$2 + $$3 * $$3);
+         if ($$4 < 1.0F) {
+            $$4 = 1.0F;
+         }
+
+         $$4 = $$1 / $$4;
+         $$2 *= $$4;
+         $$3 *= $$4;
+         float $$5 = arp.a(this.d.dA() * (float) (Math.PI / 180.0));
+         float $$6 = arp.b(this.d.dA() * (float) (Math.PI / 180.0));
+         float $$7 = $$2 * $$6 - $$3 * $$5;
+         float $$8 = $$3 * $$6 + $$2 * $$5;
+         if (!this.b($$7, $$8)) {
+            this.i = 1.0F;
+            this.j = 0.0F;
+         }
+
+         this.d.w($$1);
+         this.d.A(this.i);
+         this.d.C(this.j);
+         this.k = box.a.a;
+      } else if (this.k == box.a.b) {
+         this.k = box.a.a;
+         double $$9 = this.e - this.d.dp();
+         double $$10 = this.g - this.d.dv();
+         double $$11 = this.f - this.d.dr();
+         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
+         if ($$12 < 2.5000003E-7F) {
             this.d.A(0.0F);
-         } else {
-            float $$4 = (float)(aro.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dA(), $$4, (float)this.o));
-            this.d.aU = this.d.dA();
-            this.d.aW = this.d.dA();
-            float $$5 = (float)(this.h * this.d.b(bkd.d));
-            if (this.d.aX()) {
-               this.d.w($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(aro.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = aro.a(aro.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dC(), $$7, 5.0F));
-               }
+            return;
+         }
 
-               float $$8 = aro.b(this.d.dC() * (float) (Math.PI / 180.0));
-               float $$9 = aro.a(this.d.dC() * (float) (Math.PI / 180.0));
-               this.d.bm = $$8 * $$5;
-               this.d.bl = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(aro.g(this.d.dA() - $$4));
-               float $$11 = a($$10);
-               this.d.w($$5 * this.q * $$11);
-            }
+         float $$13 = (float)(arp.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dA(), $$13, 90.0F));
+         this.d.w((float)(this.h * this.d.b(bkf.d)));
+         gu $$14 = this.d.dk();
+         dfa $$15 = this.d.dK().a_($$14);
+         ehx $$16 = $$15.k(this.d.dK(), $$14);
+         if ($$11 > (double)this.d.dE() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.df())
+            || !$$16.c() && this.d.dr() < $$16.c(ha.a.b) + (double)$$14.v() && !$$15.a(apl.p) && !$$15.a(apl.S)) {
+            this.d.F().a();
+            this.k = box.a.d;
+         }
+      } else if (this.k == box.a.d) {
+         this.d.w((float)(this.h * this.d.b(bkf.d)));
+         if (this.d.aA()) {
+            this.k = box.a.a;
          }
       } else {
-         this.d.w(0.0F);
-         this.d.C(0.0F);
-         this.d.B(0.0F);
          this.d.A(0.0F);
       }
    }
 
-   private static float a(float $$0) {
-      return 1.0F - aro.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   private boolean b(float $$0, float $$1) {
+      bsi $$2 = this.d.H();
+      if ($$2 != null) {
+         ear $$3 = $$2.o();
+         if ($$3 != null && $$3.a(this.d.dK(), arp.a(this.d.dp() + (double)$$0), this.d.dq(), arp.a(this.d.dv() + (double)$$1)) != eao.c) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = arp.g($$1 - $$0);
+      if ($$3 > $$2) {
+         $$3 = $$2;
+      }
+
+      if ($$3 < -$$2) {
+         $$3 = -$$2;
+      }
+
+      float $$4 = $$0 + $$3;
+      if ($$4 < 0.0F) {
+         $$4 += 360.0F;
+      } else if ($$4 > 360.0F) {
+         $$4 -= 360.0F;
+      }
+
+      return $$4;
+   }
+
+   public double d() {
+      return this.e;
+   }
+
+   public double e() {
+      return this.f;
+   }
+
+   public double f() {
+      return this.g;
+   }
+
+   protected static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

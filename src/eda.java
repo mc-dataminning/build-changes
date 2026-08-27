@@ -1,18 +1,66 @@
-public class eda {
-   public static final edd a = a("empty", new ecx.a());
-   public static final edd b = a("item", new ecz.a());
-   public static final edd c = a("loot_table", new edf.a());
-   public static final edd d = a("dynamic", new ecw.a());
-   public static final edd e = a("tag", new edh.a());
-   public static final edd f = a("alternatives", ecv.a(ect::new));
-   public static final edd g = a("sequence", ecv.a(edg::new));
-   public static final edd h = a("group", ecv.a(ecy::new));
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Predicate;
 
-   private static edd a(String $$0, ecq<? extends edc> $$1) {
-      return hs.a(jc.G, new aep($$0), new edd($$1));
+public abstract class eda implements ecs {
+   protected final List<efg> e;
+   private final Predicate<ech> a;
+
+   protected eda(List<efg> $$0) {
+      this.e = $$0;
+      this.a = efi.a($$0);
    }
 
-   public static Object a() {
-      return ecf.<edc, edd>a(jc.G, "entry", "type", edc::a).a();
+   protected static <T extends eda> P1<Mu<T>, List<efg>> a(Instance<T> $$0) {
+      return $$0.group(aqy.a(efi.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   }
+
+   public void a(ecq $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
+      }
+   }
+
+   protected final boolean a(ech $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract edb a();
+
+   public abstract static class a<T extends eda.a<T>> implements eez<T> {
+      private final Builder<efg> a = ImmutableList.builder();
+
+      protected abstract T at_();
+
+      public T a(efg.a $$0) {
+         this.a.add($$0.build());
+         return this.at_();
+      }
+
+      public final T e() {
+         return this.at_();
+      }
+
+      protected List<efg> f() {
+         return this.a.build();
+      }
+
+      public ecr.a a(eda.a<?> $$0) {
+         return new ecr.a(this, $$0);
+      }
+
+      public ecw.a b(eda.a<?> $$0) {
+         return new ecw.a(this, $$0);
+      }
+
+      public ede.a c(eda.a<?> $$0) {
+         return new ede.a(this, $$0);
+      }
+
+      public abstract eda b();
    }
 }

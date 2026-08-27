@@ -2,103 +2,54 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class em implements ArgumentType<em.a> {
-   private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(te.c("arguments.operation.div0"));
+public class em implements ArgumentType<it> {
+   private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tf.a("particle.notFound", $$0));
+   private final hg<iu<?>> c;
 
-   public static em a() {
-      return new em();
+   public em(dl $$0) {
+      this.c = $$0.a(jc.Q);
    }
 
-   public static em.a a(CommandContext<ds> $$0, String $$1) {
-      return (em.a)$$0.getArgument($$1, em.a.class);
+   public static em a(dl $$0) {
+      return new em($$0);
    }
 
-   public em.a a(StringReader $$0) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw b.create();
-      } else {
-         int $$1 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         return a($$0.getString().substring($$1, $$0.getCursor()));
-      }
+   public static it a(CommandContext<dr> $$0, String $$1) {
+      return (it)$$0.getArgument($$1, it.class);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dv.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+   public it a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, this.c);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   private static em.a a(String $$0) throws CommandSyntaxException {
-      return (em.a)($$0.equals("><") ? ($$0x, $$1) -> {
-         int $$2 = $$0x.b();
-         $$0x.b($$1.b());
-         $$1.b($$2);
-      } : b($$0));
+   public static it a(StringReader $$0, hg<iu<?>> $$1) throws CommandSyntaxException {
+      iu<?> $$2 = b($$0, $$1);
+      return a($$0, (iu<it>)$$2);
    }
 
-   private static em.b b(String $$0) throws CommandSyntaxException {
-      switch ($$0) {
-         case "=":
-            return ($$0x, $$1) -> $$1;
-         case "+=":
-            return ($$0x, $$1) -> $$0x + $$1;
-         case "-=":
-            return ($$0x, $$1) -> $$0x - $$1;
-         case "*=":
-            return ($$0x, $$1) -> $$0x * $$1;
-         case "/=":
-            return ($$0x, $$1) -> {
-               if ($$1 == 0) {
-                  throw c.create();
-               } else {
-                  return aro.a($$0x, $$1);
-               }
-            };
-         case "%=":
-            return ($$0x, $$1) -> {
-               if ($$1 == 0) {
-                  throw c.create();
-               } else {
-                  return aro.b($$0x, $$1);
-               }
-            };
-         case "<":
-            return Math::min;
-         case ">":
-            return Math::max;
-         default:
-            throw b.create();
-      }
+   private static iu<?> b(StringReader $$0, hg<iu<?>> $$1) throws CommandSyntaxException {
+      aer $$2 = aer.a($$0);
+      aeq<iu<?>> $$3 = aeq.a(jc.Q, $$2);
+      return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(eid var1, eid var2) throws CommandSyntaxException;
+   private static <T extends it> T a(StringReader $$0, iu<T> $$1) throws CommandSyntaxException {
+      return $$1.d().b($$1, $$0);
    }
 
-   @FunctionalInterface
-   interface b extends em.a {
-      int apply(int var1, int var2) throws CommandSyntaxException;
-
-      @Override
-      default void apply(eid $$0, eid $$1) throws CommandSyntaxException {
-         $$0.b(this.apply($$0.b(), $$1.b()));
-      }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return du.a(this.c.c().map(aeq::a), $$1);
    }
 }

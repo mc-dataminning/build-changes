@@ -1,18 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ftq extends ftu<bwm, ffh<bwm>> {
+   private static final aer a = new aer("textures/entity/llama/creamy.png");
+   private static final aer i = new aer("textures/entity/llama/white.png");
+   private static final aer j = new aer("textures/entity/llama/brown.png");
+   private static final aer k = new aer("textures/entity/llama/gray.png");
 
-public class ftq extends ftp<buv, fed<buv>> {
-   private static final Map<buv.a, aep> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(buv.a.b, new aep("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(buv.a.a, new aep("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public ftq(fsj.a $$0) {
-      super($$0, new fed<>($$0.a(fhi.aw)), 0.7F);
-      this.a(new fwm<>(this, $$0.c()));
+   public ftq(fso.a $$0, fhl $$1) {
+      super($$0, new ffh<>($$0.a($$1)), 0.7F);
+      this.a(new fwq(this, $$0.f()));
    }
 
-   public aep a(buv $$0) {
-      return a.get($$0.q());
+   public aer a(bwm $$0) {
+      return switch ($$0.gl()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

@@ -1,110 +1,167 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eof extends ged implements enn {
-   private static final gee b = new gee(Duration.ofSeconds(5L));
-   private static final Logger c = LogUtils.getLogger();
-   private final exv y;
-   private volatile te z = td.a;
+public class eof extends gei {
+   private static final aer a = new aer("icon/unseen_notification");
+   private static final aer b = new aer("icon/news");
+   private static final aer c = new aer("icon/invite");
+   private static final aer y = new aer("icon/trial_available");
+   private final CompletableFuture<Boolean> z = elq.a().thenApply($$0 -> $$0.a() == elq.b.a);
    @Nullable
-   private volatile te A;
-   private volatile boolean B;
-   private int C;
-   private final epn D;
-   private final int E = 212;
-   private esi F;
-   public static final String[] a = new String[]{
-      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
-      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
-      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
-      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
-      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
-      "_ _ _ _ _ ▃ ▄ ▅ ▆ ▇ █",
-      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
-      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
-      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
-      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
-      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
-      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _",
-      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
-      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
-      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
-      "█ ▇ ▆ ▅ ▄ ▃ _ _ _ _ _",
-      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
-      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
-      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
-      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _"
+   private eov.c A;
+   @Nullable
+   private eof.a B;
+   private volatile int C;
+   private static boolean D;
+   private static boolean E;
+   private static boolean F;
+   private final eof.a G = new eof.a() {
+      @Override
+      public eov.c a(enn $$0) {
+         eov.c $$1 = $$0.a.a();
+         eof.this.a($$0, $$1);
+         eof.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final eof.a H = new eof.a() {
+      @Override
+      public eov.c a(enn $$0) {
+         eov.c $$1 = $$0.a.a();
+         eof.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
    };
 
-   public eof(exv $$0, epn $$1) {
-      super(eqf.a);
-      this.y = $$0;
-      this.D = $$1;
-      $$1.a(this);
-      Thread $$2 = new Thread($$1, "Realms-long-running-task");
-      $$2.setUncaughtExceptionHandler(new eni(c));
-      $$2.start();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      b.a(this.f.aU(), this.z);
-      this.C++;
-      this.D.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.B();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public eof() {
+      super(eqe.a);
    }
 
    @Override
    public void aE_() {
-      this.D.d();
-      this.F = this.d(esi.a(td.e, $$0 -> this.B()).a(this.g / 2 - 106, h(12), 212, 20).a());
-   }
-
-   private void B() {
-      this.B = true;
-      this.D.a();
-      this.f.a(this.y);
-   }
-
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.z, this.g / 2, h(3), 16777215);
-      te $$4 = this.A;
-      if ($$4 == null) {
-         $$0.a(this.i, a[this.C % a.length], this.g / 2, h(8), -8355712);
-      } else {
-         $$0.a(this.i, $$4, this.g / 2, h(8), 16711680);
+      if (this.A != null) {
+         this.A.a();
       }
    }
 
    @Override
-   public void a(te $$0) {
-      this.A = $$0;
-      this.f.aU().c($$0);
-      this.f.execute(() -> {
-         this.f(this.F);
-         this.F = this.d(esi.a(td.k, $$0x -> this.B()).a(this.g / 2 - 106, this.h / 4 + 120 + 12, 200, 20).a());
+   public void av_() {
+      super.av_();
+      this.f.aY().b.a();
+   }
+
+   @Nullable
+   private eof.a B() {
+      boolean $$0 = this.D() && this.z.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.C() ? this.G : this.H;
+      }
+   }
+
+   @Override
+   public void c() {
+      eof.a $$0 = this.B();
+      if (!Objects.equals(this.B, $$0)) {
+         this.B = $$0;
+         if (this.B != null) {
+            this.A = this.B.a(this.f.aY());
+         } else {
+            this.A = null;
+         }
+      }
+
+      if (this.A != null) {
+         this.A.b();
+      }
+   }
+
+   private boolean C() {
+      return this.f.m.O().c();
+   }
+
+   private boolean D() {
+      return this.f.B instanceof eye;
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.z.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(erw $$0) {
+      int $$1 = this.C;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (F) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.B != null && this.B.a()) {
+         if (E) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (D) {
+            $$0.a(y, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(enn $$0, eov.c $$1) {
+      $$1.a($$0.e, $$0x -> this.C = $$0x);
+      $$1.a($$0.f, $$0x -> D = $$0x);
+      $$1.a($$0.g, $$1x -> {
+         $$0.h.a($$1x);
+         E = $$0.h.a();
       });
    }
 
-   public void b(te $$0) {
-      this.z = $$0;
+   void b(enn $$0, eov.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         F = false;
+
+         for (emm $$1x : $$0x) {
+            if (!$$1x.a()) {
+               F = true;
+               break;
+            }
+         }
+      });
    }
 
-   public boolean f() {
-      return this.B;
+   interface a {
+      eov.c a(enn var1);
+
+      boolean a();
    }
 }

@@ -1,13 +1,15 @@
-public final class afa extends RuntimeException {
-   public static final afa a = new afa();
+import java.util.List;
 
-   private afa() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
+public enum afa {
+   a,
+   b,
+   c,
+   d;
 
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   private static final List<afa> e = List.of(values());
+   private static final hs.b f = hs.a(jb.ap);
+
+   public static hl<afa> a() {
+      return new hl<>(e).a(a, f);
    }
 }

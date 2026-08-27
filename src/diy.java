@@ -1,19 +1,23 @@
-import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface diy<T extends dip> {
-   @Nullable
-   T a(int var1);
+public interface diy<B, T extends B> {
+   static <B, T extends B> diy<B, T> a(final Class<T> $$0) {
+      return new diy<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
    @Nullable
-   T a(UUID var1);
+   T a(B var1);
 
-   Iterable<T> a();
-
-   <U extends T> void a(diw<T, U> var1, aqe<U> var2);
-
-   void a(eha var1, Consumer<T> var2);
-
-   <U extends T> void a(diw<T, U> var1, eha var2, aqe<U> var3);
+   Class<? extends B> a();
 }

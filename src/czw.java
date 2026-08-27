@@ -1,52 +1,28 @@
-public class czw extends csk {
-   protected static final ehy a = csk.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int b = 20;
+public class czw extends csm {
+   public static final dfr a = dfq.z;
 
-   public czw(dex.d $$0) {
+   protected czw(dez.d $$0) {
       super($$0);
+      this.k(this.C.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public ehy c(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return a;
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return $$1 == ha.b ? $$0.a(a, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ehy b_(dey $$0, coq $$1, gv $$2) {
-      return ehv.b();
+   public dfa a(clg $$0) {
+      dfa $$1 = $$0.q().a_($$0.a().c());
+      return this.n().a(a, Boolean.valueOf(h($$1)));
+   }
+
+   private static boolean h(dfa $$0) {
+      return $$0.a(apl.by);
    }
 
    @Override
-   public ehy b(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return ehv.b();
-   }
-
-   @Override
-   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
-      csp.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if ($$1 == hb.b && $$2.a(csl.G)) {
-         $$3.a($$4, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
-      return false;
-   }
-
-   @Override
-   public float b(dey $$0, coq $$1, gv $$2) {
-      return 0.2F;
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 }

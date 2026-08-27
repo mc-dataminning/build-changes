@@ -1,34 +1,11 @@
-public class bkr implements bmb {
-   private final gv a;
-   private final ehf b;
+public interface bkr<E extends biy> {
+   bkq.a a();
 
-   public bkr(gv $$0) {
-      this.a = $$0.i();
-      this.b = ehf.b($$0);
-   }
+   boolean e(akk var1, E var2, long var3);
 
-   public bkr(ehf $$0) {
-      this.a = gv.a($$0);
-      this.b = $$0;
-   }
+   void f(akk var1, E var2, long var3);
 
-   @Override
-   public ehf a() {
-      return this.b;
-   }
+   void g(akk var1, E var2, long var3);
 
-   @Override
-   public gv b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(biw $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
-   }
+   String b();
 }

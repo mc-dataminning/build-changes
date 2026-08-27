@@ -1,42 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class dum {
-   public static final Codec<dum> a = aqw.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aeo.a(jd.aI), dii.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, dum::new)),
-      dum::a
+public class dum extends duf {
+   public static final Codec<dum> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dum::new)
    );
-   public static final Codec<hf<dum>> b = ael.a(jd.aF, a);
-   private final Map<aeo<dii>, dii> c;
+   private final int c;
 
-   public dum(Map<aeo<dii>, dii> $$0) {
+   private dum(int $$0) {
       this.c = $$0;
    }
 
-   private hs<dii> c() {
-      ib<dii> $$0 = new hn<>(jd.aI, Lifecycle.experimental());
-      dlc.a(this.c.keySet().stream()).forEach($$1 -> {
-         dii $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.a((aeo<dii>)$$1, $$2, Lifecycle.stable());
-         }
-      });
-      return $$0.l();
+   public static dum a(int $$0) {
+      return new dum($$0);
    }
 
-   public dlc a() {
-      return new dlc(this.c());
+   @Override
+   protected boolean a(due $$0, aru $$1, gu $$2) {
+      int $$3 = $$0.a(dkj.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dkj.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
    }
 
-   public Optional<dii> b() {
-      return Optional.ofNullable(this.c.get(dii.b));
-   }
-
-   private static DataResult<dum> a(dum $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public duh<?> b() {
+      return duh.d;
    }
 }

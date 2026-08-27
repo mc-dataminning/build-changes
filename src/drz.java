@@ -1,20 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class drz extends drq {
-   public static final Codec<drz> b = dey.b.fieldOf("state").xmap(drz::new, $$0 -> $$0.c).codec();
-   private final dey c;
+public class drz extends drs {
+   public static final Codec<drz> b = dfa.b.fieldOf("state").xmap(dez.a::b, csm::n).xmap(drz::new, $$0 -> $$0.c).codec();
+   private final csm c;
 
-   protected drz(dey $$0) {
+   public drz(csm $$0) {
       this.c = $$0;
    }
 
    @Override
-   protected drr<?> a() {
-      return drr.a;
+   protected drt<?> a() {
+      return drt.f;
    }
 
    @Override
-   public dey a(art $$0, gv $$1) {
-      return this.c;
+   public dfa a(aru $$0, gu $$1) {
+      ha.a $$2 = ha.a.a($$0);
+      return this.c.n().a(cyx.g, $$2);
    }
 }

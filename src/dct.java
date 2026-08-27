@@ -1,119 +1,159 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
-
-public class dct extends dck implements bgh {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final ho<ciw> e = ho.a(6, ciw.b);
-   private int f = -1;
-
-   public dct(gv $$0, dey $$1) {
-      super(dcm.M, $$0, $$1);
-   }
-
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         dey $$1 = this.q();
-
-         for (int $$2 = 0; $$2 < ctn.b.size(); $$2++) {
-            boolean $$3 = !this.a($$2).b();
-            dfp $$4 = ctn.b.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-      } else {
-         d.error("Expected slot 0-5, got {}", $$0);
+public class dct extends ddp implements ddo {
+   private static final int c = 1;
+   private hn<ciy> f = hn.a(27, ciy.b);
+   private final dcz g = new dcz() {
+      @Override
+      protected void a(cpm $$0, gu $$1, dfa $$2) {
+         dct.a($$0, $$1, $$2, aow.ej);
       }
+
+      @Override
+      protected void b(cpm $$0, gu $$1, dfa $$2) {
+         dct.a($$0, $$1, $$2, aow.eh);
+      }
+
+      @Override
+      protected void a(cpm $$0, gu $$1, dfa $$2, int $$3, int $$4) {
+         dct.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cbn $$0) {
+         if (!($$0.bQ instanceof cel)) {
+            return false;
+         } else {
+            bgj $$1 = ((cel)$$0.bQ).l();
+            return $$1 == dct.this || $$1 instanceof bgi && ((bgi)$$1).a(dct.this);
+         }
+      }
+   };
+   private final dcu j = new dcu();
+
+   protected dct(dco<?> $$0, gu $$1, dfa $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(qs $$0) {
-      this.e.clear();
-      bgi.b($$0, this.e);
-      this.f = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(qs $$0) {
-      bgi.a($$0, this.e, true);
-      $$0.a("last_interacted_slot", this.f);
-   }
-
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(ciw::b)).count();
-   }
-
-   @Override
-   public void a() {
-      this.e.clear();
+   public dct(gu $$0, dfa $$1) {
+      this(dco.b, $$0, $$1);
    }
 
    @Override
    public int b() {
-      return 6;
+      return 27;
    }
 
    @Override
-   public boolean ab_() {
-      return this.e.stream().allMatch(ciw::b);
+   protected tf g() {
+      return tf.c("container.chest");
    }
 
    @Override
-   public ciw a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Override
-   public ciw a(int $$0, int $$1) {
-      ciw $$2 = Objects.requireNonNullElse(this.e.get($$0), ciw.b);
-      this.e.set($$0, ciw.b);
-      if (!$$2.b()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public ciw b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, ciw $$1) {
-      if ($$1.a(apr.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.b()) {
-         this.a($$0, 1);
+   public void a(qr $$0) {
+      super.a($$0);
+      this.f = hn.a(this.b(), ciy.b);
+      if (!this.d($$0)) {
+         bgk.b($$0, this.f);
       }
    }
 
    @Override
-   public boolean a(bgh $$0, int $$1, ciw $$2) {
-      return $$0.a_($$2x -> $$2x.b() ? true : ciw.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ac_()));
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgk.a($$0, this.f);
+      }
+   }
+
+   public static void a(cpm $$0, gu $$1, dfa $$2, dct $$3) {
+      $$3.j.a();
+   }
+
+   static void a(cpm $$0, gu $$1, dfa $$2, aov $$3) {
+      dfs $$4 = $$2.c(cto.c);
+      if ($$4 != dfs.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dfs.c) {
+            ha $$8 = cto.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, aox.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
    }
 
    @Override
-   public int ac_() {
-      return 1;
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.j.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
    }
 
    @Override
-   public boolean a(cbl $$0) {
-      return bgh.a(this, $$0);
+   public void d_(cbn $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.g.a($$0, this.k(), this.p(), this.q());
+      }
    }
 
    @Override
-   public boolean b(int $$0, ciw $$1) {
-      return $$1.a(apr.av) && this.a($$0).b();
+   public void c(cbn $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.g.b($$0, this.k(), this.p(), this.q());
+      }
    }
 
-   public int g() {
+   @Override
+   protected hn<ciy> f() {
       return this.f;
+   }
+
+   @Override
+   protected void a(hn<ciy> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.j.a($$0);
+   }
+
+   public static int a(cos $$0, gu $$1) {
+      dfa $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dcm $$3 = $$0.c_($$1);
+         if ($$3 instanceof dct) {
+            return ((dct)$$3).g.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dct $$0, dct $$1) {
+      hn<ciy> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cee a(int $$0, cbm $$1) {
+      return cel.a($$0, $$1, this);
+   }
+
+   public void i() {
+      if (!this.q) {
+         this.g.c(this.k(), this.p(), this.q());
+      }
+   }
+
+   protected void a(cpm $$0, gu $$1, dfa $$2, int $$3, int $$4) {
+      csm $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

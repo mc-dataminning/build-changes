@@ -1,3 +1,8 @@
-public interface aks {
-   akr create(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aks {
 }

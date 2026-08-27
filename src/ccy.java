@@ -1,39 +1,65 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class ccy {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final ccy c = a("empty").a(0, ccw.b).a();
-   public static final ccy d = a("simple").a(5000, ccw.c).a(11000, ccw.e).a();
-   public static final ccy e = a("villager_baby").a(10, ccw.b).a(3000, ccw.d).a(6000, ccw.b).a(10000, ccw.d).a(12000, ccw.e).a();
-   public static final ccy f = a("villager_default").a(10, ccw.b).a(2000, ccw.c).a(9000, ccw.f).a(11000, ccw.b).a(12000, ccw.e).a();
-   private final Map<ccw, cda> g = Maps.newHashMap();
+   public static final ccy a = a("core");
+   public static final ccy b = a("idle");
+   public static final ccy c = a("work");
+   public static final ccy d = a("play");
+   public static final ccy e = a("rest");
+   public static final ccy f = a("meet");
+   public static final ccy g = a("panic");
+   public static final ccy h = a("raid");
+   public static final ccy i = a("pre_raid");
+   public static final ccy j = a("hide");
+   public static final ccy k = a("fight");
+   public static final ccy l = a("celebrate");
+   public static final ccy m = a("admire_item");
+   public static final ccy n = a("avoid");
+   public static final ccy o = a("ride");
+   public static final ccy p = a("play_dead");
+   public static final ccy q = a("long_jump");
+   public static final ccy r = a("ram");
+   public static final ccy s = a("tongue");
+   public static final ccy t = a("swim");
+   public static final ccy u = a("lay_spawn");
+   public static final ccy v = a("sniff");
+   public static final ccy w = a("investigate");
+   public static final ccy x = a("roar");
+   public static final ccy y = a("emerge");
+   public static final ccy z = a("dig");
+   private final String A;
+   private final int B;
 
-   protected static ccz a(String $$0) {
-      ccy $$1 = hs.a(jc.E, $$0, new ccy());
-      return new ccz($$1);
+   private ccy(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   protected void a(ccw $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cda());
+   public String a() {
+      return this.A;
+   }
+
+   private static ccy a(String $$0) {
+      return hr.a(jb.F, $$0, new ccy($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ccy $$1 = (ccy)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
-   protected cda b(ccw $$0) {
-      return this.g.get($$0);
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   protected List<cda> c(ccw $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public ccw a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ccw.b);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

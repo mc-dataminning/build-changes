@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dlw implements dlo {
-   public static final Codec<dlw> a = RecordCodecBuilder.create($$0 -> $$0.group(dlo.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dlw::new));
-   private final dlo e;
+class dlw extends dmb {
+   private final hi<csm> e;
+   public static final Codec<dlw> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dlw::new));
 
-   public dlw(dlo $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(cqe $$0, gv $$1) {
-      return !this.e.test($$0, $$1);
+   public dlw(hz $$0, hi<csm> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dlp<?> a() {
-      return dlp.k;
+   protected boolean a(dfa $$0) {
+      return $$0.a(this.e);
+   }
+
+   @Override
+   public dlr<?> a() {
+      return dlr.a;
    }
 }

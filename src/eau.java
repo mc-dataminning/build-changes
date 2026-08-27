@@ -1,38 +1,133 @@
-public class eau extends eao {
-   private float m = Float.MAX_VALUE;
-   private eao n;
-   private boolean o;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public eau(eao $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class eau {
+   private static final float a = 1.5F;
+   private final eaq[] b = new eaq[32];
+   private final int c;
+   private final ear d;
+   private static final boolean e = false;
+   private final ean f = new ean();
+
+   public eau(ear $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public eau(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, eao $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   @Nullable
+   public eas a(cpz $$0, bja $$1, Set<gu> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      eaq $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<eaw, gu> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         eas $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
       }
    }
 
-   public eao d() {
-      return this.n;
+   @Nullable
+   private eas a(bdh $$0, eaq $$1, Map<eaw, gu> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bek.a);
+      Set<eaw> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<eaq> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<eaw> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
+
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         eaq $$11 = this.f.c();
+         $$11.i = true;
+
+         for (eaw $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               eaq $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
+      }
+
+      Optional<eas> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eas::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eas::m).thenComparingInt(eas::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   public void e() {
-      this.o = true;
+   protected float a(eaq $$0, eaq $$1) {
+      return $$0.a($$1);
    }
 
-   public boolean f() {
-      return this.o;
+   private float a(eaq $$0, Set<eaw> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (eaw $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
+      }
+
+      return $$2;
    }
 
-   public static eau c(sh $$0) {
-      eau $$1 = new eau($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   private eas a(eaq $$0, gu $$1, boolean $$2) {
+      List<eaq> $$3 = Lists.newArrayList();
+      eaq $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new eas($$3, $$1, $$2);
    }
 }

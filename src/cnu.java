@@ -1,16 +1,16 @@
-public class cnu extends cnd {
-   public cnu(cnd.a $$0, bil... $$1) {
-      super($$0, cne.c, $$1);
+public class cnu extends cnf {
+   public cnu(cnf.a $$0, bin... $$1) {
+      super($$0, cng.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override

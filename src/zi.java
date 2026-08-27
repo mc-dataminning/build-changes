@@ -1,24 +1,24 @@
-public class zi implements uw<wo> {
-   private final int a;
+public class zi implements ux<wp> {
+   private final double a;
 
-   public zi(dgp $$0) {
-      this.a = $$0.q();
+   public zi(dgr $$0) {
+      this.a = $$0.k();
    }
 
-   public zi(sh $$0) {
-      this.a = $$0.m();
+   public zi(si $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 }

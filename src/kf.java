@@ -1,8 +1,143 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface kf {
+public class kf implements kd {
+   @Override
+   public void generate(BiConsumer<aer, ecp.a> $$0) {
+      $$0.accept(
+         ecf.aC,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.wP).a(2))
+                  .a(ecx.a(cjb.wR).a(2))
+                  .a(ecx.a(cjb.pX))
+                  .a(ecx.a(cjb.nL))
+                  .a(ecx.a(cjb.oB))
+                  .a(
+                     ecx.a(cjb.va)
+                        .a(
+                           eel.c()
+                              .a(bhx.p, ege.a(7.0F, 10.0F))
+                              .a(bhx.h, ege.a(7.0F, 10.0F))
+                              .a(bhx.r, ege.a(6.0F, 8.0F))
+                              .a(bhx.o, ege.a(5.0F, 7.0F))
+                              .a(bhx.s, ege.a(10.0F, 20.0F))
+                              .a(bhx.w, ege.a(7.0F, 10.0F))
+                        )
+                  )
+            )
+      );
+      $$0.accept(
+         ecf.aD,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.wO))
+                  .a(ecx.a(cjb.wZ))
+                  .a(ecx.a(cjb.xc))
+                  .a(ecx.a(cjb.xf))
+                  .a(ecx.a(cjb.nK))
+                  .a(ecx.a(cjb.lH))
+                  .a(ecx.a(cjb.oG))
+                  .a(ecx.a(cjb.nL))
+            )
+      );
+      $$0.accept(
+         ecf.aE,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.nL).a(2))
+                  .a(ecx.a(cjb.oI).a(2))
+                  .a(ecx.a(cjb.ob).a(2))
+                  .a(ecx.a(cjb.eB).a(2))
+                  .a(ecx.a(cjb.pX).a(2))
+                  .a(ecx.a(cjb.qy).a(2))
+                  .a(ecx.a(cjb.qF).a(2))
+                  .a(ecx.a(cjb.qx).a(2))
+                  .a(ecx.a(cjb.qu).a(2))
+                  .a(ecx.a(cjb.qv).a(2))
+                  .a(ecx.a(cjb.wj).a(2))
+                  .a(ecx.a(cjb.wi).a(2))
+                  .a(ecx.a(cjb.wf).a(2))
+                  .a(ecx.a(cjb.wh).a(2))
+                  .a(ecx.a(cjb.hZ))
+                  .a(ecx.a(cjb.id))
+                  .a(ecx.a(cjb.ii))
+                  .a(ecx.a(cjb.ia))
+                  .a(ecx.a(cjb.il))
+                  .a(ecx.a(cjb.ib))
+                  .a(ecx.a(cjb.ih))
+                  .a(ecx.a(cjb.pA))
+                  .a(ecx.a(cjb.pz))
+                  .a(ecx.a(cjb.rt))
+                  .a(ecx.a(cjb.nI))
+                  .a(ecx.a(cjb.oH))
+                  .a(ecx.a(cjb.ur))
+                  .a(ecx.a(cjb.cv))
+                  .a(ecx.a(cjb.tk))
+                  .a(ecx.a(cjb.oE))
+                  .a(ecx.a(cjb.tQ))
+            )
+      );
+      $$0.accept(
+         ecf.aF,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.wS))
+                  .a(ecx.a(cjb.wT))
+                  .a(ecx.a(cjb.wV))
+                  .a(ecx.a(cjb.wW))
+                  .a(ecx.a(cjb.wX))
+                  .a(ecx.a(cjb.wY))
+                  .a(ecx.a(cjb.xd))
+                  .a(ecx.a(cjb.wI))
+                  .a(ecx.a(cjb.wL))
+                  .a(ecx.a(cjb.wJ))
+                  .a(ecx.a(cjb.wM))
+                  .a(ecx.a(cjb.uR))
+            )
+      );
+      $$0.accept(
+         ecf.aG,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.wN))
+                  .a(ecx.a(cjb.xe))
+                  .a(ecx.a(cjb.xg))
+                  .a(ecx.a(cjb.jU))
+                  .a(ecx.a(cjb.op))
+                  .a(ecx.a(cjb.nL).a(2))
+                  .a(ecx.a(cjb.oI).a(2))
+                  .a(ecx.a(cjb.ob).a(2))
+                  .a(ecx.a(cjb.nI).a(2))
+                  .a(ecx.a(cjb.rt).a(2))
+            )
+      );
+      $$0.accept(
+         ecf.aH,
+         ecp.b()
+            .a(
+               eco.a()
+                  .a(efz.a(1.0F))
+                  .a(ecx.a(cjb.wQ))
+                  .a(ecx.a(cjb.wU))
+                  .a(ecx.a(cjb.xa))
+                  .a(ecx.a(cjb.xb))
+                  .a(ecx.a(cjb.op))
+                  .a(ecx.a(cjb.nL).a(2))
+                  .a(ecx.a(cjb.oI).a(2))
+                  .a(ecx.a(cjb.ob).a(2))
+                  .a(ecx.a(cjb.nI).a(2))
+                  .a(ecx.a(cjb.rt).a(2))
+            )
+      );
+   }
 }

@@ -1,17 +1,21 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 
-public interface iu {
-   iv<?> b();
+public abstract class iu<T extends it> {
+   private final boolean a;
+   private final it.a<T> b;
 
-   void a(sh var1);
-
-   String a();
-
-   @Deprecated
-   public interface a<T extends iu> {
-      T b(iv<T> var1, StringReader var2) throws CommandSyntaxException;
-
-      T b(iv<T> var1, sh var2);
+   protected iu(boolean $$0, it.a<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public it.a<T> d() {
+      return this.b;
+   }
+
+   public abstract Codec<T> e();
 }

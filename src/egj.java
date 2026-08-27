@@ -1,5 +1,11 @@
-public class egj extends ecr<egk> {
-   public egj(ecq<? extends egk> $$0) {
-      super($$0);
-   }
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public interface egj {
+   @Nullable
+   String a(ech var1);
+
+   egi a();
+
+   Set<eep<?>> b();
 }

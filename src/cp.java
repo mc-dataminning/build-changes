@@ -1,84 +1,69 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
 import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cp implements bp {
+public record cp(cj.d d, Optional<cpj> e, List<cp.e<?>> f, Object2BooleanMap<aer> g, Map<aer, cp.c> h, Optional<bo> i) implements bp {
    public static final int b = 100;
-   private final cj.d c;
-   @Nullable
-   private final cph d;
-   private final Map<apb<?>, cj.d> e;
-   private final Object2BooleanMap<aep> f;
-   private final Map<aep, cp.c> g;
-   private final bo h;
-
-   private static cp.c b(JsonElement $$0) {
-      if ($$0.isJsonPrimitive()) {
-         boolean $$1 = $$0.getAsBoolean();
-         return new cp.b($$1);
-      } else {
-         Object2BooleanMap<String> $$2 = new Object2BooleanOpenHashMap();
-         JsonObject $$3 = arf.m($$0, "criterion data");
-         $$3.entrySet().forEach($$1 -> {
-            boolean $$2x = arf.c((JsonElement)$$1.getValue(), "criterion test");
-            $$2.put((String)$$1.getKey(), $$2x);
-         });
-         return new cp.a($$2);
-      }
-   }
-
-   cp(cj.d $$0, @Nullable cph $$1, Map<apb<?>, cj.d> $$2, Object2BooleanMap<aep> $$3, Map<aep, cp.c> $$4, bo $$5) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-   }
+   public static final MapCodec<cp> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aqy.a(cj.d.d, "level", cj.d.c).forGetter(cp::b),
+               cpj.f.optionalFieldOf("gamemode").forGetter(cp::c),
+               aqy.a(cp.e.a.listOf(), "stats", List.of()).forGetter(cp::d),
+               aqy.a(aqy.d(aer.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cp::e),
+               aqy.a(Codec.unboundedMap(aer.a, cp.c.b), "advancements", Map.of()).forGetter(cp::f),
+               aqy.a(bo.a, "looking_at").forGetter(cp::g)
+            )
+            .apply($$0, cp::new)
+   );
 
    @Override
-   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
-      if (!($$0 instanceof akj $$3)) {
+   public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
+      if (!($$0 instanceof akl $$3)) {
          return false;
-      } else if (!this.c.d($$3.cd)) {
+      } else if (!this.d.d($$3.cd)) {
          return false;
-      } else if (this.d != null && this.d != $$3.e.b()) {
+      } else if (this.e.isPresent() && this.e.get() != $$3.e.b()) {
          return false;
       } else {
-         apf $$4 = $$3.E();
+         aph $$5 = $$3.E();
 
-         for (Entry<apb<?>, cj.d> $$5 : this.e.entrySet()) {
-            int $$6 = $$4.a($$5.getKey());
-            if (!$$5.getValue().d($$6)) {
+         for (cp.e<?> $$6 : this.f) {
+            if (!$$6.a($$5)) {
                return false;
             }
          }
 
-         aox $$7 = $$3.F();
-         ObjectIterator var13 = this.f.object2BooleanEntrySet().iterator();
+         aoz $$7 = $$3.F();
+         ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<aep> $$8 = (it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<aep>)var13.next();
-            if ($$7.b((aep)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<aer> $$8 = (Entry<aer>)var13.next();
+            if ($$7.b((aer)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
 
-         if (!this.g.isEmpty()) {
-            aex $$9 = $$3.N();
-            afb $$10 = $$3.cK().az();
+         if (!this.h.isEmpty()) {
+            aez $$9 = $$3.N();
+            afd $$10 = $$3.cK().az();
 
-            for (Entry<aep, cp.c> $$11 : this.g.entrySet()) {
+            for (java.util.Map.Entry<aer, cp.c> $$11 : this.h.entrySet()) {
                ae $$12 = $$10.a($$11.getKey());
                if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
                   return false;
@@ -86,17 +71,17 @@ public class cp implements bp {
             }
          }
 
-         if (this.h != bo.a) {
-            ehf $$13 = $$3.bp();
-            ehf $$14 = $$3.f(1.0F);
-            ehf $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            ehc $$16 = cce.a($$3.dK(), $$3, $$13, $$15, new eha($$13, $$15).g(1.0), $$0x -> !$$0x.G_(), 0.0F);
-            if ($$16 == null || $$16.c() != ehd.a.c) {
+         if (this.i.isPresent()) {
+            ehe $$13 = $$3.bp();
+            ehe $$14 = $$3.f(1.0F);
+            ehe $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            ehb $$16 = ccg.a($$3.dK(), $$3, $$13, $$15, new egz($$13, $$15).g(1.0), $$0x -> !$$0x.G_(), 0.0F);
+            if ($$16 == null || $$16.c() != ehc.a.c) {
                return false;
             }
 
-            big $$17 = $$16.a();
-            if (!this.h.a($$3, $$17) || !$$3.E($$17)) {
+            bii $$17 = $$16.a();
+            if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
          }
@@ -105,124 +90,43 @@ public class cp implements bp {
       }
    }
 
-   public static cp a(JsonObject $$0) {
-      cj.d $$1 = cj.d.a($$0.get("level"));
-      String $$2 = arf.a($$0, "gamemode", "");
-      cph $$3 = cph.a($$2, null);
-      Map<apb<?>, cj.d> $$4 = Maps.newHashMap();
-      JsonArray $$5 = arf.a($$0, "stats", null);
-      if ($$5 != null) {
-         for (JsonElement $$6 : $$5) {
-            JsonObject $$7 = arf.m($$6, "stats entry");
-            aep $$8 = new aep(arf.i($$7, "type"));
-            apd<?> $$9 = jc.y.a($$8);
-            if ($$9 == null) {
-               throw new JsonParseException("Invalid stat type: " + $$8);
-            }
-
-            aep $$10 = new aep(arf.i($$7, "stat"));
-            apb<?> $$11 = a($$9, $$10);
-            cj.d $$12 = cj.d.a($$7.get("value"));
-            $$4.put($$11, $$12);
-         }
-      }
-
-      Object2BooleanMap<aep> $$13 = new Object2BooleanOpenHashMap();
-      JsonObject $$14 = arf.a($$0, "recipes", new JsonObject());
-
-      for (Entry<String, JsonElement> $$15 : $$14.entrySet()) {
-         aep $$16 = new aep($$15.getKey());
-         boolean $$17 = arf.c($$15.getValue(), "recipe present");
-         $$13.put($$16, $$17);
-      }
-
-      Map<aep, cp.c> $$18 = Maps.newHashMap();
-      JsonObject $$19 = arf.a($$0, "advancements", new JsonObject());
-
-      for (Entry<String, JsonElement> $$20 : $$19.entrySet()) {
-         aep $$21 = new aep($$20.getKey());
-         cp.c $$22 = b($$20.getValue());
-         $$18.put($$21, $$22);
-      }
-
-      bo $$23 = bo.a($$0.get("looking_at"));
-      return new cp($$1, $$3, $$4, $$13, $$18, $$23);
-   }
-
-   private static <T> apb<T> a(apd<T> $$0, aep $$1) {
-      hs<T> $$2 = $$0.a();
-      T $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         throw new JsonParseException("Unknown object " + $$1 + " for stat type " + jc.y.b($$0));
-      } else {
-         return $$0.b($$3);
-      }
-   }
-
-   private static <T> aep a(apb<T> $$0) {
-      return $$0.a().a().b($$0.b());
-   }
-
    @Override
-   public JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.add("level", this.c.d());
-      if (this.d != null) {
-         $$0.addProperty("gamemode", this.d.b());
-      }
-
-      if (!this.e.isEmpty()) {
-         JsonArray $$1 = new JsonArray();
-         this.e.forEach(($$1x, $$2) -> {
-            JsonObject $$3x = new JsonObject();
-            $$3x.addProperty("type", jc.y.b($$1x.a()).toString());
-            $$3x.addProperty("stat", a((apb<?>)$$1x).toString());
-            $$3x.add("value", $$2.d());
-            $$1.add($$3x);
-         });
-         $$0.add("stats", $$1);
-      }
-
-      if (!this.f.isEmpty()) {
-         JsonObject $$2 = new JsonObject();
-         this.f.forEach(($$1, $$2x) -> $$2.addProperty($$1.toString(), $$2x));
-         $$0.add("recipes", $$2);
-      }
-
-      if (!this.g.isEmpty()) {
-         JsonObject $$3 = new JsonObject();
-         this.g.forEach(($$1, $$2) -> $$3.add($$1.toString(), $$2.a()));
-         $$0.add("advancements", $$3);
-      }
-
-      $$0.add("looking_at", this.h.a());
-      return $$0;
-   }
-
-   @Override
-   public bp.a c() {
+   public bp.a a() {
       return bp.b.d;
    }
 
-   static class a implements cp.c {
-      private final Object2BooleanMap<String> a;
+   public cj.d b() {
+      return this.d;
+   }
 
-      public a(Object2BooleanMap<String> $$0) {
-         this.a = $$0;
-      }
+   public Optional<cpj> c() {
+      return this.e;
+   }
 
-      @Override
-      public JsonElement a() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach($$0::addProperty);
-         return $$0;
-      }
+   public List<cp.e<?>> d() {
+      return this.f;
+   }
+
+   public Object2BooleanMap<aer> e() {
+      return this.g;
+   }
+
+   public Map<aer, cp.c> f() {
+      return this.h;
+   }
+
+   public Optional<bo> g() {
+      return this.i;
+   }
+
+   static record a(Object2BooleanMap<String> c) implements cp.c {
+      public static final Codec<cp.a> a = aqy.d(Codec.STRING).xmap(cp.a::new, cp.a::a);
 
       public boolean a(ag $$0) {
-         ObjectIterator var2 = this.a.object2BooleanEntrySet().iterator();
+         ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
 
          while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<String> $$1 = (it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry<String>)var2.next();
+            Entry<String> $$1 = (Entry<String>)var2.next();
             ak $$2 = $$0.c((String)$$1.getKey());
             if ($$2 == null || $$2.a() != $$1.getBooleanValue()) {
                return false;
@@ -231,37 +135,43 @@ public class cp implements bp {
 
          return true;
       }
+
+      public Object2BooleanMap<String> a() {
+         return this.c;
+      }
    }
 
-   static class b implements cp.c {
-      private final boolean a;
-
-      public b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public JsonElement a() {
-         return new JsonPrimitive(this.a);
-      }
+   static record b(boolean c) implements cp.c {
+      public static final Codec<cp.b> a = Codec.BOOL.xmap(cp.b::new, cp.b::a);
 
       public boolean a(ag $$0) {
-         return $$0.a() == this.a;
+         return $$0.a() == this.c;
+      }
+
+      public boolean a() {
+         return this.c;
       }
    }
 
    interface c extends Predicate<ag> {
-      JsonElement a();
+      Codec<cp.c> b = Codec.either(cp.b.a, cp.a.a).xmap($$0 -> (cp.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         if ($$0 instanceof cp.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof cp.a $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
    }
 
    public static class d {
-      private cj.d a = cj.d.e;
-      @Nullable
-      private cph b;
-      private final Map<apb<?>, cj.d> c = Maps.newHashMap();
-      private final Object2BooleanMap<aep> d = new Object2BooleanOpenHashMap();
-      private final Map<aep, cp.c> e = Maps.newHashMap();
-      private bo f = bo.a;
+      private cj.d a = cj.d.c;
+      private Optional<cpj> b = Optional.empty();
+      private final Builder<cp.e<?>> c = ImmutableList.builder();
+      private final Object2BooleanMap<aer> d = new Object2BooleanOpenHashMap();
+      private final Map<aer, cp.c> e = Maps.newHashMap();
+      private Optional<bo> f = Optional.empty();
 
       public static cp.d a() {
          return new cp.d();
@@ -272,38 +182,73 @@ public class cp implements bp {
          return this;
       }
 
-      public cp.d a(apb<?> $$0, cj.d $$1) {
-         this.c.put($$0, $$1);
+      public <T> cp.d a(apf<T> $$0, he.c<T> $$1, cj.d $$2) {
+         this.c.add(new cp.e<>($$0, $$1, $$2));
          return this;
       }
 
-      public cp.d a(aep $$0, boolean $$1) {
+      public cp.d a(aer $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }
 
-      public cp.d a(cph $$0) {
-         this.b = $$0;
+      public cp.d a(cpj $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 
-      public cp.d a(bo $$0) {
+      public cp.d a(Optional<bo> $$0) {
          this.f = $$0;
          return this;
       }
 
-      public cp.d b(aep $$0, boolean $$1) {
+      public cp.d b(aer $$0, boolean $$1) {
          this.e.put($$0, new cp.b($$1));
          return this;
       }
 
-      public cp.d a(aep $$0, Map<String, Boolean> $$1) {
+      public cp.d a(aer $$0, Map<String, Boolean> $$1) {
          this.e.put($$0, new cp.a(new Object2BooleanOpenHashMap($$1)));
          return this;
       }
 
       public cp b() {
-         return new cp(this.a, this.b, this.c, this.d, this.e, this.f);
+         return new cp(this.a, this.b, this.c.build(), this.d, this.e, this.f);
+      }
+   }
+
+   static record e<T>(apf<T> b, he<T> c, cj.d d, Supplier<apd<T>> e) {
+      public static final Codec<cp.e<?>> a = jb.y.q().dispatch(cp.e::a, cp.e::a);
+
+      public e(apf<T> $$0, he<T> $$1, cj.d $$2) {
+         this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
+      }
+
+      private static <T> Codec<cp.e<T>> a(apf<T> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.a().r().fieldOf("stat").forGetter(cp.e::b), aqy.a(cj.d.d, "value", cj.d.c).forGetter(cp.e::c))
+                  .apply($$1, ($$1x, $$2) -> new cp.e<>($$0, $$1x, $$2))
+         );
+      }
+
+      public boolean a(aph $$0) {
+         return this.d.d($$0.a(this.e.get()));
+      }
+
+      public apf<T> a() {
+         return this.b;
+      }
+
+      public he<T> b() {
+         return this.c;
+      }
+
+      public cj.d c() {
+         return this.d;
+      }
+
+      public Supplier<apd<T>> d() {
+         return this.e;
       }
    }
 }

@@ -1,80 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+public class ara {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-@FunctionalInterface
-public interface ara {
-   ara a = $$0 -> true;
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   boolean accept(arb var1);
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
 
-   static ara codepoint(int $$0, ua $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
-   }
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-   static ara forward(String $$0, ua $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ase.a($$0, $$1, $$2);
-   }
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
 
-   static ara forward(String $$0, ua $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ase.a($$0, $$1, decorateOutput($$3, $$2));
-   }
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
 
-   static ara backward(String $$0, ua $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ase.b($$0, $$1, $$2);
-   }
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
 
-   static ara backward(String $$0, ua $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ase.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static arb decorateOutput(arb $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static ara composite() {
-      return a;
-   }
-
-   static ara composite(ara $$0) {
-      return $$0;
-   }
-
-   static ara composite(ara $$0, ara $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static ara composite(ara... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static ara composite(List<ara> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
       }
    }
 
-   static ara fromPair(ara $$0, ara $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-   static ara fromList(List<ara> $$0) {
-      return $$1 -> {
-         for (ara $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-         return true;
-      };
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = arp.a($$0, a($$1), a($$2));
+         int $$4 = arp.a($$0, b($$1), b($$2));
+         int $$5 = arp.a($$0, c($$1), c($$2));
+         int $$6 = arp.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
    }
 }

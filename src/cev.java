@@ -1,22 +1,77 @@
-public class cev extends cfu {
-   private final ced a;
+public class cev extends cee {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bgj p;
 
-   public cev(ced $$0, bgh $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public cev(int $$0, cbm $$1) {
+      this($$0, $$1, new bgx(9));
+   }
+
+   public cev(int $$0, cbm $$1, bgj $$2) {
+      super(cfj.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cfw($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cfw($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cfw($$1, $$7, 8 + $$7 * 18, 142));
+      }
    }
 
    @Override
-   public boolean a(ciw $$0) {
-      return this.a.d($$0) || c($$0);
+   public boolean a(cbn $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   public int a_(ciw $$0) {
-      return c($$0) ? 1 : super.a_($$0);
+   public ciy a(cbn $$0, int $$1) {
+      ciy $$2 = ciy.b;
+      cfw $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ciy $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return ciy.b;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return ciy.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(ciy.b);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return ciy.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
-   public static boolean c(ciw $$0) {
-      return $$0.a(ciz.pK);
+   @Override
+   public void b(cbn $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

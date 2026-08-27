@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bgf {
-   void a();
-
-   static void a_(@Nullable Object $$0) {
-      if ($$0 instanceof bgf) {
-         ((bgf)$$0).a();
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgf {
 }

@@ -1,34 +1,42 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class efm implements efh {
-   final float a;
+public record efm(float b, float c) implements efg {
+   public static final Codec<efm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efm::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(efm::d)).apply($$0, efm::new)
+   );
 
-   efm(float $$0) {
-      this.a = $$0;
+   @Override
+   public efh b() {
+      return efi.f;
    }
 
    @Override
-   public efi b() {
-      return efj.d;
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(ees.d);
    }
 
    public boolean a(ech $$0) {
-      return $$0.b().i() < this.a;
-   }
-
-   public static efh.a a(float $$0) {
-      return () -> new efm($$0);
-   }
-
-   public static class a implements ecq<efm> {
-      public void a(JsonObject $$0, efm $$1, JsonSerializationContext $$2) {
-         $$0.addProperty("chance", $$1.a);
+      bii $$1 = $$0.c(ees.d);
+      int $$2 = 0;
+      if ($$1 instanceof biy) {
+         $$2 = cnh.h((biy)$$1);
       }
 
-      public efm b(JsonObject $$0, JsonDeserializationContext $$1) {
-         return new efm(arf.m($$0, "chance"));
-      }
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static efg.a a(float $$0, float $$1) {
+      return () -> new efm($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

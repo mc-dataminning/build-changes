@@ -1,34 +1,54 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gce extends anx {
-   private qs a;
+public interface gce<T> {
+   static <T> gce<T> a() {
+      return new gce<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public gce(gcf $$0, hm<aey> $$1, eby $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   @Override
-   protected void b(akj $$0) {
-      if (this.b().a($$0.fP())) {
-         this.a = $$0.f(new qs());
+   static <T> gce<T> a(List<T> $$0, Function<T, Stream<aer>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gch<T> $$2 = new gch<>();
+         final gch<T> $$3 = new gch<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gce<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
-
-      super.b($$0);
    }
 
-   @Override
-   public te a(SocketAddress $$0, GameProfile $$1) {
-      return (te)(this.b().a($$1) && this.a($$1.getName()) != null ? te.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
+   List<T> a(String var1);
 
-   public gcf b() {
-      return (gcf)super.c();
-   }
-
-   @Override
-   public qs r() {
-      return this.a;
-   }
+   List<T> b(String var1);
 }

@@ -1,82 +1,57 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.List;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ul implements tf {
-   private static final String b = "*";
-   private final String c;
+public class ul implements tg {
+   private static final Logger c = LogUtils.getLogger();
+   private final boolean d;
+   private final Optional<tf> e;
+   private final String f;
+   private final ug g;
    @Nullable
-   private final gb d;
-   private final String e;
+   protected final eh.g b;
+
+   public ul(String $$0, boolean $$1, Optional<tf> $$2, ug $$3) {
+      this($$0, a($$0), $$1, $$2, $$3);
+   }
+
+   private ul(String $$0, @Nullable eh.g $$1, boolean $$2, Optional<tf> $$3, ug $$4) {
+      this.f = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.g = $$4;
+   }
 
    @Nullable
-   private static gb a(String $$0) {
+   private static eh.g a(String $$0) {
       try {
-         return new gc(new StringReader($$0)).t();
+         return new eh().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
-   public ul(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = a($$0);
-      this.e = $$1;
-   }
-
    public String a() {
-      return this.c;
+      return this.f;
    }
 
-   @Nullable
-   public gb b() {
+   public boolean b() {
       return this.d;
    }
 
-   public String c() {
+   public Optional<tf> c() {
       return this.e;
    }
 
-   private String a(ds $$0) throws CommandSyntaxException {
-      if (this.d != null) {
-         List<? extends big> $$1 = this.d.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw ed.a.create();
-            }
-
-            return $$1.get(0).cx();
-         }
-      }
-
-      return this.c;
-   }
-
-   private String a(String $$0, ds $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         eie $$3 = $$2.aF();
-         eib $$4 = $$3.b(this.e);
-         if ($$4 != null && $$3.b($$0, $$4)) {
-            eid $$5 = $$3.c($$0, $$4);
-            return Integer.toString($$5.b());
-         }
-      }
-
-      return "";
-   }
-
-   @Override
-   public tr a(@Nullable ds $$0, @Nullable big $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return te.h();
-      } else {
-         String $$3 = this.a($$0);
-         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
-         return te.b(this.a($$4, $$0));
-      }
+   public ug d() {
+      return this.g;
    }
 
    @Override
@@ -84,7 +59,7 @@ public class ul implements tf {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ul $$1 && this.c.equals($$1.c) && this.e.equals($$1.e)) {
+         if ($$0 instanceof ul $$1 && this.g.equals($$1.g) && this.e.equals($$1.e) && this.d == $$1.d && this.f.equals($$1.f)) {
             return true;
          }
 
@@ -94,12 +69,45 @@ public class ul implements tf {
 
    @Override
    public int hashCode() {
-      int $$0 = this.c.hashCode();
-      return 31 * $$0 + this.e.hashCode();
+      int $$0 = this.d ? 1 : 0;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      return 31 * $$0 + this.g.hashCode();
    }
 
    @Override
    public String toString() {
-      return "score{name='" + this.c + "', objective='" + this.e + "'}";
+      return "nbt{" + this.g + ", interpreting=" + this.d + ", separator=" + this.e + "}";
+   }
+
+   @Override
+   public ts a(@Nullable dr $$0, @Nullable bii $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.b != null) {
+         Stream<String> $$3 = this.g.getData($$0).flatMap($$0x -> {
+            try {
+               return this.b.a($$0x).stream();
+            } catch (CommandSyntaxException var3x) {
+               return Stream.empty();
+            }
+         }).map(rk::m_);
+         if (this.d) {
+            tf $$4 = (tf)DataFixUtils.orElse(th.a($$0, this.e, $$1, $$2), th.c);
+            return $$3.flatMap($$3x -> {
+               try {
+                  ts $$4x = tf.a.a($$3x);
+                  return Stream.of(th.a($$0, $$4x, $$1, $$2));
+               } catch (Exception var5x) {
+                  c.warn("Failed to parse component: {}", $$3x, var5x);
+                  return Stream.of();
+               }
+            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(tf::h);
+         } else {
+            return th.a($$0, this.e, $$1, $$2)
+               .map($$1x -> $$3.map(tf::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(tf::h))
+               .orElseGet(() -> tf.b($$3.collect(Collectors.joining(", "))));
+         }
+      } else {
+         return tf.h();
+      }
    }
 }

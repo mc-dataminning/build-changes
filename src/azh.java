@@ -1,62 +1,33 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class azh extends axo {
-   public azh(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", aym.x, $$1);
+public class azh extends DataFix {
+   public azh(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      return $$0.set(
-         DSL.remainderFinder(),
-         $$1.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               $$1.createMap(
-                  ImmutableMap.of(
-                     $$1.createString("type"),
-                     $$1.createString("minecraft:plains"),
-                     $$1.createString("profession"),
-                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
-                     $$1.createString("level"),
-                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
-                  )
-               )
-            )
-      );
-   }
-
-   private static String a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         if ($$1 == 2) {
-            return "minecraft:fisherman";
-         } else if ($$1 == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
-         }
-      } else if ($$0 == 1) {
-         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if ($$0 == 2) {
-         return "minecraft:cleric";
-      } else if ($$0 == 3) {
-         if ($$1 == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if ($$0 == 4) {
-         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ayp.E.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(ayp.E))) {
+         throw new IllegalStateException("Team type is not what was expected.");
       } else {
-         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+         return this.fixTypeEverywhere(
+            "TeamDisplayNameFix",
+            $$0,
+            $$0x -> $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update(
+                           "DisplayName",
+                           $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxxx -> tf.a.a(tf.b($$0xxxxx))).map($$0xxx::createString).result(), $$1)
+                        )
+                  )
+         );
       }
    }
 }

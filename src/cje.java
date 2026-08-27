@@ -1,40 +1,19 @@
-public class cje extends cir {
-   private static final int a = 32;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cje(cir.a $$0) {
+public class cje extends ckk {
+   public cje(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public ciw a(ciw $$0, cpk $$1, biw $$2) {
-      if ($$2 instanceof akj $$3) {
-         ai.z.a($$3, $$0);
-         $$3.b(ape.c.b(this));
-      }
-
-      if ($$2 instanceof cbl && !((cbl)$$2).fR().d) {
-         $$0.h(1);
-      }
-
-      if (!$$1.B) {
-         $$2.ep();
-      }
-
-      return $$0.b() ? new ciw(ciz.pK) : $$0;
+   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
+      ckx.a($$0, $$2, 0.25F);
    }
 
    @Override
-   public int b(ciw $$0) {
-      return 32;
-   }
-
-   @Override
-   public ckp c(ciw $$0) {
-      return ckp.c;
-   }
-
-   @Override
-   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
-      return ciy.a($$0, $$1, $$2);
+   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.mv, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

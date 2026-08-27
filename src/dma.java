@@ -1,18 +1,21 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dma implements dlo {
-   public static dma a = new dma();
-   public static final Codec<dma> e = Codec.unit(() -> a);
+@Deprecated
+public class dma extends dmb {
+   public static final Codec<dma> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dma::new));
 
-   private dma() {
-   }
-
-   public boolean a(cqe $$0, gv $$1) {
-      return true;
+   public dma(hz $$0) {
+      super($$0);
    }
 
    @Override
-   public dlp<?> a() {
-      return dlp.l;
+   protected boolean a(dfa $$0) {
+      return $$0.e();
+   }
+
+   @Override
+   public dlr<?> a() {
+      return dlr.e;
    }
 }

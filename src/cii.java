@@ -1,14 +1,15 @@
-public class cii extends cjw {
-   public cii(csk $$0, csk $$1, cir.a $$2) {
-      super($$2, $$0, $$1, hb.b);
+public class cii extends cit implements cjx {
+   public cii(cit.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cpn $$0, dey $$1, gv $$2) {
-      if ($$1.b() instanceof dbh $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(cpm $$0, ddu $$1, boolean $$2, cbn $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.p(), aow.jt, aox.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

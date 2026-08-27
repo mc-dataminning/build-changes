@@ -1,18 +1,39 @@
-public class cyu extends css {
-   protected static final float a = 6.0F;
-   protected static final ehy b = csk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class cyu extends cul {
+   protected static final float e = 6.0F;
+   protected static final float f = 10.0F;
+   protected static final ehx g = csm.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ehx h = csm.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ehx i = csm.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   protected cyu(dex.d $$0) {
+   protected cyu(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return b;
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return i;
+         case c:
+            return h;
+         case b:
+            return g;
+      }
    }
 
    @Override
-   protected boolean d(dey $$0, coq $$1, gv $$2) {
-      return $$0.a(apj.aK) || $$0.a(csl.dY) || super.d($$0, $$1, $$2);
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
    }
 }

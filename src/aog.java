@@ -1,24 +1,38 @@
 import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
+import java.util.Date;
 import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aog extends aob<GameProfile> {
-   public aog(GameProfile $$0) {
-      super($$0);
+public class aog extends anu<GameProfile> {
+   public aog(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public aog(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    public aog(JsonObject $$0) {
-      super(b($$0));
+      super(b($$0), $$0);
    }
 
    @Override
    protected void a(JsonObject $$0) {
       if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
+         $$0.addProperty("uuid", this.g().getId().toString());
          $$0.addProperty("name", this.g().getName());
+         super.a($$0);
       }
    }
 
+   @Override
+   public tf e() {
+      GameProfile $$0 = this.g();
+      return tf.b($$0 != null ? $$0.getName() : "(Unknown)");
+   }
+
+   @Nullable
    private static GameProfile b(JsonObject $$0) {
       if ($$0.has("uuid") && $$0.has("name")) {
          String $$1 = $$0.get("uuid").getAsString();

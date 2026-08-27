@@ -1,40 +1,99 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class enb extends end {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public enb.a c = enb.a.a;
+public class enb extends enc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
+   @Nullable
+   private final String f;
+   private final URI g;
 
+   private enb(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Nullable
    public static enb a(String $$0) {
-      enb $$1 = new enb();
-
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = epa.a("startDate", $$3, 0L);
-         $$1.b = epa.a("daysLeft", $$3, 0);
-         $$1.c = b(epa.a("subscriptionType", $$3, enb.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = eoz.a("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = eoz.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = eoz.a("worldClosed", $$2, false);
+               String $$7 = eoz.a("token", $$2, null);
+               return new enb($$6, $$7, $$5);
+            }
+         }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
       }
 
-      return $$1;
+      return null;
    }
 
-   private static enb.a b(String $$0) {
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
+
       try {
-         return enb.a.valueOf($$0);
-      } catch (Exception var2) {
-         return enb.a.a;
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
+      } else {
+         return $$1 != -1 ? $$1 : 8080;
+      }
+   }
+
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
+   }
+
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
+      }
+
+      return $$1.toString();
+   }
+
+   @Nullable
+   public String a() {
+      return this.f;
+   }
+
+   public URI b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e;
    }
 }

@@ -1,18 +1,15 @@
-public enum clp implements asf {
-   a("building"),
-   b("redstone"),
-   c("equipment"),
-   d("misc");
-
-   public static final asf.a<clp> e = asf.a(clp::values);
-   private final String f;
-
-   private clp(String $$0) {
-      this.f = $$0;
+public class clp extends clk {
+   public clp(aer $$0, String $$1, clq $$2, cly $$3, ciy $$4, float $$5, int $$6) {
+      super(cme.e, $$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public ciy h() {
+      return new ciy(csn.og);
+   }
+
+   @Override
+   public cmd<?> aj_() {
+      return cmd.s;
    }
 }

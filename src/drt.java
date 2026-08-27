@@ -1,30 +1,24 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class drt extends drq {
-   protected final long c;
-   protected final dze.a d;
-   protected final float e;
-   protected final dze f;
+public class drt<P extends drs> {
+   public static final drt<dsb> a = a("simple_state_provider", dsb.b);
+   public static final drt<dsc> b = a("weighted_state_provider", dsc.b);
+   public static final drt<drx> c = a("noise_threshold_provider", drx.b);
+   public static final drt<drw> d = a("noise_provider", drw.g);
+   public static final drt<dru> e = a("dual_noise_provider", dru.b);
+   public static final drt<drz> f = a("rotated_block_provider", drz.b);
+   public static final drt<dry> g = a("randomized_int_state_provider", dry.b);
+   private final Codec<P> h;
 
-   protected static <P extends drt> P3<Mu<P>, Long, dze.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         dze.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         aqw.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends drs> drt<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.W, $$0, new drt<>($$1));
    }
 
-   protected drt(long $$0, dze.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = dze.b(new dlg(new dki($$0)), $$1);
+   private drt(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   protected double a(gv $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public Codec<P> a() {
+      return this.h;
    }
 }

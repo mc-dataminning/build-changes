@@ -1,57 +1,38 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public class aup extends axo {
-   private static final String a = te.a.a(td.a);
-   private static final String[] b = new String[]{
-      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
-   };
+public class aup extends DataFix {
+   private final String a;
+   private final String b;
+   private final UnaryOperator<String> c;
 
-   public aup(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, aym.s, $$2);
+   public aup(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = $$0.update("front_text", aup::b);
-      $$0 = $$0.update("back_text", aup::b);
-
-      for (String $$1 : b) {
-         $$0 = $$0.remove($$1);
-      }
-
-      return $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(ayp.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
-      if ($$1) {
-         return $$0.remove("_filtered_correct");
-      } else {
-         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
-         if ($$2.isEmpty()) {
-            return $$0;
-         } else {
-            Dynamic<T> $$3 = $$0.createString(a);
-            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
-               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
-               return $$2x.equals($$3) ? $$4x : $$2x;
-            }).toList();
-            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
-               ? $$0.remove("filtered_messages")
-               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
-         }
-      }
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), aup::a);
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         this.b,
+         $$0x -> $$0x.update(
+               "criteria",
+               $$0xx -> $$0xx.updateMapValues(
+                     $$0xxx -> $$0xxx.mapFirst(
+                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
+                        )
+                  )
+            )
+      );
    }
 }

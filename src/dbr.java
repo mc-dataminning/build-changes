@@ -1,22 +1,22 @@
-public class dbr extends cvx {
-   protected static final ehy f = csk.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dbr extends dag implements dbo {
+   private final dbo.a F;
 
-   public dbr(dex.d $$0) {
-      super($$0, hb.a, f, false, 0.1);
+   public dbr(dbo.a $$0, dfa $$1, dez.d $$2) {
+      super($$1, $$2);
+      this.F = $$0;
    }
 
    @Override
-   protected int a(art $$0) {
-      return cxo.a($$0);
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected csk a() {
-      return csl.oA;
+   public boolean e_(dfa $$0) {
+      return dbo.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected boolean g(dey $$0) {
-      return cxo.a($$0);
+   public dbo.a g() {
+      return this.F;
    }
 }

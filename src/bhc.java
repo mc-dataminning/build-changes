@@ -1,28 +1,18 @@
-import com.mojang.serialization.Codec;
+public class bhc {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public enum bhc implements asf {
-   a("hurt", aou.sz),
-   b("thorns", aou.xF),
-   c("drowning", aou.sA),
-   d("burning", aou.sC),
-   e("poking", aou.sD),
-   f("freezing", aou.sB);
-
-   public static final Codec<bhc> g = asf.a(bhc::values);
-   private final String h;
-   private final aot i;
-
-   private bhc(String $$0, aot $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 2.0F + $$2 / 4.0F;
+      float $$4 = arp.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
+      return $$0 * (1.0F - $$4 / 25.0F);
    }
 
-   @Override
-   public String c() {
-      return this.h;
-   }
-
-   public aot a() {
-      return this.i;
+   public static float a(float $$0, float $$1) {
+      float $$2 = arp.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

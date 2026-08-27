@@ -1,52 +1,70 @@
-import javax.annotation.Nullable;
+public class cwl extends csm implements cva, cvq {
+   public static final dfy<hc> a = dfq.T;
 
-public class cwl extends cvx implements cwy {
-   protected static final ehy f = csk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double g = 0.14;
-
-   protected cwl(dex.d $$0) {
-      super($$0, hb.b, f, true, 0.14);
+   protected cwl(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.k));
    }
 
    @Override
-   protected boolean g(dey $$0) {
-      return $$0.a(csl.G);
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   protected csk a() {
-      return csl.md;
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
    }
 
    @Override
-   protected boolean h(dey $$0) {
-      return !$$0.a(csl.kJ);
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
    }
 
    @Override
-   public boolean a(@Nullable cbl $$0, coq $$1, gv $$2, dey $$3, eaa $$4) {
-      return false;
+   public dfa a(clg $$0) {
+      ha $$1 = $$0.k();
+      ha $$2;
+      if ($$1.o() == ha.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = ha.b;
+      }
+
+      return this.n().a(a, hc.a($$1, $$2));
    }
 
    @Override
-   public boolean a(cpl $$0, gv $$1, dey $$2, eab $$3) {
-      return false;
+   public dcm a(gu $$0, dfa $$1) {
+      return new ddl($$0, $$1);
    }
 
    @Override
-   protected int a(art $$0) {
-      return 1;
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      dcm $$6 = $$1.c_($$2);
+      if ($$6 instanceof ddl && $$3.gn()) {
+         $$3.a((ddl)$$6);
+         return bgq.a($$1.B);
+      } else {
+         return bgq.d;
+      }
    }
 
-   @Nullable
-   @Override
-   public dey a(cle $$0) {
-      eab $$1 = $$0.q().b_($$0.a());
-      return $$1.a(apo.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public static boolean a(dys.c $$0, dys.c $$1) {
+      ha $$2 = h($$0.b());
+      ha $$3 = h($$1.b());
+      ha $$4 = n($$0.b());
+      ha $$5 = n($$1.b());
+      ddl.a $$6 = ddl.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? ddl.a.b : ddl.a.a);
+      boolean $$7 = $$6 == ddl.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public eab c_(dey $$0) {
-      return eac.c.a(false);
+   public static ha h(dfa $$0) {
+      return $$0.c(a).a();
+   }
+
+   public static ha n(dfa $$0) {
+      return $$0.c(a).b();
    }
 }

@@ -1,129 +1,162 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public interface ell {
-   ell a(double var1, double var3, double var5);
+public class ell {
+   private final ImmutableList<elm> a;
+   private final ImmutableMap<String, elm> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
+   @Nullable
+   private elj e;
 
-   ell a(int var1, int var2, int var3, int var4);
+   public ell(ImmutableMap<String, elm> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
 
-   ell a(float var1, float var2);
-
-   ell a(int var1, int var2);
-
-   ell b(int var1, int var2);
-
-   ell a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
-   }
-
-   void b(int var1, int var2, int var3, int var4);
-
-   void k();
-
-   default ell a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default ell a(int $$0) {
-      return this.a(aqy.b.b($$0), aqy.b.c($$0), aqy.b.d($$0), aqy.b.a($$0));
-   }
-
-   default ell b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default ell c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(elh.a $$0, foc $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
-   }
-
-   default void a(elh.a $$0, foc $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
-      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
-      int[] $$11 = $$1.b();
-      ia $$12 = $$1.e().q();
-      Matrix4f $$13 = $$0.a();
-      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
-      int $$15 = 8;
-      int $$16 = $$11.length / 8;
-      MemoryStack $$17 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$18 = $$17.malloc(elf.j.b());
-         IntBuffer $$19 = $$18.asIntBuffer();
-
-         for (int $$20 = 0; $$20 < $$16; $$20++) {
-            $$19.clear();
-            $$19.put($$11, $$20 * 8, 8);
-            float $$21 = $$18.getFloat(0);
-            float $$22 = $$18.getFloat(4);
-            float $$23 = $$18.getFloat(8);
-            float $$27;
-            float $$28;
-            float $$29;
-            if ($$8) {
-               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
-               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
-               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
-               $$27 = $$24 * $$9[$$20] * $$3;
-               $$28 = $$25 * $$9[$$20] * $$4;
-               $$29 = $$26 * $$9[$$20] * $$5;
-            } else {
-               $$27 = $$9[$$20] * $$3;
-               $$28 = $$9[$$20] * $$4;
-               $$29 = $$9[$$20] * $$5;
-            }
-
-            int $$33 = $$10[$$20];
-            float $$34 = $$18.getFloat(16);
-            float $$35 = $$18.getFloat(20);
-            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
-            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
-         }
-      } catch (Throwable var33) {
-         if ($$17 != null) {
-            try {
-               $$17.close();
-            } catch (Throwable var32) {
-               var33.addSuppressed(var32);
-            }
-         }
-
-         throw var33;
+      while (var3.hasNext()) {
+         elm $$2 = (elm)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      if ($$17 != null) {
-         $$17.close();
+      this.d = $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   }
+
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<elm> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ell $$1 = (ell)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
+      } else {
+         return false;
       }
    }
 
-   default ell a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   default ell a(Matrix3f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<elm> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<elm> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         elm $$2 = (elm)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public elj g() {
+      elj $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new elj(elj.a.b);
+      }
+
+      return $$0;
+   }
+
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static ell.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
+      }
    }
 }

@@ -1,31 +1,37 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fzl {
-   public static ara a(ti $$0, boolean $$1) {
-      ub $$2 = ub.a($$0, UCharacter::getMirror, fzl::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<ara> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public record fzl(aer a, @Nullable aer b, @Nullable aer c, fzl.a d, boolean e) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      return ara.composite($$4);
-   }
+      public static fzl.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
+      public String a() {
+         return this.c;
       }
    }
 }

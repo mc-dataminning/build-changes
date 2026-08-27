@@ -1,53 +1,40 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class ww implements ux<wp> {
+   private final int a;
+   private final gu b;
+   private final int c;
 
-public class ww implements uw<wo> {
-   private final gv a;
-   private final dcm<?> b;
-   @Nullable
-   private final qs c;
-
-   public static ww a(dck $$0, Function<dck, qs> $$1) {
-      return new ww($$0.p(), $$0.u(), $$1.apply($$0));
-   }
-
-   public static ww a(dck $$0) {
-      return a($$0, dck::ao_);
-   }
-
-   private ww(gv $$0, dcm<?> $$1, qs $$2) {
+   public ww(int $$0, gu $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
+      this.c = $$2;
    }
 
-   public ww(sh $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(jc.l);
-      this.c = $$0.p();
+   public ww(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(jc.l, this.b);
-      $$0.a((rl)this.c);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.k(this.c);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
+   public int a() {
       return this.a;
    }
 
-   public dcm<?> d() {
+   public gu d() {
       return this.b;
    }
 
-   @Nullable
-   public qs e() {
+   public int e() {
       return this.c;
    }
 }

@@ -1,51 +1,51 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
-public class az extends cv<az.a> {
-   static final aep a = new aep("consume_item");
+public class az extends cu<az.a> {
+   static final aer a = new aer("consume_item");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public az.a a(JsonObject $$0, ba $$1, be $$2) {
+   public az.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
       return new az.a($$1, bz.a($$0.get("item")));
    }
 
-   public void a(akj $$0, ciw $$1) {
+   public void a(akl $$0, ciy $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends ar {
-      private final bz a;
+      private final Optional<bz> a;
 
-      public a(ba $$0, bz $$1) {
+      public a(Optional<ba> $$0, Optional<bz> $$1) {
          super(az.a, $$0);
          this.a = $$1;
       }
 
-      public static az.a c() {
-         return new az.a(ba.a, bz.a);
+      public static az.a d() {
+         return new az.a(Optional.empty(), Optional.empty());
       }
 
       public static az.a a(bz $$0) {
-         return new az.a(ba.a, $$0);
+         return new az.a(Optional.empty(), Optional.of($$0));
       }
 
-      public static az.a a(cpj $$0) {
-         return new az.a(ba.a, new bz(null, ImmutableSet.of($$0.k()), cj.d.e, cj.d.e, bj.b, bj.b, null, cl.a));
+      public static az.a a(cpl $$0) {
+         return new az.a(Optional.empty(), bz.a.a().a($$0.k()).b());
       }
 
-      public boolean a(ciw $$0) {
-         return this.a.a($$0);
+      public boolean a(ciy $$0) {
+         return this.a.isEmpty() || this.a.get().a($$0);
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("item", this.a.a());
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         return $$0;
       }
    }
 }

@@ -1,77 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class gat implements gah {
-   private final int a;
-   private final List<bfa.b<gah>> b;
-   private final gah c;
+public class gat extends aer {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public gat(List<bfa.b<gah>> $$0) {
-      this.b = $$0;
-      this.a = bfb.a($$0);
-      this.c = $$0.get(0).b();
+   private gat(String $$0, String $$1, String $$2, @Nullable aer.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public gat(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public gat(aer $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gat c(String $$0, String $$1) {
+      return new gat("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public List<foc> a(@Nullable dey $$0, @Nullable hb $$1, art $$2) {
-      return bfb.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public fyg e() {
-      return this.c.e();
-   }
-
-   @Override
-   public foo f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fom g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bfa.b<gah>> a = Lists.newArrayList();
-
-      public gat.a a(@Nullable gah $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bfa.a($$0, $$1));
-         }
-
-         return this;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gat && super.equals($$0)) {
+         gat $$1 = (gat)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
       }
+   }
 
-      @Nullable
-      public gah a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gah)(this.a.size() == 1 ? this.a.get(0).b() : new gat(this.a));
-         }
-      }
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

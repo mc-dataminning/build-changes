@@ -1,112 +1,223 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class ewq extends exv {
-   private static final te a = te.c("createWorld.customize.buffet.biome");
-   private final exv b;
-   private final Consumer<hf<cqi>> c;
-   final hs<cqi> k;
-   private ewq.a l;
-   hf<cqi> m;
-   private esi n;
+public class ewq extends exz {
+   public static final double a = 7.0;
+   private static final tf c = tf.c("chat_screen.usage");
+   private static final int k = 210;
+   private String l = "";
+   private int m = -1;
+   protected esq b;
+   private String n;
+   esk o;
 
-   public ewq(exv $$0, fcn $$1, Consumer<hf<cqi>> $$2) {
-      super(te.c("createWorld.customize.buffet.title"));
-      this.b = $$0;
-      this.c = $$2;
-      this.k = $$1.a().d(jd.ap);
-      hf<cqi> $$3 = this.k.b(cqp.b).or(() -> this.k.h().findAny()).orElseThrow();
-      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
-   }
-
-   @Override
-   public void au_() {
-      this.f.a(this.b);
+   public ewq(String $$0) {
+      super(tf.c("chat_screen.title"));
+      this.n = $$0;
    }
 
    @Override
    protected void aE_() {
-      this.l = new ewq.a();
-      this.e(this.l);
-      this.n = this.d(esi.a(td.d, $$0 -> {
-         this.c.accept(this.m);
-         this.f.a(this.b);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esi.a(td.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
-   }
-
-   void l() {
-      this.n.i = this.l.f() != null;
+      this.m = this.f.l.d().c().size();
+      this.b = new esq(this.f.i, 4, this.h - 12, this.g - 4, 12, tf.c("chat.editBox")) {
+         @Override
+         protected ts aB_() {
+            return super.aB_().b(ewq.this.o.c());
+         }
+      };
+      this.b.k(256);
+      this.b.d(false);
+      this.b.a(this.n);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.e(this.b);
+      this.o = new esk(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
+      this.o.b();
+      this.c(this.b);
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, a, this.g / 2, 28, 10526880);
+   public void a(eqm $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.o.b();
    }
 
    @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void h() {
+      this.f.l.d().d();
    }
 
-   class a extends ete<ewq.a.a> {
-      a() {
-         super(ewq.this.f, ewq.this.g, ewq.this.h, 40, ewq.this.h - 37, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         ewq.this.k.h().map($$0x -> new ewq.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.o.a(!$$1.equals(this.n));
+      this.o.b();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.o.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.f.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         if (this.b(this.b.a(), true)) {
+            this.f.a(null);
+         }
+
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.f.l.d().a(this.f.l.d().i() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.f.l.d().a(-this.f.l.d().i() + 1);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public void a(@Nullable ewq.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            ewq.this.m = $$0.b;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = arp.a($$3, -1.0, 1.0);
+      if (this.o.a($$3)) {
+         return true;
+      } else {
+         if (!q()) {
+            $$3 *= 7.0;
          }
 
-         ewq.this.l();
+         this.f.l.d().a((int)$$3);
+         return true;
       }
+   }
 
-      class a extends ete.a<ewq.a.a> {
-         final hf.c<cqi> b;
-         final te c;
-
-         public a(hf.c<cqi> $$0) {
-            this.b = $$0;
-            aep $$1 = $$0.g().a();
-            String $$2 = $$1.f("biome");
-            if (qn.a().b($$2)) {
-               this.c = te.c($$2);
-            } else {
-               this.c = te.b($$1.toString());
-            }
-         }
-
-         @Override
-         public te a() {
-            return te.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(erx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(ewq.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            if ($$2 == 0) {
-               a.this.a(this);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            esi $$3 = this.f.l.d();
+            if ($$3.a($$0, $$1)) {
                return true;
-            } else {
-               return false;
+            }
+
+            ub $$4 = this.a($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.n = this.b.a();
+               return true;
             }
          }
+
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   protected void a(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.m + $$0;
+      int $$2 = this.f.l.d().c().size();
+      $$1 = arp.a($$1, 0, $$2);
+      if ($$1 != this.m) {
+         if ($$1 == $$2) {
+            this.m = $$2;
+            this.b.a(this.l);
+         } else {
+            if (this.m == $$2) {
+               this.l = this.b.a();
+            }
+
+            this.b.a(this.f.l.d().c().get($$1));
+            this.o.a(false);
+            this.m = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      this.o.a($$0, $$1, $$2);
+      eqh $$4 = this.f.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
+      } else {
+         ub $$5 = this.a((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.i, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(evx $$0) {
+      $$0.a(evw.a, this.m());
+      $$0.a(evw.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(evw.a, tf.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private ub a(double $$0, double $$1) {
+      return this.f.l.d().b($$0, $$1);
+   }
+
+   public boolean b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if ($$0.isEmpty()) {
+         return true;
+      } else {
+         if ($$1) {
+            this.f.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.f.v.cl.c($$0.substring(1));
+         } else {
+            this.f.v.cl.b($$0);
+         }
+
+         return true;
+      }
+   }
+
+   public String a(String $$0) {
+      return asi.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

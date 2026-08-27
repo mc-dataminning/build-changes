@@ -1,71 +1,88 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.ToDoubleFunction;
 
-public class bmf {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class bmf extends bkq<bwf> {
+   public static final int c = 200;
+   public static final float d = 1.65F;
+   private final Function<bwf, bgb> e;
+   private final btl f;
+   private final float g;
+   private final ToDoubleFunction<bwf> h;
+   private ehe i;
+   private final Function<bwf, aov> j;
+   private final Function<bwf, aov> k;
 
-   public static bly<bjf> a(float $$0) {
-      return a($$0, true);
+   public bmf(Function<bwf, bgb> $$0, btl $$1, float $$2, ToDoubleFunction<bwf> $$3, Function<bwf, aov> $$4, Function<bwf, aov> $$5) {
+      super(ImmutableMap.of(bsa.U, bsb.b, bsa.V, bsb.a), 200);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.i = ehe.b;
    }
 
-   public static bly<bjf> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> btq.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
+   protected boolean a(akk $$0, bwf $$1) {
+      return $$1.dM().a(bsa.V);
    }
 
-   public static bkp<bjf> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> btq.a($$2x, $$1, $$2), $$0x -> true);
+   protected boolean a(akk $$0, bwf $$1, long $$2) {
+      return $$1.dM().a(bsa.V);
    }
 
-   public static bkp<bjf> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   protected void b(akk $$0, bwf $$1, long $$2) {
+      gu $$3 = $$1.dk();
+      bjz<?> $$4 = $$1.dM();
+      ehe $$5 = $$4.c(bsa.V).get();
+      this.i = new ehe((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
+      $$4.a(bsa.m, new bsd($$5, this.g, 0));
    }
 
-   public static bkp<bjf> c(float $$0) {
-      return a($$0, bmf::a, big::ba);
-   }
-
-   private static bly<bjf> a(float $$0, Function<bjf, ehf> $$1, Predicate<bjf> $$2) {
-      return boa.a((Function<boa.b<bjf>, ? extends App<boa.c<bjf>, bod<bjf>>>)($$3 -> $$3.group($$3.c(bry.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<ehf> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new bsb($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static ehf a(bjf $$0) {
-      ehf $$1 = null;
-      ehf $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bkq.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.di().e($$0.di().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+   protected void c(akk $$0, bwf $$1, long $$2) {
+      List<biy> $$3 = $$0.a(biy.class, this.f, $$1, $$1.cG());
+      bjz<?> $$4 = $$1.dM();
+      if (!$$3.isEmpty()) {
+         biy $$5 = $$3.get(0);
+         $$5.a($$0.ag().c((biy)$$1), (float)$$1.b(bkf.f));
+         int $$6 = $$1.a(bhx.a) ? $$1.b(bhx.a).e() + 1 : 0;
+         int $$7 = $$1.a(bhx.b) ? $$1.b(bhx.b).e() + 1 : 0;
+         float $$8 = 0.25F * (float)($$6 - $$7);
+         float $$9 = arp.a($$1.fd() * 1.65F, 0.2F, 3.0F) + $$8;
+         float $$10 = $$5.f($$0.ag().b((biy)$$1)) ? 0.5F : 1.0F;
+         $$5.q((double)($$10 * $$9) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
+         this.b($$0, $$1);
+         $$0.a(null, $$1, this.j.apply($$1), aox.g, 1.0F, 1.0F);
+      } else if (this.c($$0, $$1)) {
+         $$0.a(null, $$1, this.j.apply($$1), aox.g, 1.0F, 1.0F);
+         boolean $$11 = $$1.gg();
+         if ($$11) {
+            $$0.a(null, $$1, this.k.apply($$1), aox.g, 1.0F, 1.0F);
          }
 
-         if ($$2 == null || $$0.dK().b_(gv.a($$2)).c()) {
-            return $$1;
+         this.b($$0, $$1);
+      } else {
+         Optional<bsd> $$12 = $$4.c(bsa.m);
+         Optional<ehe> $$13 = $$4.c(bsa.V);
+         boolean $$14 = $$12.isEmpty() || $$13.isEmpty() || $$12.get().a().a().a($$13.get(), 0.25);
+         if ($$14) {
+            this.b($$0, $$1);
          }
-
-         $$1 = $$2;
       }
-
-      return $$2;
    }
 
-   @Nullable
-   private static ehf a(bjf $$0, int $$1, int $$2) {
-      ehf $$3 = $$0.f(0.0F);
-      return btl.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+   private boolean c(akk $$0, bwf $$1) {
+      ehe $$2 = $$1.dn().d(1.0, 0.0, 1.0).d();
+      gu $$3 = gu.a($$1.di().e($$2));
+      return $$0.a_($$3).a(apl.ce) || $$0.a_($$3.c()).a(apl.ce);
+   }
+
+   protected void b(akk $$0, bwf $$1) {
+      $$0.a($$1, (byte)59);
+      $$1.dM().a(bsa.U, this.e.apply($$1).a($$0.z));
+      $$1.dM().b(bsa.V);
    }
 }

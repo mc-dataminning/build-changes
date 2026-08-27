@@ -1,119 +1,134 @@
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 import java.util.EnumMap;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.UUID;
 
-public enum cgi implements asf, cgh {
-   a("leather", 5, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 1);
-      $$0.put(cgg.a.c, 2);
-      $$0.put(cgg.a.b, 3);
-      $$0.put(cgg.a.a, 1);
-   }), 15, aou.ai, 0.0F, 0.0F, () -> clw.a(ciz.pP)),
-   b("chainmail", 15, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 1);
-      $$0.put(cgg.a.c, 4);
-      $$0.put(cgg.a.b, 5);
-      $$0.put(cgg.a.a, 2);
-   }), 12, aou.ac, 0.0F, 0.0F, () -> clw.a(ciz.nQ)),
-   c("iron", 15, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 2);
-      $$0.put(cgg.a.c, 5);
-      $$0.put(cgg.a.b, 6);
-      $$0.put(cgg.a.a, 2);
-   }), 9, aou.ah, 0.0F, 0.0F, () -> clw.a(ciz.nQ)),
-   d("gold", 7, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 1);
-      $$0.put(cgg.a.c, 3);
-      $$0.put(cgg.a.b, 5);
-      $$0.put(cgg.a.a, 2);
-   }), 25, aou.ag, 0.0F, 0.0F, () -> clw.a(ciz.nU)),
-   e("diamond", 33, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 3);
-      $$0.put(cgg.a.c, 6);
-      $$0.put(cgg.a.b, 8);
-      $$0.put(cgg.a.a, 3);
-   }), 10, aou.ad, 2.0F, 0.0F, () -> clw.a(ciz.nK)),
-   f("turtle", 25, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 2);
-      $$0.put(cgg.a.c, 5);
-      $$0.put(cgg.a.b, 6);
-      $$0.put(cgg.a.a, 2);
-   }), 9, aou.ak, 0.0F, 0.0F, () -> clw.a(ciz.nD)),
-   g("netherite", 37, ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 3);
-      $$0.put(cgg.a.c, 6);
-      $$0.put(cgg.a.b, 8);
-      $$0.put(cgg.a.a, 3);
-   }), 15, aou.aj, 3.0F, 0.1F, () -> clw.a(ciz.nV));
-
-   public static final asf.a<cgi> h = asf.a(cgi::values);
-   private static final EnumMap<cgg.a, Integer> i = ac.a(new EnumMap<>(cgg.a.class), $$0 -> {
-      $$0.put(cgg.a.d, 13);
-      $$0.put(cgg.a.c, 15);
-      $$0.put(cgg.a.b, 16);
-      $$0.put(cgg.a.a, 11);
+public class cgi extends cit implements chz {
+   private static final EnumMap<cgi.a, UUID> e = ac.a(new EnumMap<>(cgi.a.class), $$0 -> {
+      $$0.put(cgi.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
+      $$0.put(cgi.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
+      $$0.put(cgi.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
+      $$0.put(cgi.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
    });
-   private final String j;
-   private final int k;
-   private final EnumMap<cgg.a, Integer> l;
-   private final int m;
-   private final aot n;
-   private final float o;
-   private final float p;
-   private final arj<clw> q;
+   public static final ih a = new ig() {
+      @Override
+      protected ciy a(gv $$0, ciy $$1) {
+         return cgi.a($$0, $$1) ? $$1 : super.a($$0, $$1);
+      }
+   };
+   protected final cgi.a b;
+   private final int f;
+   private final float g;
+   protected final float c;
+   protected final cgj d;
+   private final Multimap<bka, bkd> h;
 
-   private cgi(String $$0, int $$1, EnumMap<cgg.a, Integer> $$2, int $$3, aot $$4, float $$5, float $$6, Supplier<clw> $$7) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.n = $$4;
-      this.o = $$5;
-      this.p = $$6;
-      this.q = new arj<>($$7);
+   public static boolean a(gv $$0, ciy $$1) {
+      gu $$2 = $$0.d().a($$0.e().c(cun.a));
+      List<biy> $$3 = $$0.g().a(biy.class, new egz($$2), bil.f.and(new bil.a($$1)));
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         biy $$4 = $$3.get(0);
+         bin $$5 = bja.h($$1);
+         ciy $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bja) {
+            ((bja)$$4).a($$5, 2.0F);
+            ((bja)$$4).fF();
+         }
+
+         return true;
+      }
+   }
+
+   public cgi(cgj $$0, cgi.a $$1, cit.a $$2) {
+      super($$2.b($$0.a($$1)));
+      this.d = $$0;
+      this.b = $$1;
+      this.f = $$0.b($$1);
+      this.g = $$0.f();
+      this.c = $$0.g();
+      cun.a(this, a);
+      Builder<bka, bkd> $$3 = ImmutableMultimap.builder();
+      UUID $$4 = e.get($$1);
+      $$3.put(bkf.i, new bkd($$4, "Armor modifier", (double)this.f, bkd.a.a));
+      $$3.put(bkf.j, new bkd($$4, "Armor toughness", (double)this.g, bkd.a.a));
+      if ($$0 == cgk.g) {
+         $$3.put(bkf.c, new bkd($$4, "Armor knockback resistance", (double)this.c, bkd.a.a));
+      }
+
+      this.h = $$3.build();
+   }
+
+   public cgi.a b() {
+      return this.b;
    }
 
    @Override
-   public int a(cgg.a $$0) {
-      return i.get($$0) * this.k;
+   public int c() {
+      return this.d.a();
+   }
+
+   public cgj d() {
+      return this.d;
    }
 
    @Override
-   public int b(cgg.a $$0) {
-      return this.l.get($$0);
+   public boolean a(ciy $$0, ciy $$1) {
+      return this.d.d().a($$1) || super.a($$0, $$1);
    }
 
    @Override
-   public int a() {
-      return this.m;
+   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      return this.a(this, $$0, $$1, $$2);
    }
 
    @Override
-   public aot b() {
-      return this.n;
+   public Multimap<bka, bkd> a(bin $$0) {
+      return $$0 == this.b.a() ? this.h : super.a($$0);
    }
 
-   @Override
-   public clw d() {
-      return this.q.a();
+   public int e() {
+      return this.f;
    }
 
-   @Override
-   public String e() {
-      return this.j;
-   }
-
-   @Override
    public float f() {
-      return this.o;
+      return this.g;
    }
 
    @Override
-   public float g() {
-      return this.p;
+   public bin g() {
+      return this.b.a();
    }
 
    @Override
-   public String c() {
-      return this.j;
+   public aov ak_() {
+      return this.d().b();
+   }
+
+   public static enum a {
+      a(bin.f, "helmet"),
+      b(bin.e, "chestplate"),
+      c(bin.d, "leggings"),
+      d(bin.c, "boots");
+
+      private final bin e;
+      private final String f;
+
+      private a(bin $$0, String $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public bin a() {
+         return this.e;
+      }
+
+      public String b() {
+         return this.f;
+      }
    }
 }

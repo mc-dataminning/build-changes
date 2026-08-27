@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class coy {
-   public static final coy a = new coy(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<coy> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, coy::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
-
-   public coy(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+public interface coy extends cpd, cpp, cpr {
+   @Override
+   default <T extends dcm> Optional<T> a(gu $$0, dco<T> $$1) {
+      return cpp.super.a($$0, $$1);
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   default List<ehx> c(@Nullable bii $$0, egz $$1) {
+      return cpd.super.c($$0, $$1);
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   default boolean a(@Nullable bii $$0, ehx $$1) {
+      return cpd.super.a($$0, $$1);
+   }
+
+   @Override
+   default gu a(dkj.a $$0, gu $$1) {
+      return cpp.super.a($$0, $$1);
    }
 }

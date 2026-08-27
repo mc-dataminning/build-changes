@@ -1,20 +1,26 @@
-public class era {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
+import java.util.function.BooleanSupplier;
 
-   public era(float $$0, long $$1) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
+public class era extends eqk {
+   private final BooleanSupplier h;
+
+   public era(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, ekb.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.d;
-      this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

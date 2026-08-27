@@ -1,79 +1,49 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bql extends bps {
-   public static final int a = 1;
-   protected final bjf b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bql extends bpu {
+   private static final btl b = btl.b().a(6.0);
+   public static final int a = 400;
+   private final buw c;
+   private cba d;
+   private int e;
 
-   public bql(bjf $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bps.a.a));
+   public bql(buw $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (!this.c.dK().N()) {
+         return false;
+      } else if (this.c.ee().a(8000) != 0) {
          return false;
       } else {
-         if (this.b.bM()) {
-            gv $$0 = this.a(this.b.dK(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
+         this.d = this.c.dK().a(cba.class, b, this.c, this.c.dp(), this.c.dr(), this.c.dv(), this.c.cG().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
-   }
-
-   protected boolean h() {
-      return this.b.ef() != null || this.b.dz() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehf $$0 = btn.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.H().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.H().l();
+      return this.e > 0;
    }
 
-   @Nullable
-   protected gv a(coq $$0, big $$1, int $$2) {
-      gv $$3 = $$1.dk();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gv.a($$1.dk(), $$2, 1, $$1x -> $$0.b_($$1x).a(apo.a)).orElse(null);
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void e() {
+      this.c.D().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

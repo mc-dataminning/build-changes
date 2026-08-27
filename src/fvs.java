@@ -1,24 +1,9 @@
-public class fvs extends fwr<byp, fei<byp>> {
-   private final fnz a;
-
-   public fvs(fue<byp, fei<byp>> $$0, fnz $$1) {
-      super($$0);
-      this.a = $$1;
+public class fvs extends frm<bzu, fhf<bzu>> {
+   public fvs(fso.a $$0) {
+      this($$0, fhm.bX, fhm.ca, fhm.cb);
    }
 
-   public void a(elh $$0, fng $$1, int $$2, byp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dey $$10 = $$3.fZ();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, fxx.d);
-         $$0.b();
-      }
+   public fvs(fso.a $$0, fhl $$1, fhl $$2, fhl $$3) {
+      super($$0, new fhf<>($$0.a($$1)), new fhf<>($$0.a($$2)), new fhf<>($$0.a($$3)));
    }
 }

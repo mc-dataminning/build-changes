@@ -1,17 +1,16 @@
-import java.util.HashSet;
-import java.util.Set;
+public record wk(hs.b a) implements ux<wi> {
+   private static final aep<rk> b = aep.a(rc.a, hs.a(jb.ap));
 
-public record wk(Set<aep> a) implements uw<wh> {
-   public wk(sh $$0) {
-      this($$0.a(HashSet::new, sh::s));
+   public wk(si $$0) {
+      this($$0.<hs>a(b, hv.a).c());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a, sh::a);
+   public void a(si $$0) {
+      $$0.a(b, hv.a, this.a);
    }
 
-   public void a(wh $$0) {
+   public void a(wi $$0) {
       $$0.a(this);
    }
 }

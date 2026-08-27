@@ -1,32 +1,31 @@
-public class za implements uw<wo> {
-   private final int a;
-   private final byte b;
+public record za(aat d, byte e) implements ux<wp> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-   public za(big $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
-   }
-
-   public za(sh $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
+   public za(si $$0) {
+      this(new aat($$0), $$0.readByte());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(si $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public big a(cpk $$0) {
-      return $$0.a(this.a);
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public byte a() {
-      return this.b;
+   public aat a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

@@ -1,147 +1,112 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ewu extends exv {
-   private static final aep a = new aep("icon/draft_report");
-   private int b;
-   private final te c;
-   private final boolean k;
-   private te l;
-   private final List<esi> m = Lists.newArrayList();
-   @Nullable
-   private esi n;
+public class ewu extends exz {
+   private static final tf a = tf.c("createWorld.customize.buffet.biome");
+   private final exz b;
+   private final Consumer<he<cqk>> c;
+   final hr<cqk> k;
+   private ewu.a l;
+   he<cqk> m;
+   private esh n;
 
-   public ewu(@Nullable te $$0, boolean $$1) {
-      super(te.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.k = $$1;
+   public ewu(exz $$0, fcr $$1, Consumer<he<cqk>> $$2) {
+      super(tf.c("createWorld.customize.buffet.title"));
+      this.b = $$0;
+      this.c = $$2;
+      this.k = $$1.a().d(jc.ap);
+      he<cqk> $$3 = this.k.b(cqr.b).or(() -> this.k.h().findAny()).orElseThrow();
+      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.b);
    }
 
    @Override
    protected void aE_() {
-      this.b = 0;
-      this.m.clear();
-      te $$0 = this.k ? te.c("deathScreen.spectate") : te.c("deathScreen.respawn");
-      this.m.add(this.d(esi.a($$0, $$0x -> {
-         this.f.t.fO();
-         $$0x.i = false;
-      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
-      this.n = this.d(
-         esi.a(te.c("deathScreen.titleScreen"), $$0x -> this.f.aW().a(this.f, this, this::l, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
-      );
-      this.m.add(this.n);
-      this.c(false);
-      this.l = te.c("deathScreen.score").f(": ").b(te.b(Integer.toString(this.f.t.fL())).a(n.o));
+      this.l = new ewu.a();
+      this.e(this.l);
+      this.n = this.d(esh.a(te.d, $$0 -> {
+         this.c.accept(this.m);
+         this.f.a(this.b);
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(esh.a(te.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
+   }
+
+   void l() {
+      this.n.i = this.l.f() != null;
    }
 
    @Override
-   public boolean aA_() {
-      return false;
-   }
-
-   private void l() {
-      if (this.k) {
-         this.B();
-      } else {
-         ewo $$0 = new ewu.a($$0x -> {
-            if ($$0x) {
-               this.B();
-            } else {
-               this.f.t.fO();
-               this.f.a(null);
-            }
-         }, te.c("deathScreen.quit.confirm"), td.a, te.c("deathScreen.titleScreen"), te.c("deathScreen.respawn"));
-         this.f.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void B() {
-      if (this.f.s != null) {
-         this.f.s.U();
-      }
-
-      this.f.b(new exb(te.c("menu.savingLevel")));
-      this.f.a(new eya());
-   }
-
-   @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
-      }
-
-      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         ua $$4 = this.a($$1);
-         $$0.a(this.i, $$4, $$1, $$2);
-      }
-
-      if (this.n != null && this.f.aW().c()) {
-         $$0.a(a, this.n.p() + this.n.k() - 17, this.n.r() + 3, 15, 15);
-      }
+      this.l.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, a, this.g / 2, 28, 10526880);
    }
 
    @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
-   @Nullable
-   private ua a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.f.h.a(this.c);
-         int $$2 = this.g / 2 - $$1 / 2;
-         int $$3 = this.g / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
+   class a extends etd<ewu.a.a> {
+      a() {
+         super(ewu.this.f, ewu.this.g, ewu.this.h, 40, ewu.this.h - 37, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         ewu.this.k.h().map($$0x -> new ewu.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
       }
-   }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         ua $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == tc.a.a) {
-            this.a($$3);
-            return false;
+      public void a(@Nullable ewu.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            ewu.this.m = $$0.b;
          }
+
+         ewu.this.l();
       }
 
-      return super.a($$0, $$1, $$2);
-   }
+      class a extends etd.a<ewu.a.a> {
+         final he.c<cqk> b;
+         final tf c;
 
-   @Override
-   public boolean j() {
-      return false;
-   }
+         public a(he.c<cqk> $$0) {
+            this.b = $$0;
+            aer $$1 = $$0.g().a();
+            String $$2 = $$1.f("biome");
+            if (qm.a().b($$2)) {
+               this.c = tf.c($$2);
+            } else {
+               this.c = tf.b($$1.toString());
+            }
+         }
 
-   @Override
-   public void c() {
-      super.c();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
+         @Override
+         public tf a() {
+            return tf.a("narrator.select", this.c);
+         }
 
-   private void c(boolean $$0) {
-      for (esi $$1 : this.m) {
-         $$1.i = $$0;
-      }
-   }
+         @Override
+         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(ewu.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
 
-   public static class a extends ewo {
-      public a(BooleanConsumer $$0, te $$1, te $$2, te $$3, te $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            if ($$2 == 0) {
+               a.this.a(this);
+               return true;
+            } else {
+               return false;
+            }
+         }
       }
    }
 }

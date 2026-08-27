@@ -1,13 +1,11 @@
-public class fur extends fuk {
-   private static final aep a = new aep("textures/entity/skeleton/stray.png");
+public class fur extends ftu<bww, fgn<bww>> {
+   private static final aer a = new aer("textures/entity/sniffer/sniffer.png");
 
-   public fur(fsj.a $$0) {
-      super($$0, fhi.bt, fhi.bu, fhi.bv);
-      this.a(new fwz<>(this, $$0.f()));
+   public fur(fso.a $$0) {
+      super($$0, new fgn<>($$0.a(fhm.bo)), 1.1F);
    }
 
-   @Override
-   public aep a(byi $$0) {
+   public aer a(bww $$0) {
       return a;
    }
 }

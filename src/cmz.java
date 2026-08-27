@@ -1,30 +1,20 @@
-public class cmz extends cnd {
-   public cmz(cnd.a $$0, bil... $$1) {
-      super($$0, cne.l, $$1);
+public class cmz extends cnf {
+   public cmz(cnf.a $$0, bin... $$1) {
+      super($$0, cng.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 25;
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   @Override
-   public boolean a(ciw $$0) {
-      return !$$0.a(ciz.uy) && super.a($$0);
+   public int a() {
+      return 2;
    }
 }

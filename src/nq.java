@@ -1,24 +1,72 @@
-import java.util.OptionalLong;
-
 public class nq {
-   public static void a(nn<dih> $$0) {
-      $$0.a(
-         dif.a,
-         new dih(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, apj.ba, dif.e, 0.0F, new dih.a(false, true, bfz.a(0, 7), 0))
-      );
-      $$0.a(
-         dif.b,
-         new dih(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, apj.bb, dif.f, 0.1F, new dih.a(true, false, bfq.a(7), 15))
-      );
-      $$0.a(
-         dif.c,
-         new dih(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, apj.bc, dif.g, 0.0F, new dih.a(false, true, bfz.a(0, 7), 0)
-         )
-      );
-      $$0.a(
-         dif.d,
-         new dih(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, apj.ba, dif.e, 0.0F, new dih.a(false, true, bfz.a(0, 7), 0))
-      );
+   @Deprecated
+   public static final dzg.a a = new dzg.a(-3, 1.0, 1.0, 1.0, 0.0);
+
+   public static void a(nm<dzg.a> $$0) {
+      a($$0, 0, dks.a, dks.b, dks.c, dks.d);
+      a($$0, -2, dks.e, dks.f, dks.g, dks.h);
+      a($$0, dks.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dks.j, a);
+      a($$0, dks.k, -3, 1.0);
+      a($$0, dks.l, -7, 1.0);
+      a($$0, dks.m, -1, 1.0);
+      a($$0, dks.n, -5, 1.0);
+      a($$0, dks.o, -7, 1.0, 1.0);
+      a($$0, dks.p, -8, 1.0);
+      a($$0, dks.q, -8, 1.0);
+      a($$0, dks.r, -7, 1.0);
+      a($$0, dks.s, -8, 1.0);
+      a($$0, dks.t, -11, 1.0);
+      a($$0, dks.u, -11, 1.0);
+      a($$0, dks.v, -7, 1.0);
+      a($$0, dks.w, -7, 1.0);
+      a($$0, dks.x, -11, 1.0);
+      a($$0, dks.y, -8, 1.0);
+      a($$0, dks.z, -5, 1.0);
+      a($$0, dks.A, -8, 1.0);
+      a($$0, dks.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dks.C, -8, 1.0);
+      a($$0, dks.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dks.E, -8, 1.0);
+      a($$0, dks.F, -7, 1.0);
+      a($$0, dks.G, -7, 1.0);
+      a($$0, dks.H, -5, 1.0);
+      a($$0, dks.I, -8, 1.0);
+      a($$0, dks.J, -8, 1.0);
+      a($$0, dks.K, -7, 1.0);
+      a($$0, dks.L, -7, 1.0);
+      a($$0, dks.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dks.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dks.P, -8, 1.0);
+      a($$0, dks.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.R, -8, 1.0);
+      a($$0, dks.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dks.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.U, -3, 1.0);
+      a($$0, dks.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dks.W, -2, 1.0);
+      a($$0, dks.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dks.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dks.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dks.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dks.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dks.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dks.ah, -4, 1.0);
+   }
+
+   private static void a(nm<dzg.a> $$0, int $$1, aeq<dzg.a> $$2, aeq<dzg.a> $$3, aeq<dzg.a> $$4, aeq<dzg.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(nm<dzg.a> $$0, aeq<dzg.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new dzg.a($$2, $$3, $$4));
    }
 }

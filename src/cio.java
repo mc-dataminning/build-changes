@@ -1,23 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cio extends cit {
+   private static final String a = "textures/entity/horse/";
+   private final int b;
+   private final String c;
 
-public record cio(hf<aot> b, int c, float d) {
-   public static final Codec<cio> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aot.b.fieldOf("sound_event").forGetter(cio::a), aqw.j.fieldOf("use_duration").forGetter(cio::b), aqw.k.fieldOf("range").forGetter(cio::c)
-            )
-            .apply($$0, cio::new)
-   );
+   public cio(int $$0, String $$1, cit.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+   }
 
-   public hf<aot> a() {
+   public aer h() {
+      return new aer(this.c);
+   }
+
+   public int i() {
       return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
    }
 }

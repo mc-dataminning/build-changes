@@ -1,19 +1,19 @@
-public record vy(gv b, String c, int d) implements vo {
-   public static final aep a = new aep("debug/poi_added");
+public record vy(int b, eas c, float d) implements vp {
+   public static final aer a = new aer("debug/path");
 
-   public vy(sh $$0) {
-      this($$0.e(), $$0.r(), $$0.readInt());
+   public vy(si $$0) {
+      this($$0.readInt(), eas.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+   public void a(si $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

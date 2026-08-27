@@ -1,45 +1,48 @@
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class agz {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("commands.jfr.dump.failed", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("commands.help.failed"));
 
-   private agz() {
-   }
-
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
-            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("help").executes($$1 -> {
+               Map<CommandNode<dr>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (dr)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((dr)$$1.getSource()).a(() -> tf.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
+            .then(
+               ds.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<dr> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (dr)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<dr>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (dr)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((dr)$$1.getSource()).a(() -> tf.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
+                  )
+            )
       );
-   }
-
-   private static int a(ds $$0) throws CommandSyntaxException {
-      bdi $$1 = bdi.a($$0.l());
-      if (!bdk.e.a($$1)) {
-         throw a.create();
-      } else {
-         $$0.a(() -> te.c("commands.jfr.started"), false);
-         return 1;
-      }
-   }
-
-   private static int b(ds $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bdk.e.b().normalize());
-         Path $$2 = $$0.l().p() && !aa.aS ? $$1 : $$1.toAbsolutePath();
-         te $$3 = te.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new tc(tc.a.f, $$2.toString())).a(new tj(tj.a.a, te.c("chat.copy.click"))));
-         $$0.a(() -> te.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
-      }
    }
 }

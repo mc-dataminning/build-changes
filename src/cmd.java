@@ -1,90 +1,37 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
-public class cmd extends clr {
-   public cmd(aep $$0, clp $$1) {
-      super($$0, $$1);
-   }
+public interface cmd<T extends cmb<?>> {
+   cmd<cmg> a = a("crafting_shaped", new cmg.a());
+   cmd<cmh> b = a("crafting_shapeless", new cmh.a());
+   cmd<cll> c = a("crafting_special_armordye", new cml<>(cll::new));
+   cmd<clo> d = a("crafting_special_bookcloning", new cml<>(clo::new));
+   cmd<clz> e = a("crafting_special_mapcloning", new cml<>(clz::new));
+   cmd<cma> f = a("crafting_special_mapextending", new cml<>(cma::new));
+   cmd<clv> g = a("crafting_special_firework_rocket", new cml<>(clv::new));
+   cmd<clx> h = a("crafting_special_firework_star", new cml<>(clx::new));
+   cmd<clw> i = a("crafting_special_firework_star_fade", new cml<>(clw::new));
+   cmd<cmu> j = a("crafting_special_tippedarrow", new cml<>(cmu::new));
+   cmd<clm> k = a("crafting_special_bannerduplicate", new cml<>(clm::new));
+   cmd<cmi> l = a("crafting_special_shielddecoration", new cml<>(cmi::new));
+   cmd<cmj> m = a("crafting_special_shulkerboxcoloring", new cml<>(cmj::new));
+   cmd<cmt> n = a("crafting_special_suspiciousstew", new cml<>(cmt::new));
+   cmd<cmf> o = a("crafting_special_repairitem", new cml<>(cmf::new));
+   cmd<cmn> p = a("smelting", new cmk<>(cmn::new, 200));
+   cmd<cln> q = a("blasting", new cmk<>(cln::new, 100));
+   cmd<cmr> r = a("smoking", new cmk<>(cmr::new, 100));
+   cmd<clp> s = a("campfire_cooking", new cmk<>(clp::new, 100));
+   cmd<cms> t = a("stonecutting", new cmm.a<>(cms::new));
+   cmd<cmp> u = a("smithing_transform", new cmp.a());
+   cmd<cmq> v = a("smithing_trim", new cmq.a());
+   cmd<clu> w = a("crafting_decorated_pot", new cml<>(clu::new));
 
-   public boolean a(ceq $$0, cpk $$1) {
-      List<ciw> $$2 = Lists.newArrayList();
+   T a(aer var1, JsonObject var2);
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         ciw $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               ciw $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return false;
-               }
-            }
-         }
-      }
+   T a(aer var1, si var2);
 
-      return $$2.size() == 2;
-   }
+   void a(si var1, T var2);
 
-   public ciw a(ceq $$0, ht $$1) {
-      List<ciw> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         ciw $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               ciw $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return ciw.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         ciw $$6 = $$2.get(0);
-         ciw $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cir $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            ciw $$13 = new ciw($$6.d());
-            $$13.b($$12);
-            Map<cnd, Integer> $$14 = Maps.newHashMap();
-            Map<cnd, Integer> $$15 = cnf.a($$6);
-            Map<cnd, Integer> $$16 = cnf.a($$7);
-            jc.g.s().filter(cnd::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cnf.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return ciw.b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cmb<?> aj_() {
-      return cmb.o;
+   static <S extends cmd<T>, T extends cmb<?>> S a(String $$0, S $$1) {
+      return hr.a(jb.u, $$0, $$1);
    }
 }

@@ -1,32 +1,24 @@
-public class zo implements uw<wo> {
-   private final gv a;
-   private final float b;
+public class zo implements ux<wp> {
+   private final int a;
 
-   public zo(gv $$0, float $$1) {
+   public zo(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public zo(sh $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public zo(si $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
+   public int a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

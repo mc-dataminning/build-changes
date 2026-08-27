@@ -1,39 +1,65 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class aie {
-   public static void a(CommandDispatcher<ds> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("commands.setblock.failed"));
+
+   public static void a(CommandDispatcher<dr> $$0, dl $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), Collections.singleton(((ds)$$0x.getSource()).h()), gv.a(((ds)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("setblock").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)dt.a("targets", ed.d())
-                     .executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), gv.a(((ds)$$0x.getSource()).d()), 0.0F)))
+               ds.a("pos", fi.a())
                   .then(
-                     ((RequiredArgumentBuilder)dt.a("pos", fj.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), fj.c($$0x, "pos"), 0.0F)))
-                        .then(dt.a("angle", dw.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.f($$0x, "targets"), fj.c($$0x, "pos"), dw.a($$0x, "angle"))))
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a("block", ff.a($$1))
+                                 .executes($$0x -> a((dr)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aie.b.a, null)))
+                              .then(ds.a("destroy").executes($$0x -> a((dr)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aie.b.b, null))))
+                           .then(
+                              ds.a("keep")
+                                 .executes($$0x -> a((dr)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aie.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
+                           ))
+                        .then(ds.a("replace").executes($$0x -> a((dr)$$0x.getSource(), fi.a($$0x, "pos"), ff.a($$0x, "block"), aie.b.a, null)))
                   )
             )
       );
    }
 
-   private static int a(ds $$0, Collection<akj> $$1, gv $$2, float $$3) {
-      aeo<cpk> $$4 = $$0.e().ac();
-
-      for (akj $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> te.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().H_()), true);
+   private static int a(dr $$0, gu $$1, fd $$2, aie.b $$3, @Nullable Predicate<dfe> $$4) throws CommandSyntaxException {
+      akk $$5 = $$0.e();
+      if ($$4 != null && !$$4.test(new dfe($$5, $$1, true))) {
+         throw a.create();
       } else {
-         $$0.a(() -> te.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
-      }
+         boolean $$6;
+         if ($$3 == aie.b.b) {
+            $$5.b($$1, true);
+            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
+         } else {
+            dcm $$7 = $$5.c_($$1);
+            bgh.a_($$7);
+            $$6 = true;
+         }
 
-      return $$1.size();
+         if ($$6 && !$$2.a($$5, $$1, 2)) {
+            throw a.create();
+         } else {
+            $$5.b($$1, $$2.a().b());
+            $$0.a(() -> tf.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
+            return 1;
+         }
+      }
+   }
+
+   public interface a {
+      @Nullable
+      fd filter(dur var1, gu var2, fd var3, akk var4);
+   }
+
+   public static enum b {
+      a,
+      b;
    }
 }

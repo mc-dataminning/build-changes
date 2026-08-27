@@ -1,16 +1,28 @@
-public class aph {
-   public static final apy<dcb> a = a("no_item_required");
-   public static final apy<dcb> b = a("pattern_item/flower");
-   public static final apy<dcb> c = a("pattern_item/creeper");
-   public static final apy<dcb> d = a("pattern_item/skull");
-   public static final apy<dcb> e = a("pattern_item/mojang");
-   public static final apy<dcb> f = a("pattern_item/globe");
-   public static final apy<dcb> g = a("pattern_item/piglin");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private aph() {
+public class aph {
+   protected final Object2IntMap<apd<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public aph() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static apy<dcb> a(String $$0) {
-      return apy.a(jd.c, new aep($$0));
+   public void b(cbn $$0, apd<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cbn $$0, apd<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(apf<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(apd<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

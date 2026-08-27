@@ -1,10 +1,14 @@
-public interface adt extends aaw {
-   @Override
-   default sg b() {
-      return sg.c;
+public record adt(adu a) implements ux<adr> {
+   public adt(si $$0) {
+      this($$0.a(adu.a));
    }
 
-   void a(adu var1);
+   @Override
+   public void a(si $$0) {
+      $$0.a(adu.a, this.a);
+   }
 
-   void a(adv var1);
+   public void a(adr $$0) {
+      $$0.a(this);
+   }
 }

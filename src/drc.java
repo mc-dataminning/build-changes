@@ -1,28 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drc<P extends drb> {
-   public static final drc<dqw> a = a("blob_foliage_placer", dqw.a);
-   public static final drc<drh> b = a("spruce_foliage_placer", drh.a);
-   public static final drc<drf> c = a("pine_foliage_placer", drf.a);
-   public static final drc<dqv> d = a("acacia_foliage_placer", dqv.a);
-   public static final drc<dqx> e = a("bush_foliage_placer", dqx.c);
-   public static final drc<dra> f = a("fancy_foliage_placer", dra.c);
-   public static final drc<drd> g = a("jungle_foliage_placer", drd.a);
-   public static final drc<dre> h = a("mega_pine_foliage_placer", dre.a);
-   public static final drc<dqz> i = a("dark_oak_foliage_placer", dqz.a);
-   public static final drc<drg> j = a("random_spread_foliage_placer", drg.a);
-   public static final drc<dqy> k = a("cherry_foliage_placer", dqy.a);
-   private final Codec<P> l;
+public class drc extends dqy {
+   public static final Codec<drc> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, drc::new));
 
-   private static <P extends drb> drc<P> a(String $$0, Codec<P> $$1) {
-      return hs.a(jc.X, $$0, new drc<>($$1));
+   public drc(bfv $$0, bfv $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private drc(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected dre<?> a() {
+      return dre.f;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected void a(cps $$0, drd.b $$1, aru $$2, dqn $$3, int $$4, drd.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return arp.k((float)$$1 + 0.5F) + arp.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

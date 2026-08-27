@@ -1,27 +1,44 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
 
-public abstract class bfr implements bfw {
-   private static final Codec<Either<Float, bfr>> a = Codec.either(Codec.FLOAT, jc.M.q().dispatch(bfr::c, bfs::codec));
-   public static final Codec<bfr> c = a.xmap(
-      $$0 -> (bfr)$$0.map(bfp::a, $$0x -> $$0x), $$0 -> $$0.c() == bfs.a ? Either.left(((bfp)$$0).d()) : Either.right($$0)
-   );
+public class bfr extends bft {
+   public static final bfr a = new bfr(0.0F);
+   public static final Codec<bfr> b = aqy.c(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bfr::new, bfr::d);
+   private final float d;
 
-   public static Codec<bfr> a(float $$0, float $$1) {
-      return aqw.a(c, (Function<bfr, DataResult<bfr>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   public static bfr a(float $$0) {
+      return $$0 == 0.0F ? a : new bfr($$0);
    }
 
-   public abstract float a();
+   private bfr(float $$0) {
+      this.d = $$0;
+   }
 
-   public abstract float b();
+   public float d() {
+      return this.d;
+   }
 
-   public abstract bfs<?> c();
+   @Override
+   public float a(aru $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bfu<?> c() {
+      return bfu.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
+   }
 }

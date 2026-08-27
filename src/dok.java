@@ -1,24 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dok extends dnl<dqb> {
-   public dok(Codec<dqb> $$0) {
+public class dok extends dnn<dqc> {
+   public dok(Codec<dqc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnn<dqb> $$0) {
-      dqb $$1 = $$0.f();
-      art $$2 = $$0.d();
-      cqe $$3 = $$0.b();
-      dgv $$4 = $$0.c();
-      gv $$5 = $$0.e();
-
-      for (dpf $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
-         }
-      }
-
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+   public boolean a(dnp<dqc> $$0) {
+      aru $$1 = $$0.d();
+      dqc $$2 = $$0.f();
+      cqg $$3 = $$0.b();
+      dgx $$4 = $$0.c();
+      gu $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

@@ -1,11 +1,18 @@
-import javax.annotation.Nullable;
+public class fkz extends flb {
+   protected fkz(fii $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-public interface fkz<T extends iu> {
-   @Nullable
-   fkw createParticle(T var1, fie var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   protected fkz(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-   public interface a<T extends iu> {
-      @Nullable
-      flw createParticle(T var1, fie var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public final void a(elk $$0, epx $$1, float $$2) {
+   }
+
+   @Override
+   public flf b() {
+      return flf.f;
    }
 }

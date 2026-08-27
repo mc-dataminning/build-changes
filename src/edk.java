@@ -1,44 +1,59 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class edk extends edv {
-   edk(efh[] $$0) {
+public class edk extends edt {
+   public static final Codec<edk> a = RecordCodecBuilder.create($$0 -> a($$0).and(edk.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, edk::new));
+   private final edk.a b;
+
+   private edk(List<efg> $$0, edk.a $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public edx b() {
-      return edy.s;
+   public edv b() {
+      return edw.o;
    }
 
    @Override
-   public ciw a(ciw $$0, ech $$1) {
-      Float $$2 = $$1.c(eet.j);
-      if ($$2 != null) {
-         art $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.L();
-         int $$6 = 0;
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(this.b.g);
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.f($$6);
+   @Override
+   public ciy a(ciy $$0, ech $$1) {
+      if ($$1.c(this.b.g) instanceof bgu $$3 && $$3.ac()) {
+         $$0.a($$3.H_());
       }
 
       return $$0;
    }
 
-   public static edv.a<?> c() {
-      return a(edk::new);
+   public static edt.a<?> a(edk.a $$0) {
+      return a($$1 -> new edk($$1, $$0));
    }
 
-   public static class a extends edv.c<edk> {
-      public edk a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         return new edk($$2);
+   public static enum a implements ash {
+      a("this", ees.a),
+      b("killer", ees.d),
+      c("killer_player", ees.b),
+      d("block_entity", ees.h);
+
+      public static final Codec<edk.a> e = ash.a(edk.a::values);
+      private final String f;
+      final eep<?> g;
+
+      private a(String $$0, eep<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

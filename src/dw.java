@@ -1,53 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class dw implements ArgumentType<dw.a> {
-   private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.angle.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("argument.angle.invalid"));
+public record dw(List<dw.a> b) {
+   public static final dw a = new dw(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   public static dw a() {
-      return new dw();
+   public dw(si $$0) {
+      this($$0.a(si.a(ArrayList::new, 8), dw.a::new));
    }
 
-   public static float a(CommandContext<ds> $$0, String $$1) {
-      return ((dw.a)$$0.getArgument($$1, dw.a.class)).a((ds)$$0.getSource());
-   }
-
-   public dw.a a(StringReader $$0) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
-      } else {
-         boolean $$1 = fr.b($$0);
-         float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
-         if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
-            return new dw.a($$2, $$1);
-         } else {
-            throw b.createWithContext($$0);
+   @Nullable
+   public tq a(String $$0) {
+      for (dw.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
          }
       }
+
+      return null;
    }
 
-   public Collection<String> getExamples() {
-      return c;
+   public void a(si $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static final class a {
-      private final float a;
-      private final boolean b;
+   public static dw a(tw<?> $$0, dw.b $$1) {
+      List<dw.a> $$2 = $$0.a().stream().map($$1x -> {
+         tq $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new dw.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new dw($$2);
+   }
 
-      a(float $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public List<dw.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, tq b) {
+
+      public a(si $$0) {
+         this($$0.d(16), tq.a($$0));
       }
 
-      public float a(ds $$0) {
-         return aro.g(this.b ? this.a + $$0.k().j : this.a);
+      public void a(si $$0) {
+         $$0.a(this.a, 16);
+         tq.a($$0, this.b);
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      tq sign(String var1);
    }
 }

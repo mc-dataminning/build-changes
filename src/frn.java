@@ -1,18 +1,16 @@
-public class frn extends ftp<buj, fdq<buj>> {
-   private static final aep a = new aep("textures/entity/bee/bee_angry.png");
-   private static final aep i = new aep("textures/entity/bee/bee_angry_nectar.png");
-   private static final aep j = new aep("textures/entity/bee/bee.png");
-   private static final aep k = new aep("textures/entity/bee/bee_nectar.png");
+public class frn extends ftu<bvo, fdn> {
+   private static final aer a = new aer("textures/entity/allay/allay.png");
 
-   public frn(fsj.a $$0) {
-      super($$0, new fdq<>($$0.a(fhi.j)), 0.4F);
+   public frn(fso.a $$0) {
+      super($$0, new fdn($$0.a(fhm.a)), 0.4F);
+      this.a(new fwp<>(this, $$0.d()));
    }
 
-   public aep a(buj $$0) {
-      if ($$0.S_()) {
-         return $$0.gj() ? i : a;
-      } else {
-         return $$0.gj() ? k : j;
-      }
+   public aer a(bvo $$0) {
+      return a;
+   }
+
+   protected int a(bvo $$0, gu $$1) {
+      return 15;
    }
 }

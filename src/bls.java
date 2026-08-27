@@ -1,44 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bls extends bko<cay> {
-   private final float c;
+public class bls<E extends bja> extends blt<E> {
+   private final aqa<csm> m;
+   private final float n;
+   private final List<blt.a> o = new ArrayList<>();
+   private boolean p;
 
-   public bls(float $$0) {
-      super(ImmutableMap.of(bry.m, brz.c, bry.n, brz.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(aki $$0, cay $$1) {
-      cbl $$2 = $$1.fZ();
-      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bQ != null;
-   }
-
-   protected boolean a(aki $$0, cay $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aki $$0, cay $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aki $$0, cay $$1, long $$2) {
-      bjx<?> $$3 = $$1.dM();
-      $$3.b(bry.m);
-      $$3.b(bry.n);
-   }
-
-   protected void d(aki $$0, cay $$1, long $$2) {
-      this.a($$1);
+   public bls(bgb $$0, int $$1, int $$2, float $$3, Function<E, aov> $$4, aqa<csm> $$5, float $$6, BiPredicate<E, gu> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected void a(akk $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ee().i() < this.n;
    }
 
-   private void a(cay $$0) {
-      bjx<?> $$1 = $$0.dM();
-      $$1.a(bry.m, new bsb(new bkz($$0.fZ(), false), this.c, 2));
-      $$1.a(bry.n, new bkz($$0.fZ(), true));
+   @Override
+   protected Optional<blt.a> a(akk $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         gu.a $$1 = new gu.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<blt.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               blt.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ha.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

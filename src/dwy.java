@@ -1,48 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class dwy extends dux {
-   public static final Codec<dwy> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dte.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dwy::new)
+public class dwy extends duz {
+   public static final bfe<cqw.c> d = bfe.a(
+      new cqw.c(bim.i, 10, 2, 3), new cqw.c(bim.bs, 5, 4, 4), new cqw.c(bim.bl, 8, 5, 5), new cqw.c(bim.aJ, 2, 5, 5), new cqw.c(bim.al, 3, 4, 4)
    );
-   public final dte e;
+   public static final Codec<dwy> e = a(dwy::new);
 
-   public dwy(dux.c $$0, dte $$1) {
+   public dwy(duz.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<dux.b> a(dux.a $$0) {
-      dlg $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dle $$5 = new dle($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cpw $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      gv.a $$8 = new gv.a($$2, $$6, $$3);
+   public Optional<duz.b> a(duz.a $$0) {
+      cot $$1 = $$0.h();
+      gu $$2 = new gu($$1.d(), 64, $$1.e());
+      return Optional.of(new duz.b($$2, (Consumer<dvr>)($$1x -> a($$1x, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         dey $$9 = $$7.a($$6);
-         dey $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(csl.dX) || $$10.d(coz.a, $$8.q($$6), hb.b))) {
-            break;
-         }
+   private static void a(dvr $$0, duz.a $$1) {
+      dwx.q $$2 = new dwx.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<dvd> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         dvd $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         gv $$11 = new gv($$2, $$6, $$3);
-         return Optional.of(new dux.b($$11, (Consumer<dvp>)($$3x -> dwx.a($$0.e(), $$3x, $$1, $$11))));
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public dvg<?> e() {
-      return dvg.i;
+   public dvi<?> e() {
+      return dvi.d;
    }
 }

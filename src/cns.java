@@ -1,35 +1,91 @@
-public class cns extends cnd {
-   public cns(cnd.a $$0, bil... $$1) {
-      super($$0, cne.b, $$1);
+public class cns extends cnf {
+   public final cns.a a;
+
+   public cns(cnf.a $$0, cns.a $$1, bin... $$2) {
+      super($$0, $$1 == cns.a.c ? cng.b : cng.a, $$2);
+      this.a = $$1;
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return this.a.a() + ($$0 - 1) * this.a.b();
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return this.a($$0) + this.a.b();
    }
 
    @Override
    public int a() {
-      return 3;
+      return 4;
+   }
+
+   @Override
+   public int a(int $$0, bhg $$1) {
+      if ($$1.a(apn.d)) {
+         return 0;
+      } else if (this.a == cns.a.a) {
+         return $$0;
+      } else if (this.a == cns.a.b && $$1.a(apn.i)) {
+         return $$0 * 2;
+      } else if (this.a == cns.a.c && $$1.a(apn.m)) {
+         return $$0 * 3;
+      } else if (this.a == cns.a.d && $$1.a(apn.l)) {
+         return $$0 * 2;
+      } else {
+         return this.a == cns.a.e && $$1.a(apn.j) ? $$0 * 2 : 0;
+      }
+   }
+
+   @Override
+   public boolean a(cnf $$0) {
+      if ($$0 instanceof cns $$1) {
+         return this.a == $$1.a ? false : this.a == cns.a.c || $$1.a == cns.a.c;
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   public static int a(biy $$0, int $$1) {
+      int $$2 = cnh.a(cnj.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= arp.d((float)$$1 * (float)$$2 * 0.15F);
+      }
+
+      return $$1;
+   }
+
+   public static double a(biy $$0, double $$1) {
+      int $$2 = cnh.a(cnj.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= arp.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
+      }
+
+      return $$1;
+   }
+
+   public static enum a {
+      a(1, 11),
+      b(10, 8),
+      c(5, 6),
+      d(5, 8),
+      e(3, 6);
+
+      private final int f;
+      private final int g;
+
+      private a(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.f;
+      }
+
+      public int b() {
+         return this.g;
+      }
    }
 }

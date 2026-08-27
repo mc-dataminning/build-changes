@@ -1,12 +1,12 @@
-// 23w31a	2026-08-28T00:18:30.1961527	vanilla/Tags for minecraft:item
+// 23w32a	2026-08-28T00:20:39.2553904	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\items\logs_that_burn.json
 95f6cbd5adbe4dc72cb3aeaca5e8b824979b0ed0 data\minecraft\tags\items\flowers.json
 89a7253fe70309e791af46e2363de068e26b63f2 data\minecraft\tags\items\lapis_ores.json
 f44e286dddebca1577f70e0e424c3109c07170fb data\minecraft\tags\items\piglin_loved.json
-3970b76be7ae4036da7a0d208370acfa1fc1577c data\minecraft\tags\items\birch_logs.json
 4b636e8a202b80de17ec8352bba191763ed63d3c data\minecraft\tags\items\wooden_doors.json
+3970b76be7ae4036da7a0d208370acfa1fc1577c data\minecraft\tags\items\birch_logs.json
 e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\items\smelts_to_glass.json
 b7d959a4eef7bbd9e6ce12e26764c3931088f42c data\minecraft\tags\items\wooden_buttons.json
 2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data\minecraft\tags\items\rails.json
@@ -31,8 +31,8 @@ bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_paymen
 c998cf5cbc50fe6ebff96350e415e3db67a94c6b data\minecraft\tags\items\wooden_pressure_plates.json
 1b50a67efc31f461ce0bca94ec806cbf528412db data\minecraft\tags\items\coal_ores.json
 02dfdb41688ccea8169a8d046943461f0aa3c361 data\minecraft\tags\items\fox_food.json
-af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\items\dirt.json
 49fc3802397b9999fbbc71f9d4e9c1962cab6506 data\minecraft\tags\items\anvil.json
+af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\items\dirt.json
 5671028f6cec1b1c772da1cd507313c31a738ac7 data\minecraft\tags\items\dampens_vibrations.json
 885d31455883795cf973f9a3096f1094799602bd data\minecraft\tags\items\pickaxes.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\items\mangrove_logs.json
@@ -48,10 +48,10 @@ a6c8bad401aae8576742844c87f1b8717cf253b7 data\minecraft\tags\items\noteblock_top
 47be456ad97366b91300f74739cd8cac544f698d data\minecraft\tags\items\creeper_igniters.json
 7e7d3420a52ab3a414f357e405493da7fd6434ad data\minecraft\tags\items\chest_boats.json
 31855d768b20e56a7ad007279733d27e91becc21 data\minecraft\tags\items\dark_oak_logs.json
-5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\items\diamond_ores.json
-50e13739c5004ff1f5177fb29ecff7b5d3d45cd3 data\minecraft\tags\items\coals.json
+5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 49731163f40c037fed63e50ebb86dc7fd3d2722b data\minecraft\tags\items\sniffer_food.json
+50e13739c5004ff1f5177fb29ecff7b5d3d45cd3 data\minecraft\tags\items\coals.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data\minecraft\tags\items\emerald_ores.json
 555cdf03117de10eb8274ffe28d2304a4d7bfb9f data\minecraft\tags\items\shovels.json
 d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\items\small_flowers.json
@@ -59,16 +59,16 @@ d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\items\small_flowers
 b197c522c5d1bf863432ab04a9c9b18fa9e8ced7 data\minecraft\tags\items\axolotl_tempt_items.json
 4b5f3ef91668afe7be45b3949ecab5d666d7977f data\minecraft\tags\items\completes_find_tree_tutorial.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\items\wooden_fences.json
-b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 88dcd99364a64f164a26461c5d5b9da0cb960b10 data\minecraft\tags\items\trapdoors.json
+b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data\minecraft\tags\items\spruce_logs.json
 29bd5ab148d15d405e857a8e2cb900ae069b0655 data\minecraft\tags\items\axes.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\items\signs.json
 64a5131137472b111eb62466b0b98a6cf19cd19c data\minecraft\tags\items\ignored_by_piglin_babies.json
 052ec512148521bd4450ec7d1115d15483c6d8e8 data\minecraft\tags\items\decorated_pot_sherds.json
 64cced731059717fbae6969a456ba5a8fe08d5ad data\minecraft\tags\items\bookshelf_books.json
-1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\items\slabs.json
 4d7b608c91d55324829c11f1861e797a47f33cb1 data\minecraft\tags\items\doors.json
+1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\items\slabs.json
 8a43b6a8e479edbb422584cf21be637710ab1e49 data\minecraft\tags\items\swords.json
 91c876271eaad016f609198a3c95f649ddc3344a data\minecraft\tags\items\hoes.json
 1c87ccc74dfac728b91e56665ae8157fe7811dd1 data\minecraft\tags\items\trim_templates.json

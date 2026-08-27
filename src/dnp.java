@@ -1,58 +1,43 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Optional;
 
-public class dnp extends dnl<dnq> {
-   public dnp(Codec<dnq> $$0) {
-      super($$0);
+public class dnp<FC extends dpr> {
+   private final Optional<dna<?, ?>> a;
+   private final cqg b;
+   private final dgx c;
+   private final aru d;
+   private final gu e;
+   private final FC f;
+
+   public dnp(Optional<dna<?, ?>> $$0, cqg $$1, dgx $$2, aru $$3, gu $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(dnn<dnq> $$0) {
-      art $$1 = $$0.d();
-      cqe $$2 = $$0.b();
-      gv $$3 = $$0.e();
-      cyw $$4 = cyw.a($$1);
-      dnq $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      dyr $$7 = $$2.C().n().aT();
-      dyq $$8 = $$7.a($$5.b.get($$6));
-      dyq $$9 = $$7.a($$5.c.get($$6));
-      cor $$10 = new cor($$3);
-      dup $$11 = new dup($$10.d() - 16, $$2.C_(), $$10.e() - 16, $$10.f() + 16, $$2.aj(), $$10.g() + 16);
-      dym $$12 = new dym().a($$4).a($$11).a($$1);
-      ia $$13 = $$8.a($$4);
-      gv $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dkh.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.C_() + 10);
-      gv $$19 = $$8.a($$14.h($$18), cxf.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
+   public Optional<dna<?, ?>> a() {
+      return this.a;
    }
 
-   private static int a(cqe $$0, dup $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dey $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(csl.H) || $$3.a(csl.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   public cqg b() {
+      return this.b;
+   }
+
+   public dgx c() {
+      return this.c;
+   }
+
+   public aru d() {
+      return this.d;
+   }
+
+   public gu e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

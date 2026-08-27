@@ -1,56 +1,65 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eff implements efh {
-   final ch a;
-   final gv b;
+public record eff(he<csm> b, Optional<cy> c) implements efg {
+   public static final Codec<eff> a = aqy.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(jb.f.r().fieldOf("block").forGetter(eff::c), aqy.a(cy.a, "properties").forGetter(eff::d)).apply($$0, eff::new)),
+      eff::a
+   );
 
-   eff(ch $$0, gv $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private static DataResult<eff> a(eff $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public efi b() {
-      return efj.n;
+   public efh b() {
+      return efi.j;
+   }
+
+   @Override
+   public Set<eep<?>> a() {
+      return Set.of(ees.g);
    }
 
    public boolean a(ech $$0) {
-      ehf $$1 = $$0.c(eet.f);
-      return $$1 != null && this.a.a($$0.d(), $$1.a() + (double)this.b.u(), $$1.b() + (double)this.b.v(), $$1.c() + (double)this.b.w());
+      dfa $$1 = $$0.c(ees.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public static efh.a a(ch.a $$0) {
-      return () -> new eff($$0.b(), gv.b);
+   public static eff.a a(csm $$0) {
+      return new eff.a($$0);
    }
 
-   public static efh.a a(ch.a $$0, gv $$1) {
-      return () -> new eff($$0.b(), $$1);
+   public he<csm> c() {
+      return this.b;
    }
 
-   public static class a implements ecq<eff> {
-      public void a(JsonObject $$0, eff $$1, JsonSerializationContext $$2) {
-         $$0.add("predicate", $$1.a.a());
-         if ($$1.b.u() != 0) {
-            $$0.addProperty("offsetX", $$1.b.u());
-         }
+   public Optional<cy> d() {
+      return this.c;
+   }
 
-         if ($$1.b.v() != 0) {
-            $$0.addProperty("offsetY", $$1.b.v());
-         }
+   public static class a implements efg.a {
+      private final he<csm> a;
+      private Optional<cy> b = Optional.empty();
 
-         if ($$1.b.w() != 0) {
-            $$0.addProperty("offsetZ", $$1.b.w());
-         }
+      public a(csm $$0) {
+         this.a = $$0.q();
       }
 
-      public eff b(JsonObject $$0, JsonDeserializationContext $$1) {
-         ch $$2 = ch.a($$0.get("predicate"));
-         int $$3 = arf.a($$0, "offsetX", 0);
-         int $$4 = arf.a($$0, "offsetY", 0);
-         int $$5 = arf.a($$0, "offsetZ", 0);
-         return new eff($$2, new gv($$3, $$4, $$5));
+      public eff.a a(cy.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public efg build() {
+         return new eff(this.a, this.b);
       }
    }
 }

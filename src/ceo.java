@@ -1,5 +1,7 @@
 public interface ceo {
-   void a(cec var1, int var2, ciw var3);
+   int a(int var1);
 
-   void a(cec var1, int var2, int var3);
+   void a(int var1, int var2);
+
+   int a();
 }

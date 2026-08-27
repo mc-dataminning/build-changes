@@ -1,36 +1,29 @@
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cx implements bp {
-   private final cj.d b;
-
-   private cx(cj.d $$0) {
-      this.b = $$0;
-   }
-
-   public static cx a(cj.d $$0) {
-      return new cx($$0);
-   }
-
-   public static cx a(JsonObject $$0) {
-      cj.d $$1 = cj.d.a($$0.get("size"));
-      return new cx($$1);
-   }
+public class cx extends cu<cx.a> {
+   static final aer a = new aer("started_riding");
 
    @Override
-   public JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.add("size", this.b.d());
-      return $$0;
+   public aer a() {
+      return a;
    }
 
-   @Override
-   public boolean a(big $$0, aki $$1, @Nullable ehf $$2) {
-      return $$0 instanceof bzi $$3 ? this.b.d($$3.ga()) : false;
+   public cx.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      return new cx.a($$1);
    }
 
-   @Override
-   public bp.a c() {
-      return bp.b.e;
+   public void a(akl $$0) {
+      this.a($$0, $$0x -> true);
+   }
+
+   public static class a extends ar {
+      public a(Optional<ba> $$0) {
+         super(cx.a, $$0);
+      }
+
+      public static cx.a a(bo.a $$0) {
+         return new cx.a(bo.a($$0));
+      }
    }
 }

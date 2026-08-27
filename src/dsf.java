@@ -1,36 +1,71 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class dsf extends dsh {
-   public static final Codec<dsf> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsf::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class dsf extends dsj {
+   public static final Codec<dsf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               drs.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               aqy.a(ha.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dsf::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final drs e;
+   protected final int f;
+   protected final List<ha> g;
 
-   public dsf(float $$0) {
+   public dsf(float $$0, int $$1, int $$2, drs $$3, int $$4, List<ha> $$5) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected dsi<?> a() {
-      return dsi.c;
-   }
+   public void a(dsj.a $$0) {
+      Set<gu> $$1 = new HashSet<>();
+      aru $$2 = $$0.b();
 
-   @Override
-   public void a(dsh.a $$0) {
-      art $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<gv> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (hb $$3x : hb.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  hb $$4 = $$3x.g();
-                  gv $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, csl.fC.n().a(ctq.b, Integer.valueOf($$1.a(3))).a(ctq.aC, $$3x));
-                  }
-               }
+      for (gu $$3 : ac.a($$0.d(), $$2)) {
+         ha $$4 = ac.a(this.g, $$2);
+         gu $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            gu $$6 = $$5.b(-this.c, -this.d, -this.c);
+            gu $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (gu $$8 : gu.a($$6, $$7)) {
+               $$1.add($$8.i());
             }
-         });
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
       }
+   }
+
+   private boolean a(dsj.a $$0, gu $$1, ha $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         gu $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected dsk<?> a() {
+      return dsk.f;
    }
 }

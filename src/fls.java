@@ -1,54 +1,56 @@
-public class fls extends fli {
-   fls(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, flr $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)aqy.b.b($$7), (float)aqy.b.c($$7), (float)aqy.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class fls extends flj {
+   private final flw b;
+   protected boolean a;
+
+   fls(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flw $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public flf b() {
+      return flf.c;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(gv.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
+      this.b(this.b);
    }
 
-   public static class a implements fkz<iz> {
-      private final flr a;
+   public static class a implements fle<iy> {
+      private final flw a;
 
-      public a(flr $$0) {
+      public a(flw $$0) {
          this.a = $$0;
       }
 
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fls($$1, $$2, $$3, $$4, $$5, $$6, $$7, aqy.b.a(255, 204, 31, 102), this.a);
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fls $$8 = new fls($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
       }
    }
 
-   public static class b implements fkz<iz> {
-      private final flr a;
+   public static class b implements fle<iy> {
+      private final flw a;
 
-      public b(flr $$0) {
+      public b(flw $$0) {
          this.a = $$0;
       }
 
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fls($$1, $$2, $$3, $$4, $$5, $$6, $$7, aqy.b.a(255, 255, 255, 255), this.a);
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fls $$8 = new fls($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

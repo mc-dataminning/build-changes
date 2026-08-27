@@ -34,8 +34,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gdh.a.a(gdd.z, $$1);
-      gdh.a.a(gdd.A, $$2);
+      gdm.a.a(gdi.z, $$1);
+      gdm.a.a(gdi.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -70,7 +70,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erc.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erb.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -109,13 +109,13 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = arf.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = arf.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = arg.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = arg.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
       File $$53 = $$32.has($$11) ? a($$32, $$11) : new File($$51, "resourcepacks/");
-      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : hz.a((String)$$16.value($$32));
+      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : hy.a((String)$$16.value($$32));
       String $$55 = $$32.has($$28) ? (String)$$28.value($$32) : null;
       String $$56 = (String)$$32.valueOf($$18);
       String $$57 = (String)$$32.valueOf($$19);
@@ -124,34 +124,34 @@ public class Main {
       String $$60 = a($$32, $$7);
       String $$61 = a($$32, $$8);
       if ($$32.has($$4)) {
-         bdk.e.a(bdi.a);
+         bdn.e.a(bdl.a);
       }
 
       o.h();
-      aer.a();
-      gdh.a.a(aer.b.get());
-      aer.c();
+      aet.a();
+      gdm.a.a(aet.b.get());
+      aet.c();
       ac.l();
       String $$62 = (String)$$29.value($$32);
-      erc.a $$63 = erc.a.a($$62);
+      erb.a $$63 = erb.a.a($$62);
       if ($$63 == null) {
          a.warn("Unrecognized user type: {}", $$62);
       }
 
-      erc $$64 = new erc((String)$$16.value($$32), $$54, (String)$$20.value($$32), a($$56), a($$57), $$63);
-      fdd $$65 = new fdd(
-         new fdd.d($$64, $$48, $$49, $$35),
-         new ejy($$38, $$39, $$40, $$41, $$42),
-         new fdd.a($$51, $$53, $$52, $$55),
-         new fdd.b($$43, $$46, $$50, $$44, $$45),
-         new fdd.c($$58, $$59, $$60, $$61)
+      erb $$64 = new erb((String)$$16.value($$32), $$54, (String)$$20.value($$32), a($$56), a($$57), $$63);
+      fdh $$65 = new fdh(
+         new fdh.d($$64, $$48, $$49, $$35),
+         new ejx($$38, $$39, $$40, $$41, $$42),
+         new fdh.a($$51, $$53, $$52, $$55),
+         new fdh.b($$43, $$46, $$50, $$44, $$45),
+         new fdh.c($$58, $$59, $$60, $$61)
       );
       Thread $$66 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            eqn $$0 = eqn.N();
+            eqm $$0 = eqm.O();
             if ($$0 != null) {
-               gcf $$1 = $$0.S();
+               gck $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -161,33 +161,33 @@ public class Main {
       $$66.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$66);
 
-      final eqn $$67;
+      final eqm $$67;
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$67 = new eqn($$65);
+         $$67 = new eqm($$65);
          RenderSystem.finishInitialization();
-      } catch (fde var81) {
+      } catch (fdi var81) {
          a.warn("Failed to create window: ", var81);
          return;
       } catch (Throwable var82) {
          o $$70 = o.a(var82, "Initializing game");
          p $$71 = $$70.a("Initialization");
-         arp.a($$71);
-         eqn.a(null, null, $$65.d.b, null, $$70);
-         eqn.c($$70);
+         arq.a($$71);
+         eqm.a(null, null, $$65.d.b, null, $$70);
+         eqm.c($$70);
          return;
       }
 
       Thread $$73;
-      if ($$67.aL()) {
+      if ($$67.aM()) {
          $$73 = new Thread("Game thread") {
             @Override
             public void run() {
                try {
                   RenderSystem.initGameThread(true);
-                  $$67.e();
+                  $$67.f();
                } catch (Throwable var2) {
                   Main.a.error("Exception in client thread", var2);
                }
@@ -195,30 +195,30 @@ public class Main {
          };
          $$73.start();
 
-         while ($$67.q()) {
+         while ($$67.r()) {
          }
       } else {
          $$73 = null;
 
          try {
             RenderSystem.initGameThread(false);
-            $$67.e();
+            $$67.f();
          } catch (Throwable var80) {
             a.error("Unhandled game exception", var80);
          }
       }
 
-      eld.a();
+      elc.a();
 
       try {
-         $$67.p();
+         $$67.q();
          if ($$73 != null) {
             $$73.join();
          }
       } catch (InterruptedException var78) {
          a.error("Exception during client thread shutdown", var78);
       } finally {
-         $$67.l();
+         $$67.m();
       }
    }
 

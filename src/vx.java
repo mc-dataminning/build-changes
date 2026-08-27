@@ -1,19 +1,18 @@
-public record vx(int b, eaq c, float d) implements vo {
-   public static final aep a = new aep("debug/path");
+public record vx(long b, gu c) implements vp {
+   public static final aer a = new aer("debug/neighbors_update");
 
-   public vx(sh $$0) {
-      this($$0.readInt(), eaq.b($$0), $$0.readFloat());
+   public vx(si $$0) {
+      this($$0.n(), $$0.e());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(si $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 }

@@ -1,22 +1,4 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-public interface efh extends eci, Predicate<ech> {
-   efi b();
-
-   @FunctionalInterface
-   public interface a {
-      efh build();
-
-      default efh.a invert() {
-         return efe.a(this);
-      }
-
-      default eew.a or(efh.a $$0) {
-         return eew.a(this, $$0);
-      }
-
-      default eev.a and(efh.a $$0) {
-         return eev.a(this, $$0);
-      }
-   }
+public record efh(Codec<? extends efg> a) {
 }

@@ -1,77 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class tl {
-   private final tn[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private tp d;
+public record tl(List<tq> d) {
+   public static final Codec<tl> a = tq.a.listOf().xmap(tl::new, tl::a);
+   public static tl b = new tl(List.of());
+   public static final int c = 20;
 
-   public tl(int $$0) {
-      this.a = new tn[$$0];
-   }
+   public void a(ary.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
 
-   public boolean a(tp $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new tn($$0, true) : null);
-         return true;
+      for (tq $$1 : this.d) {
+         $$0.update($$1.b());
       }
    }
 
-   private void a(@Nullable tn $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public tl.a a(tr $$0) {
+      return new tl.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public void a(tp $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         tn $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public List<tq> a() {
+      return this.d;
+   }
+
+   public static record a(List<tq.a> b) {
+      public static final tl.a a = new tl.a(List.of());
+
+      public a(si $$0) {
+         this($$0.a(si.a(ArrayList::new, 20), tq.a::a));
+      }
+
+      public void a(si $$0) {
+         $$0.a(this.b, tq.a::a);
+      }
+
+      public Optional<tl> a(tr $$0) {
+         List<tq> $$1 = new ArrayList<>(this.b.size());
+
+         for (tq.a $$2 : this.b) {
+            Optional<tq> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new tl($$1));
+      }
+
+      public List<tq.a> a() {
+         return this.b;
       }
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public tl.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<tp> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         tn $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public static record b(int a, BitSet b) {
+      public b(si $$0) {
+         this($$0.m(), $$0.e(20));
       }
 
-      tk $$6 = new tk($$2);
-      tk.b $$7 = new tk.b($$0, $$1);
-      return new tl.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(tk a, tk.b b) {
+      public void a(si $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

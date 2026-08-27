@@ -1,24 +1,31 @@
-public class adb implements uw<acx> {
-   private final int a;
+import com.mojang.authlib.GameProfile;
 
-   public adb(int $$0) {
+public class adb implements ux<acz> {
+   private final GameProfile a;
+
+   public adb(GameProfile $$0) {
       this.a = $$0;
    }
 
-   public adb(sh $$0) {
-      this.a = $$0.m();
+   public adb(si $$0) {
+      this.a = $$0.z();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(acx $$0) {
+   public void a(acz $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public GameProfile a() {
       return this.a;
+   }
+
+   @Override
+   public sh c() {
+      return sh.e;
    }
 }

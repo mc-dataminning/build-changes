@@ -1,51 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eex implements efh {
-   final cnd a;
-   final float[] b;
+public abstract class eex implements efg {
+   protected final List<efg> c;
+   private final Predicate<ech> a;
 
-   eex(cnd $$0, float[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   protected eex(List<efg> $$0, Predicate<ech> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends eex> Codec<T> a(Function<List<efg>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(efi.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends eex> Codec<T> b(Function<List<efg>, T> $$0) {
+      return efi.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ech $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public efi b() {
-      return efj.k;
+   public void a(ecq $$0) {
+      efg.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<eeq<?>> a() {
-      return ImmutableSet.of(eet.i);
-   }
+   public abstract static class a implements efg.a {
+      private final Builder<efg> a = ImmutableList.builder();
 
-   public boolean a(ech $$0) {
-      ciw $$1 = $$0.c(eet.i);
-      int $$2 = $$1 != null ? cnf.a(this.a, $$1) : 0;
-      float $$3 = this.b[Math.min($$2, this.b.length - 1)];
-      return $$0.b().i() < $$3;
-   }
-
-   public static efh.a a(cnd $$0, float... $$1) {
-      return () -> new eex($$0, $$1);
-   }
-
-   public static class a implements ecq<eex> {
-      public void a(JsonObject $$0, eex $$1, JsonSerializationContext $$2) {
-         $$0.addProperty("enchantment", jc.g.b($$1.a).toString());
-         $$0.add("chances", $$2.serialize($$1.b));
+      protected a(efg.a... $$0) {
+         for (efg.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
       }
 
-      public eex b(JsonObject $$0, JsonDeserializationContext $$1) {
-         aep $$2 = new aep(arf.i($$0, "enchantment"));
-         cnd $$3 = jc.g.b($$2).orElseThrow(() -> new JsonParseException("Invalid enchantment id: " + $$2));
-         float[] $$4 = arf.a($$0, "chances", $$1, float[].class);
-         return new eex($$3, $$4);
+      public void a(efg.a $$0) {
+         this.a.add($$0.build());
       }
+
+      @Override
+      public efg build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract efg a(List<efg> var1);
    }
 }

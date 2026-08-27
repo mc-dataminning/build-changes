@@ -1,71 +1,95 @@
 import java.util.List;
 
 public class pc {
-   public static final due a = dtx.a(dkh.a.e);
-   public static final due b = dtx.a(dkh.a.c);
-   public static final due c = dtx.a(dkh.a.a);
-   public static final due d = dtx.a(dkh.a.d);
-   public static final due e = dtw.a(dlb.a(), dlb.b());
-   public static final due f = dtw.a(dlb.b(10), dlb.c(10));
-   public static final due g = dtw.a(dlb.b(8), dlb.c(8));
-   public static final due h = dtw.a(dlb.b(4), dlb.c(4));
-   public static final due i = dtw.a(dlb.a(), dlb.a(256));
+   public static final aeq<dud> a = pb.a("crimson_fungi");
+   public static final aeq<dud> b = pb.a("warped_fungi");
+   public static final aeq<dud> c = pb.a("oak_checked");
+   public static final aeq<dud> d = pb.a("dark_oak_checked");
+   public static final aeq<dud> e = pb.a("birch_checked");
+   public static final aeq<dud> f = pb.a("acacia_checked");
+   public static final aeq<dud> g = pb.a("spruce_checked");
+   public static final aeq<dud> h = pb.a("mangrove_checked");
+   public static final aeq<dud> i = pb.a("cherry_checked");
+   public static final aeq<dud> j = pb.a("pine_on_snow");
+   public static final aeq<dud> k = pb.a("spruce_on_snow");
+   public static final aeq<dud> l = pb.a("pine_checked");
+   public static final aeq<dud> m = pb.a("jungle_tree");
+   public static final aeq<dud> n = pb.a("fancy_oak_checked");
+   public static final aeq<dud> o = pb.a("mega_jungle_tree_checked");
+   public static final aeq<dud> p = pb.a("mega_spruce_checked");
+   public static final aeq<dud> q = pb.a("mega_pine_checked");
+   public static final aeq<dud> r = pb.a("tall_mangrove_checked");
+   public static final aeq<dud> s = pb.a("jungle_bush");
+   public static final aeq<dud> t = pb.a("super_birch_bees_0002");
+   public static final aeq<dud> u = pb.a("super_birch_bees");
+   public static final aeq<dud> v = pb.a("oak_bees_0002");
+   public static final aeq<dud> w = pb.a("oak_bees_002");
+   public static final aeq<dud> x = pb.a("birch_bees_0002");
+   public static final aeq<dud> y = pb.a("birch_bees_002");
+   public static final aeq<dud> z = pb.a("fancy_oak_bees_0002");
+   public static final aeq<dud> A = pb.a("fancy_oak_bees_002");
+   public static final aeq<dud> B = pb.a("fancy_oak_bees");
+   public static final aeq<dud> C = pb.a("cherry_bees_005");
 
-   public static void a(nn<dub> $$0) {
-      ow.a($$0);
-      ox.a($$0);
-      oy.a($$0);
-      oz.a($$0);
-      pa.a($$0);
-      pb.a($$0);
-      pd.a($$0);
-      pe.a($$0);
-      pf.a($$0);
-   }
-
-   public static aeo<dub> a(String $$0) {
-      return aeo.a(jd.ay, new aep($$0));
-   }
-
-   public static void a(nn<dub> $$0, aeo<dub> $$1, hf<dmy<?, ?>> $$2, List<due> $$3) {
-      $$0.a($$1, new dub($$2, List.copyOf($$3)));
-   }
-
-   public static void a(nn<dub> $$0, aeo<dub> $$1, hf<dmy<?, ?>> $$2, due... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
-   }
-
-   public static due a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         bey<bft> $$4 = bey.<bft>a().a(bfq.a($$0), (int)$$3 - 1).a(bfq.a($$0 + $$2), 1).a();
-         return dtu.a(new bga($$4));
-      }
-   }
-
-   public static dud a() {
-      return dtq.a(dlo.c);
-   }
-
-   public static dtq a(csk $$0) {
-      return dtq.a(dlo.a($$0.n(), gv.b));
-   }
-
-   public static hf<dub> a(hf<dmy<?, ?>> $$0, due... $$1) {
-      return hf.a(new dub($$0, List.of($$1)));
-   }
-
-   public static <FC extends dpp, F extends dnl<FC>> hf<dub> a(F $$0, FC $$1, due... $$2) {
-      return a(hf.a(new dmy($$0, $$1)), $$2);
-   }
-
-   public static <FC extends dpp, F extends dnl<FC>> hf<dub> a(F $$0, FC $$1) {
-      return a($$0, $$1, dlo.c);
-   }
-
-   public static <FC extends dpp, F extends dnl<FC>> hf<dub> a(F $$0, FC $$1, dlo $$2) {
-      return a($$0, $$1, dtq.a($$2));
+   public static void a(nm<dud> $$0) {
+      hf<dna<?, ?>> $$1 = $$0.a(jc.as);
+      he<dna<?, ?>> $$2 = $$1.b(or.a);
+      he<dna<?, ?>> $$3 = $$1.b(or.c);
+      he<dna<?, ?>> $$4 = $$1.b(or.g);
+      he<dna<?, ?>> $$5 = $$1.b(or.h);
+      he<dna<?, ?>> $$6 = $$1.b(or.i);
+      he<dna<?, ?>> $$7 = $$1.b(or.j);
+      he<dna<?, ?>> $$8 = $$1.b(or.k);
+      he<dna<?, ?>> $$9 = $$1.b(or.x);
+      he<dna<?, ?>> $$10 = $$1.b(or.z);
+      he<dna<?, ?>> $$11 = $$1.b(or.l);
+      he<dna<?, ?>> $$12 = $$1.b(or.m);
+      he<dna<?, ?>> $$13 = $$1.b(or.n);
+      he<dna<?, ?>> $$14 = $$1.b(or.p);
+      he<dna<?, ?>> $$15 = $$1.b(or.q);
+      he<dna<?, ?>> $$16 = $$1.b(or.r);
+      he<dna<?, ?>> $$17 = $$1.b(or.y);
+      he<dna<?, ?>> $$18 = $$1.b(or.v);
+      he<dna<?, ?>> $$19 = $$1.b(or.s);
+      he<dna<?, ?>> $$20 = $$1.b(or.t);
+      he<dna<?, ?>> $$21 = $$1.b(or.A);
+      he<dna<?, ?>> $$22 = $$1.b(or.B);
+      he<dna<?, ?>> $$23 = $$1.b(or.D);
+      he<dna<?, ?>> $$24 = $$1.b(or.E);
+      he<dna<?, ?>> $$25 = $$1.b(or.G);
+      he<dna<?, ?>> $$26 = $$1.b(or.H);
+      he<dna<?, ?>> $$27 = $$1.b(or.J);
+      he<dna<?, ?>> $$28 = $$1.b(or.K);
+      pb.a($$0, a, $$2, dtv.a(8), dtr.a());
+      pb.a($$0, b, $$3, dtv.a(8), dtr.a());
+      pb.a($$0, c, $$4, pb.a(csn.x));
+      pb.a($$0, d, $$5, pb.a(csn.D));
+      pb.a($$0, e, $$6, pb.a(csn.z));
+      pb.a($$0, f, $$7, pb.a(csn.B));
+      pb.a($$0, g, $$8, pb.a(csn.y));
+      pb.a($$0, h, $$9, pb.a(csn.E));
+      pb.a($$0, i, $$10, pb.a(csn.C));
+      dlq $$29 = dlq.a(ha.a.q(), csn.dP, csn.qC);
+      List<dug> $$30 = List.of(dtx.a(ha.b, dlq.a(dlq.a(csn.qC)), 8), dts.a($$29));
+      pb.a($$0, j, $$11, $$30);
+      pb.a($$0, k, $$8, $$30);
+      pb.a($$0, l, $$11, pb.a(csn.y));
+      pb.a($$0, m, $$12, pb.a(csn.A));
+      pb.a($$0, n, $$13, pb.a(csn.x));
+      pb.a($$0, o, $$14, pb.a(csn.A));
+      pb.a($$0, p, $$15, pb.a(csn.y));
+      pb.a($$0, q, $$16, pb.a(csn.y));
+      pb.a($$0, r, $$17, pb.a(csn.E));
+      pb.a($$0, s, $$18, pb.a(csn.x));
+      pb.a($$0, t, $$19, pb.a(csn.z));
+      pb.a($$0, u, $$20, pb.a(csn.z));
+      pb.a($$0, v, $$21, pb.a(csn.x));
+      pb.a($$0, w, $$22, pb.a(csn.x));
+      pb.a($$0, x, $$23, pb.a(csn.z));
+      pb.a($$0, y, $$24, pb.a(csn.z));
+      pb.a($$0, z, $$25, pb.a(csn.x));
+      pb.a($$0, A, $$26, pb.a(csn.x));
+      pb.a($$0, B, $$27, pb.a(csn.x));
+      pb.a($$0, C, $$28, pb.a(csn.C));
    }
 }

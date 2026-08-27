@@ -1,61 +1,68 @@
-import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class cwg extends csk {
-   private final csk a;
-   private static final Map<csk, csk> b = Maps.newIdentityHashMap();
-   private static final Map<dey, dey> c = Maps.newIdentityHashMap();
-   private static final Map<dey, dey> d = Maps.newIdentityHashMap();
+public class cwg extends csm {
+   public static final dfr a = cxy.a;
+   public static final dfr b = cxy.b;
+   public static final dfr c = cxy.c;
+   public static final dfr d = cxy.d;
+   public static final dfr e = cxy.e;
+   public static final dfr f = cxy.f;
+   private static final Map<ha, dfr> g = cxy.g;
 
-   public cwg(csk $$0, dex.d $$1) {
-      super($$1.e($$0.t() / 2.0F).f(0.75F));
-      this.a = $$0;
-      b.put($$0, this);
-   }
-
-   public csk a() {
-      return this.a;
-   }
-
-   public static boolean h(dey $$0) {
-      return b.containsKey($$0.b());
-   }
-
-   private void a(aki $$0, gv $$1) {
-      bzg $$2 = bik.aI.a((cpk)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.N();
-      }
+   public cwg(dez.d $$0) {
+      super($$0);
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(true))
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   public void a(dey $$0, aki $$1, gv $$2, ciw $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.X().b(cpg.g) && cnf.a(cnh.v, $$3) == 0) {
-         this.a($$1, $$2);
-      }
+   public dfa a(clg $$0) {
+      cos $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      return this.n()
+         .a(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(a, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
-   public static dey n(dey $$0) {
-      return a(c, $$0, () -> b.get($$0.b()).n());
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return $$2.a(this) ? $$0.a(g.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public dey o(dey $$0) {
-      return a(d, $$0, () -> this.a().n());
+   @Override
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(g.get($$1.a(ha.c)), $$0.c(a))
+         .a(g.get($$1.a(ha.d)), $$0.c(c))
+         .a(g.get($$1.a(ha.f)), $$0.c(b))
+         .a(g.get($$1.a(ha.e)), $$0.c(d))
+         .a(g.get($$1.a(ha.b)), $$0.c(e))
+         .a(g.get($$1.a(ha.a)), $$0.c(f));
    }
 
-   private static dey a(Map<dey, dey> $$0, dey $$1, Supplier<dey> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dey $$2x = $$2.get();
+   @Override
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a(g.get($$1.b(ha.c)), $$0.c(a))
+         .a(g.get($$1.b(ha.d)), $$0.c(c))
+         .a(g.get($$1.b(ha.f)), $$0.c(b))
+         .a(g.get($$1.b(ha.e)), $$0.c(d))
+         .a(g.get($$1.b(ha.b)), $$0.c(e))
+         .a(g.get($$1.b(ha.a)), $$0.c(f));
+   }
 
-         for (dgb $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(e, f, a, b, c, d);
    }
 }

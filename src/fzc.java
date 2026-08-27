@@ -1,45 +1,69 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class fzc {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class fzc extends ams {
+   private static final amo c = new amo(tf.c("resourcePack.vanilla.description"), aa.b().a(amb.a), Optional.empty());
+   private static final alv d = alv.a(amo.b, c);
+   private static final tf e = tf.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, tf> f = Map.of(
+      "programmer_art", tf.c("resourcePack.programmer_art.name"), "high_contrast", tf.c("resourcePack.high_contrast.name")
+   );
+   private static final aer g = new aer("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      amh.a $$3 = amh.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public fzc(Path $$0, egu $$1) {
+      super(amb.a, b($$0), g, $$1);
+      this.h = this.a($$0);
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = arf.a($$5);
-         JsonObject $$7 = arf.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = arf.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aS && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      return null;
+   }
+
+   private static amd b(Path $$0) {
+      ame $$1 = new ame().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(amb.a, $$0).c();
+   }
+
+   @Override
+   protected tf a(String $$0) {
+      tf $$1 = f.get($$0);
+      return (tf)($$1 != null ? $$1 : tf.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected amu a(ama $$0) {
+      return amu.a("vanilla", e, true, b($$0), amb.a, amu.b.b, amy.c);
+   }
+
+   @Nullable
+   @Override
+   protected amu a(String $$0, amu.c $$1, tf $$2) {
+      return amu.a($$0, $$2, false, $$1, amb.a, amu.b.a, amy.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, amu>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
+      }
    }
 }

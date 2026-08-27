@@ -1,51 +1,9 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dyf {
-   public static final dyx a = dyx.a;
-   public static final Codec<dyf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyk.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               dyk.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               dyd.c.optionalFieldOf("position_predicate", dyc.b).forGetter($$0x -> $$0x.e),
-               dey.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               dyy.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dyf::new)
-   );
-   private final dyk c;
-   private final dyk d;
-   private final dyd e;
-   private final dey f;
-   private final dyy g;
+public abstract class dyf {
+   public static final Codec<dyf> c = jb.r.q().dispatch("predicate_type", dyf::a, dyg::codec);
 
-   public dyf(dyk $$0, dyk $$1, dey $$2) {
-      this($$0, $$1, dyc.b, $$2);
-   }
+   public abstract boolean a(gu var1, gu var2, gu var3, aru var4);
 
-   public dyf(dyk $$0, dyk $$1, dyd $$2, dey $$3) {
-      this($$0, $$1, $$2, $$3, a);
-   }
-
-   public dyf(dyk $$0, dyk $$1, dyd $$2, dey $$3, dyy $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(dey $$0, dey $$1, gv $$2, gv $$3, gv $$4, art $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public dey a() {
-      return this.f;
-   }
-
-   @Nullable
-   public qs a(art $$0, @Nullable qs $$1) {
-      return this.g.a($$0, $$1);
-   }
+   protected abstract dyg<?> a();
 }

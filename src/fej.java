@@ -1,52 +1,53 @@
-public class fej<T extends big> extends fet<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fhj g;
-   private final fhj[] h;
+public class fej<T extends bii> extends fex<T> {
+   private final fhn a;
+   private final fhn b;
+   private final fhn f;
+   private final fhn g;
 
-   public fej(fhj $$0) {
-      this.g = $$0;
-      this.h = new fhj[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
+   public fej(fhn $$0) {
+      this.a = $$0;
+      this.b = $$0.b("body");
+      this.f = this.b.b("tail");
+      this.g = this.f.b("tail_fin");
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fhp b() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fho.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fhl.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fhp.a($$0, 64, 32);
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      fhw $$4 = $$1.a("body", fhs.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fhp.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", fhs.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fhp.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         fhs.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fhp.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         fhs.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fhp.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      fhw $$5 = $$4.a("tail", fhs.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fhp.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", fhs.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fhp.a(0.0F, 0.0F, 9.0F));
+      fhw $$6 = $$4.a("head", fhs.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fhp.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", fhs.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fhp.a);
+      return fht.a($$0, 64, 64);
    }
 
    @Override
-   public fhj a() {
-      return this.g;
+   public fhn a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = aro.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = aro.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.dn().i() > 1.0E-7) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * arp.b($$3 * 0.3F));
+         this.f.e = -0.1F * arp.b($$3 * 0.3F);
+         this.g.e = -0.2F * arp.b($$3 * 0.3F);
       }
    }
 }

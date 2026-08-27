@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dpo implements dpp {
+public record dpo(dsa b, dlq c, bfv d, int e) implements dpr {
    public static final Codec<dpo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dpo::new)
+      $$0 -> $$0.group(
+               dsa.a.fieldOf("state_provider").forGetter(dpo::a),
+               dlq.b.fieldOf("target").forGetter(dpo::b),
+               bfv.b(0, 8).fieldOf("radius").forGetter(dpo::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpo::d)
+            )
+            .apply($$0, dpo::new)
    );
-   private final Optional<gv> b;
-   private final boolean c;
 
-   private dpo(Optional<gv> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static dpo a(gv $$0, boolean $$1) {
-      return new dpo(Optional.of($$0), $$1);
-   }
-
-   public static dpo a() {
-      return new dpo(Optional.empty(), false);
-   }
-
-   public Optional<gv> b() {
+   public dsa a() {
       return this.b;
    }
 
-   public boolean c() {
+   public dlq b() {
       return this.c;
+   }
+
+   public bfv c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

@@ -1,212 +1,129 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class elk implements AutoCloseable {
-   private final elk.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private elm e;
-   @Nullable
-   private RenderSystem.a f;
-   private elm.a g;
-   private int h;
-   private elm.b i;
+public interface elk {
+   elk a(double var1, double var3, double var5);
 
-   public elk(elk.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
+   elk a(int var1, int var2, int var3, int var4);
+
+   elk a(float var1, float var2);
+
+   elk a(int var1, int var2);
+
+   elk b(int var1, int var2);
+
+   elk a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public void a(elc.b $$0) {
-      if (!this.e()) {
-         RenderSystem.assertOnRenderThread();
+   void b(int var1, int var2, int var3, int var4);
 
-         try {
-            elc.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.i();
-            this.g = $$1.k();
-            this.i = $$1.j();
-         } finally {
-            $$0.e();
+   void k();
+
+   default elk a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   }
+
+   default elk a(int $$0) {
+      return this.a(ara.b.b($$0), ara.b.c($$0), ara.b.d($$0), ara.b.a($$0));
+   }
+
+   default elk b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default elk c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(elg.a $$0, foh $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
+   }
+
+   default void a(elg.a $$0, foh $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      hz $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
+
+      try {
+         ByteBuffer $$18 = $$17.malloc(ele.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
+
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
+            } else {
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
+            }
+
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
          }
-      }
-   }
-
-   private elm a(elc.a $$0, ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.g().equals(this.e)) {
-         if (this.e != null) {
-            this.e.f();
+      } catch (Throwable var33) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
+            }
          }
 
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.g().e();
-         $$2 = true;
+         throw var33;
       }
 
-      if (!$$0.l()) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.g();
-   }
-
-   @Nullable
-   private RenderSystem.a b(elc.a $$0, ByteBuffer $$1) {
-      if (!$$0.m()) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
-      } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
-         if ($$2 != this.f || !$$2.a($$0.i())) {
-            $$2.b($$0.i());
-         }
-
-         return $$2;
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   public void a() {
-      eld.b();
-      GlStateManager._glBindVertexArray(this.d);
+   default elk a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   public static void b() {
-      eld.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private elm.a f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, fnt $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
-      } else {
-         this.b($$0, $$1, $$2);
-      }
-   }
-
-   private void b(Matrix4f $$0, Matrix4f $$1, fnt $$2) {
-      for (int $$3 = 0; $$3 < 12; $$3++) {
-         int $$4 = RenderSystem.getShaderTexture($$3);
-         $$2.a("Sampler" + $$3, $$4);
-      }
-
-      if ($$2.b != null) {
-         $$2.b.a($$0);
-      }
-
-      if ($$2.c != null) {
-         $$2.c.a($$1);
-      }
-
-      if ($$2.d != null) {
-         $$2.d.a(RenderSystem.getInverseViewRotationMatrix());
-      }
-
-      if ($$2.g != null) {
-         $$2.g.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$2.j != null) {
-         $$2.j.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$2.k != null) {
-         $$2.k.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$2.l != null) {
-         $$2.l.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$2.m != null) {
-         $$2.m.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$2.n != null) {
-         $$2.n.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$2.e != null) {
-         $$2.e.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$2.p != null) {
-         $$2.p.a(RenderSystem.getShaderGameTime());
-      }
-
-      if ($$2.f != null) {
-         ekl $$5 = eqn.N().aM();
-         $$2.f.a((float)$$5.k(), (float)$$5.l());
-      }
-
-      if ($$2.o != null && (this.i == elm.b.a || this.i == elm.b.b)) {
-         $$2.o.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights($$2);
-      $$2.g();
-      this.c();
-      $$2.f();
-   }
-
-   @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
-   }
-
-   public elm d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
-   }
-
-   public static enum a {
-      a(35044),
-      b(35048);
-
-      final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   default elk a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

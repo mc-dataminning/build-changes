@@ -1,60 +1,46 @@
-import javax.annotation.Nullable;
-
-public class ctj extends cyv implements czl {
-   public static final dfp a = dfo.C;
-   protected static final float b = 6.5F;
-   protected static final float c = 9.5F;
-   protected static final ehy d = csk.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final ehy e = csk.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final ehy f = csk.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
-
-   public ctj(dex.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(g, hb.a.b));
+public class ctj extends cvy implements cso, cth {
+   public ctj(dez.d $$0) {
+      super($$0, ha.a, r_, false);
+      this.k(this.C.b().a(s_, Boolean.valueOf(false)));
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      switch ((hb.a)$$0.c(g)) {
-         case a:
-         default:
-            return f;
-         case c:
-            return e;
-         case b:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dey a(cle $$0) {
-      eab $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eac.c;
-      return super.a($$0).a(a, Boolean.valueOf($$2));
+   protected cvz b() {
+      return (cvz)csn.ru;
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, eac.c, eac.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dfa a(dfa $$0, dfa $$1) {
+      return $$1.a(s_, $$0.c(s_));
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a).a(g);
+   public ciy a(cos $$0, gu $$1, dfa $$2) {
+      return new ciy(cjb.vw);
    }
 
    @Override
-   public eab c_(dey $$0) {
-      return $$0.c(a) ? eac.c.a(false) : super.c_($$0);
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      return cth.a($$3, $$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
-      return false;
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(s_);
+   }
+
+   @Override
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
+      return !$$2.c(s_);
+   }
+
+   @Override
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
    }
 }

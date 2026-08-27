@@ -1,35 +1,32 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class gbv implements gbd {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fmn e;
+   private final gcx f;
+   private int g = 0;
 
-public class gbv<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public gbv(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public gbv(fmn $$0, gcx $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
-
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bc()) {
+         float $$0 = this.e.dK().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gbt)(new gbw.a(this.e, aow.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gbt)(new gbw.a(this.e, aow.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gbt)(new gbw.a(this.e, aow.A)));
          }
       }
-
-      return (T)this.endOfData();
    }
 }

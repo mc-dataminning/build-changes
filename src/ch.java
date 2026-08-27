@@ -1,79 +1,58 @@
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ch {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ch a = new ch(cj.c.e, cj.c.e, cj.c.e, null, null, null, null, ce.a, at.a, bv.a);
-   private final cj.c c;
-   private final cj.c d;
-   private final cj.c e;
-   @Nullable
-   private final aeo<cqi> f;
-   @Nullable
-   private final aeo<dux> g;
-   @Nullable
-   private final aeo<cpk> h;
-   @Nullable
-   private final Boolean i;
-   private final ce j;
-   private final at k;
-   private final bv l;
+public record ch(
+   Optional<ch.b> b, Optional<aeq<cqk>> c, Optional<aeq<duz>> d, Optional<aeq<cpm>> e, Optional<Boolean> f, Optional<ce> g, Optional<at> h, Optional<bv> i
+) {
+   public static final Codec<ch> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqy.a(ch.b.a, "position").forGetter(ch::b),
+               aqy.a(aeq.a(jc.ap), "biome").forGetter(ch::c),
+               aqy.a(aeq.a(jc.az), "structure").forGetter(ch::d),
+               aqy.a(aeq.a(jc.aH), "dimension").forGetter(ch::e),
+               aqy.a(Codec.BOOL, "smokey").forGetter(ch::f),
+               aqy.a(ce.a, "light").forGetter(ch::g),
+               aqy.a(at.a, "block").forGetter(ch::h),
+               aqy.a(bv.a, "fluid").forGetter(ch::i)
+            )
+            .apply($$0, ch::new)
+   );
 
-   public ch(
-      cj.c $$0, cj.c $$1, cj.c $$2, @Nullable aeo<cqi> $$3, @Nullable aeo<dux> $$4, @Nullable aeo<cpk> $$5, @Nullable Boolean $$6, ce $$7, at $$8, bv $$9
+   static Optional<ch> a(
+      Optional<ch.b> $$0,
+      Optional<aeq<cqk>> $$1,
+      Optional<aeq<duz>> $$2,
+      Optional<aeq<cpm>> $$3,
+      Optional<Boolean> $$4,
+      Optional<ce> $$5,
+      Optional<at> $$6,
+      Optional<bv> $$7
    ) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty() && $$5.isEmpty() && $$6.isEmpty() && $$7.isEmpty()
+         ? Optional.empty()
+         : Optional.of(new ch($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public static ch a(aeo<cqi> $$0) {
-      return new ch(cj.c.e, cj.c.e, cj.c.e, $$0, null, null, null, ce.a, at.a, bv.a);
-   }
-
-   public static ch b(aeo<cpk> $$0) {
-      return new ch(cj.c.e, cj.c.e, cj.c.e, null, null, $$0, null, ce.a, at.a, bv.a);
-   }
-
-   public static ch c(aeo<dux> $$0) {
-      return new ch(cj.c.e, cj.c.e, cj.c.e, null, $$0, null, null, ce.a, at.a, bv.a);
-   }
-
-   public static ch a(cj.c $$0) {
-      return new ch(cj.c.e, $$0, cj.c.e, null, null, null, null, ce.a, at.a, bv.a);
-   }
-
-   public boolean a(aki $$0, double $$1, double $$2, double $$3) {
-      if (!this.c.d($$1)) {
+   public boolean a(akk $$0, double $$1, double $$2, double $$3) {
+      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (!this.d.d($$2)) {
-         return false;
-      } else if (!this.e.d($$3)) {
-         return false;
-      } else if (this.h != null && this.h != $$0.ac()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ac()) {
          return false;
       } else {
-         gv $$4 = gv.a($$1, $$2, $$3);
+         gu $$4 = gu.a($$1, $$2, $$3);
          boolean $$5 = $$0.o($$4);
-         if (this.f == null || $$5 && $$0.s($$4).a(this.f)) {
-            if (this.g == null || $$5 && $$0.a().a($$4, this.g).b()) {
-               if (this.i == null || $$5 && this.i == csx.a($$0, $$4)) {
-                  if (!this.j.a($$0, $$4)) {
+         if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
+            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == csz.a($$0, $$4)) {
+                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
-                     return !this.k.a($$0, $$4) ? false : this.l.a($$0, $$4);
+                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
                   }
                } else {
                   return false;
@@ -88,142 +67,139 @@ public class ch {
    }
 
    public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (!this.c.c() || !this.d.c() || !this.e.c()) {
-            JsonObject $$1 = new JsonObject();
-            $$1.add("x", this.c.d());
-            $$1.add("y", this.d.d());
-            $$1.add("z", this.e.d());
-            $$0.add("position", $$1);
-         }
-
-         if (this.h != null) {
-            cpk.g.encodeStart(JsonOps.INSTANCE, this.h).resultOrPartial(b::error).ifPresent($$1x -> $$0.add("dimension", $$1x));
-         }
-
-         if (this.g != null) {
-            $$0.addProperty("structure", this.g.a().toString());
-         }
-
-         if (this.f != null) {
-            $$0.addProperty("biome", this.f.a().toString());
-         }
-
-         if (this.i != null) {
-            $$0.addProperty("smokey", this.i);
-         }
-
-         $$0.add("light", this.j.a());
-         $$0.add("block", this.k.a());
-         $$0.add("fluid", this.l.a());
-         return $$0;
-      }
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 
-   public static ch a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "location");
-         JsonObject $$2 = arf.a($$1, "position", new JsonObject());
-         cj.c $$3 = cj.c.a($$2.get("x"));
-         cj.c $$4 = cj.c.a($$2.get("y"));
-         cj.c $$5 = cj.c.a($$2.get("z"));
-         aeo<cpk> $$6 = $$1.has("dimension")
-            ? aep.a.parse(JsonOps.INSTANCE, $$1.get("dimension")).resultOrPartial(b::error).map($$0x -> aeo.a(jd.aH, $$0x)).orElse(null)
-            : null;
-         aeo<dux> $$7 = $$1.has("structure")
-            ? aep.a.parse(JsonOps.INSTANCE, $$1.get("structure")).resultOrPartial(b::error).map($$0x -> aeo.a(jd.az, $$0x)).orElse(null)
-            : null;
-         aeo<cqi> $$8 = null;
-         if ($$1.has("biome")) {
-            aep $$9 = new aep(arf.i($$1, "biome"));
-            $$8 = aeo.a(jd.ap, $$9);
-         }
-
-         Boolean $$10 = $$1.has("smokey") ? $$1.get("smokey").getAsBoolean() : null;
-         ce $$11 = ce.a($$1.get("light"));
-         at $$12 = at.a($$1.get("block"));
-         bv $$13 = bv.a($$1.get("fluid"));
-         return new ch($$3, $$4, $$5, $$8, $$7, $$6, $$10, $$11, $$12, $$13);
-      } else {
-         return a;
-      }
+   public static Optional<ch> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
    }
 
    public static class a {
-      private cj.c a = cj.c.e;
-      private cj.c b = cj.c.e;
-      private cj.c c = cj.c.e;
-      @Nullable
-      private aeo<cqi> d;
-      @Nullable
-      private aeo<dux> e;
-      @Nullable
-      private aeo<cpk> f;
-      @Nullable
-      private Boolean g;
-      private ce h = ce.a;
-      private at i = at.a;
-      private bv j = bv.a;
+      private cj.c a;
+      private cj.c b;
+      private cj.c c;
+      private Optional<aeq<cqk>> d;
+      private Optional<aeq<duz>> e;
+      private Optional<aeq<cpm>> f;
+      private Optional<Boolean> g;
+      private Optional<ce> h;
+      private Optional<at> i;
+      private Optional<bv> j;
+
+      public a() {
+         this.a = cj.c.c;
+         this.b = cj.c.c;
+         this.c = cj.c.c;
+         this.d = Optional.empty();
+         this.e = Optional.empty();
+         this.f = Optional.empty();
+         this.g = Optional.empty();
+         this.h = Optional.empty();
+         this.i = Optional.empty();
+         this.j = Optional.empty();
+      }
 
       public static ch.a a() {
          return new ch.a();
       }
 
-      public ch.a a(cj.c $$0) {
+      public static ch.a a(aeq<cqk> $$0) {
+         return a().d($$0);
+      }
+
+      public static ch.a b(aeq<cpm> $$0) {
+         return a().f($$0);
+      }
+
+      public static ch.a c(aeq<duz> $$0) {
+         return a().e($$0);
+      }
+
+      public static ch.a a(cj.c $$0) {
+         return a().c($$0);
+      }
+
+      public ch.a b(cj.c $$0) {
          this.a = $$0;
          return this;
       }
 
-      public ch.a b(cj.c $$0) {
+      public ch.a c(cj.c $$0) {
          this.b = $$0;
          return this;
       }
 
-      public ch.a c(cj.c $$0) {
+      public ch.a d(cj.c $$0) {
          this.c = $$0;
          return this;
       }
 
-      public ch.a a(@Nullable aeo<cqi> $$0) {
-         this.d = $$0;
+      public ch.a d(aeq<cqk> $$0) {
+         this.d = Optional.of($$0);
          return this;
       }
 
-      public ch.a b(@Nullable aeo<dux> $$0) {
-         this.e = $$0;
+      public ch.a e(aeq<duz> $$0) {
+         this.e = Optional.of($$0);
          return this;
       }
 
-      public ch.a c(@Nullable aeo<cpk> $$0) {
-         this.f = $$0;
+      public ch.a f(aeq<cpm> $$0) {
+         this.f = Optional.of($$0);
          return this;
       }
 
-      public ch.a a(ce $$0) {
-         this.h = $$0;
+      public ch.a a(ce.a $$0) {
+         this.h = $$0.b();
          return this;
       }
 
-      public ch.a a(at $$0) {
-         this.i = $$0;
+      public ch.a a(at.a $$0) {
+         this.i = $$0.b();
          return this;
       }
 
-      public ch.a a(bv $$0) {
-         this.j = $$0;
+      public ch.a a(bv.a $$0) {
+         this.j = $$0.b();
          return this;
       }
 
-      public ch.a a(Boolean $$0) {
-         this.g = $$0;
+      public ch.a a(boolean $$0) {
+         this.g = Optional.of($$0);
          return this;
       }
 
-      public ch b() {
-         return new ch(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      public Optional<ch> b() {
+         return ch.a(ch.b.a(this.a, this.b, this.c), this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
+   }
+
+   static record b(cj.c b, cj.c c, cj.c d) {
+      public static final Codec<ch.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aqy.a(cj.c.d, "x", cj.c.c).forGetter(ch.b::a), aqy.a(cj.c.d, "y", cj.c.c).forGetter(ch.b::b), aqy.a(cj.c.d, "z", cj.c.c).forGetter(ch.b::c)
+               )
+               .apply($$0, ch.b::new)
+      );
+
+      static Optional<ch.b> a(cj.c $$0, cj.c $$1, cj.c $$2) {
+         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new ch.b($$0, $$1, $$2));
+      }
+
+      public boolean a(double $$0, double $$1, double $$2) {
+         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
+      }
+
+      public cj.c a() {
+         return this.b;
+      }
+
+      public cj.c b() {
+         return this.c;
+      }
+
+      public cj.c c() {
+         return this.d;
       }
    }
 }

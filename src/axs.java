@@ -1,30 +1,31 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public class axs extends DataFix {
-   public axs(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
 
-   private static String a(String $$0) {
-      return $$0.equals("health") ? "hearts" : "integer";
+   public axs(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(aym.D);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
-            if ($$1.isEmpty()) {
-               String $$2 = $$0xx.get("CriteriaName").asString("");
-               String $$3 = a($$2);
-               return $$0xx.set("RenderType", $$0xx.createString($$3));
-            } else {
-               return $$0xx;
-            }
-         }));
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), azx.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
+      }
    }
 }

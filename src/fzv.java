@@ -1,12 +1,22 @@
-import com.google.gson.JsonObject;
+public class fzv {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-public class fzv implements amk<fzu> {
-   public fzu b(JsonObject $$0) {
-      return new fzu(fzu.a.a(arf.a($$0, "hat", "none")));
+   public fzv(int $$0) {
+      this($$0, -1);
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   public fzv(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
+
+   public int a() {
+      return this.b;
    }
 }

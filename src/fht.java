@@ -1,22 +1,17 @@
 public class fht {
-   private final float a;
-   private final float b;
+   private final fhv a;
+   private final fhu b;
 
-   public fht(float $$0, float $$1) {
+   private fht(fhv $$0, fhu $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public float a() {
-      return this.a;
+   public fhn a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static fht a(fhv $$0, int $$1, int $$2) {
+      return new fht($$0, new fhu($$1, $$2));
    }
 }

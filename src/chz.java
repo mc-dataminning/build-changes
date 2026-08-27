@@ -1,39 +1,44 @@
-public class chz extends cir {
-   public chz(cir.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface chz extends cks {
+   bin g();
+
+   default aov ak_() {
+      return aow.af;
    }
 
-   @Override
-   public bgo a(clg $$0) {
-      cpk $$1 = $$0.q();
-      gv $$2 = $$0.a();
-      dey $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!csx.h($$3) && !csy.g($$3) && !csz.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (cry.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, cry.a($$1, $$2));
-            $$1.a($$0.o(), dji.i, $$2);
-            $$4 = true;
+   default bgr<ciy> a(cit $$0, cpm $$1, cbn $$2, bgp $$3) {
+      ciy $$4 = $$2.b($$3);
+      bin $$5 = bja.h($$4);
+      ciy $$6 = $$2.c($$5);
+      if ((!cnh.d($$6) || $$2.f()) && !ciy.a($$4, $$6)) {
+         if (!$$1.r_()) {
+            $$2.b(apg.c.b($$0));
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dfo.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dji.c, $$2);
-         $$4 = true;
-      }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bgo.a($$1.B);
+         ciy $$7 = $$6.b() ? $$4 : $$6.c();
+         ciy $$8 = $$4.c();
+         $$2.a($$5, $$8);
+         return bgr.a($$7, $$1.r_());
       } else {
-         return bgo.e;
+         return bgr.d($$4);
       }
    }
 
-   private void a(cpk $$0, gv $$1) {
-      art $$2 = $$0.y_();
-      $$0.a(null, $$1, aou.hD, aov.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Nullable
+   static chz c_(ciy $$0) {
+      cit $$3 = $$0.d();
+      if ($$3 instanceof chz) {
+         return (chz)$$3;
+      } else {
+         if ($$0.d() instanceof cgr $$2) {
+            csm var6 = $$2.e();
+            if (var6 instanceof chz) {
+               return (chz)var6;
+            }
+         }
+
+         return null;
+      }
    }
 }

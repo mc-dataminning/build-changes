@@ -1,75 +1,78 @@
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class td {
-   public static final te a = te.h();
-   public static final te b = te.c("options.on");
-   public static final te c = te.c("options.off");
-   public static final te d = te.c("gui.done");
-   public static final te e = te.c("gui.cancel");
-   public static final te f = te.c("gui.yes");
-   public static final te g = te.c("gui.no");
-   public static final te h = te.c("gui.ok");
-   public static final te i = te.c("gui.proceed");
-   public static final te j = te.c("gui.continue");
-   public static final te k = te.c("gui.back");
-   public static final te l = te.c("gui.toTitle");
-   public static final te m = te.c("gui.acknowledge");
-   public static final te n = te.c("chat.link.open");
-   public static final te o = te.c("gui.copy_link_to_clipboard");
-   public static final te p = te.c("menu.disconnect");
-   public static final te q = te.c("connect.failed");
-   public static final te r = te.b("\n");
-   public static final te s = te.b(". ");
-   public static final te t = te.b("...");
-   public static final te u = a();
+   private final td.a a;
+   private final String b;
 
-   public static tr a() {
-      return te.b(" ");
+   public td(td.a $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static tr a(long $$0) {
-      return te.a("gui.days", $$0);
+   public td.a a() {
+      return this.a;
    }
 
-   public static tr b(long $$0) {
-      return te.a("gui.hours", $$0);
+   public String b() {
+      return this.b;
    }
 
-   public static tr c(long $$0) {
-      return te.a("gui.minutes", $$0);
-   }
-
-   public static te a(boolean $$0) {
-      return $$0 ? b : c;
-   }
-
-   public static tr a(te $$0, boolean $$1) {
-      return te.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
-
-   public static tr a(te $$0, te $$1) {
-      return te.a("options.generic_value", $$0, $$1);
-   }
-
-   public static tr a(te... $$0) {
-      tr $$1 = te.h();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         td $$1 = (td)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else {
+            return this.b != null ? this.b.equals($$1.b) : $$1.b == null;
          }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.a + ", value='" + this.b + "'}";
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + (this.b != null ? this.b.hashCode() : 0);
+   }
+
+   public static enum a {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
+
+      private static final Map<String, td.a> g = Arrays.stream(values()).collect(Collectors.toMap(td.a::b, $$0 -> (td.a)$$0));
+      private final boolean h;
+      private final String i;
+
+      private a(String $$0, boolean $$1) {
+         this.i = $$0;
+         this.h = $$1;
       }
 
-      return $$1;
-   }
+      public boolean a() {
+         return this.h;
+      }
 
-   public static te b(te... $$0) {
-      return a(Arrays.asList($$0));
-   }
+      public String b() {
+         return this.i;
+      }
 
-   public static te a(Collection<? extends te> $$0) {
-      return tg.a($$0, r);
+      public static td.a a(String $$0) {
+         return g.get($$0);
+      }
    }
 }

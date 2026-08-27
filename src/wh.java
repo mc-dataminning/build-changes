@@ -1,12 +1,8 @@
-public interface wh extends uz {
-   @Override
-   default sg b() {
-      return sg.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(wi var1);
-
-   void a(wj var1);
-
-   void a(wk var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wh {
 }

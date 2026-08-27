@@ -1,13 +1,8 @@
-import java.time.Instant;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public final class bev {
-   public final Instant a;
-   public final int b;
-   public final bdd c;
-
-   public bev(Instant $$0, int $$1, bdd $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bev {
 }

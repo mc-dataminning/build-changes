@@ -1,151 +1,92 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public interface cqc extends cos {
+   ha[] C = ha.values();
 
-public class cqc {
-   private final cpl a;
-   private final dlf b;
-   private final duy c;
-
-   public cqc(cpl $$0, dlf $$1, duy $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   default int a(gu $$0, ha $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public cqc a(akp $$0) {
-      if ($$0.C() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.C() + ", region: " + $$0);
+   default int e_(gu $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ha.a));
+      if ($$1 >= 15) {
+         return $$1;
       } else {
-         return new cqc($$0, this.b, this.c);
-      }
-   }
-
-   public List<dvf> a(cor $$0, Predicate<dux> $$1) {
-      Map<dux, LongSet> $$2 = this.a.a($$0.e, $$0.f, dgz.e).h();
-      Builder<dvf> $$3 = ImmutableList.builder();
-
-      for (Entry<dux, LongSet> $$4 : $$2.entrySet()) {
-         dux $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
-         }
-      }
-
-      return $$3.build();
-   }
-
-   public List<dvf> a(hy $$0, dux $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dgz.e).b($$1);
-      Builder<dvf> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
-   }
-
-   public void a(dux $$0, LongSet $$1, Consumer<dvf> $$2) {
-      LongIterator var4 = $$1.iterator();
-
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         hy $$4 = hy.a(new cor($$3), this.a.al());
-         dvf $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dgz.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
+         $$1 = Math.max($$1, this.a($$0.c(), ha.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ha.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ha.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ha.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ha.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
          }
       }
    }
 
-   @Nullable
-   public dvf a(hy $$0, dux $$1, dhr $$2) {
-      return $$2.a($$1);
+   default int a(gu $$0, ha $$1, boolean $$2) {
+      dfa $$3 = this.a_($$0);
+      if ($$2) {
+         return cuk.h($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(csn.ha)) {
+         return 15;
+      } else if ($$3.a(csn.cw)) {
+         return $$3.c(cyn.e);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   public void a(hy $$0, dux $$1, dvf $$2, dhr $$3) {
-      $$3.a($$1, $$2);
+   default boolean b(gu $$0, ha $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   public void a(hy $$0, dux $$1, long $$2, dhr $$3) {
-      $$3.a($$1, $$2);
+   default int c(gu $$0, ha $$1) {
+      dfa $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
    }
 
-   public boolean a() {
-      return this.b.c();
+   default boolean B(gu $$0) {
+      if (this.c($$0.d(), ha.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ha.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ha.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ha.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ha.e) > 0 ? true : this.c($$0.h(), ha.f) > 0;
+      }
    }
 
-   public dvf a(gv $$0, dux $$1) {
-      for (dvf $$2 : this.a(hy.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
+   default int C(gu $$0) {
+      int $$1 = 0;
+
+      for (ha $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
          }
       }
 
-      return dvf.b;
-   }
-
-   public dvf a(gv $$0, aeo<dux> $$1) {
-      dux $$2 = this.b().d(jd.az).a($$1);
-      return $$2 == null ? dvf.b : this.b($$0, $$2);
-   }
-
-   public dvf a(gv $$0, apy<dux> $$1) {
-      hs<dux> $$2 = this.b().d(jd.az);
-
-      for (dvf $$3 : this.a(new cor($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
-         }
-      }
-
-      return dvf.b;
-   }
-
-   public dvf b(gv $$0, dux $$1) {
-      for (dvf $$2 : this.a(hy.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return dvf.b;
-   }
-
-   public boolean a(gv $$0, dvf $$1) {
-      for (dvb $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(gv $$0) {
-      hy $$1 = hy.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dgz.e).w();
-   }
-
-   public Map<dux, LongSet> b(gv $$0) {
-      hy $$1 = hy.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dgz.e).h();
-   }
-
-   public duz a(cor $$0, dux $$1, boolean $$2) {
-      return this.c.a($$0, $$1, $$2);
-   }
-
-   public void a(dvf $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public ht b() {
-      return this.a.B_();
+      return $$1;
    }
 }

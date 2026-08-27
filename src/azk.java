@@ -1,42 +1,62 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
 
-public class azk extends axo {
-   public azk(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Villager trade fix", aym.x, "minecraft:villager");
+public class azk extends axr {
+   public azk(Schema $$0, String $$1) {
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", ayp.x, $$1);
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<?> $$1 = $$0.getType().findField("Offers");
-      OpticFinder<?> $$2 = $$1.type().findField("Recipes");
-      if (!($$2.type() instanceof ListType<?> $$4)) {
-         throw new IllegalStateException("Recipes are expected to be a list.");
-      } else {
-         Type<?> $$5 = $$4.getElement();
-         OpticFinder<?> $$6 = DSL.typeFinder($$5);
-         OpticFinder<?> $$7 = $$5.findField("buy");
-         OpticFinder<?> $$8 = $$5.findField("buyB");
-         OpticFinder<?> $$9 = $$5.findField("sell");
-         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(aym.z.typeName(), azu.a()));
-         Function<Typed<?>, Typed<?>> $$11 = $$1x -> this.a($$10, $$1x);
-         return $$0.updateTyped(
-            $$1,
-            $$6x -> $$6x.updateTyped(
-                  $$2, $$5xx -> $$5xx.updateTyped($$6, $$4xxx -> $$4xxx.updateTyped($$7, $$11).updateTyped($$8, $$11).updateTyped($$9, $$11))
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      return $$0.set(
+         DSL.remainderFinder(),
+         $$1.remove("Profession")
+            .remove("Career")
+            .remove("CareerLevel")
+            .set(
+               "VillagerData",
+               $$1.createMap(
+                  ImmutableMap.of(
+                     $$1.createString("type"),
+                     $$1.createString("minecraft:plains"),
+                     $$1.createString("profession"),
+                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
+                     $$1.createString("level"),
+                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
+                  )
                )
-         );
-      }
+            )
+      );
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+   private static String a(int $$0, int $$1) {
+      if ($$0 == 0) {
+         if ($$1 == 2) {
+            return "minecraft:fisherman";
+         } else if ($$1 == 3) {
+            return "minecraft:shepherd";
+         } else {
+            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+         }
+      } else if ($$0 == 1) {
+         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+      } else if ($$0 == 2) {
+         return "minecraft:cleric";
+      } else if ($$0 == 3) {
+         if ($$1 == 2) {
+            return "minecraft:weaponsmith";
+         } else {
+            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+         }
+      } else if ($$0 == 4) {
+         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+      } else {
+         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+      }
    }
 }

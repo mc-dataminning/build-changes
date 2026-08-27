@@ -1,339 +1,49 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public abstract class ky {
-   private final Map<kz, List<la>> a = Maps.newHashMap();
+public final class ky {
+   private static final ky a = new ky(ImmutableList.of());
+   private static final Comparator<dgd.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dgd.a<?>> c;
 
-   protected void a(kz $$0, List<la> $$1) {
-      List<la> $$2 = this.a.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Value " + $$0 + " is already defined");
-      }
+   public ky a(dgd.a<?> $$0) {
+      return new ky(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
-   Map<kz, List<la>> a() {
-      this.c();
-      return ImmutableMap.copyOf(this.a);
+   public ky a(ky $$0) {
+      return new ky(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
    }
 
-   private void c() {
-      List<dgb<?>> $$0 = this.b();
-      Stream<kz> $$1 = Stream.of(kz.a());
-
-      for (dgb<?> $$2 : $$0) {
-         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
-      }
-
-      List<kz> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         throw new IllegalStateException("Missing definition for properties: " + $$3);
-      }
+   private ky(List<dgd.a<?>> $$0) {
+      this.c = $$0;
    }
 
-   abstract List<dgb<?>> b();
-
-   public static <T1 extends Comparable<T1>> ky.a<T1> a(dgb<T1> $$0) {
-      return new ky.a<>($$0);
+   public static ky a() {
+      return a;
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> ky.b<T1, T2> a(dgb<T1> $$0, dgb<T2> $$1) {
-      return new ky.b<>($$0, $$1);
+   public static ky a(dgd.a<?>... $$0) {
+      return new ky(ImmutableList.copyOf($$0));
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> ky.c<T1, T2, T3> a(dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2) {
-      return new ky.c<>($$0, $$1, $$2);
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof ky && this.c.equals(((ky)$$0).c);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> ky.d<T1, T2, T3, T4> a(
-      dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2, dgb<T4> $$3
-   ) {
-      return new ky.d<>($$0, $$1, $$2, $$3);
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> ky.e<T1, T2, T3, T4, T5> a(
-      dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2, dgb<T4> $$3, dgb<T5> $$4
-   ) {
-      return new ky.e<>($$0, $$1, $$2, $$3, $$4);
+   public String b() {
+      return this.c.stream().sorted(b).map(dgd.a::toString).collect(Collectors.joining(","));
    }
 
-   public static class a<T1 extends Comparable<T1>> extends ky {
-      private final dgb<T1> a;
-
-      a(dgb<T1> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public List<dgb<?>> b() {
-         return ImmutableList.of(this.a);
-      }
-
-      public ky.a<T1> a(T1 $$0, List<la> $$1) {
-         kz $$2 = kz.a(this.a.b($$0));
-         this.a($$2, $$1);
-         return this;
-      }
-
-      public ky.a<T1> a(T1 $$0, la $$1) {
-         return this.a($$0, Collections.singletonList($$1));
-      }
-
-      public ky a(Function<T1, la> $$0) {
-         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
-         return this;
-      }
-
-      public ky b(Function<T1, List<la>> $$0) {
-         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
-         return this;
-      }
-   }
-
-   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends ky {
-      private final dgb<T1> a;
-      private final dgb<T2> b;
-
-      b(dgb<T1> $$0, dgb<T2> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public List<dgb<?>> b() {
-         return ImmutableList.of(this.a, this.b);
-      }
-
-      public ky.b<T1, T2> a(T1 $$0, T2 $$1, List<la> $$2) {
-         kz $$3 = kz.a(this.a.b($$0), this.b.b($$1));
-         this.a($$3, $$2);
-         return this;
-      }
-
-      public ky.b<T1, T2> a(T1 $$0, T2 $$1, la $$2) {
-         return this.a($$0, $$1, Collections.singletonList($$2));
-      }
-
-      public ky a(BiFunction<T1, T2, la> $$0) {
-         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
-         return this;
-      }
-
-      public ky b(BiFunction<T1, T2, List<la>> $$0) {
-         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
-         return this;
-      }
-   }
-
-   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends ky {
-      private final dgb<T1> a;
-      private final dgb<T2> b;
-      private final dgb<T3> c;
-
-      c(dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public List<dgb<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c);
-      }
-
-      public ky.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<la> $$3) {
-         kz $$4 = kz.a(this.a.b($$0), this.b.b($$1), this.c.b($$2));
-         this.a($$4, $$3);
-         return this;
-      }
-
-      public ky.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, la $$3) {
-         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
-      }
-
-      public ky a(ky.h<T1, T2, T3, la> $$0) {
-         this.a
-            .a()
-            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
-         return this;
-      }
-
-      public ky b(ky.h<T1, T2, T3, List<la>> $$0) {
-         this.a
-            .a()
-            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
-         return this;
-      }
-   }
-
-   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends ky {
-      private final dgb<T1> a;
-      private final dgb<T2> b;
-      private final dgb<T3> c;
-      private final dgb<T4> d;
-
-      d(dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2, dgb<T4> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public List<dgb<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c, this.d);
-      }
-
-      public ky.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<la> $$4) {
-         kz $$5 = kz.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3));
-         this.a($$5, $$4);
-         return this;
-      }
-
-      public ky.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, la $$4) {
-         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
-      }
-
-      public ky a(ky.g<T1, T2, T3, T4, la> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
-                              )
-                     )
-            );
-         return this;
-      }
-
-      public ky b(ky.g<T1, T2, T3, T4, List<la>> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
-                              )
-                     )
-            );
-         return this;
-      }
-   }
-
-   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
-      extends ky {
-      private final dgb<T1> a;
-      private final dgb<T2> b;
-      private final dgb<T3> c;
-      private final dgb<T4> d;
-      private final dgb<T5> e;
-
-      e(dgb<T1> $$0, dgb<T2> $$1, dgb<T3> $$2, dgb<T4> $$3, dgb<T5> $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      @Override
-      public List<dgb<?>> b() {
-         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
-      }
-
-      public ky.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<la> $$5) {
-         kz $$6 = kz.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3), this.e.b($$4));
-         this.a($$6, $$5);
-         return this;
-      }
-
-      public ky.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, la $$5) {
-         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
-      }
-
-      public ky a(ky.f<T1, T2, T3, T4, T5, la> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d
-                                       .a()
-                                       .forEach(
-                                          $$4 -> this.e
-                                                .a()
-                                                .forEach(
-                                                   $$5 -> this.a(
-                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
-                                                      )
-                                                )
-                                       )
-                              )
-                     )
-            );
-         return this;
-      }
-
-      public ky b(ky.f<T1, T2, T3, T4, T5, List<la>> $$0) {
-         this.a
-            .a()
-            .forEach(
-               $$1 -> this.b
-                     .a()
-                     .forEach(
-                        $$2 -> this.c
-                              .a()
-                              .forEach(
-                                 $$3 -> this.d
-                                       .a()
-                                       .forEach(
-                                          $$4 -> this.e
-                                                .a()
-                                                .forEach(
-                                                   $$5 -> this.a(
-                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
-                                                      )
-                                                )
-                                       )
-                              )
-                     )
-            );
-         return this;
-      }
-   }
-
-   @FunctionalInterface
-   public interface f<P1, P2, P3, P4, P5, R> {
-      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
-   }
-
-   @FunctionalInterface
-   public interface g<P1, P2, P3, P4, R> {
-      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
-   }
-
-   @FunctionalInterface
-   public interface h<P1, P2, P3, R> {
-      R apply(P1 var1, P2 var2, P3 var3);
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

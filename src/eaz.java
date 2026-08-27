@@ -1,210 +1,162 @@
+import java.util.Comparator;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class eaz {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dex.f e = ($$0, $$1, $$2) -> $$0.a(csl.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final cpl h;
-   private final hb.a i;
-   private final hb j;
-   private int k;
-   @Nullable
-   private gv l;
-   private int m;
-   private final int n;
+   private static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final akk n;
 
-   public static Optional<eaz> a(cpl $$0, gv $$1, hb.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
+   public eaz(akk $$0) {
+      this.n = $$0;
    }
 
-   public static Optional<eaz> a(cpl $$0, gv $$1, Predicate<eaz> $$2, hb.a $$3) {
-      Optional<eaz> $$4 = Optional.of(new eaz($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         hb.a $$5 = $$3 == hb.a.a ? hb.a.c : hb.a.a;
-         return Optional.of(new eaz($$0, $$1, $$5)).filter($$2);
-      }
+   public Optional<l.a> a(gu $$0, boolean $$1, dgr $$2) {
+      bty $$3 = this.n.w();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<btz> $$5 = $$3.b($$0x -> $$0x.a(buc.r), $$0, $$4, bty.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<btz>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(dfq.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         gu $$1x = $$0x.f();
+         this.n.k().a(akp.f, new cot($$1x), 3, $$1x);
+         dfa $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(dfq.H), 21, ha.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
    }
 
-   public eaz(cpl $$0, gv $$1, hb.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == hb.a.a ? hb.e : hb.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
-         }
-      }
-   }
+   public Optional<l.a> a(gu $$0, ha.a $$1) {
+      ha $$2 = ha.a(ha.b.a, $$1);
+      double $$3 = -1.0;
+      gu $$4 = null;
+      double $$5 = -1.0;
+      gu $$6 = null;
+      dgr $$7 = this.n.w_();
+      int $$8 = Math.min(this.n.aj(), this.n.C_() + this.n.j()) - 1;
+      gu.a $$9 = $$0.j();
 
-   @Nullable
-   private gv a(gv $$0) {
-      int $$1 = Math.max(this.h.C_(), $$0.v() - 21);
+      for (gu.a $$10 : gu.a($$0, 16, ha.f, ha.d)) {
+         int $$11 = Math.min($$8, this.n.a(dkj.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
 
-      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
-         $$0 = $$0.d();
-      }
+            for (int $$13 = $$11; $$13 >= this.n.C_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
 
-      hb $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
-   }
+                  while ($$13 > this.n.C_() && this.a($$10.c(ha.a))) {
+                     $$13--;
+                  }
 
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
 
-   private int a(gv $$0, hb $$1) {
-      gv.a $$2 = new gv.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         dey $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
+               }
             }
-            break;
-         }
-
-         dey $$5 = this.h.a_($$2.c(hb.a));
-         if (!e.test($$5, this.h, $$2)) {
-            break;
          }
       }
 
-      return 0;
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
+      }
+
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.C_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new gu($$0.u(), arp.a($$0.v(), $$17, $$18), $$0.w()).i();
+         ha $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dfa $$23 = $$22 < 0 ? csn.co.n() : csn.a.n();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, csn.co.n(), 3);
+            }
+         }
+      }
+
+      dfa $$26 = csn.ee.n().a(cxo.a, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
    }
 
-   private int e() {
-      gv.a $$0 = new gv.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   private boolean a(gu.a $$0) {
+      dfa $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
    }
 
-   private boolean a(gv.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         gv.a $$3 = $$0.g(this.l).c(hb.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
-            return false;
+   private boolean a(gu $$0, gu.a $$1, ha $$2, int $$3) {
+      ha $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
          }
       }
 
       return true;
-   }
-
-   private int a(gv.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(hb.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         $$0.g(this.l).c(hb.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(hb.b, $$1).c(this.j, $$2);
-            dey $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
-            }
-
-            if ($$3.a(csl.ee)) {
-               this.k++;
-            }
-         }
-      }
-
-      return 21;
-   }
-
-   private static boolean a(dey $$0) {
-      return $$0.i() || $$0.a(apj.aJ) || $$0.a(csl.ee);
-   }
-
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
-
-   public void b() {
-      dey $$0 = csl.ee.n().a(cxm.a, this.i);
-      gv.a(this.l, this.l.a(hb.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
-   }
-
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
-   }
-
-   public static ehf a(l.a $$0, hb.a $$1, ehf $$2, bih $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a;
-      double $$5 = (double)$$0.c - (double)$$3.b;
-      gv $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         float $$7 = (float)$$6.a($$1) + $$3.a / 2.0F;
-         $$8 = aro.a(aro.c($$2.a($$1) - (double)$$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
-      }
-
-      double $$11;
-      if ($$5 > 0.0) {
-         hb.a $$10 = hb.a.b;
-         $$11 = aro.a(aro.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      hb.a $$13 = $$1 == hb.a.a ? hb.a.c : hb.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new ehf($$8, $$11, $$14);
-   }
-
-   public static eay a(aki $$0, l.a $$1, hb.a $$2, ehf $$3, big $$4, ehf $$5, float $$6, float $$7) {
-      gv $$8 = $$1.a;
-      dey $$9 = $$0.a_($$8);
-      hb.a $$10 = $$9.d(dfo.H).orElse(hb.a.a);
-      double $$11 = (double)$$1.b;
-      double $$12 = (double)$$1.c;
-      bih $$13 = $$4.a($$4.an());
-      int $$14 = $$2 == $$10 ? 0 : 90;
-      ehf $$15 = $$2 == $$10 ? $$5 : new ehf($$5.e, $$5.d, -$$5.c);
-      double $$16 = (double)$$13.a / 2.0 + ($$11 - (double)$$13.a) * $$3.a();
-      double $$17 = ($$12 - (double)$$13.b) * $$3.b();
-      double $$18 = 0.5 + $$3.c();
-      boolean $$19 = $$10 == hb.a.a;
-      ehf $$20 = new ehf((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
-      ehf $$21 = a($$20, $$0, $$4, $$13);
-      return new eay($$21, $$15, $$6 + (float)$$14, $$7);
-   }
-
-   private static ehf a(ehf $$0, aki $$1, big $$2, bih $$3) {
-      if (!($$3.a > 4.0F) && !($$3.b > 4.0F)) {
-         double $$4 = (double)$$3.b / 2.0;
-         ehf $$5 = $$0.b(0.0, $$4, 0.0);
-         ehy $$6 = ehv.a(eha.a($$5, (double)$$3.a, 0.0, (double)$$3.a).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<ehf> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a, (double)$$3.b, (double)$$3.a);
-         Optional<ehf> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
-      }
    }
 }

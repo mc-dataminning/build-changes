@@ -1,33 +1,10 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class emi extends end {
-   private static final Logger b = LogUtils.getLogger();
-   public List<emh> a = Lists.newArrayList();
-
-   public static emi a(String $$0) {
-      emi $$1 = new emi();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(emh.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
-      }
-
-      return $$1;
-   }
+public class emi extends enc implements emw {
+   @SerializedName("pingResults")
+   public List<emx> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

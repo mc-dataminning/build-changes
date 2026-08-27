@@ -1,26 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqe implements dpp {
+public record dqe(int b, int c, int d, he<dud> e) implements dpr {
    public static final Codec<dqe> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dey.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dey.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bft.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               aqy.j.fieldOf("tries").orElse(128).forGetter(dqe::a),
+               aqy.i.fieldOf("xz_spread").orElse(7).forGetter(dqe::b),
+               aqy.i.fieldOf("y_spread").orElse(3).forGetter(dqe::c),
+               dud.b.fieldOf("feature").forGetter(dqe::d)
             )
             .apply($$0, dqe::new)
    );
-   public final dey b;
-   public final dey c;
-   private final bft d;
 
-   public dqe(dey $$0, dey $$1, bft $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
    }
 
-   public bft a() {
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
       return this.d;
+   }
+
+   public he<dud> d() {
+      return this.e;
    }
 }

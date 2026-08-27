@@ -1,18 +1,178 @@
-import java.net.Proxy;
+import com.google.common.base.Strings;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Locale;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ely {
-   @Nullable
-   private static Proxy a;
+public interface ely {
+   tf a = tf.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-   @Nullable
-   public static Proxy a() {
-      return a;
+   int a();
+
+   tf b();
+
+   String c();
+
+   static ely a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return ely.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return ely.b.b($$0);
+      } else {
+         try {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = arg.a($$2, "reason", null);
+            String $$4 = arg.a($$2, "errorMsg", null);
+            int $$5 = arg.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new ely.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+            }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
+         }
+
+         return new ely.d($$0, $$1);
+      }
    }
 
-   public static void a(Proxy $$0) {
-      if (a == null) {
-         a = $$0;
+   public static record a(String d) implements ely {
+      public static final int c = 401;
+
+      @Override
+      public int a() {
+         return 401;
+      }
+
+      @Override
+      public tf b() {
+         return tf.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
+   }
+
+   public static record b(int e, @Nullable tf f) implements ely {
+      public static final ely.b c = new ely.b(429, tf.c("mco.errorMessage.serviceBusy"));
+      public static final tf d = tf.c("mco.errorMessage.retry");
+
+      public static ely.b a(String $$0) {
+         return new ely.b(500, tf.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+      }
+
+      public static ely.b a(eni $$0) {
+         return new ely.b(500, tf.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+      }
+
+      public static ely.b a(int $$0) {
+         return new ely.b($$0, d);
+      }
+
+      public static ely.b b(int $$0) {
+         return new ely.b($$0, null);
+      }
+
+      @Override
+      public int a() {
+         return this.e;
+      }
+
+      @Override
+      public tf b() {
+         return this.f != null ? this.f : a;
+      }
+
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      @Nullable
+      public tf e() {
+         return this.f;
+      }
+   }
+
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements ely {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public tf b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (fzr.a($$0)) {
+            return tf.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (fzr.a($$1)) {
+                  return tf.c($$1);
+               }
+            }
+
+            return (tf)(this.f != null ? tf.b(this.f) : a);
+         }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
+      }
+   }
+
+   public static record d(int c, String d) implements ely {
+      @Override
+      public int a() {
+         return this.c;
+      }
+
+      @Override
+      public tf b() {
+         return tf.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
       }
    }
 }

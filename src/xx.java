@@ -1,80 +1,23 @@
-public class xx implements uw<wo> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final long e;
-   private final int f;
-   private final int g;
-   private final int h;
-
-   public xx(sh $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.n();
-      this.f = $$0.m();
-      this.g = $$0.m();
-      this.h = $$0.m();
+public record xx(int a, float b) implements ux<wp> {
+   public xx(biy $$0) {
+      this($$0.ah(), $$0.eD());
    }
 
-   public xx(dgp $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
-      this.c = $$0.i();
-      this.d = $$0.k();
-      this.e = $$0.j();
-      this.f = $$0.m();
-      this.g = $$0.r();
-      this.h = $$0.q();
+   public xx(si $$0) {
+      this($$0.m(), $$0.readFloat());
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
+   public void a(si $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
+   public float d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.d;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public long g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.g;
    }
 }

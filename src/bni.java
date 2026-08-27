@@ -1,97 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bni extends bko<cay> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
-   private Set<cir> e = ImmutableSet.of();
+public class bni {
+   public static bkr<cba> a(bsa<List<hd>> $$0, float $$1, int $$2, int $$3, bsa<hd> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return boc.a(
+         (Function<boc.b<cba>, ? extends App<boc.c<cba>, bof<cba>>>)($$6 -> $$6.group($$6.a(bsa.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<hd> $$11 = $$6.b($$6x);
+                     hd $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        hd $$13 = $$11.get($$8.y_().a($$11.size()));
+                        if ($$13 != null && $$8.ac() == $$13.a() && $$12.b().a($$9.di(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bsd($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public bni() {
-      super(ImmutableMap.of(bry.q, brz.a, bry.h, brz.a));
-   }
-
-   protected boolean a(aki $$0, cay $$1) {
-      return bkq.a($$1.dM(), bry.q, bik.bf);
-   }
-
-   protected boolean a(aki $$0, cay $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aki $$0, cay $$1, long $$2) {
-      cay $$3 = (cay)$$1.dM().c(bry.q).get();
-      bkq.a($$1, $$3, 0.5F);
-      this.e = a($$1, $$3);
-   }
-
-   protected void c(aki $$0, cay $$1, long $$2) {
-      cay $$3 = (cay)$$1.dM().c(bry.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bkq.a($$1, $$3, 0.5F);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gr() && ($$1.gk().b() == cbb.g || $$3.gs())) {
-            a($$1, cay.bW.keySet(), $$3);
-         }
-
-         if ($$3.gk().b() == cbb.g && $$1.t().a_(ciz.oI) > ciz.oI.l() / 2) {
-            a($$1, ImmutableSet.of(ciz.oI), $$3);
-         }
-
-         if (!this.e.isEmpty() && $$1.t().a(this.e)) {
-            a($$1, this.e, $$3);
-         }
-      }
-   }
-
-   protected void d(aki $$0, cay $$1, long $$2) {
-      $$1.dM().b(bry.q);
-   }
-
-   private static Set<cir> a(cay $$0, cay $$1) {
-      ImmutableSet<cir> $$2 = $$1.gk().b().d();
-      ImmutableSet<cir> $$3 = $$0.gk().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cay $$0, Set<cir> $$1, biw $$2) {
-      bgv $$3 = $$0.t();
-      ciw $$4 = ciw.b;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         ciw $$6;
-         cir $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.L() > $$6.g() / 2) {
-                     $$8 = $$6.L() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.L() > 24) {
-                     $$8 = $$6.L() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new ciw($$7, $$8);
-         break;
-      }
-
-      if (!$$4.b()) {
-         bkq.a($$0, $$4, $$2.di());
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

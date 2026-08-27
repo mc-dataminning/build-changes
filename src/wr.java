@@ -1,46 +1,36 @@
-import java.util.UUID;
-
-public class wr implements uw<wo> {
+public class wr implements ux<wp> {
    private final int a;
-   private final UUID b;
+   private final double b;
    private final double c;
    private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
+   private final int e;
 
-   public wr(cbl $$0) {
+   public wr(bio $$0) {
       this.a = $$0.ah();
-      this.b = $$0.fP().getId();
-      this.c = $$0.dp();
-      this.d = $$0.dr();
-      this.e = $$0.dv();
-      this.f = (byte)((int)($$0.dA() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.b = $$0.dp();
+      this.c = $$0.dr();
+      this.d = $$0.dv();
+      this.e = $$0.j();
    }
 
-   public wr(sh $$0) {
+   public wr(si $$0) {
       this.a = $$0.m();
-      this.b = $$0.o();
+      this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
+      $$0.l(this.e);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
@@ -48,7 +38,7 @@ public class wr implements uw<wo> {
       return this.a;
    }
 
-   public UUID d() {
+   public double d() {
       return this.b;
    }
 
@@ -60,15 +50,7 @@ public class wr implements uw<wo> {
       return this.d;
    }
 
-   public double g() {
+   public int g() {
       return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public byte i() {
-      return this.g;
    }
 }

@@ -1,68 +1,137 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fe implements Predicate<dfc> {
-   private final dey a;
-   private final Set<dgb<?>> b;
-   @Nullable
-   private final qs c;
+public class fe implements ArgumentType<fe.b> {
+   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
+   private final hg<csm> b;
 
-   public fe(dey $$0, Set<dgb<?>> $$1, @Nullable qs $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fe(dl $$0) {
+      this.b = $$0.a(jc.e);
    }
 
-   public dey a() {
-      return this.a;
+   public static fe a(dl $$0) {
+      return new fe($$0);
    }
 
-   public Set<dgb<?>> b() {
-      return this.b;
+   public fe.b a(StringReader $$0) throws CommandSyntaxException {
+      return a(this.b, $$0);
    }
 
-   public boolean a(dfc $$0) {
-      dey $$1 = $$0.a();
-      if (!$$1.a(this.a.b())) {
-         return false;
-      } else {
-         for (dgb<?> $$2 : this.b) {
-            if ($$1.c($$2) != this.a.c($$2)) {
-               return false;
-            }
-         }
+   public static fe.b a(hg<csm> $$0, StringReader $$1) throws CommandSyntaxException {
+      return (fe.b)fg.b($$0, $$1, true).map($$0x -> new fe.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new fe.c($$0x.a(), $$0x.b(), $$0x.c()));
+   }
 
-         if (this.c == null) {
-            return true;
+   public static Predicate<dfe> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dfe>)$$0.getArgument($$1, fe.b.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fg.a(this.b, $$1, true, true);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   static class a implements fe.b {
+      private final dfa a;
+      private final Set<dgd<?>> b;
+      @Nullable
+      private final qr c;
+
+      public a(dfa $$0, Set<dgd<?>> $$1, @Nullable qr $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public boolean a(dfe $$0) {
+         dfa $$1 = $$0.a();
+         if (!$$1.a(this.a.b())) {
+            return false;
          } else {
-            dck $$3 = $$0.b();
-            return $$3 != null && re.a(this.c, $$3.m(), true);
-         }
-      }
-   }
+            for (dgd<?> $$2 : this.b) {
+               if ($$1.c($$2) != this.a.c($$2)) {
+                  return false;
+               }
+            }
 
-   public boolean a(aki $$0, gv $$1) {
-      return this.a(new dfc($$0, $$1, false));
-   }
-
-   public boolean a(aki $$0, gv $$1, int $$2) {
-      dey $$3 = csk.b(this.a, $$0, $$1);
-      if ($$3.i()) {
-         $$3 = this.a;
-      }
-
-      if (!$$0.a($$1, $$3, $$2)) {
-         return false;
-      } else {
-         if (this.c != null) {
-            dck $$4 = $$0.c_($$1);
-            if ($$4 != null) {
-               $$4.a(this.c);
+            if (this.c == null) {
+               return true;
+            } else {
+               dcm $$3 = $$0.b();
+               return $$3 != null && rd.a(this.c, $$3.m(), true);
             }
          }
+      }
 
-         return true;
+      @Override
+      public boolean a() {
+         return this.c != null;
+      }
+   }
+
+   public interface b extends Predicate<dfe> {
+      boolean a();
+   }
+
+   static class c implements fe.b {
+      private final hi<csm> a;
+      @Nullable
+      private final qr b;
+      private final Map<String, String> c;
+
+      c(hi<csm> $$0, Map<String, String> $$1, @Nullable qr $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public boolean a(dfe $$0) {
+         dfa $$1 = $$0.a();
+         if (!$$1.a(this.a)) {
+            return false;
+         } else {
+            for (Entry<String, String> $$2 : this.c.entrySet()) {
+               dgd<?> $$3 = $$1.b().l().a($$2.getKey());
+               if ($$3 == null) {
+                  return false;
+               }
+
+               Comparable<?> $$4 = (Comparable<?>)$$3.b($$2.getValue()).orElse(null);
+               if ($$4 == null) {
+                  return false;
+               }
+
+               if ($$1.c($$3) != $$4) {
+                  return false;
+               }
+            }
+
+            if (this.b == null) {
+               return true;
+            } else {
+               dcm $$5 = $$0.b();
+               return $$5 != null && rd.a(this.b, $$5.m(), true);
+            }
+         }
+      }
+
+      @Override
+      public boolean a() {
+         return this.b != null;
       }
    }
 }

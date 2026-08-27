@@ -1,13 +1,23 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eml extends end implements emx {
-   @SerializedName("name")
+public class eml extends enc {
+   private static final Logger b = LogUtils.getLogger();
    public String a;
-   @SerializedName("description")
-   public String b;
 
-   public eml(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static eml a(String $$0) {
+      eml $$1 = new eml();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = eoz.a("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 }

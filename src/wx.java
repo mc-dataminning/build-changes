@@ -1,48 +1,53 @@
-public class wx implements uw<wo> {
-   private final gv a;
-   private final int b;
-   private final int c;
-   private final csk d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public wx(gv $$0, csk $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class wx implements ux<wp> {
+   private final gu a;
+   private final dco<?> b;
+   @Nullable
+   private final qr c;
+
+   public static wx a(dcm $$0, Function<dcm, qr> $$1) {
+      return new wx($$0.p(), $$0.u(), $$1.apply($$0));
    }
 
-   public wx(sh $$0) {
+   public static wx a(dcm $$0) {
+      return a($$0, dcm::ao_);
+   }
+
+   private wx(gu $$0, dco<?> $$1, qr $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.g() ? null : $$2;
+   }
+
+   public wx(si $$0) {
       this.a = $$0.e();
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.a(jc.f);
+      this.b = $$0.a(jb.l);
+      this.c = $$0.p();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
-      $$0.k(this.b);
-      $$0.k(this.c);
-      $$0.a(jc.f, this.d);
+      $$0.a(jb.l, this.b);
+      $$0.a((rk)this.c);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public gv a() {
+   public gu a() {
       return this.a;
    }
 
-   public int d() {
+   public dco<?> d() {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public qr e() {
       return this.c;
-   }
-
-   public csk f() {
-      return this.d;
    }
 }

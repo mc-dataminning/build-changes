@@ -1,18 +1,23 @@
-public class cjj extends cgp {
-   public cjj(csk $$0, cir.a $$1) {
-      super($$0, $$1);
+public class cjj extends cit {
+   public cjj(cit.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgo a(clg $$0) {
-      return bgo.d;
-   }
+   public bgq a(ciy $$0, cbn $$1, biy $$2, bgp $$3) {
+      if ($$0.A() && !($$2 instanceof cbn)) {
+         if (!$$1.dK().B && $$2.bv()) {
+            $$2.b($$0.y());
+            if ($$2 instanceof bja) {
+               ((bja)$$2).fF();
+            }
 
-   @Override
-   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
-      ehb $$3 = a($$0, $$1, cot.b.b);
-      ehb $$4 = $$3.a($$3.a().c());
-      bgo $$5 = super.a(new clg($$1, $$2, $$4));
-      return new bgp<>($$5, $$1.b($$2));
+            $$0.h(1);
+         }
+
+         return bgq.a($$1.dK().B);
+      } else {
+         return bgq.d;
+      }
    }
 }

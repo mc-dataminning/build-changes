@@ -1,56 +1,48 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-public class gp implements gh<LongArgumentType, gp.a> {
-   public void a(gp.a $$0, sh $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(gj.a($$2, $$3));
-      if ($$2) {
-         $$1.b($$0.b);
-      }
-
-      if ($$3) {
-         $$1.b($$0.c);
-      }
+public class gp implements gg<StringArgumentType, gp.a> {
+   public void a(gp.a $$0, si $$1) {
+      $$1.a((Enum<?>)$$0.b);
    }
 
-   public gp.a a(sh $$0) {
-      byte $$1 = $$0.readByte();
-      long $$2 = gj.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = gj.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
-      return new gp.a($$2, $$3);
+   public gp.a a(si $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new gp.a($$1);
    }
 
    public void a(gp.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Long.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new IncompatibleClassChangeError();
+      });
    }
 
-   public gp.a a(LongArgumentType $$0) {
-      return new gp.a($$0.getMinimum(), $$0.getMaximum());
+   public gp.a a(StringArgumentType $$0) {
+      return new gp.a($$0.getType());
    }
 
-   public final class a implements gh.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements gg.a<StringArgumentType> {
+      final StringType b;
 
-      a(long $$1, long $$2) {
+      public a(StringType $$1) {
          this.b = $$1;
-         this.c = $$2;
       }
 
-      public LongArgumentType a(dm $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public StringArgumentType a(dl $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new IncompatibleClassChangeError();
+         };
       }
 
       @Override
-      public gh<LongArgumentType, ?> a() {
+      public gg<StringArgumentType, ?> a() {
          return gp.this;
       }
    }

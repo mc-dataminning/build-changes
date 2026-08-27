@@ -1,159 +1,131 @@
-import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
 public class th {
-   public static final Codec<th> a = asf.a(th.a::values).dispatch(th::c, th.a::a);
-   public static final th b = new th(new BitSet(0), th.a.b);
-   public static final th c = new th(new BitSet(0), th.a.a);
-   public static final ua d = ua.a.a(n.i).a(new tj(tj.a.a, te.c("chat.filtered")));
-   static final Codec<th> e = Codec.unit(c);
-   static final Codec<th> f = Codec.unit(b);
-   static final Codec<th> g = aqw.r.xmap(th::new, th::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final th.a j;
+   public static final String a = ", ";
+   public static final tf b = tf.b(", ").a(n.h);
+   public static final tf c = tf.b(", ");
 
-   private th(BitSet $$0, th.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   private th(BitSet $$0) {
-      this.i = $$0;
-      this.j = th.a.c;
-   }
-
-   public th(int $$0) {
-      this(new BitSet($$0), th.a.c);
-   }
-
-   private th.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static th a(sh $$0) {
-      th.a $$1 = $$0.b(th.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new th($$0.y(), th.a.c);
-      };
-   }
-
-   public static void a(sh $$0, th $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == th.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public te b(String $$0) {
-      return switch (this.j) {
-         case a -> te.b($$0);
-         case b -> null;
-         case c -> {
-            tr $$1 = te.h();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(te.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == th.a.a;
-   }
-
-   public boolean b() {
-      return this.j == th.a.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         th $$1 = (th)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
+   public static ts a(ts $$0, ub $$1) {
+      if ($$1.g()) {
+         return $$0;
       } else {
-         return false;
+         ub $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
+   public static Optional<ts> a(@Nullable dr $$0, Optional<tf> $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   static enum a implements asf {
-      a("pass_through", () -> th.e),
-      b("fully_filtered", () -> th.f),
-      c("partially_filtered", () -> th.g);
+   public static ts a(@Nullable dr $$0, tf $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.e();
+      } else {
+         ts $$4 = $$1.b().a($$0, $$2, $$3 + 1);
 
-      private final String d;
-      private final Supplier<Codec<th>> e;
+         for (tf $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
 
-      private a(String $$0, Supplier<Codec<th>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
+   }
+
+   private static ub a(@Nullable dr $$0, ub $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
+      tk $$4 = $$1.i();
+      if ($$4 != null) {
+         tf $$5 = $$4.a(tk.a.a);
+         if ($$5 != null) {
+            tk $$6 = new tk(tk.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+      return $$1;
+   }
 
-      private Codec<th> a() {
-         return this.e.get();
+   public static tf a(Collection<String> $$0) {
+      return a($$0, $$0x -> tf.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> tf a(Collection<T> $$0, Function<T, tf> $$1) {
+      if ($$0.isEmpty()) {
+         return te.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
+   }
+
+   public static <T> tf b(Collection<? extends T> $$0, Function<T, tf> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> ts a(Collection<? extends T> $$0, Optional<? extends tf> $$1, Function<T, tf> $$2) {
+      return a($$0, (tf)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static tf a(Collection<? extends tf> $$0, tf $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> ts a(Collection<? extends T> $$0, tf $$1, Function<T, tf> $$2) {
+      if ($$0.isEmpty()) {
+         return tf.h();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).e();
+      } else {
+         ts $$3 = tf.h();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static ts a(tf $$0) {
+      return tf.a("chat.square_brackets", $$0);
+   }
+
+   public static tf a(Message $$0) {
+      return (tf)($$0 instanceof tf ? (tf)$$0 : tf.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable tf $$0) {
+      if ($$0 != null && $$0.b() instanceof up $$1) {
+         String $$2 = $$1.a();
+         String $$3 = $$1.b();
+         return $$3 != null || qm.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static ts a(String $$0) {
+      return a((tf)tf.b($$0).a($$1 -> $$1.a(n.k).a(new td(td.a.f, $$0)).a(new tk(tk.a.a, tf.c("chat.copy.click"))).a($$0)));
    }
 }

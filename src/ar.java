@@ -1,28 +1,29 @@
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
 public abstract class ar implements am {
-   private final aep a;
-   private final ba b;
+   private final aer a;
+   private final Optional<ba> b;
 
-   public ar(aep $$0, ba $$1) {
+   public ar(aer $$0, Optional<ba> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public aep a() {
+   public aer a() {
       return this.a;
    }
 
-   protected ba b() {
+   protected Optional<ba> c() {
       return this.b;
    }
 
    @Override
-   public JsonObject a(ct $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("player", this.b.a($$0));
-      return $$1;
+   public JsonObject b() {
+      JsonObject $$0 = new JsonObject();
+      this.b.ifPresent($$1 -> $$0.add("player", $$1.a()));
+      return $$0;
    }
 
    @Override

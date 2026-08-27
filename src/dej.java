@@ -1,15 +1,6 @@
-import javax.annotation.Nullable;
-
-public class dej extends ded {
-   @Nullable
+public class dej extends deg {
    @Override
-   protected aeo<dmy<?, ?>> a(art $$0, boolean $$1) {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected aeo<dmy<?, ?>> a(art $$0) {
-      return os.h;
+   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
+      return $$1 ? or.F : or.i;
    }
 }

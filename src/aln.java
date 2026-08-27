@@ -1,15 +1,33 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class aln implements akx {
-   public static final akx.a a = new akx.a("join_world");
+public interface aln {
+   aln a = new aln() {
+      @Override
+      public void a() {
+      }
 
-   @Override
-   public void a(Consumer<uw<?>> $$0) {
-      $$0.accept(new wi());
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public akx.a a() {
-      return a;
-   }
+      @Override
+      public CompletableFuture<ala> a(String $$0) {
+         return CompletableFuture.completedFuture(ala.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<ala>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(ala::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<ala> a(String var1);
+
+   CompletableFuture<List<ala>> a(List<String> var1);
 }

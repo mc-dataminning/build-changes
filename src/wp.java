@@ -1,136 +1,216 @@
-import java.util.UUID;
-
-public class wp implements uw<wo> {
-   private static final double a = 8000.0;
-   private static final double b = 3.9;
-   private final int c;
-   private final UUID d;
-   private final bik<?> e;
-   private final double f;
-   private final double g;
-   private final double h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private final byte l;
-   private final byte m;
-   private final byte n;
-   private final int o;
-
-   public wp(big $$0) {
-      this($$0, 0);
-   }
-
-   public wp(big $$0, int $$1) {
-      this($$0.ah(), $$0.cv(), $$0.dp(), $$0.dr(), $$0.dv(), $$0.dC(), $$0.dA(), $$0.ag(), $$1, $$0.dn(), (double)$$0.co());
-   }
-
-   public wp(big $$0, int $$1, gv $$2) {
-      this($$0.ah(), $$0.cv(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dC(), $$0.dA(), $$0.ag(), $$1, $$0.dn(), (double)$$0.co());
-   }
-
-   public wp(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bik<?> $$7, int $$8, ehf $$9, double $$10) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.l = (byte)aro.d($$5 * 256.0F / 360.0F);
-      this.m = (byte)aro.d($$6 * 256.0F / 360.0F);
-      this.n = (byte)aro.a($$10 * 256.0 / 360.0);
-      this.e = $$7;
-      this.o = $$8;
-      this.i = (int)(aro.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.j = (int)(aro.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.k = (int)(aro.a($$9.e, -3.9, 3.9) * 8000.0);
-   }
-
-   public wp(sh $$0) {
-      this.c = $$0.m();
-      this.d = $$0.o();
-      this.e = $$0.a(jc.h);
-      this.f = $$0.readDouble();
-      this.g = $$0.readDouble();
-      this.h = $$0.readDouble();
-      this.l = $$0.readByte();
-      this.m = $$0.readByte();
-      this.n = $$0.readByte();
-      this.o = $$0.m();
-      this.i = $$0.readShort();
-      this.j = $$0.readShort();
-      this.k = $$0.readShort();
-   }
-
+public interface wp extends sc, va {
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(jc.h, this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.k(this.l);
-      $$0.k(this.m);
-      $$0.k(this.n);
-      $$0.c(this.o);
-      $$0.l(this.i);
-      $$0.l(this.j);
-      $$0.l(this.k);
+   default sh b() {
+      return sh.b;
    }
 
-   public void a(wo $$0) {
-      $$0.a(this);
-   }
+   void a(wq var1);
 
-   public int a() {
-      return this.c;
-   }
+   void a(wr var1);
 
-   public UUID d() {
-      return this.d;
-   }
+   void a(zx var1);
 
-   public bik<?> e() {
-      return this.e;
-   }
+   void a(ws var1);
 
-   public double f() {
-      return this.f;
-   }
+   void a(wt var1);
 
-   public double g() {
-      return this.g;
-   }
+   void a(xx var1);
 
-   public double h() {
-      return this.h;
-   }
+   void a(wu var1);
 
-   public double i() {
-      return (double)this.i / 8000.0;
-   }
+   void a(yx var1);
 
-   public double j() {
-      return (double)this.j / 8000.0;
-   }
+   void a(ww var1);
 
-   public double k() {
-      return (double)this.k / 8000.0;
-   }
+   void a(ym var1);
 
-   public float l() {
-      return (float)(this.l * 360) / 256.0F;
-   }
+   void a(wx var1);
 
-   public float m() {
-      return (float)(this.m * 360) / 256.0F;
-   }
+   void a(wy var1);
 
-   public float n() {
-      return (float)(this.n * 360) / 256.0F;
-   }
+   void a(wz var1);
 
-   public int o() {
-      return this.o;
-   }
+   void a(aak var1);
+
+   void a(yp var1);
+
+   void a(xr var1);
+
+   void a(xq var1);
+
+   void a(zc var1);
+
+   void a(yg var1);
+
+   void a(xj var1);
+
+   void a(xk var1);
+
+   void a(xw var1);
+
+   void a(xl var1);
+
+   void a(xm var1);
+
+   void a(xs var1);
+
+   void a(zs var1);
+
+   void a(zy var1);
+
+   void a(xt var1);
+
+   void a(xv var1);
+
+   void a(ya var1);
+
+   void a(xf var1);
+
+   void a(xu var1);
+
+   void a(yb var1);
+
+   void a(yf var1);
+
+   void a(yi var1);
+
+   void a(yw var1);
+
+   void a(yc var1);
+
+   void a(yo var1);
+
+   void a(yt var1);
+
+   void a(yu var1);
+
+   void a(yy var1);
+
+   void a(yz var1);
+
+   void a(za var1);
+
+   void a(zb var1);
+
+   void a(zm var1);
+
+   void a(zq var1);
+
+   void a(zr var1);
+
+   void a(zt var1);
+
+   void a(zu var1);
+
+   void a(zv var1);
+
+   void a(zw var1);
+
+   void a(zz var1);
+
+   void a(aaa var1);
+
+   void a(zp var1);
+
+   void a(aad var1);
+
+   void a(aah var1);
+
+   void a(aag var1);
+
+   void a(aan var1);
+
+   void a(aao var1);
+
+   void a(aaq var1);
+
+   void a(aar var1);
+
+   void a(yq var1);
+
+   void a(yr var1);
+
+   void a(ys var1);
+
+   void a(xc var1);
+
+   void a(zl var1);
+
+   void a(xy var1);
+
+   void a(zh var1);
+
+   void a(zi var1);
+
+   void a(zj var1);
+
+   void a(zk var1);
+
+   void a(zg var1);
+
+   void a(aal var1);
+
+   void a(xa var1);
+
+   void a(xn var1);
+
+   void a(yj var1);
+
+   void a(aap var1);
+
+   void a(zd var1);
+
+   void a(yn var1);
+
+   void a(xi var1);
+
+   void a(aaj var1);
+
+   void a(xh var1);
+
+   void a(aas var1);
+
+   void a(yv var1);
+
+   void a(aam var1);
+
+   void a(yd var1);
+
+   void a(yk var1);
+
+   void a(yl var1);
+
+   void a(yh var1);
+
+   void a(zo var1);
+
+   void a(aab var1);
+
+   void a(zn var1);
+
+   void a(wv var1);
+
+   void a(zf var1);
+
+   void a(aac var1);
+
+   void a(aae var1);
+
+   void a(aaf var1);
+
+   void a(xg var1);
+
+   void a(ze var1);
+
+   void a(xo var1);
+
+   void a(xb var1);
+
+   void a(xp var1);
+
+   void a(aai var1);
+
+   void a(xe var1);
+
+   void a(xd var1);
 }

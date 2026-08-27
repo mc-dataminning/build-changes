@@ -1,45 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface diz<T> {
+   void g(T var1);
 
-public class diz<T extends dip> implements diy<T> {
-   private final dir<T> a;
-   private final diu<T> b;
+   void f(T var1);
 
-   public diz(dir<T> $$0, diu<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void e(T var1);
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   void d(T var1);
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   void c(T var1);
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   void b(T var1);
 
-   @Override
-   public <U extends T> void a(diw<T, U> $$0, aqe<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(eha $$0, Consumer<T> $$1) {
-      this.b.b($$0, aqe.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(diw<T, U> $$0, eha $$1, aqe<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   void a(T var1);
 }

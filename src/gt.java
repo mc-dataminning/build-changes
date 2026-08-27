@@ -1,80 +1,51 @@
-public enum gt {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hb.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.function.Supplier;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
+
+public class gt {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Map<ha, j> a = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
+      $$0.put(ha.d, j.a());
+      $$0.put(ha.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(ha.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(ha.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(ha.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(ha.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   });
+   public static final Map<ha, j> b = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
+      for (ha $$1 : ha.values()) {
+         $$0.put($$1, a.get($$1).b());
       }
+   });
 
-      @Override
-      public double a(double $$0, double $$1, double $$2, hb.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+   public static j a(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(-0.5F, -0.5F, -0.5F);
+      return new j($$1);
+   }
+
+   public static j b(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(0.5F, 0.5F, 0.5F);
+      return new j($$1);
+   }
+
+   public static j a(j $$0, ha $$1, Supplier<String> $$2) {
+      ha $$3 = ha.a($$0.c(), $$1);
+      j $$4 = $$0.b();
+      if ($$4 == null) {
+         c.warn($$2.get());
+         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+      } else {
+         j $$5 = b.get($$1).a($$4).a(a.get($$3));
+         return a($$5);
       }
-
-      @Override
-      public hb.a a(hb.a $$0) {
-         return $$0;
-      }
-
-      @Override
-      public gt a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hb.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, hb.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public hb.a a(hb.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
-      }
-
-      @Override
-      public gt a() {
-         return c;
-      }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hb.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, hb.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public hb.a a(hb.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
-      }
-
-      @Override
-      public gt a() {
-         return b;
-      }
-   };
-
-   public static final hb.a[] d = hb.a.values();
-   public static final gt[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, hb.a var4);
-
-   public abstract double a(double var1, double var3, double var5, hb.a var7);
-
-   public abstract hb.a a(hb.a var1);
-
-   public abstract gt a();
-
-   public static gt a(hb.a $$0, hb.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

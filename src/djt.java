@@ -1,420 +1,343 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
 
 public interface djt {
-   static djt a(dkl $$0, cor $$1, dkn $$2, dku $$3, int $$4, int $$5, djt.a $$6) {
-      return new djt.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   djk[] d_ = new djk[]{djk.T, djk.U, djk.V, djk.W, djk.X, djk.Y, djk.Z, djk.aa, djk.ab, djk.ac, djk.ad, djk.ae, djk.af, djk.ag, djk.ah};
+   ToIntFunction<djk> e_ = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(djk.P, 1);
+      $$0.put(djk.Q, 1);
+      $$0.put(djk.x, 1);
+      $$0.put(djk.J, 2);
+      $$0.put(djk.A, 2);
+      $$0.put(djk.O, 2);
+      $$0.put(djk.C, 3);
+      $$0.put(djk.K, 3);
+      $$0.put(djk.B, 3);
+      $$0.put(djk.u, 4);
+      $$0.put(djk.n, 4);
+      $$0.put(djk.S, 4);
+      $$0.put(djk.q, 5);
+      $$0.put(djk.v, 5);
+      $$0.put(djk.r, 6);
+      $$0.put(djk.M, 6);
+      $$0.put(djk.s, 6);
+      $$0.put(djk.o, 7);
+      $$0.put(djk.l, 8);
+      $$0.put(djk.m, 8);
+      $$0.put(djk.j, 9);
+      $$0.put(djk.d, 9);
+      $$0.put(djk.e, 9);
+      $$0.put(djk.g, 9);
+      $$0.put(djk.k, 10);
+      $$0.put(djk.h, 10);
+      $$0.put(djk.a, 10);
+      $$0.put(djk.b, 10);
+      $$0.put(djk.I, 10);
+      $$0.put(djk.H, 10);
+      $$0.put(djk.c, 11);
+      $$0.put(djk.f, 12);
+      $$0.put(djk.y, 12);
+      $$0.put(djk.i, 13);
+      $$0.put(djk.z, 13);
+      $$0.put(djk.t, 14);
+      $$0.put(djk.G, 14);
+      $$0.put(djk.R, 14);
+      $$0.put(djk.p, 15);
+      $$0.put(djk.w, 15);
+
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
+      }
+   });
+
+   djt.a gb();
+
+   djt.d gc();
+
+   static int a_(djk $$0) {
+      return e_.applyAsInt($$0);
    }
 
-   static djt a(final djt.a $$0) {
-      return new djt() {
-         @Nullable
-         @Override
-         public dey a(dka.b $$0x, double $$1) {
-            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
-         }
-
-         @Override
-         public boolean a() {
-            return false;
-         }
-      };
+   static djk b(int $$0) {
+      return d_[$$0 - 1];
    }
 
-   @Nullable
-   dey a(dka.b var1, double var2);
-
-   boolean a();
-
-   public interface a {
-      djt.b computeFluid(int var1, int var2, int var3);
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - arp.a($$2 * (double)$$0));
    }
 
-   public static final class b {
-      final int a;
-      final dey b;
+   public static final class a {
+      public static Codec<djt.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  djr.a.optionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  djs.a.fieldOf("selector").forGetter(djt.a::a),
+                  aqy.i.fieldOf("event_delay").orElse(0).forGetter(djt.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new djt.a((djr)$$0x.orElse(null), $$1, $$2, true))
+      );
+      public static final String b = "listener";
+      @Nullable
+      djr c;
+      private int d;
+      final djs e;
+      private boolean f;
 
-      public b(int $$0, dey $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private a(@Nullable djr $$0, djs $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
       }
 
-      public dey a(int $$0) {
-         return $$0 < this.a ? this.b : csl.a.n();
-      }
-   }
-
-   public static class c implements djt {
-      private static final int a = 10;
-      private static final int b = 9;
-      private static final int c = 10;
-      private static final int d = 6;
-      private static final int e = 3;
-      private static final int f = 6;
-      private static final int g = 16;
-      private static final int h = 12;
-      private static final int i = 16;
-      private static final int j = 11;
-      private static final double k = a(aro.h(10), aro.h(12));
-      private final dkl l;
-      private final dka m;
-      private final dka n;
-      private final dka o;
-      private final dka p;
-      private final dku q;
-      private final djt.b[] r;
-      private final long[] s;
-      private final djt.a t;
-      private final dka u;
-      private final dka v;
-      private boolean w;
-      private final int x;
-      private final int y;
-      private final int z;
-      private final int A;
-      private final int B;
-      private static final int[][] C = new int[][]{
-         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
-      };
-
-      c(dkl $$0, cor $$1, dkn $$2, dku $$3, int $$4, int $$5, djt.a $$6) {
-         this.l = $$0;
-         this.m = $$2.a();
-         this.n = $$2.b();
-         this.o = $$2.c();
-         this.p = $$2.d();
-         this.u = $$2.h();
-         this.v = $$2.i();
-         this.q = $$3;
-         this.x = this.a($$1.d()) - 1;
-         this.t = $$6;
-         int $$7 = this.a($$1.f()) + 1;
-         this.A = $$7 - this.x + 1;
-         this.y = this.b($$4) - 1;
-         int $$8 = this.b($$4 + $$5) + 1;
-         int $$9 = $$8 - this.y + 1;
-         this.z = this.c($$1.e()) - 1;
-         int $$10 = this.c($$1.g()) + 1;
-         this.B = $$10 - this.z + 1;
-         int $$11 = this.A * $$9 * this.B;
-         this.r = new djt.b[$$11];
-         this.s = new long[$$11];
-         Arrays.fill(this.s, Long.MAX_VALUE);
+      public a() {
+         this(null, new djs(), 0, false);
       }
 
-      private int a(int $$0, int $$1, int $$2) {
-         int $$3 = $$0 - this.x;
-         int $$4 = $$1 - this.y;
-         int $$5 = $$2 - this.z;
-         return ($$4 * this.B + $$5) * this.A + $$3;
+      public djs a() {
+         return this.e;
       }
 
       @Nullable
-      @Override
-      public dey a(dka.b $$0, double $$1) {
-         int $$2 = $$0.a();
-         int $$3 = $$0.b();
-         int $$4 = $$0.c();
-         if ($$1 > 0.0) {
-            this.w = false;
-            return null;
-         } else {
-            djt.b $$5 = this.t.computeFluid($$2, $$3, $$4);
-            if ($$5.a($$3).a(csl.H)) {
-               this.w = false;
-               return csl.H.n();
-            } else {
-               int $$6 = Math.floorDiv($$2 - 5, 16);
-               int $$7 = Math.floorDiv($$3 + 1, 12);
-               int $$8 = Math.floorDiv($$4 - 5, 16);
-               int $$9 = Integer.MAX_VALUE;
-               int $$10 = Integer.MAX_VALUE;
-               int $$11 = Integer.MAX_VALUE;
-               long $$12 = 0L;
-               long $$13 = 0L;
-               long $$14 = 0L;
+      public djr b() {
+         return this.c;
+      }
 
-               for (int $$15 = 0; $$15 <= 1; $$15++) {
-                  for (int $$16 = -1; $$16 <= 1; $$16++) {
-                     for (int $$17 = 0; $$17 <= 1; $$17++) {
-                        int $$18 = $$6 + $$15;
-                        int $$19 = $$7 + $$16;
-                        int $$20 = $$8 + $$17;
-                        int $$21 = this.a($$18, $$19, $$20);
-                        long $$22 = this.s[$$21];
-                        long $$23;
-                        if ($$22 != Long.MAX_VALUE) {
-                           $$23 = $$22;
-                        } else {
-                           art $$24 = this.q.a($$18, $$19, $$20);
-                           $$23 = gv.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
-                           this.s[$$21] = $$23;
-                        }
+      public void a(@Nullable djr $$0) {
+         this.c = $$0;
+      }
 
-                        int $$26 = gv.a($$23) - $$2;
-                        int $$27 = gv.b($$23) - $$3;
-                        int $$28 = gv.c($$23) - $$4;
-                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
-                        if ($$9 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$12;
-                           $$12 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$9;
-                           $$9 = $$29;
-                        } else if ($$10 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$29;
-                        } else if ($$11 >= $$29) {
-                           $$14 = $$23;
-                           $$11 = $$29;
-                        }
-                     }
-                  }
-               }
+      public int c() {
+         return this.d;
+      }
 
-               djt.b $$30 = this.a($$12);
-               double $$31 = a($$9, $$10);
-               dey $$32 = $$30.a($$3);
-               if ($$31 <= 0.0) {
-                  this.w = $$31 >= k;
-                  return $$32;
-               } else if ($$32.a(csl.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(csl.H)) {
-                  this.w = true;
-                  return $$32;
-               } else {
-                  MutableDouble $$34 = new MutableDouble(Double.NaN);
-                  djt.b $$35 = this.a($$13);
-                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
-                  if ($$1 + $$36 > 0.0) {
-                     this.w = false;
-                     return null;
-                  } else {
-                     djt.b $$37 = this.a($$14);
-                     double $$38 = a($$9, $$11);
-                     if ($$38 > 0.0) {
-                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
-                        if ($$1 + $$39 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+      public void a(int $$0) {
+         this.d = $$0;
+      }
 
-                     double $$40 = a($$10, $$11);
-                     if ($$40 > 0.0) {
-                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
-                        if ($$1 + $$41 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
 
-                     this.w = true;
-                     return $$32;
-                  }
-               }
-            }
-         }
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
+   }
+
+   public static class b implements djm {
+      private final djt a;
+
+      public b(djt $$0) {
+         this.a = $$0;
       }
 
       @Override
-      public boolean a() {
-         return this.w;
+      public djo a() {
+         return this.a.gc().b();
       }
 
-      private static double a(int $$0, int $$1) {
-         double $$2 = 25.0;
-         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      @Override
+      public int b() {
+         return this.a.gc().a();
       }
 
-      private double a(dka.b $$0, MutableDouble $$1, djt.b $$2, djt.b $$3) {
-         int $$4 = $$0.b();
-         dey $$5 = $$2.a($$4);
-         dey $$6 = $$3.a($$4);
-         if ((!$$5.a(csl.H) || !$$6.a(csl.G)) && (!$$5.a(csl.G) || !$$6.a(csl.H))) {
-            int $$7 = Math.abs($$2.a - $$3.a);
-            if ($$7 == 0) {
-               return 0.0;
+      @Override
+      public boolean a(akk $$0, djk $$1, djk.a $$2, ehe $$3) {
+         djt.a $$4 = this.a.gb();
+         djt.d $$5 = this.a.gc();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
+         } else {
+            Optional<ehe> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
             } else {
-               double $$8 = 0.5 * (double)($$2.a + $$3.a);
-               double $$9 = (double)$$4 + 0.5 - $$8;
-               double $$10 = (double)$$7 / 2.0;
-               double $$11 = 0.0;
-               double $$12 = 2.5;
-               double $$13 = 1.5;
-               double $$14 = 3.0;
-               double $$15 = 10.0;
-               double $$16 = 3.0;
-               double $$17 = $$10 - Math.abs($$9);
-               double $$19;
-               if ($$9 > 0.0) {
-                  double $$18 = 0.0 + $$17;
-                  if ($$18 > 0.0) {
-                     $$19 = $$18 / 1.5;
-                  } else {
-                     $$19 = $$18 / 2.5;
-                  }
+               ehe $$7 = $$6.get();
+               if (!$$5.a($$0, gu.a($$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
                } else {
-                  double $$21 = 3.0 + $$17;
-                  if ($$21 > 0.0) {
-                     $$19 = $$21 / 3.0;
-                  } else {
-                     $$19 = $$21 / 10.0;
-                  }
-               }
-
-               double $$24 = 2.0;
-               double $$28;
-               if (!($$19 < -2.0) && !($$19 > 2.0)) {
-                  double $$26 = $$1.getValue();
-                  if (Double.isNaN($$26)) {
-                     double $$27 = this.m.a($$0);
-                     $$1.setValue($$27);
-                     $$28 = $$27;
-                  } else {
-                     $$28 = $$26;
-                  }
-               } else {
-                  $$28 = 0.0;
-               }
-
-               return 2.0 * ($$28 + $$19);
-            }
-         } else {
-            return 2.0;
-         }
-      }
-
-      private int a(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private int b(int $$0) {
-         return Math.floorDiv($$0, 12);
-      }
-
-      private int c(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private djt.b a(long $$0) {
-         int $$1 = gv.a($$0);
-         int $$2 = gv.b($$0);
-         int $$3 = gv.c($$0);
-         int $$4 = this.a($$1);
-         int $$5 = this.b($$2);
-         int $$6 = this.c($$3);
-         int $$7 = this.a($$4, $$5, $$6);
-         djt.b $$8 = this.r[$$7];
-         if ($$8 != null) {
-            return $$8;
-         } else {
-            djt.b $$9 = this.b($$1, $$2, $$3);
-            this.r[$$7] = $$9;
-            return $$9;
-         }
-      }
-
-      private djt.b b(int $$0, int $$1, int $$2) {
-         djt.b $$3 = this.t.computeFluid($$0, $$1, $$2);
-         int $$4 = Integer.MAX_VALUE;
-         int $$5 = $$1 + 12;
-         int $$6 = $$1 - 12;
-         boolean $$7 = false;
-
-         for (int[] $$8 : C) {
-            int $$9 = $$0 + hy.c($$8[0]);
-            int $$10 = $$2 + hy.c($$8[1]);
-            int $$11 = this.l.a($$9, $$10);
-            int $$12 = $$11 + 8;
-            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
-            if ($$13 && $$6 > $$12) {
-               return $$3;
-            }
-
-            boolean $$14 = $$5 > $$12;
-            if ($$14 || $$13) {
-               djt.b $$15 = this.t.computeFluid($$9, $$12, $$10);
-               if (!$$15.a($$12).i()) {
-                  if ($$13) {
-                     $$7 = true;
-                  }
-
-                  if ($$14) {
-                     return $$15;
-                  }
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
                }
             }
-
-            $$4 = Math.min($$4, $$11);
          }
-
-         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
-         return new djt.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
       }
 
-      private int a(int $$0, int $$1, int $$2, djt.b $$3, int $$4, boolean $$5) {
-         dka.e $$6 = new dka.e($$0, $$1, $$2);
-         double $$7;
-         double $$8;
-         if (cqy.a(this.u, this.v, $$6)) {
-            $$7 = -1.0;
-            $$8 = -1.0;
-         } else {
-            int $$9 = $$4 + 8 - $$1;
-            int $$10 = 64;
-            double $$11 = $$5 ? aro.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
-            double $$12 = aro.a(this.n.a($$6), -1.0, 1.0);
-            double $$13 = aro.b($$11, 1.0, 0.0, -0.3, 0.8);
-            double $$14 = aro.b($$11, 1.0, 0.0, -0.8, 0.4);
-            $$7 = $$12 - $$14;
-            $$8 = $$12 - $$13;
-         }
-
-         int $$17;
-         if ($$8 > 0.0) {
-            $$17 = $$3.a;
-         } else if ($$7 > 0.0) {
-            $$17 = this.a($$0, $$1, $$2, $$4);
-         } else {
-            $$17 = dih.g;
-         }
-
-         return $$17;
+      public void b(akk $$0, djk $$1, djk.a $$2, ehe $$3) {
+         this.a.gc().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gb(), $$1, $$2, $$3, $$4));
       }
 
-      private int a(int $$0, int $$1, int $$2, int $$3) {
-         int $$4 = 16;
-         int $$5 = 40;
-         int $$6 = Math.floorDiv($$0, 16);
-         int $$7 = Math.floorDiv($$1, 40);
-         int $$8 = Math.floorDiv($$2, 16);
-         int $$9 = $$7 * 40 + 20;
-         int $$10 = 10;
-         double $$11 = this.o.a(new dka.e($$6, $$7, $$8)) * 10.0;
-         int $$12 = aro.a($$11, 3);
-         int $$13 = $$9 + $$12;
-         return Math.min($$3, $$13);
+      private void a(akk $$0, djt.a $$1, djk $$2, djk.a $$3, ehe $$4, ehe $$5) {
+         $$1.e.a(new djr($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.V());
       }
 
-      private dey a(int $$0, int $$1, int $$2, djt.b $$3, int $$4) {
-         dey $$5 = $$3.b;
-         if ($$4 <= -10 && $$4 != dih.g && $$3.b != csl.H.n()) {
-            int $$6 = 64;
-            int $$7 = 40;
-            int $$8 = Math.floorDiv($$0, 64);
-            int $$9 = Math.floorDiv($$1, 40);
-            int $$10 = Math.floorDiv($$2, 64);
-            double $$11 = this.p.a(new dka.e($$8, $$9, $$10));
-            if (Math.abs($$11) > 0.3) {
-               $$5 = csl.H.n();
+      public static float a(gu $$0, gu $$1) {
+         return (float)Math.sqrt($$0.j($$1));
+      }
+
+      private static boolean a(cpm $$0, ehe $$1, ehe $$2) {
+         ehe $$3 = new ehe((double)arp.a($$1.c) + 0.5, (double)arp.a($$1.d) + 0.5, (double)arp.a($$1.e) + 0.5);
+         ehe $$4 = new ehe((double)arp.a($$2.c) + 0.5, (double)arp.a($$2.d) + 0.5, (double)arp.a($$2.e) + 0.5);
+
+         for (ha $$5 : ha.values()) {
+            ehe $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new cou($$6, $$4, $$0x -> $$0x.a(apl.bp))).c() != ehc.a.b) {
+               return false;
             }
          }
 
-         return $$5;
+         return true;
+      }
+   }
+
+   public interface c {
+      static void a(cpm $$0, djt.a $$1, djt.d $$2) {
+         if ($$0 instanceof akk $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
+
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
+      }
+
+      private static void a(akk $$0, djt.a $$1, djt.d $$2) {
+         $$1.a().a($$0.V()).ifPresent($$3 -> {
+            $$1.a($$3);
+            ehe $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new iz($$2.b(), $$1.c()), $$4.c, $$4.d, $$4.e, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(akk $$0, djt.a $$1, djt.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               ehe $$3 = $$1.c.c();
+               djo $$4 = $$2.b();
+               ehe $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = arp.d($$8, $$3.c, $$5.c);
+               double $$10 = arp.d($$8, $$3.d, $$5.d);
+               double $$11 = arp.d($$8, $$3.e, $$5.e);
+               boolean $$12 = $$0.a(new iz($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(akk $$0, djt.a $$1, djt.d $$2, djr $$3) {
+         gu $$4 = gu.a($$3.c());
+         gu $$5 = $$2.b().a($$0).map(gu::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), djt.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(cpm $$0, gu $$1) {
+         cot $$2 = new cot($$1);
+
+         for (int $$3 = $$2.e - 1; $$3 <= $$2.e + 1; $$3++) {
+            for (int $$4 = $$2.f - 1; $$4 <= $$2.f + 1; $$4++) {
+               if (!$$0.a(cot.c($$3, $$4)) || $$0.J().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public interface d {
+      int a();
+
+      djo b();
+
+      boolean a(akk var1, gu var2, djk var3, djk.a var4);
+
+      void a(akk var1, gu var2, djk var3, @Nullable bii var4, @Nullable bii var5, float var6);
+
+      default aqa<djk> c() {
+         return apr.a;
+      }
+
+      default boolean d() {
+         return false;
+      }
+
+      default boolean f() {
+         return false;
+      }
+
+      default int a(float $$0) {
+         return arp.d($$0);
+      }
+
+      default boolean a(djk $$0, djk.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
+         } else {
+            bii $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.G_()) {
+                  return false;
+               }
+
+               if ($$2.bS() && $$0.a(apr.d)) {
+                  if (this.d() && $$2 instanceof akl $$3) {
+                     ai.Y.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.aV()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(apl.bq) : true;
+         }
+      }
+
+      default void e() {
       }
    }
 }

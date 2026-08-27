@@ -1,76 +1,41 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class dst {
-   public static final Codec<dst> c = jc.Y.q().dispatch(dst::a, dsu::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends dst> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
+public class dst extends dss {
+   public static final Codec<dst> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dst::new));
 
    public dst(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      super($$0, $$1, $$2);
    }
 
-   protected abstract dsu<?> a();
-
-   public abstract List<drb.a> a(cpq var1, BiConsumer<gv, dey> var2, art var3, int var4, gv var5, dql var6);
-
-   public int a(art $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   @Override
+   protected dsw<?> a() {
+      return dsw.d;
    }
 
-   private static boolean c(cpq $$0, gv $$1) {
-      return $$0.a($$1, $$0x -> dnl.b($$0x) && !$$0x.a(csl.i) && !$$0x.a(csl.fl));
-   }
+   @Override
+   public List<drd.a> a(cps $$0, BiConsumer<gu, dfa> $$1, aru $$2, int $$3, gu $$4, dqn $$5) {
+      List<drd.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
 
-   protected static void a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, gv $$3, dql $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + arp.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + arp.a($$8) * (float)$$11);
+            gu $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new drd.a($$4.b($$9, $$7, $$10), -2, false));
       }
-   }
 
-   protected boolean b(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, gv $$3, dql $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, gv $$3, dql $$4, Function<dey, dey> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(cpq $$0, BiConsumer<gv, dey> $$1, art $$2, gv.a $$3, dql $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(cpq $$0, gv $$1) {
-      return dox.c($$0, $$1);
-   }
-
-   public boolean b(cpq $$0, gv $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(apj.t));
+      return $$6;
    }
 }

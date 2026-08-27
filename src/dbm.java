@@ -1,68 +1,102 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dbm extends ctk<dbm.a> {
-   Supplier<BiMap<csk, csk>> u_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(csl.qM, csl.qL)
-            .put(csl.qL, csl.qK)
-            .put(csl.qK, csl.qJ)
-            .put(csl.qS, csl.qR)
-            .put(csl.qR, csl.qQ)
-            .put(csl.qQ, csl.qP)
-            .put(csl.ra, csl.qZ)
-            .put(csl.qZ, csl.qY)
-            .put(csl.qY, csl.qX)
-            .put(csl.qW, csl.qV)
-            .put(csl.qV, csl.qU)
-            .put(csl.qU, csl.qT)
-            .build()
+public class dbm extends dax {
+   public static final dfu a = cwf.aC;
+   protected static final float b = 2.5F;
+   private static final Map<ha, ehx> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         csm.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         ha.d,
+         csm.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         ha.e,
+         csm.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         ha.f,
+         csm.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
-   Supplier<BiMap<csk, csk>> v_ = Suppliers.memoize(() -> u_.get().inverse());
 
-   static Optional<csk> a(csk $$0) {
-      return Optional.ofNullable((csk)v_.get().get($$0));
+   protected dbm(dez.d $$0, it $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(a, ha.c));
    }
 
-   static csk b(csk $$0) {
-      csk $$1 = $$0;
+   @Override
+   public String f() {
+      return this.k().a();
+   }
 
-      for (csk $$2 = (csk)v_.get().get($$0); $$2 != null; $$2 = (csk)v_.get().get($$2)) {
-         $$1 = $$2;
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return h($$0);
+   }
+
+   public static ehx h(dfa $$0) {
+      return c.get($$0.c(a));
+   }
+
+   @Override
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      ha $$3 = $$0.c(a);
+      gu $$4 = $$2.a($$3.g());
+      dfa $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dfa a(clg $$0) {
+      dfa $$1 = this.n();
+      cpp $$2 = $$0.q();
+      gu $$3 = $$0.a();
+      ha[] $$4 = $$0.f();
+
+      for (ha $$5 : $$4) {
+         if ($$5.o().d()) {
+            ha $$6 = $$5.g();
+            $$1 = $$1.a(a, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      return $$1;
-   }
-
-   static Optional<dey> b(dey $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<csk> c(csk $$0) {
-      return Optional.ofNullable((csk)u_.get().get($$0));
-   }
-
-   static dey c(dey $$0) {
-      return b($$0.b()).l($$0);
+      return null;
    }
 
    @Override
-   default Optional<dey> i_(dey $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csn.a.n() : $$0;
    }
 
    @Override
-   default float a() {
-      return this.b() == dbm.a.a ? 0.75F : 1.0F;
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      ha $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      ha $$10 = $$4.g();
+      $$1.a(iv.Z, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.i, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public dfa a(dfa $$0, cyy $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfa a(dfa $$0, cxh $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a);
    }
 }

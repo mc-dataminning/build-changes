@@ -1,21 +1,26 @@
-public class ehc extends ehd {
-   private final big b;
+public abstract class ehc {
+   protected final ehe a;
 
-   public ehc(big $$0) {
-      this($$0, $$0.di());
+   protected ehc(ehe $$0) {
+      this.a = $$0;
    }
 
-   public ehc(big $$0, ehf $$1) {
-      super($$1);
-      this.b = $$0;
+   public double a(bii $$0) {
+      double $$1 = this.a.c - $$0.dp();
+      double $$2 = this.a.d - $$0.dr();
+      double $$3 = this.a.e - $$0.dv();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public big a() {
-      return this.b;
+   public abstract ehc.a c();
+
+   public ehe e() {
+      return this.a;
    }
 
-   @Override
-   public ehd.a c() {
-      return ehd.a.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

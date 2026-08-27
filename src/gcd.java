@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gcd {
+public interface gcd<T> extends gcg<T> {
+   static <T> gcd<T> b() {
+      return $$0 -> List.of();
+   }
+
+   default void a() {
+   }
 }

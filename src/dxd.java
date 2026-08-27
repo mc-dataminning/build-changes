@@ -1,270 +1,252 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class dxd extends dvh {
-   private static final Logger h = LogUtils.getLogger();
-   private static final float i = 0.3F;
-   private static final float j = 0.07F;
-   private static final float k = 0.2F;
-   private final dxd.b l;
-   private final dxd.a m;
+public class dxd {
+   static final dyp a = a(csn.I, csn.J, ecf.aG);
+   static final dyp b = a(csn.L, csn.M, ecf.aH);
+   private static final aer[] c = new aer[]{
+      new aer("underwater_ruin/warm_1"),
+      new aer("underwater_ruin/warm_2"),
+      new aer("underwater_ruin/warm_3"),
+      new aer("underwater_ruin/warm_4"),
+      new aer("underwater_ruin/warm_5"),
+      new aer("underwater_ruin/warm_6"),
+      new aer("underwater_ruin/warm_7"),
+      new aer("underwater_ruin/warm_8")
+   };
+   private static final aer[] d = new aer[]{
+      new aer("underwater_ruin/brick_1"),
+      new aer("underwater_ruin/brick_2"),
+      new aer("underwater_ruin/brick_3"),
+      new aer("underwater_ruin/brick_4"),
+      new aer("underwater_ruin/brick_5"),
+      new aer("underwater_ruin/brick_6"),
+      new aer("underwater_ruin/brick_7"),
+      new aer("underwater_ruin/brick_8")
+   };
+   private static final aer[] e = new aer[]{
+      new aer("underwater_ruin/cracked_1"),
+      new aer("underwater_ruin/cracked_2"),
+      new aer("underwater_ruin/cracked_3"),
+      new aer("underwater_ruin/cracked_4"),
+      new aer("underwater_ruin/cracked_5"),
+      new aer("underwater_ruin/cracked_6"),
+      new aer("underwater_ruin/cracked_7"),
+      new aer("underwater_ruin/cracked_8")
+   };
+   private static final aer[] f = new aer[]{
+      new aer("underwater_ruin/mossy_1"),
+      new aer("underwater_ruin/mossy_2"),
+      new aer("underwater_ruin/mossy_3"),
+      new aer("underwater_ruin/mossy_4"),
+      new aer("underwater_ruin/mossy_5"),
+      new aer("underwater_ruin/mossy_6"),
+      new aer("underwater_ruin/mossy_7"),
+      new aer("underwater_ruin/mossy_8")
+   };
+   private static final aer[] g = new aer[]{
+      new aer("underwater_ruin/big_brick_1"),
+      new aer("underwater_ruin/big_brick_2"),
+      new aer("underwater_ruin/big_brick_3"),
+      new aer("underwater_ruin/big_brick_8")
+   };
+   private static final aer[] h = new aer[]{
+      new aer("underwater_ruin/big_mossy_1"),
+      new aer("underwater_ruin/big_mossy_2"),
+      new aer("underwater_ruin/big_mossy_3"),
+      new aer("underwater_ruin/big_mossy_8")
+   };
+   private static final aer[] i = new aer[]{
+      new aer("underwater_ruin/big_cracked_1"),
+      new aer("underwater_ruin/big_cracked_2"),
+      new aer("underwater_ruin/big_cracked_3"),
+      new aer("underwater_ruin/big_cracked_8")
+   };
+   private static final aer[] j = new aer[]{
+      new aer("underwater_ruin/big_warm_4"),
+      new aer("underwater_ruin/big_warm_5"),
+      new aer("underwater_ruin/big_warm_6"),
+      new aer("underwater_ruin/big_warm_7")
+   };
 
-   public dxd(dyr $$0, gv $$1, dxd.b $$2, dxd.a $$3, aep $$4, dyq $$5, cyw $$6, cxf $$7, gv $$8) {
-      super(dvo.J, 0, $$0, $$4, $$4.toString(), a($$7, $$6, $$2, $$8, $$3), $$1);
-      this.l = $$2;
-      this.m = $$3;
+   private static dyp a(csm $$0, csm $$1, aer $$2) {
+      return new dxy(new dyl(List.of(new dyh(new dxv($$0), dxq.b, dye.b, $$1.n(), new dyw($$2)))), bfs.a(5));
    }
 
-   public dxd(dyr $$0, qs $$1) {
-      super(dvo.J, $$1, $$0, $$2 -> a($$0, $$1, $$2));
-      this.l = dxd.b.a($$1.l("VerticalPlacement"));
-      this.m = (dxd.a)dxd.a.a.parse(new Dynamic(rd.a, $$1.c("Properties"))).getOrThrow(true, h::error);
+   private static aer a(aru $$0) {
+      return ac.a(c, $$0);
    }
 
-   @Override
-   protected void a(dvn $$0, qs $$1) {
-      super.a($$0, $$1);
-      $$1.a("Rotation", this.c.d().name());
-      $$1.a("Mirror", this.c.c().name());
-      $$1.a("VerticalPlacement", this.l.a());
-      dxd.a.a.encodeStart(rd.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
+   private static aer b(aru $$0) {
+      return ac.a(j, $$0);
    }
 
-   private static dym a(dyr $$0, qs $$1, aep $$2) {
-      dyq $$3 = $$0.a($$2);
-      gv $$4 = new gv($$3.a().u() / 2, 0, $$3.a().w() / 2);
-      return a(
-         cxf.valueOf($$1.l("Mirror")),
-         cyw.valueOf($$1.l("Rotation")),
-         dxd.b.a($$1.l("VerticalPlacement")),
-         $$4,
-         (dxd.a)dxd.a.a.parse(new Dynamic(rd.a, $$1.c("Properties"))).getOrThrow(true, h::error)
-      );
-   }
-
-   private static dym a(cxf $$0, cyw $$1, dxd.b $$2, gv $$3, dxd.a $$4) {
-      dxs $$5 = $$4.d ? dxs.b : dxs.d;
-      List<dyf> $$6 = Lists.newArrayList();
-      $$6.add(a(csl.ch, 0.3F, csl.a));
-      $$6.add(a($$2, $$4));
-      if (!$$4.b) {
-         $$6.add(a(csl.dW, 0.07F, csl.kJ));
+   public static void a(dyt $$0, gu $$1, cyy $$2, dve $$3, aru $$4, dxe $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
       }
-
-      dym $$7 = new dym().a($$1).a($$0).a($$3).a($$5).a(new dyj($$6)).a(new dxr($$4.c)).a(new dyg(apj.bH)).a(new dxz());
-      if ($$4.g) {
-         $$7.a(dxq.b);
-      }
-
-      return $$7;
    }
 
-   private static dyf a(dxd.b $$0, dxd.a $$1) {
-      if ($$0 == dxd.b.c) {
-         return a(csl.H, csl.kJ);
-      } else {
-         return $$1.b ? a(csl.H, csl.dW) : a(csl.H, 0.2F, csl.kJ);
-      }
-   }
+   private static void a(dyt $$0, aru $$1, cyy $$2, gu $$3, dxe $$4, dve $$5) {
+      gu $$6 = new gu($$3.u(), 90, $$3.w());
+      gu $$7 = dys.a(new gu(15, 0, 15), cxh.a, $$2, gu.b).a((hz)$$6);
+      dur $$8 = dur.a($$6, $$7);
+      gu $$9 = new gu(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<gu> $$10 = a($$1, $$9);
+      int $$11 = arp.a($$1, 4, 8);
 
-   @Override
-   public void a(cqe $$0, cqc $$1, dgv $$2, art $$3, dup $$4, cor $$5, gv $$6) {
-      dup $$7 = this.b.b(this.c, this.d);
-      if ($$4.b($$7.f())) {
-         $$4.b($$7);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         this.b($$3, $$0);
-         this.a($$3, $$0);
-         if (this.m.f || this.m.e) {
-            gv.a(this.f()).forEach($$2x -> {
-               if (this.m.f) {
-                  this.a($$3, (cpl)$$0, $$2x);
-               }
-
-               if (this.m.e) {
-                  this.b($$3, $$0, $$2x);
-               }
-            });
-         }
-      }
-   }
-
-   @Override
-   protected void a(String $$0, gv $$1, cpz $$2, art $$3, dup $$4) {
-   }
-
-   private void a(art $$0, cpl $$1, gv $$2) {
-      dey $$3 = $$1.a_($$2);
-      if (!$$3.i() && !$$3.a(csl.ff)) {
-         hb $$4 = a($$0);
-         gv $$5 = $$2.a($$4);
-         dey $$6 = $$1.a_($$5);
-         if ($$6.i()) {
-            if (csk.a($$3.k($$1, $$2), $$4)) {
-               dfp $$7 = dbe.a($$4.g());
-               $$1.a($$5, csl.ff.n().a($$7, Boolean.valueOf(true)), 3);
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            gu $$14 = $$10.remove($$13);
+            cyy $$15 = cyy.a($$1);
+            gu $$16 = dys.a(new gu(5, 0, 6), cxh.a, $$15, gu.b).a((hz)$$14);
+            dur $$17 = dur.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
       }
    }
 
-   private void b(art $$0, cpl $$1, gv $$2) {
-      if ($$0.i() < 0.5F && $$1.a_($$2).a(csl.dW) && $$1.a_($$2.c()).i()) {
-         $$1.a($$2.c(), csl.aH.n().a(cwr.c, Boolean.valueOf(true)), 3);
+   private static List<gu> a(aru $$0, gu $$1) {
+      List<gu> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + arp.a($$0, 1, 8), 0, 16 + arp.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + arp.a($$0, 1, 8), 0, arp.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + arp.a($$0, 1, 8), 0, -16 + arp.a($$0, 4, 8)));
+      $$2.add($$1.b(arp.a($$0, 1, 7), 0, 16 + arp.a($$0, 1, 7)));
+      $$2.add($$1.b(arp.a($$0, 1, 7), 0, -16 + arp.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + arp.a($$0, 1, 7), 0, 16 + arp.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + arp.a($$0, 1, 7), 0, arp.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + arp.a($$0, 1, 7), 0, -16 + arp.a($$0, 4, 8)));
+      return $$2;
+   }
+
+   private static void a(dyt $$0, gu $$1, cyy $$2, dve $$3, aru $$4, dxe $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            aer $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new dxd.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            aer[] $$9 = $$6 ? g : d;
+            aer[] $$10 = $$6 ? i : e;
+            aer[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new dxd.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new dxd.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new dxd.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
       }
    }
 
-   private void a(art $$0, cpl $$1) {
-      for (int $$2 = this.f.g() + 1; $$2 < this.f.j(); $$2++) {
-         for (int $$3 = this.f.i() + 1; $$3 < this.f.l(); $$3++) {
-            gv $$4 = new gv($$2, this.f.h(), $$3);
-            if ($$1.a_($$4).a(csl.dW)) {
-               this.c($$0, $$1, $$4.d());
-            }
-         }
-      }
-   }
+   public static class a extends dvj {
+      private final dxe.a h;
+      private final float i;
+      private final boolean j;
 
-   private void c(art $$0, cpl $$1, gv $$2) {
-      gv.a $$3 = $$2.j();
-      this.d($$0, $$1, $$3);
-      int $$4 = 8;
-
-      while ($$4 > 0 && $$0.i() < 0.5F) {
-         $$3.c(hb.a);
-         $$4--;
-         this.d($$0, $$1, $$3);
-      }
-   }
-
-   private void b(art $$0, cpl $$1) {
-      boolean $$2 = this.l == dxd.b.a || this.l == dxd.b.c;
-      gv $$3 = this.f.f();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      float[] $$6 = new float[]{1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.9F, 0.9F, 0.8F, 0.7F, 0.6F, 0.4F, 0.2F};
-      int $$7 = $$6.length;
-      int $$8 = (this.f.c() + this.f.e()) / 2;
-      int $$9 = $$0.a(Math.max(1, 8 - $$8 / 2));
-      int $$10 = 3;
-      gv.a $$11 = gv.b.j();
-
-      for (int $$12 = $$4 - $$7; $$12 <= $$4 + $$7; $$12++) {
-         for (int $$13 = $$5 - $$7; $$13 <= $$5 + $$7; $$13++) {
-            int $$14 = Math.abs($$12 - $$4) + Math.abs($$13 - $$5);
-            int $$15 = Math.max(0, $$14 + $$9);
-            if ($$15 < $$7) {
-               float $$16 = $$6[$$15];
-               if ($$0.j() < (double)$$16) {
-                  int $$17 = a($$1, $$12, $$13, this.l);
-                  int $$18 = $$2 ? $$17 : Math.min(this.f.h(), $$17);
-                  $$11.d($$12, $$18, $$13);
-                  if (Math.abs($$18 - this.f.h()) <= 3 && this.a($$1, $$11)) {
-                     this.d($$0, $$1, $$11);
-                     if (this.m.e) {
-                        this.b($$0, $$1, $$11);
-                     }
-
-                     this.c($$0, $$1, $$11.d());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(cpl $$0, gv $$1) {
-      dey $$2 = $$0.a_($$1);
-      return !$$2.a(csl.a) && !$$2.a(csl.co) && !$$2.a(apj.bH) && (this.l == dxd.b.f || !$$2.a(csl.H));
-   }
-
-   private void d(art $$0, cpl $$1, gv $$2) {
-      if (!this.m.b && $$0.i() < 0.07F) {
-         $$1.a($$2, csl.kJ.n(), 3);
-      } else {
-         $$1.a($$2, csl.dW.n(), 3);
-      }
-   }
-
-   private static int a(cpl $$0, int $$1, int $$2, dxd.b $$3) {
-      return $$0.a(a($$3), $$1, $$2) - 1;
-   }
-
-   public static dkh.a a(dxd.b $$0) {
-      return $$0 == dxd.b.c ? dkh.a.c : dkh.a.a;
-   }
-
-   private static dyf a(csk $$0, float $$1, csk $$2) {
-      return new dyf(new dyh($$0, $$1), dxo.b, $$2.n());
-   }
-
-   private static dyf a(csk $$0, csk $$1) {
-      return new dyf(new dxt($$0), dxo.b, $$1.n());
-   }
-
-   public static class a {
-      public static final Codec<dxd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("cold").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("mossiness").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.fieldOf("air_pocket").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.fieldOf("overgrown").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("vines").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dxd.a::new)
-      );
-      public boolean b;
-      public float c;
-      public boolean d;
-      public boolean e;
-      public boolean f;
-      public boolean g;
-
-      public a() {
+      public a(dyt $$0, aer $$1, gu $$2, cyy $$3, float $$4, dxe.a $$5, boolean $$6) {
+         super(dvq.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      public a(boolean $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-      }
-   }
-
-   public static enum b implements asf {
-      a("on_land_surface"),
-      b("partly_buried"),
-      c("on_ocean_floor"),
-      d("in_mountain"),
-      e("underground"),
-      f("in_nether");
-
-      public static final asf.a<dxd.b> g = asf.a(dxd.b::values);
-      private final String h;
-
-      private b(String $$0) {
-         this.h = $$0;
+      private a(dyt $$0, qr $$1, cyy $$2, float $$3, dxe.a $$4, boolean $$5) {
+         super(dvq.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
       }
 
-      public String a() {
-         return this.h;
+      private static dyo a(cyy $$0, float $$1, dxe.a $$2) {
+         dyp $$3 = $$2 == dxe.a.b ? dxd.b : dxd.a;
+         return new dyo().a($$0).a(cxh.a).a(new dxw($$1)).a(dxu.d).a($$3);
       }
 
-      public static dxd.b a(String $$0) {
-         return g.a($$0);
+      public static dxd.a a(dyt $$0, qr $$1) {
+         cyy $$2 = cyy.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         dxe.a $$4 = dxe.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new dxd.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
       @Override
-      public String c() {
-         return this.h;
+      protected void a(dvp $$0, qr $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, gu $$1, cqb $$2, aru $$3, dur $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, csn.cv.n().a(cto.d, Boolean.valueOf($$2.b_($$1).a(apq.a))), 2);
+            dcm $$5 = $$2.c_($$1);
+            if ($$5 instanceof dct) {
+               ((dct)$$5).a(this.j ? ecf.F : ecf.E, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            byp $$6 = bim.y.a((cpm)$$2.C());
+            if ($$6 != null) {
+               $$6.fF();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bjc.d, null, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.t_()) {
+                  $$2.a($$1, csn.a.n(), 2);
+               } else {
+                  $$2.a($$1, csn.G.n(), 2);
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, gu $$6) {
+         int $$7 = $$0.a(dkj.a.c, this.d.u(), this.d.w());
+         this.d = new gu(this.d.u(), $$7, this.d.w());
+         gu $$8 = dys.a(new gu(this.b.a().u() - 1, 0, this.b.a().w() - 1), cxh.a, this.c.d(), gu.b).a((hz)this.d);
+         this.d = new gu(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      private int a(gu $$0, cos $$1, gu $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
+
+         for (gu $$7 : gu.a($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            gu.a $$11 = new gu.a($$8, $$10, $$9);
+            dfa $$12 = $$1.a_($$11);
+
+            for (ead $$13 = $$1.b_($$11); ($$12.i() || $$13.a(apq.a) || $$12.a(apl.al)) && $$10 > $$1.C_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
+         }
+
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
+
+         return $$3;
       }
    }
 }

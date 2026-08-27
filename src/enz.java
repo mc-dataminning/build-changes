@@ -1,27 +1,68 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class enz extends gei {
+   private static final tf a = tf.c("mco.configure.world.name");
+   private static final tf b = tf.c("mco.configure.world.description");
+   private static final int c = 10;
+   private static final int y = 210;
+   private final emn z;
+   private final elr A;
+   private final evo B = new evo(this);
+   private esq C;
+   private esq D;
 
-public class enz extends ged {
-   protected BooleanConsumer a;
-   private final te b;
-   private final te c;
-
-   public enz(BooleanConsumer $$0, te $$1, te $$2) {
-      super(eqf.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public enz(emn $$0, elr $$1) {
+      super(tf.c("mco.selectServer.create"));
+      this.z = $$0;
+      this.A = $$1;
    }
 
    @Override
    public void aE_() {
-      this.d(esi.a(td.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(9), 100, 20).a());
-      this.d(esi.a(td.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(9), 100, 20).a());
+      this.B.a(new etm(this.e, this.i));
+      evs $$0 = this.B.c(evs.d()).a(10);
+      $$0.c().b();
+      esh $$1 = esh.a(tf.c("mco.create.world"), $$0x -> this.B()).a();
+      $$1.i = false;
+      this.C = new esq(this.i, 210, 20, tf.c("mco.configure.world.name"));
+      this.C.b($$1x -> $$1.i = !ac.b($$1x));
+      this.D = new esq(this.i, 210, 20, tf.c("mco.configure.world.description"));
+      evs $$2 = $$0.a(evs.d().a(4));
+      $$2.a(new etm(a, this.i), evr::a);
+      $$2.a(this.C);
+      evs $$3 = $$0.a(evs.d().a(4));
+      $$3.a(new etm(b, this.i), evr::a);
+      $$3.a(this.D);
+      evs $$4 = this.B.b(evs.e().a(10));
+      $$4.a($$1);
+      $$4.a(esh.a(te.e, $$0x -> this.au_()).a());
+      this.B.a($$1x -> {
+         esf var10000 = this.d($$1x);
+      });
+      this.b();
+      this.c(this.C);
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b, this.g / 2, h(3), -1);
-      $$0.a(this.i, this.c, this.g / 2, h(5), -1);
+   protected void b() {
+      this.B.a();
+   }
+
+   private void B() {
+      eol $$0 = new eol(
+         this.A,
+         this.z,
+         tf.c("mco.selectServer.create"),
+         tf.c("mco.create.world.subtitle"),
+         -6250336,
+         tf.c("mco.create.world.skip"),
+         () -> this.f.execute(() -> this.f.a(this.A.f())),
+         () -> this.f.a(this.A.f())
+      );
+      $$0.a(tf.c("mco.create.world.reset.title"));
+      this.f.a(new eoe(this.A, new epu(this.z.a, this.C.a(), this.D.a(), $$0)));
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.A);
    }
 }

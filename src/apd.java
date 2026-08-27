@@ -1,48 +1,50 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class apd<T> implements Iterable<apb<T>> {
-   private final hs<T> a;
-   private final Map<T, apb<T>> b = new IdentityHashMap<>();
-   @Nullable
-   private te c;
+public class apd<T> extends eig {
+   private final ape n;
+   private final T o;
+   private final apf<T> p;
 
-   public apd(hs<T> $$0) {
-      this.a = $$0;
+   protected apd(apf<T> $$0, T $$1, ape $$2) {
+      super(a($$0, $$1));
+      this.p = $$0;
+      this.n = $$2;
+      this.o = $$1;
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public static <T> String a(apf<T> $$0, T $$1) {
+      return a(jb.y.b($$0)) + ":" + a($$0.a().b($$1));
    }
 
-   public apb<T> a(T $$0, apc $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new apb<>(this, (T)$$1x, $$1));
+   private static <T> String a(@Nullable aer $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public hs<T> a() {
-      return this.a;
+   public apf<T> a() {
+      return this.p;
+   }
+
+   public T b() {
+      return this.o;
+   }
+
+   public String a(int $$0) {
+      return this.n.format($$0);
    }
 
    @Override
-   public Iterator<apb<T>> iterator() {
-      return this.b.values().iterator();
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof apd && Objects.equals(this.d(), ((apd)$$0).d());
    }
 
-   public apb<T> b(T $$0) {
-      return this.a($$0, apc.b);
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
    }
 
-   public String b() {
-      return "stat_type." + jc.y.b(this).toString().replace(':', '.');
-   }
-
-   public te c() {
-      if (this.c == null) {
-         this.c = te.c(this.b());
-      }
-
-      return this.c;
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
    }
 }

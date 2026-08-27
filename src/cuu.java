@@ -1,48 +1,97 @@
-public class cuu extends crx {
-   protected static final ehy a = csk.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected cuu(dex.d $$0) {
+public class cuu extends crz {
+   protected static final ehx a = csm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<gu> b = gu.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(gu::i).toList();
+
+   protected cuu(dez.d $$0) {
       super($$0);
    }
 
-   @Override
-   public dck a(gv $$0, dey $$1) {
-      return new ddz($$0, $$1);
+   public static boolean a(cpm $$0, gu $$1, gu $$2) {
+      return $$0.a_($$1.a((hz)$$2)).a(apl.cn) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(apl.co);
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
+   public boolean g_(dfa $$0) {
+      return true;
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
       return a;
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      if ($$1 instanceof aki && $$3.cs() && ehv.c(ehv.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehj.i)) {
-         aeo<cpk> $$4 = $$1.ac() == cpk.j ? cpk.h : cpk.j;
-         aki $$5 = ((aki)$$1).n().a($$4);
-         if ($$5 == null) {
-            return;
-         }
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-         $$3.b($$5);
+      for (gu $$4 : b) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               iv.t,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
       }
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(iw.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public cyr b_(dfa $$0) {
+      return cyr.c;
    }
 
    @Override
-   public ciw a(coq $$0, gv $$1, dey $$2) {
-      return ciw.b;
+   public dcm a(gu $$0, dfa $$1) {
+      return new ddf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
+      return $$0.B ? a($$2, dco.m, ddf::a) : null;
    }
 
    @Override
-   public boolean a(dey $$0, eaa $$1) {
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      if ($$1.B) {
+         return bgq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         return bgq.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bgt b(dfa $$0, cpm $$1, gu $$2) {
+      dcm $$3 = $$1.c_($$2);
+      if ($$3 instanceof ddf) {
+         tf $$4 = ((bgu)$$3).H_();
+         return new bgy(($$2x, $$3x, $$4x) -> new cew($$2x, $$3x, cep.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public void a(cpm $$0, gu $$1, dfa $$2, biy $$3, ciy $$4) {
+      if ($$4.A()) {
+         dcm $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddf) {
+            ((ddf)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Override
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
       return false;
    }
 }

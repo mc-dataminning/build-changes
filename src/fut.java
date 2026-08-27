@@ -1,11 +1,11 @@
-public class fut extends ftp<bwa, fgo<bwa>> {
-   private static final aep a = new aep("textures/entity/tadpole/tadpole.png");
+public class fut extends frp<cck> {
+   public static final aer a = new aer("textures/entity/projectiles/spectral_arrow.png");
 
-   public fut(fsj.a $$0) {
-      super($$0, new fgo<>($$0.a(fhi.bz)), 0.14F);
+   public fut(fso.a $$0) {
+      super($$0);
    }
 
-   public aep a(bwa $$0) {
+   public aer a(cck $$0) {
       return a;
    }
 }

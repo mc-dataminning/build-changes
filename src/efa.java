@@ -1,17 +1,33 @@
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public interface efa<T extends efa<T>> {
-   T b(efh.a var1);
+public record efa(Optional<bd> b) implements efg {
+   public static final Codec<efa> a = RecordCodecBuilder.create($$0 -> $$0.group(aqy.a(bd.a, "predicate").forGetter(efa::c)).apply($$0, efa::new));
 
-   default <E> T a_(Iterable<E> $$0, Function<E, efh.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   @Override
+   public efh b() {
+      return efi.n;
    }
 
-   T d();
+   @Override
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(ees.f, ees.c);
+   }
+
+   public boolean a(ech $$0) {
+      bhg $$1 = $$0.c(ees.c);
+      ehe $$2 = $$0.c(ees.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   }
+
+   public static efg.a a(bd.a $$0) {
+      return () -> new efa($$0.b());
+   }
+
+   public Optional<bd> c() {
+      return this.b;
+   }
 }

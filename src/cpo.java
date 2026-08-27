@@ -1,78 +1,55 @@
-import com.mojang.serialization.Dynamic;
+public interface cpo {
+   int D_();
 
-public final class cpo {
-   private final String a;
-   private final cph b;
-   private final boolean c;
-   private final bgl d;
-   private final boolean e;
-   private final cpg f;
-   private final cqd g;
+   int C_();
 
-   public cpo(String $$0, cph $$1, boolean $$2, bgl $$3, boolean $$4, cpg $$5, cqd $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   default int aj() {
+      return this.C_() + this.D_();
    }
 
-   public static cpo a(Dynamic<?> $$0, cqd $$1) {
-      cph $$2 = cph.a($$0.get("GameType").asInt(0));
-      return new cpo(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bgl.a($$0x.byteValue())).result().orElse(bgl.c),
-         $$0.get("allowCommands").asBoolean($$2 == cph.b),
-         new cpg($$0.get("GameRules")),
-         $$1
-      );
+   default int ak() {
+      return this.am() - this.al();
    }
 
-   public String a() {
-      return this.a;
+   default int al() {
+      return hx.a(this.C_());
    }
 
-   public cph b() {
-      return this.b;
+   default int am() {
+      return hx.a(this.aj() - 1) + 1;
    }
 
-   public boolean c() {
-      return this.c;
+   default boolean r(gu $$0) {
+      return this.d($$0.v());
    }
 
-   public bgl d() {
-      return this.d;
+   default boolean d(int $$0) {
+      return $$0 < this.C_() || $$0 >= this.aj();
    }
 
-   public boolean e() {
-      return this.e;
+   default int e(int $$0) {
+      return this.f(hx.a($$0));
    }
 
-   public cpg f() {
-      return this.f;
+   default int f(int $$0) {
+      return $$0 - this.al();
    }
 
-   public cqd g() {
-      return this.g;
+   default int g(int $$0) {
+      return $$0 + this.al();
    }
 
-   public cpo a(cph $$0) {
-      return new cpo(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
+   static cpo e(final int $$0, final int $$1) {
+      return new cpo() {
+         @Override
+         public int D_() {
+            return $$1;
+         }
 
-   public cpo a(bgl $$0) {
-      return new cpo(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public cpo a(cqd $$0) {
-      return new cpo(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public cpo h() {
-      return new cpo(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+         @Override
+         public int C_() {
+            return $$0;
+         }
+      };
    }
 }

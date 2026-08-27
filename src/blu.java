@@ -1,29 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class blu {
-   public static bly<biy> a(int $$0) {
-      return boa.a(
-         (Function<boa.b<biy>, ? extends App<boa.c<biy>, bod<biy>>>)($$1 -> $$1.group($$1.a(bry.n), $$1.b(bry.o), $$1.c(bry.p), $$1.b(bry.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     biw $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.k($$9) && $$1.<bsa>b($$5).a($$9)) {
-                        $$2.a(new bkz($$9, true));
-                        $$7.a(bgn.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class blu extends bkq<cba> {
+   private final float c;
+
+   public blu(float $$0) {
+      super(ImmutableMap.of(bsa.m, bsb.c, bsa.n, bsb.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   private static boolean a(biy $$0) {
-      return $$0.b($$1 -> {
-         cir $$2 = $$1.d();
-         return $$2 instanceof cjm && $$0.a((cjm)$$2);
-      });
+   protected boolean a(akk $$0, cba $$1) {
+      cbn $$2 = $$1.fZ();
+      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bQ != null;
+   }
+
+   protected boolean a(akk $$0, cba $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(akk $$0, cba $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(akk $$0, cba $$1, long $$2) {
+      bjz<?> $$3 = $$1.dM();
+      $$3.b(bsa.m);
+      $$3.b(bsa.n);
+   }
+
+   protected void d(akk $$0, cba $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cba $$0) {
+      bjz<?> $$1 = $$0.dM();
+      $$1.a(bsa.m, new bsd(new blb($$0.fZ(), false), this.c, 2));
+      $$1.a(bsa.n, new blb($$0.fZ(), true));
    }
 }

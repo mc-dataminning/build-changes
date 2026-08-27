@@ -1,88 +1,180 @@
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
-public class fsd extends fsi<bwx> {
-   private static final aep a = new aep("textures/entity/end_crystal/end_crystal.png");
-   private static final fno f = fno.d(a);
-   private static final float g = (float)Math.sin(Math.PI / 4);
-   private static final String h = "glass";
-   private static final String i = "base";
-   private final fhj j;
-   private final fhj k;
-   private final fhj l;
+public abstract class fsd<T extends bih, S> extends fsn<T> {
+   private final fsm a;
 
-   public fsd(fsj.a $$0) {
+   protected fsd(fso.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      fhj $$1 = $$0.a(fhi.U);
-      this.k = $$1.b("glass");
-      this.j = $$1.b("cube");
-      this.l = $$1.b("base");
+      this.a = $$0.a();
    }
 
-   public static fhp a() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("glass", fho.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
-      $$1.a("cube", fho.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
-      $$1.a("base", fho.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fhl.a);
-      return fhp.a($$0, 64, 32);
+   public aer a(T $$0) {
+      return fyk.e;
    }
 
-   public void a(bwx $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      $$3.a();
-      float $$6 = a($$0, $$2);
-      float $$7 = ((float)$$0.b + $$2) * 3.0F;
-      ell $$8 = $$4.getBuffer(f);
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(0.0F, -0.5F, 0.0F);
-      int $$9 = fxx.d;
-      if ($$0.m()) {
-         this.l.a($$3, $$8, $$5, $$9);
+   public void a(T $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      bih.k $$6 = $$0.j();
+      if ($$6 != null) {
+         S $$7 = this.b($$0);
+         if ($$7 != null) {
+            float $$8 = $$0.a($$2);
+            this.d = $$6.d().get($$8);
+            this.e = $$6.e().get($$8);
+            int $$9 = $$6.c();
+            int $$10 = $$9 != -1 ? $$9 : $$5;
+            super.a($$0, $$1, $$2, $$3, $$4, $$10);
+            $$3.a();
+            $$3.a(this.a($$6, $$0, $$2, new Quaternionf()));
+            j $$11 = $$6.a().get($$8);
+            $$3.a($$11.c());
+            $$3.c().b().rotate($$11.e()).rotate($$11.g());
+            this.a($$0, $$7, $$3, $$4, $$10, $$8);
+            $$3.b();
+         }
+      }
+   }
+
+   private Quaternionf a(bih.k $$0, T $$1, float $$2, Quaternionf $$3) {
+      epx $$4 = this.a.b;
+
+      return switch ($$0.b()) {
+         case a -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case c -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+         case b -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case d -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+      };
+   }
+
+   private static float a(epx $$0) {
+      return $$0.e() - 180.0F;
+   }
+
+   private static float b(epx $$0) {
+      return -$$0.d();
+   }
+
+   private static <T extends bih> float a(T $$0, float $$1) {
+      return arp.j($$1, $$0.N, $$0.dA());
+   }
+
+   private static <T extends bih> float b(T $$0, float $$1) {
+      return arp.i($$1, $$0.O, $$0.dC());
+   }
+
+   @Nullable
+   protected abstract S b(T var1);
+
+   protected abstract void a(T var1, S var2, elg var3, fnl var4, int var5, float var6);
+
+   public static class a extends fsd<bih.b, bih.b.a> {
+      private final foe a;
+
+      protected a(fso.a $$0) {
+         super($$0);
+         this.a = $$0.c();
       }
 
-      $$3.a(a.d.rotationDegrees($$7));
-      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      this.k.a($$3, $$8, $$5, $$9);
-      float $$10 = 0.875F;
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.k.a($$3, $$8, $$5, $$9);
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.j.a($$3, $$8, $$5, $$9);
-      $$3.b();
-      $$3.b();
-      gv $$11 = $$0.j();
-      if ($$11 != null) {
-         float $$12 = (float)$$11.u() + 0.5F;
-         float $$13 = (float)$$11.v() + 0.5F;
-         float $$14 = (float)$$11.w() + 0.5F;
-         float $$15 = (float)((double)$$12 - $$0.dp());
-         float $$16 = (float)((double)$$13 - $$0.dr());
-         float $$17 = (float)((double)$$14 - $$0.dv());
-         $$3.a($$15, $$16, $$17);
-         fse.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
+      @Nullable
+      protected bih.b.a a(bih.b $$0) {
+         return $$0.m();
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      public void a(bih.b $$0, bih.b.a $$1, elg $$2, fnl $$3, int $$4, float $$5) {
+         this.a.a($$1.a(), $$2, $$3, $$4, fyc.d);
+      }
    }
 
-   public static float a(bwx $$0, float $$1) {
-      float $$2 = (float)$$0.b + $$1;
-      float $$3 = aro.a($$2 * 0.2F) / 2.0F + 0.5F;
-      $$3 = ($$3 * $$3 + $$3) * 0.4F;
-      return $$3 - 1.4F;
+   public static class b extends fsd<bih.g, bih.g.a> {
+      private final ftm a;
+
+      protected b(fso.a $$0) {
+         super($$0);
+         this.a = $$0.b();
+      }
+
+      @Nullable
+      protected bih.g.a a(bih.g $$0) {
+         return $$0.m();
+      }
+
+      public void a(bih.g $$0, bih.g.a $$1, elg $$2, fnl $$3, int $$4, float $$5) {
+         $$2.a(a.d.rotation((float) Math.PI));
+         this.a.a($$1.a(), $$1.b(), $$4, fyc.d, $$2, $$3, $$0.dK(), $$0.ah());
+      }
    }
 
-   public aep a(bwx $$0) {
-      return a;
-   }
+   public static class c extends fsd<bih.l, bih.l.e> {
+      private final eru a;
 
-   public boolean a(bwx $$0, fqi $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.j() != null;
+      protected c(fso.a $$0) {
+         super($$0);
+         this.a = $$0.h();
+      }
+
+      private bih.l.b a(tf $$0, int $$1) {
+         List<arc> $$2 = this.a.c($$0, $$1);
+         List<bih.l.c> $$3 = new ArrayList<>($$2.size());
+         int $$4 = 0;
+
+         for (arc $$5 : $$2) {
+            int $$6 = this.a.a($$5);
+            $$4 = Math.max($$4, $$6);
+            $$3.add(new bih.l.c($$5, $$6));
+         }
+
+         return new bih.l.b($$3, $$4);
+      }
+
+      @Nullable
+      protected bih.l.e a(bih.l $$0) {
+         return $$0.m();
+      }
+
+      public void a(bih.l $$0, bih.l.e $$1, elg $$2, fnl $$3, int $$4, float $$5) {
+         byte $$6 = $$1.e();
+         boolean $$7 = ($$6 & 2) != 0;
+         boolean $$8 = ($$6 & 4) != 0;
+         boolean $$9 = ($$6 & 1) != 0;
+         bih.l.a $$10 = bih.l.a($$6);
+         byte $$11 = (byte)$$1.c().get($$5);
+         int $$13;
+         if ($$8) {
+            float $$12 = eqm.O().m.a(0.25F);
+            $$13 = (int)($$12 * 255.0F) << 24;
+         } else {
+            $$13 = $$1.d().get($$5);
+         }
+
+         float $$15 = 0.0F;
+         Matrix4f $$16 = $$2.c().a();
+         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
+         $$16.scale(-0.025F, -0.025F, -0.025F);
+         bih.l.b $$17 = $$0.a(this::a);
+         int $$18 = 9 + 1;
+         int $$19 = $$17.b();
+         int $$20 = $$17.a().size() * $$18;
+         $$16.translate(1.0F - (float)$$19 / 2.0F, (float)(-$$20), 0.0F);
+         if ($$13 != 0) {
+            elk $$21 = $$3.getBuffer($$7 ? fnt.s() : fnt.r());
+            $$21.a($$16, -1.0F, -1.0F, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, -1.0F, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, -1.0F, 0.0F).a($$13).b($$4).e();
+         }
+
+         for (bih.l.c $$22 : $$17.a()) {
+            float $$23 = switch ($$10) {
+               case b -> 0.0F;
+               case c -> (float)($$19 - $$22.b());
+               case a -> (float)$$19 / 2.0F - (float)$$22.b() / 2.0F;
+            };
+            this.a.a($$22.a(), $$23, $$15, $$11 << 24 | 16777215, $$9, $$16, $$3, $$7 ? eru.a.b : eru.a.c, 0, $$4);
+            $$15 += (float)$$18;
+         }
+      }
    }
 }

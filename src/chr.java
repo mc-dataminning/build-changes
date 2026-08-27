@@ -1,30 +1,24 @@
-public class chr extends chb {
-   public chr(cir.a $$0) {
+public class chr extends cit {
+   public chr(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
-      ciw $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bgp.a($$3);
-      } else {
-         if (!$$1.fR().d) {
-            $$3.h(1);
-         }
-
-         $$1.b(ape.c.b(this));
-         $$1.dK().a(null, $$1, aou.ys, $$1.da(), 1.0F, 1.0F);
-         ciw $$4 = cjd.a($$0, $$1.do(), $$1.du(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bgp.b($$4);
-         } else {
-            if (!$$1.fQ().e($$4.p())) {
-               $$1.a($$4, false);
-            }
-
-            return bgp.b($$3);
-         }
+   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      ciy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.gG, aox.h, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ccn $$4 = new ccn($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(apg.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
+      }
+
+      return bgr.a($$3, $$0.r_());
    }
 }

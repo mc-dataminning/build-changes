@@ -1,57 +1,37 @@
-public class fgf<T extends biy & bzd> extends fex<T> {
-   public fgf(fhj $$0) {
-      super($$0);
+public class fgf extends ffk {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fhn e;
+   private final fhn f;
+   private final fhn g;
+
+   public fgf(fhn $$0) {
+      super(fnt::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fhp c() {
-      fhr $$0 = fex.a(fhn.a, 0.0F);
-      fhs $$1 = $$0.a();
-      $$1.a("right_arm", fho.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhl.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fho.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhl.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fho.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhl.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fho.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhl.a(2.0F, 12.0F, 0.0F));
-      return fhp.a($$0, 64, 32);
+   public static fht a() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      $$1.a("plate", fhs.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fhp.a);
+      $$1.a("handle", fhs.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fhp.a);
+      return fht.a($$0, 64, 64);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fex.a.a;
-      this.r = fex.a.a;
-      ciw $$4 = $$0.b(bgn.a);
-      if ($$4.a(ciz.nG) && $$0.fS()) {
-         if ($$0.fk() == biq.b) {
-            this.s = fex.a.d;
-         } else {
-            this.r = fex.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public fhn b() {
+      return this.f;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      ciw $$6 = $$0.eR();
-      if ($$0.fS() && ($$6.b() || !$$6.a(ciz.nG))) {
-         float $$7 = aro.a(this.c * (float) Math.PI);
-         float $$8 = aro.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fdk.a(this.n, this.o, $$3);
-      }
+   public fhn c() {
+      return this.g;
    }
 
    @Override
-   public void a(biq $$0, elh $$1) {
-      float $$2 = $$0 == biq.b ? 1.0F : -1.0F;
-      fhj $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

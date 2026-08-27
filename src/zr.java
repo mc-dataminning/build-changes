@@ -1,34 +1,47 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class zr implements uw<wo> {
-   private final int a;
-   private final int b;
+public record zr(int b, List<aec.b<?>> c) implements ux<wp> {
+   public static final int a = 255;
 
-   public zr(big $$0, @Nullable big $$1) {
-      this.a = $$0.ah();
-      this.b = $$1 != null ? $$1.ah() : 0;
+   public zr(si $$0) {
+      this($$0.m(), b($$0));
    }
 
-   public zr(sh $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   private static void a(List<aec.b<?>> $$0, si $$1) {
+      for (aec.b<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
+   }
+
+   private static List<aec.b<?>> b(si $$0) {
+      List<aec.b<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aec.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
+   public void a(si $$0) {
+      $$0.c(this.b);
+      a(this.c, $$0);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.a;
+      return this.b;
    }
 
-   public int d() {
-      return this.b;
+   public List<aec.b<?>> d() {
+      return this.c;
    }
 }

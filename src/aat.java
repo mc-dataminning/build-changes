@@ -1,93 +1,22 @@
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class aat {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(big $$0) {
-      if ($$0 instanceof cbl) {
-         return $$0.ab().getString();
-      } else {
-         te $$1 = $$0.ad();
-         return $$1 != null ? $$1.getString() : a($$0.cv());
-      }
+public record aat(aeq<dij> a, aeq<cpm> b, long c, cpj d, @Nullable cpj e, boolean f, boolean g, Optional<hd> h, int i) {
+   public aat(si $$0) {
+      this(
+         $$0.a(jc.au), $$0.a(jc.aH), $$0.readLong(), cpj.a($$0.readByte()), cpj.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(si::h), $$0.m()
+      );
    }
 
-   public static String a(UUID $$0) {
-      art $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
-   }
-
-   private static String a(art $$0, String[] $$1) {
-      return ac.a($$1, $$0);
-   }
-
-   private static art b(UUID $$0) {
-      return art.a((long)($$0.hashCode() >> 2));
+   public void a(si $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cpj.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, si::a);
+      $$0.c(this.i);
    }
 }

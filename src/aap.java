@@ -1,78 +1,62 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Collection;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class aap implements uw<wo> {
-   private final int a;
-   private final List<aap.a> b;
+public class aap implements ux<wp> {
+   private final boolean a;
+   private final Map<aer, ae.a> b;
+   private final Set<aer> c;
+   private final Map<aer, ag> d;
 
-   public aap(int $$0, Collection<bjz> $$1) {
+   public aap(boolean $$0, Collection<ae> $$1, Set<aer> $$2, Map<aer, ag> $$3) {
       this.a = $$0;
-      this.b = Lists.newArrayList();
+      Builder<aer, ae.a> $$4 = ImmutableMap.builder();
 
-      for (bjz $$2 : $$1) {
-         this.b.add(new aap.a($$2.a(), $$2.b(), $$2.c()));
+      for (ae $$5 : $$1) {
+         $$4.put($$5.j(), $$5.a());
       }
+
+      this.b = $$4.build();
+      this.c = ImmutableSet.copyOf($$2);
+      this.d = ImmutableMap.copyOf($$3);
    }
 
-   public aap(sh $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a((sh.a<aap.a>)($$0x -> {
-         aep $$1 = $$0x.s();
-         bjy $$2 = jc.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bkb> $$4 = $$0x.a((sh.a<bkb>)($$0xx -> new bkb($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkb.a.a($$0xx.readByte()))));
-         return new aap.a($$2, $$3, $$4);
-      }));
+   public aap(si $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(si::s, ae.a::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, si::s);
+      this.d = $$0.a(si::s, ag::b);
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jc.v.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.d());
-            $$0xx.k($$1x.c().a());
-         });
-      });
+   public void a(si $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, si::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, si::a);
+      $$0.a(this.d, si::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public List<aap.a> d() {
+   public Map<aer, ae.a> a() {
       return this.b;
    }
 
-   public static class a {
-      private final bjy a;
-      private final double b;
-      private final Collection<bkb> c;
+   public Set<aer> d() {
+      return this.c;
+   }
 
-      public a(bjy $$0, double $$1, Collection<bkb> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public Map<aer, ag> e() {
+      return this.d;
+   }
 
-      public bjy a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public Collection<bkb> c() {
-         return this.c;
-      }
+   public boolean f() {
+      return this.a;
    }
 }

@@ -1,86 +1,147 @@
-public class bgg implements bgh {
-   private final bgh c;
-   private final bgh d;
+import java.util.UUID;
 
-   public bgg(bgh $$0, bgh $$1) {
+public abstract class bgg {
+   private final UUID h;
+   protected tf a;
+   protected float b;
+   protected bgg.a c;
+   protected bgg.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
+
+   public bgg(UUID $$0, tf $$1, bgg.a $$2, bgg.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
+   }
+
+   public UUID i() {
+      return this.h;
+   }
+
+   public tf j() {
+      return this.a;
+   }
+
+   public void a(tf $$0) {
+      this.a = $$0;
+   }
+
+   public float k() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bgg.a l() {
+      return this.c;
+   }
+
+   public void a(bgg.a $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
+   public bgg.b m() {
+      return this.d;
    }
 
-   @Override
-   public boolean ab_() {
-      return this.c.ab_() && this.d.ab_();
+   public void a(bgg.b $$0) {
+      this.d = $$0;
    }
 
-   public boolean a(bgh $$0) {
-      return this.c == $$0 || this.d == $$0;
+   public boolean n() {
+      return this.e;
    }
 
-   @Override
-   public ciw a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   public bgg a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   @Override
-   public ciw a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   public boolean o() {
+      return this.f;
    }
 
-   @Override
-   public ciw b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   public bgg b(boolean $$0) {
+      this.f = $$0;
+      return this;
    }
 
-   @Override
-   public void a(int $$0, ciw $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+   public bgg c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static bgg.a a(String $$0) {
+         for (bgg.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
       }
    }
 
-   @Override
-   public int ac_() {
-      return this.c.ac_();
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
+      private final String f;
 
-   @Override
-   public boolean a(cbl $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
+      private b(String $$0) {
+         this.f = $$0;
+      }
 
-   @Override
-   public void d_(cbl $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
+      public String a() {
+         return this.f;
+      }
 
-   @Override
-   public void c(cbl $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
+      public static bgg.b a(String $$0) {
+         for (bgg.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
 
-   @Override
-   public boolean b(int $$0, ciw $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+         return a;
+      }
    }
 }

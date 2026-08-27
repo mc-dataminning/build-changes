@@ -1,53 +1,68 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class crq extends csm implements cso {
+   protected static final float a = 4.0F;
+   protected static final ehx b = csm.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
-public class crq extends crb {
-   public static final dfy a = dfo.ba;
-   private static final Map<chk, csk> b = Maps.newHashMap();
-   private static final ehy c = csk.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-
-   public crq(chk $$0, dex.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
-      b.put($$0, this);
+   public crq(dez.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dey $$0, cpn $$1, gv $$2) {
-      return $$1.a_($$2.d()).e();
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      ehe $$4 = $$0.n($$1, $$2);
+      return b.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return c;
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   public dey a(cle $$0) {
-      return this.n().a(a, Integer.valueOf(dge.a($$0.i() + 180.0F)));
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      return $$1.a_($$2.d()).a(apl.at);
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      return $$1 == hb.a && !$$0.a($$3, $$4) ? csl.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return csn.a.n();
+      } else {
+         if ($$1 == ha.b && $$2.a(csn.mZ)) {
+            $$3.a($$4, csn.mZ.n(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public dey a(dey $$0, cyw $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public ciy a(cos $$0, gu $$1, dfa $$2) {
+      return new ciy(cjb.dv);
    }
 
    @Override
-   public dey a(dey $$0, cxf $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a);
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+      return true;
    }
 
-   public static csk a(chk $$0) {
-      return b.getOrDefault($$0, csl.iJ);
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   public float a(dfa $$0, cbn $$1, cos $$2, gu $$3) {
+      return $$1.eR().d() instanceof ckj ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(cpm $$0, gu $$1) {
+      $$0.a($$1.c(), csn.mZ.n().a(crr.h, dfm.b), 3);
    }
 }

@@ -1,36 +1,48 @@
-public class wy implements uw<wo> {
-   private final gv a;
-   private final dey b;
+public class wy implements ux<wp> {
+   private final gu a;
+   private final int b;
+   private final int c;
+   private final csm d;
 
-   public wy(gv $$0, dey $$1) {
+   public wy(gu $$0, csm $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.b = $$1;
+      this.d = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public wy(coq $$0, gv $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public wy(sh $$0) {
+   public wy(si $$0) {
       this.a = $$0.e();
-      this.b = $$0.a(csk.o);
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.a(jb.f);
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
-      $$0.a(csk.o, this.b);
+      $$0.k(this.b);
+      $$0.k(this.c);
+      $$0.a(jb.f, this.d);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public dey a() {
+   public gu a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public gv d() {
-      return this.a;
+   public int e() {
+      return this.c;
+   }
+
+   public csm f() {
+      return this.d;
    }
 }

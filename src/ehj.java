@@ -1,20 +1,17 @@
 public interface ehj {
-   ehj a = ($$0, $$1) -> false;
-   ehj b = ($$0, $$1) -> !$$0 && !$$1;
-   ehj c = ($$0, $$1) -> $$1 && !$$0;
-   ehj d = ($$0, $$1) -> !$$0;
-   ehj e = ($$0, $$1) -> $$0 && !$$1;
-   ehj f = ($$0, $$1) -> !$$1;
-   ehj g = ($$0, $$1) -> $$0 != $$1;
-   ehj h = ($$0, $$1) -> !$$0 || !$$1;
-   ehj i = ($$0, $$1) -> $$0 && $$1;
-   ehj j = ($$0, $$1) -> $$0 == $$1;
-   ehj k = ($$0, $$1) -> $$1;
-   ehj l = ($$0, $$1) -> !$$0 || $$1;
-   ehj m = ($$0, $$1) -> $$0;
-   ehj n = ($$0, $$1) -> $$0 || !$$1;
-   ehj o = ($$0, $$1) -> $$0 || $$1;
-   ehj p = ($$0, $$1) -> true;
+   static ehj a() {
+      return eho.a;
+   }
 
-   boolean apply(boolean var1, boolean var2);
+   static ehj a(bii $$0) {
+      return new eho($$0);
+   }
+
+   boolean b();
+
+   boolean a(ehx var1, gu var2, boolean var3);
+
+   boolean a(cit var1);
+
+   boolean a(ead var1, ead var2);
 }

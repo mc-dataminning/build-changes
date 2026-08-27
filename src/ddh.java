@@ -1,15 +1,15 @@
-public interface ddh extends bgh {
-   ehy c = csk.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   ehy x_ = csk.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   ehy y_ = ehv.a(c, x_);
-
-   default ehy aq_() {
-      return y_;
+public class ddh extends dcb {
+   public ddh(gu $$0, dfa $$1) {
+      super(dco.a, $$0, $$1, cme.b);
    }
 
-   double G();
+   @Override
+   protected tf g() {
+      return tf.c("container.furnace");
+   }
 
-   double H();
-
-   double J();
+   @Override
+   protected cee a(int $$0, cbm $$1) {
+      return new cey($$0, $$1, this, this.n);
+   }
 }

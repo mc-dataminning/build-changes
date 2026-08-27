@@ -1,24 +1,42 @@
-public class adc implements uw<acx> {
-   private final te a;
+import java.security.PublicKey;
 
-   public adc(te $$0) {
+public class adc implements ux<acz> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public adc(String $$0, byte[] $$1, byte[] $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public adc(sh $$0) {
-      this.a = te.a.b($$0.d(262144));
+   public adc(si $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acx $$0) {
+   public void a(acz $$0) {
       $$0.a(this);
    }
 
-   public te a() {
+   public String a() {
       return this.a;
+   }
+
+   public PublicKey d() throws aqq {
+      return aqp.a(this.b);
+   }
+
+   public byte[] e() {
+      return this.c;
    }
 }

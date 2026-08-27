@@ -1,26 +1,29 @@
-public class hq implements hp {
-   protected final double a;
-   protected final double b;
-   protected final double c;
+public final class hq {
+   public static final int a = 2;
+   public static final int b = 4;
+   public static final int c = 3;
+   private static final int d = 2;
 
-   public hq(double $$0, double $$1, double $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private hq() {
    }
 
-   @Override
-   public double a() {
-      return this.a;
+   public static int a(int $$0) {
+      return $$0 >> 2;
    }
 
-   @Override
-   public double b() {
-      return this.b;
+   public static int b(int $$0) {
+      return $$0 & 3;
    }
 
-   @Override
-   public double c() {
-      return this.c;
+   public static int c(int $$0) {
+      return $$0 << 2;
+   }
+
+   public static int d(int $$0) {
+      return $$0 << 2;
+   }
+
+   public static int e(int $$0) {
+      return $$0 >> 2;
    }
 }

@@ -1,58 +1,100 @@
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public abstract class byh extends cct {
-   protected byh(bik<? extends byh> $$0, cpk $$1) {
+public class byh extends bii implements bjw {
+   private static final adz<Integer> b = aec.a(byh.class, aeb.b);
+   private static final int c = 80;
+   @Nullable
+   private biy d;
+
+   public byh(bim<? extends byh> $$0, cpm $$1) {
       super($$0, $$1);
+      this.I = true;
+   }
+
+   public byh(cpm $$0, double $$1, double $$2, double $$3, @Nullable biy $$4) {
+      this(bim.aY, $$0);
+      this.e($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.d = $$4;
    }
 
    @Override
-   protected void w() {
-      super.w();
+   protected void a_() {
+      this.an.a(b, 80);
    }
 
    @Override
-   public bjb eQ() {
-      return bjb.d;
-   }
-
-   public byh.a p() {
-      return byh.a.a;
+   protected bii.b aU() {
+      return bii.b.a;
    }
 
    @Override
-   public boolean c(biw $$0) {
-      return $$0 instanceof cat && $$0.i_() ? false : super.c($$0);
+   public boolean br() {
+      return !this.dF();
    }
 
    @Override
-   protected float l(big $$0) {
-      return -0.6F;
-   }
-
-   @Override
-   protected Vector3f a(big $$0, bih $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.05F * $$2, 0.0F);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-   }
-
-   protected class b extends bqk {
-      public b(cct $$1) {
-         super($$1, false);
+   public void l() {
+      if (!this.aT()) {
+         this.f(this.dn().b(0.0, -0.04, 0.0));
       }
 
-      @Override
-      public boolean a() {
-         return super.a() && byh.this.go();
+      this.a(bje.a, this.dn());
+      this.f(this.dn().a(0.98));
+      if (this.aA()) {
+         this.f(this.dn().d(0.7, -0.5, 0.7));
       }
+
+      int $$0 = this.m() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.ak();
+         if (!this.dK().B) {
+            this.o();
+         }
+      } else {
+         this.be();
+         if (this.dK().B) {
+            this.dK().a(iv.Z, this.dp(), this.dr() + 0.5, this.dv(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   private void o() {
+      float $$0 = 4.0F;
+      this.dK().a(this, this.dp(), this.e(0.0625), this.dv(), 4.0F, cpm.a.d);
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      $$0.a("Fuse", (short)this.m());
+   }
+
+   @Override
+   protected void a(qr $$0) {
+      this.b($$0.g("Fuse"));
+   }
+
+   @Nullable
+   public biy j() {
+      return this.d;
+   }
+
+   @Override
+   protected float a(bjk $$0, bij $$1) {
+      return 0.15F;
+   }
+
+   public void b(int $$0) {
+      this.an.b(b, $$0);
+   }
+
+   public int m() {
+      return this.an.b(b);
    }
 }

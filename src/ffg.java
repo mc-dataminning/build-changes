@@ -1,15 +1,18 @@
 import java.util.function.Function;
 
-public abstract class ffg {
-   protected final Function<aep, fno> v;
-
-   public ffg(Function<aep, fno> $$0) {
-      this.v = $$0;
+public abstract class ffg<E extends bii> extends feo<E> {
+   public ffg() {
+      this(fnt::e);
    }
 
-   public final fno a(aep $$0) {
-      return this.v.apply($$0);
+   public ffg(Function<aer, fnt> $$0) {
+      super($$0);
    }
 
-   public abstract void a(elh var1, ell var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   @Override
+   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   public abstract Iterable<fhn> d();
 }

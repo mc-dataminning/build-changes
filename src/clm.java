@@ -1,78 +1,77 @@
-public class clm extends clr {
-   public clm(aep $$0, clp $$1) {
+public class clm extends clt {
+   public clm(aer $$0, clr $$1) {
       super($$0, $$1);
    }
 
-   public boolean a(ceq $$0, cpk $$1) {
-      int $$2 = 0;
-      ciw $$3 = ciw.b;
+   public boolean a(ces $$0, cpm $$1) {
+      chm $$2 = null;
+      ciy $$3 = null;
+      ciy $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciw $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(ciz.th)) {
-               if (!$$3.b()) {
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         ciy $$6 = $$0.a($$5);
+         if (!$$6.b()) {
+            cit $$7 = $$6.d();
+            if (!($$7 instanceof cgo)) {
+               return false;
+            }
+
+            cgo $$8 = (cgo)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = dcc.c($$6);
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$3 = $$6;
             } else {
-               if (!$$5.a(ciz.tg)) {
+               if ($$4 != null) {
                   return false;
                }
 
-               $$2++;
+               $$4 = $$6;
             }
          }
       }
 
-      return !$$3.b() && $$3.u() && $$2 > 0;
+      return $$3 != null && $$4 != null;
    }
 
-   public ciw a(ceq $$0, ht $$1) {
-      int $$2 = 0;
-      ciw $$3 = ciw.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciw $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(ciz.th)) {
-               if (!$$3.b()) {
-                  return ciw.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ciz.tg)) {
-                  return ciw.b;
-               }
-
-               $$2++;
+   public ciy a(ces $$0, hs $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         ciy $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            int $$4 = dcc.c($$3);
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && cks.d($$3) < 2) {
-         ciw $$6 = new ciw(ciz.th, $$2);
-         qs $$7 = $$3.v().h();
-         $$7.a("generation", cks.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return ciw.b;
-      }
+      return ciy.b;
    }
 
-   public ho<ciw> a(ceq $$0) {
-      ho<ciw> $$1 = ho.a($$0.b(), ciw.b);
+   public hn<ciy> a(ces $$0) {
+      hn<ciy> $$1 = hn.a($$0.b(), ciy.b);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         ciw $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new ciw($$3.d().s()));
-         } else if ($$3.d() instanceof cks) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         ciy $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            if ($$3.d().t()) {
+               $$1.set($$2, new ciy($$3.d().s()));
+            } else if ($$3.u() && dcc.c($$3) > 0) {
+               $$1.set($$2, $$3.c(1));
+            }
          }
       }
 
@@ -80,12 +79,12 @@ public class clm extends clr {
    }
 
    @Override
-   public cmb<?> aj_() {
-      return cmb.d;
+   public cmd<?> aj_() {
+      return cmd.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 }

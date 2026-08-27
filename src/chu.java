@@ -1,49 +1,62 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class chu extends cir {
-   public chu(cir.a $$0) {
+public class chu extends cit {
+   public static final String a = "StoredEnchantments";
+
+   public chu(cit.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgo a(clg $$0) {
-      cpk $$1 = $$0.q();
-      gv $$2 = $$0.a();
-      dey $$3 = $$1.a_($$2);
-      if (!$$3.a(csl.co) && !$$3.a(csl.F)) {
-         return bgo.e;
-      } else {
-         gv $$4 = $$2.c();
-         if (!$$1.t($$4)) {
-            return bgo.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<big> $$8 = $$1.a_(null, new eha($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bgo.e;
-            } else {
-               if ($$1 instanceof aki) {
-                  bwx $$9 = new bwx($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dji.t, $$4);
-                  dik $$10 = ((aki)$$1).B();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bgo.a($$1.B);
-            }
-         }
-      }
+   public boolean i(ciy $$0) {
+      return true;
    }
 
    @Override
-   public boolean i(ciw $$0) {
-      return true;
+   public boolean d_(ciy $$0) {
+      return false;
+   }
+
+   public static qx d(ciy $$0) {
+      qr $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new qx();
+   }
+
+   @Override
+   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ciy.a($$2, d($$0));
+   }
+
+   public static void a(ciy $$0, cni $$1) {
+      qx $$2 = d($$0);
+      boolean $$3 = true;
+      aer $$4 = cnh.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         qr $$6 = $$2.a($$5);
+         aer $$7 = cnh.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cnh.a($$6) < $$1.b) {
+               cnh.a($$6, $$1.b);
+            }
+
+            $$3 = false;
+            break;
+         }
+      }
+
+      if ($$3) {
+         $$2.add(cnh.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
+   }
+
+   public static ciy a(cni $$0) {
+      ciy $$1 = new ciy(cjb.tC);
+      a($$1, $$0);
+      return $$1;
    }
 }

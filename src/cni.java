@@ -1,20 +1,10 @@
-public class cni extends cnd {
-   protected cni(cnd.a $$0, bil... $$1) {
-      super($$0, cne.f, $$1);
-   }
+public class cni extends bfc.a {
+   public final cnf a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
-   }
-
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cni(cnf $$0, int $$1) {
+      super($$0.d().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

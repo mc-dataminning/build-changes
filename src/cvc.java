@@ -1,49 +1,54 @@
-public class cvc extends csk implements cvb {
-   public cvc(dex.d $$0) {
+import javax.annotation.Nullable;
+
+public class cvc extends cwf {
+   public static final dfy<dfl> I = dfq.U;
+
+   protected cvc(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      $$1.a($$2, this, this.a());
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      return b($$1, $$2, h($$0).g());
    }
 
+   public static boolean b(cpp $$0, gu $$1, ha $$2) {
+      gu $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      $$3.a($$4, this, this.a());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public dfa a(clg $$0) {
+      for (ha $$1 : $$0.f()) {
+         dfa $$2;
+         if ($$1.o() == ha.a.b) {
+            $$2 = this.n().a(I, $$1 == ha.b ? dfl.c : dfl.a).a(aC, $$0.g());
+         } else {
+            $$2 = this.n().a(I, dfl.b).a(aC, $$1.g());
+         }
 
-   @Override
-   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
-      if (h($$1.a_($$2.d())) && $$2.v() >= $$1.C_()) {
-         byd $$4 = byd.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
-
-   protected void a(byd $$0) {
-   }
-
-   protected int a() {
-      return 2;
-   }
-
-   public static boolean h(dey $$0) {
-      return $$0.i() || $$0.a(apj.aJ) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, art $$3) {
-      if ($$3.a(16) == 0) {
-         gv $$4 = $$2.d();
-         if (h($$1.a_($$4))) {
-            arr.a($$1, $$2, $$3, new io(iw.z, $$0));
+         if ($$2.a((cpp)$$0.q(), $$0.a())) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   public int d(dey $$0, coq $$1, gv $$2) {
-      return -16777216;
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected static ha h(dfa $$0) {
+      switch ((dfl)$$0.c(I)) {
+         case c:
+            return ha.a;
+         case a:
+            return ha.b;
+         default:
+            return $$0.c(aC);
+      }
    }
 }

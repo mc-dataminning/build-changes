@@ -1,15 +1,36 @@
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public record ru(List<String> a, rn<?> b, String c) {
-   public ru(rn<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
+public record ru(int a, Map<String, rm<?>> b, Map<String, ru> c) {
+   private ru(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   public ru(String $$0, rn<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
+   public static ru a() {
+      return new ru(1);
    }
 
-   public ru(String $$0, String $$1, rn<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public void a(rt $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new ru(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
+   }
+
+   public boolean a(rm<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
+   }
+
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, rm<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, ru> d() {
+      return this.c;
    }
 }

@@ -1,62 +1,40 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class drw extends drq {
-   public static final Codec<drw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drq.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bft.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, drw::new)
-   );
-   private final drq c;
-   private final String d;
-   @Nullable
-   private dfy e;
-   private final bft f;
+public class drw extends drv {
+   public static final Codec<drw> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, drw::new));
+   protected final List<dfa> h;
 
-   public drw(drq $$0, dfy $$1, bft $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   protected static <P extends drw> P4<Mu<P>, Long, dzg.a, Float, List<dfa>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dfa.b).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public drw(drq $$0, String $$1, bft $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public drw(long $$0, dzg.a $$1, float $$2, List<dfa> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected drr<?> a() {
-      return drr.g;
+   protected drt<?> a() {
+      return drt.d;
    }
 
    @Override
-   public dey a(art $$0, gv $$1) {
-      dey $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   public dfa a(aru $$0, gu $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   private static dfy a(dey $$0, String $$1) {
-      Collection<dgb<?>> $$2 = $$0.B();
-      Optional<dfy> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dfy).map($$0x -> (dfy)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   protected dfa a(List<dfa> $$0, gu $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dfa a(List<dfa> $$0, double $$1) {
+      double $$2 = arp.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

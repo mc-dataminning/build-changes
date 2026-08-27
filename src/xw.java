@@ -1,23 +1,40 @@
-public record xw(int a, float b) implements uw<wo> {
-   public xw(biw $$0) {
-      this($$0.ah(), $$0.eD());
+public class xw implements ux<wp> {
+   private final int a;
+   private final int b;
+   private final int c;
+
+   public xw(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public xw(sh $$0) {
-      this($$0.m(), $$0.readFloat());
+   public xw(si $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.m();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(si $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public float d() {
+   public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

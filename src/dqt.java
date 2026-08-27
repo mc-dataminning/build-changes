@@ -1,39 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dqt extends dqq {
-   public static final Codec<dqt> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, dqt::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
+public class dqt<P extends dqs> {
+   public static final dqt<dqv> a = a("two_layers_feature_size", dqv.d);
+   public static final dqt<dqu> b = a("three_layers_feature_size", dqu.d);
+   private final Codec<P> c;
 
-   public dqt(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   private static <P extends dqs> dqt<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.ab, $$0, new dqt<>($$1));
    }
 
-   public dqt(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private dqt(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected dqr<?> b() {
-      return dqr.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public Codec<P> a() {
+      return this.c;
    }
 }

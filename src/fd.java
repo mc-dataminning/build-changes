@@ -1,45 +1,68 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class fd implements ArgumentType<UUID> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.uuid.invalid"));
-   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
-   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
+public class fd implements Predicate<dfe> {
+   private final dfa a;
+   private final Set<dgd<?>> b;
+   @Nullable
+   private final qr c;
 
-   public static UUID a(CommandContext<ds> $$0, String $$1) {
-      return (UUID)$$0.getArgument($$1, UUID.class);
+   public fd(dfa $$0, Set<dgd<?>> $$1, @Nullable qr $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static fd a() {
-      return new fd();
+   public dfa a() {
+      return this.a;
    }
 
-   public UUID a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.getRemaining();
-      Matcher $$2 = c.matcher($$1);
-      if ($$2.find()) {
-         String $$3 = $$2.group(1);
+   public Set<dgd<?>> b() {
+      return this.b;
+   }
 
-         try {
-            UUID $$4 = UUID.fromString($$3);
-            $$0.setCursor($$0.getCursor() + $$3.length());
-            return $$4;
-         } catch (IllegalArgumentException var6) {
+   public boolean a(dfe $$0) {
+      dfa $$1 = $$0.a();
+      if (!$$1.a(this.a.b())) {
+         return false;
+      } else {
+         for (dgd<?> $$2 : this.b) {
+            if ($$1.c($$2) != this.a.c($$2)) {
+               return false;
+            }
+         }
+
+         if (this.c == null) {
+            return true;
+         } else {
+            dcm $$3 = $$0.b();
+            return $$3 != null && rd.a(this.c, $$3.m(), true);
          }
       }
-
-      throw a.create();
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   public boolean a(akk $$0, gu $$1) {
+      return this.a(new dfe($$0, $$1, false));
+   }
+
+   public boolean a(akk $$0, gu $$1, int $$2) {
+      dfa $$3 = csm.b(this.a, $$0, $$1);
+      if ($$3.i()) {
+         $$3 = this.a;
+      }
+
+      if (!$$0.a($$1, $$3, $$2)) {
+         return false;
+      } else {
+         if (this.c != null) {
+            dcm $$4 = $$0.c_($$1);
+            if ($$4 != null) {
+               $$4.a(this.c);
+            }
+         }
+
+         return true;
+      }
    }
 }

@@ -1,18 +1,29 @@
-public class fku extends fkw {
-   protected fku(fie $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+public class fku extends fkz {
+   private int a;
+   private final int b = 8;
 
-   protected fku(fie $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public final void a(ell $$0, epy $$1, float $$2) {
+   fku(fii $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public fla b() {
-      return fla.f;
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(iv.x, $$1, $$2, $$3, (double)((float)this.a / (float)this.b), 0.0, 0.0);
+      }
+
+      this.a++;
+      if (this.a == this.b) {
+         this.k();
+      }
+   }
+
+   public static class a implements fle<iy> {
+      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fku($$1, $$2, $$3, $$4);
+      }
    }
 }

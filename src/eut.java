@@ -1,276 +1,282 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eut {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public class eut implements ang, AutoCloseable {
+   static final Logger b = LogUtils.getLogger();
+   private static final String c = "fonts.json";
+   public static final aer a = new aer("minecraft", "missing");
+   private static final aek d = aek.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final euu f;
+   private final List<ejj> g = new ArrayList<>();
+   private final Map<aer, euu> h = new HashMap<>();
+   private final fym i;
+   private Map<aer, aer> j = ImmutableMap.of();
 
-   public eut(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+   public eut(fym $$0) {
+      this.i = $$0;
+      this.f = ac.a(new euu($$0, a), $$0x -> $$0x.a(Lists.newArrayList(new ejj[]{new eur()})));
    }
 
-   public static Supplier<String> a(eqn $$0) {
-      return () -> b($$0);
+   @Override
+   public CompletableFuture<Void> a(ang.a $$0, anm $$1, bdh $$2, bdh $$3, Executor $$4, Executor $$5) {
+      $$2.a();
+      $$2.b();
+      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   public static String b(eqn $$0) {
-      return n.a($$0.o.a().replaceAll("\\r", ""));
-   }
+   private CompletableFuture<eut.d> a(anm $$0, Executor $$1) {
+      List<CompletableFuture<eut.e>> $$2 = new ArrayList<>();
 
-   public static Consumer<String> c(eqn $$0) {
-      return $$1 -> a($$0, $$1);
-   }
+      for (Entry<aer, List<ank>> $$3 : d.b($$0).entrySet()) {
+         aer $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<eut.a, eve>> $$4x = a($$3.getValue(), $$4);
+            eut.e $$5 = new eut.e($$4);
 
-   public static void a(eqn $$0, String $$1) {
-      $$0.o.a($$1);
-   }
+            for (Pair<eut.a, eve> $$6 : $$4x) {
+               eut.a $$7 = (eut.a)$$6.getFirst();
+               ((eve)$$6.getSecond()).b().ifLeft($$4xx -> {
+                  CompletableFuture<Optional<ejj>> $$5x = this.a($$7, $$4xx, $$0, $$1);
+                  $$5.a($$7, $$5x);
+               }).ifRight($$2xx -> $$5.a($$7, $$2xx));
+            }
 
-   public boolean a(char $$0) {
-      if (aa.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
+            return $$5;
+         }, $$1));
       }
 
-      return true;
+      return ac.b($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<ejj>>> $$2x = $$1x.stream().flatMap(eut.e::d).collect(Collectors.toCollection(ArrayList::new));
+               ejj $$3x = new eur();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x)));
+               return ac.b($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<aer, List<ejj>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<ejj> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new eut.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
    }
 
-   public boolean a(int $$0) {
-      if (exv.g($$0)) {
-         this.d();
-         return true;
-      } else if (exv.f($$0)) {
-         this.c();
-         return true;
-      } else if (exv.e($$0)) {
-         this.b();
-         return true;
-      } else if (exv.d($$0)) {
-         this.a();
-         return true;
-      } else {
-         eut.a $$1 = exv.p() ? eut.a.b : eut.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
-         } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
+   private CompletableFuture<Optional<ejj>> a(eut.a $$0, eve.a $$1, anm $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
+         }
+      }, $$3);
+   }
+
+   private Map<aer, List<ejj>> a(List<eut.e> $$0) {
+      Map<aer, List<ejj>> $$1 = new HashMap<>();
+      aqv<aer, eut.e> $$2 = new aqv<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
+
+   private void a(List<ejj> $$0, ejj $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (ejj $$3 : $$0) {
+         $$2.addAll($$3.a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (ejj $$2x : Lists.reverse($$0)) {
+               if ($$2x.a($$1x) != null) {
+                  break;
+               }
+            }
+         }
+      });
+   }
+
+   private void a(eut.d $$0, bdh $$1) {
+      $$1.a();
+      $$1.a("closing");
+      this.h.values().forEach(euu::close);
+      this.h.clear();
+      this.g.forEach(ejj::close);
+      this.g.clear();
+      $$1.b("reloading");
+      $$0.a().forEach(($$0x, $$1x) -> {
+         euu $$2 = new euu(this.i, $$0x);
+         $$2.a(Lists.reverse($$1x));
+         this.h.put($$0x, $$2);
+      });
+      this.g.addAll($$0.b);
+      $$1.c();
+      $$1.b();
+      if (!this.h.containsKey(this.a(eqm.b))) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   private static List<Pair<eut.a, eve>> a(List<ank> $$0, aer $$1) {
+      List<Pair<eut.a, eve>> $$2 = new ArrayList<>();
+
+      for (ank $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            eut.c $$6 = ac.a(eut.c.a.parse(JsonOps.INSTANCE, $$5), JsonParseException::new);
+            List<eve> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               eut.a $$9 = new eut.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+         }
+      }
+
+      return $$2;
+   }
+
+   public void a(Map<aer, aer> $$0) {
+      this.j = $$0;
+   }
+
+   private aer a(aer $$0) {
+      return this.j.getOrDefault($$0, $$0);
+   }
+
+   public eru a() {
+      return new eru($$0 -> this.h.getOrDefault(this.a($$0), this.f), false);
+   }
+
+   public eru b() {
+      return new eru($$0 -> this.h.getOrDefault(this.a($$0), this.f), true);
+   }
+
+   @Override
+   public void close() {
+      this.h.values().forEach(euu::close);
+      this.g.forEach(ejj::close);
+      this.f.close();
+   }
+
+   static record a(aer a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
+      }
+   }
+
+   static record b(eut.a a, Either<CompletableFuture<Optional<ejj>>, aer> b) {
+
+      public Optional<List<ejj>> a(Function<aer, List<ejj>> $$0) {
+         return (Optional<List<ejj>>)this.b.map($$0x -> ((Optional)$$0x.join()).map(List::of), $$1 -> {
+            List<ejj> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               eut.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
             } else {
-               if ($$0 == 263) {
-                  this.a(-1, exv.q(), $$1);
-                  return true;
-               }
+               return Optional.of($$2);
+            }
+         });
+      }
+   }
 
-               if ($$0 == 262) {
-                  this.a(1, exv.q(), $$1);
-                  return true;
-               }
+   static record c(List<eve> b) {
+      public static final Codec<eut.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eve.b.listOf().fieldOf("providers").forGetter(eut.c::a)).apply($$0, eut.c::new)
+      );
 
-               if ($$0 == 268) {
-                  this.a(exv.q());
-                  return true;
-               }
+      public List<eve> a() {
+         return this.b;
+      }
+   }
 
-               if ($$0 == 269) {
-                  this.b(exv.q());
-                  return true;
-               }
+   static record d(Map<aer, List<ejj>> a, List<ejj> b) {
+   }
+
+   static record e(aer a, List<eut.b> b, Set<aer> c) implements aqv.a<aer> {
+
+      public e(aer $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
+      }
+
+      public void a(eut.a $$0, eve.b $$1) {
+         this.b.add(new eut.b($$0, Either.right($$1.a())));
+         this.c.add($$1.a());
+      }
+
+      public void a(eut.a $$0, CompletableFuture<Optional<ejj>> $$1) {
+         this.b.add(new eut.b($$0, Either.left($$1)));
+      }
+
+      private Stream<CompletableFuture<Optional<ejj>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.b.left().stream());
+      }
+
+      public Optional<List<ejj>> a(Function<aer, List<ejj>> $$0) {
+         List<ejj> $$1 = new ArrayList<>();
+
+         for (eut.b $$2 : this.b) {
+            Optional<List<ejj>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
             }
 
-            return false;
-         }
-      }
-   }
-
-   private int h(int $$0) {
-      return aro.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = aro.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, eut.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ac.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = eqz.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, eut.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = eqz.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = ac.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
-            }
+            $$1.addAll($$3.get());
          }
 
-         this.b.accept($$2);
+         return Optional.of($$1);
       }
-   }
 
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
+      @Override
+      public void a(Consumer<aer> $$0) {
+         this.c.forEach($$0);
       }
-   }
 
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
-      this.b(false);
-   }
-
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public void f(int $$0) {
-      this.c($$0, true);
-   }
-
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public void g(int $$0) {
-      this.g = this.h($$0);
-   }
-
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = aro.a($$0, 0, $$2);
-      this.g = aro.a($$1, 0, $$2);
-   }
-
-   public boolean i() {
-      return this.f != this.g;
-   }
-
-   public static enum a {
-      a,
-      b;
+      @Override
+      public void b(Consumer<aer> $$0) {
+      }
    }
 }

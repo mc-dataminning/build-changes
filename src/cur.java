@@ -1,47 +1,60 @@
-public class cur extends cul {
-   private static final ii c = new ih();
+public class cur extends cve {
+   protected static final ehx a = csm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-   public cur(dex.d $$0) {
+   public cur(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ii a(ciw $$0) {
-      return c;
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return a;
    }
 
    @Override
-   public dck a(gv $$0, dey $$1) {
-      return new ddc($$0, $$1);
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      this.d($$0, $$1, $$2);
+      return bgq.a($$1.B);
    }
 
    @Override
-   protected void a(aki $$0, gv $$1) {
-      gx $$2 = new gx($$0, $$1);
-      ddb $$3 = $$2.f();
-      int $$4 = $$3.a($$0.z);
-      if ($$4 < 0) {
-         $$0.c(1001, $$1, 0);
-      } else {
-         ciw $$5 = $$3.a($$4);
-         if (!$$5.b()) {
-            hb $$6 = $$0.a_($$1).c(a);
-            bgh $$7 = ddi.a($$0, $$1.a($$6));
-            ciw $$8;
-            if ($$7 == null) {
-               $$8 = c.dispense($$2, $$5);
-            } else {
-               $$8 = ddi.a($$3, $$7, $$5.p().a(1), $$6.g());
-               if ($$8.b()) {
-                  $$8 = $$5.p();
-                  $$8.h(1);
-               } else {
-                  $$8 = $$5.p();
+   public void a(dfa $$0, cpm $$1, gu $$2, cbn $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dfa $$0, cpm $$1, gu $$2) {
+      dgr $$3 = $$1.w_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         gu $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = arp.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = arp.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = arp.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(iv.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
                }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
 
-            $$3.a($$4, $$8);
+            return;
          }
       }
+   }
+
+   @Override
+   protected int a() {
+      return 5;
+   }
+
+   @Override
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
    }
 }

@@ -4,32 +4,41 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 
-public record ix(float c) implements iu {
-   public static final Codec<ix> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, ix::new));
-   public static final iu.a<ix> b = new iu.a<ix>() {
-      public ix a(iv<ix> $$0, StringReader $$1) throws CommandSyntaxException {
+public class ix implements it {
+   public static final Codec<ix> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, ix::new));
+   public static final it.a<ix> b = new it.a<ix>() {
+      public ix a(iu<ix> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$2 = $$1.readFloat();
+         int $$2 = $$1.readInt();
          return new ix($$2);
       }
 
-      public ix a(iv<ix> $$0, sh $$1) {
-         return new ix($$1.readFloat());
+      public ix a(iu<ix> $$0, si $$1) {
+         return new ix($$1.m());
       }
    };
+   private final int c;
 
-   @Override
-   public iv<ix> b() {
-      return iw.F;
+   public ix(int $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.c);
+   public void a(si $$0) {
+      $$0.c(this.c);
    }
 
    @Override
    public String a() {
-      return String.format(Locale.ROOT, "%s %.2f", jc.k.b(this.b()), this.c);
+      return String.format(Locale.ROOT, "%s %d", jb.k.b(this.b()), this.c);
+   }
+
+   @Override
+   public iu<ix> b() {
+      return iv.aP;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

@@ -1,162 +1,98 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class esh {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final aep[] c = new aep[]{
-      new aep("boss_bar/pink_background"),
-      new aep("boss_bar/blue_background"),
-      new aep("boss_bar/red_background"),
-      new aep("boss_bar/green_background"),
-      new aep("boss_bar/yellow_background"),
-      new aep("boss_bar/purple_background"),
-      new aep("boss_bar/white_background")
-   };
-   private static final aep[] d = new aep[]{
-      new aep("boss_bar/pink_progress"),
-      new aep("boss_bar/blue_progress"),
-      new aep("boss_bar/red_progress"),
-      new aep("boss_bar/green_progress"),
-      new aep("boss_bar/yellow_progress"),
-      new aep("boss_bar/purple_progress"),
-      new aep("boss_bar/white_progress")
-   };
-   private static final aep[] e = new aep[]{
-      new aep("boss_bar/notched_6_background"),
-      new aep("boss_bar/notched_10_background"),
-      new aep("boss_bar/notched_12_background"),
-      new aep("boss_bar/notched_20_background")
-   };
-   private static final aep[] f = new aep[]{
-      new aep("boss_bar/notched_6_progress"),
-      new aep("boss_bar/notched_10_progress"),
-      new aep("boss_bar/notched_12_progress"),
-      new aep("boss_bar/notched_20_progress")
-   };
-   private final eqn g;
-   final Map<UUID, esw> h = Maps.newLinkedHashMap();
+public class esh extends erz {
+   public static final int l = 120;
+   public static final int m = 150;
+   public static final int n = 20;
+   protected static final esh.b o = $$0 -> $$0.get();
+   protected final esh.c p;
+   protected final esh.b q;
 
-   public esh(eqn $$0) {
-      this.g = $$0;
+   public static esh.a a(tf $$0, esh.c $$1) {
+      return new esh.a($$0, $$1);
    }
 
-   public void a(erx $$0) {
-      if (!this.h.isEmpty()) {
-         int $$1 = $$0.a();
-         int $$2 = 12;
+   protected esh(int $$0, int $$1, int $$2, int $$3, tf $$4, esh.c $$5, esh.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.p = $$5;
+      this.q = $$6;
+   }
 
-         for (esw $$3 : this.h.values()) {
-            int $$4 = $$1 / 2 - 91;
-            this.a($$0, $$4, $$2, $$3);
-            te $$6 = $$3.j();
-            int $$7 = this.g.h.a($$6);
-            int $$8 = $$1 / 2 - $$7 / 2;
-            int $$9 = $$2 - 9;
-            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
-            $$2 += 10 + 9;
-            if ($$2 >= $$0.b() / 3) {
-               break;
-            }
-         }
+   @Override
+   public void c() {
+      this.p.onPress(this);
+   }
+
+   @Override
+   protected ts aB_() {
+      return this.q.createNarrationMessage(() -> super.aB_());
+   }
+
+   @Override
+   public void a(evx $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final tf a;
+      private final esh.c b;
+      @Nullable
+      private etq c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private esh.b h = esh.o;
+
+      public a(tf $$0, esh.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public esh.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public esh.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public esh.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public esh.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public esh.a a(@Nullable etq $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public esh.a a(esh.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public esh a() {
+         esh $$0 = new esh(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   private void a(erx $$0, int $$1, int $$2, bge $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = (int)($$3.k() * 183.0F);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
+   public interface b {
+      ts createNarrationMessage(Supplier<ts> var1);
    }
 
-   private void a(erx $$0, int $$1, int $$2, bge $$3, int $$4, aep[] $$5, aep[] $$6) {
-      $$0.a($$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.m() != bge.b.a) {
-         RenderSystem.enableBlend();
-         $$0.a($$6[$$3.m().ordinal() - 1], $$1, $$2, $$4, 5);
-         RenderSystem.disableBlend();
-      }
-   }
-
-   public void a(wz $$0) {
-      $$0.a(new wz.b() {
-         @Override
-         public void a(UUID $$0, te $$1, float $$2, bge.a $$3, bge.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            esh.this.h.put($$0, new esw($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            esh.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            esh.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, te $$1) {
-            esh.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bge.a $$1, bge.b $$2) {
-            esw $$3 = esh.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            esw $$4 = esh.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
-   }
-
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bge $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bge $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bge $$0 : this.h.values()) {
-            if ($$0.p()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public interface c {
+      void onPress(esh var1);
    }
 }

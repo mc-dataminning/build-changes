@@ -1,66 +1,66 @@
-import java.util.Locale;
-import java.util.UUID;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface eca extends ecc {
-   @Override
-   String g();
+public class eca {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   void a(boolean var1);
-
-   int l();
-
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, cpm $$1) {
-      ecc.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   public eca(ebx.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ebv.c).toFile();
+      this.c.mkdirs();
    }
 
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
+   public void a(cbn $$0) {
+      try {
+         qr $$1 = $$0.f(new qr());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         rb.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
+      }
+   }
 
    @Nullable
-   UUID x();
+   public qr b(cbn $$0) {
+      qr $$1 = null;
 
-   void a(UUID var1);
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = rb.a($$2);
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
+      }
 
-   cph m();
+      if ($$1 != null) {
+         int $$4 = rd.b($$1, -1);
+         $$0.g(ass.b.a(this.a, $$1, $$4));
+      }
 
-   void a(dgp.c var1);
+      return $$1;
+   }
 
-   dgp.c r();
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
 
-   boolean p();
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
 
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(cph var1);
-
-   egs<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
+      return $$0;
+   }
 }

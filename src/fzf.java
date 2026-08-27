@@ -1,15 +1,17 @@
-public class fzf extends fzj {
-   private static final aep a = new aep("back");
+import java.io.IOException;
 
-   public fzf(fyh $$0) {
-      super($$0, new aep("textures/atlas/paintings.png"), new aep("paintings"));
+public class fzf extends anr<int[]> {
+   private static final aer a = new aer("textures/colormap/foliage.png");
+
+   protected int[] a(anm $$0, bdh $$1) {
+      try {
+         return fzi.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public fyg a(bya $$0) {
-      return this.a(jc.m.b($$0));
-   }
-
-   public fyg a() {
-      return this.a(a);
+   protected void a(int[] $$0, anm $$1, bdh $$2) {
+      cpg.a($$0);
    }
 }

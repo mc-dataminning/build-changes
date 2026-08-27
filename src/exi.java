@@ -1,85 +1,126 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class exi extends exr {
+   private static final tf c = tf.b("(").b(tf.c("options.languageWarning")).f(")").a(n.h);
+   private exi.a k;
+   final fzt l;
 
-public class exi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cfh<?>, exi.a<?, ?>> b = Maps.newHashMap();
+   public exi(exz $$0, eqq $$1, fzt $$2) {
+      super($$0, $$1, tf.c("options.language"));
+      this.l = $$2;
+   }
 
-   public static <T extends cec> void a(@Nullable cfh<T> $$0, eqn $$1, int $$2, te $$3) {
-      if ($$0 == null) {
-         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
-      } else {
-         exi.a<T, ?> $$4 = a($$0);
-         if ($$4 == null) {
-            a.warn("Failed to create screen for menu type: {}", jc.s.b($$0));
-         } else {
-            $$4.a($$3, $$0, $$1, $$2);
-         }
+   @Override
+   protected void aE_() {
+      this.k = new exi.a(this.f);
+      this.e(this.k);
+      this.d(this.b.L().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(esh.a(te.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+      super.aE_();
+   }
+
+   void l() {
+      exi.a.a $$0 = this.k.f();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ah = $$0.b;
+         this.f.k();
+         this.b.aq();
       }
+
+      this.f.a(this.a);
    }
 
-   @Nullable
-   private static <T extends cec> exi.a<T, ?> a(cfh<T> $$0) {
-      return (exi.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cec, U extends exv & ezx<M>> void a(cfh<? extends M> $$0, exi.a<M, U> $$1) {
-      exi.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + jc.s.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cfh<?> $$1 : jc.s) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", jc.s.b($$1));
-            $$0 = true;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (ewc.a($$0)) {
+         exi.a.a $$3 = this.k.f();
+         if ($$3 != null) {
+            $$3.b();
+            this.l();
+            return true;
          }
       }
 
-      return $$0;
+      return super.a($$0, $$1, $$2);
    }
 
-   static {
-      a(cfh.a, eze::new);
-      a(cfh.b, eze::new);
-      a(cfh.c, eze::new);
-      a(cfh.d, eze::new);
-      a(cfh.e, eze::new);
-      a(cfh.f, eze::new);
-      a(cfh.g, ezj::new);
-      a(cfh.h, eyw::new);
-      a(cfh.i, eyx::new);
-      a(cfh.j, eyy::new);
-      a(cfh.k, ezb::new);
-      a(cfh.l, ezf::new);
-      a(cfh.m, ezm::new);
-      a(cfh.n, ezn::new);
-      a(cfh.o, ezo::new);
-      a(cfh.p, ezq::new);
-      a(cfh.q, ezv::new);
-      a(cfh.r, ezw::new);
-      a(cfh.s, ezy::new);
-      a(cfh.t, fab::new);
-      a(cfh.u, fad::new);
-      a(cfh.v, fae::new);
-      a(cfh.w, ezc::new);
-      a(cfh.x, faf::new);
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.k.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
    }
 
-   interface a<T extends cec, U extends exv & ezx<T>> {
-      default void a(te $$0, cfh<T> $$1, eqn $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.fQ()), $$2.t.fQ(), $$0);
-         $$2.t.bQ = $$4.C();
-         $$2.a($$4);
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends etd<exi.a.a> {
+      public a(eqm $$0) {
+         super($$0, exi.this.g, exi.this.h, 32, exi.this.h - 65 + 4, 18);
+         String $$1 = exi.this.l.a();
+         exi.this.l.b().forEach(($$1x, $$2) -> {
+            exi.a.a $$3 = new exi.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.f() != null) {
+            this.e(this.f());
+         }
       }
 
-      U create(T var1, cbk var2, te var3);
+      @Override
+      protected int c() {
+         return super.c() + 20;
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends etd.a<exi.a.a> {
+         final String b;
+         private final tf c;
+         private long d;
+
+         public a(String $$1, fzs $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(exi.this.i, this.c, a.this.e / 2, $$2 + 1, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            if ($$2 == 0) {
+               this.b();
+               if (ac.b() - this.d < 250L) {
+                  exi.this.l();
+               }
+
+               this.d = ac.b();
+               return true;
+            } else {
+               this.d = ac.b();
+               return false;
+            }
+         }
+
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public tf a() {
+            return tf.a("narrator.select", this.c);
+         }
+      }
    }
 }

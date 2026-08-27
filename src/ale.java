@@ -1,115 +1,103 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class ale extends ald implements st, wl {
-   private static final Logger d = LogUtils.getLogger();
-   private static final te e = te.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile f;
-   private final Queue<akx> g = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private akx h;
+public class ale {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public ale(MinecraftServer $$0, sf $$1, GameProfile $$2) {
-      super($$0, $$1, 0);
-      this.f = $$2;
+   public ale(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected GameProfile i() {
-      return this.f;
+   public void a(dhh $$0) {
+      this.f.add($$0.f().a());
    }
 
-   @Override
-   public void a(te $$0) {
-      d.info("{} lost connection: {}", this.f, $$0.getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.k();
-   }
-
-   public void l() {
-      this.b(new va(new vn(this.b.getServerModName())));
-      hm<aey> $$0 = this.b.aW();
-      this.b(new wk(cdv.d.b(this.b.aU().M())));
-      this.b(new wj(new ht.c(hw.a($$0)).c()));
-      this.b(new vf(aqb.a($$0)));
-      this.n();
-      this.g.add(new aln());
-      this.o();
-   }
-
-   public void m() {
-      this.g.add(new aln());
-      this.o();
-   }
-
-   private void n() {
-      this.b.S().ifPresent($$0 -> this.g.add(new alo($$0)));
-   }
-
-   @Override
-   public void a(vk $$0) {
-      super.a($$0);
-      if ($$0.a() != vk.a.d) {
-         this.a(alo.a);
+   public void a(akl $$0, cot $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bv()) {
+         $$0.c.b(new xu($$1));
       }
    }
 
-   @Override
-   public void a(wm $$0) {
-      this.c.a();
-      uy.a($$0, this, this.b);
-      this.a(aln.a);
+   public void a(akl $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               akk $$2 = $$0.x();
+               ajv $$3 = $$2.k().a;
+               List<dhh> $$4 = this.a($$3, $$0.dm());
+               if (!$$4.isEmpty()) {
+                  ali $$5 = $$0.c;
+                  this.j++;
+                  $$5.b(new xe());
 
-      try {
-         anx $$1 = this.b.ac();
-         if ($$1.a(this.f.getId()) != null) {
-            this.b(anx.g);
-            return;
-         }
+                  for (dhh $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
 
-         akj $$2 = $$1.e(this.f);
-         $$1.a(this.c, $$2, this.k());
-         this.c.b();
-      } catch (Exception var4) {
-         d.error("Couldn't place player in world", var4);
-         this.c.a(new vb(e));
-         this.c.a(e);
-      }
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   private void o() {
-      if (this.h != null) {
-         throw new IllegalStateException("Task " + this.h.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         akx $$0 = this.g.poll();
-         if ($$0 != null) {
-            this.h = $$0;
-            $$0.a(this::b);
+                  $$5.b(new xd($$4.size()));
+                  this.i = this.i - (float)$$4.size();
+               }
+            }
          }
       }
    }
 
-   private void a(akx.a $$0) {
-      akx.a $$1 = this.h != null ? this.h.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+   private static void a(ali $$0, akk $$1, dhh $$2) {
+      $$0.b(new ya($$2, $$1.s_(), null, null));
+      cot $$3 = $$2.f();
+      aav.a($$1, $$3);
+   }
+
+   private List<dhh> a(ajv $$0, cot $$1) {
+      int $$2 = arp.d(this.i);
+      List<dhh> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .peek(this.f::remove)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
       } else {
-         this.h = null;
-         this.o();
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
+         this.f.clear();
       }
+
+      return $$4;
+   }
+
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : arp.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
+      }
+
+      this.k = 10;
+   }
+
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

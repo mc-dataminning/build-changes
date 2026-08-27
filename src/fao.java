@@ -1,39 +1,24 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import org.joml.Matrix4f;
 
-public class fao implements fam {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final esg e;
+public class fao implements fap {
+   private final arc a;
 
-   public fao(esg $$0) {
-      this.e = $$0;
+   public fao(arc $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.r() + this.e.h() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.r(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.r() + this.e.h(), this.e.h()));
-      }
-
-      return $$6;
+   public int a(eru $$0) {
+      return $$0.a(this.a);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(aro.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public void a(eru $$0, int $$1, int $$2, Matrix4f $$3, fnl.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, eru.a.a, 0, 15728880);
    }
 }

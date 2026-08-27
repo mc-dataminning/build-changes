@@ -1,11 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record alv(cdt b) {
-   private static final Codec<alv> c = RecordCodecBuilder.create($$0 -> $$0.group(cdv.e.fieldOf("enabled").forGetter(alv::a)).apply($$0, alv::new));
-   public static final aml<alv> a = aml.a("features", c);
+public class alv {
+   private static final alv a = new alv(Map.of());
+   private final Map<amm<?>, ?> b;
 
-   public cdt a() {
-      return this.b;
+   private alv(Map<amm<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(amm<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static alv a() {
+      return a;
+   }
+
+   public static <T> alv a(amm<T> $$0, T $$1) {
+      return new alv(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> alv a(amm<T1> $$0, T1 $$1, amm<T2> $$2, T2 $$3) {
+      return new alv(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

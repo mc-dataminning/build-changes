@@ -1,46 +1,51 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
 
-public class eqv {
-   private static final Logger a = LogUtils.getLogger();
-   private final eqn b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public enum eqv {
+   a(new ciy(cjb.qe)),
+   b(new ciy(csn.cj)),
+   c(new ciy(cjb.ll)),
+   d(new ciy(cjb.op), new ciy(cjb.oh)),
+   e(new ciy(cjb.pM), new ciy(cjb.nF)),
+   f(new ciy(cjb.qe)),
+   g(new ciy(cjb.pj)),
+   h(new ciy(csn.b)),
+   i(new ciy(cjb.pM), new ciy(cjb.nL)),
+   j(new ciy(cjb.qe)),
+   k(new ciy(csn.dI)),
+   l(new ciy(cjb.on), new ciy(cjb.pc)),
+   m(new ciy(cjb.qe)),
+   n(new ciy(cjb.pj)),
+   o(new ciy(cjb.fj)),
+   p(new ciy(cjb.pf)),
+   q(new ciy(cjb.pj)),
+   r(new ciy(cjb.hf));
 
-   public eqv(eqn $$0) {
-      this.b = $$0;
+   public static final List<eqv> s = ImmutableList.of(m, n);
+   public static final List<eqv> t = ImmutableList.of(j, k, l);
+   public static final List<eqv> u = ImmutableList.of(f, g, h, i);
+   public static final List<eqv> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<eqv, List<eqv>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<ciy> x;
+
+   private eqv(ciy... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public void a(exv $$0) {
-      if (!this.b.ae() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fas($$0));
-         this.d = true;
-      }
+   public static List<eqv> a(cfp $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return elx.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (enk var2) {
-         return false;
-      }
+   public List<ciy> a() {
+      return this.x;
    }
 }

@@ -1,243 +1,588 @@
-import com.google.common.collect.Lists;
+import com.google.common.primitives.Doubles;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class gb {
-   public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ehf, List<? extends big>> b = ($$0, $$1) -> {
-   };
-   private static final diw<big, ?> c = new diw<big, big>() {
-      public big a(big $$0) {
-         return $$0;
+   public static final char a = '@';
+   private static final char o = '[';
+   private static final char p = ']';
+   public static final char b = '=';
+   private static final char q = ',';
+   public static final char c = '!';
+   public static final char d = '#';
+   private static final char r = 'p';
+   private static final char s = 'a';
+   private static final char t = 'r';
+   private static final char u = 's';
+   private static final char v = 'e';
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tf.c("argument.entity.invalid"));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tf.a("argument.entity.selector.unknown", $$0));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tf.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tf.c("argument.entity.selector.missing"));
+   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tf.c("argument.entity.options.unterminated"));
+   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> tf.a("argument.entity.options.valueless", $$0));
+   public static final BiConsumer<ehe, List<? extends bii>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.e($$0), $$2.e($$0)));
+   public static final BiConsumer<ehe, List<? extends bii>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.e($$0), $$1x.e($$0)));
+   public static final BiConsumer<ehe, List<? extends bii>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
+   private final StringReader w;
+   private final boolean x;
+   private int y;
+   private boolean z;
+   private boolean A;
+   private cj.c B = cj.c.c;
+   private cj.d C = cj.d.c;
+   @Nullable
+   private Double D;
+   @Nullable
+   private Double E;
+   @Nullable
+   private Double F;
+   @Nullable
+   private Double G;
+   @Nullable
+   private Double H;
+   @Nullable
+   private Double I;
+   private dh J = dh.a;
+   private dh K = dh.a;
+   private Predicate<bii> L = $$0x -> true;
+   private BiConsumer<ehe, List<? extends bii>> M = ga.b;
+   private boolean N;
+   @Nullable
+   private String O;
+   private int P;
+   @Nullable
+   private UUID Q;
+   private BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> R = n;
+   private boolean S;
+   private boolean T;
+   private boolean U;
+   private boolean V;
+   private boolean W;
+   private boolean X;
+   private boolean Y;
+   private boolean Z;
+   @Nullable
+   private bim<?> aa;
+   private boolean ab;
+   private boolean ac;
+   private boolean ad;
+   private boolean ae;
+
+   public gb(StringReader $$0) {
+      this($$0, true);
+   }
+
+   public gb(StringReader $$0, boolean $$1) {
+      this.w = $$0;
+      this.x = $$1;
+   }
+
+   public ga a() {
+      egz $$2;
+      if (this.G == null && this.H == null && this.I == null) {
+         if (this.B.b().isPresent()) {
+            double $$1 = this.B.b().get();
+            $$2 = new egz(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+         } else {
+            $$2 = null;
+         }
+      } else {
+         $$2 = this.a(this.G == null ? 0.0 : this.G, this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I);
       }
 
-      @Override
-      public Class<? extends big> a() {
-         return big.class;
+      Function<ehe, ehe> $$4;
+      if (this.D == null && this.E == null && this.F == null) {
+         $$4 = $$0 -> $$0;
+      } else {
+         $$4 = $$0 -> new ehe(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
       }
-   };
-   private final int d;
-   private final boolean e;
-   private final boolean f;
-   private final Predicate<big> g;
-   private final cj.c h;
-   private final Function<ehf, ehf> i;
-   @Nullable
-   private final eha j;
-   private final BiConsumer<ehf, List<? extends big>> k;
-   private final boolean l;
-   @Nullable
-   private final String m;
-   @Nullable
-   private final UUID n;
-   private final diw<big, ?> o;
-   private final boolean p;
 
-   public gb(
-      int $$0,
-      boolean $$1,
-      boolean $$2,
-      Predicate<big> $$3,
-      cj.c $$4,
-      Function<ehf, ehf> $$5,
-      @Nullable eha $$6,
-      BiConsumer<ehf, List<? extends big>> $$7,
-      boolean $$8,
-      @Nullable String $$9,
-      @Nullable UUID $$10,
-      @Nullable bik<?> $$11,
-      boolean $$12
-   ) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$8;
-      this.m = $$9;
-      this.n = $$10;
-      this.o = (diw<big, ?>)($$11 == null ? c : $$11);
-      this.p = $$12;
+      return new ga(this.y, this.z, this.A, this.L, this.B, $$4, $$2, this.M, this.N, this.O, this.Q, this.aa, this.ae);
    }
 
-   public int a() {
-      return this.d;
+   private egz a(double $$0, double $$1, double $$2) {
+      boolean $$3 = $$0 < 0.0;
+      boolean $$4 = $$1 < 0.0;
+      boolean $$5 = $$2 < 0.0;
+      double $$6 = $$3 ? $$0 : 0.0;
+      double $$7 = $$4 ? $$1 : 0.0;
+      double $$8 = $$5 ? $$2 : 0.0;
+      double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
+      double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
+      double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
+      return new egz($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
-   public boolean b() {
-      return this.e;
+   private void I() {
+      if (this.J != dh.a) {
+         this.L = this.L.and(this.a(this.J, bii::dC));
+      }
+
+      if (this.K != dh.a) {
+         this.L = this.L.and(this.a(this.K, bii::dA));
+      }
+
+      if (!this.C.c()) {
+         this.L = this.L.and($$0 -> !($$0 instanceof akl) ? false : this.C.d(((akl)$$0).cd));
+      }
    }
 
-   public boolean c() {
-      return this.l;
+   private Predicate<bii> a(dh $$0, ToDoubleFunction<bii> $$1) {
+      double $$2 = (double)arp.g($$0.b() == null ? 0.0F : $$0.b());
+      double $$3 = (double)arp.g($$0.c() == null ? 359.0F : $$0.c());
+      return $$3x -> {
+         double $$4 = arp.d($$1.applyAsDouble($$3x));
+         return $$2 > $$3 ? $$4 >= $$2 || $$4 <= $$3 : $$4 >= $$2 && $$4 <= $$3;
+      };
    }
 
-   public boolean d() {
-      return this.f;
+   protected void b() throws CommandSyntaxException {
+      this.ae = true;
+      this.R = this::d;
+      if (!this.w.canRead()) {
+         throw h.createWithContext(this.w);
+      } else {
+         int $$0 = this.w.getCursor();
+         char $$1 = this.w.read();
+         if ($$1 == 'p') {
+            this.y = 1;
+            this.z = false;
+            this.M = k;
+            this.a(bim.bt);
+         } else if ($$1 == 'a') {
+            this.y = Integer.MAX_VALUE;
+            this.z = false;
+            this.M = ga.b;
+            this.a(bim.bt);
+         } else if ($$1 == 'r') {
+            this.y = 1;
+            this.z = false;
+            this.M = m;
+            this.a(bim.bt);
+         } else if ($$1 == 's') {
+            this.y = 1;
+            this.z = true;
+            this.N = true;
+         } else {
+            if ($$1 != 'e') {
+               this.w.setCursor($$0);
+               throw f.createWithContext(this.w, "@" + $$1);
+            }
+
+            this.y = Integer.MAX_VALUE;
+            this.z = true;
+            this.M = ga.b;
+            this.L = bii::bv;
+         }
+
+         this.R = this::e;
+         if (this.w.canRead() && this.w.peek() == '[') {
+            this.w.skip();
+            this.R = this::f;
+            this.d();
+         }
+      }
+   }
+
+   protected void c() throws CommandSyntaxException {
+      if (this.w.canRead()) {
+         this.R = this::c;
+      }
+
+      int $$0 = this.w.getCursor();
+      String $$1 = this.w.readString();
+
+      try {
+         this.Q = UUID.fromString($$1);
+         this.z = true;
+      } catch (IllegalArgumentException var4) {
+         if ($$1.isEmpty() || $$1.length() > 16) {
+            this.w.setCursor($$0);
+            throw e.createWithContext(this.w);
+         }
+
+         this.z = false;
+         this.O = $$1;
+      }
+
+      this.y = 1;
+   }
+
+   protected void d() throws CommandSyntaxException {
+      this.R = this::g;
+      this.w.skipWhitespace();
+
+      while (this.w.canRead() && this.w.peek() != ']') {
+         this.w.skipWhitespace();
+         int $$0 = this.w.getCursor();
+         String $$1 = this.w.readString();
+         gc.a $$2 = gc.a(this, $$1, $$0);
+         this.w.skipWhitespace();
+         if (!this.w.canRead() || this.w.peek() != '=') {
+            this.w.setCursor($$0);
+            throw j.createWithContext(this.w, $$1);
+         }
+
+         this.w.skip();
+         this.w.skipWhitespace();
+         this.R = n;
+         $$2.handle(this);
+         this.w.skipWhitespace();
+         this.R = this::h;
+         if (this.w.canRead()) {
+            if (this.w.peek() != ',') {
+               if (this.w.peek() != ']') {
+                  throw i.createWithContext(this.w);
+               }
+               break;
+            }
+
+            this.w.skip();
+            this.R = this::g;
+         }
+      }
+
+      if (this.w.canRead()) {
+         this.w.skip();
+         this.R = n;
+      } else {
+         throw i.createWithContext(this.w);
+      }
    }
 
    public boolean e() {
-      return this.p;
-   }
-
-   private void e(ds $$0) throws CommandSyntaxException {
-      if (this.p && !$$0.c(2)) {
-         throw ed.f.create();
-      }
-   }
-
-   public big a(ds $$0) throws CommandSyntaxException {
-      this.e($$0);
-      List<? extends big> $$1 = this.b($$0);
-      if ($$1.isEmpty()) {
-         throw ed.d.create();
-      } else if ($$1.size() > 1) {
-         throw ed.a.create();
+      this.w.skipWhitespace();
+      if (this.w.canRead() && this.w.peek() == '!') {
+         this.w.skip();
+         this.w.skipWhitespace();
+         return true;
       } else {
-         return $$1.get(0);
+         return false;
       }
    }
 
-   public List<? extends big> b(ds $$0) throws CommandSyntaxException {
-      return this.f($$0).stream().filter($$1 -> $$1.ag().a($$0.w())).toList();
+   public boolean f() {
+      this.w.skipWhitespace();
+      if (this.w.canRead() && this.w.peek() == '#') {
+         this.w.skip();
+         this.w.skipWhitespace();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private List<? extends big> f(ds $$0) throws CommandSyntaxException {
-      this.e($$0);
-      if (!this.e) {
-         return this.d($$0);
-      } else if (this.m != null) {
-         akj $$1 = $$0.l().ac().a(this.m);
-         return (List<? extends big>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akj[]{$$1}));
-      } else if (this.n != null) {
-         for (aki $$2 : $$0.l().F()) {
-            big $$3 = $$2.a(this.n);
-            if ($$3 != null) {
-               return Lists.newArrayList(new big[]{$$3});
-            }
+   public StringReader g() {
+      return this.w;
+   }
+
+   public void a(Predicate<bii> $$0) {
+      this.L = this.L.and($$0);
+   }
+
+   public void h() {
+      this.A = true;
+   }
+
+   public cj.c i() {
+      return this.B;
+   }
+
+   public void a(cj.c $$0) {
+      this.B = $$0;
+   }
+
+   public cj.d j() {
+      return this.C;
+   }
+
+   public void a(cj.d $$0) {
+      this.C = $$0;
+   }
+
+   public dh k() {
+      return this.J;
+   }
+
+   public void a(dh $$0) {
+      this.J = $$0;
+   }
+
+   public dh l() {
+      return this.K;
+   }
+
+   public void b(dh $$0) {
+      this.K = $$0;
+   }
+
+   @Nullable
+   public Double m() {
+      return this.D;
+   }
+
+   @Nullable
+   public Double n() {
+      return this.E;
+   }
+
+   @Nullable
+   public Double o() {
+      return this.F;
+   }
+
+   public void a(double $$0) {
+      this.D = $$0;
+   }
+
+   public void b(double $$0) {
+      this.E = $$0;
+   }
+
+   public void c(double $$0) {
+      this.F = $$0;
+   }
+
+   public void d(double $$0) {
+      this.G = $$0;
+   }
+
+   public void e(double $$0) {
+      this.H = $$0;
+   }
+
+   public void f(double $$0) {
+      this.I = $$0;
+   }
+
+   @Nullable
+   public Double p() {
+      return this.G;
+   }
+
+   @Nullable
+   public Double q() {
+      return this.H;
+   }
+
+   @Nullable
+   public Double r() {
+      return this.I;
+   }
+
+   public void a(int $$0) {
+      this.y = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.z = $$0;
+   }
+
+   public BiConsumer<ehe, List<? extends bii>> s() {
+      return this.M;
+   }
+
+   public void a(BiConsumer<ehe, List<? extends bii>> $$0) {
+      this.M = $$0;
+   }
+
+   public ga t() throws CommandSyntaxException {
+      this.P = this.w.getCursor();
+      this.R = this::b;
+      if (this.w.canRead() && this.w.peek() == '@') {
+         if (!this.x) {
+            throw g.createWithContext(this.w);
          }
 
-         return Collections.emptyList();
+         this.w.skip();
+         this.b();
       } else {
-         ehf $$4 = this.i.apply($$0.d());
-         Predicate<big> $$5 = this.a($$4);
-         if (this.l) {
-            return (List<? extends big>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new big[]{$$0.f()}) : Collections.emptyList());
-         } else {
-            List<big> $$6 = Lists.newArrayList();
-            if (this.d()) {
-               this.a($$6, $$0.e(), $$4, $$5);
-            } else {
-               for (aki $$7 : $$0.l().F()) {
-                  this.a($$6, $$7, $$4, $$5);
-               }
-            }
-
-            return this.a($$4, $$6);
-         }
-      }
-   }
-
-   private void a(List<big> $$0, aki $$1, ehf $$2, Predicate<big> $$3) {
-      int $$4 = this.f();
-      if ($$0.size() < $$4) {
-         if (this.j != null) {
-            $$1.a(this.o, this.j.c($$2), $$3, $$0, $$4);
-         } else {
-            $$1.a(this.o, $$3, $$0, $$4);
-         }
-      }
-   }
-
-   private int f() {
-      return this.k == b ? this.d : Integer.MAX_VALUE;
-   }
-
-   public akj c(ds $$0) throws CommandSyntaxException {
-      this.e($$0);
-      List<akj> $$1 = this.d($$0);
-      if ($$1.size() != 1) {
-         throw ed.e.create();
-      } else {
-         return $$1.get(0);
-      }
-   }
-
-   public List<akj> d(ds $$0) throws CommandSyntaxException {
-      this.e($$0);
-      if (this.m != null) {
-         akj $$1 = $$0.l().ac().a(this.m);
-         return (List<akj>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akj[]{$$1}));
-      } else if (this.n != null) {
-         akj $$2 = $$0.l().ac().a(this.n);
-         return (List<akj>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new akj[]{$$2}));
-      } else {
-         ehf $$3 = this.i.apply($$0.d());
-         Predicate<big> $$4 = this.a($$3);
-         if (this.l) {
-            if ($$0.f() instanceof akj) {
-               akj $$5 = (akj)$$0.f();
-               if ($$4.test($$5)) {
-                  return Lists.newArrayList(new akj[]{$$5});
-               }
-            }
-
-            return Collections.emptyList();
-         } else {
-            int $$6 = this.f();
-            List<akj> $$7;
-            if (this.d()) {
-               $$7 = $$0.e().a($$4, $$6);
-            } else {
-               $$7 = Lists.newArrayList();
-
-               for (akj $$9 : $$0.l().ac().t()) {
-                  if ($$4.test($$9)) {
-                     $$7.add($$9);
-                     if ($$7.size() >= $$6) {
-                        return $$7;
-                     }
-                  }
-               }
-            }
-
-            return this.a($$3, $$7);
-         }
-      }
-   }
-
-   private Predicate<big> a(ehf $$0) {
-      Predicate<big> $$1 = this.g;
-      if (this.j != null) {
-         eha $$2 = this.j.c($$0);
-         $$1 = $$1.and($$1x -> $$2.c($$1x.cG()));
+         this.c();
       }
 
-      if (!this.h.c()) {
-         $$1 = $$1.and($$1x -> this.h.e($$1x.e($$0)));
-      }
-
-      return $$1;
+      this.I();
+      return this.a();
    }
 
-   private <T extends big> List<T> a(ehf $$0, List<T> $$1) {
-      if ($$1.size() > 1) {
-         this.k.accept($$0, $$1);
-      }
-
-      return $$1.subList(0, Math.min(this.d, $$1.size()));
+   private static void a(SuggestionsBuilder $$0) {
+      $$0.suggest("@p", tf.c("argument.entity.selector.nearestPlayer"));
+      $$0.suggest("@a", tf.c("argument.entity.selector.allPlayers"));
+      $$0.suggest("@r", tf.c("argument.entity.selector.randomPlayer"));
+      $$0.suggest("@s", tf.c("argument.entity.selector.self"));
+      $$0.suggest("@e", tf.c("argument.entity.selector.allEntities"));
    }
 
-   public static te a(List<? extends big> $$0) {
-      return tg.b($$0, big::H_);
+   private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$1.accept($$0);
+      if (this.x) {
+         a($$0);
+      }
+
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      SuggestionsBuilder $$2 = $$0.createOffset(this.P);
+      $$1.accept($$2);
+      return $$0.add($$2).buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      SuggestionsBuilder $$2 = $$0.createOffset($$0.getStart() - 1);
+      a($$2);
+      $$0.add($$2);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf('['));
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> f(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf(']'));
+      gc.a(this, $$0);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> g(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      gc.a(this, $$0);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> h(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf(','));
+      $$0.suggest(String.valueOf(']'));
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> i(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf('='));
+      return $$0.buildFuture();
+   }
+
+   public boolean u() {
+      return this.N;
+   }
+
+   public void a(BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> $$0) {
+      this.R = $$0;
+   }
+
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      return this.R.apply($$0.createOffset(this.w.getCursor()), $$1);
+   }
+
+   public boolean v() {
+      return this.S;
+   }
+
+   public void b(boolean $$0) {
+      this.S = $$0;
+   }
+
+   public boolean w() {
+      return this.T;
+   }
+
+   public void c(boolean $$0) {
+      this.T = $$0;
+   }
+
+   public boolean x() {
+      return this.U;
+   }
+
+   public void d(boolean $$0) {
+      this.U = $$0;
+   }
+
+   public boolean y() {
+      return this.V;
+   }
+
+   public void e(boolean $$0) {
+      this.V = $$0;
+   }
+
+   public boolean z() {
+      return this.W;
+   }
+
+   public void f(boolean $$0) {
+      this.W = $$0;
+   }
+
+   public boolean A() {
+      return this.X;
+   }
+
+   public void g(boolean $$0) {
+      this.X = $$0;
+   }
+
+   public boolean B() {
+      return this.Y;
+   }
+
+   public void h(boolean $$0) {
+      this.Y = $$0;
+   }
+
+   public boolean C() {
+      return this.Z;
+   }
+
+   public void i(boolean $$0) {
+      this.Z = $$0;
+   }
+
+   public void a(bim<?> $$0) {
+      this.aa = $$0;
+   }
+
+   public void D() {
+      this.ab = true;
+   }
+
+   public boolean E() {
+      return this.aa != null;
+   }
+
+   public boolean F() {
+      return this.ab;
+   }
+
+   public boolean G() {
+      return this.ac;
+   }
+
+   public void j(boolean $$0) {
+      this.ac = $$0;
+   }
+
+   public boolean H() {
+      return this.ad;
+   }
+
+   public void k(boolean $$0) {
+      this.ad = $$0;
    }
 }

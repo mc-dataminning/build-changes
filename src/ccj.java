@@ -1,54 +1,51 @@
-public abstract class ccj extends cck implements cca {
-   private static final adx<ciw> b = aea.a(ccj.class, adz.h);
-
-   public ccj(bik<? extends ccj> $$0, cpk $$1) {
+public class ccj extends ccl {
+   public ccj(bim<? extends ccj> $$0, cpm $$1) {
       super($$0, $$1);
    }
 
-   public ccj(bik<? extends ccj> $$0, double $$1, double $$2, double $$3, cpk $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public ccj(cpm $$0, biy $$1) {
+      super(bim.aP, $$1, $$0);
    }
 
-   public ccj(bik<? extends ccj> $$0, biw $$1, cpk $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(ciw $$0) {
-      if (!$$0.a(this.m()) || $$0.u()) {
-         this.al().b(b, $$0.c(1));
-      }
-   }
-
-   protected abstract cir m();
-
-   protected ciw o() {
-      return this.al().b(b);
+   public ccj(cpm $$0, double $$1, double $$2, double $$3) {
+      super(bim.aP, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public ciw j() {
-      ciw $$0 = this.o();
-      return $$0.b() ? new ciw(this.m()) : $$0;
+   protected cit m() {
+      return cjb.pO;
+   }
+
+   private it q() {
+      ciy $$0 = this.o();
+      return (it)($$0.b() ? iv.R : new ir(iv.O, $$0));
    }
 
    @Override
-   protected void a_() {
-      this.al().a(b, ciw.b);
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         it $$1 = this.q();
 
-   @Override
-   public void b(qs $$0) {
-      super.b($$0);
-      ciw $$1 = this.o();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qs()));
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dK().a($$1, this.dp(), this.dr(), this.dv(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   public void a(qs $$0) {
+   protected void a(ehb $$0) {
       super.a($$0);
-      ciw $$1 = ciw.a($$0.p("Item"));
-      this.a($$1);
+      bii $$1 = $$0.a();
+      int $$2 = $$1 instanceof byl ? 3 : 0;
+      $$1.a(this.dL().b(this, this.v()), (float)$$2);
+   }
+
+   @Override
+   protected void a(ehc $$0) {
+      super.a($$0);
+      if (!this.dK().B) {
+         this.dK().a(this, (byte)3);
+         this.ak();
+      }
    }
 }

@@ -1,5 +1,3 @@
-public class evy {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
-   }
+public interface evy {
+   void b(evx var1);
 }

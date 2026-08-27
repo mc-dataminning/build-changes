@@ -1,24 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fsz extends ftu<byw, ffb<byw>> {
+   private static final aer a = new aer("textures/entity/zombie/zombie.png");
+   private final float i;
 
-public final class fsz extends frg<bwj, fev<bwj>> {
-   private static final Map<bwq, aep> a = ac.a(Maps.newEnumMap(bwq.class), $$0 -> {
-      $$0.put(bwq.a, new aep("textures/entity/horse/horse_white.png"));
-      $$0.put(bwq.b, new aep("textures/entity/horse/horse_creamy.png"));
-      $$0.put(bwq.c, new aep("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(bwq.d, new aep("textures/entity/horse/horse_brown.png"));
-      $$0.put(bwq.e, new aep("textures/entity/horse/horse_black.png"));
-      $$0.put(bwq.f, new aep("textures/entity/horse/horse_gray.png"));
-      $$0.put(bwq.g, new aep("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public fsz(fsj.a $$0) {
-      super($$0, new fev<>($$0.a(fhi.aj)), 1.1F);
-      this.a(new fwg(this));
-      this.a(new fwf(this, $$0.f()));
+   public fsz(fso.a $$0, float $$1) {
+      super($$0, new fet($$0.a(fhm.ab)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new fwp<>(this, $$0.d()));
+      this.a(new fwm<>(this, new fet($$0.a(fhm.ac)), new fet($$0.a(fhm.ad)), $$0.g()));
    }
 
-   public aep a(bwj $$0) {
-      return a.get($$0.q());
+   protected void a(byw $$0, elg $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public aer a(byw $$0) {
+      return a;
    }
 }

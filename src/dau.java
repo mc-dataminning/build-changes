@@ -1,104 +1,83 @@
-import javax.annotation.Nullable;
+public class dau extends csm {
+   private static final dga a = dfq.aT;
+   private static final int b = 20;
+   private static final int c = 8;
 
-public class dau extends csk {
-   public static final dfp a = dfo.B;
-
-   public dau(dex.d $$0) {
+   public dau(dez.d $$0) {
       super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if ($$1.B($$2)) {
-            a($$1, $$2);
-            $$1.a($$2, false);
-         }
+   public void a(cpm $$0, dfa $$1, eha $$2, ccf $$3) {
+      int $$4 = a((cpn)$$0, $$1, $$2, (bii)$$3);
+      if ($$3.v() instanceof akl $$6) {
+         $$6.a(apg.aE);
+         ai.L.a($$6, $$3, $$2.e(), $$4);
       }
    }
 
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, csk $$3, gv $$4, boolean $$5) {
-      if ($$1.B($$2)) {
-         a($$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   public void a(cpk $$0, gv $$1, dey $$2, cbl $$3) {
-      if (!$$0.r_() && !$$3.f() && $$2.c(a)) {
-         a($$0, $$1);
+   private static int a(cpn $$0, dfa $$1, eha $$2, bii $$3) {
+      int $$4 = a($$2, $$2.e());
+      int $$5 = $$3 instanceof cbt ? 20 : 8;
+      if (!$$0.L().a($$2.a(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.a(), $$5);
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return $$4;
    }
 
-   @Override
-   public void a(cpk $$0, gv $$1, cpc $$2) {
-      if (!$$0.B) {
-         byf $$3 = new byf($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.e());
-         int $$4 = $$3.m();
-         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
-         $$0.b($$3);
-      }
-   }
-
-   public static void a(cpk $$0, gv $$1) {
-      a($$0, $$1, null);
-   }
-
-   private static void a(cpk $$0, gv $$1, @Nullable biw $$2) {
-      if (!$$0.B) {
-         byf $$3 = new byf($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
-         $$0.b($$3);
-         $$0.a(null, $$3.dp(), $$3.dr(), $$3.dv(), aou.xG, aov.e, 1.0F, 1.0F);
-         $$0.a($$2, dji.I, $$1);
-      }
-   }
-
-   @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      ciw $$6 = $$3.b($$4);
-      if (!$$6.a(ciz.nE) && !$$6.a(ciz.tf)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static int a(eha $$0, ehe $$1) {
+      ha $$2 = $$0.b();
+      double $$3 = Math.abs(arp.e($$1.c) - 0.5);
+      double $$4 = Math.abs(arp.e($$1.d) - 0.5);
+      double $$5 = Math.abs(arp.e($$1.e) - 0.5);
+      ha.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == ha.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == ha.a.c) {
+         $$7 = Math.max($$3, $$4);
       } else {
-         a($$1, $$2, $$3);
-         $$1.a($$2, csl.a.n(), 11);
-         cir $$7 = $$6.d();
-         if (!$$3.f()) {
-            if ($$6.a(ciz.nE)) {
-               $$6.a(1, $$3, $$1x -> $$1x.d($$4));
-            } else {
-               $$6.h(1);
-            }
-         }
+         $$7 = Math.max($$4, $$5);
+      }
 
-         $$3.b(ape.c.b($$7));
-         return bgo.a($$1.B);
+      return Math.max(1, arp.c(15.0 * arp.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(cpn $$0, dfa $$1, int $$2, gu $$3, int $$4) {
+      $$0.a($$3, $$1.a(a, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
+   }
+
+   @Override
+   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$0.c(a) != 0) {
+         $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 3);
       }
    }
 
    @Override
-   public void a(cpk $$0, dey $$1, ehb $$2, ccd $$3) {
-      if (!$$0.B) {
-         gv $$4 = $$2.a();
-         big $$5 = $$3.v();
-         if ($$3.bM() && $$3.a($$0, $$4)) {
-            a($$0, $$4, $$5 instanceof biw ? (biw)$$5 : null);
-            $$0.a($$4, false);
-         }
-      }
+   public int a(dfa $$0, cos $$1, gu $$2, ha $$3) {
+      return $$0.c(a);
    }
 
    @Override
-   public boolean a(cpc $$0) {
-      return false;
+   public boolean f_(dfa $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
+   protected void a(dfb.a<csm, dfa> $$0) {
       $$0.a(a);
+   }
+
+   @Override
+   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      if (!$$1.r_() && !$$0.a($$3.b())) {
+         if ($$0.c(a) > 0 && !$$1.L().a($$2, this)) {
+            $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 18);
+         }
+      }
    }
 }

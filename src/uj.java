@@ -1,22 +1,10 @@
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record uj(String b) implements tf {
-   @Override
-   public <T> Optional<T> a(ti.a<T> $$0) {
-      return $$0.accept(this.b);
-   }
+public class uj {
+   static Function<String, Supplier<tf>> a = $$0 -> () -> tf.b($$0);
 
-   @Override
-   public <T> Optional<T> a(ti.b<T> $$0, ua $$1) {
-      return $$0.accept($$1, this.b);
-   }
-
-   @Override
-   public String toString() {
-      return "literal{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
+   public static void a(Function<String, Supplier<tf>> $$0) {
+      a = $$0;
    }
 }

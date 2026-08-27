@@ -1,122 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
 
-public class edo extends edv {
-   private static final Logger a = LogUtils.getLogger();
-   final List<cnd> b;
+public class edo extends edt {
+   public static final aqa<duz> a = apw.e;
+   public static final ebk.a b = ebk.a.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final Codec<edo> f = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aqy.a(aqa.a(jc.az), "destination", a).forGetter($$0x -> $$0x.h),
+                  ebk.a.B.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  aqy.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
+                  aqy.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
+                  aqy.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, edo::new)
+   );
+   private final aqa<duz> h;
+   private final ebk.a i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   edo(efh[] $$0, Collection<cnd> $$1) {
+   edo(List<efg> $$0, aqa<duz> $$1, ebk.a $$2, byte $$3, int $$4, boolean $$5) {
       super($$0);
-      this.b = ImmutableList.copyOf($$1);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public edx b() {
-      return edy.d;
+   public edv b() {
+      return edw.m;
    }
 
    @Override
-   public ciw a(ciw $$0, ech $$1) {
-      art $$2 = $$1.b();
-      cnd $$5;
-      if (this.b.isEmpty()) {
-         boolean $$3 = $$0.a(ciz.qb);
-         List<cnd> $$4 = jc.g.s().filter(cnd::i).filter($$2x -> $$3 || $$2x.a($$0)).collect(Collectors.toList());
-         if ($$4.isEmpty()) {
-            a.warn("Couldn't find a compatible enchantment for {}", $$0);
-            return $$0;
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(ees.f);
+   }
+
+   @Override
+   public ciy a(ciy $$0, ech $$1) {
+      if (!$$0.a(cjb.tp)) {
+         return $$0;
+      } else {
+         ehe $$2 = $$1.c(ees.f);
+         if ($$2 != null) {
+            akk $$3 = $$1.d();
+            gu $$4 = $$3.a(this.h, gu.a($$2), this.k, this.l);
+            if ($$4 != null) {
+               ciy $$5 = cjf.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cjf.a($$3, $$5);
+               ebn.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
          }
 
-         $$5 = $$4.get($$2.a($$4.size()));
-      } else {
-         $$5 = this.b.get($$2.a(this.b.size()));
+         return $$0;
       }
-
-      return a($$0, $$5, $$2);
-   }
-
-   private static ciw a(ciw $$0, cnd $$1, art $$2) {
-      int $$3 = aro.a($$2, $$1.e(), $$1.a());
-      if ($$0.a(ciz.qb)) {
-         $$0 = new ciw(ciz.tC);
-         chs.a($$0, new cng($$1, $$3));
-      } else {
-         $$0.a($$1, $$3);
-      }
-
-      return $$0;
    }
 
    public static edo.a c() {
       return new edo.a();
    }
 
-   public static edv.a<?> d() {
-      return a($$0 -> new edo($$0, ImmutableList.of()));
-   }
+   public static class a extends edt.a<edo.a> {
+      private aqa<duz> a;
+      private ebk.a b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-   public static class a extends edv.a<edo.a> {
-      private final Set<cnd> a = Sets.newHashSet();
+      public a() {
+         this.a = edo.a;
+         this.b = edo.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
+      }
 
       protected edo.a a() {
          return this;
       }
 
-      public edo.a a(cnd $$0) {
-         this.a.add($$0);
+      public edo.a a(aqa<duz> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public edo.a a(ebk.a $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public edo.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public edo.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public edo.a a(boolean $$0) {
+         this.e = $$0;
          return this;
       }
 
       @Override
-      public edw b() {
-         return new edo(this.g(), this.a);
-      }
-   }
-
-   public static class b extends edv.c<edo> {
-      public void a(JsonObject $$0, edo $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         if (!$$1.b.isEmpty()) {
-            JsonArray $$3 = new JsonArray();
-
-            for (cnd $$4 : $$1.b) {
-               aep $$5 = jc.g.b($$4);
-               if ($$5 == null) {
-                  throw new IllegalArgumentException("Don't know how to serialize enchantment " + $$4);
-               }
-
-               $$3.add(new JsonPrimitive($$5.toString()));
-            }
-
-            $$0.add("enchantments", $$3);
-         }
-      }
-
-      public edo a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         List<cnd> $$3 = Lists.newArrayList();
-         if ($$0.has("enchantments")) {
-            for (JsonElement $$5 : arf.v($$0, "enchantments")) {
-               String $$6 = arf.a($$5, "enchantment");
-               cnd $$7 = jc.g.b(new aep($$6)).orElseThrow(() -> new JsonSyntaxException("Unknown enchantment '" + $$6 + "'"));
-               $$3.add($$7);
-            }
-         }
-
-         return new edo($$2, $$3);
+      public edu b() {
+         return new edo(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

@@ -1,70 +1,10 @@
-public abstract class cqp {
-   public static final aeo<cqi> a = a("the_void");
-   public static final aeo<cqi> b = a("plains");
-   public static final aeo<cqi> c = a("sunflower_plains");
-   public static final aeo<cqi> d = a("snowy_plains");
-   public static final aeo<cqi> e = a("ice_spikes");
-   public static final aeo<cqi> f = a("desert");
-   public static final aeo<cqi> g = a("swamp");
-   public static final aeo<cqi> h = a("mangrove_swamp");
-   public static final aeo<cqi> i = a("forest");
-   public static final aeo<cqi> j = a("flower_forest");
-   public static final aeo<cqi> k = a("birch_forest");
-   public static final aeo<cqi> l = a("dark_forest");
-   public static final aeo<cqi> m = a("old_growth_birch_forest");
-   public static final aeo<cqi> n = a("old_growth_pine_taiga");
-   public static final aeo<cqi> o = a("old_growth_spruce_taiga");
-   public static final aeo<cqi> p = a("taiga");
-   public static final aeo<cqi> q = a("snowy_taiga");
-   public static final aeo<cqi> r = a("savanna");
-   public static final aeo<cqi> s = a("savanna_plateau");
-   public static final aeo<cqi> t = a("windswept_hills");
-   public static final aeo<cqi> u = a("windswept_gravelly_hills");
-   public static final aeo<cqi> v = a("windswept_forest");
-   public static final aeo<cqi> w = a("windswept_savanna");
-   public static final aeo<cqi> x = a("jungle");
-   public static final aeo<cqi> y = a("sparse_jungle");
-   public static final aeo<cqi> z = a("bamboo_jungle");
-   public static final aeo<cqi> A = a("badlands");
-   public static final aeo<cqi> B = a("eroded_badlands");
-   public static final aeo<cqi> C = a("wooded_badlands");
-   public static final aeo<cqi> D = a("meadow");
-   public static final aeo<cqi> E = a("cherry_grove");
-   public static final aeo<cqi> F = a("grove");
-   public static final aeo<cqi> G = a("snowy_slopes");
-   public static final aeo<cqi> H = a("frozen_peaks");
-   public static final aeo<cqi> I = a("jagged_peaks");
-   public static final aeo<cqi> J = a("stony_peaks");
-   public static final aeo<cqi> K = a("river");
-   public static final aeo<cqi> L = a("frozen_river");
-   public static final aeo<cqi> M = a("beach");
-   public static final aeo<cqi> N = a("snowy_beach");
-   public static final aeo<cqi> O = a("stony_shore");
-   public static final aeo<cqi> P = a("warm_ocean");
-   public static final aeo<cqi> Q = a("lukewarm_ocean");
-   public static final aeo<cqi> R = a("deep_lukewarm_ocean");
-   public static final aeo<cqi> S = a("ocean");
-   public static final aeo<cqi> T = a("deep_ocean");
-   public static final aeo<cqi> U = a("cold_ocean");
-   public static final aeo<cqi> V = a("deep_cold_ocean");
-   public static final aeo<cqi> W = a("frozen_ocean");
-   public static final aeo<cqi> X = a("deep_frozen_ocean");
-   public static final aeo<cqi> Y = a("mushroom_fields");
-   public static final aeo<cqi> Z = a("dripstone_caves");
-   public static final aeo<cqi> aa = a("lush_caves");
-   public static final aeo<cqi> ab = a("deep_dark");
-   public static final aeo<cqi> ac = a("nether_wastes");
-   public static final aeo<cqi> ad = a("warped_forest");
-   public static final aeo<cqi> ae = a("crimson_forest");
-   public static final aeo<cqi> af = a("soul_sand_valley");
-   public static final aeo<cqi> ag = a("basalt_deltas");
-   public static final aeo<cqi> ah = a("the_end");
-   public static final aeo<cqi> ai = a("end_highlands");
-   public static final aeo<cqi> aj = a("end_midlands");
-   public static final aeo<cqi> ak = a("small_end_islands");
-   public static final aeo<cqi> al = a("end_barrens");
+import com.mojang.serialization.Codec;
 
-   private static aeo<cqi> a(String $$0) {
-      return aeo.a(jd.ap, new aep($$0));
+public class cqp {
+   public static Codec<? extends cqo> a(hr<Codec<? extends cqo>> $$0) {
+      hr.a($$0, "fixed", cqv.b);
+      hr.a($$0, "multi_noise", cqx.c);
+      hr.a($$0, "checkerboard", cqs.b);
+      return hr.a($$0, "the_end", crb.b);
    }
 }

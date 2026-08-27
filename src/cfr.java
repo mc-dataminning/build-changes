@@ -1,69 +1,68 @@
-public class cfr extends cec {
-   private static final int k = 27;
-   private final bgh l;
+import javax.annotation.Nullable;
 
-   public cfr(int $$0, cbk $$1) {
-      this($$0, $$1, new bgv(27));
-   }
+public class cfr implements bgj, cfq {
+   private final hn<ciy> c = hn.a(1, ciy.b);
+   @Nullable
+   private cmb<?> d;
 
-   public cfr(int $$0, cbk $$1, bgh $$2) {
-      super(cfh.t, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cfs($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cfu($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cfu($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public boolean a(cbl $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public ciw a(cbl $$0, int $$1) {
-      ciw $$2 = ciw.b;
-      cfu $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         ciw $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return ciw.b;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return ciw.b;
-         }
-
-         if ($$4.b()) {
-            $$3.d(ciw.b);
-         } else {
-            $$3.d();
+   public boolean ab_() {
+      for (ciy $$0 : this.c) {
+         if (!$$0.b()) {
+            return false;
          }
       }
 
-      return $$2;
+      return true;
    }
 
    @Override
-   public void b(cbl $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public ciy a(int $$0) {
+      return this.c.get(0);
+   }
+
+   @Override
+   public ciy a(int $$0, int $$1) {
+      return bgk.a(this.c, 0);
+   }
+
+   @Override
+   public ciy b(int $$0) {
+      return bgk.a(this.c, 0);
+   }
+
+   @Override
+   public void a(int $$0, ciy $$1) {
+      this.c.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cbn $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public void a(@Nullable cmb<?> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public cmb<?> d() {
+      return this.d;
    }
 }

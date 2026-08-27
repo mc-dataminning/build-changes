@@ -1,32 +1,66 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class lf {
-   @Deprecated
-   public static aep a(String $$0) {
-      return new aep("minecraft", "block/" + $$0);
+   private final Optional<aer> a;
+   private final Set<li> b;
+   private final Optional<String> c;
+
+   public lf(Optional<aer> $$0, Optional<String> $$1, li... $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   public static aep b(String $$0) {
-      return new aep("minecraft", "item/" + $$0);
+   public aer a(csm $$0, lh $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+      return this.a(le.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public static aep a(csk $$0, String $$1) {
-      aep $$2 = jc.f.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   public aer a(csm $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
+      return this.a(le.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public static aep a(csk $$0) {
-      aep $$1 = jc.f.b($$0);
-      return $$1.d("block/");
+   public aer b(csm $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
+      return this.a(le.a($$0, $$1), $$2, $$3);
    }
 
-   public static aep a(cir $$0) {
-      aep $$1 = jc.i.b($$0);
-      return $$1.d("item/");
+   public aer a(aer $$0, lh $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+      return this.a($$0, $$1, $$2, this::a);
    }
 
-   public static aep a(cir $$0, String $$1) {
-      aep $$2 = jc.i.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public aer a(aer $$0, lh $$1, BiConsumer<aer, Supplier<JsonElement>> $$2, lf.a $$3) {
+      Map<li, aer> $$4 = this.a($$1);
+      $$2.accept($$0, () -> $$3.create($$0, $$4));
+      return $$0;
+   }
+
+   public JsonObject a(aer $$0, Map<li, aer> $$1) {
+      JsonObject $$2 = new JsonObject();
+      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
+      if (!$$1.isEmpty()) {
+         JsonObject $$3 = new JsonObject();
+         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
+         $$2.add("textures", $$3);
+      }
+
+      return $$2;
+   }
+
+   private Map<li, aer> a(lh $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   }
+
+   public interface a {
+      JsonObject create(aer var1, Map<li, aer> var2);
    }
 }

@@ -1,213 +1,138 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fib implements uz {
-   private static final te g = te.c("disconnect.lost");
-   protected final eqn a;
-   protected final sf b;
-   @Nullable
-   protected final fin c;
-   @Nullable
-   protected String d;
-   protected final gdf e;
-   @Nullable
-   protected final exv f;
-   private final List<fib.a> h = new ArrayList<>();
+public class fib implements fir {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cbp>> g;
+   private Instant h = Instant.EPOCH;
 
-   protected fib(eqn $$0, sf $$1, fii $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
+   public fib(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
+      this.g = CompletableFuture.<Optional<cbp>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
    }
 
    @Override
-   public void a(vc $$0) {
-      this.a(new vi($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   public CompletableFuture<Optional<cbp>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
    @Override
-   public void a(vd $$0) {
-      uy.a($$0, this, this.a);
-      this.b(new vj($$0.a()));
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cbp::a).orElse(true) : false;
    }
 
-   @Override
-   public void a(va $$0) {
-      vo $$1 = $$0.a();
-      if (!($$1 instanceof vp)) {
-         uy.a($$0, this, this.a);
-         if ($$1 instanceof vn $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
-   }
-
-   protected abstract void a(vo var1);
-
-   protected abstract ht.b f();
-
-   @Override
-   public void a(ve $$0) {
-      URL $$1 = a($$0.a());
-      if ($$1 == null) {
-         this.a(vk.a.c);
-      } else {
-         String $$2 = $$0.d();
-         boolean $$3 = $$0.e();
-         if (this.c != null && this.c.b() == fin.a.a) {
-            this.a(vk.a.d);
-            this.a(this.a.ab().a($$1, $$2, true));
-         } else if (this.c != null && this.c.b() != fin.a.c && (!$$3 || this.c.b() != fin.a.b)) {
-            this.a(vk.a.b);
-            if ($$3) {
-               this.b.a(te.c("multiplayer.requiredTexturePrompt.disconnect"));
+   private CompletableFuture<Optional<cbp>> a(Optional<cbp> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aS) {
+               this.a(null);
             }
+
+            return $$0;
          } else {
-            this.a.execute(() -> this.a($$1, $$2, $$3, $$0.f()));
+            try {
+               cbp $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.of($$1);
+            } catch (aqq | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
          }
-      }
+      }, ac.f());
    }
 
-   private void a(URL $$0, String $$1, boolean $$2, @Nullable te $$3) {
-      exv $$4 = this.a.z;
-      this.a
-         .a(
-            new ewo(
-               $$4x -> {
-                  this.a.a($$4);
-                  if ($$4x) {
-                     if (this.c != null) {
-                        this.c.a(fin.a.a);
-                     }
-
-                     this.a(vk.a.d);
-                     this.a(this.a.ab().a($$0, $$1, true));
-                  } else {
-                     this.a(vk.a.b);
-                     if ($$2) {
-                        this.b.a(te.c("multiplayer.requiredTexturePrompt.disconnect"));
-                     } else if (this.c != null) {
-                        this.c.a(fin.a.b);
-                     }
-                  }
-
-                  if (this.c != null) {
-                     fio.b(this.c);
-                  }
-               },
-               $$2 ? te.c("multiplayer.requiredTexturePrompt.line1") : te.c("multiplayer.texturePrompt.line1"),
-               a($$2 ? te.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : te.c("multiplayer.texturePrompt.line2"), $$3),
-               $$2 ? td.i : td.f,
-               (te)($$2 ? te.c("menu.disconnect") : td.g)
-            )
-         );
-   }
-
-   private static te a(te $$0, @Nullable te $$1) {
-      return (te)($$1 == null ? $$0 : te.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   private void a(CompletableFuture<?> $$0) {
-      $$0.thenRun(() -> this.a(vk.a.a)).exceptionally($$0x -> {
-         this.a(vk.a.c);
-         return null;
-      });
-   }
-
-   @Override
-   public void a(vf $$0) {
-      uy.a($$0, this, this.a);
-      $$0.a().forEach(this::a);
-   }
-
-   private <T> void a(aeo<? extends hs<? extends T>> $$0, aqb.a $$1) {
-      if (!$$1.a()) {
-         hs<T> $$2 = this.f().c($$0).orElseThrow(() -> new IllegalStateException("Unknown registry " + $$0));
-         Map<apy<T>, List<hf<T>>> $$4 = new HashMap<>();
-         aqb.a($$0, $$2, $$1, $$4::put);
-         $$2.a($$4);
-      }
-   }
-
-   private void a(vk.a $$0) {
-      this.b.a(new vk($$0));
-   }
-
-   @Override
-   public void a(vb $$0) {
-      this.b.a($$0.a());
-   }
-
-   protected void g() {
-      Iterator<fib.a> $$0 = this.h.iterator();
-
-      while ($$0.hasNext()) {
-         fib.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(uw<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(te $$0) {
-      this.e.c();
-      this.a.b(this.b($$0));
-   }
-
-   protected exv b(te $$0) {
-      exv $$1 = Objects.requireNonNullElseGet(this.f, () -> new far(new eya()));
-      return (exv)(this.c != null && this.c.e() ? new gdz($$1, g, $$0) : new ewx($$1, g, $$0));
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   private void a(uw<? extends sr> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
+   private Optional<cbp> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
       } else {
-         this.h.add(new fib.a($$0, $$1, ac.b() + $$2.toMillis()));
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cbp.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
       }
    }
 
-   static record a(uw<? extends sr> a, BooleanSupplier b, long c) {
+   private void a(@Nullable cbp $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (aa.aS) {
+            cbp.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
+   }
+
+   private cbp a(UserApiService $$0) throws aqq, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cbq.a $$2 = a($$1);
+         return new cbp(aqp.a($$1.keyPair().privateKey()), new cbq($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         throw new IOException("Could not retrieve profile key pair");
+      }
+   }
+
+   private static cbq.a a(KeyPairResponse $$0) throws aqq {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = aqp.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cbq.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new aqq(var5);
+         }
+      } else {
+         throw new aqq(new MissingException());
+      }
    }
 }

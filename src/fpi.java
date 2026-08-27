@@ -1,49 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public class fpi implements fpl<dci> {
+   private final fhn a;
+   private final fhn b;
 
-public class fpi {
-   private static final Map<dcm<?>, fph<?>> a = Maps.newHashMap();
-
-   private static <T extends dck> void a(dcm<? extends T> $$0, fph<T> $$1) {
-      a.put($$0, $$1);
+   public fpi(fpm.a $$0) {
+      this.a = $$0.a(fhm.i);
+      this.b = $$0.a(fhm.h);
    }
 
-   public static Map<dcm<?>, fpg<?>> a(fph.a $$0) {
-      Builder<dcm<?>, fpg<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + jc.l.b((dcm<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   public static fht b() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      $$1.a("main", fhs.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fhp.a);
+      $$1.a("left_leg", fhs.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fhs.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fht.a($$0, 64, 64);
    }
 
-   static {
-      a(dcm.h, fpu::new);
-      a(dcm.i, fpq::new);
-      a(dcm.j, fpw::new);
-      a(dcm.k, fps::new);
-      a(dcm.b, fpm::new);
-      a(dcm.d, fpm::new);
-      a(dcm.c, fpm::new);
-      a(dcm.m, fpp::new);
-      a(dcm.D, fpr::new);
-      a(dcm.n, fpz::new);
-      a(dcm.v, fpy::new);
-      a(dcm.o, fpc::new);
-      a(dcm.p, fpv::new);
-      a(dcm.t, fpb::new);
-      a(dcm.u, fpx::new);
-      a(dcm.x, fpt::new);
-      a(dcm.y, fpd::new);
-      a(dcm.z, fpn::new);
-      a(dcm.E, fpe::new);
-      a(dcm.G, fpl::new);
-      a(dcm.N, fpk::new);
-      a(dcm.O, fpo::new);
+   public static fht c() {
+      fhv $$0 = new fhv();
+      fhw $$1 = $$0.a();
+      $$1.a("main", fhs.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fhp.a);
+      $$1.a("left_leg", fhs.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fhs.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fht.a($$0, 64, 64);
+   }
+
+   public void a(dci $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
+      gap $$6 = fnz.p[$$0.d().a()];
+      cpm $$7 = $$0.k();
+      if ($$7 != null) {
+         dfa $$8 = $$0.q();
+         cup.c<? extends dci> $$9 = cup.a(dco.y, csf::h, csf::g, cto.b, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fpo<>()).get($$4);
+         this.a($$2, $$3, $$8.c(csf.a) == dfn.a ? this.a : this.b, $$8.c(csf.aC), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, ha.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ha.d, $$6, $$4, $$5, true);
+      }
+   }
+
+   private void a(elg $$0, fnl $$1, fhn $$2, ha $$3, gap $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      elk $$8 = $$4.a($$1, fnt::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

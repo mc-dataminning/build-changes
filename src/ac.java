@@ -69,37 +69,38 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class ac {
-   static final Logger e = LogUtils.getLogger();
-   private static final int f = 255;
-   private static final String g = "max.bg.threads";
-   private static final AtomicInteger h = new AtomicInteger(1);
-   private static final ExecutorService i = c("Main");
-   private static final ExecutorService j = n();
-   private static final DateTimeFormatter k = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
-   public static asj.a a = System::nanoTime;
-   public static final Ticker b = new Ticker() {
+   static final Logger f = LogUtils.getLogger();
+   private static final int g = 255;
+   private static final String h = "max.bg.threads";
+   private static final AtomicInteger i = new AtomicInteger(1);
+   private static final ExecutorService j = c("Main");
+   private static final ExecutorService k = n();
+   private static final DateTimeFormatter l = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
+   public static final long a = 1000000L;
+   public static asl.a b = System::nanoTime;
+   public static final Ticker c = new Ticker() {
       public long read() {
-         return ac.a.getAsLong();
+         return ac.b.getAsLong();
       }
    };
-   public static final UUID c = new UUID(0L, 0L);
-   public static final FileSystemProvider d = FileSystemProvider.installedProviders()
+   public static final UUID d = new UUID(0L, 0L);
+   public static final FileSystemProvider e = FileSystemProvider.installedProviders()
       .stream()
       .filter($$0 -> $$0.getScheme().equalsIgnoreCase("jar"))
       .findFirst()
       .orElseThrow(() -> new IllegalStateException("No jar file system provider found"));
-   private static Consumer<String> l = $$0 -> {
+   private static Consumer<String> m = $$0 -> {
    };
 
    public static <K, V> Collector<Entry<? extends K, ? extends V>, ?, Map<K, V>> a() {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dgb<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dgd<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable aep $$1) {
+   public static String a(String $$0, @Nullable aer $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -108,7 +109,7 @@ public class ac {
    }
 
    public static long c() {
-      return a.getAsLong();
+      return b.getAsLong();
    }
 
    public static long d() {
@@ -116,11 +117,11 @@ public class ac {
    }
 
    public static String e() {
-      return k.format(ZonedDateTime.now());
+      return l.format(ZonedDateTime.now());
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = aro.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = arp.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -130,15 +131,15 @@ public class ac {
                @Override
                protected void onTermination(Throwable $$0) {
                   if ($$0 != null) {
-                     ac.e.warn("{} died", this.getName(), $$0);
+                     ac.f.warn("{} died", this.getName(), $$0);
                   } else {
-                     ac.e.debug("{} shutdown", this.getName());
+                     ac.f.debug("{} shutdown", this.getName());
                   }
 
                   super.onTermination($$0);
                }
             };
-            $$2x.setName("Worker-" + $$0 + "-" + h.getAndIncrement());
+            $$2x.setName("Worker-" + $$0 + "-" + i.getAndIncrement());
             return $$2x;
          }, ac::a, true);
       }
@@ -155,9 +156,9 @@ public class ac {
                return $$1;
             }
 
-            e.error("Wrong {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
+            f.error("Wrong {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
          } catch (NumberFormatException var2) {
-            e.error("Could not parse {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
+            f.error("Could not parse {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
          }
       }
 
@@ -165,16 +166,16 @@ public class ac {
    }
 
    public static ExecutorService f() {
-      return i;
-   }
-
-   public static ExecutorService g() {
       return j;
    }
 
+   public static ExecutorService g() {
+      return k;
+   }
+
    public static void h() {
-      a(i);
       a(j);
+      a(k);
    }
 
    private static void a(ExecutorService $$0) {
@@ -195,7 +196,7 @@ public class ac {
    private static ExecutorService n() {
       return Executors.newCachedThreadPool($$0 -> {
          Thread $$1 = new Thread($$0);
-         $$1.setName("IO-Worker-" + h.getAndIncrement());
+         $$1.setName("IO-Worker-" + i.getAndIncrement());
          $$1.setUncaughtExceptionHandler(ac::a);
          return $$1;
       });
@@ -212,11 +213,11 @@ public class ac {
       }
 
       if ($$1 instanceof y) {
-         aer.a(((y)$$1).a().e());
+         aet.a(((y)$$1).a().e());
          System.exit(-1);
       }
 
-      e.error(String.format(Locale.ROOT, "Caught exception in thread %s", $$0), $$1);
+      f.error(String.format(Locale.ROOT, "Caught exception in thread %s", $$0), $$1);
    }
 
    @Nullable
@@ -229,9 +230,9 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = asr.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = ast.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
-         e.error("No data fixer registered for {}", $$1);
+         f.error("No data fixer registered for {}", $$1);
          if (aa.aS) {
             throw var4;
          }
@@ -412,14 +413,14 @@ public class ac {
    }
 
    public static void a(String $$0) {
-      e.error($$0);
+      f.error($$0);
       if (aa.aS) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
-      e.error($$0, $$1);
+      f.error($$0, $$1);
       if (aa.aS) {
          d($$0);
       }
@@ -427,7 +428,7 @@ public class ac {
 
    public static <T extends Throwable> T b(T $$0) {
       if (aa.aS) {
-         e.error("Trying to throw a fatal exception, pausing in IDE", $$0);
+         f.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }
 
@@ -435,15 +436,15 @@ public class ac {
    }
 
    public static void a(Consumer<String> $$0) {
-      l = $$0;
+      m = $$0;
    }
 
    private static void d(String $$0) {
       Instant $$1 = Instant.now();
-      e.warn("Did you remember to set a breakpoint here?");
+      f.warn("Did you remember to set a breakpoint here?");
       boolean $$2 = Duration.between($$1, Instant.now()).toMillis() > 500L;
       if (!$$2) {
-         l.accept($$0);
+         m.accept($$0);
       }
    }
 
@@ -455,19 +456,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, art $$1) {
+   public static <T> T a(T[] $$0, aru $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, art $$1) {
+   public static int a(int[] $$0, aru $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, art $$1) {
+   public static <T> T a(List<T> $$0, aru $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, art $$1) {
+   public static <T> Optional<T> b(List<T> $$0, aru $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -479,7 +480,7 @@ public class ac {
                Files.move($$0, $$1);
                return true;
             } catch (IOException var2) {
-               ac.e.error("Failed to rename", var2);
+               ac.f.error("Failed to rename", var2);
                return false;
             }
          }
@@ -499,7 +500,7 @@ public class ac {
                Files.deleteIfExists($$0);
                return true;
             } catch (IOException var2) {
-               ac.e.warn("Failed to delete", var2);
+               ac.f.warn("Failed to delete", var2);
                return false;
             }
          }
@@ -542,7 +543,7 @@ public class ac {
    private static boolean a(BooleanSupplier... $$0) {
       for (BooleanSupplier $$1 : $$0) {
          if (!$$1.getAsBoolean()) {
-            e.warn("Failed to execute {}", $$1);
+            f.warn("Failed to execute {}", $$1);
             return false;
          }
       }
@@ -556,10 +557,10 @@ public class ac {
             return true;
          }
 
-         e.error("Failed to {}, retrying {}/{}", new Object[]{$$1, $$3, $$0});
+         f.error("Failed to {}, retrying {}/{}", new Object[]{$$1, $$3, $$0});
       }
 
-      e.error("Failed to {}, aborting, progress might be lost", $$1);
+      f.error("Failed to {}, aborting, progress might be lost", $$1);
       return false;
    }
 
@@ -647,14 +648,14 @@ public class ac {
                try {
                   Thread.sleep(2147483647L);
                } catch (InterruptedException var2) {
-                  ac.e.warn("Timer hack thread interrupted, that really should not happen");
+                  ac.f.warn("Timer hack thread interrupted, that really should not happen");
                   return;
                }
             }
          }
       };
       $$0.setDaemon(true);
-      $$0.setUncaughtExceptionHandler(new r(e));
+      $$0.setUncaughtExceptionHandler(new r(f));
       $$0.start();
    }
 
@@ -668,8 +669,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> asa<K, V> a(Function<K, V> $$0) {
-      return new asa<>($$0);
+   public static <K, V> asc<K, V> a(Function<K, V> $$0) {
+      return new asc<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -704,13 +705,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, art $$1) {
+   public static <T> List<T> a(Stream<T> $$0, aru $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       b($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, art $$1) {
+   public static IntArrayList a(IntStream $$0, aru $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -722,19 +723,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, art $$1) {
+   public static <T> List<T> b(T[] $$0, aru $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, art $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, aru $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> void b(ObjectArrayList<T> $$0, art $$1) {
+   public static <T> void b(ObjectArrayList<T> $$0, aru $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -758,14 +759,14 @@ public class ac {
                $$4.run();
             }
          } catch (InterruptedException var5) {
-            e.warn("Interrupted wait");
+            f.warn("Interrupted wait");
             break;
          }
       }
 
       int $$6 = $$2.size();
       if ($$6 > 0) {
-         e.warn("Tasks left in queue: {}", $$6);
+         f.warn("Tasks left in queue: {}", $$6);
       }
 
       return $$3;
@@ -844,7 +845,7 @@ public class ac {
             $$1.getErrorStream().close();
             $$1.getOutputStream().close();
          } catch (IOException | PrivilegedActionException var3) {
-            ac.e.error("Couldn't open url '{}'", $$0, var3);
+            ac.f.error("Couldn't open url '{}'", $$0, var3);
          }
       }
 
@@ -852,7 +853,7 @@ public class ac {
          try {
             this.a($$0.toURL());
          } catch (MalformedURLException var3) {
-            ac.e.error("Couldn't open uri '{}'", $$0, var3);
+            ac.f.error("Couldn't open uri '{}'", $$0, var3);
          }
       }
 
@@ -860,7 +861,7 @@ public class ac {
          try {
             this.a($$0.toURI().toURL());
          } catch (MalformedURLException var3) {
-            ac.e.error("Couldn't open file '{}'", $$0, var3);
+            ac.f.error("Couldn't open file '{}'", $$0, var3);
          }
       }
 
@@ -877,7 +878,7 @@ public class ac {
          try {
             this.a(new URI($$0).toURL());
          } catch (MalformedURLException | IllegalArgumentException | URISyntaxException var3) {
-            ac.e.error("Couldn't open uri '{}'", $$0, var3);
+            ac.f.error("Couldn't open uri '{}'", $$0, var3);
          }
       }
 

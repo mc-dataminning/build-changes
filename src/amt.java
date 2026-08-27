@@ -1,33 +1,94 @@
-public enum amt {
-   a("old"),
-   b("new"),
-   c("compatible");
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private final te d;
-   private final te e;
+public class amt implements amz {
+   static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final amb c;
+   private final amy d;
+   private final egu e;
 
-   private amt(String $$0) {
-      this.d = te.c("pack.incompatible." + $$0).a(n.h);
-      this.e = te.c("pack.incompatible.confirm." + $$0);
+   public amt(Path $$0, amb $$1, amy $$2, egu $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
-      return this == c;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   public static amt a(arh<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
+   @Override
+   public void a(Consumer<amu> $$0) {
+      try {
+         v.c(this.b);
+         a(this.b, this.e, false, ($$1, $$2) -> {
+            String $$3 = a($$1);
+            amu $$4 = amu.a("file/" + $$3, tf.b($$3), false, $$2, this.c, amu.b.a, this.d);
+            if ($$4 != null) {
+               $$0.accept($$4);
+            }
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.b, var3);
       }
    }
 
-   public te b() {
-      return this.d;
+   public static void a(Path $$0, egu $$1, boolean $$2, BiConsumer<Path, amu.c> $$3) throws IOException {
+      amt.a $$4 = new amt.a($$1, $$2);
+
+      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
+         for (Path $$6 : $$5) {
+            try {
+               List<egv> $$7 = new ArrayList<>();
+               amu.c $$8 = $$4.a($$6, $$7);
+               if (!$$7.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", egt.a($$6, $$7));
+               } else if ($$8 != null) {
+                  $$3.accept($$6, $$8);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$6);
+               }
+            } catch (IOException var11) {
+               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
+            }
+         }
+      }
    }
 
-   public te c() {
-      return this.e;
+   static class a extends amw<amu.c> {
+      private final boolean a;
+
+      protected a(egu $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      @Nullable
+      protected amu.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof amj)) {
+            amt.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new aly.a($$0, this.a);
+         }
+      }
+
+      protected amu.c b(Path $$0) {
+         return new amc.a($$0, this.a);
+      }
    }
 }

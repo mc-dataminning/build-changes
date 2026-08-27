@@ -1,32 +1,99 @@
-public class gbq implements gay {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fmi e;
-   private final gcs f;
-   private int g = 0;
+import javax.annotation.Nullable;
 
-   public gbq(fmi $$0, gcs $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class gbq implements gcz<gbq> {
+   public static final aek a = new aek("sounds", ".ogg");
+   private final aer b;
+   private final bfy c;
+   private final bfy d;
+   private final int e;
+   private final gbq.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
+
+   public gbq(String $$0, bfy $$1, bfy $$2, int $$3, gbq.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new aer($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public aer a() {
+      return this.b;
+   }
+
+   public aer b() {
+      return a.a(this.b);
+   }
+
+   public bfy c() {
+      return this.c;
+   }
+
+   public bfy d() {
+      return this.d;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bc()) {
-         float $$0 = this.e.dK().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gbo)(new gbr.a(this.e, aou.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gbo)(new gbr.a(this.e, aou.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gbo)(new gbr.a(this.e, aou.A)));
+   public int e() {
+      return this.e;
+   }
+
+   public gbq a(aru $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gcu $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gbq.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gbq.a a(String $$0) {
+         for (gbq.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return null;
       }
    }
 }

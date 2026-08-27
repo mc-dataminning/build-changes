@@ -1,32 +1,29 @@
-public class abh implements uw<aav> {
-   private final int a;
-   private final String b;
+public class abh implements ux<aaw> {
+   private final abh.a a;
 
-   public abh(int $$0, String $$1) {
+   public abh(abh.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abh(sh $$0) {
-      this.a = $$0.m();
-      this.b = $$0.d(32500);
+   public abh(si $$0) {
+      this.a = $$0.b(abh.a.class);
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public abh.a a() {
       return this.a;
    }
 
-   public String d() {
-      return this.b;
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,29 +1,96 @@
-import java.util.function.Function;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public abstract class fdh<E extends big> extends fet<E> {
-   private final float a;
-   private final float b;
+public class fdh {
+   public final fdh.d a;
+   public final ejx b;
+   public final fdh.a c;
+   public final fdh.b d;
+   public final fdh.c e;
 
-   public fdh(float $$0, float $$1) {
-      this($$0, $$1, fno::d);
-   }
-
-   public fdh(float $$0, float $$1, Function<aep, fno> $$2) {
-      super($$2);
-      this.b = $$1;
+   public fdh(fdh.d $$0, ejx $$1, fdh.a $$2, fdh.b $$3, fdh.c $$4) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public void a(elh $$0, ell $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : fzh.a(this.c.toPath(), this.d);
+      }
+   }
+
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final erb a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(erb $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
    }
 }

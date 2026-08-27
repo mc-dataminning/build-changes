@@ -1,110 +1,62 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public enum dgb implements ash {
+   a("harp", aow.qp, dgb.a.a),
+   b("basedrum", aow.qj, dgb.a.a),
+   c("snare", aow.qs, dgb.a.a),
+   d("hat", aow.qq, dgb.a.a),
+   e("bass", aow.qk, dgb.a.a),
+   f("flute", aow.qn, dgb.a.a),
+   g("bell", aow.ql, dgb.a.a),
+   h("guitar", aow.qo, dgb.a.a),
+   i("chime", aow.qm, dgb.a.a),
+   j("xylophone", aow.qt, dgb.a.a),
+   k("iron_xylophone", aow.qu, dgb.a.a),
+   l("cow_bell", aow.qv, dgb.a.a),
+   m("didgeridoo", aow.qw, dgb.a.a),
+   n("bit", aow.qx, dgb.a.a),
+   o("banjo", aow.qy, dgb.a.a),
+   p("pling", aow.qr, dgb.a.a),
+   q("zombie", aow.qz, dgb.a.b),
+   r("skeleton", aow.qA, dgb.a.b),
+   s("creeper", aow.qB, dgb.a.b),
+   t("dragon", aow.qC, dgb.a.b),
+   u("wither_skeleton", aow.qD, dgb.a.b),
+   v("piglin", aow.qE, dgb.a.b),
+   w("custom_head", aow.yp, dgb.a.c);
 
-public abstract class dgb<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dgb.a<T>> e = this.d.xmap(this::b, dgb.a::b);
+   private final String x;
+   private final he<aov> y;
+   private final dgb.a z;
 
-   protected dgb(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
-   }
-
-   public dgb.a<T> b(T $$0) {
-      return new dgb.a<>(this, $$0);
-   }
-
-   public dgb.a<T> a(dfa<?, ?> $$0) {
-      return new dgb.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dgb.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dgb.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   private dgb(String $$0, he<aov> $$1, dgb.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dgb<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
+   public String c() {
+      return this.x;
    }
 
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
+   public he<aov> a() {
+      return this.y;
    }
 
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+   public boolean b() {
+      return this.z == dgb.a.a;
    }
 
-   public <U, S extends dfa<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   public boolean d() {
+      return this.z == dgb.a.c;
    }
 
-   public static record a<T extends Comparable<T>>(dgb<T> a, T b) {
-      public a(dgb<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public boolean e() {
+      return this.z != dgb.a.a;
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,36 +1,58 @@
-public class fpp implements fpg<ddd> {
-   public static final gak a = new gak(fyf.e, new aep("entity/enchanting_table_book"));
-   private final fdt b;
+public class fpp implements fpl<dcq> {
+   private final ftm a;
 
-   public fpp(fph.a $$0) {
-      this.b = new fdt($$0.a(fhi.m));
+   public fpp(fpm.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(ddd $$0, float $$1, elh $$2, fng $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + aro.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public void a(dcq $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
+      if ($$0.k() != null) {
+         int $$6 = $$0.q().c(dfq.bv);
+         if ($$6 > 0) {
+            ha $$7 = $$0.f();
+            if ($$7 != null) {
+               ciy $$8 = $$0.g();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ha.f || $$7 == ha.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = fnj.a($$0.k(), $$0.q(), $$0.p().a($$7));
+                  this.a.a($$8, civ.i, $$11, fyc.d, $$2, $$3, $$0.k(), 0);
+                  $$2.b();
+               }
+            }
+         }
+      }
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   private float[] a(ha $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = aro.i($$1, $$0.c, $$0.b);
-      float $$10 = aro.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = aro.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = aro.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, aro.a($$10, 0.0F, 1.0F), aro.a($$11, 0.0F, 1.0F), $$12);
-      ell $$13 = a.a($$3, fno::b);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      return $$2;
    }
 }

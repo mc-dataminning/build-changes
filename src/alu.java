@@ -1,85 +1,68 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class alu implements aly {
-   private final aly c;
-   private final List<aly> d;
+public abstract class alu implements ama {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-   public alu(aly $$0, List<aly> $$1) {
-      this.c = $$0;
-      List<aly> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+   protected alu(String $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Nullable
    @Override
-   public anc<InputStream> a(String... $$0) {
-      return this.c.a($$0);
+   public <T> T a(amm<T> $$0) throws IOException {
+      ane<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
+      }
    }
 
    @Nullable
-   @Override
-   public anc<InputStream> a(alz $$0, aep $$1) {
-      for (aly $$2 : this.d) {
-         anc<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
+   public static <T> T a(amm<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = arg.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(arg.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
          }
       }
-
-      return null;
-   }
-
-   @Override
-   public void a(alz $$0, String $$1, String $$2, aly.a $$3) {
-      Map<aep, anc<InputStream>> $$4 = new HashMap<>();
-
-      for (aly $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
-   }
-
-   @Override
-   public Set<String> a(alz $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (aly $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(amk<T> $$0) throws IOException {
-      return this.c.a($$0);
    }
 
    @Override
    public String a() {
-      return this.c.a();
+      return this.d;
    }
 
    @Override
    public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(aly::close);
+      return this.e;
    }
 }

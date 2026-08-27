@@ -1,72 +1,61 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dit<T extends dip> {
+public class dit<T extends dir> {
    private static final Logger a = LogUtils.getLogger();
-   private final aqj<T> b;
-   private djc c;
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public dit(Class<T> $$0, djc $$1) {
-      this.c = $$1;
-      this.b = new aqj<>($$0);
+   public <U extends T> void a(diy<T, U> $$0, aqg<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
+
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
+      }
+   }
+
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
    public void a(T $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public aqe.a a(eha $$0, aqe<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cG().c($$0) && $$1.accept($$2).a()) {
-            return aqe.a.b;
-         }
-      }
-
-      return aqe.a.a;
-   }
-
-   public <U extends T> aqe.a a(diw<T, U> $$0, eha $$1, aqe<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return aqe.a.a;
+      UUID $$1 = $$0.cv();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
       } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cG().c($$1) && $$2.accept($$5).a()) {
-               return aqe.a.b;
-            }
-         }
-
-         return aqe.a.a;
+         this.c.put($$1, $$0);
+         this.b.put($$0.ah(), $$0);
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   public void b(T $$0) {
+      this.c.remove($$0.cv());
+      this.b.remove($$0.ah());
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public djc c() {
-      return this.c;
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   public djc a(djc $$0) {
-      djc $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @aso
-   public int d() {
-      return this.b.size();
+   public int b() {
+      return this.c.size();
    }
 }

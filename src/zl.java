@@ -1,24 +1,27 @@
-public class zl implements uw<wo> {
+import javax.annotation.Nullable;
+
+public class zl implements ux<wp> {
    private final int a;
 
-   public zl(int $$0) {
-      this.a = $$0;
+   public zl(bii $$0) {
+      this.a = $$0.ah();
    }
 
-   public zl(sh $$0) {
-      this.a = $$0.readByte();
+   public zl(si $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.k(this.a);
+   public void a(si $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public bii a(cpm $$0) {
+      return $$0.a(this.a);
    }
 }

@@ -1,15 +1,13 @@
-public class deb extends dcr {
-   public deb(gv $$0, dey $$1) {
-      super(dcm.c, $$0, $$1);
+public class deb extends dcm {
+   protected deb(dco<?> $$0, gu $$1, dfa $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(cpk $$0, gv $$1, dey $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         csk $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public deb(gu $$0, dfa $$1) {
+      this(dco.n, $$0, $$1);
+   }
+
+   public boolean a(ha $$0) {
+      return $$0.o() == ha.a.b;
    }
 }

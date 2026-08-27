@@ -4,25 +4,31 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bnb {
-   public static bkp<biw> a(Function<biw, Optional<bmb>> $$0, Predicate<biw> $$1, int $$2, int $$3, float $$4) {
-      return boa.a(
-         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$5 -> $$5.group($$5.a(bry.n), $$5.a(bry.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bmb> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bmb $$11 = $$10.get();
-                        if ($$8.di().a((hp)$$11.a(), (double)$$3)) {
+   public static <E extends bja> bkr<E> a(Function<E, Optional<? extends biy>> $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static <E extends bja> bkr<E> a(Predicate<E> $$0, Function<E, Optional<? extends biy>> $$1) {
+      return boc.a(
+         (Function<boc.b<E>, ? extends App<boc.c<E>, bof<E>>>)($$2 -> $$2.group($$2.c(bsa.o), $$2.a(bsa.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends biy> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        biy $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
                            return false;
                         } else {
-                           bmb $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new bsb($$12, $$4, $$2));
+                           $$2x.a($$8);
+                           $$3.b();
                            return true;
                         }
-                     } else {
-                        return false;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

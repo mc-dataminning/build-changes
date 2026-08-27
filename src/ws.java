@@ -1,37 +1,74 @@
-public class ws implements uw<wo> {
-   public static final int a = 0;
-   public static final int b = 2;
-   public static final int c = 3;
-   public static final int d = 4;
-   public static final int e = 5;
-   private final int f;
-   private final int g;
+import java.util.UUID;
 
-   public ws(big $$0, int $$1) {
-      this.f = $$0.ah();
-      this.g = $$1;
+public class ws implements ux<wp> {
+   private final int a;
+   private final UUID b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+
+   public ws(cbn $$0) {
+      this.a = $$0.ah();
+      this.b = $$0.fP().getId();
+      this.c = $$0.dp();
+      this.d = $$0.dr();
+      this.e = $$0.dv();
+      this.f = (byte)((int)($$0.dA() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dC() * 256.0F / 360.0F));
    }
 
-   public ws(sh $$0) {
-      this.f = $$0.m();
-      this.g = $$0.readUnsignedByte();
+   public ws(si $$0) {
+      this.a = $$0.m();
+      this.b = $$0.o();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.f);
+   public void a(si $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
       $$0.k(this.g);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
    public int a() {
+      return this.a;
+   }
+
+   public UUID d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
       return this.f;
    }
 
-   public int d() {
+   public byte i() {
       return this.g;
    }
 }

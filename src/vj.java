@@ -1,24 +1,24 @@
-public class vj implements uw<vg> {
-   private final int a;
+public class vj implements ux<vh> {
+   private final long a;
 
-   public vj(int $$0) {
+   public vj(long $$0) {
       this.a = $$0;
    }
 
-   public vj(sh $$0) {
-      this.a = $$0.readInt();
-   }
-
-   @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(vg $$0) {
+   public void a(vh $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public vj(si $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(si $$0) {
+      $$0.b(this.a);
+   }
+
+   public long a() {
       return this.a;
    }
 }

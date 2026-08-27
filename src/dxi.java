@@ -1,45 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class dxi extends dux {
-   public static final Codec<dxi> d = a(dxi::new);
+public class dxi extends duz {
+   public static final Codec<dxi> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, dxi::new)
+   );
+   public final boolean e;
 
-   public dxi(dux.c $$0) {
+   public dxi(duz.c $$0, boolean $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<dux.b> a(dux.a $$0) {
-      return Optional.of(new dux.b($$0.h().l(), (Consumer<dvp>)($$1 -> a($$1, $$0))));
+   public Optional<duz.b> a(duz.a $$0) {
+      dkj.a $$1 = this.e ? dkj.a.a : dkj.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
    }
 
-   private static void a(dvp $$0, dux.a $$1) {
-      int $$2 = 0;
-
-      dxh.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         dxh.a();
-         $$3 = new dxh.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<dvb> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            dvb $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
-
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+   private void a(dvr $$0, duz.a $$1) {
+      cyy $$2 = cyy.a($$1.f());
+      gu $$3 = new gu($$1.h().d(), 90, $$1.h().e());
+      dxh.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   public dvg<?> e() {
-      return dvg.n;
+   public dvi<?> e() {
+      return dvi.m;
    }
 }

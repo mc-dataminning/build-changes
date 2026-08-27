@@ -1,64 +1,47 @@
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class efj {
-   public static final efi a = a("inverted", new efe.a());
-   public static final efi b = a("any_of", new eew.b());
-   public static final efi c = a("all_of", new eev.b());
-   public static final efi d = a("random_chance", new efm.a());
-   public static final efi e = a("random_chance_with_looting", new efn.a());
-   public static final efi f = a("entity_properties", new efk.a());
-   public static final efi g = a("killed_by_player", new efl.a());
-   public static final efi h = a("entity_scores", new efc.b());
-   public static final efi i = a("block_state_property", new efg.b());
-   public static final efi j = a("match_tool", new efo.a());
-   public static final efi k = a("table_bonus", new eex.a());
-   public static final efi l = a("survives_explosion", new efd.a());
-   public static final efi m = a("damage_source_properties", new efb.a());
-   public static final efi n = a("location_check", new eff.a());
-   public static final efi o = a("weather_check", new efr.b());
-   public static final efi p = a("reference", new eez.a());
-   public static final efi q = a("time_check", new efp.b());
-   public static final efi r = a("value_check", new efq.a());
+public record efj(Optional<bo> b, ech.b c) implements efg {
+   public static final Codec<efj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(bo.a, "predicate").forGetter(efj::c), ech.b.e.fieldOf("entity").forGetter(efj::d)).apply($$0, efj::new)
+   );
 
-   private static efi a(String $$0, ecq<? extends efh> $$1) {
-      return hs.a(jc.I, new aep($$0), new efi($$1));
+   @Override
+   public efh b() {
+      return efi.g;
    }
 
-   public static Object a() {
-      return ecf.a(jc.I, "condition", "condition", efh::b).a();
+   @Override
+   public Set<eep<?>> a() {
+      return ImmutableSet.of(ees.f, this.c.a());
    }
 
-   public static <T> Predicate<T> a(Predicate<T>[] $$0) {
-      return switch ($$0.length) {
-         case 0 -> $$0x -> true;
-         case 1 -> $$0[0];
-         case 2 -> $$0[0].and($$0[1]);
-         default -> $$1 -> {
-         for (Predicate<T> $$2 : $$0) {
-            if (!$$2.test((T)$$1)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public boolean a(ech $$0) {
+      bii $$1 = $$0.c(this.c.a());
+      ehe $$2 = $$0.c(ees.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static <T> Predicate<T> b(Predicate<T>[] $$0) {
-      return switch ($$0.length) {
-         case 0 -> $$0x -> false;
-         case 1 -> $$0[0];
-         case 2 -> $$0[0].or($$0[1]);
-         default -> $$1 -> {
-         for (Predicate<T> $$2 : $$0) {
-            if ($$2.test((T)$$1)) {
-               return true;
-            }
-         }
+   public static efg.a a(ech.b $$0) {
+      return a($$0, bo.a.a());
+   }
 
-         return false;
-      };
-      };
+   public static efg.a a(ech.b $$0, bo.a $$1) {
+      return () -> new efj($$1.b(), $$0);
+   }
+
+   public static efg.a a(ech.b $$0, bo $$1) {
+      return () -> new efj(Optional.of($$1), $$0);
+   }
+
+   public Optional<bo> c() {
+      return this.b;
+   }
+
+   public ech.b d() {
+      return this.c;
    }
 }

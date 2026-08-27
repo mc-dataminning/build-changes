@@ -1,28 +1,68 @@
-public class exy extends exn {
-   public exy(exv $$0, eqr $$1) {
-      super($$0, $$1, te.c("options.skinCustomisation.title"));
+public class exy extends exz {
+   private static final tf a = tf.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private boolean c = false;
+   private boolean k = false;
+   private final long l = System.currentTimeMillis();
+
+   public exy() {
+      super(eqe.a);
    }
 
    @Override
-   protected void aE_() {
-      int $$0 = 0;
-
-      for (cbm $$1 : cbm.values()) {
-         this.d(esp.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
-         $$0++;
-      }
-
-      this.d(this.b.r().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
-      if (++$$0 % 2 == 1) {
-         $$0++;
-      }
-
-      this.d(esi.a(td.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
+   public boolean aA_() {
+      return false;
    }
 
    @Override
-   public void a(erx $$0, int $$1, int $$2, float $$3) {
+   protected boolean aD_() {
+      return false;
+   }
+
+   @Override
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   }
+
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void c() {
+      if (System.currentTimeMillis() > this.l + 30000L) {
+         this.au_();
+      } else {
+         if (this.k) {
+            if (this.f.v == null) {
+               return;
+            }
+
+            gu $$0 = this.f.v.dk();
+            boolean $$1 = this.f.u != null && this.f.u.d($$0.v());
+            if ($$1 || this.f.f.a($$0) || this.f.v.G_() || !this.f.v.bv()) {
+               this.au_();
+            }
+         } else {
+            this.k = this.c;
+         }
+      }
+   }
+
+   @Override
+   public void au_() {
+      this.f.aV().c(tf.c("narrator.ready_to_play"));
+      super.au_();
+   }
+
+   public void l() {
+      this.c = true;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
    }
 }

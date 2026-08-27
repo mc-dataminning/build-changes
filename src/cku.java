@@ -1,214 +1,148 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cku {
-   public static final int a = 20;
-   private static final List<cku.a<ckt>> b = Lists.newArrayList();
-   private static final List<cku.a<cir>> c = Lists.newArrayList();
-   private static final List<clw> d = Lists.newArrayList();
-   private static final Predicate<ciw> e = $$0 -> {
-      for (clw $$1 : d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
+public class cku extends cit {
+   public static final int a = 16;
+   public static final int b = 32;
+   public static final int c = 1024;
+   public static final int d = 32767;
+   public static final int e = 100;
+   public static final int f = 2;
+   public static final String g = "title";
+   public static final String h = "filtered_title";
+   public static final String i = "author";
+   public static final String j = "pages";
+   public static final String k = "filtered_pages";
+   public static final String r = "generation";
+   public static final String s = "resolved";
 
-      return false;
-   };
-
-   public static boolean a(ciw $$0) {
-      return b($$0) || c($$0);
+   public cku(cit.a $$0) {
+      super($$0);
    }
 
-   protected static boolean b(ciw $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = c.size(); $$1 < $$2; $$1++) {
-         if (c.get($$1).b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected static boolean c(ciw $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = b.size(); $$1 < $$2; $$1++) {
-         if (b.get($$1).b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(ckt $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = b.size(); $$1 < $$2; $$1++) {
-         if (b.get($$1).c == $$0) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(ciw $$0, ciw $$1) {
-      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
-   }
-
-   protected static boolean b(ciw $$0, ciw $$1) {
-      cir $$2 = $$0.d();
-      int $$3 = 0;
-
-      for (int $$4 = c.size(); $$3 < $$4; $$3++) {
-         cku.a<cir> $$5 = c.get($$3);
-         if ($$5.a == $$2 && $$5.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected static boolean c(ciw $$0, ciw $$1) {
-      ckt $$2 = ckv.d($$0);
-      int $$3 = 0;
-
-      for (int $$4 = b.size(); $$3 < $$4; $$3++) {
-         cku.a<ckt> $$5 = b.get($$3);
-         if ($$5.a == $$2 && $$5.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static ciw d(ciw $$0, ciw $$1) {
-      if (!$$1.b()) {
-         ckt $$2 = ckv.d($$1);
-         cir $$3 = $$1.d();
-         int $$4 = 0;
-
-         for (int $$5 = c.size(); $$4 < $$5; $$4++) {
-            cku.a<cir> $$6 = c.get($$4);
-            if ($$6.a == $$3 && $$6.b.a($$0)) {
-               return ckv.a(new ciw($$6.c), $$2);
-            }
-         }
-
-         $$4 = 0;
-
-         for (int $$8 = b.size(); $$4 < $$8; $$4++) {
-            cku.a<ckt> $$9 = b.get($$4);
-            if ($$9.a == $$2 && $$9.b.a($$0)) {
-               return ckv.a(new ciw($$3), $$9.c);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   public static void a() {
-      a(ciz.rv);
-      a(ciz.uu);
-      a(ciz.ux);
-      a(ciz.rv, ciz.oG, ciz.uu);
-      a(ciz.uu, ciz.ut, ciz.ux);
-      a(ckw.c, ciz.rE, ckw.d);
-      a(ckw.c, ciz.rs, ckw.d);
-      a(ckw.c, ciz.tJ, ckw.d);
-      a(ckw.c, ciz.rz, ckw.d);
-      a(ckw.c, ciz.rx, ckw.d);
-      a(ckw.c, ciz.qM, ckw.d);
-      a(ckw.c, ciz.rA, ckw.d);
-      a(ckw.c, ciz.qk, ckw.e);
-      a(ckw.c, ciz.ll, ckw.d);
-      a(ckw.c, ciz.ru, ckw.f);
-      a(ckw.f, ciz.tq, ckw.g);
-      a(ckw.g, ciz.ll, ckw.h);
-      a(ckw.g, ciz.ry, ckw.i);
-      a(ckw.h, ciz.ry, ckw.j);
-      a(ckw.i, ciz.ll, ckw.j);
-      a(ckw.f, ciz.rA, ckw.n);
-      a(ckw.n, ciz.ll, ckw.o);
-      a(ckw.f, ciz.tJ, ckw.k);
-      a(ckw.k, ciz.ll, ckw.l);
-      a(ckw.k, ciz.qk, ckw.m);
-      a(ckw.k, ciz.ry, ckw.s);
-      a(ckw.l, ciz.ry, ckw.t);
-      a(ckw.s, ciz.ll, ckw.t);
-      a(ckw.s, ciz.qk, ckw.u);
-      a(ckw.f, ciz.nC, ckw.v);
-      a(ckw.v, ciz.ll, ckw.w);
-      a(ckw.v, ciz.qk, ckw.x);
-      a(ckw.p, ciz.ry, ckw.s);
-      a(ckw.q, ciz.ry, ckw.t);
-      a(ckw.f, ciz.qM, ckw.p);
-      a(ckw.p, ciz.ll, ckw.q);
-      a(ckw.p, ciz.qk, ckw.r);
-      a(ckw.f, ciz.qo, ckw.y);
-      a(ckw.y, ciz.ll, ckw.z);
-      a(ckw.f, ciz.rE, ckw.A);
-      a(ckw.A, ciz.qk, ckw.B);
-      a(ckw.A, ciz.ry, ckw.C);
-      a(ckw.B, ciz.ry, ckw.D);
-      a(ckw.C, ciz.qk, ckw.D);
-      a(ckw.E, ciz.ry, ckw.C);
-      a(ckw.F, ciz.ry, ckw.C);
-      a(ckw.G, ciz.ry, ckw.D);
-      a(ckw.f, ciz.rx, ckw.E);
-      a(ckw.E, ciz.ll, ckw.F);
-      a(ckw.E, ciz.qk, ckw.G);
-      a(ckw.f, ciz.rs, ckw.H);
-      a(ckw.H, ciz.ll, ckw.I);
-      a(ckw.H, ciz.qk, ckw.J);
-      a(ckw.f, ciz.rz, ckw.K);
-      a(ckw.K, ciz.ll, ckw.L);
-      a(ckw.K, ciz.qk, ckw.M);
-      a(ckw.c, ciz.ry, ckw.N);
-      a(ckw.N, ciz.ll, ckw.O);
-      a(ckw.f, ciz.uW, ckw.Q);
-      a(ckw.Q, ciz.ll, ckw.R);
-   }
-
-   private static void a(cir $$0, cir $$1, cir $$2) {
-      if (!($$0 instanceof cjl)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jc.i.b($$0));
-      } else if (!($$2 instanceof cjl)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jc.i.b($$2));
+   public static boolean a(@Nullable qr $$0) {
+      if (!ckt.a($$0)) {
+         return false;
+      } else if (!$$0.b("title", 8)) {
+         return false;
       } else {
-         c.add(new cku.a<>($$0, clw.a($$1), $$2));
+         String $$1 = $$0.l("title");
+         return $$1.length() > 32 ? false : $$0.b("author", 8);
       }
    }
 
-   private static void a(cir $$0) {
-      if (!($$0 instanceof cjl)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jc.i.b($$0));
+   public static int d(ciy $$0) {
+      return $$0.v().h("generation");
+   }
+
+   public static int k(ciy $$0) {
+      qr $$1 = $$0.v();
+      return $$1 != null ? $$1.c("pages", 8).size() : 0;
+   }
+
+   @Override
+   public tf m(ciy $$0) {
+      qr $$1 = $$0.v();
+      if ($$1 != null) {
+         String $$2 = $$1.l("title");
+         if (!asi.b($$2)) {
+            return tf.b($$2);
+         }
+      }
+
+      return super.m($$0);
+   }
+
+   @Override
+   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
+      if ($$0.u()) {
+         qr $$4 = $$0.v();
+         String $$5 = $$4.l("author");
+         if (!asi.b($$5)) {
+            $$2.add(tf.a("book.byAuthor", $$5).a(n.h));
+         }
+
+         $$2.add(tf.c("book.generation." + $$4.h("generation")).a(n.h));
+      }
+   }
+
+   @Override
+   public bgq a(cli $$0) {
+      cpm $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      dfa $$3 = $$1.a_($$2);
+      if ($$3.a(csn.oa)) {
+         return cwu.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bgq.a($$1.B) : bgq.d;
       } else {
-         d.add(clw.a($$0));
+         return bgq.d;
       }
    }
 
-   private static void a(ckt $$0, cir $$1, ckt $$2) {
-      b.add(new cku.a<>($$0, clw.a($$1), $$2));
+   @Override
+   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      ciy $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(apg.c.b(this));
+      return bgr.a($$3, $$0.r_());
    }
 
-   static class a<T> {
-      final T a;
-      final clw b;
-      final T c;
+   public static boolean a(ciy $$0, @Nullable dr $$1, @Nullable cbn $$2) {
+      qr $$3 = $$0.v();
+      if ($$3 != null && !$$3.q("resolved")) {
+         $$3.a("resolved", true);
+         if (!a($$3)) {
+            return false;
+         } else {
+            qx $$4 = $$3.c("pages", 8);
+            qx $$5 = new qx();
 
-      public a(T $$0, clw $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+               String $$7 = a($$1, $$2, $$4.j($$6));
+               if ($$7.length() > 32767) {
+                  return false;
+               }
+
+               $$5.c($$6, ri.a($$7));
+            }
+
+            if ($$3.b("filtered_pages", 10)) {
+               qr $$8 = $$3.p("filtered_pages");
+               qr $$9 = new qr();
+
+               for (String $$10 : $$8.e()) {
+                  String $$11 = a($$1, $$2, $$8.l($$10));
+                  if ($$11.length() > 32767) {
+                     return false;
+                  }
+
+                  $$9.a($$10, $$11);
+               }
+
+               $$3.a("filtered_pages", $$9);
+            }
+
+            $$3.a("pages", $$5);
+            return true;
+         }
+      } else {
+         return false;
       }
+   }
+
+   private static String a(@Nullable dr $$0, @Nullable cbn $$1, String $$2) {
+      tf $$5;
+      try {
+         $$5 = tf.a.b($$2);
+         $$5 = th.a($$0, $$5, $$1, 0);
+      } catch (Exception var5) {
+         $$5 = tf.b($$2);
+      }
+
+      return tf.a.a($$5);
+   }
+
+   @Override
+   public boolean i(ciy $$0) {
+      return true;
    }
 }

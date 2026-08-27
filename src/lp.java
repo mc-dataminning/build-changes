@@ -1,23 +1,32 @@
-import com.google.gson.JsonObject;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public interface lp {
-   void a(JsonObject var1);
+   aer a = new aer("recipes/root");
 
-   default JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("type", jc.u.b(this.c()).toString());
-      this.a($$0);
-      return $$0;
+   lp a(String var1, am var2);
+
+   lp a(@Nullable String var1);
+
+   cit a();
+
+   void a(Consumer<lo> var1, aer var2);
+
+   default void a(Consumer<lo> $$0) {
+      this.a($$0, a(this.a()));
    }
 
-   aep b();
+   default void a(Consumer<lo> $$0, String $$1) {
+      aer $$2 = a(this.a());
+      aer $$3 = new aer($$1);
+      if ($$3.equals($$2)) {
+         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
+      } else {
+         this.a($$0, $$3);
+      }
+   }
 
-   cmb<?> c();
-
-   @Nullable
-   JsonObject d();
-
-   @Nullable
-   aep e();
+   static aer a(cpl $$0) {
+      return jb.i.b($$0.k());
+   }
 }

@@ -1,57 +1,57 @@
-import com.mojang.serialization.Codec;
+public class biz extends bii {
+   private static final String b = "data";
+   private qr c = new qr();
 
-public enum biz implements asf {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<biz> i = asf.a(biz::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private biz(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public biz(bim<?> $$0, cpm $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
    @Override
-   public String c() {
-      return this.m;
+   public void l() {
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void a_() {
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected void a(qr $$0) {
+      this.c = $$0.p("data");
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected void b(qr $$0) {
+      $$0.a("data", this.c.h());
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   public ux<wp> U() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected boolean r(bii $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bC() {
+      return false;
+   }
+
+   @Override
+   protected void p(bii $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public eai l_() {
+      return eai.d;
+   }
+
+   @Override
+   public boolean d_() {
+      return true;
    }
 }

@@ -1,4 +1,4 @@
-// 23w31a	2026-08-28T00:18:30.1971617	vanilla/Loot Tables
+// 23w32a	2026-08-28T00:20:39.2563973	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -350,7 +350,7 @@ d58ffd08c8a9c03b4dbb838401bf6a73a0936144 data\minecraft\loot_tables\entities\wan
 1d41bf4bacd242683117997dd8bac1e8761ff8e6 data\minecraft\loot_tables\blocks\spruce_sign.json
 37864a05c49621cb59b72e1cebd506f8f08553cf data\minecraft\loot_tables\gameplay\hero_of_the_village\cartographer_gift.json
 88da0d4429d083546d8e2a8099c3f780fb692bca data\minecraft\loot_tables\blocks\potted_warped_fungus.json
-9ac303dd63a20dab54662f7c1dcc56d0993395b1 data\minecraft\loot_tables\blocks\snow.json
+6c37c625dc413b1e9308a4d90a100d6d0959aad1 data\minecraft\loot_tables\blocks\snow.json
 616c273ae200d421040a8f89aa829e1112b8bdf5 data\minecraft\loot_tables\blocks\deepslate_tile_wall.json
 5b7ebbd19ae70062aedf0f90e1a02e7f7cd6eec2 data\minecraft\loot_tables\blocks\bamboo_stairs.json
 766fa4fec4233fa79a0e8efc208202edb58f64d9 data\minecraft\loot_tables\blocks\red_candle.json
@@ -373,8 +373,8 @@ a08def7e818a94901afab1a372cef256ab15c3cd data\minecraft\loot_tables\entities\str
 32ab1483b04b710d43e436c1adaddcbd4933f45c data\minecraft\loot_tables\blocks\orange_candle.json
 0e15f0ca95f7ccb909b31dfe1ba738b47392720c data\minecraft\loot_tables\blocks\oak_button.json
 c3611724c03a0e529f8c71dbd6802cf96425f305 data\minecraft\loot_tables\blocks\polished_diorite_slab.json
-87c1be3dc8e7eb5f4397c268efcf81470f629f63 data\minecraft\loot_tables\entities\silverfish.json
 1d97055c6b93bf1036536106dd2e5fdd12b50594 data\minecraft\loot_tables\blocks\detector_rail.json
+87c1be3dc8e7eb5f4397c268efcf81470f629f63 data\minecraft\loot_tables\entities\silverfish.json
 c95c4c4c74e4db1f81db80d074d5529879e5cafe data\minecraft\loot_tables\blocks\spruce_leaves.json
 e4f62b90803b05e2b0477d507e5563eaaa2ed23d data\minecraft\loot_tables\entities\turtle.json
 482423cd59621fdfb3effe413170b16be37213af data\minecraft\loot_tables\blocks\deepslate_tile_stairs.json
@@ -794,8 +794,8 @@ dc71b50d90dd060d1146c204e1a922341f4a4220 data\minecraft\loot_tables\entities\par
 b01c18c933492c1dc33292bc446cb21bdafa818f data\minecraft\loot_tables\blocks\magenta_concrete.json
 0b2dd5a0d26459bc5333889a34c10e52893e902f data\minecraft\loot_tables\blocks\brewing_stand.json
 3af3c1e95ec02c5475922fb4f8a0b3c29f482872 data\minecraft\loot_tables\entities\cave_spider.json
-953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 90a1242dd7f394a8751bae7375c57a379b9f86b1 data\minecraft\loot_tables\blocks\black_wool.json
+953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 e67874f8a84cc41fd149007dd0d59a5e1838280c data\minecraft\loot_tables\blocks\netherite_block.json
 ad89351cd61f129f54d7e2a1acb0b37ce44d7887 data\minecraft\loot_tables\entities\zombie.json
 ac024a50f38e4ff8b3be31806c7566d8f8a18b21 data\minecraft\loot_tables\blocks\dead_fire_coral.json
@@ -884,7 +884,7 @@ cddeabbe1267bd4fba0d2e895bc63d1fc7f9f610 data\minecraft\loot_tables\blocks\flowe
 f465359119bf277543f4e2da1f27f86e3c29b2f9 data\minecraft\loot_tables\blocks\amethyst_block.json
 d930f69122beb9288ef03bbbd4982e28b5c26064 data\minecraft\loot_tables\entities\sheep\black.json
 d078f86b2b259414390c3f73d0ec47cf5aa82e2f data\minecraft\loot_tables\entities\armor_stand.json
-56b1aea51dff4492abcdbdee5202c9b3afb7958a data\minecraft\loot_tables\blocks\chorus_flower.json
+733ba271d48706a72923adabf3215004a99bf40e data\minecraft\loot_tables\blocks\chorus_flower.json
 f05d655cbc478539fe3ca391eaa28bbf68467262 data\minecraft\loot_tables\blocks\torchflower.json
 08a4641f62a0427a320a9b006d50fe8f000988dc data\minecraft\loot_tables\blocks\deepslate_brick_stairs.json
 450b99b7aa628c4bed21ebea3412e62bb87ea030 data\minecraft\loot_tables\entities\player.json

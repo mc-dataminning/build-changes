@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class apg {
+   public static final apf<csm> a = a("mined", jb.f);
+   public static final apf<cit> b = a("crafted", jb.i);
+   public static final apf<cit> c = a("used", jb.i);
+   public static final apf<cit> d = a("broken", jb.i);
+   public static final apf<cit> e = a("picked_up", jb.i);
+   public static final apf<cit> f = a("dropped", jb.i);
+   public static final apf<bim<?>> g = a("killed", jb.h);
+   public static final apf<bim<?>> h = a("killed_by", jb.h);
+   public static final apf<aer> i = a("custom", jb.n);
+   public static final aer j = a("leave_game", ape.b);
+   public static final aer k = a("play_time", ape.e);
+   public static final aer l = a("total_world_time", ape.e);
+   public static final aer m = a("time_since_death", ape.e);
+   public static final aer n = a("time_since_rest", ape.e);
+   public static final aer o = a("sneak_time", ape.e);
+   public static final aer p = a("walk_one_cm", ape.d);
+   public static final aer q = a("crouch_one_cm", ape.d);
+   public static final aer r = a("sprint_one_cm", ape.d);
+   public static final aer s = a("walk_on_water_one_cm", ape.d);
+   public static final aer t = a("fall_one_cm", ape.d);
+   public static final aer u = a("climb_one_cm", ape.d);
+   public static final aer v = a("fly_one_cm", ape.d);
+   public static final aer w = a("walk_under_water_one_cm", ape.d);
+   public static final aer x = a("minecart_one_cm", ape.d);
+   public static final aer y = a("boat_one_cm", ape.d);
+   public static final aer z = a("pig_one_cm", ape.d);
+   public static final aer A = a("horse_one_cm", ape.d);
+   public static final aer B = a("aviate_one_cm", ape.d);
+   public static final aer C = a("swim_one_cm", ape.d);
+   public static final aer D = a("strider_one_cm", ape.d);
+   public static final aer E = a("jump", ape.b);
+   public static final aer F = a("drop", ape.b);
+   public static final aer G = a("damage_dealt", ape.c);
+   public static final aer H = a("damage_dealt_absorbed", ape.c);
+   public static final aer I = a("damage_dealt_resisted", ape.c);
+   public static final aer J = a("damage_taken", ape.c);
+   public static final aer K = a("damage_blocked_by_shield", ape.c);
+   public static final aer L = a("damage_absorbed", ape.c);
+   public static final aer M = a("damage_resisted", ape.c);
+   public static final aer N = a("deaths", ape.b);
+   public static final aer O = a("mob_kills", ape.b);
+   public static final aer P = a("animals_bred", ape.b);
+   public static final aer Q = a("player_kills", ape.b);
+   public static final aer R = a("fish_caught", ape.b);
+   public static final aer S = a("talked_to_villager", ape.b);
+   public static final aer T = a("traded_with_villager", ape.b);
+   public static final aer U = a("eat_cake_slice", ape.b);
+   public static final aer V = a("fill_cauldron", ape.b);
+   public static final aer W = a("use_cauldron", ape.b);
+   public static final aer X = a("clean_armor", ape.b);
+   public static final aer Y = a("clean_banner", ape.b);
+   public static final aer Z = a("clean_shulker_box", ape.b);
+   public static final aer aa = a("interact_with_brewingstand", ape.b);
+   public static final aer ab = a("interact_with_beacon", ape.b);
+   public static final aer ac = a("inspect_dropper", ape.b);
+   public static final aer ad = a("inspect_hopper", ape.b);
+   public static final aer ae = a("inspect_dispenser", ape.b);
+   public static final aer af = a("play_noteblock", ape.b);
+   public static final aer ag = a("tune_noteblock", ape.b);
+   public static final aer ah = a("pot_flower", ape.b);
+   public static final aer ai = a("trigger_trapped_chest", ape.b);
+   public static final aer aj = a("open_enderchest", ape.b);
+   public static final aer ak = a("enchant_item", ape.b);
+   public static final aer al = a("play_record", ape.b);
+   public static final aer am = a("interact_with_furnace", ape.b);
+   public static final aer an = a("interact_with_crafting_table", ape.b);
+   public static final aer ao = a("open_chest", ape.b);
+   public static final aer ap = a("sleep_in_bed", ape.b);
+   public static final aer aq = a("open_shulker_box", ape.b);
+   public static final aer ar = a("open_barrel", ape.b);
+   public static final aer as = a("interact_with_blast_furnace", ape.b);
+   public static final aer at = a("interact_with_smoker", ape.b);
+   public static final aer au = a("interact_with_lectern", ape.b);
+   public static final aer av = a("interact_with_campfire", ape.b);
+   public static final aer aw = a("interact_with_cartography_table", ape.b);
+   public static final aer ax = a("interact_with_loom", ape.b);
+   public static final aer ay = a("interact_with_stonecutter", ape.b);
+   public static final aer az = a("bell_ring", ape.b);
+   public static final aer aA = a("raid_trigger", ape.b);
+   public static final aer aB = a("raid_win", ape.b);
+   public static final aer aC = a("interact_with_anvil", ape.b);
+   public static final aer aD = a("interact_with_grindstone", ape.b);
+   public static final aer aE = a("target_hit", ape.b);
+   public static final aer aF = a("interact_with_smithing_table", ape.b);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface apg {
+   private static aer a(String $$0, ape $$1) {
+      aer $$2 = new aer($$0);
+      hr.a(jb.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> apf<T> a(String $$0, hr<T> $$1) {
+      tf $$2 = tf.c("stat_type.minecraft." + $$0);
+      return hr.a(jb.y, $$0, new apf<>($$1, $$2));
+   }
 }

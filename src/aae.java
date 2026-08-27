@@ -1,40 +1,24 @@
-public class aae implements uw<wo> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class aae implements ux<wp> {
+   private final tf a;
 
-   public aae(int $$0, int $$1, int $$2) {
+   public aae(tf $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public aae(sh $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   public aae(si $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public tf a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

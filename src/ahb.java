@@ -1,28 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ahb {
-   public static void a(CommandDispatcher<ds> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tf.a("commands.jfr.dump.failed", $$0));
+
+   private ahb() {
+   }
+
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).g()))))
-            .then(dt.a("targets", ed.b()).executes($$0x -> a((ds)$$0x.getSource(), ed.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ds.a("start").executes($$0x -> a((dr)$$0x.getSource()))))
+            .then(ds.a("stop").executes($$0x -> b((dr)$$0x.getSource())))
       );
    }
 
-   private static int a(ds $$0, Collection<? extends big> $$1) {
-      for (big $$2 : $$1) {
-         $$2.aj();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> te.a("commands.kill.success.single", $$1.iterator().next().H_()), true);
+   private static int a(dr $$0) throws CommandSyntaxException {
+      bdl $$1 = bdl.a($$0.l());
+      if (!bdn.e.a($$1)) {
+         throw a.create();
       } else {
-         $$0.a(() -> te.a("commands.kill.success.multiple", $$1.size()), true);
+         $$0.a(() -> tf.c("commands.jfr.started"), false);
+         return 1;
       }
+   }
 
-      return $$1.size();
+   private static int b(dr $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bdn.e.b().normalize());
+         Path $$2 = $$0.l().p() && !aa.aS ? $$1 : $$1.toAbsolutePath();
+         tf $$3 = tf.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new td(td.a.f, $$2.toString())).a(new tk(tk.a.a, tf.c("chat.copy.click"))));
+         $$0.a(() -> tf.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
+      }
    }
 }

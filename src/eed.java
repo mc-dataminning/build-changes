@@ -1,78 +1,97 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSyntaxException;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class eed extends edv {
-   final aep a;
-   final long b;
-   final dcm<?> c;
+public class eed extends edt {
+   public static final Codec<eed> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aqy.a(Codec.unboundedMap(jb.g.r(), egc.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eed::new)
+   );
+   private final Map<he<cnf>, egb> b;
+   private final boolean c;
 
-   eed(efh[] $$0, aep $$1, long $$2, dcm<?> $$3) {
+   eed(List<efg> $$0, Map<he<cnf>, egb> $$1, boolean $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public edx b() {
-      return edy.r;
+   public edv b() {
+      return edw.f;
    }
 
    @Override
-   public ciw a(ciw $$0, ech $$1) {
-      if ($$0.b()) {
-         return $$0;
+   public Set<eep<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public ciy a(ciy $$0, ech $$1) {
+      Object2IntMap<cnf> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((cnf)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == cjb.qb) {
+         ciy $$3 = new ciy(cjb.tC);
+         $$2.forEach(($$1x, $$2x) -> chu.a($$3, new cni($$1x, $$2x)));
+         return $$3;
       } else {
-         qs $$2 = cgp.a($$0);
-         if ($$2 == null) {
-            $$2 = new qs();
+         Map<cnf, Integer> $$4 = cnh.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
 
-         $$2.a("LootTable", this.a.toString());
-         if (this.b != 0L) {
-            $$2.a("LootTableSeed", this.b);
-         }
-
-         cgp.a($$0, this.c, $$2);
+         cnh.a($$4, $$0);
          return $$0;
       }
    }
 
-   @Override
-   public void a(ecs $$0) {
-      super.a($$0);
-      ecj<ecp> $$1 = new ecj<>(ecm.c, this.a);
-      if ($$0.b().getElementOptional($$1).isEmpty()) {
-         $$0.a("Missing loot table used for container: " + this.a);
+   private static void a(Map<cnf, Integer> $$0, cnf $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
+      } else {
+         $$0.put($$1, $$2);
       }
    }
 
-   public static edv.a<?> a(dcm<?> $$0, aep $$1) {
-      return a($$2 -> new eed($$2, $$1, 0L, $$0));
-   }
+   public static class a extends edt.a<eed.a> {
+      private final Builder<he<cnf>, egb> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public static edv.a<?> a(dcm<?> $$0, aep $$1, long $$2) {
-      return a($$3 -> new eed($$3, $$1, $$2, $$0));
-   }
-
-   public static class a extends edv.c<eed> {
-      public void a(JsonObject $$0, eed $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("name", $$1.a.toString());
-         $$0.addProperty("type", jc.l.b($$1.c).toString());
-         if ($$1.b != 0L) {
-            $$0.addProperty("seed", $$1.b);
-         }
+      public a() {
+         this(false);
       }
 
-      public eed a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         aep $$3 = new aep(arf.i($$0, "name"));
-         long $$4 = arf.a($$0, "seed", 0L);
-         aep $$5 = new aep(arf.i($$0, "type"));
-         dcm<?> $$6 = jc.l.b($$5).orElseThrow(() -> new JsonSyntaxException("Unknown block entity type id '" + $$5 + "'"));
-         return new eed($$2, $$3, $$4, $$6);
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eed.a a() {
+         return this;
+      }
+
+      public eed.a a(cnf $$0, egb $$1) {
+         this.a.put($$0.j(), $$1);
+         return this;
+      }
+
+      @Override
+      public edu b() {
+         return new eed(this.g(), this.a.build(), this.b);
       }
    }
 }

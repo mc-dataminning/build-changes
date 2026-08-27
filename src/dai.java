@@ -1,69 +1,92 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class dai extends csk {
-   private static final te c = te.c("container.stonecutter");
-   public static final dfs a = cwd.aC;
-   protected static final ehy b = csk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dai extends csu implements cso {
+   public static final int a = 7;
+   public static final dga b = dfq.av;
+   protected static final float c = 1.0F;
+   protected static final ehx[] d = new ehx[]{
+      csm.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      csm.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final daj e;
+   private final Supplier<cit> f;
 
-   public dai(dex.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, hb.c));
+   protected dai(daj $$0, Supplier<cit> $$1, dez.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dey a(cle $$0) {
-      return this.n().a(a, $$0.g().g());
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return d[$$0.c(b)];
    }
 
    @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      if ($$1.B) {
-         return bgo.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(ape.ay);
-         return bgo.b;
+   protected boolean d(dfa $$0, cos $$1, gu $$2) {
+      return $$0.a(csn.cC);
+   }
+
+   @Override
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = cud.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(b);
+            if ($$5 < 7) {
+               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               ha $$6 = ha.c.a.a($$3);
+               gu $$7 = $$2.a($$6);
+               dfa $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(csn.cC) || $$8.a(apl.af))) {
+                  $$1.b($$7, this.e.n());
+                  $$1.b($$2, this.e.b().n().a(cwf.aC, $$6));
+               }
+            }
+         }
       }
    }
 
-   @Nullable
    @Override
-   public bgr b(dey $$0, cpk $$1, gv $$2) {
-      return new bgw(($$2x, $$3, $$4) -> new cfy($$2x, $$3, cen.a($$1, $$2)), c);
+   public ciy a(cos $$0, gu $$1, dfa $$2) {
+      return new ciy(this.f.get());
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return b;
+   public boolean a(cpp $$0, gu $$1, dfa $$2) {
+      return $$2.c(b) != 7;
    }
 
    @Override
-   public boolean g_(dey $$0) {
+   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
       return true;
    }
 
    @Override
-   public cyp b_(dey $$0) {
-      return cyp.c;
+   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
+      int $$4 = Math.min(7, $$3.c(b) + arp.a($$0.z, 2, 5));
+      dfa $$5 = $$3.a(b, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
    }
 
    @Override
-   public dey a(dey $$0, cyw $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   public dey a(dey $$0, cxf $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public boolean a(dey $$0, coq $$1, gv $$2, ear $$3) {
-      return false;
+   public daj a() {
+      return this.e;
    }
 }

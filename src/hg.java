@@ -1,23 +1,133 @@
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public interface hg<T> {
-   Optional<hf.c<T>> a(aeo<T> var1);
+public interface hg<T> extends hf<T> {
+   Stream<he.c<T>> b();
 
-   default hf.c<T> b(aeo<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
+   default Stream<aeq<T>> c() {
+      return this.b().map(he.c::g);
    }
 
-   Optional<hj.c<T>> a(apy<T> var1);
+   Stream<hi.c<T>> d();
 
-   default hj.c<T> b(apy<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   default Stream<aqa<T>> e() {
+      return this.d().map(hi.c::f);
    }
 
-   public interface a {
-      <T> Optional<hg<T>> a(aeo<? extends hs<? extends T>> var1);
+   default hg<T> a(final Predicate<T> $$0) {
+      return new hg.a<T>(this) {
+         @Override
+         public Optional<he.c<T>> a(aeq<T> $$0x) {
+            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
+         }
 
-      default <T> hg<T> b(aeo<? extends hs<? extends T>> $$0) {
+         @Override
+         public Stream<he.c<T>> b() {
+            return this.c.b().filter($$1 -> $$0.test($$1.a()));
+         }
+      };
+   }
+
+   public static class a<T> implements hg<T> {
+      protected final hg<T> c;
+
+      public a(hg<T> $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public Optional<he.c<T>> a(aeq<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<he.c<T>> b() {
+         return this.c.b();
+      }
+
+      @Override
+      public Optional<hi.c<T>> a(aqa<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<hi.c<T>> d() {
+         return this.c.d();
+      }
+   }
+
+   public interface b {
+      <T> Optional<hg.c<T>> a(aeq<? extends hr<? extends T>> var1);
+
+      default <T> hg.c<T> b(aeq<? extends hr<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
+
+      default hf.a a() {
+         return new hf.a() {
+            @Override
+            public <T> Optional<hf<T>> a(aeq<? extends hr<? extends T>> $$0) {
+               return b.this.a($$0).map($$0x -> $$0x);
+            }
+         };
+      }
+
+      static hg.b a(Stream<hg.c<?>> $$0) {
+         final Map<aeq<? extends hr<?>>, hg.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(hg.c::f, $$0x -> $$0x));
+         return new hg.b() {
+            @Override
+            public <T> Optional<hg.c<T>> a(aeq<? extends hr<? extends T>> $$0) {
+               return Optional.ofNullable((hg.c<T>)$$1.get($$0));
+            }
+         };
+      }
+   }
+
+   public interface c<T> extends hg<T>, hh<T> {
+      aeq<? extends hr<? extends T>> f();
+
+      Lifecycle g();
+
+      default hg<T> a(cdv $$0) {
+         return (hg<T>)(cds.bv.contains(this.f()) ? this.a($$1 -> ((cds)$$1).a($$0)) : this);
+      }
+
+      public abstract static class a<T> implements hg.c<T> {
+         protected abstract hg.c<T> a();
+
+         @Override
+         public aeq<? extends hr<? extends T>> f() {
+            return this.a().f();
+         }
+
+         @Override
+         public Lifecycle g() {
+            return this.a().g();
+         }
+
+         @Override
+         public Optional<he.c<T>> a(aeq<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         public Stream<he.c<T>> b() {
+            return this.a().b();
+         }
+
+         @Override
+         public Optional<hi.c<T>> a(aqa<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         public Stream<hi.c<T>> d() {
+            return this.a().d();
+         }
       }
    }
 }

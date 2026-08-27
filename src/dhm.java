@@ -1,3 +1,5 @@
-interface dhm<T> {
-   int onResize(int var1, T var2);
+public class dhm extends RuntimeException {
+   public dhm(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

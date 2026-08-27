@@ -1,109 +1,79 @@
-import javax.annotation.Nullable;
+public class ddd extends ddp {
+   public static final int c = 9;
+   private hn<ciy> f = hn.a(9, ciy.b);
 
-public class ddd extends dck implements bgs {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final art k = art.a();
-   private te l;
+   protected ddd(dco<?> $$0, gu $$1, dfa $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public ddd(gv $$0, dey $$1) {
-      super(dcm.m, $$0, $$1);
+   public ddd(gu $$0, dfa $$1) {
+      this(dco.f, $$0, $$1);
    }
 
    @Override
-   protected void b(qs $$0) {
-      super.b($$0);
-      if (this.ac()) {
-         $$0.a("CustomName", te.a.a(this.l));
-      }
+   public int b() {
+      return 9;
    }
 
-   @Override
-   public void a(qs $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = te.a.a($$0.l("CustomName"));
-      }
-   }
+   public int a(aru $$0) {
+      this.e(null);
+      int $$1 = -1;
+      int $$2 = 1;
 
-   public static void a(cpk $$0, gv $$1, dey $$2, ddd $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cbl $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dp() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dv() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)aro.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
          }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
       }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
+      return $$1;
+   }
+
+   public int a(ciy $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
       }
 
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = aro.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = aro.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
+      return -1;
    }
 
    @Override
-   public te ab() {
-      return (te)(this.l != null ? this.l : te.c("container.enchant"));
+   protected tf g() {
+      return tf.c("container.dispenser");
    }
 
-   public void a(@Nullable te $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
    @Override
-   public te ad() {
-      return this.l;
+   public void a(qr $$0) {
+      super.a($$0);
+      this.f = hn.a(this.b(), ciy.b);
+      if (!this.d($$0)) {
+         bgk.b($$0, this.f);
+      }
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgk.a($$0, this.f);
+      }
+   }
+
+   @Override
+   protected hn<ciy> f() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(hn<ciy> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   protected cee a(int $$0, cbm $$1) {
+      return new cev($$0, $$1, this);
    }
 }

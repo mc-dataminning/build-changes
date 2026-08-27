@@ -1,83 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class dmr extends dnl<dpw> {
-   public dmr(Codec<dpw> $$0) {
+public class dmr extends dnn<dqb> {
+   private static final dfa a = csn.mZ.n().a(crr.g, Integer.valueOf(1)).a(crr.h, dfm.a).a(crr.i, Integer.valueOf(0));
+   private static final dfa b = a.a(crr.h, dfm.c).a(crr.i, Integer.valueOf(1));
+   private static final dfa c = a.a(crr.h, dfm.c);
+   private static final dfa d = a.a(crr.h, dfm.b);
+
+   public dmr(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnn<dpw> $$0) {
-      gv $$1 = $$0.e();
-      cqe $$2 = $$0.b();
-      art $$3 = $$0.d();
-      if ($$2.t($$1) && !$$2.t($$1.c())) {
-         gv.a $$4 = $$1.j();
-         gv.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   public boolean a(dnp<dqb> $$0) {
+      int $$1 = 0;
+      gu $$2 = $$0.e();
+      cqg $$3 = $$0.b();
+      aru $$4 = $$0.d();
+      dqb $$5 = $$0.f();
+      gu.a $$6 = $$2.j();
+      gu.a $$7 = $$2.j();
+      if ($$3.t($$6)) {
+         if (csn.mZ.n().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         while ($$2.t($$4)) {
-            if ($$2.r($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, csl.dZ.n(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, hb.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, hb.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, hb.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, hb.f));
-            $$4.c(hb.a);
-         }
-
-         $$4.c(hb.b);
-         this.a($$2, $$3, $$5.a($$4, hb.c));
-         this.a($$2, $$3, $$5.a($$4, hb.d));
-         this.a($$2, $$3, $$5.a($$4, hb.e));
-         this.a($$2, $$3, $$5.a($$4, hb.f));
-         $$4.c(hb.a);
-         gv.a $$10 = new gv.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = aro.a($$11) * aro.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.t($$5.a($$10, hb.a))) {
-                     $$10.c(hb.a);
-                     if (--$$14 <= 0) {
-                        break;
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dkj.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, csn.l.n(), 2);
+                        }
                      }
-                  }
-
-                  if (!$$2.t($$5.a($$10, hb.a))) {
-                     $$2.a($$10, csl.dZ.n(), 2);
                   }
                }
             }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ha.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ha.a, 1), c, 2);
+               $$3.a($$6.c(ha.a, 1), d, 2);
+            }
          }
 
-         return true;
-      } else {
-         return false;
+         $$1++;
       }
-   }
 
-   private void a(cpl $$0, art $$1, gv $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, csl.dZ.n(), 2);
-      }
-   }
-
-   private boolean b(cpl $$0, art $$1, gv $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, csl.dZ.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
+      return $$1 > 0;
    }
 }

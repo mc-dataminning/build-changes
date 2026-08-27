@@ -1,49 +1,50 @@
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
-public class bb extends cv<bb.a> {
-   static final aep a = new aep("cured_zombie_villager");
+public class bb extends cu<bb.a> {
+   static final aer a = new aer("cured_zombie_villager");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public bb.a a(JsonObject $$0, ba $$1, be $$2) {
-      ba $$3 = bo.a($$0, "zombie", $$2);
-      ba $$4 = bo.a($$0, "villager", $$2);
+   public bb.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      Optional<ba> $$3 = bo.a($$0, "zombie", $$2);
+      Optional<ba> $$4 = bo.a($$0, "villager", $$2);
       return new bb.a($$1, $$3, $$4);
    }
 
-   public void a(akj $$0, bzs $$1, cay $$2) {
+   public void a(akl $$0, bzu $$1, cba $$2) {
       ech $$3 = bo.b($$0, $$1);
       ech $$4 = bo.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
    public static class a extends ar {
-      private final ba a;
-      private final ba b;
+      private final Optional<ba> a;
+      private final Optional<ba> b;
 
-      public a(ba $$0, ba $$1, ba $$2) {
+      public a(Optional<ba> $$0, Optional<ba> $$1, Optional<ba> $$2) {
          super(bb.a, $$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static bb.a c() {
-         return new bb.a(ba.a, ba.a, ba.a);
+      public static bb.a d() {
+         return new bb.a(Optional.empty(), Optional.empty(), Optional.empty());
       }
 
       public boolean a(ech $$0, ech $$1) {
-         return !this.a.a($$0) ? false : this.b.a($$1);
+         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("zombie", this.a.a($$0));
-         $$1.add("villager", this.b.a($$0));
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         this.a.ifPresent($$1 -> $$0.add("zombie", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("villager", $$1.a()));
+         return $$0;
       }
    }
 }

@@ -1,73 +1,118 @@
-public abstract class bjf extends biy {
-   protected static final float bS = 0.0F;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected bjf(bik<? extends bjf> $$0, cpk $$1) {
-      super($$0, $$1);
+public interface bjf {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
+
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void c(qr $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
+      }
    }
 
-   public float h(gv $$0) {
-      return this.a($$0, this.dK());
-   }
+   default void a(cpm $$0, qr $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof akk) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bii $$3 = ((akk)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bja) {
+                  this.a((bja)$$3);
+               }
 
-   public float a(gv $$0, cpn $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(cpl $$0, bja $$1) {
-      return this.a(this.dk(), $$0) >= 0.0F;
-   }
-
-   public boolean fV() {
-      return !this.H().l();
-   }
-
-   public boolean fW() {
-      return this.bz.a(bry.Y) ? this.bz.c(bry.Y).isPresent() : this.bO.c().anyMatch($$0 -> $$0.k() instanceof bql);
-   }
-
-   @Override
-   protected void fN() {
-      super.fN();
-      big $$0 = this.fP();
-      if ($$0 != null && $$0.dK() == this.dK()) {
-         this.a($$0.dk(), 5);
-         float $$1 = this.e($$0);
-         if (this instanceof bjs && ((bjs)this).t()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
+               if ($$3.ag() == bim.bt) {
+                  this.c((cbn)$$3);
+               }
             }
-
-            return;
-         }
-
-         this.D($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bO.a(bps.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dp() - this.dp()) / (double)$$1;
-            double $$3 = ($$0.dr() - this.dr()) / (double)$$1;
-            double $$4 = ($$0.dv() - this.dv()) / (double)$$1;
-            this.f(this.dn().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cm();
-         } else if (this.fX() && !this.fW()) {
-            this.bO.b(bps.a.a);
-            float $$5 = 2.0F;
-            ehf $$6 = new ehf($$0.dp() - this.dp(), $$0.dr() - this.dr(), $$0.dv() - this.dv()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.H().a(this.dp() + $$6.c, this.dr() + $$6.d, this.dv() + $$6.e, this.fY());
          }
       }
    }
 
-   protected boolean fX() {
-      return true;
+   default void a(akk $$0, boolean $$1) {
+      biy $$2 = this.j();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eu()) && $$3 != null && $$0.a($$3) instanceof bja) {
+         this.O_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
+            this.a($$2.cv());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.ag() != bim.bt || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.O_();
+            }
+         }
+      }
    }
 
-   protected double fY() {
-      return 1.0;
+   default boolean a_(biy $$0) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.ag() == bim.bt && this.a_($$0.dK()) ? true : $$0.cv().equals(this.b());
+      }
    }
 
-   protected void D(float $$0) {
+   default boolean a_(cpm $$0) {
+      return $$0.X().b(cpi.K) && this.S_() && this.b() == null;
    }
+
+   default boolean S_() {
+      return this.a() > 0;
+   }
+
+   default void a_(cbn $$0) {
+      if ($$0.dK().X().b(cpi.J)) {
+         if ($$0.cv().equals(this.b())) {
+            this.O_();
+         }
+      }
+   }
+
+   default void T_() {
+      this.O_();
+      this.c();
+   }
+
+   default void O_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
+   }
+
+   @Nullable
+   biy ef();
+
+   void a(@Nullable biy var1);
+
+   void c(@Nullable cbn var1);
+
+   void h(@Nullable biy var1);
+
+   boolean c(biy var1);
+
+   @Nullable
+   biy j();
 }

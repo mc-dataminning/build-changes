@@ -1,90 +1,74 @@
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public abstract class crf extends crx {
-   public static final dfs a = cwd.aC;
-   public static final dfp b = dfo.r;
+public abstract class crf extends csm {
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 3;
+   private static final int f = 2;
+   protected static final int a = 4;
+   private static final ehx g = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ehx b = ehu.a(
+      ehu.b(), ehu.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), g), ehi.e
+   );
+   private final Map<cit, ib> h;
 
-   protected crf(dex.d $$0) {
+   public crf(dez.d $$0, Map<cit, ib> $$1) {
       super($$0);
-      this.k(this.C.b().a(a, hb.c).a(b, Boolean.valueOf(false)));
+      this.h = $$1;
+   }
+
+   protected double b(dfa $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dfa $$0, gu $$1, bii $$2) {
+      return $$2.dr() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   public bgo a(dey $$0, cpk $$1, gv $$2, cbl $$3, bgn $$4, ehb $$5) {
-      if ($$1.B) {
-         return bgo.a;
-      } else {
-         this.a($$1, $$2, $$3);
-         return bgo.b;
-      }
-   }
-
-   protected abstract void a(cpk var1, gv var2, cbl var3);
-
-   @Override
-   public dey a(cle $$0) {
-      return this.n().a(a, $$0.g().g());
+   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
+      ciy $$6 = $$3.b($$4);
+      ib $$7 = this.h.get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
    }
 
    @Override
-   public void a(cpk $$0, gv $$1, dey $$2, biw $$3, ciw $$4) {
-      if ($$4.A()) {
-         dck $$5 = $$0.c_($$1);
-         if ($$5 instanceof dbz) {
-            ((dbz)$$5).a($$4.y());
-         }
-      }
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b;
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, dey $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dck $$5 = $$1.c_($$2);
-         if ($$5 instanceof dbz) {
-            if ($$1 instanceof aki) {
-               bgk.a($$1, $$2, (dbz)$$5);
-               ((dbz)$$5).a((aki)$$1, ehf.b($$2));
-            }
-
-            $$1.c($$2, this);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public ehx a(dfa $$0, cos $$1, gu $$2) {
+      return g;
    }
 
    @Override
-   public boolean d_(dey $$0) {
+   public boolean d_(dfa $$0) {
       return true;
    }
 
    @Override
-   public int a(dey $$0, cpk $$1, gv $$2) {
-      return cec.a($$1.c_($$2));
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
    }
+
+   public abstract boolean d(dfa var1);
 
    @Override
-   public cyp b_(dey $$0) {
-      return cyp.c;
+   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      gu $$4 = cyc.a((cpm)$$1, $$2);
+      if ($$4 != null) {
+         eac $$5 = cyc.a($$1, $$4);
+         if ($$5 != eae.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
    }
 
-   @Override
-   public dey a(dey $$0, cyw $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected boolean a(eac $$0) {
+      return false;
    }
 
-   @Override
-   public dey a(dey $$0, cxf $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dck> dcl<T> a(cpk $$0, dcm<T> $$1, dcm<? extends dbz> $$2) {
-      return $$0.B ? null : a($$1, $$2, dbz::a);
+   protected void a(dfa $$0, cpm $$1, gu $$2, eac $$3) {
    }
 }

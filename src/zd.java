@@ -1,42 +1,28 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class zd implements uw<wo> {
-   private final te a;
-   private final Optional<byte[]> b;
-   private final boolean c;
+public class zd implements ux<wp> {
+   @Nullable
+   private final aer a;
 
-   public zd(te $$0, Optional<byte[]> $$1, boolean $$2) {
+   public zd(@Nullable aer $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public zd(sh $$0) {
-      this.a = $$0.l();
-      this.b = $$0.b(sh::b);
-      this.c = $$0.readBoolean();
-   }
-
-   @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, sh::a);
-      $$0.a(this.c);
-   }
-
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public te a() {
+   public zd(si $$0) {
+      this.a = $$0.c(si::s);
+   }
+
+   @Override
+   public void a(si $$0) {
+      $$0.a(this.a, si::a);
+   }
+
+   @Nullable
+   public aer a() {
       return this.a;
-   }
-
-   public Optional<byte[]> d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

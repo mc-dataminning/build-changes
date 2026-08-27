@@ -1,173 +1,83 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-class fcm {
-   private static final int a = 44;
-   private final List<fcm.c> b;
+public class fcm extends exz {
+   private static final int a = 310;
+   private final evo b = new evo(this);
+   private final exz c;
+   private final amx k;
+   private final Consumer<amx> l;
+   private final Object2BooleanMap<amu> m = new Object2BooleanLinkedOpenHashMap();
 
-   fcm(List<fcm.c> $$0) {
-      this.b = $$0;
-   }
+   protected fcm(exz $$0, amx $$1, Consumer<amx> $$2) {
+      super(tf.c("experiments_screen.title"));
+      this.c = $$0;
+      this.k = $$1;
+      this.l = $$2;
 
-   public void a() {
-      this.b.forEach(fcm.c::a);
-   }
-
-   public static fcm.a a(int $$0) {
-      return new fcm.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fcm.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fcm.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fcm.d a(te $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fcm.d $$3 = new fcm.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fcm.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fcm.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fcm a(Consumer<evm> $$0) {
-         evj $$1 = new evj().b(this.d);
-         $$1.a(evp.a(this.a - 44), 0, 0);
-         $$1.a(evp.a(44), 0, 1);
-         List<fcm.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fcm.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+      for (amu $$3 : $$1.c()) {
+         if ($$3.j() == amy.d) {
+            this.m.put($$3, $$1.f().contains($$3));
          }
-
-         $$1.a();
-         $$0.accept($$1);
-         fcm $$4 = new fcm($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fcm.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fcm.b($$0, $$1));
-         return this;
       }
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   protected void aE_() {
+      this.b.a(new etm(tf.c("selectWorld.experiments"), this.i));
+      evs $$0 = this.b.c(evs.d());
+      $$0.a(new etb(tf.c("selectWorld.experiments.info").a(n.m), this.i).i(310), $$0x -> $$0x.e(15));
+      fcq.a $$1 = fcq.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
+      $$1.a($$0::a);
+      evn.b $$2 = this.b.b(new evn().a(10)).d(2);
+      $$2.a(esh.a(te.d, $$0x -> this.l()).a());
+      $$2.a(esh.a(te.e, $$0x -> this.au_()).a());
+      this.b.a($$1x -> {
+         esf var10000 = this.d($$1x);
+      });
+      this.b();
    }
 
-   static record c(esp<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.i = this.c.getAsBoolean();
-         }
-      }
-
-      public esp<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
+   private static tf a(amu $$0) {
+      String $$1 = "dataPack." + $$0.f() + ".name";
+      return (tf)(fzr.a($$1) ? tf.c($$1) : $$0.a());
    }
 
-   public static class d {
-      private final te a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private te d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   @Override
+   public void au_() {
+      this.f.a(this.c);
+   }
 
-      d(te $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fcm.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fcm.d a(te $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fcm.c a(fcm.a $$0, evj $$1, int $$2) {
-         $$0.a();
-         etn $$3 = new etn(this.a, eqn.N().h).e();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fcm.b> $$4 = $$0.f;
-         esp.a<Boolean> $$5 = esp.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && !$$4.isPresent();
-         if ($$6) {
-            etr $$7 = etr.a(this.d);
-            $$5.a($$1x -> $$7);
+   private void l() {
+      List<amu> $$0 = new ArrayList<>(this.k.f());
+      List<amu> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
          }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(amu::f).toList());
+      this.l.accept(this.k);
+   }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> td.a(this.a, $$0x.b(), this.d));
-         } else {
-            $$5.a($$0x -> td.a(this.a, $$0x.b()));
-         }
+   @Override
+   protected void b() {
+      this.b.a();
+   }
 
-         esp<Boolean> $$8 = $$5.a(0, 0, this.f, 20, te.h(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.i = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               te $$4x = this.d.e().a(n.h);
-               erv $$5x = eqn.N().h;
-               etc $$6x = new etc($$4x, $$5x);
-               $$6x.i($$0.a - $$0.c - this.f);
-               $$6x.j($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.h() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fcm.c($$8, this.b, this.e);
-      }
+   @Override
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

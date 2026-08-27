@@ -1,15 +1,15 @@
 import javax.annotation.Nullable;
 
-public class del extends dee {
-   private final float a;
-
-   public del(float $$0) {
-      this.a = $$0;
+public class del extends def {
+   @Nullable
+   @Override
+   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
+      return null;
    }
 
    @Nullable
    @Override
-   protected aeo<dmy<?, ?>> a(art $$0, boolean $$1) {
-      return $$0.i() < this.a ? os.y : os.x;
+   protected aeq<dna<?, ?>> a(aru $$0) {
+      return or.h;
    }
 }

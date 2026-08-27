@@ -1,22 +1,40 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public record aas(aeo<dih> a, aeo<cpk> b, long c, cph d, @Nullable cph e, boolean f, boolean g, Optional<he> h, int i) {
-   public aas(sh $$0) {
-      this(
-         $$0.a(jd.au), $$0.a(jd.aH), $$0.readLong(), cph.a($$0.readByte()), cph.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(sh::h), $$0.m()
-      );
+public class aas implements ux<wp> {
+   private final List<cmb<?>> a;
+
+   public aas(Collection<cmb<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public void a(sh $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(cph.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, sh::a);
-      $$0.c(this.i);
+   public aas(si $$0) {
+      this.a = $$0.a(aas::b);
+   }
+
+   @Override
+   public void a(si $$0) {
+      $$0.a(this.a, aas::a);
+   }
+
+   public void a(wp $$0) {
+      $$0.a(this);
+   }
+
+   public List<cmb<?>> a() {
+      return this.a;
+   }
+
+   public static cmb<?> b(si $$0) {
+      aer $$1 = $$0.s();
+      aer $$2 = $$0.s();
+      return jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$2, $$0);
+   }
+
+   public static <T extends cmb<?>> void a(si $$0, T $$1) {
+      $$0.a(jb.u.b($$1.aj_()));
+      $$0.a($$1.e());
+      ((cmd<T>)$$1.aj_()).a($$0, $$1);
    }
 }

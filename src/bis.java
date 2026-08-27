@@ -1,61 +1,36 @@
-public class bis {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final aea c;
-   private final adx<Integer> d;
-   private final adx<Boolean> e;
-   private boolean f;
-   private int g;
+import com.mojang.serialization.Codec;
 
-   public bis(aea $$0, adx<Integer> $$1, adx<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public enum bis implements arr, ash {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
+
+   public static final Codec<bis> c = ash.a(bis::values);
+   private final int d;
+   private final String e;
+   private final String f;
+
+   private bis(int $$0, String $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   public bis e() {
+      return this == a ? b : a;
    }
 
-   public boolean a(art $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.b(this.d, $$0.a(841) + 140);
-         return true;
-      }
+   @Override
+   public int a() {
+      return this.d;
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * aro.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
-   }
-
-   private int e() {
-      return this.c.b(this.d);
-   }
-
-   public void a(qs $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(qs $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.b(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.b(this.e);
+   @Override
+   public String c() {
+      return this.e;
    }
 }

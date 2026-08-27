@@ -1,52 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public abstract class dna extends dnl<dpw> {
-   public dna(Codec<dpw> $$0) {
-      super($$0);
+public record dna<FC extends dpr, F extends dnn<FC>>(F d, FC e) {
+   public static final Codec<dna<?, ?>> a = jb.R.q().dispatch($$0 -> $$0.d, dnn::a);
+   public static final Codec<he<dna<?, ?>>> b = aen.a(jc.as, a);
+   public static final Codec<hi<dna<?, ?>>> c = ht.a(jc.as, a);
+
+   public boolean a(cqg $$0, dgx $$1, aru $$2, gu $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dna<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dnn<dpw> $$0) {
-      art $$1 = $$0.d();
-      cqe $$2 = $$0.b();
-      gv $$3 = $$0.e();
-      Optional<csk> $$4 = jc.f.b(apj.ap).flatMap($$1x -> $$1x.a($$1)).map(hf::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   protected abstract boolean a(cpl var1, art var2, gv var3, dey var4);
+   public F b() {
+      return this.d;
+   }
 
-   protected boolean b(cpl $$0, art $$1, gv $$2, dey $$3) {
-      gv $$4 = $$2.c();
-      dey $$5 = $$0.a_($$2);
-      if (($$5.a(csl.G) || $$5.a(apj.as)) && $$0.a_($$4).a(csl.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            jc.f.b(apj.as).flatMap($$1x -> $$1x.a($$1)).map(hf::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, csl.mV.n().a(czh.b, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (hb $$6 : hb.c.a) {
-            if ($$1.i() < 0.2F) {
-               gv $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(csl.G)) {
-                  jc.f.b(apj.aq).flatMap($$1x -> $$1x.a($$1)).map(hf::a).ifPresent($$3x -> {
-                     dey $$4x = $$3x.n();
-                     if ($$4x.b(crw.a)) {
-                        $$4x = $$4x.a(crw.a, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public FC c() {
+      return this.e;
    }
 }

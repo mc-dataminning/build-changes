@@ -1,20 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dpf {
-   public static final Codec<dpf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dub.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, dpf::new)
-   );
-   public final hf<dub> b;
-   public final float c;
-
-   public dpf(hf<dub> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dpf extends dpc {
+   public dpf(Codec<dqq> $$0) {
+      super($$0);
    }
 
-   public boolean a(cqe $$0, dgv $$1, art $$2, gv $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   protected Set<gu> a(cqg $$0, dqq $$1, aru $$2, gu $$3, Predicate<dfa> $$4, int $$5, int $$6) {
+      Set<gu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<gu> $$8 = new HashSet<>();
+      gu.a $$9 = new gu.a();
+
+      for (gu $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (gu $$11 : $$8) {
+         $$0.a($$11, csn.G.n(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(cqg $$0, Set<gu> $$1, gu $$2, gu.a $$3) {
+      return a($$0, $$2, $$3, ha.c) || a($$0, $$2, $$3, ha.f) || a($$0, $$2, $$3, ha.d) || a($$0, $$2, $$3, ha.e) || a($$0, $$2, $$3, ha.a);
+   }
+
+   private static boolean a(cqg $$0, gu $$1, gu.a $$2, ha $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(cqg $$0, dqq $$1, dgx $$2, aru $$3, gu $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dfa $$5 = $$0.a_($$4);
+         if ($$5.b(dfq.C) && !$$5.c(dfq.C)) {
+            $$0.a($$4, $$5.a(dfq.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,27 +1,32 @@
-import java.util.List;
+public class xn implements ux<wp> {
+   private final cit a;
+   private final int b;
 
-public record xn(xn.a a, List<String> b) implements uw<wo> {
-   public xn(sh $$0) {
-      this($$0.b(xn.a.class), $$0.a(sh::r));
+   public xn(cit $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public xn(si $$0) {
+      this.a = $$0.a(jb.i);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, sh::a);
+   public void a(si $$0) {
+      $$0.a(jb.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public List<String> d() {
-      return this.b;
+   public cit a() {
+      return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int d() {
+      return this.b;
    }
 }

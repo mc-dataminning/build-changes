@@ -1,59 +1,35 @@
-import javax.annotation.concurrent.Immutable;
-
-@Immutable
 public class bgm {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bgl d;
-   private final float e;
-
-   public bgm(bgl $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public static void a(cpm $$0, gu $$1, bgj $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public bgl a() {
-      return this.d;
+   public static void a(cpm $$0, bii $$1, bgj $$2) {
+      a($$0, $$1.dp(), $$1.dr(), $$1.dv(), $$2);
    }
 
-   public float b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.e >= (float)bgl.d.ordinal();
-   }
-
-   public boolean a(float $$0) {
-      return this.e > $$0;
-   }
-
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+   private static void a(cpm $$0, double $$1, double $$2, double $$3, bgj $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   private float a(bgl $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bgl.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bgl.d;
-         float $$5 = 0.75F;
-         float $$6 = aro.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += aro.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += aro.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bgl.b) {
-            $$7 *= 0.5F;
-         }
+   public static void a(cpm $$0, gu $$1, hn<ciy> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
+   public static void a(cpm $$0, double $$1, double $$2, double $$3, ciy $$4) {
+      double $$5 = (double)bim.ad.k();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.b()) {
+         byg $$11 = new byg($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
       }
    }
 }

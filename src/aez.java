@@ -1,71 +1,311 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class aez {
    private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<asn> b = CompletableFuture.completedFuture(asn.a);
-   private final dm.a c;
-   private final dt d;
-   private final cma e = new cma();
-   private final aqa f;
-   private final eck g = new eck();
-   private final afb h = new afb(this.g);
-   private final afc i;
+   private static final Gson b = new GsonBuilder()
+      .registerTypeAdapter(ag.class, new ag.a())
+      .registerTypeAdapter(aer.class, new aer.b())
+      .setPrettyPrinting()
+      .create();
+   private static final TypeToken<Map<aer, ag>> c = new TypeToken<Map<aer, ag>>() {
+   };
+   private final DataFixer d;
+   private final anz e;
+   private final Path f;
+   private final Map<ae, ag> g = new LinkedHashMap<>();
+   private final Set<ae> h = new HashSet<>();
+   private final Set<ae> i = new HashSet<>();
+   private final Set<ae> j = new HashSet<>();
+   private akl k;
+   @Nullable
+   private ae l;
+   private boolean m = true;
 
-   public aez(ht.b $$0, cdt $$1, dt.a $$2, int $$3) {
-      this.f = new aqa($$0);
-      this.c = dm.a((ht)$$0, $$1);
-      this.d = new dt($$2, this.c);
-      this.c.a(dm.b.a);
-      this.i = new afc($$3, this.d.a());
+   public aez(DataFixer $$0, anz $$1, afd $$2, Path $$3, akl $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.k = $$4;
+      this.d($$2);
    }
 
-   public afc a() {
-      return this.i;
+   public void a(akl $$0) {
+      this.k = $$0;
    }
 
-   public eck b() {
-      return this.g;
+   public void a() {
+      for (al<?> $$0 : ai.a()) {
+         $$0.a(this);
+      }
    }
 
-   public cma c() {
-      return this.e;
+   public void a(afd $$0) {
+      this.a();
+      this.g.clear();
+      this.h.clear();
+      this.j.clear();
+      this.i.clear();
+      this.m = true;
+      this.l = null;
+      this.d($$0);
    }
 
-   public dt d() {
-      return this.d;
+   private void b(afd $$0) {
+      for (ae $$1 : $$0.a()) {
+         this.d($$1);
+      }
    }
 
-   public afb e() {
-      return this.h;
+   private void c(afd $$0) {
+      for (ae $$1 : $$0.a()) {
+         if ($$1.h().isEmpty()) {
+            this.a($$1, "");
+            $$1.f().a(this.k);
+         }
+      }
    }
 
-   public List<ane> f() {
-      return List.of(this.f, this.g, this.e, this.i, this.h);
+   private void d(afd $$0) {
+      if (Files.isRegularFile(this.f)) {
+         try {
+            JsonReader $$1 = new JsonReader(Files.newBufferedReader(this.f, StandardCharsets.UTF_8));
+
+            try {
+               $$1.setLenient(false);
+               Dynamic<JsonElement> $$2 = new Dynamic(JsonOps.INSTANCE, Streams.parse($$1));
+               int $$3 = $$2.get("DataVersion").asInt(1343);
+               $$2 = $$2.remove("DataVersion");
+               $$2 = ass.p.a(this.d, $$2, $$3);
+               Map<aer, ag> $$4 = (Map<aer, ag>)b.getAdapter(c).fromJsonTree((JsonElement)$$2.getValue());
+               if ($$4 == null) {
+                  throw new JsonParseException("Found null for advancements");
+               }
+
+               $$4.entrySet().stream().sorted(Entry.comparingByValue()).forEach($$1x -> {
+                  ae $$2x = $$0.a($$1x.getKey());
+                  if ($$2x == null) {
+                     a.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", $$1x.getKey(), this.f);
+                  } else {
+                     this.a($$2x, $$1x.getValue());
+                     this.i.add($$2x);
+                     this.c($$2x);
+                  }
+               });
+            } catch (Throwable var7) {
+               try {
+                  $$1.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+
+               throw var7;
+            }
+
+            $$1.close();
+         } catch (JsonParseException var8) {
+            a.error("Couldn't parse player advancements in {}", this.f, var8);
+         } catch (IOException var9) {
+            a.error("Couldn't access player advancements in {}", this.f, var9);
+         }
+      }
+
+      this.c($$0);
+      this.b($$0);
    }
 
-   public static CompletableFuture<aez> a(ank $$0, ht.b $$1, cdt $$2, dt.a $$3, int $$4, Executor $$5, Executor $$6) {
-      aez $$7 = new aez($$1, $$2, $$3, $$4);
-      return anq.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dm.b.b)).thenApply($$1x -> $$7);
+   public void b() {
+      Map<aer, ag> $$0 = new LinkedHashMap<>();
+
+      for (Entry<ae, ag> $$1 : this.g.entrySet()) {
+         ag $$2 = $$1.getValue();
+         if ($$2.b()) {
+            $$0.put($$1.getKey().j(), $$2);
+         }
+      }
+
+      JsonElement $$3 = b.toJsonTree($$0);
+      $$3.getAsJsonObject().addProperty("DataVersion", aa.b().d().c());
+
+      try {
+         v.c(this.f.getParent());
+
+         try (Writer $$4 = Files.newBufferedWriter(this.f, StandardCharsets.UTF_8)) {
+            b.toJson($$3, $$4);
+         }
+      } catch (IOException var8) {
+         a.error("Couldn't save player advancements to {}", this.f, var8);
+      }
    }
 
-   public void a(ht $$0) {
-      this.f.a().forEach($$1 -> a($$0, (aqa.a<?>)$$1));
-      csl.a();
+   public boolean a(ae $$0, String $$1) {
+      boolean $$2 = false;
+      ag $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.a($$1)) {
+         this.e($$0);
+         this.i.add($$0);
+         $$2 = true;
+         if (!$$4 && $$3.a()) {
+            $$0.f().a(this.k);
+            if ($$0.d() != null && $$0.d().i() && this.k.dK().X().b(cpi.y)) {
+               this.e.a(tf.a("chat.type.advancement." + $$0.d().e().a(), this.k.H_(), $$0.l()), false);
+            }
+         }
+      }
+
+      if (!$$4 && $$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
    }
 
-   private static <T> void a(ht $$0, aqa.a<T> $$1) {
-      aeo<? extends hs<T>> $$2 = $$1.a();
-      Map<apy<T>, List<hf<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> apy.a($$2, (aep)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends hf<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
+   public boolean b(ae $$0, String $$1) {
+      boolean $$2 = false;
+      ag $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.b($$1)) {
+         this.d($$0);
+         this.i.add($$0);
+         $$2 = true;
+      }
+
+      if ($$4 && !$$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   private void c(ae $$0) {
+      this.j.add($$0.c());
+   }
+
+   private void d(ae $$0) {
+      ag $$1 = this.b($$0);
+      if (!$$1.a()) {
+         for (Entry<String, aj> $$2 : $$0.h().entrySet()) {
+            ak $$3 = $$1.c($$2.getKey());
+            if ($$3 != null && !$$3.a()) {
+               am $$4 = $$2.getValue().a();
+               if ($$4 != null) {
+                  al<am> $$5 = ai.a($$4.a());
+                  if ($$5 != null) {
+                     $$5.a(this, new al.a<>($$4, $$0, $$2.getKey()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void e(ae $$0) {
+      ag $$1 = this.b($$0);
+
+      for (Entry<String, aj> $$2 : $$0.h().entrySet()) {
+         ak $$3 = $$1.c($$2.getKey());
+         if ($$3 != null && ($$3.a() || $$1.a())) {
+            am $$4 = $$2.getValue().a();
+            if ($$4 != null) {
+               al<am> $$5 = ai.a($$4.a());
+               if ($$5 != null) {
+                  $$5.b(this, new al.a<>($$4, $$0, $$2.getKey()));
+               }
+            }
+         }
+      }
+   }
+
+   public void b(akl $$0) {
+      if (this.m || !this.j.isEmpty() || !this.i.isEmpty()) {
+         Map<aer, ag> $$1 = new HashMap<>();
+         Set<ae> $$2 = new HashSet<>();
+         Set<aer> $$3 = new HashSet<>();
+
+         for (ae $$4 : this.j) {
+            this.a($$4, $$2, $$3);
+         }
+
+         this.j.clear();
+
+         for (ae $$5 : this.i) {
+            if (this.h.contains($$5)) {
+               $$1.put($$5.j(), this.g.get($$5));
+            }
+         }
+
+         this.i.clear();
+         if (!$$1.isEmpty() || !$$2.isEmpty() || !$$3.isEmpty()) {
+            $$0.c.b(new aap(this.m, $$2, $$3, $$1));
+         }
+      }
+
+      this.m = false;
+   }
+
+   public void a(@Nullable ae $$0) {
+      ae $$1 = this.l;
+      if ($$0 != null && $$0.b() == null && $$0.d() != null) {
+         this.l = $$0;
+      } else {
+         this.l = null;
+      }
+
+      if ($$1 != this.l) {
+         this.k.c.b(new zd(this.l == null ? null : this.l.j()));
+      }
+   }
+
+   public ag b(ae $$0) {
+      ag $$1 = this.g.get($$0);
+      if ($$1 == null) {
+         $$1 = new ag();
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   private void a(ae $$0, ag $$1) {
+      $$1.a($$0.h(), $$0.k());
+      this.g.put($$0, $$1);
+   }
+
+   private void a(ae $$0, Set<ae> $$1, Set<aer> $$2) {
+      afn.a($$0, $$0x -> this.b($$0x).a(), ($$2x, $$3) -> {
+         if ($$3) {
+            if (this.h.add($$2x)) {
+               $$1.add($$2x);
+               if (this.g.containsKey($$2x)) {
+                  this.i.add($$2x);
+               }
+            }
+         } else if (this.h.remove($$2x)) {
+            $$2.add($$2x.j());
+         }
+      });
    }
 }

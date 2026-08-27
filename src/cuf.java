@@ -1,18 +1,22 @@
-public class cuf extends css {
-   protected static final float a = 6.0F;
-   protected static final ehy b = csk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   protected cuf(dex.d $$0) {
+public class cuf extends csm {
+   public cuf(dez.d $$0) {
       super($$0);
    }
 
    @Override
-   public ehy a(dey $$0, coq $$1, gv $$2, ehk $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean d(dey $$0, coq $$1, gv $$2) {
-      return $$0.a(apj.cd);
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      if ($$3.a(5) == 0) {
+         ha $$4 = ha.b($$3);
+         if ($$4 != ha.b) {
+            gu $$5 = $$2.a($$4);
+            dfa $$6 = $$1.a_($$5);
+            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
+               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
+               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
+               $$1.a(iv.ay, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
+            }
+         }
+      }
    }
 }

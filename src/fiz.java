@@ -1,102 +1,119 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.UUID;
 
-public class fiz {
-   final int a;
-   private final List<fiz.a> b = new ArrayList<>();
-
-   public fiz(int $$0) {
-      this.a = $$0;
+public interface fiz extends fiy {
+   static fiz.a a(GameProfile $$0, tu $$1, fix $$2) {
+      return new fiz.a($$0, $$1, $$2);
    }
 
-   public void a(fir $$0, IntCollection $$1, fiz.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fit $$6 = $$0.b($$4);
-         if ($$6 instanceof fiu.a) {
-            fiu.a $$5 = (fiu.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
+   static fiz.b a(tf $$0, Instant $$1) {
+      return new fiz.b($$0, $$1);
    }
 
-   public void a(tt $$0) {
-      this.b.add(new fiz.a($$0));
+   tf b();
+
+   default tf c() {
+      return this.b();
    }
 
-   public boolean b(tt $$0) {
-      boolean $$1 = false;
-      Iterator<fiz.a> $$2 = this.b.iterator();
+   boolean a(UUID var1);
 
-      while ($$2.hasNext()) {
-         fiz.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
+   public static record a(GameProfile c, tu d, fix e) implements fiz {
+      public static final Codec<fiz.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aqy.t.fieldOf("profile").forGetter(fiz.a::f), tu.a.forGetter(fiz.a::g), fix.d.optionalFieldOf("trust_level", fix.a).forGetter(fiz.a::h)
+               )
+               .apply($$0, fiz.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 
-      return $$1;
-   }
-
-   public boolean a() {
-      return !this.b.isEmpty();
-   }
-
-   class a {
-      private final Set<tp> b;
-      private tt c;
-      private boolean d = true;
-      private int e;
-
-      a(tt $$0) {
-         this.b = new ObjectOpenHashSet($$0.l().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(tt $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
+      @Override
+      public tf b() {
+         if (!this.d.n().a()) {
+            tf $$0 = this.d.n().b(this.d.b());
+            return (tf)($$0 != null ? $$0 : tf.h());
          } else {
-            boolean $$1 = this.b.remove($$0.k());
-            if (this.d && this.c.f().equals($$0.f())) {
-               if (this.c.j().a($$0.j())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
+            return this.d.c();
          }
       }
 
-      boolean a() {
-         return this.e >= fiz.this.a || !this.d && this.b.isEmpty();
+      @Override
+      public tf c() {
+         tf $$0 = this.b();
+         tf $$1 = this.i();
+         return tf.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public tf d() {
+         tf $$0 = this.i();
+         return tf.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private tf i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
+         return tf.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fiy.a a() {
+         return fiy.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public tu g() {
+         return this.d;
+      }
+
+      public fix h() {
+         return this.e;
       }
    }
 
-   public interface b {
-      void accept(int var1, fiu.a var2);
+   public static record b(tf c, Instant d) implements fiz {
+      public static final Codec<fiz.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(aqy.b.fieldOf("message").forGetter(fiz.b::d), aqy.m.fieldOf("time_stamp").forGetter(fiz.b::e)).apply($$0, fiz.b::new)
+      );
+
+      @Override
+      public tf b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public fiy.a a() {
+         return fiy.a.b;
+      }
+
+      public tf d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
+      }
    }
 }

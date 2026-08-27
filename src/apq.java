@@ -1,9 +1,11 @@
-public interface apq {
-   apy<cio> a = a("regular_goat_horns");
-   apy<cio> b = a("screaming_goat_horns");
-   apy<cio> c = a("goat_horns");
+public final class apq {
+   public static final aqa<eac> a = a("water");
+   public static final aqa<eac> b = a("lava");
 
-   private static apy<cio> a(String $$0) {
-      return apy.a(jd.B, new aep($$0));
+   private apq() {
+   }
+
+   private static aqa<eac> a(String $$0) {
+      return aqa.a(jc.w, new aer($$0));
    }
 }

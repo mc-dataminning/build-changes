@@ -1,56 +1,45 @@
-public class fmb extends flw {
-   private float a;
+public abstract class fmb extends flo {
+   protected fyl E;
 
-   fmb(fie $$0, double $$1, double $$2, double $$3) {
+   protected fmb(fii $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   }
+
+   protected fmb(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   protected void a(fyl $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public fla b() {
-      return fla.b;
+   protected float c() {
+      return this.E.c();
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * aro.b(this.a));
-         this.l = this.l + (double)(0.6F * aro.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(gv.a(this.g, this.h, this.i)).a(apo.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
+   protected float d() {
+      return this.E.d();
    }
 
-   public static class a implements fkz<iz> {
-      private final flr a;
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
 
-      public a(flr $$0) {
-         this.a = $$0;
-      }
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
 
-      public fkw a(iz $$0, fie $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmb $$8 = new fmb($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public void a(flw $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(flw $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

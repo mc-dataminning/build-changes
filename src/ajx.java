@@ -1,126 +1,168 @@
 import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface ajx {
-   ajx a = new ajx() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
+public class ajx implements ajt.c, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<bfi<?>, ajw<? extends Function<bfi<asp>, ?>>> b;
+   private final Set<bfi<?>> c;
+   private final bfj<bfl.b> d;
 
-      @Override
-      public void a(Consumer<cor> $$0) {
-      }
-   };
-
-   static ajx a(cor $$0, int $$1) {
-      return new ajx.a($$0, $$1);
+   public ajx(List<bfi<?>> $$0, Executor $$1, int $$2) {
+      this.b = $$0.stream().collect(Collectors.toMap(Function.identity(), $$1x -> new ajw<>($$1x.bo() + "_queue", $$2)));
+      this.c = Sets.newHashSet($$0);
+      this.d = new bfj<>(new bfl.a(4), $$1, "sorter");
    }
 
-   static void a(ajx $$0, ajx $$1, Consumer<cor> $$2, Consumer<cor> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof ajx.a $$4 && $$1 instanceof ajx.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
+   public boolean a() {
+      return this.d.c() || this.b.values().stream().anyMatch(ajw::b);
+   }
 
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new cor($$10, $$11));
-                     } else {
-                        $$3.accept(new cor($$10, $$11));
-                     }
-                  }
-               }
-            }
+   public static <T> ajx.a<T> a(Function<bfi<asp>, T> $$0, long $$1, IntSupplier $$2) {
+      return new ajx.a<>($$0, $$1, $$2);
+   }
 
-            return;
+   public static ajx.a<Runnable> a(Runnable $$0, long $$1, IntSupplier $$2) {
+      return new ajx.a<>($$1x -> () -> {
+            $$0.run();
+            $$1x.a(asp.a);
+         }, $$1, $$2);
+   }
+
+   public static ajx.a<Runnable> a(ajt $$0, Runnable $$1) {
+      return a($$1, $$0.j().a(), $$0::l);
+   }
+
+   public static <T> ajx.a<T> a(ajt $$0, Function<bfi<asp>, T> $$1) {
+      return a($$1, $$0.j().a(), $$0::l);
+   }
+
+   public static ajx.b a(Runnable $$0, long $$1, boolean $$2) {
+      return new ajx.b($$0, $$1, $$2);
+   }
+
+   public <T> bfi<ajx.a<T>> a(bfi<T> $$0, boolean $$1) {
+      return this.d.<bfi<ajx.a<T>>>b($$2 -> new bfl.b(0, () -> {
+            this.b($$0);
+            $$2.a(bfi.a("chunk priority sorter around " + $$0.bo(), $$2xx -> this.a($$0, $$2xx.a, $$2xx.b, $$2xx.c, $$1)));
+         })).join();
+   }
+
+   public bfi<ajx.b> a(bfi<Runnable> $$0) {
+      return this.d
+         .<bfi<ajx.b>>b($$1 -> new bfl.b(0, () -> $$1.a(bfi.a("chunk priority sorter around " + $$0.bo(), $$1xx -> this.a($$0, $$1xx.b, $$1xx.a, $$1xx.c)))))
+         .join();
+   }
+
+   @Override
+   public void onLevelChange(cot $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.d.a(new bfl.b(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.b.values().forEach($$3xx -> $$3xx.a($$4, $$0, $$2));
+         $$3.accept($$2);
+      }));
+   }
+
+   private <T> void a(bfi<T> $$0, long $$1, Runnable $$2, boolean $$3) {
+      this.d.a(new bfl.b(1, () -> {
+         ajw<Function<bfi<asp>, T>> $$4 = this.b($$0);
+         $$4.a($$1, $$3);
+         if (this.c.remove($$0)) {
+            this.a($$4, $$0);
          }
 
-         $$0.a($$3);
-         $$1.a($$2);
-      }
+         $$2.run();
+      }));
    }
 
-   default boolean a(cor $$0) {
-      return this.a($$0.e, $$0.f);
-   }
-
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<cor> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
-   }
-
-   public static record a(cor b, int c) implements ajx {
-      int c() {
-         return this.b.e - this.c - 1;
-      }
-
-      int d() {
-         return this.b.f - this.c - 1;
-      }
-
-      int e() {
-         return this.b.e + this.c + 1;
-      }
-
-      int f() {
-         return this.b.f + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(ajx.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return ajx.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<cor> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new cor($$1, $$2));
-               }
-            }
+   private <T> void a(bfi<T> $$0, Function<bfi<asp>, T> $$1, long $$2, IntSupplier $$3, boolean $$4) {
+      this.d.a(new bfl.b(2, () -> {
+         ajw<Function<bfi<asp>, T>> $$5 = this.b($$0);
+         int $$6 = $$3.getAsInt();
+         $$5.a(Optional.of($$1), $$2, $$6);
+         if ($$4) {
+            $$5.a(Optional.empty(), $$2, $$6);
          }
-      }
 
-      public cor a() {
-         return this.b;
-      }
+         if (this.c.remove($$0)) {
+            this.a($$5, $$0);
+         }
+      }));
+   }
 
-      public int b() {
-         return this.c;
+   private <T> void a(ajw<Function<bfi<asp>, T>> $$0, bfi<T> $$1) {
+      this.d.a(new bfl.b(3, () -> {
+         Stream<Either<Function<bfi<asp>, T>, Runnable>> $$2 = $$0.a();
+         if ($$2 == null) {
+            this.c.add($$1);
+         } else {
+            CompletableFuture.allOf($$2.map($$1xx -> (CompletableFuture)$$1xx.map($$1::b, $$0xxx -> {
+                  $$0xxx.run();
+                  return CompletableFuture.completedFuture(asp.a);
+               })).toArray(CompletableFuture[]::new)).thenAccept($$2x -> this.a($$0, $$1));
+         }
+      }));
+   }
+
+   private <T> ajw<Function<bfi<asp>, T>> b(bfi<T> $$0) {
+      ajw<? extends Function<bfi<asp>, ?>> $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("No queue for: " + $$0));
+      } else {
+         return (ajw<Function<bfi<asp>, T>>)$$1;
+      }
+   }
+
+   @VisibleForTesting
+   public String b() {
+      return this.b
+            .entrySet()
+            .stream()
+            .map($$0 -> $$0.getKey().bo() + "=[" + $$0.getValue().c().stream().map($$0x -> $$0x + ":" + new cot($$0x)).collect(Collectors.joining(",")) + "]")
+            .collect(Collectors.joining(","))
+         + ", s="
+         + this.c.size();
+   }
+
+   @Override
+   public void close() {
+      this.b.keySet().forEach(bfi::close);
+   }
+
+   public static final class a<T> {
+      final Function<bfi<asp>, T> a;
+      final long b;
+      final IntSupplier c;
+
+      a(Function<bfi<asp>, T> $$0, long $$1, IntSupplier $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+
+   public static final class b {
+      final Runnable a;
+      final long b;
+      final boolean c;
+
+      b(Runnable $$0, long $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

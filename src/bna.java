@@ -1,27 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bna {
-   public static bkp<biw> a(int $$0, BiPredicate<biw, biw> $$1) {
-      return boa.a(
-         (Function<boa.b<biw>, ? extends App<boa.c<biw>, bod<biw>>>)($$2 -> $$2.group($$2.b(bry.o), $$2.a(bry.aa), $$2.c(bry.ah), $$2.a(bry.ai))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     biw $$10 = $$2.b($$3);
-                     if (!$$10.eu()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   private static final float a = 0.3F;
 
-                        $$5.a($$10.dk(), (long)$$0);
-                        if ($$10.ag() != bik.bt || $$7.X().b(cpg.J)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
+   public static bma<biy> a() {
+      return boc.a(
+         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.a(bsa.m), $$0.a(bsa.n), $$0.b(bsa.e), $$0.b(bsa.h), $$0.c(bsa.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     hd $$9 = $$0.b($$3);
+                     bsc $$10 = $$0.b($$4);
+                     if ($$6.y_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.di(), 4.0) && $$10.d($$0xxx -> bim.bf.equals($$0xxx.ag()))) {
+                        $$10.a($$1xx -> bim.bf.equals($$1xx.ag()) && $$1xx.f((bii)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new blb($$3xx, true));
+                           $$1.a(new bsd(new blb($$3xx, false), 0.3F, 1));
+                        });
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );

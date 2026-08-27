@@ -1,61 +1,90 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class fou implements fot {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public class fou {
+   public static final fou a = new fou();
+   public final fot b;
+   public final fot c;
+   public final fot d;
+   public final fot e;
+   public final fot f;
+   public final fot g;
+   public final fot h;
+   public final fot i;
 
-   public fou(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private fou() {
+      this(fot.a, fot.a, fot.a, fot.a, fot.a, fot.a, fot.a, fot.a);
    }
 
-   @Override
-   public Predicate<dey> getPredicate(dez<csk, dey> $$0) {
-      dgb<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
+   public fou(fou $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
+
+   public fou(fot $$0, fot $$1, fot $$2, fot $$3, fot $$4, fot $$5, fot $$6, fot $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fot a(civ $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fot.a;
+      };
+   }
+
+   public boolean b(civ $$0) {
+      return this.a($$0) != fot.a;
+   }
+
+   protected static class a implements JsonDeserializer<fou> {
+      public fou a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fot $$4 = this.a($$2, $$3, civ.c);
+         fot $$5 = this.a($$2, $$3, civ.b);
+         if ($$5 == fot.a) {
+            $$5 = $$4;
          }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dey> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<dey>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-            }
-
-            return $$3 ? $$5.negate() : $$5;
+         fot $$6 = this.a($$2, $$3, civ.e);
+         fot $$7 = this.a($$2, $$3, civ.d);
+         if ($$7 == fot.a) {
+            $$7 = $$6;
          }
-      }
-   }
 
-   private Predicate<dey> a(dez<csk, dey> $$0, dgb<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if (!$$3.isPresent()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+         fot $$8 = this.a($$2, $$3, civ.f);
+         fot $$9 = this.a($$2, $$3, civ.g);
+         fot $$10 = this.a($$2, $$3, civ.h);
+         fot $$11 = this.a($$2, $$3, civ.i);
+         return new fou($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
-   }
 
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+      private fot a(JsonDeserializationContext $$0, JsonObject $$1, civ $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fot)$$0.deserialize($$1.get($$3), fot.class) : fot.a;
+      }
    }
 }

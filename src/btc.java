@@ -1,47 +1,42 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Set;
 
-public abstract class btc<E extends biw> {
-   private static final art a = art.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final btj d = btj.b().a(16.0);
-   private static final btj e = btj.b().a(16.0).e();
-   private static final btj f = btj.a().a(16.0);
-   private static final btj g = btj.a().a(16.0).e();
-   private static final btj h = btj.a().a(16.0).d();
-   private static final btj i = btj.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public btc(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
-   }
+public class btc extends bte<cba> {
+   private static final int a = 40;
 
    public btc() {
-      this(20);
+      super(40);
    }
 
-   public final void b(aki $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
+   protected void a(akk $$0, cba $$1) {
+      aeq<cpm> $$2 = $$0.ac();
+      gu $$3 = $$1.dk();
+      List<hd> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               gu $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gk().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(hd.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bjz<?> $$10 = $$1.dM();
+      if (!$$4.isEmpty()) {
+         $$10.a(bsa.f, $$4);
+      } else {
+         $$10.b(bsa.f);
       }
    }
 
-   protected abstract void a(aki var1, E var2);
-
-   public abstract Set<bry<?>> a();
-
-   public static boolean b(biw $$0, biw $$1) {
-      return $$0.dM().b(bry.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(biw $$0, biw $$1) {
-      return $$0.dM().b(bry.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(biw $$0, biw $$1) {
-      return $$0.dM().b(bry.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   @Override
+   public Set<bsa<?>> a() {
+      return ImmutableSet.of(bsa.f);
    }
 }

@@ -1,356 +1,57 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class etd {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final erv c;
-   private final List<etd.a> d = Lists.newArrayList();
-   private String e;
-   private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
-   };
-   private Runnable l = () -> {
-   };
+public abstract class etd<E extends etd.a<E>> extends esc<E> {
+   private static final tf a = tf.c("narration.selection.usage");
 
-   public etd(erv $$0, int $$1) {
-      this.c = $$0;
-      this.j = $$1;
-      this.a("");
+   public etd(eqm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public int a() {
-      return this.i;
-   }
+   @Nullable
+   @Override
+   public ert a(ewd $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (this.ax_() && $$0 instanceof ewd.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? ert.a(this, ert.a($$2)) : null;
+      } else if (!this.ax_()) {
+         E $$3 = this.f();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
+         return $$3 == null ? null : ert.a(this, ert.a($$3));
       } else {
-         this.i = $$0;
+         return null;
       }
    }
 
-   public boolean b() {
-      return this.i != Integer.MAX_VALUE;
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
-   }
-
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(aa.a($$0, true));
-         etd.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = aro.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public etd.a e() {
-      return new etd.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         etd.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
+   @Override
+   public void b(evx $$0) {
+      E $$1 = this.r();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.f();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
          }
       }
 
-      return -1;
-   }
-
-   public etd.a c(int $$0) {
-      return this.d.get(aro.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(ets $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = aro.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
+      if (this.ax_()) {
+         $$0.a(evw.d, a);
       }
    }
 
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         etd.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(ets.a, $$2.a + $$3);
+   public abstract static class a<E extends etd.a<E>> extends esc.a<E> implements evy {
+      public abstract tf a();
+
+      @Override
+      public void b(evx $$0) {
+         $$0.a(evw.a, this.a());
       }
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = aro.a($$0);
-      int $$3 = aro.a($$1 / 9.0);
-      etd.a $$4 = this.d.get(aro.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(ets.a, $$4.a + $$5);
-   }
-
-   public boolean e(int $$0) {
-      this.h = exv.q();
-      if (exv.g($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (exv.f($$0)) {
-         eqn.N().o.a(this.j());
-         return true;
-      } else if (exv.e($$0)) {
-         this.b(eqn.N().o.a());
-         return true;
-      } else if (exv.d($$0)) {
-         eqn.N().o.a(this.j());
-         this.b("");
-         return true;
-      } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
-               return true;
-            case 259:
-               if (exv.p()) {
-                  etd.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
-
-               return true;
-            case 261:
-               if (exv.p()) {
-                  etd.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
-
-               return true;
-            case 262:
-               if (exv.p()) {
-                  etd.a $$2 = this.l();
-                  this.a(ets.a, $$2.a);
-               } else {
-                  this.a(ets.b, 1);
-               }
-
-               return true;
-            case 263:
-               if (exv.p()) {
-                  etd.a $$1 = this.k();
-                  this.a(ets.a, $$1.a);
-               } else {
-                  this.a(ets.b, -1);
-               }
-
-               return true;
-            case 264:
-               if (!exv.p()) {
-                  this.d(1);
-               }
-
-               return true;
-            case 265:
-               if (!exv.p()) {
-                  this.d(-1);
-               }
-
-               return true;
-            case 266:
-               this.a(ets.a, 0);
-               return true;
-            case 267:
-               this.a(ets.c, 0);
-               return true;
-            case 268:
-               if (exv.p()) {
-                  this.a(ets.a, 0);
-               } else {
-                  this.a(ets.a, this.m().a);
-               }
-
-               return true;
-            case 269:
-               if (exv.p()) {
-                  this.a(ets.c, 0);
-               } else {
-                  this.a(ets.a, this.m().b);
-               }
-
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   public Iterable<etd.a> h() {
-      return this.d;
-   }
-
-   public boolean i() {
-      return this.g != this.f;
-   }
-
-   @VisibleForTesting
-   public String j() {
-      etd.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
-   }
-
-   private etd.a m() {
-      return this.f(0);
-   }
-
-   private etd.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(aro.a($$1 + $$0, 0, this.d.size() - 1));
-      }
-   }
-
-   @VisibleForTesting
-   public etd.a k() {
-      if (this.e.isEmpty()) {
-         return etd.a.c;
-      } else {
-         int $$0 = aro.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new etd.a($$0, this.g($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public etd.a l() {
-      if (this.e.isEmpty()) {
-         return etd.a.c;
-      } else {
-         int $$0 = aro.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new etd.a($$0, this.g($$0));
-      }
-   }
-
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
-   }
-
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(etd.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, ua.a, false, ($$0, $$1, $$2) -> this.d.add(new etd.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new etd.a(this.e.length(), this.e.length()));
-         }
-      }
-   }
-
-   private String c(String $$0) {
-      return this.b() ? asg.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return asg.a($$0, $$1, false);
-      } else {
-         return $$0;
-      }
-   }
-
-   protected static record a(int a, int b) {
-      static final etd.a c = new etd.a(0, 0);
    }
 }

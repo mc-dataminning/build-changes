@@ -1,30 +1,28 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public interface cfo {
-   void a(@Nullable clz<?> var1);
-
-   @Nullable
-   clz<?> d();
-
-   default void a(cbl $$0, List<ciw> $$1) {
-      clz<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.ai_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+public abstract class cfo<C extends bgj> extends cee {
+   public cfo(cfj<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   default boolean a(cpk $$0, akj $$1, clz<?> $$2) {
-      if (!$$2.ai_() && $$0.X().b(cpg.v) && !$$1.F().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
-      }
+   public void a(boolean $$0, cmb<?> $$1, akl $$2) {
+      new aeh<>(this).a($$2, (cmb<C>)$$1, $$0);
    }
+
+   public abstract void a(cbr var1);
+
+   @Override
+   public abstract void l();
+
+   public abstract boolean a(cmb<? super C> var1);
+
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cfp t();
+
+   public abstract boolean e(int var1);
 }

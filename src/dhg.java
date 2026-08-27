@@ -1,181 +1,262 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dhg {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dhn<dey> h;
-   private dho<hf<cqi>> i;
+public class dhg extends dhr {
+   private final dhh n;
+   private final boolean o;
 
-   public dhg(dhn<dey> $$0, dho<hf<cqi>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public dhg(dhh $$0, boolean $$1) {
+      super($$0.f(), dhu.a, $$0.l, $$0.F().B_().d(jc.ap), $$0.t());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public dhg(hs<cqi> $$0) {
-      this.h = new dhn<>(csk.o, csl.a.n(), dhn.d.d);
-      this.i = new dhn<>($$0.t(), $$0.f(cqp.b), dhn.d.e);
+   @Nullable
+   @Override
+   public dcm c_(gu $$0) {
+      return this.n.c_($$0);
    }
 
-   public dey a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   @Override
+   public dfa a_(gu $$0) {
+      return this.n.a_($$0);
    }
 
-   public eab b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   @Override
+   public ead b_(gu $$0) {
+      return this.n.b_($$0);
    }
 
-   public void a() {
-      this.h.a();
+   @Override
+   public int M() {
+      return this.n.M();
    }
 
-   public void b() {
-      this.h.b();
+   @Override
+   public dhi b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
    }
 
-   public dey a(int $$0, int $$1, int $$2, dey $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
+   @Nullable
+   @Override
+   public dfa a(gu $$0, dfa $$1, boolean $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
    }
 
-   public dey a(int $$0, int $$1, int $$2, dey $$3, boolean $$4) {
-      dey $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
+   @Override
+   public void a(dcm $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(bii $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(dhb $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public dhi[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(dkj.a $$0, long[] $$1) {
+   }
+
+   private dkj.a c(dkj.a $$0) {
+      if ($$0 == dkj.a.a) {
+         return dkj.a.b;
       } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
+         return $$0 == dkj.a.c ? dkj.a.d : $$0;
       }
+   }
 
-      eab $$7 = $$5.u();
-      eab $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
+   @Override
+   public dkj a(dkj.a $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public int a(dkj.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public cot f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public dvh a(duz $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(duz $$0, dvh $$1) {
+   }
+
+   @Override
+   public Map<duz, dvh> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<duz, dvh> $$0) {
+   }
+
+   @Override
+   public LongSet b(duz $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(duz $$0, long $$1) {
+   }
+
+   @Override
+   public Map<duz, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<duz, LongSet> $$0) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public dhb j() {
+      return this.n.j();
+   }
+
+   @Override
+   public void d(gu $$0) {
+   }
+
+   @Override
+   public void e(gu $$0) {
+   }
+
+   @Override
+   public void a(qr $$0) {
+   }
+
+   @Nullable
+   @Override
+   public qr f(gu $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public qr g(gu $$0) {
+      return this.n.g($$0);
+   }
+
+   @Override
+   public void a(Predicate<dfa> $$0, BiConsumer<gu, dfa> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public eit<csm> o() {
+      return this.o ? this.n.o() : eij.a();
+   }
+
+   @Override
+   public eit<eac> p() {
+      return this.o ? this.n.p() : eij.a();
+   }
+
+   @Override
+   public dgw.a q() {
+      return this.n.q();
+   }
+
+   @Nullable
+   @Override
+   public dlm t() {
+      return this.n.t();
+   }
+
+   @Override
+   public void a(dlm $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public dgv a(dkf.a $$0) {
+      if (this.o) {
+         return super.a($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
+   }
 
-      if (!$$7.c()) {
-         this.g--;
+   @Override
+   public dgv b(dkf.a $$0) {
+      if (this.o) {
+         return super.b($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
+   }
 
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
+   public dhh C() {
+      return this.n;
+   }
+
+   @Override
+   public boolean v() {
+      return this.n.v();
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public void a(cqn $$0, cqt.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
    }
 
-   public boolean c() {
-      return this.e == 0;
+   @Override
+   public void A() {
+      this.n.A();
    }
 
-   public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements dhn.b<dey> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(dey $$0, int $$1) {
-            eab $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public dhn<dey> h() {
-      return this.h;
-   }
-
-   public dho<hf<cqi>> i() {
-      return this.i;
-   }
-
-   public void a(sh $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dhn<hf<cqi>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void b(sh $$0) {
-      dhn<hf<cqi>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void c(sh $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
-
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<dey> $$0) {
-      return this.h.a($$0);
-   }
-
-   public hf<cqi> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(cql $$0, cqr.f $$1, int $$2, int $$3, int $$4) {
-      dhn<hf<cqi>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
-      }
-
-      this.i = $$5;
+   @Override
+   public dzn B() {
+      return this.n.B();
    }
 }

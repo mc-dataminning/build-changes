@@ -1,11 +1,14 @@
-import javax.annotation.Nullable;
+public class fxl extends fww<bvn, fhe<bvn>> {
+   private static final aer a = new aer("textures/entity/wolf/wolf_collar.png");
 
-public interface fxl extends fxo {
-   @Deprecated
-   @Override
-   default float call(ciw $$0, @Nullable fie $$1, @Nullable biw $$2, int $$3) {
-      return aro.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public fxl(fuj<bvn, fhe<bvn>> $$0) {
+      super($$0);
    }
 
-   float unclampedCall(ciw var1, @Nullable fie var2, @Nullable biw var3, int var4);
+   public void a(elg $$0, fnl $$1, int $$2, bvn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.p() && !$$3.cd()) {
+         float[] $$10 = $$3.gi().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
+      }
+   }
 }

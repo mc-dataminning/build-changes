@@ -1,111 +1,122 @@
 import java.util.function.Consumer;
 
-public class evo implements evl {
-   private final evj a;
-   private final evo.a b;
-   private int c = 0;
+public class evo implements evp {
+   private static final int a = 36;
+   private static final int b = 30;
+   private final evm c = new evm();
+   private final evm d = new evm();
+   private final evm e = new evm();
+   private final exz f;
+   private int g;
+   private int h;
 
-   public evo(evo.a $$0) {
-      this(0, 0, $$0);
+   public evo(exz $$0) {
+      this($$0, 36);
    }
 
-   public evo(int $$0, int $$1, evo.a $$2) {
-      this.a = new evj($$0, $$1);
-      this.b = $$2;
+   public evo(exz $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public evo a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public evn b() {
-      return this.a.b();
-   }
-
-   public evn c() {
-      return this.a.c();
-   }
-
-   public <T extends evm> T a(T $$0, evn $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends evm> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends evm> T a(T $$0, Consumer<evn> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<evm> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int k() {
-      return this.a.k();
-   }
-
-   @Override
-   public int h() {
-      return this.a.h();
+   public evo(exz $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
    public void e(int $$0) {
-      this.a.e($$0);
    }
 
    @Override
    public void f(int $$0) {
-      this.a.f($$0);
    }
 
    @Override
    public int p() {
-      return this.a.p();
+      return 0;
    }
 
    @Override
    public int r() {
-      return this.a.r();
+      return 0;
    }
 
-   public static evo d() {
-      return new evo(evo.a.b);
+   @Override
+   public int k() {
+      return this.f.g;
    }
 
-   public static evo e() {
-      return new evo(evo.a.a);
+   @Override
+   public int h() {
+      return this.f.h;
    }
 
-   public static enum a {
-      a,
-      b;
+   public int b() {
+      return this.h;
+   }
 
-      void a(evj $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
-      }
+   public void a(int $$0) {
+      this.h = $$0;
+   }
 
-      public <T extends evm> T a(evj $$0, T $$1, int $$2, evn $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<evq> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.b(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.f(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.h();
+      this.e.b(0, Math.min($$2, $$3));
+   }
+
+   public <T extends evq> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends evq> T a(T $$0, Consumer<evr> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends evq> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends evq> T b(T $$0, Consumer<evr> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends evq> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends evq> T c(T $$0, Consumer<evr> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

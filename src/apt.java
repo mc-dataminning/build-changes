@@ -1,12 +1,108 @@
-public class apt {
-   public static final apy<btz> a = a("acquirable_job_site");
-   public static final apy<btz> b = a("village");
-   public static final apy<btz> c = a("bee_home");
+public final class apt {
+   public static final aqa<cit> a = a("wool");
+   public static final aqa<cit> b = a("planks");
+   public static final aqa<cit> c = a("stone_bricks");
+   public static final aqa<cit> d = a("wooden_buttons");
+   public static final aqa<cit> e = a("stone_buttons");
+   public static final aqa<cit> f = a("buttons");
+   public static final aqa<cit> g = a("wool_carpets");
+   public static final aqa<cit> h = a("wooden_doors");
+   public static final aqa<cit> i = a("wooden_stairs");
+   public static final aqa<cit> j = a("wooden_slabs");
+   public static final aqa<cit> k = a("wooden_fences");
+   public static final aqa<cit> l = a("fence_gates");
+   public static final aqa<cit> m = a("wooden_pressure_plates");
+   public static final aqa<cit> n = a("wooden_trapdoors");
+   public static final aqa<cit> o = a("doors");
+   public static final aqa<cit> p = a("saplings");
+   public static final aqa<cit> q = a("logs_that_burn");
+   public static final aqa<cit> r = a("logs");
+   public static final aqa<cit> s = a("dark_oak_logs");
+   public static final aqa<cit> t = a("oak_logs");
+   public static final aqa<cit> u = a("birch_logs");
+   public static final aqa<cit> v = a("acacia_logs");
+   public static final aqa<cit> w = a("cherry_logs");
+   public static final aqa<cit> x = a("jungle_logs");
+   public static final aqa<cit> y = a("spruce_logs");
+   public static final aqa<cit> z = a("mangrove_logs");
+   public static final aqa<cit> A = a("crimson_stems");
+   public static final aqa<cit> B = a("warped_stems");
+   public static final aqa<cit> C = a("bamboo_blocks");
+   public static final aqa<cit> D = a("wart_blocks");
+   public static final aqa<cit> E = a("banners");
+   public static final aqa<cit> F = a("sand");
+   public static final aqa<cit> G = a("smelts_to_glass");
+   public static final aqa<cit> H = a("stairs");
+   public static final aqa<cit> I = a("slabs");
+   public static final aqa<cit> J = a("walls");
+   public static final aqa<cit> K = a("anvil");
+   public static final aqa<cit> L = a("rails");
+   public static final aqa<cit> M = a("leaves");
+   public static final aqa<cit> N = a("trapdoors");
+   public static final aqa<cit> O = a("small_flowers");
+   public static final aqa<cit> P = a("beds");
+   public static final aqa<cit> Q = a("fences");
+   public static final aqa<cit> R = a("tall_flowers");
+   public static final aqa<cit> S = a("flowers");
+   public static final aqa<cit> T = a("piglin_repellents");
+   public static final aqa<cit> U = a("piglin_loved");
+   public static final aqa<cit> V = a("ignored_by_piglin_babies");
+   public static final aqa<cit> W = a("piglin_food");
+   public static final aqa<cit> X = a("fox_food");
+   public static final aqa<cit> Y = a("gold_ores");
+   public static final aqa<cit> Z = a("iron_ores");
+   public static final aqa<cit> aa = a("diamond_ores");
+   public static final aqa<cit> ab = a("redstone_ores");
+   public static final aqa<cit> ac = a("lapis_ores");
+   public static final aqa<cit> ad = a("coal_ores");
+   public static final aqa<cit> ae = a("emerald_ores");
+   public static final aqa<cit> af = a("copper_ores");
+   public static final aqa<cit> ag = a("non_flammable_wood");
+   public static final aqa<cit> ah = a("soul_fire_base_blocks");
+   public static final aqa<cit> ai = a("candles");
+   public static final aqa<cit> aj = a("dirt");
+   public static final aqa<cit> ak = a("terracotta");
+   public static final aqa<cit> al = a("completes_find_tree_tutorial");
+   public static final aqa<cit> am = a("boats");
+   public static final aqa<cit> an = a("chest_boats");
+   public static final aqa<cit> ao = a("fishes");
+   public static final aqa<cit> ap = a("signs");
+   public static final aqa<cit> aq = a("music_discs");
+   public static final aqa<cit> ar = a("creeper_drop_music_discs");
+   public static final aqa<cit> as = a("coals");
+   public static final aqa<cit> at = a("arrows");
+   public static final aqa<cit> au = a("lectern_books");
+   public static final aqa<cit> av = a("bookshelf_books");
+   public static final aqa<cit> aw = a("beacon_payment_items");
+   public static final aqa<cit> ax = a("stone_tool_materials");
+   public static final aqa<cit> ay = a("stone_crafting_materials");
+   public static final aqa<cit> az = a("freeze_immune_wearables");
+   public static final aqa<cit> aA = a("axolotl_tempt_items");
+   public static final aqa<cit> aB = a("dampens_vibrations");
+   public static final aqa<cit> aC = a("cluster_max_harvestables");
+   public static final aqa<cit> aD = a("compasses");
+   public static final aqa<cit> aE = a("hanging_signs");
+   public static final aqa<cit> aF = a("creeper_igniters");
+   public static final aqa<cit> aG = a("noteblock_top_instruments");
+   public static final aqa<cit> aH = a("trimmable_armor");
+   public static final aqa<cit> aI = a("trim_materials");
+   public static final aqa<cit> aJ = a("trim_templates");
+   public static final aqa<cit> aK = a("sniffer_food");
+   public static final aqa<cit> aL = a("decorated_pot_sherds");
+   public static final aqa<cit> aM = a("decorated_pot_ingredients");
+   public static final aqa<cit> aN = a("swords");
+   public static final aqa<cit> aO = a("axes");
+   public static final aqa<cit> aP = a("hoes");
+   public static final aqa<cit> aQ = a("pickaxes");
+   public static final aqa<cit> aR = a("shovels");
+   public static final aqa<cit> aS = a("tools");
+   public static final aqa<cit> aT = a("breaks_decorated_pots");
+   public static final aqa<cit> aU = a("villager_plantable_seeds");
 
    private apt() {
    }
 
-   private static apy<btz> a(String $$0) {
-      return apy.a(jd.S, new aep($$0));
+   private static aqa<cit> a(String $$0) {
+      return aqa.a(jc.D, new aer($$0));
    }
 }

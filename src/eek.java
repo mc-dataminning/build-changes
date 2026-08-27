@@ -1,46 +1,28 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eek extends edv {
-   final qs a;
+public class eek extends edt {
+   public static final Codec<eek> a = RecordCodecBuilder.create($$0 -> a($$0).and(jb.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eek::new));
+   private final he<ckv> b;
 
-   eek(efh[] $$0, qs $$1) {
+   private eek(List<efg> $$0, he<ckv> $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public edx b() {
-      return edy.f;
+   public edv b() {
+      return edw.z;
    }
 
    @Override
-   public ciw a(ciw $$0, ech $$1) {
-      $$0.w().a(this.a);
+   public ciy a(ciy $$0, ech $$1) {
+      ckx.a($$0, this.b.a());
       return $$0;
    }
 
-   @Deprecated
-   public static edv.a<?> a(qs $$0) {
-      return a($$1 -> new eek($$1, $$0));
-   }
-
-   public static class a extends edv.c<eek> {
-      public void a(JsonObject $$0, eek $$1, JsonSerializationContext $$2) {
-         super.a($$0, $$1, $$2);
-         $$0.addProperty("tag", $$1.a.toString());
-      }
-
-      public eek a(JsonObject $$0, JsonDeserializationContext $$1, efh[] $$2) {
-         try {
-            qs $$3 = rm.a(arf.i($$0, "tag"));
-            return new eek($$2, $$3);
-         } catch (CommandSyntaxException var5) {
-            throw new JsonSyntaxException(var5.getMessage());
-         }
-      }
+   public static edt.a<?> a(ckv $$0) {
+      return a($$1 -> new eek($$1, $$0.c()));
    }
 }

@@ -1,73 +1,17 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public enum euw implements ejj {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
-
-   final eki c;
-
-   private static eki a(int $$0, int $$1, euw.a $$2) {
-      eki $$3 = new eki(eki.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
-      }
-
-      $$3.i();
-      return $$3;
+public record euw(fnt a, fnt b, fnt c) {
+   public static euw a(aer $$0) {
+      return new euw(fnt.t($$0), fnt.x($$0), fnt.v($$0));
    }
 
-   private euw(Supplier<eki> $$0) {
-      this.c = $$0.get();
+   public static euw b(aer $$0) {
+      return new euw(fnt.s($$0), fnt.w($$0), fnt.u($$0));
    }
 
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
-
-   @Override
-   public euu bake(Function<ejl, euu> $$0) {
-      return $$0.apply(new ejl() {
-         @Override
-         public int a() {
-            return euw.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return euw.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            euw.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+   public fnt a(eru.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

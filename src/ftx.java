@@ -1,12 +1,11 @@
-public class ftx extends ftp<buz, ffm<buz>> {
-   private static final aep a = new aep("textures/entity/pig/pig.png");
+public class ftx extends ftu<buy, ffm<buy>> {
+   private static final aer a = new aer("textures/entity/cat/ocelot.png");
 
-   public ftx(fsj.a $$0) {
-      super($$0, new ffm<>($$0.a(fhi.aC)), 0.7F);
-      this.a(new fws<>(this, new ffm<>($$0.a(fhi.aK)), new aep("textures/entity/pig/pig_saddle.png")));
+   public ftx(fso.a $$0) {
+      super($$0, new ffm<>($$0.a(fhm.ay)), 0.4F);
    }
 
-   public aep a(buz $$0) {
+   public aer a(buy $$0) {
       return a;
    }
 }

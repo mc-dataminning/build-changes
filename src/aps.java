@@ -1,10 +1,9 @@
-public class aps {
-   public static final apy<bya> a = a("placeable");
+public interface aps {
+   aqa<ciq> a = a("regular_goat_horns");
+   aqa<ciq> b = a("screaming_goat_horns");
+   aqa<ciq> c = a("goat_horns");
 
-   private aps() {
-   }
-
-   private static apy<bya> a(String $$0) {
-      return apy.a(jd.P, new aep($$0));
+   private static aqa<ciq> a(String $$0) {
+      return aqa.a(jc.B, new aer($$0));
    }
 }

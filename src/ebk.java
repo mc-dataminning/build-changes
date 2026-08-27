@@ -1,48 +1,111 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ebk extends ebg {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
-
-   public static ebg.a<ebk> a() {
-      return new ebg.a<>(ebk::new, ebk::b, asq.k);
+public record ebk(ebk.a a, byte b, byte c, byte d, @Nullable tf e) {
+   public byte a() {
+      return this.a.a();
    }
 
-   public ebk() {
-      this.b.defaultReturnValue(-1);
+   public boolean b() {
+      return this.a.b();
    }
 
-   public static ebk b(qs $$0) {
-      ebk $$1 = new ebk();
+   public ebk.a c() {
+      return this.a;
+   }
 
-      for (String $$2 : $$0.e()) {
-         if ($$0.b($$2, 99)) {
-            $$1.b.put($$2, $$0.h($$2));
-         }
+   public byte d() {
+      return this.b;
+   }
+
+   public byte e() {
+      return this.c;
+   }
+
+   public byte f() {
+      return this.d;
+   }
+
+   @Nullable
+   public tf g() {
+      return this.e;
+   }
+
+   public static enum a implements ash {
+      a("player", false, true),
+      b("frame", true, true),
+      c("red_marker", false, true),
+      d("blue_marker", false, true),
+      e("target_x", true, false),
+      f("target_point", true, false),
+      g("player_off_map", false, true),
+      h("player_off_limits", false, true),
+      i("mansion", true, 5393476, false),
+      j("monument", true, 3830373, false),
+      k("banner_white", true, true),
+      l("banner_orange", true, true),
+      m("banner_magenta", true, true),
+      n("banner_light_blue", true, true),
+      o("banner_yellow", true, true),
+      p("banner_lime", true, true),
+      q("banner_pink", true, true),
+      r("banner_gray", true, true),
+      s("banner_light_gray", true, true),
+      t("banner_cyan", true, true),
+      u("banner_purple", true, true),
+      v("banner_blue", true, true),
+      w("banner_brown", true, true),
+      x("banner_green", true, true),
+      y("banner_red", true, true),
+      z("banner_black", true, true),
+      A("red_x", true, false);
+
+      public static final Codec<ebk.a> B = ash.a(ebk.a::values);
+      private final String C;
+      private final byte D;
+      private final boolean E;
+      private final int F;
+      private final boolean G;
+
+      private a(String $$0, boolean $$1, boolean $$2) {
+         this($$0, $$1, -1, $$2);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public qs a(qs $$0) {
-      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<String> $$1 = (Entry<String>)var2.next();
-         $$0.a((String)$$1.getKey(), $$1.getIntValue());
+      private a(String $$0, boolean $$1, int $$2, boolean $$3) {
+         this.C = $$0;
+         this.G = $$3;
+         this.D = (byte)this.ordinal();
+         this.E = $$1;
+         this.F = $$2;
       }
 
-      return $$0;
-   }
+      public byte a() {
+         return this.D;
+      }
 
-   public int b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return $$0;
+      public boolean b() {
+         return this.E;
+      }
+
+      public boolean d() {
+         return this.F >= 0;
+      }
+
+      public int e() {
+         return this.F;
+      }
+
+      public static ebk.a a(byte $$0) {
+         return values()[arp.a($$0, 0, values().length - 1)];
+      }
+
+      public boolean f() {
+         return this.G;
+      }
+
+      @Override
+      public String c() {
+         return this.C;
+      }
    }
 }

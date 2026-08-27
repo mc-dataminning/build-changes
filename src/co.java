@@ -1,52 +1,53 @@
 import com.google.gson.JsonObject;
+import java.util.Optional;
 
-public class co extends cv<co.a> {
-   static final aep a = new aep("player_interacted_with_entity");
+public class co extends cu<co.a> {
+   static final aer a = new aer("player_interacted_with_entity");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   protected co.a a(JsonObject $$0, ba $$1, be $$2) {
-      bz $$3 = bz.a($$0.get("item"));
-      ba $$4 = bo.a($$0, "entity", $$2);
+   protected co.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      Optional<bz> $$3 = bz.a($$0.get("item"));
+      Optional<ba> $$4 = bo.a($$0, "entity", $$2);
       return new co.a($$1, $$3, $$4);
    }
 
-   public void a(akj $$0, ciw $$1, big $$2) {
+   public void a(akl $$0, ciy $$1, bii $$2) {
       ech $$3 = bo.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
    public static class a extends ar {
-      private final bz a;
-      private final ba b;
+      private final Optional<bz> a;
+      private final Optional<ba> b;
 
-      public a(ba $$0, bz $$1, ba $$2) {
+      public a(Optional<ba> $$0, Optional<bz> $$1, Optional<ba> $$2) {
          super(co.a, $$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static co.a a(ba $$0, bz.a $$1, ba $$2) {
+      public static co.a a(Optional<ba> $$0, bz.a $$1, Optional<ba> $$2) {
          return new co.a($$0, $$1.b(), $$2);
       }
 
-      public static co.a a(bz.a $$0, ba $$1) {
-         return a(ba.a, $$0, $$1);
+      public static co.a a(bz.a $$0, Optional<ba> $$1) {
+         return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(ciw $$0, ech $$1) {
-         return !this.a.a($$0) ? false : this.b.a($$1);
+      public boolean a(ciy $$0, ech $$1) {
+         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("item", this.a.a());
-         $$1.add("entity", this.b.a($$0));
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         return $$0;
       }
    }
 }

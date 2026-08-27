@@ -1,34 +1,18 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bkv extends bko<bvx> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bkv() {
-      super(ImmutableMap.of(bry.m, brz.b), 100);
-   }
-
-   protected boolean a(aki $$0, bvx $$1) {
-      return $$1.an() == bji.a;
-   }
-
-   protected boolean a(aki $$0, bvx $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(aki $$0, bvx $$1, long $$2) {
-      if (!$$1.bb()) {
-         $$1.b(bji.i);
-         this.e = 0;
-      }
-   }
-
-   protected void c(aki $$0, bvx $$1, long $$2) {
-      $$1.b(bji.a);
-   }
-
-   protected void d(aki $$0, bvx $$1, long $$2) {
-      this.e++;
+public class bkv {
+   public static <E extends biy, T> bkr<E> a(Predicate<E> $$0, bsa<? extends T> $$1, bsa<T> $$2, bgb $$3) {
+      return boc.a(
+         (Function<boc.b<E>, ? extends App<boc.c<E>, bof<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

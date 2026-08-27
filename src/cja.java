@@ -1,50 +1,44 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
 
-public class cja extends cir {
-   private static final String a = "Recipes";
-   private static final Logger b = LogUtils.getLogger();
-
-   public cja(cir.a $$0) {
-      super($$0);
+public class cja {
+   public static bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
+      $$1.c($$2);
+      return bgr.b($$1.b($$2));
    }
 
-   @Override
-   public bgp<ciw> a(cpk $$0, cbl $$1, bgn $$2) {
-      ciw $$3 = $$1.b($$2);
-      qs $$4 = $$3.v();
-      if (!$$1.fR().d) {
-         $$1.a($$2, ciw.b);
-      }
-
-      if ($$4 != null && $$4.b("Recipes", 9)) {
-         if (!$$0.B) {
-            qy $$5 = $$4.c("Recipes", 8);
-            List<clz<?>> $$6 = Lists.newArrayList();
-            cma $$7 = $$0.n().aE();
-
-            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
-               String $$9 = $$5.j($$8);
-               Optional<? extends clz<?>> $$10 = $$7.a(new aep($$9));
-               if (!$$10.isPresent()) {
-                  b.error("Invalid recipe: {}", $$9);
-                  return bgp.d($$3);
-               }
-
-               $$6.add((clz<?>)$$10.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(ape.c.b(this));
+   public static ciy a(ciy $$0, cbn $$1, ciy $$2, boolean $$3) {
+      boolean $$4 = $$1.fR().d;
+      if ($$3 && $$4) {
+         if (!$$1.fQ().h($$2)) {
+            $$1.fQ().e($$2);
          }
 
-         return bgp.a($$3, $$0.r_());
+         return $$0;
       } else {
-         b.error("Tag not valid: {}", $$4);
-         return bgp.d($$3);
+         if (!$$4) {
+            $$0.h(1);
+         }
+
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fQ().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
+   }
+
+   public static ciy a(ciy $$0, cbn $$1, ciy $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(byg $$0, Stream<ciy> $$1) {
+      cpm $$2 = $$0.dK();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new byg($$2, $$0.dp(), $$0.dr(), $$0.dv(), $$2x)));
       }
    }
 }

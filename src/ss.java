@@ -1,7 +1,6 @@
-import io.netty.handler.codec.EncoderException;
-
-public class ss extends EncoderException {
-   public ss(Throwable $$0) {
-      super($$0);
+public interface ss extends so {
+   @Override
+   default uy a() {
+      return uy.a;
    }
 }

@@ -1,25 +1,16 @@
-public class fvy extends fwr<buq, fef<buq>> {
-   private final fnc a;
+public class fvy extends fww<bun, fdz<bun>> {
+   private static final aer a = new aer("textures/entity/cat/cat_collar.png");
+   private final fdz<bun> b;
 
-   public fvy(fue<buq, fef<buq>> $$0, fnc $$1) {
+   public fvy(fuj<bun, fdz<bun>> $$0, fhj $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fdz<>($$1.a(fhm.o));
    }
 
-   public void a(elh $$0, fng $$1, int $$2, buq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fk() == biq.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = aro.e($$3.dC()) / 60.0F;
-      if ($$3.dC() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   public void a(elg $$0, fnl $$1, int $$2, bun $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.p()) {
+         float[] $$10 = $$3.gj().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
-
-      ciw $$14 = $$10 ? $$3.eR() : $$3.eS();
-      this.a.a($$3, $$14, cit.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

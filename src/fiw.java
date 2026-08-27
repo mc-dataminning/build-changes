@@ -1,85 +1,67 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface fiw {
-   static fiw a(fja $$0, UserApiService $$1) {
-      return new fiw.b($$0, $$1);
+public class fiw {
+   private final fiy[] a;
+   private int b;
+
+   public static Codec<fiw> a(int $$0) {
+      return Codec.list(fiy.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fiw($$0, $$1));
+            },
+            fiw::c
+         );
    }
 
-   CompletableFuture<Unit> a(UUID var1, AbuseReport var2);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   public fiw(int $$0) {
+      this.a = new fiy[$$0];
    }
 
-   public static class a extends ud {
-      public a(te $$0, Throwable $$1) {
-         super($$0, $$1);
-      }
+   private fiw(int $$0, List<fiy> $$1) {
+      this.a = $$1.toArray(fiy[]::new);
+      this.b = $$1.size();
    }
 
-   public static record b(fja a, UserApiService b) implements fiw {
-      private static final te c = te.c("gui.abuseReport.send.service_unavailable");
-      private static final te d = te.c("gui.abuseReport.send.http_error");
-      private static final te e = te.c("gui.abuseReport.send.json_error");
+   private List<fiy> c() {
+      List<fiy> $$0 = new ArrayList<>(this.d());
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, AbuseReport $$1) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$2 = new AbuseReportRequest(1, $$0, $$1, this.a.b(), this.a.c(), this.a.d());
-
-            try {
-               this.b.reportAbuse($$2);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var6) {
-               te $$4 = this.a(var6);
-               throw new CompletionException(new fiw.a($$4, var6));
-            } catch (MinecraftClientException var7) {
-               te $$6 = this.a(var7);
-               throw new CompletionException(new fiw.a($$6, var7));
-            }
-         }, ac.g());
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+      return $$0;
+   }
 
-      private te a(MinecraftClientHttpException $$0) {
-         return te.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   public void a(fiy $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
 
-      private te a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
-         };
-      }
+   @Nullable
+   public fiy b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
 
-      public fja c() {
-         return this.a;
-      }
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
 
-      public UserApiService d() {
-         return this.b;
-      }
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

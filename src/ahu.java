@@ -1,56 +1,136 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
 public class ahu {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> te.a("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> te.a("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(te.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("ride").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dr)$$0x.getSource(), 0, true)))
             .then(
-               ((RequiredArgumentBuilder)dt.a("target", ed.a())
-                     .then(dt.a("mount").then(dt.a("vehicle", ed.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"), ed.a($$0x, "vehicle"))))))
-                  .then(dt.a("dismount").executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"))))
+               ((RequiredArgumentBuilder)ds.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+                  .then(
+                     ds.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ds $$0, big $$1, big $$2) throws CommandSyntaxException {
-      big $$3 = $$1.cY();
-      if ($$3 != null) {
-         throw b.create($$1.H_(), $$3.H_());
-      } else if ($$2.ag() == bik.bt) {
-         throw d.create();
-      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dK() != $$2.dK()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.H_(), $$2.H_());
-      } else {
-         $$0.a(() -> te.a("commands.ride.mount.success", $$1.H_(), $$2.H_()), true);
-         return 1;
-      }
-   }
+   private static int a(dr $$0, int $$1, boolean $$2) {
+      akk $$3 = $$0.e();
+      aki $$4 = $$3.k();
+      $$4.a.d();
+      ehe $$5 = $$0.d();
+      cot $$6 = new cot(gu.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
 
-   private static int a(ds $$0, big $$1) throws CommandSyntaxException {
-      big $$2 = $$1.cY();
-      if ($$2 == null) {
-         throw a.create($$1.H_());
-      } else {
-         $$1.aa();
-         $$0.a(() -> te.a("commands.ride.dismount.success", $$1.H_(), $$2.H_()), true);
-         return 1;
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            cot $$13 = new cot($$12, $$11);
+            dhh $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (gu $$15 : gu.b($$13.d(), $$3.C_(), $$13.e(), $$13.f(), $$3.aj() - 1, $$13.g())) {
+                  $$3.a($$15, csn.a.n(), 16);
+               }
+            }
+         }
       }
+
+      bfj<Runnable> $$16 = bfj.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dhb.f, dhb.g, dhb.h, dhb.i, dhb.j, dhb.k).iterator();
+
+      while (var33.hasNext()) {
+         dhb $$19 = (dhb)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               cot $$24 = new cot($$23, $$22);
+               dhh $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dgw> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
+
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dgw $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dgw $$31;
+                        if ($$30 instanceof dhg) {
+                           $$31 = new dhg(((dhg)$$30).C(), true);
+                        } else if ($$30 instanceof dhh) {
+                           $$31 = new dhg((dhh)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
+
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dhb.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dkj.a($$0xxx, dhb.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
+         }
+
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
+      }
+
+      long $$34 = System.currentTimeMillis();
+
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            cot $$37 = new cot($$36, $$35);
+            dhh $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (gu $$39 : gu.b($$37.d(), $$3.C_(), $$37.e(), $$37.f(), $$3.aj() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
+      }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> tf.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

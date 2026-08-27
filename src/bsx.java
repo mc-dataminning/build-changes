@@ -1,30 +1,29 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class bsx extends btc<biw> {
+public class bsx<T extends biy> extends bte<T> {
    @Override
-   public Set<bry<?>> a() {
-      return ImmutableSet.of(bry.h, bry.L, bry.am);
+   protected void a(akk $$0, T $$1) {
+      egz $$2 = $$1.cG().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<biy> $$3 = $$0.a(biy.class, $$2, $$1x -> $$1x != $$1 && $$1x.bv());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bjz<?> $$4 = $$1.dM();
+      $$4.a(bsa.g, $$3);
+      $$4.a(bsa.h, new bsc($$1, $$3));
+   }
+
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
    }
 
    @Override
-   protected void a(aki $$0, biw $$1) {
-      bjx<?> $$2 = $$1.dM();
-      List<caa> $$3 = Lists.newArrayList();
-      bsa $$4 = $$2.c(bry.h).orElse(bsa.a());
-      Optional<biy> $$5 = $$4.a($$0x -> $$0x instanceof bzq || $$0x instanceof bxs).map(biy.class::cast);
-
-      for (biw $$7 : $$2.c(bry.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof caa && ((caa)$$7).ga()) {
-            $$3.add((caa)$$7);
-         }
-      }
-
-      $$2.a(bry.L, $$5);
-      $$2.a(bry.am, $$3);
+   public Set<bsa<?>> a() {
+      return ImmutableSet.of(bsa.g, bsa.h);
    }
 }

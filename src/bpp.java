@@ -1,87 +1,84 @@
-import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bpp extends bps {
-   private final biy a;
-   private final Predicate<biy> b;
+public class bpp extends bpu {
+   private int a;
+   private final bjh b;
    @Nullable
-   private biy c;
-   private final double d;
-   private final bsg e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
+   private cbn c;
+   private bpd d;
 
-   public bpp(biy $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.H();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bps.a.a, bps.a.b));
-      if (!($$0.H() instanceof bsf) && !($$0.H() instanceof bse)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+   public bpp(bjh $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean a() {
-      List<biy> $$0 = this.a.dK().a(biy.class, this.a.cG().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (biy $$1 : $$0) {
-            if (!$$1.cd()) {
-               this.c = $$1;
-               return true;
-            }
+      List<cdg> $$0 = this.b.dK().a(cdg.class, this.b.cG().g(5.0));
+      boolean $$1 = false;
+
+      for (cdg $$2 : $$0) {
+         bii $$3 = $$2.cN();
+         if ($$3 instanceof cbn && (arp.e(((cbn)$$3).bk) > 0.0F || arp.e(((cbn)$$3).bm) > 0.0F)) {
+            $$1 = true;
+            break;
          }
       }
 
-      return false;
+      return this.c != null && (arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean J_() {
+      return true;
    }
 
    @Override
    public boolean b() {
-      return this.c != null && !this.e.l() && this.a.f(this.c) > (double)(this.g * this.g);
+      return this.c != null && this.c.bN() && (arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F);
    }
 
    @Override
    public void c() {
-      this.f = 0;
-      this.h = this.a.a(eam.j);
-      this.a.a(eam.j, 0.0F);
+      for (cdg $$1 : this.b.dK().a(cdg.class, this.b.cG().g(5.0))) {
+         if ($$1.cN() instanceof cbn $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = bpd.a;
    }
 
    @Override
    public void d() {
       this.c = null;
-      this.e.n();
-      this.a.a(eam.j, this.h);
    }
 
    @Override
    public void e() {
-      if (this.c != null && !this.a.fO()) {
-         this.a.D().a(this.c, 10.0F, (float)this.a.W());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dp() - this.c.dp();
-            double $$1 = this.a.dr() - this.c.dr();
-            double $$2 = this.a.dv() - this.c.dv();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               bou $$4 = this.c.D();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dp() && $$4.f() == this.a.dr() && $$4.g() == this.a.dv()) {
-                  double $$5 = this.c.dp() - this.a.dp();
-                  double $$6 = this.c.dv() - this.a.dv();
-                  this.e.a(this.a.dp() - $$5, this.a.dr(), this.a.dv() - $$6, this.d);
-               }
+      boolean $$0 = arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F;
+      float $$1 = this.d == bpd.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new ehe((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
+      this.b.a(bje.a, this.b.dn());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == bpd.a) {
+            gu $$2 = this.c.dk().a(this.c.cD().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.H().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.e((bii)this.c) < 4.0F) {
+               this.a = 0;
+               this.d = bpd.b;
+            }
+         } else if (this.d == bpd.b) {
+            ha $$3 = this.c.cE();
+            gu $$4 = this.c.dk().a($$3, 10);
+            this.b.H().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.e((bii)this.c) > 12.0F) {
+               this.a = 0;
+               this.d = bpd.a;
             }
          }
       }

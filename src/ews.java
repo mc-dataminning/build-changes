@@ -1,42 +1,102 @@
-public class ews extends exv {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final te c = te.c("credits_and_attribution.screen.title");
-   private static final te k = te.c("credits_and_attribution.button.credits");
-   private static final te l = te.c("credits_and_attribution.button.attribution");
-   private static final te m = te.c("credits_and_attribution.button.licenses");
-   private final exv n;
-   private final evk o = new evk(this);
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-   public ews(exv $$0) {
-      super(c);
-      this.n = $$0;
+public class ews extends exz {
+   private static final int k = 20;
+   private final tf l;
+   private eta m = eta.a;
+   protected tf a;
+   protected tf b;
+   private int n;
+   protected final BooleanConsumer c;
+   private final List<esh> o = Lists.newArrayList();
+
+   public ews(BooleanConsumer $$0, tf $$1, tf $$2) {
+      this($$0, $$1, $$2, te.f, te.g);
+   }
+
+   public ews(BooleanConsumer $$0, tf $$1, tf $$2, tf $$3, tf $$4) {
+      super($$1);
+      this.c = $$0;
+      this.l = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public tf e() {
+      return te.a(super.e(), this.l);
    }
 
    @Override
    protected void aE_() {
-      this.o.a(new etn(this.m(), this.i));
-      evo $$0 = this.o.c(evo.d()).a(8);
-      $$0.c().b();
-      $$0.a(esi.a(k, $$0x -> this.l()).a(210).a());
-      $$0.a(esi.a(l, ewn.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
-      $$0.a(esi.a(m, ewn.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
-      this.o.b(esi.a(td.d, $$0x -> this.au_()).a());
-      this.o.a();
-      this.o.a(this::d);
+      super.aE_();
+      this.m = eta.a(this.i, this.l, this.g - 50);
+      int $$0 = arp.a(this.B() + this.C() + 20, this.h / 6 + 96, this.h - 24);
+      this.o.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(esh.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
+      this.a(esh.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(esh $$0) {
+      this.o.add(this.d($$0));
    }
 
    @Override
-   protected void b() {
-      this.o.a();
+   public void a(erw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.l(), 16777215);
+      this.m.a($$0, this.g / 2, this.B());
    }
 
-   private void l() {
-      this.f.a(new eyc(false, () -> this.f.a(this)));
+   private int l() {
+      int $$0 = (this.h - this.C()) / 2;
+      return arp.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int B() {
+      return this.l() + 20;
+   }
+
+   private int C() {
+      return this.m.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+
+      for (esh $$1 : this.o) {
+         $$1.i = false;
+      }
    }
 
    @Override
-   public void au_() {
-      this.f.a(this.n);
+   public void c() {
+      super.c();
+      if (--this.n == 0) {
+         for (esh $$0 : this.o) {
+            $$0.i = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean aA_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

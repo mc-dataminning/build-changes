@@ -1,66 +1,53 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class br<V> {
-   private static final String a = "variant";
-   final Codec<V> b;
-   final Function<big, Optional<V>> c;
-   final bp.a d;
+   private final Function<bii, Optional<V>> a;
+   private final bp.a b;
 
-   public static <V> br<V> a(hs<V> $$0, Function<big, Optional<V>> $$1) {
+   public static <V> br<V> a(hr<V> $$0, Function<bii, Optional<V>> $$1) {
       return new br<>($$0.q(), $$1);
    }
 
-   public static <V> br<V> a(Codec<V> $$0, Function<big, Optional<V>> $$1) {
+   public static <V> br<V> a(Codec<V> $$0, Function<bii, Optional<V>> $$1) {
       return new br<>($$0, $$1);
    }
 
-   private br(Codec<V> $$0, Function<big, Optional<V>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$1x -> {
-         JsonElement $$2 = $$1x.get("variant");
-         if ($$2 == null) {
-            throw new JsonParseException("Missing variant field");
-         } else {
-            V $$3 = (V)ac.a($$0.decode(new Dynamic(JsonOps.INSTANCE, $$2)), JsonParseException::new).getFirst();
-            return this.a($$3);
-         }
-      };
+   private br(Codec<V> $$0, Function<bii, Optional<V>> $$1) {
+      this.a = $$1;
+      MapCodec<br.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(br.a::c)).apply($$1x, this::a));
+      this.b = new bp.a($$2);
    }
 
    public bp.a a() {
-      return this.d;
+      return this.b;
    }
 
-   public bp a(final V $$0) {
-      return new bp() {
-         @Override
-         public boolean a(big $$0x, aki $$1, @Nullable ehf $$2) {
-            return br.this.c.apply($$0).filter($$1x -> $$1x.equals($$0)).isPresent();
-         }
+   public br.a<V> a(V $$0) {
+      return new br.a<>(this.b, this.a, $$0);
+   }
 
-         @Override
-         public JsonObject a() {
-            JsonObject $$0 = new JsonObject();
-            $$0.add(
-               "variant",
-               ac.a(br.this.b.encodeStart(JsonOps.INSTANCE, $$0), $$1 -> new JsonParseException("Can't serialize variant " + $$0 + ", message " + $$1))
-            );
-            return $$0;
-         }
+   public static record a<V>(bp.a b, Function<bii, Optional<V>> c, V d) implements bp {
+      @Override
+      public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
+         return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
+      }
 
-         @Override
-         public bp.a c() {
-            return br.this.d;
-         }
-      };
+      @Override
+      public bp.a a() {
+         return this.b;
+      }
+
+      public Function<bii, Optional<V>> b() {
+         return this.c;
+      }
+
+      public V c() {
+         return this.d;
+      }
    }
 }

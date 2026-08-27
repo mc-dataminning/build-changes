@@ -1,107 +1,121 @@
-public abstract class gaw implements gbo {
-   protected gbl a;
-   protected final aov b;
-   protected final aep c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gbo.a k = gbo.a.b;
-   protected boolean l;
-   protected art m;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected gaw(aot $$0, aov $$1, art $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class gaw implements gam {
+   protected final List<foh> a;
+   protected final Map<ha, List<foh>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final fyl f;
+   protected final fou g;
+   protected final fos h;
 
-   protected gaw(aep $$0, aov $$1, art $$2) {
-      this.c = $$0;
+   public gaw(List<foh> $$0, Map<ha, List<foh>> $$1, boolean $$2, boolean $$3, boolean $$4, fyl $$5, fou $$6, fos $$7) {
+      this.a = $$0;
       this.b = $$1;
-      this.m = $$2;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public aep a() {
+   public List<foh> a(@Nullable dfa $$0, @Nullable ha $$1, aru $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
       return this.c;
    }
 
    @Override
-   public gct a(gcs $$0) {
-      if (this.c.equals(gcs.b)) {
-         this.a = gcs.d;
-         return gcs.c;
-      } else {
-         gct $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = gcs.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
-
-         return $$1;
-      }
+   public boolean b() {
+      return this.d;
    }
 
    @Override
-   public gbl b() {
-      return this.a;
-   }
-
-   @Override
-   public aov c() {
-      return this.b;
+   public boolean c() {
+      return this.e;
    }
 
    @Override
    public boolean d() {
-      return this.i;
+      return false;
    }
 
    @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
+   public fyl e() {
       return this.f;
    }
 
    @Override
-   public double i() {
+   public fou f() {
       return this.g;
    }
 
    @Override
-   public double j() {
+   public fos g() {
       return this.h;
    }
 
-   @Override
-   public gbo.a k() {
-      return this.k;
-   }
+   public static class a {
+      private final List<foh> a = Lists.newArrayList();
+      private final Map<ha, List<foh>> b = Maps.newEnumMap(ha.class);
+      private final fos c;
+      private final boolean d;
+      private fyl e;
+      private final boolean f;
+      private final boolean g;
+      private final fou h;
 
-   @Override
-   public boolean l() {
-      return this.l;
-   }
+      public a(fom $$0, fos $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
 
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      private a(boolean $$0, boolean $$1, boolean $$2, fou $$3, fos $$4) {
+         for (ha $$5 : ha.values()) {
+            this.b.put($$5, Lists.newArrayList());
+         }
+
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public gaw.a a(ha $$0, foh $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public gaw.a a(foh $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gaw.a a(fyl $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gaw.a a() {
+         return this;
+      }
+
+      public gam b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new gaw(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
+      }
    }
 }

@@ -1,11 +1,19 @@
-public class frq extends ftp<bvu, fdu<bvu>> {
-   private static final aep a = new aep("textures/entity/camel/camel.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public frq(fsj.a $$0, fhh $$1) {
-      super($$0, new fdu<>($$0.a($$1)), 0.7F);
+public class frq extends ftu<bvr, fds<bvr>> {
+   private static final Map<bvr.d, aer> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (bvr.d $$1 : bvr.d.values()) {
+         $$0.put($$1, new aer(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public frq(fso.a $$0) {
+      super($$0, new fds<>($$0.a(fhm.e)), 0.5F);
    }
 
-   public aep a(bvu $$0) {
-      return a;
+   public aer a(bvr $$0) {
+      return a.get($$0.fZ());
    }
 }

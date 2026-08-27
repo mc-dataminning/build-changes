@@ -1,27 +1,17 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
-public interface ann {
-   Optional<ani> getResource(aep var1);
-
-   default ani getResourceOrThrow(aep $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+public interface ann extends ang {
+   @Override
+   default CompletableFuture<Void> a(ang.a $$0, anm $$1, bdh $$2, bdh $$3, Executor $$4, Executor $$5) {
+      return $$0.a(asp.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   default InputStream open(aep $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
-
-   default BufferedReader openAsReader(aep $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static ann fromMap(Map<aep, ani> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
-   }
+   void a(anm var1);
 }

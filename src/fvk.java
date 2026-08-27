@@ -1,37 +1,18 @@
-public class fvk extends fsi<ccq> {
-   private static final aep a = new aep("textures/entity/wither/wither_invulnerable.png");
-   private static final aep f = new aep("textures/entity/wither/wither.png");
-   private final fgg g;
+public class fvk extends ftu<cbg, fgz<cbg>> {
+   private static final aer a = new aer("textures/entity/wandering_trader.png");
 
-   public fvk(fsj.a $$0) {
-      super($$0);
-      this.g = new fgg($$0.a(fhi.bU));
+   public fvk(fso.a $$0) {
+      super($$0, new fgz<>($$0.a(fhm.bM)), 0.5F);
+      this.a(new fwb<>(this, $$0.f(), $$0.d()));
+      this.a(new fwa<>(this, $$0.d()));
    }
 
-   public static fhp a() {
-      fhr $$0 = new fhr();
-      fhs $$1 = $$0.a();
-      $$1.a("head", fho.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhl.a);
-      return fhp.a($$0, 64, 64);
+   public aer a(cbg $$0) {
+      return a;
    }
 
-   protected int a(ccq $$0, gv $$1) {
-      return 15;
-   }
-
-   public void a(ccq $$0, float $$1, float $$2, elh $$3, fng $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = aro.j($$2, $$0.N, $$0.dA());
-      float $$7 = aro.i($$2, $$0.O, $$0.dC());
-      ell $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, fxx.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aep a(ccq $$0) {
-      return $$0.p() ? a : f;
+   protected void a(cbg $$0, elg $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

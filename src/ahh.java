@@ -1,40 +1,39 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class ahh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.pardon.failed"));
+   public static void a(CommandDispatcher<dr> $$0) {
+      LiteralCommandNode<dr> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ds.a("msg").then(ds.a("targets", ec.d()).then(ds.a("message", eg.a()).executes($$0x -> {
+            Collection<akl> $$1x = ec.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               eg.a($$0x, "message", $$2 -> a((dr)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               dt.a("targets", ef.a())
-                  .suggests(($$0x, $$1) -> dv.a(((ds)$$0x.getSource()).l().ac().f().a(), $$1))
-                  .executes($$0x -> a((ds)$$0x.getSource(), ef.a($$0x, "targets")))
-            )
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)ds.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ds.a("w").redirect($$1));
    }
 
-   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aod $$2 = $$0.l().ac().f();
-      int $$3 = 0;
+   private static void a(dr $$0, Collection<akl> $$1, tu $$2) {
+      tb.a $$3 = tb.a(tb.e, $$0);
+      tt $$4 = tt.a($$2);
+      boolean $$5 = false;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> te.a("commands.pardon.success", te.b($$4.getName())), true);
-         }
+      for (akl $$6 : $$1) {
+         tb.a $$7 = tb.a(tb.f, $$0).c($$6.H_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.i();
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
+      if ($$5) {
+         $$0.a(anz.f);
       }
    }
 }

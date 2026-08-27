@@ -1,10 +1,22 @@
-public class dbq extends csk {
-   public dbq(dex.d $$0) {
-      super($$0);
+public class dbq extends czp implements dbo {
+   private final dbo.a e;
+
+   public dbq(dbo.a $$0, dez.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      $$3.a($$0, new ehf(0.25, 0.05F, 0.25));
+   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dfa $$0) {
+      return dbo.c($$0.b()).isPresent();
+   }
+
+   public dbo.a g() {
+      return this.e;
    }
 }

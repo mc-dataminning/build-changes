@@ -1,18 +1,73 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface eva {
-   Codec<eva> b = evb.f.dispatch(eva::a, $$0 -> $$0.a().codec());
+public enum eva implements eji {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   evb a();
+   final ekh c;
 
-   Either<eva.a, eva.b> b();
+   private static ekh a(int $$0, int $$1, eva.a $$2) {
+      ekh $$3 = new ekh(ekh.a.a, $$0, $$1, false);
 
-   public interface a {
-      ejk load(ank var1) throws IOException;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
    }
 
-   public static record b(aep a) {
+   private eva(Supplier<ekh> $$0) {
+      this.c = $$0.get();
+   }
+
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public euy bake(Function<ejk, euy> $$0) {
+      return $$0.apply(new ejk() {
+         @Override
+         public int a() {
+            return eva.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return eva.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            eva.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

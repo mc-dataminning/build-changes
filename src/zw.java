@@ -1,58 +1,40 @@
-public class zw implements uw<wo> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final te e;
-   private final eih.a f;
-   private final int g;
+public class zw implements ux<wp> {
+   private final float a;
+   private final int b;
+   private final float c;
 
-   public zw(eib $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.f();
-      this.g = $$1;
+   public zw(float $$0, int $$1, float $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zw(sh $$0) {
-      this.d = $$0.r();
-      this.g = $$0.readByte();
-      if (this.g != 0 && this.g != 2) {
-         this.e = td.a;
-         this.f = eih.a.a;
-      } else {
-         this.e = $$0.l();
-         this.f = $$0.b(eih.a.class);
-      }
+   public zw(si $$0) {
+      this.a = $$0.readFloat();
+      this.b = $$0.m();
+      this.c = $$0.readFloat();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.a(this.d);
-      $$0.k(this.g);
-      if (this.g == 0 || this.g == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-      }
+   public void a(si $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   public float a() {
+      return this.a;
    }
 
-   public te d() {
-      return this.e;
+   public int d() {
+      return this.b;
    }
 
-   public int e() {
-      return this.g;
-   }
-
-   public eih.a f() {
-      return this.f;
+   public float e() {
+      return this.c;
    }
 }

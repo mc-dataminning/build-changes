@@ -4,27 +4,28 @@ import com.google.gson.JsonObject;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cb extends cv<cb.a> {
-   static final aep a = new aep("killed_by_crossbow");
+public class cb extends cu<cb.a> {
+   static final aer a = new aer("killed_by_crossbow");
 
    @Override
-   public aep a() {
+   public aer a() {
       return a;
    }
 
-   public cb.a a(JsonObject $$0, ba $$1, be $$2) {
-      ba[] $$3 = bo.b($$0, "victims", $$2);
+   public cb.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      List<ba> $$3 = bo.b($$0, "victims", $$2);
       cj.d $$4 = cj.d.a($$0.get("unique_entity_types"));
       return new cb.a($$1, $$3, $$4);
    }
 
-   public void a(akj $$0, Collection<big> $$1) {
+   public void a(akl $$0, Collection<bii> $$1) {
       List<ech> $$2 = Lists.newArrayList();
-      Set<bik<?>> $$3 = Sets.newHashSet();
+      Set<bim<?>> $$3 = Sets.newHashSet();
 
-      for (big $$4 : $$1) {
+      for (bii $$4 : $$1) {
          $$3.add($$4.ag());
          $$2.add(bo.b($$0, $$4));
       }
@@ -33,33 +34,25 @@ public class cb extends cv<cb.a> {
    }
 
    public static class a extends ar {
-      private final ba[] a;
+      private final List<ba> a;
       private final cj.d b;
 
-      public a(ba $$0, ba[] $$1, cj.d $$2) {
+      public a(Optional<ba> $$0, List<ba> $$1, cj.d $$2) {
          super(cb.a, $$0);
          this.a = $$1;
          this.b = $$2;
       }
 
       public static cb.a a(bo.a... $$0) {
-         ba[] $$1 = new ba[$$0.length];
-
-         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            bo.a $$3 = $$0[$$2];
-            $$1[$$2] = bo.a($$3.b());
-         }
-
-         return new cb.a(ba.a, $$1, cj.d.e);
+         return new cb.a(Optional.empty(), bo.a($$0), cj.d.c);
       }
 
       public static cb.a a(cj.d $$0) {
-         ba[] $$1 = new ba[0];
-         return new cb.a(ba.a, $$1, $$0);
+         return new cb.a(Optional.empty(), List.of(), $$0);
       }
 
       public boolean a(Collection<ech> $$0, int $$1) {
-         if (this.a.length > 0) {
+         if (!this.a.isEmpty()) {
             List<ech> $$2 = Lists.newArrayList($$0);
 
             for (ba $$3 : this.a) {
@@ -85,11 +78,11 @@ public class cb extends cv<cb.a> {
       }
 
       @Override
-      public JsonObject a(ct $$0) {
-         JsonObject $$1 = super.a($$0);
-         $$1.add("victims", ba.a(this.a, $$0));
-         $$1.add("unique_entity_types", this.b.d());
-         return $$1;
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         $$0.add("victims", ba.a(this.a));
+         $$0.add("unique_entity_types", this.b.e());
+         return $$0;
       }
    }
 }

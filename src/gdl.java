@@ -1,37 +1,51 @@
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class gdl {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public abstract class gdl {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
    public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
+   }
+
+   public void a(gdf $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   public void a(gda $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gdb.e, $$1x -> {
-            $$1x.a(gdd.p, this.a($$1));
-            $$1x.a(gdd.q, (int)this.c);
-         }));
+   public void d() {
+      this.d = false;
    }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(gdf var1);
 }

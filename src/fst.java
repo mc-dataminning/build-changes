@@ -1,19 +1,28 @@
-public class fst extends ftp<byt, feo<byt>> {
-   private static final aep a = new aep("textures/entity/ghast/ghast.png");
-   private static final aep i = new aep("textures/entity/ghast/ghast_shooting.png");
+public class fst extends fsn<byf> {
+   private final foe a;
 
-   public fst(fsj.a $$0) {
-      super($$0, new feo<>($$0.a(fhi.aa)), 1.5F);
+   public fst(fso.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public aep a(byt $$0) {
-      return $$0.p() ? i : a;
+   public void a(byf $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      dfa $$6 = $$0.o();
+      if ($$6.l() == cyr.c) {
+         cpm $$7 = $$0.dK();
+         if ($$6 != $$7.a_($$0.dk()) && $$6.l() != cyr.a) {
+            $$3.a();
+            gu $$8 = gu.a($$0.dp(), $$0.cG().e, $$0.dv());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fng.b($$6)), false, aru.a(), $$6.a($$0.j()), fyc.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   protected void a(byt $$0, elh $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public aer a(byf $$0) {
+      return fyk.e;
    }
 }

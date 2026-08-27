@@ -1,61 +1,30 @@
-public class bxl extends bxb {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final btj f = btj.a().a(150.0);
-   private final btj g;
-   private int h;
+public class bxl extends bxd {
+   private static final int b = 40;
+   private int c;
 
-   public bxl(bwy $$0) {
+   public bxl(bxa $$0) {
       super($$0);
-      this.g = btj.a().a(20.0).a($$1 -> Math.abs($$1.dr() - $$0.dr()) <= 10.0);
+   }
+
+   @Override
+   public void b() {
+      this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), aow.gX, this.a.da(), 2.5F, 0.8F + this.a.ee().i() * 0.3F, false);
    }
 
    @Override
    public void c() {
-      this.h++;
-      biw $$0 = this.a.dK().a(this.g, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.fW().a(bxo.h);
-         } else {
-            ehf $$1 = new ehf($$0.dp() - this.a.dp(), 0.0, $$0.dv() - this.a.dv()).d();
-            ehf $$2 = new ehf((double)aro.a(this.a.dA() * (float) (Math.PI / 180.0)), 0.0, (double)(-aro.b(this.a.dA() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dp() - this.a.e.dp();
-               double $$6 = $$0.dv() - this.a.e.dv();
-               double $$7 = aro.a(aro.d(180.0 - aro.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dA()), -100.0, 100.0);
-               this.a.bW *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
-
-               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dA() + this.a.bW);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dK().a(f, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-         this.a.fW().a(bxo.e);
-         if ($$0 != null) {
-            this.a.fW().a(bxo.i);
-            this.a.fW().b(bxo.i).a(new ehf($$0.dp(), $$0.dr(), $$0.dv()));
-         }
+      if (this.c++ >= 40) {
+         this.a.fW().a(bxq.f);
       }
    }
 
    @Override
    public void d() {
-      this.h = 0;
+      this.c = 0;
    }
 
    @Override
-   public bxo<bxl> i() {
-      return bxo.g;
+   public bxq<bxl> i() {
+      return bxq.h;
    }
 }

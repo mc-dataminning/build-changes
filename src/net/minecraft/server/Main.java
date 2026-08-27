@@ -62,17 +62,17 @@ public class Main {
 
          o.h();
          if ($$17.has($$14)) {
-            bdk.e.a(bdi.b);
+            bdn.e.a(bdl.b);
          }
 
-         aer.a();
-         aer.c();
+         aet.a();
+         aet.c();
          ac.l();
          Path $$19 = Paths.get("server.properties");
-         aji $$20 = new aji($$19);
+         ajk $$20 = new ajk($$19);
          $$20.b();
          Path $$21 = Paths.get("eula.txt");
-         aev $$22 = new aev($$21);
+         aex $$22 = new aex($$21);
          if ($$17.has($$3)) {
             a.info("Initialized '{}' and '{}'", $$19.toAbsolutePath(), $$21.toAbsolutePath());
             return;
@@ -84,11 +84,11 @@ public class Main {
          }
 
          File $$23 = new File((String)$$17.valueOf($$10));
-         afh $$24 = afh.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
+         afj $$24 = afj.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
          String $$25 = (String)Optional.ofNullable((String)$$17.valueOf($$11)).orElse($$20.a().m);
-         ebv $$26 = ebv.b($$23.toPath());
-         ebv.c $$27 = $$26.c($$25);
-         ebw $$28 = $$27.d();
+         ebx $$26 = ebx.b($$23.toPath());
+         ebx.c $$27 = $$26.c($$25);
+         eby $$28 = $$27.d();
          if ($$28 != null) {
             if ($$28.d()) {
                a.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
@@ -106,51 +106,51 @@ public class Main {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         amv $$30 = amy.a($$27);
+         amx $$30 = ana.a($$27);
 
-         afk $$32;
+         afm $$32;
          try {
-            afj.c $$31 = a($$20.a(), $$27, $$29, $$30);
-            $$32 = ac.<afk>c($$6x -> afj.a($$31, $$5xx -> {
-                  hs<dii> $$6xx = $$5xx.d().d(jd.aI);
-                  DynamicOps<rl> $$7x = aen.a(rd.a, $$5xx.c());
-                  Pair<ecb, dlc.b> $$8x = $$27.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
+            afl.c $$31 = a($$20.a(), $$27, $$29, $$30);
+            $$32 = ac.<afm>c($$6x -> afl.a($$31, $$5xx -> {
+                  hr<dik> $$6xx = $$5xx.d().d(jc.aI);
+                  DynamicOps<rk> $$7x = aep.a(rc.a, $$5xx.c());
+                  Pair<ecd, dle.b> $$8x = $$27.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
                   if ($$8x != null) {
-                     return new afj.b<>((ecb)$$8x.getFirst(), ((dlc.b)$$8x.getSecond()).b());
+                     return new afl.b<>((ecd)$$8x.getFirst(), ((dle.b)$$8x.getSecond()).b());
                   } else {
-                     cpo $$9x;
-                     dlf $$10x;
-                     dlc $$11x;
+                     cpq $$9x;
+                     dlh $$10x;
+                     dle $$11x;
                      if ($$17.has($$4)) {
                         $$9x = MinecraftServer.f;
-                        $$10x = dlf.b;
-                        $$11x = dun.a($$5xx.c());
+                        $$10x = dlh.b;
+                        $$11x = dup.a($$5xx.c());
                      } else {
-                        ajh $$12x = $$20.a();
-                        $$9x = new cpo($$12x.m, $$12x.l, $$12x.u, $$12x.k, false, new cpg(), $$5xx.b());
+                        ajj $$12x = $$20.a();
+                        $$9x = new cpq($$12x.m, $$12x.l, $$12x.u, $$12x.k, false, new cpi(), $$5xx.b());
                         $$10x = $$17.has($$5) ? $$12x.Y.a(true) : $$12x.Y;
                         $$11x = $$12x.a($$5xx.c());
                      }
 
-                     dlc.b $$16x = $$11x.a($$6xx);
+                     dle.b $$16x = $$11x.a($$6xx);
                      Lifecycle $$17x = $$16x.a().add($$5xx.c().d());
-                     return new afj.b<>(new ebz($$9x, $$10x, $$16x.d(), $$17x), $$16x.b());
+                     return new afl.b<>(new ecb($$9x, $$10x, $$16x.d(), $$17x), $$16x.b());
                   }
-               }, afk::new, ac.f(), $$6x)).get();
+               }, afm::new, ac.f(), $$6x)).get();
          } catch (Exception var36) {
             a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var36);
             return;
          }
 
-         ht.b $$35 = $$32.c().a();
+         hs.b $$35 = $$32.c().a();
          if ($$17.has($$6)) {
-            a($$27, asr.a(), $$17.has($$7), () -> true, $$35.d(jd.aI));
+            a($$27, ast.a(), $$17.has($$7), () -> true, $$35.d(jc.aI));
          }
 
-         ecb $$36 = $$32.d();
+         ecd $$36 = $$32.d();
          $$27.a($$35, $$36);
-         final ajg $$37 = MinecraftServer.a((Function<Thread, ajg>)($$11x -> {
-            ajg $$12x = new ajg($$11x, $$27, $$30, $$32, $$20, asr.a(), $$24, akt::new);
+         final aji $$37 = MinecraftServer.a((Function<Thread, aji>)($$11x -> {
+            aji $$12x = new aji($$11x, $$27, $$30, $$32, $$20, ast.a(), $$24, akv::new);
             $$12x.a((Integer)$$17.valueOf($$12));
             $$12x.c($$17.has($$4));
             $$12x.b((String)$$17.valueOf($$13));
@@ -183,29 +183,29 @@ public class Main {
       }
    }
 
-   private static afj.c a(ajh $$0, ebv.c $$1, boolean $$2, amv $$3) {
-      cqd $$4 = $$1.e();
-      cqd $$6;
+   private static afl.c a(ajj $$0, ebx.c $$1, boolean $$2, amx $$3) {
+      cqf $$4 = $$1.e();
+      cqf $$6;
       boolean $$5;
       if ($$4 != null) {
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new cqd($$0.T, cdv.g);
+         $$6 = new cqf($$0.T, cdx.g);
       }
 
-      afj.d $$9 = new afj.d($$3, $$6, $$2, $$5);
-      return new afj.c($$9, dt.a.b, $$0.B);
+      afl.d $$9 = new afl.d($$3, $$6, $$2, $$5);
+      return new afl.c($$9, ds.a.b, $$0.B);
    }
 
-   private static void a(ebv.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, hs<dii> $$4) {
+   private static void a(ebx.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, hr<dik> $$4) {
       a.info("Forcing world upgrade!");
-      bgc $$5 = new bgc($$0, $$1, $$4, $$2);
-      te $$6 = null;
+      bge $$5 = new bge($$0, $$1, $$4, $$2);
+      tf $$6 = null;
 
       while (!$$5.b()) {
-         te $$7 = $$5.h();
+         tf $$7 = $$5.h();
          if ($$6 != $$7) {
             $$6 = $$7;
             a.info($$5.h().getString());
@@ -214,7 +214,7 @@ public class Main {
          int $$8 = $$5.e();
          if ($$8 > 0) {
             int $$9 = $$5.f() + $$5.g();
-            a.info("{}% completed ({} / {} chunks)...", new Object[]{aro.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{arp.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
          }
 
          if (!$$3.getAsBoolean()) {

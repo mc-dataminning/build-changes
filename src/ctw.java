@@ -1,47 +1,60 @@
-import javax.annotation.Nullable;
+public class ctw extends cve {
+   private final dfa a;
 
-public class ctw extends csk {
-   private final csk a;
-
-   public ctw(csk $$0, dex.d $$1) {
+   public ctw(csm $$0, dez.d $$1) {
       super($$1);
-      this.a = $$0;
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(dey $$0, aki $$1, gv $$2, art $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.a.n(), 2);
+   public void a(cpm $$0, gu $$1, dfa $$2, dfa $$3, byf $$4) {
+      if (b($$0, $$1, $$3)) {
+         $$0.a($$1, this.a, 3);
       }
    }
 
    @Override
-   public dey a(dey $$0, hb $$1, dey $$2, cpl $$3, gv $$4, gv $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.y_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfa a(clg $$0) {
+      cos $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      dfa $$3 = $$1.a_($$2);
+      return b($$1, $$2, $$3) ? this.a : super.a($$0);
    }
 
-   protected boolean a(coq $$0, gv $$1) {
-      for (hb $$2 : hb.values()) {
-         eab $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(apo.a)) {
-            return true;
+   private static boolean b(cos $$0, gu $$1, dfa $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(cos $$0, gu $$1) {
+      boolean $$2 = false;
+      gu.a $$3 = $$1.j();
+
+      for (ha $$4 : ha.values()) {
+         dfa $$5 = $$0.a_($$3);
+         if ($$4 != ha.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   @Nullable
-   @Override
-   public dey a(cle $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().y_().a(40));
-      }
+   private static boolean n(dfa $$0) {
+      return $$0.u().a(apq.a);
+   }
 
-      return this.n();
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      return a($$3, $$4) ? this.a : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int d(dfa $$0, cos $$1, gu $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

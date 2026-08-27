@@ -1,328 +1,224 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class czf {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int e = 32;
-   public static final int d = 11;
-   final boolean f;
-   private final apy<csk> g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private List<czf.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+public class czf extends crz implements czn {
+   public static final int b = 30;
+   public static final int c = 10;
+   public static final dfy<dgh> d = dfq.bo;
+   public static final dga e = dfq.aT;
+   public static final dfr f = dfq.C;
+   protected static final ehx g = csm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   private static final float[] a = ac.a(new float[16], $$0 -> {
+      int[] $$1 = new int[]{0, 0, 2, 4, 6, 7, 9, 10, 12, 14, 15, 18, 19, 21, 22, 24};
 
-   public czf(boolean $$0, apy<csk> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         $$0[$$2] = cxt.b($$1[$$2]);
+      }
+   });
+
+   public czf(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(d, dgh.a).a(e, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
-   public static czf a() {
-      return new czf(false, apj.bL, 10, 4, 10, 5);
+   @Nullable
+   @Override
+   public dfa a(clg $$0) {
+      gu $$1 = $$0.a();
+      ead $$2 = $$0.q().b_($$1);
+      return this.n().a(f, Boolean.valueOf($$2.a() == eae.c));
    }
 
-   public static czf b() {
-      return new czf(true, apj.bM, 50, 1, 5, 10);
+   @Override
+   public ead c_(dfa $$0) {
+      return $$0.c(f) ? eae.c.a(false) : super.c_($$0);
    }
 
-   public apy<csk> c() {
-      return this.g;
+   @Override
+   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
+      if (h($$0) != dgh.b) {
+         if (h($$0) == dgh.c) {
+            $$1.a($$2, $$0.a(d, dgh.a), 3);
+            if (!$$0.c(f)) {
+               $$1.a(null, $$2, aow.uu, aox.e, 1.0F, $$1.z.i() * 0.2F + 0.8F);
+            }
+         }
+      } else {
+         a($$1, $$2, $$0);
+      }
    }
 
-   public int d() {
-      return this.h;
+   @Override
+   public void a(cpm $$0, gu $$1, dfa $$2, bii $$3) {
+      if (!$$0.r_() && n($$2) && $$3.ag() != bim.bi && $$0.c_($$1) instanceof ddr $$5 && $$0 instanceof akk $$6 && $$5.gc().a($$6, $$1, djk.P, djk.a.a($$2))) {
+         $$5.g().b($$6, djk.P, djk.a.a($$3), $$3.di());
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public int e() {
-      return this.i;
+   @Override
+   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      if (!$$1.r_() && !$$0.a($$3.b())) {
+         if ($$0.c(e) > 0 && !$$1.L().a($$2, this)) {
+            $$1.a($$2, $$0.a(e, Integer.valueOf(0)), 18);
+         }
+      }
    }
 
-   public int f() {
-      return this.j;
+   @Override
+   public void a(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (h($$0) == dgh.b) {
+            b($$1, $$2, $$0);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public int g() {
-      return this.k;
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, eae.c, eae.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public boolean h() {
-      return this.f;
+   private static void b(cpm $$0, gu $$1, dfa $$2) {
+      csm $$3 = $$2.b();
+      $$0.a($$1, $$3);
+      $$0.a($$1.d(), $$3);
+   }
+
+   @Nullable
+   @Override
+   public dcm a(gu $$0, dfa $$1) {
+      return new ddr($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
+      return !$$0.B ? a($$2, dco.I, ($$0x, $$1x, $$2x, $$3) -> djt.c.a($$0x, $$3.gb(), $$3.gc())) : null;
+   }
+
+   @Override
+   public cyr b_(dfa $$0) {
+      return cyr.c;
+   }
+
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return g;
+   }
+
+   @Override
+   public boolean f_(dfa $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfa $$0, cos $$1, gu $$2, ha $$3) {
+      return $$0.c(e);
+   }
+
+   @Override
+   public int b(dfa $$0, cos $$1, gu $$2, ha $$3) {
+      return $$3 == ha.b ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   public static dgh h(dfa $$0) {
+      return $$0.c(d);
+   }
+
+   public static boolean n(dfa $$0) {
+      return h($$0) == dgh.a;
+   }
+
+   public static void a(cpm $$0, gu $$1, dfa $$2) {
+      $$0.a($$1, $$2.a(d, dgh.c).a(e, Integer.valueOf(0)), 3);
+      $$0.a($$1, $$2.b(), 10);
+      b($$0, $$1, $$2);
    }
 
    @VisibleForTesting
-   public List<czf.a> i() {
-      return this.l;
+   public int b() {
+      return 30;
    }
 
-   public void j() {
-      this.l.clear();
+   public void a(@Nullable bii $$0, cpm $$1, gu $$2, dfa $$3, int $$4, int $$5) {
+      $$1.a($$2, $$3.a(d, dgh.b).a(e, Integer.valueOf($$4)), 3);
+      $$1.a($$2, $$3.b(), this.b());
+      b($$1, $$2, $$3);
+      a($$0, $$1, $$2, $$5);
+      $$1.a($$0, djk.L, $$2);
+      if (!$$3.c(f)) {
+         $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aow.ut, aox.e, 1.0F, $$1.z.i() * 0.2F + 0.8F);
+      }
    }
 
-   public void a(qs $$0) {
-      if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<czf.a> $$1 = (List<czf.a>)czf.a.b.listOf().parse(new Dynamic(rd.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
-         int $$2 = Math.min($$1.size(), 32);
-
-         for (int $$3 = 0; $$3 < $$2; $$3++) {
-            this.a($$1.get($$3));
+   public static void a(@Nullable bii $$0, cpm $$1, gu $$2, int $$3) {
+      for (ha $$4 : ha.values()) {
+         gu $$5 = $$2.a($$4);
+         dfa $$6 = $$1.a_($$5);
+         if ($$6.a(apl.bO)) {
+            $$1.a(djt.b($$3), $$5, djk.a.a($$0, $$6));
+            float $$7 = a[$$3];
+            $$1.a(null, $$5, aow.I, aox.e, 1.0F, $$7);
          }
       }
    }
 
-   public void b(qs $$0) {
-      czf.a.b.listOf().encodeStart(rd.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
-   }
-
-   public void a(gv $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new czf.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(czf.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
+   @Override
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      if (h($$0) == dgh.b) {
+         ha $$4 = ha.b($$3);
+         if ($$4 != ha.b && $$4 != ha.a) {
+            double $$5 = (double)$$2.u() + 0.5 + ($$4.j() == 0 ? 0.5 - $$3.j() : (double)$$4.j() * 0.6);
+            double $$6 = (double)$$2.v() + 0.25;
+            double $$7 = (double)$$2.w() + 0.5 + ($$4.l() == 0 ? 0.5 - $$3.j() : (double)$$4.l() * 0.6);
+            double $$8 = (double)$$3.i() * 0.04;
+            $$1.a(io.b, $$5, $$6, $$7, 0.0, $$8, 0.0);
+         }
       }
    }
 
-   public void a(cpl $$0, gv $$1, art $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
-         List<czf.a> $$4 = new ArrayList<>();
-         Map<gv, czf.a> $$5 = new HashMap<>();
-         Object2IntMap<gv> $$6 = new Object2IntOpenHashMap();
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(d, e, f);
+   }
 
-         for (czf.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               gv $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               czf.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
-               } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
-                     $$5.put($$8, $$7);
-                  }
-               }
-            }
-         }
+   @Override
+   public boolean d_(dfa $$0) {
+      return true;
+   }
 
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<gv> $$10 = (Entry<gv>)var16.next();
-            gv $$11 = (gv)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            czf.a $$13 = $$5.get($$11);
-            Collection<hb> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + cxi.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.l = $$4;
+   @Override
+   public int a(dfa $$0, cpm $$1, gu $$2) {
+      if ($$1.c_($$2) instanceof ddr $$4) {
+         return h($$0) == dgh.b ? $$4.f() : 0;
+      } else {
+         return 0;
       }
    }
 
-   public static class a {
-      private static final ObjectArrayList<ia> c = ac.a(
-         new ObjectArrayList(18),
-         $$0 -> gv.b(new gv(-1, -1, -1), new gv(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(gv.b))
-               .map(gv::i)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private gv d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<hb> h;
-      private static final Codec<Set<hb>> i = hb.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, hb.class), Lists::newArrayList);
-      public static final Codec<czf.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  gv.a.fieldOf("pos").forGetter(czf.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(czf.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(czf.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.optionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, czf.a::new)
-      );
+   @Override
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
+   }
 
-      private a(gv $$0, int $$1, int $$2, int $$3, Optional<Set<hb>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
+   @Override
+   public boolean g_(dfa $$0) {
+      return true;
+   }
 
-      public a(gv $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public gv a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<hb> d() {
-         return this.h;
-      }
-
-      private boolean a(cpl $$0, gv $$1, boolean $$2) {
-         if (this.e <= 0) {
-            return false;
-         } else if ($$2) {
-            return true;
-         } else {
-            return $$0 instanceof aki $$3 ? $$3.m($$1) : false;
-         }
-      }
-
-      public void a(cpl $$0, gv $$1, art $$2, czf $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               dey $$5 = $$0.a_(this.d);
-               cza $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.c()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
-
-                  $$0.a(null, this.d, aou.ug, aov.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  gv $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.i();
-                     if ($$3.h() && !this.d.a(new ia($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof cza) {
-                     this.h = cxi.h($$5);
-                  }
-
-                  this.g = $$6.i_(this.g);
-                  this.f = $$6.a();
-               }
-            }
-         }
-      }
-
-      void a(czf.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static cza a(dey $$0) {
-         return $$0.b() instanceof cza $$1 ? $$1 : cza.t_;
-      }
-
-      private static List<ia> a(art $$0) {
-         return ac.a(c, $$0);
-      }
-
-      @Nullable
-      private static gv a(cpl $$0, gv $$1, art $$2) {
-         gv.a $$3 = $$1.j();
-         gv.a $$4 = $$1.j();
-
-         for (ia $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            dey $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof cza && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (czg.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(cpl $$0, gv $$1, gv $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
-         } else {
-            gv $$3 = $$2.b($$1);
-            hb $$4 = hb.a(hb.a.a, $$3.u() < 0 ? hb.b.b : hb.b.a);
-            hb $$5 = hb.a(hb.a.b, $$3.v() < 0 ? hb.b.b : hb.b.a);
-            hb $$6 = hb.a(hb.a.c, $$3.w() < 0 ? hb.b.b : hb.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
-            } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
-            }
-         }
-      }
-
-      private static boolean a(cpl $$0, gv $$1, hb $$2) {
-         gv $$3 = $$1.a($$2);
-         return !$$0.a_($$3).d($$0, $$3, $$2.g());
+   @Override
+   public void a(dfa $$0, akk $$1, gu $$2, ciy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bfs.a(5));
       }
    }
 }

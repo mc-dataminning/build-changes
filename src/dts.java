@@ -1,30 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dts implements asf {
-   a(hb.b, 1, "ceiling"),
-   b(hb.a, -1, "floor");
+public class dts extends duf {
+   public static final Codec<dts> a = RecordCodecBuilder.create($$0 -> $$0.group(dlq.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dts::new));
+   private final dlq c;
 
-   public static final Codec<dts> c = asf.a(dts::values);
-   private final hb d;
-   private final int e;
-   private final String f;
-
-   private dts(hb $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private dts(dlq $$0) {
+      this.c = $$0;
    }
 
-   public hb a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static dts a(dlq $$0) {
+      return new dts($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(due $$0, aru $$1, gu $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public duh<?> b() {
+      return duh.a;
    }
 }

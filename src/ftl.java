@@ -1,20 +1,109 @@
-public class ftl extends ftp<bwk, ffd<bwk>> {
-   private static final aep a = new aep("textures/entity/llama/creamy.png");
-   private static final aep i = new aep("textures/entity/llama/white.png");
-   private static final aep j = new aep("textures/entity/llama/brown.png");
-   private static final aep k = new aep("textures/entity/llama/gray.png");
+import java.util.OptionalInt;
 
-   public ftl(fsj.a $$0, fhh $$1) {
-      super($$0, new ffd<>($$0.a($$1)), 0.7F);
-      this.a(new fwl(this, $$0.f()));
+public class ftl<T extends bxz> extends fsn<T> {
+   private static final gat g = gat.c("item_frame", "map=false");
+   private static final gat h = gat.c("item_frame", "map=true");
+   private static final gat i = gat.c("glow_item_frame", "map=false");
+   private static final gat j = gat.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final ftm k;
+   private final foe l;
+
+   public ftl(fso.a $$0) {
+      super($$0);
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   public aep a(bwk $$0) {
-      return switch ($$0.gl()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   protected int a(T $$0, gu $$1) {
+      return $$0.ag() == bim.S ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
+
+   public void a(T $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      ha $$6 = $$0.cD();
+      ehe $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dC()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dA()));
+      boolean $$9 = $$0.cd();
+      ciy $$10 = $$0.z();
+      if (!$$9) {
+         gas $$11 = this.l.a().a();
+         gat $$12 = this.a($$0, $$10);
+         $$3.a();
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(fnz.i()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, fyc.d);
+         $$3.b();
+      }
+
+      if (!$$10.b()) {
+         OptionalInt $$13 = $$0.A();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
+         } else {
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
+
+         int $$14 = $$13.isPresent() ? $$0.D() % 4 * 2 : $$0.D();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13.isPresent()) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            ebn $$16 = cjf.a($$13.getAsInt(), $$0.dK());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               eqm.O().j.j().a($$3, $$4, $$13.getAsInt(), $$16, true, $$17);
+            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, civ.i, $$18, fyc.d, $$3, $$4, $$0.dK(), $$0.ah());
+         }
+      }
+
+      $$3.b();
+   }
+
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ag() == bim.S ? $$1 : $$2;
+   }
+
+   private gat a(T $$0, ciy $$1) {
+      boolean $$2 = $$0.ag() == bim.S;
+      if ($$1.a(cjb.rf)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
+      }
+   }
+
+   public ehe a(T $$0, float $$1) {
+      return new ehe((double)((float)$$0.cD().j() * 0.3F), -0.25, (double)((float)$$0.cD().l() * 0.3F));
+   }
+
+   public aer a(T $$0) {
+      return fyk.e;
+   }
+
+   protected boolean b(T $$0) {
+      if (eqm.K() && !$$0.z().b() && $$0.z().A() && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bU() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(T $$0, tf $$1, elg $$2, fnl $$3, int $$4) {
+      super.a($$0, $$0.z().y(), $$2, $$3, $$4);
    }
 }

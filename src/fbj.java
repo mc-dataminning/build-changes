@@ -1,89 +1,86 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Lists;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class fbj extends etm {
-   private static final ett c = new ett(new aep("recipe_book/tab"), new aep("recipe_book/tab_selected"));
-   private final eqw d;
-   private static final float e = 15.0F;
-   private float l;
+public class fbj {
+   @Nullable
+   private cmb<?> a;
+   private final List<fbj.a> b = Lists.newArrayList();
+   float c;
 
-   public fbj(eqw $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   public void a(eqn $$0) {
-      eqa $$1 = $$0.t.m();
-      List<fbl> $$2 = $$1.a(this.d);
-      if ($$0.t.bQ instanceof cfm) {
-         for (fbl $$3 : $$2) {
-            for (clz<?> $$4 : $$3.a($$1.a((cfm<?>)$$0.t.bQ))) {
-               if ($$1.d($$4)) {
-                  this.l = 15.0F;
-                  return;
-               }
-            }
+   public void a(cly $$0, int $$1, int $$2) {
+      this.b.add(new fbj.a($$0, $$1, $$2));
+   }
+
+   public fbj.a a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int b() {
+      return this.b.size();
+   }
+
+   @Nullable
+   public cmb<?> c() {
+      return this.a;
+   }
+
+   public void a(cmb<?> $$0) {
+      this.a = $$0;
+   }
+
+   public void a(erw $$0, eqm $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!exz.p()) {
+         this.c += $$5;
+      }
+
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         fbj.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+         }
+
+         ciy $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(fnt.F(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
          }
       }
    }
 
-   @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.l > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
-         }
+   public class a {
+      private final cly b;
+      private final int c;
+      private final int d;
 
-         eqn $$5 = eqn.N();
-         RenderSystem.disableDepthTest();
-         aep $$6 = this.a.a(true, this.b);
-         int $$7 = this.p();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.r(), this.f, this.g);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.ap());
-         if (this.l > 0.0F) {
-            $$0.c().b();
-            this.l -= $$3;
-         }
-      }
-   }
-
-   private void a(erx $$0, fth $$1) {
-      List<ciw> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.p() + 9 + $$3, this.r() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.p() + 3 + $$3, this.r() + 5);
-         $$0.b($$2.get(1), this.p() + 14 + $$3, this.r() + 5);
-      }
-   }
-
-   public eqw b() {
-      return this.d;
-   }
-
-   public boolean a(eqa $$0) {
-      List<fbl> $$1 = $$0.a(this.d);
-      this.j = false;
-      if ($$1 != null) {
-         for (fbl $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.j = true;
-               break;
-            }
-         }
+      public a(cly $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return this.j;
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public ciy c() {
+         ciy[] $$0 = this.b.a();
+         return $$0.length == 0 ? ciy.b : $$0[arp.d(fbj.this.c / 30.0F) % $$0.length];
+      }
    }
 }

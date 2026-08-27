@@ -1,45 +1,45 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class frj extends ftk<bxu, fdm> {
-   public static final aep a = new aep("textures/entity/armorstand/wood.png");
+public class frj implements fqu.a {
+   private final List<gu> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
 
-   public frj(fsj.a $$0) {
-      super($$0, new fdn($$0.a(fhi.b)), 0.0F);
-      this.a(new fwh<>(this, new fdm($$0.a(fhi.c)), new fdm($$0.a(fhi.d)), $$0.g()));
-      this.a(new fwk<>(this, $$0.d()));
-      this.a(new fwa<>(this, $$0.f()));
-      this.a(new fvw<>(this, $$0.f(), $$0.d()));
+   public void a(gu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public aep a(bxu $$0) {
-      return a;
-   }
+   @Override
+   public void a(elg $$0, fnl $$1, double $$2, double $$3, double $$4) {
+      elk $$5 = $$1.getBuffer(fnt.z());
 
-   protected void a(bxu $$0, elh $$1, float $$2, float $$3, float $$4) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$5 = (float)($$0.dK().V() - $$0.bJ) + $$4;
-      if ($$5 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(aro.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean b(bxu $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bW() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
-   }
-
-   @Nullable
-   protected fno a(bxu $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.t()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         aep $$4 = this.a($$0);
-         if ($$2) {
-            return fno.c($$4, false);
-         } else {
-            return $$1 ? fno.a($$4, false) : null;
-         }
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         gu $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         fnj.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
    }
 }

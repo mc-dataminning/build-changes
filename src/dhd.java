@@ -1,111 +1,69 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dhd<T> implements dhl<T> {
-   private final hk<T> a;
-   private final aqm<T> b;
-   private final dhm<T> c;
-   private final int d;
+public class dhd extends dhh {
+   private final he<cqk> n;
 
-   public dhd(hk<T> $$0, int $$1, dhm<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::c);
-   }
-
-   public dhd(hk<T> $$0, int $$1, dhm<T> $$2) {
-      this($$0, $$1, $$2, aqm.c(1 << $$1));
-   }
-
-   private dhd(hk<T> $$0, int $$1, dhm<T> $$2, aqm<T> $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
-   }
-
-   public static <A> dhl<A> a(int $$0, hk<A> $$1, dhm<A> $$2, List<A> $$3) {
-      return new dhd<>($$1, $$0, $$2, $$3);
+   public dhd(cpm $$0, cot $$1, he<cqk> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.c($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
-         }
-      }
+   public dfa a_(gu $$0) {
+      return csn.nb.n();
+   }
 
-      return $$1;
+   @Nullable
+   @Override
+   public dfa a(gu $$0, dfa $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
+   public ead b_(gu $$0) {
+      return eae.a.g();
    }
 
    @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new dhk($$0);
-      } else {
-         return $$1;
-      }
+   public int h(gu $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dcm a(gu $$0, dhh.b $$1) {
+      return null;
    }
 
    @Override
-   public void a(sh $$0) {
-      this.b.a();
-      int $$1 = $$0.m();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.c(this.a.b($$0.m()));
-      }
+   public void b(dcm $$0) {
    }
 
    @Override
-   public void b(sh $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
+   public void a(dcm $$0) {
    }
 
    @Override
-   public int a() {
-      int $$0 = sv.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += sv.a(this.a.a(this.b.a($$1)));
-      }
-
-      return $$0;
-   }
-
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
+   public void d(gu $$0) {
    }
 
    @Override
-   public int b() {
-      return this.b.b();
+   public boolean C() {
+      return true;
    }
 
    @Override
-   public dhl<T> c() {
-      return new dhd<>(this.a, this.d, this.c, this.b.c());
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public akd D() {
+      return akd.b;
+   }
+
+   @Override
+   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

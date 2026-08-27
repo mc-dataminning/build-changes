@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class dxv extends dyk {
-   public static final Codec<dxv> a = dey.b.fieldOf("block_state").xmap(dxv::new, $$0 -> $$0.b).codec();
-   private final dey b;
+public class dxv extends dym {
+   public static final Codec<dxv> a = jb.f.q().fieldOf("block").xmap(dxv::new, $$0 -> $$0.b).codec();
+   private final csm b;
 
-   public dxv(dey $$0) {
+   public dxv(csm $$0) {
       this.b = $$0;
    }
 
    @Override
-   public boolean a(dey $$0, art $$1) {
-      return $$0 == this.b;
+   public boolean a(dfa $$0, aru $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected dyl<?> a() {
-      return dyl.c;
+   protected dyn<?> a() {
+      return dyn.b;
    }
 }

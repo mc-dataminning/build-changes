@@ -1,28 +1,23 @@
-public enum dam {
-   a {
-      @Override
-      public boolean a(dey $$0, coq $$1, gv $$2, hb $$3) {
-         return csk.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final ehy e = csk.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+public class dam extends csm {
+   private static final double a = 5.0;
+   private static final ehx b = csm.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-      @Override
-      public boolean a(dey $$0, coq $$1, gv $$2, hb $$3) {
-         return !ehv.c($$0.l($$1, $$2).a($$3), this.e, ehj.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final ehy e = ehv.a(ehv.b(), csk.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), ehj.e);
+   protected dam(dez.d $$0) {
+      super($$0);
+   }
 
-      @Override
-      public boolean a(dey $$0, coq $$1, gv $$2, hb $$3) {
-         return !ehv.c($$0.l($$1, $$2).a($$3), this.e, ehj.c);
-      }
-   };
+   @Override
+   public cyr b_(dfa $$0) {
+      return cyr.a;
+   }
 
-   public abstract boolean a(dey var1, coq var2, gv var3, hb var4);
+   @Override
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return b;
+   }
+
+   @Override
+   public float b(dfa $$0, cos $$1, gu $$2) {
+      return 1.0F;
+   }
 }

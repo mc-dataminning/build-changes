@@ -1,77 +1,48 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonParseException;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.BiFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class cj<T extends Number> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("argument.range.empty"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(te.c("argument.range.swapped"));
-   @Nullable
-   protected final T c;
-   @Nullable
-   protected final T d;
+public interface cj<T extends Number> {
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("argument.range.swapped"));
 
-   protected cj(@Nullable T $$0, @Nullable T $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   Optional<T> a();
+
+   Optional<T> b();
+
+   default boolean c() {
+      return this.a().isEmpty() && this.b().isEmpty();
    }
 
-   @Nullable
-   public T a() {
-      return this.c;
+   default Optional<T> d() {
+      Optional<T> $$0 = this.a();
+      Optional<T> $$1 = this.b();
+      return $$0.equals($$1) ? $$0 : Optional.empty();
    }
 
-   @Nullable
-   public T b() {
-      return this.d;
+   static <T extends Number, R extends cj<T>> Codec<R> a(Codec<T> $$0, cj.a<T, R> $$1) {
+      Codec<R> $$2 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group(aqy.a($$0, "min").forGetter(cj::a), aqy.a($$0, "max").forGetter(cj::b)).apply($$2x, $$1::create)
+      );
+      return Codec.either($$2, $$0).xmap($$1x -> (cj)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
+         Optional<T> $$1x = $$0x.d();
+         return $$1x.isPresent() ? Either.right($$1x.get()) : Either.left($$0x);
+      });
    }
 
-   public boolean c() {
-      return this.c == null && this.d == null;
-   }
-
-   public JsonElement d() {
-      if (this.c()) {
-         return JsonNull.INSTANCE;
-      } else if (this.c != null && this.c.equals(this.d)) {
-         return new JsonPrimitive(this.c);
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.c != null) {
-            $$0.addProperty("min", this.c);
-         }
-
-         if (this.d != null) {
-            $$0.addProperty("max", this.d);
-         }
-
-         return $$0;
-      }
-   }
-
-   protected static <T extends Number, R extends cj<T>> R a(@Nullable JsonElement $$0, R $$1, BiFunction<JsonElement, String, T> $$2, cj.a<T, R> $$3) {
-      if ($$0 == null || $$0.isJsonNull()) {
-         return $$1;
-      } else if (arf.b($$0)) {
-         T $$4 = (T)$$2.apply($$0, "value");
-         return $$3.create($$4, $$4);
-      } else {
-         JsonObject $$5 = arf.m($$0, "value");
-         T $$6 = $$5.has("min") ? $$2.apply($$5.get("min"), "min") : null;
-         T $$7 = $$5.has("max") ? $$2.apply($$5.get("max"), "max") : null;
-         return $$3.create($$6, $$7);
-      }
-   }
-
-   protected static <T extends Number, R extends cj<T>> R a(
+   static <T extends Number, R extends cj<T>> R a(
       StringReader $$0, cj.b<T, R> $$1, Function<String, T> $$2, Supplier<DynamicCommandExceptionType> $$3, Function<T, T> $$4
    ) throws CommandSyntaxException {
       if (!$$0.canRead()) {
@@ -80,20 +51,20 @@ public abstract class cj<T extends Number> {
          int $$5 = $$0.getCursor();
 
          try {
-            T $$6 = (T)a(a($$0, $$2, $$3), $$4);
-            T $$7;
+            Optional<T> $$6 = a($$0, $$2, $$3).map($$4);
+            Optional<T> $$7;
             if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
                $$0.skip();
                $$0.skip();
-               $$7 = (T)a(a($$0, $$2, $$3), $$4);
-               if ($$6 == null && $$7 == null) {
+               $$7 = a($$0, $$2, $$3).map($$4);
+               if ($$6.isEmpty() && $$7.isEmpty()) {
                   throw a.createWithContext($$0);
                }
             } else {
                $$7 = $$6;
             }
 
-            if ($$6 == null && $$7 == null) {
+            if ($$6.isEmpty() && $$7.isEmpty()) {
                throw a.createWithContext($$0);
             } else {
                return $$1.create($$0, $$6, $$7);
@@ -105,8 +76,7 @@ public abstract class cj<T extends Number> {
       }
    }
 
-   @Nullable
-   private static <T extends Number> T a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
+   private static <T extends Number> Optional<T> a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
       int $$3 = $$0.getCursor();
 
       while ($$0.canRead() && a($$0)) {
@@ -115,10 +85,10 @@ public abstract class cj<T extends Number> {
 
       String $$4 = $$0.getString().substring($$3, $$0.getCursor());
       if ($$4.isEmpty()) {
-         return null;
+         return Optional.empty();
       } else {
          try {
-            return $$1.apply($$4);
+            return Optional.of($$1.apply($$4));
          } catch (NumberFormatException var6) {
             throw $$2.get().createWithContext($$0, $$4);
          }
@@ -134,73 +104,66 @@ public abstract class cj<T extends Number> {
       }
    }
 
-   @Nullable
-   private static <T> T a(@Nullable T $$0, Function<T, T> $$1) {
-      return $$0 == null ? null : $$1.apply($$0);
+   @FunctionalInterface
+   public interface a<T extends Number, R extends cj<T>> {
+      R create(Optional<T> var1, Optional<T> var2);
    }
 
    @FunctionalInterface
-   protected interface a<T extends Number, R extends cj<T>> {
-      R create(@Nullable T var1, @Nullable T var2);
+   public interface b<T extends Number, R extends cj<T>> {
+      R create(StringReader var1, Optional<T> var2, Optional<T> var3) throws CommandSyntaxException;
    }
 
-   @FunctionalInterface
-   protected interface b<T extends Number, R extends cj<T>> {
-      R create(StringReader var1, @Nullable T var2, @Nullable T var3) throws CommandSyntaxException;
-   }
+   public static record c(Optional<Double> e, Optional<Double> f, Optional<Double> g, Optional<Double> h) implements cj<Double> {
+      public static final cj.c c = new cj.c(Optional.empty(), Optional.empty());
+      public static final Codec<cj.c> d = cj.a(Codec.DOUBLE, cj.c::new);
 
-   public static class c extends cj<Double> {
-      public static final cj.c e = new cj.c(null, null);
-      @Nullable
-      private final Double f;
-      @Nullable
-      private final Double g;
+      private c(Optional<Double> $$0, Optional<Double> $$1) {
+         this($$0, $$1, a($$0), a($$1));
+      }
 
-      private static cj.c a(StringReader $$0, @Nullable Double $$1, @Nullable Double $$2) throws CommandSyntaxException {
-         if ($$1 != null && $$2 != null && $$1 > $$2) {
+      private static cj.c a(StringReader $$0, Optional<Double> $$1, Optional<Double> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
             throw b.createWithContext($$0);
          } else {
             return new cj.c($$1, $$2);
          }
       }
 
-      @Nullable
-      private static Double a(@Nullable Double $$0) {
-         return $$0 == null ? null : $$0 * $$0;
-      }
-
-      private c(@Nullable Double $$0, @Nullable Double $$1) {
-         super($$0, $$1);
-         this.f = a($$0);
-         this.g = a($$1);
+      private static Optional<Double> a(Optional<Double> $$0) {
+         return $$0.map($$0x -> $$0x * $$0x);
       }
 
       public static cj.c a(double $$0) {
-         return new cj.c($$0, $$0);
+         return new cj.c(Optional.of($$0), Optional.of($$0));
       }
 
       public static cj.c a(double $$0, double $$1) {
-         return new cj.c($$0, $$1);
+         return new cj.c(Optional.of($$0), Optional.of($$1));
       }
 
       public static cj.c b(double $$0) {
-         return new cj.c($$0, null);
+         return new cj.c(Optional.of($$0), Optional.empty());
       }
 
       public static cj.c c(double $$0) {
-         return new cj.c(null, $$0);
+         return new cj.c(Optional.empty(), Optional.of($$0));
       }
 
       public boolean d(double $$0) {
-         return this.c != null && this.c > $$0 ? false : this.d == null || !(this.d < $$0);
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || !(this.f.get() < $$0);
       }
 
       public boolean e(double $$0) {
-         return this.f != null && this.f > $$0 ? false : this.g == null || !(this.g < $$0);
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || !(this.h.get() < $$0);
       }
 
       public static cj.c a(@Nullable JsonElement $$0) {
-         return a($$0, e, arf::d, cj.c::new);
+         return $$0 != null && !$$0.isJsonNull() ? ac.a(d.parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : c;
+      }
+
+      public JsonElement e() {
+         return (JsonElement)(this.c() ? JsonNull.INSTANCE : ac.a(d.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new));
       }
 
       public static cj.c a(StringReader $$0) throws CommandSyntaxException {
@@ -208,62 +171,78 @@ public abstract class cj<T extends Number> {
       }
 
       public static cj.c a(StringReader $$0, Function<Double, Double> $$1) throws CommandSyntaxException {
-         return a($$0, cj.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
+         return cj.a($$0, cj.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
+      }
+
+      @Override
+      public Optional<Double> a() {
+         return this.e;
+      }
+
+      @Override
+      public Optional<Double> b() {
+         return this.f;
+      }
+
+      public Optional<Double> f() {
+         return this.g;
+      }
+
+      public Optional<Double> g() {
+         return this.h;
       }
    }
 
-   public static class d extends cj<Integer> {
-      public static final cj.d e = new cj.d(null, null);
-      @Nullable
-      private final Long f;
-      @Nullable
-      private final Long g;
+   public static record d(Optional<Integer> e, Optional<Integer> f, Optional<Long> g, Optional<Long> h) implements cj<Integer> {
+      public static final cj.d c = new cj.d(Optional.empty(), Optional.empty());
+      public static final Codec<cj.d> d = cj.a(Codec.INT, cj.d::new);
 
-      private static cj.d a(StringReader $$0, @Nullable Integer $$1, @Nullable Integer $$2) throws CommandSyntaxException {
-         if ($$1 != null && $$2 != null && $$1 > $$2) {
+      private d(Optional<Integer> $$0, Optional<Integer> $$1) {
+         this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));
+      }
+
+      private static cj.d a(StringReader $$0, Optional<Integer> $$1, Optional<Integer> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
             throw b.createWithContext($$0);
          } else {
             return new cj.d($$1, $$2);
          }
       }
 
-      @Nullable
-      private static Long a(@Nullable Integer $$0) {
-         return $$0 == null ? null : $$0.longValue() * $$0.longValue();
-      }
-
-      private d(@Nullable Integer $$0, @Nullable Integer $$1) {
-         super($$0, $$1);
-         this.f = a($$0);
-         this.g = a($$1);
+      private static Optional<Long> a(Optional<Integer> $$0) {
+         return $$0.map($$0x -> $$0x.longValue() * $$0x.longValue());
       }
 
       public static cj.d a(int $$0) {
-         return new cj.d($$0, $$0);
+         return new cj.d(Optional.of($$0), Optional.of($$0));
       }
 
       public static cj.d a(int $$0, int $$1) {
-         return new cj.d($$0, $$1);
+         return new cj.d(Optional.of($$0), Optional.of($$1));
       }
 
       public static cj.d b(int $$0) {
-         return new cj.d($$0, null);
+         return new cj.d(Optional.of($$0), Optional.empty());
       }
 
       public static cj.d c(int $$0) {
-         return new cj.d(null, $$0);
+         return new cj.d(Optional.empty(), Optional.of($$0));
       }
 
       public boolean d(int $$0) {
-         return this.c != null && this.c > $$0 ? false : this.d == null || this.d >= $$0;
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || this.f.get() >= $$0;
       }
 
       public boolean a(long $$0) {
-         return this.f != null && this.f > $$0 ? false : this.g == null || this.g >= $$0;
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || this.h.get() >= $$0;
       }
 
       public static cj.d a(@Nullable JsonElement $$0) {
-         return a($$0, e, arf::g, cj.d::new);
+         return $$0 != null && !$$0.isJsonNull() ? ac.a(d.parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : c;
+      }
+
+      public JsonElement e() {
+         return (JsonElement)(this.c() ? JsonNull.INSTANCE : ac.a(d.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new));
       }
 
       public static cj.d a(StringReader $$0) throws CommandSyntaxException {
@@ -271,7 +250,25 @@ public abstract class cj<T extends Number> {
       }
 
       public static cj.d a(StringReader $$0, Function<Integer, Integer> $$1) throws CommandSyntaxException {
-         return a($$0, cj.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+         return cj.a($$0, cj.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+      }
+
+      @Override
+      public Optional<Integer> a() {
+         return this.e;
+      }
+
+      @Override
+      public Optional<Integer> b() {
+         return this.f;
+      }
+
+      public Optional<Long> f() {
+         return this.g;
+      }
+
+      public Optional<Long> g() {
+         return this.h;
       }
    }
 }

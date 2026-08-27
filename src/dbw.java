@@ -1,68 +1,52 @@
-import javax.annotation.Nullable;
-
-public class dbw extends czm {
-   @Nullable
-   private static dfd e;
-   @Nullable
-   private static dfd f;
-
-   protected dbw(dex.d $$0) {
-      super(czm.b.b, $$0);
+public class dbw extends csm {
+   protected dbw(dez.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cpk $$0, gv $$1, dey $$2, @Nullable biw $$3, ciw $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dck $$5 = $$0.c_($$1);
-      if ($$5 instanceof ddu) {
-         a($$0, $$1, (ddu)$$5);
+   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
+      if ($$1.x_().i()) {
+         $$1.a($$2, csn.aO.n(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, aow.hN, aox.e, 1.0F, (1.0F + $$1.y_().i() * 0.2F) * 0.7F);
       }
    }
 
-   public static void a(cpk $$0, gv $$1, ddu $$2) {
-      if (!$$0.B) {
-         dey $$3 = $$2.q();
-         boolean $$4 = $$3.a(csl.gG) || $$3.a(csl.gH);
-         if ($$4 && $$1.v() >= $$0.C_() && $$0.ai() != bgl.a) {
-            dfd.b $$5 = u().a($$0, $$1);
-            if ($$5 != null) {
-               bxs $$6 = bik.bk.a($$0);
-               if ($$6 != null) {
-                  ctd.a($$0, $$5);
-                  gv $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == hb.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aU = $$5.b().o() == hb.a.a ? 0.0F : 90.0F;
-                  $$6.p();
-
-                  for (akj $$8 : $$0.a(akj.class, $$6.cG().g(50.0))) {
-                     ai.n.a($$8, $$6);
+   @Override
+   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
+      ha $$4 = ha.b($$3);
+      if ($$4 != ha.b) {
+         gu $$5 = $$2.a($$4);
+         dfa $$6 = $$1.a_($$5);
+         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == ha.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == ha.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == ha.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
                   }
-
-                  $$0.b($$6);
-                  ctd.b($$0, $$5);
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == ha.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
                }
             }
+
+            $$1.a(iv.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
       }
-   }
-
-   public static boolean b(cpk $$0, gv $$1, ciw $$2) {
-      return $$2.a(ciz.ts) && $$1.v() >= $$0.C_() + 2 && $$0.ai() != bgl.a && !$$0.B ? v().a($$0, $$1) != null : false;
-   }
-
-   private static dfd u() {
-      if (e == null) {
-         e = dfe.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(apj.aE)).a('^', dfc.a(dfh.a(csl.gG).or(dfh.a(csl.gH)))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return e;
-   }
-
-   private static dfd v() {
-      if (f == null) {
-         f = dfe.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(apj.aE)).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return f;
    }
 }

@@ -1,11 +1,11 @@
-public class cob extends cnd {
-   public cob(cnd.a $$0, bil... $$1) {
-      super($$0, cne.n, $$1);
+public class cob extends cnf {
+   public cob(cnf.a $$0, bin... $$1) {
+      super($$0, cng.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 10 + $$0 * 7;
    }
 
    @Override
@@ -14,12 +14,12 @@ public class cob extends cnd {
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 3;
    }
 
    @Override
-   public boolean c() {
-      return true;
+   public boolean a(cnf $$0) {
+      return super.a($$0) && $$0 != cnj.E && $$0 != cnj.H;
    }
 }

@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class brr<T extends biy & bjd> extends bps {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class brr extends bru {
+   private final bju a;
+   private biy b;
+   private int c;
 
-   public brr(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public brr(bju $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bpu.a.d));
    }
 
    @Override
    public boolean a() {
-      return this.b.dK().X().b(cpg.K) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ef() != null && this.b.ef().ag() == bik.bt && this.b.eg() > this.d;
+      if (this.a.p() && !this.a.fZ()) {
+         biy $$0 = this.a.I_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ef();
+            int $$1 = $$0.eg();
+            return $$1 != this.c && this.a(this.b, btl.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.eg();
-      this.b.T_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bjd)$$0).forEach(bjd::T_);
+      this.e.h(this.b);
+      biy $$0 = this.a.I_();
+      if ($$0 != null) {
+         this.c = $$0.eg();
       }
 
       super.c();
-   }
-
-   private List<? extends biy> i() {
-      double $$0 = this.b.b(bkd.b);
-      eha $$1 = eha.a(this.b.di()).c($$0, 10.0, $$0);
-      return this.b.dK().a((Class<? extends biy>)this.b.getClass(), $$1, bij.f);
    }
 }

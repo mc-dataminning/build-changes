@@ -1,30 +1,102 @@
-public class brc extends bps {
-   private final bjf a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public brc(bjf $$0) {
+public class brc extends bpu {
+   private static final btl c = btl.b().a(10.0).d();
+   private final btl d;
+   protected final bjh a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cbn b;
+   private int k;
+   private boolean l;
+   private final cly m;
+   private final boolean n;
+
+   public brc(bjh $$0, double $$1, cly $$2, boolean $$3) {
       this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
    public boolean a() {
-      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apo.a);
+      if (this.k > 0) {
+         this.k--;
+         return false;
+      } else {
+         this.b = this.a.dK().a(this.d, this.a);
+         return this.b != null;
+      }
+   }
+
+   private boolean a(biy $$0) {
+      return this.m.a($$0.eR()) || this.m.a($$0.eS());
+   }
+
+   @Override
+   public boolean b() {
+      if (this.h()) {
+         if (this.a.f(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dC() - this.i) > 5.0 || Math.abs((double)this.b.dA() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dp();
+            this.g = this.b.dr();
+            this.h = this.b.dv();
+         }
+
+         this.i = (double)this.b.dC();
+         this.j = (double)this.b.dA();
+      }
+
+      return this.a();
+   }
+
+   protected boolean h() {
+      return this.n;
    }
 
    @Override
    public void c() {
-      gv $$0 = null;
+      this.f = this.b.dp();
+      this.g = this.b.dr();
+      this.h = this.b.dv();
+      this.l = true;
+   }
 
-      for (gv $$2 : gv.b(
-         aro.a(this.a.dp() - 2.0), aro.a(this.a.dr() - 2.0), aro.a(this.a.dv() - 2.0), aro.a(this.a.dp() + 2.0), this.a.dq(), aro.a(this.a.dv() + 2.0)
-      )) {
-         if (this.a.dK().b_($$2).a(apo.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.H().n();
+      this.k = b(100);
+      this.l = false;
+   }
 
-      if ($$0 != null) {
-         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public void e() {
+      this.a.D().a(this.b, (float)(this.a.X() + 20), (float)this.a.W());
+      if (this.a.f(this.b) < 6.25) {
+         this.a.H().n();
+      } else {
+         this.a.H().a(this.b, this.e);
       }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

@@ -1,41 +1,31 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class bj {
-   public static final bj a = new bj();
-   public static final bj[] b = new bj[0];
-   @Nullable
-   private final cnd c;
-   private final cj.d d;
+public record bj(Optional<he<cnf>> b, cj.d c) {
+   public static final Codec<bj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(jb.g.r(), "enchantment").forGetter(bj::a), aqy.a(cj.d.d, "levels", cj.d.c).forGetter(bj::b)).apply($$0, bj::new)
+   );
 
-   public bj() {
-      this.c = null;
-      this.d = cj.d.e;
+   public bj(cnf $$0, cj.d $$1) {
+      this(Optional.of($$0.j()), $$1);
    }
 
-   public bj(@Nullable cnd $$0, cj.d $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public boolean a(Map<cnd, Integer> $$0) {
-      if (this.c != null) {
-         if (!$$0.containsKey(this.c)) {
+   public boolean a(Map<cnf, Integer> $$0) {
+      if (this.b.isPresent()) {
+         cnf $$1 = this.b.get().a();
+         if (!$$0.containsKey($$1)) {
             return false;
          }
 
-         int $$1 = $$0.get(this.c);
-         if (this.d != cj.d.e && !this.d.d($$1)) {
+         int $$2 = $$0.get($$1);
+         if (this.c != cj.d.c && !this.c.d($$2)) {
             return false;
          }
-      } else if (this.d != cj.d.e) {
-         for (Integer $$2 : $$0.values()) {
-            if (this.d.d($$2)) {
+      } else if (this.c != cj.d.c) {
+         for (Integer $$3 : $$0.values()) {
+            if (this.c.d($$3)) {
                return true;
             }
          }
@@ -46,48 +36,11 @@ public class bj {
       return true;
    }
 
-   public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.c != null) {
-            $$0.addProperty("enchantment", jc.g.b(this.c).toString());
-         }
-
-         $$0.add("levels", this.d.d());
-         return $$0;
-      }
+   public Optional<he<cnf>> a() {
+      return this.b;
    }
 
-   public static bj a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arf.m($$0, "enchantment");
-         cnd $$2 = null;
-         if ($$1.has("enchantment")) {
-            aep $$3 = new aep(arf.i($$1, "enchantment"));
-            $$2 = jc.g.b($$3).orElseThrow(() -> new JsonSyntaxException("Unknown enchantment '" + $$3 + "'"));
-         }
-
-         cj.d $$4 = cj.d.a($$1.get("levels"));
-         return new bj($$2, $$4);
-      } else {
-         return a;
-      }
-   }
-
-   public static bj[] b(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonArray $$1 = arf.n($$0, "enchantments");
-         bj[] $$2 = new bj[$$1.size()];
-
-         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-            $$2[$$3] = a($$1.get($$3));
-         }
-
-         return $$2;
-      } else {
-         return b;
-      }
+   public cj.d b() {
+      return this.c;
    }
 }

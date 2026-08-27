@@ -1,64 +1,74 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
-public class yw implements uw<wo> {
-   private final yw.a a;
-   private final List<aep> b;
-   private final List<aep> c;
-   private final aoy d;
+public class yw implements ux<wp> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final Set<bjm> f;
+   private final int g;
 
-   public yw(yw.a $$0, Collection<aep> $$1, Collection<aep> $$2, aoy $$3) {
+   public yw(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bjm> $$5, int $$6) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = ImmutableList.copyOf($$2);
+      this.b = $$1;
+      this.c = $$2;
       this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public yw(sh $$0) {
-      this.a = $$0.b(yw.a.class);
-      this.d = aoy.a($$0);
-      this.b = $$0.a(sh::s);
-      if (this.a == yw.a.a) {
-         this.c = $$0.a(sh::s);
-      } else {
-         this.c = ImmutableList.of();
-      }
+   public yw(si $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = bjm.a($$0.readUnsignedByte());
+      this.g = $$0.m();
    }
 
    @Override
-   public void a(sh $$0) {
+   public void a(si $$0) {
       $$0.a(this.a);
-      this.d.b($$0);
-      $$0.a(this.b, sh::a);
-      if (this.a == yw.a.a) {
-         $$0.a(this.c, sh::a);
-      }
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(bjm.a(this.f));
+      $$0.c(this.g);
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       $$0.a(this);
    }
 
-   public List<aep> a() {
-      return this.b;
-   }
-
-   public List<aep> d() {
-      return this.c;
-   }
-
-   public aoy e() {
-      return this.d;
-   }
-
-   public yw.a f() {
+   public double a() {
       return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public Set<bjm> i() {
+      return this.f;
    }
 }

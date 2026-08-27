@@ -1,18 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dyx implements dyy {
-   public static final dyx a = new dyx();
-   public static final Codec<dyx> b = Codec.unit(a);
+public class dyx implements dza {
+   public static final Codec<dyx> a = RecordCodecBuilder.create($$0 -> $$0.group(qr.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, dyx::new));
+   private final qr b;
 
-   @Nullable
-   @Override
-   public qs a(art $$0, @Nullable qs $$1) {
-      return $$1;
+   public dyx(qr $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public dyz<?> a() {
-      return dyz.b;
+   public qr a(aru $$0, @Nullable qr $$1) {
+      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   }
+
+   @Override
+   public dzb<?> a() {
+      return dzb.c;
    }
 }

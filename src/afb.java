@@ -1,54 +1,71 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
-public class afb extends ano {
+public class afb {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private af c = new af();
-   private final eck d;
+   private static final CompletableFuture<asp> b = CompletableFuture.completedFuture(asp.a);
+   private final dl.a c;
+   private final ds d;
+   private final cmc e = new cmc();
+   private final aqc f;
+   private final eck g = new eck();
+   private final afd h = new afd(this.g);
+   private final afe i;
 
-   public afb(eck $$0) {
-      super(b, "advancements");
-      this.d = $$0;
+   public afb(hs.b $$0, cdv $$1, ds.a $$2, int $$3) {
+      this.f = new aqc($$0);
+      this.c = dl.a((hs)$$0, $$1);
+      this.d = new ds($$2, this.c);
+      this.c.a(dl.b.a);
+      this.i = new afe($$3, this.d.a());
    }
 
-   protected void a(Map<aep, JsonElement> $$0, ank $$1, bde $$2) {
-      Map<aep, ae.a> $$3 = Maps.newHashMap();
-      $$0.forEach(($$1x, $$2x) -> {
-         try {
-            JsonObject $$3x = arf.m($$2x, "advancement");
-            ae.a $$4x = ae.a.a($$3x, new be($$1x, this.d));
-            $$3.put($$1x, $$4x);
-         } catch (Exception var6) {
-            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
-         }
-      });
-      af $$4 = new af();
-      $$4.a($$3);
-
-      for (ae $$5 : $$4.b()) {
-         if ($$5.d() != null) {
-            aq.a($$5);
-         }
-      }
-
-      this.c = $$4;
+   public afe a() {
+      return this.i;
    }
 
-   @Nullable
-   public ae a(aep $$0) {
-      return this.c.a($$0);
+   public eck b() {
+      return this.g;
    }
 
-   public Collection<ae> a() {
-      return this.c.c();
+   public cmc c() {
+      return this.e;
+   }
+
+   public ds d() {
+      return this.d;
+   }
+
+   public afd e() {
+      return this.h;
+   }
+
+   public List<ang> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
+   }
+
+   public static CompletableFuture<afb> a(anm $$0, hs.b $$1, cdv $$2, ds.a $$3, int $$4, Executor $$5, Executor $$6) {
+      afb $$7 = new afb($$1, $$2, $$3, $$4);
+      return ans.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dl.b.b)).thenApply($$1x -> $$7);
+   }
+
+   public void a(hs $$0) {
+      this.f.a().forEach($$1 -> a($$0, (aqc.a<?>)$$1));
+      csn.a();
+   }
+
+   private static <T> void a(hs $$0, aqc.a<T> $$1) {
+      aeq<? extends hr<T>> $$2 = $$1.a();
+      Map<aqa<T>, List<he<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> aqa.a($$2, (aer)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends he<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
    }
 }

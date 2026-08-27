@@ -1,84 +1,69 @@
-import java.util.Map;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cwq extends crd {
-   public static final int c = 1;
-   public static final int d = 3;
-   public static final dfy e = dfo.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   public static final Predicate<cqi.c> f = $$0 -> $$0 == cqi.c.b;
-   public static final Predicate<cqi.c> g = $$0 -> $$0 == cqi.c.c;
-   private final Predicate<cqi.c> j;
+public class cwq extends csm implements czn {
+   public static final dfr a = dfq.j;
+   public static final dfr b = dfq.C;
+   protected static final ehx c = ehu.a(csm.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csm.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final ehx d = ehu.a(csm.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csm.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
-   public cwq(dex.d $$0, Predicate<cqi.c> $$1, Map<cir, ic> $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-      this.k(this.C.b().a(e, Integer.valueOf(1)));
+   public cwq(dez.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   public boolean d(dey $$0) {
-      return $$0.c(e) == 3;
-   }
+   public dfa a(clg $$0) {
+      ead $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   protected boolean a(eaa $$0) {
-      return $$0 == eac.c && this.j == f;
-   }
-
-   @Override
-   protected double b(dey $$0) {
-      return (6.0 + (double)$$0.c(e).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   public void a(dey $$0, cpk $$1, gv $$2, big $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.d($$0, $$1, $$2);
+      for (ha $$2 : $$0.f()) {
+         if ($$2.o() == ha.a.b) {
+            dfa $$3 = this.n().a(a, Boolean.valueOf($$2 == ha.b));
+            if ($$3.a((cpp)$$0.q(), $$0.a())) {
+               return $$3.a(b, Boolean.valueOf($$1.a() == eae.c));
+            }
          }
       }
-   }
 
-   protected void d(dey $$0, cpk $$1, gv $$2) {
-      e($$0, $$1, $$2);
-   }
-
-   public static void e(dey $$0, cpk $$1, gv $$2) {
-      int $$3 = $$0.c(e) - 1;
-      dey $$4 = $$3 == 0 ? csl.ft.n() : $$0.a(e, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dji.c, $$2, dji.a.a($$4));
+      return null;
    }
 
    @Override
-   public void a(dey $$0, cpk $$1, gv $$2, cqi.c $$3) {
-      if (cte.a($$1, $$3) && $$0.c(e) != 3 && this.j.test($$3)) {
-         dey $$4 = $$0.a(e);
-         $$1.b($$2, $$4);
-         $$1.a(dji.c, $$2, dji.a.a($$4));
+   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
+      return $$0.c(a) ? d : c;
+   }
+
+   @Override
+   protected void a(dfb.a<csm, dfa> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public boolean a(dfa $$0, cpp $$1, gu $$2) {
+      ha $$3 = h($$0).g();
+      return csm.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static ha h(dfa $$0) {
+      return $$0.c(a) ? ha.a : ha.b;
+   }
+
+   @Override
+   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eae.c, eae.c.a($$3));
       }
+
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(dey $$0, cpk $$1, gv $$2) {
-      return $$0.c(e);
+   public ead c_(dfa $$0) {
+      return $$0.c(b) ? eae.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected void a(dez.a<csk, dey> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   protected void a(dey $$0, cpk $$1, gv $$2, eaa $$3) {
-      if (!this.d($$0)) {
-         dey $$4 = $$0.a(e, Integer.valueOf($$0.c(e) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dji.c, $$2, dji.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+      return false;
    }
 }

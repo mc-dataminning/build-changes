@@ -1,40 +1,22 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class aih {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(te.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> te.a("commands.spectate.not_spectator", $$0));
-
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<dr> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), null, ((ds)$$0x.getSource()).h())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dr)$$0x.getSource(), gu.a(((dr)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)dt.a("target", ed.a()).executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"), ((ds)$$0x.getSource()).h())))
-                  .then(dt.a("player", ed.c()).executes($$0x -> a((ds)$$0x.getSource(), ed.a($$0x, "target"), ed.e($$0x, "player"))))
+               ((RequiredArgumentBuilder)ds.a("pos", fi.a()).executes($$0x -> a((dr)$$0x.getSource(), fi.c($$0x, "pos"), 0.0F)))
+                  .then(ds.a("angle", dv.a()).executes($$0x -> a((dr)$$0x.getSource(), fi.c($$0x, "pos"), dv.a($$0x, "angle"))))
             )
       );
    }
 
-   private static int a(ds $$0, @Nullable big $$1, akj $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.e.b() != cph.d) {
-         throw b.create($$2.H_());
-      } else {
-         $$2.c($$1);
-         if ($$1 != null) {
-            $$0.a(() -> te.a("commands.spectate.success.started", $$1.H_()), false);
-         } else {
-            $$0.a(() -> te.c("commands.spectate.success.stopped"), false);
-         }
-
-         return 1;
-      }
+   private static int a(dr $$0, gu $$1, float $$2) {
+      $$0.e().a($$1, $$2);
+      $$0.a(() -> tf.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+      return 1;
    }
 }

@@ -1,71 +1,95 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.function.Predicate;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class afl {
-   private static final int a = 2;
+   private static final Logger a = LogUtils.getLogger();
 
-   private static afl.b a(ae $$0, boolean $$1) {
-      an $$2 = $$0.d();
-      if ($$2 == null) {
-         return afl.b.b;
-      } else if ($$1) {
-         return afl.b.a;
-      } else {
-         return $$2.j() ? afl.b.b : afl.b.c;
+   public static <D, R> CompletableFuture<R> a(afl.c $$0, afl.f<D> $$1, afl.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<cqf, anc> $$5 = $$0.a.a();
+         anc $$6 = (anc)$$5.getSecond();
+         hl<afa> $$7 = afa.a();
+         hl<afa> $$8 = b($$6, $$7, afa.b, aem.a);
+         hs.b $$9 = $$8.b(afa.c);
+         hs.b $$10 = aem.a($$6, $$9, aem.b);
+         cqf $$11 = (cqf)$$5.getFirst();
+         afl.b<D> $$12 = $$1.get(new afl.a($$6, $$11, $$9, $$10));
+         hl<afa> $$13 = $$8.a(afa.c, $$12.b);
+         hs.b $$14 = $$13.b(afa.d);
+         return afb.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$5x -> {
+            $$5x.a($$14);
+            return $$2.create($$6, $$5x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var15) {
+         return CompletableFuture.failedFuture(var15);
       }
    }
 
-   private static boolean a(Stack<afl.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         afl.b $$2 = (afl.b)$$0.peek($$1);
-         if ($$2 == afl.b.a) {
-            return true;
+   private static hs.b a(anm $$0, hl<afa> $$1, afa $$2, List<aem.b<?>> $$3) {
+      hs.b $$4 = $$1.b($$2);
+      return aem.a($$0, $$4, $$3);
+   }
+
+   private static hl<afa> b(anm $$0, hl<afa> $$1, afa $$2, List<aem.b<?>> $$3) {
+      hs.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(anm a, cqf b, hs.b c, hs.b d) {
+   }
+
+   public static record b<D>(D a, hs.b b) {
+   }
+
+   public static record c(afl.d a, ds.a b, int c) {
+   }
+
+   public static record d(amx a, cqf b, boolean c, boolean d) {
+      public Pair<cqf, anc> a() {
+         cdv $$0 = this.d ? cdx.d.a() : this.b.b();
+         cqf $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+         if (!this.d) {
+            $$1 = $$1.a(this.b.b());
          }
 
-         if ($$2 == afl.b.b) {
-            return false;
-         }
+         List<ama> $$2 = this.a.g();
+         anc $$3 = new anf(amb.b, $$2);
+         return Pair.of($$1, $$3);
       }
 
-      return false;
-   }
-
-   private static boolean a(ae $$0, Stack<afl.b> $$1, Predicate<ae> $$2, afl.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      afl.b $$5 = a($$0, $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ae $$7 : $$0.g()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
+      public amx b() {
+         return this.a;
       }
 
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
-   }
-
-   public static void a(ae $$0, Predicate<ae> $$1, afl.a $$2) {
-      ae $$3 = $$0.c();
-      Stack<afl.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(afl.b.c);
+      public cqf c() {
+         return this.b;
       }
 
-      a($$3, $$4, $$1, $$2);
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 
    @FunctionalInterface
-   public interface a {
-      void accept(ae var1, boolean var2);
+   public interface e<D, R> {
+      R create(anc var1, afb var2, hl<afa> var3, D var4);
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   @FunctionalInterface
+   public interface f<D> {
+      afl.b<D> get(afl.a var1);
    }
 }

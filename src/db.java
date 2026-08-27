@@ -1,44 +1,49 @@
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class db<T> {
-   private final apy<T> a;
-   private final boolean b;
+public class db extends cu<db.a> {
+   static final aer a = new aer("tame_animal");
 
-   public db(apy<T> $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public aer a() {
+      return a;
    }
 
-   public static <T> db<T> a(apy<T> $$0) {
-      return new db<>($$0, true);
+   public db.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
+      Optional<ba> $$3 = bo.a($$0, "entity", $$2);
+      return new db.a($$1, $$3);
    }
 
-   public static <T> db<T> b(apy<T> $$0) {
-      return new db<>($$0, false);
+   public void a(akl $$0, buk $$1) {
+      ech $$2 = bo.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public boolean a(hf<T> $$0) {
-      return $$0.a(this.a) == this.b;
-   }
+   public static class a extends ar {
+      private final Optional<ba> a;
 
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("id", this.a.b().toString());
-      $$0.addProperty("expected", this.b);
-      return $$0;
-   }
+      public a(Optional<ba> $$0, Optional<ba> $$1) {
+         super(db.a, $$0);
+         this.a = $$1;
+      }
 
-   public static <T> db<T> a(@Nullable JsonElement $$0, aeo<? extends hs<T>> $$1) {
-      if ($$0 == null) {
-         throw new JsonParseException("Expected a tag predicate");
-      } else {
-         JsonObject $$2 = arf.m($$0, "Tag Predicate");
-         aep $$3 = new aep(arf.i($$2, "id"));
-         boolean $$4 = arf.k($$2, "expected");
-         return new db<>(apy.a($$1, $$3), $$4);
+      public static db.a d() {
+         return new db.a(Optional.empty(), Optional.empty());
+      }
+
+      public static db.a a(Optional<bo> $$0) {
+         return new db.a(Optional.empty(), bo.a($$0));
+      }
+
+      public boolean a(ech $$0) {
+         return this.a.isEmpty() || this.a.get().a($$0);
+      }
+
+      @Override
+      public JsonObject b() {
+         JsonObject $$0 = super.b();
+         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         return $$0;
       }
    }
 }

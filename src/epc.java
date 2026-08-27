@@ -1,58 +1,57 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
 public class epc {
-   private static final String a = "realms_persistence.json";
-   private static final emf b = new emf();
-   private static final Logger c = LogUtils.getLogger();
+   private static final Map<String, epc.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final aer c = new aer("textures/gui/presets/isles.png");
 
-   public epc.a a() {
-      return b();
+   public static aer a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   public void a(epc.a $$0) {
-      b($$0);
-   }
-
-   public static epc.a b() {
-      Path $$0 = c();
-
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         epc.a $$2 = b.a($$1, epc.a.class);
-         if ($$2 != null) {
-            return $$2;
+   private static aer b(String $$0, String $$1) {
+      epc.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         ekh $$3 = a($$1);
+         if ($$3 == null) {
+            aer $$4 = fyb.b();
+            a.put($$0, new epc.a($$1, $$4));
+            return $$4;
+         } else {
+            aer $$5 = new aer("realms", "dynamic/" + $$0);
+            eqm.O().Y().a($$5, new fxy($$3));
+            a.put($$0, new epc.a($$1, $$5));
+            return $$5;
          }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
-
-      return new epc.a();
    }
 
-   public static void b(epc.a $$0) {
-      Path $$1 = c();
+   @Nullable
+   private static ekh a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
 
       try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
+         return ekh.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
       }
+
+      return null;
    }
 
-   private static Path c() {
-      return eqn.N().p.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements emx {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   public static record a(String a, aer b) {
    }
 }

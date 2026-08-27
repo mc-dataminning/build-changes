@@ -1,31 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class dwn extends dux {
+public class dwn extends duy {
    public static final Codec<dwn> d = a(dwn::new);
 
-   public dwn(dux.c $$0) {
-      super($$0);
+   public dwn(duz.c $$0) {
+      super(dwm::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<dux.b> a(dux.a $$0) {
-      cyw $$1 = cyw.a($$0.f());
-      gv $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dux.b($$2, (Consumer<dvp>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, dvo $$6) {
+      Set<gu> $$7 = ase.a(hz::i);
+
+      for (dvd $$8 : $$6.c()) {
+         if ($$8 instanceof dwm $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<gu> $$10 = new ObjectArrayList($$7.stream().toList());
+      aru $$11 = aru.a($$0.A()).e().a($$6.b().f());
+      ac.b($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         gu $$13 = (gu)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, csn.I.n(), 2);
+         }
+      }
    }
 
-   private void a(dvp $$0, gv $$1, cyw $$2, dux.a $$3) {
-      List<dvb> $$4 = Lists.newArrayList();
-      dwm.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(dur $$0, cqg $$1, gu $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, csn.J.n(), 2);
+         $$1.a($$2, dco.N).ifPresent($$1x -> $$1x.a(ecf.aD, $$2.a()));
+      }
    }
 
    @Override
-   public dvg<?> e() {
-      return dvg.c;
+   public dvi<?> e() {
+      return dvi.b;
    }
 }

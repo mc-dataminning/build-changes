@@ -1,26 +1,9 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fai extends eyy<cfy> {
+   private static final aer y = new aer("container/smoker/lit_progress");
+   private static final aer z = new aer("container/smoker/burn_progress");
+   private static final aer A = new aer("textures/gui/container/smoker.png");
 
-public class fai implements fam {
-   private final esg a;
-
-   public fai(esg $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.p() + 3;
-      $$6.y = this.a.r() + this.a.h() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.r() - $$5 - 3 - 1;
-      }
-
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.p() + this.a.k() - $$4 - 3, 4);
-      }
-
-      return $$6;
+   public fai(cfy $$0, cbm $$1, tf $$2) {
+      super($$0, new fbt(), $$1, $$2, A, y, z);
    }
 }

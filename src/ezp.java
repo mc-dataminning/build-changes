@@ -1,30 +1,96 @@
-import org.joml.Vector3f;
+public class ezp {
+   private static final aer a = new aer("minecraft", "alt");
+   private static final ub b = ub.a.a(a);
+   private static final ezp c = new ezp();
+   private final aru d = aru.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class ezp extends eyv {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int k = 16;
-   private static final int l = 16;
-   private final aep m = new aep("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public ezp(dds $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, te.c("hanging_sign.edit"));
+   private ezp() {
    }
 
-   @Override
-   protected void b(erx $$0, dey $$1) {
-      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
-   }
-
-   @Override
-   protected void a(erx $$0, dey $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f l() {
+   public static ezp a() {
       return c;
+   }
+
+   public tj a(eru $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ac.a(this.e, this.d));
+      }
+
+      return $$0.b().a(tf.b($$2.toString()).c(b), $$1, ub.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

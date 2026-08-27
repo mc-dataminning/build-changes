@@ -1,81 +1,25 @@
-public abstract class bpj extends bps {
-   protected biy d;
-   protected gv e = gv.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
 
-   public bpj(biy $$0) {
-      this.d = $$0;
-      if (!bto.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
+public class bpj extends bpu {
+   private final bja a;
+   private final cpm b;
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dey $$0 = this.d.dK().a_(this.e);
-         if (!($$0.b() instanceof cum)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cum.b);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dey $$1 = this.d.dK().a_(this.e);
-         if ($$1.b() instanceof cum) {
-            ((cum)$$1.b()).a(this.d, this.d.dK(), $$1, this.e, $$0);
-         }
-      }
+   public bpj(bja $$0, cpm $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bpu.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!bto.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
-         return false;
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ag().a(apo.f)) {
+         gu $$1 = this.a.dk().c();
+         dfa $$2 = this.b.a_($$1);
+         return $$2.a(csn.qC) || $$2.k(this.b, $$1) == ehu.a();
       } else {
-         bsf $$0 = (bsf)this.d.H();
-         eaq $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               eao $$3 = $$1.a($$2);
-               this.e = new gv($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dr(), (double)this.e.w()) > 2.25)) {
-                  this.f = cum.a(this.d.dK(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dk().c();
-            this.f = cum.a(this.d.dK(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
+         return false;
       }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a;
-   }
-
-   @Override
-   public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dp());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dv());
    }
 
    @Override
@@ -85,11 +29,6 @@ public abstract class bpj extends bps {
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dp());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dv());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
-      }
+      this.a.F().a();
    }
 }

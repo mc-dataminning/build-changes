@@ -1,24 +1,24 @@
-public class ace implements uw<aav> {
-   private final int a;
+public class ace implements ux<aaw> {
+   private final String a;
 
-   public ace(int $$0) {
+   public ace(String $$0) {
       this.a = $$0;
    }
 
-   public ace(sh $$0) {
-      this.a = $$0.m();
+   public ace(si $$0) {
+      this.a = $$0.r();
    }
 
    @Override
-   public void a(sh $$0) {
-      $$0.c(this.a);
+   public void a(si $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(aav $$0) {
+   public void a(aaw $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public String a() {
       return this.a;
    }
 }

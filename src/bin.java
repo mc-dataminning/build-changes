@@ -1,46 +1,74 @@
-public abstract class bin extends biy {
-   protected bin(bik<? extends bin> $$0, cpk $$1) {
-      super($$0, $$1);
+public enum bin implements ash {
+   a(bin.a.a, 0, 0, "mainhand"),
+   b(bin.a.a, 1, 5, "offhand"),
+   c(bin.a.b, 0, 1, "feet"),
+   d(bin.a.b, 1, 2, "legs"),
+   e(bin.a.b, 2, 3, "chest"),
+   f(bin.a.b, 3, 4, "head");
+
+   public static final ash.a<bin> g = ash.a(bin::values);
+   private final bin.a h;
+   private final int i;
+   private final int j;
+   private final String k;
+
+   private bin(bin.a $$0, int $$1, int $$2, String $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.k = $$3;
+   }
+
+   public bin.a a() {
+      return this.h;
+   }
+
+   public int b() {
+      return this.i;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public String e() {
+      return this.k;
+   }
+
+   public boolean f() {
+      return this.h == bin.a.b;
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dey $$2, gv $$3) {
+   public String c() {
+      return this.k;
    }
 
-   @Override
-   public void h(ehf $$0) {
-      if (this.cW()) {
-         if (this.aX()) {
-            this.a(0.02F, $$0);
-            this.a(bjc.a, this.dn());
-            this.f(this.dn().a(0.8F));
-         } else if (this.bl()) {
-            this.a(0.02F, $$0);
-            this.a(bjc.a, this.dn());
-            this.f(this.dn().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aA()) {
-               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
-            }
+   public static bin a(String $$0) {
+      bin $$1 = g.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
+   }
 
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aA()) {
-               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
-            }
-
-            this.a(this.aA() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bjc.a, this.dn());
-            this.f(this.dn().a((double)$$1));
+   public static bin a(bin.a $$0, int $$1) {
+      for (bin $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
          }
       }
 
-      this.q(false);
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
    }
 
-   @Override
-   public boolean j_() {
-      return false;
+   public static enum a {
+      a,
+      b;
    }
 }

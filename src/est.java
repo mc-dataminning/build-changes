@@ -1,41 +1,22 @@
-public class est extends etc {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+public class est extends esh {
+   protected final ets a;
 
-   public est(int $$0, te $$1, erv $$2) {
-      this($$0, $$1, $$2, true);
+   public est(int $$0, int $$1, int $$2, int $$3, ets $$4, esh.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, te.a);
    }
 
-   public est(int $$0, te $$1, erv $$2, boolean $$3) {
-      super($$1, $$2);
-      this.i($$0);
-      this.b(true);
-      this.i = true;
-      this.c = $$3;
+   public est(int $$0, int $$1, int $$2, int $$3, ets $$4, esh.c $$5, tf $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
    }
 
-   @Override
-   protected void a(evt $$0) {
-      $$0.a(evs.a, this.l());
+   public est(int $$0, int $$1, ets $$2, esh.c $$3, tf $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void b(erx $$0, int $$1, int $$2, float $$3) {
-      if (this.ax_() || this.c) {
-         int $$4 = this.p() - 4;
-         int $$5 = this.r() - 4;
-         int $$6 = this.k() + 8;
-         int $$7 = this.h() + 8;
-         int $$8 = this.c ? (this.ax_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gcs $$0) {
+   public void b(erw $$0, int $$1, int $$2, float $$3) {
+      aer $$4 = this.a.a(this.az_(), this.n());
+      $$0.a($$4, this.p(), this.r(), this.f, this.g);
    }
 }

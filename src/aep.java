@@ -1,241 +1,79 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class aep implements Comparable<aep> {
-   public static final Codec<aep> a = Codec.STRING.comapFlatMap(aep::b, aep::toString).stable();
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(te.c("argument.id.invalid"));
-   public static final char b = ':';
-   public static final String c = "minecraft";
-   public static final String d = "realms";
-   private final String f;
-   private final String g;
+public class aep<T> extends aej<T> {
+   private final aep.b b;
 
-   protected aep(String $$0, String $$1, @Nullable aep.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-   }
+   private static aep.b a(final aep.b $$0) {
+      return new aep.b() {
+         private final Map<aeq<? extends hr<?>>, Optional<? extends aep.a<?>>> b = new HashMap<>();
 
-   public aep(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
-   }
-
-   private aep(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
-
-   public aep(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static aep a(String $$0, char $$1) {
-      return new aep(b($$0, $$1));
-   }
-
-   @Nullable
-   public static aep a(String $$0) {
-      try {
-         return new aep($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static aep a(String $$0, String $$1) {
-      try {
-         return new aep($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
+         @Override
+         public <T> Optional<aep.a<T>> a(aeq<? extends hr<? extends T>> $$0x) {
+            return (Optional<aep.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
          }
-      }
-
-      return $$2;
+      };
    }
 
-   public static DataResult<aep> b(String $$0) {
-      try {
-         return DataResult.success(new aep($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.f;
-   }
-
-   public aep c(String $$0) {
-      return new aep(this.f, d(this.f, $$0), null);
-   }
-
-   public aep a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.g));
-   }
-
-   public aep d(String $$0) {
-      return this.c($$0 + this.g);
-   }
-
-   public aep e(String $$0) {
-      return this.c(this.g + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.f + ":" + this.g;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aep $$1) ? false : this.f.equals($$1.f) && this.g.equals($$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.f.hashCode() + this.g.hashCode();
-   }
-
-   public int a(aep $$0) {
-      int $$1 = this.g.compareTo($$0.g);
-      if ($$1 == 0) {
-         $$1 = this.f.compareTo($$0.f);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.f + "." + this.g;
-   }
-
-   public String e() {
-      return this.f.equals("minecraft") ? this.g : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   public static aep a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-
-      try {
-         return new aep($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw e.createWithContext($$0);
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
+   public static <T> aep<T> a(DynamicOps<T> $$0, final hg.b $$1) {
+      return a($$0, a(new aep.b() {
+         @Override
+         public <E> Optional<aep.a<E>> a(aeq<? extends hr<? extends E>> $$0) {
+            return $$1.a($$0).map($$0x -> (aep.a<E>)(new aep.a<>($$0x, $$0x, $$0x.g())));
          }
-      }
-
-      return true;
+      }));
    }
 
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
+   public static <T> aep<T> a(DynamicOps<T> $$0, aep.b $$1) {
+      return new aep<>($$0, $$1);
    }
 
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
+   private aep(DynamicOps<T> $$0, aep.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   public <E> Optional<hh<E>> a(aeq<? extends hr<? extends E>> $$0) {
+      return this.b.a($$0).map(aep.a::a);
    }
 
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   public <E> Optional<hf<E>> b(aeq<? extends hr<? extends E>> $$0) {
+      return this.b.a($$0).map(aep.a::b);
    }
 
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   public static <E, O> RecordCodecBuilder<O, hf<E>> c(aeq<? extends hr<? extends E>> $$0) {
+      return aqy.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aep<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
+   public static <E, O> RecordCodecBuilder<O, he.c<E>> d(aeq<E> $$0) {
+      aeq<? extends hr<E>> $$1 = aeq.a($$0.b());
+      return aqy.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aep<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   protected interface a {
+   public static record a<T>(hh<T> a, hf<T> b, Lifecycle c) {
    }
 
-   public static class b implements JsonDeserializer<aep>, JsonSerializer<aep> {
-      public aep a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new aep(arf.a($$0, "location"));
-      }
-
-      public JsonElement a(aep $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   public interface b {
+      <T> Optional<aep.a<T>> a(aeq<? extends hr<? extends T>> var1);
    }
 }

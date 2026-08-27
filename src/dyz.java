@@ -1,14 +1,18 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface dyz<P extends dyy> {
-   dyz<dyw> a = a("clear", dyw.a);
-   dyz<dyx> b = a("passthrough", dyx.b);
-   dyz<dyv> c = a("append_static", dyv.a);
-   dyz<dyu> d = a("append_loot", dyu.a);
+public class dyz implements dza {
+   public static final dyz a = new dyz();
+   public static final Codec<dyz> b = Codec.unit(a);
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public qr a(aru $$0, @Nullable qr $$1) {
+      return $$1;
+   }
 
-   private static <P extends dyy> dyz<P> a(String $$0, Codec<P> $$1) {
-      return hs.a(jc.q, $$0, () -> $$1);
+   @Override
+   public dzb<?> a() {
+      return dzb.b;
    }
 }
