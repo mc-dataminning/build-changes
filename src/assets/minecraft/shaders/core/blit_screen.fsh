@@ -1,12 +1,17 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-uniform sampler2D InSampler;
+uniform sampler2D DiffuseSampler;
 
-layout(location = 0) in vec2 texCoord;
+uniform vec4 ColorModulator;
 
-layout(location = 0) out vec4 fragColor;
+in vec2 texCoord;
+in vec4 vertexColor;
+
+out vec4 fragColor;
 
 void main() {
-    fragColor = texture(InSampler, texCoord);
+    vec4 color = texture(DiffuseSampler, texCoord) * vertexColor;
+
+    // blit final output of compositor into displayed back buffer
+    fragColor = color * ColorModulator;
 }

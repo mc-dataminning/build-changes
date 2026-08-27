@@ -1,16 +1,14 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:fog.glsl>
-#include <minecraft:matrix.glsl>
-#include <minecraft:globals.glsl>
+#moj_import <matrix.glsl>
 
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler1;
 
-layout(location = 0) in vec4 texProj0;
-layout(location = 1) in float sphericalVertexDistance;
-layout(location = 2) in float cylindricalVertexDistance;
+uniform float GameTime;
+uniform int EndPortalLayers;
+
+in vec4 texProj0;
 
 const vec3[] COLORS = vec3[](
     vec3(0.022087, 0.098399, 0.110818),
@@ -53,12 +51,12 @@ mat4 end_portal_layer(float layer) {
     return mat4(scale * rotate) * translate * SCALE_TRANSLATE;
 }
 
-layout(location = 0) out vec4 fragColor;
+out vec4 fragColor;
 
 void main() {
     vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];
-    for (int i = 0; i < PORTAL_LAYERS; i++) {
+    for (int i = 0; i < EndPortalLayers; i++) {
         color += textureProj(Sampler1, texProj0 * end_portal_layer(float(i + 1))).rgb * COLORS[i];
     }
-    fragColor = apply_fog(vec4(color, 1.0), sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+    fragColor = vec4(color, 1.0);
 }

@@ -1,25 +1,25 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:fog.glsl>
-#include <minecraft:dynamictransforms.glsl>
-#include <minecraft:projection.glsl>
-#include <minecraft:sample_lightmap.glsl>
+#moj_import <fog.glsl>
 
-layout(location = 0) in vec3 Position;
-layout(location = 1) in vec4 Color;
-layout(location = 2) in ivec2 UV2;
+in vec3 Position;
+in vec4 Color;
+in ivec2 UV2;
 
 uniform sampler2D Sampler2;
 
-layout(location = 0) out float sphericalVertexDistance;
-layout(location = 1) out float cylindricalVertexDistance;
-layout(location = 2) flat out vec4 vertexColor;
+uniform mat4 ModelViewMat;
+uniform mat4 ProjMat;
+uniform mat3 IViewRotMat;
+uniform vec4 ColorModulator;
+uniform int FogShape;
+
+out float vertexDistance;
+flat out vec4 vertexColor;
 
 void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
-    sphericalVertexDistance = fog_spherical_distance(Position);
-    cylindricalVertexDistance = fog_cylindrical_distance(Position);
-    vertexColor = Color * ColorModulator * sample_lightmap(Sampler2, UV2);
+    vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
+    vertexColor = Color * ColorModulator * texelFetch(Sampler2, UV2 / 16, 0);
 }

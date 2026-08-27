@@ -6,182 +6,83 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.data.info.BiomeParametersDumpReport;
-import net.minecraft.data.info.BlockListReport;
-import net.minecraft.data.info.CommandsReport;
-import net.minecraft.data.info.DatapackStructureReport;
-import net.minecraft.data.info.PacketReport;
-import net.minecraft.data.info.RegistryComponentsReport;
-import net.minecraft.data.info.RegistryDumpReport;
-import net.minecraft.data.metadata.PackMetadataGenerator;
-import net.minecraft.data.registries.RegistriesDatapackGenerator;
-import net.minecraft.data.registries.TradeRebalanceRegistries;
-import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraft.data.structures.NbtToSnbt;
-import net.minecraft.data.structures.SnbtToNbt;
-import net.minecraft.data.structures.StructureUpdater;
-import net.minecraft.data.tags.BannerPatternTagsProvider;
-import net.minecraft.data.tags.BiomeTagsProvider;
-import net.minecraft.data.tags.DamageTypeTagsProvider;
-import net.minecraft.data.tags.DialogTagsProvider;
-import net.minecraft.data.tags.EntityTypeTagsProvider;
-import net.minecraft.data.tags.FeatureTagsProvider;
-import net.minecraft.data.tags.FlatLevelGeneratorPresetTagsProvider;
-import net.minecraft.data.tags.FluidTagsProvider;
-import net.minecraft.data.tags.GameEventTagsProvider;
-import net.minecraft.data.tags.InstrumentTagsProvider;
-import net.minecraft.data.tags.PaintingVariantTagsProvider;
-import net.minecraft.data.tags.PoiTypeTagsProvider;
-import net.minecraft.data.tags.PotionTagsProvider;
-import net.minecraft.data.tags.StructureTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.data.tags.TimelineTagsProvider;
-import net.minecraft.data.tags.TradeRebalanceEnchantmentTagsProvider;
-import net.minecraft.data.tags.TradeRebalanceTradeTagsProvider;
-import net.minecraft.data.tags.VanillaBlockTagsProvider;
-import net.minecraft.data.tags.VanillaEnchantmentTagsProvider;
-import net.minecraft.data.tags.VanillaItemTagsProvider;
-import net.minecraft.data.tags.VillagerTradesTagsProvider;
-import net.minecraft.data.tags.WorldPresetTagsProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.dataprovider.JsonRpcApiSchema;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.obfuscate.DontObfuscate;
 
 public class Main {
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
-   public static void main(final String[] args) throws IOException {
-      SharedConstants.tryDetectVersion();
-      OptionParser parser = new OptionParser();
-      OptionSpec<Void> helpOption = parser.accepts("help", "Show the help menu").forHelp();
-      OptionSpec<Void> serverOption = parser.accepts("server", "Include server generators");
-      OptionSpec<Void> devOption = parser.accepts("dev", "Include development tools");
-      OptionSpec<Void> reportsOption = parser.accepts("reports", "Include data reports");
-      parser.accepts("validate", "Validate inputs");
-      OptionSpec<Void> allOption = parser.accepts("all", "Include all generators");
-      OptionSpec<String> outputOption = parser.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated", new String[0]);
-      OptionSpec<String> inputOption = parser.accepts("input", "Input folder").withRequiredArg();
-      OptionSet optionSet = parser.parse(args);
-      if (!optionSet.has(helpOption) && optionSet.hasOptions()) {
-         Path output = Paths.get((String)outputOption.value(optionSet));
-         boolean allOptions = optionSet.has(allOption);
-         boolean server = allOptions || optionSet.has(serverOption);
-         boolean dev = allOptions || optionSet.has(devOption);
-         boolean reports = allOptions || optionSet.has(reportsOption);
-         Collection<Path> input = optionSet.valuesOf(inputOption).stream().map(x$0 -> Paths.get(x$0)).toList();
-         DataGenerator generator = new DataGenerator.Cached(output, SharedConstants.getCurrentVersion(), true);
-         addServerDefinitionProviders(generator, server, reports);
-         addServerConverters(generator, input, server, dev);
-         generator.run();
-         Util.shutdownExecutors();
+   @DontObfuscate
+   public static void main(String[] $$0) throws IOException {
+      aa.a();
+      OptionParser $$1 = new OptionParser();
+      OptionSpec<Void> $$2 = $$1.accepts("help", "Show the help menu").forHelp();
+      OptionSpec<Void> $$3 = $$1.accepts("server", "Include server generators");
+      OptionSpec<Void> $$4 = $$1.accepts("client", "Include client generators");
+      OptionSpec<Void> $$5 = $$1.accepts("dev", "Include development tools");
+      OptionSpec<Void> $$6 = $$1.accepts("reports", "Include data reports");
+      OptionSpec<Void> $$7 = $$1.accepts("validate", "Validate inputs");
+      OptionSpec<Void> $$8 = $$1.accepts("all", "Include all generators");
+      OptionSpec<String> $$9 = $$1.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated", new String[0]);
+      OptionSpec<String> $$10 = $$1.accepts("input", "Input folder").withRequiredArg();
+      OptionSet $$11 = $$1.parse($$0);
+      if (!$$11.has($$2) && $$11.hasOptions()) {
+         Path $$12 = Paths.get((String)$$9.value($$11));
+         boolean $$13 = $$11.has($$8);
+         boolean $$14 = $$13 || $$11.has($$4);
+         boolean $$15 = $$13 || $$11.has($$3);
+         boolean $$16 = $$13 || $$11.has($$5);
+         boolean $$17 = $$13 || $$11.has($$6);
+         boolean $$18 = $$13 || $$11.has($$7);
+         jh $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, aa.b(), true);
+         $$19.a();
       } else {
-         parser.printHelpOn(System.out);
+         $$1.printHelpOn(System.out);
       }
    }
 
-   private static <T extends DataProvider> DataProvider.Factory<T> bindRegistries(
-      final BiFunction<PackOutput, CompletableFuture<HolderLookup.Provider>, T> target, final CompletableFuture<HolderLookup.Provider> registries
-   ) {
-      return output -> target.apply(output, registries);
+   private static <T extends ji> ji.a<T> a(BiFunction<jk, CompletableFuture<hg.b>, T> $$0, CompletableFuture<hg.b> $$1) {
+      return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static void addServerConverters(final DataGenerator generator, final Collection<Path> input, final boolean server, final boolean dev) {
-      DataGenerator.PackGenerator commonVanillaPack = generator.getVanillaPack(server);
-      commonVanillaPack.addProvider(o -> new SnbtToNbt(o, input).addFilter(new StructureUpdater()));
-      DataGenerator.PackGenerator devVanillaPack = generator.getVanillaPack(dev);
-      devVanillaPack.addProvider(o -> new NbtToSnbt(o, input));
-   }
-
-   public static void addServerDefinitionProviders(final DataGenerator generator, final boolean server, final boolean reports) {
-      CompletableFuture<HolderLookup.Provider> vanillaWorldRegistries = CompletableFuture.supplyAsync(
-         VanillaRegistries::createWorldLookup, Util.backgroundExecutor()
-      );
-      CompletableFuture<HolderLookup.Provider> reloadableVanillaRegistries = vanillaWorldRegistries.thenApplyAsync(
-         VanillaRegistries::createReloadableLookup, Util.backgroundExecutor()
-      );
-      DataGenerator.PackGenerator serverVanillaPack = generator.getVanillaPack(server);
-      serverVanillaPack.addProvider(bindRegistries(RegistriesDatapackGenerator::forWorldLayer, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(RegistriesDatapackGenerator::forReloadableLayer, reloadableVanillaRegistries));
-      TagsProvider<Block> vanillaBlockTagsProvider = serverVanillaPack.addProvider(bindRegistries(VanillaBlockTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<Item> vanillaItemTagsProvider = serverVanillaPack.addProvider(bindRegistries(VanillaItemTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<Biome> vanillaBiomeTagsProvider = serverVanillaPack.addProvider(bindRegistries(BiomeTagsProvider::new, vanillaWorldRegistries));
-      TagsProvider<BannerPattern> vanillaBannerPatternTagsProvider = serverVanillaPack.addProvider(
-         bindRegistries(BannerPatternTagsProvider::new, vanillaWorldRegistries)
-      );
-      TagsProvider<Structure> vanillaStructureTagsProvider = serverVanillaPack.addProvider(bindRegistries(StructureTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(DamageTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(DialogTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(EntityTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FlatLevelGeneratorPresetTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FluidTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(GameEventTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(InstrumentTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PaintingVariantTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PoiTypeTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(WorldPresetTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(VanillaEnchantmentTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(TimelineTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(PotionTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(VillagerTradesTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(FeatureTagsProvider::new, vanillaWorldRegistries));
-      serverVanillaPack = generator.getVanillaPack(reports);
-      serverVanillaPack.addProvider(bindRegistries(BiomeParametersDumpReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(RegistryComponentsReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(BlockListReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(bindRegistries(CommandsReport::new, vanillaWorldRegistries));
-      serverVanillaPack.addProvider(RegistryDumpReport::new);
-      serverVanillaPack.addProvider(PacketReport::new);
-      serverVanillaPack.addProvider(DatapackStructureReport::new);
-      serverVanillaPack.addProvider(JsonRpcApiSchema::new);
-      CompletableFuture<RegistrySetBuilder.PatchedRegistries> tradeRebalanceWorldRegistries = TradeRebalanceRegistries.createPatchedWorldRegistries(
-         vanillaWorldRegistries
-      );
-      CompletableFuture<RegistrySetBuilder.PatchedRegistries> tradeRebalanceReloadableRegistries = TradeRebalanceRegistries.createPatchedReloadable(
-         tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::full), reloadableVanillaRegistries
-      );
-      DataGenerator.PackGenerator tradeRebalancePack = generator.getBuiltinDatapack(server, "trade_rebalance");
-      tradeRebalancePack.addProvider(
-         bindRegistries(RegistriesDatapackGenerator::forWorldLayer, tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::patches))
-      );
-      tradeRebalancePack.addProvider(
-         bindRegistries(
-            RegistriesDatapackGenerator::forReloadableLayer, tradeRebalanceReloadableRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::patches)
-         )
-      );
-      tradeRebalancePack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.trade_rebalance.description"), FeatureFlagSet.of(FeatureFlags.TRADE_REBALANCE)
-            )
-      );
-      CompletableFuture<HolderLookup.Provider> patchedRegistries = tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::full);
-      tradeRebalancePack.addProvider(bindRegistries(TradeRebalanceEnchantmentTagsProvider::new, patchedRegistries));
-      tradeRebalancePack.addProvider(bindRegistries(TradeRebalanceTradeTagsProvider::new, patchedRegistries));
-      serverVanillaPack = generator.getBuiltinDatapack(server, "redstone_experiments");
-      serverVanillaPack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.redstone_experiments.description"), FeatureFlagSet.of(FeatureFlags.REDSTONE_EXPERIMENTS)
-            )
-      );
-      serverVanillaPack = generator.getBuiltinDatapack(server, "minecart_improvements");
-      serverVanillaPack.addProvider(
-         o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.minecart_improvements.description"), FeatureFlagSet.of(FeatureFlags.MINECART_IMPROVEMENTS)
-            )
-      );
+   public static jh a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
+      jh $$9 = new jh($$0, $$7, $$8);
+      jh.a $$10 = $$9.a($$2 || $$3);
+      $$10.a($$1x -> new mh($$1x, $$1).a(new mi()));
+      CompletableFuture<hg.b> $$11 = CompletableFuture.supplyAsync(me::a, ac.f());
+      jh.a $$12 = $$9.a($$2);
+      $$12.a(ks::new);
+      jh.a $$13 = $$9.a($$3);
+      $$13.a(a(md::new, $$11));
+      $$13.a(a(jo::a, $$11));
+      $$13.a(kl::a);
+      $$13.a(mb::new);
+      my<cpn> $$14 = $$13.a(a(mz::new, $$11));
+      my<cfu> $$15 = $$13.a($$2x -> new na($$2x, $$11, $$14.c()));
+      $$13.a(a(mk::new, $$11));
+      $$13.a(a(ml::new, $$11));
+      $$13.a(a(mm::new, $$11));
+      $$13.a(a(mn::new, $$11));
+      $$13.a(a(mo::new, $$11));
+      $$13.a(a(mp::new, $$11));
+      $$13.a(a(mq::new, $$11));
+      $$13.a(a(mr::new, $$11));
+      $$13.a(a(ms::new, $$11));
+      $$13.a(a(mv::new, $$11));
+      $$13.a(a(mw::new, $$11));
+      $$13.a(a(mx::new, $$11));
+      $$13.a(a(nb::new, $$11));
+      $$13 = $$9.a($$4);
+      $$13.a($$1x -> new mg($$1x, $$1));
+      $$13 = $$9.a($$5);
+      $$13.a(a(jv::new, $$11));
+      $$13.a(jw::new);
+      $$13.a(a(jx::new, $$11));
+      $$13.a(jy::new);
+      $$13 = $$9.a($$3, "bundle");
+      $$13.a(ma::new);
+      $$13.a($$0x -> ko.a($$0x, sw.c("dataPack.bundle.description"), caw.a(cay.b)));
+      return $$9;
    }
 }

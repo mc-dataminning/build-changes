@@ -1,151 +1,128 @@
 package com.mojang.blaze3d.systems;
 
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.pipeline.PipelineCache;
-import com.mojang.blaze3d.platform.SDLEventHandler;
-import com.mojang.blaze3d.platform.SdlDebug;
+import com.google.common.collect.Queues;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.GpuFence;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.device.GpuBackend;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
-import com.mojang.renderpearl.api.pipeline.IndexType;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Consumer;
 import java.util.function.IntConsumer;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.renderer.DynamicGpuData;
-import net.minecraft.util.ArrayListDeque;
-import net.minecraft.util.Mth;
-import net.minecraft.util.TimeSource;
-import net.minecraft.util.Util;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.Version;
-import org.lwjgl.sdl.SDLError;
-import org.lwjgl.sdl.SDLHints;
-import org.lwjgl.sdl.SDLInit;
-import org.lwjgl.sdl.SDLTimer;
-import org.lwjgl.system.MemoryUtil;
+import org.joml.Vector3f;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.slf4j.Logger;
 
+@egb
 public class RenderSystem {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final double DEFAULT_DEPTH_CLEAR_VALUE = 0.0;
-   public static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
-   public static final int PROJECTION_MATRIX_UBO_SIZE = new Std140SizeCalculator().putMat4f().get();
+   static final Logger LOGGER = LogUtils.getLogger();
+   private static final ConcurrentLinkedQueue<egt> recordingQueue = Queues.newConcurrentLinkedQueue();
+   private static final eil RENDER_THREAD_TESSELATOR = new eil();
+   private static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
+   private static boolean isReplayingQueue;
+   @Nullable
+   private static Thread gameThread;
    @Nullable
    private static Thread renderThread;
-   @Nullable
-   private static GpuDevice DEVICE;
-   @Nullable
-   private static GpuBackend BACKEND;
-   private static final RenderSystem.AutoStorageIndexBuffer sharedSequential = new RenderSystem.AutoStorageIndexBuffer(1, 1, IntConsumer::accept);
-   private static final RenderSystem.AutoStorageIndexBuffer sharedSequentialQuad = new RenderSystem.AutoStorageIndexBuffer(4, 6, (c, i) -> {
-      c.accept(i);
-      c.accept(i + 1);
-      c.accept(i + 2);
-      c.accept(i + 2);
-      c.accept(i + 3);
-      c.accept(i);
+   private static int MAX_SUPPORTED_TEXTURE_SIZE = -1;
+   private static boolean isInInit;
+   private static double lastDrawTime = Double.MIN_VALUE;
+   private static final RenderSystem.a sharedSequential = new RenderSystem.a(1, 1, IntConsumer::accept);
+   private static final RenderSystem.a sharedSequentialQuad = new RenderSystem.a(4, 6, ($$0, $$1) -> {
+      $$0.accept($$1 + 0);
+      $$0.accept($$1 + 1);
+      $$0.accept($$1 + 2);
+      $$0.accept($$1 + 2);
+      $$0.accept($$1 + 3);
+      $$0.accept($$1 + 0);
    });
-   private static final RenderSystem.AutoStorageIndexBuffer sharedSequentialLines = new RenderSystem.AutoStorageIndexBuffer(4, 6, (c, i) -> {
-      c.accept(i);
-      c.accept(i + 1);
-      c.accept(i + 2);
-      c.accept(i + 3);
-      c.accept(i + 2);
-      c.accept(i + 1);
+   private static final RenderSystem.a sharedSequentialLines = new RenderSystem.a(4, 6, ($$0, $$1) -> {
+      $$0.accept($$1 + 0);
+      $$0.accept($$1 + 1);
+      $$0.accept($$1 + 2);
+      $$0.accept($$1 + 3);
+      $$0.accept($$1 + 2);
+      $$0.accept($$1 + 1);
    });
-   private static ProjectionType projectionType = ProjectionType.PERSPECTIVE;
-   private static ProjectionType savedProjectionType = ProjectionType.PERSPECTIVE;
-   private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
+   private static Matrix3f inverseViewRotationMatrix = new Matrix3f().zero();
+   private static Matrix4f projectionMatrix = new Matrix4f();
+   private static Matrix4f savedProjectionMatrix = new Matrix4f();
+   private static eir vertexSorting = eir.a;
+   private static eir savedVertexSorting = eir.a;
+   private static final eij modelViewStack = new eij();
+   private static Matrix4f modelViewMatrix = new Matrix4f();
+   private static Matrix4f textureMatrix = new Matrix4f();
+   private static final int[] shaderTextures = new int[12];
+   private static final float[] shaderColor = new float[]{1.0F, 1.0F, 1.0F, 1.0F};
+   private static float shaderGlintAlpha = 1.0F;
+   private static float shaderFogStart;
+   private static float shaderFogEnd = 1.0F;
+   private static final float[] shaderFogColor = new float[]{0.0F, 0.0F, 0.0F, 0.0F};
+   private static ehw shaderFogShape = ehw.a;
+   private static final Vector3f[] shaderLightDirections = new Vector3f[2];
+   private static float shaderGameTime;
+   private static float shaderLineWidth = 1.0F;
+   private static String apiDescription = "Unknown";
    @Nullable
-   private static GpuBufferSlice shaderFog = null;
-   @Nullable
-   private static GpuBufferSlice shaderLightDirections;
-   @Nullable
-   private static GpuBufferSlice projectionMatrixBuffer;
-   @Nullable
-   private static GpuBufferSlice savedProjectionMatrixBuffer;
+   private static fki shader;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
-   private static final ArrayListDeque<RenderSystem.GpuAsyncTask> PENDING_FENCES = new ArrayListDeque<>();
-   public static boolean isRenderingLevel = false;
-   @Nullable
-   private static GpuBuffer globalSettingsUniform;
-   @Nullable
-   private static DynamicGpuData dynamicGpuData;
-   private static final ScissorState scissorStateForRenderTypeDraws = new ScissorState();
-   private static final SamplerCache samplerCache = new SamplerCache();
-   @Nullable
-   private static PipelineCache fallbackPipelineCache;
-   @Nullable
-   private static PipelineCache currentPipelineCache;
-
-   public static SamplerCache getSamplerCache() {
-      return samplerCache;
-   }
-
-   public static void setFallbackPipelineCache(final PipelineCache pipelineCache) {
-      if (fallbackPipelineCache != null) {
-         throw new IllegalStateException("Fallback pipeline cache already set");
-      } else {
-         fallbackPipelineCache = pipelineCache;
-      }
-   }
-
-   @Nullable
-   public static PipelineCache setCurrentPipelineCache(final PipelineCache pipelineCache) {
-      PipelineCache oldCache = currentPipelineCache;
-      currentPipelineCache = pipelineCache;
-      return oldCache;
-   }
-
-   @Nullable
-   public static CompiledRenderPipeline getCompiledPipelineNullable(final RenderPipeline pipeline) {
-      if (currentPipelineCache != null) {
-         CompiledRenderPipeline cachedPipeline = currentPipelineCache.get(pipeline);
-         if (cachedPipeline != null) {
-            return cachedPipeline;
-         }
-      }
-
-      if (fallbackPipelineCache == null) {
-         throw new IllegalStateException("Fallback pipeline cache not yet set");
-      } else {
-         return fallbackPipelineCache.get(pipeline);
-      }
-   }
-
-   public static CompiledRenderPipeline getCompiledPipeline(final RenderPipeline pipeline) {
-      CompiledRenderPipeline compiledPipeline = getCompiledPipelineNullable(pipeline);
-      if (compiledPipeline != null) {
-         return compiledPipeline;
-      } else {
-         throw new IllegalStateException("Failed to find or load pipeline " + pipeline.getLocation());
-      }
-   }
 
    public static void initRenderThread() {
-      if (renderThread != null) {
-         throw new IllegalStateException("Could not initialize render thread");
-      } else {
+      if (renderThread == null && gameThread != Thread.currentThread()) {
          renderThread = Thread.currentThread();
+      } else {
+         throw new IllegalStateException("Could not initialize render thread");
       }
    }
 
    public static boolean isOnRenderThread() {
       return Thread.currentThread() == renderThread;
+   }
+
+   public static boolean isOnRenderThreadOrInit() {
+      return isInInit || isOnRenderThread();
+   }
+
+   public static void initGameThread(boolean $$0) {
+      boolean $$1 = renderThread == Thread.currentThread();
+      if (gameThread == null && renderThread != null && $$1 != $$0) {
+         gameThread = Thread.currentThread();
+      } else {
+         throw new IllegalStateException("Could not initialize tick thread");
+      }
+   }
+
+   public static boolean isOnGameThread() {
+      return true;
+   }
+
+   public static void assertInInitPhase() {
+      if (!isInInitPhase()) {
+         throw constructThreadException();
+      }
+   }
+
+   public static void assertOnGameThreadOrInit() {
+      if (!isInInit && !isOnGameThread()) {
+         throw constructThreadException();
+      }
+   }
+
+   public static void assertOnRenderThreadOrInit() {
+      if (!isInInit && !isOnRenderThread()) {
+         throw constructThreadException();
+      }
    }
 
    public static void assertOnRenderThread() {
@@ -154,359 +131,876 @@ public class RenderSystem {
       }
    }
 
+   public static void assertOnGameThread() {
+      if (!isOnGameThread()) {
+         throw constructThreadException();
+      }
+   }
+
    private static IllegalStateException constructThreadException() {
       return new IllegalStateException("Rendersystem called from wrong thread");
    }
 
-   public static void pollEvents(final SDLEventHandler eventHandler) {
-      pollEventsWaitStart.set(Util.getMillis());
+   public static boolean isInInitPhase() {
+      return true;
+   }
+
+   public static void recordRenderCall(egt $$0) {
+      recordingQueue.add($$0);
+   }
+
+   private static void pollEvents() {
+      pollEventsWaitStart.set(ac.b());
       pollingEvents.set(true);
-      eventHandler.pollEvents();
+      GLFW.glfwPollEvents();
       pollingEvents.set(false);
    }
 
    public static boolean isFrozenAtPollEvents() {
-      return pollingEvents.get() && Util.getMillis() - pollEventsWaitStart.get() > 200L;
+      return pollingEvents.get() && ac.b() - pollEventsWaitStart.get() > 200L;
    }
 
-   public static void pumpEvents(final SDLEventHandler eventHandler) {
-      pollEventsWaitStart.set(Util.getMillis());
-      pollingEvents.set(true);
-      eventHandler.pumpEvents();
-      pollingEvents.set(false);
+   public static void flipFrame(long $$0) {
+      pollEvents();
+      replayQueue();
+      eil.a().c().g();
+      GLFW.glfwSwapBuffers($$0);
+      pollEvents();
    }
 
-   public static void setShaderFog(final GpuBufferSlice fog) {
-      shaderFog = fog;
+   public static void replayQueue() {
+      isReplayingQueue = true;
+
+      while (!recordingQueue.isEmpty()) {
+         egt $$0 = recordingQueue.poll();
+         $$0.execute();
+      }
+
+      isReplayingQueue = false;
    }
 
-   @Nullable
-   public static GpuBufferSlice getShaderFog() {
-      return shaderFog;
+   public static void limitDisplayFPS(int $$0) {
+      double $$1 = lastDrawTime + 1.0 / (double)$$0;
+
+      double $$2;
+      for ($$2 = GLFW.glfwGetTime(); $$2 < $$1; $$2 = GLFW.glfwGetTime()) {
+         GLFW.glfwWaitEventsTimeout($$1 - $$2);
+      }
+
+      lastDrawTime = $$2;
    }
 
-   public static void setShaderLights(final GpuBufferSlice buffer) {
-      shaderLightDirections = buffer;
+   public static void disableDepthTest() {
+      assertOnRenderThread();
+      GlStateManager._disableDepthTest();
    }
 
-   @Nullable
-   public static GpuBufferSlice getShaderLights() {
-      return shaderLightDirections;
+   public static void enableDepthTest() {
+      assertOnGameThreadOrInit();
+      GlStateManager._enableDepthTest();
    }
 
-   public static void enableScissorForRenderTypeDraws(final int x, final int y, final int width, final int height) {
-      scissorStateForRenderTypeDraws.enable(x, y, width, height);
+   public static void enableScissor(int $$0, int $$1, int $$2, int $$3) {
+      assertOnGameThreadOrInit();
+      GlStateManager._enableScissorTest();
+      GlStateManager._scissorBox($$0, $$1, $$2, $$3);
    }
 
-   public static void disableScissorForRenderTypeDraws() {
-      scissorStateForRenderTypeDraws.disable();
+   public static void disableScissor() {
+      assertOnGameThreadOrInit();
+      GlStateManager._disableScissorTest();
    }
 
-   public static ScissorState getScissorStateForRenderTypeDraws() {
-      return scissorStateForRenderTypeDraws;
+   public static void depthFunc(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._depthFunc($$0);
+   }
+
+   public static void depthMask(boolean $$0) {
+      assertOnRenderThread();
+      GlStateManager._depthMask($$0);
+   }
+
+   public static void enableBlend() {
+      assertOnRenderThread();
+      GlStateManager._enableBlend();
+   }
+
+   public static void disableBlend() {
+      assertOnRenderThread();
+      GlStateManager._disableBlend();
+   }
+
+   public static void blendFunc(GlStateManager.SourceFactor $$0, GlStateManager.DestFactor $$1) {
+      assertOnRenderThread();
+      GlStateManager._blendFunc($$0.value, $$1.value);
+   }
+
+   public static void blendFunc(int $$0, int $$1) {
+      assertOnRenderThread();
+      GlStateManager._blendFunc($$0, $$1);
+   }
+
+   public static void blendFuncSeparate(
+      GlStateManager.SourceFactor $$0, GlStateManager.DestFactor $$1, GlStateManager.SourceFactor $$2, GlStateManager.DestFactor $$3
+   ) {
+      assertOnRenderThread();
+      GlStateManager._blendFuncSeparate($$0.value, $$1.value, $$2.value, $$3.value);
+   }
+
+   public static void blendFuncSeparate(int $$0, int $$1, int $$2, int $$3) {
+      assertOnRenderThread();
+      GlStateManager._blendFuncSeparate($$0, $$1, $$2, $$3);
+   }
+
+   public static void blendEquation(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._blendEquation($$0);
+   }
+
+   public static void enableCull() {
+      assertOnRenderThread();
+      GlStateManager._enableCull();
+   }
+
+   public static void disableCull() {
+      assertOnRenderThread();
+      GlStateManager._disableCull();
+   }
+
+   public static void polygonMode(int $$0, int $$1) {
+      assertOnRenderThread();
+      GlStateManager._polygonMode($$0, $$1);
+   }
+
+   public static void enablePolygonOffset() {
+      assertOnRenderThread();
+      GlStateManager._enablePolygonOffset();
+   }
+
+   public static void disablePolygonOffset() {
+      assertOnRenderThread();
+      GlStateManager._disablePolygonOffset();
+   }
+
+   public static void polygonOffset(float $$0, float $$1) {
+      assertOnRenderThread();
+      GlStateManager._polygonOffset($$0, $$1);
+   }
+
+   public static void enableColorLogicOp() {
+      assertOnRenderThread();
+      GlStateManager._enableColorLogicOp();
+   }
+
+   public static void disableColorLogicOp() {
+      assertOnRenderThread();
+      GlStateManager._disableColorLogicOp();
+   }
+
+   public static void logicOp(GlStateManager.g $$0) {
+      assertOnRenderThread();
+      GlStateManager._logicOp($$0.q);
+   }
+
+   public static void activeTexture(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._activeTexture($$0);
+   }
+
+   public static void texParameter(int $$0, int $$1, int $$2) {
+      GlStateManager._texParameter($$0, $$1, $$2);
+   }
+
+   public static void deleteTexture(int $$0) {
+      assertOnGameThreadOrInit();
+      GlStateManager._deleteTexture($$0);
+   }
+
+   public static void bindTextureForSetup(int $$0) {
+      bindTexture($$0);
+   }
+
+   public static void bindTexture(int $$0) {
+      GlStateManager._bindTexture($$0);
+   }
+
+   public static void viewport(int $$0, int $$1, int $$2, int $$3) {
+      assertOnGameThreadOrInit();
+      GlStateManager._viewport($$0, $$1, $$2, $$3);
+   }
+
+   public static void colorMask(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
+      assertOnRenderThread();
+      GlStateManager._colorMask($$0, $$1, $$2, $$3);
+   }
+
+   public static void stencilFunc(int $$0, int $$1, int $$2) {
+      assertOnRenderThread();
+      GlStateManager._stencilFunc($$0, $$1, $$2);
+   }
+
+   public static void stencilMask(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._stencilMask($$0);
+   }
+
+   public static void stencilOp(int $$0, int $$1, int $$2) {
+      assertOnRenderThread();
+      GlStateManager._stencilOp($$0, $$1, $$2);
+   }
+
+   public static void clearDepth(double $$0) {
+      assertOnGameThreadOrInit();
+      GlStateManager._clearDepth($$0);
+   }
+
+   public static void clearColor(float $$0, float $$1, float $$2, float $$3) {
+      assertOnGameThreadOrInit();
+      GlStateManager._clearColor($$0, $$1, $$2, $$3);
+   }
+
+   public static void clearStencil(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._clearStencil($$0);
+   }
+
+   public static void clear(int $$0, boolean $$1) {
+      assertOnGameThreadOrInit();
+      GlStateManager._clear($$0, $$1);
+   }
+
+   public static void setShaderFogStart(float $$0) {
+      assertOnRenderThread();
+      _setShaderFogStart($$0);
+   }
+
+   private static void _setShaderFogStart(float $$0) {
+      shaderFogStart = $$0;
+   }
+
+   public static float getShaderFogStart() {
+      assertOnRenderThread();
+      return shaderFogStart;
+   }
+
+   public static void setShaderGlintAlpha(double $$0) {
+      setShaderGlintAlpha((float)$$0);
+   }
+
+   public static void setShaderGlintAlpha(float $$0) {
+      assertOnRenderThread();
+      _setShaderGlintAlpha($$0);
+   }
+
+   private static void _setShaderGlintAlpha(float $$0) {
+      shaderGlintAlpha = $$0;
+   }
+
+   public static float getShaderGlintAlpha() {
+      assertOnRenderThread();
+      return shaderGlintAlpha;
+   }
+
+   public static void setShaderFogEnd(float $$0) {
+      assertOnRenderThread();
+      _setShaderFogEnd($$0);
+   }
+
+   private static void _setShaderFogEnd(float $$0) {
+      shaderFogEnd = $$0;
+   }
+
+   public static float getShaderFogEnd() {
+      assertOnRenderThread();
+      return shaderFogEnd;
+   }
+
+   public static void setShaderFogColor(float $$0, float $$1, float $$2, float $$3) {
+      assertOnRenderThread();
+      _setShaderFogColor($$0, $$1, $$2, $$3);
+   }
+
+   public static void setShaderFogColor(float $$0, float $$1, float $$2) {
+      setShaderFogColor($$0, $$1, $$2, 1.0F);
+   }
+
+   private static void _setShaderFogColor(float $$0, float $$1, float $$2, float $$3) {
+      shaderFogColor[0] = $$0;
+      shaderFogColor[1] = $$1;
+      shaderFogColor[2] = $$2;
+      shaderFogColor[3] = $$3;
+   }
+
+   public static float[] getShaderFogColor() {
+      assertOnRenderThread();
+      return shaderFogColor;
+   }
+
+   public static void setShaderFogShape(ehw $$0) {
+      assertOnRenderThread();
+      _setShaderFogShape($$0);
+   }
+
+   private static void _setShaderFogShape(ehw $$0) {
+      shaderFogShape = $$0;
+   }
+
+   public static ehw getShaderFogShape() {
+      assertOnRenderThread();
+      return shaderFogShape;
+   }
+
+   public static void setShaderLights(Vector3f $$0, Vector3f $$1) {
+      assertOnRenderThread();
+      _setShaderLights($$0, $$1);
+   }
+
+   public static void _setShaderLights(Vector3f $$0, Vector3f $$1) {
+      shaderLightDirections[0] = $$0;
+      shaderLightDirections[1] = $$1;
+   }
+
+   public static void setupShaderLights(fki $$0) {
+      assertOnRenderThread();
+      if ($$0.h != null) {
+         $$0.h.a(shaderLightDirections[0]);
+      }
+
+      if ($$0.i != null) {
+         $$0.i.a(shaderLightDirections[1]);
+      }
+   }
+
+   public static void setShaderColor(float $$0, float $$1, float $$2, float $$3) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> _setShaderColor($$0, $$1, $$2, $$3));
+      } else {
+         _setShaderColor($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static void _setShaderColor(float $$0, float $$1, float $$2, float $$3) {
+      shaderColor[0] = $$0;
+      shaderColor[1] = $$1;
+      shaderColor[2] = $$2;
+      shaderColor[3] = $$3;
+   }
+
+   public static float[] getShaderColor() {
+      assertOnRenderThread();
+      return shaderColor;
+   }
+
+   public static void drawElements(int $$0, int $$1, int $$2) {
+      assertOnRenderThread();
+      GlStateManager._drawElements($$0, $$1, $$2, 0L);
+   }
+
+   public static void lineWidth(float $$0) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> shaderLineWidth = $$0);
+      } else {
+         shaderLineWidth = $$0;
+      }
+   }
+
+   public static float getShaderLineWidth() {
+      assertOnRenderThread();
+      return shaderLineWidth;
+   }
+
+   public static void pixelStore(int $$0, int $$1) {
+      assertOnGameThreadOrInit();
+      GlStateManager._pixelStore($$0, $$1);
+   }
+
+   public static void readPixels(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, ByteBuffer $$6) {
+      assertOnRenderThread();
+      GlStateManager._readPixels($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public static void getString(int $$0, Consumer<String> $$1) {
+      assertOnRenderThread();
+      $$1.accept(GlStateManager._getString($$0));
    }
 
    public static String getBackendDescription() {
-      return String.format(Locale.ROOT, "LWJGL version %s", Version.getVersion());
+      assertInInitPhase();
+      return String.format(Locale.ROOT, "LWJGL version %s", GLX._getLWJGLVersion());
    }
 
-   public static TimeSource.NanoTimeSource initBackendSystem() {
-      SdlDebug.init();
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.name", "Minecraft");
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.version", SharedConstants.getCurrentVersion().name());
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.identifier", "com.mojang.minecraft");
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.creator", "Mojang Studios");
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.copyright", "Copyright Mojang AB.");
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.url", "https://www.minecraft.net");
-      SDLInit.SDL_SetAppMetadataProperty("SDL.app.metadata.type", "game");
-      SDLHints.SDL_SetHint("SDL_NO_SIGNAL_HANDLERS", "1");
-      SDLHints.SDL_SetHint("SDL_VIDEO_MAC_FULLSCREEN_SPACES", "1");
-      SDLHints.SDL_SetHint("SDL_VIDEO_MAC_FULLSCREEN_MENU_VISIBILITY", "0");
-      SDLHints.SDL_SetHint("SDL_QUIT_ON_LAST_WINDOW_CLOSE", "0");
-      SDLHints.SDL_SetHint("SDL_MOUSE_FOCUS_CLICKTHROUGH", "1");
-      SDLHints.SDL_SetHint("SDL_ENABLE_SCREEN_KEYBOARD", "0");
-      SDLHints.SDL_SetHint("SDL_IME_IMPLEMENTED_UI", "composition, candidates");
-      if (!SDLInit.SDL_Init(32)) {
-         throw new IllegalStateException("Unable to initialize SDL: " + SDLError.SDL_GetError());
+   public static String getApiDescription() {
+      return apiDescription;
+   }
+
+   public static apv.a initBackendSystem() {
+      assertInInitPhase();
+      return GLX._initGlfw()::getAsLong;
+   }
+
+   public static void initRenderer(int $$0, boolean $$1) {
+      assertInInitPhase();
+      GLX._init($$0, $$1);
+      apiDescription = GLX.getOpenGLVersionString();
+   }
+
+   public static void setErrorCallback(GLFWErrorCallbackI $$0) {
+      assertInInitPhase();
+      GLX._setGlfwErrorCallback($$0);
+   }
+
+   public static void renderCrosshair(int $$0) {
+      assertOnRenderThread();
+      GLX._renderCrosshair($$0, true, true, true);
+   }
+
+   public static String getCapsString() {
+      assertOnRenderThread();
+      return "Using framebuffer using OpenGL 3.2";
+   }
+
+   public static void setupDefaultState(int $$0, int $$1, int $$2, int $$3) {
+      assertInInitPhase();
+      GlStateManager._clearDepth(1.0);
+      GlStateManager._enableDepthTest();
+      GlStateManager._depthFunc(515);
+      projectionMatrix.identity();
+      savedProjectionMatrix.identity();
+      modelViewMatrix.identity();
+      textureMatrix.identity();
+      GlStateManager._viewport($$0, $$1, $$2, $$3);
+   }
+
+   public static int maxSupportedTextureSize() {
+      if (MAX_SUPPORTED_TEXTURE_SIZE == -1) {
+         assertOnRenderThreadOrInit();
+         int $$0 = GlStateManager._getInteger(3379);
+
+         for (int $$1 = Math.max(32768, $$0); $$1 >= 1024; $$1 >>= 1) {
+            GlStateManager._texImage2D(32868, 0, 6408, $$1, $$1, 0, 6408, 5121, null);
+            int $$2 = GlStateManager._getTexLevelParameter(32868, 0, 4096);
+            if ($$2 != 0) {
+               MAX_SUPPORTED_TEXTURE_SIZE = $$1;
+               return $$1;
+            }
+         }
+
+         MAX_SUPPORTED_TEXTURE_SIZE = Math.max($$0, 1024);
+         LOGGER.info("Failed to determine maximum texture size by probing, trying GL_MAX_TEXTURE_SIZE = {}", MAX_SUPPORTED_TEXTURE_SIZE);
+      }
+
+      return MAX_SUPPORTED_TEXTURE_SIZE;
+   }
+
+   public static void glBindBuffer(int $$0, IntSupplier $$1) {
+      GlStateManager._glBindBuffer($$0, $$1.getAsInt());
+   }
+
+   public static void glBindVertexArray(Supplier<Integer> $$0) {
+      GlStateManager._glBindVertexArray($$0.get());
+   }
+
+   public static void glBufferData(int $$0, ByteBuffer $$1, int $$2) {
+      assertOnRenderThreadOrInit();
+      GlStateManager._glBufferData($$0, $$1, $$2);
+   }
+
+   public static void glDeleteBuffers(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._glDeleteBuffers($$0);
+   }
+
+   public static void glDeleteVertexArrays(int $$0) {
+      assertOnRenderThread();
+      GlStateManager._glDeleteVertexArrays($$0);
+   }
+
+   public static void glUniform1i(int $$0, int $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform1i($$0, $$1);
+   }
+
+   public static void glUniform1(int $$0, IntBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform1($$0, $$1);
+   }
+
+   public static void glUniform2(int $$0, IntBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform2($$0, $$1);
+   }
+
+   public static void glUniform3(int $$0, IntBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform3($$0, $$1);
+   }
+
+   public static void glUniform4(int $$0, IntBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform4($$0, $$1);
+   }
+
+   public static void glUniform1(int $$0, FloatBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform1($$0, $$1);
+   }
+
+   public static void glUniform2(int $$0, FloatBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform2($$0, $$1);
+   }
+
+   public static void glUniform3(int $$0, FloatBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform3($$0, $$1);
+   }
+
+   public static void glUniform4(int $$0, FloatBuffer $$1) {
+      assertOnRenderThread();
+      GlStateManager._glUniform4($$0, $$1);
+   }
+
+   public static void glUniformMatrix2(int $$0, boolean $$1, FloatBuffer $$2) {
+      assertOnRenderThread();
+      GlStateManager._glUniformMatrix2($$0, $$1, $$2);
+   }
+
+   public static void glUniformMatrix3(int $$0, boolean $$1, FloatBuffer $$2) {
+      assertOnRenderThread();
+      GlStateManager._glUniformMatrix3($$0, $$1, $$2);
+   }
+
+   public static void glUniformMatrix4(int $$0, boolean $$1, FloatBuffer $$2) {
+      assertOnRenderThread();
+      GlStateManager._glUniformMatrix4($$0, $$1, $$2);
+   }
+
+   public static void setupOverlayColor(IntSupplier $$0, int $$1) {
+      assertOnRenderThread();
+      int $$2 = $$0.getAsInt();
+      setShaderTexture(1, $$2);
+   }
+
+   public static void teardownOverlayColor() {
+      assertOnRenderThread();
+      setShaderTexture(1, 0);
+   }
+
+   public static void setupLevelDiffuseLighting(Vector3f $$0, Vector3f $$1, Matrix4f $$2) {
+      assertOnRenderThread();
+      GlStateManager.setupLevelDiffuseLighting($$0, $$1, $$2);
+   }
+
+   public static void setupGuiFlatDiffuseLighting(Vector3f $$0, Vector3f $$1) {
+      assertOnRenderThread();
+      GlStateManager.setupGuiFlatDiffuseLighting($$0, $$1);
+   }
+
+   public static void setupGui3DDiffuseLighting(Vector3f $$0, Vector3f $$1) {
+      assertOnRenderThread();
+      GlStateManager.setupGui3DDiffuseLighting($$0, $$1);
+   }
+
+   public static void beginInitialization() {
+      isInInit = true;
+   }
+
+   public static void finishInitialization() {
+      isInInit = false;
+      if (!recordingQueue.isEmpty()) {
+         replayQueue();
+      }
+
+      if (!recordingQueue.isEmpty()) {
+         throw new IllegalStateException("Recorded to render queue during initialization");
+      }
+   }
+
+   public static void glGenBuffers(Consumer<Integer> $$0) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> $$0.accept(GlStateManager._glGenBuffers()));
       } else {
-         return SDLTimer::SDL_GetTicksNS;
+         $$0.accept(GlStateManager._glGenBuffers());
       }
    }
 
-   public static void initRenderer(final GpuDevice device) {
-      if (DEVICE != null) {
-         throw new IllegalStateException("RenderSystem.DEVICE already initialized");
+   public static void glGenVertexArrays(Consumer<Integer> $$0) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> $$0.accept(GlStateManager._glGenVertexArrays()));
       } else {
-         DEVICE = device;
-         dynamicGpuData = new DynamicGpuData();
-         samplerCache.initialize();
+         $$0.accept(GlStateManager._glGenVertexArrays());
       }
    }
 
-   public static void shutdownRenderer() {
-      if (currentPipelineCache != null) {
-         currentPipelineCache.close();
-      }
-
-      if (fallbackPipelineCache != null) {
-         fallbackPipelineCache.close();
-      }
-
-      sharedSequential.close();
-      sharedSequentialQuad.close();
-      sharedSequentialLines.close();
-      samplerCache.close();
-      if (dynamicGpuData != null) {
-         dynamicGpuData.close();
-      }
-
-      if (DEVICE != null) {
-         DEVICE.close();
-      }
-   }
-
-   public static void trackBackendLibraryForShutdown(final GpuBackend backend) {
-      BACKEND = backend;
-   }
-
-   public static void unloadTrackedBackendLibrary() {
-      if (BACKEND != null) {
-         BACKEND.unloadLibrary();
-         BACKEND = null;
-      }
-   }
-
-   public static void setupDefaultState() {
-      modelViewStack.clear();
-   }
-
-   public static void setProjectionMatrix(final GpuBufferSlice projectionMatrixBuffer, final ProjectionType type) {
+   public static eil renderThreadTesselator() {
       assertOnRenderThread();
-      RenderSystem.projectionMatrixBuffer = projectionMatrixBuffer;
-      projectionType = type;
+      return RENDER_THREAD_TESSELATOR;
    }
 
-   public static void backupProjectionMatrix() {
-      assertOnRenderThread();
-      savedProjectionMatrixBuffer = projectionMatrixBuffer;
-      savedProjectionType = projectionType;
+   public static void defaultBlendFunc() {
+      blendFuncSeparate(
+         GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+      );
    }
 
-   public static void restoreProjectionMatrix() {
-      assertOnRenderThread();
-      projectionMatrixBuffer = savedProjectionMatrixBuffer;
-      projectionType = savedProjectionType;
+   @Deprecated
+   public static void runAsFancy(Runnable $$0) {
+      boolean $$1 = enn.L();
+      if (!$$1) {
+         $$0.run();
+      } else {
+         enq<eng> $$2 = enn.N().m.i();
+         eng $$3 = $$2.c();
+         $$2.a(eng.b);
+         $$0.run();
+         $$2.a($$3);
+      }
+   }
+
+   public static void setShader(Supplier<fki> $$0) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> shader = $$0.get());
+      } else {
+         shader = $$0.get();
+      }
    }
 
    @Nullable
-   public static GpuBufferSlice getProjectionMatrixBuffer() {
+   public static fki getShader() {
       assertOnRenderThread();
-      return projectionMatrixBuffer;
+      return shader;
    }
 
-   public static Matrix4f getModelViewMatrixCopy() {
-      assertOnRenderThread();
-      return new Matrix4f(modelViewStack);
+   public static void setShaderTexture(int $$0, acq $$1) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> _setShaderTexture($$0, $$1));
+      } else {
+         _setShaderTexture($$0, $$1);
+      }
    }
 
-   public static Matrix4fStack getModelViewStack() {
+   public static void _setShaderTexture(int $$0, acq $$1) {
+      if ($$0 >= 0 && $$0 < shaderTextures.length) {
+         fuw $$2 = enn.N().X();
+         fug $$3 = $$2.b($$1);
+         shaderTextures[$$0] = $$3.a();
+      }
+   }
+
+   public static void setShaderTexture(int $$0, int $$1) {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> _setShaderTexture($$0, $$1));
+      } else {
+         _setShaderTexture($$0, $$1);
+      }
+   }
+
+   public static void _setShaderTexture(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < shaderTextures.length) {
+         shaderTextures[$$0] = $$1;
+      }
+   }
+
+   public static int getShaderTexture(int $$0) {
       assertOnRenderThread();
+      return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : 0;
+   }
+
+   public static void setProjectionMatrix(Matrix4f $$0, eir $$1) {
+      Matrix4f $$2 = new Matrix4f($$0);
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> {
+            projectionMatrix = $$2;
+            vertexSorting = $$1;
+         });
+      } else {
+         projectionMatrix = $$2;
+         vertexSorting = $$1;
+      }
+   }
+
+   public static void setInverseViewRotationMatrix(Matrix3f $$0) {
+      Matrix3f $$1 = new Matrix3f($$0);
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> inverseViewRotationMatrix = $$1);
+      } else {
+         inverseViewRotationMatrix = $$1;
+      }
+   }
+
+   public static void setTextureMatrix(Matrix4f $$0) {
+      Matrix4f $$1 = new Matrix4f($$0);
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> textureMatrix = $$1);
+      } else {
+         textureMatrix = $$1;
+      }
+   }
+
+   public static void resetTextureMatrix() {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> textureMatrix.identity());
+      } else {
+         textureMatrix.identity();
+      }
+   }
+
+   public static void applyModelViewMatrix() {
+      Matrix4f $$0 = new Matrix4f(modelViewStack.c().a());
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> modelViewMatrix = $$0);
+      } else {
+         modelViewMatrix = $$0;
+      }
+   }
+
+   public static void backupProjectionMatrix() {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> _backupProjectionMatrix());
+      } else {
+         _backupProjectionMatrix();
+      }
+   }
+
+   private static void _backupProjectionMatrix() {
+      savedProjectionMatrix = projectionMatrix;
+      savedVertexSorting = vertexSorting;
+   }
+
+   public static void restoreProjectionMatrix() {
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> _restoreProjectionMatrix());
+      } else {
+         _restoreProjectionMatrix();
+      }
+   }
+
+   private static void _restoreProjectionMatrix() {
+      projectionMatrix = savedProjectionMatrix;
+      vertexSorting = savedVertexSorting;
+   }
+
+   public static Matrix4f getProjectionMatrix() {
+      assertOnRenderThread();
+      return projectionMatrix;
+   }
+
+   public static Matrix3f getInverseViewRotationMatrix() {
+      assertOnRenderThread();
+      return inverseViewRotationMatrix;
+   }
+
+   public static Matrix4f getModelViewMatrix() {
+      assertOnRenderThread();
+      return modelViewMatrix;
+   }
+
+   public static eij getModelViewStack() {
       return modelViewStack;
    }
 
-   public static RenderSystem.AutoStorageIndexBuffer getSequentialBuffer(final PrimitiveTopology primitiveTopology) {
+   public static Matrix4f getTextureMatrix() {
+      assertOnRenderThread();
+      return textureMatrix;
+   }
+
+   public static RenderSystem.a getSequentialBuffer(eio.b $$0) {
       assertOnRenderThread();
 
-      return switch (primitiveTopology) {
-         case QUADS -> sharedSequentialQuad;
-         case LINES -> sharedSequentialLines;
+      return switch ($$0) {
+         case h -> sharedSequentialQuad;
+         case a -> sharedSequentialLines;
          default -> sharedSequential;
       };
    }
 
-   public static void setGlobalSettingsUniform(final GpuBuffer buffer) {
-      globalSettingsUniform = buffer;
+   public static void setShaderGameTime(long $$0, float $$1) {
+      float $$2 = ((float)($$0 % 24000L) + $$1) / 24000.0F;
+      if (!isOnRenderThread()) {
+         recordRenderCall(() -> shaderGameTime = $$2);
+      } else {
+         shaderGameTime = $$2;
+      }
    }
 
-   @Nullable
-   public static GpuBuffer getGlobalSettingsUniform() {
-      return globalSettingsUniform;
-   }
-
-   public static ProjectionType getProjectionType() {
+   public static float getShaderGameTime() {
       assertOnRenderThread();
-      return projectionType;
+      return shaderGameTime;
    }
 
-   public static void queueFencedTask(final Runnable task) {
-      PENDING_FENCES.addLast(new RenderSystem.GpuAsyncTask(task, getDevice().createCommandEncoder().createFence()));
+   public static eir getVertexSorting() {
+      assertOnRenderThread();
+      return vertexSorting;
    }
 
-   public static void executePendingTasks() {
-      for (RenderSystem.GpuAsyncTask task = PENDING_FENCES.peekFirst(); task != null; task = PENDING_FENCES.peekFirst()) {
-         if (!task.fence.awaitCompletion(0L)) {
-            return;
+   public static final class a {
+      private final int a;
+      private final int b;
+      private final RenderSystem.a.a c;
+      private int d;
+      private eio.a e = eio.a.a;
+      private int f;
+
+      a(int $$0, int $$1, RenderSystem.a.a $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public boolean a(int $$0) {
+         return $$0 <= this.f;
+      }
+
+      public void b(int $$0) {
+         if (this.d == 0) {
+            this.d = GlStateManager._glGenBuffers();
          }
 
-         try {
-            task.callback.run();
-         } finally {
-            task.fence.close();
-         }
-
-         PENDING_FENCES.removeFirst();
-      }
-   }
-
-   public static GpuDevice getDevice() {
-      if (DEVICE == null) {
-         throw new IllegalStateException("Can't getDevice() before it was initialized");
-      } else {
-         return DEVICE;
-      }
-   }
-
-   @Nullable
-   public static GpuDevice tryGetDevice() {
-      return DEVICE;
-   }
-
-   public static boolean isWireframeAvailable() {
-      return getDevice().getDeviceInfo().features().wireframeFillMode();
-   }
-
-   public static DynamicGpuData getDynamicUniforms() {
-      if (dynamicGpuData == null) {
-         throw new IllegalStateException("Can't getDynamicUniforms() before device was initialized");
-      } else {
-         return dynamicGpuData;
-      }
-   }
-
-   public static void bindDefaultUniforms(final RenderPass renderPass) {
-      GpuBufferSlice projectionMatrix = getProjectionMatrixBuffer();
-      if (projectionMatrix != null) {
-         renderPass.setUniform("Projection", projectionMatrix);
+         GlStateManager._glBindBuffer(34963, this.d);
+         this.c($$0);
       }
 
-      GpuBufferSlice fog = getShaderFog();
-      if (fog != null) {
-         renderPass.setUniform("Fog", fog);
-      }
+      private void c(int $$0) {
+         if (!this.a($$0)) {
+            $$0 = apa.d($$0 * 2, this.b);
+            RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
+            eio.a $$1 = eio.a.a($$0);
+            int $$2 = apa.d($$0 * $$1.d, 4);
+            GlStateManager._glBufferData(34963, (long)$$2, 35048);
+            ByteBuffer $$3 = GlStateManager._glMapBuffer(34963, 35001);
+            if ($$3 == null) {
+               throw new RuntimeException("Failed to map GL buffer");
+            } else {
+               this.e = $$1;
+               it.unimi.dsi.fastutil.ints.IntConsumer $$4 = this.a($$3);
 
-      GpuBuffer globalUniform = getGlobalSettingsUniform();
-      if (globalUniform != null) {
-         renderPass.setUniform("Globals", globalUniform);
-      }
-
-      GpuBufferSlice shaderLights = getShaderLights();
-      if (shaderLights != null) {
-         renderPass.setUniform("Lighting", shaderLights);
-      }
-   }
-
-   public static void resizeAllAutoStorageIndexBuffers() {
-      sharedSequential.resizeToRequestedIndexCount();
-      sharedSequentialQuad.resizeToRequestedIndexCount();
-      sharedSequentialLines.resizeToRequestedIndexCount();
-   }
-
-   public static final class AutoStorageIndexBuffer implements AutoCloseable {
-      private final int vertexStride;
-      private final int indexStride;
-      private final RenderSystem.AutoStorageIndexBuffer.IndexGenerator generator;
-      @Nullable
-      private GpuBuffer buffer;
-      private IndexType type = IndexType.SHORT;
-      private int indexCount;
-      private int maxRequestedIndexCount;
-
-      private AutoStorageIndexBuffer(final int vertexStride, final int indexStride, final RenderSystem.AutoStorageIndexBuffer.IndexGenerator generator) {
-         this.vertexStride = vertexStride;
-         this.indexStride = indexStride;
-         this.generator = generator;
-      }
-
-      @Override
-      public void close() {
-         if (this.buffer != null) {
-            this.buffer.close();
-         }
-      }
-
-      public boolean hasStorage(final int indexCount) {
-         return indexCount <= this.indexCount;
-      }
-
-      public void requestIndexCount(final int indexCount) {
-         this.maxRequestedIndexCount = Math.max(this.maxRequestedIndexCount, indexCount);
-      }
-
-      public void resizeToRequestedIndexCount() {
-         this.ensureStorage(this.maxRequestedIndexCount);
-      }
-
-      public GpuBuffer getBuffer(final int indexCount) {
-         this.requestIndexCount(indexCount);
-         this.ensureStorage(indexCount);
-         return this.buffer;
-      }
-
-      public GpuBuffer getBuffer() {
-         return this.buffer;
-      }
-
-      private void ensureStorage(int indexCount) {
-         if (!this.hasStorage(indexCount)) {
-            indexCount = Mth.roundToward(indexCount * 2, this.indexStride);
-            RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.indexCount, indexCount);
-            int primitiveCount = indexCount / this.indexStride;
-            int vertexCount = primitiveCount * this.vertexStride;
-            IndexType type = IndexType.least(vertexCount);
-            int bufferSize = Mth.roundToward(indexCount * type.bytes, 4);
-            ByteBuffer data = MemoryUtil.memAlloc(bufferSize);
-
-            try {
-               this.type = type;
-               it.unimi.dsi.fastutil.ints.IntConsumer intConsumer = this.intConsumer(data);
-
-               for (int ii = 0; ii < indexCount; ii += this.indexStride) {
-                  this.generator.accept(intConsumer, ii * this.vertexStride / this.indexStride);
+               for (int $$5 = 0; $$5 < $$0; $$5 += this.b) {
+                  this.c.accept($$4, $$5 * this.a / this.b);
                }
 
-               data.flip();
-               if (this.buffer != null) {
-                  this.buffer.close();
-               }
-
-               this.buffer = RenderSystem.getDevice().createBuffer(() -> "Auto Storage index buffer", 64, data);
-            } finally {
-               MemoryUtil.memFree(data);
+               GlStateManager._glUnmapBuffer(34963);
+               this.f = $$0;
             }
-
-            this.indexCount = indexCount;
          }
       }
 
-      private it.unimi.dsi.fastutil.ints.IntConsumer intConsumer(final ByteBuffer buffer) {
-         switch (this.type) {
-            case SHORT:
-               return value -> buffer.putShort((short)value);
-            case INT:
+      private it.unimi.dsi.fastutil.ints.IntConsumer a(ByteBuffer $$0) {
+         switch (this.e) {
+            case a:
+               return $$1 -> $$0.putShort((short)$$1);
+            case b:
             default:
-               return buffer::putInt;
+               return $$0::putInt;
          }
       }
 
-      public IndexType type() {
-         return this.type;
+      public eio.a a() {
+         return this.e;
       }
 
-      private interface IndexGenerator {
-         void accept(final it.unimi.dsi.fastutil.ints.IntConsumer consumer, final int start);
+      interface a {
+         void accept(it.unimi.dsi.fastutil.ints.IntConsumer var1, int var2);
       }
-   }
-
-   private static record GpuAsyncTask(Runnable callback, GpuFence fence) {
    }
 }

@@ -1,0 +1,174 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Supplier;
+
+public class et implements ArgumentType<et.b> {
+   public static final SuggestionProvider<ds> a = ($$0, $$1) -> {
+      StringReader $$2 = new StringReader($$1.getInput());
+      $$2.setCursor($$1.getStart());
+      gb $$3 = new gb($$2);
+
+      try {
+         $$3.t();
+      } catch (CommandSyntaxException var5) {
+      }
+
+      return $$3.a($$1, $$1x -> du.b(((ds)$$0.getSource()).q(), $$1x));
+   };
+   private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(sw.c("argument.scoreHolder.empty"));
+   final boolean d;
+
+   public et(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public static String a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1).iterator().next();
+   }
+
+   public static Collection<String> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, Collections::emptyList);
+   }
+
+   public static Collection<String> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((ds)$$0.getSource()).l().aF()::e);
+   }
+
+   public static Collection<String> a(CommandContext<ds> $$0, String $$1, Supplier<Collection<String>> $$2) throws CommandSyntaxException {
+      Collection<String> $$3 = ((et.b)$$0.getArgument($$1, et.b.class)).getNames((ds)$$0.getSource(), $$2);
+      if ($$3.isEmpty()) {
+         throw ec.d.create();
+      } else {
+         return $$3;
+      }
+   }
+
+   public static et a() {
+      return new et(false);
+   }
+
+   public static et b() {
+      return new et(true);
+   }
+
+   public et.b a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '@') {
+         gb $$1 = new gb($$0);
+         ga $$2 = $$1.t();
+         if (!this.d && $$2.a() > 1) {
+            throw ec.a.create();
+         } else {
+            return new et.c($$2);
+         }
+      } else {
+         int $$3 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
+         if ($$4.equals("*")) {
+            return ($$0x, $$1) -> {
+               Collection<String> $$2 = $$1.get();
+               if ($$2.isEmpty()) {
+                  throw c.create();
+               } else {
+                  return $$2;
+               }
+            };
+         } else {
+            Collection<String> $$5 = Collections.singleton($$4);
+            return ($$1, $$2) -> $$5;
+         }
+      }
+   }
+
+   public Collection<String> getExamples() {
+      return b;
+   }
+
+   public static class a implements gg<et, et.a.a> {
+      private static final byte a = 1;
+
+      public void a(et.a.a $$0, sf $$1) {
+         int $$2 = 0;
+         if ($$0.b) {
+            $$2 |= 1;
+         }
+
+         $$1.writeByte($$2);
+      }
+
+      public et.a.a a(sf $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         return new et.a.a($$2);
+      }
+
+      public void a(et.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("amount", $$0.b ? "multiple" : "single");
+      }
+
+      public et.a.a a(et $$0) {
+         return new et.a.a($$0.d);
+      }
+
+      public final class a implements gg.a<et> {
+         final boolean b;
+
+         a(boolean $$1) {
+            this.b = $$1;
+         }
+
+         public et a(dm $$0) {
+            return new et(this.b);
+         }
+
+         @Override
+         public gg<et, ?> a() {
+            return a.this;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      Collection<String> getNames(ds var1, Supplier<Collection<String>> var2) throws CommandSyntaxException;
+   }
+
+   public static class c implements et.b {
+      private final ga a;
+
+      public c(ga $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Collection<String> getNames(ds $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
+         List<? extends bfj> $$2 = this.a.b($$0);
+         if ($$2.isEmpty()) {
+            throw ec.d.create();
+         } else {
+            List<String> $$3 = Lists.newArrayList();
+
+            for (bfj $$4 : $$2) {
+               $$3.add($$4.cv());
+            }
+
+            return $$3;
+         }
+      }
+   }
+}

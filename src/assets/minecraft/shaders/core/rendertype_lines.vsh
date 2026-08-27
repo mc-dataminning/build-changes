@@ -1,19 +1,19 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:fog.glsl>
-#include <minecraft:globals.glsl>
-#include <minecraft:dynamictransforms.glsl>
-#include <minecraft:projection.glsl>
+#moj_import <fog.glsl>
 
-layout(location = 0) in vec3 Position;
-layout(location = 1) in vec4 Color;
-layout(location = 2) in vec3 Normal;
-layout(location = 3) in float LineWidth;
+in vec3 Position;
+in vec4 Color;
+in vec3 Normal;
 
-layout(location = 0) out float sphericalVertexDistance;
-layout(location = 1) out float cylindricalVertexDistance;
-layout(location = 2) out vec4 vertexColor;
+uniform mat4 ModelViewMat;
+uniform mat4 ProjMat;
+uniform float LineWidth;
+uniform vec2 ScreenSize;
+uniform int FogShape;
+
+out float vertexDistance;
+out vec4 vertexColor;
 
 const float VIEW_SHRINK = 1.0 - (1.0 / 256.0);
 const mat4 VIEW_SCALE = mat4(
@@ -37,13 +37,12 @@ void main() {
         lineOffset *= -1.0;
     }
 
-    if (gl_VertexIndex % 2 == 0) {
+    if (gl_VertexID % 2 == 0) {
         gl_Position = vec4((ndc1 + vec3(lineOffset, 0.0)) * linePosStart.w, linePosStart.w);
     } else {
         gl_Position = vec4((ndc1 - vec3(lineOffset, 0.0)) * linePosStart.w, linePosStart.w);
     }
 
-    sphericalVertexDistance = fog_spherical_distance(Position);
-    cylindricalVertexDistance = fog_cylindrical_distance(Position);
+    vertexDistance = fog_distance(ModelViewMat, Position, FogShape);
     vertexColor = Color;
 }

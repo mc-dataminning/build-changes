@@ -5,8 +5,10 @@
       "type": "minecraft:count",
       "count": {
         "type": "minecraft:uniform",
-        "max_inclusive": 2,
-        "min_inclusive": 1
+        "value": {
+          "max_inclusive": 2,
+          "min_inclusive": 1
+        }
       }
     },
     {
@@ -27,8 +29,8 @@
     {
       "type": "minecraft:environment_scan",
       "allowed_search_condition": {
-        "type": "minecraft:matching_block_tag",
-        "tag": "minecraft:air"
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
       },
       "direction_of_search": "up",
       "max_steps": 12,
@@ -37,10 +39,9 @@
       }
     },
     {
-      "type": "minecraft:offset",
-      "x": 0,
-      "y": -1,
-      "z": 0
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -1
     },
     {
       "type": "minecraft:biome"

@@ -1,0 +1,62 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
+
+public record aot<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<aot<Integer>> a = a(Codec.INT);
+
+   public aot(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
+      }
+   }
+
+   public static <T extends Comparable<T>> Codec<aot<T>> a(Codec<T> $$0) {
+      return aoi.a($$0, "min_inclusive", "max_inclusive", aot::a, aot::a, aot::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<aot<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return aoi.a(
+         a($$0),
+         (Function<aot<T>, DataResult<aot<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
+   }
+
+   public static <T extends Comparable<T>> DataResult<aot<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new aot($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(aot<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
+   }
+}

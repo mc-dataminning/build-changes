@@ -11,7 +11,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:air"
+          "output_state": {
+            "Name": "minecraft:air"
+          }
         },
         {
           "input_predicate": {
@@ -21,7 +23,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:air"
+          "output_state": {
+            "Name": "minecraft:air"
+          }
         },
         {
           "input_predicate": {
@@ -31,7 +35,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:air"
+          "output_state": {
+            "Name": "minecraft:air"
+          }
         },
         {
           "input_predicate": {
@@ -42,7 +48,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:cobweb"
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
         },
         {
           "input_predicate": {
@@ -53,7 +61,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:cobweb"
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
         },
         {
           "input_predicate": {
@@ -64,7 +74,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:cobweb"
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
         },
         {
           "input_predicate": {
@@ -75,7 +87,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:cobweb"
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
         },
         {
           "input_predicate": {
@@ -86,7 +100,9 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:cobweb"
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
         },
         {
           "input_predicate": {
@@ -97,7 +113,12 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:beetroots"
+          "output_state": {
+            "Name": "minecraft:beetroots",
+            "Properties": {
+              "age": "0"
+            }
+          }
         },
         {
           "input_predicate": {
@@ -108,7 +129,12 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:melon_stem"
+          "output_state": {
+            "Name": "minecraft:melon_stem",
+            "Properties": {
+              "age": "0"
+            }
+          }
         }
       ]
     }

@@ -1,0 +1,97 @@
+public class amr {
+   public static final amq<cpn> a = a("mined", jb.f);
+   public static final amq<cfu> b = a("crafted", jb.i);
+   public static final amq<cfu> c = a("used", jb.i);
+   public static final amq<cfu> d = a("broken", jb.i);
+   public static final amq<cfu> e = a("picked_up", jb.i);
+   public static final amq<cfu> f = a("dropped", jb.i);
+   public static final amq<bfn<?>> g = a("killed", jb.h);
+   public static final amq<bfn<?>> h = a("killed_by", jb.h);
+   public static final amq<acq> i = a("custom", jb.n);
+   public static final acq j = a("leave_game", amp.b);
+   public static final acq k = a("play_time", amp.e);
+   public static final acq l = a("total_world_time", amp.e);
+   public static final acq m = a("time_since_death", amp.e);
+   public static final acq n = a("time_since_rest", amp.e);
+   public static final acq o = a("sneak_time", amp.e);
+   public static final acq p = a("walk_one_cm", amp.d);
+   public static final acq q = a("crouch_one_cm", amp.d);
+   public static final acq r = a("sprint_one_cm", amp.d);
+   public static final acq s = a("walk_on_water_one_cm", amp.d);
+   public static final acq t = a("fall_one_cm", amp.d);
+   public static final acq u = a("climb_one_cm", amp.d);
+   public static final acq v = a("fly_one_cm", amp.d);
+   public static final acq w = a("walk_under_water_one_cm", amp.d);
+   public static final acq x = a("minecart_one_cm", amp.d);
+   public static final acq y = a("boat_one_cm", amp.d);
+   public static final acq z = a("pig_one_cm", amp.d);
+   public static final acq A = a("horse_one_cm", amp.d);
+   public static final acq B = a("aviate_one_cm", amp.d);
+   public static final acq C = a("swim_one_cm", amp.d);
+   public static final acq D = a("strider_one_cm", amp.d);
+   public static final acq E = a("jump", amp.b);
+   public static final acq F = a("drop", amp.b);
+   public static final acq G = a("damage_dealt", amp.c);
+   public static final acq H = a("damage_dealt_absorbed", amp.c);
+   public static final acq I = a("damage_dealt_resisted", amp.c);
+   public static final acq J = a("damage_taken", amp.c);
+   public static final acq K = a("damage_blocked_by_shield", amp.c);
+   public static final acq L = a("damage_absorbed", amp.c);
+   public static final acq M = a("damage_resisted", amp.c);
+   public static final acq N = a("deaths", amp.b);
+   public static final acq O = a("mob_kills", amp.b);
+   public static final acq P = a("animals_bred", amp.b);
+   public static final acq Q = a("player_kills", amp.b);
+   public static final acq R = a("fish_caught", amp.b);
+   public static final acq S = a("talked_to_villager", amp.b);
+   public static final acq T = a("traded_with_villager", amp.b);
+   public static final acq U = a("eat_cake_slice", amp.b);
+   public static final acq V = a("fill_cauldron", amp.b);
+   public static final acq W = a("use_cauldron", amp.b);
+   public static final acq X = a("clean_armor", amp.b);
+   public static final acq Y = a("clean_banner", amp.b);
+   public static final acq Z = a("clean_shulker_box", amp.b);
+   public static final acq aa = a("interact_with_brewingstand", amp.b);
+   public static final acq ab = a("interact_with_beacon", amp.b);
+   public static final acq ac = a("inspect_dropper", amp.b);
+   public static final acq ad = a("inspect_hopper", amp.b);
+   public static final acq ae = a("inspect_dispenser", amp.b);
+   public static final acq af = a("play_noteblock", amp.b);
+   public static final acq ag = a("tune_noteblock", amp.b);
+   public static final acq ah = a("pot_flower", amp.b);
+   public static final acq ai = a("trigger_trapped_chest", amp.b);
+   public static final acq aj = a("open_enderchest", amp.b);
+   public static final acq ak = a("enchant_item", amp.b);
+   public static final acq al = a("play_record", amp.b);
+   public static final acq am = a("interact_with_furnace", amp.b);
+   public static final acq an = a("interact_with_crafting_table", amp.b);
+   public static final acq ao = a("open_chest", amp.b);
+   public static final acq ap = a("sleep_in_bed", amp.b);
+   public static final acq aq = a("open_shulker_box", amp.b);
+   public static final acq ar = a("open_barrel", amp.b);
+   public static final acq as = a("interact_with_blast_furnace", amp.b);
+   public static final acq at = a("interact_with_smoker", amp.b);
+   public static final acq au = a("interact_with_lectern", amp.b);
+   public static final acq av = a("interact_with_campfire", amp.b);
+   public static final acq aw = a("interact_with_cartography_table", amp.b);
+   public static final acq ax = a("interact_with_loom", amp.b);
+   public static final acq ay = a("interact_with_stonecutter", amp.b);
+   public static final acq az = a("bell_ring", amp.b);
+   public static final acq aA = a("raid_trigger", amp.b);
+   public static final acq aB = a("raid_win", amp.b);
+   public static final acq aC = a("interact_with_anvil", amp.b);
+   public static final acq aD = a("interact_with_grindstone", amp.b);
+   public static final acq aE = a("target_hit", amp.b);
+   public static final acq aF = a("interact_with_smithing_table", amp.b);
+
+   private static acq a(String $$0, amp $$1) {
+      acq $$2 = new acq($$0);
+      hr.a(jb.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> amq<T> a(String $$0, hr<T> $$1) {
+      return hr.a(jb.y, $$0, new amq<>($$1));
+   }
+}

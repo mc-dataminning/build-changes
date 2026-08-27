@@ -12,7 +12,12 @@
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": "minecraft:melon_stem"
+          "output_state": {
+            "Name": "minecraft:melon_stem",
+            "Properties": {
+              "age": "0"
+            }
+          }
         }
       ]
     }

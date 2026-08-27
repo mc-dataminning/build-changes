@@ -1,9 +1,6 @@
 {
     "parent": "block/redstone_dust_side",
     "textures": {
-        "line": {
-            "sprite": "block/redstone_dust_line0",
-            "force_translucent": true
-        }
+        "line": "block/redstone_dust_line0"
     }
 }

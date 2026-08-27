@@ -1,0 +1,712 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
+public class dvt {
+   public static final String a = "palette";
+   public static final String b = "palettes";
+   public static final String c = "entities";
+   public static final String d = "blocks";
+   public static final String e = "pos";
+   public static final String f = "state";
+   public static final String g = "nbt";
+   public static final String h = "pos";
+   public static final String i = "blockPos";
+   public static final String j = "nbt";
+   public static final String k = "size";
+   private final List<dvt.a> l = Lists.newArrayList();
+   private final List<dvt.d> m = Lists.newArrayList();
+   private hz n = hz.g;
+   private String o = "?";
+
+   public hz a() {
+      return this.n;
+   }
+
+   public void a(String $$0) {
+      this.o = $$0;
+   }
+
+   public String b() {
+      return this.o;
+   }
+
+   public void a(cmm $$0, gu $$1, hz $$2, boolean $$3, @Nullable cpn $$4) {
+      if ($$2.u() >= 1 && $$2.v() >= 1 && $$2.w() >= 1) {
+         gu $$5 = $$1.a($$2).b(-1, -1, -1);
+         List<dvt.c> $$6 = Lists.newArrayList();
+         List<dvt.c> $$7 = Lists.newArrayList();
+         List<dvt.c> $$8 = Lists.newArrayList();
+         gu $$9 = new gu(Math.min($$1.u(), $$5.u()), Math.min($$1.v(), $$5.v()), Math.min($$1.w(), $$5.w()));
+         gu $$10 = new gu(Math.max($$1.u(), $$5.u()), Math.max($$1.v(), $$5.v()), Math.max($$1.w(), $$5.w()));
+         this.n = $$2;
+
+         for (gu $$11 : gu.a($$9, $$10)) {
+            gu $$12 = $$11.b($$9);
+            dcb $$13 = $$0.a_($$11);
+            if ($$4 == null || !$$13.a($$4)) {
+               czn $$14 = $$0.c_($$11);
+               dvt.c $$15;
+               if ($$14 != null) {
+                  $$15 = new dvt.c($$12, $$13, $$14.n());
+               } else {
+                  $$15 = new dvt.c($$12, $$13, null);
+               }
+
+               a($$15, $$6, $$7, $$8);
+            }
+         }
+
+         List<dvt.c> $$17 = a($$6, $$7, $$8);
+         this.l.clear();
+         this.l.add(new dvt.a($$17));
+         if ($$3) {
+            this.a($$0, $$9, $$10.b(1, 1, 1));
+         } else {
+            this.m.clear();
+         }
+      }
+   }
+
+   private static void a(dvt.c $$0, List<dvt.c> $$1, List<dvt.c> $$2, List<dvt.c> $$3) {
+      if ($$0.c != null) {
+         $$2.add($$0);
+      } else if (!$$0.b.b().o() && $$0.b.r(cmb.a, gu.b)) {
+         $$1.add($$0);
+      } else {
+         $$3.add($$0);
+      }
+   }
+
+   private static List<dvt.c> a(List<dvt.c> $$0, List<dvt.c> $$1, List<dvt.c> $$2) {
+      Comparator<dvt.c> $$3 = Comparator.<dvt.c>comparingInt($$0x -> $$0x.a.v()).thenComparingInt($$0x -> $$0x.a.u()).thenComparingInt($$0x -> $$0x.a.w());
+      $$0.sort($$3);
+      $$2.sort($$3);
+      $$1.sort($$3);
+      List<dvt.c> $$4 = Lists.newArrayList();
+      $$4.addAll($$0);
+      $$4.addAll($$2);
+      $$4.addAll($$1);
+      return $$4;
+   }
+
+   private void a(cmm $$0, gu $$1, gu $$2) {
+      List<bfj> $$3 = $$0.a(bfj.class, new eed($$1, $$2), $$0x -> !($$0x instanceof byo));
+      this.m.clear();
+
+      for (bfj $$4 : $$3) {
+         eei $$5 = new eei($$4.dn() - (double)$$1.u(), $$4.dp() - (double)$$1.v(), $$4.dt() - (double)$$1.w());
+         qr $$6 = new qr();
+         $$4.e($$6);
+         gu $$7;
+         if ($$4 instanceof bvc) {
+            $$7 = ((bvc)$$4).y().b($$1);
+         } else {
+            $$7 = gu.a($$5);
+         }
+
+         this.m.add(new dvt.d($$5, $$7, $$6.h()));
+      }
+   }
+
+   public List<dvt.c> a(gu $$0, dvp $$1, cpn $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   public ObjectArrayList<dvt.c> a(gu $$0, dvp $$1, cpn $$2, boolean $$3) {
+      ObjectArrayList<dvt.c> $$4 = new ObjectArrayList();
+      drs $$5 = $$1.g();
+      if (this.l.isEmpty()) {
+         return $$4;
+      } else {
+         for (dvt.c $$6 : $$1.a(this.l, $$0).a($$2)) {
+            gu $$7 = $$3 ? a($$1, $$6.a).a((hz)$$0) : $$6.a;
+            if ($$5 == null || $$5.b($$7)) {
+               $$4.add(new dvt.c($$7, $$6.b.a($$1.d()), $$6.c));
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public gu a(dvp $$0, gu $$1, dvp $$2, gu $$3) {
+      gu $$4 = a($$0, $$1);
+      gu $$5 = a($$2, $$3);
+      return $$4.b($$5);
+   }
+
+   public static gu a(dvp $$0, gu $$1) {
+      return a($$1, $$0.c(), $$0.d(), $$0.e());
+   }
+
+   public boolean a(cnb $$0, gu $$1, gu $$2, dvp $$3, apf $$4, int $$5) {
+      if (this.l.isEmpty()) {
+         return false;
+      } else {
+         List<dvt.c> $$6 = $$3.a(this.l, $$1).a();
+         if ((!$$6.isEmpty() || !$$3.f() && !this.m.isEmpty()) && this.n.u() >= 1 && this.n.v() >= 1 && this.n.w() >= 1) {
+            drs $$7 = $$3.g();
+            List<gu> $$8 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<gu> $$9 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<Pair<gu, qr>> $$10 = Lists.newArrayListWithCapacity($$6.size());
+            int $$11 = Integer.MAX_VALUE;
+            int $$12 = Integer.MAX_VALUE;
+            int $$13 = Integer.MAX_VALUE;
+            int $$14 = Integer.MIN_VALUE;
+            int $$15 = Integer.MIN_VALUE;
+            int $$16 = Integer.MIN_VALUE;
+
+            for (dvt.c $$18 : a($$0, $$1, $$2, $$3, $$6)) {
+               gu $$19 = $$18.a;
+               if ($$7 == null || $$7.b($$19)) {
+                  dxe $$20 = $$3.j() ? $$0.b_($$19) : null;
+                  dcb $$21 = $$18.b.a($$3.c()).a($$3.d());
+                  if ($$18.c != null) {
+                     czn $$22 = $$0.c_($$19);
+                     bdo.a_($$22);
+                     $$0.a($$19, cpo.hW.n(), 20);
+                  }
+
+                  if ($$0.a($$19, $$21, $$5)) {
+                     $$11 = Math.min($$11, $$19.u());
+                     $$12 = Math.min($$12, $$19.v());
+                     $$13 = Math.min($$13, $$19.w());
+                     $$14 = Math.max($$14, $$19.u());
+                     $$15 = Math.max($$15, $$19.v());
+                     $$16 = Math.max($$16, $$19.w());
+                     $$10.add(Pair.of($$19, $$18.c));
+                     if ($$18.c != null) {
+                        czn $$23 = $$0.c_($$19);
+                        if ($$23 != null) {
+                           if ($$23 instanceof daq) {
+                              $$18.c.a("LootTableSeed", $$4.g());
+                           }
+
+                           $$23.a($$18.c);
+                        }
+                     }
+
+                     if ($$20 != null) {
+                        if ($$21.u().b()) {
+                           $$9.add($$19);
+                        } else if ($$21.b() instanceof cub) {
+                           ((cub)$$21.b()).a($$0, $$19, $$21, $$20);
+                           if (!$$20.b()) {
+                              $$8.add($$19);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            boolean $$24 = true;
+            ha[] $$25 = new ha[]{ha.b, ha.c, ha.f, ha.d, ha.e};
+
+            while ($$24 && !$$8.isEmpty()) {
+               $$24 = false;
+               Iterator<gu> $$26 = $$8.iterator();
+
+               while ($$26.hasNext()) {
+                  gu $$27 = $$26.next();
+                  dxe $$28 = $$0.b_($$27);
+
+                  for (int $$29 = 0; $$29 < $$25.length && !$$28.b(); $$29++) {
+                     gu $$30 = $$27.a($$25[$$29]);
+                     dxe $$31 = $$0.b_($$30);
+                     if ($$31.b() && !$$9.contains($$30)) {
+                        $$28 = $$31;
+                     }
+                  }
+
+                  if ($$28.b()) {
+                     dcb $$32 = $$0.a_($$27);
+                     cpn $$33 = $$32.b();
+                     if ($$33 instanceof cub) {
+                        ((cub)$$33).a($$0, $$27, $$32, $$28);
+                        $$24 = true;
+                        $$26.remove();
+                     }
+                  }
+               }
+            }
+
+            if ($$11 <= $$14) {
+               if (!$$3.h()) {
+                  eer $$34 = new eel($$14 - $$11 + 1, $$15 - $$12 + 1, $$16 - $$13 + 1);
+                  int $$35 = $$11;
+                  int $$36 = $$12;
+                  int $$37 = $$13;
+
+                  for (Pair<gu, qr> $$38 : $$10) {
+                     gu $$39 = (gu)$$38.getFirst();
+                     $$34.c($$39.u() - $$35, $$39.v() - $$36, $$39.w() - $$37);
+                  }
+
+                  a($$0, $$5, $$34, $$35, $$36, $$37);
+               }
+
+               for (Pair<gu, qr> $$40 : $$10) {
+                  gu $$41 = (gu)$$40.getFirst();
+                  if (!$$3.h()) {
+                     dcb $$42 = $$0.a_($$41);
+                     dcb $$43 = cpn.b($$42, $$0, $$41);
+                     if ($$42 != $$43) {
+                        $$0.a($$41, $$43, $$5 & -2 | 16);
+                     }
+
+                     $$0.b($$41, $$43.b());
+                  }
+
+                  if ($$40.getSecond() != null) {
+                     czn $$44 = $$0.c_($$41);
+                     if ($$44 != null) {
+                        $$44.e();
+                     }
+                  }
+               }
+            }
+
+            if (!$$3.f()) {
+               this.a($$0, $$1, $$3.c(), $$3.d(), $$3.e(), $$7, $$3.k());
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   public static void a(cmn $$0, int $$1, eer $$2, int $$3, int $$4, int $$5) {
+      $$2.a(($$5x, $$6, $$7, $$8) -> {
+         gu $$9 = new gu($$3 + $$6, $$4 + $$7, $$5 + $$8);
+         gu $$10 = $$9.a($$5x);
+         dcb $$11 = $$0.a_($$9);
+         dcb $$12 = $$0.a_($$10);
+         dcb $$13 = $$11.a($$5x, $$12, $$0, $$9, $$10);
+         if ($$11 != $$13) {
+            $$0.a($$9, $$13, $$1 & -2);
+         }
+
+         dcb $$14 = $$12.a($$5x.g(), $$13, $$0, $$10, $$9);
+         if ($$12 != $$14) {
+            $$0.a($$10, $$14, $$1 & -2);
+         }
+      });
+   }
+
+   public static List<dvt.c> a(cnb $$0, gu $$1, gu $$2, dvp $$3, List<dvt.c> $$4) {
+      List<dvt.c> $$5 = new ArrayList<>();
+      List<dvt.c> $$6 = new ArrayList<>();
+
+      for (dvt.c $$7 : $$4) {
+         gu $$8 = a($$3, $$7.a).a((hz)$$1);
+         dvt.c $$9 = new dvt.c($$8, $$7.b, $$7.c != null ? $$7.c.h() : null);
+         Iterator<dvq> $$10 = $$3.i().iterator();
+
+         while ($$9 != null && $$10.hasNext()) {
+            $$9 = $$10.next().a($$0, $$1, $$2, $$7, $$9, $$3);
+         }
+
+         if ($$9 != null) {
+            $$6.add($$9);
+            $$5.add($$7);
+         }
+      }
+
+      for (dvq $$11 : $$3.i()) {
+         $$6 = $$11.a($$0, $$1, $$2, $$5, $$6, $$3);
+      }
+
+      return $$6;
+   }
+
+   private void a(cnb $$0, gu $$1, cui $$2, cvz $$3, gu $$4, @Nullable drs $$5, boolean $$6) {
+      for (dvt.d $$7 : this.m) {
+         gu $$8 = a($$7.b, $$2, $$3, $$4).a((hz)$$1);
+         if ($$5 == null || $$5.b($$8)) {
+            qr $$9 = $$7.c.h();
+            eei $$10 = a($$7.a, $$2, $$3, $$4);
+            eei $$11 = $$10.b((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            qx $$12 = new qx();
+            $$12.add(qs.a($$11.c));
+            $$12.add(qs.a($$11.d));
+            $$12.add(qs.a($$11.e));
+            $$9.a("Pos", $$12);
+            $$9.r("UUID");
+            a($$0, $$9).ifPresent($$6x -> {
+               float $$7x = $$6x.a($$3);
+               $$7x += $$6x.a($$2) - $$6x.dy();
+               $$6x.b($$11.c, $$11.d, $$11.e, $$7x, $$6x.dA());
+               if ($$6 && $$6x instanceof bgb) {
+                  ((bgb)$$6x).a($$0, $$0.d_(gu.a($$11)), bgd.d, null, $$9);
+               }
+
+               $$0.a_($$6x);
+            });
+         }
+      }
+   }
+
+   private static Optional<bfj> a(cnb $$0, qr $$1) {
+      try {
+         return bfn.a($$1, $$0.C());
+      } catch (Exception var3) {
+         return Optional.empty();
+      }
+   }
+
+   public hz a(cvz $$0) {
+      switch ($$0) {
+         case d:
+         case b:
+            return new hz(this.n.w(), this.n.v(), this.n.u());
+         default:
+            return this.n;
+      }
+   }
+
+   public static gu a(gu $$0, cui $$1, cvz $$2, gu $$3) {
+      int $$4 = $$0.u();
+      int $$5 = $$0.v();
+      int $$6 = $$0.w();
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = -$$6;
+            break;
+         case c:
+            $$4 = -$$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new gu($$8 - $$9 + $$6, $$5, $$8 + $$9 - $$4);
+         case b:
+            return new gu($$8 + $$9 - $$6, $$5, $$9 - $$8 + $$4);
+         case c:
+            return new gu($$8 + $$8 - $$4, $$5, $$9 + $$9 - $$6);
+         default:
+            return $$7 ? new gu($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public static eei a(eei $$0, cui $$1, cvz $$2, gu $$3) {
+      double $$4 = $$0.c;
+      double $$5 = $$0.d;
+      double $$6 = $$0.e;
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = 1.0 - $$6;
+            break;
+         case c:
+            $$4 = 1.0 - $$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new eei((double)($$8 - $$9) + $$6, $$5, (double)($$8 + $$9 + 1) - $$4);
+         case b:
+            return new eei((double)($$8 + $$9 + 1) - $$6, $$5, (double)($$9 - $$8) + $$4);
+         case c:
+            return new eei((double)($$8 + $$8 + 1) - $$4, $$5, (double)($$9 + $$9 + 1) - $$6);
+         default:
+            return $$7 ? new eei($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public gu a(gu $$0, cui $$1, cvz $$2) {
+      return a($$0, $$1, $$2, this.a().u(), this.a().w());
+   }
+
+   public static gu a(gu $$0, cui $$1, cvz $$2, int $$3, int $$4) {
+      $$3--;
+      $$4--;
+      int $$5 = $$1 == cui.c ? $$3 : 0;
+      int $$6 = $$1 == cui.b ? $$4 : 0;
+      gu $$7 = $$0;
+      switch ($$2) {
+         case d:
+            $$7 = $$0.b($$6, 0, $$3 - $$5);
+            break;
+         case b:
+            $$7 = $$0.b($$4 - $$6, 0, $$5);
+            break;
+         case c:
+            $$7 = $$0.b($$3 - $$5, 0, $$4 - $$6);
+            break;
+         case a:
+            $$7 = $$0.b($$5, 0, $$6);
+      }
+
+      return $$7;
+   }
+
+   public drs b(dvp $$0, gu $$1) {
+      return this.a($$1, $$0.d(), $$0.e(), $$0.c());
+   }
+
+   public drs a(gu $$0, cvz $$1, gu $$2, cui $$3) {
+      return a($$0, $$1, $$2, $$3, this.n);
+   }
+
+   @VisibleForTesting
+   protected static drs a(gu $$0, cvz $$1, gu $$2, cui $$3, hz $$4) {
+      hz $$5 = $$4.c(-1, -1, -1);
+      gu $$6 = a(gu.b, $$3, $$1, $$2);
+      gu $$7 = a(gu.b.a($$5), $$3, $$1, $$2);
+      return drs.a($$6, $$7).a((hz)$$0);
+   }
+
+   public qr a(qr $$0) {
+      if (this.l.isEmpty()) {
+         $$0.a("blocks", new qx());
+         $$0.a("palette", new qx());
+      } else {
+         List<dvt.b> $$1 = Lists.newArrayList();
+         dvt.b $$2 = new dvt.b();
+         $$1.add($$2);
+
+         for (int $$3 = 1; $$3 < this.l.size(); $$3++) {
+            $$1.add(new dvt.b());
+         }
+
+         qx $$4 = new qx();
+         List<dvt.c> $$5 = this.l.get(0).a();
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            dvt.c $$7 = $$5.get($$6);
+            qr $$8 = new qr();
+            $$8.a("pos", this.a($$7.a.u(), $$7.a.v(), $$7.a.w()));
+            int $$9 = $$2.a($$7.b);
+            $$8.a("state", $$9);
+            if ($$7.c != null) {
+               $$8.a("nbt", $$7.c);
+            }
+
+            $$4.add($$8);
+
+            for (int $$10 = 1; $$10 < this.l.size(); $$10++) {
+               dvt.b $$11 = $$1.get($$10);
+               $$11.a(this.l.get($$10).a().get($$6).b, $$9);
+            }
+         }
+
+         $$0.a("blocks", $$4);
+         if ($$1.size() == 1) {
+            qx $$12 = new qx();
+
+            for (dcb $$13 : $$2) {
+               $$12.add(rd.a($$13));
+            }
+
+            $$0.a("palette", $$12);
+         } else {
+            qx $$14 = new qx();
+
+            for (dvt.b $$15 : $$1) {
+               qx $$16 = new qx();
+
+               for (dcb $$17 : $$15) {
+                  $$16.add(rd.a($$17));
+               }
+
+               $$14.add($$16);
+            }
+
+            $$0.a("palettes", $$14);
+         }
+      }
+
+      qx $$18 = new qx();
+
+      for (dvt.d $$19 : this.m) {
+         qr $$20 = new qr();
+         $$20.a("pos", this.a($$19.a.c, $$19.a.d, $$19.a.e));
+         $$20.a("blockPos", this.a($$19.b.u(), $$19.b.v(), $$19.b.w()));
+         if ($$19.c != null) {
+            $$20.a("nbt", $$19.c);
+         }
+
+         $$18.add($$20);
+      }
+
+      $$0.a("entities", $$18);
+      $$0.a("size", this.a(this.n.u(), this.n.v(), this.n.w()));
+      return rd.g($$0);
+   }
+
+   public void a(hf<cpn> $$0, qr $$1) {
+      this.l.clear();
+      this.m.clear();
+      qx $$2 = $$1.c("size", 3);
+      this.n = new hz($$2.e(0), $$2.e(1), $$2.e(2));
+      qx $$3 = $$1.c("blocks", 10);
+      if ($$1.b("palettes", 9)) {
+         qx $$4 = $$1.c("palettes", 9);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            this.a($$0, $$4.b($$5), $$3);
+         }
+      } else {
+         this.a($$0, $$1.c("palette", 10), $$3);
+      }
+
+      qx $$6 = $$1.c("entities", 10);
+
+      for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+         qr $$8 = $$6.a($$7);
+         qx $$9 = $$8.c("pos", 6);
+         eei $$10 = new eei($$9.h(0), $$9.h(1), $$9.h(2));
+         qx $$11 = $$8.c("blockPos", 3);
+         gu $$12 = new gu($$11.e(0), $$11.e(1), $$11.e(2));
+         if ($$8.e("nbt")) {
+            qr $$13 = $$8.p("nbt");
+            this.m.add(new dvt.d($$10, $$12, $$13));
+         }
+      }
+   }
+
+   private void a(hf<cpn> $$0, qx $$1, qx $$2) {
+      dvt.b $$3 = new dvt.b();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         $$3.a(rd.a($$0, $$1.a($$4)), $$4);
+      }
+
+      List<dvt.c> $$5 = Lists.newArrayList();
+      List<dvt.c> $$6 = Lists.newArrayList();
+      List<dvt.c> $$7 = Lists.newArrayList();
+
+      for (int $$8 = 0; $$8 < $$2.size(); $$8++) {
+         qr $$9 = $$2.a($$8);
+         qx $$10 = $$9.c("pos", 3);
+         gu $$11 = new gu($$10.e(0), $$10.e(1), $$10.e(2));
+         dcb $$12 = $$3.a($$9.h("state"));
+         qr $$13;
+         if ($$9.e("nbt")) {
+            $$13 = $$9.p("nbt");
+         } else {
+            $$13 = null;
+         }
+
+         dvt.c $$15 = new dvt.c($$11, $$12, $$13);
+         a($$15, $$5, $$6, $$7);
+      }
+
+      List<dvt.c> $$16 = a($$5, $$6, $$7);
+      this.l.add(new dvt.a($$16));
+   }
+
+   private qx a(int... $$0) {
+      qx $$1 = new qx();
+
+      for (int $$2 : $$0) {
+         $$1.add(qw.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private qx a(double... $$0) {
+      qx $$1 = new qx();
+
+      for (double $$2 : $$0) {
+         $$1.add(qs.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public static final class a {
+      private final List<dvt.c> a;
+      private final Map<cpn, List<dvt.c>> b = Maps.newHashMap();
+
+      a(List<dvt.c> $$0) {
+         this.a = $$0;
+      }
+
+      public List<dvt.c> a() {
+         return this.a;
+      }
+
+      public List<dvt.c> a(cpn $$0) {
+         return this.b.computeIfAbsent($$0, $$0x -> this.a.stream().filter($$1 -> $$1.b.a($$0x)).collect(Collectors.toList()));
+      }
+   }
+
+   static class b implements Iterable<dcb> {
+      public static final dcb a = cpo.a.n();
+      private final hk<dcb> b = new hk<>(16);
+      private int c;
+
+      public int a(dcb $$0) {
+         int $$1 = this.b.a($$0);
+         if ($$1 == -1) {
+            $$1 = this.c++;
+            this.b.a($$0, $$1);
+         }
+
+         return $$1;
+      }
+
+      @Nullable
+      public dcb a(int $$0) {
+         dcb $$1 = this.b.a($$0);
+         return $$1 == null ? a : $$1;
+      }
+
+      @Override
+      public Iterator<dcb> iterator() {
+         return this.b.iterator();
+      }
+
+      public void a(dcb $$0, int $$1) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public static record c(gu a, dcb b, @Nullable qr c) {
+
+      @Override
+      public String toString() {
+         return String.format(Locale.ROOT, "<StructureBlockInfo | %s | %s | %s>", this.a, this.b, this.c);
+      }
+   }
+
+   public static class d {
+      public final eei a;
+      public final gu b;
+      public final qr c;
+
+      public d(eei $$0, gu $$1, qr $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+}

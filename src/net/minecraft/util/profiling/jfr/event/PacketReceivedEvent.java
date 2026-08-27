@@ -4,16 +4,16 @@ import java.net.SocketAddress;
 import jdk.jfr.EventType;
 import jdk.jfr.Label;
 import jdk.jfr.Name;
+import net.minecraft.obfuscate.DontObfuscate;
 
 @Name("minecraft.PacketReceived")
 @Label("Network Packet Received")
-public class PacketReceivedEvent extends PacketEvent {
+@DontObfuscate
+public class PacketReceivedEvent extends bay {
    public static final String NAME = "minecraft.PacketReceived";
    public static final EventType TYPE = EventType.getEventType(PacketReceivedEvent.class);
 
-   public PacketReceivedEvent(
-      final String protocolId, final String packetDirection, final String packetId, final SocketAddress remoteAddress, final int readableBytes
-   ) {
-      super(protocolId, packetDirection, packetId, remoteAddress, readableBytes);
+   public PacketReceivedEvent(int $$0, int $$1, SocketAddress $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 }

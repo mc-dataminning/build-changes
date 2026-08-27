@@ -1,0 +1,245 @@
+public class cvi extends cpd {
+   public static final dcz<ddf> d = dcr.ah;
+   public static final dcs e = dcr.w;
+
+   protected cvi(dca.d $$0) {
+      super(true, $$0);
+      this.k(this.C.b().a(d, ddf.a).a(e, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   }
+
+   protected boolean a(cmm $$0, gu $$1, dcb $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
+      } else {
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         ddf $$9 = $$2.c(d);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = ddf.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
+
+               $$9 = ddf.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = ddf.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
+
+               $$9 = ddf.a;
+         }
+
+         return this.a($$0, new gu($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new gu($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+      }
+   }
+
+   protected boolean a(cmm $$0, gu $$1, boolean $$2, int $$3, ddf $$4) {
+      dcb $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         ddf $$6 = $$5.c(d);
+         if ($$4 != ddf.b || $$6 != ddf.a && $$6 != ddf.e && $$6 != ddf.f) {
+            if ($$4 != ddf.a || $$6 != ddf.b && $$6 != ddf.c && $$6 != ddf.d) {
+               if (!$$5.c(e)) {
+                  return false;
+               } else {
+                  return $$0.B($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
+               return false;
+            }
+         } else {
+            return false;
+         }
+      }
+   }
+
+   @Override
+   protected void a(dcb $$0, cmm $$1, gu $$2, cpn $$3) {
+      boolean $$4 = $$0.c(e);
+      boolean $$5 = $$1.B($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.a(e, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.d(), this);
+         if ($$0.c(d).b()) {
+            $$1.a($$2.c(), this);
+         }
+      }
+   }
+
+   @Override
+   public dde<ddf> b() {
+      return d;
+   }
+
+   @Override
+   public dcb a(dcb $$0, cvz $$1) {
+      switch ($$1) {
+         case c:
+            switch ((ddf)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, ddf.d);
+               case d:
+                  return $$0.a(d, ddf.c);
+               case e:
+                  return $$0.a(d, ddf.f);
+               case f:
+                  return $$0.a(d, ddf.e);
+               case g:
+                  return $$0.a(d, ddf.i);
+               case h:
+                  return $$0.a(d, ddf.j);
+               case i:
+                  return $$0.a(d, ddf.g);
+               case j:
+                  return $$0.a(d, ddf.h);
+            }
+         case d:
+            switch ((ddf)$$0.c(d)) {
+               case a:
+                  return $$0.a(d, ddf.b);
+               case b:
+                  return $$0.a(d, ddf.a);
+               case c:
+                  return $$0.a(d, ddf.e);
+               case d:
+                  return $$0.a(d, ddf.f);
+               case e:
+                  return $$0.a(d, ddf.d);
+               case f:
+                  return $$0.a(d, ddf.c);
+               case g:
+                  return $$0.a(d, ddf.j);
+               case h:
+                  return $$0.a(d, ddf.g);
+               case i:
+                  return $$0.a(d, ddf.h);
+               case j:
+                  return $$0.a(d, ddf.i);
+            }
+         case b:
+            switch ((ddf)$$0.c(d)) {
+               case a:
+                  return $$0.a(d, ddf.b);
+               case b:
+                  return $$0.a(d, ddf.a);
+               case c:
+                  return $$0.a(d, ddf.f);
+               case d:
+                  return $$0.a(d, ddf.e);
+               case e:
+                  return $$0.a(d, ddf.c);
+               case f:
+                  return $$0.a(d, ddf.d);
+               case g:
+                  return $$0.a(d, ddf.h);
+               case h:
+                  return $$0.a(d, ddf.i);
+               case i:
+                  return $$0.a(d, ddf.j);
+               case j:
+                  return $$0.a(d, ddf.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dcb a(dcb $$0, cui $$1) {
+      ddf $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, ddf.f);
+               case f:
+                  return $$0.a(d, ddf.e);
+               case g:
+                  return $$0.a(d, ddf.j);
+               case h:
+                  return $$0.a(d, ddf.i);
+               case i:
+                  return $$0.a(d, ddf.h);
+               case j:
+                  return $$0.a(d, ddf.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, ddf.d);
+               case d:
+                  return $$0.a(d, ddf.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, ddf.h);
+               case h:
+                  return $$0.a(d, ddf.g);
+               case i:
+                  return $$0.a(d, ddf.j);
+               case j:
+                  return $$0.a(d, ddf.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dcc.a<cpn, dcb> $$0) {
+      $$0.a(d, e, c);
+   }
+}

@@ -6,7 +6,6 @@
     "minecraft:unattributed_fireball",
     "minecraft:fireball",
     "minecraft:wither_skull",
-    "minecraft:thrown",
-    "minecraft:wind_charge"
+    "minecraft:thrown"
   ]
 }

@@ -6,10 +6,7 @@
         },
         {
             "type": "reference",
-            "id": "minecraft:include/default",
-            "filter": {
-                "uniform": false
-            }
+            "id": "minecraft:include/default"
         },
         {
             "type": "reference",

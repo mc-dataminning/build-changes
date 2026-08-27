@@ -1,9 +1,11 @@
 package net.minecraft.server;
 
-import com.mojang.authlib.services.MinecraftServicesDiscoveryService;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
@@ -15,330 +17,215 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 import joptsimple.util.PathConverter;
 import joptsimple.util.PathProperties;
-import net.minecraft.CrashReport;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import net.minecraft.server.dedicated.DedicatedServerSettings;
-import net.minecraft.server.jsonrpc.JsonRpc;
-import net.minecraft.server.jsonrpc.ManagementServer;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.profiling.jfr.Environment;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-import net.minecraft.util.worldupdate.WorldUpgrader;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraft.world.level.storage.WorldData;
-import org.jspecify.annotations.Nullable;
+import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
 public class Main {
-   private static final Logger LOGGER = LogUtils.getLogger();
+   private static final Logger a = LogUtils.getLogger();
 
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
-   public static void main(final String[] args) {
-      SharedConstants.tryDetectVersion();
-      OptionParser parser = new OptionParser();
-      OptionSpec<Void> nogui = parser.accepts("nogui");
-      OptionSpec<Void> initSettings = parser.accepts("initSettings", "Initializes 'server.properties' and 'eula.txt', then quits");
-      OptionSpec<Void> demo = parser.accepts("demo");
-      OptionSpec<Void> bonusChest = parser.accepts("bonusChest");
-      OptionSpec<Void> forceUpgrade = parser.accepts("forceUpgrade");
-      OptionSpec<Void> eraseCache = parser.accepts("eraseCache");
-      OptionSpec<Void> recreateRegionFiles = parser.accepts("recreateRegionFiles");
-      OptionSpec<Void> safeMode = parser.accepts("safeMode", "Loads level with vanilla datapack only");
-      OptionSpec<Void> help = parser.accepts("help").forHelp();
-      OptionSpec<String> universe = parser.accepts("universe").withRequiredArg().defaultsTo(".", new String[0]);
-      OptionSpec<String> worldName = parser.accepts("world").withRequiredArg();
-      OptionSpec<Integer> port = parser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
-      OptionSpec<String> serverId = parser.accepts("serverId").withRequiredArg();
-      OptionSpec<Void> jfrProfilingOption = parser.accepts("jfrProfile");
-      OptionSpec<Path> pidFile = parser.accepts("pidFile").withRequiredArg().withValuesConvertedBy(new PathConverter(new PathProperties[0]));
-      OptionSpec<String> nonOptions = parser.nonOptions();
+   @DontObfuscate
+   public static void main(String[] $$0) {
+      aa.a();
+      OptionParser $$1 = new OptionParser();
+      OptionSpec<Void> $$2 = $$1.accepts("nogui");
+      OptionSpec<Void> $$3 = $$1.accepts("initSettings", "Initializes 'server.properties' and 'eula.txt', then quits");
+      OptionSpec<Void> $$4 = $$1.accepts("demo");
+      OptionSpec<Void> $$5 = $$1.accepts("bonusChest");
+      OptionSpec<Void> $$6 = $$1.accepts("forceUpgrade");
+      OptionSpec<Void> $$7 = $$1.accepts("eraseCache");
+      OptionSpec<Void> $$8 = $$1.accepts("safeMode", "Loads level with vanilla datapack only");
+      OptionSpec<Void> $$9 = $$1.accepts("help").forHelp();
+      OptionSpec<String> $$10 = $$1.accepts("singleplayer").withRequiredArg();
+      OptionSpec<String> $$11 = $$1.accepts("universe").withRequiredArg().defaultsTo(".", new String[0]);
+      OptionSpec<String> $$12 = $$1.accepts("world").withRequiredArg();
+      OptionSpec<Integer> $$13 = $$1.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
+      OptionSpec<String> $$14 = $$1.accepts("serverId").withRequiredArg();
+      OptionSpec<Void> $$15 = $$1.accepts("jfrProfile");
+      OptionSpec<Path> $$16 = $$1.accepts("pidFile").withRequiredArg().withValuesConvertedBy(new PathConverter(new PathProperties[0]));
+      OptionSpec<String> $$17 = $$1.nonOptions();
 
       try {
-         OptionSet options = parser.parse(args);
-         if (options.has(help)) {
-            parser.printHelpOn(System.err);
+         OptionSet $$18 = $$1.parse($$0);
+         if ($$18.has($$9)) {
+            $$1.printHelpOn(System.err);
             return;
          }
 
-         Path pidFilePath = (Path)options.valueOf(pidFile);
-         if (pidFilePath != null) {
-            writePidFile(pidFilePath);
+         Path $$19 = (Path)$$18.valueOf($$16);
+         if ($$19 != null) {
+            a($$19);
          }
 
-         CrashReport.preload();
-         if (options.has(jfrProfilingOption)) {
-            JvmProfiler.INSTANCE.start(Environment.SERVER);
+         o.h();
+         if ($$18.has($$15)) {
+            bat.e.a(bar.b);
          }
 
-         Bootstrap.bootStrap();
-         Bootstrap.validate();
-         Util.startTimerHackThread();
-         Path settingsFile = Paths.get("server.properties");
-         DedicatedServerSettings settings = new DedicatedServerSettings(settingsFile);
-         settings.forceSave();
-         RegionFileVersion.configure(settings.getProperties().regionFileComression);
-         Path eulaFile = Paths.get("eula.txt");
-         Eula eula = new Eula(eulaFile);
-         if (options.has(initSettings)) {
-            LOGGER.info("Initialized '{}' and '{}'", settingsFile.toAbsolutePath(), eulaFile.toAbsolutePath());
+         acs.a();
+         acs.c();
+         ac.l();
+         Path $$20 = Paths.get("server.properties");
+         ahg $$21 = new ahg($$20);
+         $$21.b();
+         Path $$22 = Paths.get("eula.txt");
+         acw $$23 = new acw($$22);
+         if ($$18.has($$3)) {
+            a.info("Initialized '{}' and '{}'", $$20.toAbsolutePath(), $$22.toAbsolutePath());
             return;
          }
 
-         if (!eula.hasAgreedToEULA()) {
-            LOGGER.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
+         if (!$$23.a()) {
+            a.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
             return;
          }
 
-         File universePath = new File((String)options.valueOf(universe));
-         Services services = Services.create(MinecraftServicesDiscoveryService.create(Proxy.NO_PROXY), universePath);
-         NotificationManager notificationManager = new NotificationManager();
-         ManagementServer jsonRpcServer = JsonRpc.create(settings, notificationManager);
-         String levelName = (String)Optional.ofNullable((String)options.valueOf(worldName)).orElse(settings.getProperties().levelName);
-         LevelStorageSource levelStorageSource = LevelStorageSource.createDefault(universePath.toPath());
-         LevelStorageSource.LevelStorageAccess access = levelStorageSource.validateAndCreateAccess(levelName);
-         Dynamic<?> levelDataTag;
-         if (access.hasWorldData()) {
-            Dynamic<?> levelDataUnfixed;
-            try {
-               levelDataUnfixed = access.getUnfixedDataTagWithFallback();
-            } catch (NbtException | ReportedNbtException | IOException var41) {
-               LOGGER.error("Failed to load world data. World files may be corrupted. Shutting down.", var41);
+         File $$24 = new File((String)$$18.valueOf($$11));
+         adh $$25 = adh.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
+         String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().m);
+         dyy $$27 = dyy.b($$24.toPath());
+         dyy.c $$28 = $$27.c($$26);
+         dyz $$29 = $$28.c();
+         if ($$29 != null) {
+            if ($$29.d()) {
+               a.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
                return;
             }
 
-            LevelSummary summary = access.fixAndGetSummaryFromTag(levelDataUnfixed);
-            if (summary.requiresManualConversion()) {
-               LOGGER.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
+            if (!$$29.r()) {
+               a.info("This world was created by an incompatible version.");
                return;
             }
-
-            if (!summary.isCompatible()) {
-               LOGGER.info("This world was created by an incompatible version.");
-               return;
-            }
-
-            levelDataTag = DataFixers.getFileFixer().fix(access, levelDataUnfixed, new UpgradeProgress(notificationManager));
-         } else {
-            levelDataTag = null;
          }
 
-         boolean safeModeEnabled = options.has(safeMode);
-         if (safeModeEnabled) {
-            LOGGER.warn("Safe mode active, only vanilla datapack will be loaded");
+         boolean $$30 = $$18.has($$8);
+         if ($$30) {
+            a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         PackRepository packRepository = ServerPacksSource.createPackRepository(access);
+         aki $$31 = akl.a($$28.a(dyw.j));
 
-         WorldStem worldStem;
+         adk $$33;
          try {
-            WorldLoader.InitConfig worldLoadConfig = loadOrCreateConfig(settings.getProperties(), levelDataTag, safeModeEnabled, packRepository);
-            worldStem = Util.<WorldStem>blockUntilDone(
-                  executor -> WorldLoader.load(
-                        worldLoadConfig,
-                        context -> {
-                           Registry<LevelStem> datapackDimensions = context.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM);
-                           if (levelDataTag != null) {
-                              LevelDataAndDimensions worldData = LevelStorageSource.getLevelDataAndDimensions(
-                                 access, levelDataTag, context.dataConfiguration(), datapackDimensions, context.datapackWorldRegistries()
-                              );
-                              return new WorldLoader.DataLoadOutput<>(worldData.worldDataAndGenSettings(), worldData.dimensions().dimensionsRegistryAccess());
-                           } else {
-                              LOGGER.info("No existing world data, creating new world");
-                              return createNewWorldData(settings, context, datapackDimensions, options.has(demo), options.has(bonusChest));
-                           }
-                        },
-                        WorldStem::new,
-                        Util.backgroundExecutor(),
-                        executor
-                     )
-               )
-               .get();
-         } catch (Exception var40) {
-            LOGGER.warn(
-               "Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var40
-            );
+            adj.c $$32 = a($$21.a(), $$28, $$30, $$31);
+            $$33 = ac.<adk>c($$6x -> adj.a($$32, $$5xx -> {
+                  hr<dfl> $$6xx = $$5xx.d().d(jc.aI);
+                  DynamicOps<rk> $$7x = aco.a(rc.a, $$5xx.c());
+                  Pair<dze, dif.b> $$8x = $$28.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
+                  if ($$8x != null) {
+                     return new adj.b<>((dze)$$8x.getFirst(), ((dif.b)$$8x.getSecond()).b());
+                  } else {
+                     cmq $$9x;
+                     dii $$10x;
+                     dif $$11x;
+                     if ($$18.has($$4)) {
+                        $$9x = MinecraftServer.f;
+                        $$10x = dii.b;
+                        $$11x = drq.a($$5xx.c());
+                     } else {
+                        ahf $$12x = $$21.a();
+                        $$9x = new cmq($$12x.m, $$12x.l, $$12x.u, $$12x.k, false, new cmi(), $$5xx.b());
+                        $$10x = $$18.has($$5) ? $$12x.X.a(true) : $$12x.X;
+                        $$11x = $$12x.a($$5xx.c());
+                     }
+
+                     dif.b $$16x = $$11x.a($$6xx);
+                     Lifecycle $$17x = $$16x.a().add($$5xx.c().d());
+                     return new adj.b<>(new dzc($$9x, $$10x, $$16x.d(), $$17x), $$16x.b());
+                  }
+               }, adk::new, ac.f(), $$6x)).get();
+         } catch (Exception var37) {
+            a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var37);
             return;
          }
 
-         RegistryAccess.Frozen registryHolder = worldStem.registries().compositeAccess();
-         WorldData data = worldStem.worldDataAndGenSettings().data();
-         boolean recreateRegionFilesValue = options.has(recreateRegionFiles);
-         if (options.has(forceUpgrade) || recreateRegionFilesValue) {
-            forceUpgrade(access, DataFixers.getDataFixer(), options.has(eraseCache), () -> true, registryHolder, recreateRegionFilesValue);
+         hs.b $$36 = $$33.c().a();
+         if ($$18.has($$6)) {
+            a($$28, aqd.a(), $$18.has($$7), () -> true, $$36.d(jc.aI));
          }
 
-         access.saveDataTag(data);
-         final DedicatedServer dedicatedServer = MinecraftServer.spin(
-            thread -> {
-               DedicatedServer server = new DedicatedServer(
-                  thread,
-                  access,
-                  packRepository,
-                  worldStem,
-                  Optional.empty(),
-                  settings,
-                  DataFixers.getDataFixer(),
-                  services,
-                  jsonRpcServer,
-                  notificationManager
-               );
-               notificationManager.setServer(server);
-               server.setPort((Integer)options.valueOf(port));
-               server.setDemo(options.has(demo));
-               server.setId((String)options.valueOf(serverId));
-               boolean gui = !options.has(nogui) && !options.valuesOf(nonOptions).contains("nogui");
-               if (gui && !GraphicsEnvironment.isHeadless()) {
-                  server.showGui();
-               }
-
-               return server;
+         dze $$37 = $$33.d();
+         $$28.a($$36, $$37);
+         final ahe $$38 = MinecraftServer.a((Function<Thread, ahe>)($$12x -> {
+            ahe $$13x = new ahe($$12x, $$28, $$31, $$33, $$21, aqd.a(), $$25, aiq::new);
+            $$13x.b($$18.has($$10) ? new GameProfile(null, (String)$$18.valueOf($$10)) : null);
+            $$13x.a((Integer)$$18.valueOf($$13));
+            $$13x.c($$18.has($$4));
+            $$13x.b((String)$$18.valueOf($$14));
+            boolean $$14x = !$$18.has($$2) && !$$18.valuesOf($$17).contains("nogui");
+            if ($$14x && !GraphicsEnvironment.isHeadless()) {
+               $$13x.bh();
             }
-         );
-         Thread shutdownThread = new Thread("Server Shutdown Thread") {
+
+            return $$13x;
+         }));
+         Thread $$39 = new Thread("Server Shutdown Thread") {
             @Override
             public void run() {
-               dedicatedServer.halt(true);
+               $$38.a(true);
             }
          };
-         shutdownThread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-         Runtime.getRuntime().addShutdownHook(shutdownThread);
-      } catch (Throwable var42) {
-         LOGGER.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", var42);
+         $$39.setUncaughtExceptionHandler(new r(a));
+         Runtime.getRuntime().addShutdownHook($$39);
+      } catch (Exception var38) {
+         a.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", var38);
       }
    }
 
-   private static WorldLoader.DataLoadOutput<LevelDataAndDimensions.WorldDataAndGenSettings> createNewWorldData(
-      final DedicatedServerSettings settings,
-      final WorldLoader.DataLoadContext context,
-      final Registry<LevelStem> datapackDimensions,
-      final boolean demoMode,
-      final boolean bonusChest
-   ) {
-      LevelSettings createLevelSettings;
-      WorldOptions worldOptions;
-      WorldDimensions dimensions;
-      if (demoMode) {
-         createLevelSettings = MinecraftServer.DEMO_SETTINGS;
-         worldOptions = WorldOptions.DEMO_OPTIONS;
-         dimensions = WorldPresets.createNormalWorldDimensions(context.datapackWorldRegistries());
-      } else {
-         DedicatedServerProperties properties = settings.getProperties();
-         createLevelSettings = new LevelSettings(
-            properties.levelName,
-            properties.gameMode.get(),
-            new LevelSettings.DifficultySettings(properties.difficulty.get(), properties.hardcore, false),
-            false,
-            context.dataConfiguration()
-         );
-         worldOptions = bonusChest ? properties.worldOptions.withBonusChest(true) : properties.worldOptions;
-         dimensions = properties.createDimensions(context.datapackWorldRegistries());
-      }
-
-      WorldDimensions.Complete finalDimensions = dimensions.bake(datapackDimensions);
-      Lifecycle lifecycle = finalDimensions.lifecycle().add(context.datapackWorldRegistries().allRegistriesLifecycle());
-      PrimaryLevelData primaryLevelData = new PrimaryLevelData(createLevelSettings, finalDimensions.specialWorldProperty(), lifecycle);
-      return new WorldLoader.DataLoadOutput<>(
-         new LevelDataAndDimensions.WorldDataAndGenSettings(primaryLevelData, new WorldGenSettings(worldOptions, dimensions)),
-         finalDimensions.dimensionsRegistryAccess()
-      );
-   }
-
-   private static void writePidFile(final Path path) {
+   private static void a(Path $$0) {
       try {
-         long pid = ProcessHandle.current().pid();
-         Files.writeString(path, Long.toString(pid));
+         long $$1 = ProcessHandle.current().pid();
+         Files.writeString($$0, Long.toString($$1));
       } catch (IOException var3) {
          throw new UncheckedIOException(var3);
       }
    }
 
-   private static WorldLoader.InitConfig loadOrCreateConfig(
-      final DedicatedServerProperties properties, @Nullable final Dynamic<?> levelDataTag, final boolean safeModeEnabled, final PackRepository packRepository
-   ) {
-      boolean initMode;
-      WorldDataConfiguration dataConfigToUse;
-      if (levelDataTag != null) {
-         WorldDataConfiguration storedConfiguration = LevelStorageSource.readDataConfig(levelDataTag);
-         initMode = false;
-         dataConfigToUse = storedConfiguration;
+   private static adj.c a(ahf $$0, dyy.c $$1, boolean $$2, aki $$3) {
+      cnf $$4 = $$1.d();
+      cnf $$6;
+      boolean $$5;
+      if ($$4 != null) {
+         $$5 = false;
+         $$6 = $$4;
       } else {
-         initMode = true;
-         dataConfigToUse = new WorldDataConfiguration(properties.initialDataPackConfiguration, FeatureFlags.DEFAULT_FLAGS);
+         $$5 = true;
+         $$6 = new cnf($$0.T, cay.f);
       }
 
-      WorldLoader.PackConfig packConfig = new WorldLoader.PackConfig(packRepository, dataConfigToUse, safeModeEnabled, initMode);
-      return new WorldLoader.InitConfig(packConfig, Commands.CommandSelection.DEDICATED, properties.functionPermissions);
+      adj.d $$9 = new adj.d($$3, $$6, $$2, $$5);
+      return new adj.c($$9, dt.a.b, $$0.B);
    }
 
-   private static void forceUpgrade(
-      final LevelStorageSource.LevelStorageAccess storageSource,
-      final DataFixer fixerUpper,
-      final boolean eraseCache,
-      final BooleanSupplier isRunning,
-      final RegistryAccess registryAccess,
-      final boolean recreateRegionFiles
-   ) {
-      LOGGER.info("Forcing world upgrade!");
+   private static void a(dyy.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, hr<dfl> $$4) {
+      a.info("Forcing world upgrade!");
+      bdl $$5 = new bdl($$0, $$1, $$4, $$2);
+      sw $$6 = null;
 
-      try (WorldUpgrader upgrader = new WorldUpgrader(storageSource, fixerUpper, registryAccess, eraseCache, recreateRegionFiles)) {
-         Component lastStatus = null;
+      while (!$$5.b()) {
+         sw $$7 = $$5.h();
+         if ($$6 != $$7) {
+            $$6 = $$7;
+            a.info($$5.h().getString());
+         }
 
-         while (!upgrader.isFinished()) {
-            Component status = upgrader.getStatus();
-            if (lastStatus != status) {
-               lastStatus = status;
-               LOGGER.info("{}", upgrader.getStatus().getString());
-            }
+         int $$8 = $$5.e();
+         if ($$8 > 0) {
+            int $$9 = $$5.f() + $$5.g();
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{apa.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
+         }
 
-            int totalChunks = upgrader.getTotalChunks();
-            if (totalChunks > 0) {
-               int done = upgrader.getConverted() + upgrader.getSkipped();
-               LOGGER.info("{}% completed ({} / {} chunks)...", new Object[]{Mth.floor((float)done / (float)totalChunks * 100.0F), done, totalChunks});
-            }
-
-            if (!isRunning.getAsBoolean()) {
-               upgrader.cancel();
-            } else {
-               try {
-                  Thread.sleep(1000L);
-               } catch (InterruptedException var12) {
-               }
+         if (!$$3.getAsBoolean()) {
+            $$5.a();
+         } else {
+            try {
+               Thread.sleep(1000L);
+            } catch (InterruptedException var10) {
             }
          }
       }

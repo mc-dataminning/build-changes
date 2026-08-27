@@ -1,6 +1,0 @@
-// 26.3-snapshot-10	2026-08-27T22:57:26.8244053	vanilla/Tags for minecraft:potion
-cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\extinguishes_entities.json
-cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\douses_fire.json
-cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\hurts_water_sensitive_entities.json
-cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\rehydrates_axolotls.json
-e35d58dcce513cf3ea2a090c8ce8de88cbb59d67 data\minecraft\tags\potion\tradeable.json

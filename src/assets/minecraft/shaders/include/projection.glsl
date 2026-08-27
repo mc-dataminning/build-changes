@@ -1,6 +1,4 @@
-layout(std140) uniform Projection {
-    mat4 ProjMat;
-};
+#version 150
 
 vec4 projection_from_position(vec4 position) {
     vec4 projection = position * 0.5;

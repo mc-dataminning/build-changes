@@ -1,0 +1,143 @@
+public interface esj {
+   esj a(int var1);
+
+   esj a(int var1, int var2);
+
+   esj a(int var1, int var2, int var3, int var4);
+
+   esj b(int var1);
+
+   esj c(int var1);
+
+   esj d(int var1);
+
+   esj e(int var1);
+
+   esj f(int var1);
+
+   esj g(int var1);
+
+   esj a(float var1, float var2);
+
+   esj a(float var1);
+
+   esj b(float var1);
+
+   default esj a() {
+      return this.a(0.0F);
+   }
+
+   default esj b() {
+      return this.a(0.5F);
+   }
+
+   default esj c() {
+      return this.a(1.0F);
+   }
+
+   default esj d() {
+      return this.b(0.0F);
+   }
+
+   default esj e() {
+      return this.b(0.5F);
+   }
+
+   default esj f() {
+      return this.b(1.0F);
+   }
+
+   esj g();
+
+   esj.a h();
+
+   static esj i() {
+      return new esj.a();
+   }
+
+   public static class a implements esj {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
+      }
+
+      public a(esj.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public esj.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public esj.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public esj.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public esj.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public esj.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public esj.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public esj.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public esj.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public esj.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public esj.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public esj.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public esj.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public esj.a j() {
+         return new esj.a(this);
+      }
+
+      @Override
+      public esj.a h() {
+         return this;
+      }
+   }
+}

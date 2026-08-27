@@ -10,12 +10,14 @@ import jdk.jfr.Label;
 import jdk.jfr.Name;
 import jdk.jfr.Period;
 import jdk.jfr.StackTrace;
+import net.minecraft.obfuscate.DontObfuscate;
 
 @Name("minecraft.NetworkSummary")
 @Label("Network Summary")
 @Category({"Minecraft", "Network"})
 @StackTrace(false)
 @Period("10 s")
+@DontObfuscate
 public class NetworkSummaryEvent extends Event {
    public static final String EVENT_NAME = "minecraft.NetworkSummary";
    public static final EventType TYPE = EventType.getEventType(NetworkSummaryEvent.class);
@@ -37,49 +39,49 @@ public class NetworkSummaryEvent extends Event {
    @Label("Received Packets")
    public int receivedPackets;
 
-   public NetworkSummaryEvent(final String remoteAddress) {
-      this.remoteAddress = remoteAddress;
+   public NetworkSummaryEvent(String $$0) {
+      this.remoteAddress = $$0;
    }
 
-   public static final class Fields {
-      public static final String REMOTE_ADDRESS = "remoteAddress";
-      public static final String SENT_BYTES = "sentBytes";
-      private static final String SENT_PACKETS = "sentPackets";
-      public static final String RECEIVED_BYTES = "receivedBytes";
-      private static final String RECEIVED_PACKETS = "receivedPackets";
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "sentBytes";
+      private static final String d = "sentPackets";
+      public static final String c = "receivedBytes";
+      private static final String e = "receivedPackets";
 
-      private Fields() {
+      private a() {
       }
    }
 
-   public static final class SumAggregation {
-      private final AtomicLong sentBytes = new AtomicLong();
-      private final AtomicInteger sentPackets = new AtomicInteger();
-      private final AtomicLong receivedBytes = new AtomicLong();
-      private final AtomicInteger receivedPackets = new AtomicInteger();
-      private final NetworkSummaryEvent event;
+   public static final class b {
+      private final AtomicLong a = new AtomicLong();
+      private final AtomicInteger b = new AtomicInteger();
+      private final AtomicLong c = new AtomicLong();
+      private final AtomicInteger d = new AtomicInteger();
+      private final NetworkSummaryEvent e;
 
-      public SumAggregation(final String remoteAddress) {
-         this.event = new NetworkSummaryEvent(remoteAddress);
-         this.event.begin();
+      public b(String $$0) {
+         this.e = new NetworkSummaryEvent($$0);
+         this.e.begin();
       }
 
-      public void trackSentPacket(final int size) {
-         this.sentPackets.incrementAndGet();
-         this.sentBytes.addAndGet((long)size);
+      public void a(int $$0) {
+         this.b.incrementAndGet();
+         this.a.addAndGet((long)$$0);
       }
 
-      public void trackReceivedPacket(final int size) {
-         this.receivedPackets.incrementAndGet();
-         this.receivedBytes.addAndGet((long)size);
+      public void b(int $$0) {
+         this.d.incrementAndGet();
+         this.c.addAndGet((long)$$0);
       }
 
-      public void commitEvent() {
-         this.event.sentBytes = this.sentBytes.get();
-         this.event.sentPackets = this.sentPackets.get();
-         this.event.receivedBytes = this.receivedBytes.get();
-         this.event.receivedPackets = this.receivedPackets.get();
-         this.event.commit();
+      public void a() {
+         this.e.sentBytes = this.a.get();
+         this.e.sentPackets = this.b.get();
+         this.e.receivedBytes = this.c.get();
+         this.e.receivedPackets = this.d.get();
+         this.e.commit();
       }
    }
 }

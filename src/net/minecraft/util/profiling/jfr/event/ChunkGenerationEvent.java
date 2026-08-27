@@ -7,15 +7,14 @@ import jdk.jfr.EventType;
 import jdk.jfr.Label;
 import jdk.jfr.Name;
 import jdk.jfr.StackTrace;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
+import net.minecraft.obfuscate.DontObfuscate;
 
 @Name("minecraft.ChunkGeneration")
 @Label("Chunk Generation")
 @Category({"Minecraft", "World Generation"})
 @StackTrace(false)
 @Enabled(false)
+@DontObfuscate
 public class ChunkGenerationEvent extends Event {
    public static final String EVENT_NAME = "minecraft.ChunkGeneration";
    public static final EventType TYPE = EventType.getEventType(ChunkGenerationEvent.class);
@@ -38,24 +37,24 @@ public class ChunkGenerationEvent extends Event {
    @Label("Level")
    public final String level;
 
-   public ChunkGenerationEvent(final ChunkPos pos, final ResourceKey<Level> dimension, final String name) {
-      this.targetStatus = name;
-      this.level = dimension.identifier().toString();
-      this.chunkPosX = pos.x();
-      this.chunkPosZ = pos.z();
-      this.worldPosX = pos.getMinBlockX();
-      this.worldPosZ = pos.getMinBlockZ();
+   public ChunkGenerationEvent(clt $$0, acp<cmm> $$1, String $$2) {
+      this.targetStatus = $$2;
+      this.level = $$1.toString();
+      this.chunkPosX = $$0.e;
+      this.chunkPosZ = $$0.f;
+      this.worldPosX = $$0.d();
+      this.worldPosZ = $$0.e();
    }
 
-   public static class Fields {
-      public static final String WORLD_POS_X = "worldPosX";
-      public static final String WORLD_POS_Z = "worldPosZ";
-      public static final String CHUNK_POS_X = "chunkPosX";
-      public static final String CHUNK_POS_Z = "chunkPosZ";
-      public static final String STATUS = "status";
-      public static final String LEVEL = "level";
+   public static class a {
+      public static final String a = "worldPosX";
+      public static final String b = "worldPosZ";
+      public static final String c = "chunkPosX";
+      public static final String d = "chunkPosZ";
+      public static final String e = "status";
+      public static final String f = "level";
 
-      private Fields() {
+      private a() {
       }
    }
 }

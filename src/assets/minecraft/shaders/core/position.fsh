@@ -1,14 +1,16 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:fog.glsl>
-#include <minecraft:dynamictransforms.glsl>
+#moj_import <fog.glsl>
 
-layout(location = 0) in float sphericalVertexDistance;
-layout(location = 1) in float cylindricalVertexDistance;
+uniform vec4 ColorModulator;
+uniform float FogStart;
+uniform float FogEnd;
+uniform vec4 FogColor;
 
-layout(location = 0) out vec4 fragColor;
+in float vertexDistance;
+
+out vec4 fragColor;
 
 void main() {
-    fragColor = apply_fog(ColorModulator, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+    fragColor = linear_fog(ColorModulator, vertexDistance, FogStart, FogEnd, FogColor);
 }

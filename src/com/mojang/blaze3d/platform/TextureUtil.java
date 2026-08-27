@@ -2,12 +2,6 @@ package com.mojang.blaze3d.platform;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -15,210 +9,122 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.IntUnaryOperator;
-import net.minecraft.util.ARGB;
+import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
+@egb
 public class TextureUtil {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MIN_MIPMAP_LEVEL = 0;
    private static final int DEFAULT_IMAGE_BUFFER_SIZE = 8192;
-   private static final int[][] DIRECTIONS = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-   public static ByteBuffer readResource(final InputStream inputStream) throws IOException {
-      ReadableByteChannel channel = Channels.newChannel(inputStream);
-      return channel instanceof SeekableByteChannel seekableChannel ? readResource(channel, (int)seekableChannel.size() + 1) : readResource(channel, 8192);
+   public static int generateTextureId() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (aa.aS) {
+         int[] $$0 = new int[ThreadLocalRandom.current().nextInt(15) + 1];
+         GlStateManager._genTextures($$0);
+         int $$1 = GlStateManager._genTexture();
+         GlStateManager._deleteTextures($$0);
+         return $$1;
+      } else {
+         return GlStateManager._genTexture();
+      }
    }
 
-   private static ByteBuffer readResource(final ReadableByteChannel channel, final int expectedSize) throws IOException {
-      ByteBuffer buffer = MemoryUtil.memAlloc(expectedSize);
+   public static void releaseTextureId(int $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._deleteTexture($$0);
+   }
+
+   public static void prepareImage(int $$0, int $$1, int $$2) {
+      prepareImage(ehk.b.a, $$0, 0, $$1, $$2);
+   }
+
+   public static void prepareImage(ehk.b $$0, int $$1, int $$2, int $$3) {
+      prepareImage($$0, $$1, 0, $$2, $$3);
+   }
+
+   public static void prepareImage(int $$0, int $$1, int $$2, int $$3) {
+      prepareImage(ehk.b.a, $$0, $$1, $$2, $$3);
+   }
+
+   public static void prepareImage(ehk.b $$0, int $$1, int $$2, int $$3, int $$4) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      bind($$1);
+      if ($$2 >= 0) {
+         GlStateManager._texParameter(3553, 33085, $$2);
+         GlStateManager._texParameter(3553, 33082, 0);
+         GlStateManager._texParameter(3553, 33083, $$2);
+         GlStateManager._texParameter(3553, 34049, 0.0F);
+      }
+
+      for (int $$5 = 0; $$5 <= $$2; $$5++) {
+         GlStateManager._texImage2D(3553, $$5, $$0.a(), $$3 >> $$5, $$4 >> $$5, 0, 6408, 5121, null);
+      }
+   }
+
+   private static void bind(int $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture($$0);
+   }
+
+   public static ByteBuffer readResource(InputStream $$0) throws IOException {
+      ReadableByteChannel $$1 = Channels.newChannel($$0);
+      return $$1 instanceof SeekableByteChannel $$2 ? readResource($$1, (int)$$2.size() + 1) : readResource($$1, 8192);
+   }
+
+   private static ByteBuffer readResource(ReadableByteChannel $$0, int $$1) throws IOException {
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1);
 
       try {
-         while (channel.read(buffer) != -1) {
-            if (!buffer.hasRemaining()) {
-               buffer = MemoryUtil.memRealloc(buffer, buffer.capacity() * 2);
+         while ($$0.read($$2) != -1) {
+            if (!$$2.hasRemaining()) {
+               $$2 = MemoryUtil.memRealloc($$2, $$2.capacity() * 2);
             }
          }
 
-         buffer.flip();
-         return buffer;
+         return $$2;
       } catch (IOException var4) {
-         MemoryUtil.memFree(buffer);
+         MemoryUtil.memFree($$2);
          throw var4;
       }
    }
 
-   public static void writeAsPNG(final Path dir, final String prefix, final GpuTexture texture, final int maxMipLevel, final IntUnaryOperator pixelModifier) {
+   public static void writeAsPNG(Path $$0, String $$1, int $$2, int $$3, int $$4, int $$5) {
+      writeAsPNG($$0, $$1, $$2, $$3, $$4, $$5, null);
+   }
+
+   public static void writeAsPNG(Path $$0, String $$1, int $$2, int $$3, int $$4, int $$5, @Nullable IntUnaryOperator $$6) {
       RenderSystem.assertOnRenderThread();
-      long bufferLength = 0L;
+      bind($$2);
 
-      for (int i = 0; i <= maxMipLevel; i++) {
-         bufferLength += (long)texture.getFormat().blockSize() * (long)texture.getWidth(i) * (long)texture.getHeight(i);
-      }
+      for (int $$7 = 0; $$7 <= $$3; $$7++) {
+         int $$8 = $$4 >> $$7;
+         int $$9 = $$5 >> $$7;
 
-      if (bufferLength > 2147483647L) {
-         throw new IllegalArgumentException("Exporting textures larger than 2GB is not supported");
-      } else if (texture.getFormat() != GpuFormat.RGBA8_UNORM) {
-         throw new IllegalArgumentException("Exporting textures other than RGBA8_UNORM is not supported");
-      } else {
-         GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Texture output buffer", 9, bufferLength);
-         CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-         Runnable onCopyComplete = () -> {
-            try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
-               ByteBuffer data = read.data();
-               IntUnaryOperator decodeTexel = data::getInt;
-               int offsetx = 0;
-
-               for (int ix = 0; ix <= maxMipLevel; ix++) {
-                  int mipWidth = texture.getWidth(ix);
-                  int mipHeight = texture.getHeight(ix);
-
-                  try (NativeImage image = new NativeImage(mipWidth, mipHeight, false)) {
-                     for (int y = 0; y < mipHeight; y++) {
-                        for (int x = 0; x < mipWidth; x++) {
-                           int argb = decodeTexel.applyAsInt(offsetx + (x + y * mipWidth) * texture.getFormat().blockSize());
-                           image.setPixelABGR(x, y, pixelModifier.applyAsInt(argb));
-                        }
-                     }
-
-                     Path target = dir.resolve(prefix + "_" + ix + ".png");
-                     image.writeToFile(target);
-                     LOGGER.debug("Exported png to: {}", target.toAbsolutePath());
-                  } catch (IOException var20) {
-                     LOGGER.debug("Unable to write: ", var20);
-                  }
-
-                  offsetx += texture.getFormat().blockSize() * mipWidth * mipHeight;
-               }
+         try (ehk $$10 = new ehk($$8, $$9, false)) {
+            $$10.a($$7, false);
+            if ($$6 != null) {
+               $$10.b($$6);
             }
 
-            buffer.close();
-         };
-         AtomicInteger completedCopies = new AtomicInteger();
-         int offset = 0;
-
-         for (int i = 0; i <= maxMipLevel; i++) {
-            commandEncoder.copyTextureToBuffer(texture, buffer, (long)offset, () -> {
-               if (completedCopies.getAndIncrement() == maxMipLevel) {
-                  onCopyComplete.run();
-               }
-            }, i);
-            offset += texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
+            Path $$11 = $$0.resolve($$1 + "_" + $$7 + ".png");
+            $$10.a($$11);
+            LOGGER.debug("Exported png to: {}", $$11.toAbsolutePath());
+         } catch (IOException var15) {
+            LOGGER.debug("Unable to write: ", var15);
          }
       }
    }
 
-   public static Path getDebugTexturePath(final Path root) {
-      return root.resolve("screenshots").resolve("debug");
+   public static Path getDebugTexturePath(Path $$0) {
+      return $$0.resolve("screenshots").resolve("debug");
    }
 
    public static Path getDebugTexturePath() {
       return getDebugTexturePath(Path.of("."));
-   }
-
-   public static void solidify(final NativeImage image) {
-      int width = image.getWidth();
-      int height = image.getHeight();
-      int[] nearestColor = new int[width * height];
-      int[] distances = new int[width * height];
-      Arrays.fill(distances, Integer.MAX_VALUE);
-      IntArrayFIFOQueue queue = new IntArrayFIFOQueue();
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            if (ARGB.alpha(color) != 0) {
-               int packedCoordinates = pack(x, y, width);
-               distances[packedCoordinates] = 0;
-               nearestColor[packedCoordinates] = color;
-               queue.enqueue(packedCoordinates);
-            }
-         }
-      }
-
-      while (!queue.isEmpty()) {
-         int packedCoordinates = queue.dequeueInt();
-         int x = x(packedCoordinates, width);
-         int yx = y(packedCoordinates, width);
-
-         for (int[] direction : DIRECTIONS) {
-            int neighborX = x + direction[0];
-            int neighborY = yx + direction[1];
-            int packedNeighborCoordinates = pack(neighborX, neighborY, width);
-            if (neighborX >= 0
-               && neighborY >= 0
-               && neighborX < width
-               && neighborY < height
-               && distances[packedNeighborCoordinates] > distances[packedCoordinates] + 1) {
-               distances[packedNeighborCoordinates] = distances[packedCoordinates] + 1;
-               nearestColor[packedNeighborCoordinates] = nearestColor[packedCoordinates];
-               queue.enqueue(packedNeighborCoordinates);
-            }
-         }
-      }
-
-      for (int x = 0; x < width; x++) {
-         for (int yx = 0; yx < height; yx++) {
-            int color = image.getPixel(x, yx);
-            if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, yx, ARGB.color(0, nearestColor[pack(x, yx, width)]));
-            } else {
-               image.setPixel(x, yx, color);
-            }
-         }
-      }
-   }
-
-   public static void fillEmptyAreasWithDarkColor(final NativeImage image) {
-      int width = image.getWidth();
-      int height = image.getHeight();
-      int darkestColor = -1;
-      int minBrightness = Integer.MAX_VALUE;
-
-      for (int x = 0; x < width; x++) {
-         for (int y = 0; y < height; y++) {
-            int color = image.getPixel(x, y);
-            int alpha = ARGB.alpha(color);
-            if (alpha != 0) {
-               int red = ARGB.red(color);
-               int green = ARGB.green(color);
-               int blue = ARGB.blue(color);
-               int brightness = red + green + blue;
-               if (brightness < minBrightness) {
-                  minBrightness = brightness;
-                  darkestColor = color;
-               }
-            }
-         }
-      }
-
-      int darkRed = 3 * ARGB.red(darkestColor) / 4;
-      int darkGreen = 3 * ARGB.green(darkestColor) / 4;
-      int darkBlue = 3 * ARGB.blue(darkestColor) / 4;
-      int darkenedColor = ARGB.color(0, darkRed, darkGreen, darkBlue);
-
-      for (int x = 0; x < width; x++) {
-         for (int yx = 0; yx < height; yx++) {
-            int color = image.getPixel(x, yx);
-            if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, yx, darkenedColor);
-            }
-         }
-      }
-   }
-
-   private static int pack(final int x, final int y, final int width) {
-      return x + y * width;
-   }
-
-   private static int x(final int packed, final int width) {
-      return packed % width;
-   }
-
-   private static int y(final int packed, final int width) {
-      return packed / width;
    }
 }

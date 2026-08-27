@@ -1,9 +1,9 @@
 {
-  "sources": [
-    {
-      "type": "minecraft:directory",
-      "prefix": "",
-      "source": "particle"
-    }
-  ]
+    "sources": [
+        {
+            "type": "directory",
+            "source": "particle",
+            "prefix": ""
+        }
+    ]
 }

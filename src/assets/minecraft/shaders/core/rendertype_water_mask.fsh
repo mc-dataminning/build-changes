@@ -1,9 +1,8 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:dynamictransforms.glsl>
+uniform vec4 ColorModulator;
 
-layout(location = 0) out vec4 fragColor;
+out vec4 fragColor;
 
 void main() {
     fragColor = ColorModulator;

@@ -1,0 +1,32 @@
+public class blz extends blx {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
+
+   public blz(bgb $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   @Override
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.b_(this.a(this.a.dA(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.J().l()) {
+            this.a.b_(this.a(this.a.dA(), 0.0F, 5.0F));
+         }
+
+         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
+      }
+
+      float $$0 = apa.g(this.a.aX - this.a.aV);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aV -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aV += 4.0F;
+      }
+   }
+}

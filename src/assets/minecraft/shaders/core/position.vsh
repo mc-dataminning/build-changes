@@ -1,18 +1,17 @@
-#version 330
-#extension GL_ARB_separate_shader_objects : require
+#version 150
 
-#include <minecraft:fog.glsl>
-#include <minecraft:dynamictransforms.glsl>
-#include <minecraft:projection.glsl>
+#moj_import <fog.glsl>
 
-layout(location = 0) in vec3 Position;
+in vec3 Position;
 
-layout(location = 0) out float sphericalVertexDistance;
-layout(location = 1) out float cylindricalVertexDistance;
+uniform mat4 ProjMat;
+uniform mat4 ModelViewMat;
+uniform int FogShape;
+
+out float vertexDistance;
 
 void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
-    sphericalVertexDistance = fog_spherical_distance(Position);
-    cylindricalVertexDistance = fog_cylindrical_distance(Position);
+    vertexDistance = fog_distance(ModelViewMat, Position, FogShape);
 }
